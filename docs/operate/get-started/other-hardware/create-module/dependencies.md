@@ -1,5 +1,5 @@
 ---
-title: "Module dependencies"
+title: "Access other resources from within a module"
 linkTitle: "Module dependencies"
 weight: 25
 layout: "docs"
@@ -13,7 +13,9 @@ aliases:
 
 Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
 
-For example, you could write a sensor component that requires a camera component, meaning that the camera is a dependency of that sensor.
+For example, you could write a sensor component that has a camera component as a dependency.
+This allows the sensor module to access data from the camera by using the camera API methods on the camera client from within the sensor module.
+
 The component configuration for the sensor could look like this, with the name of the camera as an attribute:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6"}
@@ -28,11 +30,11 @@ The component configuration for the sensor could look like this, with the name o
 ```
 
 Dependencies are configured just like any other resource attribute.
-The difference is that dependencies represent other resources that are accessed by the resource that depends on them.
+The difference is that dependencies represent other resources, and they are treated specially in the `validate_config` and `reconfigure` functions.
 
 When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/lifecycle-module/), it builds the dependencies first.
 
-## Use dependencies
+## Write dependencies into your module
 
 From within a module, you cannot access resources in the same way that you would in a client application.
 For example, you cannot call `Camera.from_robot()` to get a camera resource.
@@ -191,6 +193,8 @@ When an optional dependency constructs successfully, your modular resource recon
 
 Optional dependencies are not necessarily built first, even if they are available.
 
+Use optional dependencies for intermittently available resources.
+
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
 {{< tabs >}}
@@ -199,21 +203,21 @@ Example use case for optional dependencies: If your module depends on multiple c
 1. If your module has optional dependencies, your `validate_config` function should add the dependency to the second element of the returned tuple.
    For example:
 
-```python {class="line-numbers linkable-line-numbers"}
-@classmethod
-def validate_config(
-    cls, config: ComponentConfig
-) -> Tuple[Sequence[str], Sequence[str]]:
-    opt_deps = []
-    fields = config.attributes.fields
-    if "camera_name" not in fields:
-        raise Exception("missing required camera_name attribute")
-    elif not fields["camera_name"].HasField("string_value"):
-        raise Exception("camera_name must be a string")
-    camera_name = fields["camera_name"].string_value
-    opt_deps.append(camera_name)
-    return [], opt_deps
-```
+   ```python {class="line-numbers linkable-line-numbers"}
+   @classmethod
+   def validate_config(
+       cls, config: ComponentConfig
+   ) -> Tuple[Sequence[str], Sequence[str]]:
+       opt_deps = []
+       fields = config.attributes.fields
+       if "camera_name" not in fields:
+           raise Exception("missing required camera_name attribute")
+       elif not fields["camera_name"].HasField("string_value"):
+           raise Exception("camera_name must be a string")
+       camera_name = fields["camera_name"].string_value
+       opt_deps.append(camera_name)
+       return [], opt_deps
+   ```
 
 1. In your `reconfigure` method, allow for the dependency to be unavailable.
    For example:
@@ -286,6 +290,285 @@ Be sure to handle the case where the dependency is not available in your API imp
 There is not currently an SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
 You must access the API key module environment variables to establish the app client connection.
 {{% /hiddencontent %}}
+
+## Use SDK methods on dependencies
+
+Once you have added a dependency to your modular resource, you can use SDK methods on the resource client.
+For example:
+
+{{< tabs >}}
+{{% tab name="Components" %}}
+
+For components such as arms, cameras, and sensors, you can use SDK methods to access the resource client following the pattern in this example:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+img = await self.the_camera.get_image()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+img, imgMetadata, err := s.camera.Image(ctx, utils.MimeTypeJPEG, nil)
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+{{% /tab %}}
+{{% tab name="Services" %}}
+
+For services such as vision and navigation, you can use SDK methods to access the resource client following the pattern in this example:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# "self.my_detector" is the vision service dependency,
+# and "my_camera" is the name of the camera in the machine config.
+detections = await self.my_detector.get_detections_from_camera("my_camera")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// "s.myDetector" is the vision service dependency,
+// and "my_camera" is the name of some camera in the machine config.
+detections, err := s.myDetector.GetDetectionsFromCamera(ctx, "my_camera")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Note that because the module code in this example is calling the vision service API, the vision service must be a dependency.
+Meanwhile, because the module code is not calling the camera API, the camera does not need to be a dependency.
+
+### Special case: The motion service
+
+The motion service is available by default as part of `viam-server`.
+This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
+You do not need to check for it being configured in your `Validate` function because it is always enabled.
+
+If you are accessing a different motion service, use the resource name you configured, and add it to your `Validate` function.
+
+This example shows how to access the default motion service:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# Return the motion service as a dependency
+@classmethod
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    req_deps.append("builtin")
+    return req_deps, []
+
+
+# Add the motion service as an instance variable
+def reconfigure(
+    self, config: ComponentConfig, dependencies: Mapping[
+      ResourceName, ResourceBase]
+):
+    motion_resource = dependencies[Motion.get_resource_name("builtin")]
+    self.motion_service = cast(MotionClient, motion_resource)
+
+    return super().reconfigure(config, dependencies)
+
+
+# Use the motion service
+def move_around_in_some_way(self):
+    moved = await self.motion_service.move(
+        gripper_name, destination, world_state)
+    return moved
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Return the motion service as a dependency
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+  deps := []string{motion.Named("builtin").String()}
+  return deps, nil, nil
+}
+
+// Then use the motion service, for example:
+func (c *Component) MoveAroundInSomeWay() error {
+  c.Motion, err = motion.FromDependencies(deps, "builtin")
+  if err != nil {
+    return nil, err
+  }
+  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
+    ComponentName: gripperName,
+    Destination: destination,
+    WorldState: worldState
+  })
+  return moved, err
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="Platform clients" %}}
+
+The following APIs do not require a dependency, but you must authenticate using API keys and create a `ViamClient`:
+
+- [Fleet management (`app_client`)](/dev/reference/apis/fleet/)
+- [Data client (`data_client`)](/dev/reference/apis/data-client/)
+  - For the [data management API](/dev/reference/apis/services/data/), use the typical service client pattern.
+- [ML training (`ml_training_client`)](/dev/reference/apis/ml-training-client/)
+- [Billing (`billing_client`)](/dev/reference/apis/billing-client/)
+
+You can use [module environment variables](/operate/get-started/other-hardware/module-configuration/) to access the API keys.
+Then, get the client you need from the ViamClient.
+For example:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+import os
+from viam.rpc.dial import DialOptions, Credentials
+from viam.app.viam_client import ViamClient
+
+
+async def create_appclient_from_module():
+    # Get API credentials from module environment variables
+    api_key = os.environ.get("VIAM_API_KEY")
+    api_key_id = os.environ.get("VIAM_API_KEY_ID")
+
+    if not api_key or not api_key_id:
+        raise Exception("VIAM_API_KEY and VIAM_API_KEY_ID " +
+                        "environment variables are required")
+
+    # Create dial options with API key authentication
+    dial_options = DialOptions(
+        credentials=Credentials(
+            type="api-key",
+            payload=api_key,
+        ),
+        auth_entity=api_key_id
+    )
+
+    # Create ViamClient and get app_client
+    viam_client = await ViamClient.create_from_dial_options(dial_options)
+    app_client = viam_client.app_client
+
+    return app_client
+
+
+# Use the appclient in your module
+async def some_module_function(self):
+    app_client = await create_appclient_from_module()
+
+    # Now you can use app_client methods, for example:
+    orgs = await app_client.list_organizations()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="Machine management" %}}
+
+To use the [machine management (`robot_client`) API](/dev/reference/apis/robot/), you must get the machine's FQDN and API keys from the module environment variables.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# For robot client, you can also use the machine's FQDN:
+async def create_robotclient():
+    # Get API credentials from module environment variables
+    api_key = os.environ.get("VIAM_API_KEY")
+    api_key_id = os.environ.get("VIAM_API_KEY_ID")
+    machine_fqdn = os.environ.get("VIAM_MACHINE_FQDN")
+
+    if not api_key or not api_key_id or not machine_fqdn:
+        raise Exception("VIAM_API_KEY, VIAM_API_KEY_ID, and " +
+                        "VIAM_MACHINE_FQDN " +
+                        "environment variables are required")
+
+    # Create robot client options with API key authentication
+    opts = RobotClient.Options.with_api_key(
+        api_key=api_key,
+        api_key_id=api_key_id
+    )
+
+    # Create RobotClient using the machine's FQDN
+    robot_client = await RobotClient.at_address(machine_fqdn, opts)
+
+    return robot_client
+
+
+# Use the robot client
+async def some_module_function(self):
+    robot_client = await create_robotclient()
+
+    # Now you can use robot_client methods, for example:
+    resources = await robot_client.resource_names()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+func createRobotClientFromModule(ctx context.Context) (client.RobotClient, error) {
+    // Get API credentials and machine FQDN from module environment variables
+    apiKey := os.Getenv("VIAM_API_KEY")
+    apiKeyID := os.Getenv("VIAM_API_KEY_ID")
+    machineFQDN := os.Getenv("VIAM_MACHINE_FQDN")
+
+    if apiKey == "" || apiKeyID == "" || machineFQDN == "" {
+        return nil, fmt.Errorf("VIAM_API_KEY, VIAM_API_KEY_ID, and " +
+            "VIAM_MACHINE_FQDN environment variables are required")
+    }
+
+    logger := logging.NewLogger("client")
+
+    // Create robot client with API key authentication
+    robotClient, err := client.New(
+        ctx,
+        machineFQDN,
+        logger,
+        client.WithDialOptions(rpc.WithEntityCredentials(
+            apiKeyID,
+            rpc.Credentials{
+                Type:    rpc.CredentialsTypeAPIKey,
+                Payload: apiKey,
+            })),
+    )
+    if err != nil {
+        return nil, fmt.Errorf("failed to create robot client: %w", err)
+    }
+
+    return robotClient, nil
+}
+
+// Use the robot client
+func (c *Component) SomeModuleFunction(ctx context.Context) error {
+    robotClient, err := createRobotClientFromModule(ctx)
+    if err != nil {
+        return err
+    }
+
+    // Now you can use robot client methods, for example:
+    resources := robotClient.ResourceNames()
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Configure your module's dependencies more easily with a discovery service
 
