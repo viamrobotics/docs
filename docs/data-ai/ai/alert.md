@@ -4,7 +4,7 @@ title: "Alert on inferences"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Use machine learning and send alerts when an inference meets certain critera."
+description: "Use machine learning and send alerts when an inference meets certain criteria."
 ---
 
 Triggers can send alerts in the form of email notifications or webhook requests when a new data is synced to the cloud.
@@ -53,12 +53,20 @@ Complete the following steps to configure your module:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "camera": "my_webcam",
-     "vision": "<vision-service-name>",
-     "window_seconds": 3,
-     "objects": {
-       "<object-name>": <confidence-threshold>
-     }
+      "camera": "<your_camera_name>",
+      "vision_services": [
+         {
+               "vision": <first_vision_service>,
+               "classifications": ...,
+               "objects": ...
+         },
+         {
+               "vision": <second_vision_service>,
+               "classifications": ...,
+               "objects": ...
+         }
+      ],
+      "window_seconds": <time_window_for_capture>,
    }
    ```
 
@@ -69,11 +77,15 @@ Complete the following steps to configure your module:
    ```json {class="line-numbers linkable-line-numbers"}
    {
      "camera": "my_webcam",
-     "vision": "yolo",
-     "window_seconds": 3,
-     "objects": {
-       "NO-Hardhat": 0.5
-     }
+     "vision_services": [
+       {
+         "vision": "yolo",
+         "objects": {
+           "NO-Hardhat": 0.6
+         }
+       }
+     ],
+     "window_seconds": 3
    }
    ```
 
@@ -85,7 +97,7 @@ Complete the following steps to configure your module:
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 
-For more information, see the [`filtered-camera` module README](https://github.com/erh/filtered_camera).
+For more information, see the [`filtered-camera` module README](https://app.viam.com/module/viam/filtered-camera).
 
 {{% alert title="Tip" color="tip" %}}
 Viam provides a way to monitor detections, classifications, and confidence levels from a live vision service.
