@@ -476,18 +476,19 @@ In **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON obj
 "services": [
   {
     "name": "nav",
-    "type": "navigation",
+      "api": "rdk:service:navigation",
+      "model": "rdk:builtin:builtin",
     "attributes": {
-    "base": "base",
-    "movement_sensor": "merged",
-    "obstacles": [],
-    "store": {
+      "base": "base",
+      "movement_sensor": "merged",
+      "obstacles": [],
+      "store": {
         "type": "memory"
-    },
-    "position_polling_frequency": 2,
-    "meters_per_sec": 1.2,
-    "degs_per_sec": 90,
-    "plan_deviation_m": 0.25
+      },
+      "position_polling_frequency": 2,
+      "meters_per_sec": 1.2,
+      "degs_per_sec": 90,
+      "plan_deviation_m": 0.25
     }
   }
 ]
