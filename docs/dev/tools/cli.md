@@ -472,6 +472,7 @@ viam datapipelines delete --id=abc123
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
 | `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | **Required** for `create` |
 | `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
+| `--enable-backfill` | Enable the data pipeline to run over organization's historical data. Default: `false` | `create` | Optional |
 
 ### `dataset`
 
