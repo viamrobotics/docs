@@ -508,6 +508,11 @@ def parse_method_usage(usage_string):
         ## resulting in trailing ',\n)' syntax that is otherwise interpreted here as a param named ')':
         if param != ')':
 
+            ## Initialize variables
+            type_link = None
+            type_name = ""
+            param_type = ""
+
             ## HACKY: Hardcoding several params and returns. These are: the ctx, extra, and cmd params,
             ## the error return, and several parameters that require type inference.
             if param.startswith('ctx'):
@@ -537,7 +542,8 @@ def parse_method_usage(usage_string):
                 elif len(param_raw) == 2:
                     type_name = param_raw[0]
                     param_type = param_raw[1]
-                    type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                    links = regex.findall(r'href="([^"]+)">', param)
+                    type_link = links[-1] if links else None
                 ## Handle returns, or parameters with inferred data types:
                 elif len(param_raw) == 1:
                     ## Hardcode for type inference for angleDeg param:
@@ -569,7 +575,8 @@ def parse_method_usage(usage_string):
                     else:
                         type_name = ''
                         param_type = param_raw[0]
-                        type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                        links = regex.findall(r'href="([^"]+)">', param)
+                        type_link = links[-1] if links else None
 
                 if type_link:
                     param_type_link = type_link
@@ -819,14 +826,18 @@ def write_markdown(type, names, methods):
                     flutter_method_name = row.split(',')[5].rstrip()
                     typescript_method_name = row.split(',')[6].rstrip()
 
-                    if py_method_name and "python" in sdks:
-                        methods['python'][type][resource][py_method_name]["used"] = True
-                    if go_method_name and "go" in sdks:
-                        methods['go'][type][resource][go_method_name]["used"] = True
-                    if flutter_method_name and "flutter" in sdks:
-                        methods['flutter'][type][resource][flutter_method_name]["used"] = True
-                    if typescript_method_name and "typescript" in sdks:
-                        methods['typescript'][type][resource][typescript_method_name]["used"] = True
+                    if py_method_name and "python" in sdks and resource in methods['python'][type]:
+                        if py_method_name in methods['python'][type][resource]:
+                            methods['python'][type][resource][py_method_name]["used"] = True
+                    if go_method_name and "go" in sdks and resource in methods['go'][type]:
+                        if go_method_name in methods['go'][type][resource]:
+                            methods['go'][type][resource][go_method_name]["used"] = True
+                    if flutter_method_name and "flutter" in sdks and resource in methods['flutter'][type]:
+                        if flutter_method_name in methods['flutter'][type][resource]:
+                            methods['flutter'][type][resource][flutter_method_name]["used"] = True
+                    if typescript_method_name and "typescript" in sdks and resource in methods['typescript'][type]:
+                        if typescript_method_name in methods['typescript'][type][resource]:
+                            methods['typescript'][type][resource][typescript_method_name]["used"] = True
 
                     ## Allow setting protos with 0 sdk method maps, to allow us to disable writing MD
                     ## for specific protos as needed, if needed:
