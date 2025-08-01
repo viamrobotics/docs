@@ -130,7 +130,7 @@ Search for and add the [`viam-sensor:telegrafsensor` model](https://github.com/v
 **(Optional) Customize the sensor configuration**
 
 Add additional sensors for any other metrics you want to track.
-You can find a list of sensors on the [`viam-telegraf-sensor`](https://github.com/viam-modules/viam-telegraf-sensor) module page.
+You can find a list of sensors on the [`viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) module page.
 
 {{% /tablestep %}}
 {{% tablestep  number=3 %}}
@@ -339,7 +339,7 @@ In the **Data capture** section of your sensor's configuration, toggle the switc
 
 Click the **Save** button in the top right corner of the page to save your configuration.
 
-## Alert continuously on machine status
+## Alert on machine status
 
 ### Part is online
 

@@ -149,10 +149,10 @@ if __name__ == "__main__":
 
 For complete examples that implement control logic, see:
 
-- [`event-manager`](https://github.com/viam-modules/event-manager)
-- [`refill-controller`](https://github.com/viam-devrel/refill-controller)
-- [`re-id-object-tracking`](https://github.com/viam-modules/re-id-object-tracking)
-- [`detection-dock`](https://github.com/viam-labs/detection-dock)
+- [`event-manager`](https://app.viam.com/module/viam/event-manager)
+- [`refill-controller`](https://app.viam.com/module/viam-demo/refill-controller)
+- [`re-id-object-tracking`](https://app.viam.com/module/viam/re-id-object-tracking)
+- [`detection-dock`](https://app.viam.com/module/viam-labs/detection-dock)
 
 ## Package your control logic
 

@@ -4,10 +4,11 @@ title: "Alert on inferences"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Use triggers to send email notifications when inferences are made."
+description: "Use machine learning and send alerts when an inference meets certain criteria."
 ---
 
-Triggers can send alerts in the form of email notifications or webhook requests when a service makes a specific detection or classification.
+Triggers can send alerts in the form of email notifications or webhook requests when a new data is synced to the cloud.
+If you then configure a filtered camera or another modular resource that uploads data only when a specific detection or classification is made, you get a notification.
 
 For example, a trigger could alert you when a camera feed detects an anomaly.
 
@@ -27,7 +28,7 @@ Follow the instructions to [configure a camera](/operate/reference/components/ca
 
 ## Configure a filtered camera
 
-You can use a camera and vision service to sync only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/erh/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
+You can use a camera and vision service to sync only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
 This camera module takes the vision service and applies it to your webcam feed, filtering the output.
 With this filtering, you can save only images that contain people who match your filtering criteria.
 
@@ -52,12 +53,20 @@ Complete the following steps to configure your module:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "camera": "my_webcam",
-     "vision": "<vision-service-name>",
-     "window_seconds": 3,
-     "objects": {
-       "<object-name>": <confidence-threshold>
-     }
+      "camera": "<your_camera_name>",
+      "vision_services": [
+         {
+               "vision": <first_vision_service>,
+               "classifications": ...,
+               "objects": ...
+         },
+         {
+               "vision": <second_vision_service>,
+               "classifications": ...,
+               "objects": ...
+         }
+      ],
+      "window_seconds": <time_window_for_capture>,
    }
    ```
 
@@ -68,11 +77,15 @@ Complete the following steps to configure your module:
    ```json {class="line-numbers linkable-line-numbers"}
    {
      "camera": "my_webcam",
-     "vision": "yolo",
-     "window_seconds": 3,
-     "objects": {
-       "NO-Hardhat": 0.5
-     }
+     "vision_services": [
+       {
+         "vision": "yolo",
+         "objects": {
+           "NO-Hardhat": 0.6
+         }
+       }
+     ],
+     "window_seconds": 3
    }
    ```
 
@@ -84,7 +97,7 @@ Complete the following steps to configure your module:
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 
-For more information, see the [`filtered-camera` module README](https://github.com/erh/filtered_camera).
+For more information, see the [`filtered-camera` module README](https://app.viam.com/module/viam/filtered-camera).
 
 {{% alert title="Tip" color="tip" %}}
 Viam provides a way to monitor detections, classifications, and confidence levels from a live vision service.

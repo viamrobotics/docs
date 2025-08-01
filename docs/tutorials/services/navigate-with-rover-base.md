@@ -67,7 +67,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 
    We used three movement sensors to satisfy these requirements:
 
-   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/operate/reference/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](https://github.com/viam-modules/gps/tree/main/rtk) model, providing GPS position and compass heading measurements.
+   1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/operate/reference/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](https://app.viam.com/module/viam/gps) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/operate/reference/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/operate/reference/components/encoder/) wired to our base's [motors](/operate/reference/components/motor/).
    3. A [`merged`](/operate/reference/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
@@ -612,7 +612,7 @@ We configured ours as an Intel RealSense Camera, which is available as a {{< glo
 
 {{< alert title="Tip" color="tip" >}}
 
-You can alternatively use [`viam:ultrasonic:camera`](https://github.com/viam-modules/viam-ultrasonic) from the official viam module.
+You can alternatively use [`viam:ultrasonic:camera`](https://app.viam.com/module/viam/ultrasonic) from the official viam module.
 
 {{< /alert >}}
 

@@ -18,7 +18,7 @@ _Changed in [RDK v0.2.36 and API v0.1.118](/dev/reference/changelog/#vision-serv
 `obstacles_distance` is a segmenter that takes point clouds from a camera input and returns the average single closest point to the camera as a perceived obstacle.
 It is best for transient obstacle avoidance.
 
-For example, if you have an ultrasonic distance sensor as [`viam:ultrasonic:camera`](https://github.com/viam-modules/viam-ultrasonic), this model will query the sensor `"num_queries"` times, and then take the average point from those measurements and return that as an obstacle.
+For example, if you have an ultrasonic distance sensor as [`viam:ultrasonic:camera`](https://app.viam.com/module/viam/ultrasonic), this model will query the sensor `"num_queries"` times, and then take the average point from those measurements and return that as an obstacle.
 
 First, make sure your camera is connected to your machine's computer and both are powered on.
 Then, configure the service:
