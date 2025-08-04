@@ -64,9 +64,8 @@ You may need to wait a short time for your machine to boot and create its WiFi h
 Your machine's WiFi hotspot name will begin with `viam-setup-`.
 Unless you have been given other instructions, the WiFi password for this hotspot network is `viamsetup`.
 
-Return to the Viam mobile app once connected
+Return to the Viam mobile app once connected.
 
-You may need to wait a short time for your machine to boot and start its provisioning services.
 {{% /tablestep %}}
 {{% tablestep number=4 %}}
 **Provide the network information for the machine**
