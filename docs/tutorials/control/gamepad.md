@@ -157,7 +157,8 @@ Add the following configuration for your base remote control service, replacing 
   "services": [
     {
       "name": "gamepad_service",
-      "type": "base_remote_control",
+      "api": "rdk:service:base_remote_control",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "input_controller": "my-gamepad",
         "base": "<your-base-name>"

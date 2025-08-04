@@ -63,21 +63,22 @@ Edit the attributes as applicable to your machine, according to the table below.
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
 {
-    "name": "your-navigation-service",
-    "type": "navigation",
-    "attributes": {
-        "store": {
-            "type": "<your-store-type>"
-        },
-        "movement_sensor": "<your-movement-sensor>",
-        "base": "<your-base>",
-        "obstacle_detectors": [
-          {
-          "vision_service": "<your-vision-service>",
-          "camera": "<your-camera>"
-          }
-        ]
-    }
+  "name": "your-navigation-service",
+  "api": "rdk:service:navigation",
+  "model": "rdk:builtin:builtin",
+  "attributes": {
+    "store": {
+      "type": "<your-store-type>"
+    },
+    "movement_sensor": "<your-movement-sensor>",
+    "base": "<your-base>",
+    "obstacle_detectors": [
+      {
+        "vision_service": "<your-vision-service>",
+        "camera": "<your-camera>"
+      }
+    ]
+  }
 }
     ... // Other services
 ]
@@ -89,7 +90,8 @@ Edit the attributes as applicable to your machine, according to the table below.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "test_navigation",
-  "type": "navigation",
+  "api": "rdk:service:navigation",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "store": {
       "type": "mongodb",
