@@ -229,7 +229,7 @@ jobs:
           total_files_ts=$((total_files_ts + 1))
 
           # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" node "$file"; then
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" npx ts-node "$file"; then
             passed_files_ts=$((passed_files_ts + 1))
             echo "✅ PASSED: $file"
           else
@@ -289,35 +289,24 @@ jobs:
           echo "No viam-server PID found"
         fi
 
+    - name: Login to Jira
+      if: failure()
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
     - name: Create Jira ticket
-      if: failure() && github.event_name == 'schedule' || failure() && github.event_name == 'push'
+      if: failure()
       id: create
       uses: atlassian/gajira-create@v3
       env:
         GITHUB_RUN_ID: ${{ github.run_id }}
       with:
-        jira_host: ${{ secrets.JIRA_BASE_URL }}
-        jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
-        jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
         project: DOCS
         issuetype: Bug
         summary: Code Sample Tests Failed
-        description: |
-          Code sample tests failed during scheduled run.
-
-          **Run Details:**
-          - Run ID: ${{ github.run_id }}
-          - Repository: ${{ github.repository }}
-          - Branch: ${{ github.ref }}
-          - Commit: ${{ github.sha }}
-          - Triggered by: Scheduled run
-
-          **Test Results:**
-          - Total files tested: ${{ steps.test-code-samples.outputs.total }}
-          - Passed: ${{ steps.test-code-samples.outputs.passed }}
-          - Failed: ${{ steps.test-code-samples.outputs.failed }}
-
-          For more details, see: https://github.com/viamrobotics/docs/actions/runs/${{ github.run_id }}
+        description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
     - name: Log created Jira issue
-      if: failure() && github.event_name == 'schedule'
-      run: echo "Issue ${{ steps.create.outputs.issue }} was created for scheduled run failure"
+      if: failure()
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
