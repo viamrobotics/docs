@@ -41,7 +41,7 @@ async def main() -> int:
             org_id=ORG_ID,
             region="us-central"  # or "us-central"
         )
-        print(f"Organization region updated to: {updated_org.region}")
+        print(f"Organization region updated to: {updated_org.default_region}")
     except Exception as e:
         print(f"Error updating organization region: {e}")
         # :remove-start:
