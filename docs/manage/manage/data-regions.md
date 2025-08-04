@@ -41,102 +41,21 @@ Once you sync data in an organization, you cannot change the data region.
 
 You can check your organization's data region using [`get_organization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`update_organization`](/dev/reference/apis/fleet/#updateorganization):
 
-```python
-viam_client = ViamClient.create_from_dial_options(
-    dial_options=DialOptions.with_api_key(
-        api_key="your-api-key",
-        api_key_id="your-api-key-id"
-    )
-)
-
-# Check organization region
-org = await viam_client.app_client.get_organization(org_id="your-org-id")
-print(f"Current region: {org.default_region}")
-
-# Update organization region
-updated_org = await viam_client.app_client.update_organization(
-    org_id="your-org-id",
-    region="eu-west"  # or "us-central"
-)
-
-print(f"Organization region updated to: {updated_org.region}")
-
-viam_client.close()
-```
+{{< read-code-snippet file="/static/include/examples-generated/data-region.snippet.data-region.py" lang="python" class="line-numbers linkable-line-numbers" data-line="34-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 You can check your organization's data region using [`GetOrganization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/dev/reference/apis/fleet/#updateorganization):
 
-```go
-ctx := context.Background()
-
-appClient, err := app.NewAppClient(ctx, app.Config{
-    Auth: app.Credentials{
-        Type:    "api-key",
-        Payload: "your-api-key",
-    },
-}, logging.NewLogger("client"))
-if err != nil {
-    log.Fatal(err)
-}
-defer appClient.Close()
-
-organizationId := "your-org-id"
-
-// Check organization region
-org, err := appClient.GetOrganization(ctx, organizationId)
-if err != nil {
-    log.Fatal(err)
-}
-fmt.Printf("Current region: %s\n", org.DefaultRegion)
-
-// Configure UpdateOrganizationOptions for European region
-updateOptions := &app.UpdateOrganizationOptions{
-    Name:   nil,
-    Region: stringPtr("eu-west"),  # or "us-central"
-}
-
-// Update organization region
-updatedOrg, err := appClient.UpdateOrganization(ctx, organizationId, updateOptions)
-if err != nil {
-    log.Fatal(err)
-}
-
-fmt.Printf("Organization region updated to: %s\n", updatedOrg.DefaultRegion)
-```
+{{< read-code-snippet file="/static/include/examples-generated/data-region.snippet.data-region.go" lang="python" class="line-numbers linkable-line-numbers" data-line="36-40" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 You can check your organization's data region using [`getOrganization`](/dev/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/dev/reference/apis/fleet/#updateorganization):
 
-```typescript
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    authEntity: "your-api-key-id",
-    payload: "your-api-key",
-  },
-});
-
-// Check organization region
-const org = await client.appClient.getOrganization({
-  organizationId: "your-org-id",
-});
-console.log(`Current region: ${org.defaultRegion}`);
-
-// Update organization region
-const updatedOrg = await client.appClient.updateOrganization({
-  organizationId: "your-org-id",
-  region: "eu-west", // or "us-central"
-});
-
-console.log(`Organization region updated to: ${updatedOrg.region}`);
-
-client.disconnect();
-```
+{{< read-code-snippet file="/static/include/examples-generated/data-region.snippet.data-region.ts" lang="python" class="line-numbers linkable-line-numbers" data-line="23-28" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
