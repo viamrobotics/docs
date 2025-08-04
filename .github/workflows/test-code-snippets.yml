@@ -290,15 +290,18 @@ jobs:
         fi
 
     - name: Create Jira ticket
+      uses: atlassian/gajira-create-issue@v1
       if: failure() && github.event_name == 'schedule' || failure() && github.event_name == 'push'
       id: create
-      uses: atlassian/gajira-create@v3
       env:
         GITHUB_RUN_ID: ${{ github.run_id }}
       with:
+        jira_host: ${{ secrets.JIRA_BASE_URL }}
+        jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
+        jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
         project: DOCS
-        issuetype: Task
-        summary: Code Sample Tests Failed - Scheduled Run
+        issuetype: Bug
+        summary: Code Sample Tests Failed
         description: |
           Code sample tests failed during scheduled run.
 
