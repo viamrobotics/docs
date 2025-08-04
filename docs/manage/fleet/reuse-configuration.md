@@ -64,6 +64,12 @@ If you want to edit the fragment later, do it from this screen.
 {{% /tablestep %}}
 {{< /table >}}
 
+{{< alert title="Tip: Organize resources into folders" color="tip" >}}
+
+If you have many components and services in one fragment, you can add folders to your fragment and use them to organize the resources.
+
+{{< /alert >}}
+
 ## Add the fragment to multiple machines
 
 With your fragment created, you can add it to all machines that should have it.
