@@ -66,7 +66,7 @@ If you want to edit the fragment later, do it from this screen.
 
 {{< alert title="Tip: Organize resources into folders" color="tip" >}}
 
-If you have many components and services in one fragment, you can add one or more folders to your fragment and use them to organize the resources.
+If you have many components and services in one fragment, you can add folders to your fragment and use them to organize the resources.
 
 {{< /alert >}}
 
