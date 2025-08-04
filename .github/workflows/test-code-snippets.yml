@@ -118,6 +118,8 @@ jobs:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
+        VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
 
     - name: Set up Go
       uses: actions/setup-go@v5
@@ -192,6 +194,75 @@ jobs:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
+        VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Find and list TypeScript files
+      run: |
+        echo "Found TypeScript files in examples directory:"
+        find static/include/examples -name "*.ts" -type f | sort
+
+    - name: Test TypeScript code samples
+      if: github.repository_owner == 'viamrobotics'
+      run: |
+        # Find all TypeScript files in the examples directory
+        ts_files=($(find static/include/examples -name "*.ts" -type f | xargs))
+
+        # Initialize counters
+        total_files_ts=0
+        passed_files_ts=0
+        failed_files_ts=0
+
+        echo "Starting to test TypeScript code samples..."
+        echo "========================================"
+
+        for file in "${ts_files[@]}"; do
+          echo "Testing: $file"
+          total_files_ts=$((total_files_ts + 1))
+
+          # Run the test with environment variables explicitly passed
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" node "$file"; then
+            passed_files_ts=$((passed_files_ts + 1))
+            echo "✅ PASSED: $file"
+          else
+            failed_files_ts=$((failed_files_ts + 1))
+            echo "❌ FAILED: $file"
+          fi
+
+          echo "----------------------------------------"
+        done
+
+        # Summary
+        echo "========================================"
+        echo "TEST SUMMARY:"
+        echo "Total files tested: $total_files_ts"
+        echo "Passed: $passed_files_ts"
+        echo "Failed: $failed_files_ts"
+        echo "Skipped: $((total_files_ts - passed_files_ts - failed_files_ts))"
+
+        # Save results for later use
+        echo "total=$total_files_ts" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files_ts" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files_ts" >> $GITHUB_OUTPUT
+
+        # Exit with failure if any tests failed
+        if [ $failed_files_ts -gt 0 ]; then
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
+        VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
 
     - name: Stop viam-server
       if: always()  # This ensures cleanup runs even if tests fail
