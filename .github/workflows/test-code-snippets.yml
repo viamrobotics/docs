@@ -86,7 +86,7 @@ jobs:
           total_files_py=$((total_files_py + 1))
 
           # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" python "$file"; then
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" python "$file"; then
             passed_files_py=$((passed_files_py + 1))
             echo "✅ PASSED: $file"
           else
@@ -290,15 +290,18 @@ jobs:
         fi
 
     - name: Create Jira ticket
+      uses: atlassian/gajira-create-issue@v1
       if: failure() && github.event_name == 'schedule' || failure() && github.event_name == 'push'
       id: create
-      uses: atlassian/gajira-create@v3
       env:
         GITHUB_RUN_ID: ${{ github.run_id }}
       with:
+        jira_host: ${{ secrets.JIRA_BASE_URL }}
+        jira_user_email: ${{ secrets.JIRA_USER_EMAIL }}
+        jira_api_token: ${{ secrets.JIRA_API_TOKEN }}
         project: DOCS
-        issuetype: Task
-        summary: Code Sample Tests Failed - Scheduled Run
+        issuetype: Bug
+        summary: Code Sample Tests Failed
         description: |
           Code sample tests failed during scheduled run.
 
