@@ -69,53 +69,7 @@ Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCap
 To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-```typescript
-const CAMERA_NAME = "<camera-name>";
-const MACHINE_ADDRESS = "<machine-address.viam.cloud>";
-const API_KEY = "<api-key>";
-const API_KEY_ID = "<api-key-id>";
-const PART_ID = "<part-id>";
-
-const machine = await Viam.createRobotClient({
-  host: MACHINE_ADDRESS,
-  credential: {
-    type: "api-key",
-    payload: API_KEY,
-  },
-  authEntity: API_KEY_ID,
-});
-
-const client: ViamClient = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: API_KEY,
-  },
-  authEntity: API_KEY_ID,
-});
-
-const dataClient = client.dataClient;
-
-const camera = new Viam.CameraClient(machine, CAMERA_NAME);
-
-// Capture image
-const imageFrame = await camera.getImage();
-
-// Upload binary data
-const now = new Date();
-const fileId = await dataClient.binaryDataCaptureUpload({
-  partId: PART_ID,
-  componentType: "camera",
-  componentName: CAMERA_NAME,
-  methodName: "GetImage",
-  dataRequestTimes: [now, now],
-  fileExtension: ".jpg",
-  binaryData: imageFrame,
-});
-
-// Cleanup
-await machine.disconnect();
-dataClient.close();
-```
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="45-53" >}}
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -241,40 +195,7 @@ Then, pass the tags and image IDs to [`DataClient.AddTagsToBinaryDataByIDs`](/de
 Use an ML model to generate tags for an image or set of images.
 Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
 
-```typescript
-const client = await createViamClient();
-const myDetector = new VisionClient(client, "<detector_name>");
-const dataClient = client.dataClient;
-
-// Get the captured data for a camera
-const result = await myDetector.captureAllFromCamera("<camera_name>", {
-  returnImage: true,
-  returnDetections: true,
-});
-const image = result.image;
-const detections = result.detections;
-
-const tags = ["tag1", "tag2"];
-
-const myFilter = createFilter({
-  componentName: "camera-1",
-  organizationIds: ["<org-id>"],
-});
-
-const binaryResult = await dataClient.binaryDataByFilter({
-  filter: myFilter,
-  limit: 20,
-  includeBinaryData: false,
-});
-
-const myIds: string[] = [];
-
-for (const obj of binaryResult.binaryMetadata) {
-  myIds.push(obj.metadata.binaryDataId);
-}
-
-await dataClient.addTagsToBinaryDataByIds(tags, myIds);
-```
+{{< read-code-snippet file="/static/include/examples-generated/tag-images.snippet.tag-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -376,35 +297,7 @@ Then, separately pass each bounding box and the image ID to [`DataClient.AddBoun
 Use an ML model to generate bounding boxes for an image.
 Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
 
-```typescript
-const client = await createViamClient();
-const myDetector = new VisionClient(client, "<detector_name>");
-const dataClient = client.dataClient;
-
-// Get the captured data for a camera
-const result = await myDetector.captureAllFromCamera("<camera_name>", {
-  returnImage: true,
-  returnDetections: true,
-});
-const image = result.image;
-const detections = result.detections;
-
-// Process each detection and add bounding boxes
-for (const detection of detections) {
-  const bboxId = await dataClient.addBoundingBoxToImageById({
-    binaryId: "<YOUR-BINARY-DATA-ID>",
-    label: detection.className,
-    xMinNormalized: detection.boundingBox.xMin,
-    yMinNormalized: detection.boundingBox.yMin,
-    xMaxNormalized: detection.boundingBox.xMax,
-    yMaxNormalized: detection.boundingBox.yMax,
-  });
-
-  console.log(
-    `Added bounding box ID: ${bboxId} for detection: ${detection.className}`,
-  );
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/label-images.snippet.label-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -461,6 +354,11 @@ Check the annotation accuracy in the **DATA** tab, then re-train your ML model o
 {{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/capture-annotate-dataset.snippet.capture-annotate-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/capture-annotate-dataset.snippet.capture-annotate-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
