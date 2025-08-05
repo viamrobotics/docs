@@ -13,13 +13,10 @@ You can view all machines in an organization from a dashboard and access each ma
 {{% tablestep number=1 %}}
 **Monitor your fleet's parts statuses and synced data**
 
-You can monitor your machines from your **FLEET**'s [**ALL MACHINES DASHBOARD** subtab](https://app.viam.com/fleet/machines).
+You can monitor your machines from your **FLEET**'s [**ALL MACHINES** subtab](https://app.viam.com/fleet/machines).
+You can also monitor the amount of binary and tabular data your fleet has synced in the last 48 hours from the same dashboard.
 
 {{< imgproc src="/fleet/dashboard.png" alt="Fleet dashboard showing the machine parts, location, status, architecture and more" style="width:800px" resize="1200x" class="imgzoom shadow" >}}
-
-You can also monitor the amount of binary and tabular data your fleet has synced in the last 48 hours from the **FLEET**'s [**DASHBOARD** subtab](https://app.viam.com/fleet/dashboard).
-
-{{<imgproc src="how-tos/manage-fleet/dashboard.png" resize="500x" declaredimensions=true alt="Fleet dashboard showing the machine parts and data sync overview" class="shadow">}}
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
