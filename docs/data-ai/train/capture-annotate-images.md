@@ -72,56 +72,6 @@ Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCap
 {{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="45-53" >}}
 
 {{% /tab %}}
-{{% tab name="Flutter" %}}
-
-To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
-
-```dart
-const String CAMERA_NAME = '<camera-name>';
-const String MACHINE_ADDRESS = '<robot-address.viam.cloud>';
-const String API_KEY = '<api-key>';
-const String API_KEY_ID = '<api-key-id>';
-const String PART_ID = '<part-id>';
-
-final machine = await RobotClient.atAddress(
-    MACHINE_ADDRESS,
-    RobotClientOptions.withApiKey(
-        apiKey: API_KEY,
-        apiKeyId: API_KEY_ID,
-    ),
-);
-
-final client = await ViamClient.withApiKey(
-    apiKeyId: API_KEY_ID,
-    apiKey: API_KEY,
-);
-
-final dataClient = client.dataClient;
-
-final camera = Camera.fromRobot(machine, CAMERA_NAME);
-
-// Capture image
-final imageFrame = await camera.getImage();
-
-// Upload binary data
-final now = DateTime.now().toUtc();
-final fileId = await dataClient.binaryDataCaptureUpload(
-    partId: PART_ID,
-    componentType: 'camera',
-    componentName: CAMERA_NAME,
-    methodName: 'GetImage',
-    dataRequestTimes: [now, now],
-    fileExtension: '.jpg',
-    binaryData: imageFrame,
-);
-
-// Cleanup
-await robotClient.close();
-dataClient.close();
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 Once you've captured [enough images for training](/data-ai/train/train-tflite/), you must [annotate](#annotate-images) the images before you can use them to train a model.
@@ -198,48 +148,6 @@ Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/de
 {{< read-code-snippet file="/static/include/examples-generated/tag-images.snippet.tag-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
-{{% tab name="Flutter" %}}
-
-Use an ML model to generate tags for an image or set of images.
-Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
-
-```dart
-final viamClient = await ViamClient.connect();
-final myDetector = VisionClient.fromRobot(viamClient, "<detector_name>");
-final dataClient = viamClient.dataClient;
-
-// Get the captured data for a camera
-final result = await myDetector.captureAllFromCamera(
-    "<camera_name>",
-    returnImage: true,
-    returnDetections: true,
-);
-final image = result.image;
-final detections = result.detections;
-
-final tags = ["tag1", "tag2"];
-
-final myFilter = createFilter(
-    componentName: "camera-1",
-    organizationIds: ["<org-id>"],
-);
-
-final binaryResult = await dataClient.binaryDataByFilter(
-    filter: myFilter,
-    limit: 20,
-    includeBinaryData: false,
-);
-
-final myIds = <String>[];
-
-for (final obj in binaryResult.binaryMetadata) {
-    myIds.add(obj.metadata.binaryDataId);
-}
-
-await dataClient.addTagsToBinaryDataByIds(tags, myIds);
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/) an ML model to make inferences.
@@ -298,41 +206,6 @@ Use an ML model to generate bounding boxes for an image.
 Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
 
 {{< read-code-snippet file="/static/include/examples-generated/label-images.snippet.label-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-Use an ML model to generate bounding boxes for an image.
-Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
-
-```dart
-final viamClient = await ViamClient.connect();
-final myDetector = VisionClient.fromRobot(viamClient, "<detector_name>");
-final dataClient = viamClient.dataClient;
-
-// Get the captured data for a camera
-final result = await myDetector.captureAllFromCamera(
-    "<camera_name>",
-    returnImage: true,
-    returnDetections: true,
-);
-final image = result.image;
-final detections = result.detections;
-
-// Process each detection and add bounding boxes
-for (final detection in detections) {
-    final bboxId = await dataClient.addBoundingBoxToImageById(
-      binaryId: "<YOUR-BINARY-DATA-ID>",
-      label: detection.className,
-      xMinNormalized: detection.boundingBox.xMin,
-      yMinNormalized: detection.boundingBox.yMin,
-      xMaxNormalized: detection.boundingBox.xMax,
-      yMaxNormalized: detection.boundingBox.yMax,
-    );
-
-    print('Added bounding box ID: $bboxId for detection: ${detection.className}');
-}
-```
 
 {{% /tab %}}
 {{< /tabs >}}

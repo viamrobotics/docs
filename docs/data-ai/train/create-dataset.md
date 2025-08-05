@@ -65,30 +65,6 @@ To create a dataset, pass a unique dataset name and organization ID to [`dataCli
 {{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="27-30" >}}
 
 {{% /tab %}}
-{{% tab name="Flutter" %}}
-
-To create a dataset, pass a unique dataset name and organization ID to [`dataClient.createDataset`](/dev/reference/apis/data-client/#createdataset):
-
-```dart
-final viamClient = await ViamClient.connect();
-final dataClient = viamClient.dataClient;
-
-print("Creating dataset...");
-
-try {
-    final datasetId = await dataClient.createDataset(
-        name: "<dataset_name>",
-        organizationId: "<org_id>",
-    );
-    print("Created dataset: $datasetId");
-} catch (e) {
-    print("Error creating dataset. It may already exist.");
-    print("Exception: $e");
-    return;
-}
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 You can now add images to your dataset.
@@ -205,100 +181,6 @@ The following script adds all images captured from a certain machine to a new da
 {{< read-code-snippet file="/static/include/examples-generated/add-machine-images-to-dataset.snippet.add-machine-images-to-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="61-64" >}}
 
 {{% /tab %}}
-{{% tab name="Flutter" %}}
-
-The following script adds all images captured from a certain machine to a new dataset:
-
-```dart
-import 'package:viam_sdk/viam_sdk.dart';
-
-// Configuration constants - replace with your actual values
-const String datasetName = ""; // a unique, new name for the dataset you want to create
-const String orgId = ""; // your organization ID, find in your organization settings
-const String partId = ""; // ID of machine that captured target images, find in machine config
-const String apiKey = ""; // API key, find or create in your organization settings
-const String apiKeyId = ""; // API key ID, find or create in your organization settings
-const int maxMatches = 500;
-
-Future<ViamClient> connect() async {
-  return await ViamClient.withApiKey(
-    apiKey: apiKey,
-    apiKeyId: apiKeyId,
-  );
-}
-
-Future<List<BinaryData>> fetchBinaryDataIds(
-    DataClient dataClient, String partId) async {
-  final filter = Filter(partId: partId);
-  final List<BinaryData> allMatches = [];
-  String? last;
-
-  print("Getting data for part...");
-
-  while (allMatches.length < maxMatches) {
-    print("Fetching more data...");
-
-    final response = await dataClient.binaryDataByFilter(
-      filter: filter,
-      limit: 50,
-      last: last,
-      includeBinaryData: false,
-    );
-
-    if (response.data.isEmpty) {
-      break;
-    }
-
-    allMatches.addAll(response.data);
-    last = response.last;
-  }
-
-  return allMatches;
-}
-
-Future<int> main() async {
-  final viamClient = await connect();
-  final dataClient = viamClient.dataClient;
-
-  final matchingData = await fetchBinaryDataIds(dataClient, partId);
-
-  print("Creating dataset...");
-
-  try {
-    final datasetId = await dataClient.createDataset(
-      name: datasetName,
-      organizationId: orgId,
-    );
-    print("Created dataset: $datasetId");
-
-    print("Adding data to dataset...");
-
-    final binaryIds = matchingData
-        .map((obj) => obj.metadata.binaryDataId)
-        .toList();
-
-    await dataClient.addBinaryDataToDatasetByIds(
-      binaryIds: binaryIds,
-      datasetId: datasetId,
-    );
-
-    print("Added files to dataset.");
-    print("See dataset: https://app.viam.com/data/datasets?id=$datasetId");
-
-    viamClient.close();
-    return 0;
-
-  } catch (error) {
-    print("Error creating dataset. It may already exist.");
-    print("See: https://app.viam.com/data/datasets");
-    print("Exception: $error");
-    viamClient.close();
-    return 1;
-  }
-}
-```
-
-{{% /tab %}}
 {{< /tabs >}}
 
 ## Use an existing dataset
@@ -306,7 +188,13 @@ Future<int> main() async {
 If you have used the `viam dataset export` command to export a dataset or if you've been given a dataset from someone else you can use the following script to import the dataset.
 If you have a dataset that was not exported with Viam, you will need to make changes to this script.
 
+{{< tabs >}}
+{{% tab name="Python" %}}
+
 {{% read-code-snippet file="/static/include/examples-generated/use-existing-dataset.snippet.use-existing-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line=" " %}}
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% expand "Looking for test datasets?" %}}
 We have two datasets you can use for testing, one with shapes and the other with a wooden figure:
