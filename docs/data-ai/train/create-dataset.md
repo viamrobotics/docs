@@ -62,24 +62,7 @@ To create a dataset, pass a unique dataset name and organization ID to [`DataCli
 
 To create a dataset, pass a unique dataset name and organization ID to [`dataClient.createDataset`](/dev/reference/apis/data-client/#createdataset):
 
-```typescript
-const client = await createViamClient();
-const dataClient = client.dataClient;
-
-console.log("Creating dataset...");
-
-try {
-  const datasetId = await dataClient.createDataset({
-    name: "<dataset_name>",
-    organizationId: "<org_id>",
-  });
-  console.log(`Created dataset: ${datasetId}`);
-} catch (error) {
-  console.log("Error creating dataset. It may already exist.");
-  console.log(`Exception: ${error}`);
-  process.exit(1);
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="27-30" >}}
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -174,53 +157,7 @@ Pass both IDs to [`DataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-```typescript
-const client: ViamClient = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: API_KEY,
-  },
-  authEntity: API_KEY_ID,
-});
-
-const dataClient = client.dataClient;
-
-// Add image to dataset
-await dataClient.addBinaryDataToDatasetByIds({
-  binaryIds: [EXISTING_IMAGE_ID],
-  datasetId: EXISTING_DATASET_ID,
-});
-
-console.log("Image added to dataset successfully");
-client.disconnect();
-```
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-To add an image to a dataset, find the binary data ID for the image and the dataset ID.
-Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
-
-```dart
-final client = await ViamClient.withApiKey(
-    apiKeyId: apiKeyId,
-    apiKey: apiKey,
-);
-
-final dataClient = client.dataClient;
-
-try {
-    // Add image to dataset
-    await dataClient.addBinaryDataToDatasetByIds(
-      binaryIds: [existingImageId],
-      datasetId: existingDatasetId,
-    );
-
-    print('Image added to dataset successfully');
-} finally {
-    await client.close();
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="26-29" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -265,122 +202,7 @@ The following script adds all images captured from a certain machine to a new da
 
 The following script adds all images captured from a certain machine to a new dataset:
 
-```typescript
-import { ViamClient, createViamClient } from "@viamrobotics/sdk";
-import { DataServiceClient } from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb_service";
-import {
-  BinaryDataByFilterRequest,
-  CreateDatasetRequest,
-  AddBinaryDataToDatasetByIdsRequest,
-  Filter,
-  DataRequest,
-} from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb";
-
-// Configuration constants - replace with your actual values
-const DATASET_NAME = ""; // a unique, new name for the dataset you want to create
-const ORG_ID = ""; // your organization ID, find in your organization settings
-const PART_ID = ""; // ID of machine that captured target images, find in machine config
-const API_KEY = ""; // API key, find or create in your organization settings
-const API_KEY_ID = ""; // API key ID, find or create in your organization settings
-const MAX_MATCHES = 500;
-
-async function connect(): Promise<ViamClient> {
-  return await createViamClient({
-    credential: {
-      type: "api-key",
-      authEntity: API_KEY_ID,
-      payload: API_KEY,
-    },
-  });
-}
-
-async function fetchBinaryDataIds(
-  dataClient: DataServiceClient,
-  partId: string,
-): Promise<any[]> {
-  const filter = new Filter();
-  filter.setPartId(partId);
-
-  const allMatches: any[] = [];
-  let last = "";
-
-  console.log("Getting data for part...");
-
-  while (allMatches.length < MAX_MATCHES) {
-    console.log("Fetching more data...");
-
-    const dataRequest = new DataRequest();
-    dataRequest.setFilter(filter);
-    dataRequest.setLimit(50);
-    dataRequest.setLast(last);
-    dataRequest.setIncludeBinaryData(false);
-
-    const request = new BinaryDataByFilterRequest();
-    request.setDataRequest(dataRequest);
-
-    const response = await dataClient.binaryDataByFilter(request);
-    const data = response.getDataList();
-
-    if (data.length === 0) {
-      break;
-    }
-
-    allMatches.push(...data);
-    last = response.getLast();
-  }
-
-  return allMatches;
-}
-
-async function main(): Promise<number> {
-  const viamClient = await connect();
-  const dataClient = viamClient.dataClient;
-
-  const matchingData = await fetchBinaryDataIds(dataClient, PART_ID);
-
-  console.log("Creating dataset...");
-
-  try {
-    const createRequest = new CreateDatasetRequest();
-    createRequest.setName(DATASET_NAME);
-    createRequest.setOrganizationId(ORG_ID);
-
-    const datasetResponse = await dataClient.createDataset(createRequest);
-    const datasetId = datasetResponse.getId();
-    console.log(`Created dataset: ${datasetId}`);
-
-    console.log("Adding data to dataset...");
-
-    const binaryIds = matchingData.map(
-      (obj) => obj.getMetadata()?.getId() || "",
-    );
-
-    const addRequest = new AddBinaryDataToDatasetByIdsRequest();
-    addRequest.setBinaryIdsList(binaryIds);
-    addRequest.setDatasetId(datasetId);
-
-    await dataClient.addBinaryDataToDatasetByIds(addRequest);
-
-    console.log("Added files to dataset.");
-    console.log(
-      `See dataset: https://app.viam.com/data/datasets?id=${datasetId}`,
-    );
-
-    viamClient.disconnect();
-    return 0;
-  } catch (error) {
-    console.log("Error creating dataset. It may already exist.");
-    console.log("See: https://app.viam.com/data/datasets");
-    console.log(`Exception: ${error}`);
-    viamClient.disconnect();
-    return 1;
-  }
-}
-
-if (require.main === module) {
-  main().then((code) => process.exit(code));
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/add-machine-images-to-dataset.snippet.add-machine-images-to-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="61-64" >}}
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
