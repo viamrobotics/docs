@@ -27,68 +27,38 @@ aliases:
   - "/platform/"
 ---
 
-<div class="max-page">
-  <div class="hero-container">
-    <div class="hero-text">
-      <h1>Viam Documentation</h1>
-      <p>
-        Viam integrates with hardware and software on <b>any device</b> in the physical world. Once you <a href="/operate/get-started/setup/">set up your machines</a>, you can use Viam SDKs to program your devices and connected hardware. Everything is managed in the cloud and you can add use machine learning, data management, and much more for your projects.
-      </p>
-      <div class="cards max-page">
-        <div class="front-card-container">
-          <div class="hover-card primary">
-            <a href="/operate/get-started/setup/" class="noanchor">
-            <div>
-              <p>Get started</p>
-            </div>
-          </a>
-          </div>
-          <div class="cta secondary">
-            <a href="/dev/" class="noanchor"><div>
-            <p>APIs & CLI →</p></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="docs-hero-image.png" alt="App illustration" class="hero">
-  </div>
-</div>
-<br>
-
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="max-page gray-container">
-<h2 id="platform">The Viam platform
+<h2 id="platform">Viam Documentation
   <div class="copied" id="copied-platform" aria-hidden="true">
     <div class="copied-notification" id="copied-platform-text"></div>
   </div>
 </h2>
-<p> Viam allows you to control and program any sensor, actuator or other hardware that is connected to a device. The Viam platform offers builtin capabilities to capture data from devices to the cloud, to build and deploy machine learning models, to alert on problems, and much more. With the connection to the cloud, you can configure, control, and manage your devices from anywhere.</p>
-<br>
-<div class="imgcontcenter">
-<div class="img-overlay-wrap aligncenter">
-  <img src="platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
-  <img src="platform/platform-build-all.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay-platform" id="build-platform" style="width:800px;height:auto" loading="lazy" >
-  <img src="platform/platform-data-all.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay-platform" id="data-platform" style="width:800px;height:auto" loading="lazy" >
-  <img src="platform/platform-fleet-all.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay-platform" id="fleet-platform" style="width:800px;height:auto" loading="lazy" >
-</div>
-</div>
-
+<p> Viam is a software platform for devices that interact with the physical world.</p>
 <br>
 
-<div class="three-cards hoveraction">
+- [**`viam-server` →**](/operate/reference/viam-server/)
 
-<div class="col hover-card build-platform">
-<div><span><h3>Build & integrate</h3><p>To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.</p></span><p><a href="operate/">Learn more</a></p></div>
-</div>
+  The open-source server that runs on machines to manage hardware and software.
 
-<div class="col hover-card data-platform">
-<div><span><h3>Work with Data and AI</h3><p>Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision. Then, you can act or alert on inferences.</p></span><p><a href="data-ai/">Learn more</a></p></div>
-</div>
+- [**Viam →**](https://app.viam.com/robots)
 
-<div class="col hover-card fleet-platform">
-<div><span><h3>Deploy, manage, and troubleshoot</h3><p>Viam’s fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.</p></span><p><a href="manage/">Learn more</a></p></div>
-</div>
+  The cloud app for configuration and management.
 
-</div>
+- [**Architectural Overview →**](/operate/reference/architecture/)
+
+  How a machine is structured, including on-device and cloud communications.
+
+- [**Building machines →**](/operate/)
+
+  Mix and match from existing software resources or make your own.
+
+- [**Data management & AI →**](/data-ai/)
+
+  Manage data from your devices and use it with machine learning.
+
+- [**Fleet Management →**](/manage/)
+
+  Remotely deploy and manage software on any fleet of devices.
+
 </div>

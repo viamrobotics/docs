@@ -14,43 +14,36 @@ aliases:
   - /build/
 ---
 
-To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.
+<div class="max-page gray-container">
+<p> Control your device and any attached physical hardware from anywhere in the world.</p>
+<br>
 
-<!-- Need to use upside down logic because using Subsequent-sibling combinator -->
-<div class="img-overlay-wrap aligncenter">
-  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
-  <img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay" id="build-platform-connect" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay" id="build-platform-apps" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay" id="build-platform-motion" style="width:800px;height:auto" loading="lazy" >
-</div>
+- [**Installation →**](/operate/get-started/setup/)
 
-<div class="hoveraction">
+  Install Viam on any device.
 
-{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
-{{< cards >}}
-{{% card link="/operate/get-started/basics/" noimage="true" %}}
-{{% card link="/operate/get-started/setup/" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+- [**Registry →**](/operate/get-started/supported-hardware/)
 
-{{< how-to-expand "Build apps" "4" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
-{{< cards >}}
-{{% card link="/operate/control/viam-applications/" noimage="true" %}}
-{{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/operate/control/mobile-app/" noimage="true" %}}
-{{% card link="/operate/control/headless-app/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+  An online hub of resources you can use on your machines..
 
-{{< how-to-expand "Intelligent actuation and motion planning" "4" "INTERMEDIATE" "" "build-platform-motion" >}}
-{{< cards >}}
-{{% card link="/operate/mobility/motion-concepts/" noimage="true" %}}
-{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
-{{% card link="/operate/mobility/move-base/" noimage="true" %}}
-{{% card link="/operate/mobility/move-gantry/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+- [**Modules →**](/operate/get-started/other-hardware/create-module/)
+
+  Create modules to support your specialized hardware and software.
+
+- [**Viam applications →**](/operate/control/viam-applications/)
+
+  Deploy web applications to provide an interface for your machines.
+
+- [**SDKs →**](/dev/reference/sdks/)
+
+  Control your machines with Go, Python, TypeScript, Flutter, C++, and more.
+
+- [**Motion planning →**](/operate/mobility/motion-concepts/)
+
+  Use built-in motion planning software to move arms, bases, etc.
+
+- [**Micro-RDK →**](/operate/reference/viam-micro-server/)
+
+  The lightweight version of `viam-server` for microcontrollers.
 
 </div>

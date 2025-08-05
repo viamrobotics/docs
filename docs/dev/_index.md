@@ -16,6 +16,28 @@ aliases:
   - /internals/
 ---
 
+<div class="max-page gray-container">
+<p> Remotely deploy and manage software on any fleet of devices - from anywhere.</p>
+<br>
+
+- [**CLI →**](/dev/tools/cli/)
+
+  Manage your machines resources from the command line.
+
+- [**Tutorials →**](LINK)
+
+  Build small projects while learning new skills.
+
+- [**APIs →**](LINK)
+
+  Every Viam resource exposes an API described through protocol buffers.
+
+- [**SDKs →**](/dev/reference/sdks/)
+
+  Control your machines with Go, Python, TypeScript, Flutter, C++, and more..
+
+</div>
+
 <div class="max-page">
   <div class="hero-container-small">
     <div class="hero-text">
