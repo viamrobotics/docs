@@ -3,8 +3,8 @@ module example-train
 go 1.23.11
 
 require (
-	go.viam.com/rdk v0.86.1
-	go.viam.com/utils v0.1.153
+	go.viam.com/rdk v0.87.0
+	go.viam.com/utils v0.1.154
 )
 
 require (

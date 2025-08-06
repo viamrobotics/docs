@@ -18,14 +18,10 @@ Viam stores the output of these pipelines in a separate, queryable database.
 For example, you may often query the average temperature across multiple sensors for each hour of the day.
 To make these queries faster, you can use a data pipeline to pre-calculate the results, saving significant computational resources.
 
-{{< alert title="Tip" color="tip" >}}
-
-When a machine goes offline, data collection continues but sync pauses.
+Data pipelines work with incomplete data as well.
+If a machine goes offline, data collection continues but sync pauses.
 `viam-server` stores the data locally and syncs later, when your machine reconnects to Viam.
-
 Once the machine reconnects and syncs this stored data, Viam automatically re-runs affected pipelines to include the new data.
-
-{{< /alert >}}
 
 ## Prerequisites
 
@@ -50,7 +46,8 @@ viam datapipelines create \
   --name=sensor-counts \
   --schedule="0 * * * *" \
   --data-source-type="standard" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, "count": {"$sum": 1}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1}}]'
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, "count": {"$sum": 1}}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1}}]' \
+  --enable-backfill=True
 ```
 
 To pass your query as a file instead of specifying it as inline MQL, pass the `--mql-path` flag instead of `--mql`.
@@ -61,38 +58,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
-```python
-from viam import DataClient
-import bson
-
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-request = data_client.create_data_pipeline(
-    organization_id="<org-id>",
-    name="hourly-temp-average",
-    mql_binary=[
-        bson.encode({"$match": {"component_name": "temperature-sensor"}}),
-        bson.encode({
-            "$group": {
-                "_id": "$location_id",
-                "avg_temp": {"$avg": "$data.readings.temperature"},
-                "count": {"$sum": 1}
-            }
-        }),
-        bson.encode({
-            "$project": {
-                "location": "$_id",
-                "avg_temp": 1,
-                "count": 1
-            }
-        })
-    ],
-    schedule="0 * * * *"  # Run hourly
-)
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
@@ -101,48 +67,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataPipeline):
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-    datapb "go.viam.com/rdk/app/data/v1"
-    "go.viam.com/rdk/app/data/v1/bson"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-pipeline := [][]byte{
-    bson.Marshal(bson.M{"$match": bson.M{"component_name": "temperature-sensor"}}),
-    bson.Marshal(bson.M{
-        "$group": bson.M{
-            "_id": "$location_id",
-            "avg_temp": bson.M{"$avg": "$data.readings.temperature"},
-            "count": bson.M{"$sum": 1},
-        },
-    }),
-    bson.Marshal(bson.M{
-        "$group": bson.M{
-            "location": "$_id",
-            "avg_temp": 1,
-            "count": 1,
-        },
-    }),
-}
-
-resp, err := dataClient.CreateDataPipeline(context.Background(), &datapb.CreateDataPipelineRequest{
-    OrganizationId: "<org-id>",
-    Name: "hourly-temp-average",
-    MqlBinary: pipeline,
-    Schedule: "0 * * * *", // Run hourly
-})
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
@@ -151,51 +76,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
-```typescript
-import { createViamClient } from "@viamrobotics/sdk";
-import {
-  TabularDataSource,
-  TabularDataSourceType,
-} from "@viamrobotics/sdk/dist/gen/app/data/v1/data_pb";
-import { BSON } from "bson";
-
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-const pipeline = [
-  BSON.serialize({ $match: { component_name: "temperature-sensor" } }),
-  BSON.serialize({
-    $group: {
-      _id: "$location_id",
-      avg_temp: { $avg: "$data.readings.temperature" },
-      count: { $sum: 1 },
-    },
-  }),
-  BSON.serialize({
-    $project: {
-      location: "$_id",
-      avg_temp: 1,
-      count: 1,
-    },
-  }),
-];
-
-const response = await dataClient.createDataPipeline({
-  organizationId: "<org-id>",
-  name: "hourly-temp-average",
-  mqlBinary: pipeline,
-  schedule: "0 * * * *", // Run hourly
-});
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `dataSource` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
@@ -227,7 +108,7 @@ The following table contains some common schedules, which correspond to the list
 Data pipeline queries only support a subset of MQL aggregation operators.
 For more information, see [Supported aggregation operators](/data-ai/data/query/#supported-aggregation-operators).
 
-### Query pipeline results
+<!-- ### Query pipeline results
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -351,7 +232,7 @@ response.data.forEach((doc) => {
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{< /tabs >}} -->
 
 ### List pipelines
 
@@ -369,85 +250,21 @@ viam datapipelines list --org-id=<org-id>
 
 Use [`DataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
-```python
-from viam import DataClient
-import bson
-
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-pipelines = data_client.list_data_pipelines(organization_id="<org-id>")
-
-for pipeline in pipelines:
-    print(f"{pipeline.name} (id: {pipeline.id})")
-    print(f"Schedule: {pipeline.schedule}")
-    print(f"Enabled: {pipeline.enabled}")
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Use [`DataClient.ListDataPipelines`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines) to fetch a list of pipeline configurations in an organization:
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-resp, err := dataClient.ListDataPipelines(context.Background(), &datapb.ListDataPipelinesRequest{
-    OrganizationId: "<org-id>",
-})
-
-for _, pipeline := range resp.DataPipelines {
-    fmt.Printf("%s (id: %s)\n", pipeline.Name, pipeline.Id)
-    fmt.Printf("Schedule: %s\n", pipeline.Schedule)
-    fmt.Printf("Enabled: %v\n", pipeline.Enabled)
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
-```typescript
-import { createViamClient } from "@viamrobotics/sdk";
-import { BSON } from "bson";
-
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-const response = await dataClient.listDataPipelines({
-  organizationId: "<org-id>",
-});
-
-response.dataPipelines.forEach((pipeline) => {
-  console.log(`${pipeline.name} (id: ${pipeline.id})`);
-  console.log(`Schedule: ${pipeline.schedule}`);
-  console.log(`Enabled: ${pipeline.enabled}`);
-});
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -482,45 +299,7 @@ To pass your query from a file instead of from inline MQL, pass the `--mql-path`
 
 Use [`DataClient.UpdateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateDataPipeline) to alter an existing data pipeline:
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-    "go.viam.com/rdk/app/data/v1/bson"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-pipeline := [][]byte{
-    bson.Marshal(bson.M{"$match": bson.M{"component_name": "sensor"}}),
-    bson.Marshal(bson.M{
-        "$group": bson.M{
-            "_id": "$part_id",
-            "total": bson.M{"$sum": 1},
-        },
-    bson.Marshal(bson.M{
-        "$group": bson.M{
-            "part": "$_id",
-            "total": 1,
-        },
-    }),
-    }),
-}
-
-_, err := dataClient.UpdateDataPipeline(context.Background(), &datapb.UpdateDataPipelineRequest{
-    Id: "<pipeline-id>",
-    Name: "updated-name",
-    MqlBinary: pipeline,
-    Schedule: "0 * * * *",
-})
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-update.snippet.pipeline-update.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -541,25 +320,7 @@ viam datapipelines enable --id=<pipeline-id>
 
 Use [`DataClient.EnableDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.EnableDataPipeline) to enable a disabled data pipeline:
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-_, err := dataClient.EnableDataPipeline(context.Background(), &datapb.EnableDataPipelineRequest{
-    Id: "<pipeline-id>",
-})
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-enable.snippet.pipeline-enable.go" lang="go" class="line-numbers linkable-line-numbers" data-line="27" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -585,25 +346,7 @@ viam datapipelines disable --id=<pipeline-id>
 
 Use [`DataClient.DisableDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DisableDataPipeline) to disable a data pipeline:
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-_, err := dataClient.DisableDataPipeline(context.Background(), &datapb.DisableDataPipelineRequest{
-    Id: "<pipeline-id>",
-})
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-disable.snippet.pipeline-disable.go" lang="go" class="line-numbers linkable-line-numbers" data-line="27" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -624,64 +367,21 @@ viam datapipelines delete --id=<pipeline-id>
 
 Use [`DataClient.DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) to delete a data pipeline:
 
-```python
-from viam import DataClient
-
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-data_client.delete_data_pipeline(id="<pipeline-id>")
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-delete.snippet.pipeline-delete.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Use [`DataClient.DeleteDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteDataPipeline) to delete a data pipeline:
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-_, err := dataClient.DeleteDataPipeline(context.Background(), &datapb.DeleteDataPipelineRequest{
-    Id: "<pipeline-id>",
-})
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-delete.snippet.pipeline-delete.go" lang="go" class="line-numbers linkable-line-numbers" data-line="27" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 Use [`dataClient.DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) to delete a data pipeline:
 
-```typescript
-import { createViamClient } from "@viamrobotics/sdk";
-
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-await dataClient.deleteDataPipeline({ id: "<pipeline-id>" });
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-delete.snippet.pipeline-delete.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -700,88 +400,21 @@ Data pipeline executions may have any of the following statuses:
 
 Use [`DataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past and in-progress executions of a pipeline:
 
-```python
-from viam import DataClient
-
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-runs = data_client.list_data_pipeline_runs(
-    id="<pipeline-id>",
-    page_size=10
-)
-
-for run in runs:
-    print(f"Run {run.id}: {run.status}")
-    print(f"Data window: {run.data_start_time} to {run.data_end_time}")
-    print(f"Started: {run.started}, Ended: {run.ended}")
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-execution.snippet.pipeline-execution.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Use [`DataClient.ListDataPipelineRuns`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelineRuns) to view information about past executions of a pipeline:
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-resp, err := dataClient.ListDataPipelineRuns(context.Background(), &datapb.ListDataPipelineRunsRequest{
-    Id: "<pipeline-id>",
-    PageSize: 10,
-})
-
-for _, run := range resp.Executions {
-    fmt.Printf("Run %s: %s\n", run.Id, run.Status)
-    fmt.Printf("Data window: %s to %s\n", run.DataStartTime, run.DataEndTime)
-    fmt.Printf("Started: %s, Ended: %s\n", run.Started, run.Ended)
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-execution.snippet.pipeline-execution.go" lang="go" class="line-numbers linkable-line-numbers" data-line="27" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 Use [`dataClient.ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) to view information about past executions of a pipeline:
 
-```typescript
-import { createViamClient } from "@viamrobotics/sdk";
-
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-const response = await dataClient.listDataPipelineRuns({
-  id: "<pipeline-id>",
-  pageSize: 10,
-});
-
-response.executions.forEach((run) => {
-  console.log(`Run ${run.id}: ${run.status}`);
-  console.log(`Data window: ${run.dataStartTime} to ${run.dataEndTime}`);
-  console.log(`Started: ${run.started}, Ended: ${run.ended}`);
-});
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-execution.snippet.pipeline-execution.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
