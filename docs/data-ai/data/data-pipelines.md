@@ -108,7 +108,7 @@ The following table contains some common schedules, which correspond to the list
 Data pipeline queries only support a subset of MQL aggregation operators.
 For more information, see [Supported aggregation operators](/data-ai/data/query/#supported-aggregation-operators).
 
-<!-- ### Query pipeline results
+### Query pipeline results
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -119,30 +119,7 @@ Configure the `data_source` argument with the following fields:
 - `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `pipeline_id`: your pipeline ID
 
-```python
-from viam import DataClient
-from viam.app.data.v1.data_pb import TabularDataSource, TabularDataSourceType
-import bson
-
-data_client = DataClient.from_api_key(
-    api_key="<api-key>",
-    api_key_id="<api-key-id>"
-)
-
-results = data_client.tabular_data_by_mql(
-    organization_id="<org-id>",
-    mql_binary=[
-        bson.encode({}),
-    ],
-    data_source=TabularDataSource(
-        type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
-        pipeline_id="<pipeline-id>"
-    )
-)
-
-for document in results:
-    print(document)
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -153,40 +130,7 @@ Configure the `DataSource` argument with the following fields:
 - `Type`: `datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `PipelineId`: your pipeline's ID
 
-```go
-import (
-    "context"
-    "fmt"
-    "go.viam.com/rdk/app/utils"
-    datapb "go.viam.com/rdk/app/data/v1"
-    "go.viam.com/rdk/app/data/v1/bson"
-)
-
-client, err := utils.NewViamClient(context.Background(), utils.WithAPIKey("<api-key>", "<api-key-id>"))
-if err != nil {
-    panic(err)
-}
-defer client.Close()
-
-dataClient := client.DataClient()
-
-query := [][]byte{
-    bson.Marshal(bson.M{}),
-}
-
-resp, err := dataClient.TabularDataByMQL(context.Background(), &datapb.TabularDataByMQLRequest{
-    OrganizationId: "<org-id>",
-    MqlBinary: query,
-    DataSource: &datapb.TabularDataSource{
-        Type: datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,
-        PipelineId: proto.String("<pipeline-id>"),
-    },
-})
-
-for _, doc := range resp.Data {
-    fmt.Println(doc)
-}
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -197,42 +141,10 @@ Configure the `data_source` argument with the following fields:
 - `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `pipelineId`: your pipeline's ID
 
-```typescript
-import { createViamClient } from '@viamrobotics/sdk';
-import { TabularDataSource, TabularDataSourceType } from '@viamrobotics/sdk/dist/gen/app/data/v1/data_pb';
-import { BSON } from 'bson';
-
-const apiKey = "<api-key>";
-const apiKeyID = "<api-key-id>";
-
-const client = await createViamClient({
-  credential: {
-    type: "api-key",
-    payload: { key: apiKey, keyId: apiKeyID },
-  },
-});
-
-const dataClient = client.dataClient;
-
-const query = [BSON.serialize({})];
-
-const response = await dataClient.tabularDataByMQL({
-  "<org-id>",
-  query,
-  false,
-  new TabularDataSource({
-    type: TabularDataSourceType.PIPELINE_SINK,
-    pipelineId: "<pipeline-id>",
-  }),
-});
-
-response.data.forEach((doc) => {
-  console.log(BSON.deserialize(doc));
-});
-```
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
 {{% /tab %}}
-{{< /tabs >}} -->
+{{< /tabs >}}
 
 ### List pipelines
 
