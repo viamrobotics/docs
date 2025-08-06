@@ -295,13 +295,14 @@ viam organizations --help
 ### `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export binary filter --destination=<output path> [...named args]
 viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
-viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data delete binary --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data delete tabular --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
@@ -388,7 +389,7 @@ done
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
-| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `tag ids` | **Required** |
+| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `export binary ids`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
@@ -399,8 +400,10 @@ done
 | `--machine-id` | Filter by specified machine ID. | `export binary`, `delete`, `tag filter` | Optional |
 | `--machine-name` | Filter by specified machine name. | `export binary`, `delete`, `tag filter`| Optional |
 | `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export binary`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--filter-tags` | Filter tags. Options: `'tagged'`, `'untagged'`, or a comma-separated list of tags for all data matching any of the tags. | `tag filter` | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
 | `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
+| `--org-id` | The organization ID for the database user. | `database configure` | **Required** |
 | `--password` | Password for the database user being configured. | `database configure` | **Required** |
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
 | `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
@@ -411,21 +414,20 @@ The `datapipelines` command provides access to data pipelines for processing mac
 Data pipelines help you optimize query performance for frequently accessed complex data transformations.
 
 ```sh {class="command-line" data-prompt="$"}
-viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> --data-source-type=<type>
+viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> --data-source-type=<type> --enable-backfill=False
 viam datapipelines update --id=<pipeline-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
 viam datapipelines list --org-id=<org-id>
 viam datapipelines describe --id=<pipeline-id>
-viam datapipelines delete --id=<pipeline-id>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # create a new data pipeline with standard data source type (default)
-viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor1"}}]'
+viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor-1"}}]' --enable-backfill=False
 
 # create a data pipeline with hot storage data source type for faster access
-viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera1"}}]'
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera-1"}}]' --enable-backfill=False
 
 # disable a pipeline
 viam datapipelines disable --id=abc123
@@ -472,7 +474,7 @@ viam datapipelines delete --id=abc123
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
 | `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | **Required** for `create` |
 | `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
-| `--enable-backfill` | Enable the data pipeline to run over organization's historical data. Default: `false`. | `create` | Optional |
+| `--enable-backfill` | Enable the data pipeline to run over organization's historical data. Default: `false`. | `create` | **Required** |
 
 ### `dataset`
 
