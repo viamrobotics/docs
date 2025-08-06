@@ -15,12 +15,10 @@ async function main(): Promise<void> {
         },
     });
 
-
     const pipelines = await client.dataClient.listDataPipelines(ORG_ID);
     for (const pipeline of pipelines) {
         console.log(`Pipeline: ${pipeline.name}, ID: ${pipeline.id}, schedule: ${pipeline.schedule}, data_source_type: ${pipeline.dataSourceType}`);
     }
-
 }
 
 // Run the script

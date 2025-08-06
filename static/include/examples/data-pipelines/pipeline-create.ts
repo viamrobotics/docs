@@ -28,7 +28,6 @@ async function main(): Promise<void> {
         console.log(`Pipeline deleted with ID: ${pipeline.id}`);
     }
     // :remove-end:
-
     const pipelineId = await client.dataClient.createDataPipeline(
         ORG_ID,
         "test-pipeline",
@@ -43,7 +42,6 @@ async function main(): Promise<void> {
     );
 
     console.log(`Pipeline created with ID: ${pipelineId}`);
-
     // :remove-start:
     // Teardown - delete the pipeline
     await client.dataClient.deleteDataPipeline(pipelineId);

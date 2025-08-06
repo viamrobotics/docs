@@ -58,7 +58,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-54" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
@@ -67,7 +67,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataPipeline):
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.go" lang="go" class="line-numbers linkable-line-numbers" data-line="47-57" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
@@ -76,7 +76,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`dataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18-29" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `dataSource` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
@@ -119,7 +119,7 @@ Configure the `data_source` argument with the following fields:
 - `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `pipeline_id`: your pipeline ID
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-52" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -130,7 +130,7 @@ Configure the `DataSource` argument with the following fields:
 - `Type`: `datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `PipelineId`: your pipeline's ID
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="47-50" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -141,7 +141,7 @@ Configure the `data_source` argument with the following fields:
 - `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `pipelineId`: your pipeline's ID
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="19-30" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -162,21 +162,21 @@ viam datapipelines list --org-id=<org-id>
 
 Use [`DataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 Use [`DataClient.ListDataPipelines`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines) to fetch a list of pipeline configurations in an organization:
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.go" lang="go" class="line-numbers linkable-line-numbers" data-line="27" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) to fetch a list of pipeline configurations in an organization:
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-list.snippet.pipeline-list.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18" >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -211,7 +211,7 @@ To pass your query from a file instead of from inline MQL, pass the `--mql-path`
 
 Use [`DataClient.UpdateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateDataPipeline) to alter an existing data pipeline:
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-update.snippet.pipeline-update.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-update.snippet.pipeline-update.go" lang="go" class="line-numbers linkable-line-numbers" data-line="46" >}}
 
 {{% /tab %}}
 {{< /tabs >}}

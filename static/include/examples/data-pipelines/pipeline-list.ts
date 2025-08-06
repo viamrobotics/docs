@@ -20,7 +20,6 @@ async function main(): Promise<void> {
             payload: API_KEY,
         },
     });
-
     // :remove-start:
     const pipelinesToDelete = await client.dataClient.listDataPipelines(ORG_ID);
     for (const pipeline of pipelinesToDelete) {
@@ -48,7 +47,6 @@ async function main(): Promise<void> {
     for (const pipeline of pipelines) {
         console.log(`Pipeline: ${pipeline.name}, ID: ${pipeline.id}, schedule: ${pipeline.schedule}, data_source_type: ${pipeline.dataSourceType}`);
     }
-
     // :remove-start:
     // Teardown - delete the pipeline
     await client.dataClient.deleteDataPipeline(pipelineId);

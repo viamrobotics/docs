@@ -35,7 +35,6 @@ async def connect() -> ViamClient:
 async def main() -> int:
     viam_client = await connect()
     data_client = viam_client.data_client
-
     # :remove-start:
     pipelines = await data_client.list_data_pipelines(ORG_ID)
     for pipeline in pipelines:
@@ -78,7 +77,6 @@ async def main() -> int:
     await data_client.delete_data_pipeline(pipeline_id)
     print(f"Pipeline deleted with ID: {pipeline_id}")
     # :remove-end:
-
     viam_client.close()
     return 0
 

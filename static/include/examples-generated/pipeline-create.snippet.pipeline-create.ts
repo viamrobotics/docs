@@ -15,7 +15,6 @@ async function main(): Promise<void> {
         },
     });
 
-
     const pipelineId = await client.dataClient.createDataPipeline(
         ORG_ID,
         "test-pipeline",
@@ -30,7 +29,6 @@ async function main(): Promise<void> {
     );
 
     console.log(`Pipeline created with ID: ${pipelineId}`);
-
 }
 
 // Run the script
