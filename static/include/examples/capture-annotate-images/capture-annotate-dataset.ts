@@ -174,8 +174,8 @@ async function main(): Promise<number> {
 // Run the script with timeout
 const timeout = setTimeout(() => {
     console.log("Script timed out, forcing exit");
-    process.exit(0);
-}, 10000); // 10 second timeout
+    process.exit(1);
+}, 20000); // 10 second timeout
 // :remove-end:
 main().catch((error) => {
     // :remove-start:
