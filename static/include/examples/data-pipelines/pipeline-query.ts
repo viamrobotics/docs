@@ -7,10 +7,10 @@ let API_KEY_ID = "";  // API key ID, find or create in your organization setting
 let ORG_ID = "";  // Organization ID, find or create in your organization settings
 let PIPELINE_ID = "";
 // :remove-start:
-ORG_ID = "b5e9f350-cbcf-4d2a-bbb1-a2e2fd6851e1";
-API_KEY = process.env.VIAM_API_KEY_DATA_REGIONS || "";
-API_KEY_ID = process.env.VIAM_API_KEY_ID_DATA_REGIONS || "";
-PIPELINE_ID = "d14a8817-7a34-4e21-9c45-d0d54acb636a";
+ORG_ID = process.env.TEST_ORG_ID || "";
+API_KEY = process.env.VIAM_API_KEY || "";
+API_KEY_ID = process.env.VIAM_API_KEY || "";
+PIPELINE_ID = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59";
 // :remove-end:
 
 async function main(): Promise<void> {
@@ -28,7 +28,7 @@ async function main(): Promise<void> {
         [
             { "$match": { "component_name": "sensor-1" } },
             { "$group": { "_id": "$location_id", "avg_val": { "$avg": "$data.readings.a" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_val": 1, "count": 1 } }
+            { "$project": { "location": "$_id", "avg_val": 1, "count": 1, "_id": 0 } }
         ],
         {
             tabularDataSourceType: 3,

@@ -46,7 +46,7 @@ viam datapipelines create \
   --name=sensor-counts \
   --schedule="0 * * * *" \
   --data-source-type="standard" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, "count": {"$sum": 1}}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1}}]' \
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$location_id", "avg_temp": {"$avg": "$data.readings.temperature"}, "count": {"$sum": 1}}}, {"$project": {"location": "$_id", "avg_temp": 1, "count": 1, "_id": 0}}]' \
   --enable-backfill=True
 ```
 
@@ -201,7 +201,7 @@ viam datapipelines update \
   --id=<pipeline-id> \
   --schedule="0 * * * *" \
   --name="updated-name" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$part_id", "total": {"$sum": "$1"}}, {"$project": {"part": "$_id", "avg_temp": 1, "count": 1}}]'
+  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$part_id", "total": {"$sum": "$1"}}, {"$project": {"part": "$_id", "avg_temp": 1, "count": 1, "_id": 0}}]'
 ```
 
 To pass your query from a file instead of from inline MQL, pass the `--mql-path` flag instead of `--mql`.

@@ -19,7 +19,7 @@ PIPELINE_ID = ""
 ORG_ID = os.environ["TEST_ORG_ID"]
 API_KEY = os.environ["VIAM_API_KEY"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
-PIPELINE_ID = "d14a8817-7a34-4e21-9c45-d0d54acb636a"
+PIPELINE_ID = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59"
 # :remove-end:
 
 async def connect() -> ViamClient:
@@ -41,19 +41,28 @@ async def main() -> int:
     tabular_data = await data_client.tabular_data_by_mql(
         organization_id=ORG_ID,
         query=[
-            {"$match": {"component_name": "sensor-1"}},
+            {
+                "$match": {
+                "component_name": "sensor-1"
+                }
+            },
             {
                 "$group": {
-                    "_id": "$location_id",
-                    "avg_val": {"$avg": "$data.readings.a"},
-                    "count": {"$sum": 1}
+                "_id": "$location_id",
+                "avg_val": {
+                    "$avg": "$data.readings.a"
+                },
+                "count": {
+                    "$sum": 1
+                }
                 }
             },
             {
                 "$project": {
-                    "location": "$_id",
                     "avg_val": 1,
-                    "count": 1
+                    "count": 1,
+                    "location": "$_id",
+                    "_id": 0,
                 }
             }
         ],

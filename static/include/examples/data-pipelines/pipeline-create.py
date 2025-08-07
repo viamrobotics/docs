@@ -59,7 +59,8 @@ async def main() -> int:
                 "$project": {
                     "location": "$_id",
                     "avg_temp": 1,
-                    "count": 1
+                    "count": 1,
+                    "_id": 0
                 }
             }
         ],
