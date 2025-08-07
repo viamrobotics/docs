@@ -19,13 +19,13 @@ async function main(): Promise<void> {
     const tabularData = await client.dataClient.tabularDataByMQL(
         ORG_ID,
         [
-            { "$match": { "component_name": "sensor-1" } },
-            { "$group": { "_id": "$location_id", "avg_val": { "$avg": "$data.readings.a" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_val": 1, "count": 1, "_id": 0 } }
+            { "$match": { "location": { "$exists": true } } },
+            { "$limit": 10 }
         ],
+        false,
         {
-            tabularDataSourceType: 3,
-            pipelineId: PIPELINE_ID,
+            type: 3,
+            pipelineId: PIPELINE_ID
         }
     );
     console.log(tabularData);

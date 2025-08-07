@@ -37,26 +37,12 @@ func main() {
 
 	// Create MQL stages as map slices
 	mqlStages := []map[string]interface{}{
-		{"$match": map[string]interface{}{"component_name": "sensor-1"}},
-		{
-			"$group": map[string]interface{}{
-				"_id": "$location_id",
-				"avg_val": map[string]interface{}{"$avg": "$data.readings.a"},
-				"count": map[string]interface{}{"$sum": 1},
-			},
-		},
-		{
-			"$project": map[string]interface{}{
-				"location": "$_id",
-				"avg_val": 1,
-				"count": 1,
-				"_id": 0,
-			},
-		},
+		{"$match": map[string]interface{}{"location": map[string]interface{}{"$exists": true}}},
+		{"$limit": 10},
 	}
 
 	tabularData, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages, &app.TabularDataByMQLOptions{
-		TabularDataSourceType: 3,
+		TabularDataSourceType: app.TabularDataSourceTypePipelineSink,
 		PipelineID: pipelineId,
 	})
 	if err != nil {
