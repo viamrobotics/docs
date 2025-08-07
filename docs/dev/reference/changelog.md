@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="removed" title="Deprecated: AddTagsToBinaryDataByFilter and RemoveTagsFromBinaryDataByFilter" date="2025-08-07" %}}
+
+The methods `AddTagsToBinaryDataByFilter` and `RemoveTagsFromBinaryDataByFilter` are deprecated.
+
+Instead use [BinaryDataByFilter](/dev/reference/apis/data-client/#binarydatabyfilter), [AddTagsToBinaryDataByIDs](/dev/reference/apis/data-client/#addtagstobinarydatabyids), and [RemoveTagsFromBinaryDataByIDs](/dev/reference/apis/data-client/#removetagsfrombinarydatabyids).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Use folders to organize resources" date="2025-08-01" %}}
 
 You can now use folders on machines and in fragments to organize resources.
