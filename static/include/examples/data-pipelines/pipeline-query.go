@@ -18,10 +18,10 @@ func main() {
 	orgID := ""
 	pipelineId := ""
 	// :remove-start:
-	apiKey = os.Getenv("VIAM_API_KEY_DATA_REGIONS")
-	apiKeyID = os.Getenv("VIAM_API_KEY_ID_DATA_REGIONS")
-	orgID = "b5e9f350-cbcf-4d2a-bbb1-a2e2fd6851e1"
-	pipelineId = "d14a8817-7a34-4e21-9c45-d0d54acb636a"
+	apiKey = os.Getenv("VIAM_API_KEY")
+	apiKeyID = os.Getenv("VIAM_API_KEY_ID")
+	orgID = os.Getenv("TEST_ORG_ID")
+	pipelineId = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59"
 	// :remove-end:
 
 	logger := logging.NewDebugLogger("client")
@@ -50,6 +50,7 @@ func main() {
 				"location": "$_id",
 				"avg_val": 1,
 				"count": 1,
+				"_id": 0,
 			},
 		},
 	}

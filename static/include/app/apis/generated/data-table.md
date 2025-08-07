@@ -24,7 +24,7 @@
 | [`AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids) | Add the `BinaryData` to the provided dataset. |
 | [`RemoveBinaryDataFromDatasetByIDs`](/dev/reference/apis/data-client/#removebinarydatafromdatasetbyids) | Remove the BinaryData from the provided dataset. |
 | [`GetDataPipeline`](/dev/reference/apis/data-client/#getdatapipeline) | Get the configuration for a data pipeline. |
-| [`ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) | Get configurations for all data pipelines in an organization. |
+| [`ListDataPipelines`](/dev/reference/apis/data-client/#listdatapipelines) | List all of the data pipelines in an organization. |
 | [`CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline) | Create a data pipeline. |
 | [`DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) | Delete a data pipeline, its execution history, and all of its output data. |
 | [`ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) | Get information about individual executions of a data pipeline. |
