@@ -822,7 +822,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all machines that the authenticated session has access to in a specified organzation or location. Defaults to first organzation and location alphabetically. | - |
+| `list` | List all machines that the authenticated session has access to in a specified organzation or location. Defaults to first organization and location alphabetically. | - |
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
