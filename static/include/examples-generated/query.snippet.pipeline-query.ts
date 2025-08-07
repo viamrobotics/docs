@@ -15,20 +15,17 @@ async function main(): Promise<void> {
         },
     });
 
-    const pipelineId = await client.dataClient.createDataPipeline(
+    const tabularData = await client.dataClient.tabularDataByMQL(
         ORG_ID,
-        "test-pipeline",
         [
-            { "$match": { "component_name": "temperature-sensor" } },
-            { "$group": { "_id": "$location_id", "avg_temp": { "$avg": "$data.readings.temperature" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_temp": 1, "count": 1, "_id": 0 } }
+            { "$match": { "component_name": "sensor-1" } },
+            { "$limit": 10 }
         ],
-        "0 * * * *",
-        0,
-        false,
+        {
+            tabularDataSourceType: 2,
+        }
     );
-
-    console.log(`Pipeline created with ID: ${pipelineId}`);
+    console.log(tabularData);
 }
 
 // Run the script

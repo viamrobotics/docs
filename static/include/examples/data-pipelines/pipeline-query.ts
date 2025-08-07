@@ -9,7 +9,7 @@ let PIPELINE_ID = "";
 // :remove-start:
 ORG_ID = process.env.TEST_ORG_ID || "";
 API_KEY = process.env.VIAM_API_KEY || "";
-API_KEY_ID = process.env.VIAM_API_KEY || "";
+API_KEY_ID = process.env.VIAM_API_KEY_ID || "";
 PIPELINE_ID = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59";
 // :remove-end:
 

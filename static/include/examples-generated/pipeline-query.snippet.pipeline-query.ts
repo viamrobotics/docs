@@ -21,7 +21,7 @@ async function main(): Promise<void> {
         [
             { "$match": { "component_name": "sensor-1" } },
             { "$group": { "_id": "$location_id", "avg_val": { "$avg": "$data.readings.a" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_val": 1, "count": 1 } }
+            { "$project": { "location": "$_id", "avg_val": 1, "count": 1, "_id": 0 } }
         ],
         {
             tabularDataSourceType: 3,
