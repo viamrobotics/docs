@@ -43,27 +43,10 @@ async def main() -> int:
         query=[
             {
                 "$match": {
-                "component_name": "sensor-1"
-                }
-            },
-            {
-                "$group": {
-                "_id": "$location_id",
-                "avg_val": {
-                    "$avg": "$data.readings.a"
+                    "location": { "$exists": True }
                 },
-                "count": {
-                    "$sum": 1
-                }
-                }
-            },
-            {
-                "$project": {
-                    "avg_val": 1,
-                    "count": 1,
-                    "location": "$_id",
-                    "_id": 0,
-                }
+            }, {
+                "$limit": 10
             }
         ],
         tabular_data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,

@@ -31,20 +31,12 @@ async def main() -> int:
     tabular_data = await data_client.tabular_data_by_mql(
         organization_id=ORG_ID,
         query=[
-            {"$match": {"component_name": "sensor-1"}},
             {
-                "$group": {
-                    "_id": "$location_id",
-                    "avg_val": {"$avg": "$data.readings.a"},
-                    "count": {"$sum": 1}
-                }
-            },
-            {
-                "$project": {
-                    "location": "$_id",
-                    "avg_val": 1,
-                    "count": 1
-                }
+                "$match": {
+                    "location": { "$exists": True }
+                },
+            }, {
+                "$limit": 10
             }
         ],
         tabular_data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK,

@@ -4,7 +4,6 @@ import { createViamClient } from "@viamrobotics/sdk";
 let API_KEY = "";  // API key, find or create in your organization settings
 let API_KEY_ID = "";  // API key ID, find or create in your organization settings
 let ORG_ID = "";  // Organization ID, find or create in your organization settings
-let PIPELINE_ID = "";
 
 async function main(): Promise<void> {
     // Create Viam client
@@ -19,13 +18,11 @@ async function main(): Promise<void> {
     const tabularData = await client.dataClient.tabularDataByMQL(
         ORG_ID,
         [
-            { "$match": { "location": { "$exists": true } } },
+            { "$match": { "component_name": "sensor-1" } },
             { "$limit": 10 }
         ],
-        false,
         {
-            type: 3,
-            pipelineId: PIPELINE_ID
+            tabularDataSourceType: 2,
         }
     );
     console.log(tabularData);

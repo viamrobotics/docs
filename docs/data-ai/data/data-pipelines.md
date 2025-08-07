@@ -113,33 +113,33 @@ For more information, see [Supported aggregation operators](/data-ai/data/query/
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-To query the results of your data pipeline, call [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
+To query the processed results of your data pipeline, call [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
 Configure the `data_source` argument with the following fields:
 
 - `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
 - `pipeline_id`: your pipeline ID
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-52" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-44" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-To query the results of your data pipeline, call [`DataClient.TabularDataByMQL`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL).
+To query the processed results of your data pipeline, call [`DataClient.TabularDataByMQL`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL).
 Configure the `DataSource` argument with the following fields:
 
-- `Type`: `datapb.TabularDataSourceType_TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
-- `PipelineId`: your pipeline's ID
+- `Type`: `app.TabularDataSourceTypePipelineSink`
+- `PipelineId`: your pipeline ID
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="47-50" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="34-37" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-To query the results of your data pipeline, call [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
+To query the processed results of your data pipeline, call [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql).
 Configure the `data_source` argument with the following fields:
 
-- `type`: `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK`
-- `pipelineId`: your pipeline's ID
+- `type`: `3`
+- `pipelineId`: your pipeline ID
 
 {{< read-code-snippet file="/static/include/examples-generated/pipeline-query.snippet.pipeline-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="19-30" >}}
 

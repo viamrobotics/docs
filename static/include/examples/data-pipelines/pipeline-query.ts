@@ -9,7 +9,7 @@ let PIPELINE_ID = "";
 // :remove-start:
 ORG_ID = process.env.TEST_ORG_ID || "";
 API_KEY = process.env.VIAM_API_KEY || "";
-API_KEY_ID = process.env.VIAM_API_KEY || "";
+API_KEY_ID = process.env.VIAM_API_KEY_ID || "";
 PIPELINE_ID = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59";
 // :remove-end:
 
@@ -26,13 +26,13 @@ async function main(): Promise<void> {
     const tabularData = await client.dataClient.tabularDataByMQL(
         ORG_ID,
         [
-            { "$match": { "component_name": "sensor-1" } },
-            { "$group": { "_id": "$location_id", "avg_val": { "$avg": "$data.readings.a" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_val": 1, "count": 1, "_id": 0 } }
+            { "$match": { "location": { "$exists": true } } },
+            { "$limit": 10 }
         ],
+        false,
         {
-            tabularDataSourceType: 3,
-            pipelineId: PIPELINE_ID,
+            type: 3,
+            pipelineId: PIPELINE_ID
         }
     );
     console.log(tabularData);
