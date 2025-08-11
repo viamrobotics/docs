@@ -767,8 +767,8 @@ viam machines part cp --part=<part id> <file name> machine:/path/to/file
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-# list all machines you have access to
-viam machines list
+# list all machines in an organization, in all locations
+viam machines list --all --organization=12345
 
 # get machine status
 viam machines status  --machine=123
@@ -820,7 +820,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
+| `list` | List all machines that the authenticated session has access to in a specified organzation or location. Defaults to first organization and location alphabetically. | - |
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
@@ -859,6 +859,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs` | **Required** |
 | `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
 | `--organization` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--all` | List all machines in the organization. Overrides `--location` flag. Default: `false` | `list` | Optional |
 | `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
