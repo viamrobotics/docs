@@ -181,41 +181,6 @@ Use [`dataClient.ListDataPipelines`](/dev/reference/apis/data-client/#listdatapi
 {{% /tab %}}
 {{< /tabs >}}
 
-### Update a pipeline
-
-{{< alert title="Caution" color="caution" >}}
-
-Use caution when updating the query or schedule of a data pipeline.
-Changing either value can lead to inconsistent pipeline output history.
-
-{{< /alert >}}
-
-{{< tabs >}}
-{{% tab name="CLI" %}}
-
-Use [`datapipelines update`](/dev/tools/cli/#datapipelines) to alter an existing data pipeline:
-
-```sh {class="command-line" data-prompt="$" class="command-line" data-continuation-prompt="2-5"}
-viam datapipelines update \
-  --org-id=<org-id> \
-  --id=<pipeline-id> \
-  --schedule="0 * * * *" \
-  --name="updated-name" \
-  --mql='[{"$match": {"component_name": "sensor"}}, {"$group": {"_id": "$part_id", "total": {"$sum": "$1"}}, {"$project": {"part": "$_id", "avg_temp": 1, "count": 1, "_id": 0}}]'
-```
-
-To pass your query from a file instead of from inline MQL, pass the `--mql-path` flag instead of `--mql`.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Use [`DataClient.UpdateDataPipeline`](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.UpdateDataPipeline) to alter an existing data pipeline:
-
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-update.snippet.pipeline-update.go" lang="go" class="line-numbers linkable-line-numbers" data-line="46" >}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### Enable a pipeline
 
 {{< tabs >}}
