@@ -435,9 +435,6 @@ viam datapipelines disable --id=abc123
 # enable a pipeline
 viam datapipelines enable --id=abc123
 
-# update an existing data pipeline with a new schedule and data source type
-viam datapipelines update --id=abc123 --name="Updated Pipeline" --schedule="0 */6 * * *" --mql='[{"$match": {"location_id": "loc123"}}]' --data-source-type=standard
-
 # list all data pipelines in an organization
 viam datapipelines list --org-id=123
 
@@ -455,7 +452,6 @@ viam datapipelines delete --id=abc123
 | -------------- | ----------- | -------------------- |
 | `create` | Create a new data pipeline. | - |
 | `describe` | Get detailed information about a specific data pipeline. | - |
-| `update` | Update an existing data pipeline. | - |
 | `delete` | Delete a data pipeline. | - |
 | `enable` | Resume executing a disabled data pipeline. | - |
 | `disable` | Stop executing a data pipeline without deleting it. | - |
@@ -468,12 +464,12 @@ viam datapipelines delete --id=abc123
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
-| `--name` | Name of the data pipeline. | `create`, `update` | **Required** for `create` |
-| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** for `create` |
-| `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
-| `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
-| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | **Required** for `create` |
-| `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
+| `--name` | Name of the data pipeline. | `create` | **Required** for `create` |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create` | **Required** for `create` |
+| `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create` | Optional |
+| `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create` | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create` | **Required** for `create` |
+| `--id` | ID of the data pipeline to describe, or delete. | `enable`, `delete`, `describe`, `disable` | **Required** |
 | `--enable-backfill` | Enable the data pipeline to run over organization's historical data. Default: `false`. | `create` | **Required** |
 
 ### `dataset`
