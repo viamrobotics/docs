@@ -770,7 +770,7 @@ Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # list all machines in an organization, in all locations
-viam machines list --all --organzation=12345
+viam machines list --all --organization=12345
 
 # get machine status
 viam machines status  --machine=123
