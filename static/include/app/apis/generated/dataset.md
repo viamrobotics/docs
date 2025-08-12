@@ -27,6 +27,22 @@ print(dataset_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_dataset).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `name`
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataset).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -114,6 +130,20 @@ await data_client.delete_dataset(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_dataset).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteDataset).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -195,6 +225,21 @@ await data_client.rename_dataset(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.rename_dataset).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RenameDataset).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -284,6 +329,21 @@ print(datasets)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_datasets_by_organization_id).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Dataset)](https://pkg.go.dev/go.viam.com/rdk/app#Dataset)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDatasetsByOrganizationID).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -366,6 +426,21 @@ print(datasets)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_dataset_by_ids).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `ids` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Dataset)](https://pkg.go.dev/go.viam.com/rdk/app#Dataset)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDatasetsByIDs).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
