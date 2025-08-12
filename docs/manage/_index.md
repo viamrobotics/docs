@@ -5,10 +5,10 @@ weight: 300
 layout: "docs"
 type: "docs"
 no_list: true
-notoc: true
-noedit: true
 open_on_desktop: true
 overview: true
+noTitle: true
+notoc: true
 description: "Remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere."
 aliases:
   - /cloud/
@@ -17,51 +17,28 @@ aliases:
   - /product-overviews/fleet-management/
 ---
 
-Viam's fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.
+<div class="max-page gray-container">
+<h2> Remotely deploy and manage software on any fleet of devices - from anywhere.</h2>
+<br>
 
-<div class="img-overlay-wrap aligncenter">
-  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
-  <img src="../platform/platform-fleet-team.svg" alt="Platform diagram with team management elements highlighted" id="fleet-platform-team" class="aligncenter overlay" style="width:800px;height:auto" loading="lazy">
-  <img src="../platform/platform-fleet-management.svg" alt="Platform diagram with deploy and manage elements highlighted" class="aligncenter overlay" id="fleet-platform-management" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-fleet-monitor.svg" alt="Platform diagram with monitoring elements highlighted" class="aligncenter overlay" id="fleet-platform-monitor" style="width:800px;height:auto" loading="lazy" >
-</div>
+- [**Manage fleets →**](/manage/fleet/reuse-configuration/)
 
-<div class="hoveraction">
+  Share configuration fragments across machines.
 
-{{< how-to-expand "Deploy a fleet of machines" "4" "INTERMEDIATE" "" "fleet-platform-management">}}
-{{< cards >}}
-{{% card link="/manage/fleet/reuse-configuration/" noimage="true" %}}
-{{% card link="/manage/fleet/system-settings/" noimage="true" %}}
-{{% card link="/manage/fleet/provision/setup/" noimage="true" %}}
-{{% card link="manage/fleet/provision/end-user-setup/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+- [**Provision devices →**](/manage/fleet/provision/setup/)
 
-{{< how-to-expand "Deploy code and manage software on machines" "2" "INTERMEDIATE" "fleet-platform-management" >}}
-{{< cards >}}
-{{% card link="/manage/software/control-logic/" noimage="true" %}}
-{{% card link="/manage/software/deploy-software/" noimage="true" %}}
-{{% card link="/manage/software/update-software/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+  Set up machines with a pre-defined configuration as they come online.
 
-{{< how-to-expand "Manage access for organizations" "4" "INTERMEDIATE" "" "fleet-platform-team" >}}
-{{< cards >}}
-{{% card link="/manage/manage/access/" noimage="true" %}}
-{{% card link="/manage/manage/rbac/" noimage="true" %}}
-{{% card link="/manage/manage/oauth/" noimage="true" %}}
-{{% card link="/manage/manage/white-labelled-billing/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+- [**Monitor devices →**](/manage/troubleshoot/monitor/)
 
-{{< how-to-expand "Remotely monitor and troubleshoot" "5" "INTERMEDIATE" "" "fleet-platform-monitor" >}}
-{{< cards >}}
-{{% card link="/manage/troubleshoot/monitor/" noimage="true" %}}
-{{% card link="/manage/troubleshoot/alert/" noimage="true" %}}
-{{% card link="/manage/troubleshoot/teleoperate/custom-interface" customTitle="Teleoperate with custom interface" noimage="true" %}}
-{{% card link="/manage/troubleshoot/teleoperate/default-interface" customTitle="Teleoperate with default interface" noimage="true" %}}
-{{% card link="/manage/troubleshoot/troubleshoot/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+  Remotely monitor and debug machines.
+
+- [**Update software on devices →**](/manage/software/update-software/)
+
+  Control the roll out of software updates to machines.
+
+- [**Configure system settings →**](/manage/fleet/system-settings/)
+
+  Configure networks and package updates for the host operating system.
 
 </div>

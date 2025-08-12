@@ -5,52 +5,46 @@ weight: 150
 layout: "docs"
 type: "docs"
 no_list: true
-noedit: true
 open_on_desktop: true
 overview: true
+noTitle: true
+notoc: true
 description: "Install Viam on any device and integrate your hardware. Then you can control your device and attached physical hardware securely from anywhere in the world."
 notoc: true
 aliases:
   - /build/
 ---
 
-To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.
+<div class="max-page gray-container">
+<h2> Write code in any programming language to control hardware.</h2>
+<br>
 
-<!-- Need to use upside down logic because using Subsequent-sibling combinator -->
-<div class="img-overlay-wrap aligncenter">
-  <img src="../platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
-  <img src="../platform/platform-build-connect.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay" id="build-platform-connect" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-build-apps.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay" id="build-platform-apps" style="width:800px;height:auto" loading="lazy" >
-  <img src="../platform/platform-build-motion.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay" id="build-platform-motion" style="width:800px;height:auto" loading="lazy" >
-</div>
+- [**Install `viam-server` →**](/operate/get-started/setup/)
 
-<div class="hoveraction">
+  The open-source server that runs on Raspberry Pi, Nvidia Jetson, and other computers.
 
-{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
-{{< cards >}}
-{{% card link="/operate/get-started/basics/" noimage="true" %}}
-{{% card link="/operate/get-started/setup/" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+- [**Building machines on Viam →**](/operate/get-started/supported-hardware/)
 
-{{< how-to-expand "Build apps" "4" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
-{{< cards >}}
-{{% card link="/operate/control/viam-applications/" noimage="true" %}}
-{{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/operate/control/mobile-app/" noimage="true" %}}
-{{% card link="/operate/control/headless-app/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+  Mix and match from existing hardware and software resources in the Viam registry.
 
-{{< how-to-expand "Intelligent actuation and motion planning" "4" "INTERMEDIATE" "" "build-platform-motion" >}}
-{{< cards >}}
-{{% card link="/operate/mobility/motion-concepts/" noimage="true" %}}
-{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
-{{% card link="/operate/mobility/move-base/" noimage="true" %}}
-{{% card link="/operate/mobility/move-gantry/" noimage="true" %}}
-{{< /cards >}}
-{{< /how-to-expand >}}
+- [**Add modules →**](/operate/get-started/other-hardware/create-module/)
+
+  Create custom resources for hardware or software.
+
+- [**Run control code →**](/manage/software/control-logic/)
+
+  Write code to operate a machine's hardware.
+
+- [**Build applications →**](/operate/control/viam-applications/)
+
+  Build and deploy web or mobile applications to monitor and operate machines.
+
+- [**Motion planning →**](/operate/mobility/motion-concepts/)
+
+  Use built-in motion planning software to move arms, bases, etc.
+
+- [**Install `viam-micro-server` →**](/operate/reference/viam-micro-server/)
+
+  The lightweight version of viam-server for microcontrollers.
 
 </div>
