@@ -10,30 +10,27 @@ open_on_desktop: true
 overview: true
 notoc: true
 description: "Sync and store sensor data, images, and any other binary or timeseries data. Then use ML and AI to turn your data into insights and action."
+noTitle: true
 ---
 
 <div class="max-page gray-container">
-<p> Manage data from your devices and use it with machine learning.</p>
+<h2> Gather machine data and use it to make inferences.</h2>
 <br>
 
-- [**Data Management →**](/data-ai/capture-data/capture-sync/)
+- [**Collect machine data →**](/data-ai/capture-data/capture-sync/)
 
-  Capture and sync data from devices.
+  Capture and sync data from any device.
 
-- [**Machine Learning →**](/data-ai/train/train-tflite/)
-
-  Build a dataset to train machine learning models for your machines.
-
-- [**Computer Vision →**](/data-ai/ai/run-inference/)
-
-  Allow machines to interpret their environments.
-
-- [**Query data →**](/data-ai/data/query/)
+- [**Query machine data →**](/data-ai/data/query/)
 
   Graph or query data from all your devices.
 
-- [**LoRaWAN networks →**](/data-ai/capture-data/lorawan/)
+- [**Train ML models →**](/data-ai/train/train-tflite/)
 
-  Collect LoRaWAN sensor data with Viam.
+  Train machine learning models based on your machine data.
+
+- [**Run ML Inference →**](/data-ai/ai/run-inference/)
+
+  Enable machines to interpret their environments.
 
   </div>

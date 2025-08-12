@@ -5,10 +5,10 @@ weight: 300
 layout: "docs"
 type: "docs"
 no_list: true
-notoc: true
-noedit: true
 open_on_desktop: true
 overview: true
+noTitle: true
+notoc: true
 description: "Remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere."
 aliases:
   - /cloud/
@@ -18,30 +18,26 @@ aliases:
 ---
 
 <div class="max-page gray-container">
-<p> Remotely deploy and manage software on any fleet of devices - from anywhere.</p>
+<h2> Remotely deploy and manage software on any fleet of devices - from anywhere.</h2>
 <br>
 
-- [**Fleet Management →**](/manage/fleet/reuse-configuration/)
+- [**Manage fleets →**](/manage/fleet/reuse-configuration/)
 
-  Set up all your machines with shared configuration fragments.
+  Share configuration fragments across machines.
 
-- [**Provisioning →**](/manage/fleet/provision/setup/)
+- [**Provision devices →**](/manage/fleet/provision/setup/)
 
   Set up machines with a pre-defined configuration as they come online.
 
-- [**Monitoring →**](/manage/troubleshoot/monitor/)
+- [**Monitor devices →**](/manage/troubleshoot/monitor/)
 
-  Remotely monitor and operate all your machines.
+  Remotely monitor and debug machines.
 
-- [**Access Control →**](manage/manage/access/)
+- [**Update software on devices →**](/manage/software/update-software/)
 
-  Collaborate with others on your machines.
+  Control the roll out of software updates to machines.
 
-- [**Maintenance and Updates →**](/manage/software/update-software/)
-
-  Roll out software updates to your machines in a few clicks.
-
-- [**OS settings & Networking →**](/manage/fleet/system-settings/)
+- [**Configure system settings →**](/manage/fleet/system-settings/)
 
   Configure networks and package updates for the host operating system.
 

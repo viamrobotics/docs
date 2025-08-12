@@ -29,7 +29,7 @@ aliases:
 
 <!-- Need to use upside down logic because using Subsequent-sibling combinator -->
 <div class="max-page gray-container">
-<h2 id="platform">Viam Documentation
+<h2 id="platform">Software engineering principles applied to hardware.
   <div class="copied" id="copied-platform" aria-hidden="true">
     <div class="copied-notification" id="copied-platform-text"></div>
   </div>
@@ -37,25 +37,29 @@ aliases:
 <p> Viam is a software platform for devices that interact with the physical world.</p>
 <br>
 
-- [**`viam-server` →**](/operate/reference/viam-server/)
+- [**Component-Based Approach →**]()
 
-  The open-source server that runs on machines to manage hardware and software.
+  Divide complex projects into small, loosely coupled components that can be created and tested independently.
 
-- [**Viam →**](https://app.viam.com/robots)
+- [**Standardized Interfaces →**]()
 
-  The cloud app for configuration and management.
+  Common hardware components such as robotic arms or cameras use the same APIs.
 
-- [**Architectural Overview →**](/operate/reference/architecture/)
+- [**Viam Registry →**]()
 
-  How a machine is structured, including on-device and cloud communications.
+  Mix and match publicly available components from the Viam Registry with your own components.
 
-- [**Building machines →**](/operate/)
+- [**Infrastructure as code →**]()
 
-  Mix and match from existing software resources or make your own.
+  Define the set of components that work together in a machine in JSON format.
 
-- [**Data management & AI →**](/data-ai/)
+- [**Incremental Development →**]()
 
-  Manage data from your devices and use it with machine learning.
+  Make versioned changes to the JSON configuration for a machine's hardware and software.
+
+- [**Platform Capabilities →**]()
+
+  Make use of builtin data management, machine learning, motion planning, and more.
 
 - [**Fleet Management →**](/manage/)
 
