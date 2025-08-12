@@ -25,6 +25,21 @@ usage = await billing_client.get_current_month_usage("<ORG-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_current_month_usage).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*GetCurrentMonthUsageResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetCurrentMonthUsageResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetCurrentMonthUsage).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -70,6 +85,21 @@ information = await billing_client.get_org_billing_information("<ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_org_billing_information).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*GetOrgBillingInformationResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetOrgBillingInformationResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetOrgBillingInformation).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -121,6 +151,22 @@ summary = await billing_client.get_invoices_summary("<ORG-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_invoices_summary).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(float64)](https://pkg.go.dev/builtin#float64)
+- [([]*InvoiceSummary)](https://pkg.go.dev/go.viam.com/rdk/app#InvoiceSummary)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetInvoicesSummary).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -144,7 +190,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetInvoicePdf
+### GetInvoicePDF
 
 Access invoice PDF data and optionally save it to a provided file path.
 You can also find your invoices on the [**Payment and billing** page](/manage/reference/billing/).
@@ -170,6 +216,22 @@ await billing_client.get_invoice_pdf("<INVOICE-ID>", "<ORG-ID>", "invoice.pdf")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_invoice_pdf).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]byte)](https://pkg.go.dev/builtin#byte)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetInvoicePDF).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

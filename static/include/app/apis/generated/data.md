@@ -40,6 +40,25 @@ else:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_latest_tabular_data).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID`
+- `resourceName`
+- `resourceSubtype`
+- `methodName` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*TabularDataOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataOptions)
+
+**Returns:**
+
+- [(*GetLatestTabularDataResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetLatestTabularDataResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetLatestTabularData).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -152,6 +171,26 @@ print(f"My data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.export_tabular_data).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID`
+- `resourceName`
+- `resourceSubtype`
+- `method` [(string)](https://pkg.go.dev/builtin#string)
+- `interval` [(CaptureInterval)](https://pkg.go.dev/go.viam.com/rdk/app#CaptureInterval)
+- `opts` [(*TabularDataOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataOptions)
+
+**Returns:**
+
+- [([]*ExportTabularDataResponse)](https://pkg.go.dev/go.viam.com/rdk/app#ExportTabularDataResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ExportTabularData).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -288,6 +327,21 @@ print(f"My data: {my_data}")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `opts` [(*DataByFilterOptions)](https://pkg.go.dev/go.viam.com/rdk/app#DataByFilterOptions)
+
+**Returns:**
+
+- [(*TabularDataByFilterResponse)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByFilterResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByFilter).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -406,6 +460,22 @@ data = await data_client.tabular_data_by_sql(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_sql).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID`
+- `sqlQuery` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataBySQL).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -498,6 +568,23 @@ print(f"Tabular Data: {tabular_data}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.tabular_data_by_mql).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `query` [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
+- `opts` [(*TabularDataByMQLOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByMQLOptions)
+
+**Returns:**
+
+- [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -651,6 +738,22 @@ while True:
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_filter).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `includeBinary` [(bool)](https://pkg.go.dev/builtin#bool)
+- `opts` [(*DataByFilterOptions)](https://pkg.go.dev/go.viam.com/rdk/app#DataByFilterOptions)
+
+**Returns:**
+
+- [(*BinaryDataByFilterResponse)](https://pkg.go.dev/go.viam.com/rdk/app#BinaryDataByFilterResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.BinaryDataByFilter).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -779,6 +882,21 @@ binary_data = await data_client.binary_data_by_ids(my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*BinaryData)](https://pkg.go.dev/go.viam.com/rdk/app#BinaryData)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.BinaryDataByIDs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -875,6 +993,22 @@ tabular_data = await data_client.delete_tabular_data(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_tabular_data).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `deleteOlderThanDays` [(int)](https://pkg.go.dev/builtin#int)
+
+**Returns:**
+
+- [(int)](https://pkg.go.dev/builtin#int)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteTabularData).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -961,6 +1095,21 @@ res = await data_client.delete_binary_data_by_filter(my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `filter` [(*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
+
+**Returns:**
+
+- [(int)](https://pkg.go.dev/builtin#int)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteBinaryDataByFilter).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1076,6 +1225,21 @@ binary_data = await data_client.delete_binary_data_by_ids(my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(int)](https://pkg.go.dev/builtin#int)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteBinaryDataByIDs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1183,6 +1347,21 @@ binary_data = await data_client.add_tags_to_binary_data_by_ids(tags, my_ids)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `tags`
+- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.AddTagsToBinaryDataByIDs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1283,6 +1462,21 @@ await data_client.add_tags_to_binary_data_by_filter(tags, my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_tags_to_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `tags` [([]string)](https://pkg.go.dev/builtin#string)
+- `filter` [(*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.AddTagsToBinaryDataByFilter).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1404,6 +1598,22 @@ binary_data = await data_client.remove_tags_from_binary_data_by_ids(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_ids).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `tags`
+- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(int)](https://pkg.go.dev/builtin#int)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveTagsFromBinaryDataByIDs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1504,6 +1714,22 @@ res = await data_client.remove_tags_from_binary_data_by_filter(tags, my_filter)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_tags_from_binary_data_by_filter).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `tags` [([]string)](https://pkg.go.dev/builtin#string)
+- `filter` [(*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
+
+**Returns:**
+
+- [(int)](https://pkg.go.dev/builtin#int)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveTagsFromBinaryDataByFilter).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1709,6 +1935,26 @@ print(bbox_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_bounding_box_to_image_by_id).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `binaryDataID` [(string)](https://pkg.go.dev/builtin#string)
+- `label` [(string)](https://pkg.go.dev/builtin#string)
+- `xMinNormalized` [(float64)](https://pkg.go.dev/builtin#float64)
+- `yMinNormalized` [(float64)](https://pkg.go.dev/builtin#float64)
+- `xMaxNormalized` [(float64)](https://pkg.go.dev/builtin#float64)
+- `yMaxNormalized` [(float64)](https://pkg.go.dev/builtin#float64)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.AddBoundingBoxToImageByID).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1819,6 +2065,21 @@ bbox_id="your-bounding-box-id-to-delete"
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_bounding_box_from_image_by_id).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `bboxID` [(string)](https://pkg.go.dev/builtin#string)
+- `binaryDataID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveBoundingBoxFromImageByID).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1914,6 +2175,21 @@ print(bounding_box_labels)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.bounding_box_labels_by_filter).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `filter` [(*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
+
+**Returns:**
+
+- [([]string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.BoundingBoxLabelsByFilter).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1997,6 +2273,21 @@ hostname = await data_client.get_database_connection(organization_id="<YOUR-ORG-
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_database_connection).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*GetDatabaseConnectionResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetDatabaseConnectionResponse)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetDatabaseConnection).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2085,6 +2376,21 @@ await data_client.configure_database_user(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.configure_database_user).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `password` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ConfigureDatabaseUser).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2185,6 +2491,21 @@ await data_client.add_binary_data_to_dataset_by_ids(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.add_binary_data_to_dataset_by_ids).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.AddBinaryDataToDatasetByIDs).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2298,6 +2619,21 @@ await data_client.remove_binary_data_from_dataset_by_ids(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.remove_binary_data_from_dataset_by_ids).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
+- `datasetID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveBinaryDataFromDatasetByIDs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2392,6 +2728,21 @@ data_pipeline = await data_client.get_data_pipeline(id="<YOUR-DATA-PIPELINE-ID>"
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.get_data_pipeline).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*DataPipeline)](https://pkg.go.dev/go.viam.com/rdk/app#DataPipeline)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetDataPipeline).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2437,6 +2788,21 @@ data_pipelines = await data_client.list_data_pipelines(organization_id="<YOUR-OR
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_data_pipelines).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*DataPipeline)](https://pkg.go.dev/go.viam.com/rdk/app#DataPipeline)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2497,6 +2863,26 @@ data_pipeline_id = await data_client.create_data_pipeline(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.create_data_pipeline).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+- `query` [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
+- `schedule` [(string)](https://pkg.go.dev/builtin#string)
+- `enableBackfill` [(bool)](https://pkg.go.dev/builtin#bool)
+- `opts` [(*CreateDataPipelineOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateDataPipelineOptions)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.CreateDataPipeline).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2505,6 +2891,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `name` (string) (required): The name of the data pipeline.
 - `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
 - `schedule` (string) (required): The schedule to run the query on (cron expression).
+- `enableBackfill` (boolean) (required)
 - `dataSourceType` ([TabularDataSourceType](https://ts.viam.dev/enums/dataApi.TabularDataSourceType.html)) (optional): The type of data source to use for the data pipeline.
 
 **Returns:**
@@ -2531,6 +2918,7 @@ const pipelineId = await dataClient.createDataPipeline(
   'my-pipeline',
   mqlQuery,
   '0 0 * * *'
+  false
 );
 ```
 
@@ -2560,6 +2948,20 @@ await data_client.delete_data_pipeline(id="<YOUR-DATA-PIPELINE-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.delete_data_pipeline).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.DeleteDataPipeline).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2609,6 +3011,22 @@ while len(data_pipeline_runs.runs) > 0:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_data_pipeline_runs).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+- `pageSize` [(uint32)](https://pkg.go.dev/builtin#uint32)
+
+**Returns:**
+
+- [(*ListDataPipelineRunsPage)](https://pkg.go.dev/go.viam.com/rdk/app#ListDataPipelineRunsPage)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelineRuns).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
