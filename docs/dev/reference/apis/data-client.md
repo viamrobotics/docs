@@ -26,7 +26,7 @@ date: "2024-09-19"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The data client API allows you to upload and retrieve data to and from the Viam Cloud.
+The data client allows you to upload and retrieve data to and from the Viam Cloud.
 
 The data client API supports the following methods:
 
@@ -44,15 +44,14 @@ Methods to work with datasets:
 
 ## Establish a connection
 
-To use the Viam data client API, you first need to instantiate a `ViamClient` and then instantiate a `DataClient`.
+To use the data client API, you need to instantiate a `ViamClient` and then instantiate a `DataClient`.
 
-You will also need an API key and API key ID to authenticate your session.
-To get an API key (and corresponding ID), you have two options:
+You need an API key and API key ID with at least [Machine operator permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the data client API.
+To get an API key (and corresponding ID), use the [web UI](/operate/control/api-keys/#add-an-api-key)
+to the [Viam CLI](/dev/tools/cli/#create-an-organization-api-key).
 
-- [Create an API key in the web UI](/operate/control/api-keys/#add-an-api-key)
-- [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
-
-The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `DataClient`:
+{{< tabs >}}
+{{% tab name="From a client application" %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -91,9 +90,38 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers" data-line="16"}
+package main
+
+import (
+  "context"
+
+  "go.viam.com/rdk/app"
+  "go.viam.com/rdk/logging"
+)
+
+func main() {
+  logger := logging.NewDebugLogger("client")
+  ctx := context.Background()
+  // Replace "<API-KEY>" (including brackets) with your machine's API key
+  // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  viamClient, err := app.CreateViamClientWithAPIKey(
+    ctx, app.Options{}, "<API-KEY>", "<API-KEY-ID>", logger)
+  if err != nil {
+    logger.Fatal(err)
+  }
+  defer viamClient.Close()
+
+  dataClient := viamClient.DataClient()
+}
+```
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-```ts {class="line-numbers linkable-line-numbers" data-line="5"}
+```ts {class="line-numbers linkable-line-numbers" data-line="3,5"}
 async function connect(): Promise<VIAM.ViamClient> {
   // Replace "<API-KEY-ID>" (including brackets) with your machine's
   const API_KEY_ID = "<API-KEY-ID>";
@@ -115,6 +143,14 @@ async function connect(): Promise<VIAM.ViamClient> {
 const viamClient = await connect();
 const dataClient = viamClient.dataClient;
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="From within a Module" %}}
+
+See [Use platform APIs from within a module](/operate/get-started/other-hardware/create-module/platform-apis/).
 
 {{% /tab %}}
 {{< /tabs >}}

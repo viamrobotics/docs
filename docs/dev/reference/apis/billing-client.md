@@ -13,35 +13,27 @@ date: "2024-09-14"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The billing client API allows you to retrieve billing information from Viam.
+The billing client allows you to retrieve billing information from Viam.
 
-{{% alert title="Support Notice" color="note" %}}
-
-Billing client API methods are only available in the Python and TypeScript SDKs.
-
-{{% /alert %}}
-
-The billing client API supports the following methods:
+The billing API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/billing-table.md" >}}
 
 ## Establish a connection
 
-To use the Viam billing client API, you first need to instantiate a `ViamClient` and then instantiate a `BillingClient`.
+To use the billing client API, you need to instantiate a `ViamClient` and then instantiate a `BillingClient`.
 
-You will also need an API key and API key ID to authenticate your session.
-Your API key needs to have [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the billing client API.
-To get an API key (and corresponding ID), you have two options:
+You need an API key and API key ID with [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the billing client API.
+To get an API key (and corresponding ID), use the [web UI](/operate/control/api-keys/#add-an-api-key)
+to the [Viam CLI](/dev/tools/cli/#create-an-organization-api-key).
 
-- [Create an API key in the web UI](/operate/control/api-keys/#add-an-api-key)
-- [Create an API key using the Viam CLI](/dev/tools/cli/#create-an-organization-api-key)
-
-The following example instantiates a `ViamClient`, authenticating with an API key, and then instantiates a `BillingClient`:
+{{< tabs >}}
+{{% tab name="From a client application" %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```python {class="line-numbers linkable-line-numbers" data-line="12, 16"}
+```python {class="line-numbers linkable-line-numbers" data-line="13, 17"}
 import asyncio
 
 from viam.rpc.dial import DialOptions, Credentials
@@ -76,6 +68,35 @@ if __name__ == '__main__':
 ```
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers" data-line="16"}
+package main
+
+import (
+  "context"
+
+  "go.viam.com/rdk/app"
+  "go.viam.com/rdk/logging"
+)
+
+func main() {
+  logger := logging.NewDebugLogger("client")
+  ctx := context.Background()
+  // Replace "<API-KEY>" (including brackets) with your machine's API key
+  // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  viamClient, err := app.CreateViamClientWithAPIKey(
+    ctx, app.Options{}, "<API-KEY>", "<API-KEY-ID>", logger)
+  if err != nil {
+    logger.Fatal(err)
+  }
+  defer viamClient.Close()
+
+  billingClient := viamClient.BillingClient()
+}
+```
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="3, 5"}
@@ -100,6 +121,13 @@ async function connect(): Promise<VIAM.ViamClient> {
 const viamClient = await connect();
 const billingClient = viamClient.billingClient;
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
+{{% /tab %}}
+{{% tab name="From within a Module" %}}
+
+See [Use platform APIs from within a module](/operate/get-started/other-hardware/create-module/platform-apis/).
 
 {{% /tab %}}
 {{< /tabs >}}
