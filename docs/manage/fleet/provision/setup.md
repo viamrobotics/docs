@@ -62,7 +62,7 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 
 ## Decide on the provisioning method
 
-You can choose to let your end users complete machine setup by using a captive web portal or a mobile app.
+You can choose to let your end users complete machine setup by using a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}} or a mobile app.
 
 If you choose to have a mobile app experience, you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
 
