@@ -43,6 +43,7 @@ As with other resource clients, how you get the client depends on whether your c
 {{< tabs >}}
 {{% tab name="From a client application" %}}
 
+To access a motion service, use its name from the machine configuration.
 To access the motion service built into `viam-server` from your client application code, use the resource name `builtin` to get a motion service client:
 
 {{< tabs >}}
@@ -77,11 +78,10 @@ moved, err := motionService.Move(context.Background(), motion.MoveReq{
 {{% /tab %}}
 {{< /tabs >}}
 
-If you created your own custom motion service, you can access it using the resource name you gave it in your machine's configuration.
-
 {{% /tab %}}
 {{% tab name="From within a module" %}}
 
+To access a motion service, use its name from the machine configuration.
 To access the motion service built into `viam-server` from your module code, you need to add the motion service as a [module dependency](/operate/get-started/other-hardware/create-module/dependencies/), using the resource name `builtin`.
 For example:
 
