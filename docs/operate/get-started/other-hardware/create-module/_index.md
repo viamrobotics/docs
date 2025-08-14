@@ -1017,7 +1017,7 @@ The `viam module generate` command already generated the `build-action` file in 
 1. Click **Publish release**.
    The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
 
-See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information.
+See [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information.
 
 {{% /tab %}}
 {{% tab name="Manual PyInstaller build" %}}

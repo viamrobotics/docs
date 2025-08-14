@@ -161,7 +161,7 @@ Once you have implemented your control logic, commit and push your changes to a 
 Follow the steps in [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) using cloud build.
 When you create a release, your module will be built, packaged and pushed to the Viam Registry.
 
-If you are not using GitHub or cloud build, see [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information on alternatives.
+If you are not using GitHub or cloud build, see [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
 
 ## Deploy your control logic
 
