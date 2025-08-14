@@ -185,9 +185,6 @@ If your machine cannot connect to your permanent office or home WiFi network:
 
 1. **Check network compatibility**: Ensure your WiFi network is compatible with your machine's WiFi band frequency (2.4ghz vs 5ghz).
 
-1. **Check signal strength**: Make sure your machine is within range of your WiFi router.
-   The mobile app should show the strength of the WiFi networks the smart machine detects.
-
 1. **Try a different network**: If possible, try connecting to a different WiFi network to isolate the issue.
 
 ## Next Steps
