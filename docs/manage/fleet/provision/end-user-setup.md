@@ -140,16 +140,11 @@ Note that any features that require internet access will not function if the con
 
 ## Set up your machine using a custom Flutter app
 
-The [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_provisioning/) shows an example for Bluetooth provisioning.
-
 When developing your own application, if you support both Bluetooth and WiFi Hotspot provisioning and both are available, we recommend using Bluetooth by default for a smoother setup experience.
 
-The Flutter Provisioning package supports bluetooth tethering, that is sharing your mobile devices's internet connection with the machine that will be provisioned.
-Bluetooth tethering is slow and we recommend you use WiFi where possible.
-
-### App Development Considerations
-
-When developing mobile apps with Bluetooth provisioning, ensure your app requests appropriate Bluetooth permissions.
+It is also possible to use Bluetooth tethering.
+The [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_provisioning/) shows Bluetooth provisioning using Bluetooth tethering.
+This method is slow and we recommend using a WiFi connection where possible.
 
 ## Troubleshooting
 
@@ -157,13 +152,9 @@ When developing mobile apps with Bluetooth provisioning, ensure your app request
 
 If you're having trouble with Bluetooth provisioning:
 
-1. Verify the device supports Bluetooth Low Energy (BLE)
-
-1. **Check Bluetooth permissions**: Ensure the Viam mobile app has Bluetooth permissions enabled on your device.
+1. **Check Bluetooth permissions**: Ensure the app used for provisioning has Bluetooth permissions enabled on your device.
 
 1. **Verify Bluetooth is enabled**: Make sure Bluetooth is turned on in your mobile device settings.
-
-1. **Check device compatibility**: Ensure your mobile device supports Bluetooth Low Energy (BLE).
 
 1. **Restart Bluetooth**: Try turning Bluetooth off and on again on your mobile device.
 
@@ -175,21 +166,27 @@ If you can open a terminal on the machine:
    bluetoothctl list
    ```
 
-1. Verify Bluetooth service status:
+1. Restart Bluetooth service:
 
    ```sh {class="command-line" data-prompt="$"}
-   sudo systemctl status bluetooth
+   sudo systemctl restart bluetooth
    ```
+
+1. **Configuration check**: If you set up provisioning, verify that `disable_bt_provisioning` is set to `false` in your configuration.
 
 ### WiFi connection issues
 
-If your machine cannot connect to your WiFi network:
+If you cannot connect to your machine's temporary WiFi hotspot, confirm you are using the correct password.
+The default password, unless changes by the manufacturer, is `viamsetup`,
+
+If your machine cannot connect to your permanent office or home WiFi network:
 
 1. **Check network credentials**: Verify that the WiFi network name (SSID) and password are correct.
 
-1. **Check network compatibility**: Ensure your WiFi network is compatible with your machine's WiFi adapter.
+1. **Check network compatibility**: Ensure your WiFi network is compatible with your machine's WiFi band frequency (2.4ghz vs 5ghz).
 
 1. **Check signal strength**: Make sure your machine is within range of your WiFi router.
+   The mobile app should show the strength of the WiFi networks the smart machine detects.
 
 1. **Try a different network**: If possible, try connecting to a different WiFi network to isolate the issue.
 

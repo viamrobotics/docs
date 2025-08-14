@@ -64,7 +64,7 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 
 You can let your end users complete machine setup over WiFi or Bluetooth:
 
-- **WiFi Hotspot Provisioning**: When device boots, it creates a temporary WiFi hotspot that users connect to for setup either by using a captive web portal or a mobile app. Be aware that the WiFi hotspot is open to anyone.
+- **WiFi Hotspot Provisioning**: When the device boots, it creates a temporary WiFi hotspot that users connect to for setup either by using a captive web portal or a mobile app. The WiFi hotspot is open to anyone. Be aware that if the manufacturer (and/or end user) has not set a custom password for the machine then a default password (either the built-in "viamsetup", or a new default set by a manufacturer in viam-defaults.json) may be in use, which is a security risk.
 - **Bluetooth Low Energy (BLE) Provisioning**: When device boots, it searches for Bluetooth connections and a user connects to it using a mobile app.
 
 If you choose to have a mobile app experience, you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
@@ -106,8 +106,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
     "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
-    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests for tethering without prompt
-    "bluetooth_adapter_name": "", # optional: specify Bluetooth adapter for machines with multiple adapters
+    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for bluetooth tethering) without requiring an unlock command from a mobile app.
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
@@ -155,12 +154,11 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
-| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. For bluetooth provisioning the device name will be the hotspot prefix and the model (`<hotspot_prefix>-<model>`). Default: `"viam-setup"`. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
 | `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
 | `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Default: `false`. |
-| `bluetooth_adapter_name` | string | Optional | For machines with multiple Bluetooth adapters, specify which adapter to use for provisioning. If not specified, the first available Bluetooth adapter will be used. Example: `"hci0"`. Default: `""` (auto-detect). |
 | `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device connects to a single prioritized WiFi network (provided during provisioning) and is considered online even if the global internet is not reachable. When `turn_on_hotspot_if_wifi_has_no_internet` is true and the primary network lacks internet connectivity, the device will try all configured networks and only mark itself as online if it successfully connects to the internet. Default: `false`. |
 | `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. Useful on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
@@ -205,13 +203,13 @@ The following configuration defines the connection information and credentials f
     "testNet1": {
       "priority": 30,
       "psk": "myFirstPassword",
-      "ssid": "otherNetworkOne",
+      "ssid": "fallbackNetOne",
       "type": "wifi"
     },
     "testNet2": {
       "priority": 10,
       "psk": "mySecondPassword",
-      "ssid": "otherNetworkTwo",
+      "ssid": "fallbackNetTwo",
       "type": "wifi"
     }
   }
@@ -223,7 +221,7 @@ The following configuration defines the connection information and credentials f
 | ---------- | ------ | ----------- |
 | `type`     | string | The type of the network. Options: `"wifi"`|
 | `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network pass key. |
+| `psk`      | string | The network password/pre-shared key. |
 | `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
 
 {{% /tablestep %}}
@@ -231,7 +229,8 @@ The following configuration defines the connection information and credentials f
 
 ## (Optional) Create a machine in advance
 
-If you provision devices using a captive web portal, you can optionally create a machine in advance and provide its machine cloud credentials file at <FILE>/etc/viam.json</FILE>.
+If you provision devices using a captive web portal (instead of a mobile app), you need to create a machine in advance and provide its machine cloud credentials in the portal.
+Alternately, you may directly write them to the file <FILE>/etc/viam.json</FILE>.
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
@@ -493,33 +492,6 @@ If your device does not connect to your network, adjust the `retry_connection_ti
 
 Check if other devices on the network can connect to the internet without problems.
 If other devices are fine, try restarting your device and [check for other logs](/manage/troubleshoot/troubleshoot/#check-logs).
-
-### WiFi provisioning not working
-
-WiFi provisioning may be less reliable in environments with many WiFi networks.
-If possible, use Bluetooth provisioning or move to an area with fewer WiFi networks in range.
-
-### Bluetooth provisioning not working
-
-If Bluetooth provisioning is not working, check the following:
-
-1. **Bluetooth adapter availability**: Ensure your device has a working Bluetooth adapter. You can check this with:
-
-   ```sh {class="command-line" data-prompt="$"}
-   bluetoothctl list
-   ```
-
-1. **Bluetooth service status**: Verify the Bluetooth service is running:
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo systemctl status bluetooth
-   ```
-
-1. **Multiple adapters**: If your device has multiple Bluetooth adapters, specify which one to use with the `bluetooth_adapter_name` configuration option.
-
-1. **Mobile device compatibility**: Ensure your mobile device supports Bluetooth Low Energy (BLE) and has the necessary permissions enabled for the provisioning app.
-
-1. **Configuration check**: Verify that `disable_bt_provisioning` is set to `false` in your configuration.
 
 ### Test GRPC components of the provisioning service
 
