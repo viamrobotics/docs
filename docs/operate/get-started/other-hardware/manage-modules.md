@@ -35,7 +35,7 @@ Once your module is in the [registry](https://app.viam.com/registry), there are 
 
 - [Update manually](#update-manually) using the [Viam CLI](/dev/tools/cli/): Fine for small projects with one contributor.
 
-### Update automatically
+### Update automatically from a GitHub repo with cloud build
 
 Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a tag or release in GitHub:
 
