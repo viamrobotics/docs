@@ -9,14 +9,16 @@
 | [Camera](/operate/reference/components/camera/)                   | `GetImages`, `ReadImage`, `NextPointCloud`, `DoCommand` |
 | [Encoder](/operate/reference/components/encoder/)                 | `TicksCount`, `DoCommand` |
 | [Gantry](/operate/reference/components/gantry/)                   | `Lengths`, `Position`, `DoCommand` |
+| [Gripper](/operate/reference/components/gripper/)                 | `DoCommand` |
 | [Motor](/operate/reference/components/motor/)                     | `Position`, `IsPowered`, `DoCommand` |
 | [Movement sensor](/operate/reference/components/movement-sensor/) | `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position`, `DoCommand` |
 | [Sensor](/operate/reference/components/sensor/)                   | `Readings`, `DoCommand` |
 | [Power sensor](/operate/reference/components/power-sensor/)       | `Voltage`, `Current`, `Power`, `DoCommand` |
 | [Servo](/operate/reference/components/servo/)                     | `Position`, `DoCommand` |
 | [Generic](/operate/reference/components/generic/)                 | `DoCommand` |
+| [Base remote control service](/operate/reference/services/base-rc/) | `DoCommand` |
 | [Vision service](/operate/reference/services/vision/)             | `CaptureAllFromCamera`, `DoCommand` |
-| [SLAM service](/operate/reference/services/slam/)             | `Position`, `PointCloudMap`, `DoCommand` |
+| [SLAM service](/operate/reference/services/slam/)                 | `Position`, `PointCloudMap`, `DoCommand` |
 
 {{% /tab %}}
 {{% tab name="Micro-RDK" %}}
