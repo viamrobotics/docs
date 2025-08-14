@@ -12,7 +12,9 @@
 | [Motor](/operate/reference/components/motor/)                     | `Position`, `IsPowered`, `DoCommand` |
 | [Movement sensor](/operate/reference/components/movement-sensor/) | `AngularVelocity`, `CompassHeading`, `LinearAcceleration`, `LinearVelocity`, `Orientation`, `Position`, `DoCommand` |
 | [Sensor](/operate/reference/components/sensor/)                   | `Readings`, `DoCommand` |
+| [Power sensor](/operate/reference/components/power-sensor/)       | `Voltage`, `Current`, `Power`, `DoCommand` |
 | [Servo](/operate/reference/components/servo/)                     | `Position`, `DoCommand` |
+| [Generic](/operate/reference/components/generic/)                 | `DoCommand` |
 | [Vision service](/operate/reference/services/vision/)             | `CaptureAllFromCamera`, `DoCommand` |
 | [SLAM service](/operate/reference/services/slam/)             | `Position`, `PointCloudMap`, `DoCommand` |
 

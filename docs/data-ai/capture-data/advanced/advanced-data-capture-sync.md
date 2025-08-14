@@ -543,7 +543,8 @@ The following attributes are available for data capture configuration:
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
 | `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](/data-ai/data/hot-data-store/) for faster access. Example: `{ "stored_hours": 24 }` |
-| `additional_params` | depends | depends | Varies based on the method. For example, `ReadImage` requires a MIME type. |
+| `additional_params` | object | Optional | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input`. |
+| `disabled` | boolean | Optional | Whether data capture is disabled. |
 
 {{< /expand >}}
 
