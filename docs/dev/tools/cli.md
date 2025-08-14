@@ -947,7 +947,7 @@ This includes:
 See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/operate/get-started/other-hardware/manage-modules/#update-automatically) using a GitHub Action.
+[automatically upload new versions of your module on release](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate

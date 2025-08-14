@@ -1259,7 +1259,7 @@ To create a packaged executable:
    By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and macOS.
-Follow the instructions to [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically) to add the build configuration to your machine.
+Follow the instructions to [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) to add the build configuration to your machine.
 
 With this approach, you can make a build script like the following to
 build your module, and configure the resulting executable (<file>dist/main</file>) as your module `"entrypoint"`:
@@ -1277,7 +1277,7 @@ tar -czvf dist/archive.tar.gz dist/main
 ```
 
 This script automates the process of setting up a Python virtual environment on a Linux arm64 machine, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
-For more examples of build scripts see [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically).
+For more examples of build scripts see [Update an existing module using a GitHub action](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build).
 
 {{% alert title="Note" color="note" %}}
 
@@ -1663,7 +1663,7 @@ You have now created a module, and are ready to deploy it to a fleet of machines
 There are two ways to deploy a module:
 
 - Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine).
-  You can also choose to configure [automated uploads for new module versions](/operate/get-started/other-hardware/manage-modules/#update-automatically) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+  You can also choose to configure [automated uploads for new module versions](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module (without uploading it to Viam), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.
 
