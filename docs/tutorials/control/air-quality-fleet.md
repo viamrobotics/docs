@@ -838,8 +838,8 @@ In other words, you want to provision devices.
 
 Before an air sensing machine leaves your factory, you'd complete the following steps:
 
-1. You'd flash the single-board computer with an operating system.
-2. You'd install `viam-agent`.
+1. You'd flash the SD card for the single-board computer with an operating system.
+2. You'd install `viam-agent` with the `preinstall` script.
 3. You'd provide a machine configuration template: a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 
 Once a customer receives your machine, they will:

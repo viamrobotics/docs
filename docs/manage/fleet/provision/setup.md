@@ -176,7 +176,8 @@ if __name__ == '__main__':
 If you are using the captive portal, this step is optional.
 If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
 
-Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults):
+Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults).
+You will later pass this file to a script, so you can save it anywhere.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -188,7 +189,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "model": "<NAME>", # the machine's model
     "fragment_id": "<ID>", # the fragment id, required for mobile app
     "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup with this prefix in the name
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "turn_on_hotspot_if_wifi_has_no_internet": false,
@@ -249,10 +250,13 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Configure Networks (optional)**
+**Configure Networks**
 
 During the provisioning process, a machine connects to a network to install `viam-server`.
-If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
+If you know in advance which WiFi a machine will connect to, this step allows you to configure it.
+
+If you do not know this, skip this step.
+In this case the end user will have to provide network details later in the process.
 
 If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
 If that is not possible, you can add networks with the `additional_networks` field.
