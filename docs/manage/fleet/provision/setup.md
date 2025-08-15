@@ -65,7 +65,7 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 You can let your end users complete machine setup over WiFi or Bluetooth:
 
 - **WiFi Hotspot Provisioning**: When the device boots, it creates a temporary WiFi hotspot that users connect to for setup either by using a captive web portal or a mobile app. The WiFi hotspot is open to anyone. Be aware that if the manufacturer (and/or end user) has not set a custom password for the machine then a default password (either the built-in "viamsetup", or a new default set by a manufacturer in viam-defaults.json) may be in use, which is a security risk.
-- **Bluetooth Low Energy (BLE) Provisioning**: When device boots, it searches for Bluetooth connections and a user connects to it using a mobile app.
+- **Bluetooth Low Energy (BLE) Provisioning**: When device boots, it enables Bluetooth with the configured `<prefix>-<model>` as the device name and a user connects to it using a mobile app.
 
 If you choose to have a mobile app experience, you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
 
