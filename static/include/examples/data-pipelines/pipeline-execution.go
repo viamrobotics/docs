@@ -6,6 +6,7 @@ import (
 	"fmt"
 	// :remove-start:
 	"os"
+	"strconv"
 	// :remove-end:
 
 	"go.viam.com/rdk/app"
