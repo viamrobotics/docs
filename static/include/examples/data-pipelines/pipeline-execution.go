@@ -19,7 +19,6 @@ func main() {
 	// :remove-start:
 	apiKey = os.Getenv("VIAM_API_KEY")
 	apiKeyID = os.Getenv("VIAM_API_KEY_ID")
-	orgID = os.Getenv("TEST_ORG_ID")
 	pipelineId = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59"
 	// :remove-end:
 
