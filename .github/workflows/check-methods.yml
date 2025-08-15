@@ -8,6 +8,8 @@ on:
   schedule:
     # 10am UTC on weekdays
     - cron: '0 10 * * 3'
+  workflow_dispatch:
+
 jobs:
   method-coverage:
     runs-on: ubuntu-latest
