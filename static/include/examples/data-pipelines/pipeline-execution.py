@@ -18,6 +18,7 @@ PIPELINE_ID = ""
 ORG_ID = "b5e9f350-cbcf-4d2a-bbb1-a2e2fd6851e1"
 API_KEY = os.environ["VIAM_API_KEY_DATA_REGIONS"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID_DATA_REGIONS"]
+PIPELINE_ID = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59"
 # :remove-end:
 
 async def connect() -> ViamClient:
@@ -36,46 +37,12 @@ async def main() -> int:
     viam_client = await connect()
     data_client = viam_client.data_client
 
-    # :remove-start:
-    pipelines = await data_client.list_data_pipelines(ORG_ID)
-    for pipeline in pipelines:
-        await data_client.delete_data_pipeline(pipeline.id)
-        print(f"Deleted pipeline: {pipeline.id}")
-
-    PIPELINE_ID = await data_client.create_data_pipeline(
-        name="test-pipeline",
-        organization_id=ORG_ID,
-        mql_binary=[
-            {"$match": {"component_name": "temperature-sensor"}},
-            {
-                "$group": {
-                    "_id": "$location_id",
-                    "avg_temp": {"$avg": "$data.readings.temperature"},
-                    "count": {"$sum": 1}
-                }
-            },
-            {
-                "$project": {
-                    "location": "$_id",
-                    "avg_temp": 1,
-                    "count": 1,
-                    "_id": 0,
-                }
-            }
-        ],
-        schedule="0 * * * *",
-        data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD,
-        enable_backfill=False,
-    )
-    print(f"Pipeline created with ID: {PIPELINE_ID}")
-    # :remove-end:
     pipeline_runs = await data_client.list_data_pipeline_runs(PIPELINE_ID, 10)
     for run in pipeline_runs.runs:
         print(f"Run: ID: {run.id}, status: {run.status}, start_time: {run.start_time}, end_time: {run.end_time}, data_start_time: {run.data_start_time}, data_end_time: {run.data_end_time}")
     # :remove-start:
-    # Teardown - delete the pipeline
-    await data_client.delete_data_pipeline(PIPELINE_ID)
-    print(f"Pipeline deleted with ID: {PIPELINE_ID}")
+    if len(pipeline_runs.runs) != 10:
+        raise Exception("Expected 10 runs, got " + str(len(pipeline_runs.runs)))
     # :remove-end:
 
     viam_client.close()
