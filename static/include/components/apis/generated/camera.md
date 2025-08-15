@@ -153,11 +153,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `mimeType` [MimeType](https://flutter.viam.dev/viam_sdk/MimeType-class.html)? (optional)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
 
 **Example:**
 
@@ -349,11 +349,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
 
 **Example:**
 
@@ -434,7 +434,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)\>
 
 **Example:**
 
@@ -535,11 +535,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 
@@ -583,6 +583,36 @@ if geometries:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_geometries).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with this resource, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+// This example shows using Geometries with an camera component.
+myCamera, err := camera.FromRobot(machine, "my_camera")
+
+geometries, err := myCamera.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+   // Get the center of the first geometry
+   elem := geometries[0]
+   fmt.Println("Pose of the first geometry's center point:", elem.Pose())
+}
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

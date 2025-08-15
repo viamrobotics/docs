@@ -42,16 +42,7 @@ Follow this guide to use your image data to train an ML model, so that your mach
 
 To train a model, your dataset must contain the following:
 
-- At least 15 images
-- At least 80% of the images have labels
-- For each training label, at least 10 examples
-
-When you label your dataset, include:
-
-- images with and _without_ the categories you're looking to identify
-- a roughly equal number of images for each category
-- images from your production environment, including lighting and camera quality
-- examples from every angle and distance that you expect the model to handle
+{{< readfile "/static/include/data/dataset-requirements.md" >}}
 
 Follow the guide to [create a dataset](/data-ai/train/create-dataset/).
 
@@ -150,20 +141,31 @@ You can test both detection models and classifier models using the following res
 
 ## Iterate on your ML model
 
-With the right training dataset, your ML model can perform well as soon as training completes.
-However, edge cases always exist.
 You are unlikely to account for all false positives or false negatives during your first round of training.
-Instead, keep track of edge cases as you run your model.
-Add images capturing edge cases to your training dataset, annotate them, and re-train your model using the new data.
-Using this approach, each subsequent model version becomes more accurate than the last.
+To improve your ML model, try the following these steps:
 
-To capture images of edge cases and re-train your model using those images, complete the following steps:
+- **More data means better models**: Add images capturing edge cases to your training dataset, annotate them, and re-train your model using the new data.
+- **Include counterexamples**: For detections, use images with and without the object you’re looking to detect.
+  This helps the model distinguish the target object from the background and reduces the chances of false positives by teaching it what the object is not.
+  For classifications, ensure you cover a full range of data the classifier might encounter.
+- **Avoid class imbalance**: Don’t train excessively on one specific type or class, make sure each category has a roughly equal number of images.
+  For instance, if you're training a dog detector, include images of various dog breeds to avoid bias towards one breed.
+  An imbalanced dataset can lead the model to favor one class over others, reducing its overall accuracy.
+- **Match your training images to your intended use case**: Use images that reflect the quality and conditions of your production environment.
+  For example, if you plan to use a low-quality camera in production, train with low-quality images.
+  Similarly, if your model will run all day, capture images in both daylight and nighttime conditions.
+- **Vary your angles and distances**: Include image examples from every angle and distance that the model will see in normal use.
+- **Ensure labeling accuracy**: Make sure the labels or bounding box annotations you give are accurate.
 
-1. Add edge case images to your training dataset. You can find edge cases in your existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/capture-annotate-images/).
+To capture more images and re-train your model using those images, complete the following steps:
 
-1. Visit the **DATASET** tab of the **DATA** page and annotate the image.
+1. Add the images to your training dataset.
+   You can use images from existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/capture-annotate-images/).
 
-1. Repeat the [steps above](/data-ai/train/train-tflite/#train-a-machine-learning-model) to train and release a new version of your ML model. Your machines will automatically update to the new version of the model soon after release.
+1. Visit the **DATASET** tab of the **DATA** page and annotate the images.
+
+1. Repeat the [steps to train a machine learning model](/data-ai/train/train-tflite/#train-a-machine-learning-model) and create a new version of your ML model.
+   Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps
 

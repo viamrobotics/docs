@@ -149,10 +149,10 @@ if __name__ == "__main__":
 
 For complete examples that implement control logic, see:
 
-- [`event-manager`](https://github.com/viam-modules/event-manager)
-- [`refill-controller`](https://github.com/viam-devrel/refill-controller)
-- [`re-id-object-tracking`](https://github.com/viam-modules/re-id-object-tracking)
-- [`detection-dock`](https://github.com/viam-labs/detection-dock)
+- [`event-manager`](https://app.viam.com/module/viam/event-manager)
+- [`refill-controller`](https://app.viam.com/module/viam-demo/refill-controller)
+- [`re-id-object-tracking`](https://app.viam.com/module/viam/re-id-object-tracking)
+- [`detection-dock`](https://app.viam.com/module/viam-labs/detection-dock)
 
 ## Package your control logic
 
@@ -161,7 +161,7 @@ Once you have implemented your control logic, commit and push your changes to a 
 Follow the steps in [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) using cloud build.
 When you create a release, your module will be built, packaged and pushed to the Viam Registry.
 
-If you are not using GitHub or cloud build, see [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically) for more information on alternatives.
+If you are not using GitHub or cloud build, see [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
 
 ## Deploy your control logic
 

@@ -92,11 +92,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `distance` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
 - `velocity` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -199,11 +199,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `angle` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
 - `velocity` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -311,8 +311,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `linear` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired linear power percentage from -1 to 1.
-- `angular` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired angular power percentage from -1 to 1.
+- `linear` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired linear power percentage from \-1 to 1\.
+- `angular` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): Desired angular power percentage from \-1 to 1\.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -359,11 +359,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `linear` [Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html) (required)
 - `angular` [Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -477,11 +477,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `linear` [Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html) (required)
 - `angular` [Vector3](https://flutter.viam.dev/viam_sdk/Vector3-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -511,7 +511,7 @@ Get the width and turning radius of the {{< glossary_tooltip term_id="model" tex
 
 **Returns:**
 
-- (viam.components.base.Base.Properties): The properties of the base.
+- ([viam.components.base.Base.Properties](https://python.viam.dev/autoapi/viam/components/base/index.html#viam.components.base.Base.Properties)): The properties of the base.
 
 **Example:**
 
@@ -592,11 +592,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[BaseProperties](https://flutter.viam.dev/viam_sdk/BaseProperties.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[BaseProperties](https://flutter.viam.dev/viam_sdk/BaseProperties.html)\>
 
 **Example:**
 
@@ -693,7 +693,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
 
 **Example:**
 
@@ -787,11 +787,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -1000,11 +1000,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

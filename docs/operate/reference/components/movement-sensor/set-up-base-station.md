@@ -198,8 +198,8 @@ Once you see **Casting** on the mode menu display screen, go to `rtk2go.com:2101
 
 Open the configuration instructions for your RTK-enabled movement sensor model:
 
-- [`gps-nmea-rtk-pmtk`](https://github.com/viam-modules/gps/tree/main/rtk)
-- [`gps-nmea-rtk-serial`](https://github.com/viam-modules/gps/tree/main/rtk)
+- [`gps-nmea-rtk-pmtk`](https://app.viam.com/module/viam/gps)
+- [`gps-nmea-rtk-serial`](https://app.viam.com/module/viam/gps)
 
 Follow the configuration instructions, providing the values you entered for your NTRIP server [Base configuration](#update-base-configuration) as the equal attributes in your Viam machine config:
 

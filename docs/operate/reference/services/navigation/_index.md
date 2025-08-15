@@ -63,21 +63,22 @@ Edit the attributes as applicable to your machine, according to the table below.
 ```json {class="line-numbers linkable-line-numbers"}
 "services": [
 {
-    "name": "your-navigation-service",
-    "type": "navigation",
-    "attributes": {
-        "store": {
-            "type": "<your-store-type>"
-        },
-        "movement_sensor": "<your-movement-sensor>",
-        "base": "<your-base>",
-        "obstacle_detectors": [
-          {
-          "vision_service": "<your-vision-service>",
-          "camera": "<your-camera>"
-          }
-        ]
-    }
+  "name": "your-navigation-service",
+  "api": "rdk:service:navigation",
+  "model": "rdk:builtin:builtin",
+  "attributes": {
+    "store": {
+      "type": "<your-store-type>"
+    },
+    "movement_sensor": "<your-movement-sensor>",
+    "base": "<your-base>",
+    "obstacle_detectors": [
+      {
+        "vision_service": "<your-vision-service>",
+        "camera": "<your-camera>"
+      }
+    ]
+  }
 }
     ... // Other services
 ]
@@ -89,7 +90,8 @@ Edit the attributes as applicable to your machine, according to the table below.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "test_navigation",
-  "type": "navigation",
+  "api": "rdk:service:navigation",
+  "model": "rdk:builtin:builtin",
   "attributes": {
     "store": {
       "type": "mongodb",
@@ -178,7 +180,7 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 Add [reference frames](/operate/reference/services/frame-system/#configuration) to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/) configurations:
 
 - Navigate to the **CONFIGURE** tab of your machine's page.
-- Find your base configuration card and click **+ Add Frame**.
+- Find your base configuration card and click **+ Add frame**.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
   {{<imgproc src="/services/navigation/select-base-frame.png" resize="700x" style="width: 300px" alt="Frame card for a base with the default reference frame settings">}}
@@ -192,7 +194,7 @@ Add [reference frames](/operate/reference/services/frame-system/#configuration) 
 
   {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="700x" style="width: 300px" alt="The frame card for the base.">}}
 
-- Add a frame to your movement sensor configuration by clicking **+ Add Frame**.
+- Add a frame to your movement sensor configuration by clicking **+ Add frame**.
 - Set the `parent` within the frame card to the name of your base.
 - Give the movement sensor a `translation` that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
   In other words, designate the base origin as `(0,0,0)` and measure the distance between that and the origin of the sensor to obtain the coordinates.

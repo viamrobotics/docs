@@ -159,7 +159,7 @@ The attribute [`max_rpm`](/operate/reference/components/motor/gpio/) is not requ
 
 {{% alert title="Important" color="note" %}}
 
-If `encoder` is model [`AM5-AS5048`](https://github.com/viam-modules/ams),`ticks_per_rotation` must be `1`, as `AM5-AS5048` is an absolute encoder which provides angular measurements directly.
+If `encoder` is model [`AM5-AS5048`](https://app.viam.com/module/viam/ams),`ticks_per_rotation` must be `1`, as `AM5-AS5048` is an absolute encoder which provides angular measurements directly.
 
 {{% /alert %}}
 

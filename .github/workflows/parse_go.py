@@ -37,6 +37,42 @@ go_ignore_apis = [
     'robot.Logger' # robot method
 ]
 
+go_ignore_app_apis = [
+    'GetBillingServiceConfig',
+    'EnableBillingService',
+    'DisableBillingService',
+    'UpdateBillingService',
+    'OrganizationGetLogo',
+    'OrganizationSetLogo',
+    'OrganizationGetSupportEmail',
+    'OrganizationSetSupportEmail',
+    'RenameKey',
+    'TransferRegistryItem',
+    'ListOAuthApps',
+    'NextPage',
+    'Next',
+    'AppClient',
+    'BillingClient',
+    'DataClient',
+    'MLTrainingClient',
+    'ProvisioningClient',
+    'CreateKeyFromExistingKeyAuthorizations',
+    'GetOrganizationsWithAccessToLocation',
+    'GetRoverRentalRobots',
+    'SendPaymentRequiredEmail',
+    'DisableDataPipeline',
+    'EnableDataPipeline',
+    'FileUploadFromBytes',
+    'UpdateBoundingBox',
+    'GetTrainingJobLogs',
+    'GetNetworkList',
+    'GetSmartMachineStatus',
+    'SetNetworkCredentials',
+    'SetSmartMachineCredentials'
+]
+
+
+
 ## Use these URLs for data types (for params, returns, and errors raised) that are
 ## built-in to the language or provided by a non-Viam third-party package:
 ## TODO: Not currently using these in parse(), but could do a simple replace()
@@ -85,16 +121,17 @@ class GoParser:
             elif type == "robot":
                 url = f"{self.scrape_url}/go.viam.com/rdk/{type}"
             elif type == "app":
-                continue
+                url = f"{self.scrape_url}/go.viam.com/rdk/{type}"
 
-            self.go_methods[type][resource] = {}
-
+            # Only initialize if it doesn't exist
+            if resource not in self.go_methods[type]:
+                self.go_methods[type][resource] = {}
 
             ## Scrape each parent method tag and all contained child tags for Go by resource:
             ## Skip Go: App (Go has no App client) and the generic component and service, which
             ## require explicit in-script workaround (DoCommand neither inherited (from resource.Resource)
             ## nor explicitly defined in-interface (not in Go docs, only in un-doc'd code):
-            if resource != "generic_component" and resource != "generic_service":
+            if resource != "generic_component" and resource != "generic_service" and resource != "app":
 
                 soup = make_soup(url)
 
@@ -201,6 +238,7 @@ class GoParser:
                                 ## We have finished collecting all data for this method. Write the this_method_dict dictionary
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
                                 ## using the method_name as key:
+
                                 self.go_methods[type][resource][method_name] = this_method_dict
 
                         ## If this Go interface inherits from another interface, also fetch data for those inherited methods:
@@ -347,9 +385,87 @@ class GoParser:
                 if resource == "generic_service":
                     self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromRobot(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
 
-            # elif type == "app":
-            #    ##Go SDK has no APP API!
-            #    pass
+            elif type == "app":
+                soup = make_soup(url)
+
+                ## Get a raw dump of all go app methods:
+                go_methods_raw = soup.find_all(
+                    lambda tag: tag.name == 'div'
+                    and tag.get('class') == ['Documentation-typeMethod']
+                    and tag.pre.text.startswith('func ('))
+
+                for method in go_methods_raw:
+                    this_method_dict = {}
+                    method_name = method.find('a', class_='Documentation-source').text
+                    method_id = method.find('a', class_='Documentation-idLink')['href']
+                    method_link = "https://pkg.go.dev/go.viam.com/rdk/app" + method_id
+
+                    # Get all text after the Documentation-declaration div
+                    declaration_div = method.find('div', class_='Documentation-declaration')
+                    if declaration_div:
+                        # Find all p elements that come after the declaration div
+                        description_elements = declaration_div.find_next_siblings('p')
+                        method_description = " ".join([elem.get_text().strip() for elem in description_elements])
+
+                        # Extract the method usage/signature from the pre tag
+                        pre_tag = declaration_div.find('pre')
+                        if pre_tag:
+                            # Convert the pre tag to string to preserve HTML links
+                            usage_html = str(pre_tag)
+                            # Remove the <pre> and </pre> tags
+                            usage_html = usage_html.replace('<pre>', '').replace('</pre>', '')
+                            # Remove "func " prefix if it exists
+                            if usage_html.startswith('func '):
+                                usage_html = usage_html[5:]  # Remove "func " (5 characters)
+
+                            # Remove the receiver part (everything between first ( and first ))
+                            if usage_html.startswith('('):
+                                # Find the closing parenthesis of the receiver
+                                paren_count = 0
+                                end_pos = 0
+                                for i, char in enumerate(usage_html):
+                                    if char == '(':
+                                        paren_count += 1
+                                    elif char == ')':
+                                        paren_count -= 1
+                                        if paren_count == 0:
+                                            end_pos = i
+                                            break
+
+                                if end_pos > 0:
+                                    # Remove the receiver and any leading whitespace
+                                    usage_html = usage_html[end_pos + 1:].lstrip()
+
+                            method_usage = usage_html
+                        else:
+                            method_usage = ""
+                    else:
+                        method_description = ""
+                        method_usage = ""
+
+                    resource_override = resource
+
+                    ## Look up method_name in proto_map file, and return matching resource:
+                    with open(self.proto_map_file, 'r') as f:
+                        for row in f:
+                            if not row.startswith('#') and not row == "\n":
+                                row_items = row.split(',')
+                                if row_items[1] == method_name:
+                                    resource_override = row_items[0]
+
+                    this_method_dict = {
+                        "proto": method_name,
+                        "usage": method_usage,
+                        # "code_sample": code_sample,
+                        "description": method_description,
+                        "method_link": method_link,
+                        # "usage": ""
+                    }
+                    if resource_override not in self.go_methods[type]:
+                        self.go_methods[type][resource_override] = {}
+                    if method_name in go_ignore_app_apis:
+                        continue
+                    self.go_methods[type][resource_override][method_name] = this_method_dict
 
         return self.go_methods
 

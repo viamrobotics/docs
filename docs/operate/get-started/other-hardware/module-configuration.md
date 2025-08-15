@@ -286,7 +286,15 @@ For modules that include [Viam applications](/operate/control/viam-applications/
     {
       "name": "your-app-name",
       "type": "web",
-      "entrypoint": "dist/index.html"
+      "entrypoint": "dist/index.html",
+      "fragmentIds": [],
+      "logoPath": "static/logo.png",
+      "customizations": {
+        "machinePicker": {
+          "heading": "Air monitoring dashboard",
+          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        }
+      }
     }
   ]
 }
@@ -294,11 +302,15 @@ For modules that include [Viam applications](/operate/control/viam-applications/
 
 The `applications` field is an array of application objects with the following properties:
 
+<!-- prettier-ignore -->
 | Property     | Type   | Description                                                                                       |
 | ------------ | ------ | ------------------------------------------------------------------------------------------------- |
 | `name`       | string | The name of your application, which will be used in the URL (`name.publicnamespace.viamapps.com`) |
 | `type`       | string | The type of application (currently only `"web"` is supported)                                     |
 | `entrypoint` | string | The path to the HTML entry point for your application                                             |
+| `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be usable with a Viam application. |
+| `logoPath` | string | The URL or the relative path to the logo to display on the authentication screen for the application. |
+| `customizations` | object | Override the branding heading and subheading to display on the authentication screen. Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. The header may not be longer than 60 characters. The subheader may not be longer than 256 characters. |
 
 For more information about Viam applications, see the [Viam applications documentation](/operate/control/viam-applications/).
 

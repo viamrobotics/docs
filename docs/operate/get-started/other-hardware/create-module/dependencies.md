@@ -1,20 +1,24 @@
 ---
-title: "Module dependencies"
+title: "Access machine resources from within a module"
 linkTitle: "Module dependencies"
 weight: 25
 layout: "docs"
 type: "docs"
-description: "Write your validate and reconfigure functions to handle dependencies in your custom modular resource."
+description: "From within a modular resource, you can access other machine resources using dependencies."
 aliases:
   - /operate/get-started/other-hardware/dependencies/
 ---
+
+From within a modular resource, you can access other machine resources using dependencies.
 
 ## What are dependencies?
 
 Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
 
-For example, you could write a sensor component that requires a camera component, meaning that the camera is a dependency of that sensor.
-The component configuration for the sensor could look like this, with the name of the camera as an attribute:
+For example, you could write a sensor component that has a camera component as a dependency.
+This allows the sensor module to access data from the camera by using the camera API methods on the camera client from within the sensor module.
+
+The component configuration for the sensor could look like this, with the name of a camera as an attribute:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6"}
 {
@@ -28,18 +32,10 @@ The component configuration for the sensor could look like this, with the name o
 ```
 
 Dependencies are configured just like any other resource attribute.
-The difference is that dependencies represent other resources that are accessed by the resource that depends on them.
-
+The difference is that dependencies represent other resources, and receive special treatment in the `validate_config` and `reconfigure` functions.
 When [`viam-server` builds all the resources on a machine](/operate/get-started/other-hardware/lifecycle-module/), it builds the dependencies first.
 
-## Use dependencies
-
-From within a module, you cannot access resources in the same way that you would in a client application.
-For example, you cannot call `Camera.from_robot()` to get a camera resource.
-
-To access resources from within a module, use dependencies:
-
-### Required dependencies
+## Required dependencies
 
 Use required dependencies when your module should fail to build or reconfigure if a dependency does not successfully start.
 
@@ -51,7 +47,6 @@ Use required dependencies when your module should fail to build or reconfigure i
 {{% tab name="Python" %}}
 
 1. In your modular resource's `validate_config` method, check the configuration attributes, then add the dependency name to the first list of dependencies in the returned tuple:
-   For example:
 
    ```python {class="line-numbers linkable-line-numbers"}
     @classmethod
@@ -69,6 +64,13 @@ Use required dependencies when your module should fail to build or reconfigure i
             raise ValueError("camera_name cannot be empty")
         req_deps.append(camera_name)
         return req_deps, []
+   ```
+
+1. Add any missing imports for the resource.
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   from viam.components.camera import *
+   from typing import cast
    ```
 
 1. In your `reconfigure` method:
@@ -183,7 +185,7 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 {{% /tab %}}
 {{< /tabs >}}
 
-### Optional dependencies
+## Optional dependencies
 
 If an optional dependency does not start, the modular resource will continue to build and reconfigure without it.
 `viam-server` reattempts to construct the optional dependency every 5 seconds.
@@ -191,29 +193,37 @@ When an optional dependency constructs successfully, your modular resource recon
 
 Optional dependencies are not necessarily built first, even if they are available.
 
+Use optional dependencies for intermittently available resources.
+
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. If your module has optional dependencies, your `validate_config` function should add the dependency to the second element of the returned tuple.
-   For example:
+1. If your module has optional dependencies, your `validate_config` function should add the dependency to the second element of the returned tuple:
 
-```python {class="line-numbers linkable-line-numbers"}
-@classmethod
-def validate_config(
-    cls, config: ComponentConfig
-) -> Tuple[Sequence[str], Sequence[str]]:
-    opt_deps = []
-    fields = config.attributes.fields
-    if "camera_name" not in fields:
-        raise Exception("missing required camera_name attribute")
-    elif not fields["camera_name"].HasField("string_value"):
-        raise Exception("camera_name must be a string")
-    camera_name = fields["camera_name"].string_value
-    opt_deps.append(camera_name)
-    return [], opt_deps
-```
+   ```python {class="line-numbers linkable-line-numbers"}
+   @classmethod
+   def validate_config(
+       cls, config: ComponentConfig
+   ) -> Tuple[Sequence[str], Sequence[str]]:
+       opt_deps = []
+       fields = config.attributes.fields
+       if "camera_name" not in fields:
+           raise Exception("missing required camera_name attribute")
+       elif not fields["camera_name"].HasField("string_value"):
+           raise Exception("camera_name must be a string")
+       camera_name = fields["camera_name"].string_value
+       opt_deps.append(camera_name)
+       return [], opt_deps
+   ```
+
+1. Add any missing imports for the resource and `cast`.
+
+   ```python {class="line-numbers linkable-line-numbers"}
+   from viam.components.camera import *
+   from typing import cast
+   ```
 
 1. In your `reconfigure` method, allow for the dependency to be unavailable.
    For example:
@@ -290,3 +300,71 @@ You must access the API key module environment variables to establish the app cl
 ## Configure your module's dependencies more easily with a discovery service
 
 If your module requires dependencies, you can make it easier for users to configure them by writing a [discovery service](/operate/reference/services/discovery/) as one model within your module.
+
+## Special case: The `builtin` motion service
+
+The motion service is available by default as part of `viam-server`.
+This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
+You do not need to check for its configuration in your `Validate` function because it is always enabled.
+
+This example shows how to access the default motion service:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers"}
+# Return the motion service as a dependency
+@classmethod
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    req_deps.append("builtin")
+    return req_deps, []
+
+
+# Add the motion service as an instance variable
+def reconfigure(
+    self, config: ComponentConfig, dependencies: Mapping[
+      ResourceName, ResourceBase]
+):
+    motion_resource = dependencies[Motion.get_resource_name("builtin")]
+    self.motion_service = cast(MotionClient, motion_resource)
+
+    return super().reconfigure(config, dependencies)
+
+
+# Use the motion service
+def move_around_in_some_way(self):
+    moved = await self.motion_service.move(
+        gripper_name, destination, world_state)
+    return moved
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go {class="line-numbers linkable-line-numbers"}
+// Return the motion service as a dependency
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+  deps := []string{motion.Named("builtin").String()}
+  return deps, nil, nil
+}
+
+// Then use the motion service, for example:
+func (c *Component) MoveAroundInSomeWay() error {
+  c.Motion, err = motion.FromDependencies(deps, "builtin")
+  if err != nil {
+    return nil, err
+  }
+  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
+    ComponentName: gripperName,
+    Destination: destination,
+    WorldState: worldState
+  })
+  return moved, err
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}

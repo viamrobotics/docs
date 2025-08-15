@@ -295,13 +295,14 @@ viam organizations --help
 ### `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, delete specified data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export binary filter --destination=<output path> [...named args]
 viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
-viam data delete --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data delete binary --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data delete tabular --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
@@ -388,7 +389,7 @@ done
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
-| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `tag ids` | **Required** |
+| `--binary-data-ids` | Binary data IDs to add or remove tags from. | `export binary ids`, `tag ids` | **Required** |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
@@ -399,8 +400,10 @@ done
 | `--machine-id` | Filter by specified machine ID. | `export binary`, `delete`, `tag filter` | Optional |
 | `--machine-name` | Filter by specified machine name. | `export binary`, `delete`, `tag filter`| Optional |
 | `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). |`export binary`, `delete`, `tag ids`, `tag filter` | Optional |
+| `--filter-tags` | Filter tags. Options: `'tagged'`, `'untagged'`, or a comma-separated list of tags for all data matching any of the tags. | `tag filter` | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
 | `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
+| `--org-id` | The organization ID for the database user. | `database configure` | **Required** |
 | `--password` | Password for the database user being configured. | `database configure` | **Required** |
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
 | `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |
@@ -411,30 +414,26 @@ The `datapipelines` command provides access to data pipelines for processing mac
 Data pipelines help you optimize query performance for frequently accessed complex data transformations.
 
 ```sh {class="command-line" data-prompt="$"}
-viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> --data-source-type=<type>
+viam datapipelines create --org-id=<org-id> --name=<name> --schedule=<schedule> --mql=<mql-query> --data-source-type=<type> --enable-backfill=False
 viam datapipelines update --id=<pipeline-id> --name=<name> --schedule=<schedule> --mql=<mql-query> [--data-source-type=<type>]
 viam datapipelines list --org-id=<org-id>
 viam datapipelines describe --id=<pipeline-id>
-viam datapipelines delete --id=<pipeline-id>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
 # create a new data pipeline with standard data source type (default)
-viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor1"}}]'
+viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor-1"}}]' --enable-backfill=False
 
 # create a data pipeline with hot storage data source type for faster access
-viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera1"}}]'
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera-1"}}]' --enable-backfill=False
 
 # disable a pipeline
 viam datapipelines disable --id=abc123
 
 # enable a pipeline
 viam datapipelines enable --id=abc123
-
-# update an existing data pipeline with a new schedule and data source type
-viam datapipelines update --id=abc123 --name="Updated Pipeline" --schedule="0 */6 * * *" --mql='[{"$match": {"location_id": "loc123"}}]' --data-source-type=standard
 
 # list all data pipelines in an organization
 viam datapipelines list --org-id=123
@@ -454,10 +453,9 @@ viam datapipelines delete --id=abc123
 | `create` | Create a new data pipeline. | - |
 | `describe` | Get detailed information about a specific data pipeline. | - |
 | `delete` | Delete a data pipeline. | - |
-| `disable` | Stop executing a data pipeline without deleting it. | - |
 | `enable` | Resume executing a disabled data pipeline. | - |
+| `disable` | Stop executing a data pipeline without deleting it. | - |
 | `list` | List all data pipelines in an organization. | - |
-| `update` | Update an existing data pipeline. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
@@ -466,12 +464,13 @@ viam datapipelines delete --id=abc123
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--org-id` | ID of the organization that owns the data pipeline. | `create`, `list` | **Required** |
-| `--name` | Name of the data pipeline. | `create`, `update` | **Required** for `create` |
-| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create`, `update` | **Required** for `create` |
-| `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
-| `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create`, `update` | Optional |
-| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create`, `update` | **Required** for `create` |
-| `--id` | ID of the data pipeline to update, describe, or delete. | `enable`, `delete`, `describe`, `disable`, `update` | **Required** |
+| `--name` | Name of the data pipeline. | `create` | **Required** for `create` |
+| `--schedule` | Cron schedule that expresses when the pipeline should run, for example `0 9 * * *` for daily at 9 AM. | `create` | **Required** for `create` |
+| `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create` | Optional |
+| `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | `create` | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. `standard` provides typical analytics storage; `hotstorage` offers faster access for real-time processing. | `create` | **Required** for `create` |
+| `--id` | ID of the data pipeline to describe, or delete. | `enable`, `delete`, `describe`, `disable` | **Required** |
+| `--enable-backfill` | Enable the data pipeline to run over organization's historical data. Default: `false`. | `create` | **Required** |
 
 ### `dataset`
 
@@ -768,8 +767,8 @@ viam machines part cp --part=<part id> <file name> machine:/path/to/file
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-# list all machines you have access to
-viam machines list
+# list all machines in an organization, in all locations
+viam machines list --all --organization=12345
 
 # get machine status
 viam machines status  --machine=123
@@ -821,7 +820,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all machines that the authenticated session has access to, filtered by organization and location. | - |
+| `list` | List all machines that the authenticated session has access to in a specified organzation or location. Defaults to first organization and location alphabetically. | - |
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
@@ -860,6 +859,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs` | **Required** |
 | `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
 | `--organization` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--all` | List all machines in the organization. Overrides `--location` flag. Default: `false` | `list` | Optional |
 | `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
 | `--tail` | Tail (stream) logs, boolean(default false). | `part logs` | Optional |
@@ -904,6 +904,31 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
+### `metadata`
+
+The `metadata` command allows you to read organization, location, machine, and machine part metadata.
+
+```sh {class="command-line" data-prompt="$"}
+viam metadata read --part-id=<part-id>
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `read` | Read organization, location, machine, and machine part metadata. | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--location-id` | The ID of the location to read metadata from. | `read` | Optional |
+| `--machine-id` | The ID of the machine to read metadata from. | `read` | Optional |
+| `--org-id` | The ID of the org to read metadata from. | `read` | Optional |
+| `--part-id` | The ID of the part to read metadata from. | `read` | Optional |
+
 ### `module`
 
 The `module` command allows to you to work with {{< glossary_tooltip term_id="module" text="modules" >}}.
@@ -922,7 +947,7 @@ This includes:
 See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/operate/get-started/other-hardware/manage-modules/#update-automatically) using a GitHub Action.
+[automatically upload new versions of your module on release](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate
@@ -1030,9 +1055,9 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `generate` | Auto-generate stub files for a new module by following prompts. | - |
-| `create` | Generate new metadata for a custom module on your local filesystem and register the metadata with the Viam registry. Uploading the code that powers the module is a separate step. | - |
-| `update` | Update your module's metadata and documentation in the Viam registry based on changes to the [<file>meta.json</file>](/operate/get-started/other-hardware/create-module/metajson/) and <file>README.md</file>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
+| `generate` | Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module. | - |
+| `create` | Generate a <file>meta.json</file> file and register the metadata with the Viam registry. Recommended when you already have working module code. | - |
+| `update` | Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/operate/get-started/other-hardware/create-module/metajson/) and <file>README.md</file>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |

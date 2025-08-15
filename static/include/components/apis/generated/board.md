@@ -90,11 +90,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `high` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -196,11 +196,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
 
 **Example:**
 
@@ -291,7 +291,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number>): The duty cycle, which is a value from 0 to 1.
+- (Promise<number>): The duty cycle, which is a value from 0 to 1\.
 
 **Example:**
 
@@ -310,11 +310,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
 
 **Example:**
 
@@ -421,11 +421,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `dutyCyclePct` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -527,11 +527,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
 
 **Example:**
 
@@ -642,11 +642,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `frequencyHz` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -752,11 +752,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `digitalInterruptName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
 
 **Example:**
 
@@ -865,11 +865,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `analogReaderName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[AnalogValue](https://flutter.viam.dev/viam_sdk/AnalogValue.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[AnalogValue](https://flutter.viam.dev/viam_sdk/AnalogValue.html)\>
 
 **Example:**
 
@@ -974,11 +974,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `value` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -1095,12 +1095,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `interrupts` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `interrupts` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)>
+- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)\<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)\>
 
 **Example:**
 
@@ -1210,11 +1210,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 - `powerMode` [PowerMode](https://flutter.viam.dev/viam_protos.component.board/PowerMode-class.html) (required)
 - `seconds` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
 - `nanos` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -1531,11 +1531,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 

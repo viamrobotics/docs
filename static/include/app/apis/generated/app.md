@@ -22,6 +22,21 @@ id = await cloud.get_user_id_by_email("youremail@email.com")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_user_id_by_email).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `email` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetUserIDByEmail).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -70,6 +85,21 @@ organization = await cloud.create_organization("name")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateOrganization).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -107,6 +137,20 @@ org_list = await cloud.list_organizations()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [([]*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListOrganizations).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -202,6 +246,21 @@ org_list = await cloud.list_organizations_by_user("<YOUR-USER-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organizations_by_user).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `userID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*OrgDetails)](https://pkg.go.dev/go.viam.com/rdk/app#OrgDetails)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListOrganizationsByUser).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -243,6 +302,21 @@ org = await cloud.get_organization("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetOrganization).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -295,6 +369,21 @@ available = await cloud.get_organization_namespace_availability(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization_namespace_availability).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `namespace` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetOrganizationNamespaceAvailability).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -355,6 +444,22 @@ organization = await cloud.update_organization(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*UpdateOrganizationOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateOrganizationOptions)
+
+**Returns:**
+
+- [(*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateOrganization).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -406,6 +511,20 @@ await cloud.delete_organization("<YOUR-ORG-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteOrganization).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -449,6 +568,22 @@ member_list, invite_list = await cloud.list_organization_members("<YOUR-ORG-ID>"
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_organization_members).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*OrganizationMember)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationMember)
+- [([]*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListOrganizationMembers).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -504,6 +639,24 @@ await cloud.create_organization_invite("<YOUR-ORG-ID>", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_organization_invite).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `email` [(string)](https://pkg.go.dev/builtin#string)
+- `authorizations` [([]*Authorization)](https://pkg.go.dev/go.viam.com/rdk/app#Authorization)
+- `opts` [(*CreateOrganizationInviteOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateOrganizationInviteOptions)
+
+**Returns:**
+
+- [(*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateOrganizationInvite).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -594,6 +747,24 @@ update_invite = await cloud.update_organization_invite_authorizations(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization_invite_authorizations).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `email` [(string)](https://pkg.go.dev/builtin#string)
+- `addAuthorizations`
+- `removeAuthorizations` [([]*Authorization)](https://pkg.go.dev/go.viam.com/rdk/app#Authorization)
+
+**Returns:**
+
+- [(*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateOrganizationInviteAuthorizations).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -661,6 +832,21 @@ await cloud.delete_organization_member(org_id="org_id", user_id=first_user_id)
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_member).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `userID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteOrganizationMember).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -713,6 +899,21 @@ await cloud.delete_organization_invite("<YOUR-ORG-ID>", "youremail@email.com")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_organization_invite).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `email` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteOrganizationInvite).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -769,6 +970,22 @@ org_invite = await cloud.resend_organization_invite("<YOUR-ORG-ID>", "youremail@
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.resend_organization_invite).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `email` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ResendOrganizationInvite).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -818,6 +1035,21 @@ metadata = await cloud.get_organization_metadata(org_id="<YOUR-ORG-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_organization_metadata).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetOrganizationMetadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -865,6 +1097,21 @@ await cloud.update_organization_metadata(org_id="<YOUR-ORG-ID>", metadata=)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization_metadata).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `data` (interface{})
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateOrganizationMetadata).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -922,6 +1169,23 @@ my_new_location = await cloud.create_location(org_id="<YOUR-ORG-ID>", name="Robo
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*CreateLocationOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateLocationOptions)
+
+**Returns:**
+
+- [(*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateLocation).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -976,6 +1240,21 @@ location = await cloud.get_location(location_id="123ab12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetLocation).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1048,6 +1327,22 @@ my_updated_location = await cloud.update_location(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*UpdateLocationOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateLocationOptions)
+
+**Returns:**
+
+- [(*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateLocation).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1104,6 +1399,20 @@ await cloud.delete_location(location_id="abc12abcde")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteLocation).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1147,6 +1456,21 @@ locations = await cloud.list_locations("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_locations).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListLocations).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1197,6 +1521,21 @@ await cloud.share_location("<YOUR-ORG-ID>", "<YOUR-LOCATION-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.share_location).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID`
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ShareLocation).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1245,6 +1584,21 @@ await cloud.unshare_location("<YOUR-ORG-ID>", "<YOUR-LOCATION-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.unshare_location).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID`
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UnshareLocation).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1300,6 +1654,21 @@ loc_auth = await cloud.location_auth(location_id="123xy12345")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.location_auth).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*LocationAuth)](https://pkg.go.dev/go.viam.com/rdk/app#LocationAuth)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.LocationAuth).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1349,6 +1718,21 @@ new_loc_auth = await cloud.create_location_secret(location_id="123xy12345")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_location_secret).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*LocationAuth)](https://pkg.go.dev/go.viam.com/rdk/app#LocationAuth)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateLocationSecret).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1406,6 +1790,21 @@ await cloud.delete_location_secret(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_location_secret).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID`
+- `secretID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteLocationSecret).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1440,7 +1839,7 @@ Get the user-defined metadata for a location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from the location's page.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which the user-defined metadata is associated. You can obtain your location ID from the location’s page.
 
 **Returns:**
 
@@ -1453,6 +1852,21 @@ metadata = await cloud.get_location_metadata(location_id="<YOUR-LOCATION-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_location_metadata).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetLocationMetadata).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1487,7 +1901,7 @@ Update the user-defined metadata for a location.
 
 **Parameters:**
 
-- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from the location's page.
+- `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from the location’s page.
 - `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
@@ -1501,6 +1915,21 @@ await cloud.update_location_metadata(location_id="<YOUR-LOCATION-ID>", metadata=
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location_metadata).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+- `data` (interface{})
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateLocationMetadata).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1555,6 +1984,21 @@ machine = await cloud.get_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobot).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1598,6 +2042,21 @@ api_keys = await cloud.get_robot_api_keys(robot_id="robot-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_api_keys).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*APIKeyWithAuthorizations)](https://pkg.go.dev/go.viam.com/rdk/app#APIKeyWithAuthorizations)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotAPIKeys).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1650,6 +2109,21 @@ list_of_parts = await cloud.get_robot_parts(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_parts).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotParts).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1708,6 +2182,22 @@ if (time.time() - my_robot_part.last_access.timestamp()) <= 10000:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPart).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1775,6 +2265,23 @@ part_logs = await cloud.get_robot_part_logs(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_logs).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*GetRobotPartLogsOptions)](https://pkg.go.dev/go.viam.com/rdk/app#GetRobotPartLogsOptions)
+
+**Returns:**
+
+- [([]*LogEntry)](https://pkg.go.dev/go.viam.com/rdk/app#LogEntry)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartLogs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1800,6 +2307,36 @@ const robotPartLogs = await appClient.getRobotPartLogs(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartlogs).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetRobotPartByNameAndLocation
+
+Query a specific robot part by name and location id.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `name` (string) (required): The name of the requested robot part.
+- `locationId` (string) (required): The ID of the location of the requested robot part.
+
+**Returns:**
+
+- (Promise<[GetRobotPartByNameAndLocationResponse](https://ts.viam.dev/classes/appApi.GetRobotPartByNameAndLocationResponse.html)>): The robot part.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const robotPart = await appClient.getRobotPartByNameAndLocation(
+  '<YOUR-ROBOT-PART-NAME>',
+  '<YOUR-LOCATION-ID>'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartbynameandlocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1832,6 +2369,23 @@ logs_stream = await cloud.tail_robot_part_logs(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.tail_robot_part_logs).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+- `errorsOnly` [(bool)](https://pkg.go.dev/builtin#bool)
+- `opts` [(*TailRobotPartLogsOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TailRobotPartLogsOptions)
+
+**Returns:**
+
+- [(*RobotPartLogStream)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPartLogStream)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.TailRobotPartLogs).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -1839,7 +2393,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `id` (string) (required): The ID of the requested robot part.
 - `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
+- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error\-level
   logs should be returned. Defaults to true.
 
 **Returns:**
@@ -1887,6 +2441,21 @@ part_history = await cloud.get_robot_part_history(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_history).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*RobotPartHistoryEntry)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPartHistoryEntry)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartHistory).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -1946,6 +2515,23 @@ my_machine_part = await cloud.update_robot_part(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_part).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+- `robotConfig` (interface{})
+
+**Returns:**
+
+- [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobotPart).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2003,6 +2589,22 @@ new_part_id = await cloud.new_robot_part(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot_part).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID`
+- `partName` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.NewRobotPart).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2012,7 +2614,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<string>): The ID of the newly-created robot part.
+- (Promise<string>): The ID of the newly\-created robot part.
 
 **Example:**
 
@@ -2056,6 +2658,20 @@ await cloud.delete_robot_part(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRobotPart).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2108,6 +2724,20 @@ await cloud.mark_part_as_main(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_as_main).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.MarkPartAsMain).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2158,6 +2788,20 @@ await cloud.mark_part_for_restart(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.mark_part_for_restart).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.MarkPartForRestart).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2206,6 +2850,21 @@ part_with_new_secret = await cloud.create_robot_part_secret(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_robot_part_secret).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateRobotPartSecret).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2262,6 +2921,21 @@ await cloud.delete_robot_part_secret(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot_part_secret).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `partID`
+- `secretID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRobotPartSecret).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2315,6 +2989,21 @@ list_of_machines = await cloud.list_robots(location_id="123ab12345")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListRobots).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2363,6 +3052,22 @@ new_machine_id = await cloud.new_robot(name="beepboop", location_id="my-location
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.new_robot).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `name`
+- `location` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.NewRobot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2444,6 +3149,23 @@ updated_robot = await cloud.update_robot(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `name`
+- `location` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobot).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2454,7 +3176,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly-modified robot object.
+- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly\-modified robot object.
 
 **Example:**
 
@@ -2497,6 +3219,20 @@ await cloud.delete_robot(robot_id="1a123456-x1yz-0ab0-a12xyzabc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_robot).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRobot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2544,6 +3280,21 @@ metadata = await cloud.get_robot_metadata(robot_id="<YOUR-ROBOT-ID>")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_metadata).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotMetadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2587,6 +3338,21 @@ metadata = await cloud.get_robot_part_metadata(robot_part_id="<YOUR-ROBOT-PART-I
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_robot_part_metadata).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartMetadata).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2636,6 +3402,21 @@ await cloud.update_robot_metadata(robot_id="<YOUR-ROBOT-ID>", metadata=)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_metadata).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID` [(string)](https://pkg.go.dev/builtin#string)
+- `data` (interface{})
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobotMetadata).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2688,6 +3469,21 @@ await cloud.update_robot_part_metadata(robot_part_id="<YOUR-ROBOT-PART-ID>", met
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_part_metadata).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `robotID` [(string)](https://pkg.go.dev/builtin#string)
+- `data` (interface{})
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobotPartMetadata).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2738,6 +3534,23 @@ fragments_list = await cloud.list_fragments(org_id="org-id", visibilities=[])
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_fragments).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+- `showPublic` [(bool)](https://pkg.go.dev/builtin#bool)
+- `fragmentVisibility` [([]FragmentVisibility)](https://pkg.go.dev/go.viam.com/rdk/app#FragmentVisibility)
+
+**Returns:**
+
+- [([]*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListFragments).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2770,6 +3583,22 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs.
 
 {{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `machineID` [(string)](https://pkg.go.dev/builtin#string)
+- `additionalIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListMachineFragments).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -2795,6 +3624,40 @@ const fragments = await appClient.listMachineFragments(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinefragments).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ListMachineSummaries
+
+Lists machine summaries for an organization, optionally filtered by fragment IDs, location IDs, and limit.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `organizationId` (string) (required): The ID of the organization.
+- `fragmentIds` (string) (optional): Optional list of fragment IDs to filter machines.
+- `locationIds` (string) (optional): Optional list of location IDs to filter machines.
+- `limit` (number) (optional): Optional max number of machines to return.
+
+**Returns:**
+
+- (Promise<[LocationSummary](https://ts.viam.dev/classes/appApi.LocationSummary.html)[]>): The list of location summaries.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const summaries = await appClient.listMachineSummaries(
+  'orgId',
+  ['frag1'],
+  ['loc1'],
+  10
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinesummaries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2828,6 +3691,22 @@ print("Name: ", the_fragment.name, "\nCreated on: ", the_fragment.created_on)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_fragment).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `version` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetFragment).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2881,6 +3760,24 @@ new_fragment = await cloud.create_fragment(org_id="org-id", name="cool_smart_mac
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_fragment).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+- `config` [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- `opts` [(*CreateFragmentOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateFragmentOptions)
+
+**Returns:**
+
+- [(*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateFragment).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -2943,6 +3840,24 @@ updated_fragment = await cloud.update_fragment(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_fragment).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+- `config` [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- `opts` [(*UpdateFragmentOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateFragmentOptions)
+
+**Returns:**
+
+- [(*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateFragment).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3008,6 +3923,20 @@ await cloud.delete_fragment(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_fragment).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteFragment).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3062,6 +3991,23 @@ fragment_history = await cloud.get_fragment_history(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_fragment_history).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*GetFragmentHistoryOptions)](https://pkg.go.dev/go.viam.com/rdk/app#GetFragmentHistoryOptions)
+
+**Returns:**
+
+- [([]*FragmentHistoryEntry)](https://pkg.go.dev/go.viam.com/rdk/app#FragmentHistoryEntry)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetFragmentHistory).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### AddRole
@@ -3100,6 +4046,24 @@ await cloud.add_role(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.add_role).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `identityID` [(string)](https://pkg.go.dev/builtin#string)
+- `role` [(AuthRole)](https://pkg.go.dev/go.viam.com/rdk/app#AuthRole)
+- `resourceType` [(AuthResourceType)](https://pkg.go.dev/go.viam.com/rdk/app#AuthResourceType)
+- `resourceID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.AddRole).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3171,6 +4135,20 @@ await cloud.remove_role(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.remove_role).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `authorization` [(*Authorization)](https://pkg.go.dev/go.viam.com/rdk/app#Authorization)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.RemoveRole).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3248,6 +4226,25 @@ await cloud.change_role(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.change_role).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `oldAuthorization` [(*Authorization)](https://pkg.go.dev/go.viam.com/rdk/app#Authorization)
+- `newOrgID`
+- `newIdentityID` [(string)](https://pkg.go.dev/builtin#string)
+- `newRole` [(AuthRole)](https://pkg.go.dev/go.viam.com/rdk/app#AuthRole)
+- `newResourceType` [(AuthResourceType)](https://pkg.go.dev/go.viam.com/rdk/app#AuthResourceType)
+- `newResourceID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ChangeRole).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3320,6 +4317,22 @@ list_of_auths = await cloud.list_authorizations(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_authorizations).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+- `resourceIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Authorization)](https://pkg.go.dev/go.viam.com/rdk/app#Authorization)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListAuthorizations).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3434,6 +4447,21 @@ For more information about managing permissions, see [Role-Based Access Control]
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.check_permissions).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `permissions` [([]*AuthorizedPermissions)](https://pkg.go.dev/go.viam.com/rdk/app#AuthorizedPermissions)
+
+**Returns:**
+
+- [([]*AuthorizedPermissions)](https://pkg.go.dev/go.viam.com/rdk/app#AuthorizedPermissions)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CheckPermissions).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3472,6 +4500,21 @@ item = await cloud.get_registry_item("item-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_registry_item).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `itemID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*RegistryItem)](https://pkg.go.dev/go.viam.com/rdk/app#RegistryItem)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRegistryItem).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3523,6 +4566,22 @@ await cloud.create_registry_item("<YOUR-ORG-ID>", "name", PackageType.PACKAGE_TY
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_registry_item).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+- `packageType` [(PackageType)](https://pkg.go.dev/go.viam.com/rdk/app#PackageType)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateRegistryItem).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3586,6 +4645,24 @@ await cloud.update_registry_item(
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_registry_item).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `itemID` [(string)](https://pkg.go.dev/builtin#string)
+- `packageType` [(PackageType)](https://pkg.go.dev/go.viam.com/rdk/app#PackageType)
+- `description` [(string)](https://pkg.go.dev/builtin#string)
+- `visibility` [(Visibility)](https://pkg.go.dev/go.viam.com/rdk/app#Visibility)
+- `opts` [(*UpdateRegistryItemOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateRegistryItemOptions)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRegistryItem).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3666,6 +4743,26 @@ registry_items = await cloud.list_registry_items(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_registry_items).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(*string)](https://pkg.go.dev/builtin#string)
+- `types` [([]PackageType)](https://pkg.go.dev/go.viam.com/rdk/app#PackageType)
+- `visibilities` [([]Visibility)](https://pkg.go.dev/go.viam.com/rdk/app#Visibility)
+- `platforms` [([]string)](https://pkg.go.dev/builtin#string)
+- `statuses` [([]RegistryItemStatus)](https://pkg.go.dev/go.viam.com/rdk/app#RegistryItemStatus)
+- `opts` [(*ListRegistryItemsOptions)](https://pkg.go.dev/go.viam.com/rdk/app#ListRegistryItemsOptions)
+
+**Returns:**
+
+- [([]*RegistryItem)](https://pkg.go.dev/go.viam.com/rdk/app#RegistryItem)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListRegistryItems).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3728,6 +4825,20 @@ await cloud.delete_registry_item("your-namespace:your-name")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_registry_item).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `itemID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRegistryItem).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3777,6 +4888,23 @@ print("Module ID:", new_module[0])
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_module).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateModule).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3850,6 +4978,28 @@ url_of_my_module = await cloud.update_module(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_module).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `moduleID` [(string)](https://pkg.go.dev/builtin#string)
+- `visibility` [(Visibility)](https://pkg.go.dev/go.viam.com/rdk/app#Visibility)
+- `url`
+- `description` [(string)](https://pkg.go.dev/builtin#string)
+- `models` [([]*Model)](https://pkg.go.dev/go.viam.com/rdk/app#Model)
+- `apps` [([]*App)](https://pkg.go.dev/go.viam.com/rdk/app#App)
+- `entrypoint` [(string)](https://pkg.go.dev/builtin#string)
+- `opts` [(*UpdateModuleOptions)](https://pkg.go.dev/go.viam.com/rdk/app#UpdateModuleOptions)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateModule).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3919,6 +5069,22 @@ file_id = await cloud.upload_module_file(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.upload_module_file).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `fileInfo` [(ModuleFileInfo)](https://pkg.go.dev/go.viam.com/rdk/app#ModuleFileInfo)
+- `file` [([]byte)](https://pkg.go.dev/builtin#byte)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UploadModuleFile).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetModule
@@ -3947,6 +5113,21 @@ the_module = await cloud.get_module(module_id="my-group:my-cool-modular-base")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.get_module).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `moduleID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*Module)](https://pkg.go.dev/go.viam.com/rdk/app#Module)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetModule).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -3992,6 +5173,21 @@ modules_list = await cloud.list_modules("<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_modules).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `opts` [(*ListModulesOptions)](https://pkg.go.dev/go.viam.com/rdk/app#ListModulesOptions)
+
+**Returns:**
+
+- [([]*Module)](https://pkg.go.dev/go.viam.com/rdk/app#Module)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListModules).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -4057,6 +5253,24 @@ api_key, api_key_id = cloud.create_key(
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.create_key).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+- `keyAuthorizations` [([]APIKeyAuthorization)](https://pkg.go.dev/go.viam.com/rdk/app#APIKeyAuthorization)
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateKey).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -4096,6 +5310,20 @@ await cloud.delete_key("key-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.delete_key).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteKey).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -4143,6 +5371,22 @@ id, key = await cloud.rotate_key("key-id")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.rotate_key).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.RotateKey).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -4186,6 +5430,21 @@ keys = await cloud.list_keys(org_id="<YOUR-ORG-ID>")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_keys).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*APIKeyWithAuthorizations)](https://pkg.go.dev/go.viam.com/rdk/app#APIKeyWithAuthorizations)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListKeys).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -4284,6 +5543,36 @@ const appContent = await appClient.getAppContent(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetAppBranding
+
+Retrieves the app branding for an organization or app.
+
+{{< tabs >}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `publicNamespace` (string) (required): The public namespace of the organization.
+- `name` (string) (required): The name of the app.
+
+**Returns:**
+
+- (Promise<[GetAppBrandingResponse](https://ts.viam.dev/classes/appApi.GetAppBrandingResponse.html)>): The branding information for the app.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const branding = await appClient.getAppBranding(
+  '<YOUR-PUBLIC-NAMESPACE>',
+  '<YOUR-APP-NAME>'
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappbranding).
 
 {{% /tab %}}
 {{< /tabs >}}

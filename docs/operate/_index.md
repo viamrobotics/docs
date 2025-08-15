@@ -35,16 +35,18 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Build apps" "3" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
+{{< how-to-expand "Build apps" "4" "BEGINNER-FRIENDLY" "" "build-platform-apps" >}}
 {{< cards >}}
+{{% card link="/operate/control/viam-applications/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/operate/control/mobile-app/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
-{{< how-to-expand "Intelligent actuation and motion planning" "3" "INTERMEDIATE" "" "build-platform-motion" >}}
+{{< how-to-expand "Intelligent actuation and motion planning" "4" "INTERMEDIATE" "" "build-platform-motion" >}}
 {{< cards >}}
+{{% card link="/operate/mobility/motion-concepts/" noimage="true" %}}
 {{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{% card link="/operate/mobility/move-base/" noimage="true" %}}
 {{% card link="/operate/mobility/move-gantry/" noimage="true" %}}

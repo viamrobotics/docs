@@ -18,7 +18,7 @@ aliases:
 cost: "0"
 ---
 
-If you have received a machine with Viam pre-installed on it, this guide will show you how to complete your device setup using either the [Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app) or the [captive portal](#set-up-your-machine-using-the-captive-portal).
+If you have received a machine with Viam pre-installed on it, this guide will show you how to complete your device setup using either the [Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app) or the [{{< glossary_tooltip term_id="captive-web-portal" text="captive portal" >}}](#set-up-your-machine-using-the-captive-portal).
 
 Unless you have been told to use the captive portal, we recommend you use the Viam mobile app.
 

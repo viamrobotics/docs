@@ -13,7 +13,7 @@ aliases:
 You can use filtering to selectively capture images using a machine learning (ML) model, for example to only capture images with people or specific objects in them.
 
 Contributors have written several filtering {{< glossary_tooltip term_id="module" text="modules" >}} that you can use to filter image capture.
-The following steps use the [`filtered_camera`](https://github.com/erh/filtered_camera) module:
+The following steps use the [`filtered_camera`](https://app.viam.com/module/viam/filtered-camera) module:
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -51,12 +51,16 @@ For example, if you are using the `EfficientDet-COCO` model, you could use a con
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "window_seconds": 0,
-  "objects": {
-    "Person": 0.8
-  },
   "camera": "camera-1",
-  "vision": "vision-1"
+  "vision_services": [
+    {
+      "vision": "vision-1",
+      "objects": {
+        "Person": 0.8
+      }
+    }
+  ],
+  "window_seconds": 0
 }
 ```
 

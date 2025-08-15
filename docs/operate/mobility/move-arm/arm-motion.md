@@ -9,6 +9,7 @@ aliases:
   - /how-tos/move-robot-arm/
   - /tutorials/motion/accessing-and-moving-robot-arm/
   - /tutorials/motion/
+  - /operate/mobility/move-arm/arm-no-code/
 date: "2025-05-21"
 ---
 
@@ -142,7 +143,7 @@ The available geometry types are:
 | Geometry type | Description | Dimensions to define |
 | ------------- | ----------- | ------------------ |
 | box           | A rectangular prism. | `x`, `y`, `z`: length in each direction in mm. |
-| capsule       | A cylinder with hemispherical end caps. | `radius` in mm, `length` in mm between the centers of the hemispherical end caps. |
+| capsule       | A cylinder with hemispherical end caps. | `radius` in mm, overall `length` in mm. |
 | sphere        | A sphere. | `radius` in mm. |
 | mesh          | A 3D model defined by a mesh. | `triangles`: a list of triangles, each defined by three vertices. |
 
@@ -317,7 +318,7 @@ Follow the steps below to construct the necessary objects and pass them to `Move
    {{< /tabs >}}
 
    {{% alert title="Tip" color="tip" %}}
-   To get a better intuition for poses and where you want the arm to move, try [driving the arm manually with the control interface](/operate/mobility/move-arm/arm-no-code/) and notice how the pose indicated in the control interface corresponds to the arm's position in the real world.
+   To get a better intuition for poses and where you want the arm to move, try driving the arm manually from the **CONTROL** tab or **TEST** panel and notice how the pose indicated in the control interface corresponds to the arm's position in the real world.
 
    You can also [use the **VISUALIZE** tab](/operate/reference/services/frame-system/#visualize-components-and-frames) to see a representation of your arm's geometry and reference frames.
    {{% /alert %}}

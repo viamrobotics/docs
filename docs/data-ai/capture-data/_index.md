@@ -8,4 +8,5 @@ empty_node: true
 open_on_desktop: true
 header_only: true
 noedit: true
+canonical: "/data-ai/capture-data/capture-sync/"
 ---

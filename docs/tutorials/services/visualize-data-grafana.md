@@ -41,7 +41,7 @@ For general guidance appropriate for any third-party visualization tool, see [Vi
 Before following this tutorial, ensure you have:
 
 - Added a new machine on [Viam](https://app.viam.com) and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.
-- A configured [sensor component](/operate/reference/components/sensor/), such as the [`bme280`](https://github.com/viam-modules/bosch/) sensor, that reports data.
+- A configured [sensor component](/operate/reference/components/sensor/), such as the [`bme280`](https://app.viam.com/module/viam/bosch) sensor, that reports data.
   If it's a physical sensor, make sure to connect it to your machine's computer.
 
   - This tutorial uses a dataset of plant moisture measurements, originally captured for our [Plant watering tutorial](/tutorials/projects/make-a-plant-watering-robot/) using an analog resistive soil moisture sensor connected to an analog-to-digital-converter (ADC).

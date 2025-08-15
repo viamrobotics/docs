@@ -209,7 +209,7 @@ Use the template and example below to populate the JSON file with a single key, 
 
 ## Configure a `customlinux` board
 
-Configure your board as a [`customlinux`](https://github.com/viam-modules/customlinux/) board to use your board definitions file:
+Configure your board as a [`customlinux`](https://app.viam.com/module/viam/customlinux) board to use your board definitions file:
 
 {{< tabs name="Configure a customlinux board" >}}
 {{% tab name="Config Builder" %}}

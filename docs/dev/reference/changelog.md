@@ -44,9 +44,25 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="removed" title="Deprecated: AddTagsToBinaryDataByFilter and RemoveTagsFromBinaryDataByFilter" date="2025-08-07" %}}
+
+The methods `AddTagsToBinaryDataByFilter` and `RemoveTagsFromBinaryDataByFilter` are deprecated.
+
+Instead use [BinaryDataByFilter](/dev/reference/apis/data-client/#binarydatabyfilter), [AddTagsToBinaryDataByIDs](/dev/reference/apis/data-client/#addtagstobinarydatabyids), and [RemoveTagsFromBinaryDataByIDs](/dev/reference/apis/data-client/#removetagsfrombinarydatabyids).
+
+{{% /changelog %}}
+
+{{% changelog color="added" title="Use folders to organize resources" date="2025-08-01" %}}
+
+You can now use folders on machines and in fragments to organize resources.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Bluetooth provisioning" date="2025-07-28" %}}
+
 Added support for Bluetooth Low Energy (BLE) provisioning, allowing devices to be set up over Bluetooth connection.
 For an example implementation, see the [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_provisioning/).
+
 {{% /changelog %}}
 
 {{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-23" %}}
@@ -104,7 +120,7 @@ For more information, see [Rename a module](/operate/get-started/other-hardware/
 {{% changelog color="removed" title="Frame tab removed, use Add Frame button" date="2025-05-15" %}}
 
 The frame tab no longer exists.
-To add a frame to a component, click the **+ Add Frame** button on the component's configuration card.
+To add a frame to a component, click the **+ Add frame** button on the component's configuration card.
 
 {{% /changelog %}}
 
@@ -415,36 +431,36 @@ The following resource models have moved to modules.
 <!-- prettier-ignore -->
 | Resource | Model |
 | -------- | ----- |
-| arm | [`lite6`](https://github.com/viam-modules/viam-ufactory-xarm) |
-| arm | [`xArm6`](https://github.com/viam-modules/viam-ufactory-xarm) |
-| arm | [`xArm7`](https://github.com/viam-modules/viam-ufactory-xarm) |
-| arm | [`ur5e`](https://github.com/viam-modules/universal-robots) |
-| board | [`customlinux`](https://github.com/viam-modules/customlinux/) |
-| board | [`jetson`](https://github.com/viam-modules/nvidia) |
-| board | [`pca9685`](https://github.com/viam-modules/pca/tree/main) |
-| board | [`odroid`](https://github.com/viam-modules/hardkernel) |
-| board | [`ti`](https://github.com/viam-modules/texas-instruments) |
-| board | [`pi`](https://github.com/viam-modules/raspberry-pi) |
-| board | [`orange-pi`](https://github.com/viam-modules/orange-pi) |
-| board | [`upboard`](https://github.com/viam-modules/up) |
-| motor | [`tmc5072`](https://github.com/viam-modules/analog-devices) |
-| motor | [`28byj-48`](https://github.com/viam-modules/uln2003) |
-| encoder | [`ams-as5048`](https://github.com/viam-modules/ams/) |
-| movement sensor | [`adxl345`](https://github.com/viam-modules/analog-devices) |
-| movement sensor | [`dual-gps-rtk`](https://github.com/viam-modules/gps/) |
-| movement sensor | [`gps-nmea-rtk-pmtk`](https://github.com/viam-modules/gps/) |
-| movement sensor | [`gps-nmea-rtk-serial`](https://github.com/viam-modules/gps/) |
-| movement sensor | [`gps-nmea`](https://github.com/viam-modules/gps/) |
-| movement sensor | [`imu-wit`](https://github.com/viam-modules/wit-motion) |
-| movement sensor | [`imu-wit-hwt905`](https://github.com/viam-modules/wit-motion) |
-| movement sensor | [`mpu6050`](https://github.com/viam-modules/tdk-invensense) |
-| power sensor | [`ina219`](https://github.com/viam-modules/texas-instruments) |
-| power sensor | [`ina226`](https://github.com/viam-modules/texas-instruments) |
-| power sensor | [`renogy`](https://github.com/randhid/renogy) |
-| sensor | [`bme280`](https://github.com/viam-modules/bosch) |
-| sensor | [`sensirion-sht3xd`](https://github.com/viam-modules/sensirion) |
-| sensor | [`pi`](https://github.com/viam-modules/raspberry-pi) |
-| sensor | [`ultrasonic`](https://github.com/viam-modules/viam-ultrasonic) |
+| arm | [`lite6`](https://app.viam.com/module/viam/ufactory) |
+| arm | [`xArm6`](https://app.viam.com/module/viam/ufactory) |
+| arm | [`xArm7`](https://app.viam.com/module/viam/ufactory) |
+| arm | [`ur5e`](https://app.viam.com/module/viam/universal-robots) |
+| board | [`customlinux`](https://app.viam.com/module/viam/customlinux) |
+| board | [`jetson`](https://app.viam.com/module/viam/nvidia) |
+| board | [`pca9685`](https://app.viam.com/module/viam/pca) |
+| board | [`odroid`](https://app.viam.com/module/viam/hardkernel) |
+| board | [`ti`](https://app.viam.com/module/viam/texas-instruments) |
+| board | [`pi`](https://app.viam.com/module/viam/raspberry-pi) |
+| board | [`orange-pi`](https://app.viam.com/module/viam/orange-pi) |
+| board | [`upboard`](https://app.viam.com/module/viam/up) |
+| motor | [`tmc5072`](https://app.viam.com/module/viam/analog-devices) |
+| motor | [`28byj-48`](https://app.viam.com/module/viam/uln2003) |
+| encoder | [`ams-as5048`](https://app.viam.com/module/viam/ams) |
+| movement sensor | [`adxl345`](https://app.viam.com/module/viam/analog-devices) |
+| movement sensor | [`dual-gps-rtk`](https://app.viam.com/module/viam/gps) |
+| movement sensor | [`gps-nmea-rtk-pmtk`](https://app.viam.com/module/viam/gps) |
+| movement sensor | [`gps-nmea-rtk-serial`](https://app.viam.com/module/viam/gps) |
+| movement sensor | [`gps-nmea`](https://app.viam.com/module/viam/gps) |
+| movement sensor | [`imu-wit`](https://app.viam.com/module/viam/wit-motionn) |
+| movement sensor | [`imu-wit-hwt905`](https://app.viam.com/module/viam/wit-motion) |
+| movement sensor | [`mpu6050`](https://app.viam.com/module/michaellee1019/mpu6050_orientation) |
+| power sensor | [`ina219`](https://app.viam.com/module/viam/texas-instruments) |
+| power sensor | [`ina226`](https://app.viam.com/module/viam/texas-instruments) |
+| power sensor | [`renogy`](https://app.viam.com/module/rand/renogy) |
+| sensor | [`bme280`](https://app.viam.com/module/viam/bosch) |
+| sensor | [`sensirion-sht3xd`](https://app.viam.com/module/viam/sensirion) |
+| sensor | [`pi`](https://app.viam.com/module/viam/raspberry-pi) |
+| sensor | [`ultrasonic`](https://app.viam.com/module/viam/ultrasonic) |
 | ML model | [`TFLite CPU`](https://app.viam.com/module/viam/tflite_cpu) |
 
 The following models were removed:
@@ -473,7 +489,7 @@ For more information, see [Data management service](/data-ai/capture-data/captur
 
 {{% changelog date="2024-09-20" color="added" title="Pi models moved to module" %}}
 
-The Raspberry Pi 4, 3, and Zero 2 W boards are now supported by [`viam:raspberry-pi:rpi`](https://github.com/viam-modules/raspberry-pi).
+The Raspberry Pi 4, 3, and Zero 2 W boards are now supported by [`viam:raspberry-pi:rpi`](https://app.viam.com/module/viam/raspberry-pi).
 
 {{% /changelog %}}
 
@@ -710,7 +726,7 @@ Check out [this guide](/data-ai/capture-data/filter-before-sync/) for more infor
 
 {{% changelog date="2023-12-31" color="added" title="Raspberry Pi 5 Support" %}}
 
-You can now run `viam-server` on a Raspberry Pi 5 with the new board model [`pi5`](https://github.com/viam-modules/raspberry-pi).
+You can now run `viam-server` on a Raspberry Pi 5 with the new board model [`pi5`](https://app.viam.com/module/viam/raspberry-pi).
 
 {{% /changelog %}}
 

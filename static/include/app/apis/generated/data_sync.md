@@ -15,6 +15,7 @@ Uploaded binary data can be found under the **Images**, **Point clouds**, or **F
 - `file_extension` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The file extension of binary data, including the period, for example .jpg, .png, .pcd. The backend routes the binary to its corresponding mime type based on this extension. Files with a .jpeg, .jpg, or .png extension will appear in the Images tab.
 - `method_parameters` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional dictionary of method parameters. No longer in active use.
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of tags to allow for tag-based data filtering when retrieving data.
+- `dataset_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of datasets to add the data to.
 - `data_request_times` (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html)]) (optional): Optional tuple containing datetime objects denoting the times this data was requested [0] by the robot and received [1] from the appropriate sensor.
 
 **Returns:**
@@ -40,7 +41,8 @@ file_id = await data_client.binary_data_capture_upload(
     tags=["tag_1", "tag_2"],
     data_request_times=[time_requested, time_received],
     file_extension=".jpg",
-    binary_data=b"Encoded image bytes"
+    binary_data=b"Encoded image bytes",
+    dataset_ids=["dataset_1", "dataset_2"]
 )
 ```
 
@@ -62,9 +64,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   binary to its corresponding mime type based on this extension. Files with
   a .jpeg, .jpg, or .png extension will be saved to the images tab.
 - `dataRequestTimes` (Date) (required): Tuple containing `Date` objects denoting the times
-  this data was requested[0] by the robot and received[1] from the
+  this data was requested\[0] by the robot and received\[1] from the
   appropriate sensor.
-- `tags` (string) (optional): The list of tags to allow for tag-based filtering when
+- `tags` (string) (optional): The list of tags to allow for tag\-based filtering when
   retrieving data.
 
 **Returns:**
@@ -92,19 +94,20 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `binaryData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `binaryData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\> (required)
 - `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `fileExtension` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
 - `dataRequestTimes` ([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `datasetIds` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 
@@ -145,13 +148,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### TabularDataCaptureUpload
 
-Upload tabular data collected on your machine through a specific {{< glossary_tooltip term_id="component" text="component" >}} to Viam.
-Uploaded tabular data can be found under the **Sensors** subtab of the app's [**Data** tab](https://app.viam.com/data).
+Upload tabular data collected on your machine through a specific {{< glossary_tooltip term_id="component" text="component" >}} to [Viam](https://app.viam.com).
+Uploaded tabular data can be found under the **Sensors** subtab of the [**Data** tab](https://app.viam.com/data).
 
 {{< alert title="Size limit" color="note" >}}
 Viam enforces a maximum size of 4MB for any single reading for tabular data.
 {{< /alert >}}
-
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -213,11 +215,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `componentName` (string) (required): The name of the component used to capture the data.
 - `methodName` (string) (required): The name of the method used to capture the data.
 - `dataRequestTimes` (Date) (required): Array of Date tuples, each containing two `Date`
-  objects denoting the times this data was requested[0] by the robot and
-  received[1] from the appropriate sensor. Passing a list of tabular data
-  and Timestamps with length n > 1 will result in n datapoints being
+  objects denoting the times this data was requested\[0] by the robot and
+  received\[1] from the appropriate sensor. Passing a list of tabular data
+  and Timestamps with length n \> 1 will result in n datapoints being
   uploaded, all tied to the same metadata.
-- `tags` (string) (optional): The list of tags to allow for tag-based filtering when
+- `tags` (string) (optional): The list of tags to allow for tag\-based filtering when
   retrieving data.
 
 **Returns:**
@@ -230,8 +232,10 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 const fileId = await dataClient.tabularDataCaptureUpload(
   [
     {
-      timestamp: '2025-03-26T10:00:00Z',
-      value: 10,
+      readings: {
+        timestamp: '2025-03-26T10:00:00Z',
+        value: 10,
+      },
     },
   ],
   '123abc45-1234-5678-90ab-cdef12345678',
@@ -254,18 +258,18 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `tabularData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>> (required)
+- `tabularData` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\> (required)
 - `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
-- `dataRequestTimes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))>? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
+- `dataRequestTimes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))\>? (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 
@@ -333,6 +337,7 @@ All other types of uploaded files can be found under the **Files** subtab of the
 - `method_parameters` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional dictionary of the method parameters. No longer in active use.
 - `file_extension` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional file extension. The empty string "" will be assigned as the file extension if one isn’t provided. Files with a .jpeg, .jpg, or .png extension will be saved to the Images tab.
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of tags to allow for tag-based filtering when retrieving data.
+- `dataset_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of datasets to add the data to.
 
 **Returns:**
 
@@ -350,7 +355,8 @@ file_id = await data_client.file_upload(
     part_id="INSERT YOUR PART ID",
     tags=["tag_1", "tag_2"],
     file_name="your-file",
-    file_extension=".txt"
+    file_extension=".txt",
+    dataset_ids=["dataset_1", "dataset_2"]
 )
 ```
 
@@ -367,12 +373,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
+- `datasetIds` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 
@@ -412,7 +419,8 @@ Future<void> uploadTextFile() async {
       file.path,
       fileName: fileName,
       "<YOUR-PART-ID>",
-      tags: ["text_file", "document"]
+      tags: ["text_file", "document"],
+      datasetIds: ["datasetId"]
     );
     print('Upload success: $result');
   } catch (e) {
@@ -442,6 +450,7 @@ Uploaded files can be found under the **Files** subtab of the [**Data** tab](htt
 - `method_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional name of the method associated with the file.
 - `method_parameters` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional dictionary of the method parameters. No longer in active use.
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of tags to allow for tag-based filtering when retrieving data.
+- `dataset_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of datasets to add the data to.
 
 **Returns:**
 
@@ -458,6 +467,7 @@ Uploaded files can be found under the **Files** subtab of the [**Data** tab](htt
 file_id = await data_client.file_upload_from_path(
     part_id="INSERT YOUR PART ID",
     tags=["tag_1", "tag_2"],
+    dataset_ids=["dataset_1", "dataset_2"],
     filepath="/Users/<your-username>/<your-directory>/<your-file.txt>"
 )
 ```
@@ -486,6 +496,7 @@ Uploaded streaming data can be found under the [**Data** tab](https://app.viam.c
 - `method_parameters` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional dictionary of the method parameters. No longer in active use.
 - `data_request_times` (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html)]) (optional): Optional tuple containing datetime objects denoting the times this data was requested [0] by the robot and received [1] from the appropriate sensor.
 - `tags` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of tags to allow for tag-based filtering when retrieving data.
+- `dataset_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): Optional list of datasets to add the data to.
 
 **Returns:**
 
@@ -509,7 +520,8 @@ file_id = await data_client.streaming_data_capture_upload(
     component_name='left_motor',
     method_name='IsPowered',
     data_request_times=[time_requested, time_received],
-    tags=["tag_1", "tag_2"]
+    tags=["tag_1", "tag_2"],
+    dataset_ids=["dataset_1", "dataset_2"]
 )
 ```
 
@@ -520,19 +532,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `bytes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)> (required)
+- `bytes` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\> (required)
 - `partId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `fileExtension` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `componentType` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 - `methodName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
-- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any>? (optional)
+- `methodParameters` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), Any\>? (optional)
 - `dataRequestTimes` ([DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html), [DateTime](https://api.flutter.dev/flutter/dart-core/DateTime-class.html))? (optional)
-- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (optional)
+- `datasetIds` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
+- `tags` [Iterable](https://api.flutter.dev/flutter/dart-core/Iterable-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
 
 **Example:**
 

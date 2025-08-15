@@ -59,13 +59,13 @@ const machineCookieKey = window.location.pathname.split("/")[2];
 For developing your application on localhost:
 
 1. Run your web server.
-1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
+1. Run the following commands specifying the address where your app is running on localhost and a machine to test on.
    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
 
    {{< tabs >}}
    {{% tab name="Template" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$" data-output="3-10"}
 viam login
 viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID>
 ```
@@ -73,7 +73,7 @@ viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MA
 {{% /tab %}}
 {{% tab name="Example" %}}
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
+```sh {class="command-line" data-prompt="$" data-output="3-10"}
 viam login
 viam module local-app-testing --app-url http://localhost:3000 --machine-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
@@ -108,7 +108,15 @@ To deploy your application with Viam you must package it as a module and upload 
     {
       "name": "your-app-name",
       "type": "single_machine",
-      "entrypoint": "dist/index.html"
+      "entrypoint": "dist/index.html",
+      "fragmentIds": [],
+      "logoPath": "static/logo.png",
+      "customizations": {
+        "machinePicker": {
+          "heading": "Heading to display on branded authentication page",
+          "subheading": "Subheading to display on branded authentication page"
+        }
+      }
     }
   ]
 }
@@ -122,12 +130,20 @@ To deploy your application with Viam you must package it as a module and upload 
   "module_id": "acme:dashboard",
   "visibility": "public",
   "url": "https://github.com/acme/dashboard",
-  "description": "An example dashboard for a fictitious company called Acme.",
+  "description": "An example dashboard for a fictitious air quality company called acme.",
   "applications": [
     {
       "name": "dashboard",
       "type": "single_machine",
-      "entrypoint": "dist/index.html"
+      "entrypoint": "dist/index.html",
+      "fragmentIds": [],
+      "logoPath": "static/logo.png",
+      "customizations": {
+        "machinePicker": {
+          "heading": "Air monitoring dashboard",
+          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        }
+      }
     }
   ]
 }
@@ -161,6 +177,9 @@ The `applications` field is an array of application objects with the following p
 | `name`       | string | The name of your application, which will be a part of the application's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/get-started/other-hardware/naming-modules/#valid-application-identifiers). |
 | `type` | string | The type of application (currently only `"single_machine"` is supported). |
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
+| `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be usable with a Viam application. |
+| `logoPath` | string | The URL or the relative path to the logo to display on the authentication screen for the application. |
+| `customizations` | object | Override the branding heading and subheading to display on the authentication screen. Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. The header may not be longer than 60 characters. The subheader may not be longer than 256 characters. |
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
@@ -215,7 +234,7 @@ Users will be prompted to authenticate with their Viam credentials before access
 1. Your application is rendered with access to the selected machine.
    The credentials for that one machine are provided in the cookies.
 
-## Example
+## Examples
 
 For a TypeScript example see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
 

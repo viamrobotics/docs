@@ -101,7 +101,7 @@ The following attributes are available for `webcam` cameras:
 
 ### Find a video path using a discovery service
 
-The [`rand:find-webcams:webcam-discovery`](https://github.com/randhid/find-webcams) service helps you identify path options.
+The [`rand:find-webcams:webcam-discovery`](https://app.viam.com/module/rand/find-webcams) service helps you identify path options.
 To add and use the service:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.

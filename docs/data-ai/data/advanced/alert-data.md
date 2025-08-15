@@ -66,9 +66,7 @@ You can configure triggers to alert in the following scenarios:
       Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
-{{% tab name="JSON mode" %}}
-
-To configure your trigger in **JSON** mode, use the following JSON template:
+{{% tab name="JSON Example" %}}
 
 ```json {class="line-numbers linkable-line-numbers" data-line="32-49"}
 {

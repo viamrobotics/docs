@@ -64,7 +64,7 @@ Note that your machine must be connected to the internet for data sync and email
 - [`viam-server`](/operate/get-started/setup/)
 - [Ultralytics YOLOv8](https://docs.ultralytics.com/), integrated with Viam using the [YOLOv8 modular service](https://github.com/viam-labs/YOLOv8)
 - [YOLOv8 Hard Hat Detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection)
-- [`objectfilter-camera`](https://github.com/felixreichenbach/objectfilter-camera) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
+- [`objectfilter-camera`](https://app.viam.com/module/felixr/object-filter) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
 - [Google Cloud Functions](https://cloud.google.com/functions)
 - Python 3.8 or newer
 - [SendGrid](https://sendgrid.com/en-us)

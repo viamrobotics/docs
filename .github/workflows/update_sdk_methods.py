@@ -537,7 +537,11 @@ def parse_method_usage(usage_string):
                 elif len(param_raw) == 2:
                     type_name = param_raw[0]
                     param_type = param_raw[1]
-                    type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                    try:
+                        type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                    except:
+                        print("WARNING: No type link found: {}, {}".format(usage_string, param))
+                        type_link = None
                 ## Handle returns, or parameters with inferred data types:
                 elif len(param_raw) == 1:
                     ## Hardcode for type inference for angleDeg param:
@@ -569,7 +573,11 @@ def parse_method_usage(usage_string):
                     else:
                         type_name = ''
                         param_type = param_raw[0]
-                        type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                        type_link = None
+                        try:
+                            type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                        except:
+                            print("WARNING: No type link found: {}, {}, {}".format(usage_string, param, param_raw))
 
                 if type_link:
                     param_type_link = type_link
@@ -618,6 +626,10 @@ def format_method_usage(parsed_usage_string, go_method_name, resource, path_to_m
             return_string += f"- [({param_type})]({param_type_link}): A map containing the measurements from the sensor. Contents depend on sensor model and can be of any type."
         elif param_type == "error":
             return_string += f"- [({param_type})]({param_type_link}): An error, if one occurred."
+        elif param_type_link is None and type_name:
+            return_string += f"- `{type_name}` ({param_type})"
+        elif param_type_link is None and not type_name:
+            return_string += f"- `{param_type}`"
         else:
             ## Check for param and return description overrides:
             param_or_return_description = ''
@@ -705,15 +717,16 @@ def check_for_unused_methods(methods, type):
                         if py_method_name in methods['python'][type][resource]:
                             methods['python'][type][resource][py_method_name]["used"] = True
                         else:
-                            print(f"WARNING: {type} {resource} {py_method_name} is specified in SDK protos map but not found in SDK docs")
+                            print(f"WARNING: {type} {resource} {py_method_name} is specified in SDK protos map but not found in Python SDK docs")
                             warnings = True
 
                 if go_method_name:
                     if 'go' in sdks and resource in methods['go'][type]:
+
                         if go_method_name in methods['go'][type][resource]:
                             methods['go'][type][resource][go_method_name]["used"] = True
                         else:
-                            print(f"WARNING: {type} {resource} {go_method_name} is specified in SDK protos map but not found in SDK docs")
+                            print(f"WARNING: {type} {resource} {go_method_name} is specified in SDK protos map but not found in Go SDK docs")
                             warnings = True
 
                 if flutter_method_name:
@@ -721,7 +734,7 @@ def check_for_unused_methods(methods, type):
                         if flutter_method_name in methods['flutter'][type][resource]:
                             methods['flutter'][type][resource][flutter_method_name]["used"] = True
                         else:
-                            print(f"WARNING: {type} {resource} {flutter_method_name} is specified in SDK protos map but not found in SDK docs")
+                            print(f"WARNING: {type} {resource} {flutter_method_name} is specified in SDK protos map but not found in Flutter SDK docs")
                             warnings = True
 
                 if typescript_method_name:
@@ -729,7 +742,7 @@ def check_for_unused_methods(methods, type):
                         if typescript_method_name in methods['typescript'][type][resource]:
                             methods['typescript'][type][resource][typescript_method_name]["used"] = True
                         else:
-                            print(f"WARNING: {type} {resource} {typescript_method_name} is specified in SDK protos map but not found in SDK docs")
+                            print(f"WARNING: {type} {resource} {typescript_method_name} is specified in SDK protos map but not found in Typescript SDK docs")
                             warnings = True
 
     for lang in sdks:

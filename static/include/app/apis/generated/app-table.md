@@ -35,6 +35,7 @@
 | [`GetRobotParts`](/dev/reference/apis/fleet/#getrobotparts) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`GetRobotPart`](/dev/reference/apis/fleet/#getrobotpart) | Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`GetRobotPartLogs`](/dev/reference/apis/fleet/#getrobotpartlogs) | Get the logs associated with a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |
+| [`GetRobotPartByNameAndLocation`](/dev/reference/apis/fleet/#getrobotpartbynameandlocation) | Query a specific robot part by name and location id. |
 | [`TailRobotPartLogs`](/dev/reference/apis/fleet/#tailrobotpartlogs) | Get an asynchronous iterator that receives live machine part logs. |
 | [`GetRobotPartHistory`](/dev/reference/apis/fleet/#getrobotparthistory) | Get a list containing the history of a machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`UpdateRobotPart`](/dev/reference/apis/fleet/#updaterobotpart) | Change the name of and assign an optional new configuration to a machine {{< glossary_tooltip term_id="part" text="part" >}}. |
@@ -54,6 +55,7 @@
 | [`UpdateRobotPartMetadata`](/dev/reference/apis/fleet/#updaterobotpartmetadata) | Updates the user-defined metadata for a machine part. |
 | [`ListFragments`](/dev/reference/apis/fleet/#listfragments) | Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in the organization you are currently authenticated to. |
 | [`ListMachineFragments`](/dev/reference/apis/fleet/#listmachinefragments) | Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs. |
+| [`ListMachineSummaries`](/dev/reference/apis/fleet/#listmachinesummaries) | Lists machine summaries for an organization, optionally filtered by fragment IDs, location IDs, and limit. |
 | [`GetFragment`](/dev/reference/apis/fleet/#getfragment) | Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID. |
 | [`CreateFragment`](/dev/reference/apis/fleet/#createfragment) | Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}. |
 | [`UpdateFragment`](/dev/reference/apis/fleet/#updatefragment) | Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and its config and/or visibility. |
@@ -80,3 +82,4 @@
 | [`ListKeys`](/dev/reference/apis/fleet/#listkeys) | List all keys for the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to. |
 | [`CreateKeyFromExistingKeyAuthorizations`](/dev/reference/apis/fleet/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations. |
 | [`GetAppContent`](/dev/reference/apis/fleet/#getappcontent) | Retrieve the app content for an organization. |
+| [`GetAppBranding`](/dev/reference/apis/fleet/#getappbranding) | Retrieves the app branding for an organization or app. |

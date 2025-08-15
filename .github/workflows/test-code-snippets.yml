@@ -1,0 +1,313 @@
+name: Test Code Samples
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'static/include/examples/**'
+      - '.github/workflows/test-code-snippets.yml'
+  schedule:
+    # Run every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  test-code-samples:
+    runs-on: ubuntu-latest
+    # Allow trusted PRs and other events
+    if: github.repository_owner == 'viamrobotics'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Start viam-server in background
+      run: |
+
+        # Start viam-server in background and save PID
+        sudo curl -H "key_id:1030f25a-f4f2-4872-9762-e33fa1e0444d" -H "key:$TEST_MACHINE_KEY" "https://app.viam.com/api/json1/config?id=deb8782c-7b48-4d35-812d-2caa94b61f77&client=true" -o /etc/viam.json
+        uname -m
+        curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server && chmod 755 viam-server && sudo ./viam-server --config /etc/viam.json &
+        VIAM_PID=$!
+        echo "VIAM_PID=$VIAM_PID" >> $GITHUB_ENV
+        echo "Started viam-server with PID: $VIAM_PID"
+
+        # Wait a moment for it to start
+        sleep 5
+
+        # Check if it's running
+        if ps -p $VIAM_PID > /dev/null; then
+          echo "viam-server is running with PID: $VIAM_PID"
+        else
+          echo "Failed to start viam-server"
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_PART_ID: "824b6570-7b1d-4622-a19d-37c472dba467"
+        TEST_MACHINE_KEY: ${{ secrets.TEST_MACHINE_KEY }}
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install viam-sdk
+        pip install asyncio
+        pip install pytest
+        pip install pytest-asyncio
+
+
+    - name: Find and list Python files
+      run: |
+        echo "Found Python files in examples directory:"
+        find static/include/examples -name "*.py" -type f | sort
+
+    - name: Test Python code samples
+      if: github.repository_owner == 'viamrobotics'
+      run: |
+        # Find all Python files in the examples directory
+        python_files=($(find static/include/examples -name "*.py" -type f | xargs))
+
+        # Initialize counters
+        total_files_py=0
+        passed_files_py=0
+        failed_files_py=0
+
+        echo "Starting to test Python code samples..."
+        echo "========================================"
+
+        for file in "${python_files[@]}"; do
+          echo "Testing: $file"
+          total_files_py=$((total_files_py + 1))
+
+          # Run the test with environment variables explicitly passed
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" python "$file"; then
+            passed_files_py=$((passed_files_py + 1))
+            echo "✅ PASSED: $file"
+          else
+            failed_files_py=$((failed_files_py + 1))
+            echo "❌ FAILED: $file"
+          fi
+
+          echo "----------------------------------------"
+        done
+
+        # Summary
+        echo "========================================"
+        echo "TEST SUMMARY:"
+        echo "Total files tested: $total_files_py"
+        echo "Passed: $passed_files_py"
+        echo "Failed: $failed_files_py"
+        echo "Skipped: $((total_files_py - passed_files_py - failed_files_py))"
+
+        # Save results for later use
+        echo "total=$total_files_py" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files_py" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files_py" >> $GITHUB_OUTPUT
+
+        # Exit with failure if any tests failed
+        if [ $failed_files_py -gt 0 ]; then
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
+        VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: static/include/examples/go.mod
+
+    - name: Find and list Go files
+      run: |
+        echo "Found Go files in examples directory:"
+        find static/include/examples -name "*.go" -type f | sort
+
+    - name: Test Go code samples
+      if: github.repository_owner == 'viamrobotics'
+      run: |
+        # Find all Go files in the examples directory
+        go_files=($(find static/include/examples -name "*.go" -type f | xargs))
+
+        # Initialize counters
+        total_files_go=0
+        passed_files_go=0
+        failed_files_go=0
+
+        echo "Starting to test Go code samples..."
+        echo "========================================"
+
+        for file in "${go_files[@]}"; do
+          echo "Testing: $file"
+          total_files_go=$((total_files_go + 1))
+
+          # Get the directory and filename more safely
+          file_dir=$(dirname "$file")
+          file_name=$(basename "$file")
+
+          echo "File directory: $file_dir"
+          echo "File name: $file_name"
+
+          # Check if directory exists before changing to it
+          if [ -d "$file_dir" ]; then
+            if (cd "$file_dir" && VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$file_name"); then
+              passed_files_go=$((passed_files_go + 1))
+              echo "✅ PASSED: $file"
+            else
+              failed_files_go=$((failed_files_go + 1))
+              echo "❌ FAILED: $file"
+            fi
+          else
+            failed_files_go=$((failed_files_go + 1))
+            echo "❌ FAILED: Directory does not exist: $file_dir"
+          fi
+
+          echo "----------------------------------------"
+        done
+
+        # Summary
+        echo "========================================"
+        echo "TEST SUMMARY:"
+        echo "Total files tested: $total_files_go"
+        echo "Passed: $passed_files_go"
+        echo "Failed: $failed_files_go"
+        echo "Skipped: $((total_files_go - passed_files_go - failed_files_go))"
+
+        # Save results for later use
+        echo "total=$total_files_go" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files_go" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files_go" >> $GITHUB_OUTPUT
+
+        # Exit with failure if any tests failed
+        if [ $failed_files_go -gt 0 ]; then
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
+        VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "23"
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Find and list TypeScript files
+      run: |
+        echo "Found TypeScript files in examples directory:"
+        find static/include/examples -name "*.ts" -type f | sort
+
+    - name: Test TypeScript code samples
+      if: github.repository_owner == 'viamrobotics'
+      run: |
+        # Find all TypeScript files in the examples directory
+        ts_files=($(find static/include/examples -name "*.ts" -type f | xargs))
+
+        # Initialize counters
+        total_files_ts=0
+        passed_files_ts=0
+        failed_files_ts=0
+
+        echo "Starting to test TypeScript code samples..."
+        echo "========================================"
+
+        for file in "${ts_files[@]}"; do
+          echo "Testing: $file"
+          total_files_ts=$((total_files_ts + 1))
+
+          # Run the test with environment variables explicitly passed
+          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" node "$file"; then
+            passed_files_ts=$((passed_files_ts + 1))
+            echo "✅ PASSED: $file"
+          else
+            failed_files_ts=$((failed_files_ts + 1))
+            echo "❌ FAILED: $file"
+          fi
+
+          echo "----------------------------------------"
+        done
+
+        # Summary
+        echo "========================================"
+        echo "TEST SUMMARY:"
+        echo "Total files tested: $total_files_ts"
+        echo "Passed: $passed_files_ts"
+        echo "Failed: $failed_files_ts"
+        echo "Skipped: $((total_files_ts - passed_files_ts - failed_files_ts))"
+
+        # Save results for later use
+        echo "total=$total_files_ts" >> $GITHUB_OUTPUT
+        echo "passed=$passed_files_ts" >> $GITHUB_OUTPUT
+        echo "failed=$failed_files_ts" >> $GITHUB_OUTPUT
+
+        # Exit with failure if any tests failed
+        if [ $failed_files_ts -gt 0 ]; then
+          exit 1
+        fi
+      env:
+        VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
+        VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
+        TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
+        VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
+        VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+
+    - name: Stop viam-server
+      if: always()  # This ensures cleanup runs even if tests fail
+      run: |
+        if [ ! -z "$VIAM_PID" ]; then
+          echo "Stopping viam-server with PID: $VIAM_PID"
+          sudo kill $VIAM_PID 2>/dev/null || true
+
+          # Wait for it to stop gracefully
+          for i in {1..10}; do
+            if ! ps -p $VIAM_PID > /dev/null 2>&1; then
+              echo "viam-server stopped gracefully"
+              break
+            fi
+            sleep 1
+          done
+
+          # Force kill if still running
+          if ps -p $VIAM_PID > /dev/null 2>&1; then
+            echo "Force killing viam-server"
+            sudo kill -9 $VIAM_PID 2>/dev/null || true
+          fi
+        else
+          echo "No viam-server PID found"
+        fi
+
+    - name: Login to Jira
+      if: failure()
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+    - name: Create Jira ticket
+      if: failure()
+      id: create
+      uses: atlassian/gajira-create@v3
+      env:
+        GITHUB_RUN_ID: ${{ github.run_id }}
+      with:
+        project: DOCS
+        issuetype: Bug
+        summary: Code Sample Tests Failed
+        description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
+    - name: Log created Jira issue
+      if: failure()
+      run: echo "Issue ${{ steps.create.outputs.issue }} was created"

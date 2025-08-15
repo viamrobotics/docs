@@ -60,7 +60,7 @@ From here, you can find:
 
 ## Mapping with a live machine (Online Mode)
 
-To run SLAM in the cloud, configure the [`cloudslam-wrapper`](https://github.com/viam-modules/cloudslam-wrapper) module and data capture on your machine.
+To run SLAM in the cloud, configure the [`cloudslam-wrapper`](https://app.viam.com/module/viam/cloudslam-wrapper) module and data capture on your machine.
 
 ### Requirements
 
@@ -372,7 +372,7 @@ You can see details about the it from your machine's **Location** page by clicki
 
 ## Upload a locally built map
 
-If you want to skip using CloudSLAM and build the map on your local machine, the [`cloudslam-wrapper`](https://github.com/viam-modules/cloudslam-wrapper) module also allows you to upload a locally built map to your **Location**.
+If you want to skip using CloudSLAM and build the map on your local machine, the [`cloudslam-wrapper`](https://app.viam.com/module/viam/cloudslam-wrapper) module also allows you to upload a locally built map to your **Location**.
 This lets you share locally built maps across machines in a location easily.
 
 This feature can also be used with SLAM algorithms that CloudSLAM does not currently support. As long as the algorithm implements the SLAM API, you can upload your maps.

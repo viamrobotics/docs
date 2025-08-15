@@ -82,6 +82,12 @@ For details on configuring versioning and environment variables for modules, see
 
 Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](/operate/get-started/other-hardware/micro-module/).
 
+{{< alert title="Tip: Organize resources into folders" color="tip" >}}
+
+If you have many components and services on one machine, you can add folders to your fragment and use them to organize the resources.
+
+{{< /alert >}}
+
 ## Browse supported hardware by component API
 
 The following modular components are available for computers and SBCs running `viam-server`.

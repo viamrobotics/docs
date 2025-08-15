@@ -76,11 +76,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -172,11 +172,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -276,7 +276,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
 
 **Example:**
 
@@ -285,6 +285,66 @@ var isItMoving = await myGripper.isMoving();
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Gripper/isMoving.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### IsHoldingSomething
+
+Return if the gripper is holding something.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([viam.components.gripper.gripper.Gripper.HoldingStatus](https://python.viam.dev/autoapi/viam/components/gripper/gripper/index.html#viam.components.gripper.gripper.Gripper.HoldingStatus)): see documentation on HoldingStatus for more information.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
+
+# Grab with the gripper.
+holding_status = await my_gripper.is_holding_something()
+# get the boolean result
+is_holding_something = holding_status.is_holding_something
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.is_holding_something).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(HoldingStatus)](https://pkg.go.dev/go.viam.com/rdk/components/gripper#HoldingStatus)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/gripper#Gripper).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[HoldingStatus](https://flutter.viam.dev/viam_sdk/HoldingStatus-class.html)\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Gripper/isHoldingSomething.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -369,11 +429,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
 
 **Example:**
 
@@ -469,57 +529,6 @@ console.log('Geometries:', geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getgeometries).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### GetKinematics
-
-Get the kinematics information associated with the gripper as the format and byte contents of the [kinematics file](/operate/reference/kinematic-chain-config/).
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- (Tuple[viam.components.gripper.KinematicsFileFormat.ValueType, [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
-
-# Get the kinematics information associated with the gripper.
-kinematics = await my_gripper.get_kinematics()
-
-# Get the format of the kinematics file.
-k_file = kinematics[0]
-
-# Get the byte contents of the file.
-k_bytes = kinematics[1]
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_kinematics).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(referenceframe.Model)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Model): The kinematics model of the resource.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -635,11 +644,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
 
 **Example:**
 
@@ -650,6 +659,76 @@ var result = myArm.doCommand(command);
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetKinematics
+
+Get the kinematics information associated with the gripper as the format and byte contents of the [kinematics file](/operate/reference/kinematic-chain-config/).
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[viam.components.gripper.KinematicsFileFormat.ValueType, [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
+
+# Get the kinematics information associated with the gripper.
+kinematics = await my_gripper.get_kinematics()
+
+# Get the format of the kinematics file.
+k_file = kinematics[0]
+
+# Get the byte contents of the file.
+k_bytes = kinematics[1]
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_kinematics).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(referenceframe.Model)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Model): The kinematics model of the resource.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Kinematics](https://flutter.viam.dev/viam_sdk/Kinematics-class.html)\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var kinematics = await myGripper.getKinematics();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Gripper/getKinematics.html).
 
 {{% /tab %}}
 {{< /tabs >}}
