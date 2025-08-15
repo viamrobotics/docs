@@ -9,6 +9,7 @@ let PIPELINE_ID = "";
 let ORG_ID = "b5e9f350-cbcf-4d2a-bbb1-a2e2fd6851e1";
 API_KEY = process.env.VIAM_API_KEY_DATA_REGIONS || "";
 API_KEY_ID = process.env.VIAM_API_KEY_ID_DATA_REGIONS || "";
+PIPELINE_ID = "16b8a3e5-7944-4e1c-8ccd-935c1ba3be59";
 // :remove-end:
 
 async function main(): Promise<void> {
@@ -21,28 +22,6 @@ async function main(): Promise<void> {
         },
     });
 
-    // :remove-start:
-    const pipelinesToDelete = await client.dataClient.listDataPipelines(ORG_ID);
-    for (const pipeline of pipelinesToDelete) {
-        await client.dataClient.deleteDataPipeline(pipeline.id);
-        console.log(`Pipeline deleted with ID: ${pipeline.id}`);
-    }
-
-    const PIPELINE_ID = await client.dataClient.createDataPipeline(
-        ORG_ID,
-        "test-pipeline",
-        [
-            { "$match": { "component_name": "temperature-sensor" } },
-            { "$group": { "_id": "$location_id", "avg_temp": { "$avg": "$data.readings.temperature" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_temp": 1, "count": 1 } }
-        ],
-        "0 * * * *",
-        0,
-        false,
-    );
-
-    console.log(`Pipeline created with ID: ${PIPELINE_ID}`);
-    // :remove-end:
     const pipelineRuns = await client.dataClient.listDataPipelineRuns(PIPELINE_ID, 10);
     for (const run of pipelineRuns.runs) {
         console.log(
@@ -51,9 +30,9 @@ async function main(): Promise<void> {
         );
     }
     // :remove-start:
-    // Teardown - delete the pipeline
-    await client.dataClient.deleteDataPipeline(PIPELINE_ID);
-    console.log(`Pipeline deleted with ID: ${PIPELINE_ID}`);
+    if (pipelineRuns.runs.length !== 10) {
+        throw new Error("Expected 10 runs, got " + pipelineRuns.runs.length);
+    }
     // :remove-end:
 }
 

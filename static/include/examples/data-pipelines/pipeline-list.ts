@@ -33,7 +33,7 @@ async function main(): Promise<void> {
         [
             { "$match": { "component_name": "temperature-sensor" } },
             { "$group": { "_id": "$location_id", "avg_temp": { "$avg": "$data.readings.temperature" }, "count": { "$sum": 1 } } },
-            { "$project": { "location": "$_id", "avg_temp": 1, "count": 1 } }
+            { "$project": { "location": "$_id", "avg_temp": 1, "count": 1, "_id": 0 } }
         ],
         "0 * * * *",
         0,
