@@ -1070,7 +1070,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `download` | Download a module package from the registry. | - |
-| `local-app-testing` | Test your viam application locally. This will stand up a local proxy at http://localhost:8012 to simulate the Viam application server. | - |
+| `local-app-testing` | Test your viam application locally. This will stand up a local proxy at `http://localhost:8012` to simulate the Viam application server. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
