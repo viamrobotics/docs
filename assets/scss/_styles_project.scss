@@ -3477,3 +3477,68 @@ footer {
 .force-visible {
  visibility: visible !important;
 }
+
+/* Ask AI Dropdown Styles for TOC START */
+.ai-dropdown-container-toc {
+  position: relative;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.ai-button-toc {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  min-height: auto;
+}
+
+.ai-button-toc:hover {
+  background-color: #f0f0f0;
+}
+
+.ai-dropdown-menu-toc {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #E4E4E6;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 180px;
+  margin-top: 4px;
+}
+
+.ai-dropdown-menu-toc.show {
+  display: block;
+}
+
+.ai-dropdown-item-toc {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: #282829;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.ai-dropdown-item-toc:last-child {
+  border-bottom: none;
+}
+
+.ai-dropdown-item-toc:hover {
+  background-color: #f8f9fa;
+  color: #282829;
+  text-decoration: none;
+}
+
+.ai-dropdown-divider {
+  height: 1px;
+  background-color: #e9ecef;
+  margin: 0.5rem 0;
+}
+/* Ask AI Dropdown Styles for TOC END */

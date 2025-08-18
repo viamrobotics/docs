@@ -1,4 +1,35 @@
 {{ if not .Params.notoc }}
+
+<!-- Ask AI Button with Dropdown -->
+<div class="ai-dropdown-container-toc">
+  <button class="docsbutton ai-button-toc" id="askAiButtonToc" title="Ask AI">
+    <span><i class="fas fa-magic fa-sm" style="margin-right: 0.5rem;"></i>Ask AI <i class="fas fa-chevron-down fa-sm" style="margin-left: 0.5rem;"></i></span>
+  </button>
+  <div class="ai-dropdown-menu-toc" id="aiDropdownMenuToc">
+    <a href="#" class="ai-dropdown-item-toc" data-ai-service="claude" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
+      <i class="fas fa-magic fa-sm" style="margin-right: 0.5rem;"></i>
+      Viam AI (recommended)
+    </a>
+    <div class="ai-dropdown-divider"></div>
+    <a href="#" class="ai-dropdown-item-toc" data-ai-service="claude" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
+      <img src="/claude.svg" alt="Copilot" style="width: 16px; height: 16px; margin-right: 0.5rem; vertical-align: middle;">
+      Claude
+    </a>
+    <a href="#" class="ai-dropdown-item-toc" data-ai-service="chatgpt" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
+      <img src="/openai.svg" alt="Copilot" style="width: 16px; height: 16px; margin-right: 0.5rem; vertical-align: middle;">
+      ChatGPT
+    </a>
+    <a href="#" class="ai-dropdown-item-toc" data-ai-service="copilot" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
+      <img src="/copilot.svg" alt="Copilot" style="width: 16px; height: 16px; margin-right: 0.5rem; vertical-align: middle;">
+      Copilot
+    </a>
+    <div class="ai-dropdown-divider"></div>
+    <a href="#" class="ai-dropdown-item-toc" data-action="use-mcp" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
+      <i class="fas fa-copy fa-sm" style="margin-right: 0.5rem;"></i>
+      Use MCP with your IDE
+    </a>
+  </div>
+</div>
+
 <h6>On this page</h6>
-<div class="td-toc" id="TableOfContents"></div>
-{{ end }}
+<div class="td-toc" id="TableOfContents"></div>{{ end }}

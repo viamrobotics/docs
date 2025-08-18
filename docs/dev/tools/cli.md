@@ -42,7 +42,7 @@ If you are on Linux, you can use the `uname -m` command to determine your system
 
 To download the Viam CLI on a macOS computer, run the following commands:
 
-```{class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews
 brew install viam
 ```
@@ -52,7 +52,7 @@ brew install viam
 
 To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
 
-```{class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
 sudo chmod a+rx /usr/local/bin/viam
 ```
@@ -62,14 +62,14 @@ sudo chmod a+rx /usr/local/bin/viam
 
 To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
 
-```{class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
 sudo chmod a+rx /usr/local/bin/viam
 ```
 
 You can also install the Viam CLI using [brew](https://brew.sh/) on Linux `amd64` (Intel `x86_64`):
 
-```{class="command-line" data-prompt="$"}
+```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews
 brew install viam
 ```
