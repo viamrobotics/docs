@@ -117,16 +117,15 @@ window.markmap = {
 {{ $jsPlantuml := resources.Get "js/plantuml.js" | resources.ExecuteAsTemplate "js/plantuml.js" . }}
 {{ $jsDrawio := resources.Get "js/drawio.js" | resources.ExecuteAsTemplate "js/plantuml.js" .}}
 {{ $jsSentry := resources.Get "js/sentry.js" }}
-{{ $jsAiDropdownToc := resources.Get "js/ai-dropdown-toc.js" }}
 
 {{ if .Site.Params.offlineSearch }}
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
 {{ if not hugo.IsProduction }}
-{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom $jsAiDropdownToc) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom) | resources.Concat "js/main.js" }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
-{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom $jsAiDropdownToc) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom) | resources.Concat "js/main.js" }}
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
