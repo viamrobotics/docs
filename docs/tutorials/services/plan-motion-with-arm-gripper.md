@@ -616,7 +616,7 @@ func main() {
   adjustedArmPoint.Z += 100.0
   cmdArmPose := spatialmath.NewPose(adjustedArmPoint, currentArmPose.Orientation())
 
-  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, referenceframe.NewEmptyWorldState(), nil)
+  err = myArmComponent.MoveToPosition(context.Background(), cmdArmPose, nil)
   if err != nil {
     fmt.Println(err)
   }
