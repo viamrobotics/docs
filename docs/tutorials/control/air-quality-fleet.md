@@ -343,11 +343,11 @@ For developing your application on localhost:
    {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
 
 1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
-   The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
+   The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/.
 
    ```sh {class="command-line" data-prompt="$" data-output="3-10"}
    viam login
-   viam module local-app-testing --app-url http://localhost:8000 --machine-id <MACHINE-ID>
+   viam module local-app-testing --app-url http://localhost:8000
    ```
 
 ### Add functionality to your code
@@ -763,12 +763,12 @@ You can find all the code in the [GitHub repo for this tutorial](https://github.
 
     {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
 
-1.  Run the following command specifying the address where your app is running on localhost and a machine to test on.
-    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
+1.  Run the following command specifying the address where your app is running on localhost.
+    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012`.
 
     ```sh {class="command-line" data-prompt="$" data-output="3-10"}
     viam login
-    viam module local-app-testing --app-url http://localhost:8000 --machine-id <MACHINE-ID>
+    viam module local-app-testing --app-url http://localhost:8000
     ```
 
 1.  The data may take a few seconds to several minutes to load, because it iterates over all machines you have access to.
