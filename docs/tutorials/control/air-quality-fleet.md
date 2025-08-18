@@ -3,10 +3,11 @@ title: "Monitor Air Quality with a Fleet of Sensors"
 linkTitle: "Air Quality Fleet"
 type: "docs"
 description: "Configure a fleet of machines to capture air quality sensor data across different locations."
-images: ["/tutorials/air-quality-fleet/three-sensor-dash-wide.png"]
-imageAlt: "A web dashboard showing PM2.5 readings from two air quality sensors."
+videos: ["/air-quality-loading.webm", "/air-quality-loading.mp4"]
+videoAlt: "A web dashboard showing PM2.5 readings from two air quality sensors."
+images: ["/air-quality-loading.gif"]
 tags: ["tutorial"]
-authors: ["Jessamy Taylor"]
+authors: ["Naomi Pentrel"]
 languages: ["typescript"]
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "fleet"]
@@ -14,7 +15,7 @@ emailform: true
 level: "Intermediate"
 date: "2024-05-07"
 # updated: ""  # When the tutorial was last entirely checked
-cost: 200
+cost: 30
 # Learning goals:
 # 1. The reader can distinguish the concepts of organizations and locations and can select the appropriate setup when creating their own projects for their business.
 # 2. The reader can identify when to use fragments and evaluate when it is worth using fragments.
@@ -39,7 +40,7 @@ By completing this project, you will learn to:
 
 {{< /alert >}}
 
-{{<imgproc src="/tutorials/air-quality-fleet/three-sensor-dash-wide.png" resize="1000x" style="width:500px" declaredimensions=true alt="Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed." class="imgzoom">}}
+{{<gif webm_src="/air-quality-loading.webm" mp4_src="/air-quality-loading.mp4" alt="Login screen" max-width="700px" >}}
 
 ## Requirements
 
@@ -299,40 +300,33 @@ import * as VIAM from "@viamrobotics/sdk";
 import { BSON } from "bson";
 import Cookies from "js-cookie";
 
-let apiKeyId = "";
-let apiKeySecret = "";
-let host = "";
-let machineId = "";
+let access_token = "";
+let fragmentID = ""; // Fill in later in the tutorial
+let location_id = ""; // Fill in if you have access to many machines
 
 async function main() {
   const opts: VIAM.ViamClientOptions = {
     serviceHost: "https://app.viam.com",
     credentials: {
-      type: "api-key",
-      payload: apiKeySecret,
-      authEntity: apiKeyId,
+      type: "access-token",
+      payload: access_token,
     },
   };
 
   // <Insert data client and query code here in later steps>
-
-  // <Insert HTML block code here in later steps>
 }
-
-// <Insert getLastFewAv function definition here in later steps>
 
 document.addEventListener("DOMContentLoaded", async () => {
   // Extract the machine identifier from the URL
-  let machineCookieKey = window.location.pathname.split("/")[2];
-  ({
-    apiKey: { id: apiKeyId, key: apiKeySecret },
-    machineId: machineId,
-    hostname: host,
-  } = JSON.parse(Cookies.get(machineCookieKey)!));
+  const userTokenRawCookie = Cookies.get("userToken")!;
+  const startIndex = userTokenRawCookie.indexOf("{");
+  const endIndex = userTokenRawCookie.indexOf("}");
+  const userTokenValue = userTokenRawCookie.slice(startIndex, endIndex + 1);
+  access_token = JSON.parse(userTokenValue).access_token;
+
   main().catch((error) => {
     console.error("encountered an error:", error);
   });
-  console.log(apiKeyId, apiKeySecret, host, machineId);
 });
 ```
 
@@ -363,9 +357,10 @@ Now that you have the connection code, you are ready to add code that establishe
 {{< table >}}
 {{% tablestep number=1 %}}
 
-You'll first create a client to obtain the organization and location ID.
-Then you'll get a `dataClient` instance which accesses all the data in your location, and then query this data to get only the data tagged with the `air-quality` tag you applied with your data service configuration.
-The following code also queries the data for a list of the machines that have collected air quality data so that later, depending on the API key used with the code, your dashboard can show the data from any number of machines.
+You'll first create a client to obtain all the machines that a user has access to.
+Then you'll get a `dataClient` instance which can access the machine data.
+The code iterates over the machines and queries the average readings for data from the last hour for each machine.
+It also filters the data to only query data that is tagged with the `air-quality` tag you applied with your data service configuration.
 
 Paste the following code into the main function of your <file>main.ts</file> script, directly after the `locationID` line, in place of `// <Insert data client and query code here in later steps>`:
 
@@ -373,108 +368,107 @@ Paste the following code into the main function of your <file>main.ts</file> scr
 // Instantiate data_client and get all
 // data tagged with "air-quality" from your location
 const client = await VIAM.createViamClient(opts);
-const machine = await client.appClient.getRobot(machineId);
-const locationID = machine?.location;
-const orgID = (await client.appClient.listOrganizations())[0].id;
+const dataClient = client.dataClient;
+let locationSummaries: any[] = [];
+if (fragmentID !== "") {
+  locationSummaries = await client.appClient.listMachineSummaries("", [
+    fragmentID,
+  ]);
+} else if (location_id !== "") {
+  locationSummaries = await client.appClient.listMachineSummaries(
+    "",
+    [],
+    [location_id],
+  );
+} else {
+  locationSummaries = await client.appClient.listMachineSummaries("");
+}
 
-const myDataClient = client.dataClient;
-const query = {
-  $match: {
-    tags: "air-quality",
-    location_id: locationID,
-    organization_id: orgID,
-  },
-};
-const match = { $group: { _id: "$robot_id" } };
-// Get a list of all the IDs of machines that have collected air quality data
-const BSONQueryForMachineIDList = [
-  BSON.serialize(query),
-  BSON.serialize(match),
-];
-let machineIDs: any = await myDataClient?.tabularDataByMQL(
-  orgID,
-  BSONQueryForMachineIDList,
-);
-// Get all the air quality data
-const BSONQueryForData = [BSON.serialize(query)];
-let measurements: any = await myDataClient?.tabularDataByMQL(
-  orgID,
-  BSONQueryForData,
-);
+let measurements: any[] = [];
+let htmlblock: HTMLElement = document.createElement("div");
+let location_orgID_mapping: any[] = [];
+
+// Get all the machine IDs from accessible machines
+for (let locationSummary of locationSummaries) {
+  console.log(locationSummary);
+  let machines = locationSummary.machineSummaries;
+  for (let machine of machines) {
+    let machineID = machine.machineId;
+    let machineName = machine.machineName;
+    let orgID = "";
+
+    if (location_orgID_mapping.includes(locationSummary.locationId)) {
+      orgID = location_orgID_mapping[locationSummary.locationId];
+    } else {
+      // Get the full location details to access organizationId
+      let locationDetails = await client.appClient.getLocation(
+        locationSummary.locationId,
+      );
+      orgID = locationDetails?.organizations[0].organizationId || "";
+
+      location_orgID_mapping[locationSummary.locationId] = orgID;
+    }
+
+    console.log({ machineID, machineName, orgID });
+
+    const match_query = {
+      $match: {
+        tags: "air-quality",
+        robot_id: machineID,
+        component_name: "PM_sensor",
+        time_requested: { $gte: new Date(Date.now() - 1 * 60 * 60 * 1000) }, // Last 24 hours
+      },
+    };
+    const group_stage = {
+      $group: {
+        _id: null,
+        avg_pm_10: { $avg: "$data.readings.pm_10" },
+        avg_pm_2_5: { $avg: "$data.readings.pm_2.5" },
+        avg_pm_2_5_alt: { $avg: "$data.readings.pm_2_5" },
+      },
+    };
+
+    // Get the air quality data for the current machine
+    const BSONQueryForData = [
+      BSON.serialize(match_query),
+      BSON.serialize(group_stage),
+    ];
+    try {
+      let machineMeasurements: any = await dataClient?.tabularDataByMQL(
+        orgID,
+        BSONQueryForData,
+      );
+      measurements[machineID] = machineMeasurements;
+    } catch (error) {
+      console.error(`Error getting data for machine ${machineID}:`, error);
+    }
+
+    // <Insert HTML block code here in later steps>
+  }
+}
+
+return;
 ```
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-
-For this project, your dashboard will display the average of the last five readings from each air sensor.
-You need a function to calculate that average.
-The data returned by the query is not necessarily returned in order, so this function must put the data in order based on timestamps before averaging the last five readings.
-
-Paste the following code into <file>main.ts</file> after the end of your main function, in place of `// <Insert getLastFewAv function definition here in later steps>`:
-
-```typescript {class="line-numbers linkable-line-numbers"}
-// Get the average of the last five readings from a given sensor
-async function getLastFewAv(all_measurements: any[], machineID: string) {
-  // Get just the data from this machine
-  let measurements = new Array();
-  for (const entry of all_measurements) {
-    if (entry.robot_id == machineID) {
-      measurements.push({
-        PM25: entry.data.readings["pm_2.5"],
-        time: entry.time_received,
-      });
-    }
-  }
-
-  // Sort the air quality data from this machine
-  // by timestamp
-  measurements = measurements.sort(function (a, b) {
-    let x = a.time.toString();
-    let y = b.time.toString();
-    if (x < y) {
-      return -1;
-    }
-    if (x > y) {
-      return 1;
-    }
-    return 0;
-  });
-
-  // Add up the last 5 readings collected.
-  // If there are fewer than 5 readings, add all of them.
-  let x = 5; // The number of readings to average over
-  if (x > measurements.length) {
-    x = measurements.length;
-  }
-  let total = 0;
-  for (let i = 1; i <= x; i++) {
-    const reading: number = measurements[measurements.length - i].PM25;
-    total += reading;
-  }
-  // Return the average of the last few readings
-  return total / x;
-}
-```
-
-{{% /tablestep %}}
-{{% tablestep number=3 %}}
-
-Now that you've defined the function to sort and average the data for each machine, you're done with all the `dataClient` code.
 The final piece you need to add to this script is a way to create some HTML to display data from each machine in your dashboard.
 
 Paste the following code into the main function of <file>main.ts</file>, in place of `// <Insert HTML block code here in later steps>`:
 
 ```typescript {class="line-numbers linkable-line-numbers"}
-// Instantiate the HTML block that will be returned
-// once everything is appended to it
-let htmlblock: HTMLElement = document.createElement("div");
+let insideDiv: HTMLElement = document.createElement("div");
 
-// Display the relevant data from each machine to the dashboard
-for (let m of machineIDs) {
-  let insideDiv: HTMLElement = document.createElement("div");
-  let avgPM: number = await getLastFewAv(measurements, m._id);
+if (!measurements[machineID] || measurements[machineID].length === 0) {
+  console.log(`No measurements found for machine ${machineID}`);
+  // Create the HTML output for this machine
+  insideDiv.className = "inner-div " + "unavailable";
+  insideDiv.innerHTML = "<p>" + machineName + ": No data";
+  htmlblock.appendChild(insideDiv);
+} else {
+  let avgPM: number = measurements[machineID][0].avg_pm_2_5_alt;
   // Color-code the dashboard based on air quality category
-  let level: string = "blue";
+  let level: string = "lightgray";
   switch (true) {
     case avgPM < 12.1: {
       level = "good";
@@ -501,7 +495,6 @@ for (let m of machineIDs) {
       break;
     }
   }
-  let machineName = (await client.appClient.getRobot(m._id))?.name;
   // Create the HTML output for this machine
   insideDiv.className = "inner-div " + level;
   insideDiv.innerHTML =
@@ -513,8 +506,8 @@ for (let m of machineIDs) {
   htmlblock.appendChild(insideDiv);
 }
 
-// Output a block of HTML with color-coded boxes for each machine
-return document.getElementById("insert-readings")?.replaceWith(htmlblock);
+// Add the block of HTML with color-coded boxes for each machine
+document.getElementById("insert-readings")?.replaceWith(htmlblock);
 ```
 
 {{% /tablestep %}}
@@ -540,39 +533,43 @@ Paste the following into <file>index.html</file>:
 ```{class="line-numbers linkable-line-numbers" data-line="11"}
 <!doctype html>
 <html>
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="main">
-    <div>
-      <h1>Air Quality Dashboard</h1>
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="main">
+      <div>
+        <h1>Air Quality Dashboard</h1>
+      </div>
+      <script type="module" src="main.js"></script>
+      <div>
+        <h2>PM 2.5 readings</h2>
+        <p>The following are averages of the last one hour of readings from each machine:</p>
+      </div>
+      <div id="insert-readings">
+        <div class="spinner-container">
+          <div class="spinner"></div>
+          <p><i>Loading data...
+            It may take a few moments for the data to load.
+            Do not refresh page.</i></p>
+        </div>
+      </div>
+      <br>
+      <div class="key">
+        <p class="title">Key:</p>
+        <p class="good">Good air quality</p>
+        <p class="moderate">Moderate</p>
+        <p class="unhealthy-sensitive">Unhealthy for sensitive groups</p>
+        <p class="unhealthy">Unhealthy</p>
+        <p class="very-unhealthy">Very unhealthy</p>
+        <p class="hazardous">Hazardous</p>
+        <p class="unavailable">No data</p>
+      </div>
+      <p class="refresh-note">
+        After the data has loaded, you can refresh the page for the latest readings.
+      </p>
     </div>
-    <script type="module" src="main.js"></script>
-    <div>
-      <h2>PM 2.5 readings</h2>
-      <p>The following are averages of the last few readings from each machine:</p>
-    </div>
-    <div id="insert-readings">
-      <p><i>Loading data...
-        It may take a few moments for the data to load.
-        Do not refresh page.</i></p>
-    </div>
-    <br>
-    <div class="key">
-      <h4 style="margin:5px 0px">Key:</h4>
-      <p class="good">Good air quality</p>
-      <p class="moderate">Moderate</p>
-      <p class="unhealthy-sensitive">Unhealthy for sensitive groups</p>
-      <p class="unhealthy">Unhealthy</p>
-      <p class="very-unhealthy">Very unhealthy</p>
-      <p class="hazardous">Hazardous</p>
-    </div>
-    <p>
-      After the data has loaded, you can refresh the page for the latest readings.
-    </p>
-  </div>
-</body>
+  </body>
 </html>
 ```
 
@@ -599,7 +596,11 @@ Paste the following into <file>style.css</file>:
 ```{class="line-numbers linkable-line-numbers"}
 body {
   font-family: Helvetica;
-  margin-left: 20px;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 div {
@@ -608,30 +609,51 @@ div {
 
 h1 {
   color: black;
+  margin: 0 0 20px 0;
 }
 
 h2 {
   font-family: Helvetica;
+  margin: 0 0 15px 0;
 }
 
 .inner-div {
   font-family: monospace;
   border: .2px solid;
-  background-color: lightblue;
+  background-color: lightgray;
   padding: 20px;
   margin-top: 10px;
-  max-width: 320px;
+  width: 100%;
+  max-width: none;
   font-size: large;
+  box-sizing: border-box;
 }
 
 .key {
-  max-width: 200px;
-  padding: 0px 5px 5px;
+  max-width: none;
+  width: 100%;
+  padding: 10px 0px;
+  box-sizing: border-box;
+  margin-top: auto;
+  border-top: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .key p {
-  padding: 4px;
-  margin: 0px;
+  padding: 5px;
+  font-size: 0.9em;
+  max-width: 210px;
+  margin: 5px 0px;
+}
+
+.key p.title {
+  margin-right: 10px;
+}
+
+.refresh-note {
+  margin: 0.25em;
+  font-size: 0.9em;
 }
 
 .good {
@@ -659,9 +681,68 @@ h2 {
   background-color: purple;
 }
 
+.unavailable {
+  background-color: lightgray;
+}
+
 #main {
-  max-width:600px;
-  padding:10px 30px 10px;
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  #main {
+    padding: 15px;
+  }
+
+  .inner-div {
+    padding: 15px;
+    font-size: medium;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.spinner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px auto;
+}
+
+.spinner-container p {
+  margin: 0;
+  max-width: 400px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 ```
 
@@ -672,33 +753,37 @@ h2 {
 
 You can find all the code in the [GitHub repo for this tutorial](https://github.com/viam-labs/air-quality-fleet).
 
-### Style the authentication screen
-
-You can optionally add a logo for your company by placing it into the <FILE>static</FILE> folder.
-If your logo's is not called <FILE>logo.png</FILE>, change it to that or update the `logoPath` in your <FILE>meta.json</FILE>.
-
 ### Run the code
 
-1. Run the following command to serve the application you are building:
+1.  Run the following command to serve the application you are building:
 
-   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-   npm start
-   ```
+    ```sh {class="command-line" data-prompt="$" data-output="2-10"}
+    npm start
+    ```
 
-   {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
+    {{<imgproc src="/tutorials/air-quality-fleet/terminal-url.png" resize="800x" declaredimensions=true alt="Terminal window with the command 'npm start' run inside the aqi-dashboard folder. The output says 'start' and then 'esbuild' followed by the esbuild string from the package.json file you configured. Then there's 'Local:' followed by a URL and 'Network:' followed by a different URL." class="imgzoom" style="width:800px">}}
 
-1. Run the following command specifying the address where your app is running on localhost and a machine to test on.
-   The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
+1.  Run the following command specifying the address where your app is running on localhost and a machine to test on.
+    The command will proxy your local app and open a browser window and navigate to `http://localhost:8012/machine/<machineHostname>` for the machine provided with --machine-id.
 
-   ```sh {class="command-line" data-prompt="$" data-output="3-10"}
-   viam login
-   viam module local-app-testing --app-url http://localhost:8000 --machine-id <MACHINE-ID>
-   ```
+    ```sh {class="command-line" data-prompt="$" data-output="3-10"}
+    viam login
+    viam module local-app-testing --app-url http://localhost:8000 --machine-id <MACHINE-ID>
+    ```
 
-1. The data may take up to approximately 5 seconds to load, then you should see air quality data from all of your sensors.
-   If the dashboard does not appear, right-click the page, select **Inspect**, and check for errors in the console.
+1.  The data may take a few seconds to several minutes to load, because it iterates over all machines you have access to.
 
-   ![Air quality dashboard in a web browser with PM2.5 readings from three different sensor machines displayed.](/tutorials/air-quality-fleet/three-sensor-dash.png)
+    {{<gif webm_src="/air-quality-loading.webm" mp4_src="/air-quality-loading.mp4" alt="Login screen" max-width="700px" >}}
+
+    Later in the tutorial, you'll [create a fragment](/tutorials/control/air-quality-fleet/#get-machines-ready-for-third-parties) for your machines.
+    Once you do that you can update the value for `fragmentId` at the top of the `<FILE>main.ts</FILE>` file to limit the number of machines your code iterates over.
+    In the meantime you can limit the number of machines that your dashboard iterates over by providing the location ID at the top of the <FILE>main.ts</FILE>:
+
+    ```ts {class="line-numbers linkable-line-numbers" data-line="5"}
+    let location_id = "";
+    ```
+
+    If the dashboard does not appear, right-click the page, select **Inspect**, and check for errors in the console.
 
 ### Deploy the application as a Viam application
 
@@ -944,6 +1029,19 @@ Your device is now provisioned and ready for your end user!
 
 Having trouble?
 See [Provisioning](/manage/fleet/provision/setup/) for more information and troubleshooting.
+
+## Update your web application
+
+You can now use your fragment ID to improve load times of your dashboard:
+
+1. In the <FILE>main.ts</FILE> add the fragment ID to the variables at the top of the file.
+1. Upload a new version of your web app:
+
+   ```sh {class="command-line" data-prompt="$" data-output="5-10"}
+   npm run build
+   tar -czvf module.tar.gz static meta.json
+   viam module upload --upload=module.tar.gz --platform=any --version=0.0.2
+   ```
 
 <div id="emailform"></div>
 
