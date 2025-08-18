@@ -961,6 +961,7 @@ viam module build logs --id=<id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 viam module download [command options]
+viam module local-app-testing --app-url http://localhost:3000
 ```
 
 {{% alert title="Note" color="note" %}}
@@ -1048,6 +1049,9 @@ viam module download --id=acme:my-module --destination=/path/to/download/directo
 
 # download a specific version of a module package for a specific platform
 viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
+
+# proxy your local Viam application and open a browser window and navigate to `http://localhost:8012/
+viam module local-app-testing --app-url http://localhost:3000
 ```
 
 #### Command options
@@ -1066,6 +1070,7 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `download` | Download a module package from the registry. | - |
+| `local-app-testing` | Test your viam application locally. This will stand up a local proxy at http://localhost:8012 to simulate the Viam application server. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
@@ -1096,6 +1101,8 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--version` | The version of your module to set for this upload or download. For `download`, defaults to `latest`. See [Using the `--version` argument](#using-the---version-argument). | `upload`, `download` | **Required** for `upload` |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.` | `build start` | Optional |
 | `--wait` | Wait for the build to finish before outputting any logs. | `build logs` | Optional |
+| `--app-url` | The url where local app is running, including port number. For example `http://localhost:5000`. | `local-app-testing` | **Required** |
+| `--machine-id` | The machine ID of the machine you want to test with. You can get your machine ID on the [Fleet page](https://app.viam.com/fleet/machines). | `local-app-testing` | Optional |
 
 ##### Using the `--org-id` and `--public-namespace` arguments
 
