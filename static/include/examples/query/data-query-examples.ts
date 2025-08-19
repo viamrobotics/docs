@@ -1,0 +1,70 @@
+import { createViamClient } from "@viamrobotics/sdk";
+
+// Configuration constants – replace with your actual values
+let API_KEY = "";  // API key, find or create in your organization settings
+let API_KEY_ID = "";  // API key ID, find or create in your organization settings
+let ORG_ID = "";  // Organization ID, find or create in your organization settings
+// :remove-start:
+ORG_ID = process.env.TEST_ORG_ID || "";
+API_KEY = process.env.VIAM_API_KEY || "";
+API_KEY_ID = process.env.VIAM_API_KEY_ID || "";
+// :remove-end:
+
+async function main(): Promise<void> {
+    // Create Viam client
+    const client = await createViamClient({
+        credentials: {
+            type: "api-key",
+            authEntity: API_KEY_ID,
+            payload: API_KEY,
+        },
+    });
+
+
+    // :snippet-start: data-query-filter
+    const tabularDataMQLFilter = await client.dataClient.tabularDataByMQL(
+        ORG_ID,
+        [
+            { "$match": { "component_name": "sensor-1" } },
+            { "$limit": 2 },
+            { "$project": {
+                "time_received": 1,
+                "data": 1,
+                "tags": 1
+            }}
+        ],
+    );
+    console.log(tabularDataMQLFilter);
+
+    const tabularDataSQLFilter = await client.dataClient.tabularDataBySQL(
+        ORG_ID,
+        "SELECT time_received, data, tags FROM readings " +
+        "WHERE component_name = 'sensor-1' LIMIT 2"
+    );
+    console.log(tabularDataSQLFilter);
+    // :snippet-end:
+
+    // :snippet-start: data-query-count
+    const tabularDataMQLCount = await client.dataClient.tabularDataByMQL(
+        ORG_ID,
+        [
+            { "$match": { "component_name": "sensor-1" } },
+            { "$count": "count" }
+        ],
+    );
+    console.log(tabularDataMQLCount);
+
+    const tabularDataSQLCount = await client.dataClient.tabularDataBySQL(
+        ORG_ID,
+        "SELECT count(*) FROM readings WHERE component_name = 'sensor-1'"
+    );
+    console.log(tabularDataSQLCount);
+    // :snippet-end:
+}
+
+// Run the script
+main().catch((error) => {
+    console.error("Script failed:", error);
+    process.exit(1);
+});
+
