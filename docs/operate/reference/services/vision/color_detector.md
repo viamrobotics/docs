@@ -113,7 +113,7 @@ The following parameters are available for a `color_detector`:
 | `segment_size_px` | **Required** | An integer that sets a minimum size (in pixels) of a contiguous color region to be detected, and filters out all other found objects below that size. |
 | `detect_color` | **Required** | The color to detect in the image, as a string of the form `#RRGGBB`. The color is written as a hexadecimal string prefixed by ‘#’. |
 | `hue_tolerance_pct` | **Required** | A number bigger than 0.0 and smaller than or equal to 1.0 that defines how strictly the detector must match to the hue of the color requested. ~0.0 means the color must match exactly, while 1.0 matches to every color, regardless of the input color. 0.05 is a good starting value. |
-| `camera_name` | string | **Required** | The default camera to use for calls to  `DetectionsFromCamera`. |
+| `camera_name` | **Required** | The default camera to use for calls to  `DetectionsFromCamera`. |
 | `saturation_cutoff_pct` | Optional | A number > 0.0 and <= 1.0 which defines the minimum saturation before a color is ignored. Defaults to 0.2. |
 | `value_cutoff_pct` | Optional | A number > 0.0 and <= 1.0 which defines the minimum value before a color is ignored. Defaults to 0.3. |
 
