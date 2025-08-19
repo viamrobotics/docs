@@ -32,8 +32,7 @@ async function main(): Promise<void> {
                 "data": 1,
                 "tags": 1
             }}
-        ],
-        &app.TabularDataByMQLOptions{},
+        ]
     );
     console.log(tabularDataMQLFilter);
 
@@ -51,8 +50,7 @@ async function main(): Promise<void> {
         [
             { "$match": { "component_name": "sensor-1" } },
             { "$count": "count" }
-        ],
-        &app.TabularDataByMQLOptions{},
+        ]
     );
     console.log(tabularDataMQLCount);
 

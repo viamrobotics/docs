@@ -27,8 +27,7 @@ async function main(): Promise<void> {
             { "$match": { "component_name": "sensor-1" } },
             { "$limit": 5 }
         ],
-        false,
-        &app.TabularDataByMQLOptions{},
+        false
     );
     console.log(tabularDataMQL);
 

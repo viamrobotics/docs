@@ -8,8 +8,7 @@ const tabularDataMQLFilter = await client.dataClient.tabularDataByMQL(
             "data": 1,
             "tags": 1
         }}
-    ],
-    &app.TabularDataByMQLOptions{},
+    ]
 );
 console.log(tabularDataMQLFilter);
 
