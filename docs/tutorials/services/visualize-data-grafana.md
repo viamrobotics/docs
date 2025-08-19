@@ -104,11 +104,11 @@ For more information see [data management service configuration](/data-ai/captur
 
 Next, enable the ability to query your synced data.
 When you sync captured data to Viam, that data is stored in the Viam organization’s [MongoDB Atlas Data Federation](https://www.mongodb.com/docs/atlas/data-federation/overview/) instance.
-Configuring data query allows you to directly [query your data](/data-ai/data/query/#query-data-in-the-web-ui) using a compatible client (such as `mongosh`) or Grafana to access that data and visualize it.
+Configuring data query allows you to directly [query your data](/data-ai/data/query/#query-using-third-party-tools) using a compatible client (such as `mongosh`) or Grafana to access that data and visualize it.
 
 To enable data query:
 
-1. Follow the steps to [configure data query](/data-ai/data/query/#query-data-in-the-web-ui).
+1. Follow the steps to [configure data query](/data-ai/data/query/#configure-data-query).
 
 1. Note the username and hostname returned from these steps, in addition to the password you chose for that user.
    You will use this information in the next section.

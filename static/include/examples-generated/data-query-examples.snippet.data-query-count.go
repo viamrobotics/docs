@@ -3,7 +3,7 @@ mqlStages = []map[string]interface{}{
 	{"$count": "count"},
 }
 
-tabularDataMQLCount, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages)
+tabularDataMQLCount, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages, &app.TabularDataByMQLOptions{})
 if err != nil {
 	logger.Fatal(err)
 }

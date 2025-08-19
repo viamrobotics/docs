@@ -20,7 +20,7 @@ print(f"Tabular Data: {tabular_data_mql_filter}")
 
 tabular_data_sql_filter = await data_client.tabular_data_by_sql(
     organization_id=ORG_ID,
-    query="SELECT time_received, data, tags FROM readings "
+    sql_query="SELECT time_received, data, tags FROM readings "
     "WHERE component_name = 'sensor-1' LIMIT 2"
 )
 print(f"Tabular Data: {tabular_data_sql_filter}")

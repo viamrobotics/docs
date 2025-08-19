@@ -22,7 +22,7 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
-## Query data using Viam
+## Query using Viam
 
 ### Prerequisites
 
@@ -32,7 +32,7 @@ Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 
-### Query data
+### Query data using Viam
 
 Once your data has synced, you can query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
@@ -263,7 +263,7 @@ You can view your query results in a table or as a [JSON array](https://json-sch
 {{% /tab %}}
 {{< /tabs >}}
 
-## Query data using third-party tools
+## Query using third-party tools
 
 ### Prerequisites
 

@@ -44,7 +44,7 @@ func main() {
 		}},
 	}
 
-	tabularDataMQL, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages)
+	tabularDataMQL, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages, &app.TabularDataByMQLOptions{})
 	if err != nil {
 		logger.Fatal(err)
 	}
@@ -67,7 +67,7 @@ func main() {
 		{"$count": "count"},
 	}
 
-	tabularDataMQLCount, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages)
+	tabularDataMQLCount, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages, &app.TabularDataByMQLOptions{})
 	if err != nil {
 		logger.Fatal(err)
 	}

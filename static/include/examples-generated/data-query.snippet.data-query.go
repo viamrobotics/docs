@@ -30,7 +30,7 @@ func main() {
 		{"$limit": 5},
 	}
 
-	tabularDataMQL, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages)
+	tabularDataMQL, err := dataClient.TabularDataByMQL(ctx, orgID, mqlStages, &app.TabularDataByMQLOptions{})
 	if err != nil {
 		logger.Fatal(err)
 	}

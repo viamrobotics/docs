@@ -4,6 +4,7 @@ const tabularDataMQLCount = await client.dataClient.tabularDataByMQL(
         { "$match": { "component_name": "sensor-1" } },
         { "$count": "count" }
     ],
+    &app.TabularDataByMQLOptions{},
 );
 console.log(tabularDataMQLCount);
 

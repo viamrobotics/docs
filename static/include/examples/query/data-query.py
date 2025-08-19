@@ -51,7 +51,7 @@ async def main() -> int:
 
     tabular_data_sql = await data_client.tabular_data_by_sql(
         organization_id=ORG_ID,
-        query="SELECT * FROM readings WHERE component_name = 'sensor-1' LIMIT 5"
+        sql_query="SELECT * FROM readings WHERE component_name = 'sensor-1' LIMIT 5"
     )
     print(f"Tabular Data: {tabular_data_sql}")
 
