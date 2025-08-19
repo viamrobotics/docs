@@ -317,7 +317,7 @@ Add a waypoint to the service's data storage.
 
 **Parameters:**
 
-- `point` ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)) (required): A waypoint represented in a GeoPoint with latitude and longitude values.
+- `point` ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)) (required): The current location of the robot in the navigation service, represented in a GeoPoint with latitude and longitude values.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
@@ -345,7 +345,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `point` [(\*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): A waypoint represented in a `Point` with latitude (lat) and longitude (lng) values.
+- `point` [(*geo.Point)](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point): The current location of the robot in the navigation service, represented in a `Point` with latitude (lat) and longitude (lng) values.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
