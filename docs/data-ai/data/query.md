@@ -22,7 +22,7 @@ Then, you can follow the steps on this page to query it using {{< glossary_toolt
 For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
 You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
 
-## Query data in the web UI
+## Query using Viam
 
 ### Prerequisites
 
@@ -32,11 +32,14 @@ Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 {{% /expand%}}
 
-### Query from the app
+### Query data using Viam
 
-Once your data has synced, you can query your data from within web UI using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+Once your data has synced, you can query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
 You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
+
+{{< tabs >}}
+{{% tab name="Web UI" %}}
 
 {{< table >}}
 {{% tablestep number=1 %}}
@@ -56,7 +59,7 @@ This example query returns the last 5 readings from any components named `my-sen
 
 ```sql
 SELECT * FROM readings
-WHERE component_name = 'my-sensor' LIMIT 5
+WHERE component_name = 'sensor-1' LIMIT 5
 ```
 
 {{% /tab %}}
@@ -64,7 +67,7 @@ WHERE component_name = 'my-sensor' LIMIT 5
 
 ```mql
 [
-    { "$match": { "component_name": "my-sensor" } },
+    { "$match": { "component_name": "sensor-1" } },
     { "$limit": 5 }
 ]
 ```
@@ -79,7 +82,7 @@ WHERE component_name = 'my-sensor' LIMIT 5
 
 ```sh {class="command-line" data-prompt="$" data-output="3-80"}
 SELECT time_received, data, tags FROM readings
-WHERE component_name = 'PM_sensor' LIMIT 2
+WHERE component_name = 'sensor-1' LIMIT 2
 [
 {
   "time_received": "2024-07-30 00:04:02.144 +0000 UTC",
@@ -117,7 +120,7 @@ WHERE component_name = 'PM_sensor' LIMIT 2
 [
   {
     $match: {
-      component_name: "PM_sensor"
+      component_name: "sensor-1"
     }
   },{
     $limit: 2
@@ -170,7 +173,7 @@ WHERE component_name = 'PM_sensor' LIMIT 2
 
 ```sh {class="command-line" data-prompt="$" data-output="3-80"}
 SELECT count(*) FROM readings
-WHERE component_name = 'PM_sensor' AND location_id = 'ab1cd23e4f'
+WHERE component_name = 'sensor-1'
 [
   {
     "_1": 111550
@@ -185,8 +188,7 @@ WHERE component_name = 'PM_sensor' AND location_id = 'ab1cd23e4f'
 [
   {
     $match: {
-      location_id: "ab1cd23e4f",
-      component_name: "PM_sensor"
+      component_name: "sensor-1"
     }
   },{
     $count: "count"
@@ -210,7 +212,58 @@ You can view your query results in a table or as a [JSON array](https://json-sch
 {{% /tablestep %}}
 {{< /table >}}
 
-## Query data using third-party tools
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="29-47" >}}
+
+{{% expand "Click to see an example that filters by component name and column names." %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.py" lang="py" class="line-numbers linkable-line-numbers" >}}
+
+{{% /expand %}}
+{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.py" lang="py" class="line-numbers linkable-line-numbers" >}}
+
+{{% /expand %}}
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-45" >}}
+
+{{% expand "Click to see an example that filters by component name and column names." %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.go" lang="go" class="line-numbers linkable-line-numbers" >}}
+
+{{% /expand %}}
+{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.go" lang="go" class="line-numbers linkable-line-numbers" >}}
+
+{{% /expand %}}
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18-31" >}}
+
+{{% expand "Click to see an example that filters by component name and column names." %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.ts" lang="ts" class="line-numbers linkable-line-numbers" >}}
+
+{{% /expand %}}
+{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.ts" lang="ts" class="line-numbers linkable-line-numbers" >}}
+
+{{% /expand %}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## Query using third-party tools
 
 ### Prerequisites
 

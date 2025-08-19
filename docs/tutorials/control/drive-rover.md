@@ -248,7 +248,7 @@ Add the following markup:
 <html>
   <head>
     <title>Drive a Rover</title>
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.ico" data-proofer-ignore />
   </head>
   <body>
     <div id="main">
@@ -266,7 +266,7 @@ Add the following markup:
         Click me to drive rover in square
       </button>
     </div>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="main.js" data-proofer-ignore></script>
   </body>
 </html>
 ```
