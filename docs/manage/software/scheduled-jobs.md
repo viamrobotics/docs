@@ -145,8 +145,8 @@ Monitor job execution through `viam-server` logs. Look for `rdk.job_manager`:
 
 ## Limitations
 
-- There is no timeout on job's invocations of gRPC requests
-- Jobs only run when `viam-server` is running
+- There is no timeout on job's invocations of gRPC requests.
+- Jobs only run when `viam-server` is running.
 - If a unix-cron job is scheduled to start but a previous invocation is still running, the job will be skipped. The job will next run once the previous invocation has finished running and the next scheduled time is reached.
 - If a Golang duration job is scheduled to run but a previous invocation is still running, the next invocation will not run until the previous invocation finishes, at which point it will run immediately.
 - Jobs run locally on each machine and are not coordinated across multiple machines.
