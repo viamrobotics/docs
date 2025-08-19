@@ -126,6 +126,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 | Parameter | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `mlmodel_name` | string | **Required** | The name of the [ML model service](/data-ai/ai/deploy/) you want to use the model from. |
+| `camera_name` | string | Optional |  | 
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expects the input image to have BGR pixels, rather than RGB pixels. <br> Default: `false` |
