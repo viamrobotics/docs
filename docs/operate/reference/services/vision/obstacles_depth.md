@@ -29,6 +29,8 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `vision` type, then select the `obstacles depth` model.
 Enter a name or use the suggested name for your service and click **Create**.
 
+Add a default camera for the vision service to use.
+
 In your vision service's panel, fill in the attributes field.
 
 {{< tabs >}}
@@ -41,7 +43,8 @@ In your vision service's panel, fill in the attributes field.
   "max_dist_from_plane_mm": <number>,
   "ground_angle_tolerance_degs": <integer>,
   "clustering_radius": <integer>,
-  "clustering_strictness": <integer>
+  "clustering_strictness": <integer>,
+  "camera_name": "<camera-name>"
 }
 ```
 
@@ -55,7 +58,8 @@ In your vision service's panel, fill in the attributes field.
   "max_dist_from_plane_mm": 10.0,
   "ground_angle_tolerance_degs": 20,
   "clustering_radius": 5,
-  "clustering_strictness": 3
+  "clustering_strictness": 3,
+  "camera_name": "camera-1"
 }
 ```
 
@@ -79,7 +83,8 @@ Add the following vision service object to the services array in your raw JSON c
       "max_dist_from_plane_mm": <number>,
       "ground_angle_tolerance_degs": <integer>,
       "clustering_radius": <integer>,
-      "clustering_strictness": <integer>
+      "clustering_strictness": <integer>,
+      "camera_name": "camera-1"
     }
   },
   ... // Other services
@@ -101,7 +106,8 @@ Add the following vision service object to the services array in your raw JSON c
     "max_dist_from_plane_mm": 10.0,
     "ground_angle_tolerance_degs": 20,
     "clustering_radius": 5,
-    "clustering_strictness": 3
+    "clustering_strictness": 3,
+    "camera_name": "camera-1"
   }
 }
 ]
@@ -115,6 +121,7 @@ The following parameters are available for an `"obstacles_depth"` segmenter:
 <!-- prettier-ignore -->
 | Parameter | Required? | Description |
 | --------- | --------- | ----------- |
+| `camera_name` | string | **Required** | The default camera to use for calls to `GetObjectPointClouds`. |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |
 | `max_dist_from_plane_mm` | Optional | A float that determines how much area above and below an ideal ground plane should count as the plane for which points are removed. For fields with tall grass, this should be a high number. The default value is 100 mm. <br> Default: `100.0` </br> |

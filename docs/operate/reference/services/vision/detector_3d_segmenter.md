@@ -38,7 +38,8 @@ In your vision service's panel, fill in the attributes field.
     "detector_name": "<detector_name>",
     "confidence_threshold_pct": <number>,
     "mean_k": <integer>,
-    "sigma": <number>
+    "sigma": <number>,
+    "camera_name": "<camera-name>"
 }
 ```
 
@@ -57,7 +58,8 @@ Add the vision service object to the services array in your raw JSON configurati
             "detector_name": "my_detector",
             "confidence_threshold_pct": 0.5,
             "mean_k": 50,
-            "sigma": 2.0
+            "sigma": 2.0,
+            "camera_name": "camera-1"
         }
     },
     ... // Other services
@@ -77,7 +79,8 @@ Add the vision service object to the services array in your raw JSON configurati
             "detector_name": "my_detector",
             "confidence_threshold_pct": 0.5,
             "mean_k": 50,
-            "sigma": 2.0
+            "sigma": 2.0,
+            "camera_name": "camera-1"
         }
     }
 ]
@@ -95,6 +98,7 @@ The following parameters are available for a `detector_3d_segmenter`.
 | `confidence_threshold_pct` | Optional | A number between 0 and 1 which represents a filter on object confidence scores. Detections that score below the threshold will be filtered out in the segmenter. The default is 0.5. |
 | `mean_k` | **Required** | An integer parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should be set to be 5-10% of the minimum segment size. Start with 5% and go up if objects are still too noisy. If you don’t want to use the filtering, set the number to 0 or less. |
 | `sigma` | **Required** | A floating point parameter used in [a subroutine to eliminate the noise in the point clouds](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html). It should usually be set between 1.0 and 2.0. 1.25 is usually a good default. If you want the object result to be less noisy (at the risk of losing some data around its edges) set sigma to be lower. |
+| `camera_name` | string | **Required** | The default camera to use for calls to  `DetectionsFromCamera`. |
 
 Click the **Save** button in the top right corner of the page and proceed to [test your segmenter](#test-your-segmenter).
 

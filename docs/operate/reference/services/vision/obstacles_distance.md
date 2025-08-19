@@ -31,11 +31,14 @@ Click the **+** icon next to your machine part in the left-hand menu and select 
 Select the `vision` type, then select the `obstacles distance` model.
 Enter a name or use the suggested name for your service and click **Create**.
 
+Add a default camera for the vision service to use.
+
 In your vision service's configuration panel, fill in the attributes field with the following:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "num_queries": 10
+  "num_queries": 10,
+  "camera_name": "<camera-name>"
 }
 ```
 
@@ -51,7 +54,8 @@ Add the vision service object to the services array in your raw JSON configurati
       "api": "rdk:service:vision",
       "model": "obstacles_distance",
       "attributes": {
-        "num_queries": 10
+        "num_queries": 10,
+        "camera_name": "<camera-name>"
       }
     },
     ... // Other services
@@ -68,7 +72,8 @@ Add the vision service object to the services array in your raw JSON configurati
         "api": "rdk:service:vision",
         "model": "obstacles_distance",
         "attributes": {
-            "num_queries": 10
+            "num_queries": 10,
+            "camera_name": "camera-1"
         }
     }
 ]
@@ -82,6 +87,7 @@ The following parameters are available for a `obstacles_distance` segmenter:
 <!-- prettier-ignore -->
 | Parameter | Required? | Description |
 | --------- | --------- | ----------- |
+| `camera_name` | string | **Required** | The default camera to use for calls to `GetObjectPointClouds`. |
 | `num_queries`| Optional  | How many times the model should call [`GetPointCloud()`](/dev/reference/apis/components/camera/#getpointcloud) before taking the average of the measurements and returning the single closest point. Accepts an integer between `1` and `20`. <br> Default: `10`  |
 
 ## Test your segmenter
