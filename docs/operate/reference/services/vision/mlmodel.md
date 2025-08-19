@@ -202,7 +202,6 @@ To remap your model's tensor names to work with an `mlmodel` classifier, add the
       "my_model_input_tensor1": "image"
     },
     "camera_name": "camera-1"
-
   },
   "name": "my-vision-service"
 }
