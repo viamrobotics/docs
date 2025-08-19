@@ -1,0 +1,1 @@
+myArmResourceName := arm.Named(armName)

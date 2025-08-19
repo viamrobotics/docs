@@ -1,0 +1,1 @@
+gripperResource := gripper.Named(gripperName)
