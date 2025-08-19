@@ -177,7 +177,7 @@ If you can open a terminal on the machine:
 ### WiFi connection issues
 
 If you cannot connect to your machine's temporary WiFi hotspot, confirm you are using the correct password.
-The default password, unless changes by the manufacturer, is `viamsetup`,
+The default password, unless changed by the manufacturer, is `viamsetup`,
 
 If your machine cannot connect to your permanent office or home WiFi network:
 
