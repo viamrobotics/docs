@@ -911,7 +911,8 @@ Add the vision service object to the services array in your rover’s raw JSON c
   "attributes": {
     "segment_size_px": 100,
     "detect_color": "#43a1d0",
-    "hue_tolerance_pct": 0.06
+    "hue_tolerance_pct": 0.06,
+    "camera_name": "cam"
   }
 }
 ```

@@ -55,6 +55,8 @@ Enter a name or use the suggested name for your service and click **Create**.
 
 Select the ML model service your model is deployed on from the **ML Model** dropdown.
 
+Add a default camera for the vision service to use.
+
 Edit other attributes as applicable according to the table below.
 You can edit optional attributes in raw JSON by clicking **{}** (Switch to advanced) on the right side of your service panel.
 
@@ -70,7 +72,8 @@ Add the vision service object to the services array in your JSON configuration:
     "api": "rdk:service:vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "<mlmodel-service-name>"
+      "mlmodel_name": "<mlmodel-service-name>",
+      "camera_name": "<camera-name>"
     }
   },
   ... // Other services
@@ -90,7 +93,8 @@ Add the vision service object to the services array in your JSON configuration:
     "api": "rdk:service:vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "my_mlmodel_service"
+      "mlmodel_name": "my_mlmodel_service",
+      "camera_name": "camera-1"
     }
   }
 ]
@@ -106,7 +110,8 @@ Add the vision service object to the services array in your JSON configuration:
     "api": "rdk:service:vision",
     "model": "mlmodel",
     "attributes": {
-      "mlmodel_name": "fruit_classifier"
+      "mlmodel_name": "fruit_classifier",
+      "camera_name": "camera-1"
     }
   }
 ]
@@ -126,6 +131,7 @@ The following attributes are available for an `mlmodel` detector or classifier:
 | Parameter | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `mlmodel_name` | string | **Required** | The name of the [ML model service](/data-ai/ai/deploy/) you want to use the model from. |
+| `camera_name` | string | Optional | The default camera to use for calls to  `DetectionsFromCamera`, `ClassificationsFromCamera`, or `GetObjectPointClouds`. |
 | `remap_output_names` | object | Optional | The names of your output tensors, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `remap_input_names` | object | Optional | The name of your input tensor, mapped to the service requirements. See [Tensor names](#tensor-names) for more information. |
 | `input_image_bgr` | bool | Optional | Set this to `true` if the ML model service expects the input image to have BGR pixels, rather than RGB pixels. <br> Default: `false` |
@@ -171,7 +177,8 @@ To remap your model's tensor names to work with an `mlmodel` detector, add the f
     },
     "remap_input_names": {
       "my_model_input_tensor1": "image"
-    }
+    },
+    "camera_name": "camera-1"
   },
   "name": "my-vision-service"
 }
@@ -193,7 +200,8 @@ To remap your model's tensor names to work with an `mlmodel` classifier, add the
     },
     "remap_input_names": {
       "my_model_input_tensor1": "image"
-    }
+    },
+    "camera_name": "camera-1"
   },
   "name": "my-vision-service"
 }

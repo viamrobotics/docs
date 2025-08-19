@@ -285,7 +285,10 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
       "name": "vision-1",
       "api": "rdk:service:vision",
       "model": "mlmodel",
-      "attributes": {},
+      "attributes": {
+        "mlmodel_name": "my_mlmodel_service",
+        "camera_name": "camera-1"
+      },
       "service_configs": [
         {
           "type": "data_manager",

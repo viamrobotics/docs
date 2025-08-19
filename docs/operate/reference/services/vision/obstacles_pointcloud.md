@@ -43,7 +43,8 @@ In your vision service's panel, fill in the attributes field.
     },
     "ground_angle_tolerance_degs": <integer>,
     "clustering_radius": <integer>,
-    "clustering_strictness": <integer>
+    "clustering_strictness": <integer>,
+    "camera_name": "<camera-name>"
 }
 ```
 
@@ -69,7 +70,8 @@ Add the vision service object to the services array in your raw JSON configurati
         },
         "ground_angle_tolerance_degs": <integer>,
         "clustering_radius": <integer>,
-        "clustering_strictness": <integer>
+        "clustering_strictness": <integer>,
+        "camera_name": "<camera-name>"
     }
     },
     ... // Other services
@@ -92,7 +94,8 @@ Add the vision service object to the services array in your raw JSON configurati
     "ground_plane_normal_vec": {"x": 0, "y":0, "z": 1},
     "ground_angle_tolerance_degs": 20.0,
     "clustering_radius": 5,
-    "clustering_strictness": 3
+    "clustering_strictness": 3,
+    "camera_name": "camera-1"
   }
 }
 ]
@@ -106,6 +109,7 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 <!-- prettier-ignore -->
 | Parameter | Required? | Description |
 | --------- | --------- | ----------- |
+| `camera_name` | **Required** | The default camera to use for calls to `GetObjectPointClouds`. |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |
 | `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. This parameter determines how big the candidate clusters should be, or, how many points should be put on a flat surface. A small clustering radius is likely to split different parts of a large cluster into distinct objects. A large clustering radius is likely to aggregate closely spaced clusters into one object. <br> Default: `1` </br> |

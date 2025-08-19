@@ -352,7 +352,8 @@ With **JSON** mode selected, replace the configuration with the following JSON c
       "attributes": {
         "segment_size_px": 100,
         "detect_color": "#19FFD9",
-        "hue_tolerance_pct": 0.06
+        "hue_tolerance_pct": 0.06,
+        "camera_name": "camera-1"
       }
     }
   ]
