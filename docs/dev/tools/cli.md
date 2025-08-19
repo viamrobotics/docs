@@ -552,17 +552,28 @@ viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset’s page, click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
-| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset’s page, click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
+| `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
+| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
 | `--destination` | Output directory for downloaded data. | `export` | **Required** |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `data add`, `data remove` | Optional |
-| `--binary-data-ids` | The binary data IDs of the files to perform an operation on. | `data add`, `data remove` | **Required** |
+| `--binary-data-ids` | The binary data IDs of the files to perform an operation on. | `data add ids`, `data remove ids` | **Required** |
 | `--include-jsonl` | Set to `true` to include JSON Lines files for local testing. |`export`| Optional |
 | `--name` | The name of the dataset to create or rename. | `create`, `rename` | **Required** |
-| `--org-id` | Organization ID of the organization the dataset belongs to. | `create`, `data add`, `data remove`, `list` | **Required** |
+| `--org-id` | Organization ID of the organization the dataset belongs to. | `create`, `data add`, `list` | **Required** |
+| `--org-ids` | Organization IDs of the organizations to filter data on. | `data add filter`, `data remove filter` | Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 100. | `export` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `data add`, `data remove` | Optional |
 | `--tags` | Filter by specified tag (accepts comma-separated list). | `data add`, `data remove` | Optional |
+| `--bbox-labels` | Filter data on bounding box labels. Accepts comma-separated list. | `data add filter`, `data remove filter` | Optional |
+| `--component-name` | Filter data on component name. | `data add filter`, `data remove filter` | Optional |
+| `--component-type` | Filter data on component type. | `data add filter`, `data remove filter` | Optional |
+| `--location-ids` | Filter data on location IDs. Accepts comma-separated list. | `data add filter`, `data remove filter` | Optional |
+| `--machine-id` | Filter data on machine ID. | `data add filter`, `data remove filter` | Optional |
+| `--machine-name` | Filter data on machine name. | `data add filter`, `data remove filter` | Optional |
+| `--method` | Filter data on capture method. | `data add filter`, `data remove filter` | Optional |
+| `--mime-types` | Filter data on MIME types. Accepts comma-separated list. | `data add filter`, `data remove filter` | Optional |
+| `--part-id` | Filter data on part ID. | `data add filter`, `data remove filter` | Optional |
+| `--part-name` | Filter data on part name. | `data add filter`, `data remove filter` | Optional |
 
 ##### Using the `ids` argument
 
@@ -591,8 +602,6 @@ To find the binary data ID of a given image, navigate to the [**DATA** tab](http
 The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
-
-See [Create a dataset](/data-ai/train/create-dataset/) for more information.
 
 ##### Using the `filter` argument
 
