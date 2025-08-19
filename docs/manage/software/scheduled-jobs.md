@@ -147,4 +147,4 @@ Monitor job execution through `viam-server` logs. Look for `rdk.job_manager`:
 
 - Jobs run locally on each machine and are not coordinated across multiple machines.
 - Job execution depends on `viam-server` running.
-- Failed jobs do not automatically retry.
+- Failed jobs do not retry.
