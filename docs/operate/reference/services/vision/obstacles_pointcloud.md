@@ -109,7 +109,7 @@ The following parameters are available for a `"obstacles_pointcloud"`.
 <!-- prettier-ignore -->
 | Parameter | Required? | Description |
 | --------- | --------- | ----------- |
-| `camera_name` | string | **Required** | The default camera to use for calls to `GetObjectPointClouds`. |
+| `camera_name` | **Required** | The default camera to use for calls to `GetObjectPointClouds`. |
 | `min_points_in_plane` | Optional | An integer that specifies how many points to put on the flat surface or ground plane when clustering. This is to distinguish between large planes, like the floors and walls, and small planes, like the tops of bottle caps. <br> Default: `500` </br> |
 | `min_points_in_segment` | Optional | An integer that sets a minimum size to the returned objects, and filters out all other found objects below that size. <br> Default: `10` </br> |
 | `clustering_radius` | Optional | An integer that specifies which neighboring points count as being "close enough" to be potentially put in the same cluster. This parameter determines how big the candidate clusters should be, or, how many points should be put on a flat surface. A small clustering radius is likely to split different parts of a large cluster into distinct objects. A large clustering radius is likely to aggregate closely spaced clusters into one object. <br> Default: `1` </br> |
