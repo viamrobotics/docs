@@ -1123,7 +1123,7 @@ If you look at the [Viam Registry page](https://app.viam.com/registry) while log
 {{% /tablestep %}}
 {{% tablestep number=6 %}}
 
-If your module supports hardware, add the harware name in the **Components & services** section on the module registry page under the heading **Supported hardware**.
+If your module supports hardware, add the hardware name in the **Components & services** section on the module registry page under the heading **Supported hardware**.
 
 {{% /tablestep %}}
 {{< /table >}}
