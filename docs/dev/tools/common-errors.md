@@ -222,7 +222,24 @@ These connections can come from modules or other scripts and apps.
 
 **Solution:** Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops.
 You can check operations and sessions for a machine on its **CONTROL** tab at the bottom of the screen.
-To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` environment variable on your machine to a positive integer higher than the default, 100.
+To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 100.
+
+### exceeded request limit on resource
+
+**Full Error:**
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+Error: exceeded request limit <LIMIT> on resource <RESOURCE>
+```
+
+**Description**:
+
+This error occurs when there are more than, by default, 100 concurrent requests to a resource on a machine.
+The limit applies to calls through both WebRTC and direct gRPC connection, that means requests can come from modules, the Viam web UI, or other resources.
+
+**Solution:**
+
+Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops. You can check operations and sessions for a machine on its **CONTROL** tab at the bottom of the screen. To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 100.
 
 ## Other common errors
 
