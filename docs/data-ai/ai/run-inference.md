@@ -36,7 +36,7 @@ You can run inference on your machine in the following ways:
 - manually in application logic with an SDK
 
 Entry-level devices such as the Raspberry Pi 4 can run small ML models, such as TensorFlow Lite (TFLite).
-More powerful hardware, including the Jetson Xavier or Raspberry Pi 5 with an AI HAT+, can process larger AI models, including Tensorflow and ONNX.
+More powerful hardware, including the Jetson Xavier or Raspberry Pi 5 with an AI HAT+, can process larger AI models, including TensorFlow and ONNX.
 
 {{< tabs >}}
 {{% tab name="Vision service" %}}
@@ -121,7 +121,7 @@ Cloud inference often provides more computing power than edge devices, so you ca
 - larger, more accurate models
 - faster inference times
 
-You can run cloud inference using any Tensorflow model in the Viam registry, including private models owned by or shared with your organization.
+You can run cloud inference using any TensorFlow and TensorFlow Lite model in the Viam registry, including private models owned by or shared with your organization.
 
 To run cloud inference, you must pass
 
