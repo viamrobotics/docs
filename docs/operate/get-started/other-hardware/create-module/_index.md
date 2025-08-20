@@ -1115,8 +1115,15 @@ The Viam Registry page for your module displays the platforms your module suppor
 
 {{% /tab %}}
 {{< /tabs >}}
+{{% /tablestep %}}
+{{% tablestep number=5 %}}
 
-Now, if you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
+If you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
+
+{{% /tablestep %}}
+{{% tablestep number=6 %}}
+
+If your module supports hardware, add the hardware name in the **Components & services** section on the module registry page under the heading **Supported hardware**.
 
 {{% /tablestep %}}
 {{< /table >}}
