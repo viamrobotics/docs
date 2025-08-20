@@ -119,7 +119,7 @@ To tag an image:
 1. Click on an image, then click the **+** next to the **Tags** option.
 1. Add one or more tags to your image.
 
-   {{<gif webm_src="/services/data/tag-tortilla.webm" mp4_src="/services/data/tag-tortilla.mp4" alt="Tag image with a full label">}}
+   {{<gif webm_src="/services/data/tag-star.webm" mp4_src="/services/data/tag-star.mp4" alt="Tag image with a full label">}}
 
 Repeat these steps for all images in the dataset.
 
@@ -173,7 +173,7 @@ To label an object with a bounding box:
 1. Choose an existing label or create a new label.
 1. Holding the command key (on macOS), or the control key (on Linux and Windows), click and drag on the image to create the bounding box:
 
-   {{<gif webm_src="/services/data/label-magnemite.webm" mp4_src="/services/data/label-magnemite.mp4" alt="Add a bounding box around the magnemite pokemon in an image">}}
+   {{<gif webm_src="/services/data/label-figure.webm" mp4_src="/services/data/label-figure.mp4" alt="Add a bounding box around the viam figure in an image">}}
 
 {{< alert title="Tip" color="tip" >}}
 
