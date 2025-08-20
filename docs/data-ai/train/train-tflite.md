@@ -1,6 +1,6 @@
 ---
-linkTitle: "Train TFLite model"
-title: "Train a TFlite model"
+linkTitle: "Train TF or TFLite model"
+title: "Train a TF or TFlite model"
 weight: 50
 type: "docs"
 tags: ["vision", "data", "services"]
@@ -71,6 +71,18 @@ Click **Next steps**.
 
 {{% /tablestep %}}
 {{% tablestep number=3 %}}
+**Select model type**
+
+Select between:
+
+<!-- prettier-ignore -->
+| Type | Description |
+| ---- | ----------- |
+| **TensorFlow Lite (TF Lite)** | Best for use on mobile and edge devices with minimal resources. |
+| **TensorFlow (TF)** | Best for general-purpose tasks with more computational power. |
+
+{{% /tablestep %}}
+{{% tablestep number=4 %}}
 **Fill in the details for your ML model**
 
 Enter a name for your new model.
@@ -135,10 +147,10 @@ If you trained a _classification_ model, you can test it with the following inst
 
 If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
 
-You can test both detection models and classifier models using the following resources together:
+You can test both TensorFlow Lite detection models and TensorFlow Lite classifier models using the following resources together:
 
 - [a camera](/operate/reference/components/camera/)
-- [a `tflite_cpu` ML model](/data-ai/ai/deploy/) with the model you just trained
+- [a `tflite_cpu` ML model](https://app.viam.com/module/viam/tflite_cpu/) with the model you just trained
 - [an `mlmodel` vision service](/operate/reference/services/vision/mlmodel/) using the `tflite_cpu` model
 
 ## Iterate on your ML model
