@@ -151,7 +151,7 @@ If your HTML file loads other files, use relative paths to ensure your files are
 
 For developing your application on localhost:
 
-1. Run your web server.
+1. Run your web server. Take note of its port number for the next step.
 1. Run the following commands specifying the address where your app is running on localhost and a machine to test on.
 
    {{< tabs >}}
@@ -164,7 +164,7 @@ For developing your application on localhost:
 
 ```sh {class="command-line" data-prompt="$" data-output="3-10"}
 viam login
-viam module local-app-testing --app-url http://localhost:<PORT> --machine-id <MACHINE-ID>
+viam module local-app-testing --app-url http://localhost:<PORT-YOUR-WEB-SERVER-IS-ON> --machine-id <MACHINE-ID>
 ```
 
 {{% /tab %}}
