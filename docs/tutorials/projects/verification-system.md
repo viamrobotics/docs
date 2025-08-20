@@ -169,7 +169,7 @@ Then, train a new model using that model:
    This creates a new label for `person` objects.
 1. Holding the command key (on macOS), or the control key (on Linux and Windows), click and drag on the image to create the bounding box:
 
-   {{<gif webm_src="/services/data/label-magnemite.webm" mp4_src="/services/data/label-magnemite.mp4" alt="Add a bounding box around the magnemite pokemon in an image">}}
+   {{<gif webm_src="/services/data/label-figure.webm" mp4_src="/services/data/label-figure.mp4" alt="Add a bounding box around the viam figure in an image">}}
 
 1. When you have created bounding boxes for all `person` objects in the image, click the right arrow key to navigate to the next image. Repeat the process for each image in your dataset, drawing bounding boxes for every person in every image.
 1. [Train a TFlite model on your dataset](/data-ai/train/train-tflite/).
