@@ -465,6 +465,9 @@ The following resource models have moved to modules.
 | sensor | [`pi`](https://app.viam.com/module/viam/raspberry-pi) |
 | sensor | [`ultrasonic`](https://app.viam.com/module/viam/ultrasonic) |
 | ML model | [`TFLite CPU`](https://app.viam.com/module/viam/tflite_cpu) |
+| vision service | [`obstacles-depth`](https://app.viam.com/module/viam/obstacles-pointcloud) |
+| vision service | [`obstacles-distance`](https://app.viam.com/module/viam/obstacles-distance) |
+| vision service | [`obstacles-pointcloud`](https://app.viam.com/module/viam/obstacles-pointcloud) |
 
 The following models were removed:
 
@@ -1251,7 +1254,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/operate/reference/services/vision/obstacles_pointcloud/) or you can update the JSON configuration of your machines:
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](https://app.viam.com/module/viam/obstacles-pointcloud) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}

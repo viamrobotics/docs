@@ -109,6 +109,8 @@ The following attributes are available for the data management service:
 | `mongo_capture_config.collection` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the collection data capture will write tabular data to.<br> Default: `"readings"`   |   |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `file_last_modified_millis` | float | Optional | The amount of time to pass since arbitrary files were last modified until they are synced. Normal <file>.capture</file> files are synced as soon as they are able to be synced. <br> Default: `10000` milliseconds. |   |
+| `disk_usage_deletion_threshold` | float | Optional | The disk usage ratio at or above which, files will be deleted if the capture directory makes up at least the specified `capture_dir_deletion_threshold` of the disk usage. If disk usage is at or above the disk usage threshold, but the capture directory is below the capture directory threshold, then file deletion will not occur but a warning will be logged periodically. Default: `0.9`. |  |
+| `capture_dir_deletion_threshold` | float | Optional | The ratio of disk usage made up by the capture directory at or above which files will be deleted if the disk usage ratio is also above the `disk_usage_deletion_threshold`. If the ratio of disk usage of the capture directory is at or above the threshold but the disk usage is below the disk usage threshold, then file deletion will not occur but a warning will be logged periodically. Default: `0.5`. |   |
 
 {{< /expand >}}
 
