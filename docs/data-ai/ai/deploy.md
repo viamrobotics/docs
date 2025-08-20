@@ -75,7 +75,7 @@ Save your config to use your specified version of the ML model.
 
 The service works with models trained on Viam or elsewhere:
 
-- You can [train TFlite](/data-ai/train/train-tflite/) or [other model frameworks](/data-ai/train/train/) on data from your machines.
+- You can [train TensorFlow or TensorFlow lite](/data-ai/train/train-tf-tflite/) or [other model frameworks](/data-ai/train/train/) on data from your machines.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [registry](https://app.viam.com/registry).
 - You can upload externally trained models from a model file on the [**MODELS** tab](https://app.viam.com/models).
 - You can use a [model](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) trained outside the Viam platform whose files are on your machine. See the documentation of the model of ML model service you're using (pick one that supports your model framework) for instructions on this.

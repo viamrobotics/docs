@@ -20,6 +20,7 @@ aliases:
   - /modular-resources/examples/tflite-module/
   - /registry/examples/tflite-module/
   - /data-ai/ai/train-tflite/
+  - /data-ai/train/train-tf-tflite/
 languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml"]
@@ -101,7 +102,7 @@ Click **Train model**.
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep number=5 %}}
 **Wait for your model to train**
 
 The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
@@ -111,7 +112,7 @@ Once the model has finished training, it becomes visible on the [**MODELS** tab]
 You will receive an email when your model finishes training.
 
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep number=6 %}}
 **Debug your training job**
 
 From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
@@ -178,7 +179,7 @@ To capture more images and re-train your model using those images, complete the 
 
 1. Visit the **DATASET** tab of the **DATA** page and annotate the images.
 
-1. Repeat the [steps to train a machine learning model](/data-ai/train/train-tflite/#train-a-machine-learning-model) and create a new version of your ML model.
+1. Repeat the [steps to train a machine learning model](/data-ai/train/train-tf-tflite/#train-a-machine-learning-model) and create a new version of your ML model.
    Your machines will automatically update to the new version of the model soon after release.
 
 ## Next steps

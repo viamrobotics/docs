@@ -29,7 +29,7 @@ Before configuring your `mlmodel` detector or classifier, you need to:
 
 <h4>1. Train or upload an ML model</h4>
 
-You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) or [train a TFlite](/data-ai/train/train-tflite/) or [another model](/data-ai/train/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
+You can add an [existing model](/data-ai/ai/deploy/#deploy-your-ml-model-on-an-ml-model-service) or [train a TensorFlow or a TensorFlow Lite](/data-ai/train/train-tf-tflite/) or [another model](/data-ai/train/train/) for object detection and classification using your data in the [Viam Cloud](/data-ai/capture-data/capture-sync/).
 
 {{% /manualcard %}}
 {{% manualcard %}}
@@ -152,7 +152,7 @@ Both the `mlmodel` detector and classifier require that the input and output ten
   - The _input tensor_ must be named `image`
   - The _output tensor_ must be named `probability`
 
-If you [trained a TFlite ML model using Viam](/data-ai/train/train-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
+If you [trained a TensforFLow or TensorFlow Lite ML model using Viam](/data-ai/train/train-tf-tflite/), your `mlmodel` tensors are already named in this fashion, and you can proceed to [test your detector or classifier](#test-your-detector-or-classifier).
 However, if you uploaded your own ML model, or are using one from the [registry](https://app.viam.com/registry), you may need to remap your tensor names to meet this requirement, and should follow the instructions to [remap tensor names](#remap-tensor-names).
 
 #### Remap tensor names

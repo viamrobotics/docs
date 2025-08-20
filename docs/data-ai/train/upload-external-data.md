@@ -290,5 +290,5 @@ However, the uploaded images will not be associated with a component or method.
 
 ## Next steps
 
-Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/train/train-tflite/) on it.
+Now that you have a batch of data uploaded, you can [train an ML model](/data-ai/train/train-tf-tflite/) on it.
 Or, if you want to collect and upload data _not_ in a batch, see [Create a dataset](/data-ai/train/create-dataset/).

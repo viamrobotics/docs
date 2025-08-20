@@ -1652,6 +1652,7 @@ viam train list --org-id=123 --job-status=completed
 | `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
+| `--model-framework` | The framework of model to train. Options: `tflite`, `tensorflow` | `submit managed` | Optional |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
 | `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
