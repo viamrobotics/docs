@@ -465,6 +465,9 @@ The following resource models have moved to modules.
 | sensor | [`pi`](https://app.viam.com/module/viam/raspberry-pi) |
 | sensor | [`ultrasonic`](https://app.viam.com/module/viam/ultrasonic) |
 | ML model | [`TFLite CPU`](https://app.viam.com/module/viam/tflite_cpu) |
+| vision service | [`obstacles-depth`](https://app.viam.com/module/viam/obstacles-pointcloud) |
+| vision service | [`obstacles-distance`](https://app.viam.com/module/viam/obstacles-distance) |
+| vision service | [`obstacles-pointcloud`](https://app.viam.com/module/viam/obstacles-pointcloud) |
 
 The following models were removed:
 
