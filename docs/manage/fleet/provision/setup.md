@@ -184,13 +184,13 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "network_configuration": {
-    "manufacturer": "<NAME>", # your company name
-    "model": "<NAME>", # the machine's model
+    "manufacturer": "<NAME>", // your company name
+    "model": "<NAME>", // the machine's model
     "fragment_id": "<ID>", # the fragment id, required for mobile app
-    "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
-    "disable_captive_portal_redirect": false, # set to true if using a mobile app
-    "hotspot_password": "<PASSWORD>", # password for the hotspot
+    "hotspot_interface": "<INTERFACE>", // the interface to use for hotspot/provisioning/wifi management
+    "hotspot_prefix": "<PREFIX>", // machine creates a hotspot during setup
+    "disable_captive_portal_redirect": false, // set to true if using a mobile app
+    "hotspot_password": "<PASSWORD>", // password for the hotspot
     "turn_on_hotspot_if_wifi_has_no_internet": false,
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
