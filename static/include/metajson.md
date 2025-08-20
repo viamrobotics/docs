@@ -55,7 +55,8 @@ Do not change the <code>module_id</code>.</p>
 <td><code>build</code></td>
 <td>object</td>
 <td>Optional</td>
-<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/dev/tools/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>. </td>
+<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use this with the <a href="/dev/tools/cli/#using-the-build-subcommand">Viam CLI's build subcommand</a>.<br><ul><li><code>"setup"</code> (Optional): Command to run for setting up the build environment.</li><li><code>"build"</code> (Required): Command to run to build the module tarball.</li><li><code>"path"</code> (Optional): Path to the build module tarball.</li>
+<li><code>"arch"</code> (Required): Array of architectures to build for. For more information see <a href="/operate/get-started/other-hardware/manage-modules/#supported-platforms-for-automatic-updates">Supported platforms for automatic updates</a>.</li><li><code>"darwin_deps"</code> (Required): Array of homebrew dependencies for Darwin builds. Explicitly pass <code>[]</code> for empty. Default: <code>["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"]</code></li></ul></td>
 </tr>
 <tr>
 <td><code>markdown_link</code></td>
