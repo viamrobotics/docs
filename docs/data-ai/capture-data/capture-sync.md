@@ -95,6 +95,7 @@ For instructions on configuring data capture and sync with JSON, go to [Advanced
 ## View captured data
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view).
+1. Select the [**Images**](https://app.viam.com/data/view?view=images), [**Files**](https://app.viam.com/data/view?view=files), [**Point clouds**](https://app.viam.com/data/view?view=point+clouds), or [**Sensors**](https://app.viam.com/data/view?view=sensors) subtab.
 1. Filter data by location, type of data, and more.
 
 ## Stop data capture or data sync
