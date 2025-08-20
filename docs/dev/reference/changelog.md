@@ -1254,7 +1254,7 @@ You can replace existing TFLite classifiers by [configuring new ones in the UI](
 
 #### Radius Clustering 3D segmenter configurations
 
-You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](/operate/reference/services/vision/obstacles_pointcloud/) or you can update the JSON configuration of your machines:
+You can replace existing Radius Clustering 3D segmenters by [configuring new ones in the UI](https://app.viam.com/module/viam/obstacles-pointcloud) or you can update the JSON configuration of your machines:
 
 {{< tabs >}}
 {{% tab name="New Way" %}}
