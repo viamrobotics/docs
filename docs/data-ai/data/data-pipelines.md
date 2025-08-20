@@ -58,7 +58,7 @@ To create a pipeline that reads data from the [hot data store](/data-ai/data/hot
 
 To define a new pipeline, call [`DataClient.CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline):
 
-{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-54" >}}
+{{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-55" >}}
 
 To create a pipeline that reads data from the [hot data store](/data-ai/data/hot-data-store/), set your query's `data_source` to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 

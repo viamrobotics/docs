@@ -15,6 +15,6 @@
   </summary>
   <div class="expand-content">
     <span class="expander-anchor" id="{{ urls.Anchorize (.Get 0) }}"></span>
-    {{ $.Inner | safeHTML }}
+    {{ $.Inner | safeHTML | markdownify }}
   </div>
 </details>
