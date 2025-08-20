@@ -225,7 +225,7 @@ If you have other hardware you need to integrate with a custom module, continue 
 If you have configured all your hardware, you can do a variety of things with your machine:
 
 - [Capture data from your machines](/data-ai/capture-data/capture-sync/)
-- [Create a dataset](/data-ai/train/create-dataset/) and [train an AI model](/data-ai/train/train-tflite/)
+- [Create a dataset](/data-ai/train/create-dataset/) and [train an AI model](/data-ai/train/train-tf-tflite/)
 - [Write an app](/operate/control/web-app/) to interact with your machines using any of the Viam SDKs
 - [Deploy control logic to run directly on your machines](/manage/software/control-logic/)
 - [Share the configuration across multiple machines](/manage/fleet/reuse-configuration/)

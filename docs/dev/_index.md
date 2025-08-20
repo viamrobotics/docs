@@ -753,7 +753,7 @@ job_metadata = await ml_training_client.get_training_job(
 
 Build machine learning models based on your machines' data any time using the ML training client API
 
-[Train and deploy ML models →](/data-ai/train/train-tflite/)
+[Train and deploy ML models →](/data-ai/train/train-tf-tflite/)
 
   </div>
 </div>

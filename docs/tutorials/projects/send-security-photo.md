@@ -88,7 +88,7 @@ This tutorial uses a pre-trained Machine Learning model from the Viam Registry c
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-If you want to train your own model instead, follow the instructions to [train a TFlite](/data-ai/train/train-tflite/) or [another model](/data-ai/train/train/).
+If you want to train your own model instead, follow the instructions to [train a TFlite](/data-ai/train/train-tf-tflite/) or [another model](/data-ai/train/train/).
 
 1. **Configure the ML model service**
 

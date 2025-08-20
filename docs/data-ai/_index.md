@@ -47,7 +47,7 @@ You can also monitor your machines through teleop, power your application logic,
 {{< cards >}}
 {{% card link="/data-ai/train/create-dataset/" noimage="true" %}}
 {{% card link="/data-ai/train/capture-annotate-images/" noimage="true" %}}
-{{% card link="/data-ai/train/train-tflite/" noimage="true" %}}
+{{% card link="/data-ai/train/train-tf-tflite/" noimage="true" %}}
 {{% card link="/data-ai/train/train/" noimage="true" %}}
 {{% card link="/data-ai/train/upload-external-data/" noimage="true" %}}
 {{< /cards >}}

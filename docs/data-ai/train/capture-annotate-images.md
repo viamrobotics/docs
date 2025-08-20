@@ -74,7 +74,7 @@ Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCap
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you've captured [enough images for training](/data-ai/train/train-tflite/), you must [annotate](#annotate-images) the images before you can use them to train a model.
+Once you've captured enough images for training, you must [annotate](#annotate-images) the images before you can use them to train a model.
 
 ### Capture images over time
 
@@ -150,7 +150,7 @@ Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/de
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/) an ML model to make inferences.
+Once you've annotated your dataset, you can [train](/data-ai/train/train-tf-tflite/) an ML model to make inferences.
 
 ### Label objects within an image
 
@@ -210,7 +210,7 @@ Then, separately pass each bounding box and the image ID to [`dataClient.addBoun
 {{% /tab %}}
 {{< /tabs >}}
 
-Once you've annotated your dataset, you can [train](/data-ai/train/train-tflite/) an ML model to make inferences.
+Once you've annotated your dataset, you can [train](/data-ai/train/train-tf-tflite/) an ML model to make inferences.
 
 ## Capture, annotate, and add images to a dataset in a single script
 
