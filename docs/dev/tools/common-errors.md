@@ -222,24 +222,26 @@ These connections can come from modules or other scripts and apps.
 
 **Solution:** Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops.
 You can check operations and sessions for a machine on its **CONTROL** tab at the bottom of the screen.
-To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` environment variable on your machine to a positive integer higher than the default, 100.
+To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 100.
 
-### Too many in-flight requests
+### exceeded request limit on resource
 
 **Full Error:**
 
 ```sh {class="command-line" data-prompt="$" data-output="1-10"}
-Error: Could not connect to machine part: error updating resources: rpc error: code = ResourceExhausted desc = too many in-flight requests
+Error: exceeded request limit <LIMIT> on resource <RESOURCE>
 ```
 
 **Description**:
 
-This error occurs when there are more than 100 concurrent requests to a resource on a machine.
+This error occurs when there are more than, by default, 100 concurrent requests to a resource on a machine.
 The limit applies to calls through both WebRTC and direct gRPC connection, that means requests can come from modules, the Viam web UI, or other resources.
 
 **Solution:**
 
-1. To indentify where requests might be coming from, navigate to the machine's **CONTROL** tab, and check the **Operations & Sessions** card at the bottom of the screen.
+1. Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops.
+   You can check operations and sessions for a machine on its **CONTROL** tab at the bottom of the screen.
+   To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 100.
 1. You can change the request limit by setting the VIAM_RESOURCE_REQUESTS_LIMIT environment variable to a higher number.
 
 ## Other common errors
