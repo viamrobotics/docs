@@ -35,6 +35,9 @@ After training or uploading a machine learning model, use a machine learning (ML
 1. Navigate to the **CONFIGURE** tab of one of your machines.
 2. Add an ML model service that supports the ML model you want to use.
    - For example, use the `ML model / TFLite CPU` service for TFlite ML models that you trained with Viam's built-in training.
+3. Click **Select model** and select a model from your organization or the registry.
+4. Save your config.
+5. Use the **Test** panel to test your model.
 
 {{<resources_svc api="rdk:service:mlmodel" type="ML model">}}
 
@@ -55,9 +58,6 @@ For some models of the ML model service, like the [Triton ML model service](http
 {{< /alert >}}
 
 {{< /expand>}}
-
-3. Click **Select model** and select a model from your organization or the registry.
-4. Save your config.
 
 ### Models available to deploy on the ML Model service
 
