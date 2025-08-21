@@ -146,7 +146,7 @@ If you are building your own app to provide provisioning functionality you have 
 | ------------------- | ----------- | ----- | ------- |
 | **Bluetooth with WiFi** | Ask the user to connect to the machine over Bluetooth. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. | Recommended, if available. | [Example](https://github.com/viamrobotics/viam_flutter_provisioning/) |
 | **WiFi** | Ask the user to connect to the machine's temporary WiFi network. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. | Slower than Bluetooth with WiFi but faster than Bluetooth tethering. | [Example](https://github.com/viamrobotics/viam_flutter_hotspot_provisioning_widget) |
- | **Bluetooth tethering** | Ask the user to connect to the machine over Bluetooth. The user shares their mobile device's internet with the machine over Bluetooth. | Slowest | [Package](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget/blob/main/lib/src/flow/bluetooth_tethering_flow.dart) |
+ | **Bluetooth tethering** | Ask the user to connect to the machine over Bluetooth. The user shares their mobile device's internet with the machine over Bluetooth. | Slowest | [Example](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget/) |
 
 You can support any number of these options.
 
