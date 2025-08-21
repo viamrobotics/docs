@@ -71,14 +71,15 @@ from viam.components.gantry import Gantry
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with
+        # TODO: Replace "<API-KEY>" (including brackets) with
         # your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with
         # your machine's API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('<ROBOT_ADDRESS>', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 async def main():
@@ -130,14 +131,15 @@ from viam.proto.common import Pose, PoseInFrame
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with
+        # TODO: Replace "<API-KEY>" (including brackets) with
         # your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with
         # your machine's API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('<ROBOT_ADDRESS>', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 async def main():

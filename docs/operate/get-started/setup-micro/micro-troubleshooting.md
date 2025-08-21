@@ -100,7 +100,7 @@ This code will disable the SDK background task that monitors the connection to y
 {{% tab name="Python" %}}
 
 ```python
-# Replace the connect function found in the CONNECT tab with the following
+# TODO: Replace the connect function found in the CONNECT tab with the following
 async def connect():
     opts = RobotClient.Options(
         # viam-micro-server configures once at boot,
@@ -114,14 +114,14 @@ async def connect():
         # so it is safe to disable them
         disable_sessions=True,
         dial_options=DialOptions.with_api_key(
-            # Replace "<API-KEY-ID>" (including brackets)
+            # TODO: Replace "<API-KEY-ID>" (including brackets)
             # with your machine's api key id
             api_key_id='<API-KEY-ID>',
-            # Replace "<API-KEY>" (including brackets)
+            # TODO: Replace "<API-KEY>" (including brackets)
             # with your machine's api key
             api_key='<API-KEY>')
     )
-    # Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    # TODO: Replace "<ROBOT-URL>" (including brackets) with your machine's url
     return await RobotClient.at_address('<ROBOT-URL>', opts)
 ```
 
@@ -129,21 +129,21 @@ async def connect():
 {{% tab name="Go" %}}
 
 ```go
-// Replace the call to client.New with the following block
+// TODO: Replace the call to client.New with the following block
 robot, err := client.New(
     context.Background(),
-    "<ROBOT-URL>", // Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    "<ROBOT-URL>", // TODO: Replace "<ROBOT-URL>" (including brackets) with your machine's url
     logger,
     client.WithDisableSessions(), // viam-micro-server doesn't support sessions so it is safe to disable them
     client.WithCheckConnectedEvery(0), // Checking the connection can safely be disabled
     client.WithReconnectEvery(0), // Same for Attempting to reconnect
     client.WithRefreshEvery(0), // viam-micro-server configures once at boot, so we don't need to check if the components have changed
     client.WithDialOptions(rpc.WithEntityCredentials(
-        // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
         "<API-KEY-ID>",
         rpc.Credentials{
             Type: rpc.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your machine's api key
+            // TODO: Replace "<API-KEY>" (including brackets) with your machine's api key
             Payload: "<API-KEY>",
         })),
     )

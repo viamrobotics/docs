@@ -116,13 +116,14 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('MACHINE ADDRESS', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address('<MACHINE-ADDRESS>', opts)
 
 
 async def moveInSquare(base):
@@ -178,14 +179,15 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "MACHINE ADDRESS",
+      // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+      "<MACHINE-ADDRESS>",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       utils.Credentials{
           Type:    utils.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your machine's API key
+          // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
     )
@@ -236,11 +238,12 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 
 int main() {
-    std::string host("MACHINE ADDRESS");
+    // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    std::string host("<MACHINE-ADDRESS>");
     DialOptions dial_opts;
-    // Replace "<API-KEY-ID>" with your machine's api key ID
+    // TODO: Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
-    // Replace "<API-KEY>" with your machine's api key
+    // TODO: Replace "<API-KEY>" with your machine's api key
     Credentials credentials("api-key", "<API-KEY>");
     dial_opts.set_credentials(credentials);
     boost::optional<DialOptions> opts(dial_opts);
@@ -291,9 +294,9 @@ from viam.components.generic import Generic
 load_dotenv()
 LOGGER = getLogger(__name__)
 
-robot_api_key = os.getenv('ROBOT_API_KEY') or ''
-robot_api_key_id = os.getenv('ROBOT_API_KEY_ID') or ''
-robot_address = os.getenv('ROBOT_ADDRESS') or ''
+robot_api_key = os.getenv('MACHINE_API_KEY') or ''
+robot_api_key_id = os.getenv('MACHINE_API_KEY_ID') or ''
+robot_address = os.getenv('MACHINE_ADDRESS') or ''
 
 # Define the sensor and plug names on the CONFIGURE tab
 sensor_name = os.getenv("SENSOR_NAME", "")

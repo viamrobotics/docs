@@ -426,7 +426,8 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "MACHINE ADDRESS",
+      // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+      "<MACHINE-ADDRESS>",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
               /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
@@ -475,7 +476,7 @@ If you have a different base name, update the name in your code.
 ```ts {class="line-numbers linkable-line-numbers"}
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of the base on your machine.
+  // TODO: Replace with the name of the base on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -516,15 +517,16 @@ Your main function should now look like this:
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="16-19"}
 async function main() {
-  const host = "ADDRESS_FROM_VIAM_APP";
+  // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+  const host = "<MACHINE-ADDRESS>";
 
   const machine = await VIAM.createRobotClient({
     host,
     credentials: {
-      // Replace "<API-KEY>" (including brackets) with your machine's api key
+      // TODO: Replace "<API-KEY>" (including brackets) with your machine's api key
       type: "api-key",
       payload: "<API-KEY>",
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
       authEntity: "<API-KEY-ID>",
     },
     signalingAddress: "https://app.viam.com:443",
@@ -764,11 +766,12 @@ If you have a different base name, update the name in your code.
 
 ```cpp {class="line-numbers linkable-line-numbers" data-line="19-31"}
 int main() {
-    std::string host("MACHINE ADDRESS");
+    // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    std::string host("<MACHINE-ADDRESS>");
     DialOptions dial_opts;
-    // Replace "<API-KEY-ID>" with your machine's api key ID
+    // TODO: Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
-    // Replace "<API-KEY>" with your machine's api key
+    // TODO: Replace "<API-KEY>" with your machine's api key
     Credentials credentials("api-key", "<API-KEY>");
     dial_opts.set_credentials(credentials);
     boost::optional<DialOptions> opts(dial_opts);
@@ -835,13 +838,15 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('MACHINE ADDRESS', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 async def moveInSquare(base):
@@ -897,14 +902,15 @@ func main() {
     logger := logging.NewLogger("client")
     machine, err := client.New(
       context.Background(),
-      "MACHINE ADDRESS",
+      // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+      "<MACHINE-ADDRESS>",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
       "<API-KEY-ID>",
       utils.Credentials{
           Type:    utils.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your machine's API key
+          // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
       })),
     )
@@ -989,7 +995,7 @@ import * as VIAM from "@viamrobotics/sdk";
 
 // This function moves a base component in a square.
 async function moveInSquare(client: VIAM.RobotClient) {
-  // Replace with the name of the base on your machine.
+  // TODO: Replace with the name of the base on your machine.
   const name = "viam_base";
   const baseClient = new VIAM.BaseClient(client, name);
 
@@ -1012,15 +1018,16 @@ function button() {
 }
 
 const main = async () => {
-  const host = "ADDRESS_FROM_VIAM_APP";
+  // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+  const host = "<MACHINE-ADDRESS>";
 
   const machine = await VIAM.createRobotClient({
     host,
     credentials: {
-      // Replace "<API-KEY>" (including brackets) with your machine's api key
+      // TODO: Replace "<API-KEY>" (including brackets) with your machine's api key
       type: "api-key",
       payload: "<API-KEY>",
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
       authEntity: "<API-KEY-ID>",
     },
     signalingAddress: "https://app.viam.com:443",
@@ -1218,11 +1225,12 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 
 int main() {
-    std::string host("MACHINE ADDRESS");
+    // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    std::string host("<MACHINE-ADDRESS>");
     DialOptions dial_opts;
-    // Replace "<API-KEY-ID>" with your machine's api key ID
+    // TODO: Replace "<API-KEY-ID>" with your machine's api key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
-    // Replace "<API-KEY>" with your machine's api key
+    // TODO: Replace "<API-KEY>" with your machine's api key
     Credentials credentials("api-key", "<API-KEY>");
     dial_opts.set_credentials(credentials);
     boost::optional<DialOptions> opts(dial_opts);

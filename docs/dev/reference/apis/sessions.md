@@ -70,9 +70,10 @@ To change this, pass the `timeout` parameter to the `DialOptions` object:
 
 ```python {class="line-numbers linkable-line-numbers" data-line="1"}
 opts = RobotClient.Options(dial_options=DialOptions(timeout=10)).with_api_key(
-  # Replace "<API-KEY>" (including brackets) with your machine's API key
+  # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+  # API key
   api_key='<API-KEY>',
-  # Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
   api_key_id='<API-KEY-ID>'
 )
 await RobotClient.at_address('<machine address>', opts)

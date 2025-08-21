@@ -483,13 +483,11 @@ async def handleController(controller):
 
 
 async def main():
-    # ADD YOUR MACHINE REMOTE ADDRESS and API KEY VALUES.
-    # These can be found in app.viam.com's CONNECT tab's Code sample page.
-    # Toggle 'Include API key' to show the API key values.
+    # TODO: Add your machine address and API key values from the CONNECT tab.
     g920_robot = await connect_robot(
-        "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
+        "<MACHINE-ADDRESS>", "API_KEY", "API_KEY_ID")
     modal_robot = await connect_robot(
-        "robot123example.locationxyzexample.viam.com", "API_KEY", "API_KEY_ID")
+        "<MACHINE-ADDRESS>", "API_KEY", "API_KEY_ID")
 
     g920 = Controller.from_robot(g920_robot, 'wheel')
     global modal

@@ -45,10 +45,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
       # API key ID
       auth_entity='<API-KEY-ID>'
     )
@@ -83,8 +84,8 @@ import (
 func main() {
   logger := logging.NewDebugLogger("client")
   ctx := context.Background()
-  // Replace "<API-KEY>" (including brackets) with your machine's API key
-  // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
+  // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
   viamClient, err := app.CreateViamClientWithAPIKey(
     ctx, app.Options{}, "<API-KEY>", "<API-KEY-ID>", logger)
   if err != nil {
@@ -101,9 +102,9 @@ func main() {
 
 ```ts {class="line-numbers linkable-line-numbers" data-line="3, 5"}
 async function connect(): Promise<VIAM.ViamClient> {
-  // Replace "<API-KEY-ID>" (including brackets) with your machine's
+  // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
   const API_KEY_ID = "<API-KEY-ID>";
-  // Replace "<API-KEY>" (including brackets) with your machine's API key
+  // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
   const API_KEY = "<API-KEY>";
   const opts: VIAM.ViamClientOptions = {
     serviceHost: "https://app.viam.com:443",
