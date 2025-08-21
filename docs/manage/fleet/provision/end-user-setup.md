@@ -140,11 +140,15 @@ Note that any features that require internet access will not function if the con
 
 ## Set up your machine using a custom Flutter app
 
-When developing your own application, if you support both Bluetooth and WiFi Hotspot provisioning and both are available, we recommend using Bluetooth by default for a smoother setup experience.
+If you are building your own app to provide provisioning functionality you have three options for provisioning:
 
-It is also possible to use Bluetooth tethering.
-The [Flutter Provisioning package](https://github.com/viamrobotics/viam_flutter_provisioning/) shows Bluetooth provisioning using Bluetooth tethering.
-This method is slow and we recommend using a WiFi connection where possible.
+| Provisioning method | Description | Notes |
+| -------------------- | ------------ | ----- |
+| **Bluetooth with WiFi** | Ask the user to connect to the machine over Bluetooth. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. | Recommended, if available. | [Example](https://github.com/viamrobotics/viam_flutter_provisioning/) |
+| **WiFi** | Ask the user to connect to the machine's temporary WiFi network. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. | Slower than Bluetooth with WiFi but faster than Bluetooth tethering. |
+ | **Bluetooth tethering** | Ask the user to connect to the machine over Bluetooth. The user shares their mobile device's internet with the machine over Bluetooth. | Slowest | [Package](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget/blob/main/lib/src/flow/bluetooth_tethering_flow.dart) |
+
+You can support any number of these options.
 
 ## Troubleshooting
 
