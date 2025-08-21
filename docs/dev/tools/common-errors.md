@@ -302,7 +302,7 @@ If not, look for other related errors in your logs.
    ```
 
    1. Verify your machine's internet connection is stable and working properly.
-   1. Check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
+   1. Install [`netcat`](https://nc110.sourceforge.io/) and check if you can access `turn.viam.com:443` and `global.turn.twilio.com:3478`:
 
       ```sh {class="command-line" data-prompt="$" data-output="2,4"}
       nc -zv turn.viam.com 443
