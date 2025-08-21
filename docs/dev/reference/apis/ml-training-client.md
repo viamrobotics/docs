@@ -85,7 +85,8 @@ func main() {
   logger := logging.NewDebugLogger("client")
   ctx := context.Background()
   // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
-  // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+  // API key ID
   viamClient, err := app.CreateViamClientWithAPIKey(
     ctx, app.Options{}, "<API-KEY>", "<API-KEY-ID>", logger)
   if err != nil {
@@ -103,6 +104,7 @@ func main() {
 ```ts {class="line-numbers linkable-line-numbers" data-line="3, 5"}
 async function connect(): Promise<VIAM.ViamClient> {
   // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+  // API key ID
   const API_KEY_ID = "<API-KEY-ID>";
   // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
   const API_KEY = "<API-KEY>";

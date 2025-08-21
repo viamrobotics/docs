@@ -782,7 +782,7 @@ viam machines list --all --organization=12345
 # get machine status
 viam machines status  --machine=123
 
-# create an api key for a machine
+# create an API key for a machine
 viam machines api-key create --machine-id=123 --name=MyKey
 
 # stream logs from a machine
@@ -1396,7 +1396,7 @@ Examples:
 # list all the organizations that you are currently authenticated to
 viam organizations list
 
-# create a new organization api key in org 123
+# create a new organization API key in org 123
 viam organizations api-key create --org-id=123 --name=my-key
 ```
 

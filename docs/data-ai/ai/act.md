@@ -26,14 +26,14 @@ You can use the following code to detect and follow the location of a colored ob
 ```python {class="line-numbers linkable-line-numbers"}
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
         # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
     # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
-
     return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 

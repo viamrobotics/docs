@@ -116,7 +116,8 @@ from viam.rpc.dial import Credentials, DialOptions
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your
+        # machine's API key
         api_key='<API-KEY>',
         # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
@@ -183,11 +184,13 @@ func main() {
       "<MACHINE-ADDRESS>",
       logger,
       client.WithDialOptions(utils.WithEntityCredentials(
-      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       utils.Credentials{
           Type:    utils.CredentialsTypeAPIKey,
-          // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
+          // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+          // API key
           Payload: "<API-KEY>",
       })),
     )
@@ -241,9 +244,9 @@ int main() {
     // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
     std::string host("<MACHINE-ADDRESS>");
     DialOptions dial_opts;
-    // TODO: Replace "<API-KEY-ID>" with your machine's api key ID
+    // TODO: Replace "<API-KEY-ID>" with your machine's API key ID
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
-    // TODO: Replace "<API-KEY>" with your machine's api key
+    // TODO: Replace "<API-KEY>" with your machine's API key
     Credentials credentials("api-key", "<API-KEY>");
     dial_opts.set_credentials(credentials);
     boost::optional<DialOptions> opts(dial_opts);

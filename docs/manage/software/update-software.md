@@ -126,8 +126,8 @@ from viam.app.viam_client import ViamClient
 from viam.robot.client import RobotClient
 
 
-# TODO: Replace "<API-KEY>" (including brackets) with your API key and "<API-KEY-ID>"
-# with your API key ID
+# TODO: Replace "<API-KEY>" (including brackets) with your API key and
+# "<API-KEY-ID>" with your API key ID
 API_KEY = "<API-KEY>"
 API_KEY_ID = "<API-KEY-ID>"
 LOCATION_ID = "<LOCATION-ID>"

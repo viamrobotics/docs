@@ -107,7 +107,8 @@ func main() {
   logger := logging.NewDebugLogger("client")
   ctx := context.Background()
   // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
-  // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+  // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+  // API key ID
   viamClient, err := app.CreateViamClientWithAPIKey(
     ctx, app.Options{}, "<API-KEY>", "<API-KEY-ID>", logger)
   if err != nil {

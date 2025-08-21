@@ -408,11 +408,13 @@ func main() {
       "<MACHINE-ADDRESS>",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
+          // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+          // API key
           Payload: "<API-KEY>",
       })),
   )

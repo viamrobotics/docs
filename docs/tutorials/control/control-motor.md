@@ -152,8 +152,8 @@ async def connect():
         # TODO: Replace "<API-KEY>" (including brackets) with your machine's
         # API key
         api_key='<API-KEY>',
-        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API
-        # key ID
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
     # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
@@ -206,11 +206,13 @@ func main() {
     "<MACHINE-ADDRESS>",
     logger,
     client.WithDialOptions(utils.WithEntityCredentials(
-      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       utils.Credentials{
         Type:    utils.CredentialsTypeAPIKey,
-        // TODO: Replace "<API-KEY>" (including brackets) with your machine's API key
+        // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        // API key
         Payload: "<API-KEY>",
       })),
   )
@@ -496,10 +498,12 @@ const main = async () => {
   const machine = await VIAM.createRobotClient({
     host,
     credentials: {
-      // TODO: Replace "<API-KEY>" (including brackets) with your machine's api key
+      // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+      // API key
       type: "api-key",
       payload: "<API-KEY>",
-      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       authEntity: "<API-KEY-ID>",
     },
     signalingAddress: "https://app.viam.com:443",
@@ -544,9 +548,10 @@ int main() {
     std::string host("muddy-snow-main.7kp7y4p393.viam.cloud");
     DialOptions dial_opts;
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
-    /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's
+    // API key ID
     Credentials credentials("api-key", "<API-KEY>");
-    /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+    // Replace "<API-KEY>" (including brackets) with your machine's API key
     dial_opts.set_credentials(credentials);
     boost::optional<DialOptions> opts(dial_opts);
     Options options(0, opts);

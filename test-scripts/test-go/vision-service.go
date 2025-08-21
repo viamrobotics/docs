@@ -16,7 +16,7 @@ func main() {
 	machine, err := client.New(
 		context.Background(),
 		// TODO: Replace with your machine address from the CONNECT tab.
-		"machine-main.l0cat10n.viam.cloud",
+		"MACHINE-ADDRESS",
 		logger,
 		client.WithDialOptions(rpc.WithEntityCredentials(
 			"API-KEY-ID",
