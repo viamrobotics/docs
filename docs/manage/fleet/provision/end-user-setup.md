@@ -162,7 +162,7 @@ If you're having trouble with Bluetooth provisioning:
 
 1. **Restart Bluetooth**: Try turning Bluetooth off and on again on your mobile device.
 
-1. **Remove and readd**: If you've already connected to the machien over Bluetooth, remove or forget the device from your your mobile device's settings, and readd it.
+1. **Remove and re-add**: If you've already connected to the machine over Bluetooth, remove or forget the device from your your mobile device's settings, and re-add it.
 
 If you can open a terminal on the machine:
 
