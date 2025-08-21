@@ -340,19 +340,16 @@ class FeedbackSystem {
       "' on page '" +
       document.title;
 
-    try {
-      // Send feedback to the same Google Cloud Function
-      await this.sendFeedbackToGoogleCloud(
-        feedbackContent,
-        window.location.href,
-      );
+    // Show success message immediately
+    this.showFeedbackSubmitted();
 
-      // Show success message on button and hide modal
-      this.showFeedbackSubmitted();
-    } catch (error) {
-      console.error("Error sending feedback:", error);
-      alert("There was an error sending your feedback. Please try again.");
-    }
+    // Send feedback in background (don't await)
+    this.sendFeedbackToGoogleCloud(feedbackContent, window.location.href).catch(
+      (error) => {
+        console.error("Error sending feedback:", error);
+        // Could show a subtle error indicator here if needed
+      },
+    );
   }
 
   async sendFeedbackToGoogleCloud(feedback, url) {
