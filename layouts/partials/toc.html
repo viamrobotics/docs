@@ -3,33 +3,146 @@
 <!-- Ask AI Button with Dropdown -->
 <div class="ai-dropdown-container-toc">
   <button class="docsbutton ai-button-toc" id="askAiButtonToc" title="Ask AI">
-    <span><i class="fas fa-magic fa-sm" style="margin-right: 0.5rem;"></i>Ask AI <i class="fas fa-chevron-down fa-sm" style="margin-left: 0.5rem;"></i></span>
+    <span
+      ><i class="fas fa-magic fa-sm" style="margin-right: 0.5rem"></i>Ask AI
+      <i class="fas fa-chevron-down fa-sm" style="margin-left: 0.5rem"></i
+    ></span>
   </button>
   <div class="ai-dropdown-menu-toc" id="aiDropdownMenuToc">
-    <a href="#" class="ai-dropdown-item-toc" data-ai-service="inkeep" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
-      <i class="fas fa-magic fa-sm" style="margin-right: 0.5rem;"></i>
+    <a
+      href="#"
+      class="ai-dropdown-item-toc"
+      data-ai-service="inkeep"
+      data-page-url="{{ .Permalink }}"
+      data-page-title="{{ .Title }}"
+    >
+      <i class="fas fa-magic fa-sm" style="margin-right: 0.5rem"></i>
       Viam AI (recommended)
     </a>
     <div class="ai-dropdown-divider"></div>
-    <a href="#" class="ai-dropdown-item-toc" data-ai-service="claude" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
-      <img src="/claude.svg" alt="Copilot" style="width: 16px; height: 16px; margin-right: 0.5rem; vertical-align: middle;">
+    <a
+      href="#"
+      class="ai-dropdown-item-toc"
+      data-ai-service="claude"
+      data-page-url="{{ .Permalink }}"
+      data-page-title="{{ .Title }}"
+    >
+      <img
+        src="/claude.svg"
+        alt="Copilot"
+        style="
+          width: 16px;
+          height: 16px;
+          margin-right: 0.5rem;
+          vertical-align: middle;
+        "
+      />
       Claude
     </a>
-    <a href="#" class="ai-dropdown-item-toc" data-ai-service="chatgpt" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
-      <img src="/openai.svg" alt="Copilot" style="width: 16px; height: 16px; margin-right: 0.5rem; vertical-align: middle;">
+    <a
+      href="#"
+      class="ai-dropdown-item-toc"
+      data-ai-service="chatgpt"
+      data-page-url="{{ .Permalink }}"
+      data-page-title="{{ .Title }}"
+    >
+      <img
+        src="/openai.svg"
+        alt="Copilot"
+        style="
+          width: 16px;
+          height: 16px;
+          margin-right: 0.5rem;
+          vertical-align: middle;
+        "
+      />
       ChatGPT
     </a>
-    <a href="#" class="ai-dropdown-item-toc" data-ai-service="copilot" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
-      <img src="/copilot.svg" alt="Copilot" style="width: 16px; height: 16px; margin-right: 0.5rem; vertical-align: middle;">
+    <a
+      href="#"
+      class="ai-dropdown-item-toc"
+      data-ai-service="copilot"
+      data-page-url="{{ .Permalink }}"
+      data-page-title="{{ .Title }}"
+    >
+      <img
+        src="/copilot.svg"
+        alt="Copilot"
+        style="
+          width: 16px;
+          height: 16px;
+          margin-right: 0.5rem;
+          vertical-align: middle;
+        "
+      />
       Copilot
     </a>
     <div class="ai-dropdown-divider"></div>
-    <a href="#" class="ai-dropdown-item-toc" data-action="use-mcp" data-page-url="{{ .Permalink }}" data-page-title="{{ .Title }}">
-      <i class="fas fa-copy fa-sm" style="margin-right: 0.5rem;"></i>
+    <a
+      href="#"
+      class="ai-dropdown-item-toc"
+      data-action="use-mcp"
+      data-page-url="{{ .Permalink }}"
+      data-page-title="{{ .Title }}"
+    >
+      <i class="fas fa-copy fa-sm" style="margin-right: 0.5rem"></i>
       Use MCP with your IDE
     </a>
   </div>
 </div>
 
 <h6>On this page</h6>
-<div class="td-toc" id="TableOfContents"></div>{{ end }}
+<div class="td-toc" id="TableOfContents"></div>
+{{ end }}
+
+<div class="sidebar-feedback">
+  <!-- Initial Feedback Button -->
+  <button
+    class="docsbutton feedback-button-toc"
+    id="feedbackButtonToc"
+    title="Give Feedback"
+  >
+    <span
+      ><i class="fas fa-comment-dots fa-sm" style="margin-right: 0.5rem"></i
+      >Give Feedback</span
+    >
+  </button>
+
+  <!-- Feedback Form (Hidden by default) -->
+  <div id="feedbackForm" class="feedback-form-container" style="display: none">
+    <div
+      class="feedback-highlight-status clickable"
+      id="feedbackHighlightStatus"
+    >
+      <div class="feedback-highlight-status-content">
+        <i class="fas fa-mouse-pointer"></i>
+        <span>Click here to select the relevant text area</span>
+      </div>
+    </div>
+
+    <div class="feedback-input-section">
+      <label for="feedbackText">Your Feedback:</label>
+      <textarea
+        id="feedbackText"
+        placeholder="Please describe what you found helpful, confusing, or what could be improved..."
+      ></textarea>
+    </div>
+
+    <div class="feedback-actions">
+      <button class="feedback-submit" id="feedbackSubmit">
+        Submit Feedback
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Highlighting Mode Indicator -->
+<div id="highlightingModeIndicator" class="highlighting-mode-indicator">
+  <div class="highlighting-mode-content">
+    <i class="fas fa-highlighter"></i>
+    <span>Click on page content to select</span>
+    <button class="highlighting-mode-done" id="highlightingModeDone">
+      Done Highlighting
+    </button>
+  </div>
+</div>
