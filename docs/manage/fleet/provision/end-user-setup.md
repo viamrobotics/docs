@@ -156,7 +156,7 @@ You can support any number of these options.
 
 If you're having trouble with Bluetooth provisioning:
 
-1. **Check Bluetooth permissions**: Ensure the app used for provisioning has Bluetooth permissions enabled on your device.
+1. **Check Bluetooth permissions**: Ensure the app used for provisioning has [Bluetooth permissions enabled](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget?tab=readme-ov-file#platform-requirements) on your device.
 
 1. **Verify Bluetooth is enabled**: Make sure Bluetooth is turned on in your mobile device settings.
 
