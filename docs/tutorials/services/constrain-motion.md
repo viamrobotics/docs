@@ -343,8 +343,7 @@ await my_gripper.open()
 ## Full code
 
 The following code contains everything covered in this tutorial in addition to the `connect()` function, and the resource access code from the last tutorial that you need here as well.
-Be sure to change the `<API-KEY>`, `<API-KEY-ID>`, and the `MACHINE ADDRESS` placeholders shown in the code to match your actual robot credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
-You can find the `<API-KEY>` and `<API-KEY-ID>` values for your machine on the **CONNECT** tab's **API keys** page.
+Be sure to change the placeholders shown in the code to match your actual machine credentials, and change all relevant parameters such as `z_offset` and other dimensions and poses to match your hardware.
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -362,13 +361,15 @@ from viam.proto.service.motion import Constraints, LinearConstraint
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-      # Replace "<API-KEY>" (including brackets) with your machine's API key
+      # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+      # API key
       api_key='<API-KEY>',
-      # Replace "<API-KEY-ID>" (including brackets) with your machine's API key
-      # ID
+      # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # API key ID
       api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address('MACHINE ADDRESS', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 async def main():

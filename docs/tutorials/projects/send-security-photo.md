@@ -193,7 +193,7 @@ from viam.media.utils.pil import viam_to_pil_image
 # Set environment variables. You can get them from your machine's CONNECT tab
 api_key = os.getenv('API_KEY') or ''
 api_key_id = os.getenv('API_KEY_ID') or ''
-address = os.getenv('ADDRESS') or ''
+host = os.getenv('MACHINE_ADDRESS') or ''
 
 
 async def connect():
@@ -201,7 +201,7 @@ async def connect():
       api_key=_api_key,
       api_key_id=api_key_id
     )
-    return await RobotClient.at_address(address, opts)
+    return await RobotClient.at_address(host, opts)
 
 
 async def main():
@@ -229,7 +229,7 @@ async def main():
             # Yagmail section
             # Create a yagmail.SMTP instance
             # to initialize the server connection.
-            # Replace username and password with actual credentials.
+            # TODO: Replace username and password with actual credentials.
             yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
             # Specify the message contents
             contents = ['There is someone at your desk - beware',

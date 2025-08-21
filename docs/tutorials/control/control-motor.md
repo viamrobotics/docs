@@ -149,14 +149,15 @@ from viam.components.motor import Motor
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's API
-        # key ID
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address(
-        '<YOUR MACHINE ADDRESS>', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 async def main():
@@ -201,15 +202,17 @@ func main() {
   logger := logging.NewDebugLogger("client")
   machine, err := client.New(
     context.Background(),
-    // Replace "<YOUR MACHINE ADDRESS>" (including brackets) with your machine's address
-    "<YOUR MACHINE ADDRESS>",
+    // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    "<MACHINE-ADDRESS>",
     logger,
     client.WithDialOptions(utils.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       utils.Credentials{
         Type:    utils.CredentialsTypeAPIKey,
-        // Replace "<API-KEY>" (including brackets) with your machine's API key
+        // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        // API key
         Payload: "<API-KEY>",
       })),
   )
@@ -489,15 +492,18 @@ function button() {
 }
 
 const main = async () => {
-  const host = "ADDRESS_FROM_VIAM_APP";
+  // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+  const host = "<MACHINE-ADDRESS>";
 
   const machine = await VIAM.createRobotClient({
     host,
     credentials: {
-      // Replace "<API-KEY>" (including brackets) with your machine's api key
+      // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+      // API key
       type: "api-key",
       payload: "<API-KEY>",
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       authEntity: "<API-KEY-ID>",
     },
     signalingAddress: "https://app.viam.com:443",
@@ -505,7 +511,7 @@ const main = async () => {
 
   button().onclick = async () => {
     // Instantiate the motor client
-    // Replace with the name of a motor on your machine.
+    // TODO: Replace with the name of a motor on your machine.
     const name = "motor-1";
     const motorClient = new VIAM.MotorClient(machine, name);
 
@@ -542,9 +548,10 @@ int main() {
     std::string host("muddy-snow-main.7kp7y4p393.viam.cloud");
     DialOptions dial_opts;
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
-    /* Replace "<API-KEY-ID>" (including brackets) with your machine's api key id */
+    // Replace "<API-KEY-ID>" (including brackets) with your machine's
+    // API key ID
     Credentials credentials("api-key", "<API-KEY>");
-    /* Replace "<API-KEY>" (including brackets) with your machine's api key */
+    // Replace "<API-KEY>" (including brackets) with your machine's API key
     dial_opts.set_credentials(credentials);
     boost::optional<DialOptions> opts(dial_opts);
     Options options(0, opts);

@@ -150,10 +150,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
       # API key ID
       auth_entity='<API-KEY-ID>'
     )
@@ -197,10 +198,11 @@ async def connect() -> ViamClient:
     dial_options = DialOptions(
       credentials=Credentials(
         type="api-key",
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         payload='<API-KEY>',
       ),
-      # Replace "<API-KEY-ID>" (including brackets) with your machine's
+      # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
       # API key ID
       auth_entity='<API-KEY-ID>'
     )

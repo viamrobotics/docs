@@ -15,6 +15,7 @@ func main() {
 	logger := logging.NewLogger("client")
 	machine, err := client.New(
 		context.Background(),
+		// TODO: Replace with your machine address from the CONNECT tab.
 		"MACHINE-ADDRESS",
 		logger,
 		client.WithDialOptions(rpc.WithEntityCredentials(

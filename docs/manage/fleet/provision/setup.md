@@ -92,9 +92,9 @@ from viam.rpc.dial import DialOptions, Credentials
 from viam.app.viam_client import ViamClient
 from viam.app.app_client import APIKeyAuthorization
 
-# Replace "<API-KEY>" (including brackets) with your API key
+# TODO: Replace "<API-KEY>" (including brackets) with your API key
 API_KEY = "<API-KEY>"
-# Replace "<API-KEY-ID>" (including brackets) with your API key ID
+# TODO: Replace "<API-KEY-ID>" (including brackets) with your API key ID
 API_KEY_ID = "<API-KEY-ID>"
 # The id of the location to create the machine in
 LOCATION_ID = ""

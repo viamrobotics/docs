@@ -189,13 +189,15 @@ from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("MACHINE ADDRESS", opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 async def main():
@@ -333,13 +335,15 @@ from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
 
 async def connect():
     opts = RobotClient.Options.with_api_key(
-        # Replace "<API-KEY>" (including brackets) with your machine's API key
+        # TODO: Replace "<API-KEY>" (including brackets) with your machine's
+        # API key
         api_key='<API-KEY>',
-        # Replace "<API-KEY-ID>" (including brackets) with your machine's
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         # API key ID
         api_key_id='<API-KEY-ID>'
     )
-    return await RobotClient.at_address("MACHINE ADDRESS", opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+    return await RobotClient.at_address("<MACHINE-ADDRESS>", opts)
 
 
 # Get largest detection box and see if it's center is in the left, center, or

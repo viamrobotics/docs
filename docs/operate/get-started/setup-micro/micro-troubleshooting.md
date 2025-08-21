@@ -100,7 +100,7 @@ This code will disable the SDK background task that monitors the connection to y
 {{% tab name="Python" %}}
 
 ```python
-# Replace the connect function found in the CONNECT tab with the following
+# TODO: Replace this with the connect function on the CONNECT tab
 async def connect():
     opts = RobotClient.Options(
         # viam-micro-server configures once at boot,
@@ -114,36 +114,39 @@ async def connect():
         # so it is safe to disable them
         disable_sessions=True,
         dial_options=DialOptions.with_api_key(
-            # Replace "<API-KEY-ID>" (including brackets)
-            # with your machine's api key id
+            # TODO: Replace "<API-KEY-ID>" (including brackets)
+            # with your machine's API key ID
             api_key_id='<API-KEY-ID>',
-            # Replace "<API-KEY>" (including brackets)
-            # with your machine's api key
+            # TODO: Replace "<API-KEY>" (including brackets)
+            # with your machine's API key
             api_key='<API-KEY>')
     )
-    # Replace "<ROBOT-URL>" (including brackets) with your machine's url
-    return await RobotClient.at_address('<ROBOT-URL>', opts)
+    # TODO: Replace "<MACHINE-ADDRESS>" (including brackets) with address from
+    # the CONNECT tab.
+    return await RobotClient.at_address('<MACHINE-ADDRESS>', opts)
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
-// Replace the call to client.New with the following block
+// TODO: Replace the call to client.New with the following block
 robot, err := client.New(
     context.Background(),
-    "<ROBOT-URL>", // Replace "<ROBOT-URL>" (including brackets) with your machine's url
+    "<MACHINE-ADDRESS>", // TODO: Replace "<MACHINE-ADDRESS>" (including brackets) with address from the CONNECT tab.
     logger,
     client.WithDisableSessions(), // viam-micro-server doesn't support sessions so it is safe to disable them
     client.WithCheckConnectedEvery(0), // Checking the connection can safely be disabled
     client.WithReconnectEvery(0), // Same for Attempting to reconnect
     client.WithRefreshEvery(0), // viam-micro-server configures once at boot, so we don't need to check if the components have changed
     client.WithDialOptions(rpc.WithEntityCredentials(
-        // Replace "<API-KEY-ID>" (including brackets) with your machine's api key id
+        // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+        // API key ID
         "<API-KEY-ID>",
         rpc.Credentials{
             Type: rpc.CredentialsTypeAPIKey,
-            // Replace "<API-KEY>" (including brackets) with your machine's api key
+            // TODO: Replace "<API-KEY>" (including brackets) with your
+            // machine's API key
             Payload: "<API-KEY>",
         })),
     )

@@ -404,14 +404,17 @@ func main() {
   logger := logging.NewLogger("client")
   robot, err := client.New(
       context.Background(),
-      "MACHINE ADDRESS",
+      // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
+      "<MACHINE-ADDRESS>",
       logger,
       client.WithDialOptions(rpc.WithEntityCredentials(
-      // Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID
+      // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
+      // API key ID
       "<API-KEY-ID>",
       rpc.Credentials{
           Type:    rpc.CredentialsTypeAPIKey,
-          // Replace "<API-KEY>" (including brackets) with your machine's API key
+          // TODO: Replace "<API-KEY>" (including brackets) with your machine's
+          // API key
           Payload: "<API-KEY>",
       })),
   )
