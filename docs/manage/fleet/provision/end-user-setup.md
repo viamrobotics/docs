@@ -142,6 +142,7 @@ Note that any features that require internet access will not function if the con
 
 If you are building your own app to provide provisioning functionality you have three options for provisioning:
 
+<!-- prettier-ignore -->
 | Provisioning method | Description | Notes | Package |
 | ------------------- | ----------- | ----- | ------- |
 | **Bluetooth with WiFi** | Ask the user to connect to the machine over Bluetooth. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. | Recommended, if available. | [Example](https://github.com/viamrobotics/viam_flutter_provisioning/) |
