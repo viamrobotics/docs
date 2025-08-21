@@ -55,6 +55,7 @@ Note that you _must_ specify at least one of `color_image_file_path`, `depth_ima
     "color_image_file_path": "<your-file-path>",
     "depth_image_file_path": "<your-file-path>",
     "pointcloud_file_path": "<your-file-path>",
+    "preloaded_image: "<pizza|dog|crowd>"
   }
 }
 ```
@@ -72,6 +73,7 @@ The following attributes are available for `image_file` cameras:
 | `color_image_file_path` | string | Optional | The file path to the color image on your local system. |
 | `depth_image_file_path` | string | Optional | The file path to the depth image on your local system. |
 | `pointcloud_file_path` | string | Optional | The file path to the point cloud file on your local system. |
+| `preloaded_image` | string | Optional | Select a pre-loaded image for the camera to display. Options: `"pizza"`, `"dog"`, `"crowd"`. |
 
 You must specify at least one of `color_image_file_path`, `depth_image_file_path`, and `pointcloud_file_path`.
 
