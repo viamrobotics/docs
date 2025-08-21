@@ -40,9 +40,9 @@ You must be an [organization owner](/manage/manage/rbac/) to create fragments fo
 **Add and configure all the resources** you want to use on your machines.
 
 Fragments support all available resources except [triggers](/data-ai/reference/triggers-configuration/).
-You can even add other fragments inside a fragment.
+You can also add other fragments inside a fragment.
 
-{{< alert title="Tip" color="tip" >}}
+{{< alert title="Tip: Switch to JSON" color="tip" >}}
 If you already created a machine to test your configuration, you can **Switch to JSON**, copy its JSON configuration and paste it into the fragment.
 
 {{<imgproc src="/how-tos/one-to-many/raw-json.png" resize="700x" class="shadow fill" style="width: 400px" declaredimensions=true alt="JSON subtab of the CONFIGURE tab">}}
@@ -59,7 +59,11 @@ There are three options for this:
 
 Click **Save**.
 
-If you want to edit the fragment later, do it from this screen.
+{{% /tablestep %}}
+{{% tablestep number=4 %}}
+**Add a description**
+
+While not required, we recommend you add a description to your fragment from the fragment's page.
 
 {{% /tablestep %}}
 {{< /table >}}
