@@ -298,7 +298,7 @@ Edit the stub files to add the logic from your test script in a way that works w
 First, implement the camera API methods by editing the camera class definition:
 
 {{< table >}}
-{{< tablestep number=1 >}}
+{{< tablestep >}}
 
 Add the following to the list of imports at the top of <file>hello-world/src/models/hello_camera.py</file>:
 
@@ -310,7 +310,7 @@ from PIL import Image
 ```
 
 {{% /tablestep %}}
-{{< tablestep number=2 >}}
+{{< tablestep >}}
 
 Let's make the path a configurable attribute so you or other users of the module can set the path from which to get the image.
 Add the following lines to the camera's `reconfigure()` function definition.
@@ -322,7 +322,7 @@ self.image_path = str(attrs.get("image_path"))
 ```
 
 {{% /tablestep %}}
-{{< tablestep number=3 >}}
+{{< tablestep >}}
 
 We are not providing a default image but rely on the end user to supply a valid path to an image when configuring the resource.
 This means `image_path` is a required attribute.
@@ -338,7 +338,7 @@ elif not fields["image_path"].HasField("string_value"):
 ```
 
 {{% /tablestep %}}
-{{< tablestep number=4 >}}
+{{< tablestep >}}
 
 The module generator created a stub for the `get_image()` function we want to implement:
 
@@ -375,7 +375,7 @@ Leave the rest of the functions not implemented, because this module is not mean
 Save the file.
 
 {{% /tablestep %}}
-{{< tablestep number=5 >}}
+{{< tablestep >}}
 
 Open <file>requirements.txt</file>.
 Add the following line:
@@ -597,7 +597,7 @@ You can view the complete example code in the [hello-world-module repository on 
 With the implementation written, it's time to test your module locally:
 
 {{< table >}}
-{{< tablestep number=1 >}}
+{{< tablestep >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -625,22 +625,22 @@ viam module build local
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 
 Make sure your machine's instance of `viam-server` is live and connected to Viam.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 
 Navigate to your machine's **CONFIGURE** page.
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 
 Click the **+** button, select **Local module**, then again select **Local module**.
 
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -658,7 +658,7 @@ Click **Create**.
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=6 %}}
+{{% tablestep %}}
 Now add the modular camera resource provided by the module:
 
 Click **+**, click **Local module**, then click **Local component**.
@@ -670,7 +670,7 @@ For type, enter `camera`.
 
 For name, you can use the automatic `camera-1`.
 {{% /tablestep %}}
-{{% tablestep number=7 %}}
+{{% tablestep %}}
 Configure the image path attribute by pasting the following in place of the `{}` brackets:
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -681,7 +681,7 @@ Configure the image path attribute by pasting the following in place of the `{}`
 
 Replace the path with the path to your image, for example `"/Users/jessamyt/Downloads/hello-world.jpg"`.
 {{% /tablestep %}}
-{{% tablestep number=8 %}}
+{{% tablestep %}}
 Save the config, then click the **TEST** section of the camera's configuration card.
 
 {{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}

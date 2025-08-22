@@ -45,7 +45,7 @@ You must have the Viam CLI installed to upload training scripts to the registry.
 ## Create a training script
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Create files**
 
 Create the following folders and empty files:
@@ -59,7 +59,7 @@ my-training/
 ```
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Add `setup.py` code**
 
 Add the following code to `setup.py`:
@@ -79,7 +79,7 @@ setup(
 ```
 
 {{% /tablestep %}}
-{{< tablestep number=3 >}}
+{{< tablestep >}}
 
 <p><strong>Add <code>training.py</code> code</strong></p>
 
@@ -524,7 +524,7 @@ if __name__ == "__main__":
 {{% /expand %}}
 
 {{% /tablestep %}}
-{{< tablestep number=4 >}}
+{{< tablestep >}}
 
 <p><strong>Understand template script parsing functionality</strong></p>
 <p>When a training script is run, the Viam platform passes the dataset file for the training and the designated model output directory to the script.</p>
@@ -627,7 +627,7 @@ Depending on if you are training a classification or detection model, the templa
 <p>If the script you are creating does not use an image dataset, you only need the model output directory.</p>
 
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep %}}
 **Add logic to produce the model artifact**
 
 Fill in the `build_and_compile_model` function.
@@ -636,7 +636,7 @@ In this part of the script, you use data and annotations from the dataset file t
 As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
 {{% /tablestep %}}
-{{% tablestep number=6 %}}
+{{% tablestep %}}
 **Save the model artifact**
 
 In this example template, the training job produces a model artifact.
@@ -649,13 +649,13 @@ You must fill in the `save_model()` and `save_labels()` functions.
 As an example, refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
 
 {{% /tablestep %}}
-{{% tablestep number=7 %}}
+{{% tablestep %}}
 **Update the main method**
 
 Update the main to call the functions you have just created.
 
 {{% /tablestep %}}
-{{% tablestep number=8 %}}
+{{% tablestep %}}
 **Use Viam APIs in a training script**
 
 To access [Viam APIs](/dev/reference/apis/) within a custom training script, use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
@@ -682,7 +682,7 @@ async def connect() -> ViamClient:
 You can export one of your Viam datasets to test your training script locally.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Export your dataset**
 
 You can get the dataset ID from the dataset page or using the [`viam dataset list`](/dev/tools/cli/#dataset) command:
@@ -695,7 +695,7 @@ The dataset will be formatted like the one Viam produces for the training.
 Use the `parse_filenames_and_labels_from_json` and `parse_filenames_and_bboxes_from_json` functions to get the images and annotations from your dataset file.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Run your training script locally**
 
 Install any required dependencies and run your training script specifying the path to the <FILE>dataset.jsonl</FILE> file from your exported dataset:
@@ -713,7 +713,7 @@ python3 -m model.training --dataset_file=/path/to/dataset.jsonl \
 To be able to use your training script in the Viam platform, you must upload it to the Viam Registry.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Package the training script as a <file>tar.gz</file> source distribution**
 
 Before you can upload your training script to Viam, you have to compress your project folder into a tar.gz file:
@@ -727,7 +727,7 @@ You can refer to the directory structure of this [example classification trainin
 {{% /alert %}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Upload a training script**
 
 To upload your custom training script to the registry, use the `viam training-script upload` command.
@@ -776,7 +776,7 @@ You can view uploaded training scripts by navigating to the [registry's **Traini
 After uploading the training script, you can run it by submitting a training job using the web UI, the CLI or the [ML training client API](/dev/reference/apis/ml-training-client/#submittrainingjob).
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Create the training job**
 
 {{< tabs >}}
@@ -813,7 +813,7 @@ You can get the dataset id from the **DATASET** tab of the **DATA** page or by r
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Check on training job process**
 
 You can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
@@ -829,7 +829,7 @@ viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
 ```
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Debug your training job**
 
 From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.

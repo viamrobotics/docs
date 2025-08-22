@@ -31,18 +31,18 @@ To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet
 ## Installation
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 Add a new machine.
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 Navigate to the machine's **CONFIGURE** tab.
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 Click **View setup instructions** on the alert to **Set up your machine part**:
 
 {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 Follow the instructions to install `viam server` with `viam-agent`.
 Your machine must have `curl` available in order to install `viam-agent`.
 

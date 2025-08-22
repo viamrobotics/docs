@@ -54,13 +54,13 @@ Follow the guide to [create a dataset](/data-ai/train/create-dataset/).
 Now that you have a dataset that contains your labeled images, you are ready to train a machine learning model.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Find your training dataset**
 
 Navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Train an ML model**
 
 Click **Train model** and follow the prompts.
@@ -71,7 +71,7 @@ You can train a TFLite model using **Built-in training**.
 Click **Next steps**.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Select model type**
 
 Select between:
@@ -83,7 +83,7 @@ Select between:
 | **TensorFlow (TF)** | Best for general-purpose tasks with more computational power. |
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Fill in the details for your ML model**
 
 Enter a name for your new model.
@@ -102,7 +102,7 @@ Click **Train model**.
 {{< imgproc src="/tutorials/data-management/train-model.png" alt="The data tab showing the train a model pane" style="width:500px" resize="1200x" class="imgzoom fill shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep %}}
 **Wait for your model to train**
 
 The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
@@ -112,7 +112,7 @@ Once the model has finished training, it becomes visible on the [**MODELS** tab]
 You will receive an email when your model finishes training.
 
 {{% /tablestep %}}
-{{% tablestep number=6 %}}
+{{% tablestep %}}
 **Debug your training job**
 
 From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.

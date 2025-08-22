@@ -27,7 +27,7 @@ You have three options for moving a mobile robot [base](/operate/reference/compo
 ## Configure and connect to your base
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Configure the base's motor components**
 
 First, connect the base's motors to your machine.
@@ -41,7 +41,7 @@ Complete the motor configuration and use the **TEST** panel in the configuration
 Repeat this for each motor of your base.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure a base component**
 
 The base component allows you to more easily coordinate the motion of the motors to move the robot's as a whole.
@@ -50,7 +50,7 @@ Use the **+** button again to add a base component.
 The `wheeled-base` model supports robotic bases with motors on both sides for differential steering.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Connect code to your base**
 
 Go to your machine's **CONNECT** tab.

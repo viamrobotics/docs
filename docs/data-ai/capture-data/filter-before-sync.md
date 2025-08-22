@@ -16,20 +16,20 @@ Contributors have written several filtering {{< glossary_tooltip term_id="module
 The following steps use the [`filtered_camera`](https://app.viam.com/module/viam/filtered-camera) module:
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Add an ML model service to your machine**
 
 Add an ML model service on your machine that is compatible with the ML model you want to use, for example [TFLite CPU](https://github.com/viam-modules/mlmodel-tflite).
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Select a suitable ML model**
 
 Click **Select model** on the ML model service configuration panel, then select an [existing model](https://app.viam.com/registry?type=ML+Model) you want to use, or click **Upload a new model** to upload your own.
 If you're not sure which model to use, you can use [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO) from the **Registry**, which can detect people and animals, among other things.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Add a vision service to use with the ML model**
 
 You can think of the vision service as the bridge between the ML model service and the output from your camera.
@@ -38,7 +38,7 @@ Add and configure the `vision / ML model` service on your machine.
 From the **Select model** dropdown, select the name of your ML model service (for example, `mlmodel-1`).
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Configure the filtered camera**
 
 The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from the camera you configured earlier, and applies the vision service to it.
@@ -68,7 +68,7 @@ Additionally, you can also add a buffer window with `window_seconds` which contr
 If you were to set `window_seconds` to `3`, the camera would also capture and sync images from the 3 seconds before a person appeared in the camera stream.
 
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep %}}
 **Configure data capture and sync on the filtered camera**
 
 Configure data capture and sync on the filtered camera just as you did before for the physical camera.
@@ -77,14 +77,14 @@ The filtered camera will only capture image data that passes the filters you con
 Turn off data capture on your original camera if you haven't already, so that you don't capture duplicate or unfiltered images.
 
 {{% /tablestep %}}
-{{% tablestep number=6 %}}
+{{% tablestep %}}
 **Save to start capturing**
 
 Save the config.
 With cloud sync enabled, captured data is automatically uploaded to Viam after a short delay.
 
 {{% /tablestep %}}
-{{% tablestep number=7 %}}
+{{% tablestep %}}
 **View filtered data on Viam**
 
 Once you save your configuration, place something that is part of your trained ML model within view of your camera.
@@ -96,7 +96,7 @@ If no data appears after the sync interval, check the [**Logs**](/manage/trouble
 You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/) to see its classifications and detections live.
 
 {{% /tablestep %}}
-{{% tablestep number=8 %}}
+{{% tablestep %}}
 **(Optional) Trigger sync with custom logic**
 
 By default, the captured data syncs at the regular interval you specified in the data capture config.

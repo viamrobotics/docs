@@ -1,29 +1,42 @@
-{{- $link := (.Get "link") -}}
-{{ if not (.Get "number") }}
-  {{ errorf "tablestep: number is required for %s" .Page.File.Path }}
-{{ end }}
+{{- $link := (.Get "link") -}} {{- $start := (.Get "start") -}} {{- $stepNumber
+:= .Get "number" -}} {{- if not $stepNumber -}} {{- /* If start is specified,
+reset counter to 0 */ -}} {{- if $start -}} {{- $.Page.Scratch.Set
+"tablestep_counter" 0 -}} {{- end -}} {{- /* Get current counter value and
+increment it */ -}} {{- $currentCounter := $.Page.Scratch.Get
+"tablestep_counter" -}} {{- if not $currentCounter -}} {{- $currentCounter = 0
+-}} {{- end -}} {{- $stepNumber = add $currentCounter 1 -}} {{-
+$.Page.Scratch.Set "tablestep_counter" $stepNumber -}} {{- end -}}
 
 <div class="tablestep">
-  <div class="tablestep-number">
-    {{ .Get "number" }}
-  </div>
+  <div class="tablestep-number">{{ $stepNumber }}</div>
   <div class="tablestep-content">
     {{ if $link }}
-    <a href="{{ $link }}" class="tablesteplink" title="Click for more information on the topic.">
-      <span><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g>
-          <path fill-rule="evenodd" fill="#9C9CA4" d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z"></path>
-        </g>
+    <a
+      href="{{ $link }}"
+      class="tablesteplink"
+      title="Click for more information on the topic."
+    >
+      <span
+        ><svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <path
+              fill-rule="evenodd"
+              fill="#9C9CA4"
+              d="M11,18H13V16H11V18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6Z"
+            ></path>
+          </g>
         </svg>
       </span>
     </a>
-{{ end }}
-{{ with $.Inner }}
-{{ if eq $.Page.File.Ext "md" }}
-  {{ $.Inner }}
-{{ else }}
-  {{ $.Inner | htmlUnescape | safeHTML }}
-{{ end }}
-{{ end }}
+    {{ end }} {{ with $.Inner }} {{ if eq $.Page.File.Ext "md" }} {{ $.Inner }}
+    {{ else }} {{ $.Inner | htmlUnescape | safeHTML }} {{ end }} {{ end }}
   </div>
 </div>

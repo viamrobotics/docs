@@ -31,7 +31,7 @@ See [configure a machine](/operate/get-started/supported-hardware/) for more inf
 ### Configure a workspace
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Create a workspace**
 
 Log into [Viam](https://app.viam.com/).
@@ -43,7 +43,7 @@ Give it a name.
 {{<imgproc src="/how-tos/teleop/blank-workspace.png" resize="800x" style="width: 700px" class="shadow fill imgzoom" declaredimensions=true alt="Blank teleop page.">}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Add widgets**
 
 Click **Add widget** and select the appropriate widget for your machine.
@@ -51,7 +51,7 @@ Use the widget header to configure the panel.
 Repeat as many times as necessary.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Select a location and a machine**
 
 Now, select a location and a machine.

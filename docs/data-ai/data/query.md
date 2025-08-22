@@ -42,14 +42,14 @@ You must have the [owner role](/manage/manage/rbac/) in order to query data on V
 {{% tab name="Web UI" %}}
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Query with SQL or MQL**
 
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Run your query**
 
 This example query returns the last 5 readings from any components named `my-sensor` in your organization:
@@ -203,7 +203,7 @@ WHERE component_name = 'sensor-1'
 {{% /expand %}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
@@ -299,7 +299,7 @@ If you want to query data from third party tools, you have to configure data que
 You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query captured sensor data.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Connect to your Viam organization's data**
 
 Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
@@ -309,7 +309,7 @@ mongosh "mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HE
 ```
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Query data from a compatible client**
 
 Once connected, you can run SQL or MQL statements to query captured data directly.

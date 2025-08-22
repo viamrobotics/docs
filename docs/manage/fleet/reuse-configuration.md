@@ -32,11 +32,11 @@ If one rover has an arm attached, you can add the rover configuration fragment (
 You must be an [organization owner](/manage/manage/rbac/) to create fragments for an organization.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Go to the [FRAGMENTS page](https://app.viam.com/fragments) and create a fragment** in your {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Add and configure all the resources** you want to use on your machines.
 
 Fragments support all available resources except [triggers](/data-ai/reference/triggers-configuration/).
@@ -49,7 +49,7 @@ If you already created a machine to test your configuration, you can **Switch to
 {{< /alert >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Set your privacy settings in the menu bar.**
 There are three options for this:
 
@@ -60,7 +60,7 @@ There are three options for this:
 Click **Save**.
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Add a description**
 
 While not required, we recommend you add a description to your fragment from the fragment's page.
@@ -81,7 +81,7 @@ With your fragment created, you can add it to all machines that should have it.
 In the following steps, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also use fragments to [provision](/manage/fleet/provision/setup/) your machines.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
 
 Search for your fragment and add it.
@@ -89,7 +89,7 @@ Search for your fragment and add it.
 Click **Save** in the upper right corner of the screen.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Repeat step 1 for each of the machines** that you want to configure in the same way.
 
 If some of your machines have slight differences, you can still add the fragment and then add fragment overwrites in the next section.
@@ -109,7 +109,7 @@ If you or a collaborator later modify fields within the upstream fragment, your 
 For example if you changed the default camera configuration in the fragment to be a different camera model, your modified rovers would still overwrite the camera model set by the fragment.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 
 <!-- markdownlint-disable MD036 -->
 
@@ -421,13 +421,13 @@ If the resource comes from a module, you must instead set the `log_level` attrib
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **After configuring fragment overwrites, check your machine's [**LOGS** tab](/manage/troubleshoot/troubleshoot/#check-logs).**
 
 If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 {{<imgproc src="/how-tos/one-to-many/reset.png" class="shadow fill alignleft" resize="500x" style="width: 250px"  declaredimensions=true alt="Reset to fragment">}}
 **(Optional) Revert fragment modifications.**
 

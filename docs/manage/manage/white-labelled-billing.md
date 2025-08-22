@@ -22,11 +22,11 @@ Once set up:
 ## Prerequisites
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Navigate to the organization settings page** through the menu in upper right corner of the page. Create a **Public namespace**.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **A logo** to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
@@ -38,7 +38,7 @@ Successfully set the logo for organization <org-id> to logo at file-path: logo.p
 You must have [owner permissions](/manage/manage/rbac/#organization-settings-and-roles) on the organization.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account-related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -52,7 +52,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 ## Set up custom billing
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Enable the billing service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -61,7 +61,7 @@ Successfully enabled billing service for organization "<org-id>"
 ```
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Get billing dashboard URL** from the billing service config:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-15"}
@@ -82,7 +82,7 @@ Country: USA
 You can update any value after setup using `viam organizations billing-service update`.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Check the billing dashboard** by navigating to the billing dashboard URL:
 
 It will be of the form `https://app.viam.com/billing/<public-namespace>`.

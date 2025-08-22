@@ -34,7 +34,7 @@ Then authenticate your CLI session with Viam using one of the following options:
 You can build a custom web interface to access your machines using your preferred framework like React, Vue, Angular, or others.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Access machines from your application**
 
 When logging into a Viam application, Viam stores an access token in the user's browser.
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure routing**
 
 {{< tabs >}}
@@ -210,7 +210,7 @@ viam module local-app-testing --app-url http://localhost:3000
 To deploy your web interface with Viam, you must create a FILE>meta.json</FILE> file and package it with yoru web application as a module.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 
 **Create a <FILE>meta.json</FILE>** file for your module using this template.
 
@@ -303,7 +303,7 @@ The `applications` field is an array of application objects with the following p
 | `customizations` | object | Override the branding heading and subheading to display on the authentication screen: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading` Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Register your module** with Viam:
 
 {{< tabs >}}
@@ -324,7 +324,7 @@ viam module create --name="air-quality" --public-namespace="naomi"
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 
 To deploy your application with Viam you must package your static files and your <FILE>meta.json</FILE> file as a module and upload them to the Viam Registry:
 
