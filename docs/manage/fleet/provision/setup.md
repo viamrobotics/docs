@@ -89,7 +89,8 @@ The defaults file allows you to configure the provisioning experience for the us
 If you are using the captive portal, this step is optional.
 If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
 
-Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults):
+Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults).
+You will later pass this file to a script, so you can save it anywhere.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -101,7 +102,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "model": "<NAME>", # the machine's model
     "fragment_id": "<ID>", # the fragment id, required for mobile app
     "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup with this prefix in the name
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
@@ -154,7 +155,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
-| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. For Bluetooth provisioning the device name will be the hotspot prefix and the model (`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
 | `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
@@ -170,10 +171,13 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 
 {{% /tablestep %}}
 {{% tablestep number=2 %}}
-**Configure Networks (optional)**
+**Configure Networks**
 
 During the provisioning process, a machine connects to a network to install `viam-server`.
-If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
+If you know in advance which WiFi a machine will connect to, this step allows you to configure it.
+
+If you do not know this, skip this step.
+In this case the end user will have to provide network details later in the process.
 
 If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
 If that is not possible, you can add networks with the `additional_networks` field.
