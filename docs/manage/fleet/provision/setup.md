@@ -34,10 +34,10 @@ To parse the readings and provide tailored guidance to a ship's captain, the com
 By having the end customer set up the machine, the company:
 
 - eliminates per-device setup and individualization at the factory
-- allows for tailored configurations per customer as needed
 - allows customer to provide their own WiFi credentials
+- allows for tailored configurations per customer as needed
 
-This guide will show you how to install and configure `viam-agent`.
+This guide shows you how to install and configure `viam-agent`.
 
 ## Prerequisites
 
@@ -60,9 +60,12 @@ For Bullseye, the installation of `viam-agent` changes the network configuration
 
 {{< /alert >}}
 
-## Decide on the provisioning method
+## Choose provisioning methods
 
-You can choose to let your end users complete machine setup by using a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}} or a mobile app.
+You can let your end users complete machine setup over WiFi or Bluetooth:
+
+- **WiFi Hotspot Provisioning**: When the device boots, it creates a temporary WiFi hotspot that users connect to for setup either by using a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}} or a mobile app. The WiFi hotspot is open to anyone. Be aware that if the manufacturer (and/or end user) has not set a custom password for the machine then a default password (either the built-in "viamsetup", or a new default set by a manufacturer in viam-defaults.json) may be in use, which is a security risk.
+- **Bluetooth Low Energy (BLE) Provisioning**: When device boots, it enables Bluetooth with the configured `<prefix>-<model>` as the device name and a user connects to it using a mobile app.
 
 If you choose to have a mobile app experience, you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
 
@@ -74,7 +77,160 @@ If you do not yet have a fragment, follow the steps to [Create a configuration f
 If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
 {{< /alert >}}
 
-If you choose to use the captive web portal, you can optionally create a machine in advance and provide its machine cloud credentials file at <FILE>/etc/viam.json</FILE>.
+## Configure defaults
+
+The defaults file allows you to configure the provisioning experience for the users setting up their machines.
+
+{{< table >}}
+
+{{% tablestep number=1 %}}
+**Configure provisioning**
+
+If you are using the captive portal, this step is optional.
+If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
+
+Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults):
+
+{{< tabs >}}
+{{% tab name="Template" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "network_configuration": {
+    "manufacturer": "<NAME>", # your company name
+    "model": "<NAME>", # the machine's model
+    "fragment_id": "<ID>", # the fragment id, required for mobile app
+    "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+    "disable_captive_portal_redirect": false, # set to true if using a mobile app
+    "hotspot_password": "<PASSWORD>", # password for the hotspot
+    "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
+    "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
+    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for bluetooth tethering) without requiring an unlock command from a mobile app.
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m"
+  }
+}
+```
+
+{{% /tab %}}
+{{% tab name="Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_interface": "wlan0",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "disable_bt_provisioning": false,
+    "disable_wifi_provisioning": false,
+    "bluetooth_trust_all": false,
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m"
+  }
+}
+```
+
+This file configures some basic metadata, specifies a [fragment](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
+It also configures timeouts to control how long `viam-agent` waits for a valid local WiFi network to come online before creating its hotspot network, and how long to keep the hotspot active before terminating it.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% expand "Click to view attribute information" %}}
+
+<!-- prettier-ignore -->
+| Name       | Type   | Required? | Description |
+| ---------- | ------ | --------- | ----------- |
+| `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
+| `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
+| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
+| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. For Bluetooth provisioning the device name will be the hotspot prefix and the model (`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
+| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
+| `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
+| `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Default: `false`. |
+| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | By default, the device connects to a single prioritized WiFi network (provided during provisioning) and is considered online even if the global internet is not reachable. When `turn_on_hotspot_if_wifi_has_no_internet` is true and the primary network lacks internet connectivity, the device will try all configured networks and only mark itself as online if it successfully connects to the internet. Default: `false`. |
+| `offline_before_starting_hotspot_minutes` | integer | Optional | Will only enter provisioning mode (hotspot) after being disconnected longer than this time. It may be useful to increase this on flaky connections, or when part of a system where the device may start quickly, but the wifi/router may take longer to be available. Default: `2` (2 minutes). |
+| `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
+| `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
+| `wifi_power_save` | boolean | Optional | Boolean, which, if set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `NULL`.  |
+| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline (and in hotspot mode) for the specified duration. Default: `0` (disabled). |
+
+{{% /expand%}}
+
+{{% /tablestep %}}
+{{% tablestep number=2 %}}
+**Configure Networks (optional)**
+
+During the provisioning process, a machine connects to a network to install `viam-server`.
+If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
+
+If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
+If that is not possible, you can add networks with the `additional_networks` field.
+`viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
+
+The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_interface": "wlan0",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "disable_bt_provisioning": false,
+    "disable_wifi_provisioning": false,
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m",
+    "turn_on_hotspot_if_wifi_has_no_internet": true
+  },
+  "additional_networks": {
+    "testNet1": {
+      "priority": 30,
+      "psk": "myFirstPassword",
+      "ssid": "fallbackNetOne",
+      "type": "wifi"
+    },
+    "testNet2": {
+      "priority": 10,
+      "psk": "mySecondPassword",
+      "ssid": "fallbackNetTwo",
+      "type": "wifi"
+    }
+  }
+}
+```
+
+<!-- prettier-ignore -->
+| Name       | Type   | Description |
+| ---------- | ------ | ----------- |
+| `type`     | string | The type of the network. Options: `"wifi"`|
+| `ssid`     | string | The network's SSID. |
+| `psk`      | string | The network password/pre-shared key. |
+| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## (Optional) Create a machine in advance
+
+If you provision devices using a captive web portal (instead of a mobile app), you need to create a machine in advance and provide its machine cloud credentials in the portal.
+Alternately, you may directly write them to the file <FILE>/etc/viam.json</FILE>.
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 
@@ -165,143 +321,6 @@ if __name__ == '__main__':
 ```
 
 {{% /expand%}}
-
-## Configure defaults
-
-{{< table >}}
-
-{{% tablestep number=1 %}}
-**Configure provisioning**
-
-If you are using the captive portal, this step is optional.
-If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
-
-Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults):
-
-{{< tabs >}}
-{{% tab name="Template" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "network_configuration": {
-    "manufacturer": "<NAME>", # your company name
-    "model": "<NAME>", # the machine's model
-    "fragment_id": "<ID>", # the fragment id, required for mobile app
-    "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
-    "disable_captive_portal_redirect": false, # set to true if using a mobile app
-    "hotspot_password": "<PASSWORD>", # password for the hotspot
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m"
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="Example" %}}
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "network_configuration": {
-    "manufacturer": "Skywalker",
-    "model": "C-3PO",
-    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-    "hotspot_interface": "wlan0",
-    "hotspot_prefix": "skywalker-setup",
-    "disable_captive_portal_redirect": false,
-    "hotspot_password": "skywalker123",
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m"
-  }
-}
-```
-
-This file configures some basic metadata, specifies a [fragment](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
-It also configures timeouts to control how long `viam-agent` waits for a valid local WiFi network to come online before creating its hotspot network, and how long to keep the hotspot active before terminating it.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% expand "Click to view attribute information" %}}
-
-<!-- prettier-ignore -->
-| Name       | Type   | Required? | Description |
-| ---------- | ------ | --------- | ----------- |
-| `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
-| `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
-| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
-| `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
-| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
-| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
-| `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
-| `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | When enabled, Wi-Fi connections without Internet access are considered offline. After `offline_before_starting_hotspot_minutes` minutes offline, your device will begin broadcasting a hotspot. This setting must be enabled for your device to attempt connecting to `additional_networks`. Default: `false`. |
-| `offline_before_starting_hotspot_minutes` | integer | Optional | Amount of time the device will spend offline, in minutes, before the machine begins broadcasting a wireless hotspot. Default: `2`. |
-| `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
-| `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time, to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10` (10 minutes). |
-| `wifi_power_save` | boolean | Optional | Boolean, which, if set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `NULL`.  |
-| `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline (and in hotspot mode) for the specified duration. Default: `0` (disabled). |
-
-{{% /expand%}}
-
-{{% /tablestep %}}
-{{% tablestep number=2 %}}
-**Configure Networks (optional)**
-
-During the provisioning process, a machine connects to a network to install `viam-server`.
-If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
-
-If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
-If that is not possible, you can add networks with the `additional_networks` field.
-`viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
-
-The following configuration defines the connection information and credentials for two WiFi networks named `otherNetworkOne` and `otherNetworkTwo`:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "network_configuration": {
-    "manufacturer": "Skywalker",
-    "model": "C-3PO",
-    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-    "hotspot_interface": "wlan0",
-    "hotspot_prefix": "skywalker-setup",
-    "disable_captive_portal_redirect": false,
-    "hotspot_password": "skywalker123",
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m",
-    "turn_on_hotspot_if_wifi_has_no_internet": true
-  },
-  "additional_networks": {
-    "testNet1": {
-      "priority": 30,
-      "psk": "myFirstPassword",
-      "ssid": "otherNetworkOne",
-      "type": "wifi"
-    },
-    "testNet2": {
-      "priority": 10,
-      "psk": "mySecondPassword",
-      "ssid": "otherNetworkTwo",
-      "type": "wifi"
-    }
-  }
-}
-```
-
-<!-- prettier-ignore -->
-| Name       | Type   | Description |
-| ---------- | ------ | ----------- |
-| `type`     | string | The type of the network. Options: `"wifi"`|
-| `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network password. |
-| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
-
-{{% /tablestep %}}
-{{< /table >}}
 
 ## Install `viam-agent`
 
@@ -488,7 +507,7 @@ The following steps show you the end user experience using the mobile app or the
 For a guide you can give to end users for setting up their machine, see [Setup machine](/manage/fleet/provision/end-user-setup/).
 
 {{< tabs >}}
-{{% tab name="Mobile app" min-height="703px" %}}
+{{% tab name="Mobile app (WiFi)" min-height="703px" %}}
 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
 

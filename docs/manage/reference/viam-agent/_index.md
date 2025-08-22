@@ -116,7 +116,7 @@ Your machine credentials file must be at <file>\etc\viam.json</file>.
       "viam_server_start_timeout_minutes": 10,
       "disable_viam_server": false,
       "disable_network_configuration": false,
-      "disable_system_configuration": false
+      "disable_system_configuration": false,
       "viam_server_env": {
         "CUSTOM_VAR": "value"
       }
@@ -129,6 +129,9 @@ Your machine credentials file must be at <file>\etc\viam.json</file>.
       "hotspot_prefix": "viam-setup",
       "hotspot_password": "viamsetup",
       "disable_captive_portal_redirect": false,
+      "disable_bt_provisioning": false,
+      "disable_wifi_provisioning": false,
+      "bluetooth_trust_all": false,
       "offline_before_starting_hotspot_minutes": 2,
       "user_idle_minutes": 5,
       "retry_connection_timeout_minutes": 10,
@@ -275,8 +278,11 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | Name       | Type | Required? | Description |
 | ---------- | ---- | --------- | ----------- |
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline for the specified duration. Default: `0` (disabled). |
+| `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Both WiFi hotspot and Bluetooth provisioning can be enabled simultaneously. Default: `false`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the {{< glossary_tooltip term_id="captive-web-portal" text="captive portal" >}} as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
-| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
+| `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Both WiFi hotspot and Bluetooth provisioning can be enabled simultaneously. Default: `false`. |
+| `bluetooth_trust_all` | boolean | Optional | Set to true to accept all Bluetooth pairing requests (which is only needed for bluetooth tethering) without requiring an unlock command from a mobile app. Default: `false`. |
+| `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using Bluetooth or the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
@@ -304,7 +310,7 @@ It's primarily useful for a machine that moves between different networks, so th
 | `ipv4_gateway` | string | Optional | IPv4 gateway. Default: `""`. | |
 | `ipv4_route_metric` | integer | Optional | IPv4 route metric. Lower values are preferred. Default: `0` which defaults to `100` for wired networks and `600` for wireless network. | |
 | `priority` | integer | Optional | Priority to choose the network with. Values between -999 and 999 with higher values taking precedence. Default: `0`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `psk` | string | Optional | The network passkey. Default: `""`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `psk` | string | Optional | The network password/pre-shared key. Default: `""`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `ssid` | string | Optional | The WiFi network's SSID. Only needed for WiFi networks. Default: `""`. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `type` | string | Optional | The type of the network. Required if a network is provided. Options: `"wifi"`, `"wired"`. | |
 
