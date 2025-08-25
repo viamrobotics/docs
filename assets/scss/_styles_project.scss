@@ -3251,6 +3251,10 @@ ul > li.nav-fold > span > span.link-and-toggle {
   flex-direction: row;
 }
 
+ul > li.nav-fold:last-child {
+  padding-bottom: 0.5rem;
+}
+
 @media (min-width: 768px) {
   .ul-1 > li.nav-fold.hide-if-desktop {
     display: none;
