@@ -1,8 +1,7 @@
 // Utilities
-const _tdStoragePersistKey = (tabKey) =>
-   'td-tp-persist:' + (tabKey || '');
+const _tdStoragePersistKey = (tabKey) => "td-tp-persist:" + (tabKey || "");
 
-const _tdSupportsLocalStorage = () => typeof Storage !== 'undefined';
+const _tdSupportsLocalStorage = () => typeof Storage !== "undefined";
 
 // Helpers
 function tdPersistKey(key, value) {
@@ -14,10 +13,10 @@ function tdPersistKey(key, value) {
       localStorage.removeItem(key);
     }
   } catch (error) {
-    const action = value ? 'add' : 'remove';
+    const action = value ? "add" : "remove";
     console.error(
       `Docsy tabpane: unable to ${action} localStorage key '${key}': `,
-      error
+      error,
     );
   }
 }
@@ -26,10 +25,10 @@ function tdPersistKey(key, value) {
 function tdGetTabSelectEventCountAndInc() {
   // @requires: tdSupportsLocalStorage();
 
-  const storedCount = localStorage.getItem('td-tp-persist-count');
+  const storedCount = localStorage.getItem("td-tp-persist-count");
   let numTabSelectEvents = parseInt(storedCount) || 0;
   numTabSelectEvents++;
-  tdPersistKey('td-tp-persist-count', numTabSelectEvents.toString());
+  tdPersistKey("td-tp-persist-count", numTabSelectEvents.toString());
   return numTabSelectEvents;
 }
 
@@ -38,14 +37,16 @@ function tdGetTabSelectEventCountAndInc() {
 function tdActivateTabsWithKey(key, clicked_element, rectangle) {
   if (!key) return;
 
-    document.querySelectorAll(`.nav-tabs > .nav-item > a[data-td-tp-persist='${key}']`).forEach((element) => {
-    if (element == clicked_element) {
-      // Ensures that if the dom changes above the element, the user's view
-      // doesn't jump
-      window.scrollBy(0, element.getBoundingClientRect().top - rectangle.top);
-    }
-    new bootstrap.Tab(element).show();
-  });
+  document
+    .querySelectorAll(`.nav-tabs > .nav-item > a[data-td-tp-persist='${key}']`)
+    .forEach((element) => {
+      if (element == clicked_element) {
+        // Ensures that if the dom changes above the element, the user's view
+        // doesn't jump
+        window.scrollBy(0, element.getBoundingClientRect().top - rectangle.top);
+      }
+      new bootstrap.Tab(element).show();
+    });
 }
 
 function tdPersistActiveTab(activeTabKey) {
@@ -53,7 +54,7 @@ function tdPersistActiveTab(activeTabKey) {
 
   tdPersistKey(
     _tdStoragePersistKey(activeTabKey),
-    tdGetTabSelectEventCountAndInc()
+    tdGetTabSelectEventCountAndInc(),
   );
 }
 
@@ -61,7 +62,18 @@ function tdPersistActiveTab(activeTabKey) {
 
 function tdGetAndActivatePersistedTabs(tabs) {
   // Only switch tabs for programming languages, web ui, and cli
-  var keyOfTabsInThisPage = ["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter", "Python: venv", "Python: Hot reloading (recommended)", "Python: PyInstaller (recommended)"];
+  var keyOfTabsInThisPage = [
+    "Web UI",
+    "CLI",
+    "Python",
+    "Go",
+    "C++",
+    "TypeScript",
+    "Flutter",
+    "Python: venv",
+    "Python: Hot reloading (recommended)",
+    "Python: PyInstaller (recommended)",
+  ];
 
   // Create a list of active tabs with their age:
   let key_ageList = keyOfTabsInThisPage
@@ -85,26 +97,49 @@ function tdGetAndActivatePersistedTabs(tabs) {
 
 function tdRegisterTabClickHandler(tabs) {
   tabs.forEach((tab) => {
-    if (["Web UI", "CLI", "Python", "Go", "C++", "TypeScript", "Flutter", "Python: venv", "Python: Hot reloading (recommended)", "Python: PyInstaller (recommended)"].includes(tab.text)) {
-      tab.addEventListener('click', (event) => {
+    if (
+      [
+        "Web UI",
+        "CLI",
+        "Python",
+        "Go",
+        "C++",
+        "TypeScript",
+        "Flutter",
+        "Python: venv",
+        "Python: Hot reloading (recommended)",
+        "Python: PyInstaller (recommended)",
+      ].includes(tab.text)
+    ) {
+      tab.addEventListener("click", (event) => {
         const activeTabKey = tab.getAttribute("data-td-tp-persist");
         tdPersistActiveTab(activeTabKey);
-        tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
+        tdActivateTabsWithKey(
+          activeTabKey,
+          event.srcElement,
+          event.srcElement.getBoundingClientRect(),
+        );
       });
     } else {
-      tab.addEventListener('click', (event) => {
+      tab.addEventListener("click", (event) => {
         const activeTabKey = tab.getAttribute("data-td-tp-persist");
-        tdActivateTabsWithKey(activeTabKey, event.srcElement, event.srcElement.getBoundingClientRect())
+        tdActivateTabsWithKey(
+          activeTabKey,
+          event.srcElement,
+          event.srcElement.getBoundingClientRect(),
+        );
       });
     }
   });
 }
 
 // Register listeners and activate tabs
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   if (!_tdSupportsLocalStorage()) return;
 
-  var allTabsInThisPage = document.querySelectorAll(".nav-tabs > .nav-item > a");
+  var allTabsInThisPage = document.querySelectorAll(
+    ".nav-tabs > .nav-item > a",
+  );
   tdRegisterTabClickHandler(allTabsInThisPage);
   if (document.getElementsByTagName("h1").length) {
     if (document.getElementsByTagName("h1")[0].textContent != "Dev tools") {
@@ -115,6 +150,12 @@ window.addEventListener('DOMContentLoaded', () => {
   // Open Anchor for expanders if hidden START
   const openDetailsIfAnchorHidden = (evt) => {
     const target = evt.currentTarget.getAttribute("href"); // "#anchored"
+
+    // Validate that the href is a valid selector (starts with # and has content after it)
+    if (!target || target === "#" || !target.startsWith("#")) {
+      return; // Invalid or empty href, do nothing
+    }
+
     const elTarget = document.querySelector(target);
 
     if (!elTarget) return; // No such element in DOM. Do nothing
@@ -126,23 +167,22 @@ window.addEventListener('DOMContentLoaded', () => {
       if (elDetails.matches("details")) elDetails.open = true;
       elDetails = elDetails.parentElement;
     }
-  }
+  };
 
   document.querySelectorAll("[href^='#']").forEach((el) => {
-  el.addEventListener("click", openDetailsIfAnchorHidden);
+    el.addEventListener("click", openDetailsIfAnchorHidden);
   });
 
-  document.addEventListener("DOMContentLoaded", function(event) {
+  document.addEventListener("DOMContentLoaded", function (event) {
     if (location.hash) {
-        hash = document.getElementById(location.hash.substr(1));
-        details = hash.closest("details")
-        if (details) {
-          bbox = details.getBoundingClientRect();
-          scrollTo(bbox.x, bbox.y - 120);
-        }
+      hash = document.getElementById(location.hash.substr(1));
+      details = hash.closest("details");
+      if (details) {
+        bbox = details.getBoundingClientRect();
+        scrollTo(bbox.x, bbox.y - 120);
+      }
     }
   });
 
   // Open Anchor for expanders if hidden END
-
 });
