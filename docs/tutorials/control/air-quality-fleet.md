@@ -997,10 +997,28 @@ Still using the computer used for flashing the SD card, eject and reinsert the c
 
 Run the following commands to download the preinstall script and make the script executable:
 
+{{< tabs >}}
+{{% tab name="wget" %}}
+
 ```sh {class="command-line" data-prompt="$"}
 wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
 chmod 755 preinstall.sh
 ```
+
+{{% /tab %}}
+{{% tab name="curl" %}}
+
+```sh {class="command-line" data-prompt="$"}
+curl -O https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
+chmod 755 preinstall.sh
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< alert title="Support notice" color="note" >}}
+Please note this script works only under POSIX (macOS and Linux) at the moment.
+{{< /alert >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}

@@ -29,7 +29,7 @@ Whether you need to use the Viam mobile app or the captive portal, depends on ho
 
 ## Set up your machine using the Viam mobile app
 
-{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="300px" class="">}}
+<!-- {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" max-width="300px" class="">}} -->
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -58,13 +58,18 @@ Create a new machine or click on an existing machine that has not yet been set u
 **Turn on your machine and follow the app instructions**
 
 Turn on the smart machine you are attempting to connect to.
-Then leave the app and navigate to your mobile device's WiFi settings and connect to the WiFi hotspot your machine has created.
+
+Follow the instructions and connect to the Bluetooth hotspot your machine has created.
+You may need to wait a short time for your machine to boot and turn on Bluetooth.
+
+By default, the name will begin with `viam-setup-`.
+
+<!-- Then leave the app and navigate to your mobile device's WiFi settings and connect to the WiFi hotspot your machine has created.
 You may need to wait a short time for your machine to boot and create its WiFi hotspot.
 
 Select the machine's WiFi hotspot and enter the password.
 By default, the name will begin with `viam-setup-` and the password is `viamsetup`.
-
-Return to the Viam mobile app once connected.
+-->
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -72,8 +77,11 @@ Return to the Viam mobile app once connected.
 
 In the mobile app, follow the instructions to provide the network information for the machine.
 
-The machine will now disable the hotspot network and attempt to connect using the provided network information.
-If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
+The machine will now disable Bluetooth and attempt to connect using the provided network information.
+If the machine cannot establish a connection using the provided network information, the machine enable the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
+
+<!-- The machine will now disable the hotspot network and attempt to connect using the provided network information.
+If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established. -->
 
 {{% /tablestep %}}
 {{% tablestep %}}
