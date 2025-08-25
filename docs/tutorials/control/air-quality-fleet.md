@@ -949,6 +949,37 @@ To avoid differences between fragment and development machines, we recommend you
 {{< table >}}
 {{% tablestep start=1 %}}
 
+For each machine, flash the operating system to the device's SD card.
+If you are using the Raspberry Pi Imager, you **must customize at least the hostname** for the next steps to work.
+
+Then run the following commands to download the preinstall script and make the script executable:
+
+{{< tabs >}}
+{{% tab name="wget" %}}
+
+```sh {class="command-line" data-prompt="$"}
+wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
+chmod 755 preinstall.sh
+```
+
+{{% /tab %}}
+{{% tab name="curl" %}}
+
+```sh {class="command-line" data-prompt="$"}
+curl -O https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
+chmod 755 preinstall.sh
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< alert title="Support notice" color="note" >}}
+Please note this script works only under POSIX (macOS and Linux) at the moment.
+{{< /alert >}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
 Create a file called <FILE>viam-defaults.json</FILE> with the following configuration:
 
 ```json {class="line-numbers linkable-line-numbers"}
