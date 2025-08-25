@@ -109,7 +109,7 @@ You must at least specify a `fragment_id`.
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
     "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
-    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for bluetooth tethering) without requiring an unlock command from a mobile app.
+    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for Bluetooth tethering) without requiring an unlock command from a mobile app.
     "turn_on_hotspot_if_wifi_has_no_internet": false, # set to true if networks without internet should not be accepted.
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
@@ -157,7 +157,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
-| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the Bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Be aware that if you do not set a custom password this may be a security risk. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
 | `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
@@ -364,10 +364,24 @@ Still using the computer used for flashing the SD card, eject and reinsert the c
 
 Run the following commands to download the preinstall script and make the script executable:
 
+{{< tabs >}}
+{{% tab name="wget" %}}
+
 ```sh {class="command-line" data-prompt="$"}
 wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
 chmod 755 preinstall.sh
 ```
+
+{{% /tab %}}
+{{% tab name="curl" %}}
+
+```sh {class="command-line" data-prompt="$"}
+curl -O https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
+chmod 755 preinstall.sh
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{< alert title="Support notice" color="note" >}}
 Please note this script works only under POSIX (macOS and Linux) at the moment.
