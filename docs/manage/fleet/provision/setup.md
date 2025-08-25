@@ -27,6 +27,8 @@ cost: "0"
 You can install [`viam-agent`](/manage/reference/viam-agent/) as part of your manufacturing process and provision machines with a pre-defined configuration as they come online.
 When the end user sets the machine up, they provide network access and `viam-agent` installs `viam-server` and your latest software.
 
+If you're looking for a full tutorial, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
+
 ## Provisioning flow
 
 To prepare a device, you will follow these steps:

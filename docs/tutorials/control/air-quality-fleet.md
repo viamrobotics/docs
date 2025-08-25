@@ -919,17 +919,18 @@ Repeat to add the New York office: Add a new location called `New York Office`, 
 Let's continue with our fictitious company and assume you want to ship air sensing machines out to customers from your factory.
 In other words, you want to provision devices.
 
-Before an air sensing machine leaves your factory, you complete the following steps:
+Before an air sensing machine leaves your factory, this is an overview of the steps you must complete.
+**These steps are to prov will be explained in more detail.**
 
-1. You flash the SD card for the single-board computer with an operating system.
 1. You create a machine configuration template: a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
+1. You flash the SD card for the single-board computer with an operating system.
 1. You install `viam-agent` with the `preinstall` script on the SD card providing the fragment.
 
 Once a customer receives your machine, they will:
 
 1. Plug the machine in and turn it on.
 2. `viam-agent` will start a WiFi network.
-3. The customer uses a mobile device to connect to the machine's WiFi network and provides WiFi credentials to connect to an internet-connected WiFi network.
+3. The customer uses a mobile device to connect to the machine's WiFi hotspot and provides WiFi credentials to connect to an internet-connected WiFi network.
 4. The machine now connects to the internet and sets itself up based on the specified fragment.
 
 ### Create the fragment for air sensing machines
@@ -943,13 +944,9 @@ In this section you will create the {{< glossary_tooltip term_id="fragment" text
 
    As a shortcut, you can use the JSON mode on the machine you already configured and copy the machine's configuration to the fragment.
 
-   {{< expand "Click here for info about the usb_interface value." >}}
+   If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
 
-If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
-
-If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different.
-
-{{< /expand >}}
+   If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different.
 
 1. Specify the version for the `sds011` module.
    At the point of writing the version is `0.2.1`.
@@ -964,19 +961,6 @@ To avoid differences between fragment and development machines, we recommend you
 
 {{< table >}}
 {{% tablestep start=1 %}}
-
-For each machine, flash the operating system to the device's SD card.
-If you are using the Raspberry Pi Imager, you **must customize at least the hostname** for the next steps to work.
-
-Then run the following commands to download the preinstall script and make the script executable:
-
-```sh {class="command-line" data-prompt="$"}
-wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
-chmod 755 preinstall.sh
-```
-
-{{% /tablestep %}}
-{{% tablestep %}}
 
 Create a file called <FILE>viam-defaults.json</FILE> with the following configuration:
 
@@ -993,6 +977,7 @@ Create a file called <FILE>viam-defaults.json</FILE> with the following configur
 ```
 
 Replace `<FRAGMENT-ID>` with the fragment ID from your fragment.
+You will pass the file to the preinstall script later.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -1007,6 +992,27 @@ Paste the machine cloud credentials into a file on your hard drive called <FILE>
 {{< alert title="Tip: Fleet management API" color="tip" >}}
 You can create locations and machines programmatically, with the [Fleet management API](/dev/reference/apis/fleet/).
 {{< /alert >}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+For each machine, flash the operating system to the device's SD card.
+If you are using the Raspberry Pi Imager, you **must customize at least the hostname** for the next steps to work.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+Still using the computer used for flashing the SD card, eject and reinsert the card to make sure it's mounted with the newly written operating system.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+Run the following commands to download the preinstall script and make the script executable:
+
+```sh {class="command-line" data-prompt="$"}
+wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall.sh
+chmod 755 preinstall.sh
+```
 
 {{% /tablestep %}}
 {{% tablestep %}}
