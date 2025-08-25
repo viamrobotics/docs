@@ -248,7 +248,7 @@ If you are using the old <FILE>viam-provisioning.json</FILE> you must also use t
   "manufacturer": "<NAME>", # your company name
   "model": "<NAME>", # the machine's model
   "fragment_id": "<ID>", # the fragment id, required for mobile app
-  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot with prefix-hostname during setup
   "disable_dns_redirect": true, # disable if using a mobile app
   "hotspot_password": "<PASSWORD>", # password for the hotspot
   "networks" : []

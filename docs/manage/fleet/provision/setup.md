@@ -104,7 +104,7 @@ You must at least specify a `fragment_id`.
     "model": "<NAME>", # the machine's model
     "fragment_id": "<ID>", # the fragment id, required for mobile app
     "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup with this prefix in the name
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot with prefix-hostname during setup
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
