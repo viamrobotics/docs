@@ -248,7 +248,7 @@ If you are using the old <FILE>viam-provisioning.json</FILE> you must also use t
   "manufacturer": "<NAME>", # your company name
   "model": "<NAME>", # the machine's model
   "fragment_id": "<ID>", # the fragment id, required for mobile app
-  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+  "hotspot_prefix": "<PREFIX>", # machine creates a hotspot with prefix-hostname during setup
   "disable_dns_redirect": true, # disable if using a mobile app
   "hotspot_password": "<PASSWORD>", # password for the hotspot
   "networks" : []
@@ -286,7 +286,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Default: first discovered 802.11 device. |
-| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. Default: `"viam-setup"`. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the Bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
 | `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
 | `disable_dns_redirect` | boolean | Optional | By default, ALL DNS lookups using the provisioning hotspot will redirect to the device. This causes most phones/mobile devices to automatically redirect the user to the captive portal as a "sign in" screen. When disabled, only domains ending in .setup (ex: viam.setup) will be redirected. This generally avoids displaying the portal to users and is mainly used in conjunction with a mobile provisioning application workflow. Default: `false`. |
 | `roaming_mode` | boolean | Optional | By default, the device will only attempt to connect to a single wifi network (the one with the highest priority), provided during initial provisioning/setup using the provisioning mobile app or captive web portal. Wifi connection alone is enough to consider the device as "online" even if the global internet is not reachable. If the primary network configured during provisioning cannot be connected to and roaming mode is enabled, the device will attempt connections to all configured networks in `networks`, and only consider the device online if the internet is reachable. Default: `false`. |
