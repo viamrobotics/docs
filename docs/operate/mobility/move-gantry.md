@@ -23,7 +23,7 @@ You have two options for moving a [gantry](/operate/reference/components/gantry/
 ## Configure and connect to your gantry
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Configure the gantry's motor components**
 
 First, connect the gantry's motors to your machine.
@@ -37,7 +37,7 @@ Complete the motor configuration and use the **TEST** panel in the configuration
 Repeat this for each motor of your gantry.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure a gantry component**
 
 Use the **+** button again to add gantry components.
@@ -45,7 +45,7 @@ Use the **+** button again to add gantry components.
 If you have a multi-axis gantry, [configure a single-axis gantry](/operate/reference/components/gantry/single-axis/) for each axis, and then [configure a multi-axis gantry](/operate/reference/components/gantry/multi-axis/) to combine them all into one coordinated unit.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Connect code to your gantry**
 
 Go to your machine's **CONNECT** tab.

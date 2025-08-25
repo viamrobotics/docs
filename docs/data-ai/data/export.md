@@ -40,7 +40,7 @@ Then authenticate your CLI session with Viam using one of the following options:
 To export your data from the cloud using the Viam CLI:
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Filter the data you want to download**
 
 Navigate to the [**DATA**](https://app.viam.com/data/view) page.
@@ -48,7 +48,7 @@ Navigate to the [**DATA**](https://app.viam.com/data/view) page.
 Use the filters on the left side of the page to filter only the data you wish to export.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Copy the export command from the DATA page**
 
 In the upper right corner of the **DATA** page, click the **Export** button.
@@ -57,7 +57,7 @@ Click **Copy export command**.
 This copies the command, including your org ID and the filters you selected, to your clipboard.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Run the command**
 
 Run the copied command in a terminal:

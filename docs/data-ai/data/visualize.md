@@ -205,14 +205,14 @@ Select a tab below to learn how to configure your visualization tool for use wit
 #### Grafana
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Choose Grafana instance**
 
 [Install](https://grafana.com/docs/grafana/latest/setup-grafana/installation/) or set up Grafana.
 You can use either a local instance of Grafana Enterprise or Grafana Cloud, and can use the free trial version of Grafana Cloud if desired.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Install connector to MongoDB data source**
 
 Navigate to your Grafana web UI.
@@ -223,7 +223,7 @@ Go to **Connections > Add new connection** and add the [Grafana MongoDB data sou
 Install the datasource plugin.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Configure a data connection**
 
 Navigate to the Grafana MongoDB data source that you just installed.
@@ -249,7 +249,7 @@ Enter the following information in the configuration UI for the plugin:
   {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps" class="shadow" >}}
 
 {{< /tablestep >}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Use Grafana for dashboards**
 
 With your data connection established, you can then build dashboards that provide insight into your data.
@@ -282,7 +282,7 @@ See the [guide on querying data](/data-ai/data/query/) for more information.
 #### Other visualization tools
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Install connector to MongoDB data source**
 
 Some visualization clients are able to connect to the Viam MongoDB Atlas Data Federation instance natively, while others require that you install and configure an additional plugin or connector.
@@ -291,7 +291,7 @@ For example, Tableau requires both the [Atlas SQL JDBC Driver](https://www.mongo
 Check with the documentation for your third-party visualization tool to be sure you have the required additional software installed to connect to a MongoDB Atlas Data Federation instance.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure a data connection**
 
 Most third-party visualization tools require the _connection URI_ (also called the connection string) to that database server, and the _credentials_ to authenticate to that server in order to visualize your data.
@@ -344,7 +344,7 @@ Substitute your organization ID for `<YOUR-ORG-ID>`.
 {{% /tabs %}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Use visualization tools for dashboards**
 
 Some third-party visualization tools support the ability to directly query your data within their platform to generate more granular visualizations of specific data.

@@ -17,7 +17,7 @@ This guide will show you how to create a branded login screen.
 ## Prerequisites
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Add the logo** to be displayed on the login screen for your organization.
 Your logo can be up to 200KB in size and must be in PNG format.
 
@@ -29,7 +29,7 @@ Successfully set the logo for organization <org-id> to logo at file-path: logo.p
 You must have [owner permissions](/manage/manage/rbac/#organization-settings-and-roles) on the organization.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **The support email** that will be shown when Viam sends emails to users on your behalf for email verification, password recovery, and other account related emails.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -43,7 +43,7 @@ Successfully set support email for organization "<org-id>" to "support@logoipsum
 ## Set up auth app
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Enable the authentication service** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
@@ -52,7 +52,7 @@ enabled auth service for organization "<org-id>":
 ```
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Create an OAuth application** for your organization:
 
 ```sh {class="command-line" data-prompt="$" data-output="6-10"}
@@ -82,7 +82,7 @@ Successfully created OAuth app OAuth Test App with client ID <client-id> and cli
 {{% /expand%}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **See OAuth app**:
 
 ```sh {class="command-line" data-prompt="$" data-output="2-5,7-20"}

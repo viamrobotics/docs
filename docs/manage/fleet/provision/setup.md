@@ -27,69 +27,72 @@ cost: "0"
 You can install [`viam-agent`](/manage/reference/viam-agent/) as part of your manufacturing process and provision machines with a pre-defined configuration as they come online.
 When the end user sets the machine up, they provide network access and `viam-agent` installs `viam-server` and your latest software.
 
-Consider a company that sells machines that monitor weather conditions on a maritime craft and provide navigation advice based on those readings.
-The machines use the data management service to regularly capture and upload a stream of sensor readings.
-To parse the readings and provide tailored guidance to a ship's captain, the company writes their own proprietary application.
+If you're looking for a full tutorial, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
 
-By having the end customer set up the machine, the company:
+## Provisioning flow
 
-- eliminates per-device setup and individualization at the factory
-- allows customer to provide their own WiFi credentials
-- allows for tailored configurations per customer as needed
+To prepare a device, you will follow these steps:
 
-This guide shows you how to install and configure `viam-agent`.
+1. You create a machine configuration template: a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_ on Viam.
+1. You create a defaults file specifying the provisioning method and the fragment.
+1. You flash the SD card for the single-board computer with an operating system.
+1. You install `viam-agent` with the `preinstall` script on the SD card providing the defaults file.
 
-## Prerequisites
+Once a customer receives your machine, they will plug the machine in and turn it on.
 
-{{% expand "One or more physical devices with supported operating system" %}}
+The next steps depend on the provisioning method:
 
-To find out more about supported systems, see [`viam-server` Platform requirements](/operate/get-started/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) and [`viam-micro-server` hardware requirements](/operate/get-started/setup-micro/#supported-microcontrollers).
+{{< tabs >}}
+{{% tab name="Bluetooth + WiFi provisioning (recommended)" %}}
 
-If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and customize at least the hostname when prompted by the Raspberry Pi Imager.
+1. `viam-agent` starts Bluetooth Low Energy (BLE) and accepts connections.
+1. The customer installs an app you provide on a mobile device.
+1. The customer uses the app to connect to the machine over Bluetooth.
+1. Using the app, the customer provides the machine WiFi credentials to the machine to connect to a WiFi network.
+1. The machine connects to the internet and sets itself up based on the specified fragment.
 
-When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
+{{% /tab %}}
+{{% tab name="WiFi hotspot provisioning" %}}
 
-Eject and reinsert the card to make sure it's mounted with the newly written contents.
+1. `viam-agent` starts a WiFi hotspot.
+1. The customer uses a mobile device to connect to the machine's temporary WiFi network.
+1. Using a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}} or a mobile app, the customer provides WiFi credentials to connect to a WiFi network.
+1. The machine connects to the internet and sets itself up based on the specified fragment.
 
-{{% /expand%}}
+{{% /tab %}}
+{{% tab name="Bluetooth provisioning" %}}
 
-{{< alert title="Support Notice" color="note" >}}
+1. `viam-agent` starts Bluetooth Low Energy (BLE) and accepts connections.
+1. The customer installs an app you provide on a mobile device.
+1. The customer uses the app to connect to the machine over Bluetooth and shares the mobile device's internet connection with the machine for setup.
+1. The machine uses the mobile-devices internet to set itself up based on the specified fragment.
 
-Provisioning is supported and tested on Ubuntu 22.04, Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.30 (or newer) as well.
-For Bullseye, the installation of `viam-agent` changes the network configuration to use NetworkManager.
+{{% /tab %}}
+{{< /tabs >}}
 
-{{< /alert >}}
+## Provision a device
 
-## Choose provisioning methods
+The following instructions will preinstall `viam-agent` into an image.
 
-You can let your end users complete machine setup over WiFi or Bluetooth:
-
-- **WiFi Hotspot Provisioning**: When the device boots, it creates a temporary WiFi hotspot that users connect to for setup either by using a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}} or a mobile app. The WiFi hotspot is open to anyone. Be aware that if the manufacturer (and/or end user) has not set a custom password for the machine then a default password (either the built-in "viamsetup", or a new default set by a manufacturer in viam-defaults.json) may be in use, which is a security risk.
-- **Bluetooth Low Energy (BLE) Provisioning**: When device boots, it enables Bluetooth with the configured `<prefix>-<model>` as the device name and a user connects to it using a mobile app.
-
-If you choose to have a mobile app experience, you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) or create your own custom mobile app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts) to connect to `viam-agent` and provision your machines.
-
-The Viam mobile app allows end users to create a new machine in the app, and `viam-agent` will then install `viam-server` and run it with a provided configuration.
-If you choose to use the Viam mobile app, you must provide a {{< glossary_tooltip term_id="fragment" text="fragment" >}} for provisioning.
-If you do not yet have a fragment, follow the steps to [Create a configuration fragment](/manage/fleet/reuse-configuration/) and make a note of the fragment ID.
-
-{{< alert title="Tip" color="tip" >}}
-If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
-{{< /alert >}}
-
-## Configure defaults
-
-The defaults file allows you to configure the provisioning experience for the users setting up their machines.
+**Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to install `viam-server` with `viam-agent`.**
 
 {{< table >}}
+{{% tablestep start=1 %}}
+**Create a fragment**
 
-{{% tablestep number=1 %}}
-**Configure provisioning**
+If you do not yet have a {{< glossary_tooltip term_id="fragment" text="fragment" >}}, follow the steps to [Create a fragment](/manage/fleet/reuse-configuration/#create-a-fragment) and make a note of the fragment ID.
 
-If you are using the captive portal, this step is optional.
-If you are using a mobile app, you must create a provisioning configuration file, specifying at least a `fragment_id`.
+{{% /tablestep %}}
+{{% tablestep %}}
+**Create the defaults file**
 
-Create a defaults file called <FILE>viam-defaults.json</FILE> with the following format and customize the [attributes](/manage/fleet/provision/setup/#configure-defaults):
+If you would like to use a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}}, skip this and the next step.
+
+Create a defaults file called <FILE>viam-defaults.json</FILE> to configure the provisioning experience for the users setting up their machines.
+You will later pass this file to a script, so you can save it anywhere.
+The script will save the file is at <file>/etc/viam-defaults.json</file> on the machine.
+
+You must at least specify a `fragment_id`.
 
 {{< tabs >}}
 {{% tab name="Template" %}}
@@ -101,13 +104,13 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
     "model": "<NAME>", # the machine's model
     "fragment_id": "<ID>", # the fragment id, required for mobile app
     "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup
+    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot during setup with this prefix in the name
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
     "hotspot_password": "<PASSWORD>", # password for the hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
     "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
     "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for bluetooth tethering) without requiring an unlock command from a mobile app.
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "turn_on_hotspot_if_wifi_has_no_internet": false, # set to true if networks without internet should not be accepted.
     "offline_before_starting_hotspot_minutes": "3m30s",
     "user_idle_minutes": "2m30s",
     "retry_connection_timeout_minutes": "15m"
@@ -139,7 +142,7 @@ Create a defaults file called <FILE>viam-defaults.json</FILE> with the following
 }
 ```
 
-This file configures some basic metadata, specifies a [fragment](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
+This file configures some basic metadata, specifies a fragment to use to configure the machine, and provides the WiFi hotspot network name and password to use on startup.
 It also configures timeouts to control how long `viam-agent` waits for a valid local WiFi network to come online before creating its hotspot network, and how long to keep the hotspot active before terminating it.
 
 {{% /tab %}}
@@ -154,8 +157,8 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
-| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID. For Bluetooth provisioning the device name will be the hotspot prefix and the model (`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
-| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
+| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Be aware that if you do not set a custom password this may be a security risk. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
 | `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
 | `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Default: `false`. |
@@ -167,15 +170,16 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `device_reboot_after_offline_minutes` | integer | Optional | If set, `viam-agent` will reboot the device after it has been offline (and in hotspot mode) for the specified duration. Default: `0` (disabled). |
 
 {{% /expand%}}
-
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
-**Configure Networks (optional)**
+{{% tablestep %}}
+**Configure Networks**
 
-During the provisioning process, a machine connects to a network to install `viam-server`.
-If you provide an app to your end user or are asking them to use the Viam mobile app, the user will provide network details through that app.
+If a machine connects to a network during setup and you know in advance which WiFi a machine will connect to, this step allows you to add credentials for it.
 
-If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
+If you do not know the network in advance, skip this step.
+In this case the end user will have to provide network details later in the process.
+
+If you know in advance that the machine should be able to connect to multiple networks, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
 If that is not possible, you can add networks with the `additional_networks` field.
 `viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
 
@@ -225,18 +229,22 @@ The following configuration defines the connection information and credentials f
 | `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
 
 {{% /tablestep %}}
-{{< /table >}}
+{{% tablestep %}}
+**Create a machine in advance**
 
-## (Optional) Create a machine in advance
+If you are using a mobile app for provisioning, skip this step.
 
-If you provision devices using a captive web portal (instead of a mobile app), you need to create a machine in advance and provide its machine cloud credentials in the portal.
-Alternately, you may directly write them to the file <FILE>/etc/viam.json</FILE>.
+If you provision devices using a captive web portal, you can create a machine in advance.
+You can either provide its machine cloud credentials to the preinstall script you will run in the next steps, or prvide them using the captive web portal.
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+Paste the machine cloud credentials into a file on your hard drive called <FILE>viam.json</FILE>.
+You will pass the file to the preinstall script later, so you can store it anywhere.
+The script will save the file is at <file>/etc/viam.json</file> on the machine.
 
 {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
 
-{{% expand "Want to create a machine and obtain its machine cloud credentials programmatically?" %}}
+{{< expand "Want to create a machine and obtain its machine cloud credentials programmatically?" >}}
 
 You can use the [Fleet Management API](/dev/reference/apis/fleet/) to create machines, and obtain their machine cloud credentials:
 
@@ -270,11 +278,7 @@ async def connect() -> ViamClient:
 
 
 async def main():
-
-    # Make a ViamClient
     viam_client = await connect()
-    # Instantiate an AppClient called "cloud"
-    # to run fleet management API methods on
     cloud = viam_client.app_client
     new_machine_id = await cloud.new_robot(
         name=MACHINE_NAME, location_id=LOCATION_ID)
@@ -320,22 +324,42 @@ if __name__ == '__main__':
     asyncio.run(main())
 ```
 
-{{% /expand%}}
+{{< /expand >}}
 
-## Install `viam-agent`
+{{% /tablestep %}}
+{{% tablestep %}}
+**Flash an operating system to the SD card of the single-board computer**
 
-`viam-agent` is a self-updating service manager that maintains the lifecycle for several Viam services and keeps them updated.
+{{< tabs >}}
+{{% tab name="Raspberry Pi" %}}
 
-The following instructions will preinstall `viam-agent` into an image.
+If you are flashing a Raspberry Pi using the Raspberry Pi Imager, flash a 64-bit image to your SD card and **customize at least the hostname** when prompted by the Raspberry Pi Imager.
 
-**Only use the following method for offline pre-installs with images. For live systems, follow the instructions on a machine's setup tab to install `viam-server` with `viam-agent`.**
+When you customize the hostname or other settings, the Raspberry Pi Imager creates `firstrun.sh` which is required to set up provisioning.
 
-{{< alert title="Support notice" color="note" >}}
-Please note this script works only under POSIX (macOS and Linux) at the moment.
+{{% /tab %}}
+{{% tab name="Other" %}}
+
+See [`viam-server` Platform requirements](/operate/get-started/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) and [`viam-micro-server` hardware requirements](/operate/get-started/setup-micro/#supported-microcontrollers).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< alert title="Support Notice" color="note" >}}
+
+Provisioning is supported and tested on Ubuntu 22.04, Debian 11 (Bullseye), and 12 (Bookworm) but should work on most distros using NetworkManager v1.30 (or newer) as well.
+For Bullseye, the installation of `viam-agent` changes the network configuration to use NetworkManager.
+
 {{< /alert >}}
 
-{{< table >}}
-{{% tablestep number=1 %}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**Mount the SD card**
+
+Still using the computer used for flashing the SD card, eject and reinsert the card to make sure it's mounted with the newly written operating system.
+
+{{% /tablestep %}}
+{{% tablestep %}}
 **Download the preinstall script**
 
 Run the following commands to download the preinstall script and make the script executable:
@@ -345,20 +369,25 @@ wget https://storage.googleapis.com/packages.viam.com/apps/viam-agent/preinstall
 chmod 755 preinstall.sh
 ```
 
+{{< alert title="Support notice" color="note" >}}
+Please note this script works only under POSIX (macOS and Linux) at the moment.
+{{< /alert >}}
+
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Run the preinstall script**
 
-Run the preinstall script without options and it will attempt to auto-detect a mounted root filesystem (or for Raspberry Pi, bootfs) and also automatically determine the architecture.
+Run the preinstall script.
+It will attempt to auto-detect a mounted root filesystem (or for Raspberry Pi, bootfs) and also automatically determine the architecture.
 
 ```sh {class="command-line" data-prompt="$"}
 sudo ./preinstall.sh
 ```
 
 Follow the instructions.
-If you created a <FILE>viam-defaults.json</FILE>, specify its location as an environment variable or when prompted.
+If you created a <FILE>viam-defaults.json</FILE> file or a <FILE>viam.json</FILE> file, specify their locations when prompted.
 
-You can set optional arguments by defining the following environment variables:
+{{% expand "Optional environment variables for the preinstall script" %}}
 
 <!-- prettier-ignore -->
 | Argument | Description |
@@ -367,11 +396,10 @@ You can set optional arguments by defining the following environment variables:
 | `DEFAULTS_PATH` | The path to the <FILE>viam-defaults.json</FILE> file. The script will also prompt you for this file if not provided. |
 | `VIAM_AGENT_PATH` | The path to a beta or local build of `viam-agent`. Used for testing. |
 
-{{< alert title="Clone SD cards" color="tip" >}}
-Unless you are providing a machine cloud credentials file (<FILE>viam.json</FILE>) to each machine, you can clone SD cards to speed up the provisioning process.
-{{< /alert >}}
+{{% /expand%}}
 
 <br>
+Troubleshooting:
 
 {{% expand "Using a Raspberry Pi?" %}}
 
@@ -403,7 +431,9 @@ Found Raspberry Pi bootfs mounted at /Volumes/bootfs
 A Raspberry Pi boot partition has been found mounted at /Volumes/bootfs
 This script will modify firstrun.sh on that partition to install Viam agent.
 Continue pre-install? (y/n): y
+Path to custom viam-agent binary (leave empty to download default):
 Path to custom viam-defaults.json (leave empty to skip):
+Path to custom viam.json (leave empty to skip)
 Creating tarball for install.
 a opt
 a opt/viam
@@ -470,7 +500,66 @@ sudo ./preinstall.sh /path/to/rootfs
 {{% /expand %}}
 
 {{% /tablestep %}}
+{{% tablestep %}}
+**Set up more devices**
+
+Unless you provided a machine cloud credentials file (<FILE>viam.json</FILE>) to the machine in Step 3, you can clone SD cards to speed up the provisioning process.
+
+{{% /tablestep %}}
 {{< /table >}}
+
+## Use a mobile app for provisioning
+
+You can create your own custom mobile provisioning app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
+Alternatively you can use the [Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app).
+
+### Custom Flutter apps
+
+If you are building your own app to provide provisioning functionality you have three options for provisioning.
+You can support any number of these options.
+
+<!-- prettier-ignore -->
+| Provisioning method | Description | Package |
+| ------------------- | ----------- | ------- |
+| **Bluetooth with WiFi** | Ask the user to connect to the machine over Bluetooth. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. Recommended, if available. | [Example](https://github.com/viamrobotics/viam_flutter_provisioning/) |
+| **WiFi** | Ask the user to connect to the machine's temporary WiFi hotspot. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. Slower than Bluetooth with WiFi but faster than Bluetooth tethering. | [Example](https://github.com/viamrobotics/viam_flutter_hotspot_provisioning_widget) |
+ | **Bluetooth tethering** | Ask the user to connect to the machine over Bluetooth. The user shares their mobile device's internet with the machine over Bluetooth. Slowest provisioning method. | [Example](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget/) |
+
+### The Viam mobile app
+
+The Viam mobile app allows end users to create a new machine in the app, and `viam-agent` will then install `viam-server` and run it with the configuration provided by the `fragment_id` in the defaults file.
+If you choose to use the Viam mobile app, you must provide a {{< glossary_tooltip term_id="fragment" text="fragment" >}} for provisioning.
+
+{{< alert title="Tip" color="tip" >}}
+If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
+{{< /alert >}}
+
+{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
+
+## Change WiFi network or credentials
+
+If you want to change the WiFi network or the network credentials on a device that is already setup, you can enter provisioning again using the force provisioning mode.
+
+If you can manually `SSH` into a machine you can follow these steps:
+
+1. Add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json).
+   The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before you can use the `viam machines part shell` command.
+
+1. Open a shell on your machine:
+
+   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
+   viam machines part shell --part <PART-ID>
+   ```
+
+1. On the machine, create an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>:
+
+   ```sh {class="command-line" data-prompt="$" data-output="3-10"}
+   touch /opt/viam/etc/force_provisioning_mode
+   ```
+
+1. The machine will immediately enter provisioning mode until the machine receives the new credentials or the `retry_connection_timeout_minutes` limit, by default 10 minutes, expires.
+
+If you provide a provisioning app, instead program functionality that adds an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>.
 
 ## Troubleshooting
 
@@ -486,7 +575,7 @@ Once a machine has completed the provisioning flow, you cannot re-run the final 
 
 Some systems can't scan for WiFi networks while in hotspot mode, meaning they won't automatically detect networks coming online or into range until the `retry_connection_timeout_minutes` expires.
 The `retry_connection_timeout_minutes` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
-If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
+If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the defaults file.
 
 ### Device not connecting or showing as offline
 
@@ -497,88 +586,3 @@ If other devices are fine, try restarting your device and [check for other logs]
 
 If you need to test the GRPC components of the provisioning service, there is a CLI client available.
 Get the code from the [`agent` repo](https://github.com/viamrobotics/agent/tree/main/cmd/provisioning-client) and run `go run ./cmd/provisioning-client/` for info.
-
-## End user setup experience
-
-End users receive a machine, and use either a captive web portal or mobile app to complete the machine setup.
-
-The following steps show you the end user experience using the mobile app or the captive web portal and how your configuration influences it.
-
-For a guide you can give to end users for setting up their machine, see [Setup machine](/manage/fleet/provision/end-user-setup/).
-
-{{< tabs >}}
-{{% tab name="Mobile app (WiFi)" min-height="703px" %}}
-
-{{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
-
-1. Open the app and follow any instructions there until the app directs you to turn on the machine.
-
-   If you are using the Viam mobile app, create a new machine or click on an existing machine that has not yet been set up and follow the instructions.
-
-1. When you power on the machine that has `viam-agent` installed, `viam-agent` creates a WiFi hotspot.
-
-   The [`defaults` file](/manage/fleet/provision/setup/#configure-defaults) is at <file>/etc/viam-defaults.json</file> on your machine.
-
-1. You then use your mobile device or computer and connect to the WiFi hotspot.
-
-   By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
-   The WiFi password for this hotspot network is `viamsetup` by default.
-   You can customize these values in the [`defaults` file](/manage/reference/viam-agent/#configuration).
-
-1. If you as the end user have a provisioning mobile app, go back to the app to complete setup.
-   In the mobile app, you will be prompted to provide the network information for the machine.
-
-   If your device is not detecting networks, see [Troubleshooting](/manage/fleet/provision/setup/#device-not-detecting-networks).
-
-1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
-   If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
-1. If the connection is successful, `viam-agent` installs `viam-server`.
-
-   `viam-agent` will use the provided network if it can connect, even if that network does not have internet access.
-   Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-   If you want `viam-agent` to require that a WiFi network be connected to the internet in order to connect to it, enable `turn_on_hotspot_if_wifi_has_no_internet`.
-
-1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
-
-{{% /tab %}}
-{{% tab name="Captive web portal" %}}
-
-1. When you, as the end user, power on the machine that has `viam-agent` installed, `viam-agent` creates a WiFi hotspot.
-
-   The [`defaults` file](/manage/fleet/provision/setup/#configure-defaults) is at <file>/etc/viam-defaults.json</file>.
-   If a machine already exists, a machine cloud credentials file, if provided, is at <file>/etc/viam.json</file>.
-
-1. You as the end user then use your mobile device or computer and connect to the WiFi hotspot.
-
-   By default, the hotspot network is named `viam-setup-HOSTNAME`, where `HOSTNAME` is replaced with the hostname of your machine.
-   The WiFi password for this hotspot network is `viamsetup` by default.
-   You can customize these values in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
-
-1. Once connected to the hotspot, you will be redirected to a sign-in page.
-   If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
-
-1. In the captive web portal, you will then be prompted to provide the network information for the machine.
-
-   If there is no machine cloud credentials file at <file>/etc/viam.json</file>, the captive portal will also require you to paste a machine cloud credentials file.
-   This is the JSON object which contains your machine part secret key and cloud app address, which your machine's `viam-server` instance needs to connect to Viam.
-
-   To copy a machine cloud credentials file:
-
-   - Navigate to your machine's page.
-   - Select the part status dropdown to the right of your machine's name on the top of the page.
-     {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
-   - Click the copy icon next to **Machine cloud credentials**.
-   - Paste the machine cloud credentials when prompted.
-
-1. The machine will then disable the hotspot network and attempt to connect using the provided network information.
-   If `viam-agent` cannot establish a connection using the provided network information, the machine will create the hotspot again and continue going through steps (2-5) until a connection is successfully established.
-1. If the connection is successful, `viam-agent` installs `viam-server`.
-
-   `viam-agent` will use the provided network if it can connect, even if that network does not have internet access.
-   Note that any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-   If you want `viam-agent` to require that a WiFi network be connected to the internet in order to connect to it, enable `turn_on_hotspot_if_wifi_has_no_internet`.
-
-1. `viam-agent` then starts `viam-server` with the provided configuration and the machine becomes **live**.
-
-{{% /tab %}}
-{{< /tabs >}}

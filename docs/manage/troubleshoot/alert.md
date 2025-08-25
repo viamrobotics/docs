@@ -82,7 +82,7 @@ The following steps show you how to configure [`telegraf`](https://app.viam.com/
 {{% tab name="Linux" %}}
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Add the performance metrics sensors**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
@@ -93,7 +93,7 @@ Search for and add the `hwmonitor:cpu_monitor` model provided by the [`sbc-hwmon
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **(Optional) Customize the sensor configuration**
 
 Add additional sensors for any other metrics you want to track.
@@ -115,7 +115,7 @@ You can also see readings on the **CONTROL** tab.
 {{% /tab %}}
 {{% tab name="macOS" %}}
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Add the performance metrics sensors**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component**.
@@ -126,7 +126,7 @@ Search for and add the [`viam-sensor:telegrafsensor` model](https://github.com/v
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **(Optional) Customize the sensor configuration**
 
 Add additional sensors for any other metrics you want to track.
@@ -153,7 +153,7 @@ You can also see readings on the **CONTROL** tab.
 To capture or alert on the data from your configured sensor, you must add the [data management service](/data-ai/capture-data/capture-sync/) and configure it to capture and sync the sensor data:
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Add the data management service**
 
 On your machine's **CONFIGURE** page, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
@@ -163,7 +163,7 @@ You can leave the default data sync interval of `0.1` minutes to sync every 6 se
 Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure data capture on the sensor**
 
 Return to your sensor's configuration card.
@@ -177,7 +177,7 @@ Set the **Frequency** to `0.05` Hz to capture readings once every 20 seconds.
 
 Click the **Save** button to apply your configuration changes.
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **View synced data**
 
 Click the **...** menu in the upper-right corner of the sensor configuration card.
@@ -197,7 +197,7 @@ If you do not immediately see data, wait a minute for the data to be captured an
 Use **Builder mode** to create a trigger:
 
 {{< table >}}
-{{< tablestep number=1 >}}
+{{< tablestep >}}
 
 Go to the **CONFIGURE** tab of your machine.
 Click the **+** (Create) button in the left side menu and select **Trigger**.
@@ -205,13 +205,13 @@ Click the **+** (Create) button in the left side menu and select **Trigger**.
 {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options.">}}
 
 {{< /tablestep >}}
-{{< tablestep number=2 >}}
+{{< tablestep >}}
 **Create the trigger**
 
 Enter a name and click **Create**.
 
 {{< /tablestep >}}
-{{< tablestep number=3 >}}
+{{< tablestep >}}
 **Configure type**
 
 In the **Type** dropdown, choose one of the following types:
@@ -238,7 +238,7 @@ In the **Type** dropdown, choose one of the following types:
      For more information, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes).
 
 {{< /tablestep >}}
-{{< tablestep number=4 >}}
+{{< tablestep >}}
 **Configure alert frequency**
 
 To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:

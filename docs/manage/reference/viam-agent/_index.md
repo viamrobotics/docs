@@ -31,18 +31,18 @@ To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet
 ## Installation
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 Add a new machine.
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 Navigate to the machine's **CONFIGURE** tab.
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 Click **View setup instructions** on the alert to **Set up your machine part**:
 
 {{<imgproc src="/installation/setup.png" resize="400x" declaredimensions=true alt="Machine setup alert in a newly created machine" class="shadow imgzoom">}}
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 Follow the instructions to install `viam server` with `viam-agent`.
 Your machine must have `curl` available in order to install `viam-agent`.
 
@@ -294,7 +294,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
 
-For more detailed instructions on what these settings do, see [Provisioning](/manage/fleet/provision/setup/#configure-defaults).
+For more detailed instructions on what these settings do, see [Provisioning](/manage/fleet/provision/setup/).
 
 ## `additional_networks`
 

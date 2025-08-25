@@ -34,7 +34,7 @@ Then authenticate your CLI session with Viam using one of the following options:
 You can build a custom web interface to access your machines using your preferred framework like React, Vue, Angular, or others.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Access machines from your application**
 
 When logging into a Viam application, Viam stores an access token in the user's browser.
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure routing**
 
 {{< tabs >}}
@@ -210,7 +210,7 @@ viam module local-app-testing --app-url http://localhost:3000
 To deploy your web interface with Viam, you must create a FILE>meta.json</FILE> file and package it with yoru web application as a module.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 
 **Create a <FILE>meta.json</FILE>** file for your module using this template.
 
@@ -298,12 +298,12 @@ The `applications` field is an array of application objects with the following p
 | `name`       | string | The name of your application, which will be a part of the application's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/get-started/other-hardware/naming-modules/#valid-application-identifiers). |
 | `type` | string | The type of application: `"single_machine"` or `"multi_machine"`. Whether the application can access and operate one machine or multiple machines. |
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
-| `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be usable with a Viam application. |
-| `logoPath` | string | The URL or the relative path to the logo to display on the authentication screen for the application. |
-| `customizations` | object | Override the branding heading and subheading to display on the authentication screen: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading` Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
+| `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be selectable from the machine picker screen. Only for single machine applications. |
+| `logoPath` | string | The URL or the relative path to the logo to display on the machine picker screen for a single machine application. |
+| `customizations` | object | Override the branding heading and subheading to display on the authentication screen for single machine applications: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading` Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Register your module** with Viam:
 
 {{< tabs >}}
@@ -324,7 +324,7 @@ viam module create --name="air-quality" --public-namespace="naomi"
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 
 To deploy your application with Viam you must package your static files and your <FILE>meta.json</FILE> file as a module and upload them to the Viam Registry:
 

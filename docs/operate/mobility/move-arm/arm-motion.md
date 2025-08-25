@@ -134,7 +134,7 @@ You'll now add to the code to describe the geometry of the arm's environment and
 You must define the geometries of any objects around your arm that you want to avoid collisions with.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 
 In your code, define the geometry of each object, for example a table your arm is mounted to, or a box in the workspace.
 The available geometry types are:
@@ -175,7 +175,7 @@ See [spatialmath](https://pkg.go.dev/go.viam.com/rdk/spatialmath) for more infor
 {{% /tab %}}
 {{< /tabs >}}
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 
 Put the object into a reference frame, creating a `GeometriesInFrame` object.
 This example uses the world reference frame, but you can put your object into a different reference frame depending on your application:
@@ -200,7 +200,7 @@ obstacles := []*referenceframe.GeometriesInFrame{geometryInFrame}
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 
 If you have passive objects that are mounted on your arm but are not configured as {{< glossary_tooltip term_id="component" text="components" >}} of the machine, represent them as _transforms_ to prevent collisions.
 For example, a marker mounted to the end of the arm can be represented as a transform:
@@ -252,7 +252,7 @@ transforms := []*referenceframe.LinkInFrame{transform}
 See [Use a transform to represent a drinking cup](/tutorials/services/constrain-motion/#use-a-transform-to-represent-a-drinking-cup) for another example.
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 
 Construct a `WorldState` object, which includes the static obstacles and moving transforms:
 

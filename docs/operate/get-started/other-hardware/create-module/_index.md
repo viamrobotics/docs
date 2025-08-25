@@ -157,10 +157,10 @@ Edit the generated files to add your logic:
 {{% tab name="Python" %}}
 
 {{< table >}}
-{{< tablestep number=1 >}}
+{{< tablestep >}}
 Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
 {{% /tablestep %}}
-{{< tablestep number=2 >}}
+{{< tablestep >}}
 **Edit the `validate_config` function** to do the following:
 
 - Check that the user has configured required attributes and return errors if they are missing.
@@ -169,7 +169,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 
 {{% /tablestep %}}
-{{< tablestep number=3 >}}
+{{< tablestep >}}
 
 **Edit the `reconfigure` function**, which gets called when the user changes the configuration.
 This function should do the following:
@@ -178,7 +178,7 @@ This function should do the following:
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.
 - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
   {{% /tablestep %}}
-  {{< tablestep number=4 >}}
+  {{< tablestep >}}
 
 **Edit the methods you want to implement**:
 
@@ -310,7 +310,7 @@ if __name__ == "__main__":
 You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
 
 {{% /tablestep %}}
-{{< tablestep number=5 >}}
+{{< tablestep >}}
 
 **Add logging** messages as desired.
 The following log severity levels are available for resource logs:
@@ -355,7 +355,7 @@ LOGGER.critical("critical info")
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{< tablestep number=6 >}}
+{{< tablestep >}}
 
 **Edit the generated <file>requirements.txt</file> file** to include any packages that must be installed for the module to run.
 Depending on your use case, you may not need to add anything here beyond <code>viam-sdk</code> which is auto-populated.
@@ -398,13 +398,13 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 {{% /hiddencontent %}}
 
 {{< table >}}
-{{< tablestep number=1 >}}
+{{< tablestep >}}
 Open <file>module.go</file> and add necessary imports.
 {{% /tablestep %}}
-{{< tablestep number=2 >}}
+{{< tablestep >}}
 **Add any configurable attributes to the `Config` struct.**
 {{% /tablestep %}}
-{{< tablestep number=3 >}}
+{{< tablestep >}}
 **Edit the `Validate` function** to do the following:
 
 - Check that the user has configured required attributes and return errors if they are missing.
@@ -412,7 +412,7 @@ Open <file>module.go</file> and add necessary imports.
 
 For more information, see [Module dependencies](/operate/get-started/other-hardware/create-module/dependencies/).
 {{% /tablestep %}}
-{{< tablestep number=4 >}}
+{{< tablestep >}}
 
 **(Optional) Create and edit a `Reconfigure` function**:
 
@@ -428,7 +428,7 @@ In this case, your `Reconfigure` function should do the following:
 For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
 
 {{% /tablestep %}}
-{{< tablestep number=5 >}}
+{{< tablestep >}}
 
 **Edit the constructor** to do the following:
 
@@ -436,7 +436,7 @@ For an example that implements the `Reconfigure` method, see [<file>mybase.go</f
 - If you created a `Reconfigure` function, make your constructor call `Reconfigure`.
 
 {{% /tablestep %}}
-{{< tablestep number=6 >}}
+{{< tablestep >}}
 
 **Edit the methods you want to implement**:
 
@@ -582,7 +582,7 @@ func (s *helloWorldHelloCamera) Close(context.Context) error {
 
 You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
 {{% /tablestep %}}
-{{< tablestep number=7 >}}
+{{< tablestep >}}
 **Add logging** messages as desired.
 
 You can add log messages with various levels of severity:
@@ -625,7 +625,7 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 {{% /expand%}}
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Prepare to run your module**
 
 {{< tabs >}}
@@ -708,7 +708,7 @@ viam module build local
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure your local module on a machine**
 
 <a name="reload"></a>
@@ -798,7 +798,7 @@ Click **Create**.
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Configure the model provided by your module**
 
 Click the **+** button again, this time selecting **Local module** and then **Local component**.
@@ -816,7 +816,7 @@ Click **Create**.
 Configure any required attributes using proper JSON syntax.
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Test the component**
 
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
@@ -825,7 +825,7 @@ For example, if you created a sensor component, check whether readings are displ
 {{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="width:600px" class="shadow" >}}
 
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep %}}
 **Iterate**
 
 If your component works, you're almost ready to share your module by uploading it to the registry.
@@ -879,7 +879,7 @@ See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) f
 Once you are done testing locally, you can upload your module to the [registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Create a README (optional)**
 
 It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
@@ -929,7 +929,7 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Create a GitHub repo and link to it from your `meta.json`**
 
 Create a GitHub repository with all the source code and the README for your module.
@@ -938,7 +938,7 @@ This is required for cloud build to work.
 Add the link to that repo as the `url` in the <file>meta.json</file> file.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Edit the meta.json file**
 
 Make any necessary edits to the `meta.json` file.
@@ -952,7 +952,7 @@ Click below for information about the available fields.
 {{< /expand >}}
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Package and upload**
 
 To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
@@ -1116,12 +1116,12 @@ The Viam Registry page for your module displays the platforms your module suppor
 {{% /tab %}}
 {{< /tabs >}}
 {{% /tablestep %}}
-{{% tablestep number=5 %}}
+{{% tablestep %}}
 
 If you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
 
 {{% /tablestep %}}
-{{% tablestep number=6 %}}
+{{% tablestep %}}
 
 If your module supports hardware, add the hardware name in the **Components & services** section on the module registry page under the heading **Supported hardware**.
 

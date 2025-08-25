@@ -126,7 +126,7 @@ In this example we will continue to use [`sync-at-time:timesyncsensor`](https://
 You will need to follow the same steps with your module:
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Add the sensor to your machine**
 
 On your machine's **CONFIGURE** page, click the **+** button next to your machine part in the left menu.
@@ -138,7 +138,7 @@ Click **Add module**, then enter a name or use the suggested name for your senso
 
 <!-- markdownlint-disable-file MD034 -->
 
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure your time frame**
 
 Go to the new component panel and copy and paste the following attribute template into your sensor’s attributes field:

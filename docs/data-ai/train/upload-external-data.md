@@ -60,14 +60,14 @@ If you do not want the data deleted from your machine, copy the data to a new fo
 {{% /alert %}}
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Organize your data**
 
 Put the data you want to sync in a directory on your machine.
 All of the data in the folder will be synced, so be sure that you want to upload all of the contents of the folder.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Configure sync from the additional folder**
 
 In the **Additional paths**, enter the full path to the directory where the data you want to upload is stored, for example, `/Users/Artoo/my_cat_photos`.
@@ -79,14 +79,14 @@ Toggle **Syncing** to on (green) if it isn't already on.
 Click **Save** in the top right corner of the page.
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Confirm that your data uploaded**
 
 Navigate to your [**DATA** page](https://app.viam.com/data/view) and confirm that your data appears there.
 If you don't see your files yet, wait a few moments and refresh the page.
 
 {{% /tablestep %}}
-{{% tablestep number=4 %}}
+{{% tablestep %}}
 **Remove the folder path**
 
 Once the data has uploaded, navigate back to your data service config.
@@ -123,13 +123,13 @@ pip install viam-sdk
 ### Instructions
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Get API key**
 
 Go to your organization's setting page and create an API key for your individual {{< glossary_tooltip term_id="part" text="machine part" >}}, {{< glossary_tooltip term_id="part" text="machine" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="organization" text="organization" >}}.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Add a `file_upload_from_path` API call**
 
 Create a Python script and use the `file_upload_from_path` method to upload your data, depending on whether you are uploading one or multiple files:
@@ -234,7 +234,7 @@ if __name__ == "__main__":
 {{< /tabs >}}
 
 {{% /tablestep %}}
-{{% tablestep number=3 %}}
+{{% tablestep %}}
 **Run your code**
 
 Save and run your code once.
@@ -268,7 +268,7 @@ Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-r
 ### Instructions
 
 {{< table >}}
-{{% tablestep number=1 %}}
+{{% tablestep start=1 %}}
 **Navigate to your machine**
 
 In the Viam mobile app, select an organization by clicking on the menu icon in the top left corner and tapping an organization.
@@ -276,7 +276,7 @@ In the Viam mobile app, select an organization by clicking on the menu icon in t
 Tap the **Locations** tab and select a location, then select the machine you want your data to be associated with.
 
 {{% /tablestep %}}
-{{% tablestep number=2 %}}
+{{% tablestep %}}
 **Upload images**
 
 Tap the menu button marked "**...**" in the upper right corner.
