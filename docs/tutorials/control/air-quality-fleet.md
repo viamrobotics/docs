@@ -24,7 +24,7 @@ cost: 30
 # 4. The reader can deploy custom front ends that end users can use to operate their machines.
 ---
 
-This tutorial walks you through how to set up a fleet or air quality monitoring machines as though you were creating a company selling air quality machines.
+This tutorial walks you through how to set up a fleet of air quality monitoring machines as though you were creating a company selling air quality machines.
 You will learn how to set up a fleet of devices for yourself or third parties to collect air quality data.
 You will then create a web application that shows the most recent reading for any device a user has access to.
 
@@ -32,11 +32,11 @@ You will then create a web application that shows the most recent reading for an
 
 By completing this project, you will learn to:
 
-- Configure a fleet of machines
+- Configure a fleet of machines using {{< glossary_tooltip term_id="fragment" text="fragments" >}}
 - Organize your fleet using {{< glossary_tooltip term_id="location" text="locations" >}}
 - Collect and sync data from multiple machines
 - Use the Viam TypeScript SDK to query sensor data
-- Create a custom dashboard that you and third parties can use to view data for their respective machines
+- Create a custom dashboard that you and third parties can use to view data for machines
 
 {{< /alert >}}
 
@@ -54,7 +54,7 @@ For each machine, you need the following hardware:
 
 ## Set up one device for development
 
-In this section we'll set up one air sensing machine as our development device.
+In this section we'll set up one air quality machine as our development device.
 Later in this tutorial, you will learn to provision multiple devices using {{< glossary_tooltip term_id="fragment" text="fragments" >}}.
 
 ### Create your machine
@@ -88,7 +88,7 @@ Use the **...** menu next to edit the location name to `Development`, then click
 Connect a PM sensor to a USB port on the machine's SBC.
 Then connect your device to power.
 
-If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide]/operate/get-started/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) to install a compatible operating system.
+If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/operate/get-started/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) to install a compatible operating system.
 You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 Enable serial communication so that the SBC can communicate with the air quality sensor.
@@ -203,19 +203,19 @@ You can check that your sensor data is being synced by clicking on the **...** m
 {{< /table >}}
 
 Congratulations.
-If you made it this far, you now have a functional air sensing machine.
+If you made it this far, you now have a functional air quality machine.
 Let's create a dashboard for its measurements next.
 
 ## Create a dashboard
 
 The [Viam TypeScript SDK](https://ts.viam.dev/) allows you to build custom web interfaces to interact with your machines.
 For this project, you'll use it to build a page that displays air quality sensor data for a given location.
-You'll host the website with Viam as a Viam Application.
+You'll host the website with Viam as a _Viam application_.
 
 The full code is available for reference on [GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
 
 {{< alert title="Tip" color="tip" >}}
-If you'd like to graph your data using a Grafana dashboard, try our [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/) next.
+If you'd like to graph your data using a Grafana dashboard, try the [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/) next.
 {{< /alert >}}
 
 ### Set up your TypeScript project
@@ -286,8 +286,6 @@ npm install
 Viam applications provide access to a machine by placing its API key into your local storage.
 You can access the data from your browser's local storage with the following code.
 
-Currently, Viam applications only provide access to single machines but in the future you will be able to access entire locations or organizations.
-
 Create another file inside the <file>aqi-dashboard</file> folder and name it <file>main.ts</file>.
 Paste the following code into <file>main.ts</file>:
 
@@ -315,7 +313,6 @@ async function main() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  // Extract the machine identifier from the URL
   const userTokenRawCookie = Cookies.get("userToken")!;
   const startIndex = userTokenRawCookie.indexOf("{");
   const endIndex = userTokenRawCookie.indexOf("}");
@@ -414,7 +411,7 @@ for (let locationSummary of locationSummaries) {
         tags: "air-quality",
         robot_id: machineID,
         component_name: "PM_sensor",
-        time_requested: { $gte: new Date(Date.now() - 1 * 60 * 60 * 1000) }, // Last 24 hours
+        time_requested: { $gte: new Date(Date.now() - 1 * 60 * 60 * 1000) }, // Last 1 hours
       },
     };
     const group_stage = {
@@ -591,7 +588,7 @@ Create a new file inside your <file>static</file> folder and name it <file>style
 
 Paste the following into <file>style.css</file>:
 
-```{class="line-numbers linkable-line-numbers"}
+```css {class="line-numbers linkable-line-numbers"}
 body {
   font-family: Helvetica;
   margin: 0;
@@ -617,7 +614,7 @@ h2 {
 
 .inner-div {
   font-family: monospace;
-  border: .2px solid;
+  border: 0.2px solid;
   background-color: lightgray;
   padding: 20px;
   margin-top: 10px;
@@ -739,8 +736,12 @@ h2 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 ```
 
@@ -803,16 +804,8 @@ This will also allow others to use the dashboard.
   "applications": [
     {
       "name": "air-quality",
-      "type": "single_machine",
-      "entrypoint": "static/index.html",
-      "fragmentIds": [],
-      "logoPath": "static/logo.png",
-      "customizations": {
-        "machinePicker": {
-          "heading": "Air monitoring dashboard",
-          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
-        }
-      }
+      "type": "multi_machine",
+      "entrypoint": "static/index.html"
     }
   ]
 }
@@ -821,13 +814,6 @@ This will also allow others to use the dashboard.
 In [Viam](https://app.viam.com), navigate to your organization settings through the menu in upper right corner of the page.
 Find the **Public namespace** and copy that string.
 Replace `<your-namespace>` with your public namespace.
-
-{{< alert title="Tip" color="tip" >}}
-For the deployed Viam application, you can require that a machine must have one or more fragments in its configuration to be able to use it.
-This avoids users selecting a machine that does not work with your application.
-Later in this tutorial, you'll [create a fragment](/tutorials/control/air-quality-fleet/#get-machines-ready-for-third-parties) for your machines.
-Once you do that you can update the value for `fragmentIds`.
-{{< /alert >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -891,7 +877,7 @@ Organization and locations allow you to manage permissions:
 - When you provision the machines for RobotsRUs, you create a location called `RobotsRUs` and two sub-locations for `New York Office` and `Oregon Office`.
   Then you create the machines in the sub-locations and grant RobotsRUs operator access to the `RobotsRUs` machines location.
 
-You, as the organization owner, will be able to manage any necessary configuration changes for all air sensing machines in all locations created within the Pollution Monitoring Made Simple organization.
+You, as the organization owner, will be able to manage any necessary configuration changes for all air quality machines in all locations created within the Pollution Monitoring Made Simple organization.
 
 {{<imgproc class="imgzoom" src="/tutorials/air-quality-fleet/example-org-structure.png" resize="x900" declaredimensions=true alt="Diagram of the Pollution Monitoring Made Simple organization. In it are two locations: Antonia's HOme and Robots R Us. Robots R Us contains two sub-locations, each containing some machines. The Antonia's Home location contains two machines (and no sub-locations)." style="width:800px">}}
 
@@ -904,7 +890,7 @@ If you want to follow along, create the following locations:
 - `Antonia's Home`
 - `RobotsRUs`
 
-For `RobotsRUs` crate two sublocations:
+For `RobotsRUs` create two sublocations:
 
 1. Add a new location called `Oregon Office` using the same **Add location** button.
 1. Then, find the **New parent location** dropdown on the Oregon Office page.
@@ -916,15 +902,16 @@ Repeat to add the New York office: Add a new location called `New York Office`, 
 
 ## Get machines ready for third parties
 
-Let's continue with our fictitious company and assume you want to ship air sensing machines out to customers from your factory.
+Let's continue with our fictitious company and assume you want to ship air quality machines out to customers from your factory.
 In other words, you want to provision devices.
 
-Before an air sensing machine leaves your factory, this is an overview of the steps you must complete.
-**These steps are to prov will be explained in more detail.**
+Before an air quality machine leaves your factory, this is an overview of the steps you must complete.
+**These steps will be covered in more detail after this overview.**
 
 1. You create a machine configuration template: a _{{< glossary_tooltip term_id="fragment" text="fragment" >}}_.
 1. You flash the SD card for the single-board computer with an operating system.
 1. You install `viam-agent` with the `preinstall` script on the SD card providing the fragment.
+1. You put the SD card into the machine.
 
 Once a customer receives your machine, they will:
 
@@ -933,7 +920,7 @@ Once a customer receives your machine, they will:
 3. The customer uses a mobile device to connect to the machine's WiFi hotspot and provides WiFi credentials to connect to an internet-connected WiFi network.
 4. The machine now connects to the internet and sets itself up based on the specified fragment.
 
-### Create the fragment for air sensing machines
+### Create the fragment for air quality machines
 
 In this section you will create the {{< glossary_tooltip term_id="fragment" text="fragment" >}}: the configuration template that all other machines will use.
 
@@ -949,7 +936,7 @@ In this section you will create the {{< glossary_tooltip term_id="fragment" text
    If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different.
 
 1. Specify the version for the `sds011` module.
-   At the point of writing the version is `0.2.1`.
+   At the time of writing the version is `0.2.1`.
    Specifying a specific version or a specific minor or major version of a module will ensure that even if the module you use changes, your machines remain functional.
    You can update your fragment at any point, and any machines using it will update to use the new configuration.
 
@@ -977,7 +964,7 @@ Create a file called <FILE>viam-defaults.json</FILE> with the following configur
 ```
 
 Replace `<FRAGMENT-ID>` with the fragment ID from your fragment.
-You will pass the file to the preinstall script later.
+You will pass the file to the preinstall script later, so you can store it anywhere.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -988,6 +975,7 @@ Select the part status dropdown to the right of your machine's name on the top o
 
 Click the copy icon next to **Machine cloud credentials**.
 Paste the machine cloud credentials into a file on your hard drive called <FILE>viam.json</FILE>.
+You will pass the file to the preinstall script later, so you can store it anywhere.
 
 {{< alert title="Tip: Fleet management API" color="tip" >}}
 You can create locations and machines programmatically, with the [Fleet management API](/dev/reference/apis/fleet/).
@@ -1052,7 +1040,7 @@ You can now use your fragment ID to improve load times of your dashboard:
 ## Next steps
 
 You can now set up one or more air quality sensors for yourself or others and access them with your dashboard.
-If you are selling your air quality sensing machines, users can use your dashboard to view _their_ data.
+If you are selling air quality sensing machines, users can use your dashboard to view _their_ data.
 
 If you're wondering what to do next, why not set up a text or email alert when your air quality passes a certain threshold?
 For instructions on setting up an email alert, see the [Monitor Helmet Usage tutorial](/tutorials/projects/helmet/) as an example.

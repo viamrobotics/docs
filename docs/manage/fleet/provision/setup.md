@@ -48,7 +48,7 @@ The next steps depend on the provisioning method:
 1. `viam-agent` starts Bluetooth Low Energy (BLE) and accepts connections.
 1. The customer installs an app you provide on a mobile device.
 1. The customer uses the app to connect to the machine over Bluetooth.
-1. The customer provides WiFi credentials to connect to a WiFi network.
+1. Using the app, the customer provides the machine WiFi credentials to the machine to connect to a WiFi network.
 1. The machine connects to the internet and sets itself up based on the specified fragment.
 
 {{% /tab %}}
@@ -86,7 +86,7 @@ If you do not yet have a {{< glossary_tooltip term_id="fragment" text="fragment"
 {{% tablestep %}}
 **Create the defaults file**
 
-If you are using a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}}, skip this step.
+If you would like to use a {{< glossary_tooltip term_id="captive-web-portal" text="captive web portal" >}}, skip this and the next step.
 
 Create a defaults file called <FILE>viam-defaults.json</FILE> to configure the provisioning experience for the users setting up their machines.
 You will later pass this file to a script, so you can save it anywhere.
@@ -172,14 +172,75 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 {{% /expand%}}
 {{% /tablestep %}}
 {{% tablestep %}}
+**Configure Networks**
+
+If a machine connects to a network during setup and you know in advance which WiFi a machine will connect to, this step allows you to add credentials for it.
+
+If you do not know the network in advance, skip this step.
+In this case the end user will have to provide network details later in the process.
+
+If you know in advance that the machine should be able to connect to multiple networks, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
+If that is not possible, you can add networks with the `additional_networks` field.
+`viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
+
+The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "network_configuration": {
+    "manufacturer": "Skywalker",
+    "model": "C-3PO",
+    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
+    "hotspot_interface": "wlan0",
+    "hotspot_prefix": "skywalker-setup",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "skywalker123",
+    "disable_bt_provisioning": false,
+    "disable_wifi_provisioning": false,
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": "3m30s",
+    "user_idle_minutes": "2m30s",
+    "retry_connection_timeout_minutes": "15m",
+    "turn_on_hotspot_if_wifi_has_no_internet": true
+  },
+  "additional_networks": {
+    "testNet1": {
+      "priority": 30,
+      "psk": "myFirstPassword",
+      "ssid": "fallbackNetOne",
+      "type": "wifi"
+    },
+    "testNet2": {
+      "priority": 10,
+      "psk": "mySecondPassword",
+      "ssid": "fallbackNetTwo",
+      "type": "wifi"
+    }
+  }
+}
+```
+
+<!-- prettier-ignore -->
+| Name       | Type   | Description |
+| ---------- | ------ | ----------- |
+| `type`     | string | The type of the network. Options: `"wifi"`|
+| `ssid`     | string | The network's SSID. |
+| `psk`      | string | The network password/pre-shared key. |
+| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
+
+{{% /tablestep %}}
+{{% tablestep %}}
 **Create a machine in advance**
 
 If you are using a mobile app for provisioning, skip this step.
 
-If you provision devices using a captive web portal (instead of a mobile app), you need to create a machine in advance.
-You can either provide its machine cloud credentials in the portal or write them to <FILE>/etc/viam.json</FILE> on the machine.
+If you provision devices using a captive web portal, you can create a machine in advance.
+You can either provide its machine cloud credentials to the preinstall script you will run in the next steps, or prvide them using the captive web portal.
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
+Paste the machine cloud credentials into a file on your hard drive called <FILE>viam.json</FILE>.
+You will pass the file to the preinstall script later, so you can store it anywhere.
+The script will save the file is at <file>/etc/viam.json</file> on the machine.
 
 {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
 
@@ -267,64 +328,6 @@ if __name__ == '__main__':
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Configure Networks**
-
-If a machine connects to a network during setup and you know in advance which WiFi a machine will connect to, this step allows you to configure it.
-
-If you do not know this, skip this step.
-In this case the end user will have to provide network details later in the process.
-
-If you know in advance which other networks a machine should be able to connect to, we recommend that you add WiFi settings in the operating system (for example, directly in NetworkManager).
-If that is not possible, you can add networks with the `additional_networks` field.
-`viam-agent` will then try to connect to each specified network in order of `priority` from highest to lowest.
-
-The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "network_configuration": {
-    "manufacturer": "Skywalker",
-    "model": "C-3PO",
-    "fragment_id": "2567c87d-7aef-41bc-b82c-d363f9874663",
-    "hotspot_interface": "wlan0",
-    "hotspot_prefix": "skywalker-setup",
-    "disable_captive_portal_redirect": false,
-    "hotspot_password": "skywalker123",
-    "disable_bt_provisioning": false,
-    "disable_wifi_provisioning": false,
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m",
-    "turn_on_hotspot_if_wifi_has_no_internet": true
-  },
-  "additional_networks": {
-    "testNet1": {
-      "priority": 30,
-      "psk": "myFirstPassword",
-      "ssid": "fallbackNetOne",
-      "type": "wifi"
-    },
-    "testNet2": {
-      "priority": 10,
-      "psk": "mySecondPassword",
-      "ssid": "fallbackNetTwo",
-      "type": "wifi"
-    }
-  }
-}
-```
-
-<!-- prettier-ignore -->
-| Name       | Type   | Description |
-| ---------- | ------ | ----------- |
-| `type`     | string | The type of the network. Options: `"wifi"`|
-| `ssid`     | string | The network's SSID. |
-| `psk`      | string | The network password/pre-shared key. |
-| `priority` | int    | Priority to choose the network with. Values between -999 and 999. Default: `0`. |
-
-{{% /tablestep %}}
-{{% tablestep %}}
 **Flash an operating system to the SD card of the single-board computer**
 
 {{< tabs >}}
@@ -382,7 +385,7 @@ sudo ./preinstall.sh
 ```
 
 Follow the instructions.
-If you created a <FILE>viam-defaults.json</FILE>, specify its location when prompted.
+If you created a <FILE>viam-defaults.json</FILE> file or a <FILE>viam.json</FILE> file, specify their locations when prompted.
 
 {{% expand "Optional environment variables for the preinstall script" %}}
 
@@ -428,7 +431,9 @@ Found Raspberry Pi bootfs mounted at /Volumes/bootfs
 A Raspberry Pi boot partition has been found mounted at /Volumes/bootfs
 This script will modify firstrun.sh on that partition to install Viam agent.
 Continue pre-install? (y/n): y
+Path to custom viam-agent binary (leave empty to download default):
 Path to custom viam-defaults.json (leave empty to skip):
+Path to custom viam.json (leave empty to skip)
 Creating tarball for install.
 a opt
 a opt/viam
@@ -517,7 +522,7 @@ You can support any number of these options.
 | Provisioning method | Description | Package |
 | ------------------- | ----------- | ------- |
 | **Bluetooth with WiFi** | Ask the user to connect to the machine over Bluetooth. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. Recommended, if available. | [Example](https://github.com/viamrobotics/viam_flutter_provisioning/) |
-| **WiFi** | Ask the user to connect to the machine's temporary WiFi network. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. Slower than Bluetooth with WiFi but faster than Bluetooth tethering. | [Example](https://github.com/viamrobotics/viam_flutter_hotspot_provisioning_widget) |
+| **WiFi** | Ask the user to connect to the machine's temporary WiFi hotspot. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. Slower than Bluetooth with WiFi but faster than Bluetooth tethering. | [Example](https://github.com/viamrobotics/viam_flutter_hotspot_provisioning_widget) |
  | **Bluetooth tethering** | Ask the user to connect to the machine over Bluetooth. The user shares their mobile device's internet with the machine over Bluetooth. Slowest provisioning method. | [Example](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget/) |
 
 ### The Viam mobile app
@@ -538,12 +543,12 @@ If you want to change the WiFi network or the network credentials on a device th
 If you can manually `SSH` into a machine you can follow these steps:
 
 1. Add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json).
-   The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before you can use the `viam part shell` command.
+   The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before you can use the `viam machines part shell` command.
 
 1. Open a shell on your machine:
 
    ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-   viam machine part shell --part <PART-ID>
+   viam machines part shell --part <PART-ID>
    ```
 
 1. On the machine, create an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>:
