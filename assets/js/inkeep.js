@@ -20,50 +20,53 @@ function handleOpenChange(newOpen) {
 let searchBarWidget;
 
 const config = {
-      baseSettings: {
-        apiKey: INKEEP_API_KEY,
-        integrationId: INKEEP_INTEGRATION_ID,
-        organizationId: INKEEP_ORGANIZATION_ID,
-        primaryBrandColor: "#000000",
-        organizationDisplayName: "Viam AI Bot",
-        //... optional base settings
+  baseSettings: {
+    apiKey: INKEEP_API_KEY,
+    integrationId: INKEEP_INTEGRATION_ID,
+    organizationId: INKEEP_ORGANIZATION_ID,
+    primaryBrandColor: "#000000",
+    organizationDisplayName: "Viam AI Bot",
+    //... optional base settings
+  },
+  modalSettings: {
+    // optional InkeepModalSettings
+    onOpenChange: handleOpenChange,
+  },
+  aiChatSettings: {
+    aiAssistantName: "Viam",
+    chatSubjectName: "Viam",
+    aiAssistantAvatar:
+      "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
+    userAvatarSrcUrl:
+      "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+    introMessage:
+      "Hi!\n\nI'm an AI assistant trained on documentation, help articles, and other content. \n\nHow can I help you today?\n\n_Please do not share sensitive information such as secrets or API keys with me._",
+    getHelpOptions: [
+      {
+        icon: { builtIn: "IoMail" },
+        name: "Email",
+        action: {
+          type: "open_link",
+          url: "mailto:support@viam.com",
         },
-      modalSettings: {
-      // optional InkeepModalSettings
-        onOpenChange: handleOpenChange,
       },
-      aiChatSettings: {
-          aiAssistantName: "Viam",
-          chatSubjectName: "Viam",
-          aiAssistantAvatar: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
-          userAvatarSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
-          introMessage: "Hi!\n\nI'm an AI assistant trained on documentation, help articles, and other content. \n\nHow can I help you today?\n\n_Please do not share sensitive information such as secrets or API keys with me._",
-          getHelpOptions: [
-            {
-              icon: { builtIn: "IoMail" },
-              name: "Email",
-              action: {
-                type: "open_link",
-                url: "mailto:support@viam.com",
-              },
-            },
-            {
-              icon: { builtIn: "FaDiscord" },
-              name: "Discord",
-              action: {
-                type: "open_link",
-                url: "https://discord.gg/viam",
-              },
-            },
-          ],
-          exampleQuestions: [
-              "How do I install Viam on a single-board computer?",
-              "How do I deploy a person detection model?",
-              "How to ingest data from machines",
-              "How can I query sensor data with third-party tools?",
-          ],
+      {
+        icon: { builtIn: "FaDiscord" },
+        name: "Discord",
+        action: {
+          type: "open_link",
+          url: "https://discord.gg/viam",
+        },
       },
-      canToggleView: false,
+    ],
+    exampleQuestions: [
+      "How do I install Viam on a single-board computer?",
+      "How do I deploy a person detection model?",
+      "How to ingest data from machines",
+      "How can I query sensor data with third-party tools?",
+    ],
+  },
+  canToggleView: false,
 };
 
 // Start search elments
@@ -72,44 +75,49 @@ const config = {
 const inkeepWidgetAI = Inkeep.ModalChat(config);
 
 // Add event listener to open the Inkeep modal when the button is clicked
-inkeepButtonBottom.addEventListener("click",  () => {
-  inkeepWidgetAI.update({ modalSettings: { isOpen: true } });
-});
+if (inkeepButtonBottom) {
+  inkeepButtonBottom.addEventListener("click", () => {
+    inkeepWidgetAI.update({ modalSettings: { isOpen: true } });
+  });
+}
 
 // Initialize the Ask AI dropdown functionality
 function initializeAskAIDropdown(searchBarWidget) {
-  const askAiButton = document.getElementById('askAiButtonToc');
-  const aiDropdownMenu = document.getElementById('aiDropdownMenuToc');
+  const askAiButton = document.getElementById("askAiButtonToc");
+  const aiDropdownMenu = document.getElementById("aiDropdownMenuToc");
 
   if (askAiButton && aiDropdownMenu) {
     // Toggle dropdown when button is clicked
-    askAiButton.addEventListener('click', function(e) {
+    askAiButton.addEventListener("click", function (e) {
       e.stopPropagation();
-      aiDropdownMenu.classList.toggle('show');
+      aiDropdownMenu.classList.toggle("show");
     });
 
     // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!askAiButton.contains(e.target) && !aiDropdownMenu.contains(e.target)) {
-        aiDropdownMenu.classList.remove('show');
+    document.addEventListener("click", function (e) {
+      if (
+        !askAiButton.contains(e.target) &&
+        !aiDropdownMenu.contains(e.target)
+      ) {
+        aiDropdownMenu.classList.remove("show");
       }
     });
 
     // Handle AI service clicks
-    aiDropdownMenu.addEventListener('click', function(e) {
-      const aiItem = e.target.closest('.ai-dropdown-item-toc');
+    aiDropdownMenu.addEventListener("click", function (e) {
+      const aiItem = e.target.closest(".ai-dropdown-item-toc");
       if (aiItem) {
         e.preventDefault();
 
-        const aiService = aiItem.getAttribute('data-ai-service');
-        const action = aiItem.getAttribute('data-action');
-        const pageUrl = aiItem.getAttribute('data-page-url');
-        const pageTitle = aiItem.getAttribute('data-page-title');
+        const aiService = aiItem.getAttribute("data-ai-service");
+        const action = aiItem.getAttribute("data-action");
+        const pageUrl = aiItem.getAttribute("data-page-url");
+        const pageTitle = aiItem.getAttribute("data-page-title");
 
-        if (action === 'use-mcp') {
+        if (action === "use-mcp") {
           // Open the Inkeep MCP URL directly
-          window.open('https://share.inkeep.com/viam/mcp', '_blank');
-        } else if (aiService === 'inkeep') {
+          window.open("https://share.inkeep.com/viam/mcp", "_blank");
+        } else if (aiService === "inkeep") {
           // Open the Inkeep widget modal and switch to chat view
           searchBarWidget.setView("chat");
           searchBarWidget.update({
@@ -122,24 +130,24 @@ function initializeAskAIDropdown(searchBarWidget) {
                   searchBarWidget.update({
                     modalSettings: {
                       isOpen: false,
-                    }
+                    },
                   });
                 } else {
                   searchBarWidget.update({
                     modalSettings: {
                       isOpen: true,
-                    }
+                    },
                   });
                 }
-              }
-            }
+              },
+            },
           });
         } else if (aiService && pageUrl && pageTitle) {
           openAIService(aiService, pageUrl, pageTitle);
         }
 
         // Close dropdown
-        aiDropdownMenu.classList.remove('show');
+        aiDropdownMenu.classList.remove("show");
       }
     });
   }
@@ -148,22 +156,22 @@ function initializeAskAIDropdown(searchBarWidget) {
 function openAIService(service, pageUrl, pageTitle) {
   const prompt = `Hi! Can you please read [this page](${pageUrl}) and prepare to answer questions about it?`;
 
-  let serviceUrl = '';
+  let serviceUrl = "";
   switch (service) {
-    case 'claude':
+    case "claude":
       serviceUrl = `https://claude.ai/new?q=${prompt}`;
       break;
-    case 'chatgpt':
+    case "chatgpt":
       serviceUrl = `https://chatgpt.com/?hints=search&prompt=${prompt}`;
       break;
-    case 'copilot':
+    case "copilot":
       serviceUrl = `https://copilot.microsoft.com/?q=${prompt}`;
       break;
   }
 
   if (serviceUrl) {
     // Open the AI service in a new tab
-    const newTab = window.open(serviceUrl, '_blank');
+    const newTab = window.open(serviceUrl, "_blank");
 
     // Wait a moment for the tab to open, then try to paste the prompt
     setTimeout(() => {
@@ -171,7 +179,7 @@ function openAIService(service, pageUrl, pageTitle) {
         newTab.focus();
       } catch (e) {
         // Cross-origin restrictions might prevent this
-        console.log('Could not focus new tab due to cross-origin restrictions');
+        console.log("Could not focus new tab due to cross-origin restrictions");
       }
     }, 100);
   }
@@ -192,11 +200,10 @@ sidebar && sidebar.prepend(inkeepSidebarDiv);
 
 // Function for initializating the widget.
 const addInkeepWidget = ({
-targetElement,
-stylesheetUrls,
-isShortcutKeyEnabled,
+  targetElement,
+  stylesheetUrls,
+  isShortcutKeyEnabled,
 }) => {
-
   const config = {
     baseSettings: {
       apiKey: INKEEP_API_KEY,
@@ -210,29 +217,35 @@ isShortcutKeyEnabled,
         // ...optional settings
       },
       transformSource: (source, type, opts) => {
-        let tabs = [ "Docs" ];
+        let tabs = ["Docs"];
         let openInNewTab = true;
         if (source.type === "github_issue") {
-          tabs = [ "GitHub" ];
+          tabs = ["GitHub"];
         } else {
           if (source.url.includes("https://www.viam.com")) {
             if (source.url.includes("https://www.viam.com/post")) {
-              tabs = [ "Blog" ];
+              tabs = ["Blog"];
             } else {
-              tabs = [ "viam.com" ];
+              tabs = ["viam.com"];
             }
           } else if (source.url.includes("https://codelabs.viam.com")) {
-            tabs = [ "Codelab" ];
+            tabs = ["Codelab"];
           } else if (source.url.includes("https://app.viam.com/")) {
-            tabs = [ "Modules" ];
+            tabs = ["Modules"];
           } else if (source.url.includes("https://github.com/")) {
-            tabs = [ "GitHub" ];
-          } else if (source.url.includes("https://python.viam.dev/") | source.url.includes("https://pkg.go.dev/") | source.url.includes("https://flutter.viam.dev/") | source.url.includes("https://cpp.viam.dev/") | source.url.includes("https://ts.viam.dev/") ) {
-            tabs = [ "SDK Docs" ];
+            tabs = ["GitHub"];
+          } else if (
+            source.url.includes("https://python.viam.dev/") |
+            source.url.includes("https://pkg.go.dev/") |
+            source.url.includes("https://flutter.viam.dev/") |
+            source.url.includes("https://cpp.viam.dev/") |
+            source.url.includes("https://ts.viam.dev/")
+          ) {
+            tabs = ["SDK Docs"];
           } else if (source.url.includes("https://docs.viam.com/tutorials/")) {
-            tabs = [ "Tutorials" ];
+            tabs = ["Tutorials"];
           } else {
-            tabs = [ "Docs" ];
+            tabs = ["Docs"];
             openInNewTab = false;
           }
         }
@@ -246,10 +259,10 @@ isShortcutKeyEnabled,
             breadcrumbs: [...(source.breadcrumbs || [])],
             tabs: tabs,
             //  [
-              // "API",
-              // [
-              //   "Docs", { breadcrumbs: ["Forums", "Reference"] }
-              // ]
+            // "API",
+            // [
+            //   "Docs", { breadcrumbs: ["Forums", "Reference"] }
+            // ]
             // ],
             shouldOpenInNewTab: openInNewTab,
             appendToUrl: { source: type },
@@ -262,9 +275,12 @@ isShortcutKeyEnabled,
     aiChatSettings: {
       aiAssistantName: "Viam",
       chatSubjectName: "Viam",
-      aiAssistantAvatar: "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
-      userAvatarSrcUrl: "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
-      introMessage: "Hi!\n\nI'm an AI assistant trained on documentation, help articles, and other content. \n\nHow can I help you today?\n\n_Please do not share sensitive information such as secrets or API keys with me._",
+      aiAssistantAvatar:
+        "https://cdn.prod.website-files.com/62fba5686b6d47fe2a1ed2a6/62fba8f4a8ca05f38a2b497f_viam-logo-webclip.png",
+      userAvatarSrcUrl:
+        "https://storage.googleapis.com/organization-image-assets/viam-botAvatarDarkSrcUrl-1721328398594.svg",
+      introMessage:
+        "Hi!\n\nI'm an AI assistant trained on documentation, help articles, and other content. \n\nHow can I help you today?\n\n_Please do not share sensitive information such as secrets or API keys with me._",
       getHelpOptions: [
         {
           icon: { builtIn: "IoMail" },
@@ -284,10 +300,10 @@ isShortcutKeyEnabled,
         },
       ],
       exampleQuestions: [
-          "How do I install Viam on a single-board computer?",
-          "How do I deploy a person detection model?",
-          "How to ingest data from machines",
-          "How can I query sensor data with third-party tools?",
+        "How do I install Viam on a single-board computer?",
+        "How do I deploy a person detection model?",
+        "How to ingest data from machines",
+        "How can I query sensor data with third-party tools?",
       ],
     },
     canToggleView: true,
@@ -309,23 +325,22 @@ isShortcutKeyEnabled,
 
   // Initialize the widget
   searchBarWidget = Inkeep.SearchBar(targetElement, config);
-
 };
 
 sidebar &&
-addInkeepWidget({
-  targetElement: "#sideSearchBar",
-  stylesheetUrls: ['https://docs.viam.com/css/inkeep.css'],
-  isShortcutKeyEnabled: false,
-});
+  addInkeepWidget({
+    targetElement: "#sideSearchBar",
+    stylesheetUrls: ["https://docs.viam.com/css/inkeep.css"],
+    isShortcutKeyEnabled: false,
+  });
 
 addInkeepWidget({
   targetElement: "#navSearchBar",
-  stylesheetUrls: ['https://docs.viam.com/css/inkeep.css'],
+  stylesheetUrls: ["https://docs.viam.com/css/inkeep.css"],
   isShortcutKeyEnabled: true,
 });
 
 // Initialize the Ask AI dropdown after the page is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   initializeAskAIDropdown(searchBarWidget);
 });
