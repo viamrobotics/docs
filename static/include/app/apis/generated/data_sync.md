@@ -68,6 +68,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   appropriate sensor.
 - `tags` (string) (optional): The list of tags to allow for tag\-based filtering when
   retrieving data.
+- `datasetIds` (string) (optional)
 
 **Returns:**
 

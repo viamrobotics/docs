@@ -3672,6 +3672,7 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 **Parameters:**
 
 - `fragment_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to get.
+- `version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional specification of the fragment version to get (revision or tag).
 
 **Returns:**
 

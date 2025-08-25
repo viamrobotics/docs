@@ -47,7 +47,7 @@ class FlutterParser:
 
         # Skip resources not supported in Flutter
         unsupported_resources = [
-            "base_remote_control", "button", "encoder", "input_controller",
+            "base_remote_control", "encoder", "input_controller",
             "data_manager", "generic_service", "mlmodel", "motion",
             "navigation", "slam", "switch", "app", "billing", "mltraining"
         ]

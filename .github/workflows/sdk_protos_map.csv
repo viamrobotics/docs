@@ -58,8 +58,8 @@ board,GetResourceName,No,get_resource_name,,getResourceName,
 board,Close,No,close,Close,,
 
 ## Button
-button,Push,Yes,push,Push,,push
-button,DoCommand,Yes,do_command,DoCommand,,doCommand
+button,Push,Yes,push,Push,push,push
+button,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
 button,Close,No,close,Close,,
 
 ## Camera

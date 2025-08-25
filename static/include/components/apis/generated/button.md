@@ -64,6 +64,25 @@ await button.push();
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#push).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+await myButton.push();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Button/push.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### DoCommand
@@ -149,6 +168,27 @@ const result = await resource.doCommand(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ButtonClient.html#docommand).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
 
 {{% /tab %}}
 {{< /tabs >}}
