@@ -570,7 +570,7 @@ Once a machine has completed the provisioning flow, you cannot re-run the final 
 
 Some systems can't scan for WiFi networks while in hotspot mode, meaning they won't automatically detect networks coming online or into range until the `retry_connection_timeout_minutes` expires.
 The `retry_connection_timeout_minutes` causes your device to exit hotspot mode, at which point your device will be able to detect newly available networks.
-If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the [`defaults` file](/manage/fleet/provision/setup/#configure-defaults).
+If your device does not connect to your network, adjust the `retry_connection_timeout_minutes` value in the defaults file.
 
 ### Device not connecting or showing as offline
 

@@ -294,7 +294,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
 
-For more detailed instructions on what these settings do, see [Provisioning](/manage/fleet/provision/setup/#configure-defaults).
+For more detailed instructions on what these settings do, see [Provisioning](/manage/fleet/provision/setup/).
 
 ## `additional_networks`
 
