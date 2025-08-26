@@ -209,7 +209,8 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
 | `log_level` | object | Optional | Set the log level for the module. See [Logging](/operate/reference/viam-server/#logging). |
-| `tcp_mode` | boolean | Optional | Whether to start the module with a TCP connection. Regardless of the value set here, if the environment variable `VIAM_TCP_SOCKETS` is set to true, `viam-server` will start the module with a TCP connection.<br>TCP mode is currently only supported for Python and C++ modules.<br>Default: `false`.  |
+| `first_run_timeout` | number | The timeout duration for the first run script.<br>Default: `60m`. |
+| `tcp_mode` | boolean | Optional | Whether to start the module with a TCP connection. Regardless of the value set here, if the environment variable `VIAM_TCP_SOCKETS` is set to true, `viam-server` will start the module with a TCP connection.<br>TCP mode is currently only supported for Python and C++ modules.<br>Default: `false`. |
 
 ### Module versioning
 
