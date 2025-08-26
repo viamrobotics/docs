@@ -24,42 +24,18 @@ The following steps show you how to use the following APIs from a module:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. Add the following imports and the `create_viam_client_from_module` method:
+1. Add the following imports:
 
    ```python {class="line-numbers linkable-line-numbers"}
    import os
-   from viam.rpc.dial import DialOptions, Credentials
    from viam.app.viam_client import ViamClient
    from viam.app.app_client import AppClient
    from viam.app.data_client import DataClient
    from viam.app.ml_training_client import MLTrainingClient
    from viam.app.billing_client import BillingClient
-
-   async def create_viam_client_from_module():
-       # Get API credentials from module environment variables
-       api_key = os.environ.get("VIAM_API_KEY")
-       api_key_id = os.environ.get("VIAM_API_KEY_ID")
-
-       if not api_key or not api_key_id:
-           raise Exception("VIAM_API_KEY and VIAM_API_KEY_ID " +
-                           "environment variables are required")
-
-       # Create dial options with API key authentication
-       dial_options = DialOptions(
-           credentials=Credentials(
-               type="api-key",
-               payload=api_key,
-           ),
-           auth_entity=api_key_id
-       )
-
-       # Create ViamClient and get app_client
-       viam_client = await ViamClient.create_from_dial_options(dial_options)
-
-       return viam_client
    ```
 
-1. Add the `viam_client` or other clients to the resource class:
+1. Add the `viam_client` and other clients to the resource class:
 
    ```python {class="line-numbers linkable-line-numbers"}
    class TestSensor(Sensor, EasyResource):
@@ -78,7 +54,7 @@ The following steps show you how to use the following APIs from a module:
    async def some_module_function(self):
       # Ensure there is only one viam_client connection
       if not self.viam_client:
-          self.viam_client = await create_viam_client_from_module()
+          self.viam_client = await ViamClient.create_from_env_vars(dial_options)
 
       self.app_client = self.viam_client.app_client
       self.data_client = self.viam_client.data_client
@@ -86,6 +62,63 @@ The following steps show you how to use the following APIs from a module:
       self.billing_client = self.viam_client.billing_client
       # Use the clients in your module
       locations = await self.app_client.list_locations(os.environ.get("VIAM_PRIMARY_ORG_ID"))
+   ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+1. Add the following imports:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   "os"
+   "go.viam.com/rdk/app"
+   ```
+
+1. Add the `viam_client` and other clients to the resource class:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   type testPlatformApisGoModuleTestDataClient struct {
+     resource.AlwaysRebuild
+
+     name resource.Name
+
+     logger logging.Logger
+     cfg    *Config
+
+     cancelCtx  context.Context
+     cancelFunc func()
+
+     viamClient *app.ViamClient
+     appClient *app.AppClient
+     dataClient *app.DataClient
+     mlTrainingClient *app.MLTrainingClient
+     billingClient *app.BillingClient
+   }
+   ```
+
+1. Initialize the clients and use them:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   func (s *exampleModuleResource) SomeModuleFunction(ctx context.Context, extra map[string]interface{}) (error) {
+      if s.viamClient == nil {
+        var err error
+        s.viamClient, err = app.CreateViamClientFromEnvVars(ctx, &app.Options{}, s.logger)
+        if err != nil {
+          return nil, err
+        }
+        s.appClient = s.viamClient.AppClient()
+        s.dataClient = s.viamClient.DataClient()
+        s.mlTrainingClient = s.viamClient.MLTrainingClient()
+        s.billingClient = s.viamClient.BillingClient()
+      }
+      locations, err := s.appClient.ListLocations(ctx, os.Getenv("VIAM_PRIMARY_ORG_ID"))
+      if err != nil {
+        return nil, err
+      }
+
+      // ...
+
+   }
    ```
 
 {{% /tab %}}
@@ -175,70 +208,72 @@ To use the [machine management (`robot_client`) API](/dev/reference/apis/robot/)
    ```
 
 {{% /tab %}}
+{{% tab name="Go" %}}
 
-<!--
-TODO: TEST.
+1. Add the following imports and the `createRobotClientFromModule` function:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   "os"
+   "go.viam.com/rdk/robot/client"
+   "go.viam.com/utils/rpc"
+
+   func createRobotClientFromModule(ctx context.Context, logger logging.Logger) (*client.RobotClient, error) {
+     robotClient, err := client.New(
+           ctx,
+           os.Getenv("VIAM_MACHINE_FQDN"),
+           logger,
+           client.WithDialOptions(rpc.WithEntityCredentials(
+               os.Getenv("VIAM_API_KEY_ID"),
+               rpc.Credentials{
+                   Type:    rpc.CredentialsTypeAPIKey,
+                   Payload: os.Getenv("VIAM_API_KEY"),
+               })),
+       )
+       if err != nil {
+           return nil, err
+       }
+     return robotClient, nil
+   }
+   ```
+
+1. Add the `viam_client` and other clients to the resource class:
+
+   ```go {class="line-numbers linkable-line-numbers"}
+   type testPlatformApisGoModuleTestDataClient struct {
+     resource.AlwaysRebuild
+
+     name resource.Name
+
+     logger logging.Logger
+     cfg    *Config
+
+     cancelCtx  context.Context
+     cancelFunc func()
+
+     machine *client.RobotClient
+   }
+   ```
+
+1. Initialize the clients and use them:
+
 ```go {class="line-numbers linkable-line-numbers"}
-func createRobotClientFromModule(ctx context.Context) (client.RobotClient, error) {
-    // Get API credentials and machine FQDN from module environment variables
-    apiKey := os.Getenv("VIAM_API_KEY")
-    apiKeyID := os.Getenv("VIAM_API_KEY_ID")
-    machineFQDN := os.Getenv("VIAM_MACHINE_FQDN")
-
-    if apiKey == "" || apiKeyID == "" || machineFQDN == "" {
-        return nil, fmt.Errorf("VIAM_API_KEY, VIAM_API_KEY_ID, and " +
-            "VIAM_MACHINE_FQDN environment variables are required")
-    }
-
-    logger := logging.NewLogger("client")
-
-    // Create robot client with API key authentication
-    robotClient, err := client.New(
-        ctx,
-        machineFQDN,
-        logger,
-        client.WithDialOptions(rpc.WithEntityCredentials(
-            apiKeyID,
-            rpc.Credentials{
-                Type:    rpc.CredentialsTypeAPIKey,
-                Payload: apiKey,
-            })),
-    )
+func (s *exampleModuleResource) SomeModuleFunction(ctx context.Context, extra map[string]interface{}) (error) {
+  if s.machine == nil {
+    var err error
+    s.machine, err = createRobotClientFromModule(ctx, s.logger)
     if err != nil {
-        return nil, fmt.Errorf("failed to create robot client: %w", err)
+      return nil, err
     }
+    defer s.machine.Close(context.Background())
+  }
+  resources := s.machine.ResourceNames()
 
-    return robotClient, nil
+  // ...
+
 }
+```
 
-func NewMySensor(ctx context.Context,deps resource.Dependencies,
-   name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
-
-   cancelCtx, cancelFunc := context.WithCancel(context.Background())
-
-    s := &myModuleMySensor{
-     name:       name,
-     logger:     logger,
-     cfg:        conf,
-     cancelCtx:  cancelCtx,
-     cancelFunc: cancelFunc,
-   }
-
-   robotClient, err := &createRobotClientFromModule()
-   if err != nil {
-     return nil, errors.New("failed to get robot client")
-   }
-   s.robotClient = robotClient
-
-   return s, nil
- }
-
-func (c *Component) SomeModuleFunction(ctx context.Context) error {
-    // Use the robot client
-    resources := robotClient.ResourceNames()
-}
-``` -->
-
+{{% /tab %}}
 {{% /tabs %}}
 
 The [module environment variables](/operate/get-started/other-hardware/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
