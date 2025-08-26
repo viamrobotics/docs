@@ -235,7 +235,7 @@ The following configuration defines the connection information and credentials f
 If you are using a mobile app for provisioning, skip this step.
 
 If you provision devices using a captive web portal, you can create a machine in advance.
-You can either provide its machine cloud credentials to the preinstall script you will run in the next steps, or prvide them using the captive web portal.
+You can either provide its machine cloud credentials to the preinstall script you will run in the next steps, or provide them using the captive web portal.
 
 You can get the machine cloud credentials by clicking the copy icon next to **Machine cloud credentials** in the part status dropdown to the right of your machine's name on the top of the page.
 Paste the machine cloud credentials into a file on your hard drive called <FILE>viam.json</FILE>.
