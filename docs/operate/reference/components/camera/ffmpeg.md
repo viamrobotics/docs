@@ -75,6 +75,25 @@ Edit the attributes as applicable to your camera, according to the table below.
 ```
 
 {{% /tab %}}
+{{% tab name="JSON Example" %}}
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "stream-camera",
+  "api": "rdk:component:camera",
+  "model": "rdk:builtin:ffmpeg",
+  "attributes": {
+    "video_path": "udp://127.0.0.1:23000",
+    "distortion_parameters": {},
+    "intrinsic_parameters": {
+      "height_px": 2486,
+      "width_px": 1970
+    }
+  }
+}
+```
+
+{{% /tab %}}
 {{< /tabs >}}
 
 The following attributes are available for `ffmpeg` cameras:
