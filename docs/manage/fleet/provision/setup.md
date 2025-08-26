@@ -517,7 +517,7 @@ sudo ./preinstall.sh /path/to/rootfs
 {{% tablestep %}}
 **Set up more devices**
 
-Unless you provided a machine cloud credentials file (<FILE>viam.json</FILE>) to the machine in Step 3, you can clone SD cards to speed up the provisioning process.
+Unless you provided a machine cloud credentials file (<FILE>viam.json</FILE>) to the machine, you can clone SD cards to speed up the provisioning process.
 
 {{% /tablestep %}}
 {{< /table >}}
