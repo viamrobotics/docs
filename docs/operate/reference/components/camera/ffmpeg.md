@@ -42,7 +42,7 @@ Edit the attributes as applicable to your camera, according to the table below.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "name": "<your-camera-name>",
-  "model": "ffmpeg",
+  "model": "rdk:builtin:ffmpeg",
   "api": "rdk:component:camera",
   "attributes": {
     "intrinsic_parameters": {
