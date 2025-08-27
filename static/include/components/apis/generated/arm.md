@@ -12,7 +12,10 @@ Get the current position of the arm as a [pose](/operate/mobility/orientation-ve
 
 **Returns:**
 
-- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o\_x, o\_y, o\_z, and theta values.
 
 **Example:**
 
@@ -387,7 +390,9 @@ Get the current position of each joint on the arm.
 
 **Returns:**
 
-- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current JointPositions for the arm. JointPositions can have one attribute, values, a list of joint positions with rotational values (degrees) and translational values (mm).
+- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current `JointPositions` for the arm.
+`JointPositions` can have one attribute, `values`, a list of joint positions with rotational values (degrees)
+and translational values (mm).
 
 **Example:**
 
@@ -481,7 +486,10 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Returns:**
 
-- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
+- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first \[0] value represents the format of the
+file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
+Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
+and the second \[1] value represents the byte contents of the file.
 
 **Example:**
 
@@ -929,7 +937,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this arm with the given name.
+Get the `ResourceName` for this arm.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -949,6 +957,46 @@ my_arm_name = Arm.get_resource_name("my_arm")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromRobot(machine, "my_arm")
+
+err = myArm.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+arm.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

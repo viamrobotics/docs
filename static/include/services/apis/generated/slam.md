@@ -86,7 +86,8 @@ Get the point cloud map.
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all GetPointCloudMapResponse.point_cloud_pcd_chunk values.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
+GetPointCloudMapResponse.point\_cloud\_pcd\_chunk values.
 
 **Example:**
 
@@ -443,7 +444,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the SLAM service with the given name.
+Get the `ResourceName` for this instance of the SLAM service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -463,6 +464,46 @@ my_slam_svc_name = SLAMClient.get_resource_name("my_slam_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySlamSvc, err := slam.FromRobot(machine, "my_slam_svc")
+
+err = mySlamSvc.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+slam.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#name).
 
 {{% /tab %}}
 {{< /tabs >}}

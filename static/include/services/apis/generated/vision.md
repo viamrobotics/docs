@@ -13,7 +13,9 @@ Get a list of detections from the next image from a specified camera using a con
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
+- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the
+confidence score of the labels, around the found objects in the next 2D image
+from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -126,7 +128,9 @@ Get a list of detections from a given image using a configured [detector](/dev/r
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
+- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the
+confidence score of the labels, around the found objects in the next 2D image
+from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -642,7 +646,9 @@ Used for visualization.
 
 **Returns:**
 
-- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service. It can  return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service.
+It can return the image from the camera along with its associated detections, classifications,
+and objects, as well as any extra info the model may provide.
 
 **Example:**
 
@@ -863,7 +869,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the vision service with the given name.
+Get the `ResourceName` for this instance of the vision service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -883,6 +889,46 @@ my_vision_svc_name = VisionClient.get_resource_name("my_vision_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myVisionSvc, err := vision.FromRobot(machine, "my_vision_svc")
+
+err = myVisionSvc.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+vision.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

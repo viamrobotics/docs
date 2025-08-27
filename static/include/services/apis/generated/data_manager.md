@@ -138,6 +138,53 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetResourceName
+
+Get the `ResourceName` for this instance of the service.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+data, err := datamanager.FromRobot(machine, "my_data_manager")
+
+err := data.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+data_manager.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#name).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Close
 
 Safely shut down the resource and prevent further use.

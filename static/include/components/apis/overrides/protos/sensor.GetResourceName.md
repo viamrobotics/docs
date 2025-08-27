@@ -1,1 +1,1 @@
-Get the `ResourceName` for this sensor with the given name.
+Get the `ResourceName` for this sensor.

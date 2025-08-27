@@ -85,7 +85,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the generic service with the given name.
+Get the `ResourceName` for this instance of the generic service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -105,6 +105,46 @@ my_generic_service_name = Generic.get_resource_name("my_generic_service")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/generic/client/index.html#viam.services.generic.client.GenericClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGenericService, err := generic.FromRobot(machine, "my_generic_service")
+
+err = myGenericService.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+generic_service.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericServiceClient.html#name).
 
 {{% /tab %}}
 {{< /tabs >}}

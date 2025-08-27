@@ -1089,7 +1089,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this movement sensor with the given name.
+Get the `ResourceName` for this movement sensor.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1109,6 +1109,46 @@ my_movement_sensor_name = MovementSensor.get_resource_name("my_movement_sensor")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+
+err = myMovementSensor.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+movement_sensor.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

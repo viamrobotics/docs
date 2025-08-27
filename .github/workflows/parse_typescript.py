@@ -78,17 +78,49 @@ class TypeScriptParser:
 
             top_level_sections = soup.find_all(class_='tsd-member-group')
             methods = []
+            properties = []
 
             for section in top_level_sections:
                 if 'Methods' in section.find('h2').text:
                     methods.extend(section.find_all('section', class_='tsd-panel tsd-member'))
+                if 'Properties' in section.find('h2').text:
+                    properties.extend(section.find_all('section', class_='tsd-panel tsd-member'))
                 if resource == 'robot':
                     if section.find('h2').text.strip() in ['App/Cloud', 'ComponentConfig', 'Discovery', "Frame System", "Operations", "Resources", "Sessions", "Modules"]:
                         new_methods = section.find_all('section', class_='tsd-panel tsd-member')
                         methods.extend(new_methods)
 
+            for property in properties:
+                property_name = property.find('h3').span.text
+                if property_name == 'callOptions':
+                    continue
+                code_sample = resource + "." + property_name + "\n"
+                property_description = ""
+
+                if property.find('div', class_="tsd-comment"):
+                    property_description = md(str(property.find('div', class_="tsd-comment"))).strip()
+                    if (len(property_description.split('\n')) > 1):
+                        property_description = property_description.replace('\n', '\n  ').rstrip()
+
+                return_object = {
+                    'return_description': property_description,
+                    'return_type': property.find('span', class_="tsd-signature-type").text,
+                    'return_usage': property.find('span', class_="tsd-signature-type").text
+                }
+
+                self.typescript_methods[type][resource][property_name] = {
+                    'method_description': "",
+                    'method_link': property.find('a', class_='tsd-anchor-icon')["href"],
+                    'parameters': {},
+                    'proto': '',
+                    'return': return_object
+                }
+
+                if code_sample:
+                    self.typescript_methods[type][resource][property_name]["code_sample"] = code_sample
+
             for method in methods:
-                method_name = method.find('h3').text
+                method_name = method.find('h3').span.text
 
                 param_object = {}
                 if method.find('div', class_="tsd-parameters"):

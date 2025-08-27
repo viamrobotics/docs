@@ -11,5 +11,5 @@
 | [`GetGeometries`](/dev/reference/apis/components/base/#getgeometries) | Get all the geometries associated with the base in its current configuration, in the frame of the base. |  |
 | [`Reconfigure`](/dev/reference/apis/components/base/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/dev/reference/apis/components/base/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`GetResourceName`](/dev/reference/apis/components/base/#getresourcename) | Get the `ResourceName` for this base with the given name. |  |
+| [`GetResourceName`](/dev/reference/apis/components/base/#getresourcename) | Get the `ResourceName` for this base. |  |
 | [`Close`](/dev/reference/apis/components/base/#close) | Safely shut down the resource and prevent further use. |  |

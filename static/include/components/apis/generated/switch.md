@@ -320,6 +320,72 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetResourceName
+
+Get the `ResourceName` for this servo.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the Resource.
+
+**Returns:**
+
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_switch_name = Switch.get_resource_name("my_switch")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/switch/client/index.html#viam.components.switch.client.SwitchClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySwitch, err := switch.FromRobot(machine, "my_switch")
+
+err = mySwitch.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+switch.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#name).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Close
 
 Safely shut down the resource and prevent further use.

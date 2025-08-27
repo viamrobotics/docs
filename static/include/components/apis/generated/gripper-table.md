@@ -10,5 +10,5 @@
 | [`Reconfigure`](/dev/reference/apis/components/gripper/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/dev/reference/apis/components/gripper/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`GetKinematics`](/dev/reference/apis/components/gripper/#getkinematics) | Get the kinematics information associated with the gripper as the format and byte contents of the kinematics file. |
-| [`GetResourceName`](/dev/reference/apis/components/gripper/#getresourcename) | Get the `ResourceName` for this gripper with the given name. |
+| [`GetResourceName`](/dev/reference/apis/components/gripper/#getresourcename) | Get the `ResourceName` for this gripper. |
 | [`Close`](/dev/reference/apis/components/gripper/#close) | Safely shut down the resource and prevent further use. |

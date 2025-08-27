@@ -12,7 +12,8 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC (false).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC
+(false).
 
 **Example:**
 
@@ -111,7 +112,8 @@ Return the current of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the current is AC (true) or DC (false).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the
+current is AC (true) or DC (false).
 
 **Example:**
 
@@ -307,7 +309,7 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is_ac (bool), and power in watts (float).
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is\_ac (bool), and power in watts (float).
 
 **Example:**
 
@@ -520,7 +522,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this power sensor with the given name.
+Get the `ResourceName` for this power sensor.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -540,6 +542,46 @@ my_power_sensor_name = PowerSensor.get_resource_name("my_power_sensor")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+
+err = myPowerSensor.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+power_sensor.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

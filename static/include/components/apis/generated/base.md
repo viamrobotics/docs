@@ -1021,7 +1021,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this base with the given name.
+Get the `ResourceName` for this base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1041,6 +1041,46 @@ my_base_name = Base.get_resource_name("my_base")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/base/client/index.html#viam.components.base.client.BaseClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myBase, err := base.FromRobot(machine, "my_base")
+
+err = myBase.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+base.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BaseClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

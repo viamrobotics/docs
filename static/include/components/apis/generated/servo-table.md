@@ -7,5 +7,5 @@
 | [`Stop`](/dev/reference/apis/components/servo/#stop) | Stop the servo from moving. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Reconfigure`](/dev/reference/apis/components/servo/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/dev/reference/apis/components/servo/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
-| [`GetResourceName`](/dev/reference/apis/components/servo/#getresourcename) | Get the `ResourceName` for this servo with the given name. |  |
+| [`GetResourceName`](/dev/reference/apis/components/servo/#getresourcename) | Get the `ResourceName` for this servo. |  |
 | [`Close`](/dev/reference/apis/components/servo/#close) | Safely shut down the resource and prevent further use. |  |

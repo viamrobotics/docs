@@ -18,6 +18,5 @@
 | [`GetGeometries`](/dev/reference/apis/components/board/#getgeometries) | Get all the geometries associated with the board in its current configuration, in the frame of the board. |  |
 | [`Reconfigure`](/dev/reference/apis/components/board/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/dev/reference/apis/components/board/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`Name`](/dev/reference/apis/components/board/#name) | Get the name of the digital interrupt. |  |
-| [`GetResourceName`](/dev/reference/apis/components/board/#getresourcename) | Get the `ResourceName` for this board with the given name. |  |
+| [`GetResourceName`](/dev/reference/apis/components/board/#getresourcename) | Get the `ResourceName` for this board. |  |
 | [`Close`](/dev/reference/apis/components/board/#close) | Safely shut down the resource and prevent further use. |  |

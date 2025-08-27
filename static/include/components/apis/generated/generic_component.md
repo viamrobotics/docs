@@ -1,3 +1,63 @@
+### GetGeometries
+
+Get all the geometries associated with the generic component in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the generic component.
+The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")
+geometries = await my_generic_component.get_geometries()
+
+if geometries:
+    # Get the center of the first geometry
+    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const generic = new VIAM.GenericComponentClient(
+  machine,
+  'my_generic_component'
+);
+
+// Get the geometries of this component
+const geometries = await generic.getGeometries();
+console.log('Geometries:', geometries);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#getgeometries).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### DoCommand
 
 Execute model-specific commands.
@@ -104,69 +164,9 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### GetGeometries
-
-Get all the geometries associated with the generic component in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the generic component.
-The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_generic_component = Generic.from_robot(robot=machine, name="my_generic_component")
-geometries = await my_generic_component.get_geometries()
-
-if geometries:
-    # Get the center of the first geometry
-    print(f"Pose of the first geometry's centerpoint: {geometries[0].center}")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `extra` (None) (optional)
-- `callOptions` (CallOptions) (optional)
-
-**Returns:**
-
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[Geometry](https://ts.viam.dev/classes/commonApi.Geometry.html)[]>)
-
-**Example:**
-
-```ts {class="line-numbers linkable-line-numbers"}
-const generic = new VIAM.GenericComponentClient(
-  machine,
-  'my_generic_component'
-);
-
-// Get the geometries of this component
-const geometries = await generic.getGeometries();
-console.log('Geometries:', geometries);
-```
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#getgeometries).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
-Get the `ResourceName` for this generic component with the given name.
+Get the `ResourceName` for this generic component.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -186,6 +186,46 @@ my_generic_component_name = Generic.get_resource_name("my_generic_component")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGenericComponent, err := generic.FromRobot(machine, "my_generic_component")
+
+err = myGenericComponent.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+generic_component.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

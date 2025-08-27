@@ -197,11 +197,14 @@ The multiple images returned from `GetImages()` do not represent a time series o
 
 **Parameters:**
 
+- `filter_source_names` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional)
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Tuple[List[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first [0] a list of images returned from the camera system, and the second [1] the metadata associated with this response.
+- (Tuple[List[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first \[0] a list of images
+returned from the camera system, and the second \[1] the metadata associated with this response.
 
 **Example:**
 
@@ -289,7 +292,8 @@ The consumer of this call should decode the bytes into the format suggested by t
 
 **Returns:**
 
-- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first [0] the pointcloud data, and the second [1] the mimetype of the pointcloud (for example, PCD).
+- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first \[0] the pointcloud data,
+and the second \[1] the mimetype of the pointcloud (for example, PCD).
 
 **Example:**
 
@@ -643,7 +647,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetResourceName
 
-Get the `ResourceName` for this camera with the given name.
+Get the `ResourceName` for this camera.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -663,6 +667,46 @@ my_camera_name = Camera.get_resource_name("my_camera")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myCamera, err := camera.FromRobot(machine, "my_camera")
+
+err = myCamera.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+camera.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

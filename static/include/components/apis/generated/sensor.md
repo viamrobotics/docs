@@ -258,7 +258,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this sensor with the given name.
+Get the `ResourceName` for this sensor.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -278,6 +278,46 @@ my_sensor_name = Sensor.get_resource_name("my_sensor")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySensor, err := sensor.FromRobot(machine, "my_sensor")
+
+err = mySensor.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+sensor.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SensorClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

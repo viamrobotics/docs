@@ -7,5 +7,5 @@
 | [`GetGeometries`](/dev/reference/apis/components/encoder/#getgeometries) | Get all the geometries associated with the encoder in its current configuration, in the frame of the encoder. |  |
 | [`Reconfigure`](/dev/reference/apis/components/encoder/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/dev/reference/apis/components/encoder/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| [`GetResourceName`](/dev/reference/apis/components/encoder/#getresourcename) | Get the `ResourceName` for this encoder with the given name. |  |
+| [`GetResourceName`](/dev/reference/apis/components/encoder/#getresourcename) | Get the `ResourceName` for this encoder. |  |
 | [`Close`](/dev/reference/apis/components/encoder/#close) | Safely shut down the resource and prevent further use. |  |

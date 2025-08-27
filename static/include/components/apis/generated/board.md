@@ -785,7 +785,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step_size of the reader.
+- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step\_size of the reader.
 
 **Example:**
 
@@ -1550,29 +1550,9 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### Name
-
-Get the name of the digital interrupt.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- None.
-
-**Returns:**
-
-- [(string)](https://pkg.go.dev/builtin#string): The name of the digital interrupt.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetResourceName
 
-Get the `ResourceName` for this board with the given name.
+Get the `ResourceName` for this board.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1592,6 +1572,38 @@ my_board_name = Board.get_resource_name("my_board")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string): The name of the digital interrupt.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+board.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

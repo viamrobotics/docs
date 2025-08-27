@@ -55,7 +55,7 @@ Get status information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), resources (List[ResourceStatus]) and config of the machine.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), resources (List\[ResourceStatus]) and config of the machine.
 
 **Example:**
 
@@ -155,6 +155,25 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 Get a list of all known resource names connected to this machine.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+resource_names = machine.resource_names
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.resource_names).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -774,7 +793,7 @@ Get app-related information about the robot.
 
 **Returns:**
 
-- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): App-related metadata.
+- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): App\-related metadata.
 
 **Example:**
 
@@ -1105,7 +1124,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### Shutdown
 
 Shutdown shuts down the machine.
-Supported by `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
