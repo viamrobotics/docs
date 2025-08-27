@@ -677,7 +677,10 @@ Get the kinematics information associated with the gripper as the format and byt
 
 **Returns:**
 
-- (Tuple[viam.components.gripper.KinematicsFileFormat.ValueType, [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
+- (Tuple[viam.components.gripper.KinematicsFileFormat.ValueType, [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first \[0] value represents the format of the
+file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
+Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
+and the second \[1] value represents the byte contents of the file.
 
 **Example:**
 

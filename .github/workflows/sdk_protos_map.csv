@@ -470,8 +470,11 @@ mltraining,DeleteCompletedTrainingJob,,delete_completed_training_job,DeleteCompl
 robot,GetOperations,,get_operations,,,getOperations
 robot,GetMachineStatus,,get_machine_status,MachineStatus,getMachineStatus,getMachineStatus
 robot,GetSessions,,,,,getSessions
-robot,ResourceNames,,,ResourceNames,,resourceNames
+robot,ResourceNames,,resource_names,ResourceNames,,resourceNames
 robot,ResourceRPCSubtypes,,,,,resourceRPCSubtypes
+# Should not be called by user
+# robot,GetComponent,,get_component,,,
+# robot,GetService,,get_service,,,
 robot,CancelOperation,,cancel_operation,,,cancelOperation
 robot,BlockForOperation,,block_for_operation,,,blockForOperation
 robot,FrameSystemConfig,,get_frame_system_config,,,frameSystemConfig

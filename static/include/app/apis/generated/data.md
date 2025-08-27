@@ -15,7 +15,13 @@ Gets the most recent tabular data captured from the specified data source, as lo
 
 **Returns:**
 
-- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of None means that this data source has not synced data in the last year. Otherwise, the data source has synced some data in the last year, so the returned tuple contains the following: time_captured (datetime): The time captured. time_synced (datetime): The time synced. payload (Dict[str, ValueTypes]): The latest tabular data captured from the specified data source.
+- (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of `None` means that this data source
+has not synced data in the last year. Otherwise, the data source has synced some data in the last year, so the returned
+tuple contains the following:
+
+    * `time_captured` (*datetime*): The time captured.
+    * `time_synced` (*datetime*): The time synced.
+    * `payload` (*Dict\[str, ValueTypes]*): The latest tabular data captured from the specified data source.
 
 **Example:**
 
@@ -305,7 +311,11 @@ You can also find your tabular data under the **Sensors** subtab of the [**Data*
 
 **Returns:**
 
-- (Tuple[List[TabularData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following: tabular_data (List[TabularData]): The tabular data. count (int): The count (number of entries). last (str): The last-returned page ID.
+- (Tuple[List[TabularData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following:
+
+    * `tabular_data` (*List\[TabularData]*): The tabular data.
+    * `count` (*int*): The count (number of entries).
+    * `last` (*str*): The last\-returned page ID.
 
 **Example:**
 
@@ -695,7 +705,11 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 **Returns:**
 
-- (Tuple[List[viam.proto.app.data.BinaryData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following: data (List[ BinaryData ]): The binary data. count (int): The count (number of entries). last (str): The last-returned page ID.
+- (Tuple[List[viam.proto.app.data.BinaryData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following:
+
+    * `data` (*List\[* [`BinaryData`](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryData "viam.proto.app.data.BinaryData") *]*): The binary data.
+    * `count` (*int*): The count (number of entries).
+    * `last` (*str*): The last\-returned page ID.
 
 **Example:**
 

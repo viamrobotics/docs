@@ -16,7 +16,9 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)]): A tuple containing two values; the first [0] the position of the encoder which can either be ticks since last zeroing for a relative encoder or degrees for an absolute encoder, and the second [1] the type of position the encoder returns (ticks or degrees).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [PositionType.ValueType](https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType)]): A tuple containing two values; the first \[0] the position of the encoder which can either be
+ticks since last zeroing for a relative encoder or degrees for an absolute encoder, and the second \[1] the type of
+position the encoder returns (ticks or degrees).
 
 **Example:**
 

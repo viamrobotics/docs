@@ -12,7 +12,8 @@ Get a list of component configs of all resources available to configure on a mac
 
 **Returns:**
 
-- ([List[viam.proto.app.robot.ComponentConfig]](https://python.viam.dev/autoapi/viam/proto/app/robot/index.html#viam.proto.app.robot.ComponentConfig)): A list of ComponentConfigs that describe the components found by a discover service.
+- ([List[viam.proto.app.robot.ComponentConfig]](https://python.viam.dev/autoapi/viam/proto/app/robot/index.html#viam.proto.app.robot.ComponentConfig)): A list of ComponentConfigs that describe
+the components found by a discover service.
 
 **Example:**
 

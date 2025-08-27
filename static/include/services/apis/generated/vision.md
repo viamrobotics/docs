@@ -13,7 +13,9 @@ Get a list of detections from the next image from a specified camera using a con
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
+- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the
+confidence score of the labels, around the found objects in the next 2D image
+from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -126,7 +128,9 @@ Get a list of detections from a given image using a configured [detector](/dev/r
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the confidence score of the labels, around the found objects in the next 2D image from the given camera, with the given detector applied to it.
+- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the
+confidence score of the labels, around the found objects in the next 2D image
+from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -642,7 +646,9 @@ Used for visualization.
 
 **Returns:**
 
-- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service. It can  return the image from the camera along with its associated detections, classifications, and objects, as well as any extra info the model may provide.
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service.
+It can return the image from the camera along with its associated detections, classifications,
+and objects, as well as any extra info the model may provide.
 
 **Example:**
 

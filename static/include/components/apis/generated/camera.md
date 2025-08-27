@@ -197,11 +197,14 @@ The multiple images returned from `GetImages()` do not represent a time series o
 
 **Parameters:**
 
+- `filter_source_names` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional)
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Tuple[List[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first [0] a list of images returned from the camera system, and the second [1] the metadata associated with this response.
+- (Tuple[List[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first \[0] a list of images
+returned from the camera system, and the second \[1] the metadata associated with this response.
 
 **Example:**
 
@@ -289,7 +292,8 @@ The consumer of this call should decode the bytes into the format suggested by t
 
 **Returns:**
 
-- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first [0] the pointcloud data, and the second [1] the mimetype of the pointcloud (for example, PCD).
+- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first \[0] the pointcloud data,
+and the second \[1] the mimetype of the pointcloud (for example, PCD).
 
 **Example:**
 

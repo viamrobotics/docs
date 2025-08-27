@@ -1,7 +1,7 @@
 import re as regex
 
 from parser_utils import make_soup
-
+from markdownify import markdownify as md
 
 ## Language-specific resource name overrides:
 python_resource_overrides = {
@@ -156,7 +156,7 @@ class PythonParser:
             soup = make_soup(url)
 
             if soup:
-                python_methods_raw = soup.find_all("dl", class_="py method")
+                python_methods_raw = soup.find_all("dl", class_=["py method", "py property"])
             else:
                 python_methods_raw = []
 
@@ -273,18 +273,7 @@ class PythonParser:
                                 if linked_param_type != "":
                                     this_method_parameters_dict["param_type"] = linked_param_type
                                 elif parameter_tag.find('a', class_="reference internal"):
-                                    param_type_link_raw = parameter_tag.find('a', class_="reference internal").get("href")
-
-                                    ## Parameter type link is an anchor link:
-                                    if param_type_link_raw.startswith('#'):
-                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
-                                    ## Parameter type link is a relative link, in one of three forms:
-                                    elif param_type_link_raw.startswith('../../../'):
-                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + self.sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../../', '')+ ')'
-                                    elif param_type_link_raw.startswith('../../'):
-                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + self.sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../../', '')+ ')'
-                                    elif param_type_link_raw.startswith('../'):
-                                        this_method_parameters_dict["param_type"] = '[' + param_type + '](' + self.sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+                                    this_method_parameters_dict["param_type"] = '[' + param_type + '](' + parameter_tag.find('a', class_="reference internal").get("href") + ')'
 
                                 else:
                                     this_method_parameters_dict["param_type"] = param_type
@@ -312,23 +301,7 @@ class PythonParser:
                                         ## Some params provide data type links in Parameters section only, not initial usage.
                                         ## Get that here if so:
                                         if strong_tag.parent.find('a', class_="reference internal"):
-                                            param_type_link_raw = strong_tag.parent.find('a', class_="reference internal").get("href")
-                                            ## Parameter type link is an anchor link:
-                                            if param_type_link_raw.startswith('#') and not self.staging:
-                                                this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url + param_type_link_raw + ')'
-                                            elif param_type_link_raw.startswith('#') and self.staging:
-                                                this_method_parameters_dict["param_type"] = '[' + param_type + '](' + url.replace(self.scrape_url, self.sdk_url) + param_type_link_raw + ')'
-                                            ## Parameter type link is a relative link, beginning with 1 - 3 instances of '../'
-                                            ## Convert to an absolute link:
-                                            elif param_type_link_raw.startswith('../') \
-                                                and not param_type_link_raw.startswith('../../'):
-                                                if resource in python_resource_overrides:
-                                                    linkable_resource = python_resource_overrides[resource]
-                                                else:
-                                                    linkable_resource = resource
-                                                this_method_parameters_dict["param_type"] = f'[{param_type}]({self.sdk_url}/autoapi/viam/{type}s/{linkable_resource}/' + param_type_link_raw.replace('../', '')+ ')'
-                                            elif param_type_link_raw.startswith('../'):
-                                                this_method_parameters_dict["param_type"] = '[' + param_type + '](' + self.sdk_url + "/autoapi/viam/" + param_type_link_raw.replace('../', '')+ ')'
+                                            this_method_parameters_dict["param_type"] = '[' + param_type + '](' + strong_tag.parent.find('a', class_="reference internal").get("href") + ')'
 
                                         ## Unable to determine parameter description, neither timeout or extra, nor matching to any
                                         ## param in initial method usage string. Usually this means a non-param (like error raised),
@@ -339,12 +312,12 @@ class PythonParser:
 
                             this_method_dict["parameters"][param_name] = this_method_parameters_dict
 
-                    ## Get single tag containing the return for this method:
-                    return_tag = tag.find('span', class_='sig-return')
 
                     ## Parse return for this method:
                     ## METHODOLOGY: Some methods explicitly state that they return "None", others just omit the field.
                     ##   Either way, ensure we only write a return to this_method_dict if an actual return is present:
+                    ## Get single tag containing the return for this method:
+                    return_tag = tag.find('span', class_='sig-return')
                     if return_tag and return_tag.find('span', class_='pre').text != "None":
 
                         ## Create new empty dictionary for this_method_dict named "return":
@@ -357,31 +330,12 @@ class PythonParser:
                         linked_return_type = ""
                         linked_return_type = link_data_types('python', return_type)
 
-                        if linked_return_type != "":
+                        if linked_return_type:
                             this_method_dict["return"]["return_type"] = linked_return_type
                         elif return_tag.find('a', class_="reference internal"):
-
+                            this_method_dict["return"]["return_type"] = '[' + return_type + '](' + return_tag.find('a', class_="reference internal").get("href") + ')'
                             ## TODO: Only grabbing the first link encountered, but a few methods return a tuple of two linked data types.
                             ## Handling those via link_data_types() with manual entries in python_datatype_links for now,
-                            ## But there's room for a more elegant solution:
-                            return_type_link_raw = return_tag.find('a', class_="reference internal").get("href")
-
-                            ## Return type link is an anchor link:
-                            if return_type_link_raw.startswith('#') and not self.staging:
-                                this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url + return_type_link_raw + ')'
-                            elif return_type_link_raw.startswith('#') and self.staging:
-                                this_method_dict["return"]["return_type"] = '[' + return_type + '](' + url.replace(self.scrape_url, self.sdk_url) + return_type_link_raw + ')'
-                            ## Return type link is a relative link, beginning with 1 - 3 instances of '../'
-                            ## Convert to an absolute link:
-                            elif return_type_link_raw.startswith('../') \
-                                and not return_type_link_raw.startswith('../../'):
-                                if resource in python_resource_overrides:
-                                    linkable_resource = python_resource_overrides[resource]
-                                else:
-                                    linkable_resource = resource
-                                this_method_dict["return"]["return_type"] = f'[{return_type}]({self.sdk_url}/autoapi/viam/{type}s/{linkable_resource}/' + return_type_link_raw.replace('../', '')+ ')'
-                            elif return_type_link_raw.startswith('../'):
-                                this_method_dict["return"]["return_type"] = '[' + return_type + '](' + self.sdk_url + "/autoapi/viam/" + return_type_link_raw.replace('../', '')+ ')'
 
                         ## OPTION: Get full return usage, including type info and html links if present, stripping all newlines:
                         ## NOTE: Currently unused.
@@ -398,8 +352,9 @@ class PythonParser:
                                     and (tag.get('class') == ['field-odd']
                                     or tag.get('class') == ['field-even']))
 
-                            ## Append to ongoing this_method_dict, stripping newlines:
-                            this_method_dict["return"]["return_description"] = return_description_raw[0].p.text.replace("\n", " ")
+                            description_md = md(str(return_description_raw[0])).strip()
+                            description_md_stripped = description_md.replace("\n\n", "\n").replace("> *", "    *")
+                            this_method_dict["return"]["return_description"] = description_md_stripped
 
                     ## If method has a "Raises" section, determine method errors raised:
                     if tag.find(string="Raises"):
@@ -457,6 +412,18 @@ class PythonParser:
 
                                 ## Add all values for this raised error to this_method_dict by raises_name:
                                 this_method_dict["raises"][raises_name] = this_method_raises_dict
+
+                    #  This code is for properties, not methods
+                    if tag.get("class") == ["py property"]:
+                        return_elems = tag.find('dl', class_='field-list simple')
+                        if return_elems:
+                            return_elems_children = list(return_elems.children)
+                            if return_elems_children and len(return_elems_children) > 7:
+                                return_description = return_elems_children[3].text
+                                return_type = md(str(return_elems_children[7])).strip()
+                                this_method_dict["return"] = {}
+                                this_method_dict["return"]["return_type"] = return_type
+                                this_method_dict["return"]["return_description"] = return_description
 
                     ## Determine if a code sample is provided for this method:
                     if tag.find('div', class_="highlight"):

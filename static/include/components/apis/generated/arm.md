@@ -12,7 +12,10 @@ Get the current position of the arm as a [pose](/operate/mobility/orientation-ve
 
 **Returns:**
 
-- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose. The Pose is composed of values for location and orientation with respect to the origin. Location is expressed as distance, which is represented by x, y, and z coordinate values. Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
+- ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose.
+The `Pose` is composed of values for location and orientation with respect to the origin.
+Location is expressed as distance, which is represented by x, y, and z coordinate values.
+Orientation is expressed as an orientation vector, which is represented by o\_x, o\_y, o\_z, and theta values.
 
 **Example:**
 
@@ -387,7 +390,9 @@ Get the current position of each joint on the arm.
 
 **Returns:**
 
-- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current JointPositions for the arm. JointPositions can have one attribute, values, a list of joint positions with rotational values (degrees) and translational values (mm).
+- ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current `JointPositions` for the arm.
+`JointPositions` can have one attribute, `values`, a list of joint positions with rotational values (degrees)
+and translational values (mm).
 
 **Example:**
 
@@ -481,7 +486,10 @@ Get the kinematics information associated with the arm as the format and byte co
 
 **Returns:**
 
-- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first [0] value represents the format of the file, either in URDF format (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF) or Viam’s kinematic parameter format (spatial vector algebra) (KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA), and the second [1] value represents the byte contents of the file.
+- (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first \[0] value represents the format of the
+file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
+Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
+and the second \[1] value represents the byte contents of the file.
 
 **Example:**
 

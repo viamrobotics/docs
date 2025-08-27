@@ -397,8 +397,7 @@ class GoParser:
                 for method in go_methods_raw:
                     this_method_dict = {}
                     method_name = method.find('a', class_='Documentation-source').text
-                    method_id = method.find('a', class_='Documentation-idLink')['href']
-                    method_link = "https://pkg.go.dev/go.viam.com/rdk/app" + method_id
+                    method_link = method.find('a', class_='Documentation-idLink')['href']
 
                     # Get all text after the Documentation-declaration div
                     declaration_div = method.find('div', class_='Documentation-declaration')

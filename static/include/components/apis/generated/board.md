@@ -785,7 +785,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step_size of the reader.
+- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step\_size of the reader.
 
 **Example:**
 

@@ -86,7 +86,8 @@ Get the point cloud map.
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all GetPointCloudMapResponse.point_cloud_pcd_chunk values.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
+GetPointCloudMapResponse.point\_cloud\_pcd\_chunk values.
 
 **Example:**
 

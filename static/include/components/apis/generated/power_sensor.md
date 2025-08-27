@@ -12,7 +12,8 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC (false).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC
+(false).
 
 **Example:**
 
@@ -111,7 +112,8 @@ Return the current of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the current is AC (true) or DC (false).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the
+current is AC (true) or DC (false).
 
 **Example:**
 
@@ -307,7 +309,7 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is_ac (bool), and power in watts (float).
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is\_ac (bool), and power in watts (float).
 
 **Example:**
 

@@ -175,7 +175,8 @@ Get the current location of the robot in the navigation service.
 
 **Returns:**
 
-- ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)): The current location of the robot in the navigation service, represented in a GeoPoint with latitude and longitude values.
+- ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)): The current location of the robot in the navigation service,
+represented in a GeoPoint with latitude and longitude values.
 
 **Example:**
 
@@ -249,7 +250,8 @@ These are locations designated within a path for the robot to navigate to.
 
 **Returns:**
 
-- ([List[viam.services.navigation.Waypoint]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint)): An array comprised of each Waypoint in the service’s data storage. These are locations designated within a path for the robot to navigate to.
+- ([List[viam.services.navigation.Waypoint]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint)): An array comprised of each Waypoint in the service’s data storage.
+These are locations designated within a path for the robot to navigate to.
 
 **Example:**
 
@@ -317,7 +319,7 @@ Add a waypoint to the service's data storage.
 
 **Parameters:**
 
-- `point` ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)) (required): The current location of the robot in the navigation service, represented in a GeoPoint with latitude and longitude values.
+- `point` ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)) (required): A waypoint represented in a GeoPoint with latitude and longitude values.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
@@ -494,7 +496,8 @@ See the [motion service](/operate/reference/services/motion/) for more informati
 
 **Returns:**
 
-- ([List[viam.services.navigation.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoGeometry)): A list comprised of each GeoGeometry in the service’s data storage. These are objects designated for the robot to avoid when navigating.
+- ([List[viam.services.navigation.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoGeometry)): A list comprised of each GeoGeometry in the service’s data storage.
+These are objects designated for the robot to avoid when navigating.
 
 **Example:**
 
@@ -567,7 +570,9 @@ Get each path, the series of geo points the robot plans to travel through to get
 
 **Returns:**
 
-- ([List[viam.proto.service.navigation.Path]](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path)): An array comprised of Paths, where each path is either a user-provided destination or a Waypoint, along with the corresponding set of geopoints. This outlines the route the machine is expected to take to reach the specified destination or Waypoint.
+- ([List[viam.proto.service.navigation.Path]](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path)): An array comprised of Paths, where each path is either a user\-provided destination or
+a Waypoint, along with the corresponding set of geopoints. This outlines the route the machine is expected to take to
+reach the specified destination or Waypoint.
 
 **Example:**
 

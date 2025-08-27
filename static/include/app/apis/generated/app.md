@@ -559,7 +559,8 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 
 **Returns:**
 
-- (Tuple[List[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): A tuple containing two lists; the first [0] of organization members, and the second [1] of organization invites.
+- (Tuple[List[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): A tuple containing two lists; the first
+\[0] of organization members, and the second \[1] of organization invites.
 
 **Example:**
 
@@ -1024,7 +1025,7 @@ Gets the user-defined metadata for an organization.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -1843,7 +1844,7 @@ Get the user-defined metadata for a location.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -3269,7 +3270,7 @@ Gets the user-defined metadata for a machine.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -3329,7 +3330,7 @@ Gets the user-defined metadata for a machine part.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -4875,7 +4876,7 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID [0] of the new module and its URL [1].
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID \[0] of the new module and its URL \[1].
 
 **Raises:**
 

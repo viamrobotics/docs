@@ -859,7 +859,8 @@ All repeated fields are in chronological order.
 
 **Returns:**
 
-- ([Sequence[viam.proto.service.motion.PlanStatusWithID]](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.PlanStatusWithID)): List of last known statuses with the associated IDs of all plans within the TTL ordered by timestamp in ascending order.
+- ([Sequence[viam.proto.service.motion.PlanStatusWithID]](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.PlanStatusWithID)): List of last known statuses with the
+associated IDs of all plans within the TTL ordered by timestamp in ascending order.
 
 **Example:**
 
@@ -957,7 +958,7 @@ All repeated fields are in chronological order.
 
 **Returns:**
 
-- ([viam.proto.service.motion.GetPlanResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)): The current PlanWithStatus & replan history which matches the request.
+- ([viam.proto.service.motion.GetPlanResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)): The current PlanWithStatus \& replan history which matches the request.
 
 **Example:**
 
