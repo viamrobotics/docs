@@ -182,7 +182,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the ML model service with the given name.
+Get the `ResourceName` for this instance of the ML model service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

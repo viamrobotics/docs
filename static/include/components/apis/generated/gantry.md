@@ -816,7 +816,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### GetResourceName
 
-Get the `ResourceName` for this gantry with the given name.
+Get the `ResourceName` for this gantry.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -836,6 +836,46 @@ my_gantry_name = Gantry.get_resource_name("my_gantry")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGantry, err := gantry.FromRobot(machine, "my_gantry")
+
+err = myGantry.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+gantry.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GantryClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

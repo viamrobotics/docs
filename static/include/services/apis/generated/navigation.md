@@ -815,7 +815,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the navigation service with the given name.
+Get the `ResourceName` for this instance of the navigation service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -835,6 +835,46 @@ my_navigation_svc_name = NavigationClient.get_resource_name("my_navigation_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/navigation/client/index.html#viam.services.navigation.client.NavigationClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+my_nav, err := navigation.FromRobot(machine, "my_nav_svc")
+
+err := my_nav.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+navigation.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/NavigationClient.html#name).
 
 {{% /tab %}}
 {{< /tabs >}}

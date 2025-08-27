@@ -1062,7 +1062,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### FromRobot
 
-Get the resource from the provided robot with the given name.
+Get the resource from the provided machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1188,7 +1188,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetResourceName
 
-Get the `ResourceName` for this instance of the motion service with the given name.
+Get the `ResourceName` for this instance of the motion service.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1208,6 +1208,46 @@ my_motion_svc_name = MotionClient.get_resource_name("my_motion_svc")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myMotionSvc, err := motion.FromRobot(machine, "my_motion_svc")
+
+err = myMotionSvc.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+motion.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#name).
 
 {{% /tab %}}
 {{< /tabs >}}

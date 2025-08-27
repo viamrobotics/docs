@@ -560,7 +560,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this servo with the given name.
+Get the `ResourceName` for this servo.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -580,6 +580,46 @@ my_servo_name = Servo.get_resource_name("my_servo")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/servo/client/index.html#viam.components.servo.client.ServoClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myServo, err := servo.FromRobot(machine, "my_servo")
+
+err = myServo.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+servo.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ServoClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

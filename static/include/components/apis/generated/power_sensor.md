@@ -522,7 +522,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this power sensor with the given name.
+Get the `ResourceName` for this power sensor.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -542,6 +542,46 @@ my_power_sensor_name = PowerSensor.get_resource_name("my_power_sensor")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/power_sensor/client/index.html#viam.components.power_sensor.client.PowerSensorClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+
+err = myPowerSensor.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+power_sensor.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/PowerSensorClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

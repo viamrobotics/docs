@@ -394,7 +394,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetResourceName
 
-Get the `ResourceName` for this encoder with the given name.
+Get the `ResourceName` for this encoder.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -414,6 +414,46 @@ my_encoder_name = Encoder.get_resource_name("my_encoder")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myEncoder, err := encoder.FromRobot(machine, "my_encoder")
+
+err = myEncoder.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+encoder.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#name).
 
 {{% /tab %}}
 {{< /tabs >}}

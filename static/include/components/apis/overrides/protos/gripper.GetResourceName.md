@@ -1,1 +1,1 @@
-Get the `ResourceName` for this gripper with the given name.
+Get the `ResourceName` for this gripper.

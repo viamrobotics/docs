@@ -292,6 +292,26 @@ class GoParser:
                                         else:
                                             self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
 
+                                self.go_methods[type][resource]['Name'] = {'proto': 'Name', \
+                                    'description': 'Get the name of the resource.', \
+                                    'usage': 'Name() <a href="https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name">Name</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                                code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Name example:" in code_sample_tag.text)
+                                if code_sample:
+                                    if type == "component":
+                                        self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromRobot(machine, "my_' + resource + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'
+                                    else:
+                                        if resource == "base_remote_control":
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")\n\nerr := baseRCService.Name()\n'
+                                        elif resource == "data_manager":
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'data, err := datamanager.FromRobot(machine, "my_data_manager")\n\nerr := data.Name()\n'
+                                        elif resource == "navigation":
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my_nav, err := navigation.FromRobot(machine, "my_nav_svc")\n\nerr := my_nav.Name()\n'
+                                        elif resource == "mlmodel":
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")\n\nerr := my_mlmodel.Name()\n'
+                                        else:
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
+
                             ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
                             ## then add the two inherited methods manually: IsMoving() and Stop():
                             if '\tresource.Actuator' in resource_interface.text:
@@ -382,6 +402,13 @@ class GoParser:
                                     'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
                                     'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromRobot(machine, "my_' + resource.lower() + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'}
+
+                self.go_methods[type][resource]['Name'] = {'proto': 'Name', \
+                    'description': 'Get the name of the resource.', \
+                    'usage': 'Name() <a href="https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name">Name</a>', \
+                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
+                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromRobot(machine, "my_' + resource.lower() + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'}
+
                 if resource == "generic_service":
                     self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromRobot(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
 

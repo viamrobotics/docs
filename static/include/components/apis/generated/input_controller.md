@@ -471,7 +471,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 ### GetResourceName
 
-Get the `ResourceName` for this input controller with the given name.
+Get the `ResourceName` for this input controller.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -491,6 +491,46 @@ my_input_controller_name = Controller.get_resource_name("my_input_controller")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myInputController, err := input.FromRobot(machine, "my_input_controller")
+
+err = myInputController.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+input_controller.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/InputControllerClient.html#name).
 
 {{% /tab %}}
 {{< /tabs >}}

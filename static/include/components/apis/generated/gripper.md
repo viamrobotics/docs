@@ -738,7 +738,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetResourceName
 
-Get the `ResourceName` for this gripper with the given name.
+Get the `ResourceName` for this gripper.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -758,6 +758,46 @@ my_gripper_name = Gripper.get_resource_name("my_gripper")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_resource_name).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGripper, err := gripper.FromRobot(machine, "my_gripper")
+
+err = myGripper.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- (string): The name of the resource.
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+gripper.name
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#name).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

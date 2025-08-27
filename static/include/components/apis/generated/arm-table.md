@@ -12,5 +12,5 @@
 | [`GetGeometries`](/dev/reference/apis/components/arm/#getgeometries) | Get all the geometries associated with the arm in its current configuration, in the frame of the arm. |
 | [`Reconfigure`](/dev/reference/apis/components/arm/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/dev/reference/apis/components/arm/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
-| [`GetResourceName`](/dev/reference/apis/components/arm/#getresourcename) | Get the `ResourceName` for this arm with the given name. |
+| [`GetResourceName`](/dev/reference/apis/components/arm/#getresourcename) | Get the `ResourceName` for this arm. |
 | [`Close`](/dev/reference/apis/components/arm/#close) | Safely shut down the resource and prevent further use. |

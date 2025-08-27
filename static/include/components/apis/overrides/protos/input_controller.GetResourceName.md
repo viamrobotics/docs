@@ -1,1 +1,1 @@
-Get the `ResourceName` for this input controller with the given name.
+Get the `ResourceName` for this input controller.

@@ -13,7 +13,7 @@ arm,Stop,,stop,Stop,stop,stop
 arm,GetGeometries,,get_geometries,Geometries,,getGeometries
 arm,Reconfigure,,,Reconfigure,,
 arm,DoCommand,,do_command,DoCommand,doCommand,doCommand
-arm,GetResourceName,,get_resource_name,,getResourceName,
+arm,GetResourceName,,get_resource_name,Name,getResourceName,name
 arm,Close,,close,Close,,
 
 ## Base
@@ -28,7 +28,7 @@ base,Stop,Yes,stop,Stop,stop,stop
 base,GetGeometries,No,get_geometries,Geometries,,getGeometries
 base,Reconfigure,No,,Reconfigure,,
 base,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
-base,GetResourceName,No,get_resource_name,,getResourceName,
+base,GetResourceName,No,get_resource_name,Name,getResourceName,name
 base,Close,No,close,Close,,
 
 ## Board
@@ -53,13 +53,14 @@ board,GPIOPinByName,No,gpio_pin_by_name,GPIOPinByName,,
 board,GetGeometries,No,get_geometries,,,
 board,Reconfigure,No,,Reconfigure,,
 board,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
-board,Name,No,,Name,,
-board,GetResourceName,No,get_resource_name,,getResourceName,
+board,GetResourceName,No,get_resource_name,Name,getResourceName,name
 board,Close,No,close,Close,,
 
 ## Button
 button,Push,Yes,push,Push,push,push
+button,Reconfigure,No,,Reconfigure,,
 button,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
+button,GetResourceName,No,get_resource_name,Name,getResourceName,name
 button,Close,No,close,Close,,
 
 ## Camera
@@ -72,7 +73,7 @@ camera,GetProperties,,get_properties,Properties,properties,getProperties
 camera,DoCommand,,do_command,DoCommand,doCommand,doCommand
 camera,GetGeometries,,get_geometries,Geometries,,getGeometries
 ## HACK:  proto for close, manually mapping:
-camera,GetResourceName,,get_resource_name,,getResourceName,
+camera,GetResourceName,,get_resource_name,Name,getResourceName,name
 camera,Close,,close,Close,,
 
 ## Encoder
@@ -83,7 +84,7 @@ encoder,GetGeometries,No,get_geometries,,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 encoder,Reconfigure,No,,Reconfigure,,
 encoder,DoCommand,Yes,do_command,DoCommand,,doCommand
-encoder,GetResourceName,No,get_resource_name,,,
+encoder,GetResourceName,No,get_resource_name,Name,,name
 encoder,Close,No,close,Close,,
 
 ## Gantry
@@ -99,16 +100,16 @@ gantry,Stop,,stop,Stop,stop,stop
 gantry,Reconfigure,,,Reconfigure,,
 gantry,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gantry,GetKinematics,,,Kinematics,,
-gantry,GetResourceName,,get_resource_name,,getResourceName,
+gantry,GetResourceName,,get_resource_name,Name,getResourceName,name
 gantry,Close,,close,Close,,
 
 ## Generic Component
 ## NOTED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_component,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
 generic_component,GetGeometries,No,get_geometries,,,getGeometries
+generic_component,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
 ## HACK: No proto for close, manually mapping:
 ## NOTED: Go SDK also missing Close, but we have it in our docs?:
-generic_component,GetResourceName,No,get_resource_name,,getResourceName,
+generic_component,GetResourceName,No,get_resource_name,Name,getResourceName,name
 generic_component,Close,No,close,,,
 
 ## Gripper
@@ -122,7 +123,7 @@ gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gripper,GetKinematics,,get_kinematics,Kinematics,getKinematics,
-gripper,GetResourceName,,get_resource_name,,getResourceName,
+gripper,GetResourceName,,get_resource_name,Name,getResourceName,name
 gripper,Close,,close,Close,,
 
 ## Input Controller
@@ -137,7 +138,7 @@ input_controller,RegisterControlCallback,,register_control_callback,RegisterCont
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 input_controller,Reconfigure,,,Reconfigure,,
 input_controller,DoCommand,,do_command,DoCommand,,
-input_controller,GetResourceName,,get_resource_name,,,
+input_controller,GetResourceName,,get_resource_name,Name,,name
 input_controller,Close,,close,Close,,
 
 ## Motor
@@ -156,7 +157,7 @@ motor,Stop,Yes,stop,Stop,stop,stop
 motor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 motor,DoCommand,,do_command,DoCommand,doCommand,doCommand
-motor,GetResourceName,No,get_resource_name,,getResourceName,
+motor,GetResourceName,No,get_resource_name,Name,getResourceName,name
 motor,Close,No,close,Close,,
 
 ## Movement Sensor
@@ -174,7 +175,7 @@ movement_sensor,GetGeometries,No,get_geometries,,,
 movement_sensor,GetReadings,Yes,get_readings,Readings,readings,getReadings
 movement_sensor,Reconfigure,No,,Reconfigure,,
 movement_sensor,DoCommand,Yes,do_command,DoCommand,doCommand,doCommand
-movement_sensor,GetResourceName,No,get_resource_name,,getResourceName,
+movement_sensor,GetResourceName,No,get_resource_name,Name,getResourceName,name
 movement_sensor,Close,No,close,Close,,
 
 ## Power Sensor
@@ -188,7 +189,7 @@ power_sensor,GetReadings,,get_readings,Readings,readings,getReadings
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 power_sensor,Reconfigure,,,Reconfigure,,
 power_sensor,DoCommand,,do_command,DoCommand,doCommand,doCommand
-power_sensor,GetResourceName,,get_resource_name,,getResourceName,
+power_sensor,GetResourceName,,get_resource_name,Name,getResourceName,name
 power_sensor,Close,,close,Close,,
 
 ## Sensor
@@ -199,7 +200,7 @@ sensor,GetGeometries,,get_geometries,,,
 sensor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 sensor,DoCommand,,do_command,DoCommand,doCommand,doCommand
-sensor,GetResourceName,No,get_resource_name,,getResourceName,
+sensor,GetResourceName,No,get_resource_name,Name,getResourceName,name
 sensor,Close,No,close,Close,,
 
 ## Servo
@@ -212,7 +213,7 @@ servo,Stop,Yes,stop,Stop,stop,stop
 servo,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 servo,DoCommand,,do_command,DoCommand,doCommand,doCommand
-servo,GetResourceName,No,get_resource_name,,getResourceName,
+servo,GetResourceName,No,get_resource_name,Name,getResourceName,name
 servo,Close,No,close,Close,,
 
 ## Switch
@@ -220,6 +221,7 @@ switch,SetPosition,Yes,set_position,SetPosition,,setPosition
 switch,GetPosition,Yes,get_position,GetPosition,,getPosition
 switch,GetNumberOfPositions,Yes,get_number_of_positions,GetNumberOfPositions,,getNumberOfPositions
 switch,DoCommand,Yes,do_command,DoCommand,,doCommand
+switch,GetResourceName,No,get_resource_name,Name,,name
 switch,Close,No,close,Close,,
 
 ## Base Remote Control
@@ -228,6 +230,7 @@ base_remote_control,ControllerInputs,,,ControllerInputs,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 base_remote_control,Reconfigure,,,Reconfigure,,
 base_remote_control,DoCommand,,,DoCommand,,
+base_remote_control,GetResourceName,,,Name,,
 base_remote_control,Close,,,Close,,
 
 ## Data Manager
@@ -235,14 +238,15 @@ data_manager,Sync,No,,Sync,,sync
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 data_manager,Reconfigure,No,,Reconfigure,,
 data_manager,DoCommand,No,,DoCommand,,doCommand
+data_manager,GetResourceName,No,,Name,,name
 data_manager,Close,No,,Close,,
 
 ## Generic Service
 ## TED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
 generic_service,DoCommand,,do_command,DoCommand,,doCommand
-generic_service,GetResourceName,,get_resource_name,,,
 ## HACK:  proto for close, manually mapping:
 ## TED: Go SDK also missing Close, but we have it in our docs?:
+generic_service,GetResourceName,,get_resource_name,Name,,name
 generic_service,Close,,close,,,
 
 ## MLModel
@@ -266,7 +270,7 @@ motion,GetPlan,,get_plan,PlanHistory,,getPlan
 motion,Reconfigure,,,Reconfigure,,
 motion,FromRobot,,from_robot,,,
 motion,DoCommand,,do_command,DoCommand,,doCommand
-motion,GetResourceName,,get_resource_name,,,
+motion,GetResourceName,,get_resource_name,Name,,name
 motion,Close,,close,Close,,
 
 ## Navigation
@@ -282,7 +286,7 @@ navigation,GetProperties,,get_properties,Properties,,getProperties
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 navigation,Reconfigure,,,Reconfigure,,
 navigation,DoCommand,,do_command,DoCommand,,doCommand
-navigation,GetResourceName,,get_resource_name,,,
+navigation,GetResourceName,,get_resource_name,Name,,name
 navigation,Close,,close,Close,,
 
 ## SLAM
@@ -298,7 +302,7 @@ slam,PointCloudMapFull,,,PointCloudMapFull,,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 slam,Reconfigure,,,Reconfigure,,
 slam,DoCommand,,do_command,DoCommand,,doCommand
-slam,GetResourceName,,get_resource_name,,,
+slam,GetResourceName,,get_resource_name,Name,,name
 slam,Close,,close,Close,,
 
 ## Vision
@@ -311,7 +315,7 @@ vision,CaptureAllFromCamera,,capture_all_from_camera,CaptureAllFromCamera,,captu
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 vision,Reconfigure,,,Reconfigure,,
 vision,DoCommand,,do_command,DoCommand,doCommand,doCommand
-vision,GetResourceName,,get_resource_name,,getResourceName,
+vision,GetResourceName,,get_resource_name,Name,getResourceName,name
 vision,GetProperties,,get_properties,GetProperties,properties,getProperties
 vision,Close,,close,Close,,
 
@@ -495,6 +499,6 @@ robot,Options.with_api_key,,with_api_key,,,
 robot,AtAddress,,at_address,,atAddress,
 robot,WithChannel,,with_channel,,,
 robot,Refresh,,refresh,,refresh,
-robot,Shutdown,Yes,shutdown,Shutdown,,
+robot,Shutdown,,shutdown,Shutdown,,
 ## HACK:  proto for close, manually mapping:
 robot,Close,,close,Close,close,
