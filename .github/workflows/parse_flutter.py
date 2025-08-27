@@ -11,7 +11,8 @@ flutter_resource_overrides = {
     "robot": "RobotClient",
     "data": "DataClient",
     "dataset": "DataClient",
-    "data_sync": "DataClient"
+    "data_sync": "DataClient",
+    "discovery": "DiscoveryClient"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
