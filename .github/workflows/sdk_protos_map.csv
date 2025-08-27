@@ -458,7 +458,7 @@ data_sync,FileUploadFromPath,,file_upload_from_path,,,
 data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,streamingDataCaptureUpload,
 
 ## Discovery
-discovery,DiscoverResources,,discover_resources,DiscoverResources,,discoverResources
+discovery,DiscoverResources,,discover_resources,DiscoverResources,discoverResources,discoverResources
 
 ## MLTraining
 mltraining,SubmitTrainingJob,,submit_training_job,SubmitTrainingJob,,submitTrainingJob
