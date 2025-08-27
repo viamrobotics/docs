@@ -736,7 +736,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `moduleId` (string) (optional): The id matching the module\_id field of the registry
+- `moduleId` (string) (optional): The id matching the module_id field of the registry
   module in your part configuration.
 - `moduleName` (string) (optional): The name matching the name field of the local/registry
   module in your part configuration.
