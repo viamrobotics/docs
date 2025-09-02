@@ -121,6 +121,7 @@ jobs:
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
         VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
         VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+        TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
 
     - name: Set up Go
       uses: actions/setup-go@v5
@@ -197,6 +198,7 @@ jobs:
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
         VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
         VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+        TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -264,6 +266,7 @@ jobs:
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
         VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
         VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+        TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
 
     - name: Stop viam-server
       if: always()  # This ensures cleanup runs even if tests fail
