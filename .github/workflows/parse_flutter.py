@@ -5,6 +5,7 @@ from markdownify import markdownify as md
 ## Language-specific resource name overrides:
 flutter_resource_overrides = {
     "generic_component": "Generic",
+    "generic_service": "GenericServiceClient",
     "movement_sensor": "MovementSensor",
     "power_sensor": "PowerSensor",
     "vision": "VisionClient",
@@ -49,7 +50,7 @@ class FlutterParser:
         # Skip resources not supported in Flutter
         unsupported_resources = [
             "base_remote_control", "encoder", "input_controller",
-            "data_manager", "generic_service", "mlmodel", "motion",
+            "data_manager", "mlmodel", "motion",
             "navigation", "slam", "switch", "app", "billing", "mltraining"
         ]
 
