@@ -54,6 +54,13 @@ See [Schedule automated jobs](/manage/software/scheduled-jobs/) for configuratio
 
 {{% /changelog %}}
 
+{{% changelog color="added" title="Merge datasets" date="2025-08-11" %}}
+
+You can now merge datasets to combine their data into a new dataset using the web UI.
+For more information, see [Merge datasets](/data-ai/train/create-dataset/#merge-datasets).
+
+{{% /changelog %}}
+
 {{% changelog color="removed" title="Deprecated: AddTagsToBinaryDataByFilter and RemoveTagsFromBinaryDataByFilter" date="2025-08-07" %}}
 
 The methods `AddTagsToBinaryDataByFilter` and `RemoveTagsFromBinaryDataByFilter` are deprecated.
