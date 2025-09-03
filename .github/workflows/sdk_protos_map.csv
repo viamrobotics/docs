@@ -243,10 +243,10 @@ data_manager,Close,No,,Close,,
 
 ## Generic Service
 ## TED:Generic Component in Go SDK doesn't appear to implement (inherit) these:
-generic_service,DoCommand,,do_command,DoCommand,,doCommand
+generic_service,DoCommand,,do_command,DoCommand,doCommand,doCommand
 ## HACK:  proto for close, manually mapping:
 ## TED: Go SDK also missing Close, but we have it in our docs?:
-generic_service,GetResourceName,,get_resource_name,Name,,name
+generic_service,GetResourceName,,get_resource_name,Name,getResourceName,name
 generic_service,Close,,close,,,
 
 ## MLModel

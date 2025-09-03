@@ -34,7 +34,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*GetCurrentMonthUsageResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetCurrentMonthUsageResponse)
+- [(*GetCurrentMonthUsageResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetCurrentMonthUsageResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetCurrentMonthUsage).
@@ -53,7 +53,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const usage = await billing.getCurrentMonthUsage("<organization-id>");
+const usage = await billing.getCurrentMonthUsage('<organization-id>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getcurrentmonthusage).
@@ -96,7 +96,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*GetOrgBillingInformationResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetOrgBillingInformationResponse)
+- [(*GetOrgBillingInformationResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetOrgBillingInformationResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetOrgBillingInformation).
@@ -115,7 +115,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const billingInfo = await billing.getOrgBillingInformation("<organization-id>");
+const billingInfo = await billing.getOrgBillingInformation(
+  '<organization-id>'
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getorgbillinginformation).
@@ -159,7 +161,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(float64)](https://pkg.go.dev/builtin#float64)
-- [([]\*InvoiceSummary)](https://pkg.go.dev/go.viam.com/rdk/app#InvoiceSummary)
+- [([]*InvoiceSummary)](https://pkg.go.dev/go.viam.com/rdk/app#InvoiceSummary)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetInvoicesSummary).
@@ -178,7 +180,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const invoicesSummary = await billing.getInvoicesSummary("<organization-id>");
+const invoicesSummary = await billing.getInvoicesSummary(
+  '<organization-id>'
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicessummary).
@@ -245,8 +249,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const invoicePdf = await billing.getInvoicePdf(
-  "<invoice-id>",
-  "<organization-id>",
+  '<invoice-id>',
+  '<organization-id>'
 );
 ```
 
