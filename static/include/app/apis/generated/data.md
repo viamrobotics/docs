@@ -2833,3 +2833,25 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### RenameDataPipeline
+
+Rename a [data pipeline](/data-ai/data/data-pipelines/).
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RenameDataPipeline).
+
+{{% /tab %}}
+{{< /tabs >}}

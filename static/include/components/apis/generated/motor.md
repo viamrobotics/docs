@@ -735,7 +735,8 @@ Stepper motors will report `true` if they are being powered while holding a posi
 
 **Returns:**
 
-- (Tuple[[bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): A tuple containing two values; the first \[0] value indicates whether the motor is currently powered, andthe second \[1] value indicates the current power percentage of the motor.
+- (Tuple[[bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool), [float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]): A tuple containing two values; the first \[0] value indicates whether the motor is currently powered, and
+the second \[1] value indicates the current power percentage of the motor.
 
 **Example:**
 

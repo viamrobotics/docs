@@ -34,7 +34,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*GetCurrentMonthUsageResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetCurrentMonthUsageResponse)
+- [(\*GetCurrentMonthUsageResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetCurrentMonthUsageResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetCurrentMonthUsage).
@@ -53,7 +53,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const usage = await billing.getCurrentMonthUsage('<organization-id>');
+const usage = await billing.getCurrentMonthUsage("<organization-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getcurrentmonthusage).
@@ -96,7 +96,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(*GetOrgBillingInformationResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetOrgBillingInformationResponse)
+- [(\*GetOrgBillingInformationResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetOrgBillingInformationResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetOrgBillingInformation).
@@ -115,9 +115,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const billingInfo = await billing.getOrgBillingInformation(
-  '<organization-id>'
-);
+const billingInfo = await billing.getOrgBillingInformation("<organization-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getorgbillinginformation).
@@ -161,7 +159,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(float64)](https://pkg.go.dev/builtin#float64)
-- [([]*InvoiceSummary)](https://pkg.go.dev/go.viam.com/rdk/app#InvoiceSummary)
+- [([]\*InvoiceSummary)](https://pkg.go.dev/go.viam.com/rdk/app#InvoiceSummary)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#BillingClient.GetInvoicesSummary).
@@ -180,9 +178,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const invoicesSummary = await billing.getInvoicesSummary(
-  '<organization-id>'
-);
+const invoicesSummary = await billing.getInvoicesSummary("<organization-id>");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicessummary).
@@ -249,12 +245,41 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const invoicePdf = await billing.getInvoicePdf(
-  '<invoice-id>',
-  '<organization-id>'
+  "<invoice-id>",
+  "<organization-id>",
 );
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicepdf).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### CreateInvoiceAndChargeImmediately
+
+Create a flat fee invoice and charge the organization immediately. The caller must be an owner of the organization being charged. This function blocks until payment is confirmed, but will time out after 2 minutes if there is no confirmation.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id_to_charge` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the organization to charge.
+- `amount` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): the amount to charge in dollars.
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a short description of the charge to display on the invoice PDF (must be 100 characters or less).
+- `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the organization whose branding to use in the invoice confirmation email.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await billing_client.create_invoice_and_charge_immediately("<ORG-ID-TO-CHARGE>", <AMOUNT>, <DESCRIPTION>, "<ORG-ID-FOR-BRANDING>")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.create_invoice_and_charge_immediately).
 
 {{% /tab %}}
 {{< /tabs >}}

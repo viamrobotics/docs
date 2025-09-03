@@ -309,7 +309,8 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current inamperes (float), is\_ac (bool), and power in watts (float).
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current in
+amperes (float), is\_ac (bool), and power in watts (float).
 
 **Example:**
 
