@@ -224,6 +224,14 @@ These connections can come from modules or other scripts and apps.
 You can check operations and sessions for a machine on its **CONTROL** tab at the bottom of the screen.
 To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 100.
 
+### Error while dialing app
+
+**Full Error:** `error while dialing app. Could not establish global, unified connection`
+
+**Description:** This error occurs when a machine cannot establish a connection to Viam within the timeout window, by default 15 seconds.
+
+**Solution:** To adjust the initial app connection timeout, you can set the `VIAM_CONFIG_READ_TIMEOUT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 15.
+
 ### exceeded request limit on resource
 
 **Full Error:**
