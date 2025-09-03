@@ -36,7 +36,7 @@ Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
 
 Once your data has synced, you can query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
 
-You must have the [owner role](/manage/manage/rbac/) in order to query data on Viam.
+You must have the [owner role](/manage/manage/rbac/) to query data on Viam.
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
@@ -46,13 +46,15 @@ You must have the [owner role](/manage/manage/rbac/) in order to query data on V
 **Query with SQL or MQL**
 
 Navigate to the [**Query** page](https://app.viam.com/data/query).
-Then, select either **SQL** or **MQL** from the **Query mode** dropdown menu on the right-hand side.
+Then, select either **SQL** or **MQL**.
+
+Optionally, you can change the data source to query from to a configured [hot data store](/data-ai/data/hot-data-store/).
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **Run your query**
 
-This example query returns the last 5 readings from any components named `my-sensor` in your organization:
+This example query returns the last 5 readings from any components named `sensor-1` in your organization:
 
 {{< tabs >}}
 {{% tab name="SQL" %}}
@@ -65,12 +67,40 @@ WHERE component_name = 'sensor-1' LIMIT 5
 {{% /tab %}}
 {{% tab name="MQL" %}}
 
+Select the **Stages** or **Text** mode:
+
+{{< tabs >}}
+{{% tab name="Stages" %}}
+
+1. Select the `$match` stage for **Stage 1** from the dropdown.
+1. Add the expression to match against:
+
+   ```json
+   { "component_name": "sensor-1" }
+   ```
+
+1. Click **+ Add query stage** to add another aggregation stage.
+1. Select the `$limit` stage for **Stage 2** from the dropdown.
+1. Add the number of documents to limit to:
+
+   ```json
+   5
+   ```
+
+{{% /tab %}}
+{{% tab name="Text" %}}
+
+Add the query in the text field:
+
 ```mql
 [
     { "$match": { "component_name": "sensor-1" } },
     { "$limit": 5 }
 ]
 ```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -207,7 +237,8 @@ WHERE component_name = 'sensor-1'
 **Review results**
 
 Click **Run query** when ready to perform your query and get matching results.
-You can view your query results in a table or as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
+You can view your query results as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
+Click the table icon, to switch to table view.
 
 {{% /tablestep %}}
 {{< /table >}}
