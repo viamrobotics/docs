@@ -208,3 +208,16 @@ We have two datasets you can use for testing, one with shapes and the other with
 1. Use the above script.
 
 {{% /expand%}}
+
+## Merge datasets
+
+You can combine two datasets to create a new dataset using the web UI:
+
+1. Navigate to the **DATA** page and open the [**DATASETS** tab](https://app.viam.com/data/datasets).
+1. Right-click on the **...** menu on the dataset.
+1. Select **Merge...** from the context menu.
+1. Choose the dataset you want to merge with from the dropdown menu.
+1. Enter a name for the new merged dataset.
+1. Click **Merge datasets** to create the new combined dataset.
+   The original datasets remain unchanged after merging.
+   The merge operation creates a new dataset containing all the data from both source datasets.
