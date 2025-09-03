@@ -132,7 +132,7 @@ func main() {
 
 	// Create organization invite
 	_, err = cloud.CreateOrganizationInvite(
-    ctx, ORG_ID, testEmail, []*app.Authorization{},
+    ctx, ORG_ID, TEST_EMAIL, []*app.Authorization{},
     &app.CreateOrganizationInviteOptions{
 		  SendEmailInvite: boolPtr(true),
 	  })
@@ -147,13 +147,13 @@ func main() {
 	if len(invitesList) != 1 {
 		logger.Fatal("Expected 1 invite")
 	}
-	if invitesList[0].Email != testEmail {
+	if invitesList[0].Email != TEST_EMAIL {
 		logger.Fatal("Invite email mismatch")
 	}
 
 	// Update organization invite authorizations
 	updateInvite, err := cloud.UpdateOrganizationInviteAuthorizations(
-    ctx, ORG_ID, testEmail,
+    ctx, ORG_ID, TEST_EMAIL,
     []*app.Authorization{
       {
         AuthorizationType: "role",

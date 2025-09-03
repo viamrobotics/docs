@@ -25,8 +25,6 @@ API_KEY = os.environ["VIAM_API_KEY"]
 API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
 LOCATION_ID = "pg5q3j3h95"
 TEST_EMAIL = os.environ["TEST_EMAIL"]
-MACHINE_ID = "5ec7266e-f762-4ea8-9c29-4dd592718b48"
-PART_ID = "deb8782c-7b48-4d35-812d-2caa94b61f77"
 # :remove-end:
 
 async def connect() -> ViamClient:

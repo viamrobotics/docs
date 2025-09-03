@@ -25,6 +25,9 @@ func main() {
 	API_KEY = os.Getenv("VIAM_API_KEY")
 	API_KEY_ID = os.Getenv("VIAM_API_KEY_ID")
 	LOCATION_ID = "pg5q3j3h95"
+	MACHINE_ID := "5ec7266e-f762-4ea8-9c29-4dd592718b48"
+	PART_ID := "deb8782c-7b48-4d35-812d-2caa94b61f77"
+
 	// :remove-end:
 	logger := logging.NewDebugLogger("client")
 	ctx := context.Background()
@@ -40,10 +43,6 @@ func main() {
 	// Instantiate an AppClient called "cloud"
 	// to run fleet management API methods on
 	cloud := viamClient.AppClient()
-
-	// Test constants
-	MACHINE_ID := "5ec7266e-f762-4ea8-9c29-4dd592718b48"
-	PART_ID := "deb8782c-7b48-4d35-812d-2caa94b61f77"
 
 	// Get robot
 	robot, err := cloud.GetRobot(ctx, MACHINE_ID)
@@ -162,7 +161,7 @@ func main() {
 		},
 	}
 
-	updatedPart, err := cloud.UpdateRobotPart(ctx, PART_ID, "test-part", robotConfig)
+	updatedPart, err := cloud.UpdateRobotPart(ctx, newPartID, "test-part", robotConfig)
 	if err != nil {
 		logger.Fatal(err)
 	}

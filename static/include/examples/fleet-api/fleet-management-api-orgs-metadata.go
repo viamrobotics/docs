@@ -177,7 +177,7 @@ func main() {
 	// }
 
 	// Upload organization logo
-	logoData, err := os.ReadFile("fleet-api/logoipsum-395.png")
+	logoData, err := os.ReadFile("static/include/examples/fleet-api/logoipsum-395.png")
 	if err != nil {
 		logger.Fatal(err)
 	}
