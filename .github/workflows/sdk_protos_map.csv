@@ -410,6 +410,7 @@ billing,GetCurrentMonthUsage,,get_current_month_usage,GetCurrentMonthUsage,,getC
 billing,GetOrgBillingInformation,,get_org_billing_information,GetOrgBillingInformation,,getOrgBillingInformation
 billing,GetInvoicesSummary,,get_invoices_summary,GetInvoicesSummary,,getInvoicesSummary
 billing,GetInvoicePDF,,get_invoice_pdf,GetInvoicePDF,,getInvoicePdf
+billing,CreateInvoiceAndChargeImmediately,,create_invoice_and_charge_immediately,,,
 
 ## Data
 data,GetLatestTabularData,,get_latest_tabular_data,GetLatestTabularData,getLatestTabularData,getLatestTabularData
@@ -437,6 +438,7 @@ data,ListDataPipelines,,list_data_pipelines,ListDataPipelines,,listDataPipelines
 data,CreateDataPipeline,,create_data_pipeline,CreateDataPipeline,,createDataPipeline
 data,DeleteDataPipeline,,delete_data_pipeline,DeleteDataPipeline,,deleteDataPipeline
 data,ListDataPipelineRuns,,list_data_pipeline_runs,ListDataPipelineRuns,,listDataPipelineRuns
+data,RenameDataPipeline,,,RenameDataPipeline,,
 
 ## Dataset
 dataset,CreateDataset,,create_dataset,CreateDataset,createDataset,createDataset

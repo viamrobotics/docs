@@ -1,0 +1,1 @@
+Create a flat fee invoice and charge the organization immediately. The caller must be an owner of the organization being charged. This function blocks until payment is confirmed, but will time out after 2 minutes if there is no confirmation.

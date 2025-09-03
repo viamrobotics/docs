@@ -26,3 +26,4 @@
 | [`CreateDataPipeline`](/dev/reference/apis/data-client/#createdatapipeline) | Create a data pipeline. |
 | [`DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) | Delete a data pipeline, its execution history, and all of its output data. |
 | [`ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) | Get information about individual executions of a data pipeline. |
+| [`RenameDataPipeline`](/dev/reference/apis/data-client/#renamedatapipeline) | Rename a data pipeline. |

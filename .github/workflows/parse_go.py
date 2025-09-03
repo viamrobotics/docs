@@ -34,7 +34,9 @@ go_ignore_apis = [
     'robot.OperationManager', # robot method
     'robot.SessionManager', # robot method
     'robot.PackageManager', # robot method
-    'robot.Logger' # robot method
+    'robot.Logger', # robot method
+    'app.RemoveTagsFromBinaryDataByFilter', # to be deprecated
+    'app.AddTagsToBinaryDataByFilter' # to be deprecated
 ]
 
 go_ignore_app_apis = [

@@ -5367,7 +5367,7 @@ Rotate an [API key](/operate/control/api-keys/#rotate-an-api-key).
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-id, key = await cloud.rotate_key("key-id")
+key, id = await cloud.rotate_key("key-id")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.rotate_key).

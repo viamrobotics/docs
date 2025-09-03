@@ -726,8 +726,18 @@ def check_for_unused_methods(methods, type):
                         if go_method_name in methods['go'][type][resource]:
                             methods['go'][type][resource][go_method_name]["used"] = True
                         else:
-                            print(f"WARNING: {type} {resource} {go_method_name} is specified in SDK protos map but not found in Go SDK docs")
-                            warnings = True
+                            if resource is "app" and go_method_name not in [
+                                "MachineStatus",
+                                "ResourceNames",
+                                "GetModelsFromModules",
+                                "StopAll",
+                                "RestartModule",
+                                "CloudMetadata",
+                                "Version",
+                                "Shutdown"
+                            ]:
+                                print(f"WARNING: {type} {resource} {go_method_name} is specified in SDK protos map but not found in Go SDK docs")
+                                warnings = True
 
                 if flutter_method_name:
                     if 'flutter' in sdks and resource in methods['flutter'][type]:
@@ -751,8 +761,8 @@ def check_for_unused_methods(methods, type):
                 if not "used" in methods[lang][type][resource][method].keys():
                     if resource in ["data_sync", "dataset", "data"]:
                         continue
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command"] or \
-                        lang == "go" and method not in ["Reconfigure", "Stream", "ListTunnels", "Close", "DoCommand", "CurrentPosition"] or \
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto"] or \
+                        lang == "go" and method not in ["Reconfigure", "Stream", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
                         print(f"WARNING: {lang} {type} {resource} {method} is unused")
