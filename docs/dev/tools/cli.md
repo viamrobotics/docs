@@ -836,7 +836,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
-| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `get-ftdc`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. |
+| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `get-ftdc`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. Once downloaded you can use the `viam parse-ftdc` command to inspect the data. |
 | `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
@@ -1476,6 +1476,29 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
 | `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | **Required** |
 | `--destination` | The output directory for downloaded package. | `export` | **Required** |
+
+### `parse-ftdc`
+
+The `parse-ftdc` command allows you to parse an FTDC file and open a REPL with extra options to inspect the data.
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part get-ftdc --part=<part-id> ftdc-data
+viam parse-ftdc --path ftdc-tmp/<part-id>/viam-server-<date>-<time>.ftdc
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description | Positional arguments |
+| -------------- | ----------- | -------------------- |
+| `--help` | Return help. | - |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--path` | The absolute file path to the FTDC file. | **Required** |
 
 ### `profiles`
 
