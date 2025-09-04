@@ -102,9 +102,12 @@ class TypeScriptParser:
                     if (len(property_description.split('\n')) > 1):
                         property_description = property_description.replace('\n', '\n  ').rstrip()
 
+                return_type = property.find('span', class_="tsd-signature-type").text
+                # Remove extra whitespace
+                return_type = " ".join(return_type.split())
                 return_object = {
                     'return_description': property_description,
-                    'return_type': property.find('span', class_="tsd-signature-type").text,
+                    'return_type': return_type,
                     'return_usage': property.find('span', class_="tsd-signature-type").text
                 }
 
@@ -151,6 +154,7 @@ class TypeScriptParser:
                         }
 
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
+                returns = " ".join(returns.split())
                 return_description = ""
                 if method.find('h4', class_="tsd-returns-title").next_sibling:
                     if not method.find('h4', class_="tsd-returns-title").next_sibling.get('class'):
