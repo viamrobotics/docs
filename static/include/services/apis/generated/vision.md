@@ -716,7 +716,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<    {        classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[];        detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[];        extra: undefined        | [Struct](https://ts.viam.dev/classes/Struct.html);        image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html);        objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[];    },>): * The requested image, classifications, detections, and 3d point
+- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html); image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html); objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; },>): * The requested image, classifications, detections, and 3d point
 cloud objects.
 
 **Example:**
@@ -1004,7 +1004,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<    {        classificationsSupported: boolean;        detectionsSupported: boolean;        objectPointCloudsSupported: boolean;    },>): * The properties of the vision service.
+- (Promise< { classificationsSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean; },>): * The properties of the vision service.
 
 **Example:**
 
