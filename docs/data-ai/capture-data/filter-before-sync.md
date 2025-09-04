@@ -8,12 +8,15 @@ description: "Use filtering to collect and sync only certain images."
 aliases:
   - /how-tos/image-data/
   - /tutorials/projects/filtered-camera/
+updated: "2025-09-04"
 ---
 
-You can use filtering to selectively capture images using a machine learning (ML) model, for example to only capture images with people or specific objects in them.
+You can use filtering to selectively capture only images that contain certain objects or people, using a machine learning (ML) model.
 
 Contributors have written several filtering {{< glossary_tooltip term_id="module" text="modules" >}} that you can use to filter image capture.
-The following steps use the [`filtered_camera`](https://app.viam.com/module/viam/filtered-camera) module:
+The following steps use the [`filtered_camera`](https://app.viam.com/module/viam/filtered-camera) module.
+
+If you want to create your own filtering module, see [Create a Data Filtering Module](/tutorials/configure/pet-photographer/).
 
 {{< table >}}
 {{% tablestep start=1 %}}
