@@ -110,7 +110,6 @@ class TypeScriptParser:
                     'return_type': return_type,
                     'return_usage': property.find('span', class_="tsd-signature-type").text
                 }
-                print(return_object)
 
                 self.typescript_methods[type][resource][property_name] = {
                     'method_description': "",
