@@ -85,6 +85,17 @@ Provide at least the width and height values to start.
 
 {{% /expand%}}
 
+{{% expand "Resource locking" %}}
+
+If you are using the Camera API in conjunction with tools like OpenCV, you can not grab images using the third party tool from the camera device while in use with the Camera API.
+
+If you are running into this issue, consider the following solutions:
+
+- using the Camera API to get images and then passing them to your third party tool.
+- run a `viam-server` on a more powerful machine and configure it as a {{< glossary_tooltip term_id="remote-part" text="remote part" >}} with a vision service to evaluate images.
+
+{{% /expand%}}
+
 ## Next steps
 
 For general configuration, development, and usage info, see:
