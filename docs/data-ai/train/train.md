@@ -530,7 +530,7 @@ if __name__ == "__main__":
 <p>When a training script is run, the Viam platform passes the dataset file for the training and the designated model output directory to the script.</p>
 <p>The template contains functionality to parse the command line inputs and parse annotations from the dataset file.</p>
 
-{{% expand "Click for more information on parsing command line inputs." %}}
+{{% expand "Click to see more information on parsing command line inputs." %}}
 
 The script you are creating must take the following command line inputs:
 
@@ -547,7 +547,7 @@ You can add additional custom command line inputs by adding them to the `parse_a
 
 {{% /expand %}}
 
-{{% expand "Click for more information on parsing annotations from the dataset file." %}}
+{{% expand "Click to see more information on parsing annotations from the dataset file." %}}
 
 When you submit a training job to the Viam Cloud, Viam will pass a `dataset_file` to the training script when you train an ML model with it.
 The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
@@ -634,6 +634,13 @@ Fill in the `build_and_compile_model` function.
 In this part of the script, you use data and annotations from the dataset file to build an ML model.
 
 As an example, you can refer to the logic from <file>model/training.py</file> from this [example classification training script](https://github.com/viam-modules/classification-tflite) that trains a classification model using TensorFlow and Keras.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Use temporary directory for intermediary files**
+
+If you need to create intermediate or other temporary files, you can write those files to `model_output_directory/tmp`.
+Files in `model_output_directory/tmp` do not get uploaded as part of the final model artifact.
 
 {{% /tablestep %}}
 {{% tablestep %}}
