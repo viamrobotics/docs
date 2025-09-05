@@ -273,6 +273,7 @@ sensorData.readings.aggregate([
 ```
 
 See the [guide on querying data](/data-ai/data/query/) for more information.
+For optimal performance when querying large datasets, see the [query optimization and performance best practices](/data-ai/data/query/#query-optimization-and-performance-best-practices) section.
 
 <!-- markdownlint-disable-file MD034 -->
 

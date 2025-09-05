@@ -1,6 +1,6 @@
 ---
-linkTitle: "Aggregate data automatically"
-title: "Aggregate data automatically"
+linkTitle: "Pre-compute data pipelines"
+title: "Pre-compute data pipelines"
 weight: 25
 description: "Create scheduled data pipelines that automatically aggregate and process data."
 type: "docs"
