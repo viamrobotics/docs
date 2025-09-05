@@ -1,4 +1,4 @@
-- At least 15 images
+- At least 15 images, more images result in better models
 - At least 80% of the images have labels
 - For each training label, at least 10 examples
 
