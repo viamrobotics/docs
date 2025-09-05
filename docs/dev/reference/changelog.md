@@ -102,6 +102,13 @@ You can now configure to start modules with a TCP connection. See [Module Config
 
 {{% /changelog %}}
 
+{{% changelog color="added" title="Auto-predictions UI for dataset annotation" date="2025-07-11" %}}
+
+You can now automatically tag your dataset images using existing ML models with the new auto-predictions feature.
+For more information, see [Capture and annotate images](/data-ai/train/capture-annotate-images/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
 
 You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.

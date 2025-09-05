@@ -53,7 +53,7 @@ To view images added to your dataset, go to the **DATA** page, open the [**DATAS
 To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`data_client.binary_data_capture_upload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="44-55" >}}
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="42-55" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -112,6 +112,24 @@ If you have an ML model, use code to speed up annotating your data, otherwise us
 {{< tabs >}}
 {{% tab name="Web UI" %}}
 
+You can tag your data automatically with an existing ML model, if you have one, or manually:
+
+{{< tabs >}}
+{{% tab name="Automatic" %}}
+
+1. Navigate to your [dataset's](https://app.viam.com/datasets/) page.
+1. Click on **Get auto-predictions**.
+1. **Select** a classification model to generate predictions with.
+1. Set the **confidence threshold** above which to create a label prediction.
+1. Click **Get predictions**.
+1. Once predictions have finished generating, click on **Review predictions**.
+1. For each image, **Accept (A)** or **Reject (R)** each prediction.
+
+   {{<imgproc src="/data-ai/review-ui.png" resize="1200x" class="imgzoom shadow" declaredimensions=true alt="UI for reviewing predictions">}}
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
 The [**DATA** page](https://app.viam.com/data/view) provides an interface for annotating images.
 
 To tag an image:
@@ -121,7 +139,10 @@ To tag an image:
 
    {{<gif webm_src="/services/data/tag-star.webm" mp4_src="/services/data/tag-star.mp4" alt="Tag image with a full label">}}
 
-Repeat these steps for all images in the dataset.
+1. Repeat these steps for all images in the dataset.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -165,6 +186,24 @@ If you have an ML model, use code to speed up annotating your data, otherwise us
 {{< tabs >}}
 {{% tab name="Web UI" %}}
 
+You can label your data automatically with an existing ML model, if you have one, or manually:
+
+{{< tabs >}}
+{{% tab name="Automatic" %}}
+
+1. Navigate to your [dataset's](https://app.viam.com/datasets/) page.
+1. Click on **Get auto-predictions**.
+1. **Select** a object detection model to generate predictions with.
+1. Set the **confidence threshold** above which to create a label prediction.
+1. Click **Get predictions**.
+1. Once predictions have finished generating, click on **Review predictions**.
+1. For each image, **Accept (A)** or **Reject (R)** each prediction.
+
+   {{<imgproc src="/data-ai/review-ui-detection.png" resize="1200x" class="imgzoom shadow" declaredimensions=true alt="UI for reviewing predictions">}}
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
 The [**DATA** page](https://app.viam.com/data/view) provides an interface for annotating images.
 
 To label an object with a bounding box:
@@ -175,13 +214,14 @@ To label an object with a bounding box:
 
    {{<gif webm_src="/services/data/label-figure.webm" mp4_src="/services/data/label-figure.mp4" alt="Add a bounding box around the viam figure in an image">}}
 
+1. Repeat these steps for all images in the dataset.
+
 {{< alert title="Tip" color="tip" >}}
-
 Once created, you can move, resize, or delete the bounding box.
-
 {{< /alert >}}
 
-Repeat these steps for all images in the dataset.
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Python" %}}
