@@ -1,7 +1,7 @@
 ---
 linkTitle: "Query data"
 title: "Query data"
-weight: 30
+weight: 22
 layout: "docs"
 type: "docs"
 aliases:
@@ -424,6 +424,31 @@ db.readings.aggregate(
 For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/data-ai/reference/data-client/) or [visualize it](/data-ai/data/visualize/).
+
+## Query optimization and performance best practices
+
+1. When querying large datasets, whether from default storage or a [hot data store](/data-ai/data/hot-data-store/), you can improve the query's efficiency by specifying the following parameters in the query:
+
+   - `organization_id`
+   - `location_id`
+   - `machine_id`
+   - `part_id`
+   - `component_type`
+   - `component_name`
+   - `method_name`
+   - `date`
+
+   Viam stores data in blob storage using the pattern `/{organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/time_received/*`.
+   The more specific you can be, starting with the beginning of the path, the faster your query.
+
+1. Filter and reduce the amount of data that needs to be processed early, especially when your query expands the data it works with by using operators like `$limit` and `$unwind`.
+   If you don't need all fields, use `$project` early to reduce the fields in the processing dataset.
+   If you only need a certain number of results, use `$limit` early in the pipeline to reduce data processing.
+
+1. If you are frequently querying recent data, use the [hot data store](/data-ai/data/hot-data-store/) which provides faster data access.
+
+1. If you frequently perform the same types of queries, for example for dashboards, use [data pipelines](/data-ai/data/data-pipelines/).
+   Data pipelines allow you to pre-compute a materializaed view of your data at specified intervals.
 
 ## Supported query languages
 

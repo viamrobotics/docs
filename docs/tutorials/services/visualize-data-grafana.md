@@ -216,6 +216,10 @@ sensorData.readings.aggregate([
 This query uses the Grafana global variable `$__from`, which is populated by the value set from the `From` dropdown menu on your dashboard, allowing for visualizations based on this query to be dynamically updated when you change your desired time range from that dropdown menu.
 See Grafana's [Global variables documentation](https://grafana.com/docs/grafana/latest/dashboards/variables/add-template-variables/#global-variables) for more information.
 
+{{% alert title="Performance Tip" color="tip" %}}
+To improve performance when querying large datasets, see [Query optimization and performance best practices](/data-ai/data/query/#query-optimization-and-performance-best-practices).
+{{% /alert %}}
+
 {{<imgproc src="/tutorials/visualize-data-grafana/grafana-dashboard-query.png" resize="1000x" declaredimensions=true alt="A Grafana dashboard configuration screen, showing an MQL query entered to limit the visualization to the specific moisture-sensor component, and using the $__from variable to allow for use of a UI dropdown to control the time range.">}}
 
 ## Next steps
