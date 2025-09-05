@@ -17,9 +17,8 @@ viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
 next: /data-ai/capture-data/advanced/advanced-data-capture-sync/
 date: "2024-12-04"
+updated: "2025-09-05"
 ---
-
-### Conditional sync
 
 By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
 You can additionally configure sync to only happen when certain conditions are met.
@@ -28,6 +27,8 @@ For example:
 - Only sync when on WiFi
 - Sync when conditions are met or events are detected
 - Sync during certain time windows
+
+To sync only when certain conditions are met you must provide the data manager a sensor that returns `"should_sync": true` when sync should happen and `"should_sync": false` otherwise.
 
 This page will show you the implementation of a sensor which only allows sync during a defined time interval.
 You can use it as the basis of your own custom logic.
@@ -57,8 +58,10 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 {{% expand "Create a sensor module. Click to see instructions." %}}
 
 Start by [creating a sensor module](/operate/get-started/other-hardware/create-module/).
+
 Your sensor should have access to the information you need to determine if your machine should sync or not.
 Based on that data, make the sensor return true when the machine should sync and false when it should not.
+
 For example, if your want your machine to return data only during a specific time interval, your sensor needs to be able to access the time as well as be configured with the time interval during which you would like to sync data.
 It can then return true during the specified sync time interval and false otherwise.
 
@@ -66,9 +69,7 @@ It can then return true during the specified sync time interval and false otherw
 
 ## Return `should_sync` as a reading from a sensor
 
-If the builtin data manager is configured with a sync sensor, the data manager will check the sensor's `Readings` method for a response with a "should_sync" key.
-
-The following example returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
+The following example implementation of the `Readings()` method returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
 
 ```go {class="line-numbers linkable-line-numbers" data-line="26,31,32,37"}
 func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
@@ -115,7 +116,8 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
 You can return other readings alongside the `should_sync` value.
 {{< /alert >}}
 
-If you wish to see more context, see the entire [implementation of the sensor on GitHub](https://github.com/viam-labs/sync-at-time/blob/main/timesyncsensor/timesyncsensor.go).
+You must also update the `Config` and resource struct to include the required attributes and update the `init()` and `Validate()` functions appropriately.
+Check the [implementation of the sensor on GitHub](https://github.com/viam-labs/sync-at-time/blob/main/module.go) for more detailed information.
 
 For additional examples, see the `Readings` function of the [time-interval-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/time-interval-trigger/selective_sync/selective_sync.go) and the [color-trigger code](https://github.com/viam-labs/trigger-sync-examples-v2/blob/main/color-trigger/selective_sync/selective_sync.go).
 
@@ -278,7 +280,7 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selectiv
       "type": "registry",
       "name": "naomi_sync-at-time",
       "module_id": "naomi:sync-at-time",
-      "version": "2.0.0"
+      "version": "3.0.3"
     }
   ]
 }
@@ -302,6 +304,6 @@ Click on `GetReadings`.
 
 If you are in the time frame for sync, the time sync sensor will return true.
 
-You can confirm that if data is currently syncing by going to the [**Data** tab](https://app.viam.com/data/view).
+If data is currently syncing, go to the [**Data** tab](https://app.viam.com/data/view) to see your data.
 If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
 Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
