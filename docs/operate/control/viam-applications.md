@@ -395,3 +395,32 @@ Users will be prompted to authenticate with their Viam credentials before access
 Viam does not currently support using custom domains (for example: `app.mycustomdomain.com/machine/<machineHostname>`) to serve your Viam application.
 You can, however, redirect from your domain to your Viam application (`app.mycustomdomain.com` -> `your-app-name_your-public-namespace.viamapplications.com`).
 You can configure a redirect (HTTP 301) on your web server or hosting provider from `app.mycustomdomain.com/*` to `your-app-name_your-public-namespace.viamapplications.com/*`.
+
+### How can I add external API keys?
+
+You can store API keys for use with Viam apps as part of robot metadata:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.py" lang="py" class="line-numbers linkable-line-numbers" data-line="39-41" >}}
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.go" lang="go" class="line-numbers linkable-line-numbers" data-line="50-52" >}}
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="37-39" >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Then you can access these API keys from within your app:
+
+```ts {class="line-numbers linkable-line-numbers"}
+const metadata = await appClient.getRobotMetadata("<YOUR-MACHINE-ID>");
+const key = metadata.TEST_API_KEY;
+```
