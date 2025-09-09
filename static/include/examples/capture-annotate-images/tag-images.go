@@ -131,6 +131,8 @@ func main() {
 			}
 			fmt.Printf("Deleted tag: %s\n", tag)
 		}
+	} else {
+		logger.Fatal("No tags found on image")
 	}
 	// :remove-end:
 }
