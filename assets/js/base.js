@@ -1,4 +1,10 @@
-$('[data-toggle="tooltip"]').tooltip();
+$('[data-toggle="tooltip"]').tooltip({
+  container: 'body',
+  boundary: 'viewport',
+  placement: 'top',
+  fallbackPlacement: ['top','bottom','right','left'],
+  offset: '0,6'
+});
 
 function handleAnchorClick(event, anchor) {
   // write the full anchor URL to the clipboard
