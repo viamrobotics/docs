@@ -46,6 +46,10 @@ func main() {
 
 	viamClient, err := app.CreateViamClientWithAPIKey(
 		ctx, app.Options{}, apiKey, apiKeyID, logger)
+	if err != nil {
+		logger.Fatal(err)
+	}
+	defer viamClient.Close()
 
 	machine, err := client.New(
 		context.Background(),
@@ -61,11 +65,6 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-
-	if err != nil {
-		logger.Fatal(err)
-	}
-	defer viamClient.Close()
 
 	// Capture image from camera
 	cam, err := camera.FromRobot(machine, cameraName)
