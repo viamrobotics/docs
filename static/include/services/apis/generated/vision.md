@@ -1031,8 +1031,8 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ```dart {class="line-numbers linkable-line-numbers"}
 // Example:
 var properties = await myVisionService.properties();
-properties.detections_supported       // returns true
-properties.classifications_supported  // returns false
+properties.detections_supported
+properties.classifications_supported
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/properties.html).

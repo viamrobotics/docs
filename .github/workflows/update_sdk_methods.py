@@ -726,7 +726,7 @@ def check_for_unused_methods(methods, type):
                         if go_method_name in methods['go'][type][resource]:
                             methods['go'][type][resource][go_method_name]["used"] = True
                         else:
-                            if resource is "app" and go_method_name not in [
+                            if resource == "app" and go_method_name not in [
                                 "MachineStatus",
                                 "ResourceNames",
                                 "GetModelsFromModules",

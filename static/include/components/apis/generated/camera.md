@@ -197,14 +197,13 @@ The multiple images returned from `GetImages()` do not represent a time series o
 
 **Parameters:**
 
-- `filter_source_names` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional)
+- `filter_source_names` (Sequence[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): The filter_source_names parameter can be used to filter only the images from the specified source names. When unspecified, all images are returned.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- (Tuple[List[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first \[0] a list of images
-returned from the camera system, and the second \[1] the metadata associated with this response.
+- (Tuple[Sequence[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first \[0] a list of imagesreturned from the camera system, and the second \[1] the metadata associated with this response.
 
 **Example:**
 
@@ -241,6 +240,50 @@ images, metadata, err := myCamera.Images(context.Background(), nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImagesSource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `filterSourceNames` (string) (optional): A list of source names to filter the images by.
+  If empty or undefined, all images will be returned.
+- `extra` (None) (optional): Extra parameters to pass to the camera.
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise< { images: { image: Uint8Array; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata; },>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const images = await camera.getImages();
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getimages).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `filterSourceNames` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetImagesResult](https://flutter.viam.dev/viam_sdk/GetImagesResult-class.html)\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const images = await camera.getImages();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Camera/getImages.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -583,7 +626,7 @@ The [motion](/operate/reference/services/motion/) and [navigation](/operate/refe
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+- ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
 
 **Example:**
 
