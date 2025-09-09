@@ -726,6 +726,7 @@ details summary::-webkit-details-marker {
   color: blue;
   visibility: visible;
 }
+
 // Expander anchor styling END
 
 /* END CSS FOR EXPANDER */
@@ -2471,6 +2472,10 @@ input[type="search"]::-webkit-search-cancel-button {
   color: black;
   text-decoration: underline;
   text-decoration-style: dotted;
+}
+
+.tooltip {
+  pointer-events: none;
 }
 
 // Changelog labels
