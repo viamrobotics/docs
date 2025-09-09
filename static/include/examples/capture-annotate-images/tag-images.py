@@ -58,11 +58,11 @@ async def main() -> int:
     data = await data_client.binary_data_by_ids([BINARY_DATA_ID])
 
     # Access the tags from the annotations
-    if hasattr(data[0].metadata.annotations, 'tags'):
-        for tag in data[0].metadata.annotations.tags:
-            await data_client.remove_tag_from_binary_data_by_id(
-                binary_id=BINARY_DATA_ID,
-                tag_id=tag.id
+    if hasattr(data[0].metadata.annotations, 'classifications'):
+        for tag in data[0].metadata.annotations.classifications:
+            await data_client.remove_tags_from_binary_data_by_ids(
+                binary_ids=[BINARY_DATA_ID],
+                tags=tag.id
             )
             print(f"Deleted tag: {tag.id}")
     # :remove-end:
