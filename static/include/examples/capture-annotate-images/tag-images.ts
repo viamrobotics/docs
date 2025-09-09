@@ -70,7 +70,7 @@ async function main(): Promise<number> {
         for (const tag of data_remove[0].metadata.annotations.tags) {
             await dataClient.removeTagFromBinaryDataById(
                 BINARY_DATA_ID,
-                tag.id
+                tag.label
             );
             console.log(`Deleted tag: ${tag.id}`);
         }
