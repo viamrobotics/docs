@@ -214,10 +214,6 @@ You'll host the website with Viam as a _Viam application_.
 
 The full code is available for reference on [GitHub](https://github.com/viam-labs/air-quality-fleet/blob/main/main.ts).
 
-{{< alert title="Tip" color="tip" >}}
-If you'd like to graph your data using a Grafana dashboard, try the [Visualize Data with Grafana tutorial](/tutorials/services/visualize-data-grafana/) next.
-{{< /alert >}}
-
 ### Set up your TypeScript project
 
 Complete the following steps on your laptop or desktop.
@@ -1067,5 +1063,5 @@ For an example of setting up text alerts, see the [Detect a Person and Send a Ph
 {{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/tutorials/services/visualize-data-grafana/" %}}
+{{% card link="/data-ai/data/visualize/" %}}
 {{< /cards >}}

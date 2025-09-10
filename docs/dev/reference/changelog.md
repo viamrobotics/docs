@@ -732,8 +732,6 @@ Viam has added a [sensor-controlled base](/operate/reference/components/base/sen
 You can now [visualize your data](/data-ai/data/visualize/) using many popular third-party visualization tools, including Grafana, Tableau, Google's Looker Studio, and more.
 You can visualize any data, such as sensor readings, that you have [synced](/data-ai/capture-data/capture-sync/) to Viam from your machine.
 
-See [Visualize data with Grafana](/tutorials/services/visualize-data-grafana/) for a full walkthrough focused on Grafana specifically.
-
 {{% /changelog %}}
 
 {{% changelog date="2024-01-31" color="added" title="Use triggers to trigger actions" %}}
