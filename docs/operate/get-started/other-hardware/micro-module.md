@@ -16,7 +16,6 @@ aliases:
   - /get-started/installation/microcontrollers/development-setup/
   - /get-started/installation/viam-micro-server-dev/
   - /installation/viam-micro-server-dev/
-prev: /operate/get-started/setup-micro/
 ---
 
 If no existing modules support your hardware or software, you can create your own.

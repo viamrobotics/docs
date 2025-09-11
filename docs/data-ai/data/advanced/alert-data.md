@@ -5,7 +5,6 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email notifications or webhook requests when data from the machine is synced."
-prev: "/data-ai/data/export/"
 ---
 
 You can use triggers to send alerts by email or webhook when data syncs from a machine.

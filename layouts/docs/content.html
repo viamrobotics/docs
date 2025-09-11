@@ -61,30 +61,122 @@
 	{{ $pages := union .Sections .Pages }}
 	<div id="next-page" class="card-container">
 	<hr>
-	{{ $pages := .CurrentSection.Pages.ByWeight }}
+
+	<!-- Build a flat list of all pages respecting hierarchical structure and weights -->
+	{{ $allPages := slice }}
+
+	<!-- Collect pages from all top-level sections in order -->
+	{{ range .Site.Sections }}
+		<!-- Process each top-level section -->
+		{{ range .Pages.ByWeight }}
+			{{ if eq .Params.layout "empty" }}
+				<!-- If this is an empty page, include its subpages recursively -->
+				{{ range .Pages.ByWeight }}
+					{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) }}
+						{{ $allPages = $allPages | append . }}
+					{{ end }}
+					<!-- Process third level pages -->
+					{{ if .Pages }}
+						{{ range .Pages.ByWeight }}
+							{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+								{{ $allPages = $allPages | append . }}
+							{{ end }}
+							<!-- Process fourth level pages -->
+							{{ if .Pages }}
+								{{ range .Pages.ByWeight }}
+									{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+										{{ $allPages = $allPages | append . }}
+									{{ end }}
+									<!-- Process fifth level pages -->
+									{{ if .Pages }}
+										{{ range .Pages.ByWeight }}
+											{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+												{{ $allPages = $allPages | append . }}
+											{{ end }}
+										{{ end }}
+									{{ end }}
+								{{ end }}
+							{{ end }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
+			{{ else }}
+				<!-- If this is not an empty page, include it if it's not hidden -->
+				{{ if and (not .Params.toc_hide) (ne .Params.no_list true) (ne .Kind "section") }}
+					{{ $allPages = $allPages | append . }}
+				{{ end }}
+				<!-- Also include its subpages recursively if it has any -->
+				{{ if .Pages }}
+					{{ range .Pages.ByWeight }}
+						{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+							{{ $allPages = $allPages | append . }}
+						{{ end }}
+						<!-- Process third level pages -->
+						{{ if .Pages }}
+							{{ range .Pages.ByWeight }}
+								{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+									{{ $allPages = $allPages | append . }}
+								{{ end }}
+								<!-- Process fourth level pages -->
+								{{ if .Pages }}
+									{{ range .Pages.ByWeight }}
+										{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+											{{ $allPages = $allPages | append . }}
+										{{ end }}
+										<!-- Process fifth level pages -->
+										{{ if .Pages }}
+											{{ range .Pages.ByWeight }}
+												{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+													{{ $allPages = $allPages | append . }}
+												{{ end }}
+											{{ end }}
+										{{ end }}
+									{{ end }}
+								{{ end }}
+							{{ end }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+	<!-- Find next and previous pages from filtered list -->
+	{{ $nextPage := false }}
+	{{ $prevPage := false }}
+	{{ $currentPage := . }}
+	{{ range $i, $pageIterator := $allPages }}
+		{{ if eq $pageIterator $currentPage }}
+			{{ if lt $i (sub (len $allPages) 1) }}
+				{{ $nextPage = index $allPages (add $i 1) }}
+			{{ end }}
+			{{ if gt $i 0 }}
+				{{ $prevPage = index $allPages (sub $i 1) }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+
 	<!-- These are swapped in order -->
-	{{ if ($pages.Next . ) }}
+	{{ if or $prevPage .Params.prev }}
 	<div class="row-no-margin">
 	{{ else }}
 	<div class="row-no-margin {{ if not .Params.prev }}right-only{{ end }}">
 	{{ end }}
+
 	{{ if .Params.prev }}
 		{{ partial "nextcard.html" (dict "link" (.Params.prev) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
 	{{ else }}
-		{{ with $pages.Next . }}
-			{{ if not .Params.toc_hide }}
+		{{ with $prevPage }}
 			{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
-			{{ end }}
 		{{ end }}
 	{{ end }}
 
 	{{ if .Params.next }}
 		{{ partial "nextcard.html" (dict "link" (.Params.next) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
 	{{ else }}
-		{{ with $pages.Prev . }}
-			{{ if not .Params.toc_hide }}
+		{{ with $nextPage }}
 			{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
-			{{ end }}
 		{{ end }}
 	{{ end }}
 	</div>

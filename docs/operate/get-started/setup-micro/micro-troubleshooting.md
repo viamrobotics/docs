@@ -2,7 +2,6 @@
 title: "Micro-RDK Troubleshooting"
 linkTitle: "Micro-RDK Troubleshooting"
 weight: 100
-no_list: true
 type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install viam-micro-server"

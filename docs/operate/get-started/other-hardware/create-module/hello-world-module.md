@@ -18,7 +18,6 @@ aliases:
 # updated: ""  # When the tutorial was last entirely checked
 # Python checked/updated: 2025-02-25
 cost: "0"
-prev: "/operate/get-started/other-hardware/"
 ---
 
 ## What this guide covers

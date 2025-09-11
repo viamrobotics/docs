@@ -9,8 +9,6 @@ aliases:
   - /operate/reference/module-configuration/
 # date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
-prev: /operate/get-started/other-hardware/manage-modules/
-next: /operate/get-started/other-hardware/lifecycle-module/
 ---
 
 This page contains reference material.
