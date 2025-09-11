@@ -70,10 +70,34 @@
 		<!-- Process each top-level section -->
 		{{ range .Pages.ByWeight }}
 			{{ if eq .Params.layout "empty" }}
-				<!-- If this is an empty page, include its subpages -->
+				<!-- If this is an empty page, include its subpages recursively -->
 				{{ range .Pages.ByWeight }}
-					{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+					{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) }}
 						{{ $allPages = $allPages | append . }}
+					{{ end }}
+					<!-- Process third level pages -->
+					{{ if .Pages }}
+						{{ range .Pages.ByWeight }}
+							{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+								{{ $allPages = $allPages | append . }}
+							{{ end }}
+							<!-- Process fourth level pages -->
+							{{ if .Pages }}
+								{{ range .Pages.ByWeight }}
+									{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+										{{ $allPages = $allPages | append . }}
+									{{ end }}
+									<!-- Process fifth level pages -->
+									{{ if .Pages }}
+										{{ range .Pages.ByWeight }}
+											{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+												{{ $allPages = $allPages | append . }}
+											{{ end }}
+										{{ end }}
+									{{ end }}
+								{{ end }}
+							{{ end }}
+						{{ end }}
 					{{ end }}
 				{{ end }}
 			{{ else }}
@@ -81,11 +105,35 @@
 				{{ if and (not .Params.toc_hide) (ne .Params.no_list true) (ne .Kind "section") }}
 					{{ $allPages = $allPages | append . }}
 				{{ end }}
-				<!-- Also include its subpages if it has any -->
+				<!-- Also include its subpages recursively if it has any -->
 				{{ if .Pages }}
 					{{ range .Pages.ByWeight }}
 						{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
 							{{ $allPages = $allPages | append . }}
+						{{ end }}
+						<!-- Process third level pages -->
+						{{ if .Pages }}
+							{{ range .Pages.ByWeight }}
+								{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+									{{ $allPages = $allPages | append . }}
+								{{ end }}
+								<!-- Process fourth level pages -->
+								{{ if .Pages }}
+									{{ range .Pages.ByWeight }}
+										{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+											{{ $allPages = $allPages | append . }}
+										{{ end }}
+										<!-- Process fifth level pages -->
+										{{ if .Pages }}
+											{{ range .Pages.ByWeight }}
+												{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+													{{ $allPages = $allPages | append . }}
+												{{ end }}
+											{{ end }}
+										{{ end }}
+									{{ end }}
+								{{ end }}
+							{{ end }}
 						{{ end }}
 					{{ end }}
 				{{ end }}
@@ -106,12 +154,6 @@
 	{{ $currentPage := . }}
 	{{ range $i, $pageIterator := $allPages }}
 		{{ if eq $pageIterator $currentPage }}
-			{{ warnf "--------------------------------" }}
-			{{ warnf "currentPage: %s" $pageIterator }}
-			{{ warnf "i: %s" $i }}
-			{{ warnf "comparison1: %s" $pageIterator.RelPermalink }}
-			{{ warnf "comparison2: %s" .RelPermalink }}
-			{{ warnf "--------------------------------" }}
 			{{ if lt $i (sub (len $allPages) 1) }}
 				{{ $nextPage = index $allPages (add $i 1) }}
 			{{ end }}
@@ -120,11 +162,7 @@
 			{{ end }}
 		{{ end }}
 	{{ end }}
-	{{ warnf "--------------------------------" }}
-	{{ warnf "currentPage: %s" . }}
-	{{ warnf "nextPage: %s" $nextPage }}
-	{{ warnf "prevPage: %s" $prevPage }}
-	{{ warnf "--------------------------------" }}
+
 
 	<!-- These are swapped in order -->
 	{{ if or $nextPage .Params.next }}
