@@ -45,7 +45,7 @@ Additionally, the app allows you to:
 
 - see if your machines are online
 - [view a machine's logs](/manage/troubleshoot/troubleshoot/#check-logs)
-- [upload images from your phone to the cloud](/data-ai/train/upload-external-data/#upload-images-with-the-viam-mobile-app)
+- [upload images from your phone to the cloud](/data-ai/capture-data/upload-other-data/#upload-images-with-the-viam-mobile-app)
 - [invite people to collaborate with you and modify access](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app)
 
 <br>

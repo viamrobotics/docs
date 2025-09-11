@@ -28,6 +28,7 @@ You can also monitor your machines through teleop, power your application logic,
 {{< how-to-expand "Capture data" "4" "BEGINNER-FRIENDLY" "" "data-platform-capture" >}}
 {{< cards >}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data-ai/capture-data/upload-other-data/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/filter-before-sync/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/conditional-sync/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/lorawan/" noimage="true" %}}
@@ -49,7 +50,6 @@ You can also monitor your machines through teleop, power your application logic,
 {{% card link="/data-ai/train/capture-annotate-images/" noimage="true" %}}
 {{% card link="/data-ai/train/train-tf-tflite/" noimage="true" %}}
 {{% card link="/data-ai/train/train/" noimage="true" %}}
-{{% card link="/data-ai/train/upload-external-data/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

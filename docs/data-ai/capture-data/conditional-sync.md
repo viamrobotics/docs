@@ -15,7 +15,6 @@ aliases:
 languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
-next: /data-ai/capture-data/advanced/advanced-data-capture-sync/
 date: "2024-12-04"
 updated: "2025-09-05"
 ---

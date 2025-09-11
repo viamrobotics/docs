@@ -37,7 +37,6 @@ async def connect() -> ViamClient:
 async def main() -> int:
     viam_client = await connect()
     data_client = viam_client.data_client
-
     # :remove-start:
     print("Creating dataset...")
     try:
