@@ -18,7 +18,6 @@ level: "Beginner"
 date: "2024-06-30"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
-next: /operate/get-started/other-hardware/module-configuration/
 ---
 
 After you [create and upload a module](/operate/get-started/other-hardware/create-module/), you can update, delete, or change its visibility settings.

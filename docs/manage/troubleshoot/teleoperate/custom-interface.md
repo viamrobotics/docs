@@ -13,7 +13,6 @@ level: "Intermediate"
 date: "2024-11-13"
 updated: "2025-09-10"
 cost: "0"
-prev: "/manage/troubleshoot/alert/"
 ---
 
 You can remotely operate any configured machine and visualize and aggregate its data using a custom control interface.

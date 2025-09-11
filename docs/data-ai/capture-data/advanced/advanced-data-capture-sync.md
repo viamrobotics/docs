@@ -7,7 +7,6 @@ layout: "docs"
 type: "docs"
 platformarea: ["data"]
 description: "Advanced data capture and data sync configurations."
-prev: /data-ai/capture-data/lorawan/
 date: "2025-02-10"
 ---
 

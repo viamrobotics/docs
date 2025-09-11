@@ -8,7 +8,6 @@ imageAlt: "Configure a Machine"
 images: ["/viam.svg"]
 description: "Use supported hardware with your machine."
 modulescript: true
-no_list: true
 aliases:
   - /program/extend/modular-resources/configure/
   - /extend/modular-resources/configure/
@@ -22,8 +21,6 @@ aliases:
   - /registry/program/extend/modular-resources/configure/
   - /how-tos/use-cases/configure/
   - /use-cases/configure/
-prev: "/operate/get-started/setup/"
-next: "/operate/get-started/other-hardware/"
 ---
 
 ## About the Viam Registry of supported hardware and software

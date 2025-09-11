@@ -33,8 +33,6 @@ aliases:
   - /modular-resources/upload/
   - /registry/upload/
   - /operate/get-started/other-hardware/
-prev: "/operate/get-started/supported-hardware/"
-next: "/operate/get-started/other-hardware/create-module/hello-world-module/"
 ---
 
 If your physical or virtual hardware is not [already supported](/operate/get-started/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.

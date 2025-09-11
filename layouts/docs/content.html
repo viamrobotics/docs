@@ -141,13 +141,6 @@
 		{{ end }}
 	{{ end }}
 
-	<!-- log the allPages -->
-	{{ warnf "--------------------------------" }}
-	{{ range $allPages }}
-		{{ warnf "allPages: %s - %s" .Title .RelPermalink }}
-	{{ end }}
-	{{ warnf "--------------------------------" }}
-
 	<!-- Find next and previous pages from filtered list -->
 	{{ $nextPage := false }}
 	{{ $prevPage := false }}
@@ -165,7 +158,7 @@
 
 
 	<!-- These are swapped in order -->
-	{{ if or $nextPage .Params.next }}
+	{{ if or $prevPage .Params.prev }}
 	<div class="row-no-margin">
 	{{ else }}
 	<div class="row-no-margin {{ if not .Params.prev }}right-only{{ end }}">

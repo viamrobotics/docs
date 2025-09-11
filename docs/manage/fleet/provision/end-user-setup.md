@@ -10,7 +10,6 @@ languages: []
 viamresources: []
 platformarea: ["fleet"]
 level: "Intermediate"
-prev: "/manage/fleet/provision/"
 date: "2024-08-21"
 aliases:
   - /provision/

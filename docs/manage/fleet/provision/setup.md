@@ -12,7 +12,6 @@ viamresources: []
 platformarea: ["fleet"]
 level: "Intermediate"
 date: "2024-08-21"
-prev: "/manage/fleet/reuse-configuration/"
 aliases:
   - "/build/provision/"
   - /how-tos/provision-setup/
