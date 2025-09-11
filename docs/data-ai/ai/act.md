@@ -5,7 +5,6 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "Use the vision service API to act based on inferences."
-next: "/data-ai/train/upload-external-data/"
 ---
 
 You can use the [vision service API](/dev/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.

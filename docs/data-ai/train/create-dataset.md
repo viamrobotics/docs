@@ -117,7 +117,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
 To add an image to a dataset, find the binary data ID for the image and the dataset ID.
 Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
-{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="31-34" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="30-33" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

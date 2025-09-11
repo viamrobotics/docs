@@ -24,7 +24,6 @@ func main() {
 
 	dataClient := viamClient.DataClient()
 
-
 	// Create MQL stages as map slices
 	mqlStages := []map[string]interface{}{
 		{"$match": map[string]interface{}{"component_name": "temperature-sensor"}},

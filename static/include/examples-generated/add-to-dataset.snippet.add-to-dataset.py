@@ -26,7 +26,6 @@ async def main() -> int:
     viam_client = await connect()
     data_client = viam_client.data_client
 
-
     print("Adding image to dataset...")
     await data_client.add_binary_data_to_dataset_by_ids(
         binary_ids=[BINARY_DATA_ID],

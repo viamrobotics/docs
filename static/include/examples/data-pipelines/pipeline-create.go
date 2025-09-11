@@ -32,7 +32,6 @@ func main() {
 	defer viamClient.Close()
 
 	dataClient := viamClient.DataClient()
-
 	// :remove-start:
 	pipelinesToDelete, err := dataClient.ListDataPipelines(ctx, orgID)
 	if err != nil {
