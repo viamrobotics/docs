@@ -22,11 +22,11 @@ description: "Upload data to Viam from your local computer or mobile device usin
 When you configure the data management service, Viam automatically uploads data from the default directory `~/.viam/capture` and any directory you configured.
 If you want to upload data from another directory or source, you can also:
 
-- [Sync a batch of data from another directory](#sync-a-batch-of-data-from-another-directory)
+- [Sync a batch of data from another directory](#sync-data-from-another-directory)
 - [Upload data with SDKs](#upload-data-with-sdks)
 - [Upload images with the Viam mobile app](#upload-images-with-the-viam-mobile-app)
 
-## Sync a batch of data from another directory
+## Sync data from another directory
 
 Typically, you configure the data management service to [capture and sync data from your machine at regular intervals](/data-ai/capture-data/capture-sync/).
 However, you can also use the data management service to sync data from a folder.
