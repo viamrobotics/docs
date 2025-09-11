@@ -15,7 +15,6 @@ aliases:
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
 date: "2024-12-03"
-next: "/data-ai/data/advanced/alert-data/"
 ---
 
 You can download machine data from cloud storage to your computer with the Viam CLI.

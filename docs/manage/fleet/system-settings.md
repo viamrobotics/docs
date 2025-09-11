@@ -5,7 +5,6 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Configure network settings, operating system package updates and logging defaults."
-next: /manage/fleet/provision/setup/
 ---
 
 The `viam-agent` configuration allows you to configure:

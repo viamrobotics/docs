@@ -8,7 +8,6 @@ images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 no_list: false
 description: "Install the software that drives hardware and connects your device to the cloud."
-next: "/operate/get-started/supported-hardware/"
 aliases:
   - /installation/viam-server-setup/
   - /how-tos/configure/

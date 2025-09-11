@@ -13,7 +13,6 @@ platformarea: ["fleet"]
 level: "Intermediate"
 date: "2024-08-21"
 prev: "/manage/fleet/reuse-configuration/"
-next: "/manage/fleet/provision/end-user-setup/"
 aliases:
   - "/build/provision/"
   - /how-tos/provision-setup/

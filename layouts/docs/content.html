@@ -62,29 +62,78 @@
 	<div id="next-page" class="card-container">
 	<hr>
 	{{ $pages := .CurrentSection.Pages.ByWeight }}
+
+	<!-- Build a flat list of all pages including subpages, excluding empty pages -->
+	{{ $allPages := slice }}
+	{{ range $pages }}
+		{{ if eq .Params.layout "empty" }}
+			<!-- If this is an empty page, include its subpages -->
+			{{ range .Pages.ByWeight }}
+				{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) }}
+					{{ $allPages = $allPages | append . }}
+				{{ end }}
+			{{ end }}
+		{{ else }}
+			<!-- If this is not an empty page, include it if it's not hidden -->
+			{{ if not .Params.toc_hide }}
+				{{ $allPages = $allPages | append . }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+
+	<!-- log the allPages -->
+	{{ warnf "--------------------------------" }}
+	{{ range $allPages }}
+		{{ warnf "allPages: %s" .Title }}
+	{{ end }}
+	{{ warnf "--------------------------------" }}
+
+	<!-- Find next and previous pages from filtered list -->
+	{{ $nextPage := false }}
+	{{ $prevPage := false }}
+	{{ $currentPage := . }}
+	{{ range $i, $pageIterator := $allPages }}
+		{{ if eq $pageIterator $currentPage }}
+			{{ warnf "--------------------------------" }}
+			{{ warnf "currentPage: %s" $pageIterator }}
+			{{ warnf "i: %s" $i }}
+			{{ warnf "comparison1: %s" $pageIterator.RelPermalink }}
+			{{ warnf "comparison2: %s" .RelPermalink }}
+			{{ warnf "--------------------------------" }}
+			{{ if lt $i (sub (len $allPages) 1) }}
+				{{ $nextPage = index $allPages (add $i 1) }}
+			{{ end }}
+			{{ if gt $i 0 }}
+				{{ $prevPage = index $allPages (sub $i 1) }}
+			{{ end }}
+		{{ end }}
+	{{ end }}
+	{{ warnf "--------------------------------" }}
+	{{ warnf "currentPage: %s" . }}
+	{{ warnf "nextPage: %s" $nextPage }}
+	{{ warnf "prevPage: %s" $prevPage }}
+	{{ warnf "--------------------------------" }}
+
 	<!-- These are swapped in order -->
-	{{ if ($pages.Next . ) }}
+	{{ if or $nextPage .Params.next }}
 	<div class="row-no-margin">
 	{{ else }}
 	<div class="row-no-margin {{ if not .Params.prev }}right-only{{ end }}">
 	{{ end }}
+
 	{{ if .Params.prev }}
 		{{ partial "nextcard.html" (dict "link" (.Params.prev) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
 	{{ else }}
-		{{ with $pages.Next . }}
-			{{ if not .Params.toc_hide }}
+		{{ with $prevPage }}
 			{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "left"  "customCanonicalLink" (.Page.Params.canonical) ) }}
-			{{ end }}
 		{{ end }}
 	{{ end }}
 
 	{{ if .Params.next }}
 		{{ partial "nextcard.html" (dict "link" (.Params.next) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
 	{{ else }}
-		{{ with $pages.Prev . }}
-			{{ if not .Params.toc_hide }}
+		{{ with $nextPage }}
 			{{ partial "nextcard.html" (dict "link" (.Page.File.Path) "class" "right"  "customCanonicalLink" (.Page.Params.canonical) ) }}
-			{{ end }}
 		{{ end }}
 	{{ end }}
 	</div>
