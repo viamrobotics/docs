@@ -61,22 +61,34 @@
 	{{ $pages := union .Sections .Pages }}
 	<div id="next-page" class="card-container">
 	<hr>
-	{{ $pages := .CurrentSection.Pages.ByWeight }}
 
-	<!-- Build a flat list of all pages including subpages, excluding empty pages -->
+	<!-- Build a flat list of all pages respecting hierarchical structure and weights -->
 	{{ $allPages := slice }}
-	{{ range $pages }}
-		{{ if eq .Params.layout "empty" }}
-			<!-- If this is an empty page, include its subpages -->
-			{{ range .Pages.ByWeight }}
-				{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) }}
+
+	<!-- Collect pages from all top-level sections in order -->
+	{{ range .Site.Sections }}
+		<!-- Process each top-level section -->
+		{{ range .Pages.ByWeight }}
+			{{ if eq .Params.layout "empty" }}
+				<!-- If this is an empty page, include its subpages -->
+				{{ range .Pages.ByWeight }}
+					{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+						{{ $allPages = $allPages | append . }}
+					{{ end }}
+				{{ end }}
+			{{ else }}
+				<!-- If this is not an empty page, include it if it's not hidden -->
+				{{ if and (not .Params.toc_hide) (ne .Params.no_list true) (ne .Kind "section") }}
 					{{ $allPages = $allPages | append . }}
 				{{ end }}
-			{{ end }}
-		{{ else }}
-			<!-- If this is not an empty page, include it if it's not hidden -->
-			{{ if not .Params.toc_hide }}
-				{{ $allPages = $allPages | append . }}
+				<!-- Also include its subpages if it has any -->
+				{{ if .Pages }}
+					{{ range .Pages.ByWeight }}
+						{{ if and (ne .Params.layout "empty") (not .Params.toc_hide) (ne .Params.no_list true) }}
+							{{ $allPages = $allPages | append . }}
+						{{ end }}
+					{{ end }}
+				{{ end }}
 			{{ end }}
 		{{ end }}
 	{{ end }}
@@ -84,7 +96,7 @@
 	<!-- log the allPages -->
 	{{ warnf "--------------------------------" }}
 	{{ range $allPages }}
-		{{ warnf "allPages: %s" .Title }}
+		{{ warnf "allPages: %s - %s" .Title .RelPermalink }}
 	{{ end }}
 	{{ warnf "--------------------------------" }}
 
