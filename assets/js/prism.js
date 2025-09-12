@@ -40,3 +40,39 @@ Prism.languages.python={comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0,greedy:!0}
       }
     });
   }())
+
+function updateLineHighlightWidths() {
+  document.querySelectorAll(".code-toolbar").forEach((el) => {
+    var highlights = el.querySelectorAll(".line-highlight");
+    highlights.forEach((h) => {
+      h.style.width = el.querySelector("code").offsetWidth + 54 + "px";
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', updateLineHighlightWidths);
+
+// Create a MutationObserver to watch for tab selection changes
+const observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    // Check for attribute changes (like class changes) on tab elements
+    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+      // Check if the changed element is within a nav-tabs container
+      const navTabs = mutation.target.closest('.nav-tabs');
+      if (navTabs) {
+        const target = mutation.target;
+        if (target.classList.contains('active')) {
+          setTimeout(updateLineHighlightWidths, 0);
+        }
+      }
+    }
+  });
+});
+
+// Start observing
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+  attributes: true,
+  attributeFilter: ['class']
+});
