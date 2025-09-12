@@ -10,9 +10,10 @@ images: ["/services/icons/data-capture.svg"]
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
 date: "2024-12-03"
+updated: "2025-09-12"
 ---
 
-The hot data store stores a rolling window of recent data while continuing to write all data to blob storage.
+The hot data store stores a rolling window of recent data in a database while continuing to write all data to {{< glossary_tooltip term_id="blob-storage" text="blob storage" >}}.
 Queries to the hot data store execute significantly faster than queries to blob storage.
 
 ## Configure
@@ -68,8 +69,8 @@ For example, the following configuration stores 24 hours of data in the hot data
 
 ## Query
 
-Queries execute on blob storage by default which is slower than queries to a hot data store.
-If you have configured a hot data store, you must specify it in any queries as the data source to be used for the query.
+Queries execute on blob storage by default, which is slower than queries to a hot data store.
+To query data from the hot data store, you must specify it as the data source in your queries.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -98,8 +99,8 @@ Use [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardata
 {{< alert title="Caution" color="caution" >}}
 
 Queries to the hot data store _only_ return data from the hot data store, which only contains data from the time window you specified in your configuration.
-For example, if you queried a hot data store with 24 hours of rolling storage for temperature data above 25C, and no temperature above 25C was recorded in the last 24 hours, your query would return zero results.
-To query the entire history of your data, use blob storage.
+For example, if you query a hot data store which has 24 hours of the most recent data for temperature data above 25C, and no temperature above 25C was recorded in the last 24 hours, your query would return zero results even if other readings outside that time period contain readings above 25C.
+To query the entire history of your data, use blob storage as the data source in queries.
 
 {{< /alert >}}
 
