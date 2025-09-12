@@ -69,7 +69,7 @@ Toggle **Syncing** to on (green) if it isn't already on.
 
 Click **Save** in the top right corner of the page.
 
-{{<imgproc src="/services/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured as described." class="shadow" >}}
+{{<imgproc src="/services/data/data-sync-temp.png" resize="x1100" declaredimensions=true alt="Data service configured as described." style="width: 600px" class="shadow imgzoom" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}

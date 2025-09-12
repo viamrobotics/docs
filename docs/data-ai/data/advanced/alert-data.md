@@ -24,7 +24,7 @@ You can configure triggers to fire in the following scenarios:
 1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow" >}}
+   {{<imgproc src="/build/configure/trigger-create.png" resize="x800" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." style="width: 400px" class="shadow imgzoom" >}}
 
 1. Enter a name and click **Create**.
 
@@ -43,7 +43,7 @@ You can configure triggers to fire in the following scenarios:
 
         For example, the following trigger sends an alert when the `cpu-monitor` component's `Readings` method syncs `cpu` usage greater than `50`:
 
-        {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
+        {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x800" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." style="width: 600px" class="shadow imgzoom" >}}
 
         To see the data your components are returning, use each component's **TEST** panel.
 

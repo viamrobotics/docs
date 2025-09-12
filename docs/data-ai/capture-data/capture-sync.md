@@ -59,7 +59,7 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
 1. Find the **Data capture** section in the resource panel.
 1. Click **+ Add method**.
 
-   {{< imgproc src="/tutorials/data-management/add-method.png" alt="Disable data capture toggle" resize="700x" class="shadow" >}}
+   {{< imgproc src="/tutorials/data-management/add-method.png" alt="Disable data capture toggle" resize="800x" style="width:500px" class="shadow imgzoom" >}}
 
 1. If you see a **Capture disabled on data management service** warning, click **Enable capture on data management service**.
 1. Select a **Method** to capture data from.
