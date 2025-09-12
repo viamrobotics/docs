@@ -23,7 +23,7 @@ sdks_supported = ["go", "python", "flutter", "typescript"]
 ## at runtime if desired:
 components = ["arm", "base", "board", "button", "camera", "encoder", "gantry", "generic_component", "gripper",
               "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo", "switch"]
-services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision"]
+services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision", "world_state_store"]
 app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
 
@@ -322,6 +322,11 @@ proto_map = {
     "mltraining": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/app/mltraining/v1/ml_training_grpc.pb.go",
         "name": "MLTrainingServiceClient",
+        "methods": []
+    },
+    "world_state_store": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/worldstatestore/v1/world_state_store_grpc.pb.go",
+        "name": "WorldStateStoreServiceClient",
         "methods": []
     }
 }
