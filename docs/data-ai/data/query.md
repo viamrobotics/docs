@@ -32,9 +32,15 @@ See [capture sensor data](/data-ai/capture-data/capture-sync/) to capture and sy
 
 {{% /expand%}}
 
+{{% expand "Owner role" %}}
+
+Only users with [owner permissions](/manage/manage/rbac/) can query data.
+
+{{% /expand%}}
+
 ### Query data using Viam
 
-If you have the [owner role](/manage/manage/rbac/), you can query data using the Web UI or with code:
+You can query data using the Web UI or with code:
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
