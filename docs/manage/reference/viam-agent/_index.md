@@ -291,7 +291,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `retry_connection_timeout_minutes` | integer | Optional | Provisioning mode will exit after this time (in minutes), to allow other unmanaged (for example wired) or manually configured connections to be tried. Provisioning mode will restart if the connection/online status doesn't change. Default: `10`. |
 | `turn_on_hotspot_if_wifi_has_no_internet` | boolean | Optional | When enabled, Wi-Fi connections without Internet access are considered offline. After `offline_before_starting_hotspot_minutes` minutes offline, your device will begin broadcasting a hotspot. This setting must be enabled for your device to attempt connecting to `additional_networks`. Default: `false`. |
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
-| `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `false`. |
+| `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `null`. |
 
 For more detailed instructions on what these settings do, see [Provisioning](/manage/fleet/provision/setup/).
 
