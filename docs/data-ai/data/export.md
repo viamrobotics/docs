@@ -15,15 +15,16 @@ aliases:
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "cli"]
 date: "2024-12-03"
+updated: "2025-09-12"
 ---
 
-You can download machine data from cloud storage to your computer with the Viam CLI.
+You can download machine data to your computer with the Viam CLI.
 
 If you prefer to manage your data with code, see the [data client API documentation](/dev/reference/apis/data-client/).
 
 ## Prerequisites
 
-{{< expand "Install the Viam CLI and authenticate." >}}
+{{< expand "Install the Viam CLI and authenticate" >}}
 Install the Viam CLI using the option below that matches your system architecture:
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
@@ -44,7 +45,7 @@ To export your data from the cloud using the Viam CLI:
 
 Navigate to the [**DATA**](https://app.viam.com/data/view) page.
 
-Use the filters on the left side of the page to filter only the data you wish to export.
+Use the filters on the left side of the page to filter the data you wish to export.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -65,17 +66,16 @@ Run the copied command in a terminal:
 viam data export --org-ids=<org-id> --data-type=<binary|tabular> --mime-types=<mime types> --destination=.
 ```
 
-This command uses the Viam CLI to download the data onto your computer based on the search criteria you select in the web UI.
+This command downloads the data onto your computer based on the search criteria you select in the web UI.
 
-By default, the command creates two new directories named `data` and `metadata` in the current directory and downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in JSON format into the `metadata` folder.
-If you want to store the data in a different location, change the specified folder with the [`--destination` flag](/dev/tools/cli/#named-arguments).
+By default, the command creates two new directories named `data` and `metadata` in the current directory.
+It downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in JSON format into the `metadata` folder.
+If you want to store the data in a different location, change the destination folder with the [`--destination` flag](/dev/tools/cli/#named-arguments).
 
-Once the command has finished running and downloading the data, you can view and use the data locally.
-
-Since data is downloaded in parallel, the order is not guaranteed.
-Sort your folder by filename in order to see them in chronological order.
+Since data is downloaded in parallel, the order is not guaranteed to be chronological.
+Sort your files by filename to see them in chronological order.
 
 {{% /tablestep %}}
-{{< /table >}}<br>
+{{< /table >}}
 
 You can see more information about exporting data in the [Viam CLI documentation](/dev/tools/cli/#data).
