@@ -1,19 +1,20 @@
 ---
-linkTitle: "Alert on data"
-title: "Alert on data"
+linkTitle: "Trigger on data events"
+title: "Trigger on data events"
 weight: 60
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email notifications or webhook requests when data from the machine is synced."
+date: "2025-09-12"
 ---
 
-You can use triggers to send alerts by email or webhook when data syncs from a machine.
+You can use triggers to send webhooks or email alerts when data syncs from a machine.
 For example, a trigger could alert you when a sensor detects a temperature greater than 100 degrees Celsius.
 
-You can configure triggers to alert in the following scenarios:
+You can configure triggers to fire in the following scenarios:
 
-- **Data has been synced to the cloud**: alert when any data syncs from the machine
-- **Conditional data ingestion**: alert any time synced data meets a specified condition
+- **Data has been synced to the cloud**: fire when any data syncs from the machine
+- **Conditional data ingestion**: fire any time synced data meets a specified condition
 
 ## Configure a trigger
 
@@ -27,13 +28,13 @@ You can configure triggers to alert in the following scenarios:
 
 1. Enter a name and click **Create**.
 
-1. In the **Type** dropdown, choose one of the following types:
+1. In the **Type** dropdown, choose one of the following event types:
 
    - **Data has been synced to the cloud**:
-     Whenever your machine syncs data of any of the specified data types, the trigger sends an alert.
-     Then, select the data types for which the trigger should send requests.
+     Whenever your machine syncs data of any of the specified data types, the trigger fires.
+     Then select the data types for which the trigger should send requests.
    - **Conditional data ingestion**:
-     Whenever your machine syncs data that meets certain criteria, the trigger sends an alert.
+     Whenever your machine syncs data that meets certain criteria, the trigger fires.
 
      1. Choose the target component and method for your condition.
      1. Add a **condition**: specify a **key** in the synced data, an **operator**, and a **value**.
@@ -44,28 +45,34 @@ You can configure triggers to alert in the following scenarios:
 
         {{<imgproc src="/build/configure/conditional-data-ingested.png" resize="x400" declaredimensions=true alt="Example conditional data ingestion trigger with a condition." class="shadow" >}}
 
-        For more information, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes).
+        To see the data your components are returning, use each component's **TEST** panel.
 
-1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
+        For more information about conditional attributes, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes).
+
+1. Next, configure what should happen when an event occurs.
+   You can add **Webhooks** and **Email** notifications:
+
+   To add a webhook:
+
+   1. Click **Add Webhook**.
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x800" style="width: 500px" declaredimensions=true alt="A trigger configured with an example URL." class="shadow imgzoom" >}}
+   1. Add the URL of your cloud function.
+   1. Configure the time between notifications.
+   1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
+      Use your cloud function to process data or interact with external APIs, such as Twilio, PagerDuty, or Zapier.
+      For an example function, see [Example cloud function](/data-ai/reference/triggers-configuration/#example-cloud-function).
 
    To add an email notification:
 
    1. Click **Add Email**.
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="A trigger configured with an example email." class="shadow" >}}
-   1. Add the email you wish to be notified whenever this trigger is triggered.
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x800" style="width: 500px" declaredimensions=true alt="A trigger configured with an example email." class="shadow imgzoom" >}}
+   1. Add the email address where you wish to be notified whenever this trigger fires.
    1. Configure the time between notifications.
-
-   To add a webhook notification:
-
-   1. Click **Add Webhook**.
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="A trigger configured with an example URL." class="shadow" >}}
-   1. Add the URL of your cloud function.
-   1. Configure the time between notifications.
-   1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
-      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
+
+The following JSON configuration shows how to set up a trigger that fires when any data is synced to the cloud:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="32-49"}
 {
@@ -111,8 +118,13 @@ You can configure triggers to alert in the following scenarios:
       "notifications": [
         {
           "type": "webhook",
-          "value": "<https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws>",
-          "seconds_between_notifications": 0
+          "value": "https://1abcde2ab3cd4efg5abcdefgh10zyxwv.lambda-url.us-east-1.on.aws",
+          "seconds_between_notifications": 60
+        },
+        {
+          "type": "email",
+          "value": "test@viam.com",
+          "seconds_between_notifications": 60
         }
       ]
     }
