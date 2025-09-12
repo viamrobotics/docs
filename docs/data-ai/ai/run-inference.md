@@ -103,21 +103,21 @@ To use a vision service:
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#GetClassifications) method:
+The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.py" lang="py" class="line-numbers linkable-line-numbers" data-line="36-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#GetClassifications) method:
+The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.go" lang="go" class="line-numbers linkable-line-numbers" data-line="66-69" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#GetClassifications) method:
+The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="32-38" >}}
 
