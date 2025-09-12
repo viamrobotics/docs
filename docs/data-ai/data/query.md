@@ -14,13 +14,13 @@ languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "core"]
 date: "2024-12-03"
-description: "Query sensor data that you have synced to Viam with SQL or MQL."
+updated: "2025-09-12"
+description: "Query sensor data in Viam with SQL or MQL."
 ---
 
-You can use the data management service to [capture sensor data](/data-ai/capture-data/capture-sync/) from any machine and sync that data to the cloud.
-Then, you can follow the steps on this page to query it using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-For example, you can configure data capture for several sensors on one machine, or for several sensors across multiple machines, to report the ambient operating temperature.
-You can then run queries against that data to search for outliers or edge cases, to analyze how the ambient temperature affects your machines' operation.
+You can query all sensor data in Viam using {{< glossary_tooltip term_id="sql" text="SQL" >}} and {{< glossary_tooltip term_id="mql" text="MQL" >}}.
+For example, you may sync temperature data from several sensors on one machine or across multiple machines.
+Once synced, you can run queries against that data to search for outliers or edge cases and analyze how the ambient temperature affects your machines' operation.
 
 ## Query using Viam
 
@@ -28,15 +28,13 @@ You can then run queries against that data to search for outliers or edge cases,
 
 {{% expand "Captured sensor data" %}}
 
-Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
+See [capture sensor data](/data-ai/capture-data/capture-sync/) to capture and sync data to Viam.
 
 {{% /expand%}}
 
 ### Query data using Viam
 
-Once your data has synced, you can query your data using {{< glossary_tooltip term_id="sql" text="SQL" >}} or {{< glossary_tooltip term_id="mql" text="MQL" >}}.
-
-You must have the [owner role](/manage/manage/rbac/) to query data on Viam.
+If you have the [owner role](/manage/manage/rbac/), you can query data using the Web UI or with code:
 
 {{< tabs >}}
 {{% tab name="Web UI" %}}
@@ -48,13 +46,13 @@ You must have the [owner role](/manage/manage/rbac/) to query data on Viam.
 Navigate to the [**Query** page](https://app.viam.com/data/query).
 Then, select either **SQL** or **MQL**.
 
-Optionally, you can change the data source to query from to a configured [hot data store](/data-ai/data/hot-data-store/).
+Optionally, you can change the data source to query data from a configured [hot data store](/data-ai/data/hot-data-store/).
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **Run your query**
 
-This example query returns the last 5 readings from any components named `sensor-1` in your organization:
+This example query returns the last 5 readings from any component named `sensor-1` in your organization:
 
 {{< tabs >}}
 {{% tab name="SQL" %}}
@@ -152,7 +150,7 @@ WHERE component_name = 'sensor-1' LIMIT 2
     $match: {
       component_name: "sensor-1"
     }
-  },{
+  }, {
     $limit: 2
   }, {
     $project: {
@@ -196,7 +194,7 @@ WHERE component_name = 'sensor-1' LIMIT 2
 {{< /tabs >}}
 
 {{% /expand %}}
-{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+{{% expand "Click to see an example that returns a count of records that match a component name." %}}
 
 {{< tabs >}}
 {{% tab name="SQL" %}}
@@ -220,7 +218,7 @@ WHERE component_name = 'sensor-1'
     $match: {
       component_name: "sensor-1"
     }
-  },{
+  }, {
     $count: "count"
   }
 ]
@@ -238,7 +236,7 @@ WHERE component_name = 'sensor-1'
 
 Click **Run query** when ready to perform your query and get matching results.
 You can view your query results as a [JSON array](https://json-schema.org/understanding-json-schema/reference/array) below your query.
-Click the table icon, to switch to table view.
+Click the table icon to switch to table view.
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -248,48 +246,48 @@ Click the table icon, to switch to table view.
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="29-47" >}}
 
-{{% expand "Click to see an example that filters by component name and column names." %}}
+{{< expand "Click to see an example that filters by component name and column names." >}}
 
-{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.py" lang="py" class="line-numbers linkable-line-numbers" >}}
+{{% read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.py" lang="py" class="line-numbers linkable-line-numbers" %}}
 
-{{% /expand %}}
-{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+{{< /expand >}}
+{{< expand "Click to see an example that returns a count of records that match a component name." >}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.py" lang="py" class="line-numbers linkable-line-numbers" >}}
 
-{{% /expand %}}
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-45" >}}
 
-{{% expand "Click to see an example that filters by component name and column names." %}}
+{{< expand "Click to see an example that filters by component name and column names." >}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.go" lang="go" class="line-numbers linkable-line-numbers" >}}
 
-{{% /expand %}}
-{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+{{< /expand >}}
+{{< expand "Click to see an example that returns a count of records that match a component name." >}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.go" lang="go" class="line-numbers linkable-line-numbers" >}}
 
-{{% /expand %}}
+{{< /expand >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18-31" >}}
 
-{{% expand "Click to see an example that filters by component name and column names." %}}
+{{< expand "Click to see an example that filters by component name and column names." >}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.ts" lang="ts" class="line-numbers linkable-line-numbers" >}}
 
-{{% /expand %}}
-{{% expand "Click to see an example that returns a count of records that match a component name from a specific location." %}}
+{{< /expand >}}
+{{< expand "Click to see an example that returns a count of records that match a component name." >}}
 
 {{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.ts" lang="ts" class="line-numbers linkable-line-numbers" >}}
 
-{{% /expand %}}
+{{< /expand >}}
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -300,7 +298,7 @@ Click the table icon, to switch to table view.
 
 {{% expand "Captured sensor data" %}}
 
-Follow the guide to [capture sensor data](/data-ai/capture-data/capture-sync/).
+See [capture sensor data](/data-ai/capture-data/capture-sync/) to capture and sync data to Viam.
 
 {{% /expand%}}
 
@@ -312,32 +310,35 @@ You must have the Viam CLI installed to configure querying with third-party tool
 
 {{% /expand%}}
 
-{{% expand "A third-party tool for querying data, such as mongosh" %}}
+{{% expand "Third-party tool for querying data (such as mongosh)" %}}
 
-[Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source to follow along.
+[Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source.
+
 See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
 
 {{% /expand%}}
 
 ### Configure data query
 
-If you want to query data from third party tools, you have to configure data query to obtain the credentials you need to connect to the third party service.
+If you want to query data from third-party tools, you have to configure data query to obtain the credentials you need to connect to the third-party service.
 
 {{< readfile "/static/include/how-to/query-data.md" >}}
 
 ### Query data using third-party tools
 
-You can use third-party tools, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/), to query captured sensor data.
+To query captured data, you can use any third-party tools that support querying from MongoDB, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/).
 
 {{< table >}}
 {{% tablestep start=1 %}}
 **Connect to your Viam organization's data**
 
-Run the following command to connect to your Viam organization's MongoDB Atlas instance from `mongosh` using the connection URI you obtained during query configuration:
+Run the following command to connect to your Viam organization's MongoDB instance from `mongosh` using the connection URI you obtained during query configuration:
 
 ```sh {class="command-line" data-prompt=">"}
 mongosh "mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HERE@data-federation-abcd1e2f-a1b2-3c45-de6f-ab123456c123-0z9yx.a.query.mongodb.net/?ssl=true&authSource=admin"
 ```
+
+For information on connecting to your Atlas Data Federation instance from other MQL clients, see the [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -345,12 +346,10 @@ mongosh "mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HE
 
 Once connected, you can run SQL or MQL statements to query captured data directly.
 
-The following query searches the `sensorData` database and `readings` collection, and gets sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `.2` meters.
+The following query searches the `readings` collection in the `sensorData` database and gets sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `0.2` meters.
 
 {{< tabs >}}
 {{% tab name="MQL" %}}
-
-The following MQL query performs counts the number of sensor readings where the `distance` value is above `0.2` using the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/):
 
 ```mongodb {class="command-line" data-prompt=">" data-output="10"}
 use sensorData
@@ -359,16 +358,16 @@ db.readings.aggregate(
         { $match: {
             'robot_id': 'abcdef12-abcd-abcd-abcd-abcdef123456',
             'component_name': 'my-ultrasonic-sensor',
-            'data.readings.distance': { $gt: .2 } } },
+            'data.readings.distance': { $gt: 0.2 } } },
         { $count: 'numStanding' }
     ] )
 [ { numStanding: 215 } ]
 ```
 
+See the [MQL documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for more information.
+
 {{% /tab %}}
 {{% tab name="SQL" %}}
-
-The following query uses the MongoDB [`$sql` aggregation pipeline stage](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/):
 
 ```mongodb {class="command-line" data-prompt=">" data-output="11"}
 use sensorData
@@ -384,6 +383,8 @@ db.aggregate(
 [ { '': { numStanding: 215 } } ]
 ```
 
+See the [`$sql` aggregation pipeline stage documentation](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/) for more information.
+
 {{% /tab %}}
 {{< /tabs >}}
 
@@ -395,7 +396,8 @@ db.aggregate(
 
 When using MQL to query your data by date or time range, you can optimize query performance by avoiding the MongoDB `$toDate` expression, using the [BSON `date` type](https://www.mongodb.com/docs/manual/reference/bson-types/#date) instead.
 
-For example, use the following query to search by a date range in the `mongosh` shell, using the JavaScript `Date()` constructor to specify an explicit start timestamp, and use the current time as the end timestamp:
+For example, use the following query to search by a date range in the `mongosh` shell.
+Use the JavaScript `Date()` constructor to specify an explicit start timestamp and the current time as the end timestamp:
 
 ```mongodb {class="command-line" data-prompt=">"}
 // Switch to sensorData database:
@@ -421,10 +423,6 @@ db.readings.aggregate(
 {{% /tablestep %}}
 {{< /table >}}
 
-For information on connecting to your Atlas instance from other MQL clients, see the MongoDB Atlas [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
-
-On top of querying sensor data with third-party tools, you can also [query it with the Python SDK](/data-ai/reference/data-client/) or [visualize it](/data-ai/data/visualize/).
-
 ## Query optimization and performance best practices
 
 1. When querying large datasets, whether from default storage or a [hot data store](/data-ai/data/hot-data-store/), you can improve the query's efficiency by specifying the following parameters in the query:
@@ -441,7 +439,7 @@ On top of querying sensor data with third-party tools, you can also [query it wi
    Viam stores data in blob storage using the pattern `/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_date/*`.
    The more specific you can be, starting with the beginning of the path, the faster your query.
 
-1. Filter and reduce the amount of data that needs to be processed early, especially when your query expands the data it works with by using operators like `$limit` and `$unwind`.
+1. Filter and reduce the amount of data that needs to be processed early, especially when your query expands the data it works with using operators like `$limit` and `$unwind`.
    If you don't need all fields, use `$project` early to reduce the fields in the processing dataset.
    If you only need a certain number of results, use `$limit` early in the pipeline to reduce data processing.
 
@@ -489,7 +487,7 @@ see whitelistStages in https://github.com/viamrobotics/app/blob/e706a2e3ea57a252
 
 ### SQL
 
-You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
+You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
 
 SQL queries are subject to the following limitations:
 
@@ -500,4 +498,4 @@ SQL queries are subject to the following limitations:
 - To include a single quote character in a string literal, use two single quotes (use `o''clock` to represent the literal `o'clock`).
 - The `date` data type is not supported. Use `timestamp` instead.
 
-For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatability-and-limitations).
+For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations).
