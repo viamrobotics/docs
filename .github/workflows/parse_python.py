@@ -141,6 +141,8 @@ class PythonParser:
             ## Determine URL form for Python depending on type (like 'component'):
             if type in ("component", "service") and resource in python_resource_overrides:
                 url = f"{self.scrape_url}/autoapi/viam/{type}s/{python_resource_overrides[resource]}/client/index.html"
+            elif resource == "world_state_store":
+                url = f"{self.scrape_url}/autoapi/viam/services/worldstatestore/index.html"
             elif type in ("component", "service"):
                 url = f"{self.scrape_url}/autoapi/viam/{type}s/{resource}/client/index.html"
             elif type == "app" and resource in python_resource_overrides:

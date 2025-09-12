@@ -319,6 +319,14 @@ vision,GetResourceName,,get_resource_name,Name,getResourceName,name
 vision,GetProperties,,get_properties,GetProperties,properties,getProperties
 vision,Close,,close,Close,,
 
+## World State Store
+world_state_store,listUUIDs,,list_uuids,,,listUUIDs
+world_state_store,GetTransform,,get_transform,,,getTransform
+world_state_store,StreamTransformChanges,,stream_transform_changes,,,streamTransformChanges
+world_state_store,DoCommand,,do_command,,,doCommand
+world_state_store,GetResourceName,,get_resource_name,,,name
+world_state_store,Close,,close,,,
+
 ## App
 app,GetUserIDByEmail,,get_user_id_by_email,GetUserIDByEmail,,getUserIDByEmail
 app,CreateOrganization,,create_organization,CreateOrganization,,createOrganization

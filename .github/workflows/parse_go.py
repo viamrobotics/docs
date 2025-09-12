@@ -113,6 +113,9 @@ class GoParser:
 
         for resource in viam_resources:
 
+            if resource == "world_state_store":
+                print(f'Skipping Resource: {resource}')
+                continue
             ## Determine URL form for Go depending on type (like 'component'):
             if type in ("component", "service") and resource in go_resource_overrides:
                 url = f"{self.scrape_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
