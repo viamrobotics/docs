@@ -31,24 +31,24 @@ Triggers support the following attributes:
 The following template demonstrates the form of a JSON configuration for a trigger that alerts when data syncs to the Viam cloud:
 
 ```json {class="line-numbers linkable-line-numbers"}
-  "triggers": [
-    {
-      "name": "<trigger name>",
-      "event": {
-        "type": "part_data_ingested",
-        "data_ingested": {
-          "data_types": ["binary", "tabular", "file", "unspecified"]
-        }
-      },
-      "notifications": [
-        {
-          "type": "<webhook|email>",
-          "value": "<webhook URL or email address>",
-          "seconds_between_notifications": <number of seconds>
-        }
-      ]
-    }
-  ]
+"triggers": [
+  {
+    "name": "<trigger name>",
+    "event": {
+      "type": "part_data_ingested",
+      "data_ingested": {
+        "data_types": ["binary", "tabular", "file", "unspecified"]
+      }
+    },
+    "notifications": [
+      {
+        "type": "<webhook|email>",
+        "value": "<webhook URL or email address>",
+        "seconds_between_notifications": <number of seconds>
+      }
+    ]
+  }
+]
 ```
 
 ## Conditional attributes
