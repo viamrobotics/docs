@@ -133,7 +133,7 @@ Go to **Connections > Add new connection** and add the [Grafana MongoDB data sou
 Be sure to install the MongoDB _data source_, not the _integration_.
 {{% /alert %}}
 
-{{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb" class="shadow" >}}
+{{<imgproc src="/tutorials/visualize-data-grafana/search-grafana-plugins.png" resize="800x" style="width: 500px" declaredimensions=true alt="The Grafana plugin search interface showing the results for a search for mongodb" class="shadow imgzoom" >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -160,7 +160,7 @@ Enter the following information in the configuration UI for the plugin:
 - **Password**: Enter the password for the database user.
   This is the password provided when configuring data query.
 
-  {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps" class="shadow" >}}
+  {{<imgproc src="/tutorials/visualize-data-grafana/configure-grafana-mongodb-datasource.png" resize="800x" style="width: 500px" declaredimensions=true alt="The Grafana data source plugin configuration page, showing the connection string and username filled in with the configuration determined from the previous steps" class="shadow imgzoom" >}}
 
 For more information on the Grafana MongoDB plugin, see [Configure the MongoDB data source](https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/configure/).
 
