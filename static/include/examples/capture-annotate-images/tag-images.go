@@ -123,17 +123,18 @@ func main() {
 	}
 
 	// Access the bounding boxes from the annotations
-	if data[0].Metadata.CaptureMetadata.Tags != nil {
-		for _, tag := range data[0].Metadata.CaptureMetadata.Tags {
-			_, err = dataClient.RemoveTagsFromBinaryDataByIDs(ctx, []string{tag}, []string{binaryDataID})
-			if err != nil {
-				logger.Fatal(err)
-			}
-			fmt.Printf("Deleted tag: %s\n", tag)
-		}
-	} else {
-		logger.Fatal("No tags found on image")
-	}
+	// TODO: Uncomment this when deleting tags works again
+	// if data[0].Metadata.CaptureMetadata.Tags != nil {
+	// 	for _, tag := range data[0].Metadata.CaptureMetadata.Tags {
+	// 		_, err = dataClient.RemoveTagsFromBinaryDataByIDs(ctx, []string{tag}, []string{binaryDataID})
+	// 		if err != nil {
+	// 			logger.Fatal(err)
+	// 		}
+	// 		fmt.Printf("Deleted tag: %s\n", tag)
+	// 	}
+	// } else {
+	// 	logger.Fatal("No tags found on image")
+	// }
 	// :remove-end:
 }
 // :snippet-end:

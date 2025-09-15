@@ -60,10 +60,11 @@ async def main() -> int:
     # Access the tags from the annotations
     if hasattr(data[0].metadata.annotations, 'classifications'):
         for tag in data[0].metadata.annotations.classifications:
-            await data_client.remove_tags_from_binary_data_by_ids(
-                binary_ids=[BINARY_DATA_ID],
-                tags=[tag.label]
-            )
+            # TODO: Uncomment this when deleting tags works again
+            # await data_client.remove_tags_from_binary_data_by_ids(
+            #     binary_ids=[BINARY_DATA_ID],
+            #     tags=[tag.label]
+            # )
             print(f"Deleted tag: {tag.id}")
     # :remove-end:
 
@@ -95,10 +96,11 @@ async def main() -> int:
     # Access the bounding boxes from the annotations
     if hasattr(data[0].metadata.annotations, 'classifications'):
         for tag in data[0].metadata.annotations.classifications:
-            await data_client.remove_tags_from_binary_data_by_ids(
-                binary_ids=[BINARY_DATA_ID],
-                tags=[tag.label]
-            )
+            # TODO: Uncomment this when deleting tags works again
+            # await data_client.remove_tags_from_binary_data_by_ids(
+            #     binary_ids=[BINARY_DATA_ID],
+            #     tags=[tag.label]
+            # )
             print(f"Deleted tag: {tag.label}")
 
     # :remove-end:

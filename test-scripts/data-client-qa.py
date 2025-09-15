@@ -131,7 +131,7 @@ async def main():
         bson.dumps({ '$limit': 5 })
     ])
 
-    print(tabular_data) 
+    print(tabular_data)
 
     # using pymongo package (pip install pymongo)
     tabular_data = await data_client.tabular_data_by_mql(organization_id="<YOUR-ORG-ID>", mql_binary=[
@@ -167,7 +167,7 @@ async def main():
     print(f"binary data: {binary_data}")
 
     tabular_data = await data_client.delete_tabular_data(
-        organization_id="<YOUR-ORG-ID>", 
+        organization_id="<YOUR-ORG-ID>",
         delete_older_than_days=150
       )
 
@@ -208,7 +208,7 @@ async def main():
       limit=20,
       include_binary_data=False
       )
-  
+
     my_ids = []
 
     for obj in binary_metadata:
@@ -248,9 +248,10 @@ async def main():
             )
         )
 
-    binary_data = await data_client.remove_tags_from_binary_data_by_ids(
-        tags, my_ids)
-    
+    # TODO: Uncomment this when deleting tags works again
+    #  binary_data = await data_client.remove_tags_from_binary_data_by_ids(
+    #     tags, my_ids)
+
     print(f"Binary data {binary_data}")
 
     my_filter = create_filter(component_name="camera-2")
@@ -294,7 +295,7 @@ async def main():
     my_filter = create_filter(component_name="camera-2")
     bounding_box_labels = await data_client.bounding_box_labels_by_filter(
         my_filter)
-    
+
     print(bounding_box_labels)
 
     hostname = await data_client.get_database_connection(organization_id="<YOUR-ORG-ID>")
