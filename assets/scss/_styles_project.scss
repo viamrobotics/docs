@@ -298,6 +298,12 @@ a > code {
   display: none;
 }
 
+@media (max-width: 665px) {
+  file {
+    word-break: break-all !important;
+  }
+}
+
 p,
 li {
   color: #4e4f52;
