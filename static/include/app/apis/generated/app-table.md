@@ -80,6 +80,7 @@
 | [`DeleteKey`](/dev/reference/apis/fleet/#deletekey) | Delete an API key. |
 | [`RotateKey`](/dev/reference/apis/fleet/#rotatekey) | Rotate an API key. |
 | [`ListKeys`](/dev/reference/apis/fleet/#listkeys) | List all keys for the {{< glossary_tooltip term_id="organization" text="organization" >}} that you are currently authenticated to. |
+| [`RenameKey`](/dev/reference/apis/fleet/#renamekey) | RenameKey renames an API key and returns its ID and name. |
 | [`CreateKeyFromExistingKeyAuthorizations`](/dev/reference/apis/fleet/#createkeyfromexistingkeyauthorizations) | Create a new API key with an existing key’s authorizations. |
 | [`GetAppContent`](/dev/reference/apis/fleet/#getappcontent) | Retrieve the app content for an organization. |
 | [`GetAppBranding`](/dev/reference/apis/fleet/#getappbranding) | Retrieves the app branding for an organization or app. |

@@ -16,12 +16,12 @@ Gets the most recent tabular data captured from the specified data source, as lo
 **Returns:**
 
 - (Tuple[[datetime.datetime](https://docs.python.org/3/library/datetime.html), [datetime.datetime](https://docs.python.org/3/library/datetime.html), Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]] | None): A return value of `None` means that this data source
-  has not synced data in the last year. Otherwise, the data source has synced some data in the last year, so the returned
-  tuple contains the following:
+has not synced data in the last year. Otherwise, the data source has synced some data in the last year, so the returned
+tuple contains the following:
 
-      * `time_captured` (*datetime*): The time captured.
-      * `time_synced` (*datetime*): The time synced.
-      * `payload` (*Dict\[str, ValueTypes]*): The latest tabular data captured from the specified data source.
+    * `time_captured` (*datetime*): The time captured.
+    * `time_synced` (*datetime*): The time synced.
+    * `payload` (*Dict\[str, ValueTypes]*): The latest tabular data captured from the specified data source.
 
 **Example:**
 
@@ -55,11 +55,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `resourceName`
 - `resourceSubtype`
 - `methodName` [(string)](https://pkg.go.dev/builtin#string)
-- `opts` [(\*TabularDataOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataOptions)
+- `opts` [(*TabularDataOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataOptions)
 
 **Returns:**
 
-- [(\*GetLatestTabularDataResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetLatestTabularDataResponse)
+- [(*GetLatestTabularDataResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetLatestTabularDataResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetLatestTabularData).
@@ -80,17 +80,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Returns:**
 
 - (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>): A tuple containing \[timeCaptured, timeSynced, payload] or null if
-  no data has been synced for the specified resource OR the most recently
-  captured data was over a year ago.
+no data has been synced for the specified resource OR the most recently
+captured data was over a year ago.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.getLatestTabularData(
-  "123abc45-1234-5678-90ab-cdef12345678",
-  "my-sensor",
-  "rdk:component:sensor",
-  "Readings",
+  '123abc45-1234-5678-90ab-cdef12345678',
+  'my-sensor',
+  'rdk:component:sensor',
+  'Readings'
 );
 ```
 
@@ -189,11 +189,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `resourceSubtype`
 - `method` [(string)](https://pkg.go.dev/builtin#string)
 - `interval` [(CaptureInterval)](https://pkg.go.dev/go.viam.com/rdk/app#CaptureInterval)
-- `opts` [(\*TabularDataOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataOptions)
+- `opts` [(*TabularDataOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataOptions)
 
 **Returns:**
 
-- [([]\*ExportTabularDataResponse)](https://pkg.go.dev/go.viam.com/rdk/app#ExportTabularDataResponse)
+- [([]*ExportTabularDataResponse)](https://pkg.go.dev/go.viam.com/rdk/app#ExportTabularDataResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ExportTabularData).
@@ -223,12 +223,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.exportTabularData(
-  "123abc45-1234-5678-90ab-cdef12345678",
-  "my-sensor",
-  "rdk:component:sensor",
-  "Readings",
-  new Date("2025-03-25"),
-  new Date("2024-03-27"),
+  '123abc45-1234-5678-90ab-cdef12345678',
+  'my-sensor',
+  'rdk:component:sensor',
+  'Readings',
+  new Date('2025-03-25'),
+  new Date('2024-03-27')
 );
 ```
 
@@ -313,9 +313,9 @@ You can also find your tabular data under the **Sensors** subtab of the [**Data*
 
 - (Tuple[List[TabularData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following:
 
-  - `tabular_data` (_List\[TabularData]_): The tabular data.
-  - `count` (_int_): The count (number of entries).
-  - `last` (_str_): The last\-returned page ID.
+    * `tabular_data` (*List\[TabularData]*): The tabular data.
+    * `count` (*int*): The count (number of entries).
+    * `last` (*str*): The last\-returned page ID.
 
 **Example:**
 
@@ -342,11 +342,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `opts` [(\*DataByFilterOptions)](https://pkg.go.dev/go.viam.com/rdk/app#DataByFilterOptions)
+- `opts` [(*DataByFilterOptions)](https://pkg.go.dev/go.viam.com/rdk/app#DataByFilterOptions)
 
 **Returns:**
 
-- [(\*TabularDataByFilterResponse)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByFilterResponse)
+- [(*TabularDataByFilterResponse)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByFilterResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByFilter).
@@ -372,17 +372,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Returns:**
 
 - (Promise<{ count: bigint; data: TabularData[]; last: string }>): An array of data objects, the count (number of entries), and the
-  last\-returned page ID.
+last\-returned page ID.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.tabularDataByFilter(
   {
-    componentName: "sensor-1",
-    componentType: "rdk:component:sensor",
+    componentName: 'sensor-1',
+    componentType: 'rdk:component:sensor',
   } as Filter,
-  5,
+  5
 );
 ```
 
@@ -501,8 +501,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.tabularDataBySQL(
-  "123abc45-1234-5678-90ab-cdef12345678",
-  "SELECT * FROM readings LIMIT 5",
+  '123abc45-1234-5678-90ab-cdef12345678',
+  'SELECT * FROM readings LIMIT 5'
 );
 ```
 
@@ -587,7 +587,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `organizationID` [(string)](https://pkg.go.dev/builtin#string)
 - `query` [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
-- `opts` [(\*TabularDataByMQLOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByMQLOptions)
+- `opts` [(*TabularDataByMQLOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByMQLOptions)
 
 **Returns:**
 
@@ -618,7 +618,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const mqlQuery: Record<string, JsonValue>[] = [
   {
     $match: {
-      component_name: "sensor-1",
+      component_name: 'sensor-1',
     },
   },
   {
@@ -627,8 +627,8 @@ const mqlQuery: Record<string, JsonValue>[] = [
 ];
 
 const data = await dataClient.tabularDataByMQL(
-  "123abc45-1234-5678-90ab-cdef12345678",
-  mqlQuery,
+  '123abc45-1234-5678-90ab-cdef12345678',
+  mqlQuery
 );
 ```
 
@@ -707,9 +707,9 @@ You can also find your binary data under the **Images**, **Point clouds**, or **
 
 - (Tuple[List[viam.proto.app.data.BinaryData], [int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the following:
 
-  - `data` (_List\[_ [`BinaryData`](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryData "viam.proto.app.data.BinaryData") _]_): The binary data.
-  - `count` (_int_): The count (number of entries).
-  - `last` (_str_): The last\-returned page ID.
+    * `data` (*List\[* [`BinaryData`](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryData "viam.proto.app.data.BinaryData") *]*): The binary data.
+    * `count` (*int*): The count (number of entries).
+    * `last` (*str*): The last\-returned page ID.
 
 **Example:**
 
@@ -758,11 +758,11 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `includeBinary` [(bool)](https://pkg.go.dev/builtin#bool)
-- `opts` [(\*DataByFilterOptions)](https://pkg.go.dev/go.viam.com/rdk/app#DataByFilterOptions)
+- `opts` [(*DataByFilterOptions)](https://pkg.go.dev/go.viam.com/rdk/app#DataByFilterOptions)
 
 **Returns:**
 
-- [(\*BinaryDataByFilterResponse)](https://pkg.go.dev/go.viam.com/rdk/app#BinaryDataByFilterResponse)
+- [(*BinaryDataByFilterResponse)](https://pkg.go.dev/go.viam.com/rdk/app#BinaryDataByFilterResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.BinaryDataByFilter).
@@ -790,17 +790,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Returns:**
 
 - (Promise<{ count: bigint; data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]; last: string }>): An array of data objects, the count (number of entries), and the
-  last\-returned page ID.
+last\-returned page ID.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.binaryDataByFilter(
   {
-    componentName: "camera-1",
-    componentType: "rdk:component:camera",
+    componentName: 'camera-1',
+    componentType: 'rdk:component:camera',
   } as Filter,
-  1,
+  1
 );
 ```
 
@@ -905,7 +905,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]\*BinaryData)](https://pkg.go.dev/go.viam.com/rdk/app#BinaryData)
+- [([]*BinaryData)](https://pkg.go.dev/go.viam.com/rdk/app#BinaryData)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.BinaryDataByIDs).
@@ -925,7 +925,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.binaryDataByIds([
-  "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
+  'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
 ]);
 ```
 
@@ -1041,8 +1041,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.deleteTabularData(
-  "123abc45-1234-5678-90ab-cdef12345678",
-  10,
+  '123abc45-1234-5678-90ab-cdef12345678',
+  10
 );
 ```
 
@@ -1116,7 +1116,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `filter` [(\*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
+- `filter` [(*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
 
 **Returns:**
 
@@ -1143,11 +1143,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.deleteBinaryDataByFilter({
-  componentName: "camera-1",
-  componentType: "rdk:component:camera",
-  organizationIds: ["123abc45-1234-5678-90ab-cdef12345678"],
-  startTime: new Date("2025-03-19"),
-  endTime: new Date("2025-03-20"),
+  componentName: 'camera-1',
+  componentType: 'rdk:component:camera',
+  organizationIds: ['123abc45-1234-5678-90ab-cdef12345678'],
+  startTime: new Date('2025-03-19'),
+  endTime: new Date('2025-03-20'),
 } as Filter);
 ```
 
@@ -1268,7 +1268,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.deleteBinaryDataByIds([
-  "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
+  'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
 ]);
 ```
 
@@ -1392,10 +1392,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.addTagsToBinaryDataByIds(
-  ["tag1", "tag2"],
+  ['tag1', 'tag2'],
   [
-    "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
-  ],
+    'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
+  ]
 );
 ```
 
@@ -1445,96 +1445,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### RemoveTagsFromBinaryDataByIDs
-
-Remove tags from binary by ids.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `tags`
-- `binaryDataIDs` [([]string)](https://pkg.go.dev/builtin#string)
-
-**Returns:**
-
-- [(int)](https://pkg.go.dev/builtin#int)
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.RemoveTagsFromBinaryDataByIDs).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `tags` (string) (required): List of tags to remove from specified binary data. Must be
-  non\-empty.
-- `ids` (string) (required): The IDs of the data to be edited. Must be non\-empty.
-
-**Returns:**
-
-- (Promise<bigint>): The number of items deleted.
-
-**Example:**
-
-```ts {class="line-numbers linkable-line-numbers"}
-const data = await dataClient.removeTagsFromBinaryDataByIds(
-  ["tag1", "tag2"],
-  [
-    "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
-  ],
-);
-```
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removetagsfrombinarydatabyids).
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `tags` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-
-**Returns:**
-
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
-
-**Example:**
-
-```dart {class="line-numbers linkable-line-numbers"}
- _viam = await Viam.withApiKey(
-     dotenv.env['API_KEY_ID'] ?? '',
-     dotenv.env['API_KEY'] ?? ''
- );
- final dataClient = _viam.dataClient;
-
- try {
-  // List of tags to remove
-  final List<String> tags = ['tag_1', 'tag_2'];
-
-  final binaryDataIds = [
-  '<YOUR-BINARY-DATA-ID>',
-  '<YOUR-BINARY-DATA-ID>'
-  ];
-
-  // Call the function with both tags and IDs
-  await dataClient.removeTagsFromBinaryDataByIds(tags, binaryDataIds);
-
-  print('Successfully removed tags from binary IDs');
- } catch (e) {
-  print('Error removing tags: $e');
- }
-```
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/DataClient/removeTagsFromBinaryDataByIds.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### TagsByFilter
 
 Get a list of tags using a filter.
@@ -1577,7 +1487,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.tagsByFilter({
-  componentName: "camera-1",
+  componentName: 'camera-1',
 } as Filter);
 ```
 
@@ -1708,12 +1618,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const bboxId = await dataClient.addBoundingBoxToImageById(
-  "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
-  "label1",
+  'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
+  'label1',
   0.3,
   0.3,
   0.6,
-  0.6,
+  0.6
 );
 ```
 
@@ -1825,8 +1735,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 await dataClient.removeBoundingBoxFromImageById(
-  "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
-  "5Z9ryhkW7ULaXROjJO6ghPYulNllnH20QImda1iZFroZpQbjahK6igQ1WbYigXED",
+  'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
+  '5Z9ryhkW7ULaXROjJO6ghPYulNllnH20QImda1iZFroZpQbjahK6igQ1WbYigXED'
 );
 ```
 
@@ -1910,7 +1820,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `filter` [(\*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
+- `filter` [(*Filter)](https://pkg.go.dev/go.viam.com/rdk/app#Filter)
 
 **Returns:**
 
@@ -1935,7 +1845,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.boundingBoxLabelsByFilter({
-  componentName: "camera-1",
+  componentName: 'camera-1',
 } as Filter);
 ```
 
@@ -2014,7 +1924,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*GetDatabaseConnectionResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetDatabaseConnectionResponse)
+- [(*GetDatabaseConnectionResponse)](https://pkg.go.dev/go.viam.com/rdk/app#GetDatabaseConnectionResponse)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetDatabaseConnection).
@@ -2034,7 +1944,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const hostname = await dataClient.getDatabaseConnection(
-  "123abc45-1234-5678-90ab-cdef12345678",
+  '123abc45-1234-5678-90ab-cdef12345678'
 );
 ```
 
@@ -2138,8 +2048,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 await dataClient.configureDatabaseUser(
-  "123abc45-1234-5678-90ab-cdef12345678",
-  "Password01!",
+  '123abc45-1234-5678-90ab-cdef12345678',
+  'Password01!'
 );
 ```
 
@@ -2194,7 +2104,7 @@ This BinaryData will be tagged with the VIAM_DATASET\_{id} label.
 **Parameters:**
 
 - `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Unique identifiers for binary data to add to the dataset. To retrieve these IDs, navigate to the DATA page, click on an image, and copy its Binary Data ID from the details tab.
-- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to. To retrieve the dataset ID: Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be added to.  To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
 
@@ -2254,9 +2164,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 await dataClient.addBinaryDataToDatasetByIds(
   [
-    "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
+    'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
   ],
-  "12ab3de4f56a7bcd89ef0ab1",
+  '12ab3de4f56a7bcd89ef0ab1'
 );
 ```
 
@@ -2320,7 +2230,7 @@ This BinaryData will lose the VIAM_DATASET\_{id} tag.
 **Parameters:**
 
 - `binary_ids` ([List[viam.proto.app.data.BinaryID] | List[str]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.BinaryID)) (required): Unique identifiers for the binary data to remove from the dataset. To retrieve these IDs, navigate to the DATA page, click on an image and copy its Binary Data ID from the details tab. DEPRECATED: BinaryID is deprecated and will be removed in a future release. Instead, pass binary data IDs as a list of strings.
-- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from. To retrieve the dataset ID: Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
+- `dataset_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the dataset to be removed from. To retrieve the dataset ID:  Navigate to the DATASETS tab of the DATA page. Click on the dataset. Click the … menu. Select Copy dataset ID.
 
 **Returns:**
 
@@ -2380,9 +2290,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 await dataClient.removeBinaryDataFromDatasetByIds(
   [
-    "ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh",
+    'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
   ],
-  "12ab3de4f56a7bcd89ef0ab1",
+  '12ab3de4f56a7bcd89ef0ab1'
 );
 ```
 
@@ -2467,7 +2377,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*DataPipeline)](https://pkg.go.dev/go.viam.com/rdk/app#DataPipeline)
+- [(*DataPipeline)](https://pkg.go.dev/go.viam.com/rdk/app#DataPipeline)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.GetDataPipeline).
@@ -2487,7 +2397,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const pipeline = await dataClient.getPipeline(
-  "123abc45-1234-5678-90ab-cdef12345678",
+  '123abc45-1234-5678-90ab-cdef12345678'
 );
 ```
 
@@ -2529,7 +2439,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]\*DataPipeline)](https://pkg.go.dev/go.viam.com/rdk/app#DataPipeline)
+- [([]*DataPipeline)](https://pkg.go.dev/go.viam.com/rdk/app#DataPipeline)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelines).
@@ -2549,7 +2459,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const pipelines = await dataClient.listDataPipelines(
-  "123abc45-1234-5678-90ab-cdef12345678",
+  '123abc45-1234-5678-90ab-cdef12345678'
 );
 ```
 
@@ -2603,7 +2513,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `query` [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
 - `schedule` [(string)](https://pkg.go.dev/builtin#string)
 - `enableBackfill` [(bool)](https://pkg.go.dev/builtin#bool)
-- `opts` [(\*CreateDataPipelineOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateDataPipelineOptions)
+- `opts` [(*CreateDataPipelineOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateDataPipelineOptions)
 
 **Returns:**
 
@@ -2707,7 +2617,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await dataClient.deleteDataPipeline("123abc45-1234-5678-90ab-cdef12345678");
+await dataClient.deleteDataPipeline(
+  '123abc45-1234-5678-90ab-cdef12345678'
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletedatapipeline).
@@ -2751,7 +2663,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*ListDataPipelineRunsPage)](https://pkg.go.dev/go.viam.com/rdk/app#ListDataPipelineRunsPage)
+- [(*ListDataPipelineRunsPage)](https://pkg.go.dev/go.viam.com/rdk/app#ListDataPipelineRunsPage)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.ListDataPipelineRuns).
@@ -2772,7 +2684,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const page = await dataClient.listDataPipelineRuns(
-  "123abc45-1234-5678-90ab-cdef12345678",
+  '123abc45-1234-5678-90ab-cdef12345678'
 );
 page.runs.forEach((run) => {
   console.log(run);

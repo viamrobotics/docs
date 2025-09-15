@@ -1094,7 +1094,9 @@ User-defined metadata is billed as data.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.update_organization_metadata(org_id="<YOUR-ORG-ID>", metadata=)
+await cloud.update_organization_metadata(org_id="<YOUR-ORG-ID>", metadata={
+    "TEST_API_KEY": "ABC123",
+})
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_organization_metadata).
@@ -1912,7 +1914,9 @@ Update the user-defined metadata for a location.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.update_location_metadata(location_id="<YOUR-LOCATION-ID>", metadata=)
+await cloud.update_location_metadata(location_id="<YOUR-LOCATION-ID>", metadata={
+    "TEST_API_KEY": "ABC123",
+})
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_location_metadata).
@@ -3399,7 +3403,9 @@ User-defined metadata is billed as data.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.update_robot_metadata(robot_id="<YOUR-ROBOT-ID>", metadata=)
+await cloud.update_robot_metadata(robot_id="<YOUR-ROBOT-ID>", metadata={
+    "TEST_API_KEY": "ABC123",
+})
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_metadata).
@@ -3464,7 +3470,9 @@ User-defined metadata is billed as data.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await cloud.update_robot_part_metadata(robot_part_id="<YOUR-ROBOT-PART-ID>", metadata=)
+await cloud.update_robot_part_metadata(robot_part_id="<YOUR-ROBOT-PART-ID>", metadata={
+    "TEST_API_KEY": "ABC123",
+})
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.update_robot_part_metadata).
@@ -5466,6 +5474,30 @@ const keys = await appClient.listKeys('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listkeys).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### RenameKey
+
+RenameKey renames an API key and returns its ID and name.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `id`
+- `name` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(string)](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.RenameKey).
 
 {{% /tab %}}
 {{< /tabs >}}

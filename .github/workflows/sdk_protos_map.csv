@@ -409,6 +409,7 @@ app,CreateKey,,create_key,CreateKey,,createKey
 app,DeleteKey,,delete_key,DeleteKey,,deleteKey
 app,RotateKey,,rotate_key,RotateKey,,rotateKey
 app,ListKeys,,list_keys,ListKeys,,listKeys
+app,RenameKey,,,RenameKey,,
 app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
 app,GetAppContent,,,,,getAppContent
 app,GetAppBranding,,,,,getAppBranding
@@ -432,7 +433,8 @@ data,DeleteTabularData,,delete_tabular_data,DeleteTabularData,deleteTabularData,
 data,DeleteBinaryDataByFilter,,delete_binary_data_by_filter,DeleteBinaryDataByFilter,deleteBinaryDataByFilter,deleteBinaryDataByFilter
 data,DeleteBinaryDataByIDs,,delete_binary_data_by_ids,DeleteBinaryDataByIDs,deleteBinaryDataByIds,deleteBinaryDataByIds
 data,AddTagsToBinaryDataByIDs,,add_tags_to_binary_data_by_ids,AddTagsToBinaryDataByIDs,addTagsToBinaryDataByIds,addTagsToBinaryDataByIds
-data,RemoveTagsFromBinaryDataByIDs,,,RemoveTagsFromBinaryDataByIDs,removeTagsFromBinaryDataByIds,removeTagsFromBinaryDataByIds
+## TODO: Uncomment this when deleting tags works again
+## data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,RemoveTagsFromBinaryDataByIDs,removeTagsFromBinaryDataByIds,removeTagsFromBinaryDataByIds
 data,TagsByFilter,,tags_by_filter,,tagsByFilter,tagsByFilter
 data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,AddBoundingBoxToImageByID,addBoundingBoxToImageById,addBoundingBoxToImageById
 data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,RemoveBoundingBoxFromImageByID,removeBoundingBoxFromImageById,removeBoundingBoxFromImageById
