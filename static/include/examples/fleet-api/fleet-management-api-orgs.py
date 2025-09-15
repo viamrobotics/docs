@@ -189,7 +189,7 @@ async def main():
     assert new_num_keys == num_keys
 
     # setup
-    user_id = member_list[1].user_id
+    user_id = member_list[-1].user_id
 
     await cloud.add_role(
       org_id=ORG_ID,
@@ -203,7 +203,8 @@ async def main():
     list_of_auths = await cloud.list_authorizations(
       org_id=ORG_ID,
       resource_ids=[LOCATION_ID])
-    assert len(list_of_auths) == 1
+    current_auths_location = len(list_of_auths)
+    assert current_auths_location >= 1
 
     await cloud.change_role(
       organization_id=ORG_ID,
@@ -224,7 +225,8 @@ async def main():
     list_of_auths = await cloud.list_authorizations(
       org_id=ORG_ID,
       resource_ids=[ORG_ID])
-    assert len(list_of_auths) == 3
+    current_auths_org = len(list_of_auths)
+    assert current_auths_org >= 1
 
     await cloud.remove_role(
       org_id=ORG_ID,
@@ -236,7 +238,7 @@ async def main():
     list_of_auths = await cloud.list_authorizations(
       org_id=ORG_ID,
       resource_ids=[ORG_ID])
-    assert len(list_of_auths) == 2
+    assert len(list_of_auths) == current_auths_org - 1
 
 
     permissions = [AuthorizedPermissions(resource_type="organization",

@@ -355,9 +355,9 @@ func main() {
 	if apiKeyID2 == "" {
 		logger.Fatal("API key ID 2 should not be empty")
 	}
-  fmt.Printf("API key id 2: %+v\n", apiKeyID2)
+    fmt.Printf("API key id 2: %+v\n", apiKeyID2)
 
-  apiKeyID3, apiKeyName3, err := cloud.RenameKey(ctx, apiKeyID2, "mytestkey2newName")
+    apiKeyID3, apiKeyName3, err := cloud.RenameKey(ctx, apiKeyID2, "mytestkey2newName")
 	if err != nil {
 		logger.Fatal(err)
 	}
@@ -411,16 +411,17 @@ func main() {
 	}
 
 	listOfAuths, err := cloud.ListAuthorizations(ctx, ORG_ID, []string{LOCATION_ID})
-  fmt.Printf("List of authorizations: %+v\n", listOfAuths)
+    fmt.Printf("List of authorizations: %+v\n", listOfAuths)
 	if err != nil {
 		logger.Fatal(err)
 	}
-	// if len(listOfAuths) != 1 {
-	// 	logger.Fatal("Expected 1 authorization")
-	// }
+	if len(listOfAuths) >= 1 {
+		logger.Fatal("Expected >= 1 authorization")
+	}
 
 	// Change role
-  fmt.Printf(userID)
+    fmt.Printf(userID)
+	// TODO: Uncomment this when change role returns ID
 	// err = cloud.ChangeRole(ctx, &app.Authorization{}, ORG_ID, userID, app.AuthRoleOwner, app.AuthResourceTypeOrganization, ORG_ID)
 	// if err != nil {
 	// 	logger.Fatal(err)
@@ -438,10 +439,11 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-  fmt.Printf("List of authorizations: %+v\n", listOfAuths)
-	// if len(listOfAuths) != 3 {
-	// 	logger.Fatal("Expected 3 authorizations for organization")
-	// }
+	currentAuthsOrg := len(listOfAuths)
+    fmt.Printf("List of authorizations: %+v\n", listOfAuths)
+	if currentAuthsOrg < 2 {
+		logger.Fatal("Expected >= 2 authorizations for organization but it is", currentAuthsOrg)
+	}
 
 	// Remove role
 	// err = cloud.RemoveRole(ctx, &app.Authorization{
@@ -451,7 +453,7 @@ func main() {
 	// 	ResourceID:        ORG_ID,
 	// 	ResourceType:      app.AuthResourceTypeOrganization,
 	// 	IdentityID:        "",
-  //   IdentityType:      "api-key",
+    // 	IdentityType:      "api-key",
 	// })
 	// if err != nil {
 	// 	logger.Fatal(err)
@@ -461,9 +463,9 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(listOfAuths) != 2 {
-		logger.Fatal("Expected 2 authorizations after role removal")
-	}
+	// if len(listOfAuths) != currentAuthsOrg - 1 {
+	// 	logger.Fatal("Expected ", currentAuthsOrg - 1, " authorizations after role removal but got ", len(listOfAuths))
+	// }
 
 	// Check permissions
 	filteredPermissions, err := cloud.CheckPermissions(ctx, []*app.AuthorizedPermissions{

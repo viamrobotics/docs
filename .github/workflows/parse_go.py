@@ -48,7 +48,6 @@ go_ignore_app_apis = [
     'OrganizationSetLogo',
     'OrganizationGetSupportEmail',
     'OrganizationSetSupportEmail',
-    'RenameKey',
     'TransferRegistryItem',
     'ListOAuthApps',
     'NextPage',

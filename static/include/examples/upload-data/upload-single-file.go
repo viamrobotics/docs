@@ -24,7 +24,7 @@ func main() {
 	API_KEY = os.Getenv("VIAM_API_KEY")
 	API_KEY_ID = os.Getenv("VIAM_API_KEY_ID")
 	PART_ID = "deb8782c-7b48-4d35-812d-2caa94b61f77"
-	FILE_PATH = "upload-data/empty.txt"
+	FILE_PATH = "empty.txt"
 	// :remove-end:
     logger := logging.NewDebugLogger("client")
 	ctx := context.Background()

@@ -65,7 +65,7 @@ For more information, see [Merge datasets](/data-ai/train/create-dataset/#merge-
 
 The methods `AddTagsToBinaryDataByFilter` and `RemoveTagsFromBinaryDataByFilter` are deprecated.
 
-Instead use [BinaryDataByFilter](/dev/reference/apis/data-client/#binarydatabyfilter), [AddTagsToBinaryDataByIDs](/dev/reference/apis/data-client/#addtagstobinarydatabyids), and [RemoveTagsFromBinaryDataByIDs](/dev/reference/apis/data-client/#removetagsfrombinarydatabyids).
+Instead use [BinaryDataByFilter](/dev/reference/apis/data-client/#binarydatabyfilter), [AddTagsToBinaryDataByIDs](/dev/reference/apis/data-client/#addtagstobinarydatabyids), and [RemoveTagsFromBinaryDataByIDs](/dev/reference/apis/data-client/).
 
 {{% /changelog %}}
 
