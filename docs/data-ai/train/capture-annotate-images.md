@@ -40,7 +40,7 @@ To add an image directly to a dataset from a visual feed, complete the following
 
 1. Open the **TEST** panel of any camera or vision service component to view a feed of images from the camera.
 1. Click the button marked with the camera icon to save the currently displayed image to a dataset:
-   {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom" >}}
+   {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom shadow" >}}
 1. Select an existing dataset.
 1. Click **Add** to add the image to the selected dataset.
 1. When you see a success notification that reads "Saved image to dataset", you have successfully added the image to the dataset.

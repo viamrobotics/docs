@@ -28,7 +28,7 @@ You can create a dataset using the web UI, the CLI, or one of the SDKs:
 
 1. Click the **+ Create dataset** button.
 
-   {{< imgproc src="/services/data/create-dataset.png" alt="The **DATASET** tab of the **DATA** page, showing the **+ Create dataset** button." resize="800x" style="width:500px" class="imgzoom" >}}
+   {{< imgproc src="/services/data/create-dataset.png" alt="The **DATASET** tab of the **DATA** page, showing the **+ Create dataset** button." resize="800x" style="width:500px" class="imgzoom shadow" >}}
 
 1. Enter a unique name for the dataset.
 

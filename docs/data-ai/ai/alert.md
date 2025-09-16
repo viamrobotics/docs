@@ -150,21 +150,25 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
 
 1. In the **Data Types** dropdown, select **Binary (image)**.
 
-   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x300" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." class="shadow" >}}
+   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." class="shadow imgzoom" >}}
 
 1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
 
    To add an email notification:
 
    1. Click **Add Email**.
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" declaredimensions=true alt="The trigger configured with an example email." class="shadow" >}}
+
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email." class="shadow imgzoom" >}}
+
    1. Add the email you wish to be notified whenever this trigger is triggered.
    1. Configure the time between notifications.
 
    To add a webhook notification:
 
    1. Click **Add Webhook**.
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" declaredimensions=true alt="The trigger configured with an example URL." class="shadow" >}}
+
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL." class="shadow imgzoom" >}}
+
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
