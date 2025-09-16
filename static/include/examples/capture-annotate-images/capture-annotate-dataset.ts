@@ -148,10 +148,11 @@ async function main(): Promise<number> {
     // Access the classifications from the annotations
     if (data3[0].metadata.annotations?.classifications) {
         for (const tag of data3[0].metadata.annotations.classifications) {
-            await dataClient.removeTagsFromBinaryDataByIds(
-                [tag.label ?? ""],
-                [fileId]
-            );
+            // TODO: Uncomment this when deleting tags works again
+            // await dataClient.removeTagsFromBinaryDataByIds(
+            //     [tag.label ?? ""],
+            //     [fileId]
+            // );
             console.log(`Deleted tag: ${tag.label}`);
         }
     }
