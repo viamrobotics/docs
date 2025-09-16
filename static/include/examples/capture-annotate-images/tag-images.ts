@@ -68,10 +68,11 @@ async function main(): Promise<number> {
     // Access the tags from the annotations
     if (data_remove[0].metadata.annotations?.tags) {
         for (const tag of data_remove[0].metadata.annotations.tags) {
-            await dataClient.removeTagFromBinaryDataById(
-                BINARY_DATA_ID,
-                tag.label
-            );
+            // TODO: Uncomment this when deleting tags works again
+            // await dataClient.removeTagFromBinaryDataById(
+            //     BINARY_DATA_ID,
+            //     tag.label
+            // );
             console.log(`Deleted tag: ${tag.id}`);
         }
     }
@@ -114,10 +115,11 @@ async function main(): Promise<number> {
     // Access the classifications from the annotations
     if (data3[0].metadata.annotations?.classifications) {
         for (const tag of data3[0].metadata.annotations.classifications) {
-            await dataClient.removeTagsFromBinaryDataByIds(
-                [tag.label ?? ""],
-                [BINARY_DATA_ID]
-            );
+            // TODO: Uncomment this when deleting tags works again
+            // await dataClient.removeTagsFromBinaryDataByIds(
+            //     [tag.label ?? ""],
+            //     [BINARY_DATA_ID]
+            // );
             console.log(`Deleted tag: ${tag.label}`);
         }
     }

@@ -24,8 +24,8 @@ async function main(): Promise<void> {
             { "$project": { "location": "$_id", "avg_temp": 1, "count": 1, "_id": 0 } }
         ],
         "0 * * * *",
-        0,
         false,
+        0,
     );
 
     console.log(`Pipeline created with ID: ${pipelineId}`);
