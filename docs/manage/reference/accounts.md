@@ -1,7 +1,7 @@
 ---
 linkTitle: "Account management"
 title: "Account management"
-weight: 1000
+weight: 900
 layout: "docs"
 type: "docs"
 no_list: true

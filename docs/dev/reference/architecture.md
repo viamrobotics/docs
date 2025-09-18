@@ -1,7 +1,7 @@
 ---
 linkTitle: "Architecture"
 title: "Viam Architecture"
-weight: 1000
+weight: 800
 layout: "docs"
 type: "docs"
 layout: "empty"
