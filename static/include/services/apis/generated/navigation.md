@@ -137,6 +137,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `mode` ([navigationApi](https://ts.viam.dev/modules/navigationApi.html)) (required): The mode for the service to operate in.
   
+  
   * 0: MODE\_UNSPECIFIED
   * 1: MODE\_MANUAL
   * 2: MODE\_WAYPOINT

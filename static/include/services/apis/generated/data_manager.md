@@ -57,6 +57,89 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
+### UploadImageToDatasets
+
+Upload an image data to the specified datasets.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `image` [(image.Image)](https://pkg.go.dev/image#Image)
+- `datasetIDs`
+- `tags` [([]string)](https://pkg.go.dev/builtin#string)
+- `mimeType` [(datasyncpb.MimeType)](https://pkg.go.dev/go.viam.com/api/app/datasync/v1#MimeType)
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#Service).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UploadBinaryDataToDatasets
+
+Upload Binary data to the specified datasets.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `binaryData` [([]byte)](https://pkg.go.dev/builtin#byte)
+- `datasetIDs`
+- `tags` [([]string)](https://pkg.go.dev/builtin#string)
+- `mimeType` [(datasyncpb.MimeType)](https://pkg.go.dev/go.viam.com/api/app/datasync/v1#MimeType)
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#Service).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `binaryData` (Uint8Array) (required): The binary data to upload.
+- `tags` (string) (required): Tags to associate with the binary data.
+- `datasetIds` (string) (required): IDs of the datasets to associate the binary data with.
+- `mimeType` (MimeType) (required): The MIME type of the binary data.
+- `extra` (None) (optional): Extra arguments to pass to the upload request.
+- `callOptions` (CallOptions) (optional): Call options for the upload request.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const dataManager = new VIAM.DataManagerClient(
+  machine,
+  'my_data_manager'
+);
+await dataManager.uploadBinaryDataToDatasets(
+  new Uint8Array([1, 2, 3]),
+  ['tag1', 'tag2'],
+  ['datasetId1', 'datasetId2'],
+  MimeType.MIME_TYPE_JPEG
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#uploadbinarydatatodatasets).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### Reconfigure
 
 Reconfigure this resource.

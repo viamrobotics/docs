@@ -235,6 +235,8 @@ base_remote_control,Close,,,Close,,
 
 ## Data Manager
 data_manager,Sync,No,,Sync,,sync
+data_manager,UploadImageToDatasets,No,,UploadImageToDatasets,,,
+data_manager,UploadBinaryDataToDatasets,No,,UploadBinaryDataToDatasets,,uploadBinaryDataToDatasets
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 data_manager,Reconfigure,No,,Reconfigure,,
 data_manager,DoCommand,No,,DoCommand,,doCommand
@@ -255,7 +257,7 @@ mlmodel,Metadata,,metadata,Metadata,,
 ## HACK:  proto for DoCommand or Close (and/or inherited in Go SDK), manually mapping:
 mlmodel,Reconfigure,,,Reconfigure,,
 mlmodel,DoCommand,,,DoCommand,,
-mlmodel,GetResourceName,,get_resource_name,,,
+mlmodel,GetResourceName,,get_resource_name,Name,,
 mlmodel,Close,,close,Close,,
 
 ## Motion
@@ -471,6 +473,9 @@ data_sync,StreamingDataCaptureUpload,,streaming_data_capture_upload,,streamingDa
 
 ## Discovery
 discovery,DiscoverResources,,discover_resources,DiscoverResources,discoverResources,discoverResources
+discovery,GetResourceName,,get_resource_name,Name,getResourceName,name
+discovery,DoCommand,,do_command,DoCommand,doCommand,doCommand
+discovery,Close,,close,Close,,
 
 ## MLTraining
 mltraining,SubmitTrainingJob,,submit_training_job,SubmitTrainingJob,,submitTrainingJob

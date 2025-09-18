@@ -204,6 +204,27 @@ my_mlmodel_svc_name = MLModelClient.get_resource_name("my_mlmodel_svc")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/mlmodel/client/index.html#viam.services.mlmodel.client.MLModelClient.get_resource_name).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [(Name)](https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name)
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")
+
+err := my_mlmodel.Name()
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Close
