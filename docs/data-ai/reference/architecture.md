@@ -1,7 +1,7 @@
 ---
 linkTitle: "Machine-cloud architecture"
 title: "Viam architecture"
-weight: 1000
+weight: 900
 layout: "docs"
 type: "docs"
 layout: "empty"
