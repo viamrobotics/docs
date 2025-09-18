@@ -1,11 +1,13 @@
 ---
 linkTitle: "Trigger on data events"
 title: "Trigger on data events"
-weight: 60
+weight: 200
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email notifications or webhook requests when data from the machine is synced."
 date: "2025-09-12"
+aliases:
+  - /data-ai/data/advanced/alert-data/
 ---
 
 You can use triggers to send webhooks or email alerts when data syncs from a machine.
@@ -74,7 +76,7 @@ You can configure triggers to fire in the following scenarios:
 
 The following JSON configuration shows how to set up a trigger that fires when any data is synced to the cloud:
 
-```json {class="line-numbers linkable-line-numbers" data-line="32-49"}
+```json {class="line-numbers linkable-line-numbers" data-line="32-54"}
 {
   "components": [
     {
