@@ -53,7 +53,7 @@ Other common inputs include the methods of a [board](/dev/reference/apis/compone
 You can also use camera input, for example to detect objects and pick them up with an arm.
 See [Act based on inferences](/data-ai/ai/act/) for relevant examples.
 
-If you want to send alerts based on computer vision or captured data, see [Alert on inferences](/data-ai/ai/alert/) or [Alert on data](/data-ai/data/advanced/alert-data/).
+If you want to send alerts based on computer vision or captured data, see [Alert on inferences](/data-ai/ai/alert/) or [Alert on data](/data-ai/data/alert-data/).
 
 {{% /tablestep %}}
 {{% tablestep %}}
