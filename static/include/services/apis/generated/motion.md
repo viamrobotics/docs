@@ -675,29 +675,6 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose of the component.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-// Insert code to connect to your machine.
-// (see CONNECT tab of your machine's page)
-
-// Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := gripper.Named("my_gripper")
-
-// Access the motion service
-motionService, err := motion.FromRobot(machine, "builtin")
-if err != nil {
-  logger.Fatal(err)
-}
-
-myGripperPose, err := motionService.GetPose(context.Background(), gripperName, referenceframe.World, nil, nil)
-if err != nil {
-  logger.Fatal(err)
-}
-logger.Info("Position of my_gripper from the motion service:", myGripperPose.Pose().Point())
-logger.Info("Orientation of my_gripper from the motion service:", myGripperPose.Pose().Orientation())
-```
-
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/motion#Service).
 
 {{% /tab %}}

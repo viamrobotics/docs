@@ -766,7 +766,7 @@ def check_for_unused_methods(methods, type):
                 if not "used" in methods[lang][type][resource][method].keys():
                     if resource in ["data_sync", "dataset", "data"]:
                         continue
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto"] or \
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand"] or \
                         lang == "go" and method not in ["Reconfigure", "Stream", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
