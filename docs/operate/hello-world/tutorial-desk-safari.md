@@ -17,12 +17,16 @@ This tutorial assumes no prior knowledge of Viam and will teach you the fundamen
 
 While you build this game you will learn:
 
-- [Device setup]() will show you how to install Viam for the tutorial.
-- [Overview]() of the building blocks of Viam: modules, components, and services.
-- [Using the webcam]() will teach you how to configure and test resources in Viam.
-- [Adding machine learning]() will teach you about higher level services.
-- [Completing the game]() will teach you how to add the control logic for the game.
-- [Playing the game]() will allow you to test your work.
+- [Device setup](#device-setup) will show you how to install Viam for the tutorial.
+- [Overview](#overview) of the building blocks of Viam: modules, components, and services.
+- [Using the webcam](#using-the-webcam) will teach you how to configure and test resources in Viam.
+- [Adding computer vision](#adding-computer-vision) will teach you about higher level services.
+- [Completing the game](#completing-the-game) will teach you about modules and how to add the control logic for the game.
+- [Playing the game](#playing-the-game) will allow you to test your work.
+
+## Game overview
+
+TODO
 
 ## Device setup
 
@@ -64,13 +68,22 @@ Wait until your machine has successfully connected to Viam.
 {{% /tablestep %}}
 {{< /table >}}
 
-## Overview
+By installing `viam-server` on your device, you've turned your computer into a Viam {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
-TODO: Explain modules, components, services?
+At this point, your machine only runs the Viam software.
+To make your machine do something interesting, you must add functionality to it.
+
+When you use Viam to build a machine, you mix and match different building blocks, to make the machine do exactly what you need it to.
+The building blocks you'll use in this tutorial are **components**, **services**, and **modules**.
+These are the main building blocks that make up all machines.
+
+Let's start by adding a component.
 
 ## Using the webcam
 
-You can use any webcam that is connected to your computer, a usb-webcam, a built-in one, or a wireless one.
+{{< glossary_tooltip term_id="component" text="Components" >}} are the resources that your machine uses to sense and interact with the world, such as cameras, motors, sensors, and more.
+
+For this tutorial, you can use any webcam that is connected to your computer, a usb-webcam, a built-in one, or a wireless one.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -78,7 +91,6 @@ You can use any webcam that is connected to your computer, a usb-webcam, a built
 
 This page is where you configure all hardware and software for a machine.
 There are different kinds of {{< glossary_tooltip term_id="resource" text="resources" >}}, you can use.
-For this tutorial you will use a {{< glossary_tooltip term_id="component" text="component" >}} and several {{< glossary_tooltip term_id="service" text="services" >}}.
 
 {{% /tablestep %}}
 
@@ -109,17 +121,19 @@ If your camera is not working, see [Troubleshooting](/operate/reference/componen
 {{% /tablestep %}}
 {{< /table >}}
 
-## Adding machine learning
-
 You can now see your camera stream on Viam.
-For the game, Desk Safari, we will need to apply computer vision to the camera stream.
-Viam provides many different machine learning models and computer vision {{< glossary_tooltip term_id="service" text="services" >}}.
+For the game, Desk Safari, you will need to apply computer vision to the camera stream.
+
+## Adding computer vision
+
+{{< glossary_tooltip term_id="service" text="Services" >}} are higher-level software capabilities that process and interpret data or interact with the world.
+Viam provides many different services, including ones to run machine learning models and computer vision.
 
 For this tutorial, you will use:
 
-- the `EfficientDet-COCO` model from the Viam Registry. The model can detect a variety of objects. You can see all objects in the <file>[labels.txt](/static/labels.txt)</file> file.
-- the ML model service, which runs the machine learning model on your machine and resturns inferences.
-- the vision service, which uses the machine learning model, applies it to the camera stream and returns any objects it identifies.
+- a model called `EfficientDet-COCO`, which is publicly available. The model can detect a variety of objects. You can see all objects in the <file>[labels.txt](/static/labels.txt)</file> file.
+- a ML model service, which runs a machine learning model on your machine and resturns inferences.
+- a vision service, which uses the machine learning model, applies it to the camera stream, and returns any objects it identifies.
 
 Let's configure all these:
 
@@ -143,6 +157,15 @@ Review the configuration for each new resource and click on their **TEST** panel
 {{% /tablestep %}}
 {{< /table >}}
 
+If you check the resources added by the fragment, you'll see an additional resource called `tflite_cpu`.
+This is a {{< glossary_tooltip term_id="module" text="module" >}}.
+Modules are packages of code that contain components and services.
+They're like plugins that expand what your machine can do without modifying Viam's core software.
+
+Viam has a registry of modules that contain resources you can use when building your machines.
+Of course, you can also build your own modules and resources.
+In fact, you will create a resource for the game's control logic in the next step.
+
 ## Completing the game
 
 You've now got the camera working and the vision service can detect objects in the camera stream.
@@ -152,16 +175,22 @@ The game loop works as follows:
 
 - The player does something to start the game.
 - The game provides the player with a prompt, an item to get and hold up to the camera within 60 seconds.
-  If a matching object is detected within 60 seconds, the game continues with another prompt.
-  Once the player fails to hold up a recognizable object in the given time frame, the game ends.
-- A score is reported.
+- If the vision service detects a matching object within 60 seconds, the game continues with another prompt.
+- Once the player fails to hold up a recognizable object within 60 seconds, the game ends.
+- The game returns the score and the player can start a new game.
 
-To implement this logic, you'll create your own {{< glossary_tooltip term_id="resource" text="resource" >}} and {{< glossary_tooltip term_id="module" text="module" >}}.
+To implement this logic, you'll create your own {{< glossary_tooltip term_id="resource" text="resource" >}} and package it inside a {{< glossary_tooltip term_id="module" text="module" >}}.
 
-Viam supports standardized component and service APIs.
+Viam provides a range of standardized component and service APIs.
+When you create a resource, you implement one of these APIs.
+
 For control logic, you often implement the generic service, which only has one method that you need to implement: `DoCommand`.
 The `DoCommand` method allows you to pass any JSON objects, such as `{"cmd": "start_game"}`.
 If implemented the resource will execute the logic associated with that command when passed this command.
+
+Components can also be resources that others use to give a machine input, such as buttons and switches.
+They often represent physical hardware but they can also represent purely software-based resources.
+Imagine a button that is accessible in an app, or a sensor that retrieves the current temperature from an API.
 
 However, there is another API that fits out purpose, the Button API.
 If you think about the player starting the game, the action they take is to issue some command to start the game, which is like pushing a button.
@@ -233,6 +262,8 @@ hello-world-game/
 └── run.sh
 └── setup.sh
 ```
+
+TODO: explain what each file does?
 
 Open <FILE>hello-world-game/src/models/game_logic.py</FILE>.
 This is the template for the Button API that you will add the game logic.
@@ -367,6 +398,16 @@ TODO preview
 
 TODO - what's next
 
+## notes
+
 {{< alert title="Want to train your own model instead?" color="note" >}}
 If you wish to train your own ML model, see [Train a TF or TFLite model](/data-ai/train/train-tf-tflite/).
 {{< /alert >}}
+
+Here's how these concepts work together in practice for this tutorial:
+
+- **Your machine**, that is your laptop or desktop computer, runs the Viam software
+- A **component**, a webcam, provides access to a camera stream.
+- A **service** runs a publicly-available machine learning model, and another service uses the running model and the camera stream to detect objects.
+- **Modules** are the plugins that provide the two services.
+  You will also create a module for the game logic.
