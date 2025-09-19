@@ -60,7 +60,8 @@ The following code passes an image to an ML model service, and uses the [`Infer`
 
 ### Using a vision service
 
-Vision services apply an ML model to a stream of images from a camera to:
+There are a range of vision services that interpret images.
+Some vision services apply an ML model to a stream of images from a camera to:
 
 - detect objects (using bounding boxes)
 - classify (using tags)
@@ -70,6 +71,7 @@ To use a vision service:
 1. Navigate to your machine's **CONFIGURE** page.
 1. Click the **+** icon next to your main machine part and select **Component or service**.
 1. Select a vision service.
+   For more information on the vision service, see its entry in the [Viam registry](https://app.viam.com/registry).
 1. Configure your vision service.
    If your vision service does not include an ML model, you need to [deploy an ML model to your machine](/data-ai/ai/deploy/) and select it when configuring your vision service.
 
