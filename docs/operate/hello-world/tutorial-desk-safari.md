@@ -182,19 +182,15 @@ The game loop works as follows:
 To implement this logic, you'll create your own {{< glossary_tooltip term_id="resource" text="resource" >}} and package it inside a {{< glossary_tooltip term_id="module" text="module" >}}.
 
 Viam provides a range of standardized component and service APIs.
-When you create a resource, you implement one of these APIs.
+When you create a resource, you implement the API among them that most closely fits your needs.
 
-For control logic, you often implement the generic service, which only has one method that you need to implement: `DoCommand`.
-The `DoCommand` method allows you to pass any JSON objects, such as `{"cmd": "start_game"}`.
-If implemented the resource will execute the logic associated with that command when passed this command.
+For control logic, the generic service is often a good fit.
+It doesn't have any methods aside from `DoCommand`.
+The `DoCommand` method allows you to pass commands as JSON objects, such as `{"cmd": "start_game"}`.
+You can use the `DoCommand` method to implement everything that doesn't fit into other API methods.
 
-Components can also be resources that others use to give a machine input, such as buttons and switches.
-They often represent physical hardware but they can also represent purely software-based resources.
-Imagine a button that is accessible in an app, or a sensor that retrieves the current temperature from an API.
-
-However, there is another API that fits out purpose, the Button API.
+However, there is another API that fits out purpose, the Button API which has the methods `DoCommand` and the `Push`.
 If you think about the player starting the game, the action they take is to issue some command to start the game, which is like pushing a button.
-We can therefore use the Button API which allows you to implement both the `DoCommand` and the `Push` method.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -242,7 +238,7 @@ For **Select a resource to be added to the module**, select **Button Component**
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Open the generated files.**
+**Inspect the generated files.**
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -263,10 +259,12 @@ hello-world-game/
 └── setup.sh
 ```
 
-TODO: explain what each file does?
-
-Open <FILE>hello-world-game/src/models/game_logic.py</FILE>.
-This is the template for the Button API that you will add the game logic.
+- **<FILE>README.md</FILE>**: a template for the module which gets uploaded to the registry when you upload the module.
+- **<FILE>meta.json</FILE>**: metadata about the module which gets uploaded to the registry when you upload the module.
+- **<FILE>main.py</FILE>** and **<FILE>game_logic.py</FILE>**: the code that registers the module and resource and provides the model implementation.
+- **<FILE>setup.sh</FILE>** and **<FILE>requirements.txt</FILE>**: a script that creates a virtual environment and installs the dependencies listed in <FILE>requirements.txt</FILE>.
+- **<FILE>build.sh</FILE>**: Packages the code for upload.
+- **<FILE>run.sh</FILE>**: Runs <FILE>setup.sh</FILE> and then runs the module from <FILE>main.py</FILE>.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -274,6 +272,9 @@ This is the template for the Button API that you will add the game logic.
 {{% /tablestep %}}
 {{% tablestep %}}
 **Implement the Push method.**
+
+Open <FILE>hello-world-game/src/models/game_logic.py</FILE>.
+This is the template for the Button API that you will add the game logic.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -305,7 +306,6 @@ Then implement the `Push` method to set the `start` attribute to `True` when pus
         self.logger.info("`push` is called")
         self.start = True
         self.logger.info("Game is starting.")
-
 ```
 
 {{% /tab %}}
@@ -358,47 +358,85 @@ In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file,
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Test your module.**
+**Configure your module as a local module.**
+
+Before uploading your module, you can run it locally on your machine to test it.
+
+Navigate to your machine's **CONFIGURE** page.
+Make sure your machine's is showing as live and connected to Viam.
+
+Click the **+** button, select **Local module**, then again select **Local module**.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-TODO
+
+Enter the path to the <file>run.sh</file> file, for example, `/home/naomi/hello-world-game-py/run.sh` on Linux or `/Users/naomi/hello-world-game-py/run.sh`.
+Click **Create**.
+
+Save your config.
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Upload your module.**
+**Configure your button as a local component.**
 
 {{< tabs >}}
 {{% tab name="Python" %}}
-TODO
+
+Click **+**, click **Local module**, then click **Local component** and fill in the fields as follows:
+
+- model namespace triplet: `<namespace>:hello-world-game-py:game-logic`
+- type: `button`
+- name: `button-1`
+
+Configure the camera and vision service names by pasting the following in the attributes field:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "camera_name": "webcam",
+  "detector_name": "object-detector"
+}
+```
+
+Save the config.
+
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Configure your module.**
+**Test your game logic.**
 
-TODO
+Click the **TEST** section of the button's configuration card.
+
+Click the button to start a game.
+
+Check the **LOGS** tab, you'll see the prompt logged there and can follow the logs to see if an object is identified or not.
+To see more visual input, use the **TEST** section of the vision service as you hold objects up to the camera.
+
+If you are encountering errors, check the **LOGS** tab for more information.
+
+If you want to test the `DoCommand` method, open the **CONTROL** tab and click on the `DoCommand` panel.
+Send `{ "action": "get_data" }` to retrieve the score, the time the round started, and the current item to detect.
 
 {{% /tablestep %}}
 {{< /table >}}
 
 ## Playing the game
 
-TODO
+As you've undoubtedly noticed, the game UI isn't ideal.
+To address that, we've created a small web application which is hosted as a Viam application.
 
-- mention viam applications
-- mention the test panel (?)
-- provide a viam application for testing
-- point to github code for the Viam application
+You can use this application to connect to your machine and play the game.
+
+Take me to [play the game](TODO)
+
+This tutorial does not cover creating the Viam application but you can check out its code [on GitHub](TODO).
 
 TODO preview
 
-TODO - what's next
-
-## notes
+## Notes
 
 {{< alert title="Want to train your own model instead?" color="note" >}}
 If you wish to train your own ML model, see [Train a TF or TFLite model](/data-ai/train/train-tf-tflite/).
