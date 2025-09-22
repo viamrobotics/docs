@@ -430,9 +430,9 @@ To address that, we've created a small web application which is hosted as a Viam
 
 You can use this application to connect to your machine and play the game.
 
-Take me to [play the game](TODO)
+[Take me to play the game](TODO).
 
-This tutorial does not cover creating the Viam application but you can check out its code [on GitHub](TODO).
+This tutorial does not cover creating the Viam application but you can check out its code [on GitHub](TODO) and read up on [Viam applications](/operate/control/viam-applications/).
 
 TODO preview
 
@@ -449,3 +449,11 @@ Here's how these concepts work together in practice for this tutorial:
 - A **service** runs a publicly-available machine learning model, and another service uses the running model and the camera stream to detect objects.
 - **Modules** are the plugins that provide the two services.
   You will also create a module for the game logic.
+
+1. From there, you have many options including:
+
+   - Capturing data from your machines
+   - Training and deploying an AI model
+   - Using an SDK of your choice to write an app to interact with your machines
+   - Deploying control logic
+   - Sharing the configuration across many machines

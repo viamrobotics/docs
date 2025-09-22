@@ -45,6 +45,6 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/mobility/move-arm/" noimage="true" %}}
 {{< /cards >}}

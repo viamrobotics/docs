@@ -31,7 +31,7 @@ Note this is _not_ recommended for modules that do not use Docker, as it adds un
      exec docker run <YOUR_CONTAINER_IMAGE> <YOUR_CONTAINER_OPTIONS>
      ```
 
-   - A [<file>meta.json</file>](/operate/get-started/other-hardware/create-module/metajson/)
+   - A [<file>meta.json</file>](/operate/modules/other-hardware/create-module/metajson/)
    - A first run script or binary that will be executed during the setup phase, for example:
 
      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}

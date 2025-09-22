@@ -37,7 +37,7 @@ Signaling controls the flow of electricity to these pins to change their state b
 The board component allows you to use the pins on your board.
 If there is no board model for your board:
 
-- you can still run `viam-server` if your board [supports it](/operate/get-started/setup/)
+- you can still run `viam-server` if your board [supports it](/operate/install/setup/)
 - you can still access USB ports
 
 {{< /alert >}}
@@ -59,7 +59,7 @@ For additional configuration information, click on the model name:
 {{<resources api="rdk:component:board" type="board" no-intro="true">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
-If none of the existing models fit your use case, you can [create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}](/operate/get-started/other-hardware/create-module/) to add support for it.
+If none of the existing models fit your use case, you can [create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}](/operate/modules/other-hardware/create-module/) to add support for it.
 
 For Linux boards like the Odroid C4, Pumpkin, or, Banana Pi, you can also use the [`customlinux` board](https://github.com/viam-modules/customlinux/blob/main/README.md).
 {{< /alert >}}
@@ -99,7 +99,7 @@ If none of these steps work, reach out to us on the [Community Discord](https://
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/tutorials/get-started/blink-an-led" noimage="true" %}}
 {{< /cards >}}

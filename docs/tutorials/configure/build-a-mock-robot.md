@@ -53,7 +53,7 @@ If you don't already have a Viam account, sign up on [Viam](https://app.viam.com
 
 ### Configure your mock robot
 
-[Configure your mock robot](/operate/get-started/supported-hardware/#configure-hardware-on-your-machine) to represent a physical machine with robotic board, arm, and motor hardware.
+[Configure your mock robot](/operate/modules/supported-hardware/#configure-hardware-on-your-machine) to represent a physical machine with robotic board, arm, and motor hardware.
 
 If you were using physical hardware, this process would provide `viam-server` with information about what hardware is attached to it and how to communicate with it.
 For this robot, you configure `viam-server` to use `fake` components that emulate physical hardware.

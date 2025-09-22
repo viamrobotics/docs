@@ -21,7 +21,7 @@ aliases:
     <div class="hero-text">
       <h1>Dev tools</h1>
       <p>
-        Viam integrates with hardware and software on <b>any device</b>. Once you've <a href="/operate/get-started/setup/">set up your machines</a> you can use the CLI and APIs to control and manage them.
+        Viam integrates with hardware and software on <b>any device</b>. Once you've <a href="/operate/install/setup/">set up your machines</a> you can use the CLI and APIs to control and manage them.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
@@ -397,7 +397,7 @@ result, err := myButton.DoCommand(context.Background(), command)
 Using the Viam Registry you can create _{{< glossary_tooltip term_id="resource" text="resources" >}}_ for additional hardware types or models and then deploy them to your machines.
 You can use an existing component or service type or create generic resources.
 
-[Create a module →](/operate/get-started/other-hardware/create-module/hello-world-module/)
+[Create a module →](/operate/modules/other-hardware/create-module/hello-world-module/)
 
   </div>
 </div>
@@ -436,7 +436,7 @@ result, err := myTwilioSvc.DoCommand(context.Background(), command)
 
 Using the Viam Registry you can turn services and your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
-[Create a module →](/operate/get-started/other-hardware/create-module/)
+[Create a module →](/operate/modules/other-hardware/create-module/)
 
   </div>
 </div>

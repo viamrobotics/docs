@@ -21,12 +21,12 @@ These are the same modules that provide functionality like drivers and integrati
 
 The following steps show you how to create modules with control logic and how to deploy them to individual machines using `viam-server`.
 
-For microcontrollers, see [Micro-RDK modules](/operate/get-started/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/get-started/setup-micro/#configure-over-the-air-updates) instead.
+For microcontrollers, see [Micro-RDK modules](/operate/modules/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/install/setup-micro/#configure-over-the-air-updates) instead.
 
 ## Prerequisites
 
-Start by [setting up one machine](/operate/get-started/setup/).
-Then, [configure any hardware and software resources](/operate/get-started/supported-hardware/) that you will use with your machine and that you want to drive with your control logic.
+Start by [setting up one machine](/operate/install/setup/).
+Then, [configure any hardware and software resources](/operate/modules/supported-hardware/) that you will use with your machine and that you want to drive with your control logic.
 
 ## Generate stub files
 
@@ -158,10 +158,10 @@ For complete examples that implement control logic, see:
 
 Once you have implemented your control logic, commit and push your changes to a GitHub repository.
 
-Follow the steps in [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) using cloud build.
+Follow the steps in [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) using cloud build.
 When you create a release, your module will be built, packaged and pushed to the Viam Registry.
 
-If you are not using GitHub or cloud build, see [Upload your module](/operate/get-started/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
+If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
 
 ## Deploy your control logic
 

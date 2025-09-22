@@ -957,10 +957,10 @@ This includes:
 - Building a module locally and running it on a target device. Rebuilding & restarting if already running.
 - Downloading a module package from the registry
 
-See [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for more information.
+See [Update and manage modules you created](/operate/modules/other-hardware/manage-modules/) for more information.
 
 If you update and release your module as part of a continuous integration (CI) workflow, you can also
-[automatically upload new versions of your module on release](/operate/get-started/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) using a GitHub Action.
+[automatically upload new versions of your module on release](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) using a GitHub Action.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate
@@ -1074,12 +1074,12 @@ viam module local-app-testing --app-url http://localhost:3000
 | -------------- | ----------- | -------------------- |
 | `generate` | Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module. | - |
 | `create` | Generate a <file>meta.json</file> file and register the metadata with the Viam registry. Recommended when you already have working module code. | - |
-| `update` | Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/operate/get-started/other-hardware/create-module/metajson/) and <file>README.md</file>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
+| `update` | Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/operate/modules/other-hardware/create-module/metajson/) and <file>README.md</file>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
-| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
-| `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
+| `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build logs` | Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `download` | Download a module package from the registry. | - |
@@ -1098,7 +1098,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
 | `--id` | The build ID to list or show logs for, as returned from `build start`. For `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `download` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
-| `--module` | The path to the [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
+| `--module` | The path to the [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
@@ -1121,7 +1121,7 @@ viam module local-app-testing --app-url http://localhost:3000
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
-- Use the `--public-namespace` argument to supply the [namespace of your organization](/operate/get-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization).
+- Use the `--public-namespace` argument to supply the [namespace of your organization](/operate/modules/other-hardware/naming-modules/#create-a-namespace-for-your-organization).
   This will upload your module to the Viam Registry and share it with other users.
 - Use the `--org-id` to provide your organization ID instead, This will upload your module privately within your organization.
 
@@ -1147,7 +1147,7 @@ The `--platform` argument accepts one of the following architectures:
 | `darwin/arm64` | macOS machines running the `arm64` architecture, such as Apple Silicon. | Suitable for most C++ or Go modules on macOS `arm64`. |
 | `windows/amd64` | Windows machines running the Intel `x86_64` architecture. | Suitable for most C++ or Go modules on Windows `amd64`. |
 
-For information on which of these platforms are supported for cloud build, see [Supported platforms for automatic updates](/operate/get-started/other-hardware/manage-modules/#supported-platforms-for-automatic-updates).
+For information on which of these platforms are supported for cloud build, see [Supported platforms for automatic updates](/operate/modules/other-hardware/manage-modules/#supported-platforms-for-automatic-updates).
 
 You can use the `uname -m` command on your computer or board to determine its system architecture.
 
@@ -1175,7 +1175,7 @@ You can delete the distribution files for a version, but you must increment to a
 Once your module is uploaded, users can select which version of your module to use on their machine from your module's page on the Viam Registry.
 Users can choose to pin to a specific patch version, permit upgrades within major release families or only within minor releases, or permit continuous updates.
 
-When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) is associated with the specific `--version` for that `upload`.
+When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
 ##### Upload validation
@@ -1184,11 +1184,11 @@ When you `upload` a module, the command performs basic validation of your module
 The following criteria are checked for every `upload`:
 
 - The module must exist on the filesystem at the path provided to the `upload` command.
-- The entry point file specified in the [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) must exist on the filesystem at the path specified.
+- The entry point file specified in the [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/) must exist on the filesystem at the path specified.
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
-See [Create a module](/operate/get-started/other-hardware/create-module/) and [Update and manage modules you created](/operate/get-started/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
+See [Create a module](/operate/modules/other-hardware/create-module/) and [Update and manage modules you created](/operate/modules/other-hardware/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
 ##### Using the `build` subcommand
 
@@ -1197,7 +1197,7 @@ You can use the `module build start` or `module build local` commands to build y
 - Use `build start` to build or compile your module on a cloud build host that might offer more platform support than you have access to locally.
 - Use `build local` to quickly test that your module builds or compiles as expected on your local hardware.
 
-To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/get-started/other-hardware/create-module/metajson/) like the following:
+To configure your module's build steps, add a `build` object to your [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/) like the following:
 
 <!-- Developers can either have a single build file for all platforms, or platform specific files: -->
 
@@ -1407,7 +1407,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `list` | List all organizations (name, ID, and [namespace](/operate/get-started/other-hardware/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
+| `list` | List all organizations (name, ID, and [namespace](/operate/modules/other-hardware/naming-modules/#create-a-namespace-for-your-organization)) that the authenticated session has access to. | - |
 | `api-key create` | Create a new organization API key. | - |
 | `support-email get` | Get the support email for an organization. | - |
 | `support-email set` | Set the support email for an organization. | - |

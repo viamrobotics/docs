@@ -33,7 +33,7 @@ For example, the `OV2640` with a ribbon cable connected to an ESP32:
 {{< imgproc src="/components/camera/esp32-camera-2640.png" alt="Fake Camera on the ESP32" resize="300x" class="shadow" >}}
 
 {{< alert title="Software requirements" color="note" >}}
-To use this model, you must follow the [Set up an ESP32 guide](/operate/get-started/setup-micro/#build-and-flash-custom-firmware), which enables you to install and activate the ESP-IDF.
+To use this model, you must follow the [Set up an ESP32 guide](/operate/install/setup-micro/#build-and-flash-custom-firmware), which enables you to install and activate the ESP-IDF.
 When you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
 Finish building and flashing custom firmware, then return to this guide.
 {{< /alert >}}

@@ -76,7 +76,7 @@ If you are running out of time during your session, you can [extend your rover s
 {{% tab name="Other Rover" %}}
 
 {{% alert title="Important" color="note" %}}
-If you are using your own robot for this tutorial instead of [borrowing one](https://app.viam.com/try), be sure to [follow the setup instructions and install `viam-server`](/operate/get-started/setup/) on it, and connect and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
+If you are using your own robot for this tutorial instead of [borrowing one](https://app.viam.com/try), be sure to [follow the setup instructions and install `viam-server`](/operate/install/setup/) on it, and connect and [configure](/tutorials/configure/configure-rover/) its hardware before proceeding with this tutorial.
 {{% /alert %}}
 
 {{% /tab %}}

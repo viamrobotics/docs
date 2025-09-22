@@ -28,10 +28,10 @@ To get started, install Viam on any device and integrate your hardware. Then you
 
 {{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
 {{< cards >}}
-{{% card link="/operate/get-started/basics/" noimage="true" %}}
-{{% card link="/operate/get-started/setup/" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
-{{% card link="/operate/get-started/other-hardware/" noimage="true" %}}
+{{% card link="/operate/hello-world/quickstart/" noimage="true" %}}
+{{% card link="/operate/install/setup/" noimage="true" %}}
+{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/other-hardware/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

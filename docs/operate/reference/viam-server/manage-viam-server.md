@@ -16,8 +16,8 @@ aliases:
   - /get-started/installation/manage-viam-server/
 ---
 
-If you have manually [installed `viam-server`](/operate/get-started/setup/), you can chose to run it as a system service or directly on the command line.
-Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/operate/get-started/setup/#installation-methods-viam-agent-versus-manual) on Linux.
+If you have manually [installed `viam-server`](/operate/install/setup/), you can chose to run it as a system service or directly on the command line.
+Running as a system service enables you to configure `viam-server` to start automatically when your system boots, and is the [default installation option](/operate/install/setup/#installation-methods-viam-agent-versus-manual) on Linux.
 Running on the command line is suitable for local development.
 
 {{< alert title="Note" color="note" >}}
@@ -33,7 +33,7 @@ Select the tab for your platform:
 
 ### Run as a system service
 
-After [installation](/operate/get-started/setup/), the `viam-server` [AppImage](https://appimage.org/) binary will be located at <file>/usr/local/bin/viam-server</file>, and a `systemd` service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
+After [installation](/operate/install/setup/), the `viam-server` [AppImage](https://appimage.org/) binary will be located at <file>/usr/local/bin/viam-server</file>, and a `systemd` service file will be placed at <file>/etc/systemd/system/viam-server.service</file>.
 By default, `viam-server` is configured to start when the machine boots.
 
 Running `viam-server` as a system service is the recommended method for Linux.
@@ -86,7 +86,7 @@ Run the following on the command line to start `viam-server`, providing the path
 sudo viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/operate/get-started/setup/), your machine's cloud credentials file is available at <file>/etc/viam.json</file>.
+If you followed the [Installation Guide](/operate/install/setup/), your machine's cloud credentials file is available at <file>/etc/viam.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 
 Note that on a Raspberry Pi, `viam-server` must always run as `root` (using `sudo`) in order to access the DMA subsystem for GPIO.
@@ -102,7 +102,7 @@ Press **Ctrl + C** on your keyboard within the terminal session where you are ru
 
 ### Run from the command line
 
-After [installation](/operate/get-started/setup/), `viam-server` can be run directly on the command line.
+After [installation](/operate/install/setup/), `viam-server` can be run directly on the command line.
 
 Running `viam-server` on the command line is the recommended method for macOS.
 
@@ -116,7 +116,7 @@ Run the following on the command line to start `viam-server`, providing the path
 sudo viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/operate/get-started/setup/), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
+If you followed the [Installation Guide](/operate/install/setup/), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 
 #### Stop
@@ -130,7 +130,7 @@ Type **Ctrl + C** on your keyboard within the terminal session where you are run
 Installing `viam-server` as a system service is not recommended for most use cases on macOS.
 However, if you are looking to create a machine that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
 
-Once you have [installed `viam-server`](/operate/get-started/setup/) on your macOS computer, use the following commands to control the service.
+Once you have [installed `viam-server`](/operate/install/setup/) on your macOS computer, use the following commands to control the service.
 These commands require that you store your machine cloud credentials file at <file>/opt/homebrew/etc/viam.json</file>.
 
 #### Start

@@ -56,6 +56,6 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/gripper/" customTitle="Gripper API" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
 {{% card link="/tutorials/services/plan-motion-with-arm-gripper/" noimage="true" %}}
 {{< /cards >}}

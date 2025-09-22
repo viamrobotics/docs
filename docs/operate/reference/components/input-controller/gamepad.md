@@ -88,6 +88,6 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
 {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

@@ -19,8 +19,8 @@ Microcontrollers do not have full operating systems like single-board computers 
 As a result, microcontrollers only run one program at a time.
 To change the logic that runs on a microcontroller, you must flash the microcontroller with new firmware.
 
-`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a [default set](/operate/get-started/setup-micro/#about-esp32-microcontroller-setup) of {{< glossary_tooltip term_id="module" text="modules" >}}, provided as a quick starting point.
-For most use cases, you will [build your own firmware](/operate/get-started/setup-micro/#build-and-flash-custom-firmware) from the Micro-RDK instead of using `viam-micro-server`.
+`viam-micro-server` is the pre-built firmware built from the Micro-RDK and a [default set](/operate/install/setup-micro/#about-esp32-microcontroller-setup) of {{< glossary_tooltip term_id="module" text="modules" >}}, provided as a quick starting point.
+For most use cases, you will [build your own firmware](/operate/install/setup-micro/#build-and-flash-custom-firmware) from the Micro-RDK instead of using `viam-micro-server`.
 
 ## Hardware requirements
 
@@ -49,6 +49,6 @@ To use the Micro-RDK with existing modules, follow the ESP32 setup guide.
 To create your own modules, follow the Modules for ESP32 guide.
 
 {{< cards >}}
-{{% card link="/operate/get-started/setup-micro/" %}}
-{{% card link="/operate/get-started/other-hardware/micro-module/" %}}
+{{% card link="/operate/install/setup-micro/" %}}
+{{% card link="/operate/modules/other-hardware/micro-module/" %}}
 {{< /cards >}}

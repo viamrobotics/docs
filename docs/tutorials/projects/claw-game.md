@@ -57,7 +57,7 @@ To build your own claw game machine, you need the following hardware:
 
 To build your own claw game machine, you need the following software:
 
-- [`viam-server`](/operate/get-started/setup/)
+- [`viam-server`](/operate/install/setup/)
 - [Python 3](https://www.python.org/download/releases/3.0/)
 - [pip](https://pip.pypa.io/en/stable/#)
 - [Viam Python SDK](https://python.viam.dev/)
