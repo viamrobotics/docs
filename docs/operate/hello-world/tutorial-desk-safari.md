@@ -26,7 +26,7 @@ While you build this game you will learn:
 
 ## Game overview
 
-TODO
+TODO: Show video of the game
 
 ## Device setup
 
@@ -279,23 +279,9 @@ This is the template for the Button API that you will add the game logic.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, find the `class GameLogic` at the top of the file.
-Add a class attribute to set to `True` for the game to start.
-When you build the game loop you will use this attribute to start the game.
+In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, find the `Push` method to set the `start` attribute to `True` when pushed.
 
-```python {class="line-numbers linkable-line-numbers" data-line="7" data-start="15" }
-class GameLogic(Button, EasyResource):
-    # To enable debug-level logging, either run viam-server with the --debug option,
-    # or configure your resource/machine to display debug logs.
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("naomi", "hello-world-game-py"), "game-logic"
-    )
-    start = None
-```
-
-Then implement the `Push` method to set the `start` attribute to `True` when pushed.
-
-```python {class="line-numbers linkable-line-numbers" data-line="8-10" data-start="67" }
+```python {class="line-numbers linkable-line-numbers" data-line="9" data-start="66" }
     async def push(
         self,
         *,
@@ -304,42 +290,21 @@ Then implement the `Push` method to set the `start` attribute to `True` when pus
         **kwargs
     ) -> None:
         self.logger.info("`push` is called")
-        self.start = True
-        self.logger.info("Game is starting.")
+        self.new_game = True
 ```
 
-{{% /tab %}}
-{{< /tabs >}}
+The attribute `self.new_game` needs to be initialized.
+You can initialize instance parameters in the `reconfigure` method, that way they reset whenever you change the configuration of the button.
 
-{{% /tablestep %}}
-{{% tablestep %}}
-**Implement the game loop.**
+```python {class="line-numbers linkable-line-numbers" data-line="5" data-start="55" }
+    def reconfigure(
+        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ):
+        # Game state
+        self.new_game: bool = False
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, add the following imports:
-
-```python {class="line-numbers linkable-line-numbers" }
-import asyncio
-from threading import Event
+        return super().reconfigure(config, dependencies)
 ```
-
-Add class attributes for the counter and :
-
-```python {class="line-numbers linkable-line-numbers" data-line="7" data-start="17" }
-class GameLogic(Button, EasyResource):
-    # To enable debug-level logging, either run viam-server with the --debug option,
-    # or configure your resource/machine to display debug logs.
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("naomi", "hello-world-game-py"), "game-logic"
-    )
-    start = None
-    counter = 0
-    event = Event()
-```
-
-Add
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -351,16 +316,274 @@ Add
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file,
+In the same file, change the implementation of the `do_command` method to return the game state when receiving the command parameters `{"action": "get_data" }`:
+
+```python {class="line-numbers linkable-line-numbers" data-line="8-15" data-start="79" }
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        result = {}
+        for name, args in command.items():
+            if name == "action" and args == "get_data":
+                result["score"] = self.score
+                result["time_round_start"] = str(self.time_round_start)
+                result["item_to_detect"] = self.item_to_detect
+                return result
+        return {}
+```
+
+Add the other parameters to the `reconfigure` method:
+
+```python {class="line-numbers linkable-line-numbers" data-line="6-8" data-start="55" }
+    def reconfigure(
+        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ):
+        # Game state
+        self.new_game: bool = False
+        self.score: int = 0
+        self.time_round_start: Optional[datetime] = None
+        self.item_to_detect: str = ""
+
+        return super().reconfigure(config, dependencies)
+```
 
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**Implement the game loop.**
+
+You have implemented the methods that constitute the Button API.
+Now you'll add the code that uses the vision service and camera to implement the game logic.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, add the following imports:
+
+```python {class="line-numbers linkable-line-numbers" }
+import asyncio
+import random
+from datetime import datetime, timedelta
+from threading import Event
+
+from typing import cast
+from viam.components.camera import *
+from viam.services.vision import *
+```
+
+Add class attributes for the labels that the model supports:
+
+```python {class="line-numbers linkable-line-numbers" data-start="22" }
+class GameLogic(Button, EasyResource):
+    # To enable debug-level logging, either run viam-server with the --debug option,
+    # or configure your resource/machine to display debug logs.
+    MODEL: ClassVar[Model] = Model(
+        ModelFamily("naomi", "hello-world-game-py"), "game-logic"
+    )
+
+    POSSIBLE_OPTIONS: ClassVar[List[str]] = [
+        "Person", "Cat", "Dog", "Hat", "Backpack", "Umbrella", "Shoe",
+        "Eye glasses", "Handbag", "Tie", "Suitcase", "Frisbee", "Sportsball",
+        "Plate", "Cup", "Fork", "Knife", "Spoon", "Bowl", "Banana", "Apple",
+        "Sandwich", "Orange", "Broccoli", "Carrot", "Pizza", "Donut", "Cake",
+        "Chair", "Couch", "Potted plant", "Mirror", "Desk", "Door", "Tv",
+        "Laptop", "Mouse", "Keyboard", "Cellphone", "Blender", "Book", "Clock",
+        "Vase", "Scissors", "Teddy bear", "Hair drier", "Toothbrush",
+        "Hair brush"
+    ]
+```
+
+Next, update the `validate_config` method.
+The button needs to have access to the camera and vision service, therefore, it will need to receive those in its configuration.
+This method makes sure they are present and raises errors if they are not provided:
+
+```python {class="line-numbers linkable-line-numbers" data-start="57" }
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
+        req_deps = []
+        fields = config.attributes.fields
+        if "camera_name" not in fields:
+            raise Exception("missing required camera_name attribute")
+        elif not fields["camera_name"].HasField("string_value"):
+            raise Exception("camera_name must be a string")
+        camera_name = fields["camera_name"].string_value
+        if not camera_name:
+            raise ValueError("camera_name cannot be empty")
+        req_deps.append(camera_name)
+        if "detector_name" not in fields:
+            raise Exception("missing required detector_name attribute")
+        elif not fields["detector_name"].HasField("string_value"):
+            raise Exception("detector_name must be a string")
+        detector_name = fields["detector_name"].string_value
+        if not detector_name:
+            raise ValueError("detector_name cannot be empty")
+        req_deps.append(detector_name)
+        return req_deps, []
+```
+
+Underneath the `reconfigure` method, add these helper methods.
+They implement the event loop and run the game:
+
+```python {class="line-numbers linkable-line-numbers" data-start="98" }
+    def start(self):
+        if self.task is None:
+            loop = asyncio.get_event_loop()
+            self.task = loop.create_task(self._game_loop())
+            self.event.clear()
+            self.logger.info("Game loop started.")
+
+    def stop(self):
+        self.event.set()
+        if self.task is not None:
+            self.task.cancel()
+            self.task = None
+        self.logger.info("Game loop stopped.")
+
+    def __del__(self):
+        self.stop()
+
+    async def close(self):
+        self.stop()
+
+    async def _game_loop(self):
+        try:
+            while not self.event.is_set():
+                await self._process_game_state()
+                await asyncio.sleep(1)
+        except asyncio.CancelledError:
+            self.logger.info("Game loop cancelled.")
+        except Exception as e:
+            self.logger.error(f"Game loop error: {e}")
+        finally:
+            self.task = None
+
+    async def _process_game_state(self):
+        try:
+            if self.new_game:
+                await self._start_new_game()
+            if self._is_game_active():
+                await self._check_for_detection()
+            else:
+                await self._handle_game_end()
+
+        except Exception as err:
+            self.logger.error(f"Game state processing error: {err}")
+
+    async def _start_new_game(self):
+        self.new_game = False
+        self.logger.info("Game is starting.")
+        self.time_round_start = datetime.now()
+        self.logger.info(f"Round started at {self.time_round_start.strftime('%Y-%m-%d %H:%M:%S')}")
+
+        self.score = 0
+        self.item_to_detect = random.choice(self.POSSIBLE_OPTIONS)
+        self.logger.info(f"Item to detect: {self.item_to_detect}")
+
+    def _is_game_active(self) -> bool:
+        if not self.time_round_start:
+            return False
+
+        # Check if the current round is still active (within 60 seconds).
+        return datetime.now() - self.time_round_start <= timedelta(seconds=60)
+
+    async def _check_for_detection(self):
+        self.logger.info("Checking for item detection")
+
+        detections = await self.detector.get_detections_from_camera(self.camera_name)
+
+        if self._is_target_detected(detections):
+            await self._handle_successful_detection()
+        else:
+            self.logger.info(f"Item not detected: {self.item_to_detect}")
+
+    def _is_target_detected(self, detections) -> bool:
+        for detection in detections:
+            if (detection.class_name == self.item_to_detect and
+                detection.confidence > 0.5):
+                return True
+        return False
+
+    async def _handle_successful_detection(self):
+        self.score += 1
+        self.logger.info(f"Item detected: {self.item_to_detect}")
+        self.logger.info(f"Score: {self.score}")
+
+        await self._start_new_round()
+
+    async def _start_new_round(self):
+        self.time_round_start = datetime.now()
+        self.logger.info(f"Starting new round at {self.time_round_start.strftime('%Y-%m-%d %H:%M:%S')}")
+        self.item_to_detect = random.choice(self.POSSIBLE_OPTIONS)
+        self.logger.info(f"Item to detect: {self.item_to_detect}")
+
+    async def _handle_game_end(self):
+        if self.time_round_start:  # Only log if there was an active game
+            self.logger.info(f"Round over at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            self.logger.info(f"Final Score: {self.score}")
+            self.time_round_start = None
+            self.item_to_detect = ""
+```
+
+And as a last step for the game implementation, update the reconfigure method to initialize the required variables and start the game loop:
+
+```python {class="line-numbers linkable-line-numbers" data-start="80" }
+    def reconfigure(
+        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ):
+        # Game state
+        self.new_game: bool = False
+        self.score: int = 0
+        self.time_round_start: Optional[datetime] = None
+        self.item_to_detect: str = ""
+
+        # Runtime control
+        self.running: Optional[bool] = None
+        self.event: Event = Event()
+        self.task: Optional[asyncio.Task] = None
+
+        camera_name = config.attributes.fields["camera_name"].string_value
+        detector_name = config.attributes.fields["detector_name"].string_value
+
+        # Get the resource name for the vision service
+        vision_resource_name = VisionClient.get_resource_name(detector_name)
+
+        # Check if the vision resource exists in dependencies
+        if vision_resource_name not in dependencies:
+            raise KeyError(f"Vision service '{detector_name}' not found in dependencies. Available resources: {list(dependencies.keys())}")
+
+        vision_resource = dependencies[vision_resource_name]
+        self.detector = cast(VisionClient, vision_resource)
+        self.camera_name = camera_name
+
+        # Start the game loop if not already running
+        if self.task is None:
+            self.start()
+        else:
+            self.logger.info("Game loop already running.")
+
+        return super().reconfigure(config, dependencies)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+That's the game logic.
+The `reconfigure` method starts the game loop which then starts a new game, sets an item to detect and checks periodically if the item is detected.
+
+{{% /tablestep %}}
+
+{{% tablestep %}}
 **Configure your module as a local module.**
 
-Before uploading your module, you can run it locally on your machine to test it.
+The next step is to run the logic on your machine.
+For production purposes you would upload the module to the registry but for now, let's just test your module by running it locally on your machine.
 
 Navigate to your machine's **CONFIGURE** page.
 Make sure your machine's is showing as live and connected to Viam.
@@ -430,30 +653,28 @@ To address that, we've created a small web application which is hosted as a Viam
 
 You can use this application to connect to your machine and play the game.
 
-[Take me to play the game](TODO).
+[Take me to play the game](https://hello-world-game-web-app_naomi.viamapplications.com/).
 
-This tutorial does not cover creating the Viam application but you can check out its code [on GitHub](TODO) and read up on [Viam applications](/operate/control/viam-applications/).
+This tutorial does not cover creating the Viam application but you can check out its code [on GitHub](https://github.com/viam-labs/hello-world-game-module/tree/main/hello-world-game-web-app) and read up on [Viam applications](/operate/control/viam-applications/).
 
-TODO preview
+## Conclusion
 
-## Notes
-
-{{< alert title="Want to train your own model instead?" color="note" >}}
-If you wish to train your own ML model, see [Train a TF or TFLite model](/data-ai/train/train-tf-tflite/).
-{{< /alert >}}
-
-Here's how these concepts work together in practice for this tutorial:
+Here's how the concepts you've learned in this tutorial work together in practice for the Desk Safari game:
 
 - **Your machine**, that is your laptop or desktop computer, runs the Viam software
 - A **component**, a webcam, provides access to a camera stream.
-- A **service** runs a publicly-available machine learning model, and another service uses the running model and the camera stream to detect objects.
-- **Modules** are the plugins that provide the two services.
-  You will also create a module for the game logic.
+- The publicly-available machine learning model that can identify items is run by a **service**.
+- Your machine has a **module** installed that provides the vision **service** which applies the machine learning model to the camera stream.
+- You've create a **module** containing a button **component** which starts and runs the control logic for the game.
 
-1. From there, you have many options including:
+## Next steps
 
-   - Capturing data from your machines
-   - Training and deploying an AI model
-   - Using an SDK of your choice to write an app to interact with your machines
-   - Deploying control logic
-   - Sharing the configuration across many machines
+You now know how to build a machine using {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and {{< glossary_tooltip term_id="module" text="modules" >}}.
+You can use these tools to **build any kind of machine** with Viam.
+
+If you want to learn more, have a look at:
+
+- Building a Viam application, mobile app, or headless app.
+- Capturing data from your machines
+- [Training your own TF or TFLite model](/data-ai/train/train-tf-tflite/).
+- Sharing configuration fragments across machines
