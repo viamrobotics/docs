@@ -132,7 +132,7 @@ Viam provides many different services, including ones to run machine learning mo
 For this tutorial, you will use:
 
 - a model called `EfficientDet-COCO`, which is publicly available. The model can detect a variety of objects. You can see all objects in the <file>[labels.txt](/static/labels.txt)</file> file.
-- a ML model service, which runs a machine learning model on your machine and resturns inferences.
+- a ML model service, which runs a machine learning model on your machine and returns inferences.
 - a vision service, which uses the machine learning model, applies it to the camera stream, and returns any objects it identifies.
 
 Let's configure all these:
