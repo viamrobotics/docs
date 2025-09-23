@@ -12,9 +12,7 @@ no_list: false
 description: "Follow this tutorial to learn about Viam while building a game."
 ---
 
-This tutorial assumes no prior knowledge of Viam and will teach you the fundamentals that allow you to build any machine that interacts with the physical world.
-
-While you build this game you will learn:
+This tutorial assumes no prior knowledge of Viam and will teach you the fundamentals that allow you to build any machine that interacts with the physical world:
 
 - [Device setup](#device-setup) will walk you through installing Viam on your computer.
 - [Using the webcam](#using-the-webcam) will guide you through configuring and testing camera resources in Viam.
@@ -24,16 +22,16 @@ While you build this game you will learn:
 
 ## Game overview
 
-The game you will build in this tutorial prompts you to show items to the camera.
-For each item, you have 60 seconds to present it to the camera.
+The Desk Safari game you will build prompts players to show items to the camera.
+For each item, the player has 60 seconds to present it to the camera to score a point.
 
 {{<video webm_src="/build/game.webm" mp4_src="/build/game.mp4" poster="/build/game.jpg" alt="A game of Desk Safari where the player holds up different items to the camera to score points">}}
 
 ## Prerequisites
 
 - A laptop or desktop computer and a webcam.
-- You must be able to understand Python code.
-- You must have some familiarity with the command line.
+- Some familiarity with Python code.
+- Some familiarity with the command line.
 
 ## Device setup
 
@@ -60,7 +58,7 @@ You can create more organizations and locations to organize your machines, but f
 
 Click **+ Add machine** to create your first machine and name it `hello-world`.
 
-A {{< glossary_tooltip term_id="machine" text="machine" >}} represents one or more computers running `viam-server`, the software that manages all connected hardware and any software running on the machine.
+A {{< glossary_tooltip term_id="machine" text="machine" >}} represents at least one computer running `viam-server` along with all the hardware components and software services that the computer controls.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -90,7 +88,7 @@ Let's start by adding a component.
 
 {{< glossary_tooltip term_id="component" text="Components" >}} are the resources that your machine uses to sense and interact with the world, such as cameras, motors, sensors, and more.
 
-For this tutorial, you can use any webcam that is connected to your computer, a USB webcam, a built-in one, or a wireless one.
+For this tutorial, you can use any webcam that is connected to your computer: a USB webcam, a built-in one, or a wireless one.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -105,7 +103,7 @@ There are different kinds of {{< glossary_tooltip term_id="resource" text="resou
 **Configure the webcam to use for the Desk Safari game.**
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-Select the `camera` type, then select the `webcam` model or another model if you are using a different camera.
+Select the `camera` type, then select the `webcam` model.
 Enter the name `webcam` for your camera and click **Create**.
 
 {{% /tablestep %}}
@@ -139,7 +137,7 @@ Viam provides many different services, including ones to run machine learning mo
 For this tutorial, you will use:
 
 - a model called `EfficientDet-COCO`, which is publicly available. The model can detect a variety of objects. You can see all objects in the <file>[labels.txt](/tutorials/labels.txt)</file> file.
-- a ML model service, which runs a machine learning model on your machine and returns inferences.
+- an ML model service, which runs a machine learning model on your machine and returns inferences.
 - a vision service, which uses the machine learning model, applies it to the camera stream, and returns any objects it identifies.
 
 Let's configure all these:
@@ -152,12 +150,13 @@ On the **CONFIGURE** tab, click the **+** icon next to your machine part in the 
 Select the `HelloWorldMLResources` fragment by the `Robot Land` organization.
 Click **Insert fragment**.
 This adds a vision service named `object-detector` and a model for it.
+Save your config.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **Investigate the new resources.**
 
-A {{< glossary_tooltip term_id="fragment" text="fragment" >}} is a set of {{< glossary_tooltip term_id="resource" text="resources" >}} which are often used together.
+A {{< glossary_tooltip term_id="fragment" text="fragment" >}} constitutes a set of {{< glossary_tooltip term_id="resource" text="resources" >}} which are often used together.
 In this case, the fragment contains the module that contains the ML model service which runs the model, as well as a vision service that applies the model to the camera stream.
 
 Review the config for each new resource and click on their **TEST** panels to try them.
@@ -182,7 +181,7 @@ Now you need to add the game's logic.
 The game loop works as follows:
 
 - The player presses a button to start the game.
-- The game provides the player with a prompt showing an item to find and hold up to the camera within 60 seconds..
+- The game provides the player with a prompt showing an item to find and hold up to the camera within 60 seconds.
 - If the vision service detects a matching object within 60 seconds, the game continues with another prompt.
 - Once the player fails to hold up a recognizable object within 60 seconds, the game ends.
 - The game returns the score and the player can start a new game.
@@ -198,7 +197,7 @@ The `DoCommand` method allows you to pass commands as JSON objects, such as `{"a
 You can use the `DoCommand` method to implement everything that doesn't fit into other API methods.
 
 However, there is another API that fits our purpose, the Button API, which has the methods `DoCommand` and the `Push`.
-If you think about it, when a player starts the game, they're essentially pushing a button to issue a command.
+If you think about it, when a player starts the game, they're essentially pushing a button to issue the start command.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -216,7 +215,7 @@ Run the following command to list your organizations and their IDs:
 ```sh {class="command-line" data-prompt="$" data-output="2-10"}
 viam organization list
 Organizations for "user@viam.com":
-	User's org (id: a12b3c4d-1234-123a-12a3-a1b23c45d67e)
+    User's org (id: a12b3c4d-1234-123a-12a3-a1b23c45d67e)
 ```
 
 {{% /tablestep %}}
@@ -248,7 +247,7 @@ For **Select a resource to be added to the module**, select **Button Component**
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The module generator has created the following files:
+The module generator creates the following files:
 
 ```treeview
 hello-world-game-py/
@@ -284,9 +283,9 @@ This is the template for the Button API to which you will add the game logic.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the `Push` method to set the `new_game` attribute to `True` when pushed.
+In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the `push` method to set the `new_game` attribute to `True` when pushed.
 
-```python {class="line-numbers linkable-line-numbers" data-line="9" data-start="66" }
+```python {class="line-numbers linkable-line-numbers" data-line="8-9" data-start="67" }
     async def push(
         self,
         *,
@@ -301,7 +300,7 @@ In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the 
 The attribute `self.new_game` needs to be initialized.
 You can initialize instance parameters in the `reconfigure` method so they reset whenever you change the config of the button.
 
-```python {class="line-numbers linkable-line-numbers" data-line="5" data-start="55" }
+```python {class="line-numbers linkable-line-numbers" data-line="5" data-start="56" }
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ):
@@ -323,7 +322,7 @@ You can initialize instance parameters in the `reconfigure` method so they reset
 
 In the same file, change the implementation of the `do_command` method to return the game state when receiving the command parameters `{"action": "get_data"}`:
 
-```python {class="line-numbers linkable-line-numbers" data-line="8-15" data-start="79" }
+```python {class="line-numbers linkable-line-numbers" data-line="8-15" data-start="74" }
     async def do_command(
         self,
         command: Mapping[str, ValueTypes],
@@ -343,7 +342,7 @@ In the same file, change the implementation of the `do_command` method to return
 
 Add the other parameters to the `reconfigure` method:
 
-```python {class="line-numbers linkable-line-numbers" data-line="6-8" data-start="55" }
+```python {class="line-numbers linkable-line-numbers" data-line="6-8" data-start="56" }
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ):
@@ -366,6 +365,12 @@ Add the other parameters to the `reconfigure` method:
 You have implemented the methods that constitute the Button API.
 Now you'll add the code that uses the vision service and camera to implement the game logic.
 
+{{< alert title="Full code" color="tip" >}}
+
+You can reference the full code [on GitHub](https://github.com/viam-labs/hello-world-game-module).
+
+{{< /alert >}}
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -383,7 +388,7 @@ from viam.services.vision import *
 
 Add class attributes for the labels that the model supports:
 
-```python {class="line-numbers linkable-line-numbers" data-start="21" }
+```python {class="line-numbers linkable-line-numbers" data-start="23" }
 class GameLogic(Button, EasyResource):
     # To enable debug-level logging, either run viam-server with the --debug option,
     # or configure your resource/machine to display debug logs.
@@ -436,7 +441,7 @@ This method makes sure they are present and raises errors if they are not provid
 Underneath the `reconfigure` method, add these helper methods.
 They implement the event loop and run the game:
 
-```python {class="line-numbers linkable-line-numbers" data-start="97" }
+```python {class="line-numbers linkable-line-numbers" data-start="93" }
     def start(self):
         if self.task is None:
             loop = asyncio.get_running_loop()
@@ -535,7 +540,7 @@ They implement the event loop and run the game:
 
 And as a last step for the game implementation, update the reconfigure method to initialize the required variables and start the game loop:
 
-```python {class="line-numbers linkable-line-numbers" data-start="79" }
+```python {class="line-numbers linkable-line-numbers" data-start="82" }
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ):
@@ -595,7 +600,7 @@ Click the **+** button, select **Local module**, then select **Local module** ag
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Enter the path to the <file>run.sh</file> file, for example, `/home/naomi/hello-world-game-py/run.sh` on Linux or `/Users/naomi/hello-world-game-py/run.sh`.
+Enter the path to the <file>run.sh</file> file, for example, `/home/naomi/hello-world-game-py/run.sh` on Linux or `/Users/naomi/hello-world-game-py/run.sh` on macOS.
 Click **Create**.
 
 Save your config.
@@ -611,7 +616,7 @@ Save your config.
 
 Click **+**, click **Local module**, then click **Local component** and fill in the fields as follows:
 
-- model namespace triplet: `<namespace>:hello-world-game-py:game-logic`
+- model namespace triplet: `<namespace>:hello-world-game-py:game-logic`, you can see the full triplet in the module's <FILE>meta.json</FILE> file
 - type: `button`
 - name: `button-1`
 
@@ -635,14 +640,14 @@ Save the config.
 
 Click the **TEST** section of the button's config card.
 
-Click the button to start a game.
+Click the **PUSH** button to start a game.
 
 Check the **LOGS** tab; you'll see the prompt logged there and can follow the logs to see if an object is identified or not.
 To see more visual input, use the **TEST** section of the vision service as you hold objects up to the camera.
 
 If you are encountering errors, check the **LOGS** tab for more information.
 
-If you want to test the `DoCommand` method, open the **CONTROL** tab and click on the `DoCommand` panel.
+If you want to test the `DoCommand` method, open the **CONTROL** tab and click on the button's `DoCommand` panel.
 Send `{ "action": "get_data" }` to retrieve the score, the time the round started, and the current item to detect.
 
 {{% /tablestep %}}
@@ -658,11 +663,11 @@ Your machine must be online and configured before opening the app.
 
 [Take me to play the game](https://hello-world-game-web-app_naomi.viamapplications.com/).
 
-This tutorial does not cover creating the Viam application but you can check out its code [on GitHub](https://github.com/viam-labs/hello-world-game-module/tree/main/hello-world-game-web-app) and read up on [Viam applications](/operate/control/viam-applications/).
+This tutorial does not cover creating the Viam application but you can check out the code [on GitHub](https://github.com/viam-labs/hello-world-game-module/tree/main/hello-world-game-web-app) and read up on [Viam applications](/operate/control/viam-applications/).
 
 ## Conclusion
 
-Here's how the concepts you've learned in this tutorial work together in practice for the Desk Safari game:
+Let's recap how the concepts you've learned in this tutorial work together in practice for the Desk Safari game:
 
 - **Your machine** (your laptop or desktop computer) runs the Viam software
 - A **component**, a webcam, provides access to a camera stream.
