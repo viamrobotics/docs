@@ -4,21 +4,19 @@ title: "Tutorial: Desk Safari"
 weight: 10
 layout: "docs"
 type: "docs"
-images: ["/installation/thumbnails/install.png"]
-imageAlt: "Install Viam"
+videos: ["/build/game-preview.webm", "/build/game-preview.mp4"]
+videoAlt: "Desk Safari game preview."
+images: ["/build/game-preview.gif"]
+imageAlt: "Desk Safari game preview."
 no_list: false
 description: "Follow this tutorial to learn about Viam while building a game."
 ---
-
-You will build a game in this tutorial in which you repeatedly have 60 seconds to go get an item and find and show it to the camera.
-All you need is a laptop or desktop computer and a webcam.
 
 This tutorial assumes no prior knowledge of Viam and will teach you the fundamentals that allow you to build any machine that interacts with the physical world.
 
 While you build this game you will learn:
 
 - [Device setup](#device-setup) will show you how to install Viam for the tutorial.
-- [Overview](#overview) of the building blocks of Viam: modules, components, and services.
 - [Using the webcam](#using-the-webcam) will teach you how to configure and test resources in Viam.
 - [Adding computer vision](#adding-computer-vision) will teach you about higher level services.
 - [Completing the game](#completing-the-game) will teach you about modules and how to add the control logic for the game.
@@ -26,7 +24,12 @@ While you build this game you will learn:
 
 ## Game overview
 
-TODO: Show video of the game
+The game you will build in this tutorial prompts you to show items to the camera.
+For each item you have 60 seconds to present it to the camera.
+
+All you need is a laptop or desktop computer and a webcam.
+
+{{<video webm_src="/build/game.webm" mp4_src="/build/game.mp4" poster="/build/game.jpg" alt="preview of game">}}
 
 ## Device setup
 
@@ -63,7 +66,7 @@ On the machine's page, follow the {{< glossary_tooltip term_id="setup" text="set
 
 Wait until your machine has successfully connected to Viam.
 
-{{<imgproc src="/tutorials/hello-world/connected.png" resize="800x" style="width: 500px" declaredimensions=true alt="A machine showing a successfult connection." class="imgzoom shadow">}}
+{{<imgproc src="/tutorials/hello-world/connected.png" resize="800x" style="width: 500px" declaredimensions=true alt="A machine showing a successful connection." class="imgzoom shadow">}}
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -83,19 +86,19 @@ Let's start by adding a component.
 
 {{< glossary_tooltip term_id="component" text="Components" >}} are the resources that your machine uses to sense and interact with the world, such as cameras, motors, sensors, and more.
 
-For this tutorial, you can use any webcam that is connected to your computer, a usb-webcam, a built-in one, or a wireless one.
+For this tutorial, you can use any webcam that is connected to your computer, a USB webcam, a built-in one, or a wireless one.
 
 {{< table >}}
 {{% tablestep start=1 %}}
 **Navigate to the CONFIGURE tab of your machine's page.**
 
 This page is where you configure all hardware and software for a machine.
-There are different kinds of {{< glossary_tooltip term_id="resource" text="resources" >}}, you can use.
+There are different kinds of {{< glossary_tooltip term_id="resource" text="resources" >}} you can use.
 
 {{% /tablestep %}}
 
 {{% tablestep %}}
-**Configure the webcam to use for the Desk safari game.**
+**Configure the webcam to use for the Desk Safari game.**
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `camera` type, then select the `webcam` model or another model if you are using a different camera.
@@ -189,7 +192,7 @@ It doesn't have any methods aside from `DoCommand`.
 The `DoCommand` method allows you to pass commands as JSON objects, such as `{"cmd": "start_game"}`.
 You can use the `DoCommand` method to implement everything that doesn't fit into other API methods.
 
-However, there is another API that fits out purpose, the Button API which has the methods `DoCommand` and the `Push`.
+However, there is another API that fits our purpose, the Button API, which has the methods `DoCommand` and the `Push`.
 If you think about the player starting the game, the action they take is to issue some command to start the game, which is like pushing a button.
 
 {{< table >}}
@@ -231,7 +234,7 @@ viam module generate --language python --model-name game-logic \
 {{% /tab %}}
 {{< /tabs >}}
 
-A UI will show.
+A UI appears.
 Press enter to confirm each option.
 
 For **Select a resource to be added to the module**, select **Button Component**
@@ -274,12 +277,12 @@ hello-world-game/
 **Implement the Push method.**
 
 Open <FILE>hello-world-game/src/models/game_logic.py</FILE>.
-This is the template for the Button API that you will add the game logic.
+This is the template for the Button API to which you will add the game logic.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, find the `Push` method to set the `start` attribute to `True` when pushed.
+In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, find the `Push` method to set the `new_game` attribute to `True` when pushed.
 
 ```python {class="line-numbers linkable-line-numbers" data-line="9" data-start="66" }
     async def push(
@@ -370,7 +373,6 @@ In the <FILE>hello-world-game/src/models/game_logic.py</FILE> file, add the foll
 import asyncio
 import random
 from datetime import datetime, timedelta
-from threading import Event
 
 from typing import cast
 from viam.components.camera import *
@@ -379,7 +381,7 @@ from viam.services.vision import *
 
 Add class attributes for the labels that the model supports:
 
-```python {class="line-numbers linkable-line-numbers" data-start="22" }
+```python {class="line-numbers linkable-line-numbers" data-start="21" }
 class GameLogic(Button, EasyResource):
     # To enable debug-level logging, either run viam-server with the --debug option,
     # or configure your resource/machine to display debug logs.
@@ -403,7 +405,8 @@ Next, update the `validate_config` method.
 The button needs to have access to the camera and vision service, therefore, it will need to receive those in its configuration.
 This method makes sure they are present and raises errors if they are not provided:
 
-```python {class="line-numbers linkable-line-numbers" data-start="57" }
+```python {class="line-numbers linkable-line-numbers" data-start="55" }
+    @classmethod
     def validate_config(
         cls, config: ComponentConfig
     ) -> Tuple[Sequence[str], Sequence[str]]:
@@ -431,10 +434,10 @@ This method makes sure they are present and raises errors if they are not provid
 Underneath the `reconfigure` method, add these helper methods.
 They implement the event loop and run the game:
 
-```python {class="line-numbers linkable-line-numbers" data-start="98" }
+```python {class="line-numbers linkable-line-numbers" data-start="97" }
     def start(self):
         if self.task is None:
-            loop = asyncio.get_event_loop()
+            loop = asyncio.get_running_loop()
             self.task = loop.create_task(self._game_loop())
             self.event.clear()
             self.logger.info("Game loop started.")
@@ -445,7 +448,6 @@ They implement the event loop and run the game:
             self.task.cancel()
             self.task = None
         self.logger.info("Game loop stopped.")
-
     def __del__(self):
         self.stop()
 
@@ -533,7 +535,7 @@ They implement the event loop and run the game:
 
 And as a last step for the game implementation, update the reconfigure method to initialize the required variables and start the game loop:
 
-```python {class="line-numbers linkable-line-numbers" data-start="80" }
+```python {class="line-numbers linkable-line-numbers" data-start="79" }
     def reconfigure(
         self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ):
@@ -545,7 +547,7 @@ And as a last step for the game implementation, update the reconfigure method to
 
         # Runtime control
         self.running: Optional[bool] = None
-        self.event: Event = Event()
+        self.event: asyncio.Event = asyncio.Event()
         self.task: Optional[asyncio.Task] = None
 
         camera_name = config.attributes.fields["camera_name"].string_value
@@ -588,7 +590,7 @@ For production purposes you would upload the module to the registry but for now,
 Navigate to your machine's **CONFIGURE** page.
 Make sure your machine's is showing as live and connected to Viam.
 
-Click the **+** button, select **Local module**, then again select **Local module**.
+Click the **+** button, select **Local module**, then select **Local module** again.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -665,7 +667,7 @@ Here's how the concepts you've learned in this tutorial work together in practic
 - A **component**, a webcam, provides access to a camera stream.
 - The publicly-available machine learning model that can identify items is run by a **service**.
 - Your machine has a **module** installed that provides the vision **service** which applies the machine learning model to the camera stream.
-- You've create a **module** containing a button **component** which starts and runs the control logic for the game.
+- You've created a **module** containing a button **component** which starts and runs the control logic for the game.
 
 ## Next steps
 
