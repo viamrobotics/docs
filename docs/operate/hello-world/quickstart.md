@@ -113,8 +113,8 @@ Common service APIs include:
 ## Modules
 
 **Modules** are packages of code that contain components and services.
-Modules allow you to add functionality to machines without modifying Viam's core software.
-They are plugins that provide drivers for specific hardware models, custom software, or control logic.
+They allow you to add functionality to machines without modifying Viam's core software.
+You can think of modules as plugins that provide drivers for specific hardware models, custom software, or control logic.
 
 Viam has a registry of modules that you can use when building your machines.
 Of course, you can also build your own modules.
@@ -123,7 +123,7 @@ The components and services provided by modules implement the standardized compo
 
 ### How everything works together
 
-Here's how these concepts work together in practice:
+In practice, these concepts work together as follows:
 
 - Your **computer** runs `viam-server`
 - `viam-server` manages connected hardware **components**, such as webcams, motors, and more
