@@ -8,35 +8,43 @@ videos: ["/build/game-preview.webm", "/build/game-preview.mp4"]
 videoAlt: "Desk Safari game preview"
 images: ["/build/game-preview.gif"]
 imageAlt: "Desk Safari game preview"
+level: "Beginner"
+languages: ["python"]
+viamresources: ["camera", "vision", "button"]
+cost: "0"
+date: "2025-09-24"
 no_list: false
 description: "Follow this tutorial to learn about Viam while building a game."
+authors: ["Naomi Pentrel"]
 ---
 
 This tutorial assumes no prior knowledge of Viam and will teach you the fundamentals that allow you to build any machine that interacts with the physical world:
 
 - [Device setup](#device-setup) will walk you through installing Viam on your computer.
-- [Using the webcam](#using-the-webcam) will guide you through configuring and testing camera resources in Viam.
-- [Adding computer vision](#adding-computer-vision) will show you how to integrate higher-level services such as ML model and vision services.
-- [Completing the game](#completing-the-game) will teach you to build custom modules and implement the game control logic.
-- [Playing the game](#playing-the-game) will let you test and interact with your completed game.
+- [Use a webcam](#use-a-webcam) will guide you through configuring and testing camera resources in Viam.
+- [Add computer vision](#add-computer-vision) will show you how to integrate higher-level services such as ML model and vision services.
+- [Program your game](#program-your-game) will teach you to build custom modules and implement the game control logic.
+- [Play the game](#play-the-game) will let you test and interact with your completed game.
 
 ## Game overview
 
 The Desk Safari game you will build works as follows:
 
-1. The game is played in rounds that last up to 60 seconds.
-1. To start, the player presses a button.
-1. During a round, the player is prompted to show an item to the camera.
-1. If the item is successfully detected with a confidence score of at least 50%.
-1. If the item is not detected in the given time frame, the game ends.
+1. **Game Start**: The player presses a button to begin
+2. **Round Duration**: Each round lasts up to 60 seconds
+3. **Item Detection**: The player must show a prompted item to the camera
+4. **Scoring**: If the item is detected with ≥50% confidence, the player scores a point and gets a new item
+5. **Game End**: If no item is detected within 60 seconds, the round ends
+6. **Restart**: The player can press the button again to start a new game
 
 {{<video webm_src="/build/game.webm" mp4_src="/build/game.mp4" poster="/build/game.jpg" alt="A game of Desk Safari where the player holds up different items to the camera to score points">}}
 
 ## Prerequisites
 
-- A laptop or desktop computer and a webcam.
-- Some familiarity with Python code.
-- Some familiarity with the command line.
+- A laptop or desktop computer with a webcam (USB, built-in, or wireless)
+- Python 3.8+ installed on your computer
+- Basic familiarity with Python programming
+- Basic familiarity with command line/terminal usage
 
 ## Device setup
 
@@ -89,7 +97,7 @@ These are the main building blocks that make up all machines.
 
 Let's start by adding a component.
 
-## Using the webcam
+## Use a webcam
 
 {{< glossary_tooltip term_id="component" text="Components" >}} are the resources that your machine uses to sense and interact with the world, such as cameras, motors, sensors, and more.
 
@@ -126,6 +134,8 @@ Click on the camera's **TEST** panel to see the camera stream.
 
 The **TEST** panel is a good tool to ensure {{< glossary_tooltip term_id="resource" text="resources" >}} are working as expected.
 
+{{< imgproc src="/components/camera/example_camera_2.png" alt="Example Camera view" resize="800x" style="width:500px" class="imgzoom shadow" >}}
+
 If your camera is not working, see [Troubleshooting](/operate/reference/components/camera/webcam/#troubleshooting) and [Common errors](/operate/reference/components/camera/webcam/#common-errors).
 
 {{% /tablestep %}}
@@ -134,7 +144,7 @@ If your camera is not working, see [Troubleshooting](/operate/reference/componen
 You can now see your camera stream on Viam.
 Next, you’ll apply computer vision to this stream.
 
-## Adding computer vision
+## Add computer vision
 
 {{< glossary_tooltip term_id="service" text="Services" >}} are higher-level software capabilities that process and interpret data or interact with the world.
 Viam provides many different services, including ones to run machine learning models and computer vision.
@@ -178,7 +188,7 @@ Viam has a registry of modules that contain resources you can use when building 
 Of course, you can also build your own modules and resources.
 In fact, you will create a resource for the game's control logic in the next step.
 
-## Completing the game
+## Program your game
 
 The game loop works as follows:
 
@@ -475,7 +485,7 @@ The last change to the code is to implement the game loop.
 Change the implementation of the `do_command` method to run the game loop when receiving the command parameters `{"action": "run_game_loop"}`
 To make it easy to retrieve the game data (for later parts of the tutorial), the following code will return the data for any call to `do_command`:
 
-```python {class="line-numbers linkable-line-numbers" data-line="8-15" data-start="115" }
+```python {class="line-numbers linkable-line-numbers" data-line="8-17" data-start="115" }
     async def do_command(
         self,
         command: Mapping[str, ValueTypes],
@@ -682,7 +692,7 @@ To see more visual input, scroll to the vision service panel on the **CONTROL** 
 {{% /tablestep %}}
 {{< /table >}}
 
-## Playing the game
+## Play the game
 
 As you've undoubtedly noticed the Viam UI is meant for testing, not for playing games.
 To give the game a better UI, we've created a small web application which is hosted as a Viam application.
@@ -714,3 +724,32 @@ If you want to continue working on your game, consider:
 - Building your own [Viam application, mobile app, or headless app.](/operate/control/viam-applications/)
 - Taking photos when an item is successfully detected by [capturing data from your machines](/data-ai/capture-data/capture-sync/)
 - [Training your own TF or TFLite model](/data-ai/train/train-tf-tflite/) to recognize more or other items
+
+## Troubleshooting
+
+### Camera not working
+
+- Check that your webcam is properly connected
+- Ensure no other applications are using the camera
+- Try restarting `viam-server`
+- See [Camera troubleshooting guide](/operate/reference/components/camera/webcam/#troubleshooting)
+
+### Module not loading
+
+- Verify the path to `run.sh` is correct
+- Review the **LOGS** tab for error messages
+
+### Game not detecting items
+
+- Ensure good lighting conditions
+- Hold items clearly in front of the camera
+- Reduce the **Minimum confidence threshold** in the vision service's attributes and use the vision service's **TEST** panel to check if it would detect the item at a lower confidence threshold.
+  If so, keep the lower value and update your value to also use the lower threshold instead of `0.5`.
+- If you cannot get the item to be recognized, the model may not work well enough.
+  Remove it from the `POSSIBLE_OPTIONS` or [train your own model](/data-ai/train/train-tf-tflite/).
+
+### Job or game logic not running
+
+- Confirm the cron schedule is set correctly (`* * * * * *`)
+- Check that the resource name matches exactly (`button-1`)
+- Verify the command format: `{ "action": "run_game_loop" }`
