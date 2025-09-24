@@ -338,8 +338,8 @@ You can remove any items you don't have in your home from the list.
 
 ```python {class="line-numbers linkable-line-numbers" data-start="20" data-line="8-20" }
 class GameLogic(Button, EasyResource):
-    # To enable debug-level logging, either run viam-server with the --debug option,
-    # or configure your resource/machine to display debug logs.
+    # To enable debug-level logging, either run viam-server with the --debug
+    # option, or configure your resource/machine to display debug logs.
     MODEL: ClassVar[Model] = Model(
         ModelFamily("<namespace>", "hello-world-game-py"), "game-logic"
     )
@@ -448,7 +448,8 @@ Update the `reconfigure` method to initialize all the variables:
 
 ```python {class="line-numbers linkable-line-numbers" data-start="79" }
     def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+        self, config: ComponentConfig,
+        dependencies: Mapping[ResourceName, ResourceBase]
     ):
         # Game state
         self.new_game: bool = False
@@ -465,7 +466,9 @@ Update the `reconfigure` method to initialize all the variables:
 
         # Check if the vision resource exists in dependencies
         if vision_resource_name not in dependencies:
-            raise KeyError(f"Vision service '{detector_name}' not found in dependencies. Available resources: {list(dependencies.keys())}")
+            raise KeyError(f"Vision service '{detector_name}' not found in "
+                           f"dependencies. Available resources: "
+                           f"{list(dependencies.keys())}")
 
         vision_resource = dependencies[vision_resource_name]
         self.detector = cast(VisionClient, vision_resource)
@@ -485,7 +488,7 @@ The last change to the code is to implement the game loop.
 Change the implementation of the `do_command` method to run the game loop when receiving the command parameters `{"action": "run_game_loop"}`
 To make it easy to retrieve the game data (for later parts of the tutorial), the following code will return the data for any call to `do_command`:
 
-```python {class="line-numbers linkable-line-numbers" data-line="8-17" data-start="115" }
+```python {class="line-numbers linkable-line-numbers" data-line="8-17" data-start="117" }
     async def do_command(
         self,
         command: Mapping[str, ValueTypes],
@@ -508,7 +511,7 @@ To make it easy to retrieve the game data (for later parts of the tutorial), the
 The `do_command` method calls another method `_run_game_loop` which implements the game logic.
 Add the `_run_game_loop` method and the other helper methods above the `do_command` method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="115" }
+```python {class="line-numbers linkable-line-numbers" data-start="117" }
     async def _run_game_loop(self):
         try:
             if self.new_game:
