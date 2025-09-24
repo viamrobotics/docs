@@ -124,7 +124,7 @@ Common service APIs include:
 - **Data management**: capture, store, and sync data
 - **Navigation**: help machines move around autonomously
 - **SLAM (Simultaneous Localization and Mapping)**: create maps of surroundings and locate machines within those maps
-
+- **Generic**: The generic service is a flexible service type to perform custom business logic by periodically repeating a task.
 ## Modules
 
 **Modules** are packages of code that contain components and services.
