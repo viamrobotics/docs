@@ -25,17 +25,32 @@ Welcome to the Viam documentation! This page introduces you to the core concepts
 
 ## The Viam platform
 
-Viam is a software platform for bringing data management, AI, and automation to the physical world.
+Viam is a unified software platform for bringing data management, AI, and automation to the physical world.
 
 The Viam platform consists of:
 
-- An open-source binary called `viam-server` that runs on a computer and manages hardware, software, and data
-- A [cloud app](https://app.viam.com) for configuring and managing machines and data
-- Standardized APIs for
-  - common types of hardware: cameras, sensors, motors, and more
-  - software services: machine learning, computer vision, motion, and more
-- A registry of modules that provide support for popular hardware and common software needs
-- SDKs for many programming languages that you can use to interact with your machines
+- **One open-source binary (`viam-server`)** runs on a a computer and manages hardware, software, and data
+- **Standardized APIs** work across all hardware types
+- **Built-in services** for motion planning, machine learning, vision, and data management
+- A **registry** of modules for popular hardware and common software needs
+- **Cloud-based architecture** for managing machines and controlling configuration updates
+- **SDKs** (Python, Go, TypeScript, C++, Flutter)
+
+## Why should I build XYZ with Viam?
+
+If the project you are thinking of is technically possible, you can build it with Viam.
+Already have a working system you just want to improve?
+That's fine too.
+
+Viam offers:
+
+- **Flexible hardware integration**: Powered by modular code and standardized APIs, you can swap out hardware like arms or motors without code changes.
+  That means no vendor lock-in.
+- **Real-time data and historic data**: Manage data across machines real-time for data-driven optimization, predictive maintenance, quality assurance and more.
+- **AI integration**: Capture data and train models to allow your machines to detect issues, alert you, or act autonomously.
+- **Motion control & planning**: A built-in motion service allows for path planning, obstacle avoidance, and more.
+- **Fleet management & remote operations**: Remotely monitor operations or control, troubleshoot, or update machines.
+- **Industrial-grade reliability**: Viam uses a versioned approach to software deployment, allowing you to test software and control rollout.
 
 ## Machines
 

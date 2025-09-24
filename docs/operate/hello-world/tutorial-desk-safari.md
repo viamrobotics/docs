@@ -1,7 +1,7 @@
 ---
 linkTitle: "Tutorial: Desk Safari"
 title: "Tutorial: Desk Safari"
-weight: 10
+weight: 20
 layout: "docs"
 type: "docs"
 videos: ["/build/game-preview.webm", "/build/game-preview.mp4"]
