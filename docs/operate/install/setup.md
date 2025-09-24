@@ -99,7 +99,7 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 1. Create a Viam account on [app.viam.com](https://app.viam.com).
    You can configure and manage devices and data collection in the web UI.
 
-1. Create a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/hello-world/quickstart/machines) using the **Add machine** button in the top right corner of the **LOCATIONS** tab in the app.
+1. Create a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/hello-world/quickstart/#machines) using the **Add machine** button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
 1. On your machine's page, click **View setup instructions** and follow the steps for your operating system.

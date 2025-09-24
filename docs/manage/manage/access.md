@@ -30,7 +30,7 @@ You must have the **Owner** role to be able to grant permissions.
 
 6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Entity** to share.
 
-   Users with access to a location or organization can collaborate on the [machines](/operate/hello-world/quickstart/machines) within it.
+   Users with access to a location or organization can collaborate on the [machines](/operate/hello-world/quickstart/#machines) within it.
 
 7. Select a role to assign to the user.
 

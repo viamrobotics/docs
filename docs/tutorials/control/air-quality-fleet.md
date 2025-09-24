@@ -97,7 +97,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 {{% /tablestep %}}
 {{% tablestep %}}
 
-Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/hello-world/quickstart/machines) using the button in the top right corner of the **LOCATIONS** tab.
+Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/hello-world/quickstart/#machines) using the button in the top right corner of the **LOCATIONS** tab.
 Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to Viam.
 
 When your machine shows as connected, continue to the next step.
