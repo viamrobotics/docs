@@ -16,14 +16,19 @@ This tutorial assumes no prior knowledge of Viam and will teach you the fundamen
 
 - [Device setup](#device-setup) will walk you through installing Viam on your computer.
 - [Using the webcam](#using-the-webcam) will guide you through configuring and testing camera resources in Viam.
-- [Adding computer vision](#adding-computer-vision) will show you how to integrate higher level services such as ML model and vision services.
+- [Adding computer vision](#adding-computer-vision) will show you how to integrate higher-level services such as ML model and vision services.
 - [Completing the game](#completing-the-game) will teach you to build custom modules and implement the game control logic.
 - [Playing the game](#playing-the-game) will let you test and interact with your completed game.
 
 ## Game overview
 
-The Desk Safari game you will build prompts players to show items to the camera.
-For each item, the player has 60 seconds to present it to the camera to score a point.
+The Desk Safari game you will build works as follows:
+
+1. The game is played in rounds that last up to 60 seconds.
+1. To start, the player presses a button.
+1. During a round, the player is prompted to show an item to the camera.
+1. If the item is successfully detected with a confidence score of at least 50%.
+1. If the item is not detected in the given time frame, the game ends.
 
 {{<video webm_src="/build/game.webm" mp4_src="/build/game.mp4" poster="/build/game.jpg" alt="A game of Desk Safari where the player holds up different items to the camera to score points">}}
 
@@ -175,29 +180,33 @@ In fact, you will create a resource for the game's control logic in the next ste
 
 ## Completing the game
 
-You've now got the camera working and the vision service can detect objects in the camera stream.
-Now you need to add the game's logic.
-
 The game loop works as follows:
 
 - The player presses a button to start the game.
 - The game provides the player with a prompt showing an item to find and hold up to the camera within 60 seconds.
-- If the vision service detects a matching object within 60 seconds, the game continues with another prompt.
-- Once the player fails to hold up a recognizable object within 60 seconds, the game ends.
-- The game returns the score and the player can start a new game.
+- If the vision service detects a matching object within 60 seconds, the player scores a point and a new round begins with a new item.
+- If no matching object is detected within 60 seconds, the current round ends and the game stops.
+- The player can press the button again to start a new game with a fresh score.
 
-To implement this logic, you'll create your own {{< glossary_tooltip term_id="resource" text="resource" >}} and package it inside a {{< glossary_tooltip term_id="module" text="module" >}}.
+Now that you have the camera and vision service working, you need to create the game logic that ties them together.
+This logic will implement the game mechanics.
+
+To implement the logic, you'll create your own {{< glossary_tooltip term_id="resource" text="resource" >}} and package it inside a {{< glossary_tooltip term_id="module" text="module" >}}.
 
 Viam provides a range of standardized component and service APIs.
 When you create a resource, you implement the API among them that most closely fits your needs.
 
-For control logic, the generic service is often a good fit.
-It doesn't have any methods aside from `DoCommand`.
-The `DoCommand` method allows you to pass commands as JSON objects, such as `{"action": "start_game"}`.
+The Button API fits perfectly for the game as it provides the methods `Push` and `DoCommand`.
+
+The `Push` method works great for starting the game. If you think about it, when a player starts the game, they're essentially pushing a button to issue the start command.
+
+`DoCommand` is often used to implement control logic, as you can pass commands as arbitrary JSON objects, such as `{"action": "run_game_loop"}`.
 You can use the `DoCommand` method to implement everything that doesn't fit into other API methods.
 
-However, there is another API that fits our purpose, the Button API, which has the methods `DoCommand` and the `Push`.
-If you think about it, when a player starts the game, they're essentially pushing a button to issue the start command.
+In the next steps, you'll create your own module which implements the game logic using the Button API.
+
+To create your game logic module, you'll use the Viam CLI to generate code that already includes the Button API template.
+This saves you from writing boilerplate code.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -263,6 +272,9 @@ hello-world-game-py/
 └── setup.sh
 ```
 
+The CLI generated several files, but you'll only need to modify <FILE>game_logic.py</FILE> to implement your game.
+If you want to understand the module structure, here's what each file does:
+
 - **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
 - **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
 - **<FILE>main.py</FILE>** and **<FILE>game_logic.py</FILE>**: Core code that registers the module and resource and provides the model implementation.
@@ -270,125 +282,51 @@ hello-world-game-py/
 - **<FILE>build.sh</FILE>**: Build script that packages the code for upload.
 - **<FILE>run.sh</FILE>**: Script that runs <FILE>setup.sh</FILE> and then executes the module from <FILE>main.py</FILE>.
 
+{{< alert title="Full code" color="tip" >}}
+
+The following steps walk through each step to change the code.
+You can also reference the full code [on GitHub](https://github.com/viam-labs/hello-world-game-module).
+
+{{< /alert >}}
+
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Implement the Push method.**
+**Setup the imports for the game.**
 
 Open <FILE>hello-world-game-py/src/models/game_logic.py</FILE>.
 This is the template for the Button API to which you will add the game logic.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the `push` method to set the `new_game` attribute to `True` when pushed.
-
-```python {class="line-numbers linkable-line-numbers" data-line="8-9" data-start="67" }
-    async def push(
-        self,
-        *,
-        extra: Optional[Mapping[str, Any]] = None,
-        timeout: Optional[float] = None,
-        **kwargs
-    ) -> None:
-        self.logger.info("`push` is called")
-        self.new_game = True
-```
-
-The attribute `self.new_game` needs to be initialized.
-You can initialize instance parameters in the `reconfigure` method so they reset whenever you change the config of the button.
-
-```python {class="line-numbers linkable-line-numbers" data-line="5" data-start="56" }
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        # Game state
-        self.new_game: bool = False
-
-        return super().reconfigure(config, dependencies)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Implement the DoCommand method.**
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-In the same file, change the implementation of the `do_command` method to return the game state when receiving the command parameters `{"action": "get_data"}`:
-
-```python {class="line-numbers linkable-line-numbers" data-line="8-15" data-start="74" }
-    async def do_command(
-        self,
-        command: Mapping[str, ValueTypes],
-        *,
-        timeout: Optional[float] = None,
-        **kwargs
-    ) -> Mapping[str, ValueTypes]:
-        result = {}
-        for name, args in command.items():
-            if name == "action" and args == "get_data":
-                result["score"] = self.score
-                result["time_round_start"] = str(self.time_round_start)
-                result["item_to_detect"] = self.item_to_detect
-                return result
-        return {}
-```
-
-Add the other parameters to the `reconfigure` method:
-
-```python {class="line-numbers linkable-line-numbers" data-line="6-8" data-start="56" }
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        # Game state
-        self.new_game: bool = False
-        self.score: int = 0
-        self.time_round_start: Optional[datetime] = None
-        self.item_to_detect: str = ""
-
-        return super().reconfigure(config, dependencies)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Implement the game loop.**
-
-You have implemented the methods that constitute the Button API.
-Now you'll add the code that uses the vision service and camera to implement the game logic.
-
-{{< alert title="Full code" color="tip" >}}
-
-You can reference the full code [on GitHub](https://github.com/viam-labs/hello-world-game-module).
-
-{{< /alert >}}
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, add the following imports:
+To implement the game mechanics, you'll need these Python packages:
 
 ```python {class="line-numbers linkable-line-numbers" }
-import asyncio
 import random
 from datetime import datetime, timedelta
 
 from typing import cast
-from viam.components.camera import *
 from viam.services.vision import *
 ```
 
-Add class attributes for the labels that the model supports:
+The packages allow you to:
 
-```python {class="line-numbers linkable-line-numbers" data-start="23" }
+- pick a random item
+- implement the time logic for the game
+- use the vision package
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Add class attributes for the game.**
+
+Class attributes are variables that belong to the class itself rather than to any specific instance of the class.
+They are shared among all instances of the class and are defined at the class level.
+
+For the Desk Safari game, you need to provide the game with a list of items to choose from for the prompt.
+This list should not change between instances, so it can be defined as a class variable.
+You can remove any items you don't have in your home from the list.
+
+```python {class="line-numbers linkable-line-numbers" data-start="20" data-line="8-20" }
 class GameLogic(Button, EasyResource):
     # To enable debug-level logging, either run viam-server with the --debug option,
     # or configure your resource/machine to display debug logs.
@@ -408,9 +346,23 @@ class GameLogic(Button, EasyResource):
     ]
 ```
 
-Next, update the `validate_config` method.
-The button needs to have access to the camera and vision service, therefore, it will need to receive those in its config.
-This method makes sure they are present and raises errors if they are not provided:
+{{% /tablestep %}}
+{{% tablestep %}}
+**Validate the button's config.**
+
+Your game needs to know which camera and vision service to use.
+While you could hardcode these names, you'll get them from the button's configuration. This makes your game flexible if you change component names later.
+
+To get parameters from the configuration object, you use the `validate_config` method.
+`viam-server` calls the `validate_config` method before calling `reconfigure` to:
+
+1. Ensure the expected fields are in the config and have the right type.
+   This method makes sure the camera name and vision service name are present and raises errors if they are not provided.
+2. Find out if the resource has required dependencies (`req_deps`).
+   The `validate_config` method returns a list of required dependencies and a list of optional dependencies.
+   If the resource requires other components or services to function, as in this case the camera and the vision service, you must return them as the first array from the method.
+
+   `viam-server` waits until those dependencies are available before starting the button component.
 
 ```python {class="line-numbers linkable-line-numbers" data-start="55" }
     @classmethod
@@ -438,40 +390,116 @@ This method makes sure they are present and raises errors if they are not provid
         return req_deps, []
 ```
 
-Underneath the `reconfigure` method, add these helper methods.
-They implement the event loop and run the game:
+{{% /tablestep %}}
+{{% tablestep %}}
+**Implement the Push method.**
 
-```python {class="line-numbers linkable-line-numbers" data-start="93" }
-    def start(self):
-        if self.task is None:
-            loop = asyncio.get_running_loop()
-            self.task = loop.create_task(self._game_loop())
-            self.event.clear()
-            self.logger.info("Game loop started.")
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-    def stop(self):
-        self.event.set()
-        if self.task is not None:
-            self.task.cancel()
-            self.task = None
-        self.logger.info("Game loop stopped.")
+In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the `push` method to set the `new_game` attribute to `True` when pushed.
 
-    async def close(self):
-        self.stop()
+```python {class="line-numbers linkable-line-numbers" data-line="8-9" data-start="90" }
+    async def push(
+        self,
+        *,
+        extra: Optional[Mapping[str, Any]] = None,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> None:
+        self.logger.info("`push` is called")
+        self.new_game = True
+```
 
-    async def _game_loop(self):
-        try:
-            while not self.event.is_set():
-                await self._process_game_state()
-                await asyncio.sleep(1)
-        except asyncio.CancelledError:
-            self.logger.info("Game loop cancelled.")
-        except Exception as e:
-            self.logger.error(f"Game loop error: {e}")
-        finally:
-            self.task = None
+{{% /tab %}}
+{{< /tabs >}}
 
-    async def _process_game_state(self):
+{{% /tablestep %}}{{% tablestep %}}
+**Initialize all variables.**
+
+Unlike class attributes, instance attributes are unique to a single instance of the button running on your machine.
+You use them to initialize instance parameters, like `self.new_game`, in the `reconfigure` method.
+`viam-server` calls the `reconfigure` method whenever the module starts or a configuration change occurs.
+So if you change the config of the button, the parameters get set to the values assigned in the reconfigure method.
+
+You must initialize all variables that can and may be accessed before they are assigned elsewhere in the code.
+For the Desk Safari game, you'll initialize the following game state variables:
+
+- `new_game`: the value set to true when a new game should start
+- `score`: the score
+- `time_round_start`: the time the round started, used to determine when 60 seconds are up
+- `item_to_detect`: the current item that needs to be shown to the camera.
+
+On top of game state variables, you also need to initialize the vision service and camera name so they can be used in the rest of the code.
+The dependencies parameter contains all the resources this component can access.
+By using `cast` you tell Python that the vision resource is specifically a VisionClient.
+
+Update the `reconfigure` method to initialize all the variables:
+
+```python {class="line-numbers linkable-line-numbers" data-start="79" }
+    def reconfigure(
+        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ):
+        # Game state
+        self.new_game: bool = False
+        self.score: int = 0
+        self.time_round_start: Optional[datetime] = None
+        self.item_to_detect: str = ""
+
+        camera_name = config.attributes.fields["camera_name"].string_value
+        detector_name = config.attributes.fields["detector_name"].string_value
+
+        # Get the full resource name for the vision service
+        # (rdk:service:vision/object-detector)
+        vision_resource_name = VisionClient.get_resource_name(detector_name)
+
+        # Check if the vision resource exists in dependencies
+        if vision_resource_name not in dependencies:
+            raise KeyError(f"Vision service '{detector_name}' not found in dependencies. Available resources: {list(dependencies.keys())}")
+
+        vision_resource = dependencies[vision_resource_name]
+        self.detector = cast(VisionClient, vision_resource)
+        self.camera_name = camera_name
+
+        return super().reconfigure(config, dependencies)
+```
+
+{{% /tab %}}
+{{% tablestep %}}
+**Implement the game loop with the DoCommand method.**
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+The last change to the code is to implement the game loop.
+Change the implementation of the `do_command` method to run the game loop when receiving the command parameters `{"action": "run_game_loop"}`
+To make it easy to retrieve the game data (for later parts of the tutorial), the following code will return the data for any call to `do_command`:
+
+```python {class="line-numbers linkable-line-numbers" data-line="8-15" data-start="115" }
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        result = {}
+        for name, args in command.items():
+            if name == "action" and args == "run_game_loop":
+                await self._run_game_loop()
+        # return the current game data for all commands
+        result["score"] = self.score
+        result["time_round_start"] = str(self.time_round_start)
+        result["item_to_detect"] = self.item_to_detect
+        self.logger.info(f"Game data: {result}")
+        return result
+```
+
+The `do_command` method calls another method `_run_game_loop` which implements the game logic.
+Add the `_run_game_loop` method and the other helper methods above the `do_command` method:
+
+```python {class="line-numbers linkable-line-numbers" data-start="115" }
+    async def _run_game_loop(self):
         try:
             if self.new_game:
                 await self._start_new_game()
@@ -484,6 +512,7 @@ They implement the event loop and run the game:
             self.logger.error(f"Game state processing error: {err}")
 
     async def _start_new_game(self):
+        """Initialize a new game round."""
         self.new_game = False
         self.logger.info("Game is starting.")
         self.time_round_start = datetime.now()
@@ -522,9 +551,7 @@ They implement the event loop and run the game:
         self.logger.info(f"Item detected: {self.item_to_detect}")
         self.logger.info(f"Score: {self.score}")
 
-        await self._start_new_round()
-
-    async def _start_new_round(self):
+        # start a new round
         self.time_round_start = datetime.now()
         self.logger.info(f"Starting new round at {self.time_round_start.strftime('%Y-%m-%d %H:%M:%S')}")
         self.item_to_detect = random.choice(self.POSSIBLE_OPTIONS)
@@ -538,54 +565,11 @@ They implement the event loop and run the game:
             self.item_to_detect = ""
 ```
 
-And as a last step for the game implementation, update the reconfigure method to initialize the required variables and start the game loop:
-
-```python {class="line-numbers linkable-line-numbers" data-start="82" }
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        # Game state
-        self.new_game: bool = False
-        self.score: int = 0
-        self.time_round_start: Optional[datetime] = None
-        self.item_to_detect: str = ""
-
-        # Runtime control
-        self.running: Optional[bool] = None
-        self.event: asyncio.Event = asyncio.Event()
-        self.task: Optional[asyncio.Task] = None
-
-        camera_name = config.attributes.fields["camera_name"].string_value
-        detector_name = config.attributes.fields["detector_name"].string_value
-
-        # Get the resource name for the vision service
-        vision_resource_name = VisionClient.get_resource_name(detector_name)
-
-        # Check if the vision resource exists in dependencies
-        if vision_resource_name not in dependencies:
-            raise KeyError(f"Vision service '{detector_name}' not found in dependencies. Available resources: {list(dependencies.keys())}")
-
-        vision_resource = dependencies[vision_resource_name]
-        self.detector = cast(VisionClient, vision_resource)
-        self.camera_name = camera_name
-
-        # Start the game loop if not already running
-        if self.task is None:
-            self.start()
-        else:
-            self.logger.info("Game loop already running.")
-
-        return super().reconfigure(config, dependencies)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-That's the game logic.
-The `reconfigure` method starts the game loop, which then starts a new game, sets an item to detect and checks periodically if the item is detected.
-
 {{% /tablestep %}}
 
+{{< /tabs >}}
+
+{{% /tablestep %}}
 {{% tablestep %}}
 **Configure your module as a local module.**
 
@@ -638,25 +622,70 @@ Save the config.
 {{% tablestep %}}
 **Test your game logic.**
 
-Click the **TEST** section of the button's config card.
+Navigate to your machine's **CONTROL** tab and find the button's panel.
 
-Click the **PUSH** button to start a game.
+1. Click the **PUSH** button to start the game.
+   You should see a log message saying "`push` is called" in the **LOGS** tab.
+2. Open the `DoCommand` panel, add `{ "action": "run_game_loop" }` as the input and click **Execute**.
+   This will call the game loop once and retrieve the score, the time the round started, and the current item to detect.
+   You will see a response in the UI of the format:
 
-Check the **LOGS** tab; you'll see the prompt logged there and can follow the logs to see if an object is identified or not.
-To see more visual input, use the **TEST** section of the vision service as you hold objects up to the camera.
+   ```json
+   {
+     "score": 0,
+     "time_round_start": "2025-09-24 14:07:49.599761",
+     "item_to_detect": "Bowl"
+   }
+   ```
+
+3. Hold up the `item_to_detect` and click the **Execute** button to test the game.
+   Once successfully detected, the score increases and the `item_to_detect` changes.
+
+4. If you wait 60 seconds, the game ends and the response you get if you then click **Execute** contains the default values for `item_to_detect` and `time_round_start` and the last score:
+
+   ```json
+   {
+     "item_to_detect": "",
+     "score": 1,
+     "time_round_start": "None"
+   }
+   ```
+
+This manual testing lets you verify the game logic works correctly.
+In the final step, you'll make the game logic run continuously.
 
 If you are encountering errors, check the **LOGS** tab for more information.
 
-If you want to test the `DoCommand` method, open the **CONTROL** tab and click on the button's `DoCommand` panel.
-Send `{ "action": "get_data" }` to retrieve the score, the time the round started, and the current item to detect.
+{{% /tablestep %}}
+{{% tablestep %}}
+**Run game logic loop automatically with a job.**
+
+To run game logic, we'll use a {{< glossary_tooltip term_id="job" text="job" >}} which calls the `DoCommand` method periodically.
+
+Click the **+** icon next to your machine part in the left-hand menu and select **Job**.
+You can use the default name, `job-1`, and click **Create**.
+
+In the job panel, set the **Schedule** to **Cron** and enter `* * * * * *` which will run the job every second.
+
+Then configure the job:
+
+- **Resource**: `button-1`
+- **Method**: `DoCommand`
+- **Command**: `{ "action": "run_game_loop" }`
+
+Click save.
+
+Now, check the **LOGS** tab; you'll see the job triggered every second.
+If you now open another tab and go back to the **CONTROL** tab and click the **PUSH** button and then look at the logs in the other tab, you'll see periodic output from the running game.
+To see more visual input, scroll to the vision service panel on the **CONTROL** tab which will show you current detections as you hold objects up to the camera.
 
 {{% /tablestep %}}
 {{< /table >}}
 
 ## Playing the game
 
-As you've undoubtedly noticed, the game needs a better UI.
-To address that, we've created a small web application which is hosted as a Viam application.
+As you've undoubtedly noticed the Viam UI is meant for testing, not for playing games.
+To give the game a better UI, we've created a small web application which is hosted as a Viam application.
 
 You can use this application to connect to your machine and play the game.
 Your machine must be online and configured before opening the app.
@@ -680,9 +709,8 @@ Let's recap how the concepts you've learned in this tutorial work together in pr
 You now know how to build a machine using {{< glossary_tooltip term_id="component" text="components" >}}, {{< glossary_tooltip term_id="service" text="services" >}}, and {{< glossary_tooltip term_id="module" text="modules" >}}.
 You can use these tools to **build any kind of machine** with Viam.
 
-If you want to learn more, have a look at:
+If you want to continue working on your game, consider:
 
-- [Building a Viam application, mobile app, or headless app.](/operate/control/viam-applications/)
-- [Capturing data from your machines](/data-ai/capture-data/capture-sync/)
-- [Training your own TF or TFLite model](/data-ai/train/train-tf-tflite/).
-- [Sharing config fragments across machines](/manage/fleet/reuse-configuration/)
+- Building your own [Viam application, mobile app, or headless app.](/operate/control/viam-applications/)
+- Taking photos when an item is successfully detected by [capturing data from your machines](/data-ai/capture-data/capture-sync/)
+- [Training your own TF or TFLite model](/data-ai/train/train-tf-tflite/) to recognize more or other items

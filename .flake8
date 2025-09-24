@@ -2,5 +2,3 @@
 extend-ignore = F704, F821, F401, F841, E125, E117
 exclude = .git,build,dist
 max-complexity = 20
-per-file-ignores =
-    docs/operate/hello-world/tutorial-desk-safari.md: E125, E117
