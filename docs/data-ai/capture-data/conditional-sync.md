@@ -56,7 +56,7 @@ Also leave both **Capturing** and **Syncing** toggles in the "on" position.
 
 {{% expand "Create a sensor module. Click to see instructions." %}}
 
-Start by [creating a sensor module](/operate/install/other-hardware/create-module/).
+Start by [creating a sensor module](/operate/install/modules/other-hardware/create-module/).
 
 Your sensor should have access to the information you need to determine if your machine should sync or not.
 Based on that data, make the sensor return true when the machine should sync and false when it should not.

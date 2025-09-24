@@ -29,7 +29,7 @@ Viam is a unified software platform for bringing data management, AI, and automa
 
 The Viam platform consists of:
 
-- **One open-source binary (`viam-server`)** runs on a a computer and manages hardware, software, and data
+- **One open-source binary (`viam-server`)** runs on a computer and manages hardware, software, and data
 - **Standardized APIs** work across all hardware types
 - **Built-in services** for motion planning, machine learning, vision, and data management
 - A **registry** of modules for popular hardware and common software needs

@@ -430,7 +430,7 @@ In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the 
 Unlike class attributes, instance attributes are unique to a single instance of the button running on your machine.
 You use them to initialize instance parameters, like `self.new_game`, in the `reconfigure` method.
 `viam-server` calls the `reconfigure` method whenever the module starts or a configuration change occurs.
-So if you change the config of the button, the parameters get set to the values assigned in the reconfigure method.
+Whenever you change the config of the button, the parameters get set to the values assigned in the reconfigure method.
 
 You must initialize all variables that can and may be accessed before they are assigned elsewhere in the code.
 For the Desk Safari game, you'll initialize the following game state variables:
