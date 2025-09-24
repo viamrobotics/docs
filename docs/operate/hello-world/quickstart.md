@@ -25,36 +25,20 @@ Welcome to the Viam documentation! This page introduces you to the core concepts
 
 ## The Viam platform
 
-Viam is a unified software platform for bringing data management, AI, and automation to the physical world.
+Viam is a unified software platform that brings data management, AI, and automation to the physical world.
 
 The Viam platform consists of:
 
 - **One open-source binary (`viam-server`)** runs on a computer and manages hardware, software, and data
-- **Standardized APIs** work across all hardware types
+- **Standardized APIs** work across all hardware types, allowing you to swap hardware without code changes
 - **Built-in services** for motion planning, machine learning, vision, and data management
 - A **registry** of modules for popular hardware and common software needs
 - **Cloud-based architecture** for managing machines and controlling configuration updates
 - **SDKs** (Python, Go, TypeScript, C++, Flutter)
 
-## Why should I build XYZ with Viam?
-
-If the project you are thinking of is technically possible, you can build it with Viam.
-Already have a working system you just want to improve?
-That's fine too.
-
-Viam offers:
-
-- **Flexible hardware integration**: Powered by modular code and standardized APIs, you can swap out hardware like arms or motors without code changes.
-  That means no vendor lock-in.
-- **Real-time data and historic data**: Manage data across machines real-time for data-driven optimization, predictive maintenance, quality assurance and more.
-- **AI integration**: Capture data and train models to allow your machines to detect issues, alert you, or act autonomously.
-- **Motion control & planning**: A built-in motion service allows for path planning, obstacle avoidance, and more.
-- **Fleet management & remote operations**: Remotely monitor operations or control, troubleshoot, or update machines.
-- **Industrial-grade reliability**: Viam uses a versioned approach to software deployment, allowing you to test software and control rollout.
-
 ## Machines
 
-A _machine_ consists of at least one computer running `viam-server` (often a single-board computer like a Raspberry Pi or Jetson) along with all the hardware components and software services that the computer controls.
+A machine consists of at least one computer running `viam-server` (often a single-board computer like a Raspberry Pi or Jetson) along with all the hardware components and software services that the computer controls.
 
 When you use Viam to build a machine, you create exactly what you need by mixing and matching different building blocks:
 
@@ -80,7 +64,7 @@ Examples of computing devices that Viam supports:
 
 ## Components
 
-_Components_ are the resources that your machine uses to sense and interact with the world, such as cameras, motors, sensors, and more.
+Components are the resources that your machine uses to sense and interact with the world, such as cameras, motors, sensors, and more.
 They represent the _eyes_, _ears_, _hands_, and other physical capabilities of your machine.
 
 Components often represent physical hardware, but they can also represent purely software-based resources or control elements.
@@ -114,7 +98,7 @@ Anything that does not fit the specialized APIs can use the Generic component AP
 
 ## Services
 
-**Services** are higher-level software capabilities that process and interpret data or interact with the world.
+Services are higher-level software capabilities that process and interpret data or interact with the world.
 Many services depend on components.
 
 Common service APIs include:
@@ -124,11 +108,11 @@ Common service APIs include:
 - **Data management**: capture, store, and sync data
 - **Navigation**: help machines move around autonomously
 - **SLAM (Simultaneous Localization and Mapping)**: create maps of surroundings and locate machines within those maps
-- **Generic**: The generic service is a flexible service type to perform custom business logic by periodically repeating a task.
+- **Generic**: perform custom business logic by periodically repeating a task
 
 ## Modules
 
-**Modules** are packages of code that contain components and services.
+Modules are packages of code that contain components and services.
 They allow you to add functionality to machines without modifying Viam's core software.
 You can think of modules as plugins that provide drivers for specific hardware models, custom software, or control logic.
 
@@ -136,6 +120,14 @@ Viam has a registry of modules that you can use when building your machines.
 Of course, you can also build your own modules.
 
 The components and services provided by modules implement the standardized component and service APIs.
+This means if you need to at any point swap from one arm model to another, your code stays the same, because the arms use the same API.
+
+## Cloud capabilities
+
+- **Fleet management & remote operations**: Remotely monitor operations and control, troubleshoot, or update machines.
+- **Real-time data and historic data**: Manage and query data across machines or configure alerts.
+- **Model training**: Use captured data and train custom machine learning models to allow your machines to detect issues or act autonomously.
+- **Viam Registry**: Modules are versioned, allowing you to roll out software updates in a controlled way.
 
 ### How everything works together
 
@@ -145,6 +137,7 @@ In practice, these concepts work together as follows:
 - `viam-server` manages connected hardware **components**, such as webcams, motors, and more
 - `viam-server` also manages **services**, such as vision services that detect objects in camera streams
 - **Modules** are the plugins that provide components, services, and control logic
+- Cloud capabilities provide the tools to scale, analyze data, and make machines smart with ML
 
 ## Next Steps
 
