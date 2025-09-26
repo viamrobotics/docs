@@ -100,28 +100,43 @@ You can view the `frame` of each sub-part in the `remotes` section of the debug 
 
 To establish a connection between a part of one machine and a part of a second machine, add one as a remote part in the other machine part's config:
 
-1. Go to the machine page of the smart machine part to which you wish to establish the remote connection.
-   This is the machine part whose resources will be accessible to the other machine part.
-2. Navigate to the **CONNECT** tab.
-3. Click **Configure as a remote part** in the left-hand menu.
-4. Toggle the **Include API key** switch on, then copy the entire JSON snippet including the name, address, and authentication credentials of the remote part.
-
-   {{% snippet "show-secret.md" %}}
-
-5. Go to the machine page of the machine part from which you want to establish a remote connection.
+1. Go to the machine page of the machine part from which you want to establish a remote connection.
    This is the machine part that will be able to access the resources of the other machine part.
-6. Navigate to the **CONFIGURE** tab, click the **+** (Create) icon next to the machine part's name in the left side menu.
+1. Navigate to the **CONFIGURE** tab, click the **+** (Create) icon next to the machine part's name in the left side menu.
 
    {{<imgproc src="/build/configure/parts/remote-create.png" resize="x1100" declaredimensions=true alt="The create menu with options including remote part shown." style="width:500px" class="shadow" >}}
 
-7. Click **Remote part**.
-8. Select the remote part from the list of parts.
+1. Click **Remote part**.
+1. Select the remote part from the list of parts.
+
    Alternatively, click **Add empty remote** and then scroll to the newly-created remote part configuration card.
-   Click on **{}** (Switch to advanced) and replace the JSON object with the remote config you copied in step 4.
+   Click on **{}** (Switch to advanced) and replace the JSON object with a remote config.
 
    {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="width:700px" class="shadow" >}}
 
-9. Click **Save** in the upper right corner of the page to save your config.
+   {{< expand "Click to see how to get a remote config object" >}}
+
+1. Go to the machine page of the smart machine part to which you wish to establish the remote connection.
+   This is the machine part whose resources will be accessible to the other machine part.
+1. Navigate to the **CONNECT** tab.
+1. Click **Configure as a remote part** in the left-hand menu.
+1. Toggle the **Include API key** switch on, then copy the entire JSON snippet including the name, address, and authentication credentials of the remote part.
+
+   {{% snippet "show-secret.md" %}}
+
+   {{< /expand >}}
+
+   Remotes have the following parameters:
+
+   <!-- prettier-ignore -->
+   | Name               | Type   | Required? | Description |
+   | ------------------ | ------ | --------- | ----------- |
+   | `name` |  string | Optional | The name of the remote part. |
+   | `address` |  string | Optional | The address of the remote part. |
+   | `auth` | string | Object | The authentication credentials of the remote part. For example: `{ "credential": { "type": "api-key", "payload": "abcdefghijklmnop123456789abcdefg" } }`. |
+   | `prefix` | string | Optional | If set, all resource names fetched from the remote part will have the prefix. |
+
+1. Click **Save** in the upper right corner of the page to save your config.
 
 ## Using remote parts and sub-parts with the Viam SDKs
 
