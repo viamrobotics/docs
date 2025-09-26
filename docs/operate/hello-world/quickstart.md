@@ -142,4 +142,4 @@ We recommend putting these concepts into practice by following the [Desk Safari 
 
 If you'd like to learn more about Viam and how it works, see [Viam architecture](/operate/reference/architecture/).
 
-For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet).
+For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).

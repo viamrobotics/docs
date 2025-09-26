@@ -85,7 +85,7 @@ After deploying your model, you need to configure an additional service to use t
 For example, you can configure an [`mlmodel` vision service](/operate/reference/services/vision/) to visualize the inferences your model makes.
 Follow our docs to [run inference](/data-ai/ai/run-inference/) to add an `mlmodel` vision service and see inferences.
 
-For other use cases, consider [creating custom functionality with a module](/operate/install/modules/other-hardware/create-module/).
+For other use cases, consider [creating custom functionality with a module](/operate/modules/other-hardware/create-module/).
 
 {{< alert title="Add support for other models" color="tip" >}}
 ML models must be designed in particular shapes to work with the `mlmodel` [classification](/operate/reference/services/vision/mlmodel/) or [detection](/operate/reference/services/vision/mlmodel/) model of Viam's [vision service](/operate/reference/services/vision/).
