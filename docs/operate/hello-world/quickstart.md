@@ -28,7 +28,7 @@ Welcome to the Viam documentation! This page introduces you to the core concepts
 Viam is a unified software platform that brings data management, AI, and automation to the physical world.
 
 Viam is a unified software platform for prototyping, deploying, managing, and scaling machines.
-The platform's software frameworks and tooling allow you to develope your projects with the same best practices as any modern software engineering project.
+The platform's software frameworks and tooling allow you to develop your projects with the same best practices as any modern software engineering project.
 Common use cases include industrial automation and manufacturing, autonomous vehicles and robotics, and environmental monitoring - but really **anything** consisting of sensors, actuators and logic can be built on Viam.
 
 The Viam platform consists of:
