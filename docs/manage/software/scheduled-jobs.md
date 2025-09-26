@@ -22,6 +22,19 @@ The job scheduler is built into `viam-server` and executes configured jobs accor
 ## Configure a job
 
 {{< tabs >}}
+{{% tab name="Builder mode" %}}
+
+1. Go to the **CONFIGURE** tab of your machine.
+   Click the **+** (Create) button in the left side menu and select **Job**.
+
+1. Enter a name and click **Create**.
+
+1. For the **Schedule**, select **Interval** or **Cron** and specify the interval the job should be run in.
+
+1. For **Job**, select a **Resource**, and a **method**.
+   For the `DoCommand` method also specify the command parameters.
+
+{{% /tab %}}
 {{% tab name="JSON Template" %}}
 
 ```json {class="line-numbers linkable-line-numbers"}
@@ -128,7 +141,7 @@ Jobs are configured as part of your machine's configuration. Each job requires t
 | Parameter  | Type   | Required     | Description                                                      |
 | ---------- | ------ | ------------ | ---------------------------------------------------------------- |
 | `name`     | string | **Required** | Unique identifier for the job within the machine.                |
-| `schedule` | string | **Required** | Schedule specification using unix-cron format or Golang duration. Accepts <ul><li>Unix-cron expressions for time-based scheduling:<ul><li>`"0 */6 * * *"` - Every 6 hours</li><li>`"0 0 * * 0"` - Every Sunday at midnight</li><li>`"*/15 * * * *"` - Every 15 minutes</li><li>`"0 9 * * 1-5"` - Every weekday at 9 AM</li></ul></li><li>Golang duration strings for interval-based scheduling:<ul><li>`"5m"` - Every 5 minutes</li><li>`"1h"` - Every hour</li><li>`"30s"` - Every 30 seconds</li><li>`"24h"` - Every 24 hours</li></ul></li></ul>Job schedules are evaluated in the machine's local timezone. |
+| `schedule` | string | **Required** | Schedule specification using unix-cron format or Golang duration. Accepts <ul><li>Unix-cron expressions for time-based scheduling:<ul><li>`"0 */6 * * *"`: Every 6 hours</li><li>`"0 0 * * 0"`: Every Sunday at midnight</li><li>`"*/15 * * * *"`: Every 15 minutes</li><li>`"0 9 * * 1-5"`: Every weekday at 9 AM</li></ul></li><li>Golang duration strings for interval-based scheduling:<ul><li>`"5m"`: Every 5 minutes</li><li>`"1h"`: Every hour</li><li>`"30s"`: Every 30 seconds</li><li>`"24h"`: Every 24 hours</li></ul></li></ul>Job schedules are evaluated in the machine's local timezone. |
 | `resource` | string | **Required** | Name of the target resource (component or service).               |
 | `method`   | string | **Required** | gRPC method to call on the target resource.                       |
 | `command`  | object | Optional     | Command parameters for `DoCommand` operations.                    |
