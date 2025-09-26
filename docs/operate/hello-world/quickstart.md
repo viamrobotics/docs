@@ -13,7 +13,7 @@ aliases:
 carouselscript: true
 ---
 
-Welcome to the Viam documentation! This page introduces you to the core concepts you need to know when using Viam.
+Welcome to the Viam documentation! This page introduces you to the core concepts you need to know when building projects with Viam.
 
 {{< alert title="You will learn about" color="note" >}}
 
@@ -26,11 +26,12 @@ Welcome to the Viam documentation! This page introduces you to the core concepts
 ## The Viam platform
 
 Viam is a unified software platform that brings data management, AI, and automation to the physical world.
+Common use cases include industrial automation and manufacturing, autonomous vehicles and robotics, and environmental monitoring.
 
 The Viam platform consists of:
 
-- **One open-source binary (`viam-server`)** runs on a computer and manages hardware, software, and data
-- **Standardized APIs** work across all hardware types, allowing you to swap hardware without code changes
+- **One open-source binary (`viam-server`)** that runs on a computer and manages hardware, software, and data
+- **Standardized APIs** that work across all hardware types, allowing you to swap hardware without code changes
 - **Built-in services** for motion planning, machine learning, vision, and data management
 - A **registry** of modules for popular hardware and common software needs
 - **Cloud-based architecture** for managing machines and controlling configuration updates
@@ -108,7 +109,7 @@ Common service APIs include:
 - **Data management**: capture, store, and sync data
 - **Navigation**: help machines move around autonomously
 - **SLAM (Simultaneous Localization and Mapping)**: create maps of surroundings and locate machines within those maps
-- **Generic**: perform custom business logic by periodically repeating a task
+- **Generic**: perform custom business logic by periodically repeating tasks
 
 ## Modules
 
@@ -121,13 +122,7 @@ Of course, you can also build your own modules.
 
 The components and services provided by modules implement the standardized component and service APIs.
 This means if you need to at any point swap from one arm model to another, your code stays the same, because the arms use the same API.
-
-## Cloud capabilities
-
-- **Fleet management & remote operations**: Remotely monitor operations and control, troubleshoot, or update machines.
-- **Real-time data and historic data**: Manage and query data across machines or configure alerts.
-- **Model training**: Use captured data and train custom machine learning models to allow your machines to detect issues or act autonomously.
-- **Viam Registry**: Modules are versioned, allowing you to roll out software updates in a controlled way.
+This provides flexibility allowing for rapid prototyping without vendor lock-in.
 
 ### How everything works together
 
@@ -137,7 +132,7 @@ In practice, these concepts work together as follows:
 - `viam-server` manages connected hardware **components**, such as webcams, motors, and more
 - `viam-server` also manages **services**, such as vision services that detect objects in camera streams
 - **Modules** are the plugins that provide components, services, and control logic
-- Cloud capabilities provide the tools to scale, analyze data, and make machines smart with ML
+- **Cloud capabilities** allow you to scale, analyze data, and make machines smart.
 
 ## Next Steps
 
@@ -145,4 +140,6 @@ Now you know about the most important concepts for using Viam.
 
 We recommend putting these concepts into practice by following the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/) to build your first machine.
 
-If you'd like to learn more about how Viam works, see [Viam architecture](/operate/reference/architecture/).
+If you'd like to learn more about Viam and how it works, see [Viam architecture](/operate/reference/architecture/).
+
+For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet).
