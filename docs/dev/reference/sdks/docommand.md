@@ -167,7 +167,7 @@ You can use `DoCommand` in the web UI:
 
 ## More examples
 
-For an example that implements `DoCommand` in a generic API Python module, see [Add control logic to your module](/manage/software/control-logic/#add-control-logic-to-your-module).
+For an example that implements `DoCommand` in a generic API Python module, see [Add control logic to your module](/operate/modules/control-logic/#add-control-logic-to-your-module).
 
 For additional examples, look at the GitHub repositories of [registry](https://app.viam.com/registry), especially modules that use the generic API.
 Essentially all generic models implement `DoCommand` (since it is the only method of the generic API), and various other models implement it as well.
