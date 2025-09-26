@@ -25,7 +25,7 @@ For information on the status of [app.viam.com](https://app.viam.com), visit [st
 
 ### The authenticity of host 'hostname.local' can't be established
 
-**Description:** When following our [installation guides](/operate/get-started/setup/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
+**Description:** When following our [installation guides](/operate/install/setup/), you will likely encounter this message the first time you try to make an `ssh` connection to your newly-imaged {{< glossary_tooltip term_id="board" text="board" >}}.
 This is expected: `ssh` is advising you that it has not yet connected to this address, and prompts you for how to proceed.
 
 **Solution:** The message will ask `Are you sure you want to continue connecting?`.
@@ -43,7 +43,7 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 - Your `ssh` connection string should resemble the following: `ssh username@hostname.local`.
   Be sure that you match hostname, username, and password exactly to what you initially configured when imaging your board.
 - If you are still unable to connect, restart your board and try your `ssh` connection again after a few minutes.
-- If that fails, try re-imaging your board following the [installation guide](/operate/get-started/setup/) appropriate for your board.
+- If that fails, try re-imaging your board following the [installation guide](/operate/install/setup/) appropriate for your board.
   - If using the [Raspberry Pi installation guide](/operate/reference/prepare/rpi-setup/), be sure to carefully enter the configuration details under the **Advanced Options** (gear icon) button on the [Raspberry Pi imager](https://www.raspberrypi.com/software/) before you re-image your board.
   - If you re-imaged your board and provided a different hostname, you may need to accept the `ssh` host key again by typing `yes` when prompted.
   - If you re-imaged your board and provided the same hostname, you may see an error message similar to `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`.
@@ -65,9 +65,9 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Full Error:** `Something went wrong trying to read the squashfs image. Open dir error: No such file or directory`
 
-**Description:** The `viam-server` [installation](/operate/get-started/setup/) or [update](/operate/reference/viam-server/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
+**Description:** The `viam-server` [installation](/operate/install/setup/) or [update](/operate/reference/viam-server/manage-viam-server/#update-viam-server) process may have been interrupted partway, with some files either partially-written or missing.
 
-**Solution:** Reinstall `viam-server` following the [installation instructions](/operate/get-started/setup/).
+**Solution:** Reinstall `viam-server` following the [installation instructions](/operate/install/setup/).
 
 ### AppImages require FUSE to run
 
@@ -135,7 +135,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
   It should be listed as `active (running)`.
 
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
-  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/operate/get-started/setup/), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
+  - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/operate/install/setup/), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
     Depending on your board's specific Linux OS, you might use a command similar to the following to show the 50 most recent log messages from `viam-server`. Run this command from within an `ssh` session to the board:
 
@@ -269,7 +269,7 @@ This can happen when there is a slow internet connection, when the module is try
 
 - Try using a faster internet connection.
 - If you are the module author, consider packaging the module with required dependencies so they don't need to be downloaded on startup.
-  For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/get-started/other-hardware/create-module/#upload-your-module).
+  For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/modules/other-hardware/create-module/#upload-your-module).
 - If the problem persists, try setting the `VIAM_MODULE_STARTUP_TIMEOUT` or `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` environment variables on your machine to a higher value.
   You can set these environment variables when you start `viam-server`, for instance `VIAM_MODULE_STARTUP_TIMEOUT=6m30 VIAM_RESOURCE_CONFIGURATION_TIMEOUT=3m0s viam-server -config example-machine.json`.
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.

@@ -30,7 +30,7 @@ You must have the **Owner** role to be able to grant permissions.
 
 6. Select an {{< glossary_tooltip term_id="organization" text="organization" >}}, a {{< glossary_tooltip term_id="location" text="location" >}}, or a {{< glossary_tooltip term_id="machine" text="machine" >}} as the **Entity** to share.
 
-   Users with access to a location or organization can collaborate on the [machines](/operate/get-started/basics/#what-is-a-machine) within it.
+   Users with access to a location or organization can collaborate on the [machines](/operate/hello-world/quickstart/#machines) within it.
 
 7. Select a role to assign to the user.
 
@@ -96,4 +96,4 @@ You can also revert to an earlier configuration from the History tab.
 If someone updates the configuration and saves it while you are editing, Viam will show you a warning that your configuration is out of date when you try to save.
 {{% /hiddencontent %}}
 
-Machine [configuration](/operate/get-started/supported-hardware/) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](/operate/modules/supported-hardware/) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.

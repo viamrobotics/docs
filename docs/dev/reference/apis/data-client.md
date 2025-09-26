@@ -152,7 +152,7 @@ const dataClient = viamClient.dataClient;
 {{% /tab %}}
 {{% tab name="From within a Module" %}}
 
-See [Use platform APIs from within a module](/operate/get-started/other-hardware/create-module/platform-apis/).
+See [Use platform APIs from within a module](/operate/modules/other-hardware/create-module/platform-apis/).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -21,7 +21,7 @@ You can program your machine to move based on sensor readings or other inputs.
 
 {{% expand "Components configured on your machine." %}}
 
-[Configure your sensing and actuation hardware](/operate/get-started/supported-hardware/) as components of your machine.
+[Configure your sensing and actuation hardware](/operate/modules/supported-hardware/) as components of your machine.
 
 This may include sensors, cameras, motors, bases, arms, gantries, servos, grippers, or other components.
 

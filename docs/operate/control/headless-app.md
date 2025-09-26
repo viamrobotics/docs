@@ -23,7 +23,7 @@ The SDKs each include similar methods to hit Viam's [gRPC API](https://github.co
 
 ## Decide where to run your code
 
-You can run your code directly on the [machine's](/operate/get-started/setup/) single-board computer (SBC), or you can run it from a separate computer connected to the internet or to the same local network as your machine's SBC or microcontroller.
+You can run your code directly on the [machine's](/operate/install/setup/) single-board computer (SBC), or you can run it from a separate computer connected to the internet or to the same local network as your machine's SBC or microcontroller.
 
 ### On a separate computer
 
@@ -88,7 +88,7 @@ Follow the [instructions on the GitHub repository](https://github.com/viamroboti
 
 ## Authenticate
 
-You can find sample connection code on each [machine's](/operate/get-started/setup/) **CONNECT** tab.
+You can find sample connection code on each [machine's](/operate/install/setup/) **CONNECT** tab.
 Select your preferred **Language** to display a code snippet, with connection code as well as some calls to the APIs of the resources you've configured on your machine.
 
 You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.

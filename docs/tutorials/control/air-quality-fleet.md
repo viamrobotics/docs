@@ -48,8 +48,8 @@ You can create one or more machines to measure air quality.
 For each machine, you need the following hardware:
 
 - A [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/get-started/other-hardware/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
-- A single-board computer (SBC) [capable of running `viam-server`](/operate/get-started/setup/)
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/modules/other-hardware/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
+- A single-board computer (SBC) [capable of running `viam-server`](/operate/install/setup/)
 - An appropriate power supply
 
 ## Set up one device for development
@@ -88,7 +88,7 @@ Use the **...** menu next to edit the location name to `Development`, then click
 Connect a PM sensor to a USB port on the machine's SBC.
 Then connect your device to power.
 
-If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/operate/get-started/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) to install a compatible operating system.
+If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/operate/install/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) to install a compatible operating system.
 You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 Enable serial communication so that the SBC can communicate with the air quality sensor.
@@ -97,7 +97,7 @@ For example, if you are using a Raspberry Pi, SSH to it and [enable serial commu
 {{% /tablestep %}}
 {{% tablestep %}}
 
-Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/get-started/basics/#what-is-a-machine) using the button in the top right corner of the **LOCATIONS** tab.
+Add a new [_{{< glossary_tooltip term_id="machine" text="machine" >}}_](/operate/hello-world/quickstart/#machines) using the button in the top right corner of the **LOCATIONS** tab.
 Follow the **Set up your machine part** instructions to install `viam-server` on the machine and connect it to Viam.
 
 When your machine shows as connected, continue to the next step.

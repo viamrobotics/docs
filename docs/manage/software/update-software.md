@@ -15,7 +15,7 @@ Each deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glo
 Unless the `version` field is set to a specific version, updates for that module or package happen automatically.
 
 {{% alert title="Updates for microcontrollers" color="note" %}}
-To update the firmware on your microcontroller, see [Over-the-air updates](/operate/get-started/setup-micro/#configure-over-the-air-updates).
+To update the firmware on your microcontroller, see [Over-the-air updates](/operate/install/setup-micro/#configure-over-the-air-updates).
 {{% /alert %}}
 
 ## Test and update software

@@ -70,7 +70,7 @@ If none of these steps work, reach out to us on the [Community Discord](https://
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-{{% card link="/operate/get-started/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/tutorials/services/plan-motion-with-arm-gripper" noimage="true" %}}
 {{< /cards >}}

@@ -21,7 +21,7 @@ cost: "0"
 ---
 
 If most of your machines use the same setup, you can use a {{< glossary_tooltip term_id="fragment" text="fragment" >}}, like a cookie cutter, to configure the machines in the same way.
-Fragments are a way of sharing and managing [machine configurations](/operate/get-started/supported-hardware/) across multiple machines.
+Fragments are a way of sharing and managing [machine configurations](/operate/modules/supported-hardware/) across multiple machines.
 
 For example, if you have a fleet of rovers that uses the same hardware, you could use a fragment to configure the motors, base component, camera, and all other resources for all rovers.
 If some of the rovers have a slightly different configuration, you can overwrite the configuration for just those {{< glossary_tooltip term_id="resource" text="resources" >}} of those rovers.
@@ -325,7 +325,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Set a module version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/operate/get-started/other-hardware/module-configuration/#module-configuration-details) named `custom-sensor` from the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/operate/modules/other-hardware/module-configuration/#module-configuration-details) named `custom-sensor` from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [

@@ -18,7 +18,7 @@ date: "2024-10-01"
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} exposes an [application programming interface (API)](https://en.wikipedia.org/wiki/API) described through [protocol buffers](https://developers.google.com/protocol-buffers).
 
-The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the machine when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/operate/get-started/supported-hardware/) on your machine.
+The API methods provided by the SDKs for each of these resource APIs wrap gRPC client requests to the machine when you execute your program, providing you a convenient interface for accessing information about and controlling the {{< glossary_tooltip term_id="resource" text="resources" >}} you have [configured](/operate/modules/supported-hardware/) on your machine.
 
 ## Platform APIs
 

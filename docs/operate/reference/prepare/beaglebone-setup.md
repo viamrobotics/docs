@@ -94,6 +94,6 @@ You can find additional assistance in the [Troubleshooting section](/manage/trou
 ## Next steps
 
 {{< cards >}}
-{{% card link="/operate/get-started/supported-hardware/" %}}
+{{% card link="/operate/modules/supported-hardware/" %}}
 {{% card link="/dev/tools/tutorials/" %}}
 {{< /cards >}}

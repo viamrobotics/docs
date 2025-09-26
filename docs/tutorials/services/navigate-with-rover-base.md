@@ -80,7 +80,7 @@ If you are using different hardware, the navigation setup process will be mostly
 
 {{% /alert %}}
 
-Before you start, make sure to create a machine on [Viam](https://app.viam.com) and [install `viam-server`](/operate/get-started/setup/) on your robot.
+Before you start, make sure to create a machine on [Viam](https://app.viam.com) and [install `viam-server`](/operate/install/setup/) on your robot.
 Also, make sure to physically connect your components together to your machine's computer and power it on.
 
 ## Configure the components you need

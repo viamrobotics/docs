@@ -18,7 +18,7 @@ A `fake` camera is a camera model for testing.
 The camera always returns the same image, which is an image of a circle inside a diamond.
 
 {{< alert title="Software requirements" color="note" >}}
-To use this model, you must follow the [Set up an ESP32 guide](/operate/get-started/setup-micro/#build-and-flash-custom-firmware), which enables you to install and activate the ESP-IDF.
+To use this model, you must follow the [Set up an ESP32 guide](/operate/install/setup-micro/#build-and-flash-custom-firmware), which enables you to install and activate the ESP-IDF.
 When you create a new project with `cargo generate`, select the option to include camera module traits when prompted.
 Finish building and flashing custom firmware, then return to this guide.
 {{< /alert >}}

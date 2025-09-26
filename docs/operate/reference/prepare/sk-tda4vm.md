@@ -110,7 +110,7 @@ From the SSH session on the TDA4VM board:
 ## Next steps
 
 {{< cards >}}
-{{% card link="/operate/get-started/supported-hardware/" %}}
+{{% card link="/operate/modules/supported-hardware/" %}}
 {{% card link="/dev/tools/tutorials/" %}}
 {{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}

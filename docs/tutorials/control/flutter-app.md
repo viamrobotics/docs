@@ -43,7 +43,7 @@ As you work through this project you will learn the following:
 
 You do not need any hardware for this tutorial other than a computer running macOS or a 64-bit Linux operating system.
 
-This tutorial assumes you already have a machine [configured](/operate/get-started/setup/).
+This tutorial assumes you already have a machine [configured](/operate/install/setup/).
 
 ## Set up your Flutter development environment
 

@@ -52,11 +52,11 @@ The `lorawan` module supports the following varieties of gateway hardware:
 If you choose the RAK7391:
 
 1. Complete the [RAKPiOS quickstart](https://docs.rakwireless.com/product-categories/software-apis-and-libraries/rakpios/quickstart/) to flash your RAK7391 with an operating system and connect it to the Internet.
-1. [Install `viam-server`](/operate/get-started/setup/).
+1. [Install `viam-server`](/operate/install/setup/).
 
 If you choose a peripheral:
 
-1. Follow our guide to [install `viam-server` on your SBC](/operate/get-started/setup/).
+1. Follow our guide to [install `viam-server` on your SBC](/operate/install/setup/).
 1. Enable SPI on your machine:
 
    ```console

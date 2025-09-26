@@ -42,7 +42,7 @@ Overall, `viam-server` manages:
 ### Start-up
 
 `viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} are loaded on startup.
-`viam-server` handles [dependency](/operate/get-started/other-hardware/create-module/dependencies/) management between resources.
+`viam-server` handles [dependency](/operate/modules/other-hardware/create-module/dependencies/) management between resources.
 
 After start-up, `viam-server` manages:
 
@@ -278,7 +278,7 @@ Enabling debug level logs will take precedence over all logging configuration se
 ## Install `viam-server` without the web UI
 
 {{% alert title="Tip" color="tip" %}}
-The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a computer or SBC guide](/operate/get-started/setup/).
+The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a computer or SBC guide](/operate/install/setup/).
 {{% /alert %}}
 
 If you need to install `viam-server` without the web UI, you can run the following commands.
@@ -455,6 +455,6 @@ Note that this method may not work for versions that are too old, as Homebrew do
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/" %}}
-{{% card link="/operate/get-started/supported-hardware/" %}}
-{{% card link="/operate/get-started/setup/" %}}
+{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/install/setup/" %}}
 {{< /cards >}}

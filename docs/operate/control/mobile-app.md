@@ -24,7 +24,7 @@ flutter pub add viam_sdk
 
 ## Connect to your machine
 
-You can find sample connection code on each [machine's](/operate/get-started/setup/) **CONNECT** tab.
+You can find sample connection code on each [machine's](/operate/install/setup/) **CONNECT** tab.
 Select **Flutter** to display a code snippet with connection code as well as some calls to the APIs of the resources you've configured on your machine.
 
 You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
