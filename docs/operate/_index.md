@@ -26,12 +26,19 @@ To get started, install Viam on any device and integrate your hardware. Then you
 
 <div class="hoveraction">
 
-{{< how-to-expand "Connect devices" "4" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
+{{< how-to-expand "Learn Viam & Installation" "3" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
 {{< cards >}}
 {{% card link="/operate/hello-world/quickstart/" noimage="true" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" noimage="true" %}}
 {{% card link="/operate/install/setup/" noimage="true" %}}
+{{< /cards >}}
+{{< /how-to-expand >}}
+
+{{< how-to-expand "Modules" "3" "BEGINNER-FRIENDLY" "" "build-platform-connect" >}}
+{{< cards >}}
 {{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
 {{% card link="/operate/modules/other-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/control-logic/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
