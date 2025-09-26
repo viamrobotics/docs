@@ -33,6 +33,7 @@ aliases:
   - /modular-resources/upload/
   - /registry/upload/
   - /operate/get-started/other-hardware/
+  - /operate/get-started/other-hardware/create-module/
 ---
 
 If your physical or virtual hardware is not [already supported](/operate/modules/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
