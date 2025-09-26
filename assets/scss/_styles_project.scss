@@ -2630,11 +2630,13 @@ div .filterable > p {
 
 .tablestep > table td,
 .tablestep > table th,
+.tablestep * table * td,
+.tablestep * table * th,
 .expand-content > table td,
 .expand-content > table th {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  border-top: 1px solid #e4e4e6;
 }
 
 .expand-content > table {
@@ -3583,6 +3585,7 @@ li.active-path.tutorial-heading > a {
 .td-content > table td,
 .td-content table td,
 .td-box .row.section > table td {
+  border-top: 1px solid #e4e4e6;
   border-right: 1px solid #e4e4e6;
   border-left: 1px solid #e4e4e6;
   border-bottom: 1px solid #e4e4e6;
@@ -3658,12 +3661,16 @@ div.tablestep table {
 }
 
 div.tablestep > table th,
-div.tablestep table th {
+.td-content > table th,
+.td-content table th,
+div.tablestep * table * th {
   padding: 0.75rem;
 }
 
 div.tablestep > table td,
-div.tablestep table td {
+.td-content > table td,
+.td-content table td,
+div.tablestep * table * td {
   padding: 0.75rem;
 }
 
@@ -3694,7 +3701,14 @@ div.tablestep table td {
   margin-left: 1rem;
 }
 
-.td-content > ol li {
+.td-content * .expand-content > ul li,
+.td-content * .expand-content > ol li {
+  list-style-position: outside;
+  margin-left: 0rem;
+}
+
+.td-content > ol li,
+.td-content > ul li {
   margin-bottom: 0.5rem;
 }
 
@@ -3705,7 +3719,7 @@ div.tablestep table td {
 /* ensure that, up to a reasonable 4 levels of nesting, including tablesteps, we use distinct ordered list labeling schemes */
 .tablestep ol,
 ol ol {
-  list-style-type: upper-alpha;
+  list-style-type: decimal;
 }
 
 .tablestep ol ol,
