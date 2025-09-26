@@ -62,6 +62,7 @@ jobs:
         pip install pytest
         pip install pytest-asyncio
         pip install numpy
+        pip install pillow
 
 
     - name: Find and list Python files
