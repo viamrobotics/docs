@@ -2558,7 +2558,8 @@ const pipelineId = await dataClient.createDataPipeline(
   'my-pipeline',
   mqlQuery,
   '0 0 * * *'
-  false
+  false,
+  0
 );
 ```
 
