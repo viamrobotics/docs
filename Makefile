@@ -82,6 +82,7 @@ test-python-snippets:
 	@total_files=0; \
 	passed_files=0; \
 	failed_files=0; \
+	failed_file_list=""; \
 	for file in static/include/examples/**/*.py; do \
 		if [ -f "$$file" ]; then \
 			echo "Testing: $$file"; \
@@ -92,6 +93,11 @@ test-python-snippets:
 			else \
 				failed_files=$$((failed_files + 1)); \
 				echo "❌ FAILED: $$file"; \
+				if [ -z "$$failed_file_list" ]; then \
+					failed_file_list="$$file"; \
+				else \
+					failed_file_list="$$failed_file_list $$file"; \
+				fi; \
 			fi; \
 			echo "----------------------------------------"; \
 		fi; \
@@ -101,7 +107,13 @@ test-python-snippets:
 	echo "Total files tested: $$total_files"; \
 	echo "Passed: $$passed_files"; \
 	echo "Failed: $$failed_files"; \
-	echo "Skipped: $$((total_files - passed_files - failed_files))"
+	echo "Skipped: $$((total_files - passed_files - failed_files))"; \
+	if [ $$failed_files -gt 0 ]; then \
+		echo "Failed files:"; \
+		for failed_file in $$failed_file_list; do \
+			echo "  - $$failed_file"; \
+		done; \
+	fi
 
 test-go-snippets:
 	rm -rf static/include/examples/**/.DS_Store
@@ -111,6 +123,7 @@ test-go-snippets:
 	@total_files=0; \
 	passed_files=0; \
 	failed_files=0; \
+	failed_file_list=""; \
 	for file in static/include/examples/**/*.go; do \
 		if [ -f "$$file" ]; then \
 			echo "Testing: $$file"; \
@@ -122,6 +135,11 @@ test-go-snippets:
 			else \
 				failed_files=$$((failed_files + 1)); \
 				echo "❌ FAILED: $$file"; \
+				if [ -z "$$failed_file_list" ]; then \
+					failed_file_list="$$file"; \
+				else \
+					failed_file_list="$$failed_file_list $$file"; \
+				fi; \
 			fi; \
 			echo "----------------------------------------"; \
 		fi; \
@@ -131,7 +149,13 @@ test-go-snippets:
 	echo "Total files tested: $$total_files"; \
 	echo "Passed: $$passed_files"; \
 	echo "Failed: $$failed_files"; \
-	echo "Skipped: $$((total_files - passed_files - failed_files))"
+	echo "Skipped: $$((total_files - passed_files - failed_files))"; \
+	if [ $$failed_files -gt 0 ]; then \
+		echo "Failed files:"; \
+		for failed_file in $$failed_file_list; do \
+			echo "  - $$failed_file"; \
+		done; \
+	fi
 
 test-typescript-snippets:
 	rm -rf static/include/examples/**/.DS_Store
@@ -141,6 +165,7 @@ test-typescript-snippets:
 	@total_files=0; \
 	passed_files=0; \
 	failed_files=0; \
+	failed_file_list=""; \
 	for file in static/include/examples/**/*.ts; do \
 		if [ -f "$$file" ]; then \
 			echo "Testing: $$file"; \
@@ -151,6 +176,11 @@ test-typescript-snippets:
 			else \
 				failed_files=$$((failed_files + 1)); \
 				echo "❌ FAILED: $$file"; \
+				if [ -z "$$failed_file_list" ]; then \
+					failed_file_list="$$file"; \
+				else \
+					failed_file_list="$$failed_file_list $$file"; \
+				fi; \
 			fi; \
 			echo "----------------------------------------"; \
 		fi; \
@@ -160,4 +190,10 @@ test-typescript-snippets:
 	echo "Total files tested: $$total_files"; \
 	echo "Passed: $$passed_files"; \
 	echo "Failed: $$failed_files"; \
-	echo "Skipped: $$((total_files - passed_files - failed_files))"
+	echo "Skipped: $$((total_files - passed_files - failed_files))"; \
+	if [ $$failed_files -gt 0 ]; then \
+		echo "Failed files:"; \
+		for failed_file in $$failed_file_list; do \
+			echo "  - $$failed_file"; \
+		done; \
+	fi
