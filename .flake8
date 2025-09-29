@@ -1,4 +1,4 @@
 [flake8]
-extend-ignore = F704, F821, F401, F841, E125, E117, F403, E999
+extend-ignore = F704, F821, F401, F841, E125, E117, F403, E999, E501, F405
 exclude = .git,build,dist
 max-complexity = 20
