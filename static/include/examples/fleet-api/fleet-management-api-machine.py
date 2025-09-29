@@ -130,13 +130,14 @@ async def main():
 
 
     list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
-    assert len(list_of_machines) == 1
+    len_machines = len(list_of_machines)
+    assert len_machines >= 1
     assert list_of_machines[0].id == MACHINE_ID
 
     new_machine_id = await cloud.new_robot(name="test-robot", location_id=LOCATION_ID)
     assert new_machine_id is not None
     list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
-    assert len(list_of_machines) == 2
+    assert len(list_of_machines) == len_machines + 1
 
     updated_machine = await cloud.update_robot(
       robot_id=new_machine_id,
@@ -147,7 +148,7 @@ async def main():
 
     await cloud.delete_robot(robot_id=new_machine_id)
     list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
-    assert len(list_of_machines) == 1
+    assert len(list_of_machines) == len_machines
 
     viam_client.close()
 
