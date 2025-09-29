@@ -138,8 +138,8 @@ The job scheduler is built into `viam-server` and executes configured jobs accor
 Jobs are configured as part of your machine's configuration. Each job requires the following parameters:
 
 <!-- prettier-ignore -->
-| Parameter  | Type   | Required     | Description                                                      |
-| ---------- | ------ | ------------ | ---------------------------------------------------------------- |
+| Parameter  | Type   | Required     | Description |
+| ---------- | ------ | ------------ | ----------- |
 | `name`     | string | **Required** | Unique identifier for the job within the machine.                |
 | `schedule` | string | **Required** | Schedule specification using unix-cron format or Golang duration. Accepts <ul><li>Unix-cron expressions for time-based scheduling:<ul><li>`"0 */6 * * *"`: Every 6 hours</li><li>`"0 0 * * 0"`: Every Sunday at midnight</li><li>`"*/15 * * * *"`: Every 15 minutes</li><li>`"0 9 * * 1-5"`: Every weekday at 9 AM</li></ul></li><li>Golang duration strings for interval-based scheduling:<ul><li>`"5m"`: Every 5 minutes</li><li>`"1h"`: Every hour</li><li>`"30s"`: Every 30 seconds</li><li>`"24h"`: Every 24 hours</li></ul></li></ul>Job schedules are evaluated in the machine's local timezone. |
 | `resource` | string | **Required** | Name of the target resource (component or service).               |

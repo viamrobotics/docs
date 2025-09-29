@@ -49,7 +49,7 @@ For more detailed information, see [Reuse configuration](/manage/fleet/reuse-con
 
 1.  Click the **+** button to add drivers for your hardware resources and any other resources you want to use with your control logic.
     For more information, see [Supported hardware](/operate/modules/supported-hardware/).
-1.  If you created a [control logic module](/manage/software/control-logic/), add it to your machine.
+1.  If you created a [control logic module](/operate/modules/control-logic/), add it to your machine.
 
     {{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="shadow" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
 

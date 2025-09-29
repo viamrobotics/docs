@@ -248,16 +248,12 @@ Replace `<ORGANIZATION-ID>` with your organization ID, which resembles: `a12b3c4
 
 ```sh {class="command-line" data-prompt="$" data-output="4-10"}
 viam module generate --language python --model-name game-logic \
-  --name hello-world-game-py --public-namespace <ORGANIZATION-ID>
+  --name hello-world-game-py --public-namespace <ORGANIZATION-ID> \
+  --resource-subtype=button
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
-
-A UI appears.
-Press Enter to confirm each option.
-
-For **Select a resource to be added to the module**, select **Button Component**
 
 {{% /tablestep %}}
 {{% tablestep %}}
