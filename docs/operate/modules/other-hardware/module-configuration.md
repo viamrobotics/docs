@@ -71,8 +71,6 @@ See [module configuration](#module-configuration-details).
 
 The following properties are available for modular resources:
 
-Can only contain letters, numbers, dashes, and underscores
-
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
