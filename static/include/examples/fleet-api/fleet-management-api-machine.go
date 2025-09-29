@@ -241,8 +241,8 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(listOfMachines) != 1 {
-		logger.Fatal("Expected 1 machine")
+	if len(listOfMachines) >= 1 {
+		logger.Fatal("Expected more than 1 machine")
 	}
 	if listOfMachines[0].ID != MACHINE_ID {
 		logger.Fatal("Machine ID mismatch")
