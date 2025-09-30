@@ -37,7 +37,7 @@ aliases:
       <div class="cards max-page">
         <div class="front-card-container">
           <div class="hover-card primary">
-            <a href="/operate/install/setup/" class="noanchor">
+            <a href="/operate/hello-world/quickstart/" class="noanchor">
             <div>
               <p>Get started</p>
             </div>
