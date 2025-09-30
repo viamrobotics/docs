@@ -104,7 +104,7 @@ You must at least specify a `fragment_id`.
     "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
     "hotspot_prefix": "<PREFIX>", # machine creates a hotspot with prefix-hostname during setup
     "disable_captive_portal_redirect": false, # set to true if using a mobile app
-    "hotspot_password": "<PASSWORD>", # password for the hotspot
+    "hotspot_password": "<PASSWORD>", # password for the WiFi or bluetooth hotspot
     "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
     "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
     "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for Bluetooth tethering) without requiring an unlock command from a mobile app.
@@ -156,7 +156,7 @@ It also configures timeouts to control how long `viam-agent` waits for a valid l
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the Bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
-| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Be aware that if you do not set a custom password this may be a security risk. Default: `"viamsetup"`. |
+| `hotspot_password` | string | Optional | Depending on the provisioning method, this is either the Wifi password or bluetooth connection password for the provisioning hotspot. **Important:** When provisioning devices with the Viam mobile app, the password must currently be `"viamsetup"`. Be aware that if you do not set a custom password this may be a security risk. Default: `"viamsetup"`. |
 | `disable_captive_portal_redirect` | boolean | Optional | By default, all DNS lookups are redirected to the "sign in" portal, which can cause mobile devices to automatically display the portal. When set to true, only DNS requests for domains ending in .setup, like `viam.setup` are redirected, preventing the portal from appearing unexpectedly, especially convenient when using a mobile app for provisioning. Default: `false`. |
 | `disable_bt_provisioning` | boolean | Optional | When set to true, disables Bluetooth provisioning. The machine will not advertise Bluetooth services for provisioning. Default: `false`. |
 | `disable_wifi_provisioning` | boolean | Optional | When set to true, disables WiFi hotspot provisioning. The machine will not create a WiFi hotspot for provisioning. Default: `false`. |
@@ -537,13 +537,17 @@ You can support any number of these options.
 | **WiFi** | Ask the user to connect to the machine's temporary WiFi hotspot. The user then provides network credentials for an internet-connected WiFi network, through which machine setup can then occur. Slower than Bluetooth with WiFi but faster than Bluetooth tethering. | [Example](https://github.com/viamrobotics/viam_flutter_hotspot_provisioning_widget) |
  | **Bluetooth tethering** | Ask the user to connect to the machine over Bluetooth. The user shares their mobile device's internet with the machine over Bluetooth. Slowest provisioning method. | [Example](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget/) |
 
+{{< alert title="Tip" color="tip" >}}
+If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
+{{< /alert >}}
+
 ### The Viam mobile app
 
 The Viam mobile app allows end users to create a new machine in the app, and `viam-agent` will then install `viam-server` and run it with the configuration provided by the `fragment_id` in the defaults file.
 If you choose to use the Viam mobile app, you must provide a {{< glossary_tooltip term_id="fragment" text="fragment" >}} for provisioning.
 
-{{< alert title="Tip" color="tip" >}}
-If you are not using Flutter or TypeScript and would like to use provisioning, please [contact us](mailto:support@viam.com).
+{{< alert title="Caution" color="caution" >}}
+Currently, if you are using Bluetooth provisioning, you must leave `hotspot_password` as the default value `viamsetup`.
 {{< /alert >}}
 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}

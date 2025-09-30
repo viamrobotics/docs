@@ -954,7 +954,8 @@ Create a file called <FILE>viam-defaults.json</FILE> with the following configur
     "model": "v1",
     "fragment_id": "<FRAGMENT-ID>",
     "hotspot_prefix": "air-quality",
-    "hotspot_password": "WeLoveCleanAir123"
+    "hotspot_password": "WeLoveCleanAir123",
+    "disable_bt_provisioning": true
   }
 }
 ```
