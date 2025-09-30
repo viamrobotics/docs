@@ -283,7 +283,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `bluetooth_trust_all` | boolean | Optional | Set to true to accept all Bluetooth pairing requests (which is only needed for Bluetooth tethering) without requiring an unlock command from a mobile app. Default: `false`. |
 | `fragment_id` | string | Optional | The `fragment_id` of the fragment to configure machines with. Required when using Bluetooth or the Viam mobile app for provisioning. The Viam mobile app uses the fragment to configure the machine. |
 | `hotspot_interface` | string | Optional | The interface to use for hotspot/provisioning/wifi management. Example: `"wlan0"`. Default: first discovered 802.11 device. |
-| `hotspot_password` | string | Optional | The Wifi password for the provisioning hotspot. Default: `"viamsetup"`. |
+| `hotspot_password` | string | Optional | Depending on the provisioning method, this is either the Wifi password or bluetooth connection password for the provisioning hotspot. **Important:** When provisioning devices with the Viam mobile app, the password must currently be `"viamsetup"`. Be aware that if you do not set a custom password this may be a security risk. Default: `"viamsetup"`. |
 | `hotspot_prefix` | string | Optional | `viam-agent` will prepend this to the hostname of the device and use the resulting string for the provisioning hotspot SSID or the Bluetooth device name(`<hotspot_prefix>-<hostname>`).  Default: `"viam-setup"`. |
 | `manufacturer` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"viam"`. |
 | `model` | string | Optional | Purely informative. May be displayed on captive portal or provisioning app. Default: `"custom"`. |
