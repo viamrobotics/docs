@@ -387,14 +387,13 @@ Review the output of your program that prints the machine's resources to see you
 Now that you have your mock sub-part connected to your main part under your mock robot, you can control all of your sub-part's components and services with Viam's SDKs.
 
 In your main function, you need to instantiate your mock sub motor.
-Make sure your sub-part's name and motor's name matches what you have configured.
-This code uses the name `SubPart` as a placeholder.
-
+Make sure your motor's name matches what you have configured.
+T
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-motor = Motor.from_robot(robot=machine, name='SubPart:motor2')
+motor = Motor.from_robot(robot=machine, name='motor2')
 ```
 
 {{% /tab %}}
@@ -460,7 +459,7 @@ async def main():
     print('Resources:')
     print(machine.resource_names)
     arm = Arm.from_robot(machine, name='myArm')
-    motor = Motor.from_robot(machine, name='SubPart:motor2')
+    motor = Motor.from_robot(machine, name='motor2')
     await toggleMotor(motor)
     # await randomMovement(arm)
     await machine.close()

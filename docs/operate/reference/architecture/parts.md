@@ -134,7 +134,7 @@ To establish a connection between a part of one machine and a part of a second m
    | `name` |  string | Optional | The name of the remote part. |
    | `address` |  string | Optional | The address of the remote part. |
    | `auth` | string | Object | The authentication credentials of the remote part. For example: `{ "credential": { "type": "api-key", "payload": "abcdefghijklmnop123456789abcdefg" } }`. |
-   | `prefix` | string | Optional | If set, all resource names fetched from the remote part will have the prefix. For example, a component with the name `arm-1` configured on a remote part with the configuration `"prefix": "test123"` returns the name `test123arm-1`. |
+   | `prefix` | string | Optional | If set, all resource names fetched from the remote part have the prefix. For example, a component with the name `arm-1` configured on a remote part with the configuration `"prefix": "test123"` returns the name `test123arm-1`. |
    | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this remote part. |
 
 1. Click **Save** in the upper right corner of the page to save your config.
@@ -142,30 +142,19 @@ To establish a connection between a part of one machine and a part of a second m
 ## Using remote parts and sub-parts with the Viam SDKs
 
 Once your sub-part or remote part is configured, you can access all the components and services configured on the sub-part or remote machine part as though they were resources of your main machine part.
-The only difference is that the names of the components have the remote machine part name prepended to them.
-For example, instead of calling
+The only difference is if the remote machine part has a configured prefix.
+If there is a prefix, you must prepend it to the resource name:
+
+For example, to access a servo called `my_servo` on a sub-part or a remote without configured `prefix`, you need to call:
 
 ```python
 servo = Servo.from_robot(robot=robot, name='my_servo')
 ```
 
-you need to call
-
-{{< tabs >}}
-{{% tab name="Sub-part" %}}
+For a remote part with a `prefix` `my_remote`, instead use:
 
 ```python
-servo = Servo.from_robot(robot=robot, name='my-sub-part-name:my_servo')
+servo = Servo.from_robot(robot=robot, name='my_remotemy_servo')
 ```
-
-{{% /tab %}}
-{{% tab name="Remote Part" %}}
-
-```python
-servo = Servo.from_robot(robot=robot, name='my-other-robot-main:my_servo')
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 For an example that controls a motor that is a component of a sub-part, see [the Mock Robot tutorial](/tutorials/configure/build-a-mock-robot/#control-a-sub-part-using-the-viam-sdk).
