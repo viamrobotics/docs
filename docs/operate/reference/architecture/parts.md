@@ -135,6 +135,7 @@ To establish a connection between a part of one machine and a part of a second m
    | `address` |  string | Optional | The address of the remote part. |
    | `auth` | string | Object | The authentication credentials of the remote part. For example: `{ "credential": { "type": "api-key", "payload": "abcdefghijklmnop123456789abcdefg" } }`. |
    | `prefix` | string | Optional | If set, all resource names fetched from the remote part will have the prefix. For example, a component with the name `arm-1` configured on a remote part with the configuration `"prefix": "test123"` returns the name `test123arm-1`. |
+   | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this remote part. |
 
 1. Click **Save** in the upper right corner of the page to save your config.
 
