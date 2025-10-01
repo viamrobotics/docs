@@ -1731,6 +1731,12 @@ img.frame {
 
 .relatedcard {
   display: flex;
+  border-radius: 4px !important;
+  margin: 0.25rem;
+}
+
+.relatedcard.green {
+  background-color: #e6f7e6;
 }
 
 .relatedcard a {

@@ -3,10 +3,11 @@
 {{ $required := .Get "required" }}
 {{ $alt_title := .Get "alt_title" }}
 {{ $alt_link := .Get "alt_link" }}
+{{ $highlight := .Get "highlight" }}
 
 {{ if site.GetPage ($link | string) }}
   {{ with site.GetPage ($link | string) }}
-    <div class="relatedcard">
+    <div class="relatedcard {{ if $highlight }}{{ $highlight }}{{ end }}">
       <a href="{{ with $alt_link }}{{ $alt_link }}{{ else }}{{ $linkWithSlash }}{{ end }}" target="_blank" title="{{ with $alt_title }}{{ $alt_title }}{{ else }}{{ .LinkTitle }}{{ end }}">
           {{ if .Params.icon }}
             {{ partial "imgproc.html" (dict "src" (index .Params.images 0) "resize" "10x10" "alt" (.Params.linkTitle) "declaredimensions" "true" "style" "") }}
