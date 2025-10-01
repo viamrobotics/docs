@@ -630,7 +630,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `componentName` [(resource.Name)](https://pkg.go.dev/go.viam.com/rdk/resource#Name): The `resource.Name` of the piece of the machine whose pose is returned.
+- `componentName` [(string)](https://pkg.go.dev/builtin#string): The `resource.Name` of the piece of the machine whose pose is returned.
 - `destinationFrame` [(string)](https://pkg.go.dev/builtin#string): The name of the frame with respect to which the component's pose is reported.
 - `supplementalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): An optional list of `LinkInFrame`s.
   A `LinkInFrame` represents an additional frame which is added to the machine's frame system.
