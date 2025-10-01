@@ -9,6 +9,7 @@ description: "Troubleshooting tips and best practices for installing and using v
 aliases:
   - /operate/reference/viam-micro-server/viam-micro-server-setup/
   - /operate/reference/viam-micro-server/micro-troubleshooting/
+  - /operate/get-started/setup-micro/micro-troubleshooting/
 # date: "2024-10-07"
 # updated: ""  # When the content was last entirely checked
 ---

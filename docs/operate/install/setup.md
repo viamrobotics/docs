@@ -22,6 +22,7 @@ aliases:
   - /getting-started/linux-install/
   - /installation/
   - /get-started/installation/
+  - /operate/get-started/setup/
 ---
 
 Get started by installing [`viam-server`](/operate/reference/viam-server/), the open-source software that drives your hardware and connects your device to the cloud.
