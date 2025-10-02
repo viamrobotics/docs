@@ -23,24 +23,28 @@ The flexibility means you can, at any point, swap out hardware, change logic, or
 
 To accomplish this, you must adopt a _modular_ way of thinking.
 
-At the beginning of a project, you must identify the building blocks of your project.
-Then you can build a prototype with mock resources or real resources.
-The next step is to write control logic for your project.
-Finally, you iterate and swap any mock resources out for real ones and make improvements.
+{{< alert title="You will learn about" color="note" >}}
+
+1. [Identifying the building blocks for your project](#step-1-identify-the-building-blocks).
+1. [Starting with a minimal prototype](#step-2-start-with-a-minimal-prototype)
+1. [Adding your control logic](#step-3-add-your-control-logic)
+1. [Iterating](#step-4-iterate)
+1. [Considering resource constraints and scaling](#step-5-consider-resource-constraints-and-scaling)
+1. [Building a UI](#step-6-build-a-ui)
+1. [Scaling and production](#step-7-scaling-and-production)
+
+{{< /alert >}}
 
 This guide will walk you through the high-level process of designing a machine.
-We strongly recommend you follow the [Desk Safari Tutorial](/operate/hello-world/tutorial-desk-safari/), before continuing.
+At the end of each step of the guide, you'll learn how to apply the step to a fictional example project: the **wood sanding project**.
+
+The following steps will teach you _how to approach_ building machines.
+If you are looking to build your first example machine, we recommend you follow the [Desk Safari Tutorial](/operate/hello-world/tutorial-desk-safari/).
 
 ## Step 1: Identify the building blocks
 
-Imagine you are building a project to sand wood.
-You want to use one or more robotic arms to do the sanding and cameras or possibly LiDAR to identify where to sand.
-That covers the hardware for the project.
-
-For the software side, you'll want something to identify the areas to sand.
-A common technique for sanding is to draw or write something on a piece of wood and sand until you can no longer see the pencil marks.
-
-This is enough to get started with identifying the main building blocks.
+When building a project, it's easiest to start by identifying the hardware and software you know you will need.
+This will allow you to identify the main building blocks of your project.
 
 {{< table >}}
 {{< tablestep start=1 >}}
@@ -48,7 +52,7 @@ This is enough to get started with identifying the main building blocks.
 <p><strong>Consider the hardware you need.</strong></p>
 <p>In Viam, hardware components are <em>components</em>.
 To start with the minimum amount of hardware, begin with one robotic arm, one end effector, and one camera.</p>
-<p>Viam has the following types of components:</p>
+<p>Review the following list of components and consider which components you may need. If in doubt, click on the component to review its API to understand what the component does.</p>
 
 {{< cards >}}
 {{% relatedcard link="/dev/reference/apis/components/arm/" highlight="green" %}}
@@ -69,12 +73,18 @@ To start with the minimum amount of hardware, begin with one robotic arm, one en
 {{% relatedcard link="/dev/reference/apis/components/switch/" %}}
 {{< /cards >}}
 
-<p>Your hardware needs can be translated into the following components:</p>
+<p><b>Wood sanding project:</b>
+Imagine you are building a project to sand wood.
+You want to use one or more robotic arms to do the sanding and cameras or possibly LiDAR to identify where to sand.</p>
+
+<p>The hardware needs for the sanding project can be translated into the following components:</p>
 <ul>
 <li>one arm</li>
 <li>one gripper for the end effector</li>
 <li>one camera</li>
 </ul>
+
+<p>That covers the hardware for the project.</p>
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -83,15 +93,16 @@ To start with the minimum amount of hardware, begin with one robotic arm, one en
 Each piece of hardware in a project is a component, but not every component represents a piece of hardware.
 Sometimes a component is just software that uses the same API endpoints as a physical component might.
 
-Let's say you also want a button to start and stop sanding.
+**Wood sanding project:** Let's say you also want a button to start and stop sanding.
 You don't need to decide at this point whether the button is physical or software.
-For now, let's just plan for a button using the button component.
+For now, let's just add a button component to the list of components for the project.
 
 {{% /tablestep %}}
 {{< tablestep >}}
 
 <p><strong>Consider the services you need.</strong></p>
 <p>In Viam, <em>services</em> do more complex work such as motion planning or machine learning.</p>
+<p>Review the following list of services and consider which services you may need. If in doubt, click on the service to review its API to understand what the service does.</p>
 
 {{< cards >}}
 {{% relatedcard link="/dev/reference/apis/services/data/" %}}
@@ -104,7 +115,7 @@ For now, let's just plan for a button using the button component.
 {{% relatedcard link="/dev/reference/apis/services/base-rc/" %}}
 {{< /cards >}}
 
-<p>To get the arm to move, you'll want the motion service. To identify where to sand, you'll need a vision service that can detect colors, or an appropriate machine learning model.</p>
+<p><strong>Wood sanding project:</strong> You'll need the motion service to move the arm. To identify where to sand, you'll need a vision service that can detect colors. Many vision services use a machine learning mode, so we may need one as well to support the vision service in identifying where to sand.</p>
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -259,6 +270,24 @@ Only modules marked as "built-in" or starting with `viam:` are officially suppor
 
 {{% /expand %}}
 
+**Wood sanding project:**
+You might start with a `webcam` camera component and any webcam you have that works with your computer.
+Assuming you don't have a robotic arm and button at hand, let's configure those as mock resources in the next step.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Use mock resources.**
+
+If you cannot find a model that supports your specific hardware, start with the `fake` model for that component.
+The `fake` model is a mock model for testing that provides the same UI as real physical components.
+
+More importantly, it exposes the same API methods and returns mock data for testing.
+
+**Wood sanding project:**
+You would add a `fake` arm and a `fake` button to mock the resources you don't have implemented resources for yet.
+
+{{< imgproc src="/tutorials/building/control-tab.png" class="imgzoom shadow" alt="A machine control tab with a fake component" resize="1000x" >}}
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **Use available services.**
@@ -277,54 +306,34 @@ If you cannot find suitable services, skip the service for now.
 
 You can search all the available services in the Viam web UI when adding resources.
 
-{{% /tablestep %}}
-{{% tablestep %}}
-**Use mock resources.**
+**Wood sanding project:** To find a suitable vision service, you'd look through the available vision services.
+There is a [`color_detector` vision service](/operate/reference/services/vision/color_detector/) which you could use to detect the pencil color on wood.
+You could also look for or create a machine learning model that recognizes drawing on wood.
 
-If you cannot find a model that supports your specific hardware, start with the `fake` model for that component.
-The `fake` model is a mock model for testing that provides the same UI as real physical components.
-
-More importantly, it exposes the same API methods and returns mock data for testing.
-
-{{< imgproc src="/tutorials/building/control-tab.png" alt="The Control tab with the fake arm and motor components." resize="600x" >}}
+The motion service is built in.
+To use it you would follow the motion service docs to set it up with your arm.
 
 {{% /tablestep %}}
 {{< /table >}}
 
-## Step 3: Consider resource constraints and scaling
-
-You can use {{< glossary_tooltip term_id="part" text="parts" >}} to chain multiple computers together to build complex machines with Viam.
-
-If you are dealing with resource constraints or need to use a specific operating system for some hardware or software, you can add sub-parts to your machine.
-
-If your project requires multiple machines to collaborate, you can use a remote part to share certain resources across the different machines, such as a camera that provides an overview for all machines.
-
-For more information, read [Machine architecture: Parts](/operate/reference/architecture/parts/).
-
-## Step 4: Add your control logic
+## Step 3: Add your control logic
 
 With your prototype setup, you can now start writing the control logic for the machine.
 To do that, you'll create a module with a resource that will access and control your components and services.
 You can use any component or service API that fits.
 Often, people use the `DoCommand` method for control logic.
 
-For the sanding machine, the logic might look like this:
+For a step-by-step guide, see [Run control logic](/operate/modules/control-logic/).
+
+**Wood sanding project:**
+The control logic for the project might look like this:
 
 - Check vision service for detections of the color of the pencil markings on the wood
-- Use a LiDAR camera to identify the location of the surface to be sanded in 3D space
+- Use a webcam camera to identify the location of the surface to be sanded in 2D space
 - Use the motion service to calculate a plan for the arm and the attached end effector with sanding paper to move around the area that needs sanding
 - Repeat
 
-For a step-by-step guide, see [Run control logic](/operate/modules/control-logic/).
-
-## Step 5: Build a UI
-
-Most projects benefit from a UI, even if just to adjust settings.
-Viam provides SDKs for creating web and mobile applications.
-
-You can deploy a static web application as a [Viam application](/operate/control/viam-applications/), where Viam manages hosting infrastructure and authentication for you.
-
-## Step 6: Iterate
+## Step 4: Iterate
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -334,14 +343,26 @@ If there is no existing resource that suits your needs and you used `fake` resou
 Often you can do this by wrapping an existing library.
 See [Create a module](/operate/modules/other-hardware/create-module/) for more information.
 
+**Wood sanding project:**
+At this point, you would write a module for the button to start and stop sanding and integrate it with your control logic.
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **Swap hardware components.**
 
 The engineering cost of changing hardware is relatively low, due to the standardized API.
-If you change the robotic arm, you will need to change the model and configuration.
+If you change a component, you will need to change the model and configuration.
 Crucially, you should not need to update your control logic unless you use non-standardized `DoCommand` methods.
 If you do use `DoCommand` methods, you may need to update or wrap them.
+
+**Wood sanding project:**
+At this point in the project you should be getting an idea of the feasibility of the project.
+Since arms can be expensive, you may consider buying a cheap model first and trialing wiping drawings on a whiteboard.
+Once you're ready to invest, you can swap to a different arm model.
+
+You might also want to consider adding a LiDAR camera.
+With a webcam you can identify where to sand in a 2 dimensional space but you have to come up with the third coordinate for the sanding, possibly by hardcoding it.
+Adding a LiDAR camera, would allow you to identify where to sand in 3D space rather than in 2D space.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -353,26 +374,68 @@ You can change the ML model service, the model, and the vision service by removi
 Again, you should not need to update your control logic unless you use non-standardized `DoCommand` methods.
 If you do use `DoCommand` methods, you may need to update or wrap them.
 
+**Wood sanding project:**
+This is where you'd probably test if the `color_detector` vision service is good enough for the project.
+If not you might need to swap it for another vision service.
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **Manage resource configurations efficiently.**
 
 As you iterate, you may find that you want to save configurations of resources for future use or for reuse across different machines.
-Fragments are reusable configuration blocks that make tasks like switching between different arms or adding an arm to different machines easier.
+Fragments are reusable configuration blocks that make tasks like switching between different resources or adding a configured resource to different machines easier.
 
 To view and create fragments, see the [**FRAGMENTS**](https://app.viam.com/fragments) tab.
 
+**Wood sanding project:**
+Your arm configurations are likely to have a lot of parameters that configure where your arm is in 3D space.
+If you want to try different arms, or use the arm for different project, we recommend saving the reusable blocks of the configuration as a fragment.
+
 {{% /tablestep %}}
 {{< /table >}}
+
+## Step 5: Consider resource constraints and scaling
+
+You can use {{< glossary_tooltip term_id="part" text="parts" >}} to chain multiple computers together to build complex machines with Viam.
+
+If you are dealing with resource constraints or need to use a specific operating system for some hardware or software, you can add sub-parts to your machine.
+
+If your project requires multiple machines to collaborate, you can use a remote part to share certain resources across the different machines, such as a camera that provides an overview for all machines.
+
+**Wood sanding project:**
+If you want multiple arms for the sanding project, you may require multiple computers to drive the arms.
+In that case, you can set them up as sub-parts.
+
+Read [Machine architecture: Parts](/operate/reference/architecture/parts/) for more information.
+
+## Step 6: Build a UI
+
+Most projects benefit from a UI, even if just to adjust settings.
+Viam provides SDKs for creating web and mobile applications.
+
+You can deploy a static web application as a [Viam application](/operate/control/viam-applications/), where Viam manages hosting infrastructure and authentication for you.
+
+**Wood sanding project:**
+You might consider a UI that shows the webcam's view of the surface to be sanded, as well as information about the motion plan for sanding.
+If you decide to start and stop sanding with the UI, this is also where you might call the button from.
 
 ## Step 7: Scaling and production
 
 If you intend to ship machines, Viam provides the following features:
 
 - [**Provisioning**](/manage/fleet/provision/setup/): ship machines with a preconfigured setup so customers can connect them to the internet and get them up and running
-- [**Machine settings**](/manage/fleet/system-settings/): manage operating system package updates, network configuration, and system-level logging
 - [**Remote monitoring**](/manage/troubleshoot/monitor/): monitor, operate, and troubleshoot machines from anywhere in the world
+- [**Machine settings**](/manage/fleet/system-settings/): manage operating system package updates, network configuration, and system-level logging
 - [**Billing**](/manage/manage/white-labelled-billing/): bill customers for usage through the Viam platform
+
+**Wood sanding project:**
+A sanding project might be bespoke enough that you will install it for your customers, so you may not require provisioning.
+
+Remote monitoring means you will be able to check on your clients' machines, perform update, and troubleshoot should they need help.
+
+You probably do want to configure operating system package updates to ensure the machines update as you expect them to.
+
+The billing setup might be to charge end-customers a fixed cost per machine alongside usage cost.
 
 ## Next steps
 
