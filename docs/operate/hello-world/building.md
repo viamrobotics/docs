@@ -101,7 +101,8 @@ For now, let's just add a button component to the list of components for the pro
 {{< tablestep >}}
 
 <p><strong>Consider the services you need.</strong></p>
-<p>In Viam, <em>services</em> do more complex work such as motion planning or machine learning.</p>
+<p>While components mostly operate hardware, <em>services</em> do more complex work such as motion planning or machine learning.
+Services often operate on components.</p>
 <p>Review the following list of services and consider which services you may need. If in doubt, click on the service to review its API to understand what the service does.</p>
 
 {{< cards >}}
@@ -115,7 +116,13 @@ For now, let's just add a button component to the list of components for the pro
 {{% relatedcard link="/dev/reference/apis/services/base-rc/" %}}
 {{< /cards >}}
 
-<p><strong>Wood sanding project:</strong> You'll need the motion service to move the arm. To identify where to sand, you'll need a vision service that can detect colors. Many vision services use a machine learning mode, so we may need one as well to support the vision service in identifying where to sand.</p>
+<p><strong>Wood sanding project:</strong> For the software side, you'll want something to identify the areas to sand.
+A common technique for sanding is to draw or write something on a piece of wood and sand until you can no longer see the pencil marks.
+
+To identify where to sand, you can use a vision service that can detect the color of the pencil marks.
+Many vision services use a machine learning mode, so we may need one as well to support the vision service in identifying where to sand.
+
+For moving the arm, you can use the motion service.</p>
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -320,8 +327,29 @@ To use it you would follow the motion service docs to set it up with your arm.
 
 With your prototype setup, you can now start writing the control logic for the machine.
 To do that, you'll create a module with a resource that will access and control your components and services.
-You can use any component or service API that fits.
 Often, people use the `DoCommand` method for control logic.
+
+```python {class="line-numbers linkable-line-numbers" data-line=""}
+    async def on_loop(self):
+        self.logger.info("Executing control logic")
+        sensor_value = self.sensor.get_readings()
+        if sensor_value > 0.6:
+            perform_special_action()
+
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        result = {key: False for key in command.keys()}
+        for name, args in command.items():
+            if name == "action" and args == "run_control_logic":
+                await self.on_loop()
+                result[name] = True
+        return result
+```
 
 For a step-by-step guide, see [Run control logic](/operate/modules/control-logic/).
 
