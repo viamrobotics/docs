@@ -1,16 +1,18 @@
 ---
-title: "White-labelled Billing"
-linkTitle: "White-labelled Billing"
+title: "White-labeled Billing"
+linkTitle: "White-labeled Billing"
 weight: 70
 layout: "docs"
 type: "docs"
-description: "Set up white-labelled billing."
+description: "Set up white-labeled billing."
 images: ["/operate/wlbilling.png"]
 date: "2025-01-31"
+aliases:
+  - /manage/manage/white-labeled-billing
 ---
 
 You can use Viam to bill your customers using your own logo.
-This guide will show you how to set up white-labelled billing.
+This guide will show you how to set up white-labeled billing.
 Once set up:
 
 - You will have a branded billing dashboard for each org
@@ -200,8 +202,8 @@ This configuration charges customers every 12 months, with upfront payment:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-month-attributes). If specified, you cannot also specify `cost_per_year`. Default: `{}` (all machines cost `0`). |
-| `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labelled-billing/#click-to-view-cost-per-year-attributes). If specified, you cannot also specify `cost_per_month`. Default: `{}` (all machines cost `0`). |
+| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labeled-billing/#click-to-view-cost-per-month-attributes). If specified, you cannot also specify `cost_per_year`. Default: `{}` (all machines cost `0`). |
+| `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labeled-billing/#click-to-view-cost-per-year-attributes). If specified, you cannot also specify `cost_per_month`. Default: `{}` (all machines cost `0`). |
 | `tier_name` | string | **Required** | The name of the billing tier. |
 | `description` | string | Optional | Description for the billing tier. Default: `""`. |
 | `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |

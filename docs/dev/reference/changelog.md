@@ -85,7 +85,7 @@ For an example implementation, see the [Flutter Provisioning package](https://gi
 {{% changelog color="added" title="Annual billing support for subscription billing model" date="2025-07-23" %}}
 
 You can now configure annual billing alongside monthly billing options for your organizations.
-See [white-labelled billing documentation](/manage/manage/white-labelled-billing/) for configuration details.
+See [white-labeled billing documentation](/manage/manage/white-labeled-billing/) for configuration details.
 
 {{% /changelog %}}
 
@@ -366,9 +366,9 @@ Instead [use modules for control logic](/operate/modules/control-logic/#add-cont
 
 {{% /changelog %}}
 
-{{% changelog color="added" title="White labelled billing and custom pricing" date="2025-02-01" %}}
+{{% changelog color="added" title="White labeled billing and custom pricing" date="2025-02-01" %}}
 
-You can now [set custom pricing](/manage/manage/white-labelled-billing/) for your organizations and add your logo to invoices and other billing materials.
+You can now [set custom pricing](/manage/manage/white-labeled-billing/) for your organizations and add your logo to invoices and other billing materials.
 
 {{% /changelog %}}
 
