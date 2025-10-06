@@ -99,28 +99,6 @@ The Motion service has a method that can get the _pose_ of a component relative 
 In the tutorial where we interacted with an arm component, we used the `GetEndPosition` method to determine the pose of the end effector of `myArm`.
 The `GetPose` method provided by the motion service serves a similar function to `GetEndPosition`, but allows for querying of pose data with respect to other elements of the robot (such as another component or the robot's fixed "world" frame).
 
-### Get the `ResourceName`
-
-When you use the [arm API](/dev/reference/apis/components/arm/#api), you call methods on your arm component itself.
-To use the [motion service API](/dev/reference/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
-
-Add the following to the section of your code where you access the arm:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.arm-resource-name-from-robot.py" lang="py" class="line-numbers linkable-line-numbers" >}}
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.arm-resource-name-from-robot.go" lang="go" class="line-numbers linkable-line-numbers" >}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Now you are ready to run a motion service method on your arm.
-
 {{< tabs >}}
 {{% tab name="Python" %}}
 Note the use of a hardcoded literal "world" in the following code example.
@@ -130,6 +108,15 @@ Any components that have frame information (and, as a result, are added to the f
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+When you use the [arm API](/dev/reference/apis/components/arm/#api), you call methods on your arm component itself.
+To use the [motion service API](/dev/reference/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
+
+Add the following to the section of your code where you access the arm:
+
+{{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.arm-resource-name-from-robot.go" lang="go" class="line-numbers linkable-line-numbers" >}}
+
+Now you are ready to run a motion service method on your arm.
+
 Note the use of `referenceframe.World` in the following code example.
 This is a constant string value in the RDK's `referenceframe` library that is maintained for user and programmer convenience.
 Any components that have frame information (and, as a result, are added to the frame system) are connected to the "world".
@@ -240,16 +227,10 @@ We need to do several things to prepare a new gripper component for motion.
 
 Because the new gripper component is "attached" (with the parent specification in the Frame) to `arm-1`, we can produce motion plans using `gripper-1` instead of `arm-1`.
 
-The last library you must import is the `gripper` library.
-
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Add the following line to your import list:
-
-{{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.gripper-resource-name-from-robot.py" lang="py" class="line-numbers linkable-line-numbers" >}}
-
-Then add this code to your `main()`:
+Add this code to your `main()`:
 
 {{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.move-gripper-to-pose.py" lang="py" class="line-numbers linkable-line-numbers" >}}
 

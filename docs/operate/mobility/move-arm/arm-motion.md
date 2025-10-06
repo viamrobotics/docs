@@ -87,14 +87,14 @@ You'll now add to the code to describe the geometry of the arm's environment and
    {{% /tab %}}
    {{< /tabs >}}
 
-1. Within your main function, get the `ResourceName` (Python) or `resource.Name` (Go) of the arm you want to move.
+1. Within your main function, specify the name (Python) or get the `resource.Name` (Go) of the arm you want to move.
    Replace `"my_arm"` with the name of your arm in your machine's configuration:
 
    {{< tabs >}}
    {{% tab name="Python" %}}
 
    ```python {class="line-numbers linkable-line-numbers"}
-   arm_resource_name = Arm.get_resource_name("my_arm")
+   arm_resource_name = "my_arm"
    ```
 
    {{% /tab %}}
@@ -221,7 +221,7 @@ transforms = [
     Transform(
         reference_frame="markerTransform",
         pose_in_observer_frame=PoseInFrame(
-            reference_frame="my_arm",
+            reference_frame=arm_resource_name,
             pose=Pose(x=0, y=0, z=80, o_x=0, o_y=0, o_z=1, theta=0)),
         physical_object=marker_geometry)
 ]
@@ -438,7 +438,6 @@ async def connect():
 async def main():
     machine = await connect()
 
-    arm_resource_name = Arm.get_resource_name("my_arm")
     motion_service = MotionClient.from_robot(machine, "builtin")
 
     box_origin = Pose(x=400, y=0, z=50)
@@ -484,7 +483,7 @@ async def main():
             orientation_tolerance_degs=3.0)])
 
     await motion_service.move(
-        component_name=arm_resource_name,
+        component_name="my_arm",
         destination=destination_pose_in_frame,
         world_state=world_state,
         constraints=constraints)

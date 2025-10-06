@@ -576,7 +576,7 @@ dest_in_frame = PoseInFrame(
 # Move arm to destination pose
 motion_service = MotionClient.from_robot(robot, "builtin")
 await motion_service.move(
-    component_name=Arm.get_resource_name("myArm"),
+    component_name="myArm",
     destination=dest_in_frame, world_state=world_state)
 ```
 

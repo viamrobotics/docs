@@ -9,9 +9,9 @@ gripper_pose_rev = Pose(x=0.0,
                         theta=0.0)
 # Note the change in frame name
 gripper_pose_rev_in_frame = PoseInFrame(
-    reference_frame=my_gripper_resource.name,
+    reference_frame=GRIPPER_NAME,
     pose=gripper_pose_rev)
 
-await motion_service.move(component_name=my_gripper_resource,
+await motion_service.move(component_name=GRIPPER_NAME,
                           destination=gripper_pose_rev_in_frame,
                           world_state=world_state)

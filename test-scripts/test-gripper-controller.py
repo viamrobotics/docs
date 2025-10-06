@@ -8,7 +8,7 @@ from viam.components.generic import Generic
 from viam.components.input import Controller, Control, EventType
 
 async def connect():
-    opts = RobotClient.Options.with_api_key( 
+    opts = RobotClient.Options.with_api_key(
         api_key='<API-KEY>',
         api_key_id='<API-KEY-ID>'
     )
@@ -41,7 +41,7 @@ async def handle_controller(controller):
 
 async def main():
     machine = await connect()
-    
+
     # gantry-1
     my_gantry = Gantry.from_robot(machine, "gantry-1")
 
