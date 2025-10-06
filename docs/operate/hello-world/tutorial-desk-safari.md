@@ -18,13 +18,15 @@ description: "Follow this tutorial to learn about Viam while building a game."
 authors: ["Naomi Pentrel"]
 ---
 
-This tutorial assumes no prior knowledge of Viam and will teach you the fundamentals that allow you to build any machine that interacts with the physical world:
+In this tutorial you will build a game with your webcam while learning how to use Viam to build any machine that interacts with the physical world:
 
 - [Device setup](#device-setup) will walk you through installing Viam on your computer.
 - [Use a webcam](#use-a-webcam) will guide you through configuring and testing camera resources in Viam.
 - [Add computer vision](#add-computer-vision) will show you how to integrate higher-level services such as ML model and vision services.
 - [Program your game](#program-your-game) will teach you to build custom modules and implement the game control logic.
 - [Play the game](#play-the-game) will let you test and interact with your completed game.
+
+You don't need any prior knowledge of Viam.
 
 ## Game overview
 
@@ -78,6 +80,7 @@ A {{< glossary_tooltip term_id="machine" text="machine" >}} represents at least 
 **Install `viam-server`.**
 
 On the machine's page, follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project.
+If you can choose an installation method, use `viam-agent`.
 
 Wait until your machine has successfully connected to Viam.
 
@@ -117,7 +120,9 @@ There are different kinds of {{< glossary_tooltip term_id="resource" text="resou
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 Select the `camera` type, then select the `webcam` model.
-Enter the name `webcam` for your camera and click **Create**.
+Use the default name `camera-1` for your camera and click **Create**.
+
+You can leave the `video_path` empty.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -136,7 +141,10 @@ The **TEST** panel is a good tool to ensure {{< glossary_tooltip term_id="resour
 
 {{< imgproc src="/components/camera/example_camera_2.png" alt="Example Camera view" resize="800x" style="width:500px" class="imgzoom shadow" >}}
 
-If your camera is not working, see [Troubleshooting](/operate/reference/components/camera/webcam/#troubleshooting) and [Common errors](/operate/reference/components/camera/webcam/#common-errors).
+If your camera is not working, follow the info in the camera panel to add the webcam discovery service.
+Once you save, use the discovery service's test panel to find camera configurations and add a new camera
+Make sure to name the camera `camera-1`.
+If this doesn't work, see [Troubleshooting](/operate/reference/components/camera/webcam/#troubleshooting) and [Common errors](/operate/reference/components/camera/webcam/#common-errors).
 
 {{% /tablestep %}}
 {{< /table >}}
@@ -225,6 +233,16 @@ This saves you from writing boilerplate code.
 You must have the Viam CLI installed to generate and upload modules:
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**Log in with the CLI.**
+
+Run the following command to log in:
+
+```sh {class="command-line" data-prompt="$" data-output="2-10"}
+viam login
+```
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **Find your organization ID.**
@@ -613,11 +631,11 @@ Click **+**, click **Local module**, then click **Local component** and fill in 
 - type: `button`
 - name: `button-1`
 
-Configure the camera and vision service names by pasting the following in the attributes field:
+Configure the camera and vision service names by pasting the following in the configuration field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "camera_name": "webcam",
+  "camera_name": "camera-1",
   "detector_name": "object-detector"
 }
 ```
@@ -634,7 +652,12 @@ Save the config.
 Navigate to your machine's **CONTROL** tab and find the button's panel.
 
 1. Click the **PUSH** button to start the game.
-   You should see a log message saying "`push` is called" in the **LOGS** tab.
+   You should see a log message saying "`push` is called" in the **LOGS** tab:
+
+   ```sh {class="command-line" data-prompt="$" data-output="1-10"}
+   10/6/2025, 5:18:23 PM info rdk:component:button/button-1    game_logic.py:110 `push` is called    log_ts 2025-10-06T17:18:23.672Z
+   ```
+
 2. Open the `DoCommand` panel, add `{ "action": "run_game_loop" }` as the input and click **Execute**.
    This will call the game loop once and retrieve the score, the time the round started, and the current item to detect.
    You will see a response in the UI of the format:
@@ -649,6 +672,14 @@ Navigate to your machine's **CONTROL** tab and find the button's panel.
 
 3. Hold up the `item_to_detect` and click the **Execute** button to test the game.
    Once successfully detected, the score increases and the `item_to_detect` changes.
+
+   {{< alert title="Tip: Don't spend too long testing" color="tip" >}}
+   Sometimes the model struggles to detect certain items.
+   If that is the case, move on to the next step, once you've ensured there are no errors.
+
+   You can test the game more thorougly with a dedicated UI in [Play the game](#play-the-game).
+
+   {{< /alert >}}
 
 4. If you wait 60 seconds, the game ends and the response you get if you then click **Execute** contains the default values for `item_to_detect` and `time_round_start` and the last score:
 
@@ -674,7 +705,7 @@ To run game logic, we'll use a {{< glossary_tooltip term_id="job" text="job" >}}
 Click the **+** icon next to your machine part in the left-hand menu and select **Job**.
 You can use the default name, `job-1`, and click **Create**.
 
-In the job panel, set the **Schedule** to **Cron** and enter `* * * * * *` which will run the job every second.
+In the job panel, set the **Schedule** to **Interval** and set it to run **Every 1 second**.
 
 Then configure the job:
 
@@ -685,8 +716,6 @@ Then configure the job:
 Click save.
 
 Now, check the **LOGS** tab; you'll see the job triggered every second.
-If you now open another tab and go back to the **CONTROL** tab and click the **PUSH** button and then look at the logs in the other tab, you'll see periodic output from the running game.
-To see more visual input, scroll to the vision service panel on the **CONTROL** tab which will show you current detections as you hold objects up to the camera.
 
 {{% /tablestep %}}
 {{< /table >}}
