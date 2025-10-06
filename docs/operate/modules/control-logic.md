@@ -109,12 +109,12 @@ To add the control logic, use the `DoCommand()` method.
 The method accepts arbitrary JSON objects as commands.
 
 The following code checks the command object and for the `start` command it sets the `running` parameter to `True` and for the `stop` command to `False`.
-A third command, `on_loop`, results in the `on_loop()` method being called, but only if `running` is `True`.
+A third command, `on_loop`, results in the `_on_loop()` method being called, but only if `running` is `True`.
 
-The `on_loop()` method increments the counter.
+The `_on_loop()` method increments the counter.
 
 ```python
-    async def on_loop(self):
+    async def _on_loop(self):
         try:
             self.logger.info("Executing control logic")
             self.counter += 1
@@ -140,7 +140,7 @@ The `on_loop()` method increments the counter.
                 result[name] = True
             if name == "action" and args == "on_loop":
                 if self.running:
-                    await self.on_loop()
+                    await self._on_loop()
                 result[name] = True
         result["counter"] = self.counter
         return result
@@ -199,7 +199,7 @@ class ControlLogic(Generic, EasyResource):
         self.running = False
         return super().reconfigure(config, dependencies)
 
-    async def on_loop(self):
+    async def _on_loop(self):
         try:
             self.logger.info("Executing control logic")
             self.counter += 1
@@ -225,7 +225,7 @@ class ControlLogic(Generic, EasyResource):
                 result[name] = True
             if name == "action" and args == "on_loop":
                 if self.running:
-                    await self.on_loop()
+                    await self._on_loop()
                 result[name] = True
         result["counter"] = self.counter
         return result
@@ -334,7 +334,7 @@ Update your logic in the `do_command` method to use the board:
                 result[name] = True
             if name == "action" and args == "on_loop":
                 if self.running:
-                    await self.on_loop()
+                    await self._on_loop()
                 result[name] = True
         result["counter"] = self.counter
         return result
@@ -412,7 +412,7 @@ class ControlLogic(Generic, EasyResource):
         self.running = False
         return super().reconfigure(config, dependencies)
 
-    async def on_loop(self):
+    async def _on_loop(self):
         try:
             self.logger.info("Executing control logic")
             self.counter += 1
@@ -442,7 +442,7 @@ class ControlLogic(Generic, EasyResource):
                 result[name] = True
             if name == "action" and args == "on_loop":
                 if self.running:
-                    await self.on_loop()
+                    await self._on_loop()
                 result[name] = True
         result["counter"] = self.counter
         return result
@@ -499,7 +499,7 @@ On the **CONTROL** or the **CONFIGURE** tab, use the `DoCommand` panel:
    }
    ```
 
-   To run the control logic loop `on_loop`, copy and paste the following command input:
+   To run the control logic loop method `_on_loop`, copy and paste the following command input:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
