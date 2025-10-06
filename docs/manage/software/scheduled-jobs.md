@@ -15,9 +15,11 @@ date: "2025-06-17"
 cost: "0"
 ---
 
-Viam's machine job scheduler allows you to configure automated jobs that run on your machines at specified intervals. This enables you to automate routine tasks such as data collection, sensor readings, maintenance operations, and system checks.
+Viam's machine job scheduler allows you to configure automated jobs that run on your machines at specified intervals.
+This enables you to automate routine tasks such as data collection, sensor readings, maintenance operations, and system checks.
 
-The job scheduler is built into `viam-server` and executes configured jobs according to their specified schedules. Each job targets a specific resource on your machine and calls a designated method at the scheduled intervals.
+The job scheduler is built into `viam-server` and executes configured jobs according to their specified schedules.
+Each job targets a specific resource on your machine and calls a designated component or service API method at the scheduled intervals.
 
 ## Configure a job
 
@@ -31,7 +33,7 @@ The job scheduler is built into `viam-server` and executes configured jobs accor
 
 1. For the **Schedule**, select **Interval** or **Cron** and specify the interval the job should be run in.
 
-1. For **Job**, select a **Resource**, and a **method**.
+1. For **Job**, select a **Resource**, and a component or service API **method**.
    For the `DoCommand` method also specify the command parameters.
 
 {{% /tab %}}
@@ -143,7 +145,7 @@ Jobs are configured as part of your machine's configuration. Each job requires t
 | `name`     | string | **Required** | Unique identifier for the job within the machine.                |
 | `schedule` | string | **Required** | Schedule specification using unix-cron format or Golang duration. Accepts <ul><li>Unix-cron expressions for time-based scheduling:<ul><li>`"0 */6 * * *"`: Every 6 hours</li><li>`"0 0 * * 0"`: Every Sunday at midnight</li><li>`"*/15 * * * *"`: Every 15 minutes</li><li>`"0 9 * * 1-5"`: Every weekday at 9 AM</li></ul></li><li>Golang duration strings for interval-based scheduling:<ul><li>`"5m"`: Every 5 minutes</li><li>`"1h"`: Every hour</li><li>`"30s"`: Every 30 seconds</li><li>`"24h"`: Every 24 hours</li></ul></li></ul>Job schedules are evaluated in the machine's local timezone. |
 | `resource` | string | **Required** | Name of the target resource (component or service).               |
-| `method`   | string | **Required** | gRPC method to call on the target resource.                       |
+| `method`   | string | **Required** | Component or service API method to call on the target resource.   |
 | `command`  | object | Optional     | Command parameters for `DoCommand` operations.                    |
 
 ## Monitoring and troubleshooting
@@ -163,7 +165,7 @@ Monitor job execution through `viam-server` logs. Look for `rdk.job_manager`:
 - If a unix-cron job is scheduled to start but a previous invocation is still running, the job will be skipped. The job will next run once the previous invocation has finished running and the next scheduled time is reached.
 - If a Golang duration job is scheduled to run but a previous invocation is still running, the next invocation will not run until the previous invocation finishes, at which point it will run immediately.
 - Jobs can only support using arguments for `DoCommand` method.
-  Other methods are only supported if they have no required arguments.
+  All other componetn and service API methods are only supported if they have no required arguments.
   To avoid this limitation, a generic service can be written as a module to encapsulate API calls in a DoCommand API.
 - Jobs run locally on each machine and are not coordinated across multiple machines.
 - Job execution depends on `viam-server` running.
