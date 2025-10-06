@@ -164,9 +164,9 @@ Monitor job execution through `viam-server` logs. Look for `rdk.job_manager`:
 - Jobs only run when `viam-server` is running.
 - If a unix-cron job is scheduled to start but a previous invocation is still running, the job will be skipped. The job will next run once the previous invocation has finished running and the next scheduled time is reached.
 - If a Golang duration job is scheduled to run but a previous invocation is still running, the next invocation will not run until the previous invocation finishes, at which point it will run immediately.
-- Jobs can only support using arguments for `DoCommand` method.
-  All other componetn and service API methods are only supported if they have no required arguments.
-  To avoid this limitation, a generic service can be written as a module to encapsulate API calls in a DoCommand API.
+- `DoCommand` is currently the only supported component and service API method that you can invoke with arguments.
+  Aside from `DoCommand`, Jobs currently only support component and service API methods that do not require arguments.
+  To avoid this limitation, you create a module and encapsulate API calls in a DoCommand API call.
 - Jobs run locally on each machine and are not coordinated across multiple machines.
 - Job execution depends on `viam-server` running.
 - Failed jobs do not retry.
