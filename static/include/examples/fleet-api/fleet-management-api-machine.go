@@ -241,8 +241,10 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(listOfMachines) >= 1 {
-		logger.Fatal("Expected more than 1 machine")
+	numMachines := len(listOfMachines)
+	if numMachines <= 1 {
+		logger.Fatal("Expected more than 1 machine but got ", len(listOfMachines))
+		logger.Fatal("List of machines: ", listOfMachines)
 	}
 	if listOfMachines[0].ID != MACHINE_ID {
 		logger.Fatal("Machine ID mismatch")
@@ -261,8 +263,9 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(listOfMachines) != 2 {
-		logger.Fatal("Expected 2 machines after creation")
+	if len(listOfMachines) != numMachines+1 {
+		logger.Fatal("Expected ", numMachines+1, " machines after creation but got ", len(listOfMachines))
+		logger.Fatal("List of machines: ", listOfMachines)
 	}
 
 	// Update robot
@@ -284,8 +287,9 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(listOfMachines) != 1 {
-		logger.Fatal("Expected 1 machine after deletion")
+	if len(listOfMachines) != numMachines {
+		logger.Fatal("Expected ", numMachines, " machines after deletion but got ", len(listOfMachines))
+		logger.Fatal("List of machines: ", listOfMachines)
 	}
 
 	fmt.Println("All tests passed successfully!")

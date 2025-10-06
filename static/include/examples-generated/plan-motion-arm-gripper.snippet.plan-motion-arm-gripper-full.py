@@ -27,7 +27,6 @@ async def main() -> int:
     machine_client = await connect_machine()
 
    # Access myArm
-    my_arm_resource_name = Arm.get_resource_name(ARM_NAME)
     my_arm_component = Arm.from_robot(machine_client, ARM_NAME)
 
     # End Position of myArm
@@ -52,7 +51,7 @@ async def main() -> int:
     motion_service = MotionClient.from_robot(machine_client, "builtin")
 
     # Get the pose of myArm from the motion service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name,
+    my_arm_motion_pose = await motion_service.get_pose(ARM_NAME,
                                                        "world")
     print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
 
@@ -79,11 +78,9 @@ async def main() -> int:
     test_start_pose_in_frame = PoseInFrame(reference_frame="world",
                                            pose=test_start_pose)
 
-    await motion_service.move(component_name=my_arm_resource_name,
+    await motion_service.move(component_name=ARM_NAME,
                               destination=test_start_pose_in_frame,
                               world_state=world_state)
-
-    my_gripper_resource = Gripper.get_resource_name(GRIPPER_NAME)
 
     # This will move the gripper in the -Z direction with respect to its own
     # reference frame
@@ -96,10 +93,10 @@ async def main() -> int:
                             theta=0.0)
     # Note the change in frame name
     gripper_pose_rev_in_frame = PoseInFrame(
-        reference_frame=my_gripper_resource.name,
+        reference_frame=GRIPPER_NAME,
         pose=gripper_pose_rev)
 
-    await motion_service.move(component_name=my_gripper_resource,
+    await motion_service.move(component_name=GRIPPER_NAME,
                               destination=gripper_pose_rev_in_frame,
                               world_state=world_state)
 

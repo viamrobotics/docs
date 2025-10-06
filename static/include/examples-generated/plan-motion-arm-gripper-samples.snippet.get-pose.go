@@ -1,5 +1,5 @@
 // Get the pose of myArm from the motion service
-myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
+myArmMotionPose, err := motionService.GetPose(context.Background(), armName, referenceframe.World, nil, nil)
 if err != nil {
 	fmt.Println(err)
 }

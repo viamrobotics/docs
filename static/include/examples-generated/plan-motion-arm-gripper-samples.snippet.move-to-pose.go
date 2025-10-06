@@ -6,7 +6,7 @@ testStartPose := spatialmath.NewPose(
 testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
 moveReq := motion.MoveReq{
-	ComponentName: myArmResourceName,
+	ComponentName: armName,
 	Destination:   testStartPoseInFrame,
 	WorldState:    worldState,
 }

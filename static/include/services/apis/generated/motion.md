@@ -72,7 +72,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 motionService, err := motion.FromRobot(machine, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := gripper.Named("my_gripper")
+gripperName := "my_gripper"
 
 // Define a destination Pose
 destination := referenceframe.NewPoseInFrame("world", spatialmath.NewPoseFromPoint(r3.Vector{X: 0.1, Y: 0.0, Z: 0.0}))
@@ -569,9 +569,6 @@ You can use the `supplemental_transforms` argument to augment the machine's exis
 # Note that the example uses the ``Gripper`` class, but any component class that inherits from ``ComponentBase`` will work
 # (``Arm``, ``Base``, etc).
 
-# Create a `component_name`:
-component_name = "my_gripper"
-
 from viam.components.gripper import Gripper
 from viam.services.motion import MotionClient
 
@@ -594,8 +591,7 @@ from viam.services.motion import MotionClient
 robot = await connect()
 
 motion = MotionClient.from_robot(robot=robot, name="builtin")
-gripperName = Gripper.get_resource_name("my_gripper")
-gripperPoseInWorld = await motion.get_pose(component_name=gripperName,
+gripperPoseInWorld = await motion.get_pose(component_name="my_gripper",
                                            destination_frame="world")
 ```
 
@@ -614,9 +610,8 @@ objectPose = Pose(x=100, y=200, z=0, o_x=0, o_y=0, o_z=1, theta=0)
 objectPoseInFrame = PoseInFrame(reference_frame="world", pose=objectPose)
 objectTransform = Transform(reference_frame="object",
                             pose_in_observer_frame=objectPoseInFrame)
-gripperName = Gripper.get_resource_name("my_gripper")
 gripperPoseInObjectFrame = await motion.get_pose(
-  component_name=gripperName,
+  component_name="my_gripper",
   destination_frame="world",
   supplemental_transforms=objectTransform
 )

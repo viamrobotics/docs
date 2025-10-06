@@ -9,6 +9,6 @@ test_start_pose = Pose(x=510.0,
 test_start_pose_in_frame = PoseInFrame(reference_frame="world",
                                        pose=test_start_pose)
 
-await motion_service.move(component_name=my_arm_resource_name,
+await motion_service.move(component_name=ARM_NAME,
                           destination=test_start_pose_in_frame,
                           world_state=world_state)

@@ -686,9 +686,8 @@ async def main():
 
     # myBoard
     my_board = Board.from_robot(robot, "myBoard")
-    # my Subpart name, arm
-    my_arm_resource = Arm.get_resource_name("planning:myArm")
-    my_arm_resource.name = "myArm"
+    # my arm name
+    my_arm_resource = "myArm"
     print("arm resource", my_arm_resource)
 
     commands = [args.command]

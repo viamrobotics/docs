@@ -322,15 +322,15 @@ constraints = Constraints(linear_constraint=[LinearConstraint()])
 
 # Move the cup to the end position without hitting the box on the table,
 # and while keeping the cup upright
-await motion_service.move(component_name=my_gripper_resource_name,
+await motion_service.move(component_name=my_gripper_name,
                           destination=way1_pose_in_frame,
                           world_state=world_state,
                           constraints=constraints)
-await motion_service.move(component_name=my_gripper_resource_name,
+await motion_service.move(component_name=my_gripper_name,
                           destination=way2_pose_in_frame,
                           world_state=world_state,
                           constraints=constraints)
-await motion_service.move(component_name=my_gripper_resource_name,
+await motion_service.move(component_name=my_gripper_name,
                           destination=end_pose_in_frame,
                           world_state=world_state,
                           constraints=constraints)
@@ -376,12 +376,12 @@ async def main():
     robot = await connect()
 
     # myArm
-    my_arm = Arm.from_robot(robot, "myArm")
-    my_arm_resource_name = Arm.get_resource_name("myArm")
+    my_arm_name = "myArm"
+    my_arm = Arm.from_robot(robot, my_arm_name)
 
     # myGripper
-    my_gripper = Gripper.from_robot(robot, "myGripper")
-    my_gripper_resource_name = Gripper.get_resource_name("myGripper")
+    my_gripper_name = "myGripper"
+    my_gripper = Gripper.from_robot(robot, my_gripper_name)
 
     # Get the pose of the arm from the arm API
     cmd_arm_pose = await my_arm.get_end_position()
@@ -391,7 +391,7 @@ async def main():
     motion_service = MotionClient.from_robot(robot, "builtin")
 
     # Get the pose of myArm from the motion service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_resource_name,
+    my_arm_motion_pose = await motion_service.get_pose(my_arm_name,
                                                        "world")
     print("Pose of myArm from the motion service:", my_arm_motion_pose)
 
@@ -476,7 +476,7 @@ async def main():
     # Move to the starting position and grab the cup
     # This motion has no orientation constraints because it hasn't picked up
     # the cup yet
-    await motion_service.move(component_name=my_gripper_resource_name,
+    await motion_service.move(component_name=my_gripper_name,
                               destination=start_pose_in_frame,
                               world_state=world_state)
     print("At start pose")
@@ -487,15 +487,15 @@ async def main():
 
     # Move the cup to the end position without hitting the box on the table,
     # and while keeping the cup upright
-    await motion_service.move(component_name=my_gripper_resource_name,
+    await motion_service.move(component_name=my_gripper_name,
                               destination=way1_pose_in_frame,
                               world_state=world_state,
                               constraints=constraints)
-    await motion_service.move(component_name=my_gripper_resource_name,
+    await motion_service.move(component_name=my_gripper_name,
                               destination=way2_pose_in_frame,
                               world_state=world_state,
                               constraints=constraints)
-    await motion_service.move(component_name=my_gripper_resource_name,
+    await motion_service.move(component_name=my_gripper_name,
                               destination=end_pose_in_frame,
                               world_state=world_state,
                               constraints=constraints)

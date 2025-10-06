@@ -1,11 +1,11 @@
 module example-train
 
-go 1.23.11
+go 1.25.1
 
 require (
 	github.com/golang/geo v0.0.0-20230421003525-6adc56603217
-	go.viam.com/rdk v0.91.0
-	go.viam.com/utils v0.1.164
+	go.viam.com/rdk v0.95.1
+	go.viam.com/utils v0.1.170
 	gorgonia.org/tensor v0.9.24
 )
 
@@ -59,7 +59,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
 	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
-	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
+	github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/gonuts/binary v0.2.0 // indirect
@@ -118,7 +118,7 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rs/cors v1.11.1 // indirect
 	github.com/samber/lo v1.51.0 // indirect
-	github.com/sergi/go-diff v1.3.1 // indirect
+	github.com/sergi/go-diff v1.4.0 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/srikrsna/protoc-gen-gotag v0.6.2 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
@@ -149,7 +149,7 @@ require (
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	go.viam.com/api v0.1.475 // indirect
+	go.viam.com/api v0.1.477 // indirect
 	go.viam.com/test v1.2.4 // indirect
 	go4.org/unsafe/assume-no-moving-gc v0.0.0-20230525183740-e7c30c78aeb2 // indirect
 	golang.org/x/arch v0.19.0 // indirect

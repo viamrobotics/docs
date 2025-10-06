@@ -576,7 +576,7 @@ dest_in_frame = PoseInFrame(
 # Move arm to destination pose
 motion_service = MotionClient.from_robot(robot, "builtin")
 await motion_service.move(
-    component_name=Arm.get_resource_name("myArm"),
+    component_name="myArm",
     destination=dest_in_frame, world_state=world_state)
 ```
 
@@ -606,7 +606,7 @@ destPoseInFrame := referenceframe.NewPoseInFrame(
 
 // Move arm to destination pose
 motionService, err := motion.FromRobot(robot, "builtin")
-_, err = motionService.Move(context.Background(), arm.Named("myArm"), destPoseInFrame, worldState, nil, nil)
+_, err = motionService.Move(context.Background(), "myArm", destPoseInFrame, worldState, nil, nil)
 ```
 
 {{% /tab %}}
