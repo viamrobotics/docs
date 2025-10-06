@@ -109,7 +109,7 @@ To add the control logic, use the `DoCommand()` method.
 The method accepts arbitrary JSON objects as commands.
 
 The following code checks the command object and for the `start` command it sets the `running` parameter to `True` and for the `stop` command to `False`.
-A third command, `on_loop`, results in the `_on_loop()` method being called, but only if `running` is `True`.
+A third command, `run_control_logic`, results in the `_on_loop()` method being called, but only if `running` is `True`.
 
 The `_on_loop()` method increments the counter.
 
@@ -138,7 +138,7 @@ The `_on_loop()` method increments the counter.
             if name == "action" and args == "stop":
                 self.running = False
                 result[name] = True
-            if name == "action" and args == "on_loop":
+            if name == "action" and args == "run_control_logic":
                 if self.running:
                     await self._on_loop()
                 result[name] = True
@@ -223,7 +223,7 @@ class ControlLogic(Generic, EasyResource):
             if name == "action" and args == "stop":
                 self.running = False
                 result[name] = True
-            if name == "action" and args == "on_loop":
+            if name == "action" and args == "run_control_logic":
                 if self.running:
                     await self._on_loop()
                 result[name] = True
@@ -332,7 +332,7 @@ Update your logic in the `do_command` method to use the board:
                 pin = await self.board.gpio_pin_by_name(name="13")
                 await pin.set(high=False)
                 result[name] = True
-            if name == "action" and args == "on_loop":
+            if name == "action" and args == "run_control_logic":
                 if self.running:
                     await self._on_loop()
                 result[name] = True
@@ -440,7 +440,7 @@ class ControlLogic(Generic, EasyResource):
                 pin = await self.board.gpio_pin_by_name(name="13")
                 await pin.set(high=False)
                 result[name] = True
-            if name == "action" and args == "on_loop":
+            if name == "action" and args == "run_control_logic":
                 if self.running:
                     await self._on_loop()
                 result[name] = True
@@ -503,7 +503,7 @@ On the **CONTROL** or the **CONFIGURE** tab, use the `DoCommand` panel:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "action": "on_loop"
+     "action": "run_control_logic"
    }
    ```
 
@@ -529,7 +529,7 @@ You can start and stop your control logic with the `DoCommand()` method from the
 await control_logic.do_command({"action": "start"})
 
 # Run your control loop
-await control_logic.do_command({"action": "on_loop"})
+await control_logic.do_command({"action": "run_control_logic"})
 
 # Stop your control logic
 await control_logic.do_command({"action": "stop"})
@@ -566,7 +566,7 @@ Configure another job:
 - **Cron Schedule**: `0 * * * * *` (every minute)
 - **Resource**: `generic-1`
 - **Method**: `DoCommand`
-- **Command**: `{ "action": "on_loop" }`
+- **Command**: `{ "action": "run_control_logic" }`
 
 {{% /tablestep %}}
 {{% tablestep %}}
