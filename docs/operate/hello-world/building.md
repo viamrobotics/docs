@@ -339,7 +339,7 @@ For a step-by-step guide, see [Run control logic](/operate/modules/control-logic
 The control logic for the project might look like this:
 
 ```python {class="line-numbers linkable-line-numbers" data-line=""}
-async def sand_at(motion, world_state, arm, x_min, x_max, y_min, y_max):
+async def _sand_at(motion, world_state, arm, x_min, x_max, y_min, y_max):
     # simple sanding logic that moves the arm from x_min, y_min to x_max, y_max
     start_pose = translate_x_y_to_coord(x_min, y_min)
     end_pose = translate_x_y_to_coord(x_max, y_max)
@@ -350,7 +350,7 @@ async def sand_at(motion, world_state, arm, x_min, x_max, y_min, y_max):
     return True
 
 
-async def on_loop(self):
+async def _on_loop(self):
     self.logger.info("Executing control logic")
     # Check vision service for detections of the color of the pencil markings
     # on the wood
@@ -358,7 +358,7 @@ async def on_loop(self):
         self.camera_name)
 
     for d in detections:
-        await sand_at(
+        await _sand_at(
             self.motion_service,
             self.world_state,
             self.arm_name,
@@ -379,7 +379,7 @@ async def do_command(
     result = {key: False for key in command.keys()}
     for name, args in command.items():
         if name == "action" and args == "run_control_logic":
-            await self.on_loop()
+            await self._on_loop()
             result[name] = True
     return result
 ```
