@@ -385,7 +385,7 @@ viam_home = os.environ.get("VIAM_HOME")
 To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/modules/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
 
 {{% hiddencontent %}}
-A **ublic unlisted module is the same as an unlisted module.
+A public unlisted module is the same as an unlisted module.
 {{% /hiddencontent %}}
 
 1. Navigate to the module's page in the Viam Registry, using the link to the module.
