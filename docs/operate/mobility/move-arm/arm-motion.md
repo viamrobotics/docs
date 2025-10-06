@@ -4,7 +4,7 @@ linkTitle: "Move an arm with motion planning"
 weight: 40
 type: "docs"
 layout: "docs"
-description: "Move an arm with the motion service API."
+description: "Plan and execute complex movements with an arm using the motion service API."
 aliases:
   - /how-tos/move-robot-arm/
   - /tutorials/motion/accessing-and-moving-robot-arm/
@@ -101,7 +101,7 @@ You'll now add to the code to describe the geometry of the arm's environment and
    {{% tab name="Go" %}}
 
    ```go {class="line-numbers linkable-line-numbers"}
-   armResourceName := arm.Named("my_arm")
+   armResourceName := "my_arm"
    ```
 
    {{% /tab %}}
@@ -533,7 +533,7 @@ func main() {
 
    defer machine.Close(context.Background())
 
-   armResourceName := arm.Named("my_arm")
+   armResourceName := "my_arm"
    motionService, err := motion.FromRobot(machine, "builtin")
    if err != nil {
       logger.Fatal(err)

@@ -6,7 +6,6 @@ import (
 
   "github.com/golang/geo/r3"
   "go.viam.com/rdk/components/arm"
-  "go.viam.com/rdk/components/gripper"
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
@@ -39,8 +38,6 @@ func main() {
 	}
 
 	// Access myArm
-	myArmResourceName := arm.Named(armName)
-	fmt.Println("myArmResourceName:", myArmResourceName)
 	myArmComponent, err := arm.FromRobot(machine, armName)
 	if err != nil {
 		fmt.Println(err)
@@ -98,7 +95,7 @@ func main() {
 	}
 
 	// Get the pose of myArm from the motion service
-	myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
+	myArmMotionPose, err := motionService.GetPose(context.Background(), armName, referenceframe.World, nil, nil)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -131,7 +128,7 @@ func main() {
 	testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
 	moveReq := motion.MoveReq{
-		ComponentName: myArmResourceName,
+		ComponentName: armName,
 		Destination:   testStartPoseInFrame,
 		WorldState:    worldState,
 	}
@@ -139,8 +136,6 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-
-	gripperResource := gripper.Named(gripperName)
 
 	// This will move the gripper in the -Z direction with respect to its own reference frame
 	gripperPoseRev := spatialmath.NewPose(
@@ -150,7 +145,7 @@ func main() {
 	gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
 
 	gripperMoveReq := motion.MoveReq{
-		ComponentName: gripperResource,
+		ComponentName: gripperName,
 		Destination:   gripperPoseRevInFrame,
 		WorldState:    worldState,
 	}

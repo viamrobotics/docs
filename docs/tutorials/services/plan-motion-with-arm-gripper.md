@@ -108,15 +108,6 @@ Any components that have frame information (and, as a result, are added to the f
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-When you use the [arm API](/dev/reference/apis/components/arm/#api), you call methods on your arm component itself.
-To use the [motion service API](/dev/reference/apis/services/motion/#api) with an arm, you need to pass an argument of type `ResourceName` to the motion service method.
-
-Add the following to the section of your code where you access the arm:
-
-{{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.arm-resource-name-from-robot.go" lang="go" class="line-numbers linkable-line-numbers" >}}
-
-Now you are ready to run a motion service method on your arm.
-
 Note the use of `referenceframe.World` in the following code example.
 This is a constant string value in the RDK's `referenceframe` library that is maintained for user and programmer convenience.
 Any components that have frame information (and, as a result, are added to the frame system) are connected to the "world".
@@ -236,11 +227,7 @@ Add this code to your `main()`:
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-Add the following line to your import list:
-
-{{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.gripper-resource-name-from-robot.go" lang="go" class="line-numbers linkable-line-numbers" >}}
-
-Then add this code to your `main()`:
+Add this code to your `main()`:
 
 {{< read-code-snippet file="/static/include/examples-generated/plan-motion-arm-gripper-samples.snippet.move-gripper-to-pose.go" lang="go" class="line-numbers linkable-line-numbers" >}}
 

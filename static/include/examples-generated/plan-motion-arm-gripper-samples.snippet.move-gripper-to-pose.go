@@ -6,7 +6,7 @@ gripperPoseRev := spatialmath.NewPose(
 gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
 
 gripperMoveReq := motion.MoveReq{
-	ComponentName: gripperResource,
+	ComponentName: gripperName,
 	Destination:   gripperPoseRevInFrame,
 	WorldState:    worldState,
 }

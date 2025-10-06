@@ -51,10 +51,6 @@ func main() {
 	}
 
 	// Access myArm
-	// :snippet-start: arm-resource-name-from-robot
-	myArmResourceName := arm.Named(armName)
-	// :snippet-end:
-	fmt.Println("myArmResourceName:", myArmResourceName)
 	myArmComponent, err := arm.FromRobot(machine, armName)
 	if err != nil {
 		fmt.Println(err)
@@ -129,7 +125,7 @@ func main() {
 
 	// :snippet-start: get-pose
 	// Get the pose of myArm from the motion service
-	myArmMotionPose, err := motionService.GetPose(context.Background(), myArmResourceName, referenceframe.World, nil, nil)
+	myArmMotionPose, err := motionService.GetPose(context.Background(), armName, referenceframe.World, nil, nil)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -166,7 +162,7 @@ func main() {
 	testStartPoseInFrame := referenceframe.NewPoseInFrame(referenceframe.World, testStartPose)
 
 	moveReq := motion.MoveReq{
-		ComponentName: myArmResourceName,
+		ComponentName: armName,
 		Destination:   testStartPoseInFrame,
 		WorldState:    worldState,
 	}
@@ -174,10 +170,6 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	// :snippet-end:
-
-	// :snippet-start: gripper-resource-name-from-robot
-	gripperResource := gripper.Named(gripperName)
 	// :snippet-end:
 
 	// :snippet-start: move-gripper-to-pose
@@ -189,7 +181,7 @@ func main() {
 	gripperPoseRevInFrame := referenceframe.NewPoseInFrame(gripperName, gripperPoseRev) // Note the change in frame name
 
 	gripperMoveReq := motion.MoveReq{
-		ComponentName: gripperResource,
+		ComponentName: gripperName,
 		Destination:   gripperPoseRevInFrame,
 		WorldState:    worldState,
 	}

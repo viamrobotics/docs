@@ -606,7 +606,7 @@ destPoseInFrame := referenceframe.NewPoseInFrame(
 
 // Move arm to destination pose
 motionService, err := motion.FromRobot(robot, "builtin")
-_, err = motionService.Move(context.Background(), arm.Named("myArm"), destPoseInFrame, worldState, nil, nil)
+_, err = motionService.Move(context.Background(), "myArm", destPoseInFrame, worldState, nil, nil)
 ```
 
 {{% /tab %}}

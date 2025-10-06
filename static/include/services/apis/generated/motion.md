@@ -72,7 +72,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 motionService, err := motion.FromRobot(machine, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
-gripperName := gripper.Named("my_gripper")
+gripperName := "my_gripper"
 
 // Define a destination Pose
 destination := referenceframe.NewPoseInFrame("world", spatialmath.NewPoseFromPoint(r3.Vector{X: 0.1, Y: 0.0, Z: 0.0}))
