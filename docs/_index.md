@@ -32,7 +32,7 @@ aliases:
     <div class="hero-text">
       <h1>Viam Documentation</h1>
       <p>
-        Viam integrates with hardware and software on <b>any device</b> in the physical world. Once you <a href="/operate/install/setup/">set up your machines</a>, you can use Viam SDKs to program your devices and connected hardware. Everything is managed in the cloud and you can add use machine learning, data management, and much more for your projects.
+        Viam integrates with hardware and software on <b>any device</b> in the physical world. Once you <a href="/operate/install/setup/">set up your machines</a>, you can use Viam SDKs to program your devices and connected hardware. Everything is managed in the cloud and you can use machine learning, data management, and much more for your projects.
       </p>
       <div class="cards max-page">
         <div class="front-card-container">
