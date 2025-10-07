@@ -36,6 +36,9 @@ async def connect_machine() -> RobotClient:
 
 async def main() -> int:
     machine = await connect_machine()
+    # :remove-start:
+    print(machine.resource_names)
+    # :remove-end:
 
     camera = Camera.from_robot(machine, CAMERA_NAME)
     ml_model = MLModelClient.from_robot(machine, ML_MODEL_NAME)
