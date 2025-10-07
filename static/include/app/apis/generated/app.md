@@ -34,6 +34,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+userID, err := cloud.GetUserIDByEmail(context.Background(), "test@example.com")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetUserIDByEmail).
 
 {{% /tab %}}
@@ -97,6 +103,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+organization, err := cloud.CreateOrganization(context.Background(), "testOrganization")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateOrganization).
 
 {{% /tab %}}
@@ -149,6 +161,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+organizations, err := cloud.ListOrganizations(context.Background())
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListOrganizations).
 
@@ -258,6 +276,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*OrgDetails)](https://pkg.go.dev/go.viam.com/rdk/app#OrgDetails)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+organizations, err := cloud.ListOrganizationsByUser(context.Background(), "1234a56b-1234-1a23-1234-a12bcd3ef4a5")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListOrganizationsByUser).
 
 {{% /tab %}}
@@ -315,6 +339,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+organization, err := cloud.GetOrganization(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetOrganization).
 
@@ -382,6 +412,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(bool)](https://pkg.go.dev/builtin#bool)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+available, err := cloud.GetOrganizationNamespaceAvailability(context.Background(), "test-namespace")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetOrganizationNamespaceAvailability).
 
@@ -457,6 +493,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Organization)](https://pkg.go.dev/go.viam.com/rdk/app#Organization)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+ name := "tests-name"
+	organization, err := cloud.UpdateOrganization(
+		context.Background(),
+		"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+		&UpdateOrganizationOptions{
+			Name: &name,
+		})
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateOrganization).
 
 {{% /tab %}}
@@ -522,6 +570,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteOrganization(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteOrganization).
 
 {{% /tab %}}
@@ -583,6 +637,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*OrganizationMember)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationMember)
 - [([]*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+members, invites, err := cloud.ListOrganizationMembers(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListOrganizationMembers).
 
@@ -656,6 +716,23 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+func boolPtr(b bool) *bool {
+	return &b
+}
+
+invite, err := cloud.CreateOrganizationInvite(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"test@example.com",
+	[]*Authorization{&Authorization{}},
+	&app.CreateOrganizationInviteOptions{
+		SendEmailInvite: boolPtr(true),
+	})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateOrganizationInvite).
 
@@ -763,6 +840,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+invite, err := cloud.UpdateOrganizationInviteAuthorizations(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"test@example.com",
+	[]*app.Authorization{
+		AuthorizationType: "role",
+		AuthorizationID:   "location_owner",
+		ResourceType:      "location",
+		ResourceID:        LOCATION_ID,
+		OrganizationID:    ORG_ID,
+		IdentityID:        "",
+	},
+	[]*app.Authorization{})
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateOrganizationInviteAuthorizations).
 
 {{% /tab %}}
@@ -845,6 +940,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteOrganizationMember(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"1234a56b-1234-1a23-1234-a12bcd3ef4a5")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteOrganizationMember).
 
 {{% /tab %}}
@@ -913,6 +1017,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteOrganizationInvite(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"test@example.com")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteOrganizationInvite).
 
@@ -984,6 +1097,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*OrganizationInvite)](https://pkg.go.dev/go.viam.com/rdk/app#OrganizationInvite)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+invite, err := cloud.ResendOrganizationInvite(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2", "test@example.com")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ResendOrganizationInvite).
 
 {{% /tab %}}
@@ -1047,6 +1166,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+metadata, err := cloud.GetOrganizationMetadata(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetOrganizationMetadata).
 
@@ -1113,6 +1240,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.UpdateOrganizationMetadata(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	map[string]interface{}{
+		"key": "value",
+	},
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateOrganizationMetadata).
 
@@ -1186,6 +1325,19 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+ locationID := "ab1c2d3e45"
+	err := cloud.CreateLocation(
+		context.Background(),
+		"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+		"test-location",
+		&app.CreateLocationOptions{
+			ParentLocationID: &locationID,
+	})
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateLocation).
 
 {{% /tab %}}
@@ -1256,6 +1408,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+location, err := cloud.GetLocation(context.Background(), "ab1c2d3e45")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetLocation).
 
@@ -1343,6 +1501,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+ locationID := "ab1c2d3e45"
+ name := "test-name"
+	err := cloud.UpdateLocation(
+		context.Background(),
+		"ab1c2d3e45",
+		&app.UpdateLocationOptions{
+			Name: &name,
+			ParentLocationID: &locationID,
+		})
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateLocation).
 
 {{% /tab %}}
@@ -1413,6 +1585,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteLocation(context.Background(), "ab1c2d3e45")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteLocation).
 
 {{% /tab %}}
@@ -1472,6 +1650,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]*Location)](https://pkg.go.dev/go.viam.com/rdk/app#Location)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+locations, err := cloud.ListLocations(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListLocations).
 
@@ -1535,6 +1719,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.ShareLocation(context.Background(), "ab1c2d3e45", "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ShareLocation).
 
@@ -1600,6 +1790,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.UnshareLocation(context.Background(), "ab1c2d3e45", "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UnshareLocation).
 
@@ -1669,6 +1865,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*LocationAuth)](https://pkg.go.dev/go.viam.com/rdk/app#LocationAuth)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+auth, err := cloud.LocationAuth(context.Background(), "ab1c2d3e45")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.LocationAuth).
 
 {{% /tab %}}
@@ -1734,6 +1936,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*LocationAuth)](https://pkg.go.dev/go.viam.com/rdk/app#LocationAuth)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+auth, err := cloud.CreateLocationSecret(context.Background(), "ab1c2d3e45")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateLocationSecret).
 
@@ -1805,6 +2013,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteLocationSecret(
+	context.Background(),
+	"ab1c2d3e45",
+	"a12bcd3e-a12b-1234-1ab2-abc123d4e5f6")
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteLocationSecret).
 
 {{% /tab %}}
@@ -1868,6 +2086,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+metadata, err := cloud.GetLocationMetadata(context.Background(), "ab1c2d3e45")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetLocationMetadata).
 
@@ -1933,6 +2157,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.UpdateLocationMetadata(
+	context.Background(),
+	"ab1c2d3e45",
+	map[string]interface{}{
+		"key": "value",
+	},
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateLocationMetadata).
 
@@ -2001,6 +2237,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robot, err := cloud.GetRobot(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobot).
 
 {{% /tab %}}
@@ -2060,6 +2302,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]*APIKeyWithAuthorizations)](https://pkg.go.dev/go.viam.com/rdk/app#APIKeyWithAuthorizations)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+keys, err := cloud.GetRobotAPIKeys(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotAPIKeys).
 
@@ -2127,6 +2375,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+parts, err := cloud.GetRobotParts(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotParts).
 
@@ -2201,6 +2455,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+part, config, err := cloud.GetRobotPart(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPart).
 
@@ -2283,6 +2546,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*LogEntry)](https://pkg.go.dev/go.viam.com/rdk/app#LogEntry)
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+	filter := ""
+	pageToken := ""
+	startTime := time.Now().Add(-720 * time.Hour)
+	endTime := time.Now()
+	limit := 5
+	source := ""
+	partLogs, _, err := cloud.GetRobotPartLogs(
+        ctx,
+        PART_ID,
+       &GetRobotPartLogsOptions{
+			Filter: &filter,
+			PageToken: &pageToken,
+			Levels: []string{"INFO", "WARN", "ERROR"},
+			Start: &startTime,
+			End: &endTime,
+			Limit: &limit,
+			Source: &source,
+		},
+	)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartLogs).
 
@@ -2388,6 +2675,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*RobotPartLogStream)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPartLogStream)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+logFilter := "error"
+stream, err := cloud.TailRobotPartLogs(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	true,
+	&app.TailRobotPartLogsOptions{
+		Filter: &logFilter,
+	},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.TailRobotPartLogs).
 
 {{% /tab %}}
@@ -2459,6 +2760,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]*RobotPartHistoryEntry)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPartHistoryEntry)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+history, err := cloud.GetRobotPartHistory(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartHistory).
 
@@ -2534,6 +2843,30 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robotConfig := map[string]interface{}{
+	"components": []map[string]interface{}{
+		{
+			"name":       "camera-1",
+			"api":        "rdk:component:camera",
+			"model":      "rdk:builtin:fake",
+			"attributes": map[string]interface{}{},
+		},
+	},
+}
+
+part, err := cloud.UpdateRobotPart(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	"part_name",
+	map[string]interface{}{
+		"key": "value",
+	},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobotPart).
 
 {{% /tab %}}
@@ -2607,6 +2940,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+partID, err := cloud.NewRobotPart(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	"part_name")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.NewRobotPart).
 
 {{% /tab %}}
@@ -2676,6 +3018,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteRobotPart(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRobotPart).
 
 {{% /tab %}}
@@ -2739,6 +3087,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.MarkPartAsMain(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.MarkPartAsMain).
 
@@ -2804,6 +3158,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.MarkPartForRestart(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.MarkPartForRestart).
 
 {{% /tab %}}
@@ -2868,6 +3228,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+part, err := cloud.CreateRobotPartSecret(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateRobotPartSecret).
 
@@ -2938,6 +3306,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteRobotPartSecret(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	"a12bcd34-1234-12ab-1ab2-123a4567890b")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRobotPartSecret).
 
 {{% /tab %}}
@@ -3006,6 +3383,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robots, err := cloud.ListRobots(context.Background(), "ab1c2d3e45")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListRobots).
 
 {{% /tab %}}
@@ -3071,6 +3454,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robotID, err := cloud.NewRobot(context.Background(), "robot_name", "ab1c2d3e45")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.NewRobot).
 
@@ -3168,6 +3557,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robot, err := cloud.UpdateRobot(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12", "robot_name", "ab1c2d3e45")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobot).
 
 {{% /tab %}}
@@ -3237,6 +3632,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteRobot(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRobot).
 
 {{% /tab %}}
@@ -3297,6 +3698,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+metadata, err := cloud.GetRobotMetadata(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotMetadata).
 
 {{% /tab %}}
@@ -3356,6 +3765,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+metadata, err := cloud.GetRobotPartMetadata(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartMetadata).
 
@@ -3422,6 +3839,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.UpdateRobotMetadata(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	map[string]interface{}{
+		"key": "value",
+	},
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobotMetadata).
 
@@ -3490,6 +3919,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.UpdateRobotPartMetadata(
+	context.Background(),
+	"1ab2345c-a123-1ab2-1abc-1ab234567a12",
+	map[string]interface{}{
+		"key": "value",
+	},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRobotPartMetadata).
 
 {{% /tab %}}
@@ -3557,6 +3998,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+fragments, err := cloud.ListFragments(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	true,
+	[]app.FragmentVisibility{app.FragmentVisibilityPublic},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListFragments).
 
 {{% /tab %}}
@@ -3604,6 +4056,12 @@ Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text=
 
 - [([]*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+fragments, err := cloud.ListMachineFragments(context.Background(), "1ab2345c-a123-1ab2-1abc-1ab234567a12", []string{})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListMachineFragments).
 
@@ -3716,6 +4174,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+fragment, err := cloud.GetFragment(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2", "")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetFragment).
 
 {{% /tab %}}
@@ -3786,6 +4250,29 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+fragmentConfig := map[string]interface{}{
+	"components": []map[string]interface{}{
+		{
+			"name":       "camera-1",
+			"api":        "rdk:component:camera",
+			"model":      "rdk:builtin:fake",
+			"attributes": map[string]interface{}{},
+		},
+	},
+}
+
+fragment, err := cloud.CreateFragment(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"My Fragment",
+	fragmentConfig,
+	&app.CreateFragmentOptions{Visibility: &app.FragmentVisibilityPublic},
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateFragment).
 
@@ -3867,6 +4354,28 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(*Fragment)](https://pkg.go.dev/go.viam.com/rdk/app#Fragment)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+fragmentConfig := map[string]interface{}{
+	"components": []map[string]interface{}{
+		{
+			"name":       "camera-1",
+			"api":        "rdk:component:camera",
+			"model":      "rdk:builtin:fake",
+			"attributes": map[string]interface{}{},
+		},
+	},
+}
+
+fragment, err := cloud.UpdateFragment(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"My Fragment",
+	fragmentConfig,
+	&app.UpdateFragmentOptions{Visibility: &app.FragmentVisibilityPublic})
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateFragment).
 
 {{% /tab %}}
@@ -3944,6 +4453,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteFragment(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteFragment).
 
 {{% /tab %}}
@@ -4014,6 +4529,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*FragmentHistoryEntry)](https://pkg.go.dev/go.viam.com/rdk/app#FragmentHistoryEntry)
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+ limit := 10
+	history, token, err := cloud.GetFragmentHistory(
+		context.Background(),
+		"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+		&app.GetFragmentHistoryOptions{PageLimit: &limit})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetFragmentHistory).
 
@@ -4342,6 +4867,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*Authorization)](https://pkg.go.dev/go.viam.com/rdk/app#Authorization)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.ListAuthorizations(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	[]string{"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2"},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListAuthorizations).
 
 {{% /tab %}}
@@ -4469,6 +5004,21 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*AuthorizedPermissions)](https://pkg.go.dev/go.viam.com/rdk/app#AuthorizedPermissions)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.CheckPermissions(
+	context.Background(),
+	[]*app.AuthorizedPermissions{
+		{
+			ResourceType: app.AuthResourceTypeLocation,
+			ResourceID:   "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+			Permissions:  []string{"control_robot", "read_robot_logs"},
+		},
+	},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CheckPermissions).
 
 {{% /tab %}}
@@ -4523,6 +5073,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*RegistryItem)](https://pkg.go.dev/go.viam.com/rdk/app#RegistryItem)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+registryItem, err := cloud.GetRegistryItem(context.Background(), "namespace:name")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRegistryItem).
 
@@ -4590,6 +5146,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.CreateRegistryItem(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"registry_item_name",
+	app.PackageTypeMLModel)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateRegistryItem).
 
@@ -4671,6 +5237,20 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Returns:**
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+siteURL := "https://example.com"
+err := cloud.UpdateRegistryItem(
+	context.Background(),
+	"namespace:name",
+	app.PackageTypeMLModel,
+	"description",
+	app.VisibilityPrivate,
+	&app.UpdateRegistryItemOptions{URL: &siteURL},
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateRegistryItem).
 
@@ -4770,6 +5350,28 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*RegistryItem)](https://pkg.go.dev/go.viam.com/rdk/app#RegistryItem)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+organizationID := "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2"
+searchTerm := ""
+pageToken := ""
+namespaces := []string{}
+items, err := cloud.ListRegistryItems(
+	context.Background(),
+	&organizationID,
+	[]app.PackageType{app.PackageTypeModule},
+	[]app.Visibility{app.VisibilityPublic},
+	[]string{"linux/any"},
+	[]app.RegistryItemStatus{app.RegistryItemStatusPublished},
+	&app.ListRegistryItemsOptions{
+		SearchTerm: &searchTerm,
+		PageToken: &pageToken,
+		PublicNamespaces: namespaces,
+	},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListRegistryItems).
 
 {{% /tab %}}
@@ -4846,6 +5448,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteRegistryItem(context.Background(), "namespace:name")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteRegistryItem).
 
 {{% /tab %}}
@@ -4913,6 +5521,16 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+moduleID, url, err := cloud.CreateModule(
+	context.Background(),
+	"a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2",
+	"module_name",
+)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.CreateModule).
 
@@ -5007,6 +5625,32 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+model := &app.Model{
+	API:   "rdk:service:generic",
+	Model: "docs-test:new_test_module:test_model",
+}
+app := &app.App{
+	Name:       "app_name",
+	Type:       "app_type",
+	Entrypoint: "entrypoint",
+}
+firstRun := "first_run.sh"
+url, err := cloud.UpdateModule(
+	context.Background(),
+	"namespace:name",
+	app.VisibilityPublic,
+	"https://example.com",
+	"description",
+	[]*app.Model{model},
+	[]*app.App{app},
+	"entrypoint",
+	&app.UpdateModuleOptions{FirstRun: &firstRun},
+)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UpdateModule).
 
 {{% /tab %}}
@@ -5092,6 +5736,17 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+moduleFileInfo := app.ModuleFileInfo{
+	ModuleID: "namespace:name",
+	Version:  "1.0.0",
+	Platform: "darwin/arm64",
+}
+fileURL, err := cloud.UploadModuleFile(context.Background(), fileInfo, []byte("empty.txt"))
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.UploadModuleFile).
 
 {{% /tab %}}
@@ -5136,6 +5791,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(*Module)](https://pkg.go.dev/go.viam.com/rdk/app#Module)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+module, err := cloud.GetModule(context.Background(), "namespace:name")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetModule).
 
@@ -5196,6 +5857,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [([]*Module)](https://pkg.go.dev/go.viam.com/rdk/app#Module)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+orgID := "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2"
+modules, err := cloud.ListModules(context.Background(), &app.ListModulesOptions{OrgID: &orgID})
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListModules).
 
@@ -5333,6 +6001,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+err := cloud.DeleteKey(context.Background(), "a1bcdefghi2jklmnopqrstuvw3xyzabc")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.DeleteKey).
 
 {{% /tab %}}
@@ -5394,6 +6068,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+id, key, err := cloud.RotateKey(context.Background(), "a1bcdefghi2jklmnopqrstuvw3xyzabc")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.RotateKey).
 
 {{% /tab %}}
@@ -5454,6 +6134,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [([]*APIKeyWithAuthorizations)](https://pkg.go.dev/go.viam.com/rdk/app#APIKeyWithAuthorizations)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+keys, err := cloud.ListKeys(context.Background(), "a1b2c345-abcd-1a2b-abc1-a1b23cd4561e2")
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListKeys).
 
 {{% /tab %}}
@@ -5496,6 +6182,12 @@ RenameKey renames an API key and returns its ID and name.
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+_, name, err := cloud.RenameKey(context.Background(), "a1bcdefghi2jklmnopqrstuvw3xyzabc", "new_name")
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.RenameKey).
 
