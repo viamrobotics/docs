@@ -2,7 +2,6 @@
 import asyncio
 # :remove-start:
 import os
-import time
 # :remove-end:
 import numpy as np
 
@@ -37,11 +36,6 @@ async def connect_machine() -> RobotClient:
 
 async def main() -> int:
     machine = await connect_machine()
-    # :remove-start:
-    # Ensure the machine is ready
-    time.sleep(10)
-    print(machine.resource_names)
-    # :remove-end:
 
     camera = Camera.from_robot(machine, CAMERA_NAME)
     classifier = VisionClient.from_robot(machine, CLASSIFIER_NAME)
