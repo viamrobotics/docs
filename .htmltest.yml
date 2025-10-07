@@ -49,6 +49,7 @@ IgnoreURLs:
   - "bugs.launchpad.net"
   - "grpc.io"
   - "odroid.com"
+  - "viamapplications.com"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
