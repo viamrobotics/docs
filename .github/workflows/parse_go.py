@@ -475,6 +475,8 @@ class GoParser:
 
                     resource_override = resource
 
+                    method_code_sample = method.find('pre', recursive=False)
+
                     ## Look up method_name in proto_map file, and return matching resource:
                     with open(self.proto_map_file, 'r') as f:
                         for row in f:
@@ -486,11 +488,14 @@ class GoParser:
                     this_method_dict = {
                         "proto": method_name,
                         "usage": method_usage,
-                        # "code_sample": code_sample,
                         "description": method_description,
                         "method_link": method_link,
                         # "usage": ""
                     }
+
+                    if method_code_sample:
+                        this_method_dict["code_sample"] = method_code_sample.text
+
                     if resource_override not in self.go_methods[type]:
                         self.go_methods[type][resource_override] = {}
                     if method_name in go_ignore_app_apis:
