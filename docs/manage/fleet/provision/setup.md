@@ -552,31 +552,6 @@ Currently, if you are using Bluetooth provisioning, you must leave `hotspot_pass
 
 {{<video webm_src="/platform/provisioning-demo.webm" mp4_src="/platform/provisioning-demo.mp4" alt="Using the Viam mobile app to provision a new machine with viam-agent." poster="/platform/provisioning-demo.jpg" class="" max-width="400px" style="margin-left: 2rem">}}
 
-## Change WiFi network or credentials
-
-If you want to change the WiFi network or the network credentials on a device that is already setup, you can enter provisioning again using the force provisioning mode.
-
-If you can manually `SSH` into a machine you can follow these steps:
-
-1. Add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json).
-   The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before you can use the `viam machines part shell` command.
-
-1. Open a shell on your machine:
-
-   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-   viam machines part shell --part <PART-ID>
-   ```
-
-1. On the machine, create an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>:
-
-   ```sh {class="command-line" data-prompt="$" data-output="3-10"}
-   touch /opt/viam/etc/force_provisioning_mode
-   ```
-
-1. The machine will immediately enter provisioning mode until the machine receives the new credentials or the `retry_connection_timeout_minutes` limit, by default 10 minutes, expires.
-
-If you provide a provisioning app, instead program functionality that adds an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>.
-
 ## Troubleshooting
 
 ### Can I re-provision a machine that was already provisioned?
