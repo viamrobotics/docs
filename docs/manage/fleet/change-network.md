@@ -1,23 +1,13 @@
 ---
-title: "Connect a machine to a different network"
-linkTitle: "Connect to different network"
+title: "Connect a machine to a new network"
+linkTitle: "Connect to new network"
 weight: 55
 type: "docs"
-description: "Connect a machine to a different WiFi network."
+description: "Connect a machine to a new WiFi network."
 date: "2025-10-07"
 ---
 
-This page will guide you to connect your machine to a different WiFi network.
-
-Should your machine be able to connect to multiple networks?
-
-- If **yes**, see [**Configure Networks**](/manage/fleet/system-settings/#configure-networks).
-- If **no**, continue on this page.
-
-Can your machine still connect to the old network?
-
-- If **yes**, see [Force provisioning mode](#force-provisioning-mode)
-- If **no**, see [Connect to a different WiFi network](#connect-to-a-different-wifi-network)
+This page will guide you to connect your machine to a new WiFi network.
 
 ## Prerequisites
 
@@ -31,7 +21,7 @@ Follow the instructions to [complete end-user setup for a machine](/manage/fleet
 
 ## Force provisioning mode
 
-If you want to change the WiFi network or the network credentials on a device that is already setup and can still connect to the current network, you can enter provisioning again using the force provisioning mode.
+If you want to change the WiFi network or the network credentials on a device that is already setup and can still connect to the current network, you can enter provisioning using the force provisioning mode.
 
 If you can manually `SSH` into a machine you can follow these steps:
 
@@ -55,3 +45,8 @@ If you can manually `SSH` into a machine you can follow these steps:
 If you created a provisioning app, program it to add an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>.
 
 Follow the instructions to [complete end-user setup for a machine](/manage/fleet/provision/end-user-setup/) and configure the new network settings.
+
+## Connect to multiple networks
+
+If your machine frequently moves between different WiFi networks, you can [add the credentials for additional networks in the machine settings](/manage/fleet/system-settings/#configure-networks).
+Your machine must still be internet-connected for this configuration to take effect.
