@@ -33,7 +33,6 @@ Viam adapts software engineering paradigms to building machines for the physical
 
 You can build many types of robotics project on Viam, from single-component projects to human-in-the-loop or AI-powered autonomous intelligent systems.
 
-- [Standardized APIs](/dev/reference/apis/): It doesn't matter which robotic arm, motor, or other piece of hardware you are using, the code to operate the hardware is the same.
 - [Hardware agnostic](/operate/hello-world/quickstart/#supported-platforms): Viam runs on almost all single-board computers.
 - [SDKs](/dev/reference/sdks/): Program machines in your favorite programming language.
 - [Module Registry](https://app.viam.com/registry): Find and use a variety of integrations for popular hardware, common logic patterns, machine learning models, and more.
@@ -46,9 +45,10 @@ We recommend starting with the [Quick Start](/operate/hello-world/quickstart/) a
 You can use Viam to build entire projects or to add functionality to existing projects.
 Before you begin, we recommend reading [How to think about building a machine](/operate/hello-world/building/) to understand the building blocks of a machine and how to go from prototype to production.
 
-Once you have a good understanding of the building blocks of a machine, [install Viam on your machine](/operate/install/setup/), add existing components and services.
-Write modules to for additional components, services, or to add control logic to your machine.
-Modules keep your code maintainable as your project grows in complexity because you can make changes to single modules without changing the rest of the project.
+- [Modules](/operate/modules/other-hardware/create-module/): The foundational building blocks of machines which keep your machine code maintainable as your project grows in complexity because you can make changes to single modules without changing the rest of the project.
+- [Standardized APIs](/dev/reference/apis/): It doesn't matter which robotic arm, motor, or other piece of hardware you are using, the code to operate the hardware is the same. This means you can swap hardware as you iterate.
+- [Fragments](/manage/fleet/reuse-configuration/): Reuse configuration chunks across machines. Version control??
+- [Parts and sub-parts](/operate/reference/architecture/parts/): Create arbitrarily complex projects by connecting multiple `viam-server` instances.
 
 ## Use Viam's platform capabilities
 
@@ -58,6 +58,7 @@ The Viam platform offers many builtin capabilities from which you can pick and c
 - [Machine learning and Computer Vision](/data-ai/train/create-dataset/): Build and deploy machine learning models.
 - [Alerting](/data-ai/ai/alert/): Send alerts in the form of email notifications or webhook requests.
 - [Motion Planning](/operate/mobility/motion-concepts/): Smooth and intelligent motion for arms, bases, and gantries.
+- [Viam applications](/operate/control/viam-applications/): Deploy custom web interface for your machines while Viam handles hosting and authentication.
 
 ## Productionize and scale
 
