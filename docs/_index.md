@@ -1,12 +1,9 @@
 ---
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
-description: "Viam integrates with hardware and software on any device. Use AI, machine learning, and more to make any machine smarter — for one machine to thousands."
+description: "Viam adapts software engineering paradigms to building machines for the physical world."
 weight: 1
-no_list: true
 type: "docs"
-noToc: true
-hide_feedback: true
 sitemap:
   priority: 1.0
 outputs:
@@ -16,7 +13,7 @@ imageAlt: "/general/understand.png"
 images: ["/general/understand.png"]
 noedit: true
 date: "2024-09-17"
-updated: "2024-10-11"
+updated: "2025-10-08"
 aliases:
   - "/getting-started/"
   - "/getting-started/high-level-overview"
@@ -25,70 +22,49 @@ aliases:
   - "/viam/app.viam.com/"
   - "/get-started/"
   - "/platform/"
+next: /operate/hello-world/quickstart/
 ---
 
-<div class="max-page">
-  <div class="hero-container">
-    <div class="hero-text">
-      <h1>Viam Documentation</h1>
-      <p>
-        Viam integrates with hardware and software on <b>any device</b> in the physical world. Once you <a href="/operate/install/setup/">set up your machines</a>, you can use Viam SDKs to program your devices and connected hardware. Everything is managed in the cloud and you can use machine learning, data management, and much more for your projects.
-      </p>
-      <div class="cards max-page">
-        <div class="front-card-container">
-          <div class="hover-card primary">
-            <a href="/operate/hello-world/quickstart/" class="noanchor">
-            <div>
-              <p>Get started</p>
-            </div>
-          </a>
-          </div>
-          <div class="cta secondary">
-            <a href="/dev/" class="noanchor"><div>
-            <p>APIs & CLI →</p></div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <img src="docs-hero-image.png" alt="App illustration" class="hero">
-  </div>
-</div>
-<br>
+# Viam Documentation
 
-<!-- Need to use upside down logic because using Subsequent-sibling combinator -->
-<div class="max-page gray-container">
-<h2 id="platform">The Viam platform
-  <div class="copied" id="copied-platform" aria-hidden="true">
-    <div class="copied-notification" id="copied-platform-text"></div>
-  </div>
-</h2>
-<p> Viam allows you to control and program any sensor, actuator or other hardware that is connected to a device. The Viam platform offers builtin capabilities to capture data from devices to the cloud, to build and deploy machine learning models, to alert on problems, and much more. With the connection to the cloud, you can configure, control, and manage your devices from anywhere.</p>
-<br>
-<div class="imgcontcenter">
-<div class="img-overlay-wrap aligncenter">
-  <img src="platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
-  <img src="platform/platform-build-all.svg" alt="Platform diagram with connect elements highlighted" class="aligncenter overlay-platform" id="build-platform" style="width:800px;height:auto" loading="lazy" >
-  <img src="platform/platform-data-all.svg" alt="Platform diagram with apps element highlighted" class="aligncenter overlay-platform" id="data-platform" style="width:800px;height:auto" loading="lazy" >
-  <img src="platform/platform-fleet-all.svg" alt="Platform diagram with motion elements highlighted" class="aligncenter overlay-platform" id="fleet-platform" style="width:800px;height:auto" loading="lazy" >
-</div>
-</div>
+Viam adapts software engineering paradigms to building machines for the physical world.
 
-<br>
+## Get started with Viam
 
-<div class="three-cards hoveraction">
+You can build many types of robotics project on Viam, from single-component projects to human-in-the-loop or AI-powered autonomous intelligent systems.
 
-<div class="col hover-card build-platform">
-<div><span><h3>Build & integrate</h3><p>To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.</p></span><p><a href="operate/">Learn more</a></p></div>
-</div>
+- [Standardized APIs](/dev/reference/apis/): It doesn't matter which robotic arm, motor, or other piece of hardware you are using, the code to operate the hardware is the same.
+- [Hardware agnostic](/operate/hello-world/quickstart/#supported-platforms): Viam runs on almost all single-board computers.
+- [SDKs](/dev/reference/sdks/): Program machines in your favorite programming language.
+- [Module Registry](https://app.viam.com/registry): Find and use a variety of integrations for popular hardware, common logic patterns, machine learning models, and more.
+- [CLI](/dev/tools/cli/): Control, manage, and test from the command-line from anywhere.
 
-<div class="col hover-card data-platform">
-<div><span><h3>Work with Data and AI</h3><p>Viam's data and AI capabilities enable you to capture and sync or upload data, build a dataset, train and deploy ML models, and run inference with computer vision. Then, you can act or alert on inferences.</p></span><p><a href="data-ai/">Learn more</a></p></div>
-</div>
+We recommend starting with the [Quick Start](/operate/hello-world/quickstart/) and following the [Tutorial: Desk Safari](/operate/hello-world/tutorial-desk-safari/) to build your first machine.
 
-<div class="col hover-card fleet-platform">
-<div><span><h3>Deploy, manage, and troubleshoot</h3><p>Viam’s fleet management tooling allows you to remotely deploy and manage software on any fleet of devices. You can monitor all connected devices and troubleshoot any issues - from anywhere.</p></span><p><a href="manage/">Learn more</a></p></div>
-</div>
+## Build your projects
 
-</div>
-</div>
+You can use Viam to build entire projects or to add functionality to existing projects.
+Before you begin, we recommend reading [How to think about building a machine](/operate/hello-world/building/) to understand the building blocks of a machine and how to go from prototype to production.
+
+Once you have a good understanding of the building blocks of a machine, [install Viam on your machine](/operate/install/setup/), add existing components and services.
+Write modules to for additional components, services, or to add control logic to your machine.
+Modules keep your code maintainable as your project grows in complexity because you can make changes to single modules without changing the rest of the project.
+
+## Use Viam's platform capabilities
+
+The Viam platform offers many builtin capabilities from which you can pick and choose, such as:
+
+- [Data Management](/data-ai/capture-data/capture-sync/): Capture data from devices to the cloud.
+- [Machine learning and Computer Vision](/data-ai/train/create-dataset/): Build and deploy machine learning models.
+- [Alerting](/data-ai/ai/alert/): Send alerts in the form of email notifications or webhook requests.
+- [Motion Planning](/operate/mobility/motion-concepts/): Smooth and intelligent motion for arms, bases, and gantries.
+
+## Productionize and scale
+
+When you ship machines, use one or more of the following tools:
+
+- [Provisioning](/manage/fleet/provision/setup/): ship machines with a preconfigured setup so customers can connect them to the internet and get them up and running
+- [Role-based access control](/manage/manage/access/): Grant fine-grained permissions as needed.
+- [Remote monitoring](/manage/troubleshoot/monitor/): monitor, operate, and troubleshoot machines from anywhere in the world
+- [Machine settings](/manage/fleet/system-settings/): manage operating system package updates, network configuration, and system-level logging
+- [Billing](/manage/manage/white-labeled-billing/): bill customers for usage through the Viam platform

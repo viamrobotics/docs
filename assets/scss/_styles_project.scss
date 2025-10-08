@@ -3798,11 +3798,6 @@ footer {
   flex-wrap: wrap;
 }
 
-.frontpage .col.hover-card {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
 .copied {
   display: inline-block;
   margin-left: 2rem;
@@ -4116,3 +4111,8 @@ footer {
 }
 
 /* Feedback System Styles END */
+
+.frontpage .col.hover-card:not(.left):not(.right) {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

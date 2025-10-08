@@ -39,10 +39,17 @@ The Viam platform consists of:
 - A **registry** of modules for popular hardware and common software needs
 - **Cloud-based architecture** for managing machines and controlling configuration updates
 - **SDKs** (Python, Go, TypeScript, C++, Flutter)
+- **CLI** for managing and operating machines and data from the command line
+
+<div class="imgcontcenter">
+<div class="img-overlay-wrap aligncenter">
+  <img src="/platform/platform-all.svg" alt="Platform diagram" id="fleet-platform-all" class="aligncenter overview" style="width:800px;height:auto" >
+</div>
+</div>
 
 ## Machines
 
-A machine consists of at least one computer running `viam-server` (often a single-board computer like a Raspberry Pi or Jetson) along with all the hardware components and software services that the computer controls.
+A machine consists of at least one computer running `viam-server` (anything from a high-powered rack-mount form-factor to a single-board computer like a Raspberry Pi or Jetson) along with all the hardware and software elements being controlled by that instance of `viam-server`.
 
 When you use Viam to build a machine, you create exactly what you need by mixing and matching different building blocks:
 
