@@ -88,7 +88,7 @@ Use the **...** menu next to edit the location name to `Development`, then click
 Connect a PM sensor to a USB port on the machine's SBC.
 Then connect your device to power.
 
-If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/operate/install/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) to install a compatible operating system.
+If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/operate/install/setup/#prerequisites) to install a compatible operating system.
 You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 Enable serial communication so that the SBC can communicate with the air quality sensor.
