@@ -338,7 +338,7 @@ When you customize the hostname or other settings, the Raspberry Pi Imager creat
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-See [`viam-server` Platform requirements](/operate/install/setup/#prerequisite-make-sure-you-have-a-supported-operating-system) and [`viam-micro-server` hardware requirements](/operate/install/setup-micro/#supported-microcontrollers).
+See [`viam-server` Platform requirements](/operate/install/setup/#prerequisites) and [`viam-micro-server` hardware requirements](/operate/install/setup-micro/#supported-microcontrollers).
 
 {{% /tab %}}
 {{< /tabs >}}
