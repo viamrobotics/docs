@@ -10,7 +10,7 @@ typescript_resource_overrides = {
     "movement_sensor": "MovementSensor",
     "power_sensor": "PowerSensor",
     "vision": "Vision",
-    "robot": "Robot",
+    "robot": "",
     "data": "Data",
     "dataset": "Data",
     "data_sync": "Data",
@@ -72,6 +72,9 @@ class TypeScriptParser:
             ## Scrape each parent method tag and all contained child tags for TypeScript by resource.
             ## TODO: Handle resources with 0 implemented methods for this SDK better.
             soup = make_soup(url)
+            if not soup:
+                print(f"DEBUG: No soup for {url}")
+                continue
 
             for a in soup.find_all('a'):
                 if a.get('href') and not a.get('href').startswith('http'):

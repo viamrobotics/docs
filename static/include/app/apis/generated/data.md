@@ -559,6 +559,7 @@ Obtain unified tabular data and metadata, queried with MQL.
 - `use_recent_data` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Whether to query blob storage or your recent data store. Defaults to False.. Deprecated, use tabular_data_source_type instead.
 - `tabular_data_source_type` ([viam.proto.app.data.TabularDataSourceType.ValueType](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.TabularDataSourceType)) (required): The data source to query. Defaults to TABULAR_DATA_SOURCE_TYPE_STANDARD.
 - `pipeline_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The ID of the data pipeline to query. Defaults to None. Required if tabular_data_source_type is TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK.
+- `query_prefix_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional field that can be used to specify a saved query to run.
 
 **Returns:**
 
@@ -606,6 +607,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data
   store. Defaults to false. Deprecated \- use dataSource instead.
 - `tabularDataSource` ([TabularDataSource](https://ts.viam.dev/classes/dataApi.TabularDataSource.html)) (optional)
+- `queryPrefixName` (string) (optional): Optional name of the query prefix.
 
 **Returns:**
 
@@ -642,6 +644,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 - `organizationId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `query` dynamic (required)
 - `useRecentData` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
+- `queryPrefixName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
 
 **Returns:**
 
@@ -2531,7 +2534,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `name` (string) (required): The name of the data pipeline.
 - `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
 - `schedule` (string) (required): The schedule to run the query on (cron expression).
-- `enableBackfill` (boolean) (required)
+- `enableBackfill` (boolean) (required): Whether to enable backfill for the data pipeline.
 - `dataSourceType` ([TabularDataSourceType](https://ts.viam.dev/enums/dataApi.TabularDataSourceType.html)) (optional): The type of data source to use for the data pipeline.
 
 **Returns:**

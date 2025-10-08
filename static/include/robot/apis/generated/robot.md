@@ -38,7 +38,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 const operations = await machine.getOperations();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getoperations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getoperations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -100,7 +100,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 const machineStatus = await machine.getMachineStatus();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmachinestatus).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getmachinestatus).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -145,7 +145,7 @@ Get the list of sessions currently connected to the robot.
 const sessions = await machine.getSessions();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getsessions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getsessions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -209,7 +209,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 const resourceNames = await machine.resourceNames();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcenames).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#resourcenames).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -235,7 +235,7 @@ Get a list of all resource types.
 const resourceRPCSubtypes = await machine.resourceRPCSubtypes();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#resourcerpcsubtypes).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#resourcerpcsubtypes).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -280,7 +280,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 await machine.cancelOperation('INSERT OPERATION ID');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#canceloperation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#canceloperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -326,7 +326,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 await machine.blockForOperation('INSERT OPERATION ID');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#blockforoperation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#blockforoperation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -395,7 +395,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 const frameSystemConfig = await machine.frameSystemConfig();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#framesystemconfig).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#framesystemconfig).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -485,7 +485,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformpose).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#transformpose).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -530,7 +530,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<Uint8Array>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#transformpcd).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#transformpcd).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -598,7 +598,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 const models = await machine.getModelsFromModules();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getmodelsfrommodules).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getmodelsfrommodules).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -684,7 +684,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 await machine.stopAll();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#stopall).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#stopall).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -751,7 +751,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 await machine.restartModule('namespace:module:model', 'my_model_name');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#restartmodule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#restartmodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -848,7 +848,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 const cloudMetadata = await machine.getCloudMetadata();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getcloudmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getcloudmetadata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -923,7 +923,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 - (Promise<[GetVersionResponse](https://ts.viam.dev/classes/robotApi.GetVersionResponse.html)>)
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/RobotClient.html#getversion).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#getversion).
 
 {{% /tab %}}
 {{< /tabs >}}
