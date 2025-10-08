@@ -9,7 +9,6 @@ import (
 
   "github.com/golang/geo/r3"
   "go.viam.com/rdk/components/arm"
-  "go.viam.com/rdk/components/gripper"
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/referenceframe"
   "go.viam.com/rdk/robot/client"
