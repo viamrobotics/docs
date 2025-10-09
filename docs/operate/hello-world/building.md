@@ -6,8 +6,7 @@ layout: "docs"
 type: "docs"
 images: ["/icons/components.png"]
 imageAlt: "Viam building blocks"
-description: "Viam works by breaking complex projects into composable building blocks.
-With this approach, your project's complexities become manageable, and more importantly, you gain flexibility."
+description: "Viam works by breaking complex projects into composable building blocks. Your project's complexities become manageable and you gain flexibility."
 modulescript: true
 aliases:
   - "/tutorials/build-a-mock-robot/"

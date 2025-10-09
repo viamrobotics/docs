@@ -226,7 +226,7 @@ Update the `reconfigure` method to initialize all the variables:
     ):
         # ...
         arm_name = config.attributes.fields["arm_name"].string_value
-        arm_resource_name = ArmClient.get_resource_name(arm_name)
+        arm_resource_name = Arm.get_resource_name(arm_name)
 
         if arm_resource_name not in dependencies:
             raise KeyError(f"Arm component '{arm_name}' not found in "
@@ -234,7 +234,7 @@ Update the `reconfigure` method to initialize all the variables:
                            f"{list(dependencies.keys())}")
 
         arm_resource = dependencies[arm_resource_name]
-        self.arm = cast(ArmClient, arm_resource)
+        self.arm = cast(Arm, arm_resource)
 
         return super().reconfigure(config, dependencies)
 ```
@@ -244,7 +244,7 @@ Update the `reconfigure` method to initialize all the variables:
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Implement the API method(s).**
+**Implement the API methods.**
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -285,11 +285,13 @@ The arm wrapper resource uses the vision service to check for people.
 If a person is detected, the resource raises an error, otherwise it passes the command to the arm.
 
 ```python
-    async def _is_safe_to_move(detector, camera_name):
-        detections = await detector.get_detections_from_camera(camera_name)
+    async def _is_safe_to_move(self):
+        detections = await self.vision_service.get_detections_from_camera(self.camera_name)
         for d in detections:
-            if d.confidence > 0.4 and d.class_name == "PERSON":
+            if d.confidence > 0.4 and d.class_name == "Person":
+                self.logger.warn(f"Detected {d.class_name} with confidence {d.confidence}.")
                 return False
+        self.logger.warn("No person detected. Safe arm will move.")
         return True
 
     async def move_to_position(
@@ -300,8 +302,8 @@ If a person is detected, the resource raises an error, otherwise it passes the c
         timeout: Optional[float] = None,
         **kwargs
     ):
-        if await _is_safe_to_move(self.vision_service, self.camera_name):
-            await self.arm.move_to_position(pose, extra, timeout, **kwargs)
+        if await self._is_safe_to_move():
+            await self.arm.move_to_position(pose, extra=extra, timeout=timeout)
         else:
             raise ValueError("Person detected. Safe arm will not move.")
 
@@ -313,10 +315,24 @@ If a person is detected, the resource raises an error, otherwise it passes the c
         timeout: Optional[float] = None,
         **kwargs
     ):
-        if await _is_safe_to_move(self.vision_service, self.camera_name):
-            await self.arm.move_to_joint_positions(positions, extra, timeout, **kwargs)
+        if await self._is_safe_to_move():
+            await self.arm.move_to_joint_positions(positions, extra=extra, timeout=timeout)
         else:
             raise ValueError("Person detected. Safe arm will not move.")
+```
+
+All other methods pass the method call through to the `self.arm` resource.
+For example:
+
+```python
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        return await self.arm.do_command(command, timeout, **kwargs)
 ```
 
 {{% /tab %}}
