@@ -13,6 +13,7 @@ aliases:
   - "/tutorials/build-a-mock-robot/"
   - "/tutorials/how-to-build-a-mock-robot/"
   - "/tutorials/configure/build-a-mock-robot/"
+date: "2025-10-09"
 ---
 
 Viam adapts software engineering paradigms to building machines for the physical world.
