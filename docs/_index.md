@@ -34,6 +34,7 @@ Viam adapts software engineering paradigms to building machines for the physical
 You can build many types of robotics project on Viam, from single-component projects to human-in-the-loop or AI-powered autonomous intelligent systems.
 
 - [Hardware agnostic](/operate/hello-world/quickstart/#supported-platforms): Viam runs on almost all single-board computers.
+- [Builder UI](/operate/modules/supported-hardware/#configure-hardware-on-your-machine): Configure and test hardware and software with a simple interface.
 - [SDKs](/dev/reference/sdks/): Program machines in your favorite programming language.
 - [Module Registry](https://app.viam.com/registry): Find and use a variety of integrations for popular hardware, common logic patterns, machine learning models, and more.
 - [CLI](/dev/tools/cli/): Control, manage, and test from the command-line from anywhere.
