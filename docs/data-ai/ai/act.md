@@ -15,6 +15,20 @@ At the end of each step, you'll learn how to apply the step to a fictional examp
 
 ## Prerequisites
 
+{{% expand "A running machine connected to Viam." %}}
+
+{{% snippet "setup-both.md" %}}
+
+{{% /expand%}}
+
+{{< expand "A configured camera and vision service." >}}
+
+Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/run-inference/).
+
+{{< /expand >}}
+
+{{% expand "The Viam CLI." %}}
+
 {{< table >}}
 {{% tablestep start=1 %}}
 **Install the CLI.**
@@ -46,6 +60,8 @@ Organizations for "user@viam.com":
 
 {{% /tablestep %}}
 {{< /table >}}
+
+{{% /expand%}}
 
 ## Create a module
 
