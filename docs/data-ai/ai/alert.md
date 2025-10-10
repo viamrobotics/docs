@@ -5,36 +5,45 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Use machine learning and send alerts when an inference meets certain criteria."
+date: "2025-10-10"
 ---
 
-Triggers can send alerts in the form of email notifications or webhook requests when a new data is synced to the cloud.
-If you then configure a filtered camera or another modular resource that uploads data only when a specific detection or classification is made, you get a notification.
+Triggers can send alerts in the form of email notifications or webhook requests when new data syncs to the cloud.
+
+This guide shows you how to set up an alert system that notifies you when specific objects or classifications are detected in your camera feed.
+The process involves three resources:
+
+1. **Filtered Camera**: Filters images passed to the data management service
+2. **Data Management**: Syncs filtered images to the cloud
+3. **Triggers**: Sends alerts when data syncs
 
 For example, a trigger could alert you when a camera feed detects an anomaly.
 
 ### Prerequisites
 
+Before setting up alerts, you need:
+
 {{% expand "A running machine connected to Viam." %}}
 
 {{% snippet "setup-both.md" %}}
 
-{{% /expand%}}
+{{% /expand %}}
 
 {{< expand "A configured camera and vision service." >}}
 
+You'll need a working vision service that can detect objects or classifications.
+The filtered camera will use this service to determine which images to capture.
 Follow the instructions to [configure a camera](/operate/reference/components/camera/) and [run inference](/data-ai/ai/run-inference/).
 
 {{< /expand >}}
 
 ## Configure a filtered camera
 
-You can use a camera and vision service to sync only images where an inference is made with the [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}}.
-This camera module takes the vision service and applies it to your webcam feed, filtering the output.
-With this filtering, you can save only images that contain people who match your filtering criteria.
+The [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) {{< glossary_tooltip term_id="module" text="module" >}} functions as a normal camera unless used with the data management service.
+When you configure the data management service to capture and sync images from the camera, the camera will only pass images to the data management service if they meet the defined criteria.
+The camera module takes a vision service and applies it to a camera feed using the generated predictions to filter the output for the data management service.
 
-Configure the camera module with classification or object labels according to the labels your ML model provides that you want to alert on.
-
-Complete the following steps to configure your module:
+Configure the filtered camera module to capture images when specific predictions occur:
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
@@ -49,24 +58,26 @@ Complete the following steps to configure your module:
    {{< tabs >}}
    {{% tab name="Template" %}}
 
-   Replace the `<vision-service-name>` and `<confidence-threshold>` placeholders with values for your use case:
+   Replace the `<camera_name>` and `<vision_service_name>` values with the names of your camera and vision service.
+
+   **Choose your detection type**:
+
+   - For **object detection** (bounding boxes around objects): Use the `objects` configuration with the label you want to alert on and remove `classifications`
+   - For **classification** (image-level labels): Use the `classifications` configuration with the label you want to alert on and remove `objects`
+
+   The confidence threshold (0.0-1.0) determines how certain the vision model must be before capturing photos.
+   For example, a confidence threshold of `0.6` only captures photos when the vision model is at least 60% sure that it has correctly identified the desired label.
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-      "camera": "<your_camera_name>",
-      "vision_services": [
-         {
-               "vision": <first_vision_service>,
-               "classifications": ...,
-               "objects": ...
-         },
-         {
-               "vision": <second_vision_service>,
-               "classifications": ...,
-               "objects": ...
-         }
-      ],
-      "window_seconds": <time_window_for_capture>,
+     "camera": "<camera_name>",
+     "vision_services": [
+       {
+         "vision": "<vision_service_name>",
+         "classifications": { "<label>": 0.5 },
+         "objects": { "<label>": 0.5 }
+       }
+     ]
    }
    ```
 
@@ -84,16 +95,12 @@ Complete the following steps to configure your module:
            "NO-Hardhat": 0.6
          }
        }
-     ],
-     "window_seconds": 3
+     ]
    }
    ```
 
    {{% /tab %}}
    {{% /tabs %}}
-
-   The confidence threshold determines the minimum level of certainty required from the vision model to sync data.
-   For example, a confidence threshold of `0.6` syncs data only when the vision model is at least 60% sure that it has correctly identified the desired object type.
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -107,11 +114,12 @@ You can use this to verify your confidence level configuration.
 
 ## Configure data capture and sync
 
-The [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources) can capture images and sync them to the Viam cloud.
+The [data management service](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources) captures data and syncs it to the Viam cloud.
+This step connects your filtered camera to the cloud so that detected images can trigger alerts.
 
-Configure data capture on the `filtered-camera` camera to capture images of detections or classifications:
+Configure data capture on the `filtered-camera` resource to capture images of detections or classifications:
 
-1. First, add the data management service to your machine.
+1. Add the data management service to your machine:
 
    Navigate to your machine's **CONFIGURE** tab.
 
@@ -121,23 +129,25 @@ Configure data capture on the `filtered-camera` camera to capture images of dete
 
    Leave all the default data service attributes as they are and click **Save** in the top right corner of the screen to save your changes.
 
-1. Now you're ready to enable data capture on your detector camera.
+1. Enable data capture on your filtered camera:
    Locate the `objectfilter-cam` panel.
 
-1. Click **Add method**.
+   Click **Add method**.
    Click the **Type** dropdown and select **ReadImage**.
    Set the capture frequency to `0.2` images per second (equivalent to one image every 5 seconds).
-   You can always change the frequency to suit your use case.
+   You can adjust the frequency to suit your use case.
    Set the **MIME type** to `image/jpeg`.
 
-## Set up alerts
+## Configure a trigger on your machine
 
-Triggers send webhook requests or email notifications when certain events happen.
+Triggers send webhook requests or email notifications when certain events happen:
 
-You can use the **Data has been synced to the cloud** (`part_data_ingested`) trigger type to send alerts whenever an image syncs to the cloud from your filtered camera.
-Because the filter only syncs images that contain an anomaly, this trigger sends an alert when an anomaly occurs.
+- Your filtered camera captures an image when it detects the specified objects or classifications
+- The data management service syncs that image to the cloud
+- A trigger detects the sync event and sends your alert
 
-### Configure a trigger on your machine
+Since the filtered camera only captures images that meet the specified criteria, it only syncs images when a label is identified.
+Therefore, if you configure a filtered camera to capture images when an anomaly is detected, an image of the anomaly gets synced, a trigger fires, and an alert is sent.
 
 Follow these steps to configure a trigger to alert when `filtered-camera` syncs an image:
 
@@ -150,40 +160,63 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
 
 1. In the **Data Types** dropdown, select **Binary (image)**.
 
-   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger created with data has been synced to the cloud as the type and binary (image) as the data type." class="shadow imgzoom" >}}
+   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger created with 'Data has been synced to the cloud' as the type and 'Binary (image)' as the data type." class="shadow imgzoom" >}}
 
-1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
+1. Add notification methods to the **Webhooks** or **Email** sub-panels:
 
    To add an email notification:
 
    1. Click **Add Email**.
 
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email." class="shadow imgzoom" >}}
+      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email address." class="shadow imgzoom" >}}
 
-   1. Add the email you wish to be notified whenever this trigger is triggered.
-   1. Configure the time between notifications.
+   1. Add the email address you wish to be notified whenever this trigger fires.
 
    To add a webhook notification:
 
    1. Click **Add Webhook**.
 
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL." class="shadow imgzoom" >}}
+      {{<imgproc src="/build/configure/trigger-configured.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example webhook URL." class="shadow imgzoom" >}}
 
    1. Add the URL of your cloud function.
-   1. Configure the time between notifications.
-   1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
-      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
+   1. Write your cloud function to process the [webhook data](/data-ai/reference/triggers-configuration/#webhook-attributes).
+      Use your cloud function to process data or interact with external APIs, such as Twilio, PagerDuty, or Zapier.
 
-1. Configure the time between notifications.
+1. Configure the notification frequency (for example, maximum one alert per hour).
 
 1. Click **Save** in the top right corner of the screen to save your configuration.
 
-## Test the whole system
+## Testing
 
-You've built all the pieces of the system and connected them together.
-Now it's time to test the whole thing.
+1. **Verify your setup**:
 
-Make sure `viam-server` is running on your machine.
-Run the camera and wait for an anomaly to appear.
-Within a few minutes of the anomaly, you should see your email or webhook alert.
-Congratulations, you've successfully built your anomaly detection monitor!
+   - Make sure `viam-server` is running on your machine
+   - Confirm your vision service is working by checking the **TEST** panel
+   - Ensure your filtered camera configuration matches your vision service's output labels
+
+2. **Test the detection**:
+
+   - Present the camera with an object or situation that should trigger the alert
+   - Watch the vision service **TEST** panel to confirm detections are occurring
+   - Check that the confidence levels meet your threshold
+
+3. **Monitor the data flow**:
+   - The data management service attempts to get an image from the filtered camera based on the configured capture interval
+   - Once the data management service captures an image, the image will sync when the next sync interval is reached
+   - At this point you will receive your email or webhook alert
+
+### Troubleshooting
+
+#### No alerts received?
+
+1. Check the **LOGS** tab
+1. Check that your vision service is detecting objects with sufficient confidence
+1. Verify your filtered camera configuration matches the vision service output
+1. Ensure the data management service is capturing images (check the data tab)
+1. Confirm your trigger configuration is correct
+
+#### Too many alerts?
+
+If you're getting too many false positives, increase your confidence threshold in the filtered camera configuration.
+
+If you receive too many alerts and want to limit them to once per hour maximum, adjust the notification frequency in your trigger settings.
