@@ -29,7 +29,7 @@ let MACHINE_ADDRESS = ""; // the address of the machine you want to capture imag
 let CLASSIFIER_NAME = ""; // the name of the classifier you want to use
 let DETECTOR_NAME = ""; // the name of the detector you want to use
 let CAMERA_NAME = ""; // the name of the camera you want to capture images from
-let PART_ID = ""; // the part ID of the binary data you want to add to the dataset
+let PART_ID = ""; // the part ID of the machine part that captured the images
 
 API_KEY = process.env.VIAM_API_KEY || "";
 API_KEY_ID = process.env.VIAM_API_KEY_ID || "";

@@ -1,6 +1,6 @@
 ---
 linkTitle: "Train TF or TFLite model"
-title: "Train a TF or TFlite model"
+title: "Train a TF or TFLite model"
 weight: 50
 type: "docs"
 tags: ["vision", "data", "services"]
@@ -25,10 +25,11 @@ languages: []
 viamresources: ["data_manager", "mlmodel", "vision"]
 platformarea: ["ml"]
 date: "2024-12-03"
+updated: "2025-10-13"
 ---
 
 Many machines have cameras through which they can monitor their environment.
-With machine leaning (ML), you can train models on patterns within image data.
+With machine learning (ML), you can train models on patterns within image data.
 Follow this guide to use your image data to train an ML model, so that your machine can make inferences about its environment.
 
 ## Prerequisites
@@ -57,7 +58,7 @@ Now that you have a dataset that contains your labeled images, you are ready to 
 {{% tablestep start=1 %}}
 **Find your training dataset**
 
-Navigate to your list of [**DATASETS**](https://app.viam.com/data/datasets) and select the one you want to train on.
+Navigate to your list of [**DATASETS**](https://app.viam.com/datasets) and select the one you want to train on.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -79,7 +80,7 @@ Select between:
 <!-- prettier-ignore -->
 | Type | Description |
 | ---- | ----------- |
-| **TensorFlow Lite (TF Lite)** | Best for use on mobile and edge devices with minimal resources. |
+| **TensorFlow Lite (TFLite)** | Best for use on mobile and edge devices with minimal resources. |
 | **TensorFlow (TF)** | Best for general-purpose tasks with more computational power. |
 
 {{% /tablestep %}}
@@ -95,7 +96,7 @@ Select a **Task Type**:
 - **Multi Label Classification**: The resulting model predicts one or more of the selected labels per image.
 - **Object Detection**: The resulting model predicts either no detected objects or any number of object labels alongside their locations per image.
 
-Select the labels you want to train your model on from the **Labels** section. Unselected labels will be ignored, and will not be part of the resulting model.
+Select the labels you want to train your model on from the **Labels** section. Unselected labels will be ignored and will not be part of the resulting model.
 
 Click **Train model**.
 
@@ -123,7 +124,7 @@ Your training script may output logs at the error level but still succeed.
 
 {{< /alert >}}
 
-You can also view your training jobs' logs with the [`viam train logs`](/dev/tools/cli/#train) command.
+You can also view logs for your training jobs with the [`viam train logs`](/dev/tools/cli/#train) command.
 
 Training logs expire after 7 days.
 
@@ -136,7 +137,7 @@ Training logs expire after 7 days.
 
 Once your model has finished training, you can test it.
 
-Ideally, you want your ML model to be able to work with a high level of confidence.
+Ideally, you want your ML model to perform with high confidence.
 As you test it, if you notice faulty predictions or confidence scores, you will need to adjust your dataset and retrain your model.
 
 If you trained a _classification_ model, you can test it with the following instructions.
@@ -146,7 +147,7 @@ If you trained a _classification_ model, you can test it with the following inst
 1. In the **Run model** section, select your model and specify a confidence threshold.
 1. Click **Run model**.
 
-If the results exceed the confidence threshold, the **Run model** section shows a label and the responding confidence threshold.
+If the results exceed the confidence threshold, the **Run model** section shows a label and the corresponding confidence score.
 
 You can test both TensorFlow Lite detection models and TensorFlow Lite classifier models using the following resources together:
 
@@ -157,9 +158,9 @@ You can test both TensorFlow Lite detection models and TensorFlow Lite classifie
 ## Iterate on your ML model
 
 You are unlikely to account for all false positives or false negatives during your first round of training.
-To improve your ML model, try the following these steps:
+To improve your ML model, try the following steps:
 
-- **More data means better models**: Add images capturing edge cases to your training dataset, annotate them, and re-train your model using the new data.
+- **More data means better models**: Add images capturing edge cases to your training dataset, annotate them, and retrain your model using the new data.
 - **Include counterexamples**: For detections, use images with and without the object you’re looking to detect.
   This helps the model distinguish the target object from the background and reduces the chances of false positives by teaching it what the object is not.
   For classifications, ensure you cover a full range of data the classifier might encounter.
@@ -172,12 +173,12 @@ To improve your ML model, try the following these steps:
 - **Vary your angles and distances**: Include image examples from every angle and distance that the model will see in normal use.
 - **Ensure labeling accuracy**: Make sure the labels or bounding box annotations you give are accurate.
 
-To capture more images and re-train your model using those images, complete the following steps:
+To capture more images and retrain your model using those images, complete the following steps:
 
 1. Add the images to your training dataset.
-   You can use images from existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/capture-annotate-images/).
+   You can use images from existing data on the [**DATA** page](https://app.viam.com/data/) or [capture new images and add them to your training dataset](/data-ai/train/create-dataset/#capture-images).
 
-1. Visit the **DATASET** tab of the **DATA** page and annotate the images.
+1. Open your dataset on the **DATASETS** tab and annotate the images.
 
 1. Repeat the [steps to train a machine learning model](/data-ai/train/train-tf-tflite/#train-a-machine-learning-model) and create a new version of your ML model.
    Your machines will automatically update to the new version of the model soon after release.
@@ -190,7 +191,7 @@ The next step is to [deploy](/data-ai/ai/deploy/) the ML model and then [act](/d
 See the following tutorials for examples of using machine learning models to make your machine do things based on its inferences about its environment:
 
 {{< cards >}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" customTitle="Desk Safari Game" %}}
 {{% card link="/tutorials/projects/helmet/" %}}
-{{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{% card link="/tutorials/projects/pet-treat-dispenser/" customTitle="Smart Pet Feeder" %}}
 {{< /cards >}}

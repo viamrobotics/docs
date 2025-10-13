@@ -1,11 +1,16 @@
 ---
-linkTitle: "Capture and annotate images"
-title: "Capture and annotate images for training"
+linkTitle: "Annotate images"
+title: "Annotate images for training"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Capture images that you can use to train a machine learning model."
+description: "Annotate images to train a machine learning model."
+date: "2025-10-11"
+aliases:
+  - /data-ai/train/capture-annotate-images/
 ---
+
+To train a machine learning model, you must have a set of annotated images to train on.
 
 ## Prerequisites
 
@@ -23,85 +28,21 @@ Follow the guide to configure a [webcam](/operate/reference/components/camera/we
 
 {{< alert title="Tip" color="tip" >}}
 
-For the best results, use the same camera for both training data capture and production deployment.
+For the best results, use the same camera for both capturing training data and production deployment.
 
 {{< /alert >}}
-
-## Capture images
-
-### Capture individual images
-
-{{< tabs >}}
-{{% tab name="Web UI" %}}
-
-You can add images to a dataset directly from a camera or vision component feed in the machine's **CONTROL** or **CONFIGURATION** tabs.
-
-To add an image directly to a dataset from a visual feed, complete the following steps:
-
-1. Open the **TEST** panel of any camera or vision service component to view a feed of images from the camera.
-1. Click the button marked with the camera icon to save the currently displayed image to a dataset:
-   {{< imgproc src="/components/camera/add_image_to_dataset_button.png" alt="A button marked with the outline of a camera, emphasized in red" resize="800x" style="width:500px" class="imgzoom shadow" >}}
-1. Select an existing dataset.
-1. Click **Add** to add the image to the selected dataset.
-1. When you see a success notification that reads "Saved image to dataset", you have successfully added the image to the dataset.
-
-To view images added to your dataset, go to the **DATA** page, open the [**DATASETS** tab](https://app.viam.com/data/datasets), then select your dataset.
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`data_client.binary_data_capture_upload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
-
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="42-55" >}}
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
-
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="56-75" >}}
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-To capture an image and add it to your **DATA** page, fetch an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
-
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="45-53" >}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Once you've captured enough images for training, you must [annotate](#annotate-images) the images before you can use them to train a model.
-
-### Capture images over time
-
-To capture a large number of images for training an ML model, use the data management service to [capture and sync image data](/data-ai/capture-data/capture-sync/) from your camera.
-
-When you sync with data management, Viam stores the images saved by capture and sync on the [**DATA** page](https://app.viam.com/data/), but does not add the images to a dataset.
-To use your captured images for training, [add the images to a dataset](/data-ai/train/create-dataset/#add-to-a-dataset) and [annotate them](#annotate-images), so you can use them to train a model.
-
-{{< alert title="Tip" color="tip" >}}
-
-Once you have enough images, consider disabling data capture to [avoid incurring fees](https://www.viam.com/product/pricing) for capturing large amounts of training data.
-
-{{< /alert >}}
-
-You can either manually add annotations through the Viam web UI, or add annotations with an existing ML model.
 
 ## Annotate images
 
 You must annotate images in order to train an ML model on them.
-Viam supports two ways to annotate an image:
+Viam supports two annotations for images:
 
-- [Add tags to whole images (classification)](#add-tags-to-an-image)
-- [Label bounding boxes around objects within images (object detection)](#label-objects-within-an-image)
+- [Tags for whole images (classification)](#add-tags-to-an-image)
+- [Bounding boxes around objects within images (object detection)](#label-objects-within-an-image)
 
 ### Add tags to an image
 
-Use tags to add metadata about an entire image, for example if the quality of a manufacturing output is `good` or `bad`.
+Use tags to add metadata about an entire image, for example whether the quality of a manufacturing output is `good` or `bad`.
 
 {{< alert title="Tip" color="tip" >}}
 
@@ -116,6 +57,8 @@ You can tag your data automatically with an existing ML model, if you have one, 
 
 {{< tabs >}}
 {{% tab name="Automatic" %}}
+
+To use auto-predictions, you must first [add your images to a dataset](/data-ai/train/create-dataset/).
 
 1. Navigate to your [dataset's](https://app.viam.com/datasets/) page.
 1. Click on **Get auto-predictions**.
@@ -190,6 +133,8 @@ You can label your data automatically with an existing ML model, if you have one
 
 {{< tabs >}}
 {{% tab name="Automatic" %}}
+
+To use auto-predictions, you must first [add your images to a dataset](/data-ai/train/create-dataset/).
 
 1. Navigate to your [dataset's](https://app.viam.com/datasets/) page.
 1. Click on **Get auto-predictions**.

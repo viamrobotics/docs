@@ -11,7 +11,7 @@ API_KEY = ""  # API key, find or create in your organization settings
 API_KEY_ID = ""  # API key ID, find or create in your organization settings
 MACHINE_ADDRESS = ""  # the address of the machine you want to capture images from
 CAMERA_NAME = ""  # the name of the camera you want to capture images from
-PART_ID = ""  # the part ID of the binary data you want to add to the dataset
+PART_ID = ""  # the part ID of the machine part that captured the images
 
 async def connect() -> ViamClient:
     """Establish a connection to the Viam client using API credentials."""

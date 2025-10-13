@@ -5,7 +5,7 @@ import { createViamClient } from "@viamrobotics/sdk";
 let API_KEY = "";  // API key, find or create in your organization settings
 let API_KEY_ID = "";  // API key ID, find or create in your organization settings
 let ORG_ID = "";  // your organization ID, find in your organization settings
-let PART_ID = "";  // the part ID of the binary data you want to add to the dataset
+let PART_ID = "";  // the part ID of the machine part that captured the images
 let DATASET_ID = "";  // the ID of the dataset you want to add the image to
 const MAX_MATCHES = 50;  // the maximum number of binary data objects to fetch
 // :remove-start:
