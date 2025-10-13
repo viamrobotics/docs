@@ -16,7 +16,7 @@ DATASET_ID = ""  # the ID of the dataset you want to add the image to
 MACHINE_ADDRESS = ""  # the address of the machine you want to capture images from
 CLASSIFIER_NAME = ""  # the name of the classifier you want to use
 CAMERA_NAME = ""  # the name of the camera you want to capture images from
-PART_ID = ""  # the part ID of the binary data you want to add to the dataset
+PART_ID = ""  # the part ID of the machine part that captured the images
 
 
 async def connect() -> ViamClient:

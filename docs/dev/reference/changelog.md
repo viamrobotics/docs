@@ -105,7 +105,7 @@ You can now configure to start modules with a TCP connection. See [Module Config
 {{% changelog color="added" title="Auto-predictions UI for dataset annotation" date="2025-07-11" %}}
 
 You can now automatically tag your dataset images using existing ML models with the new auto-predictions feature.
-For more information, see [Capture and annotate images](/data-ai/train/capture-annotate-images/).
+For more information, see [Annotate images](/data-ai/train/annotate-images/).
 
 {{% /changelog %}}
 

@@ -16,12 +16,13 @@ viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
 description: "If you want to train models to custom specifications, write a custom training script and upload it to the Viam Registry."
 date: "2024-12-04"
+updated: "2025-10-13"
 ---
 
 You can create custom Python training scripts that train machine learning models to your specifications using PyTorch, TensorFlow, TFLite, ONNX, or any other ML framework.
 Once you upload a training script to the [registry](https://app.viam.com/registry?type=Training+Script), you can use it to build ML models in the Viam Cloud based on your datasets.
 
-You can also use training scripts that are in the registry already.
+You can also use training scripts that are already in the registry.
 If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
 
 ## Prerequisites
@@ -30,7 +31,7 @@ If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
 
 For images, follow the instructions to [Create a dataset](/data-ai/train/create-dataset/) to create a dataset and label data.
 
-For other data, use the [Data Client API](/dev/reference/apis/data-client/) from within the training script to store data in the Viam Cloud.
+For other data, use the [Data Client API](/dev/reference/apis/data-client/) to store data in the Viam Cloud.
 
 {{% /expand%}}
 
@@ -83,7 +84,7 @@ setup(
 
 <p><strong>Add <code>training.py</code> code</strong></p>
 
-<p>You can set up your training script to use a hard coded set of labels or allow users to pass in a set of labels when using the training script. Allowing users to pass in labels when using training scripts makes your training script more flexible for reuse.</p>
+<p>You can set up your training script to use a hard-coded set of labels or allow users to pass in a set of labels when using the training script. Allowing users to pass in labels when using training scripts makes your training script more flexible for reuse.</p>
 <p>Copy one of the following templates into <file>training.py</file>, depending on how you want to handle labels:</p>
 
 {{% expand "Click to see the template without parsing labels (recommended for use with UI)" %}}
@@ -106,7 +107,7 @@ API_KEY_ID = os.environ['API_KEY_ID']
 
 DEFAULT_EPOCHS = 200
 
-# This parses the required args for the training script.
+# This parses the required arguments for the training script.
 # The model_dir variable will contain the output directory where
 # the ML model that this script creates should be stored.
 # The data_json variable will contain the metadata for the dataset
@@ -114,8 +115,8 @@ DEFAULT_EPOCHS = 200
 
 
 def parse_args():
-    """Returns dataset file, model output directory, and num_epochs
-    if present. These must be parsed as command line arguments and then used
+    """Returns the dataset file, model output directory, and num_epochs,
+    if present. These must be parsed as command-line arguments and then used
     as the model input and output, respectively. The number of epochs can be
     used to optionally override the default.
     """
@@ -132,7 +133,7 @@ def parse_args():
 
 # This is used for parsing the dataset file (produced and stored in Viam),
 # parse it to get the label annotations
-# Used for training classifiction models
+# Used for training classification models
 def parse_filenames_and_labels_from_json(
     filename: str, all_labels: ty.List[str], model_type: str
 ) -> ty.Tuple[ty.List[str], ty.List[str]]:
@@ -158,7 +159,7 @@ def parse_filenames_and_labels_from_json(
                 if model_type == multi_label:
                     if annotation["annotation_label"] in all_labels:
                         labels.append(annotation["annotation_label"])
-                # For single label model, we want at most one label.
+                # For a single-label model, we want at most one label.
                 # If multiple valid labels are present, we arbitrarily select
                 # the last one.
                 if model_type == single_label:
@@ -196,7 +197,7 @@ def parse_filenames_and_bboxes_from_json(
                 if annotation["annotation_label"] in all_labels:
                     labels.append(annotation["annotation_label"])
                     # Store coordinates in rel_yxyx format so that
-                    # we can use the keras_cv function
+                    # we can use the KerasCV function
                     coords.append(
                         [
                             annotation["y_min_normalized"],
@@ -219,7 +220,7 @@ def build_and_compile_model(
         labels: list of string lists, where each string list contains up to
         N_LABEL labels associated with an image
         model_type: string single_label or multi_label
-        input_shape: 3D shape of input
+        input_shape: 3D shape of the input
     """
 
     # TODO: Add logic to build and compile model
@@ -228,7 +229,7 @@ def build_and_compile_model(
 
 
 def save_labels(labels: ty.List[str], model_dir: str) -> None:
-    """Saves a label.txt of output labels to the specified model directory.
+    """Saves labels.txt with the output labels to the specified model directory.
     Args:
         labels: list of string lists, where each string list contains up to
         N_LABEL labels associated with an image
@@ -266,7 +267,7 @@ def save_model(
 
 
 if __name__ == "__main__":
-    DATA_JSON, MODEL_DIR = parse_args()
+    DATA_JSON, MODEL_DIR, NUM_EPOCHS, _ = parse_args()
 
     IMG_SIZE = (256, 256)
 
@@ -286,12 +287,12 @@ if __name__ == "__main__":
         or NUM_EPOCHS <= 0 else int(NUM_EPOCHS)
     )
 
-    # Build and compile model on data
+    # Build and compile the model on the data
     model = build_and_compile_model(image_labels, model_type, IMG_SIZE + (3,))
 
     # Save labels.txt file
     save_labels(LABELS + [unknown_label], MODEL_DIR)
-    # Convert the model to tflite
+    # Convert the model to TFLite
     save_model(
         model, MODEL_DIR, "classification_model"
     )
@@ -319,7 +320,7 @@ API_KEY_ID = os.environ['API_KEY_ID']
 
 DEFAULT_EPOCHS = 200
 
-# This parses the required args for the training script.
+# This parses the required arguments for the training script.
 # The model_dir variable will contain the output directory where
 # the ML model that this script creates should be stored.
 # The data_json variable will contain the metadata for the dataset
@@ -327,8 +328,8 @@ DEFAULT_EPOCHS = 200
 
 
 def parse_args():
-    """Returns dataset file, model output directory, labels, and num_epochs
-    if present. These must be parsed as command line arguments and then used
+    """Returns the dataset file, model output directory, labels, and num_epochs,
+    if present. These must be parsed as command-line arguments and then used
     as the model input and output, respectively. The number of epochs can be
     used to optionally override the default.
     """
@@ -357,7 +358,7 @@ def parse_args():
 
 # This is used for parsing the dataset file (produced and stored in Viam),
 # parse it to get the label annotations
-# Used for training classifiction models
+# Used for training classification models
 
 
 def parse_filenames_and_labels_from_json(
@@ -385,7 +386,7 @@ def parse_filenames_and_labels_from_json(
                 if model_type == multi_label:
                     if annotation["annotation_label"] in all_labels:
                         labels.append(annotation["annotation_label"])
-                # For single label model, we want at most one label.
+                # For a single-label model, we want at most one label.
                 # If multiple valid labels are present, we arbitrarily select
                 # the last one.
                 if model_type == single_label:
@@ -423,7 +424,7 @@ def parse_filenames_and_bboxes_from_json(
                 if annotation["annotation_label"] in all_labels:
                     labels.append(annotation["annotation_label"])
                     # Store coordinates in rel_yxyx format so that
-                    # we can use the keras_cv function
+                    # we can use the KerasCV function
                     coords.append(
                         [
                             annotation["y_min_normalized"],
@@ -446,7 +447,7 @@ def build_and_compile_model(
         labels: list of string lists, where each string list contains up to
         N_LABEL labels associated with an image
         model_type: string single_label or multi_label
-        input_shape: 3D shape of input
+        input_shape: 3D shape of the input
     """
 
     # TODO: Add logic to build and compile model
@@ -455,7 +456,7 @@ def build_and_compile_model(
 
 
 def save_labels(labels: ty.List[str], model_dir: str) -> None:
-    """Saves a label.txt of output labels to the specified model directory.
+    """Saves labels.txt with the output labels to the specified model directory.
     Args:
         labels: list of string lists, where each string list contains up to
         N_LABEL labels associated with an image
@@ -510,12 +511,12 @@ if __name__ == "__main__":
         or NUM_EPOCHS <= 0 else int(NUM_EPOCHS)
     )
 
-    # Build and compile model on data
+    # Build and compile the model on the data
     model = build_and_compile_model(image_labels, model_type, IMG_SIZE + (3,))
 
     # Save labels.txt file
     save_labels(LABELS + [unknown_label], MODEL_DIR)
-    # Convert the model to tflite
+    # Convert the model to TFLite
     save_model(
         model, MODEL_DIR, "classification_model"
     )
@@ -528,29 +529,29 @@ if __name__ == "__main__":
 
 <p><strong>Understand template script parsing functionality</strong></p>
 <p>When a training script is run, the Viam platform passes the dataset file for the training and the designated model output directory to the script.</p>
-<p>The template contains functionality to parse the command line inputs and parse annotations from the dataset file.</p>
+<p>The template contains functionality to parse the command-line inputs and parse annotations from the dataset file.</p>
 
-{{% expand "Click to see more information on parsing command line inputs." %}}
+{{% expand "Click to see more information on parsing command-line inputs." %}}
 
-The script you are creating must take the following command line inputs:
+The script you are creating must take the following command-line inputs:
 
 - `dataset_file`: a file containing the data and metadata for the training job
-- `model_output_directory`: the location where the produced model artifacts are saved to
+- `model_output_directory`: the location where the produced model artifacts are saved
 
-If you used the training script template that allows users to pass in labels, it will also take the following command line inputs:
+If you used the training script template that allows users to pass in labels, it also takes the following command-line input:
 
-- `labels`: space separated list of labels, enclosed in single quotes
+- `labels`: space-separated list of labels, enclosed in single quotes
 
 The `parse_args()` function in the template parses your arguments.
 
-You can add additional custom command line inputs by adding them to the `parse_args()` function.
+You can add additional custom command-line inputs by adding them to the `parse_args()` function.
 
 {{% /expand %}}
 
 {{% expand "Click to see more information on parsing annotations from the dataset file." %}}
 
-When you submit a training job to the Viam Cloud, Viam will pass a `dataset_file` to the training script when you train an ML model with it.
-The file contains metadata from the dataset used for the training, including the file path for each data point and any annotations associated with the data.
+When you submit a training job to the Viam Cloud, Viam passes a `dataset_file` to the training script when you train an ML model with it.
+The file contains metadata from the dataset used for training, including the file path for each data point and any annotations associated with the data.
 
 Dataset JSON files for image datasets with bounding box labels and classification labels are formatted as follows:
 
@@ -620,7 +621,7 @@ Dataset JSON files for image datasets with bounding box labels and classificatio
 ```
 
 In your training script, you must parse the dataset file to extract classification or bounding box annotations from the dataset metadata.
-Depending on if you are training a classification or detection model, the template script contains the `parse_filenames_and_labels_from_json()` and the `parse_filenames_and_bboxes_from_json()` function.
+Depending on whether you are training a classification or detection model, the template script contains the `parse_filenames_and_labels_from_json()` and the `parse_filenames_and_bboxes_from_json()` function.
 
 {{% /expand%}}
 
@@ -637,7 +638,7 @@ As an example, you can refer to the logic from <file>model/training.py</file> fr
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Use temporary directory for intermediary files**
+**Use a temporary directory for intermediate files**
 
 If you need to create intermediate or other temporary files, you can write those files to `model_output_directory/tmp`.
 Files in `model_output_directory/tmp` do not get uploaded as part of the final model artifact.
@@ -669,7 +670,7 @@ To access [Viam APIs](/dev/reference/apis/) within a custom training script, use
 
 ```python
 async def connect() -> ViamClient:
-    """Returns a authenticated connection to the ViamClient for the requested
+    """Returns an authenticated connection to the ViamClient for the requested
     org associated with the submitted training job."""
     # The API key and key ID can be accessed programmatically, using the
     # environment variable API_KEY and API_KEY_ID. The user does not need to
@@ -698,14 +699,14 @@ You can get the dataset ID from the dataset page or using the [`viam dataset lis
 viam dataset export --destination=<destination> --dataset-id=<dataset-id> --include-jsonl=true
 ```
 
-The dataset will be formatted like the one Viam produces for the training.
+The dataset will be formatted like the one Viam produces for training.
 Use the `parse_filenames_and_labels_from_json` and `parse_filenames_and_bboxes_from_json` functions to get the images and annotations from your dataset file.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **Run your training script locally**
 
-Install any required dependencies and run your training script specifying the path to the <FILE>dataset.jsonl</FILE> file from your exported dataset:
+Install any required dependencies and run your training script, specifying the path to the <FILE>dataset.jsonl</FILE> file from your exported dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m model.training --dataset_file=/path/to/dataset.jsonl \
@@ -717,13 +718,13 @@ python3 -m model.training --dataset_file=/path/to/dataset.jsonl \
 
 ## Upload your training script
 
-To be able to use your training script in the Viam platform, you must upload it to the Viam Registry.
+To use your training script on the Viam platform, you must upload it to the Viam Registry.
 
 {{< table >}}
 {{% tablestep start=1 %}}
 **Package the training script as a <file>tar.gz</file> source distribution**
 
-Before you can upload your training script to Viam, you have to compress your project folder into a tar.gz file:
+Before you can upload your training script to Viam, you must compress your project folder into a tar.gz file:
 
 ```sh {class="command-line" data-prompt="$"}
 tar -czvf my-training.tar.gz my-training/
@@ -794,7 +795,7 @@ Click **Train model** and select **Train on a custom training script**, then fol
 
 {{% alert title="Tip" color="tip" %}}
 If you used the version of <file>training.py</file> that allows users to pass in labels, your training job will fail with the error `ERROR training.py: error: the following arguments are required: --labels`.
-To use labels, you must use the CLI.
+To pass labels, you must use the CLI.
 {{% /alert %}}
 
 {{% /tab %}}
@@ -814,14 +815,14 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
 
 This command submits a training job to the previously uploaded `MyCustomTrainingScript` with another input dataset, which trains `MyRegistryModel` and publishes that to the registry.
 
-You can get the dataset id from the **DATASET** tab of the **DATA** page or by running the [`viam dataset list`](/dev/tools/cli/#dataset) command.
+You can get the dataset ID from the **DATASET** tab of the **DATA** page or by running the [`viam dataset list`](/dev/tools/cli/#dataset) command.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Check on training job process**
+**Check on training job progress**
 
 You can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
@@ -839,7 +840,7 @@ viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
 {{% tablestep %}}
 **Debug your training job**
 
-From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
+From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click your training job ID to see its logs.
 
 {{< alert title="Note" color="note" >}}
 

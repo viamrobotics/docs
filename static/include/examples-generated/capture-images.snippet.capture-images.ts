@@ -5,7 +5,7 @@ let API_KEY = "";  // API key, find or create in your organization settings
 let API_KEY_ID = "";  // API key ID, find or create in your organization settings
 let MACHINE_ADDRESS = "";  // the address of the machine you want to capture images from
 let CAMERA_NAME = "";  // the name of the camera you want to capture images from
-let PART_ID = "";  // the part ID of the binary data you want to add to the dataset
+let PART_ID = "";  // the part ID of the machine part that captured the images
 
 
 async function connect(): Promise<any> {

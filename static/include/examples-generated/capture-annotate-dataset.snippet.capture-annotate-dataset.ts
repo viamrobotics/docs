@@ -7,7 +7,7 @@ let DATASET_ID = "";  // the ID of the dataset you want to add the image to
 let MACHINE_ADDRESS = "";  // the address of the machine you want to capture images from
 let CLASSIFIER_NAME = "";  // the name of the classifier you want to use
 let CAMERA_NAME = "";  // the name of the camera you want to capture images from
-let PART_ID = "";  // the part ID of the binary data you want to add to the dataset
+let PART_ID = "";  // the part ID of the machine part that captured the images
 
 async function connect(): Promise<any> {
     // Establish a connection to the Viam client using API credentials
