@@ -29,17 +29,6 @@ Get started by installing [`viam-server`](/operate/reference/viam-server/), the 
 
 ## Prerequisites
 
-Check if your system can run `viam-server` by running the following command in your terminal:
-
-{{< tabs >}}
-{{% tab name="Linux" %}}
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-arch=$(uname -m); bits=$(getconf LONG_BIT); [[ ("$arch" == "x86_64" || "$arch" == "aarch64") && "$bits" == "64" ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"
-```
-
-`viam-server` can run on Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures.
-
 If you're using Viam with a single-board computer (SBC) that does not yet have a 64-bit Linux operating system installed, start by flashing an OS.
 For convenience, we provide operating system installation instructions for some popular SBCs:
 
@@ -58,6 +47,17 @@ If your SBC or other computer already has a supported operating system installed
 {{% card link="/operate/reference/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
 {{< /expand >}}
+
+Check if your system can run `viam-server` by running the following command in your terminal:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+arch=$(uname -m); bits=$(getconf LONG_BIT); [[ ("$arch" == "x86_64" || "$arch" == "aarch64") && "$bits" == "64" ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"
+```
+
+`viam-server` can run on Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures.
 
 {{% /tab %}}
 {{% tab name="macOS" %}}
