@@ -88,7 +88,7 @@ If you wish to test your control logic locally, follow these instructions on the
 
 ## Program control logic in module
 
-Open the file <FILE>src/models/control_logic.py</FILE> to add your control logic to it.
+Open the python file in the <FILE>src/models/</FILE> folder to add your control logic to it.
 
 The following example shows how you might implement a counter that starts counting when you send a `start` command and stops when it receives a `stop` command.
 
