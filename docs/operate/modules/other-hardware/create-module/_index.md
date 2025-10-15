@@ -397,7 +397,7 @@ This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported 
 {{% /hiddencontent %}}
 
 {{< table >}}
-{{< tablestep >}}
+{{< tablestep start=1 >}}
 Open <file>module.go</file> and add necessary imports.
 {{% /tablestep %}}
 {{< tablestep >}}
@@ -699,7 +699,6 @@ This environment is where the local module will run.
 From within the module directory, compile your module into a single executable:
 
 ```sh {class="command-line" data-prompt="$" data-output="5-10"}
-make setup
 viam module build local
 ```
 
