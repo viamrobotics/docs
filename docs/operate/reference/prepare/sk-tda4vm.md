@@ -107,12 +107,16 @@ From the SSH session on the TDA4VM board:
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
 ## Next steps
 
 {{< cards >}}
 {{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
 {{% card link="/dev/tools/tutorials/" %}}
-{{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
 ## Need assistance?

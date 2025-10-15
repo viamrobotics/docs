@@ -62,6 +62,18 @@ sudo apt update && sudo apt upgrade
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
+## Next steps
+
+{{< cards >}}
+{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
+{{% card link="/dev/tools/tutorials/" %}}
+{{< /cards >}}
+
 ## Troubleshooting
 
 Visit the [Odroid Forum](https://forum.odroid.com/index.php) for troubleshooting tips and tricks specific to the Odroid-C4.

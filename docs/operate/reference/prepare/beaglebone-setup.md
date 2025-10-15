@@ -83,6 +83,18 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
+## Next steps
+
+{{< cards >}}
+{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
+{{% card link="/dev/tools/tutorials/" %}}
+{{< /cards >}}
+
 ## Troubleshooting
 
 If you experience any issues getting Viam working on your BeagleBone, consult the [BeagleBone documentation](https://docs.beagleboard.org/latest/boards/beaglebone/ai-64/02-quick-start.html) for help updating your BeagleBone.
@@ -90,10 +102,3 @@ If you experience any issues getting Viam working on your BeagleBone, consult th
 {{< snippet "social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
-
-## Next steps
-
-{{< cards >}}
-{{% card link="/operate/modules/supported-hardware/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
-{{< /cards >}}

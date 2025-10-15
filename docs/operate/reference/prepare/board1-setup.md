@@ -60,6 +60,18 @@ Once you're connected to your board, you can verify all packages are up to date 
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
+## Next steps
+
+{{< cards >}}
+{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
+{{% card link="/dev/tools/tutorials/" %}}
+{{< /cards >}}
+
 ## Troubleshooting
 
 If you experience any issues getting Viam to work on your <board-series-model>, consult the [<board-series-model> documentation](http://example.com).
@@ -67,10 +79,3 @@ If you experience any issues getting Viam to work on your <board-series-model>, 
 {{< snippet "social.md" >}}
 
 You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
-
-## Next steps
-
-{{< cards >}}
-{{% card link="/operate/modules/supported-hardware/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
-{{< /cards >}}

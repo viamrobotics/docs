@@ -173,6 +173,12 @@ Be sure that you remember the `hostname` and `username` you set, as you will nee
 
     Remove the microSD card from your computer when the installation is complete.
 
+    {{< alert title="Tip: How to think about building a machine" color="tip" >}}
+
+While the Imager is flashing your microSD card, we recommend reading [How to think about building a machine](/operate/hello-world/building/).
+
+    {{< /alert >}}
+
 2.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
 
@@ -237,12 +243,16 @@ If you are using hardware that requires these protocols, you must enable support
 
 {{< readfile "/static/include/install/install-linux.md" >}}
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
 ## Next steps
 
 {{< cards >}}
 {{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
 {{% card link="/dev/tools/tutorials/" %}}
-{{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

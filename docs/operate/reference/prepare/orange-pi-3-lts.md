@@ -85,9 +85,21 @@ Complete the following instructions to install `viam-server`, noting that if you
 
 {{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
 ## Next steps
 
 [Configure an `orangepi` board as a component](https://github.com/viam-modules/orange-pi/) to integrate the GPIO pins of the single-board computer into your smart machine.
+
+Then continue by configuring connected hardware or by following a tutorial:
+
+{{< cards >}}
+{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
+{{% card link="/dev/tools/tutorials/" %}}
+{{< /cards >}}
 
 ## Troubleshooting
 

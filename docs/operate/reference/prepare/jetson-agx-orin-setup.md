@@ -119,12 +119,16 @@ For a Jetson AGX Orin, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
+## Try an example
+
+{{< readfile "/static/include/install/try-example.md" >}}
+
 ## Next steps
 
 {{< cards >}}
 {{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
 {{% card link="/dev/tools/tutorials/" %}}
-{{% card link="/dev/reference/sdks/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
