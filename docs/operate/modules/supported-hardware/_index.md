@@ -21,6 +21,7 @@ aliases:
   - /registry/program/extend/modular-resources/configure/
   - /how-tos/use-cases/configure/
   - /use-cases/configure/
+  - /operate/get-started/supported-hardware/
 ---
 
 ## About the Viam Registry of supported hardware and software
