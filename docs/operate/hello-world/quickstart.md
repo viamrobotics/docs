@@ -11,6 +11,7 @@ description: "An introduction to the core concepts you need to know when using V
 aliases:
   - /operate/modules/basics/
 carouselscript: true
+date: "2025-09-26"
 ---
 
 Welcome to the Viam documentation! This page introduces you to the core concepts you need to know when building projects with Viam.

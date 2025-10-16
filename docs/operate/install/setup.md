@@ -23,6 +23,7 @@ aliases:
   - /installation/
   - /get-started/installation/
   - /operate/get-started/setup/
+date: "2025-10-16"
 ---
 
 Get started by installing [`viam-server`](/operate/reference/viam-server/), the open-source software that drives your hardware and connects your device to the cloud.

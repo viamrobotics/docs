@@ -1,4 +1,5 @@
-Install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors).
+`viam-server` is the open-source software that drives your hardware and connects your device to the cloud.
+Install `viam-server` on the computer or single-board computer (SBC) that is directly connected to your hardware (for example sensors, cameras, or motors):
 
 1. Make sure your computer or SBC is powered on and connected to the internet.
 
