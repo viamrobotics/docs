@@ -61,6 +61,10 @@ You must extract the image from the zip file before flashing the microSD card.
    If you receive a warning concerning the size of the microSD card, ensure that you have inserted the proper microSD and also selected the proper device, then click, **Yes, I'm sure** to flash the board.
    The flashing and verification process may take 10-20 minutes, depending on your system.
 
+   {{< alert title="Tip: How to think about building a machine" color="tip" >}}
+   While the Etcher is flashing your microSD card, we recommend reading [How to think about building a machine](/operate/hello-world/building/).
+   {{< /alert >}}
+
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
 
 {{< imgproc alt="Successful image flash completion screen." src="/installation/sk-tda4vm/completed.png" resize="600x" declaredimensions=true class="shadow"  >}}

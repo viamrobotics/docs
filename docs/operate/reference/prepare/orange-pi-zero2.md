@@ -45,6 +45,9 @@ Before you power the board, you need to install an operating system.
 1. Unzip the image.
 1. Insert the micro-SD card into the SD card reader and connect the reader to your development machine.
 1. Follow [this guide](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
+   {{< alert title="Tip: How to think about building a machine" color="tip" >}}
+   While flashing your microSD card, we recommend reading [How to think about building a machine](/operate/hello-world/building/).
+   {{< /alert >}}
 1. Insert the micro-SD into the Orange Pi.
 
 To power your Orange Pi Zero2, connect your power adapter to the Zero2's USB-C port.
