@@ -272,6 +272,7 @@ Create a flat fee invoice and charge the organization immediately. The caller mu
 - `amount` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): the amount to charge in dollars.
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a short description of the charge to display on the invoice PDF (must be 100 characters or less).
 - `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the organization whose branding to use in the invoice confirmation email.
+- `disable_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): whether or not to disable sending an email confirmation for the invoice.
 
 **Returns:**
 
@@ -280,7 +281,7 @@ Create a flat fee invoice and charge the organization immediately. The caller mu
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await billing_client.create_invoice_and_charge_immediately("<ORG-ID-TO-CHARGE>", <AMOUNT>, <DESCRIPTION>, "<ORG-ID-FOR-BRANDING>")
+await billing_client.create_invoice_and_charge_immediately("<ORG-ID-TO-CHARGE>", <AMOUNT>, <DESCRIPTION>, "<ORG-ID-FOR-BRANDING>", False)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.create_invoice_and_charge_immediately).

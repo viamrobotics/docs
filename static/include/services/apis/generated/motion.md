@@ -573,12 +573,11 @@ from viam.components.gripper import Gripper
 from viam.services.motion import MotionClient
 
 # Assume that the connect function is written and will return a valid machine.
-robot = await connect()
+machine = await connect()
 
 motion = MotionClient.from_robot(robot=machine, name="builtin")
-gripperName = "my_gripper"
-gripperPoseInWorld = await motion.get_pose(component_name=gripperName,
-                                        destination_frame="world")
+gripperPoseInWorld = await motion.get_pose(component_name="my_gripper",
+                                           destination_frame="world")
 ```
 
 The following code example gets the pose of the tip of a [gripper](/operate/reference/components/gripper/) named `my_gripper` which is attached to the end of an arm, in the "world" `reference_frame`:
