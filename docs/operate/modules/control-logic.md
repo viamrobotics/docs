@@ -44,7 +44,7 @@ Install the Viam CLI.
 You will use the CLI to generate the template you will use to write your control logic:
 
 {{< alert title="For testing: run on machine" color="note" >}}
-If you wish to test your control logic locally, follow these instructions on the computer you are running `viam-server`.
+If you wish to test your control logic locally, follow these instructions on the computer on which you are running `viam-server`.
 {{< /alert >}}
 
 1. **Install the CLI.**
