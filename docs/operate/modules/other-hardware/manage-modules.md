@@ -36,7 +36,7 @@ Once your module is in the [registry](https://app.viam.com/registry), there are 
 
 ### Update automatically from a GitHub repo with cloud build
 
-Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a tag or release in GitHub:
+Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a new release in GitHub or push a tag to GitHub:
 
 1. Edit your module code and update the [`meta.json`](/operate/modules/other-hardware/create-module/metajson/) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
@@ -65,6 +65,8 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    ```yaml
    on:
+     release:
+       types: [published]
      push:
        tags:
          - "[0-9]+.[0-9]+.[0-9]+"
@@ -256,7 +258,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 1. Add the key ID and value as GitHub repository secrets named `viam_key_id` and `viam_key_value`.
 
-1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
+1. Create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub or push a tag to trigger the build.
    The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
 
    Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/modules/other-hardware/module-configuration/#module-versioning) of the module will automatically update to the new version.
