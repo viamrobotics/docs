@@ -76,7 +76,7 @@ If you wish to test your control logic locally, follow these instructions on the
      If you plan to use the control logic mostly on one component or service, choose the same component or service and implement the control logic in the available API methods for that resource.
      If no resource API fits, use the `Generic` type and implement the logic in the `DoCommand` method.
      All resource APIs contain the generic `DoCommand` method to implement any functionality that does not fit into other API methods.
-     It is often used to implement control logic, as you can pass commands as arbitrary JSON objects, such as {"action": "start"}.
+     `DoCommand` is often used to implement control logic, as you can pass commands as arbitrary JSON objects, such as {"action": "start"}.
 
      For simplicity, this guide uses the generic component which only supports the `DoCommand` method.
 

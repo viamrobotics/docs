@@ -381,7 +381,7 @@ For information on running C++ code see [the instructions on GitHub](https://git
 To run your control code on your machine, create a {{< glossary_tooltip term_id="module" text="module" >}} and deploy it to your machine.
 You can add functionality to the `DoCommand()` method to, for example, start and stop the control code.
 
-For more information, see [Create a module with machine control logic](/operate/modules/control-logic/#add-control-logic-to-your-module).
+For more information, see [Create a module with machine control logic](/operate/modules/control-logic/#program-control-logic-in-module).
 
 ## Debug
 
