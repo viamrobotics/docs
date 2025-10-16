@@ -17,10 +17,13 @@ aliases:
   - "/manage/software/control-logic"
 ---
 
+To write control logic for a machine, you must deploy it in a module.
 This guide shows you how to write a module with control logic for a machine:
 
 1. [Create a module](#create-a-module-with-a-generic-component-template) with a template for the control logic
-1. [Program the control logic](#add-control-logic-to-your-module) using the `DoCommand` method
+1. [Program the control logic](#program-control-logic-in-module) using the `DoCommand` method
+1. [Use other components or services](#use-other-components-or-services) in the control logic
+1. [Test the control logic](#test-the-control-logic) locally
 1. [Package the module](#package-the-control-logic) and upload it to Viam
 1. [Deploy the module](#deploy-the-control-logic) to individual machines using `viam-server`
 1. [Run control logic on the module automatically](#run-control-logic-automatically-with-jobs) with one or more {{< glossary_tooltip term_id="job" text="jobs" >}}
@@ -37,7 +40,12 @@ If your control logic depends on any hardware or software resources to function,
 
 ## Create a module with a generic component template
 
-Install the Viam CLI to generate the template you will use to write your control logic:
+Install the Viam CLI.
+You will use the CLI to generate the template you will use to write your control logic:
+
+{{< alert title="For testing: run on machine" color="note" >}}
+If you wish to test your control logic locally, follow these instructions on the computer you are running `viam-server`.
+{{< /alert >}}
 
 1. **Install the CLI.**
 
@@ -61,11 +69,16 @@ Install the Viam CLI to generate the template you will use to write your control
      In the example snippets below, the namespace is `naomi`.
    - Resource to be added to the module: `Generic Component`.
 
-     `DoCommand` is generally used to implement control logic, as you can pass commands as arbitrary JSON objects, such as {"action": "start"}.
-     You can use the DoCommand method to implement everything that doesn’t fit into other API methods.
+     You can use **any resource type**.
+     The choice of resource type affects the API methods that you must implement.
+     You can choose any [component API](/dev/reference/apis/#component-apis) or [service API](/dev/reference/apis/#service-apis).
+
+     If you plan to use the control logic mostly on one component or service, choose the same component or service and implement the control logic in the available API methods for that resource.
+     If no resource API fits, use the `Generic` type and implement the logic in the `DoCommand` method.
+     All resource APIs contain the generic `DoCommand` method to implement any functionality that does not fit into other API methods.
+     It is often used to implement control logic, as you can pass commands as arbitrary JSON objects, such as {"action": "start"}.
+
      For simplicity, this guide uses the generic component which only supports the `DoCommand` method.
-     However the `DoCommand` method is supported on all resource types, so you can choose a different resource type to add your control logic to.
-     For example, for logic controlling a camera, you can use the camera component.
 
    - Model name: Your choice, for example `control-logic`
    - Enable cloud build: Choose `Yes` if you are using GitHub or want to use cloud build.
@@ -73,7 +86,7 @@ Install the Viam CLI to generate the template you will use to write your control
 
 1. Press the Enter key and the generator will create a folder for your control logic component.
 
-## Add control logic to your module
+## Program control logic in module
 
 Open the file <FILE>src/models/control_logic.py</FILE> to add your control logic to it.
 
@@ -242,7 +255,7 @@ class ControlLogic(Generic, EasyResource):
 For a complete tutorial, see [Tutorial: Desk Safari](/operate/hello-world/tutorial-desk-safari/).
 For more examples, check the [Viam registry](https://app.viam.com/registry)
 
-## Use other machine resources
+## Use other components or services
 
 Any resources that you wish to access from your control logic need to be identified and instantiated.
 To keep your code loosely coupled, we recommend passing the resource names in the configuration attributes of the control logic.
@@ -458,29 +471,69 @@ class ControlLogic(Generic, EasyResource):
 
 For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
 
-## Package the control logic
+## Add the control logic module locally
 
-Once you have implemented your control logic, commit and push your changes to a GitHub repository.
+If you have the code on the machine that runs `viam-server` you can test the module as a _local_ module:
 
-Follow the steps in [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) using cloud build.
-When you create a release, your module will be built, packaged and pushed to the Viam Registry.
+{{< table >}}
+{{% tablestep start=1 %}}
+**Configure your module as a local module.**
 
-If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
+Navigate to your machine's **CONFIGURE** page.
+Make sure your machine is showing as live and connected to Viam.
 
-## Deploy the control logic
+Click the **+** button, select **Local module**, then select **Local module** again.
 
-1. Navigate to the machine you want to deploy your control logic to.
-1. Go to the **CONFIGURE** tab.
-1. Click the **+** button.
-1. Click **Component or service** and select your control logic component.
-1. Click **Add module**.
-1. Add a **Name** and click **Create**. In the following, we use `generic-1`.
-1. If you added configuration attributes, configure your control logic component.
-1. Click **Save**.
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-Your control logic will now be added to your machine.
+Enter the path to the <file>run.sh</file> file, for example, `/home/naomi/control-logic/run.sh` on Linux or `/Users/naomi/control-logic/run.sh` on macOS.
+Click **Create**.
 
-## Test your control logic
+Save your config.
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Configure your resource as a local component or service.**
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Click **+**, click **Local module**, then click **Local component** or **Local service** depending on your resource type and fill in the fields as follows:
+
+- model namespace triplet: `<namespace>:control-logic:control-logic`, you can see the full triplet in the module's <FILE>meta.json</FILE> file
+- type: `<resource-type>`
+- name: `resource-1`
+
+If you use other machine resources, add their configuration values in the resource's configuration field and updating the names as needed:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "board_name": "board-1"
+}
+```
+
+Save the config.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Use the **TEST** panel to test the resource.
+
+If you are encountering errors, check the **LOGS** tab for more information.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Iterate.**
+
+If you make changes to your module code, you must restart your module for the changes to take effect.
+
+{{% /tablestep %}}
+{{< /table >}}
+
+## Test the control logic
 
 You can use the `DoCommand` method from the web UI or from the Viam SDKs:
 
@@ -538,6 +591,30 @@ await control_logic.do_command({"action": "stop"})
 {{% /tab %}}
 {{< /tabs >}}
 
+These steps manually test the control logic, to run the logic automatically, see [Run control logic automatically with jobs](#run-control-logic-automatically-with-jobs).
+
+## Package the control logic
+
+Once you have implemented your control logic, commit and push your changes to a GitHub repository.
+
+Follow the steps in [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) using cloud build.
+When you create a release, your module will be built, packaged and pushed to the Viam Registry.
+
+If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
+
+## Deploy the control logic
+
+1. Navigate to the machine you want to deploy your control logic to.
+1. Go to the **CONFIGURE** tab.
+1. Click the **+** button.
+1. Click **Component or service** and select your control logic component.
+1. Click **Add module**.
+1. Add a **Name** and click **Create**. In the following, we use `generic-1`.
+1. If you added configuration attributes, configure your control logic component.
+1. Click **Save**.
+
+Your control logic will now be added to your machine.
+
 ## Run control logic automatically with jobs
 
 To run control logic, use a {{< glossary_tooltip term_id="job" text="job" >}} which calls the `DoCommand` method periodically.
@@ -583,4 +660,4 @@ Configure another job:
 {{< /table >}}
 
 Now, check the **LOGS** tab; you'll see the second job triggered every minute, but the counter will only increase once the first job to run the `start` command runs at 8 AM.
-For testing purposes, you can also [send this command manually](#test-your-control-logic).
+For testing purposes, you can also [send this command manually](#test-the-control-logic).
