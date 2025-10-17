@@ -110,7 +110,7 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 1. After you install `viam-server`, a secure connection is automatically established between your machine and Viam.
    When you update your machine's configuration, `viam-server` automatically gets the updates.
 
-   You are ready to [configure supported hardware](/operate/modules/supported-hardware/) on your machine.
+   You are ready to [configure supported hardware](/operate/modules/configure-modules/) on your machine.
 
 ## Try an example
 

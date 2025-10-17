@@ -96,4 +96,4 @@ You can also revert to an earlier configuration from the History tab.
 If someone updates the configuration and saves it while you are editing, Viam will show you a warning that your configuration is out of date when you try to save.
 {{% /hiddencontent %}}
 
-Machine [configuration](/operate/modules/supported-hardware/) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.
+Machine [configuration](/operate/modules/configure-modules/) and machine [code](/dev/reference/sdks/) is intentionally kept separate, allowing you to keep track of versioning and debug issues separately.

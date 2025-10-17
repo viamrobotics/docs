@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Reference for the meta.json file"
+aliases:
+  - /operate/modules/create-module/metajson/
 ---
 
 The <file>meta.json</file> file is a JSON file that describes your {{< glossary_tooltip term_id="module" text="module" >}}.

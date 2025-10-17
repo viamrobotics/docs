@@ -417,10 +417,10 @@ If you are encountering errors, check the **LOGS** tab for more information.
 
 Commit and push your changes to a GitHub repository.
 
-Follow the steps in [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) using cloud build.
+Follow the steps to [upload your module](/operate/modules/deploy-module/#package-and-upload-the-module) using cloud build.
 When you create a release, your module will be built, packaged, and pushed to the Viam Registry.
 
-If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
+If you are not using GitHub or cloud build, see [package and deploy](/operate/modules/deploy-module/) and [Update an existing module](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
 
 Once uploaded, remove the local module and local resource, and add the resource from the registry.
 

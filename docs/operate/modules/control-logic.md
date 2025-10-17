@@ -1,7 +1,7 @@
 ---
 linkTitle: "Run control logic"
 title: "Run control logic on a machine"
-weight: 50
+weight: 38
 layout: "docs"
 type: "docs"
 images: ["/registry/module-puzzle-piece.svg"]
@@ -17,26 +17,24 @@ aliases:
   - "/manage/software/control-logic"
 ---
 
-To write control logic for a machine, you must deploy it in a module.
+To write control logic for a machine, you must wrap it in a module.
 This guide shows you how to write a module with control logic for a machine:
 
 1. [Create a module](#create-a-module-with-a-generic-component-template) with a template for the control logic
 1. [Program the control logic](#program-control-logic-in-module) using the `DoCommand` method
 1. [Use other components or services](#use-other-components-or-services) in the control logic
 1. [Test the control logic](#test-the-control-logic) locally
-1. [Package the module](#package-the-control-logic) and upload it to Viam
-1. [Deploy the module](#deploy-the-control-logic) to individual machines using `viam-server`
 1. [Run control logic on the module automatically](#run-control-logic-automatically-with-jobs) with one or more {{< glossary_tooltip term_id="job" text="jobs" >}}
 
 <br>
 
-For microcontrollers, see [Micro-RDK modules](/operate/modules/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/install/setup-micro/#configure-over-the-air-updates) instead.
+For microcontrollers, see [Micro-RDK modules](/operate/modules/advanced/micro-module/) and [Over-the-air firmware updates](/operate/install/setup-micro/#configure-over-the-air-updates) instead.
 
 ## Prerequisites
 
 You must have one machine [running `viam-server`](/operate/install/setup/).
 
-If your control logic depends on any hardware or software resources to function, you must [configure those hardware and software resources](/operate/modules/supported-hardware/).
+If your control logic depends on any hardware or software resources to function, you must [configure those hardware and software resources](/operate/modules/configure-modules/).
 
 ## Create a module with a generic component template
 
@@ -469,7 +467,7 @@ class ControlLogic(Generic, EasyResource):
 
 {{% /expand%}}
 
-For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
 ## Add the control logic module locally
 
@@ -593,28 +591,6 @@ await control_logic.do_command({"action": "stop"})
 
 These steps manually test the control logic, to run the logic automatically, see [Run control logic automatically with jobs](#run-control-logic-automatically-with-jobs).
 
-## Package the control logic
-
-Once you have implemented your control logic, commit and push your changes to a GitHub repository.
-
-Follow the steps in [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) using cloud build.
-When you create a release, your module will be built, packaged and pushed to the Viam Registry.
-
-If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
-
-## Deploy the control logic
-
-1. Navigate to the machine you want to deploy your control logic to.
-1. Go to the **CONFIGURE** tab.
-1. Click the **+** button.
-1. Click **Component or service** and select your control logic component.
-1. Click **Add module**.
-1. Add a **Name** and click **Create**. In the following, we use `generic-1`.
-1. If you added configuration attributes, configure your control logic component.
-1. Click **Save**.
-
-Your control logic will now be added to your machine.
-
 ## Run control logic automatically with jobs
 
 To run control logic, use a {{< glossary_tooltip term_id="job" text="job" >}} which calls the `DoCommand` method periodically.
@@ -641,7 +617,7 @@ Click **Save**.
 Configure another job:
 
 - **Cron Schedule**: `0 * * * * *` (every minute)
-- **Resource**: `generic-1`
+- **Resource**: `resource-1`
 - **Method**: `DoCommand`
 - **Command**: `{ "action": "run_control_logic" }`
 
@@ -652,7 +628,7 @@ Configure another job:
 Configure another job:
 
 - **Cron Schedule**: `0 0 17 * * *` (at 05:00 PM)
-- **Resource**: `generic-1`
+- **Resource**: `resource-1`
 - **Method**: `DoCommand`
 - **Command**: `{ "action": "stop" }`
 
@@ -661,3 +637,7 @@ Configure another job:
 
 Now, check the **LOGS** tab; you'll see the second job triggered every minute, but the counter will only increase once the first job to run the `start` command runs at 8 AM.
 For testing purposes, you can also [send this command manually](#test-the-control-logic).
+
+## Next steps
+
+Once you have thoroughly tested your module, continue to [package and deploy](/operate/modules/deploy-module/) it.

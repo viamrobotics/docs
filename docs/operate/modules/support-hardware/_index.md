@@ -1,7 +1,7 @@
 ---
-title: "Create a module"
-linkTitle: "Create a module"
-weight: 10
+title: "Support additional hardware and software"
+linkTitle: "Support hardware"
+weight: 30
 layout: "docs"
 type: "docs"
 icon: true
@@ -21,7 +21,6 @@ aliases:
   - /build/program/extend/modular-resources/key-concepts/
   - /modular-resources/key-concepts/
   - /modular-resources/
-  - /how-tos/upload-module/
   - /extend/modular-resources/examples/custom-arm/
   - /modular-resources/examples/custom-arm/
   - /registry/examples/custom-arm/
@@ -29,14 +28,12 @@ aliases:
   - /extend/modular-resources/examples/
   - /modular-resources/examples/
   - /registry/examples/
-  - /extend/modular-resources/upload/
-  - /modular-resources/upload/
-  - /registry/upload/
   - /operate/get-started/other-hardware/
   - /operate/get-started/other-hardware/create-module/
+  - /operate/modules/other-hardware/create-module/
 ---
 
-If your physical or virtual hardware is not [already supported](/operate/modules/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
+If your physical or virtual hardware is not [already supported](/operate/modules/configure-modules/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
@@ -46,7 +43,7 @@ If you want to create a "custom module", this page provides instructions for cre
 
 This page provides instructions for creating and uploading a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
-If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/other-hardware/micro-module/).
+If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/advanced/micro-module/).
 
 {{< expand "How to design your module" >}}
 
@@ -134,7 +131,7 @@ Authenticate your CLI session with Viam using one of the following options:
 | Namespace/Organization ID | Navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](./#how-to-design-your-module) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
-| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](#upload-your-module) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
+| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](/operate/modules/deploy-module/) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the registry; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
 {{< /expand >}}
@@ -146,7 +143,7 @@ In the next section, you'll customize some of the generated files to support you
 
 If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
 Note that each model can implement only one API.
-For an example of how this is done, see [Create a Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/).
+For an example of how this is done, see [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
 
 ### Implement the component API
 
@@ -165,7 +162,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs).
 
-For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
 {{% /tablestep %}}
 {{< tablestep >}}
@@ -175,7 +172,7 @@ This function should do the following:
 
 - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.
-- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/advanced/dependencies/).
   {{% /tablestep %}}
   {{< tablestep >}}
 
@@ -362,7 +359,7 @@ Depending on your use case, you may not need to add anything here beyond <code>v
 {{% /tablestep %}}
 {{< /table >}}
 
-For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/).
+For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
 
 {{% hiddencontent %}}
 
@@ -409,7 +406,7 @@ Open <file>module.go</file> and add necessary imports.
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
 
-For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 {{% /tablestep %}}
 {{< tablestep >}}
 
@@ -444,7 +441,7 @@ Make sure you return the correct type in accordance with the function's return s
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
 {{< expand "Example code for a camera module" >}}
-This example from [Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/) implements only one method of the camera API by returning a static image.
+This example from [Hello World module](/operate/modules/support-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -872,274 +869,6 @@ In upper right corner of the module's card, click **...** menu, then click **Res
 
 See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) for advanced `build` options.
 
-## Upload your module
+## Next steps
 
-Once you are done testing locally, you can upload your module to the [registry](https://app.viam.com/registry) and make it available either to all machines in your organization, or to the general public.
-
-{{< table >}}
-{{% tablestep start=1 %}}
-**Create a README (optional)**
-
-It's quite helpful to create a README to document what your module does and how to use it, especially if you plan to share your module with others.
-
-{{< expand "Example sensor module README" >}}
-
-````md
-# `meteo_PM` modular component
-
-This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
-With this model, you can gather [Open-Meteo](https://open-meteo.com/en/docs/air-quality-api) PM2.5 and PM10 air quality data from anywhere in the world, at the coordinates you specify.
-
-Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** button, select **Component or service**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
-Click **Add module**, enter a name for your sensor, and click **Create**.
-
-## Configure your `meteo_PM` sensor
-
-On the new component panel, copy and paste the following attribute template into your sensor's **Attributes** box:
-
-```json
-{
-  "latitude": <float>,
-  "longitude": <float>
-}
-```
-
-### Attributes
-
-The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM` sensors:
-
-| Name        | Type  | Inclusion | Description                            |
-| ----------- | ----- | --------- | -------------------------------------- |
-| `latitude`  | float | Optional  | Latitude at which to get the readings  |
-| `longitude` | float | Optional  | Longitude at which to get the readings |
-
-### Example Configuration
-
-```json
-{
-  "latitude": -40.6,
-  "longitude": 93.125
-}
-```
-````
-
-{{< /expand >}}
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Create a GitHub repo and link to it from your `meta.json`**
-
-Create a GitHub repository with all the source code and the README for your module.
-This is required for cloud build to work.
-
-Add the link to that repo as the `url` in the <file>meta.json</file> file.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Edit the meta.json file**
-
-Make any necessary edits to the `meta.json` file.
-For example, if you've changed the module's functionality, update the description in the `meta.json` file.
-Click below for information about the available fields.
-
-{{< expand "meta.json reference" >}}
-
-{{< readfile "/static/include/metajson.md" >}}
-
-{{< /expand >}}
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Package and upload**
-
-To package (for Python) and upload your module and make it available to configure on machines in your organization (or in any organization, depending on how you set `visibility` in the <file>meta.json</file> file):
-
-{{< tabs >}}
-{{% tab name="Python: PyInstaller (recommended)" %}}
-
-The recommended approach for Python is to use [PyInstaller](https://pypi.org/project/pyinstaller/) to compile your module into a packaged executable: a standalone file containing your program, the Python interpreter, and all of its dependencies.
-When packaged in this fashion, you can run the resulting executable on your desired target platform or platforms without needing to install additional software or manage dependencies manually.
-
-{{% alert title="Note" color="note" %}}
-To follow these PyInstaller packaging steps, you must have enabled cloud build when moving through the module generator prompts.
-If you did not, you will need to manually create a <file>build.sh</file> entrypoint script.
-{{% /alert %}}
-
-Edit your <file>meta.json</file> file back to its original state, reverting the edits you made for local testing purposes.
-It should resemble the following:
-
-```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
- "entrypoint": "dist/main",
- "first_run": "",
- "build": {
-   "build": "./build.sh",
-   "setup": "./setup.sh",
-   "path": "dist/archive.tar.gz",
-   "arch": [
-     "linux/amd64",
-     "linux/arm64"
-   ]
- }
-```
-
-Delete the <file>reload.sh</file> script since it was only meant for testing purposes.
-
-Now you are ready to build and upload your module, either using Viam's cloud build tooling which is recommended for continuous integration, or a more manual process:
-
-{{< tabs >}}
-{{% tab name="PyInstaller cloud build (recommended)" %}}
-
-We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and MacOS.
-
-The `viam module generate` command already generated the `build-action` file in your <file>.github/workflows</file> folder, so you just need to set up authentication in GitHub, and then create a new release to trigger the action:
-
-1. In your terminal, run `viam organizations list` to view your organization ID.
-1. Create an organization API key by running the following command:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam organization api-key create --org-id YOUR_ORG_UUID --name descriptive-key-name
-   ```
-
-1. In the GitHub repo for your project, go to **Settings** &rarr; **Secrets and variables** &rarr; **Actions**.
-   Create two new secrets using the **New repository secret** button:
-
-   - `VIAM_KEY_ID` with the UUID from `Key ID:` in your terminal
-   - `VIAM_KEY_VALUE` with the string from `Key Value:` in your terminal
-
-1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
-1. In the **Choose a tag** dropdown, create a new tag with a name consisting of three numbers separated by periods, following the regular expression `[0-9]+.[0-9]+.[0-9]+` (for example, `1.0.0`).
-   You must follow this format to trigger the build action.
-   For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
-
-1. Click **Publish release**.
-   The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
-
-See [Update an existing module using a GitHub action](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information.
-
-{{% /tab %}}
-{{% tab name="Manual PyInstaller build" %}}
-
-From within the module directory, create a virtual Python environment with the necessary packages and then build an executable by running the setup and build scripts:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-sh build.sh
-```
-
-Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
-If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module upload --version 1.0.0 --platform any dist/archive.tar.gz
-```
-
-For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
-
-For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
-
-{{% alert title="Important" color="note" %}}
-The `viam module upload` command only supports one `platform` argument at a time.
-If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
-Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
-The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
-{{% /alert %}}
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% alert title="Note" color="note" %}}
-
-PyInstaller does not support relative imports in entrypoints (imports starting with `.`).
-If you get `"ImportError: attempted relative import with no known parent package"`, set up a stub entrypoint as described on [GitHub](https://github.com/pyinstaller/pyinstaller/issues/2560).
-
-In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
-For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
-Viam makes this easy to manage by providing a build system for modules.
-Follow [these instructions](/dev/tools/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/dev/tools/cli/).
-
-{{% /alert %}}
-
-{{% /tab %}}
-{{% tab name="Python: venv" %}}
-
-You can use the following package and upload method if you opted not to enable cloud build when you ran `viam module generate`.
-
-1.  To package the module as an archive, run the following command from inside the module directory:
-
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    tar -czf module.tar.gz run.sh setup.sh requirements.txt src meta.json
-    ```
-
-    where `run.sh` is your entrypoint file, `requirements.txt` is your pip dependency list file, and `src` is the directory that contains the source code of your module.
-
-    This creates a tarball called <file>module.tar.gz</file>.
-
-1.  Run the `viam module upload` CLI command to upload the module to the registry, replacing `any` with one or more of `linux/any` or `darwin/any` if your module requires Linux OS-level support or macOS OS-level support, respectively.
-    If your module does not require OS-level support (such as platform-specific dependencies), you can run the following command exactly:
-
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    viam module upload --version 1.0.0 --platform any module.tar.gz
-    ```
-
-    For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
-
-    For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
-
-{{% alert title="Important" color="note" %}}
-The `viam module upload` command only supports one `platform` argument at a time.
-If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
-Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
-The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
-{{% /alert %}}
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-From within your module's directory, run the `viam module upload` CLI command to upload the module to the registry, replacing `<platform>` with `linux/amd64`, `linux/arm64`, or one or more other [platforms depending on what your module requires](/dev/tools/cli/#using-the---platform-argument).
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module upload --version 1.0.0 --platform <platform> .
-```
-
-For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
-
-{{% alert title="Important" color="note" %}}
-The `viam module upload` command only supports one `platform` argument at a time.
-If you would like to upload your module with support for multiple platforms, you must run a separate `viam module upload` command for each platform.
-Use the _same version number_ when running multiple `upload` commands of the same module code if only the `platform` support differs.
-The Viam Registry page for your module displays the platforms your module supports for each version you have uploaded.
-{{% /alert %}}
-
-{{% /tab %}}
-{{< /tabs >}}
-{{% /tablestep %}}
-{{% tablestep %}}
-
-If you look at the [Viam Registry page](https://app.viam.com/registry) while logged into your account, you'll be able to find your module listed.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-
-If your module supports hardware, add the hardware name in the **Components & services** section on the module registry page under the heading **Supported hardware**.
-
-{{% /tablestep %}}
-{{< /table >}}
-
-## Use your uploaded module
-
-Now that your module is in the registry, you can test the registry version of your module on one machine, and then add it to more machines.
-Configure it just as you would [configure any other component or service in the registry](/operate/modules/supported-hardware/#configure-hardware-on-your-machine):
-
-1. Go to your machine's **CONFIGURE** tab.
-
-1. Click the **+** button, select **Component or service**, and search for and select your model.
-   If you cannot find your new module, check that you are in an organization that can [access the module](/operate/modules/other-hardware/manage-modules/#change-module-visibility).
-
-1. Click **Add module**, enter a name for your resource, and click **Create**.
-
-1. Configure any required attributes.
-
-1. Save your configuration.
-
-You can delete the local module; it is no longer needed.
+Once you have thoroughly tested your module, continue to [package and deploy](/operate/modules/deploy-module/) it.

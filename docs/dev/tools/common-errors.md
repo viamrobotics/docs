@@ -269,7 +269,7 @@ This can happen when there is a slow internet connection, when the module is try
 
 - Try using a faster internet connection.
 - If you are the module author, consider packaging the module with required dependencies so they don't need to be downloaded on startup.
-  For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/modules/other-hardware/create-module/#upload-your-module).
+  For Python modules, you can package your module with dependencies by using the PyInstaller steps when [uploading your module](/operate/modules/deploy-module/#package-and-upload-the-module).
 - If the problem persists, try setting the `VIAM_MODULE_STARTUP_TIMEOUT` or `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` environment variables on your machine to a higher value.
   You can set these environment variables when you start `viam-server`, for instance `VIAM_MODULE_STARTUP_TIMEOUT=6m30 VIAM_RESOURCE_CONFIGURATION_TIMEOUT=3m0s viam-server -config example-machine.json`.
   Pass a sequence of numbers and time units, for example "6m30s50ms" for a timeout of 6 minutes, 30 seconds, and 50 milliseconds, or "5m" for a timeout of 5 minutes.

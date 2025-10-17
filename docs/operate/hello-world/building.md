@@ -398,7 +398,7 @@ If you find any hardware needs to be different, you can also change the hardware
 
 If there is no existing resource that suits your needs and you used `fake` resources, you need to create modules to implement your custom components or services.
 Often you can do this by wrapping an existing library.
-See [Create a module](/operate/modules/other-hardware/create-module/) for more information.
+See [Create a module](/operate/modules/support-hardware/) for more information.
 
 **Wood sanding project:**
 At this point, you would write a module for the button to start and stop sanding and integrate it with your control logic.

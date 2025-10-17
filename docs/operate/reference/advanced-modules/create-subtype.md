@@ -46,7 +46,7 @@ The following steps guide you through this process in more detail:
    For example, `gizmo`.
 
    Determine a valid {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} based on your API name.
-   You can figure out the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} later when you [create a model that implements your custom API](/operate/modules/other-hardware/create-module/).
+   You can figure out the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} later when you [create a model that implements your custom API](/operate/modules/support-hardware/).
 
    {{< expand "API namespace triplet and model namespace triplet example" >}}
 
@@ -101,7 +101,7 @@ The following steps guide you through this process in more detail:
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/operate/modules/other-hardware/" %}}
+{{% manualcard link="/operate/modules/support-hardware/" %}}
 
 <h4>Implement your API</h4>
 

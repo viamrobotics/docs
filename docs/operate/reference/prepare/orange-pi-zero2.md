@@ -94,7 +94,7 @@ Complete the following instructions to install `viam-server`, noting that if you
 Then continue by configuring connected hardware or by following a tutorial:
 
 {{< cards >}}
-{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/modules/configure-modules/" %}}
 {{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
 {{% card link="/dev/tools/tutorials/" %}}
 {{< /cards >}}

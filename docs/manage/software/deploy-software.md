@@ -48,7 +48,7 @@ For more detailed information, see [Reuse configuration](/manage/fleet/reuse-con
 ## Configure your hardware and software
 
 1.  Click the **+** button to add drivers for your hardware resources and any other resources you want to use with your control logic.
-    For more information, see [Supported hardware](/operate/modules/supported-hardware/).
+    For more information, see [Supported hardware](/operate/modules/configure-modules/).
 1.  If you created a [control logic module](/operate/modules/control-logic/), add it to your machine.
 
     {{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="shadow" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
@@ -63,7 +63,7 @@ For each module:
 1. Select a **Pinned version type**.
 
    You can select a specific version or set the machine to always update to the latest major, minor, patch, or pre-release version once new versions are available.
-   For more information on these configuration options, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
+   For more information on these configuration options, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
    By default, if the set version type allows for automatic updates, when a new version of a module or package becomes available, it will automatically update when the configuration is synced next.
    To ensure that updates only occur when your machines are ready, configure a [maintenance window](/operate/reference/viam-server/#maintenance-window). With a configured maintenance window, configuration updates will only be applied when maintenance is allowed.

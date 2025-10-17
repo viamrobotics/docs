@@ -8,4 +8,4 @@ A resource that often represents a physical piece of hardware in a machine which
 
 Each component is typed by a proto API, such as the [component proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/component).
 
-For more information, see [Components](/operate/modules/supported-hardware/).
+For more information, see [Components](/operate/modules/configure-modules/).
