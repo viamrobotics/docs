@@ -286,7 +286,7 @@ It is required for your module.
 | `description` | string | **Required** | A description of your module and what it provides. |
 | `url` | string | Optional | The URL of the GitHub repository containing the source code of the module. |
 | `applications` | array | Optional | Objects that provide information about the [applications](/operate/control/viam-applications/) associated with the module. |
-| `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Integrate other hardware](/operate/modules/other-hardware/). |
+| `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Integrate other hardware](/operate/modules/advanced/). |
 
 {{% /expand%}}
 
@@ -295,7 +295,7 @@ The `applications` field is an array of application objects with the following p
 <!-- prettier-ignore -->
 | Property     | Type   | Description |
 | ------------ | ------ | ----------- |
-| `name`       | string | The name of your application, which will be a part of the application's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/modules/other-hardware/naming-modules/#valid-application-identifiers). |
+| `name`       | string | The name of your application, which will be a part of the application's URL (`name_publicnamespace.viamapplications.com`). For more information on valid names see [Valid application identifiers](/operate/modules/advanced/naming-modules/#valid-application-identifiers). |
 | `type` | string | The type of application: `"single_machine"` or `"multi_machine"`. Whether the application can access and operate one machine or multiple machines. |
 | `entrypoint` | string | The path to the HTML entry point for your application. The `entrypoint` field specifies the path to your application's entry point. For example: <ul><li><code>"dist/index.html"</code>: Static content rooted at the `dist` directory</li><li><code>"dist/foo.html"</code>: Static content rooted at the `dist` directory, with `foo.html` as the entry point</li><li><code>"dist/"</code>: Static content rooted at the `dist` directory (assumes `dist/index.html` exists)</li><li><code>"dist/bar/foo.html"</code>: Static content rooted at `dist/bar` with `foo.html` as the entry point</li></ul> |
 | `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be selectable from the machine picker screen. Only for single machine applications. |

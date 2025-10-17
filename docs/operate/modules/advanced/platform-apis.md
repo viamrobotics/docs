@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Write your validate and reconfigure functions to handle dependencies in your custom modular resource."
+aliases:
+  - /operate/modules/create-module/platform-apis/
 ---
 
 To use the platform or machine APIs, you must authenticate using API keys.
@@ -124,7 +126,7 @@ The following steps show you how to use the following APIs from a module:
 {{% /tab %}}
 {{< /tabs >}}
 
-The [module environment variables](/operate/modules/other-hardware/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
+The [module environment variables](/operate/modules/advanced/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
 
 If you need a higher level of access, you can pass API keys as part of the module configuration:
 
@@ -276,7 +278,7 @@ func (s *exampleModuleResource) SomeModuleFunction(ctx context.Context, extra ma
 {{% /tab %}}
 {{% /tabs %}}
 
-The [module environment variables](/operate/modules/other-hardware/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
+The [module environment variables](/operate/modules/advanced/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
 
 If you need a higher level of access to access other machines, you can pass API keys as part of the module configuration:
 

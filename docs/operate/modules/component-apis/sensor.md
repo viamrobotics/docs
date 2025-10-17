@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/sensor/"
 aliases:
-  - /operate/modules/supported-hardware/sensor/
+  - /operate/modules/configure-modules/sensor/
 ---

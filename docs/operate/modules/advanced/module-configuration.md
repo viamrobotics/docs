@@ -7,12 +7,13 @@ icon: true
 description: "Configure module versions and module environment variables."
 aliases:
   - /operate/reference/module-configuration/
+  - /operate/modules/other-hardware/module-configuration/
 # date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
 This page contains reference material.
-For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/modules/supported-hardware/#configure-hardware-on-your-machine).
+For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
 
 ## Modular resource configuration details
 
@@ -78,7 +79,7 @@ The following properties are available for modular resources:
 | `name` | string | **Required** | The name of this instance of a modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
 | `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/modules/other-hardware/create-module/dependencies/). |
+| `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/modules/dependencies/). |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
 
 ## Module configuration details
@@ -198,12 +199,12 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is only available [locally](/operate/modules/other-hardware/create-module/#test-your-module-locally) on your computer. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is only available [locally](/operate/modules/create-module/#test-your-module-locally) on your computer. |
 | `name` | string | **Required** | A name for this instance of the module. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. Not applicable to local modules. |
-| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).</p> |
+| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).</p> |
 | `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
-| `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/modules/other-hardware/create-module/metajson/) instead. |
+| `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/modules/advanced/metajson/) instead. |
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
 | `log_level` | object | Optional | Set the log level for the module. See [Logging](/operate/reference/viam-server/#logging). |
@@ -316,7 +317,7 @@ For more information about Viam applications, see the [Viam applications documen
 ### Environment variables
 
 Each module has access to the following default environment variables.
-Not all of these variables are automatically available on [local modules](/operate/modules/other-hardware/create-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
+Not all of these variables are automatically available on [local modules](/operate/modules/create-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
 
 <!-- prettier-ignore -->
 | Name | Description | Automatically set on local modules? |
@@ -382,7 +383,7 @@ viam_home = os.environ.get("VIAM_HOME")
 
 ## Configure an unlisted module
 
-To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/modules/other-hardware/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
+To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/modules/advanced/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
 
 {{% hiddencontent %}}
 A public unlisted module is the same as an unlisted module.

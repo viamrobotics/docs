@@ -42,7 +42,7 @@ Overall, `viam-server` manages:
 ### Start-up
 
 `viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} are loaded on startup.
-`viam-server` handles [dependency](/operate/modules/other-hardware/create-module/dependencies/) management between resources.
+`viam-server` handles [dependency](/operate/modules/dependencies/) management between resources.
 
 After start-up, `viam-server` manages:
 
@@ -455,6 +455,6 @@ Note that this method may not work for versions that are too old, as Homebrew do
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/" %}}
-{{% card link="/operate/modules/supported-hardware/" %}}
+{{% card link="/operate/modules/configure-modules/" %}}
 {{% card link="/operate/install/setup/" %}}
 {{< /cards >}}

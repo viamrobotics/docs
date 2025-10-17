@@ -98,7 +98,7 @@ For more information, see [Viam applications](/operate/control/viam-applications
 
 {{% changelog color="added" title="Start modules with a TCP connection" date="2025-07-14" %}}
 
-You can now configure to start modules with a TCP connection. See [Module Configuration](/operate/modules/other-hardware/module-configuration/) for more information.
+You can now configure to start modules with a TCP connection. See [Module Configuration](/operate/modules/advanced/module-configuration/) for more information.
 
 {{% /changelog %}}
 
@@ -137,7 +137,7 @@ Organization owners and location owners can now move machines between locations 
 {{% changelog color="added" title="Module and namespace renaming" date="2025-06-09" %}}
 
 You can now rename modules and organization namespaces through the web UI.
-For more information, see [Rename a module](/operate/modules/other-hardware/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/modules/other-hardware/naming-modules/#update-a-namespace-for-your-organization).
+For more information, see [Rename a module](/operate/modules/advanced/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/modules/advanced/naming-modules/#update-a-namespace-for-your-organization).
 
 {{% /changelog %}}
 
@@ -166,7 +166,7 @@ Some older modules use "explicit dependencies" which require users to list the n
 
 This explicit dependency handling is deprecated and not recommended when writing new modules.
 
-We now recommend using dependencies as described in the [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/) documentation.
+We now recommend using dependencies as described in the [Module dependencies](/operate/modules/dependencies/) documentation.
 The implicit way of handling dependencies does not require users to list the names of dependencies in the `depends_on` field.
 
 {{% /changelog %}}
@@ -221,7 +221,7 @@ This is a breaking change for Go modules.
 {{% /tab %}}
 {{< /tabs >}}
 
-See [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/) for more information.
+See [Module dependencies](/operate/modules/dependencies/) for more information.
 
 {{% /changelog %}}
 
@@ -1382,7 +1382,7 @@ You can replace existing Radius Clustering 3D segmenters by [configuring new one
 
 #### Add and remove models using the machine config
 
-You must add and remove models using the [machine config](/operate/modules/supported-hardware/#configure-hardware-on-your-machine).
+You must add and remove models using the [machine config](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
 You will no longer be able to add or remove models using the SDKs.
 
 #### Add machine learning vision models to a vision service

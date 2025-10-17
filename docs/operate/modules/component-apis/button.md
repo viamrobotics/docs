@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/button/"
 aliases:
-  - /operate/modules/supported-hardware/button/
+  - /operate/modules/configure-modules/button/
 ---

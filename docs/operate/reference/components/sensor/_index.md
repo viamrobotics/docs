@@ -42,7 +42,7 @@ For additional configuration information, click on the model name:
 {{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
-If none of the existing models fit your use case, you can [create a modular resource](/operate/modules/other-hardware/create-module/) to add support for it.
+If none of the existing models fit your use case, you can [create a modular resource](/operate/modules/create-module/) to add support for it.
 {{< /alert >}}
 
 {{% /tab %}}
@@ -81,7 +81,7 @@ The [sensor API](/dev/reference/apis/components/sensor/) supports the following 
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{< /cards >}}

@@ -82,7 +82,7 @@ moved, err := motionService.Move(context.Background(), motion.MoveReq{
 {{% tab name="From within a module" %}}
 
 To access a motion service, use its name from the machine configuration.
-To access the motion service built into `viam-server` from your module code, you need to add the motion service as a [module dependency](/operate/modules/other-hardware/create-module/dependencies/), using the resource name `builtin`.
+To access the motion service built into `viam-server` from your module code, you need to add the motion service as a [module dependency](/operate/modules/dependencies/), using the resource name `builtin`.
 For example:
 
 {{< tabs >}}

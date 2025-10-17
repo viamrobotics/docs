@@ -1,7 +1,7 @@
 ---
 title: "Create a module"
 linkTitle: "Create a module"
-weight: 10
+weight: 30
 layout: "docs"
 type: "docs"
 icon: true
@@ -34,9 +34,10 @@ aliases:
   - /registry/upload/
   - /operate/get-started/other-hardware/
   - /operate/get-started/other-hardware/create-module/
+  - /operate/modules/other-hardware/create-module/
 ---
 
-If your physical or virtual hardware is not [already supported](/operate/modules/supported-hardware/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
+If your physical or virtual hardware is not [already supported](/operate/modules/configure-modules/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
@@ -46,7 +47,7 @@ If you want to create a "custom module", this page provides instructions for cre
 
 This page provides instructions for creating and uploading a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
-If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/other-hardware/micro-module/).
+If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/advanced/micro-module/).
 
 {{< expand "How to design your module" >}}
 
@@ -146,7 +147,7 @@ In the next section, you'll customize some of the generated files to support you
 
 If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
 Note that each model can implement only one API.
-For an example of how this is done, see [Create a Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/).
+For an example of how this is done, see [Create a Hello World module](/operate/modules/hello-world-module/).
 
 ### Implement the component API
 
@@ -165,7 +166,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs).
 
-For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+For more information, see [Module dependencies](/operate/modules/dependencies/).
 
 {{% /tablestep %}}
 {{< tablestep >}}
@@ -175,7 +176,7 @@ This function should do the following:
 
 - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.
-- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/dependencies/).
   {{% /tablestep %}}
   {{< tablestep >}}
 
@@ -362,7 +363,7 @@ Depending on your use case, you may not need to add anything here beyond <code>v
 {{% /tablestep %}}
 {{< /table >}}
 
-For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/).
+For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/hello-world-module/).
 
 {{% hiddencontent %}}
 
@@ -409,7 +410,7 @@ Open <file>module.go</file> and add necessary imports.
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
 
-For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+For more information, see [Module dependencies](/operate/modules/dependencies/).
 {{% /tablestep %}}
 {{< tablestep >}}
 
@@ -444,7 +445,7 @@ Make sure you return the correct type in accordance with the function's return s
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
 {{< expand "Example code for a camera module" >}}
-This example from [Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/) implements only one method of the camera API by returning a static image.
+This example from [Hello World module](/operate/modules/hello-world-module/) implements only one method of the camera API by returning a static image.
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}
@@ -1010,12 +1011,12 @@ The `viam module generate` command already generated the `build-action` file in 
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
 1. In the **Choose a tag** dropdown, create a new tag with a name consisting of three numbers separated by periods, following the regular expression `[0-9]+.[0-9]+.[0-9]+` (for example, `1.0.0`).
    You must follow this format to trigger the build action.
-   For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
+   For details about versioning, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
 1. Click **Publish release**.
    The cloud build action will begin building the new module version for each architecture listed in your <file>meta.json</file>, and any machines configured to use the latest release of the module will receive the update once it has finished building.
 
-See [Update an existing module using a GitHub action](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information.
+See [Update an existing module using a GitHub action](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information.
 
 {{% /tab %}}
 {{% tab name="Manual PyInstaller build" %}}
@@ -1036,7 +1037,7 @@ viam module upload --version 1.0.0 --platform any dist/archive.tar.gz
 
 For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
+For details about versioning, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1084,7 +1085,7 @@ You can use the following package and upload method if you opted not to enable c
 
     For details on platform support, see [Using the `--platform` argument](/dev/tools/cli/#using-the---platform-argument).
 
-    For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
+    For details about versioning, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1102,7 +1103,7 @@ From within your module's directory, run the `viam module upload` CLI command to
 viam module upload --version 1.0.0 --platform <platform> .
 ```
 
-For details about versioning, see [Module versioning](/operate/modules/other-hardware/module-configuration/#module-versioning).
+For details about versioning, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
 {{% alert title="Important" color="note" %}}
 The `viam module upload` command only supports one `platform` argument at a time.
@@ -1129,12 +1130,12 @@ If your module supports hardware, add the hardware name in the **Components & se
 ## Use your uploaded module
 
 Now that your module is in the registry, you can test the registry version of your module on one machine, and then add it to more machines.
-Configure it just as you would [configure any other component or service in the registry](/operate/modules/supported-hardware/#configure-hardware-on-your-machine):
+Configure it just as you would [configure any other component or service in the registry](/operate/modules/configure-modules/#configure-hardware-on-your-machine):
 
 1. Go to your machine's **CONFIGURE** tab.
 
 1. Click the **+** button, select **Component or service**, and search for and select your model.
-   If you cannot find your new module, check that you are in an organization that can [access the module](/operate/modules/other-hardware/manage-modules/#change-module-visibility).
+   If you cannot find your new module, check that you are in an organization that can [access the module](/operate/modules/advanced/manage-modules/#change-module-visibility).
 
 1. Click **Add module**, enter a name for your resource, and click **Create**.
 

@@ -72,6 +72,6 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/dev/reference/apis/components/encoder/" customTitle="Encoder API" noimage="true" %}}
-{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}

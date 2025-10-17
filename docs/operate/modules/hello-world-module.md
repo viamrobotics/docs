@@ -2,7 +2,7 @@
 title: "Create a Hello World module"
 linkTitle: "Hello World module"
 type: "docs"
-weight: 20
+weight: 30
 images: ["/registry/module-puzzle-piece.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
@@ -15,6 +15,7 @@ date: "2024-10-22"
 aliases:
   - /how-tos/hello-world-module/
   - /operate/get-started/other-hardware/hello-world-module/
+  - /operate/modules/create-module/hello-world-module/
 # updated: ""  # When the tutorial was last entirely checked
 # Python checked/updated: 2025-02-25
 cost: "0"
@@ -29,7 +30,7 @@ By the end, you will know how to create your own modular resources and package t
 {{% alert title="Note" color="note" %}}
 
 This guide provides a basic learning example.
-For a more comprehensive guide including usage of cloud build tools for deployment across different platforms, see [Create a module](/operate/modules/other-hardware/create-module/).
+For a more comprehensive guide including usage of cloud build tools for deployment across different platforms, see [Create a module](/operate/modules/create-module/).
 
 {{% /alert %}}
 
@@ -93,7 +94,7 @@ The easiest way to generate the files for your module is to use the [Viam CLI](/
 
 {{% alert title="Note" color="note" %}}
 The steps below suggest that you disable cloud build when generating your stub files, for simplicity of local testing.
-If you plan to publish your module to the Viam registry, we recommend enabling cloud build, and then following the testing, packaging and uploading steps in [Create a module](/operate/modules/other-hardware/create-module/) once you are done writing your API implementation in this guide.
+If you plan to publish your module to the Viam registry, we recommend enabling cloud build, and then following the testing, packaging and uploading steps in [Create a module](/operate/modules/create-module/) once you are done writing your API implementation in this guide.
 Enabling cloud build will set up your module for a more automated deployment process if you plan to use your module for more than just learning.
 {{% /alert %}}
 
@@ -762,10 +763,10 @@ There's no more need for local module configuration; local modules are primarily
 
 {{<imgproc src="/how-tos/hello-config.png" resize="x1100" declaredimensions=true alt="The create a component menu open, searching for hello. The hello-camera and hello-sensor components are shown in the search results." style="width:500px" class="shadow aligncenter" >}}
 
-For more information about uploading modules, see [Update and manage modules you created](/operate/modules/other-hardware/manage-modules/).
+For more information about uploading modules, see [Update and manage modules you created](/operate/modules/advanced/manage-modules/).
 
 ## Next steps
 
-For more module creation information, see the [Create a module](/operate/modules/other-hardware/create-module/) guide.
+For more module creation information, see the [Create a module](/operate/modules/create-module/) guide.
 
-To update or delete a module, see [Update and manage modules](/operate/modules/other-hardware/manage-modules/).
+To update or delete a module, see [Update and manage modules](/operate/modules/advanced/manage-modules/).

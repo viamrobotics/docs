@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/motor/"
 aliases:
-  - /operate/modules/supported-hardware/motor/
+  - /operate/modules/configure-modules/motor/
 ---

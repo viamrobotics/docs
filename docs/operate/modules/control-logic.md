@@ -30,13 +30,13 @@ This guide shows you how to write a module with control logic for a machine:
 
 <br>
 
-For microcontrollers, see [Micro-RDK modules](/operate/modules/other-hardware/micro-module/) and [Over-the-air firmware updates](/operate/install/setup-micro/#configure-over-the-air-updates) instead.
+For microcontrollers, see [Micro-RDK modules](/operate/modules/advanced/micro-module/) and [Over-the-air firmware updates](/operate/install/setup-micro/#configure-over-the-air-updates) instead.
 
 ## Prerequisites
 
 You must have one machine [running `viam-server`](/operate/install/setup/).
 
-If your control logic depends on any hardware or software resources to function, you must [configure those hardware and software resources](/operate/modules/supported-hardware/).
+If your control logic depends on any hardware or software resources to function, you must [configure those hardware and software resources](/operate/modules/configure-modules/).
 
 ## Create a module with a generic component template
 
@@ -469,7 +469,7 @@ class ControlLogic(Generic, EasyResource):
 
 {{% /expand%}}
 
-For more information, see [Module dependencies](/operate/modules/other-hardware/create-module/dependencies/).
+For more information, see [Module dependencies](/operate/modules/dependencies/).
 
 ## Add the control logic module locally
 
@@ -597,10 +597,10 @@ These steps manually test the control logic, to run the logic automatically, see
 
 Once you have implemented your control logic, commit and push your changes to a GitHub repository.
 
-Follow the steps in [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) using cloud build.
+Follow the steps in [Upload your module](/operate/modules/create-module/#upload-your-module) using cloud build.
 When you create a release, your module will be built, packaged and pushed to the Viam Registry.
 
-If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) and [Update an existing module](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
+If you are not using GitHub or cloud build, see [Upload your module](/operate/modules/create-module/#upload-your-module) and [Update an existing module](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.
 
 ## Deploy the control logic
 

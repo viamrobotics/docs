@@ -1,12 +1,12 @@
 ---
-linkTitle: "Configure supported hardware"
-title: "Configure supported hardware"
+linkTitle: "Configure registry modules"
+title: "Configure registry modules"
 weight: 10
 layout: "docs"
 type: "docs"
 imageAlt: "Configure a Machine"
 images: ["/viam.svg"]
-description: "Use supported hardware with your machine."
+description: "Use modules from the registry to on your machine."
 modulescript: true
 aliases:
   - /program/extend/modular-resources/configure/
@@ -22,12 +22,13 @@ aliases:
   - /how-tos/use-cases/configure/
   - /use-cases/configure/
   - /operate/get-started/supported-hardware/
+  - /operate/modules/supported-hardware/
 ---
 
-## About the Viam Registry of supported hardware and software
-
 Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
-Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/modules/other-hardware/create-module/) that provides a driver for the hardware.
+Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/modules/create-module/) that provides a driver for the hardware.
+
+## About the Viam Registry of supported hardware and software
 
 The [registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
 
@@ -76,9 +77,9 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
 When you add a modular resource _from the registry_, the module that provides it is automatically added at the same time, generating a configuration card for the modular resource and a separate one for the module.
 If you add a built-in component, there will only be a configuration card for the component.
 
-For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/modules/other-hardware/module-configuration/).
+For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/modules/advanced/module-configuration/).
 
-Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](/operate/modules/other-hardware/micro-module/).
+Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](/operate/modules/advanced/micro-module/).
 
 {{< alert title="Tip: Organize resources into folders" color="tip" >}}
 
@@ -91,7 +92,7 @@ If you have many components and services on one machine, you can add folders to 
 The following modular components are available for computers and SBCs running `viam-server`.
 Configure any of these components on your machine by following [the steps above](#configure-hardware-on-your-machine).
 
-If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/other-hardware/create-module/) to add it to the registry.
+If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/create-module/) to add it to the registry.
 
 {{< tabs >}}
 {{% tab name="All components" %}}
@@ -219,7 +220,7 @@ Modules in the list above are officially supported and maintained by Viam only i
 
 ## Next steps
 
-If you have other hardware you need to integrate with a custom module, continue to [Create a module](/operate/modules/other-hardware/create-module/).
+If you have other hardware you need to integrate with a custom module, continue to [Create a module](/operate/modules/create-module/).
 If you have configured all your hardware, you can do a variety of things with your machine:
 
 - [Capture data from your machines](/data-ai/capture-data/capture-sync/)

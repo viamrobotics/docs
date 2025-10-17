@@ -78,7 +78,7 @@ If none of these steps work, reach out to us on the [Community Discord](https://
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-{{% card link="/operate/modules/supported-hardware/" noimage="true" %}}
+{{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

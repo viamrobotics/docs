@@ -12,6 +12,7 @@ platformarea: ["registry"]
 toc_hide: false
 aliases:
   - /operate/reference/naming-modules/
+  - /operate/modules/other-hardware/naming-modules/
 ---
 
 Each modular resource has two associated triplets: an API namespace triplet to indicate which [API](/dev/reference/apis/) it implements, and a model namespace triplet to uniquely identify the modular resource {{< glossary_tooltip term_id="model" text="model" >}}.
@@ -81,7 +82,7 @@ A resource model is identified by a unique name, called the {{< glossary_tooltip
 
 - `namespace` is the namespace of your organization, which you can find or [create](#create-a-namespace-for-your-organization) in your organization settings page.
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
-    If you do not intend to [upload your module](/operate/modules/other-hardware/create-module/#upload-your-module) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+    If you do not intend to [upload your module](/operate/modules/create-module/#upload-your-module) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
 - `module-name` is the name of your module.
   Your `module-name` should describe the common functionality provided across the model or models provided by that module.
@@ -99,7 +100,7 @@ Determine the model name you want to use based on these requirements, then proce
 
 ## Valid application identifiers
 
-If your module includes a [Viam app](/operate/control/viam-applications/), you need to define the application name in your module's [`meta.json`](/operate/modules/other-hardware/create-module/metajson/) file.
+If your module includes a [Viam app](/operate/control/viam-applications/), you need to define the application name in your module's [`meta.json`](/operate/modules/advanced/metajson/) file.
 Application names have the following requirements:
 
 - Application names must be all-lowercase.

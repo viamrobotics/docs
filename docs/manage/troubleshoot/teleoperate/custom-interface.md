@@ -23,7 +23,7 @@ You can remotely operate any configured machine and visualize and aggregate its 
 
 Make sure your machine has at least one camera, movement sensor, sensor, base, arm, board, gantry, gripper, motor or servo.
 
-See [configure a machine](/operate/modules/supported-hardware/) for more information.
+See [configure a machine](/operate/modules/configure-modules/) for more information.
 
 {{% /expand%}}
 

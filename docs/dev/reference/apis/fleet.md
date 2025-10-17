@@ -145,7 +145,7 @@ const appClient = appClient.appClient;
 {{% /tab %}}
 {{% tab name="From within a Module" %}}
 
-See [Use platform APIs from within a module](/operate/modules/other-hardware/create-module/platform-apis/).
+See [Use platform APIs from within a module](/operate/modules/advanced/platform-apis/).
 
 {{% /tab %}}
 {{< /tabs >}}

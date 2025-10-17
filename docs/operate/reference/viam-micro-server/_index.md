@@ -50,5 +50,5 @@ To create your own modules, follow the Modules for ESP32 guide.
 
 {{< cards >}}
 {{% card link="/operate/install/setup-micro/" %}}
-{{% card link="/operate/modules/other-hardware/micro-module/" %}}
+{{% card link="/operate/modules/advanced/micro-module/" %}}
 {{< /cards >}}

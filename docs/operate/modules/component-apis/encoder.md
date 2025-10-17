@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/encoder/"
 aliases:
-  - /operate/modules/supported-hardware/encoder/
+  - /operate/modules/configure-modules/encoder/
 ---

@@ -17,7 +17,7 @@ draft: true # Take out Go and Python, and check updatedness before un-drafting.
 ---
 
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
-If no [existing modules](/operate/modules/supported-hardware/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
+If no [existing modules](/operate/modules/configure-modules/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/dev/reference/sdks/), and then deploy it to your machines.
 
@@ -28,7 +28,7 @@ You will need to [recompile and flash your ESP32 yourself](/operate/install/setu
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
-For a simplified step-by-step guide, see [Create a Hello World module](/operate/modules/other-hardware/create-module/hello-world-module/).
+For a simplified step-by-step guide, see [Create a Hello World module](/operate/modules/hello-world-module/).
 {{% /alert %}}
 
 You can also watch this guide to creating a vision service module:
@@ -126,7 +126,7 @@ The models implement the `rdk:component:arm` and the `rdk:component:gripper` API
 
 A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:module-name:model-name`, where:
 
-- `namespace` is the [namespace of your organization](/operate/modules/other-hardware/naming-modules/#create-a-namespace-for-your-organization).
+- `namespace` is the [namespace of your organization](/operate/modules/advanced/naming-modules/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
     If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
@@ -175,7 +175,7 @@ For more Python module examples:
 
 - See the [Python SDK `examples` directory](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples) for sample module code of varying complexity.
 - For an example featuring a sensor, see [MCP300x](https://github.com/viam-labs/mcp300x-adc-sensor).
-- For additional examples use the [modular resources search](/operate/modules/supported-hardware/#for-use-with-64-bit-architecture) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+- For additional examples use the [modular resources search](/operate/modules/configure-modules/#for-use-with-64-bit-architecture) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -190,7 +190,7 @@ For more Python module examples:
 For more Go module examples:
 
 - See the [Go SDK `examples` directory](https://github.com/viamrobotics/rdk/blob/main/examples/) for sample module code of varying complexity.
-- For additional examples use the [modular resources search](/operate/modules/supported-hardware/#for-use-with-64-bit-architecture) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+- For additional examples use the [modular resources search](/operate/modules/configure-modules/#for-use-with-64-bit-architecture) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -662,7 +662,7 @@ func (b *myBase) Close(ctx context.Context) error {
 {{< alert title="Note" color="note" >}}
 For an example featuring a sensor, see [MCP3004-8](https://github.com/mestcihazal/mcp3004-8-go).
 
-For additional examples use the [modular resources search](/operate/modules/supported-hardware/#for-use-with-64-bit-architecture) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
+For additional examples use the [modular resources search](/operate/modules/configure-modules/#for-use-with-64-bit-architecture) to search for examples of the model you are implementing, and click on the model's link to be able to browse its code.
 {{< /alert >}}
 
 When implementing built-in methods from the Viam Go SDK in your model, be sure your implementation of those methods returns any values designated in the built-in method's return signature, typed correctly.
@@ -1259,7 +1259,7 @@ To create a packaged executable:
    By default, the output directory for the packaged executable is <file>dist</file>, and the name of the executable is derived from the name of the input script (in this case, main).
 
 We recommend you use PyInstaller with the [`build-action` GitHub action](https://github.com/viamrobotics/build-action) which provides a simple cross-platform build setup for multiple platforms: x86 and Arm Linux distributions, and macOS.
-Follow the instructions to [Update an existing module using a GitHub action](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) to add the build configuration to your machine.
+Follow the instructions to [Update an existing module using a GitHub action](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) to add the build configuration to your machine.
 
 With this approach, you can make a build script like the following to
 build your module, and configure the resulting executable (<file>dist/main</file>) as your module `"entrypoint"`:
@@ -1277,7 +1277,7 @@ tar -czvf dist/archive.tar.gz dist/main
 ```
 
 This script automates the process of setting up a Python virtual environment on a Linux arm64 machine, installing dependencies, packaging the Python module into a standalone executable using PyInstaller, and then compressing the resulting executable into a tarball.
-For more examples of build scripts see [Update an existing module using a GitHub action](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build).
+For more examples of build scripts see [Update an existing module using a GitHub action](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build).
 
 {{% alert title="Note" color="note" %}}
 
@@ -1478,7 +1478,7 @@ Strings of the form `<INSERT X>` indicate placeholders that you need to replace 
 ````md
 # [`<INSERT MODULE NAME>` module](<INSERT LINK TO MODULE REPO>)
 
-This [module](https://docs.viam.com/operate/modules/supported-hardware/) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
+This [module](https://docs.viam.com/operate/modules/configure-modules/) implements the [`<INSERT API TRIPLET>` API]<INSERT LINK TO DOCS (if applicable)> in an <INSERT MODEL> model.
 With this model, you can...
 
 ## Requirements
@@ -1492,7 +1492,7 @@ _Add instructions here for any requirements._
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
 Navigate to your machine's **CONFIGURE** tab.
-[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/modules/supported-hardware/#configure-hardware-on-your-machine).
+[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
 
@@ -1547,7 +1547,7 @@ This driver supports differential, ackermann, and omni directional steering mode
 > Before configuring your base, you must add a machine on [Viam](https://app.viam.com).
 
 Navigate to the **CONFIGURE** tab of your machine’s page.
-[Add `base` / `agilex-limo` to your machine](/operate/modules/supported-hardware/#configure-hardware-on-your-machine).
+[Add `base` / `agilex-limo` to your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 
@@ -1559,7 +1559,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure hardware on your machine](/operate/modules/supported-hardware/#configure-hardware-on-your-machine).
+> For more information, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
 
 ### Attributes
 
@@ -1627,7 +1627,7 @@ Add the module to your machine's config, then add the component or service it im
 
    - the module's executable file, such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
-     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/operate/modules/other-hardware/create-module/metajson/) within it.
+     If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/operate/modules/advanced/metajson/) within it.
 
 1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
 
@@ -1655,15 +1655,15 @@ Once you are satisfied with the state of your module, you can upload your module
 - share your module with other Viam users
 - deploy your module to a fleet of machines from a central interface
 
-See [Update and manage modules you created](/operate/modules/other-hardware/manage-modules/) for instructions.
+See [Update and manage modules you created](/operate/modules/advanced/manage-modules/) for instructions.
 
 ## Deploy your module to more machines
 
 You have now created a module, and are ready to deploy it to a fleet of machines.
 There are two ways to deploy a module:
 
-- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines](/operate/modules/supported-hardware/#configure-hardware-on-your-machine).
-  You can also choose to configure [automated uploads for new module versions](/operate/modules/other-hardware/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
+- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
+  You can also choose to configure [automated uploads for new module versions](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module (without uploading it to Viam), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.
 
@@ -1675,7 +1675,7 @@ With a local installation, you can test your module in a controlled environment 
 For instructions on how to update or delete modules you've created, see the following how-to guide:
 
 {{< cards >}}
-{{% card link="/operate/modules/other-hardware/manage-modules/" %}}
+{{% card link="/operate/modules/advanced/manage-modules/" %}}
 {{< /cards >}}
 
 To read more about module development at Viam, check out these tutorials that create modules:

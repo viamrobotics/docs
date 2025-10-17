@@ -16,7 +16,7 @@ modulescript: true
 ---
 
 A discovery service allows you to return a list of physical hardware available on a machine, and suggest configurations for those components to integrate the hardware into the machine.
-If you are [creating a modular resource](/operate/modules/other-hardware/create-module/) that depends on other {{< glossary_tooltip term_id="resource" text="resources" >}} that are discoverable in a systematic way, you can create a discovery service as part of your module to discover those resources.
+If you are [creating a modular resource](/operate/modules/create-module/) that depends on other {{< glossary_tooltip term_id="resource" text="resources" >}} that are discoverable in a systematic way, you can create a discovery service as part of your module to discover those resources.
 
 ## Example usage
 

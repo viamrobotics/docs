@@ -97,7 +97,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
    ```
 
 1. Navigate to the Go color filter directory, `colorfilter`.
-1. Inside of the `module` directory, [compile the executable](/operate/modules/other-hardware/create-module/#test-your-module-locally) that runs your module.
+1. Inside of the `module` directory, [compile the executable](/operate/modules/create-module/#test-your-module-locally) that runs your module.
 1. Save the path to your module's executable for later use.
 1. [Add the `colorfilter` module to your smart machine as a local module](#add-as-a-local-module) and continue the tutorial from there.
 
@@ -142,7 +142,7 @@ For example, the camera's <file>client.py</file> file is located at <file>[/comp
    - Exclude the `get_images` method, which you will customize to add filtering functionality in the upcoming section.
    - Include the other methods within the class corresponding to your resource type (in this case, the `CameraClient` class).
 
-For more information, refer to [Write your new resource model definition](/operate/modules/other-hardware/create-module/#write-your-module).
+For more information, refer to [Write your new resource model definition](/operate/modules/create-module/#write-your-module).
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -154,7 +154,7 @@ For example, the camera's <file>client.go</file> file is located at <file>[/comp
    Exclude the `Read` method, which you will replace with a method, `Next`, to add filtering functionality in the upcoming section.
    - You can create your own code or copy the code from the [viam-labs `colorfilter` repository's <file>color_filter.go</file>](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go) file.
 
-For more information, refer to [Write your new resource model definition](/operate/modules/other-hardware/create-module/#write-your-module).
+For more information, refer to [Write your new resource model definition](/operate/modules/create-module/#write-your-module).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -696,7 +696,7 @@ In this code:
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information, see [Write your new resource model definition](/operate/modules/other-hardware/create-module/#write-your-module).
+For more information, see [Write your new resource model definition](/operate/modules/create-module/#write-your-module).
 
 #### Code an entry point file
 
@@ -804,9 +804,9 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information, see [Create a new module](/operate/modules/other-hardware/create-module/).
+For more information, see [Create a new module](/operate/modules/create-module/).
 
-Once you've written your filter module, [compile your module into a single executable](/operate/modules/other-hardware/create-module/#test-your-module-locally) that runs your module when executed.
+Once you've written your filter module, [compile your module into a single executable](/operate/modules/create-module/#test-your-module-locally) that runs your module when executed.
 
 Note the absolute path to your module’s executable for use in the next section.
 
@@ -817,7 +817,7 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
 
-1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/operate/modules/other-hardware/create-module/#test-your-module-locally), then click **Create**.
+1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/operate/modules/create-module/#test-your-module-locally), then click **Create**.
    - The name must use only lowercase characters.
 1. Then, click the **Save** button in the top right corner of the page to save your changes.
 
