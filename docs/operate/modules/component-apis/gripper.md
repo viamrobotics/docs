@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/gripper/"
 aliases:
-  - /operate/modules/configure-modules/gripper/
+  - /operate/modules/supported-hardware/gripper/
 ---

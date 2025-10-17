@@ -101,7 +101,7 @@ The following steps guide you through this process in more detail:
 ## Next steps
 
 {{< cards >}}
-{{% manualcard link="/operate/modules/advanced/" %}}
+{{% manualcard link="/operate/modules/support-hardware/" %}}
 
 <h4>Implement your API</h4>
 

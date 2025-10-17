@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/servo/"
 aliases:
-  - /operate/modules/configure-modules/servo/
+  - /operate/modules/supported-hardware/servo/
 ---

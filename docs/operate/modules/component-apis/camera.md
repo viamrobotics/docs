@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/camera/"
 aliases:
-  - /operate/modules/configure-modules/camera/
+  - /operate/modules/supported-hardware/camera/
 ---

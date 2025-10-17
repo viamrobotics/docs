@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/gantry/"
 aliases:
-  - /operate/modules/configure-modules/gantry/
+  - /operate/modules/supported-hardware/gantry/
 ---

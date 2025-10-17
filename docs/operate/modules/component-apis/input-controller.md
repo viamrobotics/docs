@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/input-controller/"
 aliases:
-  - /operate/modules/configure-modules/input-controller/
+  - /operate/modules/supported-hardware/input-controller/
 ---

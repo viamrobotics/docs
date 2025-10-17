@@ -143,7 +143,7 @@ In the next section, you'll customize some of the generated files to support you
 
 If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
 Note that each model can implement only one API.
-For an example of how this is done, see [Create a Hello World module](/operate/modules/hello-world-module/).
+For an example of how this is done, see [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
 
 ### Implement the component API
 
@@ -359,7 +359,7 @@ Depending on your use case, you may not need to add anything here beyond <code>v
 {{% /tablestep %}}
 {{< /table >}}
 
-For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/hello-world-module/).
+For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
 
 {{% hiddencontent %}}
 
@@ -441,7 +441,7 @@ Make sure you return the correct type in accordance with the function's return s
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
 {{< expand "Example code for a camera module" >}}
-This example from [Hello World module](/operate/modules/hello-world-module/) implements only one method of the camera API by returning a static image.
+This example from [Hello World module](/operate/modules/support-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
 It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
 
 ```go {class="line-numbers linkable-line-numbers"}

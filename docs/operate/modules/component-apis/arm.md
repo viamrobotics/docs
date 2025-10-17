@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/arm/"
 aliases:
-  - /operate/modules/configure-modules/arm/
+  - /operate/modules/supported-hardware/arm/
 ---

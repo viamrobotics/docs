@@ -6,5 +6,5 @@ type: "docs"
 layout: "empty"
 canonical: "/dev/reference/apis/components/board/"
 aliases:
-  - /operate/modules/configure-modules/board/
+  - /operate/modules/supported-hardware/board/
 ---

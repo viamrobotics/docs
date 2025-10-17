@@ -286,7 +286,7 @@ It is required for your module.
 | `description` | string | **Required** | A description of your module and what it provides. |
 | `url` | string | Optional | The URL of the GitHub repository containing the source code of the module. |
 | `applications` | array | Optional | Objects that provide information about the [applications](/operate/control/viam-applications/) associated with the module. |
-| `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Integrate other hardware](/operate/modules/advanced/). |
+| `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Support hardware and software](/operate/modules/support-hardware/). |
 
 {{% /expand%}}
 
