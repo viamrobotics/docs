@@ -32,7 +32,7 @@ See [More examples](#more-examples) for more.
 
 Imagine you have a robotic vacuum cleaner that has a docking sequence and can clean specific areas such as the kitchen and the living room.
 
-You could [write a module](/operate/modules/create-module/) that implements the [base API](/dev/reference/apis/components/base/).
+You could [write a module](/operate/modules/support-hardware/) that implements the [base API](/dev/reference/apis/components/base/).
 The base API includes methods like `MoveStraight` to drive the vacuum cleaner around, and like all resource APIs, it includes a `DoCommand` method.
 In addition to the standard base methods, you could implement `DoCommand` to trigger the docking and cleaning sequences:
 

@@ -436,7 +436,7 @@ result, err := myTwilioSvc.DoCommand(context.Background(), command)
 
 Using the Viam Registry you can turn services and your own custom business logic into _{{< glossary_tooltip term_id="module" text="modules" >}}_. You can then deploy your modules to your machines.
 
-[Create a module →](/operate/modules/create-module/)
+[Create a module →](/operate/modules/support-hardware/)
 
   </div>
 </div>

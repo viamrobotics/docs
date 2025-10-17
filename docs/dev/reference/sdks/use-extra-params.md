@@ -90,12 +90,12 @@ If passing an object of type `nil`, you must specify `nil` in the method call or
 
 ## Define
 
-If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/operate/modules/create-module/) wrapper.
+If `extra` information must be passed to a resource, it is handled within a new, _modular_ resource model's [custom API](/operate/modules/support-hardware/) wrapper.
 
 {{%expand "Click for instructions on defining a custom model to use extra params" %}}
 
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
-Follow the steps in the [Modular Resources documentation](/operate/modules/create-module/) to do so.
+Follow the steps in the [Modular Resources documentation](/operate/modules/support-hardware/) to do so.
 
 For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/dev/reference/apis/), reference this modification to the built-in [sensor](/operate/reference/components/sensor/) resource type's [Readings](/dev/reference/apis/components/sensor/#getreadings) method in the code of a new sensor model:
 
@@ -163,6 +163,6 @@ func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (
 {{% /tab %}}
 {{% /tabs %}}
 
-See [Create a module](/operate/modules/create-module/) for more information and instructions on modifying built-in API specifications.
+See [Create a module](/operate/modules/support-hardware/) for more information and instructions on modifying built-in API specifications.
 
 {{% /expand%}}

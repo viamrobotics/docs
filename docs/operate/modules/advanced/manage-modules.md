@@ -21,7 +21,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and upload a module](/operate/modules/create-module/), you can update, delete, or change its visibility settings.
+After you [create and upload a module](/operate/modules/support-hardware/), you can update, delete, or change its visibility settings.
 
 For information on pinning module deployments to versions, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
@@ -51,7 +51,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    {{% alert title="Tip" color="tip" %}}
 
-   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to publish your module with PyInstaller](/operate/modules/create-module/#upload-your-module) including adding API keys for the build action, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you first published the module.
+   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to publish your module with PyInstaller](/operate/modules/support-hardware/#upload-your-module) including adding API keys for the build action, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you first published the module.
 
    {{% /alert %}}
 

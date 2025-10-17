@@ -42,7 +42,7 @@ For additional configuration information, click on the model name:
 {{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
-If none of the existing models fit your use case, you can [create a modular resource](/operate/modules/create-module/) to add support for it.
+If none of the existing models fit your use case, you can [create a modular resource](/operate/modules/support-hardware/) to add support for it.
 {{< /alert >}}
 
 {{% /tab %}}

@@ -59,7 +59,7 @@ For additional configuration information, click on the model name:
 {{<resources api="rdk:component:board" type="board" no-intro="true">}}
 
 {{< alert title="Add support for other models" color="tip" >}}
-If none of the existing models fit your use case, you can [create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}](/operate/modules/create-module/) to add support for it.
+If none of the existing models fit your use case, you can [create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}](/operate/modules/support-hardware/) to add support for it.
 
 For Linux boards like the Odroid C4, Pumpkin, or, Banana Pi, you can also use the [`customlinux` board](https://github.com/viam-modules/customlinux/blob/main/README.md).
 {{< /alert >}}

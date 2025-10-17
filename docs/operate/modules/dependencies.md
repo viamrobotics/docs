@@ -7,7 +7,7 @@ type: "docs"
 description: "From within a modular resource, you can access other machine resources using dependencies."
 aliases:
   - /operate/modules/other-hardware/dependencies/
-  - /operate/modules/create-module/dependencies/
+  - /operate/modules/support-hardware/dependencies/
 ---
 
 From within a modular resource, you can access other machine resources using dependencies.
@@ -179,7 +179,7 @@ For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/vi
 Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which means that the resource rebuilds every time the module is reconfigured.
 
 The steps above use `resource.AlwaysRebuild`.
-If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/modules/create-module/#implement-the-component-api).
+If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/modules/support-hardware/#implement-the-component-api).
 
 {{% /alert %}}
 

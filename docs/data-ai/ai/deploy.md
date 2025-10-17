@@ -97,4 +97,4 @@ After deploying your model, you need to configure an additional service to use t
 For example, you can configure an [`mlmodel` vision service](/operate/reference/services/vision/) to visualize the inferences your model makes.
 Follow our docs to [run inference](/data-ai/ai/run-inference/) to add an `mlmodel` vision service and see inferences.
 
-For other use cases, consider [creating custom functionality with a module](/operate/modules/create-module/).
+For other use cases, consider [creating custom functionality with a module](/operate/modules/support-hardware/).

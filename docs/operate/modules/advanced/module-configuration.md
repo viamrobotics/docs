@@ -199,7 +199,7 @@ You can add and edit `env` by switching from **Builder** to **JSON** mode in the
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is only available [locally](/operate/modules/create-module/#test-your-module-locally) on your computer. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is only available [locally](/operate/modules/support-hardware/#test-your-module-locally) on your computer. |
 | `name` | string | **Required** | A name for this instance of the module. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. Not applicable to local modules. |
 | `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).</p> |
@@ -317,7 +317,7 @@ For more information about Viam applications, see the [Viam applications documen
 ### Environment variables
 
 Each module has access to the following default environment variables.
-Not all of these variables are automatically available on [local modules](/operate/modules/create-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
+Not all of these variables are automatically available on [local modules](/operate/modules/support-hardware/#test-your-module-locally); you can manually set variables your module requires if necessary.
 
 <!-- prettier-ignore -->
 | Name | Description | Automatically set on local modules? |

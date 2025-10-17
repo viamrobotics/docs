@@ -220,7 +220,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-Now that the Freenove server is set up, you will follow the [process for creating modular resources](/operate/modules/create-module/).
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](/operate/modules/support-hardware/).
 
 ### Prerequisites
 
@@ -362,7 +362,7 @@ Don't forget to save.
 ### Make your module executable
 
 Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
-You can find more information in [Create a module](/operate/modules/create-module/).
+You can find more information in [Create a module](/operate/modules/support-hardware/).
 Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
 ```sh {class="command-line" data-prompt="$"}

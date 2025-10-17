@@ -1,5 +1,5 @@
 ---
-linkTitle: "Configure registry modules"
+linkTitle: "Use registry modules"
 title: "Configure registry modules"
 weight: 10
 layout: "docs"
@@ -26,7 +26,7 @@ aliases:
 ---
 
 Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
-Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/modules/create-module/) that provides a driver for the hardware.
+Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/modules/support-hardware/) that provides a driver for the hardware.
 
 ## About the Viam Registry of supported hardware and software
 
@@ -92,7 +92,7 @@ If you have many components and services on one machine, you can add folders to 
 The following modular components are available for computers and SBCs running `viam-server`.
 Configure any of these components on your machine by following [the steps above](#configure-hardware-on-your-machine).
 
-If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/create-module/) to add it to the registry.
+If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/support-hardware/) to add it to the registry.
 
 {{< tabs >}}
 {{% tab name="All components" %}}
@@ -220,7 +220,7 @@ Modules in the list above are officially supported and maintained by Viam only i
 
 ## Next steps
 
-If you have other hardware you need to integrate with a custom module, continue to [Create a module](/operate/modules/create-module/).
+If you have other hardware you need to integrate with a custom module, continue to [Create a module](/operate/modules/support-hardware/).
 If you have configured all your hardware, you can do a variety of things with your machine:
 
 - [Capture data from your machines](/data-ai/capture-data/capture-sync/)
