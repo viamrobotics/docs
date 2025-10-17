@@ -82,7 +82,7 @@ A resource model is identified by a unique name, called the {{< glossary_tooltip
 
 - `namespace` is the namespace of your organization, which you can find or [create](#create-a-namespace-for-your-organization) in your organization settings page.
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
-    If you do not intend to [upload your module](/operate/modules/support-hardware/#upload-your-module) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+    If you do not intend to [upload your module](/operate/modules/deploy-module/) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
 - `module-name` is the name of your module.
   Your `module-name` should describe the common functionality provided across the model or models provided by that module.
