@@ -1,13 +1,13 @@
 ---
 title: "Access machine resources from within a module"
 linkTitle: "Module dependencies"
-weight: 55
+weight: 26
 layout: "docs"
 type: "docs"
 description: "From within a modular resource, you can access other machine resources using dependencies."
 aliases:
   - /operate/modules/other-hardware/dependencies/
-  - /operate/modules/support-hardware/dependencies/
+  - /operate/modules/support-hardware/create-module/dependencies/
 ---
 
 From within a modular resource, you can access other machine resources using dependencies.

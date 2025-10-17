@@ -42,7 +42,7 @@ Overall, `viam-server` manages:
 ### Start-up
 
 `viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} are loaded on startup.
-`viam-server` handles [dependency](/operate/modules/dependencies/) management between resources.
+`viam-server` handles [dependency](/operate/modules/advanced/dependencies/) management between resources.
 
 After start-up, `viam-server` manages:
 

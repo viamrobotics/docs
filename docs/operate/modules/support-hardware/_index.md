@@ -162,7 +162,7 @@ Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary import
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs).
 
-For more information, see [Module dependencies](/operate/modules/dependencies/).
+For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
 {{% /tablestep %}}
 {{< tablestep >}}
@@ -172,7 +172,7 @@ This function should do the following:
 
 - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.
-- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/dependencies/).
+- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/advanced/dependencies/).
   {{% /tablestep %}}
   {{< tablestep >}}
 
@@ -406,7 +406,7 @@ Open <file>module.go</file> and add necessary imports.
 - Check that the user has configured required attributes and return errors if they are missing.
 - Return any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
 
-For more information, see [Module dependencies](/operate/modules/dependencies/).
+For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 {{% /tablestep %}}
 {{< tablestep >}}
 

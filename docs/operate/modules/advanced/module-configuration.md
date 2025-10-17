@@ -79,7 +79,7 @@ The following properties are available for modular resources:
 | `name` | string | **Required** | The name of this instance of a modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
 | `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
 | `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/modules/dependencies/). |
+| `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/modules/advanced/dependencies/). |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
 
 ## Module configuration details

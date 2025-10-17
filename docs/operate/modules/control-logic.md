@@ -467,7 +467,7 @@ class ControlLogic(Generic, EasyResource):
 
 {{% /expand%}}
 
-For more information, see [Module dependencies](/operate/modules/dependencies/).
+For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
 ## Add the control logic module locally
 
