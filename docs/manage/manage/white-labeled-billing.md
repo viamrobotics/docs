@@ -9,6 +9,7 @@ images: ["/operate/wlbilling.png"]
 date: "2025-01-31"
 aliases:
   - /manage/manage/white-labeled-billing
+  - /manage/manage/white-labelled-billing/
 ---
 
 You can use Viam to bill your customers using your own logo.
