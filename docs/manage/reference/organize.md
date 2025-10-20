@@ -42,8 +42,6 @@ You choose how to group your machines.
 1. Name the organization.
 1. From the **Data region** dropdown, choose the [geographic location](/manage/manage/data-regions/) where Viam should store your application data.
 1. Click **Create**.
-1. To create additional organizations, open the organization dropdown in the top right of Viam, next to your initials.
-   Click the **+** symbol next to **OTHER ORGANIZATIONS**.
 
 ## Create location
 
@@ -54,7 +52,7 @@ You choose how to group your machines.
 
 1. Click **Save**.
 
-1. To create additional locationsm, click the **Add location** button on the **LOCATIONS** page.
+1. To create additional locations, click the **Add location** button on the **LOCATIONS** page.
 
 ## Create sub-locations
 
