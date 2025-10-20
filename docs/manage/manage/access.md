@@ -45,12 +45,13 @@ You must have the **Owner** role to be able to grant permissions.
 You must have the **Owner** role to be able to share locations.
 
 1. On Viam, click on the organization dropdown in the top navigation bar.
-2. Select the organization that contains the location you want to share.
-3. Navigate to the location you want to share.
-4. Find the **Sharing** section of the location page.
-5. Select an organization you have access to in the dropdown or specify an organization ID (a string like `1ab2c3d1-1234-123a-abcd-abcdef123456`).
+1. Select the organization that contains the location you want to share.
+1. Navigate to the location you want to share.
+1. Find the **Members & Sharing** section of the location page.
+1. Click **Add organization**.
+1. Select an organization you have access to in the dropdown or specify an organization ID (a string like `1ab2c3d1-1234-123a-abcd-abcdef123456`).
    Members of the org can find the organization ID on their organization settings page.
-6. Click **Share**.
+1. Click **Grant access**.
 
 {{< alert title="Note" color="note" >}}
 Once you share a _nested_ location (sub-location), its parent location cannot be changed.
@@ -79,8 +80,8 @@ You must have the **Owner** role to be able to share locations.
 
 1. On [Viam](https://app.viam.com), click on the organization dropdown in the top navigation bar.
 2. Select the organization that contains the location you want to share.
-3. Navigate to the location you want to share.
-4. Find the **Sharing** section of the location page.
+3. Navigate to the location you want to unshare.
+4. Find the **Members & Sharing** section of the location page.
 5. Click the **X** to the right of the organization you want to remove.
 6. Click **Remove**.
 
