@@ -2,7 +2,7 @@
 | Method Name | Description |
 | ----------- | ----------- |
 | [`GetOperations`](/dev/reference/apis/robot/#getoperations) | Get the list of operations currently running on the machine. |
-| [`GetMachineStatus`](/dev/reference/apis/robot/#getmachinestatus) | Get status information about the machine. |
+| [`GetMachineStatus`](/dev/reference/apis/robot/#getmachinestatus) | Get status information about the machine including the status of the machine and its resources and the revision of the machine config. |
 | [`GetSessions`](/dev/reference/apis/robot/#getsessions) | Get the list of sessions currently connected to the robot. |
 | [`ResourceNames`](/dev/reference/apis/robot/#resourcenames) | Get a list of all known resource names connected to this machine. |
 | [`ResourceRPCSubtypes`](/dev/reference/apis/robot/#resourcerpcsubtypes) | Get a list of all resource types. |
