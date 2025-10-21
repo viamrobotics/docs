@@ -113,7 +113,7 @@ You can use the following commands to manage `viam-server` on the command line:
 Run the following on the command line to start `viam-server`, providing the path to your own configuration file:
 
 ```sh {class="command-line" data-prompt="$"}
-sudo viam-server -config /path/to/my/config.json
+viam-server -config /path/to/my/config.json
 ```
 
 If you followed the [Installation Guide](/operate/install/setup/), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
