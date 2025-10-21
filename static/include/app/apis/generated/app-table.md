@@ -33,7 +33,7 @@
 | [`GetRobot`](/dev/reference/apis/fleet/#getrobot) | Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID. |
 | [`GetRobotAPIKeys`](/dev/reference/apis/fleet/#getrobotapikeys) | Gets the API keys for the machine. |
 | [`GetRobotParts`](/dev/reference/apis/fleet/#getrobotparts) | Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under a specific {{< glossary_tooltip term_id="machine" text="machine" >}}. |
-| [`GetRobotPart`](/dev/reference/apis/fleet/#getrobotpart) | Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |
+| [`GetRobotPart`](/dev/reference/apis/fleet/#getrobotpart) | Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}} including its part config, part address, and other information. |
 | [`GetRobotPartLogs`](/dev/reference/apis/fleet/#getrobotpartlogs) | Get the logs associated with a specific machine {{< glossary_tooltip term_id="part" text="part" >}}. |
 | [`GetRobotPartByNameAndLocation`](/dev/reference/apis/fleet/#getrobotpartbynameandlocation) | Query a specific robot part by name and location id. |
 | [`TailRobotPartLogs`](/dev/reference/apis/fleet/#tailrobotpartlogs) | Get an asynchronous iterator that receives live machine part logs. |
