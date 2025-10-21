@@ -119,7 +119,7 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
 1. Then run `viam-server` with the `-debug` and `-log-file` options and pass in your machine cloud credentials file:
 
    ```sh {class="command-line" data-prompt="$" data-output=""}
-   sudo viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
+   viam-server -config ~/Downloads/viam.json -debug -log-file logs.txt
    ```
 
 1. Then check the logs file <FILE>logs.txt</FILE>.
