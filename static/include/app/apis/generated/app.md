@@ -2408,7 +2408,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetRobotPart
 
-Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
+Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}} including its part config, part address, and other information.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -2433,6 +2433,8 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}}.
 my_robot_part = await cloud.get_robot_part(
     robot_part_id="abc12345-1a23-1234-ab12-a22a22a2aa22"
 )
+# Get the part's config
+machine_part_config = my_robot_part.robot_config
 # Get the part's address
 address = my_robot_part.fqdn
 # Check if machine is live (last access time less than 10 sec ago)
