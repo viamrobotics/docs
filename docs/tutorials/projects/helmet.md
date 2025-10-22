@@ -354,7 +354,7 @@ The following code is adapted from that example.
 #### Register an HTTP function
 
 The trigger you will configure with Viam invokes the function with an HTTP request.
-You can learn more about HTTP functions in [Google's Write HTTP functions guide](https://cloud.google.com/functions/docs/writing/write-http-functions).
+You can learn more about HTTP functions in [Google's Write HTTP functions guide](https://docs.cloud.google.com/run/docs/write-functions).
 
 You need to add `@functions_framework.http` at the top of your function to register the HTTP function, and you need to add a `return` statement at the bottom to return an HTTP response.
 Your final code should look like this:
