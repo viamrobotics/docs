@@ -248,13 +248,19 @@ This file contains basic diagnostic and configuration information about your cam
 {{% /expand%}}
 
 {{% expand "No visible live video feed" %}}
-If you're working on a Linux machine, `ssh` into it, then restart `viam-server` by running:
 
-```sh {class="command-line" data-prompt="$"}
-sudo systemctl restart viam-server
-```
+Restart `viam-server`:
 
-If this doesn't work, you can reboot your machine by running:
+1. Navigate to your machine's page.
+1. Select the part status dropdown to the right of your machine's name on the top of the page.
+   {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="machine cloud credentials button on the machine part info dropdown" class="shadow" >}}
+1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.
+   Both `viam-server` and `viam-agent` will restart.
+
+   If you do not see the **Restart** button, click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+   If restarting the machine part does not resolve the issue, ssh into the machine and [stop and restart viam-server manually](/operate/reference/viam-server/manage-viam-server/#run-viam-server).
+
+If this doesn't work, you can reboot your machine by running the following command on the machine:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo reboot

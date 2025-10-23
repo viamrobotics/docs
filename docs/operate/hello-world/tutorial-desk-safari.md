@@ -647,6 +647,13 @@ Save the config.
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**Restart module every time you iterate.**
+
+If you make changes to your module code, you must restart your module for the changes to take effect.
+Click on the **...** menu near the module and select **Restart**.
+
+{{% /tablestep %}}
+{{% tablestep %}}
 **Test your game logic.**
 
 Navigate to your machine's **CONTROL** tab and find the button's panel.
