@@ -322,7 +322,7 @@ vision,GetProperties,,get_properties,GetProperties,properties,getProperties
 vision,Close,,close,Close,,
 
 ## World State Store
-world_state_store,listUUIDs,,list_uuids,,,listUUIDs
+world_state_store,ListUUIDs,,list_uuids,,,listUUIDs
 world_state_store,GetTransform,,get_transform,,,getTransform
 world_state_store,StreamTransformChanges,,stream_transform_changes,,,streamTransformChanges
 world_state_store,DoCommand,,do_command,,,doCommand
