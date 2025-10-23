@@ -249,6 +249,22 @@ The limit applies to calls through both WebRTC and direct gRPC connection, that 
 
 Try to find bottlenecks in scripts or modules that are hitting APIs for the machine in loops. You can check operations and sessions for a machine on its **CONTROL** tab at the bottom of the screen. To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQUESTS_LIMIT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 100.
 
+### transport: Error while dialing: dial tcp: lookup app.viam.com
+
+**Full Error:**
+
+```sh {class="command-line" data-prompt="$" data-output="1-10"}
+rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp: lookup app.viam.com on [::1]:53: read udp [::1]:<random ports>->[::1]:53: read: connection refused"
+```
+
+**Description**:
+
+This error occurs due to congestion while different machine processes compete for bandwidth.
+
+**Solution:**
+
+This error is usually harmless and may resolve on its own.
+
 ## Other common errors
 
 ### Accidental deletion of machines, locations, organizations, or accounts
