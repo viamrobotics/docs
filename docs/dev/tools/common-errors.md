@@ -265,6 +265,12 @@ This error occurs due to congestion while different machine processes compete fo
 
 This error is usually harmless and may resolve on its own.
 
+To get more logs, you can enable forwarding system logs for SOCKS, by adding the following to your [`viam-agent` system configuration](/manage/reference/viam-agent/#system-configuration):
+
+```json
+{ "forward_system_logs": "socks-forwarder" }
+```
+
 ## Other common errors
 
 ### Accidental deletion of machines, locations, organizations, or accounts
