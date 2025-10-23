@@ -19,6 +19,30 @@ aliases:
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
+- To restart `viam-agent`:
+
+  {{< alert title="Alert" color="note" >}}
+  When you restart `viam-agent`, the agent will restart `viam-server` as well.
+  {{< /alert >}}
+
+  {{< tabs >}}
+  {{% tab name="Web UI" %}}
+
+  1. Navigate to your machine in [Viam](https://app.viam.com).
+  1. Click on the machine status indicator next to the machine name.
+  1. Click on the restart arrow symbol.
+     This will restart `viam-server` and `viam-agent`.
+
+  {{% /tab %}}
+  {{% tab name="Shell" %}}
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo systemctl restart viam-agent
+  ```
+
+  {{% /tab %}}
+  {{< /tabs >}}
+
 - To start `viam-agent`:
 
   ```sh {class="command-line" data-prompt="$"}
@@ -27,22 +51,12 @@ aliases:
 
 - To stop `viam-agent`:
 
-  ```sh {class="command-line" data-prompt="$"}
-  sudo systemctl stop viam-agent
-  ```
-
   {{< alert title="Alert" color="note" >}}
   When you stop `viam-agent`, the agent will stop `viam-server` as well.
   {{< /alert >}}
 
-- To restart `viam-agent`:
-
-  {{< alert title="Alert" color="note" >}}
-  When you restart `viam-agent`, the agent will restart `viam-server` as well.
-  {{< /alert >}}
-
   ```sh {class="command-line" data-prompt="$"}
-  sudo systemctl restart viam-agent
+  sudo systemctl stop viam-agent
   ```
 
 - To completely uninstall `viam-agent` and `viam-server`, run the following command:
@@ -61,7 +75,8 @@ You can only restore this file if you have access to the machine configuration.
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
-On Windows, you can manage `viam-agent` using the Services GUI or the command line:
+On Windows, you can manage `viam-agent` using the Services GUI or the command line.
+You can also use the Viam web UI to restart `viam-agent`.
 
 {{< tabs >}}
 {{% tab name="Services GUI" %}}
@@ -72,7 +87,7 @@ On Windows, you can manage `viam-agent` using the Services GUI or the command li
 
    {{<imgproc src="/manage/viam-agent-windows-services-manager.png" resize="x1100" declaredimensions=true alt="Windows Services manager with viam-agent highlighted." style="max-width:600px" class="shadow imgzoom" >}}
 
-1. Use the **Start Service**, **Stop Service**, and **Restart Service** buttons to manage `viam-agent`.
+1. Use the **Restart Service**, **Stop Service**, and **Start Service** buttons to manage `viam-agent`.
 
 1. To change the startup type of `viam-agent`, right-click on `viam-agent` and select **Properties**.
    Select your desired startup type from the **Startup type** dropdown menu.
@@ -110,6 +125,14 @@ On Windows, you can manage `viam-agent` using the Services GUI or the command li
      Set-Service -Name "viam-agent" -StartupType Manual
      Set-Service -Name "viam-agent" -StartupType Automatic
      ```
+
+{{% /tab %}}
+{{% tab name="Web UI" %}}
+
+1. Navigate to your machine in [Viam](https://app.viam.com).
+1. Click on the machine status indicator next to the machine name.
+1. Click on the restart arrow symbol.
+   This will restart `viam-server` and `viam-agent`.
 
 {{% /tab %}}
 {{< /tabs >}}

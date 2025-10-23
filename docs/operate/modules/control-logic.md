@@ -527,6 +527,7 @@ If you are encountering errors, check the **LOGS** tab for more information.
 **Iterate.**
 
 If you make changes to your module code, you must restart your module for the changes to take effect.
+Click on the **...** menu near the module and select **Restart**.
 
 {{% /tablestep %}}
 {{< /table >}}
