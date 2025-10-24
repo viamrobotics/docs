@@ -31,10 +31,13 @@ aliases:
   - /operate/get-started/other-hardware/
   - /operate/get-started/other-hardware/create-module/
   - /operate/modules/other-hardware/create-module/
+  - /how-tos/hello-world-module/
+  - /operate/get-started/other-hardware/hello-world-module/
+  - /operate/modules/create-module/hello-world-module/
+  - /operate/modules/supported-hardware/hello-world-module/
 ---
 
 If your physical or virtual hardware is not [already supported](/operate/modules/configure-modules/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
-You can keep the module private or share it with your organization or the public.
 You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
 {{% hiddencontent %}}
@@ -42,67 +45,17 @@ If you want to create a "custom module", this page provides instructions for cre
 {{% /hiddencontent %}}
 
 This page provides instructions for creating and uploading a module in Python or Go.
+
+**Example module:** With each step of thise guide, you have instruction for creating a {{< glossary_tooltip term_id="modular-resource" text="modular" >}} camera component that returns a configured image.
+This guide also includes optional steps to create a modular sensor that returns random numbers, to demonstrate how you can include two modular resources within one {{< glossary_tooltip term_id="module" text="module" >}}.
+
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
 If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/advanced/micro-module/).
 
-{{< expand "How to design your module" >}}
+## Prerequisites
 
-If you want to plan your module before you write it, you can use the following steps to design your module:
-
-1. **Write a test script (optional)**
-
-   You can think of a module as a packaged wrapper around some script, that takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
-   Start by finding or writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
-
-   <br>
-
-2. **Choose an API**
-
-   Decide exactly what functionality you want your module to provide in terms of inputs and outputs.
-   With this in mind, look through the [component APIs](/dev/reference/apis/#component-apis) and choose one that fits your use case.
-   Each model implements one API.
-
-   <br>
-
-   For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
-
-   <br>
-
-   You do not need to fully implement all the methods of an API.
-   For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return nil and an "unimplemented" error or similar, depending on the method and the language you use to write your module.
-
-   <br>
-
-   If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
-
-   <br>
-
-3. **Decide on configuration attributes and dependencies**
-
-   Make a list of required and optional attributes for users to configure when adding your module to a machine.
-   Some examples of attributes:
-
-   - A filepath from which to access data
-   - A pin to which a device is wired
-   - An optional signal frequency to override a default value
-
-   You can also add dependencies to other resources that your module needs to use.
-   For example, if your module needs to access a camera, code your module to get a camera resource as a dependency.
-   This will allow you to access the camera with the camera API methods from within your module.
-
-   You'll add these attributes and dependencies to the `Validate` and `Reconfigure` functions when you write the module.
-
-{{< /expand >}}
-
-## Write your module
-
-### Generate stub files
-
-The easiest way to generate the files for your module is to use the [Viam CLI](/dev/tools/cli/):
-
-1. Install the Viam CLI and authenticate to Viam, from the same machine that you intend to upload your module from.
-
-   {{< expand "Install the Viam CLI and authenticate" >}}
+{{< expand "Install the Viam CLI and authenticate" >}}
+Install the Viam CLI and authenticate to Viam, from the same machine that you intend to upload your module from.
 
 {{< readfile "/static/include/how-to/install-cli.md" >}}
 
@@ -111,43 +64,339 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
-1. Run the `module generate` command in your terminal.
-   If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for this command to work:
+{{% expand "A running machine connected to Viam." %}}
 
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   viam module generate
-   ```
+You can write a module without a machine, but to test your module you'll need a [machine](/operate/install/setup/).
+Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
 
-1. Follow the prompts.
+{{% snippet "setup.md" %}}
 
-   {{< expand "Click for more details about each prompt" >}}
+{{% /expand%}}
+
+{{< expand "For Python users: Make sure you have at least Python 3.11" >}}
+
+If you plan to write your module using Python, you need Python version 3.11 or newer installed on your computer to use the code generation tool in this guide.
+You can check by running `python3 --version` or `python --version` in your terminal.
+
+{{< /expand >}}
+
+## Preparation
+
+Start by writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
+
+## Choose an API
+
+You can think of a module as a packaged wrapper around some script.
+The module takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
+
+Review the available [component APIs](/dev/reference/apis/#component-apis) and choose the one whose methods map most closely to the functionality you need.
+
+For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
+
+You do not need to fully implement all the methods of an API.
+For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return an "unimplemented" error.
+
+If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
+See [Run control logic](/docs/operate/modules/support-hardware/) for more information.
+
+**Example:**
+
+Let's figure out which Viam [APIs](/dev/reference/apis/#component-apis) make sense for your module.
+You need a way to return an image, and you need a way to return a number.
+
+If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
+That will work for the image.
+None of the camera API methods return a number though.
+
+Look at the [sensor API](/dev/reference/apis/components/sensor/), which includes the `GetReadings` method.
+You can return a number with that, but the sensor API can't return an image.
+
+Each model can implement only one API, but your module can contain multiple modular resources.
+Let's make two modular resources: a camera to return the image, and a sensor to return a random number.
+
+{{% alert title="Note" color="note" %}}
+
+For a quicker hello world experience, you can skip the sensor and only create a camera modular resource.
+If you prefer the simpler path, skip the sensor sections in the steps below.
+
+{{% /alert %}}
+
+## Write your module
+
+### Generate stub files
+
+Use the [Viam CLI](/dev/tools/cli/) to generate template files for your module:
+
+{{< table >}}
+{{% tablestep start=1 %}}
+
+Run the `module generate` command in your terminal:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate
+```
+
+{{< expand "Click for more details about each prompt" >}}
 
 <!--prettier-ignore-->
 | Prompt | Description |
 | -------| ----------- |
-| Module name | The module name describes the module or the family of devices it supports. It is generally the same as the name of the GitHub repo where you will put your module code. |
-| Language | The language for the module. |
+| Module name | Choose a name that describes the set of {{< glossary_tooltip term_id="resource" text="resources" >}} it supports. |
+| Language | Choose the programming language for the module. The CLI supports `Python` and `Golang`. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
 | Namespace/Organization ID | Navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](./#how-to-design-your-module) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
-| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](/operate/modules/deploy-module/) using PyInstaller by creating a build entrypoint script. You can select `No` if you will always build the module yourself before uploading it. |
+| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](/operate/modules/deploy-module/) using PyInstaller by creating a build entrypoint script. You can select `No` if you want to always build the module yourself before uploading it. Fort more information see [Update and manage modules](/operate/modules/advanced/manage-modules/). |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the registry; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
-{{< /expand >}}
+{{% /expand %}}
 
-The generator will create a folder containing stub files for your modular sensor component.
+<br>
+
+**Example module**: To build an example module that contains a camera model use the following command:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate --language python --model-name hello-camera \
+  --name hello-world --resource-subtype=camera --public false \
+  --enable-cloud false
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate --language go --model-name hello-camera \
+  --name hello-world --resource-subtype=camera --public false \
+  --enable-cloud false
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+The generator creates a folder containing stub files for your modular component.
 In the next section, you'll customize some of the generated files to support your sensor.
 
+**Example module**: For the example module, the file structure is:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```treeview
+hello-world/
+└── src/
+|   ├── models/
+|   |   └── hello_camera.py
+|   └── main.py
+└── README.md
+└── build.sh
+└── meta.json
+└── requirements.txt
+└── run.sh
+└── setup.sh
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```treeview
+hello-world/
+└── cmd/
+|   ├── cli/
+|   |   └── main.go
+|   └── module/
+|       └── main.go
+└── Makefile
+└── README.md
+└── go.mod
+└── go.sum
+└── hello-camera.go
+└── meta.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tablestep %}}
+{{< /table >}}
+
 #### Creating multiple models within one module
+
+TODO
 
 If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
 Note that each model can implement only one API.
 For an example of how this is done, see [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
 
+{{< expand "Click if you are also creating a sensor component" >}}
+
+Some of the code you just generated is shared across the module no matter how many modular resource models it supports.
+Some of the code you generated is camera-specific.
+You need to add some sensor-specific code to support the sensor component.
+
+1.  Instead of writing the code manually, use the module generator again.
+
+    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+    viam module generate
+    ```
+
+1.  You're going to delete this module after copy-pasting the sensor-specific code from it.
+    The only things that matter are the API and the model name.
+
+    - Module name: `temporary`
+    - Language: Your choice
+    - Visibility: `Private`
+    - Namespace/Organization ID: Same as you used before.
+    - Resource to add to the module (API): `Sensor Component`.
+    - Model name: `hello-sensor`
+    - Enable cloud build: `No`
+    - Register module: `No`
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+3.  Move the <file>temporary/src/models/hello_sensor.py</file> file to <file>hello-world/src/models/</file>.<br><br>
+
+1.  In <file>hello-world/src/models/hello_sensor.py</file>, change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
+
+    ```python {class="line-numbers linkable-line-numbers" data-start="15" }
+    MODEL: ClassVar[Model] = Model(ModelFamily("exampleorg", "hello-world"), "hello-sensor")
+    ```
+
+    Save the file.<br><br>
+
+1.  Open the <file>hello-world/src/main.py</file> file and add `HelloSensor` to the list of imports so you have:
+
+    ```python {class="line-numbers linkable-line-numbers" data-line="6, 9"}
+    import asyncio
+
+    from viam.module.module import Module
+    try:
+        from models.hello_camera import HelloCamera
+        from models.hello_sensor import HelloSensor
+    except ModuleNotFoundError: # when running as local module with run.sh
+        from .models.hello_camera import HelloCamera
+        from .models.hello_sensor import HelloSensor
+
+    if __name__ == '__main__':
+        asyncio.run(Module.run_from_registry())
+
+    ```
+
+    Save the file.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+3. Edit the file structure:<br><br>
+
+   1. Change the name of <file>hello-world/module.go</file> to <file>hello-camera.go</file>.<br><br>
+
+   1. Change the name of <file>temporary/module.go</file> to <file>hello-sensor.go</file>.
+      Move the <file>hello-sensor.go</file> folder from <file>temporary/</file> to <file>/hello-world/</file>.<br><br>
+
+1. Open <file>hello-world/cmd/module/main.go</file>.
+   You need to add the necessary imports and define how it adds the sensor model from the registry.
+   Delete all the contents and replace them with the following:<br><br>
+
+   ```go {class="line-numbers linkable-line-numbers" data-start="29"}
+   package main
+
+   import (
+       "helloworld"
+
+       "go.viam.com/rdk/components/camera"
+       "go.viam.com/rdk/components/sensor"
+       "go.viam.com/rdk/module"
+       "go.viam.com/rdk/resource"
+   )
+
+   func main() {
+       // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+       module.ModularMain(resource.APIModel{camera.API, helloworld.HelloCamera}, resource.APIModel{sensor.API, helloworld.HelloSensor})
+   }
+   ```
+
+   Save the file.<br><br>
+
+1. Change all instances of `temporary` in <file>hello-world/models/hello-sensor.go</file>:<br><br>
+
+   1. On line 1, change `package temporary` to `package helloworld`.
+
+   1. Edit `temporary` to `hello-world` on line 14, so it looks like this (but with your org ID in place of `exampleorg`):<br><br>
+
+      ```go {class="line-numbers linkable-line-numbers" data-start="14"}
+      HelloSensor      = resource.NewModel("exampleorg", "hello-world", "hello-sensor")
+      ```
+
+   1. Change all instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
+
+   1. Change all instances of `temporaryHelloSensor` to `helloWorldHelloSensor`.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+6.  Open <file>temporary/meta.json</file> and copy the model information.
+    For example:<br><br>
+
+    ```json {class="line-numbers linkable-line-numbers" data-start="8"}
+    {
+      "api": "rdk:component:sensor",
+      "model": "exampleorg:temporary:hello-sensor",
+      "short_description": "A sensor that returns a random number.",
+      "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
+    }
+    ```
+
+1.  Open <file>hello-world/meta.json</file> and paste the sensor model into the model list.<br><br>
+
+    Edit the `description` to include both models.<br><br>
+
+    Change `temporary` to `hello-world`.<br><br>
+
+    The file should now resemble the following:
+
+    ```json {class="line-numbers linkable-line-numbers" data-line="6-20"}
+    {
+      "$schema": "https://dl.viam.dev/module.schema.json",
+      "module_id": "exampleorg:hello-world",
+      "visibility": "private",
+      "url": "",
+      "description": "Example camera and sensor components: hello-camera and hello-sensor",
+      "models": [
+        {
+          "api": "rdk:component:camera",
+          "model": "exampleorg:hello-world:hello-camera",
+          "short_description": "A camera that returns an image.",
+          "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
+        },
+        {
+          "api": "rdk:component:sensor",
+          "model": "exampleorg:hello-world:hello-sensor",
+          "short_description": "A sensor that returns a random number.",
+          "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
+        }
+      ],
+      "entrypoint": "./run.sh",
+      "first_run": ""
+    }
+    ```
+
+1.  You can now delete the <file>temporary</file> module directory and all its contents.
+
+{{< /expand >}}
+
 ### Implement the component API
 
-Edit the generated files to add your logic:
+Edit the generated files to add your logic.
+
+**Example module**: You can view complete example code in the [hello-world-module repository on GitHub](https://github.com/viam-labs/hello-world-module/tree/main).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -175,6 +424,25 @@ This function should do the following:
 - If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/advanced/dependencies/).
   {{% /tablestep %}}
   {{< tablestep >}}
+
+MORE INFO
+
+3. **Decide on configuration attributes and dependencies**
+
+   Make a list of required and optional attributes for users to configure when adding your module to a machine.
+   Some examples of attributes:
+
+   - A filepath from which to access data
+   - A pin to which a device is wired
+   - An optional signal frequency to override a default value
+
+   You can also add dependencies to other resources that your module needs to use.
+   For example, if your module needs to access a camera, code your module to get a camera resource as a dependency.
+   This will allow you to access the camera with the camera API methods from within your module.
+
+   You'll add these attributes and dependencies to the `Validate` and `Reconfigure` functions when you write the module.
+
+TODO
 
 **Edit the methods you want to implement**:
 
@@ -209,7 +477,7 @@ from retry_requests import retry
 
 class meteo_PM(Sensor, EasyResource):
     MODEL: ClassVar[Model] = Model(
-      ModelFamily("jessamy", "weather"), "meteo_PM")
+      ModelFamily("exampleorg", "weather"), "meteo_PM")
 
     @classmethod
     def new(
@@ -461,7 +729,7 @@ import (
 )
 
 var (
-  HelloCamera      = resource.NewModel("jessamy", "hello-world", "hello-camera")
+  HelloCamera      = resource.NewModel("exampleorg", "hello-world", "hello-camera")
   errUnimplemented = errors.New("unimplemented")
 )
 
@@ -611,15 +879,6 @@ In order to see debug logs when using your modular resource, you'll need to run 
 It's a good idea to test your module locally before uploading it to the [registry](https://app.viam.com/registry).
 You can configure it in the web UI using the local files on your machine.
 
-{{% expand "Prerequisite: A running machine connected to Viam." %}}
-
-You can write a module without a machine, but to test your module you'll need a [machine](/operate/install/setup/).
-Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
-
-{{% snippet "setup.md" %}}
-
-{{% /expand%}}
-
 {{< table >}}
 {{% tablestep start=1 %}}
 **Prepare to run your module**
@@ -704,6 +963,21 @@ viam module build local
 
 {{% /tablestep %}}
 {{% tablestep %}}
+
+Make sure your machine's instance of `viam-server` is live and connected to Viam.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+Navigate to your machine's **CONFIGURE** page.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
+Click the **+** button, select **Local module**, then again select **Local module**.
+
+{{% /tablestep %}}
+{{% tablestep %}}
 **Configure your local module on a machine**
 
 <a name="reload"></a>
@@ -743,7 +1017,7 @@ For more information, run the command with the `-h` flag or see the [CLI documen
 
 `Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
 
-- Try specifying the `--home` directory, for example `/Users/jessamy/` on macOS.
+- Try specifying the `--home` directory, for example `/Users/yourname/` on macOS.
 
 `Error: Error while refreshing token, logging out. Please log in again`
 
@@ -770,22 +1044,21 @@ When you run `viam module reload`, the module will be added to your device autom
 {{% /tab %}}
 {{% tab name="Python: venv" %}}
 
-On your machine's **CONFIGURE** tab, click the **+** (create) icon in the left-hand menu.
-Select **Local module**, then **Local module**.
-
-Enter the absolute path to the <file>run.sh</file> script, for example `/home/jessamy/my-module/run.sh` on Linux, or `/Users/jessamy/my-python-sensor-module/run.sh` on macOS.
-For modules configured this way, `viam-server` uses this path instead of the `entrypoint` field in your <file>meta.json</file> file.
-
+Enter the path to the automatically-generated <file>run.sh</file> script.
 Click **Create**.
+For local modules, `viam-server` uses this path to start the module.
+
+**Example module**:
+For the `hello-world` module, the path should resemble `/home/yourname/hello-world/run.sh` on Linux, or `/Users/yourname/hello-world/run.sh` on macOS.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-On your machine's **CONFIGURE** tab, click the **+** (create) icon in the left-hand menu.
-Select **Local module**, then **Local module**.
+Enter the path to the <file>/bin/&#60;module-name&#62;</file> executable.
+For local modules, `viam-server` uses this path to start the module.
 
-Enter the absolute path to the <file>/bin/&#60;module-name&#62;</file> executable, for example `/home/jessamy/my-go-module/bin/mymodule` on Linux, or `/Users/jessamy/my-go-module/bin/mymodule` on macOS.
-For modules configured this way, `viam-server` uses this path instead of the `entrypoint` field in your <file>meta.json</file> file.
+**Example module**:
+For the `hello-world` module, the path should resemble `/home/yourname/hello-world/bin/hello-world`. For local modules, `viam-server` uses this path to start the module.
 
 Click **Create**.
 
@@ -796,28 +1069,49 @@ Click **Create**.
 {{% tablestep %}}
 **Configure the model provided by your module**
 
-Click the **+** button again, this time selecting **Local module** and then **Local component**.
+Click **+**, click **Local module**, then click **Local component** or **Local service**.
 
-Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `jessamy:weather:meteo-PM`.
+Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `exampleorg:hello-world:hello-camera`.
 You can find the triplet in the `model` field of your <file>meta.json</file> file.
 
 Select the **Type** corresponding to the API you implemented.
 
-Enter a **Name** such as `my-cool-component`.
+Enter a **Name** such as `camera-1`.
 Click **Create**.
 
-{{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local model after the local module is configured" class="shadow" >}}
+{{% /tablestep %}}
+{{% tablestep %}}
+**Configure attributes**
 
-Configure any required attributes using proper JSON syntax.
+When you add a new component or service, a panel appears for it on the **CONFIGURE** tab.
+If your model has required or optional attributes, configure them in the configuration field by adding them inside the `{}` object.
+
+**Example module**: For the camera model, add the `image_path` attribute by replacing `{}` with:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "image_path": "<replace with the path to your image>"
+}
+```
+
+{{% /tablestep %}}
+{{% tablestep %}}
+Save the config, and wait a few seconds for the config to apply.
+
+then click the **TEST** section of the camera's configuration card.
+If there are errors you will see them on the configuration panel and on the **LOGS** tab.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **Test the component**
 
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
-For example, if you created a sensor component, check whether readings are displayed.
 
-{{<imgproc src="/how-tos/sensor-test.png" resize="x1100" declaredimensions=true alt="The test section of an example modular sensor, with readings displayed." style="width:600px" class="shadow" >}}
+**Test module**: For the camera model, the test panel should show the image:
+
+{{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
+
+If you also implemented the sensor model, add and test it the same way.
 
 {{% /tablestep %}}
 {{% tablestep %}}
