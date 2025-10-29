@@ -38,19 +38,19 @@ aliases:
 ---
 
 If your physical or virtual hardware is not [already supported](/operate/modules/configure-modules/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
-You can use built-in tools to manage versioning and deployment to machines as you iterate on your module.
 
 {{% hiddencontent %}}
 If you want to create a "custom module", this page provides instructions for creating one in Python and Go.
 {{% /hiddencontent %}}
 
 This page provides instructions for creating and uploading a module in Python or Go.
-
-**Example module:** With each step of thise guide, you have instruction for creating a {{< glossary_tooltip term_id="modular-resource" text="modular" >}} camera component that returns a configured image.
-This guide also includes optional steps to create a modular sensor that returns random numbers, to demonstrate how you can include two modular resources within one {{< glossary_tooltip term_id="module" text="module" >}}.
-
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
 If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/advanced/micro-module/).
+
+**Example module:** With each step of thise guide, you have instruction for creating a {{< glossary_tooltip term_id="module" text="module" >}} which does two things:
+
+1. Opens an image file from a configured path on your machine
+2. Returns a random number
 
 ## Prerequisites
 
@@ -73,7 +73,7 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 
 {{% /expand%}}
 
-{{< expand "For Python users: Make sure you have at least Python 3.11" >}}
+{{< expand "For Python developers: Use Python 3.11+" >}}
 
 If you plan to write your module using Python, you need Python version 3.11 or newer installed on your computer to use the code generation tool in this guide.
 You can check by running `python3 --version` or `python --version` in your terminal.
@@ -82,7 +82,61 @@ You can check by running `python3 --version` or `python --version` in your termi
 
 ## Preparation
 
-Start by writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
+While not required, we recommend starting by writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
+
+**Example module:** For the example module the test script will test how to open an image in the same folder and how to print a random number.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python {class="line-numbers linkable-line-numbers" data-start="1" }
+import random
+from PIL import Image
+
+# Open an image
+img = Image.open("example.png")
+img.show()
+
+# Return a random number
+random_number = random.random()
+print(random_number)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go  {class="line-numbers linkable-line-numbers" data-start="1" }
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"os"
+)
+
+func main() {
+	// Open an image
+	imgFile, err := os.Open("example.png")
+	if err != nil {
+		fmt.Printf("Error opening image file: %v\n", err)
+		return
+	}
+	defer imgFile.Close()
+	imgByte, err := os.ReadFile("example.png")
+	fmt.Printf("Image file type: %T\n", imgByte)
+	if err != nil {
+		fmt.Printf("Error reading image file: %v\n", err)
+		return
+	}
+
+	// Return a random number
+	number := rand.Float64()
+	fmt.Printf("Random number: %f\n", number)
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Choose an API
 
@@ -99,27 +153,18 @@ For example, if you want to use the [camera API](/dev/reference/apis/components/
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
 See [Run control logic](/docs/operate/modules/support-hardware/) for more information.
 
-**Example:**
-
-Let's figure out which Viam [APIs](/dev/reference/apis/#component-apis) make sense for your module.
-You need a way to return an image, and you need a way to return a number.
+**Example Module:** To choose the Viam [APIs](/dev/reference/apis/#component-apis) which make sense for your module, think about the functionality you want to implement.
+You need a way to return an image and you need a way to return a number.
 
 If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
 That will work for the image.
-None of the camera API methods return a number though.
 
-Look at the [sensor API](/dev/reference/apis/components/sensor/), which includes the `GetReadings` method.
-You can return a number with that, but the sensor API can't return an image.
+The [sensor API](/dev/reference/apis/components/sensor/) includes the `GetReadings` method.
+You can return a number with that
 
+Note that the camera API can't return a number and the sensor API can't return an image.
 Each model can implement only one API, but your module can contain multiple modular resources.
-Let's make two modular resources: a camera to return the image, and a sensor to return a random number.
-
-{{% alert title="Note" color="note" %}}
-
-For a quicker hello world experience, you can skip the sensor and only create a camera modular resource.
-If you prefer the simpler path, skip the sensor sections in the steps below.
-
-{{% /alert %}}
+Therefore it is best to make two modular resources: a camera to return the image and a sensor to return a random number.
 
 ## Write your module
 
@@ -162,7 +207,7 @@ viam module generate
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module generate --language python --model-name hello-camera \
   --name hello-world --resource-subtype=camera --public false \
-  --enable-cloud false
+  --enable-cloud true
 ```
 
 {{% /tab %}}
@@ -171,11 +216,14 @@ viam module generate --language python --model-name hello-camera \
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module generate --language go --model-name hello-camera \
   --name hello-world --resource-subtype=camera --public false \
-  --enable-cloud false
+  --enable-cloud true
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
+
+The CLI only supports generating code for one model at a time.
+You can add the model for the sensor in a later step in [Creating multiple models within one module](/operate/modules/support-hardware/#creating-multiple-models-within-one-module).
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -215,8 +263,7 @@ hello-world/
 └── Makefile
 └── README.md
 └── go.mod
-└── go.sum
-└── hello-camera.go
+└── module.go
 └── meta.json
 ```
 
@@ -226,303 +273,465 @@ hello-world/
 {{% /tablestep %}}
 {{< /table >}}
 
-#### Creating multiple models within one module
+### Creating multiple models within one module
 
-TODO
+Some of the code you generated for your first modular resource is shared across the module no matter how many modular resource models it supports.
+Some of the code you generated is resource-specific.
 
-If you have multiple modular components that are related to or even dependent upon each other, you can opt to put them all into one module.
-Note that each model can implement only one API.
-For an example of how this is done, see [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
+If you have multiple modular resources that are related, you can put them all into the same module.
 
-{{< expand "Click if you are also creating a sensor component" >}}
+For convenience, we recommend running the module generator again from within the first module's directory, generating an unregistered module, and copying the resources-specific code.
 
-Some of the code you just generated is shared across the module no matter how many modular resource models it supports.
-Some of the code you generated is camera-specific.
-You need to add some sensor-specific code to support the sensor component.
+**Example module**: Change directory into the first module's folder:
 
-1.  Instead of writing the code manually, use the module generator again.
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+cd hello-world
+```
 
-    ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-    viam module generate
-    ```
-
-1.  You're going to delete this module after copy-pasting the sensor-specific code from it.
-    The only things that matter are the API and the model name.
-
-    - Module name: `temporary`
-    - Language: Your choice
-    - Visibility: `Private`
-    - Namespace/Organization ID: Same as you used before.
-    - Resource to add to the module (API): `Sensor Component`.
-    - Model name: `hello-sensor`
-    - Enable cloud build: `No`
-    - Register module: `No`
+Run the following command from within the first module's directory to generate temporary code you can copy from.
+Do not register this module.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-3.  Move the <file>temporary/src/models/hello_sensor.py</file> file to <file>hello-world/src/models/</file>.<br><br>
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate --language python --model-name hello-sensor \
+  --name hello-world --resource-subtype=sensor --public false \
+  --enable-cloud true
+```
 
-1.  In <file>hello-world/src/models/hello_sensor.py</file>, change `temporary` to `hello-world` in the ModelFamily line, so you have, for example:
+Click on each tab to see how the file should change to add the sensor-specific code:
 
-    ```python {class="line-numbers linkable-line-numbers" data-start="15" }
-    MODEL: ClassVar[Model] = Model(ModelFamily("exampleorg", "hello-world"), "hello-sensor")
-    ```
+{{< tabs >}}
+{{% tab name="hello_sensor.py" %}}
 
-    Save the file.<br><br>
-
-1.  Open the <file>hello-world/src/main.py</file> file and add `HelloSensor` to the list of imports so you have:
-
-    ```python {class="line-numbers linkable-line-numbers" data-line="6, 9"}
-    import asyncio
-
-    from viam.module.module import Module
-    try:
-        from models.hello_camera import HelloCamera
-        from models.hello_sensor import HelloSensor
-    except ModuleNotFoundError: # when running as local module with run.sh
-        from .models.hello_camera import HelloCamera
-        from .models.hello_sensor import HelloSensor
-
-    if __name__ == '__main__':
-        asyncio.run(Module.run_from_registry())
-
-    ```
-
-    Save the file.
+Move the generated <file>hello-world/hello-world/src/models/hello_sensor.py</file> file to <file>hello-world/src/models/</file>.
 
 {{% /tab %}}
-{{% tab name="Go" %}}
+{{% tab name="main.py" %}}
 
-3. Edit the file structure:<br><br>
+Open the <file>hello-world/src/main.py</file> file and add `HelloSensor` to the list of imports so you have:
 
-   1. Change the name of <file>hello-world/module.go</file> to <file>hello-camera.go</file>.<br><br>
+```python {class="line-numbers linkable-line-numbers" data-line="6, 9"}
+import asyncio
 
-   1. Change the name of <file>temporary/module.go</file> to <file>hello-sensor.go</file>.
-      Move the <file>hello-sensor.go</file> folder from <file>temporary/</file> to <file>/hello-world/</file>.<br><br>
+from viam.module.module import Module
+try:
+    from models.hello_camera import HelloCamera
+    from models.hello_sensor import HelloSensor
+except ModuleNotFoundError: # when running as local module with run.sh
+    from .models.hello_camera import HelloCamera
+    from .models.hello_sensor import HelloSensor
 
-1. Open <file>hello-world/cmd/module/main.go</file>.
-   You need to add the necessary imports and define how it adds the sensor model from the registry.
-   Delete all the contents and replace them with the following:<br><br>
+if __name__ == '__main__':
+    asyncio.run(Module.run_from_registry())
 
-   ```go {class="line-numbers linkable-line-numbers" data-start="29"}
-   package main
+```
 
-   import (
-       "helloworld"
+Save the file.
 
-       "go.viam.com/rdk/components/camera"
-       "go.viam.com/rdk/components/sensor"
-       "go.viam.com/rdk/module"
-       "go.viam.com/rdk/resource"
-   )
+{{% /tab %}}
+{{% tab name="meta.json" %}}
 
-   func main() {
-       // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
-       module.ModularMain(resource.APIModel{camera.API, helloworld.HelloCamera}, resource.APIModel{sensor.API, helloworld.HelloSensor})
-   }
-   ```
+Open <file>hello-world/meta.json</file> and add the sensor model into the model list.
+Edit the `description` to include both models.
 
-   Save the file.<br><br>
+```json {class="line-numbers linkable-line-numbers" data-line="6,13-19"}
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "exampleorg:hello-world",
+  "visibility": "private",
+  "url": "",
+  "description": "Example camera and sensor components: hello-camera and hello-sensor",
+  "models": [
+    {
+      "api": "rdk:component:camera",
+      "model": "exampleorg:hello-world:hello-camera",
+      "short_description": "A camera that returns an image.",
+      "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
+    },
+    {
+      "api": "rdk:component:sensor",
+      "model": "exampleorg:hello-world:hello-sensor",
+      "short_description": "A sensor that returns a random number.",
+      "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
+    }
+  ],
+  "entrypoint": "./run.sh",
+  "first_run": ""
+}
+```
 
-1. Change all instances of `temporary` in <file>hello-world/models/hello-sensor.go</file>:<br><br>
-
-   1. On line 1, change `package temporary` to `package helloworld`.
-
-   1. Edit `temporary` to `hello-world` on line 14, so it looks like this (but with your org ID in place of `exampleorg`):<br><br>
-
-      ```go {class="line-numbers linkable-line-numbers" data-start="14"}
-      HelloSensor      = resource.NewModel("exampleorg", "hello-world", "hello-sensor")
-      ```
-
-   1. Change all instances of `newTemporaryHelloSensor` to `newHelloWorldHelloSensor`.<br><br>
-
-   1. Change all instances of `temporaryHelloSensor` to `helloWorldHelloSensor`.
+Save the file.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-6.  Open <file>temporary/meta.json</file> and copy the model information.
-    For example:<br><br>
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-    ```json {class="line-numbers linkable-line-numbers" data-start="8"}
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module generate --language go --model-name hello-sensor \
+  --name hello-world --resource-subtype=sensor --public false \
+  --enable-cloud true
+```
+
+Click on each tab to see how the file should change to add the sensor-specific code:
+
+{{< tabs >}}
+{{% tab name="hello-camera.go" %}}
+
+In the initial module, change the name of <file>hello-world/module.go</file> to <file>hello-camera.go</file>.
+
+{{% /tab %}}
+{{% tab name="hello-sensor.go" %}}
+
+Move and rename <file>hello-world/hello-world/module.go</file> to <file>hello-world/hello-sensor.go</file>.
+
+{{% /tab %}}
+{{% tab name="module/main.go" %}}
+
+Open <file>hello-world/cmd/module/main.go</file>.
+This file must add resource imports and register the module's models:
+
+```go {class="line-numbers linkable-line-numbers" data-start="1" data-line="8, 13-16"}
+package main
+
+import (
+  "helloworld"
+  "go.viam.com/rdk/module"
+  "go.viam.com/rdk/resource"
+  camera "go.viam.com/rdk/components/camera"
+  sensor "go.viam.com/rdk/components/sensor"
+)
+
+func main() {
+  // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+  module.ModularMain(
+    resource.APIModel{ camera.API, helloworld.HelloCamera},
+    resource.APIModel{ sensor.API, helloworld.HelloSensor},
+  )
+}
+```
+
+Save the file.
+
+{{% /tab %}}
+{{% tab name="meta.json" %}}
+
+Open <file>hello-world/meta.json</file> and add the sensor model into the model list.
+Edit the `description` to include both models.
+
+```json {class="line-numbers linkable-line-numbers" data-line="6,13-19"}
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "exampleorg:hello-world",
+  "visibility": "private",
+  "url": "",
+  "description": "Example camera and sensor components: hello-camera and hello-sensor",
+  "models": [
+    {
+      "api": "rdk:component:camera",
+      "model": "exampleorg:hello-world:hello-camera",
+      "short_description": "A camera that returns an image.",
+      "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
+    },
     {
       "api": "rdk:component:sensor",
-      "model": "exampleorg:temporary:hello-sensor",
+      "model": "exampleorg:hello-world:hello-sensor",
       "short_description": "A sensor that returns a random number.",
       "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
     }
-    ```
+  ],
+  "entrypoint": "./run.sh",
+  "first_run": ""
+}
+```
 
-1.  Open <file>hello-world/meta.json</file> and paste the sensor model into the model list.<br><br>
+Save the file.
 
-    Edit the `description` to include both models.<br><br>
+{{% /tab %}}
+{{< /tabs >}}
 
-    Change `temporary` to `hello-world`.<br><br>
+{{% /tab %}}
+{{< /tabs >}}
 
-    The file should now resemble the following:
 
-    ```json {class="line-numbers linkable-line-numbers" data-line="6-20"}
-    {
-      "$schema": "https://dl.viam.dev/module.schema.json",
-      "module_id": "exampleorg:hello-world",
-      "visibility": "private",
-      "url": "",
-      "description": "Example camera and sensor components: hello-camera and hello-sensor",
-      "models": [
-        {
-          "api": "rdk:component:camera",
-          "model": "exampleorg:hello-world:hello-camera",
-          "short_description": "A camera that returns an image.",
-          "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
-        },
-        {
-          "api": "rdk:component:sensor",
-          "model": "exampleorg:hello-world:hello-sensor",
-          "short_description": "A sensor that returns a random number.",
-          "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
-        }
-      ],
-      "entrypoint": "./run.sh",
-      "first_run": ""
-    }
-    ```
+You can now delete the temporary <file>hello-world/hello-world</file> folder and all its contents.
 
-1.  You can now delete the <file>temporary</file> module directory and all its contents.
+### Implement the components
 
-{{< /expand >}}
+At this point you have a template for your module.
 
-### Implement the component API
-
-Edit the generated files to add your logic.
-
-**Example module**: You can view complete example code in the [hello-world-module repository on GitHub](https://github.com/viam-labs/hello-world-module/tree/main).
+If you want to see example modules, check out the Viam Registry.
+Many modules have a linked GitHub repo, where you can see the module's code.
+When logged in you can also download the module's source code to inspect it.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
+Generally you will add your custom logic in these files:
+
+| File | Description |
+| ---- | ----------- |
+| <file>/src/models/&lt;model-name&gt;.py</file> | Set up the configuration options for the model and implement the API methods for the model. |
+| `setup.sh` and `run.sh` | Add any logic for installing or running other software for your module. |
+| `requirements.txt` | Add any python packages that are required for your module. They will be installed by `setup.sh`. |
+
+<br>
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Generally you will add your custom logic in these files:
+
+| File | Description |
+| ---- | ----------- |
+| Model file (for example `hello-camera.go`) | Implement the API methods for the model. |
+
+{{% /tab %}}
+{{< /tabs >}}
+
+**Example module**: You can view complete example code in the [hello-world-module repository on GitHub](https://github.com/viam-labs/hello-world-module/tree/main).
+
+#### Set up model configuration options
+
+Many resource models have configuration options which allow you to specify options such as:
+
+- A filepath from which to access data
+- A pin to which a device is wired
+- An optional signal frequency to override a default value
+- The name of _another_ resource you wish to use in the model
+
+Model configuration happens in two steps:
+
 {{< table >}}
-{{< tablestep >}}
-Open <file>/src/models/&lt;model-name&gt;.py</file> and add any necessary imports.
+{{% tablestep start=1 %}}
+**Validation**
+
+The validation step serves two purposes:
+
+ - Confirm that the model configuration contains all **required attributes** and that these attributes are of the right type.
+ - Identify and return a list of names of **required resources** and a list of names of **optional resources**.
+   `viam-server` will pass these resources to the next step as dependencies.
+   For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
+
+**Example module**: Imagine how a user might configure the finished camera model.
+Since the camera model returns an image at a provided path, the configuration must contain a variable to pass in the file path.
+
+```json
+{
+  "image_path": "/path/to/file"
+}
+```
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+In <file>/src/models/&lt;model-name&gt;.py</file> edit the `validate_config` function to:
+
+```python {class="line-numbers linkable-line-numbers" data-start="38" data-line="5-10" }
+    @classmethod
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
+        # Check that a path to get an image was configured
+        fields = config.attributes.fields
+        if "image_path" not in fields:
+            raise Exception("Missing image_path attribute.")
+        elif not fields["image_path"].HasField("string_value"):
+            raise Exception("image_path must be a string.")
+
+        return [], []
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+In <file>hello-world/hello-camera.go</file> edit the `Validate` function to:
+
+```python {class="line-numbers linkable-line-numbers" data-start="51" data-line="2-10" }
+func (cfg *Config) Validate(path string) ([]string, error) {
+    var deps []string
+    if cfg.ImagePath == "" {
+        return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
+    }
+    if reflect.TypeOf(cfg.ImagePath).Kind() != reflect.String {
+        return nil, nil, errors.New("image_path must be a string.")
+    }
+    imagePath = cfg.ImagePath
+    return deps, []string{}, nil
+}
+```
+
+Add the following imports at the top of <file>hello-world/hello-camera.go</file>:
+
+```go {class="line-numbers linkable-line-numbers" data-start="7"}
+"reflect"
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For the sensor model, you do not need to edit any of the validate or configuration methods because the sensor has no configurable attributes.
+
 {{% /tablestep %}}
-{{< tablestep >}}
-**Edit the `validate_config` function** to do the following:
+{{% tablestep %}}
+**Reconfiguration**
 
-- Check that the user has configured required attributes and return errors if they are missing.
-- Return a map of any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs).
+`viam-server` calls the `reconfigure` method when the user adds the model or changes its configuration.
 
-For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
+The validation step serves two purposes:
 
-{{% /tablestep %}}
-{{< tablestep >}}
+- Use the configuration attributes and dependencies to set attributes on the model for usage within the API methods.
+- Obtain access to dependencies.
+  For information on how to use dependencies, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
-**Edit the `reconfigure` function**, which gets called when the user changes the configuration.
-This function should do the following:
+**Example module**: For the camera model, the reconfigure method serves to set the image path for use in API methods.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+1. Open <file>/src/models/hello_camera.py</file>.
+
+2. Edit the `reconfigure` function to:
+
+    ```python {class="line-numbers" data-start="48" data-line="4-5"}
+        def reconfigure(
+            self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+        ):
+            attrs = struct_to_dict(config.attributes)
+            self.image_path = str(attrs.get("image_path"))
+
+            return super().reconfigure(config, dependencies)
+    ```
+
+3. Add the following import to the top of the file:
+
+    ```python {class="line-numbers" data-start="1"}
+    from viam.utils import struct_to_dict
+    ```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+1. Open <file>hello-world/hello-camera.go</file>.
+
+1. Add `imagePath = ""` to the global variables so you have the following:
+
+   ```go {class="line-numbers linkable-line-numbers" data-line="22" data-start="18" data-line-offset="19"}
+   var (
+       HelloCamera      = resource.NewModel("exampleorg", "hello-world", "hello-camera")
+       errUnimplemented = errors.New("unimplemented")
+       imagePath        = ""
+   )
+   ```
+
+1. Edit the `type Config struct` definition, replacing the comments with the following:
+
+   ```go {class="line-numbers" data-start="32"}
+   type Config struct {
+       resource.AlwaysRebuild
+       ImagePath string `json:"image_path"`
+   }
+   ```
+
+   This adds the `image_path` attribute and causes the resource to rebuild each time the configuration is changed.
+
+{{< expand "Need to maintain state? Click here." >}}
+The `resource.AlwaysRebuild` parameter in the `Config` struct causes `viam-server` to fully rebuild the resource each time the user changes the configuration.
+
+If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you can implement this function so `viam-server` updates the configuration without rebuilding the resource from scratch.
+In this case, your `Reconfigure` function should do the following:
 
 - If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
 - Assign default values as necessary to any optional attributes if the user hasn't configured them.
-- If your module has dependencies, get the dependencies from the `dependencies` map and cast each resource according to which API it implements, as described in [Module dependencies](/operate/modules/advanced/dependencies/).
-  {{% /tablestep %}}
-  {{< tablestep >}}
 
-MORE INFO
+If you create a `Reconfigure` function, you must also edit the constructor to explicitly call `Reconfigure`.
 
-3. **Decide on configuration attributes and dependencies**
+For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
 
-   Make a list of required and optional attributes for users to configure when adding your module to a machine.
-   Some examples of attributes:
+{{< /expand >}}
 
-   - A filepath from which to access data
-   - A pin to which a device is wired
-   - An optional signal frequency to override a default value
+{{% hiddencontent %}}
+`resource.AlwaysRebuild` provides an implementation of `Reconfigure` that returns a `NewMustRebuild` error.
+This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported in those SDKs.
+{{% /hiddencontent %}}
 
-   You can also add dependencies to other resources that your module needs to use.
-   For example, if your module needs to access a camera, code your module to get a camera resource as a dependency.
-   This will allow you to access the camera with the camera API methods from within your module.
+{{% /tab %}}
+{{< /tabs >}}
 
-   You'll add these attributes and dependencies to the `Validate` and `Reconfigure` functions when you write the module.
+{{% /tablestep %}}
+{{< /table >}}
 
-TODO
+#### Implement API methods
 
-**Edit the methods you want to implement**:
+Depending on the component API you are implementing, you can implement different API methods.
 
-For each method you want to implement, replace the body of the method with your relevant logic.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+For each API method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [python.viam.dev](https://python.viam.dev/autoapi/viam/components/index.html).
 
-{{< expand "Example code for a sensor module" >}}
+**Example module:** Implement the camera API and the sensor API:
 
-The following code implements the sensor API by getting weather data from Open-Meteo and returning it using the `get_readings` function.
+{{< table >}}
+{{< tablestep start=1 >}}
 
-The `validate` and `reconfigure` functions have been edited so that the user can configure coordinates from which to get weather data, but if the user does not configure these optional attributes, defaults are assigned.
+The module generator created a stub for the `get_image()` function we want to implement in <file>hello-world/src/models/hello_camera.py</file>.
 
-```python {class="line-numbers linkable-line-numbers"}
-import asyncio
-from typing import Any, ClassVar, Final, Mapping, Optional, Sequence
+You need to replace `raise NotImplementedError()` with code to implement the method:
 
-from typing_extensions import Self
-from viam.components.sensor import Sensor
-from viam.module.module import Module
-from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import ResourceName
-from viam.resource.base import ResourceBase
-from viam.resource.easy_resource import EasyResource
-from viam.resource.types import Model, ModelFamily
-from viam.utils import SensorReading, struct_to_dict
+```python {class="line-numbers linkable-line-numbers" data-start="60" data-line="9-10" }
+async def get_image(
+    self,
+    mime_type: str = "",
+    *,
+    extra: Optional[Dict[str, Any]] = None,
+    timeout: Optional[float] = None,
+    **kwargs
+) -> ViamImage:
+    img = Image.open(self.image_path)
+    return pil_to_viam_image(img, CameraMimeType.JPEG)
+```
 
-import openmeteo_requests
-import requests_cache
-from retry_requests import retry
+Add the following import to the top of the file:
 
+```python {class="line-numbers" data-start="1"}
+from viam.media.utils.pil import pil_to_viam_image
+from viam.media.video import CameraMimeType
+from PIL import Image
+```
 
-class meteo_PM(Sensor, EasyResource):
-    MODEL: ClassVar[Model] = Model(
-      ModelFamily("exampleorg", "weather"), "meteo_PM")
+Save the file.
 
-    @classmethod
-    def new(
-        cls, config: ComponentConfig, dependencies: Mapping[
-          ResourceName, ResourceBase]
-    ) -> Self:
-        """This method creates a new instance of this Sensor component.
-        The default implementation sets the name from the `config` parameter
-        and then calls `reconfigure`.
-        """
-        return super().new(config, dependencies)
+{{% /tablestep %}}
+{{< tablestep >}}
 
-    @classmethod
-    def validate_config(cls, config: ComponentConfig) -> Sequence[str]:
-        """This method allows you to validate the configuration object
-        received from the machine, as well as to return any
-        dependencies based on that `config`.
-        """
-        fields = config.attributes.fields
-        # Check that configured fields are floats
-        if "latitude" in fields:
-            if not fields["latitude"].HasField("number_value"):
-                raise Exception("Latitude must be a float.")
+Leave the rest of the camera API methods unimplemented.
+They do not apply to this camera.
 
-        if "longitude" in fields:
-            if not fields["longitude"].HasField("number_value"):
-                raise Exception("Longitude must be a float.")
-        return []
+{{% /tablestep %}}
+{{< tablestep >}}
 
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[
-          ResourceName, ResourceBase]
-    ):
-        """This method allows you to dynamically update your service
-        when it receives a new `config` object.
-        """
-        attrs = struct_to_dict(config.attributes)
+Open <file>requirements.txt</file>.
+Add the following line:
 
-        self.latitude = float(attrs.get("latitude", 45))
-        self.logger.debug("Using latitude: " + str(self.latitude))
+```text
+Pillow
+```
 
-        self.longitude = float(attrs.get("longitude", -121))
-        self.logger.debug("Using longitude: " + str(self.longitude))
-        return super().reconfigure(config, dependencies)
+{{% /tablestep %}}
+{{< tablestep >}}
 
+Next, implement the sensor API.
+The module generator created a stub for the `get_readings()` function we want to implement in <file>hello-world/src/models/hello_sensor.py</file>.
+
+Replace `raise NotImplementedError()` with code to implement the method:
+
+```python {class="line-numbers linkable-line-numbers" data-start="63" data-line="8-11" }
     async def get_readings(
         self,
         *,
@@ -530,104 +739,27 @@ class meteo_PM(Sensor, EasyResource):
         timeout: Optional[float] = None,
         **kwargs
     ) -> Mapping[str, SensorReading]:
-        # Set up the Open-Meteo API client with cache and retry on error
-        cache_session = requests_cache.CachedSession(
-          '.cache', expire_after=3600)
-        retry_session = retry(cache_session, retries=5, backoff_factor=0.2)
-        openmeteo = openmeteo_requests.Client(session=retry_session)
-
-        # The order of variables in hourly or daily is
-        # important to assign them correctly below
-        url = "https://air-quality-api.open-meteo.com/v1/air-quality"
-        params = {
-            "latitude": self.latitude,
-            "longitude": self.longitude,
-            "current": ["pm10", "pm2_5"],
-            "timezone": "America/Los_Angeles"
-        }
-        responses = openmeteo.weather_api(url, params=params)
-
-        # Process location
-        response = responses[0]
-
-        # Current values. The order of variables needs
-        # to be the same as requested.
-        current = response.Current()
-        current_pm10 = current.Variables(0).Value()
-        current_pm2_5 = current.Variables(1).Value()
-
-        self.logger.info(current_pm2_5)
-
-        # Return a dictionary of the readings
+        number = random.random()
         return {
-            "pm2_5": current_pm2_5,
-            "pm10": current_pm10
+            "random_number": number
         }
-
-
-if __name__ == "__main__":
-    asyncio.run(Module.run_from_registry())
 ```
 
-{{< /expand >}}
+Add the following import to the top of the file:
 
-You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
+```python {class="line-numbers" data-start="1"}
+import random
+```
+
+Save the file.
 
 {{% /tablestep %}}
 {{< tablestep >}}
 
-**Add logging** messages as desired.
-The following log severity levels are available for resource logs:
-
-```python {class="line-numbers linkable-line-numbers"}
-# Within some method, log information:
-self.logger.debug("debug info")
-self.logger.info("info")
-self.logger.warn("warning info")
-self.logger.error("error info")
-self.logger.exception("error info", exc_info=True)
-self.logger.critical("critical info")
-```
-
-Resource-level logs are recommended instead of global logs for modular resources, because they make it easier to determine which component or service an error is coming from.
-Resource-level error logs appear in the <strong>ERROR LOGS</strong> section of each resource's configuration card in the app.
-
-{{% alert title="Note" color="note" %}}
-In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
-{{% /alert %}}
-
-{{< expand "Click for global logging information" >}}
-
-If you need to publish to the global machine-level logs instead of using the recommended resource-level logging, you can follow this example:
-
-```python {class="line-numbers linkable-line-numbers" data-line="2,5"}
-# In your import block, import the logging package:
-from viam.logging import getLogger
-
-# Before your first class or function, define the LOGGER variable:
-LOGGER = getLogger(__name__)
-
-# in some method, log information
-LOGGER.debug("debug info")
-LOGGER.info("info info")
-LOGGER.warn("warn info")
-LOGGER.error("error info")
-LOGGER.exception("error info", exc_info=True)
-LOGGER.critical("critical info")
-```
-
-{{< /expand >}}
-
-{{% /tablestep %}}
-{{< tablestep >}}
-
-**Edit the generated <file>requirements.txt</file> file** to include any packages that must be installed for the module to run.
-Depending on your use case, you may not need to add anything here beyond <code>viam-sdk</code> which is auto-populated.
+Leave the rest of the sensor API methods unimplemented.
 
 {{% /tablestep %}}
 {{< /table >}}
-
-For most modules, you do not need to edit the <file>main.py</file> file, unless you are implementing multiple models in the same module as in [Create a Hello World module](/operate/modules/support-hardware/hello-world-module/).
 
 {{% hiddencontent %}}
 
@@ -656,358 +788,134 @@ We recommend using what the current generator creates rather than old examples t
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-{{% hiddencontent %}}
-`resource.AlwaysRebuild` provides an implementation of `Reconfigure` that returns a `NewMustRebuild` error.
-This error doesn't exist in the other SDKs, so `AlwaysRebuild` is not supported in those SDKs.
-{{% /hiddencontent %}}
-
-{{< table >}}
-{{< tablestep start=1 >}}
-Open <file>module.go</file> and add necessary imports.
-{{% /tablestep %}}
-{{< tablestep >}}
-**Add any configurable attributes to the `Config` struct.**
-{{% /tablestep %}}
-{{< tablestep >}}
-**Edit the `Validate` function** to do the following:
-
-- Check that the user has configured required attributes and return errors if they are missing.
-- Return any dependencies ({{< glossary_tooltip term_id="resource" text="resources" >}} that your module needs to use).
-
-For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
-{{% /tablestep %}}
-{{< tablestep >}}
-
-**(Optional) Create and edit a `Reconfigure` function**:
-
-In most cases, you can omit this function and leave `resource.AlwaysRebuild` in the `Config` struct.
-This will cause `viam-server` to fully rebuild the resource each time the user changes the configuration.
-
-If you need to maintain the state of the resource, for example if you are implementing a board and need to keep the software PWM loops running, you should implement this function so that `viam-server` updates the configuration without rebuilding the resource from scratch.
-In this case, your `Reconfigure` function should do the following:
-
-- If you assigned any configuration attributes to global variables, get the values from the latest `config` object and update the values of the global variables.
-- Assign default values as necessary to any optional attributes if the user hasn't configured them.
-
-For an example that implements the `Reconfigure` method, see [<file>mybase.go</file> on GitHub](https://github.com/viamrobotics/rdk/blob/main/examples/customresources/models/mybase/mybase.go).
-
-{{% /tablestep %}}
-{{< tablestep >}}
-
-**Edit the constructor** to do the following:
-
-- If you didn't create a `Reconfigure` function, use the constructor to assign default values as necessary to any optional attributes if the user hasn't configured them.
-- If you created a `Reconfigure` function, make your constructor call `Reconfigure`.
-
-{{% /tablestep %}}
-{{< tablestep >}}
-
-**Edit the methods you want to implement**:
-
-For each method you want to implement, replace the body of the method with your relevant logic.
+For each API method you want to implement, replace the body of the method with your relevant logic.
 Make sure you return the correct type in accordance with the function's return signature.
 You can find details about the return types at [go.viam.com/rdk/components](https://pkg.go.dev/go.viam.com/rdk/components).
 
-{{< expand "Example code for a camera module" >}}
-This example from [Hello World module](/operate/modules/support-hardware/hello-world-module/) implements only one method of the camera API by returning a static image.
-It demonstrates a required configuration attribute (`image_path`) and an optional configuration attribute (`example_value`).
+**Example module:** Implement the camera API and the sensor API:
 
-```go {class="line-numbers linkable-line-numbers"}
-package hello_world
+{{< table >}}
+{{< tablestep start=1 >}}
 
-import (
-  "context"
-  "errors"
-  "os"
-  "reflect"
+The module generator created a stub for the `Image` function we want to implement in <file>hello-world/hello-camera.go</file>.
 
-  "go.viam.com/rdk/components/camera"
-  "go.viam.com/rdk/logging"
-  "go.viam.com/rdk/pointcloud"
-  "go.viam.com/rdk/resource"
-  "go.viam.com/utils/rpc"
-)
+You need to replace `panic("not implemented")` with code to implement the method:
 
-var (
-  HelloCamera      = resource.NewModel("exampleorg", "hello-world", "hello-camera")
-  errUnimplemented = errors.New("unimplemented")
-)
-
-func init() {
-  resource.RegisterComponent(camera.API, HelloCamera,
-    resource.Registration[camera.Camera, *Config]{
-      Constructor: newHelloWorldHelloCamera,
-    },
-  )
-}
-
-type Config struct {
-  ImagePath    string `json:"image_path"`
-  ExampleValue string `json:"example_value"`
-}
-
-func (cfg *Config) Validate(path string) ([]string, error) {
-  var deps []string
-  if cfg.ImagePath == "" {
-    return nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
-  }
-  if reflect.TypeOf(cfg.ImagePath).Kind() != reflect.String {
-    return nil, errors.New("image_path must be a string.")
-  }
-  if cfg.ExampleValue != "" && reflect.TypeOf(cfg.ExampleValue).Kind() != reflect.String {
-    return nil, errors.New("example_value must be a string.")
-  }
-  return deps, nil
-}
-
-type helloWorldHelloCamera struct {
-  resource.AlwaysRebuild // Resource rebuilds instead of reconfiguring
-
-  name resource.Name
-
-  logger logging.Logger
-  cfg    *Config
-
-  exampleValue string
-
-  cancelCtx  context.Context
-  cancelFunc func()
-}
-
-func newHelloWorldHelloCamera(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (camera.Camera, error) {
-  conf, err := resource.NativeConfig[*Config](rawConf)
-  if err != nil {
-    return nil, err
-  }
-
-  cancelCtx, cancelFunc := context.WithCancel(context.Background())
-
-  s := &helloWorldHelloCamera{
-    name:       rawConf.ResourceName(),
-    logger:     logger,
-    cfg:        conf,
-    cancelCtx:  cancelCtx,
-    cancelFunc: cancelFunc,
-}
-
-  s.exampleValue = s.cfg.ExampleValue
-  if s.exampleValue == "" {
-    s.exampleValue = "default value"
-    s.logger.Debug("setting default exampleValue: %s", s.exampleValue)
-  }
-
- return s, nil
-}
-
-func (s *helloWorldHelloCamera) Name() resource.Name {
-  return s.name
-}
-
+```go {class="line-numbers linkable-line-numbers" data-start="101" }
 func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
-  imagePath := s.cfg.ImagePath
-  imgFile, err := os.Open(imagePath)
-  if err != nil {
-    return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
-  }
-  defer imgFile.Close()
-  imgByte, err := os.ReadFile(imagePath)
-  s.logger.Info("The s.exampleValue is: " + s.exampleValue)
-  return imgByte, camera.ImageMetadata{}, nil
+    imgFile, err := os.Open(imagePath)
+    if err != nil {
+       return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
+    }
+    defer imgFile.Close()
+    imgByte, err := os.ReadFile(imagePath)
+    return imgByte, camera.ImageMetadata{}, nil
 }
-
-func (s *helloWorldHelloCamera) NewClientFromConn(ctx context.Context, conn rpc.ClientConn, remoteName string, name resource.Name, logger logging.Logger) (camera.Camera, error) {
-  return nil, errors.New("not implemented")
-}
-
-func (s *helloWorldHelloCamera) Images(ctx context.Context) ([]camera.NamedImage, resource.ResponseMetadata, error) {
-  return []camera.NamedImage{}, resource.ResponseMetadata{}, errors.New("not implemented")
-}
-
-func (s *helloWorldHelloCamera) NextPointCloud(ctx context.Context) (pointcloud.PointCloud, error) {
-  return nil, errors.New("not implemented")
-}
-
-func (s *helloWorldHelloCamera) Properties(ctx context.Context) (camera.Properties, error) {
-  return camera.Properties{}, errors.New("not implemented")
-}
-
-func (s *helloWorldHelloCamera) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
-  return map[string]interface{}{}, errors.New("not implemented")
-}
-
-func (s *helloWorldHelloCamera) Close(context.Context) error {
-  s.cancelFunc()
-  return nil
-}
-
 ```
 
-{{< /expand >}}
+{{% /tablestep %}}
+{{% tablestep %}}
 
-You can find more examples by looking at the source code GitHub repos linked from each module in the [registry](https://app.viam.com/registry).
+Add the following import to the list of imports at the top of <file>hello-world/hello-camera.go</file>:
+
+```go {class="line-numbers linkable-line-numbers" data-start="7"}
+"os"
+```
+
+Save the file.
+
 {{% /tablestep %}}
 {{< tablestep >}}
-**Add logging** messages as desired.
 
-You can add log messages with various levels of severity:
+Leave the rest of the camera API methods unimplemented.
+They do not apply to this camera.
 
-```go {class="line-numbers linkable-line-numbers"}
-fn (c *component) someFunction(ctx context.Context, a int) {
-  // Log with severity info:
-  c.logger.CInfof(ctx, "performing some function with a=%v", a)
-  // Log with severity debug (using value wrapping):
-  c.logger.CDebugw(ctx, "performing some function", "a" ,a)
-  // Log with severity warn:
-  c.logger.CWarnw(ctx, "encountered warning for component", "name", c.Name())
-  // Log with severity error without a parameter:
-  c.logger.CError(ctx, "encountered an error")
+{{% /tablestep %}}
+{{< tablestep >}}
+
+Next, implement the sensor API.
+The module generator created a stub for the `Readings()` function we want to implement in <file>hello-world/hello-sensor.go</file>.
+
+Replace `panic("not implemented")` with code to implement the method:
+
+```python {class="line-numbers linkable-line-numbers" data-start="92" data-line="8-11" }
+func (s *helloWorldHelloSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+    number := rand.Float64()
+    return map[string]interface{}{
+        "random_number": number,
+    }, nil
 }
 ```
 
 {{% /tablestep %}}
-{{< /table >}}
+{{< tablestep >}}
 
-{{% alert title="Note" color="note" %}}
-In order to see debug logs when using your modular resource, you'll need to run `viam-server` with the `-debug` option.
-{{% /alert %}}
+Add the following import to the list of imports at the top of <file>hello-world/hello-camera.go</file>:
+
+```go {class="line-numbers linkable-line-numbers" data-start="7"}
+"math/rand"
+```
+
+Save the file.
+
+{{% /tablestep %}}
+{{< tablestep >}}
+
+Since `errUnimplemented` and `Config` are defined in <file>hello-camera.go</file>, you need to change <file>hello-sensor.go</file> to avoid redeclaring them:<br><br>
+
+In <file>hello-sensor.go</file>:
+
+- Delete the `"errors"` import.
+- Search for and delete the line`errUnimplemented = errors.New("unimplemented")`.
+- Search for `type Config struct {` and change it to `type sensorConfig struct {`.
+- Search for all instances of `*Config` in <file>hello-sensor.go</file> and change them to `*sensorConfig`.
+
+{{% /tablestep %}}
+{{< tablestep >}}
+
+Leave the rest of the sensor API methods unimplemented.
+
+Save the file.
+
+{{% /tablestep %}}
+
+{{< /table >}}
 
 {{% /tab %}}
 {{< /tabs >}}
 
 ## Test your module locally
 
-It's a good idea to test your module locally before uploading it to the [registry](https://app.viam.com/registry).
+You can test your module locally before uploading it to the [registry](https://app.viam.com/registry).
 You can configure it in the web UI using the local files on your machine.
 
-{{< table >}}
-{{% tablestep start=1 %}}
-**Prepare to run your module**
+### Add module to machine
+
+If you enabled cloud build, you can use hot reloading, which will package the module and copy it to a machine for testing.
 
 {{< tabs >}}
-{{% tab name="Python: Hot reloading (recommended)" %}}
-
-If you enabled cloud build, use these steps.
-
-1. Create a <file>reload.sh</file> script in your module directory.
-   You'll use this for local testing and can delete it before you upload your module.
-   Paste the following contents into it and save the file:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   #!/usr/bin/env bash
-
-    # bash safe mode. look at `set --help` to see what these are doing
-    set -euxo pipefail
-
-    cd $(dirname $0)
-    MODULE_DIR=$(dirname $0)
-    VIRTUAL_ENV=$MODULE_DIR/venv
-    PYTHON=$VIRTUAL_ENV/bin/python
-    ./setup.sh
-
-    # Be sure to use `exec` so that termination signals reach the python process,
-    # or handle forwarding termination signals manually
-    exec $PYTHON src/main.py $@
-   ```
-
-1. Make your reload script executable by running the following command in your module directory:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   chmod 755 reload.sh
-   ```
-
-1. Create a virtual Python environment with the necessary packages by running the setup file from within the module directory:
-
-   ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-   sh setup.sh
-   ```
-
-1. Edit your <file>meta.json</file>, replacing the `"entrypoint"`, `"build"`, and `"path"` fields as follows:
-
-   ```json {class="line-numbers linkable-line-numbers" data-start="13" data-line="1, 4, 6" }
-     "entrypoint": "reload.sh",
-     "first_run": "",
-     "build": {
-       "build": "rm -f module.tar.gz && tar czf module.tar.gz requirements.txt src/*.py src/models/*.py meta.json setup.sh reload.sh",
-       "setup": "./setup.sh",
-       "path": "module.tar.gz",
-       "arch": [
-         "linux/amd64",
-         "linux/arm64"
-       ]
-     }
-   ```
-
-{{% /tab %}}
-{{% tab name="Python: venv" %}}
-
-Create a virtual Python environment with the necessary packages by running the setup file from within the module directory:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-sh setup.sh
-```
-
-This environment is where the local module will run.
-`viam-server` does not need to run inside this environment.
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-From within the module directory, compile your module into a single executable:
-
-```sh {class="command-line" data-prompt="$" data-output="5-10"}
-viam module build local
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-{{% /tablestep %}}
-{{% tablestep %}}
-
-Make sure your machine's instance of `viam-server` is live and connected to Viam.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-
-Navigate to your machine's **CONFIGURE** page.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-
-Click the **+** button, select **Local module**, then again select **Local module**.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Configure your local module on a machine**
-
-<a name="reload"></a>
-
-{{< tabs >}}
-{{% tab name="Python: Hot reloading (recommended)" %}}
+{{% tab name="Hot reloading (recommended)" %}}
 
 Run the following command to build and start your module and push it to your machine:
 
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module reload <insert relevant named args>
-```
-
-{{< expand "Reload example commands" >}}
-
-For example, to run on your development machine:
+{{< tabs >}}
+{{% tab name="Same device" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module reload --local
+viam module reload-local --cloud-config /path/to/viam.json
 ```
 
-Or to run on a different machine (such as a single-board computer), specify the part ID of the remote machine:
+{{% /tab %}}
+{{% tab name="Other device" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
 ```
 
-{{< /expand >}}
+{{% /tab %}}
+{{< /tabs >}}
 
-For more information, run the command with the `-h` flag or see the [CLI documentation](/dev/tools/cli/#module).
+For more information, see the [CLI documentation](/dev/tools/cli/#module).
 
 {{< expand "Reload troubleshooting" >}}
 
@@ -1042,7 +950,14 @@ In upper right corner of the module's card, click the **...** menu, then click *
 When you run `viam module reload`, the module will be added to your device automatically.
 
 {{% /tab %}}
-{{% tab name="Python: venv" %}}
+{{% tab name="Manual" %}}
+
+Navigate to your machine's **CONFIGURE** page.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Click the **+** button, select **Local module**, then again select **Local module**.
 
 Enter the path to the automatically-generated <file>run.sh</file> script.
 Click **Create**.
@@ -1054,6 +969,14 @@ For the `hello-world` module, the path should resemble `/home/yourname/hello-wor
 {{% /tab %}}
 {{% tab name="Go" %}}
 
+From within the module directory, compile your module [with the `module build` command](/dev/tools/cli/#using-the-build-subcommand) into a single executable:
+
+```sh {class="command-line" data-prompt="$" data-output="5-10"}
+viam module build local
+```
+
+Click the **+** button, select **Local module**, then again select **Local module**.
+
 Enter the path to the <file>/bin/&#60;module-name&#62;</file> executable.
 For local modules, `viam-server` uses this path to start the module.
 
@@ -1062,14 +985,23 @@ For the `hello-world` module, the path should resemble `/home/yourname/hello-wor
 
 Click **Create**.
 
+
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tablestep %}}
-{{% tablestep %}}
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< table >}}
+{{< /table >}}
+
+### Add local model
+
+{{< table >}}
+{{% tablestep start=1 %}}
 **Configure the model provided by your module**
 
-Click **+**, click **Local module**, then click **Local component** or **Local service**.
+On your machine's **CONFIGURE** page, click **+**, click **Local module**, then click **Local component** or **Local service**.
 
 Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, for example `exampleorg:hello-world:hello-camera`.
 You can find the triplet in the `model` field of your <file>meta.json</file> file.
@@ -1123,20 +1055,34 @@ If not, you have some debugging to do.
 Each time you make changes to your local module code, you need to update its instance on your machine:
 
 {{< tabs >}}
-
-{{% tab name="Python: PyInstaller (recommended)" %}}
+{{% tab name="Hot reloading (recommended)" %}}
 
 Run the [reload command again](#reload) to rebuild and restart your module:
 
+{{< tabs >}}
+{{% tab name="Same device" %}}
+
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module reload <insert relevant named args>
+viam module reload-local --cloud-config /path/to/viam.json
 ```
 
 {{% /tab %}}
-{{% tab name="Python: venv" %}}
+{{% tab name="Other device" %}}
 
-Since you are using <file>run.sh</file> instead of a built executable, you do not need to rebuild anything as you iterate.
-Just save your code changes, then restart the module in your machine's **CONFIGURE** tab:
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+As you iterate, save your code changes, then restart the module in your machine's **CONFIGURE** tab:
 In upper right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
@@ -1158,10 +1104,12 @@ In upper right corner of the module's card, click **...** menu, then click **Res
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tab %}}
+
+{{< /tabs >}}
+
 {{% /tablestep %}}
 {{< /table >}}
-
-See [Using the `build` subcommand](/dev/tools/cli/#using-the-build-subcommand) for advanced `build` options.
 
 ## Next steps
 
