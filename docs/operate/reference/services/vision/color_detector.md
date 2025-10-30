@@ -222,7 +222,7 @@ import (
 
 // Grab the camera from the machine
 cameraName := "cam1" // make sure to use the same component name that you have in your machine configuration
-myCam, err := camera.FromRobot(robot, cameraName)
+myCam, err := camera.FromProvider(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }

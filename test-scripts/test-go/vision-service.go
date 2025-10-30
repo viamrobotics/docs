@@ -31,7 +31,7 @@ func main() {
 
 	defer machine.Close(context.Background())
 
-	myDetectorService, err := vision.FromRobot(machine, "my_detector")
+	myDetectorService, err := vision.FromProvider(machine, "my_detector")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	// Get the stream from a camera
-	cam, err := camera.FromRobot(machine, "cam")
+	cam, err := camera.FromProvider(machine, "cam")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -58,7 +58,7 @@ func main() {
 	img, release, err := camStream.Next(context.Background())
 	defer release()
 
-	myDetectorService2, err := vision.FromRobot(machine, "my_detector")
+	myDetectorService2, err := vision.FromProvider(machine, "my_detector")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -73,7 +73,7 @@ func main() {
 		logger.Info(detections2[0])
 	}
 
-	myClassifierService, err := vision.FromRobot(machine, "my_classifier")
+	myClassifierService, err := vision.FromProvider(machine, "my_classifier")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -90,7 +90,7 @@ func main() {
 
 
 	// Get the stream from a camera
-	cam1, err := camera.FromRobot(machine, "cam")
+	cam1, err := camera.FromProvider(machine, "cam")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -105,7 +105,7 @@ func main() {
 	img1, release1, err := camStream1.Next(context.Background())
 	defer release1()
 
-	myClassifierService1, err := vision.FromRobot(machine, "my_classifier")
+	myClassifierService1, err := vision.FromProvider(machine, "my_classifier")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -119,7 +119,7 @@ func main() {
 		logger.Info(classifications1[0])
 	}
 
-    mySegmenterService, err := vision.FromRobot(machine, "my_segmenter")
+    mySegmenterService, err := vision.FromProvider(machine, "my_segmenter")
     if err != nil {
       logger.Error(err)
       return
@@ -133,7 +133,7 @@ func main() {
 		logger.Info(objects[0])
 	}
 
-	visService, err := vision.FromRobot(machine, "my_detector")
+	visService, err := vision.FromProvider(machine, "my_detector")
 	if err != nil {
 		logger.Error(err)
 		return

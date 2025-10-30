@@ -350,7 +350,7 @@ led = await local.gpio_pin_by_name('8')
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Initialize the board
-myBoard, err := board.FromRobot(robot, "myBoard")
+myBoard, err := board.FromProvider(robot, "myBoard")
 if err != nil {
     logger.Fatalf("could not get board: %v", err)
 }
@@ -426,7 +426,7 @@ func main() {
   logger.Info(robot.ResourceNames())
 
   // Initialize the board
-  myBoard, err := board.FromRobot(robot, "myBoard")
+  myBoard, err := board.FromProvider(robot, "myBoard")
   if err != nil {
     logger.Fatalf("Could not get board: %v", err)
   }

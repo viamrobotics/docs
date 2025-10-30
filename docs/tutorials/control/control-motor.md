@@ -226,7 +226,7 @@ func main() {
 
 
   // Instantiate the motor client
-  motor1Component, err:= motor.FromRobot(machine, "motor-1")
+  motor1Component, err:= motor.FromProvider(machine, "motor-1")
   if err != nil {
     logger.Error(err)
     return

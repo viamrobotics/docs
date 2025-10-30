@@ -56,7 +56,7 @@ func main() {
 	}
 
 	// Capture image from camera
-	cam, err := camera.FromRobot(machine, cameraName)
+	cam, err := camera.FromProvider(machine, cameraName)
 	if err != nil {
 		logger.Fatal(err)
 	}
@@ -73,7 +73,7 @@ func main() {
 	}
 
 	// Get ML model metadata to understand input requirements
-	mlModel, err := mlmodel.FromRobot(machine, mlModelName)
+	mlModel, err := mlmodel.FromProvider(machine, mlModelName)
 	if err != nil {
 		logger.Fatal(err)
 	}

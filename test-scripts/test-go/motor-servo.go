@@ -37,7 +37,7 @@ func main() {
 	logger.Info(machine.ResourceNames())
 
 	// motor-1
-	motor1, err := motor.FromRobot(machine, "motor-1")
+	motor1, err := motor.FromProvider(machine, "motor-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -100,7 +100,7 @@ func main() {
 	err = motor1.Close(context.Background())
 
 	// movement_sensor-1
-	movementSensor1, err := movementsensor.FromRobot(machine, "movement_sensor-1")
+	movementSensor1, err := movementsensor.FromProvider(machine, "movement_sensor-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -161,7 +161,7 @@ func main() {
 	err = movementSensor1.Close(context.Background())
 
 	// power_sensor-1
-	myPowerSensor, err := powersensor.FromRobot(machine, "power_sensor-1")
+	myPowerSensor, err := powersensor.FromProvider(machine, "power_sensor-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -192,7 +192,7 @@ func main() {
 	err = myPowerSensor.Close(context.Background())
 
 	// sensor-1
-	mySensor, err := sensor.FromRobot(machine, "sensor-1")
+	mySensor, err := sensor.FromProvider(machine, "sensor-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -209,7 +209,7 @@ func main() {
 	err = mySensor.Close(context.Background())
 
 	// servo-1
-	myServoComponent, err := servo.FromRobot(machine, "servo-1")
+	myServoComponent, err := servo.FromProvider(machine, "servo-1")
 	if err != nil {
 		logger.Error(err)
 		return

@@ -62,7 +62,7 @@ moved = await motion_service.move(gripper_name, destination, world_state)
 
 ```go {class="line-numbers linkable-line-numbers"}
 // Get a motion service client
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 if err != nil {
   logger.Fatal(err)
 }

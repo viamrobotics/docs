@@ -50,7 +50,7 @@ func main() {
 	}
 
 	// Access myArm
-	myArmComponent, err := arm.FromRobot(machine, armName)
+	myArmComponent, err := arm.FromProvider(machine, armName)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -116,7 +116,7 @@ func main() {
 
 	// Access the motion service
 	// :snippet-start: motion-service-from-robot
-	motionService, err := motion.FromRobot(machine, "builtin")
+	motionService, err := motion.FromProvider(machine, "builtin")
 	if err != nil {
 		logger.Fatal(err)
 	}

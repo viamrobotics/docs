@@ -547,7 +547,7 @@ If you want to do add waypoints programmatically, use the service's [API method 
 {{% tab name="Go" %}}
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
+myNav, err := navigation.FromProvider(robot, "my_nav_service")
 
 // Create a new waypoint at the specified latitude and longitude
 location = geo.NewPoint(40.76275, -73.96)
@@ -580,7 +580,7 @@ To start navigating, set your service to `MODE_WAYPOINT` with the service's [API
 {{% tab name="Go" %}}
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
+myNav, err := navigation.FromProvider(robot, "my_nav_service")
 
 // Set the Mode the service is operating in to MODE_WAYPOINT and begin navigation
 mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)

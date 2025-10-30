@@ -354,7 +354,7 @@ import (
 )
 
 cameraName := "cam1"
-myCam, err := camera.FromRobot(robot, cameraName)
+myCam, err := camera.FromProvider(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
@@ -435,7 +435,7 @@ import (
 )
 
 cameraName := "cam1"
-myCam, err := camera.FromRobot(robot, cameraName)
+myCam, err := camera.FromProvider(robot, cameraName)
 if err != nil {
   logger.Fatalf("cannot get camera: %v", err)
 }
