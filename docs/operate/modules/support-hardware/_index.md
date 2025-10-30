@@ -48,7 +48,7 @@ This page provides instructions for creating a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
 If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/advanced/micro-module/).
 
-**Example module:** With each step of thise guide, you have instruction for creating a {{< glossary_tooltip term_id="module" text="module" >}} which does two things:
+**Example module:** With each step of this guide, you have instructions for creating a {{< glossary_tooltip term_id="module" text="module" >}} which does two things:
 
 1. Gets an image from a configured path on your machine
 2. Returns a random number
@@ -65,7 +65,7 @@ Authenticate your CLI session with Viam using one of the following options:
 {{< readfile "/static/include/how-to/auth-cli.md" >}}
 {{< /expand >}}
 
-{{% expand "A running machine connected to Viam." %}}
+{{% expand "A running machine connected to Viam" %}}
 
 You can write a module without a machine, but to test your module you'll need a [machine](/operate/install/setup/).
 
@@ -75,7 +75,7 @@ You can write a module without a machine, but to test your module you'll need a 
 
 {{< expand "For Python developers: Use Python 3.11+" >}}
 
-If you plan to write your module using Python, you need Python version 3.11 or newer installed on your computer to use the code generation tool in this guide.
+If you plan to write your module using Python, you need Python 3.11 or newer installed on your computer to use the code generation tool in this guide.
 
 You can check by running `python3 --version` or `python --version` in your terminal.
 
@@ -85,7 +85,7 @@ You can check by running `python3 --version` or `python --version` in your termi
 
 While not required, we recommend starting by writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
-**Example module:** For the example module the test script will open an image in the same folder and print a random number.
+**Example module:** For the example module, the test script will open an image in the same directory and print a random number.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -141,7 +141,7 @@ func main() {
 
 ## Choose an API
 
-You can think of a module as a packaged wrapper around some script.
+You can think of a module as a packaged wrapper around a script.
 The module takes the functionality of the script and maps it to a standardized API for use within the Viam ecosystem.
 
 Review the available [component APIs](/dev/reference/apis/#component-apis) and choose the one whose methods map most closely to the functionality you need.
@@ -149,7 +149,7 @@ Review the available [component APIs](/dev/reference/apis/#component-apis) and c
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
 See [Run control logic](/docs/operate/modules/support-hardware/) for more information.
 
-**Example Module:** To choose the Viam [APIs](/dev/reference/apis/#component-apis) which make sense for your module, think about the functionality you want to implement.
+**Example module:** To choose the Viam [APIs](/dev/reference/apis/#component-apis) that make sense for your module, think about the functionality you want to implement.
 You need a way to return an image and you need a way to return a number.
 
 If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
@@ -189,7 +189,7 @@ viam module generate
 | Module name | Choose a name that describes the set of {{< glossary_tooltip term_id="resource" text="resources" >}} it supports. |
 | Language | Choose the programming language for the module. The CLI supports `Python` and `Golang`. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
-| Namespace/Organization ID | Navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first if you wish to share the module publicly. |
+| Namespace/Organization ID | Navigate to your organization settings through the menu in the upper-right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first if you wish to share the module publicly. |
 | Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [Choose an API](#choose-an-api) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
 | Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `X.X.X`, the module will build for [all architectures specified in the meta.json build file](/operate/modules/advanced/metajson/). You can select `No` if you want to always build the module yourself before uploading it. For more information see [Update and manage modules](/operate/modules/advanced/manage-modules/). |
@@ -199,7 +199,7 @@ viam module generate
 
 <br>
 
-**Example module**: To build an example module that contains a camera model use the following command:
+**Example module**: To build an example module that contains a camera model, use the following command:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -228,8 +228,8 @@ You can add the model for the sensor in a later step in [Creating multiple model
 {{% /tablestep %}}
 {{% tablestep %}}
 
-The generator creates a folder containing stub files for your modular component.
-In the next section, you'll customize some of the generated files to support your sensor.
+The generator creates a directory containing stub files for your modular component.
+In the next section, you'll customize some of the generated files to support your camera.
 
 **Example module**: For the example module, the file structure is:
 
@@ -297,9 +297,9 @@ Some of the code you generated is resource-specific.
 
 If you have multiple modular resources that are related, you can put them all into the same module.
 
-For convenience, we recommend running the module generator again from within the first module's directory, generating an unregistered module, and copying the resources-specific code.
+For convenience, we recommend running the module generator again from within the first module's directory, generating an unregistered module, and copying the resource-specific code from it.
 
-**Example module**: Change directory into the first module's folder:
+**Example module**: Change directory into the first module's directory:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 cd hello-world
@@ -489,7 +489,7 @@ Save the file.
 {{% /tab %}}
 {{< /tabs >}}
 
-You can now delete the temporary <file>hello-world/hello-world</file> folder and all its contents.
+You can now delete the temporary <file>hello-world/hello-world</file> directory and all its contents.
 
 ### Implement the components
 
@@ -497,18 +497,19 @@ At this point you have a template for your module.
 
 If you want to see example modules, check out the Viam Registry.
 Many modules have a linked GitHub repo, where you can see the module's code.
-When logged in you can also download the module's source code to inspect it.
+When logged in, you can also download the module's source code to inspect it.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 Generally you will add your custom logic in these files:
 
-| File                                           | Description                                                                                      |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+<!-- prettier-ignore -->
+| File | Description |
+| ---- | ----------- |
 | <file>/src/models/&lt;model-name&gt;.py</file> | Set up the configuration options for the model and implement the API methods for the model.      |
 | `setup.sh` and `run.sh`                        | Add any logic for installing or running other software for your module.                          |
-| `requirements.txt`                             | Add any python packages that are required for your module. They will be installed by `setup.sh`. |
+| `requirements.txt`                             | Add any Python packages that are required for your module. They will be installed by `setup.sh`. |
 
 <br>
 
@@ -517,8 +518,9 @@ Generally you will add your custom logic in these files:
 
 Generally you will add your custom logic in these files:
 
-| File                                       | Description                              |
-| ------------------------------------------ | ---------------------------------------- |
+<!-- prettier-ignore -->
+| File | Description |
+| ---- | ----------- |
 | Model file (for example `hello-camera.go`) | Implement the API methods for the model. |
 
 {{% /tab %}}
@@ -528,9 +530,9 @@ Generally you will add your custom logic in these files:
 
 #### Set up model configuration options
 
-Many resource models have configuration options which allow you to specify options such as:
+Many resource models have configuration options that allow you to specify options such as:
 
-- A filepath from which to access data
+- A file path from which to access data
 - A pin to which a device is wired
 - An optional signal frequency to override a default value
 - The name of _another_ resource you wish to use in the model
@@ -560,7 +562,7 @@ Since the camera model returns an image at a provided path, the configuration mu
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In <file>/src/models/&lt;model-name&gt;.py</file> edit the `validate_config` function to:
+In <file>/src/models/&lt;model-name&gt;.py</file>, edit the `validate_config` function to:
 
 ```python {class="line-numbers linkable-line-numbers" data-start="38" data-line="5-10" }
     @classmethod
@@ -582,7 +584,7 @@ In <file>/src/models/&lt;model-name&gt;.py</file> edit the `validate_config` fun
 
 In <file>hello-world/hello-camera.go</file> edit the `Validate` function to:
 
-```python {class="line-numbers linkable-line-numbers" data-start="51" data-line="2-10" }
+```go {class="line-numbers linkable-line-numbers" data-start="51" data-line="2-10" }
 func (cfg *Config) Validate(path string) ([]string, error) {
     var deps []string
     if cfg.ImagePath == "" {
@@ -596,7 +598,7 @@ func (cfg *Config) Validate(path string) ([]string, error) {
 }
 ```
 
-Add the following imports at the top of <file>hello-world/hello-camera.go</file>:
+Add the following import at the top of <file>hello-world/hello-camera.go</file>:
 
 ```go {class="line-numbers linkable-line-numbers" data-start="7"}
 "reflect"
@@ -605,7 +607,7 @@ Add the following imports at the top of <file>hello-world/hello-camera.go</file>
 {{% /tab %}}
 {{< /tabs >}}
 
-For the sensor model, you do not need to edit any of the validate or configuration methods because the sensor has no configurable attributes.
+For the sensor model, you do not need to edit any of the validation or configuration methods because the sensor has no configurable attributes.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -613,7 +615,7 @@ For the sensor model, you do not need to edit any of the validate or configurati
 
 `viam-server` calls the `reconfigure` method when the user adds the model or changes its configuration.
 
-The validation step serves two purposes:
+The reconfiguration step serves two purposes:
 
 - Use the configuration attributes and dependencies to set attributes on the model for usage within the API methods.
 - Obtain access to dependencies.
@@ -863,7 +865,7 @@ func (s *helloWorldHelloCamera) Images(ctx context.Context, filterSourceNames []
 {{% /tablestep %}}
 {{% tablestep %}}
 
-Add the following import to the list of imports at the top of <file>hello-world/hello-camera.go</file>:
+Add the following import at the top of <file>hello-world/hello-camera.go</file>:
 
 ```go {class="line-numbers linkable-line-numbers" data-start="7"}
 "os"
@@ -885,7 +887,7 @@ The module generator created a stub for the `Readings()` function we want to imp
 
 Replace `panic("not implemented")` with code to implement the method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="92" data-line="8-11" }
+```go {class="line-numbers linkable-line-numbers" data-start="92" data-line="8-11" }
 func (s *helloWorldHelloSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
     number := rand.Float64()
     return map[string]interface{}{
@@ -897,7 +899,7 @@ func (s *helloWorldHelloSensor) Readings(ctx context.Context, extra map[string]i
 {{% /tablestep %}}
 {{< tablestep >}}
 
-Add the following import to the list of imports at the top of <file>hello-world/hello-camera.go</file>:
+Add the following import to the list of imports at the top of <file>hello-world/hello-sensor.go</file>:
 
 ```go {class="line-numbers linkable-line-numbers" data-start="7"}
 "math/rand"
@@ -911,7 +913,7 @@ Since `errUnimplemented` and `Config` are defined in <file>hello-camera.go</file
 In <file>hello-sensor.go</file>:
 
 - Delete the `"errors"` import.
-- Search for and delete the line`errUnimplemented = errors.New("unimplemented")`.
+- Search for and delete the line `errUnimplemented = errors.New("unimplemented")`.
 - Search for `type Config struct {` and change it to `type sensorConfig struct {`.
 - Search for all instances of `*Config` in <file>hello-sensor.go</file> and change them to `*sensorConfig`.
 
@@ -936,8 +938,8 @@ You can configure it in the web UI using the local files on your machine.
 
 ### Add module to machine
 
-To get your module onto your machine, hot reloading will build and package it and then use the shell service to copy it to the machine for testing.
-If you are using Python `venv`, make sure your module files are on the same device where `viam-server` is running and manually add the module instead.
+To get your module onto your machine, hot reloading builds and packages it and then uses the shell service to copy it to the machine for testing.
+If you are using a Python virtual environment (venv), make sure your module files are on the same device where `viam-server` is running, and add the module manually instead.
 
 {{< tabs >}}
 {{% tab name="Hot reloading (recommended)" %}}
@@ -986,12 +988,18 @@ Run the following command to rebuild your module:
 viam module build local
 ```
 
-Then restart it in your machine's **CONFIGURE** tab.
-In upper right corner of the module's card, click the **...** menu, then click **Restart**.
+Then restart it on your machine's **CONFIGURE** tab.
+In the upper-right corner of the module's card, click the **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
 
 {{< /expand >}}
+
+{{< alert title="Refresh" color="note" >}}
+
+You may need to refresh your machine page for your module to show up.
+
+{{< /alert >}}
 
 {{% /tab %}}
 {{% tab name="Manual (required for Python venv)" %}}
@@ -1010,6 +1018,8 @@ For local modules, `viam-server` uses this path to start the module.
 **Example module**:
 For the `hello-world` module, the path should resemble `/home/yourname/hello-world/run.sh` on Linux, or `/Users/yourname/hello-world/run.sh` on macOS.
 
+Save your config.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -1025,9 +1035,12 @@ Enter the path to the <file>/bin/&#60;module-name&#62;</file> executable.
 For local modules, `viam-server` uses this path to start the module.
 
 **Example module**:
-For the `hello-world` module, the path should resemble `/home/yourname/hello-world/bin/hello-world`. For local modules, `viam-server` uses this path to start the module.
+For the `hello-world` module, the path should resemble `/home/yourname/hello-world/bin/hello-world`.
+For local modules, `viam-server` uses this path to start the module.
 
 Click **Create**.
+
+Save your config.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1071,9 +1084,9 @@ If your model has required or optional attributes, configure them in the configu
 
 {{% /tablestep %}}
 {{% tablestep %}}
-Save the config, and wait a few seconds for the config to apply.
+Save the config and wait a few seconds for it to apply.
 
-then click the **TEST** section of the camera's configuration card.
+Then click the **TEST** section of the camera's configuration card.
 If there are errors you will see them on the configuration panel and on the **LOGS** tab.
 
 {{% /tablestep %}}
@@ -1082,7 +1095,7 @@ If there are errors you will see them on the configuration panel and on the **LO
 
 Click the **TEST** bar at the bottom of your modular component configuration, and check whether it works as expected.
 
-**Test module**: For the camera model, the test panel should show the image:
+**Example module**: For the camera model, the test panel should show the image:
 
 {{<imgproc src="/how-tos/hello-camera.png" resize="x1100" declaredimensions=true alt="The configuration interface with the Test section of the camera card open, showing a hello world image." style="width:800px" class="shadow aligncenter" >}}
 
@@ -1126,7 +1139,7 @@ viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
 {{% tab name="Python" %}}
 
 As you iterate, save your code changes, then restart the module in your machine's **CONFIGURE** tab:
-In upper right corner of the module's card, click **...** menu, then click **Restart**.
+In the upper-right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
 
@@ -1140,7 +1153,7 @@ viam module build local
 ```
 
 Then restart it in your machine's **CONFIGURE** tab.
-In upper right corner of the module's card, click **...** menu, then click **Restart**.
+In the upper-right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="max-width:300px" class="shadow" >}}
 
