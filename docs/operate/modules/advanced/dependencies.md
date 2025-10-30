@@ -179,7 +179,7 @@ For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/vi
 Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which means that the resource rebuilds every time the module is reconfigured.
 
 The steps above use `resource.AlwaysRebuild`.
-If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/modules/support-hardware/#implement-the-component-api).
+If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/modules/support-hardware/#implement-api-methods).
 
 {{% /alert %}}
 

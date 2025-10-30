@@ -7,7 +7,7 @@ type: "docs"
 icon: true
 images: ["/registry/create-module.svg"]
 description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a custom module."
-date: "2025-10-31"
+date: "2025-10-30"
 aliases:
   - /registry/create/
   - /use-cases/create-module/
@@ -147,7 +147,7 @@ The module takes the functionality of the script and maps it to a standardized A
 Review the available [component APIs](/dev/reference/apis/#component-apis) and choose the one whose methods map most closely to the functionality you need.
 
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
-See [Run control logic](/docs/operate/modules/control-logic/) for more information.
+See [Run control logic](/operate/modules/control-logic/) for more information.
 
 **Example module:** To choose the Viam [APIs](/dev/reference/apis/#component-apis) that make sense for your module, think about the functionality you want to implement.
 You need a way to return an image and you need a way to return a number.
@@ -1111,7 +1111,7 @@ Each time you make changes to your local module code, you need to update its ins
 {{< tabs >}}
 {{% tab name="Hot reloading (recommended)" %}}
 
-Run the [reload command again](#reload) to rebuild and restart your module:
+Run the reload command again to rebuild and restart your module:
 
 {{< tabs >}}
 {{% tab name="Same device" %}}
