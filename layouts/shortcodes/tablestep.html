@@ -1,7 +1,7 @@
 {{- $link := (.Get "link") -}} {{- $start := (.Get "start") -}} {{- $stepNumber
 := .Get "number" -}} {{- if not $stepNumber -}} {{- /* If start is specified,
-reset counter to 0 */ -}} {{- if $start -}} {{- $.Page.Scratch.Set
-"tablestep_counter" 0 -}} {{- end -}} {{- /* Get current counter value and
+reset counter to start - 1 */ -}} {{- if $start -}} {{- $.Page.Scratch.Set
+"tablestep_counter" (sub $start 1) -}} {{- end -}} {{- /* Get current counter value and
 increment it */ -}} {{- $currentCounter := $.Page.Scratch.Get
 "tablestep_counter" -}} {{- if not $currentCounter -}} {{- $currentCounter = 0
 -}} {{- end -}} {{- $stepNumber = add $currentCounter 1 -}} {{-
