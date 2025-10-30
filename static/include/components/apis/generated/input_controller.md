@@ -46,7 +46,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(machine, "my_input_controller")
+myController, err := input.FromProvider(machine, "my_input_controller")
 
 // Get the list of Controls provided by the controller.
 controls, err := myController.Controls(context.Background(), nil)
@@ -105,7 +105,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myController, err := input.FromRobot(machine, "my_input_controller")
+myController, err := input.FromProvider(machine, "my_input_controller")
 
 // Get the most recent Event for each Control.
 recent_events, err := myController.Events(context.Background(), nil)
@@ -364,7 +364,7 @@ printStartTime := func(ctx context.Context, event input.Event) {
     logger.Info("Start Menu Button was pressed at this time: %v", event.Time)
 }
 
-myController, err := input.FromRobot(machine, "my_input_controller")
+myController, err := input.FromProvider(machine, "my_input_controller")
 
 // Define the EventType "ButtonPress" to serve as the trigger for printStartTime.
 triggers := []input.EventType{input.ButtonPress}
@@ -458,7 +458,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input_controller.FromRobot(machine, "my_input_controller")
+myInputController, err := input_controller.FromProvider(machine, "my_input_controller")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myInputController.DoCommand(context.Background(), command)
@@ -506,7 +506,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input.FromRobot(machine, "my_input_controller")
+myInputController, err := input.FromProvider(machine, "my_input_controller")
 
 err = myInputController.Name()
 ```
@@ -573,7 +573,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input.FromRobot(machine, "my_input_controller")
+myInputController, err := input.FromProvider(machine, "my_input_controller")
 
 err = myInputController.Close(context.Background())
 ```

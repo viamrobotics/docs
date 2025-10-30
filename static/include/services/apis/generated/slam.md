@@ -405,7 +405,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySLAMService, err := slam.FromRobot(machine, "my_slam_svc")
+mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := mySLAMService.DoCommand(context.Background(), command)
@@ -479,7 +479,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySlamSvc, err := slam.FromRobot(machine, "my_slam_svc")
+mySlamSvc, err := slam.FromProvider(machine, "my_slam_svc")
 
 err = mySlamSvc.Name()
 ```
@@ -546,7 +546,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySlamSvc, err := slam.FromRobot(machine, "my_slam_svc")
+mySlamSvc, err := slam.FromProvider(machine, "my_slam_svc")
 
 err = mySlamSvc.Close(context.Background())
 ```

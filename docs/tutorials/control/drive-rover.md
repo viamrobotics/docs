@@ -446,7 +446,7 @@ func main() {
     defer machine.Close(context.Background())
 
     // Get the base from the rover
-    roverBase, err := base.FromRobot(machine, "viam_base")
+    roverBase, err := base.FromProvider(machine, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
     }
@@ -925,7 +925,7 @@ func main() {
     defer machine.Close(context.Background())
 
     // Get the base from the rover
-    roverBase, err := base.FromRobot(machine, "viam_base")
+    roverBase, err := base.FromProvider(machine, "viam_base")
     if err != nil {
         logger.Fatalf("cannot get base: %v", err)
     }

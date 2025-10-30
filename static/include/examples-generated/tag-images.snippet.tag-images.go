@@ -64,7 +64,7 @@ func main() {
 	}
 
 	// Get classifications using the image
-	classifier, err := vision.FromRobot(machine, classifierName)
+	classifier, err := vision.FromProvider(machine, classifierName)
 	if err != nil {
 		logger.Fatal(err)
 	}

@@ -1,7 +1,7 @@
 You can also try to directly decode as an `Image.Image` with the camera's `DecodeImageFromCamera` function:
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCamera)
 ```
 

@@ -69,7 +69,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
 gripperName := "my_gripper"
@@ -730,7 +730,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 myBaseResourceName := base.Named("myBase")
 
 myMvmntSensorResourceName := movement_sensor.Named("my_movement_sensor")
@@ -824,7 +824,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 
 // Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` or `MoveOnMap()` call.
 planStatuses, err := motionService.ListPlanStatuses(context.Background(), motion.ListPlanStatusesReq{})
@@ -1078,7 +1078,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotionSvc, err := motion.FromRobot(machine, "my_motion_svc")
+myMotionSvc, err := motion.FromProvider(machine, "my_motion_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myMotionSvc.DoCommand(context.Background(), command)
@@ -1152,7 +1152,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotionSvc, err := motion.FromRobot(machine, "my_motion_svc")
+myMotionSvc, err := motion.FromProvider(machine, "my_motion_svc")
 
 err = myMotionSvc.Name()
 ```
@@ -1219,7 +1219,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotionSvc, err := motion.FromRobot(machine, "my_motion_svc")
+myMotionSvc, err := motion.FromProvider(machine, "my_motion_svc")
 
 err = myMotionSvc.Close(context.Background())
 ```

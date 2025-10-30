@@ -158,7 +158,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myButton, err := button.FromRobot(machine, "my_button")
+myButton, err := button.FromProvider(machine, "my_button")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myButton.DoCommand(context.Background(), command)
@@ -253,7 +253,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myButton, err := button.FromRobot(machine, "my_button")
+myButton, err := button.FromProvider(machine, "my_button")
 
 err = myButton.Name()
 ```
@@ -340,7 +340,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myButton, err := button.FromRobot(machine, "my_button")
+myButton, err := button.FromProvider(machine, "my_button")
 
 err = myButton.Close(context.Background())
 ```

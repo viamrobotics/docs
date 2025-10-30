@@ -79,7 +79,7 @@ func main() {
 	}
 	// :remove-end:
 
-	detector, err := vision.FromRobot(machine, detectorName)
+	detector, err := vision.FromProvider(machine, detectorName)
 	if err != nil {
 		logger.Fatal(err)
 	}

@@ -268,13 +268,13 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "DoCommand example:" in code_sample_tag.text)
                                 if code_sample:
                                     if type == "component":
-                                        self.go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromRobot(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
+                                        self.go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ ', err := ' + resource + '.FromProvider(machine, "my_' + resource + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'
                                         if resource == "generic_component":
-                                            self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericComponent, err := generic.FromRobot(machine, "my_generic_component")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericComponent.DoCommand(context.Background(), command)\n'
+                                            self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericComponent, err := generic.FromProvider(machine, "my_generic_component")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericComponent.DoCommand(context.Background(), command)\n'
                                     else:
-                                        self.go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ 'Svc, err := ' + resource.replace("_","") + '.FromRobot(machine, "my_' + resource + '_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + 'Svc.DoCommand(context.Background(), command)\n'
+                                        self.go_methods[type][resource]['DoCommand']['code_sample'] = 'my' + resource.title().replace("_", "")+ 'Svc, err := ' + resource.replace("_","") + '.FromProvider(machine, "my_' + resource + '_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + 'Svc.DoCommand(context.Background(), command)\n'
                                         if resource == "slam":
-                                            self.go_methods[type][resource]['DoCommand']['code_sample'] = 'mySLAMService, err := slam.FromRobot(machine, "my_slam_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := mySLAMService.DoCommand(context.Background(), command)\n'
+                                            self.go_methods[type][resource]['DoCommand']['code_sample'] = 'mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := mySLAMService.DoCommand(context.Background(), command)\n'
 
                                 self.go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
@@ -283,18 +283,18 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Close example:" in code_sample_tag.text)
                                 if code_sample:
                                     if type == "component":
-                                        self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromRobot(machine, "my_' + resource + '")\n\nerr = my' + resource.title().replace("_", "") + '.Close(context.Background())\n'
+                                        self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromProvider(machine, "my_' + resource + '")\n\nerr = my' + resource.title().replace("_", "") + '.Close(context.Background())\n'
                                     else:
                                         if resource == "base_remote_control":
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")\n\nerr := baseRCService.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'baseRCService, err := baseremotecontrol.FromProvider(machine, "my_baseRCService_svc")\n\nerr := baseRCService.Close(context.Background())\n'
                                         elif resource == "data_manager":
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'data, err := datamanager.FromRobot(machine, "my_data_manager")\n\nerr := data.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'data, err := datamanager.FromProvider(machine, "my_data_manager")\n\nerr := data.Close(context.Background())\n'
                                         elif resource == "navigation":
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my_nav, err := navigation.FromRobot(machine, "my_nav_svc")\n\nerr := my_nav.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my_nav, err := navigation.FromProvider(machine, "my_nav_svc")\n\nerr := my_nav.Close(context.Background())\n'
                                         elif resource == "mlmodel":
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")\n\nerr := my_mlmodel.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")\n\nerr := my_mlmodel.Close(context.Background())\n'
                                         else:
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
 
                                 self.go_methods[type][resource]['Name'] = {'proto': 'Name', \
                                     'description': 'Get the name of the resource.', \
@@ -303,18 +303,18 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Name example:" in code_sample_tag.text)
                                 if code_sample:
                                     if type == "component":
-                                        self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromRobot(machine, "my_' + resource + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'
+                                        self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromProvider(machine, "my_' + resource + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'
                                     else:
                                         if resource == "base_remote_control":
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")\n\nerr := baseRCService.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'baseRCService, err := baseremotecontrol.FromProvider(machine, "my_baseRCService_svc")\n\nerr := baseRCService.Name()\n'
                                         elif resource == "data_manager":
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'data, err := datamanager.FromRobot(machine, "my_data_manager")\n\nerr := data.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'data, err := datamanager.FromProvider(machine, "my_data_manager")\n\nerr := data.Name()\n'
                                         elif resource == "navigation":
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my_nav, err := navigation.FromRobot(machine, "my_nav_svc")\n\nerr := my_nav.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my_nav, err := navigation.FromProvider(machine, "my_nav_svc")\n\nerr := my_nav.Name()\n'
                                         elif resource == "mlmodel":
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")\n\nerr := my_mlmodel.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")\n\nerr := my_mlmodel.Name()\n'
                                         else:
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromRobot(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
 
                             ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
                             ## then add the two inherited methods manually: IsMoving() and Stop():
@@ -405,16 +405,16 @@ class GoParser:
                                     'description': 'DoCommand sends/receives arbitrary data.', \
                                     'usage': 'DoCommand(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, cmd map[<a href="/builtin#string">string</a>]interface{}) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
-                                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromRobot(machine, "my_' + resource.lower() + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'}
+                                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromProvider(machine, "my_' + resource.lower() + '")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := my' + resource.title().replace("_", "") + '.DoCommand(context.Background(), command)\n'}
 
                 self.go_methods[type][resource]['Name'] = {'proto': 'Name', \
                     'description': 'Get the name of the resource.', \
                     'usage': 'Name() <a href="https://pkg.go.dev/go.viam.com/rdk@v0.89.0/resource#Name">Name</a>', \
                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
-                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromRobot(machine, "my_' + resource.lower() + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'}
+                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromProvider(machine, "my_' + resource.lower() + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'}
 
                 if resource == "generic_service":
-                    self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromRobot(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
+                    self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromProvider(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
 
             elif type == "app":
                 soup = make_soup(url)

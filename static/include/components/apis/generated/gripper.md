@@ -40,7 +40,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 // Open the gripper.
 err := myGripper.Open(context.Background(), nil)
@@ -136,7 +136,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 // Grab with the gripper.
 grabbed, err := myGripper.Grab(context.Background(), nil)
@@ -232,7 +232,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using IsMoving with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -393,7 +393,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Stop with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err = myArm.Stop(context.Background(), nil)
@@ -493,7 +493,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Geometries with an gripper component.
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 geometries, err := myGripper.Geometries(context.Background(), nil)
 
@@ -605,7 +605,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myGripper.DoCommand(context.Background(), command)
@@ -773,7 +773,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 err = myGripper.Name()
 ```
@@ -859,7 +859,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 err = myGripper.Close(context.Background())
 ```

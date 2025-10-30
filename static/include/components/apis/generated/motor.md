@@ -46,7 +46,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotorComponent, err := motor.FromRobot(machine, "my_motor")
+myMotorComponent, err := motor.FromProvider(machine, "my_motor")
 // Set the motor power to 40% forwards.
 myMotorComponent.SetPower(context.Background(), 0.4, nil)
 ```
@@ -248,7 +248,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotorComponent, err := motor.FromRobot(machine, "my_motor")
+myMotorComponent, err := motor.FromProvider(machine, "my_motor")
 // Turn the motor 7.2 revolutions at 60 RPM.
 myMotorComponent.GoFor(context.Background(), 60, 7.2, nil)
 ```
@@ -874,7 +874,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using IsMoving with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -976,7 +976,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Stop with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err = myArm.Stop(context.Background(), nil)
@@ -1102,7 +1102,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(machine, "my_motor")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myMotor.DoCommand(context.Background(), command)
@@ -1197,7 +1197,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(machine, "my_motor")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
 err = myMotor.Name()
 ```
@@ -1283,7 +1283,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(machine, "my_motor")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
 err = myMotor.Close(context.Background())
 ```

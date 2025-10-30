@@ -55,7 +55,7 @@ import (
   "gorgonia.org/tensor"
  )
 
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel")
+myMLModel, err := mlmodel.FromProvider(machine, "my_mlmodel")
 
 input_tensors := ml.Tensors{
   "image": tensor.New(
@@ -114,7 +114,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel")
+myMLModel, err := mlmodel.FromProvider(machine, "my_mlmodel")
 metadata, err := myMLModel.Metadata(context.Background())
 ```
 
@@ -169,7 +169,7 @@ If you are implementing your own ML model service and want to add features that 
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMlmodelSvc, err := mlmodel.FromRobot(machine, "my_mlmodel_svc")
+myMlmodelSvc, err := mlmodel.FromProvider(machine, "my_mlmodel_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myMlmodelSvc.DoCommand(context.Background(), command)
@@ -217,7 +217,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")
+my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")
 
 err := my_mlmodel.Name()
 ```
@@ -265,7 +265,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_mlmodel, err := mlmodel.FromRobot(machine, "my_ml_model")
+my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")
 
 err := my_mlmodel.Close(context.Background())
 ```

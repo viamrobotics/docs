@@ -269,7 +269,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using IsMoving with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -372,7 +372,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Stop with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err = myArm.Stop(context.Background(), nil)
@@ -500,7 +500,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(machine, "my_servo")
+myServo, err := servo.FromProvider(machine, "my_servo")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myServo.DoCommand(context.Background(), command)
@@ -595,7 +595,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(machine, "my_servo")
+myServo, err := servo.FromProvider(machine, "my_servo")
 
 err = myServo.Name()
 ```
@@ -682,7 +682,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(machine, "my_servo")
+myServo, err := servo.FromProvider(machine, "my_servo")
 
 err = myServo.Close(context.Background())
 ```

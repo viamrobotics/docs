@@ -48,7 +48,7 @@ func main() {
 	}
 
 	// Capture image from camera
-	cam, err := camera.FromRobot(machine, cameraName)
+	cam, err := camera.FromProvider(machine, cameraName)
 	if err != nil {
 		logger.Fatal(err)
 	}

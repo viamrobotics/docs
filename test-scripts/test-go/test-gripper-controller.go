@@ -36,7 +36,7 @@ func main() {
 	logger.Info(machine.ResourceNames())
 
 	// gantry-1
-	myGantry, err := gantry.FromRobot(machine, "gantry-1")
+	myGantry, err := gantry.FromProvider(machine, "gantry-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -74,7 +74,7 @@ func main() {
 	logger.Info(result)
 
 	// generic-1
-	myGeneric, err := generic.FromRobot(machine, "generic-1")
+	myGeneric, err := generic.FromProvider(machine, "generic-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -85,7 +85,7 @@ func main() {
 	logger.Info(result)
 
 	// gripper-1
-	myGripper, err := gripper.FromRobot(machine, "gripper-1")
+	myGripper, err := gripper.FromProvider(machine, "gripper-1")
 	if err != nil {
 		logger.Error(err)
 		return
@@ -120,7 +120,7 @@ func main() {
 	err = myGripper.Close(context.Background())
 
 	// input_controller-1
-	myController, err := input.FromRobot(machine, "input_controller-2")
+	myController, err := input.FromProvider(machine, "input_controller-2")
 	if err != nil {
 		logger.Error(err)
 		return

@@ -133,7 +133,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myDiscoverySvc, err := discovery.FromRobot(machine, "my_discovery_svc")
+myDiscoverySvc, err := discovery.FromProvider(machine, "my_discovery_svc")
 
 err = myDiscoverySvc.Name()
 ```
@@ -223,7 +223,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myDiscoverySvc, err := discovery.FromRobot(machine, "my_discovery_svc")
+myDiscoverySvc, err := discovery.FromProvider(machine, "my_discovery_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myDiscoverySvc.DoCommand(context.Background(), command)
@@ -319,7 +319,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myDiscoverySvc, err := discovery.FromRobot(machine, "my_discovery_svc")
+myDiscoverySvc, err := discovery.FromProvider(machine, "my_discovery_svc")
 
 err = myDiscoverySvc.Close(context.Background())
 ```

@@ -41,7 +41,7 @@ func main() {
 	}
 
 	// Capture image from camera
-	cam, err := camera.FromRobot(machine, cameraName)
+	cam, err := camera.FromProvider(machine, cameraName)
 	if err != nil {
 		logger.Fatal(err)
 	}
@@ -58,7 +58,7 @@ func main() {
 	}
 
 	// Get classifications using the image
-	classifier, err := vision.FromRobot(machine, classifierName)
+	classifier, err := vision.FromProvider(machine, classifierName)
 	if err != nil {
 		logger.Fatal(err)
 	}
