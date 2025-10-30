@@ -37,19 +37,19 @@ aliases:
   - /operate/modules/supported-hardware/hello-world-module/
 ---
 
-If your physical or virtual hardware is not [already supported](/operate/modules/configure-modules/) by an existing {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
+If your physical or virtual hardware is not supported by an existing registry {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
 
 {{% hiddencontent %}}
 If you want to create a "custom module", this page provides instructions for creating one in Python and Go.
 {{% /hiddencontent %}}
 
-This page provides instructions for creating and uploading a module in Python or Go.
+This page provides instructions for creating a module in Python or Go.
 For C++ module examples, see the [C++ examples directory on GitHub](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/).
 If you want to create a module for use with a microcontroller, see [Modules for ESP32](/operate/modules/advanced/micro-module/).
 
 **Example module:** With each step of thise guide, you have instruction for creating a {{< glossary_tooltip term_id="module" text="module" >}} which does two things:
 
-1. Opens an image file from a configured path on your machine
+1. Gets an image from a configured path on your machine
 2. Returns a random number
 
 ## Prerequisites
@@ -67,7 +67,6 @@ Authenticate your CLI session with Viam using one of the following options:
 {{% expand "A running machine connected to Viam." %}}
 
 You can write a module without a machine, but to test your module you'll need a [machine](/operate/install/setup/).
-Make sure to physically connect your sensor to your machine's computer to prepare your machine for testing.
 
 {{% snippet "setup.md" %}}
 
@@ -76,6 +75,7 @@ Make sure to physically connect your sensor to your machine's computer to prepar
 {{< expand "For Python developers: Use Python 3.11+" >}}
 
 If you plan to write your module using Python, you need Python version 3.11 or newer installed on your computer to use the code generation tool in this guide.
+
 You can check by running `python3 --version` or `python --version` in your terminal.
 
 {{< /expand >}}
@@ -84,7 +84,7 @@ You can check by running `python3 --version` or `python --version` in your termi
 
 While not required, we recommend starting by writing a test script to check that you can connect to and control your hardware from your computer, perhaps using the manufacturer's API or other low-level code.
 
-**Example module:** For the example module the test script will test how to open an image in the same folder and how to print a random number.
+**Example module:** For the example module the test script will open an image in the same folder and print a random number.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -105,7 +105,7 @@ print(random_number)
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```go  {class="line-numbers linkable-line-numbers" data-start="1" }
+```go {class="line-numbers linkable-line-numbers" data-start="1" }
 package main
 
 import (
@@ -145,11 +145,6 @@ The module takes the functionality of the script and maps it to a standardized A
 
 Review the available [component APIs](/dev/reference/apis/#component-apis) and choose the one whose methods map most closely to the functionality you need.
 
-For example, if you just need to get readings or other data and don't need any other endpoints, you could use the [sensor API](/dev/reference/apis/components/sensor/), which contains only the `GetReadings` method (as well as the methods that all Viam resources implement: `Reconfigure`, `DoCommand`, `GetResourceName`, and `Close`).
-
-You do not need to fully implement all the methods of an API.
-For example, if you want to use the [camera API](/dev/reference/apis/components/camera/) because you want to return images, but your camera does not get point cloud data, you can implement the `GetImage` method but for the `GetPointCloud` method you can return an "unimplemented" error.
-
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
 See [Run control logic](/docs/operate/modules/support-hardware/) for more information.
 
@@ -159,8 +154,12 @@ You need a way to return an image and you need a way to return a number.
 If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
 That will work for the image.
 
+The camera API also has a few other methods.
+You do not need to fully implement all the methods of an API.
+For example, this camera does not use point cloud data, so for methods like `GetPointCloud` it will return an "unimplemented" error.
+
 The [sensor API](/dev/reference/apis/components/sensor/) includes the `GetReadings` method.
-You can return a number with that
+You can return the random number with that.
 
 Note that the camera API can't return a number and the sensor API can't return an image.
 Each model can implement only one API, but your module can contain multiple modular resources.
@@ -189,10 +188,10 @@ viam module generate
 | Module name | Choose a name that describes the set of {{< glossary_tooltip term_id="resource" text="resources" >}} it supports. |
 | Language | Choose the programming language for the module. The CLI supports `Python` and `Golang`. |
 | Visibility | Choose `Private` to share only with your organization, or `Public` to share publicly with all organizations. If you are testing, choose `Private`. |
-| Namespace/Organization ID | Navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first. |
-| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [How to design your module](./#how-to-design-your-module) for more information. |
+| Namespace/Organization ID | Navigate to your organization settings through the menu in upper right corner of the page. Find the **Public namespace** (or create one if you haven't already) and copy that string. If you use the organization ID, you must still create a public namespace first if you wish to share the module publicly. |
+| Resource to add to the module (API) | The [component API](/dev/reference/apis/#component-apis) your module will implement. See [Choose an API](#choose-an-api) for more information. |
 | Model name | Name your component model based on what it supports, for example, if it supports a model of ultrasonic sensor called "XYZ Sensor 1234" you could call your model `xyz_1234` or similar. Must be all-lowercase and use only alphanumeric characters (`a-z` and `0-9`), hyphens (`-`), and underscores (`_`). |
-| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `vX.X.X`, the module will build and upload to the Viam registry and be available for all Viam-supported architectures without you needing to build for each architecture. `Yes` also makes it easier to [upload](/operate/modules/deploy-module/) using PyInstaller by creating a build entrypoint script. You can select `No` if you want to always build the module yourself before uploading it. Fort more information see [Update and manage modules](/operate/modules/advanced/manage-modules/). |
+| Enable cloud build | If you select `Yes` (recommended) and push the generated files (including the <file>.github</file> folder) and create a release of the format `X.X.X`, the module will build for [all architectures specified in the meta.json build file](/operate/modules/advanced/metajson/). You can select `No` if you want to always build the module yourself before uploading it. For more information see [Update and manage modules](/operate/modules/advanced/manage-modules/). |
 | Register module | Select `Yes` unless you are creating a local-only module for testing purposes and do not intend to upload it. Registering a module makes its name and metadata appear in the registry; uploading the actual code that powers the module is a separate step. If you decline to register the module at this point, you can run [`viam module create`](/dev/tools/cli/#module) to register it later. |
 
 {{% /expand %}}
@@ -250,6 +249,15 @@ hello-world/
 └── setup.sh
 ```
 
+If you want to understand the module structure, here's what each file does:
+
+- **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
+- **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
+- **<FILE>main.py</FILE>** and **<FILE>hello_camera.py</FILE>**: Core code that registers the module and resource and provides the model implementation.
+- **<FILE>setup.sh</FILE>** and **<FILE>requirements.txt</FILE>**: Setup script that creates a virtual environment and installs the dependencies listed in <FILE>requirements.txt</FILE>.
+- **<FILE>build.sh</FILE>**: Build script that packages the code for upload.
+- **<FILE>run.sh</FILE>**: Script that runs <FILE>setup.sh</FILE> and then executes the module from <FILE>main.py</FILE>.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -266,6 +274,12 @@ hello-world/
 └── module.go
 └── meta.json
 ```
+
+If you want to understand the module structure, here's what each file does:
+
+- **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
+- **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
+- TODO
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -456,7 +470,6 @@ Save the file.
 {{% /tab %}}
 {{< /tabs >}}
 
-
 You can now delete the temporary <file>hello-world/hello-world</file> folder and all its contents.
 
 ### Implement the components
@@ -472,11 +485,11 @@ When logged in you can also download the module's source code to inspect it.
 
 Generally you will add your custom logic in these files:
 
-| File | Description |
-| ---- | ----------- |
-| <file>/src/models/&lt;model-name&gt;.py</file> | Set up the configuration options for the model and implement the API methods for the model. |
-| `setup.sh` and `run.sh` | Add any logic for installing or running other software for your module. |
-| `requirements.txt` | Add any python packages that are required for your module. They will be installed by `setup.sh`. |
+| File                                           | Description                                                                                      |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| <file>/src/models/&lt;model-name&gt;.py</file> | Set up the configuration options for the model and implement the API methods for the model.      |
+| `setup.sh` and `run.sh`                        | Add any logic for installing or running other software for your module.                          |
+| `requirements.txt`                             | Add any python packages that are required for your module. They will be installed by `setup.sh`. |
 
 <br>
 
@@ -485,8 +498,8 @@ Generally you will add your custom logic in these files:
 
 Generally you will add your custom logic in these files:
 
-| File | Description |
-| ---- | ----------- |
+| File                                       | Description                              |
+| ------------------------------------------ | ---------------------------------------- |
 | Model file (for example `hello-camera.go`) | Implement the API methods for the model. |
 
 {{% /tab %}}
@@ -511,10 +524,10 @@ Model configuration happens in two steps:
 
 The validation step serves two purposes:
 
- - Confirm that the model configuration contains all **required attributes** and that these attributes are of the right type.
- - Identify and return a list of names of **required resources** and a list of names of **optional resources**.
-   `viam-server` will pass these resources to the next step as dependencies.
-   For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
+- Confirm that the model configuration contains all **required attributes** and that these attributes are of the right type.
+- Identify and return a list of names of **required resources** and a list of names of **optional resources**.
+  `viam-server` will pass these resources to the next step as dependencies.
+  For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
 **Example module**: Imagine how a user might configure the finished camera model.
 Since the camera model returns an image at a provided path, the configuration must contain a variable to pass in the file path.
@@ -596,21 +609,21 @@ The validation step serves two purposes:
 
 2. Edit the `reconfigure` function to:
 
-    ```python {class="line-numbers" data-start="48" data-line="4-5"}
-        def reconfigure(
-            self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-        ):
-            attrs = struct_to_dict(config.attributes)
-            self.image_path = str(attrs.get("image_path"))
+   ```python {class="line-numbers" data-start="51" data-line="4-5"}
+       def reconfigure(
+           self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+       ):
+           attrs = struct_to_dict(config.attributes)
+           self.image_path = str(attrs.get("image_path"))
 
-            return super().reconfigure(config, dependencies)
-    ```
+           return super().reconfigure(config, dependencies)
+   ```
 
 3. Add the following import to the top of the file:
 
-    ```python {class="line-numbers" data-start="1"}
-    from viam.utils import struct_to_dict
-    ```
+   ```python {class="line-numbers" data-start="1"}
+   from viam.utils import struct_to_dict
+   ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -680,21 +693,24 @@ You can find details about the return types at [python.viam.dev](https://python.
 {{< table >}}
 {{< tablestep start=1 >}}
 
-The module generator created a stub for the `get_image()` function we want to implement in <file>hello-world/src/models/hello_camera.py</file>.
+The module generator created a stub for the `get_images()` function we want to implement in <file>hello-world/src/models/hello_camera.py</file>.
 
 You need to replace `raise NotImplementedError()` with code to implement the method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="60" data-line="9-10" }
-async def get_image(
-    self,
-    mime_type: str = "",
-    *,
-    extra: Optional[Dict[str, Any]] = None,
-    timeout: Optional[float] = None,
-    **kwargs
-) -> ViamImage:
-    img = Image.open(self.image_path)
-    return pil_to_viam_image(img, CameraMimeType.JPEG)
+```python {class="line-numbers linkable-line-numbers" data-start="74" data-line="9-10" }
+    async def get_images(
+        self,
+        *,
+        filter_source_names: Optional[Sequence[str]] = None,
+        extra: Optional[Dict[str, Any]] = None,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Tuple[Sequence[NamedImage], ResponseMetadata]:
+        img = Image.open(self.image_path)
+        vi_img = pil_to_viam_image(img, CameraMimeType.JPEG)
+        named = NamedImage("default", vi_img.data, vi_img.mime_type)
+        metadata = ResponseMetadata()
+        return [named], metadata
 ```
 
 Add the following import to the top of the file:
@@ -891,12 +907,13 @@ You can configure it in the web UI using the local files on your machine.
 
 ### Add module to machine
 
-If you enabled cloud build, you can use hot reloading, which will package the module and copy it to a machine for testing.
+To get your module onto your machine, hot reloading will build and package it and then use the shell service to copy it to the machine for testing.
+If you are using Python `venv`, make sure your module files are on the same device where `viam-server` is running and manually add the module instead.
 
 {{< tabs >}}
 {{% tab name="Hot reloading (recommended)" %}}
 
-Run the following command to build and start your module and push it to your machine:
+Run the following command to build the module and add it to your machine:
 
 {{< tabs >}}
 {{% tab name="Same device" %}}
@@ -915,21 +932,21 @@ viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information, see the [CLI documentation](/dev/tools/cli/#module).
+For more information, see the [`viam module` documentation](/dev/tools/cli/#module).
 
 {{< expand "Reload troubleshooting" >}}
 
-`Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
+- `Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
 
-- Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page and clicking **Part ID**.
+  Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page and clicking **Part ID**.
 
-`Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
+- `Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
 
-- Try specifying the `--home` directory, for example `/Users/yourname/` on macOS.
+  Try specifying the `--home` directory, for example `/Users/yourname/` on macOS.
 
-`Error: Error while refreshing token, logging out. Please log in again`
+- `Error: Error while refreshing token, logging out. Please log in again`
 
-- Run `viam login` to reauthenticate the CLI.
+  Run `viam login` to reauthenticate the CLI.
 
 ### Try using a different command
 
@@ -947,10 +964,8 @@ In upper right corner of the module's card, click the **...** menu, then click *
 
 {{< /expand >}}
 
-When you run `viam module reload`, the module will be added to your device automatically.
-
 {{% /tab %}}
-{{% tab name="Manual" %}}
+{{% tab name="Manual (required for Python venv)" %}}
 
 Navigate to your machine's **CONFIGURE** page.
 
@@ -984,7 +999,6 @@ For local modules, `viam-server` uses this path to start the module.
 For the `hello-world` module, the path should resemble `/home/yourname/hello-world/bin/hello-world`. For local modules, `viam-server` uses this path to start the module.
 
 Click **Create**.
-
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1077,7 +1091,7 @@ viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
 {{< /tabs >}}
 
 {{% /tab %}}
-{{% tab name="Manual" %}}
+{{% tab name="Manual (required for Python venv)" %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
