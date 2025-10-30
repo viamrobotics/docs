@@ -7,6 +7,7 @@ type: "docs"
 icon: true
 images: ["/registry/create-module.svg"]
 description: "Add support for more physical or virtual hardware to the Viam ecosystem by creating a custom module."
+date: "2025-10-31"
 aliases:
   - /registry/create/
   - /use-cases/create-module/
@@ -35,7 +36,6 @@ aliases:
   - /operate/get-started/other-hardware/hello-world-module/
   - /operate/modules/create-module/hello-world-module/
   - /operate/modules/supported-hardware/hello-world-module/
-date: "2025-10-30"
 ---
 
 If your physical or virtual hardware is not supported by an existing registry {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
@@ -110,29 +110,29 @@ print(random_number)
 package main
 
 import (
-	"fmt"
-	"math/rand"
-	"os"
+  "fmt"
+  "math/rand"
+  "os"
 )
 
 func main() {
-	// Open an image
-	imgFile, err := os.Open("example.png")
-	if err != nil {
-		fmt.Printf("Error opening image file: %v\n", err)
-		return
-	}
-	defer imgFile.Close()
-	imgByte, err := os.ReadFile("example.png")
-	fmt.Printf("Image file type: %T\n", imgByte)
-	if err != nil {
-		fmt.Printf("Error reading image file: %v\n", err)
-		return
-	}
+  // Open an image
+  imgFile, err := os.Open("example.png")
+  if err != nil {
+    fmt.Printf("Error opening image file: %v\n", err)
+    return
+  }
+  defer imgFile.Close()
+  imgByte, err := os.ReadFile("example.png")
+  fmt.Printf("Image file type: %T\n", imgByte)
+  if err != nil {
+    fmt.Printf("Error reading image file: %v\n", err)
+    return
+  }
 
-	// Return a random number
-	number := rand.Float64()
-	fmt.Printf("Random number: %f\n", number)
+  // Return a random number
+  number := rand.Float64()
+  fmt.Printf("Random number: %f\n", number)
 }
 ```
 
@@ -147,7 +147,7 @@ The module takes the functionality of the script and maps it to a standardized A
 Review the available [component APIs](/dev/reference/apis/#component-apis) and choose the one whose methods map most closely to the functionality you need.
 
 If you need a method that is not in your chosen API, you can use the flexible `DoCommand` (which is built into all component APIs) to create custom commands.
-See [Run control logic](/docs/operate/modules/support-hardware/) for more information.
+See [Run control logic](/docs/operate/modules/control-logic/) for more information.
 
 **Example module:** To choose the Viam [APIs](/dev/reference/apis/#component-apis) that make sense for your module, think about the functionality you want to implement.
 You need a way to return an image and you need a way to return a number.
@@ -336,13 +336,12 @@ from viam.module.module import Module
 try:
     from models.hello_camera import HelloCamera
     from models.hello_sensor import HelloSensor
-except ModuleNotFoundError: # when running as local module with run.sh
+except ModuleNotFoundError:  # when running as local module with run.sh
     from .models.hello_camera import HelloCamera
     from .models.hello_sensor import HelloSensor
 
 if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
-
 ```
 
 Save the file.
@@ -423,19 +422,19 @@ This file must add resource imports and register the module's models:
 package main
 
 import (
-  "helloworld"
-  "go.viam.com/rdk/module"
-  "go.viam.com/rdk/resource"
-  camera "go.viam.com/rdk/components/camera"
-  sensor "go.viam.com/rdk/components/sensor"
+    "helloworld"
+    "go.viam.com/rdk/module"
+    "go.viam.com/rdk/resource"
+    camera "go.viam.com/rdk/components/camera"
+    sensor "go.viam.com/rdk/components/sensor"
 )
 
 func main() {
-  // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
-  module.ModularMain(
-    resource.APIModel{ camera.API, helloworld.HelloCamera},
-    resource.APIModel{ sensor.API, helloworld.HelloSensor},
-  )
+    // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+    module.ModularMain(
+      resource.APIModel{ camera.API, helloworld.HelloCamera},
+      resource.APIModel{ sensor.API, helloworld.HelloSensor},
+    )
 }
 ```
 
@@ -585,7 +584,7 @@ In <file>/src/models/&lt;model-name&gt;.py</file>, edit the `validate_config` fu
 In <file>hello-world/hello-camera.go</file> edit the `Validate` function to:
 
 ```go {class="line-numbers linkable-line-numbers" data-start="51" data-line="2-10" }
-func (cfg *Config) Validate(path string) ([]string, error) {
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
     var deps []string
     if cfg.ImagePath == "" {
         return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "image_path")
@@ -808,10 +807,10 @@ We recommend using the pattern the generator follows:
 import asyncio
 from viam.module.module import Module
 try:
-    from models.hello_camera import MyCamera
+    from models.hello_camera import HelloCamera
 except ModuleNotFoundError:
     # when running as local module with run.sh
-    from .models.hello_camera import MyCamera
+    from .models.hello_camera import HelloCamera
 
 if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
@@ -853,7 +852,7 @@ func (s *helloWorldHelloCamera) Images(ctx context.Context, filterSourceNames []
         return nil, responseMetadataRetVal, err
     }
 
-	named, err := camera.NamedImageFromBytes(imgByte, "default", "image/png")
+    named, err := camera.NamedImageFromBytes(imgByte, "default", "image/png")
     if err != nil {
         return nil, responseMetadataRetVal, err
     }
@@ -1018,7 +1017,7 @@ For local modules, `viam-server` uses this path to start the module.
 **Example module**:
 For the `hello-world` module, the path should resemble `/home/yourname/hello-world/run.sh` on Linux, or `/Users/yourname/hello-world/run.sh` on macOS.
 
-Save your config.
+Save the config.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -1036,11 +1035,10 @@ For local modules, `viam-server` uses this path to start the module.
 
 **Example module**:
 For the `hello-world` module, the path should resemble `/home/yourname/hello-world/bin/hello-world`.
-For local modules, `viam-server` uses this path to start the module.
 
 Click **Create**.
 
-Save your config.
+Save the config.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1138,7 +1136,7 @@ viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-As you iterate, save your code changes, then restart the module in your machine's **CONFIGURE** tab:
+As you iterate, save the code changes, then restart the module in your machine's **CONFIGURE** tab:
 In the upper-right corner of the module's card, click **...** menu, then click **Restart**.
 
 {{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
