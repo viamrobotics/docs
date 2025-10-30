@@ -49,7 +49,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myDetectorService, err := vision.FromRobot(machine, "my_detector")
+myDetectorService, err := vision.FromProvider(machine, "my_detector")
 if err != nil {
   logger.Error(err)
   return
@@ -170,7 +170,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
  // add "go.viam.com/rdk/utils" to imports to use this code snippet
 
-  myCam, err := camera.FromRobot(machine, "my_camera")
+  myCam, err := camera.FromProvider(machine, "my_camera")
   if err != nil {
     logger.Error(err)
     return
@@ -178,7 +178,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   // Get an image from the camera decoded as an image.Image
   img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
-  myDetectorService, err := vision.FromRobot(machine, "my_detector")
+  myDetectorService, err := vision.FromProvider(machine, "my_detector")
   if err != nil {
     logger.Error(err)
     return
@@ -302,7 +302,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myClassifierService, err := vision.FromRobot(machine, "my_classifier")
+myClassifierService, err := vision.FromProvider(machine, "my_classifier")
 if err != nil {
   logger.Error(err)
   return
@@ -423,7 +423,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
  // add "go.viam.com/rdk/utils" to imports to use this code snippet
 
-  myCam, err := camera.FromRobot(machine, "my_camera")
+  myCam, err := camera.FromProvider(machine, "my_camera")
   if err != nil {
     logger.Error(err)
     return
@@ -431,7 +431,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   // Get an image from the camera decoded as an image.Image
   img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
-  myClassifierService, err := vision.FromRobot(machine, "my_classifier")
+  myClassifierService, err := vision.FromProvider(machine, "my_classifier")
   if err != nil {
     logger.Error(err)
     return
@@ -562,7 +562,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySegmenterService, err := vision.FromRobot(machine, "my_segmenter")
+mySegmenterService, err := vision.FromProvider(machine, "my_segmenter")
 if err != nil {
   logger.Error(err)
   return

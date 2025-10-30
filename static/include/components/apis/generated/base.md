@@ -47,7 +47,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(machine, "my_base")
+myBase, err := base.FromProvider(machine, "my_base")
 // Move the base forward 40 mm at a velocity of 90 mm/s.
 myBase.MoveStraight(context.Background(), 40, 90, nil)
 
@@ -156,7 +156,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(machine, "my_base")
+myBase, err := base.FromProvider(machine, "my_base")
 
 // Spin the base 10 degrees at an angular velocity of 15 deg/sec.
 myBase.Spin(context.Background(), 10, 15, nil)
@@ -285,7 +285,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(machine, "my_base")
+myBase, err := base.FromProvider(machine, "my_base")
 
 // Make your wheeled base move forward. Set linear power to 75%.
 logger.Info("move forward")
@@ -434,7 +434,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(machine, "my_base")
+myBase, err := base.FromProvider(machine, "my_base")
 
 // Set the linear velocity to 50 mm/sec and the angular velocity to 15 deg/sec.
 myBase.SetVelocity(context.Background(), r3.Vector{Y: 50}, r3.Vector{Z: 15}, nil)
@@ -549,7 +549,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBase, err := base.FromRobot(machine, "my_base")
+myBase, err := base.FromProvider(machine, "my_base")
 
 // Get the width and turning radius of the base
 properties, err := myBase.Properties(context.Background(), nil)
@@ -652,7 +652,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using IsMoving with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -753,7 +753,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Stop with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err = myArm.Stop(context.Background(), nil)
@@ -851,7 +851,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Geometries with an base component.
-myBase, err := base.FromRobot(machine, "my_base")
+myBase, err := base.FromProvider(machine, "my_base")
 
 geometries, err := myBase.Geometries(context.Background(), nil)
 

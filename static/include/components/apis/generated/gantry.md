@@ -41,7 +41,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 // Get the current positions of the axes of the gantry in millimeters.
 position, err := myGantry.Position(context.Background(), nil)
@@ -147,7 +147,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 // Create a list of positions for the axes of the gantry to move to.
 // Assume in this example that the gantry is multi-axis, with 3 axes.
@@ -258,7 +258,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 // Get the lengths of the axes of the gantry in millimeters.
 lengths_mm, err := myGantry.Lengths(context.Background(), nil)
@@ -353,7 +353,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 myGantry.Home(context.Background(), nil)
 ```
@@ -508,7 +508,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using IsMoving with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -609,7 +609,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Stop with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err = myArm.Stop(context.Background(), nil)

@@ -13,9 +13,9 @@ Get the current position of the arm as a [pose](/operate/mobility/orientation-ve
 **Returns:**
 
 - ([viam.components.arm.Pose](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Pose)): A representation of the arm’s current position as a 6 DOF (six degrees of freedom) pose.
-The `Pose` is composed of values for location and orientation with respect to the origin.
-Location is expressed as distance, which is represented by x, y, and z coordinate values.
-Orientation is expressed as an orientation vector, which is represented by o\_x, o\_y, o\_z, and theta values.
+  The `Pose` is composed of values for location and orientation with respect to the origin.
+  Location is expressed as distance, which is represented by x, y, and z coordinate values.
+  Orientation is expressed as an orientation vector, which is represented by o_x, o_y, o_z, and theta values.
 
 **Example:**
 
@@ -44,7 +44,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 // Get the end position of the arm as a Pose.
 pos, err := myArm.EndPosition(context.Background(), nil)
 ```
@@ -66,7 +66,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const pose = await arm.getEndPosition();
 ```
 
@@ -143,7 +143,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 // Create a Pose for the arm.
 examplePose := spatialmath.NewPose(
         r3.Vector{X: 5, Y: 5, Z: 5},
@@ -172,7 +172,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 
 // Create a pose for the arm to move to
 const pose: Pose = {
@@ -275,7 +275,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Declare an array of values with your desired rotational value (in radians) for each joint on the arm.
 inputs := referenceframe.FloatsToInputs([]float64{0, math.Pi/2, math.Pi})
@@ -302,7 +302,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 
 // Move an arm with 6 joints (6 DoF)
 await arm.moveToJointPositions([90, 0, 0, 0, 15, 0]);
@@ -349,7 +349,7 @@ This will block until done or a new operation cancels this one.
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `positions` [([][]referenceframe.Input)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Input)
-- `options` [(*MoveOptions)](https://pkg.go.dev/go.viam.com/rdk/components/arm#MoveOptions)
+- `options` [(\*MoveOptions)](https://pkg.go.dev/go.viam.com/rdk/components/arm#MoveOptions)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -359,7 +359,7 @@ This will block until done or a new operation cancels this one.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Declare a 2D array of values with your desired rotational value (in radians) for each joint on the arm.
 inputs := [][]referenceframe.Input{
@@ -391,8 +391,8 @@ Get the current position of each joint on the arm.
 **Returns:**
 
 - ([viam.proto.component.arm.JointPositions](https://python.viam.dev/autoapi/viam/proto/component/arm/index.html#viam.proto.component.arm.JointPositions)): The current `JointPositions` for the arm.
-`JointPositions` can have one attribute, `values`, a list of joint positions with rotational values (degrees)
-and translational values (mm).
+  `JointPositions` can have one attribute, `values`, a list of joint positions with rotational values (degrees)
+  and translational values (mm).
 
 **Example:**
 
@@ -421,7 +421,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm , err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Get the current position of each joint on the arm as JointPositions.
 pos, err := myArm.JointPositions(context.Background(), nil)
@@ -444,7 +444,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const jointPositions = await arm.getJointPositions();
 ```
 
@@ -487,9 +487,9 @@ Get the kinematics information associated with the arm as the format and byte co
 **Returns:**
 
 - (Tuple[[KinematicsFileFormat.ValueType](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.KinematicsFileFormat), [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first \[0] value represents the format of the
-file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
-Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
-and the second \[1] value represents the byte contents of the file.
+  file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
+  Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
+  and the second \[1] value represents the byte contents of the file.
 
 **Example:**
 
@@ -571,7 +571,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using IsMoving with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
@@ -597,7 +597,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const isMoving = await arm.isMoving();
 console.log(isMoving);
 ```
@@ -669,7 +669,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Stop with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 // Stop all motion of the arm. It is assumed that the arm stops immediately.
 err = myArm.Stop(context.Background(), nil)
@@ -692,7 +692,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 await arm.stop();
 ```
 
@@ -767,7 +767,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Geometries with an arm component.
-myArm, err := arm.FromRobot(machine, "my_arm")
+myArm, err := arm.FromProvider(machine, "my_arm")
 
 geometries, err := myArm.Geometries(context.Background(), nil)
 
@@ -795,7 +795,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const arm = new VIAM.ArmClient(machine, 'my_arm');
+const arm = new VIAM.ArmClient(machine, "my_arm");
 const geometries = await arm.getGeometries();
 console.log(geometries);
 ```
@@ -900,12 +900,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 
@@ -993,7 +993,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-arm.name
+arm.name;
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#name).

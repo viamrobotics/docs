@@ -55,7 +55,7 @@ import (
   "gorgonia.org/tensor"
  )
 
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel")
+myMLModel, err := mlmodel.FromProvider(machine, "my_mlmodel")
 
 input_tensors := ml.Tensors{
   "image": tensor.New(
@@ -114,7 +114,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMLModel, err := mlmodel.FromRobot(machine, "my_mlmodel")
+myMLModel, err := mlmodel.FromProvider(machine, "my_mlmodel")
 metadata, err := myMLModel.Metadata(context.Background())
 ```
 

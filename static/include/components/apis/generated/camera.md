@@ -102,7 +102,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 imageBytes, mimeType, err := myCamera.Image(context.Background(), utils.MimeTypeJPEG, nil)
 ```
 
@@ -236,7 +236,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 
 images, metadata, err := myCamera.Images(context.Background(), nil)
 ```
@@ -374,7 +374,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 
 // gets the next point cloud from a camera
 pointCloud, err := myCamera.NextPointCloud(context.Background())
@@ -660,7 +660,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```go {class="line-numbers linkable-line-numbers"}
 // This example shows using Geometries with an camera component.
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 
 geometries, err := myCamera.Geometries(context.Background(), nil)
 

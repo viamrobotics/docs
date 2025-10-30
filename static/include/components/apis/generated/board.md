@@ -46,7 +46,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
@@ -155,7 +155,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
@@ -269,7 +269,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
@@ -377,7 +377,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
@@ -486,7 +486,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
@@ -598,7 +598,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")
@@ -709,7 +709,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
@@ -819,7 +819,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
@@ -931,7 +931,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the Analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
@@ -1039,7 +1039,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Make a channel to stream ticks
 ticksChan := make(chan board.Tick)
@@ -1168,7 +1168,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 Set the power mode of the board to OFFLINE_DEEP.
 myBoard.SetPowerMode(context.Background(), boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP, nil)
@@ -1271,7 +1271,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the Analog pin "my_example_analog".
 analog, err := myBoard.AnalogByName("my_example_analog")
@@ -1323,7 +1323,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the DigitalInterrupt "my_example_digital_interrupt".
 interrupt, err := myBoard.DigitalInterruptByName("my_example_digital_interrupt")
@@ -1375,7 +1375,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(robot, "my_board")
+myBoard, err := board.FromProvider(robot, "my_board")
 
 // Get the GPIOPin with pin number 15.
 pin, err := myBoard.GPIOPinByName("15")

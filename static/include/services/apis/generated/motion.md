@@ -69,7 +69,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 
 // Assumes a gripper configured with name "my_gripper" on the machine
 gripperName := "my_gripper"
@@ -730,7 +730,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 myBaseResourceName := base.Named("myBase")
 
 myMvmntSensorResourceName := movement_sensor.Named("my_movement_sensor")
@@ -824,7 +824,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 
 // Get the plan(s) of the base component's most recent execution i.e. `MoveOnGlobe()` or `MoveOnMap()` call.
 planStatuses, err := motionService.ListPlanStatuses(context.Background(), motion.ListPlanStatusesReq{})

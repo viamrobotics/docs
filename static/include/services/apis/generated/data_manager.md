@@ -23,7 +23,7 @@ Sync data stored on the machine to the cloud.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(machine, "my_data_manager")
+data, err := datamanager.FromProvider(machine, "my_data_manager")
 // Sync data stored on the machine to the cloud.
 err := data.Sync(context.Background(), nil)
 ```

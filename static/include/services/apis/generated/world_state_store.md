@@ -1,4 +1,4 @@
-### listUUIDs
+### ListUUIDs
 
 List all world state transform UUIDs.
 

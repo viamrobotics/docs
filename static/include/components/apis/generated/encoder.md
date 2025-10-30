@@ -50,7 +50,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myEncoder, err := encoder.FromRobot(machine, "my_encoder")
+myEncoder, err := encoder.FromProvider(machine, "my_encoder")
 if err != nil {
   logger.Fatalf("cannot get encoder: %v", err)
 }
@@ -135,7 +135,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myEncoder, err := encoder.FromRobot(machine, "my_encoder")
+myEncoder, err := encoder.FromProvider(machine, "my_encoder")
 if err != nil {
   logger.Fatalf("cannot get encoder: %v", err)
 }
@@ -215,7 +215,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myEncoder, err := encoder.FromRobot(machine, "my_encoder")
+myEncoder, err := encoder.FromProvider(machine, "my_encoder")
 
 // Get whether the encoder returns position in ticks or degrees.
 properties, err := myEncoder.Properties(context.Background(), nil)
