@@ -35,6 +35,7 @@ aliases:
   - /operate/get-started/other-hardware/hello-world-module/
   - /operate/modules/create-module/hello-world-module/
   - /operate/modules/supported-hardware/hello-world-module/
+date: "2025-10-30"
 ---
 
 If your physical or virtual hardware is not supported by an existing registry {{< glossary_tooltip term_id="module" text="module" >}}, you can create a new module to add support for it.
@@ -279,7 +280,9 @@ If you want to understand the module structure, here's what each file does:
 
 - **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
 - **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
-- TODO
+- **<FILE>module/main.go</FILE> and <FILE>module.go</FILE>**: Core code that registers the module and resource and provides the model implementation.
+- **<FILE>cli/main.go</FILE>**: You can run this file to test the model you are creating (`go run ./cmd/cli`).
+- **Makefile**: Build and setup commands.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -371,8 +374,16 @@ Edit the `description` to include both models.
       "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
     }
   ],
+  "applications": null,
+  "markdown_link": "README.md",
   "entrypoint": "./run.sh",
-  "first_run": ""
+  "first_run": "",
+  "build": {
+    "build": "./build.sh",
+    "setup": "./setup.sh",
+    "path": "dist/archive.tar.gz",
+    "arch": ["linux/amd64", "linux/arm64", "darwin/arm64", "windows/amd64"]
+  }
 }
 ```
 
@@ -457,8 +468,16 @@ Edit the `description` to include both models.
       "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
     }
   ],
-  "entrypoint": "./run.sh",
-  "first_run": ""
+  "applications": null,
+  "markdown_link": "README.md",
+  "entrypoint": "bin/hello-world",
+  "first_run": "",
+  "build": {
+    "build": "make module.tar.gz",
+    "setup": "make setup",
+    "path": "module.tar.gz",
+    "arch": ["linux/amd64", "linux/arm64", "darwin/arm64", "windows/amd64"]
+  }
 }
 ```
 
@@ -813,19 +832,31 @@ You can find details about the return types at [go.viam.com/rdk/components](http
 {{< table >}}
 {{< tablestep start=1 >}}
 
-The module generator created a stub for the `Image` function we want to implement in <file>hello-world/hello-camera.go</file>.
+The module generator created a stub for the `Images` function we want to implement in <file>hello-world/hello-camera.go</file>.
 
 You need to replace `panic("not implemented")` with code to implement the method:
 
-```go {class="line-numbers linkable-line-numbers" data-start="101" }
-func (s *helloWorldHelloCamera) Image(ctx context.Context, mimeType string, extra map[string]interface{}) ([]byte, camera.ImageMetadata, error) {
+```go {class="line-numbers linkable-line-numbers" data-start="111" }
+func (s *helloWorldHelloCamera) Images(ctx context.Context, filterSourceNames []string, extra map[string]interface{}) ([]camera.NamedImage, resource.ResponseMetadata, error) {
+    var responseMetadataRetVal resource.ResponseMetadata
+
     imgFile, err := os.Open(imagePath)
     if err != nil {
-       return nil, camera.ImageMetadata{}, errors.New("Error opening image.")
+        return nil, responseMetadataRetVal, errors.New("Error opening image.")
     }
     defer imgFile.Close()
+
     imgByte, err := os.ReadFile(imagePath)
-    return imgByte, camera.ImageMetadata{}, nil
+    if err != nil {
+        return nil, responseMetadataRetVal, err
+    }
+
+	named, err := camera.NamedImageFromBytes(imgByte, "default", "image/png")
+    if err != nil {
+        return nil, responseMetadataRetVal, err
+    }
+
+    return []camera.NamedImage{named}, responseMetadataRetVal, nil
 }
 ```
 
@@ -871,8 +902,6 @@ Add the following import to the list of imports at the top of <file>hello-world/
 ```go {class="line-numbers linkable-line-numbers" data-start="7"}
 "math/rand"
 ```
-
-Save the file.
 
 {{% /tablestep %}}
 {{< tablestep >}}
