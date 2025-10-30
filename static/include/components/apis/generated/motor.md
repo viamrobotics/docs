@@ -1102,7 +1102,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(machine, "my_motor")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myMotor.DoCommand(context.Background(), command)
@@ -1197,7 +1197,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(machine, "my_motor")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
 err = myMotor.Name()
 ```
@@ -1283,7 +1283,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMotor, err := motor.FromRobot(machine, "my_motor")
+myMotor, err := motor.FromProvider(machine, "my_motor")
 
 err = myMotor.Close(context.Background())
 ```

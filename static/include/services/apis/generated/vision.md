@@ -809,7 +809,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myVisionSvc, err := vision.FromRobot(machine, "my_vision_svc")
+myVisionSvc, err := vision.FromProvider(machine, "my_vision_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myVisionSvc.DoCommand(context.Background(), command)
@@ -904,7 +904,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myVisionSvc, err := vision.FromRobot(machine, "my_vision_svc")
+myVisionSvc, err := vision.FromProvider(machine, "my_vision_svc")
 
 err = myVisionSvc.Name()
 ```
@@ -1078,7 +1078,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myVisionSvc, err := vision.FromRobot(machine, "my_vision_svc")
+myVisionSvc, err := vision.FromProvider(machine, "my_vision_svc")
 
 err = myVisionSvc.Close(context.Background())
 ```

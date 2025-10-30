@@ -106,7 +106,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGenericComponent, err := generic.FromRobot(machine, "my_generic_component")
+myGenericComponent, err := generic.FromProvider(machine, "my_generic_component")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myGenericComponent.DoCommand(context.Background(), command)
@@ -201,7 +201,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGenericComponent, err := generic.FromRobot(machine, "my_generic_component")
+myGenericComponent, err := generic.FromProvider(machine, "my_generic_component")
 
 err = myGenericComponent.Name()
 ```

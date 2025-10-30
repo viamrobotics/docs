@@ -458,7 +458,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input_controller.FromRobot(machine, "my_input_controller")
+myInputController, err := input_controller.FromProvider(machine, "my_input_controller")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myInputController.DoCommand(context.Background(), command)
@@ -506,7 +506,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input.FromRobot(machine, "my_input_controller")
+myInputController, err := input.FromProvider(machine, "my_input_controller")
 
 err = myInputController.Name()
 ```
@@ -573,7 +573,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myInputController, err := input.FromRobot(machine, "my_input_controller")
+myInputController, err := input.FromProvider(machine, "my_input_controller")
 
 err = myInputController.Close(context.Background())
 ```

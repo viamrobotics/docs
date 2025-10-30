@@ -463,7 +463,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := power_sensor.FromRobot(machine, "my_power_sensor")
+myPowerSensor, err := power_sensor.FromProvider(machine, "my_power_sensor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myPowerSensor.DoCommand(context.Background(), command)
@@ -558,7 +558,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+myPowerSensor, err := powersensor.FromProvider(machine, "my_power_sensor")
 
 err = myPowerSensor.Name()
 ```
@@ -644,7 +644,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myPowerSensor, err := powersensor.FromRobot(machine, "my_power_sensor")
+myPowerSensor, err := powersensor.FromProvider(machine, "my_power_sensor")
 
 err = myPowerSensor.Close(context.Background())
 ```

@@ -500,7 +500,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(machine, "my_servo")
+myServo, err := servo.FromProvider(machine, "my_servo")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myServo.DoCommand(context.Background(), command)
@@ -595,7 +595,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(machine, "my_servo")
+myServo, err := servo.FromProvider(machine, "my_servo")
 
 err = myServo.Name()
 ```
@@ -682,7 +682,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myServo, err := servo.FromRobot(machine, "my_servo")
+myServo, err := servo.FromProvider(machine, "my_servo")
 
 err = myServo.Close(context.Background())
 ```

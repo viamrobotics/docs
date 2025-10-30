@@ -259,7 +259,7 @@ print(f"co2-monitor get_readings return value: {co_2_monitor_return_value}")
 
 ```go
 // Get the readings provided by the sensor.
-co2Monitor, err := sensor.FromRobot(machine, "co2-monitor")
+co2Monitor, err := sensor.FromProvider(machine, "co2-monitor")
 co2MonitorReturnValue, err := co2Monitor.Readings(
   context.Background(), map[string]interface{}{})
 logger.Infof("co2-monitor return value: %+v", co2MonitorReturnValue)
@@ -381,7 +381,7 @@ result = await my_button.do_command(command)
 {{% tab name="Go" %}}
 
 ```go
-myButton, err := generic.FromRobot(machine, "my_button")
+myButton, err := generic.FromProvider(machine, "my_button")
 
 // Use a custom command to push the button 5
 command := map[string]interface{}{"cmd": "push_button", "button": 5}
@@ -421,7 +421,7 @@ result = await my_twilio_svc.do_command(command)
 {{% tab name="Go" %}}
 
 ```go
-myTwilioSvc, err := generic.FromRobot(machine, "my_twilio_svc")
+myTwilioSvc, err := generic.FromProvider(machine, "my_twilio_svc")
 
 // Use a custom command to send a text message with Twilio
 command := map[string]interface{}{"to": "+1 234 567 8901", "body": "Hello world!"}
@@ -478,11 +478,11 @@ for d in detections:
 
 ```go
 // Get image from camera stream on construction site
-myCamera, err := camera.FromRobot(machine, "construction-site-cam")
+myCamera, err := camera.FromProvider(machine, "construction-site-cam")
 img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCamera)
 
 // Use machine learning model to gather information from the image
-visService, err := vision.FromRobot(machine, "hardhat_detector")
+visService, err := vision.FromProvider(machine, "hardhat_detector")
 detections, err := visService.Detections(context.Background(), img, nil)
 
 // Check whether a person is detected not wearing a hardhat
@@ -605,7 +605,7 @@ destPoseInFrame := referenceframe.NewPoseInFrame(
   referenceframe.World, destinationPose)
 
 // Move arm to destination pose
-motionService, err := motion.FromRobot(robot, "builtin")
+motionService, err := motion.FromProvider(robot, "builtin")
 _, err = motionService.Move(context.Background(), "myArm", destPoseInFrame, worldState, nil, nil)
 ```
 
@@ -653,7 +653,7 @@ await my_nav.set_mode(Mode.ValueType.MODE_WAYPOINT)
 {{% tab name="Go" %}}
 
 ```go
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
+myNav, err := navigation.FromProvider(robot, "my_nav_service")
 
 // Create a new waypoint at the specified latitude and longitude
 location = geo.NewPoint(40.76275, -73.96)
@@ -661,7 +661,7 @@ location = geo.NewPoint(40.76275, -73.96)
 // Add waypoint to the service's data storage
 err := myNav.AddWaypoint(context.Background(), location, nil)
 
-myNav, err := navigation.FromRobot(robot, "my_nav_service")
+myNav, err := navigation.FromProvider(robot, "my_nav_service")
 
 // Set the service to operate in waypoint mode and begin navigation
 mode, err := myNav.SetMode(context.Background(), Mode.MODE_WAYPOINT, nil)

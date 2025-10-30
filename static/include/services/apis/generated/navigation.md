@@ -777,7 +777,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myNavigationSvc, err := navigation.FromRobot(machine, "my_navigation_svc")
+myNavigationSvc, err := navigation.FromProvider(machine, "my_navigation_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myNavigationSvc.DoCommand(context.Background(), command)
@@ -851,7 +851,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_nav, err := navigation.FromRobot(machine, "my_nav_svc")
+my_nav, err := navigation.FromProvider(machine, "my_nav_svc")
 
 err := my_nav.Name()
 ```
@@ -918,7 +918,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-my_nav, err := navigation.FromRobot(machine, "my_nav_svc")
+my_nav, err := navigation.FromProvider(machine, "my_nav_svc")
 
 err := my_nav.Close(context.Background())
 ```

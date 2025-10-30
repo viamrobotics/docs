@@ -605,7 +605,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myGripper.DoCommand(context.Background(), command)
@@ -773,7 +773,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 err = myGripper.Name()
 ```
@@ -859,7 +859,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGripper, err := gripper.FromRobot(machine, "my_gripper")
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
 
 err = myGripper.Close(context.Background())
 ```

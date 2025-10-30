@@ -71,7 +71,7 @@ If you are implementing your own base remote control service and want to add fea
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBaseRemoteControlSvc, err := baseremotecontrol.FromRobot(machine, "my_base_remote_control_svc")
+myBaseRemoteControlSvc, err := baseremotecontrol.FromProvider(machine, "my_base_remote_control_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myBaseRemoteControlSvc.DoCommand(context.Background(), command)
@@ -100,7 +100,7 @@ Get the `ResourceName` for this instance of the generic service with the given n
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")
+baseRCService, err := baseremotecontrol.FromProvider(machine, "my_baseRCService_svc")
 
 err := baseRCService.Name()
 ```
@@ -128,7 +128,7 @@ Close out of all remote control related systems.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-baseRCService, err := baseremotecontrol.FromRobot(machine, "my_baseRCService_svc")
+baseRCService, err := baseremotecontrol.FromProvider(machine, "my_baseRCService_svc")
 
 err := baseRCService.Close(context.Background())
 ```

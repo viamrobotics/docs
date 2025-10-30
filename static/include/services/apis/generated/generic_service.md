@@ -46,7 +46,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGenericService, err := generic.FromRobot(machine, "my_generic_service")
+myGenericService, err := generic.FromProvider(machine, "my_generic_service")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myGenericService.DoCommand(context.Background(), command)
@@ -141,7 +141,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGenericService, err := generic.FromRobot(machine, "my_generic_service")
+myGenericService, err := generic.FromProvider(machine, "my_generic_service")
 
 err = myGenericService.Name()
 ```

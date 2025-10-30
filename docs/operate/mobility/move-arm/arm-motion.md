@@ -120,7 +120,7 @@ You'll now add to the code to describe the geometry of the arm's environment and
    {{% tab name="Go" %}}
 
    ```go {class="line-numbers linkable-line-numbers"}
-   motionService, err := motion.FromRobot(machine, "builtin")
+   motionService, err := motion.FromProvider(machine, "builtin")
    if err != nil {
      logger.Fatal(err)
    }
@@ -534,7 +534,7 @@ func main() {
    defer machine.Close(context.Background())
 
    armResourceName := "my_arm"
-   motionService, err := motion.FromRobot(machine, "builtin")
+   motionService, err := motion.FromProvider(machine, "builtin")
    if err != nil {
       logger.Fatal(err)
    }

@@ -1029,7 +1029,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movement_sensor.FromRobot(machine, "my_movement_sensor")
+myMovementSensor, err := movement_sensor.FromProvider(machine, "my_movement_sensor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myMovementSensor.DoCommand(context.Background(), command)
@@ -1124,7 +1124,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+myMovementSensor, err := movementsensor.FromProvider(machine, "my_movement_sensor")
 
 err = myMovementSensor.Name()
 ```
@@ -1210,7 +1210,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myMovementSensor, err := movementsensor.FromRobot(machine, "my_movement_sensor")
+myMovementSensor, err := movementsensor.FromProvider(machine, "my_movement_sensor")
 
 err = myMovementSensor.Close(context.Background())
 ```

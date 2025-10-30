@@ -198,7 +198,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := sensor.FromRobot(machine, "my_sensor")
+mySensor, err := sensor.FromProvider(machine, "my_sensor")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := mySensor.DoCommand(context.Background(), command)
@@ -293,7 +293,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := sensor.FromRobot(machine, "my_sensor")
+mySensor, err := sensor.FromProvider(machine, "my_sensor")
 
 err = mySensor.Name()
 ```
@@ -379,7 +379,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySensor, err := sensor.FromRobot(machine, "my_sensor")
+mySensor, err := sensor.FromProvider(machine, "my_sensor")
 
 err = mySensor.Close(context.Background())
 ```

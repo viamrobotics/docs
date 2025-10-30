@@ -1492,7 +1492,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(machine, "my_board")
+myBoard, err := board.FromProvider(machine, "my_board")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myBoard.DoCommand(context.Background(), command)
@@ -1665,7 +1665,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myBoard, err := board.FromRobot(machine, "my_board")
+myBoard, err := board.FromProvider(machine, "my_board")
 
 err = myBoard.Close(context.Background())
 ```

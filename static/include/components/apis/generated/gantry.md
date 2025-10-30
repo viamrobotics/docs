@@ -734,7 +734,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myGantry.DoCommand(context.Background(), command)
@@ -851,7 +851,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 err = myGantry.Name()
 ```
@@ -937,7 +937,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myGantry, err := gantry.FromRobot(machine, "my_gantry")
+myGantry, err := gantry.FromProvider(machine, "my_gantry")
 
 err = myGantry.Close(context.Background())
 ```

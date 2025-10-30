@@ -70,7 +70,7 @@ func main() {
     ... // Connect to the machine
 
     // Get your sensor resource from the machine.
-    yourSensor, err := YourSensor.FromRobot(robot, "your-sensor")
+    yourSensor, err := sensor.FromProvider(robot, "your-sensor")
 
     // Define a map containing extra information.
     your_info := map[string]interface{}{"type": "temperature", "description": "more info", "id": 123}

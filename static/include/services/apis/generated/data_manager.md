@@ -186,7 +186,7 @@ If you are implementing your own data manager service and want to add features t
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myDataManagerSvc, err := datamanager.FromRobot(machine, "my_data_manager_svc")
+myDataManagerSvc, err := datamanager.FromProvider(machine, "my_data_manager_svc")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myDataManagerSvc.DoCommand(context.Background(), command)
@@ -239,7 +239,7 @@ Get the `ResourceName` for this instance of the service.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(machine, "my_data_manager")
+data, err := datamanager.FromProvider(machine, "my_data_manager")
 
 err := data.Name()
 ```
@@ -286,7 +286,7 @@ Safely shut down the resource and prevent further use.
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-data, err := datamanager.FromRobot(machine, "my_data_manager")
+data, err := datamanager.FromProvider(machine, "my_data_manager")
 
 err := data.Close(context.Background())
 ```

@@ -555,7 +555,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := myCamera.DoCommand(context.Background(), command)
@@ -727,7 +727,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 
 err = myCamera.Name()
 ```
@@ -813,7 +813,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromRobot(machine, "my_camera")
+myCamera, err := camera.FromProvider(machine, "my_camera")
 
 err = myCamera.Close(context.Background())
 ```
