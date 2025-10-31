@@ -71,28 +71,14 @@ func main() {
 	fmt.Println("myArm JointPositions return value:", myArmJointPositions)
 
 	// :remove-start:
-	cmdJointPositionsZero := []referenceframe.Input{
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: 0.0},
-	}
+	cmdJointPositionsZero := []referenceframe.Input{0, 0, 0, 0, 0, 0}
 	err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositionsZero, nil)
 	if err != nil {
 		fmt.Println(err)
 	}
 	// :remove-end:
 	// Command a joint position move: move the forearm of the arm slightly up
-	cmdJointPositions := []referenceframe.Input{
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: -3.0},
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: 0.0},
-	}
+	cmdJointPositions := []referenceframe.Input{0, 0, -3.0, 0, 0, 0}
 	err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 	if err != nil {
 		fmt.Println(err)

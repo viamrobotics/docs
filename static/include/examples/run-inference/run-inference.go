@@ -2,11 +2,9 @@
 package main
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"image"
-	"image/jpeg"
 
 	"gorgonia.org/tensor"
 	// :remove-start:
@@ -18,7 +16,6 @@ import (
 	"go.viam.com/rdk/robot/client"
 	"go.viam.com/rdk/components/camera"
 	"go.viam.com/rdk/services/mlmodel"
-	"go.viam.com/rdk/utils"
 	"go.viam.com/utils/rpc"
 )
 
@@ -61,13 +58,11 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	imageData, _, err := cam.Image(ctx, utils.MimeTypeJPEG, nil)
+	images, _, err := cam.Images(ctx, nil, nil)
 	if err != nil {
 		logger.Fatal(err)
 	}
-
-	// Decode the image data to get the actual image
-	img, err := jpeg.Decode(bytes.NewReader(imageData))
+	img, err := images[0].Image(ctx)
 	if err != nil {
 		logger.Fatal(err)
 	}

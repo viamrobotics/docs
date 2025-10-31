@@ -60,12 +60,7 @@ func main() {
 
 	// Command a joint position move: move the forearm of the arm slightly up
 	cmdJointPositions := []referenceframe.Input{
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: -3.0},
-		{Value: 0.0},
-		{Value: 0.0},
-		{Value: 0.0},
+		0.0, 0.0, -3.0, 0.0, 0.0, 0.0,
 	}
 	err = myArmComponent.MoveToJointPositions(context.Background(), cmdJointPositions, nil)
 	if err != nil {

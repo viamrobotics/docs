@@ -4,8 +4,8 @@ go 1.25.1
 
 require (
 	github.com/golang/geo v0.0.0-20230421003525-6adc56603217
-	go.viam.com/rdk v0.95.1
-	go.viam.com/utils v0.1.170
+	go.viam.com/rdk v0.99.0
+	go.viam.com/utils v0.1.176
 	gorgonia.org/tensor v0.9.24
 )
 
@@ -123,7 +123,7 @@ require (
 	github.com/srikrsna/protoc-gen-gotag v0.6.2 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
-	github.com/viamrobotics/ice/v2 v2.3.39 // indirect
+	github.com/viamrobotics/ice/v2 v2.3.40 // indirect
 	github.com/viamrobotics/webrtc/v3 v3.99.16 // indirect
 	github.com/viamrobotics/zeroconf v1.0.12 // indirect
 	github.com/wlynxg/anet v0.0.5 // indirect
@@ -149,7 +149,7 @@ require (
 	go.uber.org/goleak v1.3.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	go.viam.com/api v0.1.477 // indirect
+	go.viam.com/api v0.1.483 // indirect
 	go.viam.com/test v1.2.4 // indirect
 	go4.org/unsafe/assume-no-moving-gc v0.0.0-20230525183740-e7c30c78aeb2 // indirect
 	golang.org/x/arch v0.19.0 // indirect
