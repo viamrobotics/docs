@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="GetImages replaced GetImage" date="2025-10-31" %}}
+
+[`GetImage`](/dev/reference/apis/components/camera/#getimage) is deprecated.
+Use [`GetImages`](/dev/reference/apis/components/camera/#getimages) instead.
+
+{{% /changelog %}}
+
 {{% changelog color="changed" title="FromProvider replaces FromRobot and FromDependencies in Golang" date="2025-10-21" %}}
 
 `resource.FromRobot` and `resource.FromDependencies` are deprecated.

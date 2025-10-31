@@ -52,7 +52,8 @@ async def main() -> int:
     camera = Camera.from_robot(machine_client, CAMERA_NAME)
 
     # Capture image
-    image_frame = await camera.get_image()
+    images, _ = await camera.get_images()
+    image_frame = images[0]
 
     # Upload image
     file_id = await data_client.binary_data_capture_upload(

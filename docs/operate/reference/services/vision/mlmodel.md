@@ -336,7 +336,8 @@ detections = await my_detector.get_detections_from_camera(camera_name)
 
 # If you need to store the image, get the image first
 # and then run detections on it. This process is slower:
-img = await cam1.get_image()
+images, _ = await cam1.get_images()
+img = images[0]
 detections_from_image = await my_detector.get_detections(img)
 
 await robot.close()
@@ -417,7 +418,8 @@ classifications = await my_classifier.get_classifications_from_camera(
 
 # If you need to store the image, get the image first
 # and then run classifications on it. This process is slower:
-img = await cam1.get_image()
+images, _ = await cam1.get_images()
+img = images[0]
 classifications_from_image = await my_classifier.get_classifications(img, 2)
 
 await robot.close()
