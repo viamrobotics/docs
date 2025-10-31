@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="FromProvider replaces FromRobot and FromDependencies in Golang" date="2025-10-21" %}}
+
+`resource.FromRobot` and `resource.FromDependencies` are deprecated.
+Use [`resource.FromProvider`](https://pkg.go.dev/go.viam.com/rdk/resource#FromProvider) instead.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Machine job scheduling" date="2025-08-19" %}}
 
 Added support for scheduling automated jobs on machines that run at specified intervals.
