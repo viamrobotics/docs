@@ -106,7 +106,7 @@ Pass that image and an appropriate set of metadata to [`data_client.binary_data_
 To capture an image and upload it to Viam, first get an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="56-75" >}}
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="55-82" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -114,7 +114,7 @@ Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCap
 To capture an image and upload it to Viam, first get an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="41-53" >}}
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="41-54" >}}
 
 {{% /tab %}}
 {{< /tabs >}}

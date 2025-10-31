@@ -287,7 +287,7 @@ To run the modular resource, first copy the module binary to your Raspberry Pi.
 
 You will now configure your base.
 Go to the [machine you added during setup](#machine-setup).
-To make your module accessible to `viam-server`, you must add it as a local module:
+To make your module accessible to `viam-server`, add it as a local module:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
