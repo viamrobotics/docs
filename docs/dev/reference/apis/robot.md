@@ -21,6 +21,10 @@ The machine API supports the following methods:
 
 {{< readfile "/static/include/robot/apis/generated/robot-table.md" >}}
 
+## Establish a connection
+
+To use the machine management API, navigate to the **CONNECT** tab of one of your machines to get sample code.
+
 ## API
 
 {{< readfile "/static/include/robot/apis/generated/robot.md" >}}
