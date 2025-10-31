@@ -448,7 +448,7 @@ To view and create fragments, see the [**FRAGMENTS**](https://app.viam.com/fragm
 
 **Wood sanding project:**
 Your arm configurations are likely to have a lot of parameters that configure where your arm is in 3D space.
-If you want to try different arms, or use the arm for a different project, we recommend saving the reusable blocks of the configuration as a fragment.
+If you want to try different arms, or use the arm for a different project, we recommend saving the reusable blocks of the configuration as fragments.
 
 {{% /tablestep %}}
 {{< /table >}}

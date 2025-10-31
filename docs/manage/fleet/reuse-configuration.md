@@ -20,12 +20,10 @@ date: "2025-02-07"
 cost: "0"
 ---
 
-If most of your machines use the same setup, you can use a {{< glossary_tooltip term_id="fragment" text="fragment" >}}, like a cookie cutter, to configure the machines in the same way.
-Fragments are a way of sharing and managing [machine configurations](/operate/modules/configure-modules/) across multiple machines.
+Fragments allow you to share configurations for one or more resources across multiple machines.
 
-For example, if you have a fleet of rovers that uses the same hardware, you could use a fragment to configure the motors, base component, camera, and all other resources for all rovers.
-If some of the rovers have a slightly different configuration, you can overwrite the configuration for just those {{< glossary_tooltip term_id="resource" text="resources" >}} of those rovers.
-If one rover has an arm attached, you can add the rover configuration fragment (including the motors, camera, and base components), and then configure the arm on just that one rover.
+For example, you may use the same networking credentials across rovers and robotic arms.
+Another example is a fleet of rovers that use a fragment to configure the motors, base component, and other components.
 
 ## Create a fragment
 
@@ -74,9 +72,9 @@ If you have many components and services in one fragment, you can add folders to
 
 {{< /alert >}}
 
-## Add the fragment to multiple machines
+## Add the fragment to machines
 
-With your fragment created, you can add it to all machines that should have it.
+With your fragment created, you can add it to any number of machines.
 
 In the following steps, you will see how to add a fragment manually. If you are working in a factory setting and need to set up devices before they reach the end user, you can also use fragments to [provision](/manage/fleet/provision/setup/) your machines.
 
@@ -178,7 +176,11 @@ This example assumes the fragment with ID `abcd7ef8-fa88-1234-b9a1-123z987e55aa`
       ]
     }
   ],
-  "fragments": ["abcd7ef8-fa88-1234-b9a1-123z987e55aa"]
+  "fragments": [
+    {
+      "_id": "abcd7ef8-fa88-1234-b9a1-123z987e55aa"
+    }
+  ]
 }
 ```
 
@@ -472,6 +474,29 @@ When you add a fragment to a machine you can choose to pin the fragment version 
 - a **specific version**: Do not update to any other version.
 - a **tag**: Always use the version of this fragment with the selected tag.
   For example `stable` or `beta`.
+
+### Add fragment prefix
+
+Resource names must be unique on each machine.
+To avoid name collisions with resources you add using a fragment, you can set a `prefix`.
+If set, all resource added through the fragment have the prefix.
+For example, a component with the name `arm-1` configured in a fragment with the configuration `"prefix": "test123"` returns the name `test123-arm-1`.
+
+On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `prefix` to the fragment object:
+
+```json {class="line-numbers linkable-line-numbers" data-line="6-9"}
+{
+  "components": [ ... ],
+  "services": [ ... ],
+  "modules": [ ... ],
+  "fragments": [
+    {
+      "id": "0a44e14b-ec43-40e7-9641-1f593072e281",
+      "prefix": "hello-world-mlresources"
+    }
+  ]
+}
+```
 
 ## Example fragments
 
