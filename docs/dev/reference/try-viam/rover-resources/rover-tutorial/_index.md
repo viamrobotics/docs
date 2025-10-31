@@ -375,7 +375,7 @@ If you followed the instructions in the [Pi installation guide](/operate/referen
 
 If not, add a new machine and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} until your machine is connected.
 
-To configure your rover so you can start driving it, [add a Viam Rover 2 Fragment to your machine](/dev/reference/try-viam/rover-resources/rover-tutorial-fragments/).
+To configure your rover so you can start driving it, [add a Viam Rover 2 fragment to your machine](/dev/reference/try-viam/rover-resources/rover-tutorial-fragments/).
 
 ## Next steps
 
