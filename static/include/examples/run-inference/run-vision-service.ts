@@ -51,8 +51,8 @@ async function main(): Promise<number> {
     const classifier = new VisionClient(machine, CLASSIFIER_NAME);
 
     // Capture image
-    const imageFrame = await camera.getImage();
-
+    const {images, metadata} = await camera.getImages();
+    const imageFrame = images[0].image;
     // Get tags using the image
     const tags = await classifier.getClassifications(
         imageFrame,

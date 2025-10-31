@@ -113,7 +113,8 @@ async function main(): Promise<number> {
   }
 
   // get detections
-  let imageFrame = await camera.getImage();
+  let {images, metadata} = await camera.getImages();
+  let imageFrame = images[0].image;
   console.log(imageFrame);
   console.log("detections from image");
   let detections2 = await vision.getDetections(
