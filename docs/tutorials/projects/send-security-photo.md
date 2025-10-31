@@ -212,7 +212,8 @@ async def main():
     my_camera = Camera.from_robot(robot=machine, name="cam")
 
     while True:
-        img = await my_camera.get_image(mime_type="image/jpeg")
+        images, _ = await my_camera.get_images(mime_type="image/jpeg")
+        img = images[0]
         detections = await myPeopleDetector.get_detections(img)
 
         found = False

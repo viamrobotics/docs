@@ -461,7 +461,8 @@ You can also manage data, use higher level services, and manage your machines:
 ```python
 # Get image from camera stream on construction site
 cam = Camera.from_robot(machine, "construction-site-cam")
-img = await cam.get_image()
+images, _ = await cam.get_images()
+img = images[0]
 
 # Use machine learning model to gather information from the image
 hardhat_detector = VisionClient.from_robot(machine, "hardhat_detector")

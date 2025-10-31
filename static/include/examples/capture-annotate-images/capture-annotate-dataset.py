@@ -75,7 +75,8 @@ async def main() -> int:
     classifier = VisionClient.from_robot(machine, CLASSIFIER_NAME)
 
     # Capture image
-    image_frame = await camera.get_image()
+    images, _ = await camera.get_images()
+    image_frame = images[0]
 
     # Upload data
     file_id = await data_client.binary_data_capture_upload(

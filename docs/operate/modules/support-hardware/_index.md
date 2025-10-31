@@ -717,7 +717,7 @@ The module generator created a stub for the `get_images()` function we want to i
 
 You need to replace `raise NotImplementedError()` with code to implement the method:
 
-```python {class="line-numbers linkable-line-numbers" data-start="74" data-line="9-10" }
+```python {class="line-numbers linkable-line-numbers" data-start="74" data-line="9-13" }
     async def get_images(
         self,
         *,

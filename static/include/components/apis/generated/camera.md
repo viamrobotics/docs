@@ -134,22 +134,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const image = await camera.getImage();
 
 // Convert Uint8Array to base64
 const base64Image = btoa(
   Array.from(image)
     .map((byte) => String.fromCharCode(byte))
-    .join('')
+    .join(""),
 );
 
 // Convert image to base64 and display it
-const imageElement = document.createElement('img');
+const imageElement = document.createElement("img");
 imageElement.src = `data:image/jpeg;base64,${base64Image}`;
-const imageContainer = document.getElementById('#imageContainer');
+const imageContainer = document.getElementById("#imageContainer");
 if (imageContainer) {
-  imageContainer.innerHTML = '';
+  imageContainer.innerHTML = "";
   imageContainer.appendChild(imageElement);
 }
 ```
@@ -204,7 +204,7 @@ The multiple images returned from `GetImages()` do not represent a time series o
 **Returns:**
 
 - (Tuple[Sequence[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first \[0] a list of images
-returned from the camera system, and the second \[1] the metadata associated with this response.
+  returned from the camera system, and the second \[1] the metadata associated with this response.
 
 **Example:**
 
@@ -238,7 +238,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```go {class="line-numbers linkable-line-numbers"}
 myCamera, err := camera.FromProvider(machine, "my_camera")
 
-images, metadata, err := myCamera.Images(context.Background(), nil)
+images, metadata, err := myCamera.Images(context.Background(), nil, nil)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImagesSource).
@@ -260,7 +260,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const images = await camera.getImages();
 ```
 
@@ -312,8 +312,8 @@ A specific MIME type can be requested but may not necessarily be the same one re
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
-const mimeType = 'image/jpeg';
+const camera = new VIAM.CameraClient(machine, "my_camera");
+const mimeType = "image/jpeg";
 const image = await camera.renderFrame(mimeType);
 ```
 
@@ -338,7 +338,7 @@ The consumer of this call should decode the bytes into the format suggested by t
 **Returns:**
 
 - (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first \[0] the pointcloud data,
-and the second \[1] the mimetype of the pointcloud (for example, PCD).
+  and the second \[1] the mimetype of the pointcloud (for example, PCD).
 
 **Example:**
 
@@ -397,7 +397,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const pointCloud = await camera.getPointCloud();
 ```
 
@@ -478,7 +478,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
+const camera = new VIAM.CameraClient(machine, "my_camera");
 const properties = await camera.getProperties();
 ```
 
@@ -578,12 +578,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+    myCommand: { key: "value" },
+  }),
 );
 ```
 
@@ -748,7 +748,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-camera.name
+camera.name;
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#name).

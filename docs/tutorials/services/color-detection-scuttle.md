@@ -267,7 +267,8 @@ async def main():
     base = Base.from_robot(machine, "my_base")
     camera_name = "<camera-name>"
     camera = Camera.from_robot(machine, camera_name)
-    frame = await camera.get_image(mime_type="image/jpeg")
+    images, _ = await camera.get_images(mime_type="image/jpeg")
+    frame = images[0]
 
     # Convert to PIL Image
     pil_frame = viam_to_pil_image(frame)
@@ -379,7 +380,8 @@ async def main():
     base = Base.from_robot(machine, "my_base")
     camera_name = "<camera-name>"
     camera = Camera.from_robot(machine, camera_name)
-    frame = await camera.get_image(mime_type="image/jpeg")
+    images, _ = await camera.get_images(mime_type="image/jpeg")
+    frame = images[0]
 
     # Convert to PIL Image
     pil_frame = viam_to_pil_image(frame)

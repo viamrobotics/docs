@@ -41,7 +41,8 @@ async def main() -> int:
     classifier = VisionClient.from_robot(machine, CLASSIFIER_NAME)
 
     # Capture image
-    image_frame = await camera.get_image(mime_type="image/jpeg")
+    images, _ = await camera.get_images(mime_type="image/jpeg")
+    image_frame = images[0]
 
     # Get tags using the ViamImage (not the PIL image)
     tags = await classifier.get_classifications(

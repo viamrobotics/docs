@@ -98,7 +98,8 @@ Use required dependencies when your module should fail to build or reconfigure i
 1. You can now call API methods on the dependency resource within your module, for example:
 
    ```python {class="line-numbers linkable-line-numbers"}
-   img = await self.the_camera.get_image()
+   images, _ = await self.the_camera.get_images()
+   img = images[0]
    ```
 
 For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
@@ -171,7 +172,7 @@ For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/vi
 1. You can now call API methods on the dependency resource within your module, for example:
 
    ```go {class="line-numbers linkable-line-numbers"}
-   img, imgMetadata, err := s.camera.Image(ctx, utils.MimeTypeJPEG, nil)
+   images, metadata, err := s.camera.Images(ctx, nil, nil)
    ```
 
 {{% alert title="Note on reconfiguration" color="note" %}}
@@ -260,7 +261,8 @@ async def get_readings(
 ) -> Mapping[str, SensorReading]:
     if self.has_camera and self.the_camera is not None:
         # Use the camera
-        img = await self.the_camera.get_image()
+        images, _ = await self.the_camera.get_images()
+        img = images[0]
         mimetype = img.mime_type
         return {
             "readings": {

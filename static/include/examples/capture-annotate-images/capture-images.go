@@ -13,7 +13,6 @@ import (
 	"go.viam.com/rdk/components/camera"
 	"go.viam.com/rdk/logging"
 	"go.viam.com/rdk/robot/client"
-	"go.viam.com/rdk/utils"
 	"go.viam.com/utils/rpc"
 )
 
@@ -64,7 +63,12 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	image, _, err := cam.Image(ctx, utils.MimeTypeJPEG, nil)
+	images, _, err := cam.Images(ctx, nil, nil)
+	if err != nil {
+		logger.Fatal(err)
+	}
+	image := images[0]
+	imageData, err := image.Bytes(ctx)
 	if err != nil {
 		logger.Fatal(err)
 	}
@@ -74,7 +78,7 @@ func main() {
 
 	binaryDataID, err := dataClient.BinaryDataCaptureUpload(
 		ctx,
-		image,
+		imageData,
 		partID,
 		"camera",
 		cameraName,

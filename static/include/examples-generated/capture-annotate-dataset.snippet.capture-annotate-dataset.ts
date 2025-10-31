@@ -41,7 +41,8 @@ async function main(): Promise<number> {
     const classifier = new VisionClient(machine, CLASSIFIER_NAME);
 
     // Capture image
-    const imageFrame = await camera.getImage();
+    const {images, metadata} = await camera.getImages();
+    const imageFrame = images[0].image;
 
     // Upload data
     const fileId = await dataClient.binaryDataCaptureUpload(

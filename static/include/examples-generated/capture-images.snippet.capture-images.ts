@@ -39,7 +39,8 @@ async function main(): Promise<number> {
     const camera = new CameraClient(machine, CAMERA_NAME);
 
     // Capture image
-    const imageFrame = await camera.getImage();
+    const {images, metadata} = await camera.getImages();
+    const imageFrame = images[0].image;
 
     // Upload image
     const fileId = await dataClient.binaryDataCaptureUpload(

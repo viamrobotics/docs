@@ -41,7 +41,8 @@ async def main():
     my_detector = VisionClient.from_robot(machine, "my_detector")
 
     # Get an image from the camera
-    img = await cam1.get_image()
+    images, _ = await cam1.get_images()
+    img = images[0]
 
     # Get detections from that image
     detections = await my_detector.get_detections(img)
@@ -66,7 +67,8 @@ async def main():
     my_classifier = VisionClient.from_robot(machine, "my_classifier")
 
     # Get an image from the camera
-    img = await cam1.get_image()
+    images, _ = await cam1.get_images()
+    img = images[0]
 
     # Get the 2 classifications with the highest confidence scores
     classifications = await my_classifier.get_classifications(img, 2)

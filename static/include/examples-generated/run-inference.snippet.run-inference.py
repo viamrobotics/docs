@@ -33,7 +33,8 @@ async def main() -> int:
     metadata = await ml_model.metadata()
 
     # Capture image
-    image_frame = await camera.get_image()
+    images, _ = await camera.get_images()
+    image_frame = images[0]
 
     # Convert ViamImage to PIL Image first
     pil_image = viam_to_pil_image(image_frame)

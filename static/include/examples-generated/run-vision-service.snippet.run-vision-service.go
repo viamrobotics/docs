@@ -3,14 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-	"image/jpeg"
-	"bytes"
 
 	"go.viam.com/rdk/logging"
 	"go.viam.com/rdk/robot/client"
 	"go.viam.com/rdk/services/vision"
 	"go.viam.com/rdk/components/camera"
-	"go.viam.com/rdk/utils"
 	"go.viam.com/utils/rpc"
 )
 
@@ -46,13 +43,12 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	imageData, _, err := cam.Image(ctx, utils.MimeTypeJPEG, nil)
+	images, _, err := cam.Images(ctx, nil, nil)
 	if err != nil {
 		logger.Fatal(err)
 	}
-
-	// Convert binary data to image.Image
-	img, err := jpeg.Decode(bytes.NewReader(imageData))
+	image := images[0]
+	img, err := image.Image(ctx)
 	if err != nil {
 		logger.Fatal(err)
 	}
