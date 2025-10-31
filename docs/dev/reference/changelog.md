@@ -51,6 +51,13 @@ Use [`GetImages`](/dev/reference/apis/components/camera/#getimages) instead.
 
 {{% /changelog %}}
 
+{{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
+
+You can now set prefixes on fragments to avoid name collisions.
+For more information, see [Add fragment prefix](/manage/fleet/reuse-configuration/#add-fragment-prefix).
+
+{{% /changelog %}}
+
 {{% changelog color="changed" title="FromProvider replaces FromRobot and FromDependencies in Golang" date="2025-10-21" %}}
 
 `resource.FromRobot` and `resource.FromDependencies` are deprecated.
