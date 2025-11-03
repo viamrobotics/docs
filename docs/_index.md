@@ -36,7 +36,7 @@ We recommend starting with the [Quick Start](/operate/hello-world/quickstart/) a
 ## Prototype
 
 You can build many types of robotics project on Viam, from single-component projects to human-in-the-loop or AI-powered autonomous intelligent systems.
-Before you begin, we recommend reading [How to think about building a machine](/operate/hello-world/building/) to understand the building blocks of a machine and how to go from prototype to production.
+What makes Viam special is the ability to rapidly create prototypes using:
 
 - [Hardware agnostic](/operate/hello-world/quickstart/#supported-platforms): Viam runs on almost all single-board computers.
 - [Builder UI](/operate/modules/supported-hardware/#configure-hardware-on-your-machine): Configure and test hardware and software with a simple interface.
@@ -44,12 +44,17 @@ Before you begin, we recommend reading [How to think about building a machine](/
 - [Module Registry](https://app.viam.com/registry): Find and use a variety of integrations for popular hardware, common logic patterns, machine learning models, and more.
 - [CLI](/dev/tools/cli/): Control, manage, and test from the command-line from anywhere.
 
-The Viam platform offers many builtin capabilities from which you can pick and choose, such as:
+The Viam platform also offers many builtin capabilities from which you can pick and choose, such as:
+
 - [Data Management](/data-ai/capture-data/capture-sync/): Capture data from devices to the cloud.
 - [Machine learning and Computer Vision](/data-ai/train/create-dataset/): Build and deploy machine learning models.
 - [Motion Planning](/operate/mobility/motion-concepts/): Smooth and intelligent motion for arms, bases, and gantries.
 
+Before you begin, we recommend reading [How to think about building a machine](/operate/hello-world/building/) to understand the building blocks of a machine and how to go from prototype to production.
+
 ## Iterate
+
+As you go from prototype to production, Viam reduces complexity with sensible design patterns:
 
 - [Modules](/operate/modules/other-hardware/create-module/): The foundational building blocks of machines which keep your machine code maintainable as your project grows in complexity because you can make changes to single modules without changing the rest of the project.
 - [Standardized APIs](/dev/reference/apis/): It doesn't matter which robotic arm, motor, or other piece of hardware you are using, the code to operate the hardware is the same. This means you can swap hardware as you iterate.
@@ -57,14 +62,16 @@ The Viam platform offers many builtin capabilities from which you can pick and c
 
 ## Deploy
 
-- [Fragments](/manage/fleet/reuse-configuration/): Reuse configuration chunks across machines. Version control??
-- [Remote monitoring](/manage/troubleshoot/monitor/): monitor, operate, and troubleshoot machines from anywhere in the world
-- [Machine settings](/manage/fleet/system-settings/): manage operating system package updates, network configuration, and system-level logging
+As you start deploying machines, Viam supports you with the tools you know and expect from software development:
+
+- [Fragments](/manage/fleet/reuse-configuration/): Reuse configuration chunks across machines. All with version control.
+- [Remote monitoring](/manage/troubleshoot/monitor/): Monitor, operate, and troubleshoot machines from anywhere in the world.
+- [Machine settings](/manage/fleet/system-settings/): Manage operating system package updates, network configuration, and system-level logging.
 - [Viam applications](/operate/control/viam-applications/): Deploy custom web interface for your machines while Viam handles hosting and authentication.
 
 ## Scale
 
-When you ship machines, use one or more of the following tools:
+When you ship machines, Viam provides the infrastructure to support your needs:
 
 - [Provisioning](/manage/fleet/provision/setup/): ship machines with a preconfigured setup so customers can connect them to the internet and get them up and running
 - [Role-based access control](/manage/manage/access/): Grant fine-grained permissions as needed.
