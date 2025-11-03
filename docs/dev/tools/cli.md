@@ -1051,6 +1051,9 @@ viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 # build a module and run it on target machine
 viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 
+# build and configure a module running on your local machine without shipping a tarball.
+viam module reload-local --local
+
 # restart a running module
 viam module restart --id viam:python-example-module
 
@@ -1109,7 +1112,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--no-build` | Skip build step. Default: `false`. | `reload-local` | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | `reload`, `reload-local` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload`, `reload-local`, `restart` | Optional |
-| `--path` | TODO. Default: `.` | `reload` | Optional |
+| `--path` | The path to the root of the git repo to build. Default: `.` | `reload` | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
