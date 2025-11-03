@@ -65,6 +65,12 @@ Use [`resource.FromProvider`](https://pkg.go.dev/go.viam.com/rdk/resource#FromPr
 
 {{% /changelog %}}
 
+{{% changelog color="changed" title="Fragment Variables" date="2025-10-06" %}}
+
+[Fragments](/manage/fleet/reuse-configuration/) now support variables, allowing you to define variable values per-machine.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Machine job scheduling" date="2025-08-19" %}}
 
 Added support for scheduling automated jobs on machines that run at specified intervals.
