@@ -48,6 +48,52 @@ If you already created a machine to test your configuration, you can **Switch to
 
 {{% /tablestep %}}
 {{% tablestep %}}
+**Add variable templates.**
+
+Fragments support variable substitution, allowing you to use the same fragment for multiple use cases even if there are small differences in configuration.
+
+When configuring resources, click the **{} JSON** button to switch to advanced view.
+Instead of a key value, add a variable in the form `"$variable": { "name": "placeholder" } }}`.
+For example:
+
+{{< tabs >}}
+{{% tab name="With Variable" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="4-8"}
+{
+  "api": "rdk:component:camera",
+  "attributes": {
+    "preloaded_image": {
+      "$variable": {
+        "name": "placeholder"
+      }
+    }
+  },
+  "model": "rdk:builtin:image_file",
+  "name": "camera-placeholder"
+}
+```
+
+{{% /tab %}}
+{{% tab name="Without Variable" %}}
+
+```json {class="line-numbers linkable-line-numbers" data-line="4"}
+{
+  "api": "rdk:component:camera",
+  "attributes": {
+    "preloaded_image": "dog"
+  },
+  "model": "rdk:builtin:image_file",
+  "name": "camera-placeholder"
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
+
 **Set your privacy settings in the menu bar.**
 There are three options for this:
 
@@ -83,6 +129,21 @@ In the following steps, you will see how to add a fragment manually. If you are 
 **On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
 
 Search for your fragment and add it.
+
+Click **Save** in the upper right corner of the screen.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Add variables** if the fragment uses variable templates.
+
+In the fragment's panel, find the **Variables** section and add them to the JSON object.
+For example:
+
+```json {class="line-numbers linkable-line-numbers" data-line="5"}
+{
+  "placeholder": "dog"
+}
+```
 
 Click **Save** in the upper right corner of the screen.
 
