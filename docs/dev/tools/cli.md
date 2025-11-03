@@ -1114,7 +1114,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
-| `--name` | The name of the mdule. Alternative to `--id`. For example: `hello-world`. | `create`, `reload-local`, `restart` | Optional |
+| `--name` | The name of the module. For example: `hello-world`. | `create`, `reload-local`, `restart` | Optional |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs`, `download` | **Required** for `upload` |
