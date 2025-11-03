@@ -1048,8 +1048,11 @@ viam module build list
 # initiate a build and return the build logs as soon as completed
 viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 
-# restart a module running on your local viam-server, by name, without building or reconfiguring
-viam module reload --restart-only --id viam:python-example-module
+# build a module and run it on target machine
+viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
+
+# restart a running module
+viam module restart --id viam:python-example-module
 
 # upload a new or updated custom module to the Viam Registry:
 viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.gz --tags=distro:ubuntu,os_version:20.04,codename:focal,cuda:true,cuda_version:11,jetpack:5
@@ -1077,7 +1080,9 @@ viam module local-app-testing --app-url http://localhost:3000
 | `update` | Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/operate/modules/advanced/metajson/) and <file>README.md</file>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
-| `reload` | Build a module locally and run it on a target device. Rebuild and restart if it is already running. | - |
+| `reload` | Build a module in the cloud and run it on a target marchine. Rebuild and restart if it is already running. | - |
+| `reload-local` | Build a module locally and run it on a target marchine. Rebuild and restart if it is already running. | - |
+| `restart` | Restart a running module. | - |
 | `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/modules/advanced/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/modules/advanced/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build list` | List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand). | - |
@@ -1093,17 +1098,23 @@ viam module local-app-testing --app-url http://localhost:3000
 | -------- | ----------- | ------------------- | --------- |
 | `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
+| `--cloud-config` | The location of the <FILE>viam.json</FILE> file. with robot ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
 | `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | `upload` | Optional |
-| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload` | Optional |
-| `--id` | The build ID to list or show logs for, as returned from `build start`. For `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `download` | Optional |
-| `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. | `reload` | Optional |
-| `--module` | The path to the [`meta.json` file](/operate/modules/advanced/metajson/) for the custom module, if not in the current directory. | `update`, `upload`, `build` | Optional |
-| `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload` | Optional |
+| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload`, `reload-local` | Optional |
+| `--id` | For `build`, the build ID to list or show logs for, as returned from `build start`. For `reload`, `reload-local`, `restart`, and `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `reload`, `reload-local`, `restart`, `download` | Optional |
+| `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | `reload`, `reload-local` | Optional |
+| `--module` | The path to the [`meta.json` file](/operate/modules/advanced/metajson/) for the module, if not in the current directory. | `update`, `upload`, `build`, `reload`, `reload-local` | Optional |
+| `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
+| `--no-build` | Skip build step. Default: `false`. | `reload-local` | Optional |
+| `--no-progress` | Hide progress of the file transfer. Default: `false`. | `reload`, `reload-local` | Optional |
+| `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload`, `reload-local`, `restart` | Optional |
+| `--path` | TODO. Default: `.` | `reload` | Optional |
+| `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
-| `--name` | The name of the custom module to be created. | `create` | **Required** |
+| `--name` | The name of the mdule. Alternative to `--id`. For example: `hello-world`. | `create`, `reload-local`, `restart` | Optional |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs`, `download` | **Required** for `upload` |
@@ -1113,7 +1124,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | `build start` | Optional |
 | `--upload` | The path to the upload. | `upload` | Optional |
 | `--version` | The version of your module to set for this upload or download. For `download`, defaults to `latest`. See [Using the `--version` argument](#using-the---version-argument). | `upload`, `download` | **Required** for `upload` |
-| `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.` | `build start` | Optional |
+| `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.` | `build start`, `reload`, `reload-local` | Optional |
 | `--wait` | Wait for the build to finish before outputting any logs. | `build logs` | Optional |
 | `--app-url` | The url where local app is running, including port number. For example `http://localhost:5000`. | `local-app-testing` | **Required** |
 | `--machine-id` | The machine ID of the machine you want to test with. You can get your machine ID on the [Fleet page](https://app.viam.com/fleet/machines). | `local-app-testing` | Optional |
