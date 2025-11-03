@@ -1083,8 +1083,8 @@ viam module local-app-testing --app-url http://localhost:3000
 | `update` | Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/operate/modules/advanced/metajson/) and <file>README.md</file>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
-| `reload` | Build a module in the cloud and run it on a target marchine. Rebuild and restart if it is already running. | - |
-| `reload-local` | Build a module locally and run it on a target marchine. Rebuild and restart if it is already running. | - |
+| `reload` | Build a module in the cloud and run it on a target marchine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine. | - |
+| `reload-local` | Build a module locally and run it on a target marchine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine. | - |
 | `restart` | Restart a running module. | - |
 | `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/modules/advanced/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/modules/advanced/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
