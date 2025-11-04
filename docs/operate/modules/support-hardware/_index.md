@@ -940,6 +940,10 @@ You can configure it in the web UI using the local files on your machine.
 To get your module onto your machine, hot reloading builds and packages it and then uses the shell service to copy it to the machine for testing.
 If you are using a Python virtual environment (venv), make sure your module files are on the same device where `viam-server` is running, and add the module manually instead.
 
+{{% hiddencontent %}}
+Hot reloading is the preferred solution for cross-compilation. We recommend using hot reloading rather than cross-compilation tools like Canon.
+{{% /hiddencontent %}}
+
 {{< tabs >}}
 {{% tab name="Hot reloading (recommended)" %}}
 
