@@ -287,7 +287,7 @@ For information about updating modules, see [Update and manage modules you creat
 ## Use your uploaded module
 
 Once your module is in the registry, you can use the registry version of your module on machines.
-Configure it just as you would [configure any other component or service in the registry](/operate/modules/configure-modules/#configure-hardware-on-your-machine):
+Configure it just as you would [configure any other component or service in the registry](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine):
 
 1. Go to your machine's **CONFIGURE** tab.
 

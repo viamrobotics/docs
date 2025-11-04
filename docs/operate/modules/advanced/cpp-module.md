@@ -1494,7 +1494,7 @@ _Add instructions here for any requirements._
 ## Configure your <INSERT MODEL NAME> <INSERT API NAME>
 
 Navigate to your machine's **CONFIGURE** tab.
-[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
+[Add <INSERT COMPONENT TYPE / INSERT RESOURCE NAME> to your machine](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your <INSERT API NAME>’s attributes field:
 
@@ -1549,7 +1549,7 @@ This driver supports differential, ackermann, and omni directional steering mode
 > Before configuring your base, you must add a machine on [Viam](https://app.viam.com).
 
 Navigate to the **CONFIGURE** tab of your machine’s page.
-[Add `base` / `agilex-limo` to your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
+[Add `base` / `agilex-limo` to your machine](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine).
 
 On the new component panel, copy and paste the following attribute template into your base’s attributes field:
 
@@ -1561,7 +1561,7 @@ On the new component panel, copy and paste the following attribute template into
 ```
 
 > [!NOTE]
-> For more information, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
+> For more information, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine).
 
 ### Attributes
 
@@ -1664,7 +1664,7 @@ See [Update and manage modules you created](/operate/modules/advanced/manage-mod
 You have now created a module, and are ready to deploy it to a fleet of machines.
 There are two ways to deploy a module:
 
-- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
+- Through the Viam Registry: Once you have uploaded your new module to the Viam Registry, [add the module to one or more machines](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine).
   You can also choose to configure [automated uploads for new module versions](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) through a continuous integration (CI) workflow, using a GitHub Action if desired, greatly simplifying how you push changes to your module to the registry as you make them.
 - As a local module (without uploading it to Viam), as you did in the [Test your module locally step above](#test-your-module-locally).
   This is a great way to test, but if you'd like to use the module on more machines it's easiest to add it to the registry either publicly or privately.
