@@ -6,7 +6,7 @@ layout: "docs"
 type: "docs"
 imageAlt: "Configure a Machine"
 images: ["/viam.svg"]
-description: "Use modules from the registry to on your machine."
+description: "Use modules from the registry and their contained hardware components and software services on your machine."
 modulescript: true
 aliases:
   - /program/extend/modular-resources/configure/
@@ -23,27 +23,28 @@ aliases:
   - /use-cases/configure/
   - /operate/get-started/supported-hardware/
   - /operate/modules/supported-hardware/
+date: "2025-11-04"
 ---
 
-Viam has a registry of supported hardware {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for each category of hardware {{< glossary_tooltip term_id="component" text="component" >}} (for example, the camera API).
-Any hardware that is not already supported by a Viam module can be added into Viam’s system of modular resources by [creating a new module](/operate/modules/support-hardware/) that provides a driver for the hardware.
+Viam has a registry of {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for categories of hardware {{< glossary_tooltip term_id="component" text="components" >}} and software {{< glossary_tooltip term_id="service" text="services" >}}.
+
+If you are using an ESP32 microcontroller, see the [ESP32-specific instructions](/operate/install/setup-micro/#configure-and-test-your-machine) for how to add modules to the firmware build.
 
 ## About the Viam Registry of supported hardware and software
 
-The [registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for not just hardware modules but also software modules (called services), ML models, and ML model training scripts.
-
-Some components are supported by drivers built into `viam-server`, so you won't find them in the registry page.
-You can browse all built-in and modular registry components below or on your machine's configuration page.
+The [registry](https://app.viam.com/registry?type=Module) is the storage and distribution system for {{< glossary_tooltip term_id="module" text="modules" >}}.
+Each module can contain any number of {{< glossary_tooltip term_id="resource" text="resources" >}}: components which wrap hardware drivers or services which implement software like ML models.
 
 There are also modules in the registry that do not directly drive any physical hardware, but rather augment physical hardware with another layer of abstraction, or add software functionality such as a chatbot integration.
 
-If you are using an ESP32 microcontroller, see the [ESP32-specific instructions](/operate/install/setup-micro/#configure-and-test-your-machine) for how to configure your machine.
+Some components and services are built into `viam-server`, so you won't find them in the registry.
 
-## Configure hardware on your machine
+You can browse all built-in and modular registry components below or on your machine's configuration page.
 
-**Prerequisite:** A machine with [`viam-server` installed and connected to the cloud](/operate/install/setup/).
+## Configure hardware or software on your machine
 
-1. Make sure your hardware is physically connected to your machine and powered on.
+**Prerequisite:** A machine with [`viam-server` installed and connected to the cloud](/operate/install/setup/) and with any hardware physically connected to your machine and powered on.
+
 1. Navigate to your machine's page.
 1. Click the **+** button on your machine's **CONFIGURE** tab.
 
@@ -51,17 +52,17 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
 
 1. Click **Component or service**.
    This opens a search menu for all existing hardware and software drivers.
-   Search for and select a component _{{< glossary_tooltip term_id="model" text="model" >}}_ that supports your hardware.
-   Search by name, model number, or manufacturer name.
+   Search for and select a _{{< glossary_tooltip term_id="model" text="model" >}}_ that supports your hardware or implements your software.
+   For hardware, search by name, model number, or manufacturer name.
    Or try searching by broader category, for example "webcam" or "motor," since some components do not require drivers that are specific to their exact make and model.
 
    {{<imgproc src="/get-started/component-search.png" alt="Component search results." resize="600x" style="width:260px" class="imgzoom shadow">}}
 
-   You can also browse the components in the [Browse supported hardware by component API](#browse-supported-hardware-by-component-api) section below.
+   You can also browse available components in the [Browse supported hardware by component API](#browse-supported-hardware-by-component-api) section and services in the [Browse supported software by service API](#browse-supported-software-by-service-api) section.
 
-1. Follow the instructions in the configuration card to configure the component's attributes.
+1. Follow the instructions in the configuration card to configure the model's attributes.
 
-   {{<imgproc src="/get-started/configuration-card.png" alt="Configure a component." resize="900x" style="width:450px" class="imgzoom shadow">}}
+   {{<imgproc src="/get-started/configuration-card.png" alt="Configure a component or service." resize="900x" style="width:450px" class="imgzoom shadow">}}
 
    If you need more details, use the link to the module's README.
 
@@ -69,17 +70,15 @@ If you are using an ESP32 microcontroller, see the [ESP32-specific instructions]
 
    {{<imgproc src="/get-started/test-panel.png" alt="Sensor test panel showing readings." resize="900x" style="width:400px" class="imgzoom shadow">}}
 
-   If your component is not working as expected, check the **ERROR LOGS** panel for error messages.
-   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or get help from Viam's AI assistant by clicking on the search bar.
+   If your resource is not working as expected, check the **ERROR LOGS** panel for error messages.
+   You can also [read more troubleshooting tips](/manage/troubleshoot/troubleshoot/) or get help from Viam's AI assistant by clicking on the **Ask AI** button.
 
 ### How module configuration works
 
-When you add a modular resource _from the registry_, the module that provides it is automatically added at the same time, generating a configuration card for the modular resource and a separate one for the module.
-If you add a built-in component, there will only be a configuration card for the component.
+When you add a modular resource _from the registry_, Viam automatically adds the module that provides it at the same time, generating a configuration card for the modular resource and a separate one for the module.
+If you add a built-in resource, Viam only adds a configuration card for the resource itself.
 
 For details on configuring versioning and environment variables for modules, see [Modular Resource and Module Configuration Details](/operate/modules/advanced/module-configuration/).
-
-Note that for microcontrollers, in order to add a module successfully to the machine’s configuration, the module needs to exist in the [firmware build](/operate/modules/advanced/micro-module/).
 
 {{< alert title="Tip: Organize resources into folders" color="tip" >}}
 
@@ -89,8 +88,8 @@ If you have many components and services on one machine, you can add folders to 
 
 ## Browse supported hardware by component API
 
-The following modular components are available for computers and SBCs running `viam-server`.
-Configure any of these components on your machine by following [the steps above](#configure-hardware-on-your-machine).
+The following built-in and modular components are available for computers and SBCs running `viam-server`.
+Configure any of these components on your machine by following the steps in [Configure hardware or software on your machine](#configure-hardware-or-software-on-your-machine).
 
 If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/support-hardware/) to add it to the registry.
 
@@ -218,13 +217,75 @@ The following models implement the [switch component API](/dev/reference/apis/co
 Modules in the list above are officially supported and maintained by Viam only if they are marked as "built-in," or if the first part of their model triplet is `viam`.
 {{% /alert %}}
 
+## Browse supported software by service API
+
+The following built-in and modular services are available for computers and SBCs running `viam-server`.
+Configure any of these services on your machine by following the steps in [Configure hardware or software on your machine](#configure-hardware-or-software-on-your-machine).
+
+If you don't find a service that supports your use case, you can [create a new module](/operate/modules/support-hardware/) to add it to the registry.
+If you are looking to write control logic, see [Run control logic](/operate/modules/control-logic/) instead.
+
+{{< tabs >}}
+{{% tab name="All services" %}}
+
+{{<resources api="rdk:service" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Vision" %}}
+
+The following models implement the [vision service API](/dev/reference/apis/services/vision/):
+
+{{<resources api="rdk:service:vision" type="vision" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="ML model" %}}
+
+The following models implement the [ML model service API](/dev/reference/apis/services/ml/):
+
+{{<resources api="rdk:service:mlmodel" type="mlmodel" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Motion" %}}
+
+The following models implement the [motion service API](/dev/reference/apis/services/motion/):
+
+{{<resources api="rdk:service:motion" type="motion" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Generic" %}}
+
+The following models implement the [generic service API](/dev/reference/apis/services/generic/):
+
+{{<resources api="rdk:service:generic" type="generic" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="SLAM" %}}
+
+The following models implement the [SLAM service API](/dev/reference/apis/services/slam/):
+
+{{<resources api="rdk:service:slam" type="slam" no-intro="true">}}
+
+{{% /tab %}}
+{{% tab name="Discovery" %}}
+
+The following models implement the [discovery service API](/dev/reference/apis/services/discovery/):
+
+{{<resources api="rdk:service:discovery" type="discovery" no-intro="true">}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% alert title="Support notice" color="note" %}}
+Modules in the list above are officially supported and maintained by Viam only if they are marked as "built-in," or if the first part of their model triplet is `viam`.
+{{% /alert %}}
+
 ## Next steps
 
-If you have other hardware you need to integrate with a custom module, continue to [Create a module](/operate/modules/support-hardware/).
-If you have configured all your hardware, you can do a variety of things with your machine:
+If you have other hardware or software you wish to use, continue to [Support additional hardware and software](/operate/modules/support-hardware/).
+If you have configured all your hardware and software, you can do a variety of things with your machine:
 
+- [Deploy control logic to run directly on your machines](/operate/modules/control-logic/)
+- [Write an app](/operate/control/web-app/) to interact with your machines using any of the Viam SDKs
 - [Capture data from your machines](/data-ai/capture-data/capture-sync/)
 - [Create a dataset](/data-ai/train/create-dataset/) and [train an AI model](/data-ai/train/train-tf-tflite/)
-- [Write an app](/operate/control/web-app/) to interact with your machines using any of the Viam SDKs
-- [Deploy control logic to run directly on your machines](/operate/modules/control-logic/)
 - [Share the configuration across multiple machines](/manage/fleet/reuse-configuration/)

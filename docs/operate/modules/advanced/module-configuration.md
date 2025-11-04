@@ -13,7 +13,7 @@ aliases:
 ---
 
 This page contains reference material.
-For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-on-your-machine).
+For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine).
 
 ## Modular resource configuration details
 
