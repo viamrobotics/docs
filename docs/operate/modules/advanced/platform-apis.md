@@ -1,5 +1,5 @@
 ---
-title: "Access APIs from within a module"
+title: "Access platform APIs from within a module"
 linkTitle: "Use platform APIs"
 weight: 25
 layout: "docs"
@@ -7,6 +7,7 @@ type: "docs"
 description: "Write your validate and reconfigure functions to handle dependencies in your custom modular resource."
 aliases:
   - /operate/modules/create-module/platform-apis/
+date: "2025-11-05"
 ---
 
 To use the platform or machine APIs, you must authenticate using API keys.
@@ -125,6 +126,8 @@ The following steps show you how to use the following APIs from a module:
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Elevate access
 
 The [module environment variables](/operate/modules/advanced/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
 
@@ -277,6 +280,8 @@ func (s *exampleModuleResource) SomeModuleFunction(ctx context.Context, extra ma
 
 {{% /tab %}}
 {{% /tabs %}}
+
+### Elevate access
 
 The [module environment variables](/operate/modules/advanced/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/manage/manage/rbac/) for the machine the module is running on.
 
