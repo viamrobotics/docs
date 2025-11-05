@@ -3,7 +3,6 @@ title: "Vision service API"
 linkTitle: "Vision"
 weight: 20
 type: "docs"
-tags: ["vision", "computer vision", "CV", "services"]
 description: "Give commands to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
 aliases:
   - /appendix/apis/services/vision/
@@ -12,8 +11,6 @@ icon: true
 images: ["/services/icons/vision.svg"]
 tags: ["vision", "computer vision", "CV", "services"]
 date: "2022-01-01"
-aliases:
-   - /appendix/apis/services/vision/
 # updated: ""  # When the content was last entirely checked
 ---
 

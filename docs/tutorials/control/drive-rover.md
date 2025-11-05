@@ -2,7 +2,6 @@
 title: "Drive a rover in a square in 2 minutes"
 linkTitle: "Drive a rover (2 min)"
 type: "docs"
-images: ["/general/code.png"]
 description: "Use a Viam SDK to program a rover to move in a square."
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
@@ -22,13 +21,10 @@ level: "Beginner"
 authors: []
 weight: 10
 no_list: true
-date: "2024-07-31"
-cost: "0"
 resource: "quickstart"
 languages: ["python", "go", "typescript", "flutter", "c++"]
 viamresources: ["base"]
 platformarea: ["core"]
-level: "Beginner"
 date: "2022-12-08"
 updated: "2024-08-06"
 cost: "0"

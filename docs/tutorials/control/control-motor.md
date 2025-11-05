@@ -16,13 +16,9 @@ aliases:
   - /get-started/control-motor/
   - /how-tos/control-motor/
 languages: ["python", "go", "typescript", "flutter", "c++"]
-viamresources: [
-    "motor",
-  ]
 level: "Beginner"
 date: "2024-07-31"
 # updated: ""  # When the tutorial was last entirely checked
-cost: "0" # Approximate cost in USD - Only specify number
 draft: true
 ---
 
