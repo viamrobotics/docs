@@ -176,7 +176,7 @@ branch = "main"
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.128.2" # Older versions might work but 0.128.2 successfully tested on 05-27-25
+    min = "0.152.2" # Older versions might work but 0.152.2 successfully tested on 05-11-25
   [[module.imports]]
     path = "github.com/google/docsy"
     disable = false

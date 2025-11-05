@@ -4,8 +4,6 @@ linkTitle: "Orientation vector"
 weight: 190
 type: "docs"
 description: "A description of Viam's orientation vector object."
-aliases:
-  - "/appendix/orientation-vector"
 date: "2022-01-01"
 no_list: true
 aliases:

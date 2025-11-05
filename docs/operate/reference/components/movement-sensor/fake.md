@@ -5,7 +5,6 @@ weight: 10
 type: "docs"
 description: "Configure a fake movement sensor to test software without any hardware."
 images: ["/icons/components/imu.svg"]
-toc_hide: true
 aliases:
   - "/components/movement-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."
