@@ -39,6 +39,11 @@ Configure an [arm component](/operate/reference/components/arm/) to use your rob
 1. Select the `arm` type, then search for and select the model compatible with your arm hardware.
    For example, if you have a UFactory xArm 6, select the `xArm6` model.
 
+   The following models implement the [arm component API](/dev/reference/apis/components/arm/):
+
+   {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
+
+
 1. Enter a name or use the suggested name for your arm and click **Create**.
 
 1. Fill in the arm's configuration fields based on the model-specific documentation that appears in the right side of the configuration card.
