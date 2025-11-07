@@ -170,7 +170,8 @@ Therefore it is best to make two modular resources: a camera to return the image
 
 ### Generate stub files
 
-Use the [Viam CLI](/dev/tools/cli/) to generate template files for your module:
+Use the [Viam CLI](/dev/tools/cli/) to generate template files for your module.
+You can work on the code for your module either on the device where you are running `viam-server` or on another computer.
 
 {{< table >}}
 {{% tablestep start=1 %}}
