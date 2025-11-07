@@ -60,7 +60,7 @@ For example, an `xArm6` requires a `host` attribute:
 
 ```json
 {
- "host": "192.168.1.100"
+  "host": "192.168.1.100"
 }
 ```
 
