@@ -48,7 +48,7 @@ The following models implement the [arm component API](/dev/reference/apis/compo
 
 {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
-{{% /expand%}}   
+{{% /expand %}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
