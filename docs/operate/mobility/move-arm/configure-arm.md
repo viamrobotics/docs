@@ -31,33 +31,42 @@ Configure an [arm component](/operate/reference/components/arm/) to use your rob
 
 ## Configure the arm
 
-1. Navigate to your machine's page.
+{{< table >}}
+{{% tablestep start=1 %}}
+Navigate to your machine's page.
+Select the **CONFIGURE** tab.
+{{% /tablestep %}}
+{{% tablestep %}}
+Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 
-1. Select the **CONFIGURE** tab.
+Select the `arm` type, then search for and select the model compatible with your arm hardware.
+For example, if you have a UFactory xArm 6, select the `xArm6` model.
 
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-
-1. Select the `arm` type, then search for and select the model compatible with your arm hardware.
-   For example, if you have a UFactory xArm 6, select the `xArm6` model.
-
-   {{% expand "Click to view the available arm models" %}}
+{{% expand "Click to view the available arm models" %}}
 
 The following models implement the [arm component API](/dev/reference/apis/components/arm/):
 
 {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
-   {{% /expand%}}   
+{{% /expand%}}   
 
-1. Enter a name or use the suggested name for your arm and click **Create**.
+{{% /tablestep %}}
+{{% tablestep %}}
+Enter a name or use the suggested name for your arm and click **Create**.
+{{% /tablestep %}}
+{{% tablestep %}}
+Fill in the arm's configuration fields based on the model-specific documentation that appears in the right side of the configuration card.
+For example, an `xArm6` requires a `host` attribute:
 
-1. Fill in the arm's configuration fields based on the model-specific documentation that appears in the right side of the configuration card.
-   For example, an `xArm6` requires a `host` attribute:
+```json
+{
+ "host": "192.168.1.100"
+}
+```
 
-   ```json
-   {
-     "host": "192.168.1.100"
-   }
-   ```
-
-1. You will need a reference frame to use your arm with the motion planning service.
-   Continue to [Configure your frame system](/operate/mobility/move-arm/frame-how-to/).
+{{% /tablestep %}}
+{{% tablestep %}}
+You will need a reference frame to use your arm with the motion planning service.
+Continue to [Configure your frame system](/operate/mobility/move-arm/frame-how-to/).
+{{% /tablestep %}}
+{{< /table >}}
