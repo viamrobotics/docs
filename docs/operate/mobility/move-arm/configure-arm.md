@@ -44,7 +44,6 @@ Configure an [arm component](/operate/reference/components/arm/) to use your rob
 
    {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
-
 1. Enter a name or use the suggested name for your arm and click **Create**.
 
 1. Fill in the arm's configuration fields based on the model-specific documentation that appears in the right side of the configuration card.
