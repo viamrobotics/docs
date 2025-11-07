@@ -8,71 +8,84 @@ description: "From within a modular resource, you can access other machine resou
 aliases:
   - /operate/modules/other-hardware/dependencies/
   - /operate/modules/support-hardware/create-module/dependencies/
+date: "2025-11-05"
 ---
 
-From within a modular resource, you can access other machine resources using dependencies.
+From within a modular resource, you can access other machine {{< glossary_tooltip term_id="resource" text="resources" >}} using dependencies.
+For example, imagine a camera component that uses an ultrasonic sensor to return a picture only when someone or something is detected closeby.
+To implement this, you would make the sensor a dependency of the camera.
 
-## What are dependencies?
+## Types of dependencies
 
-Dependencies are other {{< glossary_tooltip term_id="resource" text="resources" >}} that your modular resource needs to access in order to function.
+There are two types of dependencies:
 
-For example, you could write a sensor component that has a camera component as a dependency.
-This allows the sensor module to access data from the camera by using the camera API methods on the camera client from within the sensor module.
+- **Required dependencies**: A dependency should be designated **required** if a module cannot function without it.
+  `viam-server` will not start the resource until all required dependencies are started and functioning.
+- **Optional dependencies**: A dependency should be designated **optional** if a module can function without it.
+  If an optional dependency is not available when the modular resource starts, the resource will start without it and reconfigure when the optional dependency becomes available.
+  `viam-server` attempts to start the optional dependency every 5 seconds.
 
-The component configuration for the sensor could look like this, with the name of a camera as an attribute:
+## Implementation
+
+When implementing a modular resource with dependencies, the `validate_config` and `reconfigure` functions ensure the resource has access to the dependencies:
+
+{{< table >}}
+{{% tablestep start=1 %}}
+**Implement `validate_config`.**
+
+To keep modular resources flexible, the names of the resource that are dependencies, get passed in the resource's configuration.
+For example:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6"}
 {
   "name": "mime-type-sensor",
   "api": "rdk:component:sensor",
-  "model": "jessamy:my-module:my-sensor",
+  "model": "exampleorg:my-module:my-sensor",
   "attributes": {
     "camera_name": "camera-1"
   }
 }
 ```
 
-Dependencies are configured just like any other resource attribute.
-The difference is that dependencies represent other resources, and receive special treatment in the `validate_config` and `reconfigure` functions.
-When [`viam-server` builds all the resources on a machine](/operate/modules/lifecycle-module/), it builds the dependencies first.
+The `validate_config` method must:
 
-## Required dependencies
-
-Use required dependencies when your module should fail to build or reconfigure if a dependency does not successfully start.
-
-`viam-server` builds required dependencies before building the resource that depends on them.
-
-`viam-server` will not build or reconfigure a resource if the resource has required dependencies that are not available.
+- Check that required dependencies are present in the configuration.
+- Return a list of the names of required dependencies and a list of the names of optional dependencies.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. In your modular resource's `validate_config` method, check the configuration attributes, then add the dependency name to the first list of dependencies in the returned tuple:
+```python {class="line-numbers linkable-line-numbers"}
+# Add to imports
+from viam.components.camera import *
+from typing import cast
 
-   ```python {class="line-numbers linkable-line-numbers"}
-    @classmethod
-    def validate_config(
-        cls, config: ComponentConfig
-    ) -> Tuple[Sequence[str], Sequence[str]]:
-        req_deps = []
-        fields = config.attributes.fields
-        if "camera_name" not in fields:
-            raise Exception("missing required camera_name attribute")
-        elif not fields["camera_name"].HasField("string_value"):
-            raise Exception("camera_name must be a string")
-        camera_name = fields["camera_name"].string_value
-        if not camera_name:
-            raise ValueError("camera_name cannot be empty")
-        req_deps.append(camera_name)
-        return req_deps, []
-   ```
 
-1. Add any missing imports for the resource.
+@classmethod
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    req_deps = []
+    fields = config.attributes.fields
+    if "camera_name" not in fields:
+        raise Exception("missing required camera_name attribute")
+    elif not fields["camera_name"].HasField("string_value"):
+        raise Exception("camera_name must be a string")
+    camera_name = fields["camera_name"].string_value
+    if not camera_name:
+        raise ValueError("camera_name cannot be empty")
+    req_deps.append(camera_name)
+    return req_deps, []
+```
 
-   ```python {class="line-numbers linkable-line-numbers"}
-   from viam.components.camera import *
-   from typing import cast
-   ```
+{{% /tab %}}
+{{% tab name="Go" %}}
+todo
+{{% /tab %}}
+{{< /tabs >}}
+
+{{% /tablestep %}}
+{{% tablestep %}}
 
 1. In your `reconfigure` method:
 
@@ -95,6 +108,9 @@ Use required dependencies when your module should fail to build or reconfigure i
         return super().reconfigure(config, dependencies)
    ```
 
+{{% /tablestep %}}
+{{% tablestep %}}
+
 1. You can now call API methods on the dependency resource within your module, for example:
 
    ```python {class="line-numbers linkable-line-numbers"}
@@ -102,9 +118,20 @@ Use required dependencies when your module should fail to build or reconfigure i
    img = images[0]
    ```
 
+{{% /tablestep %}}
+{{< /table >}}
+
 For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
 
-{{% /tab %}}
+## Next steps
+
+{{< alert title="Tip" color="tip" >}}
+To make configuration easier for users, create a [discovery service](/operate/reference/services/discovery/) as a model within your module.
+{{< /alert >}}
+
+## Required dependencies
+
+{{< tabs >}}
 {{% tab name="Go" %}}
 
 1. In your modular resource's `Config` struct, add the dependency attribute name like any other attribute.
@@ -188,14 +215,6 @@ If you need to maintain the state of your resource, see [(Optional) Create and e
 {{< /tabs >}}
 
 ## Optional dependencies
-
-If an optional dependency does not start, the modular resource will continue to build and reconfigure without it.
-`viam-server` reattempts to construct the optional dependency every 5 seconds.
-When an optional dependency constructs successfully, your modular resource reconfigures so it can access the optional dependency.
-
-Optional dependencies are not necessarily built first, even if they are available.
-
-Use optional dependencies for intermittently available resources.
 
 Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
 
@@ -299,10 +318,6 @@ Be sure to handle the case where the dependency is not available in your API imp
 There is not currently an SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
 You must access the API key module environment variables to establish the app client connection.
 {{% /hiddencontent %}}
-
-## Configure your module's dependencies more easily with a discovery service
-
-If your module requires dependencies, you can make it easier for users to configure them by writing a [discovery service](/operate/reference/services/discovery/) as one model within your module.
 
 ## Special case: The `builtin` motion service
 
