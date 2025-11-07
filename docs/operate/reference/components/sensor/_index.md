@@ -23,8 +23,6 @@ The sensor component provides an API for getting measurements.
 
 If you have a physical sensor, an API endpoint, or anything else that provides measurements, use a sensor component.
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/0YfP-63OBh8">}}
-
 ## Configuration
 
 To use a sensor and get its measurements, you need to add it to your machine's configuration.
