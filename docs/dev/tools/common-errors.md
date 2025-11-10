@@ -213,6 +213,14 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 1. Check the logs for other errors.
    It may be that the instantiation of the model is failing, for other reasons such as the hardware being disconnected.
 
+### Failed to connect to robot within time limit
+
+**Full Error:** `Failed to connect to robot within time limit. Check network connection and try again.`
+
+**Description:** This error occurs when the host fails to connect to the robot within the time limit
+
+**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#Network-Troubleshooting) section
+
 ### Could not connect to machine part
 
 **Full Error:** `Could not connect to machine part: error updating resources: rpc error: code = ResourceExhausted desc = exceeded request limit 100 on resource viam.robot.v1.RobotService`
@@ -296,8 +304,24 @@ If not, look for other related errors in your logs.
 
 **Description:** This error indicates a networking or connection issue.
 
-**Solution:**
+**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#Network-Troubleshooting) section
 
+### Unable to create PeerConnection with module
+
+**Full Warning:** `Unable to create PeerConnection with module. Ignoring.`
+
+**Description:** Indicates that while the gRPC connection to the module is working as expected, the connection to the module does not support efficient video streaming over WebRTC.
+Only some Go-based camera modules support optimized video streaming over WebRTC.
+
+{{% hiddencontent %}}
+You can use any Viam SDK to implement a camera module, but only Go-based modules can access optimized video streaming over WebRTC.
+{{% /hiddencontent %}}
+
+**Solution:** This warning can be safely ignored.
+
+## Network Troubleshooting
+
+**Steps:**
 1. Check networking:
 
    1. Check if your machine is showing as online on Viam and [check its logs](/manage/troubleshoot/troubleshoot/#check-logs).
@@ -349,19 +373,6 @@ If not, look for other related errors in your logs.
 
 1. If you have multiple tabs open with your machine's page, close all but one.
    Having too many connections can cause instability on some machines.
-
-### Unable to create PeerConnection with module
-
-**Full Warning:** `Unable to create PeerConnection with module. Ignoring.`
-
-**Description:** Indicates that while the gRPC connection to the module is working as expected, the connection to the module does not support efficient video streaming over WebRTC.
-Only some Go-based camera modules support optimized video streaming over WebRTC.
-
-{{% hiddencontent %}}
-You can use any Viam SDK to implement a camera module, but only Go-based modules can access optimized video streaming over WebRTC.
-{{% /hiddencontent %}}
-
-**Solution:** This warning can be safely ignored.
 
 ## Known application and plugin conflicts
 
