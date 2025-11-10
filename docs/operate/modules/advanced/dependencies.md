@@ -12,8 +12,6 @@ date: "2025-11-05"
 ---
 
 From within a modular resource, you can access other machine {{< glossary_tooltip term_id="resource" text="resources" >}} using dependencies.
-For example, imagine a camera component that uses an ultrasonic sensor to return a picture only when someone or something is detected closeby.
-To implement this, you would make the sensor a dependency of the camera.
 
 ## Types of dependencies
 
@@ -27,37 +25,49 @@ There are two types of dependencies:
 
 ## Implementation
 
-When implementing a modular resource with dependencies, the `validate_config` and `reconfigure` functions ensure the resource has access to the dependencies:
+When implementing a modular resource with dependencies, the validation and constructor or reconfiguration functions ensure the resource has access to the dependencies:
+
+**Example:** Imagine a camera component that implements logic to capture images from another camera only if an ultrasonic sensor determines that someone is nearby.
+The camera stores a picture only if someone is detected nearby.
+To implement this, you would make the sensor and the camera required dependencies of the camera component.
+
+Ultrasonic sensors only determine that something is near, not necessarily a person.
+To make the camera component more reliably only capture images if a person is nearby, you could add a vision service.
+To make the camera component work with and without a vision service, you would make the camera an optional dependency.
 
 {{< table >}}
 {{% tablestep start=1 %}}
-**Implement `validate_config`.**
+**Implement resource config validation.**
 
 To keep modular resources flexible, the names of the resource that are dependencies, get passed in the resource's configuration.
 For example:
 
-```json {class="line-numbers linkable-line-numbers" data-line="6"}
+```json {class="line-numbers linkable-line-numbers" data-line="6-8"}
 {
-  "name": "mime-type-sensor",
+  "name": "proximity-camera",
   "api": "rdk:component:sensor",
-  "model": "exampleorg:my-module:my-sensor",
+  "model": "exampleorg:examplemodule:examplecamera",
   "attributes": {
-    "camera_name": "camera-1"
+    "camera_name": "camera-1",
+    "sensor_name": "sensor-1",
+    "vision_name": "vision-1"
   }
 }
 ```
+
+{{< tabs >}}
+{{% tab name="Python" %}}
 
 The `validate_config` method must:
 
 - Check that required dependencies are present in the configuration.
 - Return a list of the names of required dependencies and a list of the names of optional dependencies.
 
-{{< tabs >}}
-{{% tab name="Python" %}}
-
 ```python {class="line-numbers linkable-line-numbers"}
 # Add to imports
 from viam.components.camera import *
+from viam.components.sensor import *
+from viam.services.vision import *
 from typing import cast
 
 
@@ -66,7 +76,9 @@ def validate_config(
     cls, config: ComponentConfig
 ) -> Tuple[Sequence[str], Sequence[str]]:
     req_deps = []
+    opt_deps = []
     fields = config.attributes.fields
+
     if "camera_name" not in fields:
         raise Exception("missing required camera_name attribute")
     elif not fields["camera_name"].HasField("string_value"):
@@ -75,251 +87,254 @@ def validate_config(
     if not camera_name:
         raise ValueError("camera_name cannot be empty")
     req_deps.append(camera_name)
-    return req_deps, []
+
+    if "sensor_name" not in fields:
+        raise Exception("missing required sensor_name attribute")
+    elif not fields["sensor_name"].HasField("string_value"):
+        raise Exception("sensor_name must be a string")
+    sensor_name = fields["sensor_name"].string_value
+    if not sensor_name:
+        raise ValueError("sensor_name cannot be empty")
+    req_deps.append(sensor_name)
+
+    # Optional dependencies may not be present in the config
+    if "vision_name" in fields:
+        if not fields["vision_name"].HasField("string_value"):
+            raise Exception("vision_name must be a string")
+        vision_name = fields["vision_name"].string_value
+        if not vision_name:
+            raise ValueError("vision_name cannot be empty")
+        opt_deps.append(vision_name)
+
+    return req_deps, opt_deps
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
-todo
+
+In your resource's `Config` struct, add the dependency attribute name.
+For example:
+
+```go {class="line-numbers linkable-line-numbers"}
+type Config struct {
+  CameraName string `json:"camera_name"`
+  SensorName string `json:"sensor_name"`
+  VisionName string `json:"vision_name"`
+}
+```
+
+The `Validate` method must:
+
+- Check that required dependencies are present in the configuration.
+- Return a list of the names of required dependencies and a list of the names of optional dependencies.
+
+```go {class="line-numbers linkable-line-numbers"}
+func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []string, err error) {
+  var reqDeps []string
+  var optDeps []string
+  if cfg.CameraName == "" {
+    return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
+  }
+  reqDeps = append(reqDeps, cfg.CameraName)
+
+  if cfg.SensorName == "" {
+    return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "sensor_name")
+  }
+
+  if cfg.VisionName != "" {
+    optDeps = append(optDeps, cfg.VisionName)
+  }
+
+  return reqDeps, optDeps, nil
+}
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
 {{% /tablestep %}}
 {{% tablestep %}}
 
-1. In your `reconfigure` method:
-
-   - Access the dependency by using its name as a key in the `dependencies` mapping.
-   - Cast the dependency to the correct type.
-
-   ```python {class="line-numbers linkable-line-numbers"}
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        camera_name = config.attributes.fields["camera_name"].string_value
-        camera_resource = dependencies[Camera.get_resource_name(camera_name)]
-        self.the_camera = cast(Camera, camera_resource)
-
-        # If you need to use the camera name in your module,
-        # for example to pass it to a vision service method,
-        # you can store it in an instance variable.
-        self.camera_name = camera_name
-
-        return super().reconfigure(config, dependencies)
-   ```
-
-{{% /tablestep %}}
-{{% tablestep %}}
-
-1. You can now call API methods on the dependency resource within your module, for example:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   images, _ = await self.the_camera.get_images()
-   img = images[0]
-   ```
-
-{{% /tablestep %}}
-{{< /table >}}
-
-For full examples, see [<file>ackermann.py</file>](https://github.com/mcvella/viam-ackermann-base/blob/main/src/ackermann.py) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
-
-## Next steps
-
-{{< alert title="Tip" color="tip" >}}
-To make configuration easier for users, create a [discovery service](/operate/reference/services/discovery/) as a model within your module.
-{{< /alert >}}
-
-## Required dependencies
+Accessing dependencies from the resource works differently for different programming languages:
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+To be able to access the dependencies, use the `reconfigure` method to:
+
+- Access the dependency by using its name as a key in the `dependencies` mapping.
+- Cast the dependency to the correct type and store it.
+
+```python {class="line-numbers linkable-line-numbers"}
+def reconfigure(
+    self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+):
+    camera_name = config.attributes.fields["camera_name"].string_value
+    camera_resource = dependencies[Camera.get_resource_name(camera_name)]
+    self.camera = cast(Camera, camera_resource)
+
+    # If you need to use the camera name in your module,
+    # for example to pass it to a vision service method,
+    # you can store it in an instance variable.
+    self.camera_name = camera_name
+
+    sensor_name = config.attributes.fields["sensor_name"].string_value
+    sensor_resource = dependencies[Sensor.get_resource_name(sensor_name)]
+    self.sensor = cast(Sensor, sensor_resource)
+
+    # Optional dependencies may not be present in the config
+    self.vision_svc = None
+    if "vision_name" in config.attributes.fields:
+        vision_name = config.attributes.fields["vision_name"].string_value
+
+        # For optional dependencies, use .get() and handle None
+        vision_resource = dependencies.get(VisionClient.get_resource_name(vision_name))
+        if vision_resource is not None:
+            self.vision_svc = cast(VisionClient, vision_resource)
+
+    return super().reconfigure(config, dependencies)
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
-1. In your modular resource's `Config` struct, add the dependency attribute name like any other attribute.
-   For example:
+Add the dependency to the `<module-name><resource-name>` struct:
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   type Config struct {
-     CameraName string `json:"camera_name"`
-   }
-   ```
+```go {class="line-numbers linkable-line-numbers" data-line="7-9"}
+type myModuleMyCamera struct {
+  resource.AlwaysRebuild
 
-1. Add the dependency to the `<module-name><resource-name>` struct:
+  name resource.Name
+  logger logging.Logger
+  cfg    *Config
+  camera camera.Camera
+  sensor sensor.Sensor
+  vision vision.Vision
 
-   ```go {class="line-numbers linkable-line-numbers" data-line="7"}
-   type myModuleMySensor struct {
-     resource.AlwaysRebuild
+  cancelCtx  context.Context
+  cancelFunc func()
+}
+```
 
-     name resource.Name
-     logger logging.Logger
-     cfg    *Config
-     camera camera.Camera
-     cancelCtx  context.Context
-     cancelFunc func()
-   }
-   ```
+Then, use your resource's constructor to access and store the dependency:
 
-1. In your modular resource's `Validate` method, check the configuration attributes, then add the dependency name to the list of dependencies:
+```go {class="line-numbers linkable-line-numbers" data-line=""}
+// Add to import
+import (
+	camera "go.viam.com/rdk/components/camera"
+	sensor "go.viam.com/rdk/components/sensor"
+	vision "go.viam.com/rdk/services/vision"
+)
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []string, err error) {
-     var reqDeps []string
-     if cfg.CameraName == "" {
-       return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
-     }
-     reqDeps = append(reqDeps, cfg.CameraName)
-     return reqDeps, nil, nil
-   }
-   ```
+func NewMyCamera(ctx context.Context,deps resource.Dependencies,
+  name resource.Name, conf *Config, logger logging.Logger) (camera.Camera, error) {
 
-1. In your resource's constructor, initialize the dependency:
+  cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
-   ```go {class="line-numbers linkable-line-numbers" data-line="13-17"}
-    func NewMySensor(ctx context.Context,deps resource.Dependencies,
-      name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
+  s := &myModuleMyCamera{
+    name:       name,
+    logger:     logger,
+    cfg:        conf,
+    cancelCtx:  cancelCtx,
+    cancelFunc: cancelFunc,
+  }
+  camera, err := camera.FromDependencies(deps, conf.CameraName)
+  if err != nil {
+    return nil, errors.New("failed to get camera dependency")
+  }
+  s.camera = camera
 
-      cancelCtx, cancelFunc := context.WithCancel(context.Background())
+  sensor, err := sensor.FromDependencies(deps, conf.SensorName)
+  if err != nil {
+    return nil, errors.New("failed to get sensor dependency")
+  }
+  s.sensor = sensor
 
-      s := &myModuleMySensor{
-        name:       name,
-        logger:     logger,
-        cfg:        conf,
-        cancelCtx:  cancelCtx,
-        cancelFunc: cancelFunc,
-      }
-      camera, err := camera.FromDependencies(deps, conf.CameraName)
-      if err != nil {
-        return nil, errors.New("failed to get camera dependency")
-      }
-      s.camera = camera
+  // optional dependency
+  vision, err := vision.FromDependencies(deps, conf.VisionName)
+  if err == nil {
+    s.vision = vision
+  }
 
-      return s, nil
-    }
-   ```
+  return s, nil
+}
+```
 
-1. You can now call API methods on the dependency resource within your module, for example:
+{{% alert title="Need to maintain state when reconfiguring?" color="note" %}}
 
-   ```go {class="line-numbers linkable-line-numbers"}
-   images, metadata, err := s.camera.Images(ctx, nil, nil)
-   ```
+Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which rebuilds the resource every time the module is reconfigured.
 
-{{% alert title="Note on reconfiguration" color="note" %}}
-
-Most Go modules use `resource.AlwaysRebuild` within the `<module-name><resource-name>` struct, which means that the resource rebuilds every time the module is reconfigured.
-
-The steps above use `resource.AlwaysRebuild`.
-If you need to maintain the state of your resource, see [(Optional) Create and edit a `Reconfigure` function](/operate/modules/support-hardware/#implement-api-methods).
+If you need to maintain the state of your resource, see [(Optional) Set up model configuration options](/operate/modules/support-hardware/#set-up-model-configuration-options).
 
 {{% /alert %}}
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Optional dependencies
+{{% /tablestep %}}
+{{% tablestep %}}
 
-Example use case for optional dependencies: If your module depends on multiple cameras, but can function even when some are unavailable, you can code the cameras as optional dependencies so that your module can construct and reconfigure without them.
+You can now call API methods on dependency resources within your module, for example:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-1. If your module has optional dependencies, your `validate_config` function should add the dependency to the second element of the returned tuple:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   @classmethod
-   def validate_config(
-       cls, config: ComponentConfig
-   ) -> Tuple[Sequence[str], Sequence[str]]:
-       opt_deps = []
-       fields = config.attributes.fields
-       if "camera_name" not in fields:
-           raise Exception("missing required camera_name attribute")
-       elif not fields["camera_name"].HasField("string_value"):
-           raise Exception("camera_name must be a string")
-       camera_name = fields["camera_name"].string_value
-       opt_deps.append(camera_name)
-       return [], opt_deps
-   ```
-
-1. Add any missing imports for the resource and `cast`.
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   from viam.components.camera import *
-   from typing import cast
-   ```
-
-1. In your `reconfigure` method, allow for the dependency to be unavailable.
-   For example:
-
-   ```python {class="line-numbers linkable-line-numbers"}
-   def reconfigure(self, config, dependencies):
-    camera_name = config.attributes.fields["camera_name"].string_value
-
-    # For optional dependencies, use .get() and handle None
-    camera_resource = dependencies.get(Camera.get_resource_name(camera_name))
-    if camera_resource is not None:
-        self.the_camera = cast(Camera, camera_resource)
-        self.camera_name = camera_name
-        self.has_camera = True
-    else:
-        self.the_camera = None
-        self.camera_name = camera_name
-        self.has_camera = False
-
-    return super().reconfigure(config, dependencies)
-   ```
-
-Be sure to handle the case where the dependency is not available in your API implementation as well.
-For example:
-
 ```python {class="line-numbers linkable-line-numbers"}
-async def get_readings(
+# Add to imports
+from viam.utils import from_dm_from_extra
+from viam.errors import NoCaptureToStoreError
+
+async def get_images(
     self,
     *,
-    extra: Optional[Mapping[str, Any]] = None,
+    filter_source_names: Optional[Sequence[str]] = None,
+    extra: Optional[Dict[str, Any]] = None,
     timeout: Optional[float] = None,
     **kwargs
-) -> Mapping[str, SensorReading]:
-    if self.has_camera and self.the_camera is not None:
-        # Use the camera
-        images, _ = await self.the_camera.get_images()
-        img = images[0]
-        mimetype = img.mime_type
-        return {
-            "readings": {
-                "mimetype": mimetype
-            }
-        }
-    else:
-        # Work without camera
-        return {"readings": "no_camera_available"}
+) -> Tuple[Sequence[NamedImage], ResponseMetadata]:
+    images, metadata = await self.camera.get_images()
+    readings = await self.sensor.get_readings()
+
+    # If called by the data manager to store image
+    # only return image image if person nearby
+    if from_dm_from_extra(extra):
+        if readings["distance"] <= 5:
+            if self.vision_svc:
+                detections = await self.vision_svc.get_detections(images[0])
+                for detection in detections:
+                    if detection.class_name == "Person":
+                        return images, metadata
+            else:
+                return images, metadata
+        # No person nearby
+        raise NoCaptureToStoreError()
+
+    return images, metadata
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-If your module has optional dependencies, the steps are the same as for required dependencies, except that your `Validate` function should add the dependency to the second returned element:
-
 ```go {class="line-numbers linkable-line-numbers"}
-func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []string, err error) {
-  var optDeps []string
-  if cfg.CameraName == "" {
-    return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "camera_name")
-  }
-  optDeps = append(optDeps, cfg.CameraName)
-  return nil, optDeps, nil
-}
+images, metadata, err := s.camera.Images(ctx, nil, nil)
 ```
-
-Be sure to handle the case where the dependency is not available in your API implementation as well.
 
 {{% /tab %}}
 {{< /tabs >}}
 
+{{% /tablestep %}}
+{{< /table >}}
+
+For more information on capturing data only if conditions are met, see [Pet photographer](/tutorials/configure/pet-photographer/).
+
 {{% hiddencontent %}}
-There is not currently an SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
+There is currently no SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
 You must access the API key module environment variables to establish the app client connection.
 {{% /hiddencontent %}}
 
-## Special case: The `builtin` motion service
+For full examples of modules with dependencies, see the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
+
+<!-- ## Special case: The `builtin` motion service
 
 The motion service is available by default as part of `viam-server`.
 This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
@@ -385,4 +400,4 @@ func (c *Component) MoveAroundInSomeWay() error {
 ```
 
 {{% /tab %}}
-{{< /tabs >}}
+{{< /tabs >}} -->
