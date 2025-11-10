@@ -110,8 +110,8 @@ Add the following JSON objects to the `components` array:
 ```json {class="line-numbers linkable-line-numbers"}
 {
     "name": "lenc",
-    "model": "AMS-AS5048",
     "api": "rdk:component:encoder",
+    "model": "viam:ams:as5048",
     "attributes": {
       "connection_type": "i2c",
       "i2c_attributes": {
@@ -122,8 +122,8 @@ Add the following JSON objects to the `components` array:
 },
 {
     "name": "renc",
-    "model": "AMS-AS5048",
     "api": "rdk:component:encoder",
+    "model": "viam:ams:as5048",
     "attributes": {
       "connection_type": "i2c",
       "i2c_attributes": {
