@@ -4,6 +4,8 @@ linkTitle: "Common Errors"
 weight: 50
 type: "docs"
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
+aliases:
+  - "/err/"
 date: "2022-01-01"
 no_list: true
 # updated: ""  # When the content was last entirely checked
@@ -240,7 +242,7 @@ To adjust the per-resource limit for modules, you can set the `VIAM_RESOURCE_REQ
 
 **Solution:** To adjust the initial app connection timeout, you can set the `VIAM_CONFIG_READ_TIMEOUT` [environment variable on your machine](/manage/reference/viam-agent/#environment-variables-for-viam-server) to a positive integer higher than the default, 15.
 
-### exceeded request limit on resource
+### exceeded request limit on resource {#req-limit-exceeded}
 
 **Full Error:**
 
