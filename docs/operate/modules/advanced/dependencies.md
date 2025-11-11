@@ -8,7 +8,7 @@ description: "From within a modular resource, you can access other machine resou
 aliases:
   - /operate/modules/other-hardware/dependencies/
   - /operate/modules/support-hardware/create-module/dependencies/
-date: "2025-11-05"
+date: "2025-11-11"
 ---
 
 From within a modular resource, you can access other machine {{< glossary_tooltip term_id="resource" text="resources" >}} using dependencies.
@@ -32,20 +32,20 @@ The camera stores a picture only if someone is detected nearby.
 To implement this, you would make the sensor and the camera required dependencies of the camera component.
 
 Ultrasonic sensors only determine that something is near, not necessarily a person.
-To make the camera component more reliably only capture images if a person is nearby, you could add a vision service.
-To make the camera component work with and without a vision service, you would make the camera an optional dependency.
+To make the camera component capture images more reliably only if a person is nearby, you could add a vision service.
+To make the camera component work with and without a vision service, you would make the vision service an optional dependency.
 
 {{< table >}}
 {{% tablestep start=1 %}}
 **Implement resource config validation.**
 
-To keep modular resources flexible, the names of the resource that are dependencies, get passed in the resource's configuration.
+To keep modular resources flexible, the names of the resources that are dependencies get passed in the resource's configuration.
 For example:
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6-8"}
 {
   "name": "proximity-camera",
-  "api": "rdk:component:sensor",
+  "api": "rdk:component:camera",
   "model": "exampleorg:examplemodule:examplecamera",
   "attributes": {
     "camera_name": "camera-1",
@@ -140,6 +140,7 @@ func (cfg *Config) Validate(path string) (requiredDeps []string, optionalDeps []
   if cfg.SensorName == "" {
     return nil, nil, resource.NewConfigValidationFieldRequiredError(path, "sensor_name")
   }
+  reqDeps = append(reqDeps, cfg.SensorName)
 
   if cfg.VisionName != "" {
     optDeps = append(optDeps, cfg.VisionName)
@@ -209,7 +210,7 @@ type myModuleMyCamera struct {
   cfg    *Config
   camera camera.Camera
   sensor sensor.Sensor
-  vision vision.Vision
+  vision vision.Service
 
   cancelCtx  context.Context
   cancelFunc func()
@@ -221,12 +222,12 @@ Then, use your resource's constructor to access and store the dependency:
 ```go {class="line-numbers linkable-line-numbers" data-line=""}
 // Add to import
 import (
-	camera "go.viam.com/rdk/components/camera"
-	sensor "go.viam.com/rdk/components/sensor"
-	vision "go.viam.com/rdk/services/vision"
+    camera "go.viam.com/rdk/components/camera"
+    sensor "go.viam.com/rdk/components/sensor"
+    vision "go.viam.com/rdk/services/vision"
 )
 
-func NewMyCamera(ctx context.Context,deps resource.Dependencies,
+func NewMyCamera(ctx context.Context, deps resource.Dependencies,
   name resource.Name, conf *Config, logger logging.Logger) (camera.Camera, error) {
 
   cancelCtx, cancelFunc := context.WithCancel(context.Background())
@@ -251,9 +252,11 @@ func NewMyCamera(ctx context.Context,deps resource.Dependencies,
   s.sensor = sensor
 
   // optional dependency
-  vision, err := vision.FromDependencies(deps, conf.VisionName)
-  if err == nil {
-    s.vision = vision
+  if conf.VisionName != "" {
+      vision, err := vision.FromDependencies(deps, conf.VisionName)
+      if err == nil {
+          s.vision = vision
+      }
   }
 
   return s, nil
@@ -284,6 +287,7 @@ You can now call API methods on dependency resources within your module, for exa
 from viam.utils import from_dm_from_extra
 from viam.errors import NoCaptureToStoreError
 
+
 async def get_images(
     self,
     *,
@@ -296,7 +300,7 @@ async def get_images(
     readings = await self.sensor.get_readings()
 
     # If called by the data manager to store image
-    # only return image image if person nearby
+    # only return an image if a person is nearby
     if from_dm_from_extra(extra):
         if readings["distance"] <= 5:
             if self.vision_svc:
@@ -304,6 +308,7 @@ async def get_images(
                 for detection in detections:
                     if detection.class_name == "Person":
                         return images, metadata
+                raise NoCaptureToStoreError()
             else:
                 return images, metadata
         # No person nearby
@@ -316,7 +321,69 @@ async def get_images(
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-images, metadata, err := s.camera.Images(ctx, nil, nil)
+// Add to imports
+import (
+  "go.viam.com/rdk/data"
+)
+
+func (s *myModuleMyCamera) Images(ctx context.Context, filterSourceNames []string, extra map[string]interface{}) ([]camera.NamedImage, resource.ResponseMetadata, error) {
+    images, responseMetadata, err := s.camera.Images(ctx, filterSourceNames, extra)
+    if err != nil {
+        return nil, resource.ResponseMetadata{}, err
+    }
+
+    readings, err := s.sensor.Readings(ctx, nil)
+    if err != nil {
+        return nil, resource.ResponseMetadata{}, err
+    }
+
+    // Check if readings["distance"] <= 5
+    if distanceVal, ok := readings["distance"]; ok {
+        var distance float64
+        switch v := distanceVal.(type) {
+        case float64:
+            distance = v
+        case int:
+            distance = float64(v)
+        case int64:
+            distance = float64(v)
+        default:
+            return nil, resource.ResponseMetadata{}, fmt.Errorf("unable to convert sensor reading 'distance' to numeric type: got %T", distanceVal)
+        }
+
+        if distance <= 5.0 {
+            // Check if optional vision service is available
+            if s.vision != nil && len(images) > 0 {
+                img, err := images[0].Image(ctx)
+                if err != nil {
+                    return nil, resource.ResponseMetadata{}, err
+                }
+                detections, err := s.vision.Detections(ctx, img, nil)
+                if err != nil {
+                    return nil, resource.ResponseMetadata{}, err
+                }
+
+                for _, detection := range detections {
+                    if detection.Label() == "Person" {
+                        return images, responseMetadata, nil
+                    }
+                }
+                if extra[data.FromDMString] == true {
+                    return nil, resource.ResponseMetadata{}, errors.New("no capture to store")
+                }
+            } else {
+                return images, responseMetadata, nil
+            }
+        }
+    }
+
+    // If called by the data manager to store image
+    // return error if no person nearby
+    if extra[data.FromDMString] == true {
+        return nil, resource.ResponseMetadata{}, errors.New("no capture to store")
+    }
+    return images, responseMetadata, nil
+}
 ```
 
 {{% /tab %}}
@@ -328,17 +395,18 @@ images, metadata, err := s.camera.Images(ctx, nil, nil)
 For more information on capturing data only if conditions are met, see [Pet photographer](/tutorials/configure/pet-photographer/).
 
 {{% hiddencontent %}}
-There is currently no SDK method to directly access configuration attributes of dependencies in Python or Go, but in Python it is possible to use `get_robot_part` to return information including the whole configuration of a machine part, and then access the configuration attributes of the dependency from there.
-You must access the API key module environment variables to establish the app client connection.
+There is currently no SDK method to directly access configuration attributes of dependencies in Python or Go.
+However, you can use [`GetRobotPart`](/dev/reference/apis/fleet/#getrobotpart) to return information including the entire configuration of a machine part, and then access the configuration attributes of the dependency from there.
+
+To learn how to use the Fleet management API from a module, see [Access platform APIs from within a module](/operate/modules/advanced/platform-apis/).
 {{% /hiddencontent %}}
 
 For full examples of modules with dependencies, see the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/) or [Viam complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
 
-<!-- ## Special case: The `builtin` motion service
+## Special case: The `builtin` motion service
 
 The motion service is available by default as part of `viam-server`.
 This default motion service is available using the resource name `builtin` even though it does not appear in your machine config.
-You do not need to check for its configuration in your `Validate` function because it is always enabled.
 
 This example shows how to access the default motion service:
 
@@ -346,58 +414,83 @@ This example shows how to access the default motion service:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers"}
+# Add to imports
+from viam.services.motion import *
+
+
 # Return the motion service as a dependency
 @classmethod
 def validate_config(
     cls, config: ComponentConfig
 ) -> Tuple[Sequence[str], Sequence[str]]:
     req_deps = []
-    req_deps.append("builtin")
+    req_deps.append("rdk:service:motion/builtin")
     return req_deps, []
 
 
-# Add the motion service as an instance variable
+# Get and store motion service instance
 def reconfigure(
     self, config: ComponentConfig, dependencies: Mapping[
       ResourceName, ResourceBase]
 ):
-    motion_resource = dependencies[Motion.get_resource_name("builtin")]
+    motion_resource = dependencies[MotionClient.get_resource_name("builtin")]
     self.motion_service = cast(MotionClient, motion_resource)
 
     return super().reconfigure(config, dependencies)
-
-
-# Use the motion service
-def move_around_in_some_way(self):
-    moved = await self.motion_service.move(
-        gripper_name, destination, world_state)
-    return moved
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go {class="line-numbers linkable-line-numbers"}
+// Add to imports
+import (
+  motion "go.viam.com/rdk/services/motion"
+)
+
 // Return the motion service as a dependency
 func (cfg *Config) Validate(path string) ([]string, []string, error) {
   deps := []string{motion.Named("builtin").String()}
   return deps, nil, nil
 }
 
-// Then use the motion service, for example:
-func (c *Component) MoveAroundInSomeWay() error {
-  c.Motion, err = motion.FromDependencies(deps, "builtin")
-  if err != nil {
-    return nil, err
+// Add motion service to <module-name><resource-name> struct
+type myModuleMyCamera struct {
+  resource.AlwaysRebuild
+
+  name resource.Name
+
+  logger logging.Logger
+  cfg    *Config
+  motion motion.Service
+
+  cancelCtx  context.Context
+  cancelFunc func()
+}
+
+// Get and store motion service instance
+func NewMyCamera(ctx context.Context, deps resource.Dependencies,
+  name resource.Name, conf *Config, logger logging.Logger) (camera.Camera, error) {
+
+  cancelCtx, cancelFunc := context.WithCancel(context.Background())
+
+  s := &myModuleMyCamera{
+    name:       name,
+    logger:     logger,
+    cfg:        conf,
+    cancelCtx:  cancelCtx,
+    cancelFunc: cancelFunc,
   }
-  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
-    ComponentName: gripperName,
-    Destination: destination,
-    WorldState: worldState
-  })
-  return moved, err
+
+  motion, err := motion.FromDependencies(deps, "builtin")
+  if err != nil {
+    return nil, errors.New("failed to get motion dependency")
+  }
+  s.motion = motion
+
+  return s, nil
 }
 ```
 
 {{% /tab %}}
-{{< /tabs >}} -->
+{{< /tabs >}}
