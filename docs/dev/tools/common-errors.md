@@ -213,13 +213,13 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 1. Check the logs for other errors.
    It may be that the instantiation of the model is failing, for other reasons such as the hardware being disconnected.
 
-### Failed to connect to robot within time limit
+### Failed to connect to robot within time limit {#conn-time-out}
 
 **Full Error:** `Failed to connect to robot within time limit. Check network connection and try again.`
 
-**Description:** This error occurs when the host fails to connect to the robot within the time limit
+**Description:** This error occurs when the host fails to connect to the robot within the time limit.
 
-**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#Network-Troubleshooting) section
+**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#network-troubleshooting) section.
 
 ### Could not connect to machine part
 
@@ -304,7 +304,7 @@ If not, look for other related errors in your logs.
 
 **Description:** This error indicates a networking or connection issue.
 
-**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#Network-Troubleshooting) section
+**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#network-troubleshooting) section
 
 ### Unable to create PeerConnection with module
 
@@ -321,7 +321,6 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
 
 ## Network Troubleshooting
 
-**Steps:**
 1. Check networking:
 
    1. Check if your machine is showing as online on Viam and [check its logs](/manage/troubleshoot/troubleshoot/#check-logs).
