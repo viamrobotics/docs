@@ -304,7 +304,7 @@ If not, look for other related errors in your logs.
 
 **Description:** This error indicates a networking or connection issue.
 
-**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#network-troubleshooting) section
+**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#network-troubleshooting) section.
 
 ### Unable to create PeerConnection with module
 
