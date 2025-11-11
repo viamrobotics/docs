@@ -399,7 +399,7 @@ To transfer ownership of a module from one organization to another:
 
 1. Update the `meta.json` file to reflect the new organization:
 
-   - Change the first part of the `module_id` field to the new organization's [namespace](/operate/modules/advanced/naming-modules/#create-a-namespace-for-your-organization).
+   - Change the first part of the `module_id` field to the new organization's [namespace](/operate/modules/advanced/metajson/#create-a-namespace-for-your-organization).
    - For each model, change the first part of the `model` field to the new organization's namespace.
    - Update the `url` field to point to the new code repository if it has moved.
 

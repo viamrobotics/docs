@@ -164,7 +164,7 @@ Organization owners and location owners can now move machines between locations 
 {{% changelog color="added" title="Module and namespace renaming" date="2025-06-09" %}}
 
 You can now rename modules and organization namespaces through the web UI.
-For more information, see [Rename a module](/operate/modules/advanced/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/modules/advanced/naming-modules/#update-a-namespace-for-your-organization).
+For more information, see [Rename a module](/operate/modules/advanced/manage-modules/#rename-a-module) and [Update a namespace for your organization](/operate/modules/advanced/metajson/#update-a-namespace-for-your-organization).
 
 {{% /changelog %}}
 

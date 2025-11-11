@@ -128,7 +128,7 @@ The models implement the `rdk:component:arm` and the `rdk:component:gripper` API
 
 A resource model is identified by a unique name, called the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}, using the format: `namespace:module-name:model-name`, where:
 
-- `namespace` is the [namespace of your organization](/operate/modules/advanced/naming-modules/#create-a-namespace-for-your-organization).
+- `namespace` is the [namespace of your organization](/operate/modules/advanced/metajson/#create-a-namespace-for-your-organization).
   - For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
     If you do not intend to [upload your module](#upload-your-module-to-the-modular-resource-registry) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
   - The `viam` namespace is reserved for models provided by Viam.
