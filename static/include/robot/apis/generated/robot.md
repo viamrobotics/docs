@@ -56,7 +56,7 @@ Get status information about the machine including the status of the machine and
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), resources (List\[ResourceStatus]) and config of the machine.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), current status of the resources (List\[ResourceStatus]) and the revision of the config of the machine.
 
 **Example:**
 

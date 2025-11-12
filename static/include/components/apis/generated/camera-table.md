@@ -1,7 +1,7 @@
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
-| [`GetImage`](/dev/reference/apis/components/camera/#getimage) | Return an image from the camera. |
+| [`GetImage`](/dev/reference/apis/components/camera/#getimage) | _Deprecated_. |
 | [`GetImages`](/dev/reference/apis/components/camera/#getimages) | Get simultaneous images from different imagers, along with associated metadata. |
 | [`RenderFrame`](/dev/reference/apis/components/camera/#renderframe) | Render a frame from a camera of the underlying robot to an HTTP response. |
 | [`GetPointCloud`](/dev/reference/apis/components/camera/#getpointcloud) | Get a point cloud from the camera as bytes with a MIME type describing the structure of the data. |
