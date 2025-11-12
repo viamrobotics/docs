@@ -16,6 +16,24 @@ arm,DoCommand,,do_command,DoCommand,doCommand,doCommand
 arm,GetResourceName,,get_resource_name,Name,getResourceName,name
 arm,Close,,close,Close,,
 
+## AudioIn
+audio_in,GetAudio,,get_audio,GetAudio,,getAudio
+audio_in,GetProperties,,get_properties,,,getProperties
+audio_in,GetGeometries,,get_geometries,,,
+audio_in,Reconfigure,,,Reconfigure,,
+audio_in,DoCommand,,do_command,DoCommand,,doCommand
+audio_in,GetResourceName,,get_resource_name,Name,,name
+audio_in,Close,,close,Close,,
+
+## AudioOut
+audio_out,Play,,play,Play,,play
+audio_out,GetProperties,,get_properties,,,getProperties
+audio_out,GetGeometries,,get_geometries,,,
+audio_out,Reconfigure,,,Reconfigure,,
+audio_out,DoCommand,,do_command,DoCommand,doCommand,doCommand
+audio_out,GetResourceName,,get_resource_name,Name,,name
+audio_out,Close,,close,Close,,
+
 ## Base
 base,MoveStraight,No,move_straight,MoveStraight,moveStraight,moveStraight
 base,Spin,No,spin,Spin,spin,spin

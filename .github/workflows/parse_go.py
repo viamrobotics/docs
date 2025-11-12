@@ -15,7 +15,9 @@ go_resource_overrides = {
     "power_sensor": "powersensor",
     "generic_service": "generic",
     "base_remote_control": "baseremotecontrol",
-    "data_manager": "datamanager"
+    "data_manager": "datamanager",
+    "audio_in": "audioin",
+    "audio_out": "audioout",
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
