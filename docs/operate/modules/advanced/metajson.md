@@ -57,8 +57,8 @@ Each model object contains the following fields:
 <!-- prettier-ignore -->
 | Property              | Type | Description |
 | --------------------- | ---- | ----------- |
-| `"api"`               | string | A colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](#valid-api-identifiers) for more information. |
-| `"model"`             | string | A unique colon-delimited triplet `namespace:module-name:model-name` identifying the resource model. If you are publishing a public module (`"visibility": "public"`), the namespace of your model must match the [namespace of your organization](#create-a-namespace-for-your-organization). See [valid model identifiers](#valid-model-identifiers) for more information. |
+| `"api"`               | string | The colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](#valid-api-identifiers) for more information. |
+| `"model"`             | string | The unique colon-delimited triplet `namespace:module-name:model-name` identifying the resource model. If you are publishing a public module (`"visibility": "public"`), the namespace of your model must match the [namespace of your organization](#create-a-namespace-for-your-organization). See [valid model identifiers](#valid-model-identifiers) for more information. |
 | `"short_description"` | string | Include a short description of the hardware the model supports for usage in the search bar when adding a resource. |
 | `"markdown_link"`     | string | Include a `markdown_link` to the section of the README containing configuration information about each model. The relevant section gets displayed alongside the configuration panel when configuring the model in the web UI. Example: `"README.md#configure-your-meteo_pm-sensor"`. |
 

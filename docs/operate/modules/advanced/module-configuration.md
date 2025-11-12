@@ -8,23 +8,24 @@ description: "Configure module versions and module environment variables."
 aliases:
   - /operate/reference/module-configuration/
   - /operate/modules/other-hardware/module-configuration/
-# date: "2022-01-01"
-# updated: ""  # When the content was last entirely checked
+date: "2025-11-11"
 ---
 
-This page contains reference material.
-For quick instructions on configuring a module on your machine, see [Configure hardware on your machine](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine).
+This page contains detailed information on configuring modules and modular resources.
+For an introduction to configuring a module on your machine, see [Configure registry modules](/operate/modules/configure-modules/#configure-hardware-or-software-on-your-machine) instead.
 
 ## Modular resource configuration details
 
+In the Viam web UI, when you add a modular resource it adds two cards to the UI: a module card and a resource card.
 The modular resource card allows you to configure attributes for the resource.
+
+If you switch to **{} JSON** mode, you can also configure the attributes in JSON.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-The following image shows an example of a configured modular resource, specifically an ultrasonic sensor component.
-This modular component is made available by the `ultrasonic` module.
-See [module configuration](#module-configuration-details).
+The resource card shows all configuration attributes for the resource.
+For example:
 
 {{<imgproc src="registry/modular-resources/ultrasonic-resource.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured modular resource example." class="shadow imgzoom" >}}
 
@@ -75,20 +76,25 @@ The following properties are available for modular resources:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `attributes` | object | Sometimes **Required** | Any configuration attributes for your model Check the module's GitHub Readme for information about available configuration attributes for a resource. |
-| `name` | string | **Required** | The name of this instance of a modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
-| `api` | string | **Required** | The {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet">}}. |
-| `model` | string | **Required** | The full {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of the modular resource's {{< glossary_tooltip term_id="model" text="model" >}}. |
-| `depends_on` | array | Optional | The `name` of resources you want to confirm are available on your machine alongside your modular resource. Unnecessary if you coded [implicit dependencies](/operate/modules/advanced/dependencies/). |
+| `attributes` | object | Sometimes **Required** | The configuration attributes for the resource model. Check the module's Readme for information about available configuration attributes for a resource. |
+| `name` | string | **Required** | The name of the configured instance of the modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
+| `api` | string | **Required** | The colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](/operate/modules/advanced/metajson/#valid-api-identifiers) for more information. |
+| `model`| string | **Required** | A unique colon-delimited triplet`namespace:module-name:model-name` identifying the resource model. If you are publishing a public module (`"visibility": "public"`), the namespace of your model must match the [namespace of your organization](#create-a-namespace-for-your-organization). See [valid model identifiers](/operate/modules/advanced/metajson/#valid-model-identifiers) for more information. |
+| `depends_on`| array | Optional | The names of resources that must be available before this resource starts. Deprecated. Use [dependencies](/operate/modules/advanced/dependencies/) instead. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
 
 ## Module configuration details
 
+In the Viam web UI, when you add a modular resource it adds two cards to the UI: a module card and a resource card.
+The module card allows you to configure attributes for the module.
+
+If you switch to **{} JSON** mode, you can also configure the attributes in JSON.
+
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-The following image shows an example of a configured module in a machine's config.
-This ultrasonic sensor in the previous section is provided by the [`ultrasonic` module](https://app.viam.com/module/viam/ultrasonic) shown here.
+The module card shows all configuration attributes for the module.
+For example:
 
 {{<imgproc src="registry/modular-resources/ultrasonic-module.png" resize="900x" style="width: 600px" declaredimensions=true alt="A configured module example." class="shadow imgzoom" >}}
 
@@ -194,16 +200,15 @@ The model is configured as a component with the name `myRealsenseCamera1`.
 {{< /tabs >}}
 
 The following properties are configurable for each module.
-You can add and edit `env` by switching from **Builder** to **JSON** mode in the **CONFIGURE** tab.
 
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is only available [locally](/operate/modules/support-hardware/#test-your-module-locally) on your computer. |
-| `name` | string | **Required** | A name for this instance of the module. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is started [locally](/operate/modules/support-hardware/#test-your-module-locally) on the device. |
+| `name` | string | **Required** | The name of the module. |
 | `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. Not applicable to local modules. |
 | `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).</p> |
-| `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). |
+| `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). You can add and edit `env` by switching from **Builder** to **{} JSON** mode in the **CONFIGURE** tab. |
 | `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/modules/advanced/metajson/) instead. |
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
