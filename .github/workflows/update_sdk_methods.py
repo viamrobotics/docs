@@ -22,7 +22,7 @@ sdks_supported = ["go", "python", "flutter", "typescript"]
 ## You can use the target_resources positional parameter to refine this
 ## at runtime if desired:
 components = ["arm", "base", "board", "button", "camera", "encoder", "gantry", "generic_component", "gripper",
-              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo", "switch"]
+              "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo", "switch", "audio_in", "audio_out"]
 services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision", "world_state_store"]
 app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
@@ -172,6 +172,16 @@ proto_map = {
     "arm": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/component/arm/v1/arm_grpc.pb.go",
         "name": "ArmServiceClient",
+        "methods": []
+    },
+    "audio_in": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/refs/heads/main/component/audioin/v1/audioin_grpc.pb.go",
+        "name": "AudioInServiceClient",
+        "methods": []
+    },
+    "audio_out": {
+        "url": "https://raw.githubusercontent.com/viamrobotics/api/refs/heads/main/component/audioout/v1/audioout_grpc.pb.go",
+        "name": "AudioOutServiceClient",
         "methods": []
     },
     "base": {

@@ -16,7 +16,9 @@ typescript_resource_overrides = {
     "data_sync": "Data",
     "data_manager": "DataManager",
     "mltraining": "MlTraining",
-    "world_state_store": "WorldStateStore"
+    "world_state_store": "WorldStateStore",
+    "audio_in": "AudioIn",
+    "audio_out": "AudioOut"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
