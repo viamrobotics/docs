@@ -245,6 +245,14 @@ You can view your query results as a [JSON array](https://json-schema.org/unders
 Click the table icon to switch to table view.
 
 {{% /tablestep %}}
+{{% tablestep %}}
+**Save query**
+
+Optionally, you can save queries in the web UI.
+Click on **Saved** and then **Save current query**.
+Fill in a **Name** for your query and click **Save query**.
+
+{{% /tablestep %}}
 {{< /table >}}
 
 {{% /tab %}}
