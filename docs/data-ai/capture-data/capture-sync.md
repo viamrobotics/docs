@@ -53,7 +53,7 @@ The data management service writes data from your configured Viam resources to l
 
 For more information, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/).
 
-{{<imgproc src="/data-ai/data-management.png" resize="800x" style="width:800px" declaredimensions=true alt="Diagram showing data being captured, synced, and removed." class="imgzoom">}}
+<img src="/data-manager.svg" alt="Diagram showing data being captured, synced, and removed." class="aligncenter overview imgzoom" style="width:800px;height:auto" >
 
 ## Configure data capture and sync for individual resources
 
