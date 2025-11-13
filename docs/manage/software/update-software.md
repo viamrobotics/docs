@@ -147,46 +147,45 @@ async def machine_connect(address):
 
 
 async def main():
-    viam_client = await connect()
-    cloud = viam_client.app_client
+    async with await connect() as viam_client:
+        cloud = viam_client.app_client
 
-    machines = await cloud.list_robots(location_id=LOCATION_ID)
-    print("Found {} machines.".format(len(machines)))
+        machines = await cloud.list_robots(location_id=LOCATION_ID)
+        print("Found {} machines.".format(len(machines)))
 
-    for m in machines:
-        machine_parts = await cloud.get_robot_parts(m.id)
-        main_part = None
-        for p in machine_parts:
-            if p.main_part:
-                main_part = p
+        for m in machines:
+            machine_parts = await cloud.get_robot_parts(m.id)
+            main_part = None
+            for p in machine_parts:
+                if p.main_part:
+                    main_part = p
 
-        # Get machine address
-        machine_address = main_part.fqdn
+            # Get machine address
+            machine_address = main_part.fqdn
 
-        print("Attempting to connect to {}...".format(machine_address))
+            print("Attempting to connect to {}...".format(machine_address))
 
-        try:
-            machine = await machine_connect(machine_address)
-            status = await machine.get_machine_status()
-            print(status.config)
+            try:
+                async with await machine_connect(machine_address) as machine:
+                    status = await machine.get_machine_status()
+                    print(status.config)
 
-        except ConnectionError:
-            print("Unable to establish a connection to the machine.")
-            logs = await cloud.get_robot_part_logs(
-                robot_part_id=main_part.id,
-                num_log_entries=5
-            )
-            if not logs:
-                print("No logs available.")
-            else:
-                print("Most recent 5 log entries:")
-            for log in logs:
-                print("{}-{} {}: {}".format(
-                    log.logger_name, log.level, log.time, log.message))
-                if log.stack:
-                    print(log.stack)
+            except ConnectionError:
+                print("Unable to establish a connection to the machine.")
+                logs = await cloud.get_robot_part_logs(
+                    robot_part_id=main_part.id,
+                    num_log_entries=5
+                )
+                if not logs:
+                    print("No logs available.")
+                else:
+                    print("Most recent 5 log entries:")
+                for log in logs:
+                    print("{}-{} {}: {}".format(
+                        log.logger_name, log.level, log.time, log.message))
+                    if log.stack:
+                        print(log.stack)
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

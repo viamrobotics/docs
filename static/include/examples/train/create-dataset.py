@@ -34,29 +34,28 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    print("Creating dataset...")
-    try:
-        dataset_id = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
-        )
-        print(f"Created dataset: {dataset_id}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
+        print("Creating dataset...")
+        try:
+            dataset_id = await data_client.create_dataset(
+                name=DATASET_NAME,
+                organization_id=ORG_ID,
+            )
+            print(f"Created dataset: {dataset_id}")
+        except Exception as e:
+            print("Error creating dataset. It may already exist.")
+            print("See: https://app.viam.com/data/datasets")
+            print(f"Exception: {e}")
+            return 1
 
-    # :remove-start:
-    # Teardown - delete the dataset
-    await data_client.delete_dataset(dataset_id)
-    print(f"Deleted dataset: {dataset_id}")
-    # :remove-end:
-    viam_client.close()
-    return 0
+        # :remove-start:
+        # Teardown - delete the dataset
+        await data_client.delete_dataset(dataset_id)
+        print(f"Deleted dataset: {dataset_id}")
+        # :remove-end:
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

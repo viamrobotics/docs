@@ -43,114 +43,111 @@ async def connect() -> ViamClient:
     return await ViamClient.create_from_dial_options(dial_options)
 
 async def main():
+    async with await connect() as viam_client:
+        # Instantiate an AppClient called "cloud"
+        # to run fleet management API methods on
+        cloud = viam_client.app_client
 
-    # Make a ViamClient
-    viam_client = await connect()
-    # Instantiate an AppClient called "cloud"
-    # to run fleet management API methods on
-    cloud = viam_client.app_client
+        robot = await cloud.get_robot(robot_id=MACHINE_ID)
+        assert robot.id == MACHINE_ID
 
-    robot = await cloud.get_robot(robot_id=MACHINE_ID)
-    assert robot.id == MACHINE_ID
+        api_keys = await cloud.get_robot_api_keys(robot_id=MACHINE_ID)
+        assert len(api_keys) >= 1
+        assert api_keys[0].authorizations[0].resource_id == MACHINE_ID
 
-    api_keys = await cloud.get_robot_api_keys(robot_id=MACHINE_ID)
-    assert len(api_keys) >= 1
-    assert api_keys[0].authorizations[0].resource_id == MACHINE_ID
+        list_of_parts = await cloud.get_robot_parts(
+            robot_id=MACHINE_ID
+        )
+        assert len(list_of_parts) == 1
+        assert list_of_parts[0].id == PART_ID
 
-    list_of_parts = await cloud.get_robot_parts(
-        robot_id=MACHINE_ID
-    )
-    assert len(list_of_parts) == 1
-    assert list_of_parts[0].id == PART_ID
+        my_robot_part = await cloud.get_robot_part(
+        robot_part_id=PART_ID)
+        assert my_robot_part.id == PART_ID
 
-    my_robot_part = await cloud.get_robot_part(
-      robot_part_id=PART_ID)
-    assert my_robot_part.id == PART_ID
+        part_logs = await cloud.get_robot_part_logs(
+            robot_part_id=PART_ID, num_log_entries=5
+        )
+        assert len(part_logs) == 5
 
-    part_logs = await cloud.get_robot_part_logs(
-        robot_part_id=PART_ID, num_log_entries=5
-    )
-    assert len(part_logs) == 5
+        logs_stream = await cloud.tail_robot_part_logs(
+            robot_part_id=PART_ID
+        )
+        assert logs_stream is not None
 
-    logs_stream = await cloud.tail_robot_part_logs(
-        robot_part_id=PART_ID
-    )
-    assert logs_stream is not None
+        part_history = await cloud.get_robot_part_history(
+            robot_part_id=PART_ID
+        )
+        assert len(part_history) >= 1
 
-    part_history = await cloud.get_robot_part_history(
-        robot_part_id=PART_ID
-    )
-    assert len(part_history) >= 1
+        new_part_id = await cloud.new_robot_part(
+            robot_id=MACHINE_ID, part_name="new-part"
+        )
+        assert new_part_id is not None
+        list_of_parts = await cloud.get_robot_parts(
+            robot_id=MACHINE_ID
+        )
+        assert len(list_of_parts) == 2
 
-    new_part_id = await cloud.new_robot_part(
-        robot_id=MACHINE_ID, part_name="new-part"
-    )
-    assert new_part_id is not None
-    list_of_parts = await cloud.get_robot_parts(
-        robot_id=MACHINE_ID
-    )
-    assert len(list_of_parts) == 2
+        await cloud.mark_part_as_main(
+            robot_part_id=new_part_id
+        )
+        new_machine_part = await cloud.get_robot_part(
+            robot_part_id=new_part_id
+        )
+        assert new_machine_part.main_part == True
+        await cloud.mark_part_as_main(
+            robot_part_id=PART_ID
+        )
+        old_machine_part = await cloud.get_robot_part(
+            robot_part_id=PART_ID
+        )
+        assert old_machine_part.main_part == True
 
-    await cloud.mark_part_as_main(
-        robot_part_id=new_part_id
-    )
-    new_machine_part = await cloud.get_robot_part(
-        robot_part_id=new_part_id
-    )
-    assert new_machine_part.main_part == True
-    await cloud.mark_part_as_main(
-        robot_part_id=PART_ID
-    )
-    old_machine_part = await cloud.get_robot_part(
-        robot_part_id=PART_ID
-    )
-    assert old_machine_part.main_part == True
+        await cloud.mark_part_for_restart(
+            robot_part_id=new_part_id
+        )
 
-    await cloud.mark_part_for_restart(
-        robot_part_id=new_part_id
-    )
+        part_with_new_secret = await cloud.create_robot_part_secret(
+            robot_part_id=new_part_id
+        )
+        assert part_with_new_secret is not None
+        assert part_with_new_secret.id == new_part_id
 
-    part_with_new_secret = await cloud.create_robot_part_secret(
-        robot_part_id=new_part_id
-    )
-    assert part_with_new_secret is not None
-    assert part_with_new_secret.id == new_part_id
+        await cloud.delete_robot_part_secret(
+            robot_part_id=new_part_id,
+            secret_id=part_with_new_secret.secrets[0].id)
 
-    await cloud.delete_robot_part_secret(
-        robot_part_id=new_part_id,
-        secret_id=part_with_new_secret.secrets[0].id)
-
-    await cloud.delete_robot_part(
-        robot_part_id=new_part_id
-    )
-    list_of_parts = await cloud.get_robot_parts(
-        robot_id=MACHINE_ID
-    )
-    assert len(list_of_parts) == 1
+        await cloud.delete_robot_part(
+            robot_part_id=new_part_id
+        )
+        list_of_parts = await cloud.get_robot_parts(
+            robot_id=MACHINE_ID
+        )
+        assert len(list_of_parts) == 1
 
 
-    list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
-    len_machines = len(list_of_machines)
-    assert len_machines >= 1
-    assert list_of_machines[0].id == MACHINE_ID
+        list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
+        len_machines = len(list_of_machines)
+        assert len_machines >= 1
+        assert list_of_machines[0].id == MACHINE_ID
 
-    new_machine_id = await cloud.new_robot(name="test-robot", location_id=LOCATION_ID)
-    assert new_machine_id is not None
-    list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
-    assert len(list_of_machines) == len_machines + 1
+        new_machine_id = await cloud.new_robot(name="test-robot", location_id=LOCATION_ID)
+        assert new_machine_id is not None
+        list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
+        assert len(list_of_machines) == len_machines + 1
 
-    updated_machine = await cloud.update_robot(
-      robot_id=new_machine_id,
-      name="test-robot-new-name",
-      location_id=LOCATION_ID
-    )
-    assert updated_machine.name == "test-robot-new-name"
+        updated_machine = await cloud.update_robot(
+        robot_id=new_machine_id,
+        name="test-robot-new-name",
+        location_id=LOCATION_ID
+        )
+        assert updated_machine.name == "test-robot-new-name"
 
-    await cloud.delete_robot(robot_id=new_machine_id)
-    list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
-    assert len(list_of_machines) == len_machines
+        await cloud.delete_robot(robot_id=new_machine_id)
+        list_of_machines = await cloud.list_robots(location_id=LOCATION_ID)
+        assert len(list_of_machines) == len_machines
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

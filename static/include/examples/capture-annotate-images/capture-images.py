@@ -45,37 +45,35 @@ async def connect_machine() -> RobotClient:
     return await RobotClient.at_address(MACHINE_ADDRESS, machine_opts)
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
-    machine_client = await connect_machine()
+    async with await connect_machine() as machine_client:
+        camera = Camera.from_robot(machine_client, CAMERA_NAME)
 
-    camera = Camera.from_robot(machine_client, CAMERA_NAME)
+        # Capture image
+        images, _ = await camera.get_images()
+        image_frame = images[0]
 
-    # Capture image
-    images, _ = await camera.get_images()
-    image_frame = images[0]
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    # Upload image
-    file_id = await data_client.binary_data_capture_upload(
-        part_id=PART_ID,
-        component_type="camera",
-        component_name=CAMERA_NAME,
-        method_name="GetImage",
-        data_request_times=[datetime.utcnow(), datetime.utcnow()],
-        file_extension=".jpg",
-        binary_data=image_frame.data
-    )
-    print(f"Uploaded image: {file_id}")
+        # Upload image
+        file_id = await data_client.binary_data_capture_upload(
+            part_id=PART_ID,
+            component_type="camera",
+            component_name=CAMERA_NAME,
+            method_name="GetImage",
+            data_request_times=[datetime.utcnow(), datetime.utcnow()],
+            file_extension=".jpg",
+            binary_data=image_frame.data
+        )
+        print(f"Uploaded image: {file_id}")
 
-    # :remove-start:
-    # Teardown - delete the image
-    await data_client.delete_binary_data_by_ids([file_id])
-    print(f"Deleted image: {file_id}")
-    # :remove-end:
-    viam_client.close()
-    await machine_client.close()
+        # :remove-start:
+        # Teardown - delete the image
+        await data_client.delete_binary_data_by_ids([file_id])
+        print(f"Deleted image: {file_id}")
+        # :remove-end:
 
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -60,42 +60,41 @@ async def fetch_binary_data_ids(data_client, part_id: str) -> List[str]:
     return all_matches
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    matching_data = await fetch_binary_data_ids(data_client, PART_ID)
+        matching_data = await fetch_binary_data_ids(data_client, PART_ID)
 
-    # :remove-start:
-    print("Creating dataset...")
-    try:
-        DATASET_ID = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
+        # :remove-start:
+        print("Creating dataset...")
+        try:
+            DATASET_ID = await data_client.create_dataset(
+                name=DATASET_NAME,
+                organization_id=ORG_ID,
+            )
+            print(f"Created dataset: {DATASET_ID}")
+        except Exception as e:
+            print("Error creating dataset. It may already exist.")
+            print("See: https://app.viam.com/data/datasets")
+            print(f"Exception: {e}")
+            return 1
+        # :remove-end:
+        await data_client.add_binary_data_to_dataset_by_ids(
+            binary_ids=[
+                obj.metadata.binary_data_id for obj in matching_data
+            ],
+            dataset_id=DATASET_ID
         )
-        print(f"Created dataset: {DATASET_ID}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
-    # :remove-end:
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=[
-            obj.metadata.binary_data_id for obj in matching_data
-        ],
-        dataset_id=DATASET_ID
-    )
 
-    print("Added files to dataset:")
-    print(f"https://app.viam.com/data/datasets?id={DATASET_ID}")
+        print("Added files to dataset:")
+        print(f"https://app.viam.com/data/datasets?id={DATASET_ID}")
 
-    # :remove-start:
-    # Teardown - delete the dataset
-    await data_client.delete_dataset(DATASET_ID)
-    print(f"Deleted dataset: {DATASET_ID}")
-    # :remove-end:
-    viam_client.close()
-    return 0
+        # :remove-start:
+        # Teardown - delete the dataset
+        await data_client.delete_dataset(DATASET_ID)
+        print(f"Deleted dataset: {DATASET_ID}")
+        # :remove-end:
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

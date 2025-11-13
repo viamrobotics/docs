@@ -101,14 +101,11 @@ async def moveInSquare(base):
 
 
 async def main():
-    machine = await connect()
+    async with connect() as machine:
+        roverBase = Base.from_robot(machine, 'viam_base')
 
-    roverBase = Base.from_robot(machine, 'viam_base')
-
-    # Move the rover in a square
-    await moveInSquare(roverBase)
-
-    await machine.close()
+        # Move the rover in a square
+        await moveInSquare(roverBase)
 
 if __name__ == '__main__':
     asyncio.run(main())

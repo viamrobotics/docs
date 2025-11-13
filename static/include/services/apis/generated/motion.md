@@ -1015,12 +1015,9 @@ async def connect() -> RobotClient:
     return await RobotClient.at_address("<MACHINE-URL>", options)
 
 async def main():
-    robot = await connect()
-
-    # Can be used with any resource, using the motion service as an example
-    motion = MotionClient.from_robot(robot=machine, name="builtin")
-
-    robot.close()
+    async with await connect() as machine:
+        # Can be used with any resource, using the motion service as an example
+        motion = MotionClient.from_robot(robot=machine, name="builtin")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/motion/client/index.html#viam.services.motion.client.MotionClient.from_robot).

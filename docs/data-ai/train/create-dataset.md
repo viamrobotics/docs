@@ -98,7 +98,7 @@ To view images added to your dataset, go to the **DATA** page, open the [**DATAS
 To capture an image and upload it to Viam, first get an image from your camera through your machine.
 Pass that image and an appropriate set of metadata to [`data_client.binary_data_capture_upload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
 
-{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="42-55" >}}
+{{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="43-56" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

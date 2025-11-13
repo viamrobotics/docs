@@ -29,29 +29,27 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
+    async with await connect() as viam_client:
+        # Check organization region
+        org = await viam_client.app_client.get_organization(org_id=ORG_ID)
+        print(f"Current region: {org.default_region}")
 
-    # Check organization region
-    org = await viam_client.app_client.get_organization(org_id=ORG_ID)
-    print(f"Current region: {org.default_region}")
+        # Update organization region
+        try:
+            updated_org = await viam_client.app_client.update_organization(
+                org_id=ORG_ID,
+                region="us-central"  # or "us-central"
+            )
+            print(f"Organization region updated to: {updated_org.default_region}")
+        except Exception as e:
+            print(f"Error updating organization region: {e}")
+            # :remove-start:
+            # testing if the error is the expected one
+            if "region cannot be changed after syncing data or uploading packages" not in str(e):
+                raise e
+            # :remove-end:
 
-    # Update organization region
-    try:
-        updated_org = await viam_client.app_client.update_organization(
-            org_id=ORG_ID,
-            region="us-central"  # or "us-central"
-        )
-        print(f"Organization region updated to: {updated_org.default_region}")
-    except Exception as e:
-        print(f"Error updating organization region: {e}")
-        # :remove-start:
-        # testing if the error is the expected one
-        if "region cannot be changed after syncing data or uploading packages" not in str(e):
-            raise e
-        # :remove-end:
-
-    viam_client.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

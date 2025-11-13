@@ -80,11 +80,10 @@ async def connect() -> ViamClient:
 
 async def main():
     # Make a ViamClient
-    viam_client = await connect()
-    # Instantiate a DataClient to run data client API methods on
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        # Instantiate a DataClient to run data client API methods on
+        data_client = viam_client.data_client
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

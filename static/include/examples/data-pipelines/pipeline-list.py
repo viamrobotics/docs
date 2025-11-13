@@ -33,53 +33,52 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
-    # :remove-start:
-    pipelines = await data_client.list_data_pipelines(ORG_ID)
-    for pipeline in pipelines:
-        await data_client.delete_data_pipeline(pipeline.id)
-        print(f"Deleted pipeline: {pipeline.id}")
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
+        # :remove-start:
+        pipelines = await data_client.list_data_pipelines(ORG_ID)
+        for pipeline in pipelines:
+            await data_client.delete_data_pipeline(pipeline.id)
+            print(f"Deleted pipeline: {pipeline.id}")
 
-    pipeline_id = await data_client.create_data_pipeline(
-        name="test-pipeline",
-        organization_id=ORG_ID,
-        mql_binary=[
-            {"$match": {"component_name": "temperature-sensor"}},
-            {
-                "$group": {
-                    "_id": "$location_id",
-                    "avg_temp": {"$avg": "$data.readings.temperature"},
-                    "count": {"$sum": 1}
+        pipeline_id = await data_client.create_data_pipeline(
+            name="test-pipeline",
+            organization_id=ORG_ID,
+            mql_binary=[
+                {"$match": {"component_name": "temperature-sensor"}},
+                {
+                    "$group": {
+                        "_id": "$location_id",
+                        "avg_temp": {"$avg": "$data.readings.temperature"},
+                        "count": {"$sum": 1}
+                    }
+                },
+                {
+                    "$project": {
+                        "location": "$_id",
+                        "avg_temp": 1,
+                        "count": 1,
+                        "_id": 0,
+                    }
                 }
-            },
-            {
-                "$project": {
-                    "location": "$_id",
-                    "avg_temp": 1,
-                    "count": 1,
-                    "_id": 0,
-                }
-            }
-        ],
-        schedule="0 * * * *",
-        data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD,
-        enable_backfill=False,
-    )
-    print(f"Pipeline created with ID: {pipeline_id}")
-    # :remove-end:
+            ],
+            schedule="0 * * * *",
+            data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD,
+            enable_backfill=False,
+        )
+        print(f"Pipeline created with ID: {pipeline_id}")
+        # :remove-end:
 
-    pipelines = await data_client.list_data_pipelines(ORG_ID)
-    for pipeline in pipelines:
-        print(f"Pipeline: {pipeline.name}, ID: {pipeline.id}, schedule: {pipeline.schedule}, data_source_type: {pipeline.data_source_type}")
+        pipelines = await data_client.list_data_pipelines(ORG_ID)
+        for pipeline in pipelines:
+            print(f"Pipeline: {pipeline.name}, ID: {pipeline.id}, schedule: {pipeline.schedule}, data_source_type: {pipeline.data_source_type}")
 
-    # :remove-start:
-    # Teardown - delete the pipeline
-    await data_client.delete_data_pipeline(pipeline_id)
-    print(f"Pipeline deleted with ID: {pipeline_id}")
-    # :remove-end:
-    viam_client.close()
-    return 0
+        # :remove-start:
+        # Teardown - delete the pipeline
+        await data_client.delete_data_pipeline(pipeline_id)
+        print(f"Pipeline deleted with ID: {pipeline_id}")
+        # :remove-end:
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

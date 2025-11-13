@@ -46,7 +46,7 @@ If your hardware does not support the model you want to run, see [Cloud inferenc
 
 The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
 
-{{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.py" lang="py" class="line-numbers linkable-line-numbers" data-line="83-86" >}}
+{{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.py" lang="py" class="line-numbers linkable-line-numbers" data-line="82-85" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -107,7 +107,7 @@ To use a vision service:
 
 The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
 
-{{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.py" lang="py" class="line-numbers linkable-line-numbers" data-line="37-38" >}}
+{{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.py" lang="py" class="line-numbers linkable-line-numbers" data-line="36-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}

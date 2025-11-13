@@ -138,14 +138,12 @@ async def moveInSquare(base):
 
 
 async def main():
-    machine = await connect()
+    async with connect() as machine:
+        roverBase = Base.from_robot(machine, 'viam_base')
 
-    roverBase = Base.from_robot(machine, 'viam_base')
+        # Move the rover in a square
+        await moveInSquare(roverBase)
 
-    # Move the rover in a square
-    await moveInSquare(roverBase)
-
-    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -315,30 +313,29 @@ async def connect():
 
 
 async def main():
-    machine = await connect()
+    async with connect() as machine:
+        pms_7003 = Sensor.from_robot(machine, sensor_name)
+        kasa_plug = Generic.from_robot(machine, plug_name)
 
-    pms_7003 = Sensor.from_robot(machine, sensor_name)
-    kasa_plug = Generic.from_robot(machine, plug_name)
+        # Define unhealthy thresholds
+        unhealthy_thresholds = {
+            'pm2_5_atm': 35.4,
+            'pm10_atm': 150
+        }
 
-    # Define unhealthy thresholds
-    unhealthy_thresholds = {
-        'pm2_5_atm': 35.4,
-        'pm10_atm': 150
-    }
+        while True:
+            readings = await pms_7003.get_readings()
+            # Check if any of the PM values exceed the unhealthy thresholds
+            if any(readings.get(pm_type, 0) > threshold for pm_type,
+                    threshold in unhealthy_thresholds.items()):
+                LOGGER.info('UNHEALTHY.')
+                await kasa_plug.do_command({"toggle_on": []})
+            else:
+                LOGGER.info('HEALTHY!')
+                await kasa_plug.do_command({"toggle_off": []})
 
-    while True:
-        readings = await pms_7003.get_readings()
-        # Check if any of the PM values exceed the unhealthy thresholds
-        if any(readings.get(pm_type, 0) > threshold for pm_type,
-                threshold in unhealthy_thresholds.items()):
-            LOGGER.info('UNHEALTHY.')
-            await kasa_plug.do_command({"toggle_on": []})
-        else:
-            LOGGER.info('HEALTHY!')
-            await kasa_plug.do_command({"toggle_off": []})
-
-        # wait before checking again
-        await asyncio.sleep(10)
+            # wait before checking again
+            await asyncio.sleep(10)
 
 if __name__ == '__main__':
     asyncio.run(main())

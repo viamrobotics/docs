@@ -205,49 +205,49 @@ async def connect():
 
 
 async def main():
-    machine = await connect()
-    # make sure that your detector name in the app matches "myPeopleDetector"
-    myPeopleDetector = VisionClient.from_robot(machine, "myPeopleDetector")
-    # make sure that your camera name in the app matches "my-camera"
-    my_camera = Camera.from_robot(robot=machine, name="cam")
+    async with await connect() as machine:
+        # make sure that your detector name in the app matches "myPeopleDetector"
+        myPeopleDetector = VisionClient.from_robot(machine, "myPeopleDetector")
+        # make sure that your camera name in the app matches "my-camera"
+        my_camera = Camera.from_robot(robot=machine, name="cam")
 
-    while True:
-        images, _ = await my_camera.get_images(mime_type="image/jpeg")
-        img = images[0]
-        detections = await myPeopleDetector.get_detections(img)
+        while True:
+            images, _ = await my_camera.get_images(mime_type="image/jpeg")
+            img = images[0]
+            detections = await myPeopleDetector.get_detections(img)
 
-        found = False
-        for d in detections:
-            if d.confidence > 0.8 and d.class_name.lower() == "person":
-                print("This is a person!")
-                found = True
-        if found:
-            print("sending a message")
-            # Convert to PIL image
-            pil_image = viam_to_pil_image(img)
-            # Change this path to your own
-            pil_image.save('/yourpath/foundyou.jpeg')
-            # Yagmail section
-            # Create a yagmail.SMTP instance
-            # to initialize the server connection.
-            # TODO: Replace username and password with actual credentials.
-            yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
-            # Specify the message contents
-            contents = ['There is someone at your desk - beware',
-                        '/yourpath/foundyou.jpeg']
-            # Add phone number and gateway address
-            # found in the SMS gateway step
-            yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
+            found = False
+            for d in detections:
+                if d.confidence > 0.8 and d.class_name.lower() == "person":
+                    print("This is a person!")
+                    found = True
+            if found:
+                print("sending a message")
+                # Convert to PIL image
+                pil_image = viam_to_pil_image(img)
+                # Change this path to your own
+                pil_image.save('/yourpath/foundyou.jpeg')
+                # Yagmail section
+                # Create a yagmail.SMTP instance
+                # to initialize the server connection.
+                # TODO: Replace username and password with actual credentials.
+                yag = yagmail.SMTP('mygmailusername', 'mygmailpassword')
+                # Specify the message contents
+                contents = ['There is someone at your desk - beware',
+                            '/yourpath/foundyou.jpeg']
+                # Add phone number and gateway address
+                # found in the SMS gateway step
+                yag.send('xxx-xxx-xxxx@tmomail.net', 'subject', contents)
 
-            # If the machine detects a person and sends a text, we don't need
-            # it to keep sending us more texts so we sleep it for 60
-            # seconds before looking for a person again
-            await asyncio.sleep(60)
-        else:
-            print("There's nobody here, don't send a message")
-            await asyncio.sleep(10)
-    await asyncio.sleep(5)
-    await machine.close()
+                # If the machine detects a person and sends a text, we don't need
+                # it to keep sending us more texts so we sleep it for 60
+                # seconds before looking for a person again
+                await asyncio.sleep(60)
+            else:
+                print("There's nobody here, don't send a message")
+                await asyncio.sleep(10)
+        await asyncio.sleep(5)
+
 
 if __name__ == '__main__':
     asyncio.run(main())

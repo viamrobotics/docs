@@ -373,139 +373,135 @@ async def connect():
 
 
 async def main():
-    robot = await connect()
+    async with await connect() as machine:
+        # myArm
+        my_arm_name = "myArm"
+        my_arm = Arm.from_robot(machine, my_arm_name)
 
-    # myArm
-    my_arm_name = "myArm"
-    my_arm = Arm.from_robot(robot, my_arm_name)
+        # myGripper
+        my_gripper_name = "myGripper"
+        my_gripper = Gripper.from_robot(machine, my_gripper_name)
 
-    # myGripper
-    my_gripper_name = "myGripper"
-    my_gripper = Gripper.from_robot(robot, my_gripper_name)
+        # Get the pose of the arm from the arm API
+        cmd_arm_pose = await my_arm.get_end_position()
+        print("Pose of end of myArm from get_end_position:", cmd_arm_pose)
 
-    # Get the pose of the arm from the arm API
-    cmd_arm_pose = await my_arm.get_end_position()
-    print("Pose of end of myArm from get_end_position:", cmd_arm_pose)
+        # Access the motion service
+        motion_service = MotionClient.from_robot(machine, "builtin")
 
-    # Access the motion service
-    motion_service = MotionClient.from_robot(robot, "builtin")
+        # Get the pose of myArm from the motion service
+        my_arm_motion_pose = await motion_service.get_pose(my_arm_name,
+                                                           "world")
+        print("Pose of myArm from the motion service:", my_arm_motion_pose)
 
-    # Get the pose of myArm from the motion service
-    my_arm_motion_pose = await motion_service.get_pose(my_arm_name,
-                                                       "world")
-    print("Pose of myArm from the motion service:", my_arm_motion_pose)
+        # Use this offset to set your z to calibrate based on where your table
+        # actually is
+        z_offset = 10
 
-    # Use this offset to set your z to calibrate based on where your table
-    # actually is
-    z_offset = 10
+        # Create a table obstacle
+        table_origin = Pose(x=0.0, y=0.0, z=-19.0+z_offset)
+        table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
+        table_object = Geometry(center=table_origin,
+                                box=RectangularPrism(dims_mm=table_dims))
 
-    # Create a table obstacle
-    table_origin = Pose(x=0.0, y=0.0, z=-19.0+z_offset)
-    table_dims = Vector3(x=2000.0, y=2000.0, z=38.0)
-    table_object = Geometry(center=table_origin,
-                            box=RectangularPrism(dims_mm=table_dims))
+        # Create a tissue box obstacle
+        box_origin = Pose(x=400, y=0, z=50+z_offset)
+        box_dims = Vector3(x=120.0, y=80.0, z=100.0)
+        box_object = Geometry(center=box_origin,
+                              box=RectangularPrism(dims_mm=box_dims))
 
-    # Create a tissue box obstacle
-    box_origin = Pose(x=400, y=0, z=50+z_offset)
-    box_dims = Vector3(x=120.0, y=80.0, z=100.0)
-    box_object = Geometry(center=box_origin,
-                          box=RectangularPrism(dims_mm=box_dims))
+        obstacles_in_frame = GeometriesInFrame(
+            reference_frame="world",
+            geometries=[table_object, box_object])
 
-    obstacles_in_frame = GeometriesInFrame(
-        reference_frame="world",
-        geometries=[table_object, box_object])
+        # Create a transform to represent the cup as a 120mm tall, 45mm radius
+        # capsule shape
+        cup_geometry = Geometry(center=Pose(x=0, y=0, z=155),
+                                capsule=Capsule(radius_mm=45, length_mm=120))
+        transforms = [
+            # Name the reference frame "cup" and point its long axis along the y
+            # axis of the gripper
+            Transform(reference_frame="cup", pose_in_observer_frame=PoseInFrame(
+                reference_frame="myGripper",
+                pose=Pose(x=0, y=0, z=45, o_x=0, o_y=-1, o_z=0, theta=0)),
+                physical_object=cup_geometry)
+        ]
 
-    # Create a transform to represent the cup as a 120mm tall, 45mm radius
-    # capsule shape
-    cup_geometry = Geometry(center=Pose(x=0, y=0, z=155),
-                            capsule=Capsule(radius_mm=45, length_mm=120))
-    transforms = [
-        # Name the reference frame "cup" and point its long axis along the y
-        # axis of the gripper
-        Transform(reference_frame="cup", pose_in_observer_frame=PoseInFrame(
-            reference_frame="myGripper",
-            pose=Pose(x=0, y=0, z=45, o_x=0, o_y=-1, o_z=0, theta=0)),
-            physical_object=cup_geometry)
-    ]
+        # Create a WorldState that includes the table and tissue box obstacles, and
+        # the cup transform
+        world_state = WorldState(obstacles=[obstacles_in_frame],
+                                 transforms=transforms)
 
-    # Create a WorldState that includes the table and tissue box obstacles, and
-    # the cup transform
-    world_state = WorldState(obstacles=[obstacles_in_frame],
-                             transforms=transforms)
+        # Create a start pose, where the cup starts between the gripper's jaws, on
+        # the table. Start pose has Z of 90mm to grab partway down the 120mm tall
+        # cup
+        start_pose = Pose(x=320,
+                          y=240,
+                          z=90.0+z_offset,
+                          o_x=1,
+                          o_y=0,
+                          o_z=0,
+                          theta=0)
+        start_pose_in_frame = PoseInFrame(reference_frame="world", pose=start_pose)
 
-    # Create a start pose, where the cup starts between the gripper's jaws, on
-    # the table. Start pose has Z of 90mm to grab partway down the 120mm tall
-    # cup
-    start_pose = Pose(x=320,
-                      y=240,
-                      z=90.0+z_offset,
-                      o_x=1,
-                      o_y=0,
-                      o_z=0,
-                      theta=0)
-    start_pose_in_frame = PoseInFrame(reference_frame="world", pose=start_pose)
+        # Create waypoints to increase efficiency of motion planning
+        way1_pose = Pose(x=300,
+                         y=240,
+                         z=320+z_offset,
+                         o_x=1,
+                         o_y=0,
+                         o_z=0,
+                         theta=0)
+        way1_pose_in_frame = PoseInFrame(reference_frame="world", pose=way1_pose)
+        way2_pose = Pose(x=300,
+                         y=-240,
+                         z=320+z_offset,
+                         o_x=1,
+                         o_y=0,
+                         o_z=0,
+                         theta=0)
+        way2_pose_in_frame = PoseInFrame(reference_frame="world", pose=way2_pose)
 
-    # Create waypoints to increase efficiency of motion planning
-    way1_pose = Pose(x=300,
-                     y=240,
-                     z=320+z_offset,
-                     o_x=1,
-                     o_y=0,
-                     o_z=0,
-                     theta=0)
-    way1_pose_in_frame = PoseInFrame(reference_frame="world", pose=way1_pose)
-    way2_pose = Pose(x=300,
-                     y=-240,
-                     z=320+z_offset,
-                     o_x=1,
-                     o_y=0,
-                     o_z=0,
-                     theta=0)
-    way2_pose_in_frame = PoseInFrame(reference_frame="world", pose=way2_pose)
+        # Create a pose where the cup will be set down
+        end_pose = Pose(x=300,
+                        y=-250,
+                        z=90.0+z_offset,
+                        o_x=1,
+                        o_y=0,
+                        o_z=0,
+                        theta=0)
+        end_pose_in_frame = PoseInFrame(reference_frame="world", pose=end_pose)
 
-    # Create a pose where the cup will be set down
-    end_pose = Pose(x=300,
-                    y=-250,
-                    z=90.0+z_offset,
-                    o_x=1,
-                    o_y=0,
-                    o_z=0,
-                    theta=0)
-    end_pose_in_frame = PoseInFrame(reference_frame="world", pose=end_pose)
+        # Move to the starting position and grab the cup
+        # This motion has no orientation constraints because it hasn't picked up
+        # the cup yet
+        await motion_service.move(component_name=my_gripper_name,
+                                  destination=start_pose_in_frame,
+                                  world_state=world_state)
+        print("At start pose")
+        await my_gripper.grab()
 
-    # Move to the starting position and grab the cup
-    # This motion has no orientation constraints because it hasn't picked up
-    # the cup yet
-    await motion_service.move(component_name=my_gripper_name,
-                              destination=start_pose_in_frame,
-                              world_state=world_state)
-    print("At start pose")
-    await my_gripper.grab()
+        # Create a constraint to keep the cup upright as it moves
+        constraints = Constraints(linear_constraint=[LinearConstraint()])
 
-    # Create a constraint to keep the cup upright as it moves
-    constraints = Constraints(linear_constraint=[LinearConstraint()])
+        # Move the cup to the end position without hitting the box on the table,
+        # and while keeping the cup upright
+        await motion_service.move(component_name=my_gripper_name,
+                                  destination=way1_pose_in_frame,
+                                  world_state=world_state,
+                                  constraints=constraints)
+        await motion_service.move(component_name=my_gripper_name,
+                                  destination=way2_pose_in_frame,
+                                  world_state=world_state,
+                                  constraints=constraints)
+        await motion_service.move(component_name=my_gripper_name,
+                                  destination=end_pose_in_frame,
+                                  world_state=world_state,
+                                  constraints=constraints)
+        print("At end pose")
 
-    # Move the cup to the end position without hitting the box on the table,
-    # and while keeping the cup upright
-    await motion_service.move(component_name=my_gripper_name,
-                              destination=way1_pose_in_frame,
-                              world_state=world_state,
-                              constraints=constraints)
-    await motion_service.move(component_name=my_gripper_name,
-                              destination=way2_pose_in_frame,
-                              world_state=world_state,
-                              constraints=constraints)
-    await motion_service.move(component_name=my_gripper_name,
-                              destination=end_pose_in_frame,
-                              world_state=world_state,
-                              constraints=constraints)
-    print("At end pose")
-
-    # Put down the cup
-    await my_gripper.open()
-
-    # Don't forget to close the robot when you're done!
-    await robot.close()
+        # Put down the cup
+        await my_gripper.open()
 
 
 if __name__ == "__main__":

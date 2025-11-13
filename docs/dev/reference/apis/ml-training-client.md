@@ -56,13 +56,11 @@ async def connect() -> ViamClient:
 
 
 async def main():
-
     # Make a ViamClient
-    viam_client = await connect()
-    # Instantiate an MLTrainingClient to run ML training client API methods on
-    ml_training_client = viam_client.ml_training_client
+    async with await connect() as viam_client:
+        # Instantiate an MLTrainingClient to run ML training client API methods on
+        ml_training_client = viam_client.ml_training_client
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

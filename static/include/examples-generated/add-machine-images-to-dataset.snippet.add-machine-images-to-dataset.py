@@ -48,23 +48,22 @@ async def fetch_binary_data_ids(data_client, part_id: str) -> List[str]:
     return all_matches
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    matching_data = await fetch_binary_data_ids(data_client, PART_ID)
+        matching_data = await fetch_binary_data_ids(data_client, PART_ID)
 
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=[
-            obj.metadata.binary_data_id for obj in matching_data
-        ],
-        dataset_id=DATASET_ID
-    )
+        await data_client.add_binary_data_to_dataset_by_ids(
+            binary_ids=[
+                obj.metadata.binary_data_id for obj in matching_data
+            ],
+            dataset_id=DATASET_ID
+        )
 
-    print("Added files to dataset:")
-    print(f"https://app.viam.com/data/datasets?id={DATASET_ID}")
+        print("Added files to dataset:")
+        print(f"https://app.viam.com/data/datasets?id={DATASET_ID}")
 
-    viam_client.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -31,18 +31,18 @@ async def connect_machine() -> RobotClient:
     return await RobotClient.at_address(MACHINE_ADDRESS, machine_opts)
 
 async def main() -> int:
-    viam_client = await connect()
-    app_client = viam_client.app_client
-    machine = await connect_machine()
-    machine_id = (await machine.get_cloud_metadata()).machine_id
 
-    await app_client.update_robot_metadata(robot_id=machine_id, metadata={
-        "TEST_API_KEY": "ABC123",
-    })
+    async with await connect_machine() as machine:
+        machine_id = (await machine.get_cloud_metadata()).machine_id
 
-    viam_client.close()
-    await machine.close()
-    return 0
+    async with await connect() as viam_client:
+        app_client = viam_client.app_client
+
+        await app_client.update_robot_metadata(robot_id=machine_id, metadata={
+            "TEST_API_KEY": "ABC123",
+        })
+
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())
