@@ -23,10 +23,11 @@ date: "2024-12-07"
 cost: "0"
 ---
 
-You can configure triggers that alert you when machine telemetry data syncs from your local device to the Viam cloud:
+You can configure triggers that alert you when machine telemetry data syncs from your local device to the Viam cloud or based on log messages:
 
 - **Telemetry sync**: Alerts whenever certain telemetry syncs
 - **Conditional telemetry sync**: Alert only when synced telemetry satisfies a condition
+- **Logs**: Alert on error, warning, or info logs appearing on a machine
 
 For example, you can configure a trigger to send you a notification when your machine's CPU usage reaches a certain threshold.
 
@@ -201,8 +202,6 @@ Use **Builder mode** to create a trigger:
 Go to the **CONFIGURE** tab of your machine.
 Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-{{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options.">}}
-
 {{< /tablestep >}}
 {{< tablestep >}}
 **Create the trigger**
@@ -245,14 +244,12 @@ To add a notification method, add an entry to the **Webhooks** or **Email** sub-
 To add an email notification:
 
 1.  Click **Add Email**.
-    {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email." class="shadow" >}}
 1.  Add the email you wish to be notified whenever this trigger is triggered.
 1.  Configure the time between notifications.
 
 To add a webhook notification:
 
 1.  Click **Add Webhook**.
-    {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL." class="shadow" >}}
 1.  Add the URL of your cloud function.
 1.  Configure the time between notifications.
 1.  Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
@@ -338,6 +335,70 @@ In the **Data capture** section of your sensor's configuration, toggle the switc
 
 Click the **Save** button in the top right corner of the page to save your configuration.
 
+## Alert on machine logs
+
+{{< tabs >}}
+{{% tab name="Builder mode" %}}
+
+1. Go to the **CONFIGURE** tab of your machine.
+   Click the **+** (Create) button in the left side menu and select **Trigger**.
+
+1. Name the trigger and click **Create**.
+
+1. Select **Conditional logs ingestion** as the trigger **Type**.
+
+1. Select any number of log levels (**Error**, **Warn**, and **Info**) to alert on.
+
+   **Once per hour**, Viam issues an alert if machine logs are found.
+
+1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
+
+   To add an email notification:
+
+   1. Click **Add Email**.
+   1. Add the email you wish to be notified whenever this trigger is triggered.
+   1. Configure the time between notifications.
+
+   To add a webhook notification:
+
+   1. Click **Add Webhook**.
+   1. Add the URL of your cloud function.
+   1. Configure the time between notifications.
+   1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
+      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
+
+{{% /tab %}}
+{{% tab name="JSON mode" %}}
+
+Use the following template in your `components` JSON to configure the top-level `triggers` field:
+
+```json {class="line-numbers linkable-line-numbers"}
+"triggers": [
+  {
+    "name": "<trigger name>",
+    "event": {
+      "type": "conditional_logs_ingested",
+      "log_levels": [
+          "error",
+          "warn",
+          "info"
+        ]
+    },
+    "notifications": [
+      {
+        "type": "<webhook|email>",
+        "value": "<webhook URL or email address>"
+      }
+    ]
+  }
+]
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+For more information about triggers, see [Trigger configuration](/data-ai/reference/triggers-configuration/).
+
 ## Alert on machine status
 
 ### Part is online
@@ -348,8 +409,6 @@ Click the **Save** button in the top right corner of the page to save your confi
 1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
-
 2. Name the trigger and click **Create**.
 
 3. Select **Part is online** as the trigger **Type**.
@@ -359,14 +418,12 @@ Click the **Save** button in the top right corner of the page to save your confi
    To add an email notification:
 
    1. Click **Add Email**.
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email." class="shadow" >}}
    1. Add the email you wish to be notified whenever this trigger is triggered.
    1. Configure the time between notifications.
 
    To add a webhook notification:
 
    1. Click **Add Webhook**.
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x400" style="width: 500px" declaredimensions=true alt="The trigger configured with an example URL." class="shadow" >}}
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
@@ -407,8 +464,6 @@ For more information about triggers, see [Trigger configuration](/data-ai/refere
 
 1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
-
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x400" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." class="shadow">}}
 
 2. Name the trigger and click **Create**.
 
