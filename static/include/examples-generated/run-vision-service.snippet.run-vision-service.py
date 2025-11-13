@@ -24,21 +24,19 @@ async def connect_machine() -> RobotClient:
     return await RobotClient.at_address(MACHINE_ADDRESS, machine_opts)
 
 async def main() -> int:
-    machine = await connect_machine()
+    async with await connect_machine() as machine:
+        camera = Camera.from_robot(machine, CAMERA_NAME)
+        classifier = VisionClient.from_robot(machine, CLASSIFIER_NAME)
 
-    camera = Camera.from_robot(machine, CAMERA_NAME)
-    classifier = VisionClient.from_robot(machine, CLASSIFIER_NAME)
+        # Capture image
+        images, _ = await camera.get_images(mime_type="image/jpeg")
+        image_frame = images[0]
 
-    # Capture image
-    images, _ = await camera.get_images(mime_type="image/jpeg")
-    image_frame = images[0]
+        # Get tags using the ViamImage (not the PIL image)
+        tags = await classifier.get_classifications(
+            image=image_frame, image_format="image/jpeg", count=2)
 
-    # Get tags using the ViamImage (not the PIL image)
-    tags = await classifier.get_classifications(
-        image=image_frame, image_format="image/jpeg", count=2)
-
-    await machine.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

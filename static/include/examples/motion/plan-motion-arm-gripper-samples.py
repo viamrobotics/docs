@@ -71,7 +71,7 @@ async def main() -> int:
         # :snippet-start: get-pose
         # Get the pose of myArm from the motion service
         my_arm_motion_pose = await motion_service.get_pose(ARM_NAME,
-                                                        "world")
+                                                           "world")
         print(f"Pose of myArm from the motion service: {my_arm_motion_pose}")
         # :snippet-end:
 
@@ -83,7 +83,7 @@ async def main() -> int:
                                 box=RectangularPrism(dims_mm=table_dims))
 
         obstacles_in_frame = GeometriesInFrame(reference_frame="world",
-                                            geometries=[table_object])
+                                               geometries=[table_object])
 
         # Create a WorldState that has the GeometriesInFrame included
         world_state = WorldState(obstacles=[obstacles_in_frame])

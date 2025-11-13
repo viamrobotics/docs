@@ -58,14 +58,14 @@ from viam.app.viam_client import ViamClient
 
 async def connect() -> ViamClient:
     dial_options = DialOptions(
-      credentials=Credentials(
-        type="api-key",
-        # TODO: Replace "<API-KEY>" (including brackets) with your API key
-        payload='<API-KEY>',
-      ),
-      # TODO: Replace "<API-KEY-ID>" (including brackets) with your API key
-      # ID
-      auth_entity='<API-KEY-ID>'
+        credentials=Credentials(
+            type="api-key",
+            # TODO: Replace "<API-KEY>" (including brackets) with your API key
+            payload='<API-KEY>',
+        ),
+        # TODO: Replace "<API-KEY-ID>" (including brackets) with your API key
+        # ID
+        auth_entity='<API-KEY-ID>'
     )
     return await ViamClient.create_from_dial_options(dial_options)
 
@@ -73,9 +73,9 @@ async def connect() -> ViamClient:
 async def main():
     # Make a ViamClient
     async with await connect() as viam_client:
-      # Instantiate an AppClient called "cloud"
-      # to run fleet management API methods on
-      cloud = viam_client.app_client
+        # Instantiate an AppClient called "cloud"
+        # to run fleet management API methods on
+        cloud = viam_client.app_client
 
 
 if __name__ == '__main__':

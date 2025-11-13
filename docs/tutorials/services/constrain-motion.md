@@ -391,7 +391,7 @@ async def main():
 
         # Get the pose of myArm from the motion service
         my_arm_motion_pose = await motion_service.get_pose(my_arm_name,
-                                                          "world")
+                                                           "world")
         print("Pose of myArm from the motion service:", my_arm_motion_pose)
 
         # Use this offset to set your z to calibrate based on where your table
@@ -430,7 +430,7 @@ async def main():
         # Create a WorldState that includes the table and tissue box obstacles, and
         # the cup transform
         world_state = WorldState(obstacles=[obstacles_in_frame],
-                                transforms=transforms)
+                                 transforms=transforms)
 
         # Create a start pose, where the cup starts between the gripper's jaws, on
         # the table. Start pose has Z of 90mm to grab partway down the 120mm tall
@@ -446,20 +446,20 @@ async def main():
 
         # Create waypoints to increase efficiency of motion planning
         way1_pose = Pose(x=300,
-                        y=240,
-                        z=320+z_offset,
-                        o_x=1,
-                        o_y=0,
-                        o_z=0,
-                        theta=0)
+                         y=240,
+                         z=320+z_offset,
+                         o_x=1,
+                         o_y=0,
+                         o_z=0,
+                         theta=0)
         way1_pose_in_frame = PoseInFrame(reference_frame="world", pose=way1_pose)
         way2_pose = Pose(x=300,
-                        y=-240,
-                        z=320+z_offset,
-                        o_x=1,
-                        o_y=0,
-                        o_z=0,
-                        theta=0)
+                         y=-240,
+                         z=320+z_offset,
+                         o_x=1,
+                         o_y=0,
+                         o_z=0,
+                         theta=0)
         way2_pose_in_frame = PoseInFrame(reference_frame="world", pose=way2_pose)
 
         # Create a pose where the cup will be set down

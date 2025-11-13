@@ -59,8 +59,8 @@ async def connect() -> ViamClient:
 async def main():
     # Make a ViamClient
     async with await connect() as viam_client:
-      # Instantiate a BillingClient to run data client API methods on
-      billing_client = viam_client.billing_client
+        # Instantiate a BillingClient to run data client API methods on
+        billing_client = viam_client.billing_client
 
 if __name__ == '__main__':
     asyncio.run(main())
