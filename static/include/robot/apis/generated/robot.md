@@ -278,7 +278,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.cancelOperation('INSERT OPERATION ID');
+await machine.cancelOperation("INSERT OPERATION ID");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#canceloperation).
@@ -324,7 +324,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.blockForOperation('INSERT OPERATION ID');
+await machine.blockForOperation("INSERT OPERATION ID");
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#blockforoperation).

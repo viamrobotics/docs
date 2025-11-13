@@ -263,38 +263,36 @@ async def main():
     vel = 500            # go this fast when moving motor
 
     # Connect to robot client and set up components
-    machine = await connect()
-    base = Base.from_robot(machine, "my_base")
-    camera_name = "<camera-name>"
-    camera = Camera.from_robot(machine, camera_name)
-    images, _ = await camera.get_images(mime_type="image/jpeg")
-    frame = images[0]
+    async with await connect() as machine:
+        base = Base.from_robot(machine, "my_base")
+        camera_name = "<camera-name>"
+        camera = Camera.from_robot(machine, camera_name)
+        images, _ = await camera.get_images(mime_type="image/jpeg")
+        frame = images[0]
 
-    # Convert to PIL Image
-    pil_frame = viam_to_pil_image(frame)
+        # Convert to PIL Image
+        pil_frame = viam_to_pil_image(frame)
 
-    # Grab the vision service for the detector
-    my_detector = VisionClient.from_robot(machine, "my_color_detector")
+        # Grab the vision service for the detector
+        my_detector = VisionClient.from_robot(machine, "my_color_detector")
 
-    # Main loop. Detect the ball, determine if it's on the left or right, and
-    # head that way. Repeat this for numCycles
-    for i in range(numCycles):
-        detections = await my_detector.get_detections_from_camera(camera_name)
+        # Main loop. Detect the ball, determine if it's on the left or right, and
+        # head that way. Repeat this for numCycles
+        for i in range(numCycles):
+            detections = await my_detector.get_detections_from_camera(camera_name)
 
-        answer = leftOrRight(detections, pil_frame.size[0]/2)
-        if answer == 0:
-            print("left")
-            await base.spin(spinNum, vel)     # CCW is positive
-            await base.move_straight(straightNum, vel)
-        if answer == 1:
-            print("center")
-            await base.move_straight(straightNum, vel)
-        if answer == 2:
-            print("right")
-            await base.spin(-spinNum, vel)
-        # If nothing is detected, nothing moves
-
-    await robot.close()
+            answer = leftOrRight(detections, pil_frame.size[0]/2)
+            if answer == 0:
+                print("left")
+                await base.spin(spinNum, vel)     # CCW is positive
+                await base.move_straight(straightNum, vel)
+            if answer == 1:
+                print("center")
+                await base.move_straight(straightNum, vel)
+            if answer == 2:
+                print("right")
+                await base.spin(-spinNum, vel)
+            # If nothing is detected, nothing moves
 ```
 
 For `<camera-name>`, insert the name of your configured physical camera.
@@ -376,38 +374,37 @@ async def main():
     vel = 500            # go this fast when moving motor
 
     # Connect to robot client and set up components
-    machine = await connect()
-    base = Base.from_robot(machine, "my_base")
-    camera_name = "<camera-name>"
-    camera = Camera.from_robot(machine, camera_name)
-    images, _ = await camera.get_images(mime_type="image/jpeg")
-    frame = images[0]
+    async with await connect() as machine:
+        base = Base.from_robot(machine, "my_base")
+        camera_name = "<camera-name>"
+        camera = Camera.from_robot(machine, camera_name)
+        images, _ = await camera.get_images(mime_type="image/jpeg")
+        frame = images[0]
 
-    # Convert to PIL Image
-    pil_frame = viam_to_pil_image(frame)
+        # Convert to PIL Image
+        pil_frame = viam_to_pil_image(frame)
 
-    # Grab the vision service for the detector
-    my_detector = VisionClient.from_robot(machine, "my_color_detector")
+        # Grab the vision service for the detector
+        my_detector = VisionClient.from_robot(machine, "my_color_detector")
 
-    # Main loop. Detect the ball, determine if it's on the left or right, and
-    # head that way. Repeat this for numCycles
-    for i in range(numCycles):
-        detections = await my_detector.get_detections_from_camera(camera_name)
+        # Main loop. Detect the ball, determine if it's on the left or right, and
+        # head that way. Repeat this for numCycles
+        for i in range(numCycles):
+            detections = await my_detector.get_detections_from_camera(camera_name)
 
-        answer = leftOrRight(detections, pil_frame.size[0]/2)
-        if answer == 0:
-            print("left")
-            await base.spin(spinNum, vel)     # CCW is positive
-            await base.move_straight(straightNum, vel)
-        if answer == 1:
-            print("center")
-            await base.move_straight(straightNum, vel)
-        if answer == 2:
-            print("right")
-            await base.spin(-spinNum, vel)
-        # If nothing is detected, nothing moves
+            answer = leftOrRight(detections, pil_frame.size[0]/2)
+            if answer == 0:
+                print("left")
+                await base.spin(spinNum, vel)     # CCW is positive
+                await base.move_straight(straightNum, vel)
+            if answer == 1:
+                print("center")
+                await base.move_straight(straightNum, vel)
+            if answer == 2:
+                print("right")
+                await base.spin(-spinNum, vel)
+            # If nothing is detected, nothing moves
 
-    await robot.close()
 
 if __name__ == "__main__":
     print("Starting up... ")

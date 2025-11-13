@@ -673,24 +673,23 @@ async def nav_avoid_obstacles(
 
 
 async def main():
-    robot = await connect()
+    async with await connect() as machine:
+        # Get base component and services from the robot
+        base = Base.from_robot(machine, "base")
+        obstacle_detection_service = VisionClient.from_robot(machine, "myObsDepth")
+        nav_service = NavigationClient.from_robot(machine, "nav")
 
-    # Get base component and services from the robot
-    base = Base.from_robot(robot, "base")
-    obstacle_detection_service = VisionClient.from_robot(robot, "myObsDepth")
-    nav_service = NavigationClient.from_robot(robot, "nav")
+        # Get waypoints and add a new waypoint
+        waypoints = await nav_service.get_waypoints()
+        assert (len(waypoints) == 0)
+        await nav_service.add_waypoint(GeoPoint(latitude=0.00006, longitude=0))
 
-    # Get waypoints and add a new waypoint
-    waypoints = await nav_service.get_waypoints()
-    assert (len(waypoints) == 0)
-    await nav_service.add_waypoint(GeoPoint(latitude=0.00006, longitude=0))
+        # Get waypoints again, check to see that one has been added
+        waypoints = await nav_service.get_waypoints()
+        assert (len(waypoints) == 1)
 
-    # Get waypoints again, check to see that one has been added
-    waypoints = await nav_service.get_waypoints()
-    assert (len(waypoints) == 1)
-
-    # Avoid obstacles
-    await nav_avoid_obstacles(base, nav_service, obstacle_detection_service)
+        # Avoid obstacles
+        await nav_avoid_obstacles(base, nav_service, obstacle_detection_service)
 
 if __name__ == '__main__':
     asyncio.run(main())

@@ -859,14 +859,12 @@ async def moveInSquare(base):
 
 
 async def main():
-    machine = await connect()
+    async with await connect() as machine:
+        roverBase = Base.from_robot(machine, 'viam_base')
 
-    roverBase = Base.from_robot(machine, 'viam_base')
+        # Move the rover in a square
+        await moveInSquare(roverBase)
 
-    # Move the rover in a square
-    await moveInSquare(roverBase)
-
-    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

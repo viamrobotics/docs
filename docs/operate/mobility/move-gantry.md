@@ -83,26 +83,23 @@ async def connect():
 
 
 async def main():
-    machine = await connect()
+    async with connect() as machine:
+        print('Resources:')
+        print(machine.resource_names)
 
-    print('Resources:')
-    print(machine.resource_names)
+        # get gantry-1
+        gantry_1 = Gantry.from_robot(machine, "gantry-1")
+        gantry_1_return_value = await gantry_1.get_lengths()
+        print(f"gantry-1 get_lengths return value: {gantry_1_return_value}")
 
-    # get gantry-1
-    gantry_1 = Gantry.from_robot(machine, "gantry-1")
-    gantry_1_return_value = await gantry_1.get_lengths()
-    print(f"gantry-1 get_lengths return value: {gantry_1_return_value}")
+        # Home the gantry
+        await gantry_1.home()
 
-    # Home the gantry
-    await gantry_1.home()
+        # Move this three-axis gantry to a position 5mm in the
+        # positive Y direction from (0,0,0)
+        # and set the speed of each axis to 8 mm/sec
+        await gantry_1.move_to_position([0, 5, 0], [8, 8, 8])
 
-    # Move this three-axis gantry to a position 5mm in the
-    # positive Y direction from (0,0,0)
-    # and set the speed of each axis to 8 mm/sec
-    await gantry_1.move_to_position([0, 5, 0], [8, 8, 8])
-
-    # Don't forget to close the machine when you're done!
-    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())
@@ -143,26 +140,23 @@ async def connect():
 
 
 async def main():
-    machine = await connect()
+    async with connect() as machine:
+        print('Resources:')
+        print(machine.resource_names)
 
-    print('Resources:')
-    print(machine.resource_names)
+        # get gantry-1
+        gantry_1 = Gantry.from_robot(machine, "gantry-1")
+        gantry_1_return_value = await gantry_1.get_lengths()
+        print(f"gantry-1 get_lengths return value: {gantry_1_return_value}")
 
-    # get gantry-1
-    gantry_1 = Gantry.from_robot(machine, "gantry-1")
-    gantry_1_return_value = await gantry_1.get_lengths()
-    print(f"gantry-1 get_lengths return value: {gantry_1_return_value}")
+        motion = MotionClient.from_robot(robot=machine, name="builtin")
 
-    motion = MotionClient.from_robot(robot=machine, name="builtin")
+        goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
+        # Move the gantry
+        await motion.move(
+            component_name=gantry_1,
+            destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose))
 
-    goal_pose = Pose(x=0, y=0, z=300, o_x=0, o_y=0, o_z=1, theta=0)
-    # Move the gantry
-    await motion.move(
-        component_name=gantry_1,
-        destination=PoseInFrame(reference_frame="myFrame", pose=goal_pose))
-
-    # Don't forget to close the machine when you're done!
-    await machine.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

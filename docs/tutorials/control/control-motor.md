@@ -157,22 +157,18 @@ async def connect():
 
 
 async def main():
-    machine = await connect()
+    async with await connect() as machine:
+        print('Resources:')
+        print(machine.resource_names)
 
-    print('Resources:')
-    print(machine.resource_names)
-
-    # Instantiate the motor client
-    motor_1 = Motor.from_robot(machine, "motor-1")
-    # Turn the motor at 35% power forwards
-    await motor_1.set_power(power=0.35)
-    # Let the motor spin for 3 seconds
-    time.sleep(3)
-    # Stop the motor
-    await motor_1.stop()
-
-    # Don't forget to close the machine when you're done!
-    await machine.close()
+        # Instantiate the motor client
+        motor_1 = Motor.from_robot(machine, "motor-1")
+        # Turn the motor at 35% power forwards
+        await motor_1.set_power(power=0.35)
+        # Let the motor spin for 3 seconds
+        time.sleep(3)
+        # Stop the motor
+        await motor_1.stop()
 
 
 if __name__ == '__main__':

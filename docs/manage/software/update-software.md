@@ -166,9 +166,9 @@ async def main():
             print("Attempting to connect to {}...".format(machine_address))
 
             try:
-                machine = await machine_connect(machine_address)
-                status = await machine.get_machine_status()
-                print(status.config)
+                async with await machine_connect(machine_address) as machine:
+                    status = await machine.get_machine_status()
+                    print(status.config)
 
             except ConnectionError:
                 print("Unable to establish a connection to the machine.")
