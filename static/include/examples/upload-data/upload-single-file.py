@@ -33,24 +33,23 @@ async def connect() -> ViamClient:
     return await ViamClient.create_from_dial_options(dial_options)
 
 async def main():
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    binary_data_id = await data_client.file_upload_from_path(
-      # The ID of the machine part the file should be associated with
-      part_id=PART_ID,
-      # Any tags you want to apply to this file
-      tags=["uploaded"],
-      # Path to the file
-      filepath=FILE_PATH
-    )
+        binary_data_id = await data_client.file_upload_from_path(
+          # The ID of the machine part the file should be associated with
+          part_id=PART_ID,
+          # Any tags you want to apply to this file
+          tags=["uploaded"],
+          # Path to the file
+          filepath=FILE_PATH
+        )
 
-    # :remove-start:
-    assert binary_data_id is not None
-    num_deleted = await data_client.delete_binary_data_by_ids([binary_data_id])
-    assert num_deleted == 1
-    # :remove-end:
-    viam_client.close()
+        # :remove-start:
+        assert binary_data_id is not None
+        num_deleted = await data_client.delete_binary_data_by_ids([binary_data_id])
+        assert num_deleted == 1
+        # :remove-end:
 
 if __name__ == '__main__':
     asyncio.run(main())

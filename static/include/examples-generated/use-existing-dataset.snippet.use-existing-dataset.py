@@ -31,86 +31,85 @@ async def connect() -> ViamClient:
 
 
 async def main():
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
 
-    print("Creating dataset...")
-    try:
-        dataset_id = await data_client.create_dataset(
-            name=DATASET_NAME,
-            organization_id=ORG_ID,
-        )
-        print(f"Created dataset: {dataset_id}")
-    except Exception as e:
-        print("Error creating dataset. It may already exist.")
-        print("See: https://app.viam.com/data/datasets")
-        print(f"Exception: {e}")
-        return 1
-
-    file_ids = []
-
-    for file_name in os.listdir(FOLDER_NAME + "/metadata/"):
-        with open(FOLDER_NAME + "/metadata/" + file_name) as f:
-            try:
-                data = json.load(f)
-            except Exception as e:
-                print(f"Skipping file: {file_name} because it is not valid JSON")
-                print(f"Exception: {e}")
-                continue
-
-            tags = None
-
-            if "captureMetadata" in data.keys():
-                if "tags" in data["captureMetadata"].keys():
-                    tags = data["captureMetadata"]["tags"]
-
-            annotations = None
-            if "annotations" in data.keys():
-                annotations = data["annotations"]
-            print(data)
-            print(annotations)
-
-            image_file = file_name.replace(".json", "")
-
-            print("Uploading: " + image_file)
-
-            file_id = await data_client.file_upload_from_path(
-                part_id=PART_ID,
-                tags=tags,
-                filepath=os.path.join(FOLDER_NAME + "/data/", image_file)
+        print("Creating dataset...")
+        try:
+            dataset_id = await data_client.create_dataset(
+                name=DATASET_NAME,
+                organization_id=ORG_ID,
             )
-            print("FileID: " + file_id)
+            print(f"Created dataset: {dataset_id}")
+        except Exception as e:
+            print("Error creating dataset. It may already exist.")
+            print("See: https://app.viam.com/data/datasets")
+            print(f"Exception: {e}")
+            return 1
 
-            if annotations:
-                bboxes = annotations["bboxes"]
-                for box in bboxes:
-                    await data_client.add_bounding_box_to_image_by_id(
-                        binary_id=file_id,
-                        label=box["label"],
-                        x_min_normalized=box["xMinNormalized"],
-                        y_min_normalized=box["yMinNormalized"],
-                        x_max_normalized=box["xMaxNormalized"],
-                        y_max_normalized=box["yMaxNormalized"]
+        file_ids = []
+
+        for file_name in os.listdir(FOLDER_NAME + "/metadata/"):
+            with open(FOLDER_NAME + "/metadata/" + file_name) as f:
+                try:
+                    data = json.load(f)
+                except Exception as e:
+                    print(f"Skipping file: {file_name} because it is not valid JSON")
+                    print(f"Exception: {e}")
+                    continue
+
+                tags = None
+
+                if "captureMetadata" in data.keys():
+                    if "tags" in data["captureMetadata"].keys():
+                        tags = data["captureMetadata"]["tags"]
+
+                annotations = None
+                if "annotations" in data.keys():
+                    annotations = data["annotations"]
+                print(data)
+                print(annotations)
+
+                image_file = file_name.replace(".json", "")
+
+                print("Uploading: " + image_file)
+
+                file_id = await data_client.file_upload_from_path(
+                    part_id=PART_ID,
+                    tags=tags,
+                    filepath=os.path.join(FOLDER_NAME + "/data/", image_file)
+                )
+                print("FileID: " + file_id)
+
+                if annotations:
+                    bboxes = annotations["bboxes"]
+                    for box in bboxes:
+                        await data_client.add_bounding_box_to_image_by_id(
+                            binary_id=file_id,
+                            label=box["label"],
+                            x_min_normalized=box["xMinNormalized"],
+                            y_min_normalized=box["yMinNormalized"],
+                            x_max_normalized=box["xMaxNormalized"],
+                            y_max_normalized=box["yMaxNormalized"]
+                        )
+
+                if tags:
+                    await data_client.add_tags_to_binary_data_by_ids(
+                        tags=tags,
+                        binary_ids=[file_id]
                     )
 
-            if tags:
-                await data_client.add_tags_to_binary_data_by_ids(
-                    tags=tags,
-                    binary_ids=[file_id]
-                )
+                file_ids.append(file_id)
 
-            file_ids.append(file_id)
-
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=file_ids,
-        dataset_id=dataset_id
-    )
-    print("Added files to dataset.")
-    print("https://app.viam.com/data/datasets?id=" + dataset_id)
+        await data_client.add_binary_data_to_dataset_by_ids(
+            binary_ids=file_ids,
+            dataset_id=dataset_id
+        )
+        print("Added files to dataset.")
+        print("https://app.viam.com/data/datasets?id=" + dataset_id)
 
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

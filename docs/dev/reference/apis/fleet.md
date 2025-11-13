@@ -71,14 +71,12 @@ async def connect() -> ViamClient:
 
 
 async def main():
-
     # Make a ViamClient
-    viam_client = await connect()
-    # Instantiate an AppClient called "cloud"
-    # to run fleet management API methods on
-    cloud = viam_client.app_client
+    async with await connect() as viam_client:
+      # Instantiate an AppClient called "cloud"
+      # to run fleet management API methods on
+      cloud = viam_client.app_client
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

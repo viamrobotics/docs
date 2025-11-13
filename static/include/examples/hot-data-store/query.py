@@ -33,27 +33,26 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    tabular_data = await data_client.tabular_data_by_mql(
-        organization_id=ORG_ID,
-        query=[
-            {
-                "$match": {
-                    "component_name": "sensor-1"
+        tabular_data = await data_client.tabular_data_by_mql(
+            organization_id=ORG_ID,
+            query=[
+                {
+                    "$match": {
+                        "component_name": "sensor-1"
+                    }
+                },
+                {
+                    "$limit": 10
                 }
-            },
-            {
-                "$limit": 10
-            }
-        ],
-        tabular_data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE,
-    )
-    print(f"Tabular Data: {tabular_data}")
+            ],
+            tabular_data_source_type=TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE,
+        )
+        print(f"Tabular Data: {tabular_data}")
 
-    viam_client.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

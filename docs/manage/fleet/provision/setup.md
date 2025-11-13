@@ -276,47 +276,46 @@ async def connect() -> ViamClient:
 
 
 async def main():
-    viam_client = await connect()
-    cloud = viam_client.app_client
-    new_machine_id = await cloud.new_robot(
-        name=MACHINE_NAME, location_id=LOCATION_ID)
-    print("Machine created: " + new_machine_id)
-    list_of_parts = await cloud.get_robot_parts(
-        robot_id=new_machine_id)
-    print("Part id: " + list_of_parts[0].id)
+    async with await connect() as viam_client:
+        cloud = viam_client.app_client
+        new_machine_id = await cloud.new_robot(
+            name=MACHINE_NAME, location_id=LOCATION_ID)
+        print("Machine created: " + new_machine_id)
+        list_of_parts = await cloud.get_robot_parts(
+            robot_id=new_machine_id)
+        print("Part id: " + list_of_parts[0].id)
 
-    org_list = await cloud.list_organizations()
-    print(org_list[0].id)
+        org_list = await cloud.list_organizations()
+        print(org_list[0].id)
 
-    auth = APIKeyAuthorization(
-        role="owner",
-        resource_type="robot",
-        resource_id=new_machine_id
-    )
-    api_key, api_key_id = await cloud.create_key(
-        org_list[0].id, [auth], "test_provisioning_key")
-    print(api_key, api_key_id)
+        auth = APIKeyAuthorization(
+            role="owner",
+            resource_type="robot",
+            resource_id=new_machine_id
+        )
+        api_key, api_key_id = await cloud.create_key(
+            org_list[0].id, [auth], "test_provisioning_key")
+        print(api_key, api_key_id)
 
-    headers = {
-        'key_id': api_key_id,
-        'key': api_key
-    }
-    params = {
-        "client": 'true',
-        "id": list_of_parts[0].id
-    }
-    res = requests.get(
-        'https://app.viam.com/api/json1/config',
-        params=params,
-        headers=headers,
-        timeout=10
-    )
-    print(res.text)
+        headers = {
+            'key_id': api_key_id,
+            'key': api_key
+        }
+        params = {
+            "client": 'true',
+            "id": list_of_parts[0].id
+        }
+        res = requests.get(
+            'https://app.viam.com/api/json1/config',
+            params=params,
+            headers=headers,
+            timeout=10
+        )
+        print(res.text)
 
-    with open("viam.json", "w") as text_file:
-        text_file.write(res.text)
+        with open("viam.json", "w") as text_file:
+            text_file.write(res.text)
 
-    viam_client.close()
 
 if __name__ == '__main__':
     asyncio.run(main())

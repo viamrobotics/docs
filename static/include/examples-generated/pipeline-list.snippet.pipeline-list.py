@@ -24,15 +24,14 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    pipelines = await data_client.list_data_pipelines(ORG_ID)
-    for pipeline in pipelines:
-        print(f"Pipeline: {pipeline.name}, ID: {pipeline.id}, schedule: {pipeline.schedule}, data_source_type: {pipeline.data_source_type}")
+        pipelines = await data_client.list_data_pipelines(ORG_ID)
+        for pipeline in pipelines:
+            print(f"Pipeline: {pipeline.name}, ID: {pipeline.id}, schedule: {pipeline.schedule}, data_source_type: {pipeline.data_source_type}")
 
-    viam_client.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -23,17 +23,16 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    print("Adding image to dataset...")
-    await data_client.add_binary_data_to_dataset_by_ids(
-        binary_ids=[BINARY_DATA_ID],
-        dataset_id=DATASET_ID
-    )
+        print("Adding image to dataset...")
+        await data_client.add_binary_data_to_dataset_by_ids(
+            binary_ids=[BINARY_DATA_ID],
+            dataset_id=DATASET_ID
+        )
 
-    viam_client.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())

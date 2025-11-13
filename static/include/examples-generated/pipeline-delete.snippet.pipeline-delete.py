@@ -24,14 +24,13 @@ async def connect() -> ViamClient:
 
 
 async def main() -> int:
-    viam_client = await connect()
-    data_client = viam_client.data_client
+    async with await connect() as viam_client:
+        data_client = viam_client.data_client
 
-    await data_client.delete_data_pipeline(PIPELINE_ID)
-    print(f"Pipeline deleted with ID: {PIPELINE_ID}")
+        await data_client.delete_data_pipeline(PIPELINE_ID)
+        print(f"Pipeline deleted with ID: {PIPELINE_ID}")
 
-    viam_client.close()
-    return 0
+        return 0
 
 if __name__ == "__main__":
     asyncio.run(main())
