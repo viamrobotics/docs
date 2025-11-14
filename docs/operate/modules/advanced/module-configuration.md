@@ -16,7 +16,7 @@ For an introduction to configuring a module on your machine, see [Configure regi
 
 ## Modular resource configuration details
 
-In the Viam web UI, when you add a modular resource it adds two cards to the UI: a module card and a resource card.
+In the Viam web UI, when you add a modular resource, it adds two cards to the UI: a module card and a resource card.
 The modular resource card allows you to configure attributes for the resource.
 
 If you switch to **{} JSON** mode, you can also configure the attributes in JSON.
@@ -79,13 +79,13 @@ The following properties are available for modular resources:
 | `attributes` | object | Sometimes **Required** | The configuration attributes for the resource model. Check the module's Readme for information about available configuration attributes for a resource. |
 | `name` | string | **Required** | The name of the configured instance of the modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
 | `api` | string | **Required** | The colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](/operate/modules/advanced/metajson/#valid-api-identifiers) for more information. |
-| `model`| string | **Required** | A unique colon-delimited triplet`namespace:module-name:model-name` identifying the resource model. If you are publishing a public module (`"visibility": "public"`), the namespace of your model must match the [namespace of your organization](#create-a-namespace-for-your-organization). See [valid model identifiers](/operate/modules/advanced/metajson/#valid-model-identifiers) for more information. |
-| `depends_on`| array | Optional | The names of resources that must be available before this resource starts. Deprecated. Use [dependencies](/operate/modules/advanced/dependencies/) instead. |
+| `model`| string | **Required** | A unique colon-delimited triplet `namespace:module-name:model-name` identifying the resource model. See [valid model identifiers](/operate/modules/advanced/metajson/#valid-model-identifiers) for more information. |
+| `depends_on`| array | Optional | Deprecated. Use [dependencies](/operate/modules/advanced/dependencies/) instead. The names of resources that must be available before this resource starts. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
 
 ## Module configuration details
 
-In the Viam web UI, when you add a modular resource it adds two cards to the UI: a module card and a resource card.
+In the Viam web UI, when you add a modular resource, it adds two cards to the UI: a module card and a resource card.
 The module card allows you to configure attributes for the module.
 
 If you switch to **{} JSON** mode, you can also configure the attributes in JSON.
@@ -206,9 +206,9 @@ The following properties are configurable for each module.
 | ---- | ---- | --------- | ----------- |
 | `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is started [locally](/operate/modules/support-hardware/#test-your-module-locally) on the device. |
 | `name` | string | **Required** | The name of the module. |
-| `module_id` | string | **Required** | The module author's organization namespace or UUID, then a colon, then the name of the module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. `<module namespace>:<module name>`. Not applicable to local modules. |
-| `version` | string | **Required** | <p>You can specify: <ul><li>a specific version (X.Y.Z) of the module to use</li><li>to pin the module version to the newest release, so your machine automatically updates to the latest version of the module that is available or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).</p> |
-| `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. Check the module's readme for more information. See [environment variables](#environment-variables). You can add and edit `env` by switching from **Builder** to **{} JSON** mode in the **CONFIGURE** tab. |
+| `module_id` | string | **Required** | The module ID, which includes either the module namespace or organization ID, followed by its name: `<namespace>:<module-name>` or `<org-id>:<module-name>`. The `module_id` uniquely identifies your module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. |
+| `version` | string | **Required** | <p>You can specify: <ul><li>to use a specific version (X.Y.Z) of the module</li><li>to pin the module version to the latest version, so your machine automatically updates to the latest version of the module that is available, or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).</p> |
+| `env` | object | Optional | Environment variables available to the module. For example `{ "API_KEY": "${environment.API_KEY}" }`. Some modules require that you set environment variables as part of configuration. For more information, see [environment variables](#environment-variables). You can add and edit `env` by switching from **Builder** to **{} JSON** mode in the **CONFIGURE** tab. |
 | `executable_path` | string | Local modules only | The path to the module's executable file. Only applicable to, and required for, local modules. Registry modules use the `entrypoint` in the [<file>meta.json</file> file](/operate/modules/advanced/metajson/) instead. |
 | `disabled` | boolean | Optional | Whether to disable the module.<br>Default: `false`. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this module. |
@@ -231,7 +231,7 @@ The following update options are available:
 - **Minor (X.Y.\*)**: Only update to newer patch releases of the same minor release branch.
   The module will automatically restart and update itself whenever new updates within the same minor release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.2.5` but not `1.3.0` or `2.0.0`.
-- **Major (X.\*)**: Only update to newer minor releases of the same major release branch.
+- **Major (X.\*)**: Only update to newer patch and minor releases of the same major release branch.
   The module will automatically restart and update itself whenever new updates within the same major release are available in the Viam Registry.
   For example, use this option to permit a module with version `1.2.3` to update to version `1.2.4` or `1.3.0` but not `2.0.0` or `3.0.0`.
 - **Latest (`latest`)**: Always update to the latest version of this module available from the Viam Registry as soon as a new version becomes available.
@@ -248,76 +248,6 @@ If, for example, the module provides a motor component, and the motor is running
 {{% /alert %}}
 
 If a module appears in both a {{< glossary_tooltip term_id="fragment" text="fragment" >}} and the part configuration, or in multiple fragments, Viam imports the newest of the configured versions.
-
-### Module meta.json configuration
-
-When creating a module, you'll need to create a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
-
-Here's an example of a `meta.json` file:
-
-```json
-{
-  "module_id": "your-namespace:your-module",
-  "visibility": "public",
-  "url": "https://github.com/your-org/your-repo",
-  "description": "Your module description",
-  "models": [
-    {
-      "api": "rdk:component:base",
-      "model": "your-namespace:your-module:your-model"
-    }
-  ],
-  "entrypoint": "run.sh",
-  "first_run": "setup.sh"
-}
-```
-
-For modules that include [Viam applications](/operate/control/viam-applications/), you can add the `applications` field:
-
-```json
-{
-  "module_id": "your-namespace:your-module",
-  "visibility": "public",
-  "url": "https://github.com/your-org/your-repo",
-  "description": "Your module description",
-  "models": [
-    {
-      "api": "rdk:component:base",
-      "model": "your-namespace:your-module:your-model"
-    }
-  ],
-  "entrypoint": "run.sh",
-  "applications": [
-    {
-      "name": "your-app-name",
-      "type": "web",
-      "entrypoint": "dist/index.html",
-      "fragmentIds": [],
-      "logoPath": "static/logo.png",
-      "customizations": {
-        "machinePicker": {
-          "heading": "Air monitoring dashboard",
-          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
-        }
-      }
-    }
-  ]
-}
-```
-
-The `applications` field is an array of application objects with the following properties:
-
-<!-- prettier-ignore -->
-| Property     | Type   | Description                                                                                       |
-| ------------ | ------ | ------------------------------------------------------------------------------------------------- |
-| `name`       | string | The name of your application, which will be used in the URL (`name.publicnamespace.viamapps.com`) |
-| `type`       | string | The type of application: `"single_machine"` or `"multi_machine"`. Whether the application can access and operate one machine or multiple machines. |
-| `entrypoint` | string | The path to the HTML entry point for your application                                             |
-| `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be selectable from the machine picker screen. Only for single machine applications. |
-| `logoPath` | string | The URL or the relative path to the logo to display on the machine picker screen for a single machine application. |
-| `customizations` | object | Override the branding heading and subheading to display on the authentication screen for single machine applications: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading` Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
-
-For more information about Viam applications, see the [Viam applications documentation](/operate/control/viam-applications/).
 
 ### Environment variables
 
@@ -388,7 +318,7 @@ viam_home = os.environ.get("VIAM_HOME")
 
 ## Configure an unlisted module
 
-To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/modules/advanced/manage-modules/#change-module-visibility) set to **Unlisted**, you need to manually add the module to your configuration:
+To configure a module that is uploaded to the Viam Registry but has [visibility](/operate/modules/advanced/manage-modules/#change-module-visibility) set to **Unlisted** (`public_unlisted`), you need to manually add the module to your configuration:
 
 {{% hiddencontent %}}
 A public unlisted module is the same as an unlisted module.
@@ -456,3 +386,67 @@ A public unlisted module is the same as an unlisted module.
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Module meta.json configuration
+
+Each module must have a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+
+Example `meta.json` file:
+
+```json
+{
+  "module_id": "your-namespace:your-module",
+  "visibility": "public",
+  "url": "https://github.com/your-org/your-repo",
+  "description": "Your module description",
+  "models": [
+    {
+      "api": "rdk:component:base",
+      "model": "your-namespace:your-module:your-model"
+    }
+  ],
+  "entrypoint": "run.sh",
+  "first_run": "setup.sh",
+  "applications": [
+    {
+      "name": "your-app-name",
+      "type": "single_machine",
+      "entrypoint": "dist/index.html",
+      "fragmentIds": [],
+      "logoPath": "static/logo.png",
+      "customizations": {
+        "machinePicker": {
+          "heading": "Air monitoring dashboard",
+          "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard."
+        }
+      }
+    }
+  ]
+}
+```
+
+<!-- prettier-ignore -->
+| Property     | Type   | Description |
+| ------------ | ------ | ----------- |
+| `module_id` | string | The module ID, which includes either the module namespace or organization ID, followed by its name: `<namespace>:<module-name>` or `<org-id>:<module-name>`. The `module_id` uniquely identifies your module. |
+| `visibility` | string | Whether the module is accessible only to members of your organization (`private`), visible to all Viam users (`public`), or unlisted (`public_unlisted`). |
+| `url` | string | The URL of the GitHub repository containing the source code of the module. Required for cloud build. Optional for local modules. |
+| `description` | string | The description of your module and what it provides. |
+| `models` | array | An array of objects describing the models provided by your module. You must provide at least one model in the models array or one application in the applications array. |
+| `entrypoint` | string | The name of the file that starts your module. This can be a compiled executable or a script. Required if you are shipping a model. |
+| `first_run` | string | The path to a script or binary that `viam-server` executes during the setup phase. It executes once when `viam-server` receives a new configuration, and only once per module or per version of the module. |
+
+For modules that include [Viam applications](/operate/control/viam-applications/), you can add the `applications` field.
+The `applications` field is an array of application objects with the following properties:
+
+<!-- prettier-ignore -->
+| Property     | Type   | Description |
+| ------------ | ------ | ----------- |
+| `name`       | string | The name of your application, which will be used in the URL (`name.publicnamespace.viamapps.com`) |
+| `type`       | string | The type of application: `"single_machine"` or `"multi_machine"`. Whether the application can access and operate one machine or multiple machines. |
+| `entrypoint` | string | The path to the HTML entry point for your application                                             |
+| `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be selectable from the machine picker screen. Only for single machine applications. |
+| `logoPath` | string | The URL or the relative path to the logo to display on the machine picker screen for a single machine application. |
+| `customizations` | object | Override the branding heading and subheading to display on the authentication screen for single machine applications: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading`: Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
+
+For more information about Viam applications, see the [Viam applications documentation](/operate/control/viam-applications/).

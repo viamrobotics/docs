@@ -281,9 +281,9 @@ It is required for your module.
 <!-- prettier-ignore -->
 | Name | Type | Inclusion | Description |
 |------|------|-----------|-------------|
-| `module_id` | string | **Required** | The module ID, which includes the organization name and the module name. `module_id` uniquely identifies your module. |
+| `module_id` | string | **Required** | The module ID, which includes either the module namespace or organization ID, followed by its name: `<namespace>:<module-name>` or `<org-id>:<module-name>`. The `module_id` uniquely identifies your module. |
 | `visibility` | string | **Required** | Must be `"public"`. |
-| `description` | string | **Required** | A description of your module and what it provides. |
+| `description` | string | **Required** | The description of your module and what it provides. |
 | `url` | string | Optional | The URL of the GitHub repository containing the source code of the module. |
 | `applications` | array | Optional | Objects that provide information about the [applications](/operate/control/viam-applications/) associated with the module. |
 | `models` | array | Optional | Empty unless you are shipping the app alongside models. For information on how to add models, see [Support hardware and software](/operate/modules/support-hardware/). |
