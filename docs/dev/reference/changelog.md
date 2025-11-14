@@ -71,6 +71,12 @@ Use [`resource.FromProvider`](https://pkg.go.dev/go.viam.com/rdk/resource#FromPr
 
 {{% /changelog %}}
 
+{{% changelog color="changed" title="Alerting on error logs" date="2025-09-10" %}}
+
+[Triggers](/manage/troubleshoot/alert/) now support sending alerts for error, warning, and info logs.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Machine job scheduling" date="2025-08-19" %}}
 
 Added support for scheduling automated jobs on machines that run at specified intervals.
