@@ -67,8 +67,8 @@ arch=$(uname -m); bits=$(getconf LONG_BIT); [[ ("$arch" == "x86_64" || "$arch" =
 bash -c '[[ "$(uname -s)" == "Darwin" && ("$(uname -m)" == "x86_64" || "$(uname -m)" == "arm64") ]] && echo "✅ Your system can run viam-server" || echo "❌ Your system cannot run viam-server"'
 ```
 
-{{% alert title="Note for Intel Mac users" color="note" %}}
-`viam-server` can run on Macs with Intel processors, but not all {{< glossary_tooltip term_id="module" text="modules" >}} support Intel Macs.
+{{% alert title="Note for Mac users" color="note" %}}
+`viam-server` can run on Macs, but not all {{< glossary_tooltip term_id="module" text="modules" >}} support Macs.
 {{% /alert %}}
 
 {{% /tab %}}
