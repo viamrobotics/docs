@@ -401,6 +401,14 @@ You can configure a redirect (HTTP 301) on your web server or hosting provider f
 You can store API keys for use with Viam apps as part of robot metadata:
 
 {{< tabs >}}
+{{% tab name="Web UI" %}}
+
+1. On a machine page, lick on the **...** menu in the top-right corner.
+1. Select **Custom machine metadata**.
+1. Add the metadata to the JSON object.
+1. Click **Save**.
+
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.py" lang="py" class="line-numbers linkable-line-numbers" data-line="41-43" >}}
