@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@koush/wrtc": "^0.5.3",
-    "@viamrobotics/sdk": "^0.51.0",
+    "@viamrobotics/sdk": "^0.55.0",
     "bluehawk": "^1.6.0",
     "hugo": "^0.0.3"
   }

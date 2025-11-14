@@ -403,7 +403,7 @@ You can store API keys for use with Viam apps as part of robot metadata:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.py" lang="py" class="line-numbers linkable-line-numbers" data-line="39-41" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.py" lang="py" class="line-numbers linkable-line-numbers" data-line="41-43" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
