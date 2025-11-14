@@ -26,8 +26,6 @@ You can configure triggers to fire in the following scenarios:
 1. Go to the **CONFIGURE** tab of your machine.
    Click the **+** (Create) button in the left side menu and select **Trigger**.
 
-   {{<imgproc src="/build/configure/trigger-create.png" resize="x800" declaredimensions=true alt="The Create menu with Trigger at the bottom of the list of options." style="width: 400px" class="shadow imgzoom" >}}
-
 1. Enter a name and click **Create**.
 
 1. In the **Type** dropdown, choose one of the following event types:
@@ -57,7 +55,6 @@ You can configure triggers to fire in the following scenarios:
    To add a webhook:
 
    1. Click **Add Webhook**.
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x800" style="width: 500px" declaredimensions=true alt="A trigger configured with an example URL." class="shadow imgzoom" >}}
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
@@ -67,7 +64,6 @@ You can configure triggers to fire in the following scenarios:
    To add an email notification:
 
    1. Click **Add Email**.
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x800" style="width: 500px" declaredimensions=true alt="A trigger configured with an example email." class="shadow imgzoom" >}}
    1. Add the email address where you wish to be notified whenever this trigger fires.
    1. Configure the time between notifications.
 

@@ -14,9 +14,10 @@ Triggers can alert you by email or webhook when any of the following events occu
 - [machine telemetry data syncs from your local device to the Viam cloud](/manage/troubleshoot/alert/)
 - [data syncs from a machine](/data-ai/data/alert-data/)
 - [service detects a specified object or classifies a specified label](/data-ai/ai/alert/)
+- [machine logs contain errors, warnings, or info logs](/manage/troubleshoot/alert/)
 
 This page provides a reference for the Trigger attributes.
-For step-by-step configuration information, see the links above instead.
+For step-by-step configuration information, see the preceding links instead.
 
 ## JSON configuration templates
 
@@ -100,6 +101,30 @@ The following template demonstrates the structure of a JSON configuration for a 
 ]
 ```
 
+### Machine logs trigger template
+
+```json {class="line-numbers linkable-line-numbers"}
+"triggers": [
+  {
+    "name": "<trigger name>",
+    "event": {
+      "type": "conditional_logs_ingested",
+      "log_levels": [
+          "error",
+          "warn",
+          "info"
+        ]
+    },
+    "notifications": [
+      {
+        "type": "<webhook|email>",
+        "value": "<webhook URL or email address>"
+      }
+    ]
+  }
+]
+```
+
 ## Trigger attributes
 
 Triggers support the following attributes:
@@ -108,8 +133,8 @@ Triggers support the following attributes:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
-| `event` |  object | **Required** | The trigger event object, which contains the following fields: <ul><li>`type`: The type of the event to trigger on. Options: <ul><li>`part_data_ingested`: fire when data syncs</li> <li>`conditional_data_ingested`: fire when data that meets a certain condition syncs</li> <li>`part_online`: fire when the part is online</li> <li>`part_offline`: fire when the part is offline</li></ul></li><li>`data_types`: Required with `type` `part_data_ingested`. An array of data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required when `type` is `conditional_data_ingested`. For more information about this field, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes). </li></ul> |
-| `notifications` |  object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds.</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). |
+| `event` |  object | **Required** | The trigger event object, which contains the following fields: <ul><li>`type`: The type of the event to trigger on. Options: <ul><li>`part_data_ingested`: fire when data syncs</li> <li>`conditional_data_ingested`: fire when data that meets a certain condition syncs</li> <li>`part_online`: fire when the part is online</li> <li>`part_offline`: fire when the part is offline</li> <li>`conditional_logs_ingested`: check every hour and fire if logs of the specified log level are present</li></ul></li><li>`data_types`: Required with `type` `part_data_ingested`. An array of data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required when `type` is `conditional_data_ingested`. For more information about this field, see [Conditional attributes](/data-ai/reference/triggers-configuration/#conditional-attributes). </li><li> `log_levels`: Required when `type` is `conditional_logs_ingested`. An array of log levels. Options: `error`, `warn`, `info`. </li></ul> |
+| `notifications` |  object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`</li><li>`value`: The URL to send the request to or the email address to notify.</li><li>`seconds_between_notifications`: The interval between notifications in seconds. This field is ignored for event type `conditional_logs_ingested` where the interval is always one hour.</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this trigger. |
 
 ## Conditional attributes
@@ -261,6 +286,9 @@ def trigger():
     data = {}
     if request.data:
         data = request.json
+        # For logs the return type is an array
+        if isinstance(data, list):
+            data = {"logs": data}
     payload = {
         "Org-Id": headers.get('org-id', 'no value'),
         "Organization-Name": headers.get('organization-name', '') or
@@ -281,7 +309,8 @@ def trigger():
         "Data-Type": data.get('data_type', 'no value'),
         "File-Id": data.get('file_id', 'no value'),
         "Trigger-Condition": data.get("trigger_condition", 'no value'),
-        "Data": data.get('data', 'no value')
+        "Data": data.get('data', 'no value'),
+        "Logs": data.get('logs', 'no value')
     }
     print(payload)
 
@@ -307,6 +336,9 @@ def hello_http(request):
     data = {}
     if request.data:
         data = request.json
+        # For logs the return type is an array
+        if isinstance(data, list):
+            data = {"logs": data}
     payload = {
         "Org-Id": headers.get("org-id", "no value"),
         "Organization-Name": headers.get("organization-name", "")
@@ -327,7 +359,8 @@ def hello_http(request):
         "Data-Type": data.get("data_type", "no value"),
         "File-Id": data.get('file_id', "no value"),
         "Trigger-Condition": data.get("trigger_condition", "no value"),
-        "Data": data.get('data', "no value")
+        "Data": data.get('data', 'no value'),
+        "Logs": data.get('logs', 'no value')
     }
     print(payload)
 

@@ -168,15 +168,11 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
 
    1. Click **Add Email**.
 
-      {{<imgproc src="/build/configure/trigger-configured-email.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example email address." class="shadow imgzoom" >}}
-
    1. Add the email address you wish to be notified whenever this trigger fires.
 
    To add a webhook notification:
 
    1. Click **Add Webhook**.
-
-      {{<imgproc src="/build/configure/trigger-configured.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with an example webhook URL." class="shadow imgzoom" >}}
 
    1. Add the URL of your cloud function.
    1. Write your cloud function to process the [webhook data](/data-ai/reference/triggers-configuration/#webhook-attributes).
