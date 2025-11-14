@@ -350,6 +350,18 @@ brew tap viamrobotics/brews && brew install viam-server
 
 The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
 
+You can optionally run `viam-server` as a background service with Homebrew:
+
+1. Place your machine configuration at <FILE>/opt/homebrew/etc/viam.json</FILE>.
+
+1. Start the service with:
+
+   ```sh {class="command-line" data-prompt="$" data-output="5-10"}
+   brew services start viam-server
+   ```
+
+For more information about brew services, run `brew services --help`.
+
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}
 
