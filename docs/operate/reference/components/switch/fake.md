@@ -9,11 +9,11 @@ tags: ["switch", "components"]
 aliases:
   - "/components/switch/fake/"
 component_description: "A model used for testing, with no physical hardware."
-# SMEs: 
+toc_hide: true
 ---
 
-The `fake` switch model is used for testing switch functionality without requiring physical hardware.
-It simulates a multi-position switch that can be controlled programmatically.
+The `fake` switch model is a model for testing switch functionality without physical hardware.
+It simulates a multi-position switch which you can control programmatically.
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
@@ -75,8 +75,8 @@ The following attributes are available for the `fake` switch model:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `position_count` | int | **Required** | The number of positions that the switch can be in. If omitted, the switch will have two positions. Default: `2` |
-| `labels` | array | Optional | An array of labels corresponding to the positions. If omitted, the switch will have labels of "Position 1", "Position 2", etc. The number of labels should match the `position_count`. |
+| `position_count` | int | **Required** | The number of positions that the switch can be in. Default: `2` |
+| `labels` | array | Optional | An array of labels corresponding to the positions. Default: numeric values for the number of positions, starting with 0. |
 
 ## Test the switch
 
@@ -93,7 +93,9 @@ If your fake switch is not working as expected:
 
 ## Next steps
 
+Check out the [switch API](/dev/reference/apis/components/switch/) or check out one of these guides:
+
 {{< cards >}}
-{{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/dev/reference/apis/components/switch/" noimage="true" %}}
+{{% card link="/dev/reference/apis/components/switch/" customTitle="Switch API" noimage="true" %}}
+{{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{< /cards >}}

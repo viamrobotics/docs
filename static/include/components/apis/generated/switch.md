@@ -62,7 +62,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const mySwitch = new VIAM.SwitchClient(machine, "my_switch");
+const mySwitch = new VIAM.SwitchClient(machine, 'my_switch');
 
 // Update the switch from its current position to position 1
 await mySwitch.setPosition(1);
@@ -143,7 +143,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const mySwitch = new VIAM.SwitchClient(machine, "my_switch");
+const mySwitch = new VIAM.SwitchClient(machine, 'my_switch');
 
 // Update the switch to position 1
 await mySwitch.setPosition(1);
@@ -165,7 +165,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetNumberOfPositions
 
-Return the number of valid positions for this switch and their labels.
+Return the number of valid positions for this switch.
 Supported by `viam-micro-server`.
 
 {{< tabs >}}
@@ -179,17 +179,13 @@ Supported by `viam-micro-server`.
 **Returns:**
 
 - ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The number of available positions.
-- (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): Human-readable labels for each switch position.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_switch = Switch.from_robot(robot=machine, name="my_switch")
 
-num_positions, labels = await my_switch.get_number_of_positions()
-print(f"Switch has {num_positions} positions:")
-for i, label in enumerate(labels):
-    print(f"  Position {i}: {label}")
+print(await my_switch.get_number_of_positions())
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/switch/client/index.html#viam.components.switch.client.SwitchClient.get_number_of_positions).
@@ -204,30 +200,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-<<<<<<< HEAD
-
 - [(uint32)](https://pkg.go.dev/builtin#uint32)
-- # [([]string)](https://pkg.go.dev/builtin#string)
-- [(uint32)](https://pkg.go.dev/builtin#uint32): The number of available positions.
-- [([]string)](https://pkg.go.dev/builtin#string): Human-readable labels for each switch position.
-  > > > > > > > f08e17e6a (Documentation updates from Promptless)
+- [([]string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromRobot(machine, "my_switch")
-
-numPositions, labels, err := mySwitch.GetNumberOfPositions(context.Background(), nil)
-if err != nil {
-    logger.Fatalf("Failed to get switch positions: %v", err)
-}
-
-logger.Infof("Switch has %d positions:", numPositions)
-for i, label := range labels {
-    logger.Infof("  Position %d: %s", i, label)
-}
-```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
 
@@ -246,14 +221,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const mySwitch = new VIAM.SwitchClient(machine, "my_switch");
+const mySwitch = new VIAM.SwitchClient(machine, 'my_switch');
 
-// Get the number of available positions and their labels
-const { numPositions, labels } = await mySwitch.getNumberOfPositions();
-console.log(`Switch has ${numPositions} positions:`);
-labels.forEach((label, index) => {
-  console.log(`  Position ${index}: ${label}`);
-});
+// Get the number of available positions
+const numPositions = await mySwitch.getNumberOfPositions();
+console.log('Number of positions:', numPositions);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SwitchClient.html#getnumberofpositions).
@@ -334,12 +306,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 

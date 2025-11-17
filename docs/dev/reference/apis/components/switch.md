@@ -12,7 +12,6 @@ date: "2025-02-20"
 
 The switch API allows you to give commands to your [switch components](/operate/reference/components/switch/) for reading the state of a physical switch that has multiple discrete positions.
 A simple switch has two positions, and a knob could have any number of positions.
-Switch positions can have human-readable labels (such as "Off", "Low", "Medium", "High") to make them more intuitive to work with.
 
 The switch component supports the following methods:
 

@@ -10,13 +10,13 @@ icon: true # this should be used when the image is an icon, it will adjust the s
 images: ["/icons/components/switch.svg"]
 no_list: true
 modulescript: true
+hide_children: true
 date: "2025-02-20"
 # SMEs:
 ---
 
 The switch component provides an API for reading the state of a physical switch on a machine that has multiple discrete positions.
 A simple switch has two positions, and a knob could have any number of positions.
-Switch components can provide human-readable labels for each position, making it easier to work with meaningful position names rather than just numeric indices.
 
 ## Configuration
 
