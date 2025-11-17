@@ -10,6 +10,7 @@ icon: true # this should be used when the image is an icon, it will adjust the s
 images: ["/icons/components/switch.svg"]
 no_list: true
 modulescript: true
+hide_children: true
 date: "2025-02-20"
 # SMEs:
 ---
