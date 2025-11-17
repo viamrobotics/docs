@@ -3,9 +3,26 @@ const _tdStoragePersistKey = (tabKey) => "td-tp-persist:" + (tabKey || "");
 
 const _tdSupportsLocalStorage = () => typeof Storage !== "undefined";
 
+// Check if Cookiebot is available and user has consented
+const _tdHasCookieConsent = () => {
+  // If Cookiebot is not loaded, assume consent (for backwards compatibility)
+  if (typeof Cookiebot === "undefined") {
+    return true;
+  }
+
+  // Check if user has consented to preferences or necessary cookies
+  // localStorage for tab preferences typically falls under "preferences" category
+  return Cookiebot.consent.preferences || Cookiebot.consent.necessary;
+};
+
 // Helpers
 function tdPersistKey(key, value) {
   // @requires: tdSupportsLocalStorage();
+  if (!_tdHasCookieConsent()) {
+    // Silently fail if no consent - don't store anything
+    return;
+  }
+
   try {
     if (value) {
       localStorage.setItem(key, value);
@@ -24,6 +41,9 @@ function tdPersistKey(key, value) {
 // Retrieve, increment, and store tab-select event count, then returns it.
 function tdGetTabSelectEventCountAndInc() {
   // @requires: tdSupportsLocalStorage();
+  if (!_tdHasCookieConsent()) {
+    return 0; // Return 0 if no consent
+  }
 
   const storedCount = localStorage.getItem("td-tp-persist-count");
   let numTabSelectEvents = parseInt(storedCount) || 0;
@@ -74,6 +94,11 @@ function tdGetAndActivatePersistedTabs(tabs) {
     "Python: Hot reloading (recommended)",
     "Python: PyInstaller (recommended)",
   ];
+
+  // Don't try to read from localStorage if no consent
+  if (!_tdHasCookieConsent()) {
+    return [];
+  }
 
   // Create a list of active tabs with their age:
   let key_ageList = keyOfTabsInThisPage
@@ -137,14 +162,35 @@ function tdRegisterTabClickHandler(tabs) {
 window.addEventListener("DOMContentLoaded", () => {
   if (!_tdSupportsLocalStorage()) return;
 
-  var allTabsInThisPage = document.querySelectorAll(
-    ".nav-tabs > .nav-item > a",
-  );
-  tdRegisterTabClickHandler(allTabsInThisPage);
-  if (document.getElementsByTagName("h1").length) {
-    if (document.getElementsByTagName("h1")[0].textContent != "Dev tools") {
-      tdGetAndActivatePersistedTabs(allTabsInThisPage);
+  // Wait for Cookiebot to be ready if it's available
+  const initializeTabPersistence = () => {
+    var allTabsInThisPage = document.querySelectorAll(
+      ".nav-tabs > .nav-item > a",
+    );
+    tdRegisterTabClickHandler(allTabsInThisPage);
+    if (document.getElementsByTagName("h1").length) {
+      if (document.getElementsByTagName("h1")[0].textContent != "Dev tools") {
+        tdGetAndActivatePersistedTabs(allTabsInThisPage);
+      }
     }
+  };
+
+  // If Cookiebot is available, wait for consent to be determined
+  if (typeof Cookiebot !== "undefined") {
+    // Listen for Cookiebot consent update events
+    window.addEventListener(
+      "CookiebotOnConsentReady",
+      initializeTabPersistence,
+    );
+    window.addEventListener("CookiebotOnAccept", initializeTabPersistence);
+
+    // Also try immediately in case consent was already given
+    if (Cookiebot.consent.preferences || Cookiebot.consent.necessary) {
+      initializeTabPersistence();
+    }
+  } else {
+    // If Cookiebot is not available, initialize immediately (backwards compatibility)
+    initializeTabPersistence();
   }
 
   // Open Anchor for expanders if hidden START
