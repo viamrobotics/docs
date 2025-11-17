@@ -1109,9 +1109,8 @@ If you also implemented the sensor model, add and test it the same way.
 **Iterate**
 
 If your component works, you're almost ready to share your module by uploading it to the registry.
-If not, you have some debugging to do.
 
-Each time you make changes to your local module code, you need to update its instance on your machine:
+Each time you make changes to the local module code, you must update the module on the machine:
 
 {{< tabs >}}
 {{% tab name="Hot reloading (recommended)" %}}
@@ -1134,6 +1133,11 @@ viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
 
 {{% /tab %}}
 {{< /tabs >}}
+
+Your machine may already have a previously published version of the module you are iterating on in its configuration.
+If so you can toggle **Hot Reloading** on and off in the Viam web UI.
+When toggled on, the machine uses the module that you are developing.
+When toggled off, the machine uses the configured registry version.
 
 {{% /tab %}}
 {{% tab name="Manual (required for Python venv)" %}}
