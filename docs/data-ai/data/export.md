@@ -62,9 +62,22 @@ This copies the command, including your org ID and the filters you selected, to 
 
 Run the copied command in a terminal:
 
+{{< tabs >}}
+{{% tab name="Binary data" %}}
+
 ```sh {class="command-line" data-prompt="$"}
-viam data export --org-ids=<org-id> --data-type=<binary|tabular> --mime-types=<mime types> --destination=.
+viam data export binary filter --org-ids=<org-id> --destination=.
 ```
+
+{{% /tab %}}
+{{% tab name="Tabular data" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam data export tabular filter --org-ids=<org-id> --destination=.
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 This command downloads the data onto your computer based on the search criteria you select in the web UI.
 
