@@ -1,6 +1,6 @@
 module qa-machine-manage
 
-go 1.23.1
+go 1.24.0
 
 require (
 	go.viam.com/rdk v0.43.0
@@ -123,16 +123,16 @@ require (
 	go.uber.org/zap v1.24.0 // indirect
 	go.viam.com/api v0.1.340 // indirect
 	go.viam.com/test v1.1.1-0.20220913152726-5da9916c08a2 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/exp v0.0.0-20230725012225-302865e7556b // indirect
 	golang.org/x/image v0.19.0 // indirect
-	golang.org/x/mod v0.17.0 // indirect
-	golang.org/x/net v0.38.0 // indirect
+	golang.org/x/mod v0.29.0 // indirect
+	golang.org/x/net v0.47.0 // indirect
 	golang.org/x/oauth2 v0.27.0 // indirect
-	golang.org/x/sync v0.12.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
-	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
+	golang.org/x/sync v0.18.0 // indirect
+	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/text v0.31.0 // indirect
+	golang.org/x/tools v0.38.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	gonum.org/v1/gonum v0.12.0 // indirect
 	gonum.org/v1/plot v0.12.0 // indirect
