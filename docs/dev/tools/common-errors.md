@@ -215,7 +215,7 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 
 ### Failed to connect to robot within time limit {#conn-time-out}
 
-**Full Error:** `Failed to connect to robot within time limit. Check network connection and try again.`
+**Full Error:** `failed to connect to machine within time limit. check network connection, whether the viam-server is running, and try again. see https://docs.viam.com/dev/tools/common-errors/#conn-time-out for troubleshooting steps`
 
 **Description:** This error occurs when the host fails to connect to the robot within the time limit.
 
