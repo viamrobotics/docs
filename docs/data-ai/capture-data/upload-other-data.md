@@ -149,11 +149,11 @@ This is useful if you want to capture images for training machine learning model
 Install the mobile app from the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) or [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 
 <a href="https://apps.apple.com/vn/app/viam-robotics/id6451424162" target="_blank">
-  <img src="https://github.com/viamrobotics/docs/assets/90707162/a470b65d-1b97-412f-9f97-daf902f2f053" width="200px" alt="apple store icon" class="center-if-small" >
+  <img src="/appstore.png" width="200px" alt="apple store icon" class="center-if-small" >
 </a>
 
 <a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
-  <img src="https://github.com/viamrobotics/docs/assets/90707162/6ebd6960-08c5-41d4-81f9-42293fbfdfd4" width="200px" alt="google play store icon" class="center-if-small" >
+  <img src="/googleplay.png" width="200px" alt="google play store icon" class="center-if-small" >
 </a>
 
 {{< /expand >}}
