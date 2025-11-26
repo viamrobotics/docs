@@ -221,7 +221,15 @@ resource build error: unknown resource type: API "rdk:component:camera" with mod
 
 **Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#network-troubleshooting) section.
 
-### Could not connect to machine part
+### Could not connect to machine part (context deadline exceeded)
+
+**Full Error:** `Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
+
+**Description:** This error can occur connecting to a machine with the shell service indicating network issues.
+
+**Solution:** See [Network Troubleshooting](/dev/tools/common-errors/#network-troubleshooting) section.
+
+### Could not connect to machine part (ResourceExhausted)
 
 **Full Error:** `Could not connect to machine part: error updating resources: rpc error: code = ResourceExhausted desc = exceeded request limit 100 on resource viam.robot.v1.RobotService`
 
