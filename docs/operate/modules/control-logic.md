@@ -17,7 +17,6 @@ aliases:
   - "/manage/software/control-logic"
 ---
 
-To write control logic for a machine, you must wrap it in a module.
 This guide shows you how to write a module with control logic for a machine:
 
 1. [Create a module](#create-a-module-with-a-generic-component-template) with a template for the control logic
