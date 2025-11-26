@@ -130,7 +130,7 @@ window.markmap = {
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
-<script async src="{{ $jsSentry.RelPermalink }}" crossorigin="anonymous"></script>
+<script async src="{{ $jsSentry.RelPermalink }}" type="text/plain" data-cookieconsent="statistics" crossorigin="anonymous"></script>
 {{ end }}
 
 <!-- INKEEP start -->
