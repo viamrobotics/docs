@@ -247,9 +247,8 @@ async def main():
                 )
             )
 
-        # TODO: Uncomment this when deleting tags works again
-        #  binary_data = await data_client.remove_tags_from_binary_data_by_ids(
-        #     tags, my_ids)
+        binary_data = await data_client.remove_tags_from_binary_data_by_ids(
+            tags, my_ids)
 
         print(f"Binary data {binary_data}")
 
