@@ -16,6 +16,18 @@ Get a stream of audio from the device.
 
 - None.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_audio_in = AudioIn.from_robot(robot=machine, name="my_audio_in")
+
+stream = await my_audio_in.get_audio(
+    codec=AudioCodec.PCM16,
+    duration_seconds=10.0,
+    previous_timestamp_ns=0
+)
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_in/client/index.html#viam.components.audio_in.client.AudioInClient.get_audio).
 
 {{% /tab %}}
@@ -31,7 +43,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- `chan` [(\*AudioChunk)](https://pkg.go.dev/go.viam.com/rdk/components/audioin#AudioChunk)
+- `chan` [(*AudioChunk)](https://pkg.go.dev/go.viam.com/rdk/components/audioin#AudioChunk)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/audioin#AudioIn).
@@ -54,11 +66,27 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const audioIn = new VIAM.AudioInClient(machine, "my_audio_in");
+const audioIn = new VIAM.AudioInClient(machine, 'my_audio_in');
 const stream = audioIn.getAudio(VIAM.AudioCodec.PCM16, 3, 0n, {});
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioInClient.html#getaudio).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `codec` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (optional)
+- `durationSeconds` [double](https://api.flutter.dev/flutter/dart-core/double-class.html)? (optional)
+- `previousTimestampNanoseconds` [Int64](https://pub.dev/documentation/fixnum/1.1.1/fixnum/Int64-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)\<[GetAudioResponse](https://flutter.viam.dev/viam_protos.component.audioin/GetAudioResponse-class.html)\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioInClient/getAudio.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -78,7 +106,29 @@ Get the audio device’s properties.
 
 - (viam.components.audio_in.audio_in.AudioIn.Properties): The properties of the audio in device.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_audio_in = AudioIn.from_robot(robot=machine, name="my_audio_in")
+properties = await my_audio_in.get_properties()
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_in/client/index.html#viam.components.audio_in.client.AudioInClient.get_properties).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(utils.Properties)](https://pkg.go.dev/go.viam.com/rdk/utils#Properties)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/audioin#AudioIn).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -94,11 +144,24 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const audioIn = new VIAM.AudioInClient(machine, "my_audio_in");
+const audioIn = new VIAM.AudioInClient(machine, 'my_audio_in');
 const properties = await audioIn.getProperties();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioInClient.html#getproperties).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetPropertiesResponse](https://flutter.viam.dev/viam_protos.common.common/GetPropertiesResponse-class.html)\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioInClient/getProperties.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -231,16 +294,37 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
   Struct.fromJson({
-    myCommand: { key: "value" },
-  }),
+    myCommand: { key: 'value' },
+  })
 );
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioInClient.html#docommand).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioInClient/doCommand.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -303,7 +387,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-audio_in.name;
+audio_in.name
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioInClient.html#name).

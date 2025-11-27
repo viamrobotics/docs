@@ -140,6 +140,9 @@ class GoParser:
             if resource != "generic_component" and resource != "generic_service" and resource != "app":
 
                 soup = make_soup(url)
+                if not soup:
+                    print(f"DEBUG: No soup for {url}, skipping resource {resource}")
+                    continue
 
                 ## Get a raw dump of all go methods by interface for each resource:
                 go_methods_raw = soup.find_all(
@@ -252,6 +255,9 @@ class GoParser:
 
                             resource_url = f"{self.scrape_url}/go.viam.com/rdk/resource"
                             resource_soup = make_soup(resource_url)
+                            if not resource_soup:
+                                print(f"DEBUG: No soup for {resource_url}, skipping inherited methods for {resource}")
+                                continue
 
                             ## If the resource being considered inherits from resource.Resource (currently all components and services do,
                             ## and no app or robot interfaces do), then add the three inherited methods manually: Reconfigure(), DoCommand(), Close()
@@ -420,6 +426,9 @@ class GoParser:
 
             elif type == "app":
                 soup = make_soup(url)
+                if not soup:
+                    print(f"DEBUG: No soup for {url}, skipping app methods")
+                    continue
 
                 ## Get a raw dump of all go app methods:
                 go_methods_raw = soup.find_all(

@@ -276,12 +276,18 @@ Create a flat fee invoice and charge the organization immediately. The caller mu
 
 **Returns:**
 
-- None.
+- ([viam.proto.app.billing.CreateInvoiceAndChargeImmediatelyResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.CreateInvoiceAndChargeImmediatelyResponse)): the invoice id.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await billing_client.create_invoice_and_charge_immediately("<ORG-ID-TO-CHARGE>", <AMOUNT>, <DESCRIPTION>, "<ORG-ID-FOR-BRANDING>", False)
+invoice_id = await billing_client.create_invoice_and_charge_immediately(
+    "<ORG-ID-TO-CHARGE>",
+    <AMOUNT>,
+    <DESCRIPTION>,
+    "<ORG-ID-FOR-BRANDING>",
+    False,
+)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.create_invoice_and_charge_immediately).

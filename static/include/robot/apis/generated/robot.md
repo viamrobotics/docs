@@ -278,7 +278,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.cancelOperation("INSERT OPERATION ID");
+await machine.cancelOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#canceloperation).
@@ -324,7 +324,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.blockForOperation("INSERT OPERATION ID");
+await machine.blockForOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#blockforoperation).
@@ -356,28 +356,6 @@ print(f"frame system configuration: {frame_system}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-**Returns:**
-
-- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-// Print the frame system configuration
-frameSystem, err := machine.FrameSystemConfig(context.Background())
-fmt.Println(frameSystem)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -444,35 +422,6 @@ transformed_pose = await machine.transform_pose(pose_in_frame, "world")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
 
 {{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
-- `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
-
-**Returns:**
-
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/referenceframe"
-  "go.viam.com/rdk/spatialmath"
-)
-
-baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
-movementSensorToBase, err := machine.TransformPose(context.Background(), baseOrigin, "my-movement-sensor", nil)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
-
-{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -497,23 +446,6 @@ Transforms the pointcloud to the desired frame in the robot's frame system.
 Do not move the robot between the generation of the initial pointcloud and the receipt of the transformed pointcloud, as doing so will make the transformations inaccurate.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `srcpc` [(pointcloud.PointCloud)](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud): The source `PointCloud` to transform.
-- `srcName` [(string)](https://pkg.go.dev/builtin#string): The name of the source point cloud to transform.
-- `dstName` [(string)](https://pkg.go.dev/builtin#string): The name of the destination point cloud.
-
-**Returns:**
-
-- [(pointcloud.PointCloud)](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud): The transformed `PointCloud`.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
-
-{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**

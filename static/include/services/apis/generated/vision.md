@@ -143,8 +143,7 @@ my_camera = Camera.from_robot(robot=machine, "my_camera")
 my_detector = VisionClient.from_robot(robot=machine, "my_detector")
 
 # Get an image from the camera
-images, _ = await my_camera.get_images()
-img = images[0]
+img = await my_camera.get_image()
 
 # Get detections for that image
 detections = await my_detector.get_detections(img)
@@ -396,8 +395,7 @@ my_camera = Camera.from_robot(robot=machine, "my_camera")
 my_classifier = VisionClient.from_robot(robot=machine, "my_classifier")
 
 # Get an image from the camera
-images, _ = await my_camera.get_images()
-img = images[0]
+img = await my_camera.get_image()
 
 # Get the 2 classifications with the highest confidence scores for the image
 classifications = await my_classifier.get_classifications(img, 2)

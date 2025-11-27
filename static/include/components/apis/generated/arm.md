@@ -421,7 +421,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-myArm, err := arm.FromProvider(machine, "my_arm")
+myArm , err := arm.FromProvider(machine, "my_arm")
 
 // Get the current position of each joint on the arm as JointPositions.
 pos, err := myArm.JointPositions(context.Background(), nil)
@@ -468,6 +468,69 @@ List<double> currentJointPositions = await myArm.moveToJointPosition();
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/jointPositions.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Get3DModels
+
+Get the 3D models of the arm.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(map[string]*commonpb.Mesh)](https://pkg.go.dev/go.viam.com/api/common/v1#Mesh)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<Record<string, [Mesh](https://ts.viam.dev/classes/commonApi.Mesh.html)>>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const arm = new VIAM.ArmClient(machine, 'my_arm');
+const models = await arm.get3DModels();
+console.log(models);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#get3dmodels).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), [Mesh](https://flutter.viam.dev/viam_protos.common.common/Mesh-class.html)\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final models = await myArm.get3DModels();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/get3DModels.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -522,6 +585,31 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise< { joints: { axis: [PlainMessage](https://ts.viam.dev/types/PlainMessage.html); id: string; max: number; min: number; parent: string; type: string; }[]; kinematic_param_type: "SVA" | "URDF" | "UNSPECIFIED"; links: [Frame](https://ts.viam.dev/classes/appRobotApi.Frame.html)[]; name: string; },>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const arm = new VIAM.ArmClient(machine, 'my_arm');
+const kinematics = await arm.getKinematics();
+console.log(kinematics);
+
+For more information, see [Arm
+API](https://docs.viam.com/dev/reference/apis/components/arm/#getkinematics).
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getkinematics).
 
 {{% /tab %}}
 {{< /tabs >}}
