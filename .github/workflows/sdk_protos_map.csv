@@ -6,8 +6,9 @@ arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPositio
 arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions,moveToJointPositions
 arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
+arm,Get3DModels,,,Get3DModels,get3DModels,get3DModels
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-arm,GetKinematics,,get_kinematics,Kinematics,,
+arm,GetKinematics,,get_kinematics,Kinematics,,getKinematics
 arm,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 arm,Stop,,stop,Stop,stop,stop
 arm,GetGeometries,,get_geometries,Geometries,,getGeometries
@@ -17,17 +18,17 @@ arm,GetResourceName,,get_resource_name,Name,getResourceName,name
 arm,Close,,close,Close,,
 
 ## AudioIn
-audio_in,GetAudio,,get_audio,GetAudio,,getAudio
-audio_in,GetProperties,,get_properties,,,getProperties
+audio_in,GetAudio,,get_audio,GetAudio,getAudio,getAudio
+audio_in,GetProperties,,get_properties,Properties,getProperties,getProperties
 audio_in,GetGeometries,,get_geometries,,,
 audio_in,Reconfigure,,,Reconfigure,,
-audio_in,DoCommand,,do_command,DoCommand,,doCommand
+audio_in,DoCommand,,do_command,DoCommand,doCommand,doCommand
 audio_in,GetResourceName,,get_resource_name,Name,,name
 audio_in,Close,,close,Close,,
 
 ## AudioOut
-audio_out,Play,,play,Play,,play
-audio_out,GetProperties,,get_properties,,,getProperties
+audio_out,Play,,play,Play,play,play
+audio_out,GetProperties,,get_properties,Properties,getProperties,getProperties
 audio_out,GetGeometries,,get_geometries,,,
 audio_out,Reconfigure,,,Reconfigure,,
 audio_out,DoCommand,,do_command,DoCommand,doCommand,doCommand
@@ -117,7 +118,7 @@ gantry,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gantry,Stop,,stop,Stop,stop,stop
 gantry,Reconfigure,,,Reconfigure,,
 gantry,DoCommand,,do_command,DoCommand,doCommand,doCommand
-gantry,GetKinematics,,,Kinematics,,
+gantry,GetKinematics,,get_kinematics,Kinematics,,
 gantry,GetResourceName,,get_resource_name,Name,getResourceName,name
 gantry,Close,,close,Close,,
 
@@ -453,8 +454,7 @@ data,DeleteTabularData,,delete_tabular_data,DeleteTabularData,deleteTabularData,
 data,DeleteBinaryDataByFilter,,delete_binary_data_by_filter,DeleteBinaryDataByFilter,deleteBinaryDataByFilter,deleteBinaryDataByFilter
 data,DeleteBinaryDataByIDs,,delete_binary_data_by_ids,DeleteBinaryDataByIDs,deleteBinaryDataByIds,deleteBinaryDataByIds
 data,AddTagsToBinaryDataByIDs,,add_tags_to_binary_data_by_ids,AddTagsToBinaryDataByIDs,addTagsToBinaryDataByIds,addTagsToBinaryDataByIds
-## TODO: Uncomment this when deleting tags works again
-## data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,RemoveTagsFromBinaryDataByIDs,removeTagsFromBinaryDataByIds,removeTagsFromBinaryDataByIds
+data,RemoveTagsFromBinaryDataByIDs,,remove_tags_from_binary_data_by_ids,RemoveTagsFromBinaryDataByIDs,removeTagsFromBinaryDataByIds,removeTagsFromBinaryDataByIds
 data,TagsByFilter,,tags_by_filter,,tagsByFilter,tagsByFilter
 data,AddBoundingBoxToImageByID,,add_bounding_box_to_image_by_id,AddBoundingBoxToImageByID,addBoundingBoxToImageById,addBoundingBoxToImageById
 data,RemoveBoundingBoxFromImageByID,,remove_bounding_box_from_image_by_id,RemoveBoundingBoxFromImageByID,removeBoundingBoxFromImageById,removeBoundingBoxFromImageById

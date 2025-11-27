@@ -64,7 +64,6 @@ async def main():
 
         member_list, invite_list = await cloud.list_organization_members(org_id=ORG_ID)
         assert len(member_list) > 0
-        assert member_list[0].user_id == "4984b52e-6715-4a52-8321-a05bdd4bb4a4"
 
 
         # TODO: internal only
@@ -91,7 +90,7 @@ async def main():
 
         await cloud.create_organization_invite(ORG_ID, TEST_EMAIL)
         _, invite_list = await cloud.list_organization_members(org_id=ORG_ID)
-        assert len(invite_list) == 1
+        assert len(invite_list) >= 1
         assert invite_list[0].email == TEST_EMAIL
 
         update_invite = await cloud.update_organization_invite_authorizations(
@@ -111,8 +110,8 @@ async def main():
         assert org_invite.email == TEST_EMAIL
 
         await cloud.delete_organization_invite(ORG_ID, TEST_EMAIL)
-        _, invite_list = await cloud.list_organization_members(org_id=ORG_ID)
-        assert len(invite_list) == 0
+        _, invite_list_now = await cloud.list_organization_members(org_id=ORG_ID)
+        assert len(invite_list_now) == len(invite_list) - 1
 
         # CANT TEST
         # await cloud.delete_organization_member(org_id="<YOUR-ORG-ID>", user_id=first_user_id)

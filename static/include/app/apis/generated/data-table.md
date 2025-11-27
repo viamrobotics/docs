@@ -12,6 +12,7 @@
 | [`DeleteBinaryDataByFilter`](/dev/reference/apis/data-client/#deletebinarydatabyfilter) | Filter and delete binary data. |
 | [`DeleteBinaryDataByIDs`](/dev/reference/apis/data-client/#deletebinarydatabyids) | Filter and delete binary data by ids. |
 | [`AddTagsToBinaryDataByIDs`](/dev/reference/apis/data-client/#addtagstobinarydatabyids) | Add tags to binary data by ids. |
+| [`RemoveTagsFromBinaryDataByIDs`](/dev/reference/apis/data-client/#removetagsfrombinarydatabyids) | Remove tags from binary by ids. |
 | [`TagsByFilter`](/dev/reference/apis/data-client/#tagsbyfilter) | Get a list of tags using a filter. |
 | [`AddBoundingBoxToImageByID`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid) | Add a bounding box to an image specified by its BinaryID. |
 | [`RemoveBoundingBoxFromImageByID`](/dev/reference/apis/data-client/#removeboundingboxfromimagebyid) | Removes a bounding box from an image specified by its BinaryID. |

@@ -555,7 +555,7 @@ def parse_method_usage(usage_string):
                     try:
                         type_link = regex.findall(r'href="([^"]+)">', param)[-1]
                     except:
-                        print("WARNING: No type link found: {}, {}".format(usage_string, param))
+                        print("DEBUG: No type link found: {}, {}".format(usage_string, param))
                         type_link = None
                 ## Handle returns, or parameters with inferred data types:
                 elif len(param_raw) == 1:
@@ -592,7 +592,7 @@ def parse_method_usage(usage_string):
                         try:
                             type_link = regex.findall(r'href="([^"]+)">', param)[-1]
                         except:
-                            print("WARNING: No type link found: {}, {}, {}".format(usage_string, param, param_raw))
+                            print("DEBUG: No type link found: {}, {}, {}".format(usage_string, param, param_raw))
 
                 if type_link:
                     param_type_link = type_link
@@ -927,8 +927,14 @@ def write_markdown(type, names, methods):
                             proto_anchor_link = '/dev/reference/apis/services/discovery/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
                             proto_anchor_link = '/dev/reference/apis/services/generic/#' + proto_link
+                        elif type == 'service' and resource == 'audio_in':
+                            proto_anchor_link = '/dev/reference/apis/services/audio-in/#' + proto_link
+                        elif type == 'service' and resource == 'audio_out':
+                            proto_anchor_link = '/dev/reference/apis/services/audio-out/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':
                             proto_anchor_link = '/dev/reference/apis/services/ml/#' + proto_link
+                        elif type == 'service' and resource == 'world_state_store':
+                            proto_anchor_link = '/dev/reference/apis/services/world-state-store/#' + proto_link
                         elif type == 'app' and resource == 'app':
                             proto_anchor_link = '/dev/reference/apis/fleet/#' + proto_link
                         elif type == 'app' and resource in ["billing", "mltraining"]:

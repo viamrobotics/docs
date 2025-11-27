@@ -132,11 +132,10 @@ async def main() -> int:
     # Access the bounding boxes from the annotations
     if hasattr(data[0].metadata.annotations, 'classifications'):
         for tag in data[0].metadata.annotations.classifications:
-            # TODO: Uncomment this when deleting tags works again
-            # await data_client.remove_tags_from_binary_data_by_ids(
-            #     binary_ids=[file_id],
-            #     tags=[tag.label]
-            # )
+            await data_client.remove_tags_from_binary_data_by_ids(
+                binary_ids=[file_id],
+                tags=[tag.label]
+            )
             print(f"Deleted tag: {tag.label}")
     # Teardown - delete the image
     await data_client.delete_binary_data_by_ids([file_id])

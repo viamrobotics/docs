@@ -16,6 +16,19 @@ Play the given audio data.
 
 - None.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_audio_out = AudioOut.from_robot(robot=machine, name="my_audio_out")
+
+# With audio info
+audio_info = AudioInfo(codec=AudioCodec.PCM16, sample_rate_hz=44100, num_channels=2)
+await my_audio_out.play(audio_data, audio_info)
+
+# Without audio info (when codec encodes information within audio_data)
+await my_audio_out.play(audio_data)
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_out/client/index.html#viam.components.audio_out.client.AudioOutClient.play).
 
 {{% /tab %}}
@@ -61,6 +74,21 @@ await audioOut.play(audioData, audioInfo);
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioOutClient.html#play).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `audioData` [Uint8List](https://api.flutter.dev/flutter/dart-typed_data/Uint8List-class.html) (optional)
+- `audioInfo` [AudioInfo](https://flutter.viam.dev/viam_protos.common.common/AudioInfo-class.html) (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[PlayResponse](https://flutter.viam.dev/viam_protos.component.audioout/PlayResponse-class.html)\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioOutClient/play.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
@@ -79,7 +107,29 @@ Get the audio device’s properties.
 
 - (viam.components.audio_out.audio_out.AudioOut.Properties): The properties of the audio output device.
 
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_audio_out = AudioOut.from_robot(robot=machine, name="my_audio_out")
+properties = await my_audio_out.get_properties()
+```
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_out/client/index.html#viam.components.audio_out.client.AudioOutClient.get_properties).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(utils.Properties)](https://pkg.go.dev/go.viam.com/rdk/utils#Properties)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/audioout#AudioOut).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -100,6 +150,19 @@ const properties = await audioOut.getProperties();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioOutClient.html#getproperties).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetPropertiesResponse](https://flutter.viam.dev/viam_protos.common.common/GetPropertiesResponse-class.html)\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioOutClient/getProperties.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -242,6 +305,27 @@ const result = await resource.doCommand(
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioOutClient.html#docommand).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioOutClient/doCommand.html).
 
 {{% /tab %}}
 {{< /tabs >}}

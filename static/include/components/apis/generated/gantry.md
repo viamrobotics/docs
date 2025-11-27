@@ -797,6 +797,38 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Get the kinematics information associated with the gantry.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Tuple[viam.proto.common.KinematicsFileFormat.ValueType, [bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): A tuple containing two values; the first \[0] value represents the format of the
+file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
+Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
+and the second \[1] value represents the byte contents of the file.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gantry = Gantry.from_robot(robot=machine, name="my_gantry")
+
+# Get the kinematics information associated with the gantry.
+kinematics = await my_gantry.get_kinematics()
+
+# Get the format of the kinematics file.
+k_file = kinematics[0]
+
+# Get the byte contents of the file.
+k_bytes = kinematics[1]
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gantry/client/index.html#viam.components.gantry.client.GantryClient.get_kinematics).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**

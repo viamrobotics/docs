@@ -13,7 +13,9 @@ flutter_resource_overrides = {
     "data": "DataClient",
     "dataset": "DataClient",
     "data_sync": "DataClient",
-    "discovery": "DiscoveryClient"
+    "discovery": "DiscoveryClient",
+    "audio_in": "AudioInClient",
+    "audio_out": "AudioOutClient"
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -127,6 +129,9 @@ class FlutterParser:
                         ## While some method info is available to us on this current Flutter SDK page, the code sample is only found on the
                         ## method_link page. So we scrape that page for everything:
                         method_soup = make_soup(method_link)
+                        if not method_soup:
+                            print(f"DEBUG: No soup for {method_link}, skipping method details")
+                            continue
 
                         ## Method description and code samples are both found within the same section tag:
                         desc_or_code_sample = method_soup.find('section', class_ = 'desc markdown')
