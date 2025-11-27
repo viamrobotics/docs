@@ -151,7 +151,7 @@ To configure the table widget, define the following attributes:
    }
    ```
 
-   For more information about MQL aggregation operators, see the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/operator/aggregation/).
+   For more information about MQL aggregation operators, see the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/mql/aggregation-stages/).
 
 1. Click **Save**.
 
