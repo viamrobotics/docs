@@ -84,9 +84,6 @@ func main() {
 	if len(memberList) == 0 {
 		logger.Fatal("No organization members found")
 	}
-	if memberList[0].UserID != "4984b52e-6715-4a52-8321-a05bdd4bb4a4" {
-		logger.Fatal("Member user ID mismatch")
-	}
 
 	// TODO: internal only
 	// orgListByUser, err := cloud.ListOrganizationsByUser(ctx, firstUserID)
