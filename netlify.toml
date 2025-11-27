@@ -57,7 +57,7 @@
   [plugins.inputs]
 
   # change this key to a new one any time you need to restart from scratch
-  cacheKey = ["Nov112025"]
+  cacheKey = ["Nov272025"]
   # either "warn" or "error"
   failBuildOnError = true
 
