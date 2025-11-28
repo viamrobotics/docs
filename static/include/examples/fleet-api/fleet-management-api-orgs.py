@@ -88,6 +88,12 @@ async def main():
         # CANT TEST
         # await cloud.delete_organization("298d2032-7a63-4a7f-810c-0a841e219bd9")
 
+        # Delete organization invite if it exists
+        try:
+          await cloud.delete_organization_invite(ORG_ID, TEST_EMAIL)
+        except Exception as e:
+          print(f"No organization invite found for {TEST_EMAIL}, continuing...")
+
         await cloud.create_organization_invite(ORG_ID, TEST_EMAIL)
         _, invite_list = await cloud.list_organization_members(org_id=ORG_ID)
         assert len(invite_list) >= 1
