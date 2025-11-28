@@ -52,7 +52,7 @@ You choose how to group your machines.
 
 1. Click **Save**.
 
-1. To create additional locations, click the **Add location** button on the **LOCATIONS** page.
+1. To create additional locations, click the **+ Add location** button on the **LOCATIONS** page.
 
 ## Create sub-locations
 
@@ -60,9 +60,10 @@ If needed, you can add further sub-locations to, for example, differentiate grou
 
 To add a sub-location:
 
-1. Add a new location using the same **Add location** button.
-1. At the bottom of the location’s page, use the **New parent location** dropdown to choose a parent location.
-   Click **Change**.
+1. Add a new location using the same **+ Add location** button.
+1. On the location's page, click the **...** menu and click **Move**.
+1. Choose a new parent for the location.
+   This can be the organization the location is in or another location.
 
 You can nest locations up to three levels deep.
 
