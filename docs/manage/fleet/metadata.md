@@ -3,7 +3,7 @@ title: "Add custom metadata"
 linkTitle: "Add custom metadata"
 weight: 55
 type: "docs"
-description: "Add custom metadata to as a JSON object for machine parts, machiens, locations, and organizations."
+description: "Add custom metadata to as a JSON object for machine parts, machines, locations, and organizations."
 date: "2025-11-14"
 aliases:
   - /manage/fleet/machine-metadata/

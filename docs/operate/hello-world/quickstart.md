@@ -58,6 +58,7 @@ When you use Viam to build a machine, you create exactly what you need by mixing
 `viam-server` can run on any computer that runs one of the following operating systems:
 
 - Linux 64-bit operating systems running on AArch64 (ARM64) or x86-64 architectures
+- Linux 32-bit operating systems running on Armv7l
 - macOS
 - Windows
 
