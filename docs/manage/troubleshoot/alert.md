@@ -237,21 +237,25 @@ In the **Type** dropdown, choose one of the following types:
 
 {{< /tablestep >}}
 {{< tablestep >}}
-**Configure alert frequency**
+**Configure notification method and frequency**
 
-To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
+To add a notification method, add an entry to the **Webhooks** or **Alert options** sub-panels:
 
-To add an email notification:
+To add an email notification for specific email addresses:
 
-1.  Click **Add Email**.
-1.  Add the email you wish to be notified whenever this trigger is triggered.
-1.  Configure the time between notifications.
+1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
+1. Set the alert frequency (minimum time between notifications).
+
+To add an email notification for all machine owners:
+
+1. Toggle **Email all machine owners** on.
+1. Set the alert frequency (minimum time between notifications).
 
 To add a webhook notification:
 
 1.  Click **Add Webhook**.
 1.  Add the URL of your cloud function.
-1.  Configure the time between notifications.
+1.  Set the alert frequency (minimum time between notifications).
 1.  Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
     Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
@@ -279,7 +283,7 @@ Use the following template in your `components` JSON to configure the top-level 
     "notifications": [
       {
         "type": "<webhook|email>",
-        "value": "<webhook URL or email address>",
+        "value": "<webhook URL or email address or all_machine_owners>",
         "seconds_between_notifications": <int>
       }
     ]
@@ -311,7 +315,7 @@ Use the following template in your `components` JSON to configure the top-level 
     "notifications": [
       {
         "type": "<webhook|email>",
-        "value": "<webhook URL or email address>",
+        "value": "<webhook URL or email address or all_machine_owners>",
         "seconds_between_notifications": <number of seconds>
       }
     ]
@@ -351,21 +355,25 @@ Click the **Save** button in the top right corner of the page to save your confi
 
    **Once per hour**, Viam issues an alert if machine logs are found.
 
-1. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
+To add a notification method, add an entry to the **Webhooks** or **Alert options** sub-panels:
 
-   To add an email notification:
+To add an email notification for specific email addresses:
 
-   1. Click **Add Email**.
-   1. Add the email you wish to be notified whenever this trigger is triggered.
-   1. Configure the time between notifications.
+1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
+1. Set the alert frequency (minimum time between notifications).
 
-   To add a webhook notification:
+To add an email notification for all machine owners:
 
-   1. Click **Add Webhook**.
-   1. Add the URL of your cloud function.
-   1. Configure the time between notifications.
-   1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
-      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
+1. Toggle **Email all machine owners** on.
+1. Set the alert frequency (minimum time between notifications).
+
+To add a webhook notification:
+
+1.  Click **Add Webhook**.
+1.  Add the URL of your cloud function.
+1.  Set the alert frequency (minimum time between notifications).
+1.  Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
+    Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
@@ -387,7 +395,7 @@ Use the following template in your `components` JSON to configure the top-level 
     "notifications": [
       {
         "type": "<webhook|email>",
-        "value": "<webhook URL or email address>"
+        "value": "<webhook URL or email address or all_machine_owners>"
       }
     ]
   }
@@ -413,21 +421,25 @@ For more information about triggers, see [Trigger configuration](/data-ai/refere
 
 3. Select **Part is online** as the trigger **Type**.
 
-4. To add a notification method, add an entry to the **Webhooks** or **Email** sub-panels:
+4. To add a notification method, add an entry to the **Webhooks** or **Alert options** sub-panels:
 
-   To add an email notification:
+To add an email notification for specific email addresses:
 
-   1. Click **Add Email**.
-   1. Add the email you wish to be notified whenever this trigger is triggered.
-   1. Configure the time between notifications.
+1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
+1. Set the alert frequency (minimum time between notifications).
 
-   To add a webhook notification:
+To add an email notification for all machine owners:
 
-   1. Click **Add Webhook**.
-   1. Add the URL of your cloud function.
-   1. Configure the time between notifications.
-   1. Write your cloud function to process the [webhook attributes](/data-ai/reference/triggers-configuration/#webhook-attributes).
-      Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
+1. Toggle **Email all machine owners** on.
+1. Set the alert frequency (minimum time between notifications).
+
+To add a webhook notification:
+
+1.  Click **Add Webhook**.
+1.  Add the URL of your cloud function.
+1.  Set the alert frequency (minimum time between notifications).
+1.  Write your cloud function to process the [webhook](/data-ai/reference/triggers-configuration/#webhook-attributes).
+    Use your cloud function to process data or interact with any external API, including Twilio, PagerDuty, or Zapier.
 
 {{% /tab %}}
 {{% tab name="JSON mode" %}}
@@ -444,7 +456,7 @@ Use the following template in your `components` JSON to configure the top-level 
     "notifications": [
       {
         "type": "<webhook|email>",
-        "value": "<webhook URL or email address>",
+        "value": "<webhook URL or email address or all_machine_owners>",
         "seconds_between_notifications": <number of seconds>
       }
     ]
@@ -487,7 +499,7 @@ Use the following template in your `components` JSON to configure the top-level 
      "notifications": [
       {
         "type": "webhook|email",
-        "value": "<webhook URL or email address>",
+        "value": "<webhook URL or email address or all_machine_owners>",
         "seconds_between_notifications": <number of seconds>
       }
      ]

@@ -162,13 +162,17 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
 
    {{<imgproc src="/tutorials/helmet/trigger.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger created with 'Data has been synced to the cloud' as the type and 'Binary (image)' as the data type." class="shadow imgzoom" >}}
 
-1. Add notification methods to the **Webhooks** or **Email** sub-panels:
+1. Add notification methods to the **Webhooks** or **Alert options** sub-panels:
 
-   To add an email notification:
+   To add an email notification for specific email addresses:
 
-   1. Click **Add Email**.
+   1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
+   1. Set the alert frequency.
 
-   1. Add the email address you wish to be notified whenever this trigger fires.
+   To add an email notification for all machine owners:
+
+   1. Toggle **Email all machine owners** on.
+   1. Set the alert frequency.
 
    To add a webhook notification:
 
