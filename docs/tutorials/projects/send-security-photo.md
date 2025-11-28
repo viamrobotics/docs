@@ -33,7 +33,6 @@ When someone comes to your desk, the robot will use the [vision service](/operat
 You need the following hardware for this tutorial:
 
 - Computer with a webcam
-  - This tutorial uses a MacBook Pro but any computer running macOS or 64-bit Linux will work
 - Mobile phone (to receive text messages)
 
 ## Software requirements

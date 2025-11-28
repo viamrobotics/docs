@@ -49,7 +49,6 @@ After completing this tutorial, you will:
 - A camera such as a standard USB webcam.
   You can also test the hard hat detection system using the webcam built into your laptop.
 - A computer capable of running [`viam-server`](/operate/install/setup/).
-  You can use a personal computer running macOS or Linux, or a single-board computer (SBC) running 64-bit Linux.
 
 ### Optional hardware
 
@@ -434,7 +433,7 @@ Select trigger **Type** as **Data has been synced to the cloud** and **Data Type
 To configure notifications, either
 
 - add a webhook and enter the URL of your custom cloud function, if you created one
-- add one or more email addresses to use Viam's built-in email notifications
+- add an email address to use Viam's built-in email notifications
 
 For both options also configure the time between notifications.
 
