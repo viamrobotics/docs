@@ -61,11 +61,15 @@ You can configure triggers to fire in the following scenarios:
       Use your cloud function to process data or interact with external APIs, such as Twilio, PagerDuty, or Zapier.
       For an example function, see [Example cloud function](/data-ai/reference/triggers-configuration/#example-cloud-function).
 
-   To add an email notification:
+   To add an email notification for specific email addresses:
 
-   1. Click **Add Email**.
-   1. Add the email address where you wish to be notified whenever this trigger fires.
-   1. Configure the time between notifications.
+   1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
+   1. Set the alert frequency (minimum time between notifications).
+
+   To add an email notification for all machine owners:
+
+   1. Toggle **Email all machine owners** on.
+   1. Set the alert frequency (minimum time between notifications).
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
