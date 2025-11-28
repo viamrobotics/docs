@@ -141,7 +141,7 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(invitesList) >= 1 {
+	if len(invitesList) < 1 {
 		logger.Fatal("Expected at least 1 invite")
 	}
 	if invitesList[0].Email != TEST_EMAIL {
