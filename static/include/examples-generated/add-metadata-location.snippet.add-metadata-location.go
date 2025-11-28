@@ -5,7 +5,6 @@ import (
 
 	"go.viam.com/rdk/app"
 	"go.viam.com/rdk/logging"
-	"go.viam.com/utils/rpc"
 )
 
 

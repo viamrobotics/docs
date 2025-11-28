@@ -41,7 +41,7 @@ For more information, see [`GetRobotMetadata`](/dev/reference/apis/fleet/#getrob
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.go" lang="go" class="line-numbers linkable-line-numbers" data-line="32-34" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.go" lang="go" class="line-numbers linkable-line-numbers" data-line="29-31" >}}
 
 For more information, see [`GetRobotMetadata`](/dev/reference/apis/fleet/#getrobotmetadata) and [`UpdateRobotMetadata`](/dev/reference/apis/fleet/#updaterobotmetadata).
 
@@ -109,7 +109,7 @@ For more information, see [`GetLocationMetadata`](/dev/reference/apis/fleet/#get
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.go" lang="go" class="line-numbers linkable-line-numbers" data-line="29-31" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-30" >}}
 
 For more information, see [`GetLocationMetadata`](/dev/reference/apis/fleet/#getlocationmetadata) and [`UpdateLocationtMetadata`](/dev/reference/apis/fleet/#updatelocationmetadata).
 
@@ -136,7 +136,7 @@ For more information, see [`GetOrganizationMetadata`](/dev/reference/apis/fleet/
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.go" lang="go" class="line-numbers linkable-line-numbers" data-line="29-31" >}}
+{{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-30" >}}
 
 For more information, see [`GetOrganizationMetadata`](/dev/reference/apis/fleet/#getorganizationmetadata) and [`UpdateOrganizationMetadata`](/dev/reference/apis/fleet/#updateorganizationmetadata).
 
