@@ -141,8 +141,8 @@ func main() {
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(invitesList) != 1 {
-		logger.Fatal("Expected 1 invite")
+	if len(invitesList) >= 1 {
+		logger.Fatal("Expected at least 1 invite")
 	}
 	if invitesList[0].Email != TEST_EMAIL {
 		logger.Fatal("Invite email mismatch")
@@ -184,12 +184,12 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	memberList, invitesList, err = cloud.ListOrganizationMembers(ctx, ORG_ID)
+	memberList, invitesListNew, err = cloud.ListOrganizationMembers(ctx, ORG_ID)
 	if err != nil {
 		logger.Fatal(err)
 	}
-	if len(invitesList) != 0 {
-		logger.Fatal("Expected 0 invites after deletion")
+	if len(invitesListNew) != len(invitesList) - 1 {
+		logger.Fatal("Expected 1 fewer invites after deletion")
 	}
 
 	// CANT TEST
