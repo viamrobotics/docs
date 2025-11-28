@@ -184,7 +184,7 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	memberList, invitesListNew, err = cloud.ListOrganizationMembers(ctx, ORG_ID)
+	_, invitesListNew, err := cloud.ListOrganizationMembers(ctx, ORG_ID)
 	if err != nil {
 		logger.Fatal(err)
 	}
