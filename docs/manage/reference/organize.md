@@ -62,7 +62,8 @@ To add a sub-location:
 
 1. Add a new location using the same **+ Add location** button.
 1. On the location's page, click the **...** menu and click **Move**.
-1. Choose a new parent for the location. This can be the organization or another location.
+1. Choose a new parent for the location.
+   This can be the organization the location is in or another location.
 
 You can nest locations up to three levels deep.
 
