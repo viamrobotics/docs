@@ -9,8 +9,6 @@ import (
 
 	"go.viam.com/rdk/app"
 	"go.viam.com/rdk/logging"
-	"go.viam.com/rdk/robot/client"
-	"go.viam.com/utils/rpc"
 )
 
 
@@ -37,7 +35,6 @@ func main() {
 
 	appClient := viamClient.AppClient()
 
-	appClient := viamClient.AppClient()
 	appClient.UpdateRobotPartMetadata(ctx, partID, map[string]interface{}{
 		"TEST_API_KEY": "ABC123",
 	})

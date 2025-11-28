@@ -9,19 +9,18 @@ import (
 
 	"go.viam.com/rdk/app"
 	"go.viam.com/rdk/logging"
-	"go.viam.com/utils/rpc"
 )
 
 
 func main() {
 	apiKey := ""
 	apiKeyID := ""
-	locationID := ""
+	orgID := ""
 
 	// :remove-start:
 	apiKey = os.Getenv("VIAM_API_KEY")
 	apiKeyID = os.Getenv("VIAM_API_KEY_ID")
-	locationID = os.Getenv("TEST_ORG_ID")
+	orgID = os.Getenv("TEST_ORG_ID")
 	// :remove-end:
 
 	logger := logging.NewDebugLogger("client")

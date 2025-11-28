@@ -5,14 +5,13 @@ import (
 
 	"go.viam.com/rdk/app"
 	"go.viam.com/rdk/logging"
-	"go.viam.com/utils/rpc"
 )
 
 
 func main() {
 	apiKey := ""
 	apiKeyID := ""
-	locationID := ""
+	orgID := ""
 
 
 	logger := logging.NewDebugLogger("client")
