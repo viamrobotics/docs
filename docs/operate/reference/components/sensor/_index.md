@@ -50,6 +50,7 @@ If none of the existing models fit your use case, you can [create a modular reso
 | Model | Description |
 | ----- | ----------- |
 | [`ultrasonic`](ultrasonic-micro-rdk/) | [HC-SR04](https://www.sparkfun.com/products/15569) ultrasonic sensors |
+| [`bme280`](https://github.com/viam-modules/micrordk-bme280) | I2C Driver for the BME280 sensor |
 
 {{% readfile "/static/include/micro-create-your-own.md" %}}
 
