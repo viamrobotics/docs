@@ -212,8 +212,8 @@ window.markmap = {
       loadInkeep();
     }
 
-    window.addEventListener("CookiebotOnAccept", function () {
-      console.log("CookiebotOnAccept fired, attempting to set viam_version cookie");
+    window.addEventListener("CookiebotOnConsentReady", function () {
+      console.log("CookiebotOnConsentReady fired, attempting to set viam_version cookie");
       console.log("window.Cookiebot", window.Cookiebot);
       console.log("window.Cookiebot.consent", window.Cookiebot.consent);
       console.log("window.Cookiebot.consents.necessary", window.Cookiebot.consent.necessary);
