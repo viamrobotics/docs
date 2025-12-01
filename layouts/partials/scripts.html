@@ -153,7 +153,6 @@ window.markmap = {
     function hasConsent() {
       if (isLocalhost()) return true;
 
-      console.log("window.Cookiebot", window.Cookiebot);
       return (
         window.Cookiebot &&
         window.Cookiebot.consent &&
@@ -207,23 +206,16 @@ window.markmap = {
 
       document.head.appendChild(s1);
     }
-    console.log("hasConsent()", hasConsent());
     if (hasConsent()) {
       loadInkeep();
     }
 
     window.addEventListener("CookiebotOnConsentReady", function () {
-      console.log("CookiebotOnConsentReady fired, attempting to set viam_version cookie");
-      console.log("window.Cookiebot", window.Cookiebot);
-      console.log("window.Cookiebot.consent", window.Cookiebot.consent);
-      console.log("window.Cookiebot.consents.necessary", window.Cookiebot.consent.necessary);
       if (window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent) {
         var maxAge = 60 * 60 * 24 * 365; // 1 year
         document.cookie = 'viam_version=1;path=/;max-age=' + maxAge;
       }
-      console.log("hasConsent()", hasConsent());
       if (hasConsent()) {
-        console.log("Cookiebot has consent, loading Inkeep");
         loadInkeep();
       }
     });
