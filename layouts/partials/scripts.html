@@ -213,7 +213,9 @@ window.markmap = {
     }
 
     window.addEventListener("CookieConsentDeclaration", function () {
+      console.log("CookieConsentDeclaration");
       if (hasConsent()) {
+        console.log("Cookiebot has consent, loading Inkeep");
         loadInkeep();
       }
     });
