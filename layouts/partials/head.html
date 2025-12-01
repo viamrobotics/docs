@@ -3,6 +3,47 @@
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
+<script>
+  (function () {
+    function getCookie(name) {
+      var value = '; ' + document.cookie;
+      var parts = value.split('; ' + name + '=');
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    function deleteAllCookies() {
+      var cookies = document.cookie ? document.cookie.split(';') : [];
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf('=');
+        var name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+        if (!name) continue;
+
+        // Delete cookie for current domain, path=/
+        document.cookie =
+          name +
+          '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+
+        // Try to delete for higher-level domains as well
+        var domainParts = window.location.hostname.split('.');
+        while (domainParts.length > 1) {
+          var domain = domainParts.join('.');
+          document.cookie =
+            name +
+            '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=' +
+            domain;
+          domainParts.shift();
+        }
+      }
+    }
+
+    var version = getCookie('viam_version');
+    if (version !== '1') {
+      deleteAllCookies();
+    }
+  })();
+</script>
 {{ hugo.Generator }} {{ range .AlternativeOutputFormats -}}
 <link
     rel="{{ .Rel }}"
@@ -90,6 +131,11 @@ hugo.IsProduction -}}{{- if .Site.Config.Services.GoogleAnalytics.ID -}}
 <!-- Start Clarity Tooling (Cookiebot-gated) -->
 <script type="text/javascript">
   window.addEventListener('CookieConsentDeclaration', function () {
+    if (window.Cookiebot && window.Cookiebot.consents && window.Cookiebot.consents.given) {
+      var maxAge = 60 * 60 * 24 * 365; // 1 year
+      document.cookie = 'viam_version=1;path=/;max-age=' + maxAge;
+    }
+
     if (window.Cookiebot && window.Cookiebot.consents.given.marketing) {
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
