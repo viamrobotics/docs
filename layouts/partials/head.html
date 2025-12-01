@@ -93,15 +93,14 @@ hugo.IsProduction (ne $outputFormat "print") -}}
 {{- end -}}
 {{- end -}}
 <!-- START script for cookie dialogue -->
-{{ if not hugo.IsProduction }}
-<script
+ <!-- This is not needed for production where Cookiebot is already loaded -->
+<!-- <script
     id="Cookiebot"
     src="https://consent.cookiebot.com/uc.js"
     data-cbid="1337ee38-8a33-457d-9eb2-420b7716347a"
     data-blockingmode="auto"
     type="text/javascript"
-></script>
-{{ end }}
+></script> -->
 <!-- END script for cookie dialogue -->
 <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"

@@ -141,17 +141,18 @@ window.markmap = {
     var embedSrc = "https://unpkg.com/@inkeep/cxkit-js@^0.5/dist/embed.js";
     var localSrc = "{{ $jsInkeep.RelPermalink }}";
 
-    function isLocalhost() {
+    function isStagingOrDev() {
       var host = window.location.hostname;
       return (
         host === "localhost" ||
         host === "127.0.0.1" ||
-        host === "[::1]"
+        host === "[::1]" ||
+        host.contains("viam-docs.netlify.app")
       );
     }
 
     function hasConsent() {
-      if (isLocalhost()) return true;
+      if (isStagingOrDev()) return true;
 
       return (
         window.Cookiebot &&
