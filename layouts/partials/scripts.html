@@ -132,16 +132,93 @@ window.markmap = {
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
 <script async src="{{ $jsSentry.RelPermalink }}" type="text/plain" data-cookieconsent="statistics" crossorigin="anonymous"></script>
 {{ end }}
-
 <!-- INKEEP start -->
-<script
-  type="module"
-  src="https://unpkg.com/@inkeep/cxkit-js@^0.5/dist/embed.js"
-  defer
-></script>
 {{ $jsInkeep := resources.Get "js/inkeep.js" }}
 {{ $jsInkeep := $jsInkeep | minify }}
-<script type="module" src="{{ $jsInkeep.RelPermalink }}" defer></script>
+<script>
+  (function () {
+    var inkeepLoaded = false;
+    var embedSrc = "https://unpkg.com/@inkeep/cxkit-js@^0.5/dist/embed.js";
+    var localSrc = "{{ $jsInkeep.RelPermalink }}";
+
+    function isLocalhost() {
+      var host = window.location.hostname;
+      return (
+        host === "localhost" ||
+        host === "127.0.0.1" ||
+        host === "[::1]"
+      );
+    }
+
+    function hasConsent() {
+      if (isLocalhost()) return true;
+
+      return (
+        window.Cookiebot &&
+        window.Cookiebot.consents &&
+        window.Cookiebot.consents.given &&
+        window.Cookiebot.consents.given.necessary
+      );
+    }
+
+    function loadInkeep() {
+      if (inkeepLoaded) return;
+      inkeepLoaded = true;
+
+      var s1 = document.createElement("script");
+      s1.type = "module";
+      s1.src = embedSrc;
+      s1.defer = true;
+
+      // Wait for embed.js to load before loading inkeep.js
+      s1.onload = function() {
+        // Double-check that Inkeep is actually available
+        function loadLocalScript() {
+          if (window.Inkeep) {
+            var s2 = document.createElement("script");
+            s2.type = "module";
+            s2.src = localSrc;
+            s2.defer = true;
+            document.head.appendChild(s2);
+          } else {
+            // If Inkeep isn't available yet, wait a bit and check again
+            setTimeout(loadLocalScript, 50);
+          }
+        }
+        loadLocalScript();
+      };
+
+      // Fallback: if onload doesn't fire, poll for Inkeep
+      var pollCount = 0;
+      var maxPolls = 40; // 2 seconds max (40 * 50ms)
+      function pollForInkeep() {
+        if (window.Inkeep) {
+          var s2 = document.createElement("script");
+          s2.type = "module";
+          s2.src = localSrc;
+          s2.defer = true;
+          document.head.appendChild(s2);
+        } else if (pollCount < maxPolls) {
+          pollCount++;
+          setTimeout(pollForInkeep, 50);
+        }
+      }
+      setTimeout(pollForInkeep, 100);
+
+      document.head.appendChild(s1);
+    }
+    console.log("hasConsent()", hasConsent());
+    if (hasConsent()) {
+      loadInkeep();
+    }
+
+    window.addEventListener("CookieConsentDeclaration", function () {
+      if (hasConsent()) {
+        loadInkeep();
+      }
+    });
+  })();
+</script>
 <!-- INKEEP end -->
 
 {{ partial "hooks/body-end.html" . }}
