@@ -153,11 +153,11 @@ window.markmap = {
     function hasConsent() {
       if (isLocalhost()) return true;
 
+      console.log("window.Cookiebot", window.Cookiebot);
       return (
         window.Cookiebot &&
-        window.Cookiebot.consents &&
-        window.Cookiebot.consents.given &&
-        window.Cookiebot.consents.given.necessary
+        window.Cookiebot.consent &&
+        window.Cookiebot.consent.necessary
       );
     }
 
