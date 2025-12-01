@@ -131,6 +131,11 @@ hugo.IsProduction -}}{{- if .Site.Config.Services.GoogleAnalytics.ID -}}
 <!-- Start Clarity Tooling (Cookiebot-gated) -->
 <script type="text/javascript">
   window.addEventListener('CookieConsentDeclaration', function () {
+    console.log("CookieConsentDeclaration fired, attemptint to set viam_version cookie");
+    console.log("window.Cookiebot", window.Cookiebot);
+    console.log("window.Cookiebot.consents", window.Cookiebot.consents);
+    console.log("window.Cookiebot.consents.given", window.Cookiebot.consents.given);
+    console.log("window.Cookiebot.consents.given.necessary", window.Cookiebot.consents.given.necessary);
     if (window.Cookiebot && window.Cookiebot.consents && window.Cookiebot.consents.given) {
       var maxAge = 60 * 60 * 24 * 365; // 1 year
       document.cookie = 'viam_version=1;path=/;max-age=' + maxAge;
