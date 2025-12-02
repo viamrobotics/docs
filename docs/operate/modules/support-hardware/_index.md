@@ -934,12 +934,11 @@ Save the file.
 ## Test your module locally
 
 You can test your module locally before uploading it to the [registry](https://app.viam.com/registry).
-You can configure it in the web UI using the local files on your machine.
 
 ### Add module to machine
 
 To get your module onto your machine, hot reloading builds and packages it and then uses the shell service to copy it to the machine for testing.
-If you are using a Python virtual environment (venv), make sure your module files are on the same device where `viam-server` is running, and add the module manually instead.
+If your files are already on the machine, you can add the module manually instead.
 
 {{% hiddencontent %}}
 Hot reloading is the preferred solution for cross-compilation. We recommend using hot reloading rather than cross-compilation tools like Canon.
@@ -1006,7 +1005,7 @@ You may need to refresh your machine page for your module to show up.
 {{< /alert >}}
 
 {{% /tab %}}
-{{% tab name="Manual (required for Python venv)" %}}
+{{% tab name="Manual" %}}
 
 Navigate to your machine's **CONFIGURE** page.
 
@@ -1140,7 +1139,7 @@ When toggled on, the machine uses the module that you are developing.
 When toggled off, the machine uses the configured registry version.
 
 {{% /tab %}}
-{{% tab name="Manual (required for Python venv)" %}}
+{{% tab name="Manual" %}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}
