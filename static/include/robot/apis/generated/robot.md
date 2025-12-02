@@ -278,7 +278,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.cancelOperation("INSERT OPERATION ID");
+await machine.cancelOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#canceloperation).
@@ -324,7 +324,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.blockForOperation("INSERT OPERATION ID");
+await machine.blockForOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#blockforoperation).
@@ -944,7 +944,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Returns:**
 
-- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient)): the RobotClient.Options.
+- (typing_extensions.Self): the RobotClient.Options.
 
 **Raises:**
 
@@ -982,7 +982,7 @@ Create a RobotClient that is connected to the machine at the provided address.
 
 **Returns:**
 
-- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient))
+- (typing_extensions.Self)
 
 **Example:**
 
@@ -1056,7 +1056,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Returns:**
 
-- ([typing_extensions.Self](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient))
+- (typing_extensions.Self)
 
 **Example:**
 
