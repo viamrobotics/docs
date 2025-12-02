@@ -1084,7 +1084,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `update-models` | Update the module's metadata file with the models it provides. | - |
 | `upload` | Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information. | **module-path** : specify the path to the file, directory, or compressed archive (with `.tar.gz` or `.tgz` extension) that contains your custom module code. |
 | `reload` | Build a module in the cloud and run it on a target marchine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine. | - |
-| `reload-local` | Build a module locally and run it on a target marchine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine. | - |
+| `reload-local` | Build a module locally and run it on a target machine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine. | - |
 | `restart` | Restart a running module. | - |
 | `build start` | Start a module build in a cloud runner using the build step in your [`meta.json` file](/operate/modules/advanced/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
 | `build local` | Start a module build locally using the build step in your [`meta.json` file](/operate/modules/advanced/metajson/). See [Using the `build` subcommand](#using-the-build-subcommand). | - |
@@ -1101,7 +1101,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | -------- | ----------- | ------------------- | --------- |
 | `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
-| `--cloud-config` | The location of the <FILE>viam.json</FILE> file. with robot ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
+| `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
 | `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | `upload` | Optional |
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload`, `reload-local` | Optional |
@@ -1460,14 +1460,14 @@ The `packages` command allows you to upload packages to the Viam Cloud or export
 For example, you can use this command to download ML models or modules from the registry.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --path=<path-to-package.tar.gz> --model-framework=<framework>
+viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --upload=<path-to-package.tar.gz> --model-framework=<framework>
 viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
 ```
 
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --path=./the_package.tar.gz --model-framework=tensorflow
+viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --upload=./the_package.tar.gz --model-framework=tensorflow
 viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
 ```
 
@@ -1488,7 +1488,7 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--name` | The name of the package. | `upload`, `export` | **Required** |
 | `--version` | The version of the package or `latest` | `upload`, `export` | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | `upload`, `export` | **Required** |
-| `--path` | The path to the package for upload. The package should be zipped with tar and have the `.tar.gz` extension. | `upload` | **Required** |
+| `--upload` | The path to the package for upload. Executable or zipped tar with the `.tar.gz` extension. | `upload` | **Required** |
 | `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `upload` | **Required** |
 | `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | `upload` | **Required** |
 | `--destination` | The output directory for downloaded package. | `export` | **Required** |
