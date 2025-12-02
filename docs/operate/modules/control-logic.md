@@ -468,31 +468,101 @@ class ControlLogic(Generic, EasyResource):
 
 For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
-## Add the control logic module locally
+## Test your module locally
 
-If you have the code on the machine that runs `viam-server` you can test the module as a _local_ module:
+You can test your module locally before uploading it to the [registry](https://app.viam.com/registry).
 
-{{< table >}}
-{{% tablestep start=1 %}}
-**Configure your module as a local module.**
+### Add module to machine
 
-Navigate to your machine's **CONFIGURE** page.
-Make sure your machine is showing as live and connected to Viam.
-
-Click the **+** button, select **Local module**, then select **Local module** again.
+To get your module onto your machine, hot reloading builds and packages it and then uses the shell service to copy it to the machine for testing.
+If your files are already on the machine, you can add the module manually instead.
 
 {{< tabs >}}
-{{% tab name="Python" %}}
+{{% tab name="Hot reloading (recommended)" %}}
 
-Enter the path to the <file>run.sh</file> file, for example, `/home/naomi/control-logic/run.sh` on Linux or `/Users/naomi/control-logic/run.sh` on macOS.
-Click **Create**.
+Run the following command to build the module and add it to your machine:
 
-Save your config.
+{{< tabs >}}
+{{% tab name="Same device" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload-local --cloud-config /path/to/viam.json
+```
+
+{{% /tab %}}
+{{% tab name="Other device" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module reload --part-id 123abc45-1234-432c-aabc-z1y111x23a00
+```
+
 {{% /tab %}}
 {{< /tabs >}}
 
-{{% /tablestep %}}
-{{% tablestep %}}
+For more information, see the [`viam module` documentation](/dev/tools/cli/#module).
+
+{{< expand "Reload troubleshooting" >}}
+
+- `Error: Could not connect to machine part: context deadline exceeded; context deadline exceeded; mDNS query failed to find a candidate`
+
+  Try specifying the `--part-id`, which you can find by clicking the **Live** indicator on your machine's page and clicking **Part ID**.
+
+- `Error: Rpc error: code = Unknown desc = stat /root/.viam/packages-local: no such file or directory`
+
+  Try specifying the `--home` directory, for example `/Users/yourname/` on macOS.
+
+- `Error: Error while refreshing token, logging out. Please log in again`
+
+  Run `viam login` to reauthenticate the CLI.
+
+### Try using a different command
+
+If you are still having problems with the `reload` command, you can use a different, slower method of rebuilding and then restarting the module.
+Run the following command to rebuild your module:
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+viam module build local
+```
+
+Then restart it on your machine's **CONFIGURE** tab.
+In the upper-right corner of the module's card, click the **...** menu, then click **Restart**.
+
+{{<imgproc src="/registry/restart-module.png" resize="x600" declaredimensions=true alt="Module menu." style="width:300px" class="shadow" >}}
+
+{{< /expand >}}
+
+{{< alert title="Refresh" color="note" >}}
+
+You may need to refresh your machine page for your module to show up.
+
+{{< /alert >}}
+
+{{% /tab %}}
+{{% tab name="Manual" %}}
+
+Navigate to your machine's **CONFIGURE** page.
+
+Click the **+** button, select **Local module**, then again select **Local module**.
+
+Enter the path to the automatically-generated <file>run.sh</file> script.
+Click **Create**.
+For local modules, `viam-server` uses this path to start the module.
+
+**Example module**:
+For the `control-logic` module, the path should resemble `/home/yourname/control-logic/run.sh` on Linux, or `/Users/yourname/control-logic/run.sh` on macOS.
+
+Save the config.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< table >}}
+{{< /table >}}
+
+### Add local model
+
+{{< table >}}
+{{% tablestep start=1 %}}
 **Configure your resource as a local component or service.**
 
 {{< tabs >}}
