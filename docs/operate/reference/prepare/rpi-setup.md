@@ -239,20 +239,13 @@ If you are using hardware that requires these protocols, you must enable support
    sudo reboot
    ```
 
-## Install `viam-server`
-
-{{< readfile "/static/include/install/install-linux.md" >}}
-
-## Try an example
-
-{{< readfile "/static/include/install/try-example.md" >}}
-
 ## Next steps
 
+You have now installed an operating system on your Raspberry Pi.
+To use your Raspberry pi, follow the [setup guide](/operate/install/setup/):
+
 {{< cards >}}
-{{% card link="/operate/modules/configure-modules/" %}}
-{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
+{{% card link="/operate/install/setup/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

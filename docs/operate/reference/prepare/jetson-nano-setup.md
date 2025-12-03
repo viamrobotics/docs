@@ -70,18 +70,6 @@ Some vision services in the [registry](https://app.viam.com/registry) require yo
 If you intend to use GPIO, however, we recommend installing Jetpack 5 on your Jetson AGX Orin.
 {{< /alert >}}
 
-## Install `viam-server`
-
-{{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
-
-If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
-
-If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
-
-{{% /alert %}}
-
-{{< readfile "/static/include/install/install-linux-aarch.md" >}}
-
 ## Serial communication protocol tips
 
 To change the pins that are in use for modes of serial communication, launch <file>jetson-io.py</file> with the following commands:
@@ -107,19 +95,24 @@ For a Jetson Orin Nano, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
-## Try an example
-
-{{< readfile "/static/include/install/try-example.md" >}}
-
 ## Next steps
 
+You have now installed an operating system on your Jetson board.
+To use your Jetson board, follow the [setup guide](/operate/install/setup/):
+
 {{< cards >}}
-{{% card link="/operate/modules/configure-modules/" %}}
-{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
+{{% card link="/operate/install/setup/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
+
+### Install `curl`
+
+If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
+
+If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
+
+### Barrel jack power supply polarity
 
 Make sure the polarity on your barrel jack power supply is matched when powering your machine.
 See the last step of your appropriate [initial setup guide](#hardware-requirements) for instructions on choosing the correct power supply for your Nano board.

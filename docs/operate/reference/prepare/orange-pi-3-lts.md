@@ -81,31 +81,19 @@ You can also connect to WiFi while connected to the Orange Pi on the terminal wi
 For more information, consult the [official user manual](https://drive.google.com/file/d/1jka7avWnzNeTIQFkk78LoJdygWaGH2iu/view) (page 80).
 {{% /alert %}}
 
-## Install `viam-server`
-
-Launch the browser on your Orange Pi display by selecting **Applications** from the left-hand menu, then **Internet**, then **Firefox Web Browser**.
-
-Also, launch the terminal by selecting **Applications** and **Terminal**.
-Complete the following instructions to install `viam-server`, noting that if you are prompted for a password in the terminal, the default password for Orange Pis is "orangepi".
-
-{{< readfile "/static/include/install/install-linux-aarch.md" >}}
-
-## Try an example
-
-{{< readfile "/static/include/install/try-example.md" >}}
-
 ## Next steps
 
-[Configure an `orangepi` board as a component](https://github.com/viam-modules/orange-pi/) to integrate the GPIO pins of the single-board computer into your smart machine.
-
-Then continue by configuring connected hardware or by following a tutorial:
+You have now installed an operating system on your Orange Pi.
+To use your Orange Pi, follow the [setup guide](/operate/install/setup/):
 
 {{< cards >}}
-{{% card link="/operate/modules/configure-modules/" %}}
-{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
+{{% card link="/operate/install/setup/" %}}
 {{< /cards >}}
 
+If you want to use the GPIO pins on the board, add a [`orangepi` board as a component](https://github.com/viam-modules/orange-pi/) after installing `viam-server`.
+
 ## Troubleshooting
+
+If you are prompted for a password in the terminal, the default password for Orange Pis is "orangepi".
 
 Visit the [Orange Pi Forum](http://www.orangepi.org/orangepibbsen/) for troubleshooting tips and tricks specific to the Orange Pi.

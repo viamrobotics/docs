@@ -37,9 +37,14 @@ Overall, `viam-server` manages:
 
 `viam-server` handles all {{< glossary_tooltip term_id="grpc" text="gRPC" >}} and {{< glossary_tooltip term_id="webrtc" >}} communication for connecting machines to the cloud or for connecting to other parts of your machine.
 
+All communication happens securely over HTTPS using secret tokens that are in the machine's config.
+
 ## Lifecycle
 
 ### Start-up
+
+The machine setup steps copy your machine's credentials to your machine.
+When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its configuration from Viam.
 
 `viam-server` ensures that any configured {{< glossary_tooltip term_id="module" text="modules" >}}, {{< glossary_tooltip term_id="resource" text="built-in resources" >}} and {{< glossary_tooltip term_id="modular-resource" text="modular resources" >}} are loaded on startup.
 `viam-server` handles [dependency](/operate/modules/advanced/dependencies/) management between resources.
@@ -52,8 +57,11 @@ After start-up, `viam-server` manages:
 
 ### Reconfiguration
 
-When you or your collaborators change the configuration of a machine, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources within 15 seconds.
-This means you can add, modify, and remove a modular resource instance from a running machine.
+Once the machine has a configuration, it caches it locally (in a file at <FILE>~/.viam/cached_cloud_config\_\<PART-ID\>.json</FILE>) and can use the config for up to 60 days.
+Since the configuration is cached locally, your machine does not need to stay connected to Viam after it has obtained its configuration file.
+
+If it is online, the machine automatically checks for new configurations every 15 seconds.
+When you or your collaborators change the configuration of a machine, `viam-server` automatically synchronizes the configuration to your machine and updates the running resources.
 
 Reconfiguration of individual resources happens concurrently if there are no configured dependencies for any resources.
 If there are configured dependencies, resources are reconfigured in groups.
