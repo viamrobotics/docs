@@ -19,7 +19,7 @@ languages: ["python", "go", "typescript", "flutter", "c++"]
 level: "Beginner"
 date: "2024-07-31"
 # updated: ""  # When the tutorial was last entirely checked
-draft: true
+# draft: true
 ---
 
 In this guide you'll configure and control a motor.
@@ -37,40 +37,65 @@ In this guide you'll configure and control a motor.
 ## Requirements
 
 You don't need to buy or own any hardware to complete this tutorial.
+
 If you have the following components, you can follow along on your own hardware:
 
-- A single-board computer or an ESP32.
+- A single-board computer.
 - A motor and compatible motor driver.
 
 Make sure to wire your motor to your board before starting.
 Power the board on if you want to test your machine while configuring it.
 
-{{% expand "No motor at hand?" %}}
-No problem.
+No motor at hand? No problem.
 If you do not have both a board and motor, install `viam-server` on your laptop or computer and follow the instructions to use a _fake_ motor, which is a model that serves for testing.
-{{% /expand%}}
 
-## Instructions
+## Step 1: Device setup
 
-Follow these steps to control your motor:
+{{< table >}}
+{{% tablestep start=1 %}}
+**Create a Viam account and log in.**
 
-{{< expand "Step 1: Create a machine" >}}
+Navigate to [Viam](https://app.viam.com) in a web browser.
+Create a free account and log in.
 
-Add a new machine.
+{{% /tablestep %}}
+{{% tablestep %}}
+**Navigate to your first location.**
 
-![The 'My Desk' page with a new machine name in the New machine field and the Add machine button next to the field highlighted.](/get-started/quickstarts/add-machine.png)
+Click **FLEET** in the upper-left corner of the page and click **LOCATIONS**.
+Then select the `First Location`.
 
-{{< /expand >}}
-{{< expand "Step 2: Install viam-server or viam-micro-server" >}}
+Viam automatically created an {{< glossary_tooltip term_id="organization" text="organization" >}} for you and a {{< glossary_tooltip term_id="location" text="location" >}} called `First Location`.
+You can create more organizations and locations to organize your machines, but for this guide you can use the automatically created ones.
 
-Navigate to the **CONFIGURE** tab of your machine's page.
-Follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} that appear on your new machine's **CONFIGURE** page.
-If you are using a microcontroller, install `viam-micro-server`.
-Otherwise, install `viam-server`.
-Wait for your device to connect to Viam.
+{{% /tablestep %}}
+{{% tablestep %}}
+**Create a new machine.**
 
-{{< /expand >}}
-{{< expand "Step 3: Configure a board" >}}
+Click **+ Add machine** to create your first machine and name it `motor-controller`.
+
+A {{< glossary_tooltip term_id="machine" text="machine" >}} represents at least one computer running `viam-server` along with all the hardware components and software services that the computer controls.
+
+{{% /tablestep %}}
+{{% tablestep %}}
+**Install `viam-server`.**
+
+On the machine's page, follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project.
+If you can choose an installation method, use `viam-agent`.
+
+Wait until your machine has successfully connected to Viam.
+
+{{<imgproc src="/tutorials/hello-world/connected.png" resize="800x" style="width: 500px" declaredimensions=true alt="A machine showing a successful connection." class="imgzoom shadow">}}
+
+{{% /tablestep %}}
+{{< /table >}}
+
+By installing `viam-server` on your device, you've turned your computer into a Viam {{< glossary_tooltip term_id="machine" text="machine" >}}.
+
+At this point, your machine only runs the Viam software.
+To make your machine control a motor, you must add a motor component and a board component for the board that controls the motor.
+
+## Step 2: Configure a board
 
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
@@ -78,21 +103,16 @@ Click on the **+** icon to select a suitable board.
 If you are using a physical board to follow along, look through the [**Supported Models**](/operate/reference/components/board/#configuration) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
-![An example board configuration in the app builder UI. The name (local), type (board) and model (pi) are shown. No other attributes are configured.](/get-started/quickstarts/configure-pi.png)
-
 If you do not have a physical board, use the [`fake` board model](/operate/reference/components/board/fake/).
 
 Follow the instructions in the board model's documentation to configure any required attributes.
 For the `fake` model, there are no required attributes.
 
-{{< /expand >}}
-{{< expand "Step 4: Configure a motor" >}}
+## Step 3: Configure a motor
 
 Add a `motor` component that supports the type of motor and motor driver you're using.
 Look through the [**Supported Models**](/operate/reference/components/motor/#configuration) to determine the model of component to configure.
-For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/operate/reference/components/motor/gpio/):
-
-![The CONFIGURE tab populated with a configured gpio motor.](/get-started/quickstarts/configure-motor.png)
+For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/operate/reference/components/motor/gpio/).
 
 Follow the motor driver manufacturer's data sheet to wire your motor driver to your board and to your motor.
 Follow the [model's documentation](/operate/reference/components/motor/) to configure the attributes so that the computer can send signals to the motor.
@@ -101,8 +121,8 @@ If you do not have a physical motor, use the [`fake` motor model](/operate/refer
 For the `fake` model, there are no required attributes.
 
 **Save your configuration.**
-{{< /expand >}}
-{{< expand "Step 5: Choose how you will control the motor" >}}
+
+## Step 4: Choose how you will control the motor
 
 You can control your motor directly using the web UI, the mobile app, or the SDKs.
 
@@ -423,8 +443,6 @@ Since you added a screen for motor, motor is a navigable resource.
 To navigate to the motor screen, save your code and launch your simulator.
 Navigate to the robot screen of your (live) machine with a motor resource configured, and see the resource control interface displayed:
 
-{{<imgproc src="/get-started/quickstarts/motor-screen.png" resize="500x" declaredimensions=true alt="iOS simulator of a motor displayed">}}
-
 You can adjust the toggle to change the power of your motor or press the buttons to make it revolve forwards and backwards.
 
 {{% /tab %}}
@@ -579,4 +597,8 @@ int main() {
 {{% /tab %}}
 {{< /tabs >}}
 
-{{< /expand >}}
+## Next steps
+
+You now know how to build a machine that controls two {{< glossary_tooltip term_id="component" text="components" >}}.
+
+For a more elaborate tutorial using more componenst, see the [Desk Safari Tutorial](/operate/hello-world/tutorial-desk-safari/).
