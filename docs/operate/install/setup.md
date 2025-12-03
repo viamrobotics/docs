@@ -1,6 +1,6 @@
 ---
 linkTitle: "Set up a computer or SBC"
-title: "Set up a computer or SBC"
+title: "Set up a computer or single-board computer (SBC)"
 weight: 20
 layout: "docs"
 type: "docs"
@@ -28,13 +28,10 @@ date: "2025-10-16"
 
 Get started by installing [`viam-server`](/operate/reference/viam-server/), the open-source software that drives your hardware and connects your device to the cloud.
 
-## Prerequisites
+## Prerequisite: Install operating system
 
 If you're using Viam with a single-board computer (SBC) that does not yet have a Linux operating system installed, start by flashing an OS.
 For convenience, we provide operating system installation instructions for some popular SBCs:
-
-{{< expand "SBC setup instructions" >}}
-If your SBC or other computer already has a supported operating system installed, you can skip this step.
 
 {{< cards >}}
 {{% card link="/operate/reference/prepare/rpi-setup/" class="small" %}}
@@ -47,8 +44,8 @@ If your SBC or other computer already has a supported operating system installed
 {{% card link="/operate/reference/prepare/pumpkin/" class="small" %}}
 {{% card link="/operate/reference/prepare/sk-tda4vm/" class="small" %}}
 {{< /cards >}}
-{{< /expand >}}
 
+If your SBC or other computer already has a supported operating system installed, you can skip to [Install `viam-server`](#install-viam-server).
 Check if your system can run `viam-server` by running the following command in your terminal:
 
 {{< tabs >}}
@@ -141,18 +138,7 @@ If you need to use Docker reach out to [support](mailto:support@viam.com).
 
 {{% /hiddencontent %}}
 
-### How the machine gets its configuration
-
-The machine setup steps copy your machine's credentials to your machine.
-When you turn on your machine, `viam-server` starts up and uses the provided credentials to fetch its configuration from Viam.
-Once the machine has a configuration, it caches it locally (in a file at <FILE>~/.viam/cached_cloud_config\_\<PART-ID\>.json</FILE>) and can use the config for up to 60 days.
-Since the configuration is cached locally, your machine does not need to stay connected to Viam after it has obtained its configuration file.
-
-If it is online, the machine checks for new configurations every 15 seconds and changes its config automatically when a new config is available.
-All communication happens securely over HTTPS using secret tokens that are in the machine's config.
-
-## Manage your installation
-
+{{% hiddencontent %}}
 On Linux installs, by default `viam-server` or `viam-agent` and `viam-server` will start automatically when your system boots.
 On macOS installs, `viam-server` does not start automatically on boot.
 You can change this behavior if desired.
@@ -160,3 +146,4 @@ You can change this behavior if desired.
 To learn how to run, update, or uninstall `viam-agent`, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 For manual installs of only `viam-server`, see [Manage `viam-server`](/operate/reference/viam-server/manage-viam-server/).
+{{% /hiddencontent %}}

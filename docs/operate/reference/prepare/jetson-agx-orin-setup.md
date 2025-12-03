@@ -85,10 +85,6 @@ If this command fails, try using `wget https://storage.googleapis.com/packages.v
 
 {{% /alert %}}
 
-## Install `viam-server`
-
-{{< readfile "/static/include/install/install-linux-aarch.md" >}}
-
 ## Camera setup
 
 1. Install E-Con Systems [e-CAM20_CUOAGX](https://www.e-consystems.com/nvidia-cameras/jetson-agx-orin-cameras/full-hd-ar0234-color-global-shutter-camera.asp) AR0234 driver.
@@ -119,19 +115,18 @@ For a Jetson AGX Orin, reference the following:
 Note that I2C buses do not need to be configured through <file>jetson-io.py</file>.
 See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/ConfiguringTheJetsonExpansionHeaders.html) for more information.
 
-## Try an example
-
-{{< readfile "/static/include/install/try-example.md" >}}
-
 ## Next steps
 
+You have now installed an operating system on your Jetson board.
+To use your Jetson board, follow the [setup guide](/operate/install/setup/):
+
 {{< cards >}}
-{{% card link="/operate/modules/configure-modules/" %}}
-{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
+{{% card link="/operate/install/setup/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
+
+### Setup tips
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
 
@@ -151,6 +146,12 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
   - If your board is powered off after `sudo reboot` has completed and refuses to turn on, disconnect and reconnect the power cable.
   - It is normal for JetPack installation to take a very long time, up to an hour or more.
 - If you do not see an interactive menu after launching <file>jetson-io.py</file>, try resizing your window to a large size.
+
+### Install `curl`
+
+If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
+
+If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
 
 You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
 

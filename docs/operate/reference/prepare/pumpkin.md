@@ -17,13 +17,9 @@ date: "2022-01-01"
 
 To use a [Mediatek Genio 500 Pumpkin single-board computer](https://ologicinc.com/portfolio/mediateki500/) with Viam:
 
-1. [Install `viam-server`](#install-viam-server) on your machine.
+1. [Install `viam-server`](/operate/install/setup/) on your machine.
 1. [Create a board definitions file](#create-a-board-definitions-file), specifying the mapping between your board's GPIO pins and connected hardware.
 1. [Configure a `customlinux` board](#configure-a-customlinux-board) on your machine, specifying the path to the definitions file in the board configuration.
-
-## Install `viam-server`
-
-{{< readfile "/static/include/install/install-linux-aarch.md" >}}
 
 ## Create a board definitions file
 
