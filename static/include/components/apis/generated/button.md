@@ -38,6 +38,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myButton, err := switch.FromProvider(machine, "my_button")
+
+err := myButton.Push(context.Background(), nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/button#Button).
 
 {{% /tab %}}

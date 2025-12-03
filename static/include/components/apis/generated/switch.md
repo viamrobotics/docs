@@ -44,6 +44,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySwitch, err := switch.FromProvider(machine, "my_switch")
+
+err := mySwitch.SetPosition(context.Background(), 0 , nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
 
 {{% /tab %}}
@@ -126,6 +134,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(uint32)](https://pkg.go.dev/builtin#uint32)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySwitch, err := switch.FromProvider(machine, "my_switch")
+
+position, err := mySwitch.GetPosition(context.Background(), nil)
+```
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
 
 {{% /tab %}}
@@ -203,6 +219,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - [(uint32)](https://pkg.go.dev/builtin#uint32)
 - [([]string)](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySwitch, err := switch.FromProvider(machine, "my_switch")
+
+positions, err := mySwitch.GetNumberOfPositions(context.Background(), nil)
+```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/switch#Switch).
 
