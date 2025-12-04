@@ -8,6 +8,7 @@ type: "docs"
 platformarea: ["data"]
 description: "Capture data from a resource on your machine and sync the data to the cloud."
 date: "2024-12-03"
+updated: "2025-12-04"
 aliases:
   - /services/data/capture/
   - /data/capture/
@@ -41,9 +42,9 @@ aliases:
 ---
 
 You can use the data management service to capture data from [supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync), then sync it to the cloud.
-You can also sync data from arbitrary folders on your machine.
+You can also [sync data from arbitrary folders on your machine](/data-ai/capture-data/upload-other-data/#sync-data-from-another-directory).
 
-## How data capture and data sync works
+## How data capture and data sync work
 
 The data management service writes data from your configured Viam resources to local storage on your edge device and syncs data from the edge device to the cloud:
 
@@ -92,13 +93,13 @@ Some models do not support all options, for example webcams do not capture point
 
 {{< /expand >}}
 
-For instructions on configuring data capture and sync with JSON, go to [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/) and follow the instructions for JSON examples.
+For instructions on configuring data capture and sync with JSON, see [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/).
 
 ## View captured data
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view).
 1. Select the [**Images**](https://app.viam.com/data/view?view=images), [**Files**](https://app.viam.com/data/view?view=files), [**Point clouds**](https://app.viam.com/data/view?view=point+clouds), or [**Sensors**](https://app.viam.com/data/view?view=sensors) subtab.
-1. Filter data by location, type of data, and more.
+1. Filter data by location, type, and more.
 
 ## Stop data capture or data sync
 
@@ -142,4 +143,4 @@ For other ways to control data synchronization, see:
 ## Next steps
 
 For more information on available configuration attributes and options like capturing directly to MongoDB or conditional sync, see [Advanced data capture and sync configurations](/data-ai/capture-data/advanced/advanced-data-capture-sync/).
-To leverage AI, you can now [create a dataset](/data-ai/train/create-dataset/) with the data you've captured.
+To leverage AI, you can [create a dataset](/data-ai/train/create-dataset/) with the data you've captured.

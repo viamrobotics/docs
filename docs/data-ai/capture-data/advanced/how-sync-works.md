@@ -6,11 +6,12 @@ weight: 12
 layout: "docs"
 type: "docs"
 platformarea: ["data"]
-description: "Data capture and sync works differently for viam-server and viam-micro-server."
+description: "Data capture and sync work differently for viam-server and viam-micro-server."
 date: "2024-12-18"
+updated: "2025-12-04"
 ---
 
-Data capture and cloud sync works differently for `viam-server` and `viam-micro-server`.
+Data capture and cloud sync work differently for `viam-server` and `viam-micro-server`.
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -28,7 +29,7 @@ The data is captured locally on the machine's storage and, by default, stored in
 
 The relative path for the data capture directory depends on where `viam-server` is run from, as well as the operating system of the machine.
 
-To find the `$HOME` value, check your machine's logs on startup which will log it in the environment variables:
+To find the `$HOME` value, check your machine's logs on startup, which will log it in the environment variables:
 
 ```sh
 2025-01-15T14:27:26.073Z    INFO    rdk    server/entrypoint.go:77    Starting viam-server with following environment variables    {"HOME":"/home/johnsmith"}
@@ -69,15 +70,15 @@ When data is stored in the cloud, it is encrypted at rest by the cloud storage p
 
 ## Data integrity
 
-Viam's data management service is designed to safeguard against data loss, data duplication and otherwise compromised data.
+Viam's data management service is designed to safeguard against data loss, data duplication, and otherwise compromised data.
 
 If the internet becomes unavailable or the machine needs to restart during the sync process, the sync is interrupted.
-If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval in between tries is at one hour, at which point the service retries the sync every hour.
+If the sync process is interrupted, the service will retry uploading the data at exponentially increasing intervals until the interval between retries reaches one hour, at which point the service retries the sync every hour.
 When the connection is restored and sync resumes, the service continues sync where it left off without duplicating data.
 If the interruption happens mid-file, sync resumes from the beginning of that file.
 
 To avoid syncing files that are still being written to, the data management service only syncs arbitrary files that haven't been modified in the previous 10 seconds.
-This default can be changed with the [`file_last_modified_millis` config attribute](/data-ai/capture-data/capture-sync/).
+This default can be changed with the [`file_last_modified_millis` config attribute](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-management-attributes).
 
 ## Automatic data deletion
 
@@ -116,8 +117,7 @@ When a machine loses its internet connection, it cannot resume cloud sync until 
 
 To ensure that the machine can store all data captured while it has no connection, you need to provide enough local data storage.
 
-If your robot is offline and can't sync and your machine's disk fills up beyond a certain threshold, the data management service will delete captured data to free up additional space and maintain a working machine.
-For more information, see [Automatic data deletion details](/data-ai/capture-data/advanced/how-sync-works/)
+For information about automatic data deletion when storage fills up, see [Automatic data deletion](#automatic-data-deletion) above.
 
 Data capture supports capturing tabular data directly to MongoDB in addition to capturing to disk.
 For more information, see [Capture directly to MongoDB](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster).

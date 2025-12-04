@@ -33,7 +33,7 @@ In a LoRaWAN network, information flows in two directions:
 Nodes pair LoRaWAN transmitters and receivers with a sensor.
 Instead of physically connecting to a machine over GPIO pins or USB, nodes communicate with your machine using the wireless LoRaWAN protocol.
 LoRaWAN supports communication over distances of up to 10 kilometers.
-Nodes typically run off of battery power; a single coin cell battery can power a node for weeks or months.
+Nodes typically run on battery power; a single coin cell battery can power a node for weeks or months.
 
 ### Gateway
 
@@ -123,7 +123,7 @@ Choose an appropriate gateway model from the following options:
 - `viam:lorawan:sx1302-hat-generic`: generic model for all other peripherals built using the SX1302 or SX1303 chips
 - `viam:lorawan:rak7391`: RAK7391 WisGate Connect
 
-Configure attributes based on the tables below:
+Configure attributes based on the descriptions below:
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -148,7 +148,7 @@ Complete the following steps to configure your node:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page in the [Viam app](https://app.viam.com).
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-1. Select the `sensor` type, type `lorawan`, then select the `lorawan` model that matches the name of your node.
+1. Select the `sensor` type, then type `lorawan` and select the `lorawan` model that matches the name of your node.
    If the name of your node does not appear in the list, choose the generic `lorawan:node` option.
 1. Click **Add module**, and enter a name for your node.
 1. Click **Create** to add the model and module to your machine.
@@ -205,7 +205,7 @@ Choose an appropriate node model from the following options:
 - `viam:lorawan:milesight-em310-tilt`: Milesight EM310-TILT sensor
 - `viam:lorawan:node`: Any LoRaWAN sensor that is:
   - Class A
-  - supports either the `US915` or `EU868` frequency band
+  - supports either the `US915` or `EU868` frequency bands
   - uses LoRaWAN MAC specification version 1.0.3
 
 Configure attributes based on the descriptions below:
@@ -213,25 +213,25 @@ Configure attributes based on the descriptions below:
 {{% /tab %}}
 {{< /tabs >}}
 
-You must configure the following attributes for OTAA nodes:
+Configure the following attributes for OTAA nodes:
 
-- `join_type`: The [activation protocol](#activation-protocols) used to secure this network. Default: "OTAA". Options: "OTAA", "ABP".
+- `join_type`: (Optional) The [activation protocol](#activation-protocols) used to secure this network. Default: "OTAA". Options: "OTAA", "ABP".
 - `dev_eui`: The **device EUI (Extended Unique Identifier)**, a unique 64-bit identifier for the LoRaWAN device in hexadecimal format (16 characters). Found on your device or in device packaging.
 - `app_key`: The 128-bit hexadecimal AES **application key** used for device authentication and session key derivation. Found in the device datasheet.
-- `gateways`: Name of the [gateway component](#add-a-gateway) in your Viam configuration.
+- `gateways`: An array containing the names of the [gateway component](#add-a-gateway) in your Viam configuration.
 
 You must configure the following attributes for ABP nodes:
 
 - `dev_addr`: The 32-bit hexadecimal **device address** used to identify this device in uplink messages. Found in the device datasheet or in device packaging.
 - `app_s_key`: The 128-bit hexadecimal **application session key** used to decrypt uplink messages. Found in the device datasheet or in device packaging.
 - `network_s_key`: The 128-bit hexadecimal **network session key** used to decrypt uplink messages. Found in the device datasheet or in device packaging.
-- `gateways`: The name of the [gateway component](#add-a-gateway) in your Viam configuration.
+- `gateways`: An array containing the names of the [gateway component](#add-a-gateway) in your Viam configuration.
 
 For the generic `viam:lorawan:node` model, you must also configure `decoder_path` for the [decoder script](#decoder-script).
 
 {{% alert title="Tip" color="tip" %}}
 
-Device-specific models for Milesight nodes provide default values for `app_key`, `network_s_key`, `app_s_key`, `fport`, `decoder_path`, and `uplink_interval_mins`.
+Device-specific models for Milesight nodes provide default values for `app_key` (for OTAA), `network_s_key` and `app_s_key` (for ABP), `fport`, `decoder_path`, and `uplink_interval_mins`.
 If you use a Milesight node, omit these fields from your configuration.
 
 {{% /alert %}}
@@ -321,7 +321,7 @@ await node.do_command({"restart_sensor": {}})
 ```dart
 final node = Sensor.fromRobot(robot, '<your_node_name>');
 
-# restart node
+// restart node
 await node.doCommand({ 'restart_sensor': {} });
 ```
 
@@ -332,7 +332,7 @@ await node.doCommand({ 'restart_sensor': {} });
 ```typescript
 const node = new SensorClient(client, "<your_node_name>");
 
-# restart node
+// restart node
 await node.doCommand({ restart_sensor: {} });
 ```
 
@@ -347,7 +347,7 @@ await node.doCommand({ restart_sensor: {} });
 {{< tabs >}}
 {{% tab name="Viam web app" %}}
 
-To restart a node from the Viam web UI, specify a hexadecimal string in the following DoCommand input in the **CONTROL** tab of your machine page:
+To send a downlink message to a node from the Viam web UI, specify a hexadecimal string in the following DoCommand input in the **CONTROL** tab of your machine page:
 
 ```json
 {
@@ -367,7 +367,7 @@ The following example shows how to send downlink messages to a node from an SDK:
 node = await robot.get_component(Sensor.get_resource_name("<your_node_name>"))
 
 # send downlink message in hexadecimal
-await node.do_command({"downlink": "48656C6C6F"})
+await node.do_command({"send_downlink": "48656C6C6F"})
 ```
 
 {{% /tab %}}
@@ -678,7 +678,7 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
 - **Check network configuration**:
 
   - Ensure gateway is running with no error logs.
-  - Verify that the `gateway` field of the node contains an array that contains only a string that exactly matches the name of your gateway in your machine configuration (for example, `"gateway": [ "example-gateway" ]`).
+  - Verify that the `gateways` field of the node contains an array that contains only a string that exactly matches the name of your gateway in your machine configuration (for example, `"gateways": [ "example-gateway" ]`).
   - Verify that your gateway and node frequency regions match.
 
 - **Adjust positioning**:

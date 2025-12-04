@@ -16,7 +16,7 @@ languages: []
 viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
 date: "2024-12-04"
-updated: "2025-09-05"
+updated: "2025-12-04"
 ---
 
 By default, `viam-server` checks for new data to sync at the configured interval (`sync_interval_mins`).
@@ -27,12 +27,12 @@ For example:
 - Sync when conditions are met or events are detected
 - Sync during certain time windows
 
-To sync only when certain conditions are met you must provide the data manager a sensor that returns `"should_sync": true` when sync should happen and `"should_sync": false` otherwise.
+To sync only when certain conditions are met, you must provide the data manager a sensor that returns `"should_sync": true` when sync should happen and `"should_sync": false` otherwise.
 
-This page will show you the implementation of a sensor which only allows sync during a defined time interval.
+This page shows you the implementation of a sensor which only allows sync during a defined time interval.
 You can use it as the basis of your own custom logic.
 
-You can also view [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) for more examples.
+You can also view the [trigger-sync-examples module](https://github.com/viam-labs/trigger-sync-examples-v2) for more examples.
 
 ## Prerequisites
 
@@ -61,16 +61,21 @@ Start by [creating a sensor module](/operate/modules/support-hardware/).
 Your sensor should have access to the information you need to determine if your machine should sync or not.
 Based on that data, make the sensor return true when the machine should sync and false when it should not.
 
-For example, if your want your machine to return data only during a specific time interval, your sensor needs to be able to access the time as well as be configured with the time interval during which you would like to sync data.
+For example, if you want your machine to sync data only during a specific time interval, your sensor needs to be able to access the time as well as be configured with the time interval during which you would like to sync data.
 It can then return true during the specified sync time interval and false otherwise.
 
 {{% /expand%}}
 
 ## Return `should_sync` as a reading from a sensor
 
+{{< alert title="Note" color="note" >}}
+If you are using a pre-built module like `sync-at-time:timesyncsensor`, you can skip this section and go directly to [Add your sensor to determine when to sync](#add-your-sensor-to-determine-when-to-sync).
+This section is for users who want to create their own custom sensor module.
+{{< /alert >}}
+
 The following example implementation of the `Readings()` method returns `"should_sync": true` if the current time is in a specified time window, and `"should_sync": false` otherwise.
 
-```go {class="line-numbers linkable-line-numbers" data-line="26,31,32,37"}
+```go {class="line-numbers linkable-line-numbers" data-line="34,40,41,46"}
 func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
     currentTime := time.Now()
     var hStart, mStart, sStart, hEnd, mEnd, sEnd int
@@ -89,6 +94,7 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
     zone, err := time.LoadLocation(s.zone)
     if err != nil {
         s.logger.Error("Time zone cannot be loaded: ", s.zone)
+        return nil, err
     }
 
     startTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
@@ -96,9 +102,17 @@ func (s *timeSyncer) Readings(context.Context, map[string]interface{}) (map[stri
     endTime := time.Date(currentTime.Year(), currentTime.Month(), currentTime.Day(),
         hEnd, mEnd, sEnd, 0, zone)
 
+    // Handle time windows that span midnight (e.g., 23:00 to 01:00)
+    // If end time is earlier than or equal to start time, the window spans midnight
+    if endTime.Before(startTime) || endTime.Equal(startTime) {
+        // Add 24 hours to endTime to account for midnight crossover
+        endTime = endTime.Add(24 * time.Hour)
+    }
+
     readings := map[string]interface{}{"should_sync": false}
     readings["time"] = currentTime.String()
-    // If it is between the start and end time, sync.
+
+    // Check if current time is within the sync window
     if currentTime.After(startTime) && currentTime.Before(endTime) {
         s.logger.Debug("Syncing")
         readings["should_sync"] = true
@@ -122,15 +136,14 @@ For additional examples, see the `Readings` function of the [time-interval-trigg
 
 ## Add your sensor to determine when to sync
 
-Add your module to your machine and configure it.
-In this example we will continue to use [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
-You will need to follow the same steps with your module:
+This section shows how to add and configure [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time).
+If you created your own sensor module following the previous section, you will need to follow similar steps with your module:
 
 {{< table >}}
 {{% tablestep start=1 %}}
 **Add the sensor to your machine**
 
-On your machine's **CONFIGURE** page, click the **+** button next to your machine part in the left menu.
+On your machine's **CONFIGURE** tab, click the **+** button next to your machine part in the left menu.
 Select **Component or service**, then search for and select the `sync-at-time:timesyncsensor` model provided by the [`sync-at-time` module](https://app.viam.com/module/naomi/sync-at-time).
 
 Click **Add module**, then enter a name or use the suggested name for your sensor and click **Create**.
@@ -186,11 +199,11 @@ The following attributes are available for the `naomi:sync-at-time:timesyncsenso
 </div>
 <br>
 
-In the next step you will configure the data manager to take the sensor into account when syncing.
+In the next step, you will configure the data manager to take the sensor into account when syncing.
 
 ## Configure the data manager to sync based on sensor
 
-On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` with the name for the sensor you configured and add the sensor to the `depends_on` field:
+On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `selective_syncer_name` field with the name of the sensor you configured, and add the sensor to the `depends_on` field:
 
 {{< tabs >}}
 {{% tab name="JSON Template" %}}
@@ -301,8 +314,11 @@ Click on `GetReadings`.
 
 {{<imgproc src="/services/data/timesensor.png" resize="800x" declaredimensions=true alt="Control tab with sensor panel" style="width: 500px" class="imgzoom shadow" >}}
 
-If you are in the time frame for sync, the time sync sensor will return true.
+If you are in the time frame for sync, the time sync sensor will return `true`.
+If you are not in the time frame, it will return `false`.
 
-If data is currently syncing, go to the [**Data** tab](https://app.viam.com/data/view) to see your data.
-If you are not in the time frame for sync, adjust the configuration of your time sync sensor.
-Then check again on the **CONTROL** and **Data** tab to confirm data is syncing.
+To verify that sync is working:
+
+1. If the sensor returns `true` and data has been captured, go to the [**Data** tab](https://app.viam.com/data/view) to see your synced data.
+2. If the sensor returns `false` but you want to test sync, adjust the configuration of your time sync sensor to include the current time.
+3. Check again on the **CONTROL** tab to verify the sensor reading, and on the **Data** tab to confirm data is syncing.
