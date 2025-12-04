@@ -21,7 +21,7 @@ Before starting, make sure you have:
 
 - A configured camera component on your machine. See [Configure a camera](/operate/reference/components/camera/) if you need to set one up.
 - The data management service configured. See [Capture and sync edge data](/data-ai/capture-data/capture-sync/) for instructions.
-{{% /alert %}}
+  {{% /alert %}}
 
 If you want to create your own filtering module, see [Create a Data Filtering Module](/tutorials/configure/pet-photographer/).
 
