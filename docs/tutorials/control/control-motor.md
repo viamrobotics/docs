@@ -548,14 +548,21 @@ main().catch((error) => {
 #include <boost/optional.hpp>
 #include <string>
 #include <vector>
+#include <iostream>
 #include <unistd.h>
+#include <viam/sdk/common/instance.hpp>
 #include <viam/sdk/robot/client.hpp>
 #include <viam/sdk/components/motor.hpp>
 
 using namespace viam::sdk;
 
 int main() {
-    std::string host("muddy-snow-main.7kp7y4p393.viam.cloud");
+    // Every Viam C++ SDK program must have one and only one Instance object which is created
+    // before
+    // any other C++ SDK objects and stays alive until all Viam C++ SDK objects are destroyed.
+    Instance inst;
+
+    std::string host("<MACHINE-ADDRESS>");
     DialOptions dial_opts;
     dial_opts.set_entity(std::string("<API-KEY-ID>"));
     // Replace "<API-KEY-ID>" (including brackets) with your machine's
