@@ -215,13 +215,15 @@ func main() {
 #include <boost/optional.hpp>
 #include <string>
 #include <vector>
+#include <iostream>
+#include <unistd.h>
+#include <viam/sdk/common/instance.hpp>
 #include <viam/sdk/robot/client.hpp>
 #include <viam/sdk/components/motor.hpp>
 #include <viam/sdk/components/base.hpp>
 #include <viam/sdk/components/camera.hpp>
 #include <viam/sdk/components/encoder.hpp>
 
-using namespace viam::sdk;
 using namespace viam::sdk;
 using std::cerr;
 using std::cout;
@@ -239,6 +241,11 @@ void move_in_square(std::shared_ptr<viam::sdk::Base> base) {
 }
 
 int main() {
+    // Every Viam C++ SDK program must have one and only one Instance object which is created
+    // before
+    // any other C++ SDK objects and stays alive until all Viam C++ SDK objects are destroyed.
+    Instance inst;
+
     // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
     std::string host("<MACHINE-ADDRESS>");
     DialOptions dial_opts;
