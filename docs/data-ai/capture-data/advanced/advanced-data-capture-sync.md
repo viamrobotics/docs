@@ -8,6 +8,7 @@ type: "docs"
 platformarea: ["data"]
 description: "Advanced data capture and data sync configurations."
 date: "2025-02-10"
+updated: "2025-12-04"
 ---
 
 Some data use cases require advanced configuration beyond the attributes accessible in the UI.
@@ -18,7 +19,7 @@ You can also configure data capture for remote parts.
 
 Configure how long your synced data remains stored in the cloud:
 
-- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policies` at the resource level.
+- **Retain data up to a certain size (for example, 100GB) or for a specific length of time (for example, 14 days):** Set `retention_policy` at the resource level.
   See the `retention_policy` field in [data capture configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-capture-attributes).
 - **Delete data captured by a machine when you delete the machine:** Control whether your cloud data is deleted when a machine or machine part is removed.
   See the `delete_data_on_part_deletion` field in the [data management service configuration attributes](/data-ai/capture-data/advanced/advanced-data-capture-sync/#click-to-view-data-management-attributes).
@@ -93,7 +94,7 @@ The following attributes are available for the data management service:
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description | `viam-micro-server` Support |
 | ------------------ | ------ | --------- | ----------- | ------------------- |
-| `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, but is not on for any individual {{< glossary_tooltip term_id="component" text="components" >}} (see Step 2), data is not being captured. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, if it is not on for any individual {{< glossary_tooltip term_id="component" text="components" >}}, data is not being captured. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `capture_dir`      | string | Optional | Path to the directory on your machine where you want to store captured data. If you change the directory for data capture, only new data is stored in the new directory. Existing data remains in the directory where it was stored. <br> Default: `~/.viam/capture` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `tags` | array of strings | Optional | Tags to apply to all images or tabular data captured by this machine part. May include alphanumeric characters, underscores, and dashes. |  |
 | `sync_disabled` | bool | Optional | Toggle cloud sync on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. <br> Default: `false` |  |
@@ -103,12 +104,12 @@ The following attributes are available for the data management service:
 | `delete_data_on_part_deletion` | bool | Optional | Whether deleting this {{< glossary_tooltip term_id="machine" text="machine" >}} or {{< glossary_tooltip term_id="part" text="machine part" >}} should result in deleting all the data captured by that machine part. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/data-ai/capture-data/advanced/how-sync-works/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |   |
 | `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam Cloud. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2 so half the number of logical CPUs available to viam-server |   |
-| `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) data capture will attempt to write tabular data to after it is enqueued to be written to disk. When non-empty, data capture will capture tabular data to the configured MongoDB database and collection at that URI.<br>See  `mongo_capture_config.database` and  `mongo_capture_config.collection` below for database and collection defaults.<br>See [Data capture directly to MongoDB](/data-ai/capture-data/advanced/how-sync-works/#storage) for an example config.|   |
-| `mongo_capture_config.database` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the database data capture will write tabular data to. <br> Default: `"sensorData"`   |   |
-| `mongo_capture_config.collection` | string | Optional | When `mongo_capture_config.uri` is non empty, changes the collection data capture will write tabular data to.<br> Default: `"readings"`   |   |
-| `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage bytes (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) to which data capture will attempt to write tabular data after it is enqueued to be written to disk. When non-empty, data capture will write tabular data to the configured MongoDB database and collection at that URI.<br>See  `mongo_capture_config.database` and  `mongo_capture_config.collection` below for database and collection defaults.<br>See [Capture directly to your own MongoDB cluster](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster) for example configurations.|   |
+| `mongo_capture_config.database` | string | Optional | When `mongo_capture_config.uri` is non-empty, changes the database data capture will write tabular data to. <br> Default: `"sensorData"`   |   |
+| `mongo_capture_config.collection` | string | Optional | When `mongo_capture_config.uri` is non-empty, changes the collection data capture will write tabular data to.<br> Default: `"readings"`   |   |
+| `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `file_last_modified_millis` | float | Optional | The amount of time to pass since arbitrary files were last modified until they are synced. Normal <file>.capture</file> files are synced as soon as they are able to be synced. <br> Default: `10000` milliseconds. |   |
-| `disk_usage_deletion_threshold` | float | Optional | The disk usage ratio at or above which, files will be deleted if the capture directory makes up at least the specified `capture_dir_deletion_threshold` of the disk usage. If disk usage is at or above the disk usage threshold, but the capture directory is below the capture directory threshold, then file deletion will not occur but a warning will be logged periodically. Default: `0.9`. |  |
+| `disk_usage_deletion_threshold` | float | Optional | The disk usage ratio at or above which files will be deleted if the capture directory makes up at least the specified `capture_dir_deletion_threshold` of the disk usage. If disk usage is at or above the disk usage threshold, but the capture directory is below the capture directory threshold, then file deletion will not occur but a warning will be logged periodically. Default: `0.9`. |  |
 | `capture_dir_deletion_threshold` | float | Optional | The ratio of disk usage made up by the capture directory at or above which files will be deleted if the disk usage ratio is also above the `disk_usage_deletion_threshold`. If the ratio of disk usage of the capture directory is at or above the threshold but the disk usage is below the disk usage threshold, then file deletion will not occur but a warning will be logged periodically. Default: `0.5`. |   |
 
 {{< /expand >}}
@@ -196,7 +197,7 @@ This example configuration captures data from the `ReadImage` method of a camera
 {{% /tab %}}
 {{% tab name="viam-micro-server" %}}
 
-This example configuration captures data from the `GetReadings` method of a temperature sensor and wifi signal sensor:
+This example configuration captures data from the `Readings` method of a temperature sensor and wifi signal sensor:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -267,7 +268,7 @@ This example configuration captures data from the `GetReadings` method of a temp
 {{% /tab %}}
 {{< /tabs >}}
 
-Example for a vision service:
+Example configuration for a vision service:
 
 This example configuration captures data from the `CaptureAllFromCamera` method of the vision service:
 
@@ -345,7 +346,9 @@ Viam supports data capture from {{< glossary_tooltip term_id="resource" text="re
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
 
 Currently, you can only configure data capture from remote resources in your JSON configuration.
-To add them to your JSON configuration you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+To add them to your JSON configuration, you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the data_manager service configuration in the remotes configuration:
+
+`name` and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
 
 <!-- prettier-ignore -->
 | Key | Description |
@@ -428,9 +431,7 @@ The following example of a configuration with a remote part captures data from t
         "sync_disabled": true,
         "sync_interval_mins": 5,
         "tags": ["tag1", "tag2"]
-      },
-      "name": "data_manager",
-      "type": "data_manager"
+      }
     }
   ],
   "components": [],
@@ -443,16 +444,16 @@ The following example of a configuration with a remote part captures data from t
           "type": "data_manager",
           "attributes": {
             "capture_methods": [
-             // Captures data from two analog readers (A1 and A2)
-             {
+              // Captures data from two analog readers (A1 and A2)
+              {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
                 "cache_size_kb": 10,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": { "reader_name": "A1" },
                 "disabled": false
-             },
-             {
+              },
+              {
                 "method": "Analogs",
                 "capture_frequency_hz": 1,
                 "cache_size_kb": 10,
@@ -467,7 +468,7 @@ The following example of a configuration with a remote part captures data from t
                 "cache_size_kb": 10,
                 "name": "rdk:component:board/my-esp32",
                 "additional_params": {
-                  "pin_name": “27”
+                  "pin_name": "27"
                 },
                 "disabled": false
               }
@@ -491,14 +492,15 @@ The following example of a configuration with a remote part captures data from t
 {
   "services": [
     {
+      "name": "data_manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
       "attributes": {
         "capture_dir": "",
         "sync_disabled": true,
         "sync_interval_mins": 5,
         "tags": []
-      },
-      "name": "data_manager",
-      "type": "data_manager"
+      }
     }
   ],
   "components": [],
