@@ -389,7 +389,7 @@ A public unlisted module is the same as an unlisted module.
 
 ### Module meta.json configuration
 
-Each module must have a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+Each module must have a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, and other features.
 
 Example `meta.json` file:
 
@@ -399,12 +399,6 @@ Example `meta.json` file:
   "visibility": "public",
   "url": "https://github.com/your-org/your-repo",
   "description": "Your module description",
-  "models": [
-    {
-      "api": "rdk:component:base",
-      "model": "your-namespace:your-module:your-model"
-    }
-  ],
   "entrypoint": "run.sh",
   "first_run": "setup.sh",
   "applications": [
@@ -432,7 +426,7 @@ Example `meta.json` file:
 | `visibility` | string | Whether the module is accessible only to members of your organization (`private`), visible to all Viam users (`public`), or unlisted (`public_unlisted`). |
 | `url` | string | The URL of the GitHub repository containing the source code of the module. Required for cloud build. Optional for local modules. |
 | `description` | string | The description of your module and what it provides. |
-| `models` | array | An array of objects describing the models provided by your module. You must provide at least one model in the models array or one application in the applications array. |
+| `models` | array | Deprecated. An array of objects describing the models provided by your module. Specified models are ignored. Models are inferred from the module itself. |
 | `entrypoint` | string | The name of the file that starts your module. This can be a compiled executable or a script. Required if you are shipping a model. |
 | `first_run` | string | The path to a script or binary that `viam-server` executes during the setup phase. It executes once when `viam-server` receives a new configuration, and only once per module or per version of the module. |
 

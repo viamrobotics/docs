@@ -350,8 +350,7 @@ Save the file.
 {{% /tab %}}
 {{% tab name="meta.json" %}}
 
-Open <file>hello-world/meta.json</file> and add the sensor model into the model list.
-Edit the `description` to include both models.
+Open <file>hello-world/meta.json</file> and edit the `description` to include both models.
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6,13-19"}
 {
@@ -360,20 +359,6 @@ Edit the `description` to include both models.
   "visibility": "private",
   "url": "",
   "description": "Example camera and sensor components: hello-camera and hello-sensor",
-  "models": [
-    {
-      "api": "rdk:component:camera",
-      "model": "exampleorg:hello-world:hello-camera",
-      "short_description": "A camera that returns an image.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
-    },
-    {
-      "api": "rdk:component:sensor",
-      "model": "exampleorg:hello-world:hello-sensor",
-      "short_description": "A sensor that returns a random number.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
-    }
-  ],
   "applications": null,
   "markdown_link": "README.md",
   "entrypoint": "./run.sh",
@@ -444,8 +429,7 @@ Save the file.
 {{% /tab %}}
 {{% tab name="meta.json" %}}
 
-Open <file>hello-world/meta.json</file> and add the sensor model into the model list.
-Edit the `description` to include both models.
+Open <file>hello-world/meta.json</file> and edit the `description` to include both models.
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6,13-19"}
 {
@@ -454,20 +438,6 @@ Edit the `description` to include both models.
   "visibility": "private",
   "url": "",
   "description": "Example camera and sensor components: hello-camera and hello-sensor",
-  "models": [
-    {
-      "api": "rdk:component:camera",
-      "model": "exampleorg:hello-world:hello-camera",
-      "short_description": "A camera that returns an image.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
-    },
-    {
-      "api": "rdk:component:sensor",
-      "model": "exampleorg:hello-world:hello-sensor",
-      "short_description": "A sensor that returns a random number.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
-    }
-  ],
   "applications": null,
   "markdown_link": "README.md",
   "entrypoint": "bin/hello-world",
