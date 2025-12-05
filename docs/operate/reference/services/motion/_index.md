@@ -101,16 +101,17 @@ For example:
        return req_deps, []
    ```
 
-1. Edit your `reconfigure` function to add the motion service as an instance variable so that you can use it in your module:
+1. Edit your `new` function to add the motion service as an instance variable so that you can use it in your module:
 
    ```python {class="line-numbers linkable-line-numbers"}
-   def reconfigure(
-       self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-   ):
+   def new(
+       cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+   ) -> Self:
+       obj = super().new(config, dependencies)
        motion_resource = dependencies[Motion.get_resource_name("builtin")]
        self.motion_service = cast(MotionClient, motion_resource)
 
-       return super().reconfigure(config, dependencies)
+       return obj
    ```
 
 1. You can now use the motion service in your module, for example:

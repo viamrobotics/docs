@@ -192,21 +192,22 @@ For the safe arm example, you also need to get the name of the existing arm reso
 {{% tablestep %}}
 **Initialize all variables.**
 
-`viam-server` calls the `reconfigure` method whenever the module starts or a configuration change occurs.
+`viam-server` calls the `new` method whenever the module starts or a configuration change occurs.
 Use this method to initialize the vision service and camera name, as well as any other resources you plan to use.
 The dependencies parameter contains all the resources this component can access.
 By using `cast`, you tell Python the type of the resource.
 
-Update the `reconfigure` method to initialize all the variables:
+Update the `new` method to initialize all the variables:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-start="79" }
-    def reconfigure(
-        self, config: ComponentConfig,
-        dependencies: Mapping[ResourceName, ResourceBase]
-    ):
+    @classmethod
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+        obj = super().new(config, dependencies)
         camera_name = config.attributes.fields["camera_name"].string_value
         vision_name = config.attributes.fields["vision_name"].string_value
 
@@ -221,10 +222,10 @@ Update the `reconfigure` method to initialize all the variables:
                            f"{list(dependencies.keys())}")
 
         vision_resource = dependencies[vision_resource_name]
-        self.vision_service = cast(VisionClient, vision_resource)
-        self.camera_name = camera_name
+        obj.vision_service = cast(VisionClient, vision_resource)
+        obj.camera_name = camera_name
 
-        return super().reconfigure(config, dependencies)
+        return obj
 ```
 
 {{% /tab %}}
@@ -236,10 +237,11 @@ Update the `reconfigure` method to initialize all the variables:
 {{% tab name="Python" %}}
 
 ```python {class="line-numbers linkable-line-numbers" data-start="79" }
-    def reconfigure(
-        self, config: ComponentConfig,
-        dependencies: Mapping[ResourceName, ResourceBase]
-    ):
+    @classmethod
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+        obj = super().new(config, dependencies)
         # ...
         arm_name = config.attributes.fields["arm_name"].string_value
         arm_resource_name = Arm.get_resource_name(arm_name)
@@ -250,9 +252,9 @@ Update the `reconfigure` method to initialize all the variables:
                            f"{list(dependencies.keys())}")
 
         arm_resource = dependencies[arm_resource_name]
-        self.arm = cast(Arm, arm_resource)
+        obj.arm = cast(Arm, arm_resource)
 
-        return super().reconfigure(config, dependencies)
+        return obj
 ```
 
 {{% /tab %}}

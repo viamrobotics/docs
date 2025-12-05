@@ -28,7 +28,7 @@ The lifecycle of a module and the resources it provides are as follows:
    If a required dependency is not found or fails to start, `viam-server` does not start the resource that depends on it.
 
 1. `viam-server` calls the resource's constructor to build the resource based on its configuration.
-   Typically, the constructor calls the `reconfigure` function.
+   Typically, the constructor calls the `new` method.
 
 1. Modular resources can fail to start for various reasons:
 

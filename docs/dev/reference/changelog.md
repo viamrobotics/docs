@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Use new() instead of reconfigure() in Python modules" date="2025-12-05" %}}
+
+The Python module `reconfigure()` method has been removed in favour of using `new()`.
+
+{{% /changelog %}}
+
 {{% changelog color="changed" title="GetImages replaced GetImage" date="2025-10-31" %}}
 
 [`GetImage`](/dev/reference/apis/components/camera/#getimage) is deprecated.

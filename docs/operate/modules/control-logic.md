@@ -90,7 +90,7 @@ The following example shows how you might implement logic that toggles an LED on
 
 Any resources that you wish to access from your control logic need to be identified and instantiated.
 To keep your code loosely coupled, we recommend passing the resource names in the configuration attributes of the control logic.
-We must modify the `validate_config` method to ensure all required values are passed in correctly and then instantiate the resource in the `reconfigure` method.
+We must modify the `validate_config` method to ensure all required values are passed in correctly and then instantiate the resource in the `new` method.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -162,7 +162,7 @@ from viam.components.board import Board
 
 The `new` method gets called whenever the control logic module starts or when a configuration change occurs for the resource itself.
 
-If this is a problem, consider writing state to a file on disk and adding logic to handle subsequent calls to the reconfigure method gracefully.
+If this is a problem, consider writing state to a file on disk and adding logic to handle subsequent calls to the `new` method gracefully.
 
 {{% /tablestep %}}
 {{% tablestep %}}
