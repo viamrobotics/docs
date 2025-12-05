@@ -76,7 +76,7 @@ The following properties are available for modular resources:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `attributes` | object | Sometimes **Required** | The configuration attributes for the resource model. Check the module's Readme for information about available configuration attributes for a resource. |
+| `attributes` | object | Sometimes **Required** | The configuration attributes for the resource model. Check the module's and model's Readme for information about available configuration attributes for a resource. |
 | `name` | string | **Required** | The name of the configured instance of the modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
 | `api` | string | **Required** | The colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](/operate/modules/advanced/metajson/#valid-api-identifiers) for more information. |
 | `model`| string | **Required** | A unique colon-delimited triplet `namespace:module-name:model-name` identifying the resource model. See [valid model identifiers](/operate/modules/advanced/metajson/#valid-model-identifiers) for more information. |

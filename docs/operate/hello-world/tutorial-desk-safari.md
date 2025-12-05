@@ -289,6 +289,7 @@ hello-world-game-py/
 |   |   └── game_logic.py
 |   └── main.py
 └── README.md
+└── <org-id>_game-logic_hello-world-game-py.md
 └── build.sh
 └── meta.json
 └── requirements.txt
@@ -300,6 +301,7 @@ The CLI generated several files, but you'll only need to modify <FILE>game_logic
 If you want to understand the module structure, here's what each file does:
 
 - **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
+- **<FILE>namespace_module_model.md</FILE>**: Documentation template for the model that gets uploaded to the registry when you upload the module.
 - **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
 - **<FILE>main.py</FILE>** and **<FILE>game_logic.py</FILE>**: Core code that registers the module and resource and provides the model implementation.
 - **<FILE>setup.sh</FILE>** and **<FILE>requirements.txt</FILE>**: Setup script that creates a virtual environment and installs the dependencies listed in <FILE>requirements.txt</FILE>.

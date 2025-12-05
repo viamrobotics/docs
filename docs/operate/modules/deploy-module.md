@@ -21,13 +21,13 @@ To make it available to deploy on more machines, the following steps will show y
 
 {{< table >}}
 {{% tablestep start=1 %}}
-**Create a README (strongly recommended)**
+**Create READMEs (strongly recommended)**
 
-It's quite helpful to create a README to document what your module does and how to configure and use it, especially if you plan to share your module with others.
+It's helpful to create README to document what your module and models do and how to configure and use them, especially if you plan to share your module with others.
 
 {{< expand "Example sensor module README" >}}
 
-````md
+```md
 # `meteo_PM` modular component
 
 This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `jessamy:weather:meteo_PM` model.
@@ -37,20 +37,36 @@ Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** button, select **Component or service**, then select the `sensor / weather:meteo_PM` model provided by the [`weather` module](https://app.viam.com/module/jessamy/weather).
 Click **Add module**, enter a name for your sensor, and click **Create**.
 
-## Configure your `meteo_PM` sensor
+## Models
 
-On the new component panel, copy and paste the following attribute template into your sensor's **Attributes** box:
+This module provides the following model(s):
+
+- [`jessamy:weather:meteo_PM`](Link to readme) - Provide a brief description of the model
+```
+
+{{< /expand  >}}
+
+{{< expand "Example sensor model README" >}}
+
+````
+# Model `jessamy:weather:meteo_PM`
+
+Provide a description of the model and any relevant information.
+
+## Configuration
+
+The following attribute template can be used to configure this model:
 
 ```json
 {
   "latitude": <float>,
   "longitude": <float>
 }
-```
+````
 
 ### Attributes
 
-The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM` sensors:
+The following attributes are available for this model:
 
 | Name        | Type  | Inclusion | Description                            |
 | ----------- | ----- | --------- | -------------------------------------- |
@@ -61,10 +77,26 @@ The following attributes are available for `rdk:sensor:jessamy:weather:meteo_PM`
 
 ```json
 {
-  "latitude": -40.6,
-  "longitude": 93.125
+  "latitude": 1.0,
+  "longitude": 1.0
 }
 ```
+
+## DoCommand
+
+If your model implements DoCommand, provide an example payload of each command that is supported and the arguments that can be used. If your model does not implement DoCommand, remove this section.
+
+### Example DoCommand
+
+```json
+{
+  "command_name": {
+    "arg1": "foo",
+    "arg2": 1
+  }
+}
+```
+
 ````
 
 {{< /expand >}}
@@ -304,3 +336,4 @@ Configure it just as you would [configure any other component or service in the 
 Your module will now be added to your machine.
 
 If you used a local module for testing, you can safely delete it.
+````
