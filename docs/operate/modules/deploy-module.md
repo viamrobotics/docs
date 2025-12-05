@@ -48,7 +48,7 @@ This module provides the following model(s):
 
 {{< expand "Example sensor model README" >}}
 
-````
+````md
 # Model `jessamy:weather:meteo_PM`
 
 Provide a description of the model and any relevant information.
@@ -62,7 +62,7 @@ The following attribute template can be used to configure this model:
   "latitude": <float>,
   "longitude": <float>
 }
-````
+```
 
 ### Attributes
 
@@ -96,7 +96,6 @@ If your model implements DoCommand, provide an example payload of each command t
   }
 }
 ```
-
 ````
 
 {{< /expand >}}
@@ -336,4 +335,7 @@ Configure it just as you would [configure any other component or service in the 
 Your module will now be added to your machine.
 
 If you used a local module for testing, you can safely delete it.
-````
+
+```
+
+```
