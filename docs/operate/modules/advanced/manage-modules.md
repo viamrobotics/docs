@@ -37,7 +37,7 @@ Once your module is in the [registry](https://app.viam.com/registry), there are 
 
 ### Update automatically from a GitHub repo with cloud build
 
-Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a tag or release in GitHub:
+Use [GitHub Actions](https://docs.github.com/actions) to automatically build and deploy your new module version when you create a new release in GitHub:
 
 1. Edit your module code and update the [`meta.json`](/operate/modules/advanced/metajson/) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
@@ -51,7 +51,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    {{% alert title="Tip" color="tip" %}}
 
-   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to publish your module with PyInstaller](/operate/modules/deploy-module/#package-and-upload-the-module) including adding API keys for the build action, all you need to do to trigger a new build is create a tag and publish a release in GitHub as you did when you first published the module.
+   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to publish your module with PyInstaller](/operate/modules/deploy-module/#package-and-upload-the-module) including adding API keys for the build action, all you need to do to trigger a new build is publish a release in GitHub as you did when you first published the module.
 
    {{% /alert %}}
 
@@ -66,9 +66,8 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    ```yaml
    on:
-     push:
-       tags:
-         - "[0-9]+.[0-9]+.[0-9]+"
+     release:
+       types: [published]
 
    jobs:
      publish:
@@ -257,7 +256,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 
 1. Add the key ID and value as GitHub repository secrets named `viam_key_id` and `viam_key_value`.
 
-1. Push a tag or create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
+1. Create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
 
    Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry), and the machines set to use the latest [version](/operate/modules/advanced/module-configuration/#module-versioning) of the module will automatically update to the new version.
