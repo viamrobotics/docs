@@ -339,6 +339,24 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
 }
 ```
 
+The following attributes are available for data capture configuration:
+
+{{< expand "Click to view data capture attributes" >}}
+
+<!-- prettier-ignore -->
+| Name               | Type   | Required? | Description |
+| ------------------ | ------ | --------- | ----------- |
+| `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
+| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
+| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
+| `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](/data-ai/data/hot-data-store/) for faster access. Example: `{ "stored_hours": 24 }` |
+| `additional_params` | object | Optional | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
+| `disabled` | boolean | Optional | Whether data capture is disabled. |
+
+{{< /expand >}}
+
+You can edit the JSON directly by switching to **JSON** mode in the UI.
+
 {{% /tab %}}
 {{% tab name="Remote parts" %}}
 
@@ -346,17 +364,19 @@ Viam supports data capture from {{< glossary_tooltip term_id="resource" text="re
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
 
 Currently, you can only configure data capture from remote resources in your JSON configuration.
-To add them to your JSON configuration, you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the data_manager service configuration in the remotes configuration:
-
-`name` and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+To add them to your JSON configuration, you must explicitly add a `service_config` for the data manager in the `remote` object in the `remotes` array.
+The service config array must contain an object with `type: data_manager` and and `attributes` object with and array of `capture_methods`.
+Each capture method object contains the following fields:
 
 <!-- prettier-ignore -->
-| Key | Description |
-| --- | ----------- |
-| `type` | The type tells your machine what the resource is. For example, a board. |
-| `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
-| `name` | The name specifies the fully qualified name of the part. |
-| `additional_params` | The additional parameters specify the data sources when you are using a board. |
+| Key | Type | Description |
+| --- | ---- | ----------- |
+| `name` | string | The name specifies the fully qualified name of the part. Example: `"rdk:component:sensor/spacesensor"`. |
+| `additional_params` | Object | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
+| `disabled` | boolean | Whether data capture is for the method is disabled. |
+| `method` | string | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
+| `capture_frequency_hz` | float | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
+| `cache_size_kb` | float | `viam-micro-server` only. The maximum amount of storage (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |
 
 {{< expand "Click to view example JSON configuration for an ESP32 board that will be established as a remote part" >}}
 
@@ -537,24 +557,6 @@ The following example of a configuration with a remote part captures data from t
 {{< /tabs >}}
 
 {{< /expand >}}
-
-The following attributes are available for data capture configuration:
-
-{{< expand "Click to view data capture attributes" >}}
-
-<!-- prettier-ignore -->
-| Name               | Type   | Required? | Description |
-| ------------------ | ------ | --------- | ----------- |
-| `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
-| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
-| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
-| `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](/data-ai/data/hot-data-store/) for faster access. Example: `{ "stored_hours": 24 }` |
-| `additional_params` | object | Optional | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
-| `disabled` | boolean | Optional | Whether data capture is disabled. |
-
-{{< /expand >}}
-
-You can edit the JSON directly by switching to **JSON** mode in the UI.
 
 ## Capture directly to your own MongoDB cluster
 
