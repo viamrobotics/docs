@@ -21,7 +21,6 @@ This guide shows you how to write a module with control logic for a machine:
 
 1. [Create a module](#create-a-module-with-a-generic-component-template) with a template for the control logic
 1. [Program the control logic](#program-control-logic-in-module) using the `DoCommand` method
-1. [Use other components or services](#use-other-components-or-services) in the control logic
 1. [Test the control logic](#test-the-control-logic) locally
 1. [Run control logic on the module automatically](#run-control-logic-automatically-with-jobs) with one or more {{< glossary_tooltip term_id="job" text="jobs" >}}
 
@@ -87,178 +86,11 @@ If you wish to test your control logic locally, follow these instructions on the
 
 Open the python file in the <FILE>src/models/</FILE> folder to add your control logic to it.
 
-The following example shows how you might implement a counter that starts counting when you send a `start` command and stops when it receives a `stop` command.
-
-{{< table >}}
-{{% tablestep start=1 %}}
-**Set up instance parameters**
-
-When your new model gets added to your machine, its `reconfigure()` method gets called.
-You can use it to store any instance variables.
-
-The following example code initializes two instance parameters `counter` and `running`.
-
-```python
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        self.counter = 0
-        self.running = False
-        return super().reconfigure(config, dependencies)
-```
-
-The `reconfigure` method gets called whenever the control logic module starts or when a configuration change occurs for the resource itself.
-
-If this is a problem, consider writing state to a file on disk and adding logic to handle subsequent calls to the reconfigure method gracefully.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Write the control logic**
-
-To add the control logic, use the `DoCommand()` method.
-The method accepts arbitrary JSON objects as commands.
-
-The following code checks the command object and for the `start` command it sets the `running` parameter to `True` and for the `stop` command to `False`.
-A third command, `run_control_logic`, results in the `_on_loop()` method being called, but only if `running` is `True`.
-
-The `_on_loop()` method increments the counter.
-
-```python
-    async def _on_loop(self):
-        try:
-            self.logger.info("Executing control logic")
-            self.counter += 1
-            self.logger.info(f"Counter: {self.counter}")
-
-        except Exception as err:
-            self.logger.error(err)
-
-    async def do_command(
-        self,
-        command: Mapping[str, ValueTypes],
-        *,
-        timeout: Optional[float] = None,
-        **kwargs
-    ) -> Mapping[str, ValueTypes]:
-        result = {key: False for key in command.keys()}
-        for name, args in command.items():
-            if name == "action" and args == "start":
-                self.running = True
-                result[name] = True
-            if name == "action" and args == "stop":
-                self.running = False
-                result[name] = True
-            if name == "action" and args == "run_control_logic":
-                if self.running:
-                    await self._on_loop()
-                result[name] = True
-        result["counter"] = self.counter
-        return result
-```
-
-{{% /tablestep %}}
-{{< /table >}}
-
-{{% expand "Click to view the entire control logic code" %}}
-
-This is the code for <FILE>src/models/control_logic.py</FILE>:
-
-```python {class="line-numbers linkable-line-numbers" data-line="42-43,46-53,62-75"}
-from typing import (Any, ClassVar, Dict, Final, List, Mapping, Optional,
-                    Sequence, Tuple)
-
-from typing_extensions import Self
-from viam.components.generic import *
-from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import Geometry, ResourceName
-from viam.resource.base import ResourceBase
-from viam.resource.easy_resource import EasyResource
-from viam.resource.types import Model, ModelFamily
-from viam.utils import ValueTypes
-
-
-class ControlLogic(Generic, EasyResource):
-    # To enable debug-level logging, either run viam-server with the --debug option,
-    # or configure your resource/machine to display debug logs.
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("<namespace>", "control-logic"), "control-logic"
-    )
-
-    @classmethod
-    def new(
-        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ) -> Self:
-        return super().new(config, dependencies)
-
-    @classmethod
-    def validate_config(
-        cls, config: ComponentConfig
-    ) -> Tuple[Sequence[str], Sequence[str]]:
-        return [], []
-
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        """This method allows you to dynamically update your service when it receives a new `config` object.
-
-        Args:
-            config (ComponentConfig): The new configuration
-            dependencies (Mapping[ResourceName, ResourceBase]): Any dependencies (both required and optional)
-        """
-        self.counter = 0
-        self.running = False
-        return super().reconfigure(config, dependencies)
-
-    async def _on_loop(self):
-        try:
-            self.logger.info("Executing control logic")
-            self.counter += 1
-            self.logger.info(f"Counter: {self.counter}")
-
-        except Exception as err:
-            self.logger.error(err)
-
-    async def do_command(
-        self,
-        command: Mapping[str, ValueTypes],
-        *,
-        timeout: Optional[float] = None,
-        **kwargs
-    ) -> Mapping[str, ValueTypes]:
-        result = {key: False for key in command.keys()}
-        for name, args in command.items():
-            if name == "action" and args == "start":
-                self.running = True
-                result[name] = True
-            if name == "action" and args == "stop":
-                self.running = False
-                result[name] = True
-            if name == "action" and args == "run_control_logic":
-                if self.running:
-                    await self._on_loop()
-                result[name] = True
-        result["counter"] = self.counter
-        return result
-
-    async def get_geometries(
-        self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None
-    ) -> Sequence[Geometry]:
-        self.logger.error("`get_geometries` is not implemented")
-        raise NotImplementedError()
-```
-
-{{% /expand%}}
-
-For a complete tutorial, see [Tutorial: Desk Safari](/operate/hello-world/tutorial-desk-safari/).
-For more examples, check the [Viam registry](https://app.viam.com/registry)
-
-## Use other components or services
+The following example shows how you might implement logic that toggles an LED on and off.
 
 Any resources that you wish to access from your control logic need to be identified and instantiated.
 To keep your code loosely coupled, we recommend passing the resource names in the configuration attributes of the control logic.
 We must modify the `validate_config` method to ensure all required values are passed in correctly and then instantiate the resource in the `reconfigure` method.
-
-Let's assume you have a board, and you'd like to pull a pin high when the `start` command is received and low when the `stop` command is received.
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -276,7 +108,6 @@ The `validate_config` method serves two purposes:
     def validate_config(
         cls, config: ComponentConfig
     ) -> Tuple[Sequence[str], Sequence[str]]:
-        req_deps = []
         fields = config.attributes.fields
         if "board_name" not in fields:
             raise Exception("missing required board_name attribute")
@@ -285,28 +116,41 @@ The `validate_config` method serves two purposes:
         board_name = fields["board_name"].string_value
         if not board_name:
             raise ValueError("board_name cannot be empty")
-        req_deps.append(board_name)
+        if "pin" not in fields:
+            raise Exception("missing required pin attribute")
+        elif not fields["pin"].HasField("string_value"):
+            raise Exception("pin must be a string")
+        pin = fields["pin"].string_value
+        if not pin:
+            raise ValueError("pin cannot be empty")
+        # Return the board as a required dependency (just the name, not the full ResourceName)
+        req_deps = [board_name]
         return req_deps, []
 ```
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Access the resources.**
+**Set up instance parameters**
+
+When your new model gets added to your machine, its `new()` method gets called.
+You can use it to store any instance variables.
 
 `viam-server` passes the required dependencies when the control logic resource is reconfiguring.
 From these dependencies you can get the board and store it in an instance variable.
 
 ```python
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        self.board_name = config.attributes.fields["board_name"].string_value
-        board_resource_name = Board.get_resource_name(self.board_name)
+    @classmethod
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+        toggler = super().new(config, dependencies)
+        toggler.board_name = config.attributes.fields["board_name"].string_value
+        board_resource_name = Board.get_resource_name(toggler.board_name)
         board_resource = dependencies[board_resource_name]
-        self.board = cast(Board, board_resource)
-        self.counter = 0
-        self.running = False
-        return super().reconfigure(config, dependencies)
+        toggler.board = cast(Board, board_resource)
+        toggler.pin = config.attributes.fields["pin"].string_value
+        return toggler
+
 ```
 
 Add the following imports at the top of <FILE>src/models/control_logic.py</FILE>:
@@ -316,13 +160,17 @@ from typing import cast
 from viam.components.board import Board
 ```
 
+The `new` method gets called whenever the control logic module starts or when a configuration change occurs for the resource itself.
+
+If this is a problem, consider writing state to a file on disk and adding logic to handle subsequent calls to the reconfigure method gracefully.
+
 {{% /tablestep %}}
 {{% tablestep %}}
-**Use the resources.**
+**Write the control logic.**
 
 Update your logic in the `do_command` method to use the board:
 
-```python {class="line-numbers linkable-line-numbers" data-line="12-13,17-18"}
+```python {class="line-numbers linkable-line-numbers" data-line="11-17"}
     async def do_command(
         self,
         command: Mapping[str, ValueTypes],
@@ -332,21 +180,14 @@ Update your logic in the `do_command` method to use the board:
     ) -> Mapping[str, ValueTypes]:
         result = {key: False for key in command.keys()}
         for name, args in command.items():
-            if name == "action" and args == "start":
-                self.running = True
-                pin = await self.board.gpio_pin_by_name(name="13")
-                await pin.set(high=True)
+            if name == "action" and args == "toggle":
+                pin = await self.board.gpio_pin_by_name(name=self.pin)
+                high = await pin.get()
+                if high:
+                    await pin.set(high=False)
+                else:
+                    await pin.set(high=True)
                 result[name] = True
-            if name == "action" and args == "stop":
-                self.running = False
-                pin = await self.board.gpio_pin_by_name(name="13")
-                await pin.set(high=False)
-                result[name] = True
-            if name == "action" and args == "run_control_logic":
-                if self.running:
-                    await self._on_loop()
-                result[name] = True
-        result["counter"] = self.counter
         return result
 ```
 
@@ -357,13 +198,12 @@ Update your logic in the `do_command` method to use the board:
 
 This is the code for <FILE>src/models/control_logic.py</FILE>:
 
-```python {class="line-numbers linkable-line-numbers" data-line="42-43,46-53,62-75"}
+```python {class="line-numbers linkable-line-numbers" data-line=""}
 from typing import (Any, ClassVar, Dict, Final, List, Mapping, Optional,
-                    Sequence, Tuple, cast)
+                    Sequence, Tuple)
 
 from typing_extensions import Self
 from viam.components.generic import *
-from viam.components.board import Board
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import Geometry, ResourceName
 from viam.resource.base import ResourceBase
@@ -371,20 +211,21 @@ from viam.resource.easy_resource import EasyResource
 from viam.resource.types import Model, ModelFamily
 from viam.utils import ValueTypes
 
+from typing import cast
+from viam.components.board import Board
 
-class ControlLogic(Generic, EasyResource):
+
+class Toggler(Generic, EasyResource):
     # To enable debug-level logging, either run viam-server with the --debug option,
     # or configure your resource/machine to display debug logs.
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("naomi", "test-control-logic"), "control-logic"
-    )
+    MODEL: ClassVar[Model] = Model(ModelFamily("naomi", "led-toggle"), "toggler")
 
     @classmethod
     def new(
         cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
     ) -> Self:
         """This method creates a new instance of this Generic component.
-        The default implementation sets the name from the `config` parameter and then calls `reconfigure`.
+        The default implementation sets the name from the `config` parameter.
 
         Args:
             config (ComponentConfig): The configuration for this resource
@@ -393,13 +234,18 @@ class ControlLogic(Generic, EasyResource):
         Returns:
             Self: The resource
         """
-        return super().new(config, dependencies)
+        toggler = super().new(config, dependencies)
+        toggler.board_name = config.attributes.fields["board_name"].string_value
+        board_resource_name = Board.get_resource_name(toggler.board_name)
+        board_resource = dependencies[board_resource_name]
+        toggler.board = cast(Board, board_resource)
+        toggler.pin = config.attributes.fields["pin"].string_value
+        return toggler
 
     @classmethod
     def validate_config(
         cls, config: ComponentConfig
     ) -> Tuple[Sequence[str], Sequence[str]]:
-        req_deps = []
         fields = config.attributes.fields
         if "board_name" not in fields:
             raise Exception("missing required board_name attribute")
@@ -408,28 +254,16 @@ class ControlLogic(Generic, EasyResource):
         board_name = fields["board_name"].string_value
         if not board_name:
             raise ValueError("board_name cannot be empty")
-        req_deps.append(board_name)
+        if "pin" not in fields:
+            raise Exception("missing required pin attribute")
+        elif not fields["pin"].HasField("string_value"):
+            raise Exception("pin must be a string")
+        pin = fields["pin"].string_value
+        if not pin:
+            raise ValueError("pin cannot be empty")
+        # Return the board as a required dependency (just the name, not the full ResourceName)
+        req_deps = [board_name]
         return req_deps, []
-
-    def reconfigure(
-        self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-    ):
-        self.board_name = config.attributes.fields["board_name"].string_value
-        board_resource_name = Board.get_resource_name(self.board_name)
-        board_resource = dependencies[board_resource_name]
-        self.board = cast(Board, board_resource)
-        self.counter = 0
-        self.running = False
-        return super().reconfigure(config, dependencies)
-
-    async def _on_loop(self):
-        try:
-            self.logger.info("Executing control logic")
-            self.counter += 1
-            self.logger.info(f"Counter: {self.counter}")
-
-        except Exception as err:
-            self.logger.error(err)
 
     async def do_command(
         self,
@@ -440,21 +274,14 @@ class ControlLogic(Generic, EasyResource):
     ) -> Mapping[str, ValueTypes]:
         result = {key: False for key in command.keys()}
         for name, args in command.items():
-            if name == "action" and args == "start":
-                self.running = True
-                pin = await self.board.gpio_pin_by_name(name="13")
-                await pin.set(high=True)
+            if name == "action" and args == "toggle":
+                pin = await self.board.gpio_pin_by_name(name=self.pin)
+                high = await pin.get()
+                if high:
+                    await pin.set(high=False)
+                else:
+                    await pin.set(high=True)
                 result[name] = True
-            if name == "action" and args == "stop":
-                self.running = False
-                pin = await self.board.gpio_pin_by_name(name="13")
-                await pin.set(high=False)
-                result[name] = True
-            if name == "action" and args == "run_control_logic":
-                if self.running:
-                    await self._on_loop()
-                result[name] = True
-        result["counter"] = self.counter
         return result
 
     async def get_geometries(
@@ -466,7 +293,10 @@ class ControlLogic(Generic, EasyResource):
 
 {{% /expand%}}
 
-For more information, see [Module dependencies](/operate/modules/advanced/dependencies/).
+For a complete tutorial, see [Tutorial: Desk Safari](/operate/hello-world/tutorial-desk-safari/).
+For more examples, check the [Viam registry](https://app.viam.com/registry)
+
+For more information on accessing components and services, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
 ## Test your module locally
 
@@ -578,7 +408,8 @@ If you use other machine resources, add their configuration values in the resour
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "board_name": "board-1"
+  "board_name": "board-1",
+  "pin": "13"
 }
 ```
 
@@ -610,29 +441,11 @@ You can use the `DoCommand` method from the web UI or from the Viam SDKs:
 
 On the **CONTROL** or the **CONFIGURE** tab, use the `DoCommand` panel:
 
-1. Copy and paste one of the following command inputs:
-
-   To set `self.running` to `True`, copy and paste the following command input:
+1. Copy and paste the following command input:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {
-     "action": "start"
-   }
-   ```
-
-   To run the control logic loop method `_on_loop`, copy and paste the following command input:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "action": "run_control_logic"
-   }
-   ```
-
-   To set `self.running` to `False`, use the following command input:
-
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "action": "stop"
+     "action": "toggle"
    }
    ```
 
@@ -643,17 +456,10 @@ On the **CONTROL** or the **CONFIGURE** tab, use the `DoCommand` panel:
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-You can start and stop your control logic with the `DoCommand()` method from the Python SDK:
+You can run your control logic with the `DoCommand()` method from the Python SDK:
 
 ```python
-# Start your control logic
-await control_logic.do_command({"action": "start"})
-
-# Run your control loop
-await control_logic.do_command({"action": "run_control_logic"})
-
-# Stop your control logic
-await control_logic.do_command({"action": "stop"})
+await control_logic.do_command({"action": "toggle"})
 ```
 
 {{% /tab %}}
@@ -665,47 +471,13 @@ These steps manually test the control logic, to run the logic automatically, see
 
 To run control logic, use a {{< glossary_tooltip term_id="job" text="job" >}} which calls the `DoCommand` method periodically.
 
-{{< table >}}
-{{% tablestep start=1 %}}
-**Start control logic at specific time each day**
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Job**.
+1. You can use the default name, `job-1`, and click **Create**.
+1. In the job panel, set the **Schedule** to **Interval** and enter `5` seconds.
+1. Then configure the job to use the control logic resource using the name you gave it when you deployed it.
+1. Select the `DoCommand` **Method** and specify the **Command** `{ "action": "toggle" }`.
+1. Click **Save**.
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Job**.
-You can use the default name, `job-1`, and click **Create**.
-
-In the job panel, set the **Schedule** to **Cron** and enter `0 0 8 * * *` which will run the job at 08:00 AM.
-
-Then configure the job to use the control logic resource using the name you gave it when you deployed it.
-
-Lastly, select the `DoCommand` **Method** and specify the **Command** `{ "action": "start" }`.
-
-Click **Save**.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Run control logic periodically**
-
-Configure another job:
-
-- **Cron Schedule**: `0 * * * * *` (every minute)
-- **Resource**: `resource-1`
-- **Method**: `DoCommand`
-- **Command**: `{ "action": "run_control_logic" }`
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**End control logic at specific time each day**
-
-Configure another job:
-
-- **Cron Schedule**: `0 0 17 * * *` (at 05:00 PM)
-- **Resource**: `resource-1`
-- **Method**: `DoCommand`
-- **Command**: `{ "action": "stop" }`
-
-{{% /tablestep %}}
-{{< /table >}}
-
-Now, check the **LOGS** tab; you'll see the second job triggered every minute, but the counter will only increase once the first job to run the `start` command runs at 8 AM.
 For testing purposes, you can also [send this command manually](#test-the-control-logic).
 
 ## Next steps
