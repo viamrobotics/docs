@@ -76,12 +76,63 @@ The following properties are available for modular resources:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `attributes` | object | Sometimes **Required** | The configuration attributes for the resource model. Check the module's Readme for information about available configuration attributes for a resource. |
+| `attributes` | object | Sometimes **Required** | The configuration attributes for the resource model. Check the module's and model's Readme for information about available configuration attributes for a resource. |
 | `name` | string | **Required** | The name of the configured instance of the modular resource. The name can only contain letters, numbers, dashes, and underscores. Resource names must be unique across all {{< glossary_tooltip term_id="part" text="parts" >}} of a machine. In case of name collisions with resources from a remote, you can add a [`prefix` to the remote](/operate/reference/architecture/parts/#configure-a-remote-part). |
-| `api` | string | **Required** | The colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](/operate/modules/advanced/metajson/#valid-api-identifiers) for more information. |
-| `model`| string | **Required** | A unique colon-delimited triplet `namespace:module-name:model-name` identifying the resource model. See [valid model identifiers](/operate/modules/advanced/metajson/#valid-model-identifiers) for more information. |
+| `api` | string | **Required** | The colon-delimited triplet `namespace:type:subtype` identifying the component or service API. Example: `rdk:component:motor`. See [valid API identifiers](#valid-api-identifiers) for more information. |
+| `model`| string | **Required** | A unique colon-delimited triplet `namespace:module-name:model-name` identifying the resource model. See [valid model identifiers](#valid-model-identifiers) for more information. |
 | `depends_on`| array | Optional | Deprecated. Use [dependencies](/operate/modules/advanced/dependencies/) instead. The names of resources that must be available before this resource starts. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this modular resource. |
+
+### Valid API identifiers
+
+Each component or service API has a unique identifier in the form of a colon-delimited triplet, the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}.
+
+The API namespace triplet is the same for all built-in and modular {{< glossary_tooltip term_id="model" text="models" >}} that implement a given API.
+For example, every motor model built into Viam, as well as every custom motor model provided by a module, all use the same API namespace triplet `rdk:component:motor` to indicate that they implement the [motor API](/operate/reference/components/motor/#api).
+
+The three pieces of the API namespace triplet are:
+
+{{< tabs >}}
+{{% tab name="Component" %}}
+
+- `namespace`: `rdk`
+- `type`: `component`
+- `api`: any one of [these component proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/component), for example `motor` if you are creating a new motor model
+
+{{% /tab %}}
+{{% tab name="Service" %}}
+
+- `namespace`: `rdk`
+- `type`: `service`
+- `api`: any one of [these service proto files](https://github.com/viamrobotics/api/tree/main/proto/viam/service), for example `vision` if you are creating a new vision service model
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Valid model identifiers
+
+The {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} uniquely identifies a resource model.
+It uses the format: `namespace:module-name:model-name`, where:
+
+- `namespace` is the namespace of your organization, which you can find or [create](/operate/modules/advanced/metajson/#create-a-namespace-for-your-organization) on your organization settings page.
+
+  For example, if your organization uses the `acme` namespace, your models must all begin with `acme`, like `acme:module-name:mybase`.
+  If you do not intend to [upload your module](/operate/modules/deploy-module/) to the [registry](https://app.viam.com/registry), you do not need to use your organization's namespace as your model's namespace.
+
+  The `viam` namespace is reserved for models provided by Viam.
+
+- `module-name` is the name of your module.
+  Your `module-name` should describe the common functionality provided across the model or models provided by that module.
+  Many people also choose to use the module name as the name of the code repository (GitHub repo) that houses the module code.
+
+- `model-name` is the name of the new resource model that your module will provide.
+
+For example, if your organization namespace is `acme`, and you have written a new base implementation named `mybase` which you have implemented with a module named `my-custom-base-module`, you would use the namespace `acme:my-custom-base-module:mybase` for your model.
+
+Requirements:
+
+- Your model triplet must be all-lowercase.
+- Your model triplet may only use alphanumeric (`a-z` and `0-9`), hyphen (`-`), and underscore (`_`) characters.
 
 ## Module configuration details
 
@@ -389,7 +440,7 @@ A public unlisted module is the same as an unlisted module.
 
 ### Module meta.json configuration
 
-Each module must have a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, models, and other features.
+Each module must have a `meta.json` file that defines the module's properties. This file includes information about the module's ID, visibility, and other features.
 
 Example `meta.json` file:
 
@@ -399,12 +450,6 @@ Example `meta.json` file:
   "visibility": "public",
   "url": "https://github.com/your-org/your-repo",
   "description": "Your module description",
-  "models": [
-    {
-      "api": "rdk:component:base",
-      "model": "your-namespace:your-module:your-model"
-    }
-  ],
   "entrypoint": "run.sh",
   "first_run": "setup.sh",
   "applications": [
@@ -432,7 +477,7 @@ Example `meta.json` file:
 | `visibility` | string | Whether the module is accessible only to members of your organization (`private`), visible to all Viam users (`public`), or unlisted (`public_unlisted`). |
 | `url` | string | The URL of the GitHub repository containing the source code of the module. Required for cloud build. Optional for local modules. |
 | `description` | string | The description of your module and what it provides. |
-| `models` | array | An array of objects describing the models provided by your module. You must provide at least one model in the models array or one application in the applications array. |
+| `models` | array | Deprecated. An array of objects describing the models provided by your module. Specified models are ignored. Models are inferred from the module itself. |
 | `entrypoint` | string | The name of the file that starts your module. This can be a compiled executable or a script. Required if you are shipping a model. |
 | `first_run` | string | The path to a script or binary that `viam-server` executes during the setup phase. It executes once when `viam-server` receives a new configuration, and only once per module or per version of the module. |
 

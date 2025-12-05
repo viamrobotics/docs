@@ -43,7 +43,7 @@ Do not change the <code>module_id</code>.</p>
 <td>array</td>
 <td>Optional</td>
 <td>
-<p>An array of objects describing the {{< glossary_tooltip term_id="model" text="models" >}} provided by your module. You must provide at least one model in the models array or one application in the applications array. For more information see <a href="/operate/modules/advanced/metajson/#models">Models</a>.</p>
+<p>Deprecated. An array of objects describing the {{< glossary_tooltip term_id="model" text="models" >}} provided by your module. Specified models are ignored. Models are inferred from the module itself.</p>
 </td>
 </tr>
 <tr>

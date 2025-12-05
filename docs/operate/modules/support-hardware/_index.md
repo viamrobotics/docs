@@ -244,6 +244,7 @@ hello-world/
 |   |   └── hello_camera.py
 |   └── main.py
 └── README.md
+└── <org-id>_hello-world_hello-camera.md
 └── build.sh
 └── meta.json
 └── requirements.txt
@@ -254,6 +255,7 @@ hello-world/
 If you want to understand the module structure, here's what each file does:
 
 - **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
+- **<FILE>org-id_hello-world_hello-camera.md</FILE>**: Documentation template for the model that gets uploaded to the registry when you upload the module.
 - **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
 - **<FILE>main.py</FILE>** and **<FILE>hello_camera.py</FILE>**: Core code that registers the module and resource and provides the model implementation.
 - **<FILE>setup.sh</FILE>** and **<FILE>requirements.txt</FILE>**: Setup script that creates a virtual environment and installs the dependencies listed in <FILE>requirements.txt</FILE>.
@@ -272,6 +274,7 @@ hello-world/
 |       └── main.go
 └── Makefile
 └── README.md
+└── <org-id>_hello-world_hello-camera.md
 └── go.mod
 └── module.go
 └── meta.json
@@ -280,6 +283,7 @@ hello-world/
 If you want to understand the module structure, here's what each file does:
 
 - **<FILE>README.md</FILE>**: Documentation template that gets uploaded to the registry when you upload the module.
+- **<FILE>org-id_hello-world_hello-camera.md</FILE>**: Documentation template for the model that gets uploaded to the registry when you upload the module.
 - **<FILE>meta.json</FILE>**: Module metadata that gets uploaded to the registry when you upload the module.
 - **<FILE>module/main.go</FILE> and <FILE>module.go</FILE>**: Core code that registers the module and resource and provides the model implementation.
 - **<FILE>cli/main.go</FILE>**: You can run this file to test the model you are creating (`go run ./cmd/cli`).
@@ -348,10 +352,14 @@ if __name__ == '__main__':
 Save the file.
 
 {{% /tab %}}
+{{% tab name="org-id_hello-world_hello-sensor.md" %}}
+
+Move the generated <file>hello-world/hello-world/org-id_hello-world_hello-sensor.md</file> file to <file>hello-world/org-id_hello-world_hello-sensor.md</file>.
+
+{{% /tab %}}
 {{% tab name="meta.json" %}}
 
-Open <file>hello-world/meta.json</file> and add the sensor model into the model list.
-Edit the `description` to include both models.
+Open <file>hello-world/meta.json</file> and edit the `description` to include both models.
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6,13-19"}
 {
@@ -360,20 +368,6 @@ Edit the `description` to include both models.
   "visibility": "private",
   "url": "",
   "description": "Example camera and sensor components: hello-camera and hello-sensor",
-  "models": [
-    {
-      "api": "rdk:component:camera",
-      "model": "exampleorg:hello-world:hello-camera",
-      "short_description": "A camera that returns an image.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
-    },
-    {
-      "api": "rdk:component:sensor",
-      "model": "exampleorg:hello-world:hello-sensor",
-      "short_description": "A sensor that returns a random number.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
-    }
-  ],
   "applications": null,
   "markdown_link": "README.md",
   "entrypoint": "./run.sh",
@@ -442,10 +436,14 @@ func main() {
 Save the file.
 
 {{% /tab %}}
+{{% tab name="org-id_hello-world_hello-sensor.md" %}}
+
+Move the generated <file>hello-world/hello-world/org-id_hello-world_hello-sensor.md</file> file to <file>hello-world/org-id_hello-world_hello-sensor.md</file>.
+
+{{% /tab %}}
 {{% tab name="meta.json" %}}
 
-Open <file>hello-world/meta.json</file> and add the sensor model into the model list.
-Edit the `description` to include both models.
+Open <file>hello-world/meta.json</file> and edit the `description` to include both models.
 
 ```json {class="line-numbers linkable-line-numbers" data-line="6,13-19"}
 {
@@ -454,20 +452,6 @@ Edit the `description` to include both models.
   "visibility": "private",
   "url": "",
   "description": "Example camera and sensor components: hello-camera and hello-sensor",
-  "models": [
-    {
-      "api": "rdk:component:camera",
-      "model": "exampleorg:hello-world:hello-camera",
-      "short_description": "A camera that returns an image.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-camera"
-    },
-    {
-      "api": "rdk:component:sensor",
-      "model": "exampleorg:hello-world:hello-sensor",
-      "short_description": "A sensor that returns a random number.",
-      "markdown_link": "README.md#model-exampleorghello-worldhello-sensor"
-    }
-  ],
   "applications": null,
   "markdown_link": "README.md",
   "entrypoint": "bin/hello-world",
