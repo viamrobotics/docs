@@ -161,39 +161,41 @@ Accessing dependencies from the resource works differently for different program
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-To be able to access the dependencies, use the `reconfigure` method to:
+To be able to access the dependencies, use the `new` method to:
 
 - Access the dependency by using its name as a key in the `dependencies` mapping.
 - Cast the dependency to the correct type and store it.
 
 ```python {class="line-numbers linkable-line-numbers"}
-def reconfigure(
-    self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-):
+    @classmethod
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+    obj = super().new(config, dependencies)
     camera_name = config.attributes.fields["camera_name"].string_value
     camera_resource = dependencies[Camera.get_resource_name(camera_name)]
-    self.camera = cast(Camera, camera_resource)
+    obj.camera = cast(Camera, camera_resource)
 
     # If you need to use the camera name in your module,
     # for example to pass it to a vision service method,
     # you can store it in an instance variable.
-    self.camera_name = camera_name
+    obj.camera_name = camera_name
 
     sensor_name = config.attributes.fields["sensor_name"].string_value
     sensor_resource = dependencies[Sensor.get_resource_name(sensor_name)]
-    self.sensor = cast(Sensor, sensor_resource)
+    obj.sensor = cast(Sensor, sensor_resource)
 
     # Optional dependencies may not be present in the config
-    self.vision_svc = None
+    obj.vision_svc = None
     if "vision_name" in config.attributes.fields:
         vision_name = config.attributes.fields["vision_name"].string_value
 
         # For optional dependencies, use .get() and handle None
         vision_resource = dependencies.get(VisionClient.get_resource_name(vision_name))
         if vision_resource is not None:
-            self.vision_svc = cast(VisionClient, vision_resource)
+            obj.vision_svc = cast(VisionClient, vision_resource)
 
-    return super().reconfigure(config, dependencies)
+    return obj
 ```
 
 {{% /tab %}}
@@ -429,14 +431,15 @@ def validate_config(
 
 
 # Get and store motion service instance
-def reconfigure(
-    self, config: ComponentConfig, dependencies: Mapping[
-      ResourceName, ResourceBase]
-):
+@classmethod
+def new(
+    cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+) -> Self:
+    obj = super().new(config, dependencies)
     motion_resource = dependencies[MotionClient.get_resource_name("builtin")]
-    self.motion_service = cast(MotionClient, motion_resource)
+    obj.motion_service = cast(MotionClient, motion_resource)
 
-    return super().reconfigure(config, dependencies)
+    return obj
 ```
 
 {{% /tab %}}

@@ -444,8 +444,8 @@ In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the 
 **Initialize all variables.**
 
 Unlike class attributes, instance attributes are unique to a single instance of the button running on your machine.
-You use them to initialize instance parameters, like `self.new_game`, in the `reconfigure` method.
-`viam-server` calls the `reconfigure` method whenever the module starts or a configuration change occurs.
+You use them to initialize instance parameters, like `self.new_game`, in the `new` method.
+`viam-server` calls the `new` method whenever the module starts or a configuration change occurs.
 Whenever you change the config of the button, the parameters get set to the values assigned in the reconfigure method.
 
 You must initialize all variables that can and may be accessed before they are assigned elsewhere in the code.
@@ -460,18 +460,19 @@ On top of game state variables, you also need to initialize the vision service a
 The dependencies parameter contains all the resources this component can access.
 By using `cast` you tell Python that the vision resource is specifically a VisionClient.
 
-Update the `reconfigure` method to initialize all the variables:
+Update the `new` method to initialize all the variables:
 
 ```python {class="line-numbers linkable-line-numbers" data-start="79" }
-    def reconfigure(
-        self, config: ComponentConfig,
-        dependencies: Mapping[ResourceName, ResourceBase]
-    ):
+    @classmethod
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+        obj = super().new(config, dependencies)
         # Game state
-        self.new_game: bool = False
-        self.score: int = 0
-        self.time_round_start: Optional[datetime] = None
-        self.item_to_detect: str = ""
+        obj.new_game: bool = False
+        obj.score: int = 0
+        obj.time_round_start: Optional[datetime] = None
+        obj.item_to_detect: str = ""
 
         camera_name = config.attributes.fields["camera_name"].string_value
         detector_name = config.attributes.fields["detector_name"].string_value
@@ -487,10 +488,10 @@ Update the `reconfigure` method to initialize all the variables:
                            f"{list(dependencies.keys())}")
 
         vision_resource = dependencies[vision_resource_name]
-        self.detector = cast(VisionClient, vision_resource)
-        self.camera_name = camera_name
+        obj.detector = cast(VisionClient, vision_resource)
+        obj.camera_name = camera_name
 
-        return super().reconfigure(config, dependencies)
+        return obj
 ```
 
 {{% /tab %}}

@@ -615,13 +615,15 @@ The reconfiguration step serves two purposes:
 2. Edit the `reconfigure` function to:
 
    ```python {class="line-numbers" data-start="51" data-line="4-5"}
-       def reconfigure(
-           self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-       ):
+       @classmethod
+       def new(
+           cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+       ) -> Self:
+           obj = super().new(config, dependencies)
            attrs = struct_to_dict(config.attributes)
-           self.image_path = str(attrs.get("image_path"))
+           obj.image_path = str(attrs.get("image_path"))
 
-           return super().reconfigure(config, dependencies)
+           return obj
    ```
 
 3. Add the following import to the top of the file:
