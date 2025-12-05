@@ -335,7 +335,3 @@ Configure it just as you would [configure any other component or service in the 
 Your module will now be added to your machine.
 
 If you used a local module for testing, you can safely delete it.
-
-```
-
-```
