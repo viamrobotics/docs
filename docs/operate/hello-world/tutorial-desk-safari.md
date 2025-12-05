@@ -380,7 +380,7 @@ Your game needs to know which camera and vision service to use.
 While you could hardcode these names, you'll get them from the button's configuration. This makes your game flexible if you change component names later.
 
 To get parameters from the configuration object, you use the `validate_config` method.
-`viam-server` calls the `validate_config` method before calling `reconfigure` to:
+`viam-server` calls the `validate_config` method before calling `new` to:
 
 1. Ensure the expected fields are in the config and have the right type.
    This method makes sure the camera name and vision service name are present and raises errors if they are not provided.
@@ -446,7 +446,7 @@ In the <FILE>hello-world-game-py/src/models/game_logic.py</FILE> file, find the 
 Unlike class attributes, instance attributes are unique to a single instance of the button running on your machine.
 You use them to initialize instance parameters, like `self.new_game`, in the `new` method.
 `viam-server` calls the `new` method whenever the module starts or a configuration change occurs.
-Whenever you change the config of the button, the parameters get set to the values assigned in the reconfigure method.
+Whenever you change the config of the button, the parameters get set to the values assigned in the `new` method.
 
 You must initialize all variables that can and may be accessed before they are assigned elsewhere in the code.
 For the Desk Safari game, you'll initialize the following game state variables:

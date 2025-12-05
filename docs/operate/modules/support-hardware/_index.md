@@ -597,7 +597,7 @@ For the sensor model, you do not need to edit any of the validation or configura
 {{% tablestep %}}
 **Reconfiguration**
 
-`viam-server` calls the `reconfigure` method when the user adds the model or changes its configuration.
+`viam-server` calls the `new` method when the user adds the model or changes its configuration.
 
 The reconfiguration step serves two purposes:
 
@@ -605,14 +605,14 @@ The reconfiguration step serves two purposes:
 - Obtain access to dependencies.
   For information on how to use dependencies, see [Module dependencies](/operate/modules/advanced/dependencies/).
 
-**Example module**: For the camera model, the reconfigure method serves to set the image path for use in API methods.
+**Example module**: For the camera model, the `new` method serves to set the image path for use in API methods.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 1. Open <file>/src/models/hello_camera.py</file>.
 
-2. Edit the `reconfigure` function to:
+2. Edit the `new` function to:
 
    ```python {class="line-numbers" data-start="51" data-line="4-5"}
        @classmethod
