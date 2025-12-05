@@ -193,7 +193,7 @@ The `viam module generate` command already generated the `build-action` file in 
 
 1. From the main code page of your GitHub repo, find **Releases** in the right side menu and click **Create a new release**.
 1. In the **Choose a tag** dropdown, create a new tag with a name consisting of three numbers separated by periods, following the regular expression `[0-9]+.[0-9]+.[0-9]+` (for example, `1.0.0`).
-   You must follow this format to trigger the build action.
+   You must follow this format.
    For details about versioning, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).
 
 1. Click **Publish release**.
