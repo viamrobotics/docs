@@ -94,17 +94,17 @@ The following attributes are available for the data management service:
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description | `viam-micro-server` Support |
 | ------------------ | ------ | --------- | ----------- | ------------------- |
-| `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, if it is not on for any individual {{< glossary_tooltip term_id="component" text="components" >}}, data is not being captured. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, if it is not on for any individual {{< glossary_tooltip term_id="component" text="component" >}}, data is not being captured. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `capture_dir`      | string | Optional | Path to the directory on your machine where you want to store captured data. If you change the directory for data capture, only new data is stored in the new directory. Existing data remains in the directory where it was stored. <br> Default: `~/.viam/capture` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `tags` | array of strings | Optional | Tags to apply to all images or tabular data captured by this machine part. May include alphanumeric characters, underscores, and dashes. |  |
 | `sync_disabled` | bool | Optional | Toggle cloud sync on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. <br> Default: `false` |  |
 | `additional_sync_paths` | string array | Optional | Paths to any other directories on your machine from which you want to sync data to the cloud. Once data is synced from a directory, it is automatically deleted from your machine. We recommend using absolute paths. For relative paths, see [How sync works](/data-ai/capture-data/advanced/how-sync-works/#cant-find-the-directory-data-is-stored-in-click-here). |  |
-| `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits on the frequency of data syncing. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `selective_syncer_name` | string | Optional | The name for the sensor that should determine selective sync. Also add this sensor to the `depends_on` field. For more information, see [Configure the data manager to sync based on sensor](/data-ai/capture-data/conditional-sync/#configure-the-data-manager-to-sync-based-on-sensor). |  |
 | `delete_data_on_part_deletion` | bool | Optional | Whether deleting this {{< glossary_tooltip term_id="machine" text="machine" >}} or {{< glossary_tooltip term_id="part" text="machine part" >}} should result in deleting all the data captured by that machine part. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/data-ai/capture-data/advanced/how-sync-works/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |   |
 | `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam Cloud. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2 so half the number of logical CPUs available to viam-server |   |
-| `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) to which data capture will attempt to write tabular data after it is enqueued to be written to disk. When non-empty, data capture will write tabular data to the configured MongoDB database and collection at that URI.<br>See  `mongo_capture_config.database` and  `mongo_capture_config.collection` below for database and collection defaults.<br>See [Capture directly to your own MongoDB cluster](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster) for example configurations.|   |
+| `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) to which data capture will attempt to write tabular data after it is enqueued to be written to disk. When non-empty, data capture will write tabular data to the configured MongoDB database and collection at that URI.<br>See `mongo_capture_config.database` and `mongo_capture_config.collection` below for database and collection defaults.<br>See [Capture directly to your own MongoDB cluster](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster) for example configurations.|   |
 | `mongo_capture_config.database` | string | Optional | When `mongo_capture_config.uri` is non-empty, changes the database data capture will write tabular data to. <br> Default: `"sensorData"`   |   |
 | `mongo_capture_config.collection` | string | Optional | When `mongo_capture_config.uri` is non-empty, changes the collection data capture will write tabular data to.<br> Default: `"readings"`   |   |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. The maximum amount of storage (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
@@ -339,6 +339,24 @@ This example configuration captures data from the `CaptureAllFromCamera` method 
 }
 ```
 
+The following attributes are available for data capture configuration:
+
+{{< expand "Click to view data capture attributes" >}}
+
+<!-- prettier-ignore -->
+| Name               | Type   | Required? | Description |
+| ------------------ | ------ | --------- | ----------- |
+| `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
+| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
+| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options; size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
+| `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](/data-ai/data/hot-data-store/) for faster access. Example: `{ "stored_hours": 24 }` |
+| `additional_params` | object | Optional | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
+| `disabled` | boolean | Optional | Whether data capture is disabled. |
+
+{{< /expand >}}
+
+You can edit the JSON directly by switching to **JSON** mode in the UI.
+
 {{% /tab %}}
 {{% tab name="Remote parts" %}}
 
@@ -346,17 +364,19 @@ Viam supports data capture from {{< glossary_tooltip term_id="resource" text="re
 For example, if you use a {{< glossary_tooltip term_id="part" text="part" >}} that does not have a Linux operating system or does not have enough storage or processing power to run `viam-server`, you can still process and capture the data from that part's resources by adding it as a remote part.
 
 Currently, you can only configure data capture from remote resources in your JSON configuration.
-To add them to your JSON configuration, you must explicitly add the remote resource's `type`, `model`, `name`, and `additional_params` to the data_manager service configuration in the remotes configuration:
-
-`name` and `additional_params` to the `data_manager` service configuration in the `remotes` configuration:
+To add them to your JSON configuration, you must explicitly add a `service_config` for the data manager in the `remote` object in the `remotes` array.
+The service config array must contain an object with `type: data_manager` and an `attributes` object with an array of `capture_methods`.
+Each capture method object contains the following fields:
 
 <!-- prettier-ignore -->
-| Key | Description |
-| --- | ----------- |
-| `type` | The type tells your machine what the resource is. For example, a board. |
-| `model` | The model is a {{< glossary_tooltip term_id="model-namespace-triplet" text="colon-delimited-triplet" >}} that specifies the namespace, the type of the part, and the part itself. |
-| `name` | The name specifies the fully qualified name of the part. |
-| `additional_params` | The additional parameters specify the data sources when you are using a board. |
+| Key | Type | Description |
+| --- | ---- | ----------- |
+| `name` | string | The name specifies the fully qualified name of the part. Example: `"rdk:component:sensor/spacesensor"`. |
+| `additional_params` | Object | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
+| `disabled` | boolean | Whether data capture for the method is disabled. |
+| `method` | string | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
+| `capture_frequency_hz` | float | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
+| `cache_size_kb` | float | `viam-micro-server` only. The maximum amount of storage (in kilobytes) allocated to a data collector. <br> Default: `1` KB. |
 
 {{< expand "Click to view example JSON configuration for an ESP32 board that will be established as a remote part" >}}
 
@@ -537,24 +557,6 @@ The following example of a configuration with a remote part captures data from t
 {{< /tabs >}}
 
 {{< /expand >}}
-
-The following attributes are available for data capture configuration:
-
-{{< expand "Click to view data capture attributes" >}}
-
-<!-- prettier-ignore -->
-| Name               | Type   | Required? | Description |
-| ------------------ | ------ | --------- | ----------- |
-| `capture_frequency_hz` | float   | **Required** | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
-| `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
-| `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options and size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
-| `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](/data-ai/data/hot-data-store/) for faster access. Example: `{ "stored_hours": 24 }` |
-| `additional_params` | object | Optional | Varies based on the method. For example, `ReadImage` requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
-| `disabled` | boolean | Optional | Whether data capture is disabled. |
-
-{{< /expand >}}
-
-You can edit the JSON directly by switching to **JSON** mode in the UI.
 
 ## Capture directly to your own MongoDB cluster
 
