@@ -64,7 +64,7 @@ To handle this mathematically:
 
 Where X' and Y' are components of the transformed X-axis basis vector.
 
-See an example of how this is handled in Viam's spatial math library [here](https://github.com/viamrobotics/rdk/blob/142f052cb8e2c13d9cf9530dc6d71c7f812b92a8/spatialmath/quaternion.go#L143-L149).
+See an example of how this is handled in [Viam's RDK spatial math library](https://github.com/viamrobotics/rdk/blob/142f052cb8e2c13d9cf9530dc6d71c7f812b92a8/spatialmath/quaternion.go#L143-L149).
 
 If your application requires orientations near these poles, be aware that:
 
