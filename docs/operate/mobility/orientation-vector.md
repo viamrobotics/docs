@@ -45,6 +45,28 @@ you can determine Theta by looking at the picture and changing the value to 0, 9
 
 OX, OY, OZ, and Theta together form the orientation vector which defines which direction the camera is pointing with respect to the corner of the room, as well as to what degree the camera is rotated about an axis through the center of its lens.
 
+## Gimbal lock at poles
+
+{{< alert title=\"Caution\" color=\"caution\" >}}
+When the OZ component of an orientation vector is very close to +1 or -1 (specifically, when `abs(OZ) >= 0.9999`), the orientation vector represents a gimbal-locked state, similar to pointing straight up or straight down.
+In this condition, Theta values are computed using different mathematical methods than in the normal case, which can result in discontinuous behavior.
+{{< /alert >}}
+
+This edge case occurs because when an object is oriented nearly parallel to the Z-axis (pointing straight up or down), there is a discontinuity in how Theta is calculated.
+The mapping from orientation vectors to orientations remains one-to-one, but there are two well-defined regions with no smooth transition between them.
+This means you may see large jumps in Theta values when crossing the threshold, and eyeballing values to estimate the distance between orientations becomes unreliable near the poles.
+
+To handle this mathematically:
+
+- **Normal case** (`abs(OZ) < 0.9999`): Theta is calculated using the standard method based on plane normals
+- **Pole case** (`abs(OZ) >= 0.9999`): Theta is calculated using a simplified trigonometric formula to avoid mathematical singularities:
+  - For the north pole (OZ approaching +1): `Theta = -atan2(Y', -X')`
+  - For the south pole (OZ approaching -1): `Theta = -atan2(Y', X')`
+
+See an example of how this is handled in [Viam's RDK spatial math library](https://github.com/viamrobotics/rdk/blob/142f052cb8e2c13d9cf9530dc6d71c7f812b92a8/spatialmath/quaternion.go#L143-L149).
+
+If your application requires orientations near these poles, be aware that the computed Theta value may change significantly when crossing the pole threshold as the internal representation switches between two different calculation methods at this boundary.
+
 ## Why Viam uses orientation vectors
 
 - Easy to measure in the real world
