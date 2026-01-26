@@ -8,7 +8,7 @@
 | [Base](/operate/reference/components/base/)                       | `Position`, `DoCommand` |
 | [Board](/operate/reference/components/board/)                     | `Analogs`, `Gpios`, `DoCommand` |
 | [Button](/operate/reference/components/button/)                   | `DoCommand` |
-| [Camera](/operate/reference/components/camera/)                   | `GetImages`, `ReadImage`, `NextPointCloud`, `DoCommand` |
+| [Camera](/operate/reference/components/camera/)                   | `GetImages`, `ReadImage` (deprecated), `NextPointCloud`, `DoCommand` |
 | [Encoder](/operate/reference/components/encoder/)                 | `TicksCount`, `DoCommand` |
 | [Gantry](/operate/reference/components/gantry/)                   | `Lengths`, `Position`, `DoCommand` |
 | [Gripper](/operate/reference/components/gripper/)                 | `DoCommand` |

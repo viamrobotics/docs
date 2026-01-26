@@ -214,7 +214,7 @@ Configure data capture on the `objectfilter` camera to capture images of people 
    Locate the `objectfilter-cam` panel.
 
 3. Click **Add method**.
-   Click the **Type** dropdown and select **ReadImage**.
+   Click the **Type** dropdown and select **GetImages**.
    Set the capture frequency to `0.2` images per second (equivalent to one image every 5 seconds).
    You can always change the frequency to suit your use case.
    Set the **MIME type** to `image/jpeg`.

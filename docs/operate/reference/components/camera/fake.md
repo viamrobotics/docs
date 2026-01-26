@@ -57,7 +57,7 @@ The following attributes are available for `fake` cameras:
 | `width` | int | Optional | The width of the image in pixels. The maximum width is 10000. <br> Default: `1280` |
 | `height` | int | Optional | The height of the image in pixels. The maximum height is 10000. <br> Default: `720` |
 | `animated` | bool | Optional | If you want the camera stream visible on the **CONTROL** tab to be animated. <br> Default: `False` |
-| `rtp_passthrough` | bool | Optional | If true, `GetImage` will ignore width, height, and animated config params. Default: `False`. |
+| `rtp_passthrough` | bool | Optional | If true, `GetImages` will ignore width, height, and animated config params. Default: `False`. |
 | `model` | bool | Optional  | If true, provides `IntrinsicParams` and `DistortionParams` for the camera. Default: `False`. |
 
 ## View the camera stream

@@ -110,7 +110,7 @@ Each job targets a specific resource on your machine and calls a designated comp
       "name": "daily-camera-capture",
       "schedule": "0 8 * * *",
       "resource": "camera1",
-      "method": "GetImage"
+      "method": "GetImages"
     },
     {
       "name": "periodic-sync",

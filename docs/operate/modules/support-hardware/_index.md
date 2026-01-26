@@ -152,8 +152,7 @@ See [Run control logic](/operate/modules/control-logic/) for more information.
 **Example module:** To choose the Viam [APIs](/dev/reference/apis/#component-apis) that make sense for your module, think about the functionality you want to implement.
 You need a way to return an image and you need a way to return a number.
 
-If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImage` method, which returns an image.
-That will work for the image.
+If you look at the [camera API](/dev/reference/apis/components/camera/), you can see the `GetImages` method, which returns image(s) from the camera.
 
 The camera API also has a few other methods.
 You do not need to fully implement all the methods of an API.

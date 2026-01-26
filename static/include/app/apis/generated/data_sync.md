@@ -82,7 +82,7 @@ const binaryDataId = await dataClient.binaryDataCaptureUpload(
   '123abc45-1234-5678-90ab-cdef12345678',
   'rdk:component:camera',
   'my-camera',
-  'ReadImage',
+  'GetImages',
   '.jpg',
   [new Date('2025-03-19'), new Date('2025-03-19')]
 );
@@ -133,7 +133,7 @@ _viam = await Viam.withApiKey(
      ".png",
      componentType: "rdk:component:camera",
      componentName: "camera-1",
-     methodName: "ReadImage",
+     methodName: "GetImages",
      dataRequestTimes: dataRequestTimes);
 
    print('Successfully uploaded binary data with binaryDataId: $binaryDataId');
