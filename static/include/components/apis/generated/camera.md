@@ -184,15 +184,12 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 ### GetImages
 
 {{% alert title="Usage" color="note" %}}
-Intended specifically for use with cameras that support simultaneous depth and color image streams, like the [Intel RealSense](https://app.viam.com/module/viam/realsense) or the [Luxonis OAK-D](https://app.viam.com/module/viam/oak-d).
-If your camera does not have multiple imagers, this method will work without capturing multiple images simultaneously.
-
 You can use the [`rgb-d-overlay` module](https://app.viam.com/module/viam/rgb-d-overlay) to view and compare the camera streams returned by this method.
 See the [module readme](https://github.com/viam-labs/rgb-d-overlay) for further instructions.
 {{% /alert %}}
 
-Get simultaneous images from different imagers, along with associated metadata.
-The multiple images returned from `GetImages()` do not represent a time series of images.
+`GetImages` is used for getting simultaneous images from different imagers from 3D cameras along with associated metadata, and single images from non-3D cameras e.g. webcams, RTSP cameras etc. in the image list in the response.
+Multiple images returned from `GetImages()` do not represent a time series of images.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
