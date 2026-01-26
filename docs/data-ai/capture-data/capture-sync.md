@@ -70,7 +70,7 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
    {{< alert title="Camera capture methods" color="note" >}}
    Camera components provide two similar, but distinct capture methods:
 
-   - **GetImages**: Returns an image per camera sensor for 3D cameras (e.g. "color" as JPEG for RGB sensors, "depth" as a depth map for depth sensors), or a single image for webcams, RTSP cameras etc.
+   - **GetImages**: Returns an image per camera sensor for 3D cameras (for example, "color" as JPEG for RGB sensors, "depth" as a depth map for depth sensors), or a single image for webcams, RTSP cameras etc.
 
    {{< /alert >}}
 
