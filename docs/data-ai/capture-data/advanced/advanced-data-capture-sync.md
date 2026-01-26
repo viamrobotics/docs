@@ -349,7 +349,7 @@ The following attributes are available for data capture configuration:
 | `method` | string | **Required** | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
 | `retention_policy` | object | Optional | Option to configure how long data collected by this component or service should remain stored in the Viam Cloud. You must set this in JSON mode. See the JSON example for a camera component. <br> **Options:** `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. <br> Days are in UTC time. Setting a retention policy of 1 day means that data stored now will be deleted the following day **in UTC time**. You can set either or both of the size limit options; size is in gigabytes. The `retention_policy` does not affect logs. For information about logs, see [Logging](/operate/reference/viam-server/#logging). |
 | `recent_data_store` | object | Optional | Configure a rolling time frame of recent data to store in a [hot data store](/data-ai/data/hot-data-store/) for faster access. Example: `{ "stored_hours": 24 }` |
-| `additional_params` | object | Optional | Varies based on the method. For example, `ReadImage` (deprecated) requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
+| `additional_params` | object | Optional | Varies based on the method. For example, `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`, and `GetImages` can optionally intake a `filter_source_names` list of strings to indicate which source names to return images from. |
 | `disabled` | boolean | Optional | Whether data capture is disabled. |
 
 {{< /expand >}}
@@ -371,7 +371,7 @@ Each capture method object contains the following fields:
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | `name` | string | The name specifies the fully qualified name of the part. Example: `"rdk:component:sensor/spacesensor"`. |
-| `additional_params` | Object | Varies based on the method. For example, `ReadImage` (deprecated) requires a MIME type and `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`. |
+| `additional_params` | Object | Varies based on the method. For example, `DoCommand` requires `docommand_input` with an object of the command object to pass to `DoCommand`, and `GetImages` can optionally intake a `filter_source_names` list of strings to indicate which source names to return images from. |
 | `disabled` | boolean | Whether data capture for the method is disabled. |
 | `method` | string | Depends on the type of component or service. See [Supported components and services](/data-ai/capture-data/capture-sync/#click-to-see-resources-that-support-data-capture-and-cloud-sync). **Note:** For tabular data, Viam enforces a maximum size of 4MB for any single reading. |
 | `capture_frequency_hz` | float | Frequency in hertz at which to capture data. For example, to capture a reading every 2 seconds, enter `0.5`. |
@@ -505,7 +505,7 @@ The following example of a configuration with a remote part captures data from t
 
 {{< expand "Click to view the JSON configuration for capturing data from a camera" >}}
 
-The following example of a configuration with a remote part captures data from the `GetImages` method of a camera (`ReadImage` is deprecated):
+The following example of a configuration with a remote part captures data from the `GetImages` method of a camera:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -538,7 +538,7 @@ The following example of a configuration with a remote part captures data from t
                 "disabled": false,
                 "method": "GetImages",
                 "additional_params": {
-                  "mime_type": "image/jpeg",
+                  "filter_source_names": ["color"],
                   "reader_name": "cam1"
                 }
               }
