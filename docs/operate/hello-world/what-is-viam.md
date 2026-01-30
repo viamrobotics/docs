@@ -16,7 +16,7 @@ date: "2025-01-30"
 
 Viam is a software platform for building, deploying, and managing robotics applications.
 
-With Viam, you declare your hardware and services you need in a JSON config, Viam installs the drivers and any additional software modules required to support your configuration.
+With Viam, you declare the hardware and services you need in a JSON config. Viam installs the drivers and any additional software modules required to support your configuration.
 Vision, motion planning, and most other capabilities you need are built in or available in the Viam module Registry, all with well-defined APIs to support your use case.
 Application code versioning, deployment, and rollback are native to the Viam platform.
 It's the development workflow you're used to, applied to physical devices.
@@ -25,7 +25,7 @@ Viam brings software engineering practices to robotics: version control, remote 
 
 ## Viam fundamentals
 
-Every Viam machine runs a service and package manager called `viam-server` which you install with a single command. Declare what hardware is connected and what services you need in a JSON config, `viam-server` pulls the necessary drivers from the Viam Registry, launches required processes, and keeps them running to support computer vision and other capabilities your application requires.
+Every Viam machine runs a service and package manager called `viam-server` which you install with a single command. Declare what hardware is connected and what services you need in a JSON config. `viam-server` pulls the necessary drivers from the Viam Registry, launches required processes, and keeps them running to support computer vision and other capabilities your application requires.
 `viam-server` also manages networking and data sync.
 
 The [Viam Registry](/operate/reference/registry/) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
@@ -44,14 +44,14 @@ Fragments support variable substitution and per-machine overwrites, so you can d
 
 {{< alert title="In this section" color="note" >}}
 
-- Get hardware running in minutes
-- Operate from anywhere
-- Capture data from edge to cloud
-- Train and deploy models
-- Write code from anywhere
-- Manage software deployments
-- Scale easily
-- Productize with Viam apps
+- [Get hardware running in minutes](#get-hardware-running-in-minutes)
+- [Operate from anywhere](#operate-from-anywhere)
+- [Capture data from edge to cloud](#capture-data-from-edge-to-cloud)
+- [Train and deploy models](#train-and-deploy-models)
+- [Develop code remotely](#develop-code-remotely)
+- [Manage software deployments](#manage-software-deployments)
+- [Scale easily](#scale-easily)
+- [Productize with Viam apps](#productize-with-viam-apps)
 
 {{< /alert >}}
 
@@ -101,7 +101,7 @@ Deploy to your fleet with the same versioning and update mechanisms as code.
 - **Deploy to your fleet:** Push a model to the Registry and configure machines to pull it. Pin to specific versions or allow automatic updates—same as modules.
 - **Run inference on device:** The ML model service runs on the machine. Inference happens locally without round-trips to the cloud.
 
-### Write code from anywhere
+### Develop code remotely
 
 Traditional robotics development means standing next to the robot or SSH'ing into it.
 Viam lets you treat your robot like a machine in the cloud.
