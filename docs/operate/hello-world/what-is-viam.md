@@ -130,9 +130,8 @@ Your prototype configuration becomes your production configuration.
 Turn a working machine setup into a [fragment](/manage/fleet/reusable-configuration/) and apply it to several, dozens, or even hundreds of machines.
 No deployment scripts, no copying files, no per-machine setup.
 
-- **Create a fragment from your prototype:** Once your machine works, export the configuration as a fragment. That exact setup is now reusable.
+- **Create a fragment from your prototype:** Once your machine works, export the configuration as a fragment. That exact setup is now reusable across any number of machines. Viam handles provisioning.
 - **Update configurations fleet-wide:** Change a fragment and every machine using it pulls the update. No scripting, no SSH loops.
-- **Provision new machines automatically:** New machines running `viam-server` pull their configuration from the cloud on first boot. Specify a fragment, and they start running immediately.
 - **Override per-machine differences:** If some machines have a different camera model or site-specific parameter value, override for just those machines without forking the base fragment.
 - **Roll out changes incrementally:** Deploy configuration changes, module versions, or ML models to a subset of machines first. Validate before rolling out fleet-wide.
 - **Roll back with one change:** Viam maintains configuration history. Revert to a previous version of a fragment, module, or model with a single update.
