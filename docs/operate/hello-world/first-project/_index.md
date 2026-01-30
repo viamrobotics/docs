@@ -10,8 +10,6 @@ date: "2025-01-30"
 ---
 
 **Time:** ~75 minutes
-**Components:** Camera + Compute
-**Physics required:** None (rendered images only)
 
 ## Before You Begin
 
@@ -19,28 +17,14 @@ date: "2025-01-30"
 
 Viam lets you build robotics applications the way you build other software. Viam abstracts away hardware concerns and services for common tasks to enable you to focus on your core robotics application. Declare your hardware in a config, write control logic against well-defined APIs for everything, push updates through a CLI. Viam is the development workflow you're used to, applied to physical machines.
 
-Viam works with any hardware:
-
-| Category | Examples                                    |
-| -------- | ------------------------------------------- |
-| Cameras  | Webcams, depth cameras, thermal, CSI        |
-| Arms     | 6-DOF robot arms, collaborative arms        |
-| Bases    | Wheeled, tracked, holonomic, drones         |
-| Motors   | DC, stepper, servo, brushless               |
-| Sensors  | IMU, GPS, ultrasonic, temperature, humidity |
-| Grippers | Parallel jaw, vacuum, custom end effectors  |
-| Boards   | Raspberry Pi, Jetson, Orange Pi, ESP32      |
-| LiDAR    | 2D and 3D scanning                          |
-| Encoders | Rotary, absolute, incremental               |
-| Gantries | Linear actuators, multi-axis systems        |
-
-If your hardware isn't on the list, you can add support with a custom module by implementing the appropriate API.
+Viam supports most robotics hardware. If your hardware isn't on the list, you can add support with a custom module by implementing the appropriate API.
 
 This tutorial uses the simplest work cell (camera + compute) to teach patterns that apply to _all_ Viam applications.
 
 ### What You'll Learn
 
-By the end of this tutorial, you'll understand how to:
+By the end of this tutorial, you'll be able to do the following.
+These skills apply whether you're working with a camera, a robot arm, or a warehouse full of mobile robots.
 
 | Skill                | What It Means                               | Applies To                          |
 | -------------------- | ------------------------------------------- | ----------------------------------- |
@@ -52,7 +36,6 @@ By the end of this tutorial, you'll understand how to:
 | Manage fleets        | Monitor, update, and debug remotely         | Production operations               |
 | Build customer apps  | Create products on top of Viam              | Shipping to your customers          |
 
-**These patterns are the same whether you're working with a camera, a robot arm, or a warehouse full of mobile robots.**
 
 ## Scenario
 
@@ -137,31 +120,3 @@ A working inspection system with:
 ## Get Started
 
 **[Begin Part 1: Vision Pipeline →](part-1/)**
-
-## Simulation Requirements
-
-### Work Cell Elements
-
-| Element       | Description                                         |
-| ------------- | --------------------------------------------------- |
-| Conveyor belt | Moving belt where cans travel                       |
-| Camera        | Overhead RGB camera (640x480)                       |
-| Sample cans   | Mix of good cans and dented cans (~10% defect rate) |
-| Lighting      | Consistent industrial lighting                      |
-
-### Viam Components
-
-| Component        | Type             | Notes                                                     |
-| ---------------- | ---------------- | --------------------------------------------------------- |
-| `inspection-cam` | camera           | Gazebo RGB camera                                         |
-| `can-classifier` | mlmodel          | TFLite model for PASS/FAIL classification (detects dents) |
-| `can-detector`   | vision           | ML model service connected to camera                      |
-| `rejector`       | motor            | Pneumatic pusher for rejecting defective cans             |
-| `inspector`      | generic (module) | Control logic service                                     |
-| `offline-alert`  | trigger          | Email notification when machine goes offline              |
-
-### Simulated Events
-
-| Event       | Trigger                     | Purpose            |
-| ----------- | --------------------------- | ------------------ |
-| Can appears | Automatic (every 4 seconds) | New can to inspect |
