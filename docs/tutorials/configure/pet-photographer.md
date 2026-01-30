@@ -281,22 +281,29 @@ Now that you've included the required utility function and safeguard, your compl
 {{% tab name="Python"%}}
 
 ```python {class="line-numbers linkable-line-numbers"}
-async def get_image(
+async def get_images(
   self,
-  mime_type: str = "",
   *,
+  filter_source_names: Optional[Sequence[str]] = None,
   extra: Optional[Dict[str, Any]] = None,
   timeout: Optional[float] = None,
   **kwargs
-  ) -> Image.Image:
+  ) -> Tuple[Sequence[NamedImage], ResponseMetadata]:
     """Filters the output of the underlying camera"""
-    img = await self.actual_cam.get_image()
+    images, metadata = await self.actual_cam.get_images(
+        filter_source_names=filter_source_names,
+        extra=extra,
+        timeout=timeout,
+        **kwargs
+    )
     if from_dm_from_extra(extra):
-        detections = await self.vision_service.get_detections(img)
+        from viam.media.utils.pil import viam_to_pil_image
+        img_pil = viam_to_pil_image(images[0])
+        detections = await self.vision_service.get_detections(img_pil)
         if len(detections) == 0:
             raise NoCaptureToStoreError()
 
-    return img
+    return images, metadata
 ```
 
 If the data management service is the caller, the filter function requests detections from the vision service and returns the image if the specified color is detected.
@@ -365,6 +372,7 @@ from PIL import Image
 from viam.errors import NoCaptureToStoreError
 from viam.services.vision import Vision
 from viam.utils import from_dm_from_extra
+from viam.media.utils.pil import viam_to_pil_image
 
 
 class ColorFilterCam(
@@ -454,33 +462,31 @@ class ColorFilterCam(
         """Returns details about the camera"""
         return await self.actual_cam.get_properties()
 
-    async def get_image(
-              self,
-              mime_type: str = "",
-              *,
-              extra: Optional[Dict[str, Any]] = None,
-              timeout: Optional[float] = None,
-              **kwargs
-    ) -> Image.Image:
-        """Filters the output of the underlying camera"""
-        img = await self.actual_cam.get_image()
-        if from_dm_from_extra(extra):
-            detections = await self.vision_service.get_detections(img)
-            if len(detections) == 0:
-                raise NoCaptureToStoreError()
-
-        return img
-
     async def get_images(
               self,
               *,
+              filter_source_names: Optional[Sequence[str]] = None,
+              extra: Optional[Dict[str, Any]] = None,
               timeout: Optional[float] = None,
               **kwargs
     ) -> Tuple[
          List[NamedImage],
          ResponseMetadata
          ]:
-        raise NotImplementedError
+        """Filters the output of the underlying camera"""
+        images, metadata = await self.actual_cam.get_images(
+            filter_source_names=filter_source_names,
+            extra=extra,
+            timeout=timeout,
+            **kwargs
+        )
+        if from_dm_from_extra(extra):
+            img_pil = viam_to_pil_image(images[0])
+            detections = await self.vision_service.get_detections(img_pil)
+            if len(detections) == 0:
+                raise NoCaptureToStoreError()
+
+        return images, metadata
 
     async def get_point_cloud(
               self,
@@ -973,7 +979,7 @@ To add data capture for the color filter camera:
 
 1. Click **Add method** in the **Data capture** section of your color filter camera component.
 
-2. Toggle the **Method** dropdown menu, select **ReadImage**, and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera once every 10 seconds.
+2. Toggle the **Method** dropdown menu, select **GetImages** (**ReadImage** is deprecated), and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera once every 10 seconds.
 
 3. Click the **MIME type** dropdown and select `image/jpeg`.
 
