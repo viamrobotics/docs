@@ -28,14 +28,14 @@ Viam brings software engineering practices to robotics: version control, remote 
 Every Viam machine runs a service and package manager called `viam-server` which you install with a single command. Declare what hardware is connected and what services you need in a JSON config. `viam-server` pulls the necessary drivers from the Viam Registry, launches required processes, and keeps them running to support computer vision and other capabilities your application requires.
 `viam-server` also manages networking and data sync.
 
-The [Viam Registry](/operate/reference/registry/) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
+The [Viam Registry](/operate/modules/configure-modules/) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
 All registry assets support semantic versioning, so you can pin to stable versions or allow automatic updates.
 
 Registry modules provide drivers for cameras, motors, sensors, arms, and other hardware, plus services like object detection.
 `viam-server` also includes built-in services for motion planning, navigation, and data management.
 For machine learning, the Registry includes pretrained models for common tasks. You can also train and use your own models.
 
-[Fragments](/manage/fleet/reusable-configuration/) are reusable configuration blocks.
+[Fragments](/manage/fleet/reuse-configuration/) are reusable configuration blocks.
 Define a combination of components, services, and modules once, then apply that configuration across any number of machines.
 Use fragments to configure a camera-arm combination, a camera-to-object-detection pipeline, or an entire work cell.
 Fragments support variable substitution and per-machine overwrites, so you can deploy the same base configuration to hundreds of machines while accommodating site-specific settings.
@@ -127,7 +127,7 @@ Viam handles everything.
 ### Scale easily
 
 Your prototype configuration becomes your production configuration.
-Turn a working machine setup into a [fragment](/manage/fleet/reusable-configuration/) and apply it to several, dozens, or even hundreds of machines.
+Turn a working machine setup into a [fragment](/manage/fleet/reuse-configuration/) and apply it to several, dozens, or even hundreds of machines.
 No deployment scripts, no copying files, no per-machine setup.
 
 - **Create a fragment from your prototype:** Once your machine works, export the configuration as a fragment. That exact setup is now reusable across any number of machines. Viam handles provisioning.
