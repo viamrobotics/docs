@@ -55,7 +55,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A screwdriver
 
 Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/) to prepare your machine to run `viam-server`.
-Your Pi must run a [Viam-compatible operating system](/operate/hello-world/quickstart/#supported-platforms), and you must have SSH access.
+Your Pi must run a Viam-compatible operating system, and you must have SSH access.
 
 ## Set up your plant watering robot
 

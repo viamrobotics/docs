@@ -6,5 +6,5 @@ type: "docs"
 empty_node: true
 open_on_desktop: true
 header_only: true
-canonical: "/operate/hello-world/quickstart/"
+canonical: "/operate/hello-world/what-is-viam/"
 ---
