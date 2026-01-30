@@ -25,7 +25,7 @@ Viam brings software engineering practices to robotics: version control, remote 
 
 ## Viam fundamentals
 
-Every Viam machine starts with `viam-server`, Viam's service and package manager. 
+Every Viam machine starts with `viam-server`, Viam's service and package manager.
 Install `viam-server` with a single command.
 Then declare what hardware is connected and what services you need in a JSON config.
 `viam-server` pulls the necessary drivers from the Viam Registry, launches required processes, and keeps them running to support all the services your application requires.
