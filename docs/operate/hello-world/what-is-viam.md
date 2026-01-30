@@ -25,17 +25,20 @@ Viam brings software engineering practices to robotics: version control, remote 
 
 ## Viam fundamentals
 
-Every Viam machine runs a service and package manager called `viam-server` which you install with a single command. Declare what hardware is connected and what services you need in a JSON config. `viam-server` pulls the necessary drivers from the Viam Registry, launches required processes, and keeps them running to support computer vision and other capabilities your application requires.
+Every Viam machine starts with `viam-server`, Viam's service and package manager.
+Install `viam-server` with a single command.
+Then declare what hardware is connected and what services you need in a JSON config.
+`viam-server` pulls the necessary modules from the Viam Registry, launches required processes, and keeps them running to support all the hardware and services your application requires.
 `viam-server` also manages networking and data sync.
 
 The [Viam Registry](/operate/modules/configure-modules/) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
-All registry assets support semantic versioning, so you can pin to stable versions or allow automatic updates.
+All registry assets support semantic versioning, enabling controlled deployment to individual robots and across your fleet.
 
 Registry modules provide drivers for cameras, motors, sensors, arms, and other hardware, plus services like object detection.
-`viam-server` also includes built-in services for motion planning, navigation, and data management.
+`viam-server` also includes built-in services such as motion planning and data management.
 For machine learning, the Registry includes pretrained models for common tasks. You can also train and use your own models.
 
-[Fragments](/manage/fleet/reuse-configuration/) are reusable configuration blocks.
+Viam supports reusable configuration through [fragments](/manage/fleet/reuse-configuration/).
 Define a combination of components, services, and modules once, then apply that configuration across any number of machines.
 Use fragments to configure a camera-arm combination, a camera-to-object-detection pipeline, or an entire work cell.
 Fragments support variable substitution and per-machine overwrites, so you can deploy the same base configuration to hundreds of machines while accommodating site-specific settings.
