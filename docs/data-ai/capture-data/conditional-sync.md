@@ -306,7 +306,7 @@ You have now configured sync to happen during a specific time slot.
 
 To test your setup, [configure a webcam](/operate/reference/components/camera/webcam/) or another component and [enable data capture on the component](/data-ai/capture-data/capture-sync/#configure-data-capture-and-sync-for-individual-resources).
 Make sure to physically connect any hardware parts to the computer controlling your machine.
-For a camera component, use the `ReadImage` method.
+For a camera component, use the `GetImages` method.
 The data manager will now capture data.
 Go to the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui).
 You should see the sensor.

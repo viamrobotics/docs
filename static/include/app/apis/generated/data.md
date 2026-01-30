@@ -30,7 +30,7 @@ tabular_data = await data_client.get_latest_tabular_data(
     part_id="77ae3145-7b91-123a-a234-e567cdca8910",
     resource_name="camera-1",
     resource_api="rdk:component:camera",
-    method_name="GetImage",
+    method_name="GetImages",
     additional_params={"docommand_input": {"test": "test"}}
 )
 

@@ -133,10 +133,9 @@ Configure data capture on the `filtered-camera` resource to capture images of de
    Locate the `objectfilter-cam` panel.
 
    Click **Add method**.
-   Click the **Type** dropdown and select **ReadImage**.
+   Click the **Type** dropdown and select **GetImages**.
    Set the capture frequency to `0.2` images per second (equivalent to one image every 5 seconds).
    You can adjust the frequency to suit your use case.
-   Set the **MIME type** to `image/jpeg`.
 
 ## Configure a trigger on your machine
 
