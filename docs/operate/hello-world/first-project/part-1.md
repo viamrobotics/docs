@@ -45,7 +45,9 @@ Ordinarily, after creating a machine in Viam, you would download and install `vi
 
 Your machine is online but empty. To configure your machine you will add components and services to your machine part in the Viam user interface. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
 
-In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container. It is identified as `inspection-station-1-main` in the **Configuration** tab.
+In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container.
+
+Find `inspection-station-1-main` in the **Configuration** tab.
 
 ## 1.3 Configure the Camera
 
@@ -76,11 +78,13 @@ After adding the camera component, you will see two items appear in
 After creating the component, you'll see a configuration panel.
 
 1. In the **Attributes** section, add:
+
    ```json
    {
      "id": "/inspection_camera"
    }
    ```
+
 2. Click **Save** in the top right
 
 [SCREENSHOT: Camera configuration panel with id attribute]
