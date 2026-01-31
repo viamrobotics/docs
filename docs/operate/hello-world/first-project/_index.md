@@ -21,22 +21,6 @@ Viam supports most robotics hardware. If your hardware isn't on the list, you ca
 
 This tutorial uses the simplest work cell (camera + compute) to teach patterns that apply to _all_ Viam applications.
 
-### What You'll Learn
-
-By the end of this tutorial, you'll be able to do the following.
-These skills apply whether you're working with a camera, a robot arm, or a warehouse full of mobile robots.
-
-| Skill                | What It Means                               | Applies To                          |
-| -------------------- | ------------------------------------------- | ----------------------------------- |
-| Configure components | Add hardware to a Viam machine              | Any sensor, actuator, or peripheral |
-| Add services         | Attach capabilities like ML inference       | Vision, navigation, motion planning |
-| Write control logic  | Code that reads sensors and makes decisions | Any automation task                 |
-| Configure automation | Set up data capture, triggers, and alerts   | Production monitoring               |
-| Scale with fragments | Reuse configurations across machines        | Any fleet, any size                 |
-| Manage fleets        | Monitor, update, and debug remotely         | Production operations               |
-| Build customer apps  | Create products on top of Viam              | Shipping to your customers          |
-
-
 ## Scenario
 
 You're building a **quality inspection station** for a canning line. Cans move past a camera on a conveyor belt. Your system must:
@@ -47,18 +31,9 @@ You're building a **quality inspection station** for a canning line. Cans move p
 4. Scale to multiple inspection stations
 5. Ship as a product your customers can use
 
-## What You'll Build
+### Tutorial Overview
 
-A working inspection system with:
-
-- A camera streaming live images
-- An ML model classifying cans as PASS/FAIL (detecting dents)
-- Business logic that triggers alerts on failures
-- A second station added to your fleet
-- A dashboard showing inspection results across stations
-- A customer-facing web app with your branding
-
-## Tutorial Parts
+In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
 
 | Part                                   | Time    | What You'll Do                                         |
 | -------------------------------------- | ------- | ------------------------------------------------------ |
@@ -77,7 +52,8 @@ A working inspection system with:
 - [1.2 Verify Your Machine is Online](part-1/#12-verify-your-machine-is-online)
 - [1.3 Configure the Camera](part-1/#13-configure-the-camera)
 - [1.4 Test the Camera](part-1/#14-test-the-camera)
-- [1.5 Add a Vision Service](part-1/#15-add-a-vision-service)
+- [1.5 Add an ML Model Service](part-1/#15-add-an-ml-model-service)
+- [1.6 Add a Vision Service](part-1/#16-add-a-vision-service)
 
 **[Part 2: Data Capture](part-2/)** (~15 min)
 

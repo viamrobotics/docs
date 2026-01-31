@@ -74,17 +74,19 @@ This is the key moment: the Linux machine running in your Docker container is no
 
 Your machine is online but empty—it doesn't know about any hardware yet. You'll now add the camera as a _component_.
 
+{{< expand "What's a component?" >}}
 In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensors, grippers. You configure components by declaring what they are, and Viam handles the drivers and communication.
 
 **The power of Viam's component model:** All cameras expose the same API—USB webcams, Raspberry Pi camera modules, IP cameras, simulated cameras. Your application code uses the same `GetImage()` method regardless of the underlying hardware. Swap hardware by changing configuration, not code.
+{{< /expand >}}
 
-**Add the camera module:**
+### Add the camera module
 
 1. Click the **+** button and select **Module**
 2. Search for `gz-camera` and select `viam:gz-camera`
 3. Click **Add module**
 
-**Add a camera component:**
+### Add a camera component
 
 1. Click the **+** button and select **Component**
 2. For **Type**, select `camera`
@@ -94,7 +96,7 @@ In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensor
 
 [SCREENSHOT: Add component dialog with camera settings]
 
-**Configure the camera:**
+### Configure the camera
 
 After creating the component, you'll see a configuration panel.
 
@@ -118,7 +120,7 @@ You declared "this machine has a camera called `inspection-cam`" by editing conf
 
 Let's verify the camera is working. Every component in Viam has a built-in test panel right in the configuration view.
 
-**Open the test panel:**
+### Open the test panel
 
 1. You should still be on the **Configure** tab with your `inspection-cam` selected
 2. Look for the **Test** section at the bottom of the camera's configuration panel
@@ -128,7 +130,7 @@ You should see a live video feed from the simulated camera—an overhead view of
 
 [SCREENSHOT: Camera test panel showing live feed in Configure tab]
 
-**Capture an image:**
+### Capture an image
 
 Click **Get image** to capture a single frame. The image appears in the panel and can be downloaded.
 
@@ -138,24 +140,25 @@ This isn't a special debugging view. The test panel uses the exact same APIs tha
 
 This pattern applies to all components. Motors have test controls for setting velocity. Arms have controls for moving joints. You can test any component directly from its configuration panel.
 
-## 1.5 Add a Vision Service
+**Checkpoint:** Your camera is working. You can stream video and capture images from the simulated inspection station.
 
-Now you'll add machine learning to your camera. In Viam, ML capabilities are provided by _services_—higher-level functionality that operates on components.
+## 1.5 Add an ML Model Service
 
-**Components versus Services:**
+Now you'll add machine learning to your camera. You'll configure two services:
 
+1. **ML model service** — Loads the trained model
+2. **Vision service** — Connects the camera to the model and returns detections
+
+{{< expand "Components versus services" >}}
 - **Components** are hardware: cameras, motors, arms
 - **Services** are capabilities: vision (ML inference), navigation (path planning), motion (arm kinematics)
 
-Services often _use_ components. A **vision service** takes images from a camera, runs them through an ML model, and returns structured results—detections with bounding boxes and labels, or classifications with confidence scores. Your code calls the vision service API; the service handles everything else.
+Services often _use_ components. A **vision service** takes images from a camera, runs them through an ML model, and returns structured results—detections with bounding boxes and labels, or classifications with confidence scores.
 
-To work with ML models, the vision service needs an **ML model service**. The ML model service loads a trained model (TensorFlow, ONNX, or PyTorch) and exposes an `Infer()` method that takes input tensors and returns output tensors. The vision service handles the rest: converting camera images to the tensor format the model expects, calling the ML model service, and interpreting the raw tensor outputs into usable detections or classifications.
+The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) and exposes an `Infer()` method. The vision service handles the rest: converting camera images to tensors, calling the model, and interpreting outputs into usable detections.
+{{< /expand >}}
 
-When using computer vision, as in this tutorial, you need to configure both: first the ML model service (which loads the model), then the vision service (which connects the camera to the model).
-
-**Add the ML model service:**
-
-The ML model service loads a trained model and makes it available for inference.
+### Create the ML model service
 
 1. In the Viam app, click the **Configure** tab
 2. Click **+** next to your machine in the left sidebar
@@ -166,7 +169,7 @@ The ML model service loads a trained model and makes it available for inference.
 
 [SCREENSHOT: Add service dialog for ML model]
 
-**Select a model from the registry:**
+### Select a model from the registry
 
 1. In the `can-classifier` configuration panel, click **Select model**
 2. Click the **Registry** tab
@@ -180,9 +183,11 @@ The ML model service loads a trained model and makes it available for inference.
 For a different application, you'd train a model on your specific data and upload it to the registry. The registry handles versioning and deployment of ML models across your fleet.
 {{< /alert >}}
 
-**Add the vision service:**
+## 1.6 Add a Vision Service
 
-Now add a vision service that connects your camera to the ML model service. The vision service captures images, sends them through the model, and returns detections you can use in your code.
+Now add a vision service that connects your camera to the ML model service.
+
+### Create the vision service
 
 1. Click **+** next to your machine
 2. Select **Service**, then **Vision**
@@ -190,7 +195,7 @@ Now add a vision service that connects your camera to the ML model service. The 
 4. Name it `can-detector`
 5. Click **Create**
 
-**Link the vision service to the camera and model:**
+### Link the vision service to the camera and model
 
 1. In the `can-detector` configuration panel, find the **Default Camera** dropdown
 2. Select `inspection-cam`
@@ -200,7 +205,7 @@ Now add a vision service that connects your camera to the ML model service. The 
 
 [SCREENSHOT: Vision service configuration linked to ML model]
 
-**Test the vision service:**
+### Test the vision service
 
 1. You should still be on the **Configure** tab
 2. Find the `can-detector` service you just created
