@@ -129,7 +129,7 @@ Output should be identical to before—you've just formalized the interface.
 
 The generator already created everything needed to run as a module. Let's review what's there.
 
-**`cmd/module/main.go`** — The module entry point:
+**`cmd/module/main.go`**—The module entry point:
 
 ```go
 func main() {
@@ -141,7 +141,7 @@ func main() {
 
 This registers your model with viam-server and handles all communication. You don't need to modify it.
 
-**`inspector.go`** — Model registration in `init()`:
+**`inspector.go`**—Model registration in `init()`:
 
 The generator created an `init()` function that registers your model:
 
@@ -159,7 +159,7 @@ func init() {
 
 This runs automatically when the module starts, telling viam-server how to create instances of your service.
 
-**`meta.json`** — Registry metadata:
+**`meta.json`**—Registry metadata:
 
 ```json
 {
@@ -211,14 +211,14 @@ Use `linux/arm64` for ARM machines (like Raspberry Pi).
 1. In the Viam app, go to your machine's **Configure** tab
 2. Click **+** next to your machine
 3. Select **Local module**, then **Local module**
-4. Search for your module name (e.g., `your-namespace:inspection-module`)
+4. Search for your module name (for example, `your-namespace:inspection-module`)
 5. Click **Add module**
 
 **Add the inspector service:**
 
 1. Click **+** next to your machine
 2. Select **Service**, then **generic**
-3. For **Model**, select your model (e.g., `your-namespace:inspection-module:inspector`)
+3. For **Model**, select your model (for example, `your-namespace:inspection-module:inspector`)
 4. Name it `inspector`
 5. Click **Create**
 
@@ -246,7 +246,7 @@ The inspector now runs on the machine autonomously.
 
 You deployed your inspection logic as a Viam module:
 
-1. **Added DoCommand** — exposed operations via the generic service interface
+1. **Added DoCommand**—exposed operations through the generic service interface
 2. **Reviewed** — the generator already created module structure and registration
 3. **Deployed** — built, packaged, uploaded, configured
 
@@ -255,6 +255,6 @@ You deployed your inspection logic as a Viam module:
 - During development: CLI runs locally, uses remote hardware (fast iteration)
 - In production: Module runs on machine, same code (autonomous operation)
 
-**Your inspection system now runs 24/7** — detecting defects and rejecting bad cans without your laptop connected.
+**Your inspection system now runs 24/7**—detecting defects and rejecting bad cans without your laptop connected.
 
 **[Continue to Part 5: Scale →](../part-5/)**

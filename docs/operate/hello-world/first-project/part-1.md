@@ -34,12 +34,11 @@ If you haven't already, open **http://localhost:8081** in your browser to see th
 
 ## 1.1 Understand viam-server
 
-Every Viam-managed device runs **viam-server**—the software that connects your hardware to Viam's cloud. viam-server is the foundation of the platform:
+Every Viam-managed device runs **viam-server**, which handles the following:
 
-- **Connects to the cloud** — Receives configuration updates, syncs data, enables remote access
-- **Manages hardware** — Loads drivers for cameras, motors, sensors, and other components
-- **Exposes APIs** — Provides a consistent interface for controlling any hardware
-- **Runs modules** — Executes custom logic you deploy to the machine
+- **Connects to the cloud**—Receives configuration updates, syncs data, enables remote access
+- **Manages hardware**—Loads drivers for cameras, motors, sensors, and other components
+- **Runs modules**—Executes built-in services and custom logic you deploy to the machine
 
 On real hardware, installing viam-server is simple—a single command:
 
@@ -56,7 +55,7 @@ This downloads viam-server, configures it with credentials for your machine, and
 If you followed the [setup guide](../gazebo-setup/), your machine should already be online.
 
 1. Open [app.viam.com](https://app.viam.com)
-2. Navigate to your machine (e.g., `inspection-station-1`)
+2. Navigate to your machine (for example, `inspection-station-1`)
 3. Verify the status indicator shows **Online** with a green dot
 
 [SCREENSHOT: Machine page showing Online status]

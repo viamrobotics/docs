@@ -20,9 +20,9 @@ Your vision pipeline detects dented cans and records the results. Now you'll wri
 
 This completes the **sense-think-act** cycle that defines robotic systems:
 
-1. **Sense** — Camera captures images
-2. **Think** — Vision service classifies cans as PASS/FAIL
-3. **Act** — Rejector pushes defective cans off the belt
+1. **Sense**—Camera captures images
+2. **Think**—Vision service classifies cans as PASS/FAIL
+3. **Act**—Rejector pushes defective cans off the belt
 
 You'll use the **module-first development pattern**: write code on your laptop, test it against remote hardware over the network. This workflow lets you iterate quickly—edit code, run it, see results—without redeploying after every change.
 
@@ -318,7 +318,7 @@ Find the struct (the generator may have named it differently) and ensure it has:
 
 ```go
 // Inspector holds references to the resources we depend on.
-// These are injected via the constructor—we never create them ourselves.
+// These are injected through the constructor—we never create them ourselves.
 type Inspector struct {
 	resource.AlwaysRebuild // Tells Viam to recreate this service on config changes
 
@@ -670,7 +670,7 @@ You now have a complete sense-think-act loop: camera senses, ML model thinks, mo
 You built a complete inspection system using the module-first development pattern:
 
 1. **Generated** the module scaffold—infrastructure handled, you focus on logic
-2. **Connected** to remote hardware from local code via vmodutils
+2. **Connected** to remote hardware from local code using vmodutils
 3. **Implemented detection** by calling the vision service and processing results
 4. **Added rejection** by controlling a motor based on detection confidence
 
