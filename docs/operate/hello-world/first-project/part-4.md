@@ -12,6 +12,8 @@ date: "2025-01-30"
 
 **Skills:** DoCommand pattern, module packaging, registry deployment.
 
+**Time:** ~10 min
+
 ## What You'll Do
 
 In Part 3, you built inspection logic that runs from your laptop. That's great for development, but in production the code needs to run on the machine itself—so it works even when your laptop is closed.

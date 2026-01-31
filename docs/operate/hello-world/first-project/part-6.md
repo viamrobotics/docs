@@ -12,6 +12,8 @@ date: "2025-01-30"
 
 **Skills:** Building apps with Viam SDKs, white-label deployment.
 
+**Time:** ~10 min
+
 ## 6.1 Create a Dashboard
 
 You've built a working system—but right now, only you can see it through the Viam app. Your customers need their own interface showing inspection results.

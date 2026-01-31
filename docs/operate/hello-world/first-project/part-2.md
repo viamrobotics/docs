@@ -12,6 +12,8 @@ date: "2025-01-30"
 
 **Skills:** Data capture configuration, triggers and alerts, querying captured data.
 
+**Time:** ~15 min
+
 Your vision pipeline is running. Before writing custom code, set up the data infrastructure—continuous capture, cloud sync, and alerting. This runs automatically in the background, recording every detection for compliance, analytics, and model improvement.
 
 Viam's data capture is built-in. Toggle it on, and every detection result and image gets stored locally, synced to the cloud, and made queryable—automatically.

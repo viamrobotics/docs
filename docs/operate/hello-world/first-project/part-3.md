@@ -12,6 +12,8 @@ date: "2025-01-30"
 
 **Skills:** Viam module generator, SDK usage, module-first development.
 
+**Time:** ~15 min
+
 ## What You'll Build
 
 Your vision pipeline detects dented cans and records the results. Now you'll write code that **acts** on those detections—rejecting defective cans automatically.

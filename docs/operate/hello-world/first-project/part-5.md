@@ -12,7 +12,7 @@ date: "2025-01-30"
 
 **Skills:** Configuration reuse with fragments, fleet basics.
 
-**Time:** ~15 minutes
+**Time:** ~10 min
 
 ## 5.1 Create a Fragment
 

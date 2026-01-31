@@ -12,6 +12,8 @@ date: "2025-01-30"
 
 **Skills:** Connecting a machine to Viam, component configuration, adding services.
 
+**Time:** ~15 min
+
 ## Prerequisites
 
 Before starting this tutorial, you need the can inspection simulation running. Follow the **[Gazebo Simulation Setup Guide](../gazebo-setup/)** to:
