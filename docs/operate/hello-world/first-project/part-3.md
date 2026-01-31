@@ -99,7 +99,7 @@ Viam has built-in APIs for common resource types (camera, motor, arm, etc.). Whe
 
 The generator creates this structure:
 
-```
+```text
 inspection-module/
 ├── cmd/
 │   ├── cli/
@@ -419,7 +419,7 @@ go run ./cmd/cli -host your-machine-main.abc123.viam.cloud
 
 You should see:
 
-```
+```text
 Connecting to your-machine-main.abc123.viam.cloud...
 Detection: PASS (94.2% confidence)
 ```
