@@ -146,4 +146,4 @@ This foundation records everything your vision pipeline sees. In Part 3, you'll 
 
 **Checkpoint:** Your system records every detection automatically. Data syncs to the cloud where you can query it and build dashboards.
 
-**[Continue to Part 3: Build the Inspector →](../part-3/)**
+**[Continue to Part 3: Control Logic →](../part-3/)**

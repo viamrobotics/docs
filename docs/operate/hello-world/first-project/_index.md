@@ -35,14 +35,14 @@ You're building a **quality inspection station** for a canning line. Cans move p
 
 In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
 
-| Part                                   | Time    | What You'll Do                                         |
-| -------------------------------------- | ------- | ------------------------------------------------------ |
-| [Part 1: Vision Pipeline](part-1/)     | ~15 min | Set up camera, ML model, and vision service            |
-| [Part 2: Data Capture](part-2/)        | ~15 min | Configure automatic data sync and alerts               |
-| [Part 3: Build the Inspector](part-3/) | ~15 min | Generate module, write inspection logic, test from CLI |
-| [Part 4: Deploy as a Module](part-4/)  | ~10 min | Add DoCommand, package and deploy                      |
-| [Part 5: Scale](part-5/)               | ~10 min | Create fragment, add second machine                    |
-| [Part 6: Productize](part-6/)          | ~10 min | Build dashboard, white-label auth                      |
+| Part                                  | Time    | What You'll Do                                         |
+| ------------------------------------- | ------- | ------------------------------------------------------ |
+| [Part 1: Vision Pipeline](part-1/)    | ~15 min | Set up camera, ML model, and vision service            |
+| [Part 2: Data Capture](part-2/)       | ~15 min | Configure automatic data sync and alerts               |
+| [Part 3: Control Logic](part-3/)      | ~15 min | Generate module, write inspection logic, test from CLI |
+| [Part 4: Deploy as a Module](part-4/) | ~10 min | Add DoCommand, package and deploy                      |
+| [Part 5: Scale](part-5/)              | ~10 min | Create fragment, add second machine                    |
+| [Part 6: Productize](part-6/)         | ~10 min | Build dashboard, white-label auth                      |
 
 {{< expand "Full Section Outline" >}}
 
@@ -62,7 +62,7 @@ In this tutorial you will work through a series of tasks that are common to many
 - [2.3 View and Query Data](part-2/#23-view-and-query-data)
 - [2.4 Summary](part-2/#24-summary)
 
-**[Part 3: Build the Inspector](part-3/)** (~15 min)
+**[Part 3: Control Logic](part-3/)** (~15 min)
 
 - [3.1 Generate the Module Scaffold](part-3/#31-generate-the-module-scaffold)
 - [3.2 Add Remote Machine Connection](part-3/#32-add-remote-machine-connection)

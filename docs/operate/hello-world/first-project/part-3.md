@@ -1,6 +1,6 @@
 ---
-linkTitle: "Part 3: Build the Inspector"
-title: "Part 3: Build the Inspector"
+linkTitle: "Part 3: Control Logic"
+title: "Part 3: Control Logic"
 weight: 30
 layout: "docs"
 type: "docs"
