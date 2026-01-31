@@ -8,7 +8,7 @@ description: "Set up a camera, ML model, and vision service to detect defects."
 date: "2025-01-30"
 ---
 
-**Goal:** Get a working detection pipeline on one simulated camera.
+**Goal:** Get a working detection pipeline on one camera.
 
 **Skills:** Connecting a machine to Viam, component configuration, adding services.
 
@@ -25,7 +25,7 @@ Before starting this tutorial, you need the can inspection simulation running. F
 Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Online** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
-The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs inside the container and connects to Viam's cloud, just like it would on a Raspberry Pi or any physical device. Everything you configure in the Viam app applies to the simulated hardware.
+The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux vm inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
 {{< /alert >}}
 
 {{< alert title="Tip" color="tip" >}}
@@ -65,8 +65,8 @@ This is the key moment: the Linux machine running in your Docker container is no
 
 {{< expand "Troubleshooting" >}}
 
-- **Still showing Offline?** Check the Docker container is running: `docker logs gz-viam`
-- **Container not running?** Restart it: `docker start gz-viam`
+- **Still showing Offline?** Check the Docker container is running: `docker logs gz-station1`
+- **Container not running?** Restart it: `docker start gz-station1`
 - **Need to recreate?** Follow the [setup guide](../gazebo-setup/) again.
   {{< /expand >}}
 
@@ -130,14 +130,6 @@ You should see a live video feed from the simulated camera—an overhead view of
 
 [SCREENSHOT: Camera test panel showing live feed in Configure tab]
 
-### Capture an image
-
-Click **Get image** to capture a single frame. The image appears in the panel and can be downloaded.
-
-{{< alert title="What you're seeing" color="info" >}}
-This isn't a special debugging view. The test panel uses the exact same APIs that your code will use. When you click "Get image," Viam calls the camera's `GetImage` method—the same method you'll call from Python or Go in a few minutes.
-{{< /alert >}}
-
 This pattern applies to all components. Motors have test controls for setting velocity. Arms have controls for moving joints. You can test any component directly from its configuration panel.
 
 **Checkpoint:** Your camera is working. You can stream video and capture images from the simulated inspection station.
@@ -150,6 +142,7 @@ Now you'll add machine learning to your camera. You'll configure two services:
 2. **Vision service** — Connects the camera to the model and returns detections
 
 {{< expand "Components versus services" >}}
+
 - **Components** are hardware: cameras, motors, arms
 - **Services** are capabilities: vision (ML inference), navigation (path planning), motion (arm kinematics)
 

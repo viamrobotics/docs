@@ -139,14 +139,14 @@ If something is using these ports, stop it or use different port mappings.
 2. Check logs for errors: `docker logs gz-station1`
 3. Verify credentials in your config file match the Viam app
 4. Try restarting: `docker restart gz-station1`
-{{< /expand >}}
+   {{< /expand >}}
 
 {{< expand "Simulation viewer is blank or slow" >}}
 
 - The web viewer requires WebGL support
 - Try a different browser (Chrome usually works best)
 - Check your system has adequate resources (4GB+ RAM recommended)
-{{< /expand >}}
+  {{< /expand >}}
 
 ## Container Management
 
