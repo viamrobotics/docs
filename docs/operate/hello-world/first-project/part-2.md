@@ -92,10 +92,10 @@ Viam automatically syncs captured data to the cloud and removes it from the mach
 
 **Verify the data includes:**
 
-- **Detection results** — Each row shows label (PASS/FAIL) and confidence score
-- **Camera images** — Click any row to see the image that was analyzed
-- **Timestamps** — When each capture occurred
-- **Machine ID** — Which machine captured it (matters when you have multiple stations)
+- **Detection results**—Each row shows label (PASS/FAIL) and confidence score
+- **Camera images**—Click any row to see the image that was analyzed
+- **Timestamps**—When each capture occurred
+- **Machine ID**—Which machine captured it (matters when you have multiple stations)
 
 **Filter the data:**
 
@@ -128,10 +128,10 @@ This is powerful for incident investigation: "Show me all FAIL detections from t
 
 This data serves multiple purposes:
 
-- **Compliance** — Auditable record of every inspection
-- **Quality trends** — "FAIL rate increased 20% this week"
-- **Model improvement** — Export images of cans to retrain your ML model
-- **Incident review** — "Show me all FAILs from Tuesday's shift"
+- **Compliance**—Auditable record of every inspection
+- **Quality trends**—"FAIL rate increased 20% this week"
+- **Model improvement**—Export images of cans to retrain your ML model
+- **Incident review**—"Show me all FAILs from Tuesday's shift"
 
 ## 2.4 Summary
 
@@ -144,6 +144,8 @@ Data capture is now running in the background:
 
 This foundation records everything your vision pipeline sees. In Part 3, you'll write custom control logic to act on detections.
 
-**Checkpoint:** Your system records every detection automatically. Data syncs to the cloud where you can query it and build dashboards.
+{{< alert title="Checkpoint" color="success" >}}
+Your system records every detection automatically. Data syncs to the cloud where you can query it and build dashboards.
+{{< /alert >}}
 
 **[Continue to Part 3: Control Logic →](../part-3/)**
