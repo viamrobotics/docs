@@ -139,7 +139,7 @@ docker run --name gz-station2 -d `
 
 Wait about 20 seconds for the simulation to initialize, then open the web viewer:
 
-**http://localhost:8081**
+`http://localhost:8081`
 
 You should see the Station 2 simulation with its distinct color scheme: yellow rails, orange reject bin, and blue output chute.
 
