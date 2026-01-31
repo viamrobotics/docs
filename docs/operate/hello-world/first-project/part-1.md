@@ -10,7 +10,7 @@ date: "2025-01-30"
 
 **Goal:** Get a working detection pipeline on one camera.
 
-**Skills:** Connecting a machine to Viam, component configuration, adding services.
+**Skills:** Connect a machine to Viam, configure components in the Viam UI, configure services in the Viam UI.
 
 **Time:** ~15 min
 
@@ -25,7 +25,7 @@ Before starting this tutorial, you need the can inspection simulation running. F
 Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Online** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
-The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux vm inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
+The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
 {{< /alert >}}
 
 ## 1.1 Verify Your Machine is Online
@@ -37,13 +37,13 @@ If you followed the [setup guide](../gazebo-setup/), your machine should already
 3. Verify the status indicator shows **Live**
 4. Click the **Configure** tab if not already selected
 
-[SCREENSHOT: Machine page showing Online status]
+[SCREENSHOT: Machine page showing Live status]
 
-Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've have already installed `viam-server` and launched it in the simulation Docker container.
+Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've already installed `viam-server` and launched it in the simulation Docker container.
 
 ## 1.2 Locate Your Machine Part
 
-Your machine is online but empty. To configure your machine you will add components and services to your machine part in the Viam user interface. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
+Your machine is online but empty. To configure your machine, you will add components and services to your machine part in the Viam user interface. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
 
 In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container.
 
@@ -61,7 +61,7 @@ In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensor
 
 ### Add a camera component
 
-To add components to a machine
+To add the camera component to your machine part:
 
 1. Click the **+** button and select **Component or service**
 2. Click **Camera**
@@ -70,12 +70,16 @@ To add components to a machine
 5. Click **Add module**
 6. Enter `inspection-cam` for the name
 
-After adding the camera component, you will see two items appear in
+{{< expand "Why were two items added to my machine part?" >}}
+After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use via the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported via modules available in the Viam registry will appear this way in the **Configuration** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
+{{< /expand >}}
+
+
 [SCREENSHOT: Add component dialog with camera settings]
 
 ### Configure the camera
 
-After creating the component, you'll see a configuration panel.
+To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
 
 1. In the **Attributes** section, add:
 
@@ -89,41 +93,39 @@ After creating the component, you'll see a configuration panel.
 
 [SCREENSHOT: Camera configuration panel with id attribute]
 
-When you save, viam-server automatically reloads and applies the new configuration. You don't need to restart anything—the system picks up changes within seconds.
-
-{{< alert title="What just happened" color="info" >}}
-You declared "this machine has a camera called `inspection-cam`" by editing configuration in a web UI. Behind the scenes, viam-server loaded the camera module and made the camera available through Viam's standard camera API. The code you write in this tutorial will work identically with a $20 USB webcam or a $2,000 industrial camera—just change the model in your configuration.
+{{< alert title="What happened behind the scenes" color="info" >}}
+You declared "this machine has a camera called `inspection-cam`" by editing the configuration in the Viam user interface. When you clicked **Save**, `viam-server` loaded the camera module, added a camera component, and made the camera available through Viam's standard camera API. Software you write, other services, and user interface components will use the API to get the images they need. Using the API as an abstraction means that everything still works if you swap cameras.
 {{< /alert >}}
 
 ## 1.4 Test the Camera
 
-Let's verify the camera is working. Every component in Viam has a built-in test panel right in the configuration view.
+Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view. 
 
 ### Open the test panel
 
 1. You should still be on the **Configure** tab with your `inspection-cam` selected
 2. Look for the **Test** section at the bottom of the camera's configuration panel
-3. Click **Toggle stream** to start the live feed
+3. Click **Test** to expand the camera's test card
 
-You should see a live video feed from the simulated camera—an overhead view of the conveyor/staging area.
+The camera component test card uses the camera API to add an image feed to the Viam user interface, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area. 
 
 [SCREENSHOT: Camera test panel showing live feed in Configure tab]
 
-This pattern applies to all components. Motors have test controls for setting velocity. Arms have controls for moving joints. You can test any component directly from its configuration panel.
-
-**Checkpoint:** Your camera is working. You can stream video and capture images from the simulated inspection station.
+{{< alert title="Checkpoint" color="success" >}}
+Your camera is working. You can stream video and capture images from the simulated inspection station.
+{{< /alert >}}
 
 ## 1.5 Add an ML Model Service
 
-Now you'll add machine learning to your camera. You'll configure two services:
+Now you'll add machine learning to run inference on your camera feed. You'll configure two services:
 
-1. **ML model service** — Loads the trained model
+1. **ML model service** — Loads a trained model for the inference task
 2. **Vision service** — Connects the camera to the model and returns detections
 
 {{< expand "Components versus services" >}}
 
 - **Components** are hardware: cameras, motors, arms
-- **Services** are capabilities: vision (ML inference), navigation (path planning), motion (arm kinematics)
+- **Services** are capabilities: vision (ML inference), motion (arm kinematics), custom control logic
 
 Services often _use_ components. A **vision service** takes images from a camera, runs them through an ML model, and returns structured results—detections with bounding boxes and labels, or classifications with confidence scores.
 
@@ -132,22 +134,26 @@ The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) an
 
 ### Create the ML model service
 
-1. In the Viam app, click the **Configure** tab
-2. Click **+** next to your machine in the left sidebar
-3. Select **Service**, then **ML model**
-4. Search for `TFLite CPU` and select it
-5. Name it `can-classifier`
-6. Click **Create**
+1. Click the **Configure** tab
+2. Click **+** next to your machine part
+3. Select **Component or service**
+4. Select **ML model**
+5. Select `TFLite CPU`
+6. Click **Add module**
+7. Name it `can-model`
+8. Click **Create**
 
 [SCREENSHOT: Add service dialog for ML model]
 
 ### Select a model from the registry
 
-1. In the `can-classifier` configuration panel, click **Select model**
+Configure the `can-model` ML model service you just included in your configuration.
+
+1. In the `can-model` configuration panel, click **Select model**
 2. Click the **Registry** tab
-3. Search for `can-defect-detection` (a model we created for this tutorial that detects cans and classifies them as PASS or FAIL based on dent detection)
-4. Select it from the list
-5. Click **Save config**
+3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on blemish detection)
+4. Click **Choose** to save the model selection
+5. Click **Save** in the upper right corner to save your configuration
 
 [SCREENSHOT: Select model dialog showing registry models]
 
@@ -161,31 +167,30 @@ Now add a vision service that connects your camera to the ML model service.
 
 ### Create the vision service
 
-1. Click **+** next to your machine
-2. Select **Service**, then **Vision**
-3. Search for `ML model` and select it
-4. Name it `can-detector`
-5. Click **Create**
+1. Click **+** next to your machine part
+2. Select **Component or service**
+3. Search for `vision`
+4. Select **vision / ML Model**
+5. Name it `can-classifier`
+6. Click **Create**
 
-### Link the vision service to the camera and model
+### Link the camera and model in the vision service
 
-1. In the `can-detector` configuration panel, find the **Default Camera** dropdown
-2. Select `inspection-cam`
-3. Find the **ML Model** dropdown
-4. Select `can-classifier` (the ML model service you just created)
-5. Click **Save config**
+1. Select the `can-classifier` service in your machine's configuration
+2. Find the **ML Model** dropdown and select `can-model` (the ML model service you just created)
+3. Find the **Default Camera** dropdown and select `inspection-cam`
+4. Find the **Attributes** section and set **Minimum confidence threshold** to 0.75
+5. Click **Save** in the upper right corner
 
 [SCREENSHOT: Vision service configuration linked to ML model]
 
 ### Test the vision service
 
-1. You should still be on the **Configure** tab
-2. Find the `can-detector` service you just created
-3. Look for the **Test** section at the bottom of its configuration panel
-4. If not already selected, select `inspection-cam` as the camera source
-5. Click **Get detections**
-
-You should see the camera image with detection results—bounding boxes around detected cans with labels (PASS or FAIL) and confidence scores.
+1. Find the **Test** section at the bottom of the `can-classifier` configuration panel
+2. Expand the **Test** card
+3. If not already selected, select `inspection-cam` as the camera source
+4. Set **Detections/Classifications** to `Live`
+5. Check that detection and labeling are working
 
 [SCREENSHOT: Vision service test panel showing detection results with bounding boxes]
 
@@ -193,6 +198,8 @@ You should see the camera image with detection results—bounding boxes around d
 A complete ML inference pipeline. The vision service grabs an image from the camera, runs it through the TensorFlow Lite model, and returns structured detection results. This same pattern works for any ML task—object detection, classification, segmentation—you just swap the model.
 {{< /alert >}}
 
-**Checkpoint:** You've configured a complete ML inference pipeline—camera, model, and vision service—entirely through the Viam app. The system can detect dented cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
+{{< alert title="Checkpoint" color="success" >}}
+You've configured a complete ML inference pipeline including a camera, model service, and vision service through the Viam user interface. The system can detect blemished cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
+{{< /alert >}}
 
 **[Continue to Part 2: Data Capture →](../part-2/)**
