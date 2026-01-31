@@ -90,7 +90,7 @@ Look for:
 
 **View the simulation:**
 
-Open your browser to <http://localhost:8081>
+Open your browser to `http://localhost:8081`
 
 You should see a web-based 3D view of the inspection station with:
 

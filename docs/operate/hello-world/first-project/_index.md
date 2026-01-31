@@ -81,9 +81,9 @@ In this tutorial you will work through a series of tasks that are common to many
 **[Part 5: Scale](part-5/)** (~10 min)
 
 - [5.1 Create a Fragment](part-5/#51-create-a-fragment)
-- [5.2 Parameterize Machine-Specific Values](part-5/#52-parameterize-machine-specific-values)
-- [5.3 Add a Second Machine](part-5/#53-add-a-second-machine)
-- [5.4 Fleet Management Capabilities](part-5/#54-fleet-management-capabilities)
+- [5.2 Parameterize the Camera ID](part-5/#52-parameterize-the-camera-id)
+- [5.5 Create the Second Machine](part-5/#55-create-the-second-machine)
+- [5.9 Fleet Management Capabilities](part-5/#59-fleet-management-capabilities)
 
 **[Part 6: Productize](part-6/)** (~15 min)
 
