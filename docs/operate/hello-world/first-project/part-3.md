@@ -94,7 +94,7 @@ When prompted, enter:
 - **Enable cloud build:** `no` (for simplicity during development)
 
 {{< alert title="Why generic-service?" color="info" >}}
-Viam has built-in APIs for common resource types (camera, motor, arm, etc.). When your logic doesn't fit those categories, `generic-service` provides a flexible interface via `DoCommand`—a method that accepts arbitrary commands as key-value maps. This is ideal for application-specific logic like inspection.
+Viam has built-in APIs for common resource types (camera, motor, arm, etc.). When your logic doesn't fit those categories, `generic-service` provides a flexible interface through `DoCommand`—a method that accepts arbitrary commands as key-value maps. This is ideal for application-specific logic like inspection.
 {{< /alert >}}
 
 The generator creates this structure:
@@ -336,7 +336,7 @@ The generator created two constructors: `newInspector` (called by viam-server) a
 ```go
 // NewInspector creates an inspector from dependencies.
 // This same constructor is used by both:
-// - The CLI (deps come from a remote machine via vmodutils)
+// - The CLI (deps come from a remote machine through vmodutils)
 // - The module (deps come from viam-server's dependency injection)
 func NewInspector(
     ctx context.Context,

@@ -20,8 +20,8 @@ In Part 3, you built inspection logic that runs from your laptop. That's great f
 
 The generator already created most of what you need:
 
-- `cmd/module/main.go` — module entry point
-- `meta.json` — registry metadata
+- `cmd/module/main.go`—module entry point
+- `meta.json`—registry metadata
 - Model registration in `init()`
 
 You just need to:
@@ -247,8 +247,8 @@ The inspector now runs on the machine autonomously.
 You deployed your inspection logic as a Viam module:
 
 1. **Added DoCommand**—exposed operations through the generic service interface
-2. **Reviewed** — the generator already created module structure and registration
-3. **Deployed** — built, packaged, uploaded, configured
+2. **Reviewed**—the generator already created module structure and registration
+3. **Deployed**—built, packaged, uploaded, configured
 
 **The development pattern:**
 
