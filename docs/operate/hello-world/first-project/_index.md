@@ -35,24 +35,25 @@ You're building a **quality inspection station** for a canning line. Cans move p
 
 In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
 
-| Part                                  | Time    | What You'll Do                                         |
-| ------------------------------------- | ------- | ------------------------------------------------------ |
-| [Part 1: Vision Pipeline](part-1/)    | ~15 min | Set up camera, ML model, and vision service            |
-| [Part 2: Data Capture](part-2/)       | ~15 min | Configure automatic data sync and alerts               |
-| [Part 3: Control Logic](part-3/)      | ~15 min | Generate module, write inspection logic, test from CLI |
+| Part                               | Time    | What You'll Do                                         |
+| ---------------------------------- | ------- | ------------------------------------------------------ |
+| [Part 1: Vision Pipeline](part-1/) | ~15 min | Set up camera, ML model, and vision service            |
+| [Part 2: Data Capture](part-2/)    | ~15 min | Configure automatic data sync and alerts               |
+| [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI |
 | [Part 4: Deploy a Module](part-4/) | ~10 min | Add DoCommand, package and deploy                      |
-| [Part 5: Scale](part-5/)              | ~10 min | Create fragment, add second machine                    |
-| [Part 6: Productize](part-6/)         | ~10 min | Build dashboard, white-label auth                      |
+| [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                    |
+| [Part 6: Productize](part-6/)      | ~10 min | Build dashboard, white-label auth                      |
 
 {{< expand "Full Section Outline" >}}
 
 **[Part 1: Vision Pipeline](part-1/)** (~15 min)
 
 - [1.1 Verify Your Machine is Online](part-1/#11-verify-your-machine-is-online)
-- [1.2 Configure the Camera](part-1/#12-configure-the-camera)
-- [1.3 Test the Camera](part-1/#13-test-the-camera)
-- [1.4 Add an ML Model Service](part-1/#14-add-an-ml-model-service)
-- [1.5 Add a Vision Service](part-1/#15-add-a-vision-service)
+- [1.2 Locate Your Machine Part](part-1/#12-locate-your-machine-part)
+- [1.3 Configure the Camera](part-1/#13-configure-the-camera)
+- [1.4 Test the Camera](part-1/#14-test-the-camera)
+- [1.5 Add an ML Model Service](part-1/#15-add-an-ml-model-service)
+- [1.6 Add a Vision Service](part-1/#16-add-a-vision-service)
 
 **[Part 2: Data Capture](part-2/)** (~15 min)
 

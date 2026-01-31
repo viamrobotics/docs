@@ -34,24 +34,22 @@ If you followed the [setup guide](../gazebo-setup/), your machine should already
 
 1. Open [app.viam.com](https://app.viam.com)
 2. Navigate to your machine (for example, `inspection-station-1`)
-3. Verify the status indicator shows **Live** 
+3. Verify the status indicator shows **Live**
+4. Click the **Configure** tab if not already selected
 
 [SCREENSHOT: Machine page showing Online status]
 
 Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've have already installed `viam-server` and launched it in the simulation Docker container.
 
-Every Viam-managed device runs **viam-server**, which handles the following:
+## 1.2 Locate Your Machine Part
 
-- **Manages hardware**—Loads drivers for cameras, motors, sensors, and other components
-- **Deploys updates**—Applies configuration updates and deploys new versions of software and ML models
-- **Manages data**—Buffers data locally and syncs to the cloud
-- **Enables remote access**—Exposes APIs so you can control and monitor your machine from anywhere
-- **Runs modules**—Executes built-in services and custom logic you deploy to the machine
+Your machine is online but empty. To configure your machine you will add components and services to your machine part in the Viam user interface. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
 
+In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container. It is identified as `inspection-station-1-main` in the **Configuration** tab.
 
-## 1.2 Configure the Camera
+## 1.3 Configure the Camera
 
-Your machine is online but empty—it doesn't know about any hardware yet. You'll now add the camera as a _component_.
+You'll now add the camera as a _component_.
 
 {{< expand "What's a component?" >}}
 In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensors, grippers. You configure components by declaring what they are, and Viam handles the drivers and communication.
@@ -59,20 +57,18 @@ In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensor
 **The power of Viam's component model:** All cameras expose the same API—USB webcams, Raspberry Pi camera modules, IP cameras, simulated cameras. Your application code uses the same `GetImages()` method regardless of the underlying hardware. Swap hardware by changing configuration, not code.
 {{< /expand >}}
 
-### Add the camera module
-
-1. Click the **+** button and select **Module**
-2. Search for `gz-camera` and select `viam:gz-camera`
-3. Click **Add module**
-
 ### Add a camera component
 
-1. Click the **+** button and select **Component**
-2. For **Type**, select `camera`
-3. For **Model**, select `viam:gz-camera:rgb-camera`
-4. Name it `inspection-cam`
-5. Click **Create**
+To add components to a machine
 
+1. Click the **+** button and select **Component or service**
+2. Click **Camera**
+3. Search for `gz-camera`
+4. Select `gz-camera:rgb-camera`
+5. Click **Add module**
+6. Enter `inspection-cam` for the name
+
+After adding the camera component, you will see two items appear in
 [SCREENSHOT: Add component dialog with camera settings]
 
 ### Configure the camera
@@ -95,7 +91,7 @@ When you save, viam-server automatically reloads and applies the new configurati
 You declared "this machine has a camera called `inspection-cam`" by editing configuration in a web UI. Behind the scenes, viam-server loaded the camera module and made the camera available through Viam's standard camera API. The code you write in this tutorial will work identically with a $20 USB webcam or a $2,000 industrial camera—just change the model in your configuration.
 {{< /alert >}}
 
-## 1.3 Test the Camera
+## 1.4 Test the Camera
 
 Let's verify the camera is working. Every component in Viam has a built-in test panel right in the configuration view.
 
@@ -113,7 +109,7 @@ This pattern applies to all components. Motors have test controls for setting ve
 
 **Checkpoint:** Your camera is working. You can stream video and capture images from the simulated inspection station.
 
-## 1.4 Add an ML Model Service
+## 1.5 Add an ML Model Service
 
 Now you'll add machine learning to your camera. You'll configure two services:
 
@@ -155,7 +151,7 @@ The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) an
 For a different application, you'd train a model on your specific data and upload it to the registry. The registry handles versioning and deployment of ML models across your fleet.
 {{< /alert >}}
 
-## 1.5 Add a Vision Service
+## 1.6 Add a Vision Service
 
 Now add a vision service that connects your camera to the ML model service.
 
