@@ -39,8 +39,8 @@ When your inspector runs as a module, clients need a way to invoke it. The **gen
 
 ```go
 import (
-	// ... existing imports ...
-	"github.com/mitchellh/mapstructure"
+    // ... existing imports ...
+    "github.com/mitchellh/mapstructure"
 )
 ```
 
@@ -51,42 +51,42 @@ Run `go get github.com/mitchellh/mapstructure` if needed.
 ```go
 // Command represents the commands the inspector accepts via DoCommand.
 type Command struct {
-	Detect  bool `mapstructure:"detect"`
-	Inspect bool `mapstructure:"inspect"`
+    Detect  bool `mapstructure:"detect"`
+    Inspect bool `mapstructure:"inspect"`
 }
 
 // DoCommand handles incoming commands from clients.
 func (i *Inspector) DoCommand(ctx context.Context, req map[string]interface{}) (map[string]interface{}, error) {
-	var cmd Command
-	if err := mapstructure.Decode(req, &cmd); err != nil {
-		return nil, fmt.Errorf("failed to decode command: %w", err)
-	}
+    var cmd Command
+    if err := mapstructure.Decode(req, &cmd); err != nil {
+        return nil, fmt.Errorf("failed to decode command: %w", err)
+    }
 
-	switch {
-	case cmd.Detect:
-		label, confidence, err := i.Detect(ctx)
-		if err != nil {
-			return nil, err
-		}
-		return map[string]interface{}{
-			"label":      label,
-			"confidence": confidence,
-		}, nil
+    switch {
+    case cmd.Detect:
+        label, confidence, err := i.Detect(ctx)
+        if err != nil {
+            return nil, err
+        }
+        return map[string]interface{}{
+            "label":      label,
+            "confidence": confidence,
+        }, nil
 
-	case cmd.Inspect:
-		label, confidence, rejected, err := i.Inspect(ctx)
-		if err != nil {
-			return nil, err
-		}
-		return map[string]interface{}{
-			"label":      label,
-			"confidence": confidence,
-			"rejected":   rejected,
-		}, nil
+    case cmd.Inspect:
+        label, confidence, rejected, err := i.Inspect(ctx)
+        if err != nil {
+            return nil, err
+        }
+        return map[string]interface{}{
+            "label":      label,
+            "confidence": confidence,
+            "rejected":   rejected,
+        }, nil
 
-	default:
-		return nil, fmt.Errorf("unknown command: %v", req)
-	}
+    default:
+        return nil, fmt.Errorf("unknown command: %v", req)
+    }
 }
 ```
 
@@ -97,23 +97,23 @@ Update your CLI to call through DoCommand (optional but useful for verification)
 ```go
 switch *cmd {
 case "detect":
-	result, err := insp.DoCommand(ctx, map[string]interface{}{"detect": true})
-	if err != nil {
-		return err
-	}
-	logger.Infof("Detection: %s (%.1f%%)",
-		result["label"], result["confidence"].(float64)*100)
+    result, err := insp.DoCommand(ctx, map[string]interface{}{"detect": true})
+    if err != nil {
+        return err
+    }
+    logger.Infof("Detection: %s (%.1f%%)",
+        result["label"], result["confidence"].(float64)*100)
 
 case "inspect":
-	result, err := insp.DoCommand(ctx, map[string]interface{}{"inspect": true})
-	if err != nil {
-		return err
-	}
-	logger.Infof("Inspection: %s (%.1f%%), rejected=%v",
-		result["label"], result["confidence"].(float64)*100, result["rejected"])
+    result, err := insp.DoCommand(ctx, map[string]interface{}{"inspect": true})
+    if err != nil {
+        return err
+    }
+    logger.Infof("Inspection: %s (%.1f%%), rejected=%v",
+        result["label"], result["confidence"].(float64)*100, result["rejected"])
 
 default:
-	return fmt.Errorf("unknown command: %s", *cmd)
+    return fmt.Errorf("unknown command: %s", *cmd)
 }
 ```
 
@@ -133,9 +133,9 @@ The generator already created everything needed to run as a module. Let's review
 
 ```go
 func main() {
-	module.ModularMain(
-		resource.APIModel{API: generic.API, Model: inspector.Model},
-	)
+    module.ModularMain(
+        resource.APIModel{API: generic.API, Model: inspector.Model},
+    )
 }
 ```
 
@@ -149,11 +149,11 @@ The generator created an `init()` function that registers your model:
 var Model = resource.NewModel("your-namespace", "inspection-module", "inspector")
 
 func init() {
-	resource.RegisterService(generic.API, Model,
-		resource.Registration[resource.Resource, *Config]{
-			Constructor: newInspector,
-		},
-	)
+    resource.RegisterService(generic.API, Model,
+        resource.Registration[resource.Resource, *Config]{
+            Constructor: newInspector,
+        },
+    )
 }
 ```
 
