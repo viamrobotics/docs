@@ -689,4 +689,4 @@ Your inspector code doesn't know whether it's running from the CLI on your lapto
 
 **Your code is ready.** In Part 4, you'll add the DoCommand interface (so clients can invoke your inspector remotely) and deploy it to run on the machine autonomously.
 
-**[Continue to Part 4: Deploy as a Module →](../part-4/)**
+**[Continue to Part 4: Deploy a Module →](../part-4/)**

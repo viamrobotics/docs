@@ -40,7 +40,7 @@ In this tutorial you will work through a series of tasks that are common to many
 | [Part 1: Vision Pipeline](part-1/)    | ~15 min | Set up camera, ML model, and vision service            |
 | [Part 2: Data Capture](part-2/)       | ~15 min | Configure automatic data sync and alerts               |
 | [Part 3: Control Logic](part-3/)      | ~15 min | Generate module, write inspection logic, test from CLI |
-| [Part 4: Deploy as a Module](part-4/) | ~10 min | Add DoCommand, package and deploy                      |
+| [Part 4: Deploy a Module](part-4/) | ~10 min | Add DoCommand, package and deploy                      |
 | [Part 5: Scale](part-5/)              | ~10 min | Create fragment, add second machine                    |
 | [Part 6: Productize](part-6/)         | ~10 min | Build dashboard, white-label auth                      |
 
@@ -48,12 +48,11 @@ In this tutorial you will work through a series of tasks that are common to many
 
 **[Part 1: Vision Pipeline](part-1/)** (~15 min)
 
-- [1.1 Understand viam-server](part-1/#11-understand-viam-server)
-- [1.2 Verify Your Machine is Online](part-1/#12-verify-your-machine-is-online)
-- [1.3 Configure the Camera](part-1/#13-configure-the-camera)
-- [1.4 Test the Camera](part-1/#14-test-the-camera)
-- [1.5 Add an ML Model Service](part-1/#15-add-an-ml-model-service)
-- [1.6 Add a Vision Service](part-1/#16-add-a-vision-service)
+- [1.1 Verify Your Machine is Online](part-1/#11-verify-your-machine-is-online)
+- [1.2 Configure the Camera](part-1/#12-configure-the-camera)
+- [1.3 Test the Camera](part-1/#13-test-the-camera)
+- [1.4 Add an ML Model Service](part-1/#14-add-an-ml-model-service)
+- [1.5 Add a Vision Service](part-1/#15-add-a-vision-service)
 
 **[Part 2: Data Capture](part-2/)** (~15 min)
 
@@ -71,7 +70,7 @@ In this tutorial you will work through a series of tasks that are common to many
 - [3.5 Add Rejection Logic](part-3/#35-add-rejection-logic)
 - [3.6 Summary](part-3/#36-summary)
 
-**[Part 4: Deploy as a Module](part-4/)** (~10 min)
+**[Part 4: Deploy a Module](part-4/)** (~10 min)
 
 - [4.1 Add the DoCommand Interface](part-4/#41-add-the-docommand-interface)
 - [4.2 Review the Generated Module Structure](part-4/#42-review-the-generated-module-structure)

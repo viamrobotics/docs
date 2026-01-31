@@ -1,6 +1,6 @@
 ---
-linkTitle: "Part 4: Deploy as a Module"
-title: "Part 4: Deploy as a Module"
+linkTitle: "Part 4: Deploy a Module"
+title: "Part 4: Deploy a Module"
 weight: 40
 layout: "docs"
 type: "docs"
