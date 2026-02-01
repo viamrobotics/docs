@@ -57,6 +57,14 @@ sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.co
 sudo chmod +x /usr/local/bin/viam
 ```
 
+**Windows (PowerShell):**
+
+```powershell
+Invoke-WebRequest -Uri "https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe" -OutFile "viam.exe"
+```
+
+Then run as `.\viam.exe` or add the directory to your PATH.
+
 Verify it's installed:
 
 ```bash
