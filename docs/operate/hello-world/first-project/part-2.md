@@ -25,8 +25,9 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 ## 2.1 Configure Data Capture
 
-**Include the data management service in your machine configuration:**
-1. 
+**Include the data service in your machine configuration:**
+
+1.
 
 **Enable data capture on the vision service:**
 
@@ -36,9 +37,9 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 4. Click **Create data management service**
 5. Click **Save** to include the service in your machine configuration (the default configuration settings for the data service are fine)
 6. Click the `vision-service` vision service again to view it configuration panel
-4. Find the **Data capture**Set the capture frequency: `2` seconds
-5. Select the method to capture: `GetDetectionsFromCamera`
-6. Click **Save**
+7. Find the **Data capture**Set the capture frequency: `2` seconds
+8. Select the method to capture: `GetDetectionsFromCamera`
+9. Click **Save**
 
 [SCREENSHOT: Vision service data capture configuration]
 
