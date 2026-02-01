@@ -4,13 +4,13 @@ title: "Part 4: Deploy a Module"
 weight: 40
 layout: "docs"
 type: "docs"
-description: "Add the DoCommand interface and deploy your inspector to run autonomously."
+description: "Deploy your inspector module and configure queryable detection data capture."
 date: "2025-01-30"
 ---
 
 **Goal:** Add the DoCommand interface and deploy your inspector to run on the machine autonomously.
 
-**Skills:** DoCommand pattern, module packaging, registry deployment.
+**Skills:** DoCommand pattern, module packaging, registry deployment, tabular data capture.
 
 **Time:** ~10 min
 
@@ -242,7 +242,67 @@ Click **Save**.
 
 The inspector now runs on the machine autonomously.
 
-## 4.4 Summary
+## 4.4 Configure Detection Data Capture
+
+In Part 2, you captured images from the vision service. Those images are great for visual review, but they're binary data—you can't query them with SQL. Now you'll configure **tabular data capture** on your inspector's DoCommand, which will let you query detection results.
+
+**Enable data capture on the inspector:**
+
+1. In the **Configure** tab, click on `inspector` to open its configuration panel
+2. Find the **Data capture** section and click **Add method**
+3. Select the method: `DoCommand`
+4. Set **Frequency (hz)** to `0.5` (captures every 2 seconds)
+5. In the **Additional parameters** section, add the DoCommand input:
+
+```json
+{
+  "inspect": true
+}
+```
+
+6. **Save** your configuration
+
+This configuration tells the data manager to periodically call `DoCommand({"inspect": true})` on your inspector and capture the response—which includes `label`, `confidence`, and `rejected`.
+
+**Query detection results:**
+
+After a few minutes of data collection, you can query the results:
+
+1. Open the **Data** tab in the Viam app
+2. Click **Query**
+3. Select **SQL** as your query language
+4. Run a query to find all failures:
+
+```sql
+SELECT time_received, data
+FROM readings
+WHERE component_name = 'inspector'
+  AND method_name = 'DoCommand'
+ORDER BY time_received DESC
+LIMIT 10
+```
+
+You can also filter by detection results:
+
+```sql
+SELECT time_received, data
+FROM readings
+WHERE component_name = 'inspector'
+  AND data LIKE '%FAIL%'
+ORDER BY time_received DESC
+LIMIT 10
+```
+
+{{< alert title="Two types of captured data" color="info" >}}
+You now have two complementary data streams:
+
+- **Vision service images** (Part 2): Visual records for review and model retraining
+- **Inspector tabular data** (this section): Queryable detection results for analytics
+
+The images show what the system saw; the tabular data tracks what it decided.
+{{< /alert >}}
+
+## 4.5 Summary
 
 You deployed your inspection logic as a Viam module:
 
