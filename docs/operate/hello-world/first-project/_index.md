@@ -63,7 +63,7 @@ In this tutorial you will work through a series of tasks that are common to many
 
 **[Part 3: Control Logic](part-3/)** (~15 min)
 
-- [3.1 Generate the Module Scaffold](part-3/#31-generate-the-module-scaffold)
+- [3.1 Generate the Module Scaffolding](part-3/#31-generate-the-module-scaffolding)
 - [3.2 Add Remote Machine Connection](part-3/#32-add-remote-machine-connection)
 - [3.3 Add Detection Logic](part-3/#33-add-detection-logic)
 - [3.4 Configure the Rejector](part-3/#34-configure-the-rejector)

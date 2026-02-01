@@ -101,7 +101,7 @@ The Viam CLI can generate module boilerplate—saving you from writing registrat
 
 **Set your organization's namespace:**
 
-Before creating a module, your organization needs a public namespace. This is a unique identifier used in module names (e.g., `my-namespace:inspection-module`).
+Before creating a module, your organization needs a public namespace. This is a unique identifier used in module names (for example, `my-namespace:inspection-module`).
 
 1. Click the organization dropdown in the upper right corner of the Viam app next to your initials
 2. Select **Settings**
@@ -132,7 +132,7 @@ Private modules are only visible to members of your organization. Public modules
 
 **Namespace/Organization:** Select your organization
 
-The namespace identifies who owns the module (e.g., `acme-corp:inspection-module`). If you belong to multiple organizations, choose the one where your machine is registered.
+The namespace identifies who owns the module (for example, `acme-corp:inspection-module`). If you belong to multiple organizations, choose the one where your machine is registered.
 
 **Resource type:** `Generic Service`
 
