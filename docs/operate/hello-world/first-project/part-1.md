@@ -118,8 +118,8 @@ Your camera is working. You can stream video and capture images from the simulat
 
 Now you'll add machine learning to run inference on your camera feed. You'll configure two services:
 
-1. **ML model service** — Loads a trained model for the inference task
-2. **Vision service** — Connects the camera to the model and returns detections
+1. **ML model service**—Loads a trained model for the inference task
+2. **Vision service**—Connects the camera to the model and returns detections
 
 {{< expand "Components versus services" >}}
 

@@ -266,23 +266,23 @@ With fragments in place, you have the foundation for managing fleets at any scal
 
 **Push updates across your fleet:**
 
-- **Configuration changes** — Edit the fragment, and all machines using it receive the update automatically within seconds
-- **ML model updates** — Change which model the vision service uses; all machines switch to the new version
-- **Module updates** — Deploy new versions of your inspection logic across the fleet
-- **Capture settings** — Adjust data capture frequency, enable/disable components fleet-wide
+- **Configuration changes**—Edit the fragment, and all machines using it receive the update automatically within seconds
+- **ML model updates**—Change which model the vision service uses; all machines switch to the new version
+- **Module updates**—Deploy new versions of your inspection logic across the fleet
+- **Capture settings**—Adjust data capture frequency, enable/disable components fleet-wide
 
 **Monitor and maintain remotely:**
 
-- **Fleet dashboard** — View all machines' status, last seen, and health from one screen
-- **Aggregated data** — Query inspection results across all stations ("How many FAILs across all machines this week?")
-- **Remote diagnostics** — View live camera feeds, check logs, and test components without physical access
-- **Alerts** — Get notified when any machine goes offline or exhibits anomalies
+- **Fleet dashboard**—View all machines' status, last seen, and health from one screen
+- **Aggregated data**—Query inspection results across all stations ("How many FAILs across all machines this week?")
+- **Remote diagnostics**—View live camera feeds, check logs, and test components without physical access
+- **Alerts**—Get notified when any machine goes offline or exhibits anomalies
 
 **Handle machine-specific variations:**
 
-- **Fragment variables** — Parameterize camera IDs, device paths, IP addresses—anything that differs between physical machines
-- **Per-machine overrides** — Add machine-specific configuration on top of fragments when needed
-- **Hardware flexibility** — Same inspection logic works whether a station uses USB cameras, CSI cameras, or IP cameras
+- **Fragment variables**—Parameterize camera IDs, device paths, IP addresses—anything that differs between physical machines
+- **Per-machine overrides**—Add machine-specific configuration on top of fragments when needed
+- **Hardware flexibility**—Same inspection logic works whether a station uses USB cameras, CSI cameras, or IP cameras
 
 This same pattern scales from 2 machines to 2,000. The fragment is your single source of truth; Viam handles the distribution.
 

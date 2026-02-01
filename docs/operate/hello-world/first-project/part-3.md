@@ -8,27 +8,28 @@ description: "Write inspection logic that detects dented cans and rejects them."
 date: "2025-01-30"
 ---
 
-**Goal:** Write inspection logic that detects dented cans and rejects them, testing from your laptop.
+**Goal:** Write inspection logic that detects blemished cans and rejects them.
 
-**Skills:** Viam module generator, SDK usage, module-first development.
+**Skills:** Generate module scaffolding using the Viam CLI, experience with Viam SDKs, develop code iteratively against remote hardware
 
 **Time:** ~15 min
 
 ## What You'll Build
 
-Your vision pipeline detects dented cans and records the results. Now you'll write code that **acts** on those detections—rejecting defective cans automatically.
-
-This completes the **sense-think-act** cycle that defines robotic systems:
+Your vision pipeline detects blemished cans and records the results with images synced to the cloud.
+Now you'll write code that **acts** on those detections by rejecting defective cans.
+This completes the **sense-think-act** cycle that defines robotics applications:
 
 1. **Sense**—Camera captures images
 2. **Think**—Vision service classifies cans as PASS/FAIL
 3. **Act**—Rejector pushes defective cans off the belt
 
-You'll use the **module-first development pattern**: write code on your laptop, test it against remote hardware over the network. This workflow lets you iterate quickly—edit code, run it, see results—without redeploying after every change.
+You'll use the **module-first development pattern**: write code on your laptop, test it against remote hardware over the network.
+This workflow lets you iterate quickly—edit code, run it, see results—without redeploying after every change.
 
 ## Prerequisites
 
-Before starting, verify you have the required tools installed.
+Before starting, verify your  have the required tools installed.
 
 **Check Go version:**
 

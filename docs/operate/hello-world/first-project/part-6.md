@@ -20,8 +20,8 @@ You've built a working system—but right now, only you can see it through the V
 
 Viam offers two approaches:
 
-1. **Built-in Teleop Dashboard** — No code, drag-and-drop widgets
-2. **Custom Web App** — Full control with TypeScript SDK
+1. **Built-in Teleop Dashboard**—No code, drag-and-drop widgets
+2. **Custom Web App**—Full control with TypeScript SDK
 
 ### Option A: Built-in Teleop Dashboard (No Code)
 
@@ -38,10 +38,10 @@ Viam's Teleop dashboard lets you create custom views without writing code.
 
 Click **+ Add widget** and configure:
 
-1. **Camera Stream** — Select `inspection-cam` from any station to show live video
-2. **Time Series Graph** — Plot detection confidence over time from `vision-service`
-3. **Table Widget** — Display recent detection results with labels and timestamps
-4. **Stat Widget** — Show current pass/fail counts
+1. **Camera Stream**—Select `inspection-cam` from any station to show live video
+2. **Time Series Graph**—Plot detection confidence over time from `vision-service`
+3. **Table Widget**—Display recent detection results with labels and timestamps
+4. **Stat Widget**—Show current pass/fail counts
 
 Drag widgets to arrange your layout. The dashboard updates in real-time.
 
@@ -283,11 +283,11 @@ Charge per machine, per inspection, per GB of data, or a flat subscription. Viam
 
 You've completed the entire tutorial. Here's what you built:
 
-1. **Vision Pipeline** — Camera, ML model, and vision service
-2. **Data Capture** — Automatic recording and cloud sync
-3. **Control Logic** — Custom inspector that detects and rejects defects
-4. **Module Deployment** — Packaged and deployed to run autonomously
-5. **Scale** — Fragment-based fleet management
-6. **Productize** — Customer dashboard and white-label auth
+1. **Vision Pipeline**—Camera, ML model, and vision service
+2. **Data Capture**—Automatic recording and cloud sync
+3. **Control Logic**—Custom inspector that detects and rejects defects
+4. **Module Deployment**—Packaged and deployed to run autonomously
+5. **Scale**—Fragment-based fleet management
+6. **Productize**—Customer dashboard and white-label auth
 
 **[← Back to Overview](../)** to review what you learned.
