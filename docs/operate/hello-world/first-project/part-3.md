@@ -29,9 +29,11 @@ This workflow lets you iterate quickly—edit code, run it, see results—withou
 
 ## Prerequisites
 
-This part of the tutorial requires the go programming language and the Viam CLI.
+This part of the tutorial requires the Go programming language and the Viam CLI.
 
-**Check Go version:**
+### Install Go
+
+Check your Go version:
 
 ```bash
 go version
@@ -39,25 +41,28 @@ go version
 
 You need Go 1.21 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
 
-**Install the Viam CLI:**
+### Install the Viam CLI
 
 The Viam CLI is used for authentication, module generation, and deployment.
 
-**macOS (Homebrew):**
+{{< tabs >}}
+{{% tab name="macOS" %}}
 
 ```bash
 brew tap viamrobotics/brews
 brew install viam
 ```
 
-**Linux (binary):**
+{{% /tab %}}
+{{% tab name="Linux" %}}
 
 ```bash
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
 sudo chmod +x /usr/local/bin/viam
 ```
 
-**Windows (PowerShell):**
+{{% /tab %}}
+{{% tab name="Windows" %}}
 
 ```powershell
 Invoke-WebRequest -Uri "https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe" -OutFile "viam.exe"
@@ -65,13 +70,18 @@ Invoke-WebRequest -Uri "https://storage.googleapis.com/packages.viam.com/apps/vi
 
 Then run as `.\viam.exe` or add the directory to your PATH.
 
-Verify it's installed:
+{{% /tab %}}
+{{< /tabs >}}
+
+### Verify and Log In
+
+Verify the CLI is installed:
 
 ```bash
 viam version
 ```
 
-**Log in to Viam:**
+Log in to Viam:
 
 ```bash
 viam login
