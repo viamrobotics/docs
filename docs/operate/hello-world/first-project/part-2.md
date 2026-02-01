@@ -34,7 +34,7 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 5. Click **Create**
 6. **Save** your updated machine configuration
 
-The default configuration options for the data service are fine so we can move on to capturing data from the vision service.
+The default configuration options for the data service are correct for our application so we can move on to capturing data from the vision service.
 
 **Enable data capture on the vision service:**
 
@@ -56,10 +56,13 @@ Your machine is now capturing detection results and images every 2 seconds and s
 
 ## 2.2 View and Query Data
 
-**Check the data:**
+So far in this tutorial, you've worked in the **Configure** tab for your machine.
+To view the data you are now capturing, you will need to look up at the top of the Viam user interface to find the main Viam menu which includes: **Fleet**, **Data**, and **Registry**.
+Right click or command/control click on **Data** to open the data user interface in a separate tab.
 
-1. In the Viam app, click **Data** in the left sidebar (at the organization level, not the machine)
-2. Wait 1-2 minutes for initial sync
+**View captured data:**
+
+1. Wait 1-2 minutes for initial sync
 3. You should see detection results and images appearing
 
 [SCREENSHOT: Data tab showing captured detections]
