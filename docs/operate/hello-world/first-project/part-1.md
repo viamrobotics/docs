@@ -150,7 +150,7 @@ Configure the `model-service` ML model service you just included in your configu
 
 1. In the `model-service` configuration panel, click **Select model**
 2. Click the **Registry** tab
-3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on blemish detection)
+3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on defect detection)
 4. Click **Choose** to save the model selection
 5. Click **Save** in the upper right corner to save your configuration
 
@@ -198,7 +198,7 @@ A complete ML inference pipeline. The vision service grabs an image from the cam
 {{< /alert >}}
 
 {{< alert title="Checkpoint" color="success" >}}
-You've configured a complete ML inference pipeline including a camera, model service, and vision service through the Viam user interface. The system can detect blemished cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
+You've configured a complete ML inference pipeline including a camera, model service, and vision service through the Viam user interface. The system can detect defective cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
 {{< /alert >}}
 
 **[Continue to Part 2: Data Capture →](../part-2/)**

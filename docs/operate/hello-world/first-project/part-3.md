@@ -8,7 +8,7 @@ description: "Write inspection logic that detects dented cans and rejects them."
 date: "2025-01-30"
 ---
 
-**Goal:** Write inspection logic that detects blemished cans and rejects them.
+**Goal:** Write inspection logic that detects defective cans and rejects them.
 
 **Skills:** Generate module scaffolding using the Viam CLI, experience with Viam SDKs, develop code iteratively against remote hardware
 
@@ -16,7 +16,7 @@ date: "2025-01-30"
 
 ## What You'll Build
 
-Your vision pipeline detects blemished cans and records the results with images synced to the cloud.
+Your vision pipeline detects defective cans and records the results with images synced to the cloud.
 Now you'll write code that **acts** on those detections by rejecting defective cans.
 This completes the **sense-think-act** cycle that defines robotics applications:
 
