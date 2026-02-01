@@ -28,7 +28,7 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 **Enable data capture on the vision service:**
 
 1. In the **Config** tab, click the `can-classifier` vision service
-2. In the `can-classifier` configuration panel, click the **Data capture** section to expand it
+2. Find the **Data capture** section
 3. Toggle **Enable data capture** to on
 4. Set the capture frequency: `2` seconds
 5. Select the method to capture: `GetDetectionsFromCamera`
