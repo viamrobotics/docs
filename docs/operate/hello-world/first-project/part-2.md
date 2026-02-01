@@ -8,27 +8,31 @@ description: "Configure automatic data sync and alerts for your inspection syste
 date: "2025-01-30"
 ---
 
-**Goal:** Enable continuous recording and monitoring so every detection is captured, queryable, and you're alerted to problems.
+**Goal:** Configure and use a machine to cloud data capture pipeline.
 
 **Skills:** Data capture configuration, triggers and alerts, querying captured data.
 
 **Time:** ~15 min
 
-Your vision pipeline is running. Before writing custom code, set up the data infrastructure—continuous capture, cloud sync, and alerting. This runs automatically in the background, recording every detection for compliance, analytics, and model improvement.
+For inspection applications such as this one, monitoring defect detection is important both to ensure production line health and product quality.
+You want to ensure the vision model is detecting a very high percentage of defects and quickly detect any problems either with defect detection or with the production line generally.
+In addition, it's important to collect production training data to iteratively improve defect detection.
 
-Viam's data capture is built-in. Toggle it on, and every detection result and image gets stored locally, synced to the cloud, and made queryable—automatically.
+In this part of the tutorial, you'll configure continuous data capture to support these goals.
+To do this, you'll use Viam's built-in data capture and cloud sync.
+Once enabled, data capture services run automatically in the background.
+Data gets buffered locally, synced to the cloud at an interval you configure, and is then made available for review and analysis through SQL or the MongoDB query language.
 
 ## 2.1 Configure Data Capture
 
 **Enable data capture on the vision service:**
 
-1. In the Viam app, go to your machine's **Config** tab
-2. Find the `can-classifier` vision service
-3. Click the **Data capture** section to expand it
-4. Toggle **Enable data capture** to on
-5. Set the capture frequency: `2` seconds
-6. Select the method to capture: `GetDetectionsFromCamera`
-7. Click **Save config**
+1. In the **Config** tab, click the `can-classifier` vision service
+2. In the `can-classifier` configuration panel, click the **Data capture** section to expand it
+3. Toggle **Enable data capture** to on
+4. Set the capture frequency: `2` seconds
+5. Select the method to capture: `GetDetectionsFromCamera`
+6. Click **Save**
 
 [SCREENSHOT: Vision service data capture configuration]
 

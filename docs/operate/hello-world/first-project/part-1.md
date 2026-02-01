@@ -8,7 +8,7 @@ description: "Set up a camera, ML model, and vision service to detect defects."
 date: "2025-01-30"
 ---
 
-**Goal:** Get a working detection pipeline on one camera.
+**Goal:** Get a computer vision pipeline working.
 
 **Skills:** Connect a machine to Viam, configure components in the Viam UI, configure services in the Viam UI.
 
