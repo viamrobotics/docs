@@ -43,7 +43,7 @@ The default configuration options for the data service are fine so we can move o
 3. Select the method to capture: `GetDetectionsFromCamera`
 4. Set **Frequency (hz)** to `0.5` (every 2 seconds)
 5. Set **Camera name** to `inspection-cam`
-4. **Save** your configuration
+6. **Save** your configuration
 
 [SCREENSHOT: Vision service data capture configuration]
 
@@ -53,7 +53,6 @@ The default configuration options for the data service are fine so we can move o
 2. Click on **Latest capture** and view the most recent image captured
 
 Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application.
-
 
 ## 2.2 View and Query Data
 
