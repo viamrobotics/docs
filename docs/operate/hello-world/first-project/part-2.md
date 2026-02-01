@@ -52,11 +52,9 @@ The default configuration options for the data service are fine so we can move o
 1. In he **Data capture** section of the `vision-service` configuration panel you should now see twist-down called **Latest capture** with a day and time specified
 2. Click on **Latest capture** and view the most recent image captured
 
-Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application.
+Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.
 
 ## 2.2 View and Query Data
-
-Viam automatically syncs captured data to the cloud and removes it from the machine to free up storage. No additional configuration required.
 
 **Check the data:**
 
@@ -109,7 +107,7 @@ This data serves multiple purposes:
 - **Model improvement**—Export images of cans to retrain your ML model
 - **Incident review**—"Show me all FAILs from Tuesday's shift"
 
-## 2.4 Summary
+## 2.3 Summary
 
 Data capture is now running in the background:
 

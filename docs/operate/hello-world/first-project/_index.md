@@ -58,9 +58,8 @@ In this tutorial you will work through a series of tasks that are common to many
 **[Part 2: Data Capture](part-2/)** (~15 min)
 
 - [2.1 Configure Data Capture](part-2/#21-configure-data-capture)
-- [2.2 Add Machine Health Alert](part-2/#22-add-machine-health-alert)
-- [2.3 View and Query Data](part-2/#23-view-and-query-data)
-- [2.4 Summary](part-2/#24-summary)
+- [2.2 View and Query Data](part-2/#22-view-and-query-data)
+- [2.3 Summary](part-2/#23-summary)
 
 **[Part 3: Control Logic](part-3/)** (~15 min)
 
