@@ -74,7 +74,6 @@ To add the camera component to your machine part:
 After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use via the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported via modules available in the Viam registry will appear this way in the **Configuration** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
 {{< /expand >}}
 
-
 [SCREENSHOT: Add component dialog with camera settings]
 
 ### Configure the camera
@@ -99,7 +98,7 @@ You declared "this machine has a camera called `inspection-cam`" by editing the 
 
 ## 1.4 Test the Camera
 
-Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view. 
+Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view.
 
 ### Open the test panel
 
@@ -107,7 +106,7 @@ Verify the camera is working. Every component in Viam has a built-in test card r
 2. Look for the **Test** section at the bottom of the camera's configuration panel
 3. Click **Test** to expand the camera's test card
 
-The camera component test card uses the camera API to add an image feed to the Viam user interface, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area. 
+The camera component test card uses the camera API to add an image feed to the Viam user interface, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 
 [SCREENSHOT: Camera test panel showing live feed in Configure tab]
 

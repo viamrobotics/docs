@@ -23,7 +23,7 @@ Viam's data capture is built-in. Toggle it on, and every detection result and im
 **Enable data capture on the vision service:**
 
 1. In the Viam app, go to your machine's **Config** tab
-2. Find the `can-detector` vision service
+2. Find the `can-classifier` vision service
 3. Click the **Data capture** section to expand it
 4. Toggle **Enable data capture** to on
 5. Set the capture frequency: `2` seconds
@@ -46,7 +46,7 @@ You want the raw images alongside detection results—so you can review what the
 
 **Verify it's working:**
 
-1. In the config, find `can-detector` and click **Test** at the bottom of its card
+1. In the config, find `can-classifier` and click **Test** at the bottom of its card
 2. You should see a capture indicator showing data is being recorded
 
 The machine is now capturing detection results and images every 2 seconds—whether or not you're connected.
@@ -116,7 +116,7 @@ For more complex queries, use the **Query** page:
 ```sql
 SELECT time_received, data
 FROM readings
-WHERE component_name = 'can-detector'
+WHERE component_name = 'can-classifier'
   AND data LIKE '%FAIL%'
 ORDER BY time_received DESC
 LIMIT 10
