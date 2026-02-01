@@ -27,7 +27,8 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 **Include the data service in your machine configuration:**
 
-1.
+1. Click **+** next to **inspection-station-1-main** in the **Configure** tab
+2. 
 
 **Enable data capture on the vision service:**
 

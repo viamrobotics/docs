@@ -31,7 +31,7 @@ You just need to:
 
 ## 4.1 Add the DoCommand Interface
 
-When your inspector runs as a module, clients need a way to invoke it. The **generic service** uses `DoCommand`—a flexible method that accepts commands as a map.
+When your inspector runs as a module, clients need a way to invoke it. The **generic service** uses `DoCommand`.
 
 **Why DoCommand?** It provides flexibility without defining a custom API. Any client can send `{"detect": true}` or `{"inspect": true}` without generated client code. This is ideal for application-specific logic.
 
@@ -129,7 +129,7 @@ Output should be identical to before—you've just formalized the interface.
 
 The generator already created everything needed to run as a module. Let's review what's there.
 
-**`cmd/module/main.go`**—The module entry point:
+**`cmd/module/main.go`**
 
 ```go
 func main() {
@@ -141,7 +141,7 @@ func main() {
 
 This registers your model with viam-server and handles all communication. You don't need to modify it.
 
-**`inspector.go`**—Model registration in `init()`:
+**`inspector.go`** provides model registration in `init()`:
 
 The generator created an `init()` function that registers your model:
 
@@ -159,7 +159,7 @@ func init() {
 
 This runs automatically when the module starts, telling viam-server how to create instances of your service.
 
-**`meta.json`**—Registry metadata:
+**`meta.json`** Registry metadata:
 
 ```json
 {
@@ -255,6 +255,6 @@ You deployed your inspection logic as a Viam module:
 - During development: CLI runs locally, uses remote hardware (fast iteration)
 - In production: Module runs on machine, same code (autonomous operation)
 
-**Your inspection system now runs 24/7**—detecting defects and rejecting bad cans without your laptop connected.
+**Your inspection system now runs 24/7** detecting defects and rejecting bad cans without your laptop connected.
 
 **[Continue to Part 5: Scale →](../part-5/)**
