@@ -28,69 +28,34 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 **Include the data service in your machine configuration:**
 
 1. Click **+** next to **inspection-station-1-main** in the **Configure** tab
-2. 
+2. Click **Component or service**
+3. Select **data management**
+4. Name it `data-service`
+5. Click **Create**
+6. **Save** your updated machine configuration
+
+The default configuration options for the data service are fine so we can move on to capturing data from the vision service.
 
 **Enable data capture on the vision service:**
 
-1. In the **Config** tab, click the `vision-service` vision service
+1. Click `vision-service` in your machine configuration
 2. Find the **Data capture** section and click **Add method**
-3. You'll see a warning that the data management service is missing
-4. Click **Create data management service**
-5. Click **Save** to include the service in your machine configuration (the default configuration settings for the data service are fine)
-6. Click the `vision-service` vision service again to view it configuration panel
-7. Find the **Data capture**Set the capture frequency: `2` seconds
-8. Select the method to capture: `GetDetectionsFromCamera`
-9. Click **Save**
+3. Select the method to capture: `GetDetectionsFromCamera`
+4. Set **Frequency (hz)** to `0.5` (every 2 seconds)
+5. Set **Camera name** to `inspection-cam`
+4. **Save** your configuration
 
 [SCREENSHOT: Vision service data capture configuration]
 
-**Also capture camera images:**
-
-You want the raw images alongside detection results—so you can review what the model saw and use images to improve your model later.
-
-1. Find the `inspection-cam` camera in your config
-2. Expand **Data capture**
-3. Toggle **Enable data capture** to on
-4. Set frequency: `2` seconds (matching the vision service)
-5. Click **Save config**
-
-[SCREENSHOT: Camera data capture configuration]
-
 **Verify it's working:**
 
-1. In the config, find `vision-service` and click **Test** at the bottom of its card
-2. You should see a capture indicator showing data is being recorded
+1. In he **Data capture** section of the `vision-service` configuration panel you should now see twist-down called **Latest capture** with a day and time specified
+2. Click on **Latest capture** and view the most recent image captured
 
-The machine is now capturing detection results and images every 2 seconds—whether or not you're connected.
+Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application.
 
-## 2.2 Add Machine Health Alert
 
-Get notified if your inspection station goes offline. This is a simple trigger—no code required.
-
-**Create the trigger:**
-
-1. In the Viam app, go to your machine's **Configure** tab
-2. Click **+** next to your machine in the left sidebar
-3. Select **Trigger**
-4. Name it `offline-alert`
-5. Click **Create**
-
-**Configure the trigger:**
-
-1. For **Type**, select `Part is offline`
-2. Toggle **Email all machine owners** to on (or add specific email addresses)
-3. Set **Minutes between notifications** to `5` (so you don't get spammed)
-4. Click **Save config**
-
-[SCREENSHOT: Offline trigger configuration]
-
-That's it. If your inspection station loses connection for any reason—network issues, power loss, viam-server crash—you'll get an email.
-
-{{< alert title="Other triggers" color="tip" >}}
-You can also create triggers for "Part is online" (useful for knowing when a machine comes back) or "Data synced" (fires when data reaches the cloud). For detection-based alerts, see [Part 6](../part-6/).
-{{< /alert >}}
-
-## 2.3 View and Query Data
+## 2.2 View and Query Data
 
 Viam automatically syncs captured data to the cloud and removes it from the machine to free up storage. No additional configuration required.
 
