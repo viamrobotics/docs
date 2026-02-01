@@ -32,7 +32,7 @@ The simulation runs Gazebo Harmonic inside a Docker container. It simulates a co
 
 If you followed the [setup guide](../gazebo-setup/), your machine should already be online.
 
-1. Open [app.viam.com](https://app.viam.com)
+1. Open [app.viam.com](https://app.viam.com) (the "Viam app")
 2. Navigate to your machine (for example, `inspection-station-1`)
 3. Verify the status indicator shows **Live**
 4. Click the **Configure** tab if not already selected
@@ -43,7 +43,7 @@ Ordinarily, after creating a machine in Viam, you would download and install `vi
 
 ## 1.2 Locate Your Machine Part
 
-Your machine is online but empty. To configure your machine, you will add components and services to your machine part in the Viam user interface. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
+Your machine is online but empty. To configure your machine, you will add components and services to your machine part in the Viam app. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
 
 In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container.
 
@@ -93,7 +93,7 @@ To configure your camera component to work with the camera in the simulation, yo
 [SCREENSHOT: Camera configuration panel with id attribute]
 
 {{< alert title="What happened behind the scenes" color="info" >}}
-You declared "this machine has a camera called `inspection-cam`" by editing the configuration in the Viam user interface. When you clicked **Save**, `viam-server` loaded the camera module, added a camera component, and made the camera available through Viam's standard camera API. Software you write, other services, and user interface components will use the API to get the images they need. Using the API as an abstraction means that everything still works if you swap cameras.
+You declared "this machine has a camera called `inspection-cam`" by editing the configuration in the Viam app. When you clicked **Save**, `viam-server` loaded the camera module, added a camera component, and made the camera available through Viam's standard camera API. Software you write, other services, and user interface components will use the API to get the images they need. Using the API as an abstraction means that everything still works if you swap cameras.
 {{< /alert >}}
 
 ## 1.4 Test the Camera
@@ -106,7 +106,7 @@ Verify the camera is working. Every component in Viam has a built-in test card r
 2. Look for the **Test** section at the bottom of the camera's configuration panel
 3. Click **Test** to expand the camera's test card
 
-The camera component test card uses the camera API to add an image feed to the Viam user interface, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
+The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 
 [SCREENSHOT: Camera test panel showing live feed in Configure tab]
 
@@ -198,7 +198,7 @@ A complete ML inference pipeline. The vision service grabs an image from the cam
 {{< /alert >}}
 
 {{< alert title="Checkpoint" color="success" >}}
-You've configured a complete ML inference pipeline including a camera, model service, and vision service through the Viam user interface. The system can detect defective cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
+You've configured a complete ML inference pipeline including a camera, model service, and vision service through the Viam app. The system can detect defective cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
 {{< /alert >}}
 
 **[Continue to Part 2: Data Capture →](../part-2/)**

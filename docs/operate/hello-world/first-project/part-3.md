@@ -93,32 +93,60 @@ This stores credentials that your code will use to connect to remote machines.
 The Viam CLI (`viam`) is different from `viam-server`. The CLI runs on your development machine; `viam-server` runs on your robot/machine.
 {{< /alert >}}
 
-## 3.1 Generate the Module Scaffold
+## 3.1 Generate the Module Scaffolding
 
 A **module** in Viam is a package of code that adds capabilities to a machine. Modules run alongside viam-server and can provide custom components (like a new type of sensor) or services (like our inspection logic). By packaging code as a module, you can deploy it to any machine, share it with others, and manage versions through the Viam registry.
 
 The Viam CLI can generate module boilerplate—saving you from writing registration code, build configuration, and project structure from scratch. This lets you focus on your business logic instead of infrastructure.
 
-**Create and generate the module:**
+**Set your organization's namespace:**
+
+Before creating a module, your organization needs a public namespace. This is a unique identifier used in module names (e.g., `my-namespace:inspection-module`).
+
+1. Click the organization dropdown in the upper right corner of the Viam app next to your initials
+2. Select **Settings**
+3. Find **Public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
+4. Click **Save**
+
+If your organization already has a namespace, you can skip this step.
+
+**Generate the module scaffolding:**
 
 ```bash
-mkdir inspection-module && cd inspection-module
 viam module generate
 ```
 
-When prompted, enter:
+The generator prompts you for several values. Here's what to enter and why:
 
-- **Language:** `go`
-- **Module name:** `inspection-module`
-- **Model name:** `inspector`
-- **Resource subtype:** `generic-service`
-- **Namespace:** Your organization namespace (find it in Viam app under **Organization → Settings**)
-- **Visibility:** `private`
-- **Enable cloud build:** `no` (for simplicity during development)
+**Module name:** `inspection-module`
 
-{{< alert title="Why generic-service?" color="info" >}}
-Viam has built-in APIs for common resource types (camera, motor, arm, etc.). When your logic doesn't fit those categories, `generic-service` provides a flexible interface through `DoCommand` which is a method that accepts arbitrary commands as key-value maps. This is ideal for application-specific logic like inspection.
-{{< /alert >}}
+This is the name that appears in the registry and how you'll reference the module in configurations. Use lowercase letters, numbers, and hyphens.
+
+**Language:** `Go`
+
+Viam supports Go and Python for module development. This tutorial uses Go. Both languages have full access to Viam's APIs—choose based on your preference.
+
+**Visibility:** `Private`
+
+Private modules are only visible to members of your organization. Public modules appear in the Viam registry for anyone to use. You can change visibility later if you decide to share your module.
+
+**Namespace/Organization:** Select your organization
+
+The namespace identifies who owns the module (e.g., `acme-corp:inspection-module`). If you belong to multiple organizations, choose the one where your machine is registered.
+
+**Resource type:** `Generic Service`
+
+Viam has built-in APIs for common hardware (camera, motor, arm). When your logic doesn't fit those categories, Generic Service provides a flexible `DoCommand` interface that accepts arbitrary key-value commands—ideal for application-specific logic like inspection. Your service can still _use_ cameras and other components internally.
+
+**Model name:** `inspector`
+
+The model name identifies this specific implementation within your module. A single module can contain multiple models. In your machine configuration, you'll reference this as `<namespace>:inspection-module:inspector`.
+
+**Register module:** `Yes`
+
+Registering creates an entry in Viam's registry for your organization. This does _not_ upload your source code—only metadata like the module name and version. Your source code stays on your machine until you explicitly upload a compiled binary. Registration enables cloud deployment: without it, you'd have to manually copy files to each machine. You can delete a registered module at any time.
+
+### Understanding the Generated Files
 
 The generator creates this structure:
 
@@ -129,29 +157,32 @@ inspection-module/
 │   │   └── main.go        # CLI for testing
 │   └── module/
 │       └── main.go        # Module entry point
-├── inspector.go           # Your service implementation
-├── meta.json              # Registry metadata
+├── go.mod
 ├── Makefile               # Build commands
-└── go.mod
+├── meta.json              # Registry metadata
+├── module.go              # Your service implementation
+├── README.md
+└── <your-namespace>_inspection-module_inspector.md
 ```
 
-### Understanding the Generated Files
-
-| File                 | Purpose                                                                                                |
-| -------------------- | ------------------------------------------------------------------------------------------------------ |
-| `cmd/module/main.go` | Entry point when running as a module. Registers your service with viam-server. You won't modify this.  |
-| `cmd/cli/main.go`    | Entry point for local testing. We'll modify this to connect to remote machines.                        |
-| `inspector.go`       | Your service implementation. Contains Config, constructor, and methods. This is where your logic goes. |
-| `meta.json`          | Tells the Viam registry what your module provides. Used during deployment.                             |
-| `Makefile`           | Build commands. `make` builds the module binary.                                                       |
+| File                                              | Purpose                                                                                                    |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `cmd/module/main.go`                              | Entry point when running as a module. Registers your service with viam-server. You won't modify this.      |
+| `cmd/cli/main.go`                                 | Entry point for local testing. We'll modify this to connect to remote machines.                            |
+| `go.mod`                                          | Go module definition. Declares the module name and Go version.                                             |
+| `Makefile`                                        | Build commands. Run `make module.tar.gz` to build and package the module.                                  |
+| `meta.json`                                       | Module metadata for the Viam registry. Defines module ID, visibility, entrypoint, and build configuration. |
+| `module.go`                                       | Your service implementation. Contains Config, constructor, and methods. This is where your logic goes.     |
+| `README.md`                                       | Template documentation for your module. Update with your module's description.                             |
+| `<your-namespace>_inspection-module_inspector.md` | Template documentation for the inspector model. Describes configuration and DoCommand usage.               |
 
 {{< alert title="Takeaway" color="tip" >}}
-The generator handles infrastructure (registration, lifecycle, build config). You focus on `inspector.go` (your logic) and `cmd/cli/main.go` (testing).
+The `viam module` command handles infrastructure (registration, lifecycle, build config). You focus on `module.go` (your logic) and `cmd/cli/main.go` (testing).
 {{< /alert >}}
 
 ## 3.2 Add Remote Machine Connection
 
-The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and pull its resources as dependencies. This enables the **module-first development pattern**: your code runs locally on your laptop, but it talks to real cameras and motors over the network.
+The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and pull its resources as dependencies. This enables the **module-first development pattern**: your code runs locally on your laptop, but it talks to real cameras and other harware your machine configuration includes.
 
 Why is this valuable? Traditional embedded development requires: edit code → build → deploy → test → repeat. With module-first development: edit code → run locally → see results on real hardware. The iteration cycle drops from minutes to seconds.
 
@@ -165,9 +196,11 @@ The `vmodutils` package provides helpers for connecting to remote machines using
 
 **Get your machine address:**
 
-1. In the Viam app, go to your machine's page
-2. Click **Code sample** in the top right
-3. Copy the machine address (looks like `your-machine-main.abc123.viam.cloud`)
+If you've navigated away from your machine, the easiest way to find it is to navigate to [app.viam.com](https://app.viam.com), click **Fleet** and selection **inspection-station-1** from the list of machines.
+
+1. In the Viam app, go to your machine's **Configure** page.
+2. Click the **Online** dropdown.
+3. Click **Remote address** to copy your machine address.
 
 [SCREENSHOT: Code sample tab showing machine address]
 
@@ -279,7 +312,7 @@ The CLI connects to a remote machine, extracts its resources as dependencies, an
 
 ## 3.3 Add Detection Logic
 
-Now we'll implement the actual inspection logic. The generator created `inspector.go` with stub methods—we'll fill them in to call the vision service and process results.
+Now we'll implement the actual inspection logic. The generator created `module.go` with stub methods—we'll fill them in to call the vision service and process results.
 
 {{< alert title="Concept: Dependency Injection in Viam" color="info" >}}
 Your inspector needs a vision service to detect cans. Rather than hardcoding how to find that service, you _declare_ the dependency in your Config, and Viam _injects_ it into your constructor. This means:
@@ -291,7 +324,7 @@ Your inspector needs a vision service to detect cans. Rather than hardcoding how
 
 **Update the Config struct:**
 
-Find the `Config` struct in `inspector.go` and update it:
+Find the `Config` struct in `module.go` and update it:
 
 ```go
 // Config declares which resources the inspector needs.
@@ -509,7 +542,7 @@ The `fake` model simulates motor behavior without physical hardware. Your code c
 
 Now we'll close the control loop: detect a defect → decide to reject → actuate the motor. This is the "act" part of sense-think-act.
 
-**Update the imports in `inspector.go`:**
+**Update the imports in `module.go`:**
 
 ```go
 import (
