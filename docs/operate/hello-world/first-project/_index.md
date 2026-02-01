@@ -58,7 +58,7 @@ In this tutorial you will work through a series of tasks that are common to many
 **[Part 2: Data Capture](part-2/)** (~15 min)
 
 - [2.1 Configure Data Capture](part-2/#21-configure-data-capture)
-- [2.2 View and Query Data](part-2/#22-view-and-query-data)
+- [2.2 View Captured Data](part-2/#22-view-captured-data)
 - [2.3 Summary](part-2/#23-summary)
 
 **[Part 3: Control Logic](part-3/)** (~15 min)

@@ -4,13 +4,13 @@ title: "Part 2: Data Capture"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Configure automatic data sync and alerts for your inspection system."
+description: "Configure automatic image capture and cloud sync for your inspection system."
 date: "2025-01-30"
 ---
 
 **Goal:** Configure and use a machine to cloud data capture pipeline.
 
-**Skills:** Data capture configuration, triggers and alerts, querying captured data.
+**Skills:** Data capture configuration, cloud sync, browsing captured data.
 
 **Time:** ~15 min
 
@@ -21,7 +21,7 @@ In addition, it's important to collect production training data to improve defec
 In this part of the tutorial, you'll configure continuous data capture to support these goals.
 To do this, you'll use Viam's built-in data capture and cloud sync.
 Once enabled, data capture services run automatically in the background.
-Data gets buffered locally, synced to the cloud at an interval you configure, and is then made available for review and analysis through SQL or the MongoDB query language.
+Data gets buffered locally, synced to the cloud at an interval you configure, and is then available for review in the Viam app.
 
 ## 2.1 Configure Data Capture
 
@@ -54,10 +54,10 @@ The default configuration options for the data service are correct for our appli
 
 Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.
 
-## 2.2 View and Query Data
+## 2.2 View Captured Data
 
 So far in this tutorial, you've focused on configuring your machine.
-To view the data you are now capturing, you will need to open the data user interface in Viam. 
+To view the data you are now capturing, you will need to open the data user interface in Viam.
 Find the main Viam menu that includes: **Fleet**, **Data**, and **Registry** at the top of the page.
 Right click on **Data** to open in a separate tab.
 
@@ -84,29 +84,7 @@ Right click on **Data** to open in a separate tab.
 
 [SCREENSHOT: Data tab with filters applied]
 
-**Query with SQL or MQL:**
-
-For more complex queries, use the **Query** page:
-
-1. In the Viam app, click **Data** then **Query**
-2. Select **SQL** or **MQL** as your query language
-3. Try a simple query to find all failures:
-
-```sql
-SELECT time_received, data
-FROM readings
-WHERE component_name = 'vision-service'
-  AND method_name = 'CaptureAllFromCamera'
-  AND data LIKE '%FAIL%'
-ORDER BY time_received DESC
-LIMIT 10
-```
-
-[SCREENSHOT: Query page with results]
-
-This is powerful for incident investigation: "Show me all FAIL detections from the last hour" or "How many cans failed on Tuesday's shift?"
-
-This data serves multiple purposes:
+This captured data serves multiple purposes:
 
 - **Compliance**—Auditable record of every inspection
 - **Quality trends**—"FAIL rate increased 20% this week"
@@ -117,14 +95,14 @@ This data serves multiple purposes:
 
 Data capture is now running in the background:
 
-- Captures every detection and camera image
+- Captures images with detection overlays
 - Syncs to cloud automatically
-- Queryable for analytics and compliance
+- Available for visual review and filtering
 
-This foundation records everything your vision pipeline sees. In Part 3, you'll write custom control logic to act on detections.
+This foundation records everything your vision pipeline sees. In Part 3, you'll write custom control logic to act on detections. Later, you'll configure tabular data capture to enable SQL queries on detection results.
 
 {{< alert title="Checkpoint" color="success" >}}
-Your system records every detection automatically. Data syncs to the cloud where you can query it and build dashboards.
+Your system captures every detection as an image. Data syncs to the cloud where you can browse, filter, and review results.
 {{< /alert >}}
 
 **[Continue to Part 3: Control Logic →](../part-3/)**
