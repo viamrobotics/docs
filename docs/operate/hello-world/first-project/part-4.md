@@ -227,7 +227,7 @@ Use `linux/arm64` for ARM machines (like Raspberry Pi).
 ```json
 {
   "camera": "inspection-cam",
-  "vision_service": "can-detector",
+  "vision_service": "vision-service",
   "rejector": "rejector"
 }
 ```

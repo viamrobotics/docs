@@ -199,7 +199,7 @@ func realMain() error {
     // These names must match what you configured in the Viam app.
     conf := &inspector.Config{
         Camera:        "inspection-cam",
-        VisionService: "can-detector",
+        VisionService: "vision-service",
     }
 
     if _, _, err := conf.Validate(""); err != nil {
@@ -439,7 +439,7 @@ Your laptop connected to the remote machine, your code called the vision service
 
 **"failed to get vision service" error:**
 
-- Verify `can-detector` exists in your machine config (Part 1)
+- Verify `vision-service` exists in your machine config (Part 1)
 - Check the exact name matches—it's case-sensitive
 
 **"NO_DETECTION" result:**
@@ -616,7 +616,7 @@ In `cmd/cli/main.go`, update the config:
 ```go
 conf := &inspector.Config{
     Camera:        "inspection-cam",
-    VisionService: "can-detector",
+    VisionService: "vision-service",
     Rejector:      "rejector",  // Add the new dependency
 }
 ```

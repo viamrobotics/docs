@@ -139,16 +139,16 @@ The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) an
 4. Select **ML model**
 5. Select `TFLite CPU`
 6. Click **Add module**
-7. Name it `can-model`
+7. Name it `model-service`
 8. Click **Create**
 
 [SCREENSHOT: Add service dialog for ML model]
 
 ### Select a model from the registry
 
-Configure the `can-model` ML model service you just included in your configuration.
+Configure the `model-service` ML model service you just included in your configuration.
 
-1. In the `can-model` configuration panel, click **Select model**
+1. In the `model-service` configuration panel, click **Select model**
 2. Click the **Registry** tab
 3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on blemish detection)
 4. Click **Choose** to save the model selection
@@ -170,13 +170,13 @@ Now add a vision service that connects your camera to the ML model service.
 2. Select **Component or service**
 3. Search for `vision`
 4. Select **vision / ML Model**
-5. Name it `can-classifier`
+5. Name it `vision-service`
 6. Click **Create**
 
 ### Link the camera and model in the vision service
 
-1. Select the `can-classifier` service in your machine's configuration
-2. Find the **ML Model** dropdown and select `can-model` (the ML model service you just created)
+1. Select the `vision-service` service in your machine's configuration
+2. Find the **ML Model** dropdown and select `model-service` (the ML model service you just created)
 3. Find the **Default Camera** dropdown and select `inspection-cam`
 4. Find the **Attributes** section and set **Minimum confidence threshold** to 0.75
 5. Click **Save** in the upper right corner
@@ -185,7 +185,7 @@ Now add a vision service that connects your camera to the ML model service.
 
 ### Test the vision service
 
-1. Find the **Test** section at the bottom of the `can-classifier` configuration panel
+1. Find the **Test** section at the bottom of the `vision-service` configuration panel
 2. Expand the **Test** card
 3. If not already selected, select `inspection-cam` as the camera source
 4. Set **Detections/Classifications** to `Live`

@@ -39,7 +39,7 @@ Viam's Teleop dashboard lets you create custom views without writing code.
 Click **+ Add widget** and configure:
 
 1. **Camera Stream** — Select `inspection-cam` from any station to show live video
-2. **Time Series Graph** — Plot detection confidence over time from `can-detector`
+2. **Time Series Graph** — Plot detection confidence over time from `vision-service`
 3. **Table Widget** — Display recent detection results with labels and timestamps
 4. **Stat Widget** — Show current pass/fail counts
 
@@ -92,7 +92,7 @@ async function updateDashboard() {
   const results = await dataClient.tabularDataBySQL(
     ORG_ID,
     `SELECT * FROM readings
-     WHERE component_name = 'can-detector'
+     WHERE component_name = 'vision-service'
      AND time_received > datetime('now', '-1 day')
      ORDER BY time_received DESC
      LIMIT 100`,

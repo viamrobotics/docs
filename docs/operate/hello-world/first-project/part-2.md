@@ -25,12 +25,18 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 ## 2.1 Configure Data Capture
 
+**Include the data management service in your machine configuration:**
+1. 
+
 **Enable data capture on the vision service:**
 
-1. In the **Config** tab, click the `can-classifier` vision service
-2. Find the **Data capture** section
-3. Toggle **Enable data capture** to on
-4. Set the capture frequency: `2` seconds
+1. In the **Config** tab, click the `vision-service` vision service
+2. Find the **Data capture** section and click **Add method**
+3. You'll see a warning that the data management service is missing
+4. Click **Create data management service**
+5. Click **Save** to include the service in your machine configuration (the default configuration settings for the data service are fine)
+6. Click the `vision-service` vision service again to view it configuration panel
+4. Find the **Data capture**Set the capture frequency: `2` seconds
 5. Select the method to capture: `GetDetectionsFromCamera`
 6. Click **Save**
 
@@ -50,7 +56,7 @@ You want the raw images alongside detection results—so you can review what the
 
 **Verify it's working:**
 
-1. In the config, find `can-classifier` and click **Test** at the bottom of its card
+1. In the config, find `vision-service` and click **Test** at the bottom of its card
 2. You should see a capture indicator showing data is being recorded
 
 The machine is now capturing detection results and images every 2 seconds—whether or not you're connected.
@@ -120,7 +126,7 @@ For more complex queries, use the **Query** page:
 ```sql
 SELECT time_received, data
 FROM readings
-WHERE component_name = 'can-classifier'
+WHERE component_name = 'vision-service'
   AND data LIKE '%FAIL%'
 ORDER BY time_received DESC
 LIMIT 10
