@@ -9,7 +9,7 @@ description: "Build a complete quality inspection system with Viam—from camera
 date: "2025-01-30"
 ---
 
-**Time:** ~75 minutes
+**Time:** ~70 minutes
 
 ## Before You Begin
 
@@ -38,7 +38,7 @@ In this tutorial you will work through a series of tasks that are common to many
 | Part                               | Time    | What You'll Do                                          |
 | ---------------------------------- | ------- | ------------------------------------------------------- |
 | [Part 1: Vision Pipeline](part-1/) | ~15 min | Set up camera, ML model, and vision service             |
-| [Part 2: Data Capture](part-2/)    | ~15 min | Configure automatic data sync and alerts                |
+| [Part 2: Data Capture](part-2/)    | ~10 min | Configure automatic image capture and cloud sync        |
 | [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI  |
 | [Part 4: Deploy a Module](part-4/) | ~10 min | Add DoCommand, deploy, configure detection data capture |
 | [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                     |
@@ -55,7 +55,7 @@ In this tutorial you will work through a series of tasks that are common to many
 - [1.5 Add an ML Model Service](part-1/#15-add-an-ml-model-service)
 - [1.6 Add a Vision Service](part-1/#16-add-a-vision-service)
 
-**[Part 2: Data Capture](part-2/)** (~15 min)
+**[Part 2: Data Capture](part-2/)** (~10 min)
 
 - [2.1 Configure Data Capture](part-2/#21-configure-data-capture)
 - [2.2 View Captured Data](part-2/#22-view-captured-data)
