@@ -182,42 +182,29 @@ The `viam module` command handles infrastructure (registration, lifecycle, build
 
 ## 3.2 Add Remote Machine Connection
 
-The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and pull its resources as dependencies. This enables the **module-first development pattern**: your code runs locally on your laptop, but it talks to real cameras and other harware your machine configuration includes.
+The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and access its resources. This enables the **module-first development pattern**: your code runs locally on your laptop, but it talks to real cameras and other hardware your machine configuration includes.
 
 Why is this valuable? Traditional embedded development requires: edit code → build → deploy → test → repeat. With module-first development: edit code → run locally → see results on real hardware. The iteration cycle drops from minutes to seconds.
 
-**Add the vmodutils dependency:**
-
-```bash
-go get github.com/erh/vmodutils
-```
-
-The `vmodutils` package provides helpers for connecting to remote machines using your Viam CLI credentials.
-
 **Get your machine address:**
 
-If you've navigated away from your machine, the easiest way to find it is to navigate to [app.viam.com](https://app.viam.com), click **Fleet** and selection **inspection-station-1** from the list of machines.
-
-1. In the Viam app, go to your machine's **Configure** page.
-2. Click the **Online** dropdown.
-3. Click **Remote address** to copy your machine address.
+1. In the Viam app, go to your machine's **Configure** page
+2. Click the **Online** dropdown
+3. Click **Remote address** to copy your machine address
 
 [SCREENSHOT: Code sample tab showing machine address]
 
-**Modify the generated CLI:**
+### Step 1: Connect to Your Machine
 
-Open `cmd/cli/main.go`. The generator created a stub with empty dependencies:
+The generated `realMain` function creates your inspector with empty dependencies—useful for testing in isolation, but it can't access your remote machine. We'll replace it with code that:
+
+- Accepts a `-host` flag for your machine's address
+- Uses your `viam login` credentials to authenticate
+- Establishes a secure connection to the remote machine
+
+Open `cmd/cli/main.go` and replace the import block with:
 
 ```go
-deps := resource.Dependencies{}
-// can load these from a remote machine if you need
-```
-
-Replace the entire file with:
-
-```go
-package main
-
 import (
     "context"
     "flag"
@@ -225,89 +212,118 @@ import (
 
     "github.com/erh/vmodutils"
     "go.viam.com/rdk/logging"
-    "go.viam.com/rdk/services/generic"
-
-    inspector "inspection-module"
 )
+```
 
-func main() {
-    if err := realMain(); err != nil {
-        panic(err)
-    }
-}
+Then replace the `realMain` function with:
 
+```go
 func realMain() error {
-    // Context carries cancellation signals and deadlines through the call chain.
-    // Most Viam APIs take a context as their first argument.
     ctx := context.Background()
     logger := logging.NewLogger("cli")
 
-    // Parse command-line flags for machine address and command selection
     host := flag.String("host", "", "Machine address (required)")
-    cmd := flag.String("cmd", "detect", "Command: detect or inspect")
     flag.Parse()
 
     if *host == "" {
-        return fmt.Errorf("need -host flag (get address from Viam app → Code sample)")
+        return fmt.Errorf("need -host flag (get address from Viam app)")
     }
 
-    // Configuration specifying which resources to use.
-    // These names must match what you configured in the Viam app.
-    conf := &inspector.Config{
-        Camera:        "inspection-cam",
-        VisionService: "vision-service",
-    }
-
-    if _, _, err := conf.Validate(""); err != nil {
-        return err
-    }
-
-    // Connect to the remote machine.
-    // This reads auth credentials from `viam login`, establishes a secure gRPC
-    // connection, and returns a client that can access any resource on the machine.
     logger.Infof("Connecting to %s...", *host)
     machine, err := vmodutils.ConnectToHostFromCLIToken(ctx, *host, logger)
     if err != nil {
         return fmt.Errorf("failed to connect: %w", err)
     }
-    defer machine.Close(ctx) // Always close connections when done
+    defer machine.Close(ctx)
 
-    // Convert the machine's resources into a Dependencies map.
-    // This is the same format Viam uses when running as a module—so our
-    // constructor works identically in both CLI and deployed contexts.
-    deps, err := vmodutils.MachineToDependencies(machine)
-    if err != nil {
-        return fmt.Errorf("failed to get dependencies: %w", err)
-    }
-
-    // Create our inspector using the same constructor the module will use.
-    // The inspector doesn't know (or care) whether deps came from a remote
-    // machine or from viam-server's dependency injection.
-    insp, err := inspector.NewInspector(ctx, deps, generic.Named("inspector"), conf, logger)
-    if err != nil {
-        return err
-    }
-    defer insp.Close(ctx)
-
-    // Run the requested command
-    switch *cmd {
-    case "detect":
-        label, confidence, err := insp.Detect(ctx)
-        if err != nil {
-            return err
-        }
-        logger.Infof("Detection: %s (%.1f%% confidence)", label, confidence*100)
-
-    default:
-        return fmt.Errorf("unknown command: %s (use 'detect')", *cmd)
-    }
-
+    logger.Info("Connected successfully!")
     return nil
 }
 ```
 
+**Test the connection:**
+
+```bash
+go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
+```
+
+You'll see WebRTC diagnostic output as the connection is established. Look for these messages confirming the connection:
+
+```text
+Connecting to your-machine.abc123.viam.cloud...
+...
+successfully (re)connected to remote at address
+...
+Connected successfully!
+```
+
+If you see an error, verify:
+
+- Your machine is online (check the Viam app)
+- You're logged in (`viam login`)
+- The address is correct
+
+### Step 2: Access Remote Resources
+
+Now let's verify we can access the camera on the remote machine.
+
+**Add the camera import:**
+
+At the top of `cmd/cli/main.go`, add this import:
+
+```go
+"go.viam.com/rdk/components/camera"
+```
+
+**Fetch the camera dependencies:**
+
+```bash
+go mod tidy
+```
+
+**Add camera access after the connection:**
+
+After the `logger.Info("Connected successfully!")` line, add:
+
+```go
+// Get the camera from the remote machine
+cam, err := camera.FromRobot(machine, "inspection-cam")
+if err != nil {
+    return fmt.Errorf("failed to get camera: %w", err)
+}
+
+// Capture an image
+images, _, err := cam.Images(ctx, nil, nil)
+if err != nil {
+    return fmt.Errorf("failed to get images: %w", err)
+}
+
+if len(images) == 0 {
+    return fmt.Errorf("no images returned from camera")
+}
+
+logger.Infof("Got image from camera: %s", images[0].SourceName)
+```
+
+If your editor doesn't auto-format, run `gofmt -w cmd/cli/main.go` to fix indentation.
+
+**Test resource access:**
+
+```bash
+go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
+```
+
+You'll see the same WebRTC diagnostic output, followed by the camera confirmation:
+
+```text
+Connected successfully!
+Got image from camera: inspection-cam
+```
+
+You've just accessed a camera on a remote machine from your local development environment. This same pattern works for any Viam resource—motors, sensors, vision services, or custom components.
+
 {{< alert title="Takeaway" color="tip" >}}
-The CLI connects to a remote machine, extracts its resources as dependencies, and passes them to your constructor. Your inspector code doesn't know whether it's running from the CLI or as a deployed module—it just uses the dependencies it's given. This abstraction is what makes module-first development possible.
+The `vmodutils.ConnectToHostFromCLIToken` function uses your `viam login` credentials to establish a secure connection. Once connected, you access resources the same way you would in deployed code. This abstraction is what makes module-first development possible.
 {{< /alert >}}
 
 ## 3.3 Add Detection Logic
