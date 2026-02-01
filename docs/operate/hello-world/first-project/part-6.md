@@ -279,7 +279,7 @@ Charge per machine, per inspection, per GB of data, or a flat subscription. Viam
 
 **Checkpoint:** You have a customer-ready product. You've gone from prototype to shippable product in one tutorial.
 
-## You Did It!
+## Congratulations
 
 You've completed the entire tutorial. Here's what you built:
 
