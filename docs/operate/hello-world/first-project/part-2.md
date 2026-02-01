@@ -15,8 +15,8 @@ date: "2025-01-30"
 **Time:** ~15 min
 
 For inspection applications such as this one, monitoring defect detection is important both to ensure production line health and product quality.
-You want to ensure the vision model is detecting a very high percentage of defects and quickly detect any problems either with defect detection or with the production line generally.
-In addition, it's important to collect production training data to iteratively improve defect detection.
+You want to ensure the vision model is detecting a very high percentage of defects and quickly detect any problems.
+In addition, it's important to collect production training data to improve defect detection models over time.
 
 In this part of the tutorial, you'll configure continuous data capture to support these goals.
 To do this, you'll use Viam's built-in data capture and cloud sync.
@@ -40,7 +40,7 @@ The default configuration options for the data service are correct for our appli
 
 1. Click `vision-service` in your machine configuration
 2. Find the **Data capture** section and click **Add method**
-3. Select the method to capture: `GetDetectionsFromCamera`
+3. Select the method to capture: `CaptureAllFromCamera`
 4. Set **Frequency (hz)** to `0.5` (every 2 seconds)
 5. Set **Camera name** to `inspection-cam`
 6. **Save** your configuration
@@ -49,21 +49,23 @@ The default configuration options for the data service are correct for our appli
 
 **Verify it's working:**
 
-1. In he **Data capture** section of the `vision-service` configuration panel you should now see twist-down called **Latest capture** with a day and time specified
+1. In the **Data capture** section of the `vision-service` configuration panel you should now see a collapsible component labeled **Latest capture** with a day and time specified
 2. Click on **Latest capture** and view the most recent image captured
 
 Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.
 
 ## 2.2 View and Query Data
 
-So far in this tutorial, you've worked in the **Configure** tab for your machine.
-To view the data you are now capturing, you will need to look up at the top of the Viam user interface to find the main Viam menu which includes: **Fleet**, **Data**, and **Registry**.
-Right click or command/control click on **Data** to open the data user interface in a separate tab.
+So far in this tutorial, you've focused on configuring your machine.
+To view the data you are now capturing, you will need to open the data user interface in Viam. 
+Find the main Viam menu that includes: **Fleet**, **Data**, and **Registry** at the top of the page.
+Right click on **Data** to open in a separate tab.
 
 **View captured data:**
 
-1. Wait 1-2 minutes for initial sync
-3. You should see detection results and images appearing
+1. Review the grid of images captured from your work cell
+2. Click on an image to see the detection results for that image
+3. Click on a few other images to see how detection results vary for cans labeled `PASS` versus `FAIL`
 
 [SCREENSHOT: Data tab showing captured detections]
 
@@ -94,6 +96,7 @@ For more complex queries, use the **Query** page:
 SELECT time_received, data
 FROM readings
 WHERE component_name = 'vision-service'
+  AND method_name = 'CaptureAllFromCamera'
   AND data LIKE '%FAIL%'
 ORDER BY time_received DESC
 LIMIT 10
@@ -117,7 +120,6 @@ Data capture is now running in the background:
 - Captures every detection and camera image
 - Syncs to cloud automatically
 - Queryable for analytics and compliance
-- Alerts you when the machine goes offline
 
 This foundation records everything your vision pipeline sees. In Part 3, you'll write custom control logic to act on detections.
 
