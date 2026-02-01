@@ -29,7 +29,7 @@ This workflow lets you iterate quickly—edit code, run it, see results—withou
 
 ## Prerequisites
 
-Before starting, verify your  have the required tools installed.
+This part of the tutorial requires the go programming language and the Viam CLI.
 
 **Check Go version:**
 
@@ -41,14 +41,18 @@ You need Go 1.21 or later. If Go isn't installed or is outdated, download it fro
 
 **Install the Viam CLI:**
 
-The Viam CLI is used for authentication, module generation, and deployment. Install it:
+The Viam CLI is used for authentication, module generation, and deployment.
+
+**macOS (Homebrew):**
 
 ```bash
-# macOS (Homebrew)
 brew tap viamrobotics/brews
 brew install viam
+```
 
-# Linux (binary)
+**Linux (binary):**
+
+```bash
 sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
 sudo chmod +x /usr/local/bin/viam
 ```
