@@ -491,7 +491,7 @@ func realMain() error {
 }
 ```
 
-The CLI creates the inspector with dependencies from the remote machine, then calls `DoCommand` with `{"detect": true}`. This is the same pattern used in production Viam modules—`DoCommand` is the public API for generic services.
+The CLI creates the inspector with dependencies from the remote machine, then calls `DoCommand` with `{"detect": true}`. This is the same pattern used in production Viam modules, where `DoCommand` is the public API for generic services.
 
 Update the imports:
 
