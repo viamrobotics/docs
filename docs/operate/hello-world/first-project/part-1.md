@@ -201,4 +201,8 @@ A complete ML inference pipeline. The vision service grabs an image from the cam
 You've configured a complete ML inference pipeline including a camera, model service, and vision service through the Viam app. The system can detect defective cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
 {{< /alert >}}
 
+{{< alert title="Explore the JSON configuration" color="tip" >}}
+Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the Configure tab to see the raw configuration. You'll see your camera, ML model service, and vision service defined with their attributes. As configurations grow more complex, the JSON view helps you understand how components and services connect.
+{{< /alert >}}
+
 **[Continue to Part 2: Data Capture →](../part-2/)**

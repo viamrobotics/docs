@@ -71,9 +71,10 @@ In this tutorial you will work through a series of tasks that are common to many
 **[Part 4: Deploy a Module](part-4/)** (~10 min)
 
 - [4.1 Review the Generated Module Structure](part-4/#41-review-the-generated-module-structure)
-- [4.2 Build and Deploy](part-4/#42-build-and-deploy)
-- [4.3 Configure Detection Data Capture](part-4/#43-configure-detection-data-capture)
-- [4.4 Summary](part-4/#44-summary)
+- [4.2 Build and Upload Your Module](part-4/#42-build-and-upload-your-module)
+- [4.3 Add the Module to Your Machine](part-4/#43-add-the-module-to-your-machine)
+- [4.4 Configure Detection Data Capture](part-4/#44-configure-detection-data-capture)
+- [4.5 Summary](part-4/#45-summary)
 
 **[Part 5: Scale](part-5/)** (~10 min)
 
