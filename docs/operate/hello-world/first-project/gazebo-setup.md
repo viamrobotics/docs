@@ -98,7 +98,7 @@ You should see a web-based 3D view of the inspection station with:
 - Cans moving along the belt
 - An overhead camera view
 
-{{<imgproc src="/tutorials/first-project/gazebo-simulation.png" resize="x1100" declaredimensions=true alt="Gazebo web viewer showing the Can Inspection Station with Overview Camera and Inspection Camera views.">}}
+{{<imgproc src="/tutorials/first-project/gazebo-simulation.png" resize="x1100" declaredimensions=true alt="Gazebo web viewer showing the Can Inspection Station with Overview Camera and Inspection Camera views." class="imgzoom shadow">}}
 
 **Verify machine connection:**
 

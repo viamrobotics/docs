@@ -242,7 +242,7 @@ Click **Save**.
 5. You should see a response with `label` and `confidence` values
 6. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam
 
-{{<imgproc src="/tutorials/first-project/docommand-test.png" resize="x1100" declaredimensions=true alt="DoCommand test panel showing detection result with label PASS and confidence score.">}}
+{{<imgproc src="/tutorials/first-project/docommand-test.png" resize="x1100" declaredimensions=true alt="DoCommand test panel showing detection result with label PASS and confidence score." class="imgzoom shadow">}}
 
 The module is now ready. You'll configure automatic detection in the next section.
 
@@ -298,7 +298,7 @@ After a few minutes of data collection, you can query the results:
 2. Click **Query**
 3. Select **SQL** as your query language
 
-   {{<imgproc src="/tutorials/first-project/data-query-sql.png" resize="x1100" declaredimensions=true alt="Data Query interface with SQL selected.">}}
+   {{<imgproc src="/tutorials/first-project/data-query-sql.png" resize="x1100" declaredimensions=true alt="Data Query interface with SQL selected." class="imgzoom shadow">}}
 
 4. Run a query to see recent detections:
 

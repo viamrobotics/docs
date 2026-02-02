@@ -69,7 +69,7 @@ Right click on **Data** to open in a separate tab.
 2. Click on an image to see the detection results for that image
 3. Click on a few other images to see how detection results vary for cans labeled `PASS` versus `FAIL`
 
-{{<imgproc src="/tutorials/first-project/data-tab-images.png" resize="x1100" declaredimensions=true alt="Data tab showing a grid of captured images from the inspection camera.">}}
+{{<imgproc src="/tutorials/first-project/data-tab-images.png" resize="x1100" declaredimensions=true alt="Data tab showing a grid of captured images from the inspection camera." class="imgzoom shadow">}}
 
 **Verify the data includes:**
 

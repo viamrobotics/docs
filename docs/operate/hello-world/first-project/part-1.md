@@ -37,7 +37,7 @@ If you followed the [setup guide](../gazebo-setup/), your machine should already
 3. Verify the status indicator shows **Live**
 4. Click the **Configure** tab if not already selected
 
-{{<imgproc src="/tutorials/first-project/machine-live-status.png" resize="x1100" declaredimensions=true alt="Machine page showing the green Live status indicator next to the machine name.">}}
+{{<imgproc src="/tutorials/first-project/machine-live-status.png" resize="x1100" declaredimensions=true alt="Machine page showing the green Live status indicator next to the machine name." class="imgzoom shadow">}}
 
 Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've already installed `viam-server` and launched it in the simulation Docker container.
 
@@ -179,7 +179,7 @@ Now add a vision service that connects your camera to the ML model service.
 4. Set **Detections/Classifications** to `Live`
 5. Check that detection and labeling are working
 
-{{<imgproc src="/tutorials/first-project/vision-service-test.png" resize="x1100" declaredimensions=true alt="Vision service test panel showing a can detected with a bounding box and FAIL label.">}}
+{{<imgproc src="/tutorials/first-project/vision-service-test.png" resize="x1100" declaredimensions=true alt="Vision service test panel showing a can detected with a bounding box and FAIL label." class="imgzoom shadow">}}
 
 {{< alert title="What you've built" color="info" >}}
 A complete ML inference pipeline. The vision service grabs an image from the camera, runs it through the TensorFlow Lite model, and returns structured detection results. This same pattern works for any ML task—object detection, classification, segmentation—you just swap the model.

@@ -32,7 +32,7 @@ A workspace is a custom dashboard view for your machines.
 4. In **Select location**, choose `Home` (or your location name)
 5. In **Select machine**, choose `inspection-station-1`
 
-{{<imgproc src="/tutorials/first-project/teleop-workspaces.png" resize="x1100" declaredimensions=true alt="Teleop workspaces page showing the Create workspace button.">}}
+{{<imgproc src="/tutorials/first-project/teleop-workspaces.png" resize="x1100" declaredimensions=true alt="Teleop workspaces page showing the Create workspace button." class="imgzoom shadow">}}
 
 You now have an empty workspace ready for widgets.
 
@@ -234,7 +234,7 @@ Your dashboard now provides a complete view of your inspection system:
 - **Defects per minute** tracking production quality
 - **Confidence trend** monitoring model performance
 
-[SCREENSHOT: Finished dashboard with camera stream and time series widgets]
+{{<imgproc src="/tutorials/first-project/finished-dashboard.png" resize="x1100" declaredimensions=true alt="Finished dashboard showing Defective cans per minute graph, Confidence graph, and live camera stream." class="imgzoom shadow">}}
 
 ## 5.6 Summary
 
