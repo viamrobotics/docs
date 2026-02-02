@@ -42,7 +42,7 @@ In this tutorial you will work through a series of tasks that are common to many
 | [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI |
 | [Part 4: Deploy a Module](part-4/) | ~10 min | Deploy module, configure detection data capture        |
 | [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                    |
-| [Part 6: Productize](part-6/)      | ~10 min | Build dashboard, white-label auth                      |
+| [Part 6: Productize](part-6/)      | ~15 min | Build monitoring dashboard with Teleop                 |
 
 {{< expand "Full Section Outline" >}}
 
@@ -85,9 +85,12 @@ In this tutorial you will work through a series of tasks that are common to many
 
 **[Part 6: Productize](part-6/)** (~15 min)
 
-- [6.1 Create a Dashboard](part-6/#61-create-a-dashboard)
-- [6.2 Set Up White-Label Auth](part-6/#62-set-up-white-label-auth)
-- [6.3 (Optional) Configure Billing](part-6/#63-optional-configure-billing)
+- [6.1 Create a Workspace](part-6/#61-create-a-workspace)
+- [6.2 Add a Camera Stream Widget](part-6/#62-add-a-camera-stream-widget)
+- [6.3 Add a Defects Per Minute Widget](part-6/#63-add-a-defects-per-minute-widget)
+- [6.4 Add a Confidence Trend Widget](part-6/#64-add-a-confidence-trend-widget)
+- [6.5 Arrange Your Dashboard](part-6/#65-arrange-your-dashboard)
+- [6.6 Summary](part-6/#66-summary)
 
 {{< /expand >}}
 

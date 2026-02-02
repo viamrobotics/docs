@@ -316,6 +316,63 @@ ORDER BY time_received DESC
 LIMIT 10
 ```
 
+**Understanding the data structure:**
+
+Each captured detection is stored as a JSON document. Here's what the data looks like:
+
+```json
+{
+  "component_name": "inspector-service",
+  "component_type": "rdk:service:generic",
+  "method_name": "DoCommand",
+  "time_received": "2026-02-02T02:23:27.326Z",
+  "data": {
+    "docommand_output": {
+      "label": "PASS",
+      "confidence": 0.9999136328697205
+    }
+  },
+  "additional_parameters": {
+    "docommand_input": {
+      "detect": true
+    }
+  },
+  "organization_id": "...",
+  "location_id": "...",
+  "robot_id": "...",
+  "part_id": "..."
+}
+```
+
+The key fields for analysis are nested under `data.docommand_output`:
+
+- `label`: The detection result—`PASS`, `FAIL`, or `NO_DETECTION`
+- `confidence`: How confident the model is (0.0 to 1.0)
+
+**Querying with MQL:**
+
+You can also query using MQL (MongoDB Query Language), which is useful for aggregations. Select **MQL** in the Query interface. For example, to count failures by hour:
+
+```javascript
+[
+  {
+    $match: {
+      component_name: "inspector-service",
+      "data.docommand_output.label": "FAIL",
+    },
+  },
+  {
+    $group: {
+      _id: { $dateTrunc: { date: "$time_received", unit: "hour" } },
+      count: { $sum: 1 },
+    },
+  },
+  { $sort: { _id: -1 } },
+];
+```
+
+You'll use MQL aggregation pipelines in Part 6 to build dashboard widgets.
+
 {{< alert title="Two types of captured data" color="info" >}}
 You now have two complementary data streams:
 
