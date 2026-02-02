@@ -136,6 +136,8 @@ The graph now shows the count of defective cans detected in each minute.
 - **$match** filters to only FAIL detections
 - **$group** buckets data into 60-second intervals and counts documents in each bucket
 - **$project** renames `_id` to `time` (required format for the graph)
+
+<!-- prettier-ignore -->
 {{< /alert >}}
 
 ## 5.4 Add a Confidence Trend Widget
