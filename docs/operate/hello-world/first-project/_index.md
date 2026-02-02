@@ -9,7 +9,7 @@ description: "Build a complete quality inspection system with Viam—from camera
 date: "2025-01-30"
 ---
 
-**Time:** ~70 minutes
+**Time:** ~65 minutes
 
 ## Before You Begin
 
@@ -27,9 +27,8 @@ You're building a **quality inspection station** for a canning line. Cans move p
 
 1. Detect when a can is present
 2. Classify it as PASS or FAIL (identifying dented cans)
-3. Log results and trigger alerts on failures
-4. Scale to multiple inspection stations
-5. Ship as a product your customers can use
+3. Log results for review and analysis
+4. Provide a monitoring dashboard for operators
 
 ### Tutorial Overview
 
@@ -42,7 +41,6 @@ In this tutorial you will work through a series of tasks that are common to many
 | [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI |
 | [Part 4: Deploy a Module](part-4/) | ~10 min | Deploy module, configure detection data capture        |
 | [Part 5: Productize](part-5/)      | ~15 min | Build monitoring dashboard with Teleop                 |
-| [Part 6: Scale](part-6/)           | ~10 min | Create fragment, add second machine                    |
 
 {{< expand "Full Section Outline" >}}
 
@@ -84,13 +82,6 @@ In this tutorial you will work through a series of tasks that are common to many
 - [5.4 Add a Confidence Trend Widget](part-5/#54-add-a-confidence-trend-widget)
 - [5.5 Arrange Your Dashboard](part-5/#55-arrange-your-dashboard)
 - [5.6 Summary](part-5/#56-summary)
-
-**[Part 6: Scale](part-6/)** (~10 min)
-
-- [6.1 Create a Fragment](part-6/#61-create-a-fragment)
-- [6.2 Parameterize the Camera ID](part-6/#62-parameterize-the-camera-id)
-- [6.5 Create the Second Machine](part-6/#65-create-the-second-machine)
-- [6.9 Fleet Management Capabilities](part-6/#69-fleet-management-capabilities)
 
 {{< /expand >}}
 

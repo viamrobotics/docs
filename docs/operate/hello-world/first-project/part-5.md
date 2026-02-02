@@ -245,4 +245,16 @@ The same MQL pipeline pattern—filter, aggregate, project—can be adapted for 
 For fully custom dashboards with your own branding, you can build web applications using Viam's TypeScript SDK. The SDK provides access to the same data through `tabularDataByMQL()` and `tabularDataBySQL()` methods.
 {{< /alert >}}
 
-**[Continue to Part 6: Scale →](../part-6/)**
+## Congratulations
+
+You've completed the tutorial. Here's what you built:
+
+1. **Vision Pipeline**—Camera, ML model, and vision service detecting defects
+2. **Data Capture**—Automatic recording and cloud sync of images and detections
+3. **Control Logic**—Custom inspector module exposing detection through DoCommand
+4. **Module Deployment**—Packaged and deployed to run autonomously
+5. **Productize**—Monitoring dashboard with real-time analytics
+
+You've gone from an empty machine to a production-ready inspection system with monitoring—patterns that apply to any Viam application.
+
+**[← Back to Overview](../)** to review what you learned.
