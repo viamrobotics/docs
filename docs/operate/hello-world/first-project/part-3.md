@@ -292,7 +292,7 @@ Your inspector needs a vision service to detect cans. Rather than hardcoding how
 
 - Your code doesn't know where resources live (local or remote)
 - The same code works in CLI testing and deployed modules
-{{< /alert >}}
+  {{< /alert >}}
 
 ### Step 1: Declare Dependencies
 
@@ -546,7 +546,7 @@ Your laptop connected to the remote machine, your code called the vision service
 
 - Normal if no can is in view—wait for one to appear
 - Check the camera is working in the Viam app's Test panel
-{{< /expand >}}
+  {{< /expand >}}
 
 {{< alert title="Checkpoint" color="success" >}}
 You can now detect cans from your laptop. You declared dependencies in Config, returned them from Validate, and extracted them in the constructor. This pattern works for any Viam resource.
@@ -566,11 +566,11 @@ In a production system, you could extend `DoCommand` to trigger actuators—for 
 
 ### What You Learned
 
-| Concept                      | What It Means                                      | Where You'll Use It                      |
-| ---------------------------- | -------------------------------------------------- | ---------------------------------------- |
-| **Module-first development** | Test against real hardware without deploying       | Any time you're developing control logic |
-| **Dependency injection**     | Declare what you need, let Viam provide it         | Every module you build                   |
-| **DoCommand pattern**        | Expose functionality through a flexible map-based API | Any generic service                     |
+| Concept                      | What It Means                                         | Where You'll Use It                      |
+| ---------------------------- | ----------------------------------------------------- | ---------------------------------------- |
+| **Module-first development** | Test against real hardware without deploying          | Any time you're developing control logic |
+| **Dependency injection**     | Declare what you need, let Viam provide it            | Every module you build                   |
+| **DoCommand pattern**        | Expose functionality through a flexible map-based API | Any generic service                      |
 
 ### The Key Insight
 

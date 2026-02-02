@@ -35,14 +35,14 @@ You're building a **quality inspection station** for a canning line. Cans move p
 
 In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
 
-| Part                               | Time    | What You'll Do                                          |
-| ---------------------------------- | ------- | ------------------------------------------------------- |
-| [Part 1: Vision Pipeline](part-1/) | ~15 min | Set up camera, ML model, and vision service             |
-| [Part 2: Data Capture](part-2/)    | ~10 min | Configure automatic image capture and cloud sync        |
-| [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI  |
-| [Part 4: Deploy a Module](part-4/) | ~10 min | Deploy module, configure detection data capture         |
-| [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                     |
-| [Part 6: Productize](part-6/)      | ~10 min | Build dashboard, white-label auth                       |
+| Part                               | Time    | What You'll Do                                         |
+| ---------------------------------- | ------- | ------------------------------------------------------ |
+| [Part 1: Vision Pipeline](part-1/) | ~15 min | Set up camera, ML model, and vision service            |
+| [Part 2: Data Capture](part-2/)    | ~10 min | Configure automatic image capture and cloud sync       |
+| [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI |
+| [Part 4: Deploy a Module](part-4/) | ~10 min | Deploy module, configure detection data capture        |
+| [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                    |
+| [Part 6: Productize](part-6/)      | ~10 min | Build dashboard, white-label auth                      |
 
 {{< expand "Full Section Outline" >}}
 

@@ -43,7 +43,7 @@ func main() {
 This connects your module to viam-server and registers the inspector model. When you add this service to your machine configuration, viam-server uses this entry point to create and manage instances. You don't need to modify it.
 
 {{< alert title="What is a model?" color="info" >}}
-In Viam, a *model* is a specific implementation of an API—identified by a triplet like `your-namespace:inspection-module:inspector`. This can be confusing because we also refer to ML models as "models." When you see "model" in the context of modules and resources, it means the implementation type, not a machine learning model.
+In Viam, a _model_ is a specific implementation of an API—identified by a triplet like `your-namespace:inspection-module:inspector`. This can be confusing because we also refer to ML models as "models." When you see "model" in the context of modules and resources, it means the implementation type, not a machine learning model.
 {{< /alert >}}
 
 **`module.go`** provides model registration in `init()`:
