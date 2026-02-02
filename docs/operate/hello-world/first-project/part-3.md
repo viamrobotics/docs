@@ -101,6 +101,8 @@ Before creating a module, your organization needs a public namespace. This is a 
 3. Find **Public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
 4. Click **Save**
 
+[SCREENSHOT: Organization settings page showing Public namespace field]
+
 If your organization already has a namespace, you can skip this step.
 
 **Generate the module scaffolding:**

@@ -32,6 +32,8 @@ A workspace is a custom dashboard view for your machines.
 4. In **Select location**, choose `Home` (or your location name)
 5. In **Select machine**, choose `inspection-station-1`
 
+[SCREENSHOT: Teleop workspace creation dialog]
+
 You now have an empty workspace ready for widgets.
 
 ## 5.2 Add a Camera Stream Widget
@@ -231,6 +233,8 @@ Your dashboard now provides a complete view of your inspection system:
 - **Live video** showing the inspection in progress
 - **Defects per minute** tracking production quality
 - **Confidence trend** monitoring model performance
+
+[SCREENSHOT: Finished dashboard with camera stream and time series widgets]
 
 ## 5.6 Summary
 

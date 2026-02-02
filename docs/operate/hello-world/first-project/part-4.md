@@ -242,6 +242,8 @@ Click **Save**.
 5. You should see a response with `label` and `confidence` values
 6. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam
 
+[SCREENSHOT: DoCommand test panel showing detection result with label and confidence]
+
 The module is now ready. You'll configure automatic detection in the next section.
 
 ## 4.4 Configure Detection Data Capture
@@ -295,6 +297,9 @@ After a few minutes of data collection, you can query the results:
 1. Open the **Data** tab in the Viam app
 2. Click **Query**
 3. Select **SQL** as your query language
+
+[SCREENSHOT: Data Query interface with SQL selected]
+
 4. Run a query to see recent detections:
 
 ```sql

@@ -63,6 +63,9 @@ Click **JSON** in the Configure tab to see how data capture settings appear in t
 Up to this point in the tutorial, you've focused on configuring your machine.
 To view the data you are now capturing, you will need to open the data user interface in Viam.
 Find the main Viam menu that includes: **Fleet**, **Data**, and **Registry** at the top of the page.
+
+[SCREENSHOT: Main navigation menu showing Fleet, Data, and Registry tabs]
+
 Right click on **Data** to open in a separate tab.
 
 **View captured data:**
