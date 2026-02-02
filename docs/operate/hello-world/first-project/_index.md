@@ -88,4 +88,3 @@ In this tutorial you will work through a series of tasks that are common to many
 ## Get Started
 
 **[Begin Part 1: Vision Pipeline →](part-1/)**
-
