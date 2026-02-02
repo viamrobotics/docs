@@ -40,7 +40,7 @@ In this tutorial you will work through a series of tasks that are common to many
 | [Part 1: Vision Pipeline](part-1/) | ~15 min | Set up camera, ML model, and vision service             |
 | [Part 2: Data Capture](part-2/)    | ~10 min | Configure automatic image capture and cloud sync        |
 | [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI  |
-| [Part 4: Deploy a Module](part-4/) | ~10 min | Add DoCommand, deploy, configure detection data capture |
+| [Part 4: Deploy a Module](part-4/) | ~10 min | Deploy module, configure detection data capture         |
 | [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                     |
 | [Part 6: Productize](part-6/)      | ~10 min | Build dashboard, white-label auth                       |
 
@@ -66,17 +66,14 @@ In this tutorial you will work through a series of tasks that are common to many
 - [3.1 Generate the Module Scaffolding](part-3/#31-generate-the-module-scaffolding)
 - [3.2 Add Remote Machine Connection](part-3/#32-add-remote-machine-connection)
 - [3.3 Add Detection Logic](part-3/#33-add-detection-logic)
-- [3.4 Configure the Rejector](part-3/#34-configure-the-rejector)
-- [3.5 Add Rejection Logic](part-3/#35-add-rejection-logic)
-- [3.6 Summary](part-3/#36-summary)
+- [3.4 Summary](part-3/#34-summary)
 
 **[Part 4: Deploy a Module](part-4/)** (~10 min)
 
-- [4.1 Add the DoCommand Interface](part-4/#41-add-the-docommand-interface)
-- [4.2 Review the Generated Module Structure](part-4/#42-review-the-generated-module-structure)
-- [4.3 Build and Deploy](part-4/#43-build-and-deploy)
-- [4.4 Configure Detection Data Capture](part-4/#44-configure-detection-data-capture)
-- [4.5 Summary](part-4/#45-summary)
+- [4.1 Review the Generated Module Structure](part-4/#41-review-the-generated-module-structure)
+- [4.2 Build and Deploy](part-4/#42-build-and-deploy)
+- [4.3 Configure Detection Data Capture](part-4/#43-configure-detection-data-capture)
+- [4.4 Summary](part-4/#44-summary)
 
 **[Part 5: Scale](part-5/)** (~10 min)
 

@@ -8,9 +8,9 @@ description: "Deploy your inspector module and configure queryable detection dat
 date: "2025-01-30"
 ---
 
-**Goal:** Add the DoCommand interface and deploy your inspector to run on the machine autonomously.
+**Goal:** Deploy your inspector to run on the machine autonomously.
 
-**Skills:** DoCommand pattern, module packaging, registry deployment, tabular data capture.
+**Skills:** Module packaging, registry deployment, tabular data capture.
 
 **Time:** ~10 min
 
@@ -18,114 +18,15 @@ date: "2025-01-30"
 
 In Part 3, you built inspection logic that runs from your laptop. That's great for development, but in production the code needs to run on the machine itself—so it works even when your laptop is closed.
 
-The generator already created most of what you need:
+The module generator already created most of what you need:
 
 - `cmd/module/main.go`—module entry point
 - `meta.json`—registry metadata
 - Model registration in `init()`
 
-You just need to:
+You just need to build, package, and deploy.
 
-1. Add DoCommand so clients can invoke your inspector remotely
-2. Build, package, and deploy
-
-## 4.1 Add the DoCommand Interface
-
-When your inspector runs as a module, clients need a way to invoke it. The **generic service** uses `DoCommand`.
-
-**Why DoCommand?** It provides flexibility without defining a custom API. Any client can send `{"detect": true}` or `{"inspect": true}` without generated client code. This is ideal for application-specific logic.
-
-**Add the mapstructure import to `inspector.go`:**
-
-```go
-import (
-    // ... existing imports ...
-    "github.com/mitchellh/mapstructure"
-)
-```
-
-Run `go get github.com/mitchellh/mapstructure` if needed.
-
-**Add the Command struct and DoCommand method:**
-
-```go
-// Command represents the commands the inspector accepts via DoCommand.
-type Command struct {
-    Detect  bool `mapstructure:"detect"`
-    Inspect bool `mapstructure:"inspect"`
-}
-
-// DoCommand handles incoming commands from clients.
-func (i *Inspector) DoCommand(ctx context.Context, req map[string]interface{}) (map[string]interface{}, error) {
-    var cmd Command
-    if err := mapstructure.Decode(req, &cmd); err != nil {
-        return nil, fmt.Errorf("failed to decode command: %w", err)
-    }
-
-    switch {
-    case cmd.Detect:
-        label, confidence, err := i.Detect(ctx)
-        if err != nil {
-            return nil, err
-        }
-        return map[string]interface{}{
-            "label":      label,
-            "confidence": confidence,
-        }, nil
-
-    case cmd.Inspect:
-        label, confidence, rejected, err := i.Inspect(ctx)
-        if err != nil {
-            return nil, err
-        }
-        return map[string]interface{}{
-            "label":      label,
-            "confidence": confidence,
-            "rejected":   rejected,
-        }, nil
-
-    default:
-        return nil, fmt.Errorf("unknown command: %v", req)
-    }
-}
-```
-
-**Test DoCommand through the CLI:**
-
-Update your CLI to call through DoCommand (optional but useful for verification). In `cmd/cli/main.go`, change the command handling:
-
-```go
-switch *cmd {
-case "detect":
-    result, err := insp.DoCommand(ctx, map[string]interface{}{"detect": true})
-    if err != nil {
-        return err
-    }
-    logger.Infof("Detection: %s (%.1f%%)",
-        result["label"], result["confidence"].(float64)*100)
-
-case "inspect":
-    result, err := insp.DoCommand(ctx, map[string]interface{}{"inspect": true})
-    if err != nil {
-        return err
-    }
-    logger.Infof("Inspection: %s (%.1f%%), rejected=%v",
-        result["label"], result["confidence"].(float64)*100, result["rejected"])
-
-default:
-    return fmt.Errorf("unknown command: %s", *cmd)
-}
-```
-
-Test it:
-
-```bash
-go run ./cmd/cli -host your-machine-main.abc123.viam.cloud -cmd inspect
-```
-
-Output should be identical to before—you've just formalized the interface.
-
-## 4.2 Review the Generated Module Structure
+## 4.1 Review the Generated Module Structure
 
 The generator already created everything needed to run as a module. Let's review what's there.
 
@@ -134,24 +35,24 @@ The generator already created everything needed to run as a module. Let's review
 ```go
 func main() {
     module.ModularMain(
-        resource.APIModel{API: generic.API, Model: inspector.Model},
+        resource.APIModel{API: generic.API, Model: inspectionmodule.Inspector},
     )
 }
 ```
 
-This registers your model with viam-server and handles all communication. You don't need to modify it.
+This connects your module to viam-server and registers the inspector model. When you add this service to your machine configuration, viam-server uses this entry point to create and manage instances. You don't need to modify it.
 
-**`inspector.go`** provides model registration in `init()`:
+**`module.go`** provides model registration in `init()`:
 
 The generator created an `init()` function that registers your model:
 
 ```go
-var Model = resource.NewModel("your-namespace", "inspection-module", "inspector")
+var Inspector = resource.NewModel("your-namespace", "inspection-module", "inspector")
 
 func init() {
-    resource.RegisterService(generic.API, Model,
+    resource.RegisterService(generic.API, Inspector,
         resource.Registration[resource.Resource, *Config]{
-            Constructor: newInspector,
+            Constructor: newInspectionModuleInspector,
         },
     )
 }
@@ -178,10 +79,10 @@ This runs automatically when the module starts, telling viam-server how to creat
 This tells the registry what your module provides.
 
 {{< alert title="The key pattern" color="tip" >}}
-The generator created module infrastructure. You added business logic (`Detect`, `Inspect`) and a client interface (`DoCommand`). The same `NewInspector` constructor works for both CLI testing and module deployment.
+The generator created module infrastructure. You added business logic (`detect`) and exposed it through `DoCommand`. The same `NewInspector` constructor works for both CLI testing and module deployment.
 {{< /alert >}}
 
-## 4.3 Build and Deploy
+## 4.2 Build and Deploy
 
 **Build the module binary:**
 
@@ -199,7 +100,7 @@ tar czf module.tar.gz meta.json bin/
 **Upload to the registry:**
 
 ```bash
-viam module upload --version 1.0.0 --platform linux/amd64 module.tar.gz
+viam module upload --version 1.0.0 --platform linux/amd64 --upload module.tar.gz
 ```
 
 {{< alert title="Note" color="info" >}}
@@ -227,8 +128,7 @@ Use `linux/arm64` for ARM machines (like Raspberry Pi).
 ```json
 {
   "camera": "inspection-cam",
-  "vision_service": "vision-service",
-  "rejector": "rejector"
+  "vision": "vision-service"
 }
 ```
 
@@ -242,7 +142,7 @@ Click **Save**.
 
 The inspector now runs on the machine autonomously.
 
-## 4.4 Configure Detection Data Capture
+## 4.3 Configure Detection Data Capture
 
 In Part 2, you captured images from the vision service. Those images are great for visual review, but they're binary data—you can't query them with SQL. Now you'll configure **tabular data capture** on your inspector's DoCommand, which will let you query detection results.
 
@@ -256,13 +156,13 @@ In Part 2, you captured images from the vision service. Those images are great f
 
 ```json
 {
-  "inspect": true
+  "detect": true
 }
 ```
 
 6. **Save** your configuration
 
-This configuration tells the data manager to periodically call `DoCommand({"inspect": true})` on your inspector and capture the response—which includes `label`, `confidence`, and `rejected`.
+This configuration tells the data manager to periodically call `DoCommand({"detect": true})` on your inspector and capture the response—which includes `label` and `confidence`.
 
 **Query detection results:**
 
@@ -288,7 +188,7 @@ You can also filter by detection results:
 SELECT time_received, data
 FROM readings
 WHERE component_name = 'inspector'
-  AND data LIKE '%FAIL%'
+  AND data.label = 'FAIL'
 ORDER BY time_received DESC
 LIMIT 10
 ```
@@ -302,19 +202,19 @@ You now have two complementary data streams:
 The images show what the system saw; the tabular data tracks what it decided.
 {{< /alert >}}
 
-## 4.5 Summary
+## 4.4 Summary
 
 You deployed your inspection logic as a Viam module:
 
-1. **Added DoCommand**—exposed operations through the generic service interface
-2. **Reviewed**—the generator already created module structure and registration
-3. **Deployed**—built, packaged, uploaded, configured
+1. **Reviewed**—the generator already created module structure and registration
+2. **Deployed**—built, packaged, uploaded, configured
+3. **Configured data capture**—detection results are now queryable
 
 **The development pattern:**
 
 - During development: CLI runs locally, uses remote hardware (fast iteration)
 - In production: Module runs on machine, same code (autonomous operation)
 
-**Your inspection system now runs 24/7** detecting defects and rejecting bad cans without your laptop connected.
+**Your inspection system now runs 24/7** detecting defects without your laptop connected.
 
 **[Continue to Part 5: Scale →](../part-5/)**
