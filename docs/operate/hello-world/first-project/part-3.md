@@ -133,7 +133,7 @@ The generator creates a complete module structure. You'll focus on three files:
 - **`cmd/cli/main.go`**—CLI for local testing. We'll modify this to connect to your remote machine so you can test against real hardware without deploying.
 - **`cmd/module/main.go`**—Entry point when deployed. Registers your service with viam-server. You won't modify this.
 
-This is the **module-first development pattern**: write logic in `module.go`, test locally via the CLI against your real machine, then deploy.
+This is the **module-first development pattern**: write logic in `module.go`, test locally with the CLI against your real machine, then deploy.
 
 ## 3.2 Add Remote Machine Connection
 
