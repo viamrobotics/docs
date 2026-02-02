@@ -37,7 +37,7 @@ If you followed the [setup guide](../gazebo-setup/), your machine should already
 3. Verify the status indicator shows **Live**
 4. Click the **Configure** tab if not already selected
 
-[SCREENSHOT: Machine page showing Live status]
+![Machine page showing the green Live status indicator next to the machine name.](/tutorials/first-project/machine-live-status.png)
 
 Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've already installed `viam-server` and launched it in the simulation Docker container.
 
@@ -74,8 +74,6 @@ To add the camera component to your machine part:
 After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **Configuration** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
 {{< /expand >}}
 
-[SCREENSHOT: Add component dialog with camera settings]
-
 ### Configure the camera
 
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
@@ -89,8 +87,6 @@ To configure your camera component to work with the camera in the simulation, yo
    ```
 
 2. Click **Save** in the top right
-
-[SCREENSHOT: Camera configuration panel with id attribute]
 
 {{< alert title="What happened behind the scenes" color="info" >}}
 You declared "this machine has a camera called `inspection-cam`" by editing the configuration in the Viam app. When you clicked **Save**, `viam-server` loaded the camera module, added a camera component, and made the camera available through Viam's standard camera API. Software you write, other services, and user interface components will use the API to get the images they need. Using the API as an abstraction means that everything still works if you swap cameras.
@@ -107,8 +103,6 @@ Verify the camera is working. Every component in Viam has a built-in test card r
 3. Click **Test** to expand the camera's test card
 
 The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
-
-[SCREENSHOT: Camera test panel showing live feed in Configure tab]
 
 {{< alert title="Checkpoint" color="success" >}}
 Your camera is working. You can stream video and capture images from the simulated inspection station.
@@ -142,8 +136,6 @@ The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) an
 7. Name it `model-service`
 8. Click **Create**
 
-[SCREENSHOT: Add service dialog for ML model]
-
 ### Select a model from the registry
 
 Configure the `model-service` ML model service you just included in your configuration.
@@ -153,8 +145,6 @@ Configure the `model-service` ML model service you just included in your configu
 3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on defect detection)
 4. Click **Choose** to save the model selection
 5. Click **Save** in the upper right corner to save your configuration
-
-[SCREENSHOT: Select model dialog showing registry models]
 
 {{< alert title="Your own models" color="tip" >}}
 For a different application, you'd train a model on your specific data and upload it to the registry. The registry handles versioning and deployment of ML models across your fleet.
@@ -181,8 +171,6 @@ Now add a vision service that connects your camera to the ML model service.
 4. Find the **Attributes** section and set **Minimum confidence threshold** to 0.75
 5. Click **Save** in the upper right corner
 
-[SCREENSHOT: Vision service configuration linked to ML model]
-
 ### Test the vision service
 
 1. Find the **Test** section at the bottom of the `vision-service` configuration panel
@@ -191,7 +179,7 @@ Now add a vision service that connects your camera to the ML model service.
 4. Set **Detections/Classifications** to `Live`
 5. Check that detection and labeling are working
 
-[SCREENSHOT: Vision service test panel showing detection results with bounding boxes]
+![Vision service test panel showing a can detected with a bounding box and FAIL label.](/tutorials/first-project/vision-service-test.png)
 
 {{< alert title="What you've built" color="info" >}}
 A complete ML inference pipeline. The vision service grabs an image from the camera, runs it through the TensorFlow Lite model, and returns structured detection results. This same pattern works for any ML task—object detection, classification, segmentation—you just swap the model.
