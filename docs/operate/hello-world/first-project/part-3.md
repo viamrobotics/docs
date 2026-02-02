@@ -101,7 +101,7 @@ Before creating a module, your organization needs a public namespace. This is a 
 3. Find **Public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
 4. Click **Save**
 
-[SCREENSHOT: Organization settings page showing Public namespace field]
+{{<imgproc src="/tutorials/first-project/org-settings-dropdown.png" resize="x1100" declaredimensions=true alt="Organization dropdown menu showing Settings option.">}}
 
 If your organization already has a namespace, you can skip this step.
 
@@ -149,7 +149,7 @@ Why is this valuable? Traditional embedded development requires: edit code → b
 2. Click the **Online** dropdown
 3. Click **Remote address** to copy your machine address
 
-[SCREENSHOT: Code sample tab showing machine address]
+{{<imgproc src="/tutorials/first-project/machine-address.png" resize="x1100" declaredimensions=true alt="Live dropdown showing Remote address option with machine address visible.">}}
 
 ### Step 1: Connect to Your Machine
 

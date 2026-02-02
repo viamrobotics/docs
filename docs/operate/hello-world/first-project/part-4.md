@@ -242,7 +242,7 @@ Click **Save**.
 5. You should see a response with `label` and `confidence` values
 6. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam
 
-[SCREENSHOT: DoCommand test panel showing detection result with label and confidence]
+{{<imgproc src="/tutorials/first-project/docommand-test.png" resize="x1100" declaredimensions=true alt="DoCommand test panel showing detection result with label PASS and confidence score.">}}
 
 The module is now ready. You'll configure automatic detection in the next section.
 
@@ -258,15 +258,15 @@ The data manager needs to know about your inspector service before it can captur
 2. Find the `data-service` entry in the `services` array
 3. Add `"depends_on": ["inspector-service"]` to the data-service configuration:
 
-```json
-{
-  "name": "data-service",
-  "api": "rdk:service:data_manager",
-  "model": "rdk:builtin:builtin",
-  "attributes": { ... },
-  "depends_on": ["inspector-service"]
-}
-```
+   ```json
+   {
+     "name": "data-service",
+     "api": "rdk:service:data_manager",
+     "model": "rdk:builtin:builtin",
+     "attributes": { ... },
+     "depends_on": ["inspector-service"]
+   }
+   ```
 
 4. Click **Save**
 
@@ -280,11 +280,11 @@ This tells viam-server to wait for `inspector-service` to initialize before the 
 4. Set **Frequency (hz)** to `0.5` (captures every 2 seconds)
 5. In the **Additional parameters** section, add the DoCommand input:
 
-```json
-{
-  "detect": true
-}
-```
+   ```json
+   {
+     "detect": true
+   }
+   ```
 
 6. **Save** your configuration
 
@@ -298,28 +298,28 @@ After a few minutes of data collection, you can query the results:
 2. Click **Query**
 3. Select **SQL** as your query language
 
-[SCREENSHOT: Data Query interface with SQL selected]
+   {{<imgproc src="/tutorials/first-project/data-query-sql.png" resize="x1100" declaredimensions=true alt="Data Query interface with SQL selected.">}}
 
 4. Run a query to see recent detections:
 
-```sql
-SELECT time_received, component_name, data
-FROM readings
-ORDER BY time_received DESC
-LIMIT 10
-```
+   ```sql
+   SELECT time_received, component_name, data
+   FROM readings
+   ORDER BY time_received DESC
+   LIMIT 10
+   ```
 
-You can also filter to show only failures:
+   You can also filter to show only failures:
 
-```sql
-SELECT time_received,
-       data.docommand_output.label,
-       data.docommand_output.confidence
-FROM readings
-WHERE data.docommand_output.label = 'FAIL'
-ORDER BY time_received DESC
-LIMIT 10
-```
+   ```sql
+   SELECT time_received,
+          data.docommand_output.label,
+          data.docommand_output.confidence
+   FROM readings
+   WHERE data.docommand_output.label = 'FAIL'
+   ORDER BY time_received DESC
+   LIMIT 10
+   ```
 
 **Understanding the data structure:**
 

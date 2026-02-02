@@ -45,8 +45,6 @@ The default configuration options for the data service are correct for our appli
 5. Set **Camera name** to `inspection-cam`
 6. **Save** your configuration
 
-[SCREENSHOT: Vision service data capture configuration]
-
 **Verify it's working:**
 
 1. In the **Data capture** section of the `vision-service` configuration panel you should now see a collapsible component labeled **Latest capture** with a day and time specified
@@ -63,9 +61,6 @@ Click **JSON** in the Configure tab to see how data capture settings appear in t
 Up to this point in the tutorial, you've focused on configuring your machine.
 To view the data you are now capturing, you will need to open the data user interface in Viam.
 Find the main Viam menu that includes: **Fleet**, **Data**, and **Registry** at the top of the page.
-
-[SCREENSHOT: Main navigation menu showing Fleet, Data, and Registry tabs]
-
 Right click on **Data** to open in a separate tab.
 
 **View captured data:**
@@ -74,7 +69,7 @@ Right click on **Data** to open in a separate tab.
 2. Click on an image to see the detection results for that image
 3. Click on a few other images to see how detection results vary for cans labeled `PASS` versus `FAIL`
 
-[SCREENSHOT: Data tab showing captured detections]
+{{<imgproc src="/tutorials/first-project/data-tab-images.png" resize="x1100" declaredimensions=true alt="Data tab showing a grid of captured images from the inspection camera.">}}
 
 **Verify the data includes:**
 
@@ -88,8 +83,6 @@ Right click on **Data** to open in a separate tab.
 1. Click **Filter** and select your machine: `inspection-station-1`
 2. Set time range to "Last hour"
 3. You can also filter by component to see only vision service results or only camera images
-
-[SCREENSHOT: Data tab with filters applied]
 
 This captured data serves multiple purposes:
 
