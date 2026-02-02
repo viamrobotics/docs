@@ -41,8 +41,8 @@ In this tutorial you will work through a series of tasks that are common to many
 | [Part 2: Data Capture](part-2/)    | ~10 min | Configure automatic image capture and cloud sync       |
 | [Part 3: Control Logic](part-3/)   | ~15 min | Generate module, write inspection logic, test from CLI |
 | [Part 4: Deploy a Module](part-4/) | ~10 min | Deploy module, configure detection data capture        |
-| [Part 5: Scale](part-5/)           | ~10 min | Create fragment, add second machine                    |
-| [Part 6: Productize](part-6/)      | ~15 min | Build monitoring dashboard with Teleop                 |
+| [Part 5: Productize](part-5/)      | ~15 min | Build monitoring dashboard with Teleop                 |
+| [Part 6: Scale](part-6/)           | ~10 min | Create fragment, add second machine                    |
 
 {{< expand "Full Section Outline" >}}
 
@@ -76,21 +76,21 @@ In this tutorial you will work through a series of tasks that are common to many
 - [4.4 Configure Detection Data Capture](part-4/#44-configure-detection-data-capture)
 - [4.5 Summary](part-4/#45-summary)
 
-**[Part 5: Scale](part-5/)** (~10 min)
+**[Part 5: Productize](part-5/)** (~15 min)
 
-- [5.1 Create a Fragment](part-5/#51-create-a-fragment)
-- [5.2 Parameterize the Camera ID](part-5/#52-parameterize-the-camera-id)
-- [5.5 Create the Second Machine](part-5/#55-create-the-second-machine)
-- [5.9 Fleet Management Capabilities](part-5/#59-fleet-management-capabilities)
+- [5.1 Create a Workspace](part-5/#51-create-a-workspace)
+- [5.2 Add a Camera Stream Widget](part-5/#52-add-a-camera-stream-widget)
+- [5.3 Add a Defects Per Minute Widget](part-5/#53-add-a-defects-per-minute-widget)
+- [5.4 Add a Confidence Trend Widget](part-5/#54-add-a-confidence-trend-widget)
+- [5.5 Arrange Your Dashboard](part-5/#55-arrange-your-dashboard)
+- [5.6 Summary](part-5/#56-summary)
 
-**[Part 6: Productize](part-6/)** (~15 min)
+**[Part 6: Scale](part-6/)** (~10 min)
 
-- [6.1 Create a Workspace](part-6/#61-create-a-workspace)
-- [6.2 Add a Camera Stream Widget](part-6/#62-add-a-camera-stream-widget)
-- [6.3 Add a Defects Per Minute Widget](part-6/#63-add-a-defects-per-minute-widget)
-- [6.4 Add a Confidence Trend Widget](part-6/#64-add-a-confidence-trend-widget)
-- [6.5 Arrange Your Dashboard](part-6/#65-arrange-your-dashboard)
-- [6.6 Summary](part-6/#66-summary)
+- [6.1 Create a Fragment](part-6/#61-create-a-fragment)
+- [6.2 Parameterize the Camera ID](part-6/#62-parameterize-the-camera-id)
+- [6.5 Create the Second Machine](part-6/#65-create-the-second-machine)
+- [6.9 Fleet Management Capabilities](part-6/#69-fleet-management-capabilities)
 
 {{< /expand >}}
 

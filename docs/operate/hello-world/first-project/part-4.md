@@ -371,7 +371,7 @@ You can also query using MQL (MongoDB Query Language), which is useful for aggre
 ];
 ```
 
-You'll use MQL aggregation pipelines in Part 6 to build dashboard widgets.
+You'll use MQL aggregation pipelines in Part 5 to build dashboard widgets.
 
 {{< alert title="Two types of captured data" color="info" >}}
 You now have two complementary data streams:
@@ -397,4 +397,4 @@ You deployed your inspection logic as a Viam module:
 
 **Your inspection system now runs 24/7** detecting defects without your laptop connected.
 
-**[Continue to Part 5: Scale →](../part-5/)**
+**[Continue to Part 5: Productize →](../part-5/)**

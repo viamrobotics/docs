@@ -1,247 +1,292 @@
 ---
-linkTitle: "Part 6: Productize"
-title: "Part 6: Productize"
+linkTitle: "Part 6: Scale"
+title: "Part 6: Scale"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Build a monitoring dashboard for your inspection system using Viam's Teleop interface."
+description: "Add a second inspection station using fragments for configuration reuse."
 date: "2025-01-30"
 ---
 
-**Goal:** Build a dashboard to monitor your inspection system.
+**Goal:** Add a second inspection station using fragments.
 
-**Skills:** Creating Teleop workspaces, configuring dashboard widgets, writing MQL aggregation pipelines.
+**Skills:** Configuration reuse with fragments, fleet basics.
 
-**Time:** ~15 min
+**Time:** ~10 min
 
-## What You'll Build
+## 6.1 Create a Fragment
 
-You've built a working inspection system—but monitoring it requires navigating through the Viam app's configuration and data tabs. In this section, you'll create a dedicated dashboard that shows everything at a glance: live camera feeds and defect trends over time.
+You have one working inspection station. Now imagine you need 10 more—or 100. Manually copying configuration to each machine would be tedious and error-prone.
 
-Viam's Teleop interface lets you create custom monitoring dashboards. You'll add widgets for camera streams and time series graphs that use MQL aggregation pipelines to analyze your detection data.
+Viam solves this with _fragments_: reusable configuration blocks that can be applied to any machine. Think of a fragment as a template. Define your camera, vision service, data capture, and triggers once, then apply that template to as many machines as you need.
 
-## 6.1 Create a Workspace
+**Export your machine configuration:**
 
-A workspace is a custom dashboard view for your machines.
+1. Go to your `inspection-station-1` machine in the Viam app
+2. Click the **Configure** tab
+3. Click **JSON** (top right) to see the raw configuration
+4. Click **Copy** to copy the entire JSON to your clipboard
 
-1. In the Viam app, go to **Fleet** → **Teleop**
-2. Click **+ Create workspace**
-3. Replace the placeholder name with `inspection`
-4. In **Select location**, choose `Home` (or your location name)
-5. In **Select machine**, choose `inspection-station-1`
+[SCREENSHOT: JSON configuration view with copy button]
 
-You now have an empty workspace ready for widgets.
+**Create the fragment:**
 
-## 6.2 Add a Camera Stream Widget
+1. In the Viam app, click **Fragments** in the left sidebar
+2. Click **+ Create fragment**
+3. Name it `inspection-station`
+4. Paste your configuration into the fragment editor
+5. Click **Save**
 
-Add a live video feed from your inspection camera.
+[SCREENSHOT: Fragment editor with pasted configuration]
 
-1. Click **+ Add widget**
-2. Select **Camera Stream**
-3. Click the pencil icon to configure
-4. Set **Camera name** to `inspection-cam`
-5. Set **Refresh type** to `Live`
-6. Click **Save**
+## 6.2 Parameterize the Camera ID
 
-You should see the live feed from your inspection camera with cans passing on the conveyor belt.
+Your fragment now contains everything—but one value is specific to each machine: the camera ID. Station 1 uses `/inspection_camera`, but Station 2 uses `/station_2_camera`. Hardcoding this value would break the fragment's reusability.
 
-## 6.3 Add a Defects Per Minute Widget
+Viam fragments support _variables_ for exactly this purpose.
 
-Now you'll create a time series graph showing how many defective cans are detected per minute. This requires a custom MQL aggregation pipeline to filter for failures and count them in time buckets.
+**Find the camera configuration in your fragment:**
 
-**Recall the data structure** from Part 4—each detection looks like:
+Look for the camera component in the JSON. It looks like this:
 
 ```json
 {
-  "component_name": "inspector-service",
-  "time_received": "2026-02-02T02:23:27.326Z",
-  "data": {
-    "docommand_output": {
-      "label": "FAIL",
-      "confidence": 0.965815
-    }
+  "name": "inspection-cam",
+  "type": "camera",
+  "model": "viam:camera:gazebo",
+  "attributes": {
+    "id": "/inspection_camera"
   }
 }
 ```
 
-You'll write MQL stages that filter for `FAIL` labels and count them per minute.
+**Replace the hardcoded topic with a variable:**
 
-**Create the widget:**
-
-1. Click **+ Add widget**
-2. Select **Time Series**
-3. Click the pencil icon to configure
-4. Set **Title** to `Defective cans per minute`
-5. Set **Time range (min)** to `60`
-6. Set **Refetch rate (sec)** to `60`
-7. Leave **Y axis lower bound** and **Y axis upper bound** as `auto`
-
-**Configure the line:**
-
-8. Set **Resource name** to `inspector-service`
-9. Set **Capture method** to `DoCommand`
-10. Set **Title** to `Defects`
-11. For **Window method**, select **Custom query**
-
-**Add the MQL stages:**
-
-The custom query method lets you write MongoDB aggregation pipeline stages. You need three stages: match, group, and project.
-
-12. In **Custom MQL Stages**, add a `$match` stage to filter for failures only:
+Change the `id` attribute to use the `$variable` syntax:
 
 ```json
 {
-  "$match": {
-    "data.docommand_output.label": "FAIL"
-  }
-}
-```
-
-13. Click **+ Add stage** and add a `$group` stage to count failures per 60-second bucket:
-
-```json
-{
-  "$group": {
-    "_id": {
-      "$dateTrunc": {
-        "date": "$time_received",
-        "unit": "second",
-        "binSize": 60
-      }
-    },
-    "value": {
-      "$sum": 1
-    }
-  }
-}
-```
-
-14. Click **+ Add stage** and add a `$project` stage to format the output:
-
-```json
-{
-  "$project": {
-    "time": "$_id",
-    "value": true
-  }
-}
-```
-
-15. Click **Save**
-
-The graph now shows the count of defective cans detected in each minute.
-
-{{< alert title="How the pipeline works" color="info" >}}
-
-- **$match** filters to only FAIL detections
-- **$group** buckets data into 60-second intervals and counts documents in each bucket
-- **$project** renames `_id` to `time` (required format for the graph)
-  {{< /alert >}}
-
-## 6.4 Add a Confidence Trend Widget
-
-Add another time series showing the average confidence of failure detections over time. This helps you monitor model performance—if confidence drops, you may need to retrain.
-
-1. Click **+ Add widget**
-2. Select **Time Series**
-3. Click the pencil icon to configure
-4. Set **Title** to `Confidence`
-5. Set **Time range (min)** to `60`
-6. Set **Refetch rate (sec)** to `60`
-7. Set **Y axis lower bound** to `0`
-8. Set **Y axis upper bound** to `1`
-
-**Configure the line:**
-
-9. Set **Resource name** to `inspector-service`
-10. Set **Capture method** to `DoCommand`
-11. Set **Title** to `FAIL confidence`
-12. For **Window method**, select **Custom query**
-
-**Add the MQL stages:**
-
-13. Add a `$match` stage:
-
-```json
-{
-  "$match": {
-    "data.docommand_output.label": "FAIL"
-  }
-}
-```
-
-14. Click **+ Add stage** and add a `$group` stage that averages confidence:
-
-```json
-{
-  "$group": {
-    "_id": {
-      "$dateTrunc": {
-        "date": "$time_received",
-        "unit": "second",
-        "binSize": 60
-      }
-    },
-    "value": {
-      "$avg": {
-        "$convert": {
-          "input": "$data.docommand_output.confidence",
-          "to": "double",
-          "onError": "$data.docommand_output.confidence"
-        }
+  "name": "inspection-cam",
+  "type": "camera",
+  "model": "viam:camera:gazebo",
+  "attributes": {
+    "id": {
+      "$variable": {
+        "name": "camera_id"
       }
     }
   }
 }
 ```
 
-15. Click **+ Add stage** and add a `$project` stage:
+Click **Save** to update the fragment.
 
-```json
-{
-  "$project": {
-    "time": "$_id",
-    "value": true
-  }
-}
-```
+Now when you apply this fragment to a machine, you'll provide the actual `camera_id` value for that specific station.
 
-16. Click **Save**
-
-The graph shows average confidence for failure detections over time.
-
-{{< alert title="Why use $convert?" color="info" >}}
-The `$convert` operator ensures the confidence value is treated as a number for averaging. The `onError` fallback handles any edge cases where conversion fails.
+{{< alert title="What to parameterize" color="tip" >}}
+Camera IDs, device paths (`/dev/video0`), IP addresses, serial numbers—anything that varies between physical machines. Configuration like detection thresholds, capture frequency, and module versions should stay in the fragment so they're consistent across your fleet.
 {{< /alert >}}
 
-## 6.5 Arrange Your Dashboard
+## 6.3 Stop Station 1
 
-Drag widgets to create a useful layout:
+Before starting the second station, stop the first one to free up system resources. The simulation is CPU-intensive, so running both simultaneously isn't practical on most machines.
 
-1. Click and drag the grid icon in the top-left corner of each widget
-2. Position the camera stream on the right for real-time monitoring
-3. Stack the time series graphs on the left to compare defect counts and confidence trends
+{{< tabs >}}
+{{% tab name="Mac/Linux" %}}
 
-Your dashboard now provides a complete view of your inspection system:
+```bash
+docker stop gz-station1
+```
 
-- **Live video** showing the inspection in progress
-- **Defects per minute** tracking production quality
-- **Confidence trend** monitoring model performance
+{{% /tab %}}
+{{% tab name="Windows (PowerShell)" %}}
 
-## 6.6 Summary
+```powershell
+docker stop gz-station1
+```
 
-You've created a monitoring dashboard using MQL aggregation pipelines:
+{{% /tab %}}
+{{< /tabs >}}
 
-1. **Created a workspace** for your inspection station
-2. **Added a camera stream** for live video monitoring
-3. **Built a defects graph** using $match → $group (count) → $project
-4. **Built a confidence graph** using $match → $group (average) → $project
+Your `inspection-station-1` machine will show as offline in the Viam app—that's expected.
 
-The same MQL pipeline pattern—filter, aggregate, project—can be adapted for other metrics: pass rate, throughput, detection latency, or any data your system captures.
+## 6.4 Start Station 2
 
-{{< alert title="Going further" color="tip" >}}
-For fully custom dashboards with your own branding, you can build web applications using Viam's TypeScript SDK. The SDK provides access to the same data through `tabularDataByMQL()` and `tabularDataBySQL()` methods.
-{{< /alert >}}
+Station 2 is a visually distinct simulation with different camera IDs. You'll notice yellow rails, an orange reject bin, and a blue output chute—so you can easily tell which station you're viewing.
+
+{{< tabs >}}
+{{% tab name="Mac/Linux" %}}
+
+```bash
+docker run --name gz-station2 -d \
+  -p 8080:8080 -p 8081:8081 -p 8443:8443 \
+  --entrypoint /entrypoint_station2.sh \
+  gz-harmonic-viam
+```
+
+{{% /tab %}}
+{{% tab name="Windows (PowerShell)" %}}
+
+```powershell
+docker run --name gz-station2 -d `
+  -p 8080:8080 -p 8081:8081 -p 8443:8443 `
+  --entrypoint /entrypoint_station2.sh `
+  gz-harmonic-viam
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Wait about 20 seconds for the simulation to initialize, then open the web viewer:
+
+`http://localhost:8081`
+
+You should see the Station 2 simulation with its distinct color scheme: yellow rails, orange reject bin, and blue output chute.
+
+[SCREENSHOT: Station 2 web viewer showing distinct color scheme]
+
+## 6.5 Create the Second Machine
+
+Now create a machine in Viam for Station 2:
+
+1. In the Viam app, click **+ Add machine**
+2. Name it `inspection-station-2`
+3. Click **Create**
+
+**Copy the viam-server install command** from the **Setup** tab. You'll need the machine credentials to configure viam-server.
+
+## 6.6 Configure viam-server for Station 2
+
+Create a Viam configuration file for Station 2. Replace the placeholder values with your actual machine credentials from the Setup tab:
+
+{{< tabs >}}
+{{% tab name="Mac/Linux" %}}
+
+Create the config file:
+
+```bash
+cat > ~/viam/config/station2-viam.json << 'EOF'
+{
+  "cloud": {
+    "id": "YOUR_MACHINE_ID",
+    "secret": "YOUR_MACHINE_SECRET",
+    "app_address": "https://app.viam.com:443"
+  }
+}
+EOF
+```
+
+Stop and restart the container with the config mounted:
+
+```bash
+docker stop gz-station2 && docker rm gz-station2
+
+docker run --name gz-station2 -d \
+  -p 8080:8080 -p 8081:8081 -p 8443:8443 \
+  -v ~/viam/config/station2-viam.json:/etc/viam.json \
+  --entrypoint /entrypoint_station2.sh \
+  gz-harmonic-viam
+```
+
+{{% /tab %}}
+{{% tab name="Windows (PowerShell)" %}}
+
+Create the config file (replace the placeholder values):
+
+```powershell
+@"
+{
+  "cloud": {
+    "id": "YOUR_MACHINE_ID",
+    "secret": "YOUR_MACHINE_SECRET",
+    "app_address": "https://app.viam.com:443"
+  }
+}
+"@ | Out-File -FilePath "$env:USERPROFILE\viam\config\station2-viam.json" -Encoding UTF8
+```
+
+Stop and restart the container with the config mounted:
+
+```powershell
+docker stop gz-station2; docker rm gz-station2
+
+docker run --name gz-station2 -d `
+  -p 8080:8080 -p 8081:8081 -p 8443:8443 `
+  -v "$env:USERPROFILE\viam\config\station2-viam.json:/etc/viam.json" `
+  --entrypoint /entrypoint_station2.sh `
+  gz-harmonic-viam
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Wait for the machine to come online in the Viam app (check the **Setup** tab—the status indicator turns green when connected).
+
+## 6.7 Apply the Fragment
+
+Now apply your fragment to Station 2 with the correct camera ID:
+
+1. On `inspection-station-2`, go to the **Configure** tab
+2. Click **+** and select **Insert fragment**
+3. Search for and select `inspection-station`
+4. Click **Add**
+
+The fragment appears in your configuration. Notice the **Variables** section—this is where you provide machine-specific values.
+
+**Set the camera ID for Station 2:**
+
+In the fragment's **Variables** section, enter:
+
+```json
+{
+  "camera_id": "/station_2_camera"
+}
+```
+
+Click **Save**.
+
+[SCREENSHOT: Fragment with camera_id variable configured]
+
+Within seconds, the machine reloads its configuration. It now has the camera (pointing to Station 2's ID), vision service, inspector module, data capture, and alerting—all from the fragment, customized for this specific station.
+
+## 6.8 Verify It Works
+
+1. Go to the **Control** tab
+2. Find the `inspection-cam` camera panel
+3. Verify you see the Station 2 camera feed (top-down view of cans on the conveyor with yellow rails visible in the overview)
+4. Click **Run detection** on the vision service to verify defect detection works
+
+[SCREENSHOT: Station 2 control tab showing camera feed and detection]
+
+You now have two machines using the same fragment with different camera IDs. If you were to restart Station 1 and apply the fragment with `"camera_id": "/inspection_camera"`, both stations would run identical inspection logic.
+
+## 6.9 Fleet Management Capabilities
+
+With fragments in place, you have the foundation for managing fleets at any scale. Here's what's possible:
+
+**Push updates across your fleet:**
+
+- **Configuration changes**—Edit the fragment, and all machines using it receive the update automatically within seconds
+- **ML model updates**—Change which model the vision service uses; all machines switch to the new version
+- **Module updates**—Deploy new versions of your inspection logic across the fleet
+- **Capture settings**—Adjust data capture frequency, enable/disable components fleet-wide
+
+**Monitor and maintain remotely:**
+
+- **Fleet dashboard**—View all machines' status, last seen, and health from one screen
+- **Aggregated data**—Query inspection results across all stations ("How many FAILs across all machines this week?")
+- **Remote diagnostics**—View live camera feeds, check logs, and test components without physical access
+- **Alerts**—Get notified when any machine goes offline or exhibits anomalies
+
+**Handle machine-specific variations:**
+
+- **Fragment variables**—Parameterize camera IDs, device paths, IP addresses—anything that differs between physical machines
+- **Per-machine overrides**—Add machine-specific configuration on top of fragments when needed
+- **Hardware flexibility**—Same inspection logic works whether a station uses USB cameras, CSI cameras, or IP cameras
+
+This same pattern scales from 2 machines to 2,000. The fragment is your single source of truth; Viam handles the distribution.
+
+**Checkpoint:** You've created a fragment from your working configuration, parameterized the camera ID, and deployed it to a second station. This is the same pattern used to manage fleets of hundreds or thousands of machines.
 
 ## Congratulations
 
@@ -251,8 +296,8 @@ You've completed the entire tutorial. Here's what you built:
 2. **Data Capture**—Automatic recording and cloud sync of images and detections
 3. **Control Logic**—Custom inspector module exposing detection through DoCommand
 4. **Module Deployment**—Packaged and deployed to run autonomously
-5. **Scale**—Fragment-based configuration for multiple stations
-6. **Productize**—Monitoring dashboard with real-time analytics
+5. **Productize**—Monitoring dashboard with real-time analytics
+6. **Scale**—Fragment-based configuration for multiple stations
 
 You've gone from an empty machine to a production-ready inspection system with fleet management and monitoring—patterns that apply to any Viam application.
 
