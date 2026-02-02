@@ -12,7 +12,7 @@ date: "2025-01-30"
 
 **Skills:** Creating Teleop workspaces, configuring dashboard widgets, writing MQL aggregation pipelines.
 
-**Time:** ~15 min
+**Time:** ~10 min
 
 ## What You'll Build
 
