@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Build a monitoring dashboard for your inspection system using Viam's Teleop interface."
 date: "2025-01-30"
+aliases:
+  - /operate/hello-world/first-project/part-6/
 ---
 
 **Goal:** Build a dashboard to monitor your inspection system.
