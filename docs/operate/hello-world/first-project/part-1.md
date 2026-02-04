@@ -71,14 +71,15 @@ To add the camera component to your machine part:
 6. Enter `inspection-cam` for the name
 
 {{< expand "Why were two items added to my machine part?" >}}
-After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **Configuration** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
+After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **Configure** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
 {{< /expand >}}
 
 ### Configure the camera
 
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
 
-1. In the **Attributes** section, add:
+1. Select the `inspection-cam` component in your machine’s configuration
+2. Add this to the **JSON configuration** field:
 
    ```json
    {
@@ -141,10 +142,9 @@ The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) an
 Configure the `model-service` ML model service you just included in your configuration.
 
 1. In the `model-service` configuration panel, click **Select model**
-2. Click the **Registry** tab
-3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on defect detection)
-4. Click **Choose** to save the model selection
-5. Click **Save** in the upper right corner to save your configuration
+2. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on defect detection)
+3. Click **Choose** to save the model selection
+4. Click **Save** in the upper right corner to save your configuration
 
 {{< alert title="Your own models" color="tip" >}}
 For a different application, you'd train a model on your specific data and upload it to the registry. The registry handles versioning and deployment of ML models across your fleet.
