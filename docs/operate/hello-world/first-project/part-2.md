@@ -53,7 +53,7 @@ The default configuration options for the data service are correct for our appli
 Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.
 
 {{< alert title="Tip" color="tip" >}}
-Click **JSON** in the Configure tab to see how data capture settings appear in the raw configuration. Each component and service with data capture enabled has a `service_configs` entry containing `capture_methods`.
+Click **JSON** in the **Configure** tab (above the sidebar on the left) to see how data capture settings appear in the raw configuration. Each component and service with data capture enabled has a `service_configs` entry containing `capture_methods`.
 {{< /alert >}}
 
 ## 2.2 View Captured Data
@@ -73,16 +73,16 @@ Right click on **Data** to open in a separate tab.
 
 **Verify the data includes:**
 
-- **Detection results**—Each row shows label (PASS/FAIL) and confidence score
-- **Camera images**—Click any row to see the image that was analyzed
+- **Detection results**—Each capture that detected a can shows a label (PASS/FAIL)
+- **Camera images**—Click any capture to see the image that was analyzed
 - **Timestamps**—When each capture occurred
-- **Machine ID**—Which machine captured it (matters when you have multiple stations)
+- **Machine**—Which machine captured it (matters when you have multiple stations)
 
 **Filter the data:**
 
-1. Click **Filter** and select your machine: `inspection-station-1`
-2. Set time range to "Last hour"
-3. You can also filter by component to see only vision service results or only camera images
+1. Under **Filters**, click the dropdown for **Machine name** and select your machine: `inspection-station-1`
+2. Update **Start time** and **End time** to filter for images in the last hour
+3. Click **Apply** to filter the results
 
 This captured data serves multiple purposes:
 
