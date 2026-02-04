@@ -289,38 +289,6 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
-### RenderFrame
-
-Render a frame from a camera of the underlying robot to an HTTP response.
-A specific MIME type can be requested but may not necessarily be the same one returned.
-
-{{< tabs >}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
-  the same type that will be returned.
-- `extra` (None) (optional)
-- `callOptions` (CallOptions) (optional)
-
-**Returns:**
-
-- (Promise<Blob>)
-
-**Example:**
-
-```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
-const mimeType = 'image/jpeg';
-const image = await camera.renderFrame(mimeType);
-```
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#renderframe).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetPointCloud
 
 Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.

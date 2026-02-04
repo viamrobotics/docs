@@ -139,7 +139,7 @@ This is the **module-first development pattern**: write logic in `module.go`, te
 
 ## 3.2 Add Remote Machine Connection
 
-The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and access its resources. This enables the **module-first development pattern**: your code runs locally on your laptop, but it talks to real cameras and other hardware your machine configuration includes.
+The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and access its resources. With this approach to Viam application development, your code runs locally on your laptop, but it talks to real cameras and other hardware your machine configuration includes.
 
 Why is this valuable? Traditional embedded development requires: edit code → build → deploy → test → repeat. With module-first development: edit code → run locally → see results on real hardware. The iteration cycle drops from minutes to seconds.
 
@@ -244,7 +244,7 @@ After the `logger.Info("Connected successfully!")` line, add:
 
 ```go
 // Get the camera from the remote machine
-cam, err := camera.FromRobot(machine, "inspection-cam")
+cam, err := camera.FromProvider(machine, "inspection-cam")
 if err != nil {
     return fmt.Errorf("failed to get camera: %w", err)
 }
@@ -267,6 +267,7 @@ If your editor doesn't auto-format, run `gofmt -w cmd/cli/main.go` to fix indent
 **Test resource access:**
 
 ```bash
+go mod tidy
 go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
 ```
 
