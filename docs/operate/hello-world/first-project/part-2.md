@@ -69,27 +69,14 @@ Right click on **Data** to open in a separate tab.
 2. Click on an image to see the detection results for that image
 3. Click on a few other images to see how detection results vary for cans labeled `PASS` versus `FAIL`
 
-{{<imgproc src="/tutorials/first-project/data-tab-images.png" resize="x1100" declaredimensions=true alt="Data tab showing a grid of captured images from the inspection camera." class="imgzoom shadow">}}
+   {{<imgproc src="/tutorials/first-project/data-tab-images.png" resize="x1100" declaredimensions=true alt="Data tab showing a grid of captured images from the inspection camera." class="imgzoom shadow">}}
 
-**Verify the data includes:**
+   This captured data serves multiple purposes:
 
-- **Detection results**—Each row shows label (PASS/FAIL) and confidence score
-- **Camera images**—Click any row to see the image that was analyzed
-- **Timestamps**—When each capture occurred
-- **Machine ID**—Which machine captured it (matters when you have multiple stations)
-
-**Filter the data:**
-
-1. Click **Filter** and select your machine: `inspection-station-1`
-2. Set time range to "Last hour"
-3. You can also filter by component to see only vision service results or only camera images
-
-This captured data serves multiple purposes:
-
-- **Compliance**—Auditable record of every inspection
-- **Quality trends**—"FAIL rate increased 20% this week"
-- **Model improvement**—Export images of cans to retrain your ML model
-- **Incident review**—"Show me all FAILs from Tuesday's shift"
+   - **Compliance**—Auditable record of every inspection
+   - **Quality trends**—"FAIL rate increased 20% this week"
+   - **Model improvement**—Export images of cans to retrain your ML model
+   - **Incident review**—"Show me all FAILs from Tuesday's shift"
 
 ## 2.3 Summary
 

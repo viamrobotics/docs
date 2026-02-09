@@ -22,7 +22,7 @@ Before starting this tutorial, you need the can inspection simulation running. F
 2. Create a machine in Viam and get credentials
 3. Start the container with your Viam credentials
 
-Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Online** in the Viam app, return here to continue.
+Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
 The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
@@ -78,7 +78,7 @@ After adding the camera component, you will see two items appear under your mach
 
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
 
-1. In the **Attributes** section, add:
+1. In the **JSON Configuration** section, add:
 
    ```json
    {
@@ -141,10 +141,9 @@ The **ML model service** loads a trained model (TensorFlow, ONNX, or PyTorch) an
 Configure the `model-service` ML model service you just included in your configuration.
 
 1. In the `model-service` configuration panel, click **Select model**
-2. Click the **Registry** tab
-3. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on defect detection)
-4. Click **Choose** to save the model selection
-5. Click **Save** in the upper right corner to save your configuration
+2. Search for `can-defect-detection` and select it from the list (a model that classifies cans as PASS or FAIL based on defect detection)
+3. Click **Choose** to save the model selection
+4. Click **Save** in the upper right corner to save your configuration
 
 {{< alert title="Your own models" color="tip" >}}
 For a different application, you'd train a model on your specific data and upload it to the registry. The registry handles versioning and deployment of ML models across your fleet.

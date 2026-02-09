@@ -143,14 +143,6 @@ The generated CLI creates your service with empty dependencies—fine for testin
 
 Why is this valuable? Traditional embedded development requires: edit code → build → deploy → test → repeat. With module-first development: edit code → run locally → see results on real hardware. The iteration cycle drops from minutes to seconds.
 
-**Get your machine address:**
-
-1. In the Viam app, go to your machine's **Configure** page
-2. Click the **Online** dropdown
-3. Click **Remote address** to copy your machine address
-
-{{<imgproc src="/tutorials/first-project/machine-address.png" resize="x1100" declaredimensions=true alt="Live dropdown showing Remote address option with machine address visible." class="imgzoom shadow">}}
-
 ### Step 1: Connect to Your Machine
 
 The generated `realMain` function creates your inspector with empty dependencies—useful for testing in isolation, but it can't access your remote machine. We'll replace it with code that:
@@ -200,25 +192,31 @@ func realMain() error {
 
 **Test the connection:**
 
-```bash
-go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
-```
+1. In the Viam app, go to your machine's **Configure** page
+2. Click the **Online** dropdown
+3. Click **Remote address** to copy your machine address
 
-You'll see WebRTC diagnostic output as the connection is established. Look for these messages confirming the connection:
+   {{<imgproc src="/tutorials/first-project/machine-address.png" resize="x1100" declaredimensions=true alt="Live dropdown showing Remote address option with machine address visible." class="imgzoom shadow">}}
 
-```text
-Connecting to your-machine.abc123.viam.cloud...
-...
-successfully (re)connected to remote at address
-...
-Connected successfully!
-```
+4. ```bash
+   go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
+   ```
 
-If you see an error, verify:
+   You'll see WebRTC diagnostic output as the connection is established. Look for these messages confirming the connection:
 
-- Your machine is online (check the Viam app)
-- You're logged in (`viam login`)
-- The address is correct
+   ```text
+   Connecting to your-machine.abc123.viam.cloud...
+   ...
+   successfully (re)connected to remote at address
+   ...
+   Connected successfully!
+   ```
+
+   If you see an error, verify:
+
+   - Your machine is online (check the Viam app)
+   - You're logged in (`viam login`)
+   - The address is correct
 
 ### Step 2: Access Remote Resources
 
