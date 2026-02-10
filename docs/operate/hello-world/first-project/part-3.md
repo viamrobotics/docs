@@ -16,9 +16,13 @@ date: "2025-01-30"
 
 ## What You'll Build
 
-Your vision pipeline detects defective cans and your data capture records the results. Now you'll write the inspection logic that calls the vision service and exposes detection results through `DoCommand`. This detection data can drive dashboards, alerts, or—in a production system—trigger actuators to reject defective cans.
+Your vision pipeline detects defective cans and your data capture records the results.
+Now you'll write the inspection logic that calls the vision service and exposes detection results through `DoCommand`.
+This detection data can drive dashboards, alerts, or—in a production system—trigger actuators to reject defective cans.
 
-You'll use the **module-first development pattern**: write code on your laptop, run it against real hardware over the network, and see results in seconds. No deploying, no SSH, no waiting. When the code is ready, it deploys to the machine without changes.
+You'll use the **module-first development pattern**: write code on your laptop, run it against real hardware over the network, and see results in seconds.
+No deploying, no SSH, no waiting.
+When the code is ready, it deploys to the machine without changes.
 
 ## Prerequisites
 
@@ -71,7 +75,8 @@ viam login
 This stores credentials that your code will use to connect to remote machines.
 
 {{< alert title="Note" color="info" >}}
-The Viam CLI (`viam`) is different from `viam-server`. The CLI runs on your development machine; `viam-server` runs on your robot/machine.
+The Viam CLI (`viam`) is different from `viam-server`.
+The CLI runs on your development machine; `viam-server` runs on your robot/machine.
 {{< /alert >}}
 
 ### Language Setup
@@ -87,11 +92,13 @@ Check your Python version:
 python3 --version
 ```
 
-You need Python 3.8 or later. If Python isn't installed or is outdated, download it from [python.org](https://www.python.org/downloads/).
+You need Python 3.8 or later.
+If Python isn't installed or is outdated, download it from [python.org](https://www.python.org/downloads/).
 
 **Create an API key:**
 
-The Python SDK authenticates with API keys (it does not support CLI token authentication). Create one now:
+The Python SDK authenticates with API keys (it does not support CLI token authentication).
+Create one now:
 
 1. In the Viam app, click your machine's name to go to its page
 2. Click the **API keys** tab
@@ -134,7 +141,8 @@ Check your Go version:
 go version
 ```
 
-You need Go 1.21 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
+You need Go 1.21 or later.
+If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
 
 **Clone the starter repo:**
 
@@ -151,15 +159,23 @@ This repo contains a pre-built module with one method left for you to implement.
 
 ## 3.1 Why Start with a Module?
 
-Viam development starts with modules, not scripts. A **module** is a package of code that adds capabilities to a machine—custom components, services, or in this case, inspection logic. By writing your code as a module from the start, the same code runs locally during development and on the machine in production. There's no restructuring when you're ready to deploy.
+Viam development starts with modules, not scripts.
+A **module** is a package of code that adds capabilities to a machine—custom components, services, or in this case, inspection logic.
+By writing your code as a module from the start, the same code runs locally during development and on the machine in production.
+There's no restructuring when you're ready to deploy.
 
-This matters because the traditional embedded development loop—edit, build, deploy, test, repeat—is slow. With a module, you edit code on your laptop, run it locally against remote hardware, and see results immediately. The iteration cycle drops from minutes to seconds.
+This matters because the traditional embedded development loop—edit, build, deploy, test, repeat—is slow.
+With a module, you edit code on your laptop, run it locally against remote hardware, and see results immediately.
+The iteration cycle drops from minutes to seconds.
 
-The starter repo includes everything you need: the module implementation, a deployment entry point, and a CLI for testing against remote hardware. You'll implement one method, test it, iterate on it, and move on. This is the development workflow you're used to, applied to physical devices.
+The starter repo includes everything you need: the module implementation, a deployment entry point, and a CLI for testing against remote hardware.
+You'll implement one method, test it, iterate on it, and move on.
+This is the development workflow you're used to, applied to physical devices.
 
 ## 3.2 Explore the Starter Module
 
-Before writing code, walk through what the starter repo provides. You won't modify any of these files in this section—just read them to understand the structure.
+Before writing code, walk through what the starter repo provides.
+You won't modify any of these files in this section—just read them to understand the structure.
 
 ### Service implementation
 
@@ -192,7 +208,8 @@ vision_resource_name = VisionClient.get_resource_name(vision_name)
 self.detector = cast(VisionClient, dependencies[vision_resource_name])
 ```
 
-Your code declares what it needs in `validate_config`, and Viam provides it through dependency injection. This means the same code works whether dependencies come from a remote machine (during development) or from viam-server (in production).
+Your code declares what it needs in `validate_config`, and Viam provides it through dependency injection.
+This means the same code works whether dependencies come from a remote machine (during development) or from viam-server (in production).
 
 **do_command** dispatches to `detect`, the method you'll implement:
 
@@ -204,9 +221,11 @@ async def do_command(self, command, **kwargs):
     raise Exception(f"unknown command: {command}")
 ```
 
-`do_command` is the public API for generic services. External callers pass a command dict, and the method dispatches to internal logic. This pattern keeps implementation details private while exposing a flexible interface.
+`do_command` is the public API for generic services.
+External callers pass a command dict, and the method dispatches to internal logic.
+This pattern keeps implementation details private while exposing a flexible interface.
 
-**The stub** — `detect()` currently raises an error:
+**The stub:** `detect()` currently raises an error:
 
 ```python
 async def detect(self) -> Tuple[str, float]:
@@ -251,7 +270,8 @@ The first return value from Validate lists dependencies—Viam ensures these res
 detector, err := vision.FromProvider(deps, cfg.VisionService)
 ```
 
-Your code declares what it needs in Config, and Viam provides it through dependency injection. This means the same code works whether dependencies come from a remote machine (during development) or from viam-server (in production).
+Your code declares what it needs in Config, and Viam provides it through dependency injection.
+This means the same code works whether dependencies come from a remote machine (during development) or from viam-server (in production).
 
 **DoCommand** dispatches to `detect`, the method you'll implement:
 
@@ -271,9 +291,11 @@ func (s *inspectionModuleInspector) DoCommand(ctx context.Context, cmd map[strin
 }
 ```
 
-`DoCommand` is the public API for generic services. External callers pass a command map, and the method dispatches to internal logic. This pattern keeps implementation details private while exposing a flexible interface.
+`DoCommand` is the public API for generic services.
+External callers pass a command map, and the method dispatches to internal logic.
+This pattern keeps implementation details private while exposing a flexible interface.
 
-**The stub** — `detect()` currently returns an error:
+**The stub:** `detect()` currently returns an error:
 
 ```go
 func (s *inspectionModuleInspector) detect(ctx context.Context) (string, float64, error) {
@@ -291,7 +313,8 @@ This is what you'll implement in the next section.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-The CLI (`cli.py`) connects to your remote machine and runs the inspector against it. It:
+The CLI (`cli.py`) connects to your remote machine and runs the inspector against it.
+It:
 
 1. Accepts a `--host` argument for your machine's address
 2. Reads `VIAM_API_KEY` and `VIAM_API_KEY_ID` from environment variables
@@ -300,21 +323,26 @@ The CLI (`cli.py`) connects to your remote machine and runs the inspector agains
 5. Creates an inspector instance and calls `do_command({"detect": True})`
 
 {{< alert title="Resource names" color="info" >}}
-The CLI hardcodes the camera and vision service names (`inspection-cam` and `can-detector`). These must match the names you configured in Part 1. If you used different names, update the `config` in `cli.py` before running.
+The CLI hardcodes the camera and vision service names (`inspection-cam` and `can-detector`).
+These must match the names you configured in Part 1.
+If you used different names, update the `config` in `cli.py` before running.
 {{< /alert >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The CLI (`cmd/cli/main.go`) connects to your remote machine and runs the inspector against it. It:
+The CLI (`cmd/cli/main.go`) connects to your remote machine and runs the inspector against it.
+It:
 
 1. Accepts a `-host` flag for your machine's address
-2. Uses your `viam login` credentials to authenticate via `vmodutils.ConnectToHostFromCLIToken`
+2. Uses your `viam login` credentials to authenticate through `vmodutils.ConnectToHostFromCLIToken`
 3. Converts the machine connection into dependencies your inspector can use
 4. Creates an inspector instance and calls `DoCommand({"detect": true})`
 
 {{< alert title="Resource names" color="info" >}}
-The CLI hardcodes the camera and vision service names (`inspection-cam` and `can-detector`). These must match the names you configured in Part 1. If you used different names, update the `cfg` struct in `cmd/cli/main.go` before running.
+The CLI hardcodes the camera and vision service names (`inspection-cam` and `can-detector`).
+These must match the names you configured in Part 1.
+If you used different names, update the `cfg` struct in `cmd/cli/main.go` before running.
 {{< /alert >}}
 
 {{% /tab %}}
@@ -325,12 +353,16 @@ The CLI hardcodes the camera and vision service names (`inspection-cam` and `can
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-`src/main.py` is the module entry point for deployment. When your module runs on the machine, this file registers your service with viam-server via `Module.run_from_registry()`. You won't modify this file.
+`src/main.py` is the module entry point for deployment.
+When your module runs on the machine, this file registers your service with viam-server through `Module.run_from_registry()`.
+You won't modify this file.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-`cmd/module/main.go` is the module entry point for deployment. When your module runs on the machine, this file registers your service with viam-server. You won't modify this file.
+`cmd/module/main.go` is the module entry point for deployment.
+When your module runs on the machine, this file registers your service with viam-server.
+You won't modify this file.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -353,7 +385,9 @@ async def detect(self) -> Tuple[str, float]:
     return (best.class_name, best.confidence)
 ```
 
-`get_detections_from_camera` tells the vision service which camera to use. The vision service grabs an image, runs the ML model, and returns structured detection results. Python's `max()` with a `key` function finds the highest-confidence detection.
+`get_detections_from_camera` tells the vision service which camera to use.
+The vision service grabs an image, runs the ML model, and returns structured detection results.
+Python's `max()` with a `key` function finds the highest-confidence detection.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -382,7 +416,9 @@ func (s *inspectionModuleInspector) detect(ctx context.Context) (string, float64
 }
 ```
 
-`DetectionsFromCamera` tells the vision service which camera to use. The vision service grabs an image, runs the ML model, and returns structured detection results. The code finds the highest-confidence detection and returns its label and score.
+`DetectionsFromCamera` tells the vision service which camera to use.
+The vision service grabs an image, runs the ML model, and returns structured detection results.
+The code finds the highest-confidence detection and returns its label and score.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -424,7 +460,8 @@ func (s *inspectionModuleInspector) detect(ctx context.Context) (string, float64
    Run it several times—results change as different cans pass under the camera.
 
 {{< alert title="What just happened" color="info" >}}
-Your laptop connected to the remote machine, your code called the vision service, and the vision service ran ML inference on an image from the camera. The code runs locally but uses remote hardware—this is the module-first pattern in action.
+Your laptop connected to the remote machine, your code called the vision service, and the vision service ran ML inference on an image from the camera.
+The code runs locally but uses remote hardware—this is the module-first pattern in action.
 {{< /alert >}}
 
 {{< expand "Troubleshooting" >}}
@@ -454,7 +491,9 @@ Your laptop connected to the remote machine, your code called the vision service
 
 ## 3.4 Iterate — Filter for Failures
 
-Your inspector reports every detection—PASS and FAIL. In an inspection system, you often only care about failures. Let's filter for them.
+Your inspector reports every detection—PASS and FAIL.
+In an inspection system, you often only care about failures.
+Let's filter for them.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -494,9 +533,11 @@ go run ./cmd/cli -host YOUR_MACHINE_ADDRESS
 {{% /tab %}}
 {{< /tabs >}}
 
-Now it only flags defective cans. PASS detections are treated as no detection.
+Now it only flags defective cans.
+PASS detections are treated as no detection.
 
-Edit, run, see results on real hardware—seconds, not minutes. This is the rapid iteration loop that module-first development gives you.
+Edit, run, see results on real hardware—seconds, not minutes.
+This is the rapid iteration loop that module-first development gives you.
 
 Before continuing to Part 4, **remove the filter** so the inspector reports all detections. Delete the filter block you just added, leaving the method as it was after section 3.3.
 
@@ -520,8 +561,11 @@ You wrote inspection logic and ran it against remote hardware from your laptop:
 
 ### The Key Insight
 
-Your inspector code doesn't know whether it's running from the CLI on your laptop or deployed as a module on the machine. It just uses the dependencies it's given. This abstraction is what makes rapid iteration possible during development and seamless deployment to production.
+Your inspector code doesn't know whether it's running from the CLI on your laptop or deployed as a module on the machine.
+It just uses the dependencies it's given.
+This abstraction is what makes rapid iteration possible during development and seamless deployment to production.
 
-**Your code is ready.** In Part 4, you'll deploy it to run on the machine and configure data capture for the detection results.
+**Your code is ready.**
+In Part 4, you'll deploy it to run on the machine and configure data capture for the detection results.
 
 **[Continue to Part 4: Deploy a Module →](../part-4/)**

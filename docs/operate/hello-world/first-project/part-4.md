@@ -16,7 +16,8 @@ date: "2025-01-30"
 
 ## What You'll Do
 
-In Part 3, you built inspection logic that runs from your laptop. That's great for development, but in production the code needs to run on the machine itself—so it works even when your laptop is closed.
+In Part 3, you built inspection logic that runs from your laptop.
+That's great for development, but in production the code needs to run on the machine itself—so it works even when your laptop is closed.
 
 The starter repo already created most of what you need:
 
@@ -28,7 +29,8 @@ You just need to set your namespace, build, package, and deploy.
 
 ## 4.1 Review the Module Structure
 
-The starter repo already includes everything needed to run as a module. Let's review what's there.
+The starter repo already includes everything needed to run as a module.
+Let's review what's there.
 
 ### Module entry point
 
@@ -49,7 +51,9 @@ if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
 ```
 
-`Module.run_from_registry()` connects your module to viam-server. The import of `Inspector` is what triggers model registration—when Python loads the class, `EasyResource` automatically registers it. You don't need to modify this file.
+`Module.run_from_registry()` connects your module to viam-server.
+The import of `Inspector` is what triggers model registration—when Python loads the class, `EasyResource` automatically registers it.
+You don't need to modify this file.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -64,13 +68,17 @@ func main() {
 }
 ```
 
-This connects your module to viam-server and registers the inspector model. When you add this service to your machine configuration, viam-server uses this entry point to create and manage instances. You don't need to modify this file.
+This connects your module to viam-server and registers the inspector model.
+When you add this service to your machine configuration, viam-server uses this entry point to create and manage instances.
+You don't need to modify this file.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 {{< alert title="What is a model?" color="info" >}}
-In Viam, a _model_ is a specific implementation of an API—identified by a triplet like `your-namespace:inspection-module:inspector`. This can be confusing because we also refer to ML models as "models." When you see "model" in the context of modules and resources, it means the implementation type, not a machine learning model.
+In Viam, a _model_ is a specific implementation of an API—identified by a triplet like `your-namespace:inspection-module:inspector`.
+This can be confusing because we also refer to ML models as "models."
+When you see "model" in the context of modules and resources, it means the implementation type, not a machine learning model.
 {{< /alert >}}
 
 ### Model registration
@@ -78,7 +86,8 @@ In Viam, a _model_ is a specific implementation of an API—identified by a trip
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In Python, model registration is automatic. When `Inspector` subclasses `EasyResource`, the `EasyResource.__init_subclass__` hook registers the model with viam-server using the `MODEL` class variable:
+In Python, model registration is automatic.
+When `Inspector` subclasses `EasyResource`, the `EasyResource.__init_subclass__` hook registers the model with viam-server using the `MODEL` class variable:
 
 ```python
 class Inspector(Generic, EasyResource):
@@ -137,7 +146,8 @@ This `init()` function runs automatically when the module starts, telling viam-s
 }
 ```
 
-The `entrypoint` points to `run.sh`, which creates a virtual environment, installs dependencies, and starts the module. The `models` array is pre-populated—it tells the registry what your module provides.
+The `entrypoint` points to `run.sh`, which creates a virtual environment, installs dependencies, and starts the module.
+The `models` array is pre-populated—it tells the registry what your module provides.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -152,20 +162,24 @@ The `entrypoint` points to `run.sh`, which creates a virtual environment, instal
 }
 ```
 
-The `entrypoint` is the compiled binary. The `models` array will be populated by `update-models` during the build process.
+The `entrypoint` is the compiled binary.
+The `models` array will be populated by `update-models` during the build process.
 
 {{% /tab %}}
 {{< /tabs >}}
 
 {{< alert title="The key pattern" color="tip" >}}
-The starter repo created module infrastructure. You added business logic (`detect`) and exposed it through `DoCommand`. The same constructor works for both CLI testing and module deployment.
+The starter repo created module infrastructure.
+You added business logic (`detect`) and exposed it through `DoCommand`.
+The same constructor works for both CLI testing and module deployment.
 {{< /alert >}}
 
 ## 4.2 Build and Upload Your Module
 
 ### Set your namespace
 
-The starter repos use `stations` as a placeholder namespace. You need to replace it with your organization's public namespace so the module is registered under your account.
+The starter repos use `stations` as a placeholder namespace.
+You need to replace it with your organization's public namespace so the module is registered under your account.
 
 1. Find your public namespace:
 
@@ -173,7 +187,8 @@ The starter repos use `stations` as a placeholder namespace. You need to replace
    viam organizations list
    ```
 
-   Look for the `public_namespace` value for your organization. If you don't have one set, go to your organization's settings page in the Viam app to create one.
+   Look for the `public_namespace` value for your organization.
+   If you don't have one set, go to your organization's settings page in the Viam app to create one.
 
 2. Update `meta.json`—replace `stations` with your namespace in both the `module_id` and (if present) the `model` field:
 
@@ -247,7 +262,9 @@ Replace `/full/path/to/` with the absolute path to your module directory.
 
 **Cross-compile for the target platform:**
 
-Your module will run inside a Linux container, not on your development machine. Even if your Mac and the container both use ARM processors, a macOS binary won't run on Linux—you need to cross-compile. Cross-compilation also requires disabling CGO (Go's C interop) and using the `no_cgo` build tag.
+Your module will run inside a Linux container, not on your development machine.
+Even if your Mac and the container both use ARM processors, a macOS binary won't run on Linux—you need to cross-compile.
+Cross-compilation also requires disabling CGO (Go's C interop) and using the `no_cgo` build tag.
 
 {{< tabs >}}
 {{% tab name="Mac (Apple Silicon)" %}}
@@ -302,7 +319,8 @@ tar czf module.tar.gz meta.json bin/
 
 ### Upload to the registry
 
-The `--platform` flag must match your machine's architecture. Replace `<archive>` with your archive path from the previous step (`dist/archive.tar.gz` for Python, `module.tar.gz` for Go):
+The `--platform` flag must match your machine's architecture.
+Replace `<archive>` with your archive path from the previous step (`dist/archive.tar.gz` for Python, `module.tar.gz` for Go):
 
 {{< tabs >}}
 {{% tab name="Mac (Apple Silicon)" %}}
@@ -383,15 +401,19 @@ Click **Save**.
 
 {{<imgproc src="/tutorials/first-project/docommand-test.png" resize="x1100" declaredimensions=true alt="DoCommand test panel showing detection result with label PASS and confidence score." class="imgzoom shadow">}}
 
-The module is now ready. You'll configure automatic detection in the next section.
+The module is now ready.
+You'll configure automatic detection in the next section.
 
 ## 4.4 Configure Detection Data Capture
 
-In Part 2, you captured images from the vision service. Those images are great for visual review, but they're binary data—you can't query them with SQL. Now you'll configure **tabular data capture** on your inspector's DoCommand, which will let you query detection results.
+In Part 2, you captured images from the vision service.
+Those images are great for visual review, but they're binary data—you can't query them with SQL.
+Now you'll configure **tabular data capture** on your inspector's DoCommand, which will let you query detection results.
 
 **Add inspector-service as a data manager dependency:**
 
-The data manager needs to know about your inspector service before it can capture data from it. You'll add this dependency in the JSON configuration.
+The data manager needs to know about your inspector service before it can capture data from it.
+You'll add this dependency in the JSON configuration.
 
 1. In the **Configure** tab, click **JSON** in the upper left
 2. Find the `data-service` entry in the `services` array
@@ -462,7 +484,8 @@ After a few minutes of data collection, you can query the results:
 
 **Understanding the data structure:**
 
-Each captured detection is stored as a JSON document. Here's what the data looks like:
+Each captured detection is stored as a JSON document.
+Here's what the data looks like:
 
 ```json
 {
@@ -495,7 +518,9 @@ The key fields for analysis are nested under `data.docommand_output`:
 
 **Querying with MQL:**
 
-You can also query using MQL (MongoDB Query Language), which is useful for aggregations. Select **MQL** in the Query interface. For example, to count failures by hour:
+You can also query using MQL (MongoDB Query Language), which is useful for aggregations.
+Select **MQL** in the Query interface.
+For example, to count failures by hour:
 
 ```javascript
 [
