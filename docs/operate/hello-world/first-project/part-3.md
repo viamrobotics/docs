@@ -4,35 +4,27 @@ title: "Part 3: Control Logic"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Write inspection logic that detects defective cans."
+description: "Write inspection logic and run it against remote hardware from your laptop."
 date: "2025-01-30"
 ---
 
-**Goal:** Write inspection logic that detects defective cans.
+**Goal:** Write inspection logic and run it against remote hardware from your laptop.
 
-**Skills:** Generate module scaffolding using the Viam CLI, experience with Viam SDKs, develop code iteratively against remote hardware
+**Skills:** Write code against remote hardware, connect to a machine over the network, iterate rapidly without deploying, call a built-in service from code.
 
-**Time:** ~15 min
+**Time:** ~10 min
 
 ## What You'll Build
 
-Your vision pipeline detects defective cans and records the results with images synced to the cloud. Now you'll write a module that calls the vision service and exposes detection results through `DoCommand`. This detection data can drive dashboards, alerts, or—in a production system—trigger actuators to reject defective cans.
+Your vision pipeline detects defective cans and your data capture records the results.
+Now you'll write the inspection logic that calls the vision service and exposes detection results through `DoCommand`.
+This detection data can drive dashboards, alerts, or—in a production system—trigger actuators to reject defective cans.
 
-You'll use the **module-first development pattern**: write code on your laptop, test it against remote hardware over the network. This workflow lets you iterate quickly—edit code, run it, see results—without redeploying after every change.
+You'll use the **module-first development pattern**: write code on your laptop, run it against real hardware over the network, and see results in seconds.
+No deploying, no SSH, no waiting.
+When the code is ready, it deploys to the machine without changes.
 
 ## Prerequisites
-
-This part of the tutorial requires the Go programming language and the Viam CLI.
-
-### Install Go
-
-Check your Go version:
-
-```bash
-go version
-```
-
-You need Go 1.21 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
 
 ### Install the Viam CLI
 
@@ -83,234 +75,182 @@ viam login
 This stores credentials that your code will use to connect to remote machines.
 
 {{< alert title="Note" color="info" >}}
-The Viam CLI (`viam`) is different from `viam-server`. The CLI runs on your development machine; `viam-server` runs on your robot/machine.
+The Viam CLI (`viam`) is different from `viam-server`.
+The CLI runs on your development machine; `viam-server` runs on your robot/machine.
 {{< /alert >}}
 
-## 3.1 Generate the Module Scaffolding
+### Language Setup
 
-A **module** in Viam is a package of code that adds capabilities to a machine. Modules run alongside viam-server and can provide custom components (like a new type of sensor) or services (like our inspection logic). By packaging code as a module, you can deploy it to any machine, share it with others, and manage versions through the Viam registry.
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-The Viam CLI can generate module boilerplate—saving you from writing registration code, build configuration, and project structure from scratch. This lets you focus on your business logic instead of infrastructure.
+**Install Python:**
 
-**Set your organization's namespace:**
-
-Before creating a module, your organization needs a public namespace. This is a unique identifier used in module names (for example, `my-namespace:inspection-module`).
-
-1. Click the organization dropdown in the upper right corner of the Viam app next to your initials
-2. Select **Settings**
-3. Find **Public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
-4. Click **Save**
-
-{{<imgproc src="/tutorials/first-project/org-settings-dropdown.png" resize="x1100" declaredimensions=true alt="Organization dropdown menu showing Settings option." class="imgzoom shadow">}}
-
-If your organization already has a namespace, you can skip this step.
-
-**Generate the module scaffolding:**
+Check your Python version:
 
 ```bash
-viam module generate
+python3 --version
 ```
 
-Enter these values when prompted:
+You need Python 3.8 or later.
+If Python isn't installed or is outdated, download it from [python.org](https://www.python.org/downloads/).
 
-| Prompt                 | Value                      |
-| ---------------------- | -------------------------- |
-| Module name            | `inspection-module`        |
-| Language               | `Go`                       |
-| Visibility             | `Private`                  |
-| Namespace/Organization | _Select your organization_ |
-| Resource type          | `Generic Service`          |
-| Model name             | `inspector`                |
-| Register module        | `Yes`                      |
+**Create an API key:**
 
-**Why Generic Service?** Viam has built-in APIs for hardware (camera, motor, arm). When your logic doesn't fit those categories, Generic Service provides a flexible `DoCommand` interface—ideal for application-specific logic like inspection.
+The Python SDK authenticates with API keys (it does not support CLI token authentication).
+Create one now:
 
-**What does "Register module" do?** Creates an entry in the Viam registry (just metadata, not your code). This enables cloud deployment later.
+1. In the Viam app, click your machine's name to go to its page
+2. Click the **API keys** tab
+3. Click **Generate key**
+4. Copy the **API key** and **API key ID**
 
-### Files You'll Work With
-
-The generator creates a complete module structure. You'll focus on three files:
-
-- **`module.go`**—Your service implementation. Contains Config, constructor, and methods. This is where your inspection logic goes.
-- **`cmd/cli/main.go`**—CLI for local testing. We'll modify this to connect to your remote machine so you can test against real hardware without deploying.
-- **`cmd/module/main.go`**—Entry point when deployed. Registers your service with viam-server. You won't modify this.
-
-This is the **module-first development pattern**: write logic in `module.go`, test locally with the CLI against your real machine, then deploy.
-
-## 3.2 Add Remote Machine Connection
-
-The generated CLI creates your service with empty dependencies—fine for testing logic in isolation, but useless for testing against real hardware. We'll modify it to connect to your remote machine and access its resources. With this approach to Viam application development, your code runs locally on your laptop, but it talks to real cameras and other hardware your machine configuration includes.
-
-Why is this valuable? Traditional embedded development requires: edit code → build → deploy → test → repeat. With module-first development: edit code → run locally → see results on real hardware. The iteration cycle drops from minutes to seconds.
-
-### Step 1: Connect to Your Machine
-
-The generated `realMain` function creates your inspector with empty dependencies—useful for testing in isolation, but it can't access your remote machine. We'll replace it with code that:
-
-- Accepts a `-host` flag for your machine's address
-- Uses your `viam login` credentials to authenticate
-- Establishes a secure connection to the remote machine
-
-Open `cmd/cli/main.go` and replace the import block with:
-
-```go
-import (
-    "context"
-    "flag"
-    "fmt"
-
-    "github.com/erh/vmodutils"
-    "go.viam.com/rdk/logging"
-)
-```
-
-Then replace the `realMain` function with:
-
-```go
-func realMain() error {
-    ctx := context.Background()
-    logger := logging.NewLogger("cli")
-
-    host := flag.String("host", "", "Machine address (required)")
-    flag.Parse()
-
-    if *host == "" {
-        return fmt.Errorf("need -host flag (get address from Viam app)")
-    }
-
-    logger.Infof("Connecting to %s...", *host)
-    machine, err := vmodutils.ConnectToHostFromCLIToken(ctx, *host, logger)
-    if err != nil {
-        return fmt.Errorf("failed to connect: %w", err)
-    }
-    defer machine.Close(ctx)
-
-    logger.Info("Connected successfully!")
-    return nil
-}
-```
-
-**Test the connection:**
-
-1. In the Viam app, go to your machine's **Configure** page
-2. Click the **Online** dropdown
-3. Click **Remote address** to copy your machine address
-
-   {{<imgproc src="/tutorials/first-project/machine-address.png" resize="x1100" declaredimensions=true alt="Live dropdown showing Remote address option with machine address visible." class="imgzoom shadow">}}
-
-4. ```bash
-   go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
-   ```
-
-   You'll see WebRTC diagnostic output as the connection is established. Look for these messages confirming the connection:
-
-   ```text
-   Connecting to your-machine.abc123.viam.cloud...
-   ...
-   successfully (re)connected to remote at address
-   ...
-   Connected successfully!
-   ```
-
-   If you see an error, verify:
-
-   - Your machine is online (check the Viam app)
-   - You're logged in (`viam login`)
-   - The address is correct
-
-### Step 2: Access Remote Resources
-
-Now let's verify we can access the camera on the remote machine.
-
-**Add the camera import:**
-
-At the top of `cmd/cli/main.go`, add this import:
-
-```go
-"go.viam.com/rdk/components/camera"
-```
-
-**Fetch the camera dependencies:**
+Set the environment variables in your terminal:
 
 ```bash
+export VIAM_API_KEY="your-api-key"
+export VIAM_API_KEY_ID="your-api-key-id"
+```
+
+{{< alert title="Tip" color="tip" >}}
+Add these exports to your shell profile (`.bashrc`, `.zshrc`) so they persist across terminal sessions.
+{{< /alert >}}
+
+**Clone the starter repo:**
+
+```bash
+git clone https://github.com/viamrobotics/inspection-module-starter-python.git
+cd inspection-module-starter-python
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+On Windows, activate the virtual environment with `venv\Scripts\activate` instead.
+
+This repo contains a pre-built module with one method left for you to implement.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Install Go:**
+
+Check your Go version:
+
+```bash
+go version
+```
+
+You need Go 1.21 or later.
+If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
+
+**Clone the starter repo:**
+
+```bash
+git clone https://github.com/viamrobotics/inspection-module-starter.git
+cd inspection-module-starter
 go mod tidy
 ```
 
-**Add camera access after the connection:**
+This repo contains a pre-built module with one method left for you to implement.
 
-After the `logger.Info("Connected successfully!")` line, add:
+{{% /tab %}}
+{{< /tabs >}}
 
-```go
-// Get the camera from the remote machine
-cam, err := camera.FromProvider(machine, "inspection-cam")
-if err != nil {
-    return fmt.Errorf("failed to get camera: %w", err)
-}
+## 3.1 Why Start with a Module?
 
-// Capture an image
-images, _, err := cam.Images(ctx, nil, nil)
-if err != nil {
-    return fmt.Errorf("failed to get images: %w", err)
-}
+Viam development starts with modules, not scripts.
+A **module** is a package of code that adds capabilities to a machine—custom components, services, or in this case, inspection logic.
+By writing your code as a module from the start, the same code runs locally during development and on the machine in production.
+There's no restructuring when you're ready to deploy.
 
-if len(images) == 0 {
-    return fmt.Errorf("no images returned from camera")
-}
+This matters because the traditional embedded development loop—edit, build, deploy, test, repeat—is slow.
+With a module, you edit code on your laptop, run it locally against remote hardware, and see results immediately.
+The iteration cycle drops from minutes to seconds.
 
-logger.Infof("Got image from camera: %s", images[0].SourceName)
+The starter repo includes everything you need: the module implementation, a deployment entry point, and a CLI for testing against remote hardware.
+You'll implement one method, test it, iterate on it, and move on.
+This is the development workflow you're used to, applied to physical devices.
+
+## 3.2 Explore the Starter Module
+
+Before writing code, walk through what the starter repo provides.
+You won't modify any of these files in this section—just read them to understand the structure.
+
+### Service implementation
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Open `src/models/inspector.py`. The key parts:
+
+**validate_config** declares the resources your inspector needs and returns them as dependencies:
+
+```python
+@classmethod
+def validate_config(
+    cls, config: ComponentConfig
+) -> Tuple[Sequence[str], Sequence[str]]:
+    fields = config.attributes.fields
+    if "camera" not in fields or not fields["camera"].string_value:
+        raise Exception("camera is required")
+    if "vision" not in fields or not fields["vision"].string_value:
+        raise Exception("vision is required")
+    return [fields["camera"].string_value, fields["vision"].string_value], []
 ```
 
-If your editor doesn't auto-format, run `gofmt -w cmd/cli/main.go` to fix indentation.
+The first element of the returned tuple lists required dependencies—Viam ensures these resources exist before creating your service.
 
-**Test resource access:**
+**reconfigure** wires the vision service by extracting it from the injected dependencies:
 
-```bash
-go mod tidy
-go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
+```python
+vision_resource_name = VisionClient.get_resource_name(vision_name)
+self.detector = cast(VisionClient, dependencies[vision_resource_name])
 ```
 
-You'll see the same WebRTC diagnostic output, followed by the camera confirmation:
+Your code declares what it needs in `validate_config`, and Viam provides it through dependency injection.
+This means the same code works whether dependencies come from a remote machine (during development) or from viam-server (in production).
 
-```text
-Connected successfully!
-Got image from camera: inspection-cam
+**do_command** dispatches to `detect`, the method you'll implement:
+
+```python
+async def do_command(self, command, **kwargs):
+    if "detect" in command:
+        label, confidence = await self.detect()
+        return {"label": label, "confidence": confidence}
+    raise Exception(f"unknown command: {command}")
 ```
 
-You've just accessed a camera on a remote machine from your local development environment. This same pattern works for any Viam resource—motors, sensors, vision services, or custom components.
+`do_command` is the public API for generic services.
+External callers pass a command dict, and the method dispatches to internal logic.
+This pattern keeps implementation details private while exposing a flexible interface.
 
-{{< alert title="Takeaway" color="tip" >}}
-The `vmodutils.ConnectToHostFromCLIToken` function uses your `viam login` credentials to establish a secure connection. Once connected, you access resources the same way you would in deployed code. This abstraction is what makes module-first development possible.
-{{< /alert >}}
+**The stub:** `detect()` currently raises an error:
 
-## 3.3 Add Detection Logic
+```python
+async def detect(self) -> Tuple[str, float]:
+    raise NotImplementedError("not implemented: fill in the detect method")
+```
 
-Now we'll implement the actual inspection logic. The generator created `module.go` with stub methods—we'll fill them in to call the vision service and process results.
+This is what you'll implement in the next section.
 
-Complete all five steps below, then test at the end.
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-{{< alert title="Concept: Dependency Injection" color="info" >}}
-Your inspector needs a vision service to detect cans. Rather than hardcoding how to find that service, you _declare_ the dependency in your Config, and Viam _injects_ it into your constructor. This means:
+Open `module.go`. The key parts:
 
-- Your code doesn't know where resources live (local or remote)
-- The same code works in CLI testing and deployed modules
-  {{< /alert >}}
-
-### Step 1: Declare Dependencies
-
-The Config struct tells Viam what resources your inspector needs. The Validate method returns those resource names so Viam knows to inject them.
-
-Remember in Part 1 when you configured the camera with `"id": "/inspection_camera"`? When you add the service we're building now to your machine (in Part 4 of this tutorial), you'll configure it with attributes for the camera and vision service to use.
-
-The Config struct in the code below specifies what the names of those attributes will be in the configuration JSON you'll update after including this module in your machine config.
-
-In `module.go`, find the `Config` struct and `Validate` method and replace them with the code below.
+**Config** declares the resources your inspector needs—a camera and a vision service:
 
 ```go
 type Config struct {
     Camera        string `json:"camera"`
     VisionService string `json:"vision"`
 }
+```
 
+**Validate** returns these as dependencies so Viam injects them before creating your service:
+
+```go
 func (cfg *Config) Validate(path string) ([]string, []string, error) {
     if cfg.Camera == "" {
         return nil, nil, fmt.Errorf("camera is required")
@@ -324,71 +264,135 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 
 The first return value from Validate lists dependencies—Viam ensures these resources exist before creating your service.
 
-### Step 2: Store Dependencies
-
-The generated struct needs a field to hold the vision service that Viam will inject.
-
-Find the `inspectionModuleInspector` struct in `module.go` and add a `detector` field:
+**NewInspector** wires the vision service by extracting it from the injected dependencies:
 
 ```go
-type inspectionModuleInspector struct {
-    resource.AlwaysRebuild
+detector, err := vision.FromProvider(deps, cfg.VisionService)
+```
 
-    name   resource.Name
-    logger logging.Logger
-    cfg    *Config
+Your code declares what it needs in Config, and Viam provides it through dependency injection.
+This means the same code works whether dependencies come from a remote machine (during development) or from viam-server (in production).
 
-    cancelCtx  context.Context
-    cancelFunc func()
+**DoCommand** dispatches to `detect`, the method you'll implement:
 
-    detector vision.Service  // Add this field
+```go
+func (s *inspectionModuleInspector) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    if _, ok := cmd["detect"]; ok {
+        label, confidence, err := s.detect(ctx)
+        if err != nil {
+            return nil, err
+        }
+        return map[string]interface{}{
+            "label":      label,
+            "confidence": confidence,
+        }, nil
+    }
+    return nil, fmt.Errorf("unknown command: %v", cmd)
 }
 ```
 
-The `detector` field will hold a reference to the vision service.
+`DoCommand` is the public API for generic services.
+External callers pass a command map, and the method dispatches to internal logic.
+This pattern keeps implementation details private while exposing a flexible interface.
 
-Add the vision import to your import block:
-
-```go
-"go.viam.com/rdk/services/vision"
-```
-
-### Step 3: Wire Dependencies
-
-The constructor extracts the vision service from the dependencies map and stores it in the struct. This validates that the vision service exists on the machine and that methods on that struct in the module we're writing have access to it.
-
-Update `NewInspector` in `module.go`:
+**The stub:** `detect()` currently returns an error:
 
 ```go
-func NewInspector(ctx context.Context, deps resource.Dependencies, name resource.Name, cfg *Config, logger logging.Logger) (resource.Resource, error) {
-    cancelCtx, cancelFunc := context.WithCancel(context.Background())
-
-    // --- Add this block ---
-    detector, err := vision.FromProvider(deps, cfg.VisionService)
-    if err != nil {
-        return nil, fmt.Errorf("failed to get vision service %q: %w", cfg.VisionService, err)
-    }
-    // --- End add ---
-
-    s := &inspectionModuleInspector{
-        name:       name,
-        logger:     logger,
-        cfg:        cfg,
-        cancelCtx:  cancelCtx,
-        cancelFunc: cancelFunc,
-        detector:   detector,  // Add this field
-    }
-    return s, nil
+func (s *inspectionModuleInspector) detect(ctx context.Context) (string, float64, error) {
+    return "", 0, fmt.Errorf("not implemented: fill in the detect method")
 }
 ```
 
-`vision.FromProvider` looks up the resource by name and returns it as the correct type. If the resource doesn't exist or isn't a vision service, it returns an error.
+This is what you'll implement in the next section.
 
-### Step 4: Add Detection Logic
+{{% /tab %}}
+{{< /tabs >}}
 
-Now add the internal method that performs inspection, and update `DoCommand` to expose it.
+### CLI
 
-Add the `detect` method to `module.go` (lowercase—it's internal):
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+The CLI (`cli.py`) connects to your remote machine and runs the inspector against it.
+It:
+
+1. Accepts a `--host` argument for your machine's address
+2. Reads `VIAM_API_KEY` and `VIAM_API_KEY_ID` from environment variables
+3. Connects using `RobotClient.Options.with_api_key()`
+4. Builds dependencies from the remote machine's resources
+5. Creates an inspector instance and calls `do_command({"detect": True})`
+
+{{< alert title="Resource names" color="info" >}}
+The CLI hardcodes the camera and vision service names (`inspection-cam` and `can-detector`).
+These must match the names you configured in Part 1.
+If you used different names, update the `config` in `cli.py` before running.
+{{< /alert >}}
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+The CLI (`cmd/cli/main.go`) connects to your remote machine and runs the inspector against it.
+It:
+
+1. Accepts a `-host` flag for your machine's address
+2. Uses your `viam login` credentials to authenticate through `vmodutils.ConnectToHostFromCLIToken`
+3. Converts the machine connection into dependencies your inspector can use
+4. Creates an inspector instance and calls `DoCommand({"detect": true})`
+
+{{< alert title="Resource names" color="info" >}}
+The CLI hardcodes the camera and vision service names (`inspection-cam` and `can-detector`).
+These must match the names you configured in Part 1.
+If you used different names, update the `cfg` struct in `cmd/cli/main.go` before running.
+{{< /alert >}}
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Module entry point
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+`src/main.py` is the module entry point for deployment.
+When your module runs on the machine, this file registers your service with viam-server through `Module.run_from_registry()`.
+You won't modify this file.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+`cmd/module/main.go` is the module entry point for deployment.
+When your module runs on the machine, this file registers your service with viam-server.
+You won't modify this file.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## 3.3 Implement Detection
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+Open `src/models/inspector.py` and find the `detect` method stub. Replace it with:
+
+```python
+async def detect(self) -> Tuple[str, float]:
+    detections = await self.detector.get_detections_from_camera(self.camera_name)
+
+    if len(detections) == 0:
+        return ("NO_DETECTION", 0.0)
+
+    best = max(detections, key=lambda d: d.confidence)
+    return (best.class_name, best.confidence)
+```
+
+`get_detections_from_camera` tells the vision service which camera to use.
+The vision service grabs an image, runs the ML model, and returns structured detection results.
+Python's `max()` with a `key` function finds the highest-confidence detection.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+Open `module.go` and find the `detect` method stub. Replace it with:
 
 ```go
 func (s *inspectionModuleInspector) detect(ctx context.Context) (string, float64, error) {
@@ -412,171 +416,156 @@ func (s *inspectionModuleInspector) detect(ctx context.Context) (string, float64
 }
 ```
 
-`DetectionsFromCamera` tells the vision service which camera to use. The vision service grabs an image, runs the ML model, and returns structured detection results. We find the highest-confidence detection and return its label and score.
+`DetectionsFromCamera` tells the vision service which camera to use.
+The vision service grabs an image, runs the ML model, and returns structured detection results.
+The code finds the highest-confidence detection and returns its label and score.
 
-Now update the generated `DoCommand` stub to dispatch to `detect`:
+{{% /tab %}}
+{{< /tabs >}}
 
-```go
-func (s *inspectionModuleInspector) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
-    if _, ok := cmd["detect"]; ok {
-        label, confidence, err := s.detect(ctx)
-        if err != nil {
-            return nil, err
-        }
-        return map[string]interface{}{
-            "label":      label,
-            "confidence": confidence,
-        }, nil
-    }
-    return nil, fmt.Errorf("unknown command: %v", cmd)
-}
-```
+### Run it
 
-`DoCommand` is the public API for generic services. External callers pass a command map, and the method dispatches to internal logic. This pattern keeps implementation details private while exposing a flexible interface.
+1. In the Viam app, go to your machine's **Configure** page
+2. Click the **Online** dropdown
+3. Click **Remote address** to copy your machine address
 
-### Step 5: Update the CLI
+   {{<imgproc src="/tutorials/first-project/machine-address.png" resize="x1100" declaredimensions=true alt="Live dropdown showing Remote address option with machine address visible." class="imgzoom shadow">}}
 
-Now wire everything together in `cmd/cli/main.go` so we can test. This replaces the camera test code from section 3.2.
+4. Run:
 
-Replace the `realMain` function:
+{{< tabs >}}
+{{% tab name="Python" %}}
 
-```go
-func realMain() error {
-    ctx := context.Background()
-    logger := logging.NewLogger("cli")
+   ```bash
+   python cli.py --host YOUR_MACHINE_ADDRESS
+   ```
 
-    host := flag.String("host", "", "Machine address (required)")
-    flag.Parse()
+{{% /tab %}}
+{{% tab name="Go" %}}
 
-    if *host == "" {
-        return fmt.Errorf("need -host flag (get address from Viam app)")
-    }
+   ```bash
+   go run ./cmd/cli -host YOUR_MACHINE_ADDRESS
+   ```
 
-    logger.Infof("Connecting to %s...", *host)
-    machine, err := vmodutils.ConnectToHostFromCLIToken(ctx, *host, logger)
-    if err != nil {
-        return fmt.Errorf("failed to connect: %w", err)
-    }
-    defer machine.Close(ctx)
+{{% /tab %}}
+{{< /tabs >}}
 
-    cfg := &inspectionmodule.Config{
-        Camera:        "inspection-cam",
-        VisionService: "vision-service",
-    }
+   You should see:
 
-    deps, err := vmodutils.MachineToDependencies(machine)
-    if err != nil {
-        return fmt.Errorf("failed to get dependencies: %w", err)
-    }
+   ```text
+   Connecting to your-machine-main.abc123.viam.cloud...
+   Detection: PASS (94.2% confidence)
+   ```
 
-    inspector, err := inspectionmodule.NewInspector(
-        ctx,
-        deps,
-        generic.Named("inspector"),
-        cfg,
-        logger,
-    )
-    if err != nil {
-        return fmt.Errorf("failed to create inspector: %w", err)
-    }
-
-    result, err := inspector.DoCommand(ctx, map[string]interface{}{"detect": true})
-    if err != nil {
-        return fmt.Errorf("detection failed: %w", err)
-    }
-
-    label := result["label"].(string)
-    confidence := result["confidence"].(float64)
-    logger.Infof("Detection: %s (%.1f%% confidence)", label, confidence*100)
-    return nil
-}
-```
-
-The CLI creates the inspector with dependencies from the remote machine, then calls `DoCommand` with `{"detect": true}`. This is the same pattern used in production Viam modules, where `DoCommand` is the public API for generic services.
-
-Update the imports:
-
-```go
-import (
-    "context"
-    "flag"
-    "fmt"
-
-    "inspectionmodule"
-    "github.com/erh/vmodutils"
-    "go.viam.com/rdk/logging"
-    "go.viam.com/rdk/services/generic"
-)
-```
-
-### Test Detection
-
-Fetch dependencies and run:
-
-```bash
-go mod tidy
-go run ./cmd/cli -host YOUR_MACHINE_ADDRESS
-```
-
-You should see:
-
-```text
-Connecting to your-machine-main.abc123.viam.cloud...
-Detection: PASS (94.2% confidence)
-```
-
-Run it several times—results change as different cans pass under the camera.
+   Run it several times—results change as different cans pass under the camera.
 
 {{< alert title="What just happened" color="info" >}}
-Your laptop connected to the remote machine, your code called the vision service, and the vision service ran ML inference on an image from the camera. The code runs locally but uses remote hardware—this is the module-first pattern in action.
+Your laptop connected to the remote machine, your code called the vision service, and the vision service ran ML inference on an image from the camera.
+The code runs locally but uses remote hardware—this is the module-first pattern in action.
 {{< /alert >}}
 
 {{< expand "Troubleshooting" >}}
 **"failed to connect" or timeout errors:**
 
 - Verify your machine is online in the Viam app
-- Check that you've run `viam login` successfully
 - Confirm the host address is correct
+- **Go:** Check that you've run `viam login` successfully
+- **Python:** Verify `VIAM_API_KEY` and `VIAM_API_KEY_ID` are set (`echo $VIAM_API_KEY`)
 
-**"failed to get vision service" error:**
+**"failed to get vision service" or "not found in dependencies" error:**
 
-- Verify `vision-service` exists in your machine config (Part 1)
-- Check the exact name matches—it's case-sensitive
+- Verify the vision service name in your CLI file matches your machine config from Part 1
+- Check the exact name—it's case-sensitive
 
 **"NO_DETECTION" result:**
 
 - Normal if no can is in view—wait for one to appear
 - Check the camera is working in the Viam app's Test panel
-  {{< /expand >}}
 
-{{< alert title="Checkpoint" color="success" >}}
-You can now detect cans from your laptop. You declared dependencies in Config, returned them from Validate, and extracted them in the constructor. This pattern works for any Viam resource.
-{{< /alert >}}
+**Python: ModuleNotFoundError or ImportError:**
 
-## 3.4 Summary
+- Verify your virtual environment is activated (`source venv/bin/activate`)
+- Verify dependencies are installed (`pip install -r requirements.txt`)
+- Run from the repo root directory
+{{< /expand >}}
 
-You built a complete inspection system using the module-first development pattern:
+## 3.4 Iterate — Filter for Failures
 
-1. **Generated** the module scaffold—infrastructure handled, you focus on logic
-2. **Connected** to remote hardware from local code using vmodutils
-3. **Implemented detection** by calling the vision service and exposing results through `DoCommand`
+Your inspector reports every detection—PASS and FAIL.
+In an inspection system, you often only care about failures.
+Let's filter for them.
 
-{{< alert title="Extending the inspector" color="tip" >}}
-In a production system, you could extend `DoCommand` to trigger actuators—for example, a motor that pushes defective cans off the belt. The same dependency injection pattern applies: declare the motor in Config, extract it in the constructor, and call it from your detection logic.
-{{< /alert >}}
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+In `src/models/inspector.py`, add a check after finding the highest-confidence detection. Insert these lines just before the final `return` in `detect`:
+
+```python
+    # Only report failures — treat PASS as no detection
+    if best.class_name != "FAIL":
+        return ("NO_DETECTION", 0.0)
+```
+
+Run again:
+
+```bash
+python cli.py --host YOUR_MACHINE_ADDRESS
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+In `module.go`, add a check after finding the highest-confidence detection. Insert these lines just before the final `return` in `detect`:
+
+```go
+    // Only report failures — treat PASS as no detection
+    if best.Label() != "FAIL" {
+        return "NO_DETECTION", 0, nil
+    }
+```
+
+Run again:
+
+```bash
+go run ./cmd/cli -host YOUR_MACHINE_ADDRESS
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Now it only flags defective cans.
+PASS detections are treated as no detection.
+
+Edit, run, see results on real hardware—seconds, not minutes.
+This is the rapid iteration loop that module-first development gives you.
+
+Before continuing to Part 4, **remove the filter** so the inspector reports all detections. Delete the filter block you just added, leaving the method as it was after section 3.3.
+
+## 3.5 Summary
+
+You wrote inspection logic and ran it against remote hardware from your laptop:
+
+1. **Connected** to a remote machine over the network—no VPN, no SSH
+2. **Implemented detection** by calling a built-in vision service from code
+3. **Iterated rapidly** by editing and re-running—seconds, not minutes
+4. **Used the module-first pattern**—the same code deploys to the machine without changes
 
 ### What You Learned
 
 | Concept                      | What It Means                                         | Where You'll Use It                      |
 | ---------------------------- | ----------------------------------------------------- | ---------------------------------------- |
-| **Module-first development** | Test against real hardware without deploying          | Any time you're developing control logic |
+| **Remote development**       | Code on your laptop talks to real hardware             | Any time you're developing control logic |
+| **Module-first development** | Same code works in dev and production                  | Every module you build                   |
 | **Dependency injection**     | Declare what you need, let Viam provide it            | Every module you build                   |
 | **DoCommand pattern**        | Expose functionality through a flexible map-based API | Any generic service                      |
 
 ### The Key Insight
 
-Your inspector code doesn't know whether it's running from the CLI on your laptop or deployed as a module on the machine. It just uses the dependencies it's given. This abstraction is what makes rapid iteration possible during development and seamless deployment to production.
+Your inspector code doesn't know whether it's running from the CLI on your laptop or deployed as a module on the machine.
+It just uses the dependencies it's given.
+This abstraction is what makes rapid iteration possible during development and seamless deployment to production.
 
-**Your code is ready.** In Part 4, you'll deploy it to run on the machine and configure data capture for the detection results.
+**Your code is ready.**
+In Part 4, you'll deploy it to run on the machine and configure data capture for the detection results.
 
 **[Continue to Part 4: Deploy a Module →](../part-4/)**
