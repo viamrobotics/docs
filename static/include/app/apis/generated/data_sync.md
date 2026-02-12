@@ -59,16 +59,18 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
   (for example, "movementSensor").
 - `componentName` (string) (required): The name of the component used to capture the data.
 - `methodName` (string) (required): The name of the method used to capture the data.
-- `fileExtension` (string) (required): The file extension of binary data including the
-  period, for example .jpg, .png, or .pcd. The backend will route the
-  binary to its corresponding mime type based on this extension. Files with
-  a .jpeg, .jpg, or .png extension will be saved to the images tab.
 - `dataRequestTimes` (Date) (required): Tuple containing `Date` objects denoting the times
   this data was requested\[0] by the robot and received\[1] from the
   appropriate sensor.
-- `tags` (string) (optional): The list of tags to allow for tag\-based filtering when
-  retrieving data.
-- `datasetIds` (string) (optional)
+- `options` (BinaryDataCaptureUploadOptions) (optional): Optional parameters including:
+  - `mimeType` (string) (optional): The MIME type of the data.
+  - `fileExtension` (string) (optional): The file extension of binary data including the
+    period, for example .jpg, .png, or .pcd. The backend will route the
+    binary to its corresponding mime type based on this extension. Files with
+    a .jpeg, .jpg, or .png extension will be saved to the images tab.
+  - `tags` (string\[\]) (optional): The list of tags to allow for tag\-based filtering when
+    retrieving data.
+  - `datasetIds` (string\[\]) (optional): Dataset IDs to add the data to.
 
 **Returns:**
 
@@ -83,8 +85,8 @@ const binaryDataId = await dataClient.binaryDataCaptureUpload(
   'rdk:component:camera',
   'my-camera',
   'GetImages',
-  '.jpg',
-  [new Date('2025-03-19'), new Date('2025-03-19')]
+  [new Date('2025-03-19'), new Date('2025-03-19')],
+  { mimeType: 'image/jpeg' }
 );
 ```
 
