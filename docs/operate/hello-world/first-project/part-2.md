@@ -12,7 +12,7 @@ date: "2025-01-30"
 
 **Skills:** Data capture configuration, cloud sync, browsing captured data.
 
-**Time:** ~10 min
+**Time:** ~5 min
 
 For inspection applications such as this one, monitoring defect detection is important both to ensure production line health and product quality.
 You want to ensure the vision model is detecting a very high percentage of defects and quickly detect any problems.
@@ -28,11 +28,16 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 **Include the data service in your machine configuration:**
 
 1. Click **+** next to **inspection-station-1-main** in the **Configure** tab
-2. Click **Component or service**
-3. Select **data management**
-4. Name it `data-service`
-5. Click **Create**
-6. **Save** your updated machine configuration
+2. Click **Configuration block**
+3. Search for `data`
+4. Select **builtin** (this is the built-in **Data Manager** service)
+
+   {{<imgproc src="/tutorials/first-project/data-service-search.png" resize="x1100" declaredimensions=true alt="Configuration Blocks search dialog showing the builtin Data Manager service." class="imgzoom shadow">}}
+
+5. Click **Add component**
+6. Name it `data-service`
+7. Click **Add component**
+8. **Save** your updated machine configuration
 
 The default configuration options for the data service are correct for our application so we can move on to capturing data from the vision service.
 
@@ -50,10 +55,14 @@ The default configuration options for the data service are correct for our appli
 1. In the **Data capture** section of the `vision-service` configuration panel you should now see a collapsible component labeled **Latest capture** with a day and time specified
 2. Click on **Latest capture** and view the most recent image captured
 
-Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.
+Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application.
+Once synced to the cloud, the data is removed from your machine to free up storage.
+
+{{<imgproc src="/tutorials/first-project/vision-data-capture.png" resize="x1100" declaredimensions=true alt="Vision service configuration showing data capture enabled with CaptureAllFromCamera method at 0.5 Hz." class="imgzoom shadow">}}
 
 {{< alert title="Tip" color="tip" >}}
-Click **JSON** in the Configure tab to see how data capture settings appear in the raw configuration. Each component and service with data capture enabled has a `service_configs` entry containing `capture_methods`.
+Click **JSON** in the Configure tab to see how data capture settings appear in the raw configuration.
+Each component and service with data capture enabled has a `service_configs` entry containing `capture_methods`.
 {{< /alert >}}
 
 ## 2.2 View Captured Data
@@ -86,10 +95,13 @@ Data capture is now running in the background:
 - Syncs to cloud automatically
 - Available for visual review and filtering
 
-This foundation records everything your vision pipeline sees. In Part 3, you'll write custom control logic to act on detections. Later, you'll configure tabular data capture to enable SQL queries on detection results.
+This foundation records everything your vision pipeline sees.
+In Part 3, you'll write custom control logic to act on detections.
+Later, you'll configure tabular data capture to enable SQL queries on detection results.
 
 {{< alert title="Checkpoint" color="success" >}}
-Your system captures every detection as an image. Data syncs to the cloud where you can browse, filter, and review results.
+Your system captures every detection as an image.
+Data syncs to the cloud where you can browse, filter, and review results.
 {{< /alert >}}
 
 **[Continue to Part 3: Control Logic →](../part-3/)**
