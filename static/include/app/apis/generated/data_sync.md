@@ -65,9 +65,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `options` (BinaryDataCaptureUploadOptions) (optional): Optional parameters including:
   - `mimeType` (string) (optional): The MIME type of the data.
   - `fileExtension` (string) (optional): The file extension of binary data including the
-    period, for example .jpg, .png, or .pcd. The backend will route the
-    binary to its corresponding mime type based on this extension. Files with
-    a .jpeg, .jpg, or .png extension will be saved to the images tab.
+    period, for example .jpg, .png, or .pcd.
   - `tags` (string\[\]) (optional): The list of tags to allow for tag\-based filtering when
     retrieving data.
   - `datasetIds` (string\[\]) (optional): Dataset IDs to add the data to.
