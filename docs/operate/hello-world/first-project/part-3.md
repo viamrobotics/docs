@@ -12,7 +12,7 @@ date: "2025-01-30"
 
 **Skills:** Generate module scaffolding using the Viam CLI, experience with Viam SDKs, develop code iteratively against remote hardware
 
-**Time:** ~15 min
+**Time:** ~10 min
 
 ## What You'll Build
 
