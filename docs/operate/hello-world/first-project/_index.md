@@ -46,12 +46,11 @@ In this tutorial you will work through a series of tasks that are common to many
 
 **[Part 1: Vision Pipeline](part-1/)** (~15 min)
 
-- [1.1 Verify Your Machine is Online](part-1/#11-verify-your-machine-is-online)
-- [1.2 Locate Your Machine Part](part-1/#12-locate-your-machine-part)
-- [1.3 Configure the Camera](part-1/#13-configure-the-camera)
-- [1.4 Test the Camera](part-1/#14-test-the-camera)
-- [1.5 Add an ML Model Service](part-1/#15-add-an-ml-model-service)
-- [1.6 Add a Vision Service](part-1/#16-add-a-vision-service)
+- [1.1 Find Your Machine Part](part-1/#11-find-your-machine-part)
+- [1.2 Configure the Camera](part-1/#12-configure-the-camera)
+- [1.3 Test the Camera](part-1/#13-test-the-camera)
+- [1.4 Add an ML Model Service](part-1/#14-add-an-ml-model-service)
+- [1.5 Add a Vision Service](part-1/#15-add-a-vision-service)
 
 **[Part 2: Data Capture](part-2/)** (~10 min)
 

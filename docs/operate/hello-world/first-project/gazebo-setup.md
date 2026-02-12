@@ -35,7 +35,7 @@ docker run --name gz-station1 -d \
 
 ## Step 3: Verify the Simulation
 
-Open your browser to [http://localhost:8081](http://localhost:8081)
+Open your browser to `http://localhost:8081`
 
 You should see two live camera feeds from the inspection station:
 
