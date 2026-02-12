@@ -20,7 +20,7 @@ This guide walks you through setting up the Gazebo simulation used in the [Your 
 The simulation runs in a Docker container with Gazebo Harmonic and viam-server pre-installed.
 
 ```bash
-docker pull ghcr.io/viamrobotics/can-inspection-simulation:latest
+docker pull ghcr.io/viamrobotics/can-inspection-simulation:latest-local
 ```
 
 This downloads the pre-built image, which takes about a minute depending on your internet connection.
@@ -30,7 +30,7 @@ This downloads the pre-built image, which takes about a minute depending on your
 ```bash
 docker run --name gz-station1 -d \
   -p 8080:8080 -p 8081:8081 -p 8443:8443 \
-  ghcr.io/viamrobotics/can-inspection-simulation:latest
+  ghcr.io/viamrobotics/can-inspection-simulation:latest-local
 ```
 
 ## Step 3: Verify the Simulation
@@ -63,7 +63,7 @@ You should see two live camera feeds from the inspection station:
 
    {{<imgproc src="/tutorials/first-project/sim-config-page.png" resize="x1100" declaredimensions=true alt="Simulation configuration page with machine cloud credentials pasted into the text area. Viam Server Status shows Stopped." class="imgzoom shadow">}}
 
-   The status indicator will change to **Running** and a green banner will confirm the configuration was updated successfully.
+   A green banner will confirm the configuration was updated successfully and the status indicator will change to **Running**.
 
    {{<imgproc src="/tutorials/first-project/sim-config-running.png" resize="x1100" declaredimensions=true alt="Simulation configuration page after restart, showing a green 'Configuration updated successfully' banner and Viam Server Status: Running." class="imgzoom shadow">}}
 
