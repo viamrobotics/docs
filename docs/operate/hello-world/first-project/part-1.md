@@ -12,7 +12,7 @@ date: "2025-01-30"
 
 **Skills:** Connect a machine to Viam, configure components in the Viam UI, configure services in the Viam UI.
 
-**Time:** ~15 min
+**Time:** ~10 min
 
 ## Prerequisites
 

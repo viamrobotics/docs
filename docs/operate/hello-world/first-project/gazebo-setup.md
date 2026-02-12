@@ -10,6 +10,8 @@ date: "2025-01-30"
 
 This guide walks you through setting up the Gazebo simulation used in the [Your First Project](../) tutorial.
 
+**Time:** ~2 min
+
 ## Prerequisites
 
 - **Docker Desktop** installed and running
