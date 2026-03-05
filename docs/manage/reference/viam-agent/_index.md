@@ -22,7 +22,7 @@ Among other things, `viam-agent`:
 - Provides various operating system settings.
 
 {{< alert title="Support notice" color="note" >}}
-Currently, `viam-agent` is only supported on Linux for amd64 (x86_64) and arm64 (aarch64) CPUs and Windows (native).
+Currently, `viam-agent` is only supported on Linux for amd64 (x86_64) and arm64 (aarch64) CPUs, MacOS for arm64 (M/silicon) CPUs, and Windows (native).
 {{< /alert >}}
 
 To provision machines using `viam-agent`, see [Provision Machines](/manage/fleet/provision/setup/).
@@ -46,7 +46,7 @@ Follow the instructions to install `viam server` with `viam-agent`.
 Your machine must have `curl` available in order to install `viam-agent`.
 
 {{< tabs >}}
-{{% tab name="Linux" %}}
+{{% tab name="Linux/MacOS" %}}
 
 You can use `viam-agent` either with
 
@@ -74,7 +74,8 @@ You can get the machine cloud credentials by clicking the copy icon next to **Ma
 {{% /tab %}}
 {{< /tabs >}}
 
-On Linux, `viam-agent` will install itself as a systemd service named `viam-agent`.
+On Linux, `viam-agent` will install itself as a systemd service named `viam-agent`. On MacOS, `viam-agent` will install itself as a launchd daemon named `system/com.viam.agent`.
+
 For information on managing the service, see [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/).
 
 {{% /tab %}}
@@ -360,6 +361,13 @@ sudo journalctl --unit=viam-agent
 ```
 
 {{% /tab %}}
+{{% tab name="Command line on MacOS" %}}
+
+```sh {class="command-line" data-prompt="$"}
+less /var/log/viam-agent.log
+```
+
+{{% /tab %}}
 {{% tab name="Event Viewer on Windows" %}}
 
 Open the Windows Event Viewer (`eventvwr` from the command line).
@@ -381,5 +389,4 @@ You will find the `viam-agent` logs under **Windows Logs > Application** on the 
 | `-d`, `--debug` | Enable debug logging (on agent only). Can also be set with environment variable `VIAM_AGENT_DEBUG`. |
 | `-w`, `--wait` | Update versions before starting. Can also be set with environment variable `VIAM_AGENT_WAIT_FOR_UPDATE`. |
 | `-h`, `--help` | Show help message. |
-| `--install` | Install systemd service. |
-| `--dev-mode` | Allow running as non-root and non-service. Can also be set with environment variable `VIAM_AGENT_DEVMODE`. |
+| `--install` | Install systemd/launchd service. |
