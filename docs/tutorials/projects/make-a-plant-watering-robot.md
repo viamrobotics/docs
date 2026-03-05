@@ -335,7 +335,7 @@ pip3 install viam-sdk
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your machine's page, and click on the **CONNECT** tab and the **Code sample** page.
+1. Navigate to your machine's page, and click on the **CONNECT** tab and the **SDK code sample** page.
 1. Select **Python** as the language.
 1. Follow the instructions shown under step 1 on that page to install the SDK.
 1. Then, under step 2 on that page, click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
