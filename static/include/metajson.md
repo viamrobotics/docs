@@ -43,7 +43,7 @@ Do not change the <code>module_id</code>.</p>
 <td>array</td>
 <td>Optional</td>
 <td>
-<p>Deprecated. An array of objects describing the {{< glossary_tooltip term_id="model" text="models" >}} provided by your module. Specified models are ignored. Models are inferred from the module itself.</p>
+<p>An array of objects describing the {{< glossary_tooltip term_id="model" text="models" >}} provided by your module. Models are inferred from the module itself during Cloud Build, so this field can be omitted if using `viam module build start` to build your module. Running `viam module update-models` locally through the CLI will also auto-populate this section. </p>
 </td>
 </tr>
 <tr>

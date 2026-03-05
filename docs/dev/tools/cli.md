@@ -53,7 +53,7 @@ brew install viam
 To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
 
 ```sh {class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
+sudo curl --compressed -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
 sudo chmod a+rx /usr/local/bin/viam
 ```
 
@@ -63,7 +63,7 @@ sudo chmod a+rx /usr/local/bin/viam
 To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
 
 ```sh {class="command-line" data-prompt="$"}
-sudo curl -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
+sudo curl --compressed -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
 sudo chmod a+rx /usr/local/bin/viam
 ```
 
@@ -750,6 +750,7 @@ viam logout
 The `machines` command allows you to manage your machine fleet.
 This includes:
 
+- Creating, updating, and deleting machines
 - Listing all machines that you have access to, filtered by organization and location.
 - Creating API keys to grant access to a specific machine
 - Retrieving machine and machine part status
@@ -760,6 +761,9 @@ This includes:
 - Enter an interactive terminal on your machines
 
 ```sh {class="command-line" data-prompt="$"}
+viam machines create --name=<machine name> --location=<location id>
+viam machines update --machine=<machine id> [--name=<new name>] [--location=<new location id>]
+viam machines delete --machine=<machine id>
 viam machines list
 viam machines status --machine=<machine id>
 viam machines logs --machine=<machine id> [...named args]
@@ -776,6 +780,16 @@ viam machines part cp --part=<part id> <file name> machine:/path/to/file
 Examples:
 
 ```sh {class="command-line" data-prompt="$"}
+# create a new machine
+viam machines create --name="My Machine" --location=12345
+
+# update machine name or location
+viam machines update --machine=123 --name="New Name"
+viam machines update --machine=123 --location=67890
+
+# delete a machine
+viam machines delete --machine=123
+
 # list all machines in an organization, in all locations
 viam machines list --all --organization=12345
 
@@ -832,6 +846,9 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
+| `create` | Create a new machine in a specified location. | - |
+| `update` | Move a machine from one location to another and/or rename the machine. | - |
+| `delete` | Delete a machine. Passing location and organization is optional but speeds up the process. | - |
 | `list` | List all machines that the authenticated session has access to in a specified organzation or location. Defaults to first organization and location alphabetically. | - |
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
@@ -869,9 +886,10 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--part` | Part ID for which the command is being issued. | `part` | **Required** |
-| `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `status`, `logs` | **Required** |
-| `--location` | ID of the location that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
-| `--organization` | ID of the organization that the machine belongs to or to list machines in. | `list`, `status`, `logs`, `part` | Optional |
+| `--machine` | Machine ID or name for which the command is being issued. If machine name is used instead of ID, `--organization` and `--location` are required. | `update`, `delete`, `status`, `logs` | **Required** |
+| `--name` | Name for the machine. | `create`, `update` | **Required** for `create`, Optional for `update` |
+| `--location` | ID of the location that the machine belongs to or to list machines in. For `create`, this is the location where the new machine will be created. For `update`, this moves the machine to a new location. | `create`, `update`, `delete`, `list`, `status`, `logs`, `part` | **Required** for `create`, Optional for others |
+| `--organization` | ID of the organization that the machine belongs to or to list machines in. | `delete`, `list`, `status`, `logs`, `part` | Optional |
 | `--all` | List all machines in the organization. Overrides `--location` flag. Default: `false` | `list` | Optional |
 | `--errors` | Boolean, return only errors (default: false). | `logs` | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | `logs` | Optional |
