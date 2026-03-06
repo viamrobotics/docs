@@ -1,13 +1,14 @@
 ---
 title: "Lifecycle of a module"
 linkTitle: "Lifecycle of a module"
-weight: 20
+weight: 35
 layout: "docs"
 type: "docs"
 description: "Learn about the lifecycle of a module: How and when it starts, shuts down, and reconfigures."
 date: "2025-10-17"
 aliases:
   - /operate/modules/other-hardware/lifecycle-module/
+  - /operate/modules/lifecycle-module/
 ---
 
 Modules run on your machine, alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
