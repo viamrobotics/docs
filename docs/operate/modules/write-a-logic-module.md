@@ -9,6 +9,7 @@ date: "2025-03-06"
 aliases:
   - /development/write-a-logic-module/
   - /operate/modules/control-logic/
+  - /manage/software/control-logic/
 ---
 
 Your machine has resources -- sensors, motors, cameras -- that work individually.

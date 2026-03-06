@@ -10,6 +10,10 @@ aliases:
   - /build/development/deploy-a-module/
   - /development/deploy-a-module/
   - /operate/modules/deploy-module/
+  - /extend/modular-resources/upload/
+  - /modular-resources/upload/
+  - /registry/upload/
+  - /how-tos/upload-module/
 ---
 
 A module that only runs locally on your development machine is useful for testing
