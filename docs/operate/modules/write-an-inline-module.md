@@ -41,14 +41,14 @@ browser, and Viam handles everything else:
 
 ### Inline modules versus externally managed modules
 
-| | Inline (Viam-hosted) | Externally managed |
-|---|---|---|
-| **Where you write code** | Browser editor in the Viam app | Your own IDE, locally or in a repo |
-| **Source control** | Managed by Viam | Your own git repository |
-| **Build system** | Automatic cloud builds on save | CLI upload or GitHub Actions |
-| **Versioning** | Automatic (`0.0.1`, `0.0.2`, ...) | You choose semantic versions |
-| **Visibility** | Private to your organization | Private or public |
-| **Best for** | Prototyping, simple control logic, no-toolchain setups | Production modules, public distribution, complex dependencies |
+|                          | Inline (Viam-hosted)                                   | Externally managed                                            |
+| ------------------------ | ------------------------------------------------------ | ------------------------------------------------------------- |
+| **Where you write code** | Browser editor in the Viam app                         | Your own IDE, locally or in a repo                            |
+| **Source control**       | Managed by Viam                                        | Your own git repository                                       |
+| **Build system**         | Automatic cloud builds on save                         | CLI upload or GitHub Actions                                  |
+| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...)                      | You choose semantic versions                                  |
+| **Visibility**           | Private to your organization                           | Private or public                                             |
+| **Best for**             | Prototyping, simple control logic, no-toolchain setups | Production modules, public distribution, complex dependencies |
 
 Both types run identically at runtime -- as child processes communicating with
 `viam-server` over gRPC. The difference is how you create, edit, and deploy the
@@ -487,7 +487,7 @@ added.
 4. Click **Execute**. You should see a response like:
 
 ```json
-{"servo_angle_deg": 155.0}
+{ "servo_angle_deg": 155.0 }
 ```
 
 ### 8. Automate with a scheduled job

@@ -68,16 +68,16 @@ distribution. Choose a local module for quick prototyping on a single machine.
 Viam defines standard APIs for common resource types. Pick the API that best
 matches your hardware or service:
 
-| API | Use when your hardware... | Key methods |
-|-----|---------------------------|-------------|
-| `sensor` | Produces readings (temperature, distance, humidity) | `GetReadings` |
-| `camera` | Produces images or point clouds | `GetImage`, `GetPointCloud` |
-| `motor` | Drives rotational or linear motion | `SetPower`, `GoFor`, `Stop` |
-| `servo` | Moves to angular positions | `Move`, `GetPosition` |
-| `board` | Exposes GPIO pins, analog readers, digital interrupts | `GPIOPinByName`, `AnalogByName` |
-| `encoder` | Tracks position or rotation | `GetPosition`, `ResetPosition` |
-| `movement_sensor` | Reports position, orientation, velocity | `GetPosition`, `GetLinearVelocity` |
-| `generic` | Does not fit any of the above | `DoCommand` |
+| API               | Use when your hardware...                             | Key methods                        |
+| ----------------- | ----------------------------------------------------- | ---------------------------------- |
+| `sensor`          | Produces readings (temperature, distance, humidity)   | `GetReadings`                      |
+| `camera`          | Produces images or point clouds                       | `GetImage`, `GetPointCloud`        |
+| `motor`           | Drives rotational or linear motion                    | `SetPower`, `GoFor`, `Stop`        |
+| `servo`           | Moves to angular positions                            | `Move`, `GetPosition`              |
+| `board`           | Exposes GPIO pins, analog readers, digital interrupts | `GPIOPinByName`, `AnalogByName`    |
+| `encoder`         | Tracks position or rotation                           | `GetPosition`, `ResetPosition`     |
+| `movement_sensor` | Reports position, orientation, velocity               | `GetPosition`, `GetLinearVelocity` |
+| `generic`         | Does not fit any of the above                         | `DoCommand`                        |
 
 For the full list of component and service APIs, see
 [Resource APIs](/dev/reference/apis/).
@@ -128,42 +128,42 @@ Run the Viam CLI generator:
 viam module generate
 ```
 
-| Prompt | What to enter | Why |
-|--------|---------------|-----|
-| Module name | `my-sensor-module` | A short, descriptive name |
-| Language | `python` or `go` | Your implementation language |
-| Visibility | `private` | Keep it private while developing |
-| Namespace | Your organization namespace | Scopes the module to your org |
-| Resource subtype | `sensor` | The resource API to implement |
-| Model name | `my-sensor` | The model name for your sensor |
-| Register | `yes` | Registers the module with Viam |
+| Prompt           | What to enter               | Why                              |
+| ---------------- | --------------------------- | -------------------------------- |
+| Module name      | `my-sensor-module`          | A short, descriptive name        |
+| Language         | `python` or `go`            | Your implementation language     |
+| Visibility       | `private`                   | Keep it private while developing |
+| Namespace        | Your organization namespace | Scopes the module to your org    |
+| Resource subtype | `sensor`                    | The resource API to implement    |
+| Model name       | `my-sensor`                 | The model name for your sensor   |
+| Register         | `yes`                       | Registers the module with Viam   |
 
 The generator creates a complete project with the following files:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File | Purpose |
-|------|---------|
-| `src/main.py` | Entry point -- starts the module server |
-| `src/models/my_sensor.py` | Resource class skeleton -- you will edit this |
-| `requirements.txt` | Python dependencies |
-| `meta.json` | Module metadata for the registry |
-| `setup.sh` | Installs dependencies into a virtualenv |
-| `build.sh` | Packages the module for upload |
-| `.github/workflows/deploy.yml` | CI workflow for cloud builds |
+| File                           | Purpose                                       |
+| ------------------------------ | --------------------------------------------- |
+| `src/main.py`                  | Entry point -- starts the module server       |
+| `src/models/my_sensor.py`      | Resource class skeleton -- you will edit this |
+| `requirements.txt`             | Python dependencies                           |
+| `meta.json`                    | Module metadata for the registry              |
+| `setup.sh`                     | Installs dependencies into a virtualenv       |
+| `build.sh`                     | Packages the module for upload                |
+| `.github/workflows/deploy.yml` | CI workflow for cloud builds                  |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File | Purpose |
-|------|---------|
-| `cmd/module/main.go` | Entry point -- starts the module server |
-| `my_sensor_module.go` | Resource implementation skeleton -- you will edit this |
-| `go.mod` | Go module definition |
-| `Makefile` | Build targets |
-| `meta.json` | Module metadata for the registry |
-| `.github/workflows/deploy.yml` | CI workflow for cloud builds |
+| File                           | Purpose                                                |
+| ------------------------------ | ------------------------------------------------------ |
+| `cmd/module/main.go`           | Entry point -- starts the module server                |
+| `my_sensor_module.go`          | Resource implementation skeleton -- you will edit this |
+| `go.mod`                       | Go module definition                                   |
+| `Makefile`                     | Build targets                                          |
+| `meta.json`                    | Module metadata for the registry                       |
+| `.github/workflows/deploy.yml` | CI workflow for cloud builds                           |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -934,10 +934,10 @@ func (s *MySensor) Reconfigure(ctx context.Context,
 Go provides these helper traits as alternatives to writing a `Reconfigure`
 method. Embed one in your struct:
 
-| Trait | Behavior |
-|-------|----------|
-| `resource.AlwaysRebuild` | Resource is destroyed and re-created on every config change (the generated default). |
-| `resource.TriviallyReconfigurable` | Config changes are accepted silently with no action. |
+| Trait                              | Behavior                                                                             |
+| ---------------------------------- | ------------------------------------------------------------------------------------ |
+| `resource.AlwaysRebuild`           | Resource is destroyed and re-created on every config change (the generated default). |
+| `resource.TriviallyReconfigurable` | Config changes are accepted silently with no action.                                 |
 
 {{% /tab %}}
 {{< /tabs >}}

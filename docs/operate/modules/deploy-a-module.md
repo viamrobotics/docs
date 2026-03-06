@@ -97,22 +97,22 @@ review each field:
 }
 ```
 
-| Field | Required | Purpose |
-|-------|----------|---------|
-| `$schema` | No | JSON Schema URL for editor validation. Set to `https://dl.viam.dev/module.schema.json`. |
-| `module_id` | Yes | Unique ID in the registry. Format: `namespace:name`. |
-| `visibility` | Yes | Who can see and install the module: `private`, `public`, or `public_unlisted`. |
-| `url` | No | Link to the source code repository. Required for cloud builds. |
-| `description` | Yes | Shown in the registry UI and search results. |
-| `models` | Yes | List of resource models the module provides. Each has `api`, `model`, and optionally `description` and `markdown_link`. |
-| `entrypoint` | Yes | The path to the command that starts the module inside the archive. |
-| `first_run` | No | Path to a setup script that runs once after first install (default timeout: 1 hour). |
-| `markdown_link` | No | Path to a README file (or `README.md#section` anchor) used as the registry description. |
-| `build.setup` | No | Script that installs build dependencies (runs once). |
-| `build.build` | No | Script that compiles and packages the module. |
-| `build.path` | No | Path to the packaged output archive (default: `module.tar.gz`). |
-| `build.arch` | No | Target platforms to build for (default: `["linux/amd64", "linux/arm64"]`). |
-| `build.darwin_deps` | No | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`). |
+| Field               | Required | Purpose                                                                                                                 |
+| ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `$schema`           | No       | JSON Schema URL for editor validation. Set to `https://dl.viam.dev/module.schema.json`.                                 |
+| `module_id`         | Yes      | Unique ID in the registry. Format: `namespace:name`.                                                                    |
+| `visibility`        | Yes      | Who can see and install the module: `private`, `public`, or `public_unlisted`.                                          |
+| `url`               | No       | Link to the source code repository. Required for cloud builds.                                                          |
+| `description`       | Yes      | Shown in the registry UI and search results.                                                                            |
+| `models`            | Yes      | List of resource models the module provides. Each has `api`, `model`, and optionally `description` and `markdown_link`. |
+| `entrypoint`        | Yes      | The path to the command that starts the module inside the archive.                                                      |
+| `first_run`         | No       | Path to a setup script that runs once after first install (default timeout: 1 hour).                                    |
+| `markdown_link`     | No       | Path to a README file (or `README.md#section` anchor) used as the registry description.                                 |
+| `build.setup`       | No       | Script that installs build dependencies (runs once).                                                                    |
+| `build.build`       | No       | Script that compiles and packages the module.                                                                           |
+| `build.path`        | No       | Path to the packaged output archive (default: `module.tar.gz`).                                                         |
+| `build.arch`        | No       | Target platforms to build for (default: `["linux/amd64", "linux/arm64"]`).                                              |
+| `build.darwin_deps` | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                           |
 
 Visibility options:
 
@@ -138,11 +138,11 @@ and customize if needed:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File | Purpose |
-|------|---------|
+| File       | Purpose                                              |
+| ---------- | ---------------------------------------------------- |
 | `setup.sh` | Installs Python dependencies from `requirements.txt` |
-| `build.sh` | Packages the module into a `.tar.gz` archive |
-| `run.sh` | Entrypoint script that starts the module |
+| `build.sh` | Packages the module into a `.tar.gz` archive         |
+| `run.sh`   | Entrypoint script that starts the module             |
 
 If your module has additional build steps (for example, compiling native extensions),
 add them to `build.sh`.
@@ -150,11 +150,11 @@ add them to `build.sh`.
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File | Purpose |
-|------|---------|
+| File       | Purpose                                                               |
+| ---------- | --------------------------------------------------------------------- |
 | `setup.sh` | Installs build dependencies (Go modules are typically self-contained) |
-| `build.sh` | Cross-compiles the binary and packages it into a `.tar.gz` archive |
-| `Makefile` | Local build targets |
+| `build.sh` | Cross-compiles the binary and packages it into a `.tar.gz` archive    |
+| `Makefile` | Local build targets                                                   |
 
 The generated `build.sh` uses `GOOS` and `GOARCH` environment variables to
 cross-compile for the target platform. Cloud build sets these automatically.
@@ -397,11 +397,11 @@ machines on that platform.
 
 The registry enforces these size limits:
 
-| Limit | Value |
-|-------|-------|
-| Compressed package (`.tar.gz`) | 50 GB |
-| Decompressed contents | 250 GB |
-| Single file within package | 25 GB |
+| Limit                          | Value  |
+| ------------------------------ | ------ |
+| Compressed package (`.tar.gz`) | 50 GB  |
+| Decompressed contents          | 250 GB |
+| Single file within package     | 25 GB  |
 
 Before uploading, the CLI validates that:
 

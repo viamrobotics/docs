@@ -111,35 +111,35 @@ and maintains a list of active alerts that your application code can query.
 viam module generate
 ```
 
-| Prompt | What to enter | Why |
-|--------|---------------|-----|
-| Module name | `alert-monitor` | A short, descriptive name |
-| Language | `python` or `go` | Your implementation language |
-| Visibility | `private` | Keep it private while developing |
-| Namespace | Your organization namespace | Scopes the module to your org |
-| Resource subtype | `generic` (under services) | Flexible service API |
-| Model name | `temp-alert` | The model name for your service |
-| Register | `yes` | Registers the module with Viam |
+| Prompt           | What to enter               | Why                              |
+| ---------------- | --------------------------- | -------------------------------- |
+| Module name      | `alert-monitor`             | A short, descriptive name        |
+| Language         | `python` or `go`            | Your implementation language     |
+| Visibility       | `private`                   | Keep it private while developing |
+| Namespace        | Your organization namespace | Scopes the module to your org    |
+| Resource subtype | `generic` (under services)  | Flexible service API             |
+| Model name       | `temp-alert`                | The model name for your service  |
+| Register         | `yes`                       | Registers the module with Viam   |
 
 The generator creates a complete project. The key files you will edit:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File | Purpose |
-|------|---------|
-| `src/models/temp_alert.py` | Service class skeleton -- you will edit this |
-| `src/main.py` | Entry point -- starts the module server (no changes needed) |
-| `meta.json` | Module metadata for the registry |
+| File                       | Purpose                                                     |
+| -------------------------- | ----------------------------------------------------------- |
+| `src/models/temp_alert.py` | Service class skeleton -- you will edit this                |
+| `src/main.py`              | Entry point -- starts the module server (no changes needed) |
+| `meta.json`                | Module metadata for the registry                            |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File | Purpose |
-|------|---------|
-| `alert_monitor.go` | Service implementation skeleton -- you will edit this |
+| File                 | Purpose                                                     |
+| -------------------- | ----------------------------------------------------------- |
+| `alert_monitor.go`   | Service implementation skeleton -- you will edit this       |
 | `cmd/module/main.go` | Entry point -- starts the module server (no changes needed) |
-| `meta.json` | Module metadata for the registry |
+| `meta.json`          | Module metadata for the registry                            |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -624,7 +624,7 @@ On the **CONFIGURE** tab, expand your service's card and find the **DoCommand**
 section. Send a command:
 
 ```json
-{"command": "get_alerts"}
+{ "command": "get_alerts" }
 ```
 
 You should see a response with any alerts that have been triggered.
