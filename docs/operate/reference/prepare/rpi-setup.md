@@ -13,6 +13,8 @@ aliases:
   - /installation/prepare/rpi-setup/
   - /get-started/installation/prepare/rpi-setup/
   - /get-started/prepare/rpi-setup/
+  - /operate/reference/prepare/rpi-enable-protocols/
+  - /operate/reference/prepare/wifi-credentials/
 # SME: James
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
