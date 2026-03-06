@@ -344,7 +344,7 @@ type MySensor struct {
 The generated struct includes `resource.AlwaysRebuild`, which tells
 `viam-server` to destroy and re-create the resource on every config change.
 This is the simplest approach and works well for most modules. For in-place
-reconfiguration, see [Step 6](#6-handle-reconfiguration).
+reconfiguration, see [Step 6](#6-handle-reconfiguration-optional).
 
 {{% /tab %}}
 {{< /tabs >}}
