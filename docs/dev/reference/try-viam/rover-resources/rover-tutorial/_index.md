@@ -220,7 +220,7 @@ If you are using another board, you can skip this step.
 
 Install a 64-bit Raspberry Pi OS onto your Pi following our [Raspberry Pi installation guide](/operate/reference/prepare/rpi-setup/).
 Follow all steps as listed.
-When you get to the [Enable communication protocols step](/operate/reference/prepare/rpi-setup/#enable-communication-protocols), you must enable I<sup>2</sup>C so that your Pi can communicate with the accelerometer and power sensor on your rover.
+You must also enable I<sup>2</sup>C on your Pi using `sudo raspi-config` so that your Pi can communicate with the accelerometer and power sensor on your rover.
 Once you have installed Raspberry Pi OS and `viam-server`, put your SD card in the slot on your Pi.
 
 ### Add the power supply

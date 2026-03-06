@@ -13,6 +13,8 @@ aliases:
   - /installation/prepare/rpi-setup/
   - /get-started/installation/prepare/rpi-setup/
   - /get-started/prepare/rpi-setup/
+  - /operate/reference/prepare/rpi-enable-protocols/
+  - /operate/reference/prepare/wifi-credentials/
 # SME: James
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
@@ -23,7 +25,7 @@ date: "2022-01-01"
 We recommend using Viam on a 64-bit Linux distribution.
 Support for older Raspberry Pis running on 32-bit ARM v7 is in beta.
 
-If you already have a Linux distribution installed on your {{< glossary_tooltip term_id="pi" text="Pi" >}}, skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
+If you already have a Linux distribution installed on your {{< glossary_tooltip term_id="pi" text="Pi" >}}, you can skip ahead to [install `viam-server`](/operate/install/setup/).
 
 {{% expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit or 32-bit" %}}
 
@@ -33,7 +35,7 @@ Example output:
 
 {{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true class="shadow" >}}
 
-If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [enable the required communication protocols for your hardware](#enable-communication-protocols).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [install `viam-server`](/operate/install/setup/).
 
 {{% /expand%}}
 
@@ -182,129 +184,10 @@ While the Imager is flashing your microSD card, we recommend reading [How to thi
 2.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
 
-## Connect with SSH
-
-Once your Raspberry Pi is plugged in and turned on, wait a minute to let your Pi boot up.
-
-Launch your terminal on your computer and run this command:
-
-{{% alert title="Tip" color="tip" %}}
-The text in <> should be replaced (including the < and > symbols themselves) with the user and hostname you configured when you set up your Pi.
-
-Example: if your username is 'Robota' and your hostname is 'my-machine': then it should be `ssh Robota@my-machine.local`
-
-{{% /alert  %}}
-
-```sh {class="command-line" data-prompt="$"}
-ssh <USERNAME>@<HOSTNAME>.local
-```
-
-If you are prompted "Are you sure you want to continue connecting?", type "yes" and hit enter.
-Then, enter your password.
-You should be greeted by a login message and a command prompt.
-
-Next, it's good practice to update your Raspberry Pi to ensure all the latest packages are installed:
-
-```sh {class="command-line" data-prompt="$"}
-sudo apt update
-sudo apt upgrade
-```
-
-## Enable communication protocols
-
-Certain hardware, such as analog-to-digital converters (ADCs), accelerometers, and sensors, communicates with your Pi using specialized communications protocols, including I2C, SPI, serial, or one-wire protocols.
-If you are using hardware that requires these protocols, you must enable support for them on your Pi using `raspi-config`:
-
-1. Launch the configuration tool by running the following command:
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo raspi-config
-   ```
-
-1. Use your keyboard to select "Interface Options", and press return.
-
-   {{<imgproc alt="Screenshot of the Raspi Config screen with a red box and red arrow pointing to the '3 Interface Options' option where you can find the I2C and other drivers" src="/installation/rpi-setup/installation-raspberry-pi-i2c-raspiconfig-interface-options.png" resize="800x" declaredimensions=true class="shadow" >}}
-
-1. Enable the relevant protocols to support your specific hardware. For example:
-
-   - If you are using an analog-to-digital converter (ADC), motor, or other device that requires the SPI protocol, enable **SPI**.
-   - If you are using an accelerometer, sensor, or other device that requires the I<sup>2</sup>C protocol, enable **I2C**.
-   - If you are using a sensor, motor, or other device that communicates over the serial port, enable **Serial Port**.
-
-   Check the documentation for your specific component to verify the communication protocols it requires.
-
-1. Then, to apply the changes, restart your Raspberry Pi if it hasn't already prompted you to do so.
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo reboot
-   ```
-
 ## Next steps
 
-You have now installed an operating system on your Raspberry Pi.
-To use your Raspberry pi, follow the [setup guide](/operate/install/setup/):
+Continue setting up `viam-server` on your Raspberry Pi in [the Viam app](https://app.viam.com/):
 
 {{< cards >}}
 {{% card link="/operate/install/setup/" %}}
 {{< /cards >}}
-
-## Troubleshooting
-
-### Write error when imaging Raspberry Pi OS
-
-If you experience the error `Verifying write failed. Contents of SD card is different from what was written to it` when imaging your Raspberry Pi with the Imager in step 5, there might be an issue with your micro SD card reader.
-
-Try a different micro SD card reader, or use a different USB port on your computer.
-
-If you are connecting your SD card reader to your computer through a USB hub, try connecting directly it to your computer instead.
-
-### Error: can't read from I2C address
-
-If you see the error `error: can't read from I2C address` in your logs after installing `viam-server`, you need to enable `I2C` support on your Raspberry Pi.
-You can use the command `sudo journalctl --unit=viam-server` to read through the `viam-server` log file.
-Follow the instructions to [enable communication protocols](#enable-communication-protocols) on your Pi to resolve this error.
-
-### Add additional WiFi credentials
-
-If you move your machine to a different WiFi network, you will have to update the WiFi credentials.
-
-You can update the WiFi configuration by creating a new `wpa_supplicant.conf` file on the "boot" partition.
-
-The steps are explained below.
-
-1. Plug your Pi's microSD card into your computer and create a plain text file called `wpa_supplicant.conf`.
-
-2. Paste the following example into the file, replacing "Name of your wireless LAN" and "Password for your wireless LAN" with your credentials.
-   Be sure to use UNIX (LF) line breaks in your text editor.
-
-3. Save the file and eject the microSD card.
-
-4. Put the microSD card back into the Pi and boot the Pi.
-
-The `wpa_supplicant.conf` file will be read by the Pi on boot, and the file will disappear but the WiFi credentials will be updated.
-
-You can duplicate the "network" section to add additional WiFi networks (for example your work, and your home).
-
-The "priority" attribute is optional and can be used to prioritize networks if multiple networks are configured (higher numbers are prioritized).
-
-```bash {class="line-numbers linkable-line-numbers"}
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-country=us
-
-network={
- ssid="Name of your wireless LAN"
- psk="Password for your wireless LAN"
- priority=10
-}
-
-network={
-ssid="Name of your other wireless LAN"
-psk="Password for your other wireless LAN"
-priority=20
-}
-```
-
-### Additional troubleshooting
-
-You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).

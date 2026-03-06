@@ -92,7 +92,7 @@ If the computer does not already have a Viam-compatible operating system install
 You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 Enable serial communication so that the SBC can communicate with the air quality sensor.
-For example, if you are using a Raspberry Pi, SSH to it and [enable serial communication in `raspi-config`](/operate/reference/prepare/rpi-setup/#enable-communication-protocols).
+For example, if you are using a Raspberry Pi, SSH to it and enable serial communication using `sudo raspi-config`.
 
 {{% /tablestep %}}
 {{% tablestep %}}
