@@ -32,7 +32,7 @@ See [More examples](#more-examples) for more.
 
 Imagine you have a robotic vacuum cleaner that has a docking sequence and can clean specific areas such as the kitchen and the living room.
 
-You could [write a module](/operate/modules/support-hardware/) that implements the [base API](/dev/reference/apis/components/base/).
+You could [write a module](/operate/modules/write-a-driver-module/) that implements the [base API](/dev/reference/apis/components/base/).
 The base API includes methods like `MoveStraight` to drive the vacuum cleaner around, and like all resource APIs, it includes a `DoCommand` method.
 In addition to the standard base methods, you could implement `DoCommand` to trigger the docking and cleaning sequences:
 
@@ -167,7 +167,7 @@ You can use `DoCommand` in the web UI:
 
 ## More examples
 
-For an example that implements `DoCommand` in a generic API Python module, see [Add control logic to your module](/operate/modules/control-logic/#program-control-logic-in-module).
+For an example that implements `DoCommand` in a generic API Python module, see [Add control logic to your module](/operate/modules/write-a-logic-module/#5-implement-docommand).
 
 For additional examples, look at the GitHub repositories of [registry](https://app.viam.com/registry), especially modules that use the generic API.
 Essentially all generic models implement `DoCommand` (since it is the only method of the generic API), and various other models implement it as well.

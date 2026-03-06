@@ -118,7 +118,7 @@ Your code connects to your robot machine over the network, through firewalls and
 
 ### Manage software deployments
 
-Package your control logic as a [module](/operate/modules/control-logic/) and deploy through the Viam Registry for version control, remote updates, and fleet-wide rollouts.
+Package your control logic as a [module](/operate/modules/write-a-logic-module/) and deploy through the Viam Registry for version control, remote updates, and fleet-wide rollouts.
 No cross-compiling.
 Viam handles everything.
 

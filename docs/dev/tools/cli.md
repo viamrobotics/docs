@@ -1221,7 +1221,7 @@ The following criteria are checked for every `upload`:
 - The entry point file must be executable.
 - If the module is provided to the `upload` command as a compressed archive, the archive must have the `.tar.gz` or `.tgz` extension.
 
-See [Create a module](/operate/modules/support-hardware/) and [Update and manage modules you created](/operate/modules/advanced/manage-modules/) for a detailed walkthrough of the `viam module` commands.
+See [Create a module](/operate/modules/write-a-driver-module/) and [Update and manage modules you created](/operate/modules/advanced/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
 ##### Using the `build` subcommand
 

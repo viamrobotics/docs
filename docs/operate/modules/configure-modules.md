@@ -91,7 +91,7 @@ If you have many components and services on one machine, you can add folders to 
 The following built-in and modular components are available for computers and SBCs running `viam-server`.
 Configure any of these components on your machine by following the steps in [Configure hardware or software on your machine](#configure-hardware-or-software-on-your-machine).
 
-If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/support-hardware/) to add it to the registry.
+If you don't find a component that supports your hardware, you can [create a new module](/operate/modules/write-a-driver-module/) to add it to the registry.
 
 {{< tabs >}}
 {{% tab name="All components" %}}
@@ -222,8 +222,8 @@ Modules in the list above are officially supported and maintained by Viam only i
 The following built-in and modular services are available for computers and SBCs running `viam-server`.
 Configure any of these services on your machine by following the steps in [Configure hardware or software on your machine](#configure-hardware-or-software-on-your-machine).
 
-If you don't find a service that supports your use case, you can [create a new module](/operate/modules/support-hardware/) to add it to the registry.
-If you are looking to write control logic, see [Run control logic](/operate/modules/control-logic/) instead.
+If you don't find a service that supports your use case, you can [create a new module](/operate/modules/write-a-driver-module/) to add it to the registry.
+If you are looking to write control logic, see [Run control logic](/operate/modules/write-a-logic-module/) instead.
 
 {{< tabs >}}
 {{% tab name="All services" %}}
@@ -281,10 +281,10 @@ Modules in the list above are officially supported and maintained by Viam only i
 
 ## Next steps
 
-If you have other hardware or software you wish to use, continue to [Support additional hardware and software](/operate/modules/support-hardware/).
+If you have other hardware or software you wish to use, continue to [Support additional hardware and software](/operate/modules/write-a-driver-module/).
 If you have configured all your hardware and software, you can do a variety of things with your machine:
 
-- [Deploy control logic to run directly on your machines](/operate/modules/control-logic/)
+- [Deploy control logic to run directly on your machines](/operate/modules/write-a-logic-module/)
 - [Write an app](/operate/control/web-app/) to interact with your machines using any of the Viam SDKs
 - [Capture data from your machines](/data-ai/capture-data/capture-sync/)
 - [Create a dataset](/data-ai/train/create-dataset/) and [train an AI model](/data-ai/train/train-tf-tflite/)
