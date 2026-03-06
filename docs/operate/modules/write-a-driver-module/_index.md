@@ -51,14 +51,14 @@ own dependencies, can crash without affecting `viam-server`, and can be
 packaged and distributed through the Viam registry.
 
 {{< alert title="Driver modules versus local modules" color="tip" >}}
-Both [local modules](/operate/modules/write-an-inline-module/) and registry modules
+Both local modules and registry modules
 can implement any resource API. All modules run as separate child processes
 alongside `viam-server`. The difference is deployment: a local module references
 an executable on the machine's filesystem, while a registry module is downloaded
 from the Viam registry. Local modules cannot be distributed through the registry.
 
 Choose a registry module (this page covers building one) for production use and
-distribution. Choose a local module for quick prototyping on a single machine.
+distribution. Choose a [local module](/operate/modules/advanced/module-configuration/#local-modules) for quick prototyping on a single machine, or an [inline module](/operate/modules/write-an-inline-module/) to prototype in the browser.
 {{< /alert >}}
 
 ## Concepts

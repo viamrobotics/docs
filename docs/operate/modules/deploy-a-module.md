@@ -497,9 +497,3 @@ you built on an x86 laptop but the target machine is ARM (Raspberry Pi).
 - Check the module logs in the **LOGS** tab.
 
 {{< /expand >}}
-
-## What's Next
-
-- [Write an Inline Module](/operate/modules/write-an-inline-module/) --
-  prototype quickly with a local module before building a full deployable
-  module.
