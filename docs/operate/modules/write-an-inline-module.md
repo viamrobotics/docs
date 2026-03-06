@@ -39,7 +39,7 @@ browser, and Viam handles everything else:
 - **Deployment** happens automatically -- machines configured with your module
   receive the new version within minutes.
 
-### Inline modules vs. externally managed modules
+### Inline modules versus externally managed modules
 
 | | Inline (Viam-hosted) | Externally managed |
 |---|---|---|
@@ -80,7 +80,7 @@ Use the Generic service when:
 2. Click **+** and select **Control code**.
 3. In the "Choose where to host your code" dialog, select **Viam-hosted** and
    click **Choose**.
-4. Name your module (e.g., `servo-distance-control`) and choose a language
+4. Name your module (for example, `servo-distance-control`) and choose a language
    (**Python** or **Go**).
 5. Click **Create module**.
 
@@ -455,7 +455,7 @@ added.
 #### Configure the service
 
 1. In the module section, click **Add** to add a model of your generic service.
-2. Click **+** to add each dependency your service requires (e.g., a servo and
+2. Click **+** to add each dependency your service requires (for example, a servo and
    a sensor). Configure each dependency with the appropriate attributes.
 3. Configure the attributes for your generic service:
 

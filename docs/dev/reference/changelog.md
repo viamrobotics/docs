@@ -273,7 +273,7 @@ For more information, see [Configure operating system logging](/manage/fleet/sys
 {{% changelog color="removed" title="Processes" date="2025-05-06" %}}
 
 Processes were removed in `viam-server` v0.74.0.
-Instead [use modules for control logic](/operate/modules/control-logic/#program-control-logic-in-module).
+Instead [use modules for control logic](/operate/modules/write-a-logic-module/#program-control-logic-in-module).
 
 {{% /changelog %}}
 
@@ -395,7 +395,7 @@ Backward compatibility is maintained for existing configurations.
 {{% changelog color="removed" title="Managed Processes" date="2025-02-01" %}}
 
 Managed Processes are now deprecated and will be removed in a future version of `viam-server`.
-Instead [use modules for control logic](/operate/modules/control-logic/#program-control-logic-in-module).
+Instead [use modules for control logic](/operate/modules/write-a-logic-module/#program-control-logic-in-module).
 
 {{% /changelog %}}
 

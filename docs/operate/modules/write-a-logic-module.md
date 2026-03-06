@@ -22,7 +22,7 @@ it senses: trigger actions when readings cross a threshold, coordinate multiple
 components to accomplish a task, aggregate data from several sources, or run
 any continuous process that reads from some resources and acts on others.
 
-{{< alert title="Driver modules vs. logic modules" color="tip" >}}
+{{< alert title="Driver modules versus logic modules" color="tip" >}}
 A [driver module](/operate/modules/write-a-driver-module/) wraps hardware -- it implements
 a component API like sensor or motor so that `viam-server` can talk to a
 specific piece of hardware.

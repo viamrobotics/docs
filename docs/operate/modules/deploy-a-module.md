@@ -56,7 +56,7 @@ Every module has a `meta.json` file that describes it to the registry:
 ### Cloud build
 
 Cloud build uses GitHub Actions to compile your module for multiple platforms
-automatically. When you push a version tag (e.g., `v0.1.0`), a workflow builds
+automatically. When you push a version tag (for example, `v0.1.0`), a workflow builds
 your module for each target architecture, packages it, and uploads it to the
 registry.
 
@@ -112,7 +112,7 @@ review each field:
 | `build.build` | No | Script that compiles and packages the module. |
 | `build.path` | No | Path to the packaged output archive (default: `module.tar.gz`). |
 | `build.arch` | No | Target platforms to build for (default: `["linux/amd64", "linux/arm64"]`). |
-| `build.darwin_deps` | No | Homebrew dependencies for macOS builds (e.g., `["go", "pkg-config"]`). |
+| `build.darwin_deps` | No | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`). |
 
 Visibility options:
 
@@ -144,7 +144,7 @@ and customize if needed:
 | `build.sh` | Packages the module into a `.tar.gz` archive |
 | `run.sh` | Entrypoint script that starts the module |
 
-If your module has additional build steps (e.g., compiling native extensions),
+If your module has additional build steps (for example, compiling native extensions),
 add them to `build.sh`.
 
 {{% /tab %}}
@@ -173,8 +173,8 @@ chmod +x setup.sh build.sh run.sh
 Cloud build is the recommended way to deploy modules. It uses GitHub Actions to
 compile your module for every target platform automatically, so you don't need
 to cross-compile locally. This eliminates a common class of errors where a
-binary built for one architecture (e.g., `linux/amd64`) is uploaded for a
-different one (e.g., `linux/arm64`), resulting in exec format errors on the
+binary built for one architecture (for example, `linux/amd64`) is uploaded for a
+different one (for example, `linux/arm64`), resulting in exec format errors on the
 target machine.
 
 The generator creates the workflow file at
@@ -220,12 +220,13 @@ viam module build start
 
 {{< alert title="Non-main default branches" color="tip" >}}
 Cloud build expects your repository's default branch to be `main`. If your
-repository uses a different default branch (e.g., `master`), use the `--ref`
+repository uses a different default branch (for example, `master`), use the `--ref`
 flag:
 
 ```bash
 viam module build start --ref master
 ```
+
 {{< /alert >}}
 
 ### 4. Deploy manually (alternative)
@@ -341,7 +342,7 @@ upload `v0.2.0`, all machines update automatically within a few minutes.
 
 1. In the Viam app, go to the machine's **CONFIGURE** tab.
 2. Find the module in the configuration.
-3. Set the **Version** field to the specific version (e.g., `0.1.0`).
+3. Set the **Version** field to the specific version (for example, `0.1.0`).
 4. Click **Save**.
 
 **View module details:**
@@ -403,6 +404,7 @@ The registry enforces these size limits:
 | Single file within package | 25 GB |
 
 Before uploading, the CLI validates that:
+
 - The entrypoint executable exists in the archive
 - The entrypoint has execute permissions
 - No symlinks escape the archive boundaries
@@ -463,7 +465,7 @@ Use `--force` to skip these checks (not recommended for production uploads).
 {{< expand "Cloud build fails in GitHub Actions" >}}
 
 - Check the Actions tab in your GitHub repository for the build log.
-- If your repository's default branch is not `main` (e.g., it uses `master`),
+- If your repository's default branch is not `main` (for example, it uses `master`),
   use `viam module build start --ref master`. The cloud build system expects
   `main` by default.
 - Verify your `setup.sh` and `build.sh` scripts work locally.
@@ -482,7 +484,7 @@ you built on an x86 laptop but the target machine is ARM (Raspberry Pi).
 - If deploying manually, cross-compile with the correct `GOOS` and `GOARCH`
   before uploading. See [Deploy manually](#4-deploy-manually-alternative).
 - Verify the platform flag in your `upload` command matches the binary's
-  architecture (e.g., `--platform=linux/arm64` for Raspberry Pi 4).
+  architecture (for example, `--platform=linux/arm64` for Raspberry Pi 4).
 
 {{< /expand >}}
 

@@ -50,7 +50,7 @@ A driver module runs as a separate process alongside `viam-server`. It has its
 own dependencies, can crash without affecting `viam-server`, and can be
 packaged and distributed through the Viam registry.
 
-{{< alert title="Driver modules vs. local modules" color="tip" >}}
+{{< alert title="Driver modules versus local modules" color="tip" >}}
 Both [local modules](/operate/modules/write-an-inline-module/) and registry modules
 can implement any resource API. All modules run as separate child processes
 alongside `viam-server`. The difference is deployment: a local module references
