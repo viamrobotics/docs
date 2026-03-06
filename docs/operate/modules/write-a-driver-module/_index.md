@@ -50,7 +50,6 @@ A driver module runs as a separate process alongside `viam-server`. It has its
 own dependencies, can crash without affecting `viam-server`, and can be
 packaged and distributed through the Viam registry.
 
-
 ## Concepts
 
 ### Choosing a resource API
