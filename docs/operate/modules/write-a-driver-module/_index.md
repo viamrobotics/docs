@@ -58,7 +58,7 @@ an executable on the machine's filesystem, while a registry module is downloaded
 from the Viam registry. Local modules cannot be distributed through the registry.
 
 Choose a registry module (this page covers building one) for production use and
-distribution. Choose a [local module](/operate/modules/advanced/module-configuration/#local-modules) for quick prototyping on a single machine, or an [inline module](/operate/modules/write-an-inline-module/) to prototype in the browser.
+distribution. Choose a [local module](/operate/modules/advanced/module-configuration/) for quick prototyping on a single machine, or an [inline module](/operate/modules/write-an-inline-module/) to prototype in the browser.
 {{< /alert >}}
 
 ## Concepts
