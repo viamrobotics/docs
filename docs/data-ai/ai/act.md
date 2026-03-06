@@ -417,7 +417,7 @@ If you are encountering errors, check the **LOGS** tab for more information.
 
 Commit and push your changes to a GitHub repository.
 
-Follow the steps to [upload your module](/operate/modules/deploy-a-module/#package-and-upload-the-module) using cloud build.
+Follow the steps to [upload your module](/operate/modules/deploy-a-module/#3-deploy-with-cloud-build-recommended) using cloud build.
 When you create a release, your module will be built, packaged, and pushed to the Viam Registry.
 
 If you are not using GitHub or cloud build, see [package and deploy](/operate/modules/deploy-a-module/) and [Update an existing module](/operate/modules/advanced/manage-modules/#update-automatically-from-a-github-repo-with-cloud-build) for more information on alternatives.

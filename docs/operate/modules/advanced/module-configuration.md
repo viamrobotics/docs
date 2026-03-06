@@ -255,7 +255,7 @@ The following properties are configurable for each module.
 <!--prettier-ignore-->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is started [locally](/operate/modules/write-a-driver-module/#test-your-module-locally) on the device. |
+| `type` | string | **Required** | `registry` or `local`, depending on whether the module is in the [registry](https://app.viam.com/registry) or is started [locally](/operate/modules/write-a-driver-module/#3-test-locally) on the device. |
 | `name` | string | **Required** | The name of the module. |
 | `module_id` | string | **Required** | The module ID, which includes either the module namespace or organization ID, followed by its name: `<namespace>:<module-name>` or `<org-id>:<module-name>`. The `module_id` uniquely identifies your module. Identical to the first two pieces of the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}}. |
 | `version` | string | **Required** | <p>You can specify: <ul><li>to use a specific version (X.Y.Z) of the module</li><li>to pin the module version to the latest version, so your machine automatically updates to the latest version of the module that is available, or to the latest patch release of a configured minor (X.Y.\_) or major (X.\_) version.</li></ul>For more information, see [Module versioning](/operate/modules/advanced/module-configuration/#module-versioning).</p> |
@@ -303,7 +303,7 @@ If a module appears in both a {{< glossary_tooltip term_id="fragment" text="frag
 ### Environment variables
 
 Each module has access to the following default environment variables.
-Not all of these variables are automatically available on [local modules](/operate/modules/write-a-driver-module/#test-your-module-locally); you can manually set variables your module requires if necessary.
+Not all of these variables are automatically available on [local modules](/operate/modules/write-a-driver-module/#3-test-locally); you can manually set variables your module requires if necessary.
 
 <!-- prettier-ignore -->
 | Name | Description | Automatically set on local modules? |
