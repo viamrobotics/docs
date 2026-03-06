@@ -90,13 +90,11 @@ Go to your rover's **CONFIGURE** tab.
 
 Configure a [gamepad](/operate/reference/components/input-controller/gamepad/):
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-Select the `input_controller` type, then select the `gamepad` model.
-Enter a name or use the suggested name for your input controller and click **Create**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Search for `gamepad`, then select the official `input_controller/gamepad` block from `viam-server`.
+Click **Add component**, enter a name (or use the suggested name) for your input controller, then click **Add component** to confirm.
 
-![An example configuration for a linux-based gamepad input controller component](/components/input-controller/gamepad-input-controller-ui-config.png)
-
-You can set the `auto_reconnect` attribute to `true`.
+Once added, you can set the `auto_reconnect` attribute to `true`. You'll find it by clicking `Show 2 optional` in the Attributes section. Don't forget to Save!
 
 {{% /tab %}}
 {{% tab name="JSON" %}}
@@ -106,11 +104,12 @@ Inside the `components` array of your config, add the following configuration fo
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
-  "name": "my-gamepad",
-  "model": "gamepad",
+  "name": "input_controller-1",
   "api": "rdk:component:input_controller",
-  "attributes": { "auto_reconnect": true },
-  "depends_on": []
+  "model": "rdk:builtin:gamepad",
+  "attributes": {
+    "auto_reconnect": true
+  }
 }
 ```
 
@@ -129,16 +128,16 @@ To link the controller's input to the base functionality, you need to configure 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-Select the `base remote control` type.
-Enter a name or use the suggested name for your service and click **Create**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Search for 'base_remote_control' and select the official `base_remote_control/builtin` block from `viam-server`.
+Click **Add component**, enter a name (or use the suggested name) for your service, then click **Add component** to confirm.
 
 In your base remote control service's configuration panel, copy and paste the following JSON object into the attributes field:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "base": "<your-base-name>",
-  "input_controller": "my-gamepad"
+  "input_controller": "input_controller-1"
 }
 ```
 
@@ -160,7 +159,7 @@ Add the following configuration for your base remote control service, replacing 
       "api": "rdk:service:base_remote_control",
       "model": "rdk:builtin:builtin",
       "attributes": {
-        "input_controller": "my-gamepad",
+        "input_controller": "input_controller-1",
         "base": "<your-base-name>"
       }
     }
