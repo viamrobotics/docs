@@ -403,7 +403,10 @@ async def do_command(
 func (s *genericService) DoCommand(
     ctx context.Context, cmd map[string]interface{},
 ) (map[string]interface{}, error) {
-    readings, _ := s.sensor.Readings(ctx, nil)
+    readings, err := s.sensor.Readings(ctx, nil)
+    if err != nil {
+        return nil, err
+    }
     value, ok := readings["distance"].(float64)
     if !ok {
         return nil, fmt.Errorf("sensor reading 'distance' must be a float64")
