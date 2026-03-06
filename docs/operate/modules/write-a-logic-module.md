@@ -432,6 +432,13 @@ func (s *TempAlert) checkSensors(ctx context.Context) {
 {{% /tab %}}
 {{< /tabs >}}
 
+{{< alert title="Note: lock scope" color="note" >}}
+The Go example holds the mutex for the entire `checkSensors` call, including sensor reads that may block on network IO.
+This keeps the code simple and familiar (`defer s.mu.Unlock()`), but it means `DoCommand` calls will block while sensors are being read.
+
+In production, you would copy `s.sensors` under the lock, release it, read sensors without the lock, then re-lock to append alerts.
+{{< /alert >}}
+
 ### 5. Implement DoCommand
 
 `DoCommand` is the interface your application code uses to interact with the
