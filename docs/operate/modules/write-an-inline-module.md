@@ -20,12 +20,6 @@ directly in the Viam app's browser-based editor -- no IDE, terminal, or GitHub
 account required. When you click **Save & Deploy**, Viam builds your module in
 the cloud and deploys it to your machine automatically.
 
-{{< alert title="Availability" color="tip" >}}
-Inline modules are currently available to organizations that have the feature
-enabled. If you do not see the **Viam-hosted** option when adding code, contact
-Viam support to request access.
-{{< /alert >}}
-
 ## Concepts
 
 ### What is an inline module?

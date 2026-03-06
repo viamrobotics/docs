@@ -91,12 +91,10 @@ API (like `vision` or `mlmodel`). For the full list of service APIs, see
 ### Background tasks
 
 Logic modules often need to run continuously -- polling sensors, checking
-thresholds, updating state. You can spawn background tasks (goroutines in Go,
-async tasks in Python) from your constructor or reconfiguration method.
+thresholds, updating state. You can spawn background tasks in Go or C++. It is not recommended to spawn background tasks in Python because they will conflict with the Viam SDK's background tasks. If you need to run background logic in a Python module, instead place the logic in `DoCommand` and create a scheduled job to run the task on a schedule.
 
 The key requirement: your background task must stop cleanly when the module
-shuts down or reconfigures. Use a cancellation signal (a channel in Go, an
-`asyncio.Event` in Python) to coordinate this.
+shuts down or reconfigures. Use a cancellation signal (a channel in Go) to coordinate this.
 
 ## Steps
 
