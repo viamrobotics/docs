@@ -306,12 +306,6 @@ grep viam-server /var/log/syslog
 
 When running `viam-server` on macOS, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
 
-You can also access the local `viam-server` log file using the following command:
-
-```sh {class="command-line" data-prompt="$"}
-cat $(brew --prefix)/var/log/viam.log
-```
-
 {{% /tab %}}
 {{< /tabs >}}
 
