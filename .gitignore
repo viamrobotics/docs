@@ -19,3 +19,7 @@ bin
 frontmatter.json
 Pipfile
 typesense.env
+
+# Claude Code
+.claude/worktrees
+.claude/settings.local.json
