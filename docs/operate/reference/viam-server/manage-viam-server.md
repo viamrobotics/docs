@@ -127,29 +127,9 @@ Type **Ctrl + C** on your keyboard within the terminal session where you are run
 
 ### Run as a system service
 
-Installing `viam-server` as a system service is not recommended for most use cases on macOS.
-However, if you are looking to create a machine that runs on macOS and you want it to run `viam-server` automatically when your macOS system boots, then you will need to run `viam-server` as a service.
-
-Once you have [installed `viam-server`](/operate/install/setup/) on your macOS computer, use the following commands to control the service.
-These commands require that you store your machine cloud credentials file at <file>/opt/homebrew/etc/viam.json</file>.
-
-#### Start
-
-```sh {class="command-line" data-prompt="$"}
-brew services start viam-server
-```
-
-#### Stop
-
-```sh {class="command-line" data-prompt="$"}
-brew services stop viam-server
-```
-
-#### Restart
-
-```sh {class="command-line" data-prompt="$"}
-brew services restart viam-server
-```
+The brew installation of `viam-server` CANNOT be run as a system service in the
+background. If you would like to run `viam-server` in the background, install
+[`viam-agent`](/manage/reference/viam-agent/) instead.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -325,12 +305,6 @@ grep viam-server /var/log/syslog
 {{% tab name="macOS" %}}
 
 When running `viam-server` on macOS, log messages are written to standard out (`stdout`) in the same terminal session you started `viam-server` in.
-
-You can also access the local `viam-server` log file using the following command:
-
-```sh {class="command-line" data-prompt="$"}
-cat $(brew --prefix)/var/log/viam.log
-```
 
 {{% /tab %}}
 {{< /tabs >}}

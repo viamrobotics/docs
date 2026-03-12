@@ -106,14 +106,45 @@ You can only restore this file if you have access to the machine configuration.
   sudo launchctl kickstart system/com.viam.agent
   ```
 
+  If the service fails to start, make sure it is bootstrapped. The following command will
+  print an error message if the service is NOT bootstrapped.
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo launchctl print system/com.viam.agent
+  ```
+
+  The following command will bootstrap the service.
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo launchctl bootstrap system /Library/LaunchDaemons/com.viam.agent.plist
+  ```
+
+  If the service STILL fails to start, ensure that it is enabled. The following command
+  will enable the service.
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo launchctl enable system/com.viam.agent
+  ```
+
 - To stop `viam-agent`:
 
   {{< alert title="Alert" color="note" >}}
   When you stop `viam-agent`, the agent will stop `viam-server` as well.
   {{< /alert >}}
 
+  `sudo launchctl kill` and `sudo launchctl stop` will NOT fully stop `viam-agent`, as
+  launchd will automatically resurrect it. You can use the following to "boot out" the
+  service and fully stop it.
+
   ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl kill SIGTERM system/com.viam.agent
+  sudo launchctl bootout system/com.viam.agent
+  ```
+
+  If you would like to start `viam-agent` again after this command, you will need to
+  bootstrap it again.
+
+  ```sh {class="command-line" data-prompt="$"}
+  sudo launchctl bootstrap system /Library/LaunchDaemons/com.viam.agent.plist
   ```
 
 - To completely uninstall `viam-agent` and `viam-server`, run the following command:
