@@ -107,7 +107,7 @@ You can only restore this file if you have access to the machine configuration.
   ```
 
   If the service fails to start, make sure it is bootstrapped. The following command will
-  print an error message if the service is NOT boostrapped.
+  print an error message if the service is NOT bootstrapped.
 
   ```sh {class="command-line" data-prompt="$"}
   sudo launchctl print system/com.viam.agent
