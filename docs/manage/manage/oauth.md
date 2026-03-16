@@ -78,7 +78,7 @@ Successfully created OAuth app OAuth Test App with client ID <client-id> and cli
 | `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | **Required** |
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
-| `--invite-redirect-uri` | The redirect link to send a user when they accept an org invite. | **Optional** |
+| `--invite-redirect-uri` | The redirect link to send a user when they accept an org invite. | Optional |
 
 {{% /expand%}}
 
