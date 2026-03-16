@@ -60,7 +60,7 @@ viam organization auth-service oauth-app create --client-authentication=required
     --client-name="OAuth Test App" --enabled-grants="password, authorization_code" \
     --logout-uri="https://logoipsum.com/logout" --origin-uris="https://logoipsum.com,http://localhost:3000" \
     --pkce=not_required --redirect-uris="https://logoipsum.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
-    --url-validation=allow_wildcards --invite-redirect-url="https://logoipsum.com" --org-id=<org-id>
+    --url-validation=allow_wildcards --invite-redirect-uri="https://logoipsum.com" --org-id=<org-id>
 Successfully created OAuth app OAuth Test App with client ID <client-id> and client secret <secret-token>
 ```
 
