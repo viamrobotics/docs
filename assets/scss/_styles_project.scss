@@ -177,6 +177,20 @@ h7,
 
 .td-content > h3 {
   margin-bottom: 0.667rem;
+  margin-top: 1.5rem;
+}
+
+// The float:left on ol > li::before creates floats that escape the ol's
+// block formatting context. Since h3 has clear:both, it clears past those
+// floats, creating an oversized gap. flow-root contains the floats in
+// the ol's own BFC so they don't affect adjacent elements.
+// Zero the last li's margin-bottom because flow-root prevents it from
+// collapsing with the ol's margin, which would add unwanted extra space.
+.td-content > ol {
+  display: flow-root;
+}
+.td-content > ol > li:last-child {
+  margin-bottom: 0;
 }
 
 /* END Adjust Heading sizes*/
@@ -3191,57 +3205,9 @@ nav {
   background-color: rgb(232, 232, 234);
 }
 
-.second-nav {
-  min-width: 100%;
-  padding: 0.25rem 1rem;
-  border-top: 1px solid #e4e4e6;
-  border-bottom: 1px solid #e4e4e6;
-}
-
-.second-nav > ul {
-  padding: 0;
-  padding-left: 0.25rem;
-  margin: 0;
-}
-
-.second-nav > ul > li {
-  display: inline-block;
-  font-family:
-    "Public Sans",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  margin: 5px 0px;
-  font-weight: 300;
-}
-
-.second-nav > ul > li > a {
-  color: #333;
-  padding: 5px 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.second-nav > ul > li > a:hover,
-.second-nav > ul > li > a.active-path {
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-radius: 4px;
-  color: #282829;
-  font-weight: 500;
-}
-
 @media (min-width: 768px) {
   .td-main main {
-    padding-top: 7.5rem;
+    padding-top: 5rem;
   }
 }
 
@@ -3249,11 +3215,6 @@ nav {
   min-height: 3.5rem;
 }
 
-@media (max-width: 767px) {
-  .second-nav {
-    display: none;
-  }
-}
 
 @media (min-width: 992px) {
   .d-lg-block {
@@ -3261,23 +3222,17 @@ nav {
   }
 }
 
-span.section-overview {
-  display: none;
-}
 
 ul > li.nav-fold > span > span.link-and-toggle {
   display: flex !important;
   flex-direction: row;
 }
 
-ul > li.nav-fold:last-child {
+ul.ul-0 > li.nav-fold:last-child {
   padding-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {
-  .ul-1 > li.nav-fold.hide-if-desktop {
-    display: none;
-  }
 
   #landing-page-sidebar {
     display: none;
@@ -3290,24 +3245,38 @@ ul > li.nav-fold:last-child {
 
   li.nav-fold.header-only > span > span {
     color: #000000;
-    margin-top: 1rem;
+    margin-top: 0.25rem;
   }
 
   li.nav-fold.header-only:first-child > span > a {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   li.nav-fold.header-only * li {
     text-transform: unset;
   }
 
-  li > span > ul.ul-2 {
-    padding-left: 0;
+  li.nav-top-section > span > span.link-and-toggle > a,
+  li.nav-top-section > a {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: #666;
+  }
+
+  li.nav-top-section > span > ul.ul-2 {
+    margin-left: 0.5rem;
   }
 
   ul.ul-2 > li > span > span {
     color: #282829;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 0.833rem;
+  }
+
+  ul.ul-2 > li > a {
+    font-size: 0.833rem;
   }
 
   li.header-only > span > ul.ul-3 {
@@ -3320,20 +3289,25 @@ ul > li.nav-fold:last-child {
     padding-left: 0.5rem;
   }
 
-  span.section-overview-title {
-    display: none;
-  }
 
-  .ul-1 > li.nav-fold > span > span.link-and-toggle {
-    display: none !important;
-  }
 
   .td-sidebar-nav__section .ul-1 ul.ul-2 {
-    padding-left: 0;
+    padding-left: 0.5rem;
+    border-left: 1px solid #e4e4e6;
+    margin-left: 0.5rem;
   }
 
   .td-sidebar-nav__section ul.ul-1 {
     margin-left: 0;
+  }
+
+  li.nav-top-section {
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e4e4e6;
+  }
+
+  li.nav-top-section:last-child {
+    border-bottom: none;
   }
 }
 
