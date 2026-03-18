@@ -178,6 +178,7 @@ different one (for example, `linux/arm64`), resulting in exec format errors on t
 target machine.
 
 If this is your first time deploying this module, you need to create it in the registry before uploading:
+
 ```bash
 viam module create --name <module-name> --public-namespace <your-namespace>
 ```
