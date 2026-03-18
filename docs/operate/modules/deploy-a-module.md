@@ -181,7 +181,7 @@ If this is your first time deploying this module, you need to create it in the r
 ```bash
 viam module create --name <module-name> --public-namespace <your-namespace>
 ```
-This registers the module ID so the registry knows about it. You only need to do this once — after that, builds and uploads will work. 
+This registers the module ID so the registry knows about it. You only need to do this once, after that, builds and uploads will work. 
 If you used viam module generate, this step may have been done for you automatically.
 
 
