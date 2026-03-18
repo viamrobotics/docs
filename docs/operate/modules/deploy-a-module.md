@@ -167,7 +167,9 @@ Make sure all scripts are executable:
 ```bash
 chmod +x setup.sh build.sh run.sh
 ```
+
 ### 3. Deploy with cloud build (recommended)
+
 Cloud build is the recommended way to deploy modules. It uses GitHub Actions to
 compile your module for every target platform automatically, so you don't need
 to cross-compile locally. This eliminates a common class of errors where a
