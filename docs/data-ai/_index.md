@@ -3,6 +3,7 @@ linkTitle: "AI and Data"
 title: "Work with Data and AI"
 weight: 250
 layout: "docs"
+toc_hide: true
 type: "docs"
 no_list: true
 noedit: true
