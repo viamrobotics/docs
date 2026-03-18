@@ -18,7 +18,7 @@ aliases:
 `viam-agent` on Linux, a `launchd` daemon named `system/com.viam.agent` on MacOS, and a
 Service named `viam-agent` on Windows.
 
-To view logs from viam-agent see [here](/manage/reference/viam-agent/#agent-logs).
+To view logs from viam-agent see the ["Agent logs" section](/manage/reference/viam-agent/#agent-logs).
 
 {{< tabs >}}
 {{% tab name="Linux" %}}
