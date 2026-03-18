@@ -135,13 +135,13 @@ Viam enables **OTA updates at scale** with staged rollouts, canary deployments, 
 
 ## Summary
 
-| Stage     | Pain                                              | Viam Solution                                                                     |
-| --------- | ------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Prototype | Hardware integration, slow iteration              | Viam Registry, develop from anywhere, consistent APIs, built-in vision and motion |
-| Deploy    | Calibration, remote access, visibility, model fit | Pre-computed transforms, WebRTC, remote diagnostics, model training               |
-| Scale       | Configuration management                        | Reusable configuration blocks (fragments), staged rollouts                        |
-| Operate     | Remote debugging, scheduled tasks, model drift  | Log access, scheduled jobs, model deployment                                      |
-| Productize  | Visibility, updates, customer delivery          | Monitoring, OTA, white-label auth, billing                                        |
+| Stage      | Pain                                              | Viam Solution                                                                     |
+| ---------- | ------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Prototype  | Hardware integration, slow iteration              | Viam Registry, develop from anywhere, consistent APIs, built-in vision and motion |
+| Deploy     | Calibration, remote access, visibility, model fit | Pre-computed transforms, WebRTC, remote diagnostics, model training               |
+| Scale      | Configuration management                          | Reusable configuration blocks (fragments), staged rollouts                        |
+| Operate    | Remote debugging, scheduled tasks, model drift    | Log access, scheduled jobs, model deployment                                      |
+| Productize | Visibility, updates, customer delivery            | Monitoring, OTA, white-label auth, billing                                        |
 
 ## Next steps
 
