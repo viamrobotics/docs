@@ -74,17 +74,4 @@
     </div>
 
   </div>
-  <div class="second-nav">
-    <ul>
-      <li><a href="/" title="Overview" class="{{ if .IsHome }}active-path{{ end }}">Overview</a></li>
-    {{ with .Site.GetPage "/" }}
-    {{- range .Pages -}}
-    {{- $activePath := or ($currentPage.IsDescendant .) (eq $currentPage .) -}}
-    {{- if not (eq .LinkTitle "Tutorials") -}}
-    <li><a href="{{.RelPermalink}}" title="{{ .Title }}" class="{{ if $activePath}} active-path{{ end }}">{{ .LinkTitle }}</a></li>
-    {{- end -}}
-    {{- end -}}
-    {{- end -}}
-    </ul>
-  </div>
 </nav>
