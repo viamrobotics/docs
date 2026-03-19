@@ -22,11 +22,14 @@ Viam brings software engineering practices to robotics: version control, remote 
 
 ## Viam fundamentals
 
-Every Viam machine starts with `viam-server`, Viam's service and package manager.
-Install `viam-server` with a single command.
-Then declare what hardware is connected and what services you need in a JSON config.
-`viam-server` pulls the necessary modules from the Viam Registry, launches required processes, and keeps them running to support all the hardware and services your application requires.
-`viam-server` also manages networking and data sync.
+Every Viam machine starts with `viam-agent`, Viam's device management agent.
+Install `viam-agent` with a single command.
+`viam-agent` handles device provisioning, installs `viam-server`, and keeps everything up to date with over-the-air (OTA) updates.
+
+`viam-server` is the core runtime.
+It pulls your machine's configuration from app.viam.com, fetches the necessary modules from the Viam Registry, launches required processes, and keeps them running to support all the hardware and services your application requires.
+`viam-server` manages data capture and cloud sync.
+`viam-agent` manages networking, device provisioning, and software updates.
 
 The [Viam Registry](https://app.viam.com/registry) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
 All registry assets support semantic versioning, enabling controlled deployment to individual robots and across your fleet.
@@ -39,6 +42,8 @@ Viam supports reusable configuration through [fragments](/fleet/reuse-configurat
 Define a combination of components, services, and modules once, then apply that configuration across any number of machines.
 Use fragments to configure a camera-arm combination, a camera-to-object-detection pipeline, or an entire work cell.
 Fragments support variable substitution and per-machine overwrites, so you can deploy the same base configuration to hundreds of machines while accommodating site-specific settings.
+
+<img src="/what-is-viam-technical.svg" alt="Architecture diagram showing how a Viam machine works: app.viam.com at top, connected to your machine running viam-agent and viam-server with hardware drivers, software integrations, built-in services, and your code, connected to physical peripherals at bottom." style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto" >
 
 ## Viam capabilities
 
@@ -110,7 +115,7 @@ Your code connects to your robot machine over the network, through firewalls and
 
 - **Iterate from your IDE:** Write code on your laptop, run it against your robot hardware over the network. No copying files, no deploy step. Just run and see results.
 - **Run on the robot machine when latency matters:** For tight control loops, run scripts directly on your robot machine. Same code, same APIs—just a different execution environment.
-- **Package as a module for production:** When you're ready, package your code as a module that `viam-server` manages: starts on boot, restarts on failure, reconfigures when settings change.
+- **Package as a module for production:** When you're ready, package your code as a module. `viam-agent` ensures it starts on boot and stays updated. `viam-server` manages the module process, restarts it on failure, and reconfigures it when settings change.
 - **Call built-in services from your code:** Motion planning, computer vision, navigation, and data capture are available as services you call from any SDK.
 
 ### Manage software deployments
@@ -119,10 +124,10 @@ Package your control logic as a [module](/build-modules/write-a-logic-module/) a
 No cross-compiling.
 Viam handles everything.
 
-- **Managed lifecycle:** `viam-server` manages dependencies and ensures your application code starts on boot and restarts when necessary.
+- **Managed lifecycle:** `viam-agent` installs and updates your modules. `viam-server` manages module processes at runtime—starts them, restarts on failure, and reconfigures when settings change.
 - **Reconfigure on the fly:** Tune the application parameters you define with configuration updates in the Viam app. Changes apply within seconds. No restarts or redeployment.
 - **Version control:** Pin machines to exact versions for stability, or allow automatic updates at the patch, minor, or major level.
-- **OTA updates:** Push new versions to the registry with the CLI; machines pull updates automatically per their update policies.
+- **OTA updates:** `viam-agent` pulls new versions of `viam-server`, modules, and ML models from the Registry. Push a new version with the CLI; `viam-agent` handles delivery to your fleet.
 
 ### Scale easily
 
@@ -130,7 +135,7 @@ Your prototype configuration becomes your production configuration.
 Turn a working machine setup into a [fragment](/fleet/reuse-configuration/) and apply it to several, dozens, or even hundreds of machines.
 No deployment scripts, no copying files, no per-machine setup.
 
-- **Create a fragment from your prototype:** Once your machine works, export the configuration as a fragment. That exact setup is now reusable across any number of machines. Viam handles provisioning.
+- **Create a fragment from your prototype:** Once your machine works, export the configuration as a fragment. That exact setup is now reusable across any number of machines. `viam-agent` provisions new devices automatically—sets up networking, connects to the cloud, and installs `viam-server` and your configuration.
 - **Update configurations fleet-wide:** Change a fragment and every machine using it pulls the update. No scripting, no SSH loops.
 - **Override per-machine differences:** If some machines have a different camera model or site-specific parameter value, override for just those machines without forking the base fragment.
 - **Roll out changes incrementally:** Deploy configuration changes, module versions, or ML models to a subset of machines first. Validate before rolling out fleet-wide.
