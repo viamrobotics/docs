@@ -20,13 +20,13 @@
   <text x="55" y="246" text-anchor="middle" style="font-size:9px; fill:#252525; font-style:italic">runs anywhere</text>
 
   <!-- Arrow from SDK top, curving right to app.viam.com -->
-  <path d="M55,102 L55,67 Q55,52 70,52 L125,52" fill="none" stroke="#252525" stroke-width="1.2"/>
-  <polygon points="121,48 130,52 121,56" fill="#252525"/>
-  <text x="88" y="38" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC signaling</text>
+  <path d="M55,102 L55,67 Q55,52 70,52 L120,52" fill="none" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="117,48 126,52 117,56" fill="#252525"/>
+  <text x="85" y="30" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC signaling</text>
 
   <!-- Arrow from SDK bottom, curving right to YOUR MACHINE -->
-  <path d="M55,257 L55,282 Q55,297 70,297 L125,297" fill="none" stroke="#252525" stroke-width="1.2"/>
-  <polygon points="121,293 130,297 121,301" fill="#252525"/>
+  <path d="M55,257 L55,282 Q55,297 70,297 L120,297" fill="none" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="117,293 126,297 117,301" fill="#252525"/>
   <text x="88" y="320" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC / gRPC</text>
 
   <!-- ==================== CLOUD LAYER ==================== -->
@@ -60,12 +60,12 @@
   <text x="625" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">dashboards</text>
 
   <!-- ==================== ARROWS: Cloud ↔ Machine ==================== -->
-  <line x1="350" y1="109" x2="350" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <line x1="350" y1="112" x2="350" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
   <polygon points="346,136 350,143 354,136" fill="#252525"/>
   <text x="362" y="130" class="arrow-label" fill="#252525">config · modules · ML models</text>
 
-  <line x1="530" y1="138" x2="530" y2="112" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <polygon points="526,114 530,107 534,114" fill="#252525"/>
+  <line x1="530" y1="143" x2="530" y2="117" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="526,119 530,112 534,119" fill="#252525"/>
   <text x="542" y="130" class="arrow-label" fill="#252525">data · logs · machine status</text>
 
   <!-- ==================== YOUR MACHINE boundary ==================== -->
@@ -98,25 +98,25 @@
   <text x="214" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">board · base ...</text>
   <text x="214" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">modules from Registry</text>
 
-  <!-- Software Integrations: 122px wide -->
-  <rect x="277" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="338" y="294" text-anchor="middle" class="box-label" fill="#252525">Software</text>
-  <text x="338" y="308" text-anchor="middle" class="box-label" fill="#252525">Integrations</text>
-  <line x1="287" y1="316" x2="389" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="338" y="338" text-anchor="middle" style="font-size:10px; fill:#808080">software for a wide</text>
-  <text x="338" y="354" text-anchor="middle" style="font-size:10px; fill:#808080">variety of automation</text>
-  <text x="338" y="370" text-anchor="middle" style="font-size:10px; fill:#808080">applications</text>
-  <text x="338" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">modules from Registry</text>
-
   <!-- Built-in Services: 122px wide -->
+  <rect x="277" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="338" y="294" text-anchor="middle" class="box-label" fill="#252525">Built-in</text>
+  <text x="338" y="308" text-anchor="middle" class="box-label" fill="#252525">Services</text>
+  <line x1="287" y1="316" x2="389" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="338" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
+  <text x="338" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
+  <text x="338" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">computer vision</text>
+  <text x="338" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">shipped with viam-server</text>
+
+  <!-- Software Integrations: 122px wide -->
   <rect x="407" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="468" y="294" text-anchor="middle" class="box-label" fill="#252525">Built-in</text>
-  <text x="468" y="308" text-anchor="middle" class="box-label" fill="#252525">Services</text>
+  <text x="468" y="294" text-anchor="middle" class="box-label" fill="#252525">Software</text>
+  <text x="468" y="308" text-anchor="middle" class="box-label" fill="#252525">Integrations</text>
   <line x1="417" y1="316" x2="519" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="468" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
-  <text x="468" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
-  <text x="468" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">computer vision</text>
-  <text x="468" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">shipped with viam-server</text>
+  <text x="468" y="338" text-anchor="middle" style="font-size:10px; fill:#808080">software for a wide</text>
+  <text x="468" y="354" text-anchor="middle" style="font-size:10px; fill:#808080">variety of automation</text>
+  <text x="468" y="370" text-anchor="middle" style="font-size:10px; fill:#808080">applications</text>
+  <text x="468" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">modules from Registry</text>
 
   <!-- Your Code (Modules): 122px wide -->
   <rect x="537" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
@@ -129,7 +129,7 @@
   <text x="598" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">deploy via Registry</text>
 
   <!-- ==================== ARROWS: Compute ↔ Peripherals ==================== -->
-  <line x1="420" y1="425" x2="420" y2="465" stroke="#252525" stroke-width="1.2"/>
+  <line x1="420" y1="428" x2="420" y2="465" stroke="#252525" stroke-width="1.2"/>
   <polygon points="416,461 420,469 424,461" fill="#252525"/>
   <text x="432" y="442" style="font-size:10px; fill:#808080">USB · GPIO · Ethernet · Serial · CAN</text>
   <text x="432" y="456" class="arrow-label" fill="#252525">consistent APIs across all</text>

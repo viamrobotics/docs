@@ -20,16 +20,16 @@ It's the development workflow you're used to, applied to physical devices.
 
 Viam brings software engineering practices to robotics: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
 
+<img src="/what-is-viam-technical.svg" alt="Architecture diagram showing how a Viam machine works: app.viam.com at top, connected to your machine running viam-agent and viam-server with hardware drivers, software integrations, built-in services, and your code, connected to physical peripherals at bottom." style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto" >
+
 ## Viam fundamentals
 
-Every Viam machine starts with `viam-agent`, Viam's device management agent.
-Install `viam-agent` with a single command.
-`viam-agent` handles device provisioning, installs `viam-server`, and keeps everything up to date with over-the-air (OTA) updates.
+Every Viam machine starts with `viam-agent`.
+Install it with a single command.
+`viam-agent` installs `viam-server`, supervises it, and keeps it up to date.
 
 `viam-server` is the core runtime.
 It pulls your machine's configuration from app.viam.com, fetches the necessary modules from the Viam Registry, launches required processes, and keeps them running to support all the hardware and services your application requires.
-`viam-server` manages data capture and cloud sync.
-`viam-agent` manages networking, device provisioning, and software updates.
 
 The [Viam Registry](https://app.viam.com/registry) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
 All registry assets support semantic versioning, enabling controlled deployment to individual robots and across your fleet.
@@ -42,8 +42,6 @@ Viam supports reusable configuration through [fragments](/fleet/reuse-configurat
 Define a combination of components, services, and modules once, then apply that configuration across any number of machines.
 Use fragments to configure a camera-arm combination, a camera-to-object-detection pipeline, or an entire work cell.
 Fragments support variable substitution and per-machine overwrites, so you can deploy the same base configuration to hundreds of machines while accommodating site-specific settings.
-
-<img src="/what-is-viam-technical.svg" alt="Architecture diagram showing how a Viam machine works: app.viam.com at top, connected to your machine running viam-agent and viam-server with hardware drivers, software integrations, built-in services, and your code, connected to physical peripherals at bottom." style="width:100%;max-width:900px;height:auto;display:block;margin:0 auto" >
 
 ## Viam capabilities
 
