@@ -1,5 +1,5 @@
 ---
-linkTitle: "Write an Inline Module"
+linkTitle: "Write an inline module"
 title: "Write an Inline Module"
 weight: 10
 layout: "docs"

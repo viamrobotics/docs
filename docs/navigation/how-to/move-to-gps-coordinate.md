@@ -1,5 +1,5 @@
 ---
-linkTitle: "Move to GPS Coordinate"
+linkTitle: "Move to GPS coordinate"
 title: "Move to a GPS Coordinate"
 weight: 50
 layout: "docs"

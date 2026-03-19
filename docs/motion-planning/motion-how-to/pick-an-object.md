@@ -1,5 +1,5 @@
 ---
-linkTitle: "Pick an Object"
+linkTitle: "Pick an object"
 title: "Pick an Object"
 weight: 50
 layout: "docs"

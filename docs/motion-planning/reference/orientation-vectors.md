@@ -1,5 +1,5 @@
 ---
-linkTitle: "Orientation Vectors"
+linkTitle: "Orientation vectors"
 title: "Orientation Vector Reference"
 weight: 30
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "Camera Calibration"
+linkTitle: "Camera calibration"
 title: "Calibrate a Camera for Motion Planning"
 weight: 60
 layout: "docs"

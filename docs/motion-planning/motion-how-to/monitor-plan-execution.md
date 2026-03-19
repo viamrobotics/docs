@@ -1,5 +1,5 @@
 ---
-linkTitle: "Monitor Execution"
+linkTitle: "Monitor execution"
 title: "Monitor and Control Plan Execution"
 weight: 70
 layout: "docs"

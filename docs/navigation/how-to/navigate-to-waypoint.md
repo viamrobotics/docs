@@ -1,5 +1,5 @@
 ---
-linkTitle: "Navigate to Waypoint"
+linkTitle: "Navigate to waypoint"
 title: "Navigate to a Waypoint"
 weight: 20
 layout: "docs"

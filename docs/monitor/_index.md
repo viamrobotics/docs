@@ -1,5 +1,5 @@
 ---
-linkTitle: "Monitor and Operate"
+linkTitle: "Monitor and operate"
 title: "Monitor and Operate"
 weight: 220
 layout: "docs"

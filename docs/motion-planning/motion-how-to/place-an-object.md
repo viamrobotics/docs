@@ -1,5 +1,5 @@
 ---
-linkTitle: "Place an Object"
+linkTitle: "Place an object"
 title: "Place an Object"
 weight: 60
 layout: "docs"

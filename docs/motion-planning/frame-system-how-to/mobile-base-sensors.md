@@ -1,5 +1,5 @@
 ---
-linkTitle: "Mobile Base with Sensors"
+linkTitle: "Mobile base with sensors"
 title: "Mobile Base with Sensors"
 weight: 30
 layout: "docs"

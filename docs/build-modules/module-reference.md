@@ -1,5 +1,5 @@
 ---
-linkTitle: "Module Reference"
+linkTitle: "Module reference"
 title: "Module Developer Reference"
 weight: 40
 layout: "docs"

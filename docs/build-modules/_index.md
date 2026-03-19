@@ -1,5 +1,5 @@
 ---
-linkTitle: "Build and Deploy Modules"
+linkTitle: "Build and deploy modules"
 title: "Build and Deploy Modules"
 weight: 60
 layout: "docs"

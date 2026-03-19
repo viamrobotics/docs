@@ -1,5 +1,5 @@
 ---
-linkTitle: "Arm with Fixed External Camera"
+linkTitle: "Arm with fixed external camera"
 title: "Arm with Fixed External Camera"
 weight: 20
 layout: "docs"

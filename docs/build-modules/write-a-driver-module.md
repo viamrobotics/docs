@@ -1,5 +1,5 @@
 ---
-linkTitle: "Write a Driver Module"
+linkTitle: "Write a driver module"
 title: "Write a Driver Module"
 weight: 20
 layout: "docs"

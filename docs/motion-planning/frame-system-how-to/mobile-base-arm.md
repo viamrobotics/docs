@@ -1,5 +1,5 @@
 ---
-linkTitle: "Mobile Base with Arm"
+linkTitle: "Mobile base with arm"
 title: "Mobile Base with Arm"
 weight: 40
 layout: "docs"
