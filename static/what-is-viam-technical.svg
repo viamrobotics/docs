@@ -88,7 +88,7 @@
   <rect x="154" y="240" width="510" height="167" rx="4" fill="#fff" stroke="#d0d0d0" stroke-width="1"/>
   <rect x="162" y="246" width="96" height="20" rx="10" fill="#252525"/>
   <text x="210" y="260" text-anchor="middle" style="font-size:10px; font-weight:600; fill:#fff">viam-server</text>
-  <text x="272" y="260" style="font-size:10px; fill:#808080">applies config · manages modules</text>
+  <text x="272" y="260" style="font-size:10px; fill:#808080">applies config updates · manages modules</text>
 
   <!-- Hardware Drivers: 110px wide -->
   <rect x="159" y="274" width="110" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
