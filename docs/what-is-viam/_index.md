@@ -12,6 +12,7 @@ manualLink: "/what-is-viam/what-is-viam/"
 aliases:
   - /understand/
   - /understand/what-is-viam/
+  - /what-is-viam/problems-viam-solves/
 date: "2025-01-30"
 ---
 
