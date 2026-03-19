@@ -8,16 +8,18 @@
   </defs>
 
   <!-- ==================== YOUR CODE SDK (left side) ==================== -->
-  <rect x="0" y="102" width="110" height="155" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
-  <text x="55" y="122" text-anchor="middle" class="box-label" fill="#252525">Your Code</text>
-  <text x="55" y="138" text-anchor="middle" style="font-size:10px; fill:#808080">(SDK)</text>
-  <line x1="10" y1="146" x2="100" y2="146" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="55" y="164" text-anchor="middle" style="font-size:10px; fill:#808080">consistent APIs across</text>
-  <text x="55" y="180" text-anchor="middle" style="font-size:10px; fill:#808080">hardware and services</text>
+  <rect x="0" y="102" width="110" height="175" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
+  <text x="55" y="122" text-anchor="middle" class="box-label" fill="#252525">Code Anywhere</text>
+  <line x1="10" y1="130" x2="100" y2="130" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="55" y="148" text-anchor="middle" style="font-size:10px; fill:#808080">write code, test,</text>
+  <text x="55" y="164" text-anchor="middle" style="font-size:10px; fill:#808080">and debug from</text>
+  <text x="55" y="180" text-anchor="middle" style="font-size:10px; fill:#808080">any computer</text>
   <line x1="10" y1="190" x2="100" y2="190" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="55" y="208" text-anchor="middle" style="font-size:10px; fill:#808080">Python · Go</text>
-  <text x="55" y="224" text-anchor="middle" style="font-size:10px; fill:#808080">TS · C++ · Flutter</text>
-  <text x="55" y="246" text-anchor="middle" style="font-size:9px; fill:#252525; font-style:italic">runs anywhere</text>
+  <text x="55" y="208" text-anchor="middle" style="font-size:10px; fill:#808080">execute against</text>
+  <text x="55" y="224" text-anchor="middle" style="font-size:10px; fill:#808080">your robot remotely</text>
+  <line x1="10" y1="234" x2="100" y2="234" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="55" y="252" text-anchor="middle" style="font-size:10px; fill:#808080">Python · Go</text>
+  <text x="55" y="268" text-anchor="middle" style="font-size:10px; fill:#808080">TS · C++ · Flutter</text>
 
   <!-- Arrow from SDK top, curving right to app.viam.com -->
   <path d="M55,102 L55,67 Q55,52 70,52 L120,52" fill="none" stroke="#252525" stroke-width="1.2"/>
@@ -25,7 +27,7 @@
   <text x="85" y="30" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC signaling</text>
 
   <!-- Arrow from SDK bottom, curving right to YOUR MACHINE -->
-  <path d="M55,257 L55,282 Q55,297 70,297 L120,297" fill="none" stroke="#252525" stroke-width="1.2"/>
+  <path d="M55,277 L55,282 Q55,297 70,297 L120,297" fill="none" stroke="#252525" stroke-width="1.2"/>
   <polygon points="117,293 126,297 117,301" fill="#252525"/>
   <text x="88" y="320" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC / gRPC</text>
 
@@ -121,7 +123,7 @@
   <!-- Your Code (Modules): 122px wide -->
   <rect x="537" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
   <text x="598" y="294" text-anchor="middle" class="box-label" fill="#252525">Your Code</text>
-  <text x="598" y="308" text-anchor="middle" class="box-label" fill="#252525">(Modules)</text>
+  <text x="598" y="308" text-anchor="middle" class="box-label" fill="#252525">(as Modules)</text>
   <line x1="547" y1="316" x2="649" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
   <text x="598" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">control logic</text>
   <text x="598" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">custom drivers</text>
