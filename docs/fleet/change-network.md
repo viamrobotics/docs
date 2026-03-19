@@ -1,5 +1,5 @@
 ---
-linkTitle: "change network"
+linkTitle: "Connect to new network"
 title: "change network"
 weight: 10
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "oauth"
+linkTitle: "OAuth"
 title: "oauth"
 weight: 10
 layout: "docs"

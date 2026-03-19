@@ -1,5 +1,5 @@
 ---
-linkTitle: "create a dataset"
+linkTitle: "Create a dataset"
 title: "create a dataset"
 weight: 10
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "scheduled jous"
+linkTitle: "Schedule automated jobs"
 title: "scheduled jous"
 weight: 10
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "metadata"
+linkTitle: "Add custom metadata"
 title: "metadata"
 weight: 10
 layout: "docs"

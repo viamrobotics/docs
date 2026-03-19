@@ -1,5 +1,5 @@
 ---
-linkTitle: "alert"
+linkTitle: "Alert on machine telemetry"
 title: "alert"
 weight: 10
 layout: "docs"

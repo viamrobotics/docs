@@ -1,5 +1,5 @@
 ---
-linkTitle: "system settings"
+linkTitle: "Configure machine settings"
 title: "system settings"
 weight: 10
 layout: "docs"

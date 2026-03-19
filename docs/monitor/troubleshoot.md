@@ -1,5 +1,5 @@
 ---
-linkTitle: "trouuleshoot"
+linkTitle: "Troubleshoot problems"
 title: "trouuleshoot"
 weight: 10
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "classify"
+linkTitle: "Classify images"
 title: "classify"
 weight: 10
 layout: "docs"

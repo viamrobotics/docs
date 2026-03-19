@@ -1,5 +1,5 @@
 ---
-linkTitle: "act on detections"
+linkTitle: "Act on detections"
 title: "act on detections"
 weight: 10
 layout: "docs"

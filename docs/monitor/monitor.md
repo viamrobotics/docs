@@ -1,5 +1,5 @@
 ---
-linkTitle: "monitor"
+linkTitle: "Monitor machine status"
 title: "monitor"
 weight: 10
 layout: "docs"

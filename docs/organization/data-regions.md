@@ -1,5 +1,5 @@
 ---
-linkTitle: "data regions"
+linkTitle: "Choose data region"
 title: "data regions"
 weight: 10
 layout: "docs"

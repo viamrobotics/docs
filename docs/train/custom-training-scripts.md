@@ -1,5 +1,5 @@
 ---
-linkTitle: "custom training scripts"
+linkTitle: "Custom training scripts"
 title: "custom training scripts"
 weight: 10
 layout: "docs"

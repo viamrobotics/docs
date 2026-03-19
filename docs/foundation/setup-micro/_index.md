@@ -1,5 +1,5 @@
 ---
-linkTitle: "Set up micro-controller"
+linkTitle: "Set up an ESP32"
 title: "Set up micro-controller"
 weight: 20
 layout: "docs"
