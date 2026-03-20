@@ -1,5 +1,5 @@
 ---
-linkTitle: "train a model"
+linkTitle: "Train a model"
 title: "train a model"
 weight: 10
 layout: "docs"

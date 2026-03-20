@@ -1,5 +1,5 @@
 ---
-linkTitle: "Train ML Models"
+linkTitle: "Train ML models"
 title: "Train ML Models"
 weight: 50
 layout: "docs"

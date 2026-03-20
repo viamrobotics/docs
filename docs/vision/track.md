@@ -1,5 +1,5 @@
 ---
-linkTitle: "Track Objects"
+linkTitle: "Track objects"
 title: "Track Objects Across Frames"
 weight: 40
 layout: "docs"

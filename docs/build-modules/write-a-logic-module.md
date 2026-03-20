@@ -1,5 +1,5 @@
 ---
-linkTitle: "Write a Logic Module"
+linkTitle: "Write a logic module"
 title: "Write a Logic Module"
 weight: 25
 layout: "docs"

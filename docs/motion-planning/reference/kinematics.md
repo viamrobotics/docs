@@ -1,5 +1,5 @@
 ---
-linkTitle: "Arm Kinematics"
+linkTitle: "Arm kinematics"
 title: "Arm Kinematics"
 weight: 20
 layout: "docs"

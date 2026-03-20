@@ -1,5 +1,5 @@
 ---
-linkTitle: "ruac"
+linkTitle: "Permissions"
 title: "ruac"
 weight: 10
 layout: "docs"

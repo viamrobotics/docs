@@ -1,5 +1,5 @@
 ---
-linkTitle: "Arm with Gripper and Wrist Camera"
+linkTitle: "Arm with gripper and wrist camera"
 title: "Arm with Gripper and Wrist Camera"
 weight: 10
 layout: "docs"

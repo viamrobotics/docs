@@ -1,5 +1,5 @@
 ---
-linkTitle: "Follow a Patrol Route"
+linkTitle: "Follow a patrol route"
 title: "Follow a Patrol Route"
 weight: 30
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "Avoid Obstacles"
+linkTitle: "Avoid obstacles"
 title: "Avoid Obstacles During Navigation"
 weight: 40
 layout: "docs"

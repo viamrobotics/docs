@@ -1,5 +1,5 @@
 ---
-linkTitle: "Avoid Obstacles"
+linkTitle: "Avoid obstacles"
 title: "Plan Collision-Free Paths"
 weight: 30
 layout: "docs"

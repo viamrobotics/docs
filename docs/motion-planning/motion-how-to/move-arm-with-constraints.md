@@ -1,5 +1,5 @@
 ---
-linkTitle: "Move with Constraints"
+linkTitle: "Move with constraints"
 title: "Move an Arm with Motion Constraints"
 weight: 20
 layout: "docs"

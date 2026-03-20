@@ -1,5 +1,5 @@
 ---
-linkTitle: "custom interface"
+linkTitle: "Custom interface"
 title: "custom interface"
 weight: 10
 layout: "docs"

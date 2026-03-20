@@ -1,5 +1,5 @@
 ---
-linkTitle: "Get Started"
+linkTitle: "Get started"
 title: "Get Started"
 weight: 30
 layout: "docs"

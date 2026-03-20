@@ -1,5 +1,5 @@
 ---
-linkTitle: "detect"
+linkTitle: "Detect objects"
 title: "detect"
 weight: 10
 layout: "docs"

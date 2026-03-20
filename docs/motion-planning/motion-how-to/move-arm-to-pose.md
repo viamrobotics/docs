@@ -1,5 +1,5 @@
 ---
-linkTitle: "Move Arm to Pose"
+linkTitle: "Move arm to pose"
 title: "Move an Arm to a Target Pose"
 weight: 10
 layout: "docs"

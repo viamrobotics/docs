@@ -1,6 +1,6 @@
 ---
 title: "Micro-RDK Troubleshooting"
-linkTitle: "Micro-RDK Troubleshooting"
+linkTitle: "Micro-RDK troubleshooting"
 weight: 100
 type: docs
 images: ["/installation/thumbnails/install.png"]

@@ -1,5 +1,5 @@
 ---
-linkTitle: "Deploy a Module"
+linkTitle: "Deploy a module"
 title: "Deploy a Module"
 weight: 30
 layout: "docs"

@@ -1,5 +1,5 @@
 ---
-linkTitle: "Navigation Service"
+linkTitle: "Navigation service"
 title: "Navigation Service Configuration"
 weight: 10
 layout: "docs"

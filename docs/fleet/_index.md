@@ -1,5 +1,5 @@
 ---
-linkTitle: "Fleet Deployment"
+linkTitle: "Fleet deployment"
 title: "Fleet Deployment"
 weight: 200
 layout: "docs"

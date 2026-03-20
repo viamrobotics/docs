@@ -1,5 +1,5 @@
 ---
-linkTitle: "Detect While Moving"
+linkTitle: "Detect while moving"
 title: "Detect Objects While Navigating"
 weight: 60
 layout: "docs"

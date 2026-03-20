@@ -1,5 +1,5 @@
 ---
-linkTitle: "uilling"
+linkTitle: "Billing"
 title: "uilling"
 weight: 10
 layout: "docs"

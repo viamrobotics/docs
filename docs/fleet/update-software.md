@@ -1,5 +1,5 @@
 ---
-linkTitle: "update software"
+linkTitle: "Update software"
 title: "update software"
 weight: 10
 layout: "docs"

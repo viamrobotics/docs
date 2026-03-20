@@ -1,5 +1,5 @@
 ---
-linkTitle: "Measure Depth"
+linkTitle: "Measure depth"
 title: "Measure Depth"
 weight: 50
 layout: "docs"

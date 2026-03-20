@@ -1,5 +1,5 @@
 ---
-linkTitle: "Admin and Access"
+linkTitle: "Admin and access"
 title: "Admin and Access"
 weight: 225
 layout: "docs"

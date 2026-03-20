@@ -1,5 +1,5 @@
 ---
-linkTitle: "Computer Vision"
+linkTitle: "Computer vision"
 title: "Computer Vision"
 weight: 55
 layout: "docs"

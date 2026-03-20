@@ -1,5 +1,5 @@
 ---
-linkTitle: "provision devices"
+linkTitle: "Provision devices"
 title: "provision devices"
 weight: 10
 layout: "docs"

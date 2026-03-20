@@ -1,5 +1,5 @@
 ---
-linkTitle: "Move a Gantry"
+linkTitle: "Move a gantry"
 title: "Move a Gantry"
 weight: 40
 layout: "docs"
