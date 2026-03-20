@@ -72,7 +72,7 @@
 
   <!-- ==================== YOUR MACHINE boundary ==================== -->
   <rect x="130" y="145" width="558" height="415" rx="10" fill="none" stroke="#252525" stroke-width="1.5"/>
-  <text x="147" y="165" style="font-size:13px; font-weight:700; fill:#252525; letter-spacing:0.03em">YOUR MACHINE</text>
+  <text x="147" y="165" style="font-size:13px; font-weight:700; fill:#252525; letter-spacing:0.03em">YOUR ROBOT</text>
 
   <!-- ==================== COMPUTE LAYER ==================== -->
   <rect x="138" y="175" width="542" height="250" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
