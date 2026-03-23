@@ -146,7 +146,7 @@ Why is this valuable? Traditional embedded development requires: edit code → b
 **Get your machine address:**
 
 1. In the Viam app, go to your machine's **Configure** page
-2. Click the **Online** dropdown
+2. Click the **Live** dropdown
 3. Click **Remote address** to copy your machine address
 
 {{<imgproc src="/tutorials/first-project/machine-address.png" resize="x1100" declaredimensions=true alt="Live dropdown showing Remote address option with machine address visible." class="imgzoom shadow">}}

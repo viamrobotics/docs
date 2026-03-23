@@ -27,7 +27,7 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 **Include the data service in your machine configuration:**
 
-1. Click **+** next to **inspection-station-1-main** in the **Configure** tab
+1. Click **+** next to **inspection-station-1-main** in the **CONFIGURE** tab
 2. Click **Component or service**
 3. Select **data management**
 4. Name it `data-service`
@@ -39,7 +39,7 @@ The default configuration options for the data service are correct for our appli
 **Enable data capture on the vision service:**
 
 1. Click `vision-service` in your machine configuration
-2. Find the **Data capture** section and click **Add method**
+2. Find the **DATA CAPTURE** section and click **Add method**
 3. Select the method to capture: `CaptureAllFromCamera`
 4. Set **Frequency (hz)** to `0.5` (every 2 seconds)
 5. Set **Camera name** to `inspection-cam`
@@ -47,7 +47,7 @@ The default configuration options for the data service are correct for our appli
 
 **Verify it's working:**
 
-1. In the **Data capture** section of the `vision-service` configuration panel you should now see a collapsible component labeled **Latest capture** with a day and time specified
+1. In the **DATA CAPTURE** section of the `vision-service` configuration panel you should now see a collapsible component labeled **Latest capture** with a day and time specified
 2. Click on **Latest capture** and view the most recent image captured
 
 Your machine is now capturing detection results and images every 2 seconds and syncing them to the Viam cloud application. Once synced to the cloud, the data is removed from your machine to free up storage.

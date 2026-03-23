@@ -22,7 +22,7 @@ Before starting this tutorial, you need the can inspection simulation running. F
 2. Create a machine in Viam and get credentials
 3. Start the container with your Viam credentials
 
-Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Online** in the Viam app, return here to continue.
+Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
 The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
@@ -35,7 +35,7 @@ If you followed the [setup guide](../gazebo-setup/), your machine should already
 1. Open [app.viam.com](https://app.viam.com) (the "Viam app")
 2. Navigate to your machine (for example, `inspection-station-1`)
 3. Verify the status indicator shows **Live**
-4. Click the **Configure** tab if not already selected
+4. Click the **CONFIGURE** tab if not already selected
 
 {{<imgproc src="/tutorials/first-project/machine-live-status.png" resize="x1100" declaredimensions=true alt="Machine page showing the green Live status indicator next to the machine name." class="imgzoom shadow">}}
 
@@ -47,7 +47,7 @@ Your machine is online but empty. To configure your machine, you will add compon
 
 In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container.
 
-Find `inspection-station-1-main` in the **Configuration** tab.
+Find `inspection-station-1-main` in the **CONFIGURE** tab.
 
 ## 1.3 Configure the Camera
 
@@ -71,14 +71,14 @@ To add the camera component to your machine part:
 6. Enter `inspection-cam` for the name
 
 {{< expand "Why were two items added to my machine part?" >}}
-After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **Configuration** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
+After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **CONFIGURE** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
 {{< /expand >}}
 
 ### Configure the camera
 
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
 
-1. In the **Attributes** section, add:
+1. In the **ATTRIBUTES** section, add:
 
    ```json
    {
@@ -98,9 +98,9 @@ Verify the camera is working. Every component in Viam has a built-in test card r
 
 ### Open the test panel
 
-1. You should still be on the **Configure** tab with your `inspection-cam` selected
-2. Look for the **Test** section at the bottom of the camera's configuration panel
-3. Click **Test** to expand the camera's test card
+1. You should still be on the **CONFIGURE** tab with your `inspection-cam` selected
+2. Look for the **TEST** section at the bottom of the camera's configuration panel
+3. Click **TEST** to expand the camera's test card
 
 The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 
@@ -166,8 +166,8 @@ This fragment works with any camera. If you were using a USB webcam instead of t
 
 ### Test the vision service
 
-1. Find the **Test** section at the bottom of the `vision-service` configuration panel
-2. Expand the **Test** card
+1. Find the **TEST** section at the bottom of the `vision-service` configuration panel
+2. Expand the **TEST** card
 3. If not already selected, select `inspection-cam` as the camera source
 4. Set **Detections/Classifications** to `Live`
 5. Check that detection and labeling are working

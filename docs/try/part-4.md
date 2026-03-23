@@ -235,9 +235,9 @@ Click **Save**.
 
 **Test the inspector:**
 
-1. In the **Configure** tab, click on `inspector-service` to open its configuration panel
-2. Expand **Test** card at the bottom
-3. In the **DoCommand** field, enter `{"detect": true}`
+1. In the **CONFIGURE** tab, click on `inspector-service` to open its configuration panel
+2. Expand **TEST** card at the bottom
+3. In the **DO COMMAND** section, enter `{"detect": true}`
 4. Click **Execute**
 5. You should see a response with `label` and `confidence` values
 6. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam
@@ -254,7 +254,7 @@ In Part 2, you captured images from the vision service. Those images are great f
 
 The data manager needs to know about your inspector service before it can capture data from it. You'll add this dependency in the JSON configuration.
 
-1. In the **Configure** tab, click **JSON** in the upper left
+1. In the **CONFIGURE** tab, click **JSON** in the upper left
 2. Find the `data-service` entry in the `services` array
 3. Add `"depends_on": ["inspector-service"]` to the data-service configuration:
 
@@ -274,8 +274,8 @@ This tells viam-server to wait for `inspector-service` to initialize before the 
 
 **Enable data capture on the inspector:**
 
-1. In the **Configure** tab, click on `inspector-service` to open its configuration panel
-2. Find the **Data capture** section and click **Add method**
+1. In the **CONFIGURE** tab, click on `inspector-service` to open its configuration panel
+2. Find the **DATA CAPTURE** section and click **Add method**
 3. Select the method: `DoCommand`
 4. Set **Frequency (hz)** to `0.5` (captures every 2 seconds)
 5. In the **Additional parameters** section, add the DoCommand input:

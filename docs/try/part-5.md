@@ -36,12 +36,12 @@ A workspace is a custom dashboard view for your machines.
 
 You now have an empty workspace ready for widgets.
 
-## 5.2 Add a Camera Stream Widget
+## 5.2 Add a camera stream widget
 
 Add a live video feed from your inspection camera.
 
 1. Click **+ Add widget**
-2. Select **Camera Stream**
+2. Select **Camera stream**
 3. Click the pencil icon to configure
 4. Set **Camera name** to `inspection-cam`
 5. Set **Refresh type** to `Live`
@@ -73,7 +73,7 @@ You'll write MQL stages that filter for `FAIL` labels and count them per minute.
 **Create the widget:**
 
 1. Click **+ Add widget**
-2. Select **Time Series**
+2. Select **Time series**
 3. Click the pencil icon to configure
 4. Set **Title** to `Defective cans per minute`
 5. Set **Time range (min)** to `60`
@@ -149,7 +149,7 @@ The graph now shows the count of defective cans detected in each minute.
 Add another time series showing the average confidence of failure detections over time. This helps you monitor model performance—if confidence drops, you may need to retrain.
 
 1. Click **+ Add widget**
-2. Select **Time Series**
+2. Select **Time series**
 3. Click the pencil icon to configure
 4. Set **Title** to `Confidence`
 5. Set **Time range (min)** to `60`
