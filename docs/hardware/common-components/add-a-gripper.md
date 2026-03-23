@@ -10,8 +10,7 @@ aliases:
   - /hardware-components/add-a-gripper/
 ---
 
-You have a robotic gripper and you need Viam to control it by opening, closing,
-grabbing objects, and checking if something is held.
+Add a gripper to your machine's configuration so you can open, close, and grasp objects from the Viam app and from code.
 
 ## Concepts
 
@@ -89,6 +88,8 @@ Open the gripper, grab an object, and check if it's held.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+If you're using real hardware, you'll see the gripper open and close when you run the code below.
+With the fake model, Grab always returns true.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

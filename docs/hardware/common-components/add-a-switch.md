@@ -10,8 +10,7 @@ aliases:
   - /hardware-components/add-a-switch/
 ---
 
-You have a toggle switch or selector switch and you need to read its current
-position or set it to a specific position.
+Add a switch to your machine's configuration so you can read and set switch positions from the Viam app and from code.
 
 ## Concepts
 
@@ -71,6 +70,7 @@ Read the switch position, cycle through positions, and read labels.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+When you run the code below, you'll see the switch cycle through all positions. With the fake model, positions update in memory. With real hardware, verify the switch physically changes state.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

@@ -10,8 +10,7 @@ aliases:
   - /hardware-components/add-a-motor/
 ---
 
-You have a DC or stepper motor wired through a motor driver to your board's
-GPIO pins, and you need your machine to control it.
+Add a motor to your machine's configuration so you can control it from the Viam app and from code.
 
 ## Concepts
 
@@ -115,6 +114,8 @@ Spin the motor forward for 2 revolutions, then check if it's still moving.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+If you're using real hardware, you'll see the motor spin when you run the code below.
+Without an encoder, position readings will be estimates based on time and max RPM.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

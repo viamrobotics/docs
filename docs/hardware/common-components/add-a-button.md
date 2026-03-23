@@ -10,8 +10,7 @@ aliases:
   - /hardware-components/add-a-button/
 ---
 
-You have a physical button connected to your machine and you want to trigger
-actions when it's pressed.
+Add a button to your machine's configuration so you can detect and respond to button presses from the Viam app and from code.
 
 ## Concepts
 
@@ -66,6 +65,7 @@ Push the button programmatically.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+When you run the code below, the button's Push method fires. With a physical button connected via a module, this triggers whatever action the module defines.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

@@ -10,9 +10,7 @@ aliases:
   - /hardware-components/add-an-input-controller/
 ---
 
-You want to control your machine manually using a gamepad, joystick, or other
-input device. You might be driving a rover, jogging an arm, or triggering actions with
-button presses.
+Add an input controller to your machine's configuration so you can use a gamepad, joystick, or other input device to control your machine.
 
 ## Concepts
 
@@ -108,6 +106,7 @@ List available controls and print events as they happen.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+When you run the code below, press buttons on your gamepad and watch the events print in real time.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

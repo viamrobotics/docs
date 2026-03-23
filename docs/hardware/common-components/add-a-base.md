@@ -10,9 +10,7 @@ aliases:
   - /hardware-components/add-a-base/
 ---
 
-You have a mobile robot with motors on the left and right sides, and you want
-to drive it with simple commands like "move forward 1 meter" or "turn 90
-degrees" instead of commanding each motor individually.
+Add a base to your machine's configuration so you can drive a mobile robot as a single unit from the Viam app and from code.
 
 ## Concepts
 
@@ -100,6 +98,8 @@ Drive the base forward, spin it, and stop.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+If you're using real hardware, you'll see the robot drive forward and spin when you run the code below.
+With a fake base, the commands complete without physical motion.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

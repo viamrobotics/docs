@@ -10,8 +10,7 @@ aliases:
   - /hardware-components/add-a-generic/
 ---
 
-You have hardware that doesn't fit any of the standard component types
-(camera, motor, sensor, etc.) and you need to interact with it through Viam.
+Add a generic component to your machine's configuration for hardware that doesn't fit any standard component type.
 
 ## Concepts
 
@@ -70,6 +69,7 @@ Send a command to the generic component and read the response.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+With the fake model, you'll see your command echoed back. With a real module, the response depends on what commands the module supports.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

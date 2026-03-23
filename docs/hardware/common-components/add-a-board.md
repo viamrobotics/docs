@@ -10,11 +10,7 @@ aliases:
   - /hardware-components/add-a-board/
 ---
 
-You have a single-board computer (Raspberry Pi, Jetson, etc.) and you need
-other components (motors, encoders, servos, sensors) to use its GPIO pins.
-
-A board component is the foundation that many other components depend on.
-Configure it first.
+Add a board to your machine's configuration so other components can use your single-board computer's GPIO pins, analog readers, and digital interrupts.
 
 ## Concepts
 
@@ -102,6 +98,7 @@ Toggle a GPIO pin and read its state programmatically.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+If you have an LED wired to pin 11, you'll see it turn on and off when you run the code below.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

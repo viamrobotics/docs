@@ -10,8 +10,7 @@ aliases:
   - /hardware-components/add-a-servo/
 ---
 
-You have a hobby servo and you need to control its angular position from your
-machine.
+Add a servo to your machine's configuration so you can control its angular position from the Viam app and from code.
 
 ## Concepts
 
@@ -79,6 +78,7 @@ Sweep the servo through a range of positions.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+If you're using real hardware, you'll see the servo sweep through positions when you run the code below.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

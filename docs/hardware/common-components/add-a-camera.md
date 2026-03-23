@@ -14,7 +14,7 @@ aliases:
   - /hardware/components/add-a-camera/
 ---
 
-You have a camera and you need your machine to use it.
+Add a camera to your machine's configuration so you can capture images and video from the Viam app and from code.
 
 ## Concepts
 
@@ -102,6 +102,7 @@ To get the credentials for the code below, go to your machine's page in the Viam
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
 
+When you run the code below, it saves an image file to your current directory. Check that the image shows what the camera sees.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

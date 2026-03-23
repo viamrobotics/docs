@@ -10,9 +10,7 @@ aliases:
   - /hardware-components/add-an-encoder/
 ---
 
-You need to know how far a motor has turned or how fast it's spinning.
-An encoder component reads the signals from a rotary encoder attached to a
-motor shaft and provides position and direction data.
+Add an encoder to your machine's configuration so you can track motor position and direction from the Viam app and from code.
 
 ## Concepts
 
@@ -119,6 +117,7 @@ Read the encoder position and reset it.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
+When you run the code below, you'll see the encoder's current position, then reset it to zero. Manually rotate the motor shaft to verify the count changes.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
