@@ -126,7 +126,7 @@ In the following steps, you will see how to add a fragment manually. If you are 
 
 {{< table >}}
 {{% tablestep start=1 %}}
-**On your machine's CONFIGURE tab, click the + button and select Insert fragment.**
+**On your machine's CONFIGURE tab, click the + button and select Configuration Block.**
 
 Search for your fragment and add it.
 
