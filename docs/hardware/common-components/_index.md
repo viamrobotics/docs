@@ -42,9 +42,9 @@ Components that read data from the physical world.
 
 ## Drive a mobile robot
 
-| Component                                       | Description                                                                                                                                                                                        |
-| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Base](/hardware/common-components/add-a-base/) | Drive a wheeled or tracked robot as a single unit with commands like "move forward 1 meter" or "turn 90 degrees." Use a base for rovers, differential-drive robots, and omnidirectional platforms. |
+| Component                                       | Description                                                                                                                                         |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Base](/hardware/common-components/add-a-base/) | Drive a mobile robot with movement commands like "move forward 300mm" or "spin 90 degrees." A base wraps your drive system into a single interface. |
 
 ## Control motors and servos
 

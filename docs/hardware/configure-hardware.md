@@ -28,26 +28,13 @@ This abstraction means you can swap hardware without changing application code.
 A program that captures images from a webcam works identically with an IP camera.
 You change the model and attributes in configuration, not in your program.
 
-## Built-in models and module models
+## Models
 
-Many component types ship with **built-in models** that `viam-server` supports
-out of the box, including USB webcams, GPIO-controlled motors, incremental encoders, and
-more.
+When you add a component, you search for a **model** that matches your hardware. Models are drivers that know how to communicate with specific devices. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors wired to GPIO pins). Most hardware-specific models — arms, grippers, specialized sensors, motor controllers — come from **modules** in the [Viam registry](https://app.viam.com/registry).
 
-For hardware that isn't covered by a built-in model, you or the community can
-write a **module** that implements the same standard API for your specific
-device. Once a module model is registered, it works exactly like a built-in
-model: data capture, test panels, SDKs, and every other platform feature apply
-automatically. See [Write a driver module](/build-modules/write-a-driver-module/)
-to learn how.
+You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections, same SDKs.
 
-### What is a module?
-
-Configuring components gives your machine the ability to sense and act.
-The next step is writing logic that ties those capabilities together, reading
-from sensors and commanding actuators based on what the sensors report.
-See [What is a module?](/build-modules/from-hardware-to-logic/) to understand how
-this works and where to go next.
+If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the standard API for your device.
 
 ## Add a component
 
@@ -82,12 +69,10 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 1. Click the **+** button.
 2. Select **Configuration block**.
 3. Search for the model that matches your hardware (e.g., "webcam", "gpio
-   motor", "xArm6"). The search covers built-in models, registry modules,
-   and fragments.
-4. Click **Add component**, give your component a **name**, and click
-   **Add component** again to confirm. The name is how you reference it in
-   code and configuration, so keep it short, descriptive, and unique on
-   this machine.
+   motor", "xArm6"). The search covers all available models and fragments.
+4. Give your component a **name** and click **Create**. The name is how
+   you reference it in code and configuration, so keep it short,
+   descriptive, and unique on this machine.
 
 ### 4. Configure attributes
 
@@ -129,12 +114,10 @@ initializes the new component. You do not need to restart anything.
 
 ### 7. Test the component
 
-Every component in Viam has a built-in **test panel** in the Configure tab.
-The test panel uses the same API your code will use, so if the component works
-here, it will work in your programs.
+Every component in Viam has a **test** section on its component card in the **CONFIGURE** tab. The test section uses the same API your code will use, so if the component works here, it will work in your programs.
 
 1. Find your component in the configuration view.
-2. Expand the **TEST** section at the bottom of the component panel.
+2. Expand the **test** section at the bottom of the component card.
 3. Interact with the component:
    - **Camera**: toggle the stream or capture an image.
    - **Motor**: set power or move to a position.
@@ -142,7 +125,7 @@ here, it will work in your programs.
    - **Servo**: move to an angle.
    - **Board**: read or set GPIO pin states.
 
-If the test panel shows expected results, your component is configured
+If the test section shows expected results, your component is configured
 correctly.
 
 ## Troubleshooting

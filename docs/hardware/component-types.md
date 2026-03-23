@@ -69,22 +69,11 @@ API. For example, a sensor that also has a calibration routine can expose
 calibration through `DoCommand` while still using `GetReadings` for its primary
 data.
 
-## Built-in models vs. module models
+## Models
 
-Each component type page lists the **models** available for that type.
-Models come from two sources:
+Each component type has one or more **models** — drivers that know how to communicate with specific hardware. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors). Most hardware-specific models come from the [Viam registry](https://app.viam.com/registry). All models work the same way regardless of where they come from.
 
-- **Built-in models** ship with `viam-server` and work out of the box.
-  For example, the `webcam` model for cameras or the `gpio` model for motors.
-- **Module models** come from the [Viam registry](https://app.viam.com/registry)
-  or from modules you write yourself.
-  If your hardware isn't supported by a built-in model, you can
-  [write a driver module](/build-modules/write-a-driver-module/) that implements
-  the same standard API.
-
-Both kinds of models are configured and used identically. The distinction
-matters only when you're setting up a machine for the first time and need to
-know whether you can use a built-in model or need to find or write a module.
+If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the standard API for your device.
 
 ## What's next
 
