@@ -163,7 +163,7 @@ correctly.
 
 - [Add a component](/hardware/common-components/): step-by-step guides for
   each component type.
-- [Capture and sync data](/data/capture-and-sync-data/): once your component
+- [Capture and sync data](/data/capture-sync/capture-and-sync-data/): once your component
   works, start capturing its data to the cloud.
 - [What is a module?](/build-modules/from-hardware-to-logic/): write code that
   reads from sensors and acts on what it finds.

@@ -241,7 +241,7 @@ go run main.go
 ## What's next
 
 - [Power sensor API reference](/dev/reference/apis/components/power-sensor/): full method documentation.
-- [Capture and Sync Data](/data/capture-and-sync-data/): log power
+- [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): log power
   consumption over time.
 - [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
   alerts on low battery or high current draw.

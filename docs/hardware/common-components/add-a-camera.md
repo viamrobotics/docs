@@ -278,5 +278,5 @@ go run main.go
 ## What's next
 
 - [Camera API reference](/dev/reference/apis/components/camera/): full method documentation.
-- [Capture and Sync Data](/data/capture-and-sync-data/): configure your camera to automatically capture images and sync them to the cloud.
+- [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): configure your camera to automatically capture images and sync them to the cloud.
 - [Add Computer Vision](/vision/configure/): run ML models on your camera feed to detect or classify objects.
