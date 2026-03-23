@@ -18,13 +18,12 @@ Add a camera to your machine's configuration so you can capture images and video
 
 ## Concepts
 
-### Components and hardware abstraction
+The camera API gives you `GetImages` (capture frames), `GetPointCloud` (depth data), and stream access regardless of the underlying hardware. Common models include:
 
-In Viam, all cameras expose the same API regardless of the underlying hardware.
-This means you can:
-
-- Switch camera hardware without changing application code.
-- Use the same code across different machines with different physical setups.
+- **webcam** (built-in): USB cameras and built-in laptop cameras. Auto-detects available devices.
+- **ffmpeg** (built-in): IP cameras and RTSP streams.
+- **realsense**: Intel RealSense depth cameras (module).
+- **transform**: Applies transformations (crop, resize, overlay) to another camera's output.
 
 ## Steps
 

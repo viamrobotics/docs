@@ -22,8 +22,9 @@ A gripper component controls a grasping device. The API provides:
 - **Stop**: stops any in-progress motion.
 
 Gripper models almost always come from **modules in the registry** because each
-gripper has its own communication protocol and control logic. Common setups
-include parallel-jaw grippers, vacuum grippers, and soft grippers.
+gripper has its own communication protocol and control logic. For example, the
+[UFactory module](https://app.viam.com/module/viam/ufactory) includes gripper
+models for xArm parallel-jaw and vacuum grippers.
 
 The `fake` built-in model is useful for testing code without physical hardware.
 

@@ -4,24 +4,21 @@ title: "Add a base"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "Add and configure a wheeled base to drive a mobile robot as a single unit."
+description: "Add and configure a base to drive a mobile robot with movement commands."
 date: "2025-03-07"
 aliases:
   - /hardware-components/add-a-base/
 ---
 
-Add a base to your machine's configuration so you can drive a mobile robot as a single unit from the Viam app and from code.
+Add a base to your machine's configuration to drive a mobile robot with movement commands like "move forward 300mm" or "spin 90 degrees." A base wraps your robot's drive system — whatever the motor layout — into a single interface that handles steering and speed for you.
 
 ## Concepts
 
-A base component composes multiple motors into a single driveable unit.
-The `wheeled` model handles differential steering. It translates high-level
-movement commands into the correct speed and direction for each motor.
+A base component gives you a movement API (`MoveStraight`, `Spin`, `SetVelocity`, `Stop`) regardless of the underlying drive system. The most common model is `wheeled`, which handles differential steering for robots with left and right motors. Other models exist for different platforms, including `sensor-controlled` (adds IMU feedback to improve accuracy) and module-based models for specific hardware.
 
-You need to configure the motors first, then the base references them.
+This page covers the `wheeled` model. You configure your motors first, then the base references them.
 
-For accurate distance and angle calculations, the base needs to know two
-physical measurements:
+For accurate distance and angle calculations, the `wheeled` model needs two physical measurements:
 
 - **Wheel circumference**: how far the robot travels per wheel revolution.
 - **Width**: the distance between the left and right wheel centers.

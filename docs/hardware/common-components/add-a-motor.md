@@ -4,7 +4,7 @@ title: "Add a motor"
 weight: 55
 layout: "docs"
 type: "docs"
-description: "Add and configure a motor component controlled by GPIO pins, and test it from the Viam app."
+description: "Add and configure a motor component and test it from the Viam app."
 date: "2025-03-07"
 aliases:
   - /hardware-components/add-a-motor/
@@ -14,15 +14,11 @@ Add a motor to your machine's configuration so you can control it from the Viam 
 
 ## Concepts
 
-A motor component lets you control rotational or linear motion. Viam's motor
-API provides methods like `SetPower`, `GoFor` (rotate a number of revolutions
-at a given speed), and `Stop`.
+The motor API gives you `SetPower`, `GoFor` (rotate a number of revolutions at a given speed), `GoTo` (move to an absolute position), and `Stop`. Other models exist as modules for network-controlled motors and specific motor controllers.
 
-The motor doesn't talk to GPIO directly. It references a **board** component
-and uses the board's pins. This means you need to
-[add a board](/hardware/common-components/add-a-board/) first.
+This page covers the `gpio` model, which controls a motor through a motor driver wired to GPIO pins on a [board](/hardware/common-components/add-a-board/). You need to add a board first.
 
-Motor drivers typically use one of two wiring schemes:
+GPIO motor drivers typically use one of two wiring schemes:
 
 - **A/B mode**: two direction pins (IN1, IN2) plus an optional enable pin.
   Common with L298N and similar H-bridge drivers.
