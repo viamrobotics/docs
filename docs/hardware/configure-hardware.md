@@ -19,7 +19,7 @@ Each component has three things:
   Every component of the same type exposes the same API, regardless of the
   underlying hardware.
 - A **model** that provides the driver for your specific hardware.
-  For example, the camera type has models for USB webcams, IP cameras via
+  For example, the camera type has models for USB webcams, IP cameras through
   FFmpeg, and others.
 - **Attributes** that configure how the model talks to your hardware:
   a device path, a baud rate, a pin mapping, or whatever else the driver needs.
