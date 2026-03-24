@@ -56,7 +56,7 @@ and velocity estimates without any additional sensors.
 2. Select **Configuration block**.
 3. Search for **wheeled-odometry**. This is the built-in model that
    computes position from wheel encoder data.
-4. Name it (e.g., `odometry`) and click **Create**.
+4. Name it (for example, `odometry`) and click **Create**.
 
 #### 3. Configure attributes
 
@@ -82,7 +82,7 @@ and velocity estimates without any additional sensors.
 1. Click the **+** button.
 2. Select **Configuration block**.
 3. Search for the model that matches your sensor hardware. Search by
-   sensor name or chip (e.g., **NMEA GPS**, **BNO055**, **MPU6050**).
+   sensor name or chip (for example, **NMEA GPS**, **BNO055**, **MPU6050**).
 4. Name it and click **Create**.
 5. Configure attributes per the model's documentation (typically I2C
    address or serial port).

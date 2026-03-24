@@ -27,7 +27,7 @@ module author defines what commands are supported and what they do.
 Use generic when no other component type fits. If your hardware produces
 images, use [camera](/hardware/common-components/add-a-camera/). If it produces
 readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard
-types give you data capture, test panels, and SDK support for free.
+types give you data capture, test panels, and SDK support automatically.
 
 The `fake` built-in model echoes commands back for testing.
 
@@ -39,7 +39,7 @@ The `fake` built-in model echoes commands back for testing.
 2. Select **Configuration block**.
 3. Search for the model that matches your hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your component (e.g., `my-device`) and click **Create**.
+4. Name your component (for example, `my-device`) and click **Create**.
 
 If no model exists for your hardware, you can
 [write a driver module](/build-modules/write-a-driver-module/) that implements

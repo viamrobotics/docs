@@ -30,7 +30,7 @@ You change the model and attributes in configuration, not in your program.
 
 ## Models
 
-When you add a component, you search for a **model** that matches your hardware. Models are drivers that know how to communicate with specific devices. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors wired to GPIO pins). Most hardware-specific models — arms, grippers, specialized sensors, motor controllers — come from **modules** in the [Viam registry](https://app.viam.com/registry).
+When you add a component, you search for a **model** that matches your hardware. Models are drivers that know how to communicate with specific devices. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors wired to GPIO pins). Most hardware-specific models (arms, grippers, specialized sensors, motor controllers) come from **modules** in the [Viam registry](https://app.viam.com/registry).
 
 You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections, same SDKs.
 
@@ -68,7 +68,7 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 
 1. Click the **+** button.
 2. Select **Configuration block**.
-3. Search for the model that matches your hardware (e.g., "webcam", "gpio
+3. Search for the model that matches your hardware (for example, "webcam", "gpio
    motor", "xArm6"). The search covers all available models and fragments.
 4. Give your component a **name** and click **Create**. The name is how
    you reference it in code and configuration, so keep it short,
@@ -82,7 +82,7 @@ how to communicate with your specific hardware.
 
 Common attributes include:
 
-- **Device paths** (e.g., `/dev/video0`, `/dev/ttyUSB0`): which physical
+- **Device paths** (for example, `/dev/video0`, `/dev/ttyUSB0`): which physical
   device to use.
 - **Pin mappings**: which GPIO pins connect to the hardware.
 - **Communication settings**: baud rate, I2C address, SPI bus.
@@ -134,7 +134,7 @@ correctly.
 
 - Check the **LOGS** tab in the Viam app for error messages from `viam-server`.
 - Verify that the device path or address in your attributes is correct.
-- If the component depends on another (e.g., a motor depends on a board),
+- If the component depends on another (for example, a motor depends on a board),
   confirm the dependency is configured and working.
 
 {{< /expand >}}

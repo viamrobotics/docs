@@ -44,13 +44,13 @@ GPIO motor drivers typically use one of two wiring schemes:
      pins, search for **gpiostepper**.
    - For other motor types, search by your motor driver or manufacturer
      name.
-4. Name your motor (e.g., `left-motor`) and click **Create**.
+4. Name your motor (for example, `left-motor`) and click **Create**.
 
 ### 3. Configure motor attributes
 
 The `gpio` model requires you to specify the board and pin mappings.
 
-**A/B mode (e.g., L298N driver):**
+**A/B mode (for example, L298N driver):**
 
 ```json
 {

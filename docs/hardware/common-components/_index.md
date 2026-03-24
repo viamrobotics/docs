@@ -51,7 +51,7 @@ Components that read data from the physical world.
 | Component                                         | Description                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------------- |
 | [Motor](/hardware/common-components/add-a-motor/) | Control a DC or stepper motor through a motor driver and GPIO pins. |
-| [Servo](/hardware/common-components/add-a-servo/) | Set the angular position of a hobby servo via a PWM pin.            |
+| [Servo](/hardware/common-components/add-a-servo/) | Set the angular position of a hobby servo with a PWM pin.           |
 
 ## Control
 

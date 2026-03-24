@@ -20,12 +20,12 @@ callbacks for these events and translates them into machine actions.
 
 ### Built-in models
 
-| Model        | Use case                                                                                                              |
-| ------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `gamepad`    | USB gamepad or joystick. Works with most HID-compatible controllers.                                                  |
-| `webgamepad` | Browser-based gamepad input via the Viam app's CONTROL tab. No physical controller needed.                            |
-| `gpio`       | Buttons and switches wired to GPIO pins on a board.                                                                   |
-| `mux`        | Multiplexes multiple input controllers, allowing one to override another (e.g., safety controller overrides gamepad). |
+| Model        | Use case                                                                                                                     |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| `gamepad`    | USB gamepad or joystick. Works with most HID-compatible controllers.                                                         |
+| `webgamepad` | Browser-based gamepad input in the Viam app's CONTROL tab. No physical controller needed.                                    |
+| `gpio`       | Buttons and switches wired to GPIO pins on a board.                                                                          |
+| `mux`        | Multiplexes multiple input controllers, allowing one to override another (for example, safety controller overrides gamepad). |
 
 ## Steps
 
@@ -38,7 +38,7 @@ callbacks for these events and translates them into machine actions.
 3. Select **Configuration block**.
 4. Search for **gamepad**. This is the built-in model for USB game
    controllers.
-5. Name it (e.g., `my-gamepad`) and click **Create**.
+5. Name it (for example, `my-gamepad`) and click **Create**.
 
 #### 2. Configure attributes
 
@@ -61,7 +61,7 @@ If you have multiple controllers, specify which one:
 2. Select **Configuration block**.
 3. Search for **webgamepad**. This model provides browser-based
    controls in the Viam app.
-4. Name it (e.g., `web-controller`) and click **Create**.
+4. Name it (for example, `web-controller`) and click **Create**.
 
 No attributes needed. The web gamepad appears in the Viam app's CONTROL tab
 and works with browser-compatible game controllers or on-screen controls.

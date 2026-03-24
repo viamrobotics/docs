@@ -43,7 +43,7 @@ feedback instead of time-based estimates.
 3. Search for the encoder model that matches your hardware:
    - For a two-channel quadrature encoder, search for **incremental**.
    - For a single-channel encoder, search for **single encoder**.
-4. Name your encoder (e.g., `left-encoder`) and click **Create**.
+4. Name your encoder (for example, `left-encoder`) and click **Create**.
 
 ### 3. Configure encoder attributes
 

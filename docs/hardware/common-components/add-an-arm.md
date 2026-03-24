@@ -42,7 +42,7 @@ It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
 3. Search for the model that matches your arm manufacturer and model:
    - For a UFactory xArm, search for **xArm6** (or xArm5, xArm7, Lite6).
    - For a Universal Robots arm, search for **ur5e** (or ur3e, ur10e, ur16e).
-4. Name your arm (e.g., `my-arm`) and click **Create**.
+4. Name your arm (for example, `my-arm`) and click **Create**.
 
 ### 2. Configure arm attributes
 

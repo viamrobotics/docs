@@ -71,7 +71,7 @@ data.
 
 ## Models
 
-Each component type has one or more **models** — drivers that know how to communicate with specific hardware. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors). Most hardware-specific models come from the [Viam registry](https://app.viam.com/registry). All models work the same way regardless of where they come from.
+Each component type has one or more **models**: drivers that know how to communicate with specific hardware. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors). Most hardware-specific models come from the [Viam registry](https://app.viam.com/registry). All models work the same way regardless of where they come from.
 
 If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the standard API for your device.
 

@@ -51,7 +51,7 @@ The `fake` built-in model is useful for testing without hardware.
      **single-axis**.
    - For a multi-axis system composed of multiple single-axis gantries,
      search for **multi-axis**.
-4. Name your gantry (e.g., `my-gantry`) and click **Create**.
+4. Name your gantry (for example, `my-gantry`) and click **Create**.
 
 ### 3. Configure gantry attributes
 
@@ -65,14 +65,14 @@ The `fake` built-in model is useful for testing without hardware.
 }
 ```
 
-| Attribute           | Type   | Required | Description                                                            |
-| ------------------- | ------ | -------- | ---------------------------------------------------------------------- |
-| `motor`             | string | Yes      | Name of the motor that drives this axis.                               |
-| `length_mm`         | int    | Yes      | Total travel length of the axis in mm.                                 |
-| `mm_per_rev`        | int    | Yes      | Distance traveled per motor revolution in mm (e.g., lead screw pitch). |
-| `board`             | string | No       | Board with limit switches, if using them.                              |
-| `limit_pins`        | object | No       | Pin names for limit switches at each end of travel.                    |
-| `gantry_mm_per_sec` | int    | No       | Default speed in mm/s. Defaults to 100.                                |
+| Attribute           | Type   | Required | Description                                                                   |
+| ------------------- | ------ | -------- | ----------------------------------------------------------------------------- |
+| `motor`             | string | Yes      | Name of the motor that drives this axis.                                      |
+| `length_mm`         | int    | Yes      | Total travel length of the axis in mm.                                        |
+| `mm_per_rev`        | int    | Yes      | Distance traveled per motor revolution in mm (for example, lead screw pitch). |
+| `board`             | string | No       | Board with limit switches, if using them.                                     |
+| `limit_pins`        | object | No       | Pin names for limit switches at each end of travel.                           |
+| `gantry_mm_per_sec` | int    | No       | Default speed in mm/s. Defaults to 100.                                       |
 
 **Multi-axis gantry:**
 

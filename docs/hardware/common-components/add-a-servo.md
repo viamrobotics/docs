@@ -36,7 +36,7 @@ The servo component uses a single PWM-capable pin on a
 2. Select **Configuration block**.
 3. For a standard hobby servo controlled by a PWM pin on your board,
    search for **gpio servo**.
-4. Name your servo (e.g., `pan-servo`) and click **Create**.
+4. Name your servo (for example, `pan-servo`) and click **Create**.
 
 ### 3. Configure servo attributes
 

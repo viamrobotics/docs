@@ -29,7 +29,7 @@ The `fake` built-in model is useful for testing code without physical hardware.
 2. Select **Configuration block**.
 3. Search for the model that matches your button hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your button (e.g., `my-button`) and click **Create**.
+4. Name your button (for example, `my-button`) and click **Create**.
 
 ### 2. Configure button attributes
 
@@ -39,7 +39,7 @@ Attributes vary by module. For the `fake` model, no attributes are needed:
 {}
 ```
 
-For a GPIO-connected button via a registry module, you'll typically configure
+For a GPIO-connected button with a registry module, you'll typically configure
 the board and pin:
 
 ```json
@@ -65,7 +65,7 @@ Push the button programmatically.
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
 Toggle **Include API key** on.
 Copy the machine address, API key, and API key ID from the code sample.
-When you run the code below, the button's Push method fires. With a physical button connected via a module, this triggers whatever action the module defines.
+When you run the code below, the button's Push method fires. With a physical button connected with a module, this triggers whatever action the module defines.
 {{< tabs >}}
 {{% tab name="Python" %}}
 

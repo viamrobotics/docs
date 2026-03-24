@@ -30,9 +30,9 @@ specific hardware while keeping the same `GetReadings` API.
 1. Click the **+** button.
 2. Select **Configuration block**.
 3. Search for the model that matches your sensor hardware. Search by
-   sensor name or chip (e.g., **DHT22**, **BME280**, **SHT31**). For I2C
+   sensor name or chip (for example, **DHT22**, **BME280**, **SHT31**). For I2C
    or serial sensors, you can also search by protocol or manufacturer.
-4. Name your sensor (e.g., `temperature-sensor`) and click **Create**.
+4. Name your sensor (for example, `temperature-sensor`) and click **Create**.
 
 If no model exists for your sensor, you can
 [write a driver module](/build-modules/write-a-driver-module/) to add support.
@@ -41,7 +41,7 @@ If no model exists for your sensor, you can
 
 Attributes vary by sensor module. Common patterns:
 
-**I2C sensor (e.g., BME280, SHT31):**
+**I2C sensor (for example, BME280, SHT31):**
 
 ```json
 {
@@ -51,7 +51,7 @@ Attributes vary by sensor module. Common patterns:
 }
 ```
 
-**Serial sensor (e.g., air quality monitors):**
+**Serial sensor (for example, air quality monitors):**
 
 ```json
 {
@@ -60,7 +60,7 @@ Attributes vary by sensor module. Common patterns:
 }
 ```
 
-**GPIO sensor (e.g., ultrasonic distance):**
+**GPIO sensor (for example, ultrasonic distance):**
 
 ```json
 {
@@ -78,7 +78,7 @@ sensor needs.
 Click **Save**, then expand the **TEST** section.
 
 - The test panel shows the output of `GetReadings`, a table of named values.
-- Verify the readings make sense (e.g., room temperature should be roughly
+- Verify the readings make sense (for example, room temperature should be roughly
   20-25°C).
 
 ## Try it

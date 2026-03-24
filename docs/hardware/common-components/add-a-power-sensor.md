@@ -46,8 +46,8 @@ Additional models are available as modules in the
 1. Click the **+** button.
 2. Select **Configuration block**.
 3. Search for the power sensor model that matches your hardware. Search
-   by chip name (e.g., **ina219**, **ina226**).
-4. Name it (e.g., `battery-monitor`) and click **Create**.
+   by chip name (for example, **ina219**, **ina226**).
+4. Name it (for example, `battery-monitor`) and click **Create**.
 
 ### 3. Configure attributes
 

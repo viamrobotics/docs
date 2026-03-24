@@ -39,7 +39,7 @@ Confirm it shows as **Live** in the upper left.
    - For a Raspberry Pi (any model), search for **pi**.
    - For an NVIDIA Jetson, search for **jetson**.
    - For an Orange Pi, search for **orangepi**.
-4. Name your board (e.g., `my-board`) and click **Create**.
+4. Name your board (for example, `my-board`) and click **Create**.
 
 ### 3. Configure board attributes
 
@@ -254,7 +254,7 @@ go run main.go
 {{< expand "Analog reader returns unexpected values" >}}
 
 - Most SBCs don't have built-in ADCs. You may need an external ADC connected
-  via SPI or I2C. Check the model's reference page for ADC configuration.
+  through SPI or I2C. Check the model's reference page for ADC configuration.
 
 {{< /expand >}}
 

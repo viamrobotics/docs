@@ -35,7 +35,7 @@ is useful for testing.
 2. Select **Configuration block**.
 3. Search for the model that matches your switch hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your switch (e.g., `my-switch`) and click **Create**.
+4. Name your switch (for example, `my-switch`) and click **Create**.
 
 ### 2. Configure switch attributes
 
@@ -53,7 +53,7 @@ is useful for testing.
 | `position_count` | int             | No       | Number of positions. Defaults to 2.                                               |
 | `labels`         | list of strings | No       | Human-readable labels for each position. Must match `position_count` if provided. |
 
-For a physical switch via a registry module, check the module's documentation
+For a physical switch with a registry module, check the module's documentation
 for required attributes.
 
 ### 3. Save and test

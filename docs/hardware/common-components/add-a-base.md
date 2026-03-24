@@ -10,7 +10,7 @@ aliases:
   - /hardware-components/add-a-base/
 ---
 
-Add a base to your machine's configuration to drive a mobile robot with movement commands like "move forward 300mm" or "spin 90 degrees." A base wraps your robot's drive system — whatever the motor layout — into a single interface that handles steering and speed for you.
+Add a base to your machine's configuration to drive a mobile robot with movement commands like "move forward 300mm" or "spin 90 degrees." A base wraps your robot's drive system, whatever the motor layout, into a single interface that handles steering and speed for you.
 
 ## Concepts
 
@@ -39,7 +39,7 @@ For accurate distance and angle calculations, the `wheeled` model needs two phys
 3. Search for the base model that matches your hardware. For a
    differential-drive robot with left and right motors, search for
    **wheeled**.
-4. Name your base (e.g., `my-base`) and click **Create**.
+4. Name your base (for example, `my-base`) and click **Create**.
 
 ### 3. Configure base attributes
 
@@ -54,13 +54,13 @@ For accurate distance and angle calculations, the `wheeled` model needs two phys
 
 | Attribute                | Type            | Required | Description                                                                                                            |
 | ------------------------ | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `left`                   | list of strings | Yes      | Names of the motor(s) on the left side.                                                                                |
-| `right`                  | list of strings | Yes      | Names of the motor(s) on the right side.                                                                               |
+| `left`                   | list of strings | Yes      | Names of the motors on the left side.                                                                                  |
+| `right`                  | list of strings | Yes      | Names of the motors on the right side.                                                                                 |
 | `wheel_circumference_mm` | int             | Yes      | Outer circumference of a drive wheel in mm.                                                                            |
 | `width_mm`               | int             | Yes      | Distance between left and right wheel centers in mm.                                                                   |
 | `spin_slip_factor`       | float           | No       | Correction factor for turning accuracy. Increase if the robot over-rotates during spins; decrease if it under-rotates. |
 
-For robots with multiple motors per side (e.g., six-wheel drive), list all
+For robots with multiple motors per side (for example, six-wheel drive), list all
 motor names for that side:
 
 ```json
@@ -224,7 +224,7 @@ go run main.go
 {{< expand "Robot drives in the wrong direction" >}}
 
 - Swap the `left` and `right` motor lists.
-- Or set `dir_flip` to `true` on the individual motor(s) that are reversed.
+- Or set `dir_flip` to `true` on the individual motors that are reversed.
 
 {{< /expand >}}
 

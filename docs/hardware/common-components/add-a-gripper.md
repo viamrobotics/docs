@@ -35,8 +35,8 @@ The `fake` built-in model is useful for testing code without physical hardware.
 1. Click the **+** button.
 2. Select **Configuration block**.
 3. Search for the model that matches your gripper hardware. Search by
-   manufacturer name or gripper type (e.g., "parallel jaw", "vacuum").
-4. Name your gripper (e.g., `my-gripper`) and click **Create**.
+   manufacturer name or gripper type (for example, "parallel jaw", "vacuum").
+4. Name your gripper (for example, `my-gripper`) and click **Create**.
 
 ### 2. Configure gripper attributes
 
