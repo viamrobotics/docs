@@ -38,7 +38,7 @@ You'll create a machine in the Viam app, install Viam on your machine, and confi
    account).
 2. Create or select an organization, then create or select a location.
 3. Click **Add machine**.
-4. Give your machine a name (e.g., `my-first-machine`). Click **Add machine**.
+4. Give your machine a name (for example, `my-first-machine`). Click **Add machine**.
 
 The app creates a machine entry and opens the **CONFIGURE** tab.
 A banner prompts you to set up the machine part.
@@ -50,7 +50,7 @@ A banner prompts you to set up the machine part.
 
 ## 3. Select your platform
 
-Use the **Platform you want to run on** dropdown to select the operating system and architecture of the compute machine for your robot — the computer to which you've attached cameras, sensors, arms, or other components.
+Use the **Platform you want to run on** dropdown to select the operating system and architecture of the compute machine for your robot, the computer to which you've attached cameras, sensors, arms, or other components.
 
 Options include Linux / Aarch64, Linux / x86, Mac, Windows native, Windows (WSL), Linux / Armv7l, and ESP32.
 
