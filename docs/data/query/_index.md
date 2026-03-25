@@ -6,4 +6,5 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Query, aggregate, and analyze captured data."
+manualLink: "/data/query/query-data/"
 ---
