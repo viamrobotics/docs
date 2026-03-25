@@ -26,7 +26,7 @@ Each component has three things:
 
 This abstraction means you can swap hardware without changing application code.
 A program that captures images from a webcam works identically with an IP camera.
-You change the model and attributes in configuration, not in your program.
+You change the model and attributes in configuration, not in your control logic.
 
 ## Models
 
@@ -34,7 +34,7 @@ When you add a component, you search for a **model** that matches your hardware.
 
 You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections, same SDKs.
 
-If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the standard API for your device.
+If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the Viam API for your device.
 
 ## Add a component
 
@@ -42,29 +42,13 @@ The process for adding any component is the same whether you're adding a motor,
 a sensor, a board, or anything else. For step-by-step guides for specific
 hardware, see [Add a component](/hardware/common-components/).
 
-### 1. Identify the component type and model
-
-Before you open the Viam app, decide two things:
-
-1. **What type is your hardware?**
-   Use the [Component types](/hardware/component-types/) guide to match your
-   hardware to a type based on what it does.
-
-2. **What model should you use?**
-   Go to the [reference page](/reference/components/) for that component type.
-   Each page lists the available models, both built-in and from the registry.
-   Find the model that matches your specific hardware.
-
-If no model exists for your hardware, you can
-[write a driver module](/build-modules/write-a-driver-module/).
-
-### 2. Open your machine in the Viam app
+### 1. Open your machine in the Viam app
 
 Go to [app.viam.com](https://app.viam.com) and navigate to your machine.
 Confirm it shows as **Live** in the upper left.
 If it shows as offline, verify that `viam-server` is running on your machine.
 
-### 3. Add the component
+### 2. Add the component
 
 1. Click the **+** button.
 2. Select **Configuration block**.
@@ -74,7 +58,7 @@ If it shows as offline, verify that `viam-server` is running on your machine.
    you reference it in code and configuration, so keep it short,
    descriptive, and unique on this machine.
 
-### 4. Configure attributes
+### 3. Configure attributes
 
 After creating the component, you'll see its configuration panel.
 Every model has its own set of attributes. These settings tell the driver
@@ -93,7 +77,7 @@ defaults.
 You can configure attributes using the form fields in the UI, or switch to
 **JSON** mode to edit the configuration directly.
 
-### 5. Set up dependencies (if needed)
+### 4. Set up dependencies (if needed)
 
 Some components depend on other components.
 For example:
@@ -105,14 +89,14 @@ For example:
 If your component depends on another, that other component must already exist in
 your configuration. The model's reference page documents required dependencies.
 
-### 6. Save the configuration
+### 5. Save the configuration
 
 Click **Save** in the upper right of the configuration panel.
 
 When you save, `viam-server` automatically reloads the configuration and
 initializes the new component. You do not need to restart anything.
 
-### 7. Test the component
+### 6. Test the component
 
 Every component in Viam has a **test** section on its component card in the **CONFIGURE** tab. The test section uses the same API your code will use, so if the component works here, it will work in your programs.
 
