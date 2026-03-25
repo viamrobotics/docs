@@ -398,13 +398,6 @@ You can now [set custom pricing](/manage/manage/white-labeled-billing/) for your
 
 {{% /changelog %}}
 
-{{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
-
-The `Stream` API method has been removed from the Go SDK camera interface.
-For updated Go usage information, see [`GetImages`](/dev/reference/apis/components/camera/#getimages).
-
-{{% /changelog %}}
-
 {{% changelog color="changed" title="Subtype renamed to API" date="2025-01-28" %}}
 
 In the Python SDK, all references to `subtype` that refer to the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} have been renamed to `api` to be consistent with the RDK:

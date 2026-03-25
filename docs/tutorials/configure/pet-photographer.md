@@ -151,7 +151,7 @@ To write your own code, implement a client interface defined by the required met
 For example, the camera's <file>client.go</file> file is located at <file>[/components/camera/client.go](https://github.com/viamrobotics/rdk/blob/main/components/camera/client.go)</file>.
 
 1. Open the <file>color_filter.go</file> file you just created and implement the required methods in it.
-   Exclude the `Read` method, which you will replace with a method, `Next`, to add filtering functionality in the upcoming section.
+   Exclude the `Images` method, which you will customize to add filtering functionality in the upcoming section.
    - You can create your own code or copy the code from the [viam-labs `colorfilter` repository's <file>color_filter.go</file>](https://github.com/viam-labs/modular-filter-examples/blob/main/colorfilter/color_filter.go) file.
 
 For more information, refer to [Write your new resource model definition](/operate/modules/write-a-driver-module/#2-implement-the-resource-api).
@@ -209,22 +209,23 @@ See the [sensor filter example](https://github.com/viam-labs/modular-filter-exam
 {{< /alert >}}
 
 ```go {class="line-numbers linkable-line-numbers"}
-if ctx.Value(data.FromDMContextKey{}) != true {
-   // If not data management collector, return underlying stream contents without filtering.
-   return fs.cameraStream.Next(ctx)
+images, metadata, err := c.actualCam.Images(ctx)
+if err != nil {
+    return nil, resource.ResponseMetadata{}, errors.New("could not get images")
 }
 
-// Only return captured image if it contains a certain color set by the vision service.
-img, release, err := fs.cameraStream.Next(ctx)
+if ctx.Value(data.FromDMContextKey{}) != true {
+    // If not data management collector, return images without filtering.
+    return images, metadata, nil
+}
 
-detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
+detections, err := c.visionService.Detections(ctx, images[0].Image, map[string]interface{}{})
 ```
 
 With this configuration:
 
-- Your camera checks if the data management service is the caller of the filter function by using `FromDMContextKey`.
-- If `FromDMContextKey` is `true` and the data management service is the caller, the camera captures an image by declaring the `img` variable and filling it with the content from the camera stream.
-- Then, after capturing the image, the code requests the next detection.
+- Your camera gets images from the underlying camera, then checks if the data management service is the caller of the filter function by using `FromDMContextKey`.
+- If `FromDMContextKey` is `true` and the data management service is the caller, the code requests detections on the captured image.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -312,31 +313,35 @@ Otherwise, it raises a `NoCaptureToStoreError()` error.
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-This code includes the utility function and safeguard you implemented earlier, and also includes error handling for getting the next source image and obtaining detections.
+This code includes the utility function and safeguard you implemented earlier, and also includes error handling for getting images and obtaining detections.
 
 ```go {class="line-numbers linkable-line-numbers"}
-// Next contains the filtering logic and returns select data from the underlying camera.
-func (fs filterStream) Next(ctx context.Context) (image.Image, func(), error) {
-    if ctx.Value(data.FromDMContextKey{}) != true {
-    // If not data management collector, return underlying stream contents without filtering.
-      return fs.cameraStream.Next(ctx)
-     }
-
-    // Only return captured image if it contains a certain color set by the vision service.
-    img, release, err := fs.cameraStream.Next(ctx)
+// Images returns images from the underlying camera, filtering based on the vision service when called by data management.
+func (c *colorFilterCam) Images(ctx context.Context) ([]camera.NamedImage, resource.ResponseMetadata, error) {
+    images, metadata, err := c.actualCam.Images(ctx)
     if err != nil {
-      return nil, nil, errors.New("could not get next source image")
+        return nil, resource.ResponseMetadata{}, errors.New("could not get images")
     }
-    detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
+
+    if ctx.Value(data.FromDMContextKey{}) != true {
+        // If not data management collector, return images without filtering.
+        return images, metadata, nil
+    }
+
+    if len(images) == 0 {
+        return nil, resource.ResponseMetadata{}, data.ErrNoCaptureToStore
+    }
+
+    detections, err := c.visionService.Detections(ctx, images[0].Image, map[string]interface{}{})
     if err != nil {
-      return nil, nil, errors.New("could not get detections")
+        return nil, resource.ResponseMetadata{}, errors.New("could not get detections")
     }
 
     if len(detections) == 0 {
-      return nil, nil, data.ErrNoCaptureToStore
+        return nil, resource.ResponseMetadata{}, data.ErrNoCaptureToStore
     }
 
-    return img, release, err
+    return images, metadata, nil
 }
 ```
 
@@ -527,11 +532,9 @@ package colorfilter
 import (
 "context"
 "fmt"
-"image"
 
     "go.viam.com/rdk/logging"
     "github.com/pkg/errors"
-    "github.com/viamrobotics/gostream"
 
     "go.viam.com/rdk/components/camera"
     "go.viam.com/rdk/data"
@@ -624,20 +627,32 @@ func (c \*colorFilterCam) Close(ctx context.Context) error {
     return c.actualCam.Close(ctx)
 }
 
-// Images does nothing.
+// Images returns images from the underlying camera, filtering based on the vision service when called by data management.
 func (c \*colorFilterCam) Images(ctx context.Context) ([]camera.NamedImage, resource.ResponseMetadata, error) {
-    return nil, resource.ResponseMetadata{}, errUnimplemented
-}
-
-// Stream returns a stream that filters the output of the underlying camera stream in the stream.Next method.
-func (c \*colorFilterCam) Stream(ctx context.Context, errHandlers ...gostream.ErrorHandler) (gostream.VideoStream, error) {
-camStream, err := c.actualCam.Stream(ctx, errHandlers...)
+    images, metadata, err := c.actualCam.Images(ctx)
     if err != nil {
-        return nil, err
+        return nil, resource.ResponseMetadata{}, errors.New("could not get images")
     }
 
-    return filterStream{camStream, c.visionService}, nil
+    if ctx.Value(data.FromDMContextKey{}) != true {
+        // If not data management collector, return images without filtering.
+        return images, metadata, nil
+    }
 
+    if len(images) == 0 {
+        return nil, resource.ResponseMetadata{}, data.ErrNoCaptureToStore
+    }
+
+    detections, err := c.visionService.Detections(ctx, images[0].Image, map[string]interface{}{})
+    if err != nil {
+        return nil, resource.ResponseMetadata{}, errors.New("could not get detections")
+    }
+
+    if len(detections) == 0 {
+        return nil, resource.ResponseMetadata{}, data.ErrNoCaptureToStore
+    }
+
+    return images, metadata, nil
 }
 
 // NextPointCloud does nothing.
@@ -656,48 +671,14 @@ func (c \*colorFilterCam) Properties(ctx context.Context)(camera.Properties, err
 func (c \*colorFilterCam) Projector(ctx context.Context) (transform.Projector, error) {
     return nil, errUnimplemented
 }
-
-type filterStream struct {
-    cameraStream gostream.VideoStream
-    visionService vision.Service
-}
-
-// Next contains the filtering logic and returns select data from the underlying camera.
-func (fs filterStream) Next(ctx context.Context) (image.Image, func(), error) {
-    if ctx.Value(data.FromDMContextKey{}) != true {
-        // If not data management collector, return underlying stream contents without filtering.
-        return fs.cameraStream.Next(ctx)
-    }
-
-    // Only return captured image if it contains a certain color set by the vision service.
-    img, release, err := fs.cameraStream.Next(ctx)
-    if err != nil {
-        return nil, nil, errors.New("could not get next source image")
-    }
-    detections, err := fs.visionService.Detections(ctx, img, map[string]interface{}{})
-    if err != nil {
-        return nil, nil, errors.New("could not get detections")
-    }
-
-    if len(detections) == 0 {
-        return nil, nil, data.ErrNoCaptureToStore
-    }
-
-    return img, release, err
-}
-
-// Close closes the stream.
-func (fs filterStream) Close(ctx context.Context) error {
-    return fs.cameraStream.Close(ctx)
-}
 ```
 
 In this code:
 
-- A modular camera coded in Go looks for a flag called `fromDM` in the context (`ctx`) using `ctx.Value(data.FromDMContextKey{})` to figure out if the data management service is the caller.
+- The `Images` method gets images from the underlying camera, then checks if the data management service is the caller using `ctx.Value(data.FromDMContextKey{})`.
 
-- If the boolean is `true`, the function will call the vision service to get detections and return the image if the color is .
-  Otherwise, it will raise the [`ErrNoCaptureToStore`](https://github.com/viamrobotics/rdk/blob/214879e147970a454f78035e938ea853fcd79f17/data/collector.go#L44) error.
+- If `true`, the function calls the vision service to get detections and returns the images if the color is detected.
+  Otherwise, it raises the [`ErrNoCaptureToStore`](https://github.com/viamrobotics/rdk/blob/214879e147970a454f78035e938ea853fcd79f17/data/collector.go#L44) error.
 
 {{% /tab %}}
 {{< /tabs >}}
