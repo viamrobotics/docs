@@ -979,7 +979,7 @@ To add data capture for the color filter camera:
 
 1. Click **Add method** in the **Data capture** section of your color filter camera component.
 
-2. Toggle the **Method** dropdown menu, select **GetImages** (**ReadImage** is deprecated), and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera once every 10 seconds.
+2. Toggle the **Method** dropdown menu, select **GetImages**, and set the **Frequency** of the capture to `0.1`, which will configure the data management service to capture images from your camera once every 10 seconds.
 
 3. Click the **MIME type** dropdown and select `image/jpeg`.
 

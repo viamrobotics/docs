@@ -218,13 +218,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 const camera = new VIAM.CameraClient(machine, 'my_camera');
 const vision = new VIAM.VisionClient(machine, 'my_vision');
 
-const mimeType = 'image/jpeg';
-const image = await camera.getImage(mimeType);
+const {images} = await camera.getImages();
+const image = images[0].image;
 const detections = await vision.getDetections(
   image,
   600,
   600,
-  mimeType
+  images[0].mimeType
 );
 ```
 
@@ -473,13 +473,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 const camera = new VIAM.CameraClient(machine, 'my_camera');
 const vision = new VIAM.VisionClient(machine, 'my_vision');
 
-const mimeType = 'image/jpeg';
-const image = await camera.getImage(mimeType);
+const {images} = await camera.getImages();
+const image = images[0].image;
 const classifications = await vision.getClassifications(
   image,
   600,
   600,
-  mimeType,
+  images[0].mimeType,
   10
 );
 ```

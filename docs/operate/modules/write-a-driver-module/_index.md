@@ -60,7 +60,7 @@ matches your hardware or service:
 | API               | Use when your hardware...                             | Key methods                        |
 | ----------------- | ----------------------------------------------------- | ---------------------------------- |
 | `sensor`          | Produces readings (temperature, distance, humidity)   | `GetReadings`                      |
-| `camera`          | Produces images or point clouds                       | `GetImage`, `GetPointCloud`        |
+| `camera`          | Produces images or point clouds                       | `GetImages`, `GetPointCloud`       |
 | `motor`           | Drives rotational or linear motion                    | `SetPower`, `GoFor`, `Stop`        |
 | `servo`           | Moves to angular positions                            | `Move`, `GetPosition`              |
 | `board`           | Exposes GPIO pins, analog readers, digital interrupts | `GPIOPinByName`, `AnalogByName`    |

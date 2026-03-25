@@ -83,9 +83,7 @@ button,GetResourceName,No,get_resource_name,Name,getResourceName,name
 button,Close,No,close,Close,,
 
 ## Camera
-camera,GetImage,,get_image,Image,image,getImage
 camera,GetImages,,get_images,Images,getImages,getImages
-camera,RenderFrame,,,,,renderFrame
 camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud,getPointCloud
 camera,GetProperties,,get_properties,Properties,properties,getProperties
 ## TED: Camera in Go SDK doesn't appear to implement (inherit) these:
