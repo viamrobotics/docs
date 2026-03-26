@@ -1,12 +1,12 @@
 ---
-linkTitle: "Advanced configuration"
-title: "Advanced configuration"
+linkTitle: "Data capture reference"
+title: "Data capture reference"
 tags: ["data management", "data", "services"]
 weight: 10
 layout: "docs"
 type: "docs"
 platformarea: ["data"]
-description: "JSON-level configuration for retention policies, sync optimization, remote parts capture, and direct MongoDB capture."
+description: "Configuration reference for data management service attributes, capture methods, supported resources, and storage behavior."
 aliases:
   - /data/advanced-data-capture-sync/
   - /data-ai/capture-data/advanced/advanced-data-capture-sync/
@@ -14,16 +14,6 @@ aliases:
 date: "2025-02-10"
 updated: "2025-12-04"
 ---
-
-Some data use cases require configuration beyond what the UI exposes.
-You can switch to **JSON** mode in the Viam app to configure these attributes directly.
-
-This page covers:
-
-- [Data management service attributes](#data-management-service-attributes): sync threads, deletion thresholds, file size limits, MongoDB capture
-- [Data capture attributes](#data-capture-attributes): per-resource capture methods, frequency, retention policies, hot data store
-- [Remote parts capture](#remote-parts-capture): capture data from resources on remote parts
-- [Direct MongoDB capture](#direct-mongodb-capture): write tabular data to MongoDB alongside disk capture
 
 ## Data management service attributes
 
@@ -93,7 +83,7 @@ The data management service controls sync behavior, storage paths, and deletion 
 | `delete_data_on_part_deletion`    | bool             | Optional  | Whether deleting this {{< glossary_tooltip term_id="machine" text="machine" >}} or {{< glossary_tooltip term_id="part" text="machine part" >}} also deletes all its captured cloud data. <br> Default: `false`                                                  | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int              | Optional  | When local storage meets the [fullness criteria](/data/#automatic-data-deletion), the service deletes every Nth captured file. <br> Default: `5`                                                                                                                |                                                                     |
 | `maximum_num_sync_threads`        | int              | Optional  | Max CPU threads for syncing to the cloud. Higher values may improve throughput but can cause instability on constrained devices. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2                                                            |                                                                     |
-| `mongo_capture_config.uri`        | string           | Optional  | [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) for writing tabular data alongside disk capture. See [Direct MongoDB capture](#direct-mongodb-capture).                                                                           |                                                                     |
+| `mongo_capture_config.uri`        | string           | Optional  | [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) for writing tabular data alongside disk capture. See [Direct MongoDB capture](/data/capture-sync/direct-mongodb-capture/).                                                                           |                                                                     |
 | `mongo_capture_config.database`   | string           | Optional  | Database name for MongoDB capture. <br> Default: `"sensorData"`                                                                                                                                                                                                 |                                                                     |
 | `mongo_capture_config.collection` | string           | Optional  | Collection name for MongoDB capture. <br> Default: `"readings"`                                                                                                                                                                                                 |                                                                     |
 | `maximum_capture_file_size_bytes` | int              | Optional  | Maximum size in bytes of each capture file on disk. When a capture file reaches this size, a new file is created. <br> Default: `262144` (256 KB)                                                                                                               |                                                                     |
@@ -323,267 +313,7 @@ This example captures from the `CaptureAllFromCamera` method of a vision service
 | `capture_buffer_size` | int | Optional | Size in bytes of the buffer used when writing captured data to disk. <br> Default: `4096` |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. Max storage (KB) per data collector. <br> Default: `1` |
 
-## Remote parts capture
-
-You can capture data from {{< glossary_tooltip term_id="resource" text="resources" >}} on {{< glossary_tooltip term_id="remote-part" text="remote parts" >}}.
-This is useful when a part lacks the OS or resources to run `viam-server`. You add it as a remote and capture its data from the main part.
-
-Remote part capture is configured in JSON only.
-Add a `service_config` with `type: data_manager` inside the `remote` object in the `remotes` array.
-Each capture method object takes the following fields:
-
-<!-- prettier-ignore -->
-| Key | Type | Description |
-| --- | ---- | ----------- |
-| `name` | string | Fully qualified resource name. Example: `"rdk:component:sensor/spacesensor"`. |
-| `method` | string | Depends on the component or service type. See [Supported resources](/data/#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time. |
-| `capture_frequency_hz` | float | Frequency in hertz. |
-| `additional_params` | object | Method-specific parameters. |
-| `disabled` | boolean | Whether capture is disabled for this method. |
-| `cache_size_kb` | float | `viam-micro-server` only. Max storage (KB) per data collector. Default: `1`. |
-
-{{< expand "Example: ESP32 remote part configuration" >}}
-
-The following is the configuration for the ESP32 board itself (the remote part).
-This config is the same as any non-remote part. The remote connection is established by the main part.
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "components": [
-    {
-      "name": "my-esp32",
-      "model": "esp32",
-      "api": "rdk:component:board",
-      "attributes": {
-        "pins": [27],
-        "analogs": [
-          {
-            "pin": "34",
-            "name": "A1"
-          },
-          {
-            "pin": "35",
-            "name": "A2"
-          }
-        ]
-      },
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Analogs",
-                "additional_params": {
-                  "reader_name": "A1"
-                },
-                "cache_size_kb": 10,
-                "capture_frequency_hz": 10
-              },
-              {
-                "method": "Analogs",
-                "additional_params": {
-                  "reader_name": "A2"
-                },
-                "cache_size_kb": 10,
-                "capture_frequency_hz": 10
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-{{< /expand >}}
-
-{{< expand "Example: main part capturing from an ESP32 remote (analog readers and GPIO)" >}}
-
-This main part configuration captures data from two analog readers and pin 27 of the GPIO on the ESP32 configured above:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    {
-      "name": "data_manager",
-      "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
-      "attributes": {
-        "capture_dir": "",
-        "sync_disabled": true,
-        "sync_interval_mins": 5,
-        "tags": ["tag1", "tag2"]
-      }
-    }
-  ],
-  "remotes": [
-    {
-      "name": "esp-home",
-      "address": "esp-home-main.33vvxnbbw9.viam.cloud:80",
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Analogs",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": { "reader_name": "A1" },
-                "disabled": false
-              },
-              {
-                "method": "Analogs",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": { "reader_name": "A2" },
-                "disabled": false
-              },
-              {
-                "method": "Gpios",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": {
-                  "pin_name": "27"
-                },
-                "disabled": false
-              }
-            ]
-          }
-        }
-      ],
-      "secret": "REDACTED"
-    }
-  ]
-}
-```
-
-{{< /expand >}}
-
-{{< expand "Example: main part capturing from a remote camera" >}}
-
-This main part configuration captures from the `GetImages` method of a camera on a remote part:
-
-```json {class="line-numbers linkable-line-numbers"}
-{
-  "services": [
-    {
-      "name": "data_manager",
-      "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
-      "attributes": {
-        "capture_dir": "",
-        "sync_disabled": true,
-        "sync_interval_mins": 5,
-        "tags": []
-      }
-    }
-  ],
-  "remotes": [
-    {
-      "name": "pi-test-main",
-      "address": "pi-test-main.vw3iu72d8n.viam.cloud",
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "capture_frequency_hz": 1,
-                "name": "rdk:component:camera/cam",
-                "disabled": false,
-                "method": "GetImages",
-                "additional_params": {
-                  "filter_source_names": ["color"],
-                  "reader_name": "cam1"
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "secret": "REDACTED"
-    }
-  ]
-}
-```
-
-{{< /expand >}}
-
-## Direct MongoDB capture
-
-You can write tabular data directly to a MongoDB instance alongside the normal disk capture.
-This is useful for powering real-time dashboards before data syncs from the edge to the cloud.
-The MongoDB instance can be local or a cloud cluster.
-
-{{< alert title="Caution" color="caution" >}}
-
-- Data written to MongoDB may not also make it to disk (and therefore may never sync to cloud storage).
-- Failed MongoDB writes are logged but not retried. Not all captured data is guaranteed to reach MongoDB.
-- The added write latency may reduce the maximum achievable capture frequency.
-
-{{< /alert >}}
-
-Configure using the `mongo_capture_config` attributes in your data management service.
-MongoDB capture and cloud sync are independent. You can enable either or both.
-
-{{< expand "Example: MongoDB capture with cloud sync" >}}
-
-This configuration captures sensor readings to both a local MongoDB instance and disk, with cloud sync enabled:
-
-```json
-{
-  "components": [
-    {
-      "name": "sensor-1",
-      "api": "rdk:component:sensor",
-      "model": "rdk:builtin:fake",
-      "attributes": {},
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "method": "Readings",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {}
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ],
-  "services": [
-    {
-      "name": "data_manager-1",
-      "api": "rdk:service:data_manager",
-      "attributes": {
-        "mongo_capture_config": {
-          "uri": "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000"
-        },
-        "sync_interval_mins": 0.1,
-        "capture_dir": "",
-        "sync_disabled": false,
-        "tags": []
-      }
-    }
-  ]
-}
-```
-
-To capture to MongoDB without cloud sync, set `"sync_disabled": true`.
-
-{{< /expand >}}
-
-If writes to MongoDB fail, data capture logs an error for each failed write and continues capturing.
-MongoDB write failures do not prevent data from being captured to disk or synced to the cloud.
+For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/). For direct MongoDB capture, see [Direct MongoDB capture](/data/capture-sync/direct-mongodb-capture/).
 
 ## Supported resources
 

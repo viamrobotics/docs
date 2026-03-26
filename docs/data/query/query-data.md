@@ -26,7 +26,7 @@ Tabular data (sensor readings, motor positions, encoder ticks, and other structu
 **MQL** (MongoDB Query Language) uses aggregation pipelines and is more powerful for grouping, computing averages, and restructuring nested data.
 
 By default, queries run against the `readings` collection in the `sensorData` database.
-See [Readings table reference](#readings-table-reference) for the full schema.
+See [Query reference](/data/query/query-reference/#readings-table-schema) for the full schema.
 
 ## Explore your data with basic SQL
 
@@ -43,7 +43,7 @@ This shows the 10 most recent readings across all components.
 Most of the interesting values are in the `data` column, which contains your actual readings as nested JSON.
 For example, a sensor reading looks like `{"readings": {"temperature": 23.5, "humidity": 61.2}}`.
 You'll use dot notation to extract specific fields: `data.readings.temperature`.
-See [Readings table reference](#readings-table-reference) for the full schema and more examples.
+See [Query reference](/data/query/query-reference/#readings-table-schema) for the full schema and more examples.
 
 To narrow to a specific component:
 
@@ -303,68 +303,7 @@ To get oriented with your own data:
 2. Pick a component and run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` to see the JSON structure of its readings.
 3. Use the field names from step 2 to write a query that extracts a specific value with dot notation (for example, `data.readings.temperature`).
 
-## Readings table reference
-
-All tabular data is stored in a single table called `readings` in the `sensorData` database.
-Each row represents one capture event from one resource.
-
-| Column                  | Type      | Description                                                         |
-| ----------------------- | --------- | ------------------------------------------------------------------- |
-| `organization_id`       | String    | Organization UUID                                                   |
-| `location_id`           | String    | Location UUID                                                       |
-| `robot_id`              | String    | Machine UUID                                                        |
-| `part_id`               | String    | Machine part UUID                                                   |
-| `component_type`        | String    | Resource type (for example, `rdk:component:sensor`)                 |
-| `component_name`        | String    | Resource name (for example, `my-sensor`)                            |
-| `method_name`           | String    | Capture method (for example, `Readings`, `EndPosition`)             |
-| `time_requested`        | Timestamp | When the capture was requested on the machine                       |
-| `time_received`         | Timestamp | When the cloud received the data                                    |
-| `tags`                  | Array     | User-applied tags                                                   |
-| `additional_parameters` | JSON      | Method-specific parameters (for example, `pin_name`, `reader_name`) |
-| `data`                  | JSON      | The captured reading: nested structure varies by resource type      |
-
-{{< alert title="Note" color="note" >}}
-The `readings` table does not include `robot_name` or `part_name` columns. These fields appear in data export responses but are not part of the queryable schema. To filter by machine, use `robot_id` or `part_id`.
-{{< /alert >}}
-
-### The data column
-
-The `data` column contains the actual reading as nested JSON. Its structure depends on what was captured:
-
-{{< tabs >}}
-{{% tab name="Sensor reading" %}}
-
-```json
-{
-  "readings": {
-    "temperature": 23.5,
-    "humidity": 61.2
-  }
-}
-```
-
-{{% /tab %}}
-{{% tab name="Vision service detection" %}}
-
-```json
-{
-  "detections": [
-    {
-      "class_name": "person",
-      "confidence": 0.94,
-      "x_min": 120,
-      "y_min": 50,
-      "x_max": 340,
-      "y_max": 480
-    }
-  ]
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Use dot notation in queries to reach into nested fields (for example, `data.readings.temperature`).
+For the full schema of the readings table, see [Query reference](/data/query/query-reference/#readings-table-schema).
 
 ## Troubleshooting
 

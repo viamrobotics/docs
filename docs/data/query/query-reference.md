@@ -13,209 +13,102 @@ aliases:
   - /data-ai/data/query/
 date: "2024-12-03"
 updated: "2025-09-12"
-description: "Query reference: supported operators, SQL limitations, third-party tools, and performance best practices."
+description: "Schema, supported operators, SQL limitations, and query optimization for captured data."
 ---
 
-For a step-by-step guide to querying captured data using SQL and MQL, see [Query Data](/data/query/query-data/).
+For step-by-step instructions on querying data, see [Query data](/data/query/query-data/).
 
-## Prerequisites
+## Readings table schema
 
-{{% expand "Data query permissions" %}}
+All tabular data is stored in a single table called `readings` in the `sensorData` database.
+Each row represents one capture event from one resource.
 
-Users with owner or operator roles at the organization, location, or machine level can query data.
-See [Role-Based Access Control](/organization/rbac/) for details.
+| Column                  | Type      | Description                                                         |
+| ----------------------- | --------- | ------------------------------------------------------------------- |
+| `organization_id`       | String    | Organization UUID                                                   |
+| `location_id`           | String    | Location UUID                                                       |
+| `robot_id`              | String    | Machine UUID                                                        |
+| `part_id`               | String    | Machine part UUID                                                   |
+| `component_type`        | String    | Resource type (for example, `rdk:component:sensor`)                 |
+| `component_name`        | String    | Resource name (for example, `my-sensor`)                            |
+| `method_name`           | String    | Capture method (for example, `Readings`, `EndPosition`)             |
+| `time_requested`        | Timestamp | When the capture was requested on the machine                       |
+| `time_received`         | Timestamp | When the cloud received the data                                    |
+| `tags`                  | Array     | User-applied tags                                                   |
+| `additional_parameters` | JSON      | Method-specific parameters (for example, `pin_name`, `reader_name`) |
+| `data`                  | JSON      | The captured reading: nested structure varies by resource type      |
 
-{{% /expand%}}
-
-## Query using the Viam app
-
-Navigate to the [**Query** page](https://app.viam.com/data/query) and select **SQL** or **MQL**.
-
-You can optionally change the data source to query data from a configured [hot data store](/data/query/hot-data-store/).
-
-{{< alert title="Tip: Query Assistant" color="tip" >}}
-For help with writing queries, use the **Query Assistant** button in the top right corner.
+{{< alert title="Note" color="note" >}}
+The `readings` table does not include `robot_name` or `part_name` columns. These fields appear in data export responses but are not part of the queryable schema. To filter by machine, use `robot_id` or `part_id`.
 {{< /alert >}}
 
-You can save queries in the web UI.
-Click on **Saved** and then **Save current query**.
-Fill in a **Name** for your query and click **Save query**.
+### The data column
 
-## Query using TypeScript
+The `data` column contains the actual reading as nested JSON. Its structure depends on what was captured:
 
 {{< tabs >}}
-{{% tab name="TypeScript" %}}
+{{% tab name="Sensor reading" %}}
 
-{{< read-code-snippet file="/static/include/examples-generated/data-query.snippet.data-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18-31" >}}
+```json
+{
+  "readings": {
+    "temperature": 23.5,
+    "humidity": 61.2
+  }
+}
+```
 
-{{< expand "Click to see an example that filters by component name and column names." >}}
+{{% /tab %}}
+{{% tab name="Vision service detection" %}}
 
-{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-filter.ts" lang="ts" class="line-numbers linkable-line-numbers" >}}
-
-{{< /expand >}}
-{{< expand "Click to see an example that returns a count of records that match a component name." >}}
-
-{{< read-code-snippet file="/static/include/examples-generated/data-query-examples.snippet.data-query-count.ts" lang="ts" class="line-numbers linkable-line-numbers" >}}
-
-{{< /expand >}}
+```json
+{
+  "detections": [
+    {
+      "class_name": "person",
+      "confidence": 0.94,
+      "x_min": 120,
+      "y_min": 50,
+      "x_max": 340,
+      "y_max": 480
+    }
+  ]
+}
+```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-For Python and Go examples, see [Query Data](/data/query/query-data/#query-data-programmatically).
+Use dot notation in queries to reach into nested fields (for example, `data.readings.temperature`).
 
-## Query using third-party tools
+## Indexed fields and query optimization
 
-You can query captured data using any third-party tool that supports MongoDB, such as the [`mongosh` shell](https://www.mongodb.com/docs/mongodb-shell/) or [MongoDB Compass](https://www.mongodb.com/docs/compass/current/).
+When querying large datasets, you can improve performance by filtering on indexed fields early in your query. Viam stores data in blob storage using the path pattern:
 
-### Prerequisites
+`/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_day/*`
 
-{{% expand "Viam CLI" %}}
+The more specific you can be, starting with the beginning of the path, the faster your query. These fields are indexed:
 
-You must have the Viam CLI installed to configure querying with third-party tools.
+- `organization_id`
+- `location_id`
+- `robot_id`
+- `part_id`
+- `component_type`
+- `component_name`
+- `method_name`
+- `capture_day`
 
-{{< readfile "/static/include/how-to/install-cli.md" >}}
+Additional optimization techniques:
 
-{{% /expand%}}
+- Filter and reduce data early. Use `$match` (MQL) or `WHERE` (SQL) before expensive operations like grouping or sorting.
+- Use `$project` early to drop unneeded fields from the processing pipeline.
+- Use `$limit` or `LIMIT` while developing queries to avoid scanning your entire dataset.
+- For frequent queries on recent data, use the [hot data store](/data/query/hot-data-store/).
+- For recurring queries (dashboards), use [data pipelines](/data/query/configure-data-pipelines/) to pre-compute materialized views.
 
-{{% expand "Third-party tool for querying data (such as mongosh)" %}}
+## Supported MQL operators
 
-[Download the `mongosh` shell](https://www.mongodb.com/try/download/shell) or another third-party tool that can connect to a MongoDB data source.
-
-See the [`mongosh` documentation](https://www.mongodb.com/docs/mongodb-shell/) for more information.
-
-{{% /expand%}}
-
-### Configure data query
-
-If you want to query data from third-party tools, you have to configure data query to obtain the credentials you need to connect to the third-party service.
-
-{{< readfile "/static/include/how-to/query-data.md" >}}
-
-### Connect and query
-
-Run the following command to connect to your Viam organization's MongoDB instance from `mongosh` using the connection URI you obtained during query configuration:
-
-```sh {class="command-line" data-prompt=">"}
-mongosh "mongodb://db-user-abcd1e2f-a1b2-3c45-de6f-ab123456c123:YOUR-PASSWORD-HERE@data-federation-abcd1e2f-a1b2-3c45-de6f-ab123456c123-0z9yx.a.query.mongodb.net/?ssl=true&authSource=admin"
-```
-
-For information on connecting to your Atlas Data Federation instance from other MQL clients, see the [Connect to your Cluster Tutorial](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/).
-
-Once connected, you can run SQL or MQL statements to query captured data directly.
-
-The following query searches the `readings` collection in the `sensorData` database and gets sensor readings from an ultrasonic sensor on a specific `robot_id` where the recorded `distance` measurement is greater than `0.2` meters.
-
-{{< tabs >}}
-{{% tab name="MQL" %}}
-
-```mongodb {class="command-line" data-prompt=">" data-output="10"}
-use sensorData
-db.readings.aggregate(
-    [
-        { $match: {
-            'robot_id': 'abcdef12-abcd-abcd-abcd-abcdef123456',
-            'component_name': 'my-ultrasonic-sensor',
-            'data.readings.distance': { $gt: 0.2 } } },
-        { $count: 'numStanding' }
-    ] )
-[ { numStanding: 215 } ]
-```
-
-See the [MQL documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for more information.
-
-{{% /tab %}}
-{{% tab name="SQL" %}}
-
-```mongodb {class="command-line" data-prompt=">" data-output="11"}
-use sensorData
-db.aggregate(
-[
-    { $sql: {
-        statement: "select count(*) as numStanding from readings \
-            where robot_id = 'abcdef12-abcd-abcd-abcd-abcdef123456' and \
-            component_name = 'my-ultrasonic-sensor' and (CAST (data.readings.distance AS DOUBLE)) > 0.2",
-        format: "jdbc"
-    }}
-] )
-[ { '': { numStanding: 215 } } ]
-```
-
-See the [`$sql` aggregation pipeline stage documentation](https://www.mongodb.com/docs/atlas/data-federation/supported-unsupported/pipeline/sql/) for more information.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-<!-- markdownlint-disable-file MD001 -->
-
-{{< expand "Need to query by date? Click here." >}}
-
-##### Query by date
-
-When using MQL to query your data by date or time range, you can optimize query performance by avoiding the MongoDB `$toDate` expression, using the [BSON `date` type](https://www.mongodb.com/docs/manual/reference/bson-types/#date) instead.
-
-For example, use the following query to search by a date range in the `mongosh` shell.
-Use the JavaScript `Date()` constructor to specify an explicit start timestamp and the current time as the end timestamp:
-
-```mongodb {class="command-line" data-prompt=">"}
-// Switch to sensorData database:
-use sensorData
-
-// Set desired start and end times:
-const startTime = new Date('2024-02-10T19:45:07.000Z')
-const endTime = new Date()
-
-// Run query using $match:
-db.readings.aggregate(
-    [
-        { $match: {
-            time_received: {
-                $gte: startTime,
-                $lte: endTime }
-        } }
-    ] )
-```
-
-{{< /expand>}}
-
-## Query optimization and performance best practices
-
-1. When querying large datasets, whether from default storage or a [hot data store](/data/query/hot-data-store/), you can improve the query's efficiency by specifying the following parameters in the query:
-
-   - `organization_id`
-   - `location_id`
-   - `robot_id`
-   - `part_id`
-   - `component_type`
-   - `component_name`
-   - `method_name`
-   - `capture_day`
-
-   Viam stores data in blob storage using the pattern `/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_day/*`.
-   The more specific you can be, starting with the beginning of the path, the faster your query.
-
-1. Filter and reduce the amount of data that needs to be processed early, especially when your query expands the data it works with using operators like `$limit` and `$unwind`.
-   If you don't need all fields, use `$project` early to reduce the fields in the processing dataset.
-   If you only need a certain number of results, use `$limit` early in the pipeline to reduce data processing.
-
-1. If you are frequently querying recent data, use the [hot data store](/data/query/hot-data-store/) which provides faster data access.
-
-1. If you frequently perform the same types of queries, for example for dashboards, use [data pipelines](/data/query/configure-data-pipelines/).
-   Data pipelines allow you to pre-compute a materialized view of your data at specified intervals.
-
-## Supported query languages
-
-### MQL
-
-Viam supports the [MongoDB Query Language](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for querying captured data from MQL-compatible clients such as `mongosh` or MongoDB Compass.
-
-#### Supported aggregation operators
-
-Viam supports the following MongoDB aggregation operators:
-
-<!--
-see whitelistStages in https://github.com/viamrobotics/app/blob/e706a2e3ea57a252f102b37e0ab2b9d6eeed51e0/datamanagement/tabular_data_by_query.go#L64
--->
+Viam supports the following MongoDB aggregation pipeline stages:
 
 - `$addFields`
 - `$bucket`
@@ -240,17 +133,38 @@ see whitelistStages in https://github.com/viamrobotics/app/blob/e706a2e3ea57a252
 - `$unset`
 - `$unwind`
 
-### SQL
+See the [MQL documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for syntax details.
 
-You can query data with SQL queries using the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations), which supports standard SQL query syntax in addition to Atlas-specific capabilities such as `FLATTEN` and `UNWIND`.
+## SQL limitations
 
-SQL queries are subject to the following limitations:
+Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations):
 
-- If a database, table, or column identifier meets any of the following criteria, you must surround the identifier with backticks (`` ` ``) or double quotes (`"`):
-  - begins with a digit (for example `1`)
-  - begins with a [reserved character](https://www.postgresql.org/docs/current/functions-matching.html) (for example `%`)
-  - conflicts with a [reserved SQL keyword](https://en.wikipedia.org/wiki/List_of_SQL_reserved_words) (for example `select`)
-- To include a single quote character in a string literal, use two single quotes (use `o''clock` to represent the literal `o'clock`).
+- If a database, table, or column identifier begins with a digit, a reserved character, or conflicts with a reserved SQL keyword, surround it with backticks (`` ` ``) or double quotes (`"`).
+- To include a single quote in a string literal, use two single quotes (use `o''clock` to represent `o'clock`).
 - The `date` data type is not supported. Use `timestamp` instead.
 
 For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations).
+
+## Date queries
+
+When using MQL to query by date or time range, use the BSON `date` type directly rather than the `$toDate` expression for better performance:
+
+```mongodb
+use sensorData
+
+const startTime = new Date('2024-02-10T19:45:07.000Z')
+const endTime = new Date()
+
+db.readings.aggregate([
+    { $match: {
+        time_received: {
+            $gte: startTime,
+            $lte: endTime
+        }
+    }}
+])
+```
+
+## Permissions
+
+Users with owner or operator roles at the organization, location, or machine level can query data. See [Role-Based Access Control](/organization/rbac/) for details.
