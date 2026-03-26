@@ -383,15 +383,70 @@ go run main.go
 
 {{< /expand >}}
 
-## What's Next
+## Supported resources
 
-- [Query Data](/data/query/query-data/) -- write more advanced queries, set up
-  data pipelines, and export data.
-- [Add Computer Vision](/vision/configure/) -- run ML
-  models on your camera feed and capture detection results.
-- [Create a Dataset](/train/create-a-dataset/) -- organize captured images
-  into training datasets for machine learning.
-- [Supported Resources](/data/#supported-resources) -- which components
-  and services support data capture.
-- [Advanced Configuration](/data/capture-sync/advanced-data-capture-sync/) --
-  JSON-level config, retention policies, and sync optimization.
+The following components and services support data capture and cloud sync.
+Not all models support all methods. For example, webcams do not capture point clouds.
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
+
+## Capture directories
+
+By default, captured data is stored in `~/.viam/capture`.
+The actual path depends on your platform:
+
+<!-- prettier-ignore -->
+| Platform | Default directory |
+| -------- | ----------------- |
+| Windows | With `viam-agent`: <FILE>C:\Windows\system32\config\systemprofile\.viam\capture</FILE>. Manual installation: <FILE>C:\Users\admin\.viam\capture</FILE>. |
+| Linux | With root or sudo: <FILE>/root/.viam/capture</FILE>. |
+| macOS | <FILE>/Users/\<username\>/.viam/capture</FILE>. |
+
+{{% expand "Can't find the capture directory?" %}}
+
+The path depends on where `viam-server` runs and the operating system.
+Check your machine's startup logs for the `$HOME` value:
+
+```sh
+2025-01-15T14:27:26.073Z    INFO    rdk    server/entrypoint.go:77    Starting viam-server with following environment variables    {"HOME":"/home/johnsmith"}
+```
+
+{{% /expand%}}
+
+You can change the capture directory with the `capture_dir` attribute.
+See [Advanced data capture and sync configurations](/data/capture-sync/advanced-data-capture-sync/) for details.
+
+## Local storage and automatic deletion
+
+After data syncs successfully, it is automatically deleted from local storage.
+While a machine is offline, captured data accumulates locally.
+Make sure your machine has enough storage to buffer data during expected offline periods.
+
+{{< alert title="Warning" color="warning" >}}
+If your machine is offline and its disk fills up, the data management service will delete captured data to free space and keep the machine running.
+{{< /alert >}}
+
+Automatic deletion triggers when _all_ of these conditions are met:
+
+- Data capture is enabled
+- Local disk usage is at or above 90%
+- The capture directory accounts for at least 50% of local disk usage
+
+If your machine captures a large amount of data or frequently goes offline, consider pointing `capture_dir` to a larger, dedicated storage device.
+You can also control deletion behavior with the `delete_every_nth_when_disk_full` attribute.
+See [Advanced data capture and sync configurations](/data/capture-sync/advanced-data-capture-sync/) for both options.
+
+## Micro-RDK
+
+The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a limited set of resources.
+See the **Micro-RDK** tab in the supported resources table above for details.
+
+On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud.
+If the machine restarts before all data is synced, unsynced data since the last sync point is lost.
+
+## What's next
+
+- [Query data](/data/query/query-data/): write queries, set up data pipelines, and export data
+- [Add computer vision](/vision/configure/): run ML models on your camera feed and capture detection results
+- [Create a dataset](/train/create-a-dataset/): organize captured images into training datasets
+- [Advanced configuration](/data/capture-sync/advanced-data-capture-sync/): JSON-level config, retention policies, and sync optimization
