@@ -1,6 +1,6 @@
 ---
-linkTitle: "Data management tutorial"
-title: "Data management tutorial"
+linkTitle: "Manage data tutorial"
+title: "Manage data tutorial"
 weight: 2
 layout: "docs"
 type: "docs"
