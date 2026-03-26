@@ -1,5 +1,5 @@
 ---
-linkTitle: "Overview"
+linkTitle: "Manage data"
 title: "Manage data"
 weight: 40
 layout: "docs"
