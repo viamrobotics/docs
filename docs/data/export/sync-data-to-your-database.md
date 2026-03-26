@@ -376,8 +376,7 @@ go run main.go
 {{% /tab %}}
 {{< /tabs >}}
 
-Replace all placeholder values with your actual credentials. Find your
-organization ID in the Viam app under **Settings** in the left navigation.
+To get your credentials, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**. Toggle **Include API key** on and copy the API key and API key ID. Find your organization ID under **Settings** in the left navigation.
 
 ### 5. Build an ongoing sync script
 

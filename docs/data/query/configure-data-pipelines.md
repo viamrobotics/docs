@@ -271,8 +271,7 @@ To create a pipeline that reads data from the hot data store, set the `dataSourc
 {{% /tab %}}
 {{< /tabs >}}
 
-Replace the placeholder values with your API key, API key ID, and organization
-ID. Run the script to create the pipeline.
+To get your credentials, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**. Toggle **Include API key** on and copy the API key and API key ID. Find your organization ID under **Settings** in the left navigation. Run the script to create the pipeline.
 
 ## Schedule format
 

@@ -378,8 +378,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-Replace `YOUR-API-KEY`, `YOUR-API-KEY-ID`, `YOUR-ORGANIZATION-ID`, and
-`my-sensor` with your values. Then run:
+To get your credentials, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**. Toggle **Include API key** on and copy the API key and API key ID. Find your organization ID under **Settings** in the left navigation. Replace `my-sensor` with your component name. Then run:
 
 ```bash
 python visualize_data.py
