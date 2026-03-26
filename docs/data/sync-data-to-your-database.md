@@ -7,6 +7,7 @@ type: "docs"
 description: "Use Viam as an ingestion layer and sync captured data to your own MongoDB database."
 date: "2025-01-30"
 aliases:
+  - /data/export/sync-data-to-your-database/
   - /data/sync-data-to-your-database/
   - /build/data/sync-data-to-your-database/
 ---

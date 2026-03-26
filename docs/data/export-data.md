@@ -1,12 +1,13 @@
 ---
 linkTitle: "Export data"
 title: "Export data"
-weight: 50
+weight: 39
 layout: "docs"
 type: "docs"
 description: "Download data from Viam using the data client API or the CLI."
 tags: ["data management", "cloud", "sync"]
 aliases:
+  - /data/export/export-data/
   - /data/export-data/
   - /data-ai/data/export/
   - /manage/data/export/

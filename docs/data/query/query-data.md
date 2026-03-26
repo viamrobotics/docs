@@ -293,7 +293,7 @@ Find your organization ID in the Viam app under **Settings** in the left navigat
 
 If you need to export data for use outside of Viam: in a Jupyter notebook, your
 own database, or a BI tool: see
-[Sync data to your database](/data/export/sync-data-to-your-database/).
+[Sync data to your database](/data/sync-data-to-your-database/).
 
 ## Try it
 
@@ -367,5 +367,5 @@ For the full schema of the readings table, see [Query reference](/data/query/que
 
 - [Configure data pipelines](/data/query/configure-data-pipelines/): create precomputed summaries for faster queries.
 - [Hot data store](/data/query/hot-data-store/): query a rolling window of recent data with lower latency.
-- [Sync data to your database](/data/export/sync-data-to-your-database/): export data to your own MongoDB instance.
+- [Sync data to your database](/data/sync-data-to-your-database/): export data to your own MongoDB instance.
 - [Visualize data](/data/visualize-data/): build dashboards from your captured data.

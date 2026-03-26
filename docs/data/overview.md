@@ -46,7 +46,7 @@ Viam is not a data silo. You can export data to your own tools and databases:
 - **SDK access**: query and download data programmatically from Python or Go.
 - **Direct MongoDB connection**: connect Grafana, Tableau, or custom scripts directly to your data through a MongoDB connection URI.
 
-See [Export data](/data/export/export-data/) and [Sync to your database](/data/export/sync-data-to-your-database/).
+See [Export data](/data/export-data/) and [Sync to your database](/data/sync-data-to-your-database/).
 
 ## Annotate and train
 
