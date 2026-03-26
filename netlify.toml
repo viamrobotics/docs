@@ -1,6 +1,11 @@
 [build]
   publish = "public"
 
+[[redirects]]
+  from = "/data/"
+  to = "/data/overview/"
+  status = 301
+
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"
 
