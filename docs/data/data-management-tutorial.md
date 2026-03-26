@@ -89,7 +89,7 @@ LIMIT 5
 
 3. Click **Run query**.
 
-You should see your most recent 5 readings with timestamps and the sensor's data values.
+You should see your most recent 5 readings with timestamps and the sensor's data values. For a breakdown of what each column means and how to access nested values, see the [readings table schema](/data/query/query-reference/#readings-table-schema).
 
 Try modifying the query:
 

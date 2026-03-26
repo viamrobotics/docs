@@ -20,23 +20,52 @@ For step-by-step instructions on querying data, see [Query data](/data/query/que
 
 ## Readings table schema
 
-All tabular data is stored in a single table called `readings` in the `sensorData` database.
-Each row represents one capture event from one resource.
+All tabular data is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. Understanding this schema is essential for writing queries.
 
-| Column                  | Type      | Description                                                         |
-| ----------------------- | --------- | ------------------------------------------------------------------- |
-| `organization_id`       | String    | Organization UUID                                                   |
-| `location_id`           | String    | Location UUID                                                       |
-| `robot_id`              | String    | Machine UUID                                                        |
-| `part_id`               | String    | Machine part UUID                                                   |
-| `component_type`        | String    | Resource type (for example, `rdk:component:sensor`)                 |
-| `component_name`        | String    | Resource name (for example, `my-sensor`)                            |
-| `method_name`           | String    | Capture method (for example, `Readings`, `EndPosition`)             |
-| `time_requested`        | Timestamp | When the capture was requested on the machine                       |
-| `time_received`         | Timestamp | When the cloud received the data                                    |
-| `tags`                  | Array     | User-applied tags                                                   |
-| `additional_parameters` | JSON      | Method-specific parameters (for example, `pin_name`, `reader_name`) |
-| `data`                  | JSON      | The captured reading: nested structure varies by resource type      |
+### What a document looks like
+
+Here is a complete document from the `readings` collection. This is what you get back when you run `SELECT * FROM readings LIMIT 1`:
+
+```json
+{
+  "organization_id": "ab1c2d3e-1234-5678-abcd-ef1234567890",
+  "location_id": "loc-1234-5678-abcd-ef1234567890",
+  "robot_id": "robot-1234-5678-abcd-ef1234567890",
+  "part_id": "part-1234-5678-abcd-ef1234567890",
+  "component_type": "rdk:component:sensor",
+  "component_name": "my-sensor",
+  "method_name": "Readings",
+  "time_requested": "2025-03-15T14:30:00.000Z",
+  "time_received": "2025-03-15T14:30:01.234Z",
+  "tags": ["production", "floor-2"],
+  "additional_parameters": {},
+  "data": {
+    "readings": {
+      "temperature": 23.5,
+      "humidity": 61.2
+    }
+  }
+}
+```
+
+Your actual sensor values are inside the `data` column, nested under a key that depends on the component type and capture method. Everything outside of `data` is metadata that Viam adds automatically.
+
+### Column reference
+
+| Column                  | Type      | Description                                                                                                        |
+| ----------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
+| `organization_id`       | String    | Organization UUID. Set automatically from your machine's config.                                                   |
+| `location_id`           | String    | Location UUID. The location this machine belongs to.                                                               |
+| `robot_id`              | String    | Machine UUID. Identifies which machine captured this data.                                                         |
+| `part_id`               | String    | Machine part UUID. Identifies which part of the machine.                                                           |
+| `component_type`        | String    | Resource type as a triplet (for example, `rdk:component:sensor`).                                                  |
+| `component_name`        | String    | The name you gave this component in your config (for example, `my-sensor`). This is what you filter on most often. |
+| `method_name`           | String    | The capture method (for example, `Readings`, `GetImages`, `EndPosition`).                                          |
+| `time_requested`        | Timestamp | When the capture was requested on the machine (machine's clock).                                                   |
+| `time_received`         | Timestamp | When the cloud received and stored the data. Use this for time-range queries since it's indexed.                   |
+| `tags`                  | Array     | User-applied tags from your data management config.                                                                |
+| `additional_parameters` | JSON      | Method-specific parameters you configured (for example, `pin_name`, `reader_name`).                                |
+| `data`                  | JSON      | Your actual captured values. Structure varies by component type and method.                                        |
 
 {{< alert title="Note" color="note" >}}
 The `readings` table does not include `robot_name` or `part_name` columns. These fields appear in data export responses but are not part of the queryable schema. To filter by machine, use `robot_id` or `part_id`.
@@ -44,10 +73,20 @@ The `readings` table does not include `robot_name` or `part_name` columns. These
 
 ### The data column
 
-The `data` column contains the actual reading as nested JSON. Its structure depends on what was captured:
+The `data` column contains your actual captured values as nested JSON. Its structure depends on what component and method captured the data. To find out what's inside `data` for your specific components, run:
+
+```sql
+SELECT data FROM readings WHERE component_name = 'my-sensor' LIMIT 1
+```
+
+Then use the field names you see to build more specific queries.
+
+**Common data structures:**
 
 {{< tabs >}}
-{{% tab name="Sensor reading" %}}
+{{% tab name="Sensor (Readings)" %}}
+
+Keys inside `data.readings` are whatever your sensor returns. Each sensor is different.
 
 ```json
 {
@@ -58,8 +97,24 @@ The `data` column contains the actual reading as nested JSON. Its structure depe
 }
 ```
 
+To query: `data.readings.temperature`
+
+Example:
+
+```sql
+SELECT time_received,
+  data.readings.temperature AS temp,
+  data.readings.humidity AS humidity
+FROM readings
+WHERE component_name = 'my-sensor'
+ORDER BY time_received DESC
+LIMIT 10
+```
+
 {{% /tab %}}
-{{% tab name="Vision service detection" %}}
+{{% tab name="Vision service (CaptureAllFromCamera)" %}}
+
+Detections include bounding box coordinates and confidence scores.
 
 ```json
 {
@@ -76,10 +131,57 @@ The `data` column contains the actual reading as nested JSON. Its structure depe
 }
 ```
 
+To query detections, use MQL since SQL cannot easily traverse arrays:
+
+```json
+[
+  { "$match": { "component_name": "my-vision" } },
+  { "$unwind": "$data.detections" },
+  { "$match": { "data.detections.confidence": { "$gt": 0.8 } } },
+  {
+    "$project": {
+      "class": "$data.detections.class_name",
+      "confidence": "$data.detections.confidence",
+      "time": "$time_received"
+    }
+  }
+]
+```
+
+{{% /tab %}}
+{{% tab name="Motor (Position)" %}}
+
+```json
+{
+  "position": 145.7
+}
+```
+
+To query: `data.position`
+
+{{% /tab %}}
+{{% tab name="Encoder (Position)" %}}
+
+```json
+{
+  "position": 12450,
+  "position_type": 1
+}
+```
+
+To query: `data.position`
+
 {{% /tab %}}
 {{< /tabs >}}
 
-Use dot notation in queries to reach into nested fields (for example, `data.readings.temperature`).
+### Finding the structure of your data
+
+If you're unsure what fields your component produces, use this process:
+
+1. Run `SELECT DISTINCT component_name FROM readings` to see what components have captured data.
+2. Pick one and run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1`.
+3. Look at the JSON structure in the result. The keys you see are the fields you can query with dot notation.
+4. Build your query using `data.` followed by the path to the field you want (for example, `data.readings.temperature`).
 
 ## Indexed fields and query optimization
 
