@@ -8,7 +8,7 @@ description: "Query captured data programmatically using the Viam Python or Go S
 date: "2026-03-26"
 ---
 
-Pull captured data into your own programs using the Viam data client API. You can run the same SQL and MQL queries available in the app's query editor from Python or Go code.
+Pull captured data into your own programs using the Viam data client API. You can run the same SQL and MQL queries available in the app's query editor from Python or Go code. For the data schema and per-component examples, see the [readings table schema](/data/query/query-reference/#readings-table-schema).
 
 ## Set up a connection
 
