@@ -224,76 +224,9 @@ The `$unwind` stage is important when your data contains arrays. It flattens
 the array so each element becomes its own document, which you can then filter
 and project individually.
 
-## Query data programmatically
+## Query from code
 
-You can run the same SQL and MQL queries from your own code using the data client API.
-After [connecting to the Viam app](/dev/reference/apis/data-client/#establish-a-connection), use `tabular_data_by_sql` or `tabular_data_by_mql`:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-data_client = viam_client.data_client
-
-# SQL query
-sql_results = await data_client.tabular_data_by_sql(
-    organization_id=ORG_ID,
-    sql_query=(
-        "SELECT time_received, "
-        "  data.readings.temperature AS temperature "
-        "FROM readings "
-        "WHERE component_name = 'my-sensor' "
-        "ORDER BY time_received DESC "
-        "LIMIT 5"
-    ),
-)
-
-# MQL aggregation pipeline
-mql_results = await data_client.tabular_data_by_mql(
-    organization_id=ORG_ID,
-    query=[
-        {"$group": {
-            "_id": "$component_name",
-            "count": {"$sum": 1},
-        }},
-        {"$sort": {"count": -1}},
-    ],
-)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-dataClient := viamClient.DataClient()
-
-// SQL query
-sqlResults, err := dataClient.TabularDataBySQL(ctx, orgID,
-    "SELECT time_received, "+
-        "data.readings.temperature AS temperature "+
-        "FROM readings "+
-        "WHERE component_name = 'my-sensor' "+
-        "ORDER BY time_received DESC LIMIT 5")
-
-// MQL aggregation pipeline
-mqlResults, err := dataClient.TabularDataByMQL(ctx, orgID,
-    []map[string]interface{}{
-        {"$group": map[string]interface{}{
-            "_id":   "$component_name",
-            "count": map[string]interface{}{"$sum": 1},
-        }},
-        {"$sort": map[string]interface{}{"count": -1}},
-    }, nil)
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-Find your organization ID in the Viam app under **Settings** in the left navigation.
-
-If you need to export data for use outside of Viam: in a Jupyter notebook, your
-own database, or a BI tool: see
-[Sync data to your database](/data/sync-data-to-your-database/).
+You can run the same SQL and MQL queries from Python or Go using the data client API. See [Query data from code](/data/query/query-data-from-code/) for setup instructions and examples.
 
 ## Try it
 
