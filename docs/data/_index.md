@@ -1,11 +1,11 @@
 ---
-linkTitle: "Manage data"
+linkTitle: "Overview"
 title: "Manage data"
 weight: 40
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Record sensor data on your robot, sync it to the cloud, and query, export, or use it for ML training. Replaces custom telemetry pipelines and manual data transfers."
+description: "Record sensor data on your robot, sync it to the cloud, and query, export, or use it for ML training."
 aliases:
   - /build/data/
   - /services/data/capture/
