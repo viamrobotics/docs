@@ -1,5 +1,5 @@
 ---
-linkTitle: "Trigger on data events"
+linkTitle: "Trigger on events"
 title: "Trigger on data events"
 weight: 60
 layout: "docs"
