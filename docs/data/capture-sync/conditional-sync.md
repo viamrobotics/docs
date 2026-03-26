@@ -42,7 +42,7 @@ Any logic you need (time-of-day windows, network status, sensor thresholds, exte
 You wire it up by setting `selective_syncer_name` in the data management service config.
 
 {{< alert title="Important" color="caution" >}}
-If `selective_syncer_name` is configured but the sensor cannot be found, sync is **completely disabled**, not just skipped for that cycle.
+If `selective_syncer_name` is configured but the sensor cannot be found, **scheduled sync is disabled** until the sensor becomes available.
 Make sure the sensor is correctly configured and added to the data manager's `depends_on` field.
 {{< /alert >}}
 

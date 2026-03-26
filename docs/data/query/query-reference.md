@@ -181,6 +181,7 @@ db.readings.aggregate(
 ## Query optimization and performance best practices
 
 1. When querying large datasets, whether from default storage or a [hot data store](/data/query/hot-data-store/), you can improve the query's efficiency by specifying the following parameters in the query:
+
    - `organization_id`
    - `location_id`
    - `robot_id`
@@ -188,9 +189,9 @@ db.readings.aggregate(
    - `component_type`
    - `component_name`
    - `method_name`
-   - `capture_date`
+   - `capture_day`
 
-   Viam stores data in blob storage using the pattern `/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_date/*`.
+   Viam stores data in blob storage using the pattern `/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_day/*`.
    The more specific you can be, starting with the beginning of the path, the faster your query.
 
 1. Filter and reduce the amount of data that needs to be processed early, especially when your query expands the data it works with using operators like `$limit` and `$unwind`.

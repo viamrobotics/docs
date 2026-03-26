@@ -56,7 +56,7 @@ Confirm it shows as **Live** in the upper left.
 5. Select the method to capture:
    - For a camera, select **GetImages**. This captures a frame from the camera
      each time it fires.
-   - For a sensor, select **GetReadings**. This records the sensor's current
+   - For a sensor, select **Readings**. This records the sensor's current
      values.
 6. Set the **capture frequency**. This is specified in hertz (captures per
    second):

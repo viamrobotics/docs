@@ -228,7 +228,7 @@ and project individually.
 ## Query data programmatically
 
 You can run the same SQL and MQL queries from your own code using the data client API.
-After [connecting to the Viam app](/reference/apis/services/data/#establish-a-connection), use `tabular_data_by_sql` or `tabular_data_by_mql`:
+After [connecting to the Viam app](/dev/reference/apis/data-client/#establish-a-connection), use `tabular_data_by_sql` or `tabular_data_by_mql`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -252,7 +252,7 @@ sql_results = await data_client.tabular_data_by_sql(
 # MQL aggregation pipeline
 mql_results = await data_client.tabular_data_by_mql(
     organization_id=ORG_ID,
-    mql_binary=[
+    query=[
         {"$group": {
             "_id": "$component_name",
             "count": {"$sum": 1},
@@ -309,20 +309,20 @@ To get oriented with your own data:
 All tabular data is stored in a single table called `readings` in the `sensorData` database.
 Each row represents one capture event from one resource.
 
-| Column                  | Type      | Description                                                     |
-| ----------------------- | --------- | --------------------------------------------------------------- |
-| `organization_id`       | String    | Organization UUID                                               |
-| `location_id`           | String    | Location UUID                                                   |
-| `robot_id`              | String    | Machine UUID                                                    |
-| `part_id`               | String    | Machine part UUID                                               |
-| `component_type`        | String    | Resource type (for example, `rdk:component:sensor`)                    |
-| `component_name`        | String    | Resource name (for example, `my-sensor`)                               |
-| `method_name`           | String    | Capture method (for example, `Readings`, `EndPosition`)                |
-| `time_requested`        | Timestamp | When the capture was requested on the machine                   |
-| `time_received`         | Timestamp | When the cloud received the data                                |
-| `tags`                  | Array     | User-applied tags                                               |
-| `additional_parameters` | JSON      | Method-specific parameters (for example, `pin_name`, `reader_name`)    |
-| `data`                  | JSON      | The captured reading: nested structure varies by resource type |
+| Column                  | Type      | Description                                                         |
+| ----------------------- | --------- | ------------------------------------------------------------------- |
+| `organization_id`       | String    | Organization UUID                                                   |
+| `location_id`           | String    | Location UUID                                                       |
+| `robot_id`              | String    | Machine UUID                                                        |
+| `part_id`               | String    | Machine part UUID                                                   |
+| `component_type`        | String    | Resource type (for example, `rdk:component:sensor`)                 |
+| `component_name`        | String    | Resource name (for example, `my-sensor`)                            |
+| `method_name`           | String    | Capture method (for example, `Readings`, `EndPosition`)             |
+| `time_requested`        | Timestamp | When the capture was requested on the machine                       |
+| `time_received`         | Timestamp | When the cloud received the data                                    |
+| `tags`                  | Array     | User-applied tags                                                   |
+| `additional_parameters` | JSON      | Method-specific parameters (for example, `pin_name`, `reader_name`) |
+| `data`                  | JSON      | The captured reading: nested structure varies by resource type      |
 
 {{< alert title="Note" color="note" >}}
 The `readings` table does not include `robot_name` or `part_name` columns. These fields appear in data export responses but are not part of the queryable schema. To filter by machine, use `robot_id` or `part_id`.

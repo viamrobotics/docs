@@ -251,7 +251,7 @@ func main() {
 
     pipelineID, err := dataClient.CreateDataPipeline(
         ctx, orgID, "hourly-temperature-avg", mqlStages, "0 * * * *", false,
-        &app.CreateDataPipelineOptions{TabularDataSourceType: 0},
+        &app.CreateDataPipelineOptions{TabularDataSourceType: app.TabularDataSourceTypeStandard},
     )
     if err != nil {
         logger.Fatal(err)
@@ -266,7 +266,7 @@ func main() {
 
 {{< read-code-snippet file="/static/include/examples-generated/pipeline-create.snippet.pipeline-create.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="18-29" >}}
 
-To create a pipeline that reads data from the hot data store, set the `dataSource` field to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
+To create a pipeline that reads data from the hot data store, set the `dataSourceType` parameter to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`.
 
 {{% /tab %}}
 {{< /tabs >}}

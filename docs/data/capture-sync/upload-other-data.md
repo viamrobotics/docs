@@ -5,7 +5,7 @@ images: ["/services/icons/data-folder.svg"]
 weight: 8
 layout: "docs"
 type: "docs"
-languages: ["python"]
+languages: ["python", "go"]
 viamresources: ["data_manager"]
 aliases:
   - /data/upload-other-data/

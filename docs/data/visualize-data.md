@@ -65,12 +65,13 @@ The Viam Teleop dashboard is the fastest way to visualize data from a single mac
 ### Add widgets
 
 1. Click **Add widget** and select a widget type. Available widget types include:
+
    - **Time-series chart** -- plots sensor values over time.
    - **Camera feed** -- shows a live camera stream.
    - **Value display** -- shows the current reading from a sensor.
    - **Button** -- triggers an action on the machine.
 
-   See [widget types](/monitor/custom-interface/#widget-types) for the full list of available widgets.
+   Additional widget types may be available depending on your machine's components.
 
 2. To configure a widget, click the **pencil icon** in the top right corner of
    the widget. This opens the widget settings where you select which component
@@ -147,6 +148,7 @@ Grafana dashboards.
 1. After installing the plugin, go to its configuration page and click
    **Add new data source**.
 2. Fill in the following fields:
+
    - **Connection string**:
 
      ```text
@@ -247,6 +249,7 @@ The database credentials from [Configure database access](#configure-database-ac
 Atlas Data Federation as a data store. The general pattern is the same:
 
 1. Install the tool's MongoDB connector or driver. For example:
+
    - **Tableau** requires the [Atlas SQL JDBC Driver](https://www.mongodb.com/try/download/jdbc-driver) and the [Tableau Connector](https://www.mongodb.com/try/download/tableau-connector).
    - **Google Looker Studio** supports MongoDB connections natively through community connectors.
 
@@ -255,10 +258,11 @@ Atlas Data Federation as a data store. The general pattern is the same:
    **Connection URI format** (most tools):
 
    ```text
-   mongodb://db-user-<YOUR-ORG-ID>:<YOUR-PASSWORD>@<HOSTNAME>/sensorData?ssl=true&authSource=admin
+   mongodb://db-user-<YOUR-ORG-ID>:<YOUR-PASSWORD>@<HOSTNAME>/sensorData?tls=true&authSource=admin
    ```
 
    **Hostname + credentials format** (tools that ask for fields separately):
+
    - Hostname: the value from `viam data database hostname`
    - Database name: `sensorData`
    - Username: `db-user-<YOUR-ORG-ID>`
@@ -325,7 +329,7 @@ async def main():
     # Query the last 24 hours of sensor data.
     data = await data_client.tabular_data_by_mql(
         organization_id=ORG_ID,
-        mql_binary=[
+        query=[
             {"$match": {
                 "component_name": "my-sensor",
                 "time_received": {
