@@ -1,7 +1,7 @@
 ---
-linkTitle: "Your first data pipeline"
-title: "Your first data pipeline"
-weight: 1
+linkTitle: "Data management tutorial"
+title: "Data management tutorial"
+weight: 2
 layout: "docs"
 type: "docs"
 description: "Capture sensor data, sync it to the cloud, view it in the Data tab, and query it from code."
