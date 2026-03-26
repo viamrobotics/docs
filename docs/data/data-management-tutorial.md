@@ -89,9 +89,17 @@ LIMIT 5
 
 3. Click **Run query**.
 
-You should see your most recent 5 readings with timestamps and the sensor's data values. For a breakdown of what each column means and how to access nested values, see the [readings table schema](/data/query/query-reference/#readings-table-schema).
+You should see your most recent 5 readings with timestamps and the sensor's data values.
 
-Try modifying the query:
+To understand the structure, try this:
+
+```sql
+SELECT data FROM readings WHERE component_name = 'test-sensor' LIMIT 1
+```
+
+Switch to **table view** (the table icon in the results area). You'll see nested fields flattened into column headers like `data.readings.x`. These dot-notation paths are what you use to extract specific values in queries. For the full schema, see the [readings table schema](/data/query/query-reference/#readings-table-schema).
+
+Try one more query:
 
 ```sql
 SELECT COUNT(*) as total_readings

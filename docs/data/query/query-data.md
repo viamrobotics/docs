@@ -41,9 +41,16 @@ LIMIT 10
 
 This shows the 10 most recent readings across all components.
 Most of the interesting values are in the `data` column, which contains your actual readings as nested JSON.
-For example, a sensor reading looks like `{"readings": {"temperature": 23.5, "humidity": 61.2}}`.
-You'll use dot notation to extract specific fields: `data.readings.temperature`.
-See [Query reference](/data/query/query-reference/#readings-table-schema) for the full schema and more examples.
+
+To see the structure of your data, run this query for a specific component:
+
+```sql
+SELECT data FROM readings WHERE component_name = 'my-sensor' LIMIT 1
+```
+
+Switch to **table view** (the table icon in the results area) to see nested fields automatically flattened into dot-notation column headers like `data.readings.temperature`. These dot-notation paths are exactly what you use in your queries to extract specific values.
+
+For the full schema and per-component examples, see the [readings table schema](/data/query/query-reference/#readings-table-schema).
 
 To narrow to a specific component:
 
