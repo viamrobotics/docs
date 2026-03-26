@@ -1,6 +1,6 @@
 ---
-linkTitle: "Manage data tutorial"
-title: "Manage data tutorial"
+linkTitle: "Tutorial"
+title: "Capture, sync, and query data tutorial"
 weight: 2
 layout: "docs"
 type: "docs"
@@ -105,7 +105,13 @@ This tells you how many readings have been captured so far.
 
 The same data is accessible from your own code through the Viam SDK.
 
-To get your credentials, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**. Toggle **Include API key** on. Copy the API key, API key ID, and organization ID.
+To get your credentials:
+
+1. Go to your machine's page in the Viam app.
+2. Click the **CONNECT** tab.
+3. Select **SDK code sample**.
+4. Toggle **Include API key** on.
+5. Copy the **API key**, **API key ID**, and **organization ID**.
 
 Install the Viam Python SDK:
 
