@@ -5,7 +5,7 @@ weight: 40
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Capture, query, filter, pipeline, export, and visualize data."
+description: "Capture sensor data and images on your robot, sync to the cloud, and query, export, or visualize your data."
 aliases:
   - /build/data/
   - /services/data/capture/
@@ -41,12 +41,33 @@ aliases:
   - /data-ai/data/
 ---
 
-Viam's data management service captures data from configured resources, writes it to local storage, and syncs it to the cloud.
-From there you can query, filter, build pipelines, sync to your own database, or visualize your data.
+Robots generate sensor readings, images, point clouds, and other data continuously. Viam captures this data on the machine, syncs it to the cloud, and makes it queryable, exportable, and usable for ML training without building a custom data pipeline.
 
-- Captured data is written to <file>~/.viam/capture</file> by default.
-- A separate sync process uploads data to Viam's cloud at a configured interval, then deletes local files.
-- Capture and sync run independently: you can use one without the other.
+## What are you trying to do?
+
+| Goal                                           | Start here                                                                                                    |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Record sensor data or images from my robot     | [Capture and sync data](/data/capture-sync/capture-and-sync-data/)                                            |
+| Reduce data volume before syncing to the cloud | [Filter at the edge](/data/filter-at-the-edge/)                                                               |
+| Query or analyze captured data                 | [Query data](/data/query/query-data/)                                                                         |
+| Build scheduled data transformations           | [Configure data pipelines](/data/query/configure-data-pipelines/)                                             |
+| Export data to my own database or tools        | [Export data](/data/export/export-data/) or [Sync to your database](/data/export/sync-data-to-your-database/) |
+| Build monitoring dashboards                    | [Visualize data](/data/visualize-data/)                                                                       |
+| Get alerts when data meets a condition         | [Trigger on data events](/data/trigger-on-data/)                                                              |
+| Debug what my robot did                        | [Debug and trace](/data/debug-and-trace/)                                                                     |
+| Upload data from outside the capture pipeline  | [Upload external data](/data/capture-sync/upload-other-data/)                                                 |
+
+## How data flows
+
+Viam's data management service captures data from configured components, writes it to local storage, and syncs it to the cloud:
+
+1. You configure which components to capture from and at what frequency.
+2. Captured data is written to local disk (default: `~/.viam/capture`).
+3. A separate sync process uploads data to Viam's cloud at a configurable interval, then deletes local files.
+4. In the cloud, tabular data (sensor readings) is stored in MongoDB. Binary data (images, point clouds) is stored in blob storage.
+5. From there you can query with SQL or MQL, export to your own tools, build datasets for ML training, or visualize in dashboards.
+
+Capture and sync run independently: you can capture without syncing, or sync files from other sources without using Viam's capture.
 
 <img src="/data-manager.svg" alt="Diagram showing data being captured, synced, and removed." class="aligncenter overview imgzoom" style="width:800px;height:auto" >
 
@@ -140,11 +161,21 @@ High frequency data collection (> 100 Hz) requires special considerations on the
 
 For JSON-level configuration options including retention policies, sync optimization, direct MongoDB capture, and remote parts capture, see [Advanced data capture and sync configurations](/data/capture-sync/advanced-data-capture-sync/).
 
-## Related pages
+## All pages in this section
 
-- [Capture and sync](/data/capture-sync/): configure data capture and cloud sync
-- [Query](/data/query/): query, aggregate, and analyze captured data
-- [Export and integrate](/data/export/): export data or sync it to your own database
-- [Filter at the edge](/data/filter-at-the-edge/): reduce data before syncing with ML, thresholds, or frequency tuning
+- [Capture and sync data](/data/capture-sync/capture-and-sync-data/): configure data capture and cloud sync
+- [Advanced data capture and sync](/data/capture-sync/advanced-data-capture-sync/): JSON-level configuration reference
+- [Conditional sync](/data/capture-sync/conditional-sync/): sync based on sensor conditions
+- [Stop data capture](/data/capture-sync/stop-data-capture/): disable capture or sync
+- [Upload external data](/data/capture-sync/upload-other-data/): upload files from outside the capture pipeline
+- [LoRaWAN](/data/capture-sync/lorawan/): capture data from LoRaWAN sensors
+- [Filter at the edge](/data/filter-at-the-edge/): reduce data volume before syncing
+- [Query data](/data/query/query-data/): query captured data with SQL or MQL
+- [Query reference](/data/query/query-reference/): schema, operators, and optimization
+- [Configure data pipelines](/data/query/configure-data-pipelines/): scheduled data transformations
+- [Hot data store](/data/query/hot-data-store/): fast queries on recent data
+- [Export data](/data/export/export-data/): download data with the CLI
+- [Sync to your database](/data/export/sync-data-to-your-database/): integrate with external databases
 - [Visualize data](/data/visualize-data/): build dashboards with Teleop or Grafana
-- [Trigger on data events](/data/trigger-on-data/): send alerts when data syncs from a machine
+- [Trigger on data events](/data/trigger-on-data/): alerts when data meets conditions
+- [Debug and trace](/data/debug-and-trace/): distributed tracing for debugging

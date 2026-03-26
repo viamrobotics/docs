@@ -9,8 +9,7 @@ date: "2025-09-12"
 aliases:
 ---
 
-You can use triggers to send webhooks or email alerts when data syncs from a machine.
-For example, a trigger could alert you when a sensor detects a temperature greater than 100 degrees Celsius.
+Get alerted when your robot's data meets a condition. Triggers send webhooks or email notifications when data syncs from a machine, so you can respond to events like temperature spikes, low battery, or detection results without polling.
 
 You can configure triggers to fire in the following scenarios:
 

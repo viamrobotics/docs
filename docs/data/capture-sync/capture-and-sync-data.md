@@ -12,11 +12,7 @@ aliases:
   - /foundation/capture-and-sync-data/
 ---
 
-## What Problem This Solves
-
-Your machine generates useful data: camera images, sensor readings, detection
-results. This how-to shows you how to use Viam's data management service to
-capture this data automatically and sync it to the cloud.
+Configure your machine to automatically record sensor readings, camera images, and other component data, then sync it to the cloud for querying, export, and ML training.
 
 ## Concepts
 

@@ -15,9 +15,7 @@ aliases:
   - /tutorials/services/visualize-data-grafana/
 ---
 
-## What Problem This Solves
-
-Raw sensor readings and captured data are easier to interpret as charts, graphs, and dashboards. Visualization helps you spot trends, detect anomalies, and monitor system health across your machines.
+Build dashboards and monitoring views for your captured data. Visualization helps you spot trends, detect anomalies, and monitor machine health.
 
 Viam stores captured data in a MongoDB Atlas Data Federation instance. This
 means that you can use any tool that can connect to MongoDB to access your data. This page covers four approaches to visualization, from simplest to most
