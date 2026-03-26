@@ -4,7 +4,7 @@ title: "Filter at the edge"
 weight: 50
 layout: "docs"
 type: "docs"
-description: "Reduce bandwidth and storage costs by filtering data on the machine before syncing to the cloud."
+description: "Reduce data volume, bandwidth, and storage costs by filtering data on the machine before syncing to the cloud."
 date: "2025-01-30"
 aliases:
   - /build/data/filter-at-the-edge/
@@ -13,51 +13,15 @@ aliases:
   - /tutorials/projects/filtered-camera/
 ---
 
-## What problem this solves
+Reduce the volume of data your robot captures and syncs. Robots can generate gigabytes per day from cameras and sensors, but most of that data is redundant. Edge filtering means the machine decides what is worth recording or syncing, so you save bandwidth, storage costs, and noise in your datasets.
 
-A camera capturing one frame per second generates roughly 2.5&nbsp;GB of images per
-day. Most of those frames are redundant -- nothing changed between them. Sending
-all of that data to the cloud wastes bandwidth, fills storage, and creates noise
-that makes useful data harder to find.
+This is especially important for machines on cellular connections, metered networks, or with limited local storage.
 
-Edge filtering means the machine decides what is worth sending. Instead of
-capturing everything and sorting it out later, you configure rules that discard
-uninteresting data before it ever leaves the machine. This is especially
-important for machines on cellular connections, metered networks, or with
-limited local storage.
-
-This page covers four techniques, from simplest to most powerful:
+This page covers three approaches, from simplest to most powerful:
 
 1. **Reduce capture frequency** -- capture less often.
-2. **Conditional sync** -- capture locally but only sync when conditions are met.
-3. **Use a filtered camera** -- use an ML model to decide frame-by-frame what to capture.
-4. **Sensor threshold filtering** -- only record readings that cross a boundary.
-
-## Concepts
-
-### The capture-then-sync lifecycle
-
-When data capture is enabled, `viam-server` writes captured data to the local
-filesystem (`~/.viam/capture` by default) at the frequency you configure. A
-separate sync process then uploads that data to Viam's cloud. After a successful
-upload, local files are cleaned up.
-
-This two-stage design means you have two places to filter:
-
-- **At capture time** -- reduce what gets written to disk in the first place.
-- **At sync time** -- capture everything locally but only upload what matters.
-
-### Why filter at the edge
-
-Filtering at the edge (on the machine itself) rather than in the cloud has
-several advantages:
-
-- **Lower bandwidth** -- less data transmitted, important for cellular or
-  satellite connections.
-- **Lower storage costs** -- less data stored in the cloud.
-- **Less noise** -- downstream consumers (ML training, dashboards, alerts) work
-  with higher-signal data.
-- **Faster iteration** -- less data to sift through when reviewing captures.
+2. **Use a filtered camera** -- use an ML model to decide frame-by-frame what to capture.
+3. **Conditional sync** -- capture locally but only sync when conditions are met.
 
 ## Reduce capture frequency (time-based sampling)
 
@@ -235,104 +199,17 @@ See [Create a data filtering module](/tutorials/configure/pet-photographer/) for
 
 {{< /alert >}}
 
-## Filter sensor data by threshold
+## Build a custom filter module
 
-For sensor data, you often only care about readings that cross a specific
-boundary -- a temperature above 50 degrees C, a distance below 30 cm, or
-humidity above 80%. You can implement this with a filtering wrapper module
-that wraps your sensor and only reports readings that exceed a threshold.
+For filtering needs that go beyond what the `filtered-camera` module provides, you can write your own module. Common examples:
 
-Here is a Python sensor filter that only reports readings when a value exceeds a
-threshold:
+- A sensor wrapper that only reports readings above a threshold (for example, temperature above 50 degrees C)
+- A camera filter with custom logic specific to your application
+- A filter that combines data from multiple sensors before deciding what to capture
 
-```python
-import asyncio
-from typing import Any, ClassVar, Dict, Mapping, Optional
+The pattern is: write a module that wraps an existing component, evaluates its data against your criteria, and only returns data worth capturing. Configure data capture on the wrapper component instead of the raw component.
 
-from viam.components.sensor import Sensor
-from viam.module.module import Module
-from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import ResourceName
-from viam.resource.base import ResourceBase
-from viam.resource.easy_resource import EasyResource
-from viam.resource.types import Model, ModelFamily
-
-
-class ThresholdSensor(Sensor, EasyResource):
-    """A sensor wrapper that only returns readings above a configured threshold."""
-
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("custom", "sensor"), "threshold"
-    )
-
-    source: Sensor
-    field: str
-    min_value: float
-    last_interesting_reading: Optional[Dict[str, Any]]
-
-    @classmethod
-    def new(
-        cls,
-        config: ComponentConfig,
-        dependencies: Mapping[ResourceName, ResourceBase],
-    ) -> "ThresholdSensor":
-        sensor = cls(config.name)
-        sensor.reconfigure(config, dependencies)
-        return sensor
-
-    def reconfigure(
-        self,
-        config: ComponentConfig,
-        dependencies: Mapping[ResourceName, ResourceBase],
-    ) -> None:
-        attrs = config.attributes.fields
-        self.field = attrs["field"].string_value
-        self.min_value = attrs["min_value"].number_value
-        self.last_interesting_reading = None
-
-        # Store a reference to the source sensor from dependencies
-        source_name = attrs["source_sensor"].string_value
-        self.source = dependencies[Sensor.get_resource_name(source_name)]
-
-    async def get_readings(
-        self,
-        *,
-        extra: Optional[Dict[str, Any]] = None,
-        timeout: Optional[float] = None,
-        **kwargs,
-    ) -> Mapping[str, Any]:
-        readings = await self.source.get_readings(extra=extra, timeout=timeout)
-
-        value = readings.get(self.field)
-        if value is not None and float(value) >= self.min_value:
-            self.last_interesting_reading = dict(readings)
-
-        # Return the last reading that exceeded the threshold.
-        # If no reading has ever exceeded it, return the current
-        # reading with a flag indicating it's below threshold.
-        if self.last_interesting_reading is not None:
-            return self.last_interesting_reading
-
-        return {**readings, "_below_threshold": True}
-
-
-if __name__ == "__main__":
-    asyncio.run(Module.run_from_registry())
-```
-
-Configure it with:
-
-```json
-{
-  "source_sensor": "my-temp-sensor",
-  "field": "temperature_celsius",
-  "min_value": 50.0
-}
-```
-
-Then configure data capture on the `threshold-sensor` component instead of the
-raw sensor. Only readings where the temperature reaches or exceeds 50 degrees C
-will produce new captured data.
+See [Write a module](/build-modules/write-a-driver-module/) for the general module development guide. The key technique is accessing the source component through the `dependencies` parameter in your module's `reconfigure` method.
 
 ## Manage local storage
 
