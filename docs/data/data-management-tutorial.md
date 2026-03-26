@@ -79,13 +79,13 @@ Now that data is in the cloud, you can query it.
 1. In the **DATA** tab, click **Query**.
 2. The query editor opens. Paste this SQL query:
 
-```sql
-SELECT time_received, data
-FROM readings
-WHERE component_name = 'test-sensor'
-ORDER BY time_received DESC
-LIMIT 5
-```
+   ```sql
+   SELECT time_received, data
+   FROM readings
+   WHERE component_name = 'test-sensor'
+   ORDER BY time_received DESC
+   LIMIT 5
+   ```
 
 3. Click **Run query**.
 
