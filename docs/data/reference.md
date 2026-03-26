@@ -4,7 +4,7 @@ title: "Data management reference"
 weight: 999
 layout: "docs"
 type: "docs"
-description: "Configuration fields, data schema, supported resources, query operators, and storage behavior."
+description: "Data schema, query operators, configuration fields, supported resources, and storage behavior."
 aliases:
   - /data/query-reference/
   - /manage/data/query/
@@ -20,13 +20,13 @@ aliases:
 date: "2025-02-10"
 ---
 
-## Readings table schema
+## Data schema and querying
 
-All tabular data is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. Understanding this schema is essential for writing queries.
+This section describes the structure of captured data and how to query it effectively.
 
 ### What a document looks like
 
-Here is a complete document from the `readings` collection. This is what you get back when you run `SELECT * FROM readings LIMIT 1`:
+All tabular data is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. Here is a complete document:
 
 ```json
 {
@@ -178,14 +178,106 @@ To query: `data.position`
 
 ### Finding the structure of your data
 
-If you're unsure what fields your component produces, use this process:
+If you're unsure what fields your component produces:
 
 1. Run `SELECT DISTINCT component_name FROM readings` to see what components have captured data.
 2. Pick one and run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1`.
 3. Look at the JSON structure in the result. The keys you see are the fields you can query with dot notation.
 4. Build your query using `data.` followed by the path to the field you want (for example, `data.readings.temperature`).
 
-## Data management service attributes
+### Indexed fields and query optimization
+
+You can improve query performance by filtering on indexed fields early in your query. Viam stores data in blob storage using the path pattern:
+
+`/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_day/*`
+
+The more specific you can be, starting with the beginning of the path, the faster your query. These fields are indexed:
+
+- `organization_id`
+- `location_id`
+- `robot_id`
+- `part_id`
+- `component_type`
+- `component_name`
+- `method_name`
+- `capture_day`
+
+Additional optimization techniques:
+
+- Filter and reduce data early. Use `$match` (MQL) or `WHERE` (SQL) before expensive operations like grouping or sorting.
+- Use `$project` early to drop unneeded fields from the processing pipeline.
+- Use `$limit` or `LIMIT` while developing queries to avoid scanning your entire dataset.
+- For frequent queries on recent data, use the [hot data store](/data/query/hot-data-store/).
+- For recurring queries (dashboards), use [data pipelines](/data/query/configure-data-pipelines/) to pre-compute materialized views.
+
+### Supported MQL operators
+
+Viam supports a subset of MongoDB aggregation pipeline stages. Operators not on this list will return an error.
+
+- `$addFields`
+- `$bucket`
+- `$bucketAuto`
+- `$count`
+- `$densify`
+- `$fill`
+- `$geoNear`
+- `$group`
+- `$limit`
+- `$match`
+- `$project`
+- `$redact`
+- `$replaceRoot`
+- `$replaceWith`
+- `$sample`
+- `$set`
+- `$setWindowFields`
+- `$skip`
+- `$sort`
+- `$sortByCount`
+- `$unset`
+- `$unwind`
+
+See the [MQL documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for syntax details.
+
+### SQL limitations
+
+Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations):
+
+- If a database, table, or column identifier begins with a digit, a reserved character, or conflicts with a reserved SQL keyword, surround it with backticks (`` ` ``) or double quotes (`"`).
+- To include a single quote in a string literal, use two single quotes (use `o''clock` to represent `o'clock`).
+- The `date` data type is not supported. Use `timestamp` instead.
+
+For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations).
+
+### Date queries
+
+MQL time-range queries perform better with the BSON `date` type than with `$toDate`. Use JavaScript `Date()` constructors in `mongosh`:
+
+```mongodb
+use sensorData
+
+const startTime = new Date('2024-02-10T19:45:07.000Z')
+const endTime = new Date()
+
+db.readings.aggregate([
+    { $match: {
+        time_received: {
+            $gte: startTime,
+            $lte: endTime
+        }
+    }}
+])
+```
+
+### Permissions
+
+Users with owner or operator roles at the organization, location, or machine level can query data. See [Role-Based Access Control](/organization/rbac/) for details.
+
+## Capture and sync configuration
+
+This section describes the configuration fields for data capture and cloud sync.
+
+### Data management service attributes
 
 The data management service controls sync behavior, storage paths, and deletion policies. Most of these settings are configured through the Viam app UI. Edit JSON directly for settings not exposed in the UI, such as deletion thresholds, sync thread limits, and MongoDB capture.
 
@@ -259,7 +351,7 @@ The data management service controls sync behavior, storage paths, and deletion 
 | `disk_usage_deletion_threshold`   | float            | Optional  | Disk usage ratio (0-1) at or above which captured files are deleted, provided the capture directory also meets `capture_dir_deletion_threshold`. <br> Default: `0.9`                                                                                            |                                                                     |
 | `capture_dir_deletion_threshold`  | float            | Optional  | Ratio (0-1) of disk usage attributable to the capture directory, at or above which deletion occurs (if `disk_usage_deletion_threshold` is also met). <br> Default: `0.5`                                                                                        |                                                                     |
 
-### Platform-managed settings
+#### Platform-managed service settings
 
 The following settings appear in your machine's configuration but are not processed by `viam-server` on your machine. They are read and enforced by the Viam cloud platform:
 
@@ -267,7 +359,7 @@ The following settings appear in your machine's configuration but are not proces
 | --- | --- | --- |
 | `delete_data_on_part_deletion` | bool | Whether deleting this machine or machine part also deletes all its captured cloud data. Default: `false`. |
 
-## Data capture method attributes
+### Data capture method attributes
 
 Data capture is configured per-resource in the `service_configs` array of a component or service. When you configure capture through the Viam app UI, these fields are set automatically. The table below is the JSON-level reference for manual configuration.
 
@@ -289,6 +381,8 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 | `capture_buffer_size` | int | Optional | Size in bytes of the buffer used when writing captured data to disk. <br> Default: `4096` |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. Max storage (KB) per data collector. <br> Default: `1` |
 
+#### Platform-managed capture settings
+
 The following capture method settings are processed by the Viam cloud platform, not by `viam-server`:
 
 <!-- prettier-ignore -->
@@ -299,13 +393,17 @@ The following capture method settings are processed by the Viam cloud platform, 
 
 For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/). For direct MongoDB capture, see [Direct MongoDB capture](/data/capture-sync/direct-mongodb-capture/).
 
-## Supported resources
+### Supported resources
 
 The following components and services support data capture and cloud sync. The table shows which capture methods are available for each resource type. Not all models support all methods listed for their type.
 
 {{< readfile "/static/include/data/capture-supported.md" >}}
 
-## Capture directories
+## Local storage
+
+This section describes how captured data is stored on the machine before syncing.
+
+### Capture directories
 
 By default, captured data is stored in `~/.viam/capture`.
 The actual path depends on your platform:
@@ -330,7 +428,7 @@ Check your machine's startup logs for the `$HOME` value:
 
 You can change the capture directory with the `capture_dir` attribute in the [data management service attributes](#data-management-service-attributes).
 
-## Local storage and automatic deletion
+### Automatic deletion
 
 After data syncs successfully, it is automatically deleted from local storage.
 While a machine is offline, captured data accumulates locally.
@@ -347,96 +445,8 @@ Automatic deletion triggers when _all_ of these conditions are met:
 
 Control deletion behavior with the `delete_every_nth_when_disk_full` attribute.
 
-## Micro-RDK
+### Micro-RDK
 
 The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
 
 On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud. If the machine restarts before all data is synced, unsynced data since the last sync point is lost.
-
-## Indexed fields and query optimization
-
-You can improve query performance by filtering on indexed fields early in your query. Viam stores data in blob storage using the path pattern:
-
-`/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_day/*`
-
-The more specific you can be, starting with the beginning of the path, the faster your query. These fields are indexed:
-
-- `organization_id`
-- `location_id`
-- `robot_id`
-- `part_id`
-- `component_type`
-- `component_name`
-- `method_name`
-- `capture_day`
-
-Additional optimization techniques:
-
-- Filter and reduce data early. Use `$match` (MQL) or `WHERE` (SQL) before expensive operations like grouping or sorting.
-- Use `$project` early to drop unneeded fields from the processing pipeline.
-- Use `$limit` or `LIMIT` while developing queries to avoid scanning your entire dataset.
-- For frequent queries on recent data, use the [hot data store](/data/query/hot-data-store/).
-- For recurring queries (dashboards), use [data pipelines](/data/query/configure-data-pipelines/) to pre-compute materialized views.
-
-## Supported MQL operators
-
-Viam supports a subset of MongoDB aggregation pipeline stages. Operators not on this list will return an error.
-
-- `$addFields`
-- `$bucket`
-- `$bucketAuto`
-- `$count`
-- `$densify`
-- `$fill`
-- `$geoNear`
-- `$group`
-- `$limit`
-- `$match`
-- `$project`
-- `$redact`
-- `$replaceRoot`
-- `$replaceWith`
-- `$sample`
-- `$set`
-- `$setWindowFields`
-- `$skip`
-- `$sort`
-- `$sortByCount`
-- `$unset`
-- `$unwind`
-
-See the [MQL documentation](https://www.mongodb.com/docs/manual/tutorial/query-documents/) for syntax details.
-
-## SQL limitations
-
-Viam supports the [MongoDB Atlas SQL dialect](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations):
-
-- If a database, table, or column identifier begins with a digit, a reserved character, or conflicts with a reserved SQL keyword, surround it with backticks (`` ` ``) or double quotes (`"`).
-- To include a single quote in a string literal, use two single quotes (use `o''clock` to represent `o'clock`).
-- The `date` data type is not supported. Use `timestamp` instead.
-
-For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Reference](https://www.mongodb.com/docs/atlas/data-federation/query/sql/language-reference/#compatibility-and-limitations).
-
-## Date queries
-
-MQL time-range queries perform better with the BSON `date` type than with `$toDate`. Use JavaScript `Date()` constructors in `mongosh`:
-
-```mongodb
-use sensorData
-
-const startTime = new Date('2024-02-10T19:45:07.000Z')
-const endTime = new Date()
-
-db.readings.aggregate([
-    { $match: {
-        time_received: {
-            $gte: startTime,
-            $lte: endTime
-        }
-    }}
-])
-```
-
-## Permissions
-
-Users with owner or operator roles at the organization, location, or machine level can query data. See [Role-Based Access Control](/organization/rbac/) for details.
