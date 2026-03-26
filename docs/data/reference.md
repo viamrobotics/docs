@@ -205,7 +205,6 @@ The data management service controls sync behavior, storage paths, and deletion 
         "tags": [],
         "capture_disabled": false,
         "sync_disabled": true,
-        "delete_data_on_part_deletion": true,
         "delete_every_nth_when_disk_full": 5,
         "maximum_num_sync_threads": 250
       }
@@ -250,7 +249,6 @@ The data management service controls sync behavior, storage paths, and deletion 
 | `additional_sync_paths`           | string array     | Optional  | Additional directories to sync to the cloud. Data is deleted from the directory after syncing. Use absolute paths.                                                                                                                                              |                                                                     |
 | `sync_interval_mins`              | float            | Optional  | Minutes between sync attempts. Your hardware or network speed may impose practical limits. <br> Default: `0.1` (every 6 seconds).                                                                                                                               | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `selective_syncer_name`           | string           | Optional  | Name of the sensor that controls selective sync. Also add this sensor to the `depends_on` field. See [Conditional sync](/data/capture-sync/conditional-sync/).                                                                                                  |                                                                     |
-| `delete_data_on_part_deletion`    | bool             | Optional  | Whether deleting this machine or machine part also deletes all its captured cloud data. <br> Default: `false`                                                                                                                                                    | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `delete_every_nth_when_disk_full` | int              | Optional  | When local storage meets the fullness criteria, the service deletes every Nth captured file. <br> Default: `5`                                                                                                                                                  |                                                                     |
 | `maximum_num_sync_threads`        | int              | Optional  | Max CPU threads for syncing to the cloud. Higher values may improve throughput but can cause instability on constrained devices. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2                                                            |                                                                     |
 | `mongo_capture_config.uri`        | string           | Optional  | [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) for writing tabular data alongside disk capture. See [Direct MongoDB capture](/data/capture-sync/direct-mongodb-capture/).                                                        |                                                                     |
@@ -260,6 +258,14 @@ The data management service controls sync behavior, storage paths, and deletion 
 | `file_last_modified_millis`       | int              | Optional  | How long (in ms) an arbitrary file must be unmodified before it is eligible for sync. Normal `.capture` files sync immediately. <br> Default: `10000`                                                                                                           |                                                                     |
 | `disk_usage_deletion_threshold`   | float            | Optional  | Disk usage ratio (0-1) at or above which captured files are deleted, provided the capture directory also meets `capture_dir_deletion_threshold`. <br> Default: `0.9`                                                                                            |                                                                     |
 | `capture_dir_deletion_threshold`  | float            | Optional  | Ratio (0-1) of disk usage attributable to the capture directory, at or above which deletion occurs (if `disk_usage_deletion_threshold` is also met). <br> Default: `0.5`                                                                                        |                                                                     |
+
+### Platform-managed settings
+
+The following settings are managed by the Viam cloud platform, not by `viam-server`. They appear in your machine's configuration but are processed server-side:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `delete_data_on_part_deletion` | bool | Whether deleting this machine or machine part also deletes all its captured cloud data. Default: `false`. |
 
 ## Data capture method attributes
 
@@ -272,10 +278,9 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 <!-- prettier-ignore -->
 | Name               | Type   | Required? | Description |
 | ------------------ | ------ | --------- | ----------- |
-| `capture_frequency_hz` | float   | **Required** | Frequency in hertz. For example, `0.5` = one reading every 2 seconds. |
+| `name` | string | **Required** | Fully qualified resource name (for example, `rdk:component:sensor/my-sensor`). |
 | `method` | string | **Required** | Depends on the component or service type. See [Supported resources](#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time and will not sync to the cloud. |
-| `retention_policy` | object | Optional | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
-| `recent_data_store` | object | Optional | Store a rolling window of recent data in a [hot data store](/data/query/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
+| `capture_frequency_hz` | float   | **Required** | Frequency in hertz. For example, `0.5` = one reading every 2 seconds. |
 | `additional_params` | object | Optional | Method-specific parameters. For example, `DoCommand` requires a `docommand_input` object; `GetImages` accepts a `filter_source_names` list. |
 | `disabled` | boolean | Optional | Whether capture is disabled for this method. |
 | `tags` | array of strings | Optional | Tags applied to data captured by this specific method. Added alongside any tags set at the service level. |
@@ -283,6 +288,14 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 | `capture_queue_size` | int | Optional | Size of the buffer between the capture goroutine and the file writer. <br> Default: `250` |
 | `capture_buffer_size` | int | Optional | Size in bytes of the buffer used when writing captured data to disk. <br> Default: `4096` |
 | `cache_size_kb` | float | Optional | `viam-micro-server` only. Max storage (KB) per data collector. <br> Default: `1` |
+
+The following capture method settings are processed by the Viam cloud platform, not by `viam-server`:
+
+<!-- prettier-ignore -->
+| Name | Type | Description |
+| --- | --- | --- |
+| `retention_policy` | object | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
+| `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/query/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
 For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/). For direct MongoDB capture, see [Direct MongoDB capture](/data/capture-sync/direct-mongodb-capture/).
 
