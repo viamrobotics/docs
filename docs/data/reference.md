@@ -187,7 +187,7 @@ If you're unsure what fields your component produces, use this process:
 
 ## Data management service attributes
 
-The data management service controls sync behavior, storage paths, and deletion policies.
+The data management service controls sync behavior, storage paths, and deletion policies. Most of these settings are configured through the Viam app UI. Edit JSON directly for settings not exposed in the UI, such as deletion thresholds, sync thread limits, and MongoDB capture.
 
 {{< tabs >}}
 {{% tab name="viam-server" %}}
@@ -261,7 +261,7 @@ The data management service controls sync behavior, storage paths, and deletion 
 
 ### Platform-managed settings
 
-The following settings are managed by the Viam cloud platform, not by `viam-server`. They appear in your machine's configuration but are processed server-side:
+The following settings appear in your machine's configuration but are not processed by `viam-server` on your machine. They are read and enforced by the Viam cloud platform:
 
 | Name | Type | Description |
 | --- | --- | --- |
@@ -269,7 +269,7 @@ The following settings are managed by the Viam cloud platform, not by `viam-serv
 
 ## Data capture method attributes
 
-Data capture is configured per-resource in the `service_configs` array of a component or service.
+Data capture is configured per-resource in the `service_configs` array of a component or service. When you configure capture through the Viam app UI, these fields are set automatically. The table below is the JSON-level reference for manual configuration.
 
 {{< alert title="Caution" color="caution" >}}
 Avoid configuring capture rates higher than your hardware can handle. This leads to performance degradation.
@@ -301,8 +301,7 @@ For remote parts capture, see [Capture from remote parts](/data/capture-sync/rem
 
 ## Supported resources
 
-The following components and services support data capture and cloud sync.
-Not all models support all methods. For example, webcams do not capture point clouds.
+The following components and services support data capture and cloud sync. The table shows which capture methods are available for each resource type. Not all models support all methods listed for their type.
 
 {{< readfile "/static/include/data/capture-supported.md" >}}
 
@@ -350,15 +349,13 @@ Control deletion behavior with the `delete_every_nth_when_disk_full` attribute.
 
 ## Micro-RDK
 
-The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a limited set of resources.
-See the **Micro-RDK** tab in the supported resources table above for details.
+The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
 
-On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud.
-If the machine restarts before all data is synced, unsynced data since the last sync point is lost.
+On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud. If the machine restarts before all data is synced, unsynced data since the last sync point is lost.
 
 ## Indexed fields and query optimization
 
-When querying large datasets, you can improve performance by filtering on indexed fields early in your query. Viam stores data in blob storage using the path pattern:
+You can improve query performance by filtering on indexed fields early in your query. Viam stores data in blob storage using the path pattern:
 
 `/organization_id/location_id/robot_id/part_id/component_type/component_name/method_name/capture_day/*`
 
@@ -383,7 +380,7 @@ Additional optimization techniques:
 
 ## Supported MQL operators
 
-Viam supports the following MongoDB aggregation pipeline stages:
+Viam supports a subset of MongoDB aggregation pipeline stages. Operators not on this list will return an error.
 
 - `$addFields`
 - `$bucket`
@@ -422,7 +419,7 @@ For a full list of limitations, see the [MongoDB Atlas SQL Interface Language Re
 
 ## Date queries
 
-When using MQL to query by date or time range, use the BSON `date` type directly rather than the `$toDate` expression for better performance:
+MQL time-range queries perform better with the BSON `date` type than with `$toDate`. Use JavaScript `Date()` constructors in `mongosh`:
 
 ```mongodb
 use sensorData
