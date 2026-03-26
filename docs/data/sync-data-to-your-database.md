@@ -1,5 +1,5 @@
 ---
-linkTitle: "Sync data to your database"
+linkTitle: "Sync to your database"
 title: "Sync data to your database"
 weight: 40
 layout: "docs"
