@@ -1,7 +1,6 @@
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----------- | ----------- |
-| [`GetImage`](/dev/reference/apis/components/camera/#getimage) | _Deprecated_. |
 | [`GetImages`](/dev/reference/apis/components/camera/#getimages) | Get simultaneous images from different imagers, along with associated metadata. |
 | [`GetPointCloud`](/dev/reference/apis/components/camera/#getpointcloud) | Get a point cloud from the camera as bytes with a MIME type describing the structure of the data. |
 | [`GetProperties`](/dev/reference/apis/components/camera/#getproperties) | Get the camera intrinsic parameters and camera distortion, as well as whether the camera supports returning point clouds. |

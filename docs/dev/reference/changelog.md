@@ -44,13 +44,6 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{% changelog color="changed" title="GetImages replaced GetImage" date="2025-10-31" %}}
-
-[`GetImage`](/dev/reference/apis/components/camera/#getimage) is deprecated.
-Use [`GetImages`](/dev/reference/apis/components/camera/#getimages) instead.
-
-{{% /changelog %}}
-
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
@@ -405,13 +398,6 @@ You can now [set custom pricing](/manage/manage/white-labeled-billing/) for your
 
 {{% /changelog %}}
 
-{{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
-
-The `Stream` API method has been removed from the Go SDK camera interface.
-For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimage).
-
-{{% /changelog %}}
-
 {{% changelog color="changed" title="Subtype renamed to API" date="2025-01-28" %}}
 
 In the Python SDK, all references to `subtype` that refer to the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} have been renamed to `api` to be consistent with the RDK:
@@ -620,39 +606,6 @@ The motion service API parameter `GeoObstacle` has been renamed to `GeoGeometry`
 This affects users of the [`MoveOnGlobe()`](/dev/reference/apis/services/motion/#moveonglobe) method.
 
 {{% /changelog %}}
-
-{{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
-
-The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera component's [`GetImage()`](/dev/reference/apis/components/camera/#getimage) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/dev/reference/apis/services/vision/#getdetections) and [`GetClassifications()`](/dev/reference/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
-
-You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
-
-{{< expand "Click for an example of using the ViamImage -> PIL Image helper functions." >}}
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
-
-# Get the ViamImage from your camera.
-frame = await my_camera.get_image()
-
-# Convert "frame" to a PIL Image representation.
-pil_frame = viam_to_pil_image(frame)
-
-# Use methods from the PIL Image class to get size.
-x, y = pil_frame.size[0], pil_frame.size[1]
-# Crop image to get only the left two fifths of the original image.
-cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
-
-# Convert back to ViamImage.
-cropped_frame = pil_to_viam_image(cropped_pil_frame)
-
-# Get detections from your vision service.
-detections = await detector.get_detections(cropped_frame)
-```
-
-{{< /expand >}}
-{{< /changelog >}}
 
 {{% changelog date="2024-05-08" color="removed" title="WriteAnalog from Go SDK" %}}
 
@@ -1093,8 +1046,8 @@ Change your existing API calls to get the new vision service instance for your d
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_object_detector = VisionClient.from_robot(robot, "find_objects")
-img = await cam.get_image()
-detections = await my_object_detector.get_detections(img)
+images, _ = await cam.get_images()
+detections = await my_object_detector.get_detections(images[0])
 ```
 
 {{% /tab %}}
@@ -1102,8 +1055,8 @@ detections = await my_object_detector.get_detections(img)
 
 ```python {class="line-numbers linkable-line-numbers"}
 vision = VisionServiceClient.from_robot(robot)
-img = await cam.get_image()
-detections = await vision.get_detections(img, "find_objects")
+images, _ = await cam.get_images()
+detections = await vision.get_detections(images[0], "find_objects")
 ```
 
 {{% /tab %}}
@@ -1646,13 +1599,5 @@ If you are using the SLAM service, you now need to specify sensors used by the S
 Other service configurations are not affected.
 
 {{% /alert %}}
-
-{{% /changelog %}}
-
-{{% changelog date="2022-11-15" color="removed" title="Width and height fields from camera API" %}}
-
-Removed `width` and `height` from the response of the [`GetImage`](/dev/reference/apis/components/camera/#getimage) method in the camera API.
-This does not impact any existing camera models.
-If you write a custom camera model, you no longer need to implement the `width` and `height` fields.
 
 {{% /changelog %}}

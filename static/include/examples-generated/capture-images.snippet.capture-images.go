@@ -71,7 +71,7 @@ func main() {
 		partID,
 		"camera",
 		cameraName,
-		"GetImage",
+		"GetImages",
 		".jpg",
 		&app.BinaryDataCaptureUploadOptions{
 			DataRequestTimes: &[2]time.Time{time.Now(), time.Now()},

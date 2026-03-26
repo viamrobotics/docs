@@ -93,7 +93,7 @@ async function main(): Promise<number> {
         PART_ID,
         "camera",
         CAMERA_NAME,
-        "GetImage",
+        "GetImages",
         [new Date(), new Date()],
         { mimeType: "image/jpeg" }
     );
