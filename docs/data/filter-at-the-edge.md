@@ -265,7 +265,7 @@ class ThresholdSensor(Sensor, EasyResource):
         ModelFamily("custom", "sensor"), "threshold"
     )
 
-    source_sensor_name: str
+    source: Sensor
     field: str
     min_value: float
     last_interesting_reading: Optional[Dict[str, Any]]
@@ -286,10 +286,13 @@ class ThresholdSensor(Sensor, EasyResource):
         dependencies: Mapping[ResourceName, ResourceBase],
     ) -> None:
         attrs = config.attributes.fields
-        self.source_sensor_name = attrs["source_sensor"].string_value
         self.field = attrs["field"].string_value
         self.min_value = attrs["min_value"].number_value
         self.last_interesting_reading = None
+
+        # Store a reference to the source sensor from dependencies
+        source_name = attrs["source_sensor"].string_value
+        self.source = dependencies[Sensor.get_resource_name(source_name)]
 
     async def get_readings(
         self,
@@ -298,10 +301,7 @@ class ThresholdSensor(Sensor, EasyResource):
         timeout: Optional[float] = None,
         **kwargs,
     ) -> Mapping[str, Any]:
-        source = self.robot.get_component(
-            Sensor.get_resource_name(self.source_sensor_name)
-        )
-        readings = await source.get_readings(extra=extra, timeout=timeout)
+        readings = await self.source.get_readings(extra=extra, timeout=timeout)
 
         value = readings.get(self.field)
         if value is not None and float(value) >= self.min_value:
@@ -350,7 +350,7 @@ helps you avoid filling the disk.
 ### Configure storage limits
 
 You can configure the maximum storage that data capture will use on disk. In
-your data management service configuration, set the `maximum_capture_file_size`
+your data management service configuration, set the `maximum_capture_file_size_bytes`
 attribute to limit the size of individual capture files, and monitor the overall
 capture directory size.
 

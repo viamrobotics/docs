@@ -31,11 +31,11 @@ See [Sync data from another directory](/data/capture-sync/capture-and-sync-data/
 
 ## Upload with SDKs
 
-Use the [Data Client API](/reference/apis/data-client/) to upload files programmatically.
-Unlike the data management service, the [`FileUploadFromPath`](/reference/apis/data-client/#fileuploadfrompath) method does not delete local files after upload, but it will duplicate data if you run it more than once.
+Use the [Data Client API](/dev/reference/apis/data-client/) to upload files programmatically.
+Unlike the data management service, the [`FileUploadFromPath`](/dev/reference/apis/data-client/#fileuploadfrompath) method does not delete local files after upload, but it will duplicate data if you run it more than once.
 
 1. Create an [API key](/organization/access/) for your organization, location, or machine.
-2. Use [`FileUploadFromPath`](/reference/apis/data-client/#fileuploadfrompath) to upload a file.
+2. Use [`FileUploadFromPath`](/dev/reference/apis/data-client/#fileuploadfrompath) to upload a file.
    You must provide a {{< glossary_tooltip term_id="part" text="machine part" >}} ID to associate the data with.
 3. Run your code once.
    Running it again uploads the same files a second time.
@@ -56,7 +56,7 @@ Unlike the data management service, the [`FileUploadFromPath`](/reference/apis/d
 
 ## Upload images with the mobile app
 
-The [Viam mobile app](/monitor/teleoperate/#viam-mobile-app) lets you upload images directly from your phone, bypassing the normal capture and sync process.
+The Viam mobile app lets you upload images directly from your phone, bypassing the normal capture and sync process.
 This is useful for quickly collecting training images for machine learning models.
 
 Install the app from the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) or [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) if you haven't already.

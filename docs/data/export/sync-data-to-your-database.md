@@ -49,7 +49,7 @@ and automation requirement:
 | ------------------------- | ------------------------------- | --------- | ---------------------------------------- |
 | API/SDK queries           | Pull from Viam programmatically | On-demand | Dashboards, bulk export, ad-hoc analysis |
 | CLI export                | Batch download to local files   | Manual    | One-time migration, backups              |
-| Direct MongoDB connection | Query through connection URI        | On-demand | External tools, custom sync scripts      |
+| Direct MongoDB connection | Query through connection URI    | On-demand | External tools, custom sync scripts      |
 
 ### Viam as ingestion layer
 
@@ -150,25 +150,36 @@ commands.
 
 **Export tabular data (sensor readings):**
 
+Tabular export requires you to specify the exact part, resource, and method:
+
 ```sh
-viam data export tabular filter --org-ids=<YOUR-ORG-ID> --destination=./export
+viam data export tabular \
+  --part-id=<YOUR-PART-ID> \
+  --resource-name=my-sensor \
+  --resource-subtype=sensor \
+  --method=Readings \
+  --destination=./export
+```
+
+You can add time filters to narrow the export:
+
+```sh
+viam data export tabular \
+  --part-id=<YOUR-PART-ID> \
+  --resource-name=my-sensor \
+  --resource-subtype=sensor \
+  --method=Readings \
+  --start=2025-01-01T00:00:00Z \
+  --end=2025-02-01T00:00:00Z \
+  --destination=./january-export
 ```
 
 **Export binary data (images, point clouds):**
 
+Binary export supports broad filtering by organization, location, or machine:
+
 ```sh
 viam data export binary filter --org-ids=<YOUR-ORG-ID> --destination=./export
-```
-
-You can add filters to narrow the export:
-
-```sh
-viam data export tabular filter \
-  --org-ids=<YOUR-ORG-ID> \
-  --component-name=my-sensor \
-  --start=2025-01-01T00:00:00Z \
-  --end=2025-02-01T00:00:00Z \
-  --destination=./january-export
 ```
 
 Once exported, you can load these files into your own database, convert them to
