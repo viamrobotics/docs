@@ -12,16 +12,7 @@ aliases:
   - /data-ai/data/hot-data-store/
 ---
 
-## What Problem This Solves
-
-Querying the full history of captured data means scanning blob storage, which
-can be slow for large datasets. When you only need recent data (the last few
-hours or days), the hot data store gives you significantly faster query
-performance by keeping a rolling window of recent data in a database optimized
-for fast reads.
-
-All data continues to be written to blob storage regardless of hot data store
-settings. The hot data store is an additional copy, not a replacement.
+Keep a rolling window of recent data in a fast-query database for significantly faster queries on the last few hours or days of captured data. All data continues to be written to blob storage regardless of hot data store settings. The hot data store is an additional copy, not a replacement.
 
 ## Configure
 

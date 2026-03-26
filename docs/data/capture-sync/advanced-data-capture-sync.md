@@ -584,3 +584,61 @@ To capture to MongoDB without cloud sync, set `"sync_disabled": true`.
 
 If writes to MongoDB fail, data capture logs an error for each failed write and continues capturing.
 MongoDB write failures do not prevent data from being captured to disk or synced to the cloud.
+
+## Supported resources
+
+The following components and services support data capture and cloud sync.
+Not all models support all methods. For example, webcams do not capture point clouds.
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
+
+## Capture directories
+
+By default, captured data is stored in `~/.viam/capture`.
+The actual path depends on your platform:
+
+<!-- prettier-ignore -->
+| Platform | Default directory |
+| -------- | ----------------- |
+| Windows | With `viam-agent`: <FILE>C:\Windows\system32\config\systemprofile\.viam\capture</FILE>. Manual installation: <FILE>C:\Users\admin\.viam\capture</FILE>. |
+| Linux | With root or sudo: <FILE>/root/.viam/capture</FILE>. |
+| macOS | <FILE>/Users/\<username\>/.viam/capture</FILE>. |
+
+{{% expand "Can't find the capture directory?" %}}
+
+The path depends on where `viam-server` runs and the operating system.
+Check your machine's startup logs for the `$HOME` value:
+
+```sh
+2025-01-15T14:27:26.073Z    INFO    rdk    server/entrypoint.go:77    Starting viam-server with following environment variables    {"HOME":"/home/johnsmith"}
+```
+
+{{% /expand%}}
+
+You can change the capture directory with the `capture_dir` attribute in the [data management service attributes](#data-management-service-attributes).
+
+## Local storage and automatic deletion
+
+After data syncs successfully, it is automatically deleted from local storage.
+While a machine is offline, captured data accumulates locally.
+Make sure your machine has enough storage to buffer data during expected offline periods.
+
+{{< alert title="Warning" color="warning" >}}
+If your machine is offline and its disk fills up, the data management service will delete captured data to free space and keep the machine running.
+{{< /alert >}}
+
+Automatic deletion triggers when _all_ of these conditions are met:
+
+- Data capture is enabled
+- Local disk usage is at or above the `disk_usage_deletion_threshold` (default: 90%)
+- The capture directory accounts for at least the `capture_dir_deletion_threshold` proportion of disk usage (default: 50%)
+
+Control deletion behavior with the `delete_every_nth_when_disk_full` attribute. If your machine captures a large amount of data or frequently goes offline, consider pointing `capture_dir` to a larger, dedicated storage device.
+
+## Micro-RDK
+
+The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a limited set of resources.
+See the **Micro-RDK** tab in the supported resources table above for details.
+
+On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud.
+If the machine restarts before all data is synced, unsynced data since the last sync point is lost.

@@ -13,37 +13,11 @@ aliases:
 
 ## What Problem This Solves
 
-Viam captures data from your machines and syncs it to the cloud. For many use
-cases, querying that data in place is enough. But some situations require the
-data to live in your own database: regulatory compliance demands you control
-where data resides, your organization already has a MongoDB cluster with
-dashboards and pipelines built on top of it, or you want to reduce dependency
-on any single vendor at the storage layer.
+Integrate Viam's captured data with your own database or data infrastructure. This is useful when compliance requires you to control where data resides, when you already have a MongoDB cluster with dashboards and pipelines built on it, or when you want to reduce dependency on any single vendor at the storage layer.
 
-This how-to treats Viam as an ingestion layer -- Viam handles reliable
-machine-to-cloud transport while your database handles storage, retention,
-access control, and downstream analytics.
+Viam handles reliable machine-to-cloud transport. Your database handles long-term storage, retention, access control, and downstream analytics.
 
-## Concepts
-
-### Why sync to your own database
-
-Three common reasons push teams to move data out of Viam's cloud:
-
-- **Compliance.** Some industries require data to reside in infrastructure you
-  control. Moving data to your own cluster satisfies audit requirements while
-  still using Viam for transport.
-- **Existing infrastructure.** Your team already has a MongoDB cluster, a data
-  warehouse, or a BI stack. Duplicating that inside Viam is unnecessary. Instead,
-  feed Viam data into the systems you already operate.
-- **Vendor risk mitigation.** Keeping vendor responsibility at the ingestion
-  layer means you can swap transport providers without rebuilding your storage,
-  analytics, or alerting systems.
-
-### Data egress patterns
-
-There are several ways to get data out of Viam. Each fits a different latency
-and automation requirement:
+## Choose an approach
 
 | Pattern                   | Mechanism                       | Latency   | Best For                                 |
 | ------------------------- | ------------------------------- | --------- | ---------------------------------------- |
