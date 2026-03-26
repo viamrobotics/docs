@@ -21,7 +21,7 @@ Each capture method object takes the following fields:
 | Key | Type | Description |
 | --- | ---- | ----------- |
 | `name` | string | Fully qualified resource name. Example: `"rdk:component:sensor/spacesensor"`. |
-| `method` | string | Depends on the component or service type. See [Supported resources](/data/capture-sync/advanced-data-capture-sync/#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time. |
+| `method` | string | Depends on the component or service type. See [Supported resources](/data/reference/#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time. |
 | `capture_frequency_hz` | float | Frequency in hertz. |
 | `additional_params` | object | Method-specific parameters. |
 | `disabled` | boolean | Whether capture is disabled for this method. |

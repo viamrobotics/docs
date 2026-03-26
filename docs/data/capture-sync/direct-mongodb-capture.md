@@ -34,7 +34,7 @@ Add the following to your data management service attributes:
 
 The `uri` field accepts any standard [MongoDB connection string](https://www.mongodb.com/docs/v6.2/reference/connection-string/). You can optionally specify `database` (default: `"sensorData"`) and `collection` (default: `"readings"`).
 
-See the [data management service attributes](/data/capture-sync/advanced-data-capture-sync/#data-management-service-attributes) for the full list of `mongo_capture_config` fields.
+See the [data management service attributes](/data/reference/#data-management-service-attributes) for the full list of `mongo_capture_config` fields.
 
 ## Example: MongoDB capture with cloud sync
 

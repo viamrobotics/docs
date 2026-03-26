@@ -11,7 +11,7 @@ date: "2026-03-26"
 Pull captured data into your own programs using the Viam data client API. You can run the same SQL and MQL queries available in the app's query editor from Python or Go code.
 
 {{< alert title="Tip: discover your data structure" color="tip" >}}
-Not sure what fields to query? Run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` in the [query editor](/data/query/query-data/) first. Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/query/query-reference/#readings-table-schema) for the full reference.
+Not sure what fields to query? Run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` in the [query editor](/data/query/query-data/) first. Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/reference/#readings-table-schema) for the full reference.
 {{< /alert >}}
 
 ## Set up a connection
@@ -200,7 +200,7 @@ for _, entry := range results {
 
 ## What's next
 
-- [Query reference](/data/query/query-reference/): schema, supported operators, and optimization tips
+- [Query reference](/data/reference/): schema, supported operators, and optimization tips
 - [Configure data pipelines](/data/query/configure-data-pipelines/): schedule recurring queries
 - [Sync to your database](/data/sync-data-to-your-database/): export data to your own MongoDB instance
 - [Data client API reference](/dev/reference/apis/data-client/): full method documentation

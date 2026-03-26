@@ -28,7 +28,7 @@ All captured tabular data is queryable through SQL and MQL, either in the Viam a
 
 Binary data (images, point clouds) is browsable and filterable in the Viam app's Data tab, with viewers for images, video, and 3D point clouds.
 
-See [Query data](/data/query/query-data/) and [Query reference](/data/query/query-reference/).
+See [Query data](/data/query/query-data/) and [Query reference](/data/reference/).
 
 ## Transform and pipeline
 
