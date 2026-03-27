@@ -26,7 +26,7 @@ This example creates a pipeline that computes hourly temperature averages groupe
 
 ```bash
 viam datapipelines create \
-  --organization-id=<org-id> \
+  --org-id=<org-id> \
   --name=hourly-temp-avg \
   --schedule="0 * * * *" \
   --data-source-type=standard \
@@ -40,7 +40,7 @@ The CLI prints the pipeline ID on success. Save this ID to query results and man
 
 | Flag | Required | Description |
 | --- | --- | --- |
-| `--organization-id` | Yes | Your organization ID. |
+| `--org-id` | Yes | Your organization ID. |
 | `--name` | Yes | A descriptive name. Must be unique within the organization. |
 | `--schedule` | Yes | A cron expression in UTC. Also determines the query time window. See [Cron schedule](/data/pipelines/reference/#cron-schedule). |
 | `--mql` | One of `--mql` or `--mql-path` | The MQL aggregation pipeline as a JSON string. |
@@ -52,7 +52,7 @@ For complex queries, use `--mql-path` to read from a file:
 
 ```bash
 viam datapipelines create \
-  --organization-id=<org-id> \
+  --org-id=<org-id> \
   --name=hourly-temp-avg \
   --schedule="0 * * * *" \
   --mql-path=./my-pipeline.json \

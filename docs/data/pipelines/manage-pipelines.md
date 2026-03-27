@@ -16,7 +16,7 @@ Monitor and manage your data pipelines after creation. For creating pipelines, s
 {{% tab name="CLI" %}}
 
 ```bash
-viam datapipelines list --organization-id=<org-id>
+viam datapipelines list --org-id=<org-id>
 ```
 
 {{% /tab %}}
