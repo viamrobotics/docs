@@ -20,59 +20,53 @@ date: "2024-12-04"
 updated: "2025-12-04"
 ---
 
-By default, the data management service syncs all captured data at a regular interval. Conditional sync lets you add custom logic that controls _whether_ sync proceeds at each interval, so data accumulates locally until your conditions are met. Use this to sync only during off-peak hours, when connected to WiFi, or after a specific event.
+By default, the data management service syncs all captured data at a regular interval. Conditional sync lets you control _when_ sync happens, so data accumulates locally until your conditions are met: sync only during off-peak hours, when connected to WiFi, after a sensor reading crosses a threshold, or based on any other logic you define.
 
-## Concepts
+## How conditional sync works
 
-### The selective syncer mechanism
+Conditional sync uses a sensor component as a gate. You configure a sensor whose `Readings()` method returns `"should_sync": true` or `"should_sync": false`. At each sync interval, the data manager calls `Readings()` on this sensor before uploading. If the result is `true`, sync proceeds. If `false`, the cycle is skipped and data continues to accumulate locally.
 
-Conditional sync works through the [sensor API](/reference/components/sensor/).
-You configure a sensor component whose `Readings()` method returns `"should_sync": true` or `"should_sync": false`.
-At each sync interval, the data manager calls `Readings()` on this sensor before uploading.
-If the result includes `"should_sync": true`, sync proceeds.
-If `"should_sync": false`, the cycle is skipped and data continues to accumulate locally.
-
-The sensor is the only mechanism for conditional sync. There is no built-in rules engine or config-only option.
-Any logic you need (time-of-day windows, network status, sensor thresholds, external APIs) goes in your sensor's `Readings()` implementation.
-You wire it up by setting `selective_syncer_name` in the data management service config.
+The sensor is the only mechanism for conditional sync. There is no built-in rules engine or config-only option. Any logic you need goes in the sensor's `Readings()` implementation. You can use an existing sensor module from the registry or write your own.
 
 {{< alert title="Important" color="caution" >}}
-If `selective_syncer_name` is configured but the sensor cannot be found, **scheduled sync is disabled** until the sensor becomes available.
-Make sure the sensor is correctly configured and added to the data manager's `depends_on` field.
+If `selective_syncer_name` is configured but the sensor cannot be found, **scheduled sync is disabled** until the sensor becomes available. Make sure the sensor is correctly configured and added to the data manager's `depends_on` field.
 {{< /alert >}}
 
-## Example: sync during a time window
+## Configure conditional sync
 
-This example uses the [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) module to sync data only during a configured time window.
-You can substitute any sensor that returns `should_sync`. The data manager configuration is the same.
+This example uses the [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) module to sync data only during a configured time window. You can substitute any sensor that returns `should_sync`.
 
-### Add the sync sensor
+### 1. Add the sync sensor
 
 1. On your machine's **CONFIGURE** tab, click **+** next to your machine part and select **Component or service**.
 2. Search for and select the `sync-at-time:timesyncsensor` model.
-   Click **Add module**, enter a name (for example, `timesensor`), and click **Create**.
-3. Configure the time window in the sensor's attributes:
+3. Click **Add module**, enter a name (for example, `timesensor`), and click **Create**.
+4. Configure the time window in the sensor's attributes:
 
    ```json
    {
-     "start": "18:29:00",
-     "end": "18:30:00",
-     "zone": "CET"
+     "start": "18:00:00",
+     "end": "06:00:00",
+     "zone": "America/New_York"
    }
    ```
 
-   | Name    | Type   | Required | Description                                                                   |
-   | ------- | ------ | -------- | ----------------------------------------------------------------------------- |
-   | `start` | string | **Yes**  | Start of the sync window in `HH:MM:SS` format.                                |
-   | `end`   | string | **Yes**  | End of the sync window in `HH:MM:SS` format.                                  |
-   | `zone`  | string | **Yes**  | Time zone for `start` and `end` (for example, `"CET"`, `"America/New_York"`). |
+   | Field   | Type   | Required | Description                                             |
+   | ------- | ------ | -------- | ------------------------------------------------------- |
+   | `start` | string | Yes      | Start of the sync window in `HH:MM:SS` format.          |
+   | `end`   | string | Yes      | End of the sync window in `HH:MM:SS` format.            |
+   | `zone`  | string | Yes      | Time zone (for example, `"CET"`, `"America/New_York"`). |
 
-4. Click **Save**.
+5. Click **Save**.
 
-### Configure the data manager
+### 2. Point the data manager at the sensor
 
-Switch to **JSON** mode on your machine's **CONFIGURE** tab.
-In the data management service config, set `selective_syncer_name` to your sensor's name and add the sensor to `depends_on`:
+The `selective_syncer_name` field is not available in the UI. Switch to **JSON** mode on the **CONFIGURE** tab.
+
+Find the data management service in your config and add two fields:
+
+- `selective_syncer_name`: the name of your sync sensor
+- `depends_on`: include the sensor name so the data manager waits for it to be available
 
 ```json {class="line-numbers linkable-line-numbers" data-line="7,12"}
 {
@@ -90,16 +84,25 @@ In the data management service config, set `selective_syncer_name` to your senso
 }
 ```
 
+Click **Save**.
+
+### 3. Verify conditional sync is working
+
+1. Confirm data capture is running: check the machine's **LOGS** for capture activity.
+2. If you are outside the sync window, data should accumulate locally but not appear in the **DATA** tab.
+3. When the sync window opens, check the **DATA** tab. Captured data should begin appearing.
+4. If data appears immediately regardless of the window, check that `selective_syncer_name` matches the sensor name exactly and that the sensor is in `depends_on`.
+
 ## Build a custom sync sensor
 
-If no existing module fits your use case, you can build a custom module that implements the [sensor API](/reference/components/sensor/) (`rdk:component:sensor`).
-The data manager calls `Readings()` on the sensor and looks for a `"should_sync"` key with a boolean value.
-The sensor can return additional readings alongside `should_sync`.
+If no existing module fits your use case, you can write a sensor module that implements whatever sync logic you need: check network connectivity, compare sensor readings to a threshold, query an external API, or combine multiple conditions.
 
-The RDK provides a helper function for building sync sensors: `datamanager.CreateShouldSyncReading(bool)` returns a properly formatted readings map.
+The sensor must implement the [sensor API](/reference/components/sensor/) and return a `"should_sync"` key with a boolean value from `Readings()`. The data manager checks this key at each sync interval. The sensor can return additional readings alongside `should_sync`.
+
+The RDK provides a helper: `datamanager.CreateShouldSyncReading(bool)` returns a properly formatted readings map.
 
 1. Follow the [module development guide](/build-modules/write-a-driver-module/) to create a sensor module.
 2. Implement `Readings()` to return `"should_sync": true` when sync should proceed and `"should_sync": false` otherwise.
-3. Deploy the module and [configure the data manager](#configure-the-data-manager) with your sensor's name.
+3. Deploy the module and [configure the data manager](#2-point-the-data-manager-at-the-sensor) with your sensor's name.
 
 For a reference implementation, see the [sync-at-time source code](https://github.com/viam-labs/sync-at-time/blob/main/module.go).
