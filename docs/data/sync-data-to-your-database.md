@@ -12,8 +12,6 @@ aliases:
   - /build/data/sync-data-to-your-database/
 ---
 
-## What Problem This Solves
-
 Integrate Viam's captured data with your own database or data infrastructure. This is useful when compliance requires you to control where data resides, when you already have a MongoDB cluster with dashboards and pipelines built on it, or when you want to reduce dependency on any single vendor at the storage layer.
 
 Viam handles reliable machine-to-cloud transport. Your database handles long-term storage, retention, access control, and downstream analytics.

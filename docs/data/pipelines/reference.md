@@ -8,6 +8,8 @@ description: "Configuration fields, run statuses, cron schedule syntax, data sou
 date: "2026-03-27"
 ---
 
+Configuration fields, execution behavior, and limits for data pipelines. For an overview of how pipelines work, see [Data pipelines overview](/data/pipelines/overview/).
+
 ## Pipeline configuration fields
 
 | Field | Type | Required | Description |

@@ -12,13 +12,7 @@ aliases:
   - /foundation/stop-data-capture/
 ---
 
-## What problem this solves
-
-You have data capture running but need to turn it off, either temporarily
-(during maintenance, testing, or debugging) or permanently (you're done
-collecting data for a component).
-
-You can stop data capture at different levels of granularity: disable it for a single resource, turn it off for all resources on a machine, or leave capture running locally but stop syncing to the cloud.
+Stop data capture temporarily (during maintenance, testing, or debugging) or permanently. You can disable capture for a single resource, turn it off for all resources on a machine, or leave capture running locally but stop syncing to the cloud.
 
 ## Stop data capture for a specific resource
 

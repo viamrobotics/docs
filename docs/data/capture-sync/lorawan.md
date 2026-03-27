@@ -12,9 +12,7 @@ aliases:
   - /data-ai/capture-data/lorawan/
 ---
 
-[LoRaWAN (Long Range Wide Area Network)](https://lora-alliance.org/) enables sensor communication spanning kilometers with minimal power usage.
-
-To collect LoRaWAN sensor data with Viam, use the [`lorawan`](https://app.viam.com/module/viam/lorawan) {{< glossary_tooltip term_id="module" text="module" >}}.
+Collect data from [LoRaWAN](https://lora-alliance.org/) sensors that communicate over long-range, low-power wireless networks. The [`lorawan`](https://app.viam.com/module/viam/lorawan) module connects your LoRaWAN gateway and sensors to Viam so you can capture, sync, and query sensor readings like any other component.
 
 ## Hardware requirements
 

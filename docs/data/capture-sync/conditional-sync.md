@@ -20,12 +20,7 @@ date: "2024-12-04"
 updated: "2025-12-04"
 ---
 
-## What problem this solves
-
-By default, the data management service syncs all captured data at a regular interval.
-Sometimes you only want to sync under certain conditions: during off-peak hours, when connected to WiFi, or after a specific event.
-
-Conditional sync lets you add custom logic that controls _whether_ sync proceeds at each interval, so data accumulates locally until your conditions are met.
+By default, the data management service syncs all captured data at a regular interval. Conditional sync lets you add custom logic that controls _whether_ sync proceeds at each interval, so data accumulates locally until your conditions are met. Use this to sync only during off-peak hours, when connected to WiFi, or after a specific event.
 
 ## Concepts
 
