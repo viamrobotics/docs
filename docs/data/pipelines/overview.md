@@ -78,5 +78,7 @@ When backfill is disabled, each time window is processed exactly once. Late-arri
 ## What's next
 
 - [Create a pipeline](/data/pipelines/create-a-pipeline/): step-by-step guide to creating your first pipeline
+- [Query pipeline results](/data/pipelines/query-results/): access precomputed summaries from your code
 - [Manage pipelines](/data/pipelines/manage-pipelines/): list, enable, disable, monitor, and delete pipelines
+- [Examples and tips](/data/pipelines/examples/): MQL patterns for common robotics use cases
 - [Reference](/data/pipelines/reference/): configuration fields, run statuses, cron schedule syntax
