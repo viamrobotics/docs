@@ -113,13 +113,7 @@ This tells you how many readings have been captured so far.
 
 The same data is accessible from your own code through the Viam SDK.
 
-To get your credentials:
-
-1. Go to your machine's page in the Viam app.
-2. Click the **CONNECT** tab.
-3. Select **SDK code sample**.
-4. Toggle **Include API key** on.
-5. Copy the **API key**, **API key ID**, and **organization ID**.
+{{< readfile "/static/include/how-to/get-credentials.md" >}}
 
 Install the Viam Python SDK:
 

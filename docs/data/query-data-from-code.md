@@ -18,13 +18,7 @@ Not sure what fields to query? Run `SELECT data FROM readings WHERE component_na
 
 ## Set up a connection
 
-To get your credentials:
-
-1. Go to your machine's page in the Viam app.
-2. Click the **CONNECT** tab.
-3. Select **SDK code sample**.
-4. Toggle **Include API key** on.
-5. Copy the **API key**, **API key ID**, and **organization ID** (find this in the Viam app by clicking your organization name and selecting **Settings**).
+{{< readfile "/static/include/how-to/get-credentials.md" >}}
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -349,7 +349,7 @@ go run main.go
 {{% /tab %}}
 {{< /tabs >}}
 
-To get your credentials, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**. Toggle **Include API key** on and copy the API key and API key ID. Find your organization ID in the Viam app by clicking your organization name and selecting **Settings**.
+{{< readfile "/static/include/how-to/get-credentials.md" >}}
 
 ### 5. Build an ongoing sync script
 
