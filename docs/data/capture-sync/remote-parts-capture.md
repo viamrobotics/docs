@@ -1,7 +1,7 @@
 ---
 linkTitle: "Capture from remote parts"
 title: "Capture from remote parts"
-weight: 7
+weight: 15
 layout: "docs"
 type: "docs"
 description: "Capture data from resources on remote machine parts that lack the OS or resources to run viam-server."

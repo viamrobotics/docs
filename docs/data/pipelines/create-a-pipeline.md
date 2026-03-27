@@ -270,7 +270,7 @@ The `$group` stage produces documents with an `_id` field. If your pipeline runs
 
 ### Test your query first
 
-Before creating a pipeline, run the MQL query manually in the [query editor](/data/query/query-data/) using MQL mode. This lets you verify the query returns the results you expect. The pipeline runs the same query with an automatic time constraint prepended.
+Before creating a pipeline, run the MQL query manually in the [query editor](/data/query-data/) using MQL mode. This lets you verify the query returns the results you expect. The pipeline runs the same query with an automatic time constraint prepended.
 
 ### Use `$match` early
 

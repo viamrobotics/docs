@@ -1,7 +1,7 @@
 ---
 linkTitle: "Direct MongoDB capture"
 title: "Direct MongoDB capture"
-weight: 8
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Write tabular data directly to a MongoDB instance alongside normal disk capture."

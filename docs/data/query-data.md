@@ -1,12 +1,13 @@
 ---
-linkTitle: "Query data"
+linkTitle: "Query in the app"
 title: "Query data"
-weight: 10
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Write SQL and MQL queries against captured data in the Viam app or programmatically."
 date: "2025-01-30"
 aliases:
+  - /data/query/query-data/
   - /data/query-data/
   - /build/data/query-data/
 ---
@@ -233,7 +234,7 @@ and project individually.
 
 ## Query from code
 
-You can run the same SQL and MQL queries from Python or Go using the data client API. See [Query data from code](/data/query/query-data-from-code/) for setup instructions and examples.
+You can run the same SQL and MQL queries from Python or Go using the data client API. See [Query data from code](/data/query-data-from-code/) for setup instructions and examples.
 
 ## Try it
 

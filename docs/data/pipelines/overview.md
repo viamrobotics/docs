@@ -21,7 +21,7 @@ Pipelines are useful when:
 Pipelines are not necessary when:
 
 - Your queries already return in under a second. Pipelines add complexity; use them when you need the performance gain.
-- You need ad-hoc, one-time queries. Use the [query editor](/data/query/query-data/) instead.
+- You need ad-hoc, one-time queries. Use the [query editor](/data/query-data/) instead.
 - You need real-time results with sub-minute latency. Pipelines run on a cron schedule with at least a 2-minute execution delay.
 
 {{< alert title="Pipelines don't reduce data transfer" color="note" >}}

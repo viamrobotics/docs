@@ -2,7 +2,7 @@
 linkTitle: "Upload external data"
 title: "Upload external data"
 images: ["/services/icons/data-folder.svg"]
-weight: 8
+weight: 25
 layout: "docs"
 type: "docs"
 languages: ["python", "go"]

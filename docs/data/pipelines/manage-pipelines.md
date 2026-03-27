@@ -248,7 +248,7 @@ Deleting a pipeline removes the pipeline configuration and its execution history
 {{< expand "Pipeline consistently fails" >}}
 
 1. Check the error message in the run details (`list_data_pipeline_runs` or `describe`).
-2. Run the same MQL query manually in the [query editor](/data/query/query-data/) using MQL mode against the same data source. This isolates whether the issue is in the query or the pipeline configuration.
+2. Run the same MQL query manually in the [query editor](/data/query-data/) using MQL mode against the same data source. This isolates whether the issue is in the query or the pipeline configuration.
 3. Common failure causes:
    - Invalid MQL stage or syntax error
    - Query timeout (5-minute limit) on large datasets. Add a `$match` filter to reduce data.

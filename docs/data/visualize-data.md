@@ -1,7 +1,7 @@
 ---
 linkTitle: "Visualize data"
 title: "Visualize data"
-weight: 55
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Build dashboards with Teleop, Grafana, or programmatic charts to visualize captured data."
@@ -597,7 +597,7 @@ go run main.go
 
 ## What's Next
 
-- [Query Data](/data/query/query-data/) -- learn the full range of SQL and MQL
+- [Query Data](/data/query-data/) -- learn the full range of SQL and MQL
   queries you can use to extract insights from your data.
 - [Data pipelines](/data/pipelines/create-a-pipeline/) -- set up
   aggregated views and derived metrics to power your dashboards more efficiently.

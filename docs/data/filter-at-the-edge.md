@@ -1,7 +1,7 @@
 ---
 linkTitle: "Filter at the edge"
 title: "Filter at the edge"
-weight: 50
+weight: 15
 layout: "docs"
 type: "docs"
 description: "Reduce data volume, bandwidth, and storage costs by filtering data on the machine before syncing to the cloud."
@@ -320,7 +320,7 @@ watch -n 60 du -sh ~/.viam/capture
 
 ## What's next
 
-- [Query data](/data/query/query-data/) -- write SQL and MQL queries against your
+- [Query data](/data/query-data/) -- write SQL and MQL queries against your
   filtered, high-signal dataset.
 - [Create a dataset](/train/create-a-dataset/) -- use filtered captures to
   build cleaner training datasets for ML models.

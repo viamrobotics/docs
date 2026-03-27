@@ -3,7 +3,7 @@ title: "Conditional sync"
 linkTitle: "Conditional sync"
 description: "Control when captured data syncs to the cloud using a sensor that decides whether to sync."
 type: "docs"
-weight: 7
+weight: 10
 tags: ["data management", "cloud", "sync"]
 images: ["/services/icons/data-cloud-sync.svg"]
 icon: true

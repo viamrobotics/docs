@@ -1,7 +1,7 @@
 ---
 linkTitle: "Export data"
 title: "Export data"
-weight: 39
+weight: 40
 layout: "docs"
 type: "docs"
 description: "Download data from Viam using the data client API or the CLI."
