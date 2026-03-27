@@ -36,71 +36,18 @@ For more details on configuring remotes, including authentication and manual JSO
 
 ## 2. Configure data capture on the remote's components
 
-Remote part capture is configured in JSON. Switch to **JSON** mode in the **CONFIGURE** tab.
+Once the remote part is added, its components appear on the main machine's **CONFIGURE** tab. Configure data capture on them the same way you would for local components:
 
-Find the `remotes` array in your main part's configuration. Add a `service_configs` block inside the remote object with the capture methods you want:
+1. Find the remote component in the **CONFIGURE** tab (it appears under the remote part's section).
+2. Scroll to the **Data capture** section on the component card.
+3. Click **+ Add method**.
+4. Select the capture method (for example, **GetImages** for a camera, **Readings** for a sensor).
+5. Set the capture frequency.
+6. Click **Save**.
 
-```json
-{
-  "remotes": [
-    {
-      "name": "my-remote",
-      "address": "my-remote-main.abc123.viam.cloud",
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "name": "rdk:component:sensor/my-sensor",
-                "method": "Readings",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {},
-                "disabled": false
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
-```
+The main part handles capture and sync for the remote component. Data is written to the main part's capture directory and synced from there.
 
-Key fields:
-
-- **`name`**: the fully qualified resource name on the remote part, in the format `rdk:component:<type>/<name>`. This must match the component's API and name exactly.
-- **`method`**: the capture method. See [Supported resources](/data/reference/#supported-resources) for available methods per component type.
-- **`capture_frequency_hz`**: how often to capture, in hertz.
-
-You can add multiple capture methods for different components on the same remote.
-
-## 3. Make sure the data management service is configured
-
-Your main part needs the data management service to handle capture and sync. If you already have data capture configured on the main part, this is already set up.
-
-If not, add the data management service to your main part's `services` array:
-
-```json
-{
-  "services": [
-    {
-      "name": "data_manager",
-      "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
-      "attributes": {
-        "sync_interval_mins": 0.1,
-        "capture_dir": "",
-        "sync_disabled": false
-      }
-    }
-  ]
-}
-```
-
-Click **Save**.
-
-## 4. Verify data is being captured
+## 3. Verify data is being captured
 
 Wait 30 seconds to a minute, then:
 
@@ -118,7 +65,7 @@ If no data appears, check:
 
 Your main machine runs an arm for pick-and-place operations. A Raspberry Pi at a different location has a camera monitoring the workspace. You want to capture images from the Pi's camera through the main machine so all data flows through one capture pipeline.
 
-{{< expand "Raspberry Pi configuration (the remote part)" >}}
+**Raspberry Pi configuration (the remote part):**
 
 The Pi runs `viam-server` with a webcam configured:
 
@@ -137,11 +84,9 @@ The Pi runs `viam-server` with a webcam configured:
 }
 ```
 
-{{< /expand >}}
+**Main part configuration (arm machine that captures from the Pi):**
 
-{{< expand "Main part configuration (arm machine that captures from the Pi)" >}}
-
-The main machine has an arm and adds the Pi as a remote. Data capture on the remote's camera is configured in the `service_configs` block inside the `remotes` array:
+The main machine has an arm and adds the Pi as a remote. After adding the remote through the UI, you configure data capture on the remote's camera from the **CONFIGURE** tab, or in JSON:
 
 ```json
 {
@@ -192,5 +137,3 @@ The main machine has an arm and adds the Pi as a remote. Data capture on the rem
 ```
 
 The main machine captures one image every 2 seconds from the Pi's camera and syncs it to the cloud alongside any data captured from local components.
-
-{{< /expand >}}
