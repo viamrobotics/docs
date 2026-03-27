@@ -1,6 +1,6 @@
 ---
 linkTitle: "Query in the app"
-title: "Query data"
+title: "Query data in the Viam app"
 weight: 20
 layout: "docs"
 type: "docs"
