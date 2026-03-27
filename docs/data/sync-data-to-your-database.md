@@ -730,7 +730,7 @@ go build -o sync-data .
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 - [Data pipelines](/data/pipelines/create-a-pipeline/) -- set up
   windowed roll-ups and derived metrics to reduce data volume before syncing.

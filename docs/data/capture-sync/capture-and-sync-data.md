@@ -141,4 +141,4 @@ If you see data flowing in, capture and sync are working correctly.
 - [Query data](/data/query-data/): write queries, set up data pipelines, and export data
 - [Add computer vision](/vision/configure/): run ML models on your camera feed and capture detection results
 - [Create a dataset](/train/create-a-dataset/): organize captured images into training datasets
-- [Advanced configuration](/data/reference/): JSON-level config, retention policies, and sync optimization
+- [Reference](/data/reference/): JSON-level config, retention policies, and sync optimization

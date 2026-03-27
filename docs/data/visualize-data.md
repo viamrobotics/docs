@@ -595,7 +595,7 @@ go run main.go
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 - [Query Data](/data/query-data/) -- learn the full range of SQL and MQL
   queries you can use to extract insights from your data.
