@@ -42,12 +42,12 @@ Unlike the data management service, the [`FileUploadFromPath`](/dev/reference/ap
 4. Check the [**DATA** tab](https://app.viam.com/data/view) to confirm your data appears.
 
 {{< tabs >}}
-{{< tab name="Python" >}}
+{{% tab name="Python" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/upload-single-file.snippet.upload-single-file.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-38" >}}
 
 {{% /tab %}}
-{{< tab name="Go" >}}
+{{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/upload-single-file.snippet.upload-single-file.go" lang="go" class="line-numbers linkable-line-numbers" data-line="33-40" >}}
 
