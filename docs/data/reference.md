@@ -208,7 +208,7 @@ Additional optimization techniques:
 - Use `$project` early to drop unneeded fields from the processing pipeline.
 - Use `$limit` or `LIMIT` while developing queries to avoid scanning your entire dataset.
 - For frequent queries on recent data, use the [hot data store](/data/query/hot-data-store/).
-- For recurring queries (dashboards), use [data pipelines](/data/query/configure-data-pipelines/) to pre-compute materialized views.
+- For recurring queries (dashboards), use [data pipelines](/data/pipelines/create-a-pipeline/) to pre-compute materialized views.
 
 ### Supported MQL operators
 

@@ -734,7 +734,7 @@ go build -o sync-data .
 
 ## What's Next
 
-- [Configure Data Pipelines](/data/query/configure-data-pipelines/) -- set up
+- [Data pipelines](/data/pipelines/create-a-pipeline/) -- set up
   windowed roll-ups and derived metrics to reduce data volume before syncing.
 - [Visualize Data](/data/visualize-data/) -- connect Grafana or other
   dashboard tools to your Viam data using the MongoDB connection URI.

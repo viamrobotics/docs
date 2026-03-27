@@ -101,7 +101,7 @@ persist, check that the machine has network connectivity and that the
 
 - [Filter at the edge](/data/filter-at-the-edge/) -- reduce data
   volume by filtering before syncing to the cloud.
-- [Configure data pipelines](/data/query/configure-data-pipelines/) -- create
+- [Create a data pipeline](/data/pipelines/create-a-pipeline/) -- create
   scheduled pipelines to aggregate and summarize captured data.
 - [Supported resources](/data/#supported-resources) -- which components
   and services support data capture.

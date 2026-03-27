@@ -36,7 +36,7 @@ Data pipelines run scheduled MQL aggregations on your captured data. Use them to
 
 A hot data store keeps a rolling window of recent data in a fast-query database, so you can build real-time dashboards without scanning the full archive.
 
-See [Configure data pipelines](/data/query/configure-data-pipelines/) and [Hot data store](/data/query/hot-data-store/).
+See [Create a data pipeline](/data/pipelines/create-a-pipeline/) and [Hot data store](/data/query/hot-data-store/).
 
 ## Export and integrate
 

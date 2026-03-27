@@ -201,5 +201,5 @@ Now that you understand the data pipeline, you can:
 
 - [Capture data from real hardware](/data/capture-sync/capture-and-sync-data/): configure capture on cameras, motors, or any component.
 - [Filter data at the edge](/data/filter-at-the-edge/): reduce data volume by capturing only what matters.
-- [Build data pipelines](/data/query/configure-data-pipelines/): schedule transformations on your captured data.
+- [Data pipelines](/data/pipelines/create-a-pipeline/): schedule transformations on your captured data.
 - [Visualize your data](/data/visualize-data/): build monitoring dashboards.

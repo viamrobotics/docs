@@ -201,6 +201,6 @@ for _, entry := range results {
 ## What's next
 
 - [Query reference](/data/reference/): schema, supported operators, and optimization tips
-- [Configure data pipelines](/data/query/configure-data-pipelines/): schedule recurring queries
+- [Create a data pipeline](/data/pipelines/create-a-pipeline/): schedule recurring queries
 - [Sync to your database](/data/sync-data-to-your-database/): export data to your own MongoDB instance
 - [Data client API reference](/dev/reference/apis/data-client/): full method documentation
