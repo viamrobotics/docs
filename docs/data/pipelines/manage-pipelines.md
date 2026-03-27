@@ -264,7 +264,7 @@ This is expected. When you disable a pipeline, scheduled runs do not execute. Wh
 
 {{< expand "Hot data store query returns no data" >}}
 
-- Verify the hot data store is enabled on the component. See [Hot data store](/data/query/hot-data-store/).
+- Verify the hot data store is enabled on the component. See [Hot data store](/data/hot-data-store/).
 - Check that data falls within the configured `stored_hours` window. Older data is removed hourly.
 - Verify data has been captured and synced within the retention window.
 

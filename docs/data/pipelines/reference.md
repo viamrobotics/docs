@@ -43,7 +43,7 @@ Choose a schedule that matches how frequently you need updated summaries. Shorte
 | Type | CLI flag | SDK constant | Description |
 | --- | --- | --- | --- |
 | Standard | `standard` | `TABULAR_DATA_SOURCE_TYPE_STANDARD` | Queries the raw `readings` collection. Contains all historical tabular data. Default. |
-| Hot storage | `hotstorage` | `TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` | Queries the [hot data store](/data/query/hot-data-store/). Contains a rolling window of recent data. Faster but limited to the configured retention window. |
+| Hot storage | `hotstorage` | `TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` | Queries the [hot data store](/data/hot-data-store/). Contains a rolling window of recent data. Faster but limited to the configured retention window. |
 | Pipeline sink | (query only) | `TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | Queries the output of another pipeline. Requires a `pipeline_id`. Used for chaining pipelines. Not available as a source when creating a pipeline. |
 
 ## Run statuses

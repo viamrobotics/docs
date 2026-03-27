@@ -207,7 +207,7 @@ Additional optimization techniques:
 - Filter and reduce data early. Use `$match` (MQL) or `WHERE` (SQL) before expensive operations like grouping or sorting.
 - Use `$project` early to drop unneeded fields from the processing pipeline.
 - Use `$limit` or `LIMIT` while developing queries to avoid scanning your entire dataset.
-- For frequent queries on recent data, use the [hot data store](/data/query/hot-data-store/).
+- For frequent queries on recent data, use the [hot data store](/data/hot-data-store/).
 - For recurring queries (dashboards), use [data pipelines](/data/pipelines/create-a-pipeline/) to pre-compute materialized views.
 
 ### Supported MQL operators
@@ -389,7 +389,7 @@ The following capture method settings are processed by the Viam cloud platform, 
 | Name | Type | Description |
 | --- | --- | --- |
 | `retention_policy` | object | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
-| `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/query/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
+| `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
 For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/). For direct MongoDB capture, see [Direct MongoDB capture](/data/capture-sync/direct-mongodb-capture/).
 

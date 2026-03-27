@@ -306,6 +306,6 @@ For the full schema of the readings table, see [Query reference](/data/reference
 ## What's next
 
 - [Create a data pipeline](/data/pipelines/create-a-pipeline/): create precomputed summaries for faster queries.
-- [Hot data store](/data/query/hot-data-store/): query a rolling window of recent data with lower latency.
+- [Hot data store](/data/hot-data-store/): query a rolling window of recent data with lower latency.
 - [Sync data to your database](/data/sync-data-to-your-database/): export data to your own MongoDB instance.
 - [Visualize data](/data/visualize-data/): build dashboards from your captured data.
