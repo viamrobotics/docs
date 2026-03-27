@@ -65,75 +65,10 @@ If no data appears, check:
 
 Your main machine runs an arm for pick-and-place operations. A Raspberry Pi at a different location has a camera monitoring the workspace. You want to capture images from the Pi's camera through the main machine so all data flows through one capture pipeline.
 
-**Raspberry Pi configuration (the remote part):**
+1. Configure the Pi with a webcam component.
+2. On your main arm machine, add the Pi as a remote part (step 1 above).
+3. On the main machine's **CONFIGURE** tab, find the Pi's `workspace-cam` component under the remote part section.
+4. Add data capture on `workspace-cam` with method **GetImages** at 0.5 Hz (one image every 2 seconds).
+5. Save.
 
-The Pi runs `viam-server` with a webcam configured:
-
-```json
-{
-  "components": [
-    {
-      "name": "workspace-cam",
-      "api": "rdk:component:camera",
-      "model": "webcam",
-      "attributes": {
-        "video_path": "video0"
-      }
-    }
-  ]
-}
-```
-
-**Main part configuration (arm machine that captures from the Pi):**
-
-The main machine has an arm and adds the Pi as a remote. After adding the remote through the UI, you configure data capture on the remote's camera from the **CONFIGURE** tab, or in JSON:
-
-```json
-{
-  "components": [
-    {
-      "name": "my-arm",
-      "api": "rdk:component:arm",
-      "model": "ur5e",
-      "attributes": {}
-    }
-  ],
-  "services": [
-    {
-      "name": "data_manager",
-      "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
-      "attributes": {
-        "capture_dir": "",
-        "sync_disabled": false,
-        "sync_interval_mins": 0.5,
-        "tags": ["workspace-monitoring"]
-      }
-    }
-  ],
-  "remotes": [
-    {
-      "name": "pi-workspace",
-      "address": "pi-workspace-main.abc123.viam.cloud",
-      "service_configs": [
-        {
-          "type": "data_manager",
-          "attributes": {
-            "capture_methods": [
-              {
-                "name": "rdk:component:camera/workspace-cam",
-                "method": "GetImages",
-                "capture_frequency_hz": 0.5,
-                "additional_params": {},
-                "disabled": false
-              }
-            ]
-          }
-        }
-      ]
-    }
-  ]
-}
-```
-
-The main machine captures one image every 2 seconds from the Pi's camera and syncs it to the cloud alongside any data captured from local components.
+The main machine captures images from the Pi's camera and syncs them to the cloud alongside any data captured from local components.
