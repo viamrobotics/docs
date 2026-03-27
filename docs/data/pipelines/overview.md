@@ -14,15 +14,19 @@ A data pipeline runs a scheduled MQL aggregation query against your captured dat
 
 Pipelines are useful when:
 
-- **Queries are slow at scale.** A single sensor capturing once per second produces over 86,000 readings per day. Aggregating raw readings directly gets slower as data grows. Pipelines pre-compute the aggregation so your queries stay fast.
-- **You need recurring summaries.** Hourly averages, daily counts, per-location rollups. Instead of running the same query manually, a pipeline runs it on a schedule and stores the results.
-- **You're building dashboards.** Dashboard queries should be fast and predictable. Point your dashboard at pipeline output (which is a small, pre-aggregated collection) rather than raw data.
+- **Your aggregation queries take too long.** If computing averages, counts, or rollups over raw data takes more than a few seconds, a pipeline pre-computes the result so you query a summary instead of scanning raw readings.
+- **You need the same computation on a schedule.** Hourly averages, daily counts, per-location rollups. A pipeline runs the query automatically and stores the result. No scripts, no cron jobs on your machine.
+- **You're feeding results into other tools.** Dashboards, alerts, or downstream pipelines can query the pipeline sink directly. The output is a small, stable collection that doesn't grow with your raw data volume.
 
 Pipelines are not necessary when:
 
-- You're querying small datasets (a few thousand documents).
+- Your queries already return in under a second. Pipelines add complexity; use them when you need the performance gain.
 - You need ad-hoc, one-time queries. Use the [query editor](/data/query/query-data/) instead.
 - You need real-time results with sub-minute latency. Pipelines run on a cron schedule with at least a 2-minute execution delay.
+
+{{< alert title="Pipelines don't reduce data transfer" color="note" >}}
+Pipelines run in the cloud against data that has already been synced. They reduce query time, not bandwidth or storage volume. To reduce what gets sent from the machine, see [Filter at the edge](/data/filter-at-the-edge/).
+{{< /alert >}}
 
 ## How pipelines work
 
