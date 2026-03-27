@@ -12,9 +12,9 @@ Capture data from components on a machine part that you can't or don't want to r
 
 This is useful when:
 
-- The remote part runs `viam-micro-server` (ESP32) with limited resources
-- You want to centralize data capture on one machine instead of configuring it on every part
-- The remote part doesn't have reliable connectivity but the main part does
+- You want to centralize data capture on your main compute instead of configuring it on every part
+- The remote part is a Raspberry Pi with a camera at a different location, and your main machine handles capture and sync
+- The remote part has limited resources or unreliable connectivity
 
 ## Prerequisites
 
@@ -114,25 +114,23 @@ If no data appears, check:
 - The fully qualified resource name in the capture config matches the component exactly.
 - The data management service is enabled with sync turned on.
 
-## Example: capture from an ESP32
+## Example: capture camera images from a remote Pi
 
-An ESP32 running `viam-micro-server` has a board component with two analog readers. The main part captures analog readings from both:
+Your main machine runs an arm for pick-and-place operations. A Raspberry Pi at a different location has a camera monitoring the workspace. You want to capture images from the Pi's camera through the main machine so all data flows through one capture pipeline.
 
-{{< expand "ESP32 configuration (the remote part)" >}}
+{{< expand "Raspberry Pi configuration (the remote part)" >}}
+
+The Pi runs `viam-server` with a webcam configured:
 
 ```json
 {
   "components": [
     {
-      "name": "my-esp32",
-      "model": "esp32",
-      "api": "rdk:component:board",
+      "name": "workspace-cam",
+      "api": "rdk:component:camera",
+      "model": "webcam",
       "attributes": {
-        "pins": [27],
-        "analogs": [
-          { "pin": "34", "name": "A1" },
-          { "pin": "35", "name": "A2" }
-        ]
+        "video_path": "video0"
       }
     }
   ]
@@ -141,10 +139,20 @@ An ESP32 running `viam-micro-server` has a board component with two analog reade
 
 {{< /expand >}}
 
-{{< expand "Main part configuration (captures from the ESP32)" >}}
+{{< expand "Main part configuration (arm machine that captures from the Pi)" >}}
+
+The main machine has an arm and adds the Pi as a remote. Data capture on the remote's camera is configured in the `service_configs` block inside the `remotes` array:
 
 ```json
 {
+  "components": [
+    {
+      "name": "my-arm",
+      "api": "rdk:component:arm",
+      "model": "ur5e",
+      "attributes": {}
+    }
+  ],
   "services": [
     {
       "name": "data_manager",
@@ -153,34 +161,25 @@ An ESP32 running `viam-micro-server` has a board component with two analog reade
       "attributes": {
         "capture_dir": "",
         "sync_disabled": false,
-        "sync_interval_mins": 5,
-        "tags": ["esp32-data"]
+        "sync_interval_mins": 0.5,
+        "tags": ["workspace-monitoring"]
       }
     }
   ],
   "remotes": [
     {
-      "name": "esp-home",
-      "address": "esp-home-main.33vvxnbbw9.viam.cloud:80",
+      "name": "pi-workspace",
+      "address": "pi-workspace-main.abc123.viam.cloud",
       "service_configs": [
         {
           "type": "data_manager",
           "attributes": {
             "capture_methods": [
               {
-                "method": "Analogs",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": { "reader_name": "A1" },
-                "disabled": false
-              },
-              {
-                "method": "Analogs",
-                "capture_frequency_hz": 1,
-                "cache_size_kb": 10,
-                "name": "rdk:component:board/my-esp32",
-                "additional_params": { "reader_name": "A2" },
+                "name": "rdk:component:camera/workspace-cam",
+                "method": "GetImages",
+                "capture_frequency_hz": 0.5,
+                "additional_params": {},
                 "disabled": false
               }
             ]
@@ -191,5 +190,7 @@ An ESP32 running `viam-micro-server` has a board component with two analog reade
   ]
 }
 ```
+
+The main machine captures one image every 2 seconds from the Pi's camera and syncs it to the cloud alongside any data captured from local components.
 
 {{< /expand >}}
