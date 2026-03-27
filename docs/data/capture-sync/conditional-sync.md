@@ -104,5 +104,3 @@ The RDK provides a helper: `datamanager.CreateShouldSyncReading(bool)` returns a
 1. Follow the [module development guide](/build-modules/write-a-driver-module/) to create a sensor module.
 2. Implement `Readings()` to return `"should_sync": true` when sync should proceed and `"should_sync": false` otherwise.
 3. Deploy the module and [configure the data manager](#2-point-the-data-manager-at-the-sensor) with your sensor's name.
-
-For a reference implementation, see the [sync-at-time source code](https://github.com/viam-labs/sync-at-time/blob/main/module.go).
