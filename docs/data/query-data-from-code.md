@@ -24,7 +24,7 @@ To get your credentials:
 2. Click the **CONNECT** tab.
 3. Select **SDK code sample**.
 4. Toggle **Include API key** on.
-5. Copy the **API key**, **API key ID**, and **organization ID** (find this under **Settings** in the left navigation).
+5. Copy the **API key**, **API key ID**, and **organization ID** (find this in the Viam app by clicking your organization name and selecting **Settings**).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

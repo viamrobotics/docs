@@ -46,7 +46,7 @@ The CLI prints the pipeline ID on success. Save this ID to query results and man
 | `--mql` | One of `--mql` or `--mql-path` | The MQL aggregation pipeline as a JSON string. |
 | `--mql-path` | One of `--mql` or `--mql-path` | Path to a file containing the MQL aggregation pipeline as JSON. |
 | `--enable-backfill` | Yes | Whether to process historical time windows. `true` or `false`. |
-| `--data-source-type` | No | `standard` (default) or `hotstorage`. |
+| `--data-source-type` | Yes | `standard` or `hotstorage`. |
 
 For complex queries, use `--mql-path` to read from a file:
 
@@ -55,6 +55,7 @@ viam datapipelines create \
   --org-id=<org-id> \
   --name=hourly-temp-avg \
   --schedule="0 * * * *" \
+  --data-source-type=standard \
   --mql-path=./my-pipeline.json \
   --enable-backfill=true
 ```
@@ -205,7 +206,7 @@ To get your credentials:
 4. Toggle **Include API key** on.
 5. Copy the **API key** and **API key ID**.
 
-Find your organization ID under **Settings** in the left navigation.
+Find your organization ID in the Viam app by clicking your organization name and selecting **Settings**.
 
 ## Query pipeline results
 

@@ -40,11 +40,11 @@ Choose a schedule that matches how frequently you need updated summaries. Shorte
 
 ## Data source types
 
-| Type | CLI flag | SDK constant | Description |
-| --- | --- | --- | --- |
-| Standard | `standard` | `TABULAR_DATA_SOURCE_TYPE_STANDARD` | Queries the raw `readings` collection. Contains all historical tabular data. Default. |
-| Hot storage | `hotstorage` | `TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` | Queries the [hot data store](/data/hot-data-store/). Contains a rolling window of recent data. Faster but limited to the configured retention window. |
-| Pipeline sink | (query only) | `TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | Queries the output of another pipeline. Requires a `pipeline_id`. Used for chaining pipelines. Not available as a source when creating a pipeline. |
+| Type | CLI flag | Python SDK | Go SDK | Description |
+| --- | --- | --- | --- | --- |
+| Standard | `standard` | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD` | `app.TabularDataSourceTypeStandard` | Queries the raw `readings` collection. Contains all historical tabular data. |
+| Hot storage | `hotstorage` | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` | `app.TabularDataSourceTypeHotStorage` | Queries the [hot data store](/data/hot-data-store/). Rolling window of recent data. |
+| Pipeline sink | (query only) | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | `app.TabularDataSourceTypePipelineSink` | Queries the output of another pipeline. Requires a `pipeline_id`. |
 
 ## Run statuses
 
@@ -113,7 +113,7 @@ The `_viam_pipeline_run` field is added automatically. Your pipeline's `$project
 
 To query the sink, use data source type `pipeline_sink` with the pipeline's ID. See [Query pipeline results](/data/pipelines/create-a-pipeline/#query-pipeline-results).
 
-Sink results persist after pipeline deletion. You can continue querying them using the pipeline ID.
+Deleting a pipeline deletes the sink collection and all its data. Export results before deleting if you need to preserve them.
 
 ## Execution limits
 
@@ -122,7 +122,7 @@ Sink results persist after pipeline deletion. You can continue querying them usi
 | Maximum output documents per run | 10,000 |
 | MQL execution timeout | 5 minutes |
 | Execution start delay | 2 minutes after scheduled time |
-| Hung run detection | 10 minutes in `STARTED` state |
+| Hung run detection | 2x execution timeout (currently 10 minutes) in `STARTED` state |
 | Backfill batch size | 10 concurrent time windows |
 | Backfill throttle | 2-minute delay between batches |
 

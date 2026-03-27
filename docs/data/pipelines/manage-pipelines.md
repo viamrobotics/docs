@@ -110,7 +110,7 @@ if err != nil {
     logger.Fatal(err)
 }
 for _, run := range page.Runs {
-    fmt.Printf("Run %s: %s\n", run.ID, run.Status)
+    fmt.Printf("Run %s: %d\n", run.ID, run.Status)
     fmt.Printf("  Data window: %s to %s\n", run.DataStartTime, run.DataEndTime)
     if run.ErrorMessage != "" {
         fmt.Printf("  Error: %s\n", run.ErrorMessage)
@@ -145,13 +145,6 @@ viam datapipelines enable --id=<pipeline-id>
 ```
 
 {{% /tab %}}
-{{% tab name="Python" %}}
-
-```python
-await data_client.enable_data_pipeline(id="YOUR-PIPELINE-ID")
-```
-
-{{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
@@ -161,6 +154,10 @@ err = dataClient.EnableDataPipeline(ctx, "YOUR-PIPELINE-ID")
 {{% /tab %}}
 {{< /tabs >}}
 
+{{< alert title="Note" color="note" >}}
+The Python SDK does not currently have `enable_data_pipeline` or `disable_data_pipeline` methods. Use the CLI or Go SDK.
+{{< /alert >}}
+
 ## Disable a pipeline
 
 {{< tabs >}}
@@ -168,13 +165,6 @@ err = dataClient.EnableDataPipeline(ctx, "YOUR-PIPELINE-ID")
 
 ```bash
 viam datapipelines disable --id=<pipeline-id>
-```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-```python
-await data_client.disable_data_pipeline(id="YOUR-PIPELINE-ID")
 ```
 
 {{% /tab %}}
@@ -241,7 +231,7 @@ err = dataClient.DeleteDataPipeline(ctx, "YOUR-PIPELINE-ID")
 {{% /tab %}}
 {{< /tabs >}}
 
-Deleting a pipeline removes the pipeline configuration and its execution history. Pipeline sink results remain queryable after deletion using the `pipeline_sink` data source type and the pipeline's ID.
+Deleting a pipeline removes the pipeline configuration, its execution history, and all output data in the pipeline sink. This is not reversible. If you need to preserve pipeline results, export them before deleting the pipeline.
 
 ## Troubleshooting
 
