@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Add machine button loading state" date="2026-03-11" %}}
+
+The **Add machine** button on location pages now shows a loading indicator with "Adding..." text and is disabled while the machine is being created.
+This prevents accidentally creating duplicate machines by clicking the button multiple times.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
