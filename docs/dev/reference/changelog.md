@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Goal pose tolerance for motion planning" date="2026-03-13" %}}
+
+`PoseInFrame` now supports an optional `goal_cloud` field that lets you specify acceptable tolerance around a goal pose when using the motion service's [`Move`](/dev/reference/apis/services/motion/#move) method.
+The `goal_cloud` field accepts a `PoseCloud` object with position tolerance values (`x`, `y`, `z`) and orientation tolerance values (`o_x`, `o_y`, `o_z`, `theta`).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
