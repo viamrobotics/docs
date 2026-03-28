@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Neutral frame system inputs for Go SDK" date="2026-03-25" %}}
+
+`NewNeutralFrameSystemInputs` and `NewNeutralLinearInputs` are now available in the Go SDK's `referenceframe` package as safer alternatives to `NewZeroInputs` and `NewZeroLinearInputs`. These functions create joint inputs that respect each joint's limit range, clamping to the nearest bound when zero is outside the valid range. This prevents out-of-bounds errors for arms or other components with joints that don't include zero in their range.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
