@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Push notification APIs for Viam applications" date="2026-03-24" %}}
+
+The fleet management API now includes methods for configuring push notifications in [Viam applications](/operate/control/viam-applications/). App developers can register device push tokens for users, and organization admins can configure Firebase credentials to enable push notifications through [triggers](/data-ai/reference/triggers-configuration/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
