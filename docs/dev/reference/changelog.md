@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Auto-hyphenation in name fields" date="2026-03-13" %}}
+
+Spaces are now automatically replaced with hyphens as you type in name fields for machines, parts, resources, fragments, and ML models.
+This helps avoid naming issues since these names are used in identifiers that don't support spaces.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
