@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Teleop DoCommands for the motion service" date="2026-03-25" %}}
+
+The builtin [motion service](/operate/reference/services/motion/) now supports teleop [`DoCommand`](/dev/reference/apis/services/motion/#docommand) keys for low-latency, collision-aware arm control: `teleop_start`, `teleop_move`, `teleop_stop`, and `teleop_status`.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
