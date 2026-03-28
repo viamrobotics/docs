@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Permission errors shown when adding images to datasets" date="2026-03-13" %}}
+
+Permission denied errors when adding images to a dataset on the **DATASETS** page are now displayed to the user instead of a generic failure message.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
