@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Download images from dataset view" date="2026-03-18" %}}
+
+You can now download individual images from the **DATASETS** page. Select an image in the dataset view and click the **Download image** button in the sidebar to save it to your computer.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
