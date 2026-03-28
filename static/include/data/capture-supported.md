@@ -5,6 +5,7 @@
 | Type                                            | Method |
 | ----------------------------------------------- | ------ |
 | [Arm](/operate/reference/components/arm/)                         | `EndPosition`, `JointPositions`, `DoCommand` |
+| [Audio in](/dev/reference/apis/components/audio-in/)              | `GetAudio`, `DoCommand` |
 | [Base](/operate/reference/components/base/)                       | `Position`, `DoCommand` |
 | [Board](/operate/reference/components/board/)                     | `Analogs`, `Gpios`, `DoCommand` |
 | [Button](/operate/reference/components/button/)                   | `DoCommand` |

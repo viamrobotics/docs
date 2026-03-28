@@ -44,6 +44,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Audio data capture and playback support" date="2026-03-13" %}}
+
+The **DATA** tab now supports audio files:
+
+- The **Videos** subtab has been renamed to [**Media**](/data-ai/capture-data/capture-sync/#view-captured-data) and now displays both video and audio files
+- You can play media files directly in the app—click **Play video** for video files or **Play audio** for audio files (WAV and MP3)
+- [Audio in](/dev/reference/apis/components/audio-in/) components now support data capture using the `GetAudio` method, with a **Clip duration (s)** field to specify how long each audio clip should be
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
