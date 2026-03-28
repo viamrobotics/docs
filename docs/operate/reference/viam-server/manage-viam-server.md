@@ -116,7 +116,7 @@ Run the following on the command line to start `viam-server`, providing the path
 viam-server -config /path/to/my/config.json
 ```
 
-If you followed the [Installation Guide](/operate/install/setup/), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main.json</file>.
+If you followed the [Installation Guide](/operate/install/setup/), your machine's configuration file is available in your <file>~/Downloads/</file> directory, named similarly to <file>viam-machinename-main_&lt;ID&gt;.json</file> where `<ID>` is your machine part's unique identifier.
 You can provide this path in the above command, or move the configuration file to a desired location and change the path in this command accordingly.
 
 #### Stop
@@ -369,10 +369,10 @@ rm -r ~/.viam/
 To remove the machine cloud credentials file, run:
 
 ```sh {class="command-line" data-prompt="$"}
-rm ~/Downloads/viam-<your-part-name>.json
+rm ~/Downloads/viam-<your-part-name>_<ID>.json
 ```
 
-For example, `rm ~/Downloads/viam-mymachine1-main.json`.
+For example, `rm ~/Downloads/viam-mymachine1-main_abc123def456.json` where `abc123def456` is your machine part's unique identifier.
 
 {{% /tab %}}
 {{< /tabs >}}

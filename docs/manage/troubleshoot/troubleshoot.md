@@ -112,7 +112,7 @@ If you want to store your logs in a file, stop the running `viam-server` instanc
 
    ```sh {class="command-line" data-prompt="$" data-output="2-3"}
    ps aux | grep viam-server
-   naomi             8738   1.1  0.3 412233296  50720 s000  S+    5:24pm   0:00.40 viam-server -config /Users/naomi/Downloads/viam-mac-main.json
+   naomi             8738   1.1  0.3 412233296  50720 s000  S+    5:24pm   0:00.40 viam-server -config /Users/naomi/Downloads/viam-mac-main_abc123def.json
    ```
 
 1. Kill the running `viam-server` instance.

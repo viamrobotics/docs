@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="macOS setup uses curl command for credentials" date="2026-03-25" %}}
+
+The macOS setup wizard now provides a `curl` command to download machine cloud credentials instead of a download button.
+The credentials file is saved to `~/Downloads/` with a filename that includes your machine part's unique identifier, such as `viam-mymachine-main_abc123def.json`.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
