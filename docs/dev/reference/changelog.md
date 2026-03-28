@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="History button in machine header" date="2026-03-18" %}}
+
+The **History** button is now more prominently displayed in the machine's header bar, next to the **Invite** button.
+Click the **History** icon to view your machine's configuration history in a fullscreen view.
+The **Open Teleop workspace** and **View captured data** options have moved to the machine's context menu (the **...** button).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

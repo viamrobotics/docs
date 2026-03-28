@@ -90,8 +90,8 @@ You must have the **Owner** role to be able to share locations.
 When you or your collaborators change the configuration of a machine or a group of machines, `viam-server` automatically synchronizes the configuration and updates the running resources within 15 seconds.
 This means everyone who has access can change a fleet's configuration, even while your machines are running.
 
-You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
-You can also revert to an earlier configuration from the History tab.
+You can see configuration changes made by yourself or by your collaborators by clicking the **History** icon in the machine's header bar.
+The history page opens in fullscreen view, where you can revert to an earlier configuration.
 
 {{% hiddencontent %}}
 If someone updates the configuration and saves it while you are editing, Viam will show you a warning that your configuration is out of date when you try to save.

@@ -66,8 +66,8 @@ When you or your collaborators change the configuration of a machine, `viam-serv
 Reconfiguration of individual resources happens concurrently if there are no configured dependencies for any resources.
 If there are configured dependencies, resources are reconfigured in groups.
 
-You can see configuration changes made by yourself or by your collaborators by selecting **History** on the right side of your machine part's card on the **CONFIGURE** tab.
-You can also revert to an earlier configuration from the History tab.
+You can see configuration changes made by yourself or by your collaborators by clicking the **History** icon in the machine's header bar.
+The history page opens in fullscreen view, where you can revert to an earlier configuration.
 
 {{% hiddencontent %}}
 If you want to force a reconfiguration of a resource, you can click the **Disable** button in the resource menu, save, and then re-enable the resource.

@@ -287,11 +287,13 @@ It takes a few minutes for `viam-server` to shut down and restart.
 ## Revert to earlier configuration
 
 Viam keeps a record of your configuration changes, allowing you to revert to earlier configurations if needed.
-To see the history of the configuration of a machine part, click on **History** on the **CONFIGURE** tab.
+To see the history of the configuration of a machine part, click the **History** icon in the machine's header bar.
+The history page opens in fullscreen view.
 
 {{<imgproc src="build/configure/history.png" resize="800x" declaredimensions=true alt="Configuration history for a machine part" class="shadow">}}
 
 To restore to an earlier version of your configuration, click the **Restore version** button next to the desired configuration.
+Click the **X** button in the top right corner to close the history view and return to the **CONFIGURE** tab.
 
 ## Share a location with Viam support
 
