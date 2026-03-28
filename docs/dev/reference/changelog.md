@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="viam module reload consecutive restart fix" date="2026-03-23" %}}
+
+`viam module reload` now properly restarts modules on consecutive reload attempts.
+Previously, when a module was already configured with the correct path and reload settings, running `viam module reload` again would update metadata but fail to actually restart the module binary.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
