@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="macOS viam-agent HOME environment variable fix" date="2026-03-12" %}}
+
+Modules now load correctly on macOS when running `viam-agent` as a launchd service. Previously, launchd started `viam-agent` with a minimal environment where `HOME` was not set, causing `VIAM_HOME` to resolve incorrectly. This resulted in errors like "expected ExePath to be absolute path" when loading modules. The `HOME` environment variable is now set to `/var/root` in the launchd plist configuration.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
