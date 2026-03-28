@@ -44,6 +44,18 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Improved LOGS tab scrolling and log loading" date="2026-03-17" %}}
+
+The **LOGS** tab now provides a smoother experience when viewing machine logs:
+
+- Logs now display in chronological order with oldest entries at the top and newest at the bottom
+- Scroll position is preserved when loading older logs, so the view no longer jumps unexpectedly
+- A **scroll to latest** button appears when you scroll away from the bottom, letting you quickly return to the newest logs
+- Log entries no longer duplicate when loading additional pages
+- Scrolling up toward older logs automatically loads more log history
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
