@@ -44,6 +44,18 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Mesh decimation for URDF collision geometries" date="2026-03-25" %}}
+
+When parsing URDF models in the Go SDK, you can now pass mesh decimation ratios to `ParseModelXMLFile` to reduce the triangle count of mesh collision geometries. Each ratio (between 0 and 1) controls how much to simplify the corresponding mesh, with 0 producing a minimal 12-triangle bounding shape and 1 keeping the full mesh. This can improve motion planning performance for arms with complex mesh collision geometries.
+
+{{% /changelog %}}
+
+{{% changelog color="improved" title="Mesh collision detection for arm motion planning" date="2026-03-25" %}}
+
+Motion planning collision detection now correctly handles mesh geometries with non-identity poses. Previously, bounding boxes for mesh collision geometries weren't being transformed to world space, which could cause incorrect collision detection when planning arm movements. This fix improves reliability for arms that use URDF models with mesh collision geometries.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
