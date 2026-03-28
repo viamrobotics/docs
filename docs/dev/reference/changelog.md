@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="File size in binary data metadata" date="2026-03-23" %}}
+
+Binary data metadata returned by [`BinaryDataByFilter`](/dev/reference/apis/data-client/#binarydatabyfilter) and [`BinaryDataByIDs`](/dev/reference/apis/data-client/#binarydatabyids) now includes a `file_size_bytes` field, so you can check file sizes without downloading the data.
+
+The **DATA** page also displays file size in the details panel when you select an image, file, video, or point cloud.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
