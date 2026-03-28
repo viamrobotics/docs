@@ -37,6 +37,9 @@ You can configure triggers to fire in the following scenarios:
      Whenever your machine syncs data that meets certain criteria, the trigger fires.
 
      1. Choose the target component and method for your condition.
+        The component you select must have data capture enabled for the same method.
+        If data capture isn't configured for the selected component and method, a warning banner prompts you to enable it.
+        Without data capture, no data syncs to the cloud and the trigger never fires.
      1. Add a **condition**: specify a **key** in the synced data, an **operator**, and a **value**.
         When data from the target component and method syncs from your machine, the trigger uses the key as a path to look up a value in the synced data object.
         The trigger applies the operator to the extracted value and the value you specified in your condition.

@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Warning for triggers without data capture" date="2026-03-10" %}}
+
+The **CONFIGURE** tab now shows a warning banner when you create a conditional data ingestion trigger for a component that doesn't have data capture enabled for the selected method.
+The warning appears if the component has no data capture configured, or if data capture is enabled but for a different method than the one selected for the trigger.
+This helps prevent a common misconfiguration where triggers are set up but never fire because no data is being captured.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
