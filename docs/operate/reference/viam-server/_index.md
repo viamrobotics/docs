@@ -260,6 +260,37 @@ You can enable debug level logs in two ways:
 
 Enabling debug level logs will take precedence over all logging configuration set using the `log` field on a machine or the `log_configuration` field on a resource.
 
+## Customize `viam-server` data location
+
+By default, `viam-server` stores local data in a <file>.viam</file> directory in your home directory:
+
+- **Linux/macOS**: <file>~/.viam/</file>
+- **Windows**: <file>%USERPROFILE%\.viam\</file>
+
+This directory contains cached cloud configurations, module binaries, and other runtime data.
+
+### Override with VIAM_HOME (experimental)
+
+You can set the `VIAM_HOME` environment variable to customize where `viam-server` stores its data.
+Support for custom `VIAM_HOME` is currently experimental.
+
+{{< tabs >}}
+{{% tab name="Linux/macOS" %}}
+
+```sh {class="command-line" data-prompt="$"}
+export VIAM_HOME=/custom/path/.viam
+```
+
+{{% /tab %}}
+{{% tab name="Windows" %}}
+
+```powershell {class="command-line" data-prompt=">"}
+$env:VIAM_HOME = "D:\.viam"
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Core options
 
 <!-- prettier-ignore -->

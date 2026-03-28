@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Customize .viam directory location with VIAM_HOME" date="2026-03-25" %}}
+
+You can now set the `VIAM_HOME` environment variable to customize where `viam-server` stores its local data (cached configurations, logs, and module binaries).
+This is an experimental feature.
+For more information, see [Customize viam-server data location](/operate/reference/viam-server/#customize-viam-server-data-location).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
