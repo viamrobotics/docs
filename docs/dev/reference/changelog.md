@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Module generate handles 'module' model name" date="2026-03-20" %}}
+
+`viam module generate` now correctly handles naming your model "module". Previously, this caused an `AttributeError` in Python modules due to a conflict with the SDK's `Module` class.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
