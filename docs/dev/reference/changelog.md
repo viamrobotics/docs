@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Debug logs toggle in part actions menu" date="2026-03-16" %}}
+
+You can now enable or disable debug logging for a machine part directly from the **CONFIGURE** tab.
+Click the **...** menu on a part and select **Enable debug logs** or **Disable debug logs**.
+This toggles the `"debug": true` setting for the part without requiring you to edit the JSON configuration.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

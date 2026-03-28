@@ -246,8 +246,9 @@ If you delete a machine you will not be charged for the remainder of the 30 days
 
 ### Debugging
 
-You can enable debug level logs in two ways:
+You can enable debug level logs in three ways:
 
+- Click the **...** menu on a machine part on the **CONFIGURE** tab and select **Enable debug logs**.
 - Start `viam-server` with the `-debug` option.
 - Add `"debug": true` to the machine's configuration:
 
