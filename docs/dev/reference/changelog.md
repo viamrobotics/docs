@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Clearer error for module upload archive format" date="2026-03-17" %}}
+
+The `viam module upload` command now explicitly tells you if your archive isn't a `.tar.gz` file.
+Previously, uploading a file like `module.tar` produced a confusing error about a missing entrypoint.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
