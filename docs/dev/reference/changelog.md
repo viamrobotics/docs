@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="CLI warns on HTTPS localhost login" date="2026-03-10" %}}
+
+The CLI now warns when you log in to localhost using HTTPS, which typically hangs due to missing TLS certificates.
+Use HTTP instead for local development servers.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
