@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Data tab timestamp updates when navigating between images" date="2026-03-17" %}}
+
+Timestamps in the image details panel on the **DATA** tab now update correctly when you select a different image. Previously, the timestamp would stay stuck on the first image selected.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
