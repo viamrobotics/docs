@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Diagnostics popover in inline module code editor" date="2026-03-24" %}}
+
+The inline module code editor now shows a diagnostics popover when you click on the error or warning count in the editor header.
+The popover displays each diagnostic with its message, line number, and source (such as `pyflakes` for Python or `gopls` for Go), helping you quickly identify and fix syntax issues before building.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

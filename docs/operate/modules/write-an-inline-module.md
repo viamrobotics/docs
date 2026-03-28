@@ -81,6 +81,9 @@ Use the Generic service when:
 The browser opens the code editor with a working template that includes all
 necessary imports and method stubs.
 
+The code editor checks your syntax as you type.
+If there are errors or warnings, the editor header displays counts you can click to see details including the message, line number, and source.
+
 ### 2. Understand the template
 
 The editor opens a single file -- your module's main source file. The template
