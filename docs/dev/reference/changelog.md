@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="CLI non-interactive mode for module generate" date="2026-03-17" %}}
+
+The `viam module generate` command can now run without a terminal (TTY), enabling use in CI pipelines, scripts, and automation tools.
+Provide all required flags (`--name`, `--language`, `--public-namespace`, `--resource-subtype`, `--model-name`) and authenticate with `viam login` beforehand.
+In non-interactive mode, status messages are printed as plain text instead of using a spinner.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

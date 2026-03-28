@@ -1039,6 +1039,10 @@ Examples:
 # auto-generate stub files for a new modular resource by following prompts
 viam module generate
 
+# generate a module non-interactively (for CI/automation)
+viam module generate --name=my-module --language=python --public-namespace=my-namespace \
+  --resource-subtype=sensor --model-name=my-sensor
+
 # generate metadata for and register a module named 'my-module' using your organization's public namespace:
 viam module create --name=my-module --public-namespace=my-namespace
 
@@ -1096,7 +1100,7 @@ viam module local-app-testing --app-url http://localhost:3000
 <!-- prettier-ignore -->
 | Command option | Description | Positional arguments |
 | -------------- | ----------- | -------------------- |
-| `generate` | Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module. | - |
+| `generate` | Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module. Can run non-interactively for CI/automation when you provide all required flags (`--name`, `--language`, `--public-namespace`, `--resource-subtype`, `--model-name`) and are authenticated. | - |
 | `create` | Generate a <file>meta.json</file> file and register the metadata with the Viam registry. Recommended when you already have working module code. | - |
 | `update` | Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/operate/modules/advanced/metajson/), the module <file>README.md</file>, and the model readme <FILE>namespace_module_model.md</FILE>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action. | - |
 | `update-models` | Update the module's metadata file with the models it provides. | - |
@@ -1126,18 +1130,19 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--id` | For `build`, the build ID to list or show logs for, as returned from `build start`. For `reload`, `reload-local`, `restart`, and `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `reload`, `reload-local`, `restart`, `download` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | `reload`, `reload-local` | Optional |
 | `--module` | The path to the [`meta.json` file](/operate/modules/advanced/metajson/) for the module, if not in the current directory. | `update`, `upload`, `build`, `reload`, `reload-local` | Optional |
-| `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
+| `--model-name` | For `generate`: the name of the model to create (for example, `my-sensor`). Required for non-interactive mode. For `reload`/`reload-local`: creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | `generate`, `reload`, `reload-local` | Optional |
 | `--no-build` | Skip build step. Default: `false`. | `reload-local` | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | `reload`, `reload-local` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload`, `reload-local`, `restart` | Optional |
 | `--path` | The path to the root of the git repo to build. Default: `.` | `reload` | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
-| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
+| `--language` | The programming language for the generated module: `python`, `go`, or `cpp`. Required for non-interactive mode. | `generate` | Optional |
+| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. Required for non-interactive mode. | `generate` | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
 | `--local-only` |  Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
-| `--name` | The name of the module. For example: `hello-world`. | `create`, `reload-local`, `restart` | Optional |
+| `--name` | The name of the module. For example: `hello-world`. | `generate`, `create`, `reload-local`, `restart` | Optional |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
-| `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
+| `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `generate`, `create`, `upload` | **Required** |
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs`, `download` | **Required** for `upload` |
 | `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | `build start` | Optional |
 | `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | `build start` | Optional |
