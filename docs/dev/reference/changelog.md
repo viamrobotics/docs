@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="macOS setup recommends viam-agent" date="2026-03-17" %}}
+
+The setup instructions for macOS now recommend installing [`viam-agent`](/manage/reference/viam-agent/) instead of `viam-server` via Homebrew.
+`viam-agent` runs in the background as a launchd service and automatically updates `viam-server`.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

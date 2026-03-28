@@ -100,11 +100,14 @@ Press **Ctrl + C** on your keyboard within the terminal session where you are ru
 
 {{% tab name="macOS"%}}
 
+The recommended method for running `viam-server` on macOS is to install [`viam-agent`](/manage/reference/viam-agent/), which runs `viam-server` in the background and automatically manages updates.
+See [Manage `viam-agent`](/manage/reference/viam-agent/manage-viam-agent/) for instructions on managing `viam-agent` on macOS.
+
+If you installed `viam-server` manually using Homebrew, you can run it from the command line.
+
 ### Run from the command line
 
 After [installation](/operate/install/setup/), `viam-server` can be run directly on the command line.
-
-Running `viam-server` on the command line is the recommended method for macOS.
 
 You can use the following commands to manage `viam-server` on the command line:
 
@@ -124,12 +127,6 @@ You can provide this path in the above command, or move the configuration file t
 Type **Ctrl + C** on your keyboard within the terminal session where you are running `viam-server` to stop it.
 
 <br>
-
-### Run as a system service
-
-The brew installation of `viam-server` CANNOT be run as a system service in the
-background. If you would like to run `viam-server` in the background, install
-[`viam-agent`](/manage/reference/viam-agent/) instead.
 
 {{% /tab %}}
 {{< /tabs >}}

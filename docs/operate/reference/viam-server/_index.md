@@ -352,15 +352,31 @@ The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
+{{< tabs >}}
+{{% tab name="Install using viam-agent (recommended)" %}}
+
+```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
+sudo /bin/sh -c "VIAM_API_KEY_ID=<KEYID> VIAM_API_KEY=<KEY> VIAM_PART_ID=<PARTID>; $(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
+```
+
+The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/</FILE>.
+
+`viam-agent` installs as a launchd daemon that runs in the background and automatically updates `viam-server`.
+
+{{% /tab %}}
+{{% tab name="Install manually" %}}
+
 ```bash {class="line-numbers linkable-line-numbers"}
 brew tap viamrobotics/brews && brew install viam-server
 ```
 
 The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
 
-The brew installation of `viam-server` CANNOT be run as a system service in the
-background. If you would like to run `viam-server` in the background, install
-[`viam-agent`](/manage/reference/viam-agent/) instead.
+The Homebrew installation of `viam-server` does not run as a background service.
+You must manually start `viam-server` each time you want to use it.
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}
