@@ -44,6 +44,15 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Search and pagination on ALL MACHINES page" date="2026-03-17" %}}
+
+The [**ALL MACHINES** page](/manage/troubleshoot/monitor/) now includes a search box and pagination.
+Use the search box to filter machines by location name, machine name, part name, or fragment name.
+Press <kbd>Cmd+F</kbd> (macOS) or <kbd>Ctrl+F</kbd> (Windows/Linux) to focus the search box.
+The table displays 50 machines at a time and automatically loads more as you scroll down.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

@@ -18,6 +18,12 @@ You can also monitor the amount of binary and tabular data your fleet has synced
 
 {{< imgproc src="/fleet/dashboard.png" alt="Fleet dashboard showing the machine parts, location, status, architecture and more" style="width:800px" resize="1200x" class="imgzoom shadow" >}}
 
+Use the search box to filter machines by location name, machine name, part name, or fragment name.
+The search includes all machines in your organization, not just those currently visible.
+Press <kbd>Cmd+F</kbd> (macOS) or <kbd>Ctrl+F</kbd> (Windows/Linux) to focus the search box.
+
+The table displays 50 machines at a time and automatically loads more as you scroll down.
+
 {{% /tablestep %}}
 {{% tablestep %}}
 **Investigate machine status**
