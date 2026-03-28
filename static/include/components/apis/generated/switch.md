@@ -47,7 +47,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromProvider(machine, "my_switch")
+mySwitch, err := toggleswitch.FromProvider(machine, "my_switch")
 
 err := mySwitch.SetPosition(context.Background(), 0 , nil)
 ```
@@ -137,7 +137,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromProvider(machine, "my_switch")
+mySwitch, err := toggleswitch.FromProvider(machine, "my_switch")
 
 position, err := mySwitch.GetPosition(context.Background(), nil)
 ```
@@ -223,7 +223,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromProvider(machine, "my_switch")
+mySwitch, err := toggleswitch.FromProvider(machine, "my_switch")
 
 positions, err := mySwitch.GetNumberOfPositions(context.Background(), nil)
 ```
@@ -307,7 +307,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromProvider(machine, "my_switch")
+mySwitch, err := toggleswitch.FromProvider(machine, "my_switch")
 
 command := map[string]interface{}{"cmd": "test", "data1": 500}
 result, err := mySwitch.DoCommand(context.Background(), command)
@@ -381,7 +381,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromProvider(machine, "my_switch")
+mySwitch, err := toggleswitch.FromProvider(machine, "my_switch")
 
 err = mySwitch.Name()
 ```
@@ -448,7 +448,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
-mySwitch, err := switch.FromProvider(machine, "my_switch")
+mySwitch, err := toggleswitch.FromProvider(machine, "my_switch")
 
 err = mySwitch.Close(context.Background())
 ```
