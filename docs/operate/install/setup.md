@@ -73,16 +73,15 @@ bash -c '[[ "$(uname -s)" == "Darwin" && ("$(uname -m)" == "x86_64" || "$(uname 
 {{% tab name="Windows" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-(Get-WmiObject -Class Win32_OperatingSystem).OSArchitecture -eq "64-bit" -and (wsl --status 2>$null) -ne $null ? "✅ Your system can run viam-server" : "❌ Your system needs WSL for viam-server"
+(Get-WmiObject -Class Win32_OperatingSystem).OSArchitecture -eq "64-bit" ? "✅ Your system can run viam-server" : "❌ Your system requires a 64-bit version of Windows"
 ```
 
 {{% alert title="Windows note" color="note" %}}
-`viam-server` can run on Windows Subsystem for Linux (WSL), but WSL itself does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
-This means that some hardware, such as a connected webcam, may not be available to `viam-server` with WSL, even though it is fully supported for native Linux systems.
+`viam-server` runs natively on Windows.
+Some hardware may have limited support compared to Linux systems.
 
-- Native: Use native if you are using a WSL version prior to WSL 2 or need native USB support
-- WSL: Use WSL if you are using Python modules or other Linux dependencies
-
+If you need to use Python modules or other Linux-specific dependencies, you can optionally run `viam-server` on Windows Subsystem for Linux (WSL).
+Note that WSL does not currently support exposing many types of Windows hardware to the embedded Linux kernel.
 {{% /alert %}}
 
 {{% /tab %}}

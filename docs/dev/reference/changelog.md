@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="WSL2 no longer required for Windows" date="2026-03-19" %}}
+
+`viam-server` now runs natively on Windows without requiring Windows Subsystem for Linux (WSL2).
+WSL remains available as an option for users who need Python modules or other Linux-specific dependencies.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
