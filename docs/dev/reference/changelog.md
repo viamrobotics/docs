@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Deep links preserved when logging in" date="2026-03-19" %}}
+
+Navigating directly to a specific page URL while logged out now correctly returns you to that page after authentication.
+Previously, you would be redirected to the home page instead of your intended destination.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
