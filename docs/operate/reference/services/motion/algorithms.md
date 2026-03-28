@@ -26,7 +26,7 @@ The algorithms that Viam uses for motion planning depend on the type of the robo
 RRT\*-Connect is an asymptotically optimal planner that samples the planning space randomly, connecting viable paths as it finds them.
 It continues sampling after it finds its first valid path, and if it finds future paths that are more efficient, it updates to report those instead.
 For Viam, efficiency/path quality is measured in terms of total kinematics state excursion.
-For an arm, the sum of all joint changes is minimized.
+For an arm, the sum of all joint changes is minimized, with a preference for configurations where rotational joints are near their center positions.
 For a gantry, the sum of all linear movement is minimized.
 This algorithm can route around obstacles, but cannot satisfy topological constraints.
 
