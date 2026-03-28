@@ -44,6 +44,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Inline modules page in fleet navigation" date="2026-03-23" %}}
+
+You can now view, create, and delete inline modules from the new **Inline modules** page in the fleet navigation.
+The page displays a table with each module's name, deployment count, and last updated date.
+Click **Create module** to create a new inline module in Python or Go.
+Modules that are currently deployed to machines cannot be deleted until you remove them from all machines.
+For more information, see [Write an Inline Module](/operate/modules/write-an-inline-module/).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

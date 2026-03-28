@@ -81,6 +81,11 @@ Use the Generic service when:
 The browser opens the code editor with a working template that includes all
 necessary imports and method stubs.
 
+You can also create and manage inline modules from the **Inline modules** page in fleet navigation.
+The page shows all inline modules in your organization with their deployment counts and last updated dates.
+Click **Create module** to create a new module, or click any module to open it in the code editor.
+To delete a module, open its action menu -- note that modules deployed to machines cannot be deleted until you remove them from all machines.
+
 ### 2. Understand the template
 
 The editor opens a single file -- your module's main source file. The template
