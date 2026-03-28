@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="C++ module cloud builds support hot reloading" date="2026-03-26" %}}
+
+C++ modules now fully support cloud builds, including `viam module reload` for hot reloading during development.
+The correct distro is now used automatically.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
