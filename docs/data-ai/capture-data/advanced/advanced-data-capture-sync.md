@@ -55,7 +55,12 @@ To configure the data manager in JSON, see the following example configurations:
         "sync_disabled": true,
         "delete_data_on_part_deletion": true,
         "delete_every_nth_when_disk_full": 5,
-        "maximum_num_sync_threads": 250
+        "maximum_capture_file_size_bytes": 256000,
+        "maximum_num_sync_threads": 250,
+        "capture_control_sensor": {
+          "name": "my-control-sensor",
+          "key": "should_capture"
+        }
       }
     }
   ]
@@ -95,6 +100,7 @@ The following attributes are available for the data management service:
 | Name               | Type   | Required? | Description | `viam-micro-server` Support |
 | ------------------ | ------ | --------- | ----------- | ------------------- |
 | `capture_disabled` | bool   | Optional | Toggle data capture on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. Note that even if capture is on for the whole part, if it is not on for any individual {{< glossary_tooltip term_id="component" text="component" >}}, data is not being captured. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| `capture_control_sensor` | object | Optional | A sensor that dynamically controls whether data capture is active. When configured, the data manager polls this sensor and only captures data when the sensor reading for the specified key is `true`. Provide `name` (the sensor name) and `key` (the reading key to check). |  |
 | `capture_dir`      | string | Optional | Path to the directory on your machine where you want to store captured data. If you change the directory for data capture, only new data is stored in the new directory. Existing data remains in the directory where it was stored. <br> Default: `~/.viam/capture` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `tags` | array of strings | Optional | Tags to apply to all images or tabular data captured by this machine part. May include alphanumeric characters, underscores, and dashes. |  |
 | `sync_disabled` | bool | Optional | Toggle cloud sync on or off for the entire machine {{< glossary_tooltip term_id="part" text="part" >}}. <br> Default: `false` |  |
@@ -102,7 +108,8 @@ The following attributes are available for the data management service:
 | `sync_interval_mins` | float | Optional | Time interval in minutes between syncing to the cloud. Viam does not impose a minimum or maximum on the frequency of data syncing. However, in practice, your hardware or network speed may impose limits. <br> Default: `0.1`, meaning once every 6 seconds. |  <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | `selective_syncer_name` | string | Optional | The name for the sensor that should determine selective sync. Also add this sensor to the `depends_on` field. For more information, see [Configure the data manager to sync based on sensor](/data-ai/capture-data/conditional-sync/#configure-the-data-manager-to-sync-based-on-sensor). |  |
 | `delete_data_on_part_deletion` | bool | Optional | Whether deleting this {{< glossary_tooltip term_id="machine" text="machine" >}} or {{< glossary_tooltip term_id="part" text="machine part" >}} should result in deleting all the data captured by that machine part. <br> Default: `false` | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
-| `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/data-ai/capture-data/advanced/how-sync-works/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. Use JSON mode to configure this attribute. <br> Default: `5`, meaning that every fifth captured file will be deleted. |   |
+| `delete_every_nth_when_disk_full` | int | Optional | How many files to delete when local storage meets the [fullness criteria](/data-ai/capture-data/advanced/how-sync-works/#storage). The data management service will delete every Nth file that has been captured upon reaching this threshold. <br> Default: `5`, meaning that every fifth captured file will be deleted. |   |
+| `maximum_capture_file_size_bytes` | int | Optional | Maximum size in bytes of a captured data file. When a capture file reaches this size, a new file is started. |   |
 | `maximum_num_sync_threads` | int | Optional | Max number of CPU threads to use for syncing data to the Viam Cloud. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2 so half the number of logical CPUs available to viam-server |   |
 | `mongo_capture_config.uri` | string | Optional | The [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) to which data capture will attempt to write tabular data after it is enqueued to be written to disk. When non-empty, data capture will write tabular data to the configured MongoDB database and collection at that URI.<br>See `mongo_capture_config.database` and `mongo_capture_config.collection` below for database and collection defaults.<br>See [Capture directly to your own MongoDB cluster](/data-ai/capture-data/advanced/advanced-data-capture-sync/#capture-directly-to-your-own-mongodb-cluster) for example configurations.|   |
 | `mongo_capture_config.database` | string | Optional | When `mongo_capture_config.uri` is non-empty, changes the database data capture will write tabular data to. <br> Default: `"sensorData"`   |   |
