@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Search labels on the DATASETS page" date="2026-03-16" %}}
+
+You can now search for classifications, tags, and bounding box labels in the **DATASETS** page sidebar. Type to filter displayed labels, or press **Enter** to filter images by labels not shown in the list (useful when your dataset has more than 5000 labels). Loading indicators now appear while label counts are calculated.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
