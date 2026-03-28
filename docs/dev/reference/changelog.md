@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="JSON config editor auto-fixes trailing commas" date="2026-03-26" %}}
+
+The JSON config editor on the **CONFIGURE** tab now automatically handles trailing commas. Trailing commas are accepted while you edit and cleaned up when you save, similar to VS Code behavior. Error messages for JSON syntax errors are also clearer—for example, a missing comma now displays a helpful hint instead of a cryptic `SyntaxError`.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
