@@ -158,6 +158,36 @@ For non base components, there is no inherent concept of "forward," so it is up 
 
 {{% /alert %}}
 
+### Parent to intermediate arm geometries
+
+You can parent components to intermediate arm geometries using qualified frame names.
+This allows you to attach components like cameras, sensors, or cable clamps to specific arm links rather than just the end effector.
+
+To parent a component to an intermediate arm geometry, use the format `armName:geometryLabel` in the frame configuration's `parent` field, where `armName` is your arm component's name and `geometryLabel` is the name of a link defined in the arm's kinematic model (for example, `upper_arm_link` or `forearm_link`).
+
+For example, to attach a camera to a UR5e arm's upper arm link:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "name": "armCamera",
+  "type": "camera",
+  "model": "webcam",
+  "frame": {
+    "parent": "myArm:upper_arm_link",
+    "translation": {
+      "x": 50,
+      "y": 0,
+      "z": 0
+    }
+  }
+}
+```
+
+When you configure a component this way, the component's frame moves along with the specified arm link as the arm moves.
+The [motion service](/operate/reference/services/motion/) uses these relationships when planning movements.
+
+Intermediate arm frame relationships are not yet visualized in the 3D scene on the **CONFIGURE** tab, but work correctly with the motion service for motion planning.
+
 ## How the frame system works
 
 `viam-server` builds a tree of reference frames for your machine with the `world` as the root node and regenerates this tree following reconfiguration.

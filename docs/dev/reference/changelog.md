@@ -44,6 +44,18 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Parent components to intermediate arm geometries" date="2026-03-23" %}}
+
+You can now parent components to intermediate arm geometries using qualified frame names.
+This allows you to attach components like cameras, sensors, or cable clamps to specific arm links rather than just the end effector.
+
+Use the format `armName:geometryLabel` in the frame configuration's `parent` field.
+For example, setting `"parent": "myArm:upper_arm_link"` attaches a component to the upper arm link of an arm named `myArm`.
+
+See [Parent to intermediate arm geometries](/operate/reference/services/frame-system/#parent-to-intermediate-arm-geometries) for configuration details.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
