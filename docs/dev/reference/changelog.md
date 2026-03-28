@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Minimum confidence threshold default display" date="2026-03-23" %}}
+
+The **Minimum confidence threshold** slider when configuring an [mlmodel vision service](/operate/reference/services/vision/mlmodel/) now displays 0 by default instead of 0.5.
+This matches the actual behavior: when no value is explicitly set, no confidence filtering is applied.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
