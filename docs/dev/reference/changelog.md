@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Trigger validation error messages" date="2026-03-10" %}}
+
+Invalid [trigger](/data-ai/reference/triggers-configuration/) configurations are now rejected when saving, with clear error messages explaining what needs to be fixed.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
