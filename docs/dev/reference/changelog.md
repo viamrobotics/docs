@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Vision service normalizes confidence scores" date="2026-03-19" %}}
+
+Detection and classification confidence scores are now automatically normalized to be between 0 and 1.
+If your ML model outputs scores greater than 1.0 (for example, as percentages like 85 instead of 0.85), the vision service now converts them automatically.
+Negative scores are set to 0.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
