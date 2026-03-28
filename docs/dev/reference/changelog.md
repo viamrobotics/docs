@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="viam-server shutdown reliability on Windows" date="2026-03-23" %}}
+
+`viam-agent` now shuts down `viam-server` more reliably on Windows.
+Previously, if the shutdown request timed out, the agent couldn't distinguish between a successful shutdown (where the server stopped before responding) and a failed connection.
+Now, timeout errors trigger a fallback to signal-based termination, ensuring `viam-server` stops cleanly.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
