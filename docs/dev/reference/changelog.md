@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Packet loss network diagnostics" date="2026-03-23" %}}
+
+`viam-server` now tests for packet loss when diagnosing network connectivity issues.
+When your machine has trouble connecting to app.viam.com, check the logs for warnings from the `rdk.network-checks.packet-loss` logger showing packet loss to your router or ISP.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
