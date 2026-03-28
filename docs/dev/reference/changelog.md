@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Do Command shows loading indicator during execution" date="2026-03-18" %}}
+
+The **Do Command** section on the **CONFIGURE** and **CONTROL** tabs now shows a loading spinner while a command is executing.
+The previous output and any errors are also cleared when you click **Execute**, so you always see fresh results.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
