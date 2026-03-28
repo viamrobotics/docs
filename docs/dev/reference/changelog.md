@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Machine config JSON field ordering preserved" date="2026-03-20" %}}
+
+Machine config JSON field ordering is now preserved when you save.
+Previously, field order could change unexpectedly after saving.
+Version history diffs also reflect field order changes.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
