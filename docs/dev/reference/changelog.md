@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Debug log level toggling for modules" date="2026-03-27" %}}
+
+Module log levels now properly reset when you disable debug mode. Previously, modules stayed at the debug log level until `viam-server` restarted, even after setting `"debug": false` in your machine configuration.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
