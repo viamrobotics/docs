@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Sticky expand/collapse and copy buttons in sensor results" date="2026-03-17" %}}
+
+The expand/collapse and copy buttons in sensor result cells on the **CONTROL** tab now stay pinned at the top when scrolling through large JSON results.
+Previously, these buttons would scroll out of view when viewing sensor data that exceeded the cell height.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
