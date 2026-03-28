@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Query page toolbar buttons now show text labels" date="2026-03-10" %}}
+
+The **Assistant** and **Export** buttons on the [**Query** page](/data-ai/data/query/) now display text labels alongside their icons.
+The **Save** button remains icon-only with a tooltip.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

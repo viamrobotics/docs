@@ -55,7 +55,7 @@ Then, select either **SQL** or **MQL**.
 Optionally, you can change the data source to query data from a configured [hot data store](/data-ai/data/hot-data-store/).
 
 {{< alert title="Tip: Query Assistant" color="tip" >}}
-For help with writing queries, use the **Query Assistant** button in the top right corner.
+For help with writing queries, use the **Assistant** button in the top right corner.
 {{< /alert >}}
 
 {{% /tablestep %}}
