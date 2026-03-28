@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Modules can access client SDK information from gRPC metadata" date="2026-03-19" %}}
+
+Go modules can now access information about the calling SDK from the gRPC request context.
+Use `metadata.FromIncomingContext(ctx)` to retrieve the `viam_client` header, which contains the SDK type, build type, SDK version, and RDK version (for example, `typescript(viam-app);v0.67.0;v0.1.528`).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
