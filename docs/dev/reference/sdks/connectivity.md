@@ -57,7 +57,7 @@ const machine = await VIAM.createRobotClient({
     authEntity: "<API-KEY-ID>",
     /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
   },
-  signalingAddress: `http://${host}.local:8080`,
+  signalingAddress: `http://${host}.local:8090`,
 });
 ```
 

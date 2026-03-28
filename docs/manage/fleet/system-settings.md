@@ -115,7 +115,7 @@ To configure your machine to disable TLS on the hosted HTTP server, you must spe
 
 ## Configure bind address and port
 
-If you are running `viam-server` on a different port that `8080`, set the `bind_address` in your machine settings:
+If you are running `viam-server` on a different port than `8090`, set the `bind_address` in your machine settings:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "network": {

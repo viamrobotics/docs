@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Default port changed to 8090" date="2026-03-25" %}}
+
+The default port for `viam-server` changed from `8080` to `8090`. If you have scripts or configurations that rely on the default port, update them to use `8090`. You can still configure a custom port using the [`bind_address` setting](/manage/fleet/system-settings/#configure-bind-address-and-port).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

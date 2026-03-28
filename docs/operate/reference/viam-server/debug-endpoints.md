@@ -49,7 +49,7 @@ Only enable these endpoints in development environments.
 
 ### Available Endpoints
 
-Once enabled, you can access the pprof interface by navigating to `https://localhost:8080/debug/pprof/` in your browser.
+Once enabled, you can access the pprof interface by navigating to `https://localhost:8090/debug/pprof/` in your browser.
 
 The following pprof routes are available:
 
@@ -62,7 +62,7 @@ The following pprof routes are available:
 
 The `/debug/graph` endpoint shows a graphical representation of the machine resources managed by the RDK.
 
-To access this endpoint, visit `https://localhost:8080/debug/graph` on the machine.
+To access this endpoint, visit `https://localhost:8090/debug/graph` on the machine.
 
 ### Layout Options
 
@@ -71,7 +71,7 @@ To view different [layouts](https://graphviz.org/docs/layouts/), use the `layout
 The following example URL specifies the `circo` layout:
 
 ```txt
-https://localhost:8080/debug/graph?layout=circo
+https://localhost:8090/debug/graph?layout=circo
 ```
 
 Available layout options include:
