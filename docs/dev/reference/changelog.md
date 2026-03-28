@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Timezone labels in log time filters" date="2026-03-10" %}}
+
+Time filter inputs on the **LOGS** tab now display a timezone label inside the time input field: your local timezone abbreviation in **Local** mode, or **UTC** in **ISO** mode.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
