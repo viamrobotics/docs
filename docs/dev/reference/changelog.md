@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="DATA page URL filters preserved when loading shared links" date="2026-03-17" %}}
+
+Filters are now preserved when sharing **DATA** page URLs. Previously, filter parameters like location, machine name, or time range were stripped when loading a shared URL.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
