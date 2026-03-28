@@ -240,6 +240,48 @@ Remove-Item C:\Windows\system32\config\systemprofile\.viam -Recurse
 {{% /tab %}}
 {{< /tabs >}}
 
+## View logs
+
+To view `viam-agent` logs locally:
+
+{{< tabs >}}
+{{% tab name="Linux" %}}
+
+View logs with `journalctl`:
+
+```sh {class="command-line" data-prompt="$"}
+journalctl -u viam-agent
+```
+
+To see recent log output, check the service status:
+
+```sh {class="command-line" data-prompt="$"}
+systemctl status viam-agent
+```
+
+{{% /tab %}}
+{{% tab name="MacOS" %}}
+
+Logs are written to <file>/var/log/viam-agent.log</file>:
+
+```sh {class="command-line" data-prompt="$"}
+tail -f /var/log/viam-agent.log
+```
+
+You can also view logs through the **Console** MacOS app under **Log Reports**.
+
+{{% /tab %}}
+{{% tab name="Windows native" %}}
+
+Use **Event Viewer** to view logs:
+
+1. Open **Event Viewer** from the Start menu.
+2. Navigate to **Windows Logs** > **Application**.
+3. Filter by source "viam-agent" to see relevant entries.
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Troubleshooting
 
 You can find assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
