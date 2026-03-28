@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Motion planning fix for child frames" date="2026-03-23" %}}
+
+Fixed an issue where [motion planning](/operate/mobility/move-arm/arm-motion/) could produce incorrect results when moving a child frame of the arm, such as a gripper or other component attached to the arm's end effector.
+Previously, planning motion for frames downstream of the arm could fail or compute incorrect poses when the arm had non-trivial orientations.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
