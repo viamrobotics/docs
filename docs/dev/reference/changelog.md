@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="macOS viam-agent install and uninstall scripts fixed" date="2026-03-09" %}}
+
+Fixed the macOS install and uninstall scripts for `viam-agent`. The install script now uses the correct binary path, and the uninstall script waits for the launchd service to stop before removing files, preventing orphaned `viam-server` processes.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
