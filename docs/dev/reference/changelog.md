@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Faster search in Add configuration block modal" date="2026-03-09" %}}
+
+Search results in the **Add configuration block** modal on the **CONFIGURE** tab now load faster. Results are prefetched when you navigate to a machine or fragment configuration page.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
