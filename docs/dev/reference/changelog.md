@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Browser navigation fix for DATA and ML pages" date="2026-03-19" %}}
+
+Browser back and forward buttons now correctly update the UI when navigating through the **DATA** and **ML** pages. Previously, the URL would update but the page content wouldn't change.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
