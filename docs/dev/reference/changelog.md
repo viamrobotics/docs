@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Add configuration block dialog uses infinite scroll" date="2026-03-18" %}}
+
+The **Add configuration block** dialog on the **CONFIGURE** tab now loads results as you scroll instead of rendering all items at once.
+This improves responsiveness when browsing many modules and fragments.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
