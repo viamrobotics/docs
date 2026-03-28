@@ -44,6 +44,18 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Hot reload user and timestamp display" date="2026-03-12" %}}
+
+Module cards on the **CONFIGURE** tab now show who last reloaded a module and when. This helps you track development builds deployed using `viam module reload` or `viam module reload-local` when hot reloading is enabled.
+
+{{% /changelog %}}
+
+{{% changelog color="improved" title="Hot reload config protection" date="2026-03-12" %}}
+
+`viam module reload` and `viam module reload-local` now prevent accidentally overwriting config changes made by other users or API calls. If a conflict is detected, the CLI automatically retries with the latest config. If the conflict persists, the operation fails with an error instead of overwriting your changes.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
