@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="removed" title="GetImage removed from camera API" date="2026-03-23" %}}
+
+The deprecated `GetImage` method has been removed from the [camera API](/dev/reference/apis/components/camera/).
+Use [`GetImages`](/dev/reference/apis/components/camera/#getimages) instead.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

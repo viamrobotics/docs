@@ -218,7 +218,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 const camera = new VIAM.CameraClient(machine, 'my_camera');
 const vision = new VIAM.VisionClient(machine, 'my_vision');
 
-const {images} = await camera.getImages();
+const { images } = await camera.getImages();
 const image = images[0].image;
 const detections = await vision.getDetections(
   image,
@@ -473,7 +473,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 const camera = new VIAM.CameraClient(machine, 'my_camera');
 const vision = new VIAM.VisionClient(machine, 'my_vision');
 
-const {images} = await camera.getImages();
+const { images } = await camera.getImages();
 const image = images[0].image;
 const classifications = await vision.getClassifications(
   image,
