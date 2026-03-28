@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Modified indicators in fragment builder" date="2026-03-19" %}}
+
+The fragment builder on the **CONFIGURE** tab now shows **Modified** badges on resource cards and **M** indicators in the sidebar when you have unsaved changes, matching the machine builder behavior.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
