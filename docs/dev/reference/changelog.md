@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved fragment preview in Add configuration block modal" date="2026-03-17" %}}
+
+The fragment preview in the **Add configuration block** modal on the **CONFIGURE** tab now shows more details.
+Blocks are organized into collapsible folders.
+Each block displays its module and model with a link to the module's registry page, and module authors link to their registry namespace page.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
