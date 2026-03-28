@@ -44,6 +44,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Message regex filtering for log triggers" date="2026-03-18" %}}
+
+Log triggers now support filtering by message content using a regular expression.
+When configuring a **Conditional logs ingestion** trigger, you can specify an optional **Message regex** pattern.
+Only logs with messages matching the pattern will trigger alerts.
+
+For more information, see [Alert on machine logs](/manage/troubleshoot/alert/#alert-on-machine-logs).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

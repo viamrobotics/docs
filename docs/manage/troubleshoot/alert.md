@@ -353,7 +353,11 @@ Click the **Save** button in the top right corner of the page to save your confi
 
 1. Select any number of log levels (**Error**, **Warn**, and **Info**) to alert on.
 
-   **Once per hour**, Viam issues an alert if machine logs are found.
+1. Optionally, enter a **Message regex** pattern to filter logs by message content.
+   Only logs with messages matching the regex will trigger alerts.
+   For example, use `connection refused` to only alert on logs containing that text, or `timeout|refused` to match logs containing either word.
+
+   **Once per hour**, Viam issues an alert if matching machine logs are found.
 
 To add a notification method, add an entry to the **Webhooks** or **Alert options** sub-panels:
 
@@ -390,7 +394,8 @@ Use the following template in your `components` JSON to configure the top-level 
           "error",
           "warn",
           "info"
-        ]
+        ],
+      "log_message_regex": "<optional regex pattern>"
     },
     "notifications": [
       {
