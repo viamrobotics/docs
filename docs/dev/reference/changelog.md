@@ -44,6 +44,18 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="gpiostepper motor uses PWM for step pulses" date="2026-03-24" %}}
+
+The [`gpiostepper`](/operate/reference/components/motor/gpiostepper/) motor now uses hardware PWM on the step pin to generate step pulses.
+This improves performance compared to manual pin toggling, particularly for high-frequency operation over a network connection.
+
+Position is now estimated from elapsed time and the confirmed PWM frequency.
+At step frequencies above 1kHz, position tracking accuracy may decrease.
+
+The `stepper_delay_usec` attribute now sets the minimum delay between pulses (maximum step frequency) instead of the high-pulse duration.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
