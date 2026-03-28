@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Bounding box drawing is more forgiving" date="2026-03-17" %}}
+
+When drawing bounding boxes on the **DATA** or **DATASETS** page, you no longer need to hold the command key (macOS) or control key (Windows/Linux) until after releasing the mouse button.
+Previously, releasing the key before the mouse would reset your drawing.
+Now, the order you release the key and mouse button no longer matters.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
