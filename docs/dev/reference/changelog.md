@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Dataset deletion shows loading state" date="2026-03-09" %}}
+
+Deleting a dataset on the **DATASETS** page now shows a loading indicator and disables the delete button while processing, preventing duplicate deletion requests and false error messages.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
