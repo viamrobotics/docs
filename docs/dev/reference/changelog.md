@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Images needing review load immediately in dataset auto-predictions" date="2026-03-10" %}}
+
+When reviewing auto-predictions on a dataset, selecting the **In Review** filter now loads only images that need review directly from the server. Previously, all images loaded first and were filtered locally, which could require pagination to find images needing review in large datasets.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
