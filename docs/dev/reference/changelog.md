@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved state indicators in resource card sections" date="2026-03-25" %}}
+
+The **Error Logs**, **Test**, and **Do Command** sections on resource configuration cards now show clearer status indicators.
+When your machine is offline, a resource is disabled, changes are unsaved, or a resource is configuring or unhealthy, you'll see a consistent message explaining the current state instead of a blank or confusing display.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
