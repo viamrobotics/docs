@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved viam-agent compatibility with Windows 11" date="2026-03-23" %}}
+
+`viam-agent` no longer depends on `WMIC.exe` for managing child processes on Windows. Since `WMIC.exe` has been deprecated and removed in recent Windows 11 versions, this change ensures `viam-agent` works reliably on newer Windows systems.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
