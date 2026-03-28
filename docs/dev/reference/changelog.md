@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Vision service default confidence value fix" date="2026-03-11" %}}
+
+Fixed an issue where the default confidence value (0.5) wasn't saved when configuring an mlmodel detector or classifier in the UI Builder.
+Previously, this caused the service to return all detections regardless of confidence score.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
