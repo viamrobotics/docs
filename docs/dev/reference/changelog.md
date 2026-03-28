@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="removed" title="Removed robot_part_id from GetCloudMetadata response" date="2026-03-25" %}}
+
+The deprecated `robot_part_id` field has been removed from the `GetCloudMetadata` response.
+Use `machine_part_id` instead, which returns the same value.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
