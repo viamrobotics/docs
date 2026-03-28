@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Hot reload email reminder" date="2026-03-12" %}}
+
+You now receive an email reminder 24 hours after enabling hot reloading on a module if it's still enabled. The email includes a link to the machine or fragment configuration page so you can turn off hot reloading when you're done testing.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
