@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="C++ module generator fix for hyphenated names" date="2026-03-20" %}}
+
+`viam module generate` now correctly generates valid Python class names in `conanfile.py` for C++ modules with hyphenated names.
+Previously, a module named `my-sensors` would generate an invalid class name `my-sensorsRecipe`.
+Now it generates a valid PascalCase class name like `MySensorsRecipe`.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
