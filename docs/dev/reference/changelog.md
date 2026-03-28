@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="viam-agent logs orphaned process warnings" date="2026-03-19" %}}
+
+`viam-agent` now logs a warning at startup if it detects orphaned `viam-server` processes or their child module processes from a previous run, and continues to log every minute until these processes exit.
+This helps diagnose process cleanup failures that can cause startup errors or bootloops on Windows.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
