@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Status method for Go SDK components and services" date="2026-03-26" %}}
+
+Go SDK users can now call `Status()` on any component or service to get implementation-specific status information.
+By default, `Status()` returns an empty map.
+Module developers can override this method to report custom status data, such as device health, internal state, or diagnostic information.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
