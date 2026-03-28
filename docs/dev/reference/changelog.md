@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Search and filter models on MODELS page" date="2026-03-26" %}}
+
+The [**MODELS** page](https://app.viam.com/models) now includes search and filter controls.
+Use the search bar to find models by name, and use the dropdown filters to narrow results by **Type**, **Framework**, or **Visibility**.
+You can also delete specific versions of a model or delete all versions at once from the model's context menu.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
