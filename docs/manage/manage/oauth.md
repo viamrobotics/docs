@@ -55,12 +55,13 @@ enabled auth service for organization "<org-id>":
 {{% tablestep %}}
 **Create an OAuth application** for your organization:
 
-```sh {class="command-line" data-prompt="$" data-output="6-10"}
+```sh {class="command-line" data-prompt="$" data-output="7-10"}
 viam organization auth-service oauth-app create --client-authentication=required \
     --client-name="OAuth Test App" --enabled-grants="password, authorization_code" \
     --logout-uri="https://logoipsum.com/logout" --origin-uris="https://logoipsum.com,http://localhost:3000" \
     --pkce=not_required --redirect-uris="https://logoipsum.com/oauth-redirect,http://localhost:3000/oauth-redirect" \
-    --url-validation=allow_wildcards --invite-redirect-uri="https://logoipsum.com" --org-id=<org-id>
+    --invite-redirect-uri="https://logoipsum.com/oauth-redirect" \
+    --url-validation=allow_wildcards --org-id=<org-id>
 Successfully created OAuth app OAuth Test App with client ID <client-id> and client secret <secret-token>
 ```
 
@@ -78,7 +79,7 @@ Successfully created OAuth app OAuth Test App with client ID <client-id> and cli
 | `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | **Required** |
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
-| `--invite-redirect-uri` | The redirect link to send a user when they accept an org invite. | Optional |
+| `--invite-redirect-uri` | The URI where users are redirected after accepting an organization invitation. | Optional |
 
 {{% /expand%}}
 
@@ -99,7 +100,7 @@ Client Authentication: required
 PKCE (Proof Key for Code Exchange): not_required
 URL Validation Policy: allow_wildcards
 Logout URL: https://logoipsum.com/logout
-Invite Redirect URL: https://logoipsum.com
+Invite Redirect URL: https://logoipsum.com/oauth-redirect
 Redirect URLs: https://logoipsum.com/oauth-redirect, http://localhost:3000/oauth-redirect
 Origin URLs: https://logoipsum.com, http://localhost:3000
 Enabled Grants: authorization_code, password
