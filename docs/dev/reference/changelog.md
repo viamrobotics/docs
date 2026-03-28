@@ -44,6 +44,19 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Error states with retry on DATA page tabs" date="2026-03-23" %}}
+
+The **Images**, **Files**, **Media**, and **Point clouds** tabs on the [**DATA** page](https://app.viam.com/data) now display an error message with a **Retry** button when data fails to load.
+Previously, query failures showed an empty state without any indication that something went wrong.
+
+{{% /changelog %}}
+
+{{% changelog color="fixed" title="Media tab grammar fix" date="2026-03-23" %}}
+
+The **Media** tab on the [**DATA** page](https://app.viam.com/data) now displays "No matching media" instead of "No matching medias" when no results match the current filters.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
