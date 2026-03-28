@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="C++ module generator targets Linux only" date="2026-03-20" %}}
+
+C++ modules generated with `viam module generate` now target only Linux platforms (`linux/amd64` and `linux/arm64`) by default.
+The generated `meta.json` no longer includes `darwin/arm64` and `windows/amd64`, which aren't fully supported for C++ module cloud builds.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
