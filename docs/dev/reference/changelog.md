@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Images tab keyboard navigation and delete confirmation" date="2026-03-17" %}}
+
+The **Images** tab on the **DATA** page now supports keyboard navigation. Use **Arrow Left** and **Arrow Right** to navigate between images, and **Escape** to close the side panel.
+
+All delete actions on the **Images** tab now show a confirmation prompt before deleting.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
