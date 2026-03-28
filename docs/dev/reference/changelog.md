@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="CLI flags can be placed after positional arguments" date="2026-03-24" %}}
+
+You can now place [CLI](/dev/tools/cli/) flags after positional arguments. For example, `viam machines list myorg --location myloc`.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
