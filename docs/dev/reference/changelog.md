@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Improved webcam constraint mismatch error message" date="2026-03-16" %}}
+
+When webcam configuration constraints (resolution, frame format) don't match any available driver, the error message now suggests actionable fixes and points you to the [find-webcams discovery service](/operate/reference/components/camera/webcam/#find-a-video-path-using-a-discovery-service) to find valid constraints for your device.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

@@ -247,6 +247,18 @@ If you are running `viam-server` as a different user, find the <file>.viam/debug
 This file contains basic diagnostic and configuration information about your camera that helps to quickly troubleshoot issues.
 {{% /expand%}}
 
+{{% expand "Config constraints don't match available driver" %}}
+
+If you see an error like "failed to find a queryable driver that matches the config constraints," your configured resolution or frame format doesn't match what your camera supports.
+
+To resolve this:
+
+1. Try relaxing or removing the `width_px`, `height_px`, or `format` constraints from your webcam configuration.
+2. Use the [find-webcams discovery service](#find-a-video-path-using-a-discovery-service) to discover valid constraints for your camera. The discovery service shows you the supported resolutions and formats for each detected webcam.
+3. Copy the suggested configuration attributes from the discovery service results.
+
+{{% /expand%}}
+
 {{% expand "No visible live video feed" %}}
 
 Restart `viam-server`:
