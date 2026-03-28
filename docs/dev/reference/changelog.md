@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Deep links to images on DATA page" date="2026-03-24" %}}
+
+You can now share direct links to specific images on the **DATA** page. When you open an image in expanded view, the URL updates with a `?binaryDataId=` parameter you can copy and share.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
