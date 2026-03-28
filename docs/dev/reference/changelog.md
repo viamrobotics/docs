@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Clearer error messages for module package failures" date="2026-03-13" %}}
+
+Error messages for module package download and unzip failures now indicate which step failed, suggest trying a different version, and explain that `viam-server` falls back to the last configuration where all modules were fully downloaded and unzipped.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
