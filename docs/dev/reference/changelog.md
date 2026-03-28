@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="viam-agent boot loop prevention and duplicate instance detection" date="2026-03-17" %}}
+
+`viam-agent` now recovers more gracefully from fatal startup errors by resetting its installation state before exiting, which prevents boot loops when systemd restarts it.
+The agent also properly detects duplicate instances on Windows and macOS.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
