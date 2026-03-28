@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Datasets page loading and filter improvements" date="2026-03-24" %}}
+
+The **DATASETS** page now shows a loading skeleton while switching between filter states.
+When no images match an applied filter, a null state appears with a **Remove filter** button.
+You can also clear the label filter by pressing Enter when the search field is empty.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
