@@ -44,6 +44,20 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Resource status badges and test section states" date="2026-03-11" %}}
+
+Resource configuration cards on the **CONFIGURE** and **CONTROL** tabs now display status badges in the card header.
+The badges show **Ready**, **Failed**, **Unconfigured**, **Configuring...**, **Removing...**, or **Unknown** based on the resource state.
+Both tabs use consistent badge styling, and badges now refresh automatically as resource state changes.
+
+The **TEST** section on the **CONFIGURE** tab also shows status messages while a resource is being configured:
+
+- **Not saved**: Prompts you to save your configuration before testing
+- **Configuring...**: Shows a loading indicator while the resource initializes
+- **Configuration Failed**: Displays an error if configuration fails
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
