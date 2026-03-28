@@ -433,10 +433,28 @@ invocations; the DoCommand payload can vary with each call.
 2. Viam uploads your code as a new version and starts a cloud build.
 3. Builds typically take 2-5 minutes. You can continue editing while a build
    runs -- your next save creates a new version.
-4. If the build fails, click **View Logs** to see what went wrong.
+4. If the build fails, click the build status indicator and select a platform to
+   view logs.
 
-Each save creates a new version in your module's history. You can switch between
-versions using the version dropdown in the editor toolbar.
+Each save creates a new version in your module's history.
+
+#### View version history
+
+When your module has two or more saved versions, a **History** button (clock icon) appears in the header. Click it to open a fullscreen panel where you can:
+
+- **Browse versions** -- The sidebar lists all versions with their save timestamps, sorted newest first.
+- **Compare changes** -- Selecting a version shows a side-by-side diff against the previous version, highlighting what changed.
+- **Restore a version** -- Click **Restore version** to copy that code into a new version. This doesn't delete any existing versions—the restored code becomes the latest version and all previous versions remain available.
+- **Download packages** -- Click **Download package** to download the `.tar.gz` archive for any version.
+
+#### Rename or delete a module
+
+Click the **actions menu** (three-dot icon) in the header to access additional options:
+
+- **Rename** -- Change the module name. You can also rename by clicking the module name in the breadcrumb.
+- **Download package** -- Download the `.tar.gz` archive for the current version.
+- **View in registry** -- Open the module's registry page in a new tab.
+- **Delete** -- Permanently remove the module and all saved versions. You cannot delete a module that is currently deployed to machines—remove it from all machines first.
 
 ### 7. Test on a machine
 
@@ -522,7 +540,7 @@ may not have the feature enabled. Contact Viam support to request access.
 
 {{< expand "Build fails after saving" >}}
 
-- Click **View Logs** in the build progress bar to see the error.
+- Click the build status indicator and select a platform to view build logs.
 - Common causes: syntax errors, missing imports, incompatible dependencies.
 - You can fix the code and save again -- each save creates a new version.
 
@@ -550,8 +568,8 @@ may not have the feature enabled. Contact Viam support to request access.
 
 {{< expand "Changes to code not taking effect" >}}
 
-- Make sure the build completed successfully. Check the build progress bar in
-  the code editor.
+- Make sure the build completed successfully. Check the build status indicator
+  in the code editor header.
 - The machine must be online to receive the updated module. Check the machine's
   status in the Viam app.
 - By default, modules are configured with version `latest`, which means every

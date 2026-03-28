@@ -44,6 +44,16 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Redesigned inline module code editor" date="2026-03-25" %}}
+
+The [inline module](/operate/modules/write-an-inline-module/) code editor has a new design with an updated header and sidebar. The header now shows breadcrumb navigation and a compact build status indicator. Click the module name in the breadcrumb to rename it. The sidebar includes resizable tabs for documentation and the AI assistant (when enabled).
+
+Click the **History** button (clock icon) to open a fullscreen panel showing all saved versions with timestamps. Select any version to see a side-by-side diff comparing it to the previous version. Click **Restore version** to copy that code into a new version—the original versions remain in history. You can also download the package for any version.
+
+Click the **actions menu** (three-dot icon) to access additional options: **Rename**, **Download package**, **View in registry**, and **Delete**. When you delete an inline module, all saved versions are permanently removed.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
