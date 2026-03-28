@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Auto-inference runs on every image during dataset navigation" date="2026-03-25" %}}
+
+Auto-inference now runs on every image when navigating through a dataset in expanded view.
+Previously, a race condition caused inference to skip every other image.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
