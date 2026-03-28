@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Goal tolerance for arm motion planning" date="2026-03-23" %}}
+
+The [motion service](/operate/reference/services/motion/) now supports goal tolerance when planning arm movements.
+You can specify acceptable tolerance ranges for position and orientation using the `goal_cloud` field on `PoseInFrame`, giving the planner flexibility when exact positioning isn't required.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
