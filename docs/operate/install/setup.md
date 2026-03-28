@@ -125,7 +125,10 @@ Using `viam-agent` is generally recommended when installing `viam-server`.
 
 When you set up a native Windows device with Viam, you must use the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable.msi).
 
-`viam-agent` is not available for macOS, Windows Subsystem for Linux (WSL), or microcontrollers.
+`viam-agent` is available for macOS on Apple Silicon (M1/M2/M3) Macs.
+Intel Macs must install `viam-server` manually without `viam-agent`.
+
+`viam-agent` is not available for Windows Subsystem for Linux (WSL) or microcontrollers.
 Use manual install for those systems.
 {{% /hiddencontent %}}
 

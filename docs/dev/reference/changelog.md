@@ -44,6 +44,19 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved macOS setup wizard" date="2026-03-27" %}}
+
+The macOS setup wizard now clarifies that `viam-agent` only runs on Apple Silicon (M1/M2/M3) Macs.
+Intel Mac users are directed to use **Advanced setup** to install `viam-server` without `viam-agent`.
+
+The wizard also shows:
+
+- Local log file location (`/var/log/viam-agent.log`) for troubleshooting
+- Port 8080 conflict warning with a reference to the **Bind address** setting
+- Links to the [viam-agent documentation](/manage/reference/viam-agent/manage-viam-agent/)
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
