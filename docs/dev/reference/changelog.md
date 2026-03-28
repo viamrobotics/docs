@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved sidebar drag-and-drop behavior" date="2026-03-23" %}}
+
+Drag-and-drop in the sidebar on the **CONFIGURE** tab is now less sensitive.
+Clicking on a resource row no longer accidentally triggers a drag operation—you must move your cursor a short distance before dragging starts.
+Additionally, only the resource name is draggable; the menu icon no longer initiates drag-and-drop.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
