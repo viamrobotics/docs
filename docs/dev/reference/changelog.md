@@ -44,6 +44,19 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="C++ support for viam module generate" date="2026-03-17" %}}
+
+`viam module generate` now supports C++ as a language option alongside Python and Go.
+When you select C++, the generator creates a multi-file project structure:
+
+- A header file (`.hpp`) with class declarations
+- A source file (`.cpp`) with implementations
+- A separate `main.cpp` entry point
+- A `CMakeLists.txt` for CMake builds
+- A `conanfile.py` and `conan.lock` for Conan dependency management
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

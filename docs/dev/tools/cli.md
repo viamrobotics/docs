@@ -995,9 +995,11 @@ viam module download [command options]
 viam module local-app-testing --app-url http://localhost:3000
 ```
 
-{{% alert title="Note" color="note" %}}
-If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
-{{% /alert %}}
+`viam module generate` supports Python, Go, and C++:
+
+- Python modules require Python 3.9 or newer.
+- Go modules require Go 1.23 or newer.
+- C++ modules use Conan for dependency management and require Conan to be installed.
 
 {{% hiddencontent %}}
 
