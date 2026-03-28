@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="improved" title="Save as new clears name field in Save Query modal" date="2026-03-13" %}}
+
+When editing a saved query on the **Query** page and clicking **Save as new**, the name input field now clears instead of auto-populating with the existing query name.
+This makes it easier to enter a unique name for the new query.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
