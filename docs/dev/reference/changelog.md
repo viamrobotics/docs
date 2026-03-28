@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved sidebar drag and drop interaction" date="2026-03-09" %}}
+
+Drag and drop on the **CONFIGURE** tab sidebar now works more smoothly.
+Selecting a sidebar item no longer triggers accidentally when dragging, and scrolling on mobile devices is no longer blocked by drag detection.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
