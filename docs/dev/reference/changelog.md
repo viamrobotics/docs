@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Do Command section hidden for unsupported resources" date="2026-03-17" %}}
+
+The **Do Command** section on the **CONFIGURE** and **CONTROL** tabs now only appears for resources with web UI support.
+Previously, it appeared for all resources and showed an error when expanded for unsupported resources (such as audio input components).
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
