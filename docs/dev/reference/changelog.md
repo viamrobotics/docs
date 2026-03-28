@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Hot reloading permissions expanded" date="2026-03-24" %}}
+
+Location owners and machine owners can now use [`viam module reload`](/dev/tools/cli/#module) to build and deploy modules to their machines.
+Previously, only organization owners could use hot reloading.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
