@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Improved webcam reliability for USB HDMI capture cards" date="2026-03-19" %}}
+
+Fixed an issue where USB HDMI capture cards (such as Macrosilicon MS2109/MS2130) could permanently fail on startup, requiring a full process restart to recover.
+The webcam component now properly releases device resources on initialization errors.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
