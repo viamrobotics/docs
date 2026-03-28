@@ -14,7 +14,8 @@ toc_hide: true
 # SME: Rand
 ---
 
-Configure a `fake` gripper to test implementing a gripper on your machine without any physical hardware:
+Configure a `fake` gripper to test gripper functionality on your machine without any physical hardware.
+You can optionally specify a kinematic model file to visualize gripper movement in the visualizer:
 
 {{< tabs name="Configure a Fake Gripper" >}}
 {{% tab name="Config Builder" %}}
@@ -34,14 +35,22 @@ Enter a name or use the suggested name for your gripper and click **Create**.
   "name": "<your-fake-gripper-name>",
   "model": "fake",
   "api": "rdk:component:gripper",
-  "attributes": {}
+  "attributes": {
+    "model-path": "<path_to_gripper_model>"
+  }
 }
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-No attributes are available for fake grippers.
+The following attributes are available for `fake` grippers:
+
+<!-- prettier-ignore -->
+| Name | Type | Required? | Description |
+| ---- | ---- | --------- | ----------- |
+| `model-path` | string | Optional | The path to the [kinematic configuration file](/operate/reference/kinematic-chain-config/) of the gripper model you want your fake gripper to simulate. This path should point to the exact location where the file is located on your machine running `viam-server`. When a model with degrees of freedom is loaded, `Open` sets joints to their maximum values and `Grab` sets them to minimum values, allowing you to visualize gripper movement. |
+
 See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gripper/fake/gripper.go) for API call return specifications.
 
 {{< readfile "/static/include/components/test-control/gripper-control.md" >}}
