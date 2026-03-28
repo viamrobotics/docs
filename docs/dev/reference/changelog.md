@@ -44,6 +44,14 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Version checking for module generation" date="2026-03-19" %}}
+
+`viam module generate` now checks your Python or Go version before generating module code.
+Python modules require Python 3.10+, and Go modules require Go 1.23+.
+If your version is too old, the command displays an error with upgrade instructions.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
