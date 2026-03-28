@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Active training jobs visible on MODELS page" date="2026-03-24" %}}
+
+The [**MODELS** page](https://app.viam.com/models) now displays an **Active Training** section showing pending, in-progress, and failed training jobs.
+You can monitor training progress and view job details directly from the **MODELS** page without navigating to the separate **TRAINING** tab.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
