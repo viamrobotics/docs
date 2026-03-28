@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="C++ module generator no longer uses Reconfigurable" date="2026-03-24" %}}
+
+C++ modules generated with `viam module generate` no longer inherit from the `Reconfigurable` interface. Instead, modules are destroyed and recreated when their configuration changes, rather than being reconfigured in place. This matches the default behavior for Go modules, which use `resource.AlwaysRebuild`. Existing C++ modules are not affected.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
