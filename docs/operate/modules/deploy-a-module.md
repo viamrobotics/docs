@@ -112,6 +112,7 @@ review each field:
 | `build.build`       | No       | Script that compiles and packages the module.                                                                           |
 | `build.path`        | No       | Path to the packaged output archive (default: `module.tar.gz`).                                                         |
 | `build.arch`        | No       | Target platforms to build for (default: `["linux/amd64", "linux/arm64"]`).                                              |
+| `build.distro`      | No       | Debian distribution for the cloud build base image (default: `bullseye`). Set to `bookworm` for C++ modules.            |
 | `build.darwin_deps` | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                           |
 
 Visibility options:
