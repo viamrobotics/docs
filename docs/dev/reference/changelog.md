@@ -44,6 +44,17 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Separate timezone and timestamp format toggles on LOGS tab" date="2026-03-12" %}}
+
+The **LOGS** tab now has separate **Timezone** and **Timestamp format** toggles, allowing four combinations:
+
+- Local + Default: `3/11/2026, 2:42:49 PM`
+- UTC + Default: `3/11/2026, 6:42:49 PM`
+- Local + ISO: `2026-03-11T14:42:49.607-04:00`
+- UTC + ISO: `2026-03-11T18:42:49.607Z`
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
