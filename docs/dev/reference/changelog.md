@@ -44,6 +44,13 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="changed" title="Query results table improvements" date="2026-03-27" %}}
+
+The query results table on the [**Query** page](https://app.viam.com/data/query) now auto-sizes columns based on content, making data easier to read.
+You can also select and copy text directly from table cells.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
