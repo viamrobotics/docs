@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Hide and show resources on CONTROL tab" date="2026-03-23" %}}
+
+You can now hide and show individual resources on the **CONTROL** tab by clicking the eye icon next to any resource in the sidebar. Hidden resources remain accessible from the sidebar, and your visibility preferences persist across page reloads.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.
