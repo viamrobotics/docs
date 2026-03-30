@@ -12,14 +12,14 @@ Configuration fields, execution behavior, and limits for data pipelines. For an 
 
 ## Pipeline configuration fields
 
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `name` | string | Yes | Pipeline name. Must be unique within the organization. |
-| `organization_id` | string | Yes | Organization UUID. |
-| `schedule` | string | Yes | Cron expression in UTC. Determines both when the pipeline runs and the query time window. See [Cron schedule](#cron-schedule). |
-| `mql_binary` | array | Yes | MQL aggregation pipeline as an array of stage objects. See [Supported MQL operators](/data/reference/#supported-mql-operators). |
-| `enable_backfill` | bool | Yes | Whether to process historical time windows. See [Backfill behavior](#backfill-behavior). |
-| `data_source_type` | enum | No | Data source to query. Default: `standard`. See [Data source types](#data-source-types). |
+| Field              | Type   | Required | Description                                                                                                                     |
+| ------------------ | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `name`             | string | Yes      | Pipeline name. Must be unique within the organization.                                                                          |
+| `organization_id`  | string | Yes      | Organization UUID.                                                                                                              |
+| `schedule`         | string | Yes      | Cron expression in UTC. Determines both when the pipeline runs and the query time window. See [Cron schedule](#cron-schedule).  |
+| `mql_binary`       | array  | Yes      | MQL aggregation pipeline as an array of stage objects. See [Supported MQL operators](/data/reference/#supported-mql-operators). |
+| `enable_backfill`  | bool   | Yes      | Whether to process historical time windows. See [Backfill behavior](#backfill-behavior).                                        |
+| `data_source_type` | enum   | No       | Data source to query. Default: `standard`. See [Data source types](#data-source-types).                                         |
 
 ## Cron schedule
 
@@ -27,12 +27,12 @@ The `schedule` field uses standard five-field cron syntax: `minute hour day-of-m
 
 The schedule determines both when the pipeline runs and the time range it queries. Each run processes the time window between the previous two schedule ticks.
 
-| Schedule | Frequency | Query time range per run |
-| --- | --- | --- |
-| `0 * * * *` | Hourly | Previous hour |
-| `0 0 * * *` | Daily | Previous day |
-| `*/15 * * * *` | Every 15 minutes | Previous 15 minutes |
-| `*/5 * * * *` | Every 5 minutes | Previous 5 minutes |
+| Schedule       | Frequency        | Query time range per run |
+| -------------- | ---------------- | ------------------------ |
+| `0 * * * *`    | Hourly           | Previous hour            |
+| `0 0 * * *`    | Daily            | Previous day             |
+| `*/15 * * * *` | Every 15 minutes | Previous 15 minutes      |
+| `*/5 * * * *`  | Every 5 minutes  | Previous 5 minutes       |
 
 For example, a pipeline with schedule `0 * * * *` that triggers at 03:00 PM UTC processes data from 02:00 PM to 03:00 PM UTC. The time window is `[start, end)` (start inclusive, end exclusive).
 
@@ -40,21 +40,21 @@ Choose a schedule that matches how frequently you need updated summaries. Shorte
 
 ## Data source types
 
-| Type | CLI flag | Python SDK | Go SDK | Description |
-| --- | --- | --- | --- | --- |
-| Standard | `standard` | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD` | `app.TabularDataSourceTypeStandard` | Queries the raw `readings` collection. Contains all historical tabular data. |
-| Hot storage | `hotstorage` | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` | `app.TabularDataSourceTypeHotStorage` | Queries the [hot data store](/data/hot-data-store/). Rolling window of recent data. |
-| Pipeline sink | (query only) | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | `app.TabularDataSourceTypePipelineSink` | Queries the output of another pipeline. Requires a `pipeline_id`. |
+| Type          | CLI flag     | Python SDK                                                     | Go SDK                                  | Description                                                                         |
+| ------------- | ------------ | -------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------- |
+| Standard      | `standard`   | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD`      | `app.TabularDataSourceTypeStandard`     | Queries the raw `readings` collection. Contains all historical tabular data.        |
+| Hot storage   | `hotstorage` | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`   | `app.TabularDataSourceTypeHotStorage`   | Queries the [hot data store](/data/hot-data-store/). Rolling window of recent data. |
+| Pipeline sink | (query only) | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | `app.TabularDataSourceTypePipelineSink` | Queries the output of another pipeline. Requires a `pipeline_id`.                   |
 
 ## Run statuses
 
-| Status | Value | Description |
-| --- | --- | --- |
-| `UNSPECIFIED` | 0 | Unknown or not set. |
-| `SCHEDULED` | 1 | Run is queued. Execution begins after a 2-minute delay. |
-| `STARTED` | 2 | MQL query is executing against the data source. |
-| `COMPLETED` | 3 | Run finished successfully. Results are in the pipeline sink. |
-| `FAILED` | 4 | Run encountered an error. Check the `error_message` field on the run. |
+| Status        | Value | Description                                                           |
+| ------------- | ----- | --------------------------------------------------------------------- |
+| `UNSPECIFIED` | 0     | Unknown or not set.                                                   |
+| `SCHEDULED`   | 1     | Run is queued. Execution begins after a 2-minute delay.               |
+| `STARTED`     | 2     | MQL query is executing against the data source.                       |
+| `COMPLETED`   | 3     | Run finished successfully. Results are in the pipeline sink.          |
+| `FAILED`      | 4     | Run encountered an error. Check the `error_message` field on the run. |
 
 If a run stays in `STARTED` for more than 10 minutes, it is automatically marked as `FAILED` and a new run is created for that time window.
 
@@ -62,15 +62,15 @@ If a run stays in `STARTED` for more than 10 minutes, it is automatically marked
 
 Each pipeline run record contains:
 
-| Field | Type | Description |
-| --- | --- | --- |
-| `id` | string | Run identifier. |
-| `status` | enum | Current status. See [Run statuses](#run-statuses). |
-| `start_time` | timestamp | When the run started executing. |
-| `end_time` | timestamp | When the run completed or failed. |
+| Field             | Type      | Description                                                   |
+| ----------------- | --------- | ------------------------------------------------------------- |
+| `id`              | string    | Run identifier.                                               |
+| `status`          | enum      | Current status. See [Run statuses](#run-statuses).            |
+| `start_time`      | timestamp | When the run started executing.                               |
+| `end_time`        | timestamp | When the run completed or failed.                             |
 | `data_start_time` | timestamp | Start of the data time window this run processed (inclusive). |
-| `data_end_time` | timestamp | End of the data time window this run processed (exclusive). |
-| `error_message` | string | Error details if the run failed. Empty on success. |
+| `data_end_time`   | timestamp | End of the data time window this run processed (exclusive).   |
+| `error_message`   | string    | Error details if the run failed. Empty on success.            |
 
 ## Backfill behavior
 
@@ -111,20 +111,20 @@ Each pipeline stores its output in a dedicated sink collection named `sink-<pipe
 
 The `_viam_pipeline_run` field is added automatically. Your pipeline's `$project` output fields appear alongside it.
 
-To query the sink, use data source type `pipeline_sink` with the pipeline's ID. See [Query pipeline results](/data/pipelines/create-a-pipeline/#query-pipeline-results).
+To query the sink, use data source type `pipeline_sink` with the pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
 
 Deleting a pipeline deletes the sink collection and all its data. Export results before deleting if you need to preserve them.
 
 ## Execution limits
 
-| Limit | Value |
-| --- | --- |
-| Maximum output documents per run | 10,000 |
-| MQL execution timeout | 5 minutes |
-| Execution start delay | 2 minutes after scheduled time |
-| Hung run detection | 2x execution timeout (currently 10 minutes) in `STARTED` state |
-| Backfill batch size | 10 concurrent time windows |
-| Backfill throttle | 2-minute delay between batches |
+| Limit                            | Value                                                          |
+| -------------------------------- | -------------------------------------------------------------- |
+| Maximum output documents per run | 10,000                                                         |
+| MQL execution timeout            | 5 minutes                                                      |
+| Execution start delay            | 2 minutes after scheduled time                                 |
+| Hung run detection               | 2x execution timeout (currently 10 minutes) in `STARTED` state |
+| Backfill batch size              | 10 concurrent time windows                                     |
+| Backfill throttle                | 2-minute delay between batches                                 |
 
 ## Permissions
 

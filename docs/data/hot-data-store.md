@@ -83,7 +83,7 @@ specify it as the data source in your query.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Use [`DataClient.TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) with `data_source` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`:
+Use [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) with `data_source` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`:
 
 ```python
 from viam.gen.app.data.v1.data_pb2 import TabularDataSourceType
@@ -133,7 +133,7 @@ for _, entry := range hotData {
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Use [`dataClient.TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) with `dataSourceType` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`:
+Use [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) with `dataSourceType` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`:
 
 {{< read-code-snippet file="/static/include/examples-generated/query.snippet.pipeline-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 

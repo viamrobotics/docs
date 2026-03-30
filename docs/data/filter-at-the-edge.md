@@ -179,8 +179,8 @@ Once you save your configuration, place an object that your ML model can detect 
 Images that pass your filter will be captured and will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
 Your images will begin to appear under the **DATA** tab.
 
-If no data appears after the sync interval, check the [**Logs**](/monitor/troubleshoot/#check-logs) and ensure that the condition for filtering is met.
-You can test the vision service from the [**CONTROL** tab](/monitor/teleoperate/) to see its classifications and detections live.
+If no data appears after the sync interval, check the [**Logs**](/manage/troubleshoot/troubleshoot/#check-logs) and ensure that the condition for filtering is met.
+You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/) to see its classifications and detections live.
 
 {{% /tablestep %}}
 {{% tablestep %}}

@@ -343,7 +343,7 @@ The data management service controls sync behavior, storage paths, and deletion 
 | `selective_syncer_name`           | string           | Optional  | Name of the sensor that controls selective sync. Also add this sensor to the `depends_on` field. See [Conditional sync](/data/capture-sync/conditional-sync/).                                                                                                  |                                                                     |
 | `delete_every_nth_when_disk_full` | int              | Optional  | When local storage meets the fullness criteria, the service deletes every Nth captured file. <br> Default: `5`                                                                                                                                                  |                                                                     |
 | `maximum_num_sync_threads`        | int              | Optional  | Max CPU threads for syncing to the cloud. Higher values may improve throughput but can cause instability on constrained devices. <br> Default: [runtime.NumCPU](https://pkg.go.dev/runtime#NumCPU)/2                                                            |                                                                     |
-| `mongo_capture_config.uri`        | string           | Optional  | [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) for writing tabular data alongside disk capture.                                                         |                                                                     |
+| `mongo_capture_config.uri`        | string           | Optional  | [MongoDB URI](https://www.mongodb.com/docs/v6.2/reference/connection-string/) for writing tabular data alongside disk capture.                                                                                                                                  |                                                                     |
 | `mongo_capture_config.database`   | string           | Optional  | Database name for MongoDB capture. <br> Default: `"sensorData"`                                                                                                                                                                                                 |                                                                     |
 | `mongo_capture_config.collection` | string           | Optional  | Collection name for MongoDB capture. <br> Default: `"readings"`                                                                                                                                                                                                 |                                                                     |
 | `maximum_capture_file_size_bytes` | int              | Optional  | Maximum size in bytes of each capture file on disk. When a capture file reaches this size, a new file is created. <br> Default: `262144` (256 KB)                                                                                                               |                                                                     |
@@ -355,8 +355,8 @@ The data management service controls sync behavior, storage paths, and deletion 
 
 The following settings appear in your machine's configuration but are not processed by `viam-server` on your machine. They are read and enforced by the Viam cloud platform:
 
-| Name | Type | Description |
-| --- | --- | --- |
+| Name                           | Type | Description                                                                                               |
+| ------------------------------ | ---- | --------------------------------------------------------------------------------------------------------- |
 | `delete_data_on_part_deletion` | bool | Whether deleting this machine or machine part also deletes all its captured cloud data. Default: `false`. |
 
 ### Data capture method attributes
@@ -391,7 +391,7 @@ The following capture method settings are processed by the Viam cloud platform, 
 | `retention_policy` | object | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
 | `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
-For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/). 
+For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/).
 
 ### Supported resources
 

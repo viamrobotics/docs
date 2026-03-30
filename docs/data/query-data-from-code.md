@@ -13,7 +13,7 @@ aliases:
 Pull captured data into your own programs using the Viam data client API. You can run the same SQL and MQL queries available in the app's query editor from Python or Go code.
 
 {{< alert title="Tip: discover your data structure" color="tip" >}}
-Not sure what fields to query? Run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` in the [query editor](/data/query-data/) first. Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/reference/#readings-table-schema) for the full reference.
+Not sure what fields to query? Run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` in the [query editor](/data/query-data/) first. Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/reference/#column-reference) for the full reference.
 {{< /alert >}}
 
 ## Set up a connection

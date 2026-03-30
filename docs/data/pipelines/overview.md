@@ -69,11 +69,11 @@ When backfill is disabled, each time window is processed exactly once. Late-arri
 
 ## Data source types
 
-| Source type | What it queries | When to use |
-| --- | --- | --- |
-| `standard` | The raw `readings` collection containing all historical tabular data | Default. Use for aggregations over any time range. |
-| `hotstorage` | The [hot data store](/data/hot-data-store/) containing a rolling window of recent data | Use when your pipeline only needs recent data and you want lower query latency. |
-| `pipeline_sink` | The output of another pipeline | Use when chaining pipelines: one pipeline produces summaries, another aggregates those summaries further. Requires the source pipeline's ID. |
+| Source type     | What it queries                                                                        | When to use                                                                                                                                  |
+| --------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `standard`      | The raw `readings` collection containing all historical tabular data                   | Default. Use for aggregations over any time range.                                                                                           |
+| `hotstorage`    | The [hot data store](/data/hot-data-store/) containing a rolling window of recent data | Use when your pipeline only needs recent data and you want lower query latency.                                                              |
+| `pipeline_sink` | The output of another pipeline                                                         | Use when chaining pipelines: one pipeline produces summaries, another aggregates those summaries further. Requires the source pipeline's ID. |
 
 ## What's next
 

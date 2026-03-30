@@ -126,12 +126,12 @@ nextPage, err := page.NextPage(ctx)
 
 Run statuses:
 
-| Status | Meaning |
-| --- | --- |
+| Status      | Meaning                                                                            |
+| ----------- | ---------------------------------------------------------------------------------- |
 | `SCHEDULED` | The run is queued and waiting to execute (2-minute delay before execution starts). |
-| `STARTED` | The run is executing the MQL aggregation against the data source. |
-| `COMPLETED` | The run finished and results are in the pipeline sink. |
-| `FAILED` | The run encountered an error. Check the `error_message` field. |
+| `STARTED`   | The run is executing the MQL aggregation against the data source.                  |
+| `COMPLETED` | The run finished and results are in the pipeline sink.                             |
+| `FAILED`    | The run encountered an error. Check the `error_message` field.                     |
 
 If a run stays in `STARTED` for more than 10 minutes, it is automatically marked as failed and a new run is created for that time window.
 

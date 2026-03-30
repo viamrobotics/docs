@@ -39,15 +39,15 @@ The CLI prints the pipeline ID on success. Save this ID to query results and man
 
 ### CLI flags
 
-| Flag | Required | Description |
-| --- | --- | --- |
-| `--org-id` | Yes | Your organization ID. |
-| `--name` | Yes | A descriptive name. Must be unique within the organization. |
-| `--schedule` | Yes | A cron expression in UTC. Also determines the query time window. See [Cron schedule](/data/pipelines/reference/#cron-schedule). |
-| `--mql` | One of `--mql` or `--mql-path` | The MQL aggregation pipeline as a JSON string. |
-| `--mql-path` | One of `--mql` or `--mql-path` | Path to a file containing the MQL aggregation pipeline as JSON. |
-| `--enable-backfill` | Yes | Whether to process historical time windows. `true` or `false`. |
-| `--data-source-type` | Yes | `standard` or `hotstorage`. |
+| Flag                 | Required                       | Description                                                                                                                     |
+| -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `--org-id`           | Yes                            | Your organization ID.                                                                                                           |
+| `--name`             | Yes                            | A descriptive name. Must be unique within the organization.                                                                     |
+| `--schedule`         | Yes                            | A cron expression in UTC. Also determines the query time window. See [Cron schedule](/data/pipelines/reference/#cron-schedule). |
+| `--mql`              | One of `--mql` or `--mql-path` | The MQL aggregation pipeline as a JSON string.                                                                                  |
+| `--mql-path`         | One of `--mql` or `--mql-path` | Path to a file containing the MQL aggregation pipeline as JSON.                                                                 |
+| `--enable-backfill`  | Yes                            | Whether to process historical time windows. `true` or `false`.                                                                  |
+| `--data-source-type` | Yes                            | `standard` or `hotstorage`.                                                                                                     |
 
 For complex queries, use `--mql-path` to read from a file:
 

@@ -68,7 +68,7 @@ For debugging, Viam includes OpenTelemetry distributed tracing that traces reque
 
 Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana connected to your data through MongoDB.
 
-See [Trigger on data events](/data/trigger-on-data/), [Debug and trace](/data/debug-and-trace/), and [Visualize data](/data/visualize-data/).
+See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
 ## Manage data volume
 

@@ -102,7 +102,7 @@ A vision service captures detection results. This pipeline counts how many detec
 
 ## Compute derived metrics
 
-A sensor reports voltage and current. This pipeline computes power (voltage * current) and summarizes per hour:
+A sensor reports voltage and current. This pipeline computes power (voltage \* current) and summarizes per hour:
 
 ```json
 [
@@ -110,10 +110,7 @@ A sensor reports voltage and current. This pipeline computes power (voltage * cu
   {
     "$addFields": {
       "power_watts": {
-        "$multiply": [
-          "$data.readings.voltage",
-          "$data.readings.current"
-        ]
+        "$multiply": ["$data.readings.voltage", "$data.readings.current"]
       }
     }
   },
