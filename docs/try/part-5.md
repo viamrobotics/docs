@@ -8,6 +8,7 @@ description: "Build a monitoring dashboard for your inspection system using Viam
 date: "2025-01-30"
 aliases:
   - /operate/hello-world/first-project/part-6/
+  - /try/first-project/part-5/
 ---
 
 **Goal:** Build a dashboard to monitor your inspection system.

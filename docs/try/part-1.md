@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Set up a camera, ML model, and vision service to detect defects."
 date: "2025-01-30"
+aliases:
+  - /try/first-project/part-1/
 ---
 
 **Goal:** Get a computer vision pipeline working.
