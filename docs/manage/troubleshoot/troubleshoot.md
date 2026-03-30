@@ -154,7 +154,9 @@ You can use a regular expression as your keyword.
 The default log level for `viam-server` and any running resources is `Info`.
 If you are not seeing helpful logs, you can try changing the log level to `Debug`.
 
-You can enable debug logs for all resources on a machine by adding `"debug": true` to the machine's JSON configuration:
+You can enable debug logs for all resources on a machine by clicking the **...** menu next to your machine part in the left-hand menu of the **CONFIGURE** tab and toggling **Debug logs** on.
+
+Alternatively, you can add `"debug": true` to the machine's JSON configuration:
 
 ```json
 {
@@ -163,7 +165,7 @@ You can enable debug logs for all resources on a machine by adding `"debug": tru
 }
 ```
 
-If this produces too many logs, you can instead **enable debug logs** for individual resources using the **...** menu on each resource.
+If machine-wide debug logs produce too many logs, you can instead **enable debug logs** for individual resources using the **...** menu on each resource.
 You can also set the log level by configuring the `log` attribute in the machine configuration to match on patterns that capture the resources you are interested in.
 For example:
 
