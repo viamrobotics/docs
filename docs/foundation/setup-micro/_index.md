@@ -7,6 +7,8 @@ type: "docs"
 description: "Set up micro-controller."
 aliases:
   - /operate/install/setup-micro/
+_build:
+  list: never
 ---
 
 Set up an ESP32 microcontroller with viam-micro-server.
