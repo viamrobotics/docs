@@ -300,5 +300,5 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
   hardware configurations.
 - [Motion Planning](/motion-planning/): configure frames, kinematics, and
   obstacles for motion planning.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   coordinates the arm with sensors.

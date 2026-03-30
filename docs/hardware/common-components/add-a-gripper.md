@@ -261,5 +261,5 @@ go run main.go
   the gripper is mounted on.
 - [Fragments](/hardware/fragments/): save and reuse working
   hardware configurations.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   coordinates the gripper with a camera for pick-and-place.

@@ -284,5 +284,5 @@ go run main.go
 - [Input controller API reference](/dev/reference/apis/components/input-controller/): full method documentation.
 - [Add a Base](/hardware/common-components/add-a-base/): drive a mobile robot
   with your gamepad.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   translates gamepad input into machine actions.

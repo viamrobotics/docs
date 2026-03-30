@@ -260,5 +260,5 @@ go run main.go
   GPS or odometry to track where the base is.
 - [Add an Encoder](/hardware/common-components/add-an-encoder/): add encoders to
   your motors for better accuracy.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   drives the base based on sensor input.

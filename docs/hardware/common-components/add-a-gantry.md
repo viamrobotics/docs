@@ -281,5 +281,5 @@ go run main.go
   that drives the gantry axis.
 - [Fragments](/hardware/fragments/): save and reuse working
   hardware configurations.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   coordinates gantry motion with sensors.

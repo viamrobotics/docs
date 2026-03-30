@@ -229,7 +229,7 @@ go run main.go
 ## What's next
 
 - [Switch API reference](/dev/reference/apis/components/switch/): full method documentation.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   responds to switch position changes.
 - [Component types](/hardware/component-types/): find the right type for
   your hardware.

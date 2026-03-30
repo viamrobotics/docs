@@ -233,5 +233,5 @@ go run main.go
 - [Servo API reference](/dev/reference/apis/components/servo/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): for continuous rotation
   instead of angular positioning.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write code that
+- [What is a module?](/build-modules/overview/): write code that
   moves the servo based on sensor readings.
