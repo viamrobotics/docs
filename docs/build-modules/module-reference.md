@@ -216,6 +216,7 @@ class MySensor(Sensor, EasyResource):
     async def get_readings(self, **kwargs):
         return {"temperature": 23.5}
 
+
 if __name__ == '__main__':
     import asyncio
     asyncio.run(Module.run_from_registry())
