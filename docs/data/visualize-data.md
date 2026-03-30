@@ -13,6 +13,7 @@ aliases:
   - /how-tos/sensor-data-visualize/
   - /how-tos/configure-teleop-workspace/
   - /tutorials/services/visualize-data-grafana/
+  - /data/debug-and-trace/
 ---
 
 Build dashboards and monitoring views for your captured data. Visualization helps you spot trends, detect anomalies, and monitor machine health.

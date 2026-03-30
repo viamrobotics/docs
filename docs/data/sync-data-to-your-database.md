@@ -10,6 +10,7 @@ aliases:
   - /data/export/sync-data-to-your-database/
   - /data/sync-data-to-your-database/
   - /build/data/sync-data-to-your-database/
+  - /data/capture-sync/direct-mongodb-capture/
 ---
 
 Integrate Viam's captured data with your own database or data infrastructure. This is useful when compliance requires you to control where data resides, when you already have a MongoDB cluster with dashboards and pipelines built on it, or when you want to reduce dependency on any single vendor at the storage layer.

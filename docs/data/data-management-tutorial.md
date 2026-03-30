@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Capture sensor data, sync it to the cloud, view it in the Data tab, and query it from code."
 date: "2026-03-26"
+aliases:
+  - /data/capture-sync/data-capture-tutorial/
 ---
 
 In this tutorial, you will set up a complete data pipeline: capture sensor data on your machine, sync it to Viam's cloud, view it in the Data tab, and query it from your own code. By the end, you will understand how data flows from your robot to the cloud and how to access it programmatically.

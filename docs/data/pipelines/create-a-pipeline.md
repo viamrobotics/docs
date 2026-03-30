@@ -10,6 +10,7 @@ aliases:
   - /data/configure-data-pipelines/
   - /build/data/configure-data-pipelines/
   - /data-ai/data/data-pipelines/
+  - /data/query/configure-data-pipelines/
 ---
 
 Create a pipeline that runs a scheduled MQL aggregation against your captured data and stores the results as precomputed summaries. For an overview of how pipelines work, see [Data pipelines overview](/data/pipelines/overview/).
