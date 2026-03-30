@@ -42,8 +42,7 @@ In this tutorial you will work through a series of tasks that are common to many
 - [1.2 Locate your machine part](../part-1/#12-locate-your-machine-part)
 - [1.3 Configure the camera](../part-1/#13-configure-the-camera)
 - [1.4 Test the camera](../part-1/#14-test-the-camera)
-- [1.5 Add an ML model service](../part-1/#15-add-an-ml-model-service)
-- [1.6 Add a vision service](../part-1/#16-add-a-vision-service)
+- [1.5 Add a vision pipeline with a fragment](../part-1/#15-add-a-vision-pipeline-with-a-fragment)
 
 **[Part 2: Data capture](../part-2/)** (~5 min)
 
