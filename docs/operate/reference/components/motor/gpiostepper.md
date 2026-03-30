@@ -117,6 +117,10 @@ The following attributes are available for `gpiostepper` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
+Position tracking is accurate up to 1kHz.
+Higher frequencies may reduce position accuracy.
+Some boards do not support all PWM frequencies, so actual motor behavior at certain speeds depends on the frequencies your board supports.
+
 ## Wiring example
 
 Typically, a stepper motor will have an even number of wires.
