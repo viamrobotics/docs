@@ -1,8 +1,127 @@
 ---
-linkTitle: "Frame system"
+linkTitle: "Frame System"
 title: "Frame System"
 weight: 10
 layout: "docs"
 type: "docs"
 description: "Build a unified coordinate tree so all components agree on where things are in physical space."
+aliases:
+  - /work-cell-layout/define-your-frame-system/
+  - /build/work-cell-layout/define-your-frame-system/
+  - /operate/mobility/move-arm/frame-how-to/
+  - /reference/services/frame-system/
+  - /services/frame-system/
+  - /mobility/frame-system/
+  - /services/frame-system/frame-config/
+  - /mobility/frame-system/frame-config/
+  - /reference/services/frame-system/frame-config/
 ---
+
+When your robot has multiple components such as: an arm, a camera, a gripper
+each component reports positions in its own local coordinate system. A camera sees an object at pixel (320, 240), but the arm needs to know the object's
+position in three-dimensional space relative to its own base. Without a unified spatial model, you cannot translate between these coordinate systems.
+
+The frame system solves this by storing the position and orientation of every
+component in a single, consistent coordinate tree. You define where each
+component sits relative to its parent, and Viam computes the transforms between
+any two frames automatically. Once the frame system is configured, you can ask
+questions like "where is this point in my camera frame, expressed in world
+coordinates?" with a single API call.
+
+Getting the frame system right is a prerequisite for motion planning, obstacle
+avoidance, and any task where multiple components need to agree on where things
+are in physical space.
+
+## Concepts
+
+### The world frame
+
+The world frame is the fixed root reference point for your entire frame system.
+You choose what physical location it corresponds to, for example: the corner of a table, the center of a work surface, or the base of an arm. You do not explicitly
+configure the world frame itself. Instead, you define it implicitly by
+configuring other frames relative to it.
+
+Pick a point that is easy to measure from and that will not move. For a
+table-mounted arm, the arm base or a table corner are good choices. For a mobile
+robot, the center of the base is typical.
+
+### Parent-child hierarchy
+
+Each component's frame has a parent frame. The parent defaults to the world
+frame if you do not specify one. When you attach a camera to an arm, you set the
+camera's frame parent to the arm. This means the camera's position is defined
+relative to the arm's end, and when the arm moves, the camera frame moves with
+it automatically.
+
+The hierarchy forms a tree rooted at the world frame:
+
+```
+world
+├── my-arm
+│   ├── my-gripper (attached to arm)
+│   └── my-camera (mounted on arm)
+├── my-sensor (mounted on table)
+└── table-surface
+```
+
+### Translation
+
+Translation is the offset in millimeters from the parent frame's origin to the
+component's origin. It is specified as an (x, y, z) vector:
+
+- **x**: right/left offset
+- **y**: forward/backward offset
+- **z**: up/down offset
+
+The exact meaning of each axis depends on the parent frame's orientation. If the
+parent is the world frame with the standard orientation, +z points up.
+
+### Orientation
+
+Orientation describes how a component's axes are rotated relative to its parent
+frame. Viam supports several orientation formats:
+
+| Type | Fields | Description |
+|------|--------|-------------|
+| `ov_degrees` | `x, y, z, th` | Orientation vector (axis) with angle in degrees |
+| `ov_radians` | `x, y, z, th` | Orientation vector (axis) with angle in radians |
+| `euler_angles` | `roll, pitch, yaw` | Rotation around x, y, z axes (radians) |
+| `axis_angles` | `x, y, z, th` | Rotation axis (unit vector) with angle in radians |
+| `quaternion` | `w, x, y, z` | Unit quaternion (auto-normalized) |
+
+The default orientation is `ov_degrees` with values `(0, 0, 1), 0`, which means
+the component's axes are aligned with its parent frame. The orientation vector
+(x, y, z) defines the axis of rotation, and `th` defines the rotation angle
+around that axis. The axis must be a non-zero vector (the code normalizes it
+internally).
+
+For a detailed reference on orientation vectors, see
+[Orientation Vectors](/motion-planning/reference/orientation-vectors/).
+
+### Geometry
+
+Each frame can optionally include collision geometry. This is a simple shape that
+approximates the component's physical footprint. The motion planner uses these
+shapes to avoid collisions. Supported types:
+
+- **box**: defined by x, y, z dimensions in mm
+- **sphere**: defined by a radius in mm
+- **capsule**: defined by a radius and length in mm
+
+Geometry is centered on the frame's origin by default. You can add a
+`translation` offset and `orientation` offset within the geometry config to shift
+it relative to the frame.
+
+For detailed information about obstacle geometry, see
+[Define Obstacles](/motion-planning/obstacles/).
+
+## What's Next
+
+Configure the frame system for your hardware setup:
+
+{{< cards >}}
+{{% card link="/motion-planning/frame-system-how-to/arm-gripper-camera/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system-how-to/arm-fixed-camera/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system-how-to/mobile-base-sensors/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system-how-to/mobile-base-arm/" noimage="true" %}}
+{{< /cards >}}
