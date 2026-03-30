@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Write inspection logic that detects defective cans."
 date: "2025-01-30"
+aliases:
+  - /try/first-project/part-3/
 ---
 
 **Goal:** Write inspection logic that detects defective cans.

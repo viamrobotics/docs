@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Deploy your inspector module and configure queryable detection data capture."
 date: "2025-01-30"
+aliases:
+  - /try/first-project/part-4/
 ---
 
 **Goal:** Deploy your inspector to run on the machine autonomously.
