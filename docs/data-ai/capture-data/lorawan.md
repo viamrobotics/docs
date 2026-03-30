@@ -5,6 +5,9 @@ weight: 60
 type: "docs"
 description: "Configure a gateway and nodes to communicate over the LoRaWAN protocol."
 tags: ["sensor", "components", "lorawan", "gateway", "node"]
+aliases:
+  - /data/capture-sync/lorawan/
+  - /data/lorawan/
 icon: true
 images: ["/icons/components/sensor.svg"]
 ---
