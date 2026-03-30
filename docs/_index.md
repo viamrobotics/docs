@@ -5,7 +5,7 @@ description: "Viam integrates with hardware and software on any device. Use AI, 
 weight: 1
 type: "docs"
 layout: "empty"
-canonical: "/what-is-viam/what-is-viam/"
+canonical: "/what-is-viam/"
 sitemap:
   priority: 1.0
 outputs:
