@@ -11,7 +11,7 @@ Create and manage API keys, configure OAuth authentication for end users, and se
 
 {{< expand "Prerequisites" >}}
 You need the Viam CLI installed and authenticated.
-See [Viam CLI](/cli/) for installation and authentication instructions.
+See [Viam CLI overview](/cli/overview/) for installation and authentication instructions.
 {{< /expand >}}
 
 ## Find your IDs

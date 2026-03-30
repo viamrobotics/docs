@@ -11,7 +11,7 @@ Scaffold a new module, iterate on it locally with hot-reload, upload it to the r
 
 {{< expand "Prerequisites" >}}
 You need the Viam CLI installed and authenticated.
-See [Viam CLI](/cli/) for installation and authentication instructions.
+See [Viam CLI overview](/cli/overview/) for installation and authentication instructions.
 {{< /expand >}}
 
 ## Find your IDs

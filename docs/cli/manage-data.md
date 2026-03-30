@@ -11,7 +11,7 @@ Export captured data to your local machine, organize it with tags, delete old da
 
 {{< expand "Prerequisites" >}}
 You need the Viam CLI installed and authenticated.
-See [Viam CLI](/cli/) for installation and authentication instructions.
+See [Viam CLI overview](/cli/overview/) for installation and authentication instructions.
 {{< /expand >}}
 
 ## Find your IDs

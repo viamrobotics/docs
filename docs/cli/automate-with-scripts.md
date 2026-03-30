@@ -205,7 +205,7 @@ Increase it for faster exports on high-bandwidth connections, or decrease it to 
 
 ## Related pages
 
-- [Viam CLI](/cli/) for installation and authentication
+- [Viam CLI overview](/cli/overview/) for installation and authentication
 - [Provision devices](/fleet/provision-devices/) for provisioning with viam-agent
 - [Deploy a module](/build-modules/deploy-a-module/) for GitHub Actions integration
 - [CLI reference](/dev/tools/cli/) for the complete command reference

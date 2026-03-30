@@ -14,7 +14,7 @@ date: "2024-08-23"
 ---
 
 This page documents every command, subcommand, flag, and alias in the Viam CLI.
-For installation, authentication, and task-oriented guides, see the [Viam CLI overview](/cli/).
+For installation, authentication, and task-oriented guides, see the [Viam CLI overview](/cli/overview/).
 
 All commands use this format:
 
@@ -460,7 +460,7 @@ viam login print-access-token
 ```
 
 Use `viam login` to authenticate using a personal access token, or `viam login api-key` to authenticate using an API key.
-See [Authenticate](/cli/#authenticate).
+See [Authenticate](/cli/overview/#authenticate).
 
 #### Command options
 
@@ -1478,7 +1478,7 @@ viam train list --org-id=123 --job-status=completed
 ### `version`
 
 The `version` command returns the version of the Viam CLI.
-To update to the latest version of the CLI, run the [installation steps](/cli/#install) again to download and install the latest version.
+To update to the latest version of the CLI, run the [installation steps](/cli/overview/#install) again to download and install the latest version.
 
 ```sh {class="command-line" data-prompt="$"}
 viam version
