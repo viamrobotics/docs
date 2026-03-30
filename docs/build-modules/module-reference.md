@@ -209,6 +209,7 @@ from viam.components.sensor import Sensor
 from viam.resource.easy_resource import EasyResource
 from viam.module.module import Module
 
+
 class MySensor(Sensor, EasyResource):
     MODEL = "my-org:my-module:my-sensor"
 

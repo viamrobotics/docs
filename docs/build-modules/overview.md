@@ -195,7 +195,7 @@ shuts down or reconfigures. Use a cancellation signal (a channel in Go, an
    Your machine can sense and act through individual hardware.
 2. **Test interactively**. Use test panels in the Viam app and SDK scripts
    to verify each component works.
-3. **Capture data** ([Capture and sync data](/data/capture-and-sync-data/)).
+3. **Capture data** ([Capture and sync data](/data/capture-sync/capture-and-sync-data/)).
    Start recording what your sensors observe.
 4. **Write a module**. Tie components together with decision-making code, or
    add support for new hardware.

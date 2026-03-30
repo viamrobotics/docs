@@ -179,7 +179,7 @@ func newMyBase(ctx context.Context, deps resource.Dependencies,
 
 {{% alert title="Note" color="note" %}}
 Go modules that use `resource.AlwaysRebuild` resolve dependencies in the constructor, which runs on every reconfiguration.
-If you need to maintain state across reconfigurations, see [Set up model configuration options](/build-modules/write-a-driver-module/#set-up-model-configuration-options).
+If you need to maintain state across reconfigurations, see [Handle reconfiguration](/build-modules/write-a-driver-module/#6-handle-reconfiguration-optional).
 {{% /alert %}}
 
 ### 3. Use dependencies
