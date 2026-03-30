@@ -185,7 +185,7 @@ For the full list of `mlmodel` vision service configuration attributes, see [Con
 
 Click **Save** in the upper right. `viam-server` reloads automatically and initializes both services. You do not need to restart anything.
 
-You can verify which capabilities your vision service supports by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). This returns whether the service supports detections, classifications, and 3D object point clouds.
+You can verify which capabilities your vision service supports by calling [`GetProperties`](/dev/reference/apis/services/vision/#getproperties). This returns whether the service supports detections, classifications, and 3D object point clouds.
 
 ### 6. Test from the CONTROL tab
 
@@ -263,14 +263,14 @@ This is useful for non-vision ML models or when you need to interpret the raw mo
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-The following code passes an image to an ML model service, and uses the [`Infer`](/reference/apis/services/ml/#infer) method to make inferences:
+The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.py" lang="py" class="line-numbers linkable-line-numbers" data-line="82-85" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following code passes an image to an ML model service, and uses the [`Infer`](/reference/apis/services/ml/#infer) method to make inferences:
+The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.go" lang="go" class="line-numbers linkable-line-numbers" data-line="161-164" >}}
 

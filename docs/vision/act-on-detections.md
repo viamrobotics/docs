@@ -43,7 +43,7 @@ Your module needs access to the vision service, a camera, and whatever resource 
 
 ### 1. Generate the module scaffold
 
-Install the [Viam CLI](/reference/cli/) and generate a module template. Replace `<ORGANIZATION-ID>` with your organization ID.
+Install the [Viam CLI](/dev/tools/cli/) and generate a module template. Replace `<ORGANIZATION-ID>` with your organization ID.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate --language python --model-name safe-arm \
@@ -194,6 +194,7 @@ async def move_to_position(
         raise ValueError(
             "Person detected. Safe arm will not move.")
 
+
 async def move_to_joint_positions(
     self,
     positions: JointPositions,
@@ -257,7 +258,7 @@ Add your resource as a local component:
 Once your module works locally:
 
 1. Commit and push your code to a GitHub repository.
-2. Follow the steps to [upload your module](/build-modules/deploy-a-module/#package-and-upload-the-module) using cloud build.
+2. Follow the steps to [upload your module](/build-modules/deploy-a-module/) using cloud build.
 3. After upload, remove the local module and add the resource from the registry instead.
 
 ### 9. Update references
@@ -300,4 +301,4 @@ If your module wraps another resource, update any services or processes that ref
 
 - [Alert on Detections](/vision/alert-on-detections/) -- send email or webhook notifications when specific objects are detected.
 - [Deploy a Module](/build-modules/deploy-a-module/) -- package and upload your module to the Viam Registry.
-- [Vision Service API Reference](/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.
+- [Vision Service API Reference](/dev/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.

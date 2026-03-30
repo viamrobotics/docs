@@ -379,7 +379,7 @@ Add a transform camera to your configuration:
 After saving, view the `classified-feed` camera in the CONTROL tab. You will see classification labels overlaid on the camera image.
 
 {{< alert title="Tip" color="tip" >}}
-If you need the image and its classifications together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures the classifications correspond exactly to the returned image. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+If you need the image and its classifications together in one call, use [`CaptureAllFromCamera`](/dev/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures the classifications correspond exactly to the returned image. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
 {{< /alert >}}
 
 ## Try It
