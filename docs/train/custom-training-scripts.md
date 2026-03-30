@@ -153,6 +153,7 @@ import os
 from viam.rpc.dial import DialOptions
 from viam.app.viam_client import ViamClient
 
+
 async def connect() -> ViamClient:
     dial_options = DialOptions.with_api_key(
         os.environ.get("API_KEY"), os.environ.get("API_KEY_ID")
@@ -278,7 +279,7 @@ You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data
 {{% /tab %}}
 {{% tab name="API" %}}
 
-Use the [ML Training Client API](/reference/apis/ml-training-client/#submittrainingjob) to submit training jobs programmatically.
+Use the [ML Training Client API](/dev/reference/apis/ml-training-client/#submittrainingjob) to submit training jobs programmatically.
 
 {{% /tab %}}
 {{< /tabs >}}
