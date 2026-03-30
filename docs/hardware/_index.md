@@ -20,5 +20,5 @@ Add and configure the hardware your machine needs.
 {{% card link="/hardware/component-types/" %}}
 {{% card link="/hardware/machine-configuration/" %}}
 {{% card link="/hardware/fragments/" %}}
-{{% card link="/build-modules/from-hardware-to-logic/" %}}
+{{% card link="/build-modules/overview/" %}}
 {{< /cards >}}

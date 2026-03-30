@@ -77,7 +77,7 @@ For the full walkthrough on creating and managing fragments, see
 
 - [Add a component](/hardware/common-components/): step-by-step guides for
   each component type.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write
+- [What is a module?](/build-modules/overview/): write
   modules that tie your components together.
 - [Reuse Machine Configuration](/fleet/reuse-configuration/): the
   complete guide to fragment creation, variables, and fleet-wide deployment.

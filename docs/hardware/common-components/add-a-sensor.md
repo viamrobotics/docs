@@ -243,5 +243,5 @@ go run main.go
 - [Sensor API reference](/dev/reference/apis/components/sensor/): full method documentation.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): automatically
   capture sensor readings and sync them to the cloud.
-- [What is a module?](/build-modules/from-hardware-to-logic/): write a module that
+- [What is a module?](/build-modules/overview/): write a module that
   takes action based on sensor readings.
