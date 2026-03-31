@@ -91,8 +91,8 @@ done
 | `export tabular` | Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | - |
 | `export binary` | Export binary or image data to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command). | `ids`, `filter` |
 | `tag` | Add or remove tags from data matching the IDs or filter. | `ids`, `filter` |
-| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query/). | - |
-| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query/). | - |
+| `database configure` | Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query-data/). | - |
+| `database hostname` | Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query-data/). | - |
 | `delete binary` | Delete binary data from the Viam Cloud. | - |
 | `delete tabular` | Delete tabular data from the Viam Cloud. | - |
 | `index create` | Create a custom index on a data collection. | - |
