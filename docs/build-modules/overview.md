@@ -27,20 +27,35 @@ sensor reports position, and an arm adjusts.
 ### Driver modules: add hardware support
 
 A [driver module](/build-modules/write-a-driver-module/) teaches Viam how to
-talk to a specific piece of hardware. It implements a standard component API
-(sensor, camera, motor, etc.) for a device that `viam-server` does not support
-out of the box.
+talk to a specific piece of hardware. Every module implements one of Viam's
+resource APIs. For a driver module, you pick the component API that matches
+your hardware:
 
-You need a driver module when you have hardware with no existing model.
-Once the driver module exists, the hardware behaves like any built-in component.
-Data capture, test panels, and the SDKs work automatically.
+| API      | Use when your hardware...                           | Key methods                            |
+| -------- | --------------------------------------------------- | -------------------------------------- |
+| `sensor` | Produces readings (temperature, distance, humidity) | `GetReadings`                          |
+| `camera` | Produces images or point clouds                     | `GetImage`, `GetPointCloud`            |
+| `motor`  | Drives rotational or linear motion                  | `SetPower`, `GoFor`, `Stop`            |
+| `arm`    | Has joints and moves to poses                       | `MoveToPosition`, `MoveToJointPositions` |
+| `base`   | Is a mobile platform (wheeled, tracked, legged)     | `MoveStraight`, `Spin`, `SetVelocity` |
+
+Viam defines over 15 component APIs and 10 service APIs. For the full list,
+see [Resource APIs](/dev/reference/apis/).
+
+Each implementation of a resource API is called a **model**. For example,
+the `camera` API has models for USB cameras, CSI cameras, RTSP streams, and
+others. When no existing model supports your hardware,
+you write a driver module to add one. Once it exists, the hardware behaves
+like any built-in component. Data capture, test panels, and the SDKs work
+automatically.
 
 ### Logic modules: sense and act
 
-A [logic module](/build-modules/write-a-logic-module/) reads from components
-and takes action based on what it finds. It runs as a service alongside
-`viam-server`, declares dependencies on the resources it needs, and implements
-your application's decision-making.
+A [logic module](/build-modules/write-a-logic-module/) controls your machine's
+behavior. It declares dependencies on the resources it needs and implements
+your application's decision-making. Many logic modules run continuously on
+your machine, reading from sensors, evaluating conditions, and commanding
+actuators.
 
 Use a logic module when you need your machine to:
 
@@ -52,38 +67,10 @@ Use a logic module when you need your machine to:
   multiple sources.
 - **Schedule actions**: perform operations at specific intervals or times.
 
-## Choosing a resource API
-
-Viam defines standard APIs for common resource types. Pick the API that best
-matches your hardware or service:
-
-| API               | Use when your hardware...                             | Key methods                        |
-| ----------------- | ----------------------------------------------------- | ---------------------------------- |
-| `sensor`          | Produces readings (temperature, distance, humidity)   | `GetReadings`                      |
-| `camera`          | Produces images or point clouds                       | `GetImage`, `GetPointCloud`        |
-| `motor`           | Drives rotational or linear motion                    | `SetPower`, `GoFor`, `Stop`        |
-| `servo`           | Moves to angular positions                            | `Move`, `GetPosition`              |
-| `board`           | Exposes GPIO pins, analog readers, digital interrupts | `GPIOPinByName`, `AnalogByName`    |
-| `encoder`         | Tracks position or rotation                           | `GetPosition`, `ResetPosition`     |
-| `movement_sensor` | Reports position, orientation, velocity               | `GetPosition`, `GetLinearVelocity` |
-| `generic`         | Does not fit any of the above                         | `DoCommand`                        |
-
-For the full list of component and service APIs, see
-[Resource APIs](/dev/reference/apis/).
-
-Using the right API means data capture, test panels, and other platform
-features work with your component automatically.
-
-Every resource also has a `DoCommand` method. Use it for functionality that
-does not map to the standard API methods, for example, a sensor that also has
-a calibration routine. `DoCommand` accepts and returns arbitrary key-value maps.
-
-## The generic service API
-
-Logic modules typically implement the `generic` service API, which has a single
-method: `DoCommand`. It accepts an arbitrary key-value map and returns one.
-This makes it a flexible interface for custom logic: you define your own command
-vocabulary.
+Logic modules typically implement the `generic` service API. The generic API
+has a single method, `DoCommand`, which accepts and returns arbitrary key-value
+maps. Use it to check status, adjust parameters, or send commands to your
+running module from external scripts or the Viam app:
 
 ```json
 // Request
@@ -100,7 +87,7 @@ API (like `vision` or `mlmodel`).
 
 There are two ways to develop and deploy modules:
 
-**Inline (Viam-hosted) modules** let you write code directly in the Viam app's
+**Inline modules** let you write code directly in the Viam app's
 browser-based editor. Viam manages source code, builds, versioning, and
 deployment. When you click **Save & Deploy**, the module builds in the cloud
 and deploys to your machine automatically. Inline modules are the fastest way
@@ -108,17 +95,16 @@ to get started, especially for prototyping and simple control logic.
 
 **Externally managed modules** are modules you develop in your own IDE, manage
 in your own git repository, and deploy through the Viam CLI or GitHub Actions.
-Use externally managed modules for production modules, public distribution, and
-complex dependencies.
+Use externally managed modules when you need your own source control, public
+distribution, or custom build pipelines.
 
-|                          | Inline (Viam-hosted)                                   | Externally managed                                            |
-| ------------------------ | ------------------------------------------------------ | ------------------------------------------------------------- |
-| **Where you write code** | Browser editor in the Viam app                         | Your own IDE, locally or in a repo                            |
-| **Source control**       | Managed by Viam                                        | Your own git repository                                       |
-| **Build system**         | Automatic cloud builds on save                         | CLI upload or GitHub Actions                                  |
-| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...)                      | You choose semantic versions                                  |
-| **Visibility**           | Private to your organization                           | Private or public                                             |
-| **Best for**             | Prototyping, simple control logic, no-toolchain setups | Production modules, public distribution, complex dependencies |
+|                          | Inline                                                 | Externally managed                                        |
+| ------------------------ | ------------------------------------------------------ | --------------------------------------------------------- |
+| **Where you write code** | Browser editor in the Viam app                         | Your own IDE, locally or in a repo                        |
+| **Source control**       | Managed by Viam                                        | Your own git repository                                   |
+| **Build system**         | Automatic cloud builds on save                         | Cloud build (GitHub Actions) or local builds              |
+| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...)                      | You choose semantic versions                              |
+| **Visibility**           | Private to your organization                           | Private or public                                         |
 
 Both types run identically at runtime, as child processes communicating with
 `viam-server` over gRPC.
@@ -141,6 +127,23 @@ Every module goes through a defined lifecycle:
 
 For the full lifecycle reference including crash recovery, first-run scripts,
 and timeouts, see [Module developer reference](/build-modules/module-reference/#module-lifecycle).
+
+## Attributes
+
+Attributes are the user-provided configuration for your resource. When someone
+adds your module to a machine, they set attributes in the Viam app or in the
+machine's JSON config. Examples include a device address for a driver module,
+or a polling interval and threshold for a logic module.
+
+Your module defines which attributes it expects and validates them in its
+config validation method. If validation fails, `viam-server` reports the error
+and does not create the resource. Attributes are passed to your constructor
+when the resource is created and again to your reconfiguration method when
+the configuration changes.
+
+For code examples, see the attribute definitions in
+[Write a driver module](/build-modules/write-a-driver-module/#define-your-config-attributes)
+and [Write a logic module](/build-modules/write-a-logic-module/).
 
 ## Dependencies
 
@@ -186,8 +189,8 @@ thresholds, updating state. You can spawn background tasks (goroutines in Go,
 async tasks in Python) from your constructor or reconfiguration method.
 
 The key requirement: your background task must stop cleanly when the module
-shuts down or reconfigures. Use a cancellation signal (a channel in Go, an
-`asyncio.Event` in Python) to coordinate this.
+shuts down or reconfigures. Use a cancellation signal (a context cancellation
+in Go, an `asyncio.Event` in Python) to coordinate this.
 
 ## How it fits together
 
@@ -201,11 +204,3 @@ shuts down or reconfigures. Use a cancellation signal (a channel in Go, an
    add support for new hardware.
 5. **Deploy** ([Deploy a module](/build-modules/deploy-a-module/)).
    Package your module and deploy it to one machine or a fleet.
-
-{{< cards >}}
-{{% card link="/build-modules/write-an-inline-module/" %}}
-{{% card link="/build-modules/write-a-driver-module/" %}}
-{{% card link="/build-modules/write-a-logic-module/" %}}
-{{% card link="/build-modules/deploy-a-module/" %}}
-{{% card link="/build-modules/module-reference/" %}}
-{{< /cards >}}
