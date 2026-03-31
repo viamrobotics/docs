@@ -64,7 +64,9 @@ For more information, see [How sync works](/data-ai/capture-data/advanced/how-sy
 
    {{< imgproc src="/tutorials/data-management/add-method.png" alt="Disable data capture toggle" resize="800x" style="width:500px" class="shadow imgzoom" >}}
 
-1. If you see a **Capture disabled on data management service** warning, click **Enable capture on data management service**.
+1. If your machine doesn't have a data management service, a dialog prompts you to add one.
+   Select **Add data manager** to create the service, or **Don't add** to continue without one.
+1. If you see a **Capture disabled** warning, click **Enable capture** to turn on data capture for the data management service.
 1. Select a **Method** to capture data from.
 
    {{< alert title="Camera capture methods" color="note" >}}
