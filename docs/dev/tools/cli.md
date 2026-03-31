@@ -775,6 +775,7 @@ viam machines part run --machine=<machine id> [--stream] --data <method>
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
+viam machines part history --part=<part id>
 ```
 
 Examples:
@@ -839,6 +840,12 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 
 # Download FTDC data from a part to a local directory:
 viam machines part get-ftdc --part=123 ~/some/existing/dir/
+
+# View configuration history for a machine part:
+viam machines part history --part=123
+
+# View configuration history filtered by a specific user's email:
+viam machines part history --part=123 --filter-by-email=alice@example.com
 ```
 
 #### Command options
@@ -853,7 +860,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | `api-key` | Work with an API key for your machine. | `create` (see [positional arguments: api-key](#positional-arguments-api-key)) |
 | `status` | Retrieve machine status for a specified machine. | - |
 | `logs` | Retrieve logs for a specified machine. | - |
-| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `get-ftdc`, `cp` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. Once downloaded you can use the `viam parse-ftdc` command to inspect the data. |
+| `part` | Manage a specified machine part. | `list`, `status`, `run`, `logs`, `shell`, `restart`, `tunnel`, `get-ftdc`, `cp`, `history` (see [positional arguments: part](#positional-arguments-part)). To use the `part shell` and `part cp` commands, you must add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. Once downloaded you can use the `viam parse-ftdc` command to inspect the data. |
 | `--help` | Return help. | - |
 
 ##### Positional arguments: `api-key`
@@ -878,6 +885,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | `cp` | Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command to copy files to and from machines. |
 | `tunnel` | Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/manage/fleet/system-settings/#configure-network-settings-for-tunneling). |
 | `get-ftdc` |  Download FTDC data from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell. <br> Organization and location are required flags if using name (rather than ID) for the part. <br> If [target] is not specified then the FTDC data will be saved to the current working directory. <br> Note: There is no progress meter while copying is in progress.|
+| `history` | View the configuration history for a machine part. Shows the index, timestamp, and editor email for each history entry. Use `--filter-by-email` to filter results to saves by a specific user. |
 | `--help` | Return help. |
 
 ##### Named arguments
@@ -908,6 +916,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | `part cp` | Optional |
 | `--destination-port` | The port on a machine part to tunnel to. | `part tunnel` | **Required** |
 | `--local-port` | The local port from which to tunnel. | `part tunnel` | **Required** |
+| `--filter-by-email` | Filter history results to show only saves by the specified user email. | `part history` | Optional |
 
 ##### Using the `--stream` and `--data` arguments
 
