@@ -351,12 +351,6 @@ To edit the short description:
 2. Click the edit icon next to the short description field.
 3. Enter the new description and save your changes.
 
-You can also update the description by editing the `description` field in your [`meta.json`](/operate/modules/advanced/metajson/) file and running:
-
-```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
-viam module update
-```
-
 ## Delete a module
 
 You can delete a module if:
