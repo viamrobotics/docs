@@ -1,7 +1,7 @@
 ---
 linkTitle: "Viam CLI"
 title: "Viam CLI"
-weight: 32
+weight: 37
 layout: "docs"
 type: "docs"
 no_list: true
