@@ -50,3 +50,11 @@ Follow the instructions to [complete end-user setup for a machine](/fleet/end-us
 
 If your machine frequently moves between different WiFi networks, you can [add the credentials for additional networks in the machine settings](/fleet/system-settings/#configure-networks).
 Your machine must still be internet-connected for this configuration to take effect.
+
+## Verify the network change
+
+After completing the network change, check that the machine comes back online:
+
+1. In the Viam app, navigate to the fleet dashboard or the machine's page.
+1. Confirm the machine shows as **Live**.
+1. If the machine does not come back online within a few minutes, it may not have connected to the new network. Power cycle the device to restart provisioning mode.

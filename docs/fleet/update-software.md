@@ -35,7 +35,7 @@ On your fragment's page, click on **Versions** in the menu bar and add a tag cal
 {{% /tablestep %}}
 {{% tablestep %}}
 **Pin all machine configurations** to the `stable` fragment tag.
-For each machine that uses the fragment, update its configuration.
+For each machine that uses the fragment, go to the machine's **CONFIGURE** tab, switch to **JSON** mode, find the fragment in the `"fragments"` array, and add `"version": "stable"` to pin it to the `stable` tag.
 {{% /tablestep %}}
 {{% tablestep %}}
 **Edit the fragment** and change the version of your module or package or the configuration in the development fragment.
@@ -57,7 +57,7 @@ Select the most recent version that you just created for the tag.
 {{% /tablestep %}}
 {{% tablestep %}}
 **Add the development fragment to a subset of machines** by pinning the fragment configuration to the `development` fragment tag.
-For each machine that you want to test the changes on, update the configuration.
+For each test machine, go to the machine's **CONFIGURE** tab, switch to **JSON** mode, and set `"version": "development"` on the fragment entry.
 {{% /tablestep %}}
 {{% tablestep %}}
 **Test the new version of your module or package**.
