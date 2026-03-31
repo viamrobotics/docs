@@ -188,7 +188,7 @@ detected_in_camera = PoseInFrame(
 )
 
 detected_in_world = await machine.transform_pose(detected_in_camera, "world")
-print(f"Detected position in world frame:")
+print("Detected position in world frame:")
 print(f"  x={detected_in_world.pose.x:.1f} mm")
 print(f"  y={detected_in_world.pose.y:.1f} mm")
 print(f"  z={detected_in_world.pose.z:.1f} mm")
