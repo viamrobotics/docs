@@ -43,7 +43,7 @@ Do not change the <code>module_id</code>.</p>
 <td>array</td>
 <td>Optional</td>
 <td>
-<p>An array of objects describing the {{< glossary_tooltip term_id="model" text="models" >}} provided by your module. Models are inferred from the module itself during Cloud Build, so this field can be omitted if using `viam module build start` to build your module. Running `viam module update-models` locally through the CLI will also auto-populate this section. </p>
+<p>An array of objects describing the {{< glossary_tooltip term_id="model" text="models" >}} provided by your module. This field is auto-populated when you run <code>viam module generate</code>. Models are also inferred from the module itself during Cloud Build, so this field can be omitted if using <code>viam module build start</code> to build your module. Running <code>viam module update-models</code> locally through the CLI will also auto-populate this section. </p>
 </td>
 </tr>
 <tr>
