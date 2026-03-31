@@ -26,7 +26,7 @@ signal transitions ("ticks") that correspond to motor shaft rotation.
 
 Once you configure an encoder and reference it from a motor component, the
 motor gains accurate position control. `GoFor` and `GoTo` use actual encoder
-feedback instead of time-based estimates.
+feedback instead of time-based estimates. Browse all available encoder models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=encoder).
 
 ## Steps
 

@@ -21,7 +21,7 @@ A gripper component controls a grasping device. The API provides:
 - **IsHoldingSomething**: checks whether the gripper currently holds an object.
 - **Stop**: stops any in-progress motion.
 
-Gripper models almost always come from **modules in the registry** because each
+Gripper models almost always come from modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=gripper) because each
 gripper has its own communication protocol and control logic. For example, the
 [UFactory module](https://app.viam.com/module/viam/ufactory) includes gripper
 models for xArm parallel-jaw and vacuum grippers.

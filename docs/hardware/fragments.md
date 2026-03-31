@@ -4,13 +4,20 @@ title: "Fragments"
 weight: 12
 layout: "docs"
 type: "docs"
-description: "Use, create, and share reusable hardware configurations."
+description: "Capture working hardware configurations and keep them consistent across your fleet."
 date: "2025-03-07"
 ---
 
-A **fragment** is a saved configuration block that bundles one or more
-components together. Fragments let you reuse configurations that are known
-to work, whether they come from the community or from your own testing.
+Getting hardware to work together takes effort. Calibrating a camera mounted
+on an arm, tuning motor PID parameters, getting the frame transforms right
+between components. This work can take hours, and it's easy to lose when you
+set up the next machine.
+
+A **fragment** captures a working hardware configuration so you don't repeat
+that work. Define the configuration once, including components, attributes,
+and spatial relationships, then apply it to every machine that uses the same
+hardware. When you update the fragment, every machine gets the update
+automatically on its next config sync.
 
 ## Use existing fragments
 

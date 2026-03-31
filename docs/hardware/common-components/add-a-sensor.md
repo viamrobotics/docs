@@ -18,7 +18,7 @@ The sensor component provides a single method: `GetReadings`, which returns a
 map of key-value pairs. This simple interface works for any sensor that
 produces named measurements.
 
-Most physical sensors in Viam come from **modules in the registry** rather than
+Most physical sensors in Viam come from modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=sensor) rather than
 built-in models. This is because the sensor ecosystem is enormous. Thousands
 of different devices with different communication protocols exist, and modules cover
 specific hardware while keeping the same `GetReadings` API.

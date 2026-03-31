@@ -27,6 +27,8 @@ callbacks for these events and translates them into machine actions.
 | `gpio`       | Buttons and switches wired to GPIO pins on a board.                                                                          |
 | `mux`        | Multiplexes multiple input controllers, allowing one to override another (for example, safety controller overrides gamepad). |
 
+Browse all available input controller models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=input_controller).
+
 ## Steps
 
 ### Option A: USB gamepad

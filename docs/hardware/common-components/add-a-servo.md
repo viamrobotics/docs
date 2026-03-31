@@ -19,7 +19,7 @@ position. Unlike a motor, which spins continuously, a servo provides precise
 angular positioning through PWM control.
 
 The servo component uses a single PWM-capable pin on a
-[board component](/hardware/common-components/add-a-board/).
+[board component](/hardware/common-components/add-a-board/). Browse all available servo models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
 
 ## Steps
 

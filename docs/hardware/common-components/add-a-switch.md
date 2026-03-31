@@ -25,7 +25,7 @@ Physical switch hardware typically comes from a **module in the registry** that
 reads GPIO pins or communicates with a switch controller.
 
 The `fake` built-in model simulates a switch with configurable positions and
-is useful for testing.
+is useful for testing. Browse available switch models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=switch).
 
 ## Steps
 
