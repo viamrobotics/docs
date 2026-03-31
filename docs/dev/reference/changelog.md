@@ -44,6 +44,12 @@ date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
 ---
 
+{{% changelog color="added" title="Registry search keyboard shortcut" date="2026-03-31" %}}
+
+The [Viam Registry](https://app.viam.com/registry) now supports a keyboard shortcut for searching. Press **Ctrl+F** (or **Cmd+F** on Mac) to quickly focus the search box instead of opening the browser's default find dialog.
+
+{{% /changelog %}}
+
 {{% changelog color="added" title="Fragment prefix" date="2025-10-29" %}}
 
 You can now set prefixes on fragments to avoid name collisions.

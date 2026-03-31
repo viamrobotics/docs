@@ -40,6 +40,7 @@ There are also modules in the registry that do not directly drive any physical h
 Some components and services are built into `viam-server`, so you won't find them in the registry.
 
 You can browse all built-in and modular registry components below or on your machine's configuration page.
+When browsing the [registry](https://app.viam.com/registry), press **Ctrl+F** (or **Cmd+F** on Mac) to quickly focus the search box.
 
 ## Configure hardware or software on your machine
 
