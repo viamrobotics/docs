@@ -1,6 +1,6 @@
 ---
 title: "Complete end-user setup for a machine"
-linkTitle: "Set up machine (end-user)"
+linkTitle: "End-user device setup"
 weight: 25
 type: "docs"
 description: "If you have a machine that uses Viam and have been pointed to this guide, this guide will show you how to set it up."

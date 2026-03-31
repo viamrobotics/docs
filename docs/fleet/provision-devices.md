@@ -21,8 +21,8 @@ aliases:
 cost: "0"
 ---
 
-You can install [`viam-agent`](/reference/platform/viam-agent/) as part of your manufacturing process and provision machines with a pre-defined configuration as they come online.
-When the end user sets the machine up, they provide network access and `viam-agent` installs `viam-server` and your latest software.
+Set up zero-touch provisioning so machines automatically configure themselves when they first come online.
+Install [`viam-agent`](/reference/platform/viam-agent/) during manufacturing, define a default configuration with a fragment, and when the end user connects the machine to a network, `viam-agent` installs `viam-server` and your latest software automatically.
 
 If you're looking for a full tutorial, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
 
@@ -97,20 +97,20 @@ You must at least specify a `fragment_id`.
 ```json {class="line-numbers linkable-line-numbers"}
 {
   "network_configuration": {
-    "manufacturer": "<NAME>", # your company name
-    "model": "<NAME>", # the machine's model
-    "fragment_id": "<ID>", # the fragment id, required for mobile app
-    "hotspot_interface": "<INTERFACE>", # the interface to use for hotspot/provisioning/wifi management
-    "hotspot_prefix": "<PREFIX>", # machine creates a hotspot with prefix-hostname during setup
-    "disable_captive_portal_redirect": false, # set to true if using a mobile app
-    "hotspot_password": "<PASSWORD>", # password for the WiFi or bluetooth hotspot
-    "disable_bt_provisioning": false, # set to true to disable Bluetooth provisioning
-    "disable_wifi_provisioning": false, # set to true to disable WiFi hotspot provisioning
-    "bluetooth_trust_all": false, # set to true to accept all Bluetooth pairing requests (which is only needed for Bluetooth tethering) without requiring an unlock command from a mobile app.
-    "turn_on_hotspot_if_wifi_has_no_internet": false, # set to true if networks without internet should not be accepted.
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m"
+    "manufacturer": "<NAME>",
+    "model": "<NAME>",
+    "fragment_id": "<ID>",
+    "hotspot_interface": "<INTERFACE>",
+    "hotspot_prefix": "<PREFIX>",
+    "disable_captive_portal_redirect": false,
+    "hotspot_password": "<PASSWORD>",
+    "disable_bt_provisioning": false,
+    "disable_wifi_provisioning": false,
+    "bluetooth_trust_all": false,
+    "turn_on_hotspot_if_wifi_has_no_internet": false,
+    "offline_before_starting_hotspot_minutes": 2,
+    "user_idle_minutes": 5,
+    "retry_connection_timeout_minutes": 10
   }
 }
 ```
@@ -132,9 +132,9 @@ You must at least specify a `fragment_id`.
     "disable_wifi_provisioning": false,
     "bluetooth_trust_all": false,
     "turn_on_hotspot_if_wifi_has_no_internet": false,
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m"
+    "offline_before_starting_hotspot_minutes": 4,
+    "user_idle_minutes": 3,
+    "retry_connection_timeout_minutes": 15
   }
 }
 ```
@@ -194,11 +194,10 @@ The following configuration defines the connection information and credentials f
     "hotspot_password": "skywalker123",
     "disable_bt_provisioning": false,
     "disable_wifi_provisioning": false,
-    "turn_on_hotspot_if_wifi_has_no_internet": false,
-    "offline_before_starting_hotspot_minutes": "3m30s",
-    "user_idle_minutes": "2m30s",
-    "retry_connection_timeout_minutes": "15m",
-    "turn_on_hotspot_if_wifi_has_no_internet": true
+    "turn_on_hotspot_if_wifi_has_no_internet": true,
+    "offline_before_starting_hotspot_minutes": 4,
+    "user_idle_minutes": 3,
+    "retry_connection_timeout_minutes": 15
   },
   "additional_networks": {
     "testNet1": {
@@ -277,11 +276,11 @@ async def connect() -> ViamClient:
 async def main():
     async with await connect() as viam_client:
         cloud = viam_client.app_client
-        new_machine_id = await cloud.new_robot(
+        new_machine_id = await cloud.new_machine(
             name=MACHINE_NAME, location_id=LOCATION_ID)
         print("Machine created: " + new_machine_id)
-        list_of_parts = await cloud.get_robot_parts(
-            robot_id=new_machine_id)
+        list_of_parts = await cloud.get_machine_parts(
+            machine_id=new_machine_id)
         print("Part id: " + list_of_parts[0].id)
 
         org_list = await cloud.list_organizations()
@@ -555,8 +554,9 @@ Currently, if you are using Bluetooth provisioning, you must leave `hotspot_pass
 ### Can I re-provision a machine that was already provisioned?
 
 You cannot re-run the `preinstall.sh` script.
-Once a device is set up for provisioning and has a <FILE>viam-provisioning.json</FILE> file on it, it will attempt to provision the machine when it comes online.
-If you have not yet connected the device to a network and setup has not completed, you can still make changes to the <FILE>viam-provisioning.json</FILE> file on the device.
+Once a device is set up for provisioning, the preinstall script copies your <FILE>viam-defaults.json</FILE> to the device as <FILE>/etc/viam-provisioning.json</FILE>.
+The device reads this file on boot to configure its provisioning behavior.
+If you have not yet connected the device to a network and setup has not completed, you can still make changes to <FILE>/etc/viam-provisioning.json</FILE> on the device.
 
 Once a machine has completed the provisioning flow, you cannot re-run the final setup steps without first manually removing the machine cloud credentials file (<FILE>/etc/viam.json</FILE>).
 

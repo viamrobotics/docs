@@ -7,11 +7,16 @@ type: "docs"
 description: "Configure network settings, operating system package updates and logging defaults."
 ---
 
-The `viam-agent` configuration allows you to configure:
+Configure system-level settings for deployed machines, including OS package updates, network connections, tunneling, TLS, and log forwarding.
 
-- [settings for package updates for the host operating system](#manage-os-package-updates)
-- [networks a machine can connect to](#configure-networks)
-- [parameters for operating system logging](#configure-operating-system-logging)
+These settings are configured in your machine's JSON config and managed by `viam-agent`:
+
+- [OS package updates](#manage-os-package-updates)
+- [Network connections](#configure-networks)
+- [Tunneling](#configure-network-settings-for-tunneling)
+- [TLS](#configure-network-settings-to-disable-tls)
+- [Bind address](#configure-bind-address-and-port)
+- [OS log forwarding](#configure-operating-system-logging)
 
 ## Manage OS package updates
 
