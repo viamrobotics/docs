@@ -147,3 +147,11 @@ For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/#get
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Verify metadata
+
+After adding metadata, verify it was saved:
+
+- **Web UI**: Click the **...** menu on the resource and select the custom metadata option. The JSON object should contain your metadata.
+- **CLI**: Run `viam metadata read --machine-id=<machine-id>` to read metadata for a machine and its parts.
+- **SDK**: Use the corresponding `Get` method (`GetRobotPartMetadata`, `GetRobotMetadata`, `GetLocationMetadata`, or `GetOrganizationMetadata`) to retrieve and confirm the metadata.

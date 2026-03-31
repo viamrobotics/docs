@@ -214,3 +214,12 @@ Disable system log forwarding (default):
 ```json
 "forward_system_logs": ""
 ```
+
+## Verify settings changes
+
+After updating system settings in your machine's JSON config:
+
+1. Click **Save** in the upper right corner of the **CONFIGURE** tab.
+1. Wait for the machine to sync and apply the new configuration (this may take up to a minute).
+1. Check the **LOGS** tab for any errors related to the changed settings.
+1. For network changes, verify connectivity by checking the machine's online status in the fleet dashboard.

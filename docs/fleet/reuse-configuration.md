@@ -543,7 +543,7 @@ For example, a component with the name `arm-1` configured in a fragment with the
 
 On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `prefix` to the fragment object:
 
-```json {class="line-numbers linkable-line-numbers" data-line="6-9"}
+```json {class="line-numbers linkable-line-numbers" data-line="6-11"}
 {
   "components": [ ... ],
   "services": [ ... ],
@@ -551,11 +551,31 @@ On your machine's **CONFIGURE** tab, switch to **JSON** mode and add a `prefix` 
   "fragments": [
     {
       "id": "0a44e14b-ec43-40e7-9641-1f593072e281",
-      "prefix": "hello-world-mlresources"
+      "prefix": "hello-world-mlresources",
+      "version": "stable",
+      "variables": {
+        "sensor_name": "my-temp-sensor"
+      }
     }
   ]
 }
 ```
+
+In JSON mode, each fragment entry in the `fragments` array supports:
+
+| Field       | Description                                                                                              |
+| ----------- | -------------------------------------------------------------------------------------------------------- |
+| `id`        | The fragment ID (required).                                                                              |
+| `prefix`    | A string prepended to all resource names from this fragment.                                             |
+| `version`   | Pin to a specific revision hash or tag name (for example, `"stable"`). Omit to track the latest version. |
+| `variables` | A map of variable names to values, overriding the defaults defined in the fragment.                      |
+
+## Default fragments
+
+You can set default fragments at the organization level so that every new machine in the organization automatically uses them.
+Default fragments are applied when a machine is created, either manually or through provisioning.
+
+To configure default fragments, use the fleet management API's `UpdateOrganization` method with the `default_fragments` field.
 
 ## Example fragments
 

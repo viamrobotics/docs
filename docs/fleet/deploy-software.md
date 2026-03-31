@@ -99,3 +99,11 @@ You can also add multiple fragments to one machine.
 {{% hiddencontent %}}
 You cannot add the same fragment to a machine twice.
 {{% /hiddencontent %}}
+
+## Verify the deployment
+
+After adding the fragment to your machines:
+
+1. Navigate to a machine's **CONFIGURE** tab and confirm the fragment's resources appear.
+1. Go to the **CONTROL** tab and test the deployed components and services.
+1. Check the **LOGS** tab for any errors from the deployed modules.
