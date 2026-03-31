@@ -4,11 +4,6 @@ linkTitle: "CLI reference"
 weight: 90
 type: "docs"
 description: "Complete command reference for the Viam CLI: every command, subcommand, flag, and alias."
-aliases:
-  - "/build/program/cli"
-  - /manage/cli/
-  - /fleet/cli/
-  - /dev/tools/cli/
 date: "2024-08-23"
 # updated: ""  # When the content was last entirely checked
 ---
