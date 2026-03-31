@@ -18,9 +18,9 @@ date: "2025-02-07"
 cost: "0"
 ---
 
-Fragments allow you to share configurations for one or more resources across multiple machines.
+Create reusable configuration templates (called fragments) and apply them across multiple machines, so you configure once and deploy everywhere.
 
-For example, you may use the same networking credentials across rovers and robotic arms.
+For example, you can template the same sensor setup, networking credentials, or module configuration and apply it to every machine in a location.
 Another example is a fleet of rovers that use a fragment to configure the motors, base component, and other components.
 
 ## Create a fragment

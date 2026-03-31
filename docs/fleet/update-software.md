@@ -8,7 +8,8 @@ description: "As new versions of software modules or ML models become available,
 date: "2025-02-14"
 ---
 
-If you have already [deployed software](/fleet/deploy-software/), you can inspect the fragment you have created.
+Manage version pinning, staged rollouts with fragment tags, and maintenance windows to control when and how software updates reach your machines.
+
 Each deployed {{< glossary_tooltip term_id="module" text="module" >}} or {{< glossary_tooltip term_id="package" text="package" >}} has a `version` field.
 Unless the `version` field is set to a specific version, updates for that module or package happen automatically.
 
@@ -168,7 +169,7 @@ async def main():
                     status = await machine.get_machine_status()
                     print(status.config)
 
-            except ConnectionError:
+            except Exception:
                 print("Unable to establish a connection to the machine.")
                 logs = await cloud.get_robot_part_logs(
                     robot_part_id=main_part.id,
