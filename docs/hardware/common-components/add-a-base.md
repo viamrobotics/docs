@@ -16,6 +16,8 @@ Add a base to your machine's configuration to drive a mobile robot with movement
 
 A base component gives you a movement API (`MoveStraight`, `Spin`, `SetVelocity`, `Stop`) regardless of the underlying drive system. The most common model is `wheeled`, which handles differential steering for robots with left and right motors. Other models exist for different platforms, including `sensor-controlled` (adds IMU feedback to improve accuracy) and module-based models for specific hardware.
 
+Browse all available base models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=base).
+
 This page covers the `wheeled` model. You configure your motors first, then the base references them.
 
 For accurate distance and angle calculations, the `wheeled` model needs two physical measurements:

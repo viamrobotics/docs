@@ -75,6 +75,22 @@ Each component type has one or more **models**: drivers that know how to communi
 
 If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the standard API for your device.
 
+## Switching hardware without changing code
+
+Because every model of a given type exposes the same API, your application
+code doesn't change when you swap hardware. For example, this Python code
+reads a motor's position:
+
+```python
+motor = Motor.from_robot(robot, "drive-motor")
+position = await motor.get_position()
+```
+
+This works whether `drive-motor` is configured as a `gpio` motor on a
+Raspberry Pi, a Trinamic stepper over CAN bus, or an ODrive brushless
+controller. To switch hardware, you change the model and attributes in your
+machine's configuration. Your code stays the same.
+
 ## What's next
 
 - [How components work](/hardware/configure-hardware/): understand components

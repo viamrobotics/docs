@@ -27,7 +27,7 @@ module author defines what commands are supported and what they do.
 Use generic when no other component type fits. If your hardware produces
 images, use [camera](/hardware/common-components/add-a-camera/). If it produces
 readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard
-types give you data capture, test panels, and SDK support automatically.
+types give you data capture, test panels, and SDK support automatically. Browse available generic models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic).
 
 The `fake` built-in model echoes commands back for testing.
 

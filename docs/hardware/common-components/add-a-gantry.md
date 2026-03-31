@@ -27,10 +27,10 @@ Viam includes two built-in gantry models:
 
 | Model         | What it does                                                      |
 | ------------- | ----------------------------------------------------------------- |
-| `single-axis` | Controls one linear rail driven by a motor.                       |
+| `single-axis` | Controls one linear rail driven by a motor.                        |
 | `multi-axis`  | Composes multiple single-axis gantries into a coordinated system. |
 
-The `fake` built-in model is useful for testing without hardware.
+The `fake` built-in model is useful for testing without hardware. Browse all available gantry models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=gantry).
 
 ## Steps
 

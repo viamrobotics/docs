@@ -25,6 +25,8 @@ The camera API gives you `GetImages` (capture frames), `GetPointCloud` (depth da
 - **realsense**: Intel RealSense depth cameras (module).
 - **transform**: Applies transformations (crop, resize, overlay) to another camera's output.
 
+Browse all available camera models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=camera).
+
 ## Steps
 
 ### 1. Open your machine in the Viam app
