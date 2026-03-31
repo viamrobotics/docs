@@ -5,7 +5,7 @@ weight: 1
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Build a complete quality inspection system with Viam — from camera setup to customer-facing product."
+description: "Build a complete quality inspection system with Viam, from camera setup to customer-facing product."
 date: "2025-01-30"
 aliases:
   - /try/first-project/

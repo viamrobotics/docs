@@ -80,7 +80,7 @@ After adding the camera component, you will see two items appear under your mach
 
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
 
-1. In the **ATTRIBUTES** section, add:
+1. In the **Attributes** section, add:
 
    ```json
    {

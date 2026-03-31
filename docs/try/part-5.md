@@ -256,12 +256,35 @@ For fully custom dashboards with your own branding, you can build web applicatio
 
 You've completed the tutorial. Here's what you built:
 
-1. **Vision Pipeline**—Camera, ML model, and vision service detecting defects
-2. **Data Capture**—Automatic recording and cloud sync of images and detections
-3. **Control Logic**—Custom inspector module exposing detection through DoCommand
-4. **Module Deployment**—Packaged and deployed to run autonomously
-5. **Productize**—Monitoring dashboard with real-time analytics
+1. **Vision Pipeline**: camera, ML model, and vision service detecting defects
+2. **Data Capture**: automatic recording and cloud sync of images and detections
+3. **Control Logic**: custom inspector module exposing detection through DoCommand
+4. **Module Deployment**: packaged and deployed to run autonomously
+5. **Productize**: monitoring dashboard with real-time analytics
 
-You've gone from an empty machine to a production-ready inspection system with monitoring—patterns that apply to any Viam application.
+You've gone from an empty machine to a production-ready inspection system
+with monitoring. These patterns apply to any Viam application.
+
+## Using real hardware instead of simulation
+
+Everything you built in this tutorial works the same way with real
+hardware. To transition from the Gazebo simulation to a physical setup:
+
+1. **Replace the camera.** Remove the `gz-camera` module and add a real
+   camera component (for example, a `webcam` for a USB camera). The
+   vision service, data capture, and your inspector module all reference
+   the camera by name. Update that name in your configurations and the
+   rest works unchanged.
+2. **Keep the fragment.** The `try-vision-pipeline` fragment works with
+   any camera. If you train a new ML model for your specific use case,
+   create your own fragment with your model.
+3. **Keep the module.** Your inspector module runs the same code whether
+   the camera is simulated or real. Deploy it to the machine running
+   `viam-server` on your physical hardware.
+4. **Keep the dashboard.** The Teleop workspace and MQL queries work with
+   data from any machine.
+
+The only thing that changes is the camera component. Everything else
+(vision pipeline, data capture, module, dashboard) carries over directly.
 
 **[← Back to Overview](../)** to review what you learned.
