@@ -37,7 +37,7 @@ and any defined obstacles.
 ```python
 from viam.robot.client import RobotClient
 from viam.services.motion import MotionClient
-from viam.proto.common import PoseInFrame, Pose, ResourceName
+from viam.proto.common import PoseInFrame, Pose
 
 machine = await RobotClient.at_address(
     "<MACHINE-ADDRESS>",
@@ -56,7 +56,6 @@ motion_service = MotionClient.from_robot(machine, "builtin")
 ```go
 import (
     "go.viam.com/rdk/services/motion"
-    "go.viam.com/rdk/resource"
     "go.viam.com/rdk/referenceframe"
     "go.viam.com/rdk/spatialmath"
     "github.com/golang/geo/r3"
@@ -80,13 +79,6 @@ determines which coordinate system the pose is expressed in.
 {{% tab name="Python" %}}
 
 ```python
-arm_name = ResourceName(
-    namespace="rdk",
-    type="component",
-    subtype="arm",
-    name="my-arm"
-)
-
 # Move to a position 300mm right, 200mm forward, 400mm up
 # Orientation: end effector pointing straight down
 destination = PoseInFrame(
@@ -99,11 +91,6 @@ destination = PoseInFrame(
 {{% tab name="Go" %}}
 
 ```go
-armName := resource.Name{
-    API:  resource.NewAPI("rdk", "component", "arm"),
-    Name: "my-arm",
-}
-
 // Move to a position 300mm right, 200mm forward, 400mm up
 // Orientation: end effector pointing straight down
 destination := referenceframe.NewPoseInFrame("world",
@@ -123,7 +110,7 @@ destination := referenceframe.NewPoseInFrame("world",
 
 ```python
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
 )
 print("Arm moved to target pose")
@@ -134,7 +121,7 @@ print("Arm moved to target pose")
 
 ```go
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
 })
 if err != nil {
@@ -173,7 +160,7 @@ obstacles = GeometriesInFrame(
 world_state = WorldState(obstacles=[obstacles])
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
     world_state=world_state
 )
@@ -196,7 +183,7 @@ worldState, _ := referenceframe.NewWorldState(
     []*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
 
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
     WorldState:    worldState,
 })
@@ -245,6 +232,19 @@ fmt.Printf("Current position: x=%.1f, y=%.1f, z=%.1f\n",
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Test from the command line
+
+You can move the arm and check poses without writing code:
+
+```sh
+# Check the arm's current pose
+viam machines motion get-pose --part "my-machine-main" --component "my-arm"
+
+# Move the arm to a new position (only specified values change)
+viam machines motion set-pose --part "my-machine-main" --component "my-arm" \
+  --x 300 --y 200 --z 400
+```
 
 ## Troubleshooting
 

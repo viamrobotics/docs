@@ -13,7 +13,7 @@ This guide walks you through configuring the frame system for this hardware arra
 
 ## Frame hierarchy
 
-```
+```text
 world
 ├── my-arm
 │   ├── my-gripper (attached to arm)
@@ -159,7 +159,7 @@ Click **Save**.
 
 ### 6. Visualize the frame system
 
-1. Navigate to the **VISUALIZE** tab in the Viam app.
+1. Navigate to the **3D SCENE** tab in the Viam app.
 2. The viewer renders all configured frames in 3D space. Each frame appears as a set of colored axes (red = x, green = y, blue = z).
 3. Verify that the gripper and camera frames are attached to the arm and move with it.
 4. Check that the positions and orientations match your physical setup.

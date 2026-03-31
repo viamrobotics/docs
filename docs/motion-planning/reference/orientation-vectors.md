@@ -18,7 +18,7 @@ motion planning destinations, and pose specifications.
 
 ## Supported orientation formats
 
-Viam supports five orientation formats, specified via the `type` field in
+Viam supports five orientation formats, specified with the `type` field in
 orientation configuration:
 
 ### `ov_degrees` (default)
@@ -101,14 +101,14 @@ Unit quaternion. Values are auto-normalized.
 
 ## Common orientations
 
-| Description | `ov_degrees` value |
-|-------------|-------------------|
-| No rotation (identity) | `{"x": 0, "y": 0, "z": 1, "th": 0}` |
-| 90 degrees around z | `{"x": 0, "y": 0, "z": 1, "th": 90}` |
+| Description                         | `ov_degrees` value                    |
+| ----------------------------------- | ------------------------------------- |
+| No rotation (identity)              | `{"x": 0, "y": 0, "z": 1, "th": 0}`   |
+| 90 degrees around z                 | `{"x": 0, "y": 0, "z": 1, "th": 90}`  |
 | 180 degrees around z (flip x and y) | `{"x": 0, "y": 0, "z": 1, "th": 180}` |
-| 90 degrees around x | `{"x": 1, "y": 0, "z": 0, "th": 90}` |
-| Pointing straight down (-z) | `{"x": 0, "y": 0, "z": -1, "th": 0}` |
-| 30 degree tilt around y | `{"x": 0, "y": 1, "z": 0, "th": 30}` |
+| 90 degrees around x                 | `{"x": 1, "y": 0, "z": 0, "th": 90}`  |
+| Pointing straight down (-z)         | `{"x": 0, "y": 0, "z": -1, "th": 0}`  |
+| 30 degree tilt around y             | `{"x": 0, "y": 1, "z": 0, "th": 30}`  |
 
 ## Gimbal lock
 
@@ -121,7 +121,7 @@ instead. These formats do not suffer from gimbal lock.
 
 For `ov_degrees` and `ov_radians`, the orientation vector `(x, y, z)` must have
 a non-zero magnitude. If all three components are zero, the code returns an
-error: *"has a normal of 0, probably X, Y, and Z are all 0"*.
+error: _"has a normal of 0, probably X, Y, and Z are all 0"_.
 
 For `axis_angles`, a zero-norm axis causes a panic during normalization. Always
 provide a non-zero axis vector.

@@ -25,24 +25,24 @@ miss its targets.
 
 ### Camera intrinsic parameters
 
-| Parameter | Description |
-|-----------|-------------|
-| `fx` | Focal length in the x direction (pixels) |
-| `fy` | Focal length in the y direction (pixels) |
-| `ppx` | Principal point x coordinate (pixels), the optical center |
-| `ppy` | Principal point y coordinate (pixels), the optical center |
-| `width_px` | Image width in pixels |
-| `height_px` | Image height in pixels |
+| Parameter   | Description                                               |
+| ----------- | --------------------------------------------------------- |
+| `fx`        | Focal length in the x direction (pixels)                  |
+| `fy`        | Focal length in the y direction (pixels)                  |
+| `ppx`       | Principal point x coordinate (pixels), the optical center |
+| `ppy`       | Principal point y coordinate (pixels), the optical center |
+| `width_px`  | Image width in pixels                                     |
+| `height_px` | Image height in pixels                                    |
 
 ### Distortion parameters
 
-| Parameter | Description |
-|-----------|-------------|
-| `rk1` | First radial distortion coefficient |
-| `rk2` | Second radial distortion coefficient |
-| `rk3` | Third radial distortion coefficient |
-| `tp1` | First tangential distortion coefficient |
-| `tp2` | Second tangential distortion coefficient |
+| Parameter | Description                              |
+| --------- | ---------------------------------------- |
+| `rk1`     | First radial distortion coefficient      |
+| `rk2`     | Second radial distortion coefficient     |
+| `rk3`     | Third radial distortion coefficient      |
+| `tp1`     | First tangential distortion coefficient  |
+| `tp2`     | Second tangential distortion coefficient |
 
 Radial distortion causes barrel or pincushion effects. Tangential distortion
 occurs when the lens is not perfectly parallel to the sensor.
@@ -78,6 +78,10 @@ Guidelines:
 - Avoid shadows, glare, and motion blur
 
 ### 3. Run the calibration script
+
+Download [`cameraCalib.py`](https://github.com/viam-labs/camera-calibration/blob/main/cameraCalib.py)
+from the [camera-calibration repository](https://github.com/viam-labs/camera-calibration),
+then run it:
 
 ```sh
 pip3 install numpy opencv-python

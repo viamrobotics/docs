@@ -1,7 +1,7 @@
 ---
 linkTitle: "Arm Kinematics"
 title: "Arm Kinematics"
-weight: 20
+weight: 25
 layout: "docs"
 type: "docs"
 description: "Set up the kinematic model that describes how your arm's joints and links create motion."
@@ -78,11 +78,11 @@ require the arm to bend past its physical limits.
 
 Viam supports three formats for describing arm kinematics:
 
-| Format | Description | When to use |
-|--------|-------------|-------------|
-| **SVA** (Spatial Vector Algebra) | Viam's native JSON format | Preferred for new arms, most detailed |
-| **DH** (Denavit-Hartenberg) | Standard robotics convention, four parameters per joint | When converting from textbook DH parameters |
-| **URDF** | XML format used by ROS and many manufacturers | When the manufacturer provides a URDF file |
+| Format                           | Description                                             | When to use                                 |
+| -------------------------------- | ------------------------------------------------------- | ------------------------------------------- |
+| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                               | Preferred for new arms, most detailed       |
+| **DH** (Denavit-Hartenberg)      | Standard robotics convention, four parameters per joint | When converting from textbook DH parameters |
+| **URDF**                         | XML format used by ROS and many manufacturers           | When the manufacturer provides a URDF file  |
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
@@ -237,19 +237,19 @@ to `viam-server` and reference it in the module's configuration. The exact
 configuration depends on the module. Consult the module's documentation for the
 specific attribute name.
 
-### 4. Verify kinematics in the VISUALIZE tab
+### 4. Verify kinematics in the 3D SCENE tab
 
 The Viam app can render a 3D visualization of your arm based on its kinematic
 model:
 
 1. Navigate to your machine in the Viam app.
-2. Click the **VISUALIZE** tab.
+2. Click the **3D SCENE** tab.
 3. The arm should appear as a 3D model with joints and links.
 
 Verify the visualization by comparing it to the physical arm:
 
 1. Move a joint using the **CONTROL** tab.
-2. Switch to the **VISUALIZE** tab and confirm the visualization updated.
+2. Switch to the **3D SCENE** tab and confirm the visualization updated.
 3. Check that the joint rotated in the correct direction and by the correct
    amount.
 4. Repeat for each joint.
@@ -261,7 +261,7 @@ have incorrect link lengths, joint axes, or joint limits.
 
 1. Run the kinematics check from step 1 to confirm your arm module has a
    built-in kinematics file.
-2. Open the VISUALIZE tab and compare the rendered arm to the physical arm. Move
+2. Open the 3D SCENE tab and compare the rendered arm to the physical arm. Move
    individual joints using the CONTROL tab and verify the visualization matches.
 3. For reading joint positions and controlling the arm, see
    [Add an Arm](/hardware/common-components/add-an-arm/) and the
@@ -289,7 +289,7 @@ have incorrect link lengths, joint axes, or joint limits.
 
 {{< /expand >}}
 
-{{< expand "VISUALIZE tab does not match the physical arm" >}}
+{{< expand "3D SCENE tab does not match the physical arm" >}}
 
 - The kinematics file may have incorrect link lengths. Measure the physical arm
   segments and compare to the values in the kinematics file.

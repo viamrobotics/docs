@@ -13,7 +13,7 @@ All sensors are children of the base frame, so their positions update automatica
 
 ## Frame hierarchy
 
-```
+```text
 world
 └── my-base
     ├── my-lidar (mounted on top)
@@ -130,7 +130,7 @@ Click **Save** after adding each camera frame.
 
 ### 5. Visualize and verify
 
-1. Navigate to the **VISUALIZE** tab in the Viam app.
+1. Navigate to the **3D SCENE** tab in the Viam app.
 2. Verify that all sensor frames appear as children of the base.
 3. Check that sensor positions match their physical mounting locations relative to the base center.
 4. Confirm that camera orientations point in the correct directions (forward for the front camera, backward for the rear camera).

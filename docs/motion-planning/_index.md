@@ -23,6 +23,10 @@ Viam's motion planning system handles this automatically. You define the spatial
 layout of your workspace (the frame system), describe what obstacles exist, and
 tell the arm where to go. The motion planner finds a safe path and executes it.
 
+This section covers motion planning for arms, gantries, and other kinematic
+chains. For GPS-based autonomous navigation with mobile bases, see
+[Navigation](/navigation/).
+
 ## How It Works
 
 Motion planning in Viam connects several pieces:

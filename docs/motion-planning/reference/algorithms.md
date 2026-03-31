@@ -56,7 +56,7 @@ because both trees converge toward the middle simultaneously.
 
 ### What it does not do
 
-- **No optimal paths**: cBiRRT finds *a* valid path, not the shortest or
+- **No optimal paths**: cBiRRT finds _a_ valid path, not the shortest or
   smoothest path. The builtin service applies path smoothing (default 30
   iterations) after planning to improve the result.
 - **No dynamic replanning**: The planner computes a full path before execution
@@ -71,24 +71,24 @@ per-request options. Most users do not need to change these.
 
 These are set in the motion service configuration:
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `num_threads` | int | (system default) | Number of threads for parallel planning |
-| `log_file_path` | string | (none) | Path to write planning logs |
-| `log_planner_errors` | bool | false | Log planning errors |
-| `log_slow_plan_threshold_ms` | int | (none) | Log plans that take longer than this |
+| Field                        | Type   | Default          | Description                             |
+| ---------------------------- | ------ | ---------------- | --------------------------------------- |
+| `num_threads`                | int    | (system default) | Number of threads for parallel planning |
+| `log_file_path`              | string | (none)           | Path to write planning logs             |
+| `log_planner_errors`         | bool   | false            | Log planning errors                     |
+| `log_slow_plan_threshold_ms` | int    | (none)           | Log plans that take longer than this    |
 
 ### Planning defaults
 
 These defaults are compiled into the builtin motion service:
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| Timeout | 300 seconds | Maximum time to search for a path |
-| Resolution | 2.0 | Constraint-checking granularity (mm or degrees per step) |
-| Max IK solutions | 100 | Maximum inverse kinematics solutions to seed the search |
-| Smoothing iterations | 30 | Post-planning path smoothing passes |
-| Collision buffer | 150 mm | Clearance around obstacles |
+| Parameter            | Default     | Description                                              |
+| -------------------- | ----------- | -------------------------------------------------------- |
+| Timeout              | 300 seconds | Maximum time to search for a path                        |
+| Resolution           | 2.0         | Constraint-checking granularity (mm or degrees per step) |
+| Max IK solutions     | 100         | Maximum inverse kinematics solutions to seed the search  |
+| Smoothing iterations | 30          | Post-planning path smoothing passes                      |
+| Collision buffer     | 150 mm      | Clearance around obstacles                               |
 
 ### When planning fails
 

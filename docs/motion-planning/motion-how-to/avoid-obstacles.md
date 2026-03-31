@@ -99,13 +99,9 @@ worldState, _ := referenceframe.NewWorldState(
 
 ```python
 from viam.services.motion import MotionClient
-from viam.proto.common import PoseInFrame, Pose, ResourceName
+from viam.proto.common import PoseInFrame, Pose
 
 motion_service = MotionClient.from_robot(machine, "builtin")
-arm_name = ResourceName(
-    namespace="rdk", type="component",
-    subtype="arm", name="my-arm"
-)
 
 destination = PoseInFrame(
     reference_frame="world",
@@ -113,7 +109,7 @@ destination = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
     world_state=world_state
 )
@@ -124,7 +120,7 @@ await motion_service.move(
 
 ```go
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
     WorldState:    worldState,
 })

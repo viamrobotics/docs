@@ -34,10 +34,10 @@ single motion request.
 Forces the end effector to stay close to a straight line between the start and
 goal poses. Use this for straight-line tool paths.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `line_tolerance_mm` | float (optional) | Maximum deviation from the straight line, in millimeters. Only checked when greater than 0. |
-| `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation during motion, in degrees. Only checked when greater than 0. |
+| Parameter                    | Type             | Description                                                                                 |
+| ---------------------------- | ---------------- | ------------------------------------------------------------------------------------------- |
+| `line_tolerance_mm`          | float (optional) | Maximum deviation from the straight line, in millimeters. Only checked when greater than 0. |
+| `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation during motion, in degrees. Only checked when greater than 0.  |
 
 When `line_tolerance_mm` is set, the planner checks that the end effector stays
 within that distance of the line segment connecting start and goal positions.
@@ -51,8 +51,8 @@ Forces the end effector to maintain a consistent orientation throughout the
 motion. Use this when the end effector must stay level or keep a fixed
 orientation (for example, carrying a liquid).
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter                    | Type             | Description                                                                  |
+| ---------------------------- | ---------------- | ---------------------------------------------------------------------------- |
 | `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation, in degrees. Only checked when greater than 0. |
 
 The planner checks that the current orientation stays within the specified
@@ -64,9 +64,9 @@ This allows smooth transitions when start and goal have different orientations.
 Like LinearConstraint but uses proportional tolerances instead of fixed values.
 The actual tolerance scales with the distance between start and goal.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `line_tolerance_factor` | float (optional) | Proportional factor. Actual tolerance = factor x distance(start, goal). |
+| Parameter                      | Type             | Description                                                                                         |
+| ------------------------------ | ---------------- | --------------------------------------------------------------------------------------------------- |
+| `line_tolerance_factor`        | float (optional) | Proportional factor. Actual tolerance = factor x distance(start, goal).                             |
 | `orientation_tolerance_factor` | float (optional) | Proportional factor for orientation. Actual tolerance = factor x orientation_distance(start, goal). |
 
 Use this when you want the constraint to adapt to the length of the motion. A
@@ -78,9 +78,9 @@ Allows specific pairs of frames to collide during planning. By default, the
 planner rejects any path where any two frames collide. CollisionSpecification
 lets you whitelist specific pairs.
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `allows` | list of frame pairs | Each entry has `frame1` and `frame2` (string names). |
+| Parameter | Type                | Description                                          |
+| --------- | ------------------- | ---------------------------------------------------- |
+| `allows`  | list of frame pairs | Each entry has `frame1` and `frame2` (string names). |
 
 This is useful when:
 
@@ -100,16 +100,9 @@ sub-geometries of the arm (such as `my-arm:upper_arm_link`,
 ```python
 from viam.services.motion import MotionClient
 from viam.proto.service.motion import Constraints, LinearConstraint, OrientationConstraint
-from viam.proto.common import PoseInFrame, Pose, ResourceName
+from viam.proto.common import PoseInFrame, Pose
 
 motion_service = MotionClient.from_robot(machine, "builtin")
-
-arm_name = ResourceName(
-    namespace="rdk",
-    type="component",
-    subtype="arm",
-    name="my-arm"
-)
 
 # Keep the end effector on a straight line with a level orientation
 constraints = Constraints(
@@ -131,7 +124,7 @@ destination = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
     constraints=constraints
 )
@@ -169,7 +162,7 @@ constraints := &motionpb.Constraints{
 
 // Pass constraints in the Move request
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
     Constraints:   constraints,
 })

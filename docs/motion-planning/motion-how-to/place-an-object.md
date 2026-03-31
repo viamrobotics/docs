@@ -34,7 +34,7 @@ pre_place = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=pre_place,
     world_state=world_state
 )
@@ -59,7 +59,7 @@ place_pose = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=place_pose,
     world_state=world_state
 )
@@ -88,7 +88,7 @@ retreat_pose = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=retreat_pose,
     world_state=world_state
 )

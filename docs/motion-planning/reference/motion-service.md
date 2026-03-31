@@ -60,15 +60,15 @@ if err != nil {
 The builtin motion service accepts the following optional configuration
 attributes:
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `log_file_path` | string | (none) | Path to write planning debug logs. |
-| `num_threads` | int | (system default) | Number of threads for parallel planning. |
-| `plan_file_path` | string | (none) | Path to write plan output files. |
-| `plan_directory_include_trace_id` | bool | false | Include trace ID in plan output directory names. |
-| `log_planner_errors` | bool | false | Log planning errors to the log file. |
-| `log_slow_plan_threshold_ms` | int | (none) | Log plans that take longer than this threshold in milliseconds. |
-| `input_range_override` | object | (none) | Override joint input ranges. Map of component name to map of joint name to `{min, max}` limits. |
+| Attribute                         | Type   | Default          | Description                                                                                     |
+| --------------------------------- | ------ | ---------------- | ----------------------------------------------------------------------------------------------- |
+| `log_file_path`                   | string | (none)           | Path to write planning debug logs.                                                              |
+| `num_threads`                     | int    | (system default) | Number of threads for parallel planning.                                                        |
+| `plan_file_path`                  | string | (none)           | Path to write plan output files.                                                                |
+| `plan_directory_include_trace_id` | bool   | false            | Include trace ID in plan output directory names.                                                |
+| `log_planner_errors`              | bool   | false            | Log planning errors to the log file.                                                            |
+| `log_slow_plan_threshold_ms`      | int    | (none)           | Log plans that take longer than this threshold in milliseconds.                                 |
+| `input_range_override`            | object | (none)           | Override joint input ranges. Map of component name to map of joint name to `{min, max}` limits. |
 
 Example configuration:
 
@@ -86,43 +86,92 @@ Example configuration:
 
 ## MotionConfiguration (per-request)
 
-When calling `MoveOnGlobe` or `MoveOnMap` (via a supporting implementation),
+When calling `MoveOnGlobe` or `MoveOnMap` (through a supporting implementation),
 you can pass a `MotionConfiguration` to override per-request settings:
 
-| Field | Type | Default | Description |
-|-------|------|---------|-------------|
-| `obstacle_detectors` | list | (none) | Vision service + camera pairs for dynamic obstacle detection. |
-| `position_polling_frequency_hz` | float | (unset) | How often to poll the machine's position, in Hz. |
-| `obstacle_polling_frequency_hz` | float | (unset) | How often to poll vision services for obstacles, in Hz. |
-| `plan_deviation_m` | float | 2.6 (globe), 1.0 (map) | Maximum allowed deviation from the plan, in meters. |
-| `linear_m_per_sec` | float | 0.3 | Linear velocity, in meters per second. |
-| `angular_degs_per_sec` | float | 60.0 | Angular velocity, in degrees per second. |
+| Field                           | Type  | Default                | Description                                                   |
+| ------------------------------- | ----- | ---------------------- | ------------------------------------------------------------- |
+| `obstacle_detectors`            | list  | (none)                 | Vision service + camera pairs for dynamic obstacle detection. |
+| `position_polling_frequency_hz` | float | (unset)                | How often to poll the machine's position, in Hz.              |
+| `obstacle_polling_frequency_hz` | float | (unset)                | How often to poll vision services for obstacles, in Hz.       |
+| `plan_deviation_m`              | float | 2.6 (globe), 1.0 (map) | Maximum allowed deviation from the plan, in meters.           |
+| `linear_m_per_sec`              | float | 0.3                    | Linear velocity, in meters per second.                        |
+| `angular_degs_per_sec`          | float | 60.0                   | Angular velocity, in degrees per second.                      |
 
 ## Planning defaults
 
 The builtin motion service uses the following compiled defaults:
 
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| Planning timeout | 300 seconds | Maximum time to search for a path. |
-| Resolution | 2.0 | Constraint-checking granularity (mm or degrees per step). |
-| Max IK solutions | 100 | Maximum inverse kinematics solutions to seed the search. |
-| Smoothing iterations | 30 | Post-planning path smoothing passes. |
-| Collision buffer | 150 mm | Clearance added around obstacles during planning. |
-| MoveOnMap plan deviation | 1000 mm (1.0 m) | Default for `MoveOnMap` calls. |
-| MoveOnGlobe plan deviation | 2600 mm (2.6 m) | Default for `MoveOnGlobe` calls. |
+| Parameter                  | Value           | Description                                               |
+| -------------------------- | --------------- | --------------------------------------------------------- |
+| Planning timeout           | 300 seconds     | Maximum time to search for a path.                        |
+| Resolution                 | 2.0             | Constraint-checking granularity (mm or degrees per step). |
+| Max IK solutions           | 100             | Maximum inverse kinematics solutions to seed the search.  |
+| Smoothing iterations       | 30              | Post-planning path smoothing passes.                      |
+| Collision buffer           | 150 mm          | Clearance added around obstacles during planning.         |
+| MoveOnMap plan deviation   | 1000 mm (1.0 m) | Default for `MoveOnMap` calls.                            |
+| MoveOnGlobe plan deviation | 2600 mm (2.6 m) | Default for `MoveOnGlobe` calls.                          |
 
 ## DoCommand
 
-The builtin motion service supports the following commands via `DoCommand`:
+The builtin motion service supports the following commands through `DoCommand`:
 
-| Command | Description |
-|---------|-------------|
-| `"plan"` | Generate a motion plan without executing it. |
-| `"execute"` | Execute a previously generated plan. |
+| Command               | Description                                                               |
+| --------------------- | ------------------------------------------------------------------------- |
+| `"plan"`              | Generate a motion plan without executing it.                              |
+| `"execute"`           | Execute a previously generated plan.                                      |
 | `"executeCheckStart"` | Execute a plan after verifying the arm is at the expected start position. |
 
-## What's Next
+## CLI commands
+
+The Viam CLI provides commands for inspecting and testing the motion service
+from the command line. These are useful for debugging frame configurations and
+testing motion without writing code.
+
+All commands require the `--part` flag to identify the machine part.
+
+### print-config
+
+Prints the frame system configuration for all parts.
+
+```sh
+viam machines motion print-config --part "my-machine-main"
+```
+
+### print-status
+
+Prints the current pose of every component relative to the world frame.
+
+```sh
+viam machines motion print-status --part "my-machine-main"
+```
+
+Output shows X, Y, Z position (mm) and orientation (OX, OY, OZ, Theta in
+degrees) for each frame.
+
+### get-pose
+
+Gets the current pose of a specific component in the world frame.
+
+```sh
+viam machines motion get-pose --part "my-machine-main" --component "my-arm"
+```
+
+### set-pose
+
+Moves a component to a specified pose using the motion service. Only the
+position and orientation values you provide are changed; the rest are kept from
+the component's current pose.
+
+```sh
+viam machines motion set-pose --part "my-machine-main" --component "my-arm" \
+  --x 300 --y 200 --z 400
+```
+
+Available flags: `--x`, `--y`, `--z` (position in mm), `--ox`, `--oy`, `--oz`,
+`--theta` (orientation vector in degrees).
+
+## What's next
 
 - [Motion Service API](/motion-planning/reference/api/): full API reference.
 - [Motion Planning Algorithms](/motion-planning/reference/algorithms/): how the planner

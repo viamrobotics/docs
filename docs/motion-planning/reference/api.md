@@ -27,6 +27,7 @@ primary method for arm and gantry motion planning.
 **Supported by:** builtin motion service.
 
 Key parameters:
+
 - `component_name`: the arm or gantry to move
 - `destination`: a `PoseInFrame` specifying the target pose and reference frame
 - `world_state`: optional obstacles and transforms

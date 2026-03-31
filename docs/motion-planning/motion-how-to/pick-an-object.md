@@ -50,14 +50,12 @@ print(f"Detected: {target.class_name} ({target.confidence:.2f})")
 objects = await vision.get_object_point_clouds("my-camera")
 if objects:
     obj = objects[0]
-    # Position is in camera frame
+    # The center of the first geometry is the object's position
+    # in the camera's reference frame
+    center = obj.geometries.geometries[0].center
     obj_in_camera = PoseInFrame(
         reference_frame="my-camera",
-        pose=Pose(
-            x=obj.geometry_in_frame.pose.x,
-            y=obj.geometry_in_frame.pose.y,
-            z=obj.geometry_in_frame.pose.z
-        )
+        pose=Pose(x=center.x, y=center.y, z=center.z)
     )
     # Transform to world frame
     obj_in_world = await machine.transform_pose(obj_in_camera, "world")
@@ -80,13 +78,7 @@ to grasp.
 
 ```python
 from viam.services.motion import MotionClient
-from viam.proto.common import ResourceName
-
 motion_service = MotionClient.from_robot(machine, "builtin")
-arm_name = ResourceName(
-    namespace="rdk", type="component",
-    subtype="arm", name="my-arm"
-)
 
 # Pre-grasp: 100mm above the object, end effector pointing down
 pre_grasp = PoseInFrame(
@@ -100,7 +92,7 @@ pre_grasp = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=pre_grasp,
     world_state=world_state
 )
@@ -135,7 +127,7 @@ grasp_pose = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=grasp_pose,
     world_state=world_state
 )
@@ -170,7 +162,7 @@ lift_pose = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=lift_pose,
     world_state=world_state
 )

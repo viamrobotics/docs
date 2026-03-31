@@ -13,7 +13,7 @@ This is common for vision-guided pick-and-place tasks where the camera needs to 
 
 ## Frame hierarchy
 
-```
+```text
 world
 ├── my-arm
 │   └── my-gripper (attached to arm)
@@ -124,7 +124,7 @@ If any axis is wrong, adjust the arm's orientation in the **CONFIGURE** tab.
 
 ### 6. Visualize the frame system
 
-1. Navigate to the **VISUALIZE** tab in the Viam app.
+1. Navigate to the **3D SCENE** tab in the Viam app.
 2. Verify that the arm and camera frames appear as separate branches from the world frame.
 3. Confirm that the camera frame stays fixed when the arm moves.
 4. Check that the positions and orientations match your physical workspace.

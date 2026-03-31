@@ -13,7 +13,7 @@ Navigation sensors like a front camera and LIDAR are also mounted on the base.
 
 ## Frame hierarchy
 
-```
+```text
 world
 └── my-base
     ├── my-arm (mounted on base)
@@ -159,7 +159,7 @@ Click **Save** after adding each frame.
 
 ### 6. Visualize and verify
 
-1. Navigate to the **VISUALIZE** tab in the Viam app.
+1. Navigate to the **3D SCENE** tab in the Viam app.
 2. Verify that the arm, gripper, and wrist camera form a subtree under the base.
 3. Verify that navigation sensors are direct children of the base.
 4. Jog the arm using the **CONTROL** tab and confirm that only the arm subtree (arm, gripper, wrist camera) updates, while the base and navigation sensors stay in place.
@@ -192,7 +192,7 @@ If the gripper's parent is the base, its position will not account for the arm's
 
 {{< expand "Navigation camera and wrist camera report conflicting object positions" >}}
 
-These cameras have different parents (base vs. arm), so their raw coordinates are in different reference frames.
+These cameras have different parents (base and arm respectively), so their raw coordinates are in different reference frames.
 Always use `TransformPose` to convert positions to a common frame (such as the world frame) before comparing them.
 Also verify that each camera's translation and orientation offsets are accurate.
 

@@ -32,14 +32,9 @@ direct line between start and goal.
 ```python
 from viam.services.motion import MotionClient
 from viam.proto.service.motion import Constraints, LinearConstraint
-from viam.proto.common import PoseInFrame, Pose, ResourceName
+from viam.proto.common import PoseInFrame, Pose
 
 motion_service = MotionClient.from_robot(machine, "builtin")
-
-arm_name = ResourceName(
-    namespace="rdk", type="component",
-    subtype="arm", name="my-arm"
-)
 
 constraints = Constraints(
     linear_constraint=[
@@ -53,7 +48,7 @@ destination = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
     constraints=constraints
 )
@@ -73,7 +68,7 @@ constraints := &motionpb.Constraints{
 }
 
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
     Constraints:   constraints,
 })
@@ -100,7 +95,7 @@ constraints = Constraints(
 )
 
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
     constraints=constraints
 )

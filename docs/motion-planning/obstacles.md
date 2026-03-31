@@ -35,13 +35,13 @@ dangerous motion.
 Viam supports five geometry types for defining obstacles. The three primitives
 are the most commonly used:
 
-| Type | JSON `type` | Config fields | Best for |
-|------|------------|---------------|----------|
-| **Box** | `"box"` | `x`, `y`, `z` (dimensions in mm) | Tables, walls, shelves, rectangular equipment |
-| **Sphere** | `"sphere"` | `r` (radius in mm) | Balls, rounded objects, keep-out zones |
-| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, pipes, cylindrical objects |
-| **Point** | `"point"` | (none, position only) | Single points in space |
-| **Mesh** | `"mesh"` | `mesh_data`, `mesh_content_type` | Complex shapes from STL/PLY files |
+| Type        | JSON `type` | Config fields                          | Best for                                      |
+| ----------- | ----------- | -------------------------------------- | --------------------------------------------- |
+| **Box**     | `"box"`     | `x`, `y`, `z` (dimensions in mm)       | Tables, walls, shelves, rectangular equipment |
+| **Sphere**  | `"sphere"`  | `r` (radius in mm)                     | Balls, rounded objects, keep-out zones        |
+| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, pipes, cylindrical objects             |
+| **Point**   | `"point"`   | (none, position only)                  | Single points in space                        |
+| **Mesh**    | `"mesh"`    | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files             |
 
 Each geometry has a center point (pose) that defines where it sits in space. The
 pose is relative to a reference frame, typically the world frame. Geometry
@@ -63,7 +63,7 @@ They are always present and do not require code changes. Examples: the table
 the arm is mounted on, walls, permanent fixtures.
 
 **Dynamic obstacles** are objects that you define at runtime and pass to the
-motion service via WorldState. They can change between calls. Examples: a box
+motion service through WorldState. They can change between calls. Examples: a box
 that was just placed on the table, a temporary keep-out zone, objects detected
 by a vision system.
 
@@ -247,16 +247,9 @@ Pass the WorldState to the motion service's `Move` method.
 
 ```python
 from viam.services.motion import MotionClient
-from viam.proto.common import PoseInFrame, Pose, ResourceName
+from viam.proto.common import PoseInFrame, Pose
 
 motion_service = MotionClient.from_robot(machine, "builtin")
-
-arm_name = ResourceName(
-    namespace="rdk",
-    type="component",
-    subtype="arm",
-    name="my-arm"
-)
 
 destination = PoseInFrame(
     reference_frame="world",
@@ -265,7 +258,7 @@ destination = PoseInFrame(
 
 # Move with obstacle avoidance
 await motion_service.move(
-    component_name=arm_name,
+    component_name="my-arm",
     destination=destination,
     world_state=world_state
 )
@@ -277,17 +270,11 @@ await motion_service.move(
 ```go
 import (
     "go.viam.com/rdk/services/motion"
-    "go.viam.com/rdk/resource"
 )
 
 motionService, err := motion.FromRobot(machine, "builtin")
 if err != nil {
     logger.Fatal(err)
-}
-
-armName := resource.Name{
-    API:  resource.NewAPI("rdk", "component", "arm"),
-    Name: "my-arm",
 }
 
 destination := referenceframe.NewPoseInFrame("world",
@@ -297,7 +284,7 @@ destination := referenceframe.NewPoseInFrame("world",
     ))
 
 moveReq := motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
     WorldState:    worldState,
 }
@@ -320,17 +307,17 @@ colliding.
 Check the Viam app to see your obstacle geometry:
 
 1. Navigate to your machine in the Viam app.
-2. Click the **VISUALIZE** tab.
+2. Click the **3D SCENE** tab.
 3. Obstacles defined in component frame configurations appear as translucent
    shapes in the 3D view.
 
-Dynamic obstacles (defined via WorldState in code) do not appear in the
-VISUALIZE tab because they only exist during the `Move` call.
+Dynamic obstacles (defined through WorldState in code) do not appear in the
+3D SCENE tab because they only exist during the `Move` call.
 
 ## Try It
 
 1. Add a table geometry to a component frame in the CONFIGURE tab (step 1).
-   Open the VISUALIZE tab and verify the table appears.
+   Open the 3D SCENE tab and verify the table appears.
 2. Write code to define a dynamic obstacle using WorldState (step 2) and pass
    it to a `Move` call (step 3).
 3. Place a test obstacle between the arm and a target position. Verify the arm
@@ -355,7 +342,7 @@ VISUALIZE tab because they only exist during the `Move` call.
 - Verify the reference frame. Positions are relative to the specified frame's
   origin.
 - Check units. Positions are in millimeters, not centimeters or meters.
-- Use the VISUALIZE tab to see where obstacles appear.
+- Use the 3D SCENE tab to see where obstacles appear.
 
 {{< /expand >}}
 

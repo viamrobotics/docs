@@ -55,7 +55,7 @@ it automatically.
 
 The hierarchy forms a tree rooted at the world frame:
 
-```
+```text
 world
 ├── my-arm
 │   ├── my-gripper (attached to arm)
@@ -81,13 +81,13 @@ parent is the world frame with the standard orientation, +z points up.
 Orientation describes how a component's axes are rotated relative to its parent
 frame. Viam supports several orientation formats:
 
-| Type | Fields | Description |
-|------|--------|-------------|
-| `ov_degrees` | `x, y, z, th` | Orientation vector (axis) with angle in degrees |
-| `ov_radians` | `x, y, z, th` | Orientation vector (axis) with angle in radians |
-| `euler_angles` | `roll, pitch, yaw` | Rotation around x, y, z axes (radians) |
-| `axis_angles` | `x, y, z, th` | Rotation axis (unit vector) with angle in radians |
-| `quaternion` | `w, x, y, z` | Unit quaternion (auto-normalized) |
+| Type           | Fields             | Description                                       |
+| -------------- | ------------------ | ------------------------------------------------- |
+| `ov_degrees`   | `x, y, z, th`      | Orientation vector (axis) with angle in degrees   |
+| `ov_radians`   | `x, y, z, th`      | Orientation vector (axis) with angle in radians   |
+| `euler_angles` | `roll, pitch, yaw` | Rotation around x, y, z axes (radians)            |
+| `axis_angles`  | `x, y, z, th`      | Rotation axis (unit vector) with angle in radians |
+| `quaternion`   | `w, x, y, z`       | Unit quaternion (auto-normalized)                 |
 
 The default orientation is `ov_degrees` with values `(0, 0, 1), 0`, which means
 the component's axes are aligned with its parent frame. The orientation vector
@@ -115,7 +115,23 @@ it relative to the frame.
 For detailed information about obstacle geometry, see
 [Define Obstacles](/motion-planning/obstacles/).
 
-## What's Next
+## Verify with the CLI
+
+You can inspect your frame system from the command line without writing code:
+
+```sh
+# Print the frame system configuration
+viam machines motion print-config --part "my-machine-main"
+
+# Print the current pose of every component relative to world
+viam machines motion print-status --part "my-machine-main"
+```
+
+If a component's pose looks wrong, check the translation and orientation values
+in its frame configuration. For details on all CLI motion commands, see
+[Motion Service Configuration](/motion-planning/reference/motion-service/#cli-commands).
+
+## What's next
 
 Configure the frame system for your hardware setup:
 

@@ -35,10 +35,24 @@ from viam.services.motion import MotionClient
 
 motion_service = MotionClient.from_robot(machine, "my-motion-service")
 
-plan = await motion_service.get_plan(
-    component_name=base_name,
+response = await motion_service.get_plan(
+    component_name="my-base",
 )
-print(f"Plan status: {plan.status}")
+plan_status = response.current_plan_with_status.status
+print(f"Plan state: {plan_status.state}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+response, err := motionService.PlanHistory(ctx, motion.PlanHistoryReq{
+    ComponentName: "my-base",
+})
+if err != nil {
+    logger.Fatal(err)
+}
+fmt.Printf("Plan state: %v\n", response[0].StatusHistory[0].State)
 ```
 
 {{% /tab %}}
@@ -53,9 +67,22 @@ Lists all active and recently completed plans.
 
 ```python
 statuses = await motion_service.list_plan_statuses()
-for status in statuses:
-    print(f"Component: {status.component_name}, "
-          f"Status: {status.state}")
+for s in statuses:
+    print(f"Component: {s.component_name}, "
+          f"State: {s.status.state}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+statuses, err := motionService.ListPlanStatuses(ctx, motion.ListPlanStatusesReq{})
+if err != nil {
+    logger.Fatal(err)
+}
+for _, s := range statuses {
+    fmt.Printf("Component: %s, State: %v\n", s.ComponentName, s.Status.State)
+}
 ```
 
 {{% /tab %}}
@@ -63,12 +90,12 @@ for status in statuses:
 
 Plan states:
 
-| State | Meaning |
-|-------|---------|
-| `IN_PROGRESS` | Plan is currently executing. |
-| `STOPPED` | Plan was stopped by a `StopPlan` call. |
-| `SUCCEEDED` | Plan completed successfully. |
-| `FAILED` | Plan failed during execution. |
+| State         | Meaning                                |
+| ------------- | -------------------------------------- |
+| `IN_PROGRESS` | Plan is currently executing.           |
+| `STOPPED`     | Plan was stopped by a `StopPlan` call. |
+| `SUCCEEDED`   | Plan completed successfully.           |
+| `FAILED`      | Plan failed during execution.          |
 
 ### StopPlan
 
@@ -79,9 +106,22 @@ Cancels an executing plan for a component.
 
 ```python
 await motion_service.stop_plan(
-    component_name=base_name,
+    component_name="my-base",
 )
 print("Plan stopped")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+err = motionService.StopPlan(ctx, motion.StopPlanReq{
+    ComponentName: "my-base",
+})
+if err != nil {
+    logger.Fatal(err)
+}
+fmt.Println("Plan stopped")
 ```
 
 {{% /tab %}}
@@ -97,7 +137,7 @@ Since `Move()` blocks, handle errors directly:
 ```python
 try:
     await motion_service.move(
-        component_name=arm_name,
+        component_name="my-arm",
         destination=destination,
         world_state=world_state
     )
@@ -111,7 +151,7 @@ except Exception as e:
 
 ```go
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: armName,
+    ComponentName: "my-arm",
     Destination:   destination,
     WorldState:    worldState,
 })

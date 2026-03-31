@@ -78,14 +78,9 @@ For complex paths or collision avoidance, use the motion service.
 
 ```python
 from viam.services.motion import MotionClient
-from viam.proto.common import PoseInFrame, Pose, ResourceName
+from viam.proto.common import PoseInFrame, Pose
 
 motion_service = MotionClient.from_robot(machine, "builtin")
-
-gantry_name = ResourceName(
-    namespace="rdk", type="component",
-    subtype="gantry", name="my-gantry"
-)
 
 destination = PoseInFrame(
     reference_frame="world",
@@ -93,7 +88,7 @@ destination = PoseInFrame(
 )
 
 await motion_service.move(
-    component_name=gantry_name,
+    component_name="my-gantry",
     destination=destination,
 )
 ```
@@ -102,11 +97,6 @@ await motion_service.move(
 {{% tab name="Go" %}}
 
 ```go
-gantryName := resource.Name{
-    API:  resource.NewAPI("rdk", "component", "gantry"),
-    Name: "my-gantry",
-}
-
 destination := referenceframe.NewPoseInFrame("world",
     spatialmath.NewPose(
         r3.Vector{X: 200, Y: 300, Z: 100},
@@ -114,7 +104,7 @@ destination := referenceframe.NewPoseInFrame("world",
     ))
 
 _, err = motionService.Move(ctx, motion.MoveReq{
-    ComponentName: gantryName,
+    ComponentName: "my-gantry",
     Destination:   destination,
 })
 ```
