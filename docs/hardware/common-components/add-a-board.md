@@ -22,7 +22,7 @@ A board component exposes the low-level I/O on your single-board computer:
 
 The board doesn't represent external hardware. It represents the I/O
 capabilities of the computer itself. Motors, encoders, and servos reference
-the board by name to access the pins they're wired to.
+the board by name to access the pins they're wired to. Browse all available board models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=board).
 
 ## Steps
 

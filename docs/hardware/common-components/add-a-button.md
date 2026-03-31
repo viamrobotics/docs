@@ -16,7 +16,7 @@ Add a button to your machine's configuration so you can detect and respond to bu
 
 A button component represents a momentary push button. The API is intentionally
 simple. It exposes a single `Push` method that triggers the button. Physical button
-hardware typically comes from a **module in the registry** that reads a GPIO pin
+hardware typically comes from a module in the [Viam registry](https://app.viam.com/registry?type=component&subtype=button) that reads a GPIO pin
 and exposes it as a button component.
 
 The `fake` built-in model is useful for testing code without physical hardware.

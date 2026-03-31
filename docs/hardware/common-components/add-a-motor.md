@@ -14,7 +14,7 @@ Add a motor to your machine's configuration so you can control it from the Viam 
 
 ## Concepts
 
-The motor API gives you `SetPower`, `GoFor` (rotate a number of revolutions at a given speed), `GoTo` (move to an absolute position), and `Stop`. Other models exist as modules for network-controlled motors and specific motor controllers.
+The motor API gives you `SetPower`, `GoFor` (rotate a number of revolutions at a given speed), `GoTo` (move to an absolute position), and `Stop`. Other models exist as modules for network-controlled motors and specific motor controllers. Browse available motor models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=motor).
 
 This page covers the `gpio` model, which controls a motor through a motor driver wired to GPIO pins on a [board](/hardware/common-components/add-a-board/). You need to add a board first.
 

@@ -36,7 +36,7 @@ methods a particular sensor supports.
 | `merged`           | Combines data from multiple movement sensors into one. For example, GPS position + IMU orientation.   |
 
 Hardware-specific models (GPS modules, IMUs, RTK receivers) are available as
-**modules in the registry**.
+modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor).
 
 ## Steps
 
