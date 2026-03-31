@@ -272,6 +272,48 @@ The following script adds all images captured from a certain machine to a new da
 {{% /tab %}}
 {{< /tabs >}}
 
+### Find data not in any dataset
+
+After capturing new images, you can filter for data that hasn't been added to any dataset yet.
+This helps you quickly identify uncategorized data and add it to the appropriate dataset for training.
+
+Use `DatasetFilter` with the data client API to filter data by dataset membership:
+
+- `DATASET_FILTER_TYPE_MATCH`: Returns data that belongs to a specific dataset (same as using `dataset_id` directly)
+- `DATASET_FILTER_TYPE_IN_ANY_DATASET`: Returns data that is in at least one dataset
+- `DATASET_FILTER_TYPE_NOT_IN_ANY_DATASET`: Returns data that is not in any dataset
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+The following example retrieves all images that are not in any dataset:
+
+```python {class="line-numbers linkable-line-numbers"}
+from viam.proto.app.data import Filter, DatasetFilter, DatasetFilterType
+
+# Create a filter for data not in any dataset
+dataset_filter = DatasetFilter(
+    type=DatasetFilterType.DATASET_FILTER_TYPE_NOT_IN_ANY_DATASET
+)
+my_filter = Filter(dataset_filter=dataset_filter)
+
+# Get all data not in any dataset
+my_data = []
+last = None
+while True:
+    data, count, last = await data_client.binary_data_by_filter(
+        my_filter, last=last, include_binary_data=False
+    )
+    if not data:
+        break
+    my_data.extend(data)
+
+print(f"Found {len(my_data)} items not in any dataset")
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ## Use an existing dataset
 
 If you have used the `viam dataset export` command to export a dataset or if you've been given a dataset from someone else, you can use the following script to import the dataset.
