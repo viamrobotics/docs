@@ -34,7 +34,7 @@ Check your Go version:
 go version
 ```
 
-You need Go 1.21 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
+You need Go 1.23 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
 
 ### Install the Viam CLI
 
@@ -100,7 +100,7 @@ Before creating a module, your organization needs a public namespace. This is a 
 
 1. Click the organization dropdown in the upper right corner of the Viam app next to your initials
 2. Select **Settings**
-3. Find **Public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
+3. Press **Set a public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
 4. Click **Save**
 
 {{<imgproc src="/tutorials/first-project/org-settings-dropdown.png" resize="x1100" declaredimensions=true alt="Organization dropdown menu showing Settings option." class="imgzoom shadow">}}
@@ -121,11 +121,11 @@ Enter these values when prompted:
 | Language               | `Go`                       |
 | Visibility             | `Private`                  |
 | Namespace/Organization | _Select your organization_ |
-| Resource type          | `Generic Service`          |
+| Resource type          | `Generic Component`        |
 | Model name             | `inspector`                |
 | Register module        | `Yes`                      |
 
-**Why Generic Service?** Viam has built-in APIs for hardware (camera, motor, arm). When your logic doesn't fit those categories, Generic Service provides a flexible `DoCommand` interface—ideal for application-specific logic like inspection.
+**Why Generic Component?** Viam has built-in APIs for hardware (camera, motor, arm). When your logic doesn't fit those categories, Generic Component provides a flexible `DoCommand` interface—ideal for application-specific logic like inspection.
 
 **What does "Register module" do?** Creates an entry in the Viam registry (just metadata, not your code). This enables cloud deployment later.
 
@@ -205,6 +205,10 @@ func realMain() error {
 ```bash
 go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
 ```
+
+{{< alert title="Note" color="note" >}}
+If the build fails with missing package errors, run `go get <missing-package>` for each missing dependency, then re-run the command.
+{{< /alert >}}
 
 You'll see WebRTC diagnostic output as the connection is established. Look for these messages confirming the connection:
 
@@ -361,18 +365,11 @@ Add the vision import to your import block:
 
 The constructor extracts the vision service from the dependencies map and stores it in the struct. This validates that the vision service exists on the machine and that methods on that struct in the module we're writing have access to it.
 
-Update `NewInspector` in `module.go`:
+Update `NewInspector` in `module.go` to accept the already-resolved vision service as a parameter:
 
 ```go
-func NewInspector(ctx context.Context, deps resource.Dependencies, name resource.Name, cfg *Config, logger logging.Logger) (resource.Resource, error) {
+func NewInspector(ctx context.Context, deps resource.Dependencies, name resource.Name, cfg *Config, logger logging.Logger, detector vision.Service) (resource.Resource, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
-
-    // --- Add this block ---
-    detector, err := vision.FromProvider(deps, cfg.VisionService)
-    if err != nil {
-        return nil, fmt.Errorf("failed to get vision service %q: %w", cfg.VisionService, err)
-    }
-    // --- End add ---
 
     s := &inspectionModuleInspector{
         name:       name,
@@ -385,6 +382,8 @@ func NewInspector(ctx context.Context, deps resource.Dependencies, name resource
     return s, nil
 }
 ```
+
+The `detector` is passed in rather than looked up inside `NewInspector`. The generated `newInspectionModuleInspector` wrapper (which handles the raw `resource.Config` type) will resolve the vision service and pass it here; you'll do the same in the CLI.
 
 `vision.FromProvider` looks up the resource by name and returns it as the correct type. If the resource doesn't exist or isn't a vision service, it returns an error.
 
@@ -473,12 +472,18 @@ func realMain() error {
         return fmt.Errorf("failed to get dependencies: %w", err)
     }
 
+    detector, err := vision.FromDependencies(deps, cfg.VisionService)
+    if err != nil {
+        return fmt.Errorf("failed to get vision service: %w", err)
+    }
+
     inspector, err := inspectionmodule.NewInspector(
         ctx,
         deps,
         generic.Named("inspector"),
         cfg,
         logger,
+        detector,
     )
     if err != nil {
         return fmt.Errorf("failed to create inspector: %w", err)
@@ -510,6 +515,7 @@ import (
     "github.com/erh/vmodutils"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/services/generic"
+    "go.viam.com/rdk/services/vision"
 )
 ```
 
@@ -519,7 +525,7 @@ Fetch dependencies and run:
 
 ```bash
 go mod tidy
-go run ./cmd/cli -host YOUR_MACHINE_ADDRESS
+go run ./cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
 ```
 
 You should see:

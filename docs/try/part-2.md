@@ -31,7 +31,9 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 1. Click **+** next to **inspection-station-1-main** in the **CONFIGURE** tab
 2. Click **Component or service**
-3. Select **data management**
+3. Select **data_manager/builtin**
+
+{{<imgproc src="/tutorials/first-project/data-manager-search.png" resize="x1100" declaredimensions=true alt="Configuration Blocks search showing the data_manager/builtin result." class="imgzoom shadow">}}
 4. Name it `data-service`
 5. Click **Create**
 6. **Save** your updated machine configuration
