@@ -478,7 +478,9 @@ If the resource comes from a module, you must instead set the `log_level` attrib
 
 6. Click **Save** in the upper right corner of the page to save your new configuration.
 7. To check that your mods are working, view your machine's debug configuration.
-   In **Builder** mode on the **CONFIGURE** tab, select the **...** (Actions) menu to the right of your main part's name in the left-hand panel and click the **View debug configuration** option to view the full configuration file.
+   In **Builder** mode on the **CONFIGURE** tab, select the **...** (Actions) menu to the right of your main part's name in the left-hand panel and click the **View debug configuration** option.
+   This shows the fully resolved configuration that `viam-server` receives, including platform-specific module settings based on your part's connected platform.
+   If your part hasn't completed setup yet, a warning indicates that the configuration may not be fully accurate until the part connects.
 
 {{% /tab %}}
 {{< /tabs >}}
