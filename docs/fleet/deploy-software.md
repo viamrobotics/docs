@@ -1,109 +1,71 @@
 ---
 linkTitle: "Deploy software"
-title: "Deploy software packages to machines (OTA)"
+title: "Deploy software to machines"
 weight: 30
 layout: "docs"
 type: "docs"
-images: ["/registry/module-puzzle-piece.svg"]
-description: "Deploy code packages with machine control logic to one or more machines."
-languages: []
-viamresources: []
-platformarea: ["registry", "fleet"]
-level: "Intermediate"
-date: "2025-02-14"
-aliases:
-  - /how-tos/deploy-packages/
-# updated: ""  # When the tutorial was last entirely checked
-cost: "0"
+description: "Deploy modules and control logic to your fleet using fragments and the Viam registry."
 ---
 
-The following steps show you how to deploy and manage your machine's software over the air (OTA).
-
-For microcontrollers, see [Over-the-air firmware updates](/operate/install/setup-micro/#configure-over-the-air-updates) for more information.
+Deploy modules (hardware drivers, control logic, or other custom code) to one machine or an entire fleet. You configure the module in a fragment, apply the fragment to your machines, and the machines download the module from the Viam registry automatically.
 
 ## Prerequisites
 
-Start by [setting up one machine](/operate/install/setup/).
-Once your machine is connected to Viam, return to this page.
+- A module uploaded to the Viam registry. See [deploy a module](/build-modules/deploy-a-module/) for how to upload.
+- A [fragment](/fleet/reuse-configuration/) for your fleet configuration, or create one in the steps below.
 
-## Create a fragment
+## 1. Add the module to a fragment
 
-Viam has a built-in tool called _{{< glossary_tooltip term_id="fragment" text="fragments" >}}_ that enable you to reuse one configuration across multiple machines.
-When deploying or updating software on many machines, you should use fragments to deploy your modules OTA to your machines.
-For more detailed information, see [Reuse configuration](/fleet/reuse-configuration/).
-
-1. Go to [app.viam.com/fragments](https://app.viam.com/fragments).
-1. Click **Create fragment**.
-1. Set your privacy settings at the top of the page.
-
-   Choose one of the following privacy options for your fragment:
-
-   - **Public:** Any user inside or outside of your organization will be able to view and use this fragment.
-   - **Private:** No user outside of your organization will be able to view or use this fragment.
-   - **Unlisted:** Any user inside or outside of your organization, with a direct link, will be able to view and use this fragment.
-
+1. Navigate to your fragment's page at [app.viam.com/fragments](https://app.viam.com/fragments).
+1. Click **+** and select **Component or service** or **Control code**, depending on what the module provides.
+1. Search for your module in the registry and add it.
+1. Configure the module's attributes as needed.
 1. Click **Save**.
 
-## Configure your hardware and software
+## 2. Set the version strategy
 
-1.  Click the **+** button to add drivers for your hardware resources and any other resources you want to use with your control logic.
-    For more information, see [Supported hardware](https://app.viam.com/registry).
-1.  If you created a [control logic module](/build-modules/write-a-logic-module/), add it to your machine.
+Each module in the fragment has a version field. On the fragment card for the module, find the **Update version** section:
 
-    {{<imgproc src="/how-tos/deploy-packages/add-package.png" resize="800x" class="shadow" style="width: 500px" declaredimensions=true alt="Configuration builder UI">}}
-
-1.  Optionally, add other resources, or settings.
-
-## Set the version and update strategy
-
-For each module:
-
-1. Scroll to the module card for your control logic module.
-1. Select a **Pinned version type**.
-
-   You can select a specific version or set the machine to always update to the latest major, minor, patch, or pre-release version once new versions are available.
-   For more information on these configuration options, see [Module versioning](/reference/module-configuration/).
-
-   By default, if the set version type allows for automatic updates, when a new version of a module or package becomes available, it will automatically update when the configuration is synced next.
-   To ensure that updates only occur when your machines are ready, configure a [maintenance window](/reference/platform/viam-server/). With a configured maintenance window, configuration updates will only be applied when maintenance is allowed.
-
-   {{<imgproc src="/how-tos/deploy-packages/version.png" resize="800x" class="shadow" style="width: 500px" declaredimensions=true alt="Module card UI">}}
+- **Latest version**: the machine downloads the newest version when it syncs. This is the default.
+- **Pin to version**: the machine stays on a specific version and does not update automatically.
+- **Pin to tag**: the machine uses whichever version the fragment tag points to.
 
 {{% alert title="Caution" color="caution" %}}
-For any version type other than **Patch (X.Y.Z)**, the module will upgrade as soon as an update that matches that specified version type is available, which will **restart the module**.
-If the module cannot be interrupted, the module will not be upgraded.
+For any version type other than pinning to a specific version, the module updates as soon as a matching version is available, which restarts the module. If the module cannot be safely interrupted, pin to a specific version and update manually.
 {{% /alert %}}
 
-## Add the fragment automatically to your machines with provisioning
+To control when updates are applied, configure a maintenance window. See [manage versions](/fleet/manage-versions/) for details.
 
-Provisioning allows you to automatically add fragments to your machines.
-See [Provisioning](/fleet/provision-devices/) for more information.
+## 3. Apply the fragment to machines
 
-## Add the fragment to your machines manually
+**Through the Viam app:**
 
-You can also add fragments manually to the machines that need it:
+1. Navigate to each machine's **CONFIGURE** tab.
+1. Click **+** and select **Insert fragment**.
+1. Search for your fragment and select it.
+1. Click **Insert fragment**, then **Save**.
 
-1. Navigate to your machine's **CONFIGURE** tab.
-1. Click the **+** button.
-1. Select **Insert fragment**.
+**Through provisioning:**
 
-   {{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill imgzoom shadow" style="width: 250px" declaredimensions=true alt="Add fragment">}}
+Include the fragment ID in your `viam-defaults.json` file. New machines apply the fragment automatically on first boot. See [provision devices](/fleet/provision-devices/).
 
-1. Search for your fragment and add it.
-1. Click **Save** in the upper right corner of the screen.
+**Through the CLI:**
 
-{{< alert title="Tip" color="tip" >}}
-You can also add multiple fragments to one machine.
-{{< /alert >}}
+```sh {class="command-line" data-prompt="$"}
+viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+```
 
-{{% hiddencontent %}}
-You cannot add the same fragment to a machine twice.
-{{% /hiddencontent %}}
+## 4. Verify the deployment
 
-## Verify the deployment
+1. Navigate to a machine's **CONFIGURE** tab and confirm the module appears in the resource list.
+1. Go to the **CONTROL** tab and test the deployed components or services.
+1. Check the **LOGS** tab for any errors from the module.
 
-After adding the fragment to your machines:
+On the fleet dashboard at [app.viam.com/fleet/machines](https://app.viam.com/fleet/machines), confirm your machines are online and showing the expected viam-server version.
 
-1. Navigate to a machine's **CONFIGURE** tab and confirm the fragment's resources appear.
-1. Go to the **CONTROL** tab and test the deployed components and services.
-1. Check the **LOGS** tab for any errors from the deployed modules.
+## Related pages
+
+- [Reuse configuration](/fleet/reuse-configuration/) for creating and managing fragments
+- [Deploy ML models](/fleet/deploy-ml-models/) for deploying trained ML models
+- [Manage versions](/fleet/manage-versions/) for version pinning and maintenance windows
+- [Build and deploy modules](/build-modules/) for writing and uploading modules

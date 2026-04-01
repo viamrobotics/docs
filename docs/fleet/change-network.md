@@ -1,59 +1,51 @@
 ---
-title: "Connect a machine to a new network"
-linkTitle: "Connect to new network"
-weight: 55
+linkTitle: "Change network"
+title: "Change a machine's network"
+weight: 70
+layout: "docs"
 type: "docs"
-description: "Connect a machine to a new WiFi network."
-date: "2025-10-07"
+description: "Connect a deployed machine to a different WiFi network."
 ---
 
-This page will guide you to connect your machine to a new WiFi network.
+Change the WiFi network on a machine that has already been provisioned and deployed. There are three approaches depending on your situation.
 
-## Prerequisites
+## Option 1: Move to a new WiFi network using provisioning mode
 
-Your machine must have `viam-agent` installed to be able to configure network settings.
+If the machine's current network is no longer available (for example, you moved the machine to a new facility), force the machine back into provisioning mode:
 
-## Connect to a different WiFi network
+1. Connect to the machine with a shell (if possible):
 
-As your machine boots, `viam-agent` checks for known networks, if none can be found, `viam-agent` automatically enters provisioning mode.
-
-Follow the instructions to [complete end-user setup for a machine](/fleet/end-user-setup/) and configure the new network settings.
-
-## Force provisioning mode
-
-If you want to change the WiFi network or the network credentials on a device that is already setup and can still connect to the current network, you can enter provisioning using the force provisioning mode.
-
-If you can manually `SSH` into a machine you can follow these steps:
-
-1. Add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json).
-   The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before you can use the `viam machines part shell` command.
-
-1. Open a shell on your machine:
-
-   ```sh {class="command-line" data-prompt="$" data-output="2-10"}
-   viam machines part shell --part <PART-ID>
+   ```sh {class="command-line" data-prompt="$"}
+   viam machines part shell --part=<part-id>
    ```
 
-1. On the machine, create an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>:
+1. Create a file that forces provisioning mode on next boot:
 
-   ```sh {class="command-line" data-prompt="$" data-output="3-10"}
-   touch /opt/viam/etc/force_provisioning_mode
+   ```sh {class="command-line" data-prompt="$"}
+   sudo touch /opt/viam/etc/force_provisioning_mode
    ```
 
-1. The machine will immediately enter provisioning mode until the machine receives the new credentials or the `retry_connection_timeout_minutes` limit, by default 10 minutes, expires.
+1. Reboot the machine. On boot, `viam-agent` enters provisioning mode and creates a WiFi hotspot.
 
-If you created a provisioning app, program it to add an empty file at <FILE>/opt/viam/etc/force_provisioning_mode</FILE>.
+1. Follow the [end-user device setup](/fleet/end-user-setup/) instructions to connect the machine to the new network.
 
-Follow the instructions to [complete end-user setup for a machine](/fleet/end-user-setup/) and configure the new network settings.
+If you cannot shell into the machine, power cycle it. If the current network is truly unavailable, `viam-agent` enters provisioning mode automatically after the configured timeout (`retry_connection_timeout_minutes`, default 10 minutes).
 
-## Connect to multiple networks
+## Option 2: Add a new network while keeping the current one
 
-If your machine frequently moves between different WiFi networks, you can [add the credentials for additional networks in the machine settings](/fleet/system-settings/#configure-networks).
-Your machine must still be internet-connected for this configuration to take effect.
+If the machine is still connected to its current network and you want to add a second network (for example, when moving between locations):
+
+1. Add the new network credentials in the machine's system settings. See [configure additional networks](/fleet/system-settings/#configure-additional-networks).
+1. Set the `priority` value higher than the current network if you want the machine to prefer the new one.
+1. Save the configuration. The machine picks up the new network on its next config sync.
+
+## Option 3: Pre-configure multiple networks during provisioning
+
+If you know the machine will need to connect to multiple networks, add them to the `additional_networks` section of the `viam-defaults.json` file before provisioning. See [provision additional networks](/fleet/provision-devices/#provision-additional-networks).
 
 ## Verify the network change
 
-After completing the network change, check that the machine comes back online:
+After changing the network:
 
 1. In the Viam app, navigate to the fleet dashboard or the machine's page.
 1. Confirm the machine shows as **Live**.

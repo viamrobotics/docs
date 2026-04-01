@@ -1,157 +1,64 @@
 ---
-title: "Add custom metadata"
 linkTitle: "Add custom metadata"
-weight: 60
+title: "Add custom metadata"
+weight: 50
+layout: "docs"
 type: "docs"
-description: "Add custom metadata as a JSON object to machine parts, machines, locations, and organizations."
-date: "2025-11-14"
-# updated: ""  # When the tutorial was last entirely checked
+description: "Attach custom key-value data to machine parts, machines, locations, and organizations."
 ---
 
-To store metadata for a machine part, machine, or location you can add custom metadata in the UI or using the Viam SDKs.
-You can also add custom metadata for organizations using the Viam SDKs.
+Attach custom metadata as a JSON object to any level of your fleet hierarchy: machine parts, machines, locations, or organizations. Use metadata to store deployment details, maintenance notes, device serial numbers, or any other data you need to track alongside your machines.
 
-## Prerequisites
+## Add metadata in the Viam app
 
-{{% expand "A running machine connected to Viam." %}}
-
-{{% snippet "setup-both.md" %}}
-
-{{% /expand%}}
-
-## Add and update custom machine part metadata
-
-{{< tabs >}}
-{{% tab name="Web UI" %}}
-
-1. On a machine page, click on the **...** menu next to the machine part.
-1. Select **Custom part metadata**.
-1. Add the metadata to the JSON object.
+1. Navigate to the resource you want to add metadata to (machine part, machine, location, or organization).
+1. Click the **...** (actions) menu.
+1. Select **Custom part metadata**, **Custom machine metadata**, **Custom location metadata**, or **Custom organization metadata** depending on the level.
+1. Edit the JSON object in the editor that appears.
 1. Click **Save**.
 
-{{% /tab %}}
-{{% tab name="Python" %}}
+Metadata is stored as an arbitrary JSON object with no required schema. You define the structure.
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30-32" >}}
+Example:
 
-For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/).
+```json
+{
+  "serial_number": "SN-2026-0042",
+  "deployment_date": "2026-03-15",
+  "facility": "Building A, Line 3",
+  "firmware_batch": "v2.1.0-rc3"
+}
+```
 
-{{% /tab %}}
-{{% tab name="Go" %}}
+## Add metadata with the SDK
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.go" lang="go" class="line-numbers linkable-line-numbers" data-line="29-31" >}}
+Use the fleet management API to read and update metadata programmatically at each level:
 
-For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/).
+| Level        | Get method                | Update method                |
+| ------------ | ------------------------- | ---------------------------- |
+| Machine part | `GetRobotPartMetadata`    | `UpdateRobotPartMetadata`    |
+| Machine      | `GetRobotMetadata`        | `UpdateRobotMetadata`        |
+| Location     | `GetLocationMetadata`     | `UpdateLocationMetadata`     |
+| Organization | `GetOrganizationMetadata` | `UpdateOrganizationMetadata` |
 
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
+## Add metadata with the CLI
 
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="22-24" >}}
+Read metadata for a machine and its parts:
 
-For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/).
+```sh {class="command-line" data-prompt="$"}
+viam metadata read --machine-id=<machine-id>
+```
 
-{{% /tab %}}
-{{< /tabs >}}
-
-## Add and update custom machine metadata
-
-{{< tabs >}}
-{{% tab name="Web UI" %}}
-
-1. On a machine page, click on the **...** menu in the top-right corner.
-1. Select **Custom machine metadata**.
-1. Add the metadata to the JSON object.
-1. Click **Save**.
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.py" lang="py" class="line-numbers linkable-line-numbers" data-line="41-43" >}}
-
-For more information, see [`GetRobotMetadata`](/reference/apis/fleet/) and [`UpdateRobotMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.go" lang="go" class="line-numbers linkable-line-numbers" data-line="50-52" >}}
-
-For more information, see [`GetRobotMetadata`](/reference/apis/fleet/) and [`UpdateRobotMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="37-39" >}}
-
-For more information, see [`GetRobotMetadata`](/reference/apis/fleet/) and [`UpdateRobotMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## Add and update custom location metadata
-
-{{< tabs >}}
-{{% tab name="Web UI" %}}
-
-1. On a location page, click on the **...** menu in the top-right corner.
-1. Select **Custom location metadata**.
-1. Add the metadata to the JSON object.
-1. Click **Save**.
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30-32" >}}
-
-For more information, see [`GetLocationMetadata`](/reference/apis/fleet/) and [`UpdateLocationMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-30" >}}
-
-For more information, see [`GetLocationMetadata`](/reference/apis/fleet/) and [`UpdateLocationMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="22-24" >}}
-
-For more information, see [`GetLocationMetadata`](/reference/apis/fleet/) and [`UpdateLocationMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-## Add and update custom organization metadata
-
-{{< tabs >}}
-
-{{% tab name="Python" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30-32" >}}
-
-For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-30" >}}
-
-For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-{{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="22-24" >}}
-
-For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/).
-
-{{% /tab %}}
-{{< /tabs >}}
+The CLI `metadata read` command aggregates metadata across levels. Pass `--organization-id`, `--location-id`, `--machine-id`, or `--machine-part-id` to read specific levels.
 
 ## Verify metadata
 
-After adding metadata, verify it was saved:
+After adding metadata:
 
-- **Web UI**: Click the **...** menu on the resource and select the custom metadata option. The JSON object should contain your metadata.
-- **CLI**: Run `viam metadata read --machine-id=<machine-id>` to read metadata for a machine and its parts.
-- **SDK**: Use the corresponding `Get` method (`GetRobotPartMetadata`, `GetRobotMetadata`, `GetLocationMetadata`, or `GetOrganizationMetadata`) to retrieve and confirm the metadata.
+- **Viam app**: click the **...** menu and select the custom metadata option. The JSON object should show your data.
+- **CLI**: run `viam metadata read --machine-id=<machine-id>`.
+- **SDK**: call the corresponding `Get` method to retrieve and confirm the metadata.
+
+## Related pages
+
+- [Manage your fleet with the CLI](/cli/manage-your-fleet/) for CLI fleet operations

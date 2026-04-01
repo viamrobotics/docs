@@ -7,81 +7,69 @@ type: "docs"
 description: "Roll out trained ML models to machines using fragments and the Viam registry."
 ---
 
-Deploy a trained ML model to one machine or an entire fleet using the same fragment-based workflow you use for modules. When you retrain and upload a new model version, machines configured to track that version update automatically.
+Deploy a trained ML model to one machine or your entire fleet using the same fragment workflow you use for modules. When you retrain and upload a new model version, machines configured to track that version update automatically.
+
+## When to use this
+
+Use this page when you have a trained model in the Viam registry and want to deploy it to multiple machines. If you are deploying to a single machine for the first time, start with [deploy a model to a machine](/train/deploy-a-model/).
 
 ## Prerequisites
 
-- A trained ML model in the Viam registry. See [Train a model](/train/train-a-model/) to create one.
-- At least one machine with a camera configured. See [Add a camera](/hardware/common-components/add-a-camera/).
-- A [fragment](/fleet/reuse-configuration/) for your fleet configuration (or create one in the steps below).
+- A trained ML model in the Viam registry. See [train a model](/train/train-a-model/).
+- At least one machine with a camera configured. See [add a camera](/hardware/common-components/add-a-camera/).
+- A [fragment](/fleet/reuse-configuration/) for your fleet, or create one below.
 
 ## How model deployment works
 
-ML models in Viam are deployed as registry packages, the same way modules are. A machine needs two services to run a model:
+ML models are deployed as registry packages, the same way modules are. A machine needs two services to run a model:
 
-1. **ML model service** -- loads the model file and runs inference.
-2. **Vision service** -- connects the ML model service to a camera and returns detections or classifications.
+1. **ML model service**: loads the model file and runs inference.
+2. **Vision service**: connects the ML model service to a camera and returns detections or classifications.
 
 You configure both services in a fragment, apply the fragment to your machines, and every machine downloads the model and starts running inference.
 
-When you upload a new version of the model, machines update automatically (unless you pin to a specific version).
+## 1. Add the model and vision service to a fragment
 
-## 1. Create a fragment with your ML model
-
-1. Go to [app.viam.com/fragments](https://app.viam.com/fragments).
-1. Click **Create fragment** and give it a name.
-1. Click the **+** button to add resources.
-1. Search for `tflite` and add the **tflite_cpu** ML model service (or the appropriate model service for your model framework).
-1. In the ML model service configuration, under **Deployment**, select **Deploy model on machine**.
+1. Navigate to your fragment at [app.viam.com/fragments](https://app.viam.com/fragments).
+1. Click **+** and add an ML model service (for example, search for `tflite` and add **tflite_cpu**).
+1. In the ML model service card, under **Deployment**, select **Deploy model on machine**.
 1. Click **Select model** and choose your trained model from the registry.
-1. Add a **vision** service. Search for `mlmodel` and add the **mlmodel** vision service.
+1. Click **+** again and add a vision service. Search for `mlmodel` and add the **mlmodel** vision service.
 1. Configure the vision service to use the ML model service you just added.
 1. Click **Save**.
 
 ## 2. Choose a version strategy
 
-In the fragment configuration, each module and ML model package has a version field.
+Each ML model package has a version field in the fragment configuration.
 
-- **Track latest**: leave the version set to the default. When you upload a new model version, machines update automatically on their next config sync.
-- **Pin to a specific version**: set the version to a specific string (for example, `2026-03-15T10-30-00`) to prevent automatic updates.
-- **Use fragment tags for staged rollouts**: create a `stable` tag on your fragment, deploy `stable` to production machines, and a `development` tag for test machines. When the new model is validated on development machines, move the `stable` tag to the new fragment revision.
+- **Track latest**: leave the version at the default. When you upload a retrained model, machines update automatically on their next config sync.
+- **Pin to a specific version**: set the version string to prevent automatic updates until you are ready.
+- **Use fragment tags**: create `stable` and `development` tags on the fragment. Test new models on development machines before promoting to production. See [reuse configuration](/fleet/reuse-configuration/#version-and-tag-fragments-for-staged-rollouts) for the tag workflow.
 
-For more on version strategies, see [Update software](/fleet/update-software/).
+To control the timing of updates, configure a maintenance window so models are not swapped while a machine is actively processing. See [manage versions](/fleet/manage-versions/).
 
-{{< alert title="Tip" color="tip" >}}
-Configure a [maintenance window](/fleet/update-software/) to control when model updates are applied, so machines are not interrupted during operation.
-{{< /alert >}}
+## 3. Apply the fragment to machines
 
-## 3. Apply the fragment to your machines
-
-Apply the fragment to machines individually or through provisioning:
-
-- **Manual**: on each machine's **CONFIGURE** tab, click **+**, select **Insert fragment**, and choose your fragment.
-- **Provisioning**: include the fragment ID in your `viam-defaults.json` file so new machines apply it automatically on first boot. See [Provision devices](/fleet/provision-devices/).
-- **CLI**: use `viam machines part fragments add --part=<part-id> --fragment=<fragment-id>`.
+Apply the fragment to your machines through the Viam app, provisioning, or CLI. See [deploy software](/fleet/deploy-software/#3-apply-the-fragment-to-machines) for the steps.
 
 ## 4. Verify the deployment
 
-After applying the fragment, verify that the model is running on your machines:
-
-1. Navigate to a machine's **CONTROL** tab in the Viam app.
-1. Find the vision service card and test it with a live camera feed.
-1. Check the machine's **LOGS** tab for any errors from the ML model or vision service.
+1. Navigate to a machine's **CONTROL** tab.
+1. Find the vision service card and test it with a live camera feed to confirm detections or classifications appear.
+1. Check the **LOGS** tab for errors from the ML model service or vision service.
 
 ## Update a model across the fleet
 
 When you retrain and upload a new model version:
 
-1. If you are tracking the latest version, machines update automatically on their next config sync (or within the maintenance window if configured).
-1. If you are using fragment tags, update the fragment configuration with the new model version, then move the `stable` tag to the new revision.
-1. If you pinned to a specific version, update the version string in the fragment.
-
-To monitor which model version each machine is running, use the fleet dashboard or check machine status programmatically. See [Update software](/fleet/update-software/) for details.
+- **Tracking latest**: machines update on their next config sync (or within the maintenance window).
+- **Using fragment tags**: update the fragment configuration with the new model version, save to create a new revision, then move the `stable` tag to the new revision.
+- **Pinned to a version**: update the version string in the fragment and save.
 
 ## Related pages
 
-- [Train a model](/train/train-a-model/) for creating ML models from captured data
-- [Deploy a model to a machine](/train/deploy-a-model/) for single-machine model deployment
-- [Configure computer vision](/vision/configure/) for setting up vision pipelines
-- [Reuse configuration](/fleet/reuse-configuration/) for fragment details
-- [Update software](/fleet/update-software/) for version management and maintenance windows
+- [Train a model](/train/train-a-model/) for creating ML models
+- [Deploy a model to a machine](/train/deploy-a-model/) for single-machine deployment
+- [Configure computer vision](/vision/configure/) for vision pipeline details
+- [Reuse configuration](/fleet/reuse-configuration/) for fragment management
+- [Manage versions](/fleet/manage-versions/) for version pinning and maintenance windows

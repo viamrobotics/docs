@@ -1,184 +1,79 @@
 ---
-title: "Complete end-user setup for a machine"
 linkTitle: "End-user device setup"
+title: "End-user device setup"
 weight: 25
+layout: "docs"
 type: "docs"
-description: "If you have a machine that uses Viam and have been pointed to this guide, this guide will show you how to set it up."
-images: ["/platform/provisioning-demo.gif"]
-videos: ["/platform/provisioning-demo.webm", "/platform/provisioning-demo.mp4"]
-languages: []
-viamresources: []
-platformarea: ["fleet"]
-level: "Intermediate"
-date: "2024-08-21"
-aliases:
-  - /provision/
-# updated: ""  # When the tutorial was last entirely checked
-cost: "0"
+description: "Connect a Viam-powered device to your WiFi network using the mobile app or captive portal."
 ---
 
-If you have a machine with Viam pre-installed on it, this guide will show you how to complete your device setup using either the [Viam mobile app](#set-up-your-machine-using-the-viam-mobile-app) or the [{{< glossary_tooltip term_id="captive-web-portal" text="captive portal" >}}](#set-up-your-machine-using-the-captive-portal).
-
-Whether you need to use the Viam mobile app or the captive portal, depends on how [provisioning was set up](/fleet/provision-devices/) on your machine.
+If you received a device with Viam pre-installed, follow these instructions to connect it to your WiFi network and complete setup. The method you use depends on how the device manufacturer configured provisioning.
 
 ## Prerequisites
 
-- Physical hardware constituting a machine
-- A WiFi-enabled computer, or mobile device (if using the Viam mobile app)
+- A Viam-powered device (powered off)
+- A WiFi network with internet access
+- A mobile device or laptop
 
-## Set up your machine using the Viam mobile app
+## Set up with the Viam mobile app
 
-{{< table >}}
-{{% tablestep start=1 %}}
-**Install the Viam mobile app**
+Use this method if the device manufacturer configured Bluetooth provisioning.
 
-You can find the mobile app on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and on [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
+1. Install the Viam mobile app from the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) or [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
+1. Open the app and sign in. Select an organization and location for your machine.
+1. Create a new machine or select an existing machine that has not been set up.
+1. Power on the device. Wait for it to boot and enable Bluetooth (this may take 1-2 minutes).
+1. Follow the app's instructions to connect to the device's Bluetooth signal. The device name begins with `viam-setup-` by default.
+1. Provide your WiFi network name and password when prompted.
+1. Wait for the device to connect to WiFi and complete setup. The machine appears as **Live** in the app when setup is complete.
 
-<a href="https://apps.apple.com/vn/app/viam-robotics/id6451424162" target="_blank">
-  <img src="/appstore.png" width="200px" alt="apple store icon" class="center-if-small" >
-</a>
+If the device cannot connect to the provided network, it re-enables Bluetooth and prompts you to try again.
 
-<a href="https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US" target="_blank">
-  <img src="/googleplay.png" width="200px" alt="google play store icon" class="center-if-small" >
-</a>
+## Set up with the captive portal
 
-{{% /tablestep %}}
-{{% tablestep %}}
-**Create a machine**
+Use this method if the device manufacturer configured WiFi hotspot provisioning.
 
-Open the Viam mobile app and sign in.
-Then, select an organization and location for your machine.
-Create a new machine or click on an existing machine that has not yet been set up and follow the instructions.
+1. Power on the device. Wait for it to boot and create a WiFi hotspot (this may take 1-2 minutes).
+1. On your laptop or mobile device, open WiFi settings and connect to the device's hotspot. The hotspot name begins with `viam-setup-` by default. The password is `viamsetup` unless the manufacturer changed it.
+1. A captive portal opens automatically. If it does not, open [http://viam.setup/](http://viam.setup/) in a browser.
+1. Enter your WiFi network name and password.
+1. If prompted, paste your machine cloud credentials. To get these:
+   - Log into [app.viam.com](https://app.viam.com).
+   - Navigate to your machine's page.
+   - Click the part status dropdown next to the machine name.
+   - Click the copy icon next to **Machine cloud credentials**.
+1. Wait for the device to connect to WiFi and complete setup.
 
-{{% /tablestep %}}
-{{% tablestep %}}
-**Turn on your machine and follow the app instructions**
+If the device cannot connect, it recreates the hotspot so you can try again.
 
-Turn on the smart machine you are attempting to connect to.
+## Verify the device is online
 
-Follow the instructions and connect to the Bluetooth hotspot your machine has created.
-You may need to wait a short time for your machine to boot and turn on Bluetooth.
+After setup, the device should appear as **Live** in the Viam app:
 
-By default, the name will begin with `viam-setup-`.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Provide the network information for the machine**
-
-In the mobile app, follow the instructions to provide the network information for the machine.
-
-The machine will now disable Bluetooth and attempt to connect using the provided network information.
-If the machine cannot establish a connection using the provided network information, the machine will enable the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Wait for machine to complete setup**
-
-If the machine can successfully connect to the network it will now complete its setup and become **live**.
-
-Any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-{{% /tablestep %}}
-{{< /table >}}
-
-## Set up your machine using the captive portal
-
-{{< table >}}
-{{% tablestep start=1 %}}
-**Turn on the smart machine**
-
-Turn on the smart machine you are attempting to set up.
-{{% /tablestep %}}
-{{% tablestep %}}
-**Connect to your machine's WiFi hotspot**
-
-On a laptop or mobile device, open your WiFi settings and connect to the WiFi hotspot your machine has created.
-You may need to wait a short time for your machine to boot and create its WiFi hotspot.
-Select the machine's WiFi hotspot and enter the password.
-By default, the name will begin with `viam-setup-` and the password is `viamsetup`.
-
-Once you are connected to your machine's WiFi hotspot you will be redirected to a {{< glossary_tooltip term_id="captive-web-portal" text="captive portal" >}}.
-If you are using a laptop or are not redirected, try opening [http://viam.setup/](http://viam.setup/) in a browser.
-{{% /tablestep %}}
-{{% tablestep %}}
-**Follow the captive portal's instructions to provide network information**
-
-In the captive web portal, follow the instructions to provide the network information for the machine.
-{{% /tablestep %}}
-{{% tablestep %}}
-**If prompted, provide a machine cloud credentials configuration**
-
-Depending on how the machine was set up so far, the captive portal may also require you to paste machine cloud credentials.
-This is the JSON object which contains your machine part secret key and cloud app address, which your machine needs to connect to Viam.
-
-Log into [Viam](https://app.viam.com), and use an existing machine or create a new machine.
-
-To copy your machine cloud credentials:
-
-- Navigate to your machine's page.
-- Select the part status dropdown to the right of your machine's name on the top of the page.
-  {{<imgproc src="configure/machine-part-info.png" resize="500x" declaredimensions=true alt="Machine part info dropdown" class="shadow" >}}
-- Click the copy icon next to **Machine cloud credentials**.
-- Paste the credentials when prompted.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Wait for machine to complete setup**
-
-The machine will now disable the hotspot network and attempt to connect using the provided network information.
-If the machine cannot establish a connection using the provided network information, the machine will create the hotspot again and prompt you to re-enter the network information until a connection is successfully established.
-
-If the machine can successfully connect to the network it will now complete its setup and become **live**.
-
-Any features that require internet access will not function if the connected WiFi network is not connected to the internet.
-{{% /tablestep %}}
-{{< /table >}}
+- **Mobile app**: check the machine's status in the app.
+- **Web app**: navigate to [app.viam.com/fleet/machines](https://app.viam.com/fleet/machines) and confirm the machine shows as online.
 
 ## Troubleshooting
 
 ### Bluetooth connection issues
 
-If you're having trouble with Bluetooth provisioning:
+- Ensure Bluetooth is enabled on your mobile device and the Viam app has Bluetooth permissions.
+- If you previously connected to this device, remove it from your device's Bluetooth settings and try again.
+- Power cycle the device to restart Bluetooth advertising.
 
-1. **Check Bluetooth permissions**: Ensure the app used for provisioning has [Bluetooth permissions enabled](https://github.com/viamrobotics/viam_flutter_bluetooth_provisioning_widget?tab=readme-ov-file#platform-requirements) on your device.
+### WiFi hotspot not visible
 
-1. **Verify Bluetooth is enabled**: Make sure Bluetooth is turned on in your mobile device settings.
+- Wait at least 2 minutes after powering on. The device needs time to boot and create the hotspot.
+- Confirm the hotspot password. The default is `viamsetup` unless the manufacturer changed it.
+- Move closer to the device. The hotspot has limited range.
 
-1. **Restart Bluetooth**: Try turning Bluetooth off and on again on your mobile device.
+### Device does not come online after providing WiFi credentials
 
-1. **Remove and re-add**: If you've already connected to the machine over Bluetooth, remove or forget the device from your mobile device's settings, and re-add it.
+- Verify the WiFi network name and password are correct.
+- Confirm the WiFi network has internet access. Some networks require a captive portal login (hotel WiFi, corporate guest networks) that the device cannot complete.
+- Check WiFi band compatibility. Some devices only support 2.4 GHz networks.
+- Power cycle the device to restart the provisioning process and try a different network.
 
-If you can open a terminal on the machine:
+## Next steps
 
-1. Check if Bluetooth is available:
-
-   ```sh {class="command-line" data-prompt="$"}
-   bluetoothctl list
-   ```
-
-1. Restart Bluetooth service:
-
-   ```sh {class="command-line" data-prompt="$"}
-   sudo systemctl restart bluetooth
-   ```
-
-1. **Configuration check**: If you set up provisioning, verify that `disable_bt_provisioning` is set to `false` in your configuration.
-
-### WiFi connection issues
-
-If you cannot connect to your machine's temporary WiFi hotspot, confirm you are using the correct password.
-The default password, unless changed by the manufacturer, is `viamsetup`,
-
-If your machine cannot connect to your permanent office or home WiFi network:
-
-1. **Check network credentials**: Verify that the WiFi network name (SSID) and password are correct.
-
-1. **Check network compatibility**: Ensure your WiFi network is compatible with your machine's WiFi band frequency (2.4ghz vs 5ghz).
-
-1. **Try a different network**: If possible, try connecting to a different WiFi network to isolate the issue.
-
-## Next Steps
-
-The machine is now usable.
-
-If the machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/reference/platform/viam-agent/).
-You can also override other configuration details in the [`viam-agent` configuration](/reference/platform/viam-agent/).
+Once the device is online, it operates according to its configured fragment. If the device needs access to additional WiFi networks, you can add them through the machine's system settings. See [system settings](/fleet/system-settings/) for details.

@@ -1,225 +1,152 @@
 ---
-linkTitle: "Configure machine settings"
-title: "Configure machine operating system settings"
-weight: 50
+linkTitle: "System settings"
+title: "System settings"
+weight: 60
 layout: "docs"
 type: "docs"
-description: "Configure network settings, operating system package updates and logging defaults."
+description: "Configure network connections, OS updates, tunneling, TLS, and log forwarding for deployed machines."
 ---
 
-Configure system-level settings for deployed machines, including OS package updates, network connections, tunneling, TLS, and log forwarding.
+Configure system-level settings for deployed machines. These settings are managed by `viam-agent` and configured in your machine's JSON configuration under the agent config section. You can configure them directly on a machine or deploy them fleet-wide through a fragment.
 
-These settings are configured in your machine's JSON config and managed by `viam-agent`:
+## Agent version control
 
-- [OS package updates](#manage-os-package-updates)
-- [Network connections](#configure-networks)
-- [Tunneling](#configure-network-settings-for-tunneling)
-- [TLS](#configure-network-settings-to-disable-tls)
-- [Bind address](#configure-bind-address-and-port)
-- [OS log forwarding](#configure-operating-system-logging)
+Control which versions of `viam-agent` and `viam-server` run on the machine.
 
-## Manage OS package updates
+In the machine settings card, under **Viam agent version control**:
 
-By default, the configuration in <FILE>/etc/apt/apt.conf.d/</FILE> determines the behavior for updating operating system packages.
-To manage OS package updates using Viam, add a `"system_configuration"` object to the `"agent"` object in the machine's JSON configuration, if it doesn't already exist.
-Then, add the `"os_auto_upgrade_type"` field in its attributes:
+| Field         | Type   | Default    | Description                                                                                            |
+| ------------- | ------ | ---------- | ------------------------------------------------------------------------------------------------------ |
+| `agent`       | string | `"stable"` | Version of viam-agent. Options: a semver string (`"5.6.77"`), `"stable"`, or a URL to a custom binary. |
+| `viam-server` | string | `"stable"` | Version of viam-server. Same options as agent.                                                         |
 
-```json
-"agent": {
-    "system_configuration": {
-        "os_auto_upgrade_type": "security"
-    }
-}
-```
+## Agent advanced settings
 
-When the `os_auto_upgrade_type` is set, `viam-agent` will install the `unattended-upgrades` package and replace `20auto-upgrades` and `50unattended-upgrades` in <FILE>/etc/apt/apt.conf.d/</FILE> with an Origins-Pattern list generated automatically from configured repositories on the system.
-Custom repos installed on the system at the time the setting is enabled will be included.
+Under **Agent advanced settings**:
 
-You can set automatic upgrades to the following options:
+| Field                               | Type    | Default | Description                                                                 |
+| ----------------------------------- | ------- | ------- | --------------------------------------------------------------------------- |
+| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                        |
+| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                        |
+| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                       |
+| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.          |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules.                |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.              |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server. |
 
-- `"all"`: automatic upgrades are performed for all packages
-- `"security"`: automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)
-- `""`: disable automatic upgrades
+## Configure additional networks
 
-For complete reference information, see [viam-agent](/reference/platform/viam-agent/).
+Add WiFi or wired networks that the machine can connect to. Each network is a named entry with connection parameters.
 
-## Configure networks
+In the machine settings card under **Networks**, click **Add another network** and configure:
 
-By default, your machine can connect to networks added at the operating system level, for example, directly in NetworkManager.
+| Field               | Type    | Default  | Description                                                                                |
+| ------------------- | ------- | -------- | ------------------------------------------------------------------------------------------ |
+| `type`              | string  | —        | **Required.** `"wifi"` or `"wired"`.                                                       |
+| `ssid`              | string  | —        | WiFi network name. Only for WiFi networks.                                                 |
+| `psk`               | string  | —        | Network password or pre-shared key.                                                        |
+| `priority`          | integer | `0`      | Network selection priority. Higher values are preferred. Range: -999 to 999.               |
+| `interface`         | string  | —        | Network interface name (for example, `"wlan0"`, `"eth0"`).                                 |
+| `ipv4_address`      | string  | `"auto"` | Static IPv4 address in CIDR notation (for example, `"192.168.0.10/24"`).                   |
+| `ipv4_dns`          | array   | `[]`     | DNS server addresses.                                                                      |
+| `ipv4_gateway`      | string  | —        | IPv4 gateway address.                                                                      |
+| `ipv4_route_metric` | integer | `0`      | Route metric. Lower values are preferred. `0` defaults to 100 for wired, 600 for wireless. |
 
-For an already-online device, you can add new WiFi networks by updating the `"agent"` value in the machine's JSON configuration.
-This is primarily useful for a machine that moves between different networks, so the machine can automatically connect when moved between locations.
+## Configure tunneling
 
-To add networks, add or update the `additional_networks` field to the `agent` object and set `"turn_on_hotspot_if_wifi_has_no_internet": true`.
-
-{{< alert title="Note" color="note" >}}
-If you are adding networks to a machine's configuration, the machine will need to be connected to the internet to retrieve the configuration information containing the network credentials before it can use them.
-{{< /alert >}}
-
-The following configuration defines the connection information and credentials for two WiFi networks named `fallbackNetOne` and `fallbackNetTwo`.
-`viam-agent` will try to connect to `fallbackNetOne` first, since its priority is highest.
-If the `fallbackNetOne` is not available or the machine can connect but internet is not available, `viam-agent` will then attempt to connect to `fallbackNetTwo`.
+Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection. You must list allowed ports in the machine configuration.
 
 ```json
-"agent": {
-    "additional_networks": {
-        "network_name_1": {
-            "type": "wifi",
-            "ssid": "fallbackNetOne",
-            "psk": "myFirstPassword",
-            "priority": 30
-        },
-        "network_name_2": {
-            "type": "wifi",
-            "ssid": "fallbackNetTwo",
-            "psk": "mySecondPassword",
-            "priority": 10
-        }
-    }
+{
+  "network": {
+    "traffic_tunnel_endpoints": [
+      {
+        "port": 8080,
+        "connection_timeout": "30s"
+      }
+    ]
+  }
 }
 ```
 
-Configuring multiple WiFi networks for `viam-micro-server` is similar but the only supported attributes are `priority`, `psk`, and `ssid`.
+| Field                | Type    | Description                                                         |
+| -------------------- | ------- | ------------------------------------------------------------------- |
+| `port`               | integer | The port on the machine to expose for tunneling.                    |
+| `connection_timeout` | string  | Timeout for establishing the tunnel connection. Go duration format. |
 
-For complete reference information, see [viam-agent](/reference/platform/viam-agent/).
+To connect through the tunnel, use the CLI:
 
-## Configure network settings for tunneling
-
-To tunnel to a machine part you must first explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config.
-The following configuration allows you to tunnel to ports `5900` and `5901`:
-
-```json {class="line-numbers linkable-line-numbers"}
-"network": {
-  "traffic_tunnel_endpoints": [
-    {
-      "port": 5900
-    },
-    {
-      "port": 5901,
-      "connection_timeout": "5s"
-    }
-  ]
-}
+```sh {class="command-line" data-prompt="$"}
+viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080
 ```
 
-Then you can use the [`viam machine part tunnel`](https://docs.viam.com/dev/tools/cli/#machines-alias-robots-and-machine) command:
+## Disable TLS
 
-```sh {class="command-line" data-prompt="$" data-output="2-10"}
-viam machine part tunnel --part=123 --destination-port=1111 --local-port 5900
-```
+By default, `viam-server` uses TLS for all connections. To disable TLS (for development or isolated networks only):
 
-## Configure network settings to disable TLS
-
-To configure your machine to disable TLS on the hosted HTTP server, you must specify `"no_tls": true` in your machine's configuration:
-
-```json {class="line-numbers linkable-line-numbers"}
-"network": {
-  "no_tls": true
+```json
+{
+  "network": {
+    "no_tls": true
+  }
 }
 ```
 
 ## Configure bind address and port
 
-If you are running `viam-server` on a different port than `8080`, set the `bind_address` in your machine settings:
+By default, `viam-server` listens on `localhost:8080`. To change the bind address:
 
-```json {class="line-numbers linkable-line-numbers"}
-"network": {
-  "bind_address": "localhost:8081"
+```json
+{
+  "network": {
+    "bind_address": "0.0.0.0:8081"
+  }
 }
 ```
 
-## Configure operating system logging
+## Configure OS package updates
 
-By default, the maximum disk space `journald` will use for `viam-server` logs is 512MB.
+Control automatic operating system package updates on the machine.
 
-To adjust these settings update the `"agent"` value in the machine's JSON configuration.
+Under **System configuration**, set `os_auto_upgrade_type`:
 
-For complete reference information, see [viam-agent](/reference/platform/viam-agent/) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
+| Value        | Description                                                              |
+| ------------ | ------------------------------------------------------------------------ |
+| `"all"`      | Install all available OS package updates.                                |
+| `"security"` | Install security updates only.                                           |
+| `"disable"`  | Disable automatic OS updates.                                            |
+| `""` (empty) | Do not change the system's current update settings. This is the default. |
 
-### Set the maximum disk space
+## Configure OS log forwarding
 
-To set the maximum disk space `journald` will use to persist logs, add the `logging_journald_system_max_use_megabytes` field to the `system_configuration` object.
-You may need to add the `system_configuration` object to the `agent` object if it doesn't already exist.
+Forward operating system logs from the machine to Viam's cloud log viewer.
 
-The configured values will take precedence over operating system defaults.
+Under **System configuration**:
 
-```json
-"agent": {
-    "system_configuration": {
-        "os_auto_upgrade_type": "security",
-        "logging_journald_system_max_use_megabytes": 512
-    }
-}
-```
+| Field                                        | Type    | Default | Description                                                             |
+| -------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------- |
+| `forward_system_logs`                        | string  | `""`    | Which system logs to forward. Empty string disables forwarding.         |
+| `logging_journald_runtime_max_use_megabytes` | integer | `512`   | Maximum temporary log storage in MB. Set to `-1` to disable the limit.  |
+| `logging_journald_system_max_use_megabytes`  | integer | `512`   | Maximum persistent log storage in MB. Set to `-1` to disable the limit. |
 
-### Set the runtime space limit space
+### Log forwarding filter syntax
 
-To set the temporary space limit for logs, add the `logging_journald_runtime_max_use_megabytes` field to the `system_configuration` object.
-You may need to add the `system_configuration` object to the `agent` object if it doesn't already exist.
+The `forward_system_logs` field accepts:
 
-The configured values will take precedence over operating system defaults.
-
-```json
-"agent": {
-    "system_configuration": {
-        "os_auto_upgrade_type": "security",
-        "logging_journald_runtime_max_use_megabytes": 512
-    }
-}
-```
-
-### Forward system logs to the cloud
-
-You can configure `viam-agent` to forward system logs from journald to the cloud for additional diagnostics information.
-This allows you to view system logs from your machine alongside Viam's own logs.
-
-To enable system log forwarding, add the `forward_system_logs` field to the `system_configuration` object. This field accepts a comma-separated list of service identifiers to include or exclude from forwarding.
-
-```json
-"agent": {
-    "system_configuration": {
-        "forward_system_logs": "kernel,NetworkManager,tailscaled"
-    }
-}
-```
-
-{{< alert title="Note" color="note" >}}
-System log forwarding requires journald to be available on the system. This feature is only supported on Linux systems.
-{{< /alert >}}
-
-#### Filtering options
-
-You can control which system logs are forwarded using the following syntax:
-
-- `"all"`: Forward all system logs (in addition to`viam-agent` and `viam-server` logs which are sent directly to the cloud and always visible)
-- Comma-separated list of service identifiers: Forward only logs from the specified services
-- Prefix a service with `-` to exclude it: For example, `"all,-gdm,-tailscaled"` forwards all logs except those from `gdm` and `tailscaled`
-
-Examples:
-
-Forward only kernel, NetworkManager, and tailscaled logs:
-
-```json
-"forward_system_logs": "kernel,NetworkManager,tailscaled"
-```
-
-Forward all system logs except gdm and tailscaled:
-
-```json
-"forward_system_logs": "all,-gdm,-tailscaled"
-```
-
-Disable system log forwarding (default):
-
-```json
-"forward_system_logs": ""
-```
+- `"all"`: forward all system logs
+- A comma-separated list of service identifiers: forward only those services (for example, `"kernel,NetworkManager,tailscaled"`)
+- Prefix a service with `-` to exclude it: `"all,-gdm,-tailscaled"` forwards everything except gdm and tailscaled
 
 ## Verify settings changes
 
-After updating system settings in your machine's JSON config:
+After updating system settings:
 
-1. Click **Save** in the upper right corner of the **CONFIGURE** tab.
-1. Wait for the machine to sync and apply the new configuration (this may take up to a minute).
+1. Click **Save** on the **CONFIGURE** tab.
+1. Wait for the machine to sync the new configuration (up to one minute).
 1. Check the **LOGS** tab for any errors related to the changed settings.
-1. For network changes, verify connectivity by checking the machine's online status in the fleet dashboard.
+1. For network changes, verify the machine remains online in the fleet dashboard.
+
+## Related pages
+
+- [Change network](/fleet/change-network/) for changing a machine's WiFi after deployment
+- [Provision devices](/fleet/provision-devices/) for configuring initial network settings during provisioning
