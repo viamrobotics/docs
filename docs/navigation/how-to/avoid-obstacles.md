@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Configure vision-based obstacle detection and static obstacles for autonomous navigation."
+aliases:
+  - /navigation/how-to/detect-while-moving/
 ---
 
 The navigation service supports two kinds of obstacles: vision-detected
