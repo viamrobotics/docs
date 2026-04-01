@@ -100,8 +100,7 @@ echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 {{% /tab %}}
 {{< /tabs >}}
 
-To later update the Viam CLI tool on Linux, use the steps above to reinstall the latest version.
-to later update the Viam CLI tool on macOS, run `brew upgrade viam`.
+To update the Viam CLI to the latest version, run [`viam update`](#update).
 
 ## Authenticate
 
@@ -1712,10 +1711,36 @@ viam train list --org-id=123 --job-status=completed
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | `submit custom from-registry`, `submit custom with-upload` | Optional |
 
+### `update`
+
+The `update` command updates the Viam CLI to the latest version.
+It checks for updates, downloads the latest version, and installs it automatically.
+
+On macOS, if you installed the CLI using Homebrew, the command updates through Homebrew.
+On other platforms, the command downloads and replaces the binary directly.
+
+```sh {class="command-line" data-prompt="$"}
+viam update
+```
+
+By default, progress messages are displayed during the update, including "Checking for updates", "Downloading latest CLI", and "Installing update".
+Use the `--no-progress` flag to hide these messages:
+
+```sh {class="command-line" data-prompt="$"}
+viam update --no-progress
+```
+
+#### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--no-progress` | Hide progress messages during the update. Default: `false`. | Optional |
+
 ### `version`
 
 The `version` command returns the version of the Viam CLI.
-To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
+Use the [`update` command](#update) or run the [installation steps](#install) again to update to the latest version.
 
 ```sh {class="command-line" data-prompt="$"}
 viam version
