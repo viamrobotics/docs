@@ -180,5 +180,5 @@ If your machine cannot connect to your permanent office or home WiFi network:
 
 The machine is now usable.
 
-If the machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/reference/platform/viam-agent/#network_configuration).
-You can also override other configuration details in the [`viam-agent` configuration](/reference/platform/viam-agent/#configuration).
+If the machine needs to be able to connect to more than one WiFi network, you can add additional networks in the [`viam-agent` network configuration](/reference/platform/viam-agent/).
+You can also override other configuration details in the [`viam-agent` configuration](/reference/platform/viam-agent/).
