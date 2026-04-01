@@ -827,6 +827,8 @@ You can get the dataset ID from the **DATASET** tab of the **DATA** page or by r
 You can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
 
 Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/models).
+Click on a model to open its details page.
+From here, you can view all model versions, see associated training jobs, publish the model to the registry, edit model details, copy the package configuration, or delete the model.
 
 You will receive an email when your training job completes.
 

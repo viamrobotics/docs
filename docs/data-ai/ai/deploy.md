@@ -76,6 +76,7 @@ The service works with models from various sources:
 - You can [train TensorFlow or TensorFlow Lite](/data-ai/train/train-tf-tflite/) or [other model frameworks](/data-ai/train/train/) on data from your machines.
 - You can use [ML models](https://app.viam.com/registry?type=ML+Model) from the [registry](https://app.viam.com/registry).
 - You can upload externally trained models from a model file on the [**MODELS** tab](https://app.viam.com/models).
+  Click on a model to open its details page, where you can view all versions, see associated training jobs, publish the model to the registry, edit details, copy the package configuration, or delete the model.
 - You can use models trained outside the Viam platform whose files are on your machine.
   See the documentation for the ML model service you're using (pick one that supports your model framework) for instructions on this.
 

@@ -140,6 +140,7 @@ To run cloud inference, you must pass the following:
 
 You can obtain the binary data ID from the [**DATA** tab](https://app.viam.com/data/view) and the organization ID by running the CLI command `viam org list`.
 You can find the model information on the [**MODELS** tab](https://app.viam.com/models).
+Click on a model to open its details page, including version history and package configuration.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-18"}
 viam infer --binary-data-id <binary-data-id> --model-name <model-name> --model-org-id <org-id-that-owns-model> --model-version "2025-04-14T16-38-25" --org-id <org-id-that-executes-inference>
