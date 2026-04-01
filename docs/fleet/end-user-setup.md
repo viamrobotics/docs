@@ -37,11 +37,12 @@ Use this method if the device manufacturer configured WiFi hotspot provisioning.
 1. On your laptop or mobile device, open WiFi settings and connect to the device's hotspot. The hotspot name begins with `viam-setup-` by default. The password is `viamsetup` unless the manufacturer changed it.
 1. A captive portal opens automatically. If it does not, open [http://viam.setup/](http://viam.setup/) in a browser.
 1. Enter your WiFi network name and password.
-1. If prompted, paste your machine cloud credentials. To get these:
-   - Log into [app.viam.com](https://app.viam.com).
-   - Navigate to your machine's page.
-   - Click the part status dropdown next to the machine name.
+1. If the captive portal asks for machine cloud credentials, this means the device was not pre-configured with a fragment during provisioning. You need a Viam account to complete this step:
+   - Log into [app.viam.com](https://app.viam.com) and create a new machine (or use an existing one).
+   - On the machine's page, click the part status dropdown next to the machine name.
    - Click the copy icon next to **Machine cloud credentials**.
+   - Paste the credentials into the captive portal.
+     Most devices provisioned by a manufacturer skip this step automatically.
 1. Wait for the device to connect to WiFi and complete setup.
 
 If the device cannot connect, it recreates the hotspot so you can try again.

@@ -21,7 +21,9 @@ If you need conditional logic, coordination between multiple resources, or respo
 
 ## Add a job
 
-1. Navigate to your machine's **CONFIGURE** tab (or edit a fragment that the machine uses).
+You can add a job to a single machine or to a fragment. Adding a job to a fragment deploys it to every machine that uses that fragment, which is the recommended approach for fleet-wide scheduling.
+
+1. Navigate to your machine's **CONFIGURE** tab, or navigate to your fragment's page at [app.viam.com/fragments](https://app.viam.com/fragments).
 1. Click **+** and select **Job**.
 1. Enter a name for the job and click **Create**.
 

@@ -61,6 +61,12 @@ After adding metadata:
 - **CLI**: run `viam metadata read --machine-id=<machine-id>`.
 - **SDK**: call the corresponding `Get` method to retrieve and confirm the metadata.
 
+## Limitations
+
+- Metadata cannot be deployed through fragments. Each machine's metadata must be set individually through the UI, SDK, or CLI.
+- To set metadata on many machines at once, use the SDK in a script that iterates over your machines.
+
 ## Related pages
 
 - [Manage your fleet with the CLI](/cli/manage-your-fleet/) for CLI fleet operations
+- [Automate with scripts](/cli/automate-with-scripts/) for scripting fleet operations

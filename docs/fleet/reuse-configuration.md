@@ -9,6 +9,11 @@ description: "Create reusable configuration templates and apply them across mult
 
 Create a fragment (a reusable configuration template), add the components, services, and modules your machines need, then apply that fragment to every machine in your fleet. When you update the fragment, every machine that uses it picks up the change.
 
+## Prerequisites
+
+- A Viam account with an organization. See [get started](/foundation/) if you have not set up your first machine yet.
+- At least one machine connected to Viam.
+
 ## When to use fragments
 
 Use fragments when you have multiple machines that share the same configuration, either entirely or with small per-machine differences. Common examples:
@@ -53,6 +58,14 @@ Click **Save** after adding and configuring your resources.
 1. Click **Save** in the upper right corner.
 
 The fragment's resources now appear on the machine's configuration page. The machine downloads and applies the configuration on its next sync.
+
+To apply a fragment to many machines, use the CLI in a loop or script:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+```
+
+See [automate with scripts](/cli/automate-with-scripts/) for examples of scripting fleet operations.
 
 ### Avoid resource name conflicts with a prefix
 

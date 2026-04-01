@@ -17,7 +17,7 @@ Use this page when you have a trained model in the Viam registry and want to dep
 
 - A trained ML model in the Viam registry. See [train a model](/train/train-a-model/).
 - At least one machine with a camera configured. See [add a camera](/hardware/common-components/add-a-camera/).
-- A [fragment](/fleet/reuse-configuration/) for your fleet, or create one below.
+- A [fragment](/fleet/reuse-configuration/) for your fleet. If you don't have one yet, [create one](/fleet/reuse-configuration/#create-a-fragment) first.
 
 ## How model deployment works
 

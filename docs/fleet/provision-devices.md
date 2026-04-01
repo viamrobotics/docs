@@ -95,13 +95,13 @@ chmod 755 preinstall.sh
 {{% /tab %}}
 {{< /tabs >}}
 
-Run the script, passing the path to your defaults file:
+Run the script from the same directory that contains your `viam-defaults.json` file:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo ./preinstall.sh
 ```
 
-The script copies `viam-agent` and `viam-defaults.json` to the appropriate locations on the device. For Raspberry Pi, it modifies the first-run script to start `viam-agent` on boot.
+The script picks up `viam-defaults.json` from the current directory and copies it along with `viam-agent` to the appropriate locations on the device. For Raspberry Pi, it modifies the first-run script to start `viam-agent` on boot.
 
 To install onto an external rootfs (for example, a mounted SD card image):
 

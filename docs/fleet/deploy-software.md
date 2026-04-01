@@ -12,7 +12,7 @@ Deploy modules (hardware drivers, control logic, or other custom code) to one ma
 ## Prerequisites
 
 - A module uploaded to the Viam registry. See [deploy a module](/build-modules/deploy-a-module/) for how to upload.
-- A [fragment](/fleet/reuse-configuration/) for your fleet configuration, or create one in the steps below.
+- A [fragment](/fleet/reuse-configuration/) for your fleet configuration. If you don't have one yet, [create one](/fleet/reuse-configuration/#create-a-fragment) first.
 
 ## 1. Add the module to a fragment
 
