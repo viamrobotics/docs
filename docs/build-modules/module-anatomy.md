@@ -9,218 +9,357 @@ description: "Understand the directory structure and key files that make up a Vi
 
 When you run `viam module generate`, the CLI creates a complete project with
 everything you need to build, test, and deploy a module. This page explains
-what each file does and when you need to edit it.
+the purpose of each file and when you need to edit it.
+
+The examples on this page use a logic module called `temp-monitor` that
+monitors a temperature sensor and logs a warning when readings exceed a
+threshold. It depends on one sensor and uses `DoCommand` to report its
+current state.
 
 ## Directory structure
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```
-my-sensor-module/
+```text
+temp-monitor/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml        # CI workflow for cloud builds
+│       └── deploy.yml            # CI workflow for cloud builds
 ├── src/
-│   ├── main.py               # Entry point
+│   ├── main.py                   # Entry point
 │   └── models/
-│       └── my_sensor.py      # Resource implementation
-├── build.sh                  # Packages the module for upload
-├── meta.json                 # Module metadata for the registry
-├── requirements.txt          # Python dependencies
-├── run.sh                    # Entrypoint script for viam-server
-└── setup.sh                  # Installs dependencies into a virtualenv
+│       └── temp_monitor.py       # Resource implementation
+├── build.sh                      # Packages the module for upload
+├── meta.json                     # Module metadata for the registry
+├── requirements.txt              # Python dependencies
+├── run.sh                        # Entrypoint script for viam-server
+└── setup.sh                      # Installs dependencies into a virtualenv
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-```
-my-sensor-module/
+```text
+temp-monitor/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml        # CI workflow for cloud builds
+│       └── deploy.yml            # CI workflow for cloud builds
 ├── cmd/
 │   └── module/
-│       └── main.go           # Entry point
-├── my_sensor_module.go       # Resource implementation
-├── go.mod                    # Go module definition
-├── go.sum                    # Dependency checksums
-├── Makefile                  # Build targets
-├── meta.json                 # Module metadata for the registry
-├── build.sh                  # Packages the module for upload
-└── setup.sh                  # Installs build dependencies
+│       └── main.go               # Entry point
+├── temp_monitor.go               # Resource implementation
+├── go.mod                        # Go module definition
+├── go.sum                        # Dependency checksums
+├── Makefile                      # Build targets
+├── meta.json                     # Module metadata for the registry
+├── build.sh                      # Packages the module for upload
+└── setup.sh                      # Installs build dependencies
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
 
-## Files you edit
+## Resource implementation
 
-### Resource implementation
+This is the main file you work in. The generator names it after the model you are implementing. A model implements a Viam API.
+In this example, that is `src/models/temp_monitor.py` in Python and
+`temp_monitor.go` in Go. The sections below walk through each section of this file.
 
-This is the main file you work in. It contains your resource class (Python)
-or struct (Go) with:
+### Model definition
 
-- **Model definition** -- identifies your resource in the registry using a
-  triplet of namespace, module name, and model name.
-- **Config struct** -- defines the attributes users set when they configure
-  your resource. Each field maps to a key in the JSON config.
-- **Validation method** -- checks that config attributes are valid and declares
-  dependencies on other resources. Called by `viam-server` before creating or
-  reconfiguring the resource.
-- **Constructor** -- creates an instance of your resource. Receives the
-  validated config and a map of resolved dependencies.
-- **Reconfigure method** -- updates a running resource when its config changes.
-  Many modules call `reconfigure` from the constructor so config-reading logic
-  lives in one place.
-- **API methods** -- the methods defined by the resource API you are
-  implementing. For a sensor, this is `GetReadings`. For a motor, this is
-  `SetPower`, `GoFor`, `Stop`, and so on.
-- **Close method** -- called when `viam-server` shuts down or removes the
-  resource. Clean up connections, stop background tasks, and release resources
-  here.
+The model definition identifies your resource in the registry as a triplet
+of namespace, module name, and model name. Some examples from built-in Viam
+modules: `viam:camera:webcam`, `viam:motor:gpio`, `viam:sensor:ultrasonic`.
+In our example, the triplet is `my-org:temp-monitor:temp-monitor`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-**`src/models/my_sensor.py`**
-
 ```python
-from typing import ClassVar, Mapping, Sequence, Tuple, Self
-from viam.components.sensor import Sensor
-from viam.module.easy_resource import EasyResource
-from viam.proto.app.robot import ComponentConfig
-from viam.resource.base import ResourceBase, ResourceName
-from viam.utils import SensorReading
-
-class MySensor(Sensor, EasyResource):
-    # Model definition: namespace:module-name:model-name
+class TempMonitor(Generic, EasyResource):
     MODEL: ClassVar[Model] = Model(
-        ModelFamily("my-org", "my-sensor-module"), "my-sensor"
+        ModelFamily("my-org", "temp-monitor"), "temp-monitor"
     )
-
-    # Config attributes as instance variables
-    source_url: str
-    poll_interval: float
-
-    @classmethod
-    def validate_config(
-        cls, config: ComponentConfig
-    ) -> Tuple[Sequence[str], Sequence[str]]:
-        """Validate attributes and declare dependencies.
-
-        Returns (required_deps, optional_deps).
-        """
-        fields = config.attributes.fields
-        if "source_url" not in fields:
-            raise Exception("source_url is required")
-        return [], []
-
-    @classmethod
-    def new(cls, config: ComponentConfig,
-            dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        """Create a new instance."""
-        sensor = cls(config.name)
-        sensor.reconfigure(config, dependencies)
-        return sensor
-
-    def reconfigure(self, config: ComponentConfig,
-                    dependencies: Mapping[ResourceName, ResourceBase]) -> None:
-        """Update config and dependencies."""
-        fields = config.attributes.fields
-        self.source_url = fields["source_url"].string_value
-        self.poll_interval = (
-            fields["poll_interval"].number_value
-            if "poll_interval" in fields
-            else 10.0
-        )
-
-    async def get_readings(self, **kwargs) -> Mapping[str, SensorReading]:
-        """Return sensor readings."""
-        # Your implementation here
-        ...
-
-    async def close(self):
-        """Clean up resources."""
-        ...
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-**`my_sensor_module.go`**
-
 ```go
-package mysensormodule
-
-import (
-    "context"
-    "go.viam.com/rdk/components/sensor"
-    "go.viam.com/rdk/logging"
-    "go.viam.com/rdk/resource"
-)
-
-// Model definition: namespace:module-name:model-name
-var Model = resource.NewModel("my-org", "my-sensor-module", "my-sensor")
+var Model = resource.NewModel("my-org", "temp-monitor", "temp-monitor")
 
 func init() {
-    resource.RegisterComponent(sensor.API, Model, resource.Registration[
-        sensor.Sensor, *Config,
+    resource.RegisterService(generic.API, Model, resource.Registration[
+        resource.Resource, *Config,
     ]{
-        Constructor: newMySensor,
+        Constructor: newTempMonitor,
     })
 }
+```
 
-// Config defines the attributes users set in their JSON config.
+In Go, the `init()` function registers the model with `viam-server` when
+the package is imported. The registration binds the model to the generic
+service API and points to the constructor function.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Config and attributes
+
+Config attributes are the fields a user sets when they add the service this model implements to a
+machine. Each field maps to a key in the `attributes` block of the JSON
+config:
+
+```json
+"attributes": {
+  "sensor_name": "temp-1",
+  "threshold": 40.0
+}
+```
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+    sensor_name: str
+    threshold: float
+    sensor: Sensor
+    exceeded: bool
+```
+
+In Python, declare config attributes, resolved dependencies, and runtime
+state as instance variables on the class. This pattern is the same for any
+module you write. Only the specific variables change.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
 type Config struct {
-    SourceURL    string  `json:"source_url"`
-    PollInterval float64 `json:"poll_interval"`
+    SensorName string  `json:"sensor_name"`
+    Threshold  float64 `json:"threshold"`
 }
 
-// Validate checks config and declares dependencies.
-// Returns (required_deps, optional_deps, error).
-func (cfg *Config) Validate(path string) ([]string, []string, error) {
-    if cfg.SourceURL == "" {
-        return nil, nil, fmt.Errorf("source_url is required")
-    }
-    return nil, nil, nil
-}
-
-// MySensor implements the sensor API.
-type MySensor struct {
+type TempMonitor struct {
     resource.Named
-    resource.AlwaysRebuild
-    logger    logging.Logger
-    sourceURL string
+    logger   logging.Logger
+    cfg      *Config
+    sensor   sensor.Sensor
+    mu       sync.Mutex
+    exceeded bool
+    cancelFn func()
 }
+```
 
-func newMySensor(
+In Go, the `Config` struct defines the attributes. The `json` tags map each
+field to its key in the JSON config. The resource struct holds the parsed
+config, resolved dependencies, and runtime state. This pattern is the same
+for any module you write. Only the specific fields change.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Validation
+
+The validation method checks that attributes are valid and declares
+dependencies on other resources. `viam-server` calls this before creating or
+reconfiguring the resource. It returns two lists: required dependencies and
+optional dependencies.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+    @classmethod
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
+        fields = config.attributes.fields
+        if "sensor_name" not in fields:
+            raise Exception("sensor_name is required")
+        return [fields["sensor_name"].string_value], []
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+    if cfg.SensorName == "" {
+        return nil, nil, fmt.Errorf("sensor_name is required")
+    }
+    return []string{cfg.SensorName}, nil, nil
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Constructor
+
+`viam-server` calls the constructor when it creates your resource. The
+constructor receives the config (containing the attributes the user set), a dependencies
+map (containing running instances of the resources you declared in your
+validation method), and in Go, a context and a logger.
+
+If your resource uses `AlwaysRebuild` (the generated default in Go),
+`viam-server` destroys and re-creates the resource on every config change,
+calling the constructor again. If you implement a `Reconfigure` method
+instead, `viam-server` calls that method in place without re-creating the
+resource.
+
+The constructor's job is to:
+
+1. **Parse the config** into typed fields you can use (for example, extract
+   `sensor_name` as a string and `threshold` as a float).
+2. **Resolve dependencies** by looking up each one by name from the
+   dependencies map. Each entry is a ready-to-use resource instance that
+   `viam-server` has already started.
+3. **Store everything on the struct or instance** so your API methods and
+   background tasks can use them.
+4. **Start background work** if your module runs continuously (for example,
+   a goroutine or async task that polls a sensor on an interval).
+
+To resolve a dependency, you look it up by name from the dependencies map.
+In Go, every resource type in the SDK provides a `FromDependencies` helper
+that does this and returns a typed interface (for example,
+`sensor.FromDependencies` returns a `sensor.Sensor`). In Python, you build
+the key with `Sensor.get_resource_name(name)` and index into the
+dependencies map directly.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+    @classmethod
+    async def new(cls, config, dependencies) -> Self:
+        monitor = cls(config.name)
+        monitor.exceeded = False
+        monitor.reconfigure(config, dependencies)
+        return monitor
+
+    def reconfigure(self, config, dependencies) -> None:
+        fields = config.attributes.fields
+        self.sensor_name = fields["sensor_name"].string_value
+        self.threshold = (
+            fields["threshold"].number_value
+            if "threshold" in fields
+            else 100.0
+        )
+
+        self.sensor = dependencies[
+            Sensor.get_resource_name(self.sensor_name)
+        ]
+
+        ...
+```
+
+In Python, the common pattern is for `new` to call `reconfigure` so that
+config-reading and dependency resolution logic lives in one place.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+func newTempMonitor(
     ctx context.Context,
     deps resource.Dependencies,
     conf resource.Config,
     logger logging.Logger,
-) (sensor.Sensor, error) {
+) (resource.Resource, error) {
     cfg, err := resource.NativeConfig[*Config](conf)
     if err != nil {
         return nil, err
     }
-    return &MySensor{
-        Named:     conf.ResourceName().AsNamed(),
-        logger:    logger,
-        sourceURL: cfg.SourceURL,
-    }, nil
-}
+    if cfg.Threshold == 0 {
+        cfg.Threshold = 100.0
+    }
 
-func (s *MySensor) Readings(
-    ctx context.Context, extra map[string]interface{},
+    s, err := sensor.FromDependencies(deps, cfg.SensorName)
+    if err != nil {
+        return nil, err
+    }
+
+    monitorCtx, cancelFn := context.WithCancel(context.Background())
+    tm := &TempMonitor{
+        Named:    conf.ResourceName().AsNamed(),
+        logger:   logger,
+        cfg:      cfg,
+        sensor:   s,
+        cancelFn: cancelFn,
+    }
+    go tm.monitor(monitorCtx)
+    return tm, nil
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### API methods
+
+API methods are how external code interacts with your resource. For a logic
+module using the generic service API, the method is `DoCommand`. It accepts
+and returns arbitrary key-value maps, so you define your own command
+vocabulary.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+    async def do_command(self, command, **kwargs):
+        if command.get("command") == "status":
+            return {
+                "exceeded": self.exceeded,
+                "threshold": self.threshold,
+            }
+        return {"error": f"unknown command: {command.get('command')}"}
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+func (tm *TempMonitor) DoCommand(
+    ctx context.Context, cmd map[string]interface{},
 ) (map[string]interface{}, error) {
-    // Your implementation here
-    return nil, nil
+    if cmd["command"] == "status" {
+        tm.mu.Lock()
+        defer tm.mu.Unlock()
+        return map[string]interface{}{
+            "exceeded":  tm.exceeded,
+            "threshold": tm.cfg.Threshold,
+        }, nil
+    }
+    return nil, fmt.Errorf("unknown command: %v", cmd["command"])
 }
+```
 
-func (s *MySensor) Close(ctx context.Context) error {
-    // Clean up resources
+{{% /tab %}}
+{{< /tabs >}}
+
+### Close
+
+`viam-server` calls `Close` when it shuts down or removes the resource. Stop
+background tasks and release any resources here.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+    async def close(self):
+        self._stop_event.set()
+        if self._monitor_task is not None:
+            await self._monitor_task
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+func (tm *TempMonitor) Close(ctx context.Context) error {
+    tm.cancelFn()
     return nil
 }
 ```
@@ -228,21 +367,25 @@ func (s *MySensor) Close(ctx context.Context) error {
 {{% /tab %}}
 {{< /tabs >}}
 
-### meta.json
+For complete working examples, see
+[Write a logic module](/build-modules/write-a-logic-module/) and
+[Write a driver module](/build-modules/write-a-driver-module/).
+
+## meta.json
 
 Module metadata used by the Viam registry. The generator creates this file
 and populates it from your answers to the generator prompts.
 
 ```json
 {
-  "module_id": "my-org:my-sensor-module",
+  "module_id": "my-org:temp-monitor",
   "visibility": "private",
-  "url": "https://github.com/my-org/my-sensor-module",
-  "description": "A custom sensor module.",
+  "url": "https://github.com/my-org/temp-monitor",
+  "description": "Logs a warning when a temperature sensor exceeds a threshold.",
   "models": [
     {
-      "api": "rdk:component:sensor",
-      "model": "my-org:my-sensor-module:my-sensor"
+      "api": "rdk:service:generic",
+      "model": "my-org:temp-monitor:temp-monitor"
     }
   ],
   "entrypoint": "run.sh",
@@ -255,18 +398,18 @@ and populates it from your answers to the generator prompts.
 }
 ```
 
-| Field          | Purpose                                                          |
-| -------------- | ---------------------------------------------------------------- |
-| `module_id`    | Unique ID in the registry. Format: `namespace:name`.             |
-| `visibility`   | Who can install the module: `private`, `public`, `public_unlisted`. |
-| `url`          | Link to the source repository. Required for cloud builds.        |
-| `description`  | Shown in registry search results.                                |
-| `models`       | Resource models the module provides, each with `api` and `model`. |
-| `entrypoint`   | Command that starts the module inside the archive.               |
-| `build.setup`  | Script that installs build dependencies (runs once).             |
-| `build.build`  | Script that compiles and packages the module.                    |
-| `build.path`   | Path to the packaged output archive.                             |
-| `build.arch`   | Target platforms to build for.                                   |
+| Field         | Purpose                                                             |
+| ------------- | ------------------------------------------------------------------- |
+| `module_id`   | Unique ID in the registry. Format: `namespace:name`.                |
+| `visibility`  | Who can install the module: `private`, `public`, `public_unlisted`. |
+| `url`         | Link to the source repository. Required for cloud builds.           |
+| `description` | Shown in registry search results.                                   |
+| `models`      | Resource models the module provides, each with `api` and `model`.   |
+| `entrypoint`  | Command that starts the module inside the archive.                  |
+| `build.setup` | Script that installs build dependencies (runs once).                |
+| `build.build` | Script that compiles and packages the module.                       |
+| `build.path`  | Path to the packaged output archive.                                |
+| `build.arch`  | Target platforms to build for.                                      |
 
 For the full schema, see
 [Module developer reference](/build-modules/module-reference/#metajson-schema).
@@ -287,7 +430,7 @@ module.
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor  # noqa: F401
+from models.temp_monitor import TempMonitor  # noqa: F401
 
 if __name__ == "__main__":
     asyncio.run(Module.run_from_registry())
@@ -305,15 +448,15 @@ them. To add another model, import its class here.
 package main
 
 import (
-    mysensormodule "my-org/my-sensor-module"
-    "go.viam.com/rdk/components/sensor"
+    tempmonitor "my-org/temp-monitor"
     "go.viam.com/rdk/module"
     "go.viam.com/rdk/resource"
+    "go.viam.com/rdk/services/generic"
 )
 
 func main() {
     module.ModularMain(
-        resource.APIModel{sensor.API, mysensormodule.Model},
+        resource.APIModel{generic.API, tempmonitor.Model},
     )
 }
 ```
@@ -332,9 +475,9 @@ These scripts handle packaging and deployment. The generator creates working
 defaults. You only need to edit them if your module has unusual build
 requirements.
 
-| File         | Purpose                                                   |
-| ------------ | --------------------------------------------------------- |
-| `build.sh`   | Compiles (Go) or packages (Python) the module into a `.tar.gz` archive. |
+| File         | Purpose                                                                                        |
+| ------------ | ---------------------------------------------------------------------------------------------- |
+| `build.sh`   | Compiles (Go) or packages (Python) the module into a `.tar.gz` archive.                        |
 | `setup.sh`   | Installs build dependencies. For Python, creates a virtualenv and installs `requirements.txt`. |
-| `run.sh`     | (Python only) Entrypoint script that activates the virtualenv and runs `main.py`. |
-| `deploy.yml` | GitHub Actions workflow that triggers cloud builds on tagged releases. |
+| `run.sh`     | (Python only) Entrypoint script that activates the virtualenv and runs `main.py`.              |
+| `deploy.yml` | GitHub Actions workflow that triggers cloud builds on tagged releases.                         |

@@ -31,13 +31,13 @@ talk to a specific piece of hardware. Every module implements one of Viam's
 resource APIs. For a driver module, you pick the component API that matches
 your hardware:
 
-| API      | Use when your hardware...                           | Key methods                            |
-| -------- | --------------------------------------------------- | -------------------------------------- |
-| `sensor` | Produces readings (temperature, distance, humidity) | `GetReadings`                          |
-| `camera` | Produces images or point clouds                     | `GetImage`, `GetPointCloud`            |
-| `motor`  | Drives rotational or linear motion                  | `SetPower`, `GoFor`, `Stop`            |
+| API      | Use when your hardware...                           | Key methods                              |
+| -------- | --------------------------------------------------- | ---------------------------------------- |
+| `sensor` | Produces readings (temperature, distance, humidity) | `GetReadings`                            |
+| `camera` | Produces images or point clouds                     | `GetImage`, `GetPointCloud`              |
+| `motor`  | Drives rotational or linear motion                  | `SetPower`, `GoFor`, `Stop`              |
 | `arm`    | Has joints and moves to poses                       | `MoveToPosition`, `MoveToJointPositions` |
-| `base`   | Is a mobile platform (wheeled, tracked, legged)     | `MoveStraight`, `Spin`, `SetVelocity` |
+| `base`   | Is a mobile platform (wheeled, tracked, legged)     | `MoveStraight`, `Spin`, `SetVelocity`    |
 
 Viam defines over 15 component APIs and 10 service APIs. For the full list,
 see [Resource APIs](/dev/reference/apis/).
@@ -98,13 +98,13 @@ in your own git repository, and deploy through the Viam CLI or GitHub Actions.
 Use externally managed modules when you need your own source control, public
 distribution, or custom build pipelines.
 
-|                          | Inline                                                 | Externally managed                                        |
-| ------------------------ | ------------------------------------------------------ | --------------------------------------------------------- |
-| **Where you write code** | Browser editor in the Viam app                         | Your own IDE, locally or in a repo                        |
-| **Source control**       | Managed by Viam                                        | Your own git repository                                   |
-| **Build system**         | Automatic cloud builds on save                         | Cloud build (GitHub Actions) or local builds              |
-| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...)                      | You choose semantic versions                              |
-| **Visibility**           | Private to your organization                           | Private or public                                         |
+|                          | Inline                            | Externally managed                           |
+| ------------------------ | --------------------------------- | -------------------------------------------- |
+| **Where you write code** | Browser editor in the Viam app    | Your own IDE, locally or in a repo           |
+| **Source control**       | Managed by Viam                   | Your own git repository                      |
+| **Build system**         | Automatic cloud builds on save    | Cloud build (GitHub Actions) or local builds |
+| **Versioning**           | Automatic (`0.0.1`, `0.0.2`, ...) | You choose semantic versions                 |
+| **Visibility**           | Private to your organization      | Private or public                            |
 
 Both types run identically at runtime, as child processes communicating with
 `viam-server` over gRPC.
