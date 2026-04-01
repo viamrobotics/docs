@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Display a depth camera's point cloud in the 3D scene to verify that the data aligns with your frame system and workspace geometry."
+aliases:
+  - /motion-planning/3d-scene/inspect-point-clouds/
 ---
 
 Depth cameras produce point clouds: sets of 3D points representing the surfaces visible to the camera.
