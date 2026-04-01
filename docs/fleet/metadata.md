@@ -34,21 +34,21 @@ You can also add custom metadata for organizations using the Viam SDKs.
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30-32" >}}
 
-For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/#getrobotpartmetadata) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/#updaterobotpartmetadata).
+For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.go" lang="go" class="line-numbers linkable-line-numbers" data-line="29-31" >}}
 
-For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/#getrobotpartmetadata) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/#updaterobotpartmetadata).
+For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-part.snippet.add-metadata-part.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="22-24" >}}
 
-For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/#getrobotpartmetadata) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/#updaterobotpartmetadata).
+For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/) and [`UpdateRobotPartMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -68,21 +68,21 @@ For more information, see [`GetRobotPartMetadata`](/reference/apis/fleet/#getrob
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.py" lang="py" class="line-numbers linkable-line-numbers" data-line="41-43" >}}
 
-For more information, see [`GetRobotMetadata`](/reference/apis/fleet/#getrobotmetadata) and [`UpdateRobotMetadata`](/reference/apis/fleet/#updaterobotmetadata).
+For more information, see [`GetRobotMetadata`](/reference/apis/fleet/) and [`UpdateRobotMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.go" lang="go" class="line-numbers linkable-line-numbers" data-line="50-52" >}}
 
-For more information, see [`GetRobotMetadata`](/reference/apis/fleet/#getrobotmetadata) and [`UpdateRobotMetadata`](/reference/apis/fleet/#updaterobotmetadata).
+For more information, see [`GetRobotMetadata`](/reference/apis/fleet/) and [`UpdateRobotMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata.snippet.add-metadata.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="37-39" >}}
 
-For more information, see [`GetRobotMetadata`](/reference/apis/fleet/#getrobotmetadata) and [`UpdateRobotMetadata`](/reference/apis/fleet/#updaterobotmetadata).
+For more information, see [`GetRobotMetadata`](/reference/apis/fleet/) and [`UpdateRobotMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -102,21 +102,21 @@ For more information, see [`GetRobotMetadata`](/reference/apis/fleet/#getrobotme
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30-32" >}}
 
-For more information, see [`GetLocationMetadata`](/reference/apis/fleet/#getlocationmetadata) and [`UpdateLocationMetadata`](/reference/apis/fleet/#updatelocationmetadata).
+For more information, see [`GetLocationMetadata`](/reference/apis/fleet/) and [`UpdateLocationMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-30" >}}
 
-For more information, see [`GetLocationMetadata`](/reference/apis/fleet/#getlocationmetadata) and [`UpdateLocationMetadata`](/reference/apis/fleet/#updatelocationmetadata).
+For more information, see [`GetLocationMetadata`](/reference/apis/fleet/) and [`UpdateLocationMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-location.snippet.add-metadata-location.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="22-24" >}}
 
-For more information, see [`GetLocationMetadata`](/reference/apis/fleet/#getlocationmetadata) and [`UpdateLocationMetadata`](/reference/apis/fleet/#updatelocationmetadata).
+For more information, see [`GetLocationMetadata`](/reference/apis/fleet/) and [`UpdateLocationMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -129,21 +129,21 @@ For more information, see [`GetLocationMetadata`](/reference/apis/fleet/#getloca
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.py" lang="py" class="line-numbers linkable-line-numbers" data-line="30-32" >}}
 
-For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/#getorganizationmetadata) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/#updateorganizationmetadata).
+For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.go" lang="go" class="line-numbers linkable-line-numbers" data-line="28-30" >}}
 
-For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/#getorganizationmetadata) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/#updateorganizationmetadata).
+For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 {{< read-code-snippet file="/static/include/examples-generated/add-metadata-organization.snippet.add-metadata-organization.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="22-24" >}}
 
-For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/#getorganizationmetadata) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/#updateorganizationmetadata).
+For more information, see [`GetOrganizationMetadata`](/reference/apis/fleet/) and [`UpdateOrganizationMetadata`](/reference/apis/fleet/).
 
 {{% /tab %}}
 {{< /tabs >}}

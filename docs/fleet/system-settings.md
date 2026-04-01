@@ -41,7 +41,7 @@ You can set automatic upgrades to the following options:
 - `"security"`: automatic upgrades for only packages containing `"security"` in their codename (for example `bookworm-security`)
 - `""`: disable automatic upgrades
 
-For complete reference information, see [viam-agent](/reference/platform/viam-agent/#system-configuration).
+For complete reference information, see [viam-agent](/reference/platform/viam-agent/).
 
 ## Configure networks
 
@@ -81,7 +81,7 @@ If the `fallbackNetOne` is not available or the machine can connect but internet
 
 Configuring multiple WiFi networks for `viam-micro-server` is similar but the only supported attributes are `priority`, `psk`, and `ssid`.
 
-For complete reference information, see [viam-agent](/reference/platform/viam-agent/#network_configuration).
+For complete reference information, see [viam-agent](/reference/platform/viam-agent/).
 
 ## Configure network settings for tunneling
 
@@ -134,7 +134,7 @@ By default, the maximum disk space `journald` will use for `viam-server` logs is
 
 To adjust these settings update the `"agent"` value in the machine's JSON configuration.
 
-For complete reference information, see [viam-agent](/reference/platform/viam-agent/#system-configuration) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
+For complete reference information, see [viam-agent](/reference/platform/viam-agent/) and the [`journald` docs](https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html#SystemMaxUse=).
 
 ### Set the maximum disk space
 

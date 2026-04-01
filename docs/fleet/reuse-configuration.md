@@ -386,7 +386,7 @@ This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operato
 
 {{< /expand >}}
 {{< expand "Set a module version" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/reference/module-configuration/#module-configuration-details) named `custom-sensor` from the fragment:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to configure [version update settings for a module](/reference/module-configuration/) named `custom-sensor` from the fragment:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -438,7 +438,7 @@ The `version` field supports the following values:
 
 {{< /expand >}}
 {{< expand "Change the log level of a resource" >}}
-This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [the log level](/reference/platform/viam-server/#logging) from the fragment for a resource:
+This example uses [`$set`](https://www.mongodb.com/docs/manual/reference/operator/update/set/#mongodb-update-up.-set) to modify [the log level](/reference/platform/viam-server/) from the fragment for a resource:
 
 ```json {class="line-numbers linkable-line-numbers"}
 "fragment_mods": [
@@ -483,7 +483,7 @@ If the resource comes from a module, you must instead set the `log_level` attrib
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**After configuring fragment overwrites, check your machine's [**LOGS** tab](/monitor/troubleshoot/#check-logs).**
+**After configuring fragment overwrites, check your machine's [**LOGS** tab](/monitor/troubleshoot/).**
 
 If there are problems with overwrites to the fragment, the overwrites will not be partially applied and the configuration changes will not take effect until the configuration is fixed.
 

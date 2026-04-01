@@ -520,7 +520,7 @@ Unless you provided a machine cloud credentials file (<FILE>viam.json</FILE>) to
 ## Use a mobile app for provisioning
 
 You can create your own custom mobile provisioning app using the [Flutter SDK](https://flutter.viam.dev/viam_protos.provisioning.provisioning/ProvisioningServiceClient-class.html) or the [TypeScript SDK](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/src/app/provisioning-client.ts).
-Alternatively you can use the [Viam mobile app](/monitor/teleoperate/#viam-mobile-app).
+Alternatively you can use the [Viam mobile app](/monitor/teleoperate/).
 
 ### Custom Flutter apps
 
@@ -569,7 +569,7 @@ If your device does not connect to your network, adjust the `retry_connection_ti
 ### Device not connecting or showing as offline
 
 Check if other devices on the network can connect to the internet without problems.
-If other devices are fine, try restarting your device and [check for other logs](/monitor/troubleshoot/#check-logs).
+If other devices are fine, try restarting your device and [check for other logs](/monitor/troubleshoot/).
 
 ### Test GRPC components of the provisioning service
 
