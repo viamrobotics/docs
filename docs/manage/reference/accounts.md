@@ -19,7 +19,13 @@ Accounts can have [different permissions](/manage/manage/rbac/) to different gro
 
 To get started, you must log in with a Viam account.
 Viam supports sign-up using Google, GitHub, Apple, and email.
+<<<<<<< HEAD
 If you sign up with GitHub, your GitHub account must have a public email address.
+||||||| 7a10cc5b
+=======
+If you sign up with GitHub, your GitHub account must have a public email address.
+You can set this in your [GitHub profile settings](https://github.com/settings/profile) under "Public email."
+>>>>>>> main
 
 Navigate to [the main page](https://app.viam.com/).
 If you haven't created an account yet, click **Sign Up** to create a new account using your preferred single sign-on method or your email address and a password.
