@@ -64,7 +64,7 @@ If the component is a depth camera, enable its point cloud in the settings panel
 The point cloud should align with the physical objects in your workspace.
 
 If the point cloud appears shifted or rotated relative to where objects actually are, the camera's frame offset or orientation is wrong.
-See [Inspect point clouds](/motion-planning/3d-scene/inspect-point-clouds/) for more on working with point clouds.
+See [Verify point cloud alignment](/motion-planning/3d-scene/verify-point-cloud-alignment/) for more on working with point clouds.
 
 ## Iterative adjustment
 

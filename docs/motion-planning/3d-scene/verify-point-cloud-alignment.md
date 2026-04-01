@@ -1,21 +1,25 @@
 ---
-linkTitle: "Inspect point clouds"
-title: "Inspect point clouds"
+linkTitle: "Verify point cloud alignment"
+title: "Verify point cloud alignment"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "View live camera point clouds and imported PCD files in the 3D scene."
+description: "Display a depth camera's point cloud in the 3D scene to verify that the data aligns with your frame system and workspace geometry."
 ---
 
 Depth cameras produce point clouds: sets of 3D points representing the surfaces visible to the camera.
 The 3D scene tab can display these point clouds in the context of your frame system, so you can verify that the camera is producing good data and that the data aligns with your workspace geometry.
 
+If the point cloud does not align with the physical objects in your workspace, either the camera's frame offset is wrong or the camera itself has a problem.
+Catching this early prevents issues with vision pipelines, object detection, SLAM, and motion planning that depend on accurate spatial data.
+
 ## Prerequisites
 
 - A machine with a depth camera configured and producing point cloud data.
 - The camera must support the `GetPointCloud` method (check the camera's `supports_pcd` property).
+- A frame configured for the camera with translation and orientation values that reflect its physical mounting position.
 
-## View live point clouds
+## Steps
 
 ### 1. Open the 3D scene tab
 
@@ -33,45 +37,26 @@ You can also configure:
 - **Point size**: how large each point renders in the scene. Increase this if points are hard to see; decrease it for denser clouds.
 - **Default color**: the color used for points that do not have color data from the camera.
 
-### 3. Interpret the point cloud
+### 3. Check spatial alignment
 
 The point cloud renders in the scene positioned according to the camera's frame in your frame system.
 If the frame configuration is correct, the point cloud should align with physical objects in your workspace:
 
-- Flat surfaces (tables, walls) appear as planes of points.
+- Flat surfaces (tables, walls) appear as planes of points at the correct height and position relative to other components.
 - Objects appear as clusters of points at the expected distances from the camera.
 - The floor should appear at the expected height relative to the world frame.
 
 If the point cloud appears shifted, rotated, or in an unexpected location, the camera's frame offset or orientation is likely wrong.
 See [Calibrate frame offsets](/motion-planning/3d-scene/calibrate-frame-offsets/).
 
-### 4. Check point cloud quality
+### 4. Check data quality
 
-Look for common depth camera issues:
+If the point cloud is in the right place but the data looks wrong, look for common depth camera issues:
 
 - **Gaps or holes**: areas where the camera cannot measure depth (reflective surfaces, transparent objects, surfaces at extreme angles).
 - **Noise at edges**: depth values that jump between foreground and background at object boundaries.
 - **Range limitations**: points missing beyond the camera's maximum depth range.
 - **Sparse data**: too few points to be useful. Check the camera's resolution and depth mode settings.
 
-## Import point cloud files
-
-You can load saved point cloud data into the scene by dragging and dropping PCD or PLY files onto the 3D viewport.
-Imported point clouds appear at the world frame origin.
-
-This is useful for:
-
-- Comparing a saved SLAM map against your current frame system.
-- Loading a point cloud capture from a different session for offline analysis.
-- Viewing point clouds exported from external tools.
-
-## Select and export points
-
-The lasso tool lets you select a region of points from any point cloud in the scene and export them.
-
-1. Activate the lasso tool from the toolbar.
-2. Hold Shift and drag to draw a freeform selection boundary around the points you want.
-3. The selected points are highlighted.
-4. Export the selection as a PCD file.
-
-This is useful for isolating a specific region of a point cloud for further analysis or for creating a cropped point cloud to use in a different workflow.
+Data quality problems are camera issues, not frame system issues.
+Adjust the camera's configuration, mounting angle, or lighting conditions to address them.

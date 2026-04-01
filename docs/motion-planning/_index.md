@@ -75,7 +75,7 @@ your hardware.
 {{% card link="/motion-planning/3d-scene/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/debug-motion-plan/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/calibrate-frame-offsets/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/inspect-point-clouds/" noimage="true" %}}
+{{% card link="/motion-planning/3d-scene/verify-point-cloud-alignment/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/set-up-obstacle-avoidance/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/edit-frames/" noimage="true" %}}
 {{< /cards >}}
