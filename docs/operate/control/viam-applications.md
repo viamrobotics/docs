@@ -301,6 +301,7 @@ The `applications` field is an array of application objects with the following p
 | `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be selectable from the machine picker screen. Only for single machine applications. |
 | `logoPath` | string | The URL or the relative path to the logo to display on the machine picker screen for a single machine application. |
 | `customizations` | object | Override the branding heading and subheading to display on the authentication screen for single machine applications: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading` Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
+| `allowed_org_ids` | []string | Restricts which organizations a user can select when using the app. When set, only users who belong to one of the specified organizations will see that org in the org picker. If not set, all organizations the user belongs to are shown. |
 
 {{% /tablestep %}}
 {{% tablestep %}}
