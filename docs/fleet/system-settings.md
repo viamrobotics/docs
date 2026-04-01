@@ -69,10 +69,10 @@ Allow secure port forwarding from a local machine to a remote machine through Vi
 }
 ```
 
-| Field                | Type    | Description                                                         |
-| -------------------- | ------- | ------------------------------------------------------------------- |
-| `port`               | integer | The port on the machine to expose for tunneling.                    |
-| `connection_timeout` | string  | Timeout for establishing the tunnel connection. Go duration format. |
+| Field                | Type    | Description                                                                           |
+| -------------------- | ------- | ------------------------------------------------------------------------------------- |
+| `port`               | integer | The port on the machine to expose for tunneling.                                      |
+| `connection_timeout` | string  | Timeout for establishing the tunnel connection. Go duration format. Default: `"10s"`. |
 
 To connect through the tunnel, use the CLI:
 

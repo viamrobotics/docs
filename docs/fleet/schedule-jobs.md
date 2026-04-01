@@ -37,7 +37,7 @@ The job card has a **Schedule** section with three options:
 - `0 9 * * 1-5` — every weekday at 9 AM
 - `*/5 * * * * *` — every 5 seconds (6-field cron with seconds)
 
-Cron schedules are evaluated in UTC.
+Cron schedules are evaluated in the machine's local timezone.
 
 **Continuous**: run the job in an infinite loop. Each invocation starts immediately after the previous one completes. Use this for tasks that should always be running.
 

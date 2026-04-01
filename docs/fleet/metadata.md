@@ -11,11 +11,13 @@ Attach custom metadata as a JSON object to any level of your fleet hierarchy: ma
 
 ## Add metadata in the Viam app
 
-1. Navigate to the resource you want to add metadata to (machine part, machine, location, or organization).
+1. Navigate to the machine part, machine, or location you want to add metadata to.
 1. Click the **...** (actions) menu.
-1. Select **Custom part metadata**, **Custom machine metadata**, **Custom location metadata**, or **Custom organization metadata** depending on the level.
+1. Select **Custom part metadata**, **Custom machine metadata**, or **Custom location metadata** depending on the level.
 1. Edit the JSON object in the editor that appears.
 1. Click **Save**.
+
+Organization-level metadata is available through the SDK and CLI but not through the Viam app UI.
 
 Metadata is stored as an arbitrary JSON object with no required schema. You define the structure.
 
@@ -49,7 +51,7 @@ Read metadata for a machine and its parts:
 viam metadata read --machine-id=<machine-id>
 ```
 
-The CLI `metadata read` command aggregates metadata across levels. Pass `--organization-id`, `--location-id`, `--machine-id`, or `--machine-part-id` to read specific levels.
+The CLI `metadata read` command aggregates metadata across levels. Pass `--org-id`, `--location-id`, `--machine-id`, or `--part-id` to read specific levels.
 
 ## Verify metadata
 

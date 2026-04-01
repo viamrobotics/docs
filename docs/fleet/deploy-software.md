@@ -28,7 +28,7 @@ Each module in the fragment has a version field. On the fragment card for the mo
 
 - **Latest version**: the machine downloads the newest version when it syncs. This is the default.
 - **Pin to version**: the machine stays on a specific version and does not update automatically.
-- **Pin to tag**: the machine uses whichever version the fragment tag points to.
+- **Pin to tag**: the machine uses whichever version the fragment tag points to. This option appears only when the fragment has tags. See [reuse configuration](/fleet/reuse-configuration/#create-a-tag) for how to create tags.
 
 {{% alert title="Caution" color="caution" %}}
 For any version type other than pinning to a specific version, the module updates as soon as a matching version is available, which restarts the module. If the module cannot be safely interrupted, pin to a specific version and update manually.
@@ -54,6 +54,8 @@ Include the fragment ID in your `viam-defaults.json` file. New machines apply th
 ```sh {class="command-line" data-prompt="$"}
 viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
 ```
+
+To find your part ID, run `viam machines part list --machine=<machine-id>`. To find the fragment ID, copy it from the fragment's page in the Viam app or run `viam organizations list` and check your fragments.
 
 ## 4. Verify the deployment
 

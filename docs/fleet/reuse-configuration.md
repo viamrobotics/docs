@@ -42,10 +42,6 @@ In the fragment editor sidebar, click **+** to add:
 - Jobs
 - Triggers
 
-{{< alert title="Note" color="note" >}}
-Fragments support all resource types except triggers, which must be configured directly on the machine.
-{{< /alert >}}
-
 Click **Save** after adding and configuring your resources.
 
 ## Apply a fragment to a machine
