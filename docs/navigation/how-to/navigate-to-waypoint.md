@@ -5,6 +5,9 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure the navigation service and autonomously navigate to GPS waypoints."
+aliases:
+  - /navigation/how-to/drive-the-base/
+  - /navigation/how-to/move-to-gps-coordinate/
 ---
 
 This guide walks you through configuring the navigation service and sending
