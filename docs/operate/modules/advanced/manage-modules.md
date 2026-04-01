@@ -340,6 +340,17 @@ viam module update
 If you don't see a private module of yours in the registry, make sure that you have the correct organization selected in the upper right corner of the page.
 {{% /hiddencontent %}}
 
+## Edit the short description
+
+The short description is a brief summary of your module that appears in registry search results.
+You can edit it directly from the registry UI without updating your `meta.json` file.
+
+To edit the short description:
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+2. Click the edit icon next to the short description field.
+3. Enter the new description and save your changes.
+
 ## Delete a module
 
 You can delete a module if:
