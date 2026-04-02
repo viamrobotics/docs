@@ -15,8 +15,7 @@ aliases:
 ---
 
 [`viam-agent`](/manage/reference/viam-agent/) is installed as a `systemd` service named
-`viam-agent` on Linux, a `launchd` daemon named `system/com.viam.agent` on MacOS, and a
-Service named `viam-agent` on Windows.
+`viam-agent` on Linux and a Service named `viam-agent` on Windows.
 
 To view logs from viam-agent see the ["Agent logs" section](/manage/reference/viam-agent/#agent-logs).
 
@@ -70,93 +69,6 @@ To view logs from viam-agent see the ["Agent logs" section](/manage/reference/vi
   ```
 
   This command uninstalls `viam-agent`, `viam-server`, the machine cloud credentials file (<file>/etc/viam.json</file>), and the provisioning configuration file (<file>/etc/viam-provisioning.json</file>).
-
-{{< alert title="Caution" color="caution" >}}
-If you remove the machine cloud credentials file you will not be able to connect to your machine.
-You can only restore this file if you have access to the machine configuration.
-{{< /alert >}}
-
-{{% /tab %}}
-{{% tab name="MacOS" %}}
-
-- To restart `viam-agent`:
-
-  {{< alert title="Alert" color="note" >}}
-  When you restart `viam-agent`, the agent will restart `viam-server` as well.
-  {{< /alert >}}
-
-  {{< tabs >}}
-  {{% tab name="Web UI" %}}
-
-  1. Navigate to your machine in [Viam](https://app.viam.com).
-  1. Click on the machine status indicator next to the machine name.
-  1. Click on the restart arrow symbol.
-     This will restart `viam-server` and `viam-agent`.
-
-  {{% /tab %}}
-  {{% tab name="Shell" %}}
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl kickstart -k system/com.viam.agent
-  ```
-
-  {{% /tab %}}
-  {{< /tabs >}}
-
-- To start `viam-agent`:
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl kickstart system/com.viam.agent
-  ```
-
-  If the service fails to start, make sure it is bootstrapped. The following command will
-  print an error message if the service is NOT bootstrapped.
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl print system/com.viam.agent
-  ```
-
-  The following command will bootstrap the service.
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl bootstrap system /Library/LaunchDaemons/com.viam.agent.plist
-  ```
-
-  If the service STILL fails to start, ensure that it is enabled. The following command
-  will enable the service.
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl enable system/com.viam.agent
-  ```
-
-- To stop `viam-agent`:
-
-  {{< alert title="Alert" color="note" >}}
-  When you stop `viam-agent`, the agent will stop `viam-server` as well.
-  {{< /alert >}}
-
-  `sudo launchctl kill` and `sudo launchctl stop` will NOT fully stop `viam-agent`, as
-  launchd will automatically resurrect it. You can use the following to "boot out" the
-  service and fully stop it.
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl bootout system/com.viam.agent
-  ```
-
-  If you would like to start `viam-agent` again after this command, you will need to
-  bootstrap it again.
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo launchctl bootstrap system /Library/LaunchDaemons/com.viam.agent.plist
-  ```
-
-- To completely uninstall `viam-agent` and `viam-server`, run the following command:
-
-  ```sh {class="command-line" data-prompt="$"}
-  sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/uninstall.sh)"
-  ```
-
-  This command uninstalls `viam-agent`, `viam-server`, and the machine cloud credentials file (<file>/etc/viam.json</file>).
 
 {{< alert title="Caution" color="caution" >}}
 If you remove the machine cloud credentials file you will not be able to connect to your machine.
