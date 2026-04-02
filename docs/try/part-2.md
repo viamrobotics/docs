@@ -41,7 +41,6 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 The default configuration options for the data service are correct for our application so we can move on to capturing data from the vision service.
 
-
 **Enable data capture on the vision service:**
 
 1. Click `vision-service` in your machine configuration

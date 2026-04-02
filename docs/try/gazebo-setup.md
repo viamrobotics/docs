@@ -55,7 +55,7 @@ This takes 5-10 minutes depending on your internet connection.
 ## Step 4: Start the Container
 
 {{< alert title="Note" color="note" >}}
-If you have a local installation of `viam-agent` running on your machine, it uses port 8080 by default. Running the container with `-p 8080:8080` will conflict with it. To avoid this, either stop the local `viam-agent` before starting the container, or change the host port mapping—for example, `-p 8090:8080`—and access the container on the new port instead.
+If you have a local installation of `viam-agent` running on your machine, it uses port 8080 by default. Running the container with `-p 8080:8080` will conflict with it. To avoid this, either stop the local `viam-agent` before starting the container, or change the host port mapping (for example, `-p 8090:8080`) and access the container on the new port instead.
 {{< /alert >}}
 
 {{< tabs >}}
