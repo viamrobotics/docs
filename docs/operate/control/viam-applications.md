@@ -232,6 +232,7 @@ Viam uses the <FILE>meta.json</FILE> file to add some customizations to the auth
       "entrypoint": "dist/index.html",
       "fragmentIds": [],
       "logoPath": "static/logo.png",
+      "allowedOrgIds": [],
       "customizations": {
         "machinePicker": {
           "heading": "Heading to display on branded authentication page",
@@ -259,6 +260,7 @@ Viam uses the <FILE>meta.json</FILE> file to add some customizations to the auth
       "entrypoint": "dist/index.html",
       "fragmentIds": [],
       "logoPath": "static/logo.png",
+      "allowedOrgIds": [],
       "customizations": {
         "machinePicker": {
           "heading": "Air monitoring dashboard",
@@ -301,6 +303,7 @@ The `applications` field is an array of application objects with the following p
 | `fragmentIds` | []string | Specify the fragment or fragments that a machine must contain to be selectable from the machine picker screen. Only for single machine applications. |
 | `logoPath` | string | The URL or the relative path to the logo to display on the machine picker screen for a single machine application. |
 | `customizations` | object | Override the branding heading and subheading to display on the authentication screen for single machine applications: <ul><li>`heading`: Override the heading. May not be longer than 60 characters. </li><li>`subheading` Override the subheading. May not be longer than 256 characters.</li></ul> Example: `{ "heading": "Air monitoring dashboard", "subheading": "Sign in and select your devices to view your air quality metrics in a dashboard" }`. |
+| `allowedOrgIds` | []string | Restrict which organizations can access your app by providing a list of organization IDs. If empty or omitted, all organizations can access the app. |
 
 {{% /tablestep %}}
 {{% tablestep %}}
