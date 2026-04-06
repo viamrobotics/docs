@@ -1,19 +1,19 @@
 ---
-title: "White-labeled Billing"
-linkTitle: "White-labeled Billing"
-weight: 70
+title: "White-labeled billing"
+linkTitle: "White-labeled billing"
+weight: 55
 layout: "docs"
 type: "docs"
-description: "Set up white-labeled billing."
+description: "Set up a branded billing dashboard with custom pricing for your customers."
 images: ["/operate/wlbilling.png"]
-date: "2025-01-31"
 aliases:
+  - /manage/manage/white-labeled-billing/
   - /manage/manage/white-labeled-billing
   - /manage/manage/white-labelled-billing/
 ---
 
 You can use Viam to bill your customers using your own logo.
-This guide will show you how to set up white-labeled billing.
+This guide shows you how to set up white-labeled billing.
 Once set up:
 
 - You will have a branded billing dashboard for each org
@@ -26,7 +26,7 @@ Once set up:
 
 {{< table >}}
 {{% tablestep start=1 %}}
-**Navigate to the organization settings page** through the menu in upper right corner of the page. Create a **Public namespace**.
+**Navigate to the organization settings page** through the menu in the upper right corner of the page. Create a **Public namespace**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -38,7 +38,7 @@ viam organization logo set --logo-path logo.png --org-id <org-id>
 Successfully set the logo for organization <org-id> to logo at file-path: logo.png
 ```
 
-You must have [owner permissions](/manage/manage/rbac/#organization-settings-and-roles) on the organization.
+You must have [owner permissions](/organization/rbac/) on the organization.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -105,10 +105,9 @@ https://app.viam.com/billing/<public-namespace>?id=<org-id>
 
 To use custom billing, add a billing configuration to a fragment.
 
-1. Navigate to the **FLEET** page.
-1. Go to the [**FRAGMENTS** tab](https://app.viam.com/fragments).
+1. Navigate to the [**Fragments** page](https://app.viam.com/fragments).
 1. Select the fragment you use for your machines.
-1. Click **+** and add **Billing**
+1. Click **+** and add **Billing**.
 1. Adjust attributes as needed.
 1. Mark the fragment as public or unlisted.
 1. Save the fragment.
@@ -203,8 +202,8 @@ This configuration charges customers every 12 months, with upfront payment:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `cost_per_month` | object | Optional | See [cost per month attributes](/manage/manage/white-labeled-billing/#click-to-view-cost-per-month-attributes). If specified, you cannot also specify `cost_per_year`. Default: `{}` (all machines cost `0`). |
-| `cost_per_year` | object | Optional | See [cost per year attributes](/manage/manage/white-labeled-billing/#click-to-view-cost-per-year-attributes). If specified, you cannot also specify `cost_per_month`. Default: `{}` (all machines cost `0`). |
+| `cost_per_month` | object | Optional | See [cost per month attributes](/organization/white-labeled-billing/#click-to-view-cost-per-month-attributes). If specified, you cannot also specify `cost_per_year`. Default: `{}` (all machines cost `0`). |
+| `cost_per_year` | object | Optional | See [cost per year attributes](/organization/white-labeled-billing/#click-to-view-cost-per-year-attributes). If specified, you cannot also specify `cost_per_month`. Default: `{}` (all machines cost `0`). |
 | `tier_name` | string | **Required** | The name of the billing tier. |
 | `description` | string | Optional | Description for the billing tier. Default: `""`. |
 | `tier_credit` | number | Optional | Credit that should be applied to final total for the org. Default: `0`. |
@@ -244,31 +243,30 @@ This configuration charges customers every 12 months, with upfront payment:
 
 ### How does reimbursement work for white-labeled billing?
 
-Payments for white-labeled billing go directly to Viam. To arrange reimbursement, please [contact us](mailto:support@viam.com).
+Payments for white-labeled billing go directly to Viam. To arrange reimbursement, [contact us](mailto:support@viam.com).
 
 ### Can I customize the billing page further?
 
-If you need further customization, please [contact us](mailto:support@viam.com).
+If you need further customization, [contact us](mailto:support@viam.com).
 
 ### How does renewal work?
 
 Renewal is automatic for upfront annual billing and for upfront monthly billing.
 For monthly billing after usage, if there is no usage, there is no charge.
-If the `per_machine` field is set, then a machine existing, is considered usage.
+If the `per_machine` field is set, then a machine existing is considered usage.
 
 ### When are invoices generated?
 
 - **Monthly billing (`in_arrears: true`)**: Invoices are generated on the first day of the month and customers are charged at the end of each month for the per machine cost and usage during that month.
-  For example, if you set up a machine on June 20, you'll get an invoice on July 1 for 10 days of usage. Then you'll get the next invoice on August 1 for the usage in July.
+  For example, if you set up a machine on June 20, you get an invoice on July 1 for 10 days of usage. Then you get the next invoice on August 1 for the usage in July.
 - **Monthly billing (`in_arrears: false`)**: Invoices are generated shortly after the billing fragment is added to the machine and customers are charged at the beginning of each new month of usage for the per machine cost.
-  For example, if you set up a monthly upfront machine on June 20, you'll get an invoice shortly after on the same day.
-  Then you'll get the next invoice on July 20, then August 20, and so on.
+  For example, if you set up a monthly upfront machine on June 20, you get an invoice shortly after on the same day.
+  Then you get the next invoice on July 20, then August 20, and so on.
 - **Annual billing (`in_arrears: false`)**: Invoices are generated shortly after the billing fragment is added to the machine and customers are charged at the beginning of each new year of usage for the per machine cost.
-  For example, if you set up an annual upfront machine on June 20, you'll get an invoice shortly after on the same day.
-  Then you'll get the next invoice on June 20 the following year.
+  For example, if you set up an annual upfront machine on June 20, you get an invoice shortly after on the same day.
+  Then you get the next invoice on June 20 the following year.
 
 ### Can customers switch between monthly and annual billing?
 
 Yes. However, switching billing fragments will result in the new charge immediately taking effect.
-We recommend that you wait until the end of the current billing cycle to remove the old billing
-fragment and assign the new billing fragment.
+Wait until the end of the current billing cycle to remove the old billing fragment and assign the new billing fragment.
