@@ -99,6 +99,21 @@ For instructions on configuring data capture and sync with JSON, see [Advanced d
 1. Select the [**Images**](https://app.viam.com/data/view?view=images), [**Files**](https://app.viam.com/data/view?view=files), [**Point clouds**](https://app.viam.com/data/view?view=point+clouds), or [**Sensors**](https://app.viam.com/data/view?view=sensors) subtab.
 1. Filter data by location, type, and more.
 
+## Delete captured data
+
+You can delete binary data files from the cloud using the **DATA** page.
+
+To delete files from the [**Files**](https://app.viam.com/data/view?view=files) subtab:
+
+1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and select the **Files** subtab.
+1. Use filters to select the data you want to delete.
+1. Click **Delete** and confirm deletion.
+
+When you delete data from the Files view, media files such as images, videos, audio, and point clouds are preserved.
+Only other binary data files are removed.
+
+To delete data programmatically, use the data client API methods [`DeleteBinaryDataByFilter`](/dev/reference/apis/data-client/#deletebinarydatabyfilter) or [`DeleteBinaryDataByIDs`](/dev/reference/apis/data-client/#deletebinarydatabyids).
+
 ## Stop data capture or data sync
 
 ### Stop data capture for a specific resource
