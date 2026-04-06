@@ -135,10 +135,11 @@ For more information, see [Annotate images](/data-ai/train/annotate-images/).
 
 {{% /changelog %}}
 
-{{% changelog color="added" title="Notes section for resource configuration cards" date="2025-07-10" %}}
+{{% changelog color="added" title="Notes for resource configuration cards" date="2025-07-10" %}}
 
-You can now add descriptive notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.
-The Notes section appears at the bottom of each resource configuration card in both machine builder and fragment builder.
+You can now add notes to any resource in your machine configuration, including components, services, remotes, local resources, processes, triggers, packages, and modules.
+Click the **notes** button in the card header to open the notes dialog.
+A circle indicator appears next to the button when notes exist.
 
 {{% /changelog %}}
 
