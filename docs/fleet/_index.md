@@ -1,9 +1,13 @@
 ---
 linkTitle: "Fleet deployment"
-title: "Fleet Deployment"
+title: "Fleet deployment"
 weight: 200
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Deploy machines at scale: templatize configurations with fragments, provision devices, push software updates, and manage system settings."
+manualLink: "/fleet/overview/"
+description: "Scale from one machine to a fleet: templatize configuration with fragments, provision devices, deploy software and ML models, and manage updates."
+aliases:
+  - /cloud/
+  - /product-overviews/fleet-management/
 ---
