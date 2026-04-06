@@ -121,7 +121,7 @@ Enter these values when prompted:
 | Language               | `Go`                       |
 | Visibility             | `Private`                  |
 | Namespace/Organization | _Select your organization_ |
-| Resource type          | `Generic Service`        |
+| Resource type          | `Generic Service`          |
 | Model name             | `inspector`                |
 | Register module        | `Yes`                      |
 
