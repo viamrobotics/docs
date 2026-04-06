@@ -106,9 +106,9 @@ Click **Train model**.
 {{% tablestep %}}
 **Wait for your model to train**
 
-The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
+The model now starts training and you can follow its progress on the [**MODELS** page](https://app.viam.com/models).
 
-Once the model has finished training, it becomes visible on the [**MODELS** tab](https://app.viam.com/models).
+Once the model has finished training, it becomes visible on the [**MODELS** page](https://app.viam.com/models).
 Click on a model to open its details page.
 From here, you can view all model versions, see associated training jobs, publish the model to the registry, edit model details, copy the package configuration, or delete the model.
 
@@ -118,7 +118,7 @@ You will receive an email when your model finishes training.
 {{% tablestep %}}
 **Debug your training job**
 
-From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
+From the model's details page, click on a training job to see its logs.
 
 {{< alert title="Note" color="note" >}}
 
