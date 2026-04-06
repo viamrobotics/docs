@@ -30,8 +30,8 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 **Include the data service in your machine configuration:**
 
 1. Click **+** next to **inspection-station-1-main** in the **CONFIGURE** tab
-2. Click **Component or service**
-3. Select **data management**
+2. Click **Configuration block**
+3. Select **data_manager/builtin**
 4. Name it `data-service`
 5. Click **Create**
 6. **Save** your updated machine configuration
