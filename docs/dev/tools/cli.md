@@ -1413,6 +1413,9 @@ viam organization auth-service oauth-app [create|update] --client-authentication
     --url-validation=[allow_wildcards|unspecified|exact_match] --org-id=<org-id>
 viam organization auth-service oauth-app [list] --org-id=<org-id>
 viam organization auth-service oauth-app [read|delete] --org-id=<org-id> --client-id=<client-id>
+viam organizations firebase-config set --org-id=<org-id> --app-id=<app-id> --firebase-config-path=<path>
+viam organizations firebase-config read --org-id=<org-id>
+viam organizations firebase-config delete --org-id=<org-id> --app-id=<app-id>
 ```
 
 Examples:
@@ -1423,6 +1426,15 @@ viam organizations list
 
 # create a new organization API key in org 123
 viam organizations api-key create --org-id=123 --name=my-key
+
+# upload a Firebase config for push notifications
+viam organizations firebase-config set --org-id=123 --app-id=com.example.myapp --firebase-config-path=./firebase-config.json
+
+# read Firebase config metadata for an organization
+viam organizations firebase-config read --org-id=123
+
+# delete a Firebase config for a specific app ID
+viam organizations firebase-config delete --org-id=123 --app-id=com.example.myapp
 ```
 
 See [create an organization API key](#create-an-organization-api-key) for more information.
@@ -1441,6 +1453,9 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `billing-service` | Enable, update, or disable the billing service for an organization. | `enable`, `update`, `disable` |
 | `auth-service` | Enable or disable auth-service for OAuth applications. Disabling the auth-service does not delete your OAuth token, it will just take off the custom branding. | `enable`, `disable` |
 | `auth-service oauth-app` | List, create, update, read, or delete OAuth applications. | `create`, `update`, `list`, `read`, `delete` |
+| `firebase-config set` | Upload a Firebase config JSON for a specific app ID. Organization owner only. | - |
+| `firebase-config read` | Read Firebase config metadata for an organization. For security, only returns the app ID, not the config JSON. Organization owner only. | - |
+| `firebase-config delete` | Delete a Firebase config for a specific app ID. Organization owner only. | - |
 | `--help` | Return help. | - |
 
 ##### Named arguments
@@ -1448,7 +1463,7 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`, `auth-service enable`, `auth-service disable`, `auth-service oauth-app create`, `auth-service oauth-app update` `auth-service oauth-app list`, `auth-service oauth-app read`, `auth-service oauth-app delete`. | **Required** |
+| `--org-id` | The organization to perform the command on. | `api-key`, `support-email get`, `support-email set`, `logo set`, `billing-service get-config`, `billing-service enable`, `billing-service update`, `billing-service disable`, `auth-service enable`, `auth-service disable`, `auth-service oauth-app create`, `auth-service oauth-app update` `auth-service oauth-app list`, `auth-service oauth-app read`, `auth-service oauth-app delete`, `firebase-config set`, `firebase-config read`, `firebase-config delete` | **Required** |
 | `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time. |`api-key` | Optional |
 | `--support-email` | The support email to set for the organization. | `support-email get`, `support-email set` | **Required** |
 | `--logo-path` | The support email to set for the organization. | `logo set` | **Required** |
@@ -1463,6 +1478,8 @@ See [create an organization API key](#create-an-organization-api-key) for more i
 | `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | `auth-service oauth-app create`, `auth-service oauth-app update` | **Required** |
+| `--app-id` | The app ID for the Firebase config (for example, `com.example.myapp`). | `firebase-config set`, `firebase-config delete` | **Required** |
+| `--firebase-config-path` | Path to the Firebase config JSON file to upload. | `firebase-config set` | **Required** |
 
 ### `packages`
 
