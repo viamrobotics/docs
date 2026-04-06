@@ -494,7 +494,7 @@ If you intend to ship machines, Viam provides the following features:
 - [**Provisioning**](/manage/fleet/provision/setup/): ship machines with a preconfigured setup so customers can connect them to the internet and get them up and running
 - [**Remote monitoring**](/manage/troubleshoot/monitor/): monitor, operate, and troubleshoot machines from anywhere in the world
 - [**Machine settings**](/manage/fleet/system-settings/): manage operating system package updates, network configuration, and system-level logging
-- [**Billing**](/manage/manage/white-labeled-billing/): bill customers for usage through the Viam platform
+- [**Billing**](/organization/white-labeled-billing/): bill customers for usage through the Viam platform
 
 **Wood sanding project:**
 A sanding project might be bespoke enough that you will install it for your customers, so you may not require provisioning.

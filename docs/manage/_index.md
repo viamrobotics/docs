@@ -51,7 +51,7 @@ Viam's fleet management tooling allows you to remotely deploy and manage softwar
 {{% card link="/manage/manage/access/" noimage="true" %}}
 {{% card link="/manage/manage/rbac/" noimage="true" %}}
 {{% card link="/manage/manage/oauth/" noimage="true" %}}
-{{% card link="/manage/manage/white-labeled-billing/" noimage="true" %}}
+{{% card link="/organization/white-labeled-billing/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
