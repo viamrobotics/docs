@@ -80,4 +80,6 @@ In this tutorial you will work through a series of tasks that are common to many
 
 ## Get started
 
-**[Begin Part 1: Vision pipeline →](../part-1/)**
+Before starting, set up the Gazebo simulation environment by following the **[Gazebo Simulation Setup](../gazebo-setup/)** guide (~10 min).
+
+**[Begin Gazebo Simulation Setup →](../gazebo-setup/)**

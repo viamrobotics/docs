@@ -1,7 +1,7 @@
 ---
 linkTitle: "Gazebo Simulation Setup"
 title: "Gazebo Simulation Setup"
-weight: 100
+weight: 5
 layout: "docs"
 type: "docs"
 description: "Set up the Gazebo simulation environment for the inspection tutorial."
