@@ -28,13 +28,14 @@ You're building a **quality inspection station** for a canning line. Cans move p
 
 In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
 
-| Part                                  | Time    | What you'll do                                         |
-| ------------------------------------- | ------- | ------------------------------------------------------ |
-| [Part 1: Vision pipeline](../part-1/) | ~10 min | Set up camera, ML model, and vision service            |
-| [Part 2: Data capture](../part-2/)    | ~5 min  | Configure automatic image capture and cloud sync       |
-| [Part 3: Control logic](../part-3/)   | ~10 min | Generate module, write inspection logic, test from CLI |
-| [Part 4: Deploy a module](../part-4/) | ~10 min | Deploy module, configure detection data capture        |
-| [Part 5: Productize](../part-5/)      | ~10 min | Build monitoring dashboard with Teleop                 |
+| Part                                        | Time    | What you'll do                                         |
+| ------------------------------------------- | ------- | ------------------------------------------------------ |
+| [Gazebo Simulation Setup](../gazebo-setup/) | ~10 min | Set up the Gazebo simulation environment               |
+| [Part 1: Vision pipeline](../part-1/)       | ~10 min | Set up camera, ML model, and vision service            |
+| [Part 2: Data capture](../part-2/)          | ~5 min  | Configure automatic image capture and cloud sync       |
+| [Part 3: Control logic](../part-3/)         | ~10 min | Generate module, write inspection logic, test from CLI |
+| [Part 4: Deploy a module](../part-4/)       | ~10 min | Deploy module, configure detection data capture        |
+| [Part 5: Productize](../part-5/)            | ~10 min | Build monitoring dashboard with Teleop                 |
 
 {{< expand "Full section outline" >}}
 
