@@ -188,7 +188,7 @@ Access a terminal on the machine without setting up SSH tunnels:
 1. Open a shell:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam machines part shell --organization=<org-name> --location=<location-name> --machine=<machine-id>
+   viam machines part shell --part <part-name-or-id>
    ```
 
 1. Copy files from the machine:

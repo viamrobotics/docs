@@ -23,24 +23,28 @@ Each configured component and service appears as a card. What you can do depends
 
 | Resource type      | What you can do                                          |
 | ------------------ | -------------------------------------------------------- |
-| Base               | Drive with an arrow pad, set speed with a power slider   |
 | Arm                | Move joints, set joint positions, read current positions |
-| Motor              | Set power, set RPM, go to position, read position        |
-| Gripper            | Open, close, stop                                        |
-| Servo              | Set angle, read current angle                            |
-| Gantry             | Move axes, read positions                                |
-| Camera             | View live feed, capture frames                           |
-| Sensor             | Read current values                                      |
-| Movement sensor    | Read position, orientation, velocity                     |
+| Base               | Drive with an arrow pad, set speed with a power slider   |
 | Board              | Read and write GPIO pins, ADC/DAC values                 |
+| Button             | View button state, simulate press                        |
+| Camera             | View live feed, capture frames                           |
 | Encoder            | Read position and ticks                                  |
-| Power sensor       | Read voltage, current, power                             |
+| Gantry             | Move axes, read positions                                |
+| Gripper            | Open, close, stop                                        |
 | Input controller   | View button and axis states                              |
+| Motor              | Set power, set RPM, go to position, read position        |
+| Movement sensor    | Read position, orientation, velocity                     |
+| Power sensor       | Read voltage, current, power                             |
+| Sensor             | Read current values                                      |
+| Servo              | Set angle, read current angle                            |
 | Switch             | Toggle position                                          |
-| Vision service     | Run detections and classifications on camera feeds       |
-| SLAM service       | View map and pose                                        |
-| Navigation service | View and set navigation goals                            |
+| Generic component  | Send custom commands (DoCommand)                         |
+| Discovery service  | View discovery results                                   |
 | ML model service   | Run inference                                            |
+| Navigation service | View and set navigation goals                            |
+| SLAM service       | View map and pose                                        |
+| Vision service     | Run detections and classifications on camera feeds       |
+| Generic service    | Send custom commands (DoCommand)                         |
 
 You can switch between machine parts directly from the CONTROL tab using the part selector at the top.
 
