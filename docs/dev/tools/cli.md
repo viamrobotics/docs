@@ -160,7 +160,6 @@ You can do this from the organization's settings page or with the CLI.
    ```
 
    Where:
-
    - `org-id` is your organization ID.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
    - `key-name` is an optional name for your API key.
@@ -194,7 +193,6 @@ You can do this from the organization's settings page or with the CLI.
    ```
 
    Where:
-
    - `location-id` is your location ID.
      You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots).
    - `org-id` is an optional organization ID to attach the key to.
@@ -233,7 +231,6 @@ You can do this from the organization's settings page or with the CLI.
    ```
 
    Where:
-
    - `machine-id` is your machine's ID.
      You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page, and selecting **Copy machine ID**.
    - `org-id` is an optional organization ID to attach the key to.
@@ -1712,10 +1709,27 @@ viam train list --org-id=123 --job-status=completed
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | `submit custom from-registry`, `submit custom with-upload` | Optional |
 
+### `update`
+
+The `update` command updates the CLI to the latest version.
+If the CLI was installed with Homebrew, it updates through Homebrew.
+Otherwise, it downloads and replaces the binary directly.
+
+```sh {class="command-line" data-prompt="$"}
+viam update
+```
+
+#### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--no-progress` | Hide progress output during the update. Default: `false`. | Optional |
+
 ### `version`
 
 The `version` command returns the version of the Viam CLI.
-To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
+To update to the latest version of the CLI, run [`viam update`](#update).
 
 ```sh {class="command-line" data-prompt="$"}
 viam version
