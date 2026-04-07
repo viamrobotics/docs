@@ -39,6 +39,15 @@ In this tutorial you will work through a series of tasks that are common to many
 
 {{< expand "Full section outline" >}}
 
+**[Gazebo Simulation Setup](../gazebo-setup/)** (~10 min)
+
+- [Prerequisites](../gazebo-setup/#prerequisites)
+- [Step 1: Build the Docker Image](../gazebo-setup/#step-1-build-the-docker-image)
+- [Step 2: Create a Machine in Viam](../gazebo-setup/#step-2-create-a-machine-in-viam)
+- [Step 3: Create a credentials file](../gazebo-setup/#step-3-create-a-credentials-file)
+- [Step 4: Start the Container](../gazebo-setup/#step-4-start-the-container)
+- [Step 5: Verify the Setup](../gazebo-setup/#step-5-verify-the-setup)
+
 **[Part 1: Vision pipeline](../part-1/)** (~10 min)
 
 - [1.1 Verify your machine is online](../part-1/#11-verify-your-machine-is-online)
