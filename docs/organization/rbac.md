@@ -15,8 +15,8 @@ Role-Based Access Control (RBAC) is a way to enforce security by assigning organ
 You can assign an owner or an operator role for an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 - **Owner**: Can see and edit every tab on the machine page and perform equivalent operations from the APIs.
-- **Operator**: Can see and use only the [**CONTROL**](/monitor/teleoperate/) tab and perform equivalent operations from the APIs.
-  Cannot see or edit the **CONFIGURE**, [**LOGS**](/monitor/troubleshoot/#check-logs), or **CONNECT** tabs.
+- **Operator**: Can see and use only the **CONTROL** tab and perform equivalent operations from the APIs.
+  Cannot see or edit the **CONFIGURE**, **LOGS**, or **CONNECT** tabs.
 
 Because roles are assigned at a specific level in the [resource hierarchy](/organization/overview/), you can combine the two roles with the three levels to create fine-grained access patterns:
 

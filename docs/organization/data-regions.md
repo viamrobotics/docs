@@ -41,21 +41,21 @@ Once you sync data in an organization, you cannot change the data region.
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-You can check your organization's data region using [`get_organization`](/reference/apis/fleet/#getorganization), and set your organization's data region using [`update_organization`](/reference/apis/fleet/#updateorganization):
+You can check your organization's data region using [`get_organization`](/reference/apis/fleet/), and set your organization's data region using [`update_organization`](/reference/apis/fleet/):
 
 {{< read-code-snippet file="/static/include/examples-generated/data-region.snippet.data-region.py" lang="python" class="line-numbers linkable-line-numbers" data-line="34-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-You can check your organization's data region using [`GetOrganization`](/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/reference/apis/fleet/#updateorganization):
+You can check your organization's data region using [`GetOrganization`](/reference/apis/fleet/), and set your organization's data region using [`UpdateOrganization`](/reference/apis/fleet/):
 
 {{< read-code-snippet file="/static/include/examples-generated/data-region.snippet.data-region.go" lang="python" class="line-numbers linkable-line-numbers" data-line="36-40" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-You can check your organization's data region using [`getOrganization`](/reference/apis/fleet/#getorganization), and set your organization's data region using [`UpdateOrganization`](/reference/apis/fleet/#updateorganization):
+You can check your organization's data region using [`getOrganization`](/reference/apis/fleet/), and set your organization's data region using [`UpdateOrganization`](/reference/apis/fleet/):
 
 {{< read-code-snippet file="/static/include/examples-generated/data-region.snippet.data-region.ts" lang="python" class="line-numbers linkable-line-numbers" data-line="23-28" >}}
 

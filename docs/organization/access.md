@@ -12,7 +12,7 @@ aliases:
 ---
 
 To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations.
-You can use the [web UI](https://app.viam.com) or the [Viam mobile app](/monitor/teleoperate/#viam-mobile-app) to grant or revoke organization owner or operator access to users or API keys.
+You can use the [web UI](https://app.viam.com) or the Viam mobile app to grant or revoke organization owner or operator access to users or API keys.
 
 For an overview of the resource hierarchy and how permissions work at each level, see [Organizations, locations, and access](/organization/overview/).
 For details on what each role can do, see [Permissions](/organization/rbac/).
