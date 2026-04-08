@@ -1122,13 +1122,13 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
 | `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | `upload` | Optional |
-| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload`, `reload-local` | Optional |
+| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload-local` | Optional |
 | `--id` | For `build`, the build ID to list or show logs for, as returned from `build start`. For `reload`, `reload-local`, `restart`, and `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `reload`, `reload-local`, `restart`, `download` | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | `reload`, `reload-local` | Optional |
 | `--module` | The path to the [`meta.json` file](/operate/modules/advanced/metajson/) for the module, if not in the current directory. | `update`, `upload`, `build`, `reload`, `reload-local` | Optional |
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
 | `--no-build` | Skip build step. Default: `false`. | `reload-local` | Optional |
-| `--no-progress` | Hide progress of the file transfer. Default: `false`. | `reload`, `reload-local` | Optional |
+| `--no-progress` | Hide progress of the file transfer. Default: `false`. | `reload-local` | Optional |
 | `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload`, `reload-local`, `restart` | Optional |
 | `--path` | The path to the root of the git repo to build. Default: `.` | `reload` | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |

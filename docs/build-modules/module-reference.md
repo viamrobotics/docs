@@ -490,11 +490,11 @@ are set to the target platform. See [Environment variables](#environment-variabl
 
 ### Development loop
 
-| Command                                   | Description                                                  |
-| ----------------------------------------- | ------------------------------------------------------------ |
-| `viam module reload-local --part-id <id>` | Build locally, transfer to machine, configure, and restart.  |
-| `viam module reload --part-id <id>`       | Build in cloud, transfer to machine, configure, and restart. |
-| `viam module restart --part-id <id>`      | Restart a running module without rebuilding.                 |
+| Command                                   | Description                                                 |
+| ----------------------------------------- | ----------------------------------------------------------- |
+| `viam module reload-local --part-id <id>` | Build locally, transfer to machine, configure, and restart. |
+| `viam module reload --part-id <id>`       | Build in cloud; machine downloads the package directly.     |
+| `viam module restart --part-id <id>`      | Restart a running module without rebuilding.                |
 
 `reload-local` flags: `--part-id` (target machine part), `--no-build` (skip
 build), `--local` (run entrypoint directly on localhost instead of bundling),
