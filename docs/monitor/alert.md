@@ -102,7 +102,7 @@ Wait a minute for data to capture and sync, then refresh.
    - **Email specific addresses**: toggle on, add addresses, set alert frequency.
    - **Email all machine owners**: toggle on, set alert frequency.
    - **Webhook**: click **Add Webhook**, enter your cloud function URL, set alert frequency.
-     See [Trigger configuration](/data-ai/reference/triggers-configuration/#webhook-attributes) for webhook payload details.
+     See [Trigger configuration](/reference/configuration/triggers/#webhook-attributes) for webhook payload details.
 1. Click **Save**.
 
 {{% /tab %}}
@@ -327,4 +327,4 @@ viam machines part delete-trigger --part <part-name-or-id> --name <trigger-name>
 
 - For alerts based on data sync events (not tied to machine health), see [Trigger on data events](/data/trigger-on-data/).
 - For alerts when an ML model detects specific objects or classifications, see [Alert on detections](/vision/alert-on-detections/).
-- For full trigger configuration reference, see [Trigger configuration](/data-ai/reference/triggers-configuration/).
+- For full trigger configuration reference, see [Trigger configuration](/reference/configuration/triggers/).
