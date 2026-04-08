@@ -62,13 +62,13 @@
   <text x="625" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">dashboards</text>
 
   <!-- ==================== ARROWS: Cloud ↔ Machine ==================== -->
-  <line x1="350" y1="112" x2="350" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <polygon points="346,136 350,143 354,136" fill="#252525"/>
-  <text x="362" y="130" class="arrow-label" fill="#252525">config · modules · ML models</text>
+  <line x1="319" y1="112" x2="319" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="315,136 319,143 323,136" fill="#252525"/>
+  <text x="331" y="130" class="arrow-label" fill="#252525">config · modules · ML models</text>
 
-  <line x1="530" y1="143" x2="530" y2="117" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <polygon points="526,119 530,112 534,119" fill="#252525"/>
-  <text x="542" y="130" class="arrow-label" fill="#252525">data · logs · machine status</text>
+  <line x1="499" y1="143" x2="499" y2="117" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="495,119 499,112 503,119" fill="#252525"/>
+  <text x="511" y="130" class="arrow-label" fill="#252525">data · logs · machine status</text>
 
   <!-- ==================== YOUR MACHINE boundary ==================== -->
   <rect x="130" y="145" width="558" height="415" rx="10" fill="none" stroke="#252525" stroke-width="1.5"/>
