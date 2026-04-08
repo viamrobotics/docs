@@ -11,7 +11,7 @@ aliases:
   - /try/first-project/
 ---
 
-**Time:** ~45 minutes
+**Time:** ~55 minutes
 
 ## Scenario
 
@@ -28,15 +28,25 @@ You're building a **quality inspection station** for a canning line. Cans move p
 
 In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
 
-| Part                                  | Time    | What you'll do                                         |
-| ------------------------------------- | ------- | ------------------------------------------------------ |
-| [Part 1: Vision pipeline](../part-1/) | ~10 min | Set up camera, ML model, and vision service            |
-| [Part 2: Data capture](../part-2/)    | ~5 min  | Configure automatic image capture and cloud sync       |
-| [Part 3: Control logic](../part-3/)   | ~10 min | Generate module, write inspection logic, test from CLI |
-| [Part 4: Deploy a module](../part-4/) | ~10 min | Deploy module, configure detection data capture        |
-| [Part 5: Productize](../part-5/)      | ~10 min | Build monitoring dashboard with Teleop                 |
+| Part                                        | Time    | What you'll do                                         |
+| ------------------------------------------- | ------- | ------------------------------------------------------ |
+| [Gazebo Simulation Setup](../gazebo-setup/) | ~10 min | Set up the Gazebo simulation environment               |
+| [Part 1: Vision pipeline](../part-1/)       | ~10 min | Set up camera, ML model, and vision service            |
+| [Part 2: Data capture](../part-2/)          | ~5 min  | Configure automatic image capture and cloud sync       |
+| [Part 3: Control logic](../part-3/)         | ~10 min | Generate module, write inspection logic, test from CLI |
+| [Part 4: Deploy a module](../part-4/)       | ~10 min | Deploy module, configure detection data capture        |
+| [Part 5: Productize](../part-5/)            | ~10 min | Build monitoring dashboard with Teleop                 |
 
 {{< expand "Full section outline" >}}
+
+**[Gazebo Simulation Setup](../gazebo-setup/)** (~10 min)
+
+- [Prerequisites](../gazebo-setup/#prerequisites)
+- [Step 1: Build the Docker Image](../gazebo-setup/#step-1-build-the-docker-image)
+- [Step 2: Create a Machine in Viam](../gazebo-setup/#step-2-create-a-machine-in-viam)
+- [Step 3: Create a credentials file](../gazebo-setup/#step-3-create-a-credentials-file)
+- [Step 4: Start the Container](../gazebo-setup/#step-4-start-the-container)
+- [Step 5: Verify the Setup](../gazebo-setup/#step-5-verify-the-setup)
 
 **[Part 1: Vision pipeline](../part-1/)** (~10 min)
 
@@ -80,4 +90,6 @@ In this tutorial you will work through a series of tasks that are common to many
 
 ## Get started
 
-**[Begin Part 1: Vision pipeline →](../part-1/)**
+Before starting, set up the Gazebo simulation environment by following the **[Gazebo Simulation Setup](../gazebo-setup/)** guide (~10 min).
+
+**[Begin Gazebo Simulation Setup →](../gazebo-setup/)**

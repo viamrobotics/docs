@@ -264,4 +264,4 @@ You've completed the tutorial. Here's what you built:
 
 You've gone from an empty machine to a production-ready inspection system with monitoring—patterns that apply to any Viam application.
 
-**[← Back to Overview](../)** to review what you learned.
+**[← Back to Overview](../overview/)** to review what you learned.
