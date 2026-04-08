@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Set up the hosted simulation environment for the inspection tutorial."
 date: "2025-01-30"
+aliases:
+- gazebo-setup
 ---
 
 This guide walks you through setting up the Gazebo simulation used in the [Your First Project](../) tutorial.
