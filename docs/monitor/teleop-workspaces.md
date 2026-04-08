@@ -7,6 +7,7 @@ type: "docs"
 description: "Build custom operator interfaces with camera feeds, sensor readouts, and component controls."
 aliases:
   - /manage/troubleshoot/teleoperate/custom-interface/
+  - /monitor/custom-interface/
 ---
 
 Teleop workspaces let you build custom operator interfaces for specific tasks. Instead of seeing every resource on the CONTROL tab, you choose which widgets to display and arrange them into a focused view.
@@ -28,7 +29,7 @@ See [configure a machine](/operate/modules/configure-modules/) for more informat
 1. Navigate to the **FLEET** page and click the [**TELEOP** tab](https://app.viam.com/teleop).
 1. Click **+ Create workspace**.
 1. Enter a name for your workspace, replacing the placeholder text.
-1. Select a **location** and **machine** from the dropdowns.
+1. Click **Select machine** and choose the machine you want to monitor and control.
 
 ## Add widgets
 
