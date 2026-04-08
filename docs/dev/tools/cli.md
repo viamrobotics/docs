@@ -1712,10 +1712,27 @@ viam train list --org-id=123 --job-status=completed
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | `submit custom from-registry`, `submit custom with-upload` | Optional |
 
+### `update`
+
+The `update` command updates the CLI to the latest version.
+If the CLI was installed with Homebrew, it updates through Homebrew.
+Otherwise, it downloads and replaces the binary directly.
+
+```sh {class="command-line" data-prompt="$"}
+viam update
+```
+
+#### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--no-progress` | Hide progress output during the update. Default: `false`. | Optional |
+
 ### `version`
 
 The `version` command returns the version of the Viam CLI.
-To update to the latest version of the CLI, run the [installation steps](#install) again to download and install the latest version.
+To update to the latest version of the CLI, run [`viam update`](#update).
 
 ```sh {class="command-line" data-prompt="$"}
 viam version
