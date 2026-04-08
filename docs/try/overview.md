@@ -11,7 +11,7 @@ aliases:
   - /try/first-project/
 ---
 
-**Time:** ~45 minutes
+**Time:** ~55 minutes
 
 ## Scenario
 
