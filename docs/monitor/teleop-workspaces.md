@@ -7,6 +7,7 @@ type: "docs"
 description: "Build custom operator interfaces with camera feeds, sensor readouts, and component controls."
 aliases:
   - /manage/troubleshoot/teleoperate/custom-interface/
+  - /monitor/custom-interface/
 ---
 
 Teleop workspaces let you build custom operator interfaces for specific tasks. Instead of seeing every resource on the CONTROL tab, you choose which widgets to display and arrange them into a focused view.
