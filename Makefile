@@ -70,7 +70,7 @@ serve-dev-future: setup
 	hugo server -F $(DEV_OPTIONS) $(SERVE_OPTIONS)
 
 prettierfix: setup
-	./node_modules/prettier/bin/prettier.cjs --check docs/**/*.md --fix --write
+	./node_modules/prettier/bin/prettier.cjs --check 'docs/**/*.md' --fix --write
 
 test-code-snippets: test-python-snippets test-go-snippets test-typescript-snippets
 
