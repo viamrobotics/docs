@@ -17,7 +17,7 @@ date: "2025-01-30"
 ## Prerequisites
 
 Before starting this tutorial, you need the can inspection simulation running.
-Follow the **[Gazebo Simulation Setup Guide](../gazebo-setup/)** to:
+Follow the **[Simulation Setup Guide](../sim-setup/)** to:
 
 1. Boot a simulation environment on Viam's cloud
 2. Create a machine in Viam and get credentials
