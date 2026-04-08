@@ -105,8 +105,8 @@
   <text x="338" y="294" text-anchor="middle" class="box-label" fill="#252525">Built-in</text>
   <text x="338" y="308" text-anchor="middle" class="box-label" fill="#252525">Services</text>
   <line x1="287" y1="316" x2="389" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="338" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
-  <text x="338" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
+  <text x="338" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
+  <text x="338" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
   <text x="338" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">computer vision</text>
   <text x="338" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">shipped with viam-server</text>
 
