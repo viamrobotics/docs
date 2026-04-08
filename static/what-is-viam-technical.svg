@@ -36,25 +36,25 @@
   <text x="147" y="24" class="layer-label" fill="#252525">app.viam.com</text>
 
   <!-- Cloud boxes -->
-  <rect x="142" y="34" width="125" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="204" y="54" text-anchor="middle" class="box-label" fill="#252525">Fleet Management</text>
-  <text x="204" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">config · deploys</text>
-  <text x="204" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">monitoring</text>
+  <rect x="142" y="34" width="105" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="194.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Registry</text>
+  <text x="194.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">modules · models</text>
+  <text x="194.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">training scripts</text>
 
-  <rect x="275" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="317" y="54" text-anchor="middle" class="box-label" fill="#252525">Data</text>
-  <text x="317" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">storage · query</text>
-  <text x="317" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">export</text>
+  <rect x="255" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="297.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Data</text>
+  <text x="297.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">storage · query</text>
+  <text x="297.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">export</text>
 
-  <rect x="368" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="410" y="54" text-anchor="middle" class="box-label" fill="#252525">ML</text>
-  <text x="410" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">datasets · training</text>
-  <text x="410" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">models</text>
+  <rect x="348" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="390.5" y="54" text-anchor="middle" class="box-label" fill="#252525">ML</text>
+  <text x="390.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">datasets · training</text>
+  <text x="390.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">models</text>
 
-  <rect x="461" y="34" width="105" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="513" y="54" text-anchor="middle" class="box-label" fill="#252525">Registry</text>
-  <text x="513" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">modules · models</text>
-  <text x="513" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">training scripts</text>
+  <rect x="441" y="34" width="125" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="503.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Fleet Management</text>
+  <text x="503.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">config · deploys</text>
+  <text x="503.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">monitoring</text>
 
   <rect x="574" y="34" width="102" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
   <text x="625" y="54" text-anchor="middle" class="box-label" fill="#252525">Apps</text>
