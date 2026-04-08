@@ -19,16 +19,16 @@ date: "2025-01-30"
 Before starting this tutorial, you need the can inspection simulation running.
 Follow the **[Gazebo Simulation Setup Guide](../gazebo-setup/)** to:
 
-1. Build the Docker image with Gazebo Harmonic
+1. Boot a simulation environment on Viam's cloud
 2. Create a machine in Viam and get credentials
 3. Start the container with your Viam credentials
 
 Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
-The simulation runs Gazebo Harmonic inside a Docker container.
+The simulation runs Gazebo Harmonic inside a sandbox.
 It simulates a conveyor belt with cans (some dented) passing under an inspection camera.
-viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine.
+viam-server runs inside the sandbox and connects to Viam's cloud, just like it would on a physical machine.
 Everything you configure in the Viam app applies to the simulated hardware.
 {{< /alert >}}
 
@@ -76,7 +76,7 @@ To add the camera component to your machine part:
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID.
 Most components require a few configuration parameters.
 
-1. In the **JSON Configuration** section, add:
+1. In the **JSON Configuration** section, set:
 
    ```json
    {
@@ -164,7 +164,7 @@ Now add a vision service that connects your camera to the ML model service.
 1. Click **+** next to your machine part
 2. Select **Configuration block**
 3. Search for `vision`
-4. Select **mlmodel**
+4. Select **vision/mlmodel**
 5. Click **Add component**
 6. Name it `vision-service`
 7. Click **Add component**
