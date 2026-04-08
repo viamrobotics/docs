@@ -14,7 +14,7 @@ If you run into trouble getting this working, reach out on discord or at **TODO*
 
 ## Step 1: Start a Simulation Environment
 
-Visit https://cans.viam-labs.com/, and follow the prompts to log in. Wait for your instance to start.
+Visit [cans.viam-labs.com](https://cans.viam-labs.com), and follow the prompts to log in. Wait for your instance to start.
 
 ## Step 2: Verify the Simulation
 
