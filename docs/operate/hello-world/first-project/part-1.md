@@ -131,7 +131,7 @@ You'll configure two services:
 1. Click **+** next to your machine part
 2. Select **Configuration block**
 3. Search for `tflite`
-4. Select `tflight_cpu/tflight_cpu`
+4. Select `tflite_cpu/tflite_cpu`
 5. Click **Add component**
 6. Name it `model-service`
 7. Click **Add component**
