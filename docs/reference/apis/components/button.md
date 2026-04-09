@@ -8,4 +8,16 @@ icon: true
 images: ["/icons/components/button.svg"]
 date: "2025-02-20"
 # updated: ""  # When the content was last entirely checked
+aliases:
+  - /dev/reference/apis/components/button/
 ---
+
+The button API allows you to get button presses from your [button components](/operate/reference/components/button/).
+
+The button component supports the following methods:
+
+{{< readfile "/static/include/components/apis/generated/button-table.md" >}}
+
+## API
+
+{{< readfile "/static/include/components/apis/generated/button.md" >}}
