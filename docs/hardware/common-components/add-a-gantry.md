@@ -93,7 +93,7 @@ them:
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - Read the current position.
 - Command a short move and verify the axis travels the correct distance.

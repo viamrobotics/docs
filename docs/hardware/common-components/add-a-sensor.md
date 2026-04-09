@@ -75,7 +75,7 @@ sensor needs.
 
 ### 3. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - The test panel shows the output of `GetReadings`, a table of named values.
 - Verify the readings make sense (for example, room temperature should be roughly

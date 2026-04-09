@@ -69,7 +69,7 @@ Additional models are available as modules in the
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - The test panel shows voltage, current, and power readings.
 - Verify the voltage matches what you expect from your power supply or

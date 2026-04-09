@@ -52,7 +52,7 @@ If you already created a machine to test your configuration, you can **Switch to
 
 Fragments support variable substitution, allowing you to use the same fragment for multiple use cases even if there are small differences in configuration.
 
-When configuring resources, click the **{} JSON** button to switch to advanced view.
+When configuring resources, click the **JSON** button to switch to the JSON editor.
 Instead of a key value, add a variable in the form `"$variable": { "name": "placeholder" } }}`.
 For example:
 
@@ -177,7 +177,7 @@ For example if you changed the default camera configuration in the fragment to b
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-You can click the **{}** button to switch to advanced view and see the changes.
+You can click the **JSON** button to switch to the JSON editor and see the changes.
 
 Click **Save**.
 

@@ -58,7 +58,7 @@ for required attributes.
 
 ### 3. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - Read the current position.
 - Set the switch to different positions and verify it responds correctly.

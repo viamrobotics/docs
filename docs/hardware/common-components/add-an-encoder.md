@@ -101,7 +101,7 @@ the motor shaft. Check your encoder's datasheet. Common values are 12, 48,
 
 ### 5. Save and test
 
-Click **Save**, then expand the **TEST** section for the encoder.
+Click **Save**, then expand the **Test** section for the encoder.
 
 - Manually rotate the motor shaft. The tick count should change.
 - Rotating in one direction should increase the count; the other direction

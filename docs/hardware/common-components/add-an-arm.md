@@ -95,7 +95,7 @@ See [Frame System](/motion-planning/frame-system/) for details on configuring fr
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - Use the joint position controls to move individual joints.
 - Verify each joint moves in the expected direction.

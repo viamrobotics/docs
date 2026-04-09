@@ -176,7 +176,7 @@ Now add a vision service that connects your camera to the ML model service.
 1. Select the `vision-service` service in your machine's configuration
 2. Find the **ML Model** dropdown and select `model-service` (the ML model service you just created)
 3. Find the **Default Camera** dropdown and select `inspection-cam`
-4. Find the **Attributes** section and set **Minimum confidence threshold** to 0.75
+4. In the **Attributes** section, set **Minimum confidence threshold** to 0.75
 5. Click **Save** in the upper right corner
 
 {{<imgproc src="/tutorials/first-project/vision-service-config.png" resize="x1100" declaredimensions=true alt="Vision service configuration panel showing ML Model set to model-service, Default Camera set to inspection-cam, and confidence threshold at 0.75." class="imgzoom shadow">}}

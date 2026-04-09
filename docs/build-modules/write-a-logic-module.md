@@ -559,8 +559,7 @@ func (s *TempAlert) Reconfigure(
 
 **Test with DoCommand:**
 
-On the **CONFIGURE** tab, expand your service's card and find the **DO COMMAND**
-section. Send a command:
+On the **CONFIGURE** tab, expand your service's **Test** section and then expand **DoCommand**. Send a command:
 
 ```json
 { "command": "get_alerts" }

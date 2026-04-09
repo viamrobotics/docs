@@ -76,7 +76,7 @@ motor names for that side:
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - Use the directional controls to drive the base forward, backward, left,
   and right.

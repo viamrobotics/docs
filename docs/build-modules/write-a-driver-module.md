@@ -622,7 +622,7 @@ Configure the module on your machine and verify it works.
 
 **Test using the TEST card:**
 
-1. Find your sensor component and expand the **TEST** section.
+1. Find your sensor component and expand the **Test** section.
 2. Your temperature and humidity values appear automatically under
    **GetReadings**.
 
@@ -977,7 +977,7 @@ Each model needs its own `init()` function calling `resource.RegisterComponent`
 2. Open the generated resource file and implement your config validation and
    `GetReadings` method.
 3. Configure the module on your machine as a local module.
-4. Expand the **TEST** section on your sensor. Verify readings appear
+4. Expand the **Test** section on your sensor. Verify readings appear
    automatically under **GetReadings**.
 5. Enable data capture on the sensor. Wait one minute, then check the **DATA**
    tab to confirm readings are flowing to the cloud.

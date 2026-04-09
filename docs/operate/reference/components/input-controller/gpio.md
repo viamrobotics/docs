@@ -28,8 +28,8 @@ Enter a name or use the suggested name for your input controller and click **Cre
 
 ![An example configuration for a GPIO input controller component](/components/input-controller/gpio-input-controller-ui-config.png)
 
-Click **{}** (Switch to advanced) to edit buttons and axes.
-Copy and paste the following attribute template into your input controller's **Attributes** box.
+Click **JSON** to edit buttons and axes.
+Copy and paste the following attribute template into the JSON editor.
 Then remove and fill in the attributes as applicable to your input controller, according to the table below.
 
 {{< tabs >}}

@@ -116,7 +116,7 @@ To create a new map, follow the instructions below.
    - **Maximum range (meters)**: Set the maximum range of your `rplidar`.
      See [config params](#config_params) for suggested values for RPLidar A1 and A3.
 
-   If you would like to tune additional Cartographer parameters, you can the click **{}** button to switch to the advanced view, then edit the `config_params` from there.
+   If you would like to tune additional Cartographer parameters, click the **JSON** button to switch to the JSON editor, then edit the `config_params` from there.
    See the [`config_params`](#config_params) section for more information on the other parameters.
 
    To save your changes, click the **Save** button in the top right corner of the page.
@@ -125,7 +125,7 @@ To create a new map, follow the instructions below.
 
 3. (Optional) Configure cartographer to use cloudSLAM:
 
-   On the `SLAM` service configuration pane, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudSLAM.
+   On the `SLAM` service configuration pane, click the **JSON** button to switch to the JSON editor and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudSLAM.
 
    In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudSLAM](../cloudslam/) documentation for more information on how to configure the feature on your machine and how to use cloudSLAM.
 

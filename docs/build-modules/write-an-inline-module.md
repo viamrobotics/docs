@@ -434,8 +434,8 @@ added.
 
 #### Send test commands
 
-1. On the **CONFIGURE** tab, expand your generic service's card.
-2. Find the **DO COMMAND** section.
+1. On the **CONFIGURE** tab, expand your generic service's **Test** section.
+2. Expand **DoCommand**.
 3. Enter a command (or an empty map `{}` if your DoCommand does not use the
    payload):
 
