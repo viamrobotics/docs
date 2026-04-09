@@ -36,25 +36,25 @@
   <text x="147" y="24" class="layer-label" fill="#252525">app.viam.com</text>
 
   <!-- Cloud boxes -->
-  <rect x="142" y="34" width="125" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="204" y="54" text-anchor="middle" class="box-label" fill="#252525">Fleet Management</text>
-  <text x="204" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">config · deploys</text>
-  <text x="204" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">monitoring</text>
+  <rect x="142" y="34" width="105" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="194.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Registry</text>
+  <text x="194.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">modules · models</text>
+  <text x="194.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">training scripts</text>
 
-  <rect x="275" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="317" y="54" text-anchor="middle" class="box-label" fill="#252525">Data</text>
-  <text x="317" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">storage · query</text>
-  <text x="317" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">export</text>
+  <rect x="255" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="297.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Data</text>
+  <text x="297.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">storage · query</text>
+  <text x="297.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">export</text>
 
-  <rect x="368" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="410" y="54" text-anchor="middle" class="box-label" fill="#252525">ML</text>
-  <text x="410" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">datasets · training</text>
-  <text x="410" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">models</text>
+  <rect x="348" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="390.5" y="54" text-anchor="middle" class="box-label" fill="#252525">ML</text>
+  <text x="390.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">datasets · training</text>
+  <text x="390.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">models</text>
 
-  <rect x="461" y="34" width="105" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="513" y="54" text-anchor="middle" class="box-label" fill="#252525">Registry</text>
-  <text x="513" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">modules · models</text>
-  <text x="513" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">training scripts</text>
+  <rect x="441" y="34" width="125" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="503.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Fleet Management</text>
+  <text x="503.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">config · deploys</text>
+  <text x="503.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">monitoring</text>
 
   <rect x="574" y="34" width="102" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
   <text x="625" y="54" text-anchor="middle" class="box-label" fill="#252525">Apps</text>
@@ -62,13 +62,13 @@
   <text x="625" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">dashboards</text>
 
   <!-- ==================== ARROWS: Cloud ↔ Machine ==================== -->
-  <line x1="350" y1="112" x2="350" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <polygon points="346,136 350,143 354,136" fill="#252525"/>
-  <text x="362" y="130" class="arrow-label" fill="#252525">config · modules · ML models</text>
+  <line x1="319" y1="112" x2="319" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="315,136 319,143 323,136" fill="#252525"/>
+  <text x="331" y="130" class="arrow-label" fill="#252525">config · modules · ML models</text>
 
-  <line x1="530" y1="143" x2="530" y2="117" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <polygon points="526,119 530,112 534,119" fill="#252525"/>
-  <text x="542" y="130" class="arrow-label" fill="#252525">data · logs · machine status</text>
+  <line x1="499" y1="143" x2="499" y2="117" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="495,119 499,112 503,119" fill="#252525"/>
+  <text x="511" y="130" class="arrow-label" fill="#252525">data · logs · machine status</text>
 
   <!-- ==================== YOUR MACHINE boundary ==================== -->
   <rect x="130" y="145" width="558" height="415" rx="10" fill="none" stroke="#252525" stroke-width="1.5"/>
@@ -105,8 +105,8 @@
   <text x="338" y="294" text-anchor="middle" class="box-label" fill="#252525">Built-in</text>
   <text x="338" y="308" text-anchor="middle" class="box-label" fill="#252525">Services</text>
   <line x1="287" y1="316" x2="389" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="338" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
-  <text x="338" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
+  <text x="338" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
+  <text x="338" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
   <text x="338" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">computer vision</text>
   <text x="338" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">shipped with viam-server</text>
 

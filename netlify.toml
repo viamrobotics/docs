@@ -11,6 +11,16 @@
   to = "/foundation/"
   status = 301
 
+[[redirects]]
+  from = "/fleet/scheduled-jobs/"
+  to = "/fleet/schedule-jobs/"
+  status = 301
+
+[[redirects]]
+  from = "/fleet/update-software/"
+  to = "/fleet/manage-versions/"
+  status = 301
+
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"
 

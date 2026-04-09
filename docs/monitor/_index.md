@@ -1,9 +1,12 @@
 ---
 linkTitle: "Monitor and operate"
-title: "Monitor and Operate"
+title: "Monitor and operate"
 weight: 220
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Monitor machine status, set up alerts, teleoperate machines remotely, and troubleshoot issues."
+manualLink: "/monitor/overview/"
+description: "Monitor machine status, visualize data, set up alerts, teleoperate machines, and troubleshoot problems."
+aliases:
+  - /manage/troubleshoot/
 ---

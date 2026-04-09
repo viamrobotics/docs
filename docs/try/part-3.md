@@ -34,7 +34,7 @@ Check your Go version:
 go version
 ```
 
-You need Go 1.21 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
+You need Go 1.25.1 or later. If Go isn't installed or is outdated, download it from [go.dev/dl](https://go.dev/dl/).
 
 ### Install the Viam CLI
 
@@ -100,7 +100,7 @@ Before creating a module, your organization needs a public namespace. This is a 
 
 1. Click the organization dropdown in the upper right corner of the Viam app next to your initials
 2. Select **Settings**
-3. Find **Public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
+3. Click **Set a public namespace** and enter a unique name (lowercase letters, numbers, hyphens)
 4. Click **Save**
 
 {{<imgproc src="/tutorials/first-project/org-settings-dropdown.png" resize="x1100" declaredimensions=true alt="Organization dropdown menu showing Settings option." class="imgzoom shadow">}}
@@ -205,6 +205,10 @@ func realMain() error {
 ```bash
 go run cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
 ```
+
+{{< alert title="Note" color="note" >}}
+If the build fails with missing package errors, run `go get <missing-package>` for each missing dependency, then re-run the command.
+{{< /alert >}}
 
 You'll see WebRTC diagnostic output as the connection is established. Look for these messages confirming the connection:
 
@@ -367,12 +371,10 @@ Update `NewInspector` in `module.go`:
 func NewInspector(ctx context.Context, deps resource.Dependencies, name resource.Name, cfg *Config, logger logging.Logger) (resource.Resource, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
-    // --- Add this block ---
     detector, err := vision.FromProvider(deps, cfg.VisionService)
     if err != nil {
         return nil, fmt.Errorf("failed to get vision service %q: %w", cfg.VisionService, err)
     }
-    // --- End add ---
 
     s := &inspectionModuleInspector{
         name:       name,
@@ -380,7 +382,7 @@ func NewInspector(ctx context.Context, deps resource.Dependencies, name resource
         cfg:        cfg,
         cancelCtx:  cancelCtx,
         cancelFunc: cancelFunc,
-        detector:   detector,  // Add this field
+        detector:   detector,
     }
     return s, nil
 }
@@ -519,7 +521,7 @@ Fetch dependencies and run:
 
 ```bash
 go mod tidy
-go run ./cmd/cli -host YOUR_MACHINE_ADDRESS
+go run ./cmd/cli/main.go -host YOUR_MACHINE_ADDRESS
 ```
 
 You should see:
