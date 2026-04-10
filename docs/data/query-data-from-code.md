@@ -13,7 +13,20 @@ aliases:
 Pull captured data into your own programs using the Viam data client API. You can run the same SQL and MQL queries available in the app's query editor from Python or Go code.
 
 {{< alert title="Tip: discover your data structure" color="tip" >}}
-Not sure what fields to query? Run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` in the [query editor](/data/query-data/) first. Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/reference/#column-reference) for the full reference.
+Not sure what fields to query? Run this in the [query editor](/data/query-data/) first:
+
+```sql
+SELECT data FROM readings
+WHERE component_name = 'YOUR-COMPONENT'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+LIMIT 1
+```
+
+Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/reference/#column-reference) for the full reference.
+{{< /alert >}}
+
+{{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
+SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Include `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` in any SQL example on this page if you copy it. MQL queries are not affected. Tracked as APP-10891.
 {{< /alert >}}
 
 ## Set up a connection
@@ -38,11 +51,11 @@ ORG_ID = "YOUR-ORGANIZATION-ID"
 
 
 async def main():
-    opts = ViamClient.Options.with_api_key(
+    dial_options = DialOptions.with_api_key(
         api_key=API_KEY,
-        api_key_id=API_KEY_ID
+        api_key_id=API_KEY_ID,
     )
-    client = await ViamClient.create_from_dial_options(opts)
+    client = await ViamClient.create_from_dial_options(dial_options)
     data_client = client.data_client
 
     # ... your queries here ...
@@ -109,6 +122,7 @@ results = await data_client.tabular_data_by_sql(
         "  data.readings.temperature AS temperature "
         "FROM readings "
         "WHERE component_name = 'my-sensor' "
+        "  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP) "
         "ORDER BY time_received DESC "
         "LIMIT 5"
     ),
@@ -128,6 +142,7 @@ results, err := dataClient.TabularDataBySQL(ctx, orgID,
         "data.readings.temperature AS temperature "+
         "FROM readings "+
         "WHERE component_name = 'my-sensor' "+
+        "  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP) "+
         "ORDER BY time_received DESC LIMIT 5")
 if err != nil {
     logger.Fatal(err)

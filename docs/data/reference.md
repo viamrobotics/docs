@@ -78,10 +78,17 @@ The `readings` table does not include `robot_name` or `part_name` columns. These
 The `data` column contains your actual captured values as nested JSON. Its structure depends on what component and method captured the data. To find out what's inside `data` for your specific components, run:
 
 ```sql
-SELECT data FROM readings WHERE component_name = 'my-sensor' LIMIT 1
+SELECT data FROM readings
+WHERE component_name = 'my-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+LIMIT 1
 ```
 
 Then use the field names you see to build more specific queries.
+
+{{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
+SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Include `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` in any SQL example on this page if you copy it. MQL queries are not affected. Tracked as APP-10891.
+{{< /alert >}}
 
 **Common data structures:**
 
@@ -109,6 +116,7 @@ SELECT time_received,
   data.readings.humidity AS humidity
 FROM readings
 WHERE component_name = 'my-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ORDER BY time_received DESC
 LIMIT 10
 ```
@@ -180,8 +188,22 @@ To query: `data.position`
 
 If you're unsure what fields your component produces:
 
-1. Run `SELECT DISTINCT component_name FROM readings` to see what components have captured data.
-2. Pick one and run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1`.
+1. Run the following to see what components have captured data:
+
+   ```sql
+   SELECT DISTINCT component_name FROM readings
+   WHERE time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+   ```
+
+2. Pick one and run the following:
+
+   ```sql
+   SELECT data FROM readings
+   WHERE component_name = 'YOUR-COMPONENT'
+     AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+   LIMIT 1
+   ```
+
 3. Look at the JSON structure in the result. The keys you see are the fields you can query with dot notation.
 4. Build your query using `data.` followed by the path to the field you want (for example, `data.readings.temperature`).
 

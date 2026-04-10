@@ -23,16 +23,20 @@ We will use a fake sensor so this tutorial works without any physical hardware.
 
 ## 1. Add a fake sensor
 
-We need a component that produces data. A fake sensor generates random readings, which is perfect for learning the data pipeline without physical hardware.
+We need a component that produces data. The built-in `sensor/fake` component returns a fixed set of readings every time it is polled, which is enough to exercise the capture, sync, and query pipeline end to end.
 
 1. Go to your machine's page in the Viam app.
 2. Click the **+** button in the left sidebar.
 3. Select **Configuration block**.
-4. Search for **fake** and select the **sensor** type.
+4. Search for **sensor/fake** and select the result.
 5. Name it `test-sensor` and click **Create**.
 6. Click **Save** in the upper right.
 
-Expand the **test** section on the sensor's component card. You should see readings updating. This confirms the sensor is working.
+Expand the **test** section on the sensor's component card. You should see `{"a": 1, "b": 2, "c": 3}` returned from `GetReadings`. This confirms the sensor is working.
+
+{{< alert title="Note" color="note" >}}
+`sensor/fake` always returns the same values. As you capture data in the next steps, every row will have identical `data` but a fresh `time_received` timestamp. That is enough to verify the full pipeline. With a real sensor, the values would change each reading.
+{{< /alert >}}
 
 ## 2. Enable data capture
 
@@ -54,19 +58,20 @@ The data management service captures readings to local disk, then syncs them to 
 
 Wait about 30 seconds, then:
 
-1. Click the **DATA** tab in the top navigation of the Viam app.
-2. You should see tabular data entries appearing from `test-sensor`.
+1. Click the **DATA** tab in the top navigation of the Viam app. The tab opens on the **Images** view by default.
+2. Click the **Sensors** tab.
+3. You should see a machine card for your machine with `test-sensor` listed and its most recent reading displayed.
 
-Each entry shows the sensor name, the capture method (`Readings`), timestamps, and the reading values.
+The Sensors tab shows the latest reading per resource per machine, not a table of historical rows. You will query the historical rows from the query editor in the next step.
 
-If you don't see data yet, wait another 30 seconds. The first sync can take a moment as the service initializes.
+If you don't see your machine or sensor yet, wait another 30 seconds. The first sync can take a moment as the service initializes.
 
 {{< alert title="What just happened?" color="info" >}}
 
 Behind the scenes:
 
 1. `viam-server` called `test-sensor.Readings()` every 5 seconds.
-2. Each reading was written to a capture file in `~/.viam/capture` on your machine.
+2. Each reading was appended to a `.capture` file (length-delimited binary protobuf) in `$HOME/.viam/capture` on your machine. When `viam-server` runs as root through `viam-agent`, that path is `/root/.viam/capture`.
 3. The sync process uploaded those files to Viam's cloud storage.
 4. The local files were deleted after successful sync.
 
@@ -78,25 +83,33 @@ Your data is now stored in MongoDB (tabular data) in the cloud, queryable and ex
 
 Now that data is in the cloud, you can query it.
 
-1. In the **DATA** tab, click **Query**.
+1. On the **Sensors** tab, find your `test-sensor` and click the small search icon next to it to jump to the query editor. (If you don't see the icon, it is in the same row as the sensor name. Its tooltip reads "Query historical data".) You can also click **Query** in the data tab navigation to open the editor manually.
 2. The query editor opens. Paste this SQL query:
 
    ```sql
    SELECT time_received, data
    FROM readings
    WHERE component_name = 'test-sensor'
+     AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
    ORDER BY time_received DESC
    LIMIT 5
    ```
 
+   {{< alert title="Known issue" color="caution" >}}
+   The `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` clause is a workaround for APP-10891: SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Include it on every SQL query on this page.
+   {{< /alert >}}
+
 3. Click **Run query**.
 
-You should see your most recent 5 readings with timestamps and the sensor's data values.
+The results appear as a list of JSON rows by default. Click the **table view** toggle (the small table icon in the results area) to see the rows as columns. You should see 5 rows with `time_received` values a few seconds apart and identical `data` values (`{"a": 1, "b": 2, "c": 3}`, because `sensor/fake` returns constant readings).
 
 To understand the structure, try this:
 
 ```sql
-SELECT data FROM readings WHERE component_name = 'test-sensor' LIMIT 1
+SELECT data FROM readings
+WHERE component_name = 'test-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+LIMIT 1
 ```
 
 Switch to **table view** (the table icon in the results area). You'll see nested fields flattened into column headers like `data.readings.x`. These dot-notation paths are what you use to extract specific values in queries. For the full schema, see the [readings table schema](/data/reference/#column-reference).
@@ -107,6 +120,7 @@ Try one more query:
 SELECT COUNT(*) as total_readings
 FROM readings
 WHERE component_name = 'test-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ```
 
 This tells you how many readings have been captured so far.
@@ -132,11 +146,11 @@ from viam.app.viam_client import ViamClient
 
 
 async def main():
-    opts = ViamClient.Options.with_api_key(
+    dial_options = DialOptions.with_api_key(
         api_key="YOUR-API-KEY",
-        api_key_id="YOUR-API-KEY-ID"
+        api_key_id="YOUR-API-KEY-ID",
     )
-    client = await ViamClient.create_from_dial_options(opts)
+    client = await ViamClient.create_from_dial_options(dial_options)
     data_client = client.data_client
 
     # Query the 5 most recent readings from test-sensor
@@ -146,6 +160,7 @@ async def main():
             "SELECT time_received, data "
             "FROM readings "
             "WHERE component_name = 'test-sensor' "
+            "  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP) "
             "ORDER BY time_received DESC "
             "LIMIT 5"
         ),

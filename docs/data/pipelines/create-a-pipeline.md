@@ -91,6 +91,7 @@ Where `my-pipeline.json` contains:
 
 ```python
 import asyncio
+from viam.rpc.dial import DialOptions
 from viam.app.viam_client import ViamClient
 from viam.gen.app.data.v1.data_pb2 import TabularDataSourceType
 
@@ -100,11 +101,11 @@ ORG_ID = "YOUR-ORGANIZATION-ID"
 
 
 async def main():
-    opts = ViamClient.Options.with_api_key(
+    dial_options = DialOptions.with_api_key(
         api_key=API_KEY,
-        api_key_id=API_KEY_ID
+        api_key_id=API_KEY_ID,
     )
-    client = await ViamClient.create_from_dial_options(opts)
+    client = await ViamClient.create_from_dial_options(dial_options)
     data_client = client.data_client
 
     # Returns the pipeline ID
