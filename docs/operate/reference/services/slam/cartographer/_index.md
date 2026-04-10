@@ -125,7 +125,7 @@ To create a new map, follow the instructions below.
 
 3. (Optional) Configure cartographer to use cloudSLAM:
 
-   On the `SLAM` service configuration pane, click the **JSON** button to switch to the JSON editor and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudSLAM.
+   On the `SLAM` service configuration pane, click the **JSON** button to switch to the JSON editor and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit CPU usage in favor of using cloudSLAM.
 
    In addition, your configured LiDAR camera and movement sensor must have data capture enabled. See the [cloudSLAM](../cloudslam/) documentation for more information on how to configure the feature on your machine and how to use cloudSLAM.
 
