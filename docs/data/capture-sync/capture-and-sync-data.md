@@ -81,14 +81,12 @@ If you want to keep a local copy, copy the data to a new folder and sync that fo
 
 Wait 30 seconds to a minute for data to accumulate and sync, then:
 
-1. In the Viam app, click the **DATA** tab in the top navigation.
-2. You should see captured data appearing. For camera captures, you will see
-   image thumbnails. For sensor data, you will see tabular entries.
+1. In the Viam app, click the **DATA** tab in the top navigation. The tab opens on the **Images** view by default.
+2. For camera captures, you should see image thumbnails appearing. For sensor data, click the **Sensors** tab to see the latest readings from each machine and resource. To see historical rows of tabular data, click the small search icon next to a resource on the Sensors tab to open the query editor.
 3. Use the filters on the left to narrow by:
    - **Machine** -- select your specific machine
    - **Component** -- select the component you configured
    - **Time range** -- pick a recent window
-   - **Data type** -- Images or Tabular
 
 If you see data flowing in, capture and sync are working correctly.
 
@@ -127,8 +125,9 @@ If you see data flowing in, capture and sync are working correctly.
 
 {{< expand "Local disk filling up" >}}
 
-- By default, captured data is stored in `~/.viam/capture` before syncing. If
-  sync is disabled or the machine is offline for an extended period, this
+- By default, captured data is stored in `$HOME/.viam/capture` before syncing
+  (`/root/.viam/capture` when `viam-server` runs as root through `viam-agent`).
+  If sync is disabled or the machine is offline for an extended period, this
   directory can grow large.
 - Re-enable sync or manually clear the capture directory if needed.
 - Check that the **Syncing** toggle is on in the data management service

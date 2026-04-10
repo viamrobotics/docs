@@ -16,6 +16,10 @@ Explore and analyze your captured data using SQL or MQL queries. You can run que
 
 Tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is queryable through SQL and MQL. Binary data (images, point clouds) is stored separately and accessible through the [data client API](/dev/reference/apis/data-client/).
 
+{{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
+SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Add `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` to any SQL example on this page if you copy it. MQL queries are not affected. Tracked as APP-10891.
+{{< /alert >}}
+
 ## Open the query editor
 
 1. Go to [app.viam.com](https://app.viam.com).
@@ -36,6 +40,7 @@ Start with a broad query to see what data you have:
 ```sql
 SELECT time_received, component_name, component_type, data
 FROM readings
+WHERE time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ORDER BY time_received DESC
 LIMIT 10
 ```
@@ -46,7 +51,10 @@ Most of the interesting values are in the `data` column, which contains your act
 To see the structure of your data, run this query for a specific component:
 
 ```sql
-SELECT data FROM readings WHERE component_name = 'my-sensor' LIMIT 1
+SELECT data FROM readings
+WHERE component_name = 'my-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+LIMIT 1
 ```
 
 Switch to **table view** (the table icon in the results area) to see nested fields automatically flattened into dot-notation column headers like `data.readings.temperature`. These dot-notation paths are exactly what you use in your queries to extract specific values.
@@ -59,6 +67,7 @@ To narrow to a specific component:
 SELECT time_received, data
 FROM readings
 WHERE component_name = 'my-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ORDER BY time_received DESC
 LIMIT 10
 ```
@@ -85,6 +94,7 @@ SELECT
   data.readings.humidity AS humidity
 FROM readings
 WHERE component_name = 'my-sensor'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ORDER BY time_received DESC
 LIMIT 20
 ```
@@ -98,6 +108,7 @@ SELECT
 FROM readings
 WHERE component_name = 'my-detector'
   AND component_type = 'rdk:service:vision'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ORDER BY time_received DESC
 LIMIT 10
 ```
@@ -108,6 +119,7 @@ To filter by a specific machine:
 SELECT time_received, component_name, data
 FROM readings
 WHERE robot_id = 'YOUR-MACHINE-ID'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
 ORDER BY time_received DESC
 LIMIT 10
 ```

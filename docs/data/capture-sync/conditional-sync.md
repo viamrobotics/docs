@@ -39,7 +39,7 @@ This example uses the [`sync-at-time:timesyncsensor`](https://app.viam.com/modul
 ### 1. Add the sync sensor
 
 1. On your machine's **CONFIGURE** tab, click **+** next to your machine part and select **Component or service**.
-2. Search for and select the `sync-at-time:timesyncsensor` model.
+2. Search for **sync-at-time** and select the `naomi:sync-at-time:timesyncsensor` component.
 3. Click **Add module**, enter a name (for example, `timesensor`), and click **Create**.
 4. Configure the time window in the sensor's attributes:
 

@@ -98,7 +98,7 @@ The filtered camera wraps an existing camera and only outputs frames that match 
 ### Prerequisites
 
 - A configured camera component on your machine. See [Configure a camera](/reference/components/camera/) if you need to set one up.
-- The data management service configured. See [Capture and sync edge data](/data/) for instructions.
+- The data management service configured. See [Start data capture](/data/capture-sync/capture-and-sync-data/) for instructions.
 
 ### Instructions
 
@@ -219,9 +219,9 @@ helps you avoid filling the disk.
 
 ### How local storage works
 
-- Captured data is written to `~/.viam/capture` by default.
-- Each capture creates a file (JPEG for images, JSON for tabular data).
-- The sync process uploads files and deletes them after successful upload.
+- Captured data is written to the capture directory (default: `$HOME/.viam/capture`). When `viam-server` is installed through `viam-agent` it runs as root, so the path is `/root/.viam/capture`. See [Capture directories](/data/reference/#capture-directories) for the full per-platform breakdown.
+- Each capture is written as a `.capture` file: length-delimited binary protobuf. The first message is metadata describing the capture; the remaining messages hold the captured data. Images and tabular readings use the same container format.
+- The sync process uploads `.capture` files and deletes them after successful upload.
 - If sync is disabled or the network is down, files accumulate locally.
 
 ### Configure storage limits
@@ -231,16 +231,16 @@ your data management service configuration, set the `maximum_capture_file_size_b
 attribute to limit the size of individual capture files, and monitor the overall
 capture directory size.
 
-To check current disk usage of the capture directory:
+To check current disk usage of the capture directory (substitute `/root/.viam/capture` if `viam-server` runs as root through `viam-agent`):
 
 ```bash
-du -sh ~/.viam/capture
+du -sh "$HOME/.viam/capture"
 ```
 
 To monitor it over time:
 
 ```bash
-watch -n 60 du -sh ~/.viam/capture
+watch -n 60 du -sh "$HOME/.viam/capture"
 ```
 
 ### Best practices for constrained machines
@@ -314,7 +314,7 @@ watch -n 60 du -sh ~/.viam/capture
   management service configuration.
 - Check the sync interval. A very long sync interval combined with high capture
   frequency can cause the local buffer to grow between sync cycles.
-- Run `du -sh ~/.viam/capture` to check current usage.
+- Run `du -sh "$HOME/.viam/capture"` to check current usage (or `/root/.viam/capture` when `viam-server` runs as root).
 
 {{< /expand >}}
 
