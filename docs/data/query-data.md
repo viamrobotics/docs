@@ -17,7 +17,7 @@ Explore and analyze your captured data using SQL or MQL queries. You can run que
 Tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is queryable through SQL and MQL. Binary data (images, point clouds) is stored separately and accessible through the [data client API](/dev/reference/apis/data-client/).
 
 {{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
-SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Every SQL example and troubleshooting step on this page (including short inline examples) includes `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` for this reason. When troubleshooting, do not remove the lower-bound filter entirely: widen it by using this broad lower bound. MQL queries are not affected. Tracked as APP-10891.
+SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Every SQL example and troubleshooting step on this page (including short inline examples) includes an explicit lower bound on `time_received` for this reason. When troubleshooting, do not remove the lower-bound filter entirely: widen it by using a broad lower bound such as `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)`. MQL queries are not affected. Tracked as APP-10891.
 {{< /alert >}}
 
 ## Open the query editor

@@ -70,7 +70,7 @@ If you don't see your machine or sensor yet, wait another 30 seconds. The first 
 
 Behind the scenes:
 
-1. `viam-server` called `test-sensor.Readings()` every 5 seconds.
+1. `viam-server` called `test-sensor.GetReadings()` every 5 seconds.
 2. Each reading was appended to a `.capture` file (length-delimited binary protobuf) in `$HOME/.viam/capture` on your machine. When `viam-server` runs as root through `viam-agent`, that path is `/root/.viam/capture`.
 3. The sync process uploaded those files to Viam's cloud storage.
 4. The local files were deleted after successful sync.
