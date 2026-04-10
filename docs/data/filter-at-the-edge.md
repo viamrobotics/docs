@@ -179,7 +179,7 @@ You can configure more than one `vision_services` entry to trigger on multiple c
 {{% tablestep %}}
 **Configure data capture on the filtered camera**
 
-Configure data capture on the **filtered camera**, not on the raw camera, following the same process as [Start data capture](/data/capture-sync/capture-and-sync-data/). Use the `ReadImage` capture method and choose a capture frequency.
+Configure data capture on the **filtered camera**, not on the raw camera, following the same process as [Start data capture](/data/capture-sync/capture-and-sync-data/). Use the `GetImages` capture method and choose a capture frequency.
 
 If the raw camera already has data capture configured, remove it. Otherwise you will capture both the unfiltered stream and the filtered stream.
 
