@@ -214,6 +214,7 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 3. Change the specified `viam-server` version.
 4. Save your configuration.
 
+<a id="advanced_settings"></a>
 ## `advanced_settings` {#advanced-settings}
 
 <!-- prettier-ignore -->
