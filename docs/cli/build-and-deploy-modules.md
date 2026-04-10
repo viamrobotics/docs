@@ -197,7 +197,7 @@ Most users should use `viam module generate` instead, which handles both creatio
 
 ## Convert xacro files to URDF
 
-If your module works with a robot described in [xacro](http://wiki.ros.org/xacro) format (the ROS XML macro language), convert it to URDF with the CLI.
+If your module works with a robot described in [xacro](https://wiki.ros.org/xacro) format (the ROS XML macro language), convert it to URDF with the CLI.
 The conversion runs in a Docker container with the specified ROS distribution.
 
 ```sh {class="command-line" data-prompt="$"}
