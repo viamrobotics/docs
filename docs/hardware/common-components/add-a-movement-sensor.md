@@ -106,7 +106,7 @@ you build a complete spatial picture from multiple hardware sources.
 
 ### Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - The test panel shows all available data: position, velocity, orientation,
   and heading.

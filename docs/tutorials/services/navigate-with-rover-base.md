@@ -105,7 +105,7 @@ We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jets
 
 2. Configure [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) on your board to signal precise GPIO state changes to the [encoders](/operate/reference/components/encoder/) on your rover base.
    Find your board on the **CONFIGURE** tab in **Builder** mode.
-   Click the **{}** (Switch to advanced) button on the right side of your board's card to switch to JSON attributes editing mode.
+   Click the **JSON** button on the right side of your board's card to switch to JSON attributes editing mode.
    Copy and paste the following JSON into your board's attributes field to add [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) on pins `31`, `29`, `23`, and `21`:
 
 ```json {class="line-numbers linkable-line-numbers"}

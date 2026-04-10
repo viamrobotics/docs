@@ -175,7 +175,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 
 5. Configure Cartographer to use cloudslam.
 
-   In your `cartographer` config card, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+   In your `cartographer` config card, click the **JSON** button to switch to the JSON editor and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit CPU usage in favor of using cloudslam.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}

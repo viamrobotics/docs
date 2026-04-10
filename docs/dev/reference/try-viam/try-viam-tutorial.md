@@ -168,9 +168,9 @@ Both [motors](/operate/reference/components/motor/) on this rover use the model 
 
 The attributes section lists the board the motor is wired to, and since the rover's motors are encoded the user interface also shows the encoded motor attributes: the encoder name, motor ramp rate limit, encoder ticks per rotation, and max RPM limit.
 
-You can click **{}** (Switch to Advanced) on the top right of the component's card to view the attributes field in raw JSON format.
+You can click **JSON** on the top right of the component's card to view the attributes field in raw JSON format.
 The attributes pane contains the current JSON configuration for this component.
-Click **Switch to Builder** to return to the default graphical user interface.
+Click **Builder** to return to the default graphical user interface.
 
 ### Base configuration
 

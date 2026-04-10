@@ -96,7 +96,7 @@ If you have an encoder attached, also set:
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section for the motor.
+Click **Save**, then expand the **Test** section for the motor.
 
 - Use the power slider to spin the motor at different speeds.
 - Toggle direction to verify forward and backward.

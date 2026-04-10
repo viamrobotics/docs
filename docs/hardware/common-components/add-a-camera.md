@@ -89,7 +89,7 @@ Every component in Viam has a built-in **test panel** in the Configure tab.
 The test panel uses the exact same APIs your code will use, so if the camera works here, it will work in your programs.
 
 1. Find your camera component in the configuration view.
-2. Expand the **TEST** section at the bottom of the component panel.
+2. Expand the **Test** section at the bottom of the component panel.
 3. Click **Toggle stream** to see a live video feed from the camera.
 4. Click **Get image** to capture a single frame.
 

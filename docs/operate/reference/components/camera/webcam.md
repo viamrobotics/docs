@@ -115,9 +115,7 @@ To add and use the service:
    {{<imgproc src="/components/camera/webcam-discovery-test.png" alt="The test panel for the find-webcams service." resize="1100x" style="max-width:600px" class="shadow imgzoom" >}}
 
 1. Click the **Copy attributes** button for the camera you want to use.
-1. Click the **{}** icon in the upper right corner of the camera component configuration.
-
-   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button." style="width:200px" class="shadow" >}}
+1. Click the **JSON** button in the upper right corner of the camera component configuration.
 
 1. Paste the copied attributes.
 1. Click **Save**.

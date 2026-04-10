@@ -80,7 +80,7 @@ After adding the camera component, you will see two items appear under your mach
 
 To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
 
-1. In the **ATTRIBUTES** section, add:
+1. In the **Attributes** section, add:
 
    ```json
    {
@@ -101,8 +101,8 @@ Verify the camera is working. Every component in Viam has a built-in test card r
 ### Open the test panel
 
 1. You should still be on the **CONFIGURE** tab with your `inspection-cam` selected
-2. Look for the **TEST** section at the bottom of the camera's configuration panel
-3. Click **TEST** to expand the camera's test card
+2. Look for the **Test** section at the bottom of the camera's configuration panel
+3. Click **Test** to expand the camera's test card
 
 The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 
@@ -168,8 +168,8 @@ This fragment works with any camera. If you were using a USB webcam instead of t
 
 ### Test the vision service
 
-1. Find the **TEST** section at the bottom of the `vision-service` configuration panel
-2. Expand the **TEST** card
+1. Find the **Test** section at the bottom of the `vision-service` configuration panel
+2. Expand the **Test** card
 3. If not already selected, select `inspection-cam` as the camera source
 4. Set **Detections/Classifications** to `Live`
 5. Check that detection and labeling are working

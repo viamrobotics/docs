@@ -70,7 +70,7 @@ define the gripper's position relative to the arm:
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - Click **Open** to open the gripper.
 - Click **Grab** to close the gripper and check if it grabbed something.

@@ -892,7 +892,7 @@ If you have a different item you want to use, or want to match to a color that m
 1. Enter a name or use the suggested name for your color detector.
    This tutorial uses the name 'my_color_detector' in all example code.
 1. click **Create**.
-1. In the vision service's **Attributes** section, click the color selection box to set the color to be detected.
+1. In the vision service's **Attributes** section, click the color selection box to set the color to detect.
    For this tutorial, set the color to `#43A1D0` or `rgb(67, 161, 208)`.
    Alternatively, you can provide the color of your pet, or use a different brightly-colored collar or ribbon.
 1. Set **Hue Tolerance** to `0.06` and **Segment size px** to `100`.

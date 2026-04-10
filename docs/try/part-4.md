@@ -238,8 +238,8 @@ Click **Save**.
 **Test the inspector:**
 
 1. In the **CONFIGURE** tab, click on `inspector-service` to open its configuration panel
-2. Expand **TEST** card at the bottom
-3. In the **DO COMMAND** section, enter `{"detect": true}`
+2. Expand the **Test** section at the bottom
+3. Expand **DoCommand** and enter `{"detect": true}`
 4. Click **Execute**
 5. You should see a response with `label` and `confidence` values
 6. Click **Execute** several more times to see different detections as cans pass beneath the inspection-cam

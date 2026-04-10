@@ -96,7 +96,7 @@ and works with browser-compatible game controllers or on-screen controls.
 
 ### Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - The test panel shows all available controls (buttons, axes).
 - Press buttons or move joystick axes. Events should appear in real time.

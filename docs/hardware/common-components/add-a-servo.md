@@ -66,7 +66,7 @@ the pulse width:
 
 ### 4. Save and test
 
-Click **Save**, then expand the **TEST** section.
+Click **Save**, then expand the **Test** section.
 
 - Use the angle slider to move the servo to different positions.
 - The servo should move smoothly and hold its position.

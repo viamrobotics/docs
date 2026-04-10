@@ -85,7 +85,7 @@ immediately. No restart needed.
 ### 5. Test the board
 
 1. Find your board in the configuration view.
-2. Expand the **TEST** section.
+2. Expand the **Test** section.
 3. Try setting a GPIO pin high or low, or read an analog value.
 
 If you have an LED wired to a GPIO pin, setting the pin high should light

@@ -58,7 +58,7 @@ Select the ML model service your model is deployed on from the **ML Model** drop
 Add a default camera for the vision service to use.
 
 Edit other attributes as applicable according to the table below.
-You can edit optional attributes in raw JSON by clicking **{}** (Switch to advanced) on the right side of your service panel.
+You can edit optional attributes in raw JSON by clicking **JSON** on the right side of your service panel.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

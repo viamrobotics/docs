@@ -34,7 +34,7 @@ Enter a name or use the suggested name for your board and click **Create**.
 
 ![An example configuration for a <board-model> board.](/components/board/pi-ui-config.png)
 
-Click the **{}** (Switch to Advanced) button in the top right of the component panel to edit your board's attributes with JSON, according to the following table.
+Click the **JSON** button in the top right of the component panel to edit your board's attributes with JSON, according to the following table.
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
