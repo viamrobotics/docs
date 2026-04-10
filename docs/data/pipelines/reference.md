@@ -12,14 +12,16 @@ Configuration fields, execution behavior, and limits for data pipelines. For an 
 
 ## Pipeline configuration fields
 
-| Field              | Type   | Required | Description                                                                                                                     |
-| ------------------ | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `name`             | string | Yes      | Pipeline name. Must be unique within the organization.                                                                          |
-| `organization_id`  | string | Yes      | Organization UUID.                                                                                                              |
-| `schedule`         | string | Yes      | Cron expression in UTC. Determines both when the pipeline runs and the query time window. See [Cron schedule](#cron-schedule).  |
-| `mql_binary`       | array  | Yes      | MQL aggregation pipeline as an array of stage objects. See [Supported MQL operators](/data/reference/#supported-mql-operators). |
-| `enable_backfill`  | bool   | Yes      | Whether to process historical time windows. See [Backfill behavior](#backfill-behavior).                                        |
-| `data_source_type` | enum   | No       | Data source to query. Default: `standard`. See [Data source types](#data-source-types).                                         |
+These are the underlying fields on the pipeline resource. The CLI flags and SDK parameters you use to create a pipeline each set one of these fields.
+
+| Field              | Type   | Required | CLI flag                | Description                                                                                                                     |
+| ------------------ | ------ | -------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `name`             | string | Yes      | `--name`                | Pipeline name. Must be unique within the organization.                                                                          |
+| `organization_id`  | string | Yes      | `--org-id`              | Organization UUID.                                                                                                              |
+| `schedule`         | string | Yes      | `--schedule`            | Cron expression in UTC. Determines both when the pipeline runs and the query time window. See [Cron schedule](#cron-schedule).  |
+| `mql_binary`       | array  | Yes      | `--mql` or `--mql-path` | MQL aggregation pipeline as an array of stage objects. See [Supported MQL operators](/data/reference/#supported-mql-operators). |
+| `enable_backfill`  | bool   | Yes      | `--enable-backfill`     | Whether to process historical time windows. See [Backfill behavior](#backfill-behavior).                                        |
+| `data_source_type` | enum   | No       | `--data-source-type`    | Data source to query. Default: `standard`. See [Data source types](#data-source-types).                                         |
 
 ## Cron schedule
 
@@ -40,21 +42,35 @@ Choose a schedule that matches how frequently you need updated summaries. Shorte
 
 ## Data source types
 
-| Type          | CLI flag     | Python SDK                                                     | Go SDK                                  | Description                                                                         |
-| ------------- | ------------ | -------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------------------------------------------- |
-| Standard      | `standard`   | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD`      | `app.TabularDataSourceTypeStandard`     | Queries the raw `readings` collection. Contains all historical tabular data.        |
-| Hot storage   | `hotstorage` | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`   | `app.TabularDataSourceTypeHotStorage`   | Queries the [hot data store](/data/hot-data-store/). Rolling window of recent data. |
-| Pipeline sink | (query only) | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | `app.TabularDataSourceTypePipelineSink` | Queries the output of another pipeline. Requires a `pipeline_id`.                   |
+Pipelines support three data source types. You use them in two contexts: when creating a pipeline (the pipeline reads from this source) and when querying pipeline results (the query targets this source). Not every type is valid in both contexts.
+
+| Type          | CLI `--data-source-type` value | Description                                                                                       |
+| ------------- | ------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Standard      | `standard`                     | The raw `readings` collection containing all historical tabular data. Default for new pipelines.  |
+| Hot storage   | `hotstorage`                   | The [hot data store](/data/hot-data-store/). A rolling window of recent data, with lower latency. |
+| Pipeline sink | not valid on create            | The output of another pipeline. Used when querying results, not when creating a pipeline.         |
+
+The SDK constants for each type:
+
+| Type          | Python SDK                                                     | Go SDK                                  |
+| ------------- | -------------------------------------------------------------- | --------------------------------------- |
+| Standard      | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_STANDARD`      | `app.TabularDataSourceTypeStandard`     |
+| Hot storage   | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`   | `app.TabularDataSourceTypeHotStorage`   |
+| Pipeline sink | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | `app.TabularDataSourceTypePipelineSink` |
+
+To query the output of another pipeline, use `pipeline_sink` in your query call alongside the source pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
 
 ## Run statuses
 
-| Status        | Value | Description                                                           |
-| ------------- | ----- | --------------------------------------------------------------------- |
-| `UNSPECIFIED` | 0     | Unknown or not set.                                                   |
-| `SCHEDULED`   | 1     | Run is queued. Execution begins after a 2-minute delay.               |
-| `STARTED`     | 2     | MQL query is executing against the data source.                       |
-| `COMPLETED`   | 3     | Run finished successfully. Results are in the pipeline sink.          |
-| `FAILED`      | 4     | Run encountered an error. Check the `error_message` field on the run. |
+| Status        | Value | CLI label   | Description                                                           |
+| ------------- | ----- | ----------- | --------------------------------------------------------------------- |
+| `UNSPECIFIED` | 0     | `Unknown`   | Unknown or not set.                                                   |
+| `SCHEDULED`   | 1     | `Scheduled` | Run is queued. Execution begins after a 2-minute delay.               |
+| `STARTED`     | 2     | `Running`   | MQL query is executing against the data source.                       |
+| `COMPLETED`   | 3     | `Success`   | Run finished successfully. Results are in the pipeline sink.          |
+| `FAILED`      | 4     | `Failed`    | Run encountered an error. Check the `error_message` field on the run. |
+
+SDK methods return the enum `Status` values. The `viam datapipelines describe` CLI command prints the friendly "CLI label" form.
 
 If a run stays in `STARTED` for more than 10 minutes, it is automatically marked as `FAILED` and a new run is created for that time window.
 
@@ -113,7 +129,9 @@ The `_viam_pipeline_run` field is added automatically. Your pipeline's `$project
 
 To query the sink, use data source type `pipeline_sink` with the pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
 
-Deleting a pipeline deletes the sink collection and all its data. Export results before deleting if you need to preserve them.
+{{< alert title="Deleting a pipeline is irreversible" color="caution" >}}
+Deleting a pipeline removes its sink collection and every result stored in it. Export the results first if you need to preserve them. See [Delete a pipeline](/data/pipelines/manage-pipelines/#delete-a-pipeline).
+{{< /alert >}}
 
 ## Execution limits
 

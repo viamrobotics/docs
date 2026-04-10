@@ -8,9 +8,21 @@ description: "Query the output of a data pipeline from Python, Go, or TypeScript
 date: "2026-03-27"
 ---
 
-Query the precomputed summaries that a pipeline produces. Pipeline results are stored in a dedicated sink collection, separate from your raw data. You query them by specifying the `pipeline_sink` data source type and the pipeline's ID.
+Once you have [created a pipeline](/data/pipelines/create-a-pipeline/), its results land in a dedicated sink collection that is separate from your raw data. This page covers how to query that sink.
 
-You need the pipeline ID, which is returned when you create the pipeline and visible in `viam datapipelines list` or `viam datapipelines describe`.
+You query pipeline results the same way you query raw readings, except you specify the `pipeline_sink` data source type and the **pipeline ID** of the pipeline whose results you want. The pipeline ID is returned on creation. If you did not save it, retrieve it with:
+
+```bash
+viam datapipelines list --org-id=<org-id>
+```
+
+To see a specific pipeline and its last run:
+
+```bash
+viam datapipelines describe --id=<pipeline-id>
+```
+
+Both commands are also documented in [Manage pipelines](/data/pipelines/manage-pipelines/).
 
 ## Query with the SDK
 
