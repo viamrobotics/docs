@@ -620,7 +620,7 @@ Configure the module on your machine and verify it works.
 
 7. Click **Save**.
 
-**Test using the TEST card:**
+**Test using the Test section:**
 
 1. Find your sensor component and expand the **Test** section.
 2. Your temperature and humidity values appear automatically under
