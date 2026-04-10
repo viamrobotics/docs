@@ -1,5 +1,5 @@
 ---
-linkTitle: "Reference"
+linkTitle: "Data reference"
 title: "Data management reference"
 weight: 999
 layout: "docs"

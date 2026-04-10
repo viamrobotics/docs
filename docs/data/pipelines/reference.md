@@ -1,5 +1,5 @@
 ---
-linkTitle: "Reference"
+linkTitle: "Pipeline reference"
 title: "Data pipelines reference"
 weight: 30
 layout: "docs"
