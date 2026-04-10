@@ -135,7 +135,7 @@ All commands require the `--part` flag to identify the machine part.
 Prints the frame system configuration for all parts.
 
 ```sh
-viam machines motion print-config --part "my-machine-main"
+viam machines part motion print-config --part "my-machine-main"
 ```
 
 ### print-status
@@ -143,7 +143,7 @@ viam machines motion print-config --part "my-machine-main"
 Prints the current pose of every component relative to the world frame.
 
 ```sh
-viam machines motion print-status --part "my-machine-main"
+viam machines part motion print-status --part "my-machine-main"
 ```
 
 Output shows X, Y, Z position (mm) and orientation (OX, OY, OZ, Theta in

@@ -86,7 +86,7 @@ forearm, set the camera's parent to `my-arm:forearm_link`.
 The motion service plans around components attached to intermediate links the
 same way it plans for components attached to the arm's end effector. To find
 the link names for an arm, inspect its kinematic model file or run
-`viam machines motion print-config` and look for frames under the arm's name.
+`viam machines part motion print-config` and look for frames under the arm's name.
 
 ### Translation
 
@@ -145,10 +145,10 @@ You can inspect your frame system from the command line without writing code:
 
 ```sh
 # Print the frame system configuration
-viam machines motion print-config --part "my-machine-main"
+viam machines part motion print-config --part "my-machine-main"
 
 # Print the current pose of every component relative to world
-viam machines motion print-status --part "my-machine-main"
+viam machines part motion print-status --part "my-machine-main"
 ```
 
 If a component's pose looks wrong, check the translation and orientation values
