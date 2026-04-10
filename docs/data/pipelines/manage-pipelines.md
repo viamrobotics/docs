@@ -19,11 +19,11 @@ Monitor and manage your data pipelines after creation. For creating pipelines, s
 viam datapipelines list --org-id=<org-id>
 ```
 
-Example output (one line per pipeline, indented by a leading tab in the actual output):
+Example output (one line per pipeline):
 
 ```text
-    hourly-temp-avg (ID: 64f3a1b2c4d5e6f7a8b9c0d1) [Enabled] [Data Source Type: Standard]
-    daily-summary (ID: 64f3a1b2c4d5e6f7a8b9c0d2) [Disabled] [Data Source Type: Hot Storage]
+hourly-temp-avg (ID: 64f3a1b2c4d5e6f7a8b9c0d1) [Enabled] [Data Source Type: Standard]
+daily-summary (ID: 64f3a1b2c4d5e6f7a8b9c0d2) [Disabled] [Data Source Type: Hot Storage]
 ```
 
 If the command prints nothing, the organization has no pipelines. This is not an error.
