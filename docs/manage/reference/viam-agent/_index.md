@@ -176,6 +176,7 @@ Your machine credentials file must be at <file>\etc\viam.json</file>.
 {{< /tabs >}}
 
 <a id="version_control-version-management-for-viam-agent-and-viam-server"></a>
+
 ## `version_control`: Version management for `viam-agent` and `viam-server` {#version-control}
 
 By default, when a new version of `viam-server` becomes available, it will automatically download.
@@ -215,6 +216,7 @@ To update the version of `viam-server` (or the RDK) update the machine settings.
 4. Save your configuration.
 
 <a id="advanced_settings"></a>
+
 ## `advanced_settings` {#advanced-settings}
 
 <!-- prettier-ignore -->
