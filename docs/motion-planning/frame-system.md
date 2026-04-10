@@ -64,6 +64,30 @@ world
 └── table-surface
 ```
 
+### Parent to an intermediate arm link
+
+If you mount a component on an intermediate link of an arm rather than on the
+end effector, set the parent to `<arm-name>:<link-name>`. The link name is the
+`id` of a link in the arm's kinematic model. For example, if you have an arm
+named `my-arm` with a UR5e kinematic model and you strap a camera to the
+forearm, set the camera's parent to `my-arm:forearm_link`.
+
+```json
+{
+  "parent": "my-arm:forearm_link",
+  "translation": { "x": 0, "y": 0, "z": 30 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+  }
+}
+```
+
+The motion service plans around components attached to intermediate links the
+same way it plans for components attached to the arm's end effector. To find
+the link names for an arm, inspect its kinematic model file or run
+`viam machines motion print-config` and look for frames under the arm's name.
+
 ### Translation
 
 Translation is the offset in millimeters from the parent frame's origin to the
