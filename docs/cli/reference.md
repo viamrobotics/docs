@@ -1260,7 +1260,8 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 
 ### `parse-ftdc`
 
-The `parse-ftdc` command allows you to parse an FTDC file and open a REPL with extra options to inspect the data.
+The `parse-ftdc` command parses an FTDC (Full-Time Diagnostic Data Capture) file and opens an interactive REPL for inspecting performance metrics collected by `viam-server`.
+This is a diagnostic tool. Viam support may ask you to run it when troubleshooting performance issues.
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part get-ftdc --part=<part-id> ftdc-data

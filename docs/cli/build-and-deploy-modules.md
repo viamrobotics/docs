@@ -195,6 +195,47 @@ viam module create --name=my-new-module
 
 Most users should use `viam module generate` instead, which handles both creation and scaffolding.
 
+## Convert xacro files to URDF
+
+If your module works with a robot described in [xacro](https://wiki.ros.org/xacro) format (the ROS XML macro language), convert it to URDF with the CLI.
+The conversion runs in a Docker container with the specified ROS distribution.
+
+```sh {class="command-line" data-prompt="$"}
+viam xacro convert \
+  --input-file=./robot.xacro \
+  --output-file=./robot.urdf
+```
+
+If the xacro file uses `<xacro:arg>` tags, pass the required arguments:
+
+```sh {class="command-line" data-prompt="$"}
+viam xacro convert \
+  --input-file=./robot.xacro \
+  --output-file=./robot.urdf \
+  --args name:=ur20
+```
+
+To collapse fixed joint chains (useful when the URDF must have a single end-effector):
+
+```sh {class="command-line" data-prompt="$"}
+viam xacro convert \
+  --input-file=./robot.xacro \
+  --output-file=./robot.urdf \
+  --collapse-fixed-joints
+```
+
+By default, the conversion uses the `osrf/ros:humble-desktop` Docker image.
+To use a different ROS distribution or a custom image:
+
+```sh {class="command-line" data-prompt="$"}
+viam xacro convert \
+  --input-file=./robot.xacro \
+  --output-file=./robot.urdf \
+  --docker-image=osrf/ros:jazzy-desktop
+```
+
+Use `--dry-run` to print the Docker command without running it.
+
 ## Related pages
 
 - [Write a driver module](/build-modules/write-a-driver-module/) for a complete guide to writing a hardware driver

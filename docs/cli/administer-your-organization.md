@@ -34,6 +34,22 @@ To find machine IDs:
 viam machines list --organization=<org-id> --all
 ```
 
+## Manage locations
+
+List all locations in your organization:
+
+```sh {class="command-line" data-prompt="$"}
+viam locations list
+```
+
+If you belong to multiple organizations, specify which one:
+
+```sh {class="command-line" data-prompt="$"}
+viam locations list --organization=<org-id>
+```
+
+If you have set a default organization with `viam defaults set-org`, the CLI uses it automatically.
+
 ## Manage API keys
 
 ### Organization API key

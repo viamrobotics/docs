@@ -155,21 +155,44 @@ viam machines part run \
 
 ## Deploy software packages
 
-Upload a package to the Viam registry for deployment to machines:
+Upload a package to the Viam registry for deployment to machines.
+The `--type` flag specifies the package type: `archive`, `ml_model`, `module`, `slam_map`, or `ml_training`.
 
 ```sh {class="command-line" data-prompt="$"}
 viam packages upload \
   --path=./my-package.tar.gz \
   --name=my-control-logic \
   --version=1.0.0 \
-  --type=ml_model
+  --type=archive \
+  --org-id=<org-id>
 ```
 
-Export a package:
+For ML model packages, you must also specify the framework and model type:
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages export --type=ml_model
+viam packages upload \
+  --path=./my-model.tar.gz \
+  --name=my-detector \
+  --version=1.0.0 \
+  --type=ml_model \
+  --model-framework=tflite \
+  --model-type=object_detection \
+  --org-id=<org-id>
 ```
+
+Download a package from the registry:
+
+```sh {class="command-line" data-prompt="$"}
+viam packages export \
+  --org-id=<org-id> \
+  --name=my-detector \
+  --version=latest \
+  --type=ml_model \
+  --destination=./downloaded
+```
+
+If you omit `--version`, the CLI downloads the latest version.
+If you omit `--destination`, the package is saved to the current directory.
 
 ## Export diagnostics
 
@@ -184,6 +207,75 @@ Parse an FTDC file locally:
 ```sh {class="command-line" data-prompt="$"}
 viam parse-ftdc --path=./ftdc-data
 ```
+
+## Work with traces
+
+Viam machines collect [OpenTelemetry](https://opentelemetry.io/) traces that record the timing and context of operations.
+Use the `viam traces` commands to retrieve and inspect these traces for debugging performance issues.
+
+### Print traces to the console
+
+Print traces from a remote machine:
+
+```sh {class="command-line" data-prompt="$"}
+viam traces print-remote --part=<part-id>
+```
+
+Print traces from a local file:
+
+```sh {class="command-line" data-prompt="$"}
+viam traces print-local ./traces-file
+```
+
+### Download traces
+
+Download traces from a machine and save them to disk:
+
+```sh {class="command-line" data-prompt="$"}
+viam traces get-remote --part=<part-id>
+```
+
+By default, the file is saved to the current directory.
+Pass a target path to save elsewhere:
+
+```sh {class="command-line" data-prompt="$"}
+viam traces get-remote --part=<part-id> ./my-traces
+```
+
+### Import traces to an OTLP endpoint
+
+If you run a tracing backend like Jaeger or Grafana Tempo, import traces directly from a machine or a local file:
+
+```sh {class="command-line" data-prompt="$"}
+viam traces import-remote --part=<part-id> --endpoint=localhost:4317
+```
+
+```sh {class="command-line" data-prompt="$"}
+viam traces import-local ./traces-file --endpoint=localhost:4317
+```
+
+The `--endpoint` flag defaults to `localhost:4317` if omitted.
+
+{{< alert title="Note" color="note" >}}
+Remote trace commands require the machine to have a shell service configured.
+{{< /alert >}}
+
+## Read metadata
+
+Read metadata attached to an organization, location, machine, or machine part.
+Specify at least one ID:
+
+```sh {class="command-line" data-prompt="$"}
+viam metadata read --machine-id=<machine-id>
+```
+
+You can combine multiple IDs to read metadata at different levels:
+
+```sh {class="command-line" data-prompt="$"}
+viam metadata read --org-id=<org-id> --location-id=<location-id>
+```
+
+Available flags: `--org-id`, `--location-id`, `--machine-id`, `--part-id`.
 
 ## Create API keys for machines
 
