@@ -12,15 +12,15 @@ Everything you can do in the Viam app, and several things you can only do from t
 
 ## When to use the CLI
 
-The Viam app is the fastest way to configure a single machine, browse your data, or train a model interactively.
-The CLI is the better choice when you need to:
+If you prefer working in a terminal, the CLI covers the same operations as the Viam app.
+You can use whichever interface you prefer, or both.
 
-- **Automate repeatable workflows.** Script machine provisioning, module deployment, data export, or model retraining in shell scripts or CI/CD pipelines.
-- **Work in headless environments.** Configure machines, view logs, or shell into a device from a terminal without a browser.
-- **Operate at fleet scale.** List all machines across locations, apply fragments in batch, or export data across an entire organization with a single command.
-- **Build tools and integrations.** AI coding assistants, chatbots, and custom tooling can parse and execute CLI commands directly.
+The CLI is particularly well-suited for tasks that are awkward or impossible in a browser:
 
-The CLI and the Viam app are not exclusive. Most users work in both: the app for visual configuration and testing, the CLI for automation, scripting, and remote access.
+- **Scripting and automation.** Create machines, export data, upload modules, or submit training jobs from shell scripts and CI/CD pipelines.
+- **Headless environments.** Authenticate with an API key, view logs, and shell into a remote machine without a browser.
+- **Bulk operations.** List all machines across an organization, or export binary data filtered by location, machine, or component type.
+- **Operations only available through the CLI.** Scaffold new modules, transfer files to and from machines, tunnel ports, and hot-reload modules during development.
 
 ## What the CLI covers
 
@@ -43,8 +43,6 @@ Some operations are only available through the CLI:
 - **Shell access** (`viam machines part shell`) opens an interactive terminal on a remote machine.
 - **File transfer** (`viam machines part cp`) copies files to and from machines.
 - **Port tunneling** (`viam machines part tunnel`) forwards a local port to a remote machine.
-- **OAuth setup** (`viam organizations auth-service`) configures end-user authentication.
-- **Billing setup** (`viam organizations billing-service`) enables white-label billing.
 - **Module hot-reload** (`viam module reload-local`) reloads a module during development without restarting the machine.
 
 ## Install
@@ -182,7 +180,7 @@ Every command accepts these flags:
 | -------------------- | ------------------------------------------ |
 | `--profile`          | Use a saved authentication profile         |
 | `--config`, `-c`     | Path to a CLI config file                  |
-| `--debug`, `-vvv`    | Enable debug logging                       |
+| `--debug`, `--vvv`   | Enable debug logging                       |
 | `--quiet`, `-q`      | Suppress non-essential output              |
 | `--disable-profiles` | Ignore all saved profiles for this command |
 
