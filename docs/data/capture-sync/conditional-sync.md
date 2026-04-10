@@ -34,12 +34,12 @@ If `selective_syncer_name` is configured but the sensor cannot be found, **sched
 
 ## Configure conditional sync
 
-This example uses the [`sync-at-time:timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) module to sync data only during a configured time window. You can substitute any sensor that returns `should_sync`.
+This example uses the [`sync-at-time/timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) component to sync data only during a configured time window. You can substitute any sensor that returns `should_sync`.
 
 ### 1. Add the sync sensor
 
 1. On your machine's **CONFIGURE** tab, click **+** next to your machine part and select **Component or service**.
-2. Search for **sync-at-time** and select the `naomi:sync-at-time:timesyncsensor` component.
+2. Search for **sync-at-time/timesyncsensor** and select the result.
 3. Click **Add module**, enter a name (for example, `timesensor`), and click **Create**.
 4. Configure the time window in the sensor's attributes:
 
