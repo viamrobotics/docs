@@ -49,8 +49,9 @@ increase it later once you understand your data volume and bandwidth budget.
 {{< /alert >}}
 
 This approach works well when you need periodic snapshots but not continuous
-monitoring. It does not help when you need to capture specific events -- for
-that, continue to the next techniques.
+monitoring. It does not help when you need to capture specific events, like
+"only save images when there is a person in the frame". For event-based
+capture, skip ahead to [Use a filtered camera with ML](#use-a-filtered-camera-with-ml).
 
 ## Configure conditional sync
 
@@ -92,8 +93,21 @@ machine has enough local storage for the capture buffer (see
 
 ## Use a filtered camera with ML
 
-You can use the [`filtered_camera`](https://app.viam.com/module/viam/filtered-camera) registry module to selectively capture only images that contain certain objects or people, using a machine learning (ML) model.
-The filtered camera wraps an existing camera and only outputs frames that match your ML model's criteria, so only interesting frames are ever written to disk.
+The [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) registry module captures only the images you actually care about by running an ML vision model on each frame and gating capture on the result. It wraps an existing camera and a vision service so data capture sees a pre-filtered stream.
+
+### How it works
+
+The filtered camera sits between a raw camera and the data manager:
+
+1. A raw **camera** component (for example, a USB webcam) provides the image stream.
+2. A **vision service** runs an ML classifier or detector against each image and returns classifications or detections with confidence scores.
+3. A **`filtered-camera`** component wraps the camera and the vision service. It continuously pulls frames from the camera into an in-memory ring buffer, asks the vision service to score each frame, and marks a frame as "interesting" when a classification or detection passes a confidence threshold you configure.
+4. **Data capture** is configured on the `filtered-camera` component, not on the raw camera. Because the filtered camera is itself a camera component, the data manager captures from it the same way it would from any other camera. Only frames that passed the filter are ever written to disk.
+5. The normal sync pipeline uploads the captured files to the cloud.
+
+The raw camera's image stream is unchanged: the CONTROL tab, other services, and anything else on the machine still see every frame. Only the filtered camera, and therefore only data capture, sees the filtered subset.
+
+Optionally, you can configure a pre-trigger buffer with `window_seconds_before` and a post-trigger buffer with `window_seconds_after`. When a frame triggers the filter, the module includes the buffered frames from those windows alongside the trigger frame. Use this when you need context leading up to or after an event.
 
 ### Prerequisites
 
@@ -119,7 +133,7 @@ If you're not sure which model to use, you can use [`EfficientDet-COCO`](https:/
 {{% tablestep %}}
 **Add a vision service to use with the ML model**
 
-You can think of the vision service as the bridge between the ML model service and the output from your camera.
+The vision service is the bridge between the ML model service and the camera images. It loads the ML model and exposes classifier or detector methods that the filtered camera calls on each frame.
 
 Add and configure the `vision / ML model` service on your machine.
 From the **Select model** dropdown, select the name of your ML model service (for example, `mlmodel-1`).
@@ -128,13 +142,9 @@ From the **Select model** dropdown, select the name of your ML model service (fo
 {{% tablestep %}}
 **Configure the filtered camera**
 
-The `filtered-camera` {{< glossary_tooltip term_id="modular-resource" text="modular component" >}} pulls the stream of images from your camera component and applies the vision service to it.
+Add a `camera / filtered-camera` component on your machine. Set `camera` to the name of the raw camera you want to filter, and add a `vision_services` entry that references the vision service you just configured, along with the classification labels or detection classes you want to capture.
 
-Configure a `filtered-camera` component on your machine, following the [attribute guide in the module listing](https://app.viam.com/module/viam/filtered-camera).
-Use the name of your camera component as the `"camera"` to pull images from, and select the name of the vision service you just configured as your `"vision"` service.
-Then add all or some of the labels your ML model uses as classifications or detections in `"classifications"` or `"objects"`.
-
-For example, if you are using the `EfficientDet-COCO` model, you could use a configuration like the following to only capture images when a person is detected with more than 80% confidence in your camera stream.
+For example, to capture images only when a person is detected with at least 80% confidence:
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -147,55 +157,56 @@ For example, if you are using the `EfficientDet-COCO` model, you could use a con
       }
     }
   ],
-  "window_seconds": 0
+  "window_seconds_before": 0,
+  "window_seconds_after": 0
 }
 ```
 
-You can also add a buffer window with `window_seconds`, which controls the duration of a buffer of images captured before a successful match.
-If you were to set `window_seconds` to `3`, the camera would also capture and sync images from the 3 seconds before a person appeared in the camera stream.
+Key attributes:
+
+| Attribute               | Required | Description                                                                                                                                                                             |
+| ----------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `camera`                | Yes      | Name of the camera to filter.                                                                                                                                                           |
+| `vision_services`       | Yes      | List of vision services with their trigger criteria. Each entry needs a `vision` (the service name) and one of `classifications` or `objects` (a map of label to confidence threshold). |
+| `window_seconds_before` | Yes      | Seconds of buffered frames to include before a trigger. Set to `0` for no pre-buffer.                                                                                                   |
+| `window_seconds_after`  | Yes      | Seconds of buffered frames to include after a trigger. Set to `0` for no post-buffer.                                                                                                   |
+| `image_frequency`       | No       | Rate in Hz at which the filtered camera pulls frames from the raw camera into its buffer. Default: `1.0`.                                                                               |
+| `cooldown_s`            | No       | Seconds to suppress new triggers after a capture window ends. Useful when events happen in bursts. Default: `0`.                                                                        |
+
+You can configure more than one `vision_services` entry to trigger on multiple conditions. Use `"*"` as a label to match any classification or detection above the confidence threshold. For the full attribute reference, see the [module README on GitHub](https://github.com/viam-modules/filtered_camera#attributes).
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**Configure data capture and sync on the filtered camera**
+**Configure data capture on the filtered camera**
 
-Configure data capture and sync on the filtered camera following the same process as described in [Capture and sync data](/data/capture-sync/capture-and-sync-data/).
-The filtered camera will only capture image data that passes the filters you configured in the previous step.
+Configure data capture on the **filtered camera**, not on the raw camera, following the same process as [Start data capture](/data/capture-sync/capture-and-sync-data/). Use the `ReadImage` capture method and choose a capture frequency.
 
-Turn off data capture on your original camera component if you haven't already, so that you don't capture duplicate or unfiltered images.
-
-{{% /tablestep %}}
-{{% tablestep %}}
-**Save to start capturing**
-
-Save the config.
-With cloud sync enabled, captured data is automatically uploaded to Viam after a short delay.
+If the raw camera already has data capture configured, remove it. Otherwise you will capture both the unfiltered stream and the filtered stream.
 
 {{% /tablestep %}}
 {{% tablestep %}}
-**View filtered data on Viam**
+**Save and verify**
 
-Once you save your configuration, place an object that your ML model can detect within view of your camera.
+Save the config. Place an object your ML model can detect in front of the camera and wait for the next sync interval.
 
-Images that pass your filter will be captured and will sync at the specified sync interval, which may mean you have to wait and then refresh the page for data to appear.
-Your images will begin to appear under the **DATA** tab.
+On the **DATA** tab in the Viam app, click **Images** (the default view). You should see frames appear only when the trigger condition was met. If no frames appear:
 
-If no data appears after the sync interval, check the [**Logs**](/manage/troubleshoot/troubleshoot/#check-logs) and ensure that the condition for filtering is met.
-You can test the vision service from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/) to see its classifications and detections live.
+- **Test the vision service directly.** On the machine's **CONTROL** tab, open the vision service panel and point the camera at a known object. The panel shows live classifications and detections with their confidence scores. If no classifications or detections reach your threshold, the filtered camera has nothing to capture.
+- **Check the logs.** The machine's **LOGS** tab shows the filtered camera's filtering decisions if you set `"debug": true` in its config.
+- **Confirm capture is on the filtered camera.** Data capture must be on the `filtered-camera` component, not the underlying camera.
 
 {{% /tablestep %}}
 {{% tablestep %}}
 **(Optional) Trigger sync with custom logic**
 
-By default, the captured data syncs at the regular interval you specified in the data capture config.
-If you need to trigger sync in a different way, see [Conditional cloud sync](/data/capture-sync/conditional-sync/) for a documented example of syncing data only at certain times of day.
+By default, captured data syncs at the interval you set on the data management service. If you need to sync only at certain times or when other conditions are met, see [Conditional sync](/data/capture-sync/conditional-sync/).
 
 {{% /tablestep %}}
 {{< /table >}}
 
 {{< alert title="Build your own filtering module" color="tip" >}}
 
-If the `filtered_camera` registry module doesn't meet your needs, you can build a custom filtering module.
-See [Create a data filtering module](/tutorials/configure/pet-photographer/) for a full walkthrough, or [Write a module](/build-modules/write-a-driver-module/) for general module development guidance.
+If the `filtered-camera` module does not meet your needs, you can build a custom filtering module. See [Write a module](/build-modules/write-a-driver-module/) for the general module development guide. The next section covers the pattern.
 
 {{< /alert >}}
 
