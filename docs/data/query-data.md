@@ -17,7 +17,7 @@ Explore and analyze your captured data using SQL or MQL queries. You can run que
 Tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is queryable through SQL and MQL. Binary data (images, point clouds) is stored separately and accessible through the [data client API](/dev/reference/apis/data-client/).
 
 {{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
-SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Add `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` to any SQL example on this page if you copy it. MQL queries are not affected. Tracked as APP-10891.
+SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Every SQL example and troubleshooting step on this page (including short inline examples) includes `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` for this reason. When troubleshooting, do not remove the lower-bound filter entirely: widen it by using this broad lower bound. MQL queries are not affected. Tracked as APP-10891.
 {{< /alert >}}
 
 ## Open the query editor
@@ -252,8 +252,22 @@ You can run the same SQL and MQL queries from Python or Go using the data client
 
 To get oriented with your own data:
 
-1. Open the query editor and run `SELECT DISTINCT component_name FROM readings` to see what components have captured data.
-2. Pick a component and run `SELECT data FROM readings WHERE component_name = 'YOUR-COMPONENT' LIMIT 1` to see the JSON structure of its readings.
+1. Open the query editor and run the following to see what components have captured data:
+
+   ```sql
+   SELECT DISTINCT component_name FROM readings
+   WHERE time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+   ```
+
+2. Pick a component and run the following to see the JSON structure of its readings:
+
+   ```sql
+   SELECT data FROM readings
+   WHERE component_name = 'YOUR-COMPONENT'
+     AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+   LIMIT 1
+   ```
+
 3. Use the field names from step 2 to write a query that extracts a specific value with dot notation (for example, `data.readings.temperature`).
 
 For the full schema of the readings table, see [Query reference](/data/reference/#column-reference).
@@ -263,11 +277,18 @@ For the full schema of the readings table, see [Query reference](/data/reference
 {{< expand "Query returns empty results" >}}
 
 - **Check the component name.** Component names are case-sensitive and must match
-  exactly. Run `SELECT DISTINCT component_name FROM readings` to see all
-  available component names.
-- **Check the time range.** If you're filtering by time, make sure your range
-  covers a period when data was actually captured. Remove the time filter first
-  to confirm data exists, then add it back.
+  exactly. Run the following to see all available component names:
+
+  ```sql
+  SELECT DISTINCT component_name FROM readings
+  WHERE time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+  ```
+
+- **Check the time range.** If you narrowed the time range, widen it back to the
+  broad lower bound `time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)`
+  to confirm data exists, then tighten the range back down. Do not remove the
+  `time_received` filter entirely: under APP-10891, SQL queries without an
+  explicit lower bound on `time_received` return no rows.
 - **Verify data has synced.** Data must sync from the machine to the cloud before
   it is queryable. Check the **DATA** tab to confirm entries are visible.
 
@@ -276,9 +297,15 @@ For the full schema of the readings table, see [Query reference](/data/reference
 {{< expand "Query returns data but fields are null" >}}
 
 - **Check the JSON path.** The nested path must match the actual structure of
-  your data. Run `SELECT data FROM readings LIMIT 1` to see the raw JSON, then
-  build your dot-notation path to match. A common mistake is using
-  `data.temperature` when the actual path is `data.readings.temperature`.
+  your data. Run the following to see the raw JSON, then build your dot-notation
+  path to match. A common mistake is using `data.temperature` when the actual
+  path is `data.readings.temperature`.
+
+  ```sql
+  SELECT data FROM readings
+  WHERE time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+  LIMIT 1
+  ```
 
 {{< /expand >}}
 
