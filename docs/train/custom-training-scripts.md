@@ -289,7 +289,7 @@ Use the [ML Training Client API](/dev/reference/apis/ml-training-client/#submitt
 {{< tabs >}}
 {{% tab name="Web UI" %}}
 
-In the Viam app, go to the **DATA** page and click the [**TRAINING** tab](https://app.viam.com/training).
+In the Viam app, go to the **DATA** page, click the [**MODELS** tab](https://app.viam.com/models), and expand **Active Training**.
 Click a job ID to view its logs.
 
 {{% /tab %}}

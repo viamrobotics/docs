@@ -74,7 +74,7 @@ The command returns a training job ID that you can use to check status.
 **Web UI:**
 
 1. In the Viam app, click the **DATA** tab.
-2. Click the **TRAINING** subtab.
+2. Click the **MODELS** subtab, then expand **Active Training**.
 3. You will see a list of training jobs with their status:
    - **Pending** -- the job is queued
    - **In Progress** -- training is running
@@ -208,8 +208,9 @@ for _, job := range jobs {
 
 {{< expand "Training job fails" >}}
 
-- **Check the training logs.** In the **TRAINING** tab, click the failed job ID
-  to view logs. The error message usually indicates the problem.
+- **Check the training logs.** In the **MODELS** tab, expand **Active Training**
+  and click the failed job ID to view logs. The error message usually indicates
+  the problem.
 - **Dataset too small.** Training requires at least 15 images with at least 80%
   labeled. Check your dataset in the **DATASETS** tab.
 - **No labels selected.** You must select at least two labels. A model cannot

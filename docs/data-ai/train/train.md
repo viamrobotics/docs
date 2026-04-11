@@ -824,9 +824,9 @@ You can get the dataset ID from the **DATASET** tab of the **DATA** page or by r
 {{% tablestep %}}
 **Check on training job progress**
 
-You can view your training job on the **DATA** page's [**TRAINING** tab](https://app.viam.com/training).
+You can view your training job on the **DATA** page's [**MODELS** tab](https://app.viam.com/models) by expanding the **Active Training** section.
 
-Once the model has finished training, it becomes visible on the **DATA** page's [**MODELS** tab](https://app.viam.com/models).
+Once the model has finished training, it appears in the models list on the **DATA** page's [**MODELS** tab](https://app.viam.com/models).
 
 You will receive an email when your training job completes.
 
@@ -840,7 +840,7 @@ viam train list --org-id=<INSERT ORG ID> --job-status=unspecified
 {{% tablestep %}}
 **Debug your training job**
 
-From the **DATA** page's [**TRAINING** tab](https://app.viam.com/training), click your training job ID to see its logs.
+From the **DATA** page's [**MODELS** tab](https://app.viam.com/models), expand **Active Training** and click your training job ID to see its logs.
 
 {{< alert title="Note" color="note" >}}
 

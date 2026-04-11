@@ -106,9 +106,9 @@ Click **Train model**.
 {{% tablestep %}}
 **Wait for your model to train**
 
-The model now starts training and you can follow its process on the [**TRAINING** tab](https://app.viam.com/training).
+The model now starts training and you can follow its progress on the [**MODELS** tab](https://app.viam.com/models) by expanding the **Active Training** section.
 
-Once the model has finished training, it becomes visible on the [**MODELS** tab](https://app.viam.com/models).
+Once the model has finished training, it appears in the models list on the [**MODELS** tab](https://app.viam.com/models).
 
 You will receive an email when your model finishes training.
 
@@ -116,7 +116,7 @@ You will receive an email when your model finishes training.
 {{% tablestep %}}
 **Debug your training job**
 
-From the [**TRAINING** tab](https://app.viam.com/training), click on your training job's ID to see its logs.
+From the [**MODELS** tab](https://app.viam.com/models), expand **Active Training** and click your training job's ID to see its logs.
 
 {{< alert title="Note" color="note" >}}
 
