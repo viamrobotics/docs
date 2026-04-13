@@ -8,7 +8,7 @@ description: "Set up a project for building a Viam mobile app using React Native
 date: "2026-04-10"
 ---
 
-Set up a project for building a Viam mobile app using React Native specifically. **If you do not already have a React Native codebase, prefer [Flutter](./flutter/) for new cross-platform apps; React Native is here for teams whose existing apps are React Native.** This page covers the project scaffolding, the Viam SDK install, six runtime polyfill packages, a custom XHR-based gRPC transport, a Metro bundler configuration fix for a dependency version conflict, and platform permissions on Android and iOS. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for building a Viam mobile app using React Native specifically. **If you do not already have a React Native codebase, prefer [Flutter](/build-apps/setup/flutter/) for new cross-platform apps; React Native is here for teams whose existing apps are React Native.** This page covers the project scaffolding, the Viam SDK install, six runtime polyfill packages, a custom XHR-based gRPC transport, a Metro bundler configuration fix for a dependency version conflict, and platform permissions on Android and iOS. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 {{< alert title="Expo is not supported" color="caution" >}}
 The Viam TypeScript SDK does not work with Expo (neither Expo Go nor development builds). You must use the React Native CLI. If your project uses Expo, you cannot add the Viam SDK without ejecting to a bare workflow.
@@ -197,6 +197,6 @@ If you see `Connection failed:`, the most common causes are:
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and UI indicators
 - [The SDK's `ReactNative.md`](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/ReactNative.md) for deeper detail on the polyfills, the transport, and the Android environment variables needed for the Android build

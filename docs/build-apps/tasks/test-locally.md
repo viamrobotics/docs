@@ -21,7 +21,7 @@ For the CLI command name: `viam module local-app-testing` is grouped under `viam
 
 Run your local dev server with credentials in a `.env` file. Your app calls `createRobotClient` or `RobotClient.atAddress` with the credentials from the file.
 
-See [App scaffolding](./setup/) for the platform-specific setup pages, which all use this pattern in their connection verification step. The setup pages are the canonical reference for this approach.
+See [App scaffolding](/build-apps/setup/) for the platform-specific setup pages, which all use this pattern in their connection verification step. The setup pages are the canonical reference for this approach.
 
 ### Local-network connections
 
@@ -140,5 +140,5 @@ sudo sed -i '' '/dev.local/d' /etc/hosts
 
 ## Next
 
-- [Deploy a Viam application](./hosting/deploy/) for packaging and uploading your app once local testing is complete
+- [Deploy a Viam application](/build-apps/hosting/deploy/) for packaging and uploading your app once local testing is complete
 - [Connectivity reference](/dev/reference/sdks/connectivity/) for local-network and offline connection details

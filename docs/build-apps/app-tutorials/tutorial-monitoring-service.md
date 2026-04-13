@@ -21,10 +21,10 @@ You will learn the pattern that most headless Viam apps follow: connect, act, mo
 ## What you need
 
 - A configured Viam machine with a sensor and a motor. Any models work. If you do not have physical hardware, add `fake:sensor` and `fake:motor` in the Viam app's **CONFIGURE** tab.
-- A completed [Python setup](../setup/python/). You should have a project directory with `viam-sdk` installed, a `.env` file holding your machine credentials, and a working `main.py` from the setup page.
+- A completed [Python setup](/build-apps/setup/python/). You should have a project directory with `viam-sdk` installed, a `.env` file holding your machine credentials, and a working `main.py` from the setup page.
 - A second window open to the Viam app's **CONTROL** tab for the same machine, so you can see motor state changes as they happen.
 
-Before continuing, confirm your setup by running `python main.py` and verifying that it shows `Connected. Found N resources.` If it does not, go back to [Python setup](../setup/python/) and fix the connection before continuing.
+Before continuing, confirm your setup by running `python main.py` and verifying that it shows `Connected. Found N resources.` If it does not, go back to [Python setup](/build-apps/setup/python/) and fix the connection before continuing.
 
 ## Step 1: Connect and list resources
 
@@ -314,4 +314,4 @@ Extend the service in one of these directions:
 - **Add hysteresis.** Instead of stopping the motor permanently when the threshold is exceeded, restart it when the reading drops back below a lower threshold. This prevents rapid start-stop cycling around the boundary.
 - **Log to a file or external system.** Replace `print()` with Python's `logging` module, or send readings to a database, Prometheus, or a notification service.
 - **Run as a system service.** Deploy the script as a systemd unit so it starts on boot and restarts on failure. The graceful shutdown pattern you built in Step 4 handles `SIGTERM` from systemd the same way it handles Ctrl+C.
-- **Connect to the Viam cloud instead of one machine.** Switch from `RobotClient.at_address` to `ViamClient.create_from_dial_options` to monitor sensors across a fleet. See [Connect to the Viam cloud](../tasks/connect-to-cloud/).
+- **Connect to the Viam cloud instead of one machine.** Switch from `RobotClient.at_address` to `ViamClient.create_from_dial_options` to monitor sensors across a fleet. See [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/).

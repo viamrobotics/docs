@@ -8,7 +8,7 @@ description: "Set up a project for writing a Viam app in Python: a control scrip
 date: "2026-04-13"
 ---
 
-Set up a project for writing a Viam app in Python: a control script, a backend service, a data pipeline, or any other Python program that talks to a Viam machine. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for writing a Viam app in Python: a control script, a backend service, a data pipeline, or any other Python program that talks to a Viam machine. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 ## Prerequisites
 
@@ -121,6 +121,6 @@ All Viam Python SDK methods are async. Your app code runs inside `asyncio.run()`
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and status indicators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and status indicators
 - [The Python SDK reference](https://python.viam.dev/) for per-component API details

@@ -14,7 +14,7 @@ Viam Applications are distributed through the Viam module registry, which is why
 
 ## Prerequisites
 
-- A built client app. Any bundler output that produces HTML, JavaScript, and CSS works: a Vite `dist/` directory, a Create React App `build/` directory, a Flutter web build, and so on. See [TypeScript setup](../setup/typescript/) for a minimal Vite starting point.
+- A built client app. Any bundler output that produces HTML, JavaScript, and CSS works: a Vite `dist/` directory, a Create React App `build/` directory, a Flutter web build, and so on. See [TypeScript setup](/build-apps/setup/typescript/) for a minimal Vite starting point.
 - The [Viam CLI](/cli/) installed and authenticated (`viam login`).
 - A public namespace for your organization. Set this in the [organization settings](/organization/) if you have not already. Viam Applications require a public namespace because the app's URL uses it.
 
@@ -58,7 +58,7 @@ Key fields in the `applications` entry:
 - `type` — `single_machine` or `multi_machine`. Single-machine apps pick one machine and inject that machine's credentials. Multi-machine apps inject a user access token and let the app enumerate machines.
 - `entrypoint` — path to the HTML entry point, relative to the uploaded archive's root. For a Vite build, this is typically `dist/index.html`.
 
-See [the meta.json applications reference](./meta-json-reference/) for all available fields, including `fragmentIds`, `logoPath`, and `customizations`.
+See [the meta.json applications reference](/build-apps/hosting/meta-json-reference/) for all available fields, including `fragmentIds`, `logoPath`, and `customizations`.
 
 ## Build your app
 
@@ -126,6 +126,6 @@ To roll back, upload the previous code under a new, higher version number. The r
 
 ## Next
 
-- [meta.json applications reference](./meta-json-reference/) for the full schema
-- [Hosting platform reference](./hosting-reference/) for URL patterns, cookie structure, caching behavior, and limits
-- [Test against a local machine](../tasks/test-locally/) for iterating on your app before each upload
+- [meta.json applications reference](/build-apps/hosting/meta-json-reference/) for the full schema
+- [Hosting platform reference](/build-apps/hosting/hosting-reference/) for URL patterns, cookie structure, caching behavior, and limits
+- [Test against a local machine](/build-apps/tasks/test-locally/) for iterating on your app before each upload

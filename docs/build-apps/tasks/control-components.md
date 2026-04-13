@@ -14,7 +14,7 @@ For the full list of component types and their methods, see the SDK reference fo
 
 ## Prerequisites
 
-- A project with an active machine connection (see [Connect to a machine](./connect-to-machine/))
+- A project with an active machine connection (see [Connect to a machine](/build-apps/tasks/connect-to-machine/))
 - At least one component configured on the machine (sensor, motor, camera, arm, or any other type). If you do not have physical hardware, add a fake component in the Viam app's **CONFIGURE** tab (`fake:sensor`, `fake:motor`, and so on).
 
 ## Get a component client
@@ -223,6 +223,6 @@ The method names follow the same naming convention in each language: Python uses
 
 ## Next
 
-- [Stream video](./stream-video/) for displaying camera feeds (TypeScript and Flutter WebRTC streaming, or `get_images` polling for Python and Go)
-- [Handle disconnection and reconnection](./handle-connection-state/) for reconnection behavior when controlling actuators
-- [Connect to a machine](./connect-to-machine/) if you have not set up a connection yet
+- [Stream video](/build-apps/tasks/stream-video/) for displaying camera feeds (TypeScript and Flutter WebRTC streaming, or `get_images` polling for Python and Go)
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection behavior when controlling actuators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) if you have not set up a connection yet

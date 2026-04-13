@@ -8,7 +8,7 @@ description: "URL patterns, cookie structure, caching behavior, and limits for t
 date: "2026-04-10"
 ---
 
-Reference for the runtime behavior of the Viam Applications hosting platform. For the deployment workflow, see [Deploy a Viam application](./deploy/). For the `meta.json` schema that configures the application, see [the meta.json applications reference](./meta-json-reference/).
+Reference for the runtime behavior of the Viam Applications hosting platform. For the deployment workflow, see [Deploy a Viam application](/build-apps/hosting/deploy/). For the `meta.json` schema that configures the application, see [the meta.json applications reference](/build-apps/hosting/meta-json-reference/).
 
 ## URL pattern
 
@@ -108,7 +108,7 @@ const client = await VIAM.createViamClient({
 });
 ```
 
-Use the resulting `ViamClient` to enumerate and connect to specific machines. See [Connect to the Viam cloud](../tasks/connect-to-cloud/).
+Use the resulting `ViamClient` to enumerate and connect to specific machines. See [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/).
 
 ## Cookie lifecycle
 
@@ -157,6 +157,6 @@ To roll back, upload the previous code under a new, higher version number. There
 
 ## Related
 
-- [Deploy a Viam application](./deploy/) for the package-and-upload workflow
-- [meta.json applications schema](./meta-json-reference/) for the application configuration
-- [Authentication](../concepts/authentication/) for the credential injection model
+- [Deploy a Viam application](/build-apps/hosting/deploy/) for the package-and-upload workflow
+- [meta.json applications schema](/build-apps/hosting/meta-json-reference/) for the application configuration
+- [Authentication](/build-apps/concepts/authentication/) for the credential injection model

@@ -8,7 +8,7 @@ description: "Reference for the applications array in meta.json, which declares 
 date: "2026-04-10"
 ---
 
-Reference for the `applications` array in `meta.json`. This array declares one or more Viam Applications that Viam hosts at `*.viamapplications.com` after you upload the module. For the deployment workflow that produces and uploads `meta.json`, see [Deploy a Viam application](./deploy/).
+Reference for the `applications` array in `meta.json`. This array declares one or more Viam Applications that Viam hosts at `*.viamapplications.com` after you upload the module. For the deployment workflow that produces and uploads `meta.json`, see [Deploy a Viam application](/build-apps/hosting/deploy/).
 
 ## Complete example
 
@@ -76,7 +76,7 @@ Declares how the application accesses machines. Two valid values:
 | `"single_machine"` | The application operates on one machine at a time. Viam injects that machine's API key and hostname into browser cookies.                  |
 | `"multi_machine"`  | The application can access any machine the logged-in user has permissions for. Viam injects the user's access token into a browser cookie. |
 
-See [Authentication](../concepts/authentication/) for what gets injected and how your app code reads the cookies.
+See [Authentication](/build-apps/concepts/authentication/) for what gets injected and how your app code reads the cookies.
 
 ### `entrypoint`
 
@@ -155,5 +155,5 @@ Example:
 
 ## Related
 
-- [Deploy a Viam application](./deploy/) for the package-and-upload workflow
-- [Hosting platform reference](./hosting-reference/) for URL patterns, cookie structure, caching, and limits
+- [Deploy a Viam application](/build-apps/hosting/deploy/) for the package-and-upload workflow
+- [Hosting platform reference](/build-apps/hosting/hosting-reference/) for URL patterns, cookie structure, caching, and limits

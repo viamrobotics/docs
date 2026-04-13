@@ -8,7 +8,7 @@ description: "Set up a project for building a Viam app that runs across iOS, And
 date: "2026-04-10"
 ---
 
-Set up a project for building a Viam app that runs across iOS, Android, and desktop platforms from a single codebase: a tablet operator interface, a warehouse kiosk, a phone app for technicians in the field. This page covers the project scaffolding with [Flutter](https://flutter.dev/), the Viam Flutter SDK install, and the iOS/macOS and Android platform configuration. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for building a Viam app that runs across iOS, Android, and desktop platforms from a single codebase: a tablet operator interface, a warehouse kiosk, a phone app for technicians in the field. This page covers the project scaffolding with [Flutter](https://flutter.dev/), the Viam Flutter SDK install, and the iOS/macOS and Android platform configuration. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 ## Prerequisites
 
@@ -199,6 +199,6 @@ If you see `Connection failed:`, the most common causes are:
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use, including the `Viam` class for multi-machine access
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use, including the `Viam` class for multi-machine access
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and UI indicators
 - [The Flutter SDK reference](https://flutter.viam.dev/) for per-component API details and widget documentation

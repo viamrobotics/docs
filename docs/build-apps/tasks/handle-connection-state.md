@@ -10,11 +10,11 @@ date: "2026-04-10"
 
 Show a connection status indicator in your app, react to connection events, and rebuild UI state after the SDK reconnects. The SDK reconnects the transport layer automatically; your app is responsible for rebuilding streams, timers, and anything else that depended on the old connection.
 
-For an explanation of how the SDK reconnects under the hood, see [Connection model](./concepts/how-apps-connect/#reconnection).
+For an explanation of how the SDK reconnects under the hood, see [Connection model](/build-apps/concepts/how-apps-connect/#reconnection).
 
 ## Prerequisites
 
-- A project with an active machine connection (see [Connect to a machine](./connect-to-machine/))
+- A project with an active machine connection (see [Connect to a machine](/build-apps/tasks/connect-to-machine/))
 
 ## TypeScript: subscribe to connection events
 
@@ -219,6 +219,6 @@ async function rebuildAfterReconnect() {
 
 ## Next
 
-- [Stream video](./stream-video/) for the camera stream rebuild pattern in detail
-- [Query captured data](./query-data/) for polling live data from an app
-- [Connection model](./concepts/how-apps-connect/#reconnection) for a deeper explanation of the reconnection behavior
+- [Stream video](/build-apps/tasks/stream-video/) for the camera stream rebuild pattern in detail
+- [Query captured data](/build-apps/tasks/query-data/) for polling live data from an app
+- [Connection model](/build-apps/concepts/how-apps-connect/#reconnection) for a deeper explanation of the reconnection behavior

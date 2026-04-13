@@ -8,7 +8,7 @@ description: "Set up a project for building a Viam web app with TypeScript: a cu
 date: "2026-04-10"
 ---
 
-Set up a project for building a Viam web app with TypeScript: a custom dashboard, an operator interface, or any other browser-based app that talks to a Viam machine. This page covers the project scaffolding with [Vite](https://vitejs.dev/) and the Viam TypeScript SDK install. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for building a Viam web app with TypeScript: a custom dashboard, an operator interface, or any other browser-based app that talks to a Viam machine. This page covers the project scaffolding with [Vite](https://vitejs.dev/) and the Viam TypeScript SDK install. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 ## Prerequisites
 
@@ -129,10 +129,10 @@ Connected. Found N resources.
 
 where `N` is the number of components and services configured on your machine. If the page shows `Connection failed:` followed by an error, check that the three values in your `.env` file match the **CONNECT** tab exactly, including the `https://` in the host if the generated sample includes one.
 
-If you use Firefox for development, see the [Firefox WebRTC localhost workaround](../../tasks/test-locally/#firefox-webrtc-localhost-workaround) on the Test against a local machine page. Firefox blocks WebRTC connections from `localhost`, so you need a small `/etc/hosts` adjustment to develop locally.
+If you use Firefox for development, see the [Firefox WebRTC localhost workaround](/build-apps/tasks/test-locally/#firefox-webrtc-localhost-workaround) on the Test against a local machine page. Firefox blocks WebRTC connections from `localhost`, so you need a small `/etc/hosts` adjustment to develop locally.
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use, including language tabs for Flutter
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
-- [Stream video](../../tasks/stream-video/) for displaying camera feeds
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use, including language tabs for Flutter
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and UI indicators
+- [Stream video](/build-apps/tasks/stream-video/) for displaying camera feeds

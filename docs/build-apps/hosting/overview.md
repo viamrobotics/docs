@@ -10,7 +10,7 @@ date: "2026-04-13"
 
 Viam Applications is a hosting service for browser-based apps built with the TypeScript SDK or any frontend framework that produces HTML, JavaScript, and CSS. You upload your app's build output to the Viam registry, and Viam serves it at `{name}_{namespace}.viamapplications.com`.
 
-Viam Applications is one of five [deployment options](../overview/#deployment-options) for SDK-based apps. It works by serving your app's files (HTML, JavaScript, CSS) to a web browser. The browser downloads the files and runs the JavaScript locally. This means Viam Applications works for apps built with TypeScript, React, Vue, Svelte, or any other framework that compiles to files a browser can run. It does not work for Python, Go, or C++ apps, which run as processes on a server or workstation and need their own hosting; see the long-running service and local execution rows in the [deployment options table](../overview/#deployment-options).
+Viam Applications is one of five [deployment options](/build-apps/overview/#deployment-options) for SDK-based apps. It works by serving your app's files (HTML, JavaScript, CSS) to a web browser. The browser downloads the files and runs the JavaScript locally. This means Viam Applications works for apps built with TypeScript, React, Vue, Svelte, or any other framework that compiles to files a browser can run. It does not work for Python, Go, or C++ apps, which run as processes on a server or workstation and need their own hosting; see the long-running service and local execution rows in the [deployment options table](/build-apps/overview/#deployment-options).
 
 Viam Applications handles three things that you would otherwise build yourself:
 
@@ -28,9 +28,9 @@ Viam Applications supports two types, declared in your `meta.json`:
 
 ## What's in this section
 
-- [Deploy a Viam application](./deploy/) walks through packaging your app, configuring `meta.json`, and uploading to the registry.
-- [meta.json applications schema](./meta-json-reference/) is the field-by-field reference for the `applications` array that declares your app's type, entrypoint, fragment filters, and branding.
-- [Hosting platform reference](./hosting-reference/) documents the URL pattern, cookie structure, caching behavior, and limits.
+- [Deploy a Viam application](/build-apps/hosting/deploy/) walks through packaging your app, configuring `meta.json`, and uploading to the registry.
+- [meta.json applications schema](/build-apps/hosting/meta-json-reference/) is the field-by-field reference for the `applications` array that declares your app's type, entrypoint, fragment filters, and branding.
+- [Hosting platform reference](/build-apps/hosting/hosting-reference/) documents the URL pattern, cookie structure, caching behavior, and limits.
 
 ## Constraints
 

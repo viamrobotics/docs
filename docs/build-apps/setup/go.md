@@ -8,7 +8,7 @@ description: "Set up a project for writing a Viam app in Go: a backend service, 
 date: "2026-04-13"
 ---
 
-Set up a project for writing a Viam app in Go: a backend service, a fleet orchestrator, a CLI tool, or any other Go program that talks to a Viam machine. The Go client lives in the RDK package at `go.viam.com/rdk/robot/client`, not in a separate SDK. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for writing a Viam app in Go: a backend service, a fleet orchestrator, a CLI tool, or any other Go program that talks to a Viam machine. The Go client lives in the RDK package at `go.viam.com/rdk/robot/client`, not in a separate SDK. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 ## Prerequisites
 
@@ -111,6 +111,6 @@ The example above reads credentials from environment variables set inline on the
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and status indicators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and status indicators
 - [Go SDK reference](https://pkg.go.dev/go.viam.com/rdk) for per-component API details

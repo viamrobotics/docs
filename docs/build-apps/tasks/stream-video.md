@@ -12,7 +12,7 @@ Display a live camera feed from a Viam machine in your client app. The TypeScrip
 
 ## Prerequisites
 
-- A project with an active machine connection (see [Connect to a machine](./connect-to-machine/))
+- A project with an active machine connection (see [Connect to a machine](/build-apps/tasks/connect-to-machine/))
 - A camera component configured on the machine. Any camera model will work, including `fake:camera` for testing without real hardware.
 
 ## Stream one camera
@@ -142,10 +142,10 @@ The TypeScript SDK's `StreamClient` tracks open streams and automatically re-add
 
 In the Flutter SDK, `StreamClient` does not explicitly re-add streams on reconnect. If a stream becomes inactive after a disconnection, tear down the `ViamCameraStreamView` and recreate it, or listen for connection-state changes and restart the stream manually.
 
-See [Handle disconnection and reconnection](./handle-connection-state/) for the connection-event pattern.
+See [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the connection-event pattern.
 
 ## Next
 
-- [Handle disconnection and reconnection](./handle-connection-state/) for the rebuild-after-reconnect pattern
-- [Query captured data](./query-data/) for reading captured data alongside live streams
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the rebuild-after-reconnect pattern
+- [Query captured data](/build-apps/tasks/query-data/) for reading captured data alongside live streams
 - [Camera component reference](/reference/components/camera/) for per-model configuration

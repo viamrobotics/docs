@@ -24,7 +24,7 @@ The tutorial uses the air-quality use case as a concrete example: each machine h
 - A Viam organization with at least two machines configured. Any machines work as long as each has a sensor you can capture data from. For the tutorial's air-quality framing, each machine has a sensor that returns a PM2.5 value under a field named `pm_2_5`, but you can use any field name as long as you update the MQL query in step 4 to match.
 - Data capture configured on the sensors, with enough data synced to the cloud that there are recent readings to aggregate. See [Capture and sync data](/data/capture-sync/capture-and-sync-data/) if you need to set this up.
 - An organization-scoped or location-scoped API key and its ID. Create one in [Admin and access](/organization/access/). A machine-scoped key will not work for this tutorial because you need access to multiple machines.
-- A completed [TypeScript setup](../setup/typescript/) with Vite, the Viam TypeScript SDK, a `.env` file, and an `index.html` plus `src/main.ts` from the setup page.
+- A completed [TypeScript setup](/build-apps/setup/typescript/) with Vite, the Viam TypeScript SDK, a `.env` file, and an `index.html` plus `src/main.ts` from the setup page.
 - Your organization ID. Find it in the Viam app by clicking your organization name and selecting **Settings**.
 
 Before continuing, update your `.env` file to use an organization-scoped API key instead of a machine-scoped one, and add your organization ID:
@@ -363,14 +363,14 @@ The full `src/main.ts` is around 130 lines. The patterns you used (cloud client,
 
 ## Deploy as a Viam Application (optional)
 
-The dashboard runs locally right now. To host it at a Viam URL with built-in authentication, follow [Deploy a Viam application](../hosting/deploy/). The key change when deploying: instead of reading credentials from `import.meta.env`, your deployed app reads them from a browser cookie that Viam injects after the user logs in.
+The dashboard runs locally right now. To host it at a Viam URL with built-in authentication, follow [Deploy a Viam application](/build-apps/hosting/deploy/). The key change when deploying: instead of reading credentials from `import.meta.env`, your deployed app reads them from a browser cookie that Viam injects after the user logs in.
 
-Replace the `createViamClient` call with code that reads the access token from the `userToken` cookie. The [hosting platform reference](../hosting/hosting-reference/) documents the exact cookie format. When deployed as a multi-machine Viam Application, the rest of the dashboard code works unchanged; only the credential loading changes.
+Replace the `createViamClient` call with code that reads the access token from the `userToken` cookie. The [hosting platform reference](/build-apps/hosting/hosting-reference/) documents the exact cookie format. When deployed as a multi-machine Viam Application, the rest of the dashboard code works unchanged; only the credential loading changes.
 
 ## Next steps
 
 - **Filter by fragment.** If you configured the machines in your fleet with a shared fragment, pass `fragmentIds` to `listMachineSummaries` to scope the dashboard to only machines that include that fragment. Useful for multi-tenant apps where one organization has several customer fleets.
-- **Show historical trends.** Change the MQL pipeline to use `$bucket` or `$bucketAuto` to group readings into time buckets, then render a chart instead of a single aggregate value. [Query captured data](../tasks/query-data/) covers more aggregation patterns.
+- **Show historical trends.** Change the MQL pipeline to use `$bucket` or `$bucketAuto` to group readings into time buckets, then render a chart instead of a single aggregate value. [Query captured data](/build-apps/tasks/query-data/) covers more aggregation patterns.
 - **Aggregate across multiple sensor types.** Run a different MQL pipeline for each sensor you care about (PM2.5, PM10, VOC, temperature) and show all of them in the same row per machine.
 - **Add a machine detail view.** When the user clicks a row, open a second view that queries minute-by-minute data for that one machine. The common fleet dashboard pattern is an overview table plus a detail view per machine.
-- **Deploy to Viam Applications.** Follow [Deploy a Viam application](./deploy/) for the packaging and upload workflow.
+- **Deploy to Viam Applications.** Follow [Deploy a Viam application](/build-apps/hosting/deploy/) for the packaging and upload workflow.

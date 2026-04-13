@@ -10,7 +10,7 @@ date: "2026-04-10"
 
 A Viam client application needs to reach a machine that may be on a different network, behind a NAT, or both. This page describes the transport paths the SDK uses, the session safety mechanism, and how the SDK reconnects when the network drops.
 
-This page uses TypeScript SDK names for specific APIs (`createRobotClient`, `DialWebRTCConf`, `disableSessions`, and so on). The Flutter SDK provides equivalent APIs with different names; see [Flutter setup](../../setup/flutter/).
+This page uses TypeScript SDK names for specific APIs (`createRobotClient`, `DialWebRTCConf`, `disableSessions`, and so on). The Flutter SDK provides equivalent APIs with different names; see [Flutter setup](/build-apps/setup/flutter/).
 
 ## Two transports
 
@@ -73,4 +73,4 @@ Reconnection is transparent to your application code. The `RobotClient` object s
 
 What does _not_ happen automatically is your app's UI state. If you were showing a camera stream when the network dropped, the stream stops, and your UI has to rebuild the stream when the connection returns. If you were polling a sensor, the polling stops, and your UI has to resume polling. The SDK reconnects the transport; your app reconnects its own state.
 
-Subscribe to `MachineConnectionEvent` to react to connection state changes. See [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for the pattern.
+Subscribe to `MachineConnectionEvent` to react to connection state changes. See [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the pattern.

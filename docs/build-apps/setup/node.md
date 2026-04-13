@@ -8,7 +8,7 @@ description: "Set up a project for running Viam SDK code from a Node.js process:
 date: "2026-04-10"
 ---
 
-Set up a project for running Viam SDK code from a Node.js process: a backend service that supports a web app frontend, a CLI tool, or another Node app that talks to a Viam machine. Node.js requires extra setup compared to the browser because Node does not provide WebRTC natively: you register a WebRTC polyfill and plug in a Node-compatible gRPC transport before calling any SDK function. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for running Viam SDK code from a Node.js process: a backend service that supports a web app frontend, a CLI tool, or another Node app that talks to a Viam machine. Node.js requires extra setup compared to the browser because Node does not provide WebRTC natively: you register a WebRTC polyfill and plug in a Node-compatible gRPC transport before calling any SDK function. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 ## Prerequisites
 
@@ -154,6 +154,6 @@ If the script hangs or errors, the most common causes are:
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and UI indicators
 - [The SDK's `Node.md`](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/Node.md) for deeper detail on the polyfill and transport setup

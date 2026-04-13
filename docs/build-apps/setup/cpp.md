@@ -8,7 +8,7 @@ description: "Set up a project for writing a Viam app in C++: an embedded applic
 date: "2026-04-13"
 ---
 
-Set up a project for writing a Viam app in C++: an embedded application, a high-performance service, or any other C++ program that talks to a Viam machine. The C++ SDK has a heavier build setup than the other SDKs because it requires CMake and several system-level dependencies. For the connection patterns your app will actually use, see [Connect to a machine](../../tasks/connect-to-machine/).
+Set up a project for writing a Viam app in C++: an embedded application, a high-performance service, or any other C++ program that talks to a Viam machine. The C++ SDK has a heavier build setup than the other SDKs because it requires CMake and several system-level dependencies. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).
 
 ## Prerequisites
 
@@ -150,7 +150,7 @@ The C++ SDK's WebRTC support is implemented through a Rust FFI layer. The SDK's 
 
 ## Next
 
-- [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and status indicators
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the connection patterns your app will actually use
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection and status indicators
 - [C++ SDK reference](https://cpp.viam.dev/) for per-component API details
 - [BUILDING.md](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/doc/BUILDING.md) for the full build system documentation

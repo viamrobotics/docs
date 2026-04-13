@@ -8,11 +8,11 @@ description: "Open a connection to a single Viam machine from your app, structur
 date: "2026-04-10"
 ---
 
-Open a connection to a single Viam machine from your app, structure the connection code so you do not reconnect unnecessarily, and close the connection when the app is done with it. This page covers the basic connection pattern. For reconnection, UI indicators, and connection-state events, see [Handle disconnection and reconnection](./handle-connection-state/). For apps that access multiple machines or the fleet APIs, see [Connect to the Viam cloud](./connect-to-cloud/).
+Open a connection to a single Viam machine from your app, structure the connection code so you do not reconnect unnecessarily, and close the connection when the app is done with it. This page covers the basic connection pattern. For reconnection, UI indicators, and connection-state events, see [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/). For apps that access multiple machines or the fleet APIs, see [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/).
 
 ## Prerequisites
 
-- A project set up with the Viam SDK (see [App scaffolding](../setup/))
+- A project set up with the Viam SDK (see [App scaffolding](/build-apps/setup/))
 - The machine's address, an API key, and an API key ID, copied from the machine's **CONNECT** tab in the Viam app
 
 ## Open a connection
@@ -57,12 +57,14 @@ final robot = await RobotClient.atAddress(
 import asyncio
 from viam.robot.client import RobotClient
 
+
 async def connect():
     opts = RobotClient.Options.with_api_key(
         api_key='your-api-key-secret',
         api_key_id='your-api-key-id'
     )
     return await RobotClient.at_address('my-robot-main.xxxx.viam.cloud', opts)
+
 
 machine = await connect()
 ```
@@ -103,7 +105,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-For an explanation of what the SDK does during connection (WebRTC signaling, ICE, sessions, reconnection), see [Connection model](./concepts/how-apps-connect/). The defaults work for machines deployed on Viam Cloud; you override them only for self-hosted or local-network setups.
+For an explanation of what the SDK does during connection (WebRTC signaling, ICE, sessions, reconnection), see [Connection model](/build-apps/concepts/how-apps-connect/). The defaults work for machines deployed on Viam Cloud; you override them only for self-hosted or local-network setups.
 
 ## Close the connection
 
@@ -186,7 +188,7 @@ try {
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-```python
+```python {class="line-numbers linkable-line-numbers" data-line=""}
 try:
     opts = RobotClient.Options.with_api_key(
         api_key='your-api-key-secret',
@@ -197,7 +199,7 @@ try:
     )
 except Exception as e:
     print(f"Failed to connect: {e}")
-    return
+    # In a real app: raise, sys.exit(1), or handle appropriately
 ```
 
 {{% /tab %}}
@@ -227,7 +229,7 @@ defer machine.Close(context.Background())
 
 The error from a failed connect is generic. The SDK does not always distinguish credential errors from network errors. Log the error message verbatim when debugging, and check the **CONNECT** tab in the Viam app to confirm the machine is online before assuming the code is wrong.
 
-Once the connection is established, subsequent network drops trigger automatic reconnection rather than thrown errors. See [Handle disconnection and reconnection](./handle-connection-state/) for the reconnection pattern.
+Once the connection is established, subsequent network drops trigger automatic reconnection rather than thrown errors. See [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the reconnection pattern.
 
 ## Where to put connection code
 
@@ -241,6 +243,6 @@ Create the `RobotClient` once at the right lifetime boundary and share it across
 
 ## Next
 
-- [Handle disconnection and reconnection](./handle-connection-state/) for reconnection behavior, UI indicators, and connection events
-- [Connect to the Viam cloud](./connect-to-cloud/) for apps that access multiple machines or use the fleet, data, and billing APIs
-- [Stream video](./stream-video/) for displaying camera feeds from your connected machine
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection behavior, UI indicators, and connection events
+- [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/) for apps that access multiple machines or use the fleet, data, and billing APIs
+- [Stream video](/build-apps/tasks/stream-video/) for displaying camera feeds from your connected machine

@@ -10,7 +10,7 @@ date: "2026-04-10"
 
 A Viam client application proves its identity to the machine or to the Viam cloud through a credential. The SDK supports two credential types: API keys for service-identity access and access tokens for user-identity access. Hosted Viam Applications inject credentials into the browser automatically through cookies.
 
-This page uses TypeScript SDK names for the specific APIs. The Flutter SDK supports the same credential types through `RobotClientOptions.withApiKey` and `Viam.withAccessToken`; see [Flutter setup](../../setup/flutter/).
+This page uses TypeScript SDK names for the specific APIs. The Flutter SDK supports the same credential types through `RobotClientOptions.withApiKey` and `Viam.withAccessToken`; see [Flutter setup](/build-apps/setup/flutter/).
 
 ## API keys
 
@@ -58,7 +58,7 @@ When you deploy a web app to Viam Applications, the Viam platform handles authen
 
 In both cases, the Viam Applications platform manages the cookie lifecycle: login, token refresh, and logout all happen without your app code touching the credential directly.
 
-See [Deploy a Viam application](../../hosting/deploy/) for the deployment workflow and [the hosting platform reference](../../hosting/hosting-reference/) for the cookie format.
+See [Deploy a Viam application](/build-apps/hosting/deploy/) for the deployment workflow and [the hosting platform reference](/build-apps/hosting/hosting-reference/) for the cookie format.
 
 ## Where to put credentials in self-hosted apps
 

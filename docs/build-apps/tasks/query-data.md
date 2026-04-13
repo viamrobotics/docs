@@ -12,7 +12,7 @@ Query data that your Viam machines have captured and synced to the cloud, from i
 
 ## Prerequisites
 
-- A project with a cloud connection (see [Connect to the Viam cloud](./connect-to-cloud/))
+- A project with a cloud connection (see [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/))
 - The organization ID that owns the data you want to query
 - Data capture configured on at least one machine so there is something to query (see [Capture and sync data](/data/capture-sync/capture-and-sync-data/))
 
@@ -308,5 +308,5 @@ Binary data responses include metadata and a URL to download the file. See the [
 ## Next
 
 - [Query data](/data/query/query-data/) for the SQL and MQL query languages, the schema, and operator reference
-- [Connect to the Viam cloud](./connect-to-cloud/) for setting up the cloud connection that `dataClient` requires
+- [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/) for setting up the cloud connection that `dataClient` requires
 - [Data API reference](/reference/apis/data-client/) for the full `DataClient` method list

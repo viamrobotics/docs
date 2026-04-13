@@ -8,7 +8,7 @@ description: "Open a connection to the Viam cloud to access the fleet, data, ML 
 date: "2026-04-10"
 ---
 
-Open a connection to the Viam cloud to access the fleet, data, ML training, billing, and provisioning APIs, and to enumerate and connect to multiple machines from one app. For connecting directly to a single known machine, use [Connect to a machine](./connect-to-machine/) instead.
+Open a connection to the Viam cloud to access the fleet, data, ML training, billing, and provisioning APIs, and to enumerate and connect to multiple machines from one app. For connecting directly to a single known machine, use [Connect to a machine](/build-apps/tasks/connect-to-machine/) instead.
 
 ## When to connect to the cloud
 
@@ -16,16 +16,16 @@ Use the cloud connection when your app needs any of these:
 
 - **Multiple machines.** Your app lets users pick from a fleet, shows status across many devices, or connects to different machines based on user input.
 - **Machine discovery.** Your app does not know the machine address ahead of time and needs to list machines from an organization or location.
-- **Captured data queries.** Your app queries sensor or binary data with SQL or MQL (see [Query captured data](./query-data/)).
+- **Captured data queries.** Your app queries sensor or binary data with SQL or MQL (see [Query captured data](/build-apps/tasks/query-data/)).
 - **Fleet management.** Your app creates or manages machines, API keys, locations, or fragments programmatically.
 - **Custom provisioning.** Your app onboards new machines through the provisioning service (see [Provision devices](/fleet/provision-devices/)).
 - **Billing or ML training.** Your app reads billing information or launches ML training jobs.
 
-If your app only talks to one machine whose address you already know, skip this page and use [Connect to a machine](./connect-to-machine/) directly.
+If your app only talks to one machine whose address you already know, skip this page and use [Connect to a machine](/build-apps/tasks/connect-to-machine/) directly.
 
 ## Prerequisites
 
-- A project set up with the Viam SDK (see [App scaffolding](./setup/))
+- A project set up with the Viam SDK (see [App scaffolding](/build-apps/setup/))
 - An API key scoped to the organization or location your app needs to access, and its API key ID. Create an API key in [Admin and access](/organization/access/).
 
 ## Open a cloud connection
@@ -88,12 +88,14 @@ The default `serviceHost` is `app.viam.com`. Override it through the optional `s
 from viam.app.viam_client import ViamClient
 from viam.rpc.dial import DialOptions
 
+
 async def connect():
     dial_options = DialOptions.with_api_key(
         api_key='your-api-key-secret',
         api_key_id='your-api-key-id'
     )
     return await ViamClient.create_from_dial_options(dial_options)
+
 
 client = await connect()
 ```
@@ -225,7 +227,7 @@ final robotClient = await viam.getRobotClient(robot);
 {{% /tab %}}
 {{< /tabs >}}
 
-Close the `RobotClient` when your app is done with the machine. See [Connect to a machine](./connect-to-machine/) for the close pattern and for error handling.
+Close the `RobotClient` when your app is done with the machine. See [Connect to a machine](/build-apps/tasks/connect-to-machine/) for the close pattern and for error handling.
 
 ## Handle errors
 
@@ -235,8 +237,8 @@ If a subsequent `appClient` or `dataClient` call fails because the API key does 
 
 ## Next
 
-- [Query captured data](./query-data/) for using `dataClient` to read sensor and binary data
-- [Handle disconnection and reconnection](./handle-connection-state/) for reconnection behavior on the `RobotClient` instances you get from the cloud connection
+- [Query captured data](/build-apps/tasks/query-data/) for using `dataClient` to read sensor and binary data
+- [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for reconnection behavior on the `RobotClient` instances you get from the cloud connection
 - [Provision devices](/fleet/provision-devices/) for custom provisioning apps that use `provisioningClient`
 - [Fleet API reference](/reference/apis/fleet/) for the full `AppClient` method list
 - [Data API reference](/reference/apis/data-client/) for the full `DataClient` method list

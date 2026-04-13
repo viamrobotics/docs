@@ -22,10 +22,10 @@ The tutorial uses vanilla TypeScript and Vite without any frontend framework. Th
 ## What you need
 
 - A configured Viam machine with a camera, a sensor, and a motor. Any models work. If you do not have the physical hardware, add fake components in the Viam app's **CONFIGURE** tab: `fake:camera`, `fake:sensor`, and `fake:motor`. The fake components respond to SDK calls the same way real ones do.
-- A completed [TypeScript setup](../setup/typescript/). You should have a project directory with `@viamrobotics/sdk` installed, a `.env` file holding your machine credentials, and `index.html` plus `src/main.ts` files from the setup page.
+- A completed [TypeScript setup](/build-apps/setup/typescript/). You should have a project directory with `@viamrobotics/sdk` installed, a `.env` file holding your machine credentials, and `index.html` plus `src/main.ts` files from the setup page.
 - Two browser windows side by side, or two tabs you can switch between. One window runs your dashboard; the other opens the Viam app's **CONTROL** tab for the same machine so you can see server-side state change when your code runs.
 
-Before continuing, confirm your setup by running `npx vite` and verifying that the page from the setup step shows `Connected. Found N resources.` in the browser. If it does not, go back to [TypeScript setup](../setup/typescript/) and fix the connection before continuing.
+Before continuing, confirm your setup by running `npx vite` and verifying that the page from the setup step shows `Connected. Found N resources.` in the browser. If it does not, go back to [TypeScript setup](/build-apps/setup/typescript/) and fix the connection before continuing.
 
 ## Step 1: Replace the HTML
 
@@ -250,7 +250,7 @@ function watchConnection() {
 
 Call `watchConnection()` at the end of `main()`, after the motor buttons are wired.
 
-Save and refresh. The status indicator still says `Connected` on load. To test the state change, turn off your machine or disconnect your computer from the network briefly. The indicator switches to `Disconnected` (red). Restore connectivity and the SDK reconnects automatically, switching the indicator back to `Connected` (green). The camera stream may or may not resume on its own depending on how long the disconnection lasted; see [Handle disconnection and reconnection](../tasks/handle-connection-state/) for the rebuild-after-reconnect pattern.
+Save and refresh. The status indicator still says `Connected` on load. To test the state change, turn off your machine or disconnect your computer from the network briefly. The indicator switches to `Disconnected` (red). Restore connectivity and the SDK reconnects automatically, switching the indicator back to `Connected` (green). The camera stream may or may not resume on its own depending on how long the disconnection lasted; see [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the rebuild-after-reconnect pattern.
 
 ## What you built
 
@@ -269,7 +269,7 @@ The full `src/main.ts` is around 80 lines of code. The four patterns you used (c
 Extend the dashboard in one of these directions:
 
 - **Auto-stop the motor when the sensor crosses a threshold.** In the sensor polling loop, check the reading's value and call `motor.stop()` when it exceeds a limit. This is the smallest useful control loop: reads drive writes. Combining observation with action is the core pattern of all robotics software.
-- **Add a second camera.** Instantiate another `StreamClient.getStream("second_camera")` call and attach the result to a second `<video>` element. See [Stream video](../tasks/stream-video/) for the multi-camera section and its bandwidth caveats.
-- **Rebuild state after reconnection.** The current dashboard does not re-attach the camera stream after a long disconnection. Follow [Handle disconnection and reconnection](../tasks/handle-connection-state/) to add the rebuild pattern.
-- **Deploy the dashboard to Viam Applications.** Follow [Deploy a Viam application](../hosting/deploy/) to host the dashboard at a public URL with authentication and cookie-injected credentials. The code you wrote here works the same when deployed, except you read credentials from cookies instead of `import.meta.env`.
-- **Build a multi-machine version.** See [the fleet tutorial](./tutorial-fleet/) for a dashboard that connects to the Viam cloud and aggregates data across several machines.
+- **Add a second camera.** Instantiate another `StreamClient.getStream("second_camera")` call and attach the result to a second `<video>` element. See [Stream video](/build-apps/tasks/stream-video/) for the multi-camera section and its bandwidth caveats.
+- **Rebuild state after reconnection.** The current dashboard does not re-attach the camera stream after a long disconnection. Follow [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) to add the rebuild pattern.
+- **Deploy the dashboard to Viam Applications.** Follow [Deploy a Viam application](/build-apps/hosting/deploy/) to host the dashboard at a public URL with authentication and cookie-injected credentials. The code you wrote here works the same when deployed, except you read credentials from cookies instead of `import.meta.env`.
+- **Build a multi-machine version.** See [the fleet tutorial](/build-apps/app-tutorials/tutorial-fleet/) for a dashboard that connects to the Viam cloud and aggregates data across several machines.

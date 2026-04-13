@@ -21,10 +21,10 @@ This tutorial uses the Flutter-specific widget path rather than the raw SDK patt
 ## What you need
 
 - A configured Viam machine with a camera, a sensor, and a motor. Any models work. If you do not have the physical hardware, add fake components in the Viam app's **CONFIGURE** tab: `fake:camera`, `fake:sensor`, and `fake:motor`.
-- A completed [Flutter setup](../setup/flutter/). You should have a Flutter project with `viam_sdk` and `flutter_dotenv` installed, a `.env` file holding your machine credentials, and the iOS/Android platform configuration applied.
+- A completed [Flutter setup](/build-apps/setup/flutter/). You should have a Flutter project with `viam_sdk` and `flutter_dotenv` installed, a `.env` file holding your machine credentials, and the iOS/Android platform configuration applied.
 - A target platform to run the app on: an iOS simulator, an Android emulator, a physical device, or a desktop target (macOS, Linux, Windows).
 
-Before continuing, confirm your setup by running `flutter run` and verifying that the app from the setup step shows `Connected. Found N resources.` If it does not, go back to [Flutter setup](../setup/flutter/) and fix the connection before continuing.
+Before continuing, confirm your setup by running `flutter run` and verifying that the app from the setup step shows `Connected. Found N resources.` If it does not, go back to [Flutter setup](/build-apps/setup/flutter/) and fix the connection before continuing.
 
 ## Step 1: Set up the app skeleton
 
@@ -252,7 +252,7 @@ The same code builds and runs on each platform without modification. The widgets
 
 Some platform-specific notes:
 
-- **iOS and macOS** require the `Info.plist` permissions you added in [Flutter setup](../setup/flutter/) for WebRTC to work.
+- **iOS and macOS** require the `Info.plist` permissions you added in [Flutter setup](/build-apps/setup/flutter/) for WebRTC to work.
 - **Android** requires minimum SDK 23 and the setup page's Kotlin version.
 - **Web** support depends on whether `flutter_webrtc` has stable web behavior for your specific build. If the web target fails, fall back to native or desktop targets for now.
 
@@ -275,5 +275,5 @@ Extend the app in one of these directions:
 - **Add a joystick for base control.** If your machine has a base configured, add a `ViamJoystickWidget` to drive it. The joystick widget converts user input into base movement commands.
 - **Use the multi-camera widget.** The Flutter SDK ships `ViamMultiCameraStreamView` for showing several camera feeds at once. See the [Flutter SDK reference](https://flutter.viam.dev/) for its parameters.
 - **Build a list of resources with per-resource screens.** The `viam_robot_example_app` in the Flutter SDK repo shows a pattern for enumerating the machine's resources and showing a custom screen for each. Use it as a reference for larger apps.
-- **Read from the Viam cloud.** Switch from `RobotClient.atAddress` to `Viam.withApiKey` so you can use the `appClient` and `dataClient` to enumerate machines and query captured data. See [Connect to the Viam cloud](../tasks/connect-to-cloud/).
-- **Build a multi-machine version.** See [the fleet tutorial](./tutorial-fleet/) for a dashboard that aggregates data across several machines.
+- **Read from the Viam cloud.** Switch from `RobotClient.atAddress` to `Viam.withApiKey` so you can use the `appClient` and `dataClient` to enumerate machines and query captured data. See [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/).
+- **Build a multi-machine version.** See [the fleet tutorial](/build-apps/app-tutorials/tutorial-fleet/) for a dashboard that aggregates data across several machines.
