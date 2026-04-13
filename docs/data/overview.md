@@ -59,20 +59,51 @@ You can delete captured data through the Viam app, the CLI, or the SDK. The SQL 
 
 **From the CLI:**
 
-```bash
-# Delete tabular data older than N days
-viam data delete-tabular --org-id=<org-id> --delete-older-than-days=30
+Delete tabular data older than a number of days:
 
-# Delete binary data within a time range
-viam data delete binary --org-ids=<org-id> --start=2026-01-01T00:00:00Z --end=2026-02-01T00:00:00Z
+```bash
+viam data delete tabular --org-id=<org-id> --delete-older-than-days=30
 ```
+
+{{< alert title="Caution" color="caution" >}}
+`--delete-older-than-days=0` deletes **all** tabular data in the organization. The CLI tabular delete has no component or location filter: it applies to the entire org.
+{{< /alert >}}
+
+Delete binary data within a time range:
+
+```bash
+viam data delete binary \
+  --org-ids=<org-id> \
+  --start=2026-01-01T00:00:00Z \
+  --end=2026-02-01T00:00:00Z
+```
+
+You can narrow binary deletion with additional filters:
+
+```bash
+# Delete only images from a specific camera
+viam data delete binary \
+  --org-ids=<org-id> \
+  --start=2026-01-01T00:00:00Z \
+  --end=2026-02-01T00:00:00Z \
+  --component-name=my-camera
+
+# Delete only JPEG images
+viam data delete binary \
+  --org-ids=<org-id> \
+  --start=2026-01-01T00:00:00Z \
+  --end=2026-02-01T00:00:00Z \
+  --mime-types=image/jpeg
+```
+
+The binary delete command accepts `--org-ids`, `--start`, and `--end` (all required), plus optional filters: `--location-ids`, `--machine-id`, `--part-id`, `--machine-name`, `--part-name`, `--component-type`, `--component-name`, `--method`, `--mime-types`, and `--bbox-labels`.
 
 **From the SDK:**
 
 The [data client API](/dev/reference/apis/data-client/) provides three delete methods:
 
-- `delete_tabular_data(organization_id, delete_older_than_days)` deletes tabular rows older than a number of days.
-- `delete_binary_data_by_filter(filter)` deletes binary data matching a filter (organization, location, time range, and so on).
+- `delete_tabular_data(organization_id, delete_older_than_days)` deletes tabular rows older than a number of days. An optional `filter` parameter supports `location_ids` and `component_name` for finer-grained control than the CLI offers.
+- `delete_binary_data_by_filter(filter)` deletes binary data matching a filter (organization, location, time range, component, and so on).
 - `delete_binary_data_by_ids(binary_ids)` deletes specific binary items by ID.
 
 **Retention policies** can also auto-delete data in the cloud after a configured number of days. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings) for the `retention_policy` field.
