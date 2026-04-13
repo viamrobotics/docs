@@ -32,11 +32,11 @@ Pipelines run in the cloud against data that has already been synced. They reduc
 
 A pipeline has four parts:
 
-1. **An MQL aggregation query.** A sequence of MongoDB aggregation stages (`$match`, `$group`, `$project`, and others) that transforms raw documents into summary documents. You write the query; the pipeline runs it automatically.
+1. **An MQL aggregation query.** A sequence of MongoDB aggregation stages (`$match`, `$group`, `$project`, and others) that transforms raw documents into summary documents. You write the query; the pipeline runs it automatically. See [Examples and tips](/data/pipelines/examples/) for common patterns.
 
-2. **A cron schedule.** Determines how often the pipeline runs. The schedule also determines the query time window: an hourly schedule (`0 * * * *`) scopes each run to the previous hour of data. A 15-minute schedule (`*/15 * * * *`) scopes each run to the previous 15 minutes. Schedules are in UTC.
+2. **A [cron schedule](/data/pipelines/reference/#cron-schedule).** Determines how often the pipeline runs. The schedule also determines the query time window: an hourly schedule (`0 * * * *`) scopes each run to the previous hour of data. A 15-minute schedule (`*/15 * * * *`) scopes each run to the previous 15 minutes. Schedules are in UTC.
 
-3. **A data source.** Either `standard` (the raw readings collection containing all historical data) or `hotstorage` (the [hot data store](/data/hot-data-store/) containing a rolling window of recent data).
+3. **A data source.** Either `standard` (the raw readings collection containing all historical data) or `hotstorage` (the [hot data store](/data/hot-data-store/) containing a rolling window of recent data). See [Data source types](/data/pipelines/reference/#data-source-types) for the full list.
 
 4. **A pipeline sink.** The destination collection where results are stored. Each pipeline has its own sink. You query pipeline results by specifying the `pipeline_sink` data source type and the pipeline's ID.
 

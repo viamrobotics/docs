@@ -19,6 +19,15 @@ Monitor and manage your data pipelines after creation. For creating pipelines, s
 viam datapipelines list --org-id=<org-id>
 ```
 
+Example output (one line per pipeline):
+
+```text
+hourly-temp-avg (ID: 64f3a1b2c4d5e6f7a8b9c0d1) [Enabled] [Data Source Type: Standard]
+daily-summary (ID: 64f3a1b2c4d5e6f7a8b9c0d2) [Disabled] [Data Source Type: Hot Storage]
+```
+
+If the command prints nothing, the organization has no pipelines. This is not an error.
+
 {{% /tab %}}
 {{% tab name="Python" %}}
 
@@ -52,6 +61,31 @@ for _, p := range pipelines {
 ```bash
 viam datapipelines describe --id=<pipeline-id>
 ```
+
+Example output:
+
+```text
+ID: 64f3a1b2c4d5e6f7a8b9c0d1
+Name: hourly-temp-avg
+Enabled: true
+Schedule: 0 * * * *
+MQL query: [
+  {
+    "$match": {
+      "component_name": "temperature-sensor"
+    }
+  },
+  ...
+]
+DataSourceType: TABULAR_DATA_SOURCE_TYPE_STANDARD
+Last run:
+  Status: Success
+  Started: 2026-03-15T15:02:13Z
+  Data range: [2026-03-15T14:00:00Z, 2026-03-15T15:00:00Z]
+  Ended: 2026-03-15T15:02:18Z
+```
+
+If the pipeline has never run, the last section reads `Has not run yet.` instead.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -126,12 +160,14 @@ nextPage, err := page.NextPage(ctx)
 
 Run statuses:
 
-| Status      | Meaning                                                                            |
-| ----------- | ---------------------------------------------------------------------------------- |
-| `SCHEDULED` | The run is queued and waiting to execute (2-minute delay before execution starts). |
-| `STARTED`   | The run is executing the MQL aggregation against the data source.                  |
-| `COMPLETED` | The run finished and results are in the pipeline sink.                             |
-| `FAILED`    | The run encountered an error. Check the `error_message` field.                     |
+| SDK status  | CLI label   | Meaning                                                                            |
+| ----------- | ----------- | ---------------------------------------------------------------------------------- |
+| `SCHEDULED` | `Scheduled` | The run is queued and waiting to execute (2-minute delay before execution starts). |
+| `STARTED`   | `Running`   | The run is executing the MQL aggregation against the data source.                  |
+| `COMPLETED` | `Success`   | The run finished and results are in the pipeline sink.                             |
+| `FAILED`    | `Failed`    | The run encountered an error. Check the `error_message` field.                     |
+
+SDK methods return the enum `Status` value on the left. The `viam datapipelines describe` CLI output uses the label on the right.
 
 If a run stays in `STARTED` for more than 10 minutes, it is automatically marked as failed and a new run is created for that time window.
 
@@ -231,7 +267,9 @@ err = dataClient.DeleteDataPipeline(ctx, "YOUR-PIPELINE-ID")
 {{% /tab %}}
 {{< /tabs >}}
 
-Deleting a pipeline removes the pipeline configuration, its execution history, and all output data in the pipeline sink. This is not reversible. If you need to preserve pipeline results, export them before deleting the pipeline.
+{{< alert title="Deleting a pipeline is irreversible" color="caution" >}}
+Deleting a pipeline removes the pipeline configuration, its execution history, and all output data in the pipeline sink. If you need to preserve pipeline results, export them first.
+{{< /alert >}}
 
 ## Troubleshooting
 
