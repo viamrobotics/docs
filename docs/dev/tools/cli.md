@@ -302,7 +302,7 @@ viam data export binary filter --destination=<output path> [...named args]
 viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
 viam data delete binary --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
-viam data delete tabular --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
+viam data delete tabular --org-id=<org-id> --delete-older-than-days=<days>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
@@ -384,8 +384,7 @@ done
 | `--destination` | Output directory for downloaded data. | `export tabular`, `export binary` | **Required** |
 | `--component-name` | Filter by specified component name. | `export binary`, `delete`, `tag filter`| Optional |
 | `--component-type` | Filter by specified component type. | `export binary`, `delete`, `tag filter` | Optional |
-| `--component-model` | Filter by specified component model. | `export`, `delete`| Optional |
-| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--delete-older-than-days` | Number of days; 0 deletes all data. | `delete tabular` | **Required** |
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional|
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter`| Optional |
@@ -393,6 +392,7 @@ done
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--method` | Filter by specified method. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | `export binary`, `delete`, `tag filter`|false |
+| `--org-id` | The organization ID. | `delete tabular`, `database configure`, `database hostname` | **Required** for `delete tabular` |
 | `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). See [Using the `ids` argument](#using-the-ids-argument) for instructions on retrieving these values. | `export binary`, `delete`, `tag filter`| Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 10. | `export binary`, `delete`, `dataset export` | Optional |
 | `--part-id` | Filter by specified part ID. | `export binary`, `export tabular`, `delete`, `tag filter`| Optional, **Required** for `export tabular` |
