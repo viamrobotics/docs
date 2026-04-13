@@ -13,7 +13,7 @@ Configure system-level settings for deployed machines. These settings are manage
 
 Control which versions of `viam-agent` and `viam-server` run on the machine.
 
-In the machine settings card, under **Viam agent version control**:
+In the machine settings card, open **Settings** and expand **Software Updates**:
 
 | Field         | Type   | Default    | Description                                                                                            |
 | ------------- | ------ | ---------- | ------------------------------------------------------------------------------------------------------ |
@@ -22,7 +22,7 @@ In the machine settings card, under **Viam agent version control**:
 
 ## Agent advanced settings
 
-Under **Agent advanced settings**:
+In the machine settings card, open **Settings** and expand **Advanced**:
 
 | Field                               | Type    | Default | Description                                                                 |
 | ----------------------------------- | ------- | ------- | --------------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ Under **Agent advanced settings**:
 
 Add WiFi or wired networks that the machine can connect to. Each network is a named entry with connection parameters.
 
-In the machine settings card under **Networks**, click **Add another network** and configure:
+In the machine settings card, open **Settings** and expand **Known Networks**. Click **Add another network** and configure:
 
 | Field               | Type    | Default  | Description                                                                                |
 | ------------------- | ------- | -------- | ------------------------------------------------------------------------------------------ |
@@ -108,7 +108,7 @@ By default, `viam-server` listens on `localhost:8080`. To change the bind addres
 
 Control automatic operating system package updates on the machine.
 
-Under **System configuration**, set `os_auto_upgrade_type`:
+In the machine settings card, open **Settings** and expand **System**. Set `os_auto_upgrade_type`:
 
 | Value        | Description                                                              |
 | ------------ | ------------------------------------------------------------------------ |
@@ -121,7 +121,7 @@ Under **System configuration**, set `os_auto_upgrade_type`:
 
 Forward operating system logs from the machine to Viam's cloud log viewer.
 
-Under **System configuration**:
+In the machine settings card, open **Settings** and expand **System**:
 
 | Field                                        | Type    | Default | Description                                                             |
 | -------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------- |
