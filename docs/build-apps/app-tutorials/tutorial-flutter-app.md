@@ -16,7 +16,7 @@ In this tutorial, you will build a Flutter app for a single Viam machine using t
 
 You will learn the Flutter SDK's widget-driven pattern, which is faster than writing stream and polling logic by hand. You will also see that the same Flutter app builds and runs on iOS, Android, and desktop from one codebase.
 
-This tutorial uses the Flutter-specific widget path rather than the raw SDK pattern. For a comparison using raw SDK calls, see [the TypeScript dashboard tutorial](./tutorial-dashboard/).
+This tutorial uses the Flutter-specific widget path rather than the raw SDK pattern. For a comparison using raw SDK calls, see [the TypeScript dashboard tutorial](/build-apps/app-tutorials/tutorial-dashboard/).
 
 ## What you need
 

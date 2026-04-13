@@ -34,23 +34,23 @@ The platform column is a guide, not a constraint. Most platforms fit several dep
 
 ## Viam hosting
 
-If you are building a browser-based app, Viam can host it for you. Viam Applications serves your app at a dedicated URL with authentication and credential injection handled by the platform. See [Viam hosting](./hosting/) for how it works, how to deploy, and the hosting platform details.
+If you are building a browser-based app, Viam can host it for you. Viam Applications serves your app at a dedicated URL with authentication and credential injection handled by the platform. See [Viam hosting](/build-apps/hosting/) for how it works, how to deploy, and the hosting platform details.
 
 ## Where to start
 
 If you want **a quick operator interface and don't need to write code**, use [teleop workspaces](/monitor/teleop-workspaces/). They are widget-based and live in the monitor section.
 
-If you want **a custom web dashboard or operator interface in a browser**, see [TypeScript setup](./setup/typescript/) and the [single-machine dashboard tutorial](./app-tutorials/tutorial-dashboard/).
+If you want **a custom web dashboard or operator interface in a browser**, see [TypeScript setup](/build-apps/setup/typescript/) and the [single-machine dashboard tutorial](/build-apps/app-tutorials/tutorial-dashboard/).
 
-If you want **one app that runs on phones, tablets, and desktops from a single codebase**, see [Flutter setup](./setup/flutter/) and the [Flutter widget tutorial](./app-tutorials/tutorial-flutter-app/).
+If you want **one app that runs on phones, tablets, and desktops from a single codebase**, see [Flutter setup](/build-apps/setup/flutter/) and the [Flutter widget tutorial](/build-apps/app-tutorials/tutorial-flutter-app/).
 
-If you want **a long-running service or script that talks to Viam without a UI**, pick your language: [Python](./setup/python/), [Go](./setup/go/), [Node.js](./setup/node/), or [C++](./setup/cpp/). The [Python monitoring service tutorial](./app-tutorials/tutorial-monitoring-service/) walks through building one from scratch.
+If you want **a long-running service or script that talks to Viam without a UI**, pick your language: [Python](/build-apps/setup/python/), [Go](/build-apps/setup/go/), [Node.js](/build-apps/setup/node/), or [C++](/build-apps/setup/cpp/). The [Python monitoring service tutorial](/build-apps/app-tutorials/tutorial-monitoring-service/) walks through building one from scratch.
 
-If you want **a dashboard that aggregates data across many machines**, see [Connect to the Viam cloud](./tasks/connect-to-cloud/) and the [multi-machine fleet dashboard tutorial](./app-tutorials/tutorial-fleet/).
+If you want **a dashboard that aggregates data across many machines**, see [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/) and the [multi-machine fleet dashboard tutorial](/build-apps/app-tutorials/tutorial-fleet/).
 
-If you want **Viam to host your web app**, see [Hosting](./hosting/) and [Deploy a Viam application](./hosting/deploy/).
+If you want **Viam to host your web app**, see [Hosting](/build-apps/hosting/) and [Deploy a Viam application](/build-apps/hosting/deploy/).
 
-If you are **coming from Foxglove, rosbridge, or a custom WebRTC stack**, read [How apps connect](./concepts/how-apps-connect/) to understand Viam's connection model, then check the limits below.
+If you are **coming from Foxglove, rosbridge, or a custom WebRTC stack**, read [How apps connect](/build-apps/concepts/how-apps-connect/) to understand Viam's connection model, then check the limits below.
 
 ## What build-apps does not cover
 
