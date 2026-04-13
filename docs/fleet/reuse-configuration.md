@@ -78,18 +78,30 @@ When you insert a fragment that would cause a conflict, the UI prompts you for a
 
 Fragments support variable substitution for values that differ between machines. Define a variable in the fragment's JSON configuration using the `$variable` syntax, then set the value when applying the fragment to each machine.
 
-In the fragment's JSON editor, replace a value with a variable placeholder:
+In the fragment's JSON editor, replace a value with a variable object:
 
 ```json
 {
   "components": [
     {
-      "name": "$sensor_name",
+      "name": {
+        "$variable": {
+          "name": "sensor-name"
+        }
+      },
       "model": "viam:sensor:ultrasonic",
       "type": "sensor",
       "attributes": {
-        "trigger_pin": "$trigger_pin",
-        "echo_int_pin": "$echo_pin"
+        "trigger_pin": {
+          "$variable": {
+            "name": "trigger-pin"
+          }
+        },
+        "echo_int_pin": {
+          "$variable": {
+            "name": "echo-pin"
+          }
+        }
       }
     }
   ]
@@ -160,7 +172,10 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 
 You can configure default fragments at the organization level so that every new machine in the organization automatically uses them. Default fragments are applied when a machine is created, whether manually or through provisioning.
 
-To configure default fragments, use the fleet management API's `UpdateOrganization` method with the `default_fragments` field.
+To configure default fragments:
+
+- **In the Viam app**: go to your organization's **Settings** page and configure default fragments there.
+- **Through the API**: use the fleet management API's `UpdateOrganization` method with the `default_fragments` field.
 
 ## JSON reference: fragment imports
 

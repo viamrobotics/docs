@@ -287,10 +287,16 @@ Use the [Viam CLI](/dev/tools/cli/) to manually update your module:
 1. Edit your module code and update the [`meta.json`](/build-modules/module-reference/) file if needed.
    For example, if you've changed the module's functionality, update the description in the `meta.json` file.
 
-2. For Python modules only, package your files as an archive, for example:
+2. Package your module files as an archive:
 
    ```sh {class="command-line" data-prompt="$"}
    tar -czf module.tar.gz run.sh requirements.txt src meta.json
+   ```
+
+   For Go modules, build the binary first, then package it:
+
+   ```sh {class="command-line" data-prompt="$"}
+   tar -czf module.tar.gz my-module meta.json
    ```
 
    Supply the path to the resulting archive file in the next step.

@@ -331,18 +331,6 @@ For the full schema of the readings table, see [Query reference](/data/schema/#c
 
 {{< /expand >}}
 
-{{< expand "Programmatic query fails with authentication error" >}}
-
-- **Verify your API key and API key ID.** Both values are required and they
-  serve different purposes. The API key is the secret; the API key ID identifies
-  which key is being used.
-- **Verify your organization ID.** Find it in the Viam app under **Settings** in
-  the left navigation. It is a UUID, not your organization name.
-- **Check that the API key has data access.** API keys can be scoped to specific
-  resources. Ensure yours has access to the data service.
-
-{{< /expand >}}
-
 ## What's next
 
 - [Create a data pipeline](/data/pipelines/create-a-pipeline/): create precomputed summaries for faster queries.
