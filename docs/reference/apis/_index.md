@@ -85,7 +85,6 @@ These APIs provide interfaces for controlling and getting information from the s
 {{% card link="/reference/apis/services/motion/" customTitle="Motion service API" noimage="True" %}}
 {{% card link="/reference/apis/services/navigation/" customTitle="Navigation service API" noimage="True" %}}
 {{% card link="/reference/apis/services/generic/" customTitle="Generic service API" noimage="True" %}}
-{{% card link="/reference/apis/services/slam/" customTitle="SLAM service API" noimage="True" %}}
 {{% card link="/reference/apis/services/base-rc/" customTitle="Base Remote Control service API" noimage="True" %}}
 {{% card link="/reference/apis/services/discovery/" customTitle="Discovery service API" noimage="True" %}}
 {{< /cards >}}
