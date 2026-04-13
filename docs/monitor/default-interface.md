@@ -14,7 +14,7 @@ aliases:
 
 The CONTROL tab provides a ready-made interface for testing and operating any configured machine. Every component and service on the machine gets a control card with relevant controls and readouts. No code required.
 
-For a purpose-built operator interface with only the widgets you need, see [Teleop workspaces](/monitor/teleop-workspaces/).
+For a purpose-built operator interface with only the widgets you need, see [Teleop workspaces](/monitor/teleop-workspaces/). For a fully custom app with SDK access, see [Build apps](/build-apps/).
 
 ## Web UI
 

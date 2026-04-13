@@ -170,3 +170,4 @@ Networks with higher `priority` values are preferred. See [system settings](/fle
 - [End-user device setup](/fleet/end-user-setup/) for the end-user side of the provisioning flow
 - [Reuse configuration](/fleet/reuse-configuration/) for creating the fragment your provisioned machines will use
 - [System settings](/fleet/system-settings/) for configuring additional networks and agent behavior
+- [Build apps](/build-apps/) for building custom provisioning apps using the Flutter or TypeScript SDK's provisioning client

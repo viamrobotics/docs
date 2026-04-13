@@ -349,3 +349,4 @@ For the full schema of the readings table, see [Query reference](/data/schema/#c
 - [Hot data store](/data/hot-data-store/): query a rolling window of recent data with lower latency.
 - [Sync data to your database](/data/sync-data-to-your-database/): export data to your own MongoDB instance.
 - [Visualize data](/data/visualize-data/): build dashboards from your captured data.
+- [Query captured data from an app](/build-apps/tasks/query-data/): run SQL and MQL queries from a custom client app using the SDK.

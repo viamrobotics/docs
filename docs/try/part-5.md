@@ -249,7 +249,7 @@ You've created a monitoring dashboard using MQL aggregation pipelines:
 The same MQL pipeline pattern—filter, aggregate, project—can be adapted for other metrics: pass rate, throughput, detection latency, or any data your system captures.
 
 {{< alert title="Going further" color="tip" >}}
-For fully custom dashboards with your own branding, you can build web applications using Viam's TypeScript SDK. The SDK provides access to the same data through `tabularDataByMQL()` and `tabularDataBySQL()` methods.
+For fully custom dashboards with your own branding, you can [build a custom app](/build-apps/) using the TypeScript, Flutter, Python, or Go SDK. The SDK provides access to the same data through `tabularDataByMQL()` and `tabularDataBySQL()` methods.
 {{< /alert >}}
 
 ## Congratulations
