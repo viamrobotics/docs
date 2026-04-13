@@ -31,14 +31,14 @@ Confirm it shows as **Live** in the upper left.
      each time it fires.
    - For a sensor, select **Readings**. This records the sensor's current
      values.
-6. Set the **capture frequency**. This is specified in hertz (captures per
+5. Set the **capture frequency**. This is specified in hertz (captures per
    second):
    - `0.5` = one capture every 2 seconds
    - `0.2` = one capture every 5 seconds
    - `1` = one capture per second
    - Start low. For cameras, `0.5` Hz is a reasonable starting point. You can
      always increase it later.
-7. Click **Save** in the upper right.
+6. Click **Save** in the upper right.
 
 After saving, `viam-server` begins capturing immediately. You do not need to
 restart anything.

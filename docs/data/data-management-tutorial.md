@@ -47,9 +47,9 @@ Now we will tell Viam to record every reading from this sensor.
 3. If you see a "Data management service missing" banner, click
    **Create data management service**, click **Save**, navigate back to
    `test-sensor`, and click **+** on the **Data Capture** card again.
-5. Select the **Readings** method.
-6. Set the capture frequency to **0.2** (one reading every 5 seconds).
-7. Click **Save**.
+4. Select the **Readings** method.
+5. Set the capture frequency to **0.2** (one reading every 5 seconds).
+6. Click **Save**.
 
 After saving, `viam-server` begins capturing immediately. You do not need to restart anything.
 
