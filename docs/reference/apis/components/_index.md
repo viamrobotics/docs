@@ -4,7 +4,10 @@ title: "Component APIs"
 weight: 5
 empty_node: true
 layout: "empty"
-canonical: "/reference/apis/"
+canonical: "/dev/reference/apis/"
 type: "docs"
-description: "Component APIs."
+aliases:
+  - /dev/reference/apis/components/
+  - /appendix/apis/components/
+  - /components/
 ---
