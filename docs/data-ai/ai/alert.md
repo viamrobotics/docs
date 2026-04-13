@@ -61,7 +61,6 @@ Configure the filtered camera module to capture images when specific predictions
    Replace the `<camera_name>` and `<vision_service_name>` values with the names of your camera and vision service.
 
    **Choose your detection type**:
-
    - For **object detection** (bounding boxes around objects): Use the `objects` configuration with the label you want to alert on and remove `classifications`
    - For **classification** (image-level labels): Use the `classifications` configuration with the label you want to alert on and remove `objects`
 
@@ -164,17 +163,14 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
 1. Add notification methods to the **Webhooks** or **Alert options** sub-panels:
 
    To add an email notification for specific email addresses:
-
    1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
    1. Set the alert frequency.
 
    To add an email notification for all machine owners:
-
    1. Toggle **Email all machine owners** on.
    1. Set the alert frequency.
 
    To add a webhook notification:
-
    1. Click **Add Webhook**.
 
    1. Add the URL of your cloud function.
@@ -188,13 +184,11 @@ Follow these steps to configure a trigger to alert when `filtered-camera` syncs 
 ## Testing
 
 1. **Verify your setup**:
-
    - Make sure `viam-server` is running on your machine
    - Confirm your vision service is working by checking the **TEST** panel
    - Ensure your filtered camera configuration matches your vision service's output labels
 
 2. **Test the detection**:
-
    - Present the camera with an object or situation that should trigger the alert
    - Watch the vision service **TEST** panel to confirm detections are occurring
    - Check that the confidence levels meet your threshold

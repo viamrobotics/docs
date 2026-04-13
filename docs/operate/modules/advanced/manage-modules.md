@@ -30,7 +30,6 @@ For information on pinning module deployments to versions, see [Module versionin
 Once your module is in the [registry](https://app.viam.com/registry), there are two ways to update it:
 
 - [Update automatically](#update-automatically-from-a-github-repo-with-cloud-build) using GitHub Actions: Recommended for ongoing projects with continuous integration (CI) workflows, or if you want to build for multiple platforms.
-
   - If you enabled cloud build when you generated your module, the GitHub Actions are already set up for you.
 
 - [Update manually](#update-manually) using the [Viam CLI](/dev/tools/cli/): Fine for small projects with one contributor.
@@ -323,7 +322,6 @@ To change the visibility:
    {{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x150" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." class="shadow" >}}
 
    The options are:
-
    - **Private**: Only users inside your organization can view, use, and edit the module.
    - **Public**: Any user inside or outside of your organization can view, use, and edit the module.
    - **Unlisted**: Any user inside or outside of your organization, with a direct link, can view and use the module.
@@ -397,13 +395,11 @@ To transfer ownership of a module from one organization to another:
    If the repository is using Viam's cloud build, the secrets contain an organization API key that will be exposed to the new owner after the repository transfer.
 
 1. Update the `meta.json` file to reflect the new organization:
-
    - Change the first part of the `module_id` field to the new organization's [namespace](/operate/modules/advanced/metajson/#create-a-namespace-for-your-organization).
    - For each model, change the first part of the `model` field to the new organization's namespace.
    - Update the `url` field to point to the new code repository if it has moved.
 
 1. Update the module code:
-
    - Throughout your module implementation code, change the model names in your component or service classes to match the changes you made to the `meta.json` file.
 
 1. Publish a new version of the module to the registry by following either set of update steps on this page.

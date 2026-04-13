@@ -223,7 +223,6 @@ In the **Type** dropdown, choose one of the following types:
   Whenever your machine syncs data that meets certain criteria, the trigger sends an alert.
 
   To use this trigger type:
-
   1. Choose the target component and method for your condition.
   1. Add a **condition**: specify a **key** in the synced data, an **operator**, and a **value**.
      When data from the target component and method syncs from your machine, the trigger uses the key as a path to look up a value in the synced data object.

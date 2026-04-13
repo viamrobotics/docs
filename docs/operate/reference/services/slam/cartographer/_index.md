@@ -60,7 +60,6 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
   In the case of the Viam Rover the center is in the middle between the wheels.
 
   If you need a **mount plate** for your RPlidar A1 or A3 model, you can 3D print an adapter plate using the following:
-
   - [RPlidar A1 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA1_adapter.STL)
   - [RPlidar A3 adapter STL](https://github.com/viamrobotics/Rover-VR1/blob/master/CAD/RPIidarA3_adapter.STL)
 
@@ -105,7 +104,6 @@ To create a new map, follow the instructions below.
    Click **Add module**, give your service a name of your choice, then click **Create**.
 
    In the resulting `SLAM` service configuration pane, choose `Create new map` as the **Mapping mode**, then configure the rest of the **Attributes** for that mapping mode:
-
    - **Camera**: Select the `name` of the camera component that you created when you [added the `rplidar` module to your machine](https://github.com/viamrobotics/rplidar).
      Example: "my-rplidar". Then set the `Data polling rate (Hz)` for retrieving pointclouds from the camera. For RPLidar A1 and A3 we recommend a frequency of 5 Hz.
    - **Movement Sensor (Optional)**: Select the `name` of the movement sensor component that you want to use for SLAM.
@@ -200,7 +198,6 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
 
    {{< tabs name="Update existing map">}}
    {{% tab name="Config Builder" %}}
-
    1. Select the Mapping mode dropdown and choose the **Update existing map** option.
    2. Configure **Select map** and **Map version** with the name and version of the map you would like to update.
       For the other attributes, review the information in [Create a new map](#create-a-new-map).
@@ -210,7 +207,6 @@ To update an existing map with new pointcloud data from a new SLAM session, foll
    {{% tab name="JSON Example" %}}
 
    This example JSON configuration:
-
    - adds the `viam:rplidar` and the `viam:cartographer` modules
    - configures the `viam:slam:cartographer` service
    - adds an `viam:lidar:rplidar` camera

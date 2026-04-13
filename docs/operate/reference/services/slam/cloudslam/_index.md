@@ -98,7 +98,6 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
    Find the component's card on your machine's **CONFIGURE** tab.
    Click **Add Method**, then select the method type and specify the capture frequency.
-
    - For the required LiDAR camera, choose the `NextPointCloud` method.
      Then set the capture frequency.
      `5 Hz` is a good starting place for most applications.
@@ -160,14 +159,12 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
    ```
 
    where
-
    - `slam_service` is the name of the slam service that you want to run with cloudslam.
    - `api_key` and `api_key_id` are for the location owner API key described in the [requirements](#requirements).
    - `organization_id`, `location_id`, and `machine_id` describe which location and organization you want to run cloudslam in. These are needed so we can fully tie the map you make to the machine running cloudslam.
 
 4. (Optional) configure the `cloudslam-wrapper` to use updating mode.
    If you want cloudslam to update a `slam_map` rather than create a new map, do the following:
-
    - configure the `slam_map` on your wrapped SLAM service
    - add a `machine_part_id` to your `cloudslam-wrapper` config.
 

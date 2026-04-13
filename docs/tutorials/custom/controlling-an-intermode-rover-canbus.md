@@ -300,12 +300,10 @@ To make your module accessible to `viam-server`, add it as a local module:
 Now that `viam-server` can find the module, you can add the base component it provides for your Intermode base:
 
 1. On the **CONFIGURE** tab of your machine's page:
-
    - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
    - Then, select **Local component**.
 
 1. On the **Create** menu for a **Local component**:
-
    - Select the type of modular resource provided by your module: [base](/operate/reference/components/base/), from the dropdown menu.
    - Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}: `viamlabs:tutorial:intermode`.
    - Enter a name for this instance of your base, for example `base-1`.

@@ -81,7 +81,6 @@ Right click on **Data** to open in a separate tab.
    {{<imgproc src="/tutorials/first-project/data-tab-images.png" resize="x1100" declaredimensions=true alt="Data tab showing a grid of captured images from the inspection camera." class="imgzoom shadow">}}
 
    This captured data serves multiple purposes:
-
    - **Compliance**—Auditable record of every inspection
    - **Quality trends**—"FAIL rate increased 20% this week"
    - **Model improvement**—Export images of cans to retrain your ML model

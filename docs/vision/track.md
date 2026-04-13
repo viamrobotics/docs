@@ -520,7 +520,6 @@ for cls, count := range classCounts {
 Two parameters control tracking behavior:
 
 - **`iou_threshold`** (default 0.3): Minimum IoU required to match a detection to an existing track. Lower values allow more movement between frames but increase false matches. Higher values require objects to move slowly and may cause track fragmentation.
-
   - **Slow-moving objects or high frame rate:** use 0.3-0.5.
   - **Fast-moving objects or low frame rate:** use 0.1-0.3.
 
