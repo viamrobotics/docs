@@ -225,41 +225,46 @@ async def do_command(
         command, timeout, **kwargs)
 ```
 
-### 7. Test locally
+### 7. Test with hot reloading
 
-Configure the module as a local module on your machine:
+Use the CLI to build and deploy your module to a machine during development:
 
-1. Navigate to your machine's **CONFIGURE** tab.
-2. Click **+**, select **Local module**, then **Local module** again.
-3. Enter the path to `run.sh` (for example, `/home/user/my-vision-module/run.sh`).
-4. Click **Create**, then **Save**.
+```bash
+# Build in the cloud and deploy to the machine
+viam module reload --part-id <machine-part-id>
 
-Add your resource as a local component:
+# Optionally add a resource at the same time
+viam module reload --part-id <machine-part-id> \
+  --model-name my-org:my-module:safe-arm
+```
 
-1. Click **+**, select **Local module**, then **Local component**.
-2. Fill in:
-   - **Model namespace triplet**: check your module's `meta.json`
-   - **Type**: the resource type (for example, `arm`)
-   - **Name**: a descriptive name (for example, `safe-arm-1`)
-3. Add the configuration attributes:
+If your development machine and target machine share the same architecture, you can build locally instead:
 
-   ```json {class="line-numbers linkable-line-numbers"}
-   {
-     "camera_name": "my-camera",
-     "vision_name": "my-detector",
-     "arm_name": "my-arm"
-   }
-   ```
+```bash
+# Build locally and transfer to the machine
+viam module reload-local --part-id <machine-part-id>
+```
 
-4. **Save** and use the **TEST** panel to verify behavior.
+After the module is deployed, configure its attributes in the Viam app:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "camera_name": "my-camera",
+  "vision_name": "my-detector",
+  "arm_name": "my-arm"
+}
+```
+
+**Save** and use the **TEST** panel to verify behavior.
+
+Each time you make changes, run `viam module reload` again to rebuild and redeploy.
 
 ### 8. Upload to the registry
 
-Once your module works locally:
+Once your module is working:
 
 1. Commit and push your code to a GitHub repository.
 2. Follow the steps to [upload your module](/build-modules/deploy-a-module/) using cloud build.
-3. After upload, remove the local module and add the resource from the registry instead.
 
 ### 9. Update references
 

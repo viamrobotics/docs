@@ -600,25 +600,33 @@ add more `resource.APIModel` entries to the `ModularMain` call.
 
 ### 3. Test locally
 
-Configure the module on your machine and verify it works.
+Use the CLI to build and deploy your module to a machine, then verify it works.
 
-**Configure as a local module:**
+**Deploy with hot reloading:**
 
-1. In the [Viam app](https://app.viam.com), navigate to your machine's
-   **CONFIGURE** tab.
-2. Click **+**, select **Advanced**, then **Local module**.
-3. Set the **Executable path** to your module binary or script.
-4. Click **Create**.
-5. Click **+**, select **Advanced**, then **Local component**.
-6. Select your module, set the type and model, and configure attributes:
+```bash
+# Build in the cloud and deploy to the machine
+viam module reload --part-id <machine-part-id>
+```
 
-   ```json
-   {
-     "source_url": "https://api.example.com/sensor/data"
-   }
-   ```
+If your development machine and target machine share the same architecture (for example, both are `linux/arm64`), you can build locally instead:
 
-7. Click **Save**.
+```bash
+# Build locally and transfer to the machine
+viam module reload-local --part-id <machine-part-id>
+```
+
+Use `reload` (cloud build) when developing on a different architecture than your target, for example when developing on macOS and deploying to a Raspberry Pi. Use `reload-local` when architectures match for faster iteration.
+
+After deploying, configure the component's attributes in the Viam app:
+
+```json
+{
+  "source_url": "https://api.example.com/sensor/data"
+}
+```
+
+Click **Save**.
 
 **Test using the Test section:**
 
@@ -635,21 +643,7 @@ interacts with your module.
 
 **Rebuild and redeploy during development:**
 
-`viam-server` does not automatically detect changes to your module's source
-files or binary. After making changes, use the CLI to rebuild and redeploy:
-
-```bash
-# Build locally, transfer to machine, and restart the module
-viam module reload-local --part-id <machine-part-id>
-
-# Restart the module without rebuilding (e.g., after editing Python source)
-viam module restart --part-id <machine-part-id>
-```
-
-The `reload-local` command runs your build command from `meta.json`, transfers
-the artifact to the target machine, updates the machine config, and restarts
-the module. Use `--no-build` to skip the build step if you already built
-manually.
+Each time you make changes, run `viam module reload` (or `reload-local`) again. Use `--no-build` to skip the build step if you already built manually. Use `viam module restart` to restart without rebuilding (for example, after editing Python source).
 
 ### 4. Add logging
 

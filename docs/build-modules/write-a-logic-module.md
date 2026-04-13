@@ -534,28 +534,37 @@ func (s *TempAlert) Reconfigure(
 
 ### 7. Test locally
 
-**Configure the service on your machine:**
+**Deploy with hot reloading:**
 
-1. In the [Viam app](https://app.viam.com), navigate to your machine's
-   **CONFIGURE** tab.
-2. Ensure you have at least one sensor configured (this is the resource your
-   logic module will monitor).
-3. Click **+**, select **Advanced**, then **Local module**.
-4. Set the **Executable path** to your module binary or script.
-5. Click **Create**.
-6. Click **+**, select **Advanced**, then **Local service**.
-7. Select your module, set the type to `generic` and the model to your model
-   name, and configure attributes:
+Ensure you have at least one sensor configured on your machine (this is the resource your logic module will monitor).
 
-   ```json
-   {
-     "sensor_names": ["my-temp-sensor"],
-     "max_temp": 30.0,
-     "poll_interval_secs": 5
-   }
-   ```
+Use the CLI to build and deploy your module:
 
-8. Click **Save**.
+```bash
+# Build in the cloud and deploy to the machine
+viam module reload --part-id <machine-part-id>
+```
+
+If your development machine and target machine share the same architecture, you can build locally instead:
+
+```bash
+# Build locally and transfer to the machine
+viam module reload-local --part-id <machine-part-id>
+```
+
+Use `reload` (cloud build) when developing on a different architecture than your target. Use `reload-local` when architectures match for faster iteration.
+
+After deploying, configure the service's attributes in the Viam app:
+
+```json
+{
+  "sensor_names": ["my-temp-sensor"],
+  "max_temp": 30.0,
+  "poll_interval_secs": 5
+}
+```
+
+Click **Save**.
 
 **Test with DoCommand:**
 
@@ -576,16 +585,7 @@ sends `DoCommand` requests to your service.
 
 **Rebuild and redeploy during development:**
 
-`viam-server` does not automatically detect changes to your module's source
-files or binary. After making changes, use the CLI to rebuild and redeploy:
-
-```bash
-# Build locally, transfer to machine, and restart the module
-viam module reload-local --part-id <machine-part-id>
-
-# Restart the module without rebuilding (e.g., after editing Python source)
-viam module restart --part-id <machine-part-id>
-```
+Each time you make changes, run `viam module reload` (or `reload-local`) again. Use `viam module restart` to restart without rebuilding (for example, after editing Python source).
 
 **Test the alert flow:**
 
