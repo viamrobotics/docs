@@ -30,4 +30,20 @@ aliases:
   - /dev/reference/contributing/
   - /dev/tools/
   - /dev/tools/contributing/
+  - /reference/account/
+  - /reference/account/accounts/
+  - /reference/account/billing/
+  - /reference/account/organize/
+  - /reference/advanced-modules/
+  - /reference/advanced-modules/create-subtype/
+  - /reference/advanced-modules/custom-components-remotes/
+  - /reference/advanced-modules/docker-modules/
+  - /reference/components/
+  - /reference/configuration/
+  - /reference/configuration/controls-package/
+  - /reference/configuration/kinematic-chain-config/
+  - /reference/configuration/mlmodel-design/
+  - /reference/configuration/slam-background/
+  - /reference/services/
+  - /reference/module-configuration/
 ---
