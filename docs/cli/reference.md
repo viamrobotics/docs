@@ -29,7 +29,7 @@ viam data export binary filter --destination=<output path> [...named args]
 viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
 viam data delete binary --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
-viam data delete tabular --delete-older-than-days=<N>
+viam data delete tabular --org-id=<org-id> --delete-older-than-days=<N>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
 viam data database hostname --org-id=<org-id>
 viam data tag ids add --tags=<tags> --binary-data-ids=<binary_ids>
@@ -117,8 +117,7 @@ done
 | `--destination` | Output directory for downloaded data. | `export tabular`, `export binary` | **Required** |
 | `--component-name` | Filter by specified component name. | `export binary`, `delete`, `tag filter` | Optional |
 | `--component-type` | Filter by specified component type. | `export binary`, `delete`, `tag filter` | Optional |
-| `--component-model` | Filter by specified component model. | `export`, `delete` | Optional |
-| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete` | Optional |
+| `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | `delete tabular` | **Required** |
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | `export binary` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter` | Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `export binary`, `export tabular`, `delete`, `dataset`, `tag filter` | Optional |
@@ -136,7 +135,7 @@ done
 | `--filter-tags` | Filter tags. Options: `'tagged'`, `'untagged'`, or a comma-separated list of tags for all data matching any of the tags. | `tag filter` | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
 | `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
-| `--org-id` | The organization ID for the database user. Uses default org if set. | `database configure`, `database hostname`, `index create`, `index delete`, `index list` | Optional |
+| `--org-id` | The organization ID. Required for `delete tabular`. Uses default org if set for other commands. | `delete tabular`, `database configure`, `database hostname`, `index create`, `index delete`, `index list` | Optional, **Required** for `delete tabular` |
 | `--password` | Password for the database user being configured. | `database configure` | **Required** |
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
 | `--resource-subtype` | Resource {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}}. | `export tabular` | **Required** |

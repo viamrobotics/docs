@@ -167,8 +167,12 @@ Delete tabular data older than a specified number of days.
 Pass `0` to delete all tabular data for your organization.
 
 ```sh {class="command-line" data-prompt="$"}
-viam data delete tabular --delete-older-than-days=90
+viam data delete tabular --org-id=<org-id> --delete-older-than-days=90
 ```
+
+{{< alert title="Caution" color="caution" >}}
+Passing `--delete-older-than-days=0` deletes **all** tabular data in the organization. This command has no component or location filter.
+{{< /alert >}}
 
 ## Configure database access
 
