@@ -96,7 +96,7 @@ viam data delete binary \
   --mime-types=image/jpeg
 ```
 
-The binary delete command requires `--org-ids`, `--start`, and `--end`. It also accepts optional filters for location, machine, part, component type, component name, capture method, MIME type, and bounding box labels.
+The binary delete command requires `--org-ids`, `--start`, and `--end`. It also accepts optional filters for location, machine, part, component type, component name, capture method, MIME type, and bounding box labels. For the full flag reference, see [Manage data with the CLI](/cli/manage-data/#delete-data).
 
 **From the SDK:**
 
