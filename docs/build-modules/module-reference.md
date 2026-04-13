@@ -125,7 +125,7 @@ type Resource interface {
 ```
 
 Plus the methods defined by the specific API (for example, `Readings` for sensor,
-`GetImage` for camera).
+`GetImages` for camera).
 
 ### Constructor signature
 

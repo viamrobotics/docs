@@ -312,8 +312,6 @@ watch -n 60 du -sh "$HOME/.viam/capture"
 - Reduce the capture frequency on the filtered camera. Even with filtering, a
   high capture frequency means more comparisons and more opportunities for a
   frame to be flagged as changed.
-- For sensor data, verify that `min_value` is set correctly and that the
-  `field` name matches the actual key in the sensor readings.
 
 {{< /expand >}}
 

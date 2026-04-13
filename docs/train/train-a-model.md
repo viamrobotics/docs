@@ -136,23 +136,15 @@ fmt.Printf("Created: %s\n", job.CreatedOn)
 
 ## 4. Test your model
 
-After training completes, test the model against images before deploying it.
+After training completes, test the model by deploying it to a machine with a vision service and checking its predictions against live or captured data.
 
-1. In the Viam app, open your dataset and click an image to open the detail
-   view. Choose images the model has not seen during training for a more
-   realistic test.
-2. In the side panel, click the **Actions** tab.
-3. Select your trained model from the model dropdown.
-4. Set a **confidence threshold** (0.0 to 1.0). Start with 0.5 and adjust:
-   - Lower the threshold to see more predictions (including lower-confidence ones)
-   - Raise the threshold to see only high-confidence predictions
-5. Click **Run**.
-
-Test with a variety of images:
-
-- Images that clearly belong to each class (should get high confidence)
-- Ambiguous images (helps you understand the model's decision boundary)
-- Images from conditions not in the training set (reveals generalization gaps)
+1. [Deploy the model](/train/deploy-a-model/) to a machine with a camera.
+2. [Configure a vision service](/vision/configure/) that uses the model.
+3. On the machine's **CONTROL** tab, open the vision service panel to see live classifications or detections.
+4. Evaluate the results against a variety of conditions:
+   - Images that clearly belong to each class (should get high confidence)
+   - Ambiguous images (helps you understand the model's decision boundary)
+   - Images from conditions not in the training set (reveals generalization gaps)
 
 ## 5. Deploy and iterate
 
