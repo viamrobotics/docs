@@ -127,7 +127,7 @@ The base remote control service supports the following methods:
 
 The following code examples assume that you have a machine configured with a [base](/operate/reference/components/base/) named `"my_base"`, [input controller](/operate/reference/components/input-controller/) named `"my_controller"`, and base remote control service named `"my_base_rc_service"`.
 Make sure to add the required code to connect to your machine and import any required packages at the top of your code file.
-Go to your machine's **CONNECT** tab and select the **SDK code sample** page for sample code to connect to your machine.
+Go to your machine's **CONNECT** tab and select **API keys** to get your credentials, then use the code sample to connect to your machine.
 
 {{% /alert %}}
 

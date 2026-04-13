@@ -153,13 +153,13 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **CONNECT** tab's **SDK code sample** page on your [machine page](https://app.viam.com/robots) and select **Python**.
+Next, go to the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **API keys** to get your credentials.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary packages and sets up a connection with Viam.
 
-Next, create a file named <file>main.py</file> with the sample code from the **CONNECT** tab's **SDK code sample** page.
+Next, create a file named <file>main.py</file> with the sample code from the **CONNECT** tab.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.

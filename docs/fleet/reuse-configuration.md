@@ -52,9 +52,10 @@ Click **Save** after adding and configuring your resources.
 ## Apply a fragment to a machine
 
 1. Navigate to your machine's **CONFIGURE** tab.
-1. Click **+** and select **Insert fragment**.
+1. Click **+** and select **Configuration block**.
 1. Search for your fragment by name and select it.
-1. Click **Insert fragment**.
+1. Click **Add fragment**.
+1. Click **Add fragment** again to confirm.
 1. Click **Save** in the upper right corner.
 
 The fragment's resources now appear on the machine's configuration page. The machine downloads and applies the configuration on its next sync.

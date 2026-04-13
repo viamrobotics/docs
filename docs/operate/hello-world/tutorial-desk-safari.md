@@ -169,9 +169,9 @@ Let's configure all these:
 {{% tablestep start=1 %}}
 **Add multiple resources in one step.**
 
-On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Insert fragment**.
-Select the `HelloWorldMLResources` fragment by the `Robot Land` organization.
-Click **Insert fragment**.
+On the **CONFIGURE** tab, click **+** and select **Configuration block**.
+Search for `HelloWorldMLResources` by the `Robot Land` organization and select it.
+Click **Add fragment**, then click **Add fragment** again to confirm.
 This adds a vision service named `object-detector` and a model for it.
 Save your config.
 

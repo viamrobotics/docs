@@ -49,7 +49,7 @@ See [Configure an arm](/operate/mobility/move-arm/configure-arm/) for instructio
 1. Choose your programming language.
    The examples below are written in Python and Go, so choose one of those to follow along.
 
-1. Toggle **Include API key**.
+1. Select **API keys** and copy your **API key** and **API key ID**.
 
 1. Copy and paste the connection code into a file on your machine, for example `move_arm.py` or `move_arm.go`.
 

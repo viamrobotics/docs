@@ -263,7 +263,7 @@ You need to tell the code how to access your specific machine (which in this cas
 
 Navigate to the machine's **CONNECT** tab.
 Make sure Python is selected in the Language selector.
-Get the machine address, API key, and API key ID from the **CONNECT** tab's **SDK code sample** page and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
+Get the machine address, API key, and API key ID from the **CONNECT** tab's **API keys** section and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
 
 {{% snippet "show-secret.md" %}}
 

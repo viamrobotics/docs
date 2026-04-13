@@ -216,7 +216,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the **CONNECT** tab of your machine's page on [Viam](https://app.viam.com/robots) and select the **SDK code sample** page.
+The easiest way to get started writing an application with Viam is to navigate to the **CONNECT** tab of your machine's page on [Viam](https://app.viam.com/robots) and select **API keys** to get your credentials.
 For this tutorial, we provide Python and Golang code snippets.
 Select **Python** or **Golang** and follow the instructions to connect to your machine.
 
@@ -304,7 +304,7 @@ go run blink.go
 
 In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/operate/reference/components/board/) from the Viam SDK.
 
-The **SDK code sample** page automatically adds the board import for you, but it doesn't hurt to double-check.
+The code sample from the **CONNECT** tab automatically adds the board import for you, but it doesn't hurt to double-check.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

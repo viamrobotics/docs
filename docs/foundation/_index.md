@@ -122,10 +122,10 @@ Your machine is online. Now connect to it programmatically.
 
 1. Go to your machine's page in the Viam app.
 2. Click the **CONNECT** tab.
-3. Select **SDK code sample** in the sidebar.
-4. Choose your language (Python, TypeScript, Golang, C++, or Flutter).
-5. Toggle **Include API key** to populate the code sample with your machine's credentials.
-6. Copy the code sample, install the SDK, and run it.
+3. Select **API keys** and copy your **API key** and **API key ID**.
+4. Copy the **machine address** from the same tab.
+5. Choose your language (Python, TypeScript, Golang, C++, or Flutter).
+6. Copy the code sample, install the SDK, paste in your credentials, and run it.
 
 If the connection succeeds, the script prints your machine's available resources.
 
