@@ -172,6 +172,7 @@ To configure the time series widget, define the following attributes for each li
 
 1. The **Window method** allows you to aggregate sensor readings over specified time intervals instead of displaying raw data points.
    Select a window method from the following options:
+
    - **None**: shows raw data with the path specified with no aggregation
    - **Count**: shows the number of readings within the window
    - **Average**: calculates the average value throughout the window

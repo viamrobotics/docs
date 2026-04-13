@@ -27,11 +27,13 @@ You can configure triggers to fire in the following scenarios:
 1. Enter a name and click **Create**.
 
 1. In the **Type** dropdown, choose one of the following event types:
+
    - **Data has been synced to the cloud**:
      Whenever your machine syncs data of any of the specified data types, the trigger fires.
      Then select the data types for which the trigger should send requests.
    - **Conditional data ingestion**:
      Whenever your machine syncs data that meets certain criteria, the trigger fires.
+
      1. Choose the target component and method for your condition.
      1. Add a **condition**: specify a **key** in the synced data, an **operator**, and a **value**.
         When data from the target component and method syncs from your machine, the trigger uses the key as a path to look up a value in the synced data object.
@@ -49,6 +51,7 @@ You can configure triggers to fire in the following scenarios:
    You can add **Webhooks** and **Email** notifications:
 
    To add a webhook:
+
    1. Click **Add Webhook**.
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
@@ -56,10 +59,12 @@ You can configure triggers to fire in the following scenarios:
       Use your cloud function to process data or interact with external APIs, such as Twilio, PagerDuty, or Zapier.
 
    To add an email notification for specific email addresses:
+
    1. Toggle **Email specific addresses** on and add the email addresses you wish to be notified whenever this trigger fires.
    1. Set the alert frequency (minimum time between notifications).
 
    To add an email notification for all machine owners:
+
    1. Toggle **Email all machine owners** on.
    1. Set the alert frequency (minimum time between notifications).
 

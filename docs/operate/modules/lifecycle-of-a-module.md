@@ -32,6 +32,7 @@ The lifecycle of a module and the resources it provides are as follows:
    Typically, the constructor calls the `reconfigure` function.
 
 1. Modular resources can fail to start for various reasons:
+
    - a validation error or exception thrown in constructor
    - a validation error or exception thrown during reconfiguration
    - exceeding the [configured timeout limits](/operate/modules/advanced/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure)

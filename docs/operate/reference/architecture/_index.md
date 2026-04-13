@@ -125,6 +125,7 @@ Data is captured and synced to the Viam Cloud as follows:
 
 1. Data collected by your resources, such as sensors and cameras, is first stored locally in a specified directory (defaults to <file>~/.viam/capture</file>).
    You control what data to capture, how often to capture it, and where to store it using the configuration.
+
    - You can also sync data from other sources by putting it into folders you specify.
      <br><br>
 

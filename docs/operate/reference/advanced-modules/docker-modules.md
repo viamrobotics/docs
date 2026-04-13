@@ -23,6 +23,7 @@ Note this is _not_ recommended for modules that do not use Docker, as it adds un
 ## Use a `first_run` script or binary
 
 1. Create a tarball that contains:
+
    - The module's entrypoint script or binary, for example:
 
      ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}

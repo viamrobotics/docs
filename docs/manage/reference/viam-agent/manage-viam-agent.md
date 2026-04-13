@@ -28,6 +28,7 @@ aliases:
 
   {{< tabs >}}
   {{% tab name="Web UI" %}}
+
   1. Navigate to your machine in [Viam](https://app.viam.com).
   1. Click on the machine status indicator next to the machine name.
   1. Click on the restart arrow symbol.
@@ -83,6 +84,7 @@ You can only restore this file if you have access to the machine configuration.
 
   {{< tabs >}}
   {{% tab name="Web UI" %}}
+
   1. Navigate to your machine in [Viam](https://app.viam.com).
   1. Click on the machine status indicator next to the machine name.
   1. Click on the restart arrow symbol.
@@ -186,6 +188,7 @@ You can also use the Viam web UI to restart `viam-agent`.
 1. Open a PowerShell prompt, selecting **Run as administrator**.
 
 1. Use the following commands to manage `viam-agent`:
+
    - To start `viam-agent`:
 
      ```sh {class="command-line" data-prompt="$"}
