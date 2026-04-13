@@ -7,5 +7,7 @@ layout: "empty"
 icon: true
 images: ["/logos/cpp.svg"]
 canonical: "https://cpp.viam.dev/"
-description: "C++."
+aliases:
+  - /dev/reference/sdks/cpp/
+  - /sdks/cpp/
 ---

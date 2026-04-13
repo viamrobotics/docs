@@ -7,5 +7,7 @@ layout: "empty"
 icon: true
 images: ["/logos/flutter.svg"]
 canonical: "https://flutter.viam.dev/"
-description: "Flutter."
+aliases:
+  - /dev/reference/sdks/flutter/
+  - /sdks/flutter/
 ---
