@@ -1,7 +1,7 @@
 ---
 title: "Vision service API"
 linkTitle: "Vision"
-weight: 20
+weight: 80
 type: "docs"
 description: "Give commands to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
 aliases:

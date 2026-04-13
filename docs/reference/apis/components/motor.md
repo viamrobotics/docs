@@ -1,7 +1,7 @@
 ---
 title: "Motor API"
 linkTitle: "Motor"
-weight: 100
+weight: 130
 type: "docs"
 description: "Give commands to operate a motor or get its current status."
 icon: true

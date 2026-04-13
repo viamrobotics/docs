@@ -1,7 +1,7 @@
 ---
 title: "Encoder API"
 linkTitle: "Encoder"
-weight: 50
+weight: 80
 type: "docs"
 description: "Give commands for getting the position of a motor or a joint in ticks or degrees."
 icon: true

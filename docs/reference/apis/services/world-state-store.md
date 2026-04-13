@@ -1,7 +1,7 @@
 ---
 title: "World state store API"
 linkTitle: "World state store"
-weight: 70
+weight: 90
 type: "docs"
 tags: ["world_state_store", "services"]
 description: "Retrieve a list of world objects."

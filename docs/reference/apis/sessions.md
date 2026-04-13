@@ -1,7 +1,7 @@
 ---
 title: "Session management with Viam's client SDKs"
 linkTitle: "Session management"
-weight: 20
+weight: 50
 type: "docs"
 description: "Manage sessions between your machine and clients connected through Viam's SDKs."
 tags:

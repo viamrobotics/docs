@@ -1,7 +1,7 @@
 ---
 title: "Audio in API"
 linkTitle: "Audio in"
-weight: 10
+weight: 20
 type: "docs"
 description: "Give commands to your audio in components."
 icon: true

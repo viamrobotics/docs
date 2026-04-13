@@ -1,7 +1,7 @@
 ---
 title: "Switch API"
 linkTitle: "Switch"
-weight: 200
+weight: 180
 type: "docs"
 description: "Give commands for getting the state of a physical switch that has two or more discrete positions."
 icon: true
