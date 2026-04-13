@@ -96,11 +96,11 @@ viam data delete binary \
   --mime-types=image/jpeg
 ```
 
-The binary delete command accepts `--org-ids`, `--start`, and `--end` (all required), plus optional filters: `--location-ids`, `--machine-id`, `--part-id`, `--machine-name`, `--part-name`, `--component-type`, `--component-name`, `--method`, `--mime-types`, and `--bbox-labels`.
+The binary delete command requires `--org-ids`, `--start`, and `--end`. It also accepts optional filters for location, machine, part, component type, component name, capture method, MIME type, and bounding box labels.
 
 **From the SDK:**
 
-The [data client API](/dev/reference/apis/data-client/) provides three delete methods:
+The [data client API](/dev/reference/apis/data-client/) provides three delete operations (Python method names shown; see the API reference for Go and TypeScript equivalents):
 
 - `delete_tabular_data(organization_id, delete_older_than_days)` deletes tabular rows older than a number of days. An optional `filter` parameter supports `location_ids` and `component_name` for finer-grained control than the CLI offers.
 - `delete_binary_data_by_filter(filter)` deletes binary data matching a filter (organization, location, time range, component, and so on).
@@ -152,7 +152,7 @@ This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP p
 }
 ```
 
-Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for the full CLI reference.
+Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions.
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
