@@ -10,4 +10,6 @@ aliases:
   - /dev/reference/apis/services/
   - appendix/apis/services/
   - /services/
+  - /reference/apis/services/SLAM/
+  - /reference/apis/services/slam/
 ---
