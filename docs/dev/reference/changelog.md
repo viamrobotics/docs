@@ -47,7 +47,7 @@ date: "2024-09-18"
 {{% changelog color="changed" title="GetImages replaced GetImage" date="2025-10-31" %}}
 
 [`GetImage`](/dev/reference/apis/components/camera/#getimages) is deprecated.
-Use [`GetImages`](/dev/reference/apis/components/camera/#getimagess) instead.
+Use [`GetImages`](/dev/reference/apis/components/camera/#getimages) instead.
 
 {{% /changelog %}}
 
@@ -408,7 +408,7 @@ You can now [set custom pricing](/organization/white-labeled-billing/) for your 
 {{% changelog color="removed" title="Stream removed from Go camera interface" date="2025-02-01" %}}
 
 The `Stream` API method has been removed from the Go SDK camera interface.
-For updated Go usage information, see [`GetImage`](/dev/reference/apis/components/camera/#getimages).
+For updated Go usage information, see `GetImages`.
 
 {{% /changelog %}}
 
@@ -624,7 +624,7 @@ This affects users of the [`MoveOnGlobe()`](/dev/reference/apis/services/motion/
 {{< changelog date="2024-05-09" color="changed" title="Return type of GetImage" >}}
 
 The Python SDK introduced a new image container class called [`ViamImage`](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.ViamImage).
-The camera component's [`GetImage()`](/dev/reference/apis/components/camera/#getimages) method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/dev/reference/apis/services/vision/#getdetections) and [`GetClassifications()`](/dev/reference/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
+The camera component's `GetImage()` method now returns a `ViamImage` type, and the vision service's [`GetDetections()`](/dev/reference/apis/services/vision/#getdetections) and [`GetClassifications()`](/dev/reference/apis/services/vision/#getclassifications) methods take in `ViamImage` as a parameter.
 
 You can use the helper functions `viam_to_pil_image` and `pil_to_viam_image` provided by the Python SDK to convert the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
 
@@ -1651,7 +1651,7 @@ Other service configurations are not affected.
 
 {{% changelog date="2022-11-15" color="removed" title="Width and height fields from camera API" %}}
 
-Removed `width` and `height` from the response of the [`GetImage`](/dev/reference/apis/components/camera/#getimages) method in the camera API.
+Removed `width` and `height` from the response of the `GetImage` method in the camera API.
 This does not impact any existing camera models.
 If you write a custom camera model, you no longer need to implement the `width` and `height` fields.
 
