@@ -57,31 +57,6 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
-### UploadImageToDatasets
-
-Upload an image data to the specified datasets.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `image` [(image.Image)](https://pkg.go.dev/image#Image)
-- `datasetIDs`
-- `tags` [([]string)](https://pkg.go.dev/builtin#string)
-- `mimeType` [(datasyncpb.MimeType)](https://pkg.go.dev/go.viam.com/api/app/datasync/v1#MimeType)
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#Service).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### UploadBinaryDataToDatasets
 
 Upload Binary data to the specified datasets.
@@ -199,8 +174,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to do.
-- `callOptions` (CallOptions) (optional): Call options for the command.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
+- `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
@@ -209,11 +185,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const dataManager = new VIAM.DataManagerClient(
-  machine,
-  'my_data_manager'
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
+import { Struct } from '@viamrobotics/sdk';
+
+const result = await resource.doCommand(
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
-await dataManager.doCommand(new Struct({ cmd: 'test', data1: 500 }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#docommand).

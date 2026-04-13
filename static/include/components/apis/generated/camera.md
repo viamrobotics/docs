@@ -1,189 +1,7 @@
-### GetImage
-
-_Deprecated. Use [`GetImages`](#getimages) instead._
-
-Return an image from the camera.
-You can request a specific MIME type but the returned MIME type is not guaranteed.
-If the server does not know how to return the specified MIME type, the server returns the image in another format instead.
-
-The available MIME types are:
-
-- `image/vnd.viam.rgba`
-- `image/vnd.viam.rgbalazy`
-- `image/jpeg`
-- `image/png`
-- `pointcloud/pcd`
-- `image/qoi`
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `mime_type` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The desired mime type of the image. This does not guarantee output type.
-- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
-- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
-
-**Returns:**
-
-- ([viam.media.video.ViamImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage)): The frame.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-my_camera = Camera.from_robot(machine, "my_camera")
-frame = await my_camera.get_image()
-print(f"Frame: {frame}")
-```
-
-If the `mime_type` of your image is `image/vnd.viam.dep`, pass the returned image data to the Viam Python SDK's [`ViamImage.bytes_to_depth_array()`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage.bytes_to_depth_array) method to decode the raw image data to a standard 2D image representation.
-
-For example:
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.media.video import CameraMimeType
-
-my_camera = Camera.from_robot(robot=machine, name="my_camera")
-
-# Assume "frame" has a mime_type of "image/vnd.viam.dep"
-frame = await my_camera.get_image(mime_type = CameraMimeType.VIAM_RAW_DEPTH)
-
-# Convert "frame" to a standard 2D image representation.
-# Remove the 1st 3x8 bytes and reshape the raw bytes to List[List[Int]].
-standard_frame = frame.bytes_to_depth_array()
-```
-
-In addition, the Python SDK provides the helper functions `viam_to_pil_image` and `pil_to_viam_image` to decode the `ViamImage` into a [`PIL Image`](https://omz-software.com/pythonista/docs/ios/Image.html) and vice versa.
-
-For example:
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.media.utils.pil import pil_to_viam_image, viam_to_pil_image
-
-# Get the ViamImage from your camera.
-frame = await my_camera.get_image()
-
-# Convert "frame" to a PIL Image representation.
-pil_frame = viam_to_pil_image(frame)
-
-# Use methods from the PIL Image class to get size.
-x, y = pil_frame.size[0], pil_frame.size[1]
-# Crop image to get only the left two fifths of the original image.
-cropped_pil_frame = pil_frame.crop((0, 0, x / 2.5, y))
-
-# Convert back to ViamImage.
-cropped_frame = pil_to_viam_image(cropped_pil_frame, frame.mime_type)
-```
-
-For documentation on available MIME types, see [`CameraMimeType`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.CameraMimeType).
-For more information on working with `ViamImage`, see [`ViamImage`](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.ViamImage).
-
-{{% alert title="Tip" color="tip" %}}
-
-Be sure to close the image when finished.
-
-{{% /alert %}}
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_image).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `mimeType` [(string)](https://pkg.go.dev/builtin#string): The desired MIME type of the image. This does not guarantee output type.
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [([]byte)](https://pkg.go.dev/builtin#byte): The frame as bytes.
-- [(ImageMetadata)](https://pkg.go.dev/go.viam.com/rdk/components/camera#ImageMetadata): The associated metadata, containing the image MIME type.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromProvider(machine, "my_camera")
-imageBytes, mimeType, err := myCamera.Image(context.Background(), utils.MimeTypeJPEG, nil)
-```
-
-You can also try to directly decode as an `Image.Image` with the camera's `DecodeImageFromCamera` function:
-
-```go {class="line-numbers linkable-line-numbers"}
-myCamera, err := camera.FromProvider(machine, "my_camera")
-img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCamera)
-```
-
-To use either method, be sure to import `"go.viam.com/rdk/utils"` at the beginning of your file.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#Camera).
-
-{{% /tab %}}
-{{% tab name="TypeScript" %}}
-
-**Parameters:**
-
-- `mimeType` ([MimeType](https://ts.viam.dev/types/MimeType.html)) (optional): A specific MIME type to request. This is not necessarily
-  the same type that will be returned.
-- `extra` (None) (optional)
-- `callOptions` (CallOptions) (optional)
-
-**Returns:**
-
-- (Promise<Uint8Array>)
-
-**Example:**
-
-```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, 'my_camera');
-const image = await camera.getImage();
-
-// Convert Uint8Array to base64
-const base64Image = btoa(
-  Array.from(image)
-    .map((byte) => String.fromCharCode(byte))
-    .join('')
-);
-
-// Convert image to base64 and display it
-const imageElement = document.createElement('img');
-imageElement.src = `data:image/jpeg;base64,${base64Image}`;
-const imageContainer = document.getElementById('#imageContainer');
-if (imageContainer) {
-  imageContainer.innerHTML = '';
-  imageContainer.appendChild(imageElement);
-}
-```
-
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getimage).
-
-{{% /tab %}}
-{{% tab name="Flutter" %}}
-
-**Parameters:**
-
-- `mimeType` [MimeType](https://flutter.viam.dev/viam_sdk/MimeType-class.html)? (optional)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
-
-**Returns:**
-
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
-
-**Example:**
-
-```dart {class="line-numbers linkable-line-numbers"}
-var nextImage = await myCamera.image();
-```
-
-For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Camera/image.html).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### GetImages
 
 {{% alert title="Usage" color="note" %}}
+
 You can use the [`rgb-d-overlay` module](https://app.viam.com/module/viam/rgb-d-overlay) to view and compare the camera streams returned by this method.
 See the [module readme](https://github.com/viam-labs/rgb-d-overlay) for further instructions.
 {{% /alert %}}
@@ -202,8 +20,8 @@ Multiple images returned from `GetImages()` do not represent a time series of im
 
 **Returns:**
 
-- (Tuple[Sequence[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): A tuple containing two values; the first \[0] a list of images
-returned from the camera system, and the second \[1] the metadata associated with this response.
+- (Tuple[Sequence[[video.NamedImage](https://python.viam.dev/autoapi/viam/media/video/index.html#viam.media.video.NamedImage)], [common.ResponseMetadata](https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata)]): :   A tuple containing two values; the first [0] a list of images
+    returned from the camera system, and the second [1] the metadata associated with this response.
 
 **Example:**
 
@@ -254,7 +72,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise< { images: { image: Uint8Array; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata; },>)
+- (Promise< { images: { image: Uint8Array; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata; }, >)
 
 **Example:**
 
@@ -270,12 +88,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `filterSourceNames` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>? (optional)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `filterSourceNames` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetImagesResult](https://flutter.viam.dev/viam_sdk/GetImagesResult-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[GetImagesResult](https://flutter.viam.dev/viam_sdk/GetImagesResult-class.html)>
 
 **Example:**
 
@@ -304,8 +122,8 @@ The consumer of this call should decode the bytes into the format suggested by t
 
 **Returns:**
 
-- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing two values; the first \[0] the pointcloud data,
-and the second \[1] the mimetype of the pointcloud (for example, PCD).
+- (Tuple[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing two values; the first [0] the pointcloud data,
+    and the second [1] the mimetype of the pointcloud (for example, PCD).
 
 **Example:**
 
@@ -376,11 +194,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html)>
 
 **Example:**
 
@@ -406,7 +224,8 @@ Get the camera intrinsic parameters and camera distortion, as well as whether th
 
 **Returns:**
 
-- (viam.components.camera.Camera.Properties): The properties of the camera.
+- ([viam.components.camera.Camera.Properties](https://python.viam.dev/autoapi/viam/components/camera/index.html#viam.components.camera.Camera.Properties)): :   The properties of the camera, including intrinsic parameters, distortion parameters,
+    supported mime types, and optionally extrinsic parameters (position relative to a reference frame).
 
 **Example:**
 
@@ -461,7 +280,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CameraProperties](https://flutter.viam.dev/viam_sdk/CameraProperties.html)>
 
 **Example:**
 
@@ -491,7 +310,7 @@ If you are implementing your own camera and want to add features that have no co
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Raises:**
 
@@ -536,7 +355,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -546,12 +366,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -562,11 +386,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -596,7 +420,7 @@ The [motion](/operate/reference/services/motion/) and [navigation](/operate/refe
 
 **Returns:**
 
-- ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+- ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
 
 **Example:**
 
@@ -671,7 +495,7 @@ Get the `ResourceName` for this camera.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

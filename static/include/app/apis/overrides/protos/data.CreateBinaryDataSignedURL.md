@@ -1,0 +1,1 @@
+Create a signed URL for accessing binary data without authentication. The URL expires after the specified duration.

@@ -80,11 +80,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `audioData` [Uint8List](https://api.flutter.dev/flutter/dart-typed_data/Uint8List-class.html) (optional)
 - `audioInfo` [AudioInfo](https://flutter.viam.dev/viam_protos.common.common/AudioInfo-class.html) (optional)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[PlayResponse](https://flutter.viam.dev/viam_protos.component.audioout/PlayResponse-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PlayResponse](https://flutter.viam.dev/viam_protos.component.audioout/PlayResponse-class.html)>
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioOutClient/play.html).
 
@@ -105,7 +105,7 @@ Get the audio device’s properties.
 
 **Returns:**
 
-- (viam.components.audio_out.audio_out.AudioOut.Properties): The properties of the audio output device.
+- ([viam.components.audio_out.audio_out.AudioOut.Properties](https://python.viam.dev/autoapi/viam/components/audio_out/audio_out/index.html#viam.components.audio_out.audio_out.AudioOut.Properties)): :   The properties of the audio output device.
 
 **Example:**
 
@@ -136,11 +136,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
+- `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise< { numChannels: number; sampleRateHz: number; supportedCodecs: string[] },>)
+- (Promise< { numChannels: number; sampleRateHz: number; supportedCodecs: string[] }, >)
 
 **Example:**
 
@@ -156,11 +157,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetPropertiesResponse](https://flutter.viam.dev/viam_protos.common.common/GetPropertiesResponse-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[GetPropertiesResponse](https://flutter.viam.dev/viam_protos.common.common/GetPropertiesResponse-class.html)>
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioOutClient/getProperties.html).
 
@@ -182,7 +183,7 @@ The [motion](/operate/reference/services/motion/) and [navigation](/operate/refe
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
 
 **Example:**
 
@@ -240,7 +241,7 @@ If you are implementing your own arm and want to add features that have no corre
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Raises:**
 
@@ -285,7 +286,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -295,12 +297,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -311,11 +317,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -343,7 +349,7 @@ Get the `ResourceName` for this audio out component.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

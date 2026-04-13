@@ -12,8 +12,8 @@ Return the voltage reading of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC
-(false).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): :   A float representing the voltage reading in V. A bool indicating whether the voltage is AC (true) or DC
+    (false).
 
 **Example:**
 
@@ -79,11 +79,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Voltage](https://flutter.viam.dev/viam_sdk/Voltage.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Voltage](https://flutter.viam.dev/viam_sdk/Voltage.html)>
 
 **Example:**
 
@@ -112,8 +112,8 @@ Return the current of a specified device and whether it is AC or DC.
 
 **Returns:**
 
-- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): A tuple which includes a float representing the current reading in amps, and a bool indicating whether the
-current is AC (true) or DC (false).
+- (Tuple[[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex), [bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)]): :   A tuple which includes a float representing the current reading in amps, and a bool indicating whether the
+    current is AC (true) or DC (false).
 
 **Example:**
 
@@ -179,11 +179,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Current](https://flutter.viam.dev/viam_sdk/Current.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Current](https://flutter.viam.dev/viam_sdk/Current.html)>
 
 **Example:**
 
@@ -212,7 +212,7 @@ Return the power reading in watts.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The power reading in watts.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The power reading in watts.
 
 **Example:**
 
@@ -277,11 +277,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
 
 **Example:**
 
@@ -309,8 +309,8 @@ If a sensor is not configured to have a measurement or fails to read a piece of 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current in
-amperes (float), is\_ac (bool), and power in watts (float).
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.SensorReading]): :   The readings for the PowerSensor. Can be of any type. Includes voltage in volts (float), current in
+    amperes (float), is\_ac (bool), and power in watts (float).
 
 **Example:**
 
@@ -374,11 +374,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -431,7 +431,7 @@ If you are implementing your own power sensor and want to add features that have
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Raises:**
 
@@ -476,7 +476,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -486,12 +487,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -502,11 +507,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -534,7 +539,7 @@ Get the `ResourceName` for this power sensor.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

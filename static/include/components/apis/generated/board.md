@@ -90,11 +90,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `high` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -123,7 +123,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): Indicates if the state of the pin is high.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Indicates if the state of the pin is high.
 
 **Example:**
 
@@ -196,11 +196,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
 
 **Example:**
 
@@ -237,7 +237,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The duty cycle.
+- ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The duty cycle.
 
 **Example:**
 
@@ -291,7 +291,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<number>): The duty cycle, which is a value from 0 to 1\.
+- (Promise<number>): The duty cycle, which is a value from 0 to 1.
 
 **Example:**
 
@@ -310,11 +310,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
 
 **Example:**
 
@@ -421,11 +421,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `dutyCyclePct` [double](https://api.flutter.dev/flutter/dart-core/double-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -454,7 +454,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The PWM frequency.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The PWM frequency.
 
 **Example:**
 
@@ -527,11 +527,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -642,11 +642,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `frequencyHz` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -675,7 +675,7 @@ The value is the number of times the interrupt has been interrupted with a tick.
 
 **Returns:**
 
-- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): The current value.
+- ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)): :   The current value.
 
 **Example:**
 
@@ -752,11 +752,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `digitalInterruptName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[int](https://api.flutter.dev/flutter/dart-core/int-class.html)>
 
 **Example:**
 
@@ -785,7 +785,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (viam.components.board.board.Board.Analog.Value): The current value, including the min, max, and step\_size of the reader.
+- ([viam.components.board.board.Board.Analog.Value](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog.Value)): :   The current value, including the min, max, and step\_size of the reader.
 
 **Example:**
 
@@ -865,11 +865,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `analogReaderName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[AnalogValue](https://flutter.viam.dev/viam_sdk/AnalogValue.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[AnalogValue](https://flutter.viam.dev/viam_sdk/AnalogValue.html)>
 
 **Example:**
 
@@ -974,11 +974,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `pin` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `value` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1006,7 +1006,7 @@ Start a stream of `DigitalInterrupt` ticks.
 
 **Returns:**
 
-- (viam.components.board.board.TickStream): stream of ticks.
+- ([viam.components.board.board.TickStream](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.TickStream)): :   stream of ticks.
 
 **Example:**
 
@@ -1095,12 +1095,12 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `interrupts` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `interrupts` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)\<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)\>
+- [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)<[Tick](https://flutter.viam.dev/viam_sdk/Tick.html)>
 
 **Example:**
 
@@ -1135,6 +1135,7 @@ This is expected: the board has been successfully powered down and can no longer
 
 - `mode` ([viam.proto.component.board.PowerMode.ValueType](https://python.viam.dev/autoapi/viam/gen/component/board/v1/board_pb2/index.html#viam.gen.component.board.v1.board_pb2.PowerMode)) (required): The desired power mode.
 - `duration` ([datetime.timedelta](https://docs.python.org/3/library/datetime.html#timedelta-objects)) (optional): Requested duration to stay in power mode.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
@@ -1160,6 +1161,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `mode` [(pb.PowerMode)](https://pkg.go.dev/go.viam.com/api/component/board/v1#PowerMode): Options to specify power usage of the board: `boardpb.PowerMode_POWER_MODE_UNSPECIFIED`, `boardpb.PowerMode_POWER_MODE_NORMAL`, and `boardpb.PowerMode_POWER_MODE_OFFLINE_DEEP`.
 - `duration` [(*time.Duration)](https://pkg.go.dev/time#Duration): If provided, the board will exit the given power mode after the specified duration.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
 
@@ -1210,11 +1212,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 - `powerMode` [PowerMode](https://flutter.viam.dev/viam_protos.component.board/PowerMode-class.html) (required)
 - `seconds` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
 - `nanos` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1243,7 +1245,7 @@ Get a configured `Analog` by `name`.
 
 **Returns:**
 
-- ([viam.components.board.board.Board.Analog](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog)): The analog reader or writer.
+- ([viam.components.board.board.Board.Analog](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.Analog)): :   The analog reader or writer.
 
 **Example:**
 
@@ -1294,7 +1296,7 @@ Get a DigitalInterrupt by `name`.
 
 **Returns:**
 
-- ([viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)): The digital interrupt.
+- ([viam.components.board.board.Board.DigitalInterrupt](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.DigitalInterrupt)): :   The digital interrupt.
 
 **Example:**
 
@@ -1347,7 +1349,7 @@ Get a `GPIOPin` by {{< glossary_tooltip term_id="pin-number" text="pin number" >
 
 **Returns:**
 
-- ([viam.components.board.board.Board.GPIOPin](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.GPIOPin)): The pin.
+- ([viam.components.board.board.Board.GPIOPin](https://python.viam.dev/autoapi/viam/components/board/board/index.html#viam.components.board.board.Board.GPIOPin)): :   The pin.
 
 **Example:**
 
@@ -1401,7 +1403,7 @@ The [motion](/operate/reference/services/motion/) and [navigation](/operate/refe
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
 
 **Example:**
 
@@ -1460,7 +1462,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Raises:**
 
@@ -1505,7 +1507,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1515,12 +1518,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -1531,11 +1538,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -1563,7 +1570,7 @@ Get the `ResourceName` for this board.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

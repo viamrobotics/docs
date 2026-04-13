@@ -1,0 +1,1 @@
+Delete a custom index from your data.

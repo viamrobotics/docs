@@ -11,6 +11,7 @@
 | [`IsPowered`](/dev/reference/apis/components/motor/#ispowered) | Return whether or not the motor is currently running, and the portion of max power (between `0` and `1`; if the motor is off the power will be `0`). |  |
 | [`IsMoving`](/dev/reference/apis/components/motor/#ismoving) | Return whether the motor is actively moving (or attempting to move) under its own power. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
 | [`Stop`](/dev/reference/apis/components/motor/#stop) | Cut the power to the motor immediately, without any gradual step down. | <p class="center-text"><i class="fas fa-check" title="yes"></i></p> |
+| [`GetGeometries`](/dev/reference/apis/components/motor/#getgeometries) | Get all the geometries associated with the motor in its current configuration, in the frame of the motor. |  |
 | [`Reconfigure`](/dev/reference/apis/components/motor/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/dev/reference/apis/components/motor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`GetResourceName`](/dev/reference/apis/components/motor/#getresourcename) | Get the `ResourceName` for this motor. |  |

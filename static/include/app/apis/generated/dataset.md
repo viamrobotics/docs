@@ -12,7 +12,7 @@ Create a new dataset.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The dataset ID of the created dataset.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The dataset ID of the created dataset.
 
 **Example:**
 
@@ -76,7 +76,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
 
 **Example:**
 
@@ -171,7 +171,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -274,7 +274,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -315,7 +315,7 @@ Get the datasets in an organization.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)): The list of datasets in the organization.
+- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)): :   The list of datasets in the organization.
 
 **Example:**
 
@@ -373,7 +373,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)>\>
 
 **Example:**
 
@@ -414,7 +414,7 @@ Get a list of datasets using their IDs.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)): The list of datasets.
+- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)): :   The list of datasets.
 
 **Example:**
 
@@ -468,11 +468,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `ids` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)\> (required)
+- `ids` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Dataset](https://flutter.viam.dev/viam_protos.app.dataset/Dataset-class.html)>\>
 
 **Example:**
 
