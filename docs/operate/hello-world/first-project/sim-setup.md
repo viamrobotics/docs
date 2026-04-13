@@ -12,17 +12,21 @@ aliases:
 
 This guide walks you through setting up the Gazebo simulation used in the [Your First Project](../) tutorial.
 
-If you run into trouble getting this working, reach out on discord or at **TODO**@viam.com.
-
 ## Step 1: Start a Simulation Environment
 
 Visit [cans.viam-labs.com](https://cans.viam-labs.com), and follow the prompts to log in. Wait for your instance to start.
+
+{{< alert title="Note" color="note" >}}
+The simulation session has a 1 hour time limit, but can be extended. Watch the session time in the top toolbar.
+{{< /alert >}}
 
 ## Step 2: Verify the Simulation
 
 When your instance is finished starting, you should see two live camera feeds from the inspection station:
 
 {{<imgproc src="/tutorials/first-project/sim-viewer.png" resize="x1100" declaredimensions=true alt="Simulation web viewer showing the Can Inspection Station with Overview Camera and Inspection Camera feeds." class="imgzoom shadow">}}
+
+If the camera feeds every go dark or stops responding, try refreshing the page or press <kbd>Ctrl</kbd>+<kbd>R</kbd>.
 
 ## Step 3: Create a Machine in Viam
 
