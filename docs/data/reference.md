@@ -438,28 +438,33 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 
 #### Platform-managed capture settings
 
-The following capture method settings are processed by the Viam cloud platform, not by `viam-server`. They appear inside the same `service_configs` block as capture method attributes:
+The following settings are processed by the Viam cloud platform, not by `viam-server`. `retention_policy` is set at the `attributes` level (sibling to `capture_methods`), while `recent_data_store` is set inside an individual `capture_methods[]` entry:
 
 ```json
 {
   "type": "data_manager",
   "attributes": {
-    "capture_methods": [ ... ],
+    "capture_methods": [
+      {
+        "method": "Readings",
+        "capture_frequency_hz": 0.2,
+        "recent_data_store": {
+          "stored_hours": 24
+        }
+      }
+    ],
     "retention_policy": {
       "days": 30
-    },
-    "recent_data_store": {
-      "stored_hours": 24
     }
   }
 }
 ```
 
 <!-- prettier-ignore -->
-| Name | Type | Description |
-| --- | --- | --- |
-| `retention_policy` | object | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
-| `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
+| Name | Type | Level | Description |
+| --- | --- | --- | --- |
+| `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
+| `recent_data_store` | object | Inside a `capture_methods[]` entry | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
 For remote parts capture, see [Capture from multi-part machines](/data/capture-sync/remote-parts-capture/).
 
