@@ -151,7 +151,7 @@ This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP p
 {
   "tracing": {
     "enabled": true,
-    "otlpendpoint": "localhost:4317"
+    "otlpendpoint": "<collector-host>:4317"
   }
 }
 ```
@@ -169,7 +169,7 @@ For local development, see the [Jaeger getting started guide](https://www.jaeger
 }
 ```
 
-You can combine multiple destinations (for example, `"disk": true` and `"otlpendpoint": "localhost:4317"` together).
+You can combine multiple destinations (for example, `"disk": true` and `"otlpendpoint": "<collector-host>:4317"` together).
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
