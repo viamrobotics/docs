@@ -8,13 +8,23 @@ description: "Structure of captured tabular data: document format, column refere
 date: "2025-02-10"
 ---
 
-Captured tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. This page describes the structure of that table and the nested `data` column.
+When you enable data capture on a component, `viam-server` records its readings to local disk and the data management service syncs those recordings to the cloud. Once synced, the captured tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) lands in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource.
+
+You can access this data in three ways:
+
+- **Viam app**: the **DATA** tab shows latest readings on the **Sensors** tab. The **Query** editor lets you run SQL or MQL against the `readings` table directly.
+- **Viam SDK**: the data client's `tabular_data_by_sql` and `tabular_data_by_mql` methods query the same table from Python or Go code.
+- **External tools**: connect Grafana, Tableau, or any MongoDB client using the database credentials from `viam data database configure`. See [Visualize data](/data/visualize-data/).
+
+This page describes the structure of the `readings` table and the nested `data` column so you know what to query.
 
 For query syntax, optimization tips, and supported operators, see [Data reference](/data/reference/).
 
 ## What a document looks like
 
-Here is a complete document:
+Every row in the `readings` table has two layers: metadata that Viam adds automatically (organization, location, machine, part, component, method, timestamps, tags) and your actual captured values inside the `data` column.
+
+Here is a complete row for a sensor called `my-sensor`:
 
 ```json
 {
@@ -38,7 +48,7 @@ Here is a complete document:
 }
 ```
 
-Your actual sensor values are inside the `data` column, nested under a key that depends on the component type and capture method. Everything outside of `data` is metadata that Viam adds automatically.
+The metadata fields (`organization_id` through `additional_parameters`) are the same structure for every component type. The `data` column is different for each component and capture method. To query your specific values, you use dot notation into `data` (for example, `data.readings.temperature`).
 
 ## Column reference
 
