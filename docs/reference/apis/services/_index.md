@@ -12,4 +12,6 @@ aliases:
   - /services/
   - /reference/apis/services/SLAM/
   - /reference/apis/services/slam/
+  - /dev/reference/apis/services/SLAM/
+  - /dev/reference/apis/services/slam/
 ---
