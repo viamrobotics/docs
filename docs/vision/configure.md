@@ -157,7 +157,7 @@ Save your config to use your specified version of the ML model.
 
 1. Click the **+** button.
 2. Select **Configuration block**.
-3. Search for **mlmodel** under vision services. You can also search for
+3. Search for **vision / mlmodel** (`vision:mlmodel`). You can also search for
    **computer vision**.
 4. Click **Add component**, name it `my-detector`, and click **Add component**
    again to confirm.

@@ -387,6 +387,8 @@ for {
 {{% /tab %}}
 {{< /tabs >}}
 
+## Alternatives and advanced usage
+
 ### 6. Use the color_detector (no ML model needed)
 
 For simple color-based detection, configure a vision service with the `color_detector` model instead of `mlmodel`. This requires no trained model.
