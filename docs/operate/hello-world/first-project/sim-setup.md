@@ -1,47 +1,34 @@
 ---
-linkTitle: "Gazebo Simulation Setup"
-title: "Gazebo Simulation Setup"
+linkTitle: "Simulation Setup"
+title: "Simulation Setup"
 weight: 100
 layout: "docs"
 type: "docs"
-description: "Set up the Gazebo simulation environment for the inspection tutorial."
+description: "Set up the hosted simulation environment for the inspection tutorial."
 date: "2025-01-30"
+aliases:
+  - gazebo-setup
 ---
 
 This guide walks you through setting up the Gazebo simulation used in the [Your First Project](../) tutorial.
 
-## Prerequisites
+## Step 1: Start a Simulation Environment
 
-- **Docker Desktop** installed and running
-- ~5GB disk space for the Docker image
+Visit [cans.viam-labs.com](https://cans.viam-labs.com), and follow the prompts to log in. Wait for your instance to start.
 
-## Step 1: Pull the Docker Image
+{{< alert title="Note" color="note" >}}
+The simulation session has a 1 hour time limit, but can be extended. Watch the session time in the top toolbar.
+{{< /alert >}}
 
-The simulation runs in a Docker container with Gazebo Harmonic and viam-server pre-installed.
+## Step 2: Verify the Simulation
 
-```bash
-docker pull ghcr.io/viamrobotics/can-inspection-simulation:latest-local
-```
-
-This downloads the pre-built image, which takes about a minute depending on your internet connection.
-
-## Step 2: Start the Container
-
-```bash
-docker run --name gz-station1 -d \
-  -p 8080:8080 -p 8081:8081 -p 8443:8443 \
-  ghcr.io/viamrobotics/can-inspection-simulation:latest-local
-```
-
-## Step 3: Verify the Simulation
-
-Open your browser to `http://localhost:8081`
-
-You should see two live camera feeds from the inspection station:
+When your instance is finished starting, you should see two live camera feeds from the inspection station:
 
 {{<imgproc src="/tutorials/first-project/sim-viewer.png" resize="x1100" declaredimensions=true alt="Simulation web viewer showing the Can Inspection Station with Overview Camera and Inspection Camera feeds." class="imgzoom shadow">}}
 
-## Step 4: Create a Machine in Viam
+If the camera feeds every go dark or stops responding, try refreshing the page or press <kbd>Ctrl</kbd>+<kbd>R</kbd>.
+
+## Step 3: Create a Machine in Viam
 
 1. Go to [app.viam.com](https://app.viam.com) and create a free account or log in
 2. Click the **Locations** tab
@@ -49,7 +36,7 @@ You should see two live camera feeds from the inspection station:
 
    {{<imgproc src="/tutorials/first-project/fleet-add-machine.png" resize="x1100" declaredimensions=true alt="Viam app Fleet page showing First Location with no machines and the Add machine button." class="imgzoom shadow">}}
 
-## Step 5: Configure Machine Credentials
+## Step 4: Configure Machine Credentials
 
 1. In the Viam app, click the **Awaiting setup** button on your new machine and click **Machine cloud credentials** to copy the credentials JSON
 
@@ -67,7 +54,7 @@ You should see two live camera feeds from the inspection station:
 
    {{<imgproc src="/tutorials/first-project/sim-config-running.png" resize="x1100" declaredimensions=true alt="Simulation configuration page after restart, showing a green 'Configuration updated successfully' banner and Viam Server Status: Running." class="imgzoom shadow">}}
 
-## Step 6: Verify Machine Connection
+## Step 5: Verify Machine Connection
 
 Go back to your machine's page in the Viam app.
 The status indicator should now show **Live**.
