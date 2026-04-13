@@ -22,7 +22,7 @@ WHERE component_name = 'YOUR-COMPONENT'
 LIMIT 1
 ```
 
-Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/reference/#column-reference) for the full reference.
+Switch to **table view** to see nested fields as dot-notation column headers. Use those paths in your code. See the [readings table schema](/data/schema/#column-reference) for the full reference.
 {{< /alert >}}
 
 {{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
