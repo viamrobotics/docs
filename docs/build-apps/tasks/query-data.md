@@ -8,7 +8,7 @@ description: "Query sensor and binary data from a client app using SQL and MQL t
 date: "2026-04-10"
 ---
 
-Query data that your Viam machines have captured and synced to the cloud, from inside a client app. This page covers the SDK calls for running SQL and MQL queries from app code. For the query languages themselves (schema, operators, examples), see [Query data](/data/query/query-data/) in the data section.
+Query data that your Viam machines have captured and synced to the cloud, from inside a client app. This page covers the SDK calls for running SQL and MQL queries from app code. For the query languages themselves (schema, operators, examples), see [Query data](/data/query-data/) in the data section.
 
 ## Prerequisites
 
@@ -307,6 +307,6 @@ Binary data responses include metadata and a URL to download the file. See the [
 
 ## Next
 
-- [Query data](/data/query/query-data/) for the SQL and MQL query languages, the schema, and operator reference
+- [Query data](/data/query-data/) for the SQL and MQL query languages, the schema, and operator reference
 - [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/) for setting up the cloud connection that `dataClient` requires
 - [Data API reference](/reference/apis/data-client/) for the full `DataClient` method list
