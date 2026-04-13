@@ -39,8 +39,8 @@ import * as VIAM from "@viamrobotics/sdk";
 const client = await VIAM.createViamClient({
   credentials: {
     type: "api-key",
-    authEntity: process.env.API_KEY_ID,
-    payload: process.env.API_KEY,
+    authEntity: "<API-KEY-ID>",
+    payload: "<API-KEY>",
   },
 });
 ```
@@ -216,7 +216,9 @@ Note that `connectToMachine` uses `reconnectMaxAttempts: 1` instead of the defau
 {{% tab name="Flutter" %}}
 
 ```dart
-final robots = await viam.appClient.listRobots(locationId);
+final locations = await viam.appClient.listLocations(orgId);
+final location = locations.first;
+final robots = await viam.appClient.listRobots(location.id);
 final robot = robots.first;
 
 final robotClient = await viam.getRobotClient(robot);

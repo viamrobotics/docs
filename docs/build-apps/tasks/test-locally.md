@@ -32,8 +32,8 @@ const machine = await VIAM.createRobotClient({
   host: "my-robot-main.xxxx.viam.cloud",
   credentials: {
     type: "api-key",
-    authEntity: process.env.API_KEY_ID,
-    payload: process.env.API_KEY,
+    authEntity: "<API-KEY-ID>",
+    payload: "<API-KEY>",
   },
   signalingAddress: "http://my-robot.local:8080",
 });
