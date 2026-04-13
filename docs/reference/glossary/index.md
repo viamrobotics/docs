@@ -9,4 +9,7 @@ card:
   name: reference
   weight: 10
   title: Glossary
+aliases:
+  - /dev/reference/glossary/
+  - "/appendix/glossary/"
 ---
