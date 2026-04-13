@@ -1,5 +1,5 @@
 ---
-linkTitle: "Data schema"
+linkTitle: "Captured data schema"
 title: "Captured data schema"
 weight: 19
 layout: "docs"
