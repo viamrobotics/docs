@@ -37,8 +37,10 @@ Each sub-part is an independent `viam-server` instance with its own configuratio
 
 1. In the Viam app, navigate to the sub-part's section of your machine's **CONFIGURE** tab.
 2. Find the component on the sub-part that you want to capture from.
-3. In the component's **Data capture** section, click **+ Add method**.
-4. If the sub-part does not already have a data management service, Viam prompts you to enable one. Click to enable it.
+3. Click **+** on the component's **Data Capture** card.
+4. If you see a "Data management service missing" banner, click
+   **Create data management service**, click **Save**, navigate back to
+   the component, and click **+** on the **Data Capture** card again.
 5. Select the capture method and frequency as you would for a local component.
 6. Click **Save**.
 
@@ -65,11 +67,10 @@ For more details on remote part configuration, including authentication and manu
 Once the remote part is added, its components appear on the main machine's **CONFIGURE** tab under the remote's section. Configure data capture through the main machine's config, not through the remote machine's config:
 
 1. Find the remote component in the main machine's **CONFIGURE** tab.
-2. Scroll to the **Data capture** section on the component card.
-3. Click **+ Add method**.
-4. Select the capture method (for example, **GetImages** for a camera, **Readings** for a sensor).
-5. Set the capture frequency.
-6. Click **Save**.
+2. Click **+** on the component's **Data Capture** card.
+3. Select the capture method (for example, **GetImages** for a camera, **Readings** for a sensor).
+4. Set the capture frequency.
+5. Click **Save**.
 
 The main part captures and syncs the remote's data. Files are written to the main part's capture directory and uploaded to the cloud from there.
 

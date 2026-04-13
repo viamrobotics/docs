@@ -21,9 +21,8 @@ capture running:
 
 1. Navigate to your machine's **CONFIGURE** tab in the Viam app.
 2. Find the component you want to stop capturing from.
-3. Scroll to the **Data capture** section in the component's configuration panel.
-4. Toggle the configured capture method's switch to **Off**.
-5. Click **Save**.
+3. In the **Data Capture** section, toggle the configured capture method's switch to **Off**.
+4. Click **Save**.
 
 The component stops capturing immediately. Other components with data capture
 configured continue capturing normally.

@@ -43,9 +43,10 @@ Expand the **test** section on the sensor's component card. You should see `{"a"
 Now we will tell Viam to record every reading from this sensor.
 
 1. Find the `test-sensor` component in the **CONFIGURE** tab.
-2. Scroll to the **Data capture** section on the component card.
-3. Click **+ Add method**.
-4. If this is your first time configuring data capture, Viam will prompt you to enable the **data management service**. Click to enable it.
+2. Click **+** on the **Data Capture** card.
+3. If you see a "Data management service missing" banner, click
+   **Create data management service**, click **Save**, navigate back to
+   `test-sensor`, and click **+** on the **Data Capture** card again.
 5. Select the **Readings** method.
 6. Set the capture frequency to **0.2** (one reading every 5 seconds).
 7. Click **Save**.
