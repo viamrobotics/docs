@@ -25,7 +25,7 @@ Among other things, `viam-agent`:
 Currently, `viam-agent` is only supported on Linux for amd64 (x86_64) and arm64 (aarch64) CPUs, MacOS for arm64 (M/silicon) CPUs, and Windows (native).
 {{< /alert >}}
 
-To provision machines using `viam-agent`, see [Provision Machines](/fleet/provision-devices/setup/).
+To provision machines using `viam-agent`, see [Provision Machines](/fleet/provision-devices/).
 
 ## Installation
 
@@ -298,7 +298,7 @@ You can also start `viam-agent` in fast start mode by setting `VIAM_AGENT_FAST_S
 | `user_idle_minutes` | integer | Optional | Amount of time before considering a user (using the captive web portal or provisioning app) idle, and resuming normal behavior. Used to avoid interrupting provisioning mode (for example for network tests/retries) when a user might be busy entering details. Default: `5` (5 minutes). |
 | `wifi_power_save` | boolean | Optional | If set, will explicitly enable or disable power save for all WiFi connections managed by NetworkManager. If not set, the system default applies. Default: `null`. |
 
-For more detailed instructions on what these settings do, see [Provisioning](/fleet/provision-devices/setup/).
+For more detailed instructions on what these settings do, see [Provisioning](/fleet/provision-devices/).
 
 ## `additional_networks`
 

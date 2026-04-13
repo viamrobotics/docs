@@ -161,7 +161,7 @@ Now imagine you want to run code to turn on a fan when the temperature sensor re
 - Write your script using one of the Viam [SDKs](/reference/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
 - You then run this code either locally on the SBC, or on a separate server.
   See [Create a headless app](/operate/control/headless-app/) for more information.
-  Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/reference/components/sensor/#api) to get readings and the [motor API](/reference/components/motor/#api) to turn the motor on and off.
+  Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/reference/apis/components/sensor/) to get readings and the [motor API](/reference/apis/components/motor/) to turn the motor on and off.
 
   {{< imgproc src="/build/program/sdks/robot-client.png" resize="x400" declaredimensions=true alt="A desktop computer (client in this case) sends commands to robot 1 (server) with gRPC over wifi." >}}
 
