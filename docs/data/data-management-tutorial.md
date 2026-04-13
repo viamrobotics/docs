@@ -112,7 +112,7 @@ WHERE component_name = 'test-sensor'
 LIMIT 1
 ```
 
-Switch to **table view** (the table icon in the results area). You'll see nested fields flattened into column headers like `data.readings.x`. These dot-notation paths are what you use to extract specific values in queries. For the full schema, see the [readings table schema](/data/reference/#column-reference).
+Switch to **table view** (the table icon in the results area). You'll see nested fields flattened into column headers like `data.readings.x`. These dot-notation paths are what you use to extract specific values in queries. For the full schema, see the [readings table schema](/data/schema/#column-reference).
 
 Try one more query:
 

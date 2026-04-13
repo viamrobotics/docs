@@ -20,196 +20,11 @@ aliases:
 date: "2025-02-10"
 ---
 
-## Data schema and querying
+## Data schema
 
-This section describes the structure of captured data and how to query it effectively.
+For the full schema of the `readings` table (document format, column reference, the `data` column, and per-component data structures), see [Captured data schema](/data/schema/).
 
-### What a document looks like
-
-All tabular data is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. Here is a complete document:
-
-```json
-{
-  "organization_id": "ab1c2d3e-1234-5678-abcd-ef1234567890",
-  "location_id": "loc-1234-5678-abcd-ef1234567890",
-  "robot_id": "robot-1234-5678-abcd-ef1234567890",
-  "part_id": "part-1234-5678-abcd-ef1234567890",
-  "component_type": "rdk:component:sensor",
-  "component_name": "my-sensor",
-  "method_name": "Readings",
-  "time_requested": "2025-03-15T14:30:00.000Z",
-  "time_received": "2025-03-15T14:30:01.234Z",
-  "tags": ["production", "floor-2"],
-  "additional_parameters": {},
-  "data": {
-    "readings": {
-      "temperature": 23.5,
-      "humidity": 61.2
-    }
-  }
-}
-```
-
-Your actual sensor values are inside the `data` column, nested under a key that depends on the component type and capture method. Everything outside of `data` is metadata that Viam adds automatically.
-
-### Column reference
-
-| Column                  | Type      | Description                                                                                                        |
-| ----------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
-| `organization_id`       | String    | Organization UUID. Set automatically from your machine's config.                                                   |
-| `location_id`           | String    | Location UUID. The location this machine belongs to.                                                               |
-| `robot_id`              | String    | Machine UUID. Identifies which machine captured this data.                                                         |
-| `part_id`               | String    | Machine part UUID. Identifies which part of the machine.                                                           |
-| `component_type`        | String    | Resource type as a triplet (for example, `rdk:component:sensor`).                                                  |
-| `component_name`        | String    | The name you gave this component in your config (for example, `my-sensor`). This is what you filter on most often. |
-| `method_name`           | String    | The capture method (for example, `Readings`, `GetImages`, `EndPosition`).                                          |
-| `time_requested`        | Timestamp | When the capture was requested on the machine (machine's clock).                                                   |
-| `time_received`         | Timestamp | When the cloud received and stored the data. Use this for time-range queries since it's indexed.                   |
-| `tags`                  | Array     | User-applied tags from your data management config.                                                                |
-| `additional_parameters` | JSON      | Method-specific parameters you configured (for example, `pin_name`, `reader_name`).                                |
-| `data`                  | JSON      | Your actual captured values. Structure varies by component type and method.                                        |
-
-{{< alert title="Note" color="note" >}}
-The `readings` table does not include `robot_name` or `part_name` columns. These fields appear in data export responses but are not part of the queryable schema. To filter by machine, use `robot_id` or `part_id`.
-{{< /alert >}}
-
-### The data column
-
-The `data` column contains your actual captured values as nested JSON. Its structure depends on what component and method captured the data. To find out what's inside `data` for your specific components, run:
-
-```sql
-SELECT data FROM readings
-WHERE component_name = 'my-sensor'
-  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
-LIMIT 1
-```
-
-Then use the field names you see to build more specific queries.
-
-{{< alert title="Known issue: SQL queries need an explicit lower time bound" color="caution" >}}
-SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Include `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` in any SQL example on this page if you copy it. MQL queries are not affected. Tracked as APP-10891.
-{{< /alert >}}
-
-{{% alert title="Note" color="note" %}}
-There is a shared monthly cap of 100 TB of data processing across `TabularDataByMQL` and `TabularDataBySQL`. Requests start failing after this combined limit is reached. If your organization hits this cap, please [contact us](mailto:support@viam.com) to request an increase.
-{{% /alert %}}
-
-**Common data structures:**
-
-{{< tabs >}}
-{{% tab name="Sensor (Readings)" %}}
-
-Keys inside `data.readings` are whatever your sensor returns. Each sensor is different.
-
-```json
-{
-  "readings": {
-    "temperature": 23.5,
-    "humidity": 61.2
-  }
-}
-```
-
-To query: `data.readings.temperature`
-
-Example:
-
-```sql
-SELECT time_received,
-  data.readings.temperature AS temp,
-  data.readings.humidity AS humidity
-FROM readings
-WHERE component_name = 'my-sensor'
-  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
-ORDER BY time_received DESC
-LIMIT 10
-```
-
-{{% /tab %}}
-{{% tab name="Vision service (CaptureAllFromCamera)" %}}
-
-Detections include bounding box coordinates and confidence scores.
-
-```json
-{
-  "detections": [
-    {
-      "class_name": "person",
-      "confidence": 0.94,
-      "x_min": 120,
-      "y_min": 50,
-      "x_max": 340,
-      "y_max": 480
-    }
-  ]
-}
-```
-
-To query detections, use MQL since SQL cannot easily traverse arrays:
-
-```json
-[
-  { "$match": { "component_name": "my-vision" } },
-  { "$unwind": "$data.detections" },
-  { "$match": { "data.detections.confidence": { "$gt": 0.8 } } },
-  {
-    "$project": {
-      "class": "$data.detections.class_name",
-      "confidence": "$data.detections.confidence",
-      "time": "$time_received"
-    }
-  }
-]
-```
-
-{{% /tab %}}
-{{% tab name="Motor (Position)" %}}
-
-```json
-{
-  "position": 145.7
-}
-```
-
-To query: `data.position`
-
-{{% /tab %}}
-{{% tab name="Encoder (Position)" %}}
-
-```json
-{
-  "position": 12450,
-  "position_type": 1
-}
-```
-
-To query: `data.position`
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### Finding the structure of your data
-
-If you're unsure what fields your component produces:
-
-1. Run the following to see what components have captured data:
-
-   ```sql
-   SELECT DISTINCT component_name FROM readings
-   WHERE time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
-   ```
-
-2. Pick one and run the following:
-
-   ```sql
-   SELECT data FROM readings
-   WHERE component_name = 'YOUR-COMPONENT'
-     AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
-   LIMIT 1
-   ```
-
-3. Look at the JSON structure in the result. The keys you see are the fields you can query with dot notation.
-4. Build your query using `data.` followed by the path to the field you want (for example, `data.readings.temperature`).
+## Query reference
 
 ### Indexed fields and query optimization
 
@@ -298,6 +113,14 @@ db.readings.aggregate([
 ### Permissions
 
 Users with owner or operator roles at the organization, location, or machine level can query data. See [Role-Based Access Control](/organization/rbac/) for details.
+
+## Supported resources
+
+The following components and services support data capture and cloud sync. The table shows which capture methods are available for each resource type. Not all models support all methods listed for their type.
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
+
+If the resource type you need is not listed, you can still capture data from it using the `DoCommand` method with a custom `docommand_input` parameter.
 
 ## Capture and sync configuration
 
@@ -389,6 +212,31 @@ The following settings appear in your machine's configuration but are not proces
 
 Data capture is configured per-resource in the `service_configs` array of a component or service. When you configure capture through the Viam app UI, these fields are set automatically. The table below is the JSON-level reference for manual configuration.
 
+Here is where capture attributes live in a component's JSON config:
+
+```json
+{
+  "name": "my-sensor",
+  "api": "rdk:component:sensor",
+  "model": "rdk:builtin:fake",
+  "service_configs": [
+    {
+      "type": "data_manager",
+      "attributes": {
+        "capture_methods": [
+          {
+            "method": "Readings",
+            "capture_frequency_hz": 0.2,
+            "additional_params": {},
+            "disabled": false
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
 {{< alert title="Caution" color="caution" >}}
 Avoid configuring capture rates higher than your hardware can handle. This leads to performance degradation.
 {{< /alert >}}
@@ -409,21 +257,35 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 
 #### Platform-managed capture settings
 
-The following capture method settings are processed by the Viam cloud platform, not by `viam-server`:
+The following settings are processed by the Viam cloud platform, not by `viam-server`. `retention_policy` is set at the `attributes` level (sibling to `capture_methods`), while `recent_data_store` is set inside an individual `capture_methods[]` entry:
+
+```json
+{
+  "type": "data_manager",
+  "attributes": {
+    "capture_methods": [
+      {
+        "method": "Readings",
+        "capture_frequency_hz": 0.2,
+        "recent_data_store": {
+          "stored_hours": 24
+        }
+      }
+    ],
+    "retention_policy": {
+      "days": 30
+    }
+  }
+}
+```
 
 <!-- prettier-ignore -->
-| Name | Type | Description |
-| --- | --- | --- |
-| `retention_policy` | object | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
-| `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
+| Name | Type | Level | Description |
+| --- | --- | --- | --- |
+| `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
+| `recent_data_store` | object | Inside a `capture_methods[]` entry | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
-For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/).
-
-### Supported resources
-
-The following components and services support data capture and cloud sync. The table shows which capture methods are available for each resource type. Not all models support all methods listed for their type.
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
+For remote parts capture, see [Capture from multi-part machines](/data/capture-sync/remote-parts-capture/).
 
 ## Local storage
 
@@ -473,6 +335,6 @@ Control deletion behavior with the `delete_every_nth_when_disk_full` attribute.
 
 ### Micro-RDK
 
-The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
+The [micro-RDK](/foundation/setup-micro/) (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
 
 On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud. If the machine restarts before all data is synced, unsynced data since the last sync point is lost.

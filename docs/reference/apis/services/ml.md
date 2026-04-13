@@ -1,7 +1,7 @@
 ---
 title: "ML model service API"
 linkTitle: "ML model"
-weight: 30
+weight: 50
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "Give commands to your ML model service to make inferences based on a provided ML model."

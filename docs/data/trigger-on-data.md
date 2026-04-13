@@ -9,12 +9,23 @@ date: "2025-09-12"
 aliases:
 ---
 
-Get alerted when your robot's data meets a condition. Triggers send webhooks or email notifications when data syncs from a machine, so you can respond to events like temperature spikes, low battery, or detection results without polling.
+Get alerted when your robot's data meets a condition. Triggers send webhooks or email notifications when events occur on a machine, so you can respond to temperature spikes, low battery, detection results, or connectivity changes without polling.
 
-You can configure triggers to fire in the following scenarios:
+Triggers are configured in the machine's config and are scoped to that machine. Each trigger fires when its event occurs on the specific machine it is configured on.
 
-- **Data has been synced to the cloud**: fire when any data syncs from the machine
-- **Conditional data ingestion**: fire any time synced data meets a specified condition
+## Trigger types
+
+Viam supports five trigger types:
+
+| Type                       | Event JSON value            | Fires when                                                                |
+| -------------------------- | --------------------------- | ------------------------------------------------------------------------- |
+| Data synced                | `part_data_ingested`        | Any data syncs from the machine to the cloud.                             |
+| Conditional data ingestion | `conditional_data_ingested` | Synced data meets a specified condition (key, operator, value).           |
+| Part online                | `part_online`               | The machine part comes online.                                            |
+| Part offline               | `part_offline`              | The machine part goes offline.                                            |
+| Conditional logs ingestion | `conditional_logs_ingested` | Machine logs contain errors, warnings, or info messages (checked hourly). |
+
+For the full attribute reference for all trigger types, see [Trigger configuration](/reference/configuration/triggers/).
 
 ## Configure a trigger
 
@@ -136,12 +147,18 @@ For more information about triggers, see [Trigger Configuration](/reference/conf
 {{% /tab %}}
 {{< /tabs >}}
 
-## Other trigger types
+## Webhook payload
 
-Viam also supports triggers for machine status events and log monitoring:
+When a trigger fires and sends a webhook, the HTTP request includes identifying headers (`Org-Id`, `Location-Id`, `Part-Id`, `Robot-Id`) and a JSON body with details about the event. For data triggers (`part_data_ingested`, `conditional_data_ingested`), the body includes the component name, method, timestamps, and the ingested data. For status triggers (`part_online`, `part_offline`), the request is a GET with metadata in headers only.
 
-- **Part is online / Part is offline**: alert when a machine part comes online or goes offline
-- **Conditional logs ingestion**: alert when machine logs contain errors, warnings, or info messages
+For the full header and body reference, see [Webhook attributes](/reference/configuration/triggers/#webhook-attributes). For example cloud functions that process the payload, see [Example cloud function](/reference/configuration/triggers/#example-cloud-function).
 
-For these trigger types, see [Alert on machine telemetry](/monitor/alert/).
-For a full reference of all trigger attributes, see [Trigger configuration](/reference/configuration/triggers/).
+## Notification frequency
+
+The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
+
+## Machine telemetry triggers
+
+The **Part online**, **Part offline**, and **Conditional logs ingestion** triggers are primarily used for machine health monitoring rather than data analysis. For step-by-step setup of these trigger types, see [Alert on machine telemetry](/monitor/alert/).
+
+For the full attribute reference for all trigger types, see [Trigger configuration](/reference/configuration/triggers/).

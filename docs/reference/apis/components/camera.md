@@ -1,7 +1,7 @@
 ---
 title: "Camera API"
 linkTitle: "Camera"
-weight: 40
+weight: 70
 type: "docs"
 description: "Give commands for getting images or point clouds."
 icon: true

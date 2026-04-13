@@ -1,7 +1,7 @@
 ---
 title: "Arm API"
 linkTitle: "Arm"
-weight: 5
+weight: 10
 type: "docs"
 description: "Give commands to your arm components for linear motion planning."
 icon: true

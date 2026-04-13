@@ -1,7 +1,7 @@
 ---
 title: "Audio out API"
 linkTitle: "Audio out"
-weight: 10
+weight: 30
 type: "docs"
 description: "Give commands to your audio out components."
 icon: true

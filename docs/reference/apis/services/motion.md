@@ -1,7 +1,7 @@
 ---
 title: "Motion service API"
 linkTitle: "Motion"
-weight: 40
+weight: 60
 type: "docs"
 description: "Give commands to move a machine's components from one location or pose to another."
 icon: true

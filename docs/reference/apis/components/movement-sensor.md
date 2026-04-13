@@ -1,7 +1,7 @@
 ---
 title: "Movement sensor API"
 linkTitle: "Movement sensor"
-weight: 110
+weight: 140
 type: "docs"
 description: "Give commands for getting the current GPS location, linear velocity and acceleration, angular velocity and acceleration and heading."
 icon: true

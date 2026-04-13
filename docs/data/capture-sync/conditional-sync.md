@@ -32,6 +32,10 @@ The sensor is the only mechanism for conditional sync. There is no built-in rule
 If `selective_syncer_name` is configured but the sensor cannot be found, **scheduled sync is disabled** until the sensor becomes available. Make sure the sensor is correctly configured and added to the data manager's `depends_on` field.
 {{< /alert >}}
 
+{{< alert title="Conditional sync does not control capture" color="caution" >}}
+Conditional sync only controls _when data is uploaded_. Capture continues writing to local disk at the configured frequency regardless of whether sync is active. If the sync window is short or bandwidth is limited, the backlog from a full capture cycle may not clear in a single window. Monitor the capture directory size on constrained devices. See [Manage local storage](/data/filter-at-the-edge/#manage-local-storage) for storage management guidance.
+{{< /alert >}}
+
 ## Configure conditional sync
 
 This example uses the [`sync-at-time/timesyncsensor`](https://app.viam.com/module/naomi/sync-at-time) sensor module to sync data only during a configured time window. You can substitute any sensor that returns `should_sync`.
@@ -51,11 +55,11 @@ This example uses the [`sync-at-time/timesyncsensor`](https://app.viam.com/modul
    }
    ```
 
-   | Field   | Type   | Required | Description                                             |
-   | ------- | ------ | -------- | ------------------------------------------------------- |
-   | `start` | string | Yes      | Start of the sync window in `HH:MM:SS` format.          |
-   | `end`   | string | Yes      | End of the sync window in `HH:MM:SS` format.            |
-   | `zone`  | string | Yes      | Time zone (for example, `"CET"`, `"America/New_York"`). |
+   | Field   | Type   | Required | Description                                                                                                                                                                           |
+   | ------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `start` | string | Yes      | Start of the sync window in `HH:MM:SS` format.                                                                                                                                        |
+   | `end`   | string | Yes      | End of the sync window in `HH:MM:SS` format.                                                                                                                                          |
+   | `zone`  | string | Yes      | An [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) name. Examples: `"America/New_York"`, `"Europe/Berlin"`, `"Asia/Tokyo"`, `"UTC"`, `"CET"`. |
 
 5. Click **Save**.
 

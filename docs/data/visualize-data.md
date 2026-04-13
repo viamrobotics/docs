@@ -140,6 +140,8 @@ Install the MongoDB **data source**, not the MongoDB **integration**. They are
 different plugins. The data source is what allows you to query MongoDB from
 Grafana dashboards.
 
+If the MongoDB data source does not appear in the plugin catalog, install it from the [Grafana MongoDB data source plugin page](https://grafana.com/grafana/plugins/grafana-mongodb-datasource/) using the installation instructions for your Grafana deployment type.
+
 {{< /alert >}}
 
 ### Configure the data connection
@@ -555,7 +557,10 @@ go run main.go
 - **Verify the username format.** The username must be `db-user-<YOUR-ORG-ID>`,
   including the `db-user-` prefix.
 - **Verify the password.** This is the password you set with
-  `viam data database configure`, not your Viam app password.
+  `viam data database configure`, not your Viam app password. If
+  authentication fails with a password that contains special characters,
+  make sure the password is properly quoted or escaped in the CLI command,
+  the Grafana connection settings, and any connection string where you use it.
 - **Check that you installed the data source, not the integration.** The Grafana
   MongoDB integration and the Grafana MongoDB data source are different plugins.
   You need the data source.
