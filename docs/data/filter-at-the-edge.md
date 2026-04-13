@@ -1,7 +1,7 @@
 ---
 linkTitle: "Filter at the edge"
 title: "Filter at the edge"
-weight: 15
+weight: 31
 layout: "docs"
 type: "docs"
 description: "Reduce data volume, bandwidth, and storage costs by filtering data on the machine before syncing to the cloud."

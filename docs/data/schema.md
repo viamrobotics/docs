@@ -1,7 +1,7 @@
 ---
 linkTitle: "Captured data schema"
 title: "Captured data schema"
-weight: 19
+weight: 12
 layout: "docs"
 type: "docs"
 description: "Structure of captured tabular data: document format, column reference, the data column, and common per-component data structures."
