@@ -48,6 +48,35 @@ Viam is not a data silo. You can export data to your own tools and databases:
 
 See [Export data](/data/export-data/) and [Sync to your database](/data/sync-data-to-your-database/).
 
+## Delete data
+
+You can delete captured data through the Viam app, the CLI, or the SDK. The SQL and MQL query editor is read-only: you cannot run `DELETE`, `DROP TABLE`, or any write operation through it.
+
+**In the Viam app:**
+
+- **Images and binary data**: on the **DATA** tab, select one or more items and click **Delete selected**, or use **Delete all** with the current filters applied. Point clouds, video, and file uploads can also be deleted this way.
+- **Tabular data (sensor readings)**: the Sensors tab does not have a delete button. Use the CLI or SDK instead.
+
+**From the CLI:**
+
+```bash
+# Delete tabular data older than N days
+viam data delete-tabular --org-id=<org-id> --delete-older-than-days=30
+
+# Delete binary data within a time range
+viam data delete binary --org-ids=<org-id> --start=2026-01-01T00:00:00Z --end=2026-02-01T00:00:00Z
+```
+
+**From the SDK:**
+
+The [data client API](/dev/reference/apis/data-client/) provides three delete methods:
+
+- `delete_tabular_data(organization_id, delete_older_than_days)` deletes tabular rows older than a number of days.
+- `delete_binary_data_by_filter(filter)` deletes binary data matching a filter (organization, location, time range, and so on).
+- `delete_binary_data_by_ids(binary_ids)` deletes specific binary items by ID.
+
+**Retention policies** can also auto-delete data in the cloud after a configured number of days. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings) for the `retention_policy` field.
+
 ## Annotate and train
 
 Captured images can be tagged, annotated with bounding boxes, and organized into datasets for ML training. Viam provides a complete path from captured data to a deployed model:
@@ -64,9 +93,35 @@ See [Create a dataset](/train/create-a-dataset/) and the training section for de
 
 Triggers send webhooks or email alerts when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
 
-For debugging, Viam includes OpenTelemetry distributed tracing that traces requests across your SDK code, viam-server, and modules. Traces can be exported to Jaeger, Grafana Tempo, Datadog, or saved to disk for later analysis.
-
 Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana connected to your data through MongoDB.
+
+### OpenTelemetry distributed tracing
+
+Viam includes OpenTelemetry (OTel) tracing that propagates trace context across your SDK code, `viam-server`, and modules. Traces cover gRPC request lifecycle, data capture operations, and module calls. When tracing is enabled on `viam-server`, module tracing is activated automatically.
+
+To enable tracing, add a `tracing` block to your machine's JSON config:
+
+```json
+{
+  "tracing": {
+    "enabled": true,
+    "disk": true
+  }
+}
+```
+
+This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. To export directly to an OTLP-compatible backend (Jaeger, Grafana Tempo, Datadog, or any OTLP collector), set `otlpendpoint` instead:
+
+```json
+{
+  "tracing": {
+    "enabled": true,
+    "otlpendpoint": "localhost:4317"
+  }
+}
+```
+
+Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for the full CLI reference.
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
