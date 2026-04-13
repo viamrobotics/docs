@@ -17,7 +17,7 @@ Deploy modules (hardware drivers, control logic, or other custom code) to one ma
 ## 1. Add the module to a fragment
 
 1. Navigate to your fragment's page at [app.viam.com/fragments](https://app.viam.com/fragments).
-1. Click **+** and select **Component or service** or **Control code**, depending on what the module provides.
+1. Click **+** and select **Configuration block**.
 1. Search for your module in the registry and add it.
 1. Configure the module's attributes as needed.
 1. Click **Save**.
@@ -41,9 +41,10 @@ To control when updates are applied, configure a maintenance window. See [manage
 **Through the Viam app:**
 
 1. Navigate to each machine's **CONFIGURE** tab.
-1. Click **+** and select **Insert fragment**.
+1. Click **+** and select **Configuration block**.
 1. Search for your fragment and select it.
-1. Click **Insert fragment**, then **Save**.
+1. Click **Add fragment**.
+1. Click **Add fragment** again to confirm, then **Save**.
 
 **Through provisioning:**
 

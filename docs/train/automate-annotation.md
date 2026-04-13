@@ -17,27 +17,15 @@ You can also use the SDKs to annotate images programmatically, or combine
 capture, annotation, and dataset management into a single script for continuous
 dataset improvement.
 
-## Auto-predict tags (classification)
+## Auto-predict labels
 
-Use an existing classification model to generate tag predictions for images in
-a dataset, then review each prediction.
-
-1. Navigate to your [dataset's page](https://app.viam.com/datasets/).
-1. Click **Get auto-predictions**.
-1. **Select** a classification model to generate predictions with.
-1. Set the **confidence threshold** above which to create a label prediction.
-1. Click **Get predictions**.
-1. Once predictions have finished generating, click **Review predictions**.
-1. For each image, **Accept (A)** or **Reject (R)** each prediction.
-
-## Auto-predict bounding boxes (object detection)
-
-Use an existing object detection model to generate bounding box predictions for
-images in a dataset, then review each prediction.
+Use an existing ML model to generate predictions for images in a dataset,
+then review each prediction. This works with both classification models
+(which generate tags) and object detection models (which generate bounding boxes).
 
 1. Navigate to your [dataset's page](https://app.viam.com/datasets/).
 1. Click **Get auto-predictions**.
-1. **Select** an object detection model to generate predictions with.
+1. **Select** a model to generate predictions with.
 1. Set the **confidence threshold** above which to create a label prediction.
 1. Click **Get predictions**.
 1. Once predictions have finished generating, click **Review predictions**.

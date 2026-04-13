@@ -66,9 +66,9 @@ or the Viam app's test panel.
 
 Send a command to the generic component and read the response.
 
-To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
-Toggle **Include API key** on.
-Copy the machine address, API key, and API key ID from the code sample.
+To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
+Copy the **API key** and **API key ID**.
+Copy the **machine address** from the same tab.
 With the fake model, you'll see your command echoed back. With a real module, the response depends on what commands the module supports.
 {{< tabs >}}
 {{% tab name="Python" %}}

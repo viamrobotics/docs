@@ -343,7 +343,6 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
     - [Configure the frame system](/operate/reference/services/frame-system/) for this movement sensor so that the navigation service knows where it is in relation to the base.
-
       - On the **CONFIGURE** tab, add a frame to your movement sensor configuration by clicking **+ Add Frame**.
         If your movement sensor is mounted on top of the rover like ours is, leave the default frame values.
       - Set the `base` as the `parent` frame.

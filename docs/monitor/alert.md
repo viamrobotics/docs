@@ -74,12 +74,11 @@ Click **Save**, then click **Test** at the bottom of the sensor configuration ca
 
 ### Configure data capture
 
-1. On your machine's **CONFIGURE** page, click the **+** icon and select **Component or service**.
-1. Select the `data management / RDK` service and click **Create**.
-   Leave the default sync interval of `0.1` minutes (every 6 seconds) and keep both **Capturing** and **Syncing** enabled.
-1. Return to your sensor's configuration card.
-   In the **Data capture** section, click **Add method**.
-   Select `Readings` from the **Method** dropdown and set the **Frequency** to `0.05` Hz (once every 20 seconds).
+1. On your sensor's configuration card, click **+** on the **Data Capture** card.
+1. If you see a "Data management service missing" banner, click
+   **Create data management service**, click **Save**, navigate back to
+   your sensor, and click **+** on the **Data Capture** card again.
+1. Select `Readings` from the **Method** dropdown and set the **Frequency** to `0.05` Hz (once every 20 seconds).
 1. Click **Save**.
 
 To verify data is syncing, click the **...** menu on the sensor card and select **View captured data**.

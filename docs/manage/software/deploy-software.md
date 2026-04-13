@@ -85,12 +85,9 @@ See [Provisioning](/manage/fleet/provision/setup/) for more information.
 You can also add fragments manually to the machines that need it:
 
 1. Navigate to your machine's **CONFIGURE** tab.
-1. Click the **+** button.
-1. Select **Insert fragment**.
-
-   {{<imgproc src="/how-tos/deploy-packages/insert.png" resize="800x" class="fill imgzoom shadow" style="width: 250px" declaredimensions=true alt="Add fragment">}}
-
-1. Search for your fragment and add it.
+1. Click **+** and select **Configuration block**.
+1. Search for your fragment and select it.
+1. Click **Add fragment**, then click **Add fragment** again to confirm.
 1. Click **Save** in the upper right corner of the screen.
 
 {{< alert title="Tip" color="tip" >}}

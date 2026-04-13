@@ -22,26 +22,23 @@ Confirm it shows as **Live** in the upper left.
 ## 2. Enable data capture on a component
 
 1. Find your component (for example, `my-camera`) in the machine configuration.
-2. Scroll to the **Data capture** section in the component's configuration
-   panel.
-3. Click **+ Add method**.
-4. If this is your first time configuring data capture, Viam will prompt you to
-   enable the **data management service**. Click to enable it. This adds the
-   service to your machine configuration and enables both capture and cloud
-   sync.
-5. Select the method to capture:
+2. Click **+** on the **Data Capture** card.
+3. If you see a "Data management service missing" banner, click
+   **Create data management service**, click **Save**, navigate back to
+   your component, and click **+** on the **Data Capture** card again.
+4. Select the method to capture:
    - For a camera, select **GetImages**. This captures a frame from the camera
      each time it fires.
    - For a sensor, select **Readings**. This records the sensor's current
      values.
-6. Set the **capture frequency**. This is specified in hertz (captures per
+5. Set the **capture frequency**. This is specified in hertz (captures per
    second):
    - `0.5` = one capture every 2 seconds
    - `0.2` = one capture every 5 seconds
    - `1` = one capture per second
    - Start low. For cameras, `0.5` Hz is a reasonable starting point. You can
      always increase it later.
-7. Click **Save** in the upper right.
+6. Click **Save** in the upper right.
 
 After saving, `viam-server` begins capturing immediately. You do not need to
 restart anything.

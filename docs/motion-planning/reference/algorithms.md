@@ -13,13 +13,11 @@ aliases:
 
 ## When you need this
 
-Most users do not need to understand the planning algorithm. You define frames,
-obstacles, and constraints, then call `Move`. The planner handles the rest.
-
 This page is useful when:
 
 - You need to tune planning performance (timeout, resolution).
 - You are debugging why the planner fails to find a path.
+- You are building your own motion service.
 - You want to understand what the planner is doing under the hood.
 
 ## The cBiRRT algorithm
@@ -65,7 +63,7 @@ because both trees converge toward the middle simultaneously.
 ## Tuning parameters
 
 The planner accepts configuration through the motion service config and through
-per-request options. Most users do not need to change these.
+per-request options.
 
 ### Service-level config
 

@@ -40,9 +40,6 @@ The details panel also has a **copy** button that exports the full pose and geom
 **Toolbar** (top): Controls for camera mode, transform tools, and specialized tools:
 
 - **Perspective/Orthographic toggle** (`C`): switch between perspective view (depth perception) and orthographic view (no foreshortening, useful for checking alignment).
-- **Snap toggle**: enable grid snapping for precise positioning.
-- **Reset camera**: return to the default camera position.
-- **Lasso tool**: draw a freeform selection around points in the scene to select and export them.
 
 ## Navigation controls
 

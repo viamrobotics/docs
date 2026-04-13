@@ -171,7 +171,7 @@ Use `TransformPose` to verify the full chain of transforms.
 For example, transform the wrist camera's origin from the camera frame to the world frame.
 The result should account for the base-to-arm offset, the arm's current joint positions, and the arm-to-camera offset.
 
-For details on the TransformPose API, see [Frame System Concepts](/motion-planning/frame-system/).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
 
 ## Troubleshooting
 

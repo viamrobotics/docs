@@ -86,9 +86,9 @@ with no objects in the workspace until you're confident in the configuration.
 
 Open the gripper, grab an object, and check if it's held.
 
-To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **SDK code sample**.
-Toggle **Include API key** on.
-Copy the machine address, API key, and API key ID from the code sample.
+To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
+Copy the **API key** and **API key ID**.
+Copy the **machine address** from the same tab.
 If you're using real hardware, you'll see the gripper open and close when you run the code below.
 With the fake model, Grab always returns true.
 {{< tabs >}}

@@ -26,11 +26,17 @@ choose which components send data to it and how many hours of data to retain.
 1. Go to [app.viam.com](https://app.viam.com) and navigate to your machine's
    **CONFIGURE** tab.
 2. Find the component you want to enable hot storage for (for example, your sensor).
-3. Click **Advanced** to expand the advanced configuration.
-4. Enable **Sync to Hot Data Store**.
-5. Set the **Time frame** to the number of hours of data to retain (for example, 24
+3. Click the **Data Capture** card to expand it.
+4. If you see a "Data management service missing" banner, click
+   **Create data management service**, then click **Save**. Navigate back
+   to your component.
+5. Add a capture method: select a **Method**, set the **Frequency**, and
+   toggle it **On**. Click **Save**.
+6. On the capture method, click the chevron to expand **Advanced** options.
+7. Enable **Sync to Hot Data Store**.
+8. Set the **Time frame** to the number of hours of data to retain (for example, 24
    for the last 24 hours).
-6. Click **Save**.
+9. Click **Save**.
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

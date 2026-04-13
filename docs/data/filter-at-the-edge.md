@@ -111,7 +111,7 @@ Optionally, you can configure a pre-trigger buffer with `window_seconds_before` 
 
 ### Prerequisites
 
-- A configured camera component on your machine. See [Configure a camera](/reference/components/camera/) if you need to set one up.
+- A configured camera component on your machine. See [Configure a camera](/hardware/common-components/add-a-camera/) if you need to set one up.
 - The data management service configured. See [Start data capture](/data/capture-sync/capture-and-sync-data/) for instructions.
 
 ### Instructions
@@ -312,8 +312,6 @@ watch -n 60 du -sh "$HOME/.viam/capture"
 - Reduce the capture frequency on the filtered camera. Even with filtering, a
   high capture frequency means more comparisons and more opportunities for a
   frame to be flagged as changed.
-- For sensor data, verify that `min_value` is set correctly and that the
-  `field` name matches the actual key in the sensor readings.
 
 {{< /expand >}}
 

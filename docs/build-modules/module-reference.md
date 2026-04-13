@@ -125,7 +125,7 @@ type Resource interface {
 ```
 
 Plus the methods defined by the specific API (for example, `Readings` for sensor,
-`GetImage` for camera).
+`GetImages` for camera).
 
 ### Constructor signature
 
@@ -332,13 +332,15 @@ in-place provides seamless reconfiguration.
 Modules communicate with `viam-server` over gRPC using the `ModuleService`
 defined in `proto/viam/module/v1/module.proto`:
 
-| RPC                   | Direction       | Purpose                                                  |
-| --------------------- | --------------- | -------------------------------------------------------- |
-| `Ready`               | server → module | Handshake: module returns its supported API/model pairs. |
-| `AddResource`         | server → module | Create a new resource instance from config.              |
-| `ReconfigureResource` | server → module | Update an existing resource with new config.             |
-| `RemoveResource`      | server → module | Destroy a resource instance.                             |
-| `ValidateConfig`      | server → module | Validate config and return implicit dependencies.        |
+All RPCs are initiated by `viam-server` and handled by the module:
+
+| RPC                   | Purpose                                                  |
+| --------------------- | -------------------------------------------------------- |
+| `Ready`               | Handshake: module returns its supported API/model pairs. |
+| `AddResource`         | Create a new resource instance from config.              |
+| `ReconfigureResource` | Update an existing resource with new config.             |
+| `RemoveResource`      | Destroy a resource instance.                             |
+| `ValidateConfig`      | Validate config and return implicit dependencies.        |
 
 The module also connects back to the parent `viam-server` to access other
 resources (dependencies) on the machine.

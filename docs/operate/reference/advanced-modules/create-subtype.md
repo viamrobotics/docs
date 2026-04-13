@@ -93,7 +93,6 @@ The following steps guide you through this process in more detail:
    - [<file>buf.lock</file>](https://buf.build/docs/configuration/v1/buf-lock/)
 
 1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<API name>.proto` file you wrote.
-
    - [Example generated files for a Python-based service](https://github.com/viam-labs/speech-service-api/tree/main/src/proto).
      The `buf.` files were generated.
      The <file>speech.proto</file> was manually written.

@@ -662,7 +662,6 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
     - **RX LED (red, blinking)**: gateway receiving data
 
 - **Verify pin configuration**:
-
   - If using a HAT, confirm that `reset_pin` and `power_en_pin` in your gateway configuration match the manufacturer's guidelines for your HAT.
   - Verify that SPI is enabled on your machine.
   - Check that `spi_bus` is configured for the correct SPI bus.

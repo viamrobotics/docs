@@ -172,7 +172,7 @@ Use the `TransformPose` API to confirm that the frame system computes correct tr
 Express the camera's origin `(0, 0, 0)` in the camera frame and transform it to the world frame.
 The result should match the physical position of the camera.
 
-For details on the TransformPose API, see [Frame System Concepts](/motion-planning/frame-system/).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
 
 ## Troubleshooting
 
