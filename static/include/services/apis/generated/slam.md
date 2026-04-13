@@ -11,7 +11,7 @@ Get the current position of the component the SLAM service is configured to sour
 
 **Returns:**
 
-- ([viam.services.slam.Pose](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose)): The current position of the specified component.
+- ([viam.services.slam.Pose](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose)): :   The current position of the specified component.
 
 **Example:**
 
@@ -86,8 +86,8 @@ Get the point cloud map.
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
-GetPointCloudMapResponse.point\_cloud\_pcd\_chunk values.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): :   Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
+    GetPointCloudMapResponse.point\_cloud\_pcd\_chunk values.
 
 **Example:**
 
@@ -156,7 +156,7 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): Chunks of the internal state of the SLAM algorithm.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): :   Chunks of the internal state of the SLAM algorithm.
 
 **Example:**
 
@@ -220,7 +220,7 @@ Get information about the current SLAM session.
 
 **Returns:**
 
-- (viam.services.slam.slam.SLAM.Properties): The properties of SLAM.
+- ([viam.services.slam.slam.SLAM.Properties](https://python.viam.dev/autoapi/viam/services/slam/slam/index.html#viam.services.slam.slam.SLAM.Properties)): :   The properties of SLAM.
 
 **Example:**
 
@@ -372,7 +372,7 @@ If you are implementing your own SLAM service and want to add features that have
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Example:**
 
@@ -418,7 +418,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -428,12 +429,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -455,7 +460,7 @@ Get the `ResourceName` for this instance of the SLAM service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

@@ -11,7 +11,7 @@ Get the ID of a user by email.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The ID of the user.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The ID of the user.
 
 **Example:**
 
@@ -80,7 +80,7 @@ Create an organization.
 
 **Returns:**
 
-- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The created organization.
+- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): :   The created organization.
 
 **Example:**
 
@@ -140,7 +140,7 @@ List the {{< glossary_tooltip term_id="organization" text="organizations" >}} th
 
 **Returns:**
 
-- ([List[viam.proto.app.Organization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The list of organizations.
+- ([List[viam.proto.app.Organization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): :   The list of organizations.
 
 **Example:**
 
@@ -205,7 +205,7 @@ Get all organizations that have access to a location.
 
 **Returns:**
 
-- ([List[viam.proto.app.OrganizationIdentity]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationIdentity)): The list of organizations.
+- ([List[viam.proto.app.OrganizationIdentity]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationIdentity)): :   The list of organizations.
 
 **Example:**
 
@@ -253,7 +253,7 @@ List the organizations a user belongs to.
 
 **Returns:**
 
-- ([List[viam.proto.app.OrgDetails]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrgDetails)): The list of organizations.
+- ([List[viam.proto.app.OrgDetails]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrgDetails)): :   The list of organizations.
 
 **Example:**
 
@@ -313,7 +313,7 @@ Retrieve the organization object for the requested organization containing the o
 
 **Returns:**
 
-- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The requested organization.
+- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): :   The requested organization.
 
 **Raises:**
 
@@ -385,7 +385,7 @@ Check the availability of an {{< glossary_tooltip term_id="organization" text="o
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): True if the provided namespace is available.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   True if the provided namespace is available.
 
 **Raises:**
 
@@ -458,10 +458,11 @@ Updates organization details.
 - `public_namespace` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If provided, sets the org’s namespace if it hasn’t already been set.
 - `region` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If provided, updates the org’s region.
 - `cid` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If provided, update’s the org’s CRM ID.
+- `default_fragments` ([List[viam.proto.app.FragmentImport]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.FragmentImport)) (optional)
 
 **Returns:**
 
-- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): The updated organization.
+- ([viam.proto.app.Organization](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): :   The updated organization.
 
 **Raises:**
 
@@ -517,6 +518,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `publicNamespace` (string) (optional): Optional namespace to update the organization with.
 - `region` (string) (optional): Optional region to update the organization with.
 - `cid` (string) (optional): Optional CRM ID to update the organization with.
+- `defaultFragments` ([FragmentImportList](https://ts.viam.dev/classes/appApi.FragmentImportList.html)) (optional): Optional default fragments to set for the
+  organization.
 
 **Returns:**
 
@@ -613,8 +616,8 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 
 **Returns:**
 
-- (Tuple[List[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): A tuple containing two lists; the first
-\[0] of organization members, and the second \[1] of organization invites.
+- (Tuple[List[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): :   A tuple containing two lists; the first
+    [0] of organization members, and the second [1] of organization invites.
 
 **Example:**
 
@@ -687,7 +690,7 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 
 **Returns:**
 
-- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite.
+- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): :   The organization invite.
 
 **Raises:**
 
@@ -794,7 +797,7 @@ If an invitation has only one authorization and you want to remove it, delete th
 
 **Returns:**
 
-- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The updated invite.
+- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): :   The updated invite.
 
 **Raises:**
 
@@ -1069,7 +1072,7 @@ Resend a pending organization invite email.
 
 **Returns:**
 
-- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): The organization invite sent.
+- ([app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)): :   The organization invite sent.
 
 **Raises:**
 
@@ -1144,7 +1147,7 @@ Gets the user-defined metadata for an organization.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -1296,7 +1299,7 @@ Optionally, put the new location under a specified parent location.
 
 **Returns:**
 
-- ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The newly created location.
+- ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): :   The newly created location.
 
 **Raises:**
 
@@ -1382,7 +1385,7 @@ Get a {{< glossary_tooltip term_id="location" text="location" >}} by its locatio
 
 **Returns:**
 
-- ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The location.
+- ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): :   The location.
 
 **Raises:**
 
@@ -1454,7 +1457,7 @@ Change the name of a {{< glossary_tooltip term_id="location" text="location" >}}
 
 **Returns:**
 
-- ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The newly updated location.
+- ([viam.proto.app.Location](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): :   The newly updated location.
 
 **Raises:**
 
@@ -1628,7 +1631,7 @@ Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} u
 
 **Returns:**
 
-- ([List[viam.proto.app.Location]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): The list of locations.
+- ([List[viam.proto.app.Location]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): :   The list of locations.
 
 **Example:**
 
@@ -1838,7 +1841,7 @@ Get a location’s `LocationAuth` (location secret or secrets).
 
 **Returns:**
 
-- ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): The LocationAuth containing location secrets.
+- ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): :   The LocationAuth containing location secrets.
 
 **Raises:**
 
@@ -1910,7 +1913,7 @@ Create a new location secret.
 
 **Returns:**
 
-- ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): The specified location’s LocationAuth containing the newly created secret.
+- ([viam.proto.app.LocationAuth](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.LocationAuth)): :   The specified location’s LocationAuth containing the newly created secret.
 
 **Raises:**
 
@@ -2064,7 +2067,7 @@ Get the user-defined metadata for a location.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -2210,7 +2213,7 @@ Get a {{< glossary_tooltip term_id="machine" text="machine" >}} by its ID.
 
 **Returns:**
 
-- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The machine.
+- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The machine.
 
 **Raises:**
 
@@ -2280,7 +2283,7 @@ Gets the [API keys](/operate/control/api-keys/) for the machine.
 
 **Returns:**
 
-- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): The list of API keys.
+- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): :   The list of API keys.
 
 **Example:**
 
@@ -2347,7 +2350,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Returns:**
 
-- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The list of machine parts.
+- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): :   The list of machine parts.
 
 **Raises:**
 
@@ -2421,7 +2424,7 @@ Get a specific machine {{< glossary_tooltip term_id="part" text="part" >}} inclu
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The machine part.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): :   The machine part.
 
 **Raises:**
 
@@ -2438,7 +2441,7 @@ machine_part_config = my_robot_part.robot_config
 # Get the part's address
 address = my_robot_part.fqdn
 # Check if machine is live (last access time less than 10 sec ago)
-if (time.time() - my_robot_part.last_access.timestamp()) <= 10000:
+if (time.time() - my_robot_part.last_access.timestamp()) <= 10:
     print("Machine is live.")
 ```
 
@@ -2514,10 +2517,12 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the log entries to.
 - `log_levels` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of log levels for which entries should be returned. Defaults to empty list, which returns all logs.
 - `num_log_entries` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Number of log entries to return. Passing 0 returns all logs. Defaults to 100. All logs or the first num_log_entries logs will be returned, whichever comes first.
+- `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time for log retrieval. Only logs created after this time will be returned.
+- `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time for log retrieval. Only logs created before this time will be returned.
 
 **Returns:**
 
-- ([List[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The list of log entries.
+- ([List[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): :   The list of log entries.
 
 **Raises:**
 
@@ -2584,6 +2589,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `filter` (string) (optional): Optional string to filter logs on.
 - `levels` (string) (optional): Optional array of log levels to return. Defaults to returning
   all log levels.
+- `start` (Date) (optional): Optional start time for log retrieval. Only logs created after
+  this time will be returned.
+- `end` (Date) (optional): Optional end time for log retrieval. Only logs created before
+  this time will be returned.
 - `pageToken` (string) (optional): Optional string indicating which page of logs to query.
   Defaults to the most recent.
 
@@ -2650,7 +2659,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Returns:**
 
-- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): The asynchronous iterator receiving live machine part logs.
+- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): :   The asynchronous iterator receiving live machine part logs.
 
 **Example:**
 
@@ -2701,7 +2710,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `id` (string) (required): The ID of the requested robot part.
 - `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error\-level
+- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
   logs should be returned. Defaults to true.
 
 **Returns:**
@@ -2734,7 +2743,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Returns:**
 
-- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): The list of the machine part’s history.
+- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): :   The list of the machine part’s history.
 
 **Raises:**
 
@@ -2811,10 +2820,11 @@ You can only change the name and configuration of the machine part, not the loca
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot part.
 - `robot_config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional new config represented as a dictionary to be updated on the machine part. The machine part’s config will remain as is (no change) if one isn’t passed.
 - `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this part’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
+- `robot_config_json` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional raw JSON string of the robot config, preserving user-defined key order. When set, this takes precedence over robot_config for storage purposes.
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The newly updated robot part.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): :   The newly updated robot part.
 
 **Raises:**
 
@@ -2912,7 +2922,7 @@ Create a new machine {{< glossary_tooltip term_id="part" text="part" >}}.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The new machine part’s ID.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The new machine part’s ID.
 
 **Raises:**
 
@@ -2963,7 +2973,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<string>): The ID of the newly\-created robot part.
+- (Promise<string>): The ID of the newly-created robot part.
 
 **Example:**
 
@@ -3203,7 +3213,7 @@ Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret.
 
 **Returns:**
 
-- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): The machine part the new secret was generated for.
+- ([RobotPart](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): :   The machine part the new secret was generated for.
 
 **Raises:**
 
@@ -3358,7 +3368,7 @@ Get a list of all machines in a specified location.
 
 **Returns:**
 
-- ([List[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The list of robots.
+- ([List[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The list of robots.
 
 **Raises:**
 
@@ -3429,7 +3439,7 @@ Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The new robot’s ID.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The new robot’s ID.
 
 **Raises:**
 
@@ -3526,7 +3536,7 @@ Moving a machine has several important implications:
 
 **Returns:**
 
-- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): The newly updated machine.
+- ([viam.proto.app.Robot](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The newly updated machine.
 
 **Raises:**
 
@@ -3578,7 +3588,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly\-modified robot object.
+- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly-modified robot object.
 
 **Example:**
 
@@ -3677,7 +3687,7 @@ Gets the user-defined metadata for a machine.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -3745,7 +3755,7 @@ Gets the user-defined metadata for a machine part.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): The user\-defined metadata converted from JSON to a Python dictionary.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -3975,7 +3985,7 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 
 **Returns:**
 
-- ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The list of fragments.
+- ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): :   The list of fragments.
 
 **Example:**
 
@@ -4145,7 +4155,7 @@ Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID.
 
 **Returns:**
 
-- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The fragment.
+- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): :   The fragment.
 
 **Raises:**
 
@@ -4223,7 +4233,7 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 
 **Returns:**
 
-- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly created fragment.
+- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): :   The newly created fragment.
 
 **Raises:**
 
@@ -4324,7 +4334,7 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 **Returns:**
 
-- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): The newly updated fragment.
+- ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): :   The newly updated fragment.
 
 **Raises:**
 
@@ -4499,7 +4509,7 @@ Get fragment history.
 
 **Returns:**
 
-- ([List[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): A list of documents with the fragment history.
+- ([List[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): :   A list of documents with the fragment history.
 
 **Raises:**
 
@@ -4839,7 +4849,7 @@ If no resource IDs are provided, all resource authorizations within the organiza
 
 **Returns:**
 
-- ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)): The list of authorizations.
+- ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)): :   The list of authorizations.
 
 **Raises:**
 
@@ -4912,7 +4922,7 @@ Check if the organization, location, or robot your `ViamClient` is authenticated
 
 **Returns:**
 
-- ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)): The permissions argument, with invalid permissions filtered out.
+- ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)): :   The permissions argument, with invalid permissions filtered out.
 
 **Raises:**
 
@@ -5053,7 +5063,7 @@ Get metadata about a registry item (a module, training script, or ML model) by r
 
 **Returns:**
 
-- ([viam.proto.app.RegistryItem](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The registry item.
+- ([viam.proto.app.RegistryItem](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): :   The registry item.
 
 **Example:**
 
@@ -5305,7 +5315,7 @@ List the registry items in an organization.
 
 **Returns:**
 
-- ([List[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): The list of registry items.
+- ([List[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): :   The list of registry items.
 
 **Example:**
 
@@ -5494,7 +5504,7 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): A tuple containing the ID \[0] of the new module and its URL \[1].
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing the ID [0] of the new module and its URL [1].
 
 **Raises:**
 
@@ -5580,7 +5590,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): The URL of the newly updated module.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   The URL of the newly updated module.
 
 **Raises:**
 
@@ -5698,12 +5708,12 @@ Upload a {{< glossary_tooltip term_id="module" text="module" >}} file.
 
 **Parameters:**
 
-- `module_file_info` ([viam.proto.app.ModuleFileInfo](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ModuleFileInfo)) (optional): Relevant metadata.
+- `module_file_info` ([viam.proto.app.ModuleFileInfo](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.ModuleFileInfo)) (required): Relevant metadata.
 - `file` ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)) (required): Bytes of file to upload.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): URL of uploaded file.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   URL of uploaded file.
 
 **Example:**
 
@@ -5767,7 +5777,7 @@ Get a {{< glossary_tooltip term_id="module" text="module" >}} by its ID.
 
 **Returns:**
 
-- ([viam.proto.app.Module](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): The module.
+- ([viam.proto.app.Module](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): :   The module.
 
 **Raises:**
 
@@ -5837,7 +5847,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Returns:**
 
-- ([List[viam.proto.app.Module]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): The list of modules.
+- ([List[viam.proto.app.Module]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): :   The list of modules.
 
 **Example:**
 
@@ -5906,7 +5916,7 @@ Create a new [API key](/operate/control/api-keys/).
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The api key and api key ID.
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The api key and api key ID.
 
 **Raises:**
 
@@ -6046,7 +6056,7 @@ Rotate an [API key](/operate/control/api-keys/#rotate-an-api-key).
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id.
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The API key and API key id.
 
 **Example:**
 
@@ -6113,7 +6123,7 @@ List all keys for the {{< glossary_tooltip term_id="organization" text="organiza
 
 **Returns:**
 
-- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): The existing API keys and authorizations.
+- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): :   The existing API keys and authorizations.
 
 **Example:**
 
@@ -6209,7 +6219,7 @@ Create a new API key with an existing key’s authorizations.
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): The API key and API key id.
+- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The API key and API key id.
 
 **Example:**
 

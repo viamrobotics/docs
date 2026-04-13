@@ -27,3 +27,10 @@
 | [`DeleteDataPipeline`](/dev/reference/apis/data-client/#deletedatapipeline) | Delete a data pipeline, its execution history, and all of its output data. |
 | [`ListDataPipelineRuns`](/dev/reference/apis/data-client/#listdatapipelineruns) | Get information about individual executions of a data pipeline. |
 | [`RenameDataPipeline`](/dev/reference/apis/data-client/#renamedatapipeline) | Rename a data pipeline. |
+| [`AddTagsToBinaryDataByFilter`](/dev/reference/apis/data-client/#addtagstobinarydatabyfilter) | Add tags to binary data by filter. |
+| [`CreateBinaryDataSignedURL`](/dev/reference/apis/data-client/#createbinarydatasignedurl) | Create a signed URL for accessing binary data without authentication. The URL expires after the specified duration. |
+| [`CreateIndex`](/dev/reference/apis/data-client/#createindex) | Create a custom index on your data to speed up queries. You specify the organization, the collection type (tabular or binary), and the fields to index. |
+| [`DeleteIndex`](/dev/reference/apis/data-client/#deleteindex) | Delete a custom index from your data. |
+| [`ListIndexes`](/dev/reference/apis/data-client/#listindexes) | List all custom indexes for an organization. |
+| [`RemoveTagsFromBinaryDataByFilter`](/dev/reference/apis/data-client/#removetagsfrombinarydatabyfilter) | Remove tags from binary data by filter. |
+| [`UpdateBoundingBox`](/dev/reference/apis/data-client/#updateboundingbox) | Update an existing bounding box on an image. You can change the label, position, or dimensions of the bounding box. |

@@ -561,7 +561,7 @@ You can use the `supplemental_transforms` argument to augment the machine's exis
 
 **Returns:**
 
-- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): Pose of the given component and the frame in which it was observed.
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): :   Pose of the given component and the frame in which it was observed.
 
 **Example:**
 
@@ -649,33 +649,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `componentName` (string) (required): The component whose `Pose` is being requested.
-- `destinationFrame` (string) (required): The reference frame in which the component's
-  `Pose` should be provided, if unset this defaults to the "world"
-  reference frame.
-- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required): `Pose` information on any additional
-  reference frames that are needed to compute the component's `Pose`.
+- `componentName` (string) (required)
+- `destinationFrame` (string) (required)
+- `supplementalTransforms` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
 - (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)>)
-
-**Example:**
-
-```ts {class="line-numbers linkable-line-numbers"}
-const motion = new VIAM.MotionClient(machine, 'builtin');
-
-const gripperName = 'my_gripper';
-
-// Get the gripper's pose in world coordinates
-const gripperPoseInWorld = await motion.getPose(
-  gripperName,
-  'world',
-  []
-);
-```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
 
@@ -793,8 +775,8 @@ All repeated fields are in chronological order.
 
 **Returns:**
 
-- ([Sequence[viam.proto.service.motion.PlanStatusWithID]](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.PlanStatusWithID)): List of last known statuses with the
-associated IDs of all plans within the TTL ordered by timestamp in ascending order.
+- ([Sequence[viam.proto.service.motion.PlanStatusWithID]](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.PlanStatusWithID)): :   List of last known statuses with the
+    associated IDs of all plans within the TTL ordered by timestamp in ascending order.
 
 **Example:**
 
@@ -892,7 +874,7 @@ All repeated fields are in chronological order.
 
 **Returns:**
 
-- ([viam.proto.service.motion.GetPlanResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)): The current PlanWithStatus \& replan history which matches the request.
+- ([viam.proto.service.motion.GetPlanResponse](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.GetPlanResponse)): :   The current PlanWithStatus & replan history which matches the request.
 
 **Example:**
 
@@ -1003,7 +985,7 @@ Get the resource from the provided machine.
 
 **Returns:**
 
-- (typing_extensions.Self): The service, if it exists on the robot.
+- (Self): :   The service, if it exists on the robot.
 
 **Example:**
 
@@ -1045,7 +1027,7 @@ If you are implementing your own motion service and want to add features that ha
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Example:**
 
@@ -1091,7 +1073,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1101,12 +1084,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -1128,7 +1115,7 @@ Get the `ResourceName` for this instance of the motion service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

@@ -13,9 +13,9 @@ Get a list of detections from the next image from a specified camera using a con
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the
-confidence score of the labels, around the found objects in the next 2D image
-from the given camera, with the given detector applied to it.
+- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): :   A list of 2D bounding boxes, their labels, and the
+    confidence score of the labels, around the found objects in the next 2D image
+    from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -95,11 +95,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>\>
 
 **Example:**
 
@@ -128,9 +128,9 @@ Get a list of detections from a given image using a configured [detector](/dev/r
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): A list of 2D bounding boxes, their labels, and the
-confidence score of the labels, around the found objects in the next 2D image
-from the given camera, with the given detector applied to it.
+- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): :   A list of 2D bounding boxes, their labels, and the
+    confidence score of the labels, around the found objects in the next 2D image
+    from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -218,13 +218,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 const camera = new VIAM.CameraClient(machine, 'my_camera');
 const vision = new VIAM.VisionClient(machine, 'my_vision');
 
-const mimeType = 'image/jpeg';
-const image = await camera.getImage(mimeType);
+const { images } = await camera.getImages();
 const detections = await vision.getDetections(
-  image,
+  images[0].image,
   600,
   600,
-  mimeType
+  images[0].mimeType
 );
 ```
 
@@ -236,11 +235,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `image` [ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Detection](https://flutter.viam.dev/viam_protos.service.vision/Detection-class.html)>\>
 
 **Example:**
 
@@ -271,7 +270,7 @@ Get a list of classifications from the next image from a specified camera using 
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): The list of Classifications.
+- ([List[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): :   The list of Classifications.
 
 **Example:**
 
@@ -353,11 +352,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
 - `count` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>\>
 
 **Example:**
 
@@ -387,7 +386,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): The list of Classifications.
+- ([List[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): :   The list of Classifications.
 
 **Example:**
 
@@ -473,13 +472,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 const camera = new VIAM.CameraClient(machine, 'my_camera');
 const vision = new VIAM.VisionClient(machine, 'my_vision');
 
-const mimeType = 'image/jpeg';
-const image = await camera.getImage(mimeType);
+const { images } = await camera.getImages();
 const classifications = await vision.getClassifications(
-  image,
+  images[0].image,
   600,
   600,
-  mimeType,
+  images[0].mimeType,
   10
 );
 ```
@@ -493,11 +491,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 - `image` [ViamImage](https://flutter.viam.dev/viam_sdk/ViamImage-class.html) (required)
 - `count` [int](https://api.flutter.dev/flutter/dart-core/int-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Classification](https://flutter.viam.dev/viam_protos.service.vision/Classification-class.html)>\>
 
 **Example:**
 
@@ -527,7 +525,7 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 
 **Returns:**
 
-- ([List[viam.proto.common.PointCloudObject]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject)): The pointcloud objects with metadata.
+- ([List[viam.proto.common.PointCloudObject]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject)): :   The pointcloud objects with metadata.
 
 **Example:**
 
@@ -610,11 +608,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 **Parameters:**
 
 - `cameraName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[PointCloudObject](https://flutter.viam.dev/viam_protos.common.common/PointCloudObject-class.html)>\>
 
 **Example:**
 
@@ -648,9 +646,9 @@ Used for visualization.
 
 **Returns:**
 
-- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): A class that stores all potential returns from the vision service.
-It can return the image from the camera along with its associated detections, classifications,
-and objects, as well as any extra info the model may provide.
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): :   A class that stores all potential returns from the vision service.
+    It can return the image from the camera along with its associated detections, classifications,
+    and objects, as well as any extra info the model may provide.
 
 **Example:**
 
@@ -718,8 +716,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html); image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html); objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; },>): * The requested image, classifications, detections, and 3d point
-cloud objects.
+- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html); image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html); objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }, >): * The requested image, classifications, detections, and 3d point
+  cloud objects.
 
 **Example:**
 
@@ -778,7 +776,7 @@ If you are implementing your own vision service and want to add features that ha
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Example:**
 
@@ -824,7 +822,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -834,12 +833,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -850,11 +853,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\> (required)
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
 
 **Example:**
 
@@ -882,7 +885,7 @@ Get the `ResourceName` for this instance of the vision service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 
@@ -968,7 +971,7 @@ Fetch information about which vision methods a given vision service supports.
 
 **Returns:**
 
-- ([Vision.Properties](https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties)): The properties of the vision service.
+- ([Vision.Properties](https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties)): :   The properties of the vision service.
 
 **Example:**
 
@@ -1006,7 +1009,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise< { classificationsSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean; },>): * The properties of the vision service.
+- (Promise< { classificationsSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean; }, >): * The properties of the vision service.
 
 **Example:**
 
@@ -1022,11 +1025,11 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Parameters:**
 
-- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[VisionProperties](https://flutter.viam.dev/viam_sdk/VisionProperties.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[VisionProperties](https://flutter.viam.dev/viam_sdk/VisionProperties.html)>
 
 **Example:**
 

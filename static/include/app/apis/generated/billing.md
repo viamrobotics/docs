@@ -14,12 +14,12 @@ You can also find your usage data on the [**Payment and billing** page](/manage/
 
 **Returns:**
 
-- ([viam.proto.app.billing.GetCurrentMonthUsageResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetCurrentMonthUsageResponse)): the current month usage information.
+- ([viam.proto.app.billing.GetCurrentMonthUsageResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetCurrentMonthUsageResponse)): :   the current month usage information.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-usage = await billing_client.get_current_month_usage("<ORG-ID>")
+usage = await billing_client.get_current_month_usage(<ORG-ID>)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_current_month_usage).
@@ -71,12 +71,12 @@ You can also find this information on the [**Payment and billing** page](/manage
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to request data for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the organization to request data for.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.app.billing.GetOrgBillingInformationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetOrgBillingInformationResponse)): the org billing information.
+- ([viam.proto.app.billing.GetOrgBillingInformationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetOrgBillingInformationResponse)): :   the organization billing information.
 
 **Example:**
 
@@ -135,17 +135,17 @@ This includes both monthly and annual invoices depending on the organization's b
 
 **Parameters:**
 
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to request data for.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the organization to request data for.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
 **Returns:**
 
-- ([viam.proto.app.billing.GetInvoicesSummaryResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetInvoicesSummaryResponse)): the summaries of all org invoices.
+- ([viam.proto.app.billing.GetInvoicesSummaryResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.GetInvoicesSummaryResponse)): :   the summaries of all organization invoices.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-summary = await billing_client.get_invoices_summary("<ORG-ID>")
+summary = await billing_client.get_invoices_summary(<ORG-ID>)
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_invoices_summary).
@@ -201,7 +201,7 @@ You can also find your invoices on the [**Payment and billing** page](/manage/re
 **Parameters:**
 
 - `invoice_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the invoice being requested.
-- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the org to request data from.
+- `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the ID of the organization to request data from.
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the filepath to save the invoice to.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -212,7 +212,7 @@ You can also find your invoices on the [**Payment and billing** page](/manage/re
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-await billing_client.get_invoice_pdf("<INVOICE-ID>", "<ORG-ID>", "invoice.pdf")
+await billing_client.get_invoice_pdf(<INVOICE-ID>, <ORG-ID>, "invoice.pdf")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.get_invoice_pdf).
@@ -268,29 +268,54 @@ Create a flat fee invoice and charge the organization immediately. The caller mu
 
 **Parameters:**
 
-- `org_id_to_charge` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the organization to charge.
-- `amount` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): the amount to charge in dollars.
-- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a short description of the charge to display on the invoice PDF (must be 100 characters or less).
-- `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the organization whose branding to use in the invoice confirmation email.
-- `disable_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): whether or not to disable sending an email confirmation for the invoice.
+- `org_id_to_charge` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required)
+- `amount` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required)
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional)
+- `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional)
+- `disable_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required)
 
 **Returns:**
 
-- ([viam.proto.app.billing.CreateInvoiceAndChargeImmediatelyResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.CreateInvoiceAndChargeImmediatelyResponse)): the invoice id.
+- ([viam.proto.app.billing.CreateInvoiceAndChargeImmediatelyResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.CreateInvoiceAndChargeImmediatelyResponse))
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.create_invoice_and_charge_immediately).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### ChargeOrganization
+
+Charge an organization for usage.
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `org_id_to_charge` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): the organization to charge.
+- `subtotal` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): the subtotal amount in dollars.
+- `tax` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): the tax amount in dollars to add to the subtotal.
+- `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): a short description of the charge to display on the invoice PDF (must be 1000 characters or less).
+- `org_id_for_branding` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): the organization whose branding to use in the invoice PDF and confirmation email.
+- `disable_confirmation_email` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): whether or not to disable sending an email confirmation for the invoice.
+
+**Returns:**
+
+- ([viam.proto.app.billing.ChargeOrganizationResponse](https://python.viam.dev/autoapi/viam/proto/app/billing/index.html#viam.proto.app.billing.ChargeOrganizationResponse)): :   the invoice id.
 
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-invoice_id = await billing_client.create_invoice_and_charge_immediately(
-    "<ORG-ID-TO-CHARGE>",
-    <AMOUNT>,
-    <DESCRIPTION>,
-    "<ORG-ID-FOR-BRANDING>",
-    False,
+invoice_id = await billing_client.charge_organization(
+    <ORG-ID-TO-CHARGE>,
+    9.99,
+    0.70,
+    "A charge with tax.",
+    <ORG-ID-FOR-BRANDING>,
+    True,
 )
 ```
 
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.create_invoice_and_charge_immediately).
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/billing_client/index.html#viam.app.billing_client.BillingClient.charge_organization).
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -11,7 +11,7 @@ Get the list of operations currently running on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): The list of operations currently running on a given machine.
+- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): :   The list of operations currently running on a given machine.
 
 **Example:**
 
@@ -56,7 +56,7 @@ Get status information about the machine including the status of the machine and
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): current status of the machine (initializing or running), current status of the resources (List\[ResourceStatus]) and the revision of the config of the machine.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): :   current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]) and the revision of the config of the machine.
 
 **Example:**
 
@@ -112,7 +112,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[GetMachineStatusResponse](https://flutter.viam.dev/viam_protos.robot.robot/GetMachineStatusResponse-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[GetMachineStatusResponse](https://flutter.viam.dev/viam_protos.robot.robot/GetMachineStatusResponse-class.html)>
 
 **Example:**
 
@@ -345,7 +345,7 @@ Get the configuration of the frame system of a given machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): The configuration of a given machine’s frame system.
+- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): :   The configuration of a given machine’s frame system.
 
 **Example:**
 
@@ -356,28 +356,6 @@ print(f"frame system configuration: {frame_system}")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_frame_system_config).
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-
-**Returns:**
-
-- [(*framesystem.Config)](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#Config): The configuration of the given machine’s frame system.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-// Print the frame system configuration
-frameSystem, err := machine.FrameSystemConfig(context.Background())
-fmt.Println(frameSystem)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -416,7 +394,7 @@ Transform a given source Pose from the original reference frame to a new destina
 
 **Returns:**
 
-- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): The pose and the reference frame for the new destination.
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): :   The pose and the reference frame for the new destination.
 
 **Example:**
 
@@ -444,35 +422,6 @@ transformed_pose = await machine.transform_pose(pose_in_frame, "world")
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pose).
 
 {{% /tab %}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `pose` [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): The pose that should be transformed.
-- `dst` [(string)](https://pkg.go.dev/builtin#string): The name of the reference pose to transform the given pose to.
-- `additionalTransforms` [([]*referenceframe.LinkInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#LinkInFrame): Any additional transforms.
-
-**Returns:**
-
-- [(*referenceframe.PoseInFrame)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#PoseInFrame): Transformed pose in frame.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-**Example:**
-
-```go {class="line-numbers linkable-line-numbers"}
-import (
-  "go.viam.com/rdk/referenceframe"
-  "go.viam.com/rdk/spatialmath"
-)
-
-baseOrigin := referenceframe.NewPoseInFrame("test-base", spatialmath.NewZeroPose())
-movementSensorToBase, err := machine.TransformPose(context.Background(), baseOrigin, "my-movement-sensor", nil)
-```
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
-
-{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -497,23 +446,6 @@ Transforms the pointcloud to the desired frame in the robot's frame system.
 Do not move the robot between the generation of the initial pointcloud and the receipt of the transformed pointcloud, as doing so will make the transformations inaccurate.
 
 {{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `srcpc` [(pointcloud.PointCloud)](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud): The source `PointCloud` to transform.
-- `srcName` [(string)](https://pkg.go.dev/builtin#string): The name of the source point cloud to transform.
-- `dstName` [(string)](https://pkg.go.dev/builtin#string): The name of the destination point cloud.
-
-**Returns:**
-
-- [(pointcloud.PointCloud)](https://pkg.go.dev/go.viam.com/rdk/pointcloud#PointCloud): The transformed `PointCloud`.
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot#Robot).
-
-{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -550,7 +482,7 @@ This includes models that are not currently configured on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): A list of discovered models.
+- ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): :   A list of discovered models.
 
 **Example:**
 
@@ -610,7 +542,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)\<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)\>\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[ModuleModel](https://flutter.viam.dev/viam_protos.robot.robot/ModuleModel-class.html)>\>
 
 **Example:**
 
@@ -794,7 +726,7 @@ Get app-related information about the robot.
 
 **Returns:**
 
-- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): App\-related metadata.
+- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): :   App-related metadata.
 
 **Example:**
 
@@ -860,7 +792,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[CloudMetadata](https://flutter.viam.dev/viam_sdk/CloudMetadata.html)>
 
 **Example:**
 
@@ -886,7 +818,7 @@ Return version information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): Machine version related information.
+- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): :   Machine version related information.
 
 **Example:**
 
@@ -944,7 +876,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Returns:**
 
-- (typing_extensions.Self): the RobotClient.Options.
+- (Self): :   the RobotClient.Options.
 
 **Raises:**
 
@@ -982,7 +914,7 @@ Create a RobotClient that is connected to the machine at the provided address.
 
 **Returns:**
 
-- (typing_extensions.Self)
+- (Self)
 
 **Example:**
 
@@ -1015,7 +947,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[RobotClient](https://flutter.viam.dev/viam_sdk/RobotClient-class.html)>
 
 **Example:**
 
@@ -1056,7 +988,7 @@ Any machines created using this method will NOT automatically close the channel 
 
 **Returns:**
 
-- (typing_extensions.Self)
+- (Self)
 
 **Example:**
 
@@ -1109,7 +1041,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 
@@ -1224,7 +1156,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<void\>
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
 
 **Example:**
 

@@ -16,7 +16,7 @@ Submit a training job.
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the training job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   the ID of the training job.
 
 **Example:**
 
@@ -105,7 +105,7 @@ Follow the guide to [Train a Model with a Custom Python Training Script](/data-a
 
 **Returns:**
 
-- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): the ID of the training job.
+- ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)): :   the ID of the training job.
 
 **Example:**
 
@@ -187,7 +187,7 @@ Get training job metadata.
 
 **Returns:**
 
-- ([viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): the training job data.
+- ([viam.proto.app.mltraining.TrainingJobMetadata](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): :   the training job data.
 
 **Example:**
 
@@ -249,7 +249,7 @@ Get training job metadata for all jobs within an organization.
 
 **Returns:**
 
-- ([List[viam.proto.app.mltraining.TrainingJobMetadata]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): the list of training job data.
+- ([List[viam.proto.app.mltraining.TrainingJobMetadata]](https://python.viam.dev/autoapi/viam/proto/app/mltraining/index.html#viam.proto.app.mltraining.TrainingJobMetadata)): :   the list of training job data.
 
 **Example:**
 
