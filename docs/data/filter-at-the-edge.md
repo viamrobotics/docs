@@ -111,7 +111,7 @@ Optionally, you can configure a pre-trigger buffer with `window_seconds_before` 
 
 ### Prerequisites
 
-- A configured camera component on your machine. See [Configure a camera](/reference/components/camera/) if you need to set one up.
+- A configured camera component on your machine. See [Configure a camera](/hardware/common-components/add-a-camera/) if you need to set one up.
 - The data management service configured. See [Start data capture](/data/capture-sync/capture-and-sync-data/) for instructions.
 
 ### Instructions

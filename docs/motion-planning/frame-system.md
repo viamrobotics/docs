@@ -139,6 +139,50 @@ it relative to the frame.
 For detailed information about obstacle geometry, see
 [Define Obstacles](/motion-planning/obstacles/).
 
+## TransformPose
+
+`TransformPose` is a method on the machine client that converts a pose from one reference frame to another.
+You provide a source pose with its reference frame, a destination frame name, and the frame system computes the transform using the configured hierarchy and current joint positions.
+
+For example, to find where a camera's origin is in the world frame:
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.proto.common import PoseInFrame, Pose
+
+# Express the camera's origin (0,0,0) in its own frame
+camera_origin = PoseInFrame(
+    reference_frame="my-camera",
+    pose=Pose(x=0, y=0, z=0, o_x=0, o_y=0, o_z=1, theta=0)
+)
+
+# Transform to the world frame
+world_pose = await machine.transform_pose(camera_origin, "world")
+print(f"Camera in world: x={world_pose.pose.x}, y={world_pose.pose.y}, z={world_pose.pose.z}")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+baseOrigin := referenceframe.NewPoseInFrame("my-camera", spatialmath.NewZeroPose())
+worldPose, err := machine.TransformPose(context.Background(), baseOrigin, "world", nil)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The optional `supplemental_transforms` parameter lets you include additional frame relationships that are not part of the stored configuration.
+This is useful for dynamic frames, such as an object detected by a camera whose position is known relative to the camera but not configured in the frame system.
+
+Common uses:
+
+- **Verify frame configuration**: transform a component's origin to the world frame and check that the result matches its physical position.
+- **Convert detections**: transform a point detected in a camera frame to world coordinates so an arm can reach it.
+- **Compare across frames**: when two components report positions in different frames, transform both to a common frame before comparing.
+
 ## Verify with the CLI
 
 You can inspect your frame system from the command line without writing code:

@@ -135,7 +135,7 @@ Use `TransformPose` to verify the relationship between the camera and arm frames
 Place an object at a known position visible to the camera, then transform that position from the camera frame to the world frame.
 The result should match the object's measured position in the workspace.
 
-For details on the TransformPose API, see [Frame System Concepts](/motion-planning/frame-system/).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
 
 ## Troubleshooting
 

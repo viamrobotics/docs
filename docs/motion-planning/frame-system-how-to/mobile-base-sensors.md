@@ -143,7 +143,7 @@ Use `TransformPose` to confirm the relationships between sensor frames and the b
 For example, transform the front camera's origin `(0, 0, 0)` from the camera frame to the base frame.
 The result should match the camera's measured offset from the base center.
 
-For details on the TransformPose API, see [Frame System Concepts](/motion-planning/frame-system/).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
 
 ## Troubleshooting
 

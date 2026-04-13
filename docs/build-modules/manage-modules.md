@@ -50,7 +50,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    {{% alert title="Tip" color="tip" %}}
 
-   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to publish your module with PyInstaller](/build-modules/deploy-a-module/#5-deploy-manually-alternative) including adding API keys for the build action, all you need to do to trigger a new build is publish a release in GitHub as you did when you first published the module.
+   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to deploy with cloud build](/build-modules/deploy-a-module/#4-deploy-with-cloud-build-recommended) including adding API keys for the build action, all you need to do to trigger a new build is publish a release in GitHub as you did when you first published the module.
 
    {{% /alert %}}
 
