@@ -48,6 +48,48 @@ Viam is not a data silo. You can export data to your own tools and databases:
 
 See [Export data](/data/export-data/) and [Sync to your database](/data/sync-data-to-your-database/).
 
+## Delete data
+
+You can delete captured data through the Viam app, the CLI, or the SDK. The SQL and MQL query editor is read-only: you cannot run `DELETE`, `DROP TABLE`, or any write operation through it.
+
+**In the Viam app:**
+
+- **Images and binary data**: on the **DATA** tab, select one or more items and click **Delete selected**, or use **Delete all** with the current filters applied. Point clouds, video, and file uploads can also be deleted this way.
+- **Tabular data (sensor readings)**: the Sensors tab does not have a delete button. Use the CLI or SDK instead.
+
+**From the CLI:**
+
+Delete tabular data older than a number of days:
+
+```bash
+viam data delete tabular --org-id=<org-id> --delete-older-than-days=30
+```
+
+{{< alert title="Caution" color="caution" >}}
+`--delete-older-than-days=0` deletes **all** tabular data in the organization. The CLI tabular delete has no component or location filter: it applies to the entire org.
+{{< /alert >}}
+
+Delete binary data within a time range:
+
+```bash
+viam data delete binary \
+  --org-ids=<org-id> \
+  --start=2026-01-01T00:00:00Z \
+  --end=2026-02-01T00:00:00Z
+```
+
+The binary delete command requires `--org-ids`, `--start`, and `--end`. You can narrow deletion with optional filters for location, component, MIME type, and more. For the full, up-to-date list of filters, see the [`viam data delete binary` CLI reference](/cli/manage-data/#delete-data).
+
+**From the SDK:**
+
+The [data client API](/dev/reference/apis/data-client/) supports these delete operations; see the API reference for your SDK's method names and signatures:
+
+- Delete tabular data older than a specified number of days.
+- Delete binary data matching a filter, such as organization, location, or time range.
+- Delete specific binary items by ID.
+
+**Retention policies** can also auto-delete data in the cloud after a configured number of days. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings) for the `retention_policy` field.
+
 ## Annotate and train
 
 Captured images can be tagged, annotated with bounding boxes, and organized into datasets for ML training. Viam provides a complete path from captured data to a deployed model:
@@ -64,9 +106,52 @@ See [Create a dataset](/train/create-a-dataset/) and the training section for de
 
 Triggers send webhooks or email alerts when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
 
-For debugging, Viam includes OpenTelemetry distributed tracing that traces requests across your SDK code, viam-server, and modules. Traces can be exported to Jaeger, Grafana Tempo, Datadog, or saved to disk for later analysis.
-
 Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana connected to your data through MongoDB.
+
+### OpenTelemetry distributed tracing
+
+Viam includes OpenTelemetry (OTel) tracing that propagates trace context across your SDK code, `viam-server`, and modules. Traces cover gRPC request lifecycle, data capture operations, and module calls. When tracing is enabled on `viam-server`, module tracing is activated automatically.
+
+To enable tracing, add a `tracing` block at the top level of your machine's JSON config (alongside `"components"` and `"services"`). You must set `enabled` to `true` **and** enable at least one export destination (`disk`, `console`, or `otlpendpoint`). Setting only `"enabled": true` without an export destination has no effect.
+
+**Save traces to disk** for later retrieval with the CLI:
+
+```json
+{
+  "tracing": {
+    "enabled": true,
+    "disk": true
+  }
+}
+```
+
+This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions and troubleshooting tips.
+
+**Export directly to an OTLP-compatible backend** (Jaeger, Grafana Tempo, Datadog, or any OTLP collector):
+
+```json
+{
+  "tracing": {
+    "enabled": true,
+    "otlpendpoint": "<collector-host>:4317"
+  }
+}
+```
+
+For local development, see the [Jaeger getting started guide](https://www.jaegertracing.io/docs/latest/getting-started/) to set up a local instance that accepts OTLP traces.
+
+**Print traces to the console** for quick debugging without any external tools:
+
+```json
+{
+  "tracing": {
+    "enabled": true,
+    "console": true
+  }
+}
+```
+
+You can combine multiple destinations (for example, `"disk": true` and `"otlpendpoint": "<collector-host>:4317"` together).
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
