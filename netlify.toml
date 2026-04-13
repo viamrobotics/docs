@@ -21,6 +21,61 @@
   to = "/fleet/manage-versions/"
   status = 301
 
+[[redirects]]
+  from = "/dev/reference/apis/*"
+  to = "/reference/apis/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/reference/sdks/*"
+  to = "/reference/sdks/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/reference/glossary/*"
+  to = "/reference/glossary/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/reference/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/components/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/services/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/account/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/advanced-modules/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/glossary_tmp/*"
+  to = "/reference/glossary/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/module-configuration/"
+  to = "/reference/"
+  status = 301
+
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"
 
