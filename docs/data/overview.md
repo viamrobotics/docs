@@ -78,33 +78,15 @@ viam data delete binary \
   --end=2026-02-01T00:00:00Z
 ```
 
-You can narrow binary deletion with additional filters:
-
-```bash
-# Delete only images from a specific camera
-viam data delete binary \
-  --org-ids=<org-id> \
-  --start=2026-01-01T00:00:00Z \
-  --end=2026-02-01T00:00:00Z \
-  --component-name=my-camera
-
-# Delete only JPEG images
-viam data delete binary \
-  --org-ids=<org-id> \
-  --start=2026-01-01T00:00:00Z \
-  --end=2026-02-01T00:00:00Z \
-  --mime-types=image/jpeg
-```
-
-The binary delete command requires `--org-ids`, `--start`, and `--end`. It also accepts optional filters for location, machine, part, component type, component name, capture method, MIME type, and bounding box labels. For the full flag reference, see [Manage data with the CLI](/cli/manage-data/#delete-data).
+The binary delete command requires `--org-ids`, `--start`, and `--end`. You can narrow deletion with optional filters for location, component, MIME type, and more. For the full, up-to-date list of filters, see the [`viam data delete binary` CLI reference](/cli/manage-data/#delete-data).
 
 **From the SDK:**
 
-The [data client API](/dev/reference/apis/data-client/) provides three delete operations (Python method names shown; see the API reference for Go and TypeScript equivalents):
+The [data client API](/dev/reference/apis/data-client/) supports these delete operations; see the API reference for your SDK's method names and signatures:
 
-- `delete_tabular_data(organization_id, delete_older_than_days)` deletes tabular rows older than a number of days. An optional `filter` parameter supports `location_ids` and `component_name` for finer-grained control than the CLI offers.
-- `delete_binary_data_by_filter(filter)` deletes binary data matching a filter (organization, location, time range, component, and so on).
-- `delete_binary_data_by_ids(binary_ids)` deletes specific binary items by ID.
+- Delete tabular data older than a specified number of days.
+- Delete binary data matching a filter, such as organization, location, or time range.
+- Delete specific binary items by ID.
 
 **Retention policies** can also auto-delete data in the cloud after a configured number of days. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings) for the `retention_policy` field.
 
@@ -143,7 +125,7 @@ To enable tracing, add a `tracing` block at the top level of your machine's JSON
 }
 ```
 
-This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions.
+This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions and troubleshooting tips.
 
 **Export directly to an OTLP-compatible backend** (Jaeger, Grafana Tempo, Datadog, or any OTLP collector):
 
