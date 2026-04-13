@@ -11,6 +11,11 @@ aliases:
   - /program/apis/
   - /build/program/apis/
   - /appendix/apis/
+  - /reference/apis/services/SLAM/
+  - /reference/apis/services/slam/
+  - /dev/reference/apis/services/SLAM/
+  - /dev/reference/apis/services/slam/
+  - /appendix/apis/services/slam/
 no_list: true
 date: "2024-10-01"
 # updated: ""  # When the content was last entirely checked
