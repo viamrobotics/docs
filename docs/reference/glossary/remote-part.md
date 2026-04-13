@@ -9,5 +9,3 @@ aliases:
 ---
 
 A machine part which is controlled by another machine part.
-
-For more information, see [Machine Architecture: Parts](/reference/architecture/parts/).
