@@ -270,7 +270,7 @@ go run main.go
 
 ## What's next
 
-- [Motor API reference](/dev/reference/apis/components/motor/): full method documentation.
+- [Motor API reference](/reference/apis/components/motor/): full method documentation.
 - [Add an Encoder](/hardware/common-components/add-an-encoder/): add position
   feedback for precise motor control.
 - [Add a Base](/hardware/common-components/add-a-base/): combine two motors into a

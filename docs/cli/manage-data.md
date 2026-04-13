@@ -232,4 +232,4 @@ viam data index delete --collection-type=hot-storage --index-name=my-index
 - [Export data](/data/export-data/) for step-by-step export instructions with the Viam app
 - [Data pipelines with the CLI](/cli/data-pipelines/) for scheduled data transformations
 - [Datasets and training with the CLI](/cli/datasets-and-training/) for managing ML datasets
-- [CLI reference](/dev/tools/cli/#data) for the complete `data` command reference
+- [CLI reference](/cli/#data) for the complete `data` command reference

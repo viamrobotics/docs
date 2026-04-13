@@ -83,9 +83,9 @@ If you don't see your files yet, wait a few moments and refresh the page.
 
 ## Upload data with SDKs
 
-You can use the [Data Client API](/dev/reference/apis/data-client/) to upload files to the Viam Cloud.
+You can use the [Data Client API](/reference/apis/data-client/) to upload files to the Viam Cloud.
 
-Unlike when using the data management service, using the [`FileUploadFromPath`](/dev/reference/apis/data-client/#fileuploadfrompath) method uploads the files even if they already exist in the cloud.
+Unlike when using the data management service, using the [`FileUploadFromPath`](/reference/apis/data-client/#fileuploadfrompath) method uploads the files even if they already exist in the cloud.
 In other words, it duplicates data if you run it multiple times.
 
 Also unlike data sync, this method _does not_ delete data from your device.
@@ -102,14 +102,14 @@ Go to your organization's setting page and create an API key for a {{< glossary_
 {{% tablestep %}}
 **Upload a file from a path**
 
-Use the [`FileUploadFromPath`](/dev/reference/apis/data-client/#fileuploadfrompath) method to upload a file.
+Use the [`FileUploadFromPath`](/reference/apis/data-client/#fileuploadfrompath) method to upload a file.
 
 You must provide a {{< glossary_tooltip term_id="part" text="machine part" >}} ID to associate data with.
 
 {{< tabs >}}
 {{< tab name="Python" >}}
 
-To upload just one file, make a call to [`file_upload_from_path`](/dev/reference/apis/data-client/#fileuploadfrompath):
+To upload just one file, make a call to [`file_upload_from_path`](/reference/apis/data-client/#fileuploadfrompath):
 
 {{< read-code-snippet file="/static/include/examples-generated/upload-single-file.snippet.upload-single-file.py" lang="py" class="line-numbers linkable-line-numbers" data-line="31-38" >}}
 

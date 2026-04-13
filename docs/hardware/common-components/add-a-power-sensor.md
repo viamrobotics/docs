@@ -240,7 +240,7 @@ go run main.go
 
 ## What's next
 
-- [Power sensor API reference](/dev/reference/apis/components/power-sensor/): full method documentation.
+- [Power sensor API reference](/reference/apis/components/power-sensor/): full method documentation.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): log power
   consumption over time.
 - [What is a module?](/build-modules/overview/): write a module that

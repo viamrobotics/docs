@@ -16,17 +16,17 @@ aliases:
 ---
 
 The [Machine Learning (ML) model service](/data-ai/ai/deploy/) allows you to deploy machine learning models to your smart machine.
-Vision services, like [an `"mlmodel"` detector](/dev/reference/apis/services/vision/#detections) or [classifier](/dev/reference/apis/services/vision/#classifications), enable your machines to identify and classify objects in images with the deployed models' predictions.
+Vision services, like [an `"mlmodel"` detector](/reference/apis/services/vision/#detections) or [classifier](/reference/apis/services/vision/#classifications), enable your machines to identify and classify objects in images with the deployed models' predictions.
 
 The two services work closely together, with the vision service relying on the deployed ML model to make inferences.
 If you are [designing your own ML Model service](/data-ai/ai/deploy/), you must try to make your ML models' shapes match the input and output tensors the `mlmodel` vision service expects to work with if you want the two services to coordinate in classification or detection.
 
-To be able to use a deployed ML model, the `mlmodel` vision service checks for descriptions of these characteristics in the [metadata](/dev/reference/apis/services/ml/#metadata) of the model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
+To be able to use a deployed ML model, the `mlmodel` vision service checks for descriptions of these characteristics in the [metadata](/reference/apis/services/ml/#metadata) of the model, as defined in [the Python SDK](https://python.viam.dev/autoapi/viam/gen/service/mlmodel/v1/mlmodel_pb2/index.html#viam.gen.service.mlmodel.v1.mlmodel_pb2.Metadata).
 For an example of this, see [Example Metadata](#example-metadata).
 
 ## Input tensor: `input_info` in metadata
 
-For both [classification](/dev/reference/apis/services/vision/#classifications) and [detection](/dev/reference/apis/services/vision/#detections) models, the vision service sends a single input tensor to the ML Model with the following structure:
+For both [classification](/reference/apis/services/vision/#classifications) and [detection](/reference/apis/services/vision/#detections) models, the vision service sends a single input tensor to the ML Model with the following structure:
 
 - One input tensor called `"image"` with type `uint8` or `float32` and shape `(1, height, width, 3)`, with the last channel `3` being the RGB bytes of the pixel.
 - If image `height` and `width` are unknown or variable, then `height` and/or `width` `= -1`. During inference runtime the image will have a known height and width.
@@ -37,13 +37,13 @@ Data can be returned by the ML model in many ways, due to the variety of machine
 The vision service will try to take into account many different forms of models as specified by the metadata of the model.
 If the model does not provide metadata, the vision service will make the following assumptions:
 
-For [classifications](/dev/reference/apis/services/vision/#classifications):
+For [classifications](/reference/apis/services/vision/#classifications):
 
 - The model returns 1 tensor, called `"probability"` with shape `(1, n_classifications)`
 - The data is floating point numbers representing probability, between `0` and `1`.
 - If the data is not between `0` and `1`, the vision service computes a softmax over the data, resulting in floating point numbers between `0` and `1` representing probability.
 
-For [detections](/dev/reference/apis/services/vision/#detections):
+For [detections](/reference/apis/services/vision/#detections):
 
 - The model returns 3 tensors
   1. `"Location"`: the bounding boxes
@@ -70,7 +70,7 @@ For labels:
 
 ### Example metadata
 
-For example, a TF lite detector model that works with the vision service is structured with the following [metadata](/dev/reference/apis/services/ml/#metadata):
+For example, a TF lite detector model that works with the vision service is structured with the following [metadata](/reference/apis/services/ml/#metadata):
 
 ```json {class="line-numbers linkable-line-numbers"}
 name: "EfficientDet Lite0 V1"

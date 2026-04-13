@@ -46,7 +46,7 @@ You don't need to buy or own any hardware to complete this tutorial.
 You only need the following:
 
 - A Linux, macOS or Windows computer that can run SDK code.
-- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/dev/reference/try-viam/rover-resources/), or [another mobile robot](/tutorials/configure/configure-rover/).
+- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try/rover-resources/), or [another mobile robot](/tutorials/configure/configure-rover/).
   You can use [Try Viam](https://app.viam.com/try) to borrow a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, these instructions work for any wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
 
@@ -62,7 +62,7 @@ Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your session, you can [extend your rover session](/dev/reference/try-viam/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+If you are running out of time during your session, you can [extend your rover session](/try/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}
@@ -87,7 +87,7 @@ To install your preferred Viam SDK on your Linux or macOS development machine or
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If you are using the Python SDK, [set up a virtual environment](/dev/reference/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
+If you are using the Python SDK, [set up a virtual environment](/reference/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the following commands:
 
@@ -819,7 +819,7 @@ Then run your code and watch your rover move in a square.
 
 {{% alert title="Tip" color="tip" %}}
 
-If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/dev/reference/apis/components/base/#api) for a full list of available API methods.
+If you are interested to learn about what other commands you can give to a base, see the standardized [base API](/reference/apis/components/base/#api) for a full list of available API methods.
 {{% /alert %}}
 
 {{< /expand>}}

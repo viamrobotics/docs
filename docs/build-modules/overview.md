@@ -40,7 +40,7 @@ your hardware:
 | `base`   | Is a mobile platform (wheeled, tracked, legged)     | `MoveStraight`, `Spin`, `SetVelocity`    |
 
 Viam defines over 15 component APIs and 10 service APIs. For the full list,
-see [Resource APIs](/dev/reference/apis/).
+see [Resource APIs](/reference/apis/).
 
 Each implementation of a resource API is called a **model**. For example,
 the `camera` API has models for USB cameras, CSI cameras, RTSP streams, and

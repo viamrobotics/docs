@@ -26,7 +26,7 @@ To use the ML training client API, you need to instantiate a `ViamClient` and th
 
 You need an API key and API key ID with [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the MLTraining client API.
 To get an API key (and corresponding ID), use the [web UI](/operate/control/api-keys/#add-an-api-key)
-to the [Viam CLI](/dev/tools/cli/#create-an-organization-api-key).
+to the [Viam CLI](/cli/#create-an-organization-api-key).
 
 {{< tabs >}}
 {{% tab name="From a client application" %}}

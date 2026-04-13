@@ -189,7 +189,7 @@ go run main.go
 
 ## What's next
 
-- [Button API reference](/dev/reference/apis/components/button/): full method documentation.
+- [Button API reference](/reference/apis/components/button/): full method documentation.
 - [What is a module?](/build-modules/overview/): write a module that
   responds to button presses.
 - [Component types](/hardware/component-types/): find the right type for

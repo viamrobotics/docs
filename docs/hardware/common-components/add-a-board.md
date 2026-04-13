@@ -260,7 +260,7 @@ go run main.go
 
 ## What's next
 
-- [Board API reference](/dev/reference/apis/components/board/): full method documentation.
+- [Board API reference](/reference/apis/components/board/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): wire a motor to your
   board's GPIO pins.
 - [Add an Encoder](/hardware/common-components/add-an-encoder/): wire an encoder to

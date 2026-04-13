@@ -75,7 +75,7 @@ To query data from the hot data store, you must specify it as the data source in
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Use [`DataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) with `data_source` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` to query your hot data store:
+Use [`DataClient.TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) with `data_source` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` to query your hot data store:
 
 {{< read-code-snippet file="/static/include/examples-generated/query.snippet.pipeline-query.py" lang="py" class="line-numbers linkable-line-numbers" data-line="" >}}
 
@@ -89,7 +89,7 @@ Use [`DataClient.TabularDataByMQL`](https://pkg.go.dev/go.viam.com/rdk/app#DataC
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-Use [`dataClient.TabularDataByMQL`](/dev/reference/apis/data-client/#tabulardatabymql) with `dataSource` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` to query your hot data store:
+Use [`dataClient.TabularDataByMQL`](/reference/apis/data-client/#tabulardatabymql) with `dataSource` set to `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE` to query your hot data store:
 
 {{< read-code-snippet file="/static/include/examples-generated/query.snippet.pipeline-query.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 

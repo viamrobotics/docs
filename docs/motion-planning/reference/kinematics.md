@@ -265,7 +265,7 @@ have incorrect link lengths, joint axes, or joint limits.
    individual joints using the CONTROL tab and verify the visualization matches.
 3. For reading joint positions and controlling the arm, see
    [Add an Arm](/hardware/common-components/add-an-arm/) and the
-   [Arm API reference](/dev/reference/apis/components/arm/).
+   [Arm API reference](/reference/apis/components/arm/).
 
 ## Troubleshooting
 

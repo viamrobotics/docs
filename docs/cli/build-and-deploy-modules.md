@@ -241,4 +241,4 @@ Use `--dry-run` to print the Docker command without running it.
 - [Write a driver module](/build-modules/write-a-driver-module/) for a complete guide to writing a hardware driver
 - [Write a logic module](/build-modules/write-a-logic-module/) for writing automation and monitoring logic
 - [Deploy a module](/build-modules/deploy-a-module/) for deployment with GitHub Actions
-- [CLI reference](/dev/tools/cli/#module) for the complete `module` command reference
+- [CLI reference](/cli/#module) for the complete `module` command reference

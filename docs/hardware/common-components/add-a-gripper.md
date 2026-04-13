@@ -256,7 +256,7 @@ go run main.go
 
 ## What's next
 
-- [Gripper API reference](/dev/reference/apis/components/gripper/): full method documentation.
+- [Gripper API reference](/reference/apis/components/gripper/): full method documentation.
 - [Add an arm](/hardware/common-components/add-an-arm/): configure the arm
   the gripper is mounted on.
 - [Fragments](/hardware/fragments/): save and reuse working

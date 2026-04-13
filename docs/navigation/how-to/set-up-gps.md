@@ -192,5 +192,5 @@ func main() {
 
 - [Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/):
   configure the navigation service and send your robot to a GPS coordinate.
-- [Movement sensor API reference](/dev/reference/apis/components/movement-sensor/):
+- [Movement sensor API reference](/reference/apis/components/movement-sensor/):
   full method documentation.

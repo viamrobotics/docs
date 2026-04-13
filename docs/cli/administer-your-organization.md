@@ -198,4 +198,4 @@ viam organizations billing-service disable --org-id=<org-id>
 - [Manage access](/organization/access/) for role-based access control in the Viam app
 - [Authenticate end users with OAuth](/organization/oauth/) for OAuth setup details
 - [White-labeled billing](/organization/billing/) for billing fragment configuration
-- [CLI reference](/dev/tools/cli/#organizations) for the complete `organizations` command reference
+- [CLI reference](/cli/#organizations) for the complete `organizations` command reference

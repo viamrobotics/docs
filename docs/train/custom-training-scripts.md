@@ -179,7 +179,7 @@ viam dataset export --destination=<destination> --dataset-id=<dataset-id>
 This downloads the binary data files and a `dataset.jsonl` metadata file.
 To download only the JSONL file without binary data, add `--only-jsonl`.
 
-You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/dev/tools/cli/#dataset).
+You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/#dataset).
 
 ### Test locally with Docker
 
@@ -232,7 +232,7 @@ viam training-script upload --path=my-training.tar.gz \
 ```
 
 You can also specify `--framework`, `--type`, `--visibility`, and `--description` when uploading.
-See the [CLI reference](/dev/tools/cli/#training-script) for the full list of flags.
+See the [CLI reference](/cli/#training-script) for the full list of flags.
 
 To find your organization ID, run `viam organization list`.
 
@@ -263,7 +263,7 @@ viam train containers list
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-Use [`viam train submit custom from-registry`](/dev/tools/cli/#positional-arguments-submit):
+Use [`viam train submit custom from-registry`](/cli/#positional-arguments-submit):
 
 ```sh {class="command-line" data-prompt="$"}
 viam train submit custom from-registry --dataset-id=<dataset-id> \
@@ -274,12 +274,12 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --args=num_epochs=100,labels="'label1 label2'"
 ```
 
-You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/dev/tools/cli/#dataset).
+You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/#dataset).
 
 {{% /tab %}}
 {{% tab name="API" %}}
 
-Use the [ML Training Client API](/dev/reference/apis/ml-training-client/#submittrainingjob) to submit training jobs programmatically.
+Use the [ML Training Client API](/reference/apis/ml-training-client/#submittrainingjob) to submit training jobs programmatically.
 
 {{% /tab %}}
 {{< /tabs >}}

@@ -276,7 +276,7 @@ go run main.go
 
 ## What's next
 
-- [Gantry API reference](/dev/reference/apis/components/gantry/): full method documentation.
+- [Gantry API reference](/reference/apis/components/gantry/): full method documentation.
 - [Add a motor](/hardware/common-components/add-a-motor/): configure the motor
   that drives the gantry axis.
 - [Fragments](/hardware/fragments/): save and reuse working

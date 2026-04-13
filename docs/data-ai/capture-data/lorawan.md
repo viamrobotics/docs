@@ -287,7 +287,7 @@ When you specify an `fport` value for a node, gateways use that value as the fra
 
 ## Control nodes
 
-You can use [DoCommand](/dev/reference/sdks/docommand/) to configure, control, and calibrate your LoRaWAN nodes.
+You can use [DoCommand](/reference/sdks/docommand/) to configure, control, and calibrate your LoRaWAN nodes.
 The `lorawan` module supports the following commands:
 
 ### Restart node

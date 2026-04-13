@@ -43,7 +43,7 @@ Your module needs access to the vision service, a camera, and whatever resource 
 
 ### 1. Generate the module scaffold
 
-Install the [Viam CLI](/dev/tools/cli/) and generate a module template. Replace `<ORGANIZATION-ID>` with your organization ID.
+Install the [Viam CLI](/cli/) and generate a module template. Replace `<ORGANIZATION-ID>` with your organization ID.
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate --language python --model-name safe-arm \
@@ -306,4 +306,4 @@ If your module wraps another resource, update any services or processes that ref
 
 - [Alert on Detections](/vision/alert-on-detections/) -- send email or webhook notifications when specific objects are detected.
 - [Deploy a Module](/build-modules/deploy-a-module/) -- package and upload your module to the Viam Registry.
-- [Vision Service API Reference](/dev/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.
+- [Vision Service API Reference](/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.

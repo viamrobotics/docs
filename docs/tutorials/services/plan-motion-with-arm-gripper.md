@@ -155,7 +155,7 @@ Additional obstacles can also be _appended_ as desired.
 
 In previous examples you controlled motion of individual components.
 Now you will use the motion service to control the motion of the robot as a whole.
-You will use the motion service's [`Move`](/dev/reference/apis/services/motion/#move) method to execute more general robotic motion.
+You will use the motion service's [`Move`](/reference/apis/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 

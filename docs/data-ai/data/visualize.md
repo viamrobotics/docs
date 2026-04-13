@@ -168,7 +168,7 @@ For more information on the Grafana MongoDB plugin, see [Configure the MongoDB d
 {{% tablestep %}}
 **Use Grafana for dashboards**
 
-With your data connection established, Grafana can now access all synced sensor data under your [organization](/dev/reference/glossary/#organization), from any machine.
+With your data connection established, Grafana can now access all synced sensor data under your [organization](/reference/glossary/#organization), from any machine.
 
 You can now build dashboards that provide insight into your data.
 

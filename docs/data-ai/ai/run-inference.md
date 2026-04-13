@@ -44,14 +44,14 @@ If your hardware does not support the model you want to run, see [Cloud inferenc
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
+The following code passes an image to an ML model service, and uses the [`Infer`](/reference/apis/services/ml/#infer) method to make inferences:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.py" lang="py" class="line-numbers linkable-line-numbers" data-line="82-85" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
+The following code passes an image to an ML model service, and uses the [`Infer`](/reference/apis/services/ml/#infer) method to make inferences:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.go" lang="go" class="line-numbers linkable-line-numbers" data-line="161-164" >}}
 
@@ -105,21 +105,21 @@ To use a vision service:
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
+The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/reference/apis/services/vision/#getclassifications) method:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.py" lang="py" class="line-numbers linkable-line-numbers" data-line="36-37" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
+The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/reference/apis/services/vision/#getclassifications) method:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.go" lang="go" class="line-numbers linkable-line-numbers" data-line="62-65" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/dev/reference/apis/services/vision/#getclassifications) method:
+The following code passes an image from a camera to a vision service and uses the [`GetClassifications`](/reference/apis/services/vision/#getclassifications) method:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-vision-service.snippet.run-vision-service.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="32-38" >}}
 
@@ -165,4 +165,4 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 The command returns a list of detected classes or bounding boxes depending on the output of the ML model you specified, as well as a list of confidence values for those classes or boxes.
 The bounding box output uses proportional coordinates between 0 and 1, with the origin `(0, 0)` in the top left of the image and `(1, 1)` in the bottom right.
 
-For more information, see [`viam infer`](/dev/tools/cli/#infer).
+For more information, see [`viam infer`](/cli/#infer).

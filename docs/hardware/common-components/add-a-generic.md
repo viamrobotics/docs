@@ -202,7 +202,7 @@ go run main.go
 
 ## What's next
 
-- [Generic API reference](/dev/reference/apis/components/generic/): full method documentation.
+- [Generic API reference](/reference/apis/components/generic/): full method documentation.
 - [Write a driver module](/build-modules/write-a-driver-module/): create a
   module for your custom hardware.
 - [Component types](/hardware/component-types/): check if a more specific

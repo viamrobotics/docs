@@ -42,11 +42,11 @@ Add the directory path to **Additional paths** in the data management service co
 
 ## Upload with SDKs
 
-Use the [Data Client API](/dev/reference/apis/data-client/) to upload files programmatically.
-Unlike the data management service, the [`FileUploadFromPath`](/dev/reference/apis/data-client/#fileuploadfrompath) method does not delete local files after upload, but it will duplicate data if you run it more than once.
+Use the [Data Client API](/reference/apis/data-client/) to upload files programmatically.
+Unlike the data management service, the [`FileUploadFromPath`](/reference/apis/data-client/#fileuploadfrompath) method does not delete local files after upload, but it will duplicate data if you run it more than once.
 
 1. Create an [API key](/organization/access/) for your organization, location, or machine.
-2. Use [`FileUploadFromPath`](/dev/reference/apis/data-client/#fileuploadfrompath) to upload a file.
+2. Use [`FileUploadFromPath`](/reference/apis/data-client/#fileuploadfrompath) to upload a file.
    You must provide a {{< glossary_tooltip term_id="part" text="machine part" >}} ID to associate the data with.
 3. Run your code once.
    Running it again uploads the same files a second time.

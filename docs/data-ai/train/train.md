@@ -31,7 +31,7 @@ If you wish to do this, skip to [Submit a training job](#submit-a-training-job).
 
 For images, follow the instructions to [Create a dataset](/data-ai/train/create-dataset/) to create a dataset and label data.
 
-For other data, use the [Data Client API](/dev/reference/apis/data-client/) to store data in the Viam Cloud.
+For other data, use the [Data Client API](/reference/apis/data-client/) to store data in the Viam Cloud.
 
 {{% /expand%}}
 
@@ -666,7 +666,7 @@ Update the main to call the functions you have just created.
 {{% tablestep %}}
 **Use Viam APIs in a training script**
 
-To access [Viam APIs](/dev/reference/apis/) within a custom training script, use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
+To access [Viam APIs](/reference/apis/) within a custom training script, use the environment variables `API_KEY` and `API_KEY_ID` to establish a connection.
 
 ```python
 async def connect() -> ViamClient:
@@ -693,7 +693,7 @@ You can export one of your Viam datasets to test your training script locally.
 {{% tablestep start=1 %}}
 **Export your dataset**
 
-You can get the dataset ID from the dataset page or using the [`viam dataset list`](/dev/tools/cli/#dataset) command:
+You can get the dataset ID from the dataset page or using the [`viam dataset list`](/cli/#dataset) command:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=<destination> --dataset-id=<dataset-id> --include-jsonl=true
@@ -765,7 +765,7 @@ viam training-script upload --path=my-training.tar.gz \
 {{% /tab %}}
 {{< /tabs >}}
 
-You can also [specify the version, framework, type, visibility, and description](/dev/tools/cli/#training-script) when uploading a custom training script.
+You can also [specify the version, framework, type, visibility, and description](/cli/#training-script) when uploading a custom training script.
 
 To find your organization's ID, run the following command:
 
@@ -781,7 +781,7 @@ You can view uploaded training scripts by navigating to the [registry's **Traini
 
 ## Submit a training job
 
-After uploading the training script, you can run it by submitting a training job using the web UI, the CLI or the [ML training client API](/dev/reference/apis/ml-training-client/#submittrainingjob).
+After uploading the training script, you can run it by submitting a training job using the web UI, the CLI or the [ML training client API](/reference/apis/ml-training-client/#submittrainingjob).
 
 {{< table >}}
 {{% tablestep start=1 %}}
@@ -801,7 +801,7 @@ To pass labels, you must use the CLI.
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-You can use [`viam train submit custom from-registry`](/dev/tools/cli/#positional-arguments-submit) to submit a training job.
+You can use [`viam train submit custom from-registry`](/cli/#positional-arguments-submit) to submit a training job.
 
 For example:
 
@@ -815,7 +815,7 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> \
 
 This command submits a training job to the previously uploaded `MyCustomTrainingScript` with another input dataset, which trains `MyRegistryModel` and publishes that to the registry.
 
-You can get the dataset ID from the **DATASET** tab of the **DATA** page or by running the [`viam dataset list`](/dev/tools/cli/#dataset) command.
+You can get the dataset ID from the **DATASET** tab of the **DATA** page or by running the [`viam dataset list`](/cli/#dataset) command.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -848,7 +848,7 @@ Your training script may output logs at the error level but still succeed.
 
 {{< /alert >}}
 
-You can also view your training jobs' logs with the [`viam train logs`](/dev/tools/cli/#train) command.
+You can also view your training jobs' logs with the [`viam train logs`](/cli/#train) command.
 
 Training logs expire after 7 days.
 

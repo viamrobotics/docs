@@ -117,4 +117,4 @@ viam datapipelines delete --id=<pipeline-id>
 - [Create a data pipeline](/data/pipelines/create-a-pipeline/) for step-by-step pipeline creation with the Viam app and SDKs
 - [Pipeline examples and MQL tips](/data/pipelines/examples/) for common MQL patterns
 - [Query pipeline results](/data/pipelines/query-results/) for querying pipeline output
-- [CLI reference](/dev/tools/cli/#datapipelines) for the complete `datapipelines` command reference
+- [CLI reference](/cli/#datapipelines) for the complete `datapipelines` command reference

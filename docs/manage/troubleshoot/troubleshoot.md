@@ -15,7 +15,7 @@ If your machine is not working as expected, there are several steps you can take
 Start by checking the machine logs.
 If that doesn't help, you can enable debug logs or `ssh` into the machine.
 
-For common errors see [Common Errors](/dev/tools/common-errors/).
+For common errors see [Common Errors](/monitor/troubleshoot/).
 
 ## Check logs
 
@@ -189,7 +189,7 @@ You may also find that not all logs you are expecting are displayed.
 By default, `viam-server` deduplicates log messages that are deemed noisy.
 To disable this behavior, see [Disable log deduplication](/operate/reference/viam-server/).
 
-To access logs from the commandline, use [`viam machines logs`](/dev/tools/cli/#machines-alias-robots-and-machine) on the command line or the [Machines API](/dev/reference/apis/robot/).
+To access logs from the commandline, use [`viam machines logs`](/cli/#machines-alias-robots-and-machine) on the command line or the [Machines API](/reference/apis/robot/).
 
 ### Advanced debugging for Go modules
 
@@ -261,7 +261,7 @@ For more information on advanced debugging endpoints, see [Advanced debug endpoi
 To remotely access your machine from your terminal:
 
 1. Add the [ViamShellDanger fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json) to your machine.
-1. Once you have added the fragment, you can use the [Viam CLI](/dev/tools/cli/) to open a shell on the machine.
+1. Once you have added the fragment, you can use the [Viam CLI](/cli/) to open a shell on the machine.
 
    ```sh {class="command-line" data-prompt="$" data-output="2-10"}
    viam machines part shell --organization=<org name> --location=<location name> --machine=<machine id>
@@ -269,7 +269,7 @@ To remotely access your machine from your terminal:
 
 1. You can [access the local log file](/operate/reference/viam-server/manage-viam-server/#view-viam-server-logs) on your machine if needed.
 
-1. If you need to copy files from your machine, use the [`viam machine part cp`](/dev/tools/cli/#machines-alias-robots-and-machine) command.
+1. If you need to copy files from your machine, use the [`viam machine part cp`](/cli/#machines-alias-robots-and-machine) command.
 
 ## Restart your machine
 
