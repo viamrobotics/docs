@@ -72,3 +72,5 @@ An environmental monitoring workspace might include:
 - A stat widget showing the current air quality index
 
 Start with fewer widgets and add more as you discover what the operator actually uses.
+
+If you need more control than widgets provide, you can [build a custom app](/build-apps/) with full SDK access using TypeScript, Flutter, Python, Go, or C++.

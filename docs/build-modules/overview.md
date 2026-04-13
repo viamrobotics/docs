@@ -204,3 +204,5 @@ in Go, an `asyncio.Event` in Python) to coordinate this.
    add support for new hardware.
 5. **Deploy** ([Deploy a module](/build-modules/deploy-a-module/)).
    Package your module and deploy it to one machine or a fleet.
+
+If you want to build a client app that talks to a machine from outside `viam-server` rather than extending the server itself, see [Build apps](/build-apps/).
