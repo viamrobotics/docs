@@ -8,7 +8,7 @@ description: "Structure of captured tabular data: document format, column refere
 date: "2025-02-10"
 ---
 
-All tabular data is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. This page describes the structure of that table and the nested `data` column.
+Captured tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is stored in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource. This page describes the structure of that table and the nested `data` column.
 
 For query syntax, optimization tips, and supported operators, see [Data reference](/data/reference/).
 
