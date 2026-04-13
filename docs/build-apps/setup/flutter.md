@@ -200,5 +200,5 @@ If you see `Connection failed:`, the most common causes are:
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use, including the `Viam` class for multi-machine access
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
 - [The Flutter SDK reference](https://flutter.viam.dev/) for per-component API details and widget documentation

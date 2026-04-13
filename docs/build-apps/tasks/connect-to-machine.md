@@ -8,7 +8,7 @@ description: "Open a connection to a single Viam machine from your app, structur
 date: "2026-04-10"
 ---
 
-Open a connection to a single Viam machine from your app, structure the connection code so you do not reconnect unnecessarily, and close the connection when the app is done with it. This page covers the basic connection pattern. For reconnection, UI indicators, and connection-state events, see [Handle connection state](./handle-connection-state/). For apps that access multiple machines or the fleet APIs, see [Connect to the Viam cloud](./connect-to-cloud/).
+Open a connection to a single Viam machine from your app, structure the connection code so you do not reconnect unnecessarily, and close the connection when the app is done with it. This page covers the basic connection pattern. For reconnection, UI indicators, and connection-state events, see [Handle disconnection and reconnection](./handle-connection-state/). For apps that access multiple machines or the fleet APIs, see [Connect to the Viam cloud](./connect-to-cloud/).
 
 ## Prerequisites
 
@@ -227,7 +227,7 @@ defer machine.Close(context.Background())
 
 The error from a failed connect is generic. The SDK does not always distinguish credential errors from network errors. Log the error message verbatim when debugging, and check the **CONNECT** tab in the Viam app to confirm the machine is online before assuming the code is wrong.
 
-Once the connection is established, subsequent network drops trigger automatic reconnection rather than thrown errors. See [Handle connection state](./handle-connection-state/) for the reconnection pattern.
+Once the connection is established, subsequent network drops trigger automatic reconnection rather than thrown errors. See [Handle disconnection and reconnection](./handle-connection-state/) for the reconnection pattern.
 
 ## Where to put connection code
 
@@ -241,6 +241,6 @@ Create the `RobotClient` once at the right lifetime boundary and share it across
 
 ## Next
 
-- [Handle connection state](./handle-connection-state/) for reconnection behavior, UI indicators, and connection events
+- [Handle disconnection and reconnection](./handle-connection-state/) for reconnection behavior, UI indicators, and connection events
 - [Connect to the Viam cloud](./connect-to-cloud/) for apps that access multiple machines or use the fleet, data, and billing APIs
 - [Stream video](./stream-video/) for displaying camera feeds from your connected machine

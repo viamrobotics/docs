@@ -155,5 +155,5 @@ If the script hangs or errors, the most common causes are:
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
 - [The SDK's `Node.md`](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/Node.md) for deeper detail on the polyfill and transport setup

@@ -142,10 +142,10 @@ The TypeScript SDK's `StreamClient` tracks open streams and automatically re-add
 
 In the Flutter SDK, `StreamClient` does not explicitly re-add streams on reconnect. If a stream becomes inactive after a disconnection, tear down the `ViamCameraStreamView` and recreate it, or listen for connection-state changes and restart the stream manually.
 
-See [Handle connection state](./handle-connection-state/) for the connection-event pattern.
+See [Handle disconnection and reconnection](./handle-connection-state/) for the connection-event pattern.
 
 ## Next
 
-- [Handle connection state](./handle-connection-state/) for the rebuild-after-reconnect pattern
+- [Handle disconnection and reconnection](./handle-connection-state/) for the rebuild-after-reconnect pattern
 - [Query captured data](./query-data/) for reading captured data alongside live streams
 - [Camera component reference](/reference/components/camera/) for per-model configuration

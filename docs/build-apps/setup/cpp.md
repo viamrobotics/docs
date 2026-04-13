@@ -151,6 +151,6 @@ The C++ SDK's WebRTC support is implemented through a Rust FFI layer. The SDK's 
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and status indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and status indicators
 - [C++ SDK reference](https://cpp.viam.dev/) for per-component API details
 - [BUILDING.md](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/doc/BUILDING.md) for the full build system documentation

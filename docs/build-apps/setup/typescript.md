@@ -134,5 +134,5 @@ If you use Firefox for development, see the [Firefox WebRTC localhost workaround
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use, including language tabs for Flutter
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
 - [Stream video](../../tasks/stream-video/) for displaying camera feeds

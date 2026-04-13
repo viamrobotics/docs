@@ -73,4 +73,4 @@ Reconnection is transparent to your application code. The `RobotClient` object s
 
 What does _not_ happen automatically is your app's UI state. If you were showing a camera stream when the network dropped, the stream stops, and your UI has to rebuild the stream when the connection returns. If you were polling a sensor, the polling stops, and your UI has to resume polling. The SDK reconnects the transport; your app reconnects its own state.
 
-Subscribe to `MachineConnectionEvent` to react to connection state changes. See [Handle connection state](../../tasks/handle-connection-state/) for the pattern.
+Subscribe to `MachineConnectionEvent` to react to connection state changes. See [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for the pattern.

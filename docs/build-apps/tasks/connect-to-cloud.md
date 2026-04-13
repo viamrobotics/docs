@@ -236,7 +236,7 @@ If a subsequent `appClient` or `dataClient` call fails because the API key does 
 ## Next
 
 - [Query captured data](./query-data/) for using `dataClient` to read sensor and binary data
-- [Handle connection state](./handle-connection-state/) for reconnection behavior on the `RobotClient` instances you get from the cloud connection
+- [Handle disconnection and reconnection](./handle-connection-state/) for reconnection behavior on the `RobotClient` instances you get from the cloud connection
 - [Provision devices](/fleet/provision-devices/) for custom provisioning apps that use `provisioningClient`
 - [Fleet API reference](/reference/apis/fleet/) for the full `AppClient` method list
 - [Data API reference](/reference/apis/data-client/) for the full `DataClient` method list

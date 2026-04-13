@@ -16,7 +16,7 @@ Every Viam app follows the same scaffolding pattern regardless of language. The 
 4. **Write a connection verification.** A short program that connects to your machine and prints the resource count. This confirms the SDK is installed correctly, credentials are valid, and the connection works.
 5. **Run it.** Execute the program and confirm you see `Connected. Found N resources.` If you do, the scaffold is complete and you can start writing your app.
 
-After scaffolding, the next step is [Connect to a machine](../tasks/connect-to-machine/) for the connection patterns your app will actually use, or one of the [tutorials](../guides/tutorial-dashboard/) for a guided project.
+After scaffolding, the next step is [Connect to a machine](../tasks/connect-to-machine/) for the connection patterns your app will actually use, or one of the [tutorials](../app-tutorials/tutorial-dashboard/) for a guided project.
 
 ## Pick your language
 

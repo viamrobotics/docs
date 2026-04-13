@@ -250,7 +250,7 @@ function watchConnection() {
 
 Call `watchConnection()` at the end of `main()`, after the motor buttons are wired.
 
-Save and refresh. The status indicator still says `Connected` on load. To test the state change, turn off your machine or disconnect your computer from the network briefly. The indicator switches to `Disconnected` (red). Restore connectivity and the SDK reconnects automatically, switching the indicator back to `Connected` (green). The camera stream may or may not resume on its own depending on how long the disconnection lasted; see [Handle connection state](../tasks/handle-connection-state/) for the rebuild-after-reconnect pattern.
+Save and refresh. The status indicator still says `Connected` on load. To test the state change, turn off your machine or disconnect your computer from the network briefly. The indicator switches to `Disconnected` (red). Restore connectivity and the SDK reconnects automatically, switching the indicator back to `Connected` (green). The camera stream may or may not resume on its own depending on how long the disconnection lasted; see [Handle disconnection and reconnection](../tasks/handle-connection-state/) for the rebuild-after-reconnect pattern.
 
 ## What you built
 
@@ -270,6 +270,6 @@ Extend the dashboard in one of these directions:
 
 - **Auto-stop the motor when the sensor crosses a threshold.** In the sensor polling loop, check the reading's value and call `motor.stop()` when it exceeds a limit. This is the smallest useful control loop: reads drive writes. Combining observation with action is the core pattern of all robotics software.
 - **Add a second camera.** Instantiate another `StreamClient.getStream("second_camera")` call and attach the result to a second `<video>` element. See [Stream video](../tasks/stream-video/) for the multi-camera section and its bandwidth caveats.
-- **Rebuild state after reconnection.** The current dashboard does not re-attach the camera stream after a long disconnection. Follow [Handle connection state](../tasks/handle-connection-state/) to add the rebuild pattern.
+- **Rebuild state after reconnection.** The current dashboard does not re-attach the camera stream after a long disconnection. Follow [Handle disconnection and reconnection](../tasks/handle-connection-state/) to add the rebuild pattern.
 - **Deploy the dashboard to Viam Applications.** Follow [Deploy a Viam application](../hosting/deploy/) to host the dashboard at a public URL with authentication and cookie-injected credentials. The code you wrote here works the same when deployed, except you read credentials from cookies instead of `import.meta.env`.
 - **Build a multi-machine version.** See [the fleet tutorial](./tutorial-fleet/) for a dashboard that connects to the Viam cloud and aggregates data across several machines.

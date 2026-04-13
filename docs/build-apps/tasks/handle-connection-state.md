@@ -1,6 +1,6 @@
 ---
-linkTitle: "Handle connection state"
-title: "Handle connection state"
+linkTitle: "Handle disconnection and reconnection"
+title: "Handle disconnection and reconnection"
 weight: 50
 layout: "docs"
 type: "docs"

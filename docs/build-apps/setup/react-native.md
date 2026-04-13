@@ -122,6 +122,13 @@ globalThis.VIAM = {
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, Text, StyleSheet } from "react-native";
 
+// Replace these with the values from your machine's CONNECT tab.
+// For a production app, use react-native-config or a secure store
+// instead of hardcoding credentials in source.
+const HOST = "my-robot-main.xxxx.viam.cloud";
+const API_KEY_ID = "your-api-key-id";
+const API_KEY = "your-api-key-secret";
+
 function App(): React.JSX.Element {
   const [status, setStatus] = useState("Connecting...");
 
@@ -129,11 +136,11 @@ function App(): React.JSX.Element {
     async function connect() {
       try {
         const machine = await VIAM.createRobotClient({
-          host: "my-robot-main.xxxx.viam.cloud",
+          host: HOST,
           credentials: {
             type: "api-key",
-            authEntity: "your-api-key-id",
-            payload: "your-api-key-secret",
+            authEntity: API_KEY_ID,
+            payload: API_KEY,
           },
           signalingAddress: "https://app.viam.com:443",
         });
@@ -161,8 +168,6 @@ const styles = StyleSheet.create({
 
 export default App;
 ```
-
-Replace the three credential values and the `host` with the ones from the **CONNECT** tab. For a production app, load these from environment variables or a secure store instead of hardcoding them in source.
 
 **The order of imports in this file matters.** The polyfills and the transport factory assignment must run before any SDK call. If you move the `polyfills()` call or the `globalThis.VIAM` assignment below the React imports, or import any SDK submodule before them, the SDK will fail to initialize.
 
@@ -193,5 +198,5 @@ If you see `Connection failed:`, the most common causes are:
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and UI indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and UI indicators
 - [The SDK's `ReactNative.md`](https://github.com/viamrobotics/viam-typescript-sdk/blob/main/ReactNative.md) for deeper detail on the polyfills, the transport, and the Android environment variables needed for the Android build

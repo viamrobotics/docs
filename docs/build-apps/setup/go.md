@@ -112,5 +112,5 @@ The example above reads credentials from environment variables set inline on the
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and status indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and status indicators
 - [Go SDK reference](https://pkg.go.dev/go.viam.com/rdk) for per-component API details

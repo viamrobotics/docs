@@ -24,7 +24,7 @@ A Viam app can be distributed and run in five different ways. Most apps fit clea
 
 | Deployment               | What it is                                                                                                                                                                                                                                                                                                        | Typical platform                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| **Viam Applications**    | A web app hosted by Viam at `{name}_{namespace}.viamapplications.com`. Auth and machine credentials are injected automatically. No custom domain, no server-side code execution, always serves the latest uploaded version.                                                                                       | Browser (TypeScript or any frontend framework)                                    |
+| **Viam Applications**    | A web app hosted by Viam at `{name}_{namespace}.viamapplications.com`. Auth and machine credentials are injected automatically. No server-side code execution. Always serves the latest uploaded version.                                                                                                         | Browser (TypeScript or any frontend framework)                                    |
 | **Self-hosted web app**  | A web app you serve yourself: Vercel, Netlify, S3, GitHub Pages, your own server. You handle TLS, auth, credentials, and the domain. You get full control of versioning, server-side functions, and anything else your hosting platform supports.                                                                 | Browser (TypeScript or any frontend framework)                                    |
 | **Distributed binary**   | A native app you build and ship through an app store, an installer, or an internal channel. The user installs it on their device and opens it from their home screen or desktop.                                                                                                                                  | Flutter (iOS, Android, Linux, macOS, web, Windows) or React Native (iOS, Android) |
 | **Long-running service** | A daemon that runs continuously on a server, container, or edge device. No UI; it talks to one or more machines, processes data, triggers actions, exposes its own API, or integrates with other systems. Operated by ops tooling (systemd, Kubernetes, supervisord) rather than by a user clicking on something. | Python, Go, Node.js, C++                                                          |
@@ -34,19 +34,19 @@ The platform column is a guide, not a constraint. Most platforms fit several dep
 
 ## Viam hosting
 
-Viam Applications is Viam's hosting service for web apps. It handles authentication through OAuth, injects machine credentials into the browser through cookies, and serves your app at `{name}_{namespace}.viamapplications.com`. Your app logic runs in the user's browser, not on a Viam server. See [Viam hosting](./hosting/) for deployment, the `meta.json` applications schema, and hosting platform details.
+If you are building a browser-based app, Viam can host it for you. Viam Applications serves your app at a dedicated URL with authentication and credential injection handled by the platform. See [Viam hosting](./hosting/) for how it works, how to deploy, and the hosting platform details.
 
 ## Where to start
 
 If you want **a quick operator interface and don't need to write code**, use [teleop workspaces](/monitor/teleop-workspaces/). They are widget-based and live in the monitor section.
 
-If you want **a custom web dashboard or operator interface in a browser**, see [TypeScript setup](./setup/typescript/) and the [single-machine dashboard tutorial](./guides/tutorial-dashboard/).
+If you want **a custom web dashboard or operator interface in a browser**, see [TypeScript setup](./setup/typescript/) and the [single-machine dashboard tutorial](./app-tutorials/tutorial-dashboard/).
 
-If you want **one app that runs on phones, tablets, and desktops from a single codebase**, see [Flutter setup](./setup/flutter/) and the [Flutter widget tutorial](./guides/tutorial-flutter-app/).
+If you want **one app that runs on phones, tablets, and desktops from a single codebase**, see [Flutter setup](./setup/flutter/) and the [Flutter widget tutorial](./app-tutorials/tutorial-flutter-app/).
 
-If you want **a long-running service or script that talks to Viam without a UI**, pick your language: [Python](./setup/python/), [Go](./setup/go/), [Node.js](./setup/node/), or [C++](./setup/cpp/).
+If you want **a long-running service or script that talks to Viam without a UI**, pick your language: [Python](./setup/python/), [Go](./setup/go/), [Node.js](./setup/node/), or [C++](./setup/cpp/). The [Python monitoring service tutorial](./app-tutorials/tutorial-monitoring-service/) walks through building one from scratch.
 
-If you want **a dashboard that aggregates data across many machines**, see [Connect to the Viam cloud](./tasks/connect-to-cloud/) and the [multi-machine fleet dashboard tutorial](./guides/tutorial-fleet/).
+If you want **a dashboard that aggregates data across many machines**, see [Connect to the Viam cloud](./tasks/connect-to-cloud/) and the [multi-machine fleet dashboard tutorial](./app-tutorials/tutorial-fleet/).
 
 If you want **Viam to host your web app**, see [Hosting](./hosting/) and [Deploy a Viam application](./hosting/deploy/).
 

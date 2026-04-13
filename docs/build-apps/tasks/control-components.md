@@ -224,5 +224,5 @@ The method names follow the same naming convention in each language: Python uses
 ## Next
 
 - [Stream video](./stream-video/) for displaying camera feeds (TypeScript and Flutter WebRTC streaming, or `get_images` polling for Python and Go)
-- [Handle connection state](./handle-connection-state/) for reconnection behavior when controlling actuators
+- [Handle disconnection and reconnection](./handle-connection-state/) for reconnection behavior when controlling actuators
 - [Connect to a machine](./connect-to-machine/) if you have not set up a connection yet

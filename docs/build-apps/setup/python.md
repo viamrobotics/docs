@@ -122,5 +122,5 @@ All Viam Python SDK methods are async. Your app code runs inside `asyncio.run()`
 ## Next
 
 - [Connect to a machine](../../tasks/connect-to-machine/) for the connection patterns your app will actually use
-- [Handle connection state](../../tasks/handle-connection-state/) for reconnection and status indicators
+- [Handle disconnection and reconnection](../../tasks/handle-connection-state/) for reconnection and status indicators
 - [The Python SDK reference](https://python.viam.dev/) for per-component API details
