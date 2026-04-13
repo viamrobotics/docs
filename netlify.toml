@@ -146,6 +146,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -155,3 +156,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/"]
