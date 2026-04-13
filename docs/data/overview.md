@@ -130,7 +130,9 @@ Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana 
 
 Viam includes OpenTelemetry (OTel) tracing that propagates trace context across your SDK code, `viam-server`, and modules. Traces cover gRPC request lifecycle, data capture operations, and module calls. When tracing is enabled on `viam-server`, module tracing is activated automatically.
 
-To enable tracing, add a `tracing` block to your machine's JSON config:
+To enable tracing, add a `tracing` block at the top level of your machine's JSON config (alongside `"components"` and `"services"`). You must set `enabled` to `true` **and** enable at least one export destination (`disk`, `console`, or `otlpendpoint`). Setting only `"enabled": true` without an export destination has no effect.
+
+**Save traces to disk** for later retrieval with the CLI:
 
 ```json
 {
@@ -141,7 +143,9 @@ To enable tracing, add a `tracing` block to your machine's JSON config:
 }
 ```
 
-This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. To export directly to an OTLP-compatible backend (Jaeger, Grafana Tempo, Datadog, or any OTLP collector), set `otlpendpoint` instead:
+This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP protobuf files. Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions.
+
+**Export directly to an OTLP-compatible backend** (Jaeger, Grafana Tempo, Datadog, or any OTLP collector):
 
 ```json
 {
@@ -152,7 +156,20 @@ This writes traces to `$HOME/.viam/trace/<part-id>/traces/` as compressed OTLP p
 }
 ```
 
-Download and import saved traces with the CLI. See [Traces](/monitor/troubleshoot/#traces) for instructions.
+For local development, see the [Jaeger getting started guide](https://www.jaegertracing.io/docs/latest/getting-started/) to set up a local instance that accepts OTLP traces.
+
+**Print traces to the console** for quick debugging without any external tools:
+
+```json
+{
+  "tracing": {
+    "enabled": true,
+    "console": true
+  }
+}
+```
+
+You can combine multiple destinations (for example, `"disk": true` and `"otlpendpoint": "localhost:4317"` together).
 
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
