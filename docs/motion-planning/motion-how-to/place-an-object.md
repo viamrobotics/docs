@@ -49,11 +49,14 @@ await motion_service.move(
 {{% tab name="Python" %}}
 
 ```python
-# Place: at the surface
+# Place: at the surface.
+# Set z to the height of the placement surface in your workspace.
+# For example, if you detected the target location, use its z coordinate.
+SURFACE_HEIGHT = 50  # mm — adjust for your setup
 place_pose = PoseInFrame(
     reference_frame="world",
     pose=Pose(
-        x=500, y=0, z=50,
+        x=500, y=0, z=SURFACE_HEIGHT,
         o_x=0, o_y=0, o_z=-1, theta=0
     )
 )
