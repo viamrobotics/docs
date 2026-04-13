@@ -245,7 +245,6 @@ The CLI module generator generates the files for your modular resource.
    ```
 
 2. Follow the prompts, selecting the following options:
-
    - Module name: `base`
    - Language: `Python`
    - Visibility: `Private`
@@ -464,7 +463,6 @@ Depending on the speed of your server connection, you may need to hold down the 
 - If certain sensors or servos aren't being found by the software, turn off the robot and make sure all wires are fully connected before turning it back on.
 
 - If you want to send commands directly to the dog server instead of running <file>robotdog.py</file> (which may be helpful for debugging specific commands, especially if you're adding your own functionality and need to calibrate servo speeds/positions) you can do the following:
-
   1. Install Netcat if it isn't already installed:
 
      ```sh {class="command-line" data-prompt="$"}

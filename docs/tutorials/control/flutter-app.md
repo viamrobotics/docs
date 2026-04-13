@@ -403,7 +403,6 @@ Follow the steps below to get your API key and create an environment variables f
 5. Scroll to the **API Keys** section.
    You can find and use an existing API key for your smart machine, or you can create a new one for this application.
    To create a new one:
-
    1. Click **Generate key**.
    2. Give the key a name like "flutter-app-my-org-name."
    3. Click the **Entity** dropdown and select your organization.

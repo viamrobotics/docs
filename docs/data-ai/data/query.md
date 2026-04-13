@@ -444,7 +444,6 @@ db.readings.aggregate(
 ## Query optimization and performance best practices
 
 1. When querying large datasets, whether from default storage or a [hot data store](/data-ai/data/hot-data-store/), you can improve the query's efficiency by specifying the following parameters in the query:
-
    - `organization_id`
    - `location_id`
    - `machine_id`

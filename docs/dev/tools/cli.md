@@ -160,7 +160,6 @@ You can do this from the organization's settings page or with the CLI.
    ```
 
    Where:
-
    - `org-id` is your organization ID.
      You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/).
    - `key-name` is an optional name for your API key.
@@ -194,7 +193,6 @@ You can do this from the organization's settings page or with the CLI.
    ```
 
    Where:
-
    - `location-id` is your location ID.
      You can find your location ID by running `viam locations list` or by visiting your [fleet's page](https://app.viam.com/robots).
    - `org-id` is an optional organization ID to attach the key to.
@@ -233,7 +231,6 @@ You can do this from the organization's settings page or with the CLI.
    ```
 
    Where:
-
    - `machine-id` is your machine's ID.
      You can find your machine ID by running `viam machines list`, or by clicking the **...** button in the upper-right corner of your machine's page, and selecting **Copy machine ID**.
    - `org-id` is an optional organization ID to attach the key to.

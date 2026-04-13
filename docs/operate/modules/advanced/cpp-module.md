@@ -1443,7 +1443,6 @@ Create a <file>CMakeLists.txt</file> file to define how to compile your module a
    ```
 
 1. Use C++ to compile and obtain a single executable for your module:
-
    1. Create a new <file>build</file> directory within your module directory:
 
       ```sh { class="command-line"}
@@ -1626,7 +1625,6 @@ Add the module to your machine's config, then add the component or service it im
 
 1. Enter the module's **Executable path**.
    This path must be the absolute path on your machine's filesystem to either:
-
    - the module's executable file, such as `run.sh` or a compiled binary.
    - a [packaged tarball](https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_tar.html) of your module, ending in `.tar.gz` or `.tgz`.
      If you are providing a tarball file in this field, be sure that your packaged tarball contains your module's [`meta.json` file](/operate/modules/advanced/metajson/) within it.

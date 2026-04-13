@@ -64,7 +64,6 @@ The Viam Teleop dashboard is the fastest way to visualize data from a single mac
 ### Add widgets
 
 1. Click **Add widget** and select a widget type. Available widget types include:
-
    - **Time-series chart** -- plots sensor values over time.
    - **Camera feed** -- shows a live camera stream.
    - **Value display** -- shows the current reading from a sensor.
@@ -147,7 +146,6 @@ Grafana dashboards.
 1. After installing the plugin, go to its configuration page and click
    **Add new data source**.
 2. Fill in the following fields:
-
    - **Connection string**:
 
      ```text
@@ -248,7 +246,6 @@ The database credentials from [Configure database access](#configure-database-ac
 Atlas Data Federation as a data store. The general pattern is the same:
 
 1. Install the tool's MongoDB connector or driver. For example:
-
    - **Tableau** requires the [Atlas SQL JDBC Driver](https://www.mongodb.com/try/download/jdbc-driver) and the [Tableau Connector](https://www.mongodb.com/try/download/tableau-connector).
    - **Google Looker Studio** supports MongoDB connections natively through community connectors.
 
@@ -261,7 +258,6 @@ Atlas Data Federation as a data store. The general pattern is the same:
    ```
 
    **Hostname + credentials format** (tools that ask for fields separately):
-
    - Hostname: the value from `viam data database hostname`
    - Database name: `sensorData`
    - Username: `db-user-<YOUR-ORG-ID>`

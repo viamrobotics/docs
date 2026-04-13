@@ -66,7 +66,6 @@ Follow this tutorial to get started using Viam's Navigation service to help your
 2. **A movement sensor with GPS position, compass heading, and angular and linear velocity readings**
 
    We used three movement sensors to satisfy these requirements:
-
    1. A [SparkFun GPS-RTK-SMA Breakout](https://www.sparkfun.com/products/16481) [movement sensor](/operate/reference/components/movement-sensor/) configured as a [`gps-nmea-rtk-serial`](https://app.viam.com/module/viam/gps) model, providing GPS position and compass heading measurements.
    2. A [`wheeled-odometry`](/operate/reference/components/movement-sensor/wheeled-odometry/) model gathering angular and linear velocity information from the [encoders](/operate/reference/components/encoder/) wired to our base's [motors](/operate/reference/components/motor/).
    3. A [`merged`](/operate/reference/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
@@ -160,10 +159,8 @@ Refer to the [`gpio` motor](/operate/reference/components/motor/gpio/) documenta
 
 3. Finally, configure whatever rover you have as a [`wheeled`](/operate/reference/components/base/wheeled/) model of base, bringing the motion produced by these motors together on one platform:
    {{<imgproc src="/tutorials/navigate-with-rover-base/wheeled-base-config-builder.png" resize="800x" declaredimensions=true alt="An example configuration for a wheeled base." style="min-height:550px; max-height:600px">}}
-
    - Make sure to select each of your right and left motors as **right** and **left**, as well as set the **wheel_circumference_mm** and **width_mm** of each of the wheels the motors are attached to.
    - [Configure the frame system](/operate/reference/services/frame-system/) for this wheeled base so that the navigation service knows where it is in relation to the movement sensor.
-
      - Switch to **Frame** mode on the **CONFIGURE** tab and select your base.
        If your movement sensor is mounted on top of the rover like ours is, set **Orientation**'s third input field, Z, to `1` and its fourth input field, theta, to `90`.
      - Select the `world` as the parent frame.
@@ -340,10 +337,8 @@ In the **JSON** mode in your machine's **CONFIGURE** tab, add the following JSON
 
     We named ours `merged`.
     Refer to [the `merged` movement sensor documentation](/operate/reference/components/movement-sensor/merged/) for attribute information.
-
     - Make sure your `merged` movement sensor is configured to gather `"position"` readings from the `gps` movement sensor.
     - [Configure the frame system](/operate/reference/services/frame-system/) for this movement sensor so that the navigation service knows where it is in relation to the base.
-
       - On the **CONFIGURE** tab, add a frame to your movement sensor configuration by clicking **+ Add Frame**.
         If your movement sensor is mounted on top of the rover like ours is, leave the default frame values.
       - Set the `base` as the `parent` frame.

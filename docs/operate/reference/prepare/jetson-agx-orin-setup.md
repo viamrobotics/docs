@@ -129,7 +129,6 @@ To use your Jetson board, follow the [setup guide](/operate/install/setup/):
 ### Setup tips
 
 - NVIDIA Step 1 - Run through Ubuntu Setup (oem config)
-
   - Headless Mode Tips:
     - Once you reach **step e** which instructs you to connect through the host serial port, the instructions to connect are immediately under **step e**.
       Follow those steps according to the type of computer you're using.

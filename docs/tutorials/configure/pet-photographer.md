@@ -953,7 +953,6 @@ If you haven't already, add a [camera](/operate/reference/components/camera/) co
 
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Local module**, then **Local component**.
 1. On the **Create** menu:
-
    1. Select the `camera` type from the dropdown menu.
    1. Select or enter `example:camera:colorfilter`, the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
    1. Provide a name for this instance of your modular resource.

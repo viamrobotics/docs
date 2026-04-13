@@ -572,7 +572,6 @@ The pH probe uses a three-point calibration process:
 The EC probe uses a one-point calibration process. You can configure the EC probe in the following modes:
 
 - For K=1, to measure conductivity from 0-2000 μS/cm at a resolution of 1 μS/cm:
-
   1. Wash the electrode with distilled water.
   1. Place the electrode in a 1413 μS/cm solution.
   1. Wait at least one transmission interval.
@@ -586,7 +585,6 @@ The EC probe uses a one-point calibration process. You can configure the EC prob
      ```
 
 - For K=10, to measure conductivity from 10-20000 μS/cm at a resolution of 10 μS/cm:
-
   1. Wash the electrode with distilled water.
   1. Place the electrode in a 12.88 mS/cm solution.
   1. Wait at least one transmission interval.
@@ -653,7 +651,6 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
 ### Gateway fails to start
 
 - **Check hardware connections**:
-
   - If using a HAT, ensure your HAT is properly seated on the SBC's GPIO header.
   - Check that the antenna is securely connected to your gateway.
   - On the Waveshare SX1302 LoRaWAN Gateway HAT, check the status LEDs for activity:
@@ -662,7 +659,6 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
     - **RX LED (red, blinking)**: gateway receiving data
 
 - **Verify pin configuration**:
-
   - If using a HAT, confirm that `reset_pin` and `power_en_pin` in your gateway configuration match the manufacturer's guidelines for your HAT.
   - Verify that SPI is enabled on your machine.
   - Check that `spi_bus` is configured for the correct SPI bus.
@@ -673,13 +669,11 @@ For more information, see [Visualize data](/data-ai/data/visualize/).
   - Nodes can take up to 10-15 minutes to join the network.
   - If a node doesn't join the network within 30 minutes, try restarting the node.
 - **Verify device identifiers**:
-
   - Check that `dev_eui` in your node configuration matches the value of your device.
   - If you use the OTAA activation protocol, confirm that `app_key` matches the application key defined in the device datasheet.
   - If you use the ABP activation protocol, verify that `app_s_key` and `network_s_key` match the values defined in the device datasheet or device packaging.
 
 - **Check network configuration**:
-
   - Ensure gateway is running with no error logs.
   - Verify that the `gateways` field of the node contains an array that contains only a string that exactly matches the name of your gateway in your machine configuration (for example, `"gateways": [ "example-gateway" ]`).
   - Verify that your gateway and node frequency regions match.

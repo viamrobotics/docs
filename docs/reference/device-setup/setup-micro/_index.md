@@ -157,7 +157,6 @@ Create firmware that integrates an existing module with the Micro-RDK:
    ```
 
    Follow the prompts:
-
    - Which sub-template should be expanded?: `templates/project`.
    - Project name: Your choice.
    - MCU: `esp32`.

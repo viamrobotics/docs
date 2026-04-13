@@ -74,7 +74,6 @@ The following steps guide you through this process in more detail:
    {{% /alert %}}
 
 1. Define your new API:
-
    - [Write the proto](https://protobuf.dev/programming-guides/proto3/) methods in a `<API name>.proto` file inside your <file>src/proto</file> directory.
      For reference:
      - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
@@ -87,13 +86,11 @@ The following steps guide you through this process in more detail:
 1. In the root directory of your module, you need to generate some configuration files.
    You will typically need the following three files for most modules, though different files are required for some advanced use cases.
    See the [Buf documentation](https://buf.build/docs/generate/usage/) for instructions.
-
    - [<file>buf.yaml</file>](https://buf.build/docs/configuration/v1/buf-gen-yaml/)
    - [<file>buf.gen.yaml</file>](https://buf.build/docs/configuration/v1/buf-gen-yaml/)
    - [<file>buf.lock</file>](https://buf.build/docs/configuration/v1/buf-lock/)
 
 1. In the <file>/src/</file> directory of your module, use the protobuf compiler to [generate](https://buf.build/docs/tutorials/getting-started-with-buf-cli/#generate-code) all other necessary protocol buffer code, based on the `<API name>.proto` file you wrote.
-
    - [Example generated files for a Python-based service](https://github.com/viam-labs/speech-service-api/tree/main/src/proto).
      The `buf.` files were generated.
      The <file>speech.proto</file> was manually written.
