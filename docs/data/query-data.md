@@ -20,6 +20,10 @@ Tabular data (sensor readings, motor positions, encoder ticks, and other structu
 SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Every SQL example and troubleshooting step on this page (including short inline examples) includes an explicit lower bound on `time_received` for this reason. When troubleshooting, do not remove the lower-bound filter entirely: widen it by using a broad lower bound such as `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)`. MQL queries are not affected. Tracked as APP-10891.
 {{< /alert >}}
 
+{{% alert title="Note" color="note" %}}
+There is a shared monthly cap of 100 TB of data processing across `TabularDataByMQL` and `TabularDataBySQL`. Requests start failing after this combined limit is reached. If your organization hits this cap, please [contact us](mailto:support@viam.com) to request an increase.
+{{% /alert %}}
+
 ## Open the query editor
 
 1. Go to [app.viam.com](https://app.viam.com).

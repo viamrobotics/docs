@@ -29,6 +29,10 @@ Switch to **table view** to see nested fields as dot-notation column headers. Us
 SQL queries against `readings` currently return no rows unless the `WHERE` clause includes an explicit lower bound on `time_received`. Include `AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)` in any SQL example on this page if you copy it. MQL queries are not affected. Tracked as APP-10891.
 {{< /alert >}}
 
+{{% alert title="Note" color="note" %}}
+There is a shared monthly cap of 100 TB of data processing across `TabularDataByMQL` and `TabularDataBySQL`. Requests start failing after this combined limit is reached. If your organization hits this cap, please [contact us](mailto:support@viam.com) to request an increase.
+{{% /alert %}}
+
 ## Set up a connection
 
 {{< readfile "/static/include/how-to/get-credentials.md" >}}
