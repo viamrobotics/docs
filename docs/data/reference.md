@@ -295,6 +295,14 @@ db.readings.aggregate([
 
 Users with owner or operator roles at the organization, location, or machine level can query data. See [Role-Based Access Control](/organization/rbac/) for details.
 
+## Supported resources
+
+The following components and services support data capture and cloud sync. The table shows which capture methods are available for each resource type. Not all models support all methods listed for their type.
+
+{{< readfile "/static/include/data/capture-supported.md" >}}
+
+If the resource type you need is not listed, you can still capture data from it using the `DoCommand` method with a custom `docommand_input` parameter.
+
 ## Capture and sync configuration
 
 This section describes the configuration fields for data capture and cloud sync.
@@ -385,6 +393,31 @@ The following settings appear in your machine's configuration but are not proces
 
 Data capture is configured per-resource in the `service_configs` array of a component or service. When you configure capture through the Viam app UI, these fields are set automatically. The table below is the JSON-level reference for manual configuration.
 
+Here is where capture attributes live in a component's JSON config:
+
+```json
+{
+  "name": "my-sensor",
+  "api": "rdk:component:sensor",
+  "model": "rdk:builtin:fake",
+  "service_configs": [
+    {
+      "type": "data_manager",
+      "attributes": {
+        "capture_methods": [
+          {
+            "method": "Readings",
+            "capture_frequency_hz": 0.2,
+            "additional_params": {},
+            "disabled": false
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
 {{< alert title="Caution" color="caution" >}}
 Avoid configuring capture rates higher than your hardware can handle. This leads to performance degradation.
 {{< /alert >}}
@@ -405,7 +438,22 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 
 #### Platform-managed capture settings
 
-The following capture method settings are processed by the Viam cloud platform, not by `viam-server`:
+The following capture method settings are processed by the Viam cloud platform, not by `viam-server`. They appear inside the same `service_configs` block as capture method attributes:
+
+```json
+{
+  "type": "data_manager",
+  "attributes": {
+    "capture_methods": [ ... ],
+    "retention_policy": {
+      "days": 30
+    },
+    "recent_data_store": {
+      "stored_hours": 24
+    }
+  }
+}
+```
 
 <!-- prettier-ignore -->
 | Name | Type | Description |
@@ -413,13 +461,7 @@ The following capture method settings are processed by the Viam cloud platform, 
 | `retention_policy` | object | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
 | `recent_data_store` | object | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
-For remote parts capture, see [Capture from remote parts](/data/capture-sync/remote-parts-capture/).
-
-### Supported resources
-
-The following components and services support data capture and cloud sync. The table shows which capture methods are available for each resource type. Not all models support all methods listed for their type.
-
-{{< readfile "/static/include/data/capture-supported.md" >}}
+For remote parts capture, see [Capture from multi-part machines](/data/capture-sync/remote-parts-capture/).
 
 ## Local storage
 
@@ -469,6 +511,6 @@ Control deletion behavior with the `delete_every_nth_when_disk_full` attribute.
 
 ### Micro-RDK
 
-The micro-RDK (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
+The [micro-RDK](/foundation/setup-micro/) (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
 
 On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud. If the machine restarts before all data is synced, unsynced data since the last sync point is lost.
