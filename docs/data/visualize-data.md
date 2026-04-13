@@ -557,9 +557,10 @@ go run main.go
 - **Verify the username format.** The username must be `db-user-<YOUR-ORG-ID>`,
   including the `db-user-` prefix.
 - **Verify the password.** This is the password you set with
-  `viam data database configure`, not your Viam app password. Use only
-  alphanumeric characters in the password; some special characters may cause
-  authentication failures.
+  `viam data database configure`, not your Viam app password. If
+  authentication fails with a password that contains special characters,
+  make sure the password is properly quoted or escaped in the CLI command,
+  the Grafana connection settings, and any connection string where you use it.
 - **Check that you installed the data source, not the integration.** The Grafana
   MongoDB integration and the Grafana MongoDB data source are different plugins.
   You need the data source.

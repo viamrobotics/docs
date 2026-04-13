@@ -155,7 +155,7 @@ For the full header and body reference, see [Webhook attributes](/reference/conf
 
 ## Notification frequency
 
-The `seconds_between_notifications` field controls how often a trigger sends alerts. If a trigger's condition is continuously met (for example, a "Part is online" trigger while the machine stays online), the trigger fires repeatedly at this interval. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 for one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
+The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
 
 ## Machine telemetry triggers
 
