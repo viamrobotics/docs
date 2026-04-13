@@ -79,7 +79,7 @@ For Linux boards like the Odroid C4, Pumpkin, or, Banana Pi, you can also use th
 
 ## API
 
-The [board API](/dev/reference/apis/components/board/) supports the following methods:
+The [board API](/reference/apis/components/board/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/board-table.md" >}}
 

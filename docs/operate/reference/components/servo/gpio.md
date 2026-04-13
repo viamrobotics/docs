@@ -114,7 +114,7 @@ Refer to your servo's data sheet for [pulse-width modulation (PWM)](https://docs
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/servo/" customTitle="Servo API" noimage="true" %}}
+{{% card link="/reference/apis/components/servo/" customTitle="Servo API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}

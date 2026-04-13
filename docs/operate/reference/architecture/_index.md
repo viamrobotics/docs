@@ -41,7 +41,7 @@ When `viam-server` can connect to the cloud, it also:
 - Automatically pulls configuration updates you make
 - Gets new versions of software packages
 - Uploads and syncs image and sensor data
-- Handles requests from client code you write with [SDKs](/dev/reference/sdks/)
+- Handles requests from client code you write with [SDKs](/reference/sdks/)
 - Allows you to remotely monitor and control your machine
 
 `viam-server` can use the internet, wide area networks (WAN) or local networks (LAN) to establish peer-to-peer connections between two {{< glossary_tooltip term_id="machine" text="machines" >}}, or to a client application.
@@ -156,7 +156,7 @@ Here is how this works in Viam:
 Now imagine you want to run code to turn on a fan when the temperature sensor reads over 100 degrees Fahrenheit:
 
 - Configure the fan motor as a motor component and wire the fan motor relay to the same board as the sensor.
-- Write your script using one of the Viam [SDKs](/dev/reference/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
+- Write your script using one of the Viam [SDKs](/reference/sdks/), for example the Viam Python SDK, using the sensor API and motor API.
 - You then run this code either locally on the SBC, or on a separate server.
   See [Create a headless app](/operate/control/headless-app/) for more information.
   Your code connects to the machine, authenticating with API keys, and uses the [sensor API](/operate/reference/components/sensor/#api) to get readings and the [motor API](/operate/reference/components/motor/#api) to turn the motor on and off.

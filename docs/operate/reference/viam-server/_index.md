@@ -466,7 +466,7 @@ Note that this method may not work for versions that are too old, as Homebrew do
 ## Next steps
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/" %}}
+{{% card link="/reference/apis/" %}}
 {{% card link="/operate/modules/configure-modules/" %}}
 {{% card link="/operate/install/setup/" %}}
 {{< /cards >}}

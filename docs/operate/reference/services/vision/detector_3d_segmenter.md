@@ -16,7 +16,7 @@ aliases:
 
 _Changed in [RDK v0.2.36 and API v0.1.118](/dev/reference/changelog/#vision-service)_
 
-The `detector_3d_segmenter` vision service model takes 2D bounding boxes from an [object detector](/dev/reference/apis/services/vision/#detections), and, using the intrinsic parameters of the chosen camera, projects the pixels in the bounding box to points in 3D space.
+The `detector_3d_segmenter` vision service model takes 2D bounding boxes from an [object detector](/reference/apis/services/vision/#detections), and, using the intrinsic parameters of the chosen camera, projects the pixels in the bounding box to points in 3D space.
 If the chosen camera is not equipped to do projections from 2D to 3D, then this vision model will fail.
 The label and the pixels associated with the 2D detections become the label and point cloud associated with the 3D segmenter.
 
@@ -104,7 +104,7 @@ Click the **Save** button in the top right corner of the page and proceed to [te
 
 ## Test your segmenter
 
-The following code uses the [`GetObjectPointClouds`](/dev/reference/apis/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
+The following code uses the [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) method to run a segmenter vision model on an image from the machine's camera `"cam1"`:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

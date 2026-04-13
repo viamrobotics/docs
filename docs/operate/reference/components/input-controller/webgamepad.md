@@ -73,7 +73,7 @@ For your security, the browser won't report a gamepad until an input has been se
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
+{{% card link="/reference/apis/components/input-controller/" customTitle="Input controller API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/tutorials/control/gamepad/" noimage="true" %}}
 {{< /cards >}}

@@ -67,7 +67,7 @@ If none of the existing models fit your use case, you can [create a modular reso
 
 ## API
 
-The [sensor API](/dev/reference/apis/components/sensor/) supports the following methods:
+The [sensor API](/reference/apis/components/sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/sensor-table.md" >}}
 

@@ -47,7 +47,7 @@ There is currently no support for this component compatible with the Micro-RDK.
 
 ## API
 
-The [switch API](/dev/reference/apis/components/switch/) supports the following methods:
+The [switch API](/reference/apis/components/switch/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/switch-table.md" >}}
 

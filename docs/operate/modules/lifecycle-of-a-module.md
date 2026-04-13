@@ -21,7 +21,7 @@ The lifecycle of a module and the resources it provides are as follows:
 
 1. `viam-server` starts any configured modules.
 
-1. When a module initializes, it registers its model or models and associated [APIs](/dev/reference/apis/) with `viam-server`, making the models available for use.
+1. When a module initializes, it registers its model or models and associated [APIs](/reference/apis/) with `viam-server`, making the models available for use.
 
 1. For each modular resource configured on the machine, `viam-server` uses the return values of the resource's `validate_config` function to determine the required and optional [dependencies](/operate/modules/advanced/dependencies/) of the resource.
 
@@ -37,7 +37,7 @@ The lifecycle of a module and the resources it provides are as follows:
    - a validation error or exception thrown during reconfiguration
    - exceeding the [configured timeout limits](/operate/modules/advanced/module-configuration/#environment-variables) (default 5 minutes to start up and 1 minute to reconfigure)
 
-   Check the `viam-server` logs for these [errors](/dev/tools/common-errors/#timed-out-waiting-for-module) on the machine's **LOGS** tab.
+   Check the `viam-server` logs for these [errors](/monitor/troubleshoot/#timed-out-waiting-for-module) on the machine's **LOGS** tab.
 
 1. Once the modular resource has started up and finished configuring, it is available for use.
 

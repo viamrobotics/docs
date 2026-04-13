@@ -26,7 +26,7 @@ aliases:
 date: "2025-11-04"
 ---
 
-Viam has a registry of {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/dev/reference/apis/#component-apis) for categories of hardware {{< glossary_tooltip term_id="component" text="components" >}} and software {{< glossary_tooltip term_id="service" text="services" >}}.
+Viam has a registry of {{< glossary_tooltip term_id="module" text="modules" >}} that implement [standardized APIs](/reference/apis/#component-apis) for categories of hardware {{< glossary_tooltip term_id="component" text="components" >}} and software {{< glossary_tooltip term_id="service" text="services" >}}.
 
 If you are using an ESP32 microcontroller, see the [ESP32-specific instructions](/operate/install/setup-micro/#configure-and-test-your-machine) for how to add modules to the firmware build.
 
@@ -101,112 +101,112 @@ If you don't find a component that supports your hardware, you can [create a new
 {{% /tab %}}
 {{% tab name="Arm" %}}
 
-The following models implement the [arm component API](/dev/reference/apis/components/arm/):
+The following models implement the [arm component API](/reference/apis/components/arm/):
 
 {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Base" %}}
 
-The following models implement the [base component API](/dev/reference/apis/components/base/):
+The following models implement the [base component API](/reference/apis/components/base/):
 
 {{<resources api="rdk:component:base" type="base" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Board" %}}
 
-The following models implement the [board component API](/dev/reference/apis/components/board/):
+The following models implement the [board component API](/reference/apis/components/board/):
 
 {{<resources api="rdk:component:board" type="board" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Button" %}}
 
-The following models implement the [button component API](/dev/reference/apis/components/button/):
+The following models implement the [button component API](/reference/apis/components/button/):
 
 {{<resources api="rdk:component:button" type="button" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Camera" %}}
 
-The following models implement the [camera component API](/dev/reference/apis/components/camera/):
+The following models implement the [camera component API](/reference/apis/components/camera/):
 
 {{<resources api="rdk:component:camera" type="camera" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Encoder" %}}
 
-The following models implement the [encoder component API](/dev/reference/apis/components/encoder/):
+The following models implement the [encoder component API](/reference/apis/components/encoder/):
 
 {{<resources api="rdk:component:encoder" type="encoder" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Gantry" %}}
 
-The following models implement the [gantry component API](/dev/reference/apis/components/gantry/):
+The following models implement the [gantry component API](/reference/apis/components/gantry/):
 
 {{<resources api="rdk:component:gantry" type="gantry" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Generic" %}}
 
-The following models implement the [generic component API](/dev/reference/apis/components/generic/):
+The following models implement the [generic component API](/reference/apis/components/generic/):
 
 {{<resources api="rdk:component:generic" type="generic" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Gripper" %}}
 
-The following models implement the [gripper component API](/dev/reference/apis/components/gripper/):
+The following models implement the [gripper component API](/reference/apis/components/gripper/):
 
 {{<resources api="rdk:component:gripper" type="gripper" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Input Controller" %}}
 
-The following models implement the [input controller component API](/dev/reference/apis/components/input-controller/):
+The following models implement the [input controller component API](/reference/apis/components/input-controller/):
 
 {{<resources api="rdk:component:input_controller" type="input_controller" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Motor" %}}
 
-The following models implement the [motor component API](/dev/reference/apis/components/motor/):
+The following models implement the [motor component API](/reference/apis/components/motor/):
 
 {{<resources api="rdk:component:motor" type="motor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Movement Sensor" %}}
 
-The following models implement the [movement sensor component API](/dev/reference/apis/components/movement-sensor/):
+The following models implement the [movement sensor component API](/reference/apis/components/movement-sensor/):
 
 {{<resources api="rdk:component:movement_sensor" type="movement_sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Power Sensor" %}}
 
-The following models implement the [power sensor component API](/dev/reference/apis/components/power-sensor/):
+The following models implement the [power sensor component API](/reference/apis/components/power-sensor/):
 
 {{<resources api="rdk:component:power_sensor" type="power_sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Sensor" %}}
 
-The following models implement the [sensor component API](/dev/reference/apis/components/sensor/):
+The following models implement the [sensor component API](/reference/apis/components/sensor/):
 
 {{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Servo" %}}
 
-The following models implement the [servo component API](/dev/reference/apis/components/servo/):
+The following models implement the [servo component API](/reference/apis/components/servo/):
 
 {{<resources api="rdk:component:servo" type="servo" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Switch" %}}
 
-The following models implement the [switch component API](/dev/reference/apis/components/switch/):
+The following models implement the [switch component API](/reference/apis/components/switch/):
 
 {{<resources api="rdk:component:switch" type="switch" no-intro="true">}}
 
@@ -233,42 +233,42 @@ If you are looking to write control logic, see [Run control logic](/operate/modu
 {{% /tab %}}
 {{% tab name="Vision" %}}
 
-The following models implement the [vision service API](/dev/reference/apis/services/vision/):
+The following models implement the [vision service API](/reference/apis/services/vision/):
 
 {{<resources api="rdk:service:vision" type="vision" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="ML model" %}}
 
-The following models implement the [ML model service API](/dev/reference/apis/services/ml/):
+The following models implement the [ML model service API](/reference/apis/services/ml/):
 
 {{<resources api="rdk:service:mlmodel" type="mlmodel" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Motion" %}}
 
-The following models implement the [motion service API](/dev/reference/apis/services/motion/):
+The following models implement the [motion service API](/reference/apis/services/motion/):
 
 {{<resources api="rdk:service:motion" type="motion" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Generic" %}}
 
-The following models implement the [generic service API](/dev/reference/apis/services/generic/):
+The following models implement the [generic service API](/reference/apis/services/generic/):
 
 {{<resources api="rdk:service:generic" type="generic" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="SLAM" %}}
 
-The following models implement the [SLAM service API](/dev/reference/apis/services/slam/):
+The following models implement the [SLAM service API](/reference/apis/services/slam/):
 
 {{<resources api="rdk:service:slam" type="slam" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Discovery" %}}
 
-The following models implement the [discovery service API](/dev/reference/apis/services/discovery/):
+The following models implement the [discovery service API](/reference/apis/services/discovery/):
 
 {{<resources api="rdk:service:discovery" type="discovery" no-intro="true">}}
 

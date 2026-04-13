@@ -92,7 +92,7 @@ For example:
 Configure an array of the `name` of each movement sensor you want to add to your machine as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that the particular movement sensor supports, or the type of reading or measurement that it takes.
-- Get the properties supported by each model from its [model configuration documentation](/operate/reference/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/dev/reference/apis/components/movement-sensor/#getproperties) on the sensor.
+- Get the properties supported by each model from its [model configuration documentation](/operate/reference/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/reference/apis/components/movement-sensor/#getproperties) on the sensor.
 - Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
   You can use the same sensor for multiple attributes if it supports multiple properties.
 
@@ -124,7 +124,7 @@ This panel presents the data collected by the movement sensor.
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
+{{% card link="/reference/apis/components/movement-sensor/" customTitle="Movement sensor API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}

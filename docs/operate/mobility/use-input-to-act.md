@@ -39,7 +39,7 @@ Depending on your use case, see [Create a web app](/operate/control/web-app/), [
 {{% tablestep %}}
 **Get an input**
 
-Use one of the input APIs, such as a [sensor's](/dev/reference/apis/components/sensor/) `GetReadings` method:
+Use one of the input APIs, such as a [sensor's](/reference/apis/components/sensor/) `GetReadings` method:
 
 ```python {class="line-numbers linkable-line-numbers"}
 my_sensor = Sensor.from_robot(robot=machine, name='my_sensor')
@@ -48,7 +48,7 @@ my_sensor = Sensor.from_robot(robot=machine, name='my_sensor')
 readings = await my_sensor.get_readings()
 ```
 
-Other common inputs include the methods of a [board](/dev/reference/apis/components/board/) (`GetGPIO`, `GetPWM`, `PWMFrequency`, `GetDigitalInterruptValue`, and `ReadAnalogReader`), or a [power sensor](/dev/reference/apis/components/power-sensor/) (`GetVoltage`, `GetCurrent`, `GetPower`, and `GetReadings`).
+Other common inputs include the methods of a [board](/reference/apis/components/board/) (`GetGPIO`, `GetPWM`, `PWMFrequency`, `GetDigitalInterruptValue`, and `ReadAnalogReader`), or a [power sensor](/reference/apis/components/power-sensor/) (`GetVoltage`, `GetCurrent`, `GetPower`, and `GetReadings`).
 
 You can also use camera input, for example to detect objects and pick them up with an arm.
 See [Act based on inferences](/data-ai/ai/act/) for relevant examples.
@@ -61,7 +61,7 @@ If you want to send alerts based on computer vision or captured data, see [Alert
 
 To move your actuator, use your actuator component's API, with logic based on your input.
 
-For example, use the [motor API's](/dev/reference/apis/components/motor/) which includes methods like `SetPower`, `SetRPM`, `GoFor`, `GoTo`, and `Stop`.
+For example, use the [motor API's](/reference/apis/components/motor/) which includes methods like `SetPower`, `SetRPM`, `GoFor`, `GoTo`, and `Stop`.
 A Python example:
 
 ```python {class="line-numbers linkable-line-numbers"}
@@ -76,10 +76,10 @@ else:
     await my_motor.stop()
 ```
 
-Other actuation methods include the [servo API's](/dev/reference/apis/components/servo/) `Move` method, the [gripper API's](/dev/reference/apis/components/gripper/) `Open`, `Grab`, and `Stop` methods, and the [board API's](/dev/reference/apis/components/board/) `SetGPIO`, `SetPWM`, `SetPWMFrequency`, and `WriteAnalog` methods.
+Other actuation methods include the [servo API's](/reference/apis/components/servo/) `Move` method, the [gripper API's](/reference/apis/components/gripper/) `Open`, `Grab`, and `Stop` methods, and the [board API's](/reference/apis/components/board/) `SetGPIO`, `SetPWM`, `SetPWMFrequency`, and `WriteAnalog` methods.
 
 If your use case involves planning coordinated motion of multiple motors, see [Move a base](/operate/mobility/move-base/), [Move an arm](/operate/mobility/move-arm/), or [Move a gantry](/operate/mobility/move-gantry/) for more information on how to automate intelligent motion planning.
-Instead of actuating using the component API, you can use the [motion service API](/dev/reference/apis/services/motion/)'s `Move`, `MoveOnMap`, or `MoveOnGlobe` commands.
+Instead of actuating using the component API, you can use the [motion service API](/reference/apis/services/motion/)'s `Move`, `MoveOnMap`, or `MoveOnGlobe` commands.
 
 {{% /tablestep %}}
 {{% /table %}}

@@ -9,8 +9,8 @@ description: "Move a gantry with linear actuator positions or automated motion p
 
 You have two options for moving a [gantry](/operate/reference/components/gantry/):
 
-- Move each axis of the gantry directly with the [gantry API](/dev/reference/apis/components/gantry/)
-- Use automated complex motion planning with the [motion planning service API](/dev/reference/apis/services/motion/)
+- Move each axis of the gantry directly with the [gantry API](/reference/apis/components/gantry/)
+- Use automated complex motion planning with the [motion planning service API](/reference/apis/services/motion/)
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ See [Create a web app](/operate/control/web-app/), [Create a mobile app](/operat
 ## Control each axis
 
 The following is an example Python script using the gantry API.
-For more methods and code snippets in more languages, see [Gantry API](/dev/reference/apis/components/gantry/).
+For more methods and code snippets in more languages, see [Gantry API](/reference/apis/components/gantry/).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio
@@ -114,7 +114,7 @@ Before using the motion service with a gantry, you must [define your gantry's re
 {{% /alert %}}
 
 The following is an example Python script using the motion planning API.
-For more methods and code snippets in more languages, see [Motion API](/dev/reference/apis/services/motion/).
+For more methods and code snippets in more languages, see [Motion API](/reference/apis/services/motion/).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

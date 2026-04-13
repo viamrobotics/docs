@@ -25,4 +25,9 @@ aliases:
   - /build/configure/parts-and-remotes/
   - /configure/parts/
   - /build/configure/parts/
+  - /dev/
+  - /dev/reference/
+  - /dev/reference/contributing/
+  - /dev/tools/
+  - /dev/tools/contributing/
 ---

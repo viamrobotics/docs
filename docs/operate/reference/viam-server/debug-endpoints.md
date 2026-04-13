@@ -90,5 +90,5 @@ Available layout options include:
 {{< cards >}}
 {{% card link="/manage/troubleshoot/troubleshoot/" %}}
 {{% card link="/operate/reference/viam-server/manage-viam-server/" %}}
-{{% card link="/dev/tools/common-errors/" %}}
+{{% card link="/monitor/troubleshoot/" %}}
 {{< /cards >}}
