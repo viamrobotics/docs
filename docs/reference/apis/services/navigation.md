@@ -1,7 +1,7 @@
 ---
 title: "Navigation service API"
 linkTitle: "Navigation"
-weight: 50
+weight: 70
 type: "docs"
 tags: ["navigation", "services", "base", "rover"]
 description: "Give commands to define waypoints and move your machine along those waypoints while avoiding obstacles."

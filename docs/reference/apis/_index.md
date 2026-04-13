@@ -53,6 +53,11 @@ Submit and manage ML training jobs running on Viam.
 Retrieve billing information from Viam.
 
 {{% /manualcard %}}
+{{% manualcard link="/reference/apis/sessions/" title="Session Management API" %}}
+
+Manage sessions, heartbeats, and safety timeouts for connected clients.
+
+{{% /manualcard %}}
 
 {{< /cards >}}
 
@@ -62,6 +67,8 @@ These APIs provide interfaces for controlling and getting information from the {
 
 {{< cards >}}
 {{< card link="/reference/apis/components/arm/" customTitle="Arm API" noimage="True" >}}
+{{< card link="/reference/apis/components/audio-in/" customTitle="Audio in API" noimage="True" >}}
+{{< card link="/reference/apis/components/audio-out/" customTitle="Audio out API" noimage="True" >}}
 {{< card link="/reference/apis/components/base/" customTitle="Base API" noimage="True" >}}
 {{< card link="/reference/apis/components/board/" customTitle="Board API" noimage="True" >}}
 {{< card link="/reference/apis/components/button/" customTitle="Button API" noimage="True" >}}
@@ -92,4 +99,5 @@ These APIs provide interfaces for controlling and getting information from the s
 {{% card link="/reference/apis/services/generic/" customTitle="Generic service API" noimage="True" %}}
 {{% card link="/reference/apis/services/base-rc/" customTitle="Base Remote Control service API" noimage="True" %}}
 {{% card link="/reference/apis/services/discovery/" customTitle="Discovery service API" noimage="True" %}}
+{{% card link="/reference/apis/services/world-state-store/" customTitle="World state store service API" noimage="True" %}}
 {{< /cards >}}
