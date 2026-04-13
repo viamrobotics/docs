@@ -31,7 +31,7 @@ SQL queries against `readings` currently return no rows unless the `WHERE` claus
 **MQL** (MongoDB Query Language) uses aggregation pipelines and is more powerful for grouping, computing averages, and restructuring nested data.
 
 By default, queries run against the `readings` collection in the `sensorData` database.
-See [Query reference](/data/reference/#column-reference) for the full schema.
+See [Query reference](/data/schema/#column-reference) for the full schema.
 
 ## Explore your data with basic SQL
 
@@ -59,7 +59,7 @@ LIMIT 1
 
 Switch to **table view** (the table icon in the results area) to see nested fields automatically flattened into dot-notation column headers like `data.readings.temperature`. These dot-notation paths are exactly what you use in your queries to extract specific values.
 
-For the full schema and per-component examples, see the [readings table schema](/data/reference/#column-reference).
+For the full schema and per-component examples, see the [readings table schema](/data/schema/#column-reference).
 
 To narrow to a specific component:
 
@@ -270,7 +270,7 @@ To get oriented with your own data:
 
 3. Use the field names from step 2 to write a query that extracts a specific value with dot notation (for example, `data.readings.temperature`).
 
-For the full schema of the readings table, see [Query reference](/data/reference/#column-reference).
+For the full schema of the readings table, see [Query reference](/data/schema/#column-reference).
 
 ## Troubleshooting
 
