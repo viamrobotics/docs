@@ -37,7 +37,7 @@ Add the directory path to **Additional paths** in the data management service co
 
 - The data management service monitors the directory and uploads any file that has not been modified for at least 10 seconds (configurable with `file_last_modified_millis` in the [data management service attributes](/data/reference/#data-management-service-attributes)).
 - **Uploaded files are deleted from the local directory after successful sync.** If you need to keep a local copy, copy the files to a separate folder and point `additional_sync_paths` at the copy.
-- Uploaded files are stored in Viam's cloud storage and tagged with the machine's `part_id`, `location_id`, and `organization_id`. They are not associated with a specific component or capture method unless you add tags through the data management service config.
+- Uploaded files are stored in Viam's cloud storage and associated with the machine's `part_id`, `location_id`, and `organization_id`. They are not associated with a specific component or capture method.
 - Synced files appear on the **DATA** tab under **Files** (not under Images or Sensors, even if the files are images).
 
 ## Upload with SDKs
