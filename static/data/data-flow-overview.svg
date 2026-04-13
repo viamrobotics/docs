@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 190" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <style>
+      .stage-label { font-size: 13px; font-weight: 600; fill: #252525; }
+      .detail { font-size: 10px; fill: #808080; }
+      .layer-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; fill: #252525; }
+    </style>
+  </defs>
+
+  <!-- Layer boundaries -->
+  <rect x="0" y="0" width="310" height="190" rx="6" fill="none" stroke="#252525" stroke-width="1.5"/>
+  <text x="12" y="18" class="layer-label">On the machine</text>
+
+  <rect x="320" y="0" width="400" height="190" rx="6" fill="none" stroke="#252525" stroke-width="1.5"/>
+  <text x="332" y="18" class="layer-label">In the cloud</text>
+
+  <!-- Stage 1: Capture -->
+  <rect x="12" y="30" width="135" height="146" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="79.5" y="52" text-anchor="middle" class="stage-label">Capture</text>
+  <line x1="20" y1="58" x2="139" y2="58" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="79.5" y="76" text-anchor="middle" class="detail">viam-server records</text>
+  <text x="79.5" y="92" text-anchor="middle" class="detail">component data at a</text>
+  <text x="79.5" y="108" text-anchor="middle" class="detail">configured frequency</text>
+  <line x1="20" y1="116" x2="139" y2="116" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="79.5" y="134" text-anchor="middle" class="detail">Saves to .capture</text>
+  <text x="79.5" y="150" text-anchor="middle" class="detail">files on local disk</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="147" y1="103" x2="163" y2="103" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="160,99 169,103 160,107" fill="#252525"/>
+
+  <!-- Stage 2: Sync -->
+  <rect x="169" y="30" width="130" height="146" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="234" y="52" text-anchor="middle" class="stage-label">Sync</text>
+  <line x1="177" y1="58" x2="291" y2="58" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="234" y="76" text-anchor="middle" class="detail">Uploads captured</text>
+  <text x="234" y="92" text-anchor="middle" class="detail">data to Viam cloud</text>
+  <line x1="177" y1="100" x2="291" y2="100" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="234" y="118" text-anchor="middle" class="detail">Deletes local files</text>
+  <text x="234" y="134" text-anchor="middle" class="detail">after upload</text>
+  <line x1="177" y1="142" x2="291" y2="142" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="234" y="160" text-anchor="middle" class="detail">Default: every 6s</text>
+
+  <!-- Arrow 2→3 (dashed, crosses machine-to-cloud boundary) -->
+  <line x1="299" y1="103" x2="329" y2="103" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="326,99 335,103 326,107" fill="#252525"/>
+
+  <!-- Stage 3: Store -->
+  <rect x="335" y="30" width="145" height="146" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="407.5" y="52" text-anchor="middle" class="stage-label">Store</text>
+  <line x1="343" y1="58" x2="472" y2="58" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="407.5" y="76" text-anchor="middle" class="detail">Tabular data</text>
+  <text x="407.5" y="92" text-anchor="middle" class="detail">(readings, positions)</text>
+  <text x="407.5" y="108" text-anchor="middle" class="detail">→ MongoDB</text>
+  <line x1="343" y1="116" x2="472" y2="116" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="407.5" y="134" text-anchor="middle" class="detail">Binary data</text>
+  <text x="407.5" y="150" text-anchor="middle" class="detail">(images, point clouds)</text>
+  <text x="407.5" y="166" text-anchor="middle" class="detail">→ Blob storage</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="480" y1="103" x2="496" y2="103" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="493,99 502,103 493,107" fill="#252525"/>
+
+  <!-- Stage 4: Use -->
+  <rect x="502" y="30" width="206" height="146" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="605" y="52" text-anchor="middle" class="stage-label">Use</text>
+  <line x1="510" y1="58" x2="700" y2="58" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="605" y="78" text-anchor="middle" class="detail">Query with SQL or MQL</text>
+  <text x="605" y="98" text-anchor="middle" class="detail">Export to your tools</text>
+  <text x="605" y="118" text-anchor="middle" class="detail">Build ML datasets</text>
+  <text x="605" y="138" text-anchor="middle" class="detail">Visualize in dashboards</text>
+  <text x="605" y="158" text-anchor="middle" class="detail">Trigger alerts</text>
+</svg>

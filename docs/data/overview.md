@@ -13,6 +13,8 @@ Your robot's sensors, cameras, and other components produce data you need to rec
 
 Data moves through four stages, from your robot to actionable insights:
 
+<img src="/data/data-flow-overview.svg" alt="Data flow: capture on the machine writes .capture files to local disk, sync uploads to cloud, cloud stores tabular data in MongoDB and binary data in blob storage, and from there you can query, export, train ML models, build dashboards, and trigger alerts." style="width:100%;max-width:720px;height:auto;display:block" >
+
 1. **Capture on the machine.** You configure which components to record from and at what frequency. Captured data is written to local disk. Nothing is captured until you configure it.
 2. **Sync to the cloud.** A separate process uploads captured data to Viam's cloud at a configurable interval, then deletes local files. If the machine goes offline, data buffers locally and syncs when connectivity returns.
 3. **Store.** In the cloud, tabular data (sensor readings, motor positions, encoder ticks) is stored in MongoDB. Binary data (images, point clouds, audio) is stored in blob storage. Both are indexed and queryable.
