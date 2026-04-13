@@ -239,10 +239,10 @@ You can move the arm and check poses without writing code:
 
 ```sh
 # Check the arm's current pose
-viam machines motion get-pose --part "my-machine-main" --component "my-arm"
+viam machines part motion get-pose --part "my-machine-main" --component "my-arm"
 
 # Move the arm to a new position (only specified values change)
-viam machines motion set-pose --part "my-machine-main" --component "my-arm" \
+viam machines part motion set-pose --part "my-machine-main" --component "my-arm" \
   --x 300 --y 200 --z 400
 ```
 
