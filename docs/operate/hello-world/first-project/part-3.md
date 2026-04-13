@@ -213,6 +213,7 @@ func realMain() error {
    ```
 
    If you see an error, verify:
+
    - Your machine is online (check the Viam app)
    - You're logged in (`viam login`)
    - The address is correct

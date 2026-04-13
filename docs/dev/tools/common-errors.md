@@ -133,6 +133,7 @@ When a machine is disconnected, it will continue to run with its locally-cached 
 - Is the `viam-server` service running locally on the board?
   You can check by running `sudo systemctl status viam-server` from within an `ssh` session to the board.
   It should be listed as `active (running)`.
+
   - If it is listed as `stopped` or `failed`, you can try restarting it with `sudo systemctl start viam-server`.
   - If the command returns the message `Unit viam-server.service could not be found`, be sure you have followed the [installation instructions for your board](/operate/install/setup/), and then followed the {{< glossary_tooltip term_id="setup" text="setup instructions" >}}.
   - If none of the above succeed in getting `viam-server` up and running, check the logs on your board for any pertinent error messages.
@@ -329,6 +330,7 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
 ## Network Troubleshooting
 
 1. Check networking:
+
    1. Check if your machine is showing as online on Viam and [check its logs](/manage/troubleshoot/troubleshoot/#check-logs).
       When `viam-server` starts it runs a set of network checks which you can view in the logs.
 
@@ -353,6 +355,7 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
    1. Restart your machine.
 
 1. Check your SDK connection:
+
    1. If you are using API keys to connect, ensure you are using the correct credentials for the machine.
    1. Ensure network checks on `viam-server` succeed by using the Go SDK's [`client.WithNetworkStats()`](https://pkg.go.dev/go.viam.com/rdk/robot/client#WithNetworkStats) method when connecting and then checking the logs when executing the code:
 
