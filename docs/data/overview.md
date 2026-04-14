@@ -67,6 +67,8 @@ Delete tabular data older than a number of days:
 viam data delete tabular --org-id=<org-id> --delete-older-than-days=30
 ```
 
+If the organization has a [hot data store](/data/hot-data-store/), matching data is deleted from that store as well.
+
 {{< alert title="Caution" color="caution" >}}
 `--delete-older-than-days=0` deletes **all** tabular data in the organization. The CLI tabular delete has no component or location filter: it applies to the entire org.
 {{< /alert >}}
@@ -86,7 +88,7 @@ The binary delete command requires `--org-ids`, `--start`, and `--end`. You can 
 
 The [data client API](/dev/reference/apis/data-client/) supports these delete operations; see the API reference for your SDK's method names and signatures:
 
-- Delete tabular data older than a specified number of days.
+- Delete tabular data older than a specified number of days. Also deletes matching data from the [hot data store](/data/hot-data-store/) when one is configured.
 - Delete binary data matching a filter, such as organization, location, or time range.
 - Delete specific binary items by ID.
 
