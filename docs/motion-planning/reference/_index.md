@@ -10,8 +10,10 @@ description: "Configuration, API, and technical reference for the motion service
 {{< cards >}}
 {{% card link="/motion-planning/reference/motion-service/" noimage="true" %}}
 {{% card link="/motion-planning/reference/api/" noimage="true" %}}
+{{% card link="/motion-planning/reference/motion-configuration/" noimage="true" %}}
 {{% card link="/motion-planning/reference/cli-commands/" noimage="true" %}}
 {{% card link="/motion-planning/reference/kinematics/" noimage="true" %}}
+{{% card link="/motion-planning/reference/frame-system-api/" noimage="true" %}}
 {{% card link="/motion-planning/reference/algorithms/" noimage="true" %}}
 {{% card link="/motion-planning/reference/plan-monitoring/" noimage="true" %}}
 {{% card link="/motion-planning/reference/orientation-vectors/" noimage="true" %}}

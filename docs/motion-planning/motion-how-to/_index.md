@@ -9,6 +9,7 @@ description: "Task-oriented guides for moving arms, gantries, and other kinemati
 
 {{< cards >}}
 {{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
+{{% card link="/motion-planning/motion-how-to/move-arm-joint-positions/" noimage="true" %}}
 {{% card link="/motion-planning/motion-how-to/move-arm-with-constraints/" noimage="true" %}}
 {{% card link="/motion-planning/motion-how-to/avoid-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/motion-how-to/allow-frame-collisions/" noimage="true" %}}
