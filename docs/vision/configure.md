@@ -477,7 +477,7 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 The command returns a list of detected classes or bounding boxes depending on the output of the ML model you specified, as well as a list of confidence values for those classes or boxes.
 The bounding box output uses proportional coordinates between 0 and 1, with the origin `(0, 0)` in the top left of the image and `(1, 1)` in the bottom right.
 
-For more information, see [`viam infer`](/cli/#infer).
+For more information, see [`viam infer`](/cli/).
 
 ## Troubleshooting
 

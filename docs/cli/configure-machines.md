@@ -216,4 +216,4 @@ viam machines part restart --part=<part-id>
 - [Get started](/foundation/) for setting up your first machine
 - [Configure hardware](/hardware/) for component configuration with the Viam app
 - [Manage your fleet with the CLI](/cli/manage-your-fleet/) for monitoring and remote access
-- [CLI reference](/cli/#machines-alias-robots-and-machine) for the complete `machines` command reference
+- [CLI reference](/cli/) for the complete `machines` command reference

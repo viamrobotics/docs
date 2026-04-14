@@ -62,7 +62,7 @@ Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your session, you can [extend your rover session](/try/#extend-your-reservation) as long as there are no other reservations.
+If you are running out of time during your session, you can [extend your rover session](/try/) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}

@@ -286,4 +286,4 @@ To find binary data IDs, export data with `viam data export` or browse the DATA 
 - [Create a dataset](/train/create-a-dataset/) for step-by-step dataset creation with the Viam app
 - [Train a model](/train/train-a-model/) for training with the Viam app
 - [Custom training scripts](/train/custom-training-scripts/) for writing custom training logic
-- [CLI reference](/cli/#train) for the complete `train` command reference
+- [CLI reference](/cli/) for the complete `train` command reference

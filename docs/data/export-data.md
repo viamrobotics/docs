@@ -84,9 +84,9 @@ The tabular export command writes a single `data.ndjson` file in [NDJSON](https:
 {{% /tab %}}
 {{< /tabs >}}
 
-If you want to store the data in a different location, change the destination with the [`--destination` flag](/cli/#named-arguments).
+If you want to store the data in a different location, change the destination with the [`--destination` flag](/cli/).
 
 {{% /tablestep %}}
 {{< /table >}}
 
-You can see more information about exporting data in the [Viam CLI documentation](/cli/#data).
+You can see more information about exporting data in the [Viam CLI documentation](/cli/).

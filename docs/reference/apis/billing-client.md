@@ -26,7 +26,7 @@ To use the billing client API, you need to instantiate a `ViamClient` and then i
 
 You need an API key and API key ID with [Org owner permissions](/manage/manage/rbac/#organization-settings-and-roles) to use the billing client API.
 To get an API key (and corresponding ID), use the [web UI](/operate/control/api-keys/#add-an-api-key)
-to the [Viam CLI](/cli/#create-an-organization-api-key).
+to the [Viam CLI](/cli/).
 
 {{< tabs >}}
 {{% tab name="From a client application" %}}
