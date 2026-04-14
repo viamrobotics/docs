@@ -24,7 +24,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>visibility</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>Whether the module is accessible only to members of your <a href="/manage/reference/organize/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can only change it back to private if it is not configured on any machines outside of your organization.</td>
+<td>Whether the module is accessible only to members of your <a href="/reference/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can only change it back to private if it is not configured on any machines outside of your organization.</td>
 </tr>
 <tr>
 <td><code>url</code></td>

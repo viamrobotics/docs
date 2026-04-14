@@ -95,4 +95,4 @@ If you experience any issues getting Viam working on your BeagleBone, consult th
 
 {{< snippet "social.md" >}}
 
-You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
+You can find additional assistance in the [Troubleshooting section](/monitor/troubleshoot/).

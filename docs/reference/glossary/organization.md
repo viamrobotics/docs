@@ -11,4 +11,4 @@ An organization or org is the highest level grouping in the Viam platform, which
 Every {{< glossary_tooltip term_id="location" text="location" >}} is grouped into an organization.
 You can also have organizations for departments or other entities, or for personal use.
 
-For more information, see [Organize your machines](/manage/reference/organize/).
+For more information, see [Organize your machines](/reference/).
