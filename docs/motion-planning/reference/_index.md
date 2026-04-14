@@ -12,5 +12,6 @@ description: "Configuration, API, and technical reference for the motion service
 {{% card link="/motion-planning/reference/api/" noimage="true" %}}
 {{% card link="/motion-planning/reference/kinematics/" noimage="true" %}}
 {{% card link="/motion-planning/reference/algorithms/" noimage="true" %}}
+{{% card link="/motion-planning/reference/plan-monitoring/" noimage="true" %}}
 {{% card link="/motion-planning/reference/orientation-vectors/" noimage="true" %}}
 {{< /cards >}}
