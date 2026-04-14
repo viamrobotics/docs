@@ -18,21 +18,21 @@ aliases:
 
 ## Prerequisites
 
-Before starting this tutorial, you need the can inspection simulation running. Follow the **[Gazebo Simulation Setup Guide](../gazebo-setup/)** to:
+Before starting this tutorial, you need the can inspection simulation running. Follow the **[Simulation Setup Guide](../sim-setup/)** to:
 
-1. Build the Docker image with Gazebo Harmonic
+1. Boot a simulation environment on Viam's cloud
 2. Create a machine in Viam and get credentials
 3. Start the container with your Viam credentials
 
 Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
-The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
+The simulation runs Gazebo Harmonic inside a sandbox. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs inside the sandbox and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
 {{< /alert >}}
 
 ## 1.1 Verify Your Machine is Online
 
-If you followed the [setup guide](../gazebo-setup/), your machine should already be online.
+If you followed the [setup guide](../sim-setup/), your machine should already be online.
 
 1. Open [app.viam.com](https://app.viam.com) (the "Viam app")
 2. Navigate to your machine (for example, `inspection-station-1`)
@@ -41,13 +41,13 @@ If you followed the [setup guide](../gazebo-setup/), your machine should already
 
 {{<imgproc src="/tutorials/first-project/machine-live-status.png" resize="x1100" declaredimensions=true alt="Machine page showing the green Live status indicator next to the machine name." class="imgzoom shadow">}}
 
-Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've already installed `viam-server` and launched it in the simulation Docker container.
+Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've already installed `viam-server` and launched it in the simulation sandbox.
 
 ## 1.2 Locate Your Machine Part
 
 Your machine is online but empty. To configure your machine, you will add components and services to your machine part in the Viam app. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
 
-In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container.
+In the case of this tutorial, your machine part is a virtual machine running Linux in the sandbox.
 
 Find `inspection-station-1-main` in the **CONFIGURE** tab.
 
