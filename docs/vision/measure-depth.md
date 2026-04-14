@@ -47,7 +47,7 @@ A **depth map** is a 2D image where each pixel value represents the distance fro
 
 A **point cloud** is the 3D representation: each pixel in the depth map is projected into 3D space using the camera's intrinsic parameters. The point cloud contains explicit (x, y, z) coordinates.
 
-Viam provides point clouds through the `GetPointCloud` API. If you need a depth map instead, you can capture the depth image directly using `GetImage` with the appropriate MIME type.
+Viam provides point clouds through the `GetPointCloud` API. If you need a depth map instead, capture it through `GetImages` and filter the returned list for the image whose MIME type is `image/vnd.viam.dep` (the raw depth format).
 
 ### Camera intrinsic parameters
 
@@ -174,10 +174,9 @@ camera = Camera.from_robot(robot, "my-depth-camera")
 # Get images from the depth camera
 images, _ = await camera.get_images()
 
-# The depth image is typically the second image
-# Check source_name to identify the depth stream
+# Each item is a NamedImage. Inspect `name` and `mime_type` to find the depth stream.
 for img in images:
-    print(f"Source: {img.source_name}, size: {img.width}x{img.height}")
+    print(f"Name: {img.name}, MIME: {img.mime_type}, size: {img.width}x{img.height}")
 ```
 
 {{% /tab %}}
@@ -213,6 +212,7 @@ Given a depth image, you can look up the distance at any pixel coordinate. This 
 ```python
 import numpy as np
 from viam.components.camera import Camera
+from viam.media.video import CameraMimeType
 
 
 camera = Camera.from_robot(robot, "my-depth-camera")
@@ -220,21 +220,28 @@ camera = Camera.from_robot(robot, "my-depth-camera")
 # Get images from the depth camera
 images, _ = await camera.get_images()
 
-# Find the depth image by checking available images
-# Convert to numpy array for pixel-level access
-depth_array = np.array(images[1].image)
+# Find the depth image by MIME type, then decode bytes to a 2D depth array.
+depth_image = next(
+    (img for img in images if img.mime_type == CameraMimeType.VIAM_RAW_DEPTH),
+    None,
+)
+if depth_image is None:
+    raise RuntimeError("No depth stream in camera output")
+
+# bytes_to_depth_array returns a 2D list of uint16 values in millimeters.
+depth_array = np.array(depth_image.bytes_to_depth_array(), dtype=np.uint16)
 
 # Read depth at a specific pixel (center of image)
 center_x = depth_array.shape[1] // 2
 center_y = depth_array.shape[0] // 2
-depth_mm = depth_array[center_y, center_x]
+depth_mm = int(depth_array[center_y, center_x])
 
 print(f"Depth at center ({center_x}, {center_y}): {depth_mm} mm")
 print(f"That is {depth_mm / 1000:.2f} meters")
 
 # Read depth at a specific coordinate
 target_x, target_y = 320, 240
-depth_at_target = depth_array[target_y, target_x]
+depth_at_target = int(depth_array[target_y, target_x])
 print(f"Depth at ({target_x}, {target_y}): {depth_at_target} mm")
 ```
 
@@ -286,6 +293,7 @@ Combine 2D detections with depth data to measure the distance to each detected o
 
 ```python
 from viam.components.camera import Camera
+from viam.media.video import CameraMimeType
 from viam.services.vision import VisionClient
 import numpy as np
 
@@ -296,9 +304,15 @@ detector = VisionClient.from_robot(robot, "my-detector")
 # Get detections
 detections = await detector.get_detections_from_camera("my-depth-camera")
 
-# Get images including depth
+# Get images and decode the depth stream.
 images, _ = await camera.get_images()
-depth_array = np.array(images[1].image)
+depth_image = next(
+    (img for img in images if img.mime_type == CameraMimeType.VIAM_RAW_DEPTH),
+    None,
+)
+if depth_image is None:
+    raise RuntimeError("No depth stream in camera output")
+depth_array = np.array(depth_image.bytes_to_depth_array(), dtype=np.uint16)
 
 for d in detections:
     if d.confidence < 0.5:

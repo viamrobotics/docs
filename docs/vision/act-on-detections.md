@@ -8,7 +8,8 @@ description: "Build a module that uses vision service results to control machine
 aliases:
   - /vision/act/
   - /vision/how-to/act-on-detections/
-date: "2025-10-09"
+  - /data-ai/ai/act/
+date: "2026-04-14"
 ---
 
 You have a vision service detecting or classifying objects, but you need your machine to respond automatically -- stop an arm when a person is nearby, sort items by color, or trigger an action when an anomaly appears. This guide shows you how to build a module that reads vision results and controls other resources based on what it sees.
@@ -222,7 +223,7 @@ async def do_command(
     **kwargs
 ) -> Mapping[str, ValueTypes]:
     return await self.arm.do_command(
-        command, timeout, **kwargs)
+        command, timeout=timeout, **kwargs)
 ```
 
 ### 7. Test with hot reloading

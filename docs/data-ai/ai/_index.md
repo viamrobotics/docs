@@ -7,5 +7,5 @@ type: "docs"
 empty_node: true
 open_on_desktop: true
 header_only: true
-canonical: "/data-ai/ai/deploy/"
+canonical: "/vision/deploy-from-registry/"
 ---
