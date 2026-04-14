@@ -14,7 +14,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The generic service API allows you to give commands to your [generic services](/operate/reference/services/generic/) for running model-specific commands using [`DoCommand`](/reference/apis/services/generic/#docommand).
+The generic service API allows you to give commands to your [generic services](/reference/apis/services/generic/) for running model-specific commands using [`DoCommand`](/reference/apis/services/generic/#docommand).
 
 The generic service supports the following methods:
 

@@ -12,11 +12,11 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The generic API allows you to give commands to your [generic components](/operate/reference/components/generic/) for running model-specific commands using [`DoCommand`](/reference/apis/components/generic/#docommand).
+The generic API allows you to give commands to your [generic components](/hardware/common-components/add-a-generic/) for running model-specific commands using [`DoCommand`](/reference/apis/components/generic/#docommand).
 
 {{% alert title="Example usage" color="tip" %}}
 
-See [Deploy control logic](/operate/modules/write-a-logic-module/) for an example of how to use the generic component API, including how to call `DoCommand()` from the SDKs or the web UI.
+See [Deploy control logic](/build-modules/) for an example of how to use the generic component API, including how to call `DoCommand()` from the SDKs or the web UI.
 
 {{% /alert %}}
 

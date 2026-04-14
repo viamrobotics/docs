@@ -25,7 +25,7 @@ The billing API supports the following methods:
 To use the billing client API, you need to instantiate a `ViamClient` and then instantiate a `BillingClient`.
 
 You need an API key and API key ID with [Org owner permissions](/organization/rbac/#organization-settings-and-roles) to use the billing client API.
-To get an API key (and corresponding ID), use the [web UI](/operate/control/api-keys/#add-an-api-key)
+To get an API key (and corresponding ID), use the [web UI](/organization/api-keys/)
 to the [Viam CLI](/cli/).
 
 {{< tabs >}}
@@ -128,7 +128,7 @@ const billingClient = viamClient.billingClient;
 {{% /tab %}}
 {{% tab name="From within a Module" %}}
 
-See [Use platform APIs from within a module](/operate/modules/advanced/platform-apis/).
+See [Use platform APIs from within a module](/reference/apis/).
 
 {{% /tab %}}
 {{< /tabs >}}

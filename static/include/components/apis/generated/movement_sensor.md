@@ -826,8 +826,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetGeometries
 
-Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/operate/reference/services/frame-system/) of the movement sensor.
-The [motion](/operate/reference/services/motion/) and [navigation](/operate/reference/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
+Get all the geometries associated with the movement sensor in its current configuration, in the [frame](/reference/) of the movement sensor.
+The [motion](/reference/apis/services/motion/) and [navigation](/reference/apis/services/navigation/) services use the relative position of inherent geometries to configured geometries representing obstacles for collision detection and obstacle avoidance while motion planning.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -24,7 +24,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [vision service](/operate/reference/services/vision/) and the [ML model service](/vision/configure/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/vision/configure/) and the [ML model service](/vision/configure/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -40,7 +40,7 @@ You need the following hardware for this tutorial:
 You will use the following software in this tutorial:
 
 - [Python 3.8 or newer](https://www.python.org/downloads/)
-- [`viam-server`](/operate/install/setup/)
+- [`viam-server`](/foundation/)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered machine by writing custom scripts in the Python programming language.
     Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
@@ -56,7 +56,7 @@ You will use the following software in this tutorial:
 
 ### Configure the camera component
 
-Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from your camera:
+Configure your [webcam](/hardware/common-components/add-a-camera/) so that your machine can get the video stream from your camera:
 
 1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
@@ -82,7 +82,7 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure your services
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/operate/reference/services/vision/) on your machine.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/vision/configure/) on your machine.
 This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
@@ -105,7 +105,7 @@ If you want to train your own model instead, follow the instructions to [train a
    Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Select model** dropdown.
 
-1. **Configure an mlmodel detector** [vision service](/operate/reference/services/vision/)
+1. **Configure an mlmodel detector** [vision service](/vision/configure/)
 
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
    Start typing `ML model` and select **vision / ML model** from the builtin options.

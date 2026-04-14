@@ -1,5 +1,5 @@
 {{< cards >}}
-{{% card link="/operate/reference/components/camera/calibrate/" %}}
-{{% card link="/operate/reference/components/camera/transform/" %}}
+{{% card link="/hardware/common-components/add-a-camera/" %}}
+{{% card link="/hardware/common-components/add-a-camera/" %}}
 {{% card link="/services/vision" %}}
 {{< /cards >}}

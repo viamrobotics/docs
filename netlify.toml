@@ -22,6 +22,51 @@
   status = 301
 
 [[redirects]]
+  from = "/operate/reference/components/*"
+  to = "/hardware/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/reference/services/*"
+  to = "/reference/apis/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/reference/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/*"
+  to = "/build-modules/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/mobility/*"
+  to = "/motion-planning/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/control/*"
+  to = "/build-apps/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/install/*"
+  to = "/foundation/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/hello-world/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/data-ai/capture-data/*"
   to = "/data/"
   status = 301
@@ -192,7 +237,7 @@
   [plugins.inputs]
 
   # change this key to a new one any time you need to restart from scratch
-  cacheKey = "Apr142026b"
+  cacheKey = "Apr142026c"
   # either "warn" or "error"
   failBuildOnError = true
 

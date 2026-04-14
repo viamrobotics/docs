@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The motor API allows you to give commands to your [motor components](/operate/reference/components/motor/) for operating a motor or getting its current status.
+The motor API allows you to give commands to your [motor components](/hardware/common-components/add-a-motor/) for operating a motor or getting its current status.
 
 The motor component supports the following methods:
 

@@ -48,8 +48,8 @@ You can create one or more machines to measure air quality.
 For each machine, you need the following hardware:
 
 - A [SDS011 Nova PM sensor](https://www.amazon.com/SDS011-Quality-Detection-Conditioning-Monitor/dp/B07FSDMRR5)
-  - If you choose to use a different air quality sensor, you may need to [create your own module](/operate/modules/write-a-driver-module/) implementing the [sensor API](/operate/reference/components/sensor/#api) for your specific hardware.
-- A single-board computer (SBC) [capable of running `viam-server`](/operate/install/setup/)
+  - If you choose to use a different air quality sensor, you may need to [create your own module](/build-modules/) implementing the [sensor API](/hardware/common-components/add-a-sensor/) for your specific hardware.
+- A single-board computer (SBC) [capable of running `viam-server`](/foundation/)
 - An appropriate power supply
 
 ## Set up one device for development
@@ -88,7 +88,7 @@ Use the **...** menu next to edit the location name to `Development`, then click
 Connect a PM sensor to a USB port on the machine's SBC.
 Then connect your device to power.
 
-If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/operate/install/setup/#prerequisite-install-operating-system) to install a compatible operating system.
+If the computer does not already have a Viam-compatible operating system installed, follow the [prerequisite section of the setup guide](/foundation/) to install a compatible operating system.
 You _do not_ need to follow the "Install `viam-server`" section; you will do that in the next step!
 
 Enable serial communication so that the SBC can communicate with the air quality sensor.

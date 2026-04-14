@@ -2272,7 +2272,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetRobotAPIKeys
 
-Gets the [API keys](/operate/control/api-keys/) for the machine.
+Gets the [API keys](/organization/api-keys/) for the machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -3062,7 +3062,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### MarkPartAsMain
 
-Mark a machine part as the [_main_ part](/operate/reference/architecture/parts/#machine-parts) of a machine.
+Mark a machine part as the [_main_ part](/reference/) of a machine.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -5903,7 +5903,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### CreateKey
 
-Create a new [API key](/operate/control/api-keys/).
+Create a new [API key](/organization/api-keys/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -5980,7 +5980,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### DeleteKey
 
-Delete an [API key](/operate/control/api-keys/).
+Delete an [API key](/organization/api-keys/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -6045,7 +6045,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### RotateKey
 
-Rotate an [API key](/operate/control/api-keys/#rotate-an-api-key).
+Rotate an [API key](/organization/api-keys/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

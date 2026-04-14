@@ -244,4 +244,4 @@ Then resolve it the same way as any other dependency.
 - [Write a Driver Module](/build-modules/write-a-driver-module/) -- full walkthrough including dependency handling in context.
 - [Write a Logic Module](/build-modules/write-a-logic-module/) -- build a module that coordinates multiple resources.
 - [Access platform APIs](/build-modules/platform-apis/) -- access fleet management, data, and ML training APIs from within a module.
-- For full examples, see the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/) or [complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).
+- For full examples, see the [Desk Safari tutorial](/try/) or [complex module examples on GitHub](https://github.com/viamrobotics/viam-python-sdk/tree/main/examples/complex_module/src).

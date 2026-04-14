@@ -61,10 +61,10 @@ Once you're connected to your board, you can verify all packages are up to date 
 ## Next steps
 
 You have now installed an operating system on your BOARD.
-To use your BOARD, follow the [setup guide](/operate/install/setup/):
+To use your BOARD, follow the [setup guide](/foundation/):
 
 {{< cards >}}
-{{% card link="/operate/install/setup/" %}}
+{{% card link="/foundation/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

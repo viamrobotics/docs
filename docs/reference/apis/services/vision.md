@@ -14,7 +14,7 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-The vision service enables your machine to use its on-board [cameras](/operate/reference/components/camera/) to intelligently see and interpret the world around it.
+The vision service enables your machine to use its on-board [cameras](/hardware/common-components/add-a-camera/) to intelligently see and interpret the world around it.
 While the camera component lets you access what your machine's camera sees, the vision service allows you to interpret your image data.
 
 The vision service {{< glossary_tooltip term_id="api" text="API" >}} allows you to get detections, classifications, or point cloud objects, depending on the {{< glossary_tooltip term_id="ml" text="ML" >}} model the vision service is using.
@@ -79,7 +79,7 @@ See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rov
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 {{% alert title="Tip" color="tip" %}}
-3D segmentation operations require [frame system](/operate/reference/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
+3D segmentation operations require [frame system](/reference/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
 This enables the vision service to provide meaningful 3D coordinates and spatial relationships.
 {{% /alert %}}
 

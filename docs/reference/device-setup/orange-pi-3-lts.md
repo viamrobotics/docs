@@ -48,7 +48,7 @@ Before you power the board, you need to install an operating system.
 1. Follow the [Orange Pi guide to prepare your microSD card](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
 
    {{< alert title="Tip: How to think about building a machine" color="tip" >}}
-   While flashing your microSD card, we recommend reading [How to think about building a machine](/operate/hello-world/building/).
+   While flashing your microSD card, we recommend reading [How to think about building a machine](/what-is-viam/).
    {{< /alert >}}
 
 1. Insert the micro-SD into the Orange Pi.
@@ -85,10 +85,10 @@ For more information, consult the [official user manual](https://drive.google.co
 ## Next steps
 
 You have now installed an operating system on your Orange Pi.
-To use your Orange Pi, follow the [setup guide](/operate/install/setup/):
+To use your Orange Pi, follow the [setup guide](/foundation/):
 
 {{< cards >}}
-{{% card link="/operate/install/setup/" %}}
+{{% card link="/foundation/" %}}
 {{< /cards >}}
 
 If you want to use the GPIO pins on the board, add a [`orangepi` board as a component](https://github.com/viam-modules/orange-pi/) after installing `viam-server`.

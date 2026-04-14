@@ -83,10 +83,10 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 ## Next steps
 
 You have now installed an operating system on your BeagleBone.
-To use your BeagleBone, follow the [setup guide](/operate/install/setup/):
+To use your BeagleBone, follow the [setup guide](/foundation/):
 
 {{< cards >}}
-{{% card link="/operate/install/setup/" %}}
+{{% card link="/foundation/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

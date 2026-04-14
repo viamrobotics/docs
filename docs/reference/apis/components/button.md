@@ -12,7 +12,7 @@ aliases:
   - /dev/reference/apis/components/button/
 ---
 
-The button API allows you to get button presses from your [button components](/operate/reference/components/button/).
+The button API allows you to get button presses from your [button components](/hardware/common-components/add-a-button/).
 
 The button component supports the following methods:
 

@@ -1,1 +1,1 @@
-A slice containing the `"name"` of every analog pin [configured](/operate/reference/components/board/#configuration) on the board.
+A slice containing the `"name"` of every analog pin [configured](/hardware/common-components/add-a-board/) on the board.

@@ -12,7 +12,7 @@ aliases:
   - /dev/reference/apis/components/switch/
 ---
 
-The switch API allows you to give commands to your [switch components](/operate/reference/components/switch/) for reading the state of a physical switch that has multiple discrete positions.
+The switch API allows you to give commands to your [switch components](/hardware/common-components/add-a-switch/) for reading the state of a physical switch that has multiple discrete positions.
 A simple switch has two positions, and a knob could have any number of positions.
 
 The switch component supports the following methods:

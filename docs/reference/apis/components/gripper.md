@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The gripper API allows you to give commands to your [gripper components](/operate/reference/components/gripper/) for opening and closing a device.
+The gripper API allows you to give commands to your [gripper components](/hardware/common-components/add-a-gripper/) for opening and closing a device.
 
 The gripper component supports the following methods:
 

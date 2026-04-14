@@ -71,5 +71,5 @@ This section covers tools for monitoring, operating, and debugging machines that
 | Configure components and services              | [Configure hardware](/hardware/)        |
 | Capture and sync data from sensors             | [Manage data](/data/)                   |
 | Train and deploy ML models                     | [Train ML models](/train/)              |
-| Build a custom web or mobile app with the SDKs | [Build apps](/operate/control/web-app/) |
+| Build a custom web or mobile app with the SDKs | [Build apps](/build-apps/overview/) |
 | Manage fleet deployment and provisioning       | [Fleet deployment](/fleet/)             |

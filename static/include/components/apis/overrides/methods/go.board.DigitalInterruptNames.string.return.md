@@ -1,1 +1,1 @@
-A slice containing the `"name"` of every interrupt [configured](/operate/reference/components/board/#configuration) on the board.
+A slice containing the `"name"` of every interrupt [configured](/hardware/common-components/add-a-board/) on the board.

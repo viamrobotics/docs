@@ -9,7 +9,7 @@
 <td><code>module_id</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>The module ID, which includes either the module <a href="/operate/modules/advanced/metajson/#create-a-namespace-for-your-organization">namespace</a> or organization ID, followed by its name: <code>&lt;namespace&gt;:&lt;module-name&gt;</code> or <code>&lt;org-id&gt;:&lt;module-name&gt;</code>.
+<td>The module ID, which includes either the module <a href="/build-modules/#create-a-namespace-for-your-organization">namespace</a> or organization ID, followed by its name: <code>&lt;namespace&gt;:&lt;module-name&gt;</code> or <code>&lt;org-id&gt;:&lt;module-name&gt;</code>.
 <div class="alert alert-caution" role="alert">
 <h4 class="alert-heading">Caution</h4>
 
@@ -57,7 +57,7 @@ Do not change the <code>module_id</code>.</p>
 <td>object</td>
 <td>Optional</td>
 <td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use with the <a href="/cli/#using-the-build-subcommand">Viam CLI build subcommand</a>.<br><ul><li><code>"setup"</code> (Optional): Command to run for setting up the build environment.</li><li><code>"build"</code> (Required): Command to run to build the module tarball.</li><li><code>"path"</code> (Optional): Path to the built module tarball.</li>
-<li><code>"arch"</code> (Required): Array of architectures to build for. For more information see <a href="/operate/modules/advanced/manage-modules/#supported-platforms-for-automatic-updates">Supported platforms for automatic updates</a>.</li><li><code>"darwin_deps"</code> (Required): Array of homebrew dependencies for Darwin builds. Explicitly pass <code>[]</code> for empty. Default: <code>["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"]</code></li></ul></td>
+<li><code>"arch"</code> (Required): Array of architectures to build for. For more information see <a href="/build-modules/#supported-platforms-for-automatic-updates">Supported platforms for automatic updates</a>.</li><li><code>"darwin_deps"</code> (Required): Array of homebrew dependencies for Darwin builds. Explicitly pass <code>[]</code> for empty. Default: <code>["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"]</code></li></ul></td>
 </tr>
 <tr>
 <td><code>markdown_link</code></td>
@@ -75,7 +75,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>applications</code></td>
 <td>array</td>
 <td>Optional</td>
-<td>Objects that provide information about the applications provided by the module. For more information see <a href="/operate/modules/advanced/metajson/#applications">Applications</a>.</td>
+<td>Objects that provide information about the applications provided by the module. For more information see <a href="/build-modules/#applications">Applications</a>.</td>
 </tr>
 
 </table>

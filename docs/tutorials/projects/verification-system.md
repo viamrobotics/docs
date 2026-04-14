@@ -51,7 +51,7 @@ The system decides whether to raise an alarm based on whether it recognizes the 
 {{% expand "A camera, connected to your machine, to capture images" %}}
 
 Connect a camera to your machine.
-This tutorial uses the [webcam](/operate/reference/components/camera/webcam/) model but you can also use other [camera components](/operate/reference/components/camera/).
+This tutorial uses the [webcam](/hardware/common-components/add-a-camera/) model but you can also use other [camera components](/hardware/common-components/add-a-camera/).
 
 {{% /expand %}}
 

@@ -29,7 +29,7 @@ toc_hide: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial, you'll learn how to use the [vision service](/operate/reference/services/vision/) to make a rover follow a colored object.
+In this tutorial, you'll learn how to use the [vision service](/vision/configure/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/try/).
 
 {{< alert title="You will learn" color="tip" >}}
@@ -55,9 +55,9 @@ You will need the following hardware to complete this tutorial:
   If you have your own Viam rover [follow the Viam Rover configuration instructions](/try/).
   If you own another mobile robot [follow the general configuration instructions](/tutorials/configure/configure-rover/).
 
-  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a Yahboom 4WD Smart Robot or any other wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
+  This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a Yahboom 4WD Smart Robot or any other wheeled robot that can be configured as a [base component](/hardware/common-components/add-a-base/).
 
-- An attached and configured [webcam camera](/operate/reference/components/camera/webcam/).
+- An attached and configured [webcam camera](/hardware/common-components/add-a-camera/).
 
 ## Set up the hardware
 
@@ -163,7 +163,7 @@ Next, create a file named <file>main.py</file> with the sample code from the **C
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
-If you haven't yet installed `viam-server`, follow the [installation guide](/operate/install/setup/) to install `viam-server` on your robot before proceeding with this tutorial.
+If you haven't yet installed `viam-server`, follow the [installation guide](/foundation/) to install `viam-server` on your robot before proceeding with this tutorial.
 
 You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
 

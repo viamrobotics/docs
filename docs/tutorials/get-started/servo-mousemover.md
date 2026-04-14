@@ -37,7 +37,7 @@ This tutorial will show you how to build a mouse mover using Viam, a Raspberry P
 This machine will turn the continuous servo that's secured inside the box, which will turn the circle under the optical mouse.
 This will keep your computer from falling asleep.
 
-This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/operate/reference/components/servo/) with Viam and Viam's [Python SDK](https://python.viam.dev/).
+This project is a good place to begin if you're new to robotics and would like to learn how to use a [servo component](/hardware/common-components/add-a-servo/) with Viam and Viam's [Python SDK](https://python.viam.dev/).
 
 <div style="display:flex;" class="aligncenter">
 <div style="border:1px solid gray;">
@@ -52,7 +52,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ### Hardware
 
-- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/operate/install/setup/)
+- [Raspberry Pi with microSD card](https://a.co/d/bxEdcAT), with `viam-server` installed per our [installation guide](/foundation/)
 - microSD card reader
 - [Continuous rotation servo](https://a.co/d/2w0u6rK) (we used the FS90R servo)
 - Wheel or arm for the servo (this comes in some of the FS90R packages)
@@ -77,7 +77,7 @@ This project is a good place to begin if you're new to robotics and would like t
 
 ## Install Viam software
 
-First, prepare your Raspberry Pi according to our [setup guide](/operate/reference/prepare/rpi-setup/).
+First, prepare your Raspberry Pi according to our [setup guide](/reference/device-setup/rpi-setup/).
 Then connect to your Raspberry Pi with SSH.
 
 {{% snippet "setup.md" %}}
@@ -172,7 +172,7 @@ Navigate to the **CONFIGURE** tab.
 
 ### Board component
 
-Create a [board component](/operate/reference/components/board/):
+Create a [board component](/hardware/common-components/add-a-board/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
@@ -187,7 +187,7 @@ You can name the board whatever you want, but if you change the name you must up
 
 ### Servo component
 
-Create a [servo component](/operate/reference/components/servo/):
+Create a [servo component](/hardware/common-components/add-a-servo/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.

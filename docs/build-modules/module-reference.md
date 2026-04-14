@@ -297,7 +297,7 @@ func (c *component) someFunction(ctx context.Context, a int) {
 {{< /tabs >}}
 
 To see debug-level logs, run `viam-server` with the `-debug` flag or
-[configure debug logging](/operate/reference/viam-server/#logging) for your
+[configure debug logging](/reference/) for your
 machine or individual resource.
 
 ## Common gotchas
@@ -402,7 +402,7 @@ The full schema is available at `https://dl.viam.dev/module.schema.json`.
 
 ### Applications
 
-If your module provides a [Viam application](/operate/control/viam-applications/),
+If your module provides a [Viam application](/build-apps/overview/),
 define it in the `applications` array in `meta.json`.
 
 Each application object has the following properties:
