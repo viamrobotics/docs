@@ -46,4 +46,37 @@ aliases:
   - /reference/configuration/slam-background/
   - /reference/services/
   - /reference/module-configuration/
+  - /reference/changelog/
+  - /dev/reference/changelog/
+  - /reference/platform/
+  - /reference/platform/viam-server/
+  - /reference/platform/viam-server/manage-viam-server/
+  - /reference/platform/viam-server/debug-endpoints/
+  - /reference/platform/viam-agent/
+  - /reference/platform/viam-agent/manage-viam-agent/
+  - /reference/platform/viam-micro-server/
+  - /operate/reference/viam-server/
+  - /operate/reference/viam-server/manage-viam-server/
+  - /operate/reference/viam-server/debug-endpoints/
+  - /operate/reference/viam-server/local-configuration-file/
+  - /manage/reference/viam-agent/
+  - /manage/reference/viam-agent/manage-viam-agent/
+  - /operate/install/setup-micro/
+  - /operate/reference/viam-micro-server/
+  - /operate/reference/viam-micro-server/viam-micro-server-troubleshooting/
+  - /internals/rdk/
+  - /architecture/rdk/
+  - /architecture/viam-server/
+  - /internals/local-configuration-file/
+  - /configure/agent/
+  - /installation/manage-viam-agent/
+  - /installation/microcontrollers/
+  - /installation/prepare/microcontrollers/
+  - /installation/viam-micro-server-setup/
+  - /installation/update/
+  - /installation/manage-viam-server/
+  - /build/micro-rdk/
+  - /get-started/installation/microcontrollers/
+  - /get-started/installation/manage-viam-server/
+  - /operate/get-started/setup-micro/
 ---
