@@ -174,7 +174,7 @@ Available flags: `--x`, `--y`, `--z` (position in mm), `--ox`, `--oy`, `--oz`,
 ## What's next
 
 - [Motion Service API](/motion-planning/reference/api/): full API reference.
-- [Motion Planning Algorithms](/motion-planning/reference/algorithms/): how the planner
-  works.
+- [How motion planning works](/motion-planning/how-planning-works/):
+  how the planner searches for collision-free paths.
 - [Configure Motion Constraints](/motion-planning/constraints/): restrict arm
   movement during planning.

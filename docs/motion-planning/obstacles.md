@@ -369,5 +369,5 @@ Dynamic obstacles (defined through WorldState in code) do not appear in the
   use the motion service to move the arm while avoiding obstacles.
 - [Configure Motion Constraints](/motion-planning/constraints/): restrict how
   the arm moves between poses.
-- [Motion Planning Algorithms](/motion-planning/reference/algorithms/): understand how
-  the planner computes collision-free paths.
+- [How motion planning works](/motion-planning/how-planning-works/):
+  understand how the planner computes collision-free paths.

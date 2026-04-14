@@ -99,7 +99,7 @@ your hardware.
 ### Understand the internals
 
 {{< cards >}}
+{{% card link="/motion-planning/how-planning-works/" noimage="true" %}}
 {{% card link="/motion-planning/constraints/" noimage="true" %}}
-{{% card link="/motion-planning/reference/algorithms/" noimage="true" %}}
 {{% card link="/motion-planning/reference/" noimage="true" %}}
 {{< /cards >}}
