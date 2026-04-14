@@ -1,6 +1,6 @@
 ---
-linkTitle: "Place an Object"
-title: "Place an Object"
+linkTitle: "Place an object"
+title: "Place an object"
 weight: 60
 layout: "docs"
 type: "docs"
@@ -108,7 +108,7 @@ print("Retreated from placement")
 - After releasing, the object becomes a potential obstacle. Update your
   `WorldState` if the arm needs to move near the placement location again.
 
-## What's Next
+## What's next
 
 - [Pick an Object](/motion-planning/motion-how-to/pick-an-object/):
   the pick half of the pick-and-place workflow.

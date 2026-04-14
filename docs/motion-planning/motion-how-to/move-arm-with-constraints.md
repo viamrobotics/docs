@@ -1,6 +1,6 @@
 ---
-linkTitle: "Move with Constraints"
-title: "Move an Arm with Motion Constraints"
+linkTitle: "Move with constraints"
+title: "Move an arm with motion constraints"
 weight: 20
 layout: "docs"
 type: "docs"
@@ -199,7 +199,7 @@ constraints := &motionplan.Constraints{
   ensures the current orientation stays within tolerance of whichever endpoint
   is closer.
 
-## What's Next
+## What's next
 
 - [Configure Motion Constraints](/motion-planning/constraints/):
   full reference for all four constraint types.

@@ -1,6 +1,6 @@
 ---
-linkTitle: "Motion Service"
-title: "Motion Service Configuration"
+linkTitle: "Motion service"
+title: "Motion service configuration"
 weight: 10
 layout: "docs"
 type: "docs"

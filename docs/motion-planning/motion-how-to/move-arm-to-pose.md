@@ -1,6 +1,6 @@
 ---
-linkTitle: "Move Arm to Pose"
-title: "Move an Arm to a Target Pose"
+linkTitle: "Move an arm to a pose"
+title: "Move an arm to a target pose"
 weight: 10
 layout: "docs"
 type: "docs"
@@ -267,7 +267,7 @@ viam machines part motion set-pose --part "my-machine-main" --component "my-arm"
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 - [Move with Constraints](/motion-planning/motion-how-to/move-arm-with-constraints/):
   keep the end effector on a straight line or at a fixed orientation.

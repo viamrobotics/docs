@@ -1,6 +1,6 @@
 ---
-linkTitle: "Motion How-Tos"
-title: "Motion Planning How-Tos"
+linkTitle: "Motion how-tos"
+title: "Motion planning how-tos"
 weight: 100
 layout: "docs"
 type: "docs"

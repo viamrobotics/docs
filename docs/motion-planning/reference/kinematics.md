@@ -1,6 +1,6 @@
 ---
-linkTitle: "Arm Kinematics"
-title: "Arm Kinematics"
+linkTitle: "Arm kinematics"
+title: "Arm kinematics"
 weight: 25
 layout: "docs"
 type: "docs"
@@ -261,7 +261,7 @@ Verify the visualization by comparing it to the physical arm:
 If the visualization does not match the physical arm, the kinematics file may
 have incorrect link lengths, joint axes, or joint limits.
 
-## Try It
+## Try it
 
 1. Run the kinematics check from step 1 to confirm your arm module has a
    built-in kinematics file.
@@ -304,7 +304,7 @@ have incorrect link lengths, joint axes, or joint limits.
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 - [Define Obstacles](/motion-planning/obstacles/): add collision geometry to
   your workspace so the motion planner avoids collisions.

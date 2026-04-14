@@ -1,6 +1,6 @@
 ---
-linkTitle: "Monitor Execution"
-title: "Monitor and Control Plan Execution"
+linkTitle: "Monitor execution"
+title: "Monitor and control plan execution"
 weight: 70
 layout: "docs"
 type: "docs"
@@ -165,7 +165,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-## What's Next
+## What's next
 
 - [Motion Service Configuration](/motion-planning/reference/motion-service/):
   full configuration reference including DoCommand options.

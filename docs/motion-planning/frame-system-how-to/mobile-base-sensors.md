@@ -1,6 +1,6 @@
 ---
-linkTitle: "Mobile Base with Sensors"
-title: "Mobile Base with Sensors"
+linkTitle: "Mobile base with sensors"
+title: "Mobile base with sensors"
 weight: 30
 layout: "docs"
 type: "docs"
@@ -169,7 +169,7 @@ Frames parented to the world stay fixed in space.
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 {{< cards >}}
 {{% card link="/motion-planning/frame-system-how-to/mobile-base-arm/" noimage="true" %}}

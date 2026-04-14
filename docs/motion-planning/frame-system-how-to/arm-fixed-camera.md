@@ -1,6 +1,6 @@
 ---
-linkTitle: "Arm with Fixed External Camera"
-title: "Arm with Fixed External Camera"
+linkTitle: "Arm with a fixed external camera"
+title: "Arm with a fixed external camera"
 weight: 20
 layout: "docs"
 type: "docs"
@@ -162,7 +162,7 @@ If you are using a table corner as the world frame, make sure you are measuring 
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 {{< cards >}}
 {{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}

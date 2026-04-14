@@ -1,6 +1,6 @@
 ---
-linkTitle: "Mobile Base with Arm"
-title: "Mobile Base with Arm"
+linkTitle: "Mobile base with arm"
+title: "Mobile base with arm"
 weight: 40
 layout: "docs"
 type: "docs"
@@ -206,7 +206,7 @@ An arm mounted off-center will trace a larger arc when the base rotates.
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 {{< cards >}}
 {{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}

@@ -1,6 +1,6 @@
 ---
 linkTitle: "Obstacles"
-title: "Define Obstacles"
+title: "Define obstacles"
 weight: 30
 layout: "docs"
 type: "docs"
@@ -321,7 +321,7 @@ Check the Viam app to see your obstacle geometry:
 Dynamic obstacles (defined through WorldState in code) do not appear in the
 3D SCENE tab because they only exist during the `Move` call.
 
-## Try It
+## Try it
 
 1. Add a table geometry to a component frame in the CONFIGURE tab (step 1).
    Open the 3D SCENE tab and verify the table appears.
@@ -363,7 +363,7 @@ Dynamic obstacles (defined through WorldState in code) do not appear in the
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 - [Move an Arm to a Target Pose](/motion-planning/motion-how-to/move-arm-to-pose/):
   use the motion service to move the arm while avoiding obstacles.

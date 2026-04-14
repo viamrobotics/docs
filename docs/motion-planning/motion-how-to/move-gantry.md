@@ -1,6 +1,6 @@
 ---
-linkTitle: "Move a Gantry"
-title: "Move a Gantry"
+linkTitle: "Move a gantry"
+title: "Move a gantry"
 weight: 40
 layout: "docs"
 type: "docs"
@@ -121,7 +121,7 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 {{% /tab %}}
 {{< /tabs >}}
 
-## What's Next
+## What's next
 
 - [Move Arm to Pose](/motion-planning/motion-how-to/move-arm-to-pose/):
   similar workflow for robot arms.

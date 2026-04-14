@@ -1,6 +1,6 @@
 ---
 linkTitle: "Constraints"
-title: "Configure Motion Constraints"
+title: "Configure motion constraints"
 weight: 40
 layout: "docs"
 type: "docs"
@@ -231,7 +231,7 @@ find than unconstrained ones.
 - **Combining constraints** multiplies the difficulty. Use the minimum set of
   constraints required for your task.
 
-## What's Next
+## What's next
 
 - [Move an Arm with Constraints](/motion-planning/motion-how-to/move-arm-with-constraints/):
   practical examples of constrained motion.

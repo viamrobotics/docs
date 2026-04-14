@@ -1,6 +1,6 @@
 ---
-linkTitle: "Avoid Obstacles"
-title: "Plan Collision-Free Paths"
+linkTitle: "Avoid obstacles"
+title: "Plan collision-free paths"
 weight: 30
 layout: "docs"
 type: "docs"
@@ -145,7 +145,7 @@ accounts for them without code changes.
 See [Define Obstacles](/motion-planning/obstacles/) for the full configuration
 reference.
 
-## What's Next
+## What's next
 
 - [Move an Arm to a Target Pose](/motion-planning/motion-how-to/move-arm-to-pose/)
 - [Pick an Object](/motion-planning/motion-how-to/pick-an-object/)

@@ -1,6 +1,6 @@
 ---
 linkTitle: "Reference"
-title: "Motion Planning Reference"
+title: "Motion planning reference"
 weight: 200
 layout: "docs"
 type: "docs"

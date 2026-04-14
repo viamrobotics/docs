@@ -1,6 +1,6 @@
 ---
-linkTitle: "Arm with Gripper and Wrist Camera"
-title: "Arm with Gripper and Wrist Camera"
+linkTitle: "Arm with gripper and wrist camera"
+title: "Arm with gripper and wrist camera"
 weight: 10
 layout: "docs"
 type: "docs"
@@ -199,7 +199,7 @@ If the adapter plate also offsets the gripper laterally, include x and y values 
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 {{< cards >}}
 {{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}

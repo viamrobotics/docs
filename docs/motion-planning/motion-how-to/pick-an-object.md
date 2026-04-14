@@ -1,6 +1,6 @@
 ---
-linkTitle: "Pick an Object"
-title: "Pick an Object"
+linkTitle: "Pick an object"
+title: "Pick an object"
 weight: 50
 layout: "docs"
 type: "docs"
@@ -180,7 +180,7 @@ print("Object lifted")
 - After grasping, re-verify with the gripper's `is_moving` or force feedback
   before proceeding.
 
-## What's Next
+## What's next
 
 - [Place an Object](/motion-planning/motion-how-to/place-an-object/):
   move the grasped object to a target location.

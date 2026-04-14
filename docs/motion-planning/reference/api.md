@@ -1,6 +1,6 @@
 ---
 linkTitle: "API"
-title: "Motion Service API"
+title: "Motion service API"
 weight: 20
 layout: "docs"
 type: "docs"

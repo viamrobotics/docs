@@ -1,6 +1,6 @@
 ---
-linkTitle: "Camera Calibration"
-title: "Calibrate a Camera for Motion Planning"
+linkTitle: "Camera calibration"
+title: "Calibrate a camera for motion planning"
 weight: 60
 layout: "docs"
 type: "docs"
@@ -246,7 +246,7 @@ working distance of 500-1000 mm, your calibration is good.
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
 - [Define Your Frame System](/motion-planning/frame-system/): configure
   component frames for spatial reasoning.

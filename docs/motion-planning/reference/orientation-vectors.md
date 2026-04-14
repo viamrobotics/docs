@@ -1,6 +1,6 @@
 ---
-linkTitle: "Orientation Vectors"
-title: "Orientation Vector Reference"
+linkTitle: "Orientation vectors"
+title: "Orientation vector reference"
 weight: 30
 layout: "docs"
 type: "docs"

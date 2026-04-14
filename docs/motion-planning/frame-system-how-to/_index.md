@@ -1,6 +1,6 @@
 ---
-linkTitle: "Frame How-Tos"
-title: "Frame System How-Tos"
+linkTitle: "Frame how-tos"
+title: "Frame system how-tos"
 weight: 15
 layout: "docs"
 type: "docs"

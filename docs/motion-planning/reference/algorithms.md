@@ -1,6 +1,6 @@
 ---
 linkTitle: "Algorithms"
-title: "Motion Planning Algorithms"
+title: "Motion planning algorithms"
 weight: 50
 layout: "docs"
 type: "docs"
@@ -103,7 +103,7 @@ If the planner returns an error ("no path found" or similar), consider:
 5. **Increase timeout.** For complex environments, the default 300-second
    timeout may not be enough, though this is rare.
 
-## What's Next
+## What's next
 
 - [Configure Motion Constraints](/motion-planning/constraints/): the
   constraint types that cBiRRT enforces during planning.

@@ -1,6 +1,6 @@
 ---
 linkTitle: "Motion planning"
-title: "Motion Planning"
+title: "Motion planning"
 weight: 160
 layout: "docs"
 type: "docs"
@@ -27,7 +27,7 @@ This section covers motion planning for arms, gantries, and other kinematic
 chains. For GPS-based autonomous navigation with mobile bases, see
 [Navigation](/navigation/).
 
-## How It Works
+## How it works
 
 Motion planning in Viam connects several pieces:
 
@@ -47,7 +47,7 @@ Motion planning in Viam connects several pieces:
 5. **Motion service**: the service that takes all of the above and computes a
    collision-free path from the current pose to the target pose.
 
-## Get Started
+## Get started
 
 Set up the spatial model for your workspace, then use the how-to guides to move
 your hardware.
