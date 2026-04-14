@@ -19,7 +19,7 @@ aliases:
   - /operate/get-started/setup-micro/
 ---
 
-Viam maintains a [lightweight version of `viam-server`](/reference/platform/viam-micro-server/) for microcontrollers.
+Viam maintains a lightweight version of `viam-server` for microcontrollers.
 
 ## Supported microcontrollers
 
