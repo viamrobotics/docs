@@ -61,7 +61,7 @@ import (
     "github.com/golang/geo/r3"
 )
 
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 if err != nil {
     logger.Fatal(err)
 }
@@ -217,7 +217,7 @@ print(f"Current position: x={current_pose.x:.1f}, "
 ```go
 import "go.viam.com/rdk/components/arm"
 
-myArm, err := arm.FromRobot(machine, "my-arm")
+myArm, err := arm.FromProvider(machine, "my-arm")
 if err != nil {
     logger.Fatal(err)
 }

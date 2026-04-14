@@ -131,7 +131,7 @@ import (
     "fmt"
     "time"
 
-    "github.com/golang/geo/s2"
+    geo "github.com/kellydunn/golang-geo"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
     "go.viam.com/rdk/services/navigation"
@@ -160,14 +160,13 @@ func main() {
     }
 
     // Add a waypoint (replace with your target coordinates)
-    target := s2.LatLngFromDegrees(40.6640, -73.9387)
-    point := s2.PointFromLatLng(target)
-    geoPoint := geo.NewPoint(target.Lat.Degrees(), target.Lng.Degrees())
-    err = nav.AddWaypoint(ctx, geoPoint, nil)
+    latitude, longitude := 40.6640, -73.9387
+    target := geo.NewPoint(latitude, longitude)
+    err = nav.AddWaypoint(ctx, target, nil)
     if err != nil {
         logger.Fatal(err)
     }
-    fmt.Printf("Added waypoint at %f, %f\n", target.Lat.Degrees(), target.Lng.Degrees())
+    fmt.Printf("Added waypoint at %f, %f\n", latitude, longitude)
 
     // Start navigating
     err = nav.SetMode(ctx, navigation.ModeWaypoint, nil)

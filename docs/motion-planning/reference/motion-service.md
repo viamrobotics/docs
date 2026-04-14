@@ -46,7 +46,7 @@ motion_service = MotionClient.from_robot(machine, "builtin")
 ```go
 import "go.viam.com/rdk/services/motion"
 
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 if err != nil {
     logger.Fatal(err)
 }
@@ -60,15 +60,15 @@ if err != nil {
 The builtin motion service accepts the following optional configuration
 attributes:
 
-| Attribute                         | Type   | Default          | Description                                                                                     |
-| --------------------------------- | ------ | ---------------- | ----------------------------------------------------------------------------------------------- |
-| `log_file_path`                   | string | (none)           | Path to write planning debug logs.                                                              |
-| `num_threads`                     | int    | (system default) | Number of threads for parallel planning.                                                        |
-| `plan_file_path`                  | string | (none)           | Path to write plan output files.                                                                |
-| `plan_directory_include_trace_id` | bool   | false            | Include trace ID in plan output directory names.                                                |
-| `log_planner_errors`              | bool   | false            | Log planning errors to the log file.                                                            |
-| `log_slow_plan_threshold_ms`      | int    | (none)           | Log plans that take longer than this threshold in milliseconds.                                 |
-| `input_range_override`            | object | (none)           | Override joint input ranges. Map of component name to map of joint name to `{min, max}` limits. |
+| Attribute                         | Type   | Default          | Description                                                                                                                                                                                  |
+| --------------------------------- | ------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `log_file_path`                   | string | (none)           | Path to write planning debug logs.                                                                                                                                                           |
+| `num_threads`                     | int    | (system default) | Number of threads for parallel planning.                                                                                                                                                     |
+| `plan_file_path`                  | string | (none)           | Path to write plan output files.                                                                                                                                                             |
+| `plan_directory_include_trace_id` | bool   | false            | Include trace ID in plan output directory names.                                                                                                                                             |
+| `log_planner_errors`              | bool   | false            | Log planning errors to the log file.                                                                                                                                                         |
+| `log_slow_plan_threshold_ms`      | int    | (none)           | Log plans that take longer than this threshold in milliseconds.                                                                                                                              |
+| `input_range_override`            | object | (none)           | Override joint input ranges. Map of frame name to map of joint index (as a string) to `{min, max}` limits. Example: `{"my-arm": {"3": {"min": 0, "max": 2}}}` overrides joint 3 on `my-arm`. |
 
 Example configuration:
 
@@ -102,15 +102,15 @@ you can pass a `MotionConfiguration` to override per-request settings:
 
 The builtin motion service uses the following compiled defaults:
 
-| Parameter                  | Value           | Description                                               |
-| -------------------------- | --------------- | --------------------------------------------------------- |
-| Planning timeout           | 300 seconds     | Maximum time to search for a path.                        |
-| Resolution                 | 2.0             | Constraint-checking granularity (mm or degrees per step). |
-| Max IK solutions           | 100             | Maximum inverse kinematics solutions to seed the search.  |
-| Smoothing iterations       | 30              | Post-planning path smoothing passes.                      |
-| Collision buffer           | 150 mm          | Clearance added around obstacles during planning.         |
-| MoveOnMap plan deviation   | 1000 mm (1.0 m) | Default for `MoveOnMap` calls.                            |
-| MoveOnGlobe plan deviation | 2600 mm (2.6 m) | Default for `MoveOnGlobe` calls.                          |
+| Parameter                  | Value                      | Description                                                                                                                                                          |
+| -------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Planning timeout           | 300 seconds                | Maximum time to search for a path.                                                                                                                                   |
+| Resolution                 | 2.0                        | Constraint-checking granularity (mm or degrees per step).                                                                                                            |
+| Max IK solutions           | 100                        | Maximum inverse kinematics solutions to seed the search.                                                                                                             |
+| Smoothing iterations       | 3 passes of sizes 10, 3, 1 | Post-planning path smoothing passes applied in sequence.                                                                                                             |
+| Collision buffer           | 1e-8 mm (effectively zero) | Default buffer. Size obstacle geometries to include any safety margin, or pass `collision_buffer_mm` through the `extra` map on a Move call to override per request. |
+| MoveOnMap plan deviation   | 1000 mm (1.0 m)            | Default for `MoveOnMap` calls.                                                                                                                                       |
+| MoveOnGlobe plan deviation | 2600 mm (2.6 m)            | Default for `MoveOnGlobe` calls.                                                                                                                                     |
 
 ## DoCommand
 

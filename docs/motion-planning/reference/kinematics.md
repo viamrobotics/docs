@@ -76,13 +76,17 @@ require the arm to bend past its physical limits.
 
 ### Kinematics file formats
 
-Viam supports three formats for describing arm kinematics:
+Viam supports two kinematics file formats at the API level:
 
-| Format                           | Description                                             | When to use                                 |
-| -------------------------------- | ------------------------------------------------------- | ------------------------------------------- |
-| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                               | Preferred for new arms, most detailed       |
-| **DH** (Denavit-Hartenberg)      | Standard robotics convention, four parameters per joint | When converting from textbook DH parameters |
-| **URDF**                         | XML format used by ROS and many manufacturers           | When the manufacturer provides a URDF file  |
+| Format                           | Description                                   | When to use                                |
+| -------------------------------- | --------------------------------------------- | ------------------------------------------ |
+| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | Preferred for new arms, most detailed      |
+| **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer provides a URDF file |
+
+The `GetKinematics` API returns one of these two formats. DH
+(Denavit-Hartenberg) parameters can be written inside the SVA JSON schema as
+a convenience for converting textbook DH tables into Viam's format. DH is not
+a separate API-level format.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
@@ -122,7 +126,7 @@ print(f"Kinematics format: {kinematics[0]}")
 {{% tab name="Go" %}}
 
 ```go
-myArm, err := arm.FromRobot(machine, "my-arm")
+myArm, err := arm.FromProvider(machine, "my-arm")
 if err != nil {
     logger.Fatal(err)
 }

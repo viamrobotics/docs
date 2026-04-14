@@ -55,8 +55,8 @@ because both trees converge toward the middle simultaneously.
 ### What it does not do
 
 - **No optimal paths**: cBiRRT finds _a_ valid path, not the shortest or
-  smoothest path. The builtin service applies path smoothing (default 30
-  iterations) after planning to improve the result.
+  smoothest path. The builtin service applies path smoothing (three sequential
+  passes of 10, 3, and 1 iterations) after planning to improve the result.
 - **No dynamic replanning**: The planner computes a full path before execution
   begins. It does not adjust the path during execution.
 
@@ -80,13 +80,13 @@ These are set in the motion service configuration:
 
 These defaults are compiled into the builtin motion service:
 
-| Parameter            | Default     | Description                                              |
-| -------------------- | ----------- | -------------------------------------------------------- |
-| Timeout              | 300 seconds | Maximum time to search for a path                        |
-| Resolution           | 2.0         | Constraint-checking granularity (mm or degrees per step) |
-| Max IK solutions     | 100         | Maximum inverse kinematics solutions to seed the search  |
-| Smoothing iterations | 30          | Post-planning path smoothing passes                      |
-| Collision buffer     | 150 mm      | Clearance around obstacles                               |
+| Parameter            | Default                    | Description                                                                                   |
+| -------------------- | -------------------------- | --------------------------------------------------------------------------------------------- |
+| Timeout              | 300 seconds                | Maximum time to search for a path                                                             |
+| Resolution           | 2.0                        | Constraint-checking granularity (mm or degrees per step)                                      |
+| Max IK solutions     | 100                        | Maximum inverse kinematics solutions to seed the search                                       |
+| Smoothing iterations | 3 passes of sizes 10, 3, 1 | Post-planning path smoothing passes applied in sequence                                       |
+| Collision buffer     | 1e-8 mm (effectively zero) | Default buffer. Pass `collision_buffer_mm` through the `extra` map on a Move call to override |
 
 ### When planning fails
 

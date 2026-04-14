@@ -58,12 +58,11 @@ await motion_service.move(
 {{% tab name="Go" %}}
 
 ```go
-import motionpb "go.viam.com/api/service/motion/v1"
+import "go.viam.com/rdk/motionplan"
 
-lineTolerance := float32(5.0)
-constraints := &motionpb.Constraints{
-    LinearConstraint: []*motionpb.LinearConstraint{
-        {LineToleranceMm: &lineTolerance},
+constraints := &motionplan.Constraints{
+    LinearConstraint: []motionplan.LinearConstraint{
+        {LineToleranceMm: 5.0},
     },
 }
 
@@ -105,10 +104,9 @@ await motion_service.move(
 {{% tab name="Go" %}}
 
 ```go
-orientTolerance := float32(5.0)
-constraints := &motionpb.Constraints{
-    OrientationConstraint: []*motionpb.OrientationConstraint{
-        {OrientationToleranceDegs: &orientTolerance},
+constraints := &motionplan.Constraints{
+    OrientationConstraint: []motionplan.OrientationConstraint{
+        {OrientationToleranceDegs: 5.0},
     },
 }
 ```
@@ -139,14 +137,12 @@ constraints = Constraints(
 {{% tab name="Go" %}}
 
 ```go
-lineTol := float32(5.0)
-orientTol := float32(3.0)
-constraints := &motionpb.Constraints{
-    LinearConstraint: []*motionpb.LinearConstraint{
-        {LineToleranceMm: &lineTol},
+constraints := &motionplan.Constraints{
+    LinearConstraint: []motionplan.LinearConstraint{
+        {LineToleranceMm: 5.0},
     },
-    OrientationConstraint: []*motionpb.OrientationConstraint{
-        {OrientationToleranceDegs: &orientTol},
+    OrientationConstraint: []motionplan.OrientationConstraint{
+        {OrientationToleranceDegs: 3.0},
     },
 }
 ```
@@ -179,13 +175,11 @@ constraints = Constraints(
 {{% tab name="Go" %}}
 
 ```go
-lineFactor := float32(0.1)
-orientFactor := float32(0.1)
-constraints := &motionpb.Constraints{
-    PseudolinearConstraint: []*motionpb.PseudolinearConstraint{
+constraints := &motionplan.Constraints{
+    PseudolinearConstraint: []motionplan.PseudolinearConstraint{
         {
-            LineToleranceFactor:        &lineFactor,
-            OrientationToleranceFactor: &orientFactor,
+            LineToleranceFactor:        0.1,
+            OrientationToleranceFactor: 0.1,
         },
     },
 }

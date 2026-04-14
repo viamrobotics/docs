@@ -90,9 +90,16 @@ obstacle.
 
 ### Collision buffer
 
-The builtin motion service uses a collision buffer (default: 150 mm) that adds
-clearance around obstacles during planning. The planner avoids paths that come
-within this buffer distance of any obstacle geometry.
+The motion planner does not add clearance around obstacle geometries by
+default. The built-in collision buffer is effectively zero (1e-8 mm, present
+only to prevent numerical edge cases). To keep the robot clear of physical
+obstacles, size your obstacle geometries to fully enclose the real object plus
+any desired safety margin. 20 to 50 mm is a reasonable starting point for most
+arms.
+
+You can override the buffer on a per-call basis by passing
+`collision_buffer_mm` in the `extra` map on a Move request. This adds the
+specified clearance in millimeters to every collision check for that call.
 
 ## Steps
 
@@ -272,7 +279,7 @@ import (
     "go.viam.com/rdk/services/motion"
 )
 
-motionService, err := motion.FromRobot(machine, "builtin")
+motionService, err := motion.FromProvider(machine, "builtin")
 if err != nil {
     logger.Fatal(err)
 }
@@ -332,8 +339,9 @@ Dynamic obstacles (defined through WorldState in code) do not appear in the
 - The obstacles may be too large or too close together, leaving no valid path.
   Reduce obstacle dimensions slightly.
 - The destination may be inside or very close to an obstacle.
-- The collision buffer (default 150 mm) adds clearance. Obstacles that appear
-  far enough apart visually may be too close once the buffer is applied.
+- The motion planner does not add clearance by default. If paths come too
+  close to obstacles, increase obstacle dimensions or pass a larger
+  `collision_buffer_mm` value through the `extra` map on the Move request.
 
 {{< /expand >}}
 

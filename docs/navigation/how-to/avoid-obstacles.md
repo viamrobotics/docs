@@ -109,7 +109,8 @@ The easiest way to add static obstacles is through the Viam app:
 
 ### Configure in JSON
 
-Static obstacles are GeoGeometry objects in the `obstacles` array:
+Static obstacles are GeoGeometry objects in the `obstacles` array. Geometry
+dimensions are in millimeters.
 
 ```json
 {
@@ -122,15 +123,18 @@ Static obstacles are GeoGeometry objects in the `obstacles` array:
       "geometries": [
         {
           "type": "box",
-          "x": 5,
-          "y": 5,
-          "z": 2
+          "x": 5000,
+          "y": 5000,
+          "z": 2000
         }
       ]
     }
   ]
 }
 ```
+
+This defines a 5 m x 5 m x 2 m box obstacle (roughly a small shed) anchored
+at the given latitude and longitude.
 
 ## Set up geofences (bounding regions)
 
@@ -144,6 +148,8 @@ the same as static obstacles (GeoGeometry objects), but the meaning is
 inverted: obstacles are areas to avoid, bounding regions are areas to stay
 within.
 
+Geometry dimensions are in millimeters, as with static obstacles.
+
 ```json
 {
   "bounding_regions": [
@@ -155,15 +161,18 @@ within.
       "geometries": [
         {
           "type": "box",
-          "x": 100,
-          "y": 100,
-          "z": 10
+          "x": 100000,
+          "y": 100000,
+          "z": 10000
         }
       ]
     }
   ]
 }
 ```
+
+This defines a 100 m x 100 m x 10 m volumetric bounding region (roughly one
+hectare) centered at the given latitude and longitude.
 
 ## What's next
 

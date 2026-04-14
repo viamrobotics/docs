@@ -60,6 +60,26 @@ obstacles before replanning.
 | `position_polling_frequency_hz` | 1.0     | How often to check the robot's GPS position. |
 | `obstacle_polling_frequency_hz` | 1.0     | How often to query obstacle detectors.       |
 
+## Replan cost factor
+
+| Parameter            | Default | What it controls                                                                                                                                                                                          |
+| -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `replan_cost_factor` | 1.0     | Multiplier applied to the current plan's cost when the service evaluates whether to replan after a deviation. Higher values prefer the current plan; lower values replan more aggressively. Non-negative. |
+
+`replan_cost_factor` complements `plan_deviation_m`. `plan_deviation_m` sets
+the threshold at which the service considers replanning; `replan_cost_factor`
+sets how much additional cost is needed before a new plan replaces the
+current one.
+
+**When to increase**: the robot replans too eagerly after small deviations,
+producing oscillation or backtracking. Raise the factor (for example, to 2.0
+or 3.0) so the current plan remains preferred unless the deviation is
+significant.
+
+**When to decrease**: the robot sticks to outdated plans too long after
+conditions change. Lower the factor (for example, to 0.5) so it adopts new
+plans more readily.
+
 **Position polling** determines how quickly the service detects that the
 robot has deviated from its plan. At 1 Hz, a deviation takes up to 1
 second to detect. For fast-moving robots, increase this.

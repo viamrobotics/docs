@@ -73,3 +73,10 @@ Gets the pose of a component. Use `robot.GetPose()` instead.
 
 Sends arbitrary commands. The builtin motion service supports `"plan"`,
 `"execute"`, and `"executeCheckStart"` commands.
+
+### GetStatus
+
+Returns generic resource status for the motion service. Useful for liveness
+checks.
+
+**Supported by** the builtin motion service.

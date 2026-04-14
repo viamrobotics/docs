@@ -33,8 +33,11 @@ print(f"Current positions: {positions}")
 lengths = await gantry.get_lengths()
 print(f"Axis lengths: {lengths}")
 
-# Move to a specific position
-await gantry.move_to_position(positions=[200, 300, 100])
+# Move to a specific position (speeds are required, one per axis, in mm/s)
+await gantry.move_to_position(
+    positions=[200, 300, 100],
+    speeds=[100, 100, 100],
+)
 ```
 
 {{% /tab %}}
@@ -43,7 +46,7 @@ await gantry.move_to_position(positions=[200, 300, 100])
 ```go
 import "go.viam.com/rdk/components/gantry"
 
-myGantry, err := gantry.FromRobot(machine, "my-gantry")
+myGantry, err := gantry.FromProvider(machine, "my-gantry")
 if err != nil {
     logger.Fatal(err)
 }
@@ -60,7 +63,13 @@ if err != nil {
 }
 fmt.Printf("Axis lengths: %v\n", lengths)
 
-err = myGantry.MoveToPosition(ctx, []float64{200, 300, 100}, nil)
+// Speeds are required, one per axis, in mm/s.
+err = myGantry.MoveToPosition(
+    ctx,
+    []float64{200, 300, 100},
+    []float64{100, 100, 100},
+    nil,
+)
 if err != nil {
     logger.Fatal(err)
 }

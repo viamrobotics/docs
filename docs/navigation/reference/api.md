@@ -39,9 +39,9 @@ mode, err := nav.Mode(ctx, nil)
 
 Set the navigation mode.
 
-| Parameter | Type | Description                                      |
-| --------- | ---- | ------------------------------------------------ |
-| `mode`    | Mode | The mode to set: `MODE_MANUAL`, `MODE_WAYPOINT`. |
+| Parameter | Type | Description                                                         |
+| --------- | ---- | ------------------------------------------------------------------- |
+| `mode`    | Mode | The mode to set: `MODE_MANUAL`, `MODE_WAYPOINT`, or `MODE_EXPLORE`. |
 
 In **Manual** mode, the navigation service is passive. You control the
 base directly. In **Waypoint** mode, the service takes control of the
@@ -50,6 +50,10 @@ base and navigates to unvisited waypoints.
 Switching from Waypoint to Manual stops the current motion plan but
 preserves all waypoints. Switching back to Waypoint resumes from the next
 unvisited waypoint.
+
+**Explore** mode is accepted by SetMode and returned by GetMode but is not
+currently exposed in the Viam app's navigation UI mode selector. To use it,
+call SetMode from an SDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -289,6 +293,30 @@ result = await nav.do_command({"custom_command": "value"})
 
 ```go
 result, err := nav.DoCommand(ctx, map[string]interface{}{"custom_command": "value"})
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## GetStatus
+
+Return a generic status result for the navigation service. Useful for
+liveness checks. The content of the returned map is defined by the
+implementation.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+status = await nav.get_status()
+print(status)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+status, err := nav.GetStatus(ctx)
 ```
 
 {{% /tab %}}
