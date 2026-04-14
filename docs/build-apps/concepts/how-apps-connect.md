@@ -30,7 +30,7 @@ When you use the WebRTC transport, the SDK needs two pieces of configuration in 
 
 **ICE servers.** Optional. The SDK needs ICE servers (STUN and optionally TURN) to traverse NATs. If you do not pass `iceServers`, the SDK defaults to Twilio's public STUN server at `stun:global.stun.twilio.com:3478`. Override `iceServers` if you have custom STUN or TURN requirements for your network.
 
-Most apps never change either field. See [the connectivity reference](/dev/reference/sdks/connectivity/) for advanced options like TURN-only relay mode, forced peer-to-peer, and custom TURN URI overrides.
+Most apps never change either field. See [the connectivity reference](/reference/sdks/connectivity/) for advanced options like TURN-only relay mode, forced peer-to-peer, and custom TURN URI overrides.
 
 ## Sessions
 
@@ -59,7 +59,7 @@ Read-only methods like `sensor.getReadings()` or `camera.getImage()` are not saf
 
 Pass `disableSessions: true` in the connection options to disable session heartbeating. The session proto documentation calls this "acknowledging the safety risk": if you disable sessions, a crashed client leaves actuators in whatever state they were last commanded to. Disable sessions only for specific reasons, such as implementing your own crash-detection and cleanup logic.
 
-See [the sessions API reference](/dev/reference/apis/sessions/) for the full protocol details.
+See [the sessions API reference](/reference/apis/sessions/) for the full protocol details.
 
 ## Reconnection
 

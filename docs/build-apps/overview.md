@@ -66,6 +66,6 @@ Some things that sound related live elsewhere or are not currently supported.
 ## See also
 
 - [Teleop workspaces](/monitor/teleop-workspaces/) for no-code custom control interfaces built from widgets
-- [SDK reference](/dev/reference/sdks/) for TypeScript, Flutter, Python, Go, and C++ API documentation
-- [Connectivity reference](/dev/reference/sdks/connectivity/) for sessions, WebRTC behavior, and local-network connections
+- [SDK reference](/reference/sdks/) for TypeScript, Flutter, Python, Go, and C++ API documentation
+- [Connectivity reference](/reference/sdks/connectivity/) for sessions, WebRTC behavior, and local-network connections
 - [Admin and access](/organization/) for creating API keys and managing organization access

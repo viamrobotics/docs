@@ -39,7 +39,7 @@ const machine = await VIAM.createRobotClient({
 });
 ```
 
-Local-network connections eliminate the cloud round trip and are useful for latency-sensitive testing. See the [connectivity reference](/dev/reference/sdks/connectivity/#connect-over-local-network-or-offline) for the exact `viam-server` flags and local hostname setup.
+Local-network connections eliminate the cloud round trip and are useful for latency-sensitive testing. See the [connectivity reference](/reference/sdks/connectivity/#connect-over-local-network-or-offline) for the exact `viam-server` flags and local hostname setup.
 
 ## `viam module local-app-testing` CLI
 
@@ -141,4 +141,4 @@ sudo sed -i '' '/dev.local/d' /etc/hosts
 ## Next
 
 - [Deploy a Viam application](/build-apps/hosting/deploy/) for packaging and uploading your app once local testing is complete
-- [Connectivity reference](/dev/reference/sdks/connectivity/) for local-network and offline connection details
+- [Connectivity reference](/reference/sdks/connectivity/) for local-network and offline connection details
