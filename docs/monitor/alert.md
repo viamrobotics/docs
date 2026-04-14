@@ -74,10 +74,10 @@ Click **Save**, then click **Test** at the bottom of the sensor configuration ca
 
 ### Configure data capture
 
-1. On your sensor's configuration card, click **+** on the **Data Capture** card.
+1. On your sensor's configuration card, click the **Data Capture** button.
 1. If you see a "Data management service missing" banner, click
    **Create data management service**, click **Save**, navigate back to
-   your sensor, and click **+** on the **Data Capture** card again.
+   your sensor, and click the **Data Capture** button again.
 1. Select `Readings` from the **Method** dropdown and set the **Frequency** to `0.05` Hz (once every 20 seconds).
 1. Click **Save**.
 

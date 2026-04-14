@@ -110,7 +110,7 @@ Add the data management service to capture and sync filtered images:
 Enable data capture on the filtered camera:
 
 1. Locate the `objectfilter-cam` panel.
-2. Click **+** on the **Data Capture** card.
+2. Click the **Data Capture** button.
 3. Select **GetImages** as the type.
 4. Set the capture frequency to `0.2` images per second (one image every 5 seconds). Adjust as needed for your use case.
 

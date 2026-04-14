@@ -39,7 +39,7 @@ All component positions are defined relative to this center point.
 ### 2. Add a frame to the base
 
 In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-Find your base component and click **+ Add frame**.
+Find your base component and click the **Frame** button.
 
 ```json
 {
@@ -56,7 +56,7 @@ Click **Save**.
 
 ### 3. Add a frame to the arm
 
-Find your arm component and click **+ Add frame**.
+Find your arm component and click the **Frame** button.
 The arm's parent is the base, not the world frame.
 
 Measure the offset from the center of the base to the arm's mounting point.

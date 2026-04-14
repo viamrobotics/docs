@@ -41,7 +41,7 @@ The default configuration options for the data service are correct for our appli
 **Enable data capture on the vision service:**
 
 1. Click `vision-service` in your machine configuration
-2. Click **+** on the **Data Capture** card
+2. Click the **Data Capture** button
 3. Select the method to capture: `CaptureAllFromCamera`
 4. Set **Frequency (hz)** to `0.5` (every 2 seconds)
 5. Set **Camera name** to `inspection-cam`

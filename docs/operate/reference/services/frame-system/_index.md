@@ -45,7 +45,7 @@ You can configure a reference frame within the frame system for each of your mac
 
 1. Find the configuration card for the component you want to add a frame to.
 
-1. Click **+ Add frame**.
+1. Click the **Frame** button.
 
 1. Leave the default values, or edit the frame configuration.
    The frame configuration is a JSON object with the following parameters:

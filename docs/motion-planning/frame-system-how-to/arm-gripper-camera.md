@@ -39,7 +39,7 @@ Mark your chosen origin physically so you can take consistent measurements.
 ### 2. Add a frame to the arm
 
 In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-Find your arm component and click **+ Add frame**.
+Find your arm component and click the **Frame** button.
 
 If the arm base is your world frame origin:
 
@@ -92,7 +92,7 @@ For example, if the arm's +x points opposite to your intended +x, rotate 180 deg
 
 ### 4. Add a frame to the gripper
 
-Find your gripper component in the **CONFIGURE** tab and click **+ Add frame**.
+Find your gripper component in the **CONFIGURE** tab and click the **Frame** button.
 
 If the gripper attaches directly to the arm's end effector with no adapter plate, use a zero offset:
 
@@ -125,7 +125,7 @@ Click **Save**.
 
 ### 5. Add a frame to the wrist camera
 
-Find your camera component in the **CONFIGURE** tab and click **+ Add frame**.
+Find your camera component in the **CONFIGURE** tab and click the **Frame** button.
 
 The camera's parent is the arm, not the world frame.
 Measure the offset from the arm's end effector to the camera's optical center.
