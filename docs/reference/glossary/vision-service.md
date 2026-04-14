@@ -12,4 +12,4 @@ aliases:
 The vision service is a {{< glossary_tooltip term_id="service" text="service" >}} in the Viam platform that enables machines to interpret visual data captured by camera using computer vision and {{< glossary_tooltip term_id="ml" text="machine learning" >}} techniques.
 Vision services can use various models, including pre-trained models or custom models trained on your own data using the Viam platform.
 
-For more information, see the [Vision service documentation](/vision/configure/) or [Alert on inferences](/data-ai/ai/alert/).
+For more information, see the [Vision service documentation](/vision/configure/) or [Alert on inferences](/vision/alert-on-detections/).

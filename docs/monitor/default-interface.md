@@ -58,7 +58,7 @@ The Viam mobile app provides similar access from your phone:
 - Adjust component settings
 - Switch between components
 - [View machine logs](/monitor/troubleshoot/#check-logs)
-- [Upload images from your phone to the cloud](/data-ai/capture-data/upload-other-data/#upload-images-with-the-viam-mobile-app)
+- [Upload images from your phone to the cloud](/data/capture-sync/upload-other-data/)
 
 The mobile app is available on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 

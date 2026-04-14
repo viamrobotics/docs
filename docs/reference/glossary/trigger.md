@@ -15,4 +15,4 @@ Triggers can alert you when the following events occur:
 - Data syncs from a machine
 - A service detects a specified object or classifies a specified label
 
-For more information, see [Trigger configuration](/data-ai/reference/triggers-configuration/).
+For more information, see [Trigger configuration](/reference/triggers/).

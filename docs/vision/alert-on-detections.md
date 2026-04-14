@@ -131,7 +131,7 @@ Add a trigger to send alerts when filtered images sync:
 
    **Email all machine owners**: Toggle on and set the alert frequency.
 
-   **Webhook**: Click **Add Webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/data-ai/reference/triggers-configuration/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
+   **Webhook**: Click **Add Webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/reference/triggers/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
 
 6. Set the notification frequency (for example, maximum one alert per hour).
 7. Click **Save**.
@@ -174,5 +174,5 @@ Add a trigger to send alerts when filtered images sync:
 ## What's Next
 
 - [Act on Detections](/vision/act-on-detections/) -- build a module that responds to vision results in real time.
-- [Triggers Reference](/data-ai/reference/triggers-configuration/) -- full documentation for trigger types, webhook payloads, and configuration options.
+- [Triggers Reference](/reference/triggers/) -- full documentation for trigger types, webhook payloads, and configuration options.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/) -- learn more about configuring data capture and sync intervals.

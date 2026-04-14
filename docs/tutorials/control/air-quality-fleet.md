@@ -172,7 +172,7 @@ If you do not see readings, check the **LOGS** tab for errors, double-check that
 ### Configure data management
 
 You have configured the sensor so the board can communicate with it, but sensor data is not yet being saved anywhere.
-Viam's [data management service](/data-ai/capture-data/capture-sync/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
+Viam's [data management service](/data/capture-sync/capture-and-sync-data/) lets you capture data locally from each sensor and then sync it to the cloud where you can access historical sensor data and see trends over time.
 As you configure more sensing machines, you'll be able to remotely access data from all machines.
 
 {{< table >}}
@@ -1064,5 +1064,5 @@ For an example of setting up text alerts, see the [Detect a Person and Send a Ph
 {{< cards >}}
 {{% card link="/tutorials/projects/helmet/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/data-ai/data/visualize/" %}}
+{{% card link="/data/visualize-data/" %}}
 {{< /cards >}}
