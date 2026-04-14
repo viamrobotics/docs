@@ -93,7 +93,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
-{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
+{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the arm component with the following services:

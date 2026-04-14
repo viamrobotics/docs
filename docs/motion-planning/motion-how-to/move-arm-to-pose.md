@@ -9,6 +9,7 @@ aliases:
   - /operate/mobility/move-arm/
   - /operate/mobility/move-arm/arm-motion/
   - /operate/mobility/move-arm/arm-no-code/
+  - /operate/mobility/move-arm/configure-arm/
   - /how-tos/move-robot-arm/
   - /tutorials/motion/accessing-and-moving-robot-arm/
   - /tutorials/motion/

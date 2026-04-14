@@ -10,8 +10,9 @@ open_on_desktop: true
 overview: true
 description: "Plan and execute collision-free movements for robot arms and gantries."
 notoc: true
-# Aliases stripped — /operate/mobility/ and /operate/mobility/motion-concepts/
-# still exist on new-docs-site. Add back when those pages are deleted.
+aliases:
+  - /operate/mobility/
+  - /operate/mobility/motion-concepts/
 ---
 
 Your robot arm needs to move from one position to another without colliding with
