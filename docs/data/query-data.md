@@ -21,7 +21,7 @@ SQL queries against `readings` currently return no rows unless the `WHERE` claus
 {{< /alert >}}
 
 {{% alert title="Note" color="note" %}}
-There is a shared monthly cap of 100&nbsp;TB of data processing across `TabularDataByMQL` and `TabularDataBySQL`. Requests start failing after this combined limit is reached. If your organization hits this cap, please [contact us](mailto:support@viam.com) to request an increase.
+Tabular data queries (`TabularDataByMQL` and `TabularDataBySQL`) share a 100&nbsp;TB monthly processing limit across your organization. Queries that exceed the limit return an error. [Contact us](mailto:support@viam.com) to request an increase.
 {{% /alert %}}
 
 ## Open the query editor
