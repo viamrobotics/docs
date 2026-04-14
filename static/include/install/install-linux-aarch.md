@@ -15,7 +15,7 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 
 1. Select your installation method:
 
-   - `viam-agent` (recommended): installs viam-agent, which will automatically install (and update) viam-server **and** provide additional functionality such as [provisioning](/manage/fleet/provision/setup/) and operating system update configuration.
+   - `viam-agent` (recommended): installs viam-agent, which will automatically install (and update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision-devices/) and operating system update configuration.
    - `manual`: installs only `viam-server` on your machine.
 
 1. Follow the instructions on the page to install `viam-server` and connect it to the cloud with your machine’s unique credentials.

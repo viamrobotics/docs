@@ -154,6 +154,6 @@ If `curl` is not installed on your Orin, run `sudo apt install curl` before down
 
 If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
 
-You can find additional assistance in the [Troubleshooting section](/manage/troubleshoot/troubleshoot/).
+You can find additional assistance in the [Troubleshooting section](/monitor/troubleshoot/).
 
 {{< snippet "social.md" >}}

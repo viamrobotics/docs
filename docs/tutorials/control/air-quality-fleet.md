@@ -877,7 +877,7 @@ You, as the organization owner, will be able to manage any necessary configurati
 
 {{<imgproc class="imgzoom" src="/tutorials/air-quality-fleet/example-org-structure.png" resize="x900" declaredimensions=true alt="Diagram of the Pollution Monitoring Made Simple organization. In it are two locations: Antonia's HOme and Robots R Us. Robots R Us contains two sub-locations, each containing some machines. The Antonia's Home location contains two machines (and no sub-locations)." style="width:800px">}}
 
-For more information, see [Organize your machines](/manage/reference/organize/) and [Provision devices](/manage/fleet/provision/setup/).
+For more information, see [Organize your machines](/reference/) and [Provision devices](/fleet/provision-devices/).
 
 ### Organize your fleet
 
@@ -929,7 +929,7 @@ In this section you will create the {{< glossary_tooltip term_id="fragment" text
 
    If you only have one USB device plugged into each of your boards, the `usb_interface` value you configured in the sensor config is likely (conveniently) the same for all of your machines.
 
-   If not, you can use [fragment overwrite](/manage/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine) to modify the value on any machine for which it is different.
+   If not, you can use [fragment overwrite](/fleet/reuse-configuration/) to modify the value on any machine for which it is different.
 
 1. Specify the version for the `sds011` module.
    At the time of writing the version is `0.2.1`.
@@ -1035,7 +1035,7 @@ That's it!
 Your device is now provisioned and ready for your end user!
 
 Having trouble?
-See [Provisioning](/manage/fleet/provision/setup/) for more information and troubleshooting.
+See [Provisioning](/fleet/provision-devices/) for more information and troubleshooting.
 
 ## Update your web application
 

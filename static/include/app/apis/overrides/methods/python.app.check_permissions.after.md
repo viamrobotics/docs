@@ -54,4 +54,4 @@ Valid arguments for permissions are as follows:
 
 {{% /expand %}}
 
-For more information about managing permissions, see [Role-Based Access Control](/manage/manage/rbac/).
+For more information about managing permissions, see [Role-Based Access Control](/organization/rbac/).

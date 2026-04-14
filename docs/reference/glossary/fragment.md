@@ -9,4 +9,4 @@ aliases:
 
 A reusable configuration block that you can share across multiple machines.
 
-For more information, see [Fragments](/manage/fleet/reuse-configuration/).
+For more information, see [Fragments](/fleet/reuse-configuration/).

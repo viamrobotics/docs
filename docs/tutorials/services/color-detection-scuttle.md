@@ -122,7 +122,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui):
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/monitor/default-interface/#web-ui):
 
 The camera stream will show detections with bounding boxes around the detected colors.
 
