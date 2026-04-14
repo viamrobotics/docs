@@ -12,9 +12,9 @@ aliases:
 
 You have three options for moving a mobile robot [base](/operate/reference/components/base/):
 
-- Give direct commands such as `Spin` and `MoveStraight` using the [base API](/dev/reference/apis/components/base/)
-- Send the base to a destination on a SLAM map or to a GPS coordinate using the [motion planning service API's](/dev/reference/apis/services/motion/) `MoveOnMap` or `MoveOnGlobe` commands, respectively
-- Define waypoints and move your base along those waypoints while avoiding obstacles, using the [navigation service API](/dev/reference/apis/services/navigation/)
+- Give direct commands such as `Spin` and `MoveStraight` using the [base API](/reference/apis/components/base/)
+- Send the base to a destination on a SLAM map or to a GPS coordinate using the [motion planning service API's](/reference/apis/services/motion/) `MoveOnMap` or `MoveOnGlobe` commands, respectively
+- Define waypoints and move your base along those waypoints while avoiding obstacles, using the [navigation service API](/reference/apis/services/navigation/)
 
 ## Prerequisites
 
@@ -175,9 +175,9 @@ func main() {
 
 ## Move your base using GPS
 
-To move a base component directly to a destination GPS point, you can use the motion service API's [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) command.
+To move a base component directly to a destination GPS point, you can use the motion service API's [`MoveOnGlobe`](/reference/apis/services/motion/#moveonglobe) command.
 
-If you'd like to plan a more detailed path through a series of waypoints, use the [navigation service API](/dev/reference/apis/services/navigation/).
+If you'd like to plan a more detailed path through a series of waypoints, use the [navigation service API](/reference/apis/services/navigation/).
 The following tutorial demonstrates how to use GPS navigation with a robot base:
 
 {{< cards >}}
@@ -186,4 +186,4 @@ The following tutorial demonstrates how to use GPS navigation with a robot base:
 
 ## Move your base on a SLAM map
 
-To move a base component to a destination pose on a SLAM map, use the motion service API's [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) command.
+To move a base component to a destination pose on a SLAM map, use the motion service API's [`MoveOnMap`](/reference/apis/services/motion/#moveonmap) command.

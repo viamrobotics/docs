@@ -20,7 +20,7 @@ updated: "2025-09-12"
 
 You can download machine data to your computer with the Viam CLI.
 
-If you prefer to manage your data with code, see the [data client API documentation](/dev/reference/apis/data-client/).
+If you prefer to manage your data with code, see the [data client API documentation](/reference/apis/data-client/).
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ This command downloads the data onto your computer based on the search criteria 
 
 By default, the command creates two new directories named `data` and `metadata` in the current directory.
 It downloads the specified data into the `data` folder and metadata, like bounding box information and labels, in JSON format into the `metadata` folder.
-If you want to store the data in a different location, change the destination folder with the [`--destination` flag](/dev/tools/cli/#named-arguments).
+If you want to store the data in a different location, change the destination folder with the [`--destination` flag](/cli/#named-arguments).
 
 Since data is downloaded in parallel, the order is not guaranteed to be chronological.
 Sort your files by filename to see them in chronological order.
@@ -91,4 +91,4 @@ Sort your files by filename to see them in chronological order.
 {{% /tablestep %}}
 {{< /table >}}
 
-You can see more information about exporting data in the [Viam CLI documentation](/dev/tools/cli/#data).
+You can see more information about exporting data in the [Viam CLI documentation](/cli/#data).

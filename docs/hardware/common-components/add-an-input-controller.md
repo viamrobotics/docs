@@ -283,7 +283,7 @@ go run main.go
 
 ## What's next
 
-- [Input controller API reference](/dev/reference/apis/components/input-controller/): full method documentation.
+- [Input controller API reference](/reference/apis/components/input-controller/): full method documentation.
 - [Add a Base](/hardware/common-components/add-a-base/): drive a mobile robot
   with your gamepad.
 - [What is a module?](/build-modules/overview/): write a module that

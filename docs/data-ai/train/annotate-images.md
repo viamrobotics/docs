@@ -91,7 +91,7 @@ To tag an image:
 {{% tab name="Python" %}}
 
 Use an ML model to generate tags for an image or set of images.
-Then, pass the tags and image IDs to [`data_client.add_tags_to_binary_data_by_ids`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
+Then, pass the tags and image IDs to [`data_client.add_tags_to_binary_data_by_ids`](/reference/apis/data-client/#addtagstobinarydatabyids):
 
 {{< read-code-snippet file="/static/include/examples-generated/tag-images.snippet.tag-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="" >}}
 
@@ -99,7 +99,7 @@ Then, pass the tags and image IDs to [`data_client.add_tags_to_binary_data_by_id
 {{% tab name="Go" %}}
 
 Use an ML model to generate tags for an image or set of images.
-Then, pass the tags and image IDs to [`DataClient.AddTagsToBinaryDataByIDs`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
+Then, pass the tags and image IDs to [`DataClient.AddTagsToBinaryDataByIDs`](/reference/apis/data-client/#addtagstobinarydatabyids):
 
 {{< read-code-snippet file="/static/include/examples-generated/tag-images.snippet.tag-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
@@ -107,7 +107,7 @@ Then, pass the tags and image IDs to [`DataClient.AddTagsToBinaryDataByIDs`](/de
 {{% tab name="TypeScript" %}}
 
 Use an ML model to generate tags for an image or set of images.
-Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/dev/reference/apis/data-client/#addtagstobinarydatabyids):
+Then, pass the tags and image IDs to [`dataClient.addTagsToBinaryDataByIds`](/reference/apis/data-client/#addtagstobinarydatabyids):
 
 {{< read-code-snippet file="/static/include/examples-generated/tag-images.snippet.tag-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 
@@ -172,7 +172,7 @@ Once created, you can move, resize, or delete the bounding box.
 {{% tab name="Python" %}}
 
 Use an ML model to generate bounding boxes for an image.
-Then, separately pass each bounding box and the image ID to [`data_client.add_bounding_box_to_image_by_id`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
+Then, separately pass each bounding box and the image ID to [`data_client.add_bounding_box_to_image_by_id`](/reference/apis/data-client/#addboundingboxtoimagebyid):
 
 {{< read-code-snippet file="/static/include/examples-generated/label-images.snippet.label-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="" >}}
 
@@ -180,7 +180,7 @@ Then, separately pass each bounding box and the image ID to [`data_client.add_bo
 {{% tab name="Go" %}}
 
 Use an ML model to generate bounding boxes for an image.
-Then, separately pass each bounding box and the image ID to [`DataClient.AddBoundingBoxToImageByID`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
+Then, separately pass each bounding box and the image ID to [`DataClient.AddBoundingBoxToImageByID`](/reference/apis/data-client/#addboundingboxtoimagebyid):
 
 {{< read-code-snippet file="/static/include/examples-generated/label-images.snippet.label-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="" >}}
 
@@ -188,7 +188,7 @@ Then, separately pass each bounding box and the image ID to [`DataClient.AddBoun
 {{% tab name="TypeScript" %}}
 
 Use an ML model to generate bounding boxes for an image.
-Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/dev/reference/apis/data-client/#addboundingboxtoimagebyid):
+Then, separately pass each bounding box and the image ID to [`dataClient.addBoundingBoxToImageById`](/reference/apis/data-client/#addboundingboxtoimagebyid):
 
 {{< read-code-snippet file="/static/include/examples-generated/label-images.snippet.label-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="" >}}
 

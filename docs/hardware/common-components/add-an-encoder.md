@@ -270,7 +270,7 @@ go run main.go
 
 ## What's next
 
-- [Encoder API reference](/dev/reference/apis/components/encoder/): full method documentation.
+- [Encoder API reference](/reference/apis/components/encoder/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): configure the motor that
   this encoder monitors.
 - [Add a Base](/hardware/common-components/add-a-base/): use motors with encoders

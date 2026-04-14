@@ -8,11 +8,12 @@ description: "Debug a misbehaving machine using logs, remote shell access, debug
 aliases:
   - /manage/troubleshoot/troubleshoot/
   - /appendix/troubleshooting/
+  - /dev/tools/common-errors/
 ---
 
 When a machine is not working as expected, follow this debugging workflow: check logs, enable debug logging if needed, access the machine remotely, and if necessary use advanced diagnostics.
 
-For common errors and their solutions, see [Common Errors](/dev/tools/common-errors/).
+For common errors and their solutions, see [Common Errors](/monitor/troubleshoot/).
 
 ## Check logs
 

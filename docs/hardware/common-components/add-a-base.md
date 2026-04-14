@@ -257,7 +257,7 @@ go run main.go
 
 ## What's next
 
-- [Base API reference](/dev/reference/apis/components/base/): full method documentation.
+- [Base API reference](/reference/apis/components/base/): full method documentation.
 - [Add a Movement Sensor](/hardware/common-components/add-a-movement-sensor/): add
   GPS or odometry to track where the base is.
 - [Add an Encoder](/hardware/common-components/add-an-encoder/): add encoders to

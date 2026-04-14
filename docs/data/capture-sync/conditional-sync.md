@@ -101,7 +101,7 @@ Click **Save**.
 
 If no existing module fits your use case, you can write a sensor module that implements whatever sync logic you need: check network connectivity, compare sensor readings to a threshold, query an external API, or combine multiple conditions.
 
-The sensor must implement the [sensor API](/reference/components/sensor/) and return a `"should_sync"` key with a boolean value from `Readings()`. The data manager checks this key at each sync interval. The sensor can return additional readings alongside `should_sync`.
+The sensor must implement the [sensor API](/hardware/common-components/add-a-sensor/) and return a `"should_sync"` key with a boolean value from `Readings()`. The data manager checks this key at each sync interval. The sensor can return additional readings alongside `should_sync`.
 
 The RDK provides a helper: `datamanager.CreateShouldSyncReading(bool)` returns a properly formatted readings map.
 

@@ -25,6 +25,6 @@ The flashing process typically involves:
 3. Verifying the write was successful
 4. Booting or resetting the device to load the new software
 
-For example, when setting up a Raspberry Pi for use with Viam, you would "flash" Raspberry Pi OS to an SD card using the [Raspberry Pi Imager](/reference/prepare/rpi-setup/#install-raspberry-pi-os) or similar software.
+For example, when setting up a Raspberry Pi for use with Viam, you would "flash" Raspberry Pi OS to an SD card using the [Raspberry Pi Imager](/reference/device-setup/rpi-setup/#install-raspberry-pi-os) or similar software.
 
 Flashing is different from regular software installation because it involves writing directly to storage at a low level, often replacing everything on the target storage medium.

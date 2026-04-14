@@ -113,7 +113,7 @@ With a configured maintenance window, configuration updates will only be applied
 
 ## Check machine status
 
-To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/dev/reference/apis/robot/#getmachinestatus).
+To check when your machines have last updated their configuration, iterate over your machines using the Fleet Management API, connect to each machine, and use the [`GetMachineStatus` method](/reference/apis/robot/#getmachinestatus).
 
 The following example script iterates over all machines in a given location and if it can connect to the machines, it prints their status information.
 If it cannot connect to a machine, it prints the most recent log entries.

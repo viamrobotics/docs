@@ -103,4 +103,4 @@ Expect a response within 1 to 3 business days.
 
 ## Programmatic access
 
-You can retrieve billing information programmatically using the [billing client API](/dev/reference/apis/billing-client/).
+You can retrieve billing information programmatically using the [billing client API](/reference/apis/billing-client/).

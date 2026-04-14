@@ -409,7 +409,7 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 
 ### `locations`
 
-The `locations` command allows you to manage the [locations](/reference/account/organize/) that you have access to.
+The `locations` command allows you to manage the [locations](/reference/) that you have access to.
 With it, you can list available locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}

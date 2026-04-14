@@ -124,7 +124,7 @@ Your training script may output logs at the error level but still succeed.
 
 {{< /alert >}}
 
-You can also view logs for your training jobs with the [`viam train logs`](/dev/tools/cli/#train) command.
+You can also view logs for your training jobs with the [`viam train logs`](/cli/#train) command.
 
 Training logs expire after 7 days.
 

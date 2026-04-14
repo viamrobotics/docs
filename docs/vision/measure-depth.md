@@ -65,7 +65,7 @@ If you need 3D positions for detected objects --for example, to guide a robot ar
 
 The result is a 3D point cloud for each detected object, with coordinates in the camera's frame (x right, y down, z forward, in millimeters). To use these positions with other robot components, transform them through the [frame system](/motion-planning/frame-system/).
 
-Step 5 of this guide shows how to combine detections with depth data to measure distance. For full 3D point clouds, use the vision service's [`GetObjectPointClouds`](/dev/reference/apis/services/vision/#getobjectpointclouds) method if your vision service supports it.
+Step 5 of this guide shows how to combine detections with depth data to measure distance. For full 3D point clouds, use the vision service's [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) method if your vision service supports it.
 
 ## Steps
 
@@ -459,7 +459,7 @@ If your camera does not automatically provide intrinsic parameters, you can set 
 Most depth cameras (Intel RealSense, Oak-D) provide these automatically. You only need to set them manually for cameras without built-in calibration data.
 
 {{< alert title="Tip" color="tip" >}}
-If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/dev/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
 {{< /alert >}}
 
 ## Try It

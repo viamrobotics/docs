@@ -113,6 +113,6 @@ The following is a full example config:
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
 {{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
 {{< /cards >}}

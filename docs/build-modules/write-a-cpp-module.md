@@ -19,7 +19,7 @@ draft: true # Take out Go and Python, and check updatedness before un-drafting.
 Viam provides built-in support for a variety of different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}}, as well as a registry full of {{< glossary_tooltip term_id="module" text="modules" >}} created by other users.
 If no [existing modules](/hardware/configure-hardware/) support your specific use case, you can write your own custom modular {{< glossary_tooltip term_id="resource" text="resources" >}} by creating a module, and either upload it to the [registry](https://app.viam.com/registry) to share it publicly, or deploy it to your machine as a local module without uploading it to the registry.
 
-Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/dev/reference/sdks/), and then deploy it to your machines.
+Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/reference/sdks/), and then deploy it to your machines.
 
 {{< alert title="Note: viam-micro-server modules" color="note" >}}
 [`viam-micro-server`](/operate/reference/viam-micro-server/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
@@ -48,7 +48,7 @@ While you can certainly combine the resource model definition and the main progr
 
 ### Choose an API to implement in your model
 
-Look through the [component APIs](/dev/reference/apis/#component-apis) and [service API](/dev/reference/apis/#service-apis) and find the API that best fits your use case.
+Look through the [component APIs](/reference/apis/#component-apis) and [service API](/reference/apis/#service-apis) and find the API that best fits your use case.
 Each API contains various methods which you will need to define in your module:
 
 - One or more methods specific to that API, such as the servo component's `Move` and `GetPosition` methods.
@@ -57,8 +57,8 @@ Each API contains various methods which you will need to define in your module:
 
 {{< expand "Click for more guidance" >}}
 Think about what functionality you want your module to provide, what methods you need, and choose an API to implement accordingly.
-For example, the [sensor API](/dev/reference/apis/components/sensor/) has a `GetReadings` method, so if you create a module for a model of sensor, you'll need to write code to provide a response to the `GetReadings` method.
-If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/dev/reference/apis/components/encoder/) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
+For example, the [sensor API](/reference/apis/components/sensor/) has a `GetReadings` method, so if you create a module for a model of sensor, you'll need to write code to provide a response to the `GetReadings` method.
+If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/reference/apis/components/encoder/) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
 
 In addition to the list of methods, another reason to choose one API over another is how certain APIs fit into the Viam ecosystem.
 For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/operate/reference/services/navigation/).
@@ -70,7 +70,7 @@ If you want to write a module to add support to a new type of component or servi
 
 - If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
 - If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/operate/reference/components/generic/) to build your own service API.
-- It is also possible to [define an entirely new API](/operate/reference/advanced-modules/create-subtype/), but this is even more advanced than using `generic`.
+- It is also possible to [define an entirely new API](/operate/reference/create-subtype/), but this is even more advanced than using `generic`.
 
 Most module use cases, however, benefit from implementing an existing API instead of `generic`.
 {{% /alert %}}
@@ -166,10 +166,10 @@ Browse additional example modules by language:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/dev/reference/apis/components/movement-sensor/) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
-| [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to support OAK cameras. |
+| [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/reference/apis/components/movement-sensor/) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
+| [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/reference/apis/components/camera/) to support OAK cameras. |
 | [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/operate/reference/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
-| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/dev/reference/apis/components/arm/) and [gripper API](/dev/reference/apis/components/gripper/) to support the Yahboom Dofbot robotic arm. |
+| [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/reference/apis/components/arm/) and [gripper API](/reference/apis/components/gripper/) to support the Yahboom Dofbot robotic arm. |
 
 For more Python module examples:
 
@@ -183,9 +183,9 @@ For more Python module examples:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/dev/reference/apis/components/base/) to support the Agilex Limo base. |
-| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to support several models of the SLAMTEC RPlidar. |
-| [filtered-camera](https://app.viam.com/module/viam/filtered-camera) | [viamrobotics/filtered-camera](https://app.viam.com/module/viam/filtered-camera) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to Viam. See the [filtered-camera guide](/data/filter-at-the-edge/#use-a-filtered-camera-with-ml) for more information. |
+| [agilex-limo](https://app.viam.com/module/viam/agilex-limo) | [viamlabs/agilex](https://github.com/viam-labs/agilex/) | Extends the built-in [base API](/reference/apis/components/base/) to support the Agilex Limo base. |
+| [rplidar](https://app.viam.com/module/viam/rplidar) | [viamrobotics/rplidar](https://github.com/viamrobotics/rplidar) | Extends the built-in [camera API](/reference/apis/components/camera/) to support several models of the SLAMTEC RPlidar. |
+| [filtered-camera](https://app.viam.com/module/viam/filtered-camera) | [viamrobotics/filtered-camera](https://app.viam.com/module/viam/filtered-camera) | Extends the built-in [camera API](/reference/apis/components/camera/) to enable filtering captured images by comparing to a defined ML model, and only syncing matching images to Viam. See the [filtered-camera guide](/data/filter-at-the-edge/#use-a-filtered-camera-with-ml) for more information. |
 
 For more Go module examples:
 
@@ -198,7 +198,7 @@ For more Go module examples:
 <!-- prettier-ignore -->
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
-| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/dev/reference/apis/components/camera/) to support the Intel CSI camera. |
+| [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/reference/apis/components/camera/) to support the Intel CSI camera. |
 <!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/operate/reference/components/sensor/#api) to report wifi statistics. | -->
 
 {{% /tab %}}
@@ -428,7 +428,7 @@ For example, the `is_moving()` implementation in the example code above returns 
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Python SDK documentation for the `Base` class](https://python.viam.dev/autoapi/viam/components/base/index.html)
-- [Base API methods](/dev/reference/apis/components/base/)
+- [Base API methods](/reference/apis/components/base/)
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -672,7 +672,7 @@ This matches the `error` return type of the built-in `SetPower()` method as defi
 For more information on the base component API methods used in this example, see the following resources:
 
 - [Go SDK documentation for the `base` package](https://pkg.go.dev/go.viam.com/rdk/components/base#pkg-functions)
-- [Base API methods](/dev/reference/apis/components/base/)
+- [Base API methods](/reference/apis/components/base/)
 
 {{% /tab %}}
 {{% tab name="C++" %}}
@@ -907,7 +907,7 @@ For example, the `set_power()` implementation in the example code above returns 
 For more information on the base component API methods used in these examples, see the following resources:
 
 - [C++ SDK documentation for the `Base` class](https://cpp.viam.dev/classviam_1_1sdk_1_1Base.html)
-- [Base API methods](/dev/reference/apis/components/base/)
+- [Base API methods](/reference/apis/components/base/)
 
 For more C++ module examples of varying complexity,see the [C++ SDK `examples` directory](https://github.com/viamrobotics/viam-cpp-sdk/tree/main/src/viam/examples/modules/).
 
@@ -1222,7 +1222,7 @@ When packaged in this fashion, you can run the resulting executable on your desi
 
 To create a packaged executable:
 
-1. First, [create a Python virtual environment](/dev/reference/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+1. First, [create a Python virtual environment](/reference/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parentheses.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
@@ -1286,7 +1286,7 @@ If you get `"ImportError: attempted relative import with no known parent package
 In addition, PyInstaller does not support cross-compiling: you must compile your module on the target architecture you wish to support.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using PyInstaller on a Linux `amd64` system.
 Viam makes this easy to manage by providing a build system for modules.
-Follow [these instructions](/dev/tools/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/dev/tools/cli/).
+Follow [these instructions](/cli/#using-the-build-subcommand) to automatically build for each system your module can support using Viam's [CLI](/cli/).
 
 {{% /alert %}}
 
@@ -1332,7 +1332,7 @@ This is the recommended approach for modules written in Python:
 
 Using a virtual environment together with a `requirements.txt` file and a `run.sh` file that references it ensures that your module has access to any packages it requires during runtime.
 If you intend to share your module with other users, or to deploy it to a fleet of machines, this approach handles dependency resolution for each deployment automatically, meaning that there is no need to explicitly determine and install the Python packages your module requires to run on each machine that installs your module.
-See [prepare a Python virtual environment](/dev/reference/sdks/python/python-venv/) for more information.
+See [prepare a Python virtual environment](/reference/sdks/python/python-venv/) for more information.
 
 {{% /tab %}}
 {{% tab name="Python: nuitka" %}}
@@ -1341,7 +1341,7 @@ Use the [`nuitka` Python compiler](https://pypi.org/project/Nuitka/) to compile 
 
 1. In order to use Nuitka, you must install a [supported C compiler](https://github.com/Nuitka/Nuitka#c-compiler) on your machine.
 
-1. Then, [create a Python virtual environment](/dev/reference/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
+1. Then, [create a Python virtual environment](/reference/sdks/python/python-venv/) in your module's directory to ensure your module has access to any required libraries.
    Be sure you are within your Python virtual environment for the rest of these steps: your terminal prompt should include the name of your virtual environment in parentheses.
 
 1. Create a `requirements.txt` file containing a list of all the dependencies your module requires.
@@ -1378,7 +1378,7 @@ If you intend to share your module with other users, or to deploy it to a fleet 
 
 However, used in this manner, Nuitka does not support relative imports (imports starting with `.`).
 In addition, Nuitka does not support cross-compiling: you can only compile your module on the target architecture you wish to support if using the Nutika approach.
-If you want to cross-compile your module, consider using a different local compilation method, or the [`module build start` command](/dev/tools/cli/#using-the-build-subcommand) to build your module on a cloud build host, which supports building for multiple platforms.
+If you want to cross-compile your module, consider using a different local compilation method, or the [`module build start` command](/cli/#using-the-build-subcommand) to build your module on a cloud build host, which supports building for multiple platforms.
 For example, you cannot run a module on a Linux `arm64` system if you compiled it using Nuitka on a Linux `amd64` system.
 
 {{% /tab %}}
@@ -1537,7 +1537,7 @@ _Add troubleshooting notes here._
 ````md
 # [`agilex-limo` module](https://app.viam.com/module/viam/agilex-limo)
 
-This module implements the [`rdk:component:base` API](https://docs.viam.com/dev/reference/apis/components/base/) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with `viam-server`.
+This module implements the [`rdk:component:base` API](https://docs.viam.com/reference/apis/components/base/) in an `agilex` model for the [AgileX LIMO](https://global.agilex.ai/products/limo-pro) base to be used with `viam-server`.
 This driver supports differential, ackermann, and omni directional steering modes over the serial port.
 
 ## Configure your `agilex-limo` base
@@ -1588,7 +1588,7 @@ The following attributes are available for `viam:base:agilex-limo` bases:
 ## Next steps
 
 - To test your base, go to the [**CONTROL** tab](/monitor/teleoperate/).
-- To write code against your base, use one of the [available SDKs](https://docs.viam.com/dev/reference/sdks/).
+- To write code against your base, use one of the [available SDKs](https://docs.viam.com/reference/sdks/).
 - To view examples using a base component, explore [these tutorials](https://docs.viam.com/tutorials/).
 
 ## Local development

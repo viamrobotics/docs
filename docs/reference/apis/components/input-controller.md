@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The input controller API allows you to give commands to your [input controller components](/operate/reference/components/input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.
+The input controller API allows you to give commands to your [input controller components](/hardware/common-components/add-an-input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.
 
 The input controller component supports the following methods:
 

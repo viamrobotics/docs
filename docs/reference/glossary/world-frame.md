@@ -8,7 +8,7 @@ aliases:
   - /dev/reference/glossary/world-frame/
 ---
 
-The world reference [frame](/reference/services/frame-system/) is the fixed, global coordinate system that serves as the reference point for all other coordinate frames in a robotic system.
+The world reference [frame](/reference/) is the fixed, global coordinate system that serves as the reference point for all other coordinate frames in a robotic system.
 It provides a consistent basis for describing the position and orientation of robots, components, and objects in the physical space.
 All other coordinate frames (such as machine frames and component frames) are defined relative to this world frame, either directly or through a chain of transformations.
 

@@ -159,7 +159,7 @@ You'll also need to check for it in your validate function, since it is not buil
 
 ## API
 
-The [motion service API](/dev/reference/apis/services/motion/) supports the following methods:
+The [motion service API](/reference/apis/services/motion/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 

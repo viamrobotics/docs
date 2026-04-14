@@ -8,14 +8,12 @@ description: "Capture and sync data from components on sub-parts and remote part
 date: "2025-02-10"
 ---
 
-Viam machines can be split across multiple computers. When that happens, data capture behaves differently depending on whether the additional computer is a [sub-part](/operate/reference/architecture/parts/#configure-a-sub-part) or a [remote part](/operate/reference/architecture/parts/#configure-a-remote-part). Understanding which pattern you have is the key to configuring capture correctly.
+Viam machines can be split across multiple computers. When that happens, data capture behaves differently depending on whether the additional computer is a sub-part or a remote part. Understanding which pattern you have is the key to configuring capture correctly.
 
 ## Terminology
 
 - **Sub-part**: an additional part of the _same_ machine. Each sub-part runs its own `viam-server` with its own configuration and its own filesystem.
 - **Remote part**: a part of a _different_ machine that yours accesses over the network. A remote part is itself a separate machine in the Viam app.
-
-For the full architectural picture, including when to pick one over the other, see [Machine architecture: parts](/operate/reference/architecture/parts/).
 
 ## How capture differs
 
@@ -60,7 +58,7 @@ Remote parts appear in the main part's dependency graph, and the main part's dat
 
 The main machine can now access all components on the remote part. You can verify this on the **CONTROL** tab, where the remote's components appear under the remote's section.
 
-For more details on remote part configuration, including authentication and manual JSON, see [Configure a remote part](/operate/reference/architecture/parts/#configure-a-remote-part).
+For more details on remote part configuration, including authentication and manual JSON, see the Viam app's **CONFIGURE** tab for your machine.
 
 ### 2. Configure data capture on the remote's components
 

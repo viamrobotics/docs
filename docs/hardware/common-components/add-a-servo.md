@@ -230,7 +230,7 @@ go run main.go
 
 ## What's next
 
-- [Servo API reference](/dev/reference/apis/components/servo/): full method documentation.
+- [Servo API reference](/reference/apis/components/servo/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): for continuous rotation
   instead of angular positioning.
 - [What is a module?](/build-modules/overview/): write code that

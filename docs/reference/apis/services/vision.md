@@ -79,7 +79,7 @@ See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rov
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
 {{% alert title="Tip" color="tip" %}}
-3D segmentation operations require [frame system](/operate/reference/services/frame-system/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
+3D segmentation operations require [frame system](/operate/reference/) configuration to properly relate camera coordinates to your machine's spatial reference frames.
 This enables the vision service to provide meaningful 3D coordinates and spatial relationships.
 {{% /alert %}}
 
@@ -87,7 +87,7 @@ This enables the vision service to provide meaningful 3D coordinates and spatial
 
 - [GetObjectPointClouds()](/reference/apis/services/vision/#getobjectpointclouds)
 
-The [vision service](/operate/reference/services/vision/) supports the following methods:
+The [vision service](/vision/configure/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/vision-table.md" >}}
 

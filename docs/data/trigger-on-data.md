@@ -25,7 +25,7 @@ Viam supports five trigger types:
 | Part offline               | `part_offline`              | The machine part goes offline.                                            |
 | Conditional logs ingestion | `conditional_logs_ingested` | Machine logs contain errors, warnings, or info messages (checked hourly). |
 
-For the full attribute reference for all trigger types, see [Trigger configuration](/reference/configuration/triggers/).
+For the full attribute reference for all trigger types, see [Trigger configuration](/reference/triggers/).
 
 ## Configure a trigger
 
@@ -56,7 +56,7 @@ For the full attribute reference for all trigger types, see [Trigger configurati
 
         To see the data your components are returning, use each component's **TEST** panel.
 
-        For a full reference of trigger configuration attributes, see [Trigger configuration](/reference/configuration/triggers/).
+        For a full reference of trigger configuration attributes, see [Trigger configuration](/reference/triggers/).
 
 1. Next, configure what should happen when an event occurs.
    You can add **Webhooks** and **Email** notifications:
@@ -142,7 +142,7 @@ The following JSON configuration shows how to set up a trigger that fires when a
 }
 ```
 
-For more information about triggers, see [Trigger Configuration](/reference/configuration/triggers/).
+For more information about triggers, see [Trigger Configuration](/reference/triggers/).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -151,7 +151,7 @@ For more information about triggers, see [Trigger Configuration](/reference/conf
 
 When a trigger fires and sends a webhook, the HTTP request includes identifying headers (`Org-Id`, `Location-Id`, `Part-Id`, `Robot-Id`) and a JSON body with details about the event. For data triggers (`part_data_ingested`, `conditional_data_ingested`), the body includes the component name, method, timestamps, and the ingested data. For status triggers (`part_online`, `part_offline`), the request is a GET with metadata in headers only.
 
-For the full header and body reference, see [Webhook attributes](/reference/configuration/triggers/#webhook-attributes). For example cloud functions that process the payload, see [Example cloud function](/reference/configuration/triggers/#example-cloud-function).
+For the full header and body reference, see [Webhook attributes](/reference/triggers/#webhook-attributes). For example cloud functions that process the payload, see [Example cloud function](/reference/triggers/#example-cloud-function).
 
 ## Notification frequency
 
@@ -161,4 +161,4 @@ The `seconds_between_notifications` field sets the minimum time between notifica
 
 The **Part online**, **Part offline**, and **Conditional logs ingestion** triggers are primarily used for machine health monitoring rather than data analysis. For step-by-step setup of these trigger types, see [Alert on machine telemetry](/monitor/alert/).
 
-For the full attribute reference for all trigger types, see [Trigger configuration](/reference/configuration/triggers/).
+For the full attribute reference for all trigger types, see [Trigger configuration](/reference/triggers/).

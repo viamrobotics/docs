@@ -1,1 +1,1 @@
-The [Control](/dev/reference/apis/components/input-controller/#control-field) to register the function for.
+The [Control](/reference/apis/components/input-controller/#control-field) to register the function for.

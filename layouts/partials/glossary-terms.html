@@ -1,7 +1,7 @@
-{{ $glossaryItems := site.GetPage "page" "dev/reference/glossary" }}
+{{ $glossaryItems := site.GetPage "page" "reference/glossary" }}
 {{- if $glossaryItems -}}
   {{ $pages := $glossaryItems.Resources.ByType "page" }}
   {{- $.Scratch.Set "glossary_items"  $pages -}}
 {{- else -}}
-{{- errorf "No glossary items. Please create items in dev/reference/glossary" -}}
+{{- errorf "No glossary items. Please create items in reference/glossary" -}}
 {{- end -}}

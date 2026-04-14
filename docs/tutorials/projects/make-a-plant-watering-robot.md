@@ -306,7 +306,7 @@ sudo apt upgrade
 ```
 
 Then run the following command to create and activate the virtual environment:
-If you want to read more on virtual environments, check out [the documentation](/dev/reference/sdks/python/python-venv/).
+If you want to read more on virtual environments, check out [the documentation](/reference/sdks/python/python-venv/).
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m venv .venv
@@ -355,7 +355,7 @@ nano plant-watering-robot.py
 Now, add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [board](/dev/reference/apis/components/board/) and [sensor](/dev/reference/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage from a GPIO pin.
+Use the Viam [board](/reference/apis/components/board/) and [sensor](/reference/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage from a GPIO pin.
 
 To access components from the machine, use the following code snippet:
 

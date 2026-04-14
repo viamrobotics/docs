@@ -148,4 +148,4 @@ See [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-
 
 - [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the rebuild-after-reconnect pattern
 - [Query captured data](/build-apps/tasks/query-data/) for reading captured data alongside live streams
-- [Camera component reference](/reference/components/camera/) for per-model configuration
+- [Camera component reference](/hardware/common-components/add-a-camera/) for per-model configuration

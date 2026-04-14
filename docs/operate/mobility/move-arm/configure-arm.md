@@ -44,7 +44,7 @@ For example, if you have a UFactory xArm 6, select the `xArm6` model.
 
 {{% expand "Click to view the available arm models" %}}
 
-The following models implement the [arm component API](/dev/reference/apis/components/arm/):
+The following models implement the [arm component API](/reference/apis/components/arm/):
 
 {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 

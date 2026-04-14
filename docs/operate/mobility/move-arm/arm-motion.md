@@ -17,7 +17,7 @@ date: "2025-05-21"
 
 This is the recommended way to write an application to move an arm.
 
-The [motion service API](/dev/reference/apis/services/motion/) allows you to plan and execute complex movements while avoiding collisions between components and obstacles.
+The [motion service API](/reference/apis/services/motion/) allows you to plan and execute complex movements while avoiding collisions between components and obstacles.
 
 ## Prerequisites
 
@@ -280,7 +280,7 @@ You will pass your `WorldState` object to the motion planning API in the next se
 
 ## Move the arm
 
-To move the arm, use the motion service API's [`Move` method](/dev/reference/apis/services/motion/#move).
+To move the arm, use the motion service API's [`Move` method](/reference/apis/services/motion/#move).
 Follow the steps below to construct the necessary objects and pass them to `Move`.
 
 1. Construct a destination pose for the arm.
@@ -381,7 +381,7 @@ myConstraints := &motionplan.Constraints{
 {{% /tab %}}
 {{< /tabs >}}
 
-1. Call the [`Move` method](/dev/reference/apis/services/motion/#move), passing in the destination pose, any constraints, and the world state:
+1. Call the [`Move` method](/reference/apis/services/motion/#move), passing in the destination pose, any constraints, and the world state:
 
    {{< tabs >}}
    {{% tab name="Python" %}}

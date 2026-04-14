@@ -84,7 +84,7 @@ The binary delete command requires `--org-ids`, `--start`, and `--end`. You can 
 
 **From the SDK:**
 
-The [data client API](/dev/reference/apis/data-client/) supports these delete operations; see the API reference for your SDK's method names and signatures:
+The [data client API](/reference/apis/data-client/) supports these delete operations; see the API reference for your SDK's method names and signatures:
 
 - Delete tabular data older than a specified number of days.
 - Delete binary data matching a filter, such as organization, location, or time range.

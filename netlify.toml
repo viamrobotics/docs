@@ -21,6 +21,61 @@
   to = "/fleet/manage-versions/"
   status = 301
 
+[[redirects]]
+  from = "/dev/reference/apis/*"
+  to = "/reference/apis/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/reference/sdks/*"
+  to = "/reference/sdks/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/reference/glossary/*"
+  to = "/reference/glossary/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/reference/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/dev/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/components/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/services/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/account/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/advanced-modules/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/glossary_tmp/*"
+  to = "/reference/glossary/"
+  status = 301
+
+[[redirects]]
+  from = "/reference/module-configuration/"
+  to = "/reference/"
+  status = 301
+
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"
 
@@ -77,7 +132,7 @@
   [plugins.inputs]
 
   # change this key to a new one any time you need to restart from scratch
-  cacheKey = ["Nov272025"]
+  cacheKey = "Apr132026"
   # either "warn" or "error"
   failBuildOnError = true
 
@@ -91,6 +146,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -100,3 +156,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/"]

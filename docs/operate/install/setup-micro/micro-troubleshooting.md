@@ -92,7 +92,7 @@ espflash write-bin 0x0 target/esp32-server.bin -B 460800  && sleep 2 && espflash
 
 ### Unstable connection
 
-Because microcontrollers are more resource-constrained than single-board computers or other computers, when you run [control code](/dev/reference/sdks/) to control your Micro-RDK machine, you may experience instability.
+Because microcontrollers are more resource-constrained than single-board computers or other computers, when you run [control code](/reference/sdks/) to control your Micro-RDK machine, you may experience instability.
 If your connection is unstable, we recommend changing the default settings by making the following changes to your connection code.
 This code will disable the SDK background task that monitors the connection to your machine, reducing processing demands and improving the reliability of connection establishment.
 

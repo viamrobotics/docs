@@ -11,4 +11,6 @@ outputs:
   - html
 date: "2024-09-18"
 # updated: ""  # When the content was last entirely checked
+aliases:
+  - /dev/reference/changelog/
 ---

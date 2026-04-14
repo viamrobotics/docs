@@ -17,14 +17,14 @@ date: "2022-01-01"
 You can define a new, custom {{< glossary_tooltip term_id="resource" text="resource" >}} API if:
 
 - You have a {{% glossary_tooltip term_id="resource" text="resource" %}} that does not fit into any of the existing {{< glossary_tooltip term_id="component" text="component" >}} or {{< glossary_tooltip term_id="service" text="service" >}} APIs.
-- You have a resource that could fit into an existing API, but you want to define an API with different methods and messages than the one in the existing [APIs](/dev/reference/apis/).
+- You have a resource that could fit into an existing API, but you want to define an API with different methods and messages than the one in the existing [APIs](/reference/apis/).
 
 {{% alert title="Tip" color="tip" %}}
 
 Defining a new resource API is significantly more complex than using an existing API.
 In most cases, you should try to use an existing API rather than define a new one.
 
-If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and [extra parameters](/dev/reference/sdks/use-extra-params/) to add custom functionality to an existing API.
+If you want to use most of an existing API but need just a few other functions, try using the `DoCommand` endpoint and [extra parameters](/reference/sdks/use-extra-params/) to add custom functionality to an existing API.
 For example, if you have a [sensor](/operate/reference/components/sensor/) and you want to define a `Calibrate` method, you can use `DoCommand`.
 
 If your use case uses only `DoCommand` and no other API methods, you can define a new model of [generic component](/operate/reference/components/generic/) or [generic service](/operate/reference/services/generic/).
@@ -113,7 +113,7 @@ Now that your resource API is defined, create a new model that implements your n
 
 After you define a new API and create a model that implements it, keep the following in mind when writing code against your new API:
 
-- You can't use [SDKs](/dev/reference/sdks/) to call your new API unless you build out the client to support it.
+- You can't use [SDKs](/reference/sdks/) to call your new API unless you build out the client to support it.
   It is easiest to write code against your new API in the language you used to define it.
 - Since your API doesn't have built-in SDK support, you'll need a local copy of the module code on whatever machine is running client code against it.
 - Be sure to import the API definition from the module directory, for example in Python it would be of the form `from path.to.module.src.gizmo import Gizmo`.

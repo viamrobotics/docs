@@ -138,7 +138,7 @@ them. If you plan to make your module public, a good README is essential.
 ```md
 # `my-sensor-module`
 
-This module implements the [Viam sensor API](https://docs.viam.com/dev/reference/apis/components/sensor/) in a `my-org:my-sensor-module:my-sensor` model.
+This module implements the [Viam sensor API](https://docs.viam.com/reference/apis/components/sensor/) in a `my-org:my-sensor-module:my-sensor` model.
 With this model, you can gather temperature and humidity data from a custom HTTP endpoint.
 
 Navigate to the **CONFIGURE** tab of your machine's page.

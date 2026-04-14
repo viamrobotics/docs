@@ -162,7 +162,7 @@ Note that your base's wiring will vary depending on your choice of board, motors
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/base/" customTitle="Base API" noimage="true" %}}
+{{% card link="/reference/apis/components/base/" customTitle="Base API" noimage="true" %}}
 {{% card link="/tutorials/configure/configure-rover/" noimage="true" %}}
 {{% card link="/tutorials/control/drive-rover/" noimage="true" %}}
 {{< /cards >}}

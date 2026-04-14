@@ -55,22 +55,22 @@ To start with the minimum amount of hardware, begin with one robotic arm, one en
 <p>Review the following list of components and consider which components you may need. If in doubt, click on the component to review its API to understand what the component does.</p>
 
 {{< cards >}}
-{{% relatedcard link="/dev/reference/apis/components/arm/" highlight="green" %}}
-{{% relatedcard link="/dev/reference/apis/components/base/" %}}
-{{% relatedcard link="/dev/reference/apis/components/board/" %}}
-{{% relatedcard link="/dev/reference/apis/components/button/" %}}
-{{% relatedcard link="/dev/reference/apis/components/camera/" highlight="green" %}}
-{{% relatedcard link="/dev/reference/apis/components/encoder/" %}}
-{{% relatedcard link="/dev/reference/apis/components/gantry/" %}}
-{{% relatedcard link="/dev/reference/apis/components/generic/" %}}
-{{% relatedcard link="/dev/reference/apis/components/gripper/" highlight="green" %}}
-{{% relatedcard link="/dev/reference/apis/components/input-controller/" %}}
-{{% relatedcard link="/dev/reference/apis/components/motor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/movement-sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/power-sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/servo/" %}}
-{{% relatedcard link="/dev/reference/apis/components/switch/" %}}
+{{% relatedcard link="/reference/apis/components/arm/" highlight="green" %}}
+{{% relatedcard link="/reference/apis/components/base/" %}}
+{{% relatedcard link="/reference/apis/components/board/" %}}
+{{% relatedcard link="/reference/apis/components/button/" %}}
+{{% relatedcard link="/reference/apis/components/camera/" highlight="green" %}}
+{{% relatedcard link="/reference/apis/components/encoder/" %}}
+{{% relatedcard link="/reference/apis/components/gantry/" %}}
+{{% relatedcard link="/reference/apis/components/generic/" %}}
+{{% relatedcard link="/reference/apis/components/gripper/" highlight="green" %}}
+{{% relatedcard link="/reference/apis/components/input-controller/" %}}
+{{% relatedcard link="/reference/apis/components/motor/" %}}
+{{% relatedcard link="/reference/apis/components/movement-sensor/" %}}
+{{% relatedcard link="/reference/apis/components/power-sensor/" %}}
+{{% relatedcard link="/reference/apis/components/sensor/" %}}
+{{% relatedcard link="/reference/apis/components/servo/" %}}
+{{% relatedcard link="/reference/apis/components/switch/" %}}
 {{< /cards >}}
 
 <p><b>Wood sanding project:</b>
@@ -106,14 +106,14 @@ Services often operate on components.</p>
 <p>Review the following list of services and consider which services you may need. If in doubt, click on the service to review its API to understand what the service does.</p>
 
 {{< cards >}}
-{{% relatedcard link="/dev/reference/apis/services/data/" %}}
-{{% relatedcard link="/dev/reference/apis/services/ml/" highlight="green" %}}
-{{% relatedcard link="/dev/reference/apis/services/vision/" highlight="green" %}}
-{{% relatedcard link="/dev/reference/apis/services/motion/" highlight="green" %}}
-{{% relatedcard link="/dev/reference/apis/services/navigation/" %}}
-{{% relatedcard link="/dev/reference/apis/services/slam/" %}}
-{{% relatedcard link="/dev/reference/apis/services/generic/" %}}
-{{% relatedcard link="/dev/reference/apis/services/base-rc/" %}}
+{{% relatedcard link="/reference/apis/services/data/" %}}
+{{% relatedcard link="/reference/apis/services/ml/" highlight="green" %}}
+{{% relatedcard link="/reference/apis/services/vision/" highlight="green" %}}
+{{% relatedcard link="/reference/apis/services/motion/" highlight="green" %}}
+{{% relatedcard link="/reference/apis/services/navigation/" %}}
+{{% relatedcard link="/reference/apis/services/slam/" %}}
+{{% relatedcard link="/reference/apis/services/generic/" %}}
+{{% relatedcard link="/reference/apis/services/base-rc/" %}}
 {{< /cards >}}
 
 <p><strong>Wood sanding project:</strong> For the software side, you'll want something to identify the areas to sand.
@@ -161,112 +161,112 @@ You can search all the available components in the Viam web UI when adding resou
 {{% /tab %}}
 {{% tab name="Arm" %}}
 
-The following models implement the [arm component API](/dev/reference/apis/components/arm/):
+The following models implement the [arm component API](/reference/apis/components/arm/):
 
 {{<resources api="rdk:component:arm" type="arm" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Base" %}}
 
-The following models implement the [base component API](/dev/reference/apis/components/base/):
+The following models implement the [base component API](/reference/apis/components/base/):
 
 {{<resources api="rdk:component:base" type="base" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Board" %}}
 
-The following models implement the [board component API](/dev/reference/apis/components/board/):
+The following models implement the [board component API](/reference/apis/components/board/):
 
 {{<resources api="rdk:component:board" type="board" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Button" %}}
 
-The following models implement the [button component API](/dev/reference/apis/components/button/):
+The following models implement the [button component API](/reference/apis/components/button/):
 
 {{<resources api="rdk:component:button" type="button" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Camera" %}}
 
-The following models implement the [camera component API](/dev/reference/apis/components/camera/):
+The following models implement the [camera component API](/reference/apis/components/camera/):
 
 {{<resources api="rdk:component:camera" type="camera" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Encoder" %}}
 
-The following models implement the [encoder component API](/dev/reference/apis/components/encoder/):
+The following models implement the [encoder component API](/reference/apis/components/encoder/):
 
 {{<resources api="rdk:component:encoder" type="encoder" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Gantry" %}}
 
-The following models implement the [gantry component API](/dev/reference/apis/components/gantry/):
+The following models implement the [gantry component API](/reference/apis/components/gantry/):
 
 {{<resources api="rdk:component:gantry" type="gantry" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Generic" %}}
 
-The following models implement the [generic component API](/dev/reference/apis/components/generic/):
+The following models implement the [generic component API](/reference/apis/components/generic/):
 
 {{<resources api="rdk:component:generic" type="generic" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Gripper" %}}
 
-The following models implement the [gripper component API](/dev/reference/apis/components/gripper/):
+The following models implement the [gripper component API](/reference/apis/components/gripper/):
 
 {{<resources api="rdk:component:gripper" type="gripper" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Input Controller" %}}
 
-The following models implement the [input controller component API](/dev/reference/apis/components/input-controller/):
+The following models implement the [input controller component API](/reference/apis/components/input-controller/):
 
 {{<resources api="rdk:component:input_controller" type="input_controller" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Motor" %}}
 
-The following models implement the [motor component API](/dev/reference/apis/components/motor/):
+The following models implement the [motor component API](/reference/apis/components/motor/):
 
 {{<resources api="rdk:component:motor" type="motor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Movement Sensor" %}}
 
-The following models implement the [movement sensor component API](/dev/reference/apis/components/movement-sensor/):
+The following models implement the [movement sensor component API](/reference/apis/components/movement-sensor/):
 
 {{<resources api="rdk:component:movement_sensor" type="movement_sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Power Sensor" %}}
 
-The following models implement the [power sensor component API](/dev/reference/apis/components/power-sensor/):
+The following models implement the [power sensor component API](/reference/apis/components/power-sensor/):
 
 {{<resources api="rdk:component:power_sensor" type="power_sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Sensor" %}}
 
-The following models implement the [sensor component API](/dev/reference/apis/components/sensor/):
+The following models implement the [sensor component API](/reference/apis/components/sensor/):
 
 {{<resources api="rdk:component:sensor" type="sensor" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Servo" %}}
 
-The following models implement the [servo component API](/dev/reference/apis/components/servo/):
+The following models implement the [servo component API](/reference/apis/components/servo/):
 
 {{<resources api="rdk:component:servo" type="servo" no-intro="true">}}
 
 {{% /tab %}}
 {{% tab name="Switch" %}}
 
-The following models implement the [switch component API](/dev/reference/apis/components/switch/):
+The following models implement the [switch component API](/reference/apis/components/switch/):
 
 {{<resources api="rdk:component:switch" type="switch" no-intro="true">}}
 

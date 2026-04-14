@@ -228,7 +228,7 @@ go run main.go
 
 ## What's next
 
-- [Switch API reference](/dev/reference/apis/components/switch/): full method documentation.
+- [Switch API reference](/reference/apis/components/switch/): full method documentation.
 - [What is a module?](/build-modules/overview/): write a module that
   responds to switch position changes.
 - [Component types](/hardware/component-types/): find the right type for

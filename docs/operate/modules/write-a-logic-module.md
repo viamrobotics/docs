@@ -86,7 +86,7 @@ custom logic -- you define your own command vocabulary.
 
 Use `generic` when your module's interface doesn't map to an existing service
 API (like `vision` or `mlmodel`). For the full list of service APIs, see
-[Resource APIs](/dev/reference/apis/).
+[Resource APIs](/reference/apis/).
 
 ### Background tasks
 

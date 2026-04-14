@@ -280,7 +280,7 @@ go run main.go
 
 ## What's next
 
-- [Movement sensor API reference](/dev/reference/apis/components/movement-sensor/): full method documentation.
+- [Movement sensor API reference](/reference/apis/components/movement-sensor/): full method documentation.
 - [Add a Base](/hardware/common-components/add-a-base/): the movement sensor
   typically pairs with a mobile base.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): capture position and

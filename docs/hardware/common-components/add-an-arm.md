@@ -295,7 +295,7 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
 
 ## What's next
 
-- [Arm API reference](/dev/reference/apis/components/arm/): full method documentation.
+- [Arm API reference](/reference/apis/components/arm/): full method documentation.
 - [Fragments](/hardware/fragments/): save and reuse working
   hardware configurations.
 - [Motion Planning](/motion-planning/): configure frames, kinematics, and

@@ -975,7 +975,7 @@ Paste the machine cloud credentials into a file on your hard drive called <FILE>
 You will pass the file to the preinstall script later, so you can store it anywhere.
 
 {{< alert title="Tip: Fleet management API" color="tip" >}}
-You can create locations and machines programmatically, with the [Fleet management API](/dev/reference/apis/fleet/).
+You can create locations and machines programmatically, with the [Fleet management API](/reference/apis/fleet/).
 {{< /alert >}}
 
 {{% /tablestep %}}

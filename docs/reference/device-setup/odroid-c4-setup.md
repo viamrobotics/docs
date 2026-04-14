@@ -72,7 +72,7 @@ sudo apt update && sudo apt upgrade
 {{< cards >}}
 {{% card link="/operate/modules/configure-modules/" %}}
 {{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
+{{% card link="/tutorials/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

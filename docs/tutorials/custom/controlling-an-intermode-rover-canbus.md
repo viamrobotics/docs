@@ -47,8 +47,8 @@ Once you specify the circumference of the wheels and how far they are apart, you
 
 However, some rovers or other mobile robots do not expose direct motor control.
 For these types of machines, this tutorial shows you how to create a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
-Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/dev/reference/apis/components/base/#api) as you would with builtin Viam components.
-Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/dev/reference/apis/).
+Creating a modular resource for your robot allows you to issue commands using the same [`base` interface](/reference/apis/components/base/#api) as you would with builtin Viam components.
+Once you have created the custom component, you can control both the Viam components and the modular resources using any of the [Viam SDKs](/reference/apis/).
 Even if your modular resource is built in Golang, you can use the Python, C++, or any other Viam SDK to issue commands.
 
 {{% alert title="Tip" color="tip"%}}
@@ -115,7 +115,7 @@ You can now power up the rover, which also provides power to your Pi and allows 
 
 ## A modular resource for the Intermode base
 
-The Viam platform provides [APIs](/dev/reference/apis/) for common component types within `viam-server`.
+The Viam platform provides [APIs](/reference/apis/) for common component types within `viam-server`.
 For controlling a mobile robot's movements, the [base component](/operate/reference/components/base/) exposes a useful interface.
 
 In the rest of this tutorial, you'll learn how to use this API to create your own custom modular resource.
@@ -184,7 +184,7 @@ The complete triplet is:
 
 The entry point code defines the model name and then registers it with `viam-server`.
 When registering it, the code also provides the API that the new model supports.
-That means in this case that the base should support the default [base API](/dev/reference/apis/components/base/#api) with methods such as `MoveStraight` and `Spin`.
+That means in this case that the base should support the default [base API](/reference/apis/components/base/#api) with methods such as `MoveStraight` and `Spin`.
 
 The **API** of any Viam resource is also represented as colon-separated triplets where the first element is a namespace.
 Since you are using the default Viam API for a [base](/operate/reference/components/base/), the {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} is:
@@ -339,7 +339,7 @@ Check out this [GitHub repository](https://github.com/viam-labs/tutorial-intermo
 
 ## Next steps
 
-Now that you have integrated your rover or mobile base with Viam, you can use the [Viam SDKs](/dev/reference/sdks/) to operate your rover.
+Now that you have integrated your rover or mobile base with Viam, you can use the [Viam SDKs](/reference/sdks/) to operate your rover.
 If your rover has a [`camera`](/operate/reference/components/camera/) or a [`movement_sensor`](/operate/reference/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}

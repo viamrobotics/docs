@@ -8,7 +8,7 @@ description: "Use the vision service API to act based on inferences."
 date: "2025-10-09"
 ---
 
-You can use the [vision service API](/dev/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
+You can use the [vision service API](/reference/apis/services/vision/) to get information about your machine's inferences and program behavior based on that.
 
 This guide will walk you through the steps to create logic for acting based on inferences.
 At the end of each step, you'll learn how to apply the step to a fictional example where you want to stop an arm from moving, when a person is detected in the arm's surroundings.

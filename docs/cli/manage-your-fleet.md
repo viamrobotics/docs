@@ -298,4 +298,4 @@ Key Value: your-secret-key-value
 - [Monitor machine status](/monitor/monitor/) for monitoring with the Viam app
 - [Troubleshoot](/monitor/troubleshoot/) for debugging machine issues
 - [Deploy software](/fleet/deploy-software/) for deploying with fragments
-- [CLI reference](/dev/tools/cli/#machines-alias-robots-and-machine) for the complete `machines` command reference
+- [CLI reference](/cli/#machines-alias-robots-and-machine) for the complete `machines` command reference

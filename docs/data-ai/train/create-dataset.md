@@ -38,7 +38,7 @@ You can create a dataset using the web UI, the CLI, or one of the SDKs:
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-Run the following [Viam CLI](/dev/tools/cli/) command to create a dataset, replacing the `<org-id>` and `<name>` placeholders with your organization ID and a unique name for the dataset:
+Run the following [Viam CLI](/cli/) command to create a dataset, replacing the `<org-id>` and `<name>` placeholders with your organization ID and a unique name for the dataset:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset create --org-id=<org-id> --name=<name>
@@ -47,21 +47,21 @@ viam dataset create --org-id=<org-id> --name=<name>
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to [`data_client.create_dataset`](/dev/reference/apis/data-client/#createdataset):
+To create a dataset, pass a unique dataset name and organization ID to [`data_client.create_dataset`](/reference/apis/data-client/#createdataset):
 
 {{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="31-34" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to [`DataClient.CreateDataset`](/dev/reference/apis/data-client/#createdataset):
+To create a dataset, pass a unique dataset name and organization ID to [`DataClient.CreateDataset`](/reference/apis/data-client/#createdataset):
 
 {{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="30" >}}
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
 
-To create a dataset, pass a unique dataset name and organization ID to [`dataClient.createDataset`](/dev/reference/apis/data-client/#createdataset):
+To create a dataset, pass a unique dataset name and organization ID to [`dataClient.createDataset`](/reference/apis/data-client/#createdataset):
 
 {{< read-code-snippet file="/static/include/examples-generated/create-dataset.snippet.create-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="27-30" >}}
 
@@ -96,7 +96,7 @@ To view images added to your dataset, go to the **DATA** page, open the [**DATAS
 {{% tab name="Python" %}}
 
 To capture an image and upload it to Viam, first get an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`data_client.binary_data_capture_upload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
+Pass that image and an appropriate set of metadata to [`data_client.binary_data_capture_upload`](/reference/apis/data-client/#binarydatacaptureupload):
 
 {{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.py" lang="python" class="line-numbers linkable-line-numbers" data-line="43-56" >}}
 
@@ -104,7 +104,7 @@ Pass that image and an appropriate set of metadata to [`data_client.binary_data_
 {{% tab name="Go" %}}
 
 To capture an image and upload it to Viam, first get an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
+Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCaptureUpload`](/reference/apis/data-client/#binarydatacaptureupload):
 
 {{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.go" lang="go" class="line-numbers linkable-line-numbers" data-line="55-82" >}}
 
@@ -112,7 +112,7 @@ Pass that image and an appropriate set of metadata to [`DataClient.BinaryDataCap
 {{% tab name="TypeScript" %}}
 
 To capture an image and upload it to Viam, first get an image from your camera through your machine.
-Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/dev/reference/apis/data-client/#binarydatacaptureupload):
+Pass that image and an appropriate set of metadata to [`dataClient.binaryDataCaptureUpload`](/reference/apis/data-client/#binarydatacaptureupload):
 
 {{< read-code-snippet file="/static/include/examples-generated/capture-images.snippet.capture-images.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="41-54" >}}
 
@@ -173,7 +173,7 @@ Use the Viam CLI to filter images by label and add the filtered images to a data
    viam dataset list
    ```
 
-1. Run the following [command](/dev/tools/cli/#dataset) to add all images labeled with the specified tags to the dataset, replacing the `<dataset-id>` placeholder with the dataset ID:
+1. Run the following [command](/cli/#dataset) to add all images labeled with the specified tags to the dataset, replacing the `<dataset-id>` placeholder with the dataset ID:
 
    ```sh {class="command-line" data-prompt="$"}
    viam dataset data add filter --dataset-id=<dataset-id> --tags=red_star,blue_square
@@ -190,7 +190,7 @@ You can retrieve the dataset ID from the [**DATASETS** tab](https://app.viam.com
 Click on the dataset.
 On the dataset page, click the **...** menu next to the dataset name, then click **Copy dataset ID**.
 
-Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+Pass both IDs to [`data_client.add_binary_data_to_dataset_by_ids`](/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 {{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.py" lang="python" class="line-numbers linkable-line-numbers" data-line="30-33" >}}
 
@@ -205,7 +205,7 @@ You can retrieve the dataset ID from the [**DATASETS** tab](https://app.viam.com
 Click on the dataset.
 On the dataset page, click the **...** menu next to the dataset name, then click **Copy dataset ID**.
 
-Pass both IDs to [`DataClient.AddBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+Pass both IDs to [`DataClient.AddBinaryDataToDatasetByIDs`](/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 {{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.go" lang="go" class="line-numbers linkable-line-numbers" data-line="30-34" >}}
 
@@ -220,7 +220,7 @@ You can retrieve the dataset ID from the [**DATASETS** tab](https://app.viam.com
 Click on the dataset.
 On the dataset page, click the **...** menu next to the dataset name, then click **Copy dataset ID**.
 
-Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/dev/reference/apis/data-client/#addbinarydatatodatasetbyids):
+Pass both IDs to [`dataClient.addBinaryDataToDatasetByIDs`](/reference/apis/data-client/#addbinarydatatodatasetbyids):
 
 {{< read-code-snippet file="/static/include/examples-generated/add-to-dataset.snippet.add-to-dataset.ts" lang="ts" class="line-numbers linkable-line-numbers" data-line="26-29" >}}
 

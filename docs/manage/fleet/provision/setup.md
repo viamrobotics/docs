@@ -244,7 +244,7 @@ The script will save the file is at <file>/etc/viam.json</file> on the machine.
 
 {{< expand "Want to create a machine and obtain its machine cloud credentials programmatically?" >}}
 
-You can use the [Fleet Management API](/dev/reference/apis/fleet/) to create machines, and obtain their machine cloud credentials:
+You can use the [Fleet Management API](/reference/apis/fleet/) to create machines, and obtain their machine cloud credentials:
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

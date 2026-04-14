@@ -32,7 +32,7 @@ Users of your module can then:
 
 To see this in action, see [webcam discovery](/operate/reference/components/camera/webcam/#find-a-video-path-using-a-discovery-service) as an example.
 
-To interact with a discovery service programmatically, use the [discovery service API](/dev/reference/apis/services/discovery/).
+To interact with a discovery service programmatically, use the [discovery service API](/reference/apis/services/discovery/).
 
 ## Configuration
 
@@ -64,6 +64,6 @@ There is currently no support for this component compatible with the Micro-RDK.
 
 ## API
 
-The [discovery service API](/dev/reference/apis/services/discovery/) supports the following methods:
+The [discovery service API](/reference/apis/services/discovery/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/discovery-table.md" >}}

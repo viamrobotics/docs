@@ -94,8 +94,8 @@ The service works with models from various sources:
   See the documentation for the ML model service you're using (pick one that supports your model framework) for instructions on this.
 
 {{< alert title="Add support for other models" color="tip" >}}
-ML models must be designed in particular shapes to work with the `mlmodel` [classification](/reference/services/vision/mlmodel/) or [detection](/reference/services/vision/mlmodel/) models of Viam's [vision service](/reference/services/vision/).
-See [ML Model Design](/reference/configuration/mlmodel-design/) to design a modular ML model service with models that work with vision.
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/vision/configure/) or [detection](/vision/configure/) models of Viam's [vision service](/vision/configure/).
+See [ML Model Design](/reference/) to design a modular ML model service with models that work with vision.
 {{< /alert >}}
 
 ## Steps
@@ -179,13 +179,13 @@ Link the vision service to your ML model service:
 
 The `mlmodel_name` must match the name you gave your ML model service in step 1. This is how the vision service knows which model to use for inference.
 
-For the full list of `mlmodel` vision service configuration attributes, see [Configure an mlmodel Detector or Classifier](/reference/services/vision/mlmodel/).
+For the full list of `mlmodel` vision service configuration attributes, see [Configure an mlmodel Detector or Classifier](/vision/configure/).
 
 ### 5. Save the configuration
 
 Click **Save** in the upper right. `viam-server` reloads automatically and initializes both services. You do not need to restart anything.
 
-You can verify which capabilities your vision service supports by calling [`GetProperties`](/dev/reference/apis/services/vision/#getproperties). This returns whether the service supports detections, classifications, and 3D object point clouds.
+You can verify which capabilities your vision service supports by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). This returns whether the service supports detections, classifications, and 3D object point clouds.
 
 ### 6. Test from the CONTROL tab
 
@@ -263,14 +263,14 @@ This is useful for non-vision ML models or when you need to interpret the raw mo
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
+The following code passes an image to an ML model service, and uses the [`Infer`](/reference/apis/services/ml/#infer) method to make inferences:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.py" lang="py" class="line-numbers linkable-line-numbers" data-line="82-85" >}}
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following code passes an image to an ML model service, and uses the [`Infer`](/dev/reference/apis/services/ml/#infer) method to make inferences:
+The following code passes an image to an ML model service, and uses the [`Infer`](/reference/apis/services/ml/#infer) method to make inferences:
 
 {{< read-code-snippet file="/static/include/examples-generated/run-inference.snippet.run-inference.go" lang="go" class="line-numbers linkable-line-numbers" data-line="161-164" >}}
 
@@ -296,7 +296,7 @@ The following code passes an image to an ML model service, and uses the [`Infer`
 <!-- prettier-ignore -->
 | Example | Description |
 | ------- | ----------- |
-| Detect a variety of objects | Use the [`viam:vision:mlmodel`](/reference/services/vision/mlmodel/) vision service with the `EfficientDet-COCO` ML model to detect a variety of objects, including people, bicycles, and apples, in a camera feed. |
+| Detect a variety of objects | Use the [`viam:vision:mlmodel`](/vision/configure/) vision service with the `EfficientDet-COCO` ML model to detect a variety of objects, including people, bicycles, and apples, in a camera feed. |
 | Detect license plates | Use the [`viam-soleng:vision:openalpr`](https://app.viam.com/module/viam-soleng/viamalpr) vision service to detect license plates in images. This service includes its own ML model. |
 
 {{% /expand%}}
@@ -477,7 +477,7 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 The command returns a list of detected classes or bounding boxes depending on the output of the ML model you specified, as well as a list of confidence values for those classes or boxes.
 The bounding box output uses proportional coordinates between 0 and 1, with the origin `(0, 0)` in the top left of the image and `(1, 1)` in the bottom right.
 
-For more information, see [`viam infer`](/dev/tools/cli/#infer).
+For more information, see [`viam infer`](/cli/).
 
 ## Troubleshooting
 

@@ -18,10 +18,10 @@ To use the platform or machine APIs, you must authenticate using API keys.
 
 The following steps show you how to use the following APIs from a module:
 
-- [Fleet management (`app_client`)](/dev/reference/apis/fleet/)
-- [Data client (`data_client`)](/dev/reference/apis/data-client/)
-- [ML training (`ml_training_client`)](/dev/reference/apis/ml-training-client/)
-- [Billing (`billing_client`)](/dev/reference/apis/billing-client/)
+- [Fleet management (`app_client`)](/reference/apis/fleet/)
+- [Data client (`data_client`)](/reference/apis/data-client/)
+- [ML training (`ml_training_client`)](/reference/apis/ml-training-client/)
+- [Billing (`billing_client`)](/reference/apis/billing-client/)
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -129,7 +129,7 @@ The following steps show you how to use the following APIs from a module:
 
 ### Elevate access
 
-The [module environment variables](/reference/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/organization/rbac/) for the machine the module is running on.
+The [module environment variables](/reference/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/organization/rbac/) for the machine the module is running on.
 
 If you need a higher level of access, you can pass API keys as part of the module configuration:
 
@@ -157,7 +157,7 @@ If you need a higher level of access, you can pass API keys as part of the modul
 
 ## Use the machine management API from a module
 
-To use the [machine management (`robot_client`) API](/dev/reference/apis/robot/), you must get the machine's FQDN and API keys from the module environment variables.
+To use the [machine management (`robot_client`) API](/reference/apis/robot/), you must get the machine's FQDN and API keys from the module environment variables.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

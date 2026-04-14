@@ -257,7 +257,7 @@ Copy and paste the following json object into your board's attributes field.
 {{< cards >}}
 {{% card link="/operate/modules/configure-modules/" %}}
 {{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
-{{% card link="/dev/tools/tutorials/" %}}
+{{% card link="/tutorials/" %}}
 {{< /cards >}}
 
 ## Need assistance?

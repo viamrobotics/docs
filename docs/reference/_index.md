@@ -7,5 +7,43 @@ type: "docs"
 no_list: true
 noedit: true
 open_on_desktop: true
-description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, architecture, and more."
+description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, and more."
+aliases:
+  - /reference/architecture/
+  - /reference/architecture/parts/
+  - /reference/architecture/machine-to-machine-comms/
+  - /architecture/
+  - /architecture/parts/
+  - /architecture/machine-to-machine-comms/
+  - /operate/reference/architecture/
+  - /operate/reference/architecture/parts/
+  - /operate/reference/architecture/machine-to-machine-comms/
+  - /dev/reference/architecture/
+  - /internals/robot-to-robot-comms/
+  - /internals/machine-to-machine-comms/
+  - /manage/parts-and-remotes/
+  - /build/configure/parts-and-remotes/
+  - /configure/parts/
+  - /build/configure/parts/
+  - /dev/
+  - /dev/reference/
+  - /dev/reference/contributing/
+  - /dev/tools/
+  - /dev/tools/contributing/
+  - /reference/account/
+  - /reference/account/accounts/
+  - /reference/account/billing/
+  - /reference/account/organize/
+  - /reference/advanced-modules/
+  - /reference/advanced-modules/create-subtype/
+  - /reference/advanced-modules/custom-components-remotes/
+  - /reference/advanced-modules/docker-modules/
+  - /reference/components/
+  - /reference/configuration/
+  - /reference/configuration/controls-package/
+  - /reference/configuration/kinematic-chain-config/
+  - /reference/configuration/mlmodel-design/
+  - /reference/configuration/slam-background/
+  - /reference/services/
+  - /reference/module-configuration/
 ---
