@@ -14,4 +14,4 @@ These credit card-sized computers are widely used in robotics, IoT projects, edu
 
 Viam supports many different devices including Raspberry Pis as host computers for running `viam-server`.
 
-To set up a Raspberry Pi, see [the Raspberry Pi setup instructions](/reference/prepare/rpi-setup/).
+To set up a Raspberry Pi, see [the Raspberry Pi setup instructions](/reference/device-setup/rpi-setup/).

@@ -46,7 +46,7 @@ You don't need to buy or own any hardware to complete this tutorial.
 You only need the following:
 
 - A Linux, macOS or Windows computer that can run SDK code.
-- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try/rover-resources/), or [another mobile robot](/tutorials/configure/configure-rover/).
+- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try/), or [another mobile robot](/tutorials/configure/configure-rover/).
   You can use [Try Viam](https://app.viam.com/try) to borrow a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, these instructions work for any wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
 
@@ -62,7 +62,7 @@ Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your session, you can [extend your rover session](/try/reserve-a-rover/#extend-your-reservation) as long as there are no other reservations.
+If you are running out of time during your session, you can [extend your rover session](/try/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}

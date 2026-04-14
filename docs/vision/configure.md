@@ -94,8 +94,8 @@ The service works with models from various sources:
   See the documentation for the ML model service you're using (pick one that supports your model framework) for instructions on this.
 
 {{< alert title="Add support for other models" color="tip" >}}
-ML models must be designed in particular shapes to work with the `mlmodel` [classification](/reference/services/vision/mlmodel/) or [detection](/reference/services/vision/mlmodel/) models of Viam's [vision service](/reference/services/vision/).
-See [ML Model Design](/reference/configuration/mlmodel-design/) to design a modular ML model service with models that work with vision.
+ML models must be designed in particular shapes to work with the `mlmodel` [classification](/vision/configure/) or [detection](/vision/configure/) models of Viam's [vision service](/vision/configure/).
+See [ML Model Design](/reference/) to design a modular ML model service with models that work with vision.
 {{< /alert >}}
 
 ## Steps
@@ -179,7 +179,7 @@ Link the vision service to your ML model service:
 
 The `mlmodel_name` must match the name you gave your ML model service in step 1. This is how the vision service knows which model to use for inference.
 
-For the full list of `mlmodel` vision service configuration attributes, see [Configure an mlmodel Detector or Classifier](/reference/services/vision/mlmodel/).
+For the full list of `mlmodel` vision service configuration attributes, see [Configure an mlmodel Detector or Classifier](/vision/configure/).
 
 ### 5. Save the configuration
 
@@ -296,7 +296,7 @@ The following code passes an image to an ML model service, and uses the [`Infer`
 <!-- prettier-ignore -->
 | Example | Description |
 | ------- | ----------- |
-| Detect a variety of objects | Use the [`viam:vision:mlmodel`](/reference/services/vision/mlmodel/) vision service with the `EfficientDet-COCO` ML model to detect a variety of objects, including people, bicycles, and apples, in a camera feed. |
+| Detect a variety of objects | Use the [`viam:vision:mlmodel`](/vision/configure/) vision service with the `EfficientDet-COCO` ML model to detect a variety of objects, including people, bicycles, and apples, in a camera feed. |
 | Detect license plates | Use the [`viam-soleng:vision:openalpr`](https://app.viam.com/module/viam-soleng/viamalpr) vision service to detect license plates in images. This service includes its own ML model. |
 
 {{% /expand%}}

@@ -61,4 +61,4 @@ echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
 {{% /tab %}}
 {{< /tabs >}}
 
-For more information see [install the Viam CLI](/dev/tools/cli/#install).
+For more information see [install the Viam CLI](/cli/#install).

@@ -21,10 +21,10 @@ How to [use](#use) and [define](#define) the `extra` parameters that many {{< gl
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
-For example, a new model of [sensor](/reference/components/sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
+For example, a new model of [sensor](/hardware/common-components/add-a-sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
 
 The `extra` parameters in that built-in resource type's [API](/reference/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
-This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/reference/components/motor/) or all models of [camera](/reference/components/camera/).
+This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/hardware/common-components/add-a-motor/) or all models of [camera](/hardware/common-components/add-a-camera/).
 
 Send extra information in an API call in `extra` parameters as follows:
 
@@ -98,7 +98,7 @@ If `extra` information must be passed to a resource, it is handled within a new,
 To do this, define a custom implementation of the resource's API as a new _model_, and modify the resource's API methods to handle the `extra` information you send.
 Follow the steps in the [Modular Resources documentation](/operate/modules/write-a-driver-module/) to do so.
 
-For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/reference/apis/), reference this modification to the built-in [sensor](/reference/components/sensor/) resource type's [Readings](/reference/apis/components/sensor/#getreadings) method in the code of a new sensor model:
+For an example of how to check the values of keys in an `extra` parameter of a built-in resource [API method](/reference/apis/), reference this modification to the built-in [sensor](/hardware/common-components/add-a-sensor/) resource type's [Readings](/reference/apis/components/sensor/#getreadings) method in the code of a new sensor model:
 
 {{< tabs >}}
 {{% tab name="Python" %}}

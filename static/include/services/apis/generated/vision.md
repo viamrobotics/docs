@@ -1,6 +1,6 @@
 ### GetDetectionsFromCamera
 
-Get a list of detections from the next image from a specified camera using a configured [detector](/dev/reference/apis/services/vision/#detections).
+Get a list of detections from the next image from a specified camera using a configured [detector](/reference/apis/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -115,7 +115,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetDetections
 
-Get a list of detections from a given image using a configured [detector](/dev/reference/apis/services/vision/#detections).
+Get a list of detections from a given image using a configured [detector](/reference/apis/services/vision/#detections).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -256,7 +256,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassificationsFromCamera
 
-Get a list of classifications from the next image from a specified camera using a configured [classifier](/dev/reference/apis/services/vision/#classifications).
+Get a list of classifications from the next image from a specified camera using a configured [classifier](/reference/apis/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -372,7 +372,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetClassifications
 
-Get a list of classifications from a given image using a configured [classifier](/dev/reference/apis/services/vision/#classifications).
+Get a list of classifications from a given image using a configured [classifier](/reference/apis/services/vision/#classifications).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -512,7 +512,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### GetObjectPointClouds
 
-Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/dev/reference/apis/services/vision/#segmentations)).
+Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/reference/apis/services/vision/#segmentations)).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -764,7 +764,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the service API.
 Most models do not implement `DoCommand`.
 Any available model-specific commands should be covered in the model's documentation.
-If you are implementing your own vision service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+If you are implementing your own vision service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

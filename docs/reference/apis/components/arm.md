@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The arm API allows you to give commands to your [arm components](/operate/reference/components/arm/) for linear motion planning with self-collision prevention.
+The arm API allows you to give commands to your [arm components](/hardware/common-components/add-an-arm/) for linear motion planning with self-collision prevention.
 If you want the arm to avoid obstacles, or you want to plan complex motion in an automated way, use the [motion API](/reference/apis/services/motion/).
 
 The arm component supports the following methods:

@@ -1,6 +1,6 @@
 ### GetControls
 
-Get a list of the [Controls](/dev/reference/apis/components/input-controller/#control-field) that your controller provides.
+Get a list of the [Controls](/reference/apis/components/input-controller/#control-field) that your controller provides.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -347,7 +347,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `control` [(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](/dev/reference/apis/components/input-controller/#control-field) to register the function for.
+- `control` [(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](/reference/apis/components/input-controller/#control-field) to register the function for.
 - `triggers` [([]EventType)](https://pkg.go.dev/go.viam.com/rdk/components/input#EventType): The [EventTypes](#eventtype-field) that trigger the function.
 - `ctrlFunc` [(ControlFunction)](https://pkg.go.dev/go.viam.com/rdk/components/input#ControlFunction): The function to run when the specified triggers are invoked.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
@@ -414,7 +414,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the component API.
 Most models do not implement `DoCommand`.
 Any available model-specific commands should be covered in the model's documentation.
-If you are implementing your own input controller and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+If you are implementing your own input controller and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

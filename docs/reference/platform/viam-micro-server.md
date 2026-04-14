@@ -48,8 +48,8 @@ To use an ESP32 controller with custom hardware, you build a firmware version fr
 
 To quickly try out Viam for microcontrollers, you can use the pre-built binary `viam-micro-server` which supports the following components:
 
-- [`gpio`](/reference/components/servo/gpio-micro-rdk/): A servo controlled by GPIO pins.
-- [`two_wheeled_base`](/reference/components/base/two_wheeled_base/): A robotic base with differential steering.
+- [`gpio`](/hardware/common-components/add-a-servo/): A servo controlled by GPIO pins.
+- [`two_wheeled_base`](/hardware/common-components/add-a-base/): A robotic base with differential steering.
 - [`free_heap_sensor`](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src): Reports the amount of free heap memory on the microcontroller.
 - [`wifi_rssi_sensor`](https://github.com/viamrobotics/micro-rdk/tree/main/examples/modular-drivers/src): Reports the signal strength of the ESP32's WiFi connection.
 

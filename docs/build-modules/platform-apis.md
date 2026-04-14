@@ -129,7 +129,7 @@ The following steps show you how to use the following APIs from a module:
 
 ### Elevate access
 
-The [module environment variables](/reference/module-configuration/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/organization/rbac/) for the machine the module is running on.
+The [module environment variables](/reference/) `VIAM_API_KEY` and `VIAM_API_KEY_ID` provide [machine owner access](/organization/rbac/) for the machine the module is running on.
 
 If you need a higher level of access, you can pass API keys as part of the module configuration:
 

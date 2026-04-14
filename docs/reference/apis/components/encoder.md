@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The encoder API allows you to give commands to your [encoder components](/operate/reference/components/encoder/) for getting the position of a motor or a joint in ticks or degrees.
+The encoder API allows you to give commands to your [encoder components](/hardware/common-components/add-an-encoder/) for getting the position of a motor or a joint in ticks or degrees.
 
 The encoder component supports the following methods:
 

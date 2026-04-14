@@ -21,11 +21,11 @@ These components read information from the physical world.
 
 | Type                                                      | What it does                                                 | Examples                                             |
 | --------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------- |
-| [Camera](/reference/components/camera/)                   | Captures 2D images or 3D point clouds                        | USB webcams, IP cameras, depth cameras, lidar        |
-| [Encoder](/reference/components/encoder/)                 | Tracks rotational or linear position                         | Incremental encoders, absolute encoders              |
-| [Movement sensor](/reference/components/movement-sensor/) | Reports position, orientation, velocity, or angular velocity | GPS, IMU, accelerometer, gyroscope, odometry         |
-| [Power sensor](/reference/components/power-sensor/)       | Reports voltage, current, and power consumption              | INA219, INA226, current clamps                       |
-| [Sensor](/reference/components/sensor/)                   | Returns key-value readings                                   | Temperature, humidity, air quality, distance sensors |
+| [Camera](/hardware/common-components/add-a-camera/)                   | Captures 2D images or 3D point clouds                        | USB webcams, IP cameras, depth cameras, lidar        |
+| [Encoder](/hardware/common-components/add-an-encoder/)                 | Tracks rotational or linear position                         | Incremental encoders, absolute encoders              |
+| [Movement sensor](/hardware/common-components/add-a-movement-sensor/) | Reports position, orientation, velocity, or angular velocity | GPS, IMU, accelerometer, gyroscope, odometry         |
+| [Power sensor](/hardware/common-components/add-a-power-sensor/)       | Reports voltage, current, and power consumption              | INA219, INA226, current clamps                       |
+| [Sensor](/hardware/common-components/add-a-sensor/)                   | Returns key-value readings                                   | Temperature, humidity, air quality, distance sensors |
 
 ## Actuation
 
@@ -33,12 +33,12 @@ These components make things move.
 
 | Type                                      | What it does                                                          | Examples                                              |
 | ----------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Arm](/reference/components/arm/)         | Controls a multi-jointed robotic arm                                  | xArm, UR5, custom serial arms                         |
-| [Base](/reference/components/base/)       | Moves a mobile robot as a unit (no need to command individual motors) | Wheeled rovers, tracked vehicles, holonomic platforms |
-| [Gantry](/reference/components/gantry/)   | Moves along linear rails with precise positioning                     | Single-axis stages, multi-axis CNC gantries           |
-| [Gripper](/reference/components/gripper/) | Opens and closes a grasping device                                    | Parallel-jaw grippers, vacuum grippers                |
-| [Motor](/reference/components/motor/)     | Drives rotational or linear motion with speed and position control    | DC motors, stepper motors, brushless motors           |
-| [Servo](/reference/components/servo/)     | Moves to precise angular positions                                    | Hobby servos, PWM-controlled actuators                |
+| [Arm](/hardware/common-components/add-an-arm/)         | Controls a multi-jointed robotic arm                                  | xArm, UR5, custom serial arms                         |
+| [Base](/hardware/common-components/add-a-base/)       | Moves a mobile robot as a unit (no need to command individual motors) | Wheeled rovers, tracked vehicles, holonomic platforms |
+| [Gantry](/hardware/common-components/add-a-gantry/)   | Moves along linear rails with precise positioning                     | Single-axis stages, multi-axis CNC gantries           |
+| [Gripper](/hardware/common-components/add-a-gripper/) | Opens and closes a grasping device                                    | Parallel-jaw grippers, vacuum grippers                |
+| [Motor](/hardware/common-components/add-a-motor/)     | Drives rotational or linear motion with speed and position control    | DC motors, stepper motors, brushless motors           |
+| [Servo](/hardware/common-components/add-a-servo/)     | Moves to precise angular positions                                    | Hobby servos, PWM-controlled actuators                |
 
 ## Interface
 
@@ -46,23 +46,23 @@ These components provide low-level hardware access or human input.
 
 | Type                                                        | What it does                                              | Examples                                      |
 | ----------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------- |
-| [Board](/reference/components/board/)                       | Exposes GPIO pins, analog readers, and digital interrupts | Raspberry Pi GPIO, Arduino, custom I/O boards |
-| [Button](/reference/components/button/)                     | Reads presses from a physical button                      | Momentary switches, push buttons              |
-| [Generic](/reference/components/generic/)                   | Catch-all for hardware that doesn't fit another type      | Custom devices with non-standard interfaces   |
-| [Input controller](/reference/components/input-controller/) | Reads human input from control devices                    | Gamepads, joysticks, custom button panels     |
-| [Switch](/reference/components/switch/)                     | Reads position from a multi-position switch               | Toggle switches, selector switches            |
+| [Board](/hardware/common-components/add-a-board/)                       | Exposes GPIO pins, analog readers, and digital interrupts | Raspberry Pi GPIO, Arduino, custom I/O boards |
+| [Button](/hardware/common-components/add-a-button/)                     | Reads presses from a physical button                      | Momentary switches, push buttons              |
+| [Generic](/hardware/common-components/add-a-generic/)                   | Catch-all for hardware that doesn't fit another type      | Custom devices with non-standard interfaces   |
+| [Input controller](/hardware/common-components/add-an-input-controller/) | Reads human input from control devices                    | Gamepads, joysticks, custom button panels     |
+| [Switch](/hardware/common-components/add-a-switch/)                     | Reads position from a multi-position switch               | Toggle switches, selector switches            |
 
 ## Choosing a type
 
 Match your hardware to the type whose API best describes what it does:
 
-- If it **produces images**, use [camera](/reference/components/camera/).
-- If it **produces readings** (temperature, distance, pressure), use [sensor](/reference/components/sensor/).
-- If it **reports position or motion** (GPS, IMU), use [movement sensor](/reference/components/movement-sensor/).
-- If it **spins or drives linear motion**, use [motor](/reference/components/motor/).
-- If it **moves to an angle**, use [servo](/reference/components/servo/).
-- If you need **direct GPIO access**, use [board](/reference/components/board/).
-- If **nothing fits**, use [generic](/reference/components/generic/). It provides `DoCommand` for arbitrary interactions.
+- If it **produces images**, use [camera](/hardware/common-components/add-a-camera/).
+- If it **produces readings** (temperature, distance, pressure), use [sensor](/hardware/common-components/add-a-sensor/).
+- If it **reports position or motion** (GPS, IMU), use [movement sensor](/hardware/common-components/add-a-movement-sensor/).
+- If it **spins or drives linear motion**, use [motor](/hardware/common-components/add-a-motor/).
+- If it **moves to an angle**, use [servo](/hardware/common-components/add-a-servo/).
+- If you need **direct GPIO access**, use [board](/hardware/common-components/add-a-board/).
+- If **nothing fits**, use [generic](/hardware/common-components/add-a-generic/). It provides `DoCommand` for arbitrary interactions.
 
 Every type also has a `DoCommand` method for functionality beyond the standard
 API. For example, a sensor that also has a calibration routine can expose

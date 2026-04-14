@@ -7,4 +7,4 @@ aliases:
   - /dev/reference/glossary/rdk/
 ---
 
-Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-machine portion of the Viam platform, that provides [`viam-server`](/reference/viam-server/) and the Go SDK.
+Viam’s Robot Development Kit (RDK) is the [open-source](https://github.com/viamrobotics/rdk), on-machine portion of the Viam platform, that provides [`viam-server`](/reference/platform/viam-server/) and the Go SDK.

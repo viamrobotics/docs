@@ -61,7 +61,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### DoCommand
 
 Execute model-specific commands.
-If you are implementing your own generic component and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+If you are implementing your own generic component and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
 Supported by `viam-micro-server`.
 
 {{< tabs >}}

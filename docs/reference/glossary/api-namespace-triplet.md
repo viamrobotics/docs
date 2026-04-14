@@ -21,5 +21,5 @@ Each resource implements one and only one API.
 
 For example:
 
-- The API of the built-in component [camera](/reference/components/camera/) is `rdk:component:camera`, which exposes methods such as `GetImages()`.
-- The API of the built-in service [vision](/reference/services/vision/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
+- The API of the built-in component [camera](/hardware/common-components/add-a-camera/) is `rdk:component:camera`, which exposes methods such as `GetImages()`.
+- The API of the built-in service [vision](/vision/configure/) is `rdk:service:vision`, which exposes methods such as `GetDetectionsFromCamera()`.
