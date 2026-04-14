@@ -22,6 +22,36 @@
   status = 301
 
 [[redirects]]
+  from = "/data-ai/capture-data/*"
+  to = "/data/"
+  status = 301
+
+[[redirects]]
+  from = "/data-ai/data/*"
+  to = "/data/"
+  status = 301
+
+[[redirects]]
+  from = "/data-ai/ai/*"
+  to = "/vision/"
+  status = 301
+
+[[redirects]]
+  from = "/data-ai/train/*"
+  to = "/train/"
+  status = 301
+
+[[redirects]]
+  from = "/data-ai/reference/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/data-ai/*"
+  to = "/data/"
+  status = 301
+
+[[redirects]]
   from = "/manage/fleet/*"
   to = "/fleet/"
   status = 301
@@ -162,7 +192,7 @@
   [plugins.inputs]
 
   # change this key to a new one any time you need to restart from scratch
-  cacheKey = "Apr142026"
+  cacheKey = "Apr142026b"
   # either "warn" or "error"
   failBuildOnError = true
 

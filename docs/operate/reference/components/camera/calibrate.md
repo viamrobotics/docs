@@ -114,5 +114,5 @@ For more configuration and usage info, see:
 
 {{< cards >}}
 {{% card link="/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{< /cards >}}

@@ -13,7 +13,7 @@ aliases:
 
 Modules run on your machine, alongside `viam-server` as separate processes, communicating with `viam-server` over UNIX sockets.
 
-[`viam-server` manages](/operate/reference/viam-server/) the dependencies, start-up, reconfiguration, [data management](/data-ai/capture-data/capture-sync/), and shutdown behavior of your {{< glossary_tooltip term_id="resource" text="modular resources" >}}.
+[`viam-server` manages](/operate/reference/viam-server/) the dependencies, start-up, reconfiguration, [data management](/data/capture-sync/capture-and-sync-data/), and shutdown behavior of your {{< glossary_tooltip term_id="resource" text="modular resources" >}}.
 
 The lifecycle of a module and the resources it provides are as follows:
 
