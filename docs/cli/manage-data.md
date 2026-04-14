@@ -170,6 +170,8 @@ Pass `0` to delete all tabular data for your organization.
 viam data delete tabular --org-id=<org-id> --delete-older-than-days=90
 ```
 
+If the organization has a [hot data store](/data/hot-data-store/), matching data is deleted from that store as well.
+
 {{< alert title="Caution" color="caution" >}}
 Passing `--delete-older-than-days=0` deletes **all** tabular data in the organization. This command has no component or location filter.
 {{< /alert >}}
