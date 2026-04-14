@@ -27,7 +27,7 @@ Configure the gripper's frame to describe its position and orientation relative 
 
 1. In the **CONFIGURE** tab, find the gripper's configuration card.
 
-1. Click **+ Add frame**.
+1. Click the **Frame** button.
 
 1. Select the arm's frame as the parent frame.
 
@@ -80,7 +80,7 @@ If you have a camera that can see the environment, configure the camera's frame 
 
 1. In the **CONFIGURE** tab, find the camera's configuration card.
 
-1. Click **+ Add frame**.
+1. Click the **Frame** button.
 
 1. Edit the frame depending on where the camera is mounted:
 
@@ -114,7 +114,7 @@ If you have a passive object attached to the arm such as a camera mount, you wil
 
 1. Enter a name and click **Create**.
 
-1. Click **+ Add frame**.
+1. Click the **Frame** button.
 
 1. Set the parent frame to the name of the arm or gripper, depending on where the object is attached.
 

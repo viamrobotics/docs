@@ -277,7 +277,7 @@ This tells viam-server to wait for `inspector-service` to initialize before the 
 **Enable data capture on the inspector:**
 
 1. In the **CONFIGURE** tab, click on `inspector-service` to open its configuration panel
-2. Click **+** on the **Data Capture** card
+2. Click the **Data Capture** button
 3. Select the method: `DoCommand`
 4. Set **Frequency (hz)** to `0.5` (captures every 2 seconds)
 5. In the **Additional parameters** section, add the DoCommand input:

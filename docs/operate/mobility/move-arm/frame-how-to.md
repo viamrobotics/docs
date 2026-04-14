@@ -28,7 +28,7 @@ You define it implicitly by configuring the frame of a component relative to wor
 ### Add a frame to your arm
 
 1. Mount the arm in a fixed location.
-1. On your arm's configuration card, click **+ Add frame**.
+1. On your arm's configuration card, click the **Frame** button.
 1. The card will populate with the following default values:
 
    ```json {class="line-numbers linkable-line-numbers"}

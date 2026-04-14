@@ -22,10 +22,10 @@ Confirm it shows as **Live** in the upper left.
 ## 2. Enable data capture on a component
 
 1. Find your component (for example, `my-camera`) in the machine configuration.
-2. Click **+** on the **Data Capture** card.
+2. Click the **Data Capture** button.
 3. If you see a "Data management service missing" banner, click
    **Create data management service**, click **Save**, navigate back to
-   your component, and click **+** on the **Data Capture** card again.
+   your component, and click the **Data Capture** button again.
 4. Select the method to capture:
    - For a camera, select **GetImages**. This captures a frame from the camera
      each time it fires.
