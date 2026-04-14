@@ -94,7 +94,38 @@ For example, if the arm's +x points opposite to your intended +x, rotate 180 deg
 
 Find your gripper component in the **CONFIGURE** tab and click the **Frame** button.
 
-If the gripper attaches directly to the arm's end effector with no adapter plate, use a zero offset:
+#### Pick where the gripper frame origin sits
+
+Choose a point on the gripper as the frame origin. It is up to you, but a
+point near the center of the gripper jaws is usually the most convenient
+choice: when you later call the motion service to move the gripper to a
+target pose, the point you pick here is what gets moved to that pose.
+
+{{<imgproc src="/operate/mobility/gripper-frame.png" resize="x1100" declaredimensions=true alt="A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y." style="width:600px" class="imgzoom" >}}
+
+The gripper in the image above has an origin 110 mm from the arm's end
+effector along the arm's z-axis, and it is rotated 90 degrees about the
+z-axis relative to the arm. The frame configuration for that gripper is:
+
+```json
+{
+  "parent": "my-arm",
+  "translation": { "x": 0, "y": 0, "z": 110 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 90 }
+  }
+}
+```
+
+#### Configure the frame
+
+Set the `parent` to your arm's component name. Enter the gripper frame
+origin's translation (in millimeters) and orientation relative to the
+arm's end effector.
+
+If the gripper attaches directly to the arm's end effector with no
+adapter plate and no rotation, use a zero offset:
 
 ```json
 {
@@ -107,8 +138,9 @@ If the gripper attaches directly to the arm's end effector with no adapter plate
 }
 ```
 
-If the gripper is mounted through an adapter plate or flange that adds height, set the z translation to the adapter height in millimeters.
-For example, with a 50 mm adapter plate:
+If the gripper is mounted through an adapter plate or flange that adds
+height, set the z translation to the adapter height in millimeters. For
+example, with a 50 mm adapter plate:
 
 ```json
 {
@@ -122,6 +154,24 @@ For example, with a 50 mm adapter plate:
 ```
 
 Click **Save**.
+
+#### Check whether the gripper has a kinematics file
+
+Some grippers ship with a kinematics file that describes the position of
+the jaws as they open and close, along with collision geometry for the
+jaw linkages. If the gripper has one, the motion planner already knows
+the gripper's volume and you do not need to add collision geometry to
+the gripper frame.
+
+Call `GetKinematics` on the gripper (or check the module source) to see
+whether kinematics are provided. If they are, verify that the gripper
+renders as expected in the **3D SCENE** tab. If it does, you are done.
+
+If the gripper does not have a kinematics file and you want the planner
+to avoid collisions with the gripper body, add a `geometry` field to the
+gripper's frame describing its physical volume. See
+[Define obstacles](/motion-planning/obstacles/#attach-a-passive-object-to-a-component)
+for the pattern.
 
 ### 5. Add a frame to the wrist camera
 

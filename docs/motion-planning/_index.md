@@ -86,6 +86,7 @@ your hardware.
 {{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
 {{% card link="/motion-planning/motion-how-to/move-arm-with-constraints/" noimage="true" %}}
 {{% card link="/motion-planning/motion-how-to/avoid-obstacles/" noimage="true" %}}
+{{% card link="/motion-planning/motion-how-to/drive-a-base/" noimage="true" %}}
 {{% card link="/motion-planning/motion-how-to/move-gantry/" noimage="true" %}}
 {{< /cards >}}
 

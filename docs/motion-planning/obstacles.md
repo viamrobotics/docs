@@ -69,6 +69,19 @@ by a vision system.
 
 Both types use the same geometry primitives.
 
+### Passive objects attached to a component
+
+Some objects are always attached to a component but have no API of their own:
+a camera mount bolted to an arm, a tool changer plate, a cable bundle. You
+want the motion planner to treat them as collision volume, but they are not
+components Viam can talk to.
+
+Use a `fake` `generic` component as a container for the geometry. Set its
+frame's parent to the component it attaches to, add the geometry to its
+frame, and the motion planner will treat the shape as part of the arm's
+kinematic chain. The fake component never runs; it exists only to carry the
+geometry.
+
 ### WorldState
 
 WorldState is the container that holds obstacle and transform information passed
@@ -140,7 +153,100 @@ the top surface of the 40 mm thick table aligns with z = 0.
 Click **Save**. The table geometry is now part of the frame system and the
 motion planner will avoid it automatically.
 
-### 2. Define obstacles programmatically with WorldState
+### 2. Attach a passive object to a component
+
+Use this pattern for objects that are permanently attached to a component but
+have no API of their own: camera mounts, adapter plates, fixed tooling, cable
+bundles.
+
+1. In the **CONFIGURE** tab, click the **+** button, then **Component or
+   service**, then **generic**.
+2. Select the **fake** component (not the service — services do not carry
+   geometry).
+3. Name the component descriptively (for example, `arm-camera-mount`) and
+   click **Create**.
+4. Click **+ Add frame**.
+5. Set the parent frame to the component the object is attached to. Use the
+   arm name if the object is bolted to the arm's end effector, the gripper
+   name if it is attached to the gripper, and so on.
+6. Add a `geometry` field describing the object's shape:
+
+{{< tabs >}}
+{{% tab name="Box" %}}
+
+```json
+"geometry": {
+  "type": "box",
+  "x": 80,
+  "y": 250,
+  "z": 200
+}
+```
+
+The geometry origin sits at the box's center. The box's z-axis runs along
+its `z` dimension, and so on for `x` and `y`.
+
+{{% /tab %}}
+{{% tab name="Capsule" %}}
+
+```json
+"geometry": {
+  "type": "capsule",
+  "r": 20,
+  "l": 160
+}
+```
+
+`r` is the radius and `l` is the overall length (including the hemispherical
+end caps). The capsule's long axis is its z-axis; the total length must be
+at least twice the radius.
+
+{{% /tab %}}
+{{% tab name="Sphere" %}}
+
+```json
+"geometry": {
+  "type": "sphere",
+  "r": 90
+}
+```
+
+Spheres have no meaningful orientation.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The geometry is centered on the frame's origin by default. Use the frame's
+`translation` to shift the geometry relative to its parent. For example, if
+you have a capsule of length 160 mm and you want it to start at the parent
+frame's origin and extend in +z, set the frame translation to
+`{"x": 0, "y": 0, "z": 80}` so the capsule's center sits 80 mm above the
+parent origin.
+
+Click **Save**. Open the **3D SCENE** tab and confirm the geometry appears
+in the expected location.
+
+If the geometry's long axis needs to point in a different direction than its
+default z-axis, rotate the frame's `orientation`. For a capsule aligned along
+the parent's x-axis:
+
+```json
+"orientation": {
+  "type": "ov_degrees",
+  "value": { "x": 1, "y": 0, "z": 0, "th": 0 }
+}
+```
+
+For a box rotated 30 degrees around its z-axis:
+
+```json
+"orientation": {
+  "type": "ov_degrees",
+  "value": { "x": 0, "y": 0, "z": 1, "th": 30 }
+}
+```
+
+### 3. Define obstacles programmatically with WorldState
 
 For obstacles that change at runtime, build a WorldState in your code.
 
@@ -245,7 +351,7 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-### 3. Use WorldState with the motion service
+### 4. Use WorldState with the motion service
 
 Pass the WorldState to the motion service's `Move` method.
 
@@ -309,7 +415,7 @@ This typically means the obstacles are too restrictive, the destination is insid
 an obstacle, or the arm physically cannot reach the destination without
 colliding.
 
-### 4. Visualize obstacles
+### 5. Visualize obstacles
 
 Check the Viam app to see your obstacle geometry:
 
@@ -325,8 +431,8 @@ Dynamic obstacles (defined through WorldState in code) do not appear in the
 
 1. Add a table geometry to a component frame in the CONFIGURE tab (step 1).
    Open the 3D SCENE tab and verify the table appears.
-2. Write code to define a dynamic obstacle using WorldState (step 2) and pass
-   it to a `Move` call (step 3).
+2. Write code to define a dynamic obstacle using WorldState (step 3) and pass
+   it to a `Move` call (step 4).
 3. Place a test obstacle between the arm and a target position. Verify the arm
    takes an indirect path to avoid it.
 4. Remove the test obstacle and move again. Verify the arm takes a more direct
