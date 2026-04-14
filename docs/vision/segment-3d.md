@@ -51,10 +51,9 @@ Name the detector something memorable, for example `person_detector` or `red_blo
 ## 3. Add the detections-to-segments module
 
 1. Open the **CONFIGURE** tab in the Viam app.
-2. Click the **+** icon and select **Component or service**.
-3. Choose the `vision` type, then search for `detections-to-segments`.
-4. Click **Add module** if prompted, then **Add component**.
-5. Give the service a name (for example, `my_segmenter`) and click **Create**.
+2. Click the **+** icon and select **Configuration block**.
+3. In the search field, type `detections-to-segments` and select the matching result.
+4. Give the service a name (for example, `my_segmenter`) and click **Add component**. The module is installed automatically.
 
 The module downloads and starts when you save the configuration.
 

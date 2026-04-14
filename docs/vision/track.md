@@ -38,19 +38,13 @@ For example, the first person detected becomes `person_0_20250413_143052`. The `
 
 ## Configure the object tracker
 
-### 1. Add the module
+### 1. Add the object-tracker vision service
 
 1. Click **+** and select **Configuration block**.
-2. Search for **object-tracker** and select `viam:object-tracker`.
-3. Click **Add module**.
+2. In the search field, type `object-tracker` and select the `viam:vision:object-tracker` result.
+3. Name the service (for example, `my-tracker`) and click **Add component**. The module is installed automatically.
 
-### 2. Add the vision service
-
-1. Click **+** and select **Configuration block**.
-2. Search for **object-tracker** under vision services and select `viam:vision:object-tracker`.
-3. Click **Add component**, name it (for example, `my-tracker`), and click **Add component** again to confirm.
-
-### 3. Configure attributes
+### 2. Configure attributes
 
 Set the required attributes:
 

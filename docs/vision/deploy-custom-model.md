@@ -72,9 +72,9 @@ The model is now available in your organization. You can also publish the model 
 On the machine you want the model to run on:
 
 1. Open the **CONFIGURE** tab.
-2. Click the **+** icon and select **Component or service**.
-3. Search for the ML model service matching your model's framework (for example, `ML model / TFLite CPU`).
-4. Click **Add component**, name it (for example, `my-ml-model`), and click **Create**.
+2. Click the **+** icon and select **Configuration block**.
+3. In the search field, type the ML model service name matching your model's framework (for example, `tflite_cpu` for TFLite models) and select the matching result.
+4. Name the service (for example, `my-ml-model`) and click **Add component**.
 5. In the ML model service panel, click **Select model** and pick the model you just uploaded. Choose a version (or **Latest** during development).
 6. Save.
 

@@ -70,9 +70,8 @@ Viam runs training jobs on cloud infrastructure. You do not need to provision a 
 
 Pick a non-critical machine (or a local test machine). In its ML model service panel:
 
-1. Open the **ML model** dropdown.
-2. Select the new model version.
-3. Save the configuration.
+1. In the **Version** dropdown, select the new model version.
+2. Save the configuration.
 
 The `viam-server` on that machine downloads the new model and restarts the ML model service. No application restart is needed.
 

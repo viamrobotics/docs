@@ -46,11 +46,11 @@ Configure an [ML model service](/data-ai/ai/deploy/) with an implementation that
 {{% tab name="Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-2. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
-3. Select the `vision` type, then select the `ML model` model.
-4. Enter a name for your service and click **Create**.
-5. In the **ML Model** section, select the ML model service your model is deployed on.
-6. In the **Default Camera** section, select the camera the service should use by default for calls such as `GetDetectionsFromCamera`.
+2. Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+3. In the search field, type `vision` or `mlmodel` and select the `vision / mlmodel` result.
+4. Enter a name for your service and click **Add component**.
+5. In the **ML MODEL** section, select the ML model service your model is deployed on.
+6. In the **DEFAULT CAMERA** section, select the camera the service should use by default for calls such as `GetDetectionsFromCamera`.
 7. Adjust other attributes in the attributes table as applicable.
 
 {{% /tab %}}

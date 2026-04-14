@@ -60,9 +60,9 @@ For ML model services that support GPUs (like [Triton on Jetson](https://github.
 The ML model service loads the model file and exposes it for inference. It does not interpret the output; that is the vision service's job.
 
 1. Open your machine in the Viam app and go to the **CONFIGURE** tab.
-2. Click the **+** icon next to your machine part and select **Component or service**.
-3. Search for the ML model service that matches your model's framework (for example, `ML model / TFLite CPU` for TFLite models).
-4. Click **Add component**, give it a name (for example, `my-ml-model`), and click **Create**.
+2. Click the **+** icon next to your machine part and select **Configuration block**.
+3. In the search field, type the ML model service name (for example, `tflite_cpu` for TFLite models) and select the matching result.
+4. Give it a name (for example, `my-ml-model`) and click **Add component**.
 
 ## 3. Select the model
 
@@ -82,11 +82,11 @@ Save the configuration. `viam-server` downloads the model package to the machine
 
 The ML model service is a building block. To get detections, classifications, or point cloud objects from your code, add a vision service that wraps it.
 
-1. Click the **+** icon and select **Component or service** again.
-2. Search for `vision / mlmodel` (also available as "ML model" under the vision type).
-3. Click **Add component**, name it (for example, `my-detector`), and click **Create**.
-4. In the vision service panel's **ML Model** dropdown, select the ML model service from step 3.
-5. In the **Default Camera** dropdown, pick the camera the vision service should use by default.
+1. Click the **+** icon and select **Configuration block**.
+2. In the search field, type `vision` or `mlmodel` and select the `vision / mlmodel` result.
+3. Name the service (for example, `my-detector`) and click **Add component**.
+4. In the vision service panel's **ML MODEL** section, select the ML model service from step 3.
+5. In the **DEFAULT CAMERA** section, pick the camera the vision service should use by default.
 6. Save.
 
 If the underlying model uses non-standard tensor names or preprocessing conventions, additional configuration is required. See the [`mlmodel` reference](/reference/services/vision/mlmodel/) for every attribute, and [Tune detection quality](/vision/tune/) for a symptom-to-attribute map.

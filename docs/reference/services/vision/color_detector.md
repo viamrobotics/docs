@@ -33,9 +33,9 @@ Object colors vary dramatically with lighting. Verify your target color value un
 {{% tab name="Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-2. Click the **+** icon next to your machine part and select **Component or service**.
-3. Select the `vision` type, then select the `color detector` model.
-4. Enter a name and click **Create**.
+2. Click the **+** icon next to your machine part and select **Configuration block**.
+3. In the search field, type `color detector` and select the `vision / color_detector` result.
+4. Enter a name and click **Add component**.
 5. Choose a color and a hue tolerance, then set a segment size in pixels.
 6. Select a default camera.
 

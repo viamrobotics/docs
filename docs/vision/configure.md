@@ -25,9 +25,9 @@ Viam splits ML inference into two services. The **ML model service** loads the m
 The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point.
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
-2. Click the **+** icon next to your machine part and select **Component or service**.
-3. Search for **tflite_cpu** (or the service matching your model format; see [Deploy a model from the registry](/vision/deploy-from-registry/#model-framework-support) for the framework table).
-4. Click **Add component**, name it `my-ml-model`, and click **Create**.
+2. Click the **+** icon next to your machine part and select **Configuration block**.
+3. In the search field, type `tflite_cpu` (or the service matching your model format; see [Deploy a model from the registry](/vision/deploy-from-registry/#model-framework-support) for the framework table) and select the matching result.
+4. Name the service `my-ml-model` and click **Add component**.
 
 ## 2. Configure the ML model service
 
@@ -69,9 +69,9 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
 
 ## 3. Add a vision service
 
-1. Click the **+** icon and select **Component or service**.
-2. Search for **vision / mlmodel** (or **computer vision**).
-3. Click **Add component**, name it `my-detector`, and click **Create**.
+1. Click the **+** icon and select **Configuration block**.
+2. In the search field, type `vision` or `mlmodel` and select the `vision / mlmodel` result.
+3. Name the service `my-detector` and click **Add component**.
 
 ## 4. Configure the vision service
 
