@@ -43,7 +43,7 @@ If your fleet shares a [fragment](/fleet/fragments/), update the ML model servic
 
 Save the fragment. Every machine using it picks up the change on its next config sync (within seconds under normal operation).
 
-Tracking "latest" is simpler but less safe for production: any new version published to the registry auto-deploys. Pin specific versions when you want to control when rollouts happen.
+Tracking "latest" is simpler but less safe for production. Any new version published to the [registry](https://app.viam.com/registry) auto-deploys. Pin specific versions when you want to control when rollouts happen.
 
 ## Stage the rollout
 

@@ -17,7 +17,7 @@ aliases:
   - /data-ai/services/vision/mlmodel/
 ---
 
-The `mlmodel` vision service wraps a deployed ML model and exposes it through the standard [vision service API](/reference/apis/services/vision/). At startup, the service probes the model's tensor metadata to determine whether it can serve as a classifier, a detector, or a 3D segmenter, and registers the operations that work.
+The `mlmodel` vision service wraps a deployed ML model and exposes it through the standard [vision service API](/reference/apis/services/vision/). At startup, the service reads the model's tensor metadata and decides which of three roles the model can fulfill: classifier, detector, or 3D segmenter. It registers every role the model supports.
 
 ## Prerequisites {#prerequisites}
 
@@ -28,7 +28,7 @@ Before configuring an `mlmodel` vision service, you need:
 
 <h4>1. A trained or uploaded ML model</h4>
 
-Add an existing model from the [registry](https://app.viam.com/registry) or [train one from your data](/data-ai/train/train/). The model must be a TensorFlow Lite, TensorFlow, ONNX, or PyTorch model.
+Add an existing model from the [registry](https://app.viam.com/registry) or [train one from your data](/data-ai/train/train/). The model must be TensorFlow Lite, TensorFlow, ONNX, or PyTorch.
 
 {{% /manualcard %}}
 {{% manualcard %}}

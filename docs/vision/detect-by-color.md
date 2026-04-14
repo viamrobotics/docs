@@ -26,7 +26,7 @@ Pick **ML detection** when:
 - The target varies in color or texture (for example, "detect any person").
 - Lighting changes significantly across sessions.
 - Multiple distinct object classes matter.
-- You have labeled training data or can use a pre-trained model from the registry.
+- You have labeled training data or can use a pre-trained model from the [registry](https://app.viam.com/registry).
 
 You can also combine them: a color detector for a known marker alongside an ML detector for people and obstacles.
 
@@ -250,7 +250,7 @@ Sample the actual on-screen color from a live camera screenshot and use that hex
 
 {{< expand "Works in testing, fails in production" >}}
 
-Color detection is brittle to lighting changes. A system that works under controlled lab lighting often fails under sunlight, fluorescent lights (which flicker at 50 or 60 Hz and can beat against camera frame rates), or mixed light.
+Color detection is sensitive to lighting changes. A system that works under controlled lab lighting often fails under sunlight, under fluorescent lights (which flicker at 50 or 60 Hz and can beat against camera frame rates), or under mixed light.
 
 Fixes, in order of preference:
 

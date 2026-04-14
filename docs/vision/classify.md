@@ -28,7 +28,7 @@ A single classification call returns multiple results ranked by confidence. The 
 
 ### Single-label vs multi-label classification
 
-**Single-label classification** assumes the image belongs to exactly one category. The confidences across all classes sum to approximately 1.0. If the model says "cat: 0.85", it implicitly says "not-dog: 0.15". Most classification models work this way.
+**Single-label classification** assumes the image belongs to exactly one category. The confidences across all classes sum to approximately 1.0, so a cat score of `0.85` leaves `0.15` of confidence spread across the remaining classes. Most classification models work this way.
 
 **Multi-label classification** allows the image to belong to multiple categories simultaneously. An image could be classified as both "outdoor: 0.92" and "sunny: 0.88" at the same time. The confidences are independent and do not sum to 1.0.
 

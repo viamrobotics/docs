@@ -28,13 +28,13 @@ aliases:
   - /manage/data/deploy-model/
 ---
 
-The fastest way to get a working vision pipeline is to pick a pre-trained model from the Viam registry. You select a model, pick a framework-matching ML model service, and save the config. `viam-server` downloads the model to the machine and the vision service can use it immediately.
+The fastest way to get a working vision pipeline is to pick a pre-trained model from the Viam [registry](https://app.viam.com/registry). Select a model, pick a framework-matching ML model service, and save the config. `viam-server` downloads the model to the machine and the vision service can use it immediately.
 
-Use this guide when you have a task that a general-purpose or community-shared model already handles (people detection, common objects, COCO-class recognition). If you need a custom model trained on your data, see [Deploy a custom ML model](/vision/deploy-custom-model/).
+Use this guide when a general-purpose or community-shared model already handles your task (people detection, common objects, COCO-class recognition). If you need a custom model trained on your data, see [Deploy a custom ML model](/vision/deploy-custom-model/).
 
 ## 1. Pick a model
 
-Browse the [ML models in the registry](https://app.viam.com/registry?type=ML+Model). Each model entry shows its framework, supported hardware, and a short description.
+Browse the [ML models in the registry](https://app.viam.com/registry). Each model entry shows its framework, supported hardware, and a short description.
 
 When picking, match the model to:
 
@@ -68,7 +68,7 @@ The ML model service loads the model file and exposes it for inference. It does 
 
 In the ML model service panel:
 
-1. Click **Select model**. A dialog opens showing models from your organization and the public registry.
+1. Click **Select model**. A dialog opens showing models from your organization and the public [registry](https://app.viam.com/registry).
 2. Filter or search for the model you picked in step 1.
 3. Click the model to select it.
 4. In the **Version** dropdown, choose either a specific version or **Latest**:
@@ -113,7 +113,7 @@ See [Tune detection quality](/vision/tune/) for detailed fixes.
 
 ## Update to a newer model version later
 
-When a newer version of the model is published to the registry:
+When a newer version of the model is published to the [registry](https://app.viam.com/registry):
 
 1. Open the ML model service panel on your machine.
 2. Change the **Version** dropdown to the new version.

@@ -8,13 +8,13 @@ description: "Deploy a model you trained outside Viam (or trained yourself on Vi
 date: "2026-04-14"
 ---
 
-Use this guide when you have a trained model file that is not already in the Viam registry. That covers three cases:
+Use this guide when you have a trained model file that is not already in the Viam [registry](https://app.viam.com/registry). That covers three cases:
 
-- A model you trained on Viam data using [managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
-- A model you trained entirely outside Viam (local, another cloud, a notebook).
-- A community model from elsewhere (GitHub, Hugging Face) that you want to run on your machines.
+- You trained the model on Viam data using [managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/).
+- You trained it entirely outside Viam (local, another cloud, a notebook).
+- You found it elsewhere (GitHub, Hugging Face) and want to run it on your machines.
 
-If you just want to pick a ready-made model from the Viam registry, see [Deploy an ML model from the registry](/vision/deploy-from-registry/) instead.
+If you just want to pick a ready-made model from the [registry](https://app.viam.com/registry), see [Deploy an ML model from the registry](/vision/deploy-from-registry/) instead.
 
 ## 1. Confirm the model format is supported
 
@@ -29,7 +29,7 @@ If your training workflow produces a different format (for example, Keras HDF5),
 
 ## 2. Meet the tensor shape and name requirements
 
-The `mlmodel` vision service expects specific tensor conventions from the model it wraps. If your model does not match, the vision service either fails to register in a role or produces garbled output.
+The `mlmodel` vision service expects specific tensor conventions from the model it wraps. If the model does not match, the vision service fails to come up as a detector or classifier, or it comes up but produces garbled output.
 
 **Detector models must expose:**
 
@@ -47,7 +47,7 @@ The `mlmodel` vision service expects specific tensor conventions from the model 
 - Input channel order is RGB by default. If your model expects BGR, set [`input_image_bgr: true`](/vision/tune/#wrong-labels-or-every-label-fires).
 - Bounding boxes are `[xmin, ymin, xmax, ymax]` normalized to `[0, 1]`. If your model outputs a different order, use [`xmin_ymin_xmax_ymax_order`](/vision/tune/#bounding-boxes-appear-shifted-or-mirrored).
 
-If any of these assumptions do not match your model, you do not have to retrain. Set the vision service attributes to bridge the gap. See [Tune detection quality](/vision/tune/).
+If your model disagrees with any of these assumptions, retraining is not required. Set the matching vision service attributes to bridge the gap. See [Tune detection quality](/vision/tune/).
 
 **Tensor names:** if your model does not use the exact names above, you can remap them on the vision service without retouching the model. See [Tune detection quality](/vision/tune/#tensor-names-do-not-match).
 
@@ -65,7 +65,7 @@ Models live at the organization level in Viam. Uploading a model is a one-time a
    - **Labels file** (optional but recommended): a plain text file with one label per line. Line number (zero-indexed) is the class ID.
 4. Click **Upload**.
 
-The model is now available in your organization. For an alternative registry-based workflow, you can also publish the model to the public registry by setting its visibility, but the MODELS tab upload is enough for running it on your own machines.
+The model is now available in your organization. You can also publish the model to the public [registry](https://app.viam.com/registry) by setting its visibility, but the MODELS tab upload is enough for running the model on your own machines.
 
 ## 4. Configure the ML model service
 

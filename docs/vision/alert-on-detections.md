@@ -12,7 +12,7 @@ aliases:
 date: "2026-04-14"
 ---
 
-You want to be notified when your camera detects something specific -- a person in a restricted area, a missing hard hat, or an anomaly on a production line. This guide shows you how to connect your vision service to Viam's trigger system so you receive an email or webhook whenever a detection occurs. No custom code is required.
+You want to be notified when your camera detects something specific: a person in a restricted area, a missing hard hat, or an anomaly on a production line. This guide shows you how to connect your vision service to Viam's trigger system so you receive an email or webhook whenever a detection occurs. No custom code is required.
 
 ## Concepts
 

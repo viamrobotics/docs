@@ -260,7 +260,7 @@ After the module is deployed, configure its attributes in the Viam app:
 
 Each time you make changes, run `viam module reload` again to rebuild and redeploy.
 
-### 8. Upload to the registry
+### 8. Upload to the [registry](https://app.viam.com/registry)
 
 Once your module is working:
 
@@ -306,5 +306,5 @@ If your module wraps another resource, update any services or processes that ref
 ## What's Next
 
 - [Alert on Detections](/vision/alert-on-detections/) -- send email or webhook notifications when specific objects are detected.
-- [Deploy a Module](/build-modules/deploy-a-module/) -- package and upload your module to the Viam Registry.
+- [Deploy a Module](/build-modules/deploy-a-module/) -- package and upload your module to the Viam [registry](https://app.viam.com/registry).
 - [Vision Service API Reference](/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.

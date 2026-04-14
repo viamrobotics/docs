@@ -47,7 +47,7 @@ Point the service at your model file.
 }
 ```
 
-`${packages.my-model}` resolves to the directory where the registry package was downloaded. Replace `my-model` with the name of your deployed model package.
+`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package.
 
 **Local model file:**
 
@@ -88,7 +88,7 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
 
 `mlmodel_name` must match the name of the ML model service from step 1.
 
-For the full list of `mlmodel` vision service attributes (confidence thresholds, per-label thresholds, tensor remapping, input normalization), see the [mlmodel reference](/reference/services/vision/mlmodel/). If your detections come out shifted, mirrored, or with unexpected labels, [Tune detection quality](/vision/tune/) maps symptoms to specific attributes.
+For the full list of `mlmodel` vision service attributes (confidence thresholds, per-label thresholds, tensor remapping, input normalization), see the [mlmodel reference](/reference/services/vision/mlmodel/). If your detections come out shifted, mirrored, or with unexpected labels, see [Tune detection quality](/vision/tune/) to find the attribute that fixes your symptom.
 
 ## 5. Save and verify
 

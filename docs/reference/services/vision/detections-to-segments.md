@@ -15,7 +15,7 @@ aliases:
   - /data-ai/services/vision/detector_3d_segmenter/
 ---
 
-The `viam:vision:detections-to-segments` vision service wraps an existing 2D detector and projects its bounding boxes into 3D point cloud objects using a depth camera's intrinsic parameters. The label and pixels associated with each 2D detection become the label and point cloud of the corresponding 3D segment.
+The `viam:vision:detections-to-segments` vision service wraps an existing 2D detector and projects its bounding boxes into 3D point cloud objects using a depth camera's intrinsic parameters. Each 2D detection produces a corresponding 3D segment that carries the original label and whose point cloud contains the projected pixels from inside the 2D box.
 
 The camera you reference must provide both 2D images and point cloud data (for example, an Intel RealSense D400-series camera configured with the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)). A plain 2D camera will not work.
 
@@ -24,7 +24,7 @@ This model previously shipped with core RDK as `detector_3d_segmenter`. It now s
 ## Prerequisites
 
 - A configured 2D detector vision service (for example, an [`mlmodel`](/reference/services/vision/mlmodel/) or [`color_detector`](/reference/services/vision/color_detector/)).
-- A camera that returns both color images and a point cloud. See the RealSense and OAK-D modules in the [registry](https://app.viam.com/registry?type=Module).
+- A camera that returns both color images and a point cloud. See the RealSense and OAK-D modules in the [registry](https://app.viam.com/registry).
 
 ## Install the module
 

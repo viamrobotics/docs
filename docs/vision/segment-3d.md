@@ -8,7 +8,7 @@ description: "Use the vision service's GetObjectPointClouds method to find and l
 date: "2026-04-14"
 ---
 
-When a robot needs to know where objects are in 3D space (not just where they appear in a 2D image), use 3D object segmentation. The vision service returns a list of point cloud objects, one per detected object, each with a label, a 3D bounding box, and a center coordinate. Typical uses: guide an arm to pick up an object, feed obstacle positions into a navigation stack, or measure the size of a physical item.
+When a robot needs to know where objects are in 3D space (not just where they appear in a 2D image), use 3D object segmentation. The vision service returns a list of point cloud objects, one per detected object, each with a label, a 3D bounding box, and a center coordinate. Typical uses are guiding an arm to pick up an object, feeding obstacle positions into a navigation stack, or measuring the size of a physical item.
 
 3D segmentation requires more than a camera and an ML model. You need a depth-capable camera and a segmenter that knows how to project 2D detections into 3D.
 
@@ -24,7 +24,7 @@ The pipeline has three resources:
 
 1. A **depth camera** returns both a color image and a point cloud from the same frame.
 2. A **2D detector** (an `mlmodel` or `color_detector` vision service) finds bounding boxes in the color image.
-3. A **3D segmenter** (the `viam:vision:detections-to-segments` module) takes the 2D bounding boxes and, using the camera's intrinsic parameters, projects the pixels inside each box into 3D space. The label and pixels of each 2D detection become the label and point cloud of the 3D object.
+3. A **3D segmenter** (the `viam:vision:detections-to-segments` module) takes the 2D bounding boxes and, using the camera's intrinsic parameters, projects the pixels inside each box into 3D space. Each 2D detection produces a corresponding 3D object that keeps the original label and carries the projected pixels as its point cloud.
 
 The segmenter returns results through the vision service's [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) method.
 

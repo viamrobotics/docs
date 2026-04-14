@@ -13,7 +13,7 @@ aliases:
 
 Object detection operates on single frames. It tells you what is in the image right now, but nothing about what was in the previous frame. When you run detections at 5 frames per second, you get 5 independent lists of bounding boxes with no way to tell whether a detection in frame 2 corresponds to the same object as in frame 1.
 
-The [`viam:object-tracker` module](https://app.viam.com/module/viam/object-tracker) solves this by wrapping an existing detector and camera, matching detections across consecutive frames, and assigning stable track IDs. You can answer questions like: how many cars have passed through this intersection? How long has this person been standing here?
+The [`viam:object-tracker` module](https://app.viam.com/module/viam/object-tracker) solves this problem. It wraps an existing detector and camera, matches detections across consecutive frames, and assigns each tracked object a stable ID. With track IDs you can answer questions like "how many cars have passed through this intersection?" and "how long has this person been standing here?"
 
 ## How it works
 

@@ -1,5 +1,5 @@
 ---
-linkTitle: "How it works"
+linkTitle: "How the vision service works"
 title: "How the vision service works"
 weight: 5
 layout: "docs"
@@ -29,7 +29,7 @@ The **vision service** handles the semantics: what does "run a detection" mean, 
 
 This separation means:
 
-- You can **update your model** (retrain, swap architectures, pin to a new registry version) without changing your vision service configuration.
+- You can **update your model** (retrain, swap architectures, pin to a new [registry](https://app.viam.com/registry) version) without changing your vision service configuration.
 - You can **run the same model against multiple cameras** by creating multiple vision services that reference one ML model service.
 - **Different model formats** (TFLite, ONNX, TensorFlow, PyTorch) are handled by different ML model service implementations, but the vision service API stays the same, so your application code does not care which format you chose.
 - **The vision service is what your code interacts with.** You almost never call the ML model service directly from application code.
@@ -50,7 +50,7 @@ If none of the roles can be fulfilled (usually because the tensor names or shape
 
 Only three pieces of configuration change when you swap models:
 
-1. **The ML model service's model file** (`model_path` for local files or a registry package reference).
+1. **The ML model service's model file** (`model_path` for local files or a [registry](https://app.viam.com/registry) package reference).
 2. **Labels**, if the new model uses different classes.
 3. **Preprocessing attributes** on the vision service (`input_image_mean_value`, `input_image_std_dev`, `input_image_bgr`, `xmin_ymin_xmax_ymax_order`) if the new model expects different input or output conventions.
 
@@ -63,7 +63,7 @@ The `mlmodel` service covers most ML-backed tasks, but two other built-in models
 - **[`color_detector`](/reference/services/vision/color_detector/)** runs entirely on heuristic hue matching. No model, no training data, no ML model service required. Use it for tasks where the target stands out by color.
 - **[`viam:vision:detections-to-segments`](/reference/services/vision/detections-to-segments/)** projects 2D detections from another vision service into 3D point cloud objects using depth-camera intrinsics. Use it when a robot needs physical 3D positions of detected objects.
 
-For anything else (face recognition, pose estimation, specialized detectors), browse the [registry](https://app.viam.com/registry?type=Vision+Service).
+For anything else (face recognition, pose estimation, specialized detectors), browse the [registry](https://app.viam.com/registry).
 
 ## Next steps
 

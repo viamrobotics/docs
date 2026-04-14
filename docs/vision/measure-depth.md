@@ -43,7 +43,7 @@ A typical indoor scene captured by a depth camera contains tens of thousands to 
 
 ### Depth maps vs point clouds
 
-A **depth map** is a 2D image where each pixel value represents the distance from the camera to the surface at that pixel location. It is essentially a grayscale image where brighter pixels are farther away (or vice versa, depending on the encoding).
+A **depth map** is a 2D image where each pixel's value is the distance from the camera to the surface. It is essentially a grayscale image where brighter pixels are farther away (or vice versa, depending on the encoding).
 
 A **point cloud** is the 3D representation: each pixel in the depth map is projected into 3D space using the camera's intrinsic parameters. The point cloud contains explicit (x, y, z) coordinates.
 

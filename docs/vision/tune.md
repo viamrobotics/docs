@@ -46,7 +46,7 @@ The example above says "my model's output position 1 holds xmin, position 0 hold
 
 ## Wrong labels or every label fires
 
-Neural network models are typically trained on images that have been preprocessed: normalized pixel values, specific channel order (RGB or BGR), and specific resize behavior. If the vision service's preprocessing does not match, the model sees garbage input and its labels are unrelated to what is actually in the frame.
+Neural network models are typically trained on preprocessed images: pixel values are normalized, channel order is either RGB or BGR, and the image is resized a particular way. If the vision service's preprocessing does not match what the model expects, the model sees garbage input and its labels will not match what is actually in the frame.
 
 Three attributes control preprocessing:
 
@@ -67,7 +67,7 @@ Three attributes control preprocessing:
 
 Leave all three unset when the model was trained on raw pixel values in `[0, 255]` without normalization. The vision service skips preprocessing in that case.
 
-**How to find the right values:** Check the model card or the training script. Every standard detection architecture documents its preprocessing: MobileNet, EfficientDet, YOLO variants, and ResNet each have published conventions.
+**How to find the right values:** Check the model card or the training script. Standard detection architectures publish their preprocessing conventions. Look up the values for MobileNet, EfficientDet, YOLO variants, or ResNet in that architecture's documentation.
 
 ## Zero detections
 

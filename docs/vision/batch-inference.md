@@ -23,7 +23,7 @@ Use `viam infer` to run a deployed ML model against an image that is already sto
 
 - The [Viam CLI](/cli/) installed and authenticated (`viam login`).
 - An image captured to the Viam Cloud with a known binary data ID.
-- A deployed ML model in the Viam registry (yours or shared with you).
+- A deployed ML model in the Viam [registry](https://app.viam.com/registry) (yours or shared with you).
 - Your organization ID and the model's organization ID.
 
 ## 1. Find the binary data ID
@@ -129,7 +129,7 @@ while read -r BIN_ID; do
 done < ids.txt
 ```
 
-Run time is roughly seconds per image plus cold-start time on the first call, depending on model size.
+Run time is a few seconds per image plus cold-start time on the first call. Larger models take longer.
 
 ## Rate limits and cost
 

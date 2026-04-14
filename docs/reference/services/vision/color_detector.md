@@ -19,7 +19,7 @@ aliases:
   - /tutorials/viam-rover/try-viam-color-detection/
 ---
 
-The `color_detector` vision service is a heuristic detector that draws boxes around connected regions of a specified hue. It runs entirely on the machine with no ML model. Use it for tasks like detecting red objects on a conveyor, green plants in a field, or any situation where the target stands out by color.
+The `color_detector` vision service is a heuristic detector that draws boxes around connected regions of a specified hue. It runs entirely on the machine with no ML model. Use it for any task where the target stands out by color: red objects on a conveyor, green plants against soil, a blue marker against a wall.
 
 The detector cannot detect black, white, or perfect grays (pixels whose red, green, and blue values are equal). It only detects hues on the color wheel.
 

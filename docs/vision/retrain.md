@@ -8,7 +8,7 @@ description: "Close the loop when a vision model's accuracy drops in production:
 date: "2026-04-14"
 ---
 
-Every vision model loses accuracy over time. Lighting changes, new object variations, a camera gets moved, a new SKU shows up on the line. Surveys consistently report that the majority of computer vision models drop significantly in production within the first six months. The fix is never a one-time deployment; it is a loop.
+Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. Surveys consistently report that the majority of computer vision models drop significantly in production within the first six months. The fix is never a one-time deployment. It is a loop.
 
 Viam's data, training, and fleet tools are the pieces of that loop. This guide walks through the end-to-end cycle from production machine back to production machine.
 
@@ -93,7 +93,7 @@ For [staged rollout](/fleet/), update machines in groups. One approach: use mach
 In the ML model service configuration, you can either:
 
 - **Pin a specific version** (for example, `2026-04-10T12:00:00`). The machine will keep running this version until you explicitly change it.
-- **Track "latest"**. The machine runs whichever version is newest in the registry, updating automatically when new versions land.
+- **Track "latest"**. The machine runs whichever version is newest in the [registry](https://app.viam.com/registry), updating automatically when new versions land.
 
 Pinning is safer for production fleets. "Latest" is useful during active development when you are iterating quickly and want every training run to flow through immediately.
 
