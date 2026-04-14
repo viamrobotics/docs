@@ -114,6 +114,39 @@ You can override the buffer on a per-call basis by passing
 `collision_buffer_mm` in the `extra` map on a Move request. This adds the
 specified clearance in millimeters to every collision check for that call.
 
+### How Viam's world model differs from ROS
+
+If you are coming from ROS, the big shift is that Viam has no persistent
+world representation for motion planning. There is no Octomap voxel
+grid, no 2D or 3D costmap layers, no Planning Scene held between calls.
+
+Every `Move` starts with the `WorldState` you pass in. Static obstacles
+from component frame configs are always included; dynamic obstacles
+from `WorldState.obstacles` are included only for that call. The
+planner has no memory between calls, so a dynamic obstacle passed to
+one `Move` is forgotten by the next unless you pass it again.
+
+`MoveOnGlobe` and `MoveOnMap` do maintain some state during a single
+execution: configured obstacle detectors poll vision services and feed
+new detections to the planner for as long as the execution runs. But
+that state is bounded to the execution; it does not persist once the
+plan completes.
+
+Practical consequences:
+
+- **Stale obstacles decay automatically.** An obstacle you include in
+  one `Move` and omit from the next simply disappears from the
+  planner's world. There is no "clear costmap" step to run.
+- **Your application is the source of truth for the world.** Whatever
+  your code tracks about the environment — object positions, operator
+  no-go zones, expired grasp targets — is what the planner sees. The
+  motion service does not build its own picture over time.
+- **For dynamic obstacle avoidance with arms**, you check the world
+  and call `Move` again with updated `WorldState`. `Move` itself does
+  not re-evaluate obstacles during execution. See
+  [Replanning behavior](/motion-planning/replanning-behavior/) for
+  the per-method behavior.
+
 ## Steps
 
 ### 1. Add geometry to a component frame

@@ -102,6 +102,7 @@ your hardware.
 
 {{< cards >}}
 {{% card link="/motion-planning/how-planning-works/" noimage="true" %}}
+{{% card link="/motion-planning/replanning-behavior/" noimage="true" %}}
 {{% card link="/motion-planning/constraints/" noimage="true" %}}
 {{% card link="/motion-planning/reference/" noimage="true" %}}
 {{< /cards >}}
