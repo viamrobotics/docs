@@ -79,19 +79,9 @@ Example configuration:
 }
 ```
 
-## MotionConfiguration (per-request)
+## Per-request configuration
 
-When calling `MoveOnGlobe` or `MoveOnMap` (through a supporting implementation),
-you can pass a `MotionConfiguration` to override per-request settings:
-
-| Field                           | Type  | Default                | Description                                                   |
-| ------------------------------- | ----- | ---------------------- | ------------------------------------------------------------- |
-| `obstacle_detectors`            | list  | (none)                 | Vision service + camera pairs for dynamic obstacle detection. |
-| `position_polling_frequency_hz` | float | (unset)                | How often to poll the machine's position, in Hz.              |
-| `obstacle_polling_frequency_hz` | float | (unset)                | How often to poll vision services for obstacles, in Hz.       |
-| `plan_deviation_m`              | float | 2.6 (globe), 1.0 (map) | Maximum allowed deviation from the plan, in meters.           |
-| `linear_m_per_sec`              | float | 0.3                    | Linear velocity, in meters per second.                        |
-| `angular_degs_per_sec`          | float | 60.0                   | Angular velocity, in degrees per second.                      |
+Pass a `MotionConfiguration` on a `MoveOnGlobe` or `MoveOnMap` call to override per-request settings. See [MotionConfiguration](/motion-planning/reference/motion-configuration/) for the full field reference.
 
 ## Planning defaults
 
@@ -119,52 +109,7 @@ The builtin motion service supports the following commands through `DoCommand`:
 
 ## CLI commands
 
-The Viam CLI provides commands for inspecting and testing the motion service
-from the command line. These are useful for debugging frame configurations and
-testing motion without writing code.
-
-All commands require the `--part` flag to identify the machine part.
-
-### print-config
-
-Prints the frame system configuration for the specified machine part.
-
-```sh
-viam machines part motion print-config --part "my-machine-main"
-```
-
-### print-status
-
-Prints the current pose of every component relative to the world frame.
-
-```sh
-viam machines part motion print-status --part "my-machine-main"
-```
-
-Output shows X, Y, Z position (mm) and orientation (OX, OY, OZ, Theta in
-degrees) for each frame.
-
-### get-pose
-
-Gets the current pose of a specific component in the world frame.
-
-```sh
-viam machines part motion get-pose --part "my-machine-main" --component "my-arm"
-```
-
-### set-pose
-
-Moves a component to a specified pose using the motion service. Only the
-position and orientation values you provide are changed; the rest are kept from
-the component's current pose.
-
-```sh
-viam machines part motion set-pose --part "my-machine-main" --component "my-arm" \
-  --x 300 --y 200 --z 400
-```
-
-Available flags: `--x`, `--y`, `--z` (position in mm), `--ox`, `--oy`, `--oz`,
-`--theta` (orientation vector in degrees).
+The Viam CLI provides `print-config`, `print-status`, `get-pose`, and `set-pose` for inspecting the motion service from the command line. See [Motion CLI commands](/motion-planning/reference/cli-commands/) for the full flag reference.
 
 ## What's next
 
