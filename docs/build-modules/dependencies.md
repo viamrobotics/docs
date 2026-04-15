@@ -96,7 +96,7 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 
 ### 2. Resolve dependencies
 
-In Python, resolve dependencies in the `reconfigure` method. In Go, resolve them in your constructor (or `Reconfigure` method if you are not using `AlwaysRebuild`).
+In Python, resolve dependencies in the `reconfigure` method. In Go, resolve them in your constructor: modular resources are always rebuilt on a configuration change, so the constructor runs each time dependencies need to be resolved.
 
 Use the dependency name to look up the resource, then cast it to the correct type.
 
@@ -178,8 +178,8 @@ func newMyBase(ctx context.Context, deps resource.Dependencies,
 {{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
-Go modules that use `resource.AlwaysRebuild` resolve dependencies in the constructor, which runs on every reconfiguration.
-If you need to maintain state across reconfigurations, see [Handle reconfiguration](/build-modules/write-a-driver-module/#6-handle-reconfiguration-optional).
+Go modular resources are always rebuilt on a configuration change, so the constructor runs each time and dependencies are re-resolved with it.
+If you need to preserve state across rebuilds, store it in the [module data directory](/build-modules/module-reference/#data-directory) or another external location.
 {{% /alert %}}
 
 ### 3. Use dependencies

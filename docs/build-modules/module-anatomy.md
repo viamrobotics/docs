@@ -203,11 +203,14 @@ constructor receives the config (containing the attributes the user set), a depe
 map (containing running instances of the resources you declared in your
 validation method), and in Go, a context and a logger.
 
-If your resource uses `AlwaysRebuild` (the generated default in Go),
-`viam-server` destroys and re-creates the resource on every config change,
-calling the constructor again. If you implement a `Reconfigure` method
-instead, `viam-server` calls that method in place without re-creating the
-resource.
+In Go, `viam-server` always rebuilds a modular resource on a config change:
+it calls `Close` on the existing instance and then runs the constructor again
+with the new config. The generated module template embeds
+`resource.AlwaysRebuild` to make this explicit, but the embed is optional
+because rebuild is the only behavior available to modular Go resources.
+In Python, if your class implements the `Reconfigurable` protocol,
+`viam-server` calls `reconfigure()` in place; otherwise the resource is
+destroyed and re-created.
 
 The constructor's job is to:
 

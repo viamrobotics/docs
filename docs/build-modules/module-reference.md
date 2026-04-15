@@ -31,12 +31,14 @@ Every module, local or registry, runs as a separate child process alongside
 6. `viam-server` starts required dependencies first. If a required dependency
    fails, the resource that depends on it does not start.
 7. `viam-server` calls `AddResource` to create each resource. The module's
-   constructor runs, typically calling `Reconfigure` to read config.
+   constructor runs and parses the resource configuration.
 8. The resource is available for use.
-9. When the user changes configuration, `viam-server` calls
-   `ReconfigureResource`. Your `Reconfigure` method should complete
-   within the per-resource configuration timeout (default: 2 minutes,
-   configurable with `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`).
+9. When the user changes configuration, `viam-server` rebuilds the resource:
+   `Close` runs on the existing instance, then the constructor runs again with
+   the new config. In Python, if your class implements the `Reconfigurable`
+   protocol, `reconfigure()` is called instead. Each step must complete within
+   the per-resource configuration timeout (default: 2 minutes, configurable with
+   `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`).
 10. On shutdown, `viam-server` sends `RemoveResource` for each resource, then
     terminates the module process.
 
@@ -118,7 +120,6 @@ Every resource must implement:
 ```go
 type Resource interface {
     Name() Name
-    Reconfigure(ctx context.Context, deps Dependencies, conf Config) error
     DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error)
     Close(ctx context.Context) error
 }
@@ -126,6 +127,12 @@ type Resource interface {
 
 Plus the methods defined by the specific API (for example, `Readings` for sensor,
 `GetImages` for camera).
+
+`viam-server` always rebuilds a modular resource on a configuration change by
+calling `Close` on the existing instance and then invoking the constructor
+again. There is no in-place reconfiguration path for module resources, so any
+state that should survive a reconfiguration must be stored in the
+[module data directory](#data-directory) or another external location.
 
 ### Constructor signature
 
@@ -142,9 +149,13 @@ Embed these in your resource struct to get default implementations:
 | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `resource.Named`                   | Interface for `Name()` and `DoCommand()`. Embed and set through `conf.ResourceName().AsNamed()`. |
 | `resource.TriviallyCloseable`      | `Close()` returns nil.                                                                           |
-| `resource.TriviallyReconfigurable` | `Reconfigure()` returns nil (no-op).                                                             |
-| `resource.AlwaysRebuild`           | `Reconfigure()` returns `MustRebuildError` (always re-create).                                   |
 | `resource.TriviallyValidateConfig` | `Validate()` returns no deps and no error.                                                       |
+
+`resource.AlwaysRebuild` and `resource.TriviallyReconfigurable` are deprecated.
+The `Resource` interface no longer includes `Reconfigure`, so embedding either
+trait has no effect on a modular resource. The generated module template still
+embeds `resource.AlwaysRebuild` for backward compatibility, but new code does
+not need it: modular resources are always rebuilt on configuration change.
 
 ### Useful functions
 
@@ -236,13 +247,12 @@ if __name__ == '__main__':
 
 In Python, the default behavior when you don't implement a method differs from Go:
 
-| Behavior                 | Go                                       | Python                                                                                   |
-| ------------------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Seamless reconfigure     | Implement `Reconfigure()`                | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
-| Rebuild on config change | Embed `resource.AlwaysRebuild`           | Omit `reconfigure()` (default: module destroys and re-creates the resource)              |
-| No-op reconfigure        | Embed `resource.TriviallyReconfigurable` | No equivalent: implement an empty `reconfigure()` instead                                |
-| No-op close              | Embed `resource.TriviallyCloseable`      | Default on `ResourceBase`                                                                |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig` | Default on `EasyResource`                                                                |
+| Behavior               | Go                                                          | Python                                                                                   |
+| ---------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Reconfigure handling   | Always rebuild: `Close()` runs, then the constructor reruns | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
+| No-op reconfigure      | Always rebuild (no equivalent in-place option)              | No equivalent: implement an empty `reconfigure()` instead                                |
+| No-op close            | Embed `resource.TriviallyCloseable`                         | Default on `ResourceBase`                                                                |
+| Skip config validation | Embed `resource.TriviallyValidateConfig`                    | Default on `EasyResource`                                                                |
 
 ## Logging
 
@@ -302,17 +312,19 @@ machine or individual resource.
 
 ## Common gotchas
 
-**Always call `Reconfigure` from your constructor.**
-Your constructor and `Reconfigure` should share the same config-reading logic.
-The typical pattern is for the constructor to create the struct, then call
-`Reconfigure` to populate it from config. This avoids duplicating config
-parsing and ensures a newly created resource is fully configured.
+**Parse config in one place.**
+Modular Go resources are always rebuilt on a config change, so the constructor
+runs again with the new config. Keep config parsing in the constructor (or in
+a helper the constructor calls) so reconfiguration produces a fully populated
+resource without duplicated logic.
 
 **Clean up in `Close()`.**
 If your resource starts background goroutines, opens connections, or holds
 hardware handles, `Close()` must stop them. Leaked goroutines accumulate across
-reconfigurations and can cause instability.
-In Python, `close()` must be idempotent (it may be called more than once).
+reconfigurations and can cause instability. `Close` is called before the
+rebuild, so it must release every resource the new instance will need to
+reacquire. In Python, `close()` must be idempotent (it may be called more than
+once).
 
 **Return the right dependency names from `Validate`.**
 Dependencies listed as required in `Validate` (Go) or `validate_config`
@@ -321,11 +333,13 @@ is wrong, `viam-server` waits for a resource that will never exist, and your
 resource will not start. Use optional dependencies for resources that improve
 functionality but aren't strictly needed.
 
-**Prefer `Reconfigure` over `AlwaysRebuild`.**
-`AlwaysRebuild` (Go) or omitting `reconfigure()` (Python) causes the resource
-to be destroyed and re-created on every config change. This is simpler but
-causes a brief availability gap. Implementing `Reconfigure` to update state
-in-place provides seamless reconfiguration.
+**Persist state outside the resource if it must survive a rebuild.**
+Because Go modular resources are rebuilt on every config change, in-process
+state (open connections, accumulated counters, cached results) is dropped.
+Store anything that must survive a reconfiguration in the
+[module data directory](#data-directory) or another external location. In
+Python, implement `reconfigure()` to update fields in place if you need to
+preserve state.
 
 ## Module protocol
 
@@ -334,13 +348,13 @@ defined in `proto/viam/module/v1/module.proto`:
 
 All RPCs are initiated by `viam-server` and handled by the module:
 
-| RPC                   | Purpose                                                  |
-| --------------------- | -------------------------------------------------------- |
-| `Ready`               | Handshake: module returns its supported API/model pairs. |
-| `AddResource`         | Create a new resource instance from config.              |
-| `ReconfigureResource` | Update an existing resource with new config.             |
-| `RemoveResource`      | Destroy a resource instance.                             |
-| `ValidateConfig`      | Validate config and return implicit dependencies.        |
+| RPC                   | Purpose                                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `Ready`               | Handshake: module returns its supported API/model pairs.                                                                         |
+| `AddResource`         | Create a new resource instance from config.                                                                                      |
+| `ReconfigureResource` | Apply new config to an existing resource. Modular Go resources always rebuild: the SDK closes the old instance and recreates it. |
+| `RemoveResource`      | Destroy a resource instance.                                                                                                     |
+| `ValidateConfig`      | Validate config and return implicit dependencies.                                                                                |
 
 The module also connects back to the parent `viam-server` to access other
 resources (dependencies) on the machine.

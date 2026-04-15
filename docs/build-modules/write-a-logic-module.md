@@ -490,42 +490,44 @@ func (s *TempAlert) Close(ctx context.Context) error {
 }
 ```
 
-In Go, the `Reconfigure` method should also stop the old loop and start a new
-one:
+In Go, modular resources are always rebuilt on a config change: `Close` runs
+on the existing instance, then the constructor runs again with the new
+config. The constructor is responsible for starting the new monitor loop, so
+the same code path that runs at startup also runs on reconfiguration:
 
 ```go
-func (s *TempAlert) Reconfigure(
+func newTempAlert(
     ctx context.Context,
     deps resource.Dependencies,
     conf resource.Config,
-) error {
-    // Stop the old loop
-    s.cancelFn()
-
+    logger logging.Logger,
+) (sensor.Sensor, error) {
     cfg, err := resource.NativeConfig[*Config](conf)
     if err != nil {
-        return err
+        return nil, err
     }
 
     sensors := make(map[string]sensor.Sensor)
     for _, name := range cfg.SensorNames {
         sens, err := sensor.FromProvider(deps, name)
         if err != nil {
-            return fmt.Errorf("sensor %q not found: %w", name, err)
+            return nil, fmt.Errorf("sensor %q not found: %w", name, err)
         }
         sensors[name] = sens
     }
 
     monitorCtx, cancelFn := context.WithCancel(context.Background())
 
-    s.mu.Lock()
-    s.cfg = cfg
-    s.sensors = sensors
-    s.cancelFn = cancelFn
-    s.mu.Unlock()
+    s := &TempAlert{
+        Named:    conf.ResourceName().AsNamed(),
+        logger:   logger,
+        cfg:      cfg,
+        sensors:  sensors,
+        cancelFn: cancelFn,
+    }
 
     go s.monitorLoop(monitorCtx)
-    return nil
+    return s, nil
 }
 ```
 

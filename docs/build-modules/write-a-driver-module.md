@@ -273,10 +273,11 @@ type MySensor struct {
 }
 ```
 
-The generated struct includes `resource.AlwaysRebuild`, which tells
-`viam-server` to destroy and re-create the resource on every config change.
-This is the simplest approach and works well for most modules. For in-place
-reconfiguration, see [Step 6](#6-handle-reconfiguration-optional).
+The generated struct embeds `resource.AlwaysRebuild`, a deprecated marker
+that documents the rebuild behavior. Modular Go resources are always rebuilt
+on a config change: `viam-server` calls `Close` on the existing instance and
+then reruns the constructor. See [Step 6](#6-handle-reconfiguration) for the
+full reconfiguration model.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -801,18 +802,20 @@ func (s *TempConverterSensor) Readings(
 {{% /tab %}}
 {{< /tabs >}}
 
-### 6. Handle reconfiguration (optional)
+### 6. Handle reconfiguration
 
-When a user changes a resource's configuration, `viam-server` calls your
-reconfiguration method instead of destroying and re-creating the resource.
-This is faster and preserves internal state like open connections.
+When a user changes a resource's configuration, `viam-server` applies the new
+config. The mechanism differs by language:
 
-The generated code uses `resource.AlwaysRebuild` (Go) by default, which
-tells `viam-server` to destroy and re-create the resource on every config
-change. This is the simplest approach and works well for most modules.
-
-For in-place reconfiguration, implement the reconfiguration method to update
-your resource's fields directly:
+- **Go** modular resources are always rebuilt: `viam-server` calls `Close` on
+  the existing instance, then runs the constructor again with the new config.
+  In-process state (open connections, cached data) is dropped on each rebuild.
+  Persist anything that must survive a reconfiguration in the
+  [module data directory](/build-modules/module-reference/#data-directory) or
+  another external location.
+- **Python** resources are rebuilt by default. If your class implements
+  `reconfigure()`, `viam-server` calls that method in place instead of
+  destroying and re-creating the resource, which preserves internal state.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -835,35 +838,25 @@ def reconfigure(self, config: ComponentConfig,
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Remove `resource.AlwaysRebuild` from your struct and implement `Reconfigure`:
+There is nothing extra to implement. The generated struct embeds
+`resource.AlwaysRebuild`, which makes the rebuild-on-config-change behavior
+explicit. The embed is deprecated and has no effect (modular resources rebuild
+either way), but it remains in the template for backward compatibility:
 
 ```go
 type MySensor struct {
     resource.Named
+    resource.AlwaysRebuild
     logger    logging.Logger
     sourceURL string
     client    *http.Client
 }
-
-func (s *MySensor) Reconfigure(ctx context.Context,
-    deps resource.Dependencies, conf resource.Config) error {
-    cfg, err := resource.NativeConfig[*Config](conf)
-    if err != nil {
-        return err
-    }
-    s.sourceURL = cfg.SourceURL
-    s.client.Timeout = time.Duration(cfg.PollInterval) * time.Second
-    return nil
-}
 ```
 
-Go provides these helper traits as alternatives to writing a `Reconfigure`
-method. Embed one in your struct:
-
-| Trait                              | Behavior                                                                             |
-| ---------------------------------- | ------------------------------------------------------------------------------------ |
-| `resource.AlwaysRebuild`           | Resource is destroyed and re-created on every config change (the generated default). |
-| `resource.TriviallyReconfigurable` | Config changes are accepted silently with no action.                                 |
+To handle a config change, do the work in your constructor: parse `conf`,
+resolve dependencies from `deps`, and start any background goroutines. Use
+`Close` to stop those goroutines and release any handles before the next
+rebuild begins.
 
 {{% /tab %}}
 {{< /tabs >}}
