@@ -48,7 +48,7 @@ Add the filtered camera module to your machine:
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Configuration block**.
 3. In the search field, type `filtered-camera` and select the matching result.
-4. Name the component `objectfilter-cam` and click **Add component**. The module is installed automatically.
+4. Click **Add component**, name the component `objectfilter-cam`, and click **Add component** again to confirm. The module is installed automatically.
 5. Add configuration attributes:
 
    {{< tabs >}}
@@ -105,7 +105,7 @@ Add the data management service to capture and sync filtered images:
 
 1. Click **+** and select **Configuration block**.
 2. In the search field, type `data management` and select the matching result.
-3. Name the service `data-manager` and click **Add component**.
+3. Click **Add component**, name the service `data-manager`, and click **Add component** again to confirm.
 4. Leave the default attributes and click **Save**.
 
 Enable data capture on the filtered camera:

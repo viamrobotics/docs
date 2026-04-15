@@ -27,7 +27,7 @@ The ML model service matches your model file's framework. For most tasks, `tflit
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
 3. In the search field, type `tflite_cpu` (or the service matching your model format; see [Deploy a model from the registry](/vision/deploy-from-registry/#model-framework-support) for the framework table) and select the matching result.
-4. Name the service `my-ml-model` and click **Add component**.
+4. Click **Add component**, name the service `my-ml-model`, and click **Add component** again to confirm.
 
 ## 2. Configure the ML model service
 
@@ -70,8 +70,8 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
 ## 3. Add a vision service
 
 1. Click the **+** icon and select **Configuration block**.
-2. In the search field, type `vision` or `mlmodel` and select the `vision / mlmodel` result.
-3. Name the service `my-detector` and click **Add component**.
+2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
+3. Click **Add component**, name the service `my-detector`, and click **Add component** again to confirm.
 
 ## 4. Configure the vision service
 
@@ -260,9 +260,8 @@ Get the placeholder values from the Viam app:
 
 1. Open your machine's **CONNECT** tab.
 2. Select **SDK code sample**.
-3. Toggle **Include API key** on.
-4. Copy the **API key** and **API key ID**.
-5. Copy the machine address from the same tab.
+3. Toggle **Include API key** on. The code snippet on the page is populated with your machine's real API key, API key ID, and machine address. Copy the whole snippet, or copy the individual values out of it.
+4. To view or rotate API keys separately, open the **API keys** sidebar item on the same tab.
 
 ## Available ML model services and vision models
 

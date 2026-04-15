@@ -34,8 +34,8 @@ Object colors vary dramatically with lighting. Verify your target color value un
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
-3. In the search field, type `color detector` and select the `vision / color_detector` result.
-4. Enter a name and click **Add component**.
+3. In the search field, type `color detector` and select the `vision/color_detector` result.
+4. Click **Add component**, enter a name, and click **Add component** again to confirm.
 5. Choose a color and a hue tolerance, then set a segment size in pixels.
 6. Select a default camera.
 
