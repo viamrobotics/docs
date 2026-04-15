@@ -36,8 +36,6 @@ fake components so you can run it on any machine:
 {{< cards >}}
 {{% card link="/motion-planning/quickstarts/first-arm/" noimage="true" %}}
 {{% card link="/motion-planning/quickstarts/frame-system/" noimage="true" %}}
-{{% card link="/motion-planning/quickstarts/first-base/" noimage="true" %}}
-{{% card link="/motion-planning/quickstarts/gps-waypoint-navigation/" noimage="true" %}}
 {{< /cards >}}
 
 ## How it works
