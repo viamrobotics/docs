@@ -4,7 +4,6 @@ title: "Deploy an ML model from the registry"
 weight: 10
 layout: "docs"
 type: "docs"
-modulescript: true
 description: "Pick a pre-trained ML model from the Viam registry, deploy it to your machine, and wire it through an ML model service so a vision service can use it."
 date: "2026-04-14"
 aliases:
@@ -35,7 +34,7 @@ Use this guide when a general-purpose or community-shared model already handles 
 
 ## 1. Pick a model
 
-Browse the [ML models in the registry](https://app.viam.com/registry). Each model entry shows its framework, supported hardware, and a short description.
+Open the [Viam registry](https://app.viam.com/registry) and search or browse for models. If you are not sure which kind of registry entry to pick, see [What's in the registry for vision](/vision/deploy-and-maintain/available-models/) first. Each entry shows its framework, supported hardware, and a short description.
 
 When picking, match the model to:
 
@@ -103,14 +102,6 @@ If you see nothing:
 - Check `viam-server` logs for startup errors mentioning tensor names or label files.
 
 See [Tune detection quality](/vision/object-detection/tune/) for detailed fixes.
-
-## Available ML model services
-
-{{< resources_svc api="rdk:service:mlmodel" type="ML model" >}}
-
-## Available public models
-
-{{< mlmodels >}}
 
 ## Update to a newer model version later
 

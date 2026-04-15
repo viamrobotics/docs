@@ -288,7 +288,7 @@ Get the placeholder values from the Viam app:
 3. Click the **Include API key** switch. The snippet on the page regenerates with your machine's real API key, API key ID, and machine address in place of the `<API-KEY>`, `<API-KEY-ID>`, and `<MACHINE-ADDRESS>` placeholders. Click the copy icon on the snippet to copy the whole thing.
 4. To view or copy API keys separately, open the **API keys** sidebar item on the same tab.
 
-For the full list of ML model services, vision services, and public models in the registry, see [Browse available models and services](/vision/deploy-and-maintain/available-models/).
+For the three kinds of registry entries a vision pipeline uses (ML model service implementations, vision service models, public ML models) and how to pick among them, see [What's in the registry for vision](/vision/deploy-and-maintain/available-models/). Browse the registry directly at [app.viam.com/registry](https://app.viam.com/registry).
 
 ## What's next
 
