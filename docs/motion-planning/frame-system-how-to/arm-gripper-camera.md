@@ -101,23 +101,6 @@ point near the center of the gripper jaws is usually the most convenient
 choice: when you later call the motion service to move the gripper to a
 target pose, the point you pick here is what gets moved to that pose.
 
-{{<imgproc src="/operate/mobility/gripper-frame.png" resize="x1100" declaredimensions=true alt="A gripper mounted on an arm. The Z axis of the gripper points from the base of the gripper to the end of its jaws. The X axis points up through the gripper. The Y axis points in the direction along which the jaws open and close (following the right-hand rule). The diagram also shows the global coordinate system with Z pointing up, X down the length of the horizontal gripper, and Y pointing horizontally in the opposite direction of the gripper's Y." style="width:600px" class="imgzoom" >}}
-
-The gripper in the image above has an origin 110 mm from the arm's end
-effector along the arm's z-axis, and it is rotated 90 degrees about the
-z-axis relative to the arm. The frame configuration for that gripper is:
-
-```json
-{
-  "parent": "my-arm",
-  "translation": { "x": 0, "y": 0, "z": 110 },
-  "orientation": {
-    "type": "ov_degrees",
-    "value": { "x": 0, "y": 0, "z": 1, "th": 90 }
-  }
-}
-```
-
 #### Configure the frame
 
 Set the `parent` to your arm's component name. Enter the gripper frame
