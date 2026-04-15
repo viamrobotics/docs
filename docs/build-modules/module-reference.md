@@ -128,11 +128,13 @@ type Resource interface {
 Plus the methods defined by the specific API (for example, `Readings` for sensor,
 `GetImages` for camera).
 
-`viam-server` always rebuilds a modular resource on a configuration change by
-calling `Close` on the existing instance and then invoking the constructor
-again. There is no in-place reconfiguration path for module resources, so any
-state that should survive a reconfiguration must be stored in the
-[module data directory](#data-directory) or another external location.
+`viam-server` always rebuilds a modular Go resource on a configuration change
+by calling `Close` on the existing instance and then invoking the constructor
+again. There is no in-place reconfiguration path for modular Go resources, so
+any state that should survive a reconfiguration must be stored in the
+[module data directory](#data-directory) or another external location. (Python
+modules can still implement the `Reconfigurable` protocol for in-place updates,
+as described in the Python section below.)
 
 ### Constructor signature
 
@@ -243,9 +245,9 @@ if __name__ == '__main__':
 | `getLogger(name)`                 | Create a logger (`from viam.logging import getLogger`).          |
 | `config.attributes.fields`        | Access raw config attributes (no typed config equivalent to Go). |
 
-### Python and Go defaults
+### Python and Go side by side
 
-In Python, the default behavior when you don't implement a method differs from Go:
+Reconfiguration, close, and validation differ by language. This table compares each side's behavior and the embeds or defaults that produce it:
 
 | Behavior               | Go                                                          | Python                                                                                   |
 | ---------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------- |

@@ -501,7 +501,7 @@ func newTempAlert(
     deps resource.Dependencies,
     conf resource.Config,
     logger logging.Logger,
-) (sensor.Sensor, error) {
+) (resource.Resource, error) {
     cfg, err := resource.NativeConfig[*Config](conf)
     if err != nil {
         return nil, err
