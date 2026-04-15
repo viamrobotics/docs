@@ -57,11 +57,11 @@ Set the required attributes:
 
 | Attribute               | Type   | Required | Default | Description                                                                                     |
 | ----------------------- | ------ | -------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `camera_name`           | string | **Yes**  | --      | Name of the configured camera component.                                                        |
-| `detector_name`         | string | **Yes**  | --      | Name of the configured vision detector service.                                                 |
+| `camera_name`           | string | **Yes**  | None    | Name of the configured camera component.                                                        |
+| `detector_name`         | string | **Yes**  | None    | Name of the configured vision detector service.                                                 |
 | `min_confidence`        | float  | No       | 0.2     | Minimum confidence threshold for detections (0 to 1).                                           |
 | `max_frequency_hz`      | float  | No       | 10      | Maximum rate at which the tracker processes frames.                                             |
-| `chosen_labels`         | object | No       | --      | Map of class names to confidence thresholds. Only detections matching these labels are tracked. |
+| `chosen_labels`         | object | No       | None    | Map of class names to confidence thresholds. Only detections matching these labels are tracked. |
 | `trigger_cool_down_s`   | float  | No       | 5       | Seconds before a trigger resets after firing.                                                   |
 | `buffer_size`           | int    | No       | 30      | Number of frames to buffer lost detections before removing a track (1 to 256).                  |
 | `min_track_persistence` | int    | No       | 1       | Number of consecutive frames a track must appear in before it is returned in detection results. |
@@ -111,7 +111,7 @@ async def main():
         detections = await tracker.get_detections_from_camera("my-camera")
 
         for d in detections:
-            # class_name contains the track ID, e.g. "person_0_20250413_143052"
+            # class_name contains the track ID, for example "person_0_20250413_143052"
             print(f"{d.class_name}: {d.confidence:.2f} "
                   f"at ({d.x_min},{d.y_min})-({d.x_max},{d.y_max})")
 
@@ -171,7 +171,7 @@ func main() {
         }
 
         for _, d := range detections {
-            // Label() contains the track ID, e.g. "person_0_20250413_143052"
+            // Label() contains the track ID, for example "person_0_20250413_143052"
             fmt.Printf("%s: %.2f at (%d,%d)-(%d,%d)\n",
                 d.Label(), d.Score(),
                 d.BoundingBox().Min.X, d.BoundingBox().Min.Y,

@@ -20,9 +20,9 @@ You want to be notified when your camera detects something specific: a person in
 
 The alert system chains three resources together:
 
-1. **Filtered camera** -- a camera module that only passes images to the data management service when specific detections or classifications are present.
-2. **Data management service** -- captures images from the filtered camera and syncs them to the Viam cloud.
-3. **Trigger** -- fires when new data syncs, sending an email or webhook notification.
+1. **Filtered camera**: a camera module that only passes images to the data management service when specific detections or classifications are present.
+2. **Data management service**: captures images from the filtered camera and syncs them to the Viam cloud.
+3. **Trigger**: fires when new data syncs, sending an email or webhook notification.
 
 Because the filtered camera only passes images that match your criteria, every synced image represents a detection event. The trigger fires on each sync, turning data events into alerts.
 
@@ -32,8 +32,8 @@ The [`filtered-camera`](https://app.viam.com/module/viam/filtered-camera) module
 
 You configure the filter with:
 
-- **A label** -- the detection or classification class name to look for (such as "Person" or "NO-Hardhat").
-- **A confidence threshold** (0.0-1.0) -- the minimum confidence score required. Only images where the model meets this threshold are captured.
+- **A label**: the detection or classification class name to look for (such as "Person" or "NO-Hardhat").
+- **A confidence threshold** (0.0-1.0): the minimum confidence score required. Only images where the model meets this threshold are captured.
 
 ### Alert frequency
 
@@ -137,7 +137,7 @@ Add a trigger to send alerts when filtered images sync:
 6. Set each **Alert frequency** you enabled (for example, maximum one alert per hour).
 7. Click **Save**.
 
-## Try It
+## Try it
 
 1. Point your camera at an object your model recognizes and wait for the capture interval to pass.
 2. Check the **TEST** panel on your vision service to confirm detections are occurring with sufficient confidence.
@@ -172,8 +172,8 @@ Add a trigger to send alerts when filtered images sync:
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Act on Detections](/vision/act-on-detections/) -- build a module that responds to vision results in real time.
-- [Triggers Reference](/data-ai/reference/triggers-configuration/) -- full documentation for trigger types, webhook payloads, and configuration options.
-- [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/) -- learn more about configuring data capture and sync intervals.
+- [Act on detections](/vision/act-on-detections/): build a module that responds to vision results in real time.
+- [Triggers reference](/data-ai/reference/triggers-configuration/): full documentation for trigger types, webhook payloads, and configuration options.
+- [Capture and sync data](/data/capture-sync/capture-and-sync-data/): learn more about configuring data capture and sync intervals.

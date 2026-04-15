@@ -99,7 +99,7 @@ Alternatively, if your model file lives on the machine's disk and you do not wan
 
 The ML model service now loads and runs your model. The vision service turns its output into detections or classifications:
 
-1. Add a `vision / mlmodel` service.
+1. Add a `vision/mlmodel` service.
 2. Set `mlmodel_name` to the ML model service name from step 4.
 3. Set `camera_name` to the default camera.
 4. Save.

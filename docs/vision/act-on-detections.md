@@ -12,7 +12,7 @@ aliases:
 date: "2026-04-14"
 ---
 
-You have a vision service detecting or classifying objects, but you need your machine to respond automatically -- stop an arm when a person is nearby, sort items by color, or trigger an action when an anomaly appears. This guide shows you how to build a module that reads vision results and controls other resources based on what it sees.
+You have a vision service detecting or classifying objects, but you need your machine to respond automatically: stop an arm when a person is nearby, sort items by color, or trigger an action when an anomaly appears. This guide shows you how to build a module that reads vision results and controls other resources based on what it sees.
 
 ## Concepts
 
@@ -271,10 +271,10 @@ Once your module is working:
 
 If your module wraps another resource, update any services or processes that reference the original. For example, if motion planning used `my-arm`, update it to use `safe-arm-1` so all movement commands go through the vision check.
 
-## Try It
+## Try it
 
 1. Configure a safe arm module with a person detection model and point the camera at yourself. Attempt to move the arm and verify it refuses.
-2. Move out of frame and try again -- the arm should move normally.
+2. Move out of frame and try again. The arm should move normally.
 3. Adjust the confidence threshold in `_is_safe` and observe how it affects sensitivity.
 4. Try swapping detections for classifications to see how the two approaches differ.
 
@@ -303,8 +303,8 @@ If your module wraps another resource, update any services or processes that ref
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Alert on Detections](/vision/alert-on-detections/) -- send email or webhook notifications when specific objects are detected.
-- [Deploy a Module](/build-modules/deploy-a-module/) -- package and upload your module to the Viam [registry](https://app.viam.com/registry).
-- [Vision Service API Reference](/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.
+- [Alert on detections](/vision/alert-on-detections/): send email or webhook notifications when specific objects are detected.
+- [Deploy a module](/build-modules/deploy-a-module/): package and upload your module to the Viam [registry](https://app.viam.com/registry).
+- [Vision service API](/reference/apis/services/vision/): full API documentation for detections, classifications, and more.

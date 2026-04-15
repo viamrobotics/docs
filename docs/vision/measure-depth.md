@@ -57,7 +57,7 @@ When you configure a depth camera in Viam, the intrinsic parameters are typicall
 
 ### 3D object localization
 
-If you need 3D positions for detected objects --for example, to guide a robot arm to pick up a cup --you combine 2D detections with depth data. The workflow is:
+If you need 3D positions for detected objects (for example, to guide a robot arm to pick up a cup), combine 2D detections with depth data. The workflow is:
 
 1. Run a 2D detector to get bounding boxes.
 2. For each bounding box, extract the corresponding depth pixels.
@@ -473,10 +473,10 @@ If your camera does not automatically provide intrinsic parameters, you can set 
 Most depth cameras (Intel RealSense, Oak-D) provide these automatically. You only need to set them manually for cameras without built-in calibration data.
 
 {{< alert title="Tip" color="tip" >}}
-If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
 {{< /alert >}}
 
-## Try It
+## Try it
 
 1. Run the point cloud script from step 2 and verify you get data back.
 2. Run the depth-at-pixel script from step 4. Point the camera at objects at different distances and verify the measurements are reasonable.
@@ -495,7 +495,7 @@ If you need an image, its detections, and a point cloud together in one call, us
 
 {{< expand "Depth values are zero at some pixels" >}}
 
-- Zero typically means "no data" -- the camera could not determine the depth at that pixel. This is common at object edges, on featureless surfaces (blank walls), and at extreme distances.
+- Zero typically means "no data": the camera could not determine the depth at that pixel. This is common at object edges, on featureless surfaces (blank walls), and at extreme distances.
 - When measuring distance to an object, sample multiple pixels around the target and take the median of non-zero values, as shown in step 5.
 
 {{< /expand >}}
@@ -516,7 +516,7 @@ If you need an image, its detections, and a point cloud together in one call, us
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Detect Objects (2D)](/vision/detect/) -- get 2D detections to combine with depth measurements.
-- [Frame System](/motion-planning/frame-system/) -- set up coordinate frame transforms so 3D positions are usable by other components.
+- [Detect objects](/vision/detect/): get 2D detections to combine with depth measurements.
+- [Frame system](/motion-planning/frame-system/): set up coordinate frame transforms so 3D positions are usable by other components.

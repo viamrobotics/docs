@@ -8,7 +8,7 @@ description: "Close the loop when a vision model's accuracy drops in production:
 date: "2026-04-14"
 ---
 
-Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. Surveys consistently report that the majority of computer vision models drop significantly in production within the first six months. The fix is never a one-time deployment. It is a loop.
+Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. The fix is never a one-time deployment. It is a loop.
 
 Viam's data, training, and fleet tools are the pieces of that loop. This guide walks through the end-to-end cycle from production machine back to production machine.
 

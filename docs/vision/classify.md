@@ -17,7 +17,7 @@ Detection tells you where objects are in an image. Classification tells you what
 
 ### What a classification contains
 
-A classification is a label paired with a confidence score. Unlike detections, classifications do not include spatial information -- there are no bounding box coordinates. Each classification describes the image as a whole.
+A classification is a label paired with a confidence score. Unlike detections, classifications do not include spatial information: there are no bounding box coordinates. Each classification describes the image as a whole.
 
 | Field        | Type            | Description                                                          |
 | ------------ | --------------- | -------------------------------------------------------------------- |
@@ -379,10 +379,10 @@ Add a transform camera to your configuration:
 After saving, view the `classified-feed` camera in the CONTROL tab. You will see classification labels overlaid on the camera image.
 
 {{< alert title="Tip" color="tip" >}}
-If you need the image and its classifications together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures the classifications correspond exactly to the returned image. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+If you need the image and its classifications together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures the classifications correspond exactly to the returned image. See [Detect objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
 {{< /alert >}}
 
-## Try It
+## Try it
 
 1. Run the classification script from step 1. Point the camera at different scenes and observe how the top label changes.
 2. Increase the `count` parameter to 5 or 10 and observe how confidence distributes across labels.
@@ -422,8 +422,8 @@ If you need the image and its classifications together in one call, use [`Captur
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Detect Objects (2D)](/vision/detect/) -- get per-object bounding boxes instead of whole-image labels.
-- [Track Objects Across Frames](/vision/track/) -- maintain object identities across consecutive frames.
-- [Alert on Detections](/vision/alert-on-detections/) -- send email or webhook notifications when specific objects or labels are detected.
+- [Detect objects](/vision/detect/): get per-object bounding boxes instead of whole-image labels.
+- [Track objects across frames](/vision/track/): maintain object identities across consecutive frames.
+- [Alert on detections](/vision/alert-on-detections/): send email or webhook notifications when specific objects or labels are detected.

@@ -127,7 +127,7 @@ if len(segments) > 0 {
 }
 ```
 
-## Troubleshoot
+## Troubleshooting
 
 {{< expand "Service fails with \"camera does not support point clouds\"" >}}
 

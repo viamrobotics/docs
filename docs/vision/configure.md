@@ -26,7 +26,7 @@ The ML model service matches your model file's framework. For most tasks, `tflit
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
-3. In the search field, type `tflite_cpu` (or the service matching your model format; see [Deploy a model from the registry](/vision/deploy-from-registry/#model-framework-support) for the framework table) and select the matching result.
+3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-from-registry/#model-framework-support).
 4. Click **Add component**, name the service `my-ml-model`, and click **Add component** again to confirm.
 
 ## 2. Configure the ML model service

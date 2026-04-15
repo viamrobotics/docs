@@ -149,7 +149,7 @@ func main() {
 
 ### 2. Get detections from an existing image
 
-If you already have an image -- from a file, from a previous capture, or from a different camera -- you can run detection on it directly.
+If you already have an image (from a file, from a previous capture, or from a different camera), you can run detection on it directly.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -468,7 +468,7 @@ classifications := result.Classifications
 
 This is particularly useful for data logging, visualization, or any case where you need to correlate results with the exact frame that produced them.
 
-## Try It
+## Try it
 
 1. Run the detection loop from step 5. Point your camera at objects your model recognizes and observe the output.
 2. Adjust the confidence threshold and notice how it affects the number of detections. Try 0.3, 0.5, 0.7, and 0.9.
@@ -509,8 +509,8 @@ This is particularly useful for data logging, visualization, or any case where y
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Classify Objects](/vision/classify/) -- use whole-image classification instead of per-object bounding boxes.
-- [Track Objects Across Frames](/vision/track/) -- maintain persistent identities for detected objects as they move between frames.
-- [Localize Objects in 3D](/vision/measure-depth/) -- combine 2D detections with depth data to get real-world 3D positions.
+- [Classify images](/vision/classify/): whole-image classification instead of per-object bounding boxes.
+- [Track objects across frames](/vision/track/): maintain persistent identities for detected objects as they move between frames.
+- [Measure depth](/vision/measure-depth/): combine 2D detections with depth data to get real-world 3D positions.

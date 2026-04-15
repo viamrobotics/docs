@@ -24,6 +24,8 @@ Available methods:
 
 ## Pick a built-in model
 
+Most vision tasks fall into one of three goals. Pick the matching model:
+
 | Goal                                               | Model                                                                                      | When to use it                                                                                                  |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
 | Detect or classify objects with a trained ML model | [`mlmodel`](/reference/services/vision/mlmodel/)                                           | General-purpose path: wraps a TFLite, ONNX, TensorFlow, or PyTorch model deployed through the ML model service. |

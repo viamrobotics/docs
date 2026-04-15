@@ -193,7 +193,7 @@ A typical pattern:
 
 See the [motion planning section](/motion-planning/) for the end-to-end walkthrough. This vision guide focuses on producing the 3D detections; what happens next is usually motion-service territory.
 
-## Troubleshoot
+## Troubleshooting
 
 {{< expand "GetObjectPointClouds returns an error about unsupported operation" >}}
 

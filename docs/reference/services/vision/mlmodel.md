@@ -413,7 +413,7 @@ if len(classificationsFromImage) > 0 {
 To fetch an image, detections, classifications, and point cloud objects in one round trip, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and guarantees all results correspond to the same frame.
 {{% /alert %}}
 
-## Troubleshoot
+## Troubleshooting
 
 {{< expand "Detections appear shifted or mirrored" >}}
 

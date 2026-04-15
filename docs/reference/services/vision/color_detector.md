@@ -3,7 +3,7 @@ title: "Configure a color_detector"
 linkTitle: "color_detector"
 weight: 20
 type: "docs"
-description: "Configure the color_detector vision service to find regions of a specific hue in camera images — no ML model required."
+description: "Configure the color_detector vision service to find regions of a specific hue in camera images. No ML model required."
 service_description: "A heuristic detector that draws boxes around regions of a specified hue."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/services/vision/dog-detector.png"]
@@ -207,7 +207,7 @@ if len(detectionsFromImage) > 0 {
 }
 ```
 
-## Troubleshoot
+## Troubleshooting
 
 {{< expand "Service fails to start with \"saturation of 0\" error" >}}
 
@@ -229,7 +229,7 @@ Your `detect_color` has saturation below the saturation cutoff. Either pick a mo
 
 {{< expand "Detector runs but returns no detections" >}}
 
-- Check the color under actual lighting conditions. Use a color picker on a live camera screenshot to find the real hex value — the color on the object often looks different through the camera.
+- Check the color under actual lighting conditions. Use a color picker on a live camera screenshot to find the real hex value. The color on the object often looks different through the camera.
 - Increase `hue_tolerance_pct` (try `0.10` to `0.15`) if the color is close but not exact.
 - Lower `segment_size_px` if the color region in the image is small.
 - If the lighting is dim, lower `value_cutoff_pct` (for example, `0.10`).

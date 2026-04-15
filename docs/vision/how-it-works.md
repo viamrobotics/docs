@@ -42,9 +42,9 @@ When the built-in [`mlmodel`](/reference/services/vision/mlmodel/) vision servic
 - If the outputs look like **detection outputs** (`location`, `category`, and `score` tensors), the service registers as a detector.
 - If the outputs look like **3D-segmentation outputs**, the service registers as a 3D segmenter.
 
-A single `mlmodel` vision service can fulfill more than one role if the underlying model supports it. You can check which roles are active at runtime with [`GetProperties`](/reference/apis/services/vision/#getproperties).
+If the underlying model supports it, a single `mlmodel` vision service can fulfill more than one role. You can check which roles are active at runtime with [`GetProperties`](/reference/apis/services/vision/#getproperties).
 
-If none of the roles can be fulfilled (usually because the tensor names or shapes do not match what the vision service expects), the service logs an error at startup describing what tensors it saw. Use `remap_input_names` and `remap_output_names` to bridge tensor names, as described in the [`mlmodel` reference](/reference/services/vision/mlmodel/#tensor-name-requirements).
+If none of the roles can be fulfilled, the service logs an error at startup describing what tensors it saw. This usually happens because the tensor names or shapes do not match what the vision service expects. Use `remap_input_names` and `remap_output_names` to bridge tensor names, as described in the [`mlmodel` reference](/reference/services/vision/mlmodel/#tensor-name-requirements).
 
 ## What stays in your configuration
 

@@ -226,7 +226,7 @@ You can configure multiple `color_detector` services against the same camera, ea
 
 Your code queries each detector in sequence. For higher throughput, call them concurrently.
 
-## Troubleshoot
+## Troubleshooting
 
 {{< expand "Service fails to start" >}}
 
