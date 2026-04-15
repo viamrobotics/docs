@@ -12,7 +12,7 @@ aliases:
   - /vision-detection/add-computer-vision/
 ---
 
-You have a camera on your machine and a trained ML model. This how-to wires them up: an ML model service loads the model and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
+You have a camera on your machine, and you have an ML model: either a pre-trained one from the [registry](https://app.viam.com/registry), one you trained yourself ([managed training](/data-ai/train/train/) or a [custom training script](/train/custom-training-scripts/)), or one you brought from elsewhere. This how-to wires them up: an ML model service loads the model and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
 
 Downstream how-tos ([detect](/vision/object-detection/detect/), [classify](/vision/classify/), [track](/vision/object-detection/track/), [measure depth](/vision/3d-vision/measure-depth/)) assume the pipeline described here is running.
 
@@ -47,7 +47,7 @@ Point the service at your model file.
 }
 ```
 
-`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package.
+`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package. Registry models ship with their own `labels.txt`, so the `label_path` above resolves to the labels file inside the package. You do not need to create one yourself.
 
 **Local model file:**
 
@@ -63,7 +63,7 @@ Point the service at your model file.
 }
 ```
 
-`label_path` is optional but recommended: it maps numeric class IDs (the raw output of the model) to human-readable names.
+For local models, `label_path` is optional but recommended: it maps the numeric class IDs the model outputs to human-readable names like `person` or `car`. Provide a `.txt` file with one label per line, in class-ID order (line 0 is class 0).
 
 For more on the deployment flow, see [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
 
@@ -81,20 +81,19 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
   "api": "rdk:service:vision",
   "model": "mlmodel",
   "attributes": {
-    "mlmodel_name": "my-ml-model"
+    "mlmodel_name": "my-ml-model",
+    "camera_name": "my-camera"
   }
 }
 ```
 
-`mlmodel_name` must match the name of the ML model service from step 1.
+`mlmodel_name` must match the name of the ML model service from step 1. `camera_name` is the default camera used by `GetDetectionsFromCamera`, `GetClassificationsFromCamera`, and `GetObjectPointClouds` when no camera name is passed in the call.
 
 For the full list of `mlmodel` vision service attributes (confidence thresholds, per-label thresholds, tensor remapping, input normalization), see the [mlmodel reference](/reference/services/vision/mlmodel/). If your detections come out shifted, mirrored, or with unexpected labels, see [Tune detection quality](/vision/object-detection/tune/) to find the attribute that fixes your symptom.
 
-## 5. Save and verify
+## 5. Save
 
 Click **Save** in the upper right. `viam-server` reconfigures in place and initializes both services.
-
-You can check which capabilities the service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties) from code. The response is three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime.
 
 ## 6. Verify with the control card
 
@@ -108,12 +107,22 @@ Bounding boxes or classification labels should appear on the live camera feed wi
 
 If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
 
+From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response is three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime.
+
 ## 7. Complete configuration
 
-With both services saved, the relevant part of your machine configuration looks like this:
+With both services saved, a minimal end-to-end configuration (camera + ML model service + vision service) looks like this:
 
 ```json
 {
+  "components": [
+    {
+      "name": "my-camera",
+      "api": "rdk:component:camera",
+      "model": "webcam",
+      "attributes": {}
+    }
+  ],
   "services": [
     {
       "name": "my-ml-model",
@@ -129,14 +138,15 @@ With both services saved, the relevant part of your machine configuration looks 
       "api": "rdk:service:vision",
       "model": "mlmodel",
       "attributes": {
-        "mlmodel_name": "my-ml-model"
+        "mlmodel_name": "my-ml-model",
+        "camera_name": "my-camera"
       }
     }
   ]
 }
 ```
 
-`viam-server` resolves the dependency between the two services automatically, so order within the file does not matter.
+`viam-server` resolves the dependencies between the camera, ML model service, and vision service automatically, so order within the file does not matter.
 
 ## Try it from code
 

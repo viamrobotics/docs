@@ -25,6 +25,10 @@ For example, a "safe arm" module wraps a real arm. When your code calls `move_to
 
 This pattern works with any resource type: arms, bases, motors, or even other services.
 
+{{< alert title="Not a safety system" color="caution" >}}
+The wrapper pattern gates **new motion commands** at the moment they are issued. It does not interrupt motion already in progress: if a person walks into the workspace mid-move, the arm will not stop. For true safety, use hardware interlocks (E-stops, light curtains, safety-rated scanners) that cut power or brake the actuator. Use the wrapper pattern for soft preconditions like "don't start a pick cycle when someone is at the table", not for injury prevention.
+{{< /alert >}}
+
 ### Choosing a resource type
 
 Your module must implement a resource API. Pick the type that matches what you are controlling:

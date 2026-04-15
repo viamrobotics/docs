@@ -1,7 +1,7 @@
 ---
 linkTitle: "Classify images"
 title: "Classify images"
-weight: 30
+weight: 15
 layout: "docs"
 type: "docs"
 description: "Use a vision service to classify images by label and confidence, make decisions based on classification, and monitor scenes continuously."
@@ -351,7 +351,7 @@ for {
 
 ### 5. Use the transform camera to overlay classifications
 
-You can add a `transform` camera that overlays classification results directly on the camera feed. This is useful for debugging and monitoring without writing code.
+You can add a [`transform` camera](/operate/reference/components/camera/transform/) that overlays classification results directly on the camera feed. This is useful for debugging and monitoring without writing code.
 
 Add a transform camera to your configuration:
 

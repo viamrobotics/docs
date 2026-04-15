@@ -22,7 +22,7 @@ The object tracker sits between your detector and your application code:
 
 1. Your **camera** provides the image stream.
 2. Your **detector** (a vision service) runs on each frame and returns detections.
-3. The **object tracker** matches new detections to existing tracks using the Hungarian algorithm. Unmatched detections become new tracks. Tracks with no matching detection for several frames are removed.
+3. The **object tracker** matches new detections to existing tracks using the [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm). Unmatched detections become new tracks. Tracks with no matching detection for several frames are removed.
 
 Each tracked object gets a persistent class name in the format:
 

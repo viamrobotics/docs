@@ -72,6 +72,10 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 - [How the vision service works](/vision/how-it-works/): the two-service architecture behind every vision pipeline
 - [Configure a vision pipeline](/vision/configure/): end-to-end setup of an ML model service plus vision service
 
+### Classification
+
+- [Classify images](/vision/classify/): whole-image labels and scene categorization
+
 ### Object detection
 
 - [Detect objects](/vision/object-detection/detect/): 2D bounding boxes in code
@@ -80,10 +84,6 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 - [Track objects across frames](/vision/object-detection/track/): persistent IDs across video frames
 - [Act on detections](/vision/object-detection/act-on-detections/): trigger machine behavior from vision results
 - [Alert on detections](/vision/object-detection/alert-on-detections/): send notifications on detections
-
-### Classification
-
-- [Classify images](/vision/classify/): whole-image labels and scene categorization
 
 ### 3D vision
 

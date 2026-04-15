@@ -94,7 +94,7 @@ Add the filtered camera module to your machine:
 
 6. Click **Save**.
 
-For more details, see the [`filtered-camera` module README](https://app.viam.com/module/viam/filtered-camera).
+For a fuller walkthrough that combines the filtered camera with an ML detector, see [Filter images at the edge](/data/filter-at-the-edge/#use-a-filtered-camera-with-ml). The [`filtered-camera` module README](https://app.viam.com/module/viam/filtered-camera) has the raw attribute reference.
 
 {{% alert title="Tip" color="tip" %}}
 To verify your confidence threshold, expand the **TEST** panel on your vision service card, select the right camera in the **Camera** dropdown, and observe the confidence levels for live detections.

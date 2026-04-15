@@ -14,7 +14,7 @@ aliases:
   - /vision/measure-depth/
 ---
 
-A standard camera gives you a flat 2D image. You can see that there is a box on the table, but you cannot tell whether the box is 30 centimeters away or 3 meters away. This how-to shows you how to get depth data from your camera and extract useful distance measurements for robotics tasks that involve physical interaction.
+A standard camera gives you a flat 2D image. You can see that there is a box on the table, but you cannot tell whether the box is 30 centimeters away or 3 meters away. This how-to shows you how to get depth data from your perception sensor (a depth camera, LiDAR, or ToF sensor) and extract useful distance measurements for robotics tasks that involve physical interaction.
 
 ## Concepts
 
@@ -32,13 +32,13 @@ All of these produce the same type of output in Viam: a point cloud or a depth m
 
 ### Point clouds
 
-A point cloud is a collection of 3D points, each with an (x, y, z) position measured in millimeters from the camera's optical center. Some point clouds also include color information for each point.
+A point cloud is a collection of 3D points, each with an (x, y, z) position measured in millimeters from a frame defined by the sensor (the optical center for most depth cameras; check your sensor's datasheet for LiDAR and ToF units). Some point clouds also include color information for each point.
 
-The coordinate system follows a standard convention:
+The coordinate system typically follows this convention:
 
 - **X** increases to the right
 - **Y** increases downward
-- **Z** increases away from the camera (depth)
+- **Z** increases away from the sensor (depth)
 
 A typical indoor scene captured by a depth camera contains tens of thousands to hundreds of thousands of points, depending on the camera resolution and range.
 
@@ -520,4 +520,5 @@ If you need an image, its detections, and a point cloud together in one call, us
 ## What's next
 
 - [Detect objects](/vision/object-detection/detect/): get 2D detections to combine with depth measurements.
+- [Act on detections](/vision/object-detection/act-on-detections/): drive machine behavior from detections plus depth (for example, move a robot arm to a 3D object position).
 - [Frame system](/motion-planning/frame-system/): set up coordinate frame transforms so 3D positions are usable by other components.
