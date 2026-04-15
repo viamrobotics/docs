@@ -223,12 +223,21 @@ let wasReconnecting = false;
 
 machine.on("connectionstatechange", async (event) => {
   const { eventType } = event as { eventType: VIAM.MachineConnectionEvent };
-  if (eventType === VIAM.MachineConnectionEvent.RECONNECTING) {
-    wasReconnecting = true;
-  }
-  if (eventType === VIAM.MachineConnectionEvent.CONNECTED && wasReconnecting) {
-    wasReconnecting = false;
-    await rebuildAfterReconnect();
+  switch (eventType) {
+    case VIAM.MachineConnectionEvent.RECONNECTING:
+      wasReconnecting = true;
+      break;
+    case VIAM.MachineConnectionEvent.CONNECTED:
+      if (wasReconnecting) {
+        wasReconnecting = false;
+        await rebuildAfterReconnect();
+      }
+      break;
+    case VIAM.MachineConnectionEvent.RECONNECTION_FAILED:
+    case VIAM.MachineConnectionEvent.DISCONNECTED:
+      // Reset the flag so a later fresh connect is not treated as a reconnect.
+      wasReconnecting = false;
+      break;
   }
 });
 
@@ -237,7 +246,7 @@ async function rebuildAfterReconnect() {
 }
 ```
 
-Use `RECONNECTING` as the trigger rather than `DISCONNECTED`. The SDK emits `RECONNECTING` as soon as it loses an unintentional connection and starts retrying; `DISCONNECTED` is now only emitted for closed clients or when `noReconnect` is set. To handle the case where reconnection ultimately fails, listen for `RECONNECTION_FAILED` and surface that to the user separately.
+Use `RECONNECTING` as the trigger rather than `DISCONNECTED`. The SDK emits `RECONNECTING` as soon as it loses an unintentional connection and starts retrying; `DISCONNECTED` is now only emitted for closed clients or when `noReconnect` is set. Clear `wasReconnecting` on `RECONNECTION_FAILED` and `DISCONNECTED` so that a later reconnect attempt (for example, after the user manually reconnects) does not incorrectly trigger `rebuildAfterReconnect()` on its first `CONNECTED` event. Listen for `RECONNECTION_FAILED` separately if you want to surface the give-up state to the user.
 
 ## Next
 
