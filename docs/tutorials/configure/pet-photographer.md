@@ -879,7 +879,7 @@ To enable data capture on your machine, add and configure the [data management s
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/operate/reference/services/vision/color_detector/).
+To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/reference/services/vision/color_detector/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
@@ -902,7 +902,7 @@ Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information, refer to [Configure a color detector](/operate/reference/services/vision/color_detector/).
+For more detailed information, refer to [Configure a color detector](/reference/services/vision/color_detector/).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}

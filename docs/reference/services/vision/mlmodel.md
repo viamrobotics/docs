@@ -28,14 +28,14 @@ Before configuring an `mlmodel` vision service, you need:
 
 <h4>1. A trained or uploaded ML model</h4>
 
-Add an existing model from the [registry](https://app.viam.com/registry) or [train one from your data](/data-ai/train/train/). The model must be TensorFlow Lite, TensorFlow, ONNX, or PyTorch.
+Add an existing model from the [registry](https://app.viam.com/registry) or [train one from your data](/train/train-a-model/). The model must be TensorFlow Lite, TensorFlow, ONNX, or PyTorch.
 
 {{% /manualcard %}}
 {{% manualcard %}}
 
 <h4>2. An ML model service running on your machine</h4>
 
-Configure an [ML model service](/data-ai/ai/deploy/) with an implementation that matches your model format (for example, `tflite_cpu`, `onnx-cpu`, `tensorflow-cpu`, or `torch-cpu`).
+Configure an [ML model service](/vision/deploy-and-maintain/deploy-from-registry/) with an implementation that matches your model format (for example, `tflite_cpu`, `onnx-cpu`, `tensorflow-cpu`, or `torch-cpu`).
 
 {{% /manualcard %}}
 {{< /cards >}}
@@ -121,7 +121,7 @@ Add the vision service object to the services array in your JSON configuration:
 <!-- prettier-ignore -->
 | Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
-| `mlmodel_name` | string | **Required** | The name of the [ML model service](/data-ai/ai/deploy/) the vision service wraps. |
+| `mlmodel_name` | string | **Required** | The name of the [ML model service](/vision/deploy-and-maintain/deploy-from-registry/) the vision service wraps. |
 | `camera_name` | string | Optional | The default camera to use for calls such as `GetDetectionsFromCamera`, `GetClassificationsFromCamera`, and `GetObjectPointClouds`. |
 | `default_minimum_confidence` | number | Optional | Minimum confidence score (between `0.0` and `1.0`) applied to all output labels. Detections and classifications below this are filtered out. If unset, no filtering is applied. <br> Example: `0.6` |
 | `label_confidences` | object | Optional | Per-label confidence thresholds. Keys are label names and values are minimum confidence. When set, `label_confidences` overrides `default_minimum_confidence` for listed labels and other labels are filtered out. <br> Example: `{"DOG": 0.8, "CARROT": 0.3}` |
@@ -195,7 +195,7 @@ If a Viam-trained model already uses these names, you can skip `remap_input_name
 
 ## Test your detector or classifier
 
-Test an `mlmodel` vision service from the [Control tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui), with images in the cloud, or with code.
+Test an `mlmodel` vision service from the [Control tab](/monitor/default-interface/#web-ui), with images in the cloud, or with code.
 
 ### Live camera footage
 
@@ -250,7 +250,7 @@ If you want a continuous overlay in the Control tab, configure a [transform came
 
 ### Images in the cloud
 
-If you have images stored in the [Viam Cloud](/data-ai/capture-data/capture-sync/), you can run your classifier against them:
+If you have images stored in the [Viam Cloud](/data/capture-sync/capture-and-sync-data/), you can run your classifier against them:
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click an image to open the expanded view.
 2. Click the **Auto-prediction mode** icon in the image toolbar (or press `M`).

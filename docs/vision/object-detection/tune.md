@@ -12,7 +12,7 @@ aliases:
 
 Your vision service is configured and returning detections, but the results are wrong in a specific way. This guide matches common failure modes to the `mlmodel` vision service attribute that fixes each one. Most tuning is a configuration change, not a code change.
 
-Before tuning, confirm the service is producing any results at all through the [Control tab](/vision/configure/#6-test-from-the-control-tab). If the service is not registered in the role you expected (for example, it registered as a classifier when you wanted a detector), see [How a vision service works](/vision/how-it-works/).
+Before tuning, confirm the service is producing any results at all through the [Control tab](/vision/configure/#6-verify-with-the-control-card). If the service is not registered in the role you expected (for example, it registered as a classifier when you wanted a detector), see [How a vision service works](/vision/how-it-works/).
 
 ## Pick your symptom
 

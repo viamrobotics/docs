@@ -15,7 +15,7 @@ This page covers the vision-specific pieces of rolling a new model to a fleet. T
 A vision model rollout has three moving parts:
 
 1. **The model version.** The ML model service on each machine either pins a specific version or tracks "latest".
-2. **The configuration source.** Shared config lives in a [fragment](/fleet/fragments/) so you update one place and every machine picks up the change.
+2. **The configuration source.** Shared config lives in a [fragment](/hardware/fragments/) so you update one place and every machine picks up the change.
 3. **The rollout order.** Machines update as soon as the new config reaches them; you can stage rollout by updating groups in sequence instead of all at once.
 
 ## Before rolling out
@@ -28,7 +28,7 @@ Before updating any production machine:
 
 ## Pin the new version in a fragment
 
-If your fleet shares a [fragment](/fleet/fragments/), update the ML model service's `model_version` attribute in the fragment:
+If your fleet shares a [fragment](/hardware/fragments/), update the ML model service's `model_version` attribute in the fragment:
 
 ```json
 {

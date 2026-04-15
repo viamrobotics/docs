@@ -85,7 +85,7 @@ Let the new version run for a few minutes against real camera input. Watch the v
 
 ### Roll out to the fleet
 
-Once the new version passes single-machine validation, promote it. If the machines in your fleet share a [fragment](/fleet/fragments/), update the fragment's ML model service to reference the new version. Every machine using the fragment reconfigures in place.
+Once the new version passes single-machine validation, promote it. If the machines in your fleet share a [fragment](/hardware/fragments/), update the fragment's ML model service to reference the new version. Every machine using the fragment reconfigures in place.
 
 For [staged rollout](/fleet/), update machines in groups. One approach: use machine tags to select a canary group, roll out to canaries, wait, then roll out to the rest.
 
