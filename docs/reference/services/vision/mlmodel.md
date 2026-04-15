@@ -254,7 +254,7 @@ If you have images stored in the [Viam Cloud](/data-ai/capture-data/capture-sync
 
 1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click an image to open the expanded view.
 2. Click the **Auto-prediction mode** icon in the image toolbar (or press `M`).
-3. In the **Run model** panel, select your model and version, then run the inference.
+3. In the **Run model** panel, click **Choose ML model**, pick your model and version, then click **Run**.
 
 ### Code
 

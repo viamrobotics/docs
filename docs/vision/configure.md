@@ -260,8 +260,8 @@ Get the placeholder values from the Viam app:
 
 1. Open your machine's **CONNECT** tab.
 2. Select **SDK code sample**.
-3. Toggle **Include API key** on. The code snippet on the page is populated with your machine's real API key, API key ID, and machine address. Copy the whole snippet, or copy the individual values out of it.
-4. To view or rotate API keys separately, open the **API keys** sidebar item on the same tab.
+3. Click the **Include API key** switch. The snippet on the page regenerates with your machine's real API key, API key ID, and machine address in place of the `<API-KEY>`, `<API-KEY-ID>`, and `<MACHINE-ADDRESS>` placeholders. Click the copy icon on the snippet to copy the whole thing.
+4. To view or copy API keys separately, open the **API keys** sidebar item on the same tab.
 
 ## Available ML model services and vision models
 
