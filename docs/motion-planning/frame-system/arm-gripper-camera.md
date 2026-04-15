@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Configure frames for a table-mounted arm with an attached gripper and wrist-mounted camera."
+aliases:
+  - /motion-planning/frame-system-how-to/arm-gripper-camera/
 ---
 
 This is the most common manipulation setup: a table-mounted arm with a gripper on the end effector and a camera mounted on the arm near the gripper.

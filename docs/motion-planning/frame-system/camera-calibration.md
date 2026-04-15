@@ -1,13 +1,14 @@
 ---
 linkTitle: "Camera calibration"
 title: "Calibrate a camera for motion planning"
-weight: 60
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Compute camera intrinsic and distortion parameters for accurate 2D-to-3D projection."
 aliases:
   - /work-cell-layout/calibrate-camera-to-robot/
   - /build/work-cell-layout/calibrate-camera-to-robot/
+  - /motion-planning/camera-calibration/
 ---
 
 A camera captures 2D images, but your robot operates in 3D space. Converting

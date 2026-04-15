@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Configure frames for a mobile base with mounted cameras and LIDAR sensors."
+aliases:
+  - /motion-planning/frame-system-how-to/mobile-base-sensors/
 ---
 
 This setup covers a mobile base with sensors mounted on it, such as LIDAR, front-facing cameras, and rear-facing cameras.

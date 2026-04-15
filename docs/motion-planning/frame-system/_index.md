@@ -201,13 +201,12 @@ If a component's pose looks wrong, check the translation and orientation values
 in its frame configuration. For details on all CLI motion commands, see
 [Motion Service Configuration](/motion-planning/reference/motion-service/#cli-commands).
 
-## What's next
-
-Configure the frame system for your hardware setup:
+## Configure frames for your hardware
 
 {{< cards >}}
-{{% card link="/motion-planning/frame-system-how-to/arm-gripper-camera/" noimage="true" %}}
-{{% card link="/motion-planning/frame-system-how-to/arm-fixed-camera/" noimage="true" %}}
-{{% card link="/motion-planning/frame-system-how-to/mobile-base-sensors/" noimage="true" %}}
-{{% card link="/motion-planning/frame-system-how-to/mobile-base-arm/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/arm-gripper-camera/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/arm-fixed-camera/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/mobile-base-sensors/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/mobile-base-arm/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/camera-calibration/" noimage="true" %}}
 {{< /cards >}}
