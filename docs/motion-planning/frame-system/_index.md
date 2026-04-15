@@ -15,6 +15,7 @@ aliases:
   - /services/frame-system/frame-config/
   - /mobility/frame-system/frame-config/
   - /reference/services/frame-system/frame-config/
+  - /motion-planning/frame-system-how-to/
 ---
 
 A robot with an arm, a camera, and a gripper has three components, and each one

@@ -15,6 +15,7 @@ aliases:
   - /services/frame-system/nested-frame-config/
   - /mobility/frame-system/nested-frame-config/
   - /reference/services/frame-system/nested-frame-config/
+  - /operate/reference/services/frame-system/nested-frame-config/
 ---
 
 A robot arm that knows nothing about its surroundings plans the shortest path
