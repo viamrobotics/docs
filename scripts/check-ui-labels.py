@@ -122,16 +122,53 @@ RULES: list[Rule] = [
 
 
 def get_staged_markdown_files(repo_root: Path) -> list[Path]:
+    """Return markdown files that this commit introduces changes in.
+
+    For a normal commit, that's every staged .md file. For a merge commit,
+    we filter out files whose staged blob matches either parent (HEAD or
+    MERGE_HEAD) — those are inherited unchanged from one side and aren't
+    the merge author's work. Without this filter, merge commits that pull
+    in files from upstream trip on pre-existing style issues in content
+    the merge author never touched.
+    """
     result = subprocess.run(
         ["git", "-C", str(repo_root), "diff", "--cached", "--name-only", "--diff-filter=ACMR"],
         check=True,
         capture_output=True,
         text=True,
     )
-    return [
+    candidates = [
         repo_root / line
         for line in result.stdout.splitlines()
         if line.endswith(".md") and (repo_root / line).exists()
+    ]
+
+    # Detect a merge in progress: .git/MERGE_HEAD exists during merge resolution.
+    git_dir_result = subprocess.run(
+        ["git", "-C", str(repo_root), "rev-parse", "--git-dir"],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    git_dir = Path(git_dir_result.stdout.strip())
+    if not git_dir.is_absolute():
+        git_dir = repo_root / git_dir
+    if not (git_dir / "MERGE_HEAD").exists():
+        return candidates
+
+    def differs_from(ref: str, path: Path) -> bool:
+        """True if the staged blob for `path` differs from `ref`'s blob."""
+        rel = path.relative_to(repo_root)
+        diff = subprocess.run(
+            ["git", "-C", str(repo_root), "diff", "--cached", ref, "--", str(rel)],
+            capture_output=True,
+            text=True,
+        )
+        return bool(diff.stdout.strip())
+
+    return [
+        p for p in candidates
+        if differs_from("HEAD", p) and differs_from("MERGE_HEAD", p)
     ]
 
 
