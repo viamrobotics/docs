@@ -54,9 +54,9 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 Make sure you have followed these steps to configure an arm and a gripper.
 
-1. [Configure an Arm](/operate/mobility/move-arm/)
-2. [Configure your frame system](/operate/mobility/move-arm/frame-how-to/)
-3. [Configure components attached to your arm](/operate/mobility/move-arm/configure-additional/)
+1. [Move your first arm](/motion-planning/quickstarts/first-arm/)
+2. [Configure your frame system](/motion-planning/frame-system/)
+3. [Configure an arm with a gripper and wrist camera](/motion-planning/frame-system-how-to/arm-gripper-camera/)
 
 ## Configure a robot
 

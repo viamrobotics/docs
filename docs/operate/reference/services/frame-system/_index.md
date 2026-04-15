@@ -37,7 +37,7 @@ It is a mostly static system for storing the "reference frame" of each component
 
 ## Configuration
 
-For a full how-to guide, see [Configure your frame system](/operate/mobility/move-arm/frame-how-to/).
+For a full how-to guide, see [Frame system](/motion-planning/frame-system/) and the [frame system how-tos](/motion-planning/frame-system-how-to/).
 
 You can configure a reference frame within the frame system for each of your machine's components:
 
@@ -55,7 +55,7 @@ You can configure a reference frame within the frame system for each of your mac
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | The name of the reference frame you want to act as the parent of this frame. <br> Default: `world`. |
 | `translation` | **Required** | The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: Millimeters. <br> Default: `(0, 0, 0)`. |
-| `orientation`  | **Required** | The [orientation vector](/operate/mobility/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: Orientation vector in degrees (`ov_degrees`), orientation vector in radians (`ov_radians`), Euler angles (`euler_angles`), and quaternion (`quaternion`). <br> Default: `(0, 0, 1), 0`. |
+| `orientation`  | **Required** | The [orientation vector](/motion-planning/reference/orientation-vectors/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: Orientation vector in degrees (`ov_degrees`), orientation vector in radians (`ov_radians`), Euler angles (`euler_angles`), and quaternion (`quaternion`). <br> Default: `(0, 0, 1), 0`. |
 | `geometry`  | Optional | Collision geometries for defining bounds in the environment of the machine. <br> Units: Millimeters. <br> Types: `sphere`, `box`, and `capsule`. <br> Default: `none`. |
 
 {{< tabs >}}
@@ -144,7 +144,7 @@ You can configure a reference frame within the frame system for each of your mac
 
 {{% alert title="Info" color="info" %}}
 
-The `orientation` parameter offers different types for ease of configuration, but the frame system always stores and returns [orientation vectors](/operate/mobility/orientation-vector/) in radians.
+The `orientation` parameter offers different types for ease of configuration, but the frame system always stores and returns [orientation vectors](/motion-planning/reference/orientation-vectors/) in radians.
 Other types will be converted to `ov_radians`.
 
 {{% /alert %}}
