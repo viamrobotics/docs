@@ -1,6 +1,6 @@
 ---
-linkTitle: "Orientation Vectors"
-title: "Orientation Vector Reference"
+linkTitle: "Orientation vectors"
+title: "Orientation vector reference"
 weight: 30
 layout: "docs"
 type: "docs"
@@ -12,9 +12,7 @@ aliases:
   - /operate/reference/orientation-vector/
 ---
 
-Orientation vectors describe the rotation of a component's coordinate frame
-relative to its parent frame. They are used in frame system configuration,
-motion planning destinations, and pose specifications.
+When you specify a pose in Viam (in frame system configuration, a motion planning destination, or any other `Pose` payload), the orientation is expressed as one of five rotation formats. This page lists those formats, their schemas, common orientations, and validation rules.
 
 ## Supported orientation formats
 
@@ -23,7 +21,7 @@ orientation configuration:
 
 ### `ov_degrees` (default)
 
-Orientation vector with angle in degrees. Most commonly used.
+The orientation vector format (axis plus angle in degrees). Use this for most configurations; the other formats exist to interoperate with Euler, axis-angle, or quaternion inputs.
 
 ```json
 {
@@ -68,8 +66,7 @@ Default: `{"roll": 0, "pitch": 0, "yaw": 0}`.
 
 ### `axis_angles`
 
-Rotation axis with angle in **radians**. Similar to `ov_radians` but uses the
-R4AA (Rotation 4 Axis Angle) representation.
+Rotation axis plus angle in radians, using the R4AA (Rotation 4 Axis Angle) representation. Choose `axis_angles` when your input already comes from an R4AA source; otherwise `ov_radians` is equivalent and more common in Viam configs.
 
 ```json
 {
@@ -119,9 +116,7 @@ instead. These formats do not suffer from gimbal lock.
 
 ## Validation
 
-For `ov_degrees` and `ov_radians`, the orientation vector `(x, y, z)` must have
-a non-zero magnitude. If all three components are zero, the code returns an
-error: _"has a normal of 0, probably X, Y, and Z are all 0"_.
+For `ov_degrees` and `ov_radians`, the axis `(x, y, z)` must have a non-zero magnitude. Passing an all-zero axis returns the error `has a normal of 0, probably X, Y, and Z are all 0`.
 
 For `axis_angles`, a zero-norm axis causes a panic during normalization. Always
 provide a non-zero axis vector.

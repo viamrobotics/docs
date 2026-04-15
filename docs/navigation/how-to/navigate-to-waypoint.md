@@ -10,8 +10,11 @@ aliases:
   - /navigation/how-to/move-to-gps-coordinate/
 ---
 
-This guide walks you through configuring the navigation service and sending
-your robot to its first GPS waypoint.
+Once your GPS movement sensor reports accurate position and heading, the
+navigation service can drive the base to a coordinate you choose. This
+guide adds the navigation service to an existing base-and-GPS machine
+and sends the robot to its first waypoint, first from the Control tab
+and then from code.
 
 ## Prerequisites
 
@@ -52,9 +55,12 @@ You can add waypoints through the Viam app's Control tab or from code.
 
 1. Go to your machine's **CONTROL** tab.
 2. Find the navigation service card. It shows a map centered on your
-   robot's GPS position.
+   robot's GPS position. If the card shows **Resource is
+   configuring...**, wait for the navigation service's status badge to
+   read **Ready**.
 3. Click on the map to add a waypoint. A marker appears at that location.
-4. Switch the mode to **Waypoint**.
+4. Above the map, find the **Mode** toggle (options: **Manual** /
+   **Waypoint**) and select **Waypoint**.
 5. The robot begins navigating to the waypoint. Watch its position update
    on the map.
 
@@ -131,7 +137,7 @@ import (
     "fmt"
     "time"
 
-    "github.com/golang/geo/s2"
+    geo "github.com/kellydunn/golang-geo"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
     "go.viam.com/rdk/services/navigation"
@@ -160,14 +166,13 @@ func main() {
     }
 
     // Add a waypoint (replace with your target coordinates)
-    target := s2.LatLngFromDegrees(40.6640, -73.9387)
-    point := s2.PointFromLatLng(target)
-    geoPoint := geo.NewPoint(target.Lat.Degrees(), target.Lng.Degrees())
-    err = nav.AddWaypoint(ctx, geoPoint, nil)
+    latitude, longitude := 40.6640, -73.9387
+    target := geo.NewPoint(latitude, longitude)
+    err = nav.AddWaypoint(ctx, target, nil)
     if err != nil {
         logger.Fatal(err)
     }
-    fmt.Printf("Added waypoint at %f, %f\n", target.Lat.Degrees(), target.Lng.Degrees())
+    fmt.Printf("Added waypoint at %f, %f\n", latitude, longitude)
 
     // Start navigating
     err = nav.SetMode(ctx, navigation.ModeWaypoint, nil)
@@ -208,47 +213,21 @@ func main() {
 
 ## What to expect
 
-When navigation starts:
+When navigation starts, the robot turns to face the waypoint, drives
+toward it, and marks the waypoint visited on arrival. If more waypoints
+are queued, the service drives to the next one automatically.
 
-- The robot turns to face the waypoint, then drives toward it.
-- If the robot deviates from its path by more than `plan_deviation_m`
-  (default 2.6 meters), the service automatically replans.
-- If an obstacle is detected (from configured obstacle detectors), the
-  service replans around it.
-- When the robot reaches the waypoint, it marks it as visited and stops
-  (or moves to the next waypoint if more are queued).
+Two conditions trigger a replan during this sequence:
+
+- The robot drifts more than `plan_deviation_m` (default 2.6 meters)
+  from the planned path.
+- A configured obstacle detector reports a new obstacle on the path.
 
 ## Troubleshooting
 
-{{< expand "Robot doesn't move" >}}
-
-- Confirm the machine shows as **Live** in the Viam app.
-- Confirm the navigation mode is set to **Waypoint** (not Manual).
-- Check the **LOGS** tab for errors from the navigation or motion service.
-- Verify your base responds to direct commands first (use the base's
-  TEST section in the configure tab).
-- Verify your GPS movement sensor reports a valid position.
-
-{{< /expand >}}
-
-{{< expand "Robot moves erratically or in circles" >}}
-
-- Check compass heading accuracy. If the compass is affected by motor
-  interference, the robot won't know which direction to face. See
-  [Set up GPS](/navigation/how-to/set-up-gps/) for interference guidance.
-- Increase `plan_deviation_m` if the robot replans too frequently due
-  to GPS jitter. See [Tune navigation](/navigation/how-to/tune-navigation/).
-
-{{< /expand >}}
-
-{{< expand "Robot stops before reaching waypoint" >}}
-
-- The robot may be detecting an obstacle it can't navigate around. Check
-  GetObstacles from the API or the Control tab map for detected obstacles.
-- If using obstacle detectors, check that the vision service isn't
-  producing false positives.
-
-{{< /expand >}}
+If the robot does not move, moves erratically, or stops short, see
+[Monitor and troubleshoot navigation](/navigation/how-to/monitor-and-troubleshoot/).
+That page covers the common failure modes in one place.
 
 ## What's next
 

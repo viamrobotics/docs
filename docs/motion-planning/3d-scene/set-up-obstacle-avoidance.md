@@ -7,9 +7,7 @@ type: "docs"
 description: "Visualize and adjust obstacle geometry so the motion planner routes around physical objects."
 ---
 
-The motion planner needs to know where physical objects are in your workspace to plan collision-free paths.
-You define obstacles as geometries (boxes, spheres, or capsules) positioned in the frame system.
-The 3D scene tab lets you see exactly how these geometries cover your workspace, so you can verify that the planner has an accurate picture before you run a motion plan.
+The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, or capsules positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The 3D scene tab lets you see what the planner sees, so you can check coverage before running a plan.
 
 ## Prerequisites
 
@@ -21,19 +19,21 @@ The 3D scene tab lets you see exactly how these geometries cover your workspace,
 
 ### 1. Open the 3D scene tab
 
-Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D scene** tab.
+Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 
 ### 2. Identify obstacles in the scene
 
-Obstacle geometries appear as translucent shapes.
+Obstacle geometries appear as translucent shapes in the viewport and as child rows under their parent frame in the **World** panel.
 Each geometry is positioned according to its frame configuration: its location is defined by a translation and orientation relative to a parent frame.
 
-Click an obstacle in the scene or the tree view to see its details:
+There is no separate "obstacles" list; toggle an obstacle's visibility with the eye icon on its row in the World panel, or select the row and press `H`.
 
-- **Geometry type**: box, sphere, or capsule.
-- **Dimensions**: size in mm (for example, x/y/z for a box, radius for a sphere, radius and length for a capsule).
-- **Position**: where the geometry's center is located.
-- **Parent frame**: which frame the geometry is attached to.
+Click an obstacle in the scene or in the World panel to see its details:
+
+- **geometry**: `None`, `Box`, `Sphere`, or `Capsule`.
+- **dimensions**: `x` / `y` / `z` (mm) for Box; `r` (mm) for Sphere; `r` and `l` (mm) for Capsule.
+- **local position** (mm): the geometry's center relative to its parent frame.
+- **parent frame**: which frame the geometry is attached to.
 
 ### 3. Compare geometry to physical objects
 
@@ -68,16 +68,13 @@ The scene reflects the current saved configuration.
 
 After defining obstacles, run through this checklist in the 3D scene:
 
-1. **Orbit to each workspace boundary.** Can the arm reach past the obstacle geometry into the physical object? If yes, the geometry needs to be larger.
-2. **Check the floor and ceiling.** If the arm can reach the floor, add a floor plane geometry. Same for ceiling-mounted setups.
-3. **Check between obstacles.** Narrow gaps between geometries that the arm cannot physically fit through should be closed by extending one or both geometries.
-4. **Move the arm to known-good targets.** If a target that should be reachable is blocked by obstacle geometry, the geometry is oversized or mispositioned.
+1. **Orbit to each workspace boundary.** If the arm can reach past the geometry into the physical object, the geometry is too small.
+2. **Check the floor and ceiling.** If the arm can reach the floor, add a floor plane. Do the same for ceiling-mounted setups.
+3. **Close narrow gaps.** If the gap between two geometries is narrower than the arm, the arm cannot fit there anyway; extend one or both geometries to close the gap.
+4. **Move the arm to known-good targets.** If a target that should be reachable is blocked, the geometry is oversized or mispositioned.
 
 ## Dynamic obstacles
 
-Static obstacles defined in configuration cover fixed objects in the workspace.
-For objects that move (a person, a moving conveyor, another robot), you can pass obstacle geometry at runtime in the `WorldState` parameter of the `Move` request.
-Dynamic obstacles use the same geometry types (box, sphere, capsule) and appear in the 3D scene when passed to the motion planner.
+Static obstacles in configuration cover fixed workspace objects. For objects that move, pass geometry at runtime through the `WorldState` parameter of the `Move` request. Runtime geometry uses the same shape types as static geometry and appears in the 3D scene the same way.
 
-Pair a vision service with a camera to detect obstacles at runtime and feed them into the motion planner as dynamic obstacles.
-See the [motion service API reference](/motion-planning/reference/) for details on obstacle detectors.
+Pair a vision service with a camera to detect moving objects and feed the detections into `Move` as runtime obstacles. See the [motion service API reference](/motion-planning/reference/) for obstacle detectors.

@@ -4,49 +4,44 @@ title: "Edit frames visually"
 weight: 50
 layout: "docs"
 type: "docs"
-description: "Add, edit, and delete frames and geometries directly in the 3D scene instead of editing JSON configuration."
+description: "Add, edit, and attach geometry to frames directly in the 3D scene instead of editing JSON configuration."
 ---
 
-{{< alert title="Preview feature" color="note" >}}
-Visual frame editing is currently behind a feature flag and may not be enabled for your organization.
-The interface and behavior described here may change before general availability.
-{{< /alert >}}
+The 3D scene tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.
 
-When visual frame editing is enabled, the 3D scene tab becomes a configuration tool: you can add frames to components, reposition them by editing coordinates in the details panel, change parent frames, and attach or modify geometry, all without editing JSON directly.
-Changes you make in the 3D scene are written back to your machine's configuration and saved when you click **Save** in the app.
+Visual editing is most useful while you are still figuring out where things go. Typing coordinates into JSON and reloading the 3D view to check them is slow; editing in the viewport and seeing the result immediately is faster. The trade-off is that the visual editor writes the same JSON fields through a smaller surface area, so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and the app surfaces an unsaved-changes banner on the CONFIGURE tab where you save them with **Save** or `⌘/Ctrl+S`.
 
 ## Prerequisites
 
-- Visual frame editing enabled for your organization (feature flag: `ENABLE_EDIT_FRAME_IN_VIZ_TAB`).
 - A machine with at least one component configured.
 
 ## Add a frame to a component
 
-Components that do not yet have a frame configured appear in the **Add frames** panel.
-
 1. Open the 3D scene tab.
-2. Look for the **Add frames** panel. It lists components that do not have frames.
+2. Click the **Add frames** button (axis-arrow icon) in the top-center toolbar. A floating panel opens listing components that do not yet have a frame.
 3. Select a component from the dropdown.
-4. Click **Add frame**.
+4. Click **Add frame** (singular) inside the panel.
 
 The component appears in the scene at the world frame origin with default values (zero translation, identity orientation, no geometry).
-You can then reposition it using the details panel.
+You can then reposition it using the Details panel.
 
 ## Edit a frame's position and orientation
 
-1. Select the component in the tree view or by clicking it in the 3D viewport.
-2. In the details panel, the **local position** and **local orientation** fields are editable input fields (rather than read-only values).
-3. Edit the position values (x, y, z in mm) to set the translation relative to the parent frame.
-4. Edit the orientation values (x, y, z, theta in degrees) to set the orientation as an orientation vector.
+1. Select the component in the **World** panel on the upper-left, or by clicking it in the 3D viewport.
+2. The Details panel (upper-right) shows the entity's current values. There is no edit-mode toggle; for any configurable frame, the **local position** and **local orientation** fields are editable inputs.
+3. Edit the position values (`x`, `y`, `z` in mm) to set the translation relative to the parent frame.
+4. Edit the orientation values (`x`, `y`, `z`, `th` in degrees) to set the orientation as an orientation vector.
 
 Changes appear immediately in the 3D viewport as you type.
 The values you enter here correspond directly to the `translation` and `orientation` fields in the frame JSON configuration.
 
+The **world position** and **world orientation** fields remain read-only; they are computed from the local pose plus the parent chain.
+
 ## Change a frame's parent
 
 1. Select the component.
-2. In the details panel, the **parent frame** field is a dropdown instead of a read-only label.
-3. Select the new parent frame from the dropdown.
+2. In the Details panel, click the **parent frame** dropdown.
+3. Select the new parent frame from the list.
 
 The component moves in the scene to reflect its new position relative to the new parent.
 All children of this frame move with it.
@@ -54,31 +49,21 @@ All children of this frame move with it.
 ## Add or change geometry
 
 1. Select the component.
-2. In the details panel, find the **geometry** section.
-3. Click one of the geometry type buttons: **None**, **Box**, **Sphere**, or **Capsule**.
-4. If you selected a geometry type, dimension fields appear:
-   - **Box**: x, y, z dimensions in mm.
-   - **Sphere**: radius (r) in mm.
-   - **Capsule**: radius (r) and length (l) in mm.
+2. In the Details panel, find the **geometry** row (four buttons: `None`, `Box`, `Sphere`, `Capsule`).
+3. Click a geometry type.
+4. **Dimensions** fields appear below:
+   - **Box**: `x`, `y`, `z` in mm.
+   - **Sphere**: `r` (radius) in mm.
+   - **Capsule**: `r` (radius) and `l` (length) in mm.
 5. Enter the dimensions. The geometry renders in the scene as you type.
 
 To remove a geometry, click **None**.
 
-## Delete a frame
-
-1. Select the component.
-2. In the details panel, click **Delete frame** at the bottom of the actions section.
-
-This removes the frame configuration from the component.
-The component disappears from the 3D scene but remains in your machine configuration (it just no longer has a spatial position in the frame system).
-
 ## Save your changes
 
-Changes made in the 3D scene are held locally until you save.
-The app shows an unsaved changes indicator when you have pending edits.
-Click **Save** in the machine configuration header to write all changes to your machine's configuration.
+Edits are held locally until you save. The CONFIGURE tab shows an unsaved-changes banner with a **Save** button; click it (or press `⌘/Ctrl+S` on the CONFIGURE tab) to commit them. If you navigate away first, the edits are lost.
 
-If you navigate away without saving, your changes are lost.
+To delete a frame, remove it from the component's configuration on the CONFIGURE tab (there is no **Delete frame** button in the embedded 3D scene tab).
 
 ## When to use visual editing
 

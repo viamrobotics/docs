@@ -54,13 +54,13 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 Make sure you have followed these steps to configure an arm and a gripper.
 
-1. [Configure an Arm](/operate/mobility/move-arm/)
-2. [Configure your frame system](/operate/mobility/move-arm/frame-how-to/)
-3. [Configure components attached to your arm](/operate/mobility/move-arm/configure-additional/)
+1. [Move your first arm](/motion-planning/quickstarts/first-arm/)
+2. [Configure your frame system](/motion-planning/frame-system/)
+3. [Configure an arm with a gripper and wrist camera](/motion-planning/frame-system/arm-gripper-camera/)
 
 ## Configure a robot
 
-Use the robot configuration from the [prerequisite guide](/operate/mobility/move-arm/) for this tutorial as well.
+Use the robot configuration from the [prerequisite guide](/motion-planning/move-an-arm/move-to-pose/) for this tutorial as well.
 We will revisit that robot configuration and add new components.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.

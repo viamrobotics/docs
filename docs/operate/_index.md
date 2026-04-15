@@ -13,6 +13,7 @@ description: "Install Viam on any device and integrate your hardware. Then you c
 notoc: true
 aliases:
   - /build/
+  - /operate/mobility/use-input-to-act/
 ---
 
 To get started, install Viam on any device and integrate your hardware. Then you can control your device and any attached physical hardware securely from anywhere in the world.
@@ -56,10 +57,10 @@ To get started, install Viam on any device and integrate your hardware. Then you
 
 {{< how-to-expand "Intelligent actuation and motion planning" "4" "INTERMEDIATE" "" "build-platform-motion" >}}
 {{< cards >}}
-{{% card link="/operate/mobility/motion-concepts/" noimage="true" %}}
-{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
-{{% card link="/operate/mobility/move-base/" noimage="true" %}}
-{{% card link="/operate/mobility/move-gantry/" noimage="true" %}}
+{{% card link="/motion-planning/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
+{{% card link="/navigation/how-to/drive-a-base/" noimage="true" %}}
+{{% card link="/motion-planning/move-gantry/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 
