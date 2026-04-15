@@ -197,7 +197,7 @@ relative to the arm, so they move wherever the arm moves.
 
 ## Where to next
 
-- [Allow specific frames to collide](/motion-planning/motion-how-to/allow-frame-collisions/):
+- [Allow specific frames to collide](/motion-planning/obstacles/allow-frame-collisions/):
   required when the wrist camera sees the arm it is mounted on.
 - [Move your first arm](/motion-planning/quickstarts/first-arm/):
   if you have not already; now you can give the motion service a

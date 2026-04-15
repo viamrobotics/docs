@@ -144,7 +144,7 @@ offline: `GetPlan` can return different answers a second apart.
 
 ## What's next
 
-- [Monitor a running plan](/motion-planning/motion-how-to/monitor-a-running-plan/):
+- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   observe plan state transitions including replans.
 - [Plan monitoring](/motion-planning/reference/plan-monitoring/):
   reference for `GetPlan`, `ListPlanStatuses`, and `StopPlan`.

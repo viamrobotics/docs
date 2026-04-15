@@ -271,7 +271,7 @@ geometry is usually the right answer.
 
 ## What's next
 
-- [Configure motion constraints](/motion-planning/constraints/): the
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/): the
   other three constraint types (Linear, Orientation, Pseudolinear).
 - [Define obstacles](/motion-planning/obstacles/): the obstacle geometry
   that the planner checks against.

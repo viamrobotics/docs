@@ -37,7 +37,7 @@ It is a mostly static system for storing the "reference frame" of each component
 
 ## Configuration
 
-For a full how-to guide, see [Frame system](/motion-planning/frame-system/) and the [frame system how-tos](/motion-planning/frame-system-how-to/).
+For a full how-to guide, see [Frame system](/motion-planning/frame-system/) and the [frame system how-tos](/motion-planning/frame-system/).
 
 You can configure a reference frame within the frame system for each of your machine's components:
 

@@ -90,5 +90,5 @@ For more configuration and usage info, see:
 {{< cards >}}
 {{% card link="/reference/apis/components/arm/" customTitle="Arm API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{< /cards >}}

@@ -149,5 +149,5 @@ reference.
 
 ## What's next
 
-- [Move an Arm to a Target Pose](/motion-planning/motion-how-to/move-arm-to-pose/)
-- [Pick an Object](/motion-planning/motion-how-to/pick-an-object/)
+- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/)
+- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/)

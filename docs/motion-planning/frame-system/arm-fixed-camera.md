@@ -167,7 +167,7 @@ If you are using a table corner as the world frame, make sure you are measuring 
 ## What's next
 
 {{< cards >}}
-{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
-{{% card link="/motion-planning/camera-calibration/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/camera-calibration/" noimage="true" %}}
 {{< /cards >}}

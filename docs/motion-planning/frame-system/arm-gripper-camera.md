@@ -237,7 +237,7 @@ If the adapter plate also offsets the gripper laterally, include x and y values 
 ## What's next
 
 {{< cards >}}
-{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/reference/kinematics/" noimage="true" %}}
 {{< /cards >}}

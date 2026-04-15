@@ -58,5 +58,5 @@ for the full list of configuration attributes.
   conceptual explanation of cBiRRT and its limits.
 - [Motion service configuration](/motion-planning/reference/motion-service/):
   full configuration reference.
-- [Configure motion constraints](/motion-planning/constraints/):
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   the four constraint types the planner enforces.

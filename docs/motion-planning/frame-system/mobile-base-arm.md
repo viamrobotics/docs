@@ -211,7 +211,7 @@ An arm mounted off-center will trace a larger arc when the base rotates.
 ## What's next
 
 {{< cards >}}
-{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/reference/kinematics/" noimage="true" %}}
 {{< /cards >}}

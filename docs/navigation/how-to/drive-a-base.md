@@ -243,7 +243,7 @@ if err := myBase.Stop(ctx, nil); err != nil {
 
 - [Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/):
   autonomous GPS navigation with replanning.
-- [Monitor a running plan](/motion-planning/motion-how-to/monitor-a-running-plan/):
+- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   track non-blocking MoveOnGlobe or MoveOnMap executions.
 - [Base API reference](/reference/apis/components/base/): full base component
   API surface.

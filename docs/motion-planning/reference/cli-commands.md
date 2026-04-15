@@ -42,7 +42,7 @@ Use this to:
   expect.
 - Compare configured values against physical measurements.
 - List the exact frame names you might reference in
-  [`CollisionSpecification`](/motion-planning/motion-how-to/allow-frame-collisions/)
+  [`CollisionSpecification`](/motion-planning/obstacles/allow-frame-collisions/)
   or `supplemental_transforms`.
 
 ### Flags
@@ -176,11 +176,11 @@ move itself uses the current API.
   offsets.
 
 For a step-by-step debugging workflow using these commands, see
-[Debug motion with the CLI](/motion-planning/motion-how-to/debug-motion-with-cli/).
+[Debug motion with the CLI](/motion-planning/debug-motion-with-cli/).
 
 ## What's next
 
-- [Debug motion with the CLI](/motion-planning/motion-how-to/debug-motion-with-cli/):
+- [Debug motion with the CLI](/motion-planning/debug-motion-with-cli/):
   step-by-step debugging using these commands.
 - [Frame system](/motion-planning/frame-system/): the concept the CLI
   inspects.

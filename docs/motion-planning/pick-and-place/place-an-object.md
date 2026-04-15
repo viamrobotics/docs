@@ -15,7 +15,7 @@ to the surface, releasing, and retreating.
 
 ## Prerequisites
 
-- Object already grasped (see [Pick an Object](/motion-planning/motion-how-to/pick-an-object/))
+- Object already grasped (see [Pick an Object](/motion-planning/pick-and-place/pick-an-object/))
 - Placement location known in world coordinates
 
 ## Steps
@@ -112,7 +112,7 @@ print("Retreated from placement")
 
 ## What's next
 
-- [Pick an Object](/motion-planning/motion-how-to/pick-an-object/):
+- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/):
   the pick half of the pick-and-place workflow.
-- [Monitor a running plan](/motion-planning/motion-how-to/monitor-a-running-plan/):
+- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   track plan status during execution.

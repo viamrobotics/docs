@@ -59,61 +59,33 @@ Motion planning in Viam connects several pieces:
    constraints and computes a collision-free path from the current pose to the
    target.
 
-## Get started
-
-Set up the spatial model for your workspace, then use the how-to guides to move
-your hardware.
-
-### Understand your workspace
+## Topic subsections
 
 {{< cards >}}
 {{% card link="/motion-planning/frame-system/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
-{{% card link="/motion-planning/camera-calibration/" noimage="true" %}}
-{{< /cards >}}
-
-### Configure your frame system
-
-{{< cards >}}
-{{% card link="/motion-planning/frame-system-how-to/arm-gripper-camera/" noimage="true" %}}
-{{% card link="/motion-planning/frame-system-how-to/arm-fixed-camera/" noimage="true" %}}
-{{% card link="/motion-planning/frame-system-how-to/mobile-base-sensors/" noimage="true" %}}
-{{% card link="/motion-planning/frame-system-how-to/mobile-base-arm/" noimage="true" %}}
-{{< /cards >}}
-
-### Visualize and debug your workspace
-
-{{< cards >}}
+{{% card link="/motion-planning/pick-and-place/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/debug-motion-plan/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/calibrate-frame-offsets/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/verify-point-cloud-alignment/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/set-up-obstacle-avoidance/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/edit-frames/" noimage="true" %}}
 {{< /cards >}}
 
-### Plan and execute motion
+## Other how-tos
 
 {{< cards >}}
-{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/move-arm-with-constraints/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/avoid-obstacles/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/drive-a-base/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/move-gantry/" noimage="true" %}}
+{{% card link="/motion-planning/move-gantry/" noimage="true" %}}
+{{% card link="/motion-planning/monitor-a-running-plan/" noimage="true" %}}
+{{% card link="/motion-planning/debug-motion-with-cli/" noimage="true" %}}
 {{< /cards >}}
 
-### Manipulation
-
-{{< cards >}}
-{{% card link="/motion-planning/motion-how-to/pick-an-object/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/place-an-object/" noimage="true" %}}
-{{< /cards >}}
-
-### Understand the internals
+## Concept pages
 
 {{< cards >}}
 {{% card link="/motion-planning/how-planning-works/" noimage="true" %}}
 {{% card link="/motion-planning/replanning-behavior/" noimage="true" %}}
-{{% card link="/motion-planning/constraints/" noimage="true" %}}
+{{< /cards >}}
+
+## Reference
+
+{{< cards >}}
 {{% card link="/motion-planning/reference/" noimage="true" %}}
 {{< /cards >}}

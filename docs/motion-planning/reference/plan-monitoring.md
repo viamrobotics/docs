@@ -121,12 +121,12 @@ when the state reaches `SUCCEEDED`, or an error if the state reaches
 
 The Python SDK does not include an equivalent helper. Python callers
 poll `get_plan` in a loop. See
-[Monitor a running plan](/motion-planning/motion-how-to/monitor-a-running-plan/)
+[Monitor a running plan](/motion-planning/monitor-a-running-plan/)
 for the pattern.
 
 ## What's next
 
-- [Monitor a running plan](/motion-planning/motion-how-to/monitor-a-running-plan/):
+- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   start a non-blocking motion and react to state changes.
 - [Motion service API](/motion-planning/reference/api/): the full motion
   service method list.

@@ -190,7 +190,7 @@ workspace.
   will either route around it or fail, depending on where you place
   it. See [Define obstacles](/motion-planning/obstacles/).
 - **Move in joint space instead.**
-  [`MoveToJointPositions`](/motion-planning/motion-how-to/move-arm-joint-positions/)
+  [`MoveToJointPositions`](/motion-planning/move-an-arm/move-by-joint-positions/)
   bypasses the planner and drives the joints directly. Useful when
   you want predictable postures.
 - **Configure a multi-component machine.** Add a gripper and a

@@ -258,5 +258,5 @@ working distance of 500-1000 mm, your calibration is good.
   component frames for spatial reasoning.
 - [Define Obstacles](/motion-planning/obstacles/): add collision geometry using
   calibrated camera data.
-- [Move an Arm to a Target Pose](/motion-planning/motion-how-to/move-arm-to-pose/):
+- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/):
   use calibrated positions to plan arm movements.

@@ -174,6 +174,6 @@ Frames parented to the world stay fixed in space.
 ## What's next
 
 {{< cards >}}
-{{% card link="/motion-planning/frame-system-how-to/mobile-base-arm/" noimage="true" %}}
+{{% card link="/motion-planning/frame-system/mobile-base-arm/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
 {{< /cards >}}

@@ -122,7 +122,7 @@ algorithm's probabilistic nature means some retries succeed.
   tune planning defaults through config attributes or per-call `extra`.
 - [Motion planning algorithms](/motion-planning/reference/algorithms/):
   terse summary of the algorithm, defaults, and tuning surface.
-- [Configure motion constraints](/motion-planning/constraints/):
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   the four constraint types the planner enforces.
-- [Monitor a running plan](/motion-planning/motion-how-to/monitor-a-running-plan/):
+- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   handle non-blocking plans and reason about state transitions.

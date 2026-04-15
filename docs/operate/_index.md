@@ -58,9 +58,9 @@ To get started, install Viam on any device and integrate your hardware. Then you
 {{< how-to-expand "Intelligent actuation and motion planning" "4" "INTERMEDIATE" "" "build-platform-motion" >}}
 {{< cards >}}
 {{% card link="/motion-planning/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/move-arm-to-pose/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/drive-a-base/" noimage="true" %}}
-{{% card link="/motion-planning/motion-how-to/move-gantry/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
+{{% card link="/navigation/how-to/drive-a-base/" noimage="true" %}}
+{{% card link="/motion-planning/move-gantry/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

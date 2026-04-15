@@ -266,9 +266,9 @@ module's documentation or the kinematics file.
 
 ## What's next
 
-- [Move an arm to a pose](/motion-planning/motion-how-to/move-arm-to-pose/):
+- [Move an arm to a pose](/motion-planning/move-an-arm/move-to-pose/):
   Cartesian motion with obstacle avoidance through `motion.Move`.
-- [Move with constraints](/motion-planning/motion-how-to/move-arm-with-constraints/):
+- [Move with constraints](/motion-planning/move-an-arm/move-with-constraints/):
   Cartesian motion with linear or orientation constraints.
 - [Arm kinematics](/motion-planning/reference/kinematics/): the
   kinematic file that declares joint limits.

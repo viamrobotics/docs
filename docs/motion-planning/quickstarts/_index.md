@@ -22,6 +22,6 @@ localize or drive, so a first-time walkthrough needs real hardware.
 The corresponding how-tos cover those flows end-to-end:
 
 {{< cards >}}
-{{% card link="/motion-planning/motion-how-to/drive-a-base/" noimage="true" %}}
+{{% card link="/navigation/how-to/drive-a-base/" noimage="true" %}}
 {{% card link="/navigation/how-to/navigate-to-waypoint/" noimage="true" %}}
 {{< /cards >}}

@@ -289,7 +289,7 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
 - Ensure the arm has a frame configured with `parent: "world"`.
 - Check that the target pose is within the arm's reachable workspace.
 - See [Obstacles](/motion-planning/obstacles/) for configuring obstacles and
-  [Constraints](/motion-planning/constraints/) for motion constraints.
+  [Constraints](/motion-planning/move-an-arm/constraints/) for motion constraints.
 
 {{< /expand >}}
 

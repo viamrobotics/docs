@@ -237,5 +237,5 @@ if err != nil {
 - [Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/):
   end-to-end example using the navigation service, which internally
   uses `MoveOnGlobe` and exposes its own progress API.
-- [Move an arm to a pose](/motion-planning/motion-how-to/move-arm-to-pose/):
+- [Move an arm to a pose](/motion-planning/move-an-arm/move-to-pose/):
   the builtin `Move` equivalent for arms and gantries.

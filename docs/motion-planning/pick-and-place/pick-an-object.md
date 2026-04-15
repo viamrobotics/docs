@@ -18,7 +18,7 @@ approach path, and controlling the gripper to grasp it.
 - Arm with [frame system](/motion-planning/frame-system/) and
   [kinematics](/motion-planning/reference/kinematics/) configured
 - Gripper configured as a component
-- Camera [calibrated](/motion-planning/camera-calibration/) and registered
+- Camera [calibrated](/motion-planning/frame-system/camera-calibration/) and registered
   in the frame system
 - Vision service configured for object detection
 - [Obstacles](/motion-planning/obstacles/) defined (at minimum, the table)
@@ -184,7 +184,7 @@ print("Object lifted")
 
 ## What's next
 
-- [Place an Object](/motion-planning/motion-how-to/place-an-object/):
+- [Place an Object](/motion-planning/pick-and-place/place-an-object/):
   move the grasped object to a target location.
-- [Configure Motion Constraints](/motion-planning/constraints/):
+- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/):
   use CollisionSpecification to allow gripper-object contact.

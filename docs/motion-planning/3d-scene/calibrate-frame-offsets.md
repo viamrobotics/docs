@@ -76,4 +76,4 @@ Frame calibration is often iterative:
 4. Adjust and repeat until the scene matches reality.
 
 For high-precision applications, use the camera calibration procedure to compute intrinsic parameters before adjusting frame offsets.
-See [Calibrate a camera for motion planning](/motion-planning/camera-calibration/).
+See [Calibrate a camera for motion planning](/motion-planning/frame-system/camera-calibration/).

@@ -18,7 +18,7 @@ the end effector unpredictably.
 ## Prerequisites
 
 - A running machine with an arm and [frame system](/motion-planning/frame-system/) configured
-- Familiarity with [Move Arm to Pose](/motion-planning/motion-how-to/move-arm-to-pose/)
+- Familiarity with [Move Arm to Pose](/motion-planning/move-an-arm/move-to-pose/)
 
 ## Steps
 
@@ -202,7 +202,7 @@ constraints := &motionplan.Constraints{
 
 ## What's next
 
-- [Configure Motion Constraints](/motion-planning/constraints/):
+- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/):
   full reference for all four constraint types.
-- [Plan Collision-Free Paths](/motion-planning/motion-how-to/avoid-obstacles/):
+- [Plan Collision-Free Paths](/motion-planning/obstacles/avoid-obstacles/):
   combine constraints with obstacle avoidance.

@@ -217,7 +217,7 @@ constraints = Constraints(
 ```
 
 For the full pattern, see
-[Allow specific frames to collide](/motion-planning/motion-how-to/allow-frame-collisions/).
+[Allow specific frames to collide](/motion-planning/obstacles/allow-frame-collisions/).
 
 ## Compared to passive attachment
 
@@ -267,10 +267,10 @@ to see the valid frame names.
 
 - [Define obstacles](/motion-planning/obstacles/): the static obstacles
   you pass alongside grasped-object transforms.
-- [Allow specific frames to collide](/motion-planning/motion-how-to/allow-frame-collisions/):
+- [Allow specific frames to collide](/motion-planning/obstacles/allow-frame-collisions/):
   permit the contact between gripper and object that the grasp
   requires.
-- [Pick an object](/motion-planning/motion-how-to/pick-an-object/):
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
   end-to-end grasp flow that uses this pattern.
 - [Frame system API](/motion-planning/reference/frame-system-api/):
   the `TransformPose` method, which uses the same supplemental
