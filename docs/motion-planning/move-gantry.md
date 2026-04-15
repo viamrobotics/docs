@@ -1,7 +1,7 @@
 ---
 linkTitle: "Move a gantry"
 title: "Move a gantry"
-weight: 40
+weight: 70
 layout: "docs"
 type: "docs"
 description: "Control gantry axes directly or plan complex gantry motion."

@@ -1,7 +1,7 @@
 ---
 linkTitle: "Monitor a running plan"
 title: "Monitor a running plan"
-weight: 50
+weight: 80
 layout: "docs"
 type: "docs"
 description: "Start a non-blocking motion plan and react to progress, completion, and failure."
