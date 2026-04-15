@@ -39,7 +39,9 @@ Instead, all sensor positions are defined relative to the center of the base.
 ### 2. Add a frame to the base
 
 In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-Find your base component and click the **Frame** button.
+In the sidebar, click your base component to open its card. On the card, click **Frame**.
+
+The Frame section opens a JSON editor (no form, parent dropdown, or geometry-type picker). Edit the JSON directly for each component below.
 
 Since the world frame origin is at the base center, the translation is zero:
 
@@ -54,11 +56,11 @@ Since the world frame origin is at the base center, the translation is zero:
 }
 ```
 
-Click **Save**.
+Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ### 3. Add a frame to the LIDAR
 
-Find your LIDAR component and click the **Frame** button.
+In the sidebar, click your LIDAR component to open its card. On the card, click **Frame**.
 Measure the offset from the center of the base to the LIDAR's sensor origin.
 
 For a LIDAR mounted on top of the base, centered horizontally and 150 mm above the base center:
@@ -92,7 +94,7 @@ Click **Save**.
 
 ### 4. Add frames to the cameras
 
-Find each camera component and click the **Frame** button.
+For each camera, click the component in the sidebar to open its card, then click **Frame**.
 Measure the offset from the base center to each camera's mounting position.
 
 **Front-facing camera:**

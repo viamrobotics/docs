@@ -38,8 +38,9 @@ In the [Viam app](https://app.viam.com), go to your machine's
 2. Choose the **fake** model.
 3. Name it **my-arm**.
 4. In the arm's attributes, set `arm-model` to `"ur5e"`.
-5. Click **Frame** on the arm's card and edit the JSON so the frame
-   sits at the world origin:
+5. Click **Frame** on the arm's card. The Frame section opens a JSON
+   editor (there is no form, parent dropdown, or geometry-type picker).
+   Edit the JSON so the frame sits at the world origin:
 
 ```json
 {
@@ -52,7 +53,7 @@ In the [Viam app](https://app.viam.com), go to your machine's
 }
 ```
 
-Click **Save**.
+Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ## 2. Add the gripper
 
@@ -82,9 +83,9 @@ pose moves with the arm automatically.
 1. Click **+** and add a **camera** component.
 2. Choose the **fake** model.
 3. Name it **my-camera**.
-4. Click **Frame**. Edit the JSON so the camera sits 30 mm to the
-   side of the arm's end effector and 60 mm above it, tilted 30 degrees
-   downward about the x axis:
+4. Click **Frame** on the camera's card. Edit the JSON so the camera
+   sits 30 mm to the side of the arm's end effector and 60 mm above it,
+   tilted 30 degrees downward about the x axis:
 
 ```json
 {

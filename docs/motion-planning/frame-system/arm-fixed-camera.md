@@ -38,7 +38,9 @@ Mark the origin physically so you can take consistent measurements to both the a
 ### 2. Add a frame to the arm
 
 In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-Find your arm component and click the **Frame** button.
+In the sidebar, click your arm component to open its card. On the card, click **Frame**.
+
+The Frame section opens a JSON editor (there is no form, no parent dropdown, or geometry-type picker). Edit the JSON directly.
 
 Measure the distance from your world frame origin to the arm base along each axis.
 For an arm base 300 mm to the right and 250 mm forward from a table corner:
@@ -54,11 +56,11 @@ For an arm base 300 mm to the right and 250 mm forward from a table corner:
 }
 ```
 
-Click **Save**.
+Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ### 3. Add a frame to the gripper
 
-Find your gripper component and click the **Frame** button.
+In the sidebar, click your gripper component to open its card. On the card, click **Frame**.
 Set the parent to the arm:
 
 ```json
@@ -78,7 +80,7 @@ Click **Save**.
 
 ### 4. Add a frame to the fixed camera
 
-Find your camera component and click the **Frame** button.
+In the sidebar, click your camera component to open its card. On the card, click **Frame**.
 The camera's parent is `"world"`, not the arm.
 
 Measure the camera's position relative to your world frame origin.

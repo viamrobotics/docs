@@ -41,7 +41,9 @@ Mark your chosen origin physically so you can take consistent measurements.
 ### 2. Add a frame to the arm
 
 In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-Find your arm component and click the **Frame** button.
+In the sidebar, click your arm component to open its card. On the card, click **Frame**.
+
+The Frame section opens a JSON editor (there is no form, no parent dropdown, or geometry-type picker). Edit the JSON directly.
 
 If the arm base is your world frame origin:
 
@@ -69,7 +71,7 @@ If the world frame origin is at a table corner and the arm base is 300 mm to the
 }
 ```
 
-Click **Save** after adding the frame.
+Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ### 3. Verify axis directions
 
@@ -94,7 +96,7 @@ For example, if the arm's +x points opposite to your intended +x, rotate 180 deg
 
 ### 4. Add a frame to the gripper
 
-Find your gripper component in the **CONFIGURE** tab and click the **Frame** button.
+In the sidebar, click your gripper component to open its card. On the card, click **Frame**.
 
 #### Pick where the gripper frame origin sits
 
@@ -105,9 +107,9 @@ target pose, the point you pick here is what gets moved to that pose.
 
 #### Configure the frame
 
-Set the `parent` to your arm's component name. Enter the gripper frame
-origin's translation (in millimeters) and orientation relative to the
-arm's end effector.
+In the JSON, set `parent` to your arm's component name, `translation` to
+the gripper frame origin's offset in mm from the arm's end effector, and
+`orientation` to the gripper's rotation relative to the arm.
 
 If the gripper attaches directly to the arm's end effector with no
 adapter plate and no rotation, use a zero offset:
@@ -155,12 +157,12 @@ renders as expected in the **3D SCENE** tab. If it does, you are done.
 If the gripper does not have a kinematics file and you want the planner
 to avoid collisions with the gripper body, add a `geometry` field to the
 gripper's frame describing its physical volume. See
-[Define obstacles](/motion-planning/obstacles/#attach-a-passive-object-to-a-component)
+[Define obstacles](/motion-planning/obstacles/#passive-objects-attached-to-a-component)
 for the pattern.
 
 ### 5. Add a frame to the wrist camera
 
-Find your camera component in the **CONFIGURE** tab and click the **Frame** button.
+In the sidebar, click your camera component to open its card. On the card, click **Frame**.
 
 The camera's parent is the arm, not the world frame.
 Measure the offset from the arm's end effector to the camera's optical center.

@@ -41,7 +41,9 @@ All component positions are defined relative to this center point.
 ### 2. Add a frame to the base
 
 In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-Find your base component and click the **Frame** button.
+In the sidebar, click your base component to open its card. On the card, click **Frame**.
+
+The Frame section opens a JSON editor (no form, parent dropdown, or geometry-type picker). Edit the JSON directly for each component below.
 
 ```json
 {
@@ -54,11 +56,11 @@ Find your base component and click the **Frame** button.
 }
 ```
 
-Click **Save**.
+Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ### 3. Add a frame to the arm
 
-Find your arm component and click the **Frame** button.
+In the sidebar, click your arm component to open its card. On the card, click **Frame**.
 The arm's parent is the base, not the world frame.
 
 Measure the offset from the center of the base to the arm's mounting point.
@@ -83,7 +85,7 @@ Click **Save**.
 
 Both the gripper and wrist camera are children of the arm.
 
-**Gripper** (attached directly to the end effector):
+**Gripper** (attached directly to the end effector). In the sidebar, click your gripper component to open its card, then click **Frame**:
 
 ```json
 {
@@ -98,7 +100,7 @@ Both the gripper and wrist camera are children of the arm.
 
 If there is an adapter plate between the arm and gripper, set the z translation to the plate height.
 
-**Wrist camera** (mounted on the arm, offset from the end effector):
+**Wrist camera** (mounted on the arm, offset from the end effector). In the sidebar, click your wrist camera component to open its card, then click **Frame**:
 
 ```json
 {
@@ -129,7 +131,7 @@ Click **Save** after adding each frame.
 
 Navigation sensors are children of the base, not the arm.
 
-**Front-facing navigation camera:**
+**Front-facing navigation camera.** In the sidebar, click your front camera to open its card, then click **Frame**:
 
 ```json
 {
@@ -142,7 +144,7 @@ Navigation sensors are children of the base, not the arm.
 }
 ```
 
-**LIDAR mounted on top of the base:**
+**LIDAR mounted on top of the base.** In the sidebar, click your LIDAR component to open its card, then click **Frame**:
 
 ```json
 {

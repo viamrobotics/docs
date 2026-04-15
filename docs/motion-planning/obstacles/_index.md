@@ -155,9 +155,11 @@ configuration.
 
 1. Go to [app.viam.com](https://app.viam.com) and navigate to your machine.
 2. Click the **CONFIGURE** tab.
-3. Add a new component to represent the table obstacle (or add the geometry to
-   an existing component's frame).
-4. Configure the frame with a geometry:
+3. Add a new component to represent the table obstacle (or use an existing
+   component's frame).
+4. In the sidebar, click the component to open its card on the right. On the
+   card, click **Frame**. The Frame section opens a JSON editor (there is no
+   form, parent dropdown, or geometry-type picker). Edit the JSON to match:
 
 ```json
 {
@@ -180,8 +182,9 @@ This defines a table as a box 800 mm wide, 600 mm deep, and 40 mm thick. The
 center of the box is at z = -20 mm (20 mm below the world frame origin), so
 the top surface of the 40 mm thick table aligns with z = 0.
 
-Click **Save**. The table geometry is now part of the frame system and the
-motion planner will avoid it automatically.
+Click **Save** in the top-right of the page (or press ⌘/Ctrl+S). The table
+geometry is now part of the frame system and the motion planner will avoid
+it automatically.
 
 ### 2. Attach a passive object to a component
 
@@ -189,16 +192,19 @@ Use this pattern for objects that are permanently attached to a component but
 have no API of their own: camera mounts, adapter plates, fixed tooling, cable
 bundles.
 
+The Frame section is a JSON editor (no form, no parent dropdown, no
+geometry-type picker), so "set the parent" below means editing the JSON.
+
 1. In the **CONFIGURE** tab, click the **+** button, then **Component or
    service**, then **generic**.
 2. Select the **fake** component (not the service — services do not carry
    geometry).
 3. Name the component descriptively (for example, `arm-camera-mount`) and
    click **Create**.
-4. Click **Frame**.
-5. Set the parent frame to the component the object is attached to. Use the
-   arm name if the object is bolted to the arm's end effector, the gripper
-   name if it is attached to the gripper, and so on.
+4. On the new component's card, click **Frame**.
+5. In the JSON editor, set `parent` to the component the object is attached
+   to (the arm's name for an end-effector mount, the gripper's name for a
+   gripper attachment, and so on).
 6. Add a `geometry` field describing the object's shape:
 
 {{< tabs >}}
