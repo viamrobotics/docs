@@ -9,9 +9,11 @@ aliases:
   - /navigation/how-to/detect-while-moving/
 ---
 
-The navigation service supports two kinds of obstacles: vision-detected
-obstacles from cameras and static obstacles defined in configuration. You
-can use both together.
+The navigation service keeps the robot away from two kinds of obstacles:
+fixed hazards you declare in configuration (ponds, buildings, no-go
+zones) and dynamic hazards that cameras detect while the robot drives.
+You can use both together, and the planner merges them into a single
+avoidance set.
 
 ## Prerequisites
 
@@ -23,9 +25,9 @@ can use both together.
 ## Add vision-based obstacle detection
 
 Each obstacle detector pairs a vision service with a camera. The vision
-service analyzes frames from the camera and reports 3D obstacle geometries.
-The navigation service transforms these detections into geographic
-coordinates and feeds them to the path planner.
+service reports 3D geometries for anything it detects in the camera
+frame, and the navigation service transforms those detections into
+geographic coordinates for the path planner.
 
 ### Configure an obstacle detector
 
@@ -57,9 +59,9 @@ Common multi-detector setups:
 - **Forward and rear cameras** for obstacle detection in both directions.
 - **Different vision models** on the same camera (one for large obstacles,
   one for ground-level hazards).
-- **Different sensor types** (a camera-based detector for visual obstacles
-  and a lidar-based detector for transparent or reflective objects a camera
-  would miss).
+- **Different sensor types.** A camera-based detector catches visual
+  obstacles; a lidar-based detector catches transparent or reflective
+  objects that a camera misses.
 
 ```json
 {
@@ -79,13 +81,11 @@ Common multi-detector setups:
 ### How detection frequency works
 
 The navigation service polls each detector at
-`obstacle_polling_frequency_hz` (default 1 Hz). At each poll:
-
-1. The service queries the vision service for 3D point cloud objects.
-2. It transforms each detection from the camera's frame to geographic
-   coordinates using the movement sensor's position and heading.
-3. The transformed obstacles are added to the planner alongside any
-   static obstacles.
+`obstacle_polling_frequency_hz`, which defaults to 1 Hz. On each poll,
+the service queries the vision service for 3D point cloud objects,
+converts each detection from the camera frame to latitude and longitude
+using the movement sensor's pose, and passes the result to the planner
+alongside the static obstacles.
 
 Higher polling frequencies detect obstacles sooner but use more CPU and
 camera bandwidth. For robots moving at the default 0.3 m/s, 1 Hz means
@@ -143,12 +143,10 @@ If configured, the path planner will not generate paths that leave these
 regions. Use bounding regions to keep the robot on your property, within a
 work zone, or away from roads.
 
-Configure bounding regions in the `bounding_regions` array. The format is
-the same as static obstacles (GeoGeometry objects), but the meaning is
-inverted: obstacles are areas to avoid, bounding regions are areas to stay
-within.
-
-Geometry dimensions are in millimeters, as with static obstacles.
+Bounding regions use the same `GeoGeometry` format as static obstacles
+but have the opposite meaning. Obstacles are volumes the robot avoids;
+bounding regions are volumes the robot must stay inside. Configure them
+in the `bounding_regions` array.
 
 ```json
 {

@@ -9,9 +9,14 @@ aliases:
   - /motion-planning/frame-system-how-to/mobile-base-arm/
 ---
 
-This setup combines a mobile base with a mounted arm, gripper, and sensors.
-The arm is a child of the base, so the entire arm subtree (including the gripper and any wrist-mounted camera) moves with the base as it navigates.
-Navigation sensors like a front camera and LIDAR are also mounted on the base.
+A mobile manipulator, a base with an arm on top, has two distinct kinds of
+motion: the base moves through the environment, and the arm moves within
+reach of the base. The frame system represents this correctly by parenting
+the arm to the base rather than to the world. Every arm-attached component
+(the gripper, a wrist camera) then inherits the base's motion, while
+navigation sensors mounted directly on the base form a parallel subtree.
+This guide builds the full hierarchy: world to base to (arm to (gripper,
+wrist camera), navigation sensors).
 
 ## Frame hierarchy
 
@@ -25,11 +30,11 @@ world
     └── my-lidar
 ```
 
-The base is a child of the world frame.
-The arm is a child of the base, and the gripper and wrist camera are children of the arm.
-Navigation sensors are children of the base.
-When the base moves, every frame in the tree moves with it.
-When the arm moves, only the arm, gripper, and wrist camera frames update.
+The hierarchy reflects what physically moves with what. The base's parent is
+the world, so when the base drives, every frame below it shifts with it. The
+arm's parent is the base, so arm motion moves the gripper and wrist camera
+but not the navigation sensors. This separation keeps the lidar's reading
+about the floor consistent while the arm reaches for something.
 
 ## Steps
 
@@ -163,11 +168,11 @@ Click **Save** after adding each frame.
 
 ### 6. Visualize and verify
 
-1. Navigate to the **3D SCENE** tab in the Viam app.
-2. Verify that the arm, gripper, and wrist camera form a subtree under the base.
-3. Verify that navigation sensors are direct children of the base.
-4. Jog the arm using the **CONTROL** tab and confirm that only the arm subtree (arm, gripper, wrist camera) updates, while the base and navigation sensors stay in place.
-5. Check that all positions and orientations match your physical setup.
+1. Open the **3D SCENE** tab.
+2. Confirm the tree structure: arm, gripper, and wrist camera under the base; navigation sensors as direct children of the base.
+3. Jog the arm from the **CONTROL** tab. The arm subtree should move; the base and navigation sensors should not. This is the single clearest test that the hierarchy is correct.
+4. Drive the base a short distance. Every frame should shift together.
+5. Measure a known physical offset (base center to lidar, for example) and compare to the translation values in your config.
 
 ### 7. Verify with TransformPose
 
@@ -204,9 +209,13 @@ Also verify that each camera's translation and orientation offsets are accurate.
 
 {{< expand "Arm subtree shifts unexpectedly when base rotates" >}}
 
-This is expected behavior. When the base rotates, the arm's position in the world frame changes because the arm is mounted on the base.
-If the shift seems incorrect, check the arm's translation offset from the base.
-An arm mounted off-center will trace a larger arc when the base rotates.
+This is expected. When the base rotates in place, anything mounted off-center
+sweeps through an arc; the further off-center, the longer the arc. An arm
+mounted forward of the base's rotation center will end up 100 mm to the side
+after a 90-degree base turn if it is 100 mm forward of center. If the shift
+does not match that geometry, the arm's `translation` offset from the base is
+probably wrong; measure from the base's rotation center (usually the wheel
+axis midpoint) rather than from a corner of the base chassis.
 
 {{< /expand >}}
 

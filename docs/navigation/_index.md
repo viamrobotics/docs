@@ -12,15 +12,16 @@ description: "Autonomous GPS-based navigation for mobile robot bases."
 notoc: true
 ---
 
-The navigation service gives a mobile robot the ability to navigate
-autonomously to GPS coordinates while avoiding obstacles. You define
-waypoints on a map, and the robot drives itself between them.
+Outdoor mobile robots need to reach GPS coordinates on their own without
+a human joystick operator in the loop. The navigation service does this:
+you define waypoints, and the robot drives between them, replanning around
+obstacles as it goes.
 
 This is GPS-based outdoor navigation. You need a mobile base, a GPS-capable
 movement sensor, and optionally cameras with vision services for obstacle
-detection. The navigation service handles path planning, replanning when
-the robot deviates, and obstacle avoidance. Your code sets waypoints and
-monitors progress.
+detection. The navigation service plans paths, replans when the robot
+deviates, and avoids obstacles. Your code sets waypoints and monitors
+progress.
 
 ## What you can do
 
@@ -33,10 +34,10 @@ monitors progress.
   detectors. The navigation service feeds detected obstacles into the
   path planner automatically. You can also define static obstacles and
   geofences (bounding regions) in the configuration.
-- **Switch between manual and autonomous control.** Set the navigation
-  mode to Manual to drive the base directly, or Waypoint to start
-  autonomous navigation. Switching to Manual stops the current plan but
-  preserves your waypoints.
+- **Switch between manual and autonomous control.** Set the mode to
+  Waypoint to navigate autonomously, or Manual to drive the base directly.
+  Switching to Manual stops the active plan but preserves the waypoint
+  queue.
 
 ## What you need
 
@@ -49,16 +50,13 @@ monitors progress.
 
 ## How it works
 
-The navigation service operates in one of two modes:
-
-- **Manual mode.** The service is passive. You control the base directly
-  through base API calls or the Control tab. The service still reports
-  the robot's location through GetLocation.
-- **Waypoint mode.** The service takes control of the base. It picks the
-  next unvisited waypoint, calls the motion service's MoveOnGlobe to plan
-  and execute a path, monitors progress, and moves to the next waypoint
-  when it arrives. If navigation fails (obstacle, deviation, error), the
-  service retries the same waypoint automatically.
+The navigation service operates in one of two modes. In Manual mode the
+service is passive and reports the robot's location but does not drive.
+In Waypoint mode the service drives the base: it picks the next
+unvisited waypoint, calls the motion service's MoveOnGlobe to plan and
+execute a path, then moves to the next waypoint on arrival. If a
+waypoint fails (obstacle, deviation, error), the service retries
+indefinitely.
 
 The service uses the motion service internally for path planning and
 execution. You don't call the motion service directly when using

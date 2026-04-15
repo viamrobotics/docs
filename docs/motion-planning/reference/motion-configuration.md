@@ -13,23 +13,18 @@ and [`MoveOnMap`](/motion-planning/reference/api/#moveonmap) calls to
 override defaults for a single execution. It is not used with `Move`,
 which is synchronous and does not expose per-call motion parameters.
 
-When the [navigation service](/navigation/) drives a base internally
-through `MoveOnGlobe`, it constructs a `MotionConfiguration` from its
-own service-level config attributes. The fields on this page and the
-attributes on
-[Navigation service configuration](/navigation/reference/navigation-service/)
-map one to one.
+The navigation service uses `MoveOnGlobe` internally and builds a `MotionConfiguration` from its own attributes. The Navigation service correspondence table at the bottom of this page shows which navigation attribute maps to which `MotionConfiguration` field.
 
 ## Fields
 
-| Field                           | Type                 | Default                                | Description                                                                                                                                                   |
-| ------------------------------- | -------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `obstacle_detectors`            | `[]ObstacleDetector` | empty                                  | Vision service plus camera pairs the motion service queries for transient obstacles during execution. Each entry has a `vision_service` and a `camera` field. |
-| `position_polling_frequency_hz` | `double` (optional)  | unset (implementation default)         | How often the service polls the movement sensor (or SLAM service) for the current position. Higher values detect deviation sooner but use more CPU.           |
-| `obstacle_polling_frequency_hz` | `double` (optional)  | unset (implementation default)         | How often each obstacle detector is queried for transient obstacles. Higher values detect obstacles sooner but use more CPU and camera bandwidth.             |
-| `plan_deviation_m`              | `double` (optional)  | 2.6 m (MoveOnGlobe), 1.0 m (MoveOnMap) | Distance in meters the robot may deviate from the current plan before the service triggers a replan. Set larger than your movement sensor's accuracy.         |
-| `linear_m_per_sec`              | `double` (optional)  | 0.3 m/s                                | Target linear velocity when moving in a straight line.                                                                                                        |
-| `angular_degs_per_sec`          | `double` (optional)  | 60 deg/s                               | Target angular velocity when turning.                                                                                                                         |
+| Field                           | Type                 | Default                                | Description                                                                                                                                           |
+| ------------------------------- | -------------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `obstacle_detectors`            | `[]ObstacleDetector` | empty                                  | Pairs of `vision_service` and `camera` that the motion service polls for transient obstacles during execution.                                        |
+| `position_polling_frequency_hz` | `double` (optional)  | unset (implementation default)         | How often the service polls the movement sensor (or SLAM service) for the current position. Higher values detect deviation sooner but use more CPU.   |
+| `obstacle_polling_frequency_hz` | `double` (optional)  | unset (implementation default)         | How often each obstacle detector is queried for transient obstacles. Higher values detect obstacles sooner but use more CPU and camera bandwidth.     |
+| `plan_deviation_m`              | `double` (optional)  | 2.6 m (MoveOnGlobe), 1.0 m (MoveOnMap) | Distance in meters the robot may deviate from the current plan before the service triggers a replan. Set larger than your movement sensor's accuracy. |
+| `linear_m_per_sec`              | `double` (optional)  | 0.3 m/s                                | Target linear velocity when moving in a straight line.                                                                                                |
+| `angular_degs_per_sec`          | `double` (optional)  | 60 deg/s                               | Target angular velocity when turning.                                                                                                                 |
 
 ## ObstacleDetector
 
@@ -46,12 +41,7 @@ planner for the remainder of the current execution.
 
 ## Units
 
-- `plan_deviation_m` is in **meters** at the API boundary. Internally
-  the motion service stores deviation as millimeters (`PlanDeviationMM`),
-  applying a ×1000 conversion.
-- `linear_m_per_sec` is in meters per second.
-- `angular_degs_per_sec` is in degrees per second.
-- Polling frequencies are in hertz (calls per second).
+`plan_deviation_m` is meters at the API boundary. Internally the motion service stores it as millimeters (`PlanDeviationMM`), applying a x1000 conversion; the Go SDK exposes the millimeter form directly.
 
 ## Usage
 
@@ -120,9 +110,7 @@ The Go SDK's `MotionConfiguration` struct stores deviation as
 
 ## Navigation service correspondence
 
-When you configure the navigation service, it builds a
-`MotionConfiguration` for every internal `MoveOnGlobe` call from its
-attributes. This means:
+When you configure the navigation service, it builds a `MotionConfiguration` from its attributes on every internal `MoveOnGlobe` call. The attributes map to `MotionConfiguration` fields as follows:
 
 | Navigation service attribute    | MotionConfiguration field       |
 | ------------------------------- | ------------------------------- |

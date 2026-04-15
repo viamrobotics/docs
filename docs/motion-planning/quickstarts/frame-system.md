@@ -7,18 +7,11 @@ type: "docs"
 description: "Set up a table-mounted arm with a gripper and a wrist camera, and verify the frame configuration with TransformPose."
 ---
 
-In this quickstart we will configure three components with a
-parent-child frame hierarchy: a table-mounted UR5e arm, a gripper
-attached to the arm's end effector, and a wrist-mounted camera. We
-will verify the configuration by asking Viam where each component is
-in the world frame, and by transforming a detected object from the
-camera frame to the world frame.
+You will configure three components with a parent-child frame hierarchy (a table-mounted UR5e arm, a gripper attached to its end effector, and a wrist-mounted camera) and verify the hierarchy two ways: by printing each component's world-frame pose, and by transforming a detected object from the camera frame into the world frame.
 
-Everything uses fake components. Swap any of them for a real
-hardware module later and the frame relationships and verification
-code are unchanged.
+Everything runs on fake components. When you later replace any of them with real hardware, the frame configuration and the verification code stay the same.
 
-Expected total time: about 15 minutes.
+Expected time: about 15 minutes.
 
 ## What you will end up with
 

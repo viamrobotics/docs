@@ -7,9 +7,11 @@ type: "docs"
 description: "Adjust speed, deviation threshold, and polling for your environment and GPS accuracy."
 ---
 
-The navigation service starts with defaults that work for slow outdoor
-robots with standard GPS. As you test in your environment, you'll want to
-adjust these parameters.
+The navigation service ships with defaults tuned for slow outdoor robots
+running standard GPS. Once you start testing in your environment, four
+parameters account for almost all the tuning you will do: two speeds,
+`plan_deviation_m`, and the two polling frequencies. This page covers
+each in the order you should tune them.
 
 All parameters can be changed on the **CONFIGURE** tab without
 restarting `viam-server`. Changes take effect on the next navigation
@@ -56,30 +58,13 @@ obstacles before replanning.
 
 ## Polling frequencies
 
+The service polls two things independently: the robot's position and
+each obstacle detector. Both default to 1 Hz.
+
 | Parameter                       | Default | What it controls                             |
 | ------------------------------- | ------- | -------------------------------------------- |
 | `position_polling_frequency_hz` | 1.0     | How often to check the robot's GPS position. |
 | `obstacle_polling_frequency_hz` | 1.0     | How often to query obstacle detectors.       |
-
-## Replan cost factor
-
-| Parameter            | Default | What it controls                                                                                                                                                                                          |
-| -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `replan_cost_factor` | 1.0     | Multiplier applied to the current plan's cost when the service evaluates whether to replan after a deviation. Higher values prefer the current plan; lower values replan more aggressively. Non-negative. |
-
-`replan_cost_factor` complements `plan_deviation_m`. `plan_deviation_m` sets
-the threshold at which the service considers replanning; `replan_cost_factor`
-sets how much additional cost is needed before a new plan replaces the
-current one.
-
-**When to increase**: the robot replans too eagerly after small deviations,
-producing oscillation or backtracking. Raise the factor (for example, to 2.0
-or 3.0) so the current plan remains preferred unless the deviation is
-significant.
-
-**When to decrease**: the robot sticks to outdated plans too long after
-conditions change. Lower the factor (for example, to 0.5) so it adopts new
-plans more readily.
 
 **Position polling** determines how quickly the service detects that the
 robot has deviated from its plan. At 1 Hz, a deviation takes up to 1
@@ -89,6 +74,26 @@ second to detect. For fast-moving robots, increase this.
 Higher values improve reaction time but increase CPU and camera bandwidth
 usage. Balance against your robot's speed: at 0.3 m/s and 1 Hz, the robot
 moves 30 cm between checks. At 1 m/s, it moves 1 meter.
+
+## Replan cost factor
+
+| Parameter            | Default | What it controls                                                                                                                                                                                          |
+| -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `replan_cost_factor` | 1.0     | Multiplier applied to the current plan's cost when the service evaluates whether to replan after a deviation. Higher values prefer the current plan; lower values replan more aggressively. Non-negative. |
+
+`replan_cost_factor` complements `plan_deviation_m`. `plan_deviation_m`
+tells the service when to consider replanning; `replan_cost_factor`
+tells it how strongly to prefer the current plan once it starts
+evaluating a new one.
+
+**When to increase**: the robot replans too eagerly after small deviations,
+producing oscillation or backtracking. Raise the factor (for example, to 2.0
+or 3.0) so the current plan remains preferred unless the deviation is
+significant.
+
+**When to decrease**: the robot sticks to outdated plans too long after
+conditions change. Lower the factor (for example, to 0.5) so it adopts new
+plans more readily.
 
 ## Tuning workflow
 

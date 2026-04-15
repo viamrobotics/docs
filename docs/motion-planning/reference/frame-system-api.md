@@ -7,11 +7,7 @@ type: "docs"
 description: "The RPCs for querying and transforming frame system poses live on the robot service, not a standalone frame system service."
 ---
 
-The frame system is exposed to SDK callers through RPCs on the
-**robot service**, not on a dedicated `FrameSystemService`. This is a
-common point of confusion: users looking for "the frame system API"
-expect a service matching the concept. The four methods listed here
-are all members of `RobotService` in `api/proto/viam/robot/v1/robot.proto`.
+The RPCs for querying and transforming frame system poses live on the robot service, not on a dedicated `FrameSystemService`. New users often look for a separate service matching the concept; there is none. All four methods below belong to `RobotService` in `api/proto/viam/robot/v1/robot.proto`.
 
 | Method              | Purpose                                                                 |
 | ------------------- | ----------------------------------------------------------------------- |
@@ -26,16 +22,7 @@ and so on). You do not instantiate a separate frame system client.
 
 ## Service names
 
-Inside the RDK, the frame system is registered under two names:
-
-- **Internal name: `builtin`.** The default frame system instance that
-  ships with `viam-server`.
-- **Public name: `$framesystem`.** The name modules use to get a
-  reference to the robot's frame system. If you are writing a module
-  that needs frame transforms, resolve dependencies through this name.
-
-SDK callers do not need to reference either name; they call the methods
-on the robot/machine client directly.
+Inside RDK, the frame system is registered under two names: `builtin` (the default instance that ships with `viam-server`) and `$framesystem` (the name modules use to resolve a dependency on the frame system). SDK callers do not reference either; the RPCs on the robot/machine client hit the frame system transparently.
 
 ## FrameSystemConfig
 
@@ -117,12 +104,7 @@ gripperInWorld, err := machine.GetPose(
 
 ### Python goes through the motion service, Go through the robot service
 
-The `GetPose` RPC lives on `RobotService` in the proto. The Go SDK
-surfaces it as `RobotClient.GetPose`, so Go callers hit the robot
-service directly. The Python SDK never wrapped it on `RobotClient`, so
-Python callers must use `MotionClient.get_pose`, which calls the motion
-service's `GetPose` (a separate, older, deprecated RPC with the same
-parameter shape).
+`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK surfaces the robot service version as `RobotClient.GetPose`; Go callers go through the robot service. The Python SDK never wrapped the robot service version, so Python callers use `MotionClient.get_pose` and hit the deprecated motion service path.
 
 The two paths return equivalent results today. The underlying API
 surface will eventually consolidate, but until then Python callers
@@ -183,12 +165,7 @@ compute poses involving that object.
 Supplemental transforms apply only to the current call. They do not
 modify the stored frame system configuration.
 
-**Python kwarg naming.** The proto field and the Go SDK use
-`supplemental_transforms`. The Python SDK is inconsistent:
-`MotionClient.get_pose` uses `supplemental_transforms`, but
-`RobotClient.transform_pose` and `RobotClient.get_frame_system_config`
-use `additional_transforms`. Pass the kwarg that matches the client
-class you are calling.
+**Python kwarg naming.** In Python, `MotionClient.get_pose` takes `supplemental_transforms`; `RobotClient.transform_pose` and `RobotClient.get_frame_system_config` take `additional_transforms`. The proto field and all Go methods use `supplemental_transforms`. Pass the kwarg that matches the client class you call.
 
 ## TransformPCD
 

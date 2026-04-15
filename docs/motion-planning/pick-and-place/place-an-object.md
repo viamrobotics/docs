@@ -9,9 +9,13 @@ aliases:
   - /motion-planning/motion-how-to/place-an-object/
 ---
 
-You have an object in the gripper and need to place it at a specific location.
-This involves planning a collision-free path to the placement pose, descending
-to the surface, releasing, and retreating.
+Placing is the mirror image of picking, but with a different failure mode:
+releasing the object is the moment you lose control of it. A placement that
+lets go too early drops the object; one that descends too far jams it into
+the surface. This guide walks through a four-step placement that controls
+those two failure modes: move to a pre-place pose, descend to the placement
+surface, release, and retreat straight up so you do not disturb what you
+just set down.
 
 ## Prerequisites
 
@@ -45,7 +49,13 @@ await motion_service.move(
 {{% /tab %}}
 {{< /tabs >}}
 
-### 2. Descend to placement surface
+### 2. Descend to the placement surface
+
+The descent pose puts the object where you want it to end up.
+`SURFACE_HEIGHT` is the world-frame z of the placement surface plus half the
+object's height (roughly: you want the bottom of the object touching the
+surface at release). For a known surface, measure once and hard-code it. For
+a detected surface, set it from the vision result.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -54,7 +64,7 @@ await motion_service.move(
 # Place: at the surface.
 # Set z to the height of the placement surface in your workspace.
 # For example, if you detected the target location, use its z coordinate.
-SURFACE_HEIGHT = 50  # mm — adjust for your setup
+SURFACE_HEIGHT = 50  # mm, adjust for your setup
 place_pose = PoseInFrame(
     reference_frame="world",
     pose=Pose(
@@ -105,10 +115,17 @@ print("Retreated from placement")
 
 ## Tips
 
-- Use `OrientationConstraint` during descent to keep the object level.
-- The retreat path should go straight up to avoid disturbing the placed object.
-- After releasing, the object becomes a potential obstacle. Update your
-  `WorldState` if the arm needs to move near the placement location again.
+- **Keep the object level on the way down.** A carried object with an open
+  top (a cup, an open box) spills if the gripper tilts during descent. Add an
+  `OrientationConstraint` with a tight tolerance (3-5 degrees) for the
+  descent segment; remove it for the retreat.
+- **Retreat straight up.** Any lateral motion during retreat can catch the
+  object the gripper just released. Plan the retreat pose with the same x
+  and y as the place pose and only the z raised.
+- **Update `WorldState` after release.** The placed object is now a static
+  obstacle. If the next motion passes near the placement location, add the
+  object's footprint to `WorldState.obstacles` so the planner routes around
+  it.
 
 ## What's next
 

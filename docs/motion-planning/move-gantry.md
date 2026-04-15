@@ -10,9 +10,12 @@ aliases:
   - /motion-planning/motion-how-to/move-gantry/
 ---
 
-You have a gantry (a Cartesian robot with linear axes) and need to move it to
-specific positions. You can either control axes directly with the gantry API
-or use the motion service for planned, collision-aware movement.
+A gantry is a Cartesian robot: three linear axes, no joint-angle to pose
+conversion to do. Most gantry motion is a direct axis command and nothing
+more. But if the gantry shares its workspace with obstacles, carries a payload
+that must avoid something, or moves alongside another machine, the motion
+service plans a collision-aware path the same way it does for an arm. This
+guide covers both.
 
 ## Direct axis control
 
@@ -79,9 +82,13 @@ if err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-## Motion-planned movement
+## Motion-service planning
 
-For complex paths or collision avoidance, use the motion service.
+The motion service treats a gantry the same way it treats an arm: you pass a
+target pose and a `WorldState`, and it returns a collision-free path. Use it
+when the gantry has obstacles to avoid, when you want to compose a gantry move
+with other components, or when you want the same planning API across every
+machine in your fleet.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -9,10 +9,10 @@ aliases:
   - /motion-planning/motion-how-to/move-arm-joint-positions/
 ---
 
-When you move an arm with `motion.Move` or `arm.MoveToPosition`, the
-planner solves inverse kinematics to find joint angles that reach the
-target Cartesian pose. Most of the time that is what you want. But
-sometimes you need to command the arm in joint space directly:
+Cartesian motion asks "what pose should the end effector reach?" and lets the
+planner pick the joint angles that get there. Joint-space motion asks "what
+configuration should the arm be in?" and skips the planner entirely. The two
+are different tools. You reach for joint-space when:
 
 - You already know the joint angles (from a previous capture, a
   teach-pendant run, or a saved configuration).
@@ -22,9 +22,11 @@ sometimes you need to command the arm in joint space directly:
   control.
 - You are building a control loop that computes its own joint targets.
 
-Joint-space moves bypass the motion planner entirely. The arm goes
-straight to the commanded angles. There is no obstacle avoidance, no
-constraint satisfaction, and no path smoothing.
+**A caveat before you dive in.** Joint-space moves bypass the motion planner.
+No obstacle avoidance, no constraint satisfaction, no path smoothing. If the
+commanded configuration makes the arm swing through the table or your
+workspace fixture, the arm will swing through the table. Joint-space is for
+configurations you have already verified safe.
 
 ## Before you start
 
@@ -89,18 +91,14 @@ if err := myArm.MoveToJointPositions(ctx, targets, nil); err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-### Units
+### Units: Python uses degrees, Go uses radians
 
-This is an easy-to-miss detail: the units differ between Python and Go.
-
-- **Proto and Python SDK** use degrees for revolute joints and
-  millimeters for prismatic joints. The `JointPositions.values` field
-  and the Python `move_to_joint_positions` argument are in these
-  units.
-- **Go SDK** uses `referenceframe.Input`, which stores radians for
-  revolute joints. The conversion happens at the wire boundary.
-
-If you port code between languages, convert values accordingly.
+This is the single most common source of joint-position bugs in Viam arm
+code. The proto wire format and the Python SDK use degrees for revolute
+joints and millimeters for prismatic joints. The Go SDK uses
+`referenceframe.Input`, which stores radians for revolute joints. Conversion
+happens at the wire boundary, so Python values of `90` and Go values of
+`math.Pi / 2` both command the same angle.
 
 ## MoveThroughJointPositions
 
@@ -174,12 +172,12 @@ from Python; the arm uses its module's default speed profile.
 
 ### MoveOptions fields
 
-| Field                          | Type                  | Description                                                                                                        |
-| ------------------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `max_vel_degs_per_sec`         | `double` (optional)   | Cap every joint at the given velocity, in degrees per second. Ignored when the per-joint field is set.             |
-| `max_acc_degs_per_sec2`        | `double` (optional)   | Cap every joint at the given acceleration, in degrees per second squared. Ignored when the per-joint field is set. |
-| `max_vel_degs_per_sec_joints`  | `[]double` (repeated) | Per-joint velocity caps. Length must match the arm's degrees of freedom.                                           |
-| `max_acc_degs_per_sec2_joints` | `[]double` (repeated) | Per-joint acceleration caps. Length must match the arm's degrees of freedom.                                       |
+| Field                          | Type                  | Description                                                                                                      |
+| ------------------------------ | --------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `max_vel_degs_per_sec`         | `double` (optional)   | Uniform velocity cap across every joint, in degrees per second.                                                  |
+| `max_acc_degs_per_sec2`        | `double` (optional)   | Uniform acceleration cap across every joint, in degrees per second squared.                                      |
+| `max_vel_degs_per_sec_joints`  | `[]double` (repeated) | Per-joint velocity caps. Length must match the arm's degrees of freedom. Overrides the uniform cap when set.     |
+| `max_acc_degs_per_sec2_joints` | `[]double` (repeated) | Per-joint acceleration caps. Length must match the arm's degrees of freedom. Overrides the uniform cap when set. |
 
 Per-joint fields take precedence over global fields. Pass `nil`
 options to use the module's default motion profile.

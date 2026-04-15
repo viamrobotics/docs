@@ -8,9 +8,9 @@ no_list: true
 description: "Task-oriented guides for GPS-based autonomous navigation."
 ---
 
-These guides walk you through setting up and using GPS-based navigation
-on a mobile robot. Start with GPS setup, then configure the navigation
-service and send your robot to its first waypoint.
+These guides cover GPS-based navigation on a mobile robot. Work through
+the Setup section first (GPS, then navigation service). The other
+sections are independent, so pick the guide that matches your task.
 
 ## Setup
 

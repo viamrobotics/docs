@@ -9,11 +9,13 @@ aliases:
   - /motion-planning/motion-how-to/debug-motion-with-cli/
 ---
 
-When a motion plan fails or the arm ends up somewhere you did not
-expect, the Viam CLI can answer the first round of diagnostic questions
-without writing code: is the frame system configured the way I think it
-is? Where is each component in the world frame right now? Can the
-motion service reach this pose at all?
+A motion plan fails, or the arm ends up somewhere unexpected, and the first
+question is always the same: is the frame system wrong, or is the plan wrong?
+Answering that from application code requires writing instrumentation. The
+Viam CLI answers it at the shell. Three commands cover most cases:
+`print-config` dumps the configured frame tree, `print-status` prints every
+frame's current world-frame pose, and `set-pose` drives a component to a pose
+so you can isolate reachability.
 
 This guide walks through the most common debugging flows. For the
 visual equivalent on machines where the **3D scene** tab is available,
@@ -27,10 +29,13 @@ For the dry command reference, see
 - A machine with configured components and at least one frame defined.
 - The `--part` identifier for the machine part you want to inspect.
 
-## Symptom: the frame system does not match my configuration
+## Symptom: frames are in the wrong place
 
-You configured translations and orientations, but the resulting frame
-layout does not match your physical setup.
+The arm reaches where it thinks is x=300, y=200, and it physically ends up
+somewhere else. Or the **3D SCENE** tab shows the gripper dangling off to the
+side of the arm. In both cases, the frame configuration does not match what
+the machine actually does. Two CLI commands will tell you where the
+disagreement is.
 
 ### 1. Dump the configured frame system
 
@@ -104,10 +109,12 @@ viam machines part motion get-pose \
 
 Note the X, Y, Z values.
 
-### 2. Move a small delta
+### 2. Move a small distance first
 
-Start with a small step from the current pose. This isolates "can I
-move at all?" from "is my target reachable?".
+The small step is a dividing test. If it fails, the planner cannot reach any
+pose near the current position, which usually means a configuration error
+rather than a target-reachability issue. If it succeeds, the current position
+is not the problem and you can work outward from there.
 
 ```sh
 viam machines part motion set-pose \
@@ -169,10 +176,11 @@ the arm's frame and in the world frame describes two different places.
 
 ## Limitations
 
-- The CLI commands use the deprecated `Motion.GetPose` RPC internally
-  for `print-status`, `get-pose`, and `set-pose`. They still work
-  today, but `Robot.GetPose` is the long-term API. The CLI output is
-  unaffected; only the internal call path is deprecated.
+- **Internal RPC is deprecated but the CLI output is not.**
+  `print-status`, `get-pose`, and `set-pose` call `Motion.GetPose` under the
+  hood, which is deprecated in favor of `Robot.GetPose`. The CLI output
+  format and the commands themselves are stable; only the backing call is
+  scheduled to change.
 - `set-pose` calls the motion service's `Move`, which blocks until the
   motion completes or fails. Plan failures surface as the CLI returning
   a non-zero exit status with an error message. Collect that message as

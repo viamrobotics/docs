@@ -17,10 +17,12 @@ aliases:
   - /motion-planning/motion-how-to/move-arm-to-pose/
 ---
 
-You have a robot arm and need to move it to a specific position and orientation
-in 3D space. The motion service computes a collision-free path from the arm's
-current pose to the target, taking into account the frame system, kinematics,
-and any defined obstacles.
+A robot arm needs to reach a specific position and orientation in 3D space, but
+joint angles alone do not tell you whether the end effector ends up where you
+want it, and a naive joint trajectory may swing through the table or the back
+wall. The motion service takes a target pose, solves inverse kinematics, and
+returns a collision-free path that respects the frame system and any obstacles
+you declare.
 
 ## Prerequisites
 
@@ -74,8 +76,10 @@ if err != nil {
 
 ### 2. Define the target pose
 
-A pose specifies position (x, y, z in mm) and orientation. The `reference_frame`
-determines which coordinate system the pose is expressed in.
+A target pose has two parts: a position in millimeters and an orientation
+vector. Which coordinate system those numbers live in depends on
+`reference_frame`, so always set it explicitly. `"world"` puts the target in the
+fixed world frame; `"my-arm"` puts it relative to the arm's base.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -137,7 +141,9 @@ fmt.Println("Arm moved to target pose")
 
 ### 4. Move with obstacle avoidance
 
-Pass a `WorldState` with obstacles to plan collision-free paths.
+To make the planner avoid things in the workspace, pass a `WorldState` that
+lists them. The planner checks every frame in the scene against every obstacle
+you include.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -261,8 +267,9 @@ viam machines part motion set-pose --part "my-machine-main" --component "my-arm"
 
 {{< expand "Arm moves to wrong position" >}}
 
-- Verify the `reference_frame` in your destination. A pose in `"world"` frame
-  and the same pose in `"my-arm"` frame are different positions.
+- Verify the `reference_frame` on your destination. The point
+  `(x=300, y=200, z=400)` in `"world"` and the same point in `"my-arm"` name
+  different physical locations; whichever one you set, the arm drives to.
 - Check the frame system configuration. Incorrect translations or orientations
   shift the target.
 - Read the arm's position before and after to see what actually changed.

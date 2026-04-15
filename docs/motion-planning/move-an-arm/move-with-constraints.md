@@ -10,10 +10,11 @@ aliases:
   - /motion-planning/motion-how-to/move-arm-with-constraints/
 ---
 
-You need the arm to move in a controlled way, such as following a straight line for
-welding, keeping the end effector level to carry a cup of water, or both. Without
-constraints, the planner finds any collision-free path, which may curve or tilt
-the end effector unpredictably.
+Welding requires the torch to follow a straight line. Carrying a cup of water
+requires the end effector to stay level. The motion planner's default behavior
+satisfies neither: it finds any collision-free path, which typically curves
+through intermediate poses and tilts the end effector along the way.
+`Constraints` let you bound what the planner will accept.
 
 ## Prerequisites
 
@@ -117,7 +118,10 @@ constraints := &motionplan.Constraints{
 
 ### 3. Combine constraints
 
-You can apply both linear and orientation constraints simultaneously.
+Linear and orientation constraints compose: pass both in the same `Constraints`
+object and the planner enforces both simultaneously. This is the usual setup
+for welding and other tasks that require a straight-line path plus a fixed tool
+orientation.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -191,14 +195,16 @@ constraints := &motionplan.Constraints{
 
 ## Tips
 
-- **Start with larger tolerances** (10-20 mm, 10-15 degrees) and tighten
-  only as needed. Tight constraints increase planning time and failure rate.
-- **Constraints combine with obstacles.** If obstacles block the straight-line
-  path, the planner may fail because it cannot satisfy both the linear
-  constraint and the obstacle avoidance requirement.
-- **Orientation constraints check against both start and goal.** The planner
-  ensures the current orientation stays within tolerance of whichever endpoint
-  is closer.
+- **Start with loose tolerances, tighten only if the task requires it.** 10-20
+  mm and 10-15 degrees is a reasonable starting point. Tight tolerances raise
+  both planning time and failure rate.
+- **Constraints and obstacles compete.** If an obstacle blocks the
+  straight-line path, the planner has to pick one constraint to violate and
+  typically fails. Either widen the constraint or move the obstacle.
+- **Orientation is checked against the nearer endpoint.** The planner compares
+  the current orientation to the start and goal, then uses whichever is closer
+  as the reference. This lets the constraint track intent as the motion
+  progresses rather than locking to one endpoint.
 
 ## What's next
 

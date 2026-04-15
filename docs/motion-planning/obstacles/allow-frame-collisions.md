@@ -9,16 +9,16 @@ aliases:
   - /motion-planning/motion-how-to/allow-frame-collisions/
 ---
 
-By default, the motion planner rejects any path where any two frames
-collide. That is the behavior you want for most motion. But some contact
-is expected and the planner should ignore it: a vision-based obstacle
-detector that sees the arm it is mounted on, a gripper that has to make
-contact with an object to grasp it, or two adjacent links whose simplified
-collision shapes overlap even though the real hardware does not.
+Some contact is part of the job. A gripper has to touch the object it grasps.
+A vision-based obstacle detector mounted on an arm will see the arm as an
+obstacle. Two adjacent links in a simplified kinematic model may register as
+overlapping even though the real hardware does not. In each of these cases,
+the motion planner's default rejection of any frame-on-frame contact blocks
+plans that should succeed.
 
-`CollisionSpecification` tells the planner which pairs of frames are
-allowed to touch. Use it to unblock planning for contact you have already
-accounted for elsewhere.
+`CollisionSpecification` tells the planner which pairs of frames are allowed
+to touch. Use it to unblock planning for contact you have already accounted
+for elsewhere.
 
 ## Before you start
 
@@ -31,11 +31,12 @@ accounted for elsewhere.
 - If you are migrating from MoveIt's self-filter or body padding
   mechanism, `CollisionSpecification` is Viam's equivalent.
 
-## The pattern
+## The basic pattern
 
-Build a `CollisionSpecification` containing one or more allowed frame
-pairs, wrap it in a `Constraints` object, and pass the constraints to
-the Move request.
+A `CollisionSpecification` is a list of allowed frame pairs; you build one,
+wrap it in a `Constraints` object, and pass it to `Move`. Everything else on
+this page is either specific use cases for this pattern or troubleshooting
+when a frame name does not match.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -107,9 +108,11 @@ checking in general.
 
 ## Hierarchical matching
 
-A frame name in `AllowedFrameCollisions` is expanded to cover the frame
-and all of its sub-geometries. For an arm, sub-geometries are the links
-from its kinematics file plus any origin geometry you configured.
+Frame names in `AllowedFrameCollisions` match hierarchically. Naming `my-arm`
+covers every link in the arm's kinematics (`my-arm:base_link`,
+`my-arm:upper_arm_link`, `my-arm:forearm_link`, and so on) plus any origin
+geometry you configured. Naming `my-arm:upper_arm_link` covers only that one
+link.
 
 - `frame1 = "my-arm"` matches every link of `my-arm`: `my-arm:base_link`,
   `my-arm:upper_arm_link`, `my-arm:forearm_link`, and so on.
@@ -181,9 +184,9 @@ overlaps are expected.
 
 ## Use case: gripper grasping an object
 
-When the arm approaches a grasp, the gripper has to come into contact
-with the object. Without a specification, the planner refuses any path
-that ends in contact.
+A grasp _requires_ contact between the gripper and the object. Without a
+`CollisionSpecification` allowing it, the planner rejects the final approach
+as a collision. Allow the gripper-object pair and the plan completes.
 
 ```python
 collision_spec = CollisionSpecification(

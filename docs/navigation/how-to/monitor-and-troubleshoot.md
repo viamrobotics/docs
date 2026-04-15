@@ -7,6 +7,10 @@ type: "docs"
 description: "Use the Control tab map, read logs, and debug common navigation problems."
 ---
 
+When navigation misbehaves, two tools find most problems: the Control
+tab map and the navigation service log. This page covers both, then
+walks through the problems we see most often.
+
 ## Monitor navigation in the Viam app
 
 The Control tab shows a live map with your robot's position, waypoints,
@@ -77,9 +81,9 @@ a motion-service module that implements `MoveOnGlobe`. See
 
 {{< expand "Robot replans constantly and makes slow progress" >}}
 
-Your `plan_deviation_m` is likely lower than your GPS error. The robot
-replans because normal GPS jitter (2-5 meters with standard GPS) exceeds
-the deviation threshold (default 2.6 meters).
+Your `plan_deviation_m` is likely lower than your GPS error. Standard
+GPS jitters 2 to 5 meters between readings, which exceeds the 2.6-meter
+default deviation threshold and looks like path deviation to the service.
 
 Fix: increase `plan_deviation_m` to 5-10 meters for standard GPS. See
 [Tune navigation behavior](/navigation/how-to/tune-navigation/) for
@@ -125,11 +129,10 @@ To unblock:
 
 {{< expand "Robot navigates but stops short of the waypoint" >}}
 
-The motion service considers a waypoint reached when the robot is within
-the planning tolerance of the target. With standard GPS accuracy, the
-robot may stop 2-5 meters from the intended coordinates because the GPS
-position satisfies the arrival condition even though the robot isn't
-exactly at the target.
+Standard GPS accuracy is 2 to 5 meters, and the motion service considers
+a waypoint reached as soon as the reported GPS position falls within
+planning tolerance. That means the robot may stop 2 to 5 meters short of
+the intended coordinates even when navigation reports success.
 
 For tighter arrival accuracy, use RTK GPS.
 
@@ -145,9 +148,9 @@ For tighter arrival accuracy, use RTK GPS.
    occurs.
 3. Check that the camera and vision service names in `obstacle_detectors`
    match the exact names in your configuration.
-4. Check the LOGS tab for frame transformation errors. The navigation
-   service needs to transform obstacle positions from the camera frame
-   to geographic coordinates through the movement sensor.
+4. Check the LOGS tab for frame transformation errors. To plan around a
+   detected obstacle, the navigation service converts its camera-frame
+   position into latitude and longitude using the movement sensor's pose.
 
 {{< /expand >}}
 

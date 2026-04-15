@@ -8,15 +8,14 @@ no_list: true
 description: "Visualize your machine's frame system, geometries, and point clouds in an interactive 3D view."
 ---
 
-The **3D scene** tab on your machine's page in the [Viam app](https://app.viam.com) renders your machine's frame system as an interactive 3D visualization.
-You can inspect how components are positioned relative to each other, verify that obstacle geometry covers your workspace correctly, view live point clouds from depth cameras, and measure distances between points in the scene.
+The **3D scene** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
+Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The 3D scene makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
 
-The 3D scene tab reads your machine's configuration and, when the machine is online, connects to it for live data.
-Everything you see in the scene maps directly to your frame system configuration: each component's frame appears as a set of coordinate axes positioned according to its translation and orientation relative to its parent frame.
+The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame. Attached geometries render as translucent shapes, and point clouds from depth cameras render as colored point sets.
 
 ## The interface
 
-The 3D scene tab has four main areas:
+The tab has four main areas: a 3D viewport in the center, a World panel on the upper-left, a Details panel on the upper-right, and a Dashboard toolbar on top. The viewport is where you look; the other three are where you navigate, inspect, and change views.
 
 **3D viewport** (center): The main rendering area.
 You can orbit, pan, and zoom to view your frame system from any angle.
@@ -68,8 +67,7 @@ Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you
 
 ## Settings
 
-Click the gear icon to open the settings panel.
-Settings are organized into tabs:
+Settings are grouped by what they affect: connection, scene decoration, point clouds, vision, widgets, and a few utility tabs. Click the gear icon to open the panel.
 
 - **Connection**: polling rates for the scene's data streams.
 - **Scene**: toggle the grid, **Object labels**, hover detail tooltips, arm-model rendering (`Arm Models`), and line thickness.

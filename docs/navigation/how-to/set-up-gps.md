@@ -7,10 +7,10 @@ type: "docs"
 description: "Configure a GPS movement sensor and verify it reports accurate position and heading before enabling navigation."
 ---
 
-Before you can use the navigation service, you need a movement sensor that
-provides GPS position and compass heading. This guide walks you through
-choosing a GPS module, configuring it, and verifying the data is accurate
-enough for navigation.
+The navigation service needs a movement sensor that reports both GPS
+position and compass heading. This guide helps you pick a GPS module,
+configure it, and verify that the position and heading are accurate
+enough to drive the robot.
 
 ## Choose a GPS module
 
@@ -25,9 +25,9 @@ environments with trees, buildings, or uneven terrain, accuracy degrades
 due to signal interference.
 
 The navigation service's `plan_deviation_m` parameter controls how far the
-robot can drift from its planned path before replanning. If your GPS error
-is 3 meters and `plan_deviation_m` is 2.6 meters (the default), the robot
-will replan frequently because normal GPS jitter exceeds the threshold.
+robot can drift from its planned path before replanning. The default is
+2.6 meters, so if your GPS error is around 3 meters, normal GPS jitter
+will exceed the threshold and the robot will replan constantly.
 
 | GPS type          | Typical accuracy | Good `plan_deviation_m` range |
 | ----------------- | ---------------- | ----------------------------- |
@@ -35,8 +35,9 @@ will replan frequently because normal GPS jitter exceeds the threshold.
 | SBAS-enhanced GPS | 1-3 meters       | 3-5 meters                    |
 | RTK GPS           | 1-10 centimeters | 0.5-2 meters                  |
 
-If your application requires sub-meter accuracy (following a precise path,
-working near obstacles), look for RTK GPS modules in the registry.
+Applications that need sub-meter accuracy, such as driving a narrow
+corridor or approaching a charging dock, require RTK GPS. Search for
+RTK modules in the registry.
 
 ## Configure the movement sensor
 
@@ -57,12 +58,13 @@ accurate GPS data.
 2. Expand the **TEST** section. If it shows **Resource is
    configuring...**, wait for the movement sensor's status badge to
    read **Ready**.
-3. Check that **GetPosition** shows a latitude and longitude close to
-   your actual location. A map on the right-hand side of the section
-   plots the current position; confirm it matches your physical
-   location.
-4. Check that **GetCompassHeading** updates when you rotate the robot.
-   0 degrees is north, 90 is east, 180 is south, 270 is west.
+3. Check that **GetPosition** shows a latitude and longitude within a
+   few meters of your actual location. A map on the right-hand side of
+   the section plots the current position; confirm it matches your
+   physical location.
+4. Rotate the robot by hand and watch **GetCompassHeading** update
+   smoothly. Zero degrees is north, 90 is east, 180 is south, 270 is
+   west.
 
 Movement-sensor sections only render when the module reports the
 corresponding property. If **GetCompassHeading** or **GetPosition** is

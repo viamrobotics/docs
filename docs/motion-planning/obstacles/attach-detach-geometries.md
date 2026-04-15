@@ -9,13 +9,12 @@ aliases:
   - /motion-planning/motion-how-to/attach-detach-geometries/
 ---
 
-When an arm grasps an object, the planner needs to know the object is
-now part of the robot: it moves with the gripper, collides with
-obstacles like any other link, and should be accounted for in every
-motion plan until the robot releases it. The mechanism is
-`WorldState.transforms`. You pass the object's geometry attached to
-the gripper's frame for the duration of the grasp, then stop passing
-it after release.
+After a grasp, the object becomes part of the robot: it rides the gripper,
+it can collide with obstacles, and the planner needs to account for it on
+every subsequent motion. `WorldState.transforms` is how you tell the planner
+that. You attach the object's geometry to the gripper's frame, pass the world
+state on every `Move` while the object is held, and stop passing it after
+release.
 
 This is the runtime complement to the
 [passive objects pattern](/motion-planning/obstacles/#passive-objects-attached-to-a-component),
@@ -38,13 +37,13 @@ releases dynamically.
 `WorldState.transforms` is a list of `Transform` entries. Each entry
 defines a new frame and optionally attaches a geometry to it:
 
-| Field                    | Purpose                                                                                           |
-| ------------------------ | ------------------------------------------------------------------------------------------------- |
-| `reference_frame`        | The name of the new frame you are defining (for example, `grasped-object`).                       |
-| `pose_in_observer_frame` | A `PoseInFrame` specifying the parent frame and the pose of the new frame relative to the parent. |
-| `physical_object`        | Optional `Geometry` for collision checking.                                                       |
-| `uuid`                   | Optional identifier. Used by the service for deduplication and lifecycle; safe to leave empty.    |
-| `metadata`               | Optional freeform `Struct`. Not used by the planner; available for caller-side bookkeeping.       |
+| Field                    | Purpose                                                                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `reference_frame`        | The name of the new frame you are defining (for example, `grasped-object`).                                                                   |
+| `pose_in_observer_frame` | A `PoseInFrame` specifying the parent frame and the pose of the new frame relative to the parent.                                             |
+| `physical_object`        | Optional `Geometry` for collision checking.                                                                                                   |
+| `uuid`                   | Optional identifier for deduplication and lifecycle. Leave empty unless you are building a system that tracks individual transform lifetimes. |
+| `metadata`               | Optional freeform `Struct` for caller-side bookkeeping. The planner does not read it.                                                         |
 
 Set `pose_in_observer_frame.reference_frame` to the **parent** frame
 name (for example, `my-gripper`). The pose inside `pose_in_observer_frame`
@@ -57,7 +56,7 @@ is the new frame's position and orientation relative to that parent.
 2. On every subsequent `motion.Move` call while the object is held,
    include the transform in `WorldState.transforms`.
 3. After release, stop including the transform. No explicit detach
-   call is needed — `WorldState` is per-call, so the next Move without
+   call is needed: `WorldState` is per-call, so the next Move without
    the transform leaves the object out of the planner's world.
 
 ## Example: attach a grasped box
@@ -175,10 +174,11 @@ reason to use them.
 {{% /tab %}}
 {{< /tabs >}}
 
-## Detach: stop including the transform
+## Detach: omit the transform from the next call
 
-There is no separate "detach" call. After release, construct the next
-`WorldState` without the grasped-object transform:
+The API has no "detach" call because `WorldState` is per-request. After
+release, build the next `WorldState` without the grasped-object transform.
+The planner sees an empty world for that frame from that call forward.
 
 ```python
 world_state = WorldState(obstacles=[obstacles])  # no transforms
@@ -221,11 +221,11 @@ For the full pattern, see
 
 ## Compared to passive attachment
 
-| Need                                                                           | Use                                                                                                                                                |
-| ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Object is always attached to the arm (camera mount, fixed tool, cable bundle). | [Passive objects pattern](/motion-planning/obstacles/#passive-objects-attached-to-a-component) — configure a fake generic component with geometry. |
-| Object is attached only during a grasp, and may change between grasps.         | This page — build a `Transform`, pass it through `WorldState.transforms` for the duration.                                                         |
-| Object is a static obstacle in the workspace (table, wall).                    | Standard [obstacles](/motion-planning/obstacles/) — no transform needed.                                                                           |
+| Need                                                               | Use                                                                                                                                          |
+| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Object is always attached (for example, a permanent camera mount). | [Passive objects pattern](/motion-planning/obstacles/#passive-objects-attached-to-a-component). Configure a generic component with geometry. |
+| Object attaches only during a grasp and may change between grasps. | This page. Build a `Transform`, pass it through `WorldState.transforms` for the duration of the grasp.                                       |
+| Object is a static obstacle (table, wall, fixed fixture).          | Standard [obstacles](/motion-planning/obstacles/). No transform needed.                                                                      |
 
 ## Troubleshooting
 

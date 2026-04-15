@@ -11,18 +11,18 @@ aliases:
   - /motion-planning/motion-how-to/monitor-a-running-plan/
 ---
 
-`MoveOnMap` and `MoveOnGlobe` return immediately with an `ExecutionID`.
-The motion runs in the background; your code needs to monitor it and
-react when it completes, fails, or needs to be stopped. This guide shows
-the polling pattern for both Go and Python, and points out what changes
-for the builtin `Move` case (which blocks).
+`MoveOnMap` and `MoveOnGlobe` return immediately with an `ExecutionID` and run
+the actual motion in the background. Your code has to poll that execution to
+learn when it completes, fails, or stops. This page gives the polling pattern
+in Go and Python. For the built-in `Move`, which blocks until the motion
+finishes, the pattern collapses to a try/except: covered at the end.
 
 ## Before you start
 
-- You need a motion service implementation that supports
-  `MoveOnMap`/`MoveOnGlobe`. The built-in motion service does not — it
-  returns "not supported" for these calls. The navigation service or a
-  module that implements them is required.
+- **`MoveOnMap` and `MoveOnGlobe` are not implemented by the built-in motion
+  service.** You need the navigation service (which calls them internally) or
+  a motion-service module that provides them. The built-in motion service
+  returns "not supported" for both.
 - For background on the methods and states, see
   [Plan monitoring](/motion-planning/reference/plan-monitoring/).
 
@@ -159,9 +159,10 @@ same `ExecutionID`. This means:
 
 ## List plans across components
 
-To see every plan currently running or recently completed on the
-machine, call `ListPlanStatuses`. Useful for dashboards or for stopping
-every component in one pass.
+`ListPlanStatuses` returns every plan currently running or recently completed
+on the machine, keyed by component name. Two common uses: a dashboard that
+shows all in-progress motion at once, and a shutdown routine that stops every
+component without having to track the `ExecutionID` of each one.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -188,9 +189,11 @@ for _, s := range statuses {
 {{% /tab %}}
 {{< /tabs >}}
 
-Only plans from in-progress executions or executions that reached a
-terminal state in the last 24 hours are returned. After the TTL expires
-or if `viam-server` reinitializes, older plans are no longer available.
+`ListPlanStatuses` has a 24-hour retention window. Plans from executions that
+reached a terminal state more than 24 hours ago are dropped from the list, and
+any restart of `viam-server` clears the history regardless of age. If you need
+longer-lived plan audit, log the `ExecutionID` and plan state to your own
+store at each poll.
 
 ## If you are using the builtin Move instead
 

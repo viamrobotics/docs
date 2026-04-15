@@ -7,9 +7,7 @@ type: "docs"
 description: "Verify and adjust the spatial relationship between components using the 3D scene and measurement tool."
 ---
 
-When you configure a camera mounted on an arm or a sensor attached to a base, the frame system needs the exact translation and orientation between the two components.
-Small errors in these offsets cause the arm to reach for objects in the wrong place or the point cloud to misalign with the physical workspace.
-The 3D scene tab lets you visually verify these offsets and use the measurement tool to check distances.
+When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off; the arm then reaches for the wrong spot, or the point cloud sits behind the table instead of on it. The 3D scene tab lets you verify offsets visually and measure distances directly, so you can catch these errors before they produce bad motion.
 
 ## Prerequisites
 
@@ -35,27 +33,24 @@ If the camera is 50 mm to the right and 100 mm above the arm's wrist joint, the 
 
 ### 3. Use the measurement tool
 
-The measurement tool calculates the distance between two points in the scene.
+The measurement tool shows the distance between two points you click, so you can check configured offsets against physical measurements.
 
 1. Click the **ruler** button in the top-center toolbar. Activating it disables entity selection until you exit the tool.
-2. Click a point on the first component (for example, the arm's end effector frame origin).
-3. Click a point on the second component (for example, the camera frame origin).
+2. Click a point on the first component, for example the arm's end-effector frame origin.
+3. Click a point on the second component, for example the camera frame origin.
 
-The distance appears between the two points, displayed in meters to three decimals (for example, `0.245m` means 245 mm).
-Click a third time to clear the measurement. Click the ruler button again to exit the tool and re-enable entity selection.
+The distance appears between the two points, displayed in meters to three decimals (for example, `0.245m` means 245 mm). Click a third time to clear the measurement. Click the ruler button again to exit the tool and re-enable entity selection.
 
 To constrain the measurement to a subset of axes, open the **measurement settings** popover (the sliders icon next to the ruler). Under **Enabled axes**, toggle `x`, `y`, or `z` off; disabled axes are held fixed to the first point, so the distance is measured only along the axes that remain enabled.
 
 ### 4. Check orientation alignment
 
-Select a component and look at its coordinate axes in the 3D view.
-The axes should match the physical orientation of the component:
+Select a component and compare its coordinate axes in 3D to the physical component:
 
-- A camera's Z axis (blue) typically points forward along the optical axis.
-- An arm's coordinate system follows the manufacturer's convention.
+- A camera's Z axis (blue) should point forward along the optical axis.
+- An arm's axes should follow the manufacturer's convention.
 
-If the axes are rotated relative to what you expect, adjust the orientation values in the frame configuration.
-The Details panel shows the orientation as an orientation vector (`x`, `y`, `z`, `th` in degrees).
+If the axes are rotated relative to what you expect, adjust the orientation vector in the frame configuration. The Details panel displays it as (`x`, `y`, `z`, `th` in degrees).
 
 ### 5. Verify with a point cloud
 

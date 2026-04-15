@@ -12,16 +12,18 @@ aliases:
   - /motion-planning/motion-how-to/drive-a-base/
 ---
 
-You have a wheeled base and want to drive it without waypoints, a map, or a
-navigation service. The base component API exposes direct motion commands for
-this case: drive a known distance, spin a known angle, or set linear and
-angular power or velocity.
+A wheeled base does not always need navigation. A demo that drives in a
+square, an operator joystick that sets velocity in real time, or a
+sensor-driven control loop that adjusts power on the fly all call for
+commanding the base directly rather than planning a route to it. The base
+component API gives you four methods for these cases: `MoveStraight` and
+`Spin` for known-distance moves, `SetPower` and `SetVelocity` for continuous
+control.
 
-This is the lowest-level path for moving a base. For GPS waypoint navigation,
-see [Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/). For
-SLAM-map-based navigation, see the
-[`MoveOnMap`](/motion-planning/reference/api/#moveonmap) motion service
-method.
+For autonomous waypoint following or SLAM-based navigation, use the navigation
+service instead. See
+[Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/) and
+[`MoveOnMap`](/motion-planning/reference/api/#moveonmap).
 
 ## Before you start
 
@@ -163,11 +165,16 @@ For operator-driven control or sensor-driven loops, use `SetPower` or
 `SetVelocity` rather than `MoveStraight`/`Spin`. Both methods take a linear
 vector and an angular vector.
 
-| Vector field | Meaning for linear (`SetPower`/`SetVelocity`)          | Meaning for angular                                       |
-| ------------ | ------------------------------------------------------ | --------------------------------------------------------- |
-| `X`          | (unused by built-in drivers)                           | Roll (unused by built-in drivers)                         |
-| `Y`          | Forward/backward. Positive Y moves forward.            | Pitch (unused by built-in drivers)                        |
-| `Z`          | Up/down (unused by built-in drivers for wheeled bases) | Yaw. Positive Z turns left (counterclockwise from above). |
+For wheeled bases, only two of the six fields matter in practice:
+
+| Vector field | Meaning                                                      |
+| ------------ | ------------------------------------------------------------ |
+| `linear.Y`   | Forward and backward. Positive Y drives forward.             |
+| `angular.Z`  | Yaw. Positive Z turns left (counterclockwise, viewed above). |
+
+The other four fields (`linear.X`, `linear.Z`, `angular.X`, `angular.Y`) exist
+for bases with more degrees of freedom. Built-in wheeled base drivers ignore
+them.
 
 `SetPower` values range from -1.0 to 1.0 (fraction of maximum). `SetVelocity`
 takes linear velocity in millimeters per second and angular velocity in
@@ -232,15 +239,17 @@ if err := myBase.Stop(ctx, nil); err != nil {
 {{% /tab %}}
 {{< /tabs >}}
 
-## When to use direct commands versus motion planning
+## When to use direct commands instead of motion planning
 
-- **Direct commands (this page)**: short, well-defined movements. No obstacles,
-  no mapping, no planning. Fastest to set up. No path checking.
-- [**MoveOnGlobe through the navigation service**](/navigation/how-to/navigate-to-waypoint/):
-  drive to GPS coordinates with replanning, obstacle avoidance, and mode
-  switching.
-- **MoveOnMap**: drive to a pose on a SLAM map. Requires a SLAM service; see
-  the [motion service API reference](/motion-planning/reference/api/#moveonmap).
+| Path            | Use when                                                 | Trade-off                                           |
+| --------------- | -------------------------------------------------------- | --------------------------------------------------- |
+| Direct commands | Short, well-defined movements with no obstacles to avoid | No path checking; you are responsible for the route |
+| `MoveOnGlobe`   | Autonomous GPS waypoint navigation                       | Needs a movement sensor with GPS                    |
+| `MoveOnMap`     | Driving to a pose on a SLAM-generated map                | Needs a SLAM service                                |
+
+Details for both planned paths:
+[Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/) and
+[`MoveOnMap`](/motion-planning/reference/api/#moveonmap).
 
 ## What's next
 

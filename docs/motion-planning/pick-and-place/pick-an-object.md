@@ -9,9 +9,14 @@ aliases:
   - /motion-planning/motion-how-to/pick-an-object/
 ---
 
-You need to pick up an object from a workspace. This requires detecting the
-object with a camera, determining its 3D position, planning a collision-free
-approach path, and controlling the gripper to grasp it.
+Picking an object has four steps, and each step has a failure mode. The camera
+has to see the object (detection). The vision service has to report it in 3D
+(localization, not just a 2D bounding box). The arm has to approach without
+colliding with the table or a neighboring fixture. The gripper has to close on
+the object, not in front of it or past it. This guide walks through all four
+steps, calls out the common places things go wrong, and leaves the result
+ready for the
+[placement](/motion-planning/pick-and-place/place-an-object/) half.
 
 ## Prerequisites
 
@@ -21,14 +26,17 @@ approach path, and controlling the gripper to grasp it.
 - Camera [calibrated](/motion-planning/frame-system/camera-calibration/) and registered
   in the frame system
 - Vision service configured for object detection
-- [Obstacles](/motion-planning/obstacles/) defined (at minimum, the table)
+- [Obstacles](/motion-planning/obstacles/) defined for every surface the arm could collide with (the table the arm is mounted on, any walls or equipment in reach)
 
 ## Steps
 
 ### 1. Detect and localize the object
 
-Use a vision service to detect the object in 2D, then transform its position
-to the world frame.
+Detection tells you _which_ object the camera sees; localization tells you
+_where_ it is in 3D. For grasping, you need both. 2D detections from
+`GetDetections` are not enough on their own: use `GetObjectPointClouds`, which
+returns 3D geometries in the camera's frame, then `TransformPose` into the
+world frame so the motion service can plan against the result.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -70,10 +78,13 @@ if objects:
 {{% /tab %}}
 {{< /tabs >}}
 
-### 2. Plan approach and pre-grasp pose
+### 2. Approach the object from above
 
-Move the arm to a position above the object (pre-grasp pose) before descending
-to grasp.
+A grasp is easiest to plan as two motions: first to a pre-grasp pose 100 mm
+above the object with the gripper oriented downward, then a short vertical
+descent. The two-motion approach gives the planner a clean path that does not
+brush obstacles on the way down, and it makes the grasp itself nearly
+deterministic since only one axis is moving at the end.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -141,6 +152,13 @@ print("At grasp position")
 
 ### 4. Grasp and lift
 
+The grasp itself closes the gripper on the object, confirms contact, and lifts
+straight up before planning any further motion. `gripper.grab()` returns a
+boolean: true if the gripper's contact sensor confirms closure, false if it
+closed but sensed nothing. Treat a false return as "try again with a different
+approach": pressing onward with an empty gripper wastes time and can damage
+downstream setups.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -176,11 +194,18 @@ print("Object lifted")
 
 ## Tips
 
-- Use `CollisionSpecification` constraints to allow the gripper to contact the
-  target object during the grasp phase.
-- Add a small offset to the grasp height to account for measurement uncertainty.
-- After grasping, re-verify with the gripper's `is_moving` or force feedback
-  before proceeding.
+- **Let the gripper touch the object.** By default the planner refuses any
+  path with frame-on-frame contact, which blocks grasps by design. Allow the
+  gripper-object pair with `CollisionSpecification`; see
+  [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/).
+- **Add vertical clearance to the grasp height.** Vision depth estimates are
+  rarely accurate to the millimeter. A 5-10 mm margin above the object's
+  reported top surface prevents the gripper from crashing into it when depth
+  is off.
+- **Confirm the grasp before moving.** `gripper.grab()`'s boolean return is
+  fast but not infallible. For fragile or expensive objects, poll force
+  feedback or `is_moving` for a second after closure to catch slippage before
+  you lift.
 
 ## What's next
 

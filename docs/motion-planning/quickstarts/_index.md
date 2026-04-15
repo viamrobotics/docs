@@ -7,10 +7,7 @@ type: "docs"
 description: "Short end-to-end tutorials that take a first-time user from zero to a working motion example. Each tutorial uses fake components so it runs without specific hardware."
 ---
 
-These tutorials take a first-time user from zero to a working arm or
-frame-system example. Each one uses fake components so you can run it
-on any machine that has `viam-server` installed; swapping in real
-hardware later is a configuration change, not a code change.
+Each quickstart takes you from zero to a working example in about 10 to 15 minutes, using fake components so nothing depends on specific hardware. When you swap in a real arm or camera later, the change is in machine configuration, not in your code.
 
 {{< cards >}}
 {{% card link="/motion-planning/quickstarts/first-arm/" noimage="true" %}}

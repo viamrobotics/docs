@@ -10,8 +10,11 @@ aliases:
   - /navigation/how-to/move-to-gps-coordinate/
 ---
 
-This guide walks you through configuring the navigation service and sending
-your robot to its first GPS waypoint.
+Once your GPS movement sensor reports accurate position and heading, the
+navigation service can drive the base to a coordinate you choose. This
+guide adds the navigation service to an existing base-and-GPS machine
+and sends the robot to its first waypoint, first from the Control tab
+and then from code.
 
 ## Prerequisites
 
@@ -210,49 +213,21 @@ func main() {
 
 ## What to expect
 
-When navigation starts:
+When navigation starts, the robot turns to face the waypoint, drives
+toward it, and marks the waypoint visited on arrival. If more waypoints
+are queued, the service drives to the next one automatically.
 
-- The robot turns to face the waypoint, then drives toward it.
-- If the robot deviates from its path by more than `plan_deviation_m`
-  (default 2.6 meters), the service automatically replans.
-- If an obstacle is detected (from configured obstacle detectors), the
-  service replans around it.
-- When the robot reaches the waypoint, it marks it as visited and stops
-  (or moves to the next waypoint if more are queued).
+Two conditions trigger a replan during this sequence:
+
+- The robot drifts more than `plan_deviation_m` (default 2.6 meters)
+  from the planned path.
+- A configured obstacle detector reports a new obstacle on the path.
 
 ## Troubleshooting
 
-{{< expand "Robot doesn't move" >}}
-
-- Confirm the machine shows as **Live** in the Viam app.
-- Confirm the navigation mode is set to **Waypoint** (not Manual).
-- Check the **LOGS** tab for errors from the navigation or motion service.
-- Verify your base responds to direct commands first (open the base's
-  configure card and in its **TEST** section, press and hold the
-  **Quick move** arrow buttons or click **Execute** on **MoveStraight**).
-- Verify your GPS movement sensor reports a valid position.
-
-{{< /expand >}}
-
-{{< expand "Robot moves erratically or in circles" >}}
-
-- Check compass heading accuracy. If the compass is affected by motor
-  interference, the robot won't know which direction to face. See
-  [Set up GPS](/navigation/how-to/set-up-gps/) for interference guidance.
-- Increase `plan_deviation_m` if the robot replans too frequently due
-  to GPS jitter. See [Tune navigation](/navigation/how-to/tune-navigation/).
-
-{{< /expand >}}
-
-{{< expand "Robot stops before reaching waypoint" >}}
-
-- The robot may be detecting an obstacle it can't navigate around. Check
-  GetObstacles from the API, or open the navigation service card on
-  **CONTROL** and inspect the **Obstacles** tab of the map's side panel.
-- If using obstacle detectors, check that the vision service isn't
-  producing false positives.
-
-{{< /expand >}}
+If the robot does not move, moves erratically, or stops short, see
+[Monitor and troubleshoot navigation](/navigation/how-to/monitor-and-troubleshoot/).
+That page covers the common failure modes in one place.
 
 ## What's next
 

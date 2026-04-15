@@ -9,9 +9,12 @@ aliases:
   - /motion-planning/motion-how-to/avoid-obstacles/
 ---
 
-Your arm needs to reach a target while avoiding the table it's mounted on,
-walls, equipment, or objects placed in the workspace. This guide shows how to
-set up a complete obstacle environment and verify collision avoidance.
+A motion plan that ignores the table, the back wall, and the fixture on the
+bench next to the arm will collide on its way to the target. The motion service
+can plan around these obstacles, but only if you describe them in a
+`WorldState`. This guide walks through building a `WorldState` for a typical
+bench setup, running a plan against it, and verifying that the planner actually
+routes around each obstacle.
 
 ## Prerequisites
 
@@ -20,9 +23,12 @@ set up a complete obstacle environment and verify collision avoidance.
 
 ## Steps
 
-### 1. Define your workspace obstacles
+### 1. Describe your workspace obstacles
 
-Build a `WorldState` that models the significant obstacles in your workspace.
+A `WorldState` is a list of geometries expressed in a reference frame. Each
+geometry needs a shape (box, capsule, or sphere), a pose relative to the frame,
+and a label. Model every significant obstacle: surfaces the arm can press into,
+fixtures it can strike, and vertical obstructions like posts or walls.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -131,18 +137,22 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 {{% /tab %}}
 {{< /tabs >}}
 
-### 3. Test collision avoidance
+### 3. Verify the planner is actually routing around obstacles
 
-Place a test obstacle directly between the arm and the target. The arm should
-take an indirect path around it.
+The quickest sanity check is a before-and-after comparison. Run the motion with
+a box placed directly between the arm's start pose and the target, and the arm
+should take an indirect path around it. Remove the box, rerun the same motion,
+and the arm should take a more direct path. If the paths look the same with and
+without the obstacle, the `WorldState` is not reaching the planner.
 
-Then remove the obstacle and move again. The arm should take a more direct path.
+### 4. Use frame geometry for permanent obstacles
 
-### 4. Add static geometry to frames
-
-For permanent obstacles, add geometry directly to component frames in the
-**CONFIGURE** tab instead of using WorldState. This way the planner always
-accounts for them without code changes.
+`WorldState` is re-sent with every `Move` call, which is useful when obstacles
+come and go but wasteful for things that never move. Permanent obstacles (the
+table the arm is bolted to, the back wall, a mounted tool) belong in the
+component's frame configuration instead. The planner reads frame geometry from
+the config on every plan, so you describe those obstacles once and forget about
+them.
 
 See [Define Obstacles](/motion-planning/obstacles/) for the full configuration
 reference.

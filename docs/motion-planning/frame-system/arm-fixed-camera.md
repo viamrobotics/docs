@@ -9,9 +9,13 @@ aliases:
   - /motion-planning/frame-system-how-to/arm-fixed-camera/
 ---
 
-In this setup, the arm and camera are both positioned independently in the workspace.
-The camera is mounted overhead, on a tripod, or at some other fixed location rather than on the arm itself.
-This is common for vision-guided pick-and-place tasks where the camera needs to observe the entire workspace from a fixed vantage point.
+An overhead or tripod-mounted camera sees the whole workspace at once. A
+wrist-mounted camera sees only where the arm points. For pick-and-place
+across a full bench (a bin on one side, a target area on the other), the
+fixed camera is the better choice: the arm can move freely while the camera
+keeps its vantage point. This guide configures frames for that arrangement:
+the arm as a child of the world frame, and the camera as a separate child of
+the world frame.
 
 ## Frame hierarchy
 
@@ -100,8 +104,12 @@ For a camera mounted 200 mm to the right, 300 mm forward, and 800 mm above the w
 }
 ```
 
-The orientation `(1, 0, 0), 180` rotates the camera frame 180 degrees around the x axis.
-This is appropriate for an overhead camera pointing straight down, because it flips the z axis to point downward.
+An overhead camera's lens points at the floor. In the default camera frame,
++z points out of the lens, so without rotation the camera's +z would point up
+and the floor would be in -z. Rotating 180 degrees around the x axis flips z
+to point down (the direction the lens is actually aimed), and flips y to
+compensate. The result: +z now matches "away from the camera" in the physical
+sense, and the camera's 2D coordinates map intuitively to world positions.
 
 **Tripod-mounted camera at an angle:**
 For a camera on a tripod 500 mm to the left, 600 mm forward, and 700 mm above the origin, tilted 45 degrees downward:
@@ -121,10 +129,13 @@ A negative angle around the x axis tilts the camera's view downward from the hor
 
 Click **Save**.
 
-### 5. Verify axis directions
+### 5. Verify axes on the arm and on the camera
 
-Go to the **CONTROL** tab and jog the arm in small increments along each axis to confirm that +x, +y, and +z match your physical setup.
-If any axis is wrong, adjust the arm's orientation in the **CONFIGURE** tab.
+For the arm, jog in **CONTROL** along +x, +y, +z and watch the physical
+direction. For the camera, open the camera stream in **CONTROL** and move a
+known object (a pen, a ruler) in the physical +x direction; the object should
+move in the +x direction in the camera's image coordinates. If either is
+wrong, rotate the relevant component's `orientation` until it matches.
 
 ### 6. Visualize the frame system
 

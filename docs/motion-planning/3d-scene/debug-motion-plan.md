@@ -46,17 +46,11 @@ selected entity's **world position** and **world orientation**, plus
 editable **local position** and **local orientation** relative to the
 parent frame. Compare these values to your physical measurements.
 
-Common problems:
+Three common mismatches to look for:
 
-- **Component in the wrong location**: the translation values in the
-  frame configuration do not match the physical setup. Compare
-  **local position** (mm) to your physical measurements.
-- **Component with wrong orientation**: the arm base is rotated 90
-  degrees, or a camera is pointing the wrong direction. Check
-  **local orientation** in the Details panel.
-- **Wrong parent frame**: a component is attached to the wrong parent,
-  placing it in an unexpected part of the scene. Check the
-  **parent frame** field in the Details panel.
+- **Wrong location**: translation values in the frame configuration do not match the physical setup. Compare **local position** (mm) to your physical measurements.
+- **Wrong orientation**: the arm base is rotated 90 degrees, or a camera points the wrong direction. Check **local orientation** in the Details panel.
+- **Wrong parent**: the component is attached to the wrong parent, which places it in an unexpected part of the scene. Check the **parent frame** field in the Details panel.
 
 ### 3. Check obstacle geometry
 

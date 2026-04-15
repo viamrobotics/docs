@@ -9,9 +9,13 @@ aliases:
   - /motion-planning/frame-system-how-to/arm-gripper-camera/
 ---
 
-This is the most common manipulation setup: a table-mounted arm with a gripper on the end effector and a camera mounted on the arm near the gripper.
-The camera moves with the arm, giving you a consistent view of whatever the arm is reaching for.
-This guide walks you through configuring the frame system for this hardware arrangement.
+A table-mounted arm, a gripper bolted to the end effector, and a camera
+clamped near the wrist is the most common manipulation setup. The camera moves
+with the arm, so its view is always centered on wherever the arm is reaching.
+For the motion service and vision pipelines to know that, that the camera is
+on the arm, not separate from it, you have to tell the frame system three
+relationships: arm-to-world, gripper-to-arm, and camera-to-arm. This guide
+walks through all three.
 
 ## Frame hierarchy
 
@@ -28,15 +32,16 @@ The gripper and camera are both children of the arm, so they move with the arm a
 
 ## Steps
 
-### 1. Choose your world frame
+### 1. Choose your world frame origin
 
-Pick a fixed point in your workspace that is easy to measure from.
-For a table-mounted arm, the arm base or a table corner are good choices.
-
-If you choose the arm base as the world frame origin, the arm's translation offset will be `(0, 0, 0)`.
-If you choose a table corner, you will need to measure the distance from that corner to the arm base.
-
-Mark your chosen origin physically so you can take consistent measurements.
+Every frame on the machine will be defined relative to the world frame, so the
+origin is the point you measure from. Two good choices for a table-mounted
+arm: the arm's base, or a corner of the table. Using the arm base as the
+origin means the arm's translation is `(0, 0, 0)` and every other measurement
+starts from the arm. Using a table corner gives you a physical landmark (you
+can literally see the corner) at the cost of measuring arm-base-to-corner
+first. Either way, mark the origin physically; you will refer to it every
+time you add or adjust a frame.
 
 ### 2. Add a frame to the arm
 
@@ -73,16 +78,15 @@ If the world frame origin is at a table corner and the arm base is 300 mm to the
 
 Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
-### 3. Verify axis directions
+### 3. Verify the axes point the way you expect
 
-Before adding more frames, confirm that the arm's coordinate axes match your expectations.
+Before adding more frames, confirm the arm's coordinate axes line up with your
+world frame. In the **CONTROL** tab, jog the end effector a small amount in
++z. If the arm moves up, z matches the Viam convention. Repeat for +x and +y.
+An axis that points the wrong way will make every subsequent frame offset
+wrong in the same direction, so fix it now by rotating the arm's `orientation`
+to flip the bad axis.
 
-1. Go to the **CONTROL** tab and find your arm.
-2. Use the arm's **TEST** panel to jog the end effector in small increments along each axis.
-3. Command a move in the +z direction and observe which way the arm moves physically. If +z moves the arm up, the z axis matches the standard convention.
-4. Repeat for +x and +y.
-
-If an axis points the wrong way, adjust the `orientation` field in the arm's frame.
 For example, if the arm's +x points opposite to your intended +x, rotate 180 degrees around the z axis:
 
 ```json

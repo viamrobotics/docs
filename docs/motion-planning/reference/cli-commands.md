@@ -7,13 +7,11 @@ type: "docs"
 description: "Reference for the Viam CLI commands that inspect the frame system and test motion from the command line."
 ---
 
-The Viam CLI exposes four motion-related commands under `viam machines
-part motion`. They are read-only or single-call wrappers around the
-frame system and motion service, useful for inspecting configuration
-and testing motion without writing code.
+`viam machines part motion` exposes four commands that wrap the frame system and motion service RPCs. Use them to inspect frame configuration and test motion from the command line, without writing code.
 
-All four commands require a `--part` flag that identifies the machine
-part. `get-pose` and `set-pose` additionally require `--component`.
+All three read commands (`print-status`, `get-pose`, and the pose read inside `set-pose`) go through the deprecated `Motion.GetPose` RPC. The CLI output is unchanged; the RPC will switch to the robot service's `GetPose` in a future release.
+
+All four commands require a `--part` flag that identifies the machine part. `get-pose` and `set-pose` additionally require `--component`.
 
 ## Command summary
 
@@ -78,13 +76,6 @@ Use this to:
 | -------- | :------: | -------------------------- |
 | `--part` |   Yes    | The machine part to query. |
 
-### Note on deprecation
-
-`print-status` internally uses the `Motion.GetPose` RPC, which is
-deprecated at the proto level in favor of the equivalent method on the
-robot service. The CLI output is unchanged; only the internal call path
-is affected.
-
 ## get-pose
 
 Prints the current world-frame pose of a single specified component.
@@ -107,17 +98,9 @@ tree listing.
 | `--part`      |   Yes    | The machine part to query.         |
 | `--component` |   Yes    | The component whose pose to print. |
 
-### Note on deprecation
-
-Like `print-status`, `get-pose` internally uses the deprecated
-`Motion.GetPose` RPC.
-
 ## set-pose
 
-Reads the component's current pose, applies any pose field overrides
-you pass through flags, and calls `Motion.Move` to drive the component
-to the resulting pose. Fields you do not specify retain their current
-values.
+`set-pose` reads the component's current pose, overrides the fields you pass as flags, and calls `Motion.Move` to the resulting pose. Unset flags keep the current value.
 
 ```sh
 viam machines part motion set-pose \
@@ -156,12 +139,6 @@ position.
 | `--oz`        |    No    | Override orientation vector Z component. |
 | `--theta`     |    No    | Override orientation theta (degrees).    |
 
-### Note on deprecation
-
-`set-pose` reads the current pose through the deprecated
-`Motion.GetPose` RPC, then issues the move through `Motion.Move`. The
-move itself uses the current API.
-
 ## Common flows
 
 - **Verify your frame config parses and mounts where you expect**:
@@ -170,10 +147,7 @@ move itself uses the current API.
 - **Confirm the arm is where the frame system thinks it is**: run
   `print-status`, move the arm physically by a known amount, run
   `print-status` again.
-- **Quick reachability test**: run `get-pose` on the component to read
-  the current pose, then run `set-pose` with small offsets to confirm
-  the motion service can move it. Start with the smallest possible
-  offsets.
+- **Quick reachability test**: run `get-pose` to read the current pose, then run `set-pose` with a small offset to confirm the motion service can drive the arm. Start with small offsets; large ones risk collisions.
 
 For a step-by-step debugging workflow using these commands, see
 [Debug motion with the CLI](/motion-planning/debug-motion-with-cli/).

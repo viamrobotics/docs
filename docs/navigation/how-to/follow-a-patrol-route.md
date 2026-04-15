@@ -8,9 +8,9 @@ description: "Define a sequence of waypoints and navigate them repeatedly."
 ---
 
 A patrol route is a sequence of GPS waypoints the robot visits in order.
-The navigation service handles driving between waypoints, replanning around
-obstacles, and retrying on failure. Your code defines the route and
-restarts it when the robot finishes.
+The navigation service drives between waypoints, replans around obstacles,
+and retries on failure, but it does not loop. Your code has to re-add the
+waypoints when the robot finishes to keep the patrol going.
 
 ## Prerequisites
 
@@ -159,12 +159,11 @@ When all waypoints have been visited, GetWaypoints returns an empty list.
 The service does not automatically loop. Your code is responsible for
 re-adding waypoints to repeat the patrol.
 
-If the robot fails to reach a waypoint (obstacle it can't navigate around,
-motion planning failure), the service retries that waypoint indefinitely.
-It does not skip to the next waypoint. To skip a stuck waypoint, remove
-it with RemoveWaypoint.
+If the robot cannot reach a waypoint, the service retries indefinitely
+rather than skipping ahead. To move past a stuck waypoint, remove it
+with RemoveWaypoint.
 
-## Using the memory vs MongoDB store
+## Persist waypoints across restarts
 
 With the **memory store** (default), waypoints are lost if `viam-server`
 restarts. If your robot reboots mid-patrol, your code needs to re-add the

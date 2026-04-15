@@ -10,11 +10,7 @@ aliases:
   - /build/work-cell-layout/configure-robot-kinematics/
 ---
 
-When you command a robot arm to move its end effector to a position in 3D space,
-something needs to figure out what angle each joint should be set to in order to
-reach that position. This is the inverse kinematics problem, and solving it
-requires a mathematical model of the arm's physical structure: how long each
-link is, how each joint rotates, and what the limits of each joint are.
+A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it. Most registry arm modules ship this file; you only need to write one when building a custom arm.
 
 {{< alert title="Most arms handle this automatically" color="tip" >}}
 
@@ -33,11 +29,7 @@ physical arm.
 
 ### Forward and inverse kinematics
 
-**Forward kinematics** answers the question: given the current angle of every
-joint, where is the end effector? This is a straightforward calculation. You
-start at the base, apply each joint angle and link length in sequence, and
-arrive at the end effector's position and orientation in space. Every time you
-call `GetEndPosition`, the arm uses forward kinematics.
+**Forward kinematics** computes the end effector's pose from the current joint angles. Walk the chain from base to end, applying each joint's rotation and each link's length; the result is deterministic. `GetEndPosition` runs forward kinematics internally.
 
 **Inverse kinematics** answers the reverse question: given a target position and
 orientation for the end effector, what joint angles will get the arm there? This
@@ -78,15 +70,12 @@ require the arm to bend past its physical limits.
 
 Viam supports two kinematics file formats at the API level:
 
-| Format                           | Description                                   | When to use                                |
-| -------------------------------- | --------------------------------------------- | ------------------------------------------ |
-| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | Preferred for new arms, most detailed      |
-| **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer provides a URDF file |
+| Format                           | Description                                   | When to use                                                  |
+| -------------------------------- | --------------------------------------------- | ------------------------------------------------------------ |
+| **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | When writing a Viam kinematics file directly.                |
+| **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer ships a URDF and you want to reuse it. |
 
-The `GetKinematics` API returns one of these two formats. DH
-(Denavit-Hartenberg) parameters can be written inside the SVA JSON schema as
-a convenience for converting textbook DH tables into Viam's format. DH is not
-a separate API-level format.
+`GetKinematics` returns one of these two formats. Viam's SVA schema also accepts Denavit-Hartenberg parameters inline, as a convenience when you are converting a textbook DH table; DH is not a third API-level format.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.

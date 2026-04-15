@@ -11,11 +11,7 @@ aliases:
   - /mobility/motion/algorithms/
 ---
 
-The built-in motion service uses a single planning algorithm. This page
-catalogs the algorithm, its defaults, and where each tunable is exposed
-to callers. For the conceptual explanation (how the algorithm works,
-what it does not do, what to try when it fails), see
-[How motion planning works](/motion-planning/how-planning-works/).
+The builtin motion service uses one planning algorithm: cBiRRT. This page lists its identifying details, the defaults, and where each tunable is exposed to callers. For how cBiRRT works, its limits, and what to try when it fails, see [How motion planning works](/motion-planning/how-planning-works/).
 
 ## Algorithm
 
@@ -42,7 +38,7 @@ The planner-relevant entries are:
 
 ## Tuning surfaces
 
-There are two ways to override a default.
+Callers override a default in one of two places: persistently in the motion service config, or per call through the `extra` map on a `Move` request. The table below shows which tunables live where.
 
 | Where                                | Scope                   | Example tunables                                                    |
 | ------------------------------------ | ----------------------- | ------------------------------------------------------------------- |
