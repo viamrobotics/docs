@@ -92,6 +92,7 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 
 ### Deploy and maintain models
 
+- [Browse available models](/vision/deploy-and-maintain/available-models/): the ML model services, vision services, and public models in the registry
 - [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): pick a pre-trained model and run it on a machine
 - [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): bring your own trained model
 - [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): the CVOps loop for model maintenance

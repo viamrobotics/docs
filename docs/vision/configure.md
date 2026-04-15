@@ -4,7 +4,6 @@ title: "Configure a vision pipeline"
 weight: 10
 layout: "docs"
 type: "docs"
-modulescript: true
 description: "Wire up an ML model service and a vision service so your machine's camera can produce detections, classifications, or 3D point cloud objects."
 date: "2026-04-14"
 aliases:
@@ -31,9 +30,21 @@ The ML model service matches your model file's framework. For most tasks, `tflit
 
 ## 2. Configure the ML model service
 
-Point the service at your model file.
+Point the service at your model file. The Builder flow populates the config for you; the JSON tab shows what you end up with (or what to write manually, for example for a local model file).
 
-**Registry model:**
+{{< tabs >}}
+{{% tab name="Builder" %}}
+
+1. Click your new ML model service card on the **CONFIGURE** tab.
+2. Click **Select model**. A dialog titled "Select a model" opens.
+3. Use the **My models** and **Registry** tabs to switch between models in your organization and public models in the [Viam Registry](https://app.viam.com/registry). Use the search field and the **Task type**, **Framework**, and **Visibility** filters to narrow the list.
+4. Click a model card to open its details view. Pick a **Version** from the dropdown: **Latest** (auto-updates when a newer version is published) or a specific timestamp version (recommended for production).
+5. Click **Choose**. The dialog closes and the service panel now shows the selected model as a pill with its version and author.
+
+Behind the scenes the builder adds a `packages` entry for the model and sets `model_path` and `label_path` on the service attributes to point into the package. Registry models ship with their own `labels.txt`, so you do not create one yourself.
+
+{{% /tab %}}
+{{% tab name="JSON — registry model" %}}
 
 ```json
 {
@@ -47,9 +58,10 @@ Point the service at your model file.
 }
 ```
 
-`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package. Registry models ship with their own `labels.txt`, so the `label_path` above resolves to the labels file inside the package. You do not need to create one yourself.
+`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package. Registry models ship with their own `labels.txt`, so the `label_path` above resolves to the labels file inside the package. You do not need to create one yourself. The `packages` array at the top level of the machine config (not shown here) names the package to download.
 
-**Local model file:**
+{{% /tab %}}
+{{% tab name="JSON — local model file" %}}
 
 ```json
 {
@@ -64,6 +76,9 @@ Point the service at your model file.
 ```
 
 For local models, `label_path` is optional but recommended: it maps the numeric class IDs the model outputs to human-readable names like `person` or `car`. Provide a `.txt` file with one label per line, in class-ID order (line 0 is class 0).
+
+{{% /tab %}}
+{{< /tabs >}}
 
 For more on the deployment flow, see [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
 
@@ -273,23 +288,7 @@ Get the placeholder values from the Viam app:
 3. Click the **Include API key** switch. The snippet on the page regenerates with your machine's real API key, API key ID, and machine address in place of the `<API-KEY>`, `<API-KEY-ID>`, and `<MACHINE-ADDRESS>` placeholders. Click the copy icon on the snippet to copy the whole thing.
 4. To view or copy API keys separately, open the **API keys** sidebar item on the same tab.
 
-## Available ML model services and vision models
-
-### Available ML model services
-
-{{< resources_svc api="rdk:service:mlmodel" type="ML model" >}}
-
-### Available vision services
-
-{{% expand "Click to see available vision services" %}}
-
-{{< resources_svc api="rdk:service:vision" type="vision" >}}
-
-{{% /expand %}}
-
-### Public machine learning models
-
-{{< mlmodels >}}
+For the full list of ML model services, vision services, and public models in the registry, see [Browse available models and services](/vision/deploy-and-maintain/available-models/).
 
 ## What's next
 

@@ -12,6 +12,7 @@ date: "2026-04-14"
 The model is the artifact at the center of every vision pipeline. Deploy one from the registry or bring your own, roll out new versions as you retrain, and validate models against stored data before they go live.
 
 {{< cards >}}
+{{% card link="/vision/deploy-and-maintain/available-models/" %}}
 {{% card link="/vision/deploy-and-maintain/deploy-from-registry/" %}}
 {{% card link="/vision/deploy-and-maintain/deploy-custom-model/" %}}
 {{% card link="/vision/deploy-and-maintain/retrain/" %}}
