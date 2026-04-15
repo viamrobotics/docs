@@ -60,7 +60,7 @@ Make sure you have followed these steps to configure an arm and a gripper.
 
 ## Configure a robot
 
-Use the robot configuration from the [prerequisite guide](/operate/mobility/move-arm/) for this tutorial as well.
+Use the robot configuration from the [prerequisite guide](/motion-planning/move-an-arm/move-to-pose/) for this tutorial as well.
 We will revisit that robot configuration and add new components.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.

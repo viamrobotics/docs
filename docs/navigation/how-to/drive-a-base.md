@@ -28,7 +28,7 @@ service instead. See
 ## Before you start
 
 - A configured base component. See the
-  [base component documentation](/components/base/) for hardware setup.
+  [base component documentation](/hardware/common-components/add-a-base/) for hardware setup.
 - The base's motors run through the **TEST** section on each motor's
   configure card (press and hold **forward** or **backward** under
   **Quick move**). If a motor's Test section shows **Resource is
