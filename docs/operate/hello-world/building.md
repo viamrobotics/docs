@@ -305,8 +305,8 @@ To mock the resources you don't have hardware for or which you can't find existi
 We recommend consulting the docs for each service that might be helpful for your project and checking for suitable models and usage information.
 Then configure the service and test it.
 
-- [**Data management**](/data-ai/capture-data/capture-sync/): Capture, store, and sync data
-- [**Vision**](/data-ai/ai/run-inference/#using-a-vision-service) and [**ML model**](/data-ai/ai/deploy/): Detect objects, classify images, or track movement in camera streams
+- [**Data management**](/data/capture-sync/capture-and-sync-data/): Capture, store, and sync data
+- [**Vision**](/vision/detect/#using-a-vision-service) and [**ML model**](/vision/configure/): Detect objects, classify images, or track movement in camera streams
 - [**Motion**](/operate/mobility/motion-concepts/) and [**Frame system**](/operate/reference/services/frame-system/#configuration): Plan and execute complex movements
 - [**Navigation**](/operate/reference/services/navigation/): Help machines move autonomously
 - [**SLAM (Simultaneous Localization and Mapping)**](/operate/reference/services/slam/): Create maps of surroundings and locate machines within those maps

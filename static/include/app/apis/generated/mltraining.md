@@ -89,7 +89,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### SubmitCustomTrainingJob
 
 Submit a training job from a custom training script.
-Follow the guide to [Train a Model with a Custom Python Training Script](/data-ai/train/train/).
+Follow the guide to [Train a Model with a Custom Python Training Script](/train/custom-training-scripts/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

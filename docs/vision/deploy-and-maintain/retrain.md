@@ -39,7 +39,7 @@ A simple approach: log detection results alongside camera frames for a day, then
 
 ## 2. Capture failing images
 
-The image that made your model fail is the single most valuable training example you can add. Use the [data management service](/data-ai/capture-data/capture-sync/) to save camera frames to the Viam Cloud so they become available for labeling.
+The image that made your model fail is the single most valuable training example you can add. Use the [data management service](/data/capture-sync/capture-and-sync-data/) to save camera frames to the Viam Cloud so they become available for labeling.
 
 Two capture strategies, depending on volume:
 
@@ -110,8 +110,8 @@ When drift shows up again, the cycle repeats. The first retraining cycle is the 
 
 ## Next steps
 
-- [Data capture and sync](/data-ai/capture-data/capture-sync/): set up production image capture
+- [Data capture and sync](/data/capture-sync/capture-and-sync-data/): set up production image capture
 - [Annotate images](/train/annotate-images/): label captured data
 - [Train a model](/train/train-a-model/): produce a new model version
-- [Deploy a model](/data-ai/ai/deploy/): wire the new version into the ML model service
+- [Deploy a model](/vision/deploy-and-maintain/deploy-from-registry/): wire the new version into the ML model service
 - [Act on detections](/vision/object-detection/act-on-detections/) and [alert on detections](/vision/object-detection/alert-on-detections/): use the new version in production logic

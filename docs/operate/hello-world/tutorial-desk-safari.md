@@ -759,8 +759,8 @@ You can use these tools to **build any kind of machine** with Viam.
 If you want to continue working on your game, consider:
 
 - Building your own [Viam application, mobile app, or headless app.](/operate/control/viam-applications/)
-- Taking photos when an item is successfully detected by [capturing data from your machines](/data-ai/capture-data/capture-sync/)
-- [Training your own TF or TFLite model](/data-ai/train/train-tf-tflite/) to recognize more or other items
+- Taking photos when an item is successfully detected by [capturing data from your machines](/data/capture-sync/capture-and-sync-data/)
+- [Training your own TF or TFLite model](/train/train-a-model/) to recognize more or other items
 
 ## Troubleshooting
 
@@ -783,7 +783,7 @@ If you want to continue working on your game, consider:
 - Reduce the **Minimum confidence threshold** in the vision service's attributes and use the vision service's **TEST** panel to check if it would detect the item at a lower confidence threshold.
   If so, keep the lower value and update your value to also use the lower threshold instead of `0.5`.
 - If you cannot get the item to be recognized, the model may not work well enough.
-  Remove it from the `POSSIBLE_OPTIONS` or [train your own model](/data-ai/train/train-tf-tflite/).
+  Remove it from the `POSSIBLE_OPTIONS` or [train your own model](/train/train-a-model/).
 
 ### Job or game logic not running
 

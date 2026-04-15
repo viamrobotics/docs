@@ -2,7 +2,7 @@
 
 Access data usage information for the current billing period for a given organization.
 This method only returns usage for organizations with monthly billing at the end of the month (`"in_arrears": true`).
-You can also find your usage data on the [**Payment and billing** page](/manage/reference/billing/).
+You can also find your usage data on the [**Payment and billing** page](/organization/billing/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -64,7 +64,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### GetOrgBillingInformation
 
 Access billing information (payment method, billing tier, etc.) for a given org.
-You can also find this information on the [**Payment and billing** page](/manage/reference/billing/).
+You can also find this information on the [**Payment and billing** page](/organization/billing/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -193,7 +193,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 ### GetInvoicePDF
 
 Access invoice PDF data and optionally save it to a provided file path.
-You can also find your invoices on the [**Payment and billing** page](/manage/reference/billing/).
+You can also find your invoices on the [**Payment and billing** page](/organization/billing/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -1,1 +1,1 @@
-Rename a [data pipeline](/data-ai/data/data-pipelines/).
+Rename a [data pipeline](/data/pipelines/create-a-pipeline/).

@@ -1,1 +1,1 @@
-List all of the [data pipelines](/data-ai/data/data-pipelines/) in an organization.
+List all of the [data pipelines](/data/pipelines/create-a-pipeline/) in an organization.

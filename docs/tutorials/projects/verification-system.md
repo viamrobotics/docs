@@ -89,10 +89,10 @@ In order for your machine's camera to detect the presence of a person in its fie
 The model can detect a variety of objects, which you can see in the <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file, including people with the `person` label.
 
 {{< alert title="Want to train your own model instead?" color="note" >}}
-If you wish to train your own ML model, see [Train a TF or TFLite model](/data-ai/train/train-tf-tflite/).
+If you wish to train your own ML model, see [Train a TF or TFLite model](/train/train-a-model/).
 {{< /alert >}}
 
-To run the machine learning model on your machine, use the [ML model service](/data-ai/ai/deploy/):
+To run the machine learning model on your machine, use the [ML model service](/vision/configure/):
 
 1. On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
 1. Select type `ML model`, then select model `TFLite CPU`.
