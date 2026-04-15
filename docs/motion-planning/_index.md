@@ -28,6 +28,18 @@ This section covers motion planning for arms, gantries, and other kinematic
 chains. For GPS-based autonomous navigation with mobile bases, see
 [Navigation](/navigation/).
 
+## Start here
+
+New to Viam's motion service? Work through a short quickstart that uses
+fake components so you can run it on any machine:
+
+{{< cards >}}
+{{% card link="/motion-planning/quickstarts/first-arm/" noimage="true" %}}
+{{% card link="/motion-planning/quickstarts/frame-system/" noimage="true" %}}
+{{% card link="/motion-planning/quickstarts/first-base/" noimage="true" %}}
+{{% card link="/motion-planning/quickstarts/gps-waypoint-navigation/" noimage="true" %}}
+{{< /cards >}}
+
 ## How it works
 
 Motion planning in Viam connects several pieces:
