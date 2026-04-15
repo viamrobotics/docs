@@ -1,7 +1,7 @@
 ---
 linkTitle: "Constraints"
 title: "Configure motion constraints"
-weight: 40
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Restrict how the arm moves between poses using linear, orientation, and collision constraints."
@@ -9,6 +9,7 @@ aliases:
   - /reference/services/motion/constraints/
   - /services/motion/constraints/
   - /mobility/motion/constraints/
+  - /motion-planning/constraints/
 ---
 
 By default, the motion planner returns any collision-free path to the target

@@ -1,10 +1,12 @@
 ---
 linkTitle: "Move by joint positions"
 title: "Move an arm by setting joint positions"
-weight: 15
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Command an arm directly in joint space using MoveToJointPositions and MoveThroughJointPositions, bypassing the motion planner."
+aliases:
+  - /motion-planning/motion-how-to/move-arm-joint-positions/
 ---
 
 When you move an arm with `motion.Move` or `arm.MoveToPosition`, the

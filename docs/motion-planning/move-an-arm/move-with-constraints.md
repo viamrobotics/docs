@@ -7,6 +7,7 @@ type: "docs"
 description: "Move an arm along a straight line or with a fixed orientation using motion constraints."
 aliases:
   - /tutorials/services/constrain-motion/
+  - /motion-planning/motion-how-to/move-arm-with-constraints/
 ---
 
 You need the arm to move in a controlled way, such as following a straight line for

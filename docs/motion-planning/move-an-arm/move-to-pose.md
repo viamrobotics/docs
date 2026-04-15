@@ -14,6 +14,7 @@ aliases:
   - /tutorials/motion/accessing-and-moving-robot-arm/
   - /tutorials/motion/
   - /tutorials/services/plan-motion-with-arm-gripper/
+  - /motion-planning/motion-how-to/move-arm-to-pose/
 ---
 
 You have a robot arm and need to move it to a specific position and orientation
