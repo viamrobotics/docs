@@ -87,6 +87,14 @@ After adding or changing models in your module, update the model definitions in 
 This command runs the module binary in a sandbox, queries it for the API-model pairs it advertises, and updates the manifest.
 It also auto-detects markdown documentation files named `namespace_module_model.md`.
 
+If you omit `--binary`, the CLI uses the entrypoint declared in `meta.json`:
+
+```sh {class="command-line" data-prompt="$"}
+viam module update-models
+```
+
+To point at a specific binary or packaged tarball, pass `--binary`:
+
 ```sh {class="command-line" data-prompt="$"}
 viam module update-models --binary=./bin/module
 ```
