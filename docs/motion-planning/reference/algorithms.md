@@ -1,113 +1,58 @@
 ---
 linkTitle: "Algorithms"
-title: "Motion Planning Algorithms"
+title: "Motion planning algorithms"
 weight: 50
 layout: "docs"
 type: "docs"
-description: "How Viam's motion planner computes collision-free paths for robot arms."
+description: "The planning algorithm used by the built-in motion service and the tuning surfaces exposed to callers."
 aliases:
   - /reference/services/motion/algorithms/
   - /services/motion/algorithms/
   - /mobility/motion/algorithms/
 ---
 
-## When you need this
+The builtin motion service uses one planning algorithm: cBiRRT. This page lists its identifying details, the defaults, and where each tunable is exposed to callers. For how cBiRRT works, its limits, and what to try when it fails, see [How motion planning works](/motion-planning/how-planning-works/).
 
-This page is useful when:
+## Algorithm
 
-- You need to tune planning performance (timeout, resolution).
-- You are debugging why the planner fails to find a path.
-- You are building your own motion service.
-- You want to understand what the planner is doing under the hood.
+| Field        | Value                                                                  |
+| ------------ | ---------------------------------------------------------------------- |
+| Name         | cBiRRT (Constrained Bidirectional Rapidly-Exploring Random Tree)       |
+| Source code  | `rdk/motionplan/armplanning/cBiRRT.go`                                 |
+| Source paper | Berenson et al., _Manipulation planning on constraint manifolds_, 2009 |
+| Properties   | Sampling-based, bidirectional, probabilistic                           |
 
-## The cBiRRT algorithm
+## Planning defaults
 
-Viam's motion service uses **cBiRRT** (Constrained Bidirectional
-Rapidly-Exploring Random Tree), based on Berenson et al. 2009. This is the
-only planning algorithm in the builtin motion service. There is no
-configuration option to select a different algorithm.
+The full default set is documented in
+[Motion service configuration](/motion-planning/reference/motion-service/#planning-defaults).
+The planner-relevant entries are:
 
-### How it works
+| Parameter            | Default                    |
+| -------------------- | -------------------------- |
+| Planning timeout     | 300 seconds                |
+| Resolution           | 2.0 (mm or degrees/step)   |
+| Max IK solutions     | 100                        |
+| Smoothing iterations | 3 passes of sizes 10, 3, 1 |
+| Collision buffer     | 1e-8 mm (effectively zero) |
 
-cBiRRT grows two search trees simultaneously: one from the start configuration
-and one from the goal configuration. At each iteration, the algorithm:
+## Tuning surfaces
 
-1. **Samples** a random configuration in joint space.
-2. **Extends** the nearest node in one tree toward the sample, checking
-   constraints and collisions at each step.
-3. **Attempts to connect** the two trees. If a connection is found, the path
-   is complete.
-4. **Projects** each new configuration onto the constraint manifold, ensuring
-   constraints are satisfied throughout the path.
+Callers override a default in one of two places: persistently in the motion service config, or per call through the `extra` map on a `Move` request. The table below shows which tunables live where.
 
-The bidirectional approach is significantly faster than growing a single tree,
-because both trees converge toward the middle simultaneously.
+| Where                                | Scope                   | Example tunables                                                    |
+| ------------------------------------ | ----------------------- | ------------------------------------------------------------------- |
+| Motion service config (`attributes`) | Persistent, per-service | `num_threads`, `input_range_override`, planner-diagnostic flags     |
+| `extra` map on a Move request        | Per-request             | `collision_buffer_mm`, `max_ik_solutions`, `timeout`, `smooth_iter` |
 
-### Why it works well for robot arms
+See [Motion service configuration](/motion-planning/reference/motion-service/)
+for the full list of configuration attributes.
 
-- **High-dimensional spaces**: A 6-axis arm has 6 degrees of freedom. cBiRRT
-  handles this efficiently through random sampling.
-- **Constraint satisfaction**: The projection step ensures constraints (linear,
-  orientation) are satisfied, not just checked.
-- **Bidirectional search**: Finding a path in 6D space from both ends is much
-  faster than searching from one end only.
+## What's next
 
-### What it does not do
-
-- **No optimal paths**: cBiRRT finds _a_ valid path, not the shortest or
-  smoothest path. The builtin service applies path smoothing (default 30
-  iterations) after planning to improve the result.
-- **No dynamic replanning**: The planner computes a full path before execution
-  begins. It does not adjust the path during execution.
-
-## Tuning parameters
-
-The planner accepts configuration through the motion service config and through
-per-request options.
-
-### Service-level config
-
-These are set in the motion service configuration:
-
-| Field                        | Type   | Default          | Description                             |
-| ---------------------------- | ------ | ---------------- | --------------------------------------- |
-| `num_threads`                | int    | (system default) | Number of threads for parallel planning |
-| `log_file_path`              | string | (none)           | Path to write planning logs             |
-| `log_planner_errors`         | bool   | false            | Log planning errors                     |
-| `log_slow_plan_threshold_ms` | int    | (none)           | Log plans that take longer than this    |
-
-### Planning defaults
-
-These defaults are compiled into the builtin motion service:
-
-| Parameter            | Default     | Description                                              |
-| -------------------- | ----------- | -------------------------------------------------------- |
-| Timeout              | 300 seconds | Maximum time to search for a path                        |
-| Resolution           | 2.0         | Constraint-checking granularity (mm or degrees per step) |
-| Max IK solutions     | 100         | Maximum inverse kinematics solutions to seed the search  |
-| Smoothing iterations | 30          | Post-planning path smoothing passes                      |
-| Collision buffer     | 150 mm      | Clearance around obstacles                               |
-
-### When planning fails
-
-If the planner returns an error ("no path found" or similar), consider:
-
-1. **Loosen constraints.** Tight linear or orientation tolerances can make the
-   constrained space too small to navigate.
-2. **Reduce obstacle sizes.** Oversized obstacles leave no room for the arm
-   to pass.
-3. **Check joint limits.** If the kinematics file has joint limits tighter than
-   the physical arm, the planner may not explore valid configurations.
-4. **Check the destination.** The destination pose must be reachable and not
-   inside an obstacle.
-5. **Increase timeout.** For complex environments, the default 300-second
-   timeout may not be enough, though this is rare.
-
-## What's Next
-
-- [Configure Motion Constraints](/motion-planning/constraints/): the
-  constraint types that cBiRRT enforces during planning.
-- [Define Obstacles](/motion-planning/obstacles/): collision geometry that
-  the planner routes around.
-- [Motion Service Configuration](/motion-planning/reference/motion-service/):
+- [How motion planning works](/motion-planning/how-planning-works/):
+  conceptual explanation of cBiRRT and its limits.
+- [Motion service configuration](/motion-planning/reference/motion-service/):
   full configuration reference.
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
+  the four constraint types the planner enforces.

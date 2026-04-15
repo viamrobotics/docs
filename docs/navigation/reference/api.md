@@ -39,9 +39,9 @@ mode, err := nav.Mode(ctx, nil)
 
 Set the navigation mode.
 
-| Parameter | Type | Description                                      |
-| --------- | ---- | ------------------------------------------------ |
-| `mode`    | Mode | The mode to set: `MODE_MANUAL`, `MODE_WAYPOINT`. |
+| Parameter | Type | Description                                                         |
+| --------- | ---- | ------------------------------------------------------------------- |
+| `mode`    | Mode | The mode to set: `MODE_MANUAL`, `MODE_WAYPOINT`, or `MODE_EXPLORE`. |
 
 In **Manual** mode, the navigation service is passive. You control the
 base directly. In **Waypoint** mode, the service takes control of the
@@ -50,6 +50,10 @@ base and navigates to unvisited waypoints.
 Switching from Waypoint to Manual stops the current motion plan but
 preserves all waypoints. Switching back to Waypoint resumes from the next
 unvisited waypoint.
+
+**Explore** mode is accepted by SetMode and returned by GetMode but is not
+currently exposed in the Viam app's navigation UI mode selector. To use it,
+call SetMode from an SDK.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -254,7 +258,7 @@ Get the navigation service's properties, including the map type.
 
 ```python
 props = await nav.get_properties()
-print(f"Map type: {props}")
+print(f"Map type: {props.map_type}")
 ```
 
 {{% /tab %}}
@@ -270,8 +274,9 @@ fmt.Printf("Map type: %v\n", props.MapType)
 
 ## DoCommand
 
-Send an arbitrary command to the navigation service. This is model-specific
-and depends on the implementation.
+Send a model-specific command to the navigation service. The builtin
+model does not define any DoCommand keys, so this is useful only with
+custom navigation modules that document their own command schema.
 
 | Parameter | Type | Description                           |
 | --------- | ---- | ------------------------------------- |
@@ -289,6 +294,30 @@ result = await nav.do_command({"custom_command": "value"})
 
 ```go
 result, err := nav.DoCommand(ctx, map[string]interface{}{"custom_command": "value"})
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+## GetStatus
+
+Return a generic status map for liveness checks. The content of the map
+is implementation-defined; treat it as opaque unless a specific model
+documents its fields.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+status = await nav.get_status()
+print(status)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+status, err := nav.GetStatus(ctx)
 ```
 
 {{% /tab %}}

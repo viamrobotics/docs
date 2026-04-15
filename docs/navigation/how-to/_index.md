@@ -8,9 +8,9 @@ no_list: true
 description: "Task-oriented guides for GPS-based autonomous navigation."
 ---
 
-These guides walk you through setting up and using GPS-based navigation
-on a mobile robot. Start with GPS setup, then configure the navigation
-service and send your robot to its first waypoint.
+These guides cover GPS-based navigation on a mobile robot. Work through
+the Setup section first (GPS, then navigation service). The other
+sections are independent, so pick the guide that matches your task.
 
 ## Setup
 
@@ -23,6 +23,7 @@ service and send your robot to its first waypoint.
 
 | Guide                                                                    | What you'll do                                                                        |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| [Drive a base directly](/navigation/how-to/drive-a-base/)                | Move a wheeled base with direct distance, angle, power, or velocity commands.         |
 | [Follow a patrol route](/navigation/how-to/follow-a-patrol-route/)       | Define a sequence of waypoints and navigate them repeatedly.                          |
 | [Avoid obstacles](/navigation/how-to/avoid-obstacles/)                   | Add vision-based obstacle detection to navigation.                                    |
 | [Run actions at waypoints](/navigation/how-to/run-actions-at-waypoints/) | Capture data, take readings, or trigger actions when the robot reaches each waypoint. |

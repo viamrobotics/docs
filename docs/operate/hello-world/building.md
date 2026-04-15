@@ -307,7 +307,7 @@ Then configure the service and test it.
 
 - [**Data management**](/data/capture-sync/capture-and-sync-data/): Capture, store, and sync data
 - [**Vision**](/vision/detect/#using-a-vision-service) and [**ML model**](/vision/configure/): Detect objects, classify images, or track movement in camera streams
-- [**Motion**](/operate/mobility/motion-concepts/) and [**Frame system**](/operate/reference/services/frame-system/#configuration): Plan and execute complex movements
+- [**Motion**](/motion-planning/) and [**Frame system**](/motion-planning/frame-system/): Plan and execute complex movements
 - [**Navigation**](/operate/reference/services/navigation/): Help machines move autonomously
 - [**SLAM (Simultaneous Localization and Mapping)**](/operate/reference/services/slam/): Create maps of surroundings and locate machines within those maps
 - [**Generic**](/operate/reference/services/generic/): Perform custom business logic by periodically repeating tasks

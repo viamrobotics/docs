@@ -12,7 +12,11 @@ perform actions at each stop. To capture an image, take a sensor reading,
 or trigger an alert at each waypoint, write code that monitors the robot's
 progress and acts when a waypoint is reached.
 
-## The pattern
+## Detect waypoint arrivals from the client
+
+The navigation service has no arrival callback. To run actions at each
+stop, poll `GetWaypoints` from your client code, watch the list shrink,
+and take action each time it does. The loop looks like this:
 
 1. Add waypoints to the navigation service.
 2. Set the mode to Waypoint.
@@ -110,9 +114,9 @@ if __name__ == "__main__":
 
 ## How it works
 
-The navigation service marks waypoints as visited when the robot arrives
-at each one. GetWaypoints returns only unvisited waypoints. By tracking
-the count, you detect arrivals.
+The navigation service marks each waypoint visited on arrival, and
+`GetWaypoints` returns only the unvisited ones. That is why a shrinking
+count means the robot just reached a waypoint.
 
 When a waypoint is visited:
 
@@ -126,16 +130,16 @@ from the next unvisited waypoint.
 
 ## Other actions you can run at waypoints
 
-The pattern works with any Viam API call:
+The same poll-and-act loop works with any Viam API call. Common
+substitutions for the camera step:
 
-- **Sensor readings:** `await sensor.get_readings()` to log environmental
+- Sensor readings with `sensor.get_readings()` to log environmental
   data at each location.
-- **Vision detections:** `await vision.get_detections_from_camera("cam")`
-  to run object detection at each stop.
-- **Alerts:** send a webhook or log entry when the robot reaches a
-  specific location.
-- **Gripper operations:** pick up or place objects at designated
-  waypoints.
+- Vision detections with `vision.get_detections_from_camera("cam")` to
+  run object detection on arrival.
+- Alerts through a webhook or logger when the robot reaches a specific
+  location.
+- Gripper operations to pick or place at designated waypoints.
 
 ## What's next
 

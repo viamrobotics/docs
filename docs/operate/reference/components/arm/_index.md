@@ -29,7 +29,7 @@ When controlling an arm, you can place its end effector at arbitrary cartesian p
 
 ## Configuration
 
-For a full guide, see [Configure an arm](/operate/mobility/move-arm/configure-arm/).
+For an end-to-end guide that configures an arm and drives it through the motion service, see [Move your first arm](/motion-planning/quickstarts/first-arm/).
 
 To use a robotic arm, you need to add it to your machine's configuration.
 Go to your machine's **CONFIGURE** page, and add a model that supports your arm.
@@ -93,7 +93,7 @@ For general configuration, development, and usage info, see:
 {{< cards >}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/headless-app/" noimage="true" %}}
-{{% card link="/operate/mobility/move-arm/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the arm component with the following services:

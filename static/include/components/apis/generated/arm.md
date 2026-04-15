@@ -1,6 +1,6 @@
 ### GetEndPosition
 
-Get the current position of the arm as a [pose](/operate/mobility/orientation-vector/).
+Get the current position of the arm as a [pose](/motion-planning/reference/orientation-vectors/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -96,7 +96,7 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 ### MoveToPosition
 
-Move the end of the arm in a straight line to the desired [pose](/operate/mobility/orientation-vector/), relative to the base of the arm.
+Move the end of the arm in a straight line to the desired [pose](/motion-planning/reference/orientation-vectors/), relative to the base of the arm.
 
 All arms have a `Home` position, which corresponds to setting all joint angles to 0.
 

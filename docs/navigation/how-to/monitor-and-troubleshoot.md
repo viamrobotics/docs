@@ -7,18 +7,30 @@ type: "docs"
 description: "Use the Control tab map, read logs, and debug common navigation problems."
 ---
 
+When navigation misbehaves, two tools find most problems: the Control
+tab map and the navigation service log. This page covers both, then
+walks through the problems we see most often.
+
 ## Monitor navigation in the Viam app
 
 The Control tab shows a live map with your robot's position, waypoints,
 and obstacles. Use it to monitor navigation in real time.
 
 1. Go to your machine's **CONTROL** tab.
-2. Find the navigation service card.
-3. The map shows:
-   - **Robot position** with a directional marker showing heading.
-   - **Waypoints** as markers you can add or remove.
-   - **Obstacles** (both static and vision-detected).
-   - **Current mode** (Manual or Waypoint).
+2. Find the navigation service card. If the card shows **Resource is
+   configuring...**, wait for the navigation service's status badge to
+   read **Ready**.
+3. The navigation card shows:
+   - **Robot position** on the map with a directional marker showing heading.
+   - **Waypoints** as markers on the map. Click the map to add a waypoint;
+     use the **Waypoints** tab in the map's side panel to inspect or
+     remove waypoints.
+   - **Obstacles** (both static and vision-detected) on the map, with a
+     list in the **Obstacles** tab of the side panel.
+   - A **Mode** toggle above the map to switch between **Manual** and
+     **Waypoint**.
+   - Map controls above the map to switch between **2D** and **3D**
+     views, center the map, and toggle satellite imagery.
 
 ## Enable debug logging
 
@@ -54,11 +66,24 @@ navigation and motion services.
 
 {{< /expand >}}
 
+{{< expand "Logs show repeated 'MoveOnGlobe not supported' errors" >}}
+
+The navigation service drives the base by calling `MoveOnGlobe` on its
+configured motion service. The built-in motion service does not
+implement `MoveOnGlobe`; it returns "not supported" and the navigation
+loop retries indefinitely.
+
+Configure your navigation service's `motion_service` attribute to name
+a motion-service module that implements `MoveOnGlobe`. See
+[Navigation service configuration](/navigation/reference/navigation-service/#optional-attributes).
+
+{{< /expand >}}
+
 {{< expand "Robot replans constantly and makes slow progress" >}}
 
-Your `plan_deviation_m` is likely lower than your GPS error. The robot
-replans because normal GPS jitter (2-5 meters with standard GPS) exceeds
-the deviation threshold (default 2.6 meters).
+Your `plan_deviation_m` is likely lower than your GPS error. Standard
+GPS jitters 2 to 5 meters between readings, which exceeds the 2.6-meter
+default deviation threshold and looks like path deviation to the service.
 
 Fix: increase `plan_deviation_m` to 5-10 meters for standard GPS. See
 [Tune navigation behavior](/navigation/how-to/tune-navigation/) for
@@ -77,9 +102,9 @@ This usually indicates a compass heading problem:
 - **Heading offset:** The compass reports a consistent offset (for
   example, 90 degrees off). Check the module's orientation configuration.
 
-Verify by watching the compass heading in the movement sensor's TEST
-section while rotating the robot by hand. The heading should change
-smoothly and correspond to the actual direction.
+Verify by watching the **GetCompassHeading** value in the movement
+sensor's **TEST** section while rotating the robot by hand. The heading
+should change smoothly and correspond to the actual direction.
 
 {{< /expand >}}
 
@@ -91,8 +116,10 @@ the same waypoint indefinitely. It does not skip to the next waypoint.
 
 To unblock:
 
-- Remove the stuck waypoint with RemoveWaypoint (from code or the Control
-  tab).
+- Remove the stuck waypoint programmatically with RemoveWaypoint, or
+  open the navigation service card on **CONTROL**, click the
+  **Waypoints** tab in the map's side panel, and remove the waypoint
+  there.
 - Check whether a static obstacle or bounding region prevents the robot
   from reaching that location.
 - Check whether vision-based obstacle detection is producing false
@@ -102,11 +129,10 @@ To unblock:
 
 {{< expand "Robot navigates but stops short of the waypoint" >}}
 
-The motion service considers a waypoint reached when the robot is within
-the planning tolerance of the target. With standard GPS accuracy, the
-robot may stop 2-5 meters from the intended coordinates because the GPS
-position satisfies the arrival condition even though the robot isn't
-exactly at the target.
+Standard GPS accuracy is 2 to 5 meters, and the motion service considers
+a waypoint reached as soon as the reported GPS position falls within
+planning tolerance. That means the robot may stop 2 to 5 meters short of
+the intended coordinates even when navigation reports success.
 
 For tighter arrival accuracy, use RTK GPS.
 
@@ -114,16 +140,17 @@ For tighter arrival accuracy, use RTK GPS.
 
 {{< expand "Obstacles aren't detected" >}}
 
-1. Verify the vision service detects obstacles independently. Go to the
-   vision service's TEST section and check that it returns 3D object
-   point clouds from the camera.
+1. Verify the vision service detects obstacles independently. Open
+   the vision service's **TEST** section, select your camera from the
+   **Camera** dropdown, then toggle **Show object point clouds** on.
+   Confirm 3D object point clouds appear.
 2. Check `obstacle_polling_frequency_hz`. At 0 Hz, no obstacle polling
    occurs.
 3. Check that the camera and vision service names in `obstacle_detectors`
    match the exact names in your configuration.
-4. Check the LOGS tab for frame transformation errors. The navigation
-   service needs to transform obstacle positions from the camera frame
-   to geographic coordinates through the movement sensor.
+4. Check the LOGS tab for frame transformation errors. To plan around a
+   detected obstacle, the navigation service converts its camera-frame
+   position into latitude and longitude using the movement sensor's pose.
 
 {{< /expand >}}
 
