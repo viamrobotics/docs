@@ -9,6 +9,7 @@ aliases:
   - /operate/mobility/move-base/
   - /how-tos/navigate/
   - /use-cases/navigate/
+  - /motion-planning/motion-how-to/drive-a-base/
 ---
 
 You have a wheeled base and want to drive it without waypoints, a map, or a
