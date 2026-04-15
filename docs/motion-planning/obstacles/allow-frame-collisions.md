@@ -1,10 +1,12 @@
 ---
 linkTitle: "Allow frame collisions"
 title: "Allow specific frames to collide"
-weight: 32
+weight: 40
 layout: "docs"
 type: "docs"
 description: "Permit specific pairs of frames to collide so the motion planner stops flagging expected contact as a collision failure."
+aliases:
+  - /motion-planning/motion-how-to/allow-frame-collisions/
 ---
 
 By default, the motion planner rejects any path where any two frames

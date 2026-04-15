@@ -499,11 +499,19 @@ Dynamic obstacles (defined through WorldState in code) do not appear in the
 
 {{< /expand >}}
 
+## How-tos
+
+{{< cards >}}
+{{% card link="/motion-planning/obstacles/avoid-obstacles/" noimage="true" %}}
+{{% card link="/motion-planning/obstacles/attach-detach-geometries/" noimage="true" %}}
+{{% card link="/motion-planning/obstacles/allow-frame-collisions/" noimage="true" %}}
+{{< /cards >}}
+
 ## What's next
 
-- [Move an Arm to a Target Pose](/motion-planning/motion-how-to/move-arm-to-pose/):
+- [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/):
   use the motion service to move the arm while avoiding obstacles.
-- [Configure Motion Constraints](/motion-planning/constraints/): restrict how
-  the arm moves between poses.
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
+  restrict how the arm moves between poses.
 - [How motion planning works](/motion-planning/how-planning-works/):
   understand how the planner computes collision-free paths.

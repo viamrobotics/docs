@@ -1,10 +1,12 @@
 ---
 linkTitle: "Attach and detach geometries"
 title: "Attach and detach geometries at runtime"
-weight: 45
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Make the motion planner aware of an object the robot has grasped by attaching the object's geometry to the gripper frame for subsequent Move calls."
+aliases:
+  - /motion-planning/motion-how-to/attach-detach-geometries/
 ---
 
 When an arm grasps an object, the planner needs to know the object is

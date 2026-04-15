@@ -1,10 +1,12 @@
 ---
 linkTitle: "Avoid obstacles"
 title: "Plan collision-free paths"
-weight: 30
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure obstacles and plan motion paths that avoid collisions."
+aliases:
+  - /motion-planning/motion-how-to/avoid-obstacles/
 ---
 
 Your arm needs to reach a target while avoiding the table it's mounted on,
