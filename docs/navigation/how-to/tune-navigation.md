@@ -11,8 +11,9 @@ The navigation service starts with defaults that work for slow outdoor
 robots with standard GPS. As you test in your environment, you'll want to
 adjust these parameters.
 
-All parameters can be changed in the Viam app without restarting
-`viam-server`. Changes take effect on the next navigation cycle.
+All parameters can be changed on the **CONFIGURE** tab without
+restarting `viam-server`. Changes take effect on the next navigation
+cycle.
 
 ## Speed
 
@@ -94,8 +95,9 @@ moves 30 cm between checks. At 1 m/s, it moves 1 meter.
 1. **Start with defaults.** Navigate to a nearby waypoint in an open area
    with no obstacles.
 2. **Check for excessive replanning.** If the robot stops frequently to
-   recalculate, increase `plan_deviation_m`. Watch the Control tab map to
-   see when replans happen.
+   recalculate, increase `plan_deviation_m`. Watch the robot's marker
+   on the navigation service card's map, and check the **LOGS** tab
+   for replan events.
 3. **Adjust speed.** Increase `meters_per_sec` gradually. Watch for
    overshooting waypoints or unstable turns.
 4. **Add obstacle detection.** Once basic navigation works, add obstacle

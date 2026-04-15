@@ -54,11 +54,20 @@ Before configuring navigation, confirm the movement sensor reports
 accurate GPS data.
 
 1. Find your movement sensor in the configuration view.
-2. Expand the **TEST** section.
-3. Check that **position** shows a latitude and longitude close to your
-   actual location.
-4. Check that **compass heading** updates when you rotate the robot.
+2. Expand the **TEST** section. If it shows **Resource is
+   configuring...**, wait for the movement sensor's status badge to
+   read **Ready**.
+3. Check that **GetPosition** shows a latitude and longitude close to
+   your actual location. A map on the right-hand side of the section
+   plots the current position; confirm it matches your physical
+   location.
+4. Check that **GetCompassHeading** updates when you rotate the robot.
    0 degrees is north, 90 is east, 180 is south, 270 is west.
+
+Movement-sensor sections only render when the module reports the
+corresponding property. If **GetCompassHeading** or **GetPosition** is
+missing, your module does not report that property; check
+`GetProperties` against the module's documentation.
 
 If the position is significantly wrong or the compass heading doesn't
 change when you rotate the robot, check your wiring and module

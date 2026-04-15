@@ -27,8 +27,11 @@ method.
 
 - A configured base component. See the
   [base component documentation](/components/base/) for hardware setup.
-- The base's motors work through the Viam app **TEST** panel on each motor's
-  configure card.
+- The base's motors run through the **TEST** section on each motor's
+  configure card (press and hold **forward** or **backward** under
+  **Quick move**). If a motor's Test section shows **Resource is
+  configuring...**, wait for the motor's status badge to read **Ready**
+  before attempting Quick move.
 - An SDK client connected to your machine. See
   [Create a web app](/operate/control/web-app/) or the language-specific
   quickstart.
