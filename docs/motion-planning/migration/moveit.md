@@ -8,10 +8,9 @@ description: "Concept mappings from MoveIt (ROS) to Viam's motion service for us
 ---
 
 If you have shipped arm applications with MoveIt, the mental model
-transfers reasonably cleanly: Viam's motion service is a planner-plus-
-executor that takes a target pose and produces a collision-free arm
-motion, much as `move_group` does. The shape of the API and the set of
-configuration files are different.
+carries over. Viam's motion service plans and executes arm motion to a
+target pose while avoiding obstacles, much as `move_group` does. The
+API and configuration files look different.
 
 ## Concept mapping
 
@@ -101,9 +100,9 @@ quaternions.
 ## What you lose
 
 - **Planner selection and per-planner tuning.** If your application
-  relies on PILZ for industrial straight-line moves, RRTconnect for
-  speed, or PRMstar for optimization, Viam does not give you that
-  choice. Use constraints to express the path behavior you want.
+  depends on a specific OMPL planner (PILZ for straight-line moves,
+  for example), Viam does not expose that choice. Use constraints to
+  express the path behavior you want.
 - **Visualization through rviz.** Viam has
   [the 3D scene tab](/motion-planning/3d-scene/) in the web UI, which
   covers frame visualization and obstacle geometry but does not
@@ -115,9 +114,10 @@ quaternions.
 
 ## What you gain
 
-- **One API across heterogeneous arms.** The same `Move` call drives
-  a Universal Robots UR5e, a UFactory xArm 6, a KUKA arm, an eva, and
-  others through their respective Viam modules. See
+- **One API across heterogeneous arms.** The same `Move` call works
+  against any arm that has a Viam module. Supported arms include
+  Universal Robots, UFactory xArm, KUKA, Yaskawa, and eva, with more
+  in the Viam registry. See
   [Using industrial arms with Viam](/motion-planning/migration/industrial-arms/).
 - **Less configuration to author.** No launch files. No SRDF. No
   `move_group.launch`. Arm config is JSON attributes in the Viam app.

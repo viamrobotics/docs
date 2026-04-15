@@ -61,9 +61,10 @@ stopped:
 
 1. Plan the current leg based on current position and known obstacles.
 2. Start executing.
-3. Poll the movement sensor (or SLAM service) at
-   `position_polling_frequency_hz` (default: unset → implementation
-   default) to track the robot's position.
+3. Poll the movement sensor (or SLAM service, when `MoveOnMap` is
+   used) at `position_polling_frequency_hz` to track the robot's
+   position. If the frequency is unset, the implementation chooses a
+   rate.
 4. Poll each configured `obstacle_detector` at
    `obstacle_polling_frequency_hz` for transient obstacles.
 5. If the robot drifts more than `plan_deviation_m` from the current
@@ -95,8 +96,8 @@ replans. Raise the threshold for standard GPS, lower it for RTK.
 Each `obstacle_detector` is a vision service plus camera pair. The
 motion service queries each pair at
 `obstacle_polling_frequency_hz`. When a new obstacle appears in a
-detection result, the motion service transforms it into the frame the
-planner uses and triggers a replan that accounts for it.
+detection result, the motion service transforms the obstacle into the
+planner's frame, then triggers a replan that accounts for it.
 
 Detectors are only active during execution. They do not contribute to
 initial planning; that picture of the world comes from the obstacles
@@ -139,11 +140,9 @@ avoidance for an arm, you build it in application code: monitor the
 world, call `Move` with a new `WorldState`. The motion service does
 not do this for you.
 
-Because `MoveOnGlobe` and `MoveOnMap` do replan, base navigation
-through these methods is more resilient to changing conditions but
-also harder to reason about offline. The plan you see in `GetPlan`
-right now might not be the plan that existed a second ago or will
-exist a second from now.
+`MoveOnGlobe` and `MoveOnMap` replan during execution. That makes base
+navigation resilient to changing conditions but harder to reason about
+offline: `GetPlan` can return different answers a second apart.
 
 ## What's next
 
