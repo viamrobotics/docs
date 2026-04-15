@@ -25,19 +25,19 @@ Catching this early prevents issues with vision pipelines, object detection, SLA
 
 ### 1. Open the 3D scene tab
 
-Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D scene** tab.
+Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 Your machine must be online for live point cloud data.
 
 ### 2. Enable point cloud display
 
 Open the settings panel (gear icon) and go to the **Pointclouds** tab.
-You will see a list of cameras on your machine that support point clouds.
-Enable the toggle for each camera you want to display.
+
+Under **Enabled cameras**, you see a list of every camera on your machine. Cameras that report `supports_pcd=false` from `GetProperties` are auto-toggled off and cannot stream point clouds through this tab. If a camera you expect to stream is missing from the list, confirm its module supports PCD; if it is there but off, toggle it on.
 
 You can also configure:
 
-- **Point size**: how large each point renders in the scene. Increase this if points are hard to see; decrease it for denser clouds.
-- **Default color**: the color used for points that do not have color data from the camera.
+- **Default point size**: how large each point renders in the scene. Increase this if points are hard to see; decrease it for denser clouds.
+- **Default point color**: the color used for points that do not have color data from the camera.
 
 ### 3. Check spatial alignment
 

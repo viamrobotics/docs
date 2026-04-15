@@ -20,15 +20,15 @@ The 3D scene tab lets you visually verify these offsets and use the measurement 
 
 ### 1. Open the 3D scene tab
 
-Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D scene** tab.
+Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 
 ### 2. Select each component and check its position
 
-Click a component in the tree view.
-The details panel shows:
+Click a component in the **World** panel.
+The Details panel shows:
 
-- **Local position**: the translation from the parent frame, in mm. This is what you configured.
-- **World position**: the absolute position in the world frame, computed from the chain of parent transforms.
+- **local position** (mm): the translation from the parent frame. This is what you configured.
+- **world position** (mm): the absolute position in the world frame, computed from the chain of parent transforms.
 
 Compare the local position values to your physical measurements.
 If the camera is 50 mm to the right and 100 mm above the arm's wrist joint, the local position should reflect that.
@@ -37,15 +37,14 @@ If the camera is 50 mm to the right and 100 mm above the arm's wrist joint, the 
 
 The measurement tool calculates the distance between two points in the scene.
 
-1. Activate the measurement tool from the toolbar.
+1. Click the **ruler** button in the top-center toolbar. Activating it disables entity selection until you exit the tool.
 2. Click a point on the first component (for example, the arm's end effector frame origin).
 3. Click a point on the second component (for example, the camera frame origin).
 
-The tool displays the distance in mm.
-Compare this to your physical measurement.
-If the values disagree, adjust the translation in the frame configuration.
+The distance appears between the two points, displayed in meters to three decimals (for example, `0.245m` means 245 mm).
+Click a third time to clear the measurement. Click the ruler button again to exit the tool and re-enable entity selection.
 
-You can constrain the measurement to a single axis (X, Y, or Z) to isolate which component of the offset is wrong.
+To constrain the measurement to a subset of axes, open the **measurement settings** popover (the sliders icon next to the ruler). Under **Enabled axes**, toggle `x`, `y`, or `z` off; disabled axes are held fixed to the first point, so the distance is measured only along the axes that remain enabled.
 
 ### 4. Check orientation alignment
 
@@ -56,11 +55,11 @@ The axes should match the physical orientation of the component:
 - An arm's coordinate system follows the manufacturer's convention.
 
 If the axes are rotated relative to what you expect, adjust the orientation values in the frame configuration.
-The details panel shows the orientation as an orientation vector (x, y, z, theta in degrees).
+The Details panel shows the orientation as an orientation vector (`x`, `y`, `z`, `th` in degrees).
 
 ### 5. Verify with a point cloud
 
-If the component is a depth camera, enable its point cloud in the settings panel.
+If the component is a depth camera, enable its point cloud at **Settings → Pointclouds → Enabled cameras**.
 The point cloud should align with the physical objects in your workspace.
 
 If the point cloud appears shifted or rotated relative to where objects actually are, the camera's frame offset or orientation is wrong.

@@ -21,19 +21,21 @@ The 3D scene tab lets you see exactly how these geometries cover your workspace,
 
 ### 1. Open the 3D scene tab
 
-Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D scene** tab.
+Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 
 ### 2. Identify obstacles in the scene
 
-Obstacle geometries appear as translucent shapes.
+Obstacle geometries appear as translucent shapes in the viewport and as child rows under their parent frame in the **World** panel.
 Each geometry is positioned according to its frame configuration: its location is defined by a translation and orientation relative to a parent frame.
 
-Click an obstacle in the scene or the tree view to see its details:
+There is no separate "obstacles" list; toggle an obstacle's visibility with the eye icon on its row in the World panel, or select the row and press `H`.
 
-- **Geometry type**: box, sphere, or capsule.
-- **Dimensions**: size in mm (for example, x/y/z for a box, radius for a sphere, radius and length for a capsule).
-- **Position**: where the geometry's center is located.
-- **Parent frame**: which frame the geometry is attached to.
+Click an obstacle in the scene or in the World panel to see its details:
+
+- **geometry**: `None`, `Box`, `Sphere`, or `Capsule`.
+- **dimensions**: `x` / `y` / `z` (mm) for Box; `r` (mm) for Sphere; `r` and `l` (mm) for Capsule.
+- **local position** (mm): the geometry's center relative to its parent frame.
+- **parent frame**: which frame the geometry is attached to.
 
 ### 3. Compare geometry to physical objects
 
