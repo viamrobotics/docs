@@ -870,7 +870,7 @@ viam module local-app-testing --app-url http://localhost:3000
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--binary` | The module executable to run. Accepts a binary, a packaged `.tar.gz` archive, or a script. Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | `update-models` | Optional |
+| `--binary` | The module executable to run (binary or script). Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | `update-models` | Optional |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
 | `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |

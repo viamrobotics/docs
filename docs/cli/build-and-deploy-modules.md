@@ -93,7 +93,7 @@ If you omit `--binary`, the CLI uses the entrypoint declared in `meta.json`:
 viam module update-models
 ```
 
-To point at a specific binary or packaged tarball, pass `--binary`:
+To point at a specific executable, pass `--binary`:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module update-models --binary=./bin/module
