@@ -17,7 +17,7 @@ Downstream how-tos ([detect](/vision/object-detection/detect/), [classify](/visi
 
 ## What you are configuring, in one paragraph
 
-Viam splits ML inference into two services. The **ML model service** loads the model file and runs tensors through it. The **vision service** turns those tensors into structured detections and classifications and ties them to a specific camera. Your application code talks to the vision service; the ML model service is a building block underneath. For the longer explanation and when the split matters, see [How the vision service works](/vision/how-it-works/).
+Viam splits ML inference into two services. The **ML model service** loads the model file and runs tensors through it. The **vision service** turns those tensors into structured detections and classifications and ties them to a specific camera. Your application code talks to the vision service; the ML model service is a building block underneath. For the longer explanation and when the split matters, see [How a vision service works](/vision/how-it-works/).
 
 ## 1. Add an ML model service
 

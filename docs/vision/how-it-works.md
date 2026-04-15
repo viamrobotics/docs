@@ -1,6 +1,6 @@
 ---
-linkTitle: "How the vision service works"
-title: "How the vision service works"
+linkTitle: "How a vision service works"
+title: "How a vision service works"
 weight: 5
 layout: "docs"
 type: "docs"

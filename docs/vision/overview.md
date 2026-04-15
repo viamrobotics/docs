@@ -69,7 +69,7 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 
 ### Get started
 
-- [How the vision service works](/vision/how-it-works/): the two-service architecture behind every vision pipeline
+- [How a vision service works](/vision/how-it-works/): the two-service architecture behind every vision pipeline
 - [Configure a vision pipeline](/vision/configure/): end-to-end setup of an ML model service plus vision service
 
 ### Classification
