@@ -13,6 +13,7 @@ notoc: true
 aliases:
   - /operate/mobility/
   - /operate/mobility/motion-concepts/
+  - /motion-planning/motion-how-to/
 ---
 
 Your robot arm needs to move from one position to another without colliding with
