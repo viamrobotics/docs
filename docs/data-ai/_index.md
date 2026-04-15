@@ -56,10 +56,10 @@ You can also monitor your machines through teleop, power your application logic,
 
 {{< how-to-expand "Infer with ML models" "4" "INTERMEDIATE" "" "data-platform-ai" >}}
 {{< cards >}}
-{{% card link="/vision/deploy-from-registry/" noimage="true" %}}
-{{% card link="/vision/batch-inference/" noimage="true" %}}
-{{% card link="/vision/alert-on-detections/" noimage="true" %}}
-{{% card link="/vision/act-on-detections/" noimage="true" %}}
+{{% card link="/vision/deploy-and-maintain/deploy-from-registry/" noimage="true" %}}
+{{% card link="/vision/deploy-and-maintain/batch-inference/" noimage="true" %}}
+{{% card link="/vision/object-detection/alert-on-detections/" noimage="true" %}}
+{{% card link="/vision/object-detection/act-on-detections/" noimage="true" %}}
 {{< /cards >}}
 {{< /how-to-expand >}}
 

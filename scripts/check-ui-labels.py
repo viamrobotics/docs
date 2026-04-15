@@ -56,6 +56,7 @@ RULES: list[Rule] = [
     Rule(
         pattern=r"\bTrigger type\b",
         reason='Trigger-card field label is just "Type" (inside the EVENT section). Flow: configure-trigger.md',
+        context=r"\b(Set|select|dropdown|EVENT section|field)\b",
     ),
     Rule(
         pattern=r"\bData type\b(?!s)",

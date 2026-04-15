@@ -33,9 +33,9 @@ Triggers send email or webhook notifications when specific events occur on your 
 - **Machine status**: alert when a machine part comes online or goes offline.
 - **Log levels**: alert when error, warning, or info logs appear on a machine.
 
-You configure notification frequency to control how often alerts fire, which helps prevent alert fatigue as your fleet grows. Notifications can go to specific email addresses, all machine owners, or a webhook endpoint that integrates with services like PagerDuty, Twilio, or Zapier.
+You configure the alert frequency to control how often alerts fire, which helps prevent alert fatigue as your fleet grows. Notifications can go to specific email addresses, all machine owners, or a webhook endpoint that integrates with services like PagerDuty, Twilio, or Zapier.
 
-For alerts based on data sync events, see [Trigger on data events](/data/trigger-on-data/). For alerts based on ML model detections, see [Alert on detections](/vision/alert-on-detections/).
+For alerts based on data sync events, see [Trigger on data events](/data/trigger-on-data/). For alerts based on ML model detections, see [Alert on detections](/vision/object-detection/alert-on-detections/).
 
 See [Set up alerts](/monitor/alert/).
 
