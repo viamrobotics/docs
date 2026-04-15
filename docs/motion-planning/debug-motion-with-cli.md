@@ -1,7 +1,7 @@
 ---
 linkTitle: "Debug motion with the CLI"
 title: "Debug motion with the Viam CLI"
-weight: 75
+weight: 60
 layout: "docs"
 type: "docs"
 description: "Diagnose frame configuration and motion issues from the command line using the Viam CLI motion commands."

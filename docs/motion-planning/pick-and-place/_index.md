@@ -1,7 +1,7 @@
 ---
 linkTitle: "Pick and place"
 title: "Pick and place"
-weight: 40
+weight: 80
 layout: "docs"
 type: "docs"
 description: "End-to-end manipulation: detect, grasp, move, and release an object."

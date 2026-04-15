@@ -1,7 +1,7 @@
 ---
 linkTitle: "Replanning"
 title: "Replanning behavior by method"
-weight: 50
+weight: 100
 layout: "docs"
 type: "docs"
 description: "Which motion service methods replan during execution, when, and why. The single most common mental-model mismatch for new users."
