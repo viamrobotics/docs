@@ -117,11 +117,3 @@ your hardware.
 {{% card link="/motion-planning/reference/" noimage="true" %}}
 {{< /cards >}}
 
-### Migrating from ROS or a vendor SDK
-
-{{< cards >}}
-{{% card link="/motion-planning/migration/moveit/" noimage="true" %}}
-{{% card link="/motion-planning/migration/nav2/" noimage="true" %}}
-{{% card link="/motion-planning/migration/tf/" noimage="true" %}}
-{{% card link="/motion-planning/migration/industrial-arms/" noimage="true" %}}
-{{< /cards >}}
