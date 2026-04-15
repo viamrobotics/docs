@@ -37,7 +37,7 @@ You configure the filter with:
 
 ### Alert frequency
 
-Triggers support configurable notification frequency to prevent alert fatigue. For example, you can limit alerts to a maximum of one per hour even if detections occur continuously.
+Triggers support a configurable alert frequency to prevent alert fatigue. For example, you can limit alerts to a maximum of one per hour even if detections occur continuously.
 
 ## Steps
 
@@ -112,8 +112,8 @@ Enable data capture on the filtered camera:
 
 1. Locate the `objectfilter-cam` panel.
 2. Click the **Data Capture** button.
-3. Select **GetImages** as the type.
-4. Set the capture frequency to `0.2` images per second (one image every 5 seconds). Adjust as needed for your use case.
+3. Set **Method** to **GetImages**.
+4. Set **Frequency (hz)** to `0.2` (one image every 5 seconds). Adjust as needed for your use case.
 
 ### 3. Configure a trigger
 
@@ -134,7 +134,7 @@ Add a trigger to send alerts when filtered images sync:
 
    **Webhook**: Click **Add Webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/data-ai/reference/triggers-configuration/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
 
-6. Set the notification frequency (for example, maximum one alert per hour).
+6. Set the **Alert frequency** (for example, maximum one alert per hour).
 7. Click **Save**.
 
 ## Try It
@@ -160,7 +160,7 @@ Add a trigger to send alerts when filtered images sync:
 
 - Increase the confidence threshold in the filtered camera configuration to reduce false positives.
 - Lower the data capture frequency (for example, from `0.2` to `0.1` images per second).
-- Increase the notification frequency limit in the trigger settings (for example, maximum one per hour).
+- Increase the alert frequency limit in the trigger settings (for example, maximum one per hour).
 
 {{< /expand >}}
 
