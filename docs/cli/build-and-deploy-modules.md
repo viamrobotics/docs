@@ -84,7 +84,7 @@ viam module restart --part-id=<part-id>
 ## Update model definitions
 
 After adding or changing models in your module, update the model definitions in `meta.json`.
-This command runs the module binary in a sandbox, queries it for the API-model pairs it advertises, and updates the manifest.
+This command runs the module's executable (binary or script) in a sandbox, queries it for the API-model pairs it advertises, and updates the manifest.
 It also auto-detects markdown documentation files named `namespace_module_model.md`.
 
 If you omit `--binary`, the CLI uses the entrypoint declared in `meta.json`:
