@@ -7,6 +7,7 @@ type: "docs"
 description: "Control gantry axes directly or plan complex gantry motion."
 aliases:
   - /operate/mobility/move-gantry/
+  - /motion-planning/motion-how-to/move-gantry/
 ---
 
 You have a gantry (a Cartesian robot with linear axes) and need to move it to

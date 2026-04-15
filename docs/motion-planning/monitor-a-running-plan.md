@@ -8,6 +8,7 @@ description: "Start a non-blocking motion plan and react to progress, completion
 aliases:
   - /motion-planning/motion-how-to/monitor-plan-execution/
   - /operate/mobility/monitor-plan-execution/
+  - /motion-planning/motion-how-to/monitor-a-running-plan/
 ---
 
 `MoveOnMap` and `MoveOnGlobe` return immediately with an `ExecutionID`.

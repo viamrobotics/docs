@@ -5,6 +5,8 @@ weight: 75
 layout: "docs"
 type: "docs"
 description: "Diagnose frame configuration and motion issues from the command line using the Viam CLI motion commands."
+aliases:
+  - /motion-planning/motion-how-to/debug-motion-with-cli/
 ---
 
 When a motion plan fails or the arm ends up somewhere you did not
