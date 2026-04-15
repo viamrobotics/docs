@@ -1,10 +1,12 @@
 ---
 linkTitle: "Pick an object"
 title: "Pick an object"
-weight: 50
+weight: 10
 layout: "docs"
 type: "docs"
 description: "Detect, localize, and grasp an object with a robot arm and gripper."
+aliases:
+  - /motion-planning/motion-how-to/pick-an-object/
 ---
 
 You need to pick up an object from a workspace. This requires detecting the

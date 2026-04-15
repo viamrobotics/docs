@@ -1,10 +1,12 @@
 ---
 linkTitle: "Place an object"
 title: "Place an object"
-weight: 60
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Move a grasped object to a target location and release it."
+aliases:
+  - /motion-planning/motion-how-to/place-an-object/
 ---
 
 You have an object in the gripper and need to place it at a specific location.
