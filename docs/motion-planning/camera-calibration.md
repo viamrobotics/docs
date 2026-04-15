@@ -10,12 +10,12 @@ aliases:
   - /build/work-cell-layout/calibrate-camera-to-robot/
 ---
 
-A camera captures 2D images, but your robot operates in 3D space. To convert
-pixel coordinates into real-world positions (for example, to tell the arm
-where an object is) you need to know the camera's intrinsic parameters. These
-parameters describe how the camera projects 3D space onto its 2D sensor: the
-focal length, the principal point (optical center), and the lens distortion
-characteristics.
+A camera captures 2D images, but your robot operates in 3D space. Converting
+a pixel coordinate to a real-world position, for example to tell the arm
+where an object is, requires the camera's intrinsic parameters. These
+parameters describe how the camera projects 3D space onto its 2D sensor. They
+include the focal length, the principal point (the optical center), and the
+lens distortion characteristics.
 
 Without accurate intrinsics, every 2D-to-3D conversion will be wrong. Detected
 objects will appear shifted, depth estimates will be inaccurate, and the arm will
@@ -49,10 +49,10 @@ occurs when the lens is not perfectly parallel to the sensor.
 
 ### Eye-in-hand vs eye-to-hand
 
-- **Eye-in-hand**: camera mounted on the robot arm. Frame parent is the arm.
-  Moves with the arm.
-- **Eye-to-hand**: camera on a fixed mount. Frame parent is the world frame.
-  Stays stationary.
+- **Eye-in-hand**: the camera is mounted on the arm, so its frame parent is
+  the arm and the camera moves with the arm.
+- **Eye-to-hand**: the camera is on a fixed mount, so its frame parent is the
+  world frame and the camera stays stationary.
 
 The calibration process is the same for both. Only the frame configuration
 differs.
@@ -74,11 +74,11 @@ camera card's right sidebar to save a JPEG to your computer. Collect
 
 Guidelines:
 
-- Cover the entire field of view (center, corners, edges)
-- Vary the distance from closest to farthest working range
-- Tilt the chessboard 15-30 degrees in different directions
-- The full chessboard must be visible in every image
-- Avoid shadows, glare, and motion blur
+- Cover the entire field of view (center, corners, edges).
+- Vary the distance across your working range.
+- Tilt the chessboard 15-30 degrees in different directions.
+- Keep the full chessboard visible in every image.
+- Avoid shadows, glare, and motion blur.
 
 ### 3. Run the calibration script
 
@@ -113,8 +113,8 @@ A successful calibration produces output like:
 }
 ```
 
-The reprojection error should be less than 1.0 pixel. Above 2.0 indicates
-poor calibration. Retake images.
+Check the reprojection error in the script's output. A value under 1.0 pixel
+is good; a value above 2.0 indicates poor calibration, so retake the images.
 
 ### 4. Add parameters to camera config
 
@@ -176,8 +176,10 @@ poor calibration. Retake images.
 
 ### 6. Verify calibration accuracy
 
-Place an object at a measured position. Use `TransformPose` to convert the
-detected position from camera frame to world frame and compare.
+Check the calibration against a known position before trusting it. Place an
+object where you can measure its real-world position, then use `TransformPose`
+to convert the detected position from camera frame to world frame and compare
+the two.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

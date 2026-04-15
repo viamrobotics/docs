@@ -17,10 +17,10 @@ aliases:
   - /reference/services/frame-system/nested-frame-config/
 ---
 
-A robot arm that does not know about its surroundings will plan the shortest path
-to a target position, even if that path goes through a table, a wall, or another
-piece of equipment. Without obstacle definitions, the motion planner has no way
-to know that certain regions of space are occupied by physical objects.
+A robot arm that knows nothing about its surroundings plans the shortest path
+to its target, even if that path goes through a table, a wall, or another
+piece of equipment. The motion planner has no way to know that certain regions
+of space are occupied unless you tell it.
 
 By defining obstacles (tables, walls, posts, equipment, and other fixtures in
 your workspace) you give the motion planner the information it needs to plan
@@ -52,8 +52,8 @@ You do not need to model every surface detail of an obstacle. Approximate shapes
 that fully enclose the real object are safer and work better with the motion
 planner.
 
-Capsule validation: the length must be at least twice the radius. If length
-equals exactly twice the radius, Viam creates a sphere instead.
+Capsule length must be at least twice the radius. A capsule whose length
+equals exactly twice the radius becomes a sphere.
 
 ### Static vs dynamic obstacles
 
@@ -63,24 +63,22 @@ They are always present and do not require code changes. Examples: the table
 the arm is mounted on, walls, permanent fixtures.
 
 **Dynamic obstacles** are objects that you define at runtime and pass to the
-motion service through WorldState. They can change between calls. Examples: a box
-that was just placed on the table, a temporary keep-out zone, objects detected
-by a vision system.
-
-Both types use the same geometry primitives.
+motion service through `WorldState`. They can change between calls. Examples
+include a box that was just placed on the table, a temporary keep-out zone, or
+objects detected by a vision system. Both static and dynamic obstacles use the
+same geometry primitives.
 
 ### Passive objects attached to a component
 
 Some objects are always attached to a component but have no API of their own:
-a camera mount bolted to an arm, a tool changer plate, a cable bundle. You
-want the motion planner to treat them as collision volume, but they are not
-components Viam can talk to.
+a camera mount bolted to an arm, a tool changer plate, a cable bundle. The
+motion planner should treat them as collision volume, but Viam has no
+component to talk to.
 
-Use a `fake` `generic` component as a container for the geometry. Set its
-frame's parent to the component it attaches to, add the geometry to its
-frame, and the motion planner will treat the shape as part of the arm's
-kinematic chain. The fake component never runs; it exists only to carry the
-geometry.
+Configure a `fake` `generic` component to carry the geometry. Set its frame's
+parent to the component it attaches to and add the geometry to its frame. The
+motion planner then treats the shape as part of the arm's kinematic chain. The
+fake component never runs; it exists only to hold the geometry.
 
 ### WorldState
 
@@ -116,9 +114,9 @@ specified clearance in millimeters to every collision check for that call.
 
 ### How Viam's world model differs from ROS
 
-If you are coming from ROS, the big shift is that Viam has no persistent
-world representation for motion planning. There is no Octomap voxel
-grid, no 2D or 3D costmap layers, no Planning Scene held between calls.
+If you are coming from ROS, the big shift is this: Viam keeps no persistent
+world representation between motion-planning calls. There is no Octomap voxel
+grid, no costmap layer, no Planning Scene held between calls.
 
 Every `Move` starts with the `WorldState` you pass in. Static obstacles
 from component frame configs are always included; dynamic obstacles
@@ -141,11 +139,10 @@ Practical consequences:
   your code tracks about the environment — object positions, operator
   no-go zones, expired grasp targets — is what the planner sees. The
   motion service does not build its own picture over time.
-- **For dynamic obstacle avoidance with arms**, you check the world
-  and call `Move` again with updated `WorldState`. `Move` itself does
-  not re-evaluate obstacles during execution. See
-  [Replanning behavior](/motion-planning/replanning-behavior/) for
-  the per-method behavior.
+- **For dynamic obstacle avoidance with arms**, check the world between calls
+  and call `Move` again with an updated `WorldState`. `Move` does not
+  re-evaluate obstacles during execution. For the per-method behavior, see
+  [Replanning behavior](/motion-planning/replanning-behavior/).
 
 ## Steps
 

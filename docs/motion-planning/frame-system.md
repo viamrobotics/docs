@@ -17,32 +17,33 @@ aliases:
   - /reference/services/frame-system/frame-config/
 ---
 
-When your robot has multiple components such as: an arm, a camera, a gripper
-each component reports positions in its own local coordinate system. A camera sees an object at pixel (320, 240), but the arm needs to know the object's
-position in three-dimensional space relative to its own base. Without a unified spatial model, you cannot translate between these coordinate systems.
+A robot with an arm, a camera, and a gripper has three components, and each one
+reports positions in its own local coordinate system. The camera sees an object
+at pixel (320, 240), but the arm needs that object's position in
+three-dimensional space relative to its own base. Without a unified spatial
+model, you cannot translate between coordinate systems.
 
-The frame system solves this by storing the position and orientation of every
-component in a single, consistent coordinate tree. You define where each
-component sits relative to its parent, and Viam computes the transforms between
-any two frames automatically. Once the frame system is configured, you can ask
-questions like "where is this point in my camera frame, expressed in world
-coordinates?" with a single API call.
+The frame system stores the position and orientation of every component in a
+single coordinate tree. You define where each component sits relative to its
+parent, and Viam computes the transforms between any two frames automatically.
+Once the tree is configured, a single API call answers questions like "where is
+this point in my camera frame, expressed in world coordinates?"
 
-Getting the frame system right is a prerequisite for motion planning, obstacle
-avoidance, and any task where multiple components need to agree on where things
-are in physical space.
+Getting the frame system right is a prerequisite for motion planning and
+obstacle avoidance, and for any task where components must agree on where
+things are in physical space.
 
 ## Concepts
 
 ### The world frame
 
-The world frame is the fixed root reference point for your entire frame system.
-You choose what physical location it corresponds to, for example: the corner of a table, the center of a work surface, or the base of an arm. You do not explicitly
-configure the world frame itself. Instead, you define it implicitly by
-configuring other frames relative to it.
+The world frame is the fixed root of your frame system. You do not configure it
+directly; you define it implicitly when you give other frames a position
+relative to it. The physical location is your choice, for example the corner of
+a table, the center of a work surface, or the base of an arm.
 
 Pick a point that is easy to measure from and that will not move. For a
-table-mounted arm, the arm base or a table corner are good choices. For a mobile
+table-mounted arm, the arm base or a table corner works well. For a mobile
 robot, the center of the base is typical.
 
 ### Parent-child hierarchy
@@ -93,9 +94,9 @@ the link names for an arm, inspect its kinematic model file or run
 Translation is the offset in millimeters from the parent frame's origin to the
 component's origin. It is specified as an (x, y, z) vector:
 
-- **x**: right/left offset
-- **y**: forward/backward offset
-- **z**: up/down offset
+- **x**: offset along the right-left axis
+- **y**: offset along the forward-backward axis
+- **z**: offset along the up-down axis
 
 The exact meaning of each axis depends on the parent frame's orientation. If the
 parent is the world frame with the standard orientation, +z points up.
@@ -113,11 +114,10 @@ frame. Viam supports several orientation formats:
 | `axis_angles`  | `x, y, z, th`      | Rotation axis (unit vector) with angle in radians |
 | `quaternion`   | `w, x, y, z`       | Unit quaternion (auto-normalized)                 |
 
-The default orientation is `ov_degrees` with values `(0, 0, 1), 0`, which means
-the component's axes are aligned with its parent frame. The orientation vector
-(x, y, z) defines the axis of rotation, and `th` defines the rotation angle
-around that axis. The axis must be a non-zero vector (the code normalizes it
-internally).
+The default is `ov_degrees` with values `(0, 0, 1), 0`, which leaves the
+component's axes aligned with its parent frame. The vector `(x, y, z)` defines
+the rotation axis, and `th` defines the rotation angle around that axis. The
+axis must be a non-zero vector; Viam normalizes it internally.
 
 For a detailed reference on orientation vectors, see
 [Orientation Vectors](/motion-planning/reference/orientation-vectors/).
@@ -141,8 +141,10 @@ For detailed information about obstacle geometry, see
 
 ## TransformPose
 
-`TransformPose` is a method on the machine client that converts a pose from one reference frame to another.
-You provide a source pose with its reference frame, a destination frame name, and the frame system computes the transform using the configured hierarchy and current joint positions.
+`TransformPose` converts a pose from one reference frame to another. You
+provide a source pose with its reference frame and a destination frame name;
+the frame system computes the transform using the configured hierarchy and
+current joint positions.
 
 For example, to find where a camera's origin is in the world frame:
 

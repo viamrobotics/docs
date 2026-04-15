@@ -7,12 +7,11 @@ type: "docs"
 description: "Which motion service methods replan during execution, when, and why. The single most common mental-model mismatch for new users."
 ---
 
-A common expectation for new users is that "obstacle avoidance" means
-the planner re-evaluates the world continuously while the robot moves.
-In Viam's motion service, whether the planner replans depends entirely
-on which method you called. `Move` never replans. `MoveOnGlobe` and
-`MoveOnMap` do, on clear triggers. This page is the reference for that
-distinction.
+If you expect "obstacle avoidance" to mean the planner re-evaluates the world
+while the robot moves, you will be surprised by how Viam's motion service
+works. Whether the planner replans depends on which method you called. `Move`
+never replans; `MoveOnGlobe` and `MoveOnMap` do, on clear triggers. This page
+is the reference for that distinction.
 
 ## At a glance
 
@@ -37,10 +36,10 @@ behavior. This page describes the built-in motion service.
 4. Smooths the path.
 5. Executes it to completion.
 
-There is **no loop** between steps 1-5 during execution. If an obstacle
-moves into the arm's path after planning, the arm keeps going. If a
-vision service reports a new obstacle, `Move` does not see it. The path
-the planner chose at step 3 is the path the arm follows.
+Steps 1-5 run once; `Move` does not loop during execution. If an obstacle
+moves into the arm's path after planning, the arm keeps going. If a vision
+service reports a new obstacle, `Move` does not see it. The path chosen at
+step 3 is the path the arm follows.
 
 **Implications:**
 
@@ -82,22 +81,22 @@ current plan is in `current_plan_with_status`; prior plans are in
 
 ### Deviation from plan
 
-Set by `plan_deviation_m` in the `MotionConfiguration`. Default is
-2.6 m for `MoveOnGlobe` and 1.0 m for `MoveOnMap`. When the robot's
-reported position is farther than this threshold from the nearest
+Set `plan_deviation_m` in the `MotionConfiguration` to control this trigger.
+The default is 2.6 m for `MoveOnGlobe` and 1.0 m for `MoveOnMap`. When the
+robot's reported position is farther than this threshold from the nearest
 point on the current plan, the service triggers a replan.
 
-Tune this relative to your movement sensor's accuracy. Standard GPS
-gives ~3 m of drift, so a 2.6 m deviation threshold produces frequent
-replans. Raise the threshold for standard GPS, lower it for RTK.
+Tune the threshold to match your movement sensor's accuracy. Standard GPS
+typically reports positional error of 3-5 m, so a 2.6 m deviation threshold
+produces frequent replans; raise the threshold for standard GPS and lower it
+for RTK.
 
 ### Transient obstacles
 
-Each `obstacle_detector` is a vision service plus camera pair. The
-motion service queries each pair at
-`obstacle_polling_frequency_hz`. When a new obstacle appears in a
-detection result, the motion service transforms the obstacle into the
-planner's frame, then triggers a replan that accounts for it.
+Each `obstacle_detector` pairs a vision service with a camera. The motion
+service queries these detectors at `obstacle_polling_frequency_hz`. When a
+detector reports a new obstacle, the motion service transforms the obstacle
+into the planner's frame, then triggers a replan that accounts for it.
 
 Detectors are only active during execution. They do not contribute to
 initial planning; that picture of the world comes from the obstacles
@@ -123,10 +122,9 @@ motion service does not do:
   contribute to replanning. Data from sensors not in the
   `obstacle_detectors` list does not reach the planner during
   execution.
-- **Undo completed motion.** Replanning generates a new plan from the
-  robot's current position. If the robot has already passed through an
-  area and conditions changed behind it, the new plan starts from
-  where the robot is, not from the original start.
+- **Undo completed motion.** A replan always starts from the robot's current
+  position. If conditions change behind the robot after it has passed
+  through, the new plan does not go back.
 - **Replace a failed plan.** If the planner cannot find a path from
   the robot's current position (after a deviation or obstacle trigger),
   the execution transitions to `FAILED` rather than trying different

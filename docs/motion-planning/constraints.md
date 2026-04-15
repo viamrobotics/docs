@@ -11,18 +11,18 @@ aliases:
   - /mobility/motion/constraints/
 ---
 
-By default, the motion planner finds any collision-free path from the current
-pose to the target pose. The path may curve, twist, or take the end effector
-through any orientation along the way. For many tasks this is fine, but some
-tasks require the arm to move in a specific way:
+By default, the motion planner returns any collision-free path to the target
+pose. The path may curve, twist, or take the end effector through any
+orientation along the way. For many tasks this is fine, but some tasks require
+the arm to move in a specific way:
 
 - Carrying a cup of water requires the end effector to stay level.
 - Welding a seam requires the tool to follow a straight line.
-- Moving near obstacles may require relaxing collision checking between specific
-  frame pairs.
+- Picking an object requires the gripper to contact the object without the
+  planner rejecting the path.
 
-Constraints let you specify these rules. The motion planner only returns paths
-that satisfy all constraints.
+Constraints let you specify these rules, and the motion planner only returns
+paths that satisfy all of them.
 
 ## Constraint types
 
@@ -39,11 +39,11 @@ goal poses. Use this for straight-line tool paths.
 | `line_tolerance_mm`          | float (optional) | Maximum deviation from the straight line, in millimeters. Only checked when greater than 0. |
 | `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation during motion, in degrees. Only checked when greater than 0.  |
 
-When `line_tolerance_mm` is set, the planner checks that the end effector stays
-within that distance of the line segment connecting start and goal positions.
-When `orientation_tolerance_degs` is set, the planner checks that the end
-effector orientation stays within that angular distance of either the start or
-goal orientation.
+When `line_tolerance_mm` is set, the planner keeps the end effector within
+that distance of the line segment between start and goal. When
+`orientation_tolerance_degs` is set, the planner keeps the end effector
+orientation within that angular distance of whichever is closer: the start
+orientation or the goal orientation.
 
 ### OrientationConstraint
 
@@ -166,6 +166,10 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 
 ### Allowing specific collisions
 
+Use `CollisionSpecification` to let the planner accept contact between
+specific frame pairs, for example when a gripper must touch the object it is
+picking up.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -209,9 +213,9 @@ constraints := &motionplan.Constraints{
 
 ## Performance considerations
 
-Constraints make the planner's job harder. The planner must check each candidate
-path segment against all constraints, and constrained solutions are harder to
-find than unconstrained ones.
+Constraints make planning harder. The planner checks each candidate path
+segment against every constraint you set, and constrained solutions are harder
+to find than unconstrained ones.
 
 - **Tight tolerances** (small `line_tolerance_mm` or `orientation_tolerance_degs`)
   increase planning time and may cause the planner to fail if no path exists

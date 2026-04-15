@@ -7,12 +7,11 @@ type: "docs"
 description: "The algorithm Viam uses to plan robot arm motion, why it works for arms, and what to try when planning fails."
 ---
 
-Motion planning is the problem of finding a safe, joint-level path from
-one arm configuration to another. The inputs are the arm's kinematic
-model, the target pose, the world state (obstacles and supplementary
-transforms), and any motion constraints. The output is a sequence of
-joint configurations the arm can execute without colliding with itself
-or its environment.
+Motion planning finds a safe, joint-level path from one arm configuration to
+another. The planner takes the arm's kinematic model, the target pose, the
+world state (obstacles and supplementary transforms), and any motion
+constraints, and it returns a sequence of joint configurations the arm can
+execute without colliding with itself or its environment.
 
 This is a search problem in a high-dimensional space: a 6-DOF arm has
 six joints, so every configuration is a point in six-dimensional joint
@@ -26,10 +25,10 @@ Rapidly-Exploring Random Tree. This is the only planning algorithm in
 the built-in service. Modules may implement alternative planners, but
 cBiRRT handles the general arm-planning case.
 
-cBiRRT comes from Berenson et al., 2009. The "constrained" part handles
-orientation and linear constraints; the "bidirectional" part searches
-from both the start and goal configurations simultaneously; the "RRT"
-part samples random configurations to explore the space.
+cBiRRT comes from Berenson et al., 2009. The name unpacks to three ideas:
+the "constrained" part enforces orientation and linear constraints, the
+"bidirectional" part searches from the start and the goal at the same time,
+and the "RRT" part samples random configurations to explore joint space.
 
 ## How the planner searches
 
@@ -40,8 +39,8 @@ At each iteration, the planner:
    sample, checking constraints and collisions at small steps along the
    way.
 3. **Attempts to connect** the two trees. If a configuration in one tree
-   can reach a configuration in the other tree without violating any
-   constraint or colliding with anything, the search is complete.
+   reaches a configuration in the other without violating a constraint or
+   colliding with anything, the search ends.
 4. **Projects** each new configuration onto the constraint manifold,
    adjusting joint angles so the resulting pose satisfies any
    orientation or line constraint.
@@ -53,9 +52,8 @@ detours.
 ## Why this works well for arms
 
 - **High-dimensional spaces.** A 6-DOF arm's joint space is far too large
-  to search exhaustively. Random sampling is asymptotically complete,
-  meaning that given enough time the algorithm is guaranteed to find a
-  path if one exists.
+  to search exhaustively. Random sampling is asymptotically complete:
+  given enough time, the algorithm finds a path if one exists.
 - **Constraint satisfaction, not just collision avoidance.** The
   projection step actively enforces constraints on every intermediate
   configuration, so the planner does not return paths that silently
@@ -68,10 +66,9 @@ detours.
 
 Setting the right expectations matters. cBiRRT is not a silver bullet.
 
-**It does not find optimal paths.** cBiRRT finds _a_ valid path, not the
-shortest or smoothest one. The planner applies the three-pass smoothing
-to improve the result, but there is no guarantee that the result is
-close to optimal.
+**It does not find optimal paths.** cBiRRT finds a valid path, not the
+shortest or smoothest one. The three-pass smoothing improves the result,
+but the result is not guaranteed to be close to optimal.
 
 **It is probabilistic.** Because sampling is random, the same request
 can succeed sometimes and fail other times. This is a fundamental
@@ -110,11 +107,10 @@ planning timeout (300 seconds by default). Common causes:
    simpler target close to the current position to isolate whether the
    planner works at all.
 5. **Multiple IK solutions exist but the one the planner picks is bad.**
-   cBiRRT plans shortest-path in joint space. For some Cartesian targets
-   this routes through a wrist flip or elbow reconfiguration that is
-   physically feasible but undesirable. Seed the planner by setting
-   joint positions with `MoveToJointPositions` first, or break the
-   motion into smaller steps.
+   cBiRRT plans shortest-path in joint space, so for some Cartesian targets
+   it routes through a wrist flip or an elbow reconfiguration that is
+   physically feasible but undesirable. Seed the planner by calling
+   `MoveToJointPositions` first, or break the motion into smaller steps.
 
 If the failure is non-deterministic (the same plan worked last time but
 fails now), retry a few times before changing the request. The

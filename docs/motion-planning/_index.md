@@ -16,13 +16,13 @@ aliases:
 ---
 
 Your robot arm needs to move from one position to another without colliding with
-the table, the walls, or itself. Motion planning computes collision-free paths
-through 3D space, taking into account the arm's kinematic model, the workspace
-geometry, and any constraints on how the arm should move.
+the table, the walls, or itself. Computing a collision-free path through 3D
+space means reasoning about the arm's kinematic model, the workspace geometry,
+and any constraints on how the arm should move.
 
-Viam's motion planning system handles this automatically. You define the spatial
-layout of your workspace (the frame system), describe what obstacles exist, and
-tell the arm where to go. The motion planner finds a safe path and executes it.
+Viam's motion service handles this for you. You describe the spatial layout of
+your workspace (the frame system) and any obstacles, then tell the arm where to
+go. The planner finds a safe path and executes it.
 
 This section covers motion planning for arms, gantries, and other kinematic
 chains. For GPS-based autonomous navigation with mobile bases, see
@@ -55,8 +55,9 @@ Motion planning in Viam connects several pieces:
 4. **Constraints**: rules about how the arm should move between poses, such as
    keeping the end effector on a straight line or maintaining its orientation.
 
-5. **Motion service**: the service that takes all of the above and computes a
-   collision-free path from the current pose to the target pose.
+5. **Motion service**: takes the frame system, kinematic model, obstacles, and
+   constraints and computes a collision-free path from the current pose to the
+   target.
 
 ## Get started
 
@@ -116,4 +117,3 @@ your hardware.
 {{% card link="/motion-planning/constraints/" noimage="true" %}}
 {{% card link="/motion-planning/reference/" noimage="true" %}}
 {{< /cards >}}
-
