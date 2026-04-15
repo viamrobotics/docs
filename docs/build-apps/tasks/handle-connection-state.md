@@ -12,6 +12,14 @@ Show a connection status indicator in your app, react to connection events, and 
 
 For an explanation of how the SDK reconnects under the hood, see [Connection model](/build-apps/concepts/how-apps-connect/#reconnection).
 
+{{< alert title="Behavior change" color="caution" >}}
+In versions of the Viam TypeScript SDK prior to v0.69.0, `DISCONNECTED` fired on any connection drop, including transient network interruptions.
+From v0.69.0 onward, `DISCONNECTED` fires only on intentional close or when `noReconnect` is set.
+Transient drops emit `RECONNECTING` instead, followed by `CONNECTED` on success or `RECONNECTION_FAILED` when retries are exhausted.
+
+If your app listens for `DISCONNECTED` to detect network drops, listen for `RECONNECTING` instead.
+{{< /alert >}}
+
 ## Prerequisites
 
 - A project with an active machine connection (see [Connect to a machine](/build-apps/tasks/connect-to-machine/))

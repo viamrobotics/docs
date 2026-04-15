@@ -69,7 +69,12 @@ When the network drops, the SDK reconnects automatically with exponential backof
 - `reconnectMaxWait` — default `Number.POSITIVE_INFINITY`, the maximum time between retries
 - `noReconnect` — default `false`, set to `true` to disable reconnection
 
-Reconnection is transparent to your application code. The `RobotClient` object stays valid across the drop, and in-flight method calls throw errors that your app can catch and retry after the reconnection completes. While the SDK is retrying, it emits the `RECONNECTING` event; if all retries are exhausted, it emits `RECONNECTION_FAILED` with `error` and `attempts` fields.
+Reconnection is transparent to your application code. The `RobotClient` object stays valid across the drop, and in-flight method calls throw errors that your app can catch and retry after the reconnection completes. While the SDK is retrying, it emits `RECONNECTING`. If retries are exhausted, it emits `RECONNECTION_FAILED`.
+
+{{< alert title="Behavior change" color="caution" >}}
+In versions of the Viam TypeScript SDK prior to v0.69.0, `DISCONNECTED` fired on any drop.
+From v0.69.0 onward, it fires only on intentional close or when `noReconnect` is set; transient drops emit `RECONNECTING`.
+{{< /alert >}}
 
 What does _not_ happen automatically is your app's UI state. If you were showing a camera stream when the network dropped, the stream stops, and your UI has to rebuild the stream when the connection returns. If you were polling a sensor, the polling stops, and your UI has to resume polling. The SDK reconnects the transport; your app reconnects its own state.
 
