@@ -56,16 +56,17 @@ If your model disagrees with any of these assumptions, retraining is not require
 Models live at the organization level in Viam. Uploading a model is a one-time action per model version.
 
 1. Navigate to the [**MODELS** tab](https://app.viam.com/models) in the Viam app.
-2. Click **Upload model**.
-3. Fill in the form:
-   - **Name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config.
-   - **Framework**: choose the framework matching your model file.
-   - **Type**: `Object detection` or `Image classification`.
-   - **Model file**: upload the `.tflite`, `.onnx`, or other framework file.
-   - **Labels file** (optional but recommended): a plain text file with one label per line. Line number (zero-indexed) is the class ID.
-4. Click **Upload**.
+2. Click **Upload**.
+3. Choose **New model** (or **New version** if you are replacing an existing model). Under **Visibility**, choose **Private** for internal use or **Public** to publish to the [registry](https://app.viam.com/registry). Click **Next steps**.
+4. Fill in the upload form:
+   - **Model framework**: select the framework matching your model file (TFLite, TensorFlow, PyTorch, or ONNX).
+   - Under **Upload files**, click **Choose model file** and pick your `.tflite`, `.onnx`, `.pt`, or framework-specific file. Click **Choose label file** and pick a `.txt` file with one label per line (optional but recommended; line number, zero-indexed, is the class ID).
+   - **Model name**: a short identifier (letters, numbers, hyphens). This is what you will reference from the ML model service config.
+   - **Task type**: pick **Object detection**, **Single label classification**, **Multi label classification**, or **Other**.
+   - **Description**: one sentence describing the model.
+5. Click **Upload model**.
 
-The model is now available in your organization. You can also publish the model to the public [registry](https://app.viam.com/registry) by setting its visibility, but the MODELS tab upload is enough for running the model on your own machines.
+The model is now available in your organization. You can change visibility between **Private** and **Public** later through the model's settings.
 
 ## 4. Configure the ML model service
 
@@ -121,7 +122,7 @@ If the model does not produce detections right away, its input preprocessing or 
 
 1. Open the **CONTROL** tab.
 2. Click the vision service.
-3. Select your camera and click **Refresh**. Detections appear as bounding boxes on the live feed.
+3. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections appear as bounding boxes on the live camera feed and refresh automatically.
 
 If results look wrong (shifted boxes, wrong labels, or zero detections), go through [Tune detection quality](/vision/tune/). Every common failure mode maps to a specific attribute on the vision service.
 

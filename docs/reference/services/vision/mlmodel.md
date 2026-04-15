@@ -200,7 +200,7 @@ Test an `mlmodel` vision service from the [Control tab](/manage/troubleshoot/tel
 ### Live camera footage
 
 1. Open your machine in the Viam app and click the vision service's **Test** area, or navigate to the **CONTROL** tab and select the vision service.
-2. Select your camera and click **Refresh**. Detections above `default_minimum_confidence` appear as bounding boxes on the live image.
+2. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections above `default_minimum_confidence` appear as bounding boxes on the live camera feed and refresh automatically.
 
 {{< imgproc src="/services/vision/detections.png" alt="A vision service test panel showing bounding boxes on a live camera feed" resize="450x" declaredimensions=true >}}
 
@@ -252,9 +252,9 @@ If you want a continuous overlay in the Control tab, configure a [transform came
 
 If you have images stored in the [Viam Cloud](/data-ai/capture-data/capture-sync/), you can run your classifier against them:
 
-1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click the **Images** subtab.
-2. Click an image to open the side menu and select the **Actions** tab.
-3. In the **Run model** section, select your model, specify a confidence threshold, and click **Run model**.
+1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click an image to open the expanded view.
+2. Click the **Auto-prediction mode** icon in the image toolbar (or press `M`).
+3. In the **Run model** panel, select your model and version, then run the inference.
 
 ### Code
 

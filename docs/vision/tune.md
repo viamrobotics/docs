@@ -161,11 +161,12 @@ Viam-trained ML models already use the expected names, so `remap_input_names` an
 
 ## Verify every change
 
-After each attribute change, save the configuration and let `viam-server` reconfigure. Watch the Control tab for a few seconds:
+After each attribute change, save the configuration and let `viam-server` reconfigure. Watch the **CONTROL** tab for a few seconds:
 
-1. Point the camera at a known object your model was trained on.
-2. Confirm the overlay shows a bounding box with the expected label.
-3. Move the object out of frame and confirm the box disappears.
+1. Open the vision service card and select your camera in the **Camera** dropdown.
+2. Point the camera at a known object your model was trained on.
+3. Confirm the overlay shows a bounding box with the expected label.
+4. Move the object out of frame and confirm the box disappears.
 
 If results do not change after saving, check `viam-server` logs for a configuration error. The service may have kept its previous configuration and logged a parse error instead of applying your edit.
 

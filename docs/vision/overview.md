@@ -48,7 +48,7 @@ After configuring a vision service, the fastest way to confirm it is producing r
 
 1. Open your machine in the Viam app.
 2. Navigate to the **CONTROL** tab and click your vision service.
-3. Select a camera and click **Refresh**. Detections or classifications appear as an overlay on the live video feed at up to 20 frames per second.
+3. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections or classifications appear as an overlay on the live camera feed at up to 20 frames per second. The overlay refreshes automatically.
 
 The control card calls `CaptureAllFromCamera` under the hood, so what you see on screen matches what your code receives. If the overlay is empty, check `GetProperties` to confirm the service registered in the role you expected, then lower the confidence threshold and try again.
 

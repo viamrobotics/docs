@@ -47,8 +47,8 @@ Add the filtered camera module to your machine:
 
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Configuration block**.
-3. Search for **filtered-camera** and select it.
-4. Click **Add component**, name it `objectfilter-cam`, and click **Add component** again to confirm.
+3. In the search field, type `filtered-camera` and select the matching result.
+4. Name the component `objectfilter-cam` and click **Add component**. The module is installed automatically.
 5. Add configuration attributes:
 
    {{< tabs >}}
@@ -96,7 +96,7 @@ Add the filtered camera module to your machine:
 For more details, see the [`filtered-camera` module README](https://app.viam.com/module/viam/filtered-camera).
 
 {{% alert title="Tip" color="tip" %}}
-To verify your confidence threshold, expand the **TEST** panel on your vision service card and observe the confidence levels for live detections.
+To verify your confidence threshold, expand the **TEST** panel on your vision service card, select the right camera in the **Camera** dropdown, and observe the confidence levels for live detections.
 {{% /alert %}}
 
 ### 2. Configure data capture and sync
@@ -104,8 +104,8 @@ To verify your confidence threshold, expand the **TEST** panel on your vision se
 Add the data management service to capture and sync filtered images:
 
 1. Click **+** and select **Configuration block**.
-2. Search for **data management** and select it.
-3. Click **Add component**, name it `data-manager`, and click **Add component** again to confirm.
+2. In the search field, type `data management` and select the matching result.
+3. Name the service `data-manager` and click **Add component**.
 4. Leave the default attributes and click **Save**.
 
 Enable data capture on the filtered camera:

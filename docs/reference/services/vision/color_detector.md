@@ -122,7 +122,7 @@ Object colors vary dramatically with lighting. Verify your target color value un
 ### Live camera footage
 
 1. Open your machine in the Viam app and either click the vision service's **Test** area or navigate to the **CONTROL** tab and select the vision service.
-2. Select your camera and click **Refresh**. Detections appear as bounding boxes on the live image.
+2. In the **Camera** dropdown, select the camera whose feed you want the detector to run on. Detections appear as bounding boxes on the live camera feed and refresh automatically.
 
 {{< imgproc src="/services/vision/detections.png" alt="Live camera feed with bounding boxes drawn around detected regions" resize="450x" declaredimensions=true >}}
 

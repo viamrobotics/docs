@@ -290,7 +290,7 @@ If your module wraps another resource, update any services or processes that ref
 
 {{< expand "Vision check always returns safe / unsafe" >}}
 
-- Test the vision service independently using the **TEST** panel to confirm it produces detections.
+- Test the vision service independently using the **TEST** panel. Select the correct camera in the **Camera** dropdown and confirm the service produces detections.
 - Check that the `class_name` in your code matches the model's output labels exactly (case-sensitive).
 - Log the raw detections or classifications before filtering to see what the model returns.
 

@@ -88,7 +88,7 @@ Save the configuration.
 
 1. Navigate to the **CONTROL** tab.
 2. Click your vision service.
-3. Select the camera and click **Refresh**.
+3. In the **Camera** dropdown, select the camera whose feed you want the detector to run on. Bounding boxes appear as an overlay on the live camera feed and refresh automatically.
 
 Point the camera at the target color. Bounding boxes should appear around regions of that hue. If you see:
 

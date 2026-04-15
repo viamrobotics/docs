@@ -93,7 +93,7 @@ If the underlying model uses non-standard tensor names or preprocessing conventi
 
 ## 5. Verify
 
-Open the **CONTROL** tab, click the vision service, select your camera, and click **Refresh**. If the model is working, bounding boxes or classifications appear as an overlay on the live image.
+Open the **CONTROL** tab, click the vision service, and select the camera from the **Camera** dropdown. If the model is working, bounding boxes or classifications appear as an overlay on the live camera feed and refresh automatically. Make sure you pick the same camera your vision service is configured to use.
 
 If you see nothing:
 

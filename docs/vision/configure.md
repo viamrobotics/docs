@@ -102,7 +102,7 @@ The fastest check is the Viam app's live overlay:
 
 1. Go to the **CONTROL** tab.
 2. Find your vision service in the component list and open it.
-3. Select your camera and click **Refresh**.
+3. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections appear as an overlay on the live camera feed and refresh automatically.
 
 Bounding boxes or classification labels should appear on the live camera feed within a second or two. If you are using a COCO-class general-purpose model, point the camera at a person, a cup, or a keyboard.
 
