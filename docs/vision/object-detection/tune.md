@@ -1,11 +1,13 @@
 ---
 linkTitle: "Tune detection quality"
 title: "Tune detection quality"
-weight: 25
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Match a detection quality symptom to the mlmodel vision service attribute that fixes it. Covers bounding box order, input normalization, per-label thresholds, and tensor remapping."
 date: "2026-04-14"
+aliases:
+  - /vision/tune/
 ---
 
 Your vision service is configured and returning detections, but the results are wrong in a specific way. This guide matches common failure modes to the `mlmodel` vision service attribute that fixes each one. Most tuning is a configuration change, not a code change.
@@ -174,4 +176,4 @@ If results do not change after saving, check `viam-server` logs for a configurat
 
 - [mlmodel reference](/reference/services/vision/mlmodel/): every attribute in one place
 - [How the vision service works](/vision/how-it-works/): why the two-service split matters for retraining and redeployment
-- [Detect objects](/vision/detect/): once tuning is done, put detections to use in code
+- [Detect objects](/vision/object-detection/detect/): once tuning is done, put detections to use in code

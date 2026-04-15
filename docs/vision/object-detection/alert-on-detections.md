@@ -1,7 +1,7 @@
 ---
 linkTitle: "Alert on detections"
 title: "Alert on detections"
-weight: 70
+weight: 60
 layout: "docs"
 type: "docs"
 description: "Send email or webhook alerts when your vision service detects specific objects or classifications."
@@ -9,6 +9,7 @@ aliases:
   - /vision/alert/
   - /vision/how-to/alert-on-detections/
   - /data-ai/ai/alert/
+  - /vision/alert-on-detections/
 date: "2026-04-14"
 ---
 
@@ -174,6 +175,6 @@ Add a trigger to send alerts when filtered images sync:
 
 ## What's next
 
-- [Act on detections](/vision/act-on-detections/): build a module that responds to vision results in real time.
+- [Act on detections](/vision/object-detection/act-on-detections/): build a module that responds to vision results in real time.
 - [Triggers reference](/data-ai/reference/triggers-configuration/): full documentation for trigger types, webhook payloads, and configuration options.
 - [Capture and sync data](/data/capture-sync/capture-and-sync-data/): learn more about configuring data capture and sync intervals.

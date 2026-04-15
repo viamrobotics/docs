@@ -1,7 +1,7 @@
 ---
 linkTitle: "Deploy a model from the registry"
 title: "Deploy an ML model from the registry"
-weight: 12
+weight: 10
 layout: "docs"
 type: "docs"
 modulescript: true
@@ -26,11 +26,12 @@ aliases:
   - /services/ml/deploy/
   - /how-tos/deploy-ml/
   - /manage/data/deploy-model/
+  - /vision/deploy-from-registry/
 ---
 
 The fastest way to get a working vision pipeline is to pick a pre-trained model from the Viam [registry](https://app.viam.com/registry). Select a model, pick a framework-matching ML model service, and save the config. `viam-server` downloads the model to the machine and the vision service can use it immediately.
 
-Use this guide when a general-purpose or community-shared model already handles your task (people detection, common objects, COCO-class recognition). If you need a custom model trained on your data, see [Deploy a custom ML model](/vision/deploy-custom-model/).
+Use this guide when a general-purpose or community-shared model already handles your task (people detection, common objects, COCO-class recognition). If you need a custom model trained on your data, see [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
 
 ## 1. Pick a model
 
@@ -89,7 +90,7 @@ The ML model service is a building block. To get detections, classifications, or
 5. In the **DEFAULT CAMERA** section, pick the camera the vision service should use by default.
 6. Save.
 
-If the underlying model uses non-standard tensor names or preprocessing conventions, additional configuration is required. See the [`mlmodel` reference](/reference/services/vision/mlmodel/) for every attribute, and [Tune detection quality](/vision/tune/) for a symptom-to-attribute map.
+If the underlying model uses non-standard tensor names or preprocessing conventions, additional configuration is required. See the [`mlmodel` reference](/reference/services/vision/mlmodel/) for every attribute, and [Tune detection quality](/vision/object-detection/tune/) for a symptom-to-attribute map.
 
 ## 5. Verify
 
@@ -101,7 +102,7 @@ If you see nothing:
 - Lower `default_minimum_confidence` on the vision service and try again. A model may be producing detections below the default confidence threshold.
 - Check `viam-server` logs for startup errors mentioning tensor names or label files.
 
-See [Tune detection quality](/vision/tune/) for detailed fixes.
+See [Tune detection quality](/vision/object-detection/tune/) for detailed fixes.
 
 ## Available ML model services
 
@@ -121,11 +122,11 @@ When a newer version of the model is published to the [registry](https://app.via
 
 Your vision service, your application code, and your downstream triggers and modules do not need to change.
 
-For rolling this out across many machines at once, see [Retrain when your model drifts](/vision/retrain/) and the [fleet deployment docs](/fleet/).
+For rolling this out across many machines at once, see [Retrain when your model drifts](/vision/deploy-and-maintain/retrain/) and the [fleet deployment docs](/fleet/).
 
 ## Next steps
 
 - [Configure a vision pipeline](/vision/configure/): the broader end-to-end setup
-- [Tune detection quality](/vision/tune/): fine-tune mlmodel vision service attributes
-- [Deploy a custom ML model](/vision/deploy-custom-model/): bring your own trained model
-- [Retrain when accuracy drops](/vision/retrain/): close the loop on drift
+- [Tune detection quality](/vision/object-detection/tune/): fine-tune mlmodel vision service attributes
+- [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): bring your own trained model
+- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): close the loop on drift

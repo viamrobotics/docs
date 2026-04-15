@@ -460,6 +460,6 @@ Check `viam-server` logs. Most common causes:
 
 {{< cards >}}
 {{% card link="/vision/configure/" %}}
-{{% card link="/vision/detect/" %}}
+{{% card link="/vision/object-detection/detect/" %}}
 {{% card link="/vision/classify/" %}}
 {{< /cards >}}

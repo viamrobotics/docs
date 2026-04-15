@@ -1,11 +1,13 @@
 ---
 linkTitle: "Retrain when accuracy drops"
 title: "Retrain when your model drifts"
-weight: 75
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Close the loop when a vision model's accuracy drops in production: capture the failing images, label them, retrain, and redeploy a new model version to one or many machines."
 date: "2026-04-14"
+aliases:
+  - /vision/retrain/
 ---
 
 Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. The fix is never a one-time deployment. It is a loop.
@@ -102,7 +104,7 @@ Accuracy monitoring is not automatic on Viam today. There is no dashboard that r
 
 - **Log confidence scores** from your detector to a time-series store and watch for trends.
 - **Sample review**: capture a periodic snapshot of production detections and review them against ground truth.
-- **Alert on low confidence**: configure a [trigger](/vision/alert-on-detections/) that fires when detections below a threshold exceed a rate, so you know to pull more training data.
+- **Alert on low confidence**: configure a [trigger](/vision/object-detection/alert-on-detections/) that fires when detections below a threshold exceed a rate, so you know to pull more training data.
 
 When drift shows up again, the cycle repeats. The first retraining cycle is the slowest; subsequent cycles reuse the same dataset, labeling workflow, and deployment procedure.
 
@@ -112,4 +114,4 @@ When drift shows up again, the cycle repeats. The first retraining cycle is the 
 - [Annotate images](/train/annotate-images/): label captured data
 - [Train a model](/train/train-a-model/): produce a new model version
 - [Deploy a model](/data-ai/ai/deploy/): wire the new version into the ML model service
-- [Act on detections](/vision/act-on-detections/) and [alert on detections](/vision/alert-on-detections/): use the new version in production logic
+- [Act on detections](/vision/object-detection/act-on-detections/) and [alert on detections](/vision/object-detection/alert-on-detections/): use the new version in production logic

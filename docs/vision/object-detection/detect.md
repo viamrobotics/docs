@@ -1,7 +1,7 @@
 ---
 linkTitle: "Detect objects"
 title: "Detect objects"
-weight: 20
+weight: 10
 layout: "docs"
 type: "docs"
 description: "Retrieve 2D bounding-box detections from a vision service, filter by confidence and class, and run detections in a loop."
@@ -9,6 +9,7 @@ date: "2025-01-30"
 aliases:
   - /build/vision-detection/detect-objects-2d/
   - /vision-detection/detect-objects-2d/
+  - /vision/detect/
 ---
 
 Your vision service is configured and running, but you need to do something useful with the results. This how-to shows you how to retrieve detections programmatically, filter them to reduce noise, and extract the information you need to build real applications such as counting objects, triggering an action when something appears, or feeding positions into a control loop.
@@ -512,5 +513,5 @@ This is particularly useful for data logging, visualization, or any case where y
 ## What's next
 
 - [Classify images](/vision/classify/): whole-image classification instead of per-object bounding boxes.
-- [Track objects across frames](/vision/track/): maintain persistent identities for detected objects as they move between frames.
-- [Measure depth](/vision/measure-depth/): combine 2D detections with depth data to get real-world 3D positions.
+- [Track objects across frames](/vision/object-detection/track/): maintain persistent identities for detected objects as they move between frames.
+- [Measure depth](/vision/3d-vision/measure-depth/): combine 2D detections with depth data to get real-world 3D positions.

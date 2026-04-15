@@ -1,7 +1,7 @@
 ---
 linkTitle: "Act on detections"
 title: "Act on detections"
-weight: 60
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Build a module that uses vision service results to control machine behavior."
@@ -9,6 +9,7 @@ aliases:
   - /vision/act/
   - /vision/how-to/act-on-detections/
   - /data-ai/ai/act/
+  - /vision/act-on-detections/
 date: "2026-04-14"
 ---
 
@@ -305,6 +306,6 @@ If your module wraps another resource, update any services or processes that ref
 
 ## What's next
 
-- [Alert on detections](/vision/alert-on-detections/): send email or webhook notifications when specific objects are detected.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send email or webhook notifications when specific objects are detected.
 - [Deploy a module](/build-modules/deploy-a-module/): package and upload your module to the Viam [registry](https://app.viam.com/registry).
 - [Vision service API](/reference/apis/services/vision/): full API documentation for detections, classifications, and more.

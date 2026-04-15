@@ -151,7 +151,7 @@ Lower `sigma` (try `1.0`) and raise `mean_k` to filter more aggressively. If seg
 ## Next steps
 
 {{< cards >}}
-{{% card link="/vision/measure-depth/" %}}
+{{% card link="/vision/3d-vision/measure-depth/" %}}
 {{% card link="/reference/services/vision/mlmodel/" %}}
 {{% card link="/reference/services/vision/color_detector/" %}}
 {{< /cards >}}

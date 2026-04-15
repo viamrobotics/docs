@@ -247,7 +247,7 @@ Your `detect_color` has saturation below the saturation cutoff. Either pick a mo
 ## Next steps
 
 {{< cards >}}
-{{% card link="/vision/detect/" %}}
+{{% card link="/vision/object-detection/detect/" %}}
 {{% card link="/vision/configure/" %}}
 {{% card link="/reference/services/vision/mlmodel/" %}}
 {{< /cards >}}

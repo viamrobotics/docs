@@ -14,7 +14,7 @@ aliases:
 
 You have a camera on your machine and a trained ML model. This how-to wires them up: an ML model service loads the model and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
 
-Downstream how-tos ([detect](/vision/detect/), [classify](/vision/classify/), [track](/vision/track/), [measure depth](/vision/measure-depth/)) assume the pipeline described here is running.
+Downstream how-tos ([detect](/vision/object-detection/detect/), [classify](/vision/classify/), [track](/vision/object-detection/track/), [measure depth](/vision/3d-vision/measure-depth/)) assume the pipeline described here is running.
 
 ## What you are configuring, in one paragraph
 
@@ -26,7 +26,7 @@ The ML model service matches your model file's framework. For most tasks, `tflit
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
-3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-from-registry/#model-framework-support).
+3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
 4. Click **Add component**, name the service `my-ml-model`, and click **Add component** again to confirm.
 
 ## 2. Configure the ML model service
@@ -65,7 +65,7 @@ Point the service at your model file.
 
 `label_path` is optional but recommended: it maps numeric class IDs (the raw output of the model) to human-readable names.
 
-For more on the deployment flow, see [Deploy a model from the registry](/vision/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-custom-model/).
+For more on the deployment flow, see [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
 
 ## 3. Add a vision service
 
@@ -88,7 +88,7 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
 
 `mlmodel_name` must match the name of the ML model service from step 1.
 
-For the full list of `mlmodel` vision service attributes (confidence thresholds, per-label thresholds, tensor remapping, input normalization), see the [mlmodel reference](/reference/services/vision/mlmodel/). If your detections come out shifted, mirrored, or with unexpected labels, see [Tune detection quality](/vision/tune/) to find the attribute that fixes your symptom.
+For the full list of `mlmodel` vision service attributes (confidence thresholds, per-label thresholds, tensor remapping, input normalization), see the [mlmodel reference](/reference/services/vision/mlmodel/). If your detections come out shifted, mirrored, or with unexpected labels, see [Tune detection quality](/vision/object-detection/tune/) to find the attribute that fixes your symptom.
 
 ## 5. Save and verify
 
@@ -106,7 +106,7 @@ The fastest check is the Viam app's live overlay:
 
 Bounding boxes or classification labels should appear on the live camera feed within a second or two. If you are using a COCO-class general-purpose model, point the camera at a person, a cup, or a keyboard.
 
-If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/tune/).
+If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
 
 ## 7. Complete configuration
 
@@ -283,9 +283,9 @@ Get the placeholder values from the Viam app:
 
 ## What's next
 
-- [Deploy a model from the registry](/vision/deploy-from-registry/): expand on model-picking guidance
-- [Detect objects](/vision/detect/): use detection results in code
+- [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): expand on model-picking guidance
+- [Detect objects](/vision/object-detection/detect/): use detection results in code
 - [Classify images](/vision/classify/): use classification results in code
-- [Tune detection quality](/vision/tune/): fix mis-configured or miscalibrated detectors
-- [Run batch inference](/vision/batch-inference/): run a model against stored images instead of live frames
-- [Retrain when accuracy drops](/vision/retrain/): close the loop when your model drifts
+- [Tune detection quality](/vision/object-detection/tune/): fix mis-configured or miscalibrated detectors
+- [Run batch inference](/vision/deploy-and-maintain/batch-inference/): run a model against stored images instead of live frames
+- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): close the loop when your model drifts

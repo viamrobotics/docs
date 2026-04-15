@@ -9,6 +9,7 @@ date: "2025-01-30"
 aliases:
   - /build/vision-detection/track-objects-across-frames/
   - /vision-detection/track-objects-across-frames/
+  - /vision/track/
 ---
 
 Object detection operates on single frames. It tells you what is in the image right now, but nothing about what was in the previous frame. When you run detections at 5 frames per second, you get 5 independent lists of bounding boxes with no way to tell whether a detection in frame 2 corresponds to the same object as in frame 1.
@@ -265,6 +266,6 @@ func getTrackID(className string) string {
 
 ## What's next
 
-- [Detect objects](/vision/detect/): learn about the detection API the tracker builds on.
-- [Act on detections](/vision/act-on-detections/): build modules that respond to detection or classification results.
-- [Alert on detections](/vision/alert-on-detections/): send alerts when tracked objects enter or exit a scene.
+- [Detect objects](/vision/object-detection/detect/): learn about the detection API the tracker builds on.
+- [Act on detections](/vision/object-detection/act-on-detections/): build modules that respond to detection or classification results.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send alerts when tracked objects enter or exit a scene.

@@ -1,11 +1,13 @@
 ---
 linkTitle: "Deploy a custom model"
 title: "Deploy a custom ML model"
-weight: 14
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Deploy a model you trained outside Viam (or trained yourself on Viam data) through an ML model service and use it with the vision service."
 date: "2026-04-14"
+aliases:
+  - /vision/deploy-custom-model/
 ---
 
 Use this guide when you have a trained model file that is not already in the Viam [registry](https://app.viam.com/registry). That covers three cases:
@@ -14,7 +16,7 @@ Use this guide when you have a trained model file that is not already in the Via
 - You trained it entirely outside Viam (local, another cloud, a notebook).
 - You found it elsewhere (GitHub, Hugging Face) and want to run it on your machines.
 
-If you just want to pick a ready-made model from the [registry](https://app.viam.com/registry), see [Deploy an ML model from the registry](/vision/deploy-from-registry/) instead.
+If you just want to pick a ready-made model from the [registry](https://app.viam.com/registry), see [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) instead.
 
 ## 1. Confirm the model format is supported
 
@@ -43,13 +45,13 @@ The `mlmodel` vision service expects specific tensor conventions from the model 
 
 **Preprocessing assumptions:**
 
-- Input pixel values are uint8 in `[0, 255]` by default. If your model expects `[-1, 1]` or `[0, 1]` normalization, use [`input_image_mean_value` and `input_image_std_dev`](/vision/tune/#wrong-labels-or-every-label-fires) on the vision service.
-- Input channel order is RGB by default. If your model expects BGR, set [`input_image_bgr: true`](/vision/tune/#wrong-labels-or-every-label-fires).
-- Bounding boxes are `[xmin, ymin, xmax, ymax]` normalized to `[0, 1]`. If your model outputs a different order, use [`xmin_ymin_xmax_ymax_order`](/vision/tune/#bounding-boxes-appear-shifted-or-mirrored).
+- Input pixel values are uint8 in `[0, 255]` by default. If your model expects `[-1, 1]` or `[0, 1]` normalization, use [`input_image_mean_value` and `input_image_std_dev`](/vision/object-detection/tune/#wrong-labels-or-every-label-fires) on the vision service.
+- Input channel order is RGB by default. If your model expects BGR, set [`input_image_bgr: true`](/vision/object-detection/tune/#wrong-labels-or-every-label-fires).
+- Bounding boxes are `[xmin, ymin, xmax, ymax]` normalized to `[0, 1]`. If your model outputs a different order, use [`xmin_ymin_xmax_ymax_order`](/vision/object-detection/tune/#bounding-boxes-appear-shifted-or-mirrored).
 
-If your model disagrees with any of these assumptions, retraining is not required. Set the matching vision service attributes to bridge the gap. See [Tune detection quality](/vision/tune/).
+If your model disagrees with any of these assumptions, retraining is not required. Set the matching vision service attributes to bridge the gap. See [Tune detection quality](/vision/object-detection/tune/).
 
-**Tensor names:** if your model does not use the exact names above, you can remap them on the vision service without retouching the model. See [Tune detection quality](/vision/tune/#tensor-names-do-not-match).
+**Tensor names:** if your model does not use the exact names above, you can remap them on the vision service without retouching the model. See [Tune detection quality](/vision/object-detection/tune/#tensor-names-do-not-match).
 
 ## 3. Add the model to your organization
 
@@ -116,7 +118,7 @@ The ML model service now loads and runs your model. The vision service turns its
 }
 ```
 
-If the model does not produce detections right away, its input preprocessing or output tensor layout is probably non-standard. See [Tune detection quality](/vision/tune/).
+If the model does not produce detections right away, its input preprocessing or output tensor layout is probably non-standard. See [Tune detection quality](/vision/object-detection/tune/).
 
 ## 6. Verify
 
@@ -124,7 +126,7 @@ If the model does not produce detections right away, its input preprocessing or 
 2. Click the vision service.
 3. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections appear as bounding boxes on the live camera feed and refresh automatically.
 
-If results look wrong (shifted boxes, wrong labels, or zero detections), go through [Tune detection quality](/vision/tune/). Every common failure mode maps to a specific attribute on the vision service.
+If results look wrong (shifted boxes, wrong labels, or zero detections), go through [Tune detection quality](/vision/object-detection/tune/). Every common failure mode maps to a specific attribute on the vision service.
 
 ## When to convert vs when to bridge
 
@@ -139,7 +141,7 @@ Convert the model itself only when its format is unsupported (for example, expor
 
 ## Next steps
 
-- [Tune detection quality](/vision/tune/): fix specific detection failure modes
+- [Tune detection quality](/vision/object-detection/tune/): fix specific detection failure modes
 - [mlmodel reference](/reference/services/vision/mlmodel/): full attribute reference
-- [Detect objects](/vision/detect/): use detections in code
-- [Retrain when accuracy drops](/vision/retrain/): maintain quality in production
+- [Detect objects](/vision/object-detection/detect/): use detections in code
+- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): maintain quality in production

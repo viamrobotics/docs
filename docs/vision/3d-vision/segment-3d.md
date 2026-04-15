@@ -1,11 +1,13 @@
 ---
 linkTitle: "Segment 3D objects"
 title: "Segment 3D objects from point clouds"
-weight: 45
+weight: 10
 layout: "docs"
 type: "docs"
 description: "Use the vision service's GetObjectPointClouds method to find and label objects in 3D space, combining a 2D detector with a depth camera's point cloud."
 date: "2026-04-14"
+aliases:
+  - /vision/segment-3d/
 ---
 
 When a robot needs to know where objects are in 3D space (not just where they appear in a 2D image), use 3D object segmentation. The vision service returns a list of point cloud objects, one per detected object, each with a label, a 3D bounding box, and a center coordinate. Typical uses are guiding an arm to pick up an object, feeding obstacle positions into a navigation stack, or measuring the size of a physical item.
@@ -43,8 +45,8 @@ Verify the camera reports `supports_pcd: true` by calling [`GetProperties`](/ref
 
 The segmenter reuses an existing 2D detection vision service. Configure one if you do not have it already:
 
-- For ML-based detection, follow [Deploy an ML model from the registry](/vision/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-custom-model/).
-- For color-based detection, see [Detect by color](/vision/detect-by-color/).
+- For ML-based detection, follow [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/) or [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/).
+- For color-based detection, see [Detect by color](/vision/object-detection/detect-by-color/).
 
 Name the detector something memorable, for example `person_detector` or `red_block_detector`. You will reference this name from the segmenter config.
 
@@ -218,5 +220,5 @@ Increase `mean_k` (try `10` to `20`) and lower `sigma` (try `1.0`) to filter out
 ## Next steps
 
 - [detections-to-segments reference](/reference/services/vision/detections-to-segments/): every attribute of the segmenter
-- [Measure depth](/vision/measure-depth/): simpler depth queries when you do not need 3D segmentation
+- [Measure depth](/vision/3d-vision/measure-depth/): simpler depth queries when you do not need 3D segmentation
 - [Motion planning](/motion-planning/): move a robot to a detected 3D object

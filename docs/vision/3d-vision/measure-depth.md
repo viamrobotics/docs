@@ -1,7 +1,7 @@
 ---
 linkTitle: "Measure depth"
 title: "Measure depth"
-weight: 50
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Retrieve point clouds and depth images from a depth camera, read depth at specific pixels, and measure distance to detected objects."
@@ -11,6 +11,7 @@ aliases:
   - /vision-detection/measure-depth/
   - /vision-detection/localize-objects-in-3d/
   - /build/vision-detection/localize-objects-in-3d/
+  - /vision/measure-depth/
 ---
 
 A standard camera gives you a flat 2D image. You can see that there is a box on the table, but you cannot tell whether the box is 30 centimeters away or 3 meters away. This how-to shows you how to get depth data from your camera and extract useful distance measurements for robotics tasks that involve physical interaction.
@@ -473,7 +474,7 @@ If your camera does not automatically provide intrinsic parameters, you can set 
 Most depth cameras (Intel RealSense, Oak-D) provide these automatically. You only need to set them manually for cameras without built-in calibration data.
 
 {{< alert title="Tip" color="tip" >}}
-If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect objects, step 7](/vision/object-detection/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
 {{< /alert >}}
 
 ## Try it
@@ -518,5 +519,5 @@ If you need an image, its detections, and a point cloud together in one call, us
 
 ## What's next
 
-- [Detect objects](/vision/detect/): get 2D detections to combine with depth measurements.
+- [Detect objects](/vision/object-detection/detect/): get 2D detections to combine with depth measurements.
 - [Frame system](/motion-planning/frame-system/): set up coordinate frame transforms so 3D positions are usable by other components.

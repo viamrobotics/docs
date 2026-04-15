@@ -67,33 +67,36 @@ This capture, label, train, deploy, monitor cycle is often called CVOps (compute
 
 ## Where to go next
 
-### Starting from scratch
+### Get started
 
 - [How the vision service works](/vision/how-it-works/): the two-service architecture behind every vision pipeline
 - [Configure a vision pipeline](/vision/configure/): end-to-end setup of an ML model service plus vision service
 
-### Deploy a model
+### Object detection
 
-- [Deploy a model from the registry](/vision/deploy-from-registry/): pick a pre-trained model and run it on a machine
-- [Deploy a custom ML model](/vision/deploy-custom-model/): bring your own trained model
-- [Detect by color](/vision/detect-by-color/): no ML needed
+- [Detect objects](/vision/object-detection/detect/): 2D bounding boxes in code
+- [Detect by color](/vision/object-detection/detect-by-color/): no ML needed
+- [Tune detection quality](/vision/object-detection/tune/): match symptoms to the right `mlmodel` attribute
+- [Track objects across frames](/vision/object-detection/track/): persistent IDs across video frames
+- [Act on detections](/vision/object-detection/act-on-detections/): trigger machine behavior from vision results
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send notifications on detections
 
-### Use the results
+### Classification
 
-- [Detect objects](/vision/detect/): 2D bounding boxes in code
-- [Classify images](/vision/classify/): whole-image labels
-- [Segment 3D objects](/vision/segment-3d/): point cloud objects with 3D coordinates
-- [Track objects across frames](/vision/track/): persistent IDs across video frames
-- [Measure depth](/vision/measure-depth/): distance readings from a depth camera
-- [Act on detections](/vision/act-on-detections/): trigger machine behavior from vision results
-- [Alert on detections](/vision/alert-on-detections/): send notifications on detections
+- [Classify images](/vision/classify/): whole-image labels and scene categorization
 
-### Operate in production
+### 3D vision
 
-- [Tune detection quality](/vision/tune/): match symptoms to the right `mlmodel` attribute
-- [Retrain when accuracy drops](/vision/retrain/): the CVOps loop for model maintenance
-- [Roll out a new model to a fleet](/vision/roll-out-to-fleet/): staged model rollouts
-- [Run batch inference](/vision/batch-inference/): run a model against stored images with `viam infer`
+- [Segment 3D objects](/vision/3d-vision/segment-3d/): point cloud objects with 3D coordinates
+- [Measure depth](/vision/3d-vision/measure-depth/): distance readings from a depth camera
+
+### Deploy and maintain models
+
+- [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): pick a pre-trained model and run it on a machine
+- [Deploy a custom ML model](/vision/deploy-and-maintain/deploy-custom-model/): bring your own trained model
+- [Retrain when accuracy drops](/vision/deploy-and-maintain/retrain/): the CVOps loop for model maintenance
+- [Roll out a new model to a fleet](/vision/deploy-and-maintain/roll-out-to-fleet/): staged model rollouts
+- [Run batch inference](/vision/deploy-and-maintain/batch-inference/): run a model against stored images with `viam infer`
 
 ### Reference
 

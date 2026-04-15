@@ -1,11 +1,13 @@
 ---
 linkTitle: "Roll out to a fleet"
 title: "Roll out a new model to a fleet"
-weight: 80
+weight: 40
 layout: "docs"
 type: "docs"
 description: "Update a vision model across many machines at once using fragments and model version pinning. Short guide with links to the full fleet and deployment docs."
 date: "2026-04-14"
+aliases:
+  - /vision/roll-out-to-fleet/
 ---
 
 This page covers the vision-specific pieces of rolling a new model to a fleet. The mechanics of fragments, staged rollout, and machine tagging live in the [fleet section](/fleet/).
@@ -20,8 +22,8 @@ A vision model rollout has three moving parts:
 
 Before updating any production machine:
 
-1. Train and publish the new model version. See [Retrain when your model drifts](/vision/retrain/).
-2. Deploy the new version on one test machine. Verify detections look correct through the Control tab. See [Deploy an ML model from the registry](/vision/deploy-from-registry/).
+1. Train and publish the new model version. See [Retrain when your model drifts](/vision/deploy-and-maintain/retrain/).
+2. Deploy the new version on one test machine. Verify detections look correct through the Control tab. See [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/).
 3. Confirm the fleet's shared configuration uses a fragment or is otherwise centrally managed. Machines configured one-off are updated one at a time; you cannot stage a rollout across them without per-machine changes.
 
 ## Pin the new version in a fragment
@@ -68,6 +70,6 @@ If the new model looks wrong, roll back by pinning the previous version in the f
 
 ## Related
 
-- [Retrain when your model drifts](/vision/retrain/): produce the new model version in the first place
-- [Deploy an ML model from the registry](/vision/deploy-from-registry/): deploy a model to a single machine
+- [Retrain when your model drifts](/vision/deploy-and-maintain/retrain/): produce the new model version in the first place
+- [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): deploy a model to a single machine
 - [Fleet deployment](/fleet/): the full fragment and staged-rollout mechanics
