@@ -86,8 +86,14 @@ Returns a `PoseInFrame`.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
+The Python `RobotClient` does not expose `GetPose`. Call `get_pose` on
+the motion service client instead:
+
 ```python
-gripper_in_world = await machine.get_pose(
+from viam.services.motion import MotionClient
+
+motion_service = MotionClient.from_robot(machine, "builtin")
+gripper_in_world = await motion_service.get_pose(
     component_name="my-gripper",
     destination_frame="world",
 )
@@ -109,14 +115,20 @@ gripperInWorld, err := machine.GetPose(
 {{% /tab %}}
 {{< /tabs >}}
 
-### Relationship to the deprecated motion.GetPose
+### Python goes through the motion service, Go through the robot service
 
-The motion service also has a `GetPose` method with the same parameter
-shape, but it is **deprecated** at the proto level. Callers should use
-the robot service's `GetPose`. The CLI's `print-status`, `get-pose`,
-and `set-pose` commands still invoke the deprecated
-motion-service method internally; their output is unchanged, but the
-underlying API surface will eventually change.
+The `GetPose` RPC lives on `RobotService` in the proto. The Go SDK
+surfaces it as `RobotClient.GetPose`, so Go callers hit the robot
+service directly. The Python SDK never wrapped it on `RobotClient`, so
+Python callers must use `MotionClient.get_pose`, which calls the motion
+service's `GetPose` (a separate, older, deprecated RPC with the same
+parameter shape).
+
+The two paths return equivalent results today. The underlying API
+surface will eventually consolidate, but until then Python callers
+stay on the motion-service path. The CLI's `print-status`, `get-pose`,
+and `set-pose` commands also invoke the deprecated motion-service
+method internally.
 
 ## TransformPose
 
@@ -170,6 +182,13 @@ compute poses involving that object.
 
 Supplemental transforms apply only to the current call. They do not
 modify the stored frame system configuration.
+
+**Python kwarg naming.** The proto field and the Go SDK use
+`supplemental_transforms`. The Python SDK is inconsistent:
+`MotionClient.get_pose` uses `supplemental_transforms`, but
+`RobotClient.transform_pose` and `RobotClient.get_frame_system_config`
+use `additional_transforms`. Pass the kwarg that matches the client
+class you are calling.
 
 ## TransformPCD
 

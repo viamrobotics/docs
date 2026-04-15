@@ -198,7 +198,7 @@ bundles.
    geometry).
 3. Name the component descriptively (for example, `arm-camera-mount`) and
    click **Create**.
-4. Click **+ Add frame**.
+4. Click **Frame**.
 5. Set the parent frame to the component the object is attached to. Use the
    arm name if the object is bolted to the arm's end effector, the gripper
    name if it is attached to the gripper, and so on.

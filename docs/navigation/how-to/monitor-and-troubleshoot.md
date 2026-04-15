@@ -54,6 +54,19 @@ navigation and motion services.
 
 {{< /expand >}}
 
+{{< expand "Logs show repeated 'MoveOnGlobe not supported' errors" >}}
+
+The navigation service drives the base by calling `MoveOnGlobe` on its
+configured motion service. The built-in motion service does not
+implement `MoveOnGlobe`; it returns "not supported" and the navigation
+loop retries indefinitely.
+
+Configure your navigation service's `motion_service` attribute to name
+a motion-service module that implements `MoveOnGlobe`. See
+[Navigation service configuration](/navigation/reference/navigation-service/#optional-attributes).
+
+{{< /expand >}}
+
 {{< expand "Robot replans constantly and makes slow progress" >}}
 
 Your `plan_deviation_m` is likely lower than your GPS error. The robot

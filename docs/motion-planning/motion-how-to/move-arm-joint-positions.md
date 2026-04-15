@@ -69,16 +69,15 @@ if err != nil {
     logger.Fatal(err)
 }
 
-// Go's Input type is radians. Convert from degrees using referenceframe.FloatsToInputs
-// on a radians slice.
-targets := referenceframe.FloatsToInputs([]float64{
+// Go's Input type is an alias for float64, storing radians for revolute joints.
+targets := []referenceframe.Input{
     0,
     -math.Pi / 4, // -45 degrees
     math.Pi / 2,  // 90 degrees
     0,
-    math.Pi / 4,  // 45 degrees
+    math.Pi / 4, // 45 degrees
     0,
-})
+}
 
 if err := myArm.MoveToJointPositions(ctx, targets, nil); err != nil {
     logger.Fatal(err)
@@ -126,14 +125,16 @@ import (
 )
 
 waypoints := [][]referenceframe.Input{
-    referenceframe.FloatsToInputs([]float64{0, -math.Pi / 4, math.Pi / 2, 0, math.Pi / 4, 0}),
-    referenceframe.FloatsToInputs([]float64{0, 0, math.Pi / 2, 0, 0, 0}),
-    referenceframe.FloatsToInputs([]float64{0, math.Pi / 4, 0, 0, -math.Pi / 4, 0}),
+    {0, -math.Pi / 4, math.Pi / 2, 0, math.Pi / 4, 0},
+    {0, 0, math.Pi / 2, 0, 0, 0},
+    {0, math.Pi / 4, 0, 0, -math.Pi / 4, 0},
 }
 
+// Go MoveOptions uses radians per second. The proto wire format uses
+// degrees, but the SDK field names and values are in radians.
 options := &arm.MoveOptions{
-    MaxVelDegsPerSec:   30.0, // Cap every joint at 30 deg/s.
-    MaxAccDegsPerSec2:  60.0, // Cap every joint at 60 deg/s^2.
+    MaxVelRads: 30.0 * math.Pi / 180, // Cap every joint at 30 deg/s.
+    MaxAccRads: 60.0 * math.Pi / 180, // Cap every joint at 60 deg/s^2.
 }
 
 if err := myArm.MoveThroughJointPositions(ctx, waypoints, options, nil); err != nil {
@@ -180,6 +181,11 @@ from Python; the arm uses its module's default speed profile.
 
 Per-joint fields take precedence over global fields. Pass `nil`
 options to use the module's default motion profile.
+
+The field names above are the proto field names, also used by the Python
+SDK. The Go SDK `arm.MoveOptions` struct uses shorter names and stores
+values in **radians**: `MaxVelRads`, `MaxAccRads`, `MaxVelRadsJoints`,
+`MaxAccRadsJoints`. The conversion happens at the wire boundary.
 
 ## Reading current joint positions
 

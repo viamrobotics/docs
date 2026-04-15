@@ -66,8 +66,11 @@ Mount it on a flat, rigid surface. Measure the square size with a ruler.
 
 ### 2. Capture calibration images
 
-Take 10-15 images of the chessboard from various positions and angles using
-the **CONTROL** tab in the Viam app.
+Open the camera on the **CONTROL** tab in the Viam app. Set the refresh
+dropdown next to the camera name to **Live** so the stream updates in
+real time. For each chessboard pose, click **Export screenshot** in the
+camera card's right sidebar to save a JPEG to your computer. Collect
+10-15 images covering a range of positions and angles.
 
 Guidelines:
 

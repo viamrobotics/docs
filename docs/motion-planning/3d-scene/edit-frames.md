@@ -7,17 +7,13 @@ type: "docs"
 description: "Add, edit, and delete frames and geometries directly in the 3D scene instead of editing JSON configuration."
 ---
 
-{{< alert title="Preview feature" color="note" >}}
-Visual frame editing is currently behind a feature flag and may not be enabled for your organization.
-The interface and behavior described here may change before general availability.
-{{< /alert >}}
+The 3D scene tab's frame-editing controls are an evolving preview interface; specific controls and label text may change before the feature is promoted out of preview.
 
-When visual frame editing is enabled, the 3D scene tab becomes a configuration tool: you can add frames to components, reposition them by editing coordinates in the details panel, change parent frames, and attach or modify geometry, all without editing JSON directly.
+The 3D scene tab can serve as a configuration tool: you can add frames to components, reposition them by editing coordinates in the details panel, change parent frames, and attach or modify geometry, all without editing JSON directly.
 Changes you make in the 3D scene are written back to your machine's configuration and saved when you click **Save** in the app.
 
 ## Prerequisites
 
-- Visual frame editing enabled for your organization (feature flag: `ENABLE_EDIT_FRAME_IN_VIZ_TAB`).
 - A machine with at least one component configured.
 
 ## Add a frame to a component

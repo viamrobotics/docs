@@ -135,7 +135,7 @@ await motion_service.move(
 
 ```go
 import (
-    motionpb "go.viam.com/api/service/motion/v1"
+    "go.viam.com/rdk/motionplan"
     "go.viam.com/rdk/services/motion"
 )
 
@@ -144,19 +144,12 @@ if err != nil {
     logger.Fatal(err)
 }
 
-lineTolerance := float32(5.0)
-orientTolerance := float32(5.0)
-
-constraints := &motionpb.Constraints{
-    LinearConstraint: []*motionpb.LinearConstraint{
-        {
-            LineToleranceMm: &lineTolerance,
-        },
+constraints := &motionplan.Constraints{
+    LinearConstraint: []motionplan.LinearConstraint{
+        {LineToleranceMm: 5.0},
     },
-    OrientationConstraint: []*motionpb.OrientationConstraint{
-        {
-            OrientationToleranceDegs: &orientTolerance,
-        },
+    OrientationConstraint: []motionplan.OrientationConstraint{
+        {OrientationToleranceDegs: 5.0},
     },
 }
 
@@ -200,14 +193,11 @@ constraints = Constraints(
 {{% tab name="Go" %}}
 
 ```go
-constraints := &motionpb.Constraints{
-    CollisionSpecification: []*motionpb.CollisionSpecification{
+constraints := &motionplan.Constraints{
+    CollisionSpecification: []motionplan.CollisionSpecification{
         {
-            Allows: []*motionpb.CollisionSpecification_AllowedFrameCollisions{
-                {
-                    Frame1: "my-gripper",
-                    Frame2: "target-object",
-                },
+            Allows: []motionplan.CollisionSpecificationAllowedFrameCollisions{
+                {Frame1: "my-gripper", Frame2: "target-object"},
             },
         },
     },

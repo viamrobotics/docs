@@ -131,12 +131,11 @@ if err != nil {
     logger.Fatal(err)
 }
 
-kinematicsType, kinematicsData, err := myArm.Kinematics(ctx, nil)
+model, err := myArm.Kinematics(ctx)
 if err != nil {
     logger.Fatal(err)
 }
-fmt.Printf("Kinematics format: %v\n", kinematicsType)
-fmt.Printf("Kinematics data length: %d bytes\n", len(kinematicsData))
+fmt.Printf("Arm model: %s with %d DoF\n", model.Name(), len(model.DoF()))
 ```
 
 {{% /tab %}}
@@ -163,6 +162,7 @@ is a simplified example for a two-joint arm:
       "parent": "world",
       "translation": { "x": 0, "y": 0, "z": 162.5 },
       "geometry": {
+        "type": "box",
         "x": 120,
         "y": 120,
         "z": 260,
