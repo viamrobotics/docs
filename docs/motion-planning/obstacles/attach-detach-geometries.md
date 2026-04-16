@@ -270,7 +270,7 @@ to see the valid frame names.
 - [Allow specific frames to collide](/motion-planning/obstacles/allow-frame-collisions/):
   permit the contact between gripper and object that the grasp
   requires.
-- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/move-an-arm/pick-an-object/):
   end-to-end grasp flow that uses this pattern.
 - [Frame system API](/motion-planning/reference/frame-system-api/):
   the `TransformPose` method, which uses the same supplemental

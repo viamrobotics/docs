@@ -1,12 +1,13 @@
 ---
 linkTitle: "Pick an object"
 title: "Pick an object"
-weight: 10
+weight: 60
 layout: "docs"
 type: "docs"
 description: "Detect, localize, and grasp an object with a robot arm and gripper."
 aliases:
   - /motion-planning/motion-how-to/pick-an-object/
+  - /motion-planning/pick-and-place/pick-an-object/
 ---
 
 Picking an object has four steps, and each step has a failure mode. The camera
@@ -16,7 +17,7 @@ colliding with the table or a neighboring fixture. The gripper has to close on
 the object, not in front of it or past it. This guide walks through all four
 steps, calls out the common places things go wrong, and leaves the result
 ready for the
-[placement](/motion-planning/pick-and-place/place-an-object/) half.
+[placement](/motion-planning/move-an-arm/place-an-object/) half.
 
 ## Prerequisites
 
@@ -209,7 +210,7 @@ print("Object lifted")
 
 ## What's next
 
-- [Place an object](/motion-planning/pick-and-place/place-an-object/):
+- [Place an object](/motion-planning/move-an-arm/place-an-object/):
   move the grasped object to a target location.
 - [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   use CollisionSpecification to allow gripper-object contact.

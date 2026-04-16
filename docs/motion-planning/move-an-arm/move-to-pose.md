@@ -282,5 +282,5 @@ viam machines part motion set-pose --part "my-machine-main" --component "my-arm"
   keep the end effector on a straight line or at a fixed orientation.
 - [Avoid obstacles](/motion-planning/obstacles/avoid-obstacles/):
   detailed obstacle configuration for complex workspaces.
-- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/move-an-arm/pick-an-object/):
   combine motion planning with vision and gripper control.

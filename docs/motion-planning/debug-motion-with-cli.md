@@ -1,5 +1,5 @@
 ---
-linkTitle: "Debug motion with the CLI"
+linkTitle: "Debug with the CLI"
 title: "Debug motion with the Viam CLI"
 weight: 40
 layout: "docs"

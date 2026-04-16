@@ -68,7 +68,7 @@ service with a 3D segmenter (such as the
 turns point clouds into bounded 3D objects, and you feed those to the
 planner.
 
-- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/move-an-arm/pick-an-object/):
   uses `GetObjectPointClouds` to localize the target the arm should
   grasp on a single `Move` call.
 - [Define obstacles](/motion-planning/obstacles/): the geometry types

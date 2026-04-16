@@ -1,7 +1,7 @@
 ---
 linkTitle: "3D scene tab"
 title: "3D scene tab"
-weight: 50
+weight: 30
 layout: "docs"
 type: "docs"
 no_list: true

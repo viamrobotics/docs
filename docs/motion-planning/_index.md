@@ -52,10 +52,9 @@ returns a collision-free path from the current pose to your target.
 
 {{< cards >}}
 {{% card link="/motion-planning/frame-system/" noimage="true" %}}
-{{% card link="/motion-planning/move-an-arm/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/" noimage="true" %}}
-{{% card link="/motion-planning/pick-and-place/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/" noimage="true" %}}
 {{< /cards >}}
 
 ## Other how-tos
