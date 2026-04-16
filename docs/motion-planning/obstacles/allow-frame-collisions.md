@@ -191,9 +191,9 @@ overlaps are expected.
 
 ## Use case: gripper grasping an object
 
-A grasp _requires_ contact between the gripper and the object. Without a
-`CollisionSpecification` allowing it, the planner rejects the final approach
-as a collision. Allow the gripper-object pair and the plan completes.
+The textbook use case: a pick motion ends with the gripper touching the
+target. Without an allow, the planner rejects the final approach as a
+collision; allow the gripper-object pair and the plan completes.
 
 ```python
 collision_spec = CollisionSpecification(
@@ -216,10 +216,11 @@ for the permanent-attachment pattern.
 
 ## Use case: adjacent arm links whose geometries overlap
 
-Some kinematic models have simplified collision geometry that causes
-adjacent links to register as colliding in certain joint configurations,
-even though the real hardware does not. If you are sure the overlap is
-a modeling artifact and not a real collision:
+This is the rarest of the three cases, and the one most likely to mask a
+real problem. Reach for it only when you are sure the overlap is a
+modeling artifact (simplified collision geometry on adjacent links that
+the real hardware does not actually collide with) and not a genuine
+collision:
 
 ```python
 collision_spec = CollisionSpecification(

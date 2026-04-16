@@ -35,8 +35,8 @@ ready for the
 Detection tells you _which_ object the camera sees; localization tells you
 _where_ it is in 3D. For grasping, you need both. 2D detections from
 `GetDetections` are not enough on their own: use `GetObjectPointClouds`, which
-returns 3D geometries in the camera's frame, then `TransformPose` into the
-world frame so the motion service can plan against the result.
+returns 3D geometries in the camera's frame, then `TransformPose` the result
+into the world frame so the motion service can plan against the pose.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -22,7 +22,7 @@ and so on). You do not instantiate a separate frame system client.
 
 ## Service names
 
-Inside RDK, the frame system is registered under two names: `builtin` (the default instance that ships with `viam-server`) and `$framesystem` (the name modules use to resolve a dependency on the frame system). SDK callers do not reference either; the RPCs on the robot/machine client hit the frame system transparently.
+You do not reference these names directly when calling the frame system from an SDK. They appear here so you can recognize them in error messages or module configuration: inside RDK, the frame system is registered under `builtin` (the default instance that ships with `viam-server`) and `$framesystem` (the name modules use to resolve a dependency on it). The RPCs on the robot/machine client hit the frame system transparently.
 
 ## FrameSystemConfig
 

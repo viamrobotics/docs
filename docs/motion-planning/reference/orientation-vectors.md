@@ -92,8 +92,6 @@ Rotation axis plus angle in radians, using the R4AA (Rotation 4 Axis Angle) repr
 
 Default: `{"x": 0, "y": 0, "z": 1, "th": 0}`.
 
-The axis must have a non-zero norm. A zero-norm axis causes a runtime error.
-
 ### `quaternion`
 
 Unit quaternion. Values are auto-normalized.
