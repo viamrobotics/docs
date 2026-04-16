@@ -186,7 +186,7 @@ Common uses:
 - **Convert detections**: transform a point detected in a camera frame to world coordinates so an arm can reach it.
 - **Compare across frames**: when two components report positions in different frames, transform both to a common frame before comparing.
 
-## Verify visually with the 3D scene
+## Verify visually with the 3D SCENE tab
 
 The [3D SCENE tab](/motion-planning/3d-scene/) renders your frame hierarchy in
 3D: every configured component appears at its computed world pose, with

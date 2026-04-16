@@ -18,7 +18,7 @@ frame's current world-frame pose, and `set-pose` drives a component to a pose
 so you can isolate reachability.
 
 This guide walks through the most common debugging flows. For the
-visual equivalent on machines where the **3D scene** tab is available,
+visual equivalent on machines where the **3D SCENE** tab is available,
 see [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/).
 For the dry command reference, see
 [Motion CLI commands](/motion-planning/reference/cli-commands/).

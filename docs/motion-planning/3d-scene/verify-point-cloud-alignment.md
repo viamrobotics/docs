@@ -9,7 +9,7 @@ aliases:
   - /motion-planning/3d-scene/inspect-point-clouds/
 ---
 
-Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The 3D scene tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.
+Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The **3D SCENE** tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.
 
 Misalignment usually means one of two things: the camera's frame offset is wrong, or the camera itself has a problem. Finding that out now, before a motion plan runs or an ML detector ships, costs minutes; finding it out later costs a day of debugging a downstream pipeline.
 
@@ -21,7 +21,7 @@ Misalignment usually means one of two things: the camera's frame offset is wrong
 
 ## Steps
 
-### 1. Open the 3D scene tab
+### 1. Open the 3D SCENE tab
 
 Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 Your machine must be online for live point cloud data.

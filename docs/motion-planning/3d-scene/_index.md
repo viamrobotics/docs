@@ -8,8 +8,8 @@ no_list: true
 description: "Visualize your machine's frame system, geometries, and point clouds in an interactive 3D view."
 ---
 
-The **3D scene** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
-Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The 3D scene makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
+The **3D SCENE** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
+Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The **3D SCENE** tab makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
 
 The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame. Attached geometries render as translucent shapes, and point clouds from depth cameras render as colored point sets.
 
@@ -52,19 +52,19 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 
 ## Navigation controls
 
-| Action                   | Mouse             | Keyboard             |
-| ------------------------ | ----------------- | -------------------- |
-| Orbit (rotate view)      | Left-click drag   | Arrow keys           |
-| Pan                      | Right-click drag  |                      |
-| Zoom                     | Scroll wheel      | `R` (in) / `F` (out) |
-| Strafe camera            |                   | `W`/`A`/`S`/`D`      |
-| Select entity            | Left-click        |                      |
-| Deselect                 | Click empty space |                      |
-| Exit object view         |                   | `Escape`             |
-| Toggle camera mode       |                   | `C`                  |
-| Toggle entity visibility |                   | `H`                  |
+| Action                   | Mouse             | Keyboard              |
+| ------------------------ | ----------------- | --------------------- |
+| Orbit (rotate view)      | Left-click drag   | Arrow keys            |
+| Pan                      | Right-click drag  |                       |
+| Zoom                     | Scroll wheel      | `R` (in) / `F` (out)  |
+| Strafe camera            |                   | `W`/`A`/`S`/`D`       |
+| Select entity            | Left-click        |                       |
+| Deselect                 | Click empty space |                       |
+| Exit object view         |                   | `Escape`              |
+| Toggle camera mode       |                   | `C`                   |
+| Toggle entity visibility |                   | `H` (selected entity) |
 
-Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you are editing a value in the Details panel.
+Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you are editing a value in the Details panel. `H` only affects the currently selected or focused entity, so click an entity (or its row in the World panel) before pressing it.
 
 ## Settings
 

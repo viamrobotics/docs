@@ -7,7 +7,7 @@ type: "docs"
 description: "Visualize and adjust obstacle geometry so the motion planner routes around physical objects."
 ---
 
-The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, or capsules positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The 3D scene tab lets you see what the planner sees, so you can check coverage before running a plan.
+The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, or capsules positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The **3D SCENE** tab lets you see what the planner sees, so you can check coverage before running a plan.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ The motion planner avoids obstacles only if it knows about them, and it knows ab
 
 ## Visualize existing obstacles
 
-### 1. Open the 3D scene tab
+### 1. Open the 3D SCENE tab
 
 Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 
@@ -51,7 +51,7 @@ For static obstacles (tables, walls, posts), define them in the configuration so
 
 See [Define obstacles](/motion-planning/obstacles/) for the full configuration reference, including JSON examples for each geometry type.
 
-After changing obstacle configuration, return to the 3D scene tab to verify the changes.
+After changing obstacle configuration, return to the **3D SCENE** tab to verify the changes.
 The scene reflects the current saved configuration.
 
 ## Choose the right geometry type
@@ -66,7 +66,7 @@ The scene reflects the current saved configuration.
 
 ## Verify coverage
 
-After defining obstacles, run through this checklist in the 3D scene:
+After defining obstacles, run through this checklist in the **3D SCENE** tab:
 
 1. **Orbit to each workspace boundary.** If the arm can reach past the geometry into the physical object, the geometry is too small.
 2. **Check the floor and ceiling.** If the arm can reach the floor, add a floor plane. Do the same for ceiling-mounted setups.
@@ -75,6 +75,6 @@ After defining obstacles, run through this checklist in the 3D scene:
 
 ## Dynamic obstacles
 
-Static obstacles in configuration cover fixed workspace objects. For objects that move, pass geometry at runtime through the `WorldState` parameter of the `Move` request. Runtime geometry uses the same shape types as static geometry and appears in the 3D scene the same way.
+Static obstacles in configuration cover fixed workspace objects. For objects that move, pass geometry at runtime through the `WorldState` parameter of the `Move` request. Runtime geometry uses the same shape types as static geometry and appears in the **3D SCENE** tab the same way.
 
 Pair a vision service with a camera to detect moving objects and feed the detections into `Move` as runtime obstacles. See the [motion service API reference](/motion-planning/reference/) for obstacle detectors.

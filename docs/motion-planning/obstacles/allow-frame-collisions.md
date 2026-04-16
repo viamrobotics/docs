@@ -241,7 +241,7 @@ silencing them can mask real hardware problems.
 2. Plan a motion you expect to fail for other reasons (target inside an
    unrelated obstacle, target outside reach). The planner should still
    reject those.
-3. Visually confirm the motion in the 3D scene tab before running on
+3. Visually confirm the motion in the **3D SCENE** tab before running on
    hardware. See
    [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/).
 
@@ -288,4 +288,4 @@ geometry is usually the right answer.
 - [Define obstacles](/motion-planning/obstacles/): the obstacle geometry
   that the planner checks against.
 - [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/):
-  visualize frame overlaps in the 3D scene.
+  visualize frame overlaps in the **3D SCENE** tab.
