@@ -14,17 +14,17 @@ aliases:
 `MoveOnMap` and `MoveOnGlobe` return immediately with an `ExecutionID` and run
 the actual motion in the background. Your code has to poll that execution to
 learn when it completes, fails, or stops. This page gives the polling pattern
-in Go and Python. For the built-in `Move`, which blocks until the motion
-finishes, the pattern collapses to a try/except: covered at the end.
+in Go and Python.
 
-## Before you start
+Neither RPC is implemented by the built-in motion service: the built-in
+returns "not supported" for both. You need the
+[navigation service](/navigation/), which calls `MoveOnGlobe` internally,
+or a motion-service module that provides them. If you are using the
+built-in `Move` instead (which blocks until completion), skip to the
+last section.
 
-- **`MoveOnMap` and `MoveOnGlobe` are not implemented by the built-in motion
-  service.** You need the navigation service (which calls them internally) or
-  a motion-service module that provides them. The built-in motion service
-  returns "not supported" for both.
-- For background on the methods and states, see
-  [Plan monitoring](/motion-planning/reference/plan-monitoring/).
+For background on the methods and states, see
+[Plan monitoring](/motion-planning/reference/plan-monitoring/).
 
 ## The polling pattern
 
@@ -151,7 +151,9 @@ err = motionService.StopPlan(ctx, motion.StopPlanReq{ComponentName: "my-base"})
 A non-blocking motion runs independently of your polling loop. Treat `StopPlan`
 as the cut-off switch: any condition your application reads (a safety
 button, an external sensor, a higher-level task abort) should call
-`StopPlan` directly without waiting for the polling loop to notice.
+`StopPlan` directly without waiting for the polling loop to notice. Run
+the safety check and the polling loop concurrently so either can call
+`StopPlan` without waiting on the other.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -214,10 +216,9 @@ go func() {
 {{< /tabs >}}
 
 After `StopPlan` returns, the plan's terminal state transitions to
-`STOPPED`. The polling loop then exits on the next `GetPlan` cycle.
-Behavior when calling `StopPlan` on a plan that has already reached a
-terminal state depends on the implementation; check the docs for the
-specific motion-service module you are using.
+`STOPPED`. The polling loop then exits on the next `GetPlan` cycle. If
+you call `StopPlan` after a plan has already reached a terminal state,
+behavior depends on the module; check the motion-service module's docs.
 
 ## Replanning and ExecutionID
 

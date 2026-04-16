@@ -18,12 +18,16 @@ six joints, so every configuration is a point in six-dimensional joint
 space. The planner has to find a continuous path through this space
 that satisfies all the constraints.
 
+When planning fails (and it will, because the search is probabilistic),
+the error messages mean little unless you understand what the planner
+was trying to do. This page gives you that model.
+
 ## The algorithm: cBiRRT
 
-Viam's built-in motion service uses **cBiRRT**: Constrained Bidirectional
-Rapidly-Exploring Random Tree. This is the only planning algorithm in
-the built-in service. Modules may implement alternative planners, but
-cBiRRT handles the general arm-planning case.
+Viam's built-in motion service uses **cBiRRT** (Constrained Bidirectional
+Rapidly-Exploring Random Tree), which handles the general arm-planning
+case. It is the only algorithm the built-in service runs; modules may
+implement alternative planners.
 
 cBiRRT comes from [Berenson et al., 2009](https://www.ri.cmu.edu/publications/manipulation-planning-on-constraint-manifolds/). The name unpacks to three ideas:
 the "constrained" part enforces orientation and linear constraints, the

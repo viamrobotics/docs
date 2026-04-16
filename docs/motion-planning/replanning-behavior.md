@@ -87,9 +87,8 @@ robot's reported position is farther than this threshold from the nearest
 point on the current plan, the service triggers a replan.
 
 Tune the threshold to match your movement sensor's accuracy. Standard GPS
-typically reports positional error of 3-5 m, so a 2.6 m deviation threshold
-produces frequent replans; raise the threshold for standard GPS and lower it
-for RTK.
+reports positional error of 3-5 m, so the 2.6 m default triggers frequent
+replans. Raise the threshold for standard GPS and lower it for RTK.
 
 ### Transient obstacles
 
@@ -98,9 +97,9 @@ service queries these detectors at `obstacle_polling_frequency_hz`. When a
 detector reports a new obstacle, the motion service transforms the obstacle
 into the planner's frame, then triggers a replan that accounts for it.
 
-Detectors are only active during execution. They do not contribute to
-initial planning; that picture of the world comes from the obstacles
-you passed in the request or configured statically on the machine.
+Detectors are only active during execution, not initial planning.
+Initial obstacles come from the `WorldState` in the request or from
+static machine config.
 
 ### Replan cost factor (navigation service only)
 
@@ -125,10 +124,9 @@ motion service does not do:
 - **Undo completed motion.** A replan always starts from the robot's current
   position. If conditions change behind the robot after it has passed
   through, the new plan does not go back.
-- **Replace a failed plan.** If the planner cannot find a path from
-  the robot's current position (after a deviation or obstacle trigger),
-  the execution transitions to `FAILED` rather than trying different
-  approaches automatically.
+- **Recover automatically from a failed replan.** If the new plan also
+  cannot find a path from the robot's current position, the execution
+  transitions to `FAILED`. The service does not try different approaches.
 
 ## Practical consequences
 
