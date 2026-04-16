@@ -7,6 +7,7 @@ type: "docs"
 description: "Set up micro-controller."
 aliases:
   - /operate/install/setup-micro/
+  - /operate/get-started/other-hardware/micro-module/
 _build:
   list: never
 ---

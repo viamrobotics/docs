@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Configure automated jobs that call component and service methods on a schedule."
+aliases:
+  - /manage/software/scheduled-jobs/
 ---
 
 Schedule automated jobs that call methods on your machine's components and services at specified intervals. Use jobs to automate routine tasks like reading sensors, capturing images, running calibration routines, or syncing data.

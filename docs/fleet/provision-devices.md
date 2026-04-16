@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Set up automated provisioning so machines configure themselves when they first come online."
+aliases:
+  - /manage/fleet/provision/setup/
 ---
 
 Set up zero-touch provisioning so machines you ship or deploy automatically configure themselves on first boot. You install `viam-agent` during manufacturing and define a defaults file. When someone powers on the device and provides network credentials, the machine downloads and applies its configuration from a fragment.

@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Connect multiple computers so one machine can access another's components and services."
 date: "2026-04-16"
+aliases:
+  - /operate/reference/architecture/parts/
 ---
 
 When you configure a machine in Viam, you're describing one computer running `viam-server` and the components attached to it.

@@ -8,6 +8,9 @@ description: "Reference for module developers: lifecycle, interfaces, meta.json 
 date: "2025-03-05"
 aliases:
   - /development/module-reference/
+  - /operate/modules/lifecycle-module/
+  - /operate/modules/lifecycle-of-a-module/
+  - /operate/modules/other-hardware/lifecycle-module/
 ---
 
 This page is a reference for module developers. For step-by-step

@@ -8,6 +8,7 @@ description: "Train a classification or object detection model from a labeled da
 date: "2025-01-30"
 aliases:
   - /build/train/train-a-model/
+  - /data-ai/ai/train/
 ---
 
 Submit a training job from your labeled dataset. Viam runs the job on

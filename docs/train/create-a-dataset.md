@@ -8,6 +8,7 @@ description: "Create a dataset of images for training an ML model."
 date: "2025-01-30"
 aliases:
   - /build/train/create-a-dataset/
+  - /data-ai/train/create-dataset/
 ---
 
 A dataset is a named collection of images at the organization level that you
