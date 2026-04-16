@@ -15,13 +15,9 @@ The tab reads your machine's configuration and, when the machine is online, conn
 
 ## The interface
 
-The tab has four main areas: a 3D viewport in the center, a World panel on the upper-left, a Details panel on the upper-right, and a Dashboard toolbar on top. The viewport is where you look; the other three are where you navigate, inspect, and change views.
+The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the **Dashboard toolbar** changes how the viewport renders.
 
-**3D viewport** (center): The main rendering area.
-You can orbit, pan, and zoom to view your frame system from any angle.
-Components appear as labeled coordinate axes, with attached geometries rendered as translucent shapes.
-Point clouds from cameras render as colored point sets.
-An XY grid provides spatial reference.
+**3D viewport** (center): the interactive rendering area. Orbit, pan, and zoom to see your frame system from any angle. Components appear as labeled coordinate axes; attached geometries render as translucent shapes; point clouds render as colored point sets. An XY grid provides spatial reference.
 
 **World panel** (floating, upper-left): A hierarchical list of every entity in the scene, titled **World**.
 The panel is always visible (it has no close button) but is draggable and resizable.
