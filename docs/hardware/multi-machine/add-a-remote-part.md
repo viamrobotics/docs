@@ -116,11 +116,3 @@ The connection reconnects automatically in the background, so subsequent calls m
 By default, a remote's resources attach at the world origin of your machine's frame tree.
 For spatial setups where the remote's hardware has a known physical offset, configure the remote's `frame` field.
 See [Frames across machines](/hardware/multi-machine/cross-machine-frames/).
-
-## Next steps
-
-{{< cards >}}
-{{% card link="/hardware/multi-machine/add-a-sub-part/" %}}
-{{% card link="/hardware/multi-machine/cross-machine-frames/" %}}
-{{% card link="/operate/reference/architecture/machine-to-machine-comms/" %}}
-{{< /cards >}}

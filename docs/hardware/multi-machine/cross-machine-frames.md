@@ -11,6 +11,7 @@ date: "2026-04-16"
 When a component lives on a different computer than your main part, the motion service still needs to know where that component sits in space.
 A camera on a remote Raspberry Pi, an IMU on a sub-part's board, a shared warehouse camera on a stationary rig: all of them need a frame entry in the main machine's frame tree, not only in the remote machine's.
 This page shows how to set that up.
+For the general mechanics of how the frame tree works, see [Frame system](/motion-planning/frame-system/).
 
 ## What the remote's frame field does
 
@@ -143,11 +144,3 @@ print(camera_in_world)
 ```
 
 If the returned pose does not match your measurements, compare each field in the remote's `frame` config against the physical offset, and confirm the remote's own components declare the expected parent.
-
-## Next steps
-
-{{< cards >}}
-{{% card link="/hardware/multi-machine/add-a-remote-part/" %}}
-{{% card link="/hardware/multi-machine/add-a-sub-part/" %}}
-{{% card link="/operate/reference/services/frame-system/" %}}
-{{< /cards >}}

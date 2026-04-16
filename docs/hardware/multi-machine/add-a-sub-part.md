@@ -76,11 +76,3 @@ By default, every sub-part sits at the world origin.
 For spatial setups where the sub-part's hardware has a known physical position, configure the sub-part's frame.
 For example, a camera mounted on an arm's end effector, or a sensor at a known offset from the main part's frame.
 See [Frames across machines](/hardware/multi-machine/cross-machine-frames/).
-
-## Next steps
-
-{{< cards >}}
-{{% card link="/hardware/multi-machine/add-a-remote-part/" %}}
-{{% card link="/hardware/multi-machine/cross-machine-frames/" %}}
-{{% card link="/hardware/configure-hardware/" %}}
-{{< /cards >}}

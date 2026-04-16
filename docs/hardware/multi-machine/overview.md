@@ -92,12 +92,4 @@ If the client goes silent (network loss, crashed process), `viam-server` automat
 A rover will not keep driving, an arm will not keep moving, and a gripper will not keep closing when the commanding process vanishes.
 This applies equally to local and remote resources.
 
-## Next steps
-
-{{< cards >}}
-{{% card link="/hardware/multi-machine/add-a-sub-part/" %}}
-{{% card link="/hardware/multi-machine/add-a-remote-part/" %}}
-{{% card link="/hardware/multi-machine/cross-machine-frames/" %}}
-{{< /cards >}}
-
 For the lower-level details of how machines communicate, see [Machine-to-machine communication](/operate/reference/architecture/machine-to-machine-comms/).
