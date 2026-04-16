@@ -21,15 +21,13 @@ automatically on its next config sync.
 
 ## Use existing fragments
 
-When you search for a configuration block in the Viam app, fragments appear
-alongside individual models. If a fragment matches your hardware combination,
-use it. Someone has already figured out the right configuration for those
-components working together.
+When you search for a configuration block in the Viam app, fragments appear alongside individual models.
+If a fragment matches your hardware combination, use it.
+Someone has already figured out the right configuration for those components working together.
 
-For example, if you're setting up an xArm 6 with a wrist-mounted RealSense
-camera, a fragment for that combination configures both components and their
-spatial relationship in one step, rather than adding and configuring each one
-individually.
+For example, if you're setting up a UFactory xArm 6 with a wrist-mounted Intel RealSense camera, a fragment for that combination configures both components and their spatial relationship in one step, rather than adding and configuring each one individually.
+
+You can browse every fragment in your organization on the [FRAGMENTS page](https://app.viam.com/fragments), and search community fragments from the configuration block search in the Viam app.
 
 ## Save your own configurations
 
@@ -47,22 +45,33 @@ fragment instead of configuring each component from scratch.
 
 ### Fragment variables
 
-If part of the configuration varies between machines, use a **fragment
-variable** instead of a fixed value. For example, if the arm's IP address
-differs per machine:
+If part of the configuration varies between machines, use a **fragment variable** instead of a fixed value.
+For example, when the arm's IP address differs per machine, the fragment references the IP as a variable named `arm_ip`:
 
 ```json
 {
-  "host": {
-    "$variable": {
-      "name": "arm_ip"
+  "components": [
+    {
+      "name": "my-arm",
+      "api": "rdk:component:arm",
+      "model": "viam:ufactory:xArm6",
+      "attributes": {
+        "host": {
+          "$variable": {
+            "name": "arm_ip"
+          }
+        },
+        "speed_degs_per_sec": 60
+      }
     }
-  }
+  ]
 }
 ```
 
-Each machine sets the `arm_ip` variable to its own arm's address. Everything
-else comes from the fragment.
+Each machine that uses this fragment sets `arm_ip` to its own arm's address in the fragment card's **Variables** section on the **CONFIGURE** tab: `192.168.1.100` on one machine, `192.168.1.101` on another.
+Every other attribute (`speed_degs_per_sec` above, plus frames, dependencies, and so on) comes from the fragment and stays identical across machines.
+
+See [Reuse machine configuration](/fleet/reuse-configuration/) for the full variable syntax and for overriding individual fields without writing a new fragment.
 
 ### How fragments merge
 
