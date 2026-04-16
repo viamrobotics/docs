@@ -59,10 +59,9 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
 
 ## 3. Verify
 
-1. Navigate to the **CONTROL** tab.
-2. Find your vision service and click **Test**.
-3. Select a camera to run the model against.
-4. You should see live classifications or detections overlaid on the camera
+1. In the vision service's configuration card, click **Test**.
+2. Select a camera to run the model against.
+3. You should see live classifications or detections overlaid on the camera
    feed.
 
 ## Use the model in code

@@ -71,10 +71,10 @@ setup(
 
 Your script receives two required command-line arguments from the platform:
 
-| Argument                   | Description                                                                                           |
-| -------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `--dataset_file`           | Path to a JSONLines file containing dataset metadata: file paths and annotations for each data point. |
-| `--model_output_directory` | Directory where your script must save its model artifacts.                                            |
+| Argument                   | Description                                                                                                                     |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `--dataset_file`           | Path to a [JSONLines](https://jsonlines.org/) file containing dataset metadata: file paths and annotations for each data point. |
+| `--model_output_directory` | Directory where your script must save its model artifacts.                                                                      |
 
 You can add custom arguments (like `--num_epochs` or `--labels`) and pass them when you submit the training job.
 

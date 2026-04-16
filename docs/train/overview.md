@@ -26,19 +26,18 @@ Training an ML model follows a repeating cycle:
    auto-annotate and review predictions.
 
 3. **Train a model.** Submit a training job and Viam runs it on cloud
-   infrastructure. No GPU provisioning, no framework installation. Training
-   times range from minutes to an hour depending on dataset size. When training
-   completes, the model is stored in your organization's registry.
+   infrastructure. No GPU provisioning, no framework installation. When
+   training completes, the model is stored in your organization's registry.
 
-4. **Deploy to your machine.** Configure the `tflite_cpu` module and an ML
-   model service on your machine. Add a vision service to apply the model to
-   live camera frames. The machine pulls the model from the registry
-   automatically.
+4. **Deploy to your machine.** Configure the appropriate ML model service on
+   your machine (for example, `tflite_cpu` for TFLite models). Add a vision
+   service to apply the model to live camera frames. The machine pulls the
+   model from the registry automatically.
 
-5. **Iterate.** Deploy the model, collect data on its failures, auto-annotate
-   new images with the current model, review the predictions, retrain, and
-   redeploy. Each cycle tightens the feedback loop and improves accuracy. In ML
-   this is called active learning.
+5. **Iterate.** Deploy the model, collect data on its predictions,
+   auto-annotate new images with the current model, review the predictions,
+   retrain, and redeploy. Each cycle tightens the feedback loop and improves
+   accuracy. In ML this is called active learning.
 
 ## Scale labeling with auto-predictions
 
