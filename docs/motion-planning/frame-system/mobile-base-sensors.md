@@ -9,14 +9,14 @@ aliases:
   - /motion-planning/frame-system-how-to/mobile-base-sensors/
 ---
 
-A mobile base only knows where it is to the extent its sensors report. Lidar
-sweeps tell the base what is around it; front and rear cameras feed detection
-and SLAM. Every one of those sensor readings is in the sensor's own reference
-frame: a lidar point at `(2.0 m, 0, 0)` is two meters in front of the lidar,
-not in front of the base. The frame system is what converts sensor frames to
-the base frame and on to the world frame, so the navigation stack sees
-consistent positions. Configuring it correctly is a one-time setup; this
-guide walks through it.
+A mobile base's sense of its own position comes from its sensors,
+nothing else. Lidar sweeps tell the base what is around it; front and
+rear cameras feed detection and SLAM. Every sensor reading is in the
+sensor's own reference frame: a lidar point at `(2.0 m, 0, 0)` is two
+meters in front of the lidar, not in front of the base. The frame
+system converts sensor frames to the base frame and on to the world
+frame, so the navigation stack sees consistent positions. Configuring
+it is a one-time setup; this guide walks through it.
 
 ## Frame hierarchy
 
@@ -35,13 +35,11 @@ All sensors are children of the base, so the entire sensor subtree moves with th
 
 ### 1. Choose your world frame origin
 
-For a mobile base, the world frame origin is the center of the base itself at
-machine start. Because the base moves through the environment, the world
-frame origin is not a fixed physical location; it is wherever the base was
-when it came online. Sensor positions are all measured relative to the base
-center, not relative to a point in the room, so you do not need to mark
-anything physically. The frame system tracks the base's motion from that
-initial origin.
+For a mobile base, the world frame origin is the base center at machine
+start: not a fixed point in the room, but wherever the base was when it
+came online. Sensor positions are measured relative to the base center,
+so you do not need to mark anything physically. The frame system tracks
+the base's motion from that initial origin.
 
 ### 2. Add a frame to the base
 
@@ -116,7 +114,7 @@ For a camera mounted at the front of the base, 200 mm forward and 120 mm above t
 ```
 
 The default orientation has the camera looking along the +y axis (forward).
-If your camera's optical axis does not align with the base's forward direction, adjust the orientation accordingly.
+If your camera is mounted rotated, set `value.th` to the rotation angle in degrees.
 
 **Rear-facing camera:**
 

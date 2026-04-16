@@ -27,7 +27,7 @@ world
 └── table-surface
 ```
 
-The key difference from a wrist-mounted camera setup is that the camera is a child of the world frame, not the arm.
+Unlike a wrist-mounted camera, this camera is a child of the world frame, not the arm.
 The camera frame stays fixed in space when the arm moves.
 
 ## Steps
@@ -85,7 +85,7 @@ In the sidebar, click your camera component to open its card. On the card, click
 The camera's parent is `"world"`, not the arm.
 
 Measure the camera's position relative to your world frame origin.
-You need to measure in all three axes: left/right (x), forward/backward (y), and height (z).
+Measure along all three axes: x (right), y (forward), z (up).
 
 **Overhead camera example:**
 For a camera mounted 200 mm to the right, 300 mm forward, and 800 mm above the world frame origin:
@@ -101,12 +101,12 @@ For a camera mounted 200 mm to the right, 300 mm forward, and 800 mm above the w
 }
 ```
 
-An overhead camera's lens points at the floor. In the default camera frame,
-+z points out of the lens, so without rotation the camera's +z would point up
-and the floor would be in -z. Rotating 180 degrees around the x axis flips z
-to point down (the direction the lens is actually aimed), and flips y to
-compensate. The result: +z now matches "away from the camera" in the physical
-sense, and the camera's 2D coordinates map intuitively to world positions.
+An overhead camera's lens points at the floor. In the default camera
+frame, +z points out of the lens, so an unrotated overhead camera has
+its +z pointing up rather than down at the workspace. The 180-degree
+rotation around x flips the camera's +z to point downward, matching the
+lens's actual aim, so 2D image coordinates map intuitively to world
+positions.
 
 **Tripod-mounted camera at an angle:**
 For a camera on a tripod 500 mm to the left, 600 mm forward, and 700 mm above the origin, tilted 45 degrees downward:

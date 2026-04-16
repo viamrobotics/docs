@@ -33,14 +33,14 @@ The gripper and camera are both children of the arm, so they move with the arm a
 
 ### 1. Choose your world frame origin
 
-Every frame on the machine will be defined relative to the world frame, so the
-origin is the point you measure from. Two good choices for a table-mounted
-arm: the arm's base, or a corner of the table. Using the arm base as the
-origin means the arm's translation is `(0, 0, 0)` and every other measurement
-starts from the arm. Using a table corner gives you a physical landmark (you
-can literally see the corner) at the cost of measuring arm-base-to-corner
-first. Either way, mark the origin physically; you will refer to it every
-time you add or adjust a frame.
+Pick either the arm's base or a corner of the table as your world frame
+origin, then mark that point physically. The trade-off: using the arm
+base means the arm's translation is `(0, 0, 0)` and every measurement
+starts from the arm. Using a table corner gives you a visible landmark
+but requires measuring arm-base-to-corner first.
+
+Every frame on the machine is defined relative to this point, so you
+will refer to it every time you add or adjust a frame.
 
 ### 2. Add a frame to the arm
 
@@ -100,10 +100,10 @@ In the sidebar, click your gripper component to open its card. On the card, clic
 
 #### Pick where the gripper frame origin sits
 
-Choose a point on the gripper as the frame origin. It is up to you, but a
-point near the center of the gripper jaws is usually the most convenient
-choice: when you later call the motion service to move the gripper to a
-target pose, the point you pick here is what gets moved to that pose.
+A point near the center of the gripper jaws is usually the most
+convenient frame origin. When you later call the motion service to move
+the gripper to a target pose, whatever point you pick here is what gets
+moved to that pose.
 
 #### Configure the frame
 
@@ -150,13 +150,13 @@ jaw linkages. If the gripper has one, the motion planner already knows
 the gripper's volume and you do not need to add collision geometry to
 the gripper frame.
 
-Call `GetKinematics` on the gripper (or check the module source) to see
-whether kinematics are provided. If they are, verify that the gripper
-renders as expected in the **3D SCENE** tab. If it does, you are done.
+Call `GetKinematics` on the gripper (or check the module source). If
+the call returns kinematics data, verify the gripper renders as expected
+in the **3D SCENE** tab and you are done.
 
-If the gripper does not have a kinematics file and you want the planner
-to avoid collisions with the gripper body, add a `geometry` field to the
-gripper's frame describing its physical volume. See
+If the gripper has no kinematics file, add a `geometry` field to the
+gripper's frame describing its physical volume so the planner can avoid
+collisions with the gripper body. See
 [Define obstacles](/motion-planning/obstacles/#passive-objects-attached-to-a-component)
 for the pattern.
 

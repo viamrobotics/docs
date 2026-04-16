@@ -9,14 +9,14 @@ aliases:
   - /motion-planning/frame-system-how-to/mobile-base-arm/
 ---
 
-A mobile manipulator, a base with an arm on top, has two distinct kinds of
-motion: the base moves through the environment, and the arm moves within
-reach of the base. The frame system represents this correctly by parenting
-the arm to the base rather than to the world. Every arm-attached component
-(the gripper, a wrist camera) then inherits the base's motion, while
-navigation sensors mounted directly on the base form a parallel subtree.
-This guide builds the full hierarchy: world to base to (arm to (gripper,
-wrist camera), navigation sensors).
+A mobile manipulator is a base with an arm on top. It has two distinct
+kinds of motion: the base moves through the environment, and the arm
+moves within reach of the base. The frame system represents this by
+parenting the arm to the base rather than to the world. Every
+arm-attached component (the gripper, a wrist camera) then inherits the
+base's motion, while navigation sensors mounted directly on the base
+form a parallel subtree. This guide builds the full hierarchy: world to
+base to (arm to (gripper, wrist camera), navigation sensors).
 
 ## Frame hierarchy
 
@@ -40,8 +40,11 @@ about the floor consistent while the arm reaches for something.
 
 ### 1. Choose your world frame
 
-For a mobile base, the world frame origin is typically the center of the base.
-All component positions are defined relative to this center point.
+For a mobile base, the world frame origin is the base center at machine
+start. Unlike a table-mounted arm where you pick a fixed physical
+landmark, the frame system tracks the base's motion from this initial
+origin, so you do not mark anything physically. All component positions
+are defined relative to this point.
 
 ### 2. Add a frame to the base
 
@@ -167,8 +170,8 @@ Click **Save** after adding each frame.
 
 1. Open the **3D SCENE** tab.
 2. Confirm the tree structure: arm, gripper, and wrist camera under the base; navigation sensors as direct children of the base.
-3. Jog the arm from the **CONTROL** tab. The arm subtree should move; the base and navigation sensors should not. This is the single clearest test that the hierarchy is correct.
-4. Drive the base a short distance. Every frame should shift together.
+3. **Jog the arm from the CONTROL tab — the single clearest test that your hierarchy is correct.** Only the arm subtree should move; the base and navigation sensors should stay put.
+4. **Drive the base a short distance.** Every frame should shift together.
 5. Measure a known physical offset (base center to lidar, for example) and compare to the translation values in your config.
 
 ### 7. Verify with TransformPose
