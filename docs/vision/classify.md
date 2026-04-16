@@ -34,9 +34,9 @@ A single classification call returns multiple results ranked by confidence. The 
 
 The API is the same for both. The difference is in how the model was trained and how you interpret the results.
 
-### The count parameter
+### The `count` parameter (SDK call)
 
-The `count` parameter tells the vision service how many top classifications to return. If `count=3`, you get the three highest-confidence labels. This is useful for:
+`count` is an argument on the SDK's `GetClassifications` and `GetClassificationsFromCamera` calls (for example, `classifier.get_classifications_from_camera("my-camera", count=3)`). It tells the vision service how many top classifications to return. If `count=3`, you get the three highest-confidence labels. This is useful for:
 
 - Understanding what else the model considered (was it confused between two classes?)
 - Multi-label classification where you want all relevant labels

@@ -74,7 +74,15 @@ Step 5 of this guide shows how to combine detections with depth data to measure 
 
 Go to [app.viam.com](https://app.viam.com), navigate to your machine, and verify your depth camera appears in the component list. Open the test panel and confirm it is producing images.
 
-For Intel RealSense cameras, the `webcam` model or the `realsense` module is commonly used. Check that the depth stream is enabled in the camera configuration.
+Common depth-capable cameras and the modules that wrap them:
+
+- Intel RealSense D400 series, through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)
+- Luxonis OAK-D series, through the [OAK camera module](https://github.com/viamrobotics/viam-camera-oak)
+- Orbbec cameras, through the [Orbbec module](https://github.com/viam-modules/orbbec)
+- Stereolabs ZED cameras, through a community module on the [registry](https://app.viam.com/registry)
+- The `fake` camera model, for development without hardware (returns synthetic but structurally correct point clouds)
+
+Check that the depth stream is enabled in the camera's configuration, and confirm the camera reports `supports_pcd: true` through [`GetProperties`](/reference/apis/components/camera/#getproperties). Without depth support, none of the steps below will work.
 
 ### 2. Get a point cloud
 
@@ -98,11 +106,12 @@ async def main():
 
     camera = Camera.from_robot(robot, "my-depth-camera")
 
-    # Get a point cloud
-    point_cloud, _ = await camera.get_point_cloud()
+    # get_point_cloud returns (point_cloud_bytes, mime_type).
+    # The MIME type (for example, "pointcloud/pcd") is not needed here.
+    point_cloud, mime_type = await camera.get_point_cloud()
 
     print("Point cloud retrieved")
-    print(f"Type: {type(point_cloud)}")
+    print(f"MIME type: {mime_type}, payload type: {type(point_cloud)}")
 
     await robot.close()
 
