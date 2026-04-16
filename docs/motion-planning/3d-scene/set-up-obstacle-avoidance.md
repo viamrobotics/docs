@@ -1,6 +1,6 @@
 ---
-linkTitle: "Set up obstacle avoidance"
-title: "Set up obstacle avoidance"
+linkTitle: "Verify obstacles"
+title: "Verify obstacles"
 weight: 40
 layout: "docs"
 type: "docs"

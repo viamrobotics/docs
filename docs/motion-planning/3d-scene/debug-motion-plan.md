@@ -71,7 +71,7 @@ Verify that:
   table collisions.
 
 If obstacles are missing or misplaced, see
-[Set up obstacle avoidance](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
+[Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
 
 ### 4. Look for impossible targets
 

@@ -327,7 +327,7 @@ For objects the robot grasps and releases dynamically, see [Attach and detach ge
 3. Orbit the scene. Each configured obstacle appears as a translucent shape at the position you configured. Each component shows up under the **World** panel; click a component to see its pose and geometry in the **Details** panel.
 4. Check coverage against the physical workspace. If the arm can reach past an obstacle into the physical object, the geometry is too small.
 
-For the full visualization and verification workflow, see [Set up obstacle avoidance](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
+For the full visualization and verification workflow, see [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
 
 ## Try it
 
@@ -377,6 +377,6 @@ Fix the geometry in the component's attributes and save again.
 ## What's next
 
 - [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/): pass runtime obstacles through `WorldState` for objects that change between calls.
-- [Set up obstacle avoidance](/motion-planning/3d-scene/set-up-obstacle-avoidance/): full verification workflow in the **3D SCENE** tab.
+- [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/): full verification workflow in the **3D SCENE** tab.
 - [Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/): attach a grasped object to the gripper frame for the duration of a pickup.
 - [Allow specific frames to collide](/motion-planning/obstacles/allow-frame-collisions/): permit expected contact between frames.
