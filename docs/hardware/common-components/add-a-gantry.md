@@ -286,7 +286,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/gantry.md" >}}
 
-## What's next
+## Related
 
 - [Gantry API reference](/reference/apis/components/gantry/): full method documentation.
 - [Add a motor](/hardware/common-components/add-a-motor/): configure the motor

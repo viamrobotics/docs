@@ -252,7 +252,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/sensor.md" >}}
 
-## What's next
+## Related
 
 - [Sensor API reference](/reference/apis/components/sensor/): full method documentation.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): automatically

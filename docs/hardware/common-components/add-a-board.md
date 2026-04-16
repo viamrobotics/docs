@@ -272,7 +272,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/board.md" >}}
 
-## What's next
+## Related
 
 - [Board API reference](/reference/apis/components/board/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): wire a motor to your

@@ -303,7 +303,7 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
 
 {{< readfile "/static/include/components/troubleshoot/arm.md" >}}
 
-## What's next
+## Related
 
 - [Arm API reference](/reference/apis/components/arm/): full method documentation.
 - [Fragments](/hardware/fragments/): save and reuse working

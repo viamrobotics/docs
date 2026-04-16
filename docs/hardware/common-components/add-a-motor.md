@@ -286,7 +286,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/motor.md" >}}
 
-## What's next
+## Related
 
 - [Motor API reference](/reference/apis/components/motor/): full method documentation.
 - [Add an Encoder](/hardware/common-components/add-an-encoder/): add position

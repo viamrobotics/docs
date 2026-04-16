@@ -131,4 +131,4 @@ If the connection succeeds, the script prints your machine's available resources
 
 ## What's next
 
-- [Configure hardware](/hardware/) — Add cameras, motors, sensors, and other components to your machine.
+- [Configure hardware](/hardware/configure-hardware/) — Add cameras, motors, sensors, and other components to your machine.

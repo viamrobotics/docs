@@ -316,7 +316,7 @@ Camera streams use a significant amount of CPU resources. The more CPU resources
 
 {{< /expand >}}
 
-## What's next
+## Related
 
 - [Camera API reference](/reference/apis/components/camera/): full method documentation.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): configure your camera to automatically capture images and sync them to the cloud.

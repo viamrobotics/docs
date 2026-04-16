@@ -285,7 +285,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/encoder.md" >}}
 
-## What's next
+## Related
 
 - [Encoder API reference](/reference/apis/components/encoder/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): configure the motor that

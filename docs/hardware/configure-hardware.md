@@ -1,6 +1,6 @@
 ---
-linkTitle: "How components work"
-title: "How components work"
+linkTitle: "Overview"
+title: "Configure hardware components"
 weight: 1
 layout: "docs"
 type: "docs"
@@ -24,9 +24,25 @@ Each component has three things:
 - **Attributes** that configure how the model talks to your hardware:
   a device path, a baud rate, a pin mapping, or whatever else the driver needs.
 
-This abstraction means you can swap hardware without changing application code.
-A program that captures images from a webcam works identically with an IP camera.
-You change the model and attributes in configuration, not in your control logic.
+In your machine's configuration, each component is a JSON block.
+The type appears in the `api` field as `rdk:component:<type>`:
+
+```json
+{
+  "components": [
+    {
+      "name": "my-camera",
+      "api": "rdk:component:camera",
+      "model": "webcam",
+      "attributes": {
+        "video_path": "/dev/video0"
+      }
+    }
+  ]
+}
+```
+
+For the full JSON structure and dependencies, see [Machine configuration](/hardware/machine-configuration/).
 
 ## Models
 
@@ -35,6 +51,20 @@ When you add a component, you search for a **model** that matches your hardware.
 You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections, same SDKs.
 
 If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the Viam API for your device.
+
+## Switching hardware without changing code
+
+Because every model of a given type exposes the same API, your application code does not change when you swap hardware.
+For example, this Python code reads a motor's position:
+
+```python
+motor = Motor.from_robot(robot, "drive-motor")
+position = await motor.get_position()
+```
+
+This works whether `drive-motor` is configured as a `gpio` motor on a Raspberry Pi, a Trinamic stepper over CAN bus, or an ODrive brushless controller.
+To switch hardware, you change the model and attributes in your machine's configuration.
+Your code stays the same.
 
 ## Add a component
 
@@ -143,7 +173,7 @@ correctly.
 
 {{< /expand >}}
 
-## What's next
+## Related
 
 - [Add a component](/hardware/common-components/): step-by-step guides for
   each component type.

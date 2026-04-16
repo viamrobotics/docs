@@ -243,7 +243,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/servo.md" >}}
 
-## What's next
+## Related
 
 - [Servo API reference](/reference/apis/components/servo/): full method documentation.
 - [Add a Motor](/hardware/common-components/add-a-motor/): for continuous rotation
