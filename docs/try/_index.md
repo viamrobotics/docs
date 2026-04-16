@@ -18,4 +18,5 @@ aliases:
   - /dev/reference/try-viam/rover-resources/rover-tutorial-fragments/
   - /dev/reference/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
   - /operate/hello-world/quickstart/
+  - /operate/hello-world/tutorial-desk-safari/
 ---

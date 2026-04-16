@@ -22,4 +22,5 @@ aliases:
   - "/viam/app.viam.com/"
   - "/get-started/"
   - "/platform/"
+  - "/operate/"
 ---
