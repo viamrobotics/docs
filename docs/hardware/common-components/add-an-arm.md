@@ -33,6 +33,14 @@ arm manufacturer has its own communication protocol. Common models include:
 The `fake` built-in model is useful for testing code without physical hardware.
 It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
 
+### Built-in models
+
+- [`fake`](/reference/components/arm/fake/) — A model used for testing, with no physical hardware.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=arm). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Add an arm component
@@ -292,6 +300,8 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
   [Constraints](/motion-planning/move-an-arm/constraints/) for motion constraints.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/arm.md" >}}
 
 ## What's next
 

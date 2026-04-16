@@ -21,6 +21,19 @@ angular positioning through PWM control.
 The servo component uses a single PWM-capable pin on a
 [board component](/hardware/common-components/add-a-board/). Browse all available servo models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
 
+### Built-in models
+
+- [`fake`](/reference/components/servo/fake/) — A model used for testing, with no physical hardware.
+- [`gpio`](/reference/components/servo/gpio/) — Supports a hobby servo wired to a board that supports PWM, for example Raspberry Pi 5, Orange Pi, Jetson, or PCAXXXX.
+
+Micro-RDK:
+
+- [`gpio`](/reference/components/servo/micro-rdk/gpio/) — _(no description)_.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Prerequisites
@@ -227,6 +240,8 @@ go run main.go
 - Confirm the pin number in your config matches the physical wiring.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/servo.md" >}}
 
 ## What's next
 

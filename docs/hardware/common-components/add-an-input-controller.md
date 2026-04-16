@@ -20,14 +20,15 @@ callbacks for these events and translates them into machine actions.
 
 ### Built-in models
 
-| Model        | Use case                                                                                                                     |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| `gamepad`    | USB gamepad or joystick. Works with most HID-compatible controllers.                                                         |
-| `webgamepad` | Browser-based gamepad input in the Viam app's CONTROL tab. No physical controller needed.                                    |
-| `gpio`       | Buttons and switches wired to GPIO pins on a board.                                                                          |
-| `mux`        | Multiplexes multiple input controllers, allowing one to override another (for example, safety controller overrides gamepad). |
+- [`gamepad`](/reference/components/input-controller/gamepad/) — USB gamepad or joystick. Works with most HID-compatible controllers.
+- [`webgamepad`](/reference/components/input-controller/webgamepad/) — Browser-based gamepad input in the Viam app's CONTROL tab. No physical controller needed.
+- [`gpio`](/reference/components/input-controller/gpio/) — Buttons and switches wired to GPIO pins on a board.
+- [`mux`](/reference/components/input-controller/mux/) — Multiplexes multiple input controllers, allowing one to override another (for example, safety controller overrides gamepad).
+- [`fake`](/reference/components/input-controller/fake/) — A model for testing, with no physical hardware.
 
-Browse all available input controller models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=input_controller).
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=input_controller). Each module's configuration is documented on its registry page.
 
 ## Steps
 
@@ -280,6 +281,8 @@ go run main.go
   control name, then update your callback registrations accordingly.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/input-controller.md" >}}
 
 ## What's next
 

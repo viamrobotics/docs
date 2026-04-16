@@ -25,6 +25,20 @@ For accurate distance and angle calculations, the `wheeled` model needs two phys
 - **Wheel circumference**: how far the robot travels per wheel revolution.
 - **Width**: the distance between the left and right wheel centers.
 
+### Built-in models
+
+- [`fake`](/reference/components/base/fake/) — A model used for testing, with no physical hardware.
+- [`sensor-controlled`](/reference/components/base/sensor-controlled/) — Wrap other base models and add feedback control using a movement sensor.
+- [`wheeled`](/reference/components/base/wheeled/) — Supports mobile wheeled robotic bases with motors on both sides for differential steering.
+
+Micro-RDK:
+
+- [`two_wheeled_base`](/reference/components/base/micro-rdk/two_wheeled_base/) — _(no description)_.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=base). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Prerequisites
@@ -254,6 +268,8 @@ go run main.go
   match exactly (names are case-sensitive).
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/base.md" >}}
 
 ## What's next
 
