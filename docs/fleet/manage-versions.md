@@ -60,7 +60,7 @@ After you push an update, you need to confirm every machine actually received it
 
 ### Check that machines picked up a config change
 
-Most rollouts change a fragment that machines depend on, which means the goal is to confirm each machine pulled the new config revision. Use the Python SDK's `get_machine_status` on each machine to read its current revision.
+To confirm each machine pulled a new config revision, use the Python SDK's `get_machine_status` on the machine and read the returned revision. Most rollouts change a fragment that machines depend on, so the config revision is the right signal that the change landed.
 
 ```python
 from viam.robot.client import RobotClient
@@ -79,9 +79,9 @@ Find each machine's address, API key, and API key ID on the machine's **CONNECT*
 
 ### Check viam-server or viam-agent version
 
-The per-part `viam_server_version` and `viam_agent_version` fields are populated in the cloud through the `ListMachineSummaries` RPC on `app.proto`, but this RPC is not yet wrapped in the Python SDK or exposed through the CLI. To read it today, make a direct gRPC call to the app service.
+The cloud stores `viam_server_version` and `viam_agent_version` for each machine part, but the `ListMachineSummaries` RPC that returns them is not yet wrapped in the Python SDK or exposed through the CLI. To read these versions today, make a direct gRPC call to the app service.
 
-If a deployed agent or `viam-server` version fails to start, viam-agent does not automatically roll back to the previous version. It will keep retrying that version until you change the cloud config to pin an older one. See [Limitations](#limitations).
+For what happens when a deployed agent or `viam-server` version fails to start, see [Limitations](#limitations).
 
 ## Limitations
 

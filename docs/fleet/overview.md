@@ -23,7 +23,11 @@ Viam's fleet deployment is built on three mechanisms that work together:
 
 A fragment is a reusable block of configuration. You define the components, services, modules, and settings a machine needs in a fragment, then apply that fragment to every machine in your fleet. When you update the fragment, every machine that uses it receives the change.
 
-Fragments support **variables** for per-machine customization (different sensor names, different thresholds), **version tags** for controlled rollouts (test on a few machines before deploying to the full fleet), and **overrides** for device-specific adjustments that differ from the template.
+Fragments support three customization mechanisms:
+
+- **Variables** for per-machine values like sensor names or thresholds.
+- **Version tags** for controlled rollouts: test on a few machines before deploying fleet-wide.
+- **Overrides** for device-specific settings that differ from the template.
 
 ### Provisioning: automated first-boot setup
 
