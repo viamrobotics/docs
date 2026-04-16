@@ -33,7 +33,16 @@ Micro-RDK:
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=sensor). Each module's configuration is documented on its registry page.
+Viam-maintained sensor modules:
+
+| Module                                                                               | Sensors supported                                               |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| [`viam:ultrasonic`](https://app.viam.com/module/viam/ultrasonic)                     | HC-SR04 and similar ultrasonic distance sensors                 |
+| [`viam:event-manager`](https://app.viam.com/module/viam/event-manager)               | Event management and notifications for Viam resources           |
+| [`viam:viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) | Machine metrics through Telegraf                                |
+| [`viam:lorawan`](https://app.viam.com/module/viam/lorawan)                           | LoRaWAN gateway and node sensors (Milesight, Dragino, and more) |
+
+For sensors not covered above, browse [all sensor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=sensor).
 
 ## Steps
 

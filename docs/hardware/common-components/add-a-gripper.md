@@ -34,7 +34,14 @@ The `fake` built-in model is useful for testing code without physical hardware.
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=gripper). Each module's configuration is documented on its registry page.
+Viam-maintained gripper modules:
+
+| Module                                                       | Grippers supported                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------ |
+| [`viam:ufactory`](https://app.viam.com/module/viam/ufactory) | xArm finger gripper, xArm Lite gripper, vacuum gripper |
+| [`viam:robotiq`](https://app.viam.com/module/viam/robotiq)   | Robotiq 2F-series two-finger grippers                  |
+
+For grippers not covered above, browse [all gripper modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=gripper). Each module's configuration is documented on its registry page.
 
 ## Steps
 

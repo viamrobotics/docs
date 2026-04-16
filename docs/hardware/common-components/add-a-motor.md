@@ -39,7 +39,15 @@ Micro-RDK:
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=motor). Each module's configuration is documented on its registry page.
+Viam-maintained motor modules:
+
+| Module                                                                   | Motors supported                                         |
+| ------------------------------------------------------------------------ | -------------------------------------------------------- |
+| [`viam:analog-devices`](https://app.viam.com/module/viam/analog-devices) | Stepper motors through the Analog Devices TMC5072 driver |
+| [`viam:odrive`](https://app.viam.com/module/viam/odrive)                 | ODrive brushless motor controllers (serial)              |
+| [`viam:uln2003`](https://app.viam.com/module/viam/uln2003)               | 28BYJ-48 stepper motor through the ULN2003 driver        |
+
+For motors not covered above, browse [all motor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=motor).
 
 ## Steps
 

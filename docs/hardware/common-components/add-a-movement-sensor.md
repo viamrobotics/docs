@@ -41,7 +41,16 @@ Micro-RDK:
 
 ### Registry modules
 
-Hardware-specific models (GPS modules, IMUs, RTK receivers) are available as modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor). Each module's configuration is documented on its registry page.
+Viam-maintained movement-sensor modules:
+
+| Module                                                                   | Sensors supported                                       |
+| ------------------------------------------------------------------------ | ------------------------------------------------------- |
+| [`viam:analog-devices`](https://app.viam.com/module/viam/analog-devices) | Analog Devices ADXL345 accelerometer and similar IMUs   |
+| [`viam:tdk-invensense`](https://app.viam.com/module/viam/tdk-invensense) | TDK InvenSense MPU-6050 IMU                             |
+| [`viam:gps`](https://app.viam.com/module/viam/gps)                       | NMEA GPS, RTK GPS (serial / PMTK), and dual-antenna RTK |
+| [`viam:wit-motion`](https://app.viam.com/module/viam/wit-motion)         | Wit-Motion multi-axis tilt and IMU sensors              |
+
+For movement sensors not covered above, browse [all movement-sensor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor).
 
 ## Steps
 

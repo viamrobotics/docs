@@ -37,7 +37,13 @@ Micro-RDK:
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=base). Each module's configuration is documented on its registry page.
+Viam-maintained base modules:
+
+| Module                                                                                 | Bases supported                                                                      |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`viam:controlled-components`](https://app.viam.com/module/viam/controlled-components) | Sensor-controlled base that adds PID feedback from a movement sensor to another base |
+
+For bases not covered above, browse [all base modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=base).
 
 ## Steps
 
