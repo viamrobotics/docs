@@ -10,7 +10,7 @@ no_list: true
 
 Encoder models available in the [Micro-RDK](/reference/device-setup/setup-micro/).
 
-| Model | Description |
-| ----- | ----------- |
-| [`incremental`](incremental/) | — |
-| [`single`](single/) | — |
+| Model                         | Description |
+| ----------------------------- | ----------- |
+| [`incremental`](incremental/) | —           |
+| [`single`](single/)           | —           |

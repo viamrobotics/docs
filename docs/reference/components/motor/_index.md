@@ -24,18 +24,18 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following motor models ship with `viam-server`:
 
-| Model | Description |
-| ----- | ----------- |
-| [`dmc4000`](dmc4000/) | Stepper motor driven by a DMC-40x0 series motion controller. |
-| [`encoded-motor`](encoded-motor/) | Standard brushed or brushless DC motor with an encoder. |
-| [`fake`](fake/) | A model for testing, with no physical hardware. |
-| [`gpio`](gpio/) | Supports standard brushed or brushless DC motors. |
-| [`gpiostepper`](gpiostepper/) | Supports stepper motors driven by basic GPIO-controlled stepper driver chips. |
+| Model                             | Description                                                                   |
+| --------------------------------- | ----------------------------------------------------------------------------- |
+| [`dmc4000`](dmc4000/)             | Stepper motor driven by a DMC-40x0 series motion controller.                  |
+| [`encoded-motor`](encoded-motor/) | Standard brushed or brushless DC motor with an encoder.                       |
+| [`fake`](fake/)                   | A model for testing, with no physical hardware.                               |
+| [`gpio`](gpio/)                   | Supports standard brushed or brushless DC motors.                             |
+| [`gpiostepper`](gpiostepper/)     | Supports stepper motors driven by basic GPIO-controlled stepper driver chips. |
 
 ## Micro-RDK models
 
 The following motor models ship with the [Micro-RDK](/reference/device-setup/setup-micro/):
 
-| Model | Description |
-| ----- | ----------- |
-| [`gpio`](micro-rdk/gpio/) | — |
+| Model                     | Description |
+| ------------------------- | ----------- |
+| [`gpio`](micro-rdk/gpio/) | —           |

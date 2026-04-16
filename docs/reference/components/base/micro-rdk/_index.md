@@ -10,6 +10,6 @@ no_list: true
 
 Base models available in the [Micro-RDK](/reference/device-setup/setup-micro/).
 
-| Model | Description |
-| ----- | ----------- |
-| [`two_wheeled_base`](two_wheeled_base/) | — |
+| Model                                   | Description |
+| --------------------------------------- | ----------- |
+| [`two_wheeled_base`](two_wheeled_base/) | —           |

@@ -24,15 +24,15 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following servo models ship with `viam-server`:
 
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
+| Model           | Description                                                                                                           |
+| --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [`fake`](fake/) | A model used for testing, with no physical hardware.                                                                  |
 | [`gpio`](gpio/) | Supports a hobby servo wired to a board that supports PWM, for example Raspberry Pi 5, Orange Pi, Jetson, or PCAXXXX. |
 
 ## Micro-RDK models
 
 The following servo models ship with the [Micro-RDK](/reference/device-setup/setup-micro/):
 
-| Model | Description |
-| ----- | ----------- |
-| [`gpio`](micro-rdk/gpio/) | — |
+| Model                     | Description |
+| ------------------------- | ----------- |
+| [`gpio`](micro-rdk/gpio/) | —           |

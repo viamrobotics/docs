@@ -24,6 +24,6 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following gripper models ship with `viam-server`:
 
-| Model | Description |
-| ----- | ----------- |
+| Model           | Description                                          |
+| --------------- | ---------------------------------------------------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |

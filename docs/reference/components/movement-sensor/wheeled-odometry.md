@@ -37,7 +37,7 @@ After configuring a `wheeled-odometry` movement sensor, you can operate your bas
 
 To prepare your machine, attach [encoders](/reference/components/encoder/) to each of the position-reporting motors on your base to measure their rotation.
 
-- Select and configure motors that can report their own position, like [`gpio` motors](/reference/components/motor/gpio/) with [encoders](/reference/components/encoder/#configuration), or the [`odrive` module](https://github.com/viam-modules/odrive).
+- Select and configure motors that can report their own position, like [`gpio` motors](/reference/components/motor/gpio/) with [encoders](/reference/components/encoder/), or the [`odrive` module](https://github.com/viam-modules/odrive).
   You can access this property of a configured motor through the [motor API's `GetProperties()`](/reference/apis/components/motor/#getproperties).
 - Configure your rover as a [wheeled base component](/reference/components/base/wheeled/).
   Make sure to configure the base width and circumference, as these measurements as a property of the base are vital for accurate odometry estimations by your movement sensor.

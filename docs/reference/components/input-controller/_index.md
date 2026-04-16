@@ -24,10 +24,10 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following input controller models ship with `viam-server`:
 
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model for testing, with no physical hardware. |
-| [`gamepad`](gamepad/) | Supports X-box, Playstation, and similar controllers with Linux support. |
-| [`gpio`](gpio/) | Customizable GPIO/ADC based device using a board component. |
-| [`mux`](mux/) | Supports multiplexed controllers, combining multiple sources of input. |
-| [`webgamepad`](webgamepad/) | Supports a remote, web based gamepad. |
+| Model                       | Description                                                              |
+| --------------------------- | ------------------------------------------------------------------------ |
+| [`fake`](fake/)             | A model for testing, with no physical hardware.                          |
+| [`gamepad`](gamepad/)       | Supports X-box, Playstation, and similar controllers with Linux support. |
+| [`gpio`](gpio/)             | Customizable GPIO/ADC based device using a board component.              |
+| [`mux`](mux/)               | Supports multiplexed controllers, combining multiple sources of input.   |
+| [`webgamepad`](webgamepad/) | Supports a remote, web based gamepad.                                    |

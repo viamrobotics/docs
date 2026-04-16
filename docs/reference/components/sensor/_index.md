@@ -24,14 +24,14 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following sensor models ship with `viam-server`:
 
-| Model | Description |
-| ----- | ----------- |
+| Model           | Description                                          |
+| --------------- | ---------------------------------------------------- |
 | [`fake`](fake/) | A model used for testing, with no physical hardware. |
 
 ## Micro-RDK models
 
 The following sensor models ship with the [Micro-RDK](/reference/device-setup/setup-micro/):
 
-| Model | Description |
-| ----- | ----------- |
-| [`ultrasonic`](micro-rdk/ultrasonic/) | — |
+| Model                                 | Description |
+| ------------------------------------- | ----------- |
+| [`ultrasonic`](micro-rdk/ultrasonic/) | —           |

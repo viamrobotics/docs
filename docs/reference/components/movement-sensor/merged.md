@@ -15,13 +15,13 @@ component_description: "A model that allows you to aggregate the API methods sup
 The `merged` movement sensor model is an abstraction that combines data from multiple movement sensors.
 This allows you to aggregate the API methods supported by multiple sensors into a singular sensor client.
 
-This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/reference/components/movement-sensor/#configuration) or [`IMU`](/reference/components/movement-sensor/#configuration) models, respectively.
+This is especially useful if you want to get readings of position and orientation _or_ linear and angular velocity at the same time, which are normally separately supported and returned by [`GPS`](/reference/components/movement-sensor/) or [`IMU`](/reference/components/movement-sensor/) models, respectively.
 
-To reduce velocity error when your machine is using the [navigation service](/operate/reference/services/navigation/), aggregate `Position()` from a [`GPS`](/reference/components/movement-sensor/#configuration) and `Orientation()` from an [`IMU`](/reference/components/movement-sensor/#configuration) movement sensor in a `merged` model.
+To reduce velocity error when your machine is using the [navigation service](/operate/reference/services/navigation/), aggregate `Position()` from a [`GPS`](/reference/components/movement-sensor/) and `Orientation()` from an [`IMU`](/reference/components/movement-sensor/) movement sensor in a `merged` model.
 
 Configure a [navigation service](/operate/reference/services/navigation/) to use your merged sensor to navigate.
 
-Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/reference/components/movement-sensor/#configuration).
+Before configuring a `merged` movement sensor, configure each movement sensor you want to merge as an individual component according to its [model's configuration instructions](/reference/components/movement-sensor/).
 Reference the `name` you configure for each individual component in the `merged` sensor's configuration attributes:
 
 {{< tabs >}}
@@ -77,7 +77,7 @@ Reference the `name` you configure for each individual component in the `merged`
 Configure an array of the `name` of each movement sensor you want to add to your machine as a merged resource in the attributes of the `merged` movement sensor model:
 
 - The name of each attribute represents the `Property` that the particular movement sensor supports, or the type of reading or measurement that it takes.
-- Get the properties supported by each model from its [model configuration documentation](/reference/components/movement-sensor/#configuration), or by calling [`GetProperties()`](/reference/apis/components/movement-sensor/#getproperties) on the sensor.
+- Get the properties supported by each model from its [model configuration documentation](/reference/components/movement-sensor/), or by calling [`GetProperties()`](/reference/apis/components/movement-sensor/#getproperties) on the sensor.
 - Put the `name` of each movement sensor into the attribute array for the type of reading it supports.
   You can use the same sensor for multiple attributes if it supports multiple properties.
 

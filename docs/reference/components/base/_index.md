@@ -24,16 +24,16 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following base models ship with `viam-server`:
 
-| Model | Description |
-| ----- | ----------- |
-| [`fake`](fake/) | A model used for testing, with no physical hardware. |
-| [`sensor-controlled`](sensor-controlled/) | Wrap other base models and add feedback control using a movement sensor. |
-| [`wheeled`](wheeled/) | Supports mobile wheeled robotic bases with motors on both sides for differential steering. |
+| Model                                     | Description                                                                                |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
+| [`fake`](fake/)                           | A model used for testing, with no physical hardware.                                       |
+| [`sensor-controlled`](sensor-controlled/) | Wrap other base models and add feedback control using a movement sensor.                   |
+| [`wheeled`](wheeled/)                     | Supports mobile wheeled robotic bases with motors on both sides for differential steering. |
 
 ## Micro-RDK models
 
 The following base models ship with the [Micro-RDK](/reference/device-setup/setup-micro/):
 
-| Model | Description |
-| ----- | ----------- |
-| [`two_wheeled_base`](micro-rdk/two_wheeled_base/) | — |
+| Model                                             | Description |
+| ------------------------------------------------- | ----------- |
+| [`two_wheeled_base`](micro-rdk/two_wheeled_base/) | —           |
