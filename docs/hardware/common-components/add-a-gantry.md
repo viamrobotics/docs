@@ -32,6 +32,16 @@ Viam includes two built-in gantry models:
 
 The `fake` built-in model is useful for testing without hardware. Browse all available gantry models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=gantry).
 
+### Built-in models
+
+- [`fake`](/reference/components/gantry/fake/) — A model used for testing, with no physical hardware.
+- [`multi-axis`](/reference/components/gantry/multi-axis/) — Supports a gantry with multiple linear rails. Composed of multiple single-axis gantries.
+- [`single-axis`](/reference/components/gantry/single-axis/) — Supports a gantry with a singular linear rail.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=gantry). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Prerequisites
@@ -273,6 +283,8 @@ go run main.go
 - Test the switch by reading the GPIO pin directly from the board's test panel.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/gantry.md" >}}
 
 ## What's next
 

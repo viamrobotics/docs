@@ -23,6 +23,18 @@ built-in models. This is because the sensor ecosystem is enormous. Thousands
 of different devices with different communication protocols exist, and modules cover
 specific hardware while keeping the same `GetReadings` API.
 
+### Built-in models
+
+- [`fake`](/reference/components/sensor/fake/) — A model used for testing, with no physical hardware.
+
+Micro-RDK:
+
+- [`ultrasonic`](/reference/components/sensor/micro-rdk/ultrasonic/) — _(no description)_.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=sensor). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Add a sensor component
@@ -237,6 +249,8 @@ go run main.go
   generic module that works. Check the registry for protocol-based modules.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/sensor.md" >}}
 
 ## What's next
 

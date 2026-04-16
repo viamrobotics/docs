@@ -22,14 +22,11 @@ A power sensor component provides three methods:
 
 ### Built-in models
 
-| Model          | Use case                                                                |
-| -------------- | ----------------------------------------------------------------------- |
-| `ina219`       | INA219 I2C current/voltage/power monitor. Common on breakout boards.    |
-| `ina226`       | INA226 I2C current/voltage/power monitor. Higher precision than INA219. |
-| `renogy-cc-ov` | Renogy solar charge controller.                                         |
+- [`fake`](/reference/components/power-sensor/fake/) — A model for testing, with no physical hardware.
 
-Additional models are available as modules in the
-[Viam registry](https://app.viam.com/registry).
+### Registry modules
+
+Hardware-specific power sensor models (INA219, INA226, Renogy controllers, etc.) are available as modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=power_sensor). Each module's configuration is documented on its registry page.
 
 ## Steps
 
@@ -237,6 +234,8 @@ go run main.go
   current must flow through it.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/power-sensor.md" >}}
 
 ## What's next
 

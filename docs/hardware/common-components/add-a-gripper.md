@@ -28,6 +28,14 @@ models for xArm parallel-jaw and vacuum grippers.
 
 The `fake` built-in model is useful for testing code without physical hardware.
 
+### Built-in models
+
+- [`fake`](/reference/components/gripper/fake/) — A model used for testing, with no physical hardware.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=gripper). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Add a gripper component
@@ -253,6 +261,8 @@ go run main.go
 - Some grippers support configurable open/close speed and grip force.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/gripper.md" >}}
 
 ## What's next
 

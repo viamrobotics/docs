@@ -25,6 +25,22 @@ GPIO motor drivers typically use one of two wiring schemes:
 - **PWM/DIR mode**: one PWM pin for speed and one direction pin.
   Common with many motor driver breakout boards.
 
+### Built-in models
+
+- [`dmc4000`](/reference/components/motor/dmc4000/) — Stepper motor driven by a DMC-40x0 series motion controller.
+- [`encoded-motor`](/reference/components/motor/encoded-motor/) — Standard brushed or brushless DC motor with an encoder.
+- [`fake`](/reference/components/motor/fake/) — A model for testing, with no physical hardware.
+- [`gpio`](/reference/components/motor/gpio/) — Supports standard brushed or brushless DC motors.
+- [`gpiostepper`](/reference/components/motor/gpiostepper/) — Supports stepper motors driven by basic GPIO-controlled stepper driver chips.
+
+Micro-RDK:
+
+- [`gpio`](/reference/components/motor/micro-rdk/gpio/) — _(no description)_.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=motor). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Prerequisites
@@ -267,6 +283,8 @@ go run main.go
   `encoder` and `ticks_per_rotation` on the motor.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/motor.md" >}}
 
 ## What's next
 
