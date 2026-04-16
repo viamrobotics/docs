@@ -43,7 +43,7 @@ For hardware the built-in models don't cover, browse the [Viam registry](https:/
 1. Click the **+** button.
 2. Select **Configuration block**.
 3. Search for the model that matches your gripper hardware. Search by
-   manufacturer name or gripper type (for example, "parallel jaw", "vacuum").
+   manufacturer name or gripper type (for example, "gripper", "finger gripper", "vacuum").
 4. Name your gripper (for example, `my-gripper`) and click **Create**.
 
 ### 2. Configure gripper attributes
@@ -96,7 +96,7 @@ Open the gripper, grab an object, and check if it's held.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 If you're using real hardware, you'll see the gripper open and close when you run the code below.
 With the fake model, Grab always returns true.
 {{< tabs >}}

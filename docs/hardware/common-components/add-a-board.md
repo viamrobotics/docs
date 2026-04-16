@@ -20,9 +20,15 @@ A board component exposes the low-level I/O on your single-board computer:
 - **Analog readers**: read analog voltage values from ADC-capable pins.
 - **Digital interrupts**: react to signal changes on a pin.
 
-The board doesn't represent external hardware. It represents the I/O
-capabilities of the computer itself. Motors, encoders, and servos reference
-the board by name to access the pins they're wired to. Browse all available board models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=board).
+Most of the time a board represents the single-board computer itself (Raspberry Pi, Jetson, Orange Pi). A board can also represent an IO expander such as the [PCA9685](https://app.viam.com/module/viam/pca) or a microcontroller connected over serial that exposes GPIO-like interfaces. In both cases, motors, encoders, and servos reference the board by name to access the pins they're wired to.
+
+Browse all available board models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=board).
+
+{{< alert title="Pin numbering" color="note" >}}
+
+Viam uses the **board pin number** (the physical pin number printed on the header) in GPIO configuration, not the GPIO/BCM number or alternate schemes. When a model's docs show a pinout, confirm which numbering scheme matches the number you configure.
+
+{{< /alert >}}
 
 ### Built-in models
 
@@ -47,10 +53,11 @@ Confirm it shows as **Live** in the upper left.
 
 1. Click the **+** button.
 2. Select **Configuration block**.
-3. Search for the model that matches your single-board computer:
-   - For a Raspberry Pi (any model), search for **pi**.
+3. Search for the model that matches your hardware:
+   - For a Raspberry Pi, search for **raspberry pi** and pick the model that matches your Pi version (for example, `viam:raspberry-pi:rpi5`).
    - For an NVIDIA Jetson, search for **jetson**.
    - For an Orange Pi, search for **orangepi**.
+   - For an IO expander, search for it by chip name (for example, **pca9685**).
 4. Name your board (for example, `my-board`) and click **Create**.
 
 ### 3. Configure board attributes
@@ -109,7 +116,7 @@ Toggle a GPIO pin and read its state programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 If you have an LED wired to pin 11, you'll see it turn on and off when you run the code below.
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -255,11 +262,8 @@ go run main.go
 
 {{< expand "GPIO pin doesn't respond" >}}
 
-- Verify the pin number matches your board's pinout diagram. Viam uses the
-  **board pin number** (the physical pin on the header), not the GPIO/BCM
-  number.
-- Check that nothing else on the system is using the pin (another process,
-  a kernel driver).
+- Confirm the pin number follows the scheme the board model expects (see the Pin numbering note at the top of this page).
+- Check that nothing else on the system is using the pin (another process, a kernel driver).
 
 {{< /expand >}}
 

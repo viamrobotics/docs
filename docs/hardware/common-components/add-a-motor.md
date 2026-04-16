@@ -125,7 +125,7 @@ Spin the motor forward for 2 revolutions, then check if it's still moving.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 If you're using real hardware, you'll see the motor spin when you run the code below.
 Without an encoder, position readings will be estimates based on time and max RPM.
 {{< tabs >}}

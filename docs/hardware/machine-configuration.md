@@ -42,7 +42,7 @@ connected to its GPIO pins:
     {
       "name": "my-board",
       "api": "rdk:component:board",
-      "model": "pi",
+      "model": "viam:raspberry-pi:rpi5",
       "attributes": {}
     },
     {
@@ -56,8 +56,15 @@ connected to its GPIO pins:
           "pwm": "12"
         },
         "board": "my-board"
-      },
-      "depends_on": ["my-board"]
+      }
+    }
+  ],
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_raspberry-pi",
+      "module_id": "viam:raspberry-pi",
+      "version": "latest"
     }
   ]
 }
@@ -65,13 +72,9 @@ connected to its GPIO pins:
 
 A few things to note:
 
-- **The board** uses `pi`, a built-in model. No attributes are needed
-  because the Pi's GPIO layout is known.
-- **The motor** uses `gpio`, a built-in model for DC motors driven by
-  GPIO pins. The `pins` attribute maps the motor's control wires to
-  specific board pins.
-- **`depends_on`** tells `viam-server` to initialize the board before
-  the motor, since the motor needs the board's GPIO pins to function.
+- **The board** uses `viam:raspberry-pi:rpi5` from the [Viam registry](https://app.viam.com/registry). The `modules` section tells `viam-server` to download and run that module. Other Pi variants (`rpi`, `rpi4`, `rpi3`, and so on) are available from the same module.
+- **The motor** uses `gpio`, a built-in model for DC motors driven by GPIO pins. The `pins` attribute maps the motor's control wires to specific board pins.
+- The motor's `board` attribute references `my-board`, so `viam-server` automatically initializes the board before the motor. An explicit `depends_on` field is not required when attributes already reference the other component.
 
 ### Modules section
 

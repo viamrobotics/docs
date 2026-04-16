@@ -99,7 +99,7 @@ Read sensor data programmatically and print it.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 When you run the code below, you'll see sensor readings printed once per second. Verify the values make sense for your environment.
 {{< tabs >}}
 {{% tab name="Python" %}}

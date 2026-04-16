@@ -78,7 +78,7 @@ Read voltage, current, and power programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 When you run the code below, you'll see voltage, current, and power readings. Verify the voltage matches your power supply.
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -52,13 +52,13 @@ Components that read data from the physical world.
 | [Motor](/hardware/common-components/add-a-motor/) | Control a DC or stepper motor through a motor driver and GPIO pins. | DC motors, stepper motors, brushless motors |
 | [Servo](/hardware/common-components/add-a-servo/) | Set the angular position of a hobby servo with a PWM pin.           | Hobby servos, PWM-controlled actuators      |
 
-## Control
+## Inputs and GPIO
 
-Components for physical I/O and user interaction.
+Components for physical I/O and user input.
 
 | Component                                                                | What it does                                                                                                                    | Examples                                      |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| [Board](/hardware/common-components/add-a-board/)                        | Expose GPIO pins, analog readers, and digital interrupts from a single-board computer. Many other components depend on a board. | Raspberry Pi GPIO, Arduino, custom I/O boards |
+| [Board](/hardware/common-components/add-a-board/)                        | Expose GPIO pins, analog readers, and digital interrupts from a single-board computer. Many other components depend on a board. | Raspberry Pi GPIO, ESP32, PCA9685 IO expander |
 | [Button](/hardware/common-components/add-a-button/)                      | Detect presses from a physical button to trigger actions.                                                                       | Momentary switches, push buttons              |
 | [Switch](/hardware/common-components/add-a-switch/)                      | Read or set the position of a toggle or selector switch.                                                                        | Toggle switches, selector switches            |
 | [Input controller](/hardware/common-components/add-an-input-controller/) | Use a gamepad, joystick, or other input device for manual machine control.                                                      | Gamepads, joysticks, custom button panels     |

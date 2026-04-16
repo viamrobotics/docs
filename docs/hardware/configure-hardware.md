@@ -146,20 +146,18 @@ correctly.
 
 {{< expand "Component not initializing (error in logs)" >}}
 
-- Check the **LOGS** tab in the Viam app for error messages from `viam-server`.
+- Expand the **Error logs** section on the component's configuration card in the **CONFIGURE** tab. Per-component errors appear there with the module name and error count, isolated from other resources.
+- For full `viam-server` logs across every resource, see the **LOGS** tab.
 - Verify that the device path or address in your attributes is correct.
-- If the component depends on another (for example, a motor depends on a board),
-  confirm the dependency is configured and working.
+- If the component depends on another (for example, a motor that references a board in its attributes), confirm the dependency is configured and working.
 
 {{< /expand >}}
 
-{{< expand "Model not appearing in the dropdown" >}}
+{{< expand "Model not appearing in search" >}}
 
-- **Built-in models** appear automatically. If you don't see the expected model,
-  confirm your `viam-server` version is up to date.
-- **Module models** appear in the configuration block search alongside
-  built-in models. If you don't see the model you expect, check that
-  your search terms match the model or module name.
+- The configuration block search covers both built-in models and every module in the Viam registry. Try shorter or broader search terms (for example, "raspberry pi" rather than "rpi5", or "rtsp" rather than a specific camera brand).
+- If the model is from a module, it appears in search results as soon as you start typing. Use the Task type, Framework, or Visibility filters to narrow results instead of relying on exact names.
+- For built-in models only: confirm your `viam-server` version is up to date if an expected built-in does not appear.
 
 {{< /expand >}}
 
