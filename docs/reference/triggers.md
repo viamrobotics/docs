@@ -16,7 +16,7 @@ Triggers can alert you by email or webhook when any of the following events occu
 
 - [Machine telemetry data syncs from your local device to the Viam cloud](/monitor/alert/)
 - [Data syncs from a machine](/data/trigger-on-data/)
-- [A vision service detects a specified object or classifies a specified label](/vision/alert-on-detections/)
+- [A vision service detects a specified object or classifies a specified label](/vision/object-detection/alert-on-detections/)
 - [Machine logs contain errors, warnings, or info logs](/monitor/alert/)
 
 This page provides a reference for the Trigger attributes.

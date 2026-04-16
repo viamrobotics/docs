@@ -46,7 +46,7 @@ To monitor machine health metrics like CPU usage, memory, and temperature, add a
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-On your machine's **CONFIGURE** page, click the **+** icon next to your machine part and select **Component or service**.
+On your machine's **CONFIGURE** page, click the **+** icon next to your machine part and select **Configuration block**.
 Search for and add the `hwmonitor:cpu_monitor` model from the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module.
 
 You can add additional sensors for memory, temperature, and other metrics.
@@ -325,5 +325,5 @@ viam machines part delete-trigger --part <part-name-or-id> --name <trigger-name>
 ## Other alert types
 
 - For alerts based on data sync events (not tied to machine health), see [Trigger on data events](/data/trigger-on-data/).
-- For alerts when an ML model detects specific objects or classifications, see [Alert on detections](/vision/alert-on-detections/).
+- For alerts when an ML model detects specific objects or classifications, see [Alert on detections](/vision/object-detection/alert-on-detections/).
 - For full trigger configuration reference, see [Trigger configuration](/reference/triggers/).

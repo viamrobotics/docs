@@ -1,17 +1,19 @@
 ---
 linkTitle: "Act on detections"
 title: "Act on detections"
-weight: 60
+weight: 50
 layout: "docs"
 type: "docs"
 description: "Build a module that uses vision service results to control machine behavior."
 aliases:
   - /vision/act/
   - /vision/how-to/act-on-detections/
-date: "2025-10-09"
+  - /data-ai/ai/act/
+  - /vision/act-on-detections/
+date: "2026-04-14"
 ---
 
-You have a vision service detecting or classifying objects, but you need your machine to respond automatically -- stop an arm when a person is nearby, sort items by color, or trigger an action when an anomaly appears. This guide shows you how to build a module that reads vision results and controls other resources based on what it sees.
+You have a vision service detecting or classifying objects, but you need your machine to respond automatically: stop an arm when a person is nearby, sort items by color, or trigger an action when an anomaly appears. This guide shows you how to build a module that reads vision results and controls other resources based on what it sees.
 
 ## Concepts
 
@@ -22,6 +24,10 @@ The most common approach is to create a module that wraps an existing resource. 
 For example, a "safe arm" module wraps a real arm. When your code calls `move_to_position`, the wrapper first checks the vision service for people in the frame. If no one is detected, it passes the command to the real arm. If a person is detected, it raises an error.
 
 This pattern works with any resource type: arms, bases, motors, or even other services.
+
+{{< alert title="Not a safety system" color="caution" >}}
+The wrapper pattern gates **new motion commands** at the moment they are issued. It does not interrupt motion already in progress: if a person walks into the workspace mid-move, the arm will not stop. For true safety, use hardware interlocks (E-stops, light curtains, safety-rated scanners) that cut power or brake the actuator. Use the wrapper pattern for soft preconditions like "don't start a pick cycle when someone is at the table", not for injury prevention.
+{{< /alert >}}
 
 ### Choosing a resource type
 
@@ -222,7 +228,7 @@ async def do_command(
     **kwargs
 ) -> Mapping[str, ValueTypes]:
     return await self.arm.do_command(
-        command, timeout, **kwargs)
+        command, timeout=timeout, **kwargs)
 ```
 
 ### 7. Test with hot reloading
@@ -259,7 +265,7 @@ After the module is deployed, configure its attributes in the Viam app:
 
 Each time you make changes, run `viam module reload` again to rebuild and redeploy.
 
-### 8. Upload to the registry
+### 8. Upload to the [registry](https://app.viam.com/registry)
 
 Once your module is working:
 
@@ -270,10 +276,10 @@ Once your module is working:
 
 If your module wraps another resource, update any services or processes that reference the original. For example, if motion planning used `my-arm`, update it to use `safe-arm-1` so all movement commands go through the vision check.
 
-## Try It
+## Try it
 
 1. Configure a safe arm module with a person detection model and point the camera at yourself. Attempt to move the arm and verify it refuses.
-2. Move out of frame and try again -- the arm should move normally.
+2. Move out of frame and try again. The arm should move normally.
 3. Adjust the confidence threshold in `_is_safe` and observe how it affects sensitivity.
 4. Try swapping detections for classifications to see how the two approaches differ.
 
@@ -289,7 +295,7 @@ If your module wraps another resource, update any services or processes that ref
 
 {{< expand "Vision check always returns safe / unsafe" >}}
 
-- Test the vision service independently using the **TEST** panel to confirm it produces detections.
+- Test the vision service independently using the **TEST** panel. Select the correct camera in the **Camera** dropdown and confirm the service produces detections.
 - Check that the `class_name` in your code matches the model's output labels exactly (case-sensitive).
 - Log the raw detections or classifications before filtering to see what the model returns.
 
@@ -302,8 +308,8 @@ If your module wraps another resource, update any services or processes that ref
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Alert on Detections](/vision/alert-on-detections/) -- send email or webhook notifications when specific objects are detected.
-- [Deploy a Module](/build-modules/deploy-a-module/) -- package and upload your module to the Viam Registry.
-- [Vision Service API Reference](/reference/apis/services/vision/) -- full API documentation for detections, classifications, and more.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send email or webhook notifications when specific objects are detected.
+- [Deploy a module](/build-modules/deploy-a-module/): package and upload your module to the Viam [registry](https://app.viam.com/registry).
+- [Vision service API](/reference/apis/services/vision/): full API documentation for detections, classifications, and more.

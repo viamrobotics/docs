@@ -49,7 +49,7 @@ Then, configure the service:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `navigation` type.
 Enter a name or use the suggested name for your service and click **Create**.
 
@@ -169,7 +169,7 @@ The following attributes are available for `Navigation` services:
 
 The [frame system service](/operate/reference/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
-It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/operate/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
+It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
 
 {{% /alert %}}
 

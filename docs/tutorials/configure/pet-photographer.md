@@ -843,7 +843,7 @@ To enable data capture on your machine, add and configure the [data management s
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 1. Choose `data management` as the type.
 1. Enter a name or use the suggested name for your instance of the data manager.
    This tutorial uses the name 'dm' in all example code.
@@ -879,7 +879,7 @@ To enable data capture on your machine, add and configure the [data management s
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/operate/reference/services/vision/color_detector/).
+To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/reference/services/vision/color_detector/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
@@ -887,7 +887,7 @@ If you have a different item you want to use, or want to match to a color that m
 {{% tab name="Config Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 1. Select the `vision` type, then select the `color detector` model.
 1. Enter a name or use the suggested name for your color detector.
    This tutorial uses the name 'my_color_detector' in all example code.
@@ -902,7 +902,7 @@ Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information, refer to [Configure a color detector](/operate/reference/services/vision/color_detector/).
+For more detailed information, refer to [Configure a color detector](/reference/services/vision/color_detector/).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -936,7 +936,7 @@ With the vision and data management services configured, you can now configure y
 
 If you haven't already, add a [camera](/operate/reference/components/camera/) component to your smart machine:
 
-1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
    Start typing "webcam" and select **camera / webcam**.
    Enter a name or use the suggested name for your camera.
    This tutorial uses the name 'cam' in all example code.
@@ -1012,5 +1012,5 @@ Try these other tutorials for more on working with the data management and visio
 {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{% card link="/tutorials/projects/guardian/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/vision/configure/"  %}}
+{{% card link="/vision/deploy-and-maintain/deploy-from-registry/"  %}}
 {{< /cards >}}

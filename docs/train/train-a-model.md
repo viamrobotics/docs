@@ -243,7 +243,7 @@ for _, job := range jobs {
   ML model service, and vision service to run your model.
 - [Add computer vision](/vision/configure/) -- the full guide to configuring
   vision services and cloud inference.
-- [Detect objects (2D)](/vision/detect/) -- use your
+- [Detect objects (2D)](/vision/object-detection/detect/) -- use your
   object detection model to find and locate objects in camera images.
 - [Classify images](/vision/classify/) -- use your
   classification model to categorize images from your machine's camera.

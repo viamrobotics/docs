@@ -306,7 +306,7 @@ We recommend consulting the docs for each service that might be helpful for your
 Then configure the service and test it.
 
 - [**Data management**](/data/capture-sync/capture-and-sync-data/): Capture, store, and sync data
-- [**Vision**](/vision/detect/#using-a-vision-service) and [**ML model**](/vision/configure/): Detect objects, classify images, or track movement in camera streams
+- [**Vision**](/vision/object-detection/detect/#using-a-vision-service) and [**ML model**](/vision/configure/): Detect objects, classify images, or track movement in camera streams
 - [**Motion**](/motion-planning/) and [**Frame system**](/motion-planning/frame-system/): Plan and execute complex movements
 - [**Navigation**](/operate/reference/services/navigation/): Help machines move autonomously
 - [**SLAM (Simultaneous Localization and Mapping)**](/operate/reference/services/slam/): Create maps of surroundings and locate machines within those maps
@@ -317,7 +317,7 @@ If you cannot find suitable services, skip the service for now.
 You can search all the available services in the Viam web UI when adding resources.
 
 **Wood sanding project:** To find a suitable vision service, you'd look through the available vision services.
-There is a [`color_detector` vision service](/operate/reference/services/vision/color_detector/) which you could use to detect the pencil color on wood.
+There is a [`color_detector` vision service](/reference/services/vision/color_detector/) which you could use to detect the pencil color on wood.
 You could also look for or create a machine learning model that recognizes drawings on wood.
 
 The motion service is built in.

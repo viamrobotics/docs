@@ -54,7 +54,7 @@ While some [examples](https://www.google.com/search?q=companion+robot) have rece
 Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
-By combining ChatGPT with the Viam platform’s built-in [computer vision service](/operate/reference/services/vision/), ML model support, and [locomotion](/operate/reference/components/base/), you can within a few hours create a basic companion robot that:
+By combining ChatGPT with the Viam platform’s built-in [computer vision service](/reference/services/vision/), ML model support, and [locomotion](/operate/reference/components/base/), you can within a few hours create a basic companion robot that:
 
 - Listens with a microphone, converts speech-to-text, gets a response from ChatGPT.
 - Converts GPT response text to speech and "speaks" the response through a speaker.
@@ -213,7 +213,7 @@ Now, configure your rover to:
 
 To configure your [servo](/operate/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
-- Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 - Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
 - Enter the name `servo1` for your servo and click **Create**.
 
@@ -249,7 +249,7 @@ This model can detect a variety of objects, which you can find in the provided <
 To configure an ML model service:
 
 - Select the **CONFIGURE** tab.
-- Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 - Select the `ML model` type, then select the `TFLite CPU` model.
 - Enter the name `stuff_detector` for your service, click **Add module** and click **Create**.
 
@@ -261,7 +261,7 @@ Click **Select model**, then select the `viam-labs:EfficientDet-COCO` model from
 Now, create a vision service to visualize your ML model:
 
 - Select the **CONFIGURE** tab.
-- Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 - Select the `vision` type, then select the `ML model` model.
 - Enter the name `mlmodel` for your service and click **Create**.
 

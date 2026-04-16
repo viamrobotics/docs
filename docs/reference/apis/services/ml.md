@@ -7,16 +7,15 @@ tags: ["data management", "ml", "model training"]
 description: "Give commands to your ML model service to make inferences based on a provided ML model."
 icon: true
 images: ["/services/icons/ml.svg"]
-date: "2022-01-01"
+date: "2026-04-14"
 aliases:
   - /dev/reference/apis/services/ml/
   - /appendix/apis/services/ml/
-# updated: ""  # When the content was last entirely checked
 ---
 
 The ML model service API allows you to make inferences based on a provided ML model.
 
-The [ML Model service](/vision/configure/) supports the following methods:
+The [ML model service](/vision/deploy-and-maintain/deploy-from-registry/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/mlmodel-table.md" >}}
 

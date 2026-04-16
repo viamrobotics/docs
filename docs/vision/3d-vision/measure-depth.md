@@ -1,7 +1,7 @@
 ---
 linkTitle: "Measure depth"
 title: "Measure depth"
-weight: 50
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Retrieve point clouds and depth images from a depth camera, read depth at specific pixels, and measure distance to detected objects."
@@ -11,9 +11,10 @@ aliases:
   - /vision-detection/measure-depth/
   - /vision-detection/localize-objects-in-3d/
   - /build/vision-detection/localize-objects-in-3d/
+  - /vision/measure-depth/
 ---
 
-A standard camera gives you a flat 2D image. You can see that there is a box on the table, but you cannot tell whether the box is 30 centimeters away or 3 meters away. This how-to shows you how to get depth data from your camera and extract useful distance measurements for robotics tasks that involve physical interaction.
+A standard camera gives you a flat 2D image. You can see that there is a box on the table, but you cannot tell whether the box is 30 centimeters away or 3 meters away. This how-to shows you how to get depth data from your perception sensor (a depth camera, LiDAR, or ToF sensor) and extract useful distance measurements for robotics tasks that involve physical interaction.
 
 ## Concepts
 
@@ -31,23 +32,23 @@ All of these produce the same type of output in Viam: a point cloud or a depth m
 
 ### Point clouds
 
-A point cloud is a collection of 3D points, each with an (x, y, z) position measured in millimeters from the camera's optical center. Some point clouds also include color information for each point.
+A point cloud is a collection of 3D points, each with an (x, y, z) position measured in millimeters from a frame defined by the sensor (the optical center for most depth cameras; check your sensor's datasheet for LiDAR and ToF units). Some point clouds also include color information for each point.
 
-The coordinate system follows a standard convention:
+The coordinate system typically follows this convention:
 
 - **X** increases to the right
 - **Y** increases downward
-- **Z** increases away from the camera (depth)
+- **Z** increases away from the sensor (depth)
 
 A typical indoor scene captured by a depth camera contains tens of thousands to hundreds of thousands of points, depending on the camera resolution and range.
 
 ### Depth maps vs point clouds
 
-A **depth map** is a 2D image where each pixel value represents the distance from the camera to the surface at that pixel location. It is essentially a grayscale image where brighter pixels are farther away (or vice versa, depending on the encoding).
+A **depth map** is a 2D image where each pixel's value is the distance from the camera to the surface. It is essentially a grayscale image where brighter pixels are farther away (or vice versa, depending on the encoding).
 
 A **point cloud** is the 3D representation: each pixel in the depth map is projected into 3D space using the camera's intrinsic parameters. The point cloud contains explicit (x, y, z) coordinates.
 
-Viam provides point clouds through the `GetPointCloud` API. If you need a depth map instead, you can capture the depth image directly using `GetImage` with the appropriate MIME type.
+Viam provides point clouds through the `GetPointCloud` API. If you need a depth map instead, capture it through `GetImages` and filter the returned list for the image whose MIME type is `image/vnd.viam.dep` (the raw depth format).
 
 ### Camera intrinsic parameters
 
@@ -57,7 +58,7 @@ When you configure a depth camera in Viam, the intrinsic parameters are typicall
 
 ### 3D object localization
 
-If you need 3D positions for detected objects --for example, to guide a robot arm to pick up a cup --you combine 2D detections with depth data. The workflow is:
+If you need 3D positions for detected objects (for example, to guide a robot arm to pick up a cup), combine 2D detections with depth data. The workflow is:
 
 1. Run a 2D detector to get bounding boxes.
 2. For each bounding box, extract the corresponding depth pixels.
@@ -174,10 +175,9 @@ camera = Camera.from_robot(robot, "my-depth-camera")
 # Get images from the depth camera
 images, _ = await camera.get_images()
 
-# The depth image is typically the second image
-# Check source_name to identify the depth stream
+# Each item is a NamedImage. Inspect `name` and `mime_type` to find the depth stream.
 for img in images:
-    print(f"Source: {img.source_name}, size: {img.width}x{img.height}")
+    print(f"Name: {img.name}, MIME: {img.mime_type}, size: {img.width}x{img.height}")
 ```
 
 {{% /tab %}}
@@ -213,6 +213,7 @@ Given a depth image, you can look up the distance at any pixel coordinate. This 
 ```python
 import numpy as np
 from viam.components.camera import Camera
+from viam.media.video import CameraMimeType
 
 
 camera = Camera.from_robot(robot, "my-depth-camera")
@@ -220,21 +221,28 @@ camera = Camera.from_robot(robot, "my-depth-camera")
 # Get images from the depth camera
 images, _ = await camera.get_images()
 
-# Find the depth image by checking available images
-# Convert to numpy array for pixel-level access
-depth_array = np.array(images[1].image)
+# Find the depth image by MIME type, then decode bytes to a 2D depth array.
+depth_image = next(
+    (img for img in images if img.mime_type == CameraMimeType.VIAM_RAW_DEPTH),
+    None,
+)
+if depth_image is None:
+    raise RuntimeError("No depth stream in camera output")
+
+# bytes_to_depth_array returns a 2D list of uint16 values in millimeters.
+depth_array = np.array(depth_image.bytes_to_depth_array(), dtype=np.uint16)
 
 # Read depth at a specific pixel (center of image)
 center_x = depth_array.shape[1] // 2
 center_y = depth_array.shape[0] // 2
-depth_mm = depth_array[center_y, center_x]
+depth_mm = int(depth_array[center_y, center_x])
 
 print(f"Depth at center ({center_x}, {center_y}): {depth_mm} mm")
 print(f"That is {depth_mm / 1000:.2f} meters")
 
 # Read depth at a specific coordinate
 target_x, target_y = 320, 240
-depth_at_target = depth_array[target_y, target_x]
+depth_at_target = int(depth_array[target_y, target_x])
 print(f"Depth at ({target_x}, {target_y}): {depth_at_target} mm")
 ```
 
@@ -286,6 +294,7 @@ Combine 2D detections with depth data to measure the distance to each detected o
 
 ```python
 from viam.components.camera import Camera
+from viam.media.video import CameraMimeType
 from viam.services.vision import VisionClient
 import numpy as np
 
@@ -296,9 +305,15 @@ detector = VisionClient.from_robot(robot, "my-detector")
 # Get detections
 detections = await detector.get_detections_from_camera("my-depth-camera")
 
-# Get images including depth
+# Get images and decode the depth stream.
 images, _ = await camera.get_images()
-depth_array = np.array(images[1].image)
+depth_image = next(
+    (img for img in images if img.mime_type == CameraMimeType.VIAM_RAW_DEPTH),
+    None,
+)
+if depth_image is None:
+    raise RuntimeError("No depth stream in camera output")
+depth_array = np.array(depth_image.bytes_to_depth_array(), dtype=np.uint16)
 
 for d in detections:
     if d.confidence < 0.5:
@@ -459,10 +474,10 @@ If your camera does not automatically provide intrinsic parameters, you can set 
 Most depth cameras (Intel RealSense, Oak-D) provide these automatically. You only need to set them manually for cameras without built-in calibration data.
 
 {{< alert title="Tip" color="tip" >}}
-If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect Objects, step 7](/vision/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect objects, step 7](/vision/object-detection/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
 {{< /alert >}}
 
-## Try It
+## Try it
 
 1. Run the point cloud script from step 2 and verify you get data back.
 2. Run the depth-at-pixel script from step 4. Point the camera at objects at different distances and verify the measurements are reasonable.
@@ -481,7 +496,7 @@ If you need an image, its detections, and a point cloud together in one call, us
 
 {{< expand "Depth values are zero at some pixels" >}}
 
-- Zero typically means "no data" -- the camera could not determine the depth at that pixel. This is common at object edges, on featureless surfaces (blank walls), and at extreme distances.
+- Zero typically means "no data": the camera could not determine the depth at that pixel. This is common at object edges, on featureless surfaces (blank walls), and at extreme distances.
 - When measuring distance to an object, sample multiple pixels around the target and take the median of non-zero values, as shown in step 5.
 
 {{< /expand >}}
@@ -502,7 +517,8 @@ If you need an image, its detections, and a point cloud together in one call, us
 
 {{< /expand >}}
 
-## What's Next
+## What's next
 
-- [Detect Objects (2D)](/vision/detect/) -- get 2D detections to combine with depth measurements.
-- [Frame System](/motion-planning/frame-system/) -- set up coordinate frame transforms so 3D positions are usable by other components.
+- [Detect objects](/vision/object-detection/detect/): get 2D detections to combine with depth measurements.
+- [Act on detections](/vision/object-detection/act-on-detections/): drive machine behavior from detections plus depth (for example, move a robot arm to a 3D object position).
+- [Frame system](/motion-planning/frame-system/): set up coordinate frame transforms so 3D positions are usable by other components.

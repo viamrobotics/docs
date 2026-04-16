@@ -9,11 +9,12 @@ date: "2025-01-30"
 aliases:
   - /build/vision-detection/track-objects-across-frames/
   - /vision-detection/track-objects-across-frames/
+  - /vision/track/
 ---
 
 Object detection operates on single frames. It tells you what is in the image right now, but nothing about what was in the previous frame. When you run detections at 5 frames per second, you get 5 independent lists of bounding boxes with no way to tell whether a detection in frame 2 corresponds to the same object as in frame 1.
 
-The [`viam:object-tracker` module](https://app.viam.com/module/viam/object-tracker) solves this by wrapping an existing detector and camera, matching detections across consecutive frames, and assigning stable track IDs. You can answer questions like: how many cars have passed through this intersection? How long has this person been standing here?
+The [`viam:object-tracker` module](https://app.viam.com/module/viam/object-tracker) solves this problem. It wraps an existing detector and camera, matches detections across consecutive frames, and assigns each tracked object a stable ID. With track IDs you can answer questions like "how many cars have passed through this intersection?" and "how long has this person been standing here?"
 
 ## How it works
 
@@ -21,7 +22,7 @@ The object tracker sits between your detector and your application code:
 
 1. Your **camera** provides the image stream.
 2. Your **detector** (a vision service) runs on each frame and returns detections.
-3. The **object tracker** matches new detections to existing tracks using the Hungarian algorithm. Unmatched detections become new tracks. Tracks with no matching detection for several frames are removed.
+3. The **object tracker** matches new detections to existing tracks using the [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm). Unmatched detections become new tracks. Tracks with no matching detection for several frames are removed.
 
 Each tracked object gets a persistent class name in the format:
 
@@ -38,19 +39,13 @@ For example, the first person detected becomes `person_0_20250413_143052`. The `
 
 ## Configure the object tracker
 
-### 1. Add the module
+### 1. Add the object-tracker vision service
 
 1. Click **+** and select **Configuration block**.
-2. Search for **object-tracker** and select `viam:object-tracker`.
-3. Click **Add module**.
+2. In the search field, type `object-tracker` and select the `viam:vision:object-tracker` result (the card shows the module name and model name; the badge says `VISION`).
+3. Click **Add component**, name the service (for example, `my-tracker`), and click **Add component** again to confirm. The module is installed automatically.
 
-### 2. Add the vision service
-
-1. Click **+** and select **Configuration block**.
-2. Search for **object-tracker** under vision services and select `viam:vision:object-tracker`.
-3. Click **Add component**, name it (for example, `my-tracker`), and click **Add component** again to confirm.
-
-### 3. Configure attributes
+### 2. Configure attributes
 
 Set the required attributes:
 
@@ -63,11 +58,11 @@ Set the required attributes:
 
 | Attribute               | Type   | Required | Default | Description                                                                                     |
 | ----------------------- | ------ | -------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `camera_name`           | string | **Yes**  | --      | Name of the configured camera component.                                                        |
-| `detector_name`         | string | **Yes**  | --      | Name of the configured vision detector service.                                                 |
+| `camera_name`           | string | **Yes**  | None    | Name of the configured camera component.                                                        |
+| `detector_name`         | string | **Yes**  | None    | Name of the configured vision detector service.                                                 |
 | `min_confidence`        | float  | No       | 0.2     | Minimum confidence threshold for detections (0 to 1).                                           |
 | `max_frequency_hz`      | float  | No       | 10      | Maximum rate at which the tracker processes frames.                                             |
-| `chosen_labels`         | object | No       | --      | Map of class names to confidence thresholds. Only detections matching these labels are tracked. |
+| `chosen_labels`         | object | No       | None    | Map of class names to confidence thresholds. Only detections matching these labels are tracked. |
 | `trigger_cool_down_s`   | float  | No       | 5       | Seconds before a trigger resets after firing.                                                   |
 | `buffer_size`           | int    | No       | 30      | Number of frames to buffer lost detections before removing a track (1 to 256).                  |
 | `min_track_persistence` | int    | No       | 1       | Number of consecutive frames a track must appear in before it is returned in detection results. |
@@ -117,7 +112,7 @@ async def main():
         detections = await tracker.get_detections_from_camera("my-camera")
 
         for d in detections:
-            # class_name contains the track ID, e.g. "person_0_20250413_143052"
+            # class_name contains the track ID, for example "person_0_20250413_143052"
             print(f"{d.class_name}: {d.confidence:.2f} "
                   f"at ({d.x_min},{d.y_min})-({d.x_max},{d.y_max})")
 
@@ -177,7 +172,7 @@ func main() {
         }
 
         for _, d := range detections {
-            // Label() contains the track ID, e.g. "person_0_20250413_143052"
+            // Label() contains the track ID, for example "person_0_20250413_143052"
             fmt.Printf("%s: %.2f at (%d,%d)-(%d,%d)\n",
                 d.Label(), d.Score(),
                 d.BoundingBox().Min.X, d.BoundingBox().Min.Y,
@@ -271,6 +266,6 @@ func getTrackID(className string) string {
 
 ## What's next
 
-- [Detect objects](/vision/detect/): learn about the detection API the tracker builds on.
-- [Act on detections](/vision/act-on-detections/): build modules that respond to detection or classification results.
-- [Alert on detections](/vision/alert-on-detections/): send alerts when tracked objects enter or exit a scene.
+- [Detect objects](/vision/object-detection/detect/): learn about the detection API the tracker builds on.
+- [Act on detections](/vision/object-detection/act-on-detections/): build modules that respond to detection or classification results.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send alerts when tracked objects enter or exit a scene.

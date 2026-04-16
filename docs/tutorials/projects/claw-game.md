@@ -213,7 +213,7 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 
 Select type `arm`, and model `viam:ufactory:xArm6`.
 Name it `myArm` and click **Create**.
@@ -931,7 +931,7 @@ In this tutorial, you learned how to:
 For some next steps, you could:
 
 - Use the advanced interface included in the project repository to leverage the [motion service](/operate/reference/services/motion/) for larger, more complex arm movement within the enclosure.
-- Add a camera and use the [vision service](/operate/reference/services/vision/) to add color detection, or use an [ML model](/vision/configure/) to determine grab success rate and create a score counter.
+- Add a camera and use the [vision service](/reference/services/vision/) to add color detection, or use an [ML model](/vision/configure/) to determine grab success rate and create a score counter.
 - Design a hard mode where the prizes are shuffled around with the arm every few attempts.
 - Add a camera and extend the interface to allow folks from anywhere in the world to play the claw game and win.
 

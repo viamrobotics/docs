@@ -29,7 +29,7 @@ toc_hide: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial, you'll learn how to use the [vision service](/operate/reference/services/vision/) to make a rover follow a colored object.
+In this tutorial, you'll learn how to use the [vision service](/reference/services/vision/) to make a rover follow a colored object.
 We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/try/).
 
 {{< alert title="You will learn" color="tip" >}}
@@ -74,7 +74,7 @@ To create a [color detector vision service](/reference/apis/services/vision/#det
 {{% tab name="Builder" %}}
 
 Navigate to your machine's **CONFIGURE** tab.
-Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `vision` type, then select the `color detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
 
