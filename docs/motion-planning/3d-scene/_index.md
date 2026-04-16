@@ -22,7 +22,7 @@ The tab has four areas, each doing a distinct job: the **viewport** renders the 
 **World panel** (floating, upper-left): A hierarchical list of every entity in the scene, titled **World**.
 The panel is always visible (it has no close button) but is draggable and resizable.
 The root node `World` mirrors your machine's world frame.
-Each row shows an expand caret, the entity name, and an eye toggle (click the eye, or select the row and press `H`, to hide or show that entity).
+Each row shows an expand caret, the entity name, and an eye toggle. Click the eye or select the row and press `H` to hide or show the entity.
 Click a row to select the entity; its details appear in the Details panel.
 
 **Details panel** (floating, upper-right): Shows the selected entity's spatial properties.
@@ -82,7 +82,7 @@ This is useful for loading saved SLAM maps or point cloud captures for compariso
 
 ## Link related entities (HoverLink)
 
-When you select a point cloud or arrows entity (typically dropped PCD or PLY files), the Details panel shows an **Add Relationship** button. Use this to link two indexable entities so that hovering an item in one entity highlights the corresponding item in the other.
+HoverLink links two indexable entities so that hovering an item in one highlights the matching item in the other. When you select a point cloud or arrows entity (typically dropped PCD or PLY files), the Details panel shows an **Add Relationship** button to set this up.
 
 To add a HoverLink:
 

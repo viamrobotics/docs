@@ -60,46 +60,22 @@ If the point cloud is in the right place but the data looks wrong, look for comm
 Data quality problems are camera issues, not frame system issues.
 Adjust the camera's configuration, mounting angle, or lighting conditions to address them.
 
-## From point clouds to obstacles
-
-A raw point cloud is just a set of 3D points; the motion planner does
-not consume it directly. To turn point cloud data into something the
-planner can avoid, run it through a vision service whose model produces
-3D objects (one with a 3D segmenter, like the [`obstacles_pointcloud`
-module](https://app.viam.com/module/viam/obstacles-pointcloud) or any
-custom segmenter that implements `GetObjectPointClouds`). The vision
-service returns each detected object with a bounding geometry the
-planner can use as an obstacle.
-
-Two ways to feed those obstacles into motion planning:
-
-- **Per-call (`Move`):** call `GetObjectPointClouds` from your code,
-  convert each returned object's bounding geometry into a
-  `Geometry`, and pass the result as `WorldState.obstacles` on the
-  `Move` request. See
-  [Define obstacles programmatically with WorldState](/motion-planning/obstacles/#3-define-obstacles-programmatically-with-worldstate)
-  for the construction pattern. The planner uses these only for that
-  call.
-
-- **During execution (`MoveOnMap` / `MoveOnGlobe`):** configure
-  `obstacle_detectors` on the `MotionConfiguration` for the call.
-  The motion service polls each `(vision_service, camera)` pair at the
-  configured rate and feeds new detections to the planner without you
-  re-issuing `Move`. See
-  [ObstacleDetector](/motion-planning/reference/motion-configuration/#obstacledetector)
-  and
-  [Replanning behavior](/motion-planning/replanning-behavior/) for the
-  poll cadence and how detections trigger replans.
-
-If you just need to align a point cloud with the rest of the scene
-visually (no obstacle pipeline yet), the steps above are enough; you
-do not need a vision service to use the **3D SCENE** tab.
-
 ## What's next
+
+The motion planner does not consume raw point clouds directly: a vision
+service with a 3D segmenter (such as the
+[`obstacles_pointcloud` module](https://app.viam.com/module/viam/obstacles-pointcloud))
+turns point clouds into bounded 3D objects, and you feed those to the
+planner.
 
 - [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
   uses `GetObjectPointClouds` to localize the target the arm should
-  grasp.
+  grasp on a single `Move` call.
 - [Define obstacles](/motion-planning/obstacles/): the geometry types
-  the motion planner accepts as obstacles, regardless of whether
-  they come from vision or from configuration.
+  the motion planner accepts, including the
+  [`WorldState.obstacles`](/motion-planning/obstacles/#3-define-obstacles-programmatically-with-worldstate)
+  pattern for per-call dynamic obstacles.
+- [ObstacleDetector](/motion-planning/reference/motion-configuration/#obstacledetector):
+  configures the motion service to poll a vision service during
+  `MoveOnMap` and `MoveOnGlobe`, so detections trigger replans without
+  re-issuing `Move`.

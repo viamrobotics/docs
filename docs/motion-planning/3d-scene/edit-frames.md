@@ -65,12 +65,14 @@ Edits are held locally until you save. The CONFIGURE tab shows an unsaved-change
 
 To delete a frame, remove it from the component's configuration on the CONFIGURE tab (there is no **Delete frame** button in the embedded **3D SCENE** tab).
 
-## When to use visual editing
+## When to edit JSON instead
 
-Visual frame editing is most useful when:
+Visual editing covers most cases, but a few are faster in JSON:
 
-- You are setting up a new frame system and want to see the result as you go, rather than configuring JSON and then checking the **3D SCENE** tab.
-- You need to make small adjustments to frame positions and want immediate visual feedback.
-- You are adding geometry to components and want to see whether the shapes cover the physical objects correctly.
-
-For bulk configuration changes, complex orientation values, or frames that reference components on different machine parts, editing the JSON configuration directly may be more efficient.
+- **Bulk changes** (renaming many frames, regenerating a layout) — JSON
+  edits are easier in a text editor.
+- **Frames that reference components on a different machine part** —
+  the visual editor's parent dropdown only shows local frames.
+- **Complex orientations** (rotations expressed in `axis_angles` or
+  `quaternion` rather than `ov_degrees`) — the visual editor surfaces
+  only the orientation vector form.

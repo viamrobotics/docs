@@ -26,7 +26,7 @@ Navigate to your machine in the [Viam app](https://app.viam.com) and click the *
 Obstacle geometries appear as translucent shapes in the viewport and as child rows under their parent frame in the **World** panel.
 Each geometry is positioned according to its frame configuration: its location is defined by a translation and orientation relative to a parent frame.
 
-There is no separate "obstacles" list; toggle an obstacle's visibility with the eye icon on its row in the World panel, or select the row and press `H`.
+Obstacles do not get their own list. To toggle an obstacle's visibility, click the eye icon on its row in the World panel, or select the row and press `H`.
 
 Click an obstacle in the scene or in the World panel to see its details:
 
