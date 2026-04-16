@@ -57,7 +57,7 @@ On the new component's card, paste a `geometries` list into the attributes edito
 For a single obstacle, the list has one entry.
 For a rigid multi-part fixture (an L-bracket, a staging area with a floor and front wall), put several entries in the list and they move as one unit with the component's frame.
 
-Supported geometry types are described in [Geometry types](/motion-planning/obstacles/#geometry-types).
+Supported geometry types are described in [Geometry types](/motion-planning/obstacles/overview/#geometry-types).
 
 ### 3. Position the obstacle with a frame
 

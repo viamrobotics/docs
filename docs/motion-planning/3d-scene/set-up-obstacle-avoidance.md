@@ -49,7 +49,7 @@ Check that:
 Static obstacles are configured through the Viam app. See
 [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/)
 for the three config patterns and worked examples. The
-[geometry types table](/motion-planning/obstacles/#geometry-types) on the
+[geometry types table](/motion-planning/obstacles/overview/#geometry-types) on the
 obstacles landing page gives recommendations for which type to use for
 which physical object.
 
@@ -70,7 +70,7 @@ After defining obstacles, run through this checklist in the **3D SCENE** tab:
 Static obstacles in configuration cover fixed workspace objects. For objects
 that move, pass geometry at runtime through the `WorldState` parameter of the
 `Move` request. See
-[Static vs dynamic obstacles](/motion-planning/obstacles/#static-vs-dynamic-obstacles)
+[Static vs dynamic obstacles](/motion-planning/obstacles/overview/#static-vs-dynamic-obstacles)
 for the distinction and
 [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/)
 for code examples.

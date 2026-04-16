@@ -17,7 +17,7 @@ state on every `Move` while the object is held, and stop passing it after
 release.
 
 This is the runtime complement to the
-[passive objects pattern](/motion-planning/obstacles/#passive-objects-attached-to-a-component),
+[passive objects pattern](/motion-planning/obstacles/overview/#passive-objects-attached-to-a-component),
 which covers objects that are always attached (camera mounts, adapter
 plates). Use this page's pattern for objects the robot grasps and
 releases dynamically.
@@ -221,11 +221,11 @@ For the full pattern, see
 
 ## Compared to passive attachment
 
-| Need                                                               | Use                                                                                                                                          |
-| ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Object is always attached (for example, a permanent camera mount). | [Passive objects pattern](/motion-planning/obstacles/#passive-objects-attached-to-a-component). Configure a generic component with geometry. |
-| Object attaches only during a grasp and may change between grasps. | This page. Build a `Transform`, pass it through `WorldState.transforms` for the duration of the grasp.                                       |
-| Object is a static obstacle (table, wall, fixed fixture).          | Standard [obstacles](/motion-planning/obstacles/). No transform needed.                                                                      |
+| Need                                                               | Use                                                                                                                                                   |
+| ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Object is always attached (for example, a permanent camera mount). | [Passive objects pattern](/motion-planning/obstacles/overview/#passive-objects-attached-to-a-component). Configure a generic component with geometry. |
+| Object attaches only during a grasp and may change between grasps. | This page. Build a `Transform`, pass it through `WorldState.transforms` for the duration of the grasp.                                                |
+| Object is a static obstacle (table, wall, fixed fixture).          | Standard [obstacles](/motion-planning/obstacles/). No transform needed.                                                                               |
 
 ## Troubleshooting
 

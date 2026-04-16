@@ -157,7 +157,7 @@ in the **3D SCENE** tab and you are done.
 If the gripper has no kinematics file, add a `geometry` field to the
 gripper's frame describing its physical volume so the planner can avoid
 collisions with the gripper body. See
-[Define obstacles](/motion-planning/obstacles/#passive-objects-attached-to-a-component)
+[Define obstacles](/motion-planning/obstacles/overview/#passive-objects-attached-to-a-component)
 for the pattern.
 
 ### 5. Add a frame to the wrist camera
