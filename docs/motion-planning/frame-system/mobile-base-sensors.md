@@ -43,7 +43,7 @@ the base's motion from that initial origin.
 
 ### 2. Add a frame to the base
 
-In the **CONFIGURE** tab, click the base component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/#edit-a-frame-in-the-viam-app).) Edit the JSON for each component below as you go.
+In the **CONFIGURE** tab, click the base component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).) Edit the JSON for each component below as you go.
 
 Since the world frame origin is at the base center, the translation is zero:
 
@@ -154,7 +154,7 @@ Use `TransformPose` to confirm the relationships between sensor frames and the b
 For example, transform the front camera's origin `(0, 0, 0)` from the camera frame to the base frame.
 The result should match the camera's measured offset from the base center.
 
-For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/overview/#transformpose).
 
 ## Troubleshooting
 
