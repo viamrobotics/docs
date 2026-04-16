@@ -79,8 +79,9 @@ Common depth-capable cameras and the modules that wrap them:
 - Intel RealSense D400 series, through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)
 - Luxonis OAK-D series, through the [OAK camera module](https://github.com/viamrobotics/viam-camera-oak)
 - Orbbec cameras, through the [Orbbec module](https://github.com/viam-modules/orbbec)
-- Stereolabs ZED cameras, through a community module on the [registry](https://app.viam.com/registry)
 - The `fake` camera model, for development without hardware (returns synthetic but structurally correct point clouds)
+
+For other depth cameras, search the [registry](https://app.viam.com/registry?type=component&subtype=camera) for a matching module.
 
 Check that the depth stream is enabled in the camera's configuration, and confirm the camera reports `supports_pcd: true` through [`GetProperties`](/reference/apis/components/camera/#getproperties). Without depth support, none of the steps below will work.
 
