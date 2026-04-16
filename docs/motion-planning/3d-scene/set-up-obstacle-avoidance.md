@@ -46,23 +46,15 @@ Check that:
 
 ## Add or adjust obstacles
 
-Obstacles are defined in the motion service configuration or passed as a `WorldState` parameter to `Move` requests.
-For static obstacles (tables, walls, posts), define them in the configuration so they persist across motion plans.
+Static obstacles are defined in the component frame configuration. See
+[Define obstacles](/motion-planning/obstacles/) for the geometry types,
+JSON schema, and worked examples. The
+[geometry types table](/motion-planning/obstacles/#geometry-types) on
+that page gives recommendations for which type to use for which physical
+object.
 
-See [Define obstacles](/motion-planning/obstacles/) for the full configuration reference, including JSON examples for each geometry type.
-
-After changing obstacle configuration, return to the **3D SCENE** tab to verify the changes.
-The scene reflects the current saved configuration.
-
-## Choose the right geometry type
-
-| Physical object  | Recommended geometry | Notes                                                                                 |
-| ---------------- | -------------------- | ------------------------------------------------------------------------------------- |
-| Table or shelf   | Box                  | Match the surface dimensions. Include thickness if the arm could approach from below. |
-| Post or column   | Capsule              | Set the radius to match the column width, length to match the height.                 |
-| Round obstacle   | Sphere               | Use the bounding radius. Simple and fast for collision checking.                      |
-| Wall or barrier  | Box                  | Use a thin box with large x and z dimensions.                                         |
-| Irregular object | Box (oversized)      | Use the bounding box of the object. Oversizing is safer than undersizing.             |
+After changing obstacle configuration, return to the **3D SCENE** tab to
+verify the changes. The scene reflects the current saved configuration.
 
 ## Verify coverage
 
@@ -75,6 +67,15 @@ After defining obstacles, run through this checklist in the **3D SCENE** tab:
 
 ## Dynamic obstacles
 
-Static obstacles in configuration cover fixed workspace objects. For objects that move, pass geometry at runtime through the `WorldState` parameter of the `Move` request. Runtime geometry uses the same shape types as static geometry and appears in the **3D SCENE** tab the same way.
+Static obstacles in configuration cover fixed workspace objects. For objects
+that move, pass geometry at runtime through the `WorldState` parameter of the
+`Move` request. See
+[Static vs dynamic obstacles](/motion-planning/obstacles/#static-vs-dynamic-obstacles)
+for the distinction and
+[Define obstacles programmatically with WorldState](/motion-planning/obstacles/#3-define-obstacles-programmatically-with-worldstate)
+for code examples.
 
-Pair a vision service with a camera to detect moving objects and feed the detections into `Move` as runtime obstacles. See the [motion service API reference](/motion-planning/reference/) for obstacle detectors.
+Dynamic obstacles passed to a single `Move` call are not drawn in the **3D
+SCENE** tab. To verify a dynamic obstacle's position visually, log its pose
+from your code or temporarily add a static geometry with the same dimensions
+to a component frame.

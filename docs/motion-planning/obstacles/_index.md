@@ -36,13 +36,15 @@ dangerous motion.
 Viam supports five geometry types for defining obstacles. The three primitives
 are the most commonly used:
 
-| Type        | JSON `type` | Config fields                          | Best for                                      |
-| ----------- | ----------- | -------------------------------------- | --------------------------------------------- |
-| **Box**     | `"box"`     | `x`, `y`, `z` (dimensions in mm)       | Tables, walls, shelves, rectangular equipment |
-| **Sphere**  | `"sphere"`  | `r` (radius in mm)                     | Balls, rounded objects, keep-out zones        |
-| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, pipes, cylindrical objects             |
-| **Point**   | `"point"`   | (none, position only)                  | Single points in space                        |
-| **Mesh**    | `"mesh"`    | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files             |
+| Type        | JSON `type` | Config fields                          | Best for                                                                                                                                         |
+| ----------- | ----------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Box**     | `"box"`     | `x`, `y`, `z` (dimensions in mm)       | Tables, shelves, walls, rectangular equipment. Match surface dimensions; include thickness if the arm could approach from below.                 |
+| **Sphere**  | `"sphere"`  | `r` (radius in mm)                     | Balls, round obstacles, keep-out zones. Use the bounding radius.                                                                                 |
+| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, columns, pipes. Set the radius to match the column width and length to the height.                                                        |
+| **Point**   | `"point"`   | (none, position only)                  | Single points in space.                                                                                                                          |
+| **Mesh**    | `"mesh"`    | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files when no primitive fits. More expensive to collision-check; use a primitive bounding shape if accuracy permits. |
+
+For irregular objects, use a Box that fully encloses the object (over-approximation is safer than under-approximation, even though it shrinks the planner's solution space).
 
 Each geometry has a center point (pose) that defines where it sits in space. The
 pose is relative to a reference frame, typically the world frame. Geometry
@@ -468,6 +470,10 @@ Check the Viam app to see your obstacle geometry:
 2. Click the **3D SCENE** tab.
 3. Obstacles defined in component frame configurations appear as translucent
    shapes in the 3D view.
+
+For the full visualization-and-verification workflow (orbit checks,
+coverage checklist, choosing the right geometry per physical object), see
+[Set up obstacle avoidance](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
 
 {{< alert title="Dynamic obstacles are not visible in 3D SCENE" color="note" >}}
 
