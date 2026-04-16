@@ -11,7 +11,7 @@ aliases:
   - /mobility/motion/algorithms/
 ---
 
-The builtin motion service uses one planning algorithm: cBiRRT. This page lists its identifying details, the defaults, and where each tunable is exposed to callers. For how cBiRRT works, its limits, and what to try when it fails, see [How motion planning works](/motion-planning/how-planning-works/).
+The builtin motion service uses one planning algorithm: cBiRRT. When you need to change how the motion service plans, this page tells you what algorithm is running, what the defaults are, and where each tunable lives. For how cBiRRT works, its limits, and what to try when it fails, see [How motion planning works](/motion-planning/how-planning-works/).
 
 ## Algorithm
 

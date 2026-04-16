@@ -12,7 +12,7 @@ aliases:
   - /operate/reference/orientation-vector/
 ---
 
-When you specify a pose in Viam (in frame system configuration, a motion planning destination, or any other `Pose` payload), the orientation is expressed as one of five rotation formats. This page lists those formats, their schemas, common orientations, and validation rules.
+When you write a `Pose` payload (in frame system configuration, a motion planning destination, or anywhere else), the orientation format you choose affects validation and gimbal-lock behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.
 
 Viam's default format, the orientation vector (OV), is structured similarly
 to the

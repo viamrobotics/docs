@@ -10,18 +10,16 @@ aliases:
   - /build/work-cell-layout/configure-robot-kinematics/
 ---
 
-A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it. Most registry arm modules ship this file; you only need to write one when building a custom arm.
+A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it.
 
 {{< alert title="Most arms handle this automatically" color="tip" >}}
 
-Most arm modules in the Viam registry include a kinematics file that describes
-this structure. For standard commercial arms like the UR5e, xArm6, or Viam Arm,
-the module handles kinematics automatically. You do not need to provide or
-configure a kinematics file for these arms.
-
-This page is relevant if you are building a custom arm, using a module without a
-built-in kinematics file, or need to verify that a kinematics model matches your
-physical arm.
+Most arm modules in the Viam registry include a kinematics file. For standard
+commercial arms like the UR5e, xArm6, or Viam Arm, the module handles
+kinematics automatically; you do not need to provide or configure a
+kinematics file. Read this page if you are building a custom arm, using a
+module without a built-in kinematics file, or verifying that a kinematics
+model matches your physical arm.
 
 {{< /alert >}}
 
@@ -258,15 +256,9 @@ Verify the visualization by comparing it to the physical arm:
 If the visualization does not match the physical arm, the kinematics file may
 have incorrect link lengths, joint axes, or joint limits.
 
-## Try it
-
-1. Run the kinematics check from step 1 to confirm your arm module has a
-   built-in kinematics file.
-2. Open the 3D SCENE tab and compare the rendered arm to the physical arm. Move
-   individual joints using the CONTROL tab and verify the visualization matches.
-3. For reading joint positions and controlling the arm, see
-   [Add an Arm](/hardware/common-components/add-an-arm/) and the
-   [Arm API reference](/reference/apis/components/arm/).
+For reading joint positions and controlling the arm directly, see
+[Add an arm](/hardware/common-components/add-an-arm/) and the
+[Arm API reference](/reference/apis/components/arm/).
 
 ## Troubleshooting
 
