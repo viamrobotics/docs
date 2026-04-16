@@ -63,7 +63,7 @@ Common issues you will catch at this step:
 viam machines part motion print-status --part "my-machine-main"
 ```
 
-The output is every frame part and its computed world-frame pose:
+`print-status` prints one line per frame part with its computed world-frame pose:
 
 ```text
          my-arm : X:    0.00 Y:    0.00 Z:    0.00 OX:   0.00 OY:   0.00 OZ:   1.00 Theta:   0.00
@@ -111,10 +111,10 @@ Note the X, Y, Z values.
 
 ### 2. Move a small distance first
 
-The small step is a dividing test. If it fails, the planner cannot reach any
-pose near the current position, which usually means a configuration error
-rather than a target-reachability issue. If it succeeds, the current position
-is not the problem and you can work outward from there.
+This small step isolates the problem. If it fails, the planner cannot reach
+any pose near the current position, which usually means a configuration
+error rather than a target-reachability issue. If it succeeds, the current
+position is not the problem and you can work outward from there.
 
 ```sh
 viam machines part motion set-pose \

@@ -11,16 +11,18 @@ aliases:
   - /motion-planning/camera-calibration/
 ---
 
-A camera captures 2D images, but your robot operates in 3D space. Converting
-a pixel coordinate to a real-world position, for example to tell the arm
-where an object is, requires the camera's intrinsic parameters. These
-parameters describe how the camera projects 3D space onto its 2D sensor. They
-include the focal length, the principal point (the optical center), and the
-lens distortion characteristics.
+Configuring a camera's frame tells the motion service where the camera
+sits in the workspace; calibrating the camera's intrinsic parameters
+tells it how to convert what the camera sees into positions. Motion
+planning needs both: the frame to know the camera's pose, and the
+intrinsics to know what a detected pixel means in 3D.
 
-Without accurate intrinsics, every 2D-to-3D conversion will be wrong. Detected
-objects will appear shifted, depth estimates will be inaccurate, and the arm will
-miss its targets.
+A camera captures 2D images, but your robot operates in 3D space. The
+intrinsic parameters describe how the camera projects 3D space onto its
+2D sensor: focal length, principal point (the optical center), and lens
+distortion characteristics. Without accurate intrinsics, every 2D-to-3D
+conversion is wrong: detected objects appear shifted, depth estimates
+drift, and the arm misses its targets.
 
 ## Concepts
 
