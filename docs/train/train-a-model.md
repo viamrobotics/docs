@@ -10,12 +10,18 @@ aliases:
   - /build/train/train-a-model/
 ---
 
-Submit a training job from your labeled dataset. Viam runs the job on cloud
-infrastructure -- no GPU provisioning or framework installation needed.
+Submit a training job from your labeled dataset. Viam runs the job on
+GPU-backed cloud infrastructure -- no framework installation or GPU
+provisioning needed on your part. Training is part of the Viam platform;
+see [pricing](https://www.viam.com/product/pricing) for plan details.
 Training logs are available for 7 days after the job completes.
 
 For background on model frameworks (TFLite and TensorFlow), task types, and
 how deployment works, see the [overview](/train/overview/).
+
+Managed training uses a fixed internal train/validation split and does not
+currently expose loss curves or a separate test-dataset option. To evaluate
+a trained model, see [Test your model](#4-test-your-model) below.
 
 ## 1. Start a training job from the web UI
 
@@ -136,7 +142,27 @@ fmt.Printf("Created: %s\n", job.CreatedOn)
 
 ## 4. Test your model
 
-After training completes, test the model by deploying it to a machine with a vision service and checking its predictions against live or captured data.
+You can evaluate a trained model two ways: offline against a held-out test
+dataset, or live on a machine.
+
+### Test offline against a test dataset
+
+Run the model against images it has not seen using auto-predictions. This
+lets you evaluate performance without configuring a machine.
+
+1. [Create a test dataset](/train/create-a-dataset/) with images that were
+   not used for training.
+2. Go to the dataset's page and click **Get auto-predictions**.
+3. Select your trained model and a confidence threshold.
+4. Click **Get predictions**, then **Review predictions** once they finish.
+5. For each prediction, **Accept (A)** or **Reject (R)**.
+
+The accept/reject tally tells you how the model performs on unseen data.
+
+### Test live on a machine
+
+Deploy the model to a machine with a camera to see its predictions on live or
+captured data.
 
 1. [Deploy the model](/train/deploy-a-model/) to a machine with a camera.
 2. [Configure a vision service](/vision/configure/) that uses the model.

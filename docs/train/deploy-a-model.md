@@ -17,14 +17,24 @@ For the full guide to configuring vision services and cloud inference, see [Conf
 
 ## 1. Add the ML model service
 
+The ML model service loads the model. Pick the module that matches your
+trained model's framework:
+
+| Framework  | ML model service |
+| ---------- | ---------------- |
+| TFLite     | `tflite_cpu`     |
+| TensorFlow | `tensorflow-cpu` |
+
+For hardware-specific alternatives (for example, `triton` for Nvidia GPU),
+see [Supported frameworks and hardware](/train/overview/#supported-frameworks-and-hardware).
+
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Configuration block**.
-3. Search for `tflite` and find the **tflite_cpu** block (by **viam**,
-   badge: **MLMODEL**).
+3. Search for the ML model service matching your framework (for example,
+   `tflite_cpu`) and select the matching result.
 4. Click the block, then click **Add component**.
 5. Enter a name for the service (for example, `my-ml-model`) and click
-   **Add component**. The supporting `viam:tflite_cpu` module is installed
-   automatically.
+   **Add component**. The supporting module is installed automatically.
 6. In the service configuration card, under **Deployment**, leave
    **Deploy model on machine** selected.
 7. Click **Select model**. In the dialog, browse **My models** or
