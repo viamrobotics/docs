@@ -30,7 +30,6 @@ feedback instead of time-based estimates. Browse all available encoder models in
 
 ### Built-in models
 
-- [`arduino`](/reference/components/encoder/arduino/) — _(no description)_.
 - [`fake`](/reference/components/encoder/fake/) — An encoder model for testing.
 - [`incremental`](/reference/components/encoder/incremental/) — Supports a two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point.
 - [`single`](/reference/components/encoder/single/) — A single pin 'pulse output' encoder which returns its relative position but no direction.
