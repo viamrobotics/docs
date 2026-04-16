@@ -24,18 +24,17 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following encoder models ship with `viam-server`:
 
-| Model                         | Description                                                                                                                 |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| [`arduino`](arduino/)         | —                                                                                                                           |
-| [`fake`](fake/)               | An encoder model for testing.                                                                                               |
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake/) | An encoder model for testing. |
 | [`incremental`](incremental/) | Supports a two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point. |
-| [`single`](single/)           | A single pin 'pulse output' encoder which returns its relative position but no direction.                                   |
+| [`single`](single/) | A single pin 'pulse output' encoder which returns its relative position but no direction. |
 
 ## Micro-RDK models
 
 The following encoder models ship with the [Micro-RDK](/reference/device-setup/setup-micro/):
 
-| Model                                   | Description |
-| --------------------------------------- | ----------- |
-| [`incremental`](micro-rdk/incremental/) | —           |
-| [`single`](micro-rdk/single/)           | —           |
+| Model | Description |
+| ----- | ----------- |
+| [`incremental`](micro-rdk/incremental/) | — |
+| [`single`](micro-rdk/single/) | — |

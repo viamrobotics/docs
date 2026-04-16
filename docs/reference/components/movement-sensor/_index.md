@@ -24,17 +24,17 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following movement sensor models ship with `viam-server`:
 
-| Model                                   | Description                                                                                                                                                                   |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`fake`](fake/)                         | A model for testing, with no physical hardware.                                                                                                                               |
-| [`merged`](merged/)                     | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources. |
-| [`wheeled-odometry`](wheeled-odometry/) | A model that uses encoders to get an odometry estimate from a wheeled base.                                                                                                   |
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake/) | A model for testing, with no physical hardware. |
+| [`merged`](merged/) | A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources. |
+| [`wheeled-odometry`](wheeled-odometry/) | A model that uses encoders to get an odometry estimate from a wheeled base. |
 
 ## Micro-RDK models
 
 The following movement sensor models ship with the [Micro-RDK](/reference/device-setup/setup-micro/):
 
-| Model                                       | Description |
-| ------------------------------------------- | ----------- |
-| [`accel-adxl345`](micro-rdk/accel-adxl345/) | —           |
-| [`gyro-mpu6050`](micro-rdk/gyro-mpu6050/)   | —           |
+| Model | Description |
+| ----- | ----------- |
+| [`accel-adxl345`](micro-rdk/accel-adxl345/) | — |
+| [`gyro-mpu6050`](micro-rdk/gyro-mpu6050/) | — |

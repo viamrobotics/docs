@@ -24,8 +24,6 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following arm models ship with `viam-server`:
 
-| Model                               | Description                                          |
-| ----------------------------------- | ---------------------------------------------------- |
-| [`eva`](eva/)                       | —                                                    |
-| [`fake`](fake/)                     | A model used for testing, with no physical hardware. |
-| [`yahboom-dofbot`](yahboom-dofbot/) | —                                                    |
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |

@@ -100,7 +100,7 @@ The following attributes are available for `gpio` servos:
 
 A `gpio` servo using a PWM pin leaves you with three remaining PWM frequencies for use on an `esp32`.
 If the frequency of another PWM signal is unimportant, it can also be set to the same frequency as your servo.
-See [PWM signals on `esp32` pins](/reference/components/board/esp32/#pwm-signals-on-esp32-pins) for more information.
+See [PWM signals on `esp32` pins](/reference/components/board/micro-rdk/esp32/#pwm-signals-on-esp32-pins) for more information.
 
 {{% alert title="Tip" color="tip" %}}
 

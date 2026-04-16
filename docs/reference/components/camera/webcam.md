@@ -169,6 +169,7 @@ When working with a webcam camera on the Linux platform, your Linux OS must be a
 On your Linux system, verify each of the following:
 
 - Ensure that your Linux OS is able to access your camera:
+
   1.  Run the following command to list compatible camera devices on your system:
 
       ```sh {class="command-line" data-prompt="$"}
@@ -200,6 +201,7 @@ On your Linux system, verify each of the following:
       If you receive the error `Device or resource busy` instead, be sure you have stopped `viam-server` first, then re-run the command above.
 
 - Ensure that your camera uses a supported pixel format:
+
   1.  First, determine your video path, like `/dev/video0`, following the instructions above.
   1.  Then, run the following command:
 

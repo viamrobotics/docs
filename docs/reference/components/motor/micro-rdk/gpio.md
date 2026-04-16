@@ -19,7 +19,7 @@ You can configure [encoders](/reference/components/encoder/) to work with `gpio`
 Find more information in the [encoded motor documentation](/reference/components/motor/encoded-motor/).
 
 To configure a DC motor as a component of your machine, first make sure the motor is wired to a suitable motor driver, which is in turn wired to the microcontroller.
-Configure the [board](/reference/components/board/esp32/) to which the motor driver is wired.
+Configure the [board](/reference/components/board/micro-rdk/esp32/) to which the motor driver is wired.
 Then add your motor:
 
 {{< tabs name="gpio-config">}}
@@ -136,4 +136,4 @@ Each `gpio` motor uses a PWM pin at 10000 Hz PWM frequency.
 
 This leaves you with three remaining PWM frequencies for use on an `esp32`.
 If the frequency of another PWM signal is unimportant, it can also be set to 10000 Hz.
-See [PWM signals on `esp32` pins](/reference/components/board/esp32/#pwm-signals-on-esp32-pins) for more information.
+See [PWM signals on `esp32` pins](/reference/components/board/micro-rdk/esp32/#pwm-signals-on-esp32-pins) for more information.

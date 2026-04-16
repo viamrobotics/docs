@@ -24,8 +24,8 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 The following gantry models ship with `viam-server`:
 
-| Model                         | Description                                                                              |
-| ----------------------------- | ---------------------------------------------------------------------------------------- |
-| [`fake`](fake/)               | A model used for testing, with no physical hardware.                                     |
-| [`multi-axis`](multi-axis/)   | Supports a gantry with multiple linear rails. Composed of multiple single-axis gantries. |
-| [`single-axis`](single-axis/) | Supports a gantry with a singular linear rail.                                           |
+| Model | Description |
+| ----- | ----------- |
+| [`fake`](fake/) | A model used for testing, with no physical hardware. |
+| [`multi-axis`](multi-axis/) | Supports a gantry with multiple linear rails. Composed of multiple single-axis gantries. |
+| [`single-axis`](single-axis/) | Supports a gantry with a singular linear rail. |

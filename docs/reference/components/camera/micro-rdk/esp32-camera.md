@@ -18,6 +18,7 @@ aliases:
 `esp32-camera` is the camera model that supports all cameras that work with Espressif's [esp32-camera drivers](https://github.com/espressif/esp32-camera) including:
 
 - `OV2640`
+
   - [Datasheet](https://www.uctronics.com/download/OV2640_DS.pdf)
   - 1600 x 1200, Color, ¼” lens
   - You can use a cam ribbon adapter to connect to your `esp32` board
@@ -35,7 +36,7 @@ Finish building and flashing custom firmware, then return to this guide.
 {{< /alert >}}
 
 {{< alert title="Data management not supported" color="caution" >}}
-The `esp32-camera` camera model does not currently support the [data management service](/data-ai/capture-data/capture-sync/).
+The `esp32-camera` camera model does not currently support the [data management service](/data/capture-sync/capture-and-sync-data/).
 {{< /alert >}}
 
 ## Configuration

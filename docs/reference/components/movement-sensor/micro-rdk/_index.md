@@ -10,7 +10,7 @@ no_list: true
 
 Movement sensor models available in the [Micro-RDK](/reference/device-setup/setup-micro/).
 
-| Model                             | Description |
-| --------------------------------- | ----------- |
-| [`accel-adxl345`](accel-adxl345/) | —           |
-| [`gyro-mpu6050`](gyro-mpu6050/)   | —           |
+| Model | Description |
+| ----- | ----------- |
+| [`accel-adxl345`](accel-adxl345/) | — |
+| [`gyro-mpu6050`](gyro-mpu6050/) | — |

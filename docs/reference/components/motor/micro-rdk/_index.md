@@ -10,6 +10,6 @@ no_list: true
 
 Motor models available in the [Micro-RDK](/reference/device-setup/setup-micro/).
 
-| Model           | Description |
-| --------------- | ----------- |
-| [`gpio`](gpio/) | —           |
+| Model | Description |
+| ----- | ----------- |
+| [`gpio`](gpio/) | — |
