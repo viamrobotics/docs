@@ -73,28 +73,31 @@ that call.
 
 ### Static vs dynamic obstacles
 
-**Static obstacles** are permanent fixtures in your workspace. You configure
-them by adding geometry to a component's frame configuration in the Viam app.
-They are always present and do not require code changes. Examples: the table
-the arm is mounted on, walls, permanent fixtures.
+**Static obstacles** are permanent fixtures in your workspace: the table the
+arm is bolted to, walls, bins, work-cell envelopes, fixed equipment. You
+configure them once through the Viam app and the planner includes them on
+every plan. See [Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/)
+for the recommended patterns.
 
-**Dynamic obstacles** are objects that you define at runtime and pass to the
-motion service through `WorldState`. They can change between calls. Examples
-include a box that was just placed on the table, a temporary keep-out zone, or
-objects detected by a vision system. Both static and dynamic obstacles use the
-same geometry primitives.
+**Dynamic obstacles** are objects your code defines at runtime and passes to
+the motion service through `WorldState`. They can change between calls.
+Examples include a box that was just placed on the table, a temporary
+keep-out zone, or objects detected by a vision system. Both static and
+dynamic obstacles use the same geometry primitives. See [Plan collision-free
+paths](/motion-planning/obstacles/avoid-obstacles/) for the runtime pattern.
 
 ### Passive objects attached to a component
 
 Some objects are always attached to a component but have no API of their own:
-a camera mount bolted to an arm, a tool changer plate, a cable bundle. The
+a camera mount bolted to an arm, a tool-changer plate, a cable bundle. The
 motion planner should treat them as collision volume, but Viam has no
 component to talk to.
 
-Configure a `fake` `generic` component to carry the geometry. Set its frame's
-parent to the component it attaches to and add the geometry to its frame. The
-motion planner then treats the shape as part of the arm's kinematic chain. The
-fake component never runs; it exists only to hold the geometry.
+Viam models this pattern with a passive component (typically a `generic`/`fake`)
+whose frame is parented to the moving component. The geometry rides the parent
+on every motion plan. The passive component never runs; it exists only to hold
+the collision shape. See [Attach geometry to a moving component](/motion-planning/obstacles/configure-workspace-obstacles/#attach-geometry-to-a-moving-component)
+for the configuration walkthrough.
 
 ### WorldState
 
@@ -150,380 +153,10 @@ Practical consequences:
 
 {{< /expand >}}
 
-## Steps
-
-### 1. Add geometry to a component frame
-
-For permanent fixtures, add geometry directly to a component's frame
-configuration.
-
-**Example: a table under the arm.**
-
-1. Go to [app.viam.com](https://app.viam.com) and navigate to your machine.
-2. Click the **CONFIGURE** tab.
-3. Add a new component to represent the table obstacle (or use an existing
-   component's frame).
-4. In the sidebar, click the component to open its card on the right. On the
-   card, click **Frame**. The Frame section opens a JSON editor (there is no
-   form, parent dropdown, or geometry-type picker). Edit the JSON to match:
-
-```json
-{
-  "parent": "world",
-  "translation": { "x": 0, "y": 0, "z": -20 },
-  "orientation": {
-    "type": "ov_degrees",
-    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
-  },
-  "geometry": {
-    "type": "box",
-    "x": 800,
-    "y": 600,
-    "z": 40
-  }
-}
-```
-
-This defines a table as a box 800 mm wide, 600 mm deep, and 40 mm thick. The
-center of the box is at z = -20 mm (20 mm below the world frame origin), so
-the top surface of the 40 mm thick table aligns with z = 0.
-
-Click **Save** in the top-right of the page (or press ⌘/Ctrl+S). The table
-geometry is now part of the frame system and the motion planner will avoid
-it automatically.
-
-### 2. Attach a passive object to a component
-
-Use this pattern for objects that are permanently attached to a component but
-have no API of their own: camera mounts, adapter plates, fixed tooling, cable
-bundles.
-
-The Frame section is a JSON editor (no form, no parent dropdown, no
-geometry-type picker), so "set the parent" below means editing the JSON.
-
-1. In the **CONFIGURE** tab, click the **+** button, then **Component or
-   service**, then **generic**.
-2. Select the **fake** component (not the service — services do not carry
-   geometry).
-3. Name the component descriptively (for example, `arm-camera-mount`) and
-   click **Create**.
-4. On the new component's card, click **Frame**.
-5. In the JSON editor, set `parent` to the component the object is attached
-   to (the arm's name for an end-effector mount, the gripper's name for a
-   gripper attachment, and so on).
-6. Add a `geometry` field describing the object's shape:
-
-{{< tabs >}}
-{{% tab name="Box" %}}
-
-```json
-"geometry": {
-  "type": "box",
-  "x": 80,
-  "y": 250,
-  "z": 200
-}
-```
-
-The geometry origin sits at the box's center. The box's z-axis runs along
-its `z` dimension, and so on for `x` and `y`.
-
-{{% /tab %}}
-{{% tab name="Capsule" %}}
-
-```json
-"geometry": {
-  "type": "capsule",
-  "r": 20,
-  "l": 160
-}
-```
-
-`r` is the radius and `l` is the overall length (including the hemispherical
-end caps). The capsule's long axis is its z-axis; the total length must be
-at least twice the radius.
-
-{{% /tab %}}
-{{% tab name="Sphere" %}}
-
-```json
-"geometry": {
-  "type": "sphere",
-  "r": 90
-}
-```
-
-Spheres have no meaningful orientation.
-
-{{% /tab %}}
-{{< /tabs >}}
-
-The geometry is centered on the frame's origin by default. Use the frame's
-`translation` to shift the geometry relative to its parent. For example, if
-you have a capsule of length 160 mm and you want it to start at the parent
-frame's origin and extend in +z, set the frame translation to
-`{"x": 0, "y": 0, "z": 80}` so the capsule's center sits 80 mm above the
-parent origin.
-
-Click **Save**. Open the **3D SCENE** tab and confirm the geometry appears
-in the expected location.
-
-If the geometry's long axis needs to point in a different direction than its
-default z-axis, rotate the frame's `orientation`. For a capsule aligned along
-the parent's x-axis:
-
-```json
-"orientation": {
-  "type": "ov_degrees",
-  "value": { "x": 1, "y": 0, "z": 0, "th": 0 }
-}
-```
-
-For a box rotated 30 degrees around its z-axis:
-
-```json
-"orientation": {
-  "type": "ov_degrees",
-  "value": { "x": 0, "y": 0, "z": 1, "th": 30 }
-}
-```
-
-### 3. Define obstacles programmatically with WorldState
-
-For obstacles that change at runtime, build a WorldState in your code.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.proto.common import (
-    Pose, Vector3, RectangularPrism, Capsule, Sphere,
-    Geometry, GeometriesInFrame, WorldState
-)
-
-# Define a table as a box
-table_origin = Pose(x=-202.5, y=-546.5, z=-19.0)
-table_dims = Vector3(x=635.0, y=1271.0, z=38.0)
-table_obstacle = Geometry(
-    center=table_origin,
-    box=RectangularPrism(dims_mm=table_dims),
-    label="table"
-)
-
-# Define a post as a capsule
-post_origin = Pose(x=200, y=0, z=150)
-post_obstacle = Geometry(
-    center=post_origin,
-    capsule=Capsule(radius_mm=25, length_mm=300),
-    label="post"
-)
-
-# Define a ball as a sphere
-ball_origin = Pose(x=100, y=100, z=50)
-ball_obstacle = Geometry(
-    center=ball_origin,
-    sphere=Sphere(radius_mm=40),
-    label="ball"
-)
-
-# Combine into WorldState
-obstacles_in_frame = GeometriesInFrame(
-    reference_frame="world",
-    geometries=[table_obstacle, post_obstacle, ball_obstacle]
-)
-world_state = WorldState(obstacles=[obstacles_in_frame])
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-    "github.com/golang/geo/r3"
-    "go.viam.com/rdk/referenceframe"
-    "go.viam.com/rdk/spatialmath"
-)
-
-obstacles := make([]spatialmath.Geometry, 0)
-
-// Define a table as a box
-tableOrigin := spatialmath.NewPose(
-    r3.Vector{X: -202.5, Y: -546.5, Z: -19.0},
-    &spatialmath.OrientationVectorDegrees{OX: 0, OY: 0, OZ: 1, Theta: 0},
-)
-tableDims := r3.Vector{X: 635.0, Y: 1271.0, Z: 38.0}
-tableObj, err := spatialmath.NewBox(tableOrigin, tableDims, "table")
-if err != nil {
-    logger.Fatal(err)
-}
-obstacles = append(obstacles, tableObj)
-
-// Define a post as a capsule
-postOrigin := spatialmath.NewPose(
-    r3.Vector{X: 200, Y: 0, Z: 150},
-    &spatialmath.OrientationVectorDegrees{OX: 0, OY: 0, OZ: 1, Theta: 0},
-)
-postObj, err := spatialmath.NewCapsule(postOrigin, 25, 300, "post")
-if err != nil {
-    logger.Fatal(err)
-}
-obstacles = append(obstacles, postObj)
-
-// Define a ball as a sphere
-ballOrigin := spatialmath.NewPose(
-    r3.Vector{X: 100, Y: 100, Z: 50},
-    &spatialmath.OrientationVectorDegrees{OX: 0, OY: 0, OZ: 1, Theta: 0},
-)
-ballObj, err := spatialmath.NewSphere(ballOrigin, 40, "ball")
-if err != nil {
-    logger.Fatal(err)
-}
-obstacles = append(obstacles, ballObj)
-
-// Combine into WorldState
-obstaclesInFrame := referenceframe.NewGeometriesInFrame(
-    referenceframe.World, obstacles)
-worldState, err := referenceframe.NewWorldState(
-    []*referenceframe.GeometriesInFrame{obstaclesInFrame}, nil)
-if err != nil {
-    logger.Fatal(err)
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### 4. Use WorldState with the motion service
-
-Pass the WorldState to the motion service's `Move` method.
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python
-from viam.services.motion import MotionClient
-from viam.proto.common import PoseInFrame, Pose
-
-motion_service = MotionClient.from_robot(machine, "builtin")
-
-destination = PoseInFrame(
-    reference_frame="world",
-    pose=Pose(x=300, y=200, z=400, o_x=0, o_y=0, o_z=-1, theta=0)
-)
-
-# Move with obstacle avoidance
-await motion_service.move(
-    component_name="my-arm",
-    destination=destination,
-    world_state=world_state
-)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go
-import (
-    "go.viam.com/rdk/services/motion"
-)
-
-motionService, err := motion.FromProvider(machine, "builtin")
-if err != nil {
-    logger.Fatal(err)
-}
-
-destination := referenceframe.NewPoseInFrame("world",
-    spatialmath.NewPose(
-        r3.Vector{X: 300, Y: 200, Z: 400},
-        &spatialmath.OrientationVectorDegrees{OX: 0, OY: 0, OZ: -1, Theta: 0},
-    ))
-
-moveReq := motion.MoveReq{
-    ComponentName: "my-arm",
-    Destination:   destination,
-    WorldState:    worldState,
-}
-_, err = motionService.Move(ctx, moveReq)
-if err != nil {
-    logger.Fatal(err)
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
-
-If the motion planner cannot find a collision-free path, it returns an error.
-This typically means the obstacles are too restrictive, the destination is inside
-an obstacle, or the arm physically cannot reach the destination without
-colliding.
-
-### 5. Visualize obstacles
-
-Check the Viam app to see your obstacle geometry:
-
-1. Navigate to your machine in the Viam app.
-2. Click the **3D SCENE** tab.
-3. Obstacles defined in component frame configurations appear as translucent
-   shapes in the 3D view.
-
-For the full visualization-and-verification workflow (orbit checks,
-coverage checklist, choosing the right geometry per physical object), see
-[Set up obstacle avoidance](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
-
-{{< alert title="Dynamic obstacles are not visible in 3D SCENE" color="note" >}}
-
-Obstacles defined through `WorldState` in code exist only for the duration of a
-single `Move` call and are not drawn in the 3D SCENE tab. To verify a dynamic
-obstacle's position, log its pose from your code or add a temporary static
-geometry with the same dimensions to the component frame configuration.
-
-{{< /alert >}}
-
-## Try it
-
-1. Add a table geometry to a component frame in the CONFIGURE tab (step 1).
-   Open the 3D SCENE tab and verify the table appears.
-2. Write code to define a dynamic obstacle using WorldState (step 3) and pass
-   it to a `Move` call (step 4).
-3. Place a test obstacle between the arm and a target position. Verify the arm
-   takes an indirect path to avoid it.
-4. Remove the test obstacle and move again. Verify the arm takes a more direct
-   path.
-
-## Troubleshooting
-
-{{< expand "Motion planner cannot find a path" >}}
-
-- The obstacles may be too large or too close together, leaving no valid path.
-  Reduce obstacle dimensions slightly.
-- The destination may be inside or very close to an obstacle.
-- The motion planner does not add clearance by default. If paths come too
-  close to obstacles, increase obstacle dimensions or pass a larger
-  `collision_buffer_mm` value through the `extra` map on the Move request.
-
-{{< /expand >}}
-
-{{< expand "Obstacles appear in the wrong position" >}}
-
-- Verify the reference frame. Positions are relative to the specified frame's
-  origin.
-- Check units. Positions are in millimeters, not centimeters or meters.
-- Use the 3D SCENE tab to see where obstacles appear.
-
-{{< /expand >}}
-
-{{< expand "Arm clips through obstacles" >}}
-
-- The obstacle geometry may be too small. Add a 20-50 mm safety margin.
-- The arm's own collision geometry may be missing. Check the arm's kinematics
-  file for link geometry definitions.
-- Make thin obstacles (walls, panels) at least 20 mm thick.
-
-{{< /expand >}}
-
 ## How-tos
 
 {{< cards >}}
+{{% card link="/motion-planning/obstacles/configure-workspace-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/avoid-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/attach-detach-geometries/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/allow-frame-collisions/" noimage="true" %}}

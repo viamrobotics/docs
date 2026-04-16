@@ -18,9 +18,9 @@ routes around each obstacle.
 
 This page covers dynamic `WorldState` obstacles passed at call time. For
 permanent fixtures (the table the arm is bolted to, the back wall, a
-mounted tool), configure the obstacle in the component's frame
-configuration once instead of re-sending it on every `Move`. See
-[Define obstacles](/motion-planning/obstacles/).
+mounted tool), configure the obstacle once through the Viam app instead
+of re-sending it on every `Move`. See
+[Configure workspace obstacles](/motion-planning/obstacles/configure-workspace-obstacles/).
 
 ## Prerequisites
 

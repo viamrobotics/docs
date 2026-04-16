@@ -73,7 +73,7 @@ planner.
   grasp on a single `Move` call.
 - [Define obstacles](/motion-planning/obstacles/): the geometry types
   the motion planner accepts, including the
-  [`WorldState.obstacles`](/motion-planning/obstacles/#3-define-obstacles-programmatically-with-worldstate)
+  [`WorldState.obstacles`](/motion-planning/obstacles/avoid-obstacles/)
   pattern for per-call dynamic obstacles.
 - [ObstacleDetector](/motion-planning/reference/motion-configuration/#obstacledetector):
   configures the motion service to poll a vision service during

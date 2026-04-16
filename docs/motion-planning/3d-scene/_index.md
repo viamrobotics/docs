@@ -1,6 +1,6 @@
 ---
-linkTitle: "3D scene"
-title: "3D scene"
+linkTitle: "3D scene tab"
+title: "3D scene tab"
 weight: 50
 layout: "docs"
 type: "docs"
