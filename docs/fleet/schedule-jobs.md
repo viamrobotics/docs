@@ -134,7 +134,7 @@ warn rdk.job_manager.hourly-reading  Could not get resource  error could not fin
 ## Limitations
 
 - Jobs only run when `viam-server` is running. They do not persist across restarts (missed runs are not retried).
-- `DoCommand` is the only method that supports arguments. All other methods are called without arguments (only the resource name is passed).
+- `DoCommand` is the only method that supports arguments. All other methods do not accept arguments; the job passes only the resource name.
 - There is no timeout on individual job invocations. A stuck job blocks that job's schedule indefinitely.
 - Jobs run locally on each machine. There is no cross-machine job coordination.
 - Failed jobs do not retry automatically. The failure is logged and the job runs again at the next scheduled time.

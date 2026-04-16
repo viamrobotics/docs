@@ -7,7 +7,7 @@ type: "docs"
 description: "Create reusable configuration templates and apply them across multiple machines."
 ---
 
-Create a fragment (a reusable configuration template), add the components, services, and modules your machines need, then apply that fragment to every machine in your fleet. When you update the fragment, every machine that uses it picks up the change.
+As a fleet grows, machines tend to drift into unique, undocumented configurations (often called "snowflake robots") because each one was set up by hand. Fragments solve this: a fragment is a reusable configuration template that you apply to many machines, and when you update the fragment, every machine that uses it receives the change.
 
 ## Prerequisites
 
@@ -15,8 +15,6 @@ Create a fragment (a reusable configuration template), add the components, servi
 - At least one machine connected to Viam.
 
 ## When to use fragments
-
-As a fleet grows, machines tend to drift into unique, undocumented configurations (often called "snowflake robots") because each one was set up by hand. Fragments prevent this by giving every machine the same authoritative configuration source.
 
 Use fragments when you have multiple machines that share the same configuration, either entirely or with small per-machine differences. Common examples:
 
@@ -122,7 +120,7 @@ Sometimes you need to change a single value from a fragment without creating a n
 
 In the machine's **CONFIGURE** tab, find the fragment card and click the field you want to change. Modified fields are highlighted to show they differ from the fragment's default.
 
-In JSON mode, overrides use [MongoDB update operator syntax](https://www.mongodb.com/docs/manual/reference/operator/update/) in the `fragment_mods` array:
+In JSON mode, overrides use the `fragment_mods` array with [MongoDB update operator syntax](https://www.mongodb.com/docs/manual/reference/operator/update/), which may look unfamiliar if you have not used MongoDB:
 
 ```json
 {
@@ -172,13 +170,11 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 4. Make changes to the fragment. The new revision is created automatically on save.
 5. Point `development` at the new revision.
 6. Pin a few test machines to `development` and verify the changes work.
-7. When validated, move `stable` to the new revision. All production machines update.
+7. Once you have confirmed the changes work on your test machines, move `stable` to the new revision. All production machines update.
 
 ## Find which machines use a fragment
 
-Before changing or removing a fragment, you usually want to know which machines currently use it. Viam exposes this through the `GetFragmentUsage` RPC on `app.proto`, which returns the count of machines on each revision. A related RPC, `ListMachineSummaries`, returns the full list of machines and their resolved fragments.
-
-Both RPCs are defined in the proto bindings but are not yet wrapped as high-level methods on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
+Before changing or removing a fragment, you usually want to know which machines use it. Viam exposes this through `GetFragmentUsage` (returns a count of machines per revision) and `ListMachineSummaries` (returns the full list of machines and their resolved fragments). Neither is yet wrapped as a high-level method on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
 
 ## Set default fragments for an organization
 

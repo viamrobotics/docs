@@ -13,7 +13,7 @@ Configure system-level settings for deployed machines. These settings are manage
 
 Control which versions of `viam-agent` and `viam-server` run on each machine.
 
-Version selection is managed in the Viam app, not in the machine's JSON configuration. In the machine settings card, open **Settings** and expand **Software Updates**:
+Manage version selection in the Viam app, not in your machine's JSON configuration. In the machine settings card, open **Settings** and expand **Software Updates**:
 
 - **Agent version**: choose `stable`, a specific semver release such as `5.6.77`, or a URL to a custom binary.
 - **viam-server version**: choose `stable`, a specific semver release, or a URL to a custom binary.

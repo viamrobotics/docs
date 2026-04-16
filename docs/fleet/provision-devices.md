@@ -7,7 +7,7 @@ type: "docs"
 description: "Set up automated provisioning so machines configure themselves when they first come online."
 ---
 
-Set up zero-touch provisioning so machines you ship or deploy automatically configure themselves on first boot. You install `viam-agent` on the device during manufacturing, define a configuration in a defaults file, and when someone powers on the device and provides network credentials, the machine downloads and applies its configuration from a fragment.
+Set up zero-touch provisioning so machines you ship or deploy automatically configure themselves on first boot. You install `viam-agent` during manufacturing and define a defaults file. When someone powers on the device and provides network credentials, the machine downloads and applies its configuration from a fragment.
 
 ## When to use provisioning
 
@@ -114,7 +114,7 @@ sudo ./preinstall.sh /path/to/rootfs
 Power on the device. `viam-agent` starts automatically and:
 
 1. Checks for a known WiFi network.
-2. If none is found after `offline_before_starting_hotspot_minutes` (default: 2 minutes), creates a WiFi hotspot named `{hotspot_prefix}-{hostname}`.
+2. Creates a WiFi hotspot named `{hotspot_prefix}-{hostname}` if no known network is found within `offline_before_starting_hotspot_minutes` (default: 2 minutes).
 3. Waits for a user to connect and provide network credentials.
 
 The end user completes setup by following the [end-user device setup](/fleet/end-user-setup/) instructions.
