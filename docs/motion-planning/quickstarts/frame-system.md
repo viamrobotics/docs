@@ -7,9 +7,19 @@ type: "docs"
 description: "Set up a table-mounted arm with a gripper and a wrist camera, and verify the frame configuration with TransformPose."
 ---
 
-You will configure three components with a parent-child frame hierarchy (a table-mounted UR5e arm, a gripper attached to its end effector, and a wrist-mounted camera) and verify the hierarchy two ways: by printing each component's world-frame pose, and by transforming a detected object from the camera frame into the world frame.
+Every multi-component machine eventually hits the same question: when the
+camera sees an object, where is it in the arm's world? Frames answer that.
 
-Everything runs on fake components. When you later replace any of them with real hardware, the frame configuration and the verification code stay the same.
+This quickstart configures three components in a parent-child frame
+hierarchy (see the tree below) and shows how a point detected in the
+camera's frame becomes coordinates the arm can reach. You verify the
+hierarchy two ways: by printing each component's world-frame pose, and
+by transforming a detected point from the camera frame into the world
+frame.
+
+Everything runs on fake components. When you later replace any of them
+with real hardware, the frame configuration and the verification code
+stay the same.
 
 Expected time: about 15 minutes.
 
@@ -31,8 +41,8 @@ In the [Viam app](https://app.viam.com), go to your machine's
 2. Choose the **fake** model.
 3. Name it **my-arm**.
 4. In the arm's attributes, set `arm-model` to `"ur5e"`.
-5. Click **Frame** on the arm's card. The Frame section opens a JSON
-   editor (there is no form, parent dropdown, or geometry-type picker).
+5. Click **Frame** on the arm's card. The Frame section is a JSON
+   editor with no form, parent dropdown, or geometry-type picker.
    Edit the JSON so the frame sits at the world origin:
 
 ```json
@@ -91,7 +101,13 @@ pose moves with the arm automatically.
 }
 ```
 
-Click **Save**.
+In `ov_degrees`, `(x, y, z)` names the rotation axis and `th` is the
+angle. `(1, 0, 0), -30` rotates 30 degrees about the camera's x axis,
+which tilts the camera downward when its parent's z is up.
+
+Click **Save**. You now have three components in a frame tree: the arm
+at the world origin, the gripper 110 mm above its end effector, and the
+camera offset to the side and tilted down.
 
 ## 4. Verify with the CLI
 
