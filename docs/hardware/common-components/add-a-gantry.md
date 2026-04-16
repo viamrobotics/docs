@@ -40,7 +40,13 @@ The `fake` built-in model is useful for testing without hardware. Browse all ava
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=gantry). Each module's configuration is documented on its registry page.
+Viam-maintained gantry modules:
+
+| Module                                                                   | Gantries supported                                                                     |
+| ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| [`viam:generic-gantry`](https://app.viam.com/module/viam/generic-gantry) | Single- and multi-axis gantries with motor control, limit switches, and encoder homing |
+
+For gantries not covered above, browse [all gantry modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=gantry). Each module's configuration is documented on its registry page.
 
 ## Steps
 

@@ -40,7 +40,16 @@ Micro-RDK:
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=board). Each module's configuration is documented on its registry page.
+Viam-maintained board modules:
+
+| Module                                                                         | Boards supported                                                  |
+| ------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| [`viam:raspberry-pi`](https://app.viam.com/module/viam/raspberry-pi)           | Raspberry Pi variants: rpi5, rpi4, rpi3, rpi2, rpi1, rpi0, rpi0_2 |
+| [`viam:nvidia`](https://app.viam.com/module/viam/nvidia)                       | NVIDIA Jetson Orin, AGX, and Nano                                 |
+| [`viam:texas-instruments`](https://app.viam.com/module/viam/texas-instruments) | Texas Instruments TDA4VM board                                    |
+| [`viam:pca`](https://app.viam.com/module/viam/pca)                             | PCA9685 16-channel PWM IO expander                                |
+
+For boards not covered above, browse [all board modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=board).
 
 ## Steps
 

@@ -32,7 +32,17 @@ For Micro-RDK, see [Micro-RDK camera models](/reference/components/camera/micro-
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse [all available camera models in the Viam registry](https://app.viam.com/registry?type=component&subtype=camera). Common Viam-maintained modules include `realsense` (Intel RealSense depth cameras) and `viamrtsp` (IP cameras over RTSP).
+Viam-maintained camera modules:
+
+| Module                                                           | Cameras supported                                                                       |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`viam:viamrtsp`](https://app.viam.com/module/viam/viamrtsp)     | RTSP IP cameras (autodetect, H.264, H.265, MJPEG, MPEG-4) plus ONVIF and UPnP discovery |
+| [`viam:realsense`](https://app.viam.com/module/viam/realsense)   | Intel RealSense depth cameras                                                           |
+| [`viam:orbbec`](https://app.viam.com/module/viam/orbbec)         | Orbbec 3D cameras                                                                       |
+| [`viam:csi-cam-pi`](https://app.viam.com/module/viam/csi-cam-pi) | Raspberry Pi CSI cameras                                                                |
+| [`viam:rplidar`](https://app.viam.com/module/viam/rplidar)       | RPLidar 2D lidar (exposed as a point-cloud camera)                                      |
+
+For cameras not covered above, browse [all camera modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=camera).
 
 ## Steps
 

@@ -41,7 +41,13 @@ Micro-RDK:
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=encoder). Each module's configuration is documented on its registry page.
+Viam-maintained encoder modules:
+
+| Module                                             | Encoders supported                          |
+| -------------------------------------------------- | ------------------------------------------- |
+| [`viam:ams`](https://app.viam.com/module/viam/ams) | AMS AS5048 magnetic rotary absolute encoder |
+
+For encoders not covered above, browse [all encoder modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=encoder).
 
 ## Steps
 

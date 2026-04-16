@@ -26,7 +26,13 @@ A power sensor component provides three methods:
 
 ### Registry modules
 
-Hardware-specific power sensor models (INA219, INA226, Renogy controllers, etc.) are available as modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=power_sensor). Each module's configuration is documented on its registry page.
+Viam-maintained power-sensor modules:
+
+| Module                                                                         | Sensors supported                            |
+| ------------------------------------------------------------------------------ | -------------------------------------------- |
+| [`viam:texas-instruments`](https://app.viam.com/module/viam/texas-instruments) | Texas Instruments INA219 and INA226 monitors |
+
+For power sensors not covered above (Renogy controllers, other chips), browse [all power-sensor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=power_sensor).
 
 ## Steps
 

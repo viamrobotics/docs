@@ -22,13 +22,8 @@ An arm component controls a multi-jointed robotic arm. The API provides:
 - **Motion planning integration**: the motion service can plan
   collision-free paths for the arm.
 
-Arm models almost always come from **modules in the registry** because each
-arm manufacturer has its own communication protocol. Common models include:
-
-| Module                                                                | Models                       |
-| --------------------------------------------------------------------- | ---------------------------- |
-| [UFactory](https://app.viam.com/module/viam/ufactory)                 | xArm6, xArm7, xArm850, lite6 |
-| [Universal Robots](https://app.viam.com/module/viam/universal-robots) | ur3e, ur5e, ur7e, ur20       |
+Arm models almost always come from **modules in the registry** because each arm manufacturer has its own communication protocol.
+See the Registry modules list below for Viam-maintained arm modules.
 
 The `fake` built-in model is useful for testing code without physical hardware.
 It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
@@ -39,7 +34,15 @@ It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=arm). Each module's configuration is documented on its registry page.
+Viam-maintained arm modules:
+
+| Module                                                                       | Arms supported               |
+| ---------------------------------------------------------------------------- | ---------------------------- |
+| [`viam:ufactory`](https://app.viam.com/module/viam/ufactory)                 | xArm6, xArm7, xArm850, Lite6 |
+| [`viam:universal-robots`](https://app.viam.com/module/viam/universal-robots) | UR3e, UR5e, UR7e, UR20       |
+| [`viam:yaskawa`](https://app.viam.com/module/viam/yaskawa)                   | GP12, GP180-120              |
+
+For arms not covered above, browse [all arm modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=arm). Each module's configuration is documented on its registry page.
 
 ## Steps
 

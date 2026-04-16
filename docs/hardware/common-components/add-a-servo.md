@@ -31,7 +31,13 @@ Micro-RDK:
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo). Each module's configuration is documented on its registry page.
+Viam-maintained servo modules:
+
+| Module                                                               | Servos supported                                            |
+| -------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [`viam:raspberry-pi`](https://app.viam.com/module/viam/raspberry-pi) | `rpi-servo` model for hobby servos on Raspberry Pi variants |
+
+For servos not covered above, browse [all servo modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
 
 ## Steps
 
