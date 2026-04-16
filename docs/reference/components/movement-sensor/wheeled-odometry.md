@@ -31,7 +31,7 @@ With a configured `wheeled-odometry` movement sensor, your machine calculates an
 You can access these readings through the [movement sensor API](/reference/apis/components/movement-sensor/#api).
 For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
 
-After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/operate/reference/services/navigation/).
+After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/navigation/).
 
 ## Set-up requirements
 
