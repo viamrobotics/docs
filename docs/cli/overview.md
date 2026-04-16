@@ -43,7 +43,7 @@ Some operations are only available through the CLI:
 - **Shell access** (`viam machines part shell`) opens an interactive terminal on a remote machine.
 - **File transfer** (`viam machines part cp`) copies files to and from machines.
 - **Port tunneling** (`viam machines part tunnel`) forwards a local port to a remote machine.
-- **Module hot-reload** (`viam module reload-local`) reloads a module during development without restarting the machine.
+- **Module hot-reload** (`viam module reload`) builds a module and syncs it to a running machine without restarting the machine.
 
 ## Install
 
@@ -89,14 +89,23 @@ viam login print-access-token
 
 ### Authenticate in scripts and CI/CD
 
-Interactive login opens a browser, which does not work in headless environments.
-Use API key authentication instead:
+Scripts and CI/CD pipelines cannot complete an interactive login. Use API key authentication instead:
 
 ```sh {class="command-line" data-prompt="$"}
 viam login api-key --key-id=<key-id> --key=<key>
 ```
 
 To create an API key, see [Manage API keys](/cli/administer-your-organization/#manage-api-keys).
+
+### Authenticate on a machine without a local browser
+
+Interactive login normally opens a browser on the current machine. To log in on a machine without a local browser (for example, over SSH), pass `--no-browser`:
+
+```sh {class="command-line" data-prompt="$"}
+viam login --no-browser
+```
+
+The CLI prints an authentication URL. Open it in a browser on any machine to complete login.
 
 ## Set defaults
 

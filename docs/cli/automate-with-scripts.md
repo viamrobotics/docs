@@ -39,39 +39,33 @@ viam machines list --all
 
 ## CI/CD: upload a module on release
 
-A GitHub Actions workflow that builds and uploads a module when you push a version tag:
+Viam publishes two official GitHub Actions for building and uploading modules. Prefer these over invoking the CLI by hand in a workflow:
+
+- [`viamrobotics/build-action`](https://github.com/viamrobotics/build-action) triggers a cloud build for every platform declared in your module's `meta.json` and uploads each artifact to the registry.
+- [`viamrobotics/upload-module`](https://github.com/viamrobotics/upload-module) uploads a tarball you built yourself. Use this when you need custom runners or only target one platform.
+
+A minimal workflow that runs a cloud build and uploads to the registry on every release:
 
 ```yaml
-# .github/workflows/upload-module.yml
-name: Upload module
+# .github/workflows/publish.yml
 on:
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
 
 jobs:
-  upload:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Viam CLI
-        run: |
-          sudo curl --compressed -o /usr/local/bin/viam \
-            https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
-          sudo chmod a+rx /usr/local/bin/viam
-
-      - name: Authenticate
-        run: viam login api-key --key-id=${{ secrets.VIAM_KEY_ID }} --key=${{ secrets.VIAM_KEY }}
-
-      - name: Build
-        run: viam module build local
-
-      - name: Upload
-        run: |
-          VERSION=${GITHUB_REF_NAME#v}
-          viam module upload --version=$VERSION --platform=linux/amd64 dist/archive.tar.gz
+      - uses: viamrobotics/build-action@v1
+        with:
+          version: ${{ github.ref_name }}
+          ref: ${{ github.sha }}
+          key-id: ${{ secrets.VIAM_KEY_ID }}
+          key-value: ${{ secrets.VIAM_KEY }}
 ```
+
+`build-action` reads the `build` block in `meta.json` to determine target platforms and build commands. For the full setup, including `meta.json` configuration and an example that uses `upload-module` instead, see [Deploy a module](/build-modules/deploy-a-module/).
 
 ## CI/CD: retrain a model on new data
 

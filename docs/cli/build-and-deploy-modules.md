@@ -63,16 +63,16 @@ viam module generate \
 
 ## Iterate during development
 
-After making code changes, reload your module on a running machine without restarting the entire machine:
-
-```sh {class="command-line" data-prompt="$"}
-viam module reload-local --part-id=<part-id>
-```
-
-To reload a module from the registry (after uploading a new version):
+After making code changes, reload your module on a running machine without restarting the entire machine. By default, the CLI builds the module in the cloud and syncs the new binary to the target:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module reload --part-id=<part-id>
+```
+
+If your development machine is also running the module (for example, developing a macOS module on the Mac that runs `viam-server`), use `reload-local` to build and reload without a cloud build:
+
+```sh {class="command-line" data-prompt="$"}
+viam module reload-local --part-id=<part-id>
 ```
 
 If a reload is not sufficient, restart the module process:
@@ -171,13 +171,13 @@ viam module build list
 View build logs:
 
 ```sh {class="command-line" data-prompt="$"}
-viam module build logs --build-id=<build-id>
+viam module build logs --id=<build-id>
 ```
 
 Wait for a build to complete and stream logs:
 
 ```sh {class="command-line" data-prompt="$"}
-viam module build logs --build-id=<build-id> --wait
+viam module build logs --id=<build-id> --wait
 ```
 
 ## Download a module
