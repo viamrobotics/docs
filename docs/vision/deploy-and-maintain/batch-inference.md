@@ -66,13 +66,13 @@ viam infer \
 
 ### Flag reference
 
-| Flag               | Required | Description                                                                                                |
-| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------- |
-| `--binary-data-id` | Yes      | ID of the image to run the model against. From the **DATA** tab.                                           |
-| `--model-name`     | Yes      | Model name as it appears in the **MODELS** tab.                                                            |
-| `--model-org-id`   | Yes      | ID of the organization that owns the model.                                                                |
-| `--model-version`  | Yes      | Specific model version to use, typically a timestamp like `2025-04-14T16-38-25`. Does not accept `latest`. |
-| `--org-id`         | No       | ID of the organization that runs the inference. Defaults to the model's organization.                      |
+| Flag               | Required | Description                                                                                                                          |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `--binary-data-id` | Yes      | ID of the image to run the model against. From the **DATA** tab.                                                                     |
+| `--model-name`     | Yes      | Model name as it appears in the **MODELS** tab.                                                                                      |
+| `--model-org-id`   | Yes      | ID of the organization that owns the model.                                                                                          |
+| `--model-version`  | Yes      | Specific model version to use, typically a timestamp like `2025-04-14T16-38-25`. Does not accept `latest`.                           |
+| `--org-id`         | Yes      | ID of the organization that runs the inference. This can be a different organization from the model's owner; both must be specified. |
 
 ### Example output
 
