@@ -20,18 +20,20 @@ Your vision service is configured and running, but you need to do something usef
 
 A detection is a single recognized object in an image. Each detection includes:
 
-| Field        | Type            | Description                                                                 |
-| ------------ | --------------- | --------------------------------------------------------------------------- |
-| `class_name` | String          | The label assigned by the model (for example, "person", "dog", "stop-sign") |
-| `confidence` | Float (0.0-1.0) | How confident the model is in this detection                                |
-| `x_min`      | Integer         | Left edge of the bounding box in pixels                                     |
-| `y_min`      | Integer         | Top edge of the bounding box in pixels                                      |
-| `x_max`      | Integer         | Right edge of the bounding box in pixels                                    |
-| `y_max`      | Integer         | Bottom edge of the bounding box in pixels                                   |
+| Field              | Type            | Description                                                                 |
+| ------------------ | --------------- | --------------------------------------------------------------------------- |
+| `class_name`       | String          | The label assigned by the model (for example, "person", "dog", "stop-sign") |
+| `confidence`       | Float (0.0-1.0) | How confident the model is in this detection                                |
+| `x_min`            | Integer         | Left edge of the bounding box in pixels                                     |
+| `y_min`            | Integer         | Top edge of the bounding box in pixels                                      |
+| `x_max`            | Integer         | Right edge of the bounding box in pixels                                    |
+| `y_max`            | Integer         | Bottom edge of the bounding box in pixels                                   |
+| `x_min_normalized` | Float (0.0-1.0) | Left edge as a fraction of image width                                      |
+| `y_min_normalized` | Float (0.0-1.0) | Top edge as a fraction of image height                                      |
+| `x_max_normalized` | Float (0.0-1.0) | Right edge as a fraction of image width                                     |
+| `y_max_normalized` | Float (0.0-1.0) | Bottom edge as a fraction of image height                                   |
 
-The bounding box coordinates use the image coordinate system: (0,0) is the top-left corner, x increases to the right, y increases downward. The bounding box is axis-aligned (not rotated).
-
-Detections also include normalized coordinates (`x_min_normalized`, `y_min_normalized`, `x_max_normalized`, `y_max_normalized`) as floats between 0.0 and 1.0, representing positions relative to image dimensions. These are useful when you need resolution-independent coordinates.
+The bounding box coordinates use the image coordinate system: (0,0) is the top-left corner, x increases to the right, y increases downward. The bounding box is axis-aligned (not rotated). Use the normalized fields when you need resolution-independent positions.
 
 A single call to the detection API can return zero, one, or many detections. The number depends on how many objects the model finds in the frame.
 
@@ -41,6 +43,8 @@ The vision service provides two methods for getting detections:
 
 - **GetDetectionsFromCamera** takes a camera name and handles everything: it captures an image from the camera, runs it through the model, and returns detections. This is the simplest approach and the one you should use in most cases.
 - **GetDetections** takes an image you already have and runs it through the model. Use this when you need to run detection on an image you captured separately, an image from a file, or an image you have preprocessed.
+
+For full parameter lists and language-specific signatures, see the vision service API reference for [GetDetectionsFromCamera](/reference/apis/services/vision/#getdetectionsfromcamera) and [GetDetections](/reference/apis/services/vision/#getdetections).
 
 ### Confidence thresholds
 

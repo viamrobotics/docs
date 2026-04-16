@@ -74,7 +74,16 @@ Step 5 of this guide shows how to combine detections with depth data to measure 
 
 Go to [app.viam.com](https://app.viam.com), navigate to your machine, and verify your depth camera appears in the component list. Open the test panel and confirm it is producing images.
 
-For Intel RealSense cameras, the `webcam` model or the `realsense` module is commonly used. Check that the depth stream is enabled in the camera configuration.
+Common depth-capable cameras and the modules that wrap them:
+
+- Intel RealSense D400 series, through the [RealSense module](https://github.com/viamrobotics/viam-camera-realsense)
+- Luxonis OAK-D series, through the [OAK camera module](https://github.com/viamrobotics/viam-camera-oak)
+- Orbbec cameras, through the [Orbbec module](https://github.com/viam-modules/orbbec)
+- The `fake` camera model, for development without hardware (returns synthetic but structurally correct point clouds)
+
+For other depth cameras, search the [registry](https://app.viam.com/registry?type=component&subtype=camera) for a matching module.
+
+Check that the depth stream is enabled in the camera's configuration, and confirm the camera reports `supports_pcd: true` through [`GetProperties`](/reference/apis/components/camera/#getproperties). Without depth support, none of the steps below will work.
 
 ### 2. Get a point cloud
 
@@ -98,11 +107,12 @@ async def main():
 
     camera = Camera.from_robot(robot, "my-depth-camera")
 
-    # Get a point cloud
-    point_cloud, _ = await camera.get_point_cloud()
+    # get_point_cloud returns (point_cloud_bytes, mime_type).
+    # The MIME type (for example, "pointcloud/pcd") is not needed here.
+    point_cloud, mime_type = await camera.get_point_cloud()
 
     print("Point cloud retrieved")
-    print(f"Type: {type(point_cloud)}")
+    print(f"MIME type: {mime_type}, payload type: {type(point_cloud)}")
 
     await robot.close()
 
@@ -419,7 +429,44 @@ for _, d := range detections {
 {{% /tab %}}
 {{< /tabs >}}
 
-### 6. Use a fake camera for testing
+### 6. Convert depth + pixel coordinates to a 3D position
+
+A distance reading tells you how far something is, but not where it is in space. To plan a motion to a detected object you need a 3D position (x, y, z) in a frame another component can use.
+
+Two steps: unproject the pixel to a point in the **camera frame**, then transform that point into whichever frame the consuming component (arm base, robot base, map) expects.
+
+**Unproject pixel + depth to camera frame:**
+
+Given the pixel `(u, v)` where your detection centered, a depth reading `d` in millimeters, and the camera's intrinsics `fx`, `fy`, `ppx`, `ppy`:
+
+```python
+x_camera = (u - ppx) * d / fx
+y_camera = (v - ppy) * d / fy
+z_camera = d
+```
+
+The result is a point in millimeters, in the camera's frame (x right, y down, z forward).
+
+**Transform to a shared frame:**
+
+Call `transform_pose` on your `RobotClient` to convert the camera-frame pose into whatever frame your application uses: the arm base, the robot base, the world. `transform_pose` reads the [frame system](/motion-planning/frame-system/) configuration, which records where the camera is mounted relative to other components:
+
+```python
+from viam.proto.common import Pose, PoseInFrame
+
+camera_pose = PoseInFrame(
+    reference_frame="my-depth-camera",
+    pose=Pose(x=x_camera, y=y_camera, z=z_camera, o_x=0, o_y=0, o_z=1, theta=0),
+)
+arm_pose = await robot.transform_pose(camera_pose, "my-arm")
+print(f"Object at arm-frame position: ({arm_pose.pose.x:.0f}, {arm_pose.pose.y:.0f}, {arm_pose.pose.z:.0f}) mm")
+```
+
+For this to work, your machine configuration must declare frames for the camera and the target component. See [Frame system](/motion-planning/frame-system/) for the full setup.
+
+If your vision service model supports it, [`GetObjectPointClouds`](/reference/apis/services/vision/#getobjectpointclouds) returns the 3D center for each detected object directly, skipping the manual unprojection. See [Segment 3D objects](/vision/3d-vision/segment-3d/).
+
+### 7. Use a fake camera for testing
 
 If you do not have a depth camera, configure a `fake` camera that generates simulated point cloud data. This lets you develop and test your depth-related code without hardware.
 
@@ -434,9 +481,11 @@ If you do not have a depth camera, configure a `fake` camera that generates simu
 
 The fake camera generates both color images and simulated point cloud data. The depth values are synthetic but structurally correct, so your code will work the same way with real hardware.
 
-### 7. Configure camera intrinsic parameters
+### 8. Configure camera intrinsic parameters
 
-If your camera does not automatically provide intrinsic parameters, you can set them manually in the configuration. These parameters are needed for accurate 2D-to-3D projection.
+Intrinsic parameters apply to camera-based depth sensors that capture depth as a 2D map and then project it into 3D using the camera's internal geometry. This covers structured light cameras like the Intel RealSense D400 series and stereo cameras like the OAK-D. Sensors that return 3D points directly, such as the Intel RealSense L515 and solid-state lidars, don't use intrinsics the same way. Check your sensor's datasheet if you're not sure.
+
+If your camera does not automatically provide intrinsic parameters, you can set them manually in the configuration.
 
 ```json
 {
@@ -473,8 +522,29 @@ If your camera does not automatically provide intrinsic parameters, you can set 
 
 Most depth cameras (Intel RealSense, Oak-D) provide these automatically. You only need to set them manually for cameras without built-in calibration data.
 
+**Intrinsics vs extrinsics.** Intrinsics describe the camera's internal geometry (how pixels map to rays). Extrinsics describe where the camera is mounted relative to other things on the machine (the arm base, the robot base). Viam handles extrinsics through the [frame system](/motion-planning/frame-system/), not through camera attributes. Step 6 above uses extrinsics (through `TransformPose`) to move a 3D point from the camera frame into another component's frame.
+
 {{< alert title="Tip" color="tip" >}}
-If you need an image, its detections, and a point cloud together in one call, use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). This is more efficient than separate calls and ensures all results correspond to the same frame. See [Detect objects, step 7](/vision/object-detection/detect/#7-get-everything-in-one-call-with-captureallfromcamera) for a full example.
+To fetch an image, detections, and point cloud objects together in one call (rather than separate `get_images` and detector calls), use [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera). All three results come from the same captured frame, so they stay in sync:
+
+```python
+from viam.services.vision import VisionClient
+
+detector = VisionClient.from_robot(robot, "my-detector")
+
+result = await detector.capture_all_from_camera(
+    "my-depth-camera",
+    return_image=True,
+    return_detections=True,
+    return_object_point_clouds=True,
+)
+
+image = result.image
+detections = result.detections
+point_clouds = result.objects  # list of 3D objects, one per detection
+```
+
+This matters for fused results: if you call `get_images()` and `get_detections_from_camera()` separately on a running stream, the detections come from a later frame than the image. `CaptureAllFromCamera` avoids the race.
 {{< /alert >}}
 
 ## Try it

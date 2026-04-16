@@ -66,13 +66,13 @@ viam infer \
 
 ### Flag reference
 
-| Flag               | Required | Description                                                                                                |
-| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------- |
-| `--binary-data-id` | Yes      | ID of the image to run the model against. From the **DATA** tab.                                           |
-| `--model-name`     | Yes      | Model name as it appears in the **MODELS** tab.                                                            |
-| `--model-org-id`   | Yes      | ID of the organization that owns the model.                                                                |
-| `--model-version`  | Yes      | Specific model version to use, typically a timestamp like `2025-04-14T16-38-25`. Does not accept `latest`. |
-| `--org-id`         | No       | ID of the organization that runs the inference. Defaults to the model's organization.                      |
+| Flag               | Required | Description                                                                                                                          |
+| ------------------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `--binary-data-id` | Yes      | ID of the image to run the model against. From the **DATA** tab.                                                                     |
+| `--model-name`     | Yes      | Model name as it appears in the **MODELS** tab.                                                                                      |
+| `--model-org-id`   | Yes      | ID of the organization that owns the model.                                                                                          |
+| `--model-version`  | Yes      | Specific model version to use, typically a timestamp like `2025-04-14T16-38-25`. Does not accept `latest`.                           |
+| `--org-id`         | Yes      | ID of the organization that runs the inference. This can be a different organization from the model's owner; both must be specified. |
 
 ### Example output
 
@@ -81,7 +81,7 @@ Inference Response:
 Output Tensors:
   Tensor Name: num_detections
     Shape: [1]
-    Values: [1.0000]
+    Values: [...]
   Tensor Name: classes
     Shape: [32 1]
     Values: [...]
@@ -93,8 +93,12 @@ Output Tensors:
     Values: [...]
 Annotations:
 Bounding Box Format: [x_min, y_min, x_max, y_max]
-  No annotations.
+  Bounding Box ID: 0, Label: person
+    Coordinates: [0.071400, 0.203500, 0.938500, 0.855100]
+    Confidence: 0.9765
 ```
+
+Output tensors are model-specific. The tensor names, shapes, and values shown above come from a typical TFLite object detector (fields: `classes`, `boxes`, `confidence`, `num_detections`). Your model's output shape will differ if it uses different tensor names. The `Annotations` block appears only when the model has bounding-box or classification metadata registered with the registry item; models without annotations skip the block entirely.
 
 Bounding box coordinates are returned as proportions between `0` and `1`, with `(0, 0)` in the top-left and `(1, 1)` in the bottom-right. Multiply by the image width and height to get pixel coordinates.
 

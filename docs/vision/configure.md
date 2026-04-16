@@ -11,17 +11,29 @@ aliases:
   - /vision-detection/add-computer-vision/
 ---
 
-You have a camera on your machine, and you have an ML model: either a pre-trained one from the [registry](https://app.viam.com/registry), one you trained yourself ([managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/)), or one you brought from elsewhere. This how-to wires them up: an ML model service loads the model and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
+You have a camera on your machine, and you have an ML model. The model could have come from the [registry](https://app.viam.com/registry), from the [Train ML Models section](/train/) through [managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), or from elsewhere entirely: GitHub, Hugging Face, or your own training run outside Viam. This how-to wires the pieces together: an ML model service loads the model, and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.
 
 Downstream how-tos ([detect](/vision/object-detection/detect/), [classify](/vision/classify/), [track](/vision/object-detection/track/), [measure depth](/vision/3d-vision/measure-depth/)) assume the pipeline described here is running.
 
 ## What you are configuring, in one paragraph
 
-Viam splits ML inference into two services. The **ML model service** loads the model file and runs tensors through it. The **vision service** turns those tensors into structured detections and classifications and ties them to a specific camera. Your application code talks to the vision service; the ML model service is a building block underneath. For the longer explanation and when the split matters, see [How a vision service works](/vision/how-it-works/).
+Viam splits ML inference into two services. The **ML model service** loads the model file and runs tensors through it. The **vision service** turns those tensors into structured detections and classifications and ties them to a specific camera. Your application code talks to the vision service; the ML model service is a building block underneath.
+
+```text
+    Camera ─── image ───► Vision service ─── tensor ───► ML model service
+                               │                             │
+                               ▼                             ▼
+                       Detections,                      Raw output
+                       classifications,                 tensor
+                       point cloud objects    ◄──────────────┘
+                       (what your code uses)
+```
+
+Three resources (camera, vision service, ML model service) plus the model file itself. The steps below add each piece. For the longer explanation and when the split matters, see [How a vision service works](/vision/how-it-works/).
 
 ## 1. Add an ML model service
 
-The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point.
+The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. The framework-support table in [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support) lists which implementations support which frameworks and hardware paths.
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
@@ -32,6 +44,13 @@ The ML model service matches your model file's framework. For most tasks, `tflit
 
 Point the service at your model file. The Builder flow populates the config for you; the JSON tab shows what you end up with (or what to write manually, for example for a local model file).
 
+Two things matter here:
+
+- **The model file itself** (`model_path` in the JSON) — the weights the service loads.
+- **The label file** (`label_path`) — a plain text file that maps the numeric class IDs the model outputs to human-readable names. A detector that outputs class `3` doesn't mean anything on its own; the label file translates that to `dog` or whatever class 3 was at training time. Registry models ship with this file; for local models you provide your own.
+
+Both paths resolve to whatever you give them: a package reference like `${packages.ml_model.my-model}/labels.txt` for registry models, or an absolute path on the machine for local files. You can inspect a registry model's bundled `labels.txt` by looking in `${packages.ml_model.my-model}/` after first deploy, or by opening the model's detail view on [app.viam.com/models](https://app.viam.com/models).
+
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
@@ -41,24 +60,37 @@ Point the service at your model file. The Builder flow populates the config for 
 4. Click a model card to open its details view. Pick a **Version** from the dropdown: **Latest** (auto-updates when a newer version is published) or a specific timestamp version (recommended for production).
 5. Click **Choose**. The dialog closes and the service panel now shows the selected model as a pill with its version and author.
 
-Behind the scenes the builder adds a `packages` entry for the model and sets `model_path` and `label_path` on the service attributes to point into the package. Registry models ship with their own `labels.txt`, so you do not create one yourself.
+Behind the scenes the builder adds a `packages` entry for the model and sets `model_path` and `label_path` on the service attributes to point into the package.
 
 {{% /tab %}}
 {{% tab name="JSON — registry model" %}}
 
 ```json
 {
-  "name": "my-ml-model",
-  "api": "rdk:service:mlmodel",
-  "model": "tflite_cpu",
-  "attributes": {
-    "model_path": "${packages.my-model}/model.tflite",
-    "label_path": "${packages.my-model}/labels.txt"
-  }
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "latest",
+      "type": "ml_model"
+    }
+  ],
+  "services": [
+    {
+      "name": "my-ml-model",
+      "api": "rdk:service:mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {
+        "package_reference": "<org-id>/my-model",
+        "model_path": "${packages.ml_model.my-model}/my-model.tflite",
+        "label_path": "${packages.ml_model.my-model}/labels.txt"
+      }
+    }
+  ]
 }
 ```
 
-`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package. Registry models ship with their own `labels.txt`, so the `label_path` above resolves to the labels file inside the package. You do not need to create one yourself. The `packages` array at the top level of the machine config (not shown here) names the package to download.
+`${packages.ml_model.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package and `<org-id>` with the UUID of the organization that owns it. `package_reference` is the same `<org-id>/my-model` identifier. The file name inside the placeholder (`my-model.tflite`, `labels.txt`) matches the actual file names inside the package; the Builder flow in the previous tab fills these in automatically based on what the registry model contains.
 
 {{% /tab %}}
 {{% tab name="JSON — local model file" %}}
@@ -75,7 +107,7 @@ Behind the scenes the builder adds a `packages` entry for the model and sets `mo
 }
 ```
 
-For local models, `label_path` is optional but recommended: it maps the numeric class IDs the model outputs to human-readable names like `person` or `car`. Provide a `.txt` file with one label per line, in class-ID order (line 0 is class 0).
+For local models, `label_path` is optional but recommended. The file is plain text, one label per line, in class-ID order (line 0 is class 0, line 1 is class 1, and so on).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -116,9 +148,10 @@ The fastest check is the Viam app's live overlay:
 
 1. Go to the **CONTROL** tab.
 2. Find your vision service in the component list and open it.
-3. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections appear as an overlay on the live camera feed and refresh automatically.
+3. In the **Camera** dropdown, select the camera whose feed you want the vision service to run on. Detections appear as an overlay on the live camera feed.
+4. The overlay refreshes automatically once per second. To adjust, use the dropdown next to the Camera selector (**Live**, **Refresh every second**, **Refresh every 5 seconds**, or **Manual refresh**).
 
-Bounding boxes or classification labels should appear on the live camera feed within a second or two. If you are using a COCO-class general-purpose model, point the camera at a person, a cup, or a keyboard.
+Bounding boxes or classification labels should appear within a second or two. If you are using a COCO-class general-purpose model, point the camera at a person, a cup, or a keyboard.
 
 If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
 
@@ -138,14 +171,23 @@ With both services saved, a minimal end-to-end configuration (camera + ML model 
       "attributes": {}
     }
   ],
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "latest",
+      "type": "ml_model"
+    }
+  ],
   "services": [
     {
       "name": "my-ml-model",
       "api": "rdk:service:mlmodel",
       "model": "tflite_cpu",
       "attributes": {
-        "model_path": "${packages.my-model}/model.tflite",
-        "label_path": "${packages.my-model}/labels.txt"
+        "package_reference": "<org-id>/my-model",
+        "model_path": "${packages.ml_model.my-model}/my-model.tflite",
+        "label_path": "${packages.ml_model.my-model}/labels.txt"
       }
     },
     {

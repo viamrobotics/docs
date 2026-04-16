@@ -86,9 +86,9 @@ The module downloads and starts automatically when you save the configuration.
 | Attribute | Type | Required? | Description |
 | --------- | ---- | --------- | ----------- |
 | `detector_name` | string | **Required** | Name of a configured 2D detector vision service. Detections from this service are the input to the segmenter. |
-| `camera_name` | string | **Required** | Name of the depth-capable camera. Must support point clouds (`supports_pcd` in `GetProperties`). |
-| `mean_k` | int | **Required** | Point-cloud noise-filtering parameter (from the [PCL statistical outlier removal subroutine](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)). Set to roughly 5 to 10 percent of the minimum expected segment size. Set to `0` or less to disable filtering. |
-| `sigma` | float | **Required** | Point-cloud noise-filtering parameter. Typical values are `1.0` to `2.0`; `1.25` is a good default. Lower values produce less noisy objects at the risk of losing points near edges. |
+| `mean_k` | int | **Required** | Point-cloud noise-filtering parameter (from the [PCL statistical outlier removal subroutine](https://pcl.readthedocs.io/projects/tutorials/en/latest/statistical_outlier.html)). Must be greater than 0. Set to roughly 5 to 10 percent of the minimum expected segment size. |
+| `sigma` | float | **Required** | Point-cloud noise-filtering parameter. Must be greater than 0. Typical values are `1.0` to `2.0`; `1.25` is a good default. Lower values produce less noisy objects at the risk of losing points near edges. |
+| `camera_name` | string | Optional | Default camera for `GetObjectPointClouds` calls that do not pass a camera name. If set, the camera becomes a required dependency of the segmenter and must support point clouds (check `supports_pcd` through [`GetProperties`](/reference/apis/components/camera/#getproperties) on the camera). |
 | `confidence_threshold_pct` | float | Optional | Detections below this confidence are filtered out before 3D projection. Must be between `0.0` and `1.0`. <br> Default: `0.5` |
 
 ## Test your segmenter

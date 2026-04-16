@@ -65,7 +65,7 @@ Set the required attributes:
 | `chosen_labels`         | object | No       | None    | Map of class names to confidence thresholds. Only detections matching these labels are tracked. |
 | `trigger_cool_down_s`   | float  | No       | 5       | Seconds before a trigger resets after firing.                                                   |
 | `buffer_size`           | int    | No       | 30      | Number of frames to buffer lost detections before removing a track (1 to 256).                  |
-| `min_track_persistence` | int    | No       | 1       | Number of consecutive frames a track must appear in before it is returned in detection results. |
+| `min_track_persistence` | int    | No       | 3       | Number of consecutive frames a track must appear in before it is returned in detection results. |
 
 Click **Save**.
 

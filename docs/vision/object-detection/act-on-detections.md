@@ -21,6 +21,18 @@ You have a vision service detecting or classifying objects, but you need your ma
 
 The most common approach is to create a module that wraps an existing resource. The wrapper intercepts API calls, checks vision results, and decides whether to pass the call through or block it.
 
+```text
+   Your code                Wrapper module                  Real resource
+  ────────────────────►  ─────────────────────────────►  ──────────────────
+   arm.move_to_position   1. Query vision service         arm.move_to_position
+                          2. Decide based on result        (runs or doesn't)
+                          3. Pass through OR raise error
+                                     │
+                                     ▼
+                             Vision service
+                          (detections / classifications)
+```
+
 For example, a "safe arm" module wraps a real arm. When your code calls `move_to_position`, the wrapper first checks the vision service for people in the frame. If no one is detected, it passes the command to the real arm. If a person is detected, it raises an error.
 
 This pattern works with any resource type: arms, bases, motors, or even other services.

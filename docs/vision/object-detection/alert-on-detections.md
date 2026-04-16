@@ -105,7 +105,7 @@ To verify your confidence threshold, expand the **TEST** panel on your vision se
 Add the data management service to capture and sync filtered images:
 
 1. Click **+** and select **Configuration block**.
-2. In the search field, type `data management` and select the matching result.
+2. In the search field, type `data management` and select `data_manager/builtin` from the results.
 3. Click **Add component**, name the service `data-manager`, and click **Add component** again to confirm.
 4. Leave the default attributes and click **Save**.
 
@@ -139,6 +139,8 @@ Add a trigger to send alerts when filtered images sync:
 7. Click **Save**.
 
 ## Try it
+
+Before trying the end-to-end flow, confirm you have all three pieces from above saved on the machine: the filtered camera (step 1), the data management service plus data capture on the filtered camera (step 2), and the trigger with at least one notification method (step 3). The flow does not work unless all three are configured together.
 
 1. Point your camera at an object your model recognizes and wait for the capture interval to pass.
 2. Check the **TEST** panel on your vision service to confirm detections are occurring with sufficient confidence.
