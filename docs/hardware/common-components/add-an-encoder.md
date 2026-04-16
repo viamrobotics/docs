@@ -28,6 +28,22 @@ Once you configure an encoder and reference it from a motor component, the
 motor gains accurate position control. `GoFor` and `GoTo` use actual encoder
 feedback instead of time-based estimates. Browse all available encoder models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=encoder).
 
+### Built-in models
+
+- [`arduino`](/reference/components/encoder/arduino/) — _(no description)_.
+- [`fake`](/reference/components/encoder/fake/) — An encoder model for testing.
+- [`incremental`](/reference/components/encoder/incremental/) — Supports a two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point.
+- [`single`](/reference/components/encoder/single/) — A single pin 'pulse output' encoder which returns its relative position but no direction.
+
+Micro-RDK:
+
+- [`incremental`](/reference/components/encoder/micro-rdk/incremental/) — _(no description)_.
+- [`single`](/reference/components/encoder/micro-rdk/single/) — _(no description)_.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=encoder). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Prerequisites
@@ -267,6 +283,8 @@ go run main.go
   count in the wrong direction.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/encoder.md" >}}
 
 ## What's next
 

@@ -21,6 +21,12 @@ and exposes it as a button component.
 
 The `fake` built-in model is useful for testing code without physical hardware.
 
+### Built-in models
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=button). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Add a button component

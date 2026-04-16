@@ -31,6 +31,14 @@ types give you data capture, test panels, and SDK support automatically. Browse 
 
 The `fake` built-in model echoes commands back for testing.
 
+### Built-in models
+
+- [`fake`](/reference/components/generic/fake/) — A model used for testing, with no physical hardware.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Add a generic component
@@ -199,6 +207,8 @@ go run main.go
 - Look at the machine's logs for module startup errors.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/generic.md" >}}
 
 ## What's next
 

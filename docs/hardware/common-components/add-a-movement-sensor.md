@@ -30,13 +30,18 @@ methods a particular sensor supports.
 
 ### Built-in models
 
-| Model              | Use case                                                                                              |
-| ------------------ | ----------------------------------------------------------------------------------------------------- |
-| `wheeled-odometry` | Estimates position and velocity from motor encoders on a wheeled base. No additional hardware needed. |
-| `merged`           | Combines data from multiple movement sensors into one. For example, GPS position + IMU orientation.   |
+- [`wheeled-odometry`](/reference/components/movement-sensor/wheeled-odometry/) — Estimates position and velocity from motor encoders on a wheeled base. No additional hardware needed.
+- [`merged`](/reference/components/movement-sensor/merged/) — Combines data from multiple movement sensors into one. For example, GPS position + IMU orientation.
+- [`fake`](/reference/components/movement-sensor/fake/) — A model for testing, with no physical hardware.
 
-Hardware-specific models (GPS modules, IMUs, RTK receivers) are available as
-modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor).
+Micro-RDK:
+
+- [`accel-adxl345`](/reference/components/movement-sensor/micro-rdk/accel-adxl345/) — Analog Devices ADXL345 accelerometer.
+- [`gyro-mpu6050`](/reference/components/movement-sensor/micro-rdk/gyro-mpu6050/) — InvenSense MPU-6050 gyroscope and accelerometer.
+
+### Registry modules
+
+Hardware-specific models (GPS modules, IMUs, RTK receivers) are available as modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor). Each module's configuration is documented on its registry page.
 
 ## Steps
 
@@ -277,6 +282,8 @@ go run main.go
   `GetProperties` to see which methods your sensor supports.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
 
 ## What's next
 

@@ -24,6 +24,18 @@ The board doesn't represent external hardware. It represents the I/O
 capabilities of the computer itself. Motors, encoders, and servos reference
 the board by name to access the pins they're wired to. Browse all available board models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=board).
 
+### Built-in models
+
+- [`fake`](/reference/components/board/fake/) — A model used for testing, with no physical hardware.
+
+Micro-RDK:
+
+- [`esp32`](/reference/components/board/micro-rdk/esp32/) — _(no description)_.
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=board). Each module's configuration is documented on its registry page.
+
 ## Steps
 
 ### 1. Open your machine in the Viam app
@@ -257,6 +269,8 @@ go run main.go
   through SPI or I2C. Check the model's reference page for ADC configuration.
 
 {{< /expand >}}
+
+{{< readfile "/static/include/components/troubleshoot/board.md" >}}
 
 ## What's next
 

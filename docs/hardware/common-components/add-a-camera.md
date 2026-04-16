@@ -18,14 +18,21 @@ Add a camera to your machine's configuration so you can capture images and video
 
 ## Concepts
 
-The camera API gives you `GetImages` (capture frames), `GetPointCloud` (depth data), and stream access regardless of the underlying hardware. Common models include:
+The camera API gives you `GetImages` (capture frames), `GetPointCloud` (depth data), and stream access regardless of the underlying hardware.
 
-- **webcam** (built-in): USB cameras and built-in laptop cameras. Auto-detects available devices.
-- **ffmpeg** (built-in): IP cameras and RTSP streams.
-- **realsense**: Intel RealSense depth cameras (module).
-- **transform**: Applies transformations (crop, resize, overlay) to another camera's output.
+### Built-in models
 
-Browse all available camera models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=camera).
+- [**webcam**](/reference/components/camera/webcam/): USB cameras and built-in laptop cameras. Auto-detects available devices.
+- [**ffmpeg**](/reference/components/camera/ffmpeg/): a camera device, video file, or stream.
+- [**transform**](/reference/components/camera/transform/): applies transformations (crop, resize, rotate, overlay) to another camera's output.
+- [**fake**](/reference/components/camera/fake/): a camera model for testing.
+- [**image_file**](/reference/components/camera/image-file/): serves color or depth image frames from a file path.
+
+For Micro-RDK, see [Micro-RDK camera models](/reference/components/camera/micro-rdk/).
+
+### Registry modules
+
+For hardware the built-in models don't cover, browse [all available camera models in the Viam registry](https://app.viam.com/registry?type=component&subtype=camera). Common Viam-maintained modules include `realsense` (Intel RealSense depth cameras) and `viamrtsp` (IP cameras over RTSP).
 
 ## Steps
 
@@ -274,6 +281,38 @@ go run main.go
 
 - Some cameras need a few seconds to adjust exposure after starting. Try adding a short delay before capturing, or capture and discard a few frames first.
 - Check if the camera has a physical lens cap or privacy shutter.
+
+{{< /expand >}}
+
+{{< expand "No visible live video feed" >}}
+
+Restart `viam-server`:
+
+1. Navigate to your machine's page.
+1. Select the part status dropdown to the right of your machine's name on the top of the page.
+1. If you installed `viam-server` with `viam-agent` you will see a **Restart** button. Click it.
+   Both `viam-server` and `viam-agent` will restart.
+
+   If you do not see the **Restart** button, click the **...** menu on the right side of the machine part's card, and select **Restart part**.
+   If restarting the machine part does not resolve the issue, ssh into the machine and stop and restart `viam-server` manually.
+
+If this doesn't work, you can reboot your machine by running the following command on the machine:
+
+```sh {class="command-line" data-prompt="$"}
+sudo reboot
+```
+
+{{< /expand >}}
+
+{{< expand "Images are dim on start up when capturing data" >}}
+
+If you are capturing camera data, it can happen that the camera captures and syncs discolored or dark images upon start up. The camera typically stabilizes after a short warm-up period.
+
+{{< /expand >}}
+
+{{< expand "High CPU usage" >}}
+
+Camera streams use a significant amount of CPU resources. The more CPU resources a device has, the more camera streams you can run simultaneously. If your device doesn't have enough CPU resources to support your use case, try lowering the image resolution to decrease the CPU load of the camera streams.
 
 {{< /expand >}}
 
