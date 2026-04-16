@@ -41,10 +41,7 @@ Mark the origin physically so you can take consistent measurements to both the a
 
 ### 2. Add a frame to the arm
 
-In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-In the sidebar, click your arm component to open its card. On the card, click **Frame**.
-
-The Frame section opens a JSON editor (there is no form, no parent dropdown, or geometry-type picker). Edit the JSON directly.
+In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/#edit-a-frame-in-the-viam-app).)
 
 Measure the distance from your world frame origin to the arm base along each axis.
 For an arm base 300 mm to the right and 250 mm forward from a table corner:

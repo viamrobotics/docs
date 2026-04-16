@@ -45,10 +45,7 @@ initial origin.
 
 ### 2. Add a frame to the base
 
-In the [Viam app](https://app.viam.com), navigate to your machine and click the **CONFIGURE** tab.
-In the sidebar, click your base component to open its card. On the card, click **Frame**.
-
-The Frame section opens a JSON editor (no form, parent dropdown, or geometry-type picker). Edit the JSON directly for each component below.
+In the **CONFIGURE** tab, click the base component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/#edit-a-frame-in-the-viam-app).) Edit the JSON for each component below as you go.
 
 Since the world frame origin is at the base center, the translation is zero:
 
