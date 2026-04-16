@@ -113,8 +113,8 @@ The Viam CLI provides `print-config`, `print-status`, `get-pose`, and `set-pose`
 
 ## What's next
 
-- [Motion Service API](/motion-planning/reference/api/): full API reference.
+- [Motion service API](/motion-planning/reference/api/): full API reference.
 - [How motion planning works](/motion-planning/how-planning-works/):
   how the planner searches for collision-free paths.
-- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/): restrict arm
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/): restrict arm
   movement during planning.

@@ -19,8 +19,11 @@ just set down.
 
 ## Prerequisites
 
-- Object already grasped (see [Pick an Object](/motion-planning/pick-and-place/pick-an-object/))
-- Placement location known in world coordinates
+- Object already grasped (see [Pick an object](/motion-planning/pick-and-place/pick-an-object/)).
+- Placement location known in world coordinates.
+
+The code below continues from [Pick an object](/motion-planning/pick-and-place/pick-an-object/);
+`motion_service`, `gripper`, and `world_state` are already defined in that script.
 
 ## Steps
 
@@ -129,7 +132,7 @@ print("Retreated from placement")
 
 ## What's next
 
-- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
   the pick half of the pick-and-place workflow.
 - [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   track plan status during execution.

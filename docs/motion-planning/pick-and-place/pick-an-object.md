@@ -209,7 +209,7 @@ print("Object lifted")
 
 ## What's next
 
-- [Place an Object](/motion-planning/pick-and-place/place-an-object/):
+- [Place an object](/motion-planning/pick-and-place/place-an-object/):
   move the grasped object to a target location.
-- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/):
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   use CollisionSpecification to allow gripper-object contact.

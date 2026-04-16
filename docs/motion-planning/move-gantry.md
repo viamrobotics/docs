@@ -131,7 +131,7 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 
 ## What's next
 
-- [Move Arm to Pose](/motion-planning/move-an-arm/move-to-pose/):
+- [Move arm to pose](/motion-planning/move-an-arm/move-to-pose/):
   similar workflow for robot arms.
-- [Define Obstacles](/motion-planning/obstacles/):
+- [Define obstacles](/motion-planning/obstacles/):
   add obstacle geometry for collision avoidance.

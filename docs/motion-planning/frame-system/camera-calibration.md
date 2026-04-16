@@ -265,9 +265,9 @@ for the full workflow.
 
 ## What's next
 
-- [Define Your Frame System](/motion-planning/frame-system/): configure
+- [Define your frame system](/motion-planning/frame-system/): configure
   component frames for spatial reasoning.
-- [Define Obstacles](/motion-planning/obstacles/): add collision geometry using
+- [Define obstacles](/motion-planning/obstacles/): add collision geometry using
   calibrated camera data.
-- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/):
+- [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/):
   use calibrated positions to plan arm movements.

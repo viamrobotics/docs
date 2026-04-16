@@ -12,10 +12,9 @@ aliases:
 A table-mounted arm, a gripper bolted to the end effector, and a camera
 clamped near the wrist is the most common manipulation setup. The camera moves
 with the arm, so its view is always centered on wherever the arm is reaching.
-For the motion service and vision pipelines to know that, that the camera is
-on the arm, not separate from it, you have to tell the frame system three
-relationships: arm-to-world, gripper-to-arm, and camera-to-arm. This guide
-walks through all three.
+The motion service and vision pipelines do not know that on their own; you
+have to declare three frame relationships: arm-to-world, gripper-to-arm, and
+camera-to-arm. This guide walks through all three.
 
 ## Frame hierarchy
 

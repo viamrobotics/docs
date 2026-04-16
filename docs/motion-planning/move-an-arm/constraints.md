@@ -237,9 +237,9 @@ to find than unconstrained ones.
 
 ## What's next
 
-- [Move an Arm with Constraints](/motion-planning/move-an-arm/move-with-constraints/):
+- [Move an arm with constraints](/motion-planning/move-an-arm/move-with-constraints/):
   practical examples of constrained motion.
 - [How motion planning works](/motion-planning/how-planning-works/):
   how the planner searches for constrained paths.
-- [Define Obstacles](/motion-planning/obstacles/): define the geometry the
+- [Define obstacles](/motion-planning/obstacles/): define the geometry the
   planner uses for collision checking.

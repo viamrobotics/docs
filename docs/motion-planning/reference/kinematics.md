@@ -303,9 +303,9 @@ have incorrect link lengths, joint axes, or joint limits.
 
 ## What's next
 
-- [Define Obstacles](/motion-planning/obstacles/): add collision geometry to
+- [Define obstacles](/motion-planning/obstacles/): add collision geometry to
   your workspace so the motion planner avoids collisions.
-- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/):
+- [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/):
   use the motion service to move the arm to a position in 3D space.
-- [Camera Calibration](/motion-planning/frame-system/camera-calibration/): calibrate your
+- [Camera calibration](/motion-planning/frame-system/camera-calibration/): calibrate your
   camera for accurate 3D position estimation.

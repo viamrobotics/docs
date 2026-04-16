@@ -159,5 +159,6 @@ reference.
 
 ## What's next
 
-- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/)
-- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/)
+- [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/)
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/)
+- [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/) — when the planner rejects expected contact

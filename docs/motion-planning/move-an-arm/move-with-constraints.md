@@ -208,7 +208,7 @@ constraints := &motionplan.Constraints{
 
 ## What's next
 
-- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/):
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   full reference for all four constraint types.
-- [Plan Collision-Free Paths](/motion-planning/obstacles/avoid-obstacles/):
+- [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/):
   combine constraints with obstacle avoidance.
