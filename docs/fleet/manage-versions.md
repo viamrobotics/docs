@@ -66,6 +66,7 @@ Most rollouts change a fragment that machines depend on, which means the goal is
 from viam.robot.client import RobotClient
 from viam.rpc.dial import Credentials, DialOptions
 
+
 async def get_revision(machine_address, api_key, api_key_id):
     creds = Credentials(type="api-key", payload=api_key)
     opts = DialOptions(auth_entity=api_key_id, credentials=creds)
