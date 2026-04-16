@@ -23,7 +23,7 @@ The camera API gives you `GetImages` (capture frames), `GetPointCloud` (depth da
 ### Built-in models
 
 - [**webcam**](/reference/components/camera/webcam/): USB cameras and built-in laptop cameras. Auto-detects available devices.
-- [**ffmpeg**](/reference/components/camera/ffmpeg/): a camera device, video file, or stream.
+- [**ffmpeg**](/reference/components/camera/ffmpeg/): a camera device, video file, or stream that `ffmpeg` can read. For RTSP IP cameras, prefer the `viam:viamrtsp` registry module listed under Registry modules.
 - [**transform**](/reference/components/camera/transform/): applies transformations (crop, resize, rotate, overlay) to another camera's output.
 - [**fake**](/reference/components/camera/fake/): a camera model for testing.
 - [**image_file**](/reference/components/camera/image-file/): serves color or depth image frames from a file path.
@@ -48,9 +48,15 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 2. Select **Configuration block**.
 3. Search for the model that matches your camera:
    - For a USB webcam or built-in laptop camera, search for **webcam**.
-   - For an IP camera that supports RTSP, search for **ffmpeg**.
+   - For an IP camera that supports RTSP, search for **rtsp** and pick one of the `viam:viamrtsp` models (`rtsp` autodetects codec; specific codecs like `rtsp-h264` or `rtsp-h265` are also available).
    - For an Intel RealSense depth camera, search for **realsense**.
 4. Name your camera (this guide uses `my-camera`) and click **Create**.
+
+{{< alert title="Finding your camera" color="tip" >}}
+
+For network cameras you can't locate manually, use a discovery module to find them for you: `viam:viamrtsp` supports ONVIF and UPnP discovery for RTSP cameras, and vendor-specific modules like `viam:realsense` and `viam:orbbec` discover their own cameras over USB.
+
+{{< /alert >}}
 
 ### 3. Configure camera attributes
 
@@ -97,7 +103,7 @@ The test panel uses the exact same APIs your code will use, so if the camera wor
 
 1. Find your camera component in the configuration view.
 2. Expand the **Test** section at the bottom of the component panel.
-3. Click **Toggle stream** to see a live video feed from the camera.
+3. Open the refresh-interval dropdown and select **Live** to see a live video feed from the camera.
 4. Click **Get image** to capture a single frame.
 
 You should see a live feed from the camera.
@@ -108,7 +114,7 @@ Capture an image from your camera programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 
 When you run the code below, it saves an image file to your current directory. Check that the image shows what the camera sees.
 {{< tabs >}}

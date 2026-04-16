@@ -24,10 +24,9 @@ Because the API is entirely model-defined, generic components almost always
 come from **modules in the registry** (or modules you write yourself). The
 module author defines what commands are supported and what they do.
 
-Use generic when no other component type fits. If your hardware produces
-images, use [camera](/hardware/common-components/add-a-camera/). If it produces
-readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard
-types give you data capture, test panels, and SDK support automatically. Browse available generic models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic).
+Use generic when no other component type fits. If your hardware produces images, use [camera](/hardware/common-components/add-a-camera/). If it produces readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard types give you typed SDK methods like `GetImage` or `GetReadings`, richer test-panel controls tailored to the component, and motion or vision services that know how to work with them. Generic exposes only `DoCommand`, so callers have to know the module-specific command shape.
+
+Browse available generic models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic).
 
 The `fake` built-in model echoes commands back for testing.
 
@@ -76,7 +75,7 @@ Send a command to the generic component and read the response.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 With the fake model, you'll see your command echoed back. With a real module, the response depends on what commands the module supports.
 {{< tabs >}}
 {{% tab name="Python" %}}

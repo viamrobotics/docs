@@ -14,12 +14,11 @@ Add a servo to your machine's configuration so you can control its angular posit
 
 ## Concepts
 
-A servo moves to a specific angle (typically 0-180 degrees) and holds that
-position. Unlike a motor, which spins continuously, a servo provides precise
-angular positioning through PWM control.
+A servo moves to a specific angle (typically 0-180 degrees) and holds that position. Continuous-rotation servos also exist; they use the same `Move` API, but the angle value maps to speed and direction rather than absolute position. Check the specific servo model's reference page for how it interprets the value.
 
-The servo component uses a single PWM-capable pin on a
-[board component](/hardware/common-components/add-a-board/). Browse all available servo models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
+The built-in `gpio` servo model uses a single PWM-capable pin on a [board component](/hardware/common-components/add-a-board/). Other servo models in the registry support serial, I2C, or dedicated servo-driver boards.
+
+Browse all available servo models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
 
 ### Built-in models
 
@@ -81,7 +80,8 @@ the pulse width:
 
 Click **Save**, then expand the **Test** section.
 
-- Use the angle slider to move the servo to different positions.
+- Enter a value in the **Desired angle (º)** field (the built-in `gpio` model accepts 0-180), then click **Execute** to move the servo.
+- Use the **Zero** or **Current position** buttons to quickly fill the input.
 - The servo should move smoothly and hold its position.
 
 ## Try it
@@ -90,7 +90,7 @@ Sweep the servo through a range of positions.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 If you're using real hardware, you'll see the servo sweep through positions when you run the code below.
 {{< tabs >}}
 {{% tab name="Python" %}}

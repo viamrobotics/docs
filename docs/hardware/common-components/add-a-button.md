@@ -10,14 +10,13 @@ aliases:
   - /hardware-components/add-a-button/
 ---
 
-Add a button to your machine's configuration so you can detect and respond to button presses from the Viam app and from code.
+Add a button to your machine's configuration so you can trigger button presses programmatically and represent a physical button in your machine config.
 
 ## Concepts
 
-A button component represents a momentary push button. The API is intentionally
-simple. It exposes a single `Push` method that triggers the button. Physical button
-hardware typically comes from a module in the [Viam registry](https://app.viam.com/registry?type=component&subtype=button) that reads a GPIO pin
-and exposes it as a button component.
+A button component represents a momentary push button. The API is intentionally simple: a single `Push` method that simulates pressing the button. The button API does not listen for or report incoming presses; a module can still react to real presses internally, but from SDK code you only initiate presses.
+
+Physical button hardware typically comes from a module in the [Viam registry](https://app.viam.com/registry?type=component&subtype=button) that watches a GPIO pin.
 
 The `fake` built-in model is useful for testing code without physical hardware.
 
@@ -70,7 +69,7 @@ Push the button programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 When you run the code below, the button's Push method fires. With a physical button connected with a module, this triggers whatever action the module defines.
 {{< tabs >}}
 {{% tab name="Python" %}}

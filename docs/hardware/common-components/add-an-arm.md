@@ -128,10 +128,11 @@ Read the arm's current joint positions, move two joints, and confirm the positio
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 
 If you're using a real arm, you'll see it physically move when you run the code below.
 With a fake arm, the positions update in memory without physical motion, but you can watch the joint values update in real time by expanding the **test** section on the arm's component card in the **CONFIGURE** tab.
+The **3D Scene** tab on your machine's page renders the arm's live pose, which also helps visualize simulated motion.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -276,11 +277,10 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
 
 {{< expand "Cannot connect to arm" >}}
 
-- Verify the arm is powered on and connected to the same network as your
-  machine.
+- Check the **Error logs** section on the arm's configuration card for initialization failures, and the **LOGS** tab for anything else `viam-server` printed on startup.
+- Verify the arm is powered on and connected to the same network as your machine.
 - Ping the arm's IP address from the machine to confirm network connectivity.
-- Check that no other software (manufacturer's own control software) has an
-  exclusive connection to the arm.
+- Check that no other software (manufacturer's own control software) has an exclusive connection to the arm.
 
 {{< /expand >}}
 

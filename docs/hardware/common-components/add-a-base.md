@@ -23,7 +23,7 @@ This page covers the `wheeled` model. You configure your motors first, then the 
 For accurate distance and angle calculations, the `wheeled` model needs two physical measurements:
 
 - **Wheel circumference**: how far the robot travels per wheel revolution.
-- **Width**: the distance between the left and right wheel centers.
+- **Track width** (`width_mm` in the config): the distance between the left and right wheel centers. Not the outside edges of the wheels, and not the robot's overall body width.
 
 ### Built-in models
 
@@ -81,8 +81,8 @@ motor names for that side:
 
 ```json
 {
-  "left": ["front-left-motor", "rear-left-motor"],
-  "right": ["front-right-motor", "rear-right-motor"],
+  "left": ["front-left-motor", "mid-left-motor", "rear-left-motor"],
+  "right": ["front-right-motor", "mid-right-motor", "rear-right-motor"],
   "wheel_circumference_mm": 220,
   "width_mm": 300
 }
@@ -110,7 +110,7 @@ Drive the base forward, spin it, and stop.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 If you're using real hardware, you'll see the robot drive forward and spin when you run the code below.
 With a fake base, the commands complete without physical motion.
 {{< tabs >}}

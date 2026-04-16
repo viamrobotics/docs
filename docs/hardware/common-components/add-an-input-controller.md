@@ -108,7 +108,7 @@ List available controls and print events as they happen.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
 Copy the **API key** and **API key ID**.
-Copy the **machine address** from the same tab.
+Copy the **machine address** from the **Connection details** section on the same tab.
 When you run the code below, press buttons on your gamepad and watch the events print in real time.
 {{< tabs >}}
 {{% tab name="Python" %}}
