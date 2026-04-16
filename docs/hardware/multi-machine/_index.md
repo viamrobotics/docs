@@ -1,7 +1,7 @@
 ---
 linkTitle: "Multi-machine setups"
 title: "Multi-machine setups"
-weight: 11
+weight: 15
 layout: "docs"
 type: "docs"
 no_list: true
