@@ -27,7 +27,6 @@ For accurate distance and angle calculations, the `wheeled` model needs two phys
 
 ### Built-in models
 
-- [`boat`](/reference/components/base/boat/) — _(no description)_.
 - [`fake`](/reference/components/base/fake/) — A model used for testing, with no physical hardware.
 - [`sensor-controlled`](/reference/components/base/sensor-controlled/) — Wrap other base models and add feedback control using a movement sensor.
 - [`wheeled`](/reference/components/base/wheeled/) — Supports mobile wheeled robotic bases with motors on both sides for differential steering.

@@ -35,9 +35,7 @@ It supports kinematics for several arm models (ur5e, ur20, xarm6, xarm7, lite6).
 
 ### Built-in models
 
-- [`eva`](/reference/components/arm/eva/) — _(no description)_.
 - [`fake`](/reference/components/arm/fake/) — A model used for testing, with no physical hardware.
-- [`yahboom-dofbot`](/reference/components/arm/yahboom-dofbot/) — _(no description)_.
 
 ### Registry modules
 
