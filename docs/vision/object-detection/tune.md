@@ -42,7 +42,9 @@ Set `xmin_ymin_xmax_ymax_order` to the permutation that reorders the model's out
 }
 ```
 
-The example above says "my model's output position 1 holds xmin, position 0 holds ymin, position 3 holds xmax, position 2 holds ymax." Use `[0, 1, 2, 3]` (the default) when the model already outputs in `xmin, ymin, xmax, ymax` order.
+The example above says "my model's output position 1 holds xmin, position 0 holds ymin, position 3 holds xmax, position 2 holds ymax." Use `[0, 1, 2, 3]` when the model already outputs in `xmin, ymin, xmax, ymax` order.
+
+If you leave this attribute unset, the vision service first reads the box order from the model's output-tensor metadata (if the model publishes it). If no metadata is available, it falls back to `[1, 0, 3, 2]` (the YOLO-style `[ymin, xmin, ymax, xmax]` default). Set `xmin_ymin_xmax_ymax_order` explicitly when your model doesn't publish metadata AND doesn't follow that convention.
 
 **How to diagnose:** Run the Control tab overlay and compare box locations to what is actually in the image. If boxes look rotated, mirrored, or shifted by half the frame, this is almost always the coordinate order.
 
