@@ -16,18 +16,17 @@ aliases:
   - /motion-planning/motion-how-to/
 ---
 
-Your robot arm needs to move from one position to another without colliding with
-the table, the walls, or itself. Computing a collision-free path through 3D
-space means reasoning about the arm's kinematic model, the workspace geometry,
-and any constraints on how the arm should move.
+Your robot arm needs to move from one pose to another without colliding with
+the table, the walls, or itself. To move safely, the planner must reason about
+the arm's kinematic model, the workspace geometry, and the motion constraints
+you impose.
 
-Viam's motion service handles this for you. You describe the spatial layout of
-your workspace (the frame system) and any obstacles, then tell the arm where to
-go. The planner finds a safe path and executes it.
+Viam's motion service plans a collision-free path and executes it, using a
+frame system you describe and obstacles you declare. You tell it where to go;
+it handles the search.
 
-This section covers motion planning for arms, gantries, and other kinematic
-chains. For GPS-based autonomous navigation with mobile bases, see
-[Navigation](/navigation/).
+This section covers motion planning for arms and gantries. For GPS-based
+autonomous navigation with mobile bases, see [Navigation](/navigation/).
 
 ## Start here
 
@@ -41,26 +40,15 @@ fake components so you can run it on any machine:
 
 ## How it works
 
-Motion planning in Viam connects several pieces:
+Each `Move` request to the motion service runs the same pipeline: it reads
+the [frame system](/motion-planning/frame-system/) to know where every
+component sits, reads the arm's [kinematic model](/motion-planning/reference/kinematics/)
+to know what joint configurations are reachable, applies any
+[obstacles](/motion-planning/obstacles/) and
+[constraints](/motion-planning/move-an-arm/constraints/) you declare, and
+returns a collision-free path from the current pose to your target.
 
-1. **Frame system**: a coordinate tree that tracks where every component is in
-   space. The frame system lets you specify target positions in any frame and
-   translates between them automatically.
-
-2. **Kinematic model**: a description of the arm's joints and links that tells
-   the planner what configurations are physically possible.
-
-3. **Obstacles**: geometry (boxes, spheres, capsules) that define regions the
-   arm must avoid.
-
-4. **Constraints**: rules about how the arm should move between poses, such as
-   keeping the end effector on a straight line or maintaining its orientation.
-
-5. **Motion service**: takes the frame system, kinematic model, obstacles, and
-   constraints and computes a collision-free path from the current pose to the
-   target.
-
-## Topic subsections
+## Core topics
 
 {{< cards >}}
 {{% card link="/motion-planning/frame-system/" noimage="true" %}}

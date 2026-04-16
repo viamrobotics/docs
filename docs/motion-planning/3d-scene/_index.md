@@ -8,25 +8,21 @@ no_list: true
 description: "Visualize your machine's frame system, geometries, and point clouds in an interactive 3D view."
 ---
 
-The **3D scene** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
-Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The 3D scene makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
+The **3D SCENE** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
+Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The **3D SCENE** tab makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
 
 The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame. Attached geometries render as translucent shapes, and point clouds from depth cameras render as colored point sets.
 
 ## The interface
 
-The tab has four main areas: a 3D viewport in the center, a World panel on the upper-left, a Details panel on the upper-right, and a Dashboard toolbar on top. The viewport is where you look; the other three are where you navigate, inspect, and change views.
+The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the **Dashboard toolbar** changes how the viewport renders.
 
-**3D viewport** (center): The main rendering area.
-You can orbit, pan, and zoom to view your frame system from any angle.
-Components appear as labeled coordinate axes, with attached geometries rendered as translucent shapes.
-Point clouds from cameras render as colored point sets.
-An XY grid provides spatial reference.
+**3D viewport** (center): the interactive rendering area. Orbit, pan, and zoom to see your frame system from any angle. Components appear as labeled coordinate axes; attached geometries render as translucent shapes; point clouds render as colored point sets. An XY grid provides spatial reference.
 
 **World panel** (floating, upper-left): A hierarchical list of every entity in the scene, titled **World**.
 The panel is always visible (it has no close button) but is draggable and resizable.
 The root node `World` mirrors your machine's world frame.
-Each row shows an expand caret, the entity name, and an eye toggle (click the eye, or select the row and press `H`, to hide or show that entity).
+Each row shows an expand caret, the entity name, and an eye toggle. Click the eye or select the row and press `H` to hide or show the entity.
 Click a row to select the entity; its details appear in the Details panel.
 
 **Details panel** (floating, upper-right): Shows the selected entity's spatial properties.
@@ -52,18 +48,19 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 
 ## Navigation controls
 
-| Action                   | Mouse             | Keyboard             |
-| ------------------------ | ----------------- | -------------------- |
-| Orbit (rotate view)      | Left-click drag   | Arrow keys           |
-| Pan                      | Right-click drag  |                      |
-| Zoom                     | Scroll wheel      | `R` (in) / `F` (out) |
-| Strafe camera            |                   | `W`/`A`/`S`/`D`      |
-| Select entity            | Left-click        |                      |
-| Deselect                 | Click empty space | `Escape`             |
-| Toggle camera mode       |                   | `C`                  |
-| Toggle entity visibility |                   | `H`                  |
+| Action                   | Mouse             | Keyboard              |
+| ------------------------ | ----------------- | --------------------- |
+| Orbit (rotate view)      | Left-click drag   | Arrow keys            |
+| Pan                      | Right-click drag  |                       |
+| Zoom                     | Scroll wheel      | `R` (in) / `F` (out)  |
+| Strafe camera            |                   | `W`/`A`/`S`/`D`       |
+| Select entity            | Left-click        |                       |
+| Deselect                 | Click empty space |                       |
+| Exit object view         |                   | `Escape`              |
+| Toggle camera mode       |                   | `C`                   |
+| Toggle entity visibility |                   | `H` (selected entity) |
 
-Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you are editing a value in the Details panel.
+Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you are editing a value in the Details panel. `H` only affects the currently selected or focused entity, so click an entity (or its row in the World panel) before pressing it.
 
 ## Settings
 
@@ -82,6 +79,23 @@ Settings are grouped by what they affect: connection, scene decoration, point cl
 
 You can drag and drop `.pcd`, `.ply`, or `.json` (scene snapshot) files directly onto the 3D viewport to load external data into the scene.
 This is useful for loading saved SLAM maps or point cloud captures for comparison with your live frame system.
+
+## Link related entities (HoverLink)
+
+HoverLink links two indexable entities so that hovering an item in one highlights the matching item in the other. When you select a point cloud or arrows entity (typically dropped PCD or PLY files), the Details panel shows an **Add Relationship** button to set this up.
+
+To add a HoverLink:
+
+1. Select a point cloud or arrows entity in the World panel.
+2. In the Details panel, click **Add Relationship**.
+3. Pick **HoverLink** as the relationship type.
+4. Pick a second entity from the **Entity** dropdown.
+5. Set an **Index mapping** formula. The default `index` maps point N in the source to point N in the target. Other expressions over `index` map between non-aligned datasets.
+6. Click **Add**.
+
+After the link is added, hovering a point in the source entity highlights the matching point in the target entity (and updates the hover tooltip with both points' positions). Existing links appear under **Relationships** in the Details panel and have per-link remove buttons.
+
+This is useful for comparing point clouds that should align (a registered scan against a transformed version, ground-truth points against predicted points) without flipping back and forth between separate views.
 
 ## How-to guides
 

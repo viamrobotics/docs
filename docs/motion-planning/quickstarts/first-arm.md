@@ -14,6 +14,12 @@ machine that has `viam-server`; no physical arm required. When you
 have a real UR5e (or any other arm with a Viam module) later, the only
 change is the component model name in config.
 
+You could drive an arm by writing joint angles directly. The motion
+service adds the layer that matters as soon as you care about
+obstacles, frames other than the arm's base, or coordinating an arm
+with a gripper and a camera. This quickstart gives you the minimum
+working version so later sections can add those pieces one at a time.
+
 By the end you will have:
 
 - A fake arm running on your machine.
@@ -86,8 +92,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-Replace the three placeholder strings with your machine's address and
-API key values from the **CONNECT** tab. Then run:
+Replace `YOUR-API-KEY`, `YOUR-API-KEY-ID`, and `YOUR-MACHINE-ADDRESS`
+with the values from the **CONNECT** tab. Then run:
 
 ```sh
 pip install viam-sdk
@@ -105,8 +111,10 @@ What matters is that the arm responds and returns a pose.
 
 ## 4. Command a motion
 
-Now extend the script to plan and execute a motion through the motion
-service. Replace the `main` function with:
+You now have a script that connects to the machine and reads the arm's
+pose. Next you will add the motion service call that plans a path and
+executes it, plus a verification read after the motion completes.
+Replace the `main` function with:
 
 ```python
 async def main():

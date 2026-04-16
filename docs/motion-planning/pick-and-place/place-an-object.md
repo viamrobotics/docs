@@ -19,8 +19,11 @@ just set down.
 
 ## Prerequisites
 
-- Object already grasped (see [Pick an Object](/motion-planning/pick-and-place/pick-an-object/))
-- Placement location known in world coordinates
+- Object already grasped (see [Pick an object](/motion-planning/pick-and-place/pick-an-object/)).
+- Placement location known in world coordinates.
+
+The code below continues from [Pick an object](/motion-planning/pick-and-place/pick-an-object/);
+`motion_service`, `gripper`, and `world_state` are already defined in that script.
 
 ## Steps
 
@@ -64,7 +67,7 @@ a detected surface, set it from the vision result.
 # Place: at the surface.
 # Set z to the height of the placement surface in your workspace.
 # For example, if you detected the target location, use its z coordinate.
-SURFACE_HEIGHT = 50  # mm, adjust for your setup
+SURFACE_HEIGHT = 50  # mm: world-frame z of the surface plus half the object's height
 place_pose = PoseInFrame(
     reference_frame="world",
     pose=Pose(
@@ -117,19 +120,20 @@ print("Retreated from placement")
 
 - **Keep the object level on the way down.** A carried object with an open
   top (a cup, an open box) spills if the gripper tilts during descent. Add an
-  `OrientationConstraint` with a tight tolerance (3-5 degrees) for the
-  descent segment; remove it for the retreat.
+  [`OrientationConstraint`](/motion-planning/move-an-arm/constraints/),
+  which locks the end effector's tilt, with a tolerance of 3 to 5 degrees
+  for the descent segment; remove it for the retreat.
 - **Retreat straight up.** Any lateral motion during retreat can catch the
   object the gripper just released. Plan the retreat pose with the same x
   and y as the place pose and only the z raised.
 - **Update `WorldState` after release.** The placed object is now a static
-  obstacle. If the next motion passes near the placement location, add the
-  object's footprint to `WorldState.obstacles` so the planner routes around
-  it.
+  obstacle. If the next motion passes near the placement location, add a
+  `Geometry` matching the placed object to `WorldState.obstacles` so the
+  planner routes around it.
 
 ## What's next
 
-- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
   the pick half of the pick-and-place workflow.
 - [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   track plan status during execution.

@@ -138,7 +138,57 @@ Geometry is centered on the frame's origin by default. You can add a
 it relative to the frame.
 
 For detailed information about obstacle geometry, see
-[Define Obstacles](/motion-planning/obstacles/).
+[Define obstacles](/motion-planning/obstacles/).
+
+## Edit a frame in the Viam app
+
+To configure a frame, open the **CONFIGURE** tab in the Viam app, click
+the component's card in the sidebar, and click **Frame**. The Frame
+section is a JSON editor with no form, parent dropdown, or
+geometry-type picker. Edit the JSON directly to set parent, translation,
+orientation, and any geometry. Save with the **Save** button (or
+`⌘`/`Ctrl`+`S`).
+
+A typical frame configuration looks like this:
+
+```json
+{
+  "parent": "world",
+  "translation": { "x": 0, "y": 0, "z": 0 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+  }
+}
+```
+
+After saving, the [3D SCENE tab](/motion-planning/3d-scene/) renders the
+frame at its computed world pose so you can verify visually. For
+hardware-specific walkthroughs (table-mounted arm with gripper and
+camera, mobile manipulator, mobile base with sensors), see the cards at
+the bottom of this page.
+
+### Verify with TransformPose
+
+To verify a frame programmatically, transform a known point in the
+component's frame to the world frame and compare against a physical
+measurement.
+
+For example, transform the gripper's origin into the world frame; the
+result should match where the gripper physically sits when the arm is
+at its current joint configuration:
+
+```python
+gripper_origin = PoseInFrame(
+    reference_frame="my-gripper",
+    pose=Pose(x=0, y=0, z=0, o_x=0, o_y=0, o_z=1, theta=0),
+)
+gripper_in_world = await machine.transform_pose(gripper_origin, "world")
+print(f"Gripper in world: x={gripper_in_world.pose.x:.1f}, y={gripper_in_world.pose.y:.1f}, z={gripper_in_world.pose.z:.1f}")
+```
+
+If the printed coordinates do not match the physical measurement, check
+the translation and orientation values in the frame configuration.
 
 ## TransformPose
 
@@ -185,6 +235,15 @@ Common uses:
 - **Verify frame configuration**: transform a component's origin to the world frame and check that the result matches its physical position.
 - **Convert detections**: transform a point detected in a camera frame to world coordinates so an arm can reach it.
 - **Compare across frames**: when two components report positions in different frames, transform both to a common frame before comparing.
+
+## Verify visually with the 3D SCENE tab
+
+The [3D SCENE tab](/motion-planning/3d-scene/) renders your frame hierarchy in
+3D: every configured component appears at its computed world pose, with
+geometry and axes drawn. Open it after a configuration change to confirm the
+arm is mounted on the table, the camera is above the arm, and any obstacles
+sit where you expect. Most frame configuration mistakes (wrong parent, wrong
+axis, missing rotation) show up immediately in this view.
 
 ## Verify with the CLI
 

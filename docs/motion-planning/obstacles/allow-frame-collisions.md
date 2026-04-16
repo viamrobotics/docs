@@ -126,6 +126,13 @@ For most allow-list use cases, the parent component name (`"my-arm"`,
 know the exact sub-frame and other sub-frames must continue to be
 collision-checked.
 
+Passing the same name for both `frame1` and `frame2` (for example
+`AllowedFrameCollisions(frame1="my-arm", frame2="my-arm")`) disables all
+self-collision checks within that component: every link is whitelisted
+against every other link. Use this when the kinematic model reports
+false self-collisions between adjacent links but the arm is mechanically
+safe.
+
 ## Use case: arm detects itself through a vision service
 
 The single most common reason to reach for `CollisionSpecification`: an
@@ -184,9 +191,9 @@ overlaps are expected.
 
 ## Use case: gripper grasping an object
 
-A grasp _requires_ contact between the gripper and the object. Without a
-`CollisionSpecification` allowing it, the planner rejects the final approach
-as a collision. Allow the gripper-object pair and the plan completes.
+The textbook use case: a pick motion ends with the gripper touching the
+target. Without an allow, the planner rejects the final approach as a
+collision; allow the gripper-object pair and the plan completes.
 
 ```python
 collision_spec = CollisionSpecification(
@@ -202,15 +209,18 @@ collision_spec = CollisionSpecification(
 After the grasp, if you want to move the gripper plus its held object
 as one unit, attach the object to the gripper frame system through
 `WorldState.transforms` on subsequent Move requests. See
+[Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/)
+for the runtime-attach/detach pattern and
 [Define obstacles: passive objects attached to a component](/motion-planning/obstacles/#passive-objects-attached-to-a-component)
 for the permanent-attachment pattern.
 
 ## Use case: adjacent arm links whose geometries overlap
 
-Some kinematic models have simplified collision geometry that causes
-adjacent links to register as colliding in certain joint configurations,
-even though the real hardware does not. If you are sure the overlap is
-a modeling artifact and not a real collision:
+This is the rarest of the three cases, and the one most likely to mask a
+real problem. Reach for it only when you are sure the overlap is a
+modeling artifact (simplified collision geometry on adjacent links that
+the real hardware does not actually collide with) and not a genuine
+collision:
 
 ```python
 collision_spec = CollisionSpecification(
@@ -232,7 +242,7 @@ silencing them can mask real hardware problems.
 2. Plan a motion you expect to fail for other reasons (target inside an
    unrelated obstacle, target outside reach). The planner should still
    reject those.
-3. Visually confirm the motion in the 3D scene tab before running on
+3. Visually confirm the motion in the **3D SCENE** tab before running on
    hardware. See
    [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/).
 
@@ -279,4 +289,4 @@ geometry is usually the right answer.
 - [Define obstacles](/motion-planning/obstacles/): the obstacle geometry
   that the planner checks against.
 - [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/):
-  visualize frame overlaps in the 3D scene.
+  visualize frame overlaps in the **3D SCENE** tab.

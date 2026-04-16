@@ -10,7 +10,7 @@ aliases:
   - /appendix/apis/services/motion/
 ---
 
-The motion service exposes the methods below for planning and executing component motion. Most methods are implemented only by module-based motion services; the builtin service supports `Move`, `DoCommand`, and `GetStatus`.
+The motion service exposes the methods below for planning and executing component motion. Most methods are implemented only by module-based motion services. The builtin service supports `Move`, `DoCommand`, and `GetStatus`, and nothing else.
 
 {{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 
@@ -36,7 +36,7 @@ Plans and executes motion on a SLAM map.
 
 ### MoveOnGlobe
 
-Plans and executes motion to a GPS coordinate. Use the [navigation service](/navigation/) for GPS-based navigation.
+Plans and executes motion to a GPS coordinate. Most GPS use cases go through the [navigation service](/navigation/), which wraps `MoveOnGlobe` with replanning and configuration.
 
 ### GetPlan
 
@@ -52,7 +52,7 @@ Stops an executing plan.
 
 ### GetPose (deprecated)
 
-Returns a component's pose. Deprecated: the robot service's `GetPose` replaces it. (Python callers currently still use this motion-service method; see the frame system API reference.)
+Returns a component's pose. Deprecated in favor of the robot service's `GetPose`. Python callers still use this motion-service method today; see the [Frame system API reference](/motion-planning/reference/frame-system-api/).
 
 ### DoCommand
 

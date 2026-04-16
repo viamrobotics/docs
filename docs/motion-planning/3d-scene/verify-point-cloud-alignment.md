@@ -9,7 +9,7 @@ aliases:
   - /motion-planning/3d-scene/inspect-point-clouds/
 ---
 
-Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The 3D scene tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.
+Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The **3D SCENE** tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.
 
 Misalignment usually means one of two things: the camera's frame offset is wrong, or the camera itself has a problem. Finding that out now, before a motion plan runs or an ML detector ships, costs minutes; finding it out later costs a day of debugging a downstream pipeline.
 
@@ -21,7 +21,7 @@ Misalignment usually means one of two things: the camera's frame offset is wrong
 
 ## Steps
 
-### 1. Open the 3D scene tab
+### 1. Open the 3D SCENE tab
 
 Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 Your machine must be online for live point cloud data.
@@ -59,3 +59,23 @@ If the point cloud is in the right place but the data looks wrong, look for comm
 
 Data quality problems are camera issues, not frame system issues.
 Adjust the camera's configuration, mounting angle, or lighting conditions to address them.
+
+## What's next
+
+The motion planner does not consume raw point clouds directly: a vision
+service with a 3D segmenter (such as the
+[`obstacles_pointcloud` module](https://app.viam.com/module/viam/obstacles-pointcloud))
+turns point clouds into bounded 3D objects, and you feed those to the
+planner.
+
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
+  uses `GetObjectPointClouds` to localize the target the arm should
+  grasp on a single `Move` call.
+- [Define obstacles](/motion-planning/obstacles/): the geometry types
+  the motion planner accepts, including the
+  [`WorldState.obstacles`](/motion-planning/obstacles/#3-define-obstacles-programmatically-with-worldstate)
+  pattern for per-call dynamic obstacles.
+- [ObstacleDetector](/motion-planning/reference/motion-configuration/#obstacledetector):
+  configures the motion service to poll a vision service during
+  `MoveOnMap` and `MoveOnGlobe`, so detections trigger replans without
+  re-issuing `Move`.

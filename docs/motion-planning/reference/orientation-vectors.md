@@ -12,7 +12,15 @@ aliases:
   - /operate/reference/orientation-vector/
 ---
 
-When you specify a pose in Viam (in frame system configuration, a motion planning destination, or any other `Pose` payload), the orientation is expressed as one of five rotation formats. This page lists those formats, their schemas, common orientations, and validation rules.
+When you write a `Pose` payload (in frame system configuration, a motion planning destination, or anywhere else), the orientation format you choose affects validation and gimbal-lock behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.
+
+Viam's default format, the orientation vector (OV), is structured similarly
+to the
+[axis-angle representation](https://en.wikipedia.org/wiki/Axis%E2%80%93angle_representation)
+but interpreted differently: `(x, y, z)` is the unit vector along which the
+component points (for an arm, the direction the end effector points from the
+origin), and `th` is the rotation around that pointing direction. The
+pointing direction and the rotation axis coincide.
 
 ## Supported orientation formats
 
@@ -32,9 +40,13 @@ The orientation vector format (axis plus angle in degrees). Use this for most co
 
 - `x`, `y`, `z`: components of the rotation axis vector (must be non-zero;
   normalized internally)
-- `th`: rotation angle in degrees
+- `th`: rotation angle in degrees. Values wrap every 360 degrees, so
+  `th: 370` and `th: 10` describe the same orientation.
 
 Default (identity): `{"x": 0, "y": 0, "z": 1, "th": 0}`. This represents no rotation.
+
+The axis must be a non-zero vector. `(x, y, z) = (0, 0, 0)` is a
+singularity: the rotation axis is undefined and validation rejects it.
 
 ### `ov_radians`
 
@@ -79,8 +91,6 @@ Rotation axis plus angle in radians, using the R4AA (Rotation 4 Axis Angle) repr
 - `th`: rotation angle in radians
 
 Default: `{"x": 0, "y": 0, "z": 1, "th": 0}`.
-
-The axis must have a non-zero norm. A zero-norm axis causes a runtime error.
 
 ### `quaternion`
 

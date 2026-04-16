@@ -14,17 +14,17 @@ aliases:
 `MoveOnMap` and `MoveOnGlobe` return immediately with an `ExecutionID` and run
 the actual motion in the background. Your code has to poll that execution to
 learn when it completes, fails, or stops. This page gives the polling pattern
-in Go and Python. For the built-in `Move`, which blocks until the motion
-finishes, the pattern collapses to a try/except: covered at the end.
+in Go and Python.
 
-## Before you start
+Neither RPC is implemented by the built-in motion service: the built-in
+returns "not supported" for both. You need the
+[navigation service](/navigation/), which calls `MoveOnGlobe` internally,
+or a motion-service module that provides them. If you are using the
+built-in `Move` instead (which blocks until completion), skip to the
+last section.
 
-- **`MoveOnMap` and `MoveOnGlobe` are not implemented by the built-in motion
-  service.** You need the navigation service (which calls them internally) or
-  a motion-service module that provides them. The built-in motion service
-  returns "not supported" for both.
-- For background on the methods and states, see
-  [Plan monitoring](/motion-planning/reference/plan-monitoring/).
+For background on the methods and states, see
+[Plan monitoring](/motion-planning/reference/plan-monitoring/).
 
 ## The polling pattern
 
@@ -145,6 +145,80 @@ err = motionService.StopPlan(ctx, motion.StopPlanReq{ComponentName: "my-base"})
 
 {{% /tab %}}
 {{< /tabs >}}
+
+### Safety-stop pattern
+
+A non-blocking motion runs independently of your polling loop. Treat `StopPlan`
+as the cut-off switch: any condition your application reads (a safety
+button, an external sensor, a higher-level task abort) should call
+`StopPlan` directly without waiting for the polling loop to notice. Run
+the safety check and the polling loop concurrently so either can call
+`StopPlan` without waiting on the other.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+# `safety_condition_triggered()` is your application-specific check
+# (a button, a sensor reading, an external abort signal).
+async def watch_for_abort(motion_service, component_name):
+    while True:
+        if await safety_condition_triggered():
+            await motion_service.stop_plan(component_name=component_name)
+            return
+        await asyncio.sleep(0.1)
+
+# Run the poll loop and the watchdog concurrently. The first task to
+# finish wins; cancel the other so it does not run forever.
+poll_task = asyncio.create_task(
+    poll_until_terminal(motion_service, "my-base", execution_id)
+)
+watch_task = asyncio.create_task(
+    watch_for_abort(motion_service, "my-base")
+)
+done, pending = await asyncio.wait(
+    {poll_task, watch_task}, return_when=asyncio.FIRST_COMPLETED,
+)
+for task in pending:
+    task.cancel()
+```
+
+Wrap the polling logic in `poll_until_terminal(motion_service, component_name, execution_id)` (the `while True` body from the polling pattern above).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// Run the poll loop and the watchdog in separate goroutines.
+watchCtx, cancelWatch := context.WithCancel(ctx)
+defer cancelWatch()
+
+go func() {
+    ticker := time.NewTicker(100 * time.Millisecond)
+    defer ticker.Stop()
+    for {
+        select {
+        case <-watchCtx.Done():
+            return
+        case <-ticker.C:
+            if safetyConditionTriggered() {
+                _ = motionService.StopPlan(ctx, motion.StopPlanReq{
+                    ComponentName: "my-base",
+                })
+                return
+            }
+        }
+    }
+}()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+After `StopPlan` returns, the plan's terminal state transitions to
+`STOPPED`. The polling loop then exits on the next `GetPlan` cycle. If
+you call `StopPlan` after a plan has already reached a terminal state,
+behavior depends on the module; check the motion-service module's docs.
 
 ## Replanning and ExecutionID
 

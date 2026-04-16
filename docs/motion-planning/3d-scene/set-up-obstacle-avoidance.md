@@ -7,7 +7,7 @@ type: "docs"
 description: "Visualize and adjust obstacle geometry so the motion planner routes around physical objects."
 ---
 
-The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, or capsules positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The 3D scene tab lets you see what the planner sees, so you can check coverage before running a plan.
+The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, or capsules positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The **3D SCENE** tab lets you see what the planner sees, so you can check coverage before running a plan.
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ The motion planner avoids obstacles only if it knows about them, and it knows ab
 
 ## Visualize existing obstacles
 
-### 1. Open the 3D scene tab
+### 1. Open the 3D SCENE tab
 
 Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 
@@ -26,7 +26,7 @@ Navigate to your machine in the [Viam app](https://app.viam.com) and click the *
 Obstacle geometries appear as translucent shapes in the viewport and as child rows under their parent frame in the **World** panel.
 Each geometry is positioned according to its frame configuration: its location is defined by a translation and orientation relative to a parent frame.
 
-There is no separate "obstacles" list; toggle an obstacle's visibility with the eye icon on its row in the World panel, or select the row and press `H`.
+Obstacles do not get their own list. To toggle an obstacle's visibility, click the eye icon on its row in the World panel, or select the row and press `H`.
 
 Click an obstacle in the scene or in the World panel to see its details:
 
@@ -46,27 +46,19 @@ Check that:
 
 ## Add or adjust obstacles
 
-Obstacles are defined in the motion service configuration or passed as a `WorldState` parameter to `Move` requests.
-For static obstacles (tables, walls, posts), define them in the configuration so they persist across motion plans.
+Static obstacles are defined in the component frame configuration. See
+[Define obstacles](/motion-planning/obstacles/) for the geometry types,
+JSON schema, and worked examples. The
+[geometry types table](/motion-planning/obstacles/#geometry-types) on
+that page gives recommendations for which type to use for which physical
+object.
 
-See [Define obstacles](/motion-planning/obstacles/) for the full configuration reference, including JSON examples for each geometry type.
-
-After changing obstacle configuration, return to the 3D scene tab to verify the changes.
-The scene reflects the current saved configuration.
-
-## Choose the right geometry type
-
-| Physical object  | Recommended geometry | Notes                                                                                 |
-| ---------------- | -------------------- | ------------------------------------------------------------------------------------- |
-| Table or shelf   | Box                  | Match the surface dimensions. Include thickness if the arm could approach from below. |
-| Post or column   | Capsule              | Set the radius to match the column width, length to match the height.                 |
-| Round obstacle   | Sphere               | Use the bounding radius. Simple and fast for collision checking.                      |
-| Wall or barrier  | Box                  | Use a thin box with large x and z dimensions.                                         |
-| Irregular object | Box (oversized)      | Use the bounding box of the object. Oversizing is safer than undersizing.             |
+After changing obstacle configuration, return to the **3D SCENE** tab to
+verify the changes. The scene reflects the current saved configuration.
 
 ## Verify coverage
 
-After defining obstacles, run through this checklist in the 3D scene:
+After defining obstacles, run through this checklist in the **3D SCENE** tab:
 
 1. **Orbit to each workspace boundary.** If the arm can reach past the geometry into the physical object, the geometry is too small.
 2. **Check the floor and ceiling.** If the arm can reach the floor, add a floor plane. Do the same for ceiling-mounted setups.
@@ -75,6 +67,15 @@ After defining obstacles, run through this checklist in the 3D scene:
 
 ## Dynamic obstacles
 
-Static obstacles in configuration cover fixed workspace objects. For objects that move, pass geometry at runtime through the `WorldState` parameter of the `Move` request. Runtime geometry uses the same shape types as static geometry and appears in the 3D scene the same way.
+Static obstacles in configuration cover fixed workspace objects. For objects
+that move, pass geometry at runtime through the `WorldState` parameter of the
+`Move` request. See
+[Static vs dynamic obstacles](/motion-planning/obstacles/#static-vs-dynamic-obstacles)
+for the distinction and
+[Define obstacles programmatically with WorldState](/motion-planning/obstacles/#3-define-obstacles-programmatically-with-worldstate)
+for code examples.
 
-Pair a vision service with a camera to detect moving objects and feed the detections into `Move` as runtime obstacles. See the [motion service API reference](/motion-planning/reference/) for obstacle detectors.
+Dynamic obstacles passed to a single `Move` call are not drawn in the **3D
+SCENE** tab. To verify a dynamic obstacle's position visually, log its pose
+from your code or temporarily add a static geometry with the same dimensions
+to a component frame.

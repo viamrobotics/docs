@@ -8,13 +8,13 @@ description: "Use the 3D scene to inspect the frame system and obstacle geometry
 ---
 
 When a motion plan fails with a collision error or produces a path that
-does not look right, the 3D scene tab lets you inspect the static view
+does not look right, the **3D SCENE** tab lets you inspect the static view
 of the world the planner sees at the moment you look: configured frame
 positions, collision geometries, and the arm's current pose. Most
 motion planning failures come down to one of a few problems that are
 immediately visible in 3D.
 
-The 3D scene tab does not replay motion plans and has no timeline,
+The **3D SCENE** tab does not replay motion plans and has no timeline,
 scrubber, or plan-playback control. It is an inspector of the
 configured frame system and live component poses. If you need to watch
 a plan execute over time, poll `GetPlan` from code (see
@@ -28,7 +28,7 @@ step the arm to intermediate joint positions manually and reinspect.
 
 ## Diagnose the problem
 
-### 1. Open the 3D scene tab
+### 1. Open the 3D SCENE tab
 
 Navigate to your machine in the [Viam app](https://app.viam.com) and
 click the **3D SCENE** tab. The scene loads your current frame system
@@ -105,7 +105,7 @@ the frame pair with
 
 ## Common causes of motion plan failures
 
-| Symptom                       | Likely cause                                  | What to check in 3D scene                                                  |
+| Symptom                       | Likely cause                                  | What to check in 3D SCENE                                                  |
 | ----------------------------- | --------------------------------------------- | -------------------------------------------------------------------------- |
 | "no valid path found"         | Target unreachable or blocked by obstacles    | Is the target inside an obstacle? Is it within the arm's reach?            |
 | Collision error               | Obstacle geometry intersects the planned path | Are obstacles positioned correctly? Are they the right size?               |

@@ -278,9 +278,9 @@ viam machines part motion set-pose --part "my-machine-main" --component "my-arm"
 
 ## What's next
 
-- [Move with Constraints](/motion-planning/move-an-arm/move-with-constraints/):
+- [Move with constraints](/motion-planning/move-an-arm/move-with-constraints/):
   keep the end effector on a straight line or at a fixed orientation.
-- [Avoid Obstacles](/motion-planning/obstacles/avoid-obstacles/):
+- [Avoid obstacles](/motion-planning/obstacles/avoid-obstacles/):
   detailed obstacle configuration for complex workspaces.
-- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
   combine motion planning with vision and gripper control.

@@ -16,10 +16,17 @@ can plan around these obstacles, but only if you describe them in a
 bench setup, running a plan against it, and verifying that the planner actually
 routes around each obstacle.
 
+This page covers dynamic `WorldState` obstacles passed at call time. For
+permanent fixtures (the table the arm is bolted to, the back wall, a
+mounted tool), configure the obstacle in the component's frame
+configuration once instead of re-sending it on every `Move`. See
+[Define obstacles](/motion-planning/obstacles/).
+
 ## Prerequisites
 
-- [Frame system](/motion-planning/frame-system/) configured
-- [Obstacles concept](/motion-planning/obstacles/) understood
+- An arm or gantry configured on a machine.
+- [Frame system](/motion-planning/frame-system/) configured.
+- [Obstacles concept](/motion-planning/obstacles/) understood.
 
 ## Steps
 
@@ -139,25 +146,16 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 
 ### 3. Verify the planner is actually routing around obstacles
 
-The quickest sanity check is a before-and-after comparison. Run the motion with
-a box placed directly between the arm's start pose and the target, and the arm
-should take an indirect path around it. Remove the box, rerun the same motion,
-and the arm should take a more direct path. If the paths look the same with and
-without the obstacle, the `WorldState` is not reaching the planner.
-
-### 4. Use frame geometry for permanent obstacles
-
-`WorldState` is re-sent with every `Move` call, which is useful when obstacles
-come and go but wasteful for things that never move. Permanent obstacles (the
-table the arm is bolted to, the back wall, a mounted tool) belong in the
-component's frame configuration instead. The planner reads frame geometry from
-the config on every plan, so you describe those obstacles once and forget about
-them.
-
-See [Define Obstacles](/motion-planning/obstacles/) for the full configuration
-reference.
+You need a concrete test that proves `WorldState` reached the planner.
+A before-and-after with an obstacle placed between start and target works:
+run the motion with a box placed directly between the arm's start pose
+and the target, and the arm should take an indirect path around it.
+Remove the box, rerun the same motion, and the arm should take a more
+direct path. If the paths look the same with and without the obstacle,
+the `WorldState` is not reaching the planner.
 
 ## What's next
 
-- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/)
-- [Pick an Object](/motion-planning/pick-and-place/pick-an-object/)
+- [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/)
+- [Pick an object](/motion-planning/pick-and-place/pick-an-object/)
+- [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/) — when the planner rejects expected contact

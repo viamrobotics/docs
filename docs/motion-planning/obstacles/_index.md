@@ -31,30 +31,45 @@ dangerous motion.
 
 ## Concepts
 
+Five ideas make up Viam's obstacle model: the geometry types you have
+available, the sizing rule (Viam does not add clearance for you), the
+split between static and dynamic obstacles, the `WorldState` container
+that carries dynamic ones, and the passive-object pattern for things
+that move with a component but have no API. The same primitives also
+serve as keep-out zones; the planner treats them identically.
+
 ### Geometry types
 
 Viam supports five geometry types for defining obstacles. The three primitives
 are the most commonly used:
 
-| Type        | JSON `type` | Config fields                          | Best for                                      |
-| ----------- | ----------- | -------------------------------------- | --------------------------------------------- |
-| **Box**     | `"box"`     | `x`, `y`, `z` (dimensions in mm)       | Tables, walls, shelves, rectangular equipment |
-| **Sphere**  | `"sphere"`  | `r` (radius in mm)                     | Balls, rounded objects, keep-out zones        |
-| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, pipes, cylindrical objects             |
-| **Point**   | `"point"`   | (none, position only)                  | Single points in space                        |
-| **Mesh**    | `"mesh"`    | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files             |
+| Type        | JSON `type` | Config fields                          | Best for                                                                                                                                         |
+| ----------- | ----------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Box**     | `"box"`     | `x`, `y`, `z` (dimensions in mm)       | Tables, shelves, walls, rectangular equipment. Match surface dimensions; include thickness if the arm could approach from below.                 |
+| **Sphere**  | `"sphere"`  | `r` (radius in mm)                     | Balls, round obstacles, keep-out zones. Use the bounding radius.                                                                                 |
+| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, columns, pipes. Set the radius to match the column width and length to the height.                                                        |
+| **Point**   | `"point"`   | (none, position only)                  | Single points in space.                                                                                                                          |
+| **Mesh**    | `"mesh"`    | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files when no primitive fits. More expensive to collision-check; use a primitive bounding shape if accuracy permits. |
 
-Each geometry has a center point (pose) that defines where it sits in space. The
-pose is relative to a reference frame, typically the world frame. Geometry
-configs also support `translation` and `orientation` offsets to shift the shape
-relative to the frame origin.
+For irregular objects, use a Box that fully encloses the object (over-approximation is safer than under-approximation, even though it shrinks the planner's solution space).
 
-You do not need to model every surface detail of an obstacle. Approximate shapes
-that fully enclose the real object are safer and work better with the motion
-planner.
+Each geometry has a center point (pose) relative to a reference frame, typically the world frame. Geometry configs also support `translation` and `orientation` offsets to shift the shape relative to the frame origin. Capsule length must be at least twice the radius; a capsule whose length equals exactly twice the radius becomes a sphere.
 
-Capsule length must be at least twice the radius. A capsule whose length
-equals exactly twice the radius becomes a sphere.
+### Sizing obstacles safely
+
+The motion planner does not add clearance around obstacle geometries by
+default. The built-in collision buffer is effectively zero (1e-8 mm,
+present only to prevent numerical edge cases). To keep the robot clear
+of physical obstacles, size your obstacle geometries to fully enclose
+the real object plus any desired safety margin: 20 to 50 mm is a
+reasonable starting point for most arms. Approximate shapes that fully
+enclose the real object are safer and work better with the planner than
+ones that try to model every surface detail.
+
+You can override the buffer on a per-call basis by passing
+`collision_buffer_mm` in the `extra` map on a Move request. This adds
+the specified clearance in millimeters to every collision check for
+that call.
 
 ### Static vs dynamic obstacles
 
@@ -93,31 +108,19 @@ to the motion service at call time. It contains:
 
 You construct a WorldState in your code and pass it to the `Move` call.
 
-### Keep-out zones
+Transforms merge into the frame system by addition only. The motion
+service builds a fresh frame system for each call, appends the configured
+parts, then appends each transform from `WorldState.transforms`. A
+transform with a name that already exists in the configured frame system
+causes the call to fail with `frame with name "<name>" already in frame
+system`. Use transforms to introduce new frames (a detected object, a
+picked-up workpiece), not to rewrite the pose of an existing component.
 
-A keep-out zone is a region of space where the robot should never enter. Define
-it the same way as any other obstacle, as a box, sphere, or capsule positioned
-in the workspace. The motion planner treats it identically to a physical
-obstacle.
+{{< expand "Coming from ROS" >}}
 
-### Collision buffer
-
-The motion planner does not add clearance around obstacle geometries by
-default. The built-in collision buffer is effectively zero (1e-8 mm, present
-only to prevent numerical edge cases). To keep the robot clear of physical
-obstacles, size your obstacle geometries to fully enclose the real object plus
-any desired safety margin. 20 to 50 mm is a reasonable starting point for most
-arms.
-
-You can override the buffer on a per-call basis by passing
-`collision_buffer_mm` in the `extra` map on a Move request. This adds the
-specified clearance in millimeters to every collision check for that call.
-
-### How Viam's world model differs from ROS
-
-If you are coming from ROS, the big shift is this: Viam keeps no persistent
-world representation between motion-planning calls. There is no Octomap voxel
-grid, no costmap layer, no Planning Scene held between calls.
+Viam keeps no persistent world representation between motion-planning
+calls. There is no Octomap voxel grid, no costmap layer, no Planning
+Scene held between calls.
 
 Every `Move` starts with the `WorldState` you pass in. Static obstacles
 from component frame configs are always included; dynamic obstacles
@@ -127,9 +130,9 @@ one `Move` is forgotten by the next unless you pass it again.
 
 `MoveOnGlobe` and `MoveOnMap` do maintain some state during a single
 execution: configured obstacle detectors poll vision services and feed
-new detections to the planner for as long as the execution runs. But
-that state is bounded to the execution; it does not persist once the
-plan completes.
+new detections to the planner for as long as the execution runs. That
+state is bounded to the execution; it does not persist once the plan
+completes.
 
 Practical consequences:
 
@@ -137,13 +140,15 @@ Practical consequences:
   one `Move` and omit from the next simply disappears from the
   planner's world. There is no "clear costmap" step to run.
 - **Your application is the source of truth for the world.** Whatever
-  your code tracks about the environment — object positions, operator
-  no-go zones, expired grasp targets — is what the planner sees. The
+  your code tracks about the environment (object positions, operator
+  no-go zones, expired grasp targets) is what the planner sees. The
   motion service does not build its own picture over time.
-- **For dynamic obstacle avoidance with arms**, check the world between calls
-  and call `Move` again with an updated `WorldState`. `Move` does not
-  re-evaluate obstacles during execution. For the per-method behavior, see
-  [Replanning behavior](/motion-planning/replanning-behavior/).
+- **For dynamic obstacle avoidance with arms,** check the world between
+  calls and call `Move` again with an updated `WorldState`. `Move` does
+  not re-evaluate obstacles during execution. For the per-method
+  behavior, see [Replanning behavior](/motion-planning/replanning-behavior/).
+
+{{< /expand >}}
 
 ## Steps
 
@@ -461,8 +466,18 @@ Check the Viam app to see your obstacle geometry:
 3. Obstacles defined in component frame configurations appear as translucent
    shapes in the 3D view.
 
-Dynamic obstacles (defined through WorldState in code) do not appear in the
-3D SCENE tab because they only exist during the `Move` call.
+For the full visualization-and-verification workflow (orbit checks,
+coverage checklist, choosing the right geometry per physical object), see
+[Set up obstacle avoidance](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
+
+{{< alert title="Dynamic obstacles are not visible in 3D SCENE" color="note" >}}
+
+Obstacles defined through `WorldState` in code exist only for the duration of a
+single `Move` call and are not drawn in the 3D SCENE tab. To verify a dynamic
+obstacle's position, log its pose from your code or add a temporary static
+geometry with the same dimensions to the component frame configuration.
+
+{{< /alert >}}
 
 ## Try it
 

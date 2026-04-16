@@ -13,7 +13,7 @@ and [`MoveOnMap`](/motion-planning/reference/api/#moveonmap) calls to
 override defaults for a single execution. It is not used with `Move`,
 which is synchronous and does not expose per-call motion parameters.
 
-The navigation service uses `MoveOnGlobe` internally and builds a `MotionConfiguration` from its own attributes. The Navigation service correspondence table at the bottom of this page shows which navigation attribute maps to which `MotionConfiguration` field.
+The navigation service uses `MoveOnGlobe` internally and builds a `MotionConfiguration` from its own attributes; see [Navigation service correspondence](#navigation-service-correspondence) below for the mapping.
 
 ## Fields
 
@@ -41,7 +41,7 @@ planner for the remainder of the current execution.
 
 ## Units
 
-`plan_deviation_m` is meters at the API boundary. Internally the motion service stores it as millimeters (`PlanDeviationMM`), applying a x1000 conversion; the Go SDK exposes the millimeter form directly.
+`plan_deviation_m` is meters at the API boundary. The motion service stores the value internally as millimeters, and the Go SDK's `MotionConfiguration` struct exposes that millimeter form as `PlanDeviationMM`.
 
 ## Usage
 
@@ -103,10 +103,6 @@ executionID, err := motionService.MoveOnGlobe(ctx, motion.MoveOnGlobeReq{
 
 {{% /tab %}}
 {{< /tabs >}}
-
-The Go SDK's `MotionConfiguration` struct stores deviation as
-`PlanDeviationMM` (millimeters); the proto and Python SDK use
-`plan_deviation_m` (meters).
 
 ## Navigation service correspondence
 

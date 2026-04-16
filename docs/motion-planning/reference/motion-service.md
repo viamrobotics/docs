@@ -13,14 +13,9 @@ aliases:
 
 The motion service plans and executes component motion: arm end-effector moves, base moves across a SLAM map, and base moves to a GPS coordinate. The builtin service ships with every machine running `viam-server`, so you do not need to add it to your configuration.
 
-## Builtin service limitations
-
-The builtin service implements only `Move` (plus `DoCommand` and `GetStatus`). The other motion RPCs return "not supported" errors; to use them, install a module that implements them or, for GPS navigation, use the navigation service.
-
-- `MoveOnMap()`: requires a SLAM service (not recommended)
-- `MoveOnGlobe()`: use the [navigation service](/navigation/) instead
-- `GetPlan()`, `ListPlanStatuses()`, `StopPlan()`: only available with
-  implementations that support `MoveOnMap` or `MoveOnGlobe`
+Most users never configure the motion service. Read this page if you need
+to log planning errors, cap planning threads, or narrow a joint's range
+below its kinematic limits.
 
 ## Access the motion service
 
@@ -83,6 +78,14 @@ Example configuration:
 
 Pass a `MotionConfiguration` on a `MoveOnGlobe` or `MoveOnMap` call to override per-request settings. See [MotionConfiguration](/motion-planning/reference/motion-configuration/) for the full field reference.
 
+## Builtin service limitations
+
+The builtin service implements only `Move` (plus `DoCommand` and `GetStatus`). The other motion RPCs return "not supported" errors; to use them, install a module that implements them or, for GPS navigation, use the navigation service.
+
+- `MoveOnMap()`: requires a SLAM service. The builtin implementation is legacy; use a module that implements `MoveOnMap` or the navigation service instead.
+- `MoveOnGlobe()`: use the [navigation service](/navigation/) instead.
+- `GetPlan()`, `ListPlanStatuses()`, `StopPlan()`: only available with implementations that support `MoveOnMap` or `MoveOnGlobe`.
+
 ## Planning defaults
 
 The builtin service compiles the defaults below into the binary. To change them at runtime, pass overrides through the `extra` map on a `Move` call (see the algorithms reference for the tunable list).
@@ -113,8 +116,8 @@ The Viam CLI provides `print-config`, `print-status`, `get-pose`, and `set-pose`
 
 ## What's next
 
-- [Motion Service API](/motion-planning/reference/api/): full API reference.
+- [Motion service API](/motion-planning/reference/api/): full API reference.
 - [How motion planning works](/motion-planning/how-planning-works/):
   how the planner searches for collision-free paths.
-- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/): restrict arm
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/): restrict arm
   movement during planning.

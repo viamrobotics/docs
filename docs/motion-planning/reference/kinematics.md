@@ -1,6 +1,6 @@
 ---
-linkTitle: "Arm kinematics"
-title: "Arm kinematics"
+linkTitle: "Kinematics"
+title: "Kinematics"
 weight: 25
 layout: "docs"
 type: "docs"
@@ -10,18 +10,16 @@ aliases:
   - /build/work-cell-layout/configure-robot-kinematics/
 ---
 
-A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it. Most registry arm modules ship this file; you only need to write one when building a custom arm.
+A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it.
 
 {{< alert title="Most arms handle this automatically" color="tip" >}}
 
-Most arm modules in the Viam registry include a kinematics file that describes
-this structure. For standard commercial arms like the UR5e, xArm6, or Viam Arm,
-the module handles kinematics automatically. You do not need to provide or
-configure a kinematics file for these arms.
-
-This page is relevant if you are building a custom arm, using a module without a
-built-in kinematics file, or need to verify that a kinematics model matches your
-physical arm.
+Most arm modules in the Viam registry include a kinematics file. For standard
+commercial arms like the UR5e, xArm6, or Viam Arm, the module handles
+kinematics automatically; you do not need to provide or configure a
+kinematics file. Read this page if you are building a custom arm, using a
+module without a built-in kinematics file, or verifying that a kinematics
+model matches your physical arm.
 
 {{< /alert >}}
 
@@ -46,13 +44,15 @@ A robot arm is modeled as a chain of rigid bodies (links) connected by joints:
   optionally a geometry (for collision checking). Links do not move on their
   own. They are moved by the joints that connect them.
 - **Joints** connect two links and define how they can move relative to each
-  other. Viam supports four joint types:
+  other. Viam's SVA JSON format supports two joint types directly:
   - **Revolute**: rotates around an axis (like an elbow or shoulder). Limits in
     degrees.
   - **Prismatic**: slides along an axis (like a linear actuator). Limits in
     millimeters.
-  - **Continuous**: like revolute, but with no joint limits (full rotation).
-  - **Fixed**: no degrees of freedom (used in URDF files for rigid attachments).
+- URDF files may also declare **continuous** and **fixed** joints. Viam's URDF
+  importer converts continuous joints to revolute joints with infinite limits
+  and folds fixed joints into static link offsets. SVA JSON rejects either
+  type with an unsupported-joint-type error.
 
 ### Joint limits
 
@@ -197,6 +197,12 @@ Each field:
 - **`joints[].axis`**: the axis of rotation or translation (unit vector)
 - **`joints[].min`** / **`joints[].max`**: joint limits in degrees (revolute)
   or mm (prismatic)
+- **`joints[].mimic`** (optional): make this joint follow another joint at a
+  fixed multiplier and offset, for parallel-jaw grippers and other mechanically
+  coupled axes. The mimic object takes `joint` (the source joint's `id`),
+  `multiplier`, and `offset`; the joint's value is computed as
+  `multiplier * source_value + offset`. Mimic joints must not declare their own
+  `min`/`max`; the source joint's limits apply.
 
 ### 3. Import a URDF file
 
@@ -250,15 +256,9 @@ Verify the visualization by comparing it to the physical arm:
 If the visualization does not match the physical arm, the kinematics file may
 have incorrect link lengths, joint axes, or joint limits.
 
-## Try it
-
-1. Run the kinematics check from step 1 to confirm your arm module has a
-   built-in kinematics file.
-2. Open the 3D SCENE tab and compare the rendered arm to the physical arm. Move
-   individual joints using the CONTROL tab and verify the visualization matches.
-3. For reading joint positions and controlling the arm, see
-   [Add an Arm](/hardware/common-components/add-an-arm/) and the
-   [Arm API reference](/reference/apis/components/arm/).
+For reading joint positions and controlling the arm directly, see
+[Add an arm](/hardware/common-components/add-an-arm/) and the
+[Arm API reference](/reference/apis/components/arm/).
 
 ## Troubleshooting
 
@@ -295,9 +295,9 @@ have incorrect link lengths, joint axes, or joint limits.
 
 ## What's next
 
-- [Define Obstacles](/motion-planning/obstacles/): add collision geometry to
+- [Define obstacles](/motion-planning/obstacles/): add collision geometry to
   your workspace so the motion planner avoids collisions.
-- [Move an Arm to a Target Pose](/motion-planning/move-an-arm/move-to-pose/):
+- [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/):
   use the motion service to move the arm to a position in 3D space.
-- [Camera Calibration](/motion-planning/frame-system/camera-calibration/): calibrate your
+- [Camera calibration](/motion-planning/frame-system/camera-calibration/): calibrate your
   camera for accurate 3D position estimation.

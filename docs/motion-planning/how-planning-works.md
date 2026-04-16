@@ -18,14 +18,18 @@ six joints, so every configuration is a point in six-dimensional joint
 space. The planner has to find a continuous path through this space
 that satisfies all the constraints.
 
+When planning fails (and it will, because the search is probabilistic),
+the error messages mean little unless you understand what the planner
+was trying to do. This page gives you that model.
+
 ## The algorithm: cBiRRT
 
-Viam's built-in motion service uses **cBiRRT**: Constrained Bidirectional
-Rapidly-Exploring Random Tree. This is the only planning algorithm in
-the built-in service. Modules may implement alternative planners, but
-cBiRRT handles the general arm-planning case.
+Viam's built-in motion service uses **cBiRRT** (Constrained Bidirectional
+Rapidly-Exploring Random Tree), which handles the general arm-planning
+case. It is the only algorithm the built-in service runs; modules may
+implement alternative planners.
 
-cBiRRT comes from Berenson et al., 2009. The name unpacks to three ideas:
+cBiRRT comes from [Berenson et al., 2009](https://www.ri.cmu.edu/publications/manipulation-planning-on-constraint-manifolds/). The name unpacks to three ideas:
 the "constrained" part enforces orientation and linear constraints, the
 "bidirectional" part searches from the start and the goal at the same time,
 and the "RRT" part samples random configurations to explore joint space.
@@ -46,8 +50,8 @@ At each iteration, the planner:
    orientation or line constraint.
 
 When the two trees meet, the planner smooths the resulting path (three
-sequential passes of 10, 3, and 1 iterations) to remove unnecessary
-detours.
+sequential passes with triplet step sizes of 10, 3, and 1) to remove
+unnecessary detours.
 
 ## Why this works well for arms
 
@@ -107,10 +111,12 @@ planning timeout (300 seconds by default). Common causes:
    simpler target close to the current position to isolate whether the
    planner works at all.
 5. **Multiple IK solutions exist but the one the planner picks is bad.**
-   cBiRRT plans shortest-path in joint space, so for some Cartesian targets
-   it routes through a wrist flip or an elbow reconfiguration that is
-   physically feasible but undesirable. Seed the planner by calling
-   `MoveToJointPositions` first, or break the motion into smaller steps.
+   cBiRRT returns the first feasible path it finds rather than the
+   shortest one, so for some Cartesian targets it routes through a wrist
+   flip or an elbow reconfiguration that is physically feasible but
+   undesirable. Move the arm to a configuration that biases the planner
+   toward the IK branch you want by calling `MoveToJointPositions`
+   first, or break the motion into smaller steps.
 
 If the failure is non-deterministic (the same plan worked last time but
 fails now), retry a few times before changing the request. The

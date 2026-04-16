@@ -11,15 +11,15 @@ description: "Reference for the motion service methods, types, and states used t
 
 ## Which implementations track plans
 
-| Motion service implementation                                                          | Tracks plans?                                                             |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| Builtin                                                                                | No. `Move` is synchronous; the plan-tracking RPCs return "not supported". |
-| Module implementations (for example, modules that implement `MoveOnGlobe`/`MoveOnMap`) | Yes — typical case                                                        |
+| Motion service implementation                       | Tracks plans?                                                             |
+| --------------------------------------------------- | ------------------------------------------------------------------------- |
+| Builtin                                             | No. `Move` is synchronous; the plan-tracking RPCs return "not supported". |
+| Modules that implement `MoveOnGlobe` or `MoveOnMap` | Yes (typical case).                                                       |
 
-The navigation service uses a motion service internally. When you configure
-navigation with a plan-tracking motion service, navigation's own
-`GetPaths`, `GetLocation`, and mode transitions expose progress without
-calling `GetPlan` directly.
+If you are using navigation: the navigation service uses a motion
+service internally. When you configure navigation with a plan-tracking
+motion service, navigation's own `GetPaths`, `GetLocation`, and mode
+transitions expose progress without calling `GetPlan` directly.
 
 ## PlanState
 

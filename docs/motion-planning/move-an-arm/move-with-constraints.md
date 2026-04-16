@@ -19,11 +19,11 @@ through intermediate poses and tilts the end effector along the way.
 ## Prerequisites
 
 - A running machine with an arm and [frame system](/motion-planning/frame-system/) configured
-- Familiarity with [Move Arm to Pose](/motion-planning/move-an-arm/move-to-pose/)
+- Familiarity with [Move arm to pose](/motion-planning/move-an-arm/move-to-pose/)
 
 ## Steps
 
-### 1. Move in a straight line
+### 1. Welding: straight-line tool path
 
 Use a `LinearConstraint` to keep the end effector within a tolerance of the
 direct line between start and goal.
@@ -78,7 +78,7 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 {{% /tab %}}
 {{< /tabs >}}
 
-### 2. Maintain end effector orientation
+### 2. Carrying a liquid: level end effector
 
 Use an `OrientationConstraint` to keep the end effector level (or at any
 fixed orientation) throughout the motion.
@@ -195,20 +195,24 @@ constraints := &motionplan.Constraints{
 
 ## Tips
 
-- **Start with loose tolerances, tighten only if the task requires it.** 10-20
-  mm and 10-15 degrees is a reasonable starting point. Tight tolerances raise
-  both planning time and failure rate.
 - **Constraints and obstacles compete.** If an obstacle blocks the
-  straight-line path, the planner has to pick one constraint to violate and
-  typically fails. Either widen the constraint or move the obstacle.
-- **Orientation is checked against the nearer endpoint.** The planner compares
-  the current orientation to the start and goal, then uses whichever is closer
-  as the reference. This lets the constraint track intent as the motion
-  progresses rather than locking to one endpoint.
+  straight-line path, no path satisfies both the constraint and the
+  collision check, so the planner returns no-path. Widen the constraint
+  or move the obstacle.
+- **Orientation is checked against the nearer endpoint.** The planner
+  compares the current orientation to the start and goal, then uses
+  whichever is closer as the reference. This lets the constraint track
+  intent as the motion progresses rather than locking to one endpoint.
+
+For tolerance selection guidance and more on planning cost, see the
+[Performance considerations](/motion-planning/move-an-arm/constraints/#performance-considerations)
+section in the constraints reference.
 
 ## What's next
 
-- [Configure Motion Constraints](/motion-planning/move-an-arm/constraints/):
+- [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   full reference for all four constraint types.
-- [Plan Collision-Free Paths](/motion-planning/obstacles/avoid-obstacles/):
+- [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/):
+  the fourth constraint type, for letting specific frame pairs touch.
+- [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/):
   combine constraints with obstacle avoidance.

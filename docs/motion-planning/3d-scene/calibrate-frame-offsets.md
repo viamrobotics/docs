@@ -7,7 +7,7 @@ type: "docs"
 description: "Verify and adjust the spatial relationship between components using the 3D scene and measurement tool."
 ---
 
-When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off; the arm then reaches for the wrong spot, or the point cloud sits behind the table instead of on it. The 3D scene tab lets you verify offsets visually and measure distances directly, so you can catch these errors before they produce bad motion.
+When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off; the arm then reaches for the wrong spot, or the point cloud sits behind the table instead of on it. The **3D SCENE** tab lets you verify offsets visually and measure distances directly, so you can catch these errors before they produce bad motion.
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ When you configure a camera on an arm, or a sensor on a base, the frame system n
 
 ## Verify frame offsets
 
-### 1. Open the 3D scene tab
+### 1. Open the 3D SCENE tab
 
 Navigate to your machine in the [Viam app](https://app.viam.com) and click the **3D SCENE** tab.
 
@@ -66,7 +66,7 @@ Frame calibration is often iterative:
 
 1. Measure physically.
 2. Enter the values in the frame configuration.
-3. Check the result in the 3D scene.
+3. Check the result in the **3D SCENE** tab.
 4. Adjust and repeat until the scene matches reality.
 
 For high-precision applications, use the camera calibration procedure to compute intrinsic parameters before adjusting frame offsets.

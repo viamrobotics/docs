@@ -19,7 +19,12 @@ guide covers both.
 
 ## Direct axis control
 
-Use the gantry component API for simple, direct movements.
+Use the gantry component API for direct moves to specific positions.
+Direct axis control bypasses the motion service: there is no obstacle
+checking, no IK, no path planning. Use it when you know the path is
+clear and you want the move to happen now. Read current state first
+(`get_position`, `get_lengths`) so you know where each axis sits and
+how much travel is available.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -84,11 +89,13 @@ if err != nil {
 
 ## Motion-service planning
 
-The motion service treats a gantry the same way it treats an arm: you pass a
-target pose and a `WorldState`, and it returns a collision-free path. Use it
-when the gantry has obstacles to avoid, when you want to compose a gantry move
-with other components, or when you want the same planning API across every
-machine in your fleet.
+The motion service treats a gantry the same way it treats an arm: you pass
+a target pose and the planner returns a collision-free path that respects
+the obstacles in the frame system and any `WorldState` you supply. Planning
+takes longer than a direct move (a planning call before execution), but it
+is the only safe choice when obstacles share the workspace, when you need
+to coordinate the gantry with other components, or when you want the same
+planning API across every machine in your fleet.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -131,7 +138,9 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 
 ## What's next
 
-- [Move Arm to Pose](/motion-planning/move-an-arm/move-to-pose/):
+- [Define your frame system](/motion-planning/frame-system/): required
+  when planning gantry moves through the motion service.
+- [Move arm to pose](/motion-planning/move-an-arm/move-to-pose/):
   similar workflow for robot arms.
-- [Define Obstacles](/motion-planning/obstacles/):
+- [Define obstacles](/motion-planning/obstacles/):
   add obstacle geometry for collision avoidance.
