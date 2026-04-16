@@ -64,7 +64,7 @@ To find your part ID, run `viam machines part list --machine=<machine-id>`. To f
 1. Go to the **CONTROL** tab and test the deployed components or services.
 1. Check the **LOGS** tab for any errors from the module.
 
-On the fleet dashboard at [app.viam.com/fleet/machines](https://app.viam.com/fleet/machines), confirm your machines are online and showing the expected viam-server version.
+On the fleet dashboard at [app.viam.com/fleet/machines](https://app.viam.com/fleet/machines), confirm your machines are online. The dashboard does not currently show per-machine module versions; to verify the rollout reached every machine, see [verify a rollout across the fleet](/fleet/manage-versions/#verify-a-rollout-across-the-fleet).
 
 ## Related pages
 

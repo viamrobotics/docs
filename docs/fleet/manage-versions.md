@@ -1,13 +1,13 @@
 ---
-linkTitle: "Manage versions"
-title: "Manage software versions"
+linkTitle: "Manage versions and rollouts"
+title: "Manage software versions and rollouts"
 weight: 35
 layout: "docs"
 type: "docs"
-description: "Control when and how software updates reach your machines with version pinning, fragment tags, and maintenance windows."
+description: "Control which software versions reach your machines, stage rollouts with fragment tags, and verify what each machine is running."
 ---
 
-Control which software versions your machines run and when updates are applied. By default, machines track the latest version of every module and model. Use version pinning, fragment tags, and maintenance windows to control rollouts more precisely.
+Control which software versions your machines run, when updates are applied, and how to confirm a rollout actually reached every machine. By default, machines track the latest version of every module and model. Use version pinning, fragment tags, and maintenance windows to control rollouts more precisely.
 
 ## Version pinning options
 
@@ -42,7 +42,7 @@ While the maintenance window is closed (sensor returns `false`), `viam-server` c
 
 ## Staged rollouts with fragment tags
 
-For fleets where you want to test changes before deploying to all machines, use the fragment tag workflow:
+For fleets where you want to test changes before deploying to all machines, use the fragment tag workflow. This is the closest equivalent to a canary deployment in Viam: instead of allocating a percentage of devices automatically, you assign tags to fragment revisions and re-tag to promote.
 
 1. Create `stable` and `development` tags on your fragment. See [fragment tags](/fleet/reuse-configuration/#create-a-tag).
 2. Pin production machines to the `stable` tag.
@@ -54,17 +54,42 @@ For fleets where you want to test changes before deploying to all machines, use 
 
 This gives you a manual gate between development and production without maintaining separate fragments.
 
-## Check what versions your machines are running
+## Verify a rollout across the fleet
 
-The fleet dashboard at [app.viam.com/fleet/machines](https://app.viam.com/fleet/machines) shows the `viam-server` version and `viam-agent` version for each machine part.
+After you push an update, you need to confirm every machine actually received it. The fleet dashboard at [app.viam.com/fleet/machines](https://app.viam.com/fleet/machines) shows whether each machine is online but does not currently display per-machine version or config information. To check what each machine is running, query the machines directly.
 
-To check programmatically, iterate over your machines using the fleet management API, connect to each machine, and use `GetMachineStatus` to retrieve the current configuration and version information.
+### Check that machines picked up a config change
+
+Most rollouts change a fragment that machines depend on, which means the goal is to confirm each machine pulled the new config revision. Use the Python SDK's `get_machine_status` on each machine to read its current revision.
+
+```python
+from viam.robot.client import RobotClient
+from viam.rpc.dial import Credentials, DialOptions
+
+async def get_revision(machine_address, api_key, api_key_id):
+    creds = Credentials(type="api-key", payload=api_key)
+    opts = DialOptions(auth_entity=api_key_id, credentials=creds)
+    machine = await RobotClient.at_address(machine_address, opts)
+    status = await machine.get_machine_status()
+    return status.config.revision
+```
+
+Find each machine's address, API key, and API key ID on the machine's **CONNECT** tab in the Viam app. To check the entire fleet, list machines with `AppClient.list_robots`, connect to each, and compare the returned revision to the one you expect.
+
+### Check viam-server or viam-agent version
+
+The per-part `viam_server_version` and `viam_agent_version` fields are populated in the cloud through the `ListMachineSummaries` RPC on `app.proto`, but this RPC is not yet wrapped in the Python SDK or exposed through the CLI. To read it today, make a direct gRPC call to the app service.
+
+If a deployed agent or `viam-server` version fails to start, viam-agent does not automatically roll back to the previous version. It will keep retrying that version until you change the cloud config to pin an older one. See [Limitations](#limitations).
 
 ## Limitations
 
 - Maintenance windows require a sensor that produces a boolean reading. There is no built-in time-based scheduling for maintenance windows; you need a sensor module or logic module that returns `true` during your desired maintenance period.
-- There is no built-in canary or percentage-based rollout. Use fragment tags to control which machines receive updates.
-- Rollback is manual: revert the fragment to a previous revision or pin machines to an older version.
+- There is no built-in canary or percentage-based rollout. Use fragment tags as a manual gate.
+- Rollback is manual at every layer:
+  - Fragment-level rollback: revert the fragment to a previous revision, or pin machines to an older version.
+  - Agent and `viam-server` rollback: viam-agent does not automatically revert when a deployed version fails to start. Edit the cloud config to pin a known-good version.
+- Per-machine version status is not displayed in the fleet dashboard today. Use the Python SDK or direct gRPC (see [Verify a rollout across the fleet](#verify-a-rollout-across-the-fleet)) to find machines stuck on an old version.
 
 ## Related pages
 

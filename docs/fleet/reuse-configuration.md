@@ -16,6 +16,8 @@ Create a fragment (a reusable configuration template), add the components, servi
 
 ## When to use fragments
 
+As a fleet grows, machines tend to drift into unique, undocumented configurations (often called "snowflake robots") because each one was set up by hand. Fragments prevent this by giving every machine the same authoritative configuration source.
+
 Use fragments when you have multiple machines that share the same configuration, either entirely or with small per-machine differences. Common examples:
 
 - A fleet of identical robots that all need the same camera, motor, and control logic
@@ -40,12 +42,14 @@ The fragment editor works just like the machine configuration editor. You can us
 
 In the fragment editor sidebar, click **+** to add:
 
-- Components and services (cameras, motors, sensors, vision services, etc.)
+- Components and services (cameras, motors, sensors, vision services, and so on)
 - Control code modules
 - Nested fragments (fragments can include other fragments, up to 5 levels deep)
 - Maintenance windows
 - Jobs
 - Triggers
+
+Nested fragments let you compose configuration libraries. For example, a `base-robot` fragment can include separate `motor-pair` and `camera-array` fragments, so you can swap out the camera array without rewriting the base.
 
 Click **Save** after adding and configuring your resources.
 
@@ -65,6 +69,8 @@ To apply a fragment to many machines, use the CLI in a loop or script:
 ```sh {class="command-line" data-prompt="$"}
 viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
 ```
+
+To find your part ID, run `viam machines part list --machine=<machine-id>`. To find your fragment ID, copy it from the fragment's page in the Viam app (it appears in the URL and under the fragment name).
 
 See [automate with scripts](/cli/automate-with-scripts/) for examples of scripting fleet operations.
 
@@ -167,6 +173,12 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 5. Point `development` at the new revision.
 6. Pin a few test machines to `development` and verify the changes work.
 7. When validated, move `stable` to the new revision. All production machines update.
+
+## Find which machines use a fragment
+
+Before changing or removing a fragment, you usually want to know which machines currently use it. Viam exposes this through the `GetFragmentUsage` RPC on `app.proto`, which returns the count of machines on each revision. A related RPC, `ListMachineSummaries`, returns the full list of machines and their resolved fragments.
+
+Both RPCs are defined in the proto bindings but are not yet wrapped as high-level methods on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
 
 ## Set default fragments for an organization
 
