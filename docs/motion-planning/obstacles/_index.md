@@ -1,7 +1,7 @@
 ---
 linkTitle: "Obstacles"
 title: "Obstacles"
-weight: 30
+weight: 20
 layout: "docs"
 type: "docs"
 no_list: true

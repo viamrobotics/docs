@@ -157,5 +157,5 @@ the `WorldState` is not reaching the planner.
 ## What's next
 
 - [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/)
-- [Pick an object](/motion-planning/pick-and-place/pick-an-object/)
+- [Pick an object](/motion-planning/move-an-arm/pick-an-object/)
 - [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/) — when the planner rejects expected contact

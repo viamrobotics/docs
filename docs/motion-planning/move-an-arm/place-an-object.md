@@ -1,12 +1,13 @@
 ---
 linkTitle: "Place an object"
 title: "Place an object"
-weight: 20
+weight: 70
 layout: "docs"
 type: "docs"
 description: "Move a grasped object to a target location and release it."
 aliases:
   - /motion-planning/motion-how-to/place-an-object/
+  - /motion-planning/pick-and-place/place-an-object/
 ---
 
 Placing is the mirror image of picking, but with a different failure mode:
@@ -19,10 +20,10 @@ just set down.
 
 ## Prerequisites
 
-- Object already grasped (see [Pick an object](/motion-planning/pick-and-place/pick-an-object/)).
+- Object already grasped (see [Pick an object](/motion-planning/move-an-arm/pick-an-object/)).
 - Placement location known in world coordinates.
 
-The code below continues from [Pick an object](/motion-planning/pick-and-place/pick-an-object/);
+The code below continues from [Pick an object](/motion-planning/move-an-arm/pick-an-object/);
 `motion_service`, `gripper`, and `world_state` are already defined in that script.
 
 ## Steps
@@ -133,7 +134,7 @@ print("Retreated from placement")
 
 ## What's next
 
-- [Pick an object](/motion-planning/pick-and-place/pick-an-object/):
+- [Pick an object](/motion-planning/move-an-arm/pick-an-object/):
   the pick half of the pick-and-place workflow.
 - [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
   track plan status during execution.
