@@ -64,8 +64,8 @@ Resources on the sub-part appear in the same resource list as the main part's.
 Calling them uses the same `from_robot` pattern as a local component:
 
 ```python
-arm = Arm.from_robot(machine, "arm-1")              # on the main part
-camera = Camera.from_robot(machine, "wrist-camera") # on the sub-part
+arm = Arm.from_robot(machine, "arm-1")               # on the main part
+camera = Camera.from_robot(machine, "wrist-camera")  # on the sub-part
 ```
 
 By default, sub-parts do not carry a name prefix, so component names on the sub-part are used as-is.
