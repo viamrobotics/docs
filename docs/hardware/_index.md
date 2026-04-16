@@ -31,6 +31,7 @@ verify it works.
 {{% card link="/hardware/common-components/" %}}
 {{% card link="/hardware/component-types/" %}}
 {{% card link="/hardware/machine-configuration/" %}}
+{{% card link="/hardware/multi-machine/" %}}
 {{% card link="/hardware/fragments/" %}}
 {{% card link="/build-modules/overview/" %}}
 {{< /cards >}}
