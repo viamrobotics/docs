@@ -19,6 +19,21 @@ For anything else, you can use a custom training script: a different framework, 
 Before writing your own, check the [registry](https://app.viam.com/registry?type=Training+Script) for existing training scripts and [pre-trained models](https://app.viam.com/registry?type=ML+Model) you can deploy directly.
 If a training script there fits your needs, skip ahead to [Submit a training job](#submit-a-training-job).
 
+## How custom training scripts work
+
+When you submit a custom training job, Viam:
+
+1. Pulls your dataset and writes a JSONLines metadata file plus the
+   underlying image files into the container.
+2. Runs your script inside a Viam-hosted Docker container with GPU access
+   and a framework version you select.
+3. Packages the artifacts your script writes to the output directory and
+   publishes them as a new model version in your organization's registry.
+
+Because the script runs in a known container and receives standardized
+inputs, you can retrain on new datasets without changing the script or
+redeploying code.
+
 ## Write a training script
 
 A training script is a Python project that the Viam platform runs in the cloud.
@@ -56,10 +71,10 @@ setup(
 
 Your script receives two required command-line arguments from the platform:
 
-| Argument                   | Description                                                                                           |
-| -------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `--dataset_file`           | Path to a JSONLines file containing dataset metadata: file paths and annotations for each data point. |
-| `--model_output_directory` | Directory where your script must save its model artifacts.                                            |
+| Argument                   | Description                                                                                                                     |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `--dataset_file`           | Path to a [JSONLines](https://jsonlines.org/) file containing dataset metadata: file paths and annotations for each data point. |
+| `--model_output_directory` | Directory where your script must save its model artifacts.                                                                      |
 
 You can add custom arguments (like `--num_epochs` or `--labels`) and pass them when you submit the training job.
 
@@ -161,6 +176,28 @@ async def connect() -> ViamClient:
     return await ViamClient.create_from_dial_options(dial_options)
 ```
 
+### Match your output to an ML model service
+
+After training, Viam packages your output directory and publishes it as a
+model version in your organization's registry. To run the model on a
+machine, the [ML model service](/train/deploy-a-model/) you deploy with it
+must be able to load the files your script wrote.
+
+For TFLite models loaded with `tflite_cpu`, save a `model.tflite` file and
+a `labels.txt` listing each label on its own line. This is what the
+[classification-tflite example](https://github.com/viam-modules/classification-tflite)
+produces.
+
+For other frameworks, consult the module's README on the registry -- for
+example, [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu),
+[`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu), or
+[`torch-cpu`](https://app.viam.com/module/viam/torch-cpu) -- for the file
+format and tensor shape expectations. Write your output in that format so
+the deployed model loads correctly.
+
+After uploading, follow [Deploy a model to a machine](/train/deploy-a-model/)
+to add the matching ML model service and vision service to your machine.
+
 ### Complete example
 
 For a full working training script, see the [classification-tflite example](https://github.com/viam-modules/classification-tflite) on GitHub.
@@ -179,7 +216,7 @@ viam dataset export --destination=<destination> --dataset-id=<dataset-id>
 This downloads the binary data files and a `dataset.jsonl` metadata file.
 To download only the JSONL file without binary data, add `--only-jsonl`.
 
-You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/).
+You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
 
 ### Test locally with Docker
 
@@ -232,7 +269,8 @@ viam training-script upload --path=my-training.tar.gz \
 ```
 
 You can also specify `--framework`, `--type`, `--visibility`, and `--description` when uploading.
-See the [CLI reference](/cli/) for the full list of flags.
+Scripts default to private (visible only within your organization). Set `--visibility=public` to share with other organizations through the [registry](https://app.viam.com/registry?type=Training+Script).
+See the [CLI reference](/cli/overview/) for the full list of flags.
 
 To find your organization ID, run `viam organization list`.
 
@@ -242,9 +280,18 @@ After uploading, your script appears in the [registry](https://app.viam.com/regi
 
 Once a training script is in the registry, whether you uploaded it or are using someone else's, submit a training job to run it against a dataset.
 
-Every custom training job runs inside a container.
-You must select a container version that matches the framework your script requires (for example, a PyTorch container for a PyTorch script).
-To see the available containers with their framework versions and end-of-life dates, run:
+Every custom training job runs inside a Viam-hosted container on GPU-backed
+cloud infrastructure. Containers are based on Python 3.10 with TensorFlow
+pre-installed. The currently supported versions are `tf:2.16` and `tf:2.17`.
+To use a different framework (PyTorch, scikit-learn, or anything installable
+with pip), add it to the `install_requires` list in `setup.py`; Viam
+installs the packages in the container before running your script.
+
+Custom training is part of the Viam platform; see [pricing](https://www.viam.com/product/pricing)
+for plan details.
+
+To list available containers with their framework versions and end-of-life
+dates, run:
 
 ```sh {class="command-line" data-prompt="$"}
 viam train containers list
@@ -263,7 +310,7 @@ viam train containers list
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-Use [`viam train submit custom from-registry`](/cli/):
+Use [`viam train submit custom from-registry`](/cli/datasets-and-training/#train-with-a-custom-training-script):
 
 ```sh {class="command-line" data-prompt="$"}
 viam train submit custom from-registry --dataset-id=<dataset-id> \
@@ -274,7 +321,7 @@ viam train submit custom from-registry --dataset-id=<dataset-id> \
   --args=num_epochs=100,labels="'label1 label2'"
 ```
 
-You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/).
+You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
 
 {{% /tab %}}
 {{% tab name="API" %}}

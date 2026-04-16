@@ -26,52 +26,64 @@ Training an ML model follows a repeating cycle:
    auto-annotate and review predictions.
 
 3. **Train a model.** Submit a training job and Viam runs it on cloud
-   infrastructure. No GPU provisioning, no framework installation. Training
-   times range from minutes to an hour depending on dataset size. When training
-   completes, the model is stored in your organization's registry.
+   infrastructure. No GPU provisioning, no framework installation. When
+   training completes, the model is stored in your organization's registry.
 
-4. **Deploy to your machine.** Configure the `tflite_cpu` module and an ML
-   model service on your machine. Add a vision service to apply the model to
-   live camera frames. The machine pulls the model from the registry
-   automatically.
+4. **Deploy to your machine.** Configure the appropriate ML model service on
+   your machine (for example, `tflite_cpu` for TFLite models). Add a vision
+   service to apply the model to live camera frames. The machine pulls the
+   model from the registry automatically.
 
-5. **Iterate.** Deploy the model, collect data on its failures, auto-annotate
-   new images with the current model, review the predictions, retrain, and
-   redeploy. Each cycle tightens the feedback loop and improves accuracy. In ML
-   this is called active learning.
+5. **Iterate.** Deploy the model, collect data on its predictions,
+   auto-annotate new images with the current model, review the predictions,
+   retrain, and redeploy. Each cycle tightens the feedback loop and improves
+   accuracy. In ML this is called active learning.
 
-## Managed training or custom scripts
+## Scale labeling with auto-predictions
 
-Viam offers two paths for training:
+Once you have a working model, you do not have to label every new image by
+hand. Use [auto-predictions](/train/automate-annotation/) to have an existing
+model draft tags or bounding boxes for a dataset, then review the suggestions.
 
-**Managed training** handles everything. You select a dataset, pick a framework
-and task type, and start the job. Use this for standard classification and
-object detection with TFLite or TensorFlow. Most users start here.
+A typical active-learning loop:
 
-**Custom training scripts** let you bring your own Python training code. Use
-any framework (PyTorch, ONNX, or anything installable with pip), write custom
-preprocessing, train on non-image data, or implement transfer learning. Viam
-runs your script in the same cloud infrastructure, and the output model is
-published to the registry just like a managed training job.
+1. Hand-label a starter dataset (20-50 images per class).
+2. Train an initial model.
+3. Capture more images from your machines.
+4. Run auto-predictions against the new images using your initial model.
+5. Accept or reject each prediction to produce verified labels.
+6. Retrain with the expanded dataset.
 
-## Model frameworks
+This turns a small labeling effort into a growing, self-improving dataset.
 
-**TensorFlow Lite (TFLite)** produces compact models optimized for edge
-devices. TFLite models run directly on single-board computers like the
-Raspberry Pi without requiring a GPU. This is the right choice for most Viam
-use cases: quality inspection, object detection on a camera feed, simple
-classification.
+## Supported frameworks and hardware
 
-**TensorFlow (TF)** produces larger models that require more compute resources.
-Use TF when you are running on hardware with a capable CPU or GPU and need
-additional model capacity.
+Viam's managed training handles TFLite and TensorFlow directly. For PyTorch,
+ONNX, or other frameworks, write a [custom training script](/train/custom-training-scripts/).
 
-Custom training scripts can use any framework, including PyTorch and ONNX.
+| Framework                                          | How to train                      | ML model service                                                                                                                                | Hardware                                             |
+| -------------------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [TensorFlow Lite](https://www.tensorflow.org/lite) | Managed training                  | [`tflite_cpu`](https://app.viam.com/module/viam/tflite_cpu)                                                                                     | linux/amd64, linux/arm64, darwin/arm64, darwin/amd64 |
+| [TensorFlow](https://www.tensorflow.org/)          | Managed training or custom script | [`tensorflow-cpu`](https://app.viam.com/module/viam/tensorflow-cpu), [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
+| [PyTorch](https://pytorch.org/)                    | Custom script                     | [`torch-cpu`](https://app.viam.com/module/viam/torch-cpu), [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack)           | Nvidia GPU, linux/arm64, darwin/arm64                |
+| [ONNX](https://onnx.ai/)                           | Custom script                     | [`onnx-cpu`](https://app.viam.com/module/viam/onnx-cpu), [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack)             | Nvidia GPU, linux/amd64, linux/arm64, darwin/arm64   |
+
+**TFLite** produces compact models optimized for edge devices without a GPU,
+and is the right choice for most Viam use cases. **TensorFlow** produces
+larger models that require more compute. Use **PyTorch** or **ONNX** when you
+are importing an existing model or need framework-specific features not
+available in TensorFlow.
+
+Custom training scripts currently run in TensorFlow-based containers. You can
+install additional Python dependencies through `setup.py`. See
+[custom training scripts](/train/custom-training-scripts/) for details.
 
 ## Task types
 
 The task type determines what the model learns to do. It must match how you
 labeled your dataset.
+
+{{<imgproc src="/train/task-types.png" resize="x400" declaredimensions=true alt="Three task type cards from the Viam training wizard: single label classification, multi label classification, and object detection." class="shadow imgzoom" >}}
 
 - **Single label classification** assigns exactly one label to each image. Your
   dataset should have tags with exactly one tag per image.

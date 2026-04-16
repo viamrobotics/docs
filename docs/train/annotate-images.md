@@ -8,9 +8,10 @@ description: "Label images with tags or bounding boxes for training an ML model.
 date: "2025-01-30"
 ---
 
-Label your dataset images with tags for classification or bounding boxes for
-object detection. You need a [dataset with images](/train/create-a-dataset/)
-before you can annotate.
+Label your images with tags for classification or bounding boxes for object
+detection. You need captured images to annotate. Organizing them into a
+[dataset](/train/create-a-dataset/) makes bulk annotation and training
+workflows easier.
 
 ## Tag images for classification
 

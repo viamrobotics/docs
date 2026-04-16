@@ -11,19 +11,29 @@ aliases:
 ---
 
 A dataset is a named collection of images at the organization level that you
-label and use for training. Before training, your dataset must meet these
-minimums:
+label and use for training.
 
-| Requirement        | Minimum                |
-| ------------------ | ---------------------- |
-| Total images       | 15                     |
-| Labeled images     | 80% of total           |
-| Examples per label | 10                     |
-| Label distribution | Roughly equal          |
-| Image source       | Production environment |
+## Platform requirements
 
-For production use, aim for hundreds of images per label under varied
-conditions.
+Viam rejects a training job if the dataset does not meet these minimums:
+
+| Requirement        | Minimum                                                             |
+| ------------------ | ------------------------------------------------------------------- |
+| Labeled images     | 80% of the dataset                                                  |
+| Examples per label | 10 images (classification) or 10 bounding boxes (object detection)  |
+| Total images       | 15 (object detection only; classification has no total-image floor) |
+
+## Recommendations for quality
+
+Platform minimums get a training job accepted; they do not guarantee a good
+model. For production use:
+
+- Aim for hundreds of examples per label under varied conditions.
+- Keep label counts roughly balanced -- no label should have more than 3x the
+  images of any other.
+- Capture images from the deployment environment, meaning the real lighting,
+  backgrounds, camera angles, and distances your machine uses. Stock datasets
+  and stylized marketing images do not generalize.
 
 ## 1. Create a dataset
 
@@ -133,9 +143,17 @@ func main() {
 {{< /tabs >}}
 
 Replace all placeholder values (`YOUR-API-KEY`, `YOUR-API-KEY-ID`,
-`YOUR-ORGANIZATION-ID`) with your actual values. To find your organization ID,
-click your organization name in the top navigation bar, then click **Settings**.
-Your organization ID is displayed on the settings page with a copy button.
+`YOUR-ORGANIZATION-ID`) with your actual values. The API key must be
+organization-scoped -- machine-scoped and location-scoped keys cannot
+create datasets. To fetch or create these values from the CLI:
+
+```bash
+viam organizations list
+viam organizations api-key create --org-id=YOUR-ORGANIZATION-ID --name=training
+```
+
+You can also find your organization ID by clicking your organization name in
+the top navigation bar and then clicking **Settings**.
 
 ## 2. Add images to the dataset
 
@@ -229,13 +247,13 @@ Before you train a model, check that your dataset meets the requirements.
    - Labels used and their counts
 4. Check each requirement:
 
-| Check                 | What to look for                                                              |
-| --------------------- | ----------------------------------------------------------------------------- |
-| Enough images         | At least 15 total. More is better.                                            |
-| Labeling coverage     | At least 80% of images have tags or bounding boxes                            |
-| Examples per label    | At least 10 images per label                                                  |
-| Label balance         | No label should have more than 3x the images of any other label               |
-| Production conditions | Images should represent real operating conditions, not staged or ideal setups |
+| Check                 | What to look for                                                                                     |
+| --------------------- | ---------------------------------------------------------------------------------------------------- |
+| Enough images         | Object detection: at least 15 total. Classification: at least 10 per label (the binding constraint). |
+| Labeling coverage     | At least 80% of images have tags or bounding boxes                                                   |
+| Examples per label    | At least 10 images per label                                                                         |
+| Label balance         | No label should have more than 3x the images of any other label                                      |
+| Production conditions | Images should represent real operating conditions, not staged or ideal setups                        |
 
 **Common issues to fix before training:**
 
