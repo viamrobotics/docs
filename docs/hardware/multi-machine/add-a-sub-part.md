@@ -52,9 +52,9 @@ If it does not come online, check:
 
 ## 4. Add components to the sub-part
 
-Adding hardware to a sub-part works identically to the main part.
+Adding hardware to a sub-part works the same way as adding it to the main part.
 The difference is where you click **+** in the sidebar: under the sub-part's name, not the main part's.
-Components you add there are expected to be attached to the sub-part's physical computer.
+Any component you add there should be physically connected to the sub-part's computer.
 
 See [How components work](/hardware/configure-hardware/) for the add-a-component flow.
 
@@ -68,12 +68,13 @@ arm = Arm.from_robot(machine, "arm-1")               # on the main part
 camera = Camera.from_robot(machine, "wrist-camera")  # on the sub-part
 ```
 
-By default, sub-parts do not carry a name prefix, so component names on the sub-part are used as-is.
+By default, sub-parts do not carry a name prefix, so you reference components on the sub-part by their configured names.
 
 ## Frames
 
 By default, every sub-part sits at the world origin.
-For spatial setups where the sub-part's hardware has a known physical position (a camera mounted on an arm's end effector, a sensor at a known offset from the main part's frame), configure the sub-part's frame.
+For spatial setups where the sub-part's hardware has a known physical position, configure the sub-part's frame.
+For example, a camera mounted on an arm's end effector, or a sensor at a known offset from the main part's frame.
 See [Frames across machines](/hardware/multi-machine/cross-machine-frames/).
 
 ## Next steps

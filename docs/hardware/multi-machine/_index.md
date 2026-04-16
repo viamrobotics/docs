@@ -14,21 +14,23 @@ Three situations call for reaching outside one computer:
 
 - **The hardware lives somewhere else.**
   A depth camera is wired to a Raspberry Pi on an arm's end effector, but your control logic runs on a NUC.
-  A row of cameras sits on SBCs along a conveyor, but inference happens on a GPU machine in a rack.
+  A row of cameras sits on SBCs along a conveyor, but a GPU machine in a rack runs inference.
   The component has to be on the computer it's physically attached to.
 - **Several machines need the same resource.**
   A fixed warehouse camera that every rover in the building needs to see.
   A SLAM service whose map serves three robots.
+  The hardware belongs to one machine; the others need access without owning it.
 - **You want operational independence.**
   E-stopping the arm shouldn't cut the camera on its end effector.
   A crash on the main computer shouldn't take down the sensors running on another board.
+  Each part runs its own `viam-server`, so they can fail independently.
 
 Under the hood, `viam-server` on one machine opens a gRPC connection to `viam-server` on another.
 The remote server's components and services join the local resource graph.
 In your code they look like any other resource on the local machine: same API, same method calls, no separate client object.
 Unless you configure a prefix, even the name stays the same.
 
-Viam gives you two ways to create this connection, with different management models.
+Viam gives you two ways to create this connection: sub-parts and remote parts.
 
 ## Pick a pattern
 
@@ -74,7 +76,7 @@ If you configured a prefix on the remote, it is prepended to every remote resour
 gripper = Gripper.from_robot(machine, "end-effectorgripper")
 ```
 
-Prefixes exist to disambiguate when two connected parts would otherwise export resources with the same name.
+When two connected parts export resources with the same name, a prefix disambiguates them.
 
 ## What happens on disconnect
 
@@ -87,7 +89,7 @@ Local resources on the main part keep running.
 
 **A controlling client disappears.**
 Every client connected to `viam-server` sends a periodic session heartbeat.
-If the client goes silent (network loss, crashed process), any resource it most recently commanded gets `Stop()` called automatically.
+If the client goes silent (network loss, crashed process), `viam-server` automatically calls `Stop()` on the resource the client most recently commanded.
 A rover will not keep driving, an arm will not keep moving, and a gripper will not keep closing when the commanding process vanishes.
 This applies equally to local and remote resources.
 

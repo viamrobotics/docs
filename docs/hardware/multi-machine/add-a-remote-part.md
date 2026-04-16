@@ -42,7 +42,7 @@ On the machine you want to connect to:
 ```
 
 The `entity` field is the API key's ID, separate from the secret payload.
-Both are required to authenticate.
+Authentication requires both.
 Treat the payload like a password: anyone with it can connect to that machine.
 
 ## 2. Add the remote on your machine

@@ -9,7 +9,7 @@ date: "2026-04-16"
 ---
 
 When a component lives on a different computer than your main part, the motion service still needs to know where that component sits in space.
-A camera on a remote Raspberry Pi, an IMU on a sub-part's board, a shared warehouse camera on a stationary rig: all of them need a frame entry in the main machine's frame tree, not only in their own.
+A camera on a remote Raspberry Pi, an IMU on a sub-part's board, a shared warehouse camera on a stationary rig: all of them need a frame entry in the main machine's frame tree, not only in the remote machine's.
 This page shows how to set that up.
 
 ## What the remote's frame field does
@@ -105,18 +105,18 @@ You have a design choice about where offsets live:
 
 **Put the full physical offset in the remote's frame.**
 The remote's own components stay at `parent: "world"` with no additional offset.
-One place to edit when you re-measure, and the remote's config stays trivial.
+You only edit one place when you re-measure, and the remote's config stays trivial.
 
 **Split between the remote's frame and per-component frames on the remote.**
 The remote's frame positions the remote's world at a meaningful anchor (a mount plate, a chassis corner).
 Each component on the remote has its own offset from there.
-Useful when the remote carries multiple components at different offsets, or when whoever owns that computer maintains its own config.
+This helps when the remote carries multiple components at different offsets, or when whoever owns that computer maintains its own config.
 
 ## Common mistakes
 
 - **Omitting the remote's `frame` entirely.** Without it, the remote's resources appear at the main machine's world origin. Motion planning uses bad poses and visualization overlays land in the wrong place.
-- **Configuring `frame` on the wrong side.** The `frame` inside a `remotes` entry lives in the config of the machine doing the remoting. The remote machine's own config does not know it is being remoted into; any frames it declares describe only its own local frame system.
-- **Forgetting that sub-parts share this mechanism.** A sub-part's frame, even when configured through the Viam app, is stored as a `frame` field on a `remotes` entry and follows the same rules.
+- **Configuring `frame` on the wrong side.** The `frame` inside a `remotes` entry lives in the config of the machine that adds the remote. The remote machine's own config does not know it is being remoted into; any frames it declares describe only its own local frame system.
+- **Forgetting that sub-parts share this mechanism.** Even when you configure a sub-part's frame through the Viam app, it is stored as a `frame` field on a `remotes` entry and follows the same rules.
 - **Referencing a parent that does not exist.** If `frame.parent` names a component you have not yet created, the frame system cannot attach the remote. Create the parent component first.
 
 ## Verify the result
@@ -142,7 +142,7 @@ camera_in_world = await machine.transform_pose(zero_in_camera, "world")
 print(camera_in_world)
 ```
 
-If the returned pose does not match your measurements, compare each field of the remote's `frame` config against the physical offset, and confirm the remote's own components declare the expected parent.
+If the returned pose does not match your measurements, compare each field in the remote's `frame` config against the physical offset, and confirm the remote's own components declare the expected parent.
 
 ## Next steps
 
