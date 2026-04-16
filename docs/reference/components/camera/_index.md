@@ -2,7 +2,7 @@
 title: "Camera Component"
 linkTitle: "Camera"
 childTitleEndOverwrite: "Camera Component"
-weight: 40
+weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in camera models."
 no_list: true
@@ -11,7 +11,6 @@ icon: true
 images: ["/icons/components/camera.svg"]
 aliases:
   - "/components/camera/"
-date: "2024-10-21"
 # SMEs: Bijan, vision team
 ---
 

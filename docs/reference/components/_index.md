@@ -1,6 +1,6 @@
 ---
-title: "Components"
-linkTitle: "Components"
+title: "Built-in components"
+linkTitle: "Built-in components"
 weight: 20
 type: docs
 layout: "empty"
