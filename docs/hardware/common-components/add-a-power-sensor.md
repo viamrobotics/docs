@@ -237,7 +237,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/power-sensor.md" >}}
 
-## What's next
+## Related
 
 - [Power sensor API reference](/reference/apis/components/power-sensor/): full method documentation.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): log power

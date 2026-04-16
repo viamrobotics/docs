@@ -271,7 +271,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/base.md" >}}
 
-## What's next
+## Related
 
 - [Base API reference](/reference/apis/components/base/): full method documentation.
 - [Add a Movement Sensor](/hardware/common-components/add-a-movement-sensor/): add

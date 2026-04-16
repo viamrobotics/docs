@@ -102,10 +102,7 @@ You can edit your machine's configuration in two ways:
 Both views edit the same underlying configuration. Changes in one are
 reflected in the other.
 
-## What's next
+## Related
 
-- [Add a component](/hardware/common-components/): step-by-step guides for
-  each component type.
+- [Add a component](/hardware/common-components/): find the right type and follow step-by-step guides for each component.
 - [Fragments](/hardware/fragments/): save and reuse working configurations.
-- [Component Types](/hardware/component-types/): find the right type and
-  model for your hardware.

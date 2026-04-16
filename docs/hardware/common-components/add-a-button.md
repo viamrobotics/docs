@@ -193,10 +193,10 @@ go run main.go
 
 {{< /expand >}}
 
-## What's next
+## Related
 
 - [Button API reference](/reference/apis/components/button/): full method documentation.
 - [What is a module?](/build-modules/overview/): write a module that
   responds to button presses.
-- [Component types](/hardware/component-types/): find the right type for
+- [Add a component](/hardware/common-components/): find the right type for
   your hardware.

@@ -285,7 +285,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/movement-sensor.md" >}}
 
-## What's next
+## Related
 
 - [Movement sensor API reference](/reference/apis/components/movement-sensor/): full method documentation.
 - [Add a Base](/hardware/common-components/add-a-base/): the movement sensor

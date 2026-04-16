@@ -264,7 +264,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/gripper.md" >}}
 
-## What's next
+## Related
 
 - [Gripper API reference](/reference/apis/components/gripper/): full method documentation.
 - [Add an arm](/hardware/common-components/add-an-arm/): configure the arm

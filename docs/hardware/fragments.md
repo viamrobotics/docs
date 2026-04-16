@@ -80,7 +80,7 @@ from a working config instead of building one from scratch.
 For the full walkthrough on creating and managing fragments, see
 [Reuse Machine Configuration](/fleet/reuse-configuration/).
 
-## What's next
+## Related
 
 - [Add a component](/hardware/common-components/): step-by-step guides for
   each component type.

@@ -284,7 +284,7 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/input-controller.md" >}}
 
-## What's next
+## Related
 
 - [Input controller API reference](/reference/apis/components/input-controller/): full method documentation.
 - [Add a Base](/hardware/common-components/add-a-base/): drive a mobile robot

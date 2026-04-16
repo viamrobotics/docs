@@ -210,10 +210,10 @@ go run main.go
 
 {{< readfile "/static/include/components/troubleshoot/generic.md" >}}
 
-## What's next
+## Related
 
 - [Generic API reference](/reference/apis/components/generic/): full method documentation.
 - [Write a driver module](/build-modules/write-a-driver-module/): create a
   module for your custom hardware.
-- [Component types](/hardware/component-types/): check if a more specific
+- [Add a component](/hardware/common-components/): check if a more specific
   component type fits your hardware before using generic.
