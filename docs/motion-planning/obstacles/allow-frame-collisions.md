@@ -211,7 +211,7 @@ as one unit, attach the object to the gripper frame system through
 `WorldState.transforms` on subsequent Move requests. See
 [Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/)
 for the runtime-attach/detach pattern and
-[Define obstacles: passive objects attached to a component](/motion-planning/obstacles/#passive-objects-attached-to-a-component)
+[Define obstacles: passive objects attached to a component](/motion-planning/obstacles/overview/#passive-objects-attached-to-a-component)
 for the permanent-attachment pattern.
 
 ## Use case: adjacent arm links whose geometries overlap
