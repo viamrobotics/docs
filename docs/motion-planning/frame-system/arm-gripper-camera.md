@@ -44,7 +44,7 @@ will refer to it every time you add or adjust a frame.
 
 ### 2. Add a frame to the arm
 
-In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/#edit-a-frame-in-the-viam-app).)
+In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
 
 If the arm base is your world frame origin:
 
@@ -209,7 +209,7 @@ Use the `TransformPose` API to confirm that the frame system computes correct tr
 Express the camera's origin `(0, 0, 0)` in the camera frame and transform it to the world frame.
 The result should match the physical position of the camera.
 
-For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/overview/#transformpose).
 
 ## Troubleshooting
 

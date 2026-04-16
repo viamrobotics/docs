@@ -48,7 +48,7 @@ are defined relative to this point.
 
 ### 2. Add a frame to the base
 
-In the **CONFIGURE** tab, click the base component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/#edit-a-frame-in-the-viam-app).) Edit the JSON for each component below as you go.
+In the **CONFIGURE** tab, click the base component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).) Edit the JSON for each component below as you go.
 
 ```json
 {
@@ -180,7 +180,7 @@ Use `TransformPose` to verify the full chain of transforms.
 For example, transform the wrist camera's origin from the camera frame to the world frame.
 The result should account for the base-to-arm offset, the arm's current joint positions, and the arm-to-camera offset.
 
-For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/overview/#transformpose).
 
 ## Troubleshooting
 

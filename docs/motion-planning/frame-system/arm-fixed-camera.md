@@ -41,7 +41,7 @@ Mark the origin physically so you can take consistent measurements to both the a
 
 ### 2. Add a frame to the arm
 
-In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/#edit-a-frame-in-the-viam-app).)
+In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
 
 Measure the distance from your world frame origin to the arm base along each axis.
 For an arm base 300 mm to the right and 250 mm forward from a table corner:
@@ -147,7 +147,7 @@ Use `TransformPose` to verify the relationship between the camera and arm frames
 Place an object at a known position visible to the camera, then transform that position from the camera frame to the world frame.
 The result should match the object's measured position in the workspace.
 
-For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/#transformpose).
+For details on the TransformPose API, see [Frame system: TransformPose](/motion-planning/frame-system/overview/#transformpose).
 
 ## Troubleshooting
 
