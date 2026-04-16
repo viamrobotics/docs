@@ -461,8 +461,14 @@ Check the Viam app to see your obstacle geometry:
 3. Obstacles defined in component frame configurations appear as translucent
    shapes in the 3D view.
 
-Dynamic obstacles (defined through WorldState in code) do not appear in the
-3D SCENE tab because they only exist during the `Move` call.
+{{< alert title="Dynamic obstacles are not visible in 3D SCENE" color="note" >}}
+
+Obstacles defined through `WorldState` in code exist only for the duration of a
+single `Move` call and are not drawn in the 3D SCENE tab. To verify a dynamic
+obstacle's position, log its pose from your code or add a temporary static
+geometry with the same dimensions to the component frame configuration.
+
+{{< /alert >}}
 
 ## Try it
 

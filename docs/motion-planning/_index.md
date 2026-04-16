@@ -44,7 +44,7 @@ fake components so you can run it on any machine:
 Motion planning in Viam connects several pieces:
 
 1. **Frame system**: a coordinate tree that tracks where every component is in
-   space. The frame system lets you specify target positions in any frame and
+   space. The frame system lets you specify target poses in any frame and
    translates between them automatically.
 
 2. **Kinematic model**: a description of the arm's joints and links that tells

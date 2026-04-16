@@ -1,5 +1,5 @@
 ---
-linkTitle: "Algorithms"
+linkTitle: "Motion planning algorithms"
 title: "Motion planning algorithms"
 weight: 50
 layout: "docs"
@@ -15,12 +15,12 @@ The builtin motion service uses one planning algorithm: cBiRRT. This page lists 
 
 ## Algorithm
 
-| Field        | Value                                                                  |
-| ------------ | ---------------------------------------------------------------------- |
-| Name         | cBiRRT (Constrained Bidirectional Rapidly-Exploring Random Tree)       |
-| Source code  | `rdk/motionplan/armplanning/cBiRRT.go`                                 |
-| Source paper | Berenson et al., _Manipulation planning on constraint manifolds_, 2009 |
-| Properties   | Sampling-based, bidirectional, probabilistic                           |
+| Field        | Value                                                                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name         | cBiRRT (Constrained Bidirectional Rapidly-Exploring Random Tree)                                                                             |
+| Source code  | `rdk/motionplan/armplanning/cBiRRT.go`                                                                                                       |
+| Source paper | Berenson et al., [_Manipulation planning on constraint manifolds_](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf), 2009 |
+| Properties   | Sampling-based, bidirectional, probabilistic                                                                                                 |
 
 ## Planning defaults
 

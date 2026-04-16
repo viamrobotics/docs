@@ -126,6 +126,13 @@ For most allow-list use cases, the parent component name (`"my-arm"`,
 know the exact sub-frame and other sub-frames must continue to be
 collision-checked.
 
+Passing the same name for both `frame1` and `frame2` (for example
+`AllowedFrameCollisions(frame1="my-arm", frame2="my-arm")`) disables all
+self-collision checks within that component: every link is whitelisted
+against every other link. Use this when the kinematic model reports
+false self-collisions between adjacent links but the arm is mechanically
+safe.
+
 ## Use case: arm detects itself through a vision service
 
 The single most common reason to reach for `CollisionSpecification`: an
@@ -202,6 +209,8 @@ collision_spec = CollisionSpecification(
 After the grasp, if you want to move the gripper plus its held object
 as one unit, attach the object to the gripper frame system through
 `WorldState.transforms` on subsequent Move requests. See
+[Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/)
+for the runtime-attach/detach pattern and
 [Define obstacles: passive objects attached to a component](/motion-planning/obstacles/#passive-objects-attached-to-a-component)
 for the permanent-attachment pattern.
 

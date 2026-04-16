@@ -1,6 +1,6 @@
 ---
-linkTitle: "Arm kinematics"
-title: "Arm kinematics"
+linkTitle: "Kinematics"
+title: "Kinematics"
 weight: 25
 layout: "docs"
 type: "docs"

@@ -62,8 +62,10 @@ differs.
 
 ### 1. Print a calibration target
 
-Print a standard chessboard calibration pattern (at least 8x6 inner corners).
-Mount it on a flat, rigid surface. Measure the square size with a ruler.
+Print a standard chessboard calibration pattern (at least 8x6 inner corners). The [Viam-labs calibration repository](https://github.com/viam-labs/camera-calibration) provides a
+ready-to-print [A4 8x6 25 mm checkerboard](https://github.com/viam-labs/camera-calibration/blob/main/Checkerboard-A4-25mm-8x6.pdf).
+Mount the print on a flat, rigid surface (foam board or a clipboard works well).
+Measure the square size with a ruler to confirm your printer did not scale the pattern.
 
 ### 2. Capture calibration images
 
@@ -227,6 +229,12 @@ fmt.Printf("  z=%.1f mm\n", pt.Z)
 
 If the computed position is within 10-20 mm of the measured position at a
 working distance of 500-1000 mm, your calibration is good.
+
+For a visual sanity check, open the [3D SCENE tab](/motion-planning/3d-scene/).
+The camera frame should sit in the correct position and orientation relative
+to the arm, and any visible obstacles should appear in plausible locations.
+See [Calibrate frame offsets](/motion-planning/3d-scene/calibrate-frame-offsets/)
+for the full workflow.
 
 ## Troubleshooting
 

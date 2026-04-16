@@ -25,7 +25,7 @@ Rapidly-Exploring Random Tree. This is the only planning algorithm in
 the built-in service. Modules may implement alternative planners, but
 cBiRRT handles the general arm-planning case.
 
-cBiRRT comes from Berenson et al., 2009. The name unpacks to three ideas:
+cBiRRT comes from [Berenson et al., 2009](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf). The name unpacks to three ideas:
 the "constrained" part enforces orientation and linear constraints, the
 "bidirectional" part searches from the start and the goal at the same time,
 and the "RRT" part samples random configurations to explore joint space.

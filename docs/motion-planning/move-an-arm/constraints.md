@@ -91,7 +91,10 @@ This is useful when:
 
 Frame names support hierarchical matching: specifying `"my-arm"` matches all
 sub-geometries of the arm (such as `my-arm:upper_arm_link`,
-`my-arm:forearm_link`).
+`my-arm:forearm_link`). For hierarchical matching details, self-collision
+patterns, and worked examples (arm detecting itself through a vision
+service, gripper holding an object), see
+[Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/).
 
 ## Using constraints in code
 

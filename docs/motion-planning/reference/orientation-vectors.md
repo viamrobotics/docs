@@ -14,6 +14,9 @@ aliases:
 
 When you specify a pose in Viam (in frame system configuration, a motion planning destination, or any other `Pose` payload), the orientation is expressed as one of five rotation formats. This page lists those formats, their schemas, common orientations, and validation rules.
 
+Viam's default format, the orientation vector (OV), is a variant of the
+[axis-angle representation](https://en.wikipedia.org/wiki/Axis%E2%80%93angle_representation): `(x, y, z)` is the rotation axis, and `th` is the rotation angle.
+
 ## Supported orientation formats
 
 Viam supports five orientation formats, specified with the `type` field in
@@ -32,9 +35,13 @@ The orientation vector format (axis plus angle in degrees). Use this for most co
 
 - `x`, `y`, `z`: components of the rotation axis vector (must be non-zero;
   normalized internally)
-- `th`: rotation angle in degrees
+- `th`: rotation angle in degrees. Values wrap every 360 degrees, so
+  `th: 370` and `th: 10` describe the same orientation.
 
 Default (identity): `{"x": 0, "y": 0, "z": 1, "th": 0}`. This represents no rotation.
+
+The axis must be a non-zero vector. `(x, y, z) = (0, 0, 0)` is a
+singularity: the rotation axis is undefined and validation rejects it.
 
 ### `ov_radians`
 
