@@ -1,6 +1,6 @@
 ---
 linkTitle: "Obstacles"
-title: "Define obstacles"
+title: "Obstacles"
 weight: 30
 layout: "docs"
 type: "docs"
