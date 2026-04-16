@@ -9,6 +9,10 @@ date: "2025-03-07"
 aliases:
   - /hardware-components/add-a-component/
   - /hardware/add-a-component/
+  - /operate/modules/configure-modules/
+  - /operate/modules/supported-hardware/
+  - /operate/modules/support-hardware/
+  - /operate/get-started/supported-hardware/
 ---
 
 Viam represents every piece of physical hardware on your machine as a

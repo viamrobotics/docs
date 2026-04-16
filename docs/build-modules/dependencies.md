@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "From within a modular resource, you can access other machine resources using dependencies."
 aliases:
+  - /operate/modules/advanced/dependencies/
+  - /operate/modules/other-hardware/dependencies/
+  - /operate/modules/support-hardware/create-module/dependencies/
 date: "2025-11-11"
 ---
 
