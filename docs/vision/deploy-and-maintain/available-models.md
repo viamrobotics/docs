@@ -12,9 +12,9 @@ The [Viam registry](https://app.viam.com/registry) has three kinds of entries yo
 
 ## Three kinds of entries
 
-- **ML model service implementations.** There is one ML model service API (`Infer`); multiple module implementations target different frameworks (TFLite, ONNX, TensorFlow, PyTorch) and sometimes specific hardware (CPU, GPU on Jetson). When you add an ML model service to your machine, you pick one of these implementations.
-- **Vision service models.** There is one vision service API (`GetDetections`, `GetClassifications`, `GetObjectPointClouds`, `CaptureAllFromCamera`, `GetProperties`); three models ship built in (`mlmodel`, `color_detector`, `viam:vision:detections-to-segments`) and registry modules add more for specialized tasks. You pick a vision service model when you configure a vision service.
-- **Public ML models.** Model artifacts (weights plus metadata) published to the registry so any machine can deploy them without training. Your ML model service loads one of these.
+- **ML model service implementations.** The ML model service has one API method, `Infer`, but the registry offers multiple module implementations of that service. Each implementation targets a specific framework: TFLite, ONNX, TensorFlow, or PyTorch. Some also target specific hardware like CPU or GPU on Jetson. When you add an ML model service to your machine, you pick one implementation.
+- **Vision service models.** The vision service has one API that covers detection, classification, and 3D segmentation (see the [full API reference](/reference/apis/services/vision/)). Multiple models implement that API. Three ship built into Viam: `mlmodel`, `color_detector`, and `viam:vision:detections-to-segments`. Registry modules add more for specialized tasks. You pick a vision service model when you configure a vision service.
+- **Public ML models.** Model artifacts (the weights plus metadata) published to the registry so any machine can deploy them without training. Your ML model service loads one of these.
 
 A typical pipeline uses one of each: a camera → an ML model service implementation running a public ML model → a vision service model interpreting its output.
 

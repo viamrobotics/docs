@@ -449,19 +449,16 @@ The result is a point in millimeters, in the camera's frame (x right, y down, z 
 
 **Transform to a shared frame:**
 
-Use the motion service's [`TransformPose`](/reference/apis/services/motion/) method to convert the camera-frame pose into whatever frame your application uses (arm base, robot base, world). `TransformPose` uses the [frame system](/motion-planning/frame-system/) configuration, which records where the camera is mounted relative to other components:
+Call `transform_pose` on your `RobotClient` to convert the camera-frame pose into whatever frame your application uses: the arm base, the robot base, the world. `transform_pose` reads the [frame system](/motion-planning/frame-system/) configuration, which records where the camera is mounted relative to other components:
 
 ```python
-from viam.services.motion import MotionClient
 from viam.proto.common import Pose, PoseInFrame
-
-motion = MotionClient.from_robot(robot, "builtin")
 
 camera_pose = PoseInFrame(
     reference_frame="my-depth-camera",
     pose=Pose(x=x_camera, y=y_camera, z=z_camera, o_x=0, o_y=0, o_z=1, theta=0),
 )
-arm_pose = await motion.transform_pose(camera_pose, "my-arm")
+arm_pose = await robot.transform_pose(camera_pose, "my-arm")
 print(f"Object at arm-frame position: ({arm_pose.pose.x:.0f}, {arm_pose.pose.y:.0f}, {arm_pose.pose.z:.0f}) mm")
 ```
 
@@ -486,7 +483,7 @@ The fake camera generates both color images and simulated point cloud data. The 
 
 ### 8. Configure camera intrinsic parameters
 
-Intrinsic parameters apply to camera-based depth sensors (structured light cameras like the Intel RealSense D400 series, stereo cameras like the OAK-D) where depth data arrives as a 2D depth map that gets projected into 3D using the camera's internal geometry. LiDAR and time-of-flight sensors that return 3D points directly (Intel RealSense L515, solid-state lidars) don't use intrinsics the same way. Check your sensor's datasheet if you're not sure.
+Intrinsic parameters apply to camera-based depth sensors that capture depth as a 2D map and then project it into 3D using the camera's internal geometry. This covers structured light cameras like the Intel RealSense D400 series and stereo cameras like the OAK-D. Sensors that return 3D points directly, such as the Intel RealSense L515 and solid-state lidars, don't use intrinsics the same way. Check your sensor's datasheet if you're not sure.
 
 If your camera does not automatically provide intrinsic parameters, you can set them manually in the configuration.
 
