@@ -14,8 +14,13 @@ aliases:
 
 When you specify a pose in Viam (in frame system configuration, a motion planning destination, or any other `Pose` payload), the orientation is expressed as one of five rotation formats. This page lists those formats, their schemas, common orientations, and validation rules.
 
-Viam's default format, the orientation vector (OV), is a variant of the
-[axis-angle representation](https://en.wikipedia.org/wiki/Axis%E2%80%93angle_representation): `(x, y, z)` is the rotation axis, and `th` is the rotation angle.
+Viam's default format, the orientation vector (OV), is structured similarly
+to the
+[axis-angle representation](https://en.wikipedia.org/wiki/Axis%E2%80%93angle_representation)
+but interpreted differently: `(x, y, z)` is the unit vector along which the
+component points (for an arm, the direction the end effector points from the
+origin), and `th` is the rotation around that pointing direction. The
+pointing direction and the rotation axis coincide.
 
 ## Supported orientation formats
 

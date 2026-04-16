@@ -157,23 +157,31 @@ button, an external sensor, a higher-level task abort) should call
 {{% tab name="Python" %}}
 
 ```python
-async def watch_for_abort(motion_service, component_name, stop_event):
-    while not stop_event.is_set():
+# `safety_condition_triggered()` is your application-specific check
+# (a button, a sensor reading, an external abort signal).
+async def watch_for_abort(motion_service, component_name):
+    while True:
         if await safety_condition_triggered():
             await motion_service.stop_plan(component_name=component_name)
             return
         await asyncio.sleep(0.1)
 
-# Run the poll loop and the watchdog concurrently.
-stop_event = asyncio.Event()
-try:
-    await asyncio.gather(
-        poll_until_terminal(motion_service, "my-base", execution_id),
-        watch_for_abort(motion_service, "my-base", stop_event),
-    )
-finally:
-    stop_event.set()
+# Run the poll loop and the watchdog concurrently. The first task to
+# finish wins; cancel the other so it does not run forever.
+poll_task = asyncio.create_task(
+    poll_until_terminal(motion_service, "my-base", execution_id)
+)
+watch_task = asyncio.create_task(
+    watch_for_abort(motion_service, "my-base")
+)
+done, pending = await asyncio.wait(
+    {poll_task, watch_task}, return_when=asyncio.FIRST_COMPLETED,
+)
+for task in pending:
+    task.cancel()
 ```
+
+Wrap the polling logic in `poll_until_terminal(motion_service, component_name, execution_id)` (the `while True` body from the polling pattern above).
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -207,8 +215,9 @@ go func() {
 
 After `StopPlan` returns, the plan's terminal state transitions to
 `STOPPED`. The polling loop then exits on the next `GetPlan` cycle.
-`StopPlan` is idempotent: calling it on a plan that has already reached
-a terminal state is safe.
+Behavior when calling `StopPlan` on a plan that has already reached a
+terminal state depends on the implementation; check the docs for the
+specific motion-service module you are using.
 
 ## Replanning and ExecutionID
 

@@ -60,7 +60,7 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 | Strafe camera            |                   | `W`/`A`/`S`/`D`      |
 | Select entity            | Left-click        |                      |
 | Deselect                 | Click empty space |                      |
-| Exit focus mode          |                   | `Escape`             |
+| Exit object view         |                   | `Escape`             |
 | Toggle camera mode       |                   | `C`                  |
 | Toggle entity visibility |                   | `H`                  |
 

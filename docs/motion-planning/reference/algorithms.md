@@ -15,12 +15,12 @@ The builtin motion service uses one planning algorithm: cBiRRT. This page lists 
 
 ## Algorithm
 
-| Field        | Value                                                                                                                                        |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name         | cBiRRT (Constrained Bidirectional Rapidly-Exploring Random Tree)                                                                             |
-| Source code  | `rdk/motionplan/armplanning/cBiRRT.go`                                                                                                       |
-| Source paper | Berenson et al., [_Manipulation planning on constraint manifolds_](https://www.ri.cmu.edu/pub_files/2009/5/berenson_dmitry_2009_2.pdf), 2009 |
-| Properties   | Sampling-based, bidirectional, probabilistic                                                                                                 |
+| Field        | Value                                                                                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Name         | cBiRRT (Constrained Bidirectional Rapidly-Exploring Random Tree)                                                                                             |
+| Source code  | `rdk/motionplan/armplanning/cBiRRT.go`                                                                                                                       |
+| Source paper | Berenson et al., [_Manipulation planning on constraint manifolds_](https://www.ri.cmu.edu/publications/manipulation-planning-on-constraint-manifolds/), 2009 |
+| Properties   | Sampling-based, bidirectional, probabilistic                                                                                                                 |
 
 ## Planning defaults
 
@@ -40,10 +40,10 @@ The planner-relevant entries are:
 
 Callers override a default in one of two places: persistently in the motion service config, or per call through the `extra` map on a `Move` request. The table below shows which tunables live where.
 
-| Where                                | Scope                   | Example tunables                                                    |
-| ------------------------------------ | ----------------------- | ------------------------------------------------------------------- |
-| Motion service config (`attributes`) | Persistent, per-service | `num_threads`, `input_range_override`, planner-diagnostic flags     |
-| `extra` map on a Move request        | Per-request             | `collision_buffer_mm`, `max_ik_solutions`, `timeout`, `smooth_iter` |
+| Where                                | Scope                   | Example tunables                                                |
+| ------------------------------------ | ----------------------- | --------------------------------------------------------------- |
+| Motion service config (`attributes`) | Persistent, per-service | `num_threads`, `input_range_override`, planner-diagnostic flags |
+| `extra` map on a Move request        | Per-request             | `collision_buffer_mm`, `max_ik_solutions`, `timeout`            |
 
 See [Motion service configuration](/motion-planning/reference/motion-service/)
 for the full list of configuration attributes.

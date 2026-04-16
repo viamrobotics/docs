@@ -38,7 +38,9 @@ command prints.
 ```python
 parts = await machine.get_frame_system_config()
 for part in parts:
-    print(part.name, "parent:", part.pose_in_parent_frame.reference_frame)
+    name = part.frame.reference_frame
+    parent = part.frame.pose_in_observer_frame.reference_frame
+    print(name, "parent:", parent)
 ```
 
 {{% /tab %}}
@@ -245,11 +247,11 @@ Transform a point cloud from one reference frame to another. Useful for
 aligning point clouds from multiple cameras into a common frame, or for
 expressing lidar scans in world coordinates.
 
-| Parameter      | Description                                                 |
-| -------------- | ----------------------------------------------------------- |
-| `source`       | The source point cloud (bytes, PCD format).                 |
-| `source_frame` | The reference frame the source point cloud is expressed in. |
-| `destination`  | The reference frame to express the point cloud in.          |
+| Parameter         | Description                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| `point_cloud_pcd` | The source point cloud (bytes, PCD format).                                        |
+| `source`          | The reference frame the source point cloud is expressed in.                        |
+| `destination`     | The reference frame to express the point cloud in. Defaults to `"world"` if unset. |
 
 Returns the transformed point cloud (bytes).
 

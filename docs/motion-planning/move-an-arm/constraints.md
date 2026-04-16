@@ -52,9 +52,9 @@ Forces the end effector to maintain a consistent orientation throughout the
 motion. Use this when the end effector must stay level or keep a fixed
 orientation (for example, carrying a liquid).
 
-| Parameter                    | Type             | Description                                                                  |
-| ---------------------------- | ---------------- | ---------------------------------------------------------------------------- |
-| `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation, in degrees. Only checked when greater than 0. |
+| Parameter                    | Type             | Description                                                                                                                                               |
+| ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orientation_tolerance_degs` | float (required) | Maximum orientation deviation, in degrees, for orientations that fall outside the start-to-goal box. A value of 0 rejects any deviation outside that box. |
 
 The planner checks each orientation vector component (`OX`, `OY`, `OZ`,
 `Theta`) against the start and goal independently. If every component of

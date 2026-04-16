@@ -46,13 +46,15 @@ A robot arm is modeled as a chain of rigid bodies (links) connected by joints:
   optionally a geometry (for collision checking). Links do not move on their
   own. They are moved by the joints that connect them.
 - **Joints** connect two links and define how they can move relative to each
-  other. Viam supports four joint types:
+  other. Viam's SVA JSON format supports two joint types directly:
   - **Revolute**: rotates around an axis (like an elbow or shoulder). Limits in
     degrees.
   - **Prismatic**: slides along an axis (like a linear actuator). Limits in
     millimeters.
-  - **Continuous**: like revolute, but with no joint limits (full rotation).
-  - **Fixed**: no degrees of freedom (used in URDF files for rigid attachments).
+- URDF files may also declare **continuous** and **fixed** joints. Viam's URDF
+  importer converts continuous joints to revolute joints with infinite limits
+  and folds fixed joints into static link offsets. SVA JSON rejects either
+  type with an unsupported-joint-type error.
 
 ### Joint limits
 
@@ -197,6 +199,12 @@ Each field:
 - **`joints[].axis`**: the axis of rotation or translation (unit vector)
 - **`joints[].min`** / **`joints[].max`**: joint limits in degrees (revolute)
   or mm (prismatic)
+- **`joints[].mimic`** (optional): make this joint follow another joint at a
+  fixed multiplier and offset, for parallel-jaw grippers and other mechanically
+  coupled axes. The mimic object takes `joint` (the source joint's `id`),
+  `multiplier`, and `offset`; the joint's value is computed as
+  `multiplier * source_value + offset`. Mimic joints must not declare their own
+  `min`/`max`; the source joint's limits apply.
 
 ### 3. Import a URDF file
 
