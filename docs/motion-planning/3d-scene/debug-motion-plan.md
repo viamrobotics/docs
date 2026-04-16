@@ -1,7 +1,7 @@
 ---
 linkTitle: "Debug a motion plan"
 title: "Debug a motion plan"
-weight: 10
+weight: 45
 layout: "docs"
 type: "docs"
 description: "Use the 3D scene to inspect the frame system and obstacle geometry behind a motion plan that failed or produced unexpected results."
