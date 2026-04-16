@@ -737,7 +737,7 @@ If you update and release your module as part of a continuous integration (CI) w
 viam module generate
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
-viam module update-models --binary=<binary> [...named args]
+viam module update-models [--binary=<binary>] [...named args]
 viam module build start --version=<version> [...named args]
 viam module build local --module=<path to meta.json> [arguments...]
 viam module build list [command options] [arguments...]
@@ -870,7 +870,7 @@ viam module local-app-testing --app-url http://localhost:3000
 <!-- prettier-ignore -->
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
-| `--binary` | The binary for the module to run. The binary has to work on the OS or processor of the device. | `update-models` | **Required** |
+| `--binary` | The module executable to run (binary or script). Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | `update-models` | Optional |
 | `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
 | `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |
