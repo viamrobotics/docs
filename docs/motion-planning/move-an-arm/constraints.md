@@ -56,9 +56,15 @@ orientation (for example, carrying a liquid).
 | ---------------------------- | ---------------- | ---------------------------------------------------------------------------- |
 | `orientation_tolerance_degs` | float (optional) | Maximum orientation deviation, in degrees. Only checked when greater than 0. |
 
-The planner checks that the current orientation stays within the specified
-tolerance of whichever is closer: the start orientation or the goal orientation.
-This allows smooth transitions when start and goal have different orientations.
+The planner checks each orientation vector component (`OX`, `OY`, `OZ`,
+`Theta`) against the start and goal independently. If every component of
+the current orientation falls between the corresponding components of the
+start and goal, the constraint is satisfied with zero error. Otherwise the
+planner measures the angular distance to whichever is closer, start or
+goal, and rejects the path if that distance exceeds
+`orientation_tolerance_degs`. This per-component check allows smooth
+transitions when start and goal have different orientations, and the
+tolerance provides a cushion on either side.
 
 ### PseudolinearConstraint
 

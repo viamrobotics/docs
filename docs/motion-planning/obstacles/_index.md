@@ -93,6 +93,14 @@ to the motion service at call time. It contains:
 
 You construct a WorldState in your code and pass it to the `Move` call.
 
+Transforms merge into the frame system by addition only. The motion
+service builds a fresh frame system for each call, appends the configured
+parts, then appends each transform from `WorldState.transforms`. A
+transform with a name that already exists in the configured frame system
+causes the call to fail with a `frame already exists` error. Use
+transforms to introduce new frames (a detected object, a picked-up
+workpiece), not to rewrite the pose of an existing component.
+
 ### Keep-out zones
 
 A keep-out zone is a region of space where the robot should never enter. Define

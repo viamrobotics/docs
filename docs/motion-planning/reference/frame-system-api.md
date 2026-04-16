@@ -167,6 +167,78 @@ modify the stored frame system configuration.
 
 **Python kwarg naming.** In Python, `MotionClient.get_pose` takes `supplemental_transforms`; `RobotClient.transform_pose` and `RobotClient.get_frame_system_config` take `additional_transforms`. The proto field and all Go methods use `supplemental_transforms`. Pass the kwarg that matches the client class you call.
 
+#### Worked example: transform a detected object to the world frame
+
+Suppose a camera at frame `my-camera` has detected a box 400 mm in
+front of it. The box is not configured in the machine's frame system,
+but you want to compute its world-frame pose so an arm can plan a
+motion to it.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.proto.common import PoseInFrame, Pose, Transform
+
+# 1. Declare the detected box as a supplemental transform.
+#    The Transform's reference_frame is the parent; the pose is the
+#    box's position in that parent.
+detected_box = Transform(
+    reference_frame="detected-box",
+    pose_in_observer_frame=PoseInFrame(
+        reference_frame="my-camera",
+        pose=Pose(x=0, y=0, z=400, o_x=0, o_y=0, o_z=1, theta=0),
+    ),
+)
+
+# 2. Ask the motion service where the box sits in the world frame.
+box_in_world = await motion_service.get_pose(
+    component_name="detected-box",
+    destination_frame="world",
+    supplemental_transforms=[detected_box],
+)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+    "github.com/golang/geo/r3"
+    "go.viam.com/rdk/referenceframe"
+    "go.viam.com/rdk/spatialmath"
+)
+
+// 1. Build a LinkInFrame: detected-box is parented to my-camera,
+//    sitting 400 mm in front along camera z.
+detectedBox := referenceframe.NewLinkInFrame(
+    "my-camera",
+    spatialmath.NewPose(
+        r3.Vector{X: 0, Y: 0, Z: 400},
+        &spatialmath.OrientationVectorDegrees{OZ: 1},
+    ),
+    "detected-box",
+    nil, // optional geometry
+)
+
+// 2. Ask the robot service for its world-frame pose.
+boxInWorld, err := machine.GetPose(
+    ctx,
+    "detected-box",
+    referenceframe.World,
+    []*referenceframe.LinkInFrame{detectedBox},
+    nil, // extra
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The transform is discarded after this call. If you want the box to
+participate in a motion plan (as an obstacle, or as a component the
+arm navigates relative to), pass the same transform on the motion
+`Move` request through `WorldState.transforms`.
+
 ## TransformPCD
 
 Transform a point cloud from one reference frame to another. Useful for

@@ -146,6 +146,70 @@ err = motionService.StopPlan(ctx, motion.StopPlanReq{ComponentName: "my-base"})
 {{% /tab %}}
 {{< /tabs >}}
 
+### Safety-stop pattern
+
+A non-blocking motion runs independently of your polling loop. Treat `StopPlan`
+as the cut-off switch: any condition your application reads (a safety
+button, an external sensor, a higher-level task abort) should call
+`StopPlan` directly without waiting for the polling loop to notice.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+async def watch_for_abort(motion_service, component_name, stop_event):
+    while not stop_event.is_set():
+        if await safety_condition_triggered():
+            await motion_service.stop_plan(component_name=component_name)
+            return
+        await asyncio.sleep(0.1)
+
+# Run the poll loop and the watchdog concurrently.
+stop_event = asyncio.Event()
+try:
+    await asyncio.gather(
+        poll_until_terminal(motion_service, "my-base", execution_id),
+        watch_for_abort(motion_service, "my-base", stop_event),
+    )
+finally:
+    stop_event.set()
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// Run the poll loop and the watchdog in separate goroutines.
+watchCtx, cancelWatch := context.WithCancel(ctx)
+defer cancelWatch()
+
+go func() {
+    ticker := time.NewTicker(100 * time.Millisecond)
+    defer ticker.Stop()
+    for {
+        select {
+        case <-watchCtx.Done():
+            return
+        case <-ticker.C:
+            if safetyConditionTriggered() {
+                _ = motionService.StopPlan(ctx, motion.StopPlanReq{
+                    ComponentName: "my-base",
+                })
+                return
+            }
+        }
+    }
+}()
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+After `StopPlan` returns, the plan's terminal state transitions to
+`STOPPED`. The polling loop then exits on the next `GetPlan` cycle.
+`StopPlan` is idempotent: calling it on a plan that has already reached
+a terminal state is safe.
+
 ## Replanning and ExecutionID
 
 If the motion service replans during execution (for example, after the
