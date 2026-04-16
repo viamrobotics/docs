@@ -37,7 +37,7 @@ Two things matter here:
 - **The model file itself** (`model_path` in the JSON) — the weights the service loads.
 - **The label file** (`label_path`) — a plain text file that maps the numeric class IDs the model outputs to human-readable names. A detector that outputs class `3` doesn't mean anything on its own; the label file translates that to `dog` or whatever class 3 was at training time. Registry models ship with this file; for local models you provide your own.
 
-Both paths resolve to whatever you give them: a package reference like `${packages.my-model}/labels.txt` for registry models, or an absolute path on the machine for local files. You can inspect a registry model's bundled `labels.txt` by looking in `${packages.my-model}/` after first deploy, or by opening the model's detail view on [app.viam.com/models](https://app.viam.com/models).
+Both paths resolve to whatever you give them: a package reference like `${packages.ml_model.my-model}/labels.txt` for registry models, or an absolute path on the machine for local files. You can inspect a registry model's bundled `labels.txt` by looking in `${packages.ml_model.my-model}/` after first deploy, or by opening the model's detail view on [app.viam.com/models](https://app.viam.com/models).
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
@@ -55,17 +55,30 @@ Behind the scenes the builder adds a `packages` entry for the model and sets `mo
 
 ```json
 {
-  "name": "my-ml-model",
-  "api": "rdk:service:mlmodel",
-  "model": "tflite_cpu",
-  "attributes": {
-    "model_path": "${packages.my-model}/model.tflite",
-    "label_path": "${packages.my-model}/labels.txt"
-  }
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "latest",
+      "type": "ml_model"
+    }
+  ],
+  "services": [
+    {
+      "name": "my-ml-model",
+      "api": "rdk:service:mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {
+        "package_reference": "<org-id>/my-model",
+        "model_path": "${packages.ml_model.my-model}/my-model.tflite",
+        "label_path": "${packages.ml_model.my-model}/labels.txt"
+      }
+    }
+  ]
 }
 ```
 
-`${packages.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package. The `packages` array at the top level of the machine config (not shown here) names the package to download.
+`${packages.ml_model.my-model}` resolves to the directory where the [registry](https://app.viam.com/registry) package was downloaded. Replace `my-model` with the name of your deployed model package and `<org-id>` with the UUID of the organization that owns it. `package_reference` is the same `<org-id>/my-model` identifier. The file name inside the placeholder (`my-model.tflite`, `labels.txt`) matches the actual file names inside the package; the Builder flow in the previous tab fills these in automatically based on what the registry model contains.
 
 {{% /tab %}}
 {{% tab name="JSON — local model file" %}}
@@ -146,14 +159,23 @@ With both services saved, a minimal end-to-end configuration (camera + ML model 
       "attributes": {}
     }
   ],
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "latest",
+      "type": "ml_model"
+    }
+  ],
   "services": [
     {
       "name": "my-ml-model",
       "api": "rdk:service:mlmodel",
       "model": "tflite_cpu",
       "attributes": {
-        "model_path": "${packages.my-model}/model.tflite",
-        "label_path": "${packages.my-model}/labels.txt"
+        "package_reference": "<org-id>/my-model",
+        "model_path": "${packages.ml_model.my-model}/my-model.tflite",
+        "label_path": "${packages.ml_model.my-model}/labels.txt"
       }
     },
     {

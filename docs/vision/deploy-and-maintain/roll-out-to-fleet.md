@@ -28,24 +28,38 @@ Before updating any production machine:
 
 ## Pin the new version in a fragment
 
-If your fleet shares a [fragment](/hardware/fragments/), update the ML model service's `model_version` attribute in the fragment:
+If your fleet shares a [fragment](/hardware/fragments/), update the `version` field on the ML model package in the fragment's `packages` array:
 
 ```json
 {
-  "name": "my-ml-model",
-  "api": "rdk:service:mlmodel",
-  "model": "tflite_cpu",
-  "attributes": {
-    "model_path": "${packages.my-model}/model.tflite",
-    "label_path": "${packages.my-model}/labels.txt",
-    "model_version": "2025-04-14T16-38-25"
-  }
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "2025-04-14T16-38-25",
+      "type": "ml_model"
+    }
+  ],
+  "services": [
+    {
+      "name": "my-ml-model",
+      "api": "rdk:service:mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {
+        "package_reference": "<org-id>/my-model",
+        "model_path": "${packages.ml_model.my-model}/my-model.tflite",
+        "label_path": "${packages.ml_model.my-model}/labels.txt"
+      }
+    }
+  ]
 }
 ```
 
+The service attributes (`package_reference`, `model_path`, `label_path`) stay the same across versions. The version is pinned at the package level.
+
 Save the fragment. Every machine using it picks up the change on its next config sync (within seconds under normal operation).
 
-Tracking "latest" is simpler but less safe for production. Any new version published to the [registry](https://app.viam.com/registry) auto-deploys. Pin specific versions when you want to control when rollouts happen.
+Tracking `latest` (set `"version": "latest"`) is simpler but less safe for production: any new version published to the [registry](https://app.viam.com/registry) auto-deploys. Pin specific timestamps when you want to control when rollouts happen.
 
 ## Stage the rollout
 
