@@ -84,6 +84,23 @@ Settings are grouped by what they affect: connection, scene decoration, point cl
 You can drag and drop `.pcd`, `.ply`, or `.json` (scene snapshot) files directly onto the 3D viewport to load external data into the scene.
 This is useful for loading saved SLAM maps or point cloud captures for comparison with your live frame system.
 
+## Link related entities (HoverLink)
+
+When you select a point cloud or arrows entity (typically dropped PCD or PLY files), the Details panel shows an **Add Relationship** button. Use this to link two indexable entities so that hovering an item in one entity highlights the corresponding item in the other.
+
+To add a HoverLink:
+
+1. Select a point cloud or arrows entity in the World panel.
+2. In the Details panel, click **Add Relationship**.
+3. Pick **HoverLink** as the relationship type.
+4. Pick a second entity from the **Entity** dropdown.
+5. Set an **Index mapping** formula. The default `index` maps point N in the source to point N in the target. Other expressions over `index` map between non-aligned datasets.
+6. Click **Add**.
+
+After the link is added, hovering a point in the source entity highlights the matching point in the target entity (and updates the hover tooltip with both points' positions). Existing links appear under **Relationships** in the Details panel and have per-link remove buttons.
+
+This is useful for comparing point clouds that should align (a registered scan against a transformed version, ground-truth points against predicted points) without flipping back and forth between separate views.
+
 ## How-to guides
 
 {{< cards >}}
