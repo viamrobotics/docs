@@ -11,14 +11,14 @@ Configure system-level settings for deployed machines. These settings are manage
 
 ## Agent version control
 
-Control which versions of `viam-agent` and `viam-server` run on the machine.
+Control which versions of `viam-agent` and `viam-server` run on each machine.
 
-In the machine settings card, open **Settings** and expand **Software Updates**:
+Version selection is managed in the Viam app, not in the machine's JSON configuration. In the machine settings card, open **Settings** and expand **Software Updates**:
 
-| Field         | Type   | Default    | Description                                                                                            |
-| ------------- | ------ | ---------- | ------------------------------------------------------------------------------------------------------ |
-| `agent`       | string | `"stable"` | Version of viam-agent. Options: a semver string (`"5.6.77"`), `"stable"`, or a URL to a custom binary. |
-| `viam-server` | string | `"stable"` | Version of viam-server. Same options as agent.                                                         |
+- **Agent version**: choose `stable`, a specific semver release such as `5.6.77`, or a URL to a custom binary.
+- **viam-server version**: choose `stable`, a specific semver release, or a URL to a custom binary.
+
+When you change a version, the cloud sends an update instruction to viam-agent on the machine. The agent downloads and installs the new version on its next check cycle. To control when the new version actually starts, configure a [maintenance window](/fleet/manage-versions/#maintenance-windows). To verify the new version landed across the fleet, see [verify a rollout across the fleet](/fleet/manage-versions/#verify-a-rollout-across-the-fleet).
 
 ## Agent advanced settings
 

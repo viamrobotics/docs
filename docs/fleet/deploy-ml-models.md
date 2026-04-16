@@ -58,13 +58,15 @@ Apply the fragment to your machines through the Viam app, provisioning, or CLI. 
 1. Find the vision service card and test it with a live camera feed to confirm detections or classifications appear.
 1. Check the **LOGS** tab for errors from the ML model service or vision service.
 
-## Update a model across the fleet
+## Update or roll back a model across the fleet
 
 When you retrain and upload a new model version:
 
 - **Tracking latest**: machines update on their next config sync (or within the maintenance window).
 - **Using fragment tags**: update the fragment configuration with the new model version, save to create a new revision, then move the `stable` tag to the new revision.
 - **Pinned to a version**: update the version string in the fragment and save.
+
+Rolling back follows the same pattern in reverse: change the version pin or move the tag back to a previous revision. Viam does not automatically roll back if a new model performs worse, so you change the pin or tag manually.
 
 ## Related pages
 

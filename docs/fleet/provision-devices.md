@@ -101,7 +101,7 @@ Run the script from the same directory that contains your `viam-defaults.json` f
 sudo ./preinstall.sh
 ```
 
-The script picks up `viam-defaults.json` from the current directory and copies it along with `viam-agent` to the appropriate locations on the device. For Raspberry Pi, it modifies the first-run script to start `viam-agent` on boot.
+The script picks up `viam-defaults.json` from the current directory and copies it along with `viam-agent` to the appropriate locations on the device. For Raspberry Pi, it modifies the first-run script to start `viam-agent` on boot. The exact mechanism depends on the image: cloud-init-based images get an entry added to the cloud-init `user-data` file; older images get an entry in `firstrun.sh`.
 
 To install onto an external rootfs (for example, a mounted SD card image):
 

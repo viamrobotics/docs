@@ -36,7 +36,7 @@ If you cannot shell into the machine, power cycle it. If the current network is 
 If the machine is still connected to its current network and you want to add a second network (for example, when moving between locations):
 
 1. Add the new network credentials in the machine's system settings. See [configure additional networks](/fleet/system-settings/#configure-additional-networks).
-1. Set the `priority` value higher than the current network if you want the machine to prefer the new one.
+1. Set the `priority` value higher than the current network's priority if you want the machine to prefer the new one. Priority is an integer; higher values win. Default is `0`.
 1. Save the configuration. The machine picks up the new network on its next config sync.
 
 ## Option 3: Pre-configure multiple networks during provisioning
