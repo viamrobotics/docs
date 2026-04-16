@@ -1,7 +1,7 @@
 ---
-linkTitle: "Constraints"
+linkTitle: "Configure constraints"
 title: "Configure motion constraints"
-weight: 50
+weight: 5
 layout: "docs"
 type: "docs"
 description: "Restrict how the arm moves between poses using linear, orientation, and collision constraints."

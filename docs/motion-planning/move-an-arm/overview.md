@@ -53,10 +53,10 @@ from the table above.
 ## How-tos
 
 {{< cards >}}
+{{% card link="/motion-planning/move-an-arm/constraints/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/move-with-constraints/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/move-by-joint-positions/" noimage="true" %}}
-{{% card link="/motion-planning/move-an-arm/constraints/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/pick-an-object/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/place-an-object/" noimage="true" %}}
 {{< /cards >}}
