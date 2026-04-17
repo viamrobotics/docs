@@ -46,17 +46,17 @@ func main() {
 		logger.Info(detections[0])
 	}
 
-	// Get the stream from a camera
+	// Get images from a camera
 	cam, err := camera.FromProvider(machine, "cam")
 	if err != nil {
 		logger.Error(err)
 		return
 	}
-	camStream, err := cam.Stream(context.Background())
-
-	// Get an image from the camera stream
-	img, release, err := camStream.Next(context.Background())
-	defer release()
+	images, _, err := cam.Images(context.Background(), nil, nil)
+	if err != nil {
+		logger.Error(err)
+		return
+	}
 
 	myDetectorService2, err := vision.FromProvider(machine, "my_detector")
 	if err != nil {
@@ -65,7 +65,7 @@ func main() {
 	}
 
 	// Get the detections from the image
-	detections2, err := myDetectorService2.Detections(context.Background(), img, nil)
+	detections2, err := myDetectorService2.Detections(context.Background(), images[0].Image, nil)
 	if err != nil {
 		logger.Fatalf("Could not get detections: %v", err)
 	}
@@ -89,21 +89,17 @@ func main() {
 	}
 
 
-	// Get the stream from a camera
+	// Get images from a camera
 	cam1, err := camera.FromProvider(machine, "cam")
 	if err != nil {
 		logger.Error(err)
 		return
 	}
-	camStream1, err := cam1.Stream(context.Background())
-	if err!=nil {
+	images1, _, err := cam1.Images(context.Background(), nil, nil)
+	if err != nil {
 		logger.Error(err)
 		return
 	}
-
-	// Get an image from the camera stream
-	img1, release1, err := camStream1.Next(context.Background())
-	defer release1()
 
 	myClassifierService1, err := vision.FromProvider(machine, "my_classifier")
 	if err != nil {
@@ -111,7 +107,7 @@ func main() {
 		return
 	}
 	// Get the 2 classifications with the highest confidence scores from the image
-	classifications1, err := myClassifierService1.Classifications(context.Background(), img1, 2, nil)
+	classifications1, err := myClassifierService1.Classifications(context.Background(), images1[0].Image, 2, nil)
 	if err != nil {
 		logger.Fatalf("Could not get classifications: %v", err)
 	}

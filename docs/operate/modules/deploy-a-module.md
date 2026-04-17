@@ -177,6 +177,15 @@ binary built for one architecture (for example, `linux/amd64`) is uploaded for a
 different one (for example, `linux/arm64`), resulting in exec format errors on the
 target machine.
 
+If this is your first time deploying this module, you need to create it in the registry before uploading:
+
+```bash
+viam module create --name <module-name> --public-namespace <your-namespace>
+```
+
+This registers the module ID so the registry knows about it. You only need to do this once, after that, builds and uploads will work.
+If you used viam module generate, this step may have been done for you automatically.
+
 The generator creates the workflow file at
 `.github/workflows/deploy.yml`. To use it:
 

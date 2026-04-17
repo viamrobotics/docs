@@ -60,7 +60,7 @@ async def main() -> int:
             part_id=PART_ID,
             component_type="camera",
             component_name=CAMERA_NAME,
-            method_name="GetImage",
+            method_name="GetImages",
             data_request_times=[datetime.utcnow(), datetime.utcnow()],
             file_extension=".jpg",
             binary_data=image_frame.data

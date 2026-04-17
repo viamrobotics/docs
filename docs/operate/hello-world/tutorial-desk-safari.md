@@ -118,7 +118,7 @@ There are different kinds of {{< glossary_tooltip term_id="resource" text="resou
 {{% tablestep %}}
 **Configure the webcam to use for the Desk Safari game.**
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `camera` type, then select the `webcam` model.
 Use the default name `camera-1` for your camera and click **Create**.
 
