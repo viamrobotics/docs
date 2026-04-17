@@ -87,7 +87,7 @@ Nested within `pins`:
 | `dir` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/reference/components/board/). |
 |`pwm` | string | Optional | See [Pin Information](#pin-information). {{< glossary_tooltip term_id="pin-number" text="Pin number" >}} of the GPIO pin this is wired to on the [board](/reference/components/board/). |
 
-#### Pin Information
+## Pin Information
 
 There are three common ways for the computing device to communicate with a brushed DC motor driver chip.
 The driver data sheet (for a real, not fake, motor) will specify which one to use.

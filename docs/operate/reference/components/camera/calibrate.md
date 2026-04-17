@@ -16,7 +16,7 @@ date: "2024-01-01"
 To calibrate a camera, you can use the classical example of a [chessboard](https://en.wikipedia.org/wiki/Chessboard_detection).
 The chessboard is often used because the geometry makes it a good test case for detection and processing.
 
-### Prerequisites
+## Prerequisites
 
 The calibration code uses the `numpy` and `opencv-python` packages.
 To follow along, install the libraries:

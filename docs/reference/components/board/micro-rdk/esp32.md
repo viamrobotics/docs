@@ -116,7 +116,7 @@ The following attributes are available for `esp32` boards:
 Any pin not specified in either `"pins"` or `"digital_interrupts"` cannot be interacted with through the [board API](/reference/apis/components/board/#api).
 Interaction with digital interrupts is only supported with the [board API](/reference/apis/components/board/#api); these digital interrupts cannot be used as software interrupts in driver implementations.
 
-### `analogs`
+## `analogs`
 
 The following properties are available for `analogs`:
 

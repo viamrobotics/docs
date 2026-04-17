@@ -20,7 +20,7 @@ date: "2022-01-01"
 While ORB-SLAM3 does support the use of monocular cameras, for best results it is recommended that you use an RGB-D camera.
 {{% /alert %}}
 
-### Requirements
+## Requirements
 
 Install the binary required to use `orbslamv3` on your machine and make it executable by running the following commands according to your machine's architecture:
 
