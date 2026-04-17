@@ -10,7 +10,7 @@ date: "2025-01-30"
 
 **Goal:** Write inspection logic that detects defective cans.
 
-**Skills:** Generate module scaffolding using the Viam CLI, experience with Viam SDKs, develop code iteratively against remote hardware
+**Skills:** Generate module scaffolding using the Viam CLI, experiment with Viam SDKs, develop code iteratively against remote hardware
 
 **Time:** ~15 min
 

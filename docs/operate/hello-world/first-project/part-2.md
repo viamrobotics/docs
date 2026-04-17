@@ -8,7 +8,7 @@ description: "Configure automatic image capture and cloud sync for your inspecti
 date: "2025-01-30"
 ---
 
-**Goal:** Configure and use a machine to cloud data capture pipeline.
+**Goal:** Configure and use a machine-to-cloud data capture pipeline.
 
 **Skills:** Data capture configuration, cloud sync, browsing captured data.
 
