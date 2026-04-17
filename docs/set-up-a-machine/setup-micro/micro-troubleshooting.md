@@ -4,6 +4,8 @@ linkTitle: "Micro-RDK troubleshooting"
 weight: 100
 type: docs
 description: "Troubleshooting tips and best practices for installing and using viam-micro-server or other Micro-RDK-based firmware on a microcontroller."
+aliases:
+  - /foundation/setup-micro/micro-troubleshooting/
 _build:
   list: never
 ---
