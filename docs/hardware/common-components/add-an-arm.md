@@ -102,8 +102,9 @@ This frame places the arm's base at the world origin, which is common for single
 
 For two-arm setups, one arm is typically at the world origin and the other is offset by its distance from the first arm in the x and y directions using the `translation` field.
 
-For how the arm itself contributes frames (base, joints, end effector), and how to attach a gripper or camera to the arm, see [Frames](#frames) below.
-See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
+To attach a gripper, camera, or other tool to the end effector, set the attached component's frame `parent` to the arm's name. See [Add a gripper](/hardware/common-components/add-a-gripper/#3-configure-a-frame-recommended) for a worked example.
+
+If you're writing a driver module for an arm that isn't in the registry, the module's `Kinematics` method supplies the arm's URDF or SVA JSON. See [Write a driver module](/build-modules/write-a-driver-module/) and [Frame System](/motion-planning/frame-system/) for the kinematics file formats Viam accepts.
 
 ### 4. Save and test
 
@@ -276,55 +277,6 @@ You should see all zeros before the move, then joints 1 and 2 at 10 and -10 degr
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Frames
-
-Once the arm is configured, its kinematics model contributes a chain of frames to your machine's frame system, not just the single `parent` frame you configured on the arm component.
-
-### What appears in the frame system
-
-For an arm configured as `my-arm`, the frame system includes:
-
-- **`my-arm`** — the arm's root frame. Attach things to this name and they follow the tip of the arm's kinematic chain as the joints move. This is what you want for a gripper or wrist camera.
-- **`my-arm_origin`** — a static mounting frame at the arm's base, independent of joint positions. Use this when you need a fixed reference that stays put while the arm moves.
-- **`my-arm:<link-name>`** — one frame per link in the arm's URDF / kinematics model. For a UFactory xArm 6 the list looks roughly like `my-arm:base_link`, `my-arm:link1`, … `my-arm:link6`. The exact names come from whatever the arm module's kinematics file declares.
-
-To see the full list for your specific arm, call `GetFrameSystemConfig` from the SDK. The **3D scene** tab on the machine page also visualizes the frame tree.
-
-### Attach a gripper or camera to the end effector
-
-Use `"parent": "my-arm"` on the attached component. Its position is computed from the current joint positions, so it tracks the tip as the arm moves.
-
-```json
-{
-  "name": "my-gripper",
-  "api": "rdk:component:gripper",
-  "model": "viam:ufactory:vacuum_gripper",
-  "frame": {
-    "parent": "my-arm",
-    "translation": { "x": 0, "y": 0, "z": 50 },
-    "orientation": {
-      "type": "ov_degrees",
-      "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
-    }
-  }
-}
-```
-
-The 50mm Z offset accounts for the distance from the arm's flange to the gripper's contact point; measure from your own setup.
-The same pattern applies to a wrist-mounted camera, a tool changer, or any other component physically attached to the arm's end effector.
-
-### Attach to an intermediate link
-
-For accessories mounted partway along the arm (a light or sensor on a specific link), use the link's namespaced frame name as the parent: `"parent": "my-arm:link3"`.
-Look up the available link names by calling `GetFrameSystemConfig`, inspecting the arm module's kinematics JSON, or checking the 3D scene visualization.
-
-### Custom kinematics and URDF
-
-The Viam-maintained arm modules (UFactory, Universal Robots, Yaskawa) ship with kinematics tuned to the physical hardware, so you do not need to provide a URDF for those.
-
-If you are writing a driver module for an arm that isn't in the registry, the module contributes its kinematics by implementing the arm's `Kinematics` method, returning either a URDF (`.urdf`) or Viam's SVA JSON format.
-See [Write a driver module](/build-modules/write-a-driver-module/) for the module side, and [Frame System](/motion-planning/frame-system/) for the kinematics file formats Viam accepts.
 
 ## Troubleshooting
 
