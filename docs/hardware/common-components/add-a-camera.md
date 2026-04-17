@@ -122,11 +122,11 @@ The translation offsets the camera's optical center from the arm's flange; measu
 }
 ```
 
-**Mounted on a mobile base.**
-Set `parent` to the base's name so the camera moves with the robot.
-
 **Fixed in the workspace.**
 Set `parent` to `"world"` with the absolute position of the camera's mounting point.
+
+**Mounted on a mobile base.**
+Set `parent` to the base's name. The camera's pose is then a static offset from the base's mounting frame. Unlike an arm (whose kinematics update the tip frame live from joint positions), a base's frame does not automatically track the robot's position as it drives; live world-space tracking requires a movement sensor or odometry that updates the base's frame.
 
 If the camera lives on a separate machine from the main compute (for example, an end-effector Raspberry Pi that exposes the camera as a remote), see [Frames across machines](/hardware/multi-machine/cross-machine-frames/) for the frame setup.
 
