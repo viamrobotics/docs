@@ -14,7 +14,7 @@ As a fleet grows, machines tend to drift into unique, undocumented configuration
 
 ## Prerequisites
 
-- A Viam account with an organization. See [get started](/foundation/) if you have not set up your first machine yet.
+- A Viam account with an organization. See [get started](/set-up-a-machine/) if you have not set up your first machine yet.
 - At least one machine connected to Viam.
 
 ## When to use fragments

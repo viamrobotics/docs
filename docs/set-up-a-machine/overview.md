@@ -1,14 +1,14 @@
 ---
 linkTitle: "Set up a machine"
 title: "Set up a machine"
-weight: 30
+weight: 1
 layout: "docs"
 type: "docs"
 description: "Create a machine in the Viam app and install Viam on your compute machine."
 date: "2025-01-30"
 aliases:
-  - /build/foundation/
   - /foundation/
+  - /build/foundation/
   - /foundation/initialize-a-viam-machine/
   - /build/foundation/initialize-a-viam-machine/
   - /operate/install/
