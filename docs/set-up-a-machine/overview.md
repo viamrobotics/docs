@@ -1,5 +1,5 @@
 ---
-linkTitle: "Overview"
+linkTitle: "Set up machine"
 title: "Set up a machine"
 weight: 1
 layout: "docs"
