@@ -8,8 +8,8 @@ description: "Capture data from any resource and sync it to the cloud."
 date: "2025-01-30"
 aliases:
   - /data/capture-and-sync-data/
-  - /build/set-up-a-machine/capture-and-sync-data/
-  - /set-up-a-machine/capture-and-sync-data/
+  - /build/foundation/capture-and-sync-data/
+  - /foundation/capture-and-sync-data/
 ---
 
 Configure your machine to automatically record sensor readings, camera images, and other component data, then sync it to the cloud. For an overview of how data capture and sync work, see the [Manage data overview](/data/overview/).
