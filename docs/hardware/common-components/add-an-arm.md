@@ -289,7 +289,7 @@ For an arm configured as `my-arm`, the frame system includes:
 - **`my-arm_origin`** — a static mounting frame at the arm's base, independent of joint positions. Use this when you need a fixed reference that stays put while the arm moves.
 - **`my-arm:<link-name>`** — one frame per link in the arm's URDF / kinematics model. For a UFactory xArm 6 the list looks roughly like `my-arm:base_link`, `my-arm:link1`, … `my-arm:link6`. The exact names come from whatever the arm module's kinematics file declares.
 
-To see the full list for your specific arm, call `GetFrameSystemConfig` from the SDK or open the **FRAME SYSTEM** tab in the Viam app.
+To see the full list for your specific arm, call `GetFrameSystemConfig` from the SDK. The **3D scene** tab on the machine page also visualizes the frame tree.
 
 ### Attach a gripper or camera to the end effector
 
@@ -317,7 +317,7 @@ The same pattern applies to a wrist-mounted camera, a tool changer, or any other
 ### Attach to an intermediate link
 
 For accessories mounted partway along the arm (a light or sensor on a specific link), use the link's namespaced frame name as the parent: `"parent": "my-arm:link3"`.
-Look up the available link names by calling `GetFrameSystemConfig` or by inspecting the arm module's kinematics JSON.
+Look up the available link names by calling `GetFrameSystemConfig`, inspecting the arm module's kinematics JSON, or checking the 3D scene visualization.
 
 ### Custom kinematics and URDF
 
