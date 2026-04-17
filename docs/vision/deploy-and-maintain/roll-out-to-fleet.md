@@ -1,0 +1,89 @@
+---
+linkTitle: "Roll out to a fleet"
+title: "Roll out a new model to a fleet"
+weight: 40
+layout: "docs"
+type: "docs"
+description: "Update a vision model across many machines at once using fragments and model version pinning. Short guide with links to the full fleet and deployment docs."
+date: "2026-04-14"
+aliases:
+  - /vision/roll-out-to-fleet/
+---
+
+This page covers the vision-specific pieces of rolling a new model to a fleet. The mechanics of fragments, staged rollout, and machine tagging live in the [fleet section](/fleet/).
+
+A vision model rollout has three moving parts:
+
+1. **The model version.** The ML model service on each machine either pins a specific version or tracks "latest".
+2. **The configuration source.** Shared config lives in a [fragment](/hardware/fragments/) so you update one place and every machine picks up the change.
+3. **The rollout order.** Machines update as soon as the new config reaches them; you can stage rollout by updating groups in sequence instead of all at once.
+
+## Before rolling out
+
+Before updating any production machine:
+
+1. Train and publish the new model version. See [Retrain when your model drifts](/vision/deploy-and-maintain/retrain/).
+2. Deploy the new version on one test machine. Verify detections look correct through the Control tab. See [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/).
+3. Confirm the fleet's shared configuration uses a fragment or is otherwise centrally managed. Machines configured one-off are updated one at a time; you cannot stage a rollout across them without per-machine changes.
+
+## Pin the new version in a fragment
+
+If your fleet shares a [fragment](/hardware/fragments/), update the `version` field on the ML model package in the fragment's `packages` array:
+
+```json
+{
+  "packages": [
+    {
+      "name": "my-model",
+      "package": "<org-id>/my-model",
+      "version": "2025-04-14T16-38-25",
+      "type": "ml_model"
+    }
+  ],
+  "services": [
+    {
+      "name": "my-ml-model",
+      "api": "rdk:service:mlmodel",
+      "model": "tflite_cpu",
+      "attributes": {
+        "package_reference": "<org-id>/my-model",
+        "model_path": "${packages.ml_model.my-model}/my-model.tflite",
+        "label_path": "${packages.ml_model.my-model}/labels.txt"
+      }
+    }
+  ]
+}
+```
+
+The service attributes (`package_reference`, `model_path`, `label_path`) stay the same across versions. The version is pinned at the package level.
+
+Save the fragment. Every machine using it picks up the change on its next config sync (within seconds under normal operation).
+
+Tracking `latest` (set `"version": "latest"`) is simpler but less safe for production: any new version published to the [registry](https://app.viam.com/registry) auto-deploys. Pin specific timestamps when you want to control when rollouts happen.
+
+## Stage the rollout
+
+To roll out to a subset of machines first:
+
+1. Split the fleet into groups using machine tags or location.
+2. Apply the updated fragment to the first group only (for example, a "canary" location).
+3. Wait the period you need to catch problems (hours to days depending on your monitoring cadence).
+4. Apply the fragment to the remaining groups.
+
+See the [fleet section](/fleet/) for the fragment-per-group and tag-based rollout patterns.
+
+## Monitor the rollout
+
+After each stage:
+
+- Check the machine's detections through the Control tab or a saved dashboard.
+- Watch for a spike in low-confidence detections (which suggests the new model is worse than the old one on the production distribution).
+- Watch `viam-server` logs for model-load errors that indicate the new version is incompatible with preprocessing or tensor name assumptions.
+
+If the new model looks wrong, roll back by pinning the previous version in the fragment. Machines converge to the previous version on the next config sync.
+
+## Related
+
+- [Retrain when your model drifts](/vision/deploy-and-maintain/retrain/): produce the new model version in the first place
+- [Deploy an ML model from the registry](/vision/deploy-and-maintain/deploy-from-registry/): deploy a model to a single machine
+- [Fleet deployment](/fleet/): the full fragment and staged-rollout mechanics

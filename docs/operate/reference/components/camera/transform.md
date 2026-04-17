@@ -20,7 +20,7 @@ The transformations are applied in the order they are written in the `pipeline`.
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `camera` type, then select the `transform` model.
 Enter a name or use the suggested name for your camera and click **Create**.
 
@@ -117,9 +117,9 @@ The following attributes are available for `transform` views:
 
 The following are the transformation objects available for the `pipeline`:
 
-### Classifications
+## Classifications
 
-Classifications overlay text from the `GetClassifications` method of the [vision service](/operate/reference/services/vision/) onto the image.
+Classifications overlay text from the `GetClassifications` method of the [vision service](/reference/services/vision/) onto the image.
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -140,7 +140,7 @@ Classifications overlay text from the `GetClassifications` method of the [vision
 
 **Attributes:**
 
-- `classifier_name`: The name of the classifier in the [vision service](/operate/reference/services/vision/).
+- `classifier_name`: The name of the classifier in the [vision service](/reference/services/vision/).
 - `confidence_threshold`: The threshold above which to display classifications.
 - `max_classifications`: _Optional_. The maximum number of classifications to display on the camera stream at any given time. Default: `1`.
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
@@ -244,7 +244,7 @@ Use the formula `(X / <image width>, Y / <image height>)`.
 
 ### Detections
 
-The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/operate/reference/services/vision/).
+The Detections transform takes the input image and overlays the detections from a given detector configured within the [vision service](/reference/services/vision/).
 
 ```json {class="line-numbers linkable-line-numbers"}
 {
@@ -264,7 +264,7 @@ The Detections transform takes the input image and overlays the detections from 
 
 **Attributes:**
 
-- `detector_name`: The name of the detector configured in the [vision service](/operate/reference/services/vision/).
+- `detector_name`: The name of the detector configured in the [vision service](/reference/services/vision/).
 - `confidence_threshold`: Specify to only display detections above the specified threshold (decimal between 0 and 1).
 - `valid_labels`: _Optional_. An array of labels that you to see detections for on the camera stream. If not specified, all labels from the classifier are used.
 
@@ -328,6 +328,6 @@ This feature is useful for when the camera is installed upside down or sideways 
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{< /cards >}}

@@ -4,7 +4,9 @@ linkTitle: "Tutorials"
 weight: 300
 type: docs
 layout: "empty"
-canonical: "/dev/tools/tutorials/"
+canonical: "/tutorials/"
+aliases:
+  - /dev/tools/tutorials/
 toc_hide: true
 # do not remove hide children - it causes a layout issue
 no_list: true

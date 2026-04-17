@@ -79,7 +79,7 @@ Alternatively, if you are having issues with a module, try the **Restart module*
 
 There are a few updates that may make your machine temporarily unavailable:
 
-- [`viam-agent` updating itself](/manage/reference/viam-agent/#version_control-version-management-for-viam-agent-and-viam-server)
+- [`viam-agent` updating itself](/manage/reference/viam-agent/#version-control)
 - [`viam-agent` updating `viam-server`](/manage/reference/viam-agent/#update-or-downgrade-viam-server-with-viam-agent)
 - configuration updates
 
@@ -466,7 +466,7 @@ Note that this method may not work for versions that are too old, as Homebrew do
 ## Next steps
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/" %}}
+{{% card link="/reference/apis/" %}}
 {{% card link="/operate/modules/configure-modules/" %}}
 {{% card link="/operate/install/setup/" %}}
 {{< /cards >}}

@@ -17,18 +17,18 @@ date: "2025-01-30"
 ## Prerequisites
 
 Before starting this tutorial, you need the can inspection simulation running.
-Follow the **[Gazebo Simulation Setup Guide](../gazebo-setup/)** to:
+Follow the **[Simulation Setup Guide](../sim-setup/)** to:
 
-1. Build the Docker image with Gazebo Harmonic
+1. Boot a simulation environment on Viam's cloud
 2. Create a machine in Viam and get credentials
 3. Start the container with your Viam credentials
 
 Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
-The simulation runs Gazebo Harmonic inside a Docker container.
+The simulation runs Gazebo Harmonic inside a sandbox.
 It simulates a conveyor belt with cans (some dented) passing under an inspection camera.
-viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine.
+viam-server runs inside the sandbox and connects to Viam's cloud, just like it would on a physical machine.
 Everything you configure in the Viam app applies to the simulated hardware.
 {{< /alert >}}
 
@@ -176,7 +176,7 @@ Now add a vision service that connects your camera to the ML model service.
 1. Select the `vision-service` service in your machine's configuration
 2. Find the **ML Model** dropdown and select `model-service` (the ML model service you just created)
 3. Find the **Default Camera** dropdown and select `inspection-cam`
-4. Find the **Attributes** section and set **Minimum confidence threshold** to 0.75
+4. In the **Attributes** section, set **Minimum confidence threshold** to 0.75
 5. Click **Save** in the upper right corner
 
 {{<imgproc src="/tutorials/first-project/vision-service-config.png" resize="x1100" declaredimensions=true alt="Vision service configuration panel showing ML Model set to model-service, Default Camera set to inspection-cam, and confidence threshold at 0.75." class="imgzoom shadow">}}

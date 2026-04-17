@@ -396,7 +396,7 @@ For more information on capturing data only if conditions are met, see [Pet phot
 
 {{% hiddencontent %}}
 There is currently no SDK method to directly access configuration attributes of dependencies in Python or Go.
-However, you can use [`GetRobotPart`](/dev/reference/apis/fleet/#getrobotpart) to return information including the entire configuration of a machine part, and then access the configuration attributes of the dependency from there.
+However, you can use [`GetRobotPart`](/reference/apis/fleet/#getrobotpart) to return information including the entire configuration of a machine part, and then access the configuration attributes of the dependency from there.
 
 To learn how to use the Fleet management API from a module, see [Access platform APIs from within a module](/operate/modules/advanced/platform-apis/).
 {{% /hiddencontent %}}

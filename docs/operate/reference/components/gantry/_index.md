@@ -59,7 +59,7 @@ There is currently no support for this component compatible with the Micro-RDK.
 
 ## API
 
-The [gantry API](/dev/reference/apis/components/gantry/) supports the following methods:
+The [gantry API](/reference/apis/components/gantry/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/gantry-table.md" >}}
 

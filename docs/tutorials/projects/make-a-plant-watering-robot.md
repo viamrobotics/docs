@@ -306,7 +306,7 @@ sudo apt upgrade
 ```
 
 Then run the following command to create and activate the virtual environment:
-If you want to read more on virtual environments, check out [the documentation](/dev/reference/sdks/python/python-venv/).
+If you want to read more on virtual environments, check out [the documentation](/reference/sdks/python/python-venv/).
 
 ```sh {class="command-line" data-prompt="$"}
 python3 -m venv .venv
@@ -335,10 +335,9 @@ pip3 install viam-sdk
 
 Follow these instructions to start working on your Python control code:
 
-1. Navigate to your machine's page, and click on the **CONNECT** tab and the **SDK code sample** page.
-1. Select **Python** as the language.
-1. Follow the instructions shown under step 1 on that page to install the SDK.
-1. Then, under step 2 on that page, click the copy icon to copy the generated code sample, which establishes a connection with your robot when run.
+1. Navigate to your machine's page and click on the **CONNECT** tab.
+1. Select **API keys** and copy your **API key**, **API key ID**, and **machine address**.
+1. Install the Python SDK and create a connection script using your credentials.
 
    {{% snippet "show-secret.md" %}}
 
@@ -356,7 +355,7 @@ nano plant-watering-robot.py
 Now, add code into <file>plant-watering-robot.py</file> to write the logic that defines your plant watering system.
 
 To start, add your system logic code into the `main()` function of the program.
-Use the Viam [board](/dev/reference/apis/components/board/) and [sensor](/dev/reference/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage from a GPIO pin.
+Use the Viam [board](/reference/apis/components/board/) and [sensor](/reference/apis/components/sensor/) API methods to read from the moisture sensor and control the pump's voltage from a GPIO pin.
 
 To access components from the machine, use the following code snippet:
 
@@ -449,6 +448,6 @@ sudo python3 plant-watering-robot.py
 Now that you have created your automatic plant watering system with a resistive soil moisture sensor, you can easily use Viam to automate other aspects of your garden.
 For example, you could add a [light sensor](https://www.amazon.com/Sensor-Module-Raspberry-Integrated-Circuits/dp/B07L15M5JG) or a [temperature sensor](https://www.amazon.com/KY-011-Cathode-Arduino-Starter-2-color/dp/B07869PKKF/ref=as_li_ss_tl?keywords=arduino+two+color+led+module&qid=1556591832&s=gateway&sr=8-2&th=1&linkCode=sl1&tag=murraynet-20&linkId=c36cd98be29498a9883b656c7011b6bb&language=en_US), and get readings from other channels of the MCP3008!
 
-You could set up data capture and [graph your sensor data](/data-ai/data/visualize/), or [create your own custom Typescript dashboard](/tutorials/control/air-quality-fleet/) to display your sensor data.
+You could set up data capture and [graph your sensor data](/data/visualize-data/), or [create your own custom Typescript dashboard](/tutorials/control/air-quality-fleet/) to display your sensor data.
 
 If you build something based on this please share it in our [Community Discord](https://discord.gg/viam) - we'd love to see it.

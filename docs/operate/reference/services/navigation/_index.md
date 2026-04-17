@@ -20,23 +20,23 @@ date: "2022-01-01"
 The navigation service is the stateful definition of Viam's [motion service](/operate/reference/services/motion/).
 It uses GPS to autonomously navigate a rover [base](/operate/reference/components/base/) to user-defined waypoints.
 
-Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/dev/reference/apis/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
+Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/reference/apis/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
 
 ## Requirements
 
 You must configure a [base](/operate/reference/components/base/) with [movement sensors](/operate/reference/components/movement-sensor/) as part of your machine to configure a navigation service.
 
-To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/dev/reference/apis/components/movement-sensor/#api):
+To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/reference/apis/components/movement-sensor/#api):
 
-- [`GetPosition()`](/dev/reference/apis/components/movement-sensor/#getposition)
-- [`GetCompassHeading()`](/dev/reference/apis/components/movement-sensor/#getcompassheading)
-- [`GetProperties()`](/dev/reference/apis/components/movement-sensor/#getproperties)
+- [`GetPosition()`](/reference/apis/components/movement-sensor/#getposition)
+- [`GetCompassHeading()`](/reference/apis/components/movement-sensor/#getcompassheading)
+- [`GetProperties()`](/reference/apis/components/movement-sensor/#getproperties)
 
 The base should implement the following:
 
-- [`SetVelocity()`](/dev/reference/apis/components/base/#setvelocity)
-- [`GetGeometries()`](/dev/reference/apis/components/base/#getgeometries)
-- [`GetProperties()`](/dev/reference/apis/components/base/#getproperties)
+- [`SetVelocity()`](/reference/apis/components/base/#setvelocity)
+- [`GetGeometries()`](/reference/apis/components/base/#getgeometries)
+- [`GetProperties()`](/reference/apis/components/base/#getproperties)
 
 See [navigation concepts](#navigation-concepts) for more info on how to implement and use movement sensors taking these measurements.
 
@@ -49,7 +49,7 @@ Then, configure the service:
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `navigation` type.
 Enter a name or use the suggested name for your service and click **Create**.
 
@@ -169,7 +169,7 @@ The following attributes are available for `Navigation` services:
 
 The [frame system service](/operate/reference/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
-It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/operate/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
+It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
 
 {{% /alert %}}
 
@@ -180,7 +180,7 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 Add [reference frames](/operate/reference/services/frame-system/#configuration) to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/) configurations:
 
 - Navigate to the **CONFIGURE** tab of your machine's page.
-- Find your base configuration card and click **+ Add frame**.
+- Find your base configuration card and click the **Frame** button.
 - Since you haven't adjusted any parameters yet, the default reference frame will be shown for your base:
 
   {{<imgproc src="/services/navigation/select-base-frame.png" resize="700x" style="width: 300px" alt="Frame card for a base with the default reference frame settings">}}
@@ -194,7 +194,7 @@ Add [reference frames](/operate/reference/services/frame-system/#configuration) 
 
   {{<imgproc src="/services/navigation/configure-base-geometry.png" resize="700x" style="width: 300px" alt="The frame card for the base.">}}
 
-- Add a frame to your movement sensor configuration by clicking **+ Add frame**.
+- Add a frame to your movement sensor configuration by clicking the **Frame** button.
 - Set the `parent` within the frame card to the name of your base.
 - Give the movement sensor a `translation` that reflects where it is mounted on your base, measuring the coordinates with respect to the origin of the base.
   In other words, designate the base origin as `(0,0,0)` and measure the distance between that and the origin of the sensor to obtain the coordinates.
@@ -221,7 +221,7 @@ Then, to calibrate your frame system for the most accurate autonomous GPS naviga
 
 ## API
 
-The [navigation service API](/dev/reference/apis/services/navigation/) supports the following methods:
+The [navigation service API](/reference/apis/services/navigation/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/navigation-table.md" >}}
 
@@ -267,7 +267,7 @@ heading, err := gps.CompassHeading(context.Background(), nil)
 Use compass heading readings to determine the _bearing_ of your machine, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your machine is facing.
 
 To read compass headings, [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Then use the movement sensor API's [`GetCompassHeading()`](/dev/reference/apis/components/movement-sensor/#getcompassheading) method to get readings from the sensor.
+Then use the movement sensor API's [`GetCompassHeading()`](/reference/apis/components/movement-sensor/#getcompassheading) method to get readings from the sensor.
 
 ### Orientation
 
@@ -284,14 +284,14 @@ An example of an `Orientation` reading:
 orientation, err := imuwit.Orientation(context.Background(), nil)
 ```
 
-Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/operate/mobility/orientation-vector/).
+Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/motion-planning/reference/orientation-vectors/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
 You can choose the origin reference frame by configuring it using Viam's [frame system](/operate/reference/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
 To read orientation, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
 Additionally, follow [these instructions](/operate/reference/services/frame-system/#configuration) to configure the geometries of each component of your machine within the frame system.
-Then use the movement sensor API's [`GetOrientation()`](/dev/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
+Then use the movement sensor API's [`GetOrientation()`](/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular velocity
 
@@ -312,7 +312,7 @@ angularVelocity, err := imu.AngularVelocity(context.Background(), nil)
 Use angular velocity readings to determine the speed and direction at which your machine is rotating.
 
 To get an angular velocity reading, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Then use the movement sensor API's [`GetAngularVelocity()`](/dev/reference/apis/components/movement-sensor/#getangularvelocity) method to get angular velocity readings from the sensor.
+Then use the movement sensor API's [`GetAngularVelocity()`](/reference/apis/components/movement-sensor/#getangularvelocity) method to get angular velocity readings from the sensor.
 
 ### Position
 
@@ -334,7 +334,7 @@ Use position readings to determine the GPS coordinates of an object in 3D space 
 These position readings reflect the _absolute_ position of components.
 
 To get a position, [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Then use the movement sensor API's [`GetPosition()`](/dev/reference/apis/components/movement-sensor/#getposition) method to get position readings from the sensor.
+Then use the movement sensor API's [`GetPosition()`](/reference/apis/components/movement-sensor/#getposition) method to get position readings from the sensor.
 
 ### Linear velocity
 
@@ -355,7 +355,7 @@ linearVelocity, err := imu.LinearVelocity(context.Background(), nil)
 Use linear velocity readings to determine the speed at which your machine is moving through space.
 
 To get linear velocity, [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Then use the movement sensor API's [`GetLinearVelocity()`](/dev/reference/apis/components/movement-sensor/#getlinearvelocity) method to get linear velocity readings from the sensor.
+Then use the movement sensor API's [`GetLinearVelocity()`](/reference/apis/components/movement-sensor/#getlinearvelocity) method to get linear velocity readings from the sensor.
 
 ### Linear acceleration
 
@@ -376,7 +376,7 @@ linearAcceleration, err := imu.LinearAcceleration(context.Background(), nil)
 You can use linear acceleration readings to determine the rate of change of the [linear velocity](/operate/reference/services/navigation/#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.
 
 To get linear acceleration, [configure a capable movement sensor](/operate/reference/components/movement-sensor/#configuration) on your machine.
-Then use the movement sensor API's [`GetLinearAcceleration()`](/dev/reference/apis/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
+Then use the movement sensor API's [`GetLinearAcceleration()`](/reference/apis/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
 
 ## Next steps
 

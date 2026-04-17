@@ -29,8 +29,8 @@ toc_hide: true
 <!-- LEARNING GOALS
 After following this tutorial, you will understand how the ML model service and the Vision service work together and you will be able to use both alongside the base and camera components to make a machine respond to the world around it.  -->
 
-In this tutorial, you'll learn how to use the [vision service](/operate/reference/services/vision/) to make a rover follow a colored object.
-We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/dev/reference/try-viam/rover-resources/).
+In this tutorial, you'll learn how to use the [vision service](/reference/services/vision/) to make a rover follow a colored object.
+We're using a [SCUTTLE rover](https://www.scuttlerobot.org/) for this tutorial but you can use any rover, including the [Viam rover](/try/).
 
 {{< alert title="You will learn" color="tip" >}}
 
@@ -52,7 +52,7 @@ You don't need to buy or own any hardware to complete this tutorial.
 You will need the following hardware to complete this tutorial:
 
 - A wheeled rover, configured with a base component.
-  If you have your own Viam rover [follow the Viam Rover configuration instructions](/dev/reference/try-viam/rover-resources/).
+  If you have your own Viam rover [follow the Viam Rover configuration instructions](/try/).
   If you own another mobile robot [follow the general configuration instructions](/tutorials/configure/configure-rover/).
 
   This tutorial uses a [SCUTTLE rover](https://www.scuttlerobot.org/shop/) as an example but you can complete this tutorial using a Yahboom 4WD Smart Robot or any other wheeled robot that can be configured as a [base component](/operate/reference/components/base/wheeled/).
@@ -68,13 +68,13 @@ Turn on the power to the rover.
 
 This tutorial uses the color `#a13b4c` or `rgb(161,59,76)` (a reddish color).
 
-To create a [color detector vision service](/dev/reference/apis/services/vision/#detections):
+To create a [color detector vision service](/reference/apis/services/vision/#detections):
 
 {{< tabs >}}
 {{% tab name="Builder" %}}
 
 Navigate to your machine's **CONFIGURE** tab.
-Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `vision` type, then select the `color detector` model.
 Enter `my_color_detector` as the name for your service and click **Create**.
 
@@ -122,7 +122,7 @@ To determine the color value from the actual cam component image, you can use a 
 
 ### Test your color detector
 
-You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui):
+You can test your detector by clicking on the **Test** area of the vision service's configuration panel or from the [**CONTROL** tab](/monitor/default-interface/#web-ui):
 
 The camera stream will show detections with bounding boxes around the detected colors.
 
@@ -153,13 +153,13 @@ pip3 install viam-sdk
 
 ### Connect
 
-Next, go to the **CONNECT** tab's **SDK code sample** page on your [machine page](https://app.viam.com/robots) and select **Python**.
+Next, go to the **CONNECT** tab on your [machine page](https://app.viam.com/robots) and select **API keys** to get your credentials.
 
 {{% snippet "show-secret.md" %}}
 
 This code snippet imports all the necessary packages and sets up a connection with Viam.
 
-Next, create a file named <file>main.py</file> with the sample code from the **CONNECT** tab's **SDK code sample** page.
+Next, create a file named <file>main.py</file> with the sample code from the **CONNECT** tab.
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.

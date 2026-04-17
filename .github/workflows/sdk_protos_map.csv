@@ -171,6 +171,7 @@ motor,IsPowered,No,is_powered,IsPowered,powerState,isPowered
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 motor,IsMoving,Yes,is_moving,IsMoving,isMoving,isMoving
 motor,Stop,Yes,stop,Stop,stop,stop
+motor,GetGeometries,No,get_geometries,,,
 motor,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 motor,DoCommand,,do_command,DoCommand,doCommand,doCommand
@@ -227,6 +228,7 @@ servo,GetPosition,Yes,get_position,Position,position,getPosition
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 servo,IsMoving,No,is_moving,IsMoving,isMoving,isMoving
 servo,Stop,Yes,stop,Stop,stop,stop
+servo,GetGeometries,No,get_geometries,,,
 servo,Reconfigure,No,,Reconfigure,,
 # NOT implemented in other languages
 servo,DoCommand,,do_command,DoCommand,doCommand,doCommand
@@ -252,7 +254,6 @@ base_remote_control,Close,,,Close,,
 
 ## Data Manager
 data_manager,Sync,No,,Sync,,sync
-data_manager,UploadImageToDatasets,No,,UploadImageToDatasets,,,
 data_manager,UploadBinaryDataToDatasets,No,,UploadBinaryDataToDatasets,,uploadBinaryDataToDatasets
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 data_manager,Reconfigure,No,,Reconfigure,,
@@ -439,6 +440,7 @@ billing,GetOrgBillingInformation,,get_org_billing_information,GetOrgBillingInfor
 billing,GetInvoicesSummary,,get_invoices_summary,GetInvoicesSummary,,getInvoicesSummary
 billing,GetInvoicePDF,,get_invoice_pdf,GetInvoicePDF,,getInvoicePdf
 billing,CreateInvoiceAndChargeImmediately,,create_invoice_and_charge_immediately,,,
+billing,ChargeOrganization,,charge_organization,,,
 
 ## Data
 data,GetLatestTabularData,,get_latest_tabular_data,GetLatestTabularData,getLatestTabularData,getLatestTabularData
@@ -467,6 +469,13 @@ data,CreateDataPipeline,,create_data_pipeline,CreateDataPipeline,,createDataPipe
 data,DeleteDataPipeline,,delete_data_pipeline,DeleteDataPipeline,,deleteDataPipeline
 data,ListDataPipelineRuns,,list_data_pipeline_runs,ListDataPipelineRuns,,listDataPipelineRuns
 data,RenameDataPipeline,,,RenameDataPipeline,,
+data,AddTagsToBinaryDataByFilter,,add_tags_to_binary_data_by_filter,,,
+data,CreateBinaryDataSignedURL,,create_binary_data_signed_url,,,
+data,CreateIndex,,create_index,,,
+data,DeleteIndex,,delete_index,,,
+data,ListIndexes,,list_indexes,,,
+data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,,
+data,UpdateBoundingBox,,update_bounding_box,,,
 
 ## Dataset
 dataset,CreateDataset,,create_dataset,CreateDataset,createDataset,createDataset

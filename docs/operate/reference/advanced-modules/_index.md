@@ -26,17 +26,17 @@ Depending on your needs, you may wish to define an entirely new resource API, de
 
 ## New APIs
 
-The [component APIs](/dev/reference/apis/#component-apis) and [service APIs](/dev/reference/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
+The [component APIs](/reference/apis/#component-apis) and [service APIs](/reference/apis/#service-apis) provide a standard interface for controlling common hardware components and higher level functionality.
 If your use case aligns closely with an existing API, you should use that API to program your new resource.
 
-If you want to use most of an existing API but need just a few other functions, you can use the `DoCommand` endpoint together with [extra parameters](/dev/reference/sdks/use-extra-params/) to add custom functionality to an existing resource API.
+If you want to use most of an existing API but need just a few other functions, you can use the `DoCommand` endpoint together with [extra parameters](/reference/sdks/use-extra-params/) to add custom functionality to an existing resource API.
 
 Or, if your resource does not fit into an existing resource API, you can use one of the following:
 
-- If you are working with a component that doesn't fit into any of the existing [component APIs](/dev/reference/apis/#component-apis), you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing [service APIs](/dev/reference/apis/#service-apis), you can use the [generic service](/dev/reference/apis/services/generic/) to build your own service API.
+- If you are working with a component that doesn't fit into any of the existing [component APIs](/reference/apis/#component-apis), you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing [service APIs](/reference/apis/#service-apis), you can use the [generic service](/reference/apis/services/generic/) to build your own service API.
 
-Both generic resources use the [`DoCommand`](/dev/reference/apis/components/generic/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
+Both generic resources use the [`DoCommand`](/reference/apis/components/generic/#docommand) endpoint to enable you to make arbitrary calls as needed for your resource.
 
 Alternatively, you can also [define a new resource API](/operate/reference/advanced-modules/create-subtype/) if none of the above options are a good fit for your use case.
 
@@ -52,6 +52,6 @@ If you need to package and deploy a module using Docker, for example if your mod
 
 ## Design a custom ML model
 
-When working with the [ML model service](/dev/reference/apis/services/ml/), you can deploy an [existing model](/data-ai/ai/deploy/) or [train your own model](/data-ai/train/train/).
+When working with the [ML model service](/reference/apis/services/ml/), you can deploy an [existing model](/vision/configure/) or [train your own model](/train/custom-training-scripts/).
 
-However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/dev/reference/apis/services/vision/), you can also [design your own ML model](/data-ai/reference/mlmodel-design/) to better match your specific use case.
+However, if you are writing your own {{< glossary_tooltip term_id="module" text="module" >}} that uses the ML model service together with the [vision service](/reference/apis/services/vision/), you can also [design your own ML model](/data-ai/reference/mlmodel-design/) to better match your specific use case.

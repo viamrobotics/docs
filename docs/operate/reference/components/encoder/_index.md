@@ -67,7 +67,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [encoder API](/dev/reference/apis/components/encoder/) supports the following methods:
+The [encoder API](/reference/apis/components/encoder/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/encoder-table.md" >}}
 
@@ -94,6 +94,6 @@ For general configuration, development, and usage info, see:
 
 You can also use the encoder component with the following services:
 
-- [Data management service](/data-ai/capture-data/capture-sync/): To capture and sync the encoder's data
+- [Data management service](/data/capture-sync/capture-and-sync-data/): To capture and sync the encoder's data
 - [Motion service](/operate/reference/services/motion/): To move machines or components of machines
 - [Navigation service](/operate/reference/services/navigation/): To navigate with GPS

@@ -16,7 +16,7 @@ There are two options for modes: `MODE_MANUAL` or `MODE_WAYPOINT`.
 
 **Returns:**
 
-- (viam.services.navigation.Mode.ValueType): The Mode the service is operating in.
+- (viam.services.navigation.Mode.ValueType): :   The Mode the service is operating in.
 
 **Example:**
 
@@ -137,7 +137,6 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 - `mode` ([navigationApi](https://ts.viam.dev/modules/navigationApi.html)) (required): The mode for the service to operate in.
   
-  
   * 0: MODE\_UNSPECIFIED
   * 1: MODE\_MANUAL
   * 2: MODE\_WAYPOINT
@@ -176,8 +175,8 @@ Get the current location of the robot in the navigation service.
 
 **Returns:**
 
-- ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)): The current location of the robot in the navigation service,
-represented in a GeoPoint with latitude and longitude values.
+- ([viam.services.navigation.GeoPoint](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoPoint)): :   The current location of the robot in the navigation service,
+    represented in a GeoPoint with latitude and longitude values.
 
 **Example:**
 
@@ -251,8 +250,8 @@ These are locations designated within a path for the robot to navigate to.
 
 **Returns:**
 
-- ([List[viam.services.navigation.Waypoint]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint)): An array comprised of each Waypoint in the service’s data storage.
-These are locations designated within a path for the robot to navigate to.
+- ([List[viam.services.navigation.Waypoint]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.Waypoint)): :   An array comprised of each Waypoint in the service’s data storage.
+    These are locations designated within a path for the robot to navigate to.
 
 **Example:**
 
@@ -497,8 +496,8 @@ See the [motion service](/operate/reference/services/motion/) for more informati
 
 **Returns:**
 
-- ([List[viam.services.navigation.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoGeometry)): A list comprised of each GeoGeometry in the service’s data storage.
-These are objects designated for the robot to avoid when navigating.
+- ([List[viam.services.navigation.GeoGeometry]](https://python.viam.dev/autoapi/viam/services/navigation/index.html#viam.services.navigation.GeoGeometry)): :   A list comprised of each GeoGeometry in the service’s data storage.
+    These are objects designated for the robot to avoid when navigating.
 
 **Example:**
 
@@ -571,9 +570,9 @@ Get each path, the series of geo points the robot plans to travel through to get
 
 **Returns:**
 
-- ([List[viam.proto.service.navigation.Path]](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path)): An array comprised of Paths, where each path is either a user\-provided destination or
-a Waypoint, along with the corresponding set of geopoints. This outlines the route the machine is expected to take to
-reach the specified destination or Waypoint.
+- ([List[viam.proto.service.navigation.Path]](https://python.viam.dev/autoapi/viam/proto/service/navigation/index.html#viam.proto.service.navigation.Path)): :   An array comprised of Paths, where each path is either a user-provided destination or
+    a Waypoint, along with the corresponding set of geopoints. This outlines the route the machine is expected to take to
+    reach the specified destination or Waypoint.
 
 **Example:**
 
@@ -646,7 +645,7 @@ Get information about the navigation service.
 
 **Returns:**
 
-- (viam.services.navigation.MapType.ValueType): Information about the type of map the service is using.
+- (viam.services.navigation.MapType.ValueType): :   Information about the type of map the service is using.
 
 **Example:**
 
@@ -732,7 +731,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the service API.
 Most models do not implement `DoCommand`.
 Any available model-specific commands should be covered in the model's documentation.
-If you are implementing your own navigation service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+If you are implementing your own navigation service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -744,7 +743,7 @@ If you are implementing your own navigation service and want to add features tha
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Example:**
 
@@ -790,7 +789,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
+  a plain object, which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -800,12 +800,16 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
+// Plain object (recommended)
+const result = await resource.doCommand({
+  myCommand: { key: 'value' },
+});
+
+// Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
 const result = await resource.doCommand(
-  Struct.fromJson({
-    myCommand: { key: 'value' },
-  })
+  Struct.fromJson({ myCommand: { key: 'value' } })
 );
 ```
 
@@ -827,7 +831,7 @@ Get the `ResourceName` for this instance of the navigation service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

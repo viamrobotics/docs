@@ -28,19 +28,19 @@ For most use cases, you will [build your own firmware](/operate/install/setup-mi
 
 ## Support
 
-[Client API](/dev/reference/apis/) usage with the Micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
+[Client API](/reference/apis/) usage with the Micro-RDK currently supports the following {{< glossary_tooltip term_id="resource" text="resources" >}}:
 
 {{< cards >}}
-{{% relatedcard link="/dev/reference/apis/components/base/" %}}
-{{% relatedcard link="/dev/reference/apis/components/board/" %}}
-{{% relatedcard link="/dev/reference/apis/components/camera/" %}}
-{{% relatedcard link="/dev/reference/apis/components/encoder/" %}}
-{{% relatedcard link="/dev/reference/apis/components/movement-sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/motor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/sensor/" %}}
-{{% relatedcard link="/dev/reference/apis/components/servo/" %}}
-{{% relatedcard link="/dev/reference/apis/components/generic/" %}}
-{{% relatedcard link="/dev/reference/apis/services/data/" %}}
+{{% relatedcard link="/reference/apis/components/base/" %}}
+{{% relatedcard link="/reference/apis/components/board/" %}}
+{{% relatedcard link="/reference/apis/components/camera/" %}}
+{{% relatedcard link="/reference/apis/components/encoder/" %}}
+{{% relatedcard link="/reference/apis/components/movement-sensor/" %}}
+{{% relatedcard link="/reference/apis/components/motor/" %}}
+{{% relatedcard link="/reference/apis/components/sensor/" %}}
+{{% relatedcard link="/reference/apis/components/servo/" %}}
+{{% relatedcard link="/reference/apis/components/generic/" %}}
+{{% relatedcard link="/reference/apis/services/data/" %}}
 {{< /cards >}}
 
 ## Next steps

@@ -20,7 +20,7 @@ updated: "2024-10-18"
 # SMEs: Peter L, Gautham, Bijan
 ---
 
-The frame system is the basis for some of Viam's other services, like [motion](/operate/reference/services/motion/) and [vision](/operate/reference/services/vision/).
+The frame system is the basis for some of Viam's other services, like [motion](/operate/reference/services/motion/) and [vision](/reference/services/vision/).
 It stores the required contextual information to use the position and orientation readings returned by some components.
 
 It is a mostly static system for storing the "reference frame" of each component of a machine within a coordinate system configured by the user.
@@ -37,7 +37,7 @@ It is a mostly static system for storing the "reference frame" of each component
 
 ## Configuration
 
-For a full how-to guide, see [Configure your frame system](/operate/mobility/move-arm/frame-how-to/).
+For a full how-to guide, see [Frame system](/motion-planning/frame-system/) and the [frame system how-tos](/motion-planning/frame-system/).
 
 You can configure a reference frame within the frame system for each of your machine's components:
 
@@ -45,7 +45,7 @@ You can configure a reference frame within the frame system for each of your mac
 
 1. Find the configuration card for the component you want to add a frame to.
 
-1. Click **+ Add frame**.
+1. Click the **Frame** button.
 
 1. Leave the default values, or edit the frame configuration.
    The frame configuration is a JSON object with the following parameters:
@@ -55,7 +55,7 @@ You can configure a reference frame within the frame system for each of your mac
 | --------- | ----------- | ----- |
 | `parent`  | **Required** | The name of the reference frame you want to act as the parent of this frame. <br> Default: `world`. |
 | `translation` | **Required** | The coordinates that the origin of this component's reference frame has within its parent reference frame. <br> Units: Millimeters. <br> Default: `(0, 0, 0)`. |
-| `orientation`  | **Required** | The [orientation vector](/operate/mobility/orientation-vector/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: Orientation vector in degrees (`ov_degrees`), orientation vector in radians (`ov_radians`), Euler angles (`euler_angles`), and quaternion (`quaternion`). <br> Default: `(0, 0, 1), 0`. |
+| `orientation`  | **Required** | The [orientation vector](/motion-planning/reference/orientation-vectors/) that yields the axes of the component's reference frame when applied as a rotation to the axes of the parent reference frame. <br> Types: Orientation vector in degrees (`ov_degrees`), orientation vector in radians (`ov_radians`), Euler angles (`euler_angles`), and quaternion (`quaternion`). <br> Default: `(0, 0, 1), 0`. |
 | `geometry`  | Optional | Collision geometries for defining bounds in the environment of the machine. <br> Units: Millimeters. <br> Types: `sphere`, `box`, and `capsule`. <br> Default: `none`. |
 
 {{< tabs >}}
@@ -144,7 +144,7 @@ You can configure a reference frame within the frame system for each of your mac
 
 {{% alert title="Info" color="info" %}}
 
-The `orientation` parameter offers different types for ease of configuration, but the frame system always stores and returns [orientation vectors](/operate/mobility/orientation-vector/) in radians.
+The `orientation` parameter offers different types for ease of configuration, but the frame system always stores and returns [orientation vectors](/motion-planning/reference/orientation-vectors/) in radians.
 Other types will be converted to `ov_radians`.
 
 {{% /alert %}}
@@ -179,13 +179,13 @@ The resulting tree of reference frames looks like:
 
 ## Access the frame system
 
-The [Machine Management API](/dev/reference/apis/robot/) supplies the following methods to interact with the frame system:
+The [Machine Management API](/reference/apis/robot/) supplies the following methods to interact with the frame system:
 
 <!-- prettier-ignore -->
 | Method Name | Description |
 | ----- | ----------- |
-| [`FrameSystemConfig`](/dev/reference/apis/robot/#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. |
-| [`TransformPose`](/dev/reference/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
+| [`FrameSystemConfig`](/reference/apis/robot/#framesystemconfig) | Return a topologically sorted list of all the reference frames monitored by the frame system. |
+| [`TransformPose`](/reference/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
 
 ## Additional transforms
 
@@ -194,7 +194,7 @@ _Additional transforms_ exist to help the frame system determine the location of
 ### Example of additional transforms
 
 Imagine you are using a wall-mounted [camera](/operate/reference/components/camera/) to find objects near your arm.
-You can use the [vision service](/operate/reference/services/vision/) with the camera to detect objects and provide the poses of the objects with respect to the camera's reference frame.
+You can use the [vision service](/reference/services/vision/) with the camera to detect objects and provide the poses of the objects with respect to the camera's reference frame.
 The camera is fixed with respect to the `world` reference frame.
 
 If the camera finds an apple or an orange, you can command the arm to move to the detected fruit's location by providing an additional transform that contains the detected pose of the fruit with respect to the camera that performed the detection.
@@ -203,9 +203,9 @@ The frame system uses the supplemental transform to determine where the arm shou
 
 ### Transform usage
 
-- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/dev/reference/apis/services/motion/#getpose) method.
+- You can pass a detected object's frame information to the `supplemental_transforms` parameter in your calls to Viam's motion service's [`GetPose`](/reference/apis/services/motion/#getpose) method.
 - Functions of some services and components also take in a `WorldState` parameter, which includes a `transforms` property.
-- [`TransformPose`](/dev/reference/apis/robot/#transformpose) has the option to take in these additional transforms.
+- [`TransformPose`](/reference/apis/robot/#transformpose) has the option to take in these additional transforms.
 
 ### Visualize components and frames
 

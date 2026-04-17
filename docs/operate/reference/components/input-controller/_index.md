@@ -20,10 +20,10 @@ The input controller API provides an API for configuring callbacks for events, a
 
 If you have a keyboard, mouse, elevator button panel, light power switch, joystick, gamepad, or video game controllers with which you want to control a robotic base, use an input controller component.
 
-This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/dev/reference/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
-To use the controller's inputs, you must [register callback functions](/dev/reference/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/dev/reference/apis/components/input-controller/#control-field) with the [`input` API](/dev/reference/apis/components/input-controller/).
+This component supports devices like gamepads and joysticks that contain one or more [`Control`s](/reference/apis/components/input-controller/#control-field) representing the individual axes and buttons on the device.
+To use the controller's inputs, you must [register callback functions](/reference/apis/components/input-controller/#registercontrolcallback) to the [`Control`s](/reference/apis/components/input-controller/#control-field) with the [`input` API](/reference/apis/components/input-controller/).
 
-The callback functions can then handle the [Events](/dev/reference/apis/components/input-controller/#getevents) that are sent when the `Control` is activated or moved.
+The callback functions can then handle the [Events](/reference/apis/components/input-controller/#getevents) that are sent when the `Control` is activated or moved.
 For example, when a specific button is pushed, the callback function registered to it can move another component, or print a specific output.
 
 The [base remote control service](/operate/reference/services/base-rc/) implements an input controller as a remote control for a base.
@@ -58,7 +58,7 @@ There is currently no support for this component compatible with the Micro-RDK.
 
 ## API
 
-The [input controller API](/dev/reference/apis/components/input-controller/) supports the following methods:
+The [input controller API](/reference/apis/components/input-controller/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/input_controller-table.md" >}}
 

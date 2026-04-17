@@ -115,9 +115,9 @@ breadcrumb_disable = false
 footer_about_disable = false
 navbar_logo = true
 navbar_translucent_over_cover_disable = false
-sidebar_menu_compact = true  # When true, the section headings work like an accordian.
+sidebar_menu_compact = true  # When true, only the active path is expanded in the sidebar.
 sidebar_search_disable = true
-ul_show = 3  # Always expand every first level section of the sidenav -- due to tabs, our 'first level' is 3
+ul_show = 1  # Show only top-level sections; deeper levels collapse unless active
 
 [params.ui.feedback]
 enable = true

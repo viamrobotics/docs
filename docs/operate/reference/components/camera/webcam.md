@@ -115,9 +115,7 @@ To add and use the service:
    {{<imgproc src="/components/camera/webcam-discovery-test.png" alt="The test panel for the find-webcams service." resize="1100x" style="max-width:600px" class="shadow imgzoom" >}}
 
 1. Click the **Copy attributes** button for the camera you want to use.
-1. Click the **{}** icon in the upper right corner of the camera component configuration.
-
-   {{<imgproc src="/components/camera/advanced-config.png" resize="x1100" declaredimensions=true alt="The switch to advanced button." style="width:200px" class="shadow" >}}
+1. Click the **JSON** button in the upper right corner of the camera component configuration.
 
 1. Paste the copied attributes.
 1. Click **Save**.
@@ -278,7 +276,7 @@ If you are using a CSI camera v1.3 or v2.0, or v3.0 with a Raspberry Pi, use the
 For CSI cameras used with Jetsons, use the `viam:camera:csi` model provided by the same module.
 
 For Raspberry Pi AI cameras like the IMX500 AI camera, use a module such as [this `viam-pi-ai-camera` vision service](https://github.com/HipsterBrown/viam-pi-ai-camera).
-For more information about the vision service, see [run inference](https://docs.viam.com/data-ai/ai/run-inference/).
+For more information about the vision service, see [run inference](https://docs.viam.com/vision/detect/).
 {{% /expand%}}
 
 {{% expand "High CPU usage" %}}
@@ -320,6 +318,6 @@ Ensure that your terminal application has camera access enabled.
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{< /cards >}}

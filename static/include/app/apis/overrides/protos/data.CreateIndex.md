@@ -1,0 +1,1 @@
+Create a custom index on your data to speed up queries. You specify the organization, the collection type (tabular or binary), and the fields to index.

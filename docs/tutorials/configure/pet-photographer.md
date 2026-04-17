@@ -24,7 +24,7 @@ After following this tutorial, you will understand how to control sync parameter
 Note: Consider this tutorial alongside filtered camera tutorial.
 -->
 
-If your machine [captures](/data-ai/capture-data/capture-sync/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
+If your machine [captures](/data/capture-sync/capture-and-sync-data/) a lot of data, you might want to filter captured data to selectively store only the data you are interested in.
 For example, you might want to use your smart machine's camera to capture images based on specific criteria, such as the presence of a certain color, and omit captured images that don't meet that criteria.
 
 In this tutorial, you will use a custom {{< glossary_tooltip term_id="module" text="module" >}} to function as a color filter, and use it with a [camera](/operate/reference/components/camera/) to only capture images where your pet is in the frame in the following way:
@@ -161,7 +161,7 @@ For more information, refer to [Write your new resource model definition](/opera
 
 The filter function in your custom filter module must contain two critical elements:
 
-1. A utility function that will check if the caller of the filter function is the [data management service](/data-ai/capture-data/capture-sync/).
+1. A utility function that will check if the caller of the filter function is the [data management service](/data/capture-sync/capture-and-sync-data/).
 1. A safeguard that ensures if the data management service is not the caller, an error and the unfiltered data is returned.
 
 {{< alert title="Important" color="note" >}}
@@ -814,17 +814,17 @@ Whether you've downloaded the `colorfilter` module, or written your own color fi
 
 Next, add the following services to your smart machine to support the color filter module:
 
-- The [data management service](/data-ai/capture-data/capture-sync/) enables your smart machine to capture data and sync it to the cloud.
-- The [vision service](/dev/reference/apis/services/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
+- The [data management service](/data/capture-sync/capture-and-sync-data/) enables your smart machine to capture data and sync it to the cloud.
+- The [vision service](/reference/apis/services/vision/#detections) enables your smart machine to perform color detection on objects in a camera stream.
 
 ### Add the data management service
 
-To enable data capture on your machine, add and configure the [data management service](/data-ai/capture-data/capture-sync/) to capture and store data on your machine's computer:
+To enable data capture on your machine, add and configure the [data management service](/data/capture-sync/capture-and-sync-data/) to capture and store data on your machine's computer:
 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 1. Choose `data management` as the type.
 1. Enter a name or use the suggested name for your instance of the data manager.
    This tutorial uses the name 'dm' in all example code.
@@ -836,7 +836,7 @@ To enable data capture on your machine, add and configure the [data management s
 
    ![An instance of the data management service named "dm". The cloud sync and capturing options are toggled on and the directory is empty. The interval is set to 0.1](/tutorials/pet-photographer/data-management-services.png)
 
-   For more detailed information, see [Add the data management service](/data-ai/capture-data/capture-sync/).
+   For more detailed information, see [Add the data management service](/data/capture-sync/capture-and-sync-data/).
    {{% /tab %}}
    {{% tab name="JSON Template" %}}
    Add the data management service to the services array in your rover’s raw JSON configuration:
@@ -860,7 +860,7 @@ To enable data capture on your machine, add and configure the [data management s
 
 ### Add the vision service
 
-To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/operate/reference/services/vision/color_detector/).
+To enable your smart machine to detect a specific color in its camera stream, add a [`color_detector` vision service](/reference/services/vision/color_detector/).
 For this tutorial, we will configure the vision service to recognize a blue dog collar using `#43A1D0` or `rgb(67, 161, 208)`.
 If you have a different item you want to use, or want to match to a color that matches your pet closely, you can use a different color.
 
@@ -868,12 +868,12 @@ If you have a different item you want to use, or want to match to a color that m
 {{% tab name="Config Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 1. Select the `vision` type, then select the `color detector` model.
 1. Enter a name or use the suggested name for your color detector.
    This tutorial uses the name 'my_color_detector' in all example code.
 1. click **Create**.
-1. In the vision service's **Attributes** section, click the color selection box to set the color to be detected.
+1. In the vision service's **Attributes** section, click the color selection box to set the color to detect.
    For this tutorial, set the color to `#43A1D0` or `rgb(67, 161, 208)`.
    Alternatively, you can provide the color of your pet, or use a different brightly-colored collar or ribbon.
 1. Set **Hue Tolerance** to `0.06` and **Segment size px** to `100`.
@@ -883,7 +883,7 @@ Your configuration should look like the following:
 
 ![The vision service configuration panel showing the color set to blue, the hue tolerance set to 0.06, and the segment size set to 100.](/tutorials/pet-photographer/vision-service.png)
 
-For more detailed information, refer to [Configure a color detector](/operate/reference/services/vision/color_detector/).
+For more detailed information, refer to [Configure a color detector](/reference/services/vision/color_detector/).
 
 {{% /tab %}}
 {{% tab name="JSON Template" %}}
@@ -917,7 +917,7 @@ With the vision and data management services configured, you can now configure y
 
 If you haven't already, add a [camera](/operate/reference/components/camera/) component to your smart machine:
 
-1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
    Start typing "webcam" and select **camera / webcam**.
    Enter a name or use the suggested name for your camera.
    This tutorial uses the name 'cam' in all example code.
@@ -993,5 +993,5 @@ Try these other tutorials for more on working with the data management and visio
 {{% card link="/tutorials/projects/pet-treat-dispenser/" %}}
 {{% card link="/tutorials/projects/guardian/" %}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
-{{% card link="/data-ai/ai/deploy/"  %}}
+{{% card link="/vision/deploy-and-maintain/deploy-from-registry/"  %}}
 {{< /cards >}}

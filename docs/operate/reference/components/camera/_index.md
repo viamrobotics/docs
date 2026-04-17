@@ -58,7 +58,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [camera API](/dev/reference/apis/components/camera/) supports the following methods:
+The [camera API](/reference/apis/components/camera/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/camera-table.md" >}}
 
@@ -80,7 +80,7 @@ If none of these steps work, reach out to us on the [Community Discord](https://
 When working with a [camera](/operate/reference/components/camera/) component, depending on the camera, you may need to explicitly provide some camera-specific configuration parameters.
 
 Check the specifications for your camera, and manually provide configuration parameters such as width and height to the camera component configuration panel.
-On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **{}** (Switch to Advanced) button in the top right of the component panel to enter these attributes manually.
+On the **CONFIGURE** page, find your camera, then fill in your camera's specific configuration either using the **Show more** button to show the relevant configuration options, or the **JSON** button to enter these attributes manually.
 Provide at least the width and height values to start.
 
 {{% /expand%}}
@@ -101,14 +101,14 @@ If you are running into this issue, consider the following solutions:
 For general configuration, development, and usage info, see:
 
 {{< cards >}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}
 
 You can also use the camera component with the following services:
 
-- [Data management service](/data-ai/capture-data/capture-sync/): To capture and sync the camera's data
-- [Vision service](/operate/reference/services/vision/): To use computer vision to interpret the camera stream
+- [Data management service](/data/capture-sync/capture-and-sync-data/): To capture and sync the camera's data
+- [Vision service](/reference/services/vision/): To use computer vision to interpret the camera stream
 - [SLAM service](/operate/reference/services/slam/): For mapping (with a depth camera)
 
 {{% hiddencontent %}}

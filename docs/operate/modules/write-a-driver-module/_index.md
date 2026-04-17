@@ -69,7 +69,7 @@ matches your hardware or service:
 | `generic`         | Does not fit any of the above                         | `DoCommand`                        |
 
 For the full list of component and service APIs, see
-[Resource APIs](/dev/reference/apis/).
+[Resource APIs](/reference/apis/).
 
 Using the right API means data capture, TEST cards, and other platform
 features work with your component automatically.

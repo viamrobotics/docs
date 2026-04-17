@@ -1,6 +1,6 @@
 ### GetControls
 
-Get a list of the [Controls](/dev/reference/apis/components/input-controller/#control-field) that your controller provides.
+Get a list of the [Controls](/reference/apis/components/input-controller/#control-field) that your controller provides.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -12,7 +12,7 @@ Get a list of the [Controls](/dev/reference/apis/components/input-controller/#co
 
 **Returns:**
 
-- ([List[viam.components.input.input.Control]](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)): List of controls provided by the Controller.
+- ([List[viam.components.input.input.Control]](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)): :   List of controls provided by the Controller.
 
 **Example:**
 
@@ -71,7 +71,7 @@ This method returns the current state of the controller as a map of [Event Objec
 
 **Returns:**
 
-- ([Dict[viam.components.input.input.Control, viam.components.input.input.Event]](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)): The most recent event for each input.
+- ([Dict[viam.components.input.input.Control, viam.components.input.input.Event]](https://python.viam.dev/autoapi/viam/components/input/input/index.html#viam.components.input.input.Control)): :   The most recent event for each input.
 
 **Example:**
 
@@ -249,7 +249,7 @@ The [motion](/operate/reference/services/motion/) and [navigation](/operate/refe
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): The geometries associated with the Component.
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
 
 **Example:**
 
@@ -288,7 +288,7 @@ Doing so registers the same callback to both `ButtonPress` and `ButtonRelease`, 
 
 - `control` ([viam.components.input.input.Control](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.Control)) (required): The control to register the function for.
 - `triggers` ([List[viam.components.input.input.EventType]](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.EventType)) (required): The events that will trigger the function.
-- `function` (viam.components.input.input.ControlFunction) (optional): The function to run on specific triggers.
+- `function` ([viam.components.input.input.ControlFunction](https://python.viam.dev/autoapi/viam/components/input/index.html#viam.components.input.ControlFunction)) (optional): The function to run on specific triggers.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -327,7 +327,7 @@ async def handle_controller(controller):
 
 
 async def main():
-    # ... < INSERT CONNECTION CODE FROM MACHINE'S CODE SAMPLE TAB >
+    # ... < INSERT CONNECTION CODE FROM MACHINE'S CONNECT TAB >
 
     # Get your controller from the machine.
     my_controller = Controller.from_robot(
@@ -347,7 +347,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `control` [(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](/dev/reference/apis/components/input-controller/#control-field) to register the function for.
+- `control` [(Control)](https://pkg.go.dev/go.viam.com/rdk/components/input#Control): The [Control](/reference/apis/components/input-controller/#control-field) to register the function for.
 - `triggers` [([]EventType)](https://pkg.go.dev/go.viam.com/rdk/components/input#EventType): The [EventTypes](#eventtype-field) that trigger the function.
 - `ctrlFunc` [(ControlFunction)](https://pkg.go.dev/go.viam.com/rdk/components/input#ControlFunction): The function to run when the specified triggers are invoked.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
@@ -414,7 +414,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the component API.
 Most models do not implement `DoCommand`.
 Any available model-specific commands should be covered in the model's documentation.
-If you are implementing your own input controller and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+If you are implementing your own input controller and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -426,7 +426,7 @@ If you are implementing your own input controller and want to add features that 
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Raises:**
 
@@ -482,7 +482,7 @@ Get the `ResourceName` for this input controller.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

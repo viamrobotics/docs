@@ -43,7 +43,7 @@ There is currently no support for this component compatible with the Micro-RDK.
 
 ## API
 
-The [button API](/dev/reference/apis/components/button/) supports the following methods:
+The [button API](/reference/apis/components/button/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/button-table.md" >}}
 

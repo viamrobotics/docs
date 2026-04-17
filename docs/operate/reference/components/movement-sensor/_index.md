@@ -55,7 +55,7 @@ For additional configuration information, click on the model name:
 
 ## API
 
-The [movement sensor API](/dev/reference/apis/components/movement-sensor/) supports the following methods:
+The [movement sensor API](/reference/apis/components/movement-sensor/) supports the following methods:
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 
@@ -86,12 +86,12 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{< /cards >}}
 
 To capture data from the movement sensor or use it for motion, see the following services:
 
-- [data management service](/data-ai/capture-data/capture-sync/): to capture and sync the movement sensor's data
+- [data management service](/data/capture-sync/capture-and-sync-data/): to capture and sync the movement sensor's data
 - [motion service](/operate/reference/services/motion/): to move machines or components of machines
 - [navigation service](/operate/reference/services/navigation/): to navigate with GPS
 - [SLAM service](/operate/reference/services/slam/): for mapping

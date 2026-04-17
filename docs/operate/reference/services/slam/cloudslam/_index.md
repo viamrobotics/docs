@@ -19,7 +19,7 @@ SLAM Algorithms can have varying levels of resource requirements in order to run
 In order to better support running SLAM on resource limited machines, Viam provides a service to run SLAM algorithms for machines in the cloud as well as management of the maps generated in their location.
 
 CloudSLAM can be used with both a live machine or with previously captured data in your location.
-In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data-ai/capture-data/capture-sync/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
+In [live mode](#mapping-with-a-live-machine-online-mode) using the [data management service](/data/capture-sync/capture-and-sync-data/) and the [cloudslam-wrapper](https://github.com/viam-modules/cloudslam-wrapper) module, Viam takes your LiDAR camera and movement sensor data from your local machine and sends it to the cloudslam server.
 The CloudSLAM server will then process that data and produce a map that can then be used on any machine in your location.
 When using an [offline machine](#using-previously-captured-data-offline-mode), you can select data from specific sensors over a period of time to build a map with.
 
@@ -34,7 +34,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 {{% /alert %}}
 
-### Supported algorithms
+## Supported algorithms
 
 Currently CloudSLAM only supports the [cartographer module](../cartographer/) as a SLAM algorithm.
 
@@ -76,8 +76,8 @@ To use CloudSLAM on a live machine, you must meet the following requirements:
 To use CloudSLAM you must enable data capture and configure your `cloudslam-wrapper` SLAM service:
 
 {{< alert title="Tip: Managing Data Capture" color="tip" >}}
-Note that when the [data management service](/data-ai/capture-data/capture-sync/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
-To avoid incurring charges while not in use, [turn off data capture for your sensors](/data-ai/capture-data/capture-sync/#stop-data-capture-or-data-sync) once you have finished your SLAM session.
+Note that when the [data management service](/data/capture-sync/capture-and-sync-data/) is enabled, it continuously monitors and syncs your machine’s sensor data while the machine is running.
+To avoid incurring charges while not in use, [turn off data capture for your sensors](/data/capture-sync/capture-and-sync-data/#stop-data-capture-or-data-sync) once you have finished your SLAM session.
 {{< /alert >}}
 
 {{< tabs name="Create new map">}}
@@ -92,7 +92,7 @@ To avoid incurring charges while not in use, [turn off data capture for your sen
 
    On the panel that appears, you can manage the capturing and syncing functions.
    You can also specify the **directory**, the sync **interval**, and any **tags** to apply to captured data.
-   See the [data management service](/data-ai/capture-data/capture-sync/) for more information.
+   See the [data management service](/data/capture-sync/capture-and-sync-data/) for more information.
 
 2. Enable data capture for your camera, and for your movement sensor if you would like to use IMU data, odometry data, or both:
 
@@ -175,7 +175,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 
 5. Configure Cartographer to use cloudslam.
 
-   In your `cartographer` config card, click the **{}** button to switch to advanced views and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit cpu usage in favor of using cloudslam.
+   In your `cartographer` config card, click the **JSON** button to switch to the JSON editor and set the `use_cloud_slam` field to **true**. This setting disables local mapping to limit CPU usage in favor of using cloudslam.
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -183,7 +183,7 @@ You _do not_ need to configure data capture on the individual IMU and odometer.
 This example JSON configuration:
 
 - adds the `viam:rplidar`, `viam:cartographer`, and `viam:cloudslam-wrapper` modules
-- configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/data-ai/capture-data/capture-sync/) services
+- configures the `viam:slam:cartographer`, `viam:cloudslam-wrapper:cloudslam`, and the [data management](/data/capture-sync/capture-and-sync-data/) services
 - adds a `viam:lidar:rplidar` camera with data capture configured
 
   ```json {class="line-numbers linkable-line-numbers"}
@@ -357,7 +357,7 @@ Example of previously captured IMU data:
 From your machine's **Location** page, click **View SLAM library**, and click **Make new map** on the top right and specify a map name or click **Update map** next to an existing map.
 
 1. Enter the **Machine name**, **Camera name**, and optionally the **Movement Sensor name** of the components whose previously captured data you want to use to create or update a map.
-   If your machine has been deleted, you can alternatively specify the [**machine ID**](/dev/reference/apis/fleet/#find-machine-id).
+   If your machine has been deleted, you can alternatively specify the [**machine ID**](/reference/apis/fleet/#find-machine-id).
 2. Select the timeframe of the data you'd like to use.
 3. At the bottom, you can see the total number of PCD files and movement sensor data points that will be processed.
 4. Click **Generate map**.
@@ -432,10 +432,10 @@ The following attributes are available for `viam:cloudslam-wrapper:cloudslam`
 | `slam_service` | string | **Required** | The name of the SLAM Service on the machine to use with cloudslam. |
 | `api_key` | string | **Required** | An [API key](/manage/manage/access/) with location owner or higher permission. |
 | `api_key_id` | string | **Required** | The associated API key ID with the API key. |
-| `organization_id` | string | **Required** | The organization ID of your [organization](/dev/reference/glossary/#organization). |
-| `location_id` | string | **Required** | The location ID of your [location](/dev/reference/glossary/#location). |
-| `machine_id` | string | **Required** | The machine ID of your [machine](/dev/reference/apis/fleet/#find-machine-id). |
-| `machine_part_id` | string | Optional | The machine part ID of your [machine part](/dev/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
+| `organization_id` | string | **Required** | The organization ID of your [organization](/reference/glossary/#organization). |
+| `location_id` | string | **Required** | The location ID of your [location](/reference/glossary/#location). |
+| `machine_id` | string | **Required** | The machine ID of your [machine](/reference/apis/fleet/#find-machine-id). |
+| `machine_part_id` | string | Optional | The machine part ID of your [machine part](/reference/apis/fleet/#find-machine-id). Used for local package creation and updating mode. |
 | `viam_version` | string | Optional | The version of viam-server to use with CloudSLAM. Defaults to `stable`. |
 | `slam_version` | string | Optional | The version of cartographer to use with CloudSLAM. Defaults to `stable`. |
 | `camera_freq_hz` | float | Optional | The expected capture frequency for your camera/lidar components. Defaults to `5`. |

@@ -1,0 +1,1 @@
+Update an existing bounding box on an image. You can change the label, position, or dimensions of the bounding box.

@@ -1,6 +1,6 @@
-Move a [base](/operate/reference/components/base/) component to a destination [pose](/operate/mobility/orientation-vector/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/operate/reference/components/base/) component to a destination [pose](/motion-planning/reference/orientation-vectors/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
 
-`MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/operate/mobility/orientation-vector/) after `MoveOnMap()` returns.
+`MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/motion-planning/reference/orientation-vectors/) after `MoveOnMap()` returns.
 
 Each successful `MoveOnMap()` call returns a unique `ExecutionID` which you can use to identify all plans generated during the `MoveOnMap()` call.
 
@@ -17,7 +17,7 @@ Use the machine's position reported by the {{< glossary_tooltip term_id="slam" t
 {{< alert title="Requirements" color="info" >}}
 To use `MoveOnMap()`, your [SLAM service](/operate/reference/services/slam/) must implement `GetPointCloudMap()` and `GetPosition()`
 
-Make sure the [SLAM service](/operate/reference/services/slam/) you use alongside this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/dev/reference/apis/services/slam/):
+Make sure the [SLAM service](/operate/reference/services/slam/) you use alongside this motion service supports the following methods in its {{< glossary_tooltip term_id="model" text="model's" >}} implementation of the [SLAM service API](/reference/apis/services/slam/):
 
 - It must support `GetPointCloudMap()` to report the SLAM map as a pointcloud.
 - It must support `GetPosition()` to report the machine's current location on the SLAM map.

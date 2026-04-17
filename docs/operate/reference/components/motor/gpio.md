@@ -126,7 +126,7 @@ The following attributes are available for `gpio` motors:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `board` | string | **Required** | `name` of the [board](/operate/reference/components/board/) to which the motor driver is wired. |
-| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/dev/reference/apis/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/operate/reference/components/motor/encoded-motor/) `gpio` motors.* |
+| `max_rpm` | int | **Required** | This is an estimate of the maximum RPM the motor will run at with full power under no load. The [`GoFor`](/reference/apis/components/motor/#gofor) method calculates how much power to send to the motor as a percentage of `max_rpm`. If unknown, you can set it to 100, which will mean that giving 40 as the `rpm` argument to `GoFor` or `GoTo` will set it to 40% speed. ***Not required** or available for [encoded](/operate/reference/components/motor/encoded-motor/) `gpio` motors.* |
 | `pins` | object | **Required** | A structure that holds pin configuration information; [see below](#pins). |
 | `min_power_pct` | float | Optional | Sets a limit on minimum power percentage sent to the motor. <br> Default: `0.0` |
 | `max_power_pct` | float | Optional | Range is 0.06 to 1.0; sets a limit on maximum power percentage sent to the motor. <br> Default: `1.0` |
@@ -212,6 +212,6 @@ Only the output side of the driver board is different in that more wires connect
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
+{{% card link="/reference/apis/components/motor/" customTitle="Motor API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{< /cards >}}

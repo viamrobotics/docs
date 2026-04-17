@@ -54,7 +54,7 @@ No attributes are available for `fake` power sensors.
 For general configuration and development info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/power-sensor/" customTitle="Power sensor API" noimage="true" %}}
+{{% card link="/reference/apis/components/power-sensor/" customTitle="Power sensor API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
 {{< /cards >}}

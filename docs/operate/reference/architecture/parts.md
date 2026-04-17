@@ -110,7 +110,7 @@ To establish a connection between a part of one machine and a part of a second m
 1. Select the remote part from the list of parts.
 
    Alternatively, click **Add empty remote** and then scroll to the newly-created remote part configuration card.
-   Click on **{}** (Switch to advanced) and replace the JSON object with a remote config.
+   Click on **JSON** and replace the JSON object with a remote config.
 
    {{<imgproc src="/build/configure/parts/remote-config.png" resize="x1100" declaredimensions=true alt="The configured remote." style="width:700px" class="shadow" >}}
 
@@ -120,7 +120,7 @@ To establish a connection between a part of one machine and a part of a second m
    This is the machine part whose resources will be accessible to the other machine part.
 1. Navigate to the **CONNECT** tab.
 1. Click **Configure as a remote part** in the left-hand menu.
-1. Toggle the **Include API key** switch on, then copy the entire JSON snippet including the name, address, and authentication credentials of the remote part.
+1. Copy the entire JSON snippet including the name, address, and authentication credentials of the remote part.
 
    {{% snippet "show-secret.md" %}}
 

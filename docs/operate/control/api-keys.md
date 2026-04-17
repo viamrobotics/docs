@@ -51,4 +51,4 @@ If you ever need to rotate an API key you can use the web UI:
 1. Find the old API key on the page and click on **Show details**.
 1. Then click **Remove API key**.
 
-Alternatively, you can use the [`RotateKey`](/dev/reference/apis/fleet/#rotatekey) API method.
+Alternatively, you can use the [`RotateKey`](/reference/apis/fleet/#rotatekey) API method.

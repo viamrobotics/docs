@@ -271,7 +271,7 @@ This is the file you will modify in the next steps.
 
 ### Connect the module to the Freenove server
 
-When you send a command to the robot using the Viam [base API](/dev/reference/apis/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
+When you send a command to the robot using the Viam [base API](/reference/apis/components/base/#api), you need a way to pass the corresponding command to the Freenove dog server.
 In your code, establish a socket and then create a `send_data` helper method to send the command from `viam-server` to the Freenove server.
 
 Start by importing socket:
@@ -340,7 +340,7 @@ class robotdog(Base, Reconfigurable):
 To create a custom base model, you need a script that defines what each base component method (for example `set_power`) makes the robot dog do.
 
 Open your newly created <file>robotdog.py</file> file.
-It contains stubs of all the [base API methods](/dev/reference/apis/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
+It contains stubs of all the [base API methods](/reference/apis/components/base/#api), but you need to modify these method definitions to actually send commands to the robot dog.
 
 Take a look at [<file>robotdog.py</file>](https://github.com/viam-labs/robot-dog-module/blob/main/robotdog/src/robotdog.py).
 
@@ -356,7 +356,7 @@ async def stop(self, extra: Optional[Dict[str, Any]] = None, **kwargs):
 ```
 
 Copy and paste that code into your <file>robotdog.py</file> file.
-Feel free to tweak the specific contents of each of the [base method definitions](/dev/reference/apis/components/base/#api) to do things like make the dog move faster.
+Feel free to tweak the specific contents of each of the [base method definitions](/reference/apis/components/base/#api) to do things like make the dog move faster.
 Don't forget to save.
 
 ### Make your module executable
@@ -492,5 +492,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/operate/reference/services/vision/) with the robot dog's [camera component](/operate/reference/components/camera/).
+You could also use the Viam [vision service](/reference/services/vision/) with the robot dog's [camera component](/operate/reference/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

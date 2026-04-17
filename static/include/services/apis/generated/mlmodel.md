@@ -13,7 +13,7 @@ Take an already ordered input tensor as an array, make an inference on the model
 
 **Returns:**
 
-- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [typing.NDArray](https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray)]): A dictionary of output flat tensors as specified in the metadata.
+- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [typing.NDArray](https://numpy.org/doc/stable/reference/typing.html#numpy.typing.NDArray)]): :   A dictionary of output flat tensors as specified in the metadata.
 
 **Example:**
 
@@ -87,7 +87,7 @@ Get the metadata: name, data type, expected tensor/array shape, inputs, and outp
 
 **Returns:**
 
-- (viam.services.mlmodel.mlmodel.Metadata): The metadata.
+- (viam.services.mlmodel.mlmodel.Metadata): :   The metadata.
 
 **Example:**
 
@@ -151,7 +151,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 Execute model-specific commands that are not otherwise defined by the service API.
 Most models do not implement `DoCommand`.
 Any available model-specific commands should be covered in the model's documentation.
-If you are implementing your own ML model service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/dev/reference/sdks/docommand/).
+If you are implementing your own ML model service and want to add features that have no corresponding built-in API method, you can implement them with [`DoCommand`](/reference/sdks/docommand/).
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -193,7 +193,7 @@ Get the `ResourceName` for this instance of the ML model service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 

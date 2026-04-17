@@ -45,7 +45,7 @@ No attributes are available for `fake` sensors.
 
 {{% alert title="Info" color="info" %}}
 
-A call to [`Readings()`](/dev/reference/apis/components/sensor/#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
+A call to [`Readings()`](/reference/apis/components/sensor/#getreadings) on a `fake` sensor always returns readings of `{"a":1, "b":2, "c":3}`.
 
 {{% /alert %}}
 
@@ -59,10 +59,10 @@ A call to [`Readings()`](/dev/reference/apis/components/sensor/#getreadings) on 
 
 ## Next steps
 
-Check out the [sensor API](/dev/reference/apis/components/sensor/) or check out one of these guides:
+Check out the [sensor API](/reference/apis/components/sensor/) or check out one of these guides:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/reference/apis/components/sensor/" customTitle="Sensor API" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{< /cards >}}

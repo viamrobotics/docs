@@ -51,7 +51,7 @@ There is currently no support for this component compatible with the Micro-RDK.
 
 ## API
 
-The [power sensor API](/dev/reference/apis/components/power-sensor/) supports the following methods:
+The [power sensor API](/reference/apis/components/power-sensor/) supports the following methods:
 
 {{< readfile "/static/include/components/apis/generated/power_sensor-table.md" >}}
 
@@ -73,7 +73,7 @@ For general configuration and development info, see:
 {{< cards >}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{% card link="/operate/control/web-app/" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{< /cards >}}
 
-To capture data from the power sensor and sync it in the cloud, see the [data management service](/data-ai/capture-data/capture-sync/).
+To capture data from the power sensor and sync it in the cloud, see the [data management service](/data/capture-sync/capture-and-sync-data/).

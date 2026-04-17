@@ -35,7 +35,7 @@ This is a great place to start if you have never built a robot or a circuit befo
 {{<gif webm_src="/tutorials/blink-an-led/image9.webm" mp4_src="/tutorials/blink-an-led/image9.mp4" alt="A GIF of the completed project showing a blinking blue LED connected to a Raspberry Pi with jumper cables." max-width="300px">}}
 
 First, you'll use the control interface on [Viam](https://app.viam.com) to turn the LED on and off.
-Then, you'll write code to control the LED using the Viam [software development kits](/dev/reference/sdks/).
+Then, you'll write code to control the LED using the Viam [software development kits](/reference/sdks/).
 
 ## What you'll need for this guide
 
@@ -174,7 +174,7 @@ Click the **Save** button in the top right corner of the page to save your chang
 ## Control your robot using Viam
 
 When you configure your board component, Viam generates a control panel for it.
-Click the [**CONTROL** tab](/manage/troubleshoot/teleoperate/default-interface/#web-ui) to view the control panels for all your machine's components (in this case, just the board).
+Click the [**CONTROL** tab](/monitor/default-interface/#web-ui) to view the control panels for all your machine's components (in this case, just the board).
 
 Click the board card to expand it.
 Here, you can click on **Get** to get the current status of your pin.
@@ -216,7 +216,7 @@ Refer to the appropriate SDK documentation for SDK installation instructions:
 
 ### Connect your robot to the Viam SDK
 
-The easiest way to get started writing an application with Viam is to navigate to the **CONNECT** tab of your machine's page on [Viam](https://app.viam.com/robots) and select the **SDK code sample** page.
+The easiest way to get started writing an application with Viam is to navigate to the **CONNECT** tab of your machine's page on [Viam](https://app.viam.com/robots) and select **API keys** to get your credentials.
 For this tutorial, we provide Python and Golang code snippets.
 Select **Python** or **Golang** and follow the instructions to connect to your machine.
 
@@ -304,7 +304,7 @@ go run blink.go
 
 In order to interact with the GPIO pins on our Raspberry Pi, you need to import the [board component](/operate/reference/components/board/) from the Viam SDK.
 
-The **SDK code sample** page automatically adds the board import for you, but it doesn't hurt to double-check.
+The code sample from the **CONNECT** tab automatically adds the board import for you, but it doesn't hurt to double-check.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

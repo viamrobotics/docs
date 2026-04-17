@@ -54,13 +54,13 @@ If you are connecting to a real robotic arm during this tutorial, make sure your
 
 Make sure you have followed these steps to configure an arm and a gripper.
 
-1. [Configure an Arm](/operate/mobility/move-arm/)
-2. [Configure your frame system](/operate/mobility/move-arm/frame-how-to/)
-3. [Configure components attached to your arm](/operate/mobility/move-arm/configure-additional/)
+1. [Move your first arm](/motion-planning/quickstarts/first-arm/)
+2. [Configure your frame system](/motion-planning/frame-system/)
+3. [Configure an arm with a gripper and wrist camera](/motion-planning/frame-system/arm-gripper-camera/)
 
 ## Configure a robot
 
-Use the robot configuration from the [prerequisite guide](/operate/mobility/move-arm/) for this tutorial as well.
+Use the robot configuration from the [prerequisite guide](/motion-planning/move-an-arm/move-to-pose/) for this tutorial as well.
 We will revisit that robot configuration and add new components.
 
 The motion service is one of the "built-in" services, which means that no initial configuration is required to start planning and executing complex motion.
@@ -155,7 +155,7 @@ Additional obstacles can also be _appended_ as desired.
 
 In previous examples you controlled motion of individual components.
 Now you will use the motion service to control the motion of the robot as a whole.
-You will use the motion service's [`Move`](/dev/reference/apis/services/motion/#move) method to execute more general robotic motion.
+You will use the motion service's [`Move`](/reference/apis/services/motion/#move) method to execute more general robotic motion.
 You can designate specific components for motion planning by passing in the resource name (note the use of the arm resource in the code samples below).
 The `worldState` we constructed earlier is also passed in so that the motion service takes that information into account when planning.
 

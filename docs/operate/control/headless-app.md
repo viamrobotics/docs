@@ -32,7 +32,7 @@ We recommend running your code on a laptop, desktop, or server if:
 - You are using computationally-intensive programs involving, for example, computer vision or motion planning, and
 - You have a stable internet connection
 
-The client code will establish a connection to the instance of `viam-server` on your machine's SBC over [LAN or WAN](/dev/reference/sdks/connectivity/).
+The client code will establish a connection to the instance of `viam-server` on your machine's SBC over [LAN or WAN](/reference/sdks/connectivity/).
 
 ### On the machine itself
 
@@ -49,7 +49,7 @@ Install your preferred Viam SDK on the computer or SBC where you plan to run the
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-If you are using the Python SDK, [set up a virtual environment](/dev/reference/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
+If you are using the Python SDK, [set up a virtual environment](/reference/sdks/python/python-venv/) to package the SDK inside before running your code, avoiding conflicts with other projects or your system.
 
 For macOS (both Intel `x86_64` and Apple Silicon) or Linux (`x86`, `aarch64`, `armv6l`), run the following commands:
 
@@ -63,7 +63,7 @@ Windows is not supported.
 If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
 For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
 
-If you intend to use the [ML (machine learning) model service](/data-ai/ai/deploy/), use the following command instead, which installs additional required dependencies along with the Python SDK:
+If you intend to use the [ML (machine learning) model service](/vision/configure/), use the following command instead, which installs additional required dependencies along with the Python SDK:
 
 ```sh {class="command-line" data-prompt="$"}
 pip install 'viam-sdk[mlmodel]'
@@ -93,15 +93,15 @@ Select your preferred **Language** to display a code snippet, with connection co
 
 You can use the toggle to include the machine API key and API key ID, though we strongly recommend storing your API keys in environment variables to reduce the risk of accidentally sharing your API key and granting access to your machines.
 
-If your code will connect to multiple machines or use [Platform APIs](/dev/reference/apis/#platform-apis) you can create an API key with broader access.
+If your code will connect to multiple machines or use [Platform APIs](/reference/apis/#platform-apis) you can create an API key with broader access.
 
 ## Write your control code
 
-For API reference including code snippets for each method, see [Viam's Client APIs](/dev/reference/apis/).
+For API reference including code snippets for each method, see [Viam's Client APIs](/reference/apis/).
 
 {{< expand "Example code for moving a rover in a square" >}}
 
-The following code moves a mobile robot base in a square using the [base API](/dev/reference/apis/components/base/).
+The following code moves a mobile robot base in a square using the [base API](/reference/apis/components/base/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -288,7 +288,7 @@ int main() {
 
 {{< expand "Example Python code for turning on a fan based on sensor readings" >}}
 
-The following example from [Automate air filtration with air quality sensors](https://codelabs.viam.com/guide/air-quality/index.html?index=..%2F..index#0) uses both the sensor API's [GetReadings](/dev/reference/apis/components/sensor/#getreadings) command as well as custom functionality with the generic [DoCommand](/dev/reference/apis/components/generic/#docommand).
+The following example from [Automate air filtration with air quality sensors](https://codelabs.viam.com/guide/air-quality/index.html?index=..%2F..index#0) uses both the sensor API's [GetReadings](/reference/apis/components/sensor/#getreadings) command as well as custom functionality with the generic [DoCommand](/reference/apis/components/generic/#docommand).
 
 ```python {class="line-numbers linkable-line-numbers"}
 import asyncio

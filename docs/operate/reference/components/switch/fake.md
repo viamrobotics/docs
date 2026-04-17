@@ -93,9 +93,9 @@ If your fake switch is not working as expected:
 
 ## Next steps
 
-Check out the [switch API](/dev/reference/apis/components/switch/) or check out one of these guides:
+Check out the [switch API](/reference/apis/components/switch/) or check out one of these guides:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/switch/" customTitle="Switch API" noimage="true" %}}
+{{% card link="/reference/apis/components/switch/" customTitle="Switch API" noimage="true" %}}
 {{% card link="/operate/modules/configure-modules/" noimage="true" %}}
 {{< /cards >}}

@@ -24,7 +24,7 @@ Maybe someone is eating your chocolates when you are away.
 You're not sure who, but you suspect Steve.
 This robot will help you catch the culprit.
 
-When someone comes to your desk, the robot will use the [vision service](/operate/reference/services/vision/) and the [ML model service](/data-ai/ai/deploy/) to detect a person, take their photo, and text you an alert with a photo of the person.
+When someone comes to your desk, the robot will use the [vision service](/reference/services/vision/) and the [ML model service](/vision/configure/) to detect a person, take their photo, and text you an alert with a photo of the person.
 
 ![Text message reading "Alert There is someone at your desk beware" with a photo of a person (Steve) detected by the camera as he approaches the desk.](/tutorials/send-security-photo/text-message.png)
 
@@ -61,7 +61,7 @@ Configure your [webcam](/operate/reference/components/camera/webcam/) so that yo
 1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `cam` in all example code.
@@ -82,18 +82,18 @@ If it doesn't, double-check that your config is saved correctly, and check the *
 
 ### Configure your services
 
-Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/operate/reference/services/vision/) on your machine.
+Now that you know the camera is properly connected to your machine, it is time to add computer vision by configuring the [vision service](/reference/services/vision/) on your machine.
 This tutorial uses a pre-trained Machine Learning model from the Viam Registry called [`EfficientDet-COCO`](https://app.viam.com/ml-model/viam-labs/EfficientDet-COCO).
 The model can detect a variety of things, including `Persons`.
 You can see a full list of what the model can detect in <file>[labels.txt](https://github.com/viam-labs/devrel-demos/raw/main/Light%20up%20bot/labels.txt)</file> file.
 
-If you want to train your own model instead, follow the instructions to [train a TFlite](/data-ai/train/train-tf-tflite/) or [another model](/data-ai/train/train/).
+If you want to train your own model instead, follow the instructions to [train a TFlite](/train/train-a-model/) or [another model](/train/custom-training-scripts/).
 
 1. **Configure the ML model service**
 
    Navigate to your machine's **CONFIGURE** tab.
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
    Start typing `ML model` and select **ML model / TFLite CPU** from the builtin options.
 
    Enter `people` as the name, click **Add Module**, then click **Create**.
@@ -105,9 +105,9 @@ If you want to train your own model instead, follow the instructions to [train a
    Select **Deploy model on machine** for the **Deployment** field.
    Then select the `viam-labs:EfficientDet-COCO` model from the **Select model** dropdown.
 
-1. **Configure an mlmodel detector** [vision service](/operate/reference/services/vision/)
+1. **Configure an mlmodel detector** [vision service](/reference/services/vision/)
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Component or service**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
    Start typing `ML model` and select **vision / ML model** from the builtin options.
 
    Enter `myPeopleDetector` as the name, then click **Create**.
@@ -263,7 +263,7 @@ You need to tell the code how to access your specific machine (which in this cas
 
 Navigate to the machine's **CONNECT** tab.
 Make sure Python is selected in the Language selector.
-Get the machine address, API key, and API key ID from the **CONNECT** tab's **SDK code sample** page and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
+Get the machine address, API key, and API key ID from the **CONNECT** tab's **API keys** section and set them as environment variables or add them at the top of <FILE>chocolate_security.py</FILE>.
 
 {{% snippet "show-secret.md" %}}
 

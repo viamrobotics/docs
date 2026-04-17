@@ -159,7 +159,7 @@ You'll also need to check for it in your validate function, since it is not buil
 
 ## API
 
-The [motion service API](/dev/reference/apis/services/motion/) supports the following methods:
+The [motion service API](/reference/apis/services/motion/) supports the following methods:
 
 {{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 
@@ -182,6 +182,6 @@ The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** ta
 The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the motion service API, respectively:
 
 {{< cards >}}
-{{% card link="/operate/mobility/move-arm/" %}}
+{{% card link="/motion-planning/move-an-arm/move-to-pose/" %}}
 {{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
 {{< /cards >}}

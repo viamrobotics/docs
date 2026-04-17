@@ -1,0 +1,82 @@
+---
+linkTitle: "Reference"
+title: "Reference"
+weight: 600
+layout: "docs"
+type: "docs"
+no_list: true
+noedit: true
+open_on_desktop: true
+description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, and more."
+aliases:
+  - /reference/architecture/
+  - /reference/architecture/parts/
+  - /reference/architecture/machine-to-machine-comms/
+  - /architecture/
+  - /architecture/parts/
+  - /architecture/machine-to-machine-comms/
+  - /operate/reference/architecture/
+  - /operate/reference/architecture/parts/
+  - /operate/reference/architecture/machine-to-machine-comms/
+  - /dev/reference/architecture/
+  - /internals/robot-to-robot-comms/
+  - /internals/machine-to-machine-comms/
+  - /manage/parts-and-remotes/
+  - /build/configure/parts-and-remotes/
+  - /configure/parts/
+  - /build/configure/parts/
+  - /dev/
+  - /dev/reference/
+  - /dev/reference/contributing/
+  - /dev/tools/
+  - /dev/tools/contributing/
+  - /reference/account/
+  - /reference/account/accounts/
+  - /reference/account/billing/
+  - /reference/account/organize/
+  - /reference/advanced-modules/
+  - /reference/advanced-modules/create-subtype/
+  - /reference/advanced-modules/custom-components-remotes/
+  - /reference/advanced-modules/docker-modules/
+  - /reference/components/
+  - /reference/configuration/
+  - /reference/configuration/controls-package/
+  - /reference/configuration/kinematic-chain-config/
+  - /reference/configuration/mlmodel-design/
+  - /reference/configuration/slam-background/
+  - /reference/services/
+  - /reference/module-configuration/
+  - /reference/changelog/
+  - /dev/reference/changelog/
+  - /reference/platform/
+  - /reference/platform/viam-server/
+  - /reference/platform/viam-server/manage-viam-server/
+  - /reference/platform/viam-server/debug-endpoints/
+  - /reference/platform/viam-agent/
+  - /reference/platform/viam-agent/manage-viam-agent/
+  - /reference/platform/viam-micro-server/
+  - /operate/reference/viam-server/
+  - /operate/reference/viam-server/manage-viam-server/
+  - /operate/reference/viam-server/debug-endpoints/
+  - /operate/reference/viam-server/local-configuration-file/
+  - /manage/reference/viam-agent/
+  - /manage/reference/viam-agent/manage-viam-agent/
+  - /operate/install/setup-micro/
+  - /operate/reference/viam-micro-server/
+  - /operate/reference/viam-micro-server/viam-micro-server-troubleshooting/
+  - /internals/rdk/
+  - /architecture/rdk/
+  - /architecture/viam-server/
+  - /internals/local-configuration-file/
+  - /configure/agent/
+  - /installation/manage-viam-agent/
+  - /installation/microcontrollers/
+  - /installation/prepare/microcontrollers/
+  - /installation/viam-micro-server-setup/
+  - /installation/update/
+  - /installation/manage-viam-server/
+  - /build/micro-rdk/
+  - /get-started/installation/microcontrollers/
+  - /get-started/installation/manage-viam-server/
+  - /operate/get-started/setup-micro/
+---

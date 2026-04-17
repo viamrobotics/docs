@@ -9,6 +9,9 @@ IgnoreURLs:
   - "rtk2go.com"
 IgnoreDirs:
   - "lib"
+  - "operate"
+  - "manage"
+  - "data-ai"
 CacheExpires: "6h"
 # IgnoreDirs: - if we need to ever ignore files
 CheckExternal: false

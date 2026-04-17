@@ -16,7 +16,7 @@ date: "2024-01-01"
 To calibrate a camera, you can use the classical example of a [chessboard](https://en.wikipedia.org/wiki/Chessboard_detection).
 The chessboard is often used because the geometry makes it a good test case for detection and processing.
 
-### Prerequisites
+## Prerequisites
 
 The calibration code uses the `numpy` and `opencv-python` packages.
 To follow along, install the libraries:
@@ -113,6 +113,6 @@ The following is a full example config:
 For more configuration and usage info, see:
 
 {{< cards >}}
-{{% card link="/dev/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
-{{% card link="/data-ai/capture-data/capture-sync/" noimage="true" %}}
+{{% card link="/reference/apis/components/camera/" customTitle="Camera API" noimage="true" %}}
+{{% card link="/data/capture-sync/capture-and-sync-data/" noimage="true" %}}
 {{< /cards >}}

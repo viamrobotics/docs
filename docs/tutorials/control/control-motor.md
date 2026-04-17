@@ -136,7 +136,7 @@ Use the **Backwards** and **Forwards** buttons to change the direction.
 
 ### Option 2: Control from the mobile app
 
-You can use [the Viam mobile app](/manage/troubleshoot/teleoperate/default-interface/#viam-mobile-app) to control your motor's speed and direction directly from your smart phone.
+You can use [the Viam mobile app](/monitor/default-interface/#viam-mobile-app) to control your motor's speed and direction directly from your smart phone.
 
 Open the Viam mobile app and log in to your account.
 Select the location that your machine is in from the **Locations** tab.

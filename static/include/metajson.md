@@ -24,7 +24,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>visibility</code></td>
 <td>string</td>
 <td><strong>Required</strong></td>
-<td>Whether the module is accessible only to members of your <a href="/manage/reference/organize/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can only change it back to private if it is not configured on any machines outside of your organization.</td>
+<td>Whether the module is accessible only to members of your <a href="/reference/">organization</a> (<code>private</code>), or visible to all Viam users (<code>public</code>). You can later make a private module public using the <code>viam module update</code> command. Once you make a module public, you can only change it back to private if it is not configured on any machines outside of your organization.</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -56,7 +56,7 @@ Do not change the <code>module_id</code>.</p>
 <td><code>build</code></td>
 <td>object</td>
 <td>Optional</td>
-<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use with the <a href="/dev/tools/cli/#using-the-build-subcommand">Viam CLI build subcommand</a>.<br><ul><li><code>"setup"</code> (Optional): Command to run for setting up the build environment.</li><li><code>"build"</code> (Required): Command to run to build the module tarball.</li><li><code>"path"</code> (Optional): Path to the built module tarball.</li>
+<td>An object containing the command to run to build your module, as well as optional fields for the path to your dependency setup script, the target architectures to build for, and the path to your built module. Use with the <a href="/cli/#using-the-build-subcommand">Viam CLI build subcommand</a>.<br><ul><li><code>"setup"</code> (Optional): Command to run for setting up the build environment.</li><li><code>"build"</code> (Required): Command to run to build the module tarball.</li><li><code>"path"</code> (Optional): Path to the built module tarball.</li>
 <li><code>"arch"</code> (Required): Array of architectures to build for. For more information see <a href="/operate/modules/advanced/manage-modules/#supported-platforms-for-automatic-updates">Supported platforms for automatic updates</a>.</li><li><code>"darwin_deps"</code> (Required): Array of homebrew dependencies for Darwin builds. Explicitly pass <code>[]</code> for empty. Default: <code>["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"]</code></li></ul></td>
 </tr>
 <tr>
