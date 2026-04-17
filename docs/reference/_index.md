@@ -59,8 +59,6 @@ aliases:
   - /operate/reference/viam-server/manage-viam-server/
   - /operate/reference/viam-server/debug-endpoints/
   - /operate/reference/viam-server/local-configuration-file/
-  - /manage/reference/viam-agent/
-  - /manage/reference/viam-agent/manage-viam-agent/
   - /operate/install/setup-micro/
   - /operate/reference/viam-micro-server/
   - /operate/reference/viam-micro-server/viam-micro-server-troubleshooting/
@@ -68,7 +66,6 @@ aliases:
   - /architecture/rdk/
   - /architecture/viam-server/
   - /internals/local-configuration-file/
-  - /configure/agent/
   - /installation/manage-viam-agent/
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
