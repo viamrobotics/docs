@@ -54,7 +54,7 @@ Modules and ML models are stored as versioned packages in the Viam registry. Whe
 
 ## How fleet deployment fits with other sections
 
-- **[Get started](/foundation/)** covers setting up a single machine. Start there if you haven't created your first machine yet.
+- **[Get started](/set-up-a-machine/)** covers setting up a single machine. Start there if you haven't created your first machine yet.
 - **[Configure hardware](/hardware/)** covers adding components and services to a machine. Use fragments to templatize those configurations for your fleet.
 - **[Build and deploy modules](/build-modules/)** covers writing and uploading modules. This section covers deploying those modules to machines.
 - **[Train ML models](/train/)** covers training models. This section covers deploying trained models fleet-wide.

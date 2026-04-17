@@ -53,7 +53,7 @@ viam machines create --name=my-machine --location=<location-id>
 ```
 
 This creates the machine in the Viam app.
-The machine is not connected to any hardware until you [install `viam-server`](/foundation/) on a device and configure it with this machine's credentials.
+The machine is not connected to any hardware until you [install `viam-server`](/set-up-a-machine/) on a device and configure it with this machine's credentials.
 
 On success, the CLI prints the new machine's ID:
 
@@ -213,7 +213,7 @@ viam machines part restart --part=<part-id>
 
 ## Related pages
 
-- [Get started](/foundation/) for setting up your first machine
+- [Get started](/set-up-a-machine/) for setting up your first machine
 - [Configure hardware](/hardware/) for component configuration with the Viam app
 - [Manage your fleet with the CLI](/cli/manage-your-fleet/) for monitoring and remote access
 - [CLI reference](/cli/) for the complete `machines` command reference

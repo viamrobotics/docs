@@ -7,8 +7,8 @@ type: "docs"
 description: "Add and configure a camera component, verify the feed, and capture an image programmatically."
 date: "2025-01-30"
 aliases:
-  - /build/foundation/add-a-camera/
-  - /foundation/add-a-camera/
+  - /build/set-up-a-machine/add-a-camera/
+  - /set-up-a-machine/add-a-camera/
   - /hardware-components/add-a-camera/
   - /hardware/add-a-camera/
   - /hardware/components/add-a-camera/

@@ -67,7 +67,7 @@ This section covers tools for monitoring, operating, and debugging machines that
 
 | If you need to...                              | See                                     |
 | ---------------------------------------------- | --------------------------------------- |
-| Set up a machine for the first time            | [Get started](/foundation/)             |
+| Set up a machine for the first time            | [Get started](/set-up-a-machine/)             |
 | Configure components and services              | [Configure hardware](/hardware/)        |
 | Capture and sync data from sensors             | [Manage data](/data/)                   |
 | Train and deploy ML models                     | [Train ML models](/train/)              |
