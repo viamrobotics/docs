@@ -56,7 +56,7 @@ For sensors not covered above, browse [all sensor modules in the Viam registry](
 4. Name your sensor (for example, `temperature-sensor`) and click **Create**.
 
 If no model exists for your sensor, you can
-[write a driver module](/build-modules/write-a-driver-module/) to add support.
+[write your own module](/build-modules/write-a-driver-module/) to add support.
 
 ### 2. Configure sensor attributes
 
