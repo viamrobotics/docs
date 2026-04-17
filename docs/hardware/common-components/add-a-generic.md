@@ -49,7 +49,7 @@ For hardware the built-in models don't cover, browse the [Viam registry](https:/
 4. Name your component (for example, `my-device`) and click **Create**.
 
 If no model exists for your hardware, you can
-[write a driver module](/build-modules/write-a-driver-module/) that implements
+[write your own module](/build-modules/write-a-driver-module/) that implements
 the generic component API.
 
 ### 2. Configure attributes
@@ -212,7 +212,7 @@ go run main.go
 ## Related
 
 - [Generic API reference](/reference/apis/components/generic/): full method documentation.
-- [Write a driver module](/build-modules/write-a-driver-module/): create a
+- [Write a module](/build-modules/write-a-driver-module/): create a
   module for your custom hardware.
 - [Add a component](/hardware/common-components/): check if a more specific
   component type fits your hardware before using generic.
