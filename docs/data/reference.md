@@ -26,6 +26,10 @@ For the full schema of the `readings` table (document format, column reference, 
 
 ## Query reference
 
+{{% alert title="Note" color="note" %}}
+Tabular data queries (`TabularDataByMQL` and `TabularDataBySQL`) share a 100&nbsp;TB monthly processing limit across your organization. Queries that exceed the limit return an error. [Contact us](mailto:support@viam.com) to request an increase.
+{{% /alert %}}
+
 ### Indexed fields and query optimization
 
 You can improve query performance by filtering on indexed fields early in your query. Viam stores data in blob storage using the path pattern:
