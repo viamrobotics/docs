@@ -117,7 +117,7 @@ The following attributes are available for `transform` views:
 
 The following are the transformation objects available for the `pipeline`:
 
-### Classifications
+## Classifications
 
 Classifications overlay text from the `GetClassifications` method of the [vision service](/reference/services/vision/) onto the image.
 

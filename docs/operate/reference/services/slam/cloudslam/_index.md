@@ -34,7 +34,7 @@ See Viam's [Pricing](https://www.viam.com/product/pricing) for more information.
 
 {{% /alert %}}
 
-### Supported algorithms
+## Supported algorithms
 
 Currently CloudSLAM only supports the [cartographer module](../cartographer/) as a SLAM algorithm.
 
