@@ -294,7 +294,7 @@ Enabling debug level logs will take precedence over all logging configuration se
 ## Install `viam-server` without the web UI
 
 {{% alert title="Tip" color="tip" %}}
-The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a machine](/foundation/).
+The recommended way to install `viam-server` and connect your machine to Viam is covered in the [Set up a machine](/set-up-a-machine/).
 {{% /alert %}}
 
 If you need to install `viam-server` without the web UI, you can run the following commands.
