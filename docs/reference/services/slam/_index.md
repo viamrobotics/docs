@@ -51,9 +51,21 @@ Click the model name for configuration instructions.
 
 ## API
 
-The [SLAM service API](/reference/apis/services/slam/) supports the following methods:
+The SLAM service API supports the following methods:
 
-{{< readfile "/static/include/services/apis/generated/slam-table.md" >}}
+<!-- Method links point to /reference/apis/services/slam/ which does not exist yet.
+     Using inline table until the API page is created. -->
+
+<!-- prettier-ignore -->
+| Method Name | Description |
+| ----------- | ----------- |
+| `GetPosition` | Get the current position of the component the SLAM service is configured to source point cloud data from in the SLAM map as a `Pose`. |
+| `GetPointCloudMap` | Get the point cloud map. |
+| `GetInternalState` | Get the internal state of the SLAM algorithm required to continue mapping/localization. |
+| `GetProperties` | Get information about the current SLAM session. |
+| `Reconfigure` | Reconfigure this resource. |
+| `DoCommand` | Execute model-specific commands that are not otherwise defined by the service API. |
+| `Close` | Safely shut down the resource and prevent further use. |
 
 ## SLAM mapping best practices
 
@@ -66,6 +78,6 @@ While in a slam session, you should:
 - use a machine that can go smoothly over bumps and transitions between flooring areas
 - drive at a moderate speed
 - when using a wheeled base, try to include an [odometry movement sensor](/reference/components/movement-sensor/wheeled-odometry/). This helps the SLAM algorithm keep track of where the machine is moving.
-- it is important to note that the [adxl345 accelerometer](https://github.com/viam-modules/analog-devices/) on the [Viam Rover 1](/try/rover-resources/rover-tutorial-1/) **will not** satisfy the movement sensor requirement.
+- it is important to note that the [adxl345 accelerometer](https://github.com/viam-modules/analog-devices/) on the [Viam Rover 1](/try/) **will not** satisfy the movement sensor requirement.
 
 You can find additional assistance in the [Troubleshooting section](/monitor/troubleshoot/).
