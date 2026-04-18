@@ -266,11 +266,28 @@ for _, job := range jobs {
 
 ## Upload your training script {#upload-your-training-script}
 
-To write and upload a custom training script instead of using a built-in training type, see [Custom training scripts](/train/custom-training-scripts/#package-and-upload).
+To use your own training script instead of a built-in training type:
+
+1. Package your script with a `setup.py` or `pyproject.toml`. Viam invokes it as `python3 -m model.training`.
+2. Upload with the CLI:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam training-script upload --path=<path-to-script> --org-id=<org-id> --script-name=<name>
+   ```
+
+3. Submit a training job that references your script (from the web UI or CLI).
+
+For the full walkthrough including local testing with Docker, see [Custom training scripts](/train/custom-training-scripts/).
 
 ## Parse command line inputs {#click-for-more-information-on-parsing-command-line-inputs}
 
-For details on parsing command line arguments in custom training scripts, see [Write a training script](/train/custom-training-scripts/#trainingpy).
+When you submit a training job with custom arguments, Viam passes them to your training script as command-line flags. Your script receives:
+
+- `--dataset_file`: path to the dataset manifest (default: `dataset.jsonl`)
+- `--model_output_directory`: where to write the trained model (fixed: `/model_output`)
+- Any custom arguments you defined, as `--key=value` pairs
+
+Argument keys must be alphanumeric with underscores or hyphens. For full details on writing and testing training scripts, see [Custom training scripts](/train/custom-training-scripts/).
 
 ## What's next
 

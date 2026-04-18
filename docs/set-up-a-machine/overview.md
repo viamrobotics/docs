@@ -56,12 +56,16 @@ Use the **Platform you want to run on** dropdown to select the operating system 
 
 Options include Linux / Aarch64, Linux / x86, Mac, Windows native, Windows (WSL), Linux / Armv7l, and ESP32.
 
-{{< alert title="Tip" color="tip" >}}
+If you're using a single-board computer, follow the setup guide for your board before continuing:
 
-If you're using a single-board computer like a Raspberry Pi or NVIDIA Jetson, make sure it's running a compatible Linux OS before continuing.
-The setup page links to an [installation guide](/reference/device-setup/) for supported single-board computers.
+- [Raspberry Pi](/reference/device-setup/rpi-setup/)
+- [NVIDIA Jetson Nano](/reference/device-setup/jetson-nano-setup/)
+- [NVIDIA Jetson AGX Orin](/reference/device-setup/jetson-agx-orin-setup/)
+- [BeagleBone AI-64](/reference/device-setup/beaglebone-setup/)
+- [Orange Pi Zero 2](/reference/device-setup/orange-pi-zero2/)
+- [Orange Pi 3 LTS](/reference/device-setup/orange-pi-3-lts/)
 
-{{< /alert >}}
+See [all supported boards](/reference/device-setup/) for the full list.
 
 ## 4. Select your installation method
 
