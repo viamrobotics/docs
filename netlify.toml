@@ -1,6 +1,202 @@
 [build]
   publish = "public"
 
+# Forced redirects for /operate/* URLs linked from the Viam app.
+# force = true overrides the redirect even though the old pages still exist.
+# These must come before any wildcard /operate/* catch-all.
+
+[[redirects]]
+  from = "/operate/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/control/headless-app/"
+  to = "/build-apps/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/get-started/other-hardware/"
+  to = "/build-modules/write-a-driver-module/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/get-started/other-hardware/create-module/"
+  to = "/build-modules/write-a-driver-module/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/get-started/setup/"
+  to = "/set-up-a-machine/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/hello-world/building/"
+  to = "/set-up-a-machine/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/hello-world/quickstart/"
+  to = "/try/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/hello-world/tutorial-desk-safari/"
+  to = "/try/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/install/setup/"
+  to = "/set-up-a-machine/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/modules/advanced/dependencies/"
+  to = "/build-modules/dependencies/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/modules/control-logic/"
+  to = "/build-modules/write-a-logic-module/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/modules/lifecycle-module/"
+  to = "/build-modules/module-reference/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/modules/support-hardware/"
+  to = "/hardware/configure-hardware/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/"
+  to = "/hardware/configure-hardware/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/modules/write-an-inline-module/"
+  to = "/build-modules/write-an-inline-module/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/architecture/parts/"
+  to = "/hardware/multi-machine/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/components/camera/transform/"
+  to = "/reference/components/camera/transform/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/components/servo/"
+  to = "/reference/components/servo/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/beaglebone-setup/"
+  to = "/reference/device-setup/beaglebone-setup/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/jetson-agx-orin-setup/"
+  to = "/reference/device-setup/jetson-agx-orin-setup/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/jetson-nano-setup/"
+  to = "/reference/device-setup/jetson-nano-setup/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/odroid-c4-setup/"
+  to = "/reference/device-setup/odroid-c4-setup/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/orange-pi-3-lts/"
+  to = "/reference/device-setup/orange-pi-3-lts/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/orange-pi-zero2/"
+  to = "/reference/device-setup/orange-pi-zero2/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/pumpkin/"
+  to = "/reference/device-setup/pumpkin/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/rpi-setup/"
+  to = "/reference/device-setup/rpi-setup/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/prepare/sk-tda4vm/"
+  to = "/reference/device-setup/sk-tda4vm/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/services/motion/"
+  to = "/reference/services/motion/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/services/slam/cloudslam/"
+  to = "/reference/services/slam/cloudslam/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/services/vision/mlmodel/"
+  to = "/reference/services/vision/mlmodel/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/reference/viam-server/"
+  to = "/reference/viam-server/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/operate/get-started/other-hardware/micro-module/"
+  to = "/set-up-a-machine/setup-micro/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/data/"
   to = "/data/overview/"
