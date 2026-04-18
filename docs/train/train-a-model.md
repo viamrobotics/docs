@@ -264,6 +264,14 @@ for _, job := range jobs {
 
 {{< /expand >}}
 
+## Upload your training script {#upload-your-training-script}
+
+To write and upload a custom training script instead of using a built-in training type, see [Custom training scripts](/train/custom-training-scripts/#package-and-upload).
+
+## Parse command line inputs {#click-for-more-information-on-parsing-command-line-inputs}
+
+For details on parsing command line arguments in custom training scripts, see [Write a training script](/train/custom-training-scripts/#trainingpy).
+
 ## What's next
 
 - [Deploy a model to a machine](/train/deploy-a-model/) -- configure the module,

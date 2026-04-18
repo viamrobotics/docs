@@ -39,7 +39,7 @@ lifecycle, config validation, dependency, and deployment patterns are the same.
 For background on the generic service API, module lifecycle, dependencies, and
 background tasks, see the [overview](/build-modules/overview/).
 
-## Steps
+## Steps {#program-control-logic-in-module}
 
 When writing a logic module, follow the steps outlined below. To illustrate
 each step we'll use a temperature alert monitor as a worked example. It watches

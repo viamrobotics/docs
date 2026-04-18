@@ -54,7 +54,7 @@ In the machine settings card, open **Settings** and expand **Known Networks**. C
 | `ipv4_gateway`      | string  | —        | IPv4 gateway address.                                                                      |
 | `ipv4_route_metric` | integer | `0`      | Route metric. Lower values are preferred. `0` defaults to 100 for wired, 600 for wireless. |
 
-## Configure tunneling
+## Configure tunneling {#configure-networking-settings-for-tunneling}
 
 Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection. You must list allowed ports in the machine configuration.
 

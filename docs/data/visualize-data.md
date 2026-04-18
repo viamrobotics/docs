@@ -43,7 +43,9 @@ Custom visualization with Viam SDKs gives you complete control. You write code t
 queries data through the Viam SDK and renders it however you want -- matplotlib
 charts, Plotly dashboards, HTML reports, or any other format.
 
-## Build a Viam Teleop dashboard
+<a id="dashboard"></a>
+
+## Build a Viam Teleop dashboard {#teleop}
 
 The Viam Teleop dashboard is the fastest way to visualize data from a single machine.
 

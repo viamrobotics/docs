@@ -10,6 +10,7 @@ aliases:
   - /data/capture-and-sync-data/
   - /build/foundation/capture-and-sync-data/
   - /foundation/capture-and-sync-data/
+  - /data-ai/capture-data/capture-sync/
 ---
 
 Configure your machine to automatically record sensor readings, camera images, and other component data, then sync it to the cloud. For an overview of how data capture and sync work, see the [Manage data overview](/data/overview/).
@@ -19,7 +20,7 @@ Configure your machine to automatically record sensor readings, camera images, a
 Go to [app.viam.com](https://app.viam.com) and navigate to your machine.
 Confirm it shows as **Live** in the upper left.
 
-## 2. Enable data capture on a component
+## 2. Enable data capture on a component {#configure-data-capture}
 
 1. Find your component (for example, `my-camera`) in the machine configuration.
 2. Click the **Data Capture** button.
@@ -86,6 +87,10 @@ Wait 30 seconds to a minute for data to accumulate and sync, then:
    - **Time range** -- pick a recent window
 
 If you see data flowing in, capture and sync are working correctly.
+
+## Supported resources {#supported-resources}
+
+Any component that implements a Viam API method returning data can be configured for data capture. This includes cameras, sensors, movement sensors, encoders, and any modular component that returns readings. See the [data reference](/data/reference/) for the full list of supported methods and data types.
 
 ## Troubleshooting
 

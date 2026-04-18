@@ -50,7 +50,7 @@ A banner prompts you to set up the machine part.
 1. Click **View setup instructions** in the banner.
 2. In the wizard dialog that opens, click **Go to Advanced setup**.
 
-## 3. Select your platform
+## 3. Select your platform {#sbc-setup-instructions}
 
 Use the **Platform you want to run on** dropdown to select the operating system and architecture of the compute machine for your robot, the computer to which you've attached cameras, sensors, arms, or other components.
 

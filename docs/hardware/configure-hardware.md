@@ -56,6 +56,10 @@ You don't need to think about where a model comes from. The Viam app shows all a
 
 If no model exists for your hardware, you can [write your own module](/build-modules/write-a-driver-module/) that provides a model implementing the component API.
 
+<a id="browse-supported-hardware-by-component-api"></a>
+
+Browse all available components and services in the [Viam registry](https://app.viam.com/registry).
+
 ## Switching hardware without changing code
 
 Because every model of a given type exposes the same API, your application code does not change when you swap hardware.
@@ -70,7 +74,7 @@ This works whether `drive-motor` is configured as a `gpio` motor on a Raspberry 
 To switch hardware, you change the model and attributes in your machine's configuration.
 Your code stays the same.
 
-## Add a component
+## Add a component {#configure-hardware-on-your-machine}
 
 The process for adding any component is the same whether you're adding a motor,
 a sensor, a board, or anything else. For step-by-step guides for specific

@@ -35,7 +35,7 @@ If you are setting up a small number of machines manually, you can skip provisio
 - A [fragment](/fleet/reuse-configuration/) with the configuration your machines should use. Note the fragment ID.
 - A device with a supported Linux OS. See the [platform requirements](/set-up-a-machine/) for supported platforms.
 
-## 1. Create the defaults file
+## 1. Create the defaults file {#configure-agent-provisioning}
 
 Create a file called `viam-defaults.json` that defines the provisioning behavior. At minimum, specify a `fragment_id`.
 

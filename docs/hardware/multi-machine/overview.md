@@ -33,7 +33,7 @@ Unless you configure a prefix, even the name stays the same.
 
 Viam gives you two ways to create this connection: sub-parts and remote parts.
 
-## Pick a pattern
+## Pick a pattern {#machine-parts}
 
 <!-- prettier-ignore -->
 | | Sub-part | Remote part |
