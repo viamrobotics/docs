@@ -12,6 +12,12 @@ date: "2026-04-14"
 Configuration reference for Viam built-in services. Each page covers available models, configuration attributes, and JSON templates. For API method reference, see [Service APIs](/reference/apis/services/).
 
 {{< cards >}}
+{{% card link="/reference/services/base-rc/" %}}
+{{% card link="/reference/services/discovery/" %}}
+{{% card link="/reference/services/frame-system/" %}}
+{{% card link="/reference/services/generic/" %}}
+{{% card link="/reference/services/motion/" %}}
+{{% card link="/reference/services/navigation/" %}}
 {{% card link="/reference/services/vision/" %}}
 {{% card link="/reference/services/motion/" %}}
 {{< /cards >}}
