@@ -171,4 +171,3 @@ Enter x and y coordinates to move your machine to, then click the **Move** butto
 The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** tab is 0.5 m.
 
 {{< /alert >}}
-
