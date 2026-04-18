@@ -476,5 +476,5 @@ Note that this method may not work for versions that are too old, as Homebrew do
 {{< cards >}}
 {{% card link="/reference/apis/" %}}
 {{% card link="/hardware/configure-hardware/" %}}
-{{% card link="/foundation/" %}}
+{{% card link="/set-up-a-machine/" %}}
 {{< /cards >}}

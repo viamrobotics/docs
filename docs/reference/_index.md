@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 noedit: true
 open_on_desktop: true
+manualLink: "/reference/overview/"
 description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, and more."
 aliases:
   - /reference/architecture/
