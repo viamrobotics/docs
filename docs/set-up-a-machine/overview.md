@@ -50,18 +50,13 @@ A banner prompts you to set up the machine part.
 1. Click **View setup instructions** in the banner.
 2. In the wizard dialog that opens, click **Go to Advanced setup**.
 
-## 3. Select your platform
+## 3. Select your platform {#sbc-setup-instructions}
 
 Use the **Platform you want to run on** dropdown to select the operating system and architecture of the compute machine for your robot, the computer to which you've attached cameras, sensors, arms, or other components.
 
 Options include Linux / Aarch64, Linux / x86, Mac, Windows native, Windows (WSL), Linux / Armv7l, and ESP32.
 
-{{< alert title="Tip" color="tip" >}}
-
-If you're using a single-board computer like a Raspberry Pi or NVIDIA Jetson, make sure it's running a compatible Linux OS before continuing.
-The setup page links to an [installation guide](/reference/device-setup/) for supported single-board computers.
-
-{{< /alert >}}
+If you're using a single-board computer, make sure it's running a compatible Linux OS before continuing. See [Device setup guides](/reference/device-setup/) for board-specific instructions.
 
 ## 4. Select your installation method
 

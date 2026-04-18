@@ -32,7 +32,6 @@ aliases:
   - /use-cases/image-data/
   - /get-started/collect-data/
   - /fleet/data-management/
-  - /data-ai/capture-data/capture-sync/
   - /data/data-capture-reference/
   - /data/how-sync-works/
   - /data-ai/capture-data/advanced/how-sync-works/
