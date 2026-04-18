@@ -172,11 +172,3 @@ The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** ta
 
 {{< /alert >}}
 
-## Next steps
-
-The following tutorials contain complete example code for interacting with a robot arm through the arm component API, and with the motion service API, respectively:
-
-{{< cards >}}
-{{% card link="/motion-planning/move-an-arm/move-to-pose/" %}}
-{{% card link="/tutorials/services/plan-motion-with-arm-gripper" %}}
-{{< /cards >}}

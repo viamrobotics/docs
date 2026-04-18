@@ -9,8 +9,9 @@ description: "Configuration reference for Viam built-in services: per-service mo
 date: "2026-04-14"
 ---
 
-Configuration reference for Viam built-in services. For API method reference, see [APIs](/reference/apis/).
+Configuration reference for Viam built-in services. Each page covers available models, configuration attributes, and JSON templates. For API method reference, see [Service APIs](/reference/apis/services/).
 
 {{< cards >}}
 {{% card link="/reference/services/vision/" %}}
+{{% card link="/reference/services/motion/" %}}
 {{< /cards >}}
