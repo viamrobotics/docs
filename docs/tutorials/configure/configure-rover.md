@@ -140,7 +140,7 @@ Add the following JSON objects to the `components` array:
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of encoder](/reference/components/encoder/#configuration) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
+Follow the instructions for the [model of encoder](/reference/components/encoder/) your rover uses to configure your encoders and configure at least a `right` and a `left` encoder.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -289,7 +289,7 @@ You can ignore the other optional attributes.
 {{% /tab %}}
 {{% tab name="Other" %}}
 
-Follow the instructions for the [model of motor](/reference/components/motor/#configuration) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
+Follow the instructions for the [model of motor](/reference/components/motor/) your rover uses to configure your motors and configure at least a `right` and a `left` motor.
 
 {{% /tab %}}
 {{< /tabs >}}

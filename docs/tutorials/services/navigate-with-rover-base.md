@@ -96,7 +96,7 @@ If you are using different hardware, configure them according to the instruction
 ### Configure a board with `"digital_interrupts"`
 
 First, configure the [board](/reference/components/board/) local to your rover.
-Follow [these instructions](/reference/components/board/#configuration) to configure your board model.
+Follow [these instructions](/reference/components/board/) to configure your board model.
 We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jetson), but you can use any model of board you have on hand, as the [resource's API](/reference/apis/components/board/#api) is hardware agnostic.
 
 1. Configure a board named `local` as shown below:
@@ -138,7 +138,7 @@ We used a [`jetson` board](https://github.com/viam-modules/nvidia/tree/main/jets
 Configure your rover base to act as the moving platform of the navigating robot.
 Start by configuring the [encoders](/reference/components/encoder/) and [motors](/reference/components/motor/) of your encoded motor.
 
-1. Follow the [encoder configuration instructions](/reference/components/encoder/#configuration) to configure the left and right encoders of the wheeled base.
+1. Follow the [encoder configuration instructions](/reference/components/encoder/) to configure the left and right encoders of the wheeled base.
    We configured ours as [`incremental` encoders](/reference/components/encoder/incremental/), as shown below:
 
    {{<imgproc src="/tutorials/navigate-with-rover-base/right-encoder-config-builder.png" resize="1000x" declaredimensions=true alt="Configuration of a right incremental encoder." class="aligncenter" style="min-height:550px; max-height:600px">}}
@@ -148,7 +148,7 @@ Start by configuring the [encoders](/reference/components/encoder/) and [motors]
    Assign the pins as the [digital interrupts](https://github.com/viam-modules/nvidia/blob/main/README.md#digital-interrupt-configuration) you configured for the board, and wire the encoders accordingly to pins {{< glossary_tooltip term_id="pin-number" text="numbered" >}} `31`, `29`, `23`, and `21` on your `local` board.
    Refer to the [`incremental` encoder documentation](/reference/components/encoder/incremental/) for attribute information.
 
-2. Next, follow [these instructions](/reference/components/motor/#configuration) to configure the left and right [motors](/reference/components/motor/) of the `wheeled` base.
+2. Next, follow [these instructions](/reference/components/motor/) to configure the left and right [motors](/reference/components/motor/) of the `wheeled` base.
    We [configured ours as `gpio` motors](/reference/components/motor/gpio/), as shown below:
 
 {{<imgproc src="/tutorials/navigate-with-rover-base/right-motor-config-builder.png" resize="1500x" declaredimensions=true alt="Configuration of a right gpio motor." style="min-height:550px; max-height:600px">}}

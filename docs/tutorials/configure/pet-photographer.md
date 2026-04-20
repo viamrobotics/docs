@@ -356,7 +356,7 @@ After you have implemented your resource API's required methods and written your
 {{< tabs >}}
 {{% tab name="Python"%}}
 
-<file>color_filter.py</file> implements "colorfilter", a custom model of the [camera component API](/reference/components/camera/#api).
+<file>color_filter.py</file> implements "colorfilter", a custom model of the [camera component API](/reference/components/camera/).
 
 <details>
   <summary>Click to view sample code from <file>color_filter.py</file></summary>
@@ -519,7 +519,7 @@ In this code:
 {{% /tab %}}
 {{% tab name="Go"%}}
 
-<file>color_filter.go</file> implements "colorfilter", a custom model of the [camera component API](/reference/components/camera/#api).
+<file>color_filter.go</file> implements "colorfilter", a custom model of the [camera component API](/reference/components/camera/).
 
 <details>
   <summary>Click to view sample code from <file>color_filter.go</file></summary>

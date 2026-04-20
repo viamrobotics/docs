@@ -100,7 +100,7 @@ To make your machine control a motor, you must add a motor component and a board
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
-If you are using a physical board to follow along, look through the [**Supported Models**](/reference/components/board/#configuration) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/reference/components/board/) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
 If you do not have a physical board, use the [`fake` board model](/reference/components/board/fake/).
@@ -111,7 +111,7 @@ For the `fake` model, there are no required attributes.
 ## Step 3: Configure a motor
 
 Add a `motor` component that supports the type of motor and motor driver you're using.
-Look through the [**Supported Models**](/reference/components/motor/#configuration) to determine the model of component to configure.
+Look through the [**Supported Models**](/reference/components/motor/) to determine the model of component to configure.
 For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/reference/components/motor/gpio/).
 
 Follow the motor driver manufacturer's data sheet to wire your motor driver to your board and to your motor.
@@ -148,7 +148,7 @@ Choose your machine from the list and use the mobile interface to adjust the mot
 ### Option 3: Control programmatically
 
 Each component has a standardized API.
-The following code shows you how to control the motor's speed and direction using the [Motor API](/reference/components/motor/#api).
+The following code shows you how to control the motor's speed and direction using the [Motor API](/reference/components/motor/).
 
 If you'd like to try it, find your machine's API key and address on your machine's **CONNECT** tab and run the code sample:
 
