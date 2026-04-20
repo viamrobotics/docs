@@ -69,7 +69,7 @@ Viam runs training jobs on cloud infrastructure. You do not need to provision a 
 ### Schedule automatic retraining
 
 Instead of manually starting a training job each time you add new data, you can set a retraining schedule on a model.
-Viam checks the schedule daily and submits a new training job when the model is due.
+Viam evaluates retraining schedules once per day at midnight UTC and submits a new training job when the model is due.
 
 To set a retraining schedule:
 
