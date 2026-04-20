@@ -7,6 +7,7 @@ description: "Reference for the fake camera model on Micro-RDK. Returns a static
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
+  - /operate/reference/components/camera/fake-micro-server/
   - /components/camera/fake-micro-server/
   - "/reference/components/camera/fake-micro-rdk/"
   - "/operate/reference/components/camera/fake-micro-rdk/"

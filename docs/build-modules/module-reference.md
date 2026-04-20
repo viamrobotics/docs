@@ -7,6 +7,9 @@ type: "docs"
 description: "Reference for module developers: lifecycle, interfaces, meta.json schema, CLI commands, environment variables, and registry rules."
 date: "2025-03-05"
 aliases:
+  - /operate/modules/advanced/logging/
+  - /operate/modules/advanced/metajson/
+  - /operate/modules/advanced/module-configuration/
   - /development/module-reference/
   - /operate/modules/lifecycle-module/
   - /operate/modules/lifecycle-of-a-module/
@@ -16,6 +19,14 @@ aliases:
 This page is a reference for module developers. For step-by-step
 instructions, see [Write a Module](/build-modules/write-a-driver-module/) and
 [Deploy a Module](/build-modules/deploy-a-module/).
+
+## Module configuration {#module-configuration}
+
+For details on configuring modules and modular resources on a machine:
+
+- [Environment variables](#environment-variables) — custom env vars passed to your module
+- [Registry validation rules](#registry-validation-rules) — valid API and model identifier formats
+- [meta.json schema](#metajson-schema) — module metadata including visibility settings
 
 ## Module lifecycle
 

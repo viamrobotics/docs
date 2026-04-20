@@ -21,7 +21,7 @@ How to [use](#use) and [define](#define) the `extra` parameters that many {{< gl
 
 You can use `extra` parameters with modular {{< glossary_tooltip term_id="resource" text="resource" >}} implementations that are _models_ of built-in resource types.
 
-For example, a new model of [sensor](/hardware/common-components/add-a-sensor/), or a new model of {{< glossary_tooltip term_id="slam" text="SLAM" >}} service.
+For example, a new model of [sensor](/hardware/common-components/add-a-sensor/), or a new model of SLAM service.
 
 The `extra` parameters in that built-in resource type's [API](/reference/apis/) allow users to pass information to a resource's driver that isn't specified as a parameter for all models of the resource type.
 This is necessary to keep the API of resource types consistent across, for example, all models of [motor](/hardware/common-components/add-a-motor/) or all models of [camera](/hardware/common-components/add-a-camera/).

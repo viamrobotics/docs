@@ -7,6 +7,7 @@ description: "Reference for the two_wheeled_base base model. And wire a two-whee
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
+  - /operate/reference/components/base/two_wheeled_base/
   - /micro-rdk/base/esp32_wheeled_base/
   - /build/micro-rdk/base/esp32_wheeled_base/
   - /build/micro-rdk/base/two_wheeled_base/

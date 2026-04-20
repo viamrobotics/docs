@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/gripper.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/gripper/
   - /dev/reference/apis/components/gripper/
   - /appendix/apis/components/gripper/
 # updated: ""  # When the content was last entirely checked

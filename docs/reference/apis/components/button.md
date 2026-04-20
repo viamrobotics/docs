@@ -9,6 +9,7 @@ images: ["/icons/components/button.svg"]
 date: "2025-02-20"
 # updated: ""  # When the content was last entirely checked
 aliases:
+  - /operate/modules/component-apis/button/
   - /dev/reference/apis/components/button/
 ---
 

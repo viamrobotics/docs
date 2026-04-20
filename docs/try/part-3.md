@@ -7,6 +7,7 @@ type: "docs"
 description: "Write inspection logic that detects defective cans."
 date: "2025-01-30"
 aliases:
+  - /operate/hello-world/first-project/part-3/
   - /try/first-project/part-3/
 ---
 

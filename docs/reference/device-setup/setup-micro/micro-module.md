@@ -11,6 +11,7 @@ languages: ["rust"]
 date: "2024-12-11"
 # updated: ""  # When the content was last entirely checked
 aliases:
+  - /operate/modules/advanced/micro-module/
   - /installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/microcontrollers/development-setup/

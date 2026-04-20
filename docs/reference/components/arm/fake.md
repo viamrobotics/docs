@@ -7,6 +7,7 @@ description: "Reference for the fake arm model. Fake arm to use for testing."
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:
+  - "/operate/reference/components/arm/fake/"
   - "/components/arm/fake/"
   - "/reference/components/arm/fake/"
 component_description: "A model used for testing, with no physical hardware."

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Build a unified coordinate tree so all components agree on where things are in physical space."
 aliases:
+  - /operate/reference/kinematic-chain-config/
   - /work-cell-layout/define-your-frame-system/
   - /build/work-cell-layout/define-your-frame-system/
   - /operate/mobility/move-arm/frame-how-to/

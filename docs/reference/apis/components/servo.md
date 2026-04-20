@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 date: "2022-10-10"
 aliases:
+  - /operate/modules/component-apis/servo/
   - /dev/reference/apis/components/servo/
   - /appendix/apis/components/servo/
 # updated: ""  # When the content was last entirely checked

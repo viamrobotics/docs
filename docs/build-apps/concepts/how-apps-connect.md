@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "The transport paths the SDK uses, the session safety mechanism, and what the SDK reconnects automatically."
 date: "2026-04-10"
+aliases:
+  - /operate/reference/sessions/
 ---
 
 A Viam client application needs to reach a machine that may be on a different network, behind a NAT, or both. This page describes the transport paths the SDK uses, the session safety mechanism, and how the SDK reconnects when the network drops.

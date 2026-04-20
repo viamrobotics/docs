@@ -8,6 +8,7 @@ images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["board", "components"]
 aliases:
+  - /operate/reference/components/board/esp32/
   - /micro-rdk/board/esp32/
   - /build/micro-rdk/board/esp32/
   - /components/board/esp32/

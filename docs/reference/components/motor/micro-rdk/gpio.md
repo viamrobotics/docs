@@ -6,6 +6,7 @@ type: "docs"
 description: "Reference for the gpio motor model. Brushed or brushless DC motors with a microcontroller."
 images: ["/icons/components/motor.svg"]
 aliases:
+  - "/operate/reference/components/motor/gpio-micro-rdk/"
   - /micro-rdk/motor/gpio/
   - /components/motor/gpio-micro-rdk/
   - "/reference/components/motor/gpio-micro-rdk/"

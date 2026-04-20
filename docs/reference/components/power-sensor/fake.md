@@ -8,6 +8,7 @@ tags: ["sensor", "power sensor"]
 icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
+  - "/operate/reference/components/power-sensor/fake/"
   - "/components/power-sensor/fake/"
   - "/reference/components/power-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."

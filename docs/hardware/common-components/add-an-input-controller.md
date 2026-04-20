@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a gamepad, joystick, or other input device for manual machine control."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/input-controller/
   - /hardware-components/add-an-input-controller/
 ---
 

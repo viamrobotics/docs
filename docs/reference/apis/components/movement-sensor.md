@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/imu.svg"]
 date: "2022-10-10"
 aliases:
+  - /operate/modules/component-apis/movement-sensor/
   - /dev/reference/apis/components/movement-sensor/
   - /appendix/apis/components/movement-sensor/
 # updated: ""  # When the content was last entirely checked

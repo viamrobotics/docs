@@ -8,6 +8,7 @@ tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
+  - "/operate/reference/components/servo/gpio/"
   - "/components/servo/gpio/"
   - "/reference/components/servo/gpio/"
 component_description: "Supports a hobby servo wired to a board that supports PWM, for example Raspberry Pi 5, Orange Pi, Jetson, or PCAXXXX."

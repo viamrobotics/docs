@@ -7,6 +7,7 @@ description: "Reference for the gamepad input-controller model. Linux-supported 
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
+  - "/operate/reference/components/input-controller/gamepad/"
   - "/components/input-controller/gamepad/"
   - "/reference/components/input-controller/gamepad/"
 component_description: "Supports X-box, Playstation, and similar controllers with Linux support."

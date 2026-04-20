@@ -15,6 +15,4 @@ Once you've installed `viam-server` and your machine has come online, if your ma
 1. Select a camera and press the Start Game button.
    The goal of the game is to find and show specific objects to the camera.
 
-If you'd like to learn how to create this game, see the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/).
-
 Should the game not work, return to your machine in the Viam web UI and check the **LOGS** tab for errors.

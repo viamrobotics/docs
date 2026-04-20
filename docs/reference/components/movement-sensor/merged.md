@@ -6,6 +6,7 @@ type: "docs"
 description: "Reference for the merged movement-sensor model. Merged movement sensor."
 images: ["/icons/components/imu.svg"]
 aliases:
+  - "/operate/reference/components/movement-sensor/merged/"
   - "/components/movement-sensor/merged/"
   - "/reference/components/movement-sensor/merged/"
 component_description: "A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources."

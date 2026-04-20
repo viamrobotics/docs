@@ -7,6 +7,9 @@ type: "docs"
 description: "Add and configure a robotic arm, verify joint motion, and test end-effector positioning."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/arm/
+  - /operate/reference/components/arm/eva/
+  - /operate/reference/components/arm/yahboom-dofbot/
   - /hardware-components/add-an-arm/
 ---
 

@@ -10,6 +10,7 @@ card:
   weight: 10
   title: Glossary
 aliases:
+  - /operate/reference/glossary/
   - /dev/reference/glossary/
   - "/appendix/glossary/"
 ---

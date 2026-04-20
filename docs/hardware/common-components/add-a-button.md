@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a button component to detect presses from a physical button."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/button/
   - /hardware-components/add-a-button/
 ---
 

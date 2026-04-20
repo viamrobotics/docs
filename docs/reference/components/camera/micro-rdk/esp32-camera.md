@@ -10,6 +10,7 @@ component_description: "An `OV2640` or `OV3660` camera connected to an esp32 boa
 micrordk_component: true
 date: "2024-08-28"
 aliases:
+  - /operate/reference/components/camera/esp32-camera/
   - /components/camera/esp32-camera/
   - "/reference/components/camera/esp32-camera-micro-rdk/"
   - "/operate/reference/components/camera/esp32-camera-micro-rdk/"

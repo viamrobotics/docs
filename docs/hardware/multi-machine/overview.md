@@ -7,6 +7,13 @@ type: "docs"
 description: "Connect multiple computers so one machine can access another's components and services."
 date: "2026-04-16"
 aliases:
+  - /manage/parts-and-remotes/
+  - /build/configure/parts-and-remotes/
+  - /configure/parts/
+  - /build/configure/parts/
+  - /architecture/parts/
+  - /operate/reference/architecture/
+  - /operate/reference/architecture/machine-to-machine-comms/
   - /operate/reference/architecture/parts/
 ---
 

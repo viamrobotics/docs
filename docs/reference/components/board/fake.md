@@ -7,6 +7,7 @@ description: "Reference for the fake board model. Fake board."
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:
+  - "/operate/reference/components/board/fake/"
   - "/components/board/fake/"
   - "/reference/components/board/fake/"
 component_description: "A model used for testing, with no physical hardware."

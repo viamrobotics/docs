@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a gripper component to open, close, and grasp objects."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/gripper/
   - /hardware-components/add-a-gripper/
 ---
 

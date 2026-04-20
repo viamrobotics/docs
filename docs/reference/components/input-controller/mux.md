@@ -7,6 +7,7 @@ description: "Reference for the mux input-controller model. Mux input controller
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
+  - "/operate/reference/components/input-controller/mux/"
   - "/components/input-controller/mux/"
   - "/reference/components/input-controller/mux/"
 component_description: "Supports multiplexed controllers, combining multiple sources of input."

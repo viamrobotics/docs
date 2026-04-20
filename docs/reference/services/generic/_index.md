@@ -8,6 +8,7 @@ description: "A service that does not fit any of the other APIs."
 modulescript: true
 date: "2026-04-18"
 aliases:
+  - "/operate/reference/services/generic/"
   - /registry/advanced/generic/
 ---
 

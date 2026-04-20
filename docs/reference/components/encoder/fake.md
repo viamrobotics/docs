@@ -7,6 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 weight: 10
 aliases:
+  - "/operate/reference/components/encoder/fake/"
   - "/components/encoder/fake/"
   - "/reference/components/encoder/fake/"
 component_description: "An encoder model for testing."

@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/power-sensor.svg"]
 date: "2022-10-10"
 aliases:
+  - /operate/modules/component-apis/power-sensor/
   - /dev/reference/apis/components/power-sensor/
   - /appendix/apis/components/power-sensor/
 # updated: ""  # When the content was last entirely checked

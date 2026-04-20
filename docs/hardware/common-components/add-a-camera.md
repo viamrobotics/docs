@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a camera component, verify the feed, and capture an image programmatically."
 date: "2025-01-30"
 aliases:
+  - /operate/reference/components/camera/
   - /build/foundation/add-a-camera/
   - /foundation/add-a-camera/
   - /hardware-components/add-a-camera/
@@ -331,6 +332,10 @@ If you are capturing camera data, it can happen that the camera captures and syn
 Camera streams use a significant amount of CPU resources. The more CPU resources a device has, the more camera streams you can run simultaneously. If your device doesn't have enough CPU resources to support your use case, try lowering the image resolution to decrease the CPU load of the camera streams.
 
 {{< /expand >}}
+
+## Camera calibration
+
+If you are using a camera with the motion service for arm movement or pick-and-place, you may need to calibrate it. Calibration computes the camera's intrinsic and distortion parameters so the motion service can project 2D image coordinates into 3D workspace coordinates accurately. See [Calibrate a camera for motion planning](/motion-planning/frame-system/camera-calibration/).
 
 ## Related
 

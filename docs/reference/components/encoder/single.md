@@ -6,6 +6,7 @@ description: "Reference for the single encoder model. Single encoder."
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
+  - "/operate/reference/components/encoder/single/"
   - "/components/encoder/single/"
   - "/reference/components/encoder/single/"
 component_description: "A single pin 'pulse output' encoder which returns its relative position but no direction."

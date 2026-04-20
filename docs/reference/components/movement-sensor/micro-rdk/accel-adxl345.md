@@ -7,6 +7,7 @@ type: "docs"
 description: "Reference for the accel-adxl345 movement-sensor model. ADXL345 digital accelerometer with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
+  - "/operate/reference/components/movement-sensor/accel-adxl345-micro-rdk/"
   - /micro-rdk/movement-sensor/accel-adxl345/
   - /components/movement-sensor/accel-adxl345-micro-rdk/
   - "/reference/components/movement-sensor/accel-adxl345-micro-rdk/"
