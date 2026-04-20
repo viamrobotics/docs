@@ -7,7 +7,7 @@ description: "Reference for the gpio motor model. Brushed or brushless DC motors
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpio/"
-  - "/operate/reference/components/motor/gpio/"
+  - "/reference/components/motor/gpio/"
 no_list: true
 component_description: "Supports standard brushed or brushless DC motors."
 # SMEs: Rand, James

@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The sensor API allows you to get measurements from your [sensor components](/operate/reference/components/sensor/).
+The sensor API allows you to get measurements from your [sensor components](/reference/components/sensor/).
 
 The sensor component supports the following methods:
 

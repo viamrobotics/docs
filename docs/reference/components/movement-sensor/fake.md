@@ -7,7 +7,7 @@ description: "Reference for the fake movement-sensor model. Fake movement sensor
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/fake/"
-  - "/operate/reference/components/movement-sensor/fake/"
+  - "/reference/components/movement-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."
 # SMEs: Rand
 ---

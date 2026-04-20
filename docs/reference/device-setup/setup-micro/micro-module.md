@@ -26,7 +26,7 @@ You'll write it in Rust and then embed it in the firmware you flash onto your de
 
 To create a new module compatible with the Micro-RDK, follow these steps:
 
-1. Set up your development environment following the [development setup instructions](/operate/install/setup-micro/#set-up-your-development-environment).
+1. Set up your development environment following the [development setup instructions](/reference/device-setup/setup-micro/#set-up-your-development-environment).
 
 1. Generate a new module skeleton from [this template](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module):
 
@@ -119,4 +119,4 @@ To create a new module compatible with the Micro-RDK, follow these steps:
 
 ## Test your module
 
-To use your module with your ESP32, follow the [Build and flash custom firmware](/operate/install/setup-micro/#build-and-flash-custom-firmware) workflow in a separate directory.
+To use your module with your ESP32, follow the [Build and flash custom firmware](/reference/device-setup/setup-micro/#build-and-flash-custom-firmware) workflow in a separate directory.

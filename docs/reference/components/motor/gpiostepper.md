@@ -7,7 +7,7 @@ description: "Reference for the gpiostepper motor model. Bipolar stepper motor w
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/gpiostepper/"
-  - "/operate/reference/components/motor/gpiostepper/"
+  - "/reference/components/motor/gpiostepper/"
 component_description: "Supports stepper motors driven by basic GPIO-controlled stepper driver chips."
 # SMEs: Rand, James
 ---

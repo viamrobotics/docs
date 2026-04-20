@@ -155,6 +155,6 @@ Viam provides these so you can focus on your product.
 
 ## Next steps
 
-We recommend putting these concepts into practice by following the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/) to build your first machine.
+We recommend putting these concepts into practice by following the [Desk Safari tutorial](/try/) to build your first machine.
 
 For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).

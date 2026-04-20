@@ -9,7 +9,7 @@ tags: ["gantry", "components"]
 aliases:
   - "/components/gantry/oneaxis/"
   - "/components/gantry/single-axis/"
-  - "/operate/reference/components/gantry/single-axis/"
+  - "/reference/components/gantry/single-axis/"
 component_description: "Supports a gantry with a singular linear rail."
 # SME: Rand, Martha
 ---

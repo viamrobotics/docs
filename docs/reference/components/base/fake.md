@@ -8,7 +8,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/fake/"
-  - "/operate/reference/components/base/fake/"
+  - "/reference/components/base/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SMEs: Steve B
 ---

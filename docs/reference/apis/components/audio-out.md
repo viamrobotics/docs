@@ -12,7 +12,7 @@ aliases:
   - /dev/reference/apis/components/audio-out/
 ---
 
-<!-- The audio in API allows you to give commands to your [audio out components](/operate/reference/components/audioOut/) for playing audio.
+<!-- The audio in API allows you to give commands to your [audio out components](/reference/components/audioOut/) for playing audio.
 
 The audio in components support the following methods: -->
 

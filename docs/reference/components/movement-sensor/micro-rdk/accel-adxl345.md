@@ -9,7 +9,7 @@ images: ["/icons/components/imu.svg"]
 aliases:
   - /micro-rdk/movement-sensor/accel-adxl345/
   - /components/movement-sensor/accel-adxl345-micro-rdk/
-  - "/operate/reference/components/movement-sensor/accel-adxl345-micro-rdk/"
+  - "/reference/components/movement-sensor/accel-adxl345-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand, Kim Mishra
 ---

@@ -8,7 +8,7 @@ images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
   - "/components/base/wheeled/"
-  - "/operate/reference/components/base/wheeled/"
+  - "/reference/components/base/wheeled/"
 component_description: "Supports mobile wheeled robotic bases with motors on both sides for differential steering."
 # SMEs: Steve B
 ---

@@ -8,7 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/fake/"
-  - "/operate/reference/components/camera/fake/"
+  - "/reference/components/camera/fake/"
 component_description: "A camera model for testing."
 # SMEs: Bijan, vision team
 ---

@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The base API allows you to give commands to your [base components](/operate/reference/components/base/) for moving all configured components attached to a platform as a whole without needing to send commands to individual components.
+The base API allows you to give commands to your [base components](/reference/components/base/) for moving all configured components attached to a platform as a whole without needing to send commands to individual components.
 
 The base component supports the following methods:
 

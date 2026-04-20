@@ -12,7 +12,7 @@ aliases:
   - /dev/reference/apis/components/audio-in/
 ---
 
-<!-- The audio in API allows you to give commands to your [audio in components](/operate/reference/components/audioIn/) for capturing audio.
+<!-- The audio in API allows you to give commands to your [audio in components](/reference/components/audioIn/) for capturing audio.
 
 The audio in components support the following methods: -->
 
