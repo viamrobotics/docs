@@ -79,6 +79,79 @@
   status = 301
   force = true
 
+# Subsection landing pages that use manualLink or have a sibling overview.md
+[[redirects]]
+  from = "/build-apps/app-tutorials/"
+  to = "/build-apps/app-tutorials/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build-apps/concepts/"
+  to = "/build-apps/concepts/how-apps-connect/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build-apps/hosting/"
+  to = "/build-apps/hosting/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build-apps/setup/"
+  to = "/build-apps/setup/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build-apps/tasks/"
+  to = "/build-apps/tasks/connect-to-machine/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/data/capture-sync/"
+  to = "/data/capture-sync/capture-and-sync-data/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/data/pipelines/"
+  to = "/data/pipelines/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hardware/multi-machine/"
+  to = "/hardware/multi-machine/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/monitor/dashboards/"
+  to = "/monitor/dashboards/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/motion-planning/frame-system/"
+  to = "/motion-planning/frame-system/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/motion-planning/move-an-arm/"
+  to = "/motion-planning/move-an-arm/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/motion-planning/obstacles/"
+  to = "/motion-planning/obstacles/overview/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/foundation/initialize-a-viam-machine/"
   to = "/foundation/"
@@ -607,7 +680,7 @@
   # (for development) turn true for extra diagnostic logging
   debug = true
 
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/tags/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/module-configuration/", "/tags/"]
 
 [[context.deploy-preview.plugins]]
   package = "@eggnstone/netlify-plugin-no-more-404"
@@ -616,7 +689,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/tags/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/module-configuration/", "/tags/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -626,4 +699,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/tags/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/module-configuration/", "/tags/"]
