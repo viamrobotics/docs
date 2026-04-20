@@ -199,6 +199,8 @@
   # (for development) turn true for extra diagnostic logging
   debug = true
 
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/", "/tags/", "/services/slam/", "/mobility/slam/", "/operate/reference/services/slam/", "/architecture/", "/build/micro-rdk/", "/micro-rdk/", "/internals/", "/components/camera/calibrate/", "/components/movement-sensor/set-up-base-station/", "/operate/get-started/", "/operate/hello-world/", "/operate/mobility/", "/operate/modules/", "/operate/reference/module-configuration/", "/operate/reference/naming-modules/", "/operate/reference/services/frame-system/frame-config/", "/tutorials/build-a-mock-robot/", "/tutorials/configure/build-a-mock-robot/", "/tutorials/configure-a-camera/", "/tutorials/how-to-build-a-mock-robot/"]
+
 [[context.deploy-preview.plugins]]
   package = "@eggnstone/netlify-plugin-no-more-404"
 
