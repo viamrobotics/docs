@@ -27,7 +27,7 @@ vale sync
 vale docs/[section]/
 ```
 
-`vale sync` downloads the latest style rules. `vale` then checks for style violations: em dashes, "e.g.", "via", "(s)" plurals, title case in headings, and other Viam style rules. Fix errors manually.
+`vale sync` downloads the latest style rules. `vale` then checks for style violations: em dashes, obscure abbreviations, parenthetical plurals, title case in headings, and other Viam style rules. Fix errors manually.
 
 ### 4. Build the full site
 
