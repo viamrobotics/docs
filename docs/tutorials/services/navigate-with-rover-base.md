@@ -37,7 +37,7 @@ weight: 5
 # SMEs: Ray Bjorkman, Fahmina
 ---
 
-The [navigation service](/operate/reference/services/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
+The [navigation service](/reference/services/navigation/) allows you to queue up user-defined waypoints for your machine to move to in the order that you specify.
 You can also add obstacles or set linear and angular velocity targets in your navigation service config.
 Viam's motion planner will plan routes that avoid those obstacles and attempt to keep the robot at your specified velocity.
 
@@ -72,7 +72,7 @@ Follow this tutorial to get started using Viam's Navigation service to help your
    3. A [`merged`](/reference/components/movement-sensor/merged/) model aggregating the readings together for the navigation service to consume.
 
    You can use any combo of movement sensors you want as long as you are getting all the types of measurements required.
-   See [the navigation service](/operate/reference/services/navigation/#requirements) for more info on movement sensor requirements.
+   See [the navigation service](/reference/services/navigation/#requirements) for more info on movement sensor requirements.
 
 {{% alert title="Tip" color="tip" %}}
 
@@ -456,7 +456,7 @@ To add the navigation service to your robot, do the following:
    ```
 
    Edit the attributes as applicable.
-   Attribute information is available in [the navigation service documentation](/operate/reference/services/navigation/#configuration).
+   Attribute information is available in [the navigation service documentation](/reference/services/navigation/#configuration).
 
 1. Click **Save** in the top right corner of the screen to save your changes.
 
@@ -464,7 +464,7 @@ Your navigation service should now appear in your machine's **CONFIGURE** tab as
 
 {{<imgproc src="/tutorials/navigate-with-rover-base/navigation-config-builder.png" resize="1200x" declaredimensions=true alt="Navigation Card" style="width:650px" class="shadow imgzoom" >}}
 
-For more detailed information see [the navigation service](/operate/reference/services/navigation/#configuration).
+For more detailed information see [the navigation service](/reference/services/navigation/#configuration).
 
 {{% /tab %}}
 {{% tab name="JSON" %}}

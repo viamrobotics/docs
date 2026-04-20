@@ -1,1 +1,1 @@
-Delete an [API key](/operate/control/api-keys/).
+Delete an [API key](/organization/api-keys/).

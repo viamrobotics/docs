@@ -20,12 +20,12 @@
 | [Servo](/hardware/common-components/add-a-servo/)                     | `Position`, `DoCommand` |
 | [Switch](/hardware/common-components/add-a-switch/)                   | `DoCommand` |
 | [Generic](/hardware/common-components/add-a-generic/)                 | `DoCommand` |
-| [Base remote control service](/operate/reference/services/base-rc/) | `DoCommand` |
-| [Discovery service](/operate/reference/services/discovery/)       | `DoCommand` |
+| [Base remote control service](/reference/services/base-rc/) | `DoCommand` |
+| [Discovery service](/reference/services/discovery/)       | `DoCommand` |
 | [Vision service](/vision/configure/)             | `CaptureAllFromCamera`, `DoCommand` |
-| [SLAM service](/operate/reference/services/slam/)                 | `Position`, `PointCloudMap`, `DoCommand` |
-| [Motion service](/operate/reference/services/motion/)             | `DoCommand` |
-| [Navigation service](/operate/reference/services/navigation/)     | `DoCommand` |
+| [SLAM service](/reference/services/slam/)                 | `Position`, `PointCloudMap`, `DoCommand` |
+| [Motion service](/reference/services/motion/)             | `DoCommand` |
+| [Navigation service](/reference/services/navigation/)     | `DoCommand` |
 | Shell service | `DoCommand` |
 
 {{% /tab %}}

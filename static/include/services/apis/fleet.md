@@ -22,7 +22,7 @@ Method Name | Description
 [`UpdateRobotPart`](/reference/apis/fleet/#updaterobotpart ) | Update the name or configuration of a machine part.
 [`NewRobotPart`](/reference/apis/fleet/#newrobotpart ) | Create a new machine part.
 [`DeleteRobotPart`](/reference/apis/fleet/#deleterobotpart ) | Delete a machine part.
-[`MarkPartAsMain`](/reference/apis/fleet/#markpartasmain ) | Mark a part as the [_main_ part](/operate/reference/architecture/parts/#machine-parts) of a machine.
+[`MarkPartAsMain`](/reference/apis/fleet/#markpartasmain ) | Mark a part as the [_main_ part](/hardware/multi-machine/overview/#machine-parts) of a machine.
 [`MarkPartForRestart`](/reference/apis/fleet/#markpartforrestart ) | Mark a machine part for restart.
 [`CreateRobotPartSecret`](/reference/apis/fleet/#createrobotpartsecret ) | Create a machine part secret. *Deprecated*.
 [`DeleteRobotPartSecret`](/reference/apis/fleet/#deleterobotpartsecret ) | Delete a machine part secret. *Deprecated*.
