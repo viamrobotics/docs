@@ -58,11 +58,13 @@ Viam uses [protocol buffers](https://protobuf.dev/) for API definition. To defin
    {{% /alert %}}
 
 4. Write the proto methods in a `<API name>.proto` file inside `src/proto/`. For reference:
+
    - [Example modular component proto file](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/proto/gizmo.proto)
    - [Example modular service proto file](https://github.com/viam-labs/speech-service-api/blob/main/src/proto/speech.proto)
    - [Built-in Viam resource proto files](https://github.com/viamrobotics/api/tree/main/proto/viam)
 
 5. Define the proto methods in Python or Go in a file called `api.py` or `api.go`:
+
    - [Example component in Python](https://github.com/viamrobotics/viam-python-sdk/blob/main/examples/complex_module/src/gizmo/api.py)
    - [Example service in Python](https://github.com/viam-labs/speech-service-api/blob/main/src/speech_service_api/api.py)
 
@@ -75,6 +77,7 @@ Viam uses [protocol buffers](https://protobuf.dev/) for API definition. To defin
 Once your API is defined, [create a model that implements it](/build-modules/write-a-driver-module/).
 
 Keep in mind:
+
 - You cannot use [SDKs](/reference/sdks/) to call your new API unless you build out the client to support it. Write code against the API in the language you used to define it.
 - You need a local copy of the module code on whatever machine runs client code against it.
 - Import the API definition from the module directory. For example, in Python: `from path.to.module.src.gizmo import Gizmo`.
