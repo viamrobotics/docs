@@ -136,6 +136,341 @@
   to = "/reference/"
   status = 301
 
+# operate/ removal redirects (PR #4983) — paths previously served by the
+# now-deleted operate/ section. Per ~/viam/code-map/operate-removal-plan.md.
+
+# operate/hello-world/
+[[redirects]]
+  from = "/operate/hello-world/first-project/gazebo-setup/"
+  to = "/try/gazebo-setup/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/hello-world/problems-viam-solves/"
+  to = "/what-is-viam/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/hello-world/what-is-viam/"
+  to = "/what-is-viam/"
+  status = 301
+
+# operate/mobility/
+[[redirects]]
+  from = "/operate/mobility/use-input-to-act/"
+  to = "/hardware/common-components/add-an-input-controller/"
+  status = 301
+
+# operate/get-started/
+[[redirects]]
+  from = "/operate/get-started/other-hardware/hello-world-module/"
+  to = "/build-modules/write-a-driver-module/"
+  status = 301
+
+# operate/modules/ — older sub-trees deleted before the operate-removal PR
+[[redirects]]
+  from = "/operate/modules/basics/"
+  to = "/build-modules/overview/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/deploy-module/"
+  to = "/build-modules/deploy-a-module/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/advanced/module-naming/"
+  to = "/build-modules/module-reference/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/create-module/hello-world-module/"
+  to = "/build-modules/write-a-driver-module/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/create-module/metajson/"
+  to = "/build-modules/module-reference/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/create-module/platform-apis/"
+  to = "/build-modules/platform-apis/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/other-hardware/create-module/"
+  to = "/build-modules/write-a-driver-module/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/other-hardware/manage-modules/"
+  to = "/build-modules/manage-modules/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/other-hardware/module-configuration/"
+  to = "/build-modules/module-reference/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/other-hardware/naming-modules/"
+  to = "/build-modules/module-reference/"
+  status = 301
+
+# operate/modules/orted-hardware/ — typo path that was never properly fixed
+[[redirects]]
+  from = "/operate/modules/orted-hardware/movement-sensor/"
+  to = "/hardware/common-components/add-a-movement-sensor/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/orted-hardware/power-sensor/"
+  to = "/hardware/common-components/add-a-power-sensor/"
+  status = 301
+
+# operate/modules/supported-hardware/ — per-component pages that became
+# /hardware/common-components/add-{X}/
+[[redirects]]
+  from = "/operate/modules/supported-hardware/arm/"
+  to = "/hardware/common-components/add-an-arm/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/base/"
+  to = "/hardware/common-components/add-a-base/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/board/"
+  to = "/hardware/common-components/add-a-board/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/button/"
+  to = "/hardware/common-components/add-a-button/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/camera/"
+  to = "/hardware/common-components/add-a-camera/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/encoder/"
+  to = "/hardware/common-components/add-an-encoder/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/gantry/"
+  to = "/hardware/common-components/add-a-gantry/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/generic/"
+  to = "/hardware/common-components/add-a-generic/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/gripper/"
+  to = "/hardware/common-components/add-a-gripper/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/hello-world-module/"
+  to = "/build-modules/write-a-driver-module/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/input-controller/"
+  to = "/hardware/common-components/add-an-input-controller/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/motor/"
+  to = "/hardware/common-components/add-a-motor/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/sensor/"
+  to = "/hardware/common-components/add-a-sensor/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/servo/"
+  to = "/hardware/common-components/add-a-servo/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/modules/supported-hardware/switch/"
+  to = "/hardware/common-components/add-a-switch/"
+  status = 301
+
+# operate/reference/ — bare paths missing destinations on existing pages
+[[redirects]]
+  from = "/operate/reference/module-configuration/"
+  to = "/build-modules/module-reference/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/reference/naming-modules/"
+  to = "/build-modules/module-reference/"
+  status = 301
+
+[[redirects]]
+  from = "/operate/reference/services/frame-system/frame-config/"
+  to = "/motion-planning/frame-system/overview/"
+  status = 301
+
+# SLAM URLs — content removed; redirect to navigation per Shannon
+[[redirects]]
+  from = "/operate/reference/services/slam/*"
+  to = "/navigation/"
+  status = 301
+
+[[redirects]]
+  from = "/services/slam/*"
+  to = "/navigation/"
+  status = 301
+
+[[redirects]]
+  from = "/mobility/slam/*"
+  to = "/navigation/"
+  status = 301
+
+# Old IA paths from previous site versions
+[[redirects]]
+  from = "/architecture/viam-micro-server/"
+  to = "/reference/viam-micro-server/"
+  status = 301
+
+[[redirects]]
+  from = "/architecture/*"
+  to = "/what-is-viam/"
+  status = 301
+
+[[redirects]]
+  from = "/internals/kinematic-chain-config/"
+  to = "/motion-planning/frame-system/overview/"
+  status = 301
+
+[[redirects]]
+  from = "/internals/*"
+  to = "/reference/"
+  status = 301
+
+[[redirects]]
+  from = "/components/camera/calibrate/"
+  to = "/motion-planning/frame-system/camera-calibration/"
+  status = 301
+
+[[redirects]]
+  from = "/components/movement-sensor/set-up-base-station/"
+  to = "/hardware/common-components/add-a-movement-sensor/"
+  status = 301
+
+# Old micro-rdk paths — per-component pages migrated to /reference/components/X/micro-rdk/
+[[redirects]]
+  from = "/build/micro-rdk/base/"
+  to = "/reference/components/base/micro-rdk/two_wheeled_base/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/base/"
+  to = "/reference/components/base/micro-rdk/two_wheeled_base/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/board/"
+  to = "/reference/components/board/micro-rdk/esp32/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/board/"
+  to = "/reference/components/board/micro-rdk/esp32/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/encoder/"
+  to = "/reference/components/encoder/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/encoder/"
+  to = "/reference/components/encoder/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/generic/"
+  to = "/reference/components/generic/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/generic/"
+  to = "/reference/components/generic/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/motor/"
+  to = "/reference/components/motor/micro-rdk/gpio/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/motor/"
+  to = "/reference/components/motor/micro-rdk/gpio/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/movement-sensor/"
+  to = "/reference/components/movement-sensor/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/movement-sensor/"
+  to = "/reference/components/movement-sensor/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/sensor/"
+  to = "/reference/components/sensor/micro-rdk/ultrasonic/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/sensor/"
+  to = "/reference/components/sensor/micro-rdk/ultrasonic/"
+  status = 301
+
+[[redirects]]
+  from = "/build/micro-rdk/servo/"
+  to = "/reference/components/servo/micro-rdk/gpio/"
+  status = 301
+
+[[redirects]]
+  from = "/micro-rdk/servo/"
+  to = "/reference/components/servo/micro-rdk/gpio/"
+  status = 301
+
+# Long-deleted tutorials
+[[redirects]]
+  from = "/tutorials/build-a-mock-robot/"
+  to = "/tutorials/"
+  status = 301
+
+[[redirects]]
+  from = "/tutorials/configure/build-a-mock-robot/"
+  to = "/tutorials/"
+  status = 301
+
+[[redirects]]
+  from = "/tutorials/how-to-build-a-mock-robot/"
+  to = "/tutorials/"
+  status = 301
+
+[[redirects]]
+  from = "/tutorials/configure-a-camera/"
+  to = "/hardware/common-components/add-a-camera/"
+  status = 301
+
 [[plugins]]
   package = "netlify-plugin-hugo-cache-resources"
 
@@ -206,7 +541,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/", "/tags/", "/services/slam/", "/mobility/slam/", "/operate/reference/services/slam/", "/architecture/", "/build/micro-rdk/", "/micro-rdk/", "/internals/", "/components/camera/calibrate/", "/components/movement-sensor/set-up-base-station/", "/operate/get-started/", "/operate/hello-world/", "/operate/mobility/", "/operate/modules/", "/operate/reference/module-configuration/", "/operate/reference/naming-modules/", "/operate/reference/services/frame-system/frame-config/", "/tutorials/build-a-mock-robot/", "/tutorials/configure/build-a-mock-robot/", "/tutorials/configure-a-camera/", "/tutorials/how-to-build-a-mock-robot/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/", "/tags/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -216,4 +551,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/", "/tags/", "/services/slam/", "/mobility/slam/", "/operate/reference/services/slam/", "/architecture/", "/build/micro-rdk/", "/micro-rdk/", "/internals/", "/components/camera/calibrate/", "/components/movement-sensor/set-up-base-station/", "/operate/get-started/", "/operate/hello-world/", "/operate/mobility/", "/operate/modules/", "/operate/reference/module-configuration/", "/operate/reference/naming-modules/", "/operate/reference/services/frame-system/frame-config/", "/tutorials/build-a-mock-robot/", "/tutorials/configure/build-a-mock-robot/", "/tutorials/configure-a-camera/", "/tutorials/how-to-build-a-mock-robot/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/account/", "/reference/advanced-modules/", "/reference/glossary_tmp/", "/reference/module-configuration/", "/reference/configuration/", "/tags/"]
