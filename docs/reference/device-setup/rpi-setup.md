@@ -22,8 +22,6 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 ---
 
-{{<youtube embed_url="https://www.youtube-nocookie.com/embed/drl2p2of-qA">}}
-
 We recommend using Viam on a 64-bit Linux distribution.
 Support for older Raspberry Pis running on 32-bit ARM v7 is in beta.
 
@@ -185,6 +183,37 @@ While the Imager is flashing your microSD card, we recommend reading [How to thi
 
 2.  Place the SD card into your Raspberry Pi and boot the Pi by plugging it in to an outlet.
     A red LED will turn on to indicate that the Pi is connected to power.
+
+## Update WiFi credentials
+
+If you move your Raspberry Pi to a different WiFi network, you need to update the WiFi credentials.
+
+You can update the WiFi configuration by creating a new `wpa_supplicant.conf` file on the boot partition:
+
+1. Remove the microSD card from the Pi and plug it into your computer.
+1. Create a plain text file called `wpa_supplicant.conf` on the boot partition.
+1. Paste the following into the file, replacing the SSID and password values with your credentials.
+   Use UNIX (LF) line breaks.
+
+   ```bash {class="line-numbers linkable-line-numbers"}
+   ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+   update_config=1
+   country=us
+
+   network={
+    ssid="Name of your wireless LAN"
+    psk="Password for your wireless LAN"
+    priority=10
+   }
+   ```
+
+   You can duplicate the `network` section to add multiple WiFi networks (for example, work and home).
+   The `priority` attribute is optional: higher numbers are preferred when multiple configured networks are available.
+
+1. Save the file and eject the microSD card.
+1. Put the microSD card back into the Pi and boot it.
+
+The Pi reads and removes `wpa_supplicant.conf` on boot, updating the stored WiFi credentials.
 
 ## Next steps
 

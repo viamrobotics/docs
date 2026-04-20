@@ -20,6 +20,14 @@ This page is a reference for module developers. For step-by-step
 instructions, see [Write a Module](/build-modules/write-a-driver-module/) and
 [Deploy a Module](/build-modules/deploy-a-module/).
 
+## Module configuration {#module-configuration}
+
+For details on configuring modules and modular resources on a machine:
+
+- [Environment variables](#environment-variables) — custom env vars passed to your module
+- [Registry validation rules](#registry-validation-rules) — valid API and model identifier formats
+- [meta.json schema](#metajson-schema) — module metadata including visibility settings
+
 ## Module lifecycle
 
 Every module, local or registry, runs as a separate child process alongside

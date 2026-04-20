@@ -165,10 +165,10 @@ The [motion service API](/reference/apis/services/motion/) supports the followin
 
 You can test motion on your machine from the [**CONTROL** tab](/monitor/).
 
-Enter X and Y coordinates for your destination in meters, then click **Execute** to issue a `MoveOnMap()` request.
+Enter x and y coordinates to move your machine to, then click the **Move** button to issue a `MoveOnMap()` request.
 
 {{< alert title="Info" color="info" >}}
 
-If you leave the **Plan deviation (m)** field blank, `MoveOnMap()` uses the motion service default of 1.0 m.
+The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** tab is 0.5 m.
 
 {{< /alert >}}

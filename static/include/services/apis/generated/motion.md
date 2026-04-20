@@ -16,7 +16,7 @@ The motion service takes the volumes associated with all configured machine comp
 **Parameters:**
 
 - `component_name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The `ResourceName` of the piece of the robot that should arrive at the destination. Note that `move` moves the distal end of the component to the destination. For example, when moving a robotic arm, the piece that will arrive at the destination is the end effector attachment point, not the base of the arm.
-- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/operate/reference/services/frame-system/).
+- `destination` ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)) (required): Describes where the `component_name` frame should be moved to. Can be any pose, from the perspective of any component whose location is configured as a [`frame`](/motion-planning/frame-system/).
 - `world_state` ([viam.proto.common.WorldState](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)) (optional): Data structure specifying information about the world around the machine.
   Used to augment the motion solving process.
   `world_state` includes obstacles and transforms:
@@ -37,7 +37,7 @@ The motion service takes the volumes associated with all configured machine comp
     Transforms can be used to account for geometries that are attached to the robot but not configured as robot components.
     For example, you could use a transform to represent the volume of a marker held in your machine's gripper.
     Transforms are not added to the config or carried into later processes.
-- `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional): Pass in [motion constraints](/operate/reference/services/motion/constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
+- `constraints` ([viam.proto.service.motion.Constraints](https://python.viam.dev/autoapi/viam/proto/service/motion/index.html#viam.proto.service.motion.Constraints)) (optional): Pass in [motion constraints](/reference/services/motion/constraints/). By default, motion is unconstrained with the exception of obstacle avoidance.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -369,7 +369,7 @@ Make sure the [movement sensor](/operate/reference/components/movement-sensor/) 
 {{< alert title="Stability Notice" color="alert" >}}
 
 The `heading` parameter is experimental.
-Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/operate/reference/services/motion/algorithms/).
+Specifying `heading` in a request to `MoveOnGlobe` is not currently recommended if the minimum turning radius of your component is greater than zero, as this combination may cause high latency in the [motion planning algorithms](/reference/services/motion/algorithms/).
 
 Specifying `obstacles` in a request to `MoveOnGlobe()` will cause an error if you configure a `"translation"` in the `"geometries"` of any of the `GeoGeometry` objects.
 Translation in obstacles is not supported by the [navigation service](/operate/reference/services/navigation/).
@@ -534,7 +534,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### GetPose
 
-`GetPose` gets the location and orientation of a component within the [frame system](/operate/reference/services/frame-system/).
+`GetPose` gets the location and orientation of a component within the [frame system](/motion-planning/frame-system/).
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
 You can use the `supplemental_transforms` argument to augment the machine's existing frame system with supplemental frames.
 

@@ -69,7 +69,7 @@ If no model exists for your hardware, you can [write your own module](/build-mod
 
 <a id="browse-supported-hardware-by-component-api"></a>
 
-Browse all available components and services in the [Viam registry](https://app.viam.com/registry).
+Browse all available components and services in the [Viam registry](https://app.viam.com/registry). The registry also contains software modules that add capabilities beyond hardware drivers: vision and ML services, conversational and audio processing, device discovery, custom logic, and external integrations.
 
 ## Switching hardware without changing code
 

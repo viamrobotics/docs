@@ -12,7 +12,6 @@ aliases:
   - /configure/parts/
   - /build/configure/parts/
   - /architecture/parts/
-  - /operate/reference/advanced-modules/custom-components-remotes/
   - /operate/reference/architecture/
   - /operate/reference/architecture/machine-to-machine-comms/
   - /operate/reference/architecture/parts/
