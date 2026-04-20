@@ -6045,7 +6045,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### RotateKey
 
-Rotate an [API key](/organization/api-keys/#rotate-an-api-key).
+Rotate an [API key](/organization/api-keys/#rotate-a-key).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

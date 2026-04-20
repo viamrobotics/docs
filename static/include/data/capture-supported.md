@@ -23,7 +23,6 @@
 | [Base remote control service](/reference/services/base-rc/) | `DoCommand` |
 | [Discovery service](/reference/services/discovery/)       | `DoCommand` |
 | [Vision service](/vision/configure/)             | `CaptureAllFromCamera`, `DoCommand` |
-| [SLAM service](/reference/services/slam/)                 | `Position`, `PointCloudMap`, `DoCommand` |
 | [Motion service](/reference/services/motion/)             | `DoCommand` |
 | [Navigation service](/reference/services/navigation/)     | `DoCommand` |
 | Shell service | `DoCommand` |

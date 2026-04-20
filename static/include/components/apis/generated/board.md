@@ -1367,7 +1367,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](/reference/components/board/#configuration) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
+- `name` [(string)](https://pkg.go.dev/builtin#string): Pin number of the GPIO pin you want to retrieve as a `GPIOPin` interface. Refer to the pinout diagram and data sheet of your [board model](/reference/components/board/) for {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}}.
 
 **Returns:**
 
