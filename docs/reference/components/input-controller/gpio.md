@@ -7,6 +7,7 @@ description: "Reference for the gpio input-controller model. GPIO- or ADC-based 
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
+  - "/operate/reference/components/input-controller/gpio/"
   - "/components/input-controller/gpio/"
   - "/reference/components/input-controller/gpio/"
 component_description: "Customizable GPIO/ADC based device using a board component."

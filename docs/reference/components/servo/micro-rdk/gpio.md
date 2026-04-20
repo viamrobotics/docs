@@ -8,6 +8,7 @@ tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
+  - "/operate/reference/components/servo/gpio-micro-rdk/"
   - /micro-rdk/servo/gpio/
   - /build/micro-rdk/servo/gpio/
   - /components/servo/gpio-micro-rdk/

@@ -6,6 +6,7 @@ type: "docs"
 description: "Reference for the fake movement-sensor model. Fake movement sensor to test software without any hardware."
 images: ["/icons/components/imu.svg"]
 aliases:
+  - "/operate/reference/components/movement-sensor/fake/"
   - "/components/movement-sensor/fake/"
   - "/reference/components/movement-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."

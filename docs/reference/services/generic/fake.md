@@ -7,6 +7,7 @@ description: "Configure a fake generic service using the generic service API."
 service_description: "A model used for testing a generic service."
 tags: ["generic", "services"]
 aliases:
+  - "/operate/reference/services/generic/fake/"
   - /registry/advanced/generic/fake/
   - /services/generic/fake/
 toc_hide: true

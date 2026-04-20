@@ -7,6 +7,7 @@ description: "Reference for the fake camera model. Returns a static gradient ima
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
+  - "/operate/reference/components/camera/fake/"
   - "/components/camera/fake/"
   - "/reference/components/camera/fake/"
 component_description: "A camera model for testing."

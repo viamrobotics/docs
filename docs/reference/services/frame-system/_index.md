@@ -7,6 +7,7 @@ type: "docs"
 weight: 50
 date: "2026-04-18"
 aliases:
+  - "/operate/reference/services/frame-system/"
   - /services/frame-system/
   - /services/frame-system/frame-config/
   - /mobility/frame-system/

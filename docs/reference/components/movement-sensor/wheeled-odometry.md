@@ -15,6 +15,7 @@ tags:
     "odometry",
   ]
 aliases:
+  - "/operate/reference/components/movement-sensor/wheeled-odometry/"
   - "/components/movement-sensor/wheeled-odometry/"
   - "/reference/components/movement-sensor/wheeled-odometry/"
 component_description: "A model that uses encoders to get an odometry estimate from a wheeled base."

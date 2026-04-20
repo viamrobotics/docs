@@ -7,6 +7,7 @@ description: "Reference for the fake input-controller model. Fake input controll
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
+  - "/operate/reference/components/input-controller/fake/"
   - "/components/input-controller/fake/"
   - "/reference/components/input-controller/fake/"
 component_description: "A model for testing, with no physical hardware."

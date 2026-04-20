@@ -7,6 +7,7 @@ type: "docs"
 weight: 50
 date: "2026-04-18"
 aliases:
+  - "/operate/reference/services/navigation/"
   - /services/navigation/
   - /mobility/navigation/
 ---

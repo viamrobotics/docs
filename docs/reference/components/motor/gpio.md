@@ -6,6 +6,7 @@ type: "docs"
 description: "Reference for the gpio motor model. Brushed or brushless DC motors."
 images: ["/icons/components/motor.svg"]
 aliases:
+  - "/operate/reference/components/motor/gpio/"
   - "/components/motor/gpio/"
   - "/reference/components/motor/gpio/"
 no_list: true

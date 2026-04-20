@@ -6,6 +6,7 @@ type: "docs"
 description: "Reference for the fake motor model. Fake motor to test software without any hardware."
 images: ["/icons/components/motor.svg"]
 aliases:
+  - "/operate/reference/components/motor/fake/"
   - "/components/motor/fake/"
   - "/reference/components/motor/fake/"
 component_description: "A model for testing, with no physical hardware."

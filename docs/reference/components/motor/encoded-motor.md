@@ -6,6 +6,7 @@ type: "docs"
 description: "Reference for the encoded-motor motor model. How to configure an encoded motor."
 images: ["/icons/components/motor.svg"]
 aliases:
+  - "/operate/reference/components/motor/encoded-motor/"
   - "/components/motor/gpio/encoded-motor/"
   - "/reference/components/motor/encoded-motor/"
 component_description: "Standard brushed or brushless DC motor with an encoder."

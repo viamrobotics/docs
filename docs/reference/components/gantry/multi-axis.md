@@ -7,6 +7,7 @@ description: "Reference for the multi-axis gantry model. Multi-axis gantry."
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
+  - "/operate/reference/components/gantry/multi-axis/"
   - "/components/gantry/multiaxis/"
   - "/components/gantry/multi-axis/"
   - "/reference/components/gantry/multi-axis/"

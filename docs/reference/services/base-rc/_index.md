@@ -7,6 +7,7 @@ type: "docs"
 description: "The base remote control service allows you to remotely control a base with an input controller like a gamepad."
 date: "2026-04-18"
 aliases:
+  - "/operate/reference/services/base-rc/"
   - /services/base-rc/
   - /mobility/base-rc/
 ---

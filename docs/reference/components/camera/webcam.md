@@ -7,6 +7,7 @@ description: "Reference for the webcam camera model. The general camera model fo
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
+  - "/operate/reference/components/camera/webcam/"
   - "/components/camera/webcam/"
   - "/reference/components/camera/webcam/"
 component_description: "A standard USB camera or other webcam that streams camera data."

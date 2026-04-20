@@ -7,6 +7,7 @@ description: "Reference for the transform camera model. Apply pipeline transform
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
+  - "/operate/reference/components/camera/transform/"
   - "/components/camera/transform/"
   - "/reference/components/camera/transform/"
 component_description: "Use pipelines for applying transformations to an input image source."
