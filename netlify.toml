@@ -5,6 +5,79 @@
   from = "/data/"
   to = "/data/overview/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/cli/"
+  to = "/cli/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/organization/"
+  to = "/organization/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vision/"
+  to = "/vision/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/try/"
+  to = "/try/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hardware/"
+  to = "/hardware/configure-hardware/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/"
+  to = "/reference/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build-modules/"
+  to = "/build-modules/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/train/"
+  to = "/train/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/set-up-a-machine/"
+  to = "/set-up-a-machine/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/build-apps/"
+  to = "/build-apps/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/monitor/"
+  to = "/monitor/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fleet/"
+  to = "/fleet/overview/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/foundation/initialize-a-viam-machine/"

@@ -9,5 +9,4 @@ description: "Understand how Viam represents hardware, add components to your ma
 manualLink: "/hardware/configure-hardware/"
 aliases:
   - /hardware-components/
-  - /hardware/
 ---
