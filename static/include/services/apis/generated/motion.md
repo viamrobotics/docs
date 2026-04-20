@@ -158,7 +158,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 
 ### MoveOnMap
 
-Move a [base](/operate/reference/components/base/) component to a destination [pose](/motion-planning/reference/orientation-vectors/) on a {{< glossary_tooltip term_id="slam" text="SLAM" >}} map.
+Move a [base](/operate/reference/components/base/) component to a destination [pose](/motion-planning/reference/orientation-vectors/) on a SLAM map.
 
 `MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/motion-planning/reference/orientation-vectors/) after `MoveOnMap()` returns.
 
@@ -170,7 +170,7 @@ If you specify a goal pose and the robot's current position is already within th
 
 You can monitor the progress of the `MoveOnMap()` call by querying `GetPlan()` and `ListPlanStatuses()`.
 
-Use the machine's position reported by the {{< glossary_tooltip term_id="slam" text="SLAM" >}} service to check the location of the machine.
+Use the machine's position reported by the SLAM service to check the location of the machine.
 
 `MoveOnMap()` is intended for use with the [navigation service](/operate/reference/services/navigation/), providing autonomous indoor navigation for rover [bases](/operate/reference/components/base/).
 
