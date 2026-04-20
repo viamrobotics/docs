@@ -61,7 +61,7 @@ For example, the [sensor API](/reference/apis/components/sensor/) has a `GetRead
 If instead of just getting readings, you actually have an encoder and need to be able to reset the zero position, use the [encoder API](/reference/apis/components/encoder/) so you can define functionality behind the `GetPosition` and `ResetPosition` methods.
 
 In addition to the list of methods, another reason to choose one API over another is how certain APIs fit into the Viam ecosystem.
-For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/reference/services/navigation/).
+For example, though you could technically implement a GPS as a sensor with just the `GetReadings` method, if you implement it as a movement sensor then you have access to methods like `GetCompassHeading` which allow you to use your GPS module with the [navigation service](/operate/reference/services/navigation/).
 For this reason, it's generally best to choose the API that most closely matches your hardware or software.
 {{< /expand >}}
 

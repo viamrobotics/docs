@@ -9,4 +9,4 @@ aliases:
 
 SLAM (Simultaneous Localization and Mapping) algorithms use data from a machine's sensors, like LiDARs, cameras, and movement sensors, to generate a map of the environment and determine the machine's position within it.
 
-For more information, see [SLAM](/reference/services/slam/).
+For more information, see [SLAM](/operate/reference/services/slam/).
