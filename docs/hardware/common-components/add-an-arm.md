@@ -55,7 +55,7 @@ For arms not covered above, browse [all arm modules in the Viam registry](https:
 2. Select **Configuration block**.
 3. Search for the model that matches your arm manufacturer and model:
    - For a UFactory xArm, search for **xArm6** (or xArm5, xArm7, Lite6).
-   - For a Universal Robots arm, search for **ur5e** (or ur3e, ur10e, ur16e).
+   - For a Universal Robots arm, search for **ur5e** (or ur3e, ur7e, ur20). See [Set up a Universal Robots arm](/hardware/tutorials/universal-robots/) for the full end-to-end setup, including pendant network and security configuration.
 4. Name your arm (for example, `my-arm`) and click **Create**.
 
 ### 2. Configure arm attributes
