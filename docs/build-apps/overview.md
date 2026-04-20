@@ -7,6 +7,7 @@ type: "docs"
 description: "Build software that uses a Viam SDK to talk to your machines and the Viam cloud, from web dashboards to long-running backend services."
 date: "2026-04-10"
 aliases:
+  - /operate/control/
   - /operate/control/headless-app/
   - /product-overviews/sdk-as-client/
   - /program/sdk-as-client/

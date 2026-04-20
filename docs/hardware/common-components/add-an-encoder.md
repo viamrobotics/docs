@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure an encoder to track motor position and direction."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/encoder/
   - /hardware-components/add-an-encoder/
 ---
 

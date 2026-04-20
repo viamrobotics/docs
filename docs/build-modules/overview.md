@@ -6,6 +6,10 @@ layout: "docs"
 type: "docs"
 description: "Understand the two kinds of modules and how to extend your machine with custom hardware drivers and application logic."
 aliases:
+  - /operate/modules/
+  - /operate/modules/advanced/
+  - /operate/reference/advanced-modules/
+  - /operate/reference/advanced-modules/create-subtype/
   - /build-modules/from-hardware-to-logic/
 ---
 

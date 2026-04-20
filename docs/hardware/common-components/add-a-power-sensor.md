@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a power sensor to monitor voltage, current, and power consumption."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/power-sensor/
   - /hardware-components/add-a-power-sensor/
 ---
 

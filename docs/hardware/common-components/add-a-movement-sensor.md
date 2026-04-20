@@ -7,6 +7,8 @@ type: "docs"
 description: "Add and configure a movement sensor like a GPS, IMU, or odometry source."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/movement-sensor/
+  - /operate/reference/components/movement-sensor/set-up-base-station/
   - /hardware-components/add-a-movement-sensor/
 ---
 

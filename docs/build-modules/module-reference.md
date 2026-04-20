@@ -7,6 +7,9 @@ type: "docs"
 description: "Reference for module developers: lifecycle, interfaces, meta.json schema, CLI commands, environment variables, and registry rules."
 date: "2025-03-05"
 aliases:
+  - /operate/modules/advanced/logging/
+  - /operate/modules/advanced/metajson/
+  - /operate/modules/advanced/module-configuration/
   - /development/module-reference/
   - /operate/modules/lifecycle-module/
   - /operate/modules/lifecycle-of-a-module/

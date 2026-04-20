@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a sensor to read environmental data like temperature, humidity, or distance."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/sensor/
   - /hardware-components/add-a-sensor/
 ---
 

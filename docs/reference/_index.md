@@ -10,6 +10,8 @@ open_on_desktop: true
 manualLink: "/reference/overview/"
 description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, and more."
 aliases:
+  - /operate/reference/
+  - /operate/reference/controls-package/
   - /reference/architecture/
   - /reference/architecture/parts/
   - /reference/architecture/machine-to-machine-comms/

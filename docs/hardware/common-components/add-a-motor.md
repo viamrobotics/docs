@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a motor component and test it from the Viam app."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/motor/
   - /hardware-components/add-a-motor/
 ---
 

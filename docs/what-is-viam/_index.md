@@ -9,6 +9,7 @@ images: ["/general/understand.png"]
 imageAlt: "Viam platform overview"
 description: "Viam is a software platform for building, deploying, and managing robotics applications."
 aliases:
+  - /operate/reference/architecture/
   - /understand/
   - /understand/what-is-viam/
   - /what-is-viam/problems-viam-solves/

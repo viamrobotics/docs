@@ -119,27 +119,30 @@ For example:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following example assumes your module uses `AlwaysRebuild` and does not have a `Reconfigure` function defined.
-
 ```go {class="line-numbers linkable-line-numbers"}
-// Return the motion service as a dependency
+// Return the built-in motion service as a required dependency.
 func (cfg *Config) Validate(path string) ([]string, []string, error) {
   deps := []string{motion.Named("builtin").String()}
   return deps, nil, nil
 }
 
-// Then use the motion service, for example:
-func (c *Component) MoveAroundInSomeWay() error {
-  c.Motion, err = motion.FromDependencies(deps, "builtin")
+// Store the motion service on the component when the module reconfigures.
+func (c *Component) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
+  motionService, err := motion.FromProvider(deps, "builtin")
   if err != nil {
-    return nil, err
+    return err
   }
-  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
+  c.motion = motionService
+  return nil
+}
+
+// Use the stored motion service, for example:
+func (c *Component) MoveAroundInSomeWay(ctx context.Context) (bool, error) {
+  return c.motion.Move(ctx, motion.MoveReq{
     ComponentName: gripperName,
-    Destination: destination,
-    WorldState: worldState
+    Destination:   destination,
+    WorldState:    worldState,
   })
-  return moved, err
 }
 ```
 
@@ -162,12 +165,10 @@ The [motion service API](/reference/apis/services/motion/) supports the followin
 
 You can test motion on your machine from the [**CONTROL** tab](/monitor/).
 
-![Motion card on the Control tab](/services/motion/motion-rc-card.png)
-
-Enter x and y coordinates to move your machine to, then click the **Move** button to issue a `MoveOnMap()` request.
+Enter X and Y coordinates for your destination in meters, then click **Execute** to issue a `MoveOnMap()` request.
 
 {{< alert title="Info" color="info" >}}
 
-The `plan_deviation_m` for `MoveOnMap()` on calls issued from the **CONTROL** tab is 0.5 m.
+If you leave the **Plan deviation (m)** field blank, `MoveOnMap()` uses the motion service default of 1.0 m.
 
 {{< /alert >}}

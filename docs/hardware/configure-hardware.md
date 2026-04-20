@@ -7,6 +7,17 @@ type: "docs"
 description: "Understand how Viam represents hardware, add components to your machine, and configure them."
 date: "2025-03-07"
 aliases:
+  - /program/extend/modular-resources/configure/
+  - /extend/modular-resources/configure/
+  - /modular-resources/configure/
+  - /registry/configure/
+  - /registry/modular-resources/
+  - /configure/
+  - /manage/configuration/
+  - /build/configure/
+  - /registry/program/extend/modular-resources/configure/
+  - /how-tos/use-cases/configure/
+  - /use-cases/configure/
   - /hardware-components/add-a-component/
   - /hardware/add-a-component/
   - /operate/modules/configure-modules/

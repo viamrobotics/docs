@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/arm.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/arm/
   - /dev/reference/apis/components/arm/
   - /appendix/apis/components/arm/
 # updated: ""  # When the content was last entirely checked

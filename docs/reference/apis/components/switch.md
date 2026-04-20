@@ -9,6 +9,7 @@ images: ["/icons/components/switch.svg"]
 date: "2025-02-20"
 # updated: ""  # When the content was last entirely checked
 aliases:
+  - /operate/modules/component-apis/switch/
   - /dev/reference/apis/components/switch/
 ---
 

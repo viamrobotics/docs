@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Write your validate and reconfigure functions to handle dependencies in your custom modular resource."
 aliases:
+  - /operate/modules/advanced/platform-apis/
 date: "2025-11-05"
 ---
 

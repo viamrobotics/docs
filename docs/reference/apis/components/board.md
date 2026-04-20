@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/board.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/board/
   - /dev/reference/apis/components/board/
   - /appendix/apis/components/board/
 # updated: ""  # When the content was last entirely checked

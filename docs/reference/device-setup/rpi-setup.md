@@ -8,6 +8,7 @@ images: ["/installation/thumbnails/raspberry-pi-4-b-2gb.png"]
 imageAlt: "Raspberry Pi"
 no_list: true
 aliases:
+  - /operate/reference/wifi-credentials/
   - /operate/reference/prepare/rpi-setup/
   - /getting-started/rpi-setup/
   - /installation/rpi-setup/

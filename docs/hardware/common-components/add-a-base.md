@@ -7,6 +7,8 @@ type: "docs"
 description: "Add and configure a base to drive a mobile robot with movement commands."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/base/
+  - /operate/reference/components/base/boat/
   - /hardware-components/add-a-base/
 ---
 

@@ -7,6 +7,7 @@ type: "docs"
 description: "Set up a camera, ML model, and vision service to detect defects."
 date: "2025-01-30"
 aliases:
+  - /operate/hello-world/first-project/part-1/
   - /try/first-project/part-1/
 ---
 
@@ -102,7 +103,7 @@ Verify the camera is working. Every component in Viam has a built-in test card r
 
 1. You should still be on the **CONFIGURE** tab with your `inspection-cam` selected
 2. Look for the **Test** section at the bottom of the camera's configuration panel
-3. Click **Test** to expand the camera's test card
+3. Expand the **TEST** section to open the camera's test card
 
 The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
 

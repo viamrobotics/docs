@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/motor.svg"]
 date: "2024-10-10"
 aliases:
+  - /operate/modules/component-apis/motor/
   - /dev/reference/apis/components/motor/
   - /appendix/apis/components/motor/
 # updated: ""  # When the content was last entirely checked

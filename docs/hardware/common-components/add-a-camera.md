@@ -7,6 +7,8 @@ type: "docs"
 description: "Add and configure a camera component, verify the feed, and capture an image programmatically."
 date: "2025-01-30"
 aliases:
+  - /operate/reference/components/camera/
+  - /operate/reference/components/camera/calibrate/
   - /build/foundation/add-a-camera/
   - /foundation/add-a-camera/
   - /hardware-components/add-a-camera/

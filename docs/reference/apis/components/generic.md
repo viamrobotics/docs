@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/generic.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/generic/
   - /appendix/apis/components/generic/
 # updated: ""  # When the content was last entirely checked
 ---

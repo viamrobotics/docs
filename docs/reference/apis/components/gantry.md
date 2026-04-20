@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/gantry.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/gantry/
   - /dev/reference/apis/components/gantry/
   - /appendix/apis/components/gantry/
 # updated: ""  # When the content was last entirely checked

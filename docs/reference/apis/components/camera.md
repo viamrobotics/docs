@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/camera.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/camera/
   - /dev/reference/apis/components/camera/
   - /appendix/apis/components/camera/
 # updated: ""  # When the content was last entirely checked

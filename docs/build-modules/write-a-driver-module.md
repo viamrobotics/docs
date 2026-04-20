@@ -7,6 +7,7 @@ type: "docs"
 description: "Build a module that implements a resource API and runs as a separate process."
 date: "2025-01-30"
 aliases:
+  - /operate/modules/write-a-driver-module/
   - /build/development/write-a-module/
   - /development/write-a-module/
   - /development/write-a-driver-module/
