@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The board API allows you to give commands to your [board components](/operate/reference/components/board/) for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
+The board API allows you to give commands to your [board components](/reference/components/board/) for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.
 
 The board component supports the following methods:
 

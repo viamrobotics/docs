@@ -22,9 +22,9 @@ If no [existing modules](/hardware/configure-hardware/) support your specific us
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/reference/sdks/), and then deploy it to your machines.
 
 {{< alert title="Note: viam-micro-server modules" color="note" >}}
-[`viam-micro-server`](/operate/reference/viam-micro-server/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+[`viam-micro-server`](/reference/viam-micro-server/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
-You will need to [recompile and flash your ESP32 yourself](/operate/install/setup/) instead of using Viam's prebuilt binary and installer.
+You will need to [recompile and flash your ESP32 yourself](/set-up-a-machine/overview/) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
 
 {{% alert title="Tip" color="tip" %}}
@@ -68,9 +68,9 @@ For this reason, it's generally best to choose the API that most closely matches
 {{% alert title=Note color="note" %}}
 If you want to write a module to add support to a new type of component or service that is relatively unique, consider using the generic API for your resource type to build your own API:
 
-- If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/operate/reference/components/generic/) to build your own component API.
-- If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/operate/reference/components/generic/) to build your own service API.
-- It is also possible to [define an entirely new API](/operate/reference/create-subtype/), but this is even more advanced than using `generic`.
+- If you are working with a component that doesn't fit into any of the existing component APIs, you can use the [generic component](/reference/components/generic/) to build your own component API.
+- If you are designing a service that doesn't fit into any of the existing service APIs, you can use the [generic service](/reference/components/generic/) to build your own service API.
+- It is also possible to [define an entirely new API](/build-modules/advanced-patterns/), but this is even more advanced than using `generic`.
 
 Most module use cases, however, benefit from implementing an existing API instead of `generic`.
 {{% /alert %}}
@@ -81,7 +81,7 @@ Each existing component or service API has a unique identifier in the form of a 
 You will use this {{< glossary_tooltip term_id="api-namespace-triplet" text="API namespace triplet" >}} when creating your new model, to indicate which API it uses.
 
 The API namespace triplet is the same for all built-in and modular models that implement a given API.
-For example, every model of motor built into Viam, as well as every custom model of motor provided by a module, all use the same API namespace triplet `rdk:component:motor` to indicate that they implement the [motor API](/operate/reference/components/motor/#api).
+For example, every model of motor built into Viam, as well as every custom model of motor provided by a module, all use the same API namespace triplet `rdk:component:motor` to indicate that they implement the [motor API](/reference/components/motor/#api).
 
 The three pieces of the API namespace triplet are as follows:
 
@@ -168,7 +168,7 @@ Browse additional example modules by language:
 | ------ | ---------- | ----------- |
 | [berryimu](https://app.viam.com/module/viam-labs/berryimu) | [viam-labs/berry-imu](https://github.com/viam-labs/berry-imu) | Extends the built-in [movement sensor API](/reference/apis/components/movement-sensor/) to support using the BerryIMU v3 accelerometer, gyroscope and magnetometer using an I2C connection on ARM64 systems. |
 | [oak](https://app.viam.com/module/viam/oak) | [viam-modules/viam-camera-oak](https://github.com/viam-modules/viam-camera-oak) | Extends the built-in [camera API](/reference/apis/components/camera/) to support OAK cameras. |
-| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/operate/reference/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
+| [odrive](https://app.viam.com/module/viam/odrive) | [viamrobotics/odrive](https://github.com/viamrobotics/odrive) | Extends the built-in [motor API](/reference/components/motor/#api) to support the ODrive motor. This module provides two models, one for a `canbus`-connected ODrive motor, and one for a `serial`-connected ODrive motor. |
 | [yahboom](https://app.viam.com/module/rand/yahboom) | [viamlabs/yahboom](https://github.com/viam-labs/yahboom) | Extends the built-in [arm API](/reference/apis/components/arm/) and [gripper API](/reference/apis/components/gripper/) to support the Yahboom Dofbot robotic arm. |
 
 For more Python module examples:
@@ -199,7 +199,7 @@ For more Go module examples:
 | Module | Repository | Description |
 | ------ | ---------- | ----------- |
 | [csi-cam](https://app.viam.com/module/viam/csi-cam) | [viamrobotics/csi-camera](https://github.com/viamrobotics/csi-camera/) | Extends the built-in [camera API](/reference/apis/components/camera/) to support the Intel CSI camera. |
-<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/operate/reference/components/sensor/#api) to report wifi statistics. | -->
+<!-- | [module-example-cpp](https://app.viam.com/module/viam/module-example-cpp) | [viamrobotics/module-example-cpp](https://github.com/viamrobotics/module-example-cpp) | Extends the built-in [sensor API](/reference/components/sensor/#api) to report wifi statistics. | -->
 
 {{% /tab %}}
 {{% /tabs %}}
@@ -220,7 +220,7 @@ If your module references {{< glossary_tooltip term_id="pin-number" text="pin nu
 
 First, inspect the built-in class provided by the resource API that you are extending.
 
-For example, if you wanted to add support for a new [base component](/operate/reference/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
+For example, if you wanted to add support for a new [base component](/reference/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam Python SDK](https://github.com/viamrobotics/viam-python-sdk) in the following file:
 
 <!-- prettier-ignore -->
 | Resource Model File | Description |
@@ -435,7 +435,7 @@ For more information on the base component API methods used in this example, see
 
 First, inspect the built-in package provided by the resource API that you are extending.
 
-For example, if you wanted to add support for a new [base component](/operate/reference/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `base` component package, which is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
+For example, if you wanted to add support for a new [base component](/reference/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `base` component package, which is defined in the [Viam Go SDK](https://github.com/viamrobotics/rdk/) in the following file:
 
 <!-- prettier-ignore -->
 | Resource Model File | Description |
@@ -680,7 +680,7 @@ For more information on the base component API methods used in this example, see
 First, inspect the built-in class provided by the resource API that you are extending.
 In the C++ SDK, all built-in classes are abstract classes.
 
-For example, if you wanted to add support for a new [base component](/operate/reference/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
+For example, if you wanted to add support for a new [base component](/reference/components/base/) to Viam (the component that represents the central physical platform of your machine, to which all other components are connected), you would start by looking at the built-in `Base` component class, which is defined in the [Viam C++ SDK](https://cpp.viam.dev/) in the following files:
 
 <!-- prettier-ignore -->
 | Resource Model File | Description |
@@ -1122,7 +1122,7 @@ Resource-level logs are recommended instead of global logs for modular resources
 Resource-level error logs appear in the **Error logs** section of each resource's configuration card in the app.
 
 {{% alert title="Note" color="note" %}}
-In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/operate/reference/viam-server/#logging).
+In order to see resource-level debug logs when using your modular resource, you'll either need to run `viam-server` with the `-debug` option or [configure your machine or individual resource to display debug logs](/reference/viam-server/#logging).
 {{% /alert %}}
 
 {{< expand "Click to see global logging" >}}
@@ -1638,7 +1638,7 @@ Add the module to your machine's config, then add the component or service it im
 
    {{<imgproc src="/how-tos/sensor-module-config.png" resize="600x" style="width: 300px" alt="Configuring a local component after the local module is configured" class="shadow" >}}
 
-1. Select the type of modular resource provided by your module, such as a [camera](/operate/reference/components/camera/), from the dropdown menu.
+1. Select the type of modular resource provided by your module, such as a [camera](/reference/components/camera/), from the dropdown menu.
 
 1. Enter a name for this instance of your modular resource.
    This name must be different from the module name.

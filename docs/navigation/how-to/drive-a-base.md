@@ -35,7 +35,7 @@ service instead. See
   configuring...**, wait for the motor's status badge to read **Ready**
   before attempting Quick move.
 - An SDK client connected to your machine. See
-  [Create a web app](/operate/control/web-app/) or the language-specific
+  [Create a web app](/build-apps/overview/) or the language-specific
   quickstart.
 
 ## Direct motion commands

@@ -65,11 +65,11 @@ See [Troubleshoot problems](/monitor/troubleshoot/).
 
 This section covers tools for monitoring, operating, and debugging machines that are already configured and running.
 
-| If you need to...                              | See                                     |
-| ---------------------------------------------- | --------------------------------------- |
-| Set up a machine for the first time            | [Get started](/set-up-a-machine/)       |
-| Configure components and services              | [Configure hardware](/hardware/)        |
-| Capture and sync data from sensors             | [Manage data](/data/)                   |
-| Train and deploy ML models                     | [Train ML models](/train/)              |
-| Build a custom web or mobile app with the SDKs | [Build apps](/operate/control/web-app/) |
-| Manage fleet deployment and provisioning       | [Fleet deployment](/fleet/)             |
+| If you need to...                              | See                                 |
+| ---------------------------------------------- | ----------------------------------- |
+| Set up a machine for the first time            | [Get started](/set-up-a-machine/)   |
+| Configure components and services              | [Configure hardware](/hardware/)    |
+| Capture and sync data from sensors             | [Manage data](/data/)               |
+| Train and deploy ML models                     | [Train ML models](/train/)          |
+| Build a custom web or mobile app with the SDKs | [Build apps](/build-apps/overview/) |
+| Manage fleet deployment and provisioning       | [Fleet deployment](/fleet/)         |

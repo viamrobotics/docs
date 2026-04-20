@@ -26,7 +26,7 @@ date: "2022-01-01"
 We recommend using Viam on a 64-bit Linux distribution.
 Support for older Raspberry Pis running on 32-bit ARM v7 is in beta.
 
-If you already have a Linux distribution installed on your {{< glossary_tooltip term_id="pi" text="Pi" >}}, you can skip ahead to [install `viam-server`](/operate/install/setup/).
+If you already have a Linux distribution installed on your {{< glossary_tooltip term_id="pi" text="Pi" >}}, you can skip ahead to [install `viam-server`](/set-up-a-machine/overview/).
 
 {{% expand "Click to check whether the Linux installation on your Raspberry Pi is 64-bit or 32-bit" %}}
 
@@ -36,7 +36,7 @@ Example output:
 
 {{< imgproc alt="Screenshot of a terminal running the 'lscpu' command. The output lists of this command on a Raspberry Pi. A red box highlights the command and the top of the output which reads 'Architecture: aarch64.'" src="/installation/rpi-setup/lscpu-output.png" resize="800x" declaredimensions=true class="shadow" >}}
 
-If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [install `viam-server`](/operate/install/setup/).
+If the value of "Architecture: _'xxxxxx'_" ends in "64", you can skip ahead to [install `viam-server`](/set-up-a-machine/overview/).
 
 {{% /expand%}}
 
@@ -178,7 +178,7 @@ Be sure that you remember the `hostname` and `username` you set, as you will nee
 
     {{< alert title="Tip: How to think about building a machine" color="tip" >}}
 
-While the Imager is flashing your microSD card, we recommend reading [How to think about building a machine](/operate/hello-world/building/).
+While the Imager is flashing your microSD card, we recommend reading [How to think about building a machine](/set-up-a-machine/overview/).
 
     {{< /alert >}}
 
@@ -190,5 +190,5 @@ While the Imager is flashing your microSD card, we recommend reading [How to thi
 Continue setting up `viam-server` on your Raspberry Pi in [the Viam app](https://app.viam.com/):
 
 {{< cards >}}
-{{% card link="/operate/install/setup/" %}}
+{{% card link="/set-up-a-machine/overview/" %}}
 {{< /cards >}}

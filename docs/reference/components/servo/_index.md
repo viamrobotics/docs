@@ -11,7 +11,7 @@ icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
   - "/components/servo/"
-  - "/operate/reference/components/servo/"
+  - "/reference/components/servo/"
 ---
 
 This section documents the configuration attributes for each built-in servo model.

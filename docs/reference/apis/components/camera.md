@@ -13,7 +13,7 @@ aliases:
 # updated: ""  # When the content was last entirely checked
 ---
 
-The camera API allows you to give commands to your [camera components](/operate/reference/components/camera/) for getting images or point clouds.
+The camera API allows you to give commands to your [camera components](/reference/components/camera/) for getting images or point clouds.
 
 The API for camera components allows you to:
 

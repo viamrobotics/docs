@@ -48,7 +48,7 @@ After completing this tutorial, you will:
 
 - A camera such as a standard USB webcam.
   You can also test the hard hat detection system using the webcam built into your laptop.
-- A computer capable of running [`viam-server`](/operate/install/setup/).
+- A computer capable of running [`viam-server`](/set-up-a-machine/overview/).
 
 ### Optional hardware
 
@@ -60,7 +60,7 @@ Note that your machine must be connected to the internet for data sync and email
 
 ### Required software
 
-- [`viam-server`](/operate/install/setup/)
+- [`viam-server`](/set-up-a-machine/overview/)
 - [Ultralytics YOLOv8](https://docs.ultralytics.com/), integrated with Viam using the [YOLOv8 modular service](https://github.com/viam-labs/YOLOv8)
 - [YOLOv8 Hard Hat Detection model](https://huggingface.co/keremberke/yolov8s-hard-hat-detection)
 - [`objectfilter-camera`](https://app.viam.com/module/felixr/object-filter) {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}
@@ -81,7 +81,7 @@ Then, make sure your computer (whether it's a personal computer or an SBC) is co
 
 ### Configure your physical camera
 
-Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from the camera:
+Configure your [webcam](/reference/components/camera/webcam/) so that your machine can get the video stream from the camera:
 
 1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.

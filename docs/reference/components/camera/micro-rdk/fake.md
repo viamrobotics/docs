@@ -8,6 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - /components/camera/fake-micro-server/
+  - "/reference/components/camera/fake-micro-rdk/"
   - "/operate/reference/components/camera/fake-micro-rdk/"
 component_description: "A camera model for testing."
 micrordk_component: true

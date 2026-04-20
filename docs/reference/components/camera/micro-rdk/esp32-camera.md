@@ -11,6 +11,7 @@ micrordk_component: true
 date: "2024-08-28"
 aliases:
   - /components/camera/esp32-camera/
+  - "/reference/components/camera/esp32-camera-micro-rdk/"
   - "/operate/reference/components/camera/esp32-camera-micro-rdk/"
 # SMEs: Matt Perez, Micro-RDK team
 ---

@@ -9,7 +9,7 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/fake/"
-  - "/operate/reference/components/sensor/fake/"
+  - "/reference/components/sensor/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: #team-bucket
 ---

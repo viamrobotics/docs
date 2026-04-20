@@ -10,7 +10,7 @@ aliases:
   - /micro-rdk/encoder/incremental/
   - /build/micro-rdk/encoder/incremental/
   - /components/encoder/incremental-micro-rdk/
-  - "/operate/reference/components/encoder/incremental-micro-rdk/"
+  - "/reference/components/encoder/incremental-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
 ---

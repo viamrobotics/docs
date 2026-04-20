@@ -8,7 +8,7 @@ images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
   - "/components/camera/ffmpeg/"
-  - "/operate/reference/components/camera/ffmpeg/"
+  - "/reference/components/camera/ffmpeg/"
 component_description: "Use a camera, a video file, or a stream as a camera component."
 # SMEs: Sean Yu, audio/video team
 ---

@@ -100,10 +100,10 @@ To make your machine control a motor, you must add a motor component and a board
 On the **CONFIGURE** page you can add components and services to your machine.
 Click on the **+** icon to select a suitable board.
 
-If you are using a physical board to follow along, look through the [**Supported Models**](/operate/reference/components/board/#configuration) to determine the model of component to configure.
+If you are using a physical board to follow along, look through the [**Supported Models**](/reference/components/board/) to determine the model of component to configure.
 For example, configure a [`viam:raspberry-pi:rpi` board](https://github.com/viam-modules/raspberry-pi) for a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W:
 
-If you do not have a physical board, use the [`fake` board model](/operate/reference/components/board/fake/).
+If you do not have a physical board, use the [`fake` board model](/reference/components/board/fake/).
 
 Follow the instructions in the board model's documentation to configure any required attributes.
 For the `fake` model, there are no required attributes.
@@ -111,13 +111,13 @@ For the `fake` model, there are no required attributes.
 ## Step 3: Configure a motor
 
 Add a `motor` component that supports the type of motor and motor driver you're using.
-Look through the [**Supported Models**](/operate/reference/components/motor/#configuration) to determine the model of component to configure.
-For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/operate/reference/components/motor/gpio/).
+Look through the [**Supported Models**](/reference/components/motor/) to determine the model of component to configure.
+For example, if you are using a standard DC motor (brushed or brushless) wired to a typical GPIO pin-controlled motor driver, configure a [`gpio` motor](/reference/components/motor/gpio/).
 
 Follow the motor driver manufacturer's data sheet to wire your motor driver to your board and to your motor.
-Follow the [model's documentation](/operate/reference/components/motor/) to configure the attributes so that the computer can send signals to the motor.
+Follow the [model's documentation](/reference/components/motor/) to configure the attributes so that the computer can send signals to the motor.
 
-If you do not have a physical motor, use the [`fake` motor model](/operate/reference/components/motor/fake/).
+If you do not have a physical motor, use the [`fake` motor model](/reference/components/motor/fake/).
 For the `fake` model, there are no required attributes.
 
 **Save your configuration.**
@@ -148,7 +148,7 @@ Choose your machine from the list and use the mobile interface to adjust the mot
 ### Option 3: Control programmatically
 
 Each component has a standardized API.
-The following code shows you how to control the motor's speed and direction using the [Motor API](/operate/reference/components/motor/#api).
+The following code shows you how to control the motor's speed and direction using the [Motor API](/reference/components/motor/).
 
 If you'd like to try it, find your machine's API key and address on your machine's **CONNECT** tab and run the code sample:
 
@@ -608,4 +608,4 @@ int main() {
 
 You now know how to build a machine that controls two {{< glossary_tooltip term_id="component" text="components" >}}.
 
-For a more elaborate tutorial using more componenst, see the [Desk Safari Tutorial](/operate/hello-world/tutorial-desk-safari/).
+For a more elaborate tutorial using more componenst, see the [Desk Safari Tutorial](/try/).

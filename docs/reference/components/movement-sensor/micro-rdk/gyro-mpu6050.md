@@ -9,7 +9,7 @@ aliases:
   - /micro-rdk/movement-sensor/gyro-mpu6050/
   - /build/micro-rdk/movement-sensor/gyro-mpu6050/
   - /components/movement-sensor/gyro-mpu6050-micro-rdk/
-  - "/operate/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"
+  - "/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
 ---

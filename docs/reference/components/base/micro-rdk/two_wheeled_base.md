@@ -11,6 +11,7 @@ aliases:
   - /build/micro-rdk/base/esp32_wheeled_base/
   - /build/micro-rdk/base/two_wheeled_base/
   - /components/base/two_wheeled_base/
+  - "/reference/components/base/two_wheeled_base-micro-rdk/"
   - "/operate/reference/components/base/two_wheeled_base-micro-rdk/"
 micrordk_component: true
 # SMEs: Gautham V.

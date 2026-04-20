@@ -158,10 +158,10 @@ If you are not seeing helpful logs, enable debug logging.
 ]
 ```
 
-For more on log configuration, see [Logging](/operate/reference/viam-server/#logging).
+For more on log configuration, see [Logging](/reference/viam-server/#logging).
 
 By default, `viam-server` deduplicates log messages that repeat within a one-minute window.
-To disable this, see [Disable log deduplication](/operate/reference/viam-server/).
+To disable this, see [Disable log deduplication](/reference/viam-server/).
 
 #### Access logs from the command line
 
@@ -220,7 +220,7 @@ This exposes endpoints for CPU profiling, memory allocation analysis, goroutine 
 
 The `/debug/graph` endpoint renders an SVG visualization of the machine's resource dependency graph.
 
-For details, see [Debug Endpoints](/operate/reference/viam-server/debug-endpoints/).
+For details, see [Debug Endpoints](/reference/viam-server/).
 
 ## Diagnostics
 

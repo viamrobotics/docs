@@ -40,7 +40,7 @@ You need the following hardware for this tutorial:
 You will use the following software in this tutorial:
 
 - [Python 3.8 or newer](https://www.python.org/downloads/)
-- [`viam-server`](/operate/install/setup/)
+- [`viam-server`](/set-up-a-machine/overview/)
 - [Viam Python SDK](https://python.viam.dev/)
   - The Viam Python SDK (software development kit) lets you control your Viam-powered machine by writing custom scripts in the Python programming language.
     Install the Viam Python SDK by following [these instructions](https://python.viam.dev/).
@@ -56,7 +56,7 @@ You will use the following software in this tutorial:
 
 ### Configure the camera component
 
-Configure your [webcam](/operate/reference/components/camera/webcam/) so that your machine can get the video stream from your camera:
+Configure your [webcam](/reference/components/camera/webcam/) so that your machine can get the video stream from your camera:
 
 1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.

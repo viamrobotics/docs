@@ -7,7 +7,7 @@ images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
   - "/components/encoder/single/"
-  - "/operate/reference/components/encoder/single/"
+  - "/reference/components/encoder/single/"
 component_description: "A single pin 'pulse output' encoder which returns its relative position but no direction."
 # SMEs: Rand
 ---

@@ -11,6 +11,7 @@ aliases:
   - /micro-rdk/board/esp32/
   - /build/micro-rdk/board/esp32/
   - /components/board/esp32/
+  - "/reference/components/board/esp32-micro-rdk/"
   - "/operate/reference/components/board/esp32-micro-rdk/"
 micrordk_component: true
 # SMEs: Gautham, Nico, Andrew
