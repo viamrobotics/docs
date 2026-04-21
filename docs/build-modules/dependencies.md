@@ -18,7 +18,7 @@ For background on required and optional dependencies, see the
 
 ## The dependency pattern
 
-Every dependency follows three steps: declare it in validation, resolve it in your constructor or reconfigure method, then call its API methods.
+Every dependency follows two steps: declare it in validation, then resolve it in your constructor. Once resolved, you call methods on it like any other resource.
 
 The examples below show a base that depends on two motors -- a required left motor and an optional right motor (for a base that can operate in single-motor mode).
 
@@ -99,9 +99,7 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 
 ### 2. Resolve dependencies
 
-In Python, resolve dependencies in the `reconfigure` method. In Go, resolve them in your constructor (or `Reconfigure` method if you are not using `AlwaysRebuild`).
-
-Use the dependency name to look up the resource, then cast it to the correct type.
+Resolve dependencies in your constructor. Use the dependency name to look up the resource, then cast it to the correct type.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -111,28 +109,30 @@ from typing import cast
 from viam.components.motor import Motor
 
 
-def reconfigure(
-    self, config: ComponentConfig,
+@classmethod
+def new(
+    cls, config: ComponentConfig,
     dependencies: Mapping[ResourceName, ResourceBase]
-):
+) -> Self:
+    instance = cls(config.name)
     fields = config.attributes.fields
 
     # Required dependency -- direct lookup
     left_name = fields["left_motor"].string_value
-    self.left = cast(
+    instance.left = cast(
         Motor,
         dependencies[Motor.get_resource_name(left_name)])
 
     # Optional dependency -- use .get() and handle None
-    self.right = None
+    instance.right = None
     if "right_motor" in fields:
         right_name = fields["right_motor"].string_value
         right_resource = dependencies.get(
             Motor.get_resource_name(right_name))
         if right_resource is not None:
-            self.right = cast(Motor, right_resource)
+            instance.right = cast(Motor, right_resource)
 
-    return super().reconfigure(config, dependencies)
+    return instance
 ```
 
 {{% /tab %}}
@@ -181,56 +181,8 @@ func newMyBase(ctx context.Context, deps resource.Dependencies,
 {{< /tabs >}}
 
 {{% alert title="Note" color="note" %}}
-Go modules that use `resource.AlwaysRebuild` resolve dependencies in the constructor, which runs on every reconfiguration.
-If you need to maintain state across reconfigurations, see [Handle reconfiguration](/build-modules/write-a-driver-module/#6-handle-reconfiguration-optional).
+Config changes rebuild the resource: `viam-server` closes the existing instance and calls your constructor with the new config. Put dependency resolution in the constructor so it runs on both initial creation and every config change.
 {{% /alert %}}
-
-### 3. Use dependencies
-
-Once resolved, call API methods on your dependencies like any other resource:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-async def set_power(
-    self,
-    linear: Vector3,
-    angular: Vector3,
-    *,
-    extra: Optional[Dict[str, Any]] = None,
-    timeout: Optional[float] = None,
-    **kwargs
-):
-    await self.left.set_power(linear.y + angular.z)
-    if self.right:
-        await self.right.set_power(linear.y - angular.z)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-func (b *myBase) SetPower(
-    ctx context.Context,
-    linear, angular r3.Vector,
-    extra map[string]interface{},
-) error {
-    err := b.left.SetPower(
-        ctx, linear.Y+angular.Z, extra)
-    if err != nil {
-        return err
-    }
-    if b.right != nil {
-        return b.right.SetPower(
-            ctx, linear.Y-angular.Z, extra)
-    }
-    return nil
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% alert title="Accessing built-in services" color="tip" %}}
 Some services like the motion service are available by default as part of `viam-server` even though they don't appear in your machine config. To depend on one, use its full resource name in your validation method:

@@ -150,7 +150,7 @@ monitoring loop.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Update `validate_config`, `new`, and `reconfigure`:
+Update `validate_config` and `new`:
 
 ```python
     @classmethod
@@ -174,39 +174,29 @@ Update `validate_config`, `new`, and `reconfigure`:
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         instance = cls(config.name)
         instance.alerts = []
-        instance._monitor_task = None
-        instance._stop_event = asyncio.Event()
-        instance.reconfigure(config, dependencies)
-        return instance
-
-    def reconfigure(self, config: ComponentConfig,
-                    dependencies: Mapping[ResourceName, ResourceBase]) -> None:
-        # Stop any existing monitor loop
-        if self._monitor_task is not None:
-            self._stop_event.set()
-            self._monitor_task = None
 
         fields = config.attributes.fields
-        self.sensor_names = [
+        instance.sensor_names = [
             v.string_value
             for v in fields["sensor_names"].list_value.values
         ]
-        self.max_temp = fields["max_temp"].number_value
-        self.poll_interval = (
+        instance.max_temp = fields["max_temp"].number_value
+        instance.poll_interval = (
             fields["poll_interval_secs"].number_value
             if "poll_interval_secs" in fields
             else 10.0
         )
 
         # 2. Resolve: find each sensor in the dependencies map
-        self.sensors = {}
+        instance.sensors = {}
         for name, dep in dependencies.items():
-            if name.name in self.sensor_names:
-                self.sensors[name.name] = dep
+            if name.name in instance.sensor_names:
+                instance.sensors[name.name] = dep
 
         # Start the monitor loop
-        self._stop_event = asyncio.Event()
-        self._monitor_task = asyncio.create_task(self._monitor_loop())
+        instance._stop_event = asyncio.Event()
+        instance._monitor_task = asyncio.create_task(instance._monitor_loop())
+        return instance
 ```
 
 {{% /tab %}}
@@ -492,44 +482,9 @@ func (s *TempAlert) Close(ctx context.Context) error {
 }
 ```
 
-In Go, the `Reconfigure` method should also stop the old loop and start a new
-one:
-
-```go
-func (s *TempAlert) Reconfigure(
-    ctx context.Context,
-    deps resource.Dependencies,
-    conf resource.Config,
-) error {
-    // Stop the old loop
-    s.cancelFn()
-
-    cfg, err := resource.NativeConfig[*Config](conf)
-    if err != nil {
-        return err
-    }
-
-    sensors := make(map[string]sensor.Sensor)
-    for _, name := range cfg.SensorNames {
-        sens, err := sensor.FromProvider(deps, name)
-        if err != nil {
-            return fmt.Errorf("sensor %q not found: %w", name, err)
-        }
-        sensors[name] = sens
-    }
-
-    monitorCtx, cancelFn := context.WithCancel(context.Background())
-
-    s.mu.Lock()
-    s.cfg = cfg
-    s.sensors = sensors
-    s.cancelFn = cancelFn
-    s.mu.Unlock()
-
-    go s.monitorLoop(monitorCtx)
-    return nil
-}
-```
+On a config change, `viam-server` calls `Close` on the old instance and then
+invokes your constructor again with the new config. `Close` stops the old
+loop; the fresh constructor starts a new one.
 
 {{% /tab %}}
 {{< /tabs >}}
