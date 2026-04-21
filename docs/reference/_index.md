@@ -41,7 +41,6 @@ aliases:
   - /reference/advanced-modules/create-subtype/
   - /reference/advanced-modules/custom-components-remotes/
   - /reference/advanced-modules/docker-modules/
-  - /reference/components/
   - /reference/configuration/
   - /reference/configuration/controls-package/
   - /reference/configuration/kinematic-chain-config/
