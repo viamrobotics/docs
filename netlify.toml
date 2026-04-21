@@ -152,6 +152,68 @@
   status = 301
   force = true
 
+# Subsection category pages that used layout: "empty" + canonical for a
+# client-side meta-refresh. Upgrading to a real 301 for SEO and UX.
+[[redirects]]
+  from = "/tutorials/configure/"
+  to = "/hardware/configure-hardware/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tutorials/control/"
+  to = "/hardware/configure-hardware/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tutorials/custom/"
+  to = "/build-modules/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tutorials/get-started/"
+  to = "/try/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tutorials/projects/"
+  to = "/try/overview/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tutorials/services/"
+  to = "/reference/services/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/apis/components/"
+  to = "/reference/apis/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/apis/services/"
+  to = "/reference/apis/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/components/"
+  to = "/hardware/common-components/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/sdks/python/"
+  to = "https://python.viam.dev/"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/foundation/initialize-a-viam-machine/"
   to = "/foundation/"
