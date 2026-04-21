@@ -675,7 +675,7 @@
   # (for development) turn true for extra diagnostic logging
   debug = true
 
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/advanced-modules/", "/tags/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/tags/"]
 
 [[context.deploy-preview.plugins]]
   package = "@eggnstone/netlify-plugin-no-more-404"
@@ -684,7 +684,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/advanced-modules/", "/tags/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/tags/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -694,4 +694,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/reference/advanced-modules/", "/tags/"]
+  skipPatterns = ["/dev/", "/reference/components/", "/reference/services/", "/tags/"]
