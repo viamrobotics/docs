@@ -486,11 +486,6 @@
 
 # Old IA paths from previous site versions
 [[redirects]]
-  from = "/architecture/viam-micro-server/"
-  to = "/reference/viam-micro-server/"
-  status = 301
-
-[[redirects]]
   from = "/architecture/*"
   to = "/what-is-viam/"
   status = 301

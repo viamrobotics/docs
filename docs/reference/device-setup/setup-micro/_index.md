@@ -13,6 +13,9 @@ aliases:
   - /operate/install/setup-micro/
   - /set-up-a-machine/setup-micro/
   - /foundation/setup-micro/
+  - /operate/get-started/other-hardware/micro-module/
+  - /reference/viam-micro-server/
+  - /architecture/viam-micro-server/
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
   - /build/micro-rdk/

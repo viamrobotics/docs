@@ -22,7 +22,7 @@ If no [existing modules](/hardware/configure-hardware/) support your specific us
 Follow the instructions below to learn how to write a new module using your preferred language and its corresponding [Viam SDK](/reference/sdks/), and then deploy it to your machines.
 
 {{< alert title="Note: viam-micro-server modules" color="note" >}}
-[`viam-micro-server`](/reference/viam-micro-server/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
+[`viam-micro-server`](/reference/device-setup/setup-micro/) works differently from the RDK (and `viam-server`), so creating modular resources for it is different from the process described on this page.
 Refer to the [Micro-RDK Module Template on GitHub](https://github.com/viamrobotics/micro-rdk/tree/main/templates/module) for information on how to create custom resources for your `viam-micro-server` machine.
 You will need to [recompile and flash your ESP32 yourself](/set-up-a-machine/overview/) instead of using Viam's prebuilt binary and installer.
 {{< /alert >}}
