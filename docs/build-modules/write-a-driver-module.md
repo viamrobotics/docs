@@ -34,6 +34,7 @@ aliases:
   - /how-tos/hello-world-module/
   - /operate/get-started/other-hardware/
   - /operate/get-started/other-hardware/create-module/
+  - /operate/get-started/other-hardware/micro-module/
 ---
 
 You want to use hardware that Viam doesn't support out of the box. A driver
