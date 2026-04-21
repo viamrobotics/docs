@@ -339,6 +339,6 @@ Control deletion behavior with the `delete_every_nth_when_disk_full` attribute.
 
 ### Micro-RDK
 
-The [micro-RDK](/set-up-a-machine/setup-micro/) (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
+The [micro-RDK](/reference/device-setup/setup-micro/) (for ESP32 and similar microcontrollers) supports data capture with a smaller set of resources than `viam-server`. See the **Micro-RDK** tab in the [supported resources table](#supported-resources) for the specific methods available.
 
 On micro-RDK devices, captured data is stored in the ESP32's flash memory until it is uploaded to the cloud. If the machine restarts before all data is synced, unsynced data since the last sync point is lost.
