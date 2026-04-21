@@ -126,8 +126,8 @@ attribute your module needs.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In `src/models/my_sensor.py`, add instance attributes to your class. These will
-be set in the `reconfigure` method:
+In `src/models/my_sensor.py`, declare your config attributes as type-annotated
+class variables. They will be populated from the config in `new`:
 
 ```python
 class MySensor(Sensor, EasyResource):
@@ -202,34 +202,32 @@ dependencies. For a standalone sensor with no dependencies, return empty lists.
 See [Step 5](#5-handle-dependencies) for modules that depend on other
 components.
 
-#### Implement the constructor and reconfigure method
+#### Populate your resource from config
 
-The constructor creates your resource and the reconfigure method updates it when
-the config changes. In Python, the typical pattern is for `new` to call
-`reconfigure` so the config-reading logic lives in one place.
+When the user changes your module's configuration, `viam-server` stops the
+existing resource instance and creates a fresh one with the new config. Your
+constructor runs on both initial creation and every config change, so read
+config fields and initialize your state there.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Update `new` and add a `reconfigure` method:
+Override `new` to read your config and set the fields on the instance before
+returning it:
 
 ```python
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         sensor = cls(config.name)
-        sensor.reconfigure(config, dependencies)
-        return sensor
-
-    def reconfigure(self, config: ComponentConfig,
-                    dependencies: Mapping[ResourceName, ResourceBase]) -> None:
         fields = config.attributes.fields
-        self.source_url = fields["source_url"].string_value
-        self.poll_interval = (
+        sensor.source_url = fields["source_url"].string_value
+        sensor.poll_interval = (
             fields["poll_interval"].number_value
             if "poll_interval" in fields
             else 10.0
         )
+        return sensor
 ```
 
 {{% /tab %}}
@@ -277,10 +275,7 @@ type MySensor struct {
 }
 ```
 
-The generated struct includes `resource.AlwaysRebuild`, which tells
-`viam-server` to destroy and re-create the resource on every config change.
-This is the simplest approach and works well for most modules. For in-place
-reconfiguration, see [Step 6](#6-handle-reconfiguration-optional).
+Leave the generated `resource.AlwaysRebuild` embed in place.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -395,7 +390,13 @@ class MySensor(Sensor, EasyResource):
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
         sensor = cls(config.name)
-        sensor.reconfigure(config, dependencies)
+        fields = config.attributes.fields
+        sensor.source_url = fields["source_url"].string_value
+        sensor.poll_interval = (
+            fields["poll_interval"].number_value
+            if "poll_interval" in fields
+            else 10.0
+        )
         return sensor
 
     @classmethod
@@ -408,16 +409,6 @@ class MySensor(Sensor, EasyResource):
         if not fields["source_url"].string_value.startswith("http"):
             raise Exception("source_url must be an HTTP or HTTPS URL")
         return [], []
-
-    def reconfigure(self, config: ComponentConfig,
-                    dependencies: Mapping[ResourceName, ResourceBase]) -> None:
-        fields = config.attributes.fields
-        self.source_url = fields["source_url"].string_value
-        self.poll_interval = (
-            fields["poll_interval"].number_value
-            if "poll_interval" in fields
-            else 10.0
-        )
 
     async def get_readings(
         self,
@@ -687,8 +678,8 @@ another resource, you need to do three things:
 
 1. **Declare the dependency** in your config validation method by returning the
    resource name in the required (or optional) dependencies list.
-2. **Resolve the dependency** in your constructor or reconfigure method by
-   looking it up from the `dependencies` map that `viam-server` passes in.
+2. **Resolve the dependency** in your constructor by looking it up from the
+   `dependencies` map that `viam-server` passes in.
 3. **Call methods on it** in your API implementation, just like any other
    typed resource.
 
@@ -718,14 +709,17 @@ class TempConverterSensor(Sensor, EasyResource):
         # 1. Declare: return the source sensor name as a required dependency
         return [source], []
 
-    def reconfigure(self, config: ComponentConfig,
-                    dependencies: Mapping[ResourceName, ResourceBase]) -> None:
+    @classmethod
+    def new(cls, config: ComponentConfig,
+            dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        instance = cls(config.name)
         source_name = config.attributes.fields["source_sensor"].string_value
         # 2. Resolve: find the dependency in the map viam-server passes in
         for name, dep in dependencies.items():
             if name.name == source_name:
-                self.source_sensor = dep
+                instance.source_sensor = dep
                 break
+        return instance
 
     async def get_readings(self, *, extra=None, timeout=None,
                            **kwargs) -> Mapping[str, SensorReading]:
@@ -805,74 +799,7 @@ func (s *TempConverterSensor) Readings(
 {{% /tab %}}
 {{< /tabs >}}
 
-### 6. Handle reconfiguration (optional)
-
-When a user changes a resource's configuration, `viam-server` calls your
-reconfiguration method instead of destroying and re-creating the resource.
-This is faster and preserves internal state like open connections.
-
-The generated code uses `resource.AlwaysRebuild` (Go) by default, which
-tells `viam-server` to destroy and re-create the resource on every config
-change. This is the simplest approach and works well for most modules.
-
-For in-place reconfiguration, implement the reconfiguration method to update
-your resource's fields directly:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-Implement `reconfigure` to update your resource from the new config. This
-method is also typically called from `new` (see the example in Step 2):
-
-```python
-def reconfigure(self, config: ComponentConfig,
-                dependencies: Mapping[ResourceName, ResourceBase]) -> None:
-    fields = config.attributes.fields
-    self.source_url = fields["source_url"].string_value
-    self.poll_interval = (
-        fields["poll_interval"].number_value
-        if "poll_interval" in fields
-        else 10.0
-    )
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-Remove `resource.AlwaysRebuild` from your struct and implement `Reconfigure`:
-
-```go
-type MySensor struct {
-    resource.Named
-    logger    logging.Logger
-    sourceURL string
-    client    *http.Client
-}
-
-func (s *MySensor) Reconfigure(ctx context.Context,
-    deps resource.Dependencies, conf resource.Config) error {
-    cfg, err := resource.NativeConfig[*Config](conf)
-    if err != nil {
-        return err
-    }
-    s.sourceURL = cfg.SourceURL
-    s.client.Timeout = time.Duration(cfg.PollInterval) * time.Second
-    return nil
-}
-```
-
-Go provides these helper traits as alternatives to writing a `Reconfigure`
-method. Embed one in your struct:
-
-| Trait                              | Behavior                                                                             |
-| ---------------------------------- | ------------------------------------------------------------------------------------ |
-| `resource.AlwaysRebuild`           | Resource is destroyed and re-created on every config change (the generated default). |
-| `resource.TriviallyReconfigurable` | Config changes are accepted silently with no action.                                 |
-
-{{% /tab %}}
-{{< /tabs >}}
-
-### 7. Use the module data directory
+### 6. Use the module data directory
 
 Every module gets a persistent data directory at the path specified by the
 `VIAM_MODULE_DATA` environment variable. Use this for caches, databases, or
@@ -904,7 +831,7 @@ The directory is created automatically by `viam-server` at
 defaults to `~/.viam`) and persists across module
 restarts and reconfigurations.
 
-### 8. Add multiple models to one module (optional)
+### 7. Add multiple models to one module (optional)
 
 A single module can provide multiple models, even across different APIs
 (for example, a sensor and a camera). There is no limit on the number of models
