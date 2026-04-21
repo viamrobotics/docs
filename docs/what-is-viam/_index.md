@@ -9,7 +9,15 @@ images: ["/general/understand.png"]
 imageAlt: "Viam platform overview"
 description: "Viam is a software platform for building, deploying, and managing robotics applications."
 aliases:
+  - /architecture/
+  - /architecture/machine-to-machine-comms/
+  - /reference/architecture/
+  - /reference/architecture/machine-to-machine-comms/
   - /operate/reference/architecture/
+  - /operate/reference/architecture/machine-to-machine-comms/
+  - /dev/reference/architecture/
+  - /internals/robot-to-robot-comms/
+  - /internals/machine-to-machine-comms/
   - /understand/
   - /understand/what-is-viam/
   - /what-is-viam/problems-viam-solves/

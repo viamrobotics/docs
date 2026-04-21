@@ -12,8 +12,7 @@ aliases:
   - /configure/parts/
   - /build/configure/parts/
   - /architecture/parts/
-  - /operate/reference/architecture/
-  - /operate/reference/architecture/machine-to-machine-comms/
+  - /reference/architecture/parts/
   - /operate/reference/architecture/parts/
 ---
 
