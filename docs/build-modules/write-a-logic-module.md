@@ -484,8 +484,7 @@ func (s *TempAlert) Close(ctx context.Context) error {
 
 On a config change, `viam-server` calls `Close` on the old instance and then
 invokes your constructor again with the new config. `Close` stops the old
-loop; the fresh constructor starts a new one. No separate reconfigure
-handling is needed.
+loop; the fresh constructor starts a new one.
 
 {{% /tab %}}
 {{< /tabs >}}

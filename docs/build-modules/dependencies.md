@@ -18,7 +18,7 @@ For background on required and optional dependencies, see the
 
 ## The dependency pattern
 
-Every dependency follows three steps: declare it in validation, resolve it in your constructor, then call its API methods.
+Every dependency follows two steps: declare it in validation, then resolve it in your constructor. Once resolved, you call methods on it like any other resource.
 
 The examples below show a base that depends on two motors -- a required left motor and an optional right motor (for a base that can operate in single-motor mode).
 
@@ -183,53 +183,6 @@ func newMyBase(ctx context.Context, deps resource.Dependencies,
 {{% alert title="Note" color="note" %}}
 Config changes rebuild the resource: `viam-server` closes the existing instance and calls your constructor with the new config. Put dependency resolution in the constructor so it runs on both initial creation and every config change.
 {{% /alert %}}
-
-### 3. Use dependencies
-
-Once resolved, call API methods on your dependencies like any other resource:
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```python {class="line-numbers linkable-line-numbers"}
-async def set_power(
-    self,
-    linear: Vector3,
-    angular: Vector3,
-    *,
-    extra: Optional[Dict[str, Any]] = None,
-    timeout: Optional[float] = None,
-    **kwargs
-):
-    await self.left.set_power(linear.y + angular.z)
-    if self.right:
-        await self.right.set_power(linear.y - angular.z)
-```
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```go {class="line-numbers linkable-line-numbers"}
-func (b *myBase) SetPower(
-    ctx context.Context,
-    linear, angular r3.Vector,
-    extra map[string]interface{},
-) error {
-    err := b.left.SetPower(
-        ctx, linear.Y+angular.Z, extra)
-    if err != nil {
-        return err
-    }
-    if b.right != nil {
-        return b.right.SetPower(
-            ctx, linear.Y-angular.Z, extra)
-    }
-    return nil
-}
-```
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% alert title="Accessing built-in services" color="tip" %}}
 Some services like the motion service are available by default as part of `viam-server` even though they don't appear in your machine config. To depend on one, use its full resource name in your validation method:
