@@ -11,6 +11,8 @@ aliases:
   - /operate/reference/viam-micro-server/viam-micro-server-setup/
   - /operate/reference/viam-micro-server/micro-troubleshooting/
   - /operate/get-started/setup-micro/micro-troubleshooting/
+  - /set-up-a-machine/setup-micro/micro-troubleshooting/
+  - /foundation/setup-micro/micro-troubleshooting/
 # date: "2024-10-07"
 # updated: ""  # When the content was last entirely checked
 ---

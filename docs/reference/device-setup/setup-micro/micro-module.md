@@ -13,6 +13,8 @@ date: "2024-12-11"
 aliases:
   - /operate/modules/advanced/micro-module/
   - /installation/prepare/microcontrollers/development-setup/
+  - /set-up-a-machine/setup-micro/micro-module/
+  - /foundation/setup-micro/micro-module/
   - /get-started/installation/prepare/microcontrollers/development-setup/
   - /get-started/installation/microcontrollers/development-setup/
   - /get-started/installation/viam-micro-server-dev/
