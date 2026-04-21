@@ -11,7 +11,6 @@ manualLink: "/reference/overview/"
 description: "Technical reference documentation for the Viam platform: APIs, SDKs, components, services, and more."
 aliases:
   - /operate/reference/
-  - /dev/
   - /dev/reference/
   - /dev/reference/contributing/
   - /dev/tools/

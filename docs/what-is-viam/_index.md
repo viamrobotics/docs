@@ -18,6 +18,7 @@ aliases:
   - /dev/reference/architecture/
   - /internals/robot-to-robot-comms/
   - /internals/machine-to-machine-comms/
+  - /dev/
   - /understand/
   - /understand/what-is-viam/
   - /what-is-viam/problems-viam-solves/
