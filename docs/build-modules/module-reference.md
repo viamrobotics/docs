@@ -45,12 +45,13 @@ Every module, local or registry, runs as a separate child process alongside
 6. `viam-server` starts required dependencies first. If a required dependency
    fails, the resource that depends on it does not start.
 7. `viam-server` calls `AddResource` to create each resource. The module's
-   constructor runs, typically calling `Reconfigure` to read config.
+   constructor runs and reads config.
 8. The resource is available for use.
-9. When the user changes configuration, `viam-server` calls
-   `ReconfigureResource`. Your `Reconfigure` method should complete
-   within the per-resource configuration timeout (default: 2 minutes,
-   configurable with `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`).
+9. When the user changes configuration, `viam-server` closes the existing
+   resource instance and calls `AddResource` again with the new config. The
+   constructor runs a second time. This must complete within the per-resource
+   configuration timeout (default: 2 minutes, configurable with
+   `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`).
 10. On shutdown, `viam-server` sends `RemoveResource` for each resource, then
     terminates the module process.
 
@@ -132,7 +133,6 @@ Every resource must implement:
 ```go
 type Resource interface {
     Name() Name
-    Reconfigure(ctx context.Context, deps Dependencies, conf Config) error
     DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error)
     Close(ctx context.Context) error
 }
@@ -156,8 +156,6 @@ Embed these in your resource struct to get default implementations:
 | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `resource.Named`                   | Interface for `Name()` and `DoCommand()`. Embed and set through `conf.ResourceName().AsNamed()`. |
 | `resource.TriviallyCloseable`      | `Close()` returns nil.                                                                           |
-| `resource.TriviallyReconfigurable` | `Reconfigure()` returns nil (no-op).                                                             |
-| `resource.AlwaysRebuild`           | `Reconfigure()` returns `MustRebuildError` (always re-create).                                   |
 | `resource.TriviallyValidateConfig` | `Validate()` returns no deps and no error.                                                       |
 
 ### Useful functions
@@ -189,17 +187,9 @@ def validate_config(cls, config: ComponentConfig) -> Tuple[Sequence[str], Sequen
 def new(cls, config: ComponentConfig,
         dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
     instance = cls(config.name)
-    instance.reconfigure(config, dependencies)
+    # Parse config and resolve dependencies here.
+    # new() runs on initial creation and on every config change.
     return instance
-```
-
-### Reconfigure
-
-```python
-def reconfigure(self, config: ComponentConfig,
-                dependencies: Mapping[ResourceName, ResourceBase]) -> None:
-    # Update internal state from new config
-    pass
 ```
 
 ### Close
@@ -248,15 +238,14 @@ if __name__ == '__main__':
 
 ### Python and Go defaults
 
-In Python, the default behavior when you don't implement a method differs from Go:
+The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                       | Python                                                                                   |
-| ------------------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Seamless reconfigure     | Implement `Reconfigure()`                | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
-| Rebuild on config change | Embed `resource.AlwaysRebuild`           | Omit `reconfigure()` (default: module destroys and re-creates the resource)              |
-| No-op reconfigure        | Embed `resource.TriviallyReconfigurable` | No equivalent: implement an empty `reconfigure()` instead                                |
-| No-op close              | Embed `resource.TriviallyCloseable`      | Default on `ResourceBase`                                                                |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig` | Default on `EasyResource`                                                                |
+| Behavior                 | Go                                                           | Python                                                                                   |
+| ------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource) | Default (`viam-server` destroys and re-creates the resource)                             |
+| In-place reconfigure     | Not supported for modular resources                          | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
+| No-op close              | Embed `resource.TriviallyCloseable`                          | Default on `ResourceBase`                                                                |
+| Skip config validation   | Embed `resource.TriviallyValidateConfig`                     | Default on `EasyResource`                                                                |
 
 ## Logging
 
@@ -316,11 +305,11 @@ machine or individual resource.
 
 ## Common gotchas
 
-**Always call `Reconfigure` from your constructor.**
-Your constructor and `Reconfigure` should share the same config-reading logic.
-The typical pattern is for the constructor to create the struct, then call
-`Reconfigure` to populate it from config. This avoids duplicating config
-parsing and ensures a newly created resource is fully configured.
+**Put config-reading in the constructor.**
+`viam-server` rebuilds your resource on every config change, so the
+constructor runs on both initial creation and every reconfiguration. Read
+config fields and resolve dependencies there; don't scatter that logic
+across multiple methods.
 
 **Clean up in `Close()`.**
 If your resource starts background goroutines, opens connections, or holds
@@ -334,12 +323,6 @@ Dependencies listed as required in `Validate` (Go) or `validate_config`
 is wrong, `viam-server` waits for a resource that will never exist, and your
 resource will not start. Use optional dependencies for resources that improve
 functionality but aren't strictly needed.
-
-**Prefer `Reconfigure` over `AlwaysRebuild`.**
-`AlwaysRebuild` (Go) or omitting `reconfigure()` (Python) causes the resource
-to be destroyed and re-created on every config change. This is simpler but
-causes a brief availability gap. Implementing `Reconfigure` to update state
-in-place provides seamless reconfiguration.
 
 ## Module protocol
 

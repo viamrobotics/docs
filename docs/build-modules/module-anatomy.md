@@ -203,11 +203,9 @@ constructor receives the config (containing the attributes the user set), a depe
 map (containing running instances of the resources you declared in your
 validation method), and in Go, a context and a logger.
 
-If your resource uses `AlwaysRebuild` (the generated default in Go),
 `viam-server` destroys and re-creates the resource on every config change,
-calling the constructor again. If you implement a `Reconfigure` method
-instead, `viam-server` calls that method in place without re-creating the
-resource.
+calling the constructor again with the new config. The constructor runs on
+both initial creation and every subsequent config change.
 
 The constructor's job is to:
 
@@ -233,30 +231,25 @@ dependencies map directly.
 
 ```python
     @classmethod
-    async def new(cls, config, dependencies) -> Self:
+    def new(cls, config, dependencies) -> Self:
         monitor = cls(config.name)
         monitor.exceeded = False
-        monitor.reconfigure(config, dependencies)
-        return monitor
 
-    def reconfigure(self, config, dependencies) -> None:
         fields = config.attributes.fields
-        self.sensor_name = fields["sensor_name"].string_value
-        self.threshold = (
+        monitor.sensor_name = fields["sensor_name"].string_value
+        monitor.threshold = (
             fields["threshold"].number_value
             if "threshold" in fields
             else 100.0
         )
 
-        self.sensor = dependencies[
-            Sensor.get_resource_name(self.sensor_name)
+        monitor.sensor = dependencies[
+            Sensor.get_resource_name(monitor.sensor_name)
         ]
 
         ...
+        return monitor
 ```
-
-In Python, the common pattern is for `new` to call `reconfigure` so that
-config-reading and dependency resolution logic lives in one place.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
