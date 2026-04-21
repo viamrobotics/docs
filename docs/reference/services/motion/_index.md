@@ -96,16 +96,17 @@ For example:
        return req_deps, []
    ```
 
-1. Edit your `reconfigure` function to add the motion service as an instance variable so that you can use it in your module:
+1. Edit your `new` method to add the motion service as an instance variable so that you can use it in your module:
 
    ```python {class="line-numbers linkable-line-numbers"}
-   def reconfigure(
-       self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-   ):
+   @classmethod
+   def new(
+       cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+   ) -> Self:
+       instance = cls(config.name)
        motion_resource = dependencies[Motion.get_resource_name("builtin")]
-       self.motion_service = cast(MotionClient, motion_resource)
-
-       return super().reconfigure(config, dependencies)
+       instance.motion_service = cast(MotionClient, motion_resource)
+       return instance
    ```
 
 1. You can now use the motion service in your module, for example:
@@ -126,14 +127,22 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
   return deps, nil, nil
 }
 
-// Store the motion service on the component when the module reconfigures.
-func (c *Component) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
+// Store the motion service on the component in your constructor.
+func newComponent(
+  ctx context.Context,
+  deps resource.Dependencies,
+  conf resource.Config,
+  logger logging.Logger,
+) (resource.Resource, error) {
   motionService, err := motion.FromProvider(deps, "builtin")
   if err != nil {
-    return err
+    return nil, err
   }
-  c.motion = motionService
-  return nil
+  return &Component{
+    Named:  conf.ResourceName().AsNamed(),
+    logger: logger,
+    motion: motionService,
+  }, nil
 }
 
 // Use the stored motion service, for example:
