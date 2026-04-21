@@ -119,15 +119,17 @@ def validate_config(
 
 Add validation for any other resources your module wraps. For the safe arm, add `arm_name` to the required dependencies the same way.
 
-### 4. Initialize dependencies in reconfigure
+### 4. Initialize dependencies in the constructor
 
-The `reconfigure` method runs when the module starts and whenever configuration changes. Use it to get references to your dependencies:
+The `new` method runs when the module starts and whenever configuration changes (on every config change, `viam-server` closes the old instance and calls `new` again). Use it to get references to your dependencies:
 
 ```python
-def reconfigure(
-    self, config: ComponentConfig,
+@classmethod
+def new(
+    cls, config: ComponentConfig,
     dependencies: Mapping[ResourceName, ResourceBase]
-):
+) -> Self:
+    instance = cls(config.name)
     camera_name = config.attributes.fields["camera_name"].string_value
     vision_name = config.attributes.fields["vision_name"].string_value
 
@@ -137,19 +139,18 @@ def reconfigure(
                        f"dependencies. Available: "
                        f"{list(dependencies.keys())}")
 
-    self.vision_service = cast(VisionClient,
-                               dependencies[vision_resource_name])
-    self.camera_name = camera_name
-
-    return super().reconfigure(config, dependencies)
+    instance.vision_service = cast(VisionClient,
+                                   dependencies[vision_resource_name])
+    instance.camera_name = camera_name
+    return instance
 ```
 
-For the safe arm, also initialize the arm reference:
+For the safe arm, also initialize the arm reference before returning:
 
 ```python
     arm_name = config.attributes.fields["arm_name"].string_value
     arm_resource_name = Arm.get_resource_name(arm_name)
-    self.arm = cast(Arm, dependencies[arm_resource_name])
+    instance.arm = cast(Arm, dependencies[arm_resource_name])
 ```
 
 ### 5. Implement the vision check
