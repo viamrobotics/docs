@@ -284,10 +284,10 @@ type MySensor struct {
 ```
 
 Leave the generated `resource.AlwaysRebuild` embed in place. The generated
-`Name()`, `Close()`, and `DoCommand()` methods also stay. `Close` calls
-`cancelFunc()` to stop any background work. `DoCommand` is a stub returning
-`fmt.Errorf("not implemented")`. Leave it as-is unless your module needs
-custom `DoCommand` handling.
+`Name()`, `Close()`, `DoCommand()`, and `Status()` methods also stay. `Close`
+calls `cancelFunc()` to stop any background work. `DoCommand` and `Status`
+are stubs returning `fmt.Errorf("not implemented")`. Leave them as-is unless
+your module needs custom handling.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -582,6 +582,10 @@ func (s *MySensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (m
     return nil, fmt.Errorf("not implemented")
 }
 
+func (s *MySensor) Status(ctx context.Context) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
 func (s *MySensor) Close(ctx context.Context) error {
     s.logger.CInfof(ctx, "Shutting down MySensor")
     s.cancelFunc()
@@ -838,6 +842,7 @@ func NewTempConverter(
     // 2. Resolve: look up the dependency by name from the map viam-server passes in
     src, err := sensor.FromProvider(deps, conf.SourceSensor)
     if err != nil {
+        cancelFunc()
         return nil, fmt.Errorf("source sensor %q not found: %w",
             conf.SourceSensor, err)
     }
@@ -875,6 +880,10 @@ func (s *TempConverterSensor) Readings(
 }
 
 func (s *TempConverterSensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *TempConverterSensor) Status(ctx context.Context) (map[string]interface{}, error) {
     return nil, fmt.Errorf("not implemented")
 }
 
