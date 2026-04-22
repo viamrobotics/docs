@@ -284,7 +284,7 @@ type MySensor struct {
 ```
 
 Leave the generated `resource.AlwaysRebuild` embed in place. The generated
-`Name()` and `Close()` methods also stay — `Close` calls `cancelFunc()` to stop
+`Name()` and `Close()` methods also stay. `Close` calls `cancelFunc()` to stop
 any background work you start.
 
 {{% /tab %}}
