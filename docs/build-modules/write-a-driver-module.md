@@ -40,7 +40,7 @@ aliases:
 You want to use hardware that Viam doesn't support out of the box. A driver
 module integrates it with the platform by implementing a standard resource API
 (sensor, camera, motor, or any other type). Once your hardware speaks a Viam
-API, data capture, TEST cards, the SDKs, and other platform features work
+API, data capture, Test sections, the SDKs, and other platform features work
 with it automatically.
 
 A driver module runs as a separate process alongside `viam-server`. It has its
@@ -219,7 +219,7 @@ returning it:
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        sensor = cls(config.name)
+        sensor = super().new(config, dependencies)
         fields = config.attributes.fields
         sensor.source_url = fields["source_url"].string_value
         sensor.poll_interval = (
@@ -233,49 +233,59 @@ returning it:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Find the generated constructor function. Update it to read your config fields
-and initialize your struct:
+The generator produces two constructor functions: a private `newMySensor` that
+unpacks the raw config and delegates to a public `NewMySensor` that takes a
+typed `*Config`. The split lets tests call `NewMySensor` directly with a
+typed config. Leave `newMySensor` alone and update `NewMySensor` to
+initialize any state your module needs:
 
 ```go
-func newMySensor(
+func NewMySensor(
     ctx context.Context,
     deps resource.Dependencies,
-    conf resource.Config,
+    name resource.Name,
+    conf *Config,
     logger logging.Logger,
 ) (sensor.Sensor, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
-    if err != nil {
-        return nil, err
-    }
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
-    timeout := time.Duration(cfg.PollInterval) * time.Second
+    timeout := time.Duration(conf.PollInterval) * time.Second
     if timeout == 0 {
         timeout = 10 * time.Second
     }
 
-    return &MySensor{
-        Named:     conf.ResourceName().AsNamed(),
-        logger:    logger,
-        sourceURL: cfg.SourceURL,
-        client:    &http.Client{Timeout: timeout},
-    }, nil
+    s := &MySensor{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+        client:     &http.Client{Timeout: timeout},
+    }
+    return s, nil
 }
 ```
 
-You will also need to add fields to the generated struct for any state your
-module needs at runtime:
+Add fields to the generated struct for any state your module needs at runtime:
 
 ```go
 type MySensor struct {
-    resource.Named
     resource.AlwaysRebuild
-    logger    logging.Logger
-    sourceURL string
-    client    *http.Client
+
+    name resource.Name
+
+    logger logging.Logger
+    cfg    *Config
+
+    cancelCtx  context.Context
+    cancelFunc func()
+    client     *http.Client
 }
 ```
 
-Leave the generated `resource.AlwaysRebuild` embed in place.
+Leave the generated `resource.AlwaysRebuild` embed in place. The generated
+`Name()` and `Close()` methods also stay — `Close` calls `cancelFunc()` to stop
+any background work you start.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -313,7 +323,7 @@ Add a `get_readings` method to your class. The return type is
             }
         except requests.RequestException as e:
             self.logger.error(f"Failed to read from {self.source_url}: {e}")
-            return {"error": str(e)}
+            raise
 ```
 
 {{% /tab %}}
@@ -331,11 +341,15 @@ func (s *MySensor) Readings(
     ctx context.Context,
     extra map[string]interface{},
 ) (map[string]interface{}, error) {
-    resp, err := s.client.Get(s.sourceURL)
+    req, err := http.NewRequestWithContext(ctx, http.MethodGet, s.cfg.SourceURL, nil)
+    if err != nil {
+        return nil, fmt.Errorf("building request: %w", err)
+    }
+    resp, err := s.client.Do(req)
     if err != nil {
         s.logger.CErrorw(ctx, "failed to read from source",
-            "url", s.sourceURL, "error", err)
-        return nil, fmt.Errorf("failed to read from %s: %w", s.sourceURL, err)
+            "url", s.cfg.SourceURL, "error", err)
+        return nil, fmt.Errorf("failed to read from %s: %w", s.cfg.SourceURL, err)
     }
     defer resp.Body.Close()
 
@@ -389,7 +403,7 @@ class MySensor(Sensor, EasyResource):
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        sensor = cls(config.name)
+        sensor = super().new(config, dependencies)
         fields = config.attributes.fields
         sensor.source_url = fields["source_url"].string_value
         sensor.poll_interval = (
@@ -427,7 +441,7 @@ class MySensor(Sensor, EasyResource):
             }
         except requests.RequestException as e:
             self.logger.error(f"Failed to read from {self.source_url}: {e}")
-            return {"error": str(e)}
+            raise
 
     async def close(self):
         self.logger.info("Shutting down MySensor")
@@ -476,35 +490,58 @@ func init() {
 }
 
 type MySensor struct {
-    resource.Named
     resource.AlwaysRebuild
-    logger    logging.Logger
-    sourceURL string
-    client    *http.Client
+
+    name resource.Name
+
+    logger logging.Logger
+    cfg    *Config
+
+    cancelCtx  context.Context
+    cancelFunc func()
+    client     *http.Client
 }
 
 func newMySensor(
     ctx context.Context,
     deps resource.Dependencies,
-    conf resource.Config,
+    rawConf resource.Config,
     logger logging.Logger,
 ) (sensor.Sensor, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
+    conf, err := resource.NativeConfig[*Config](rawConf)
     if err != nil {
         return nil, err
     }
+    return NewMySensor(ctx, deps, rawConf.ResourceName(), conf, logger)
+}
 
-    timeout := time.Duration(cfg.PollInterval) * time.Second
+func NewMySensor(
+    ctx context.Context,
+    deps resource.Dependencies,
+    name resource.Name,
+    conf *Config,
+    logger logging.Logger,
+) (sensor.Sensor, error) {
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
+
+    timeout := time.Duration(conf.PollInterval) * time.Second
     if timeout == 0 {
         timeout = 10 * time.Second
     }
 
-    return &MySensor{
-        Named:     conf.ResourceName().AsNamed(),
-        logger:    logger,
-        sourceURL: cfg.SourceURL,
-        client:    &http.Client{Timeout: timeout},
-    }, nil
+    s := &MySensor{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+        client:     &http.Client{Timeout: timeout},
+    }
+    return s, nil
+}
+
+func (s *MySensor) Name() resource.Name {
+    return s.name
 }
 
 type sensorResponse struct {
@@ -516,11 +553,15 @@ func (s *MySensor) Readings(
     ctx context.Context,
     extra map[string]interface{},
 ) (map[string]interface{}, error) {
-    resp, err := s.client.Get(s.sourceURL)
+    req, err := http.NewRequestWithContext(ctx, http.MethodGet, s.cfg.SourceURL, nil)
+    if err != nil {
+        return nil, fmt.Errorf("building request: %w", err)
+    }
+    resp, err := s.client.Do(req)
     if err != nil {
         s.logger.CErrorw(ctx, "failed to read from source",
-            "url", s.sourceURL, "error", err)
-        return nil, fmt.Errorf("failed to read from %s: %w", s.sourceURL, err)
+            "url", s.cfg.SourceURL, "error", err)
+        return nil, fmt.Errorf("failed to read from %s: %w", s.cfg.SourceURL, err)
     }
     defer resp.Body.Close()
 
@@ -533,6 +574,12 @@ func (s *MySensor) Readings(
         "temperature": data.Temp,
         "humidity":    data.Humidity,
     }, nil
+}
+
+func (s *MySensor) Close(ctx context.Context) error {
+    s.logger.CInfof(ctx, "Shutting down MySensor")
+    s.cancelFunc()
+    return nil
 }
 ```
 
@@ -554,7 +601,7 @@ You typically do not need to modify it.
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor  # noqa: F401
+from models.my_sensor import MySensor as MySensorModel
 
 
 if __name__ == "__main__":
@@ -598,6 +645,8 @@ add more `resource.APIModel` entries to the `ModularMain` call.
 Use the CLI to build and deploy your module to a machine, then verify it works.
 
 **Deploy with hot reloading:**
+
+Replace `<machine-part-id>` with your machine's part ID. At the top of your machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it.
 
 ```bash
 # Build in the cloud and deploy to the machine
@@ -659,7 +708,7 @@ self.logger.error("Failed to connect to source: %s", error)
 {{% tab name="Go" %}}
 
 ```go
-s.logger.CInfof(ctx, "Sensor initialized with source URL: %s", s.sourceURL)
+s.logger.CInfof(ctx, "Sensor initialized with source URL: %s", s.cfg.SourceURL)
 s.logger.CDebugf(ctx, "Raw response from source: %v", data)
 s.logger.CWarnw(ctx, "Source returned unexpected field", "field", fieldName)
 s.logger.CErrorw(ctx, "Failed to connect to source", "error", err)
@@ -712,7 +761,7 @@ class TempConverterSensor(Sensor, EasyResource):
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        instance = cls(config.name)
+        instance = super().new(config, dependencies)
         source_name = config.attributes.fields["source_sensor"].string_value
         # 2. Resolve: find the dependency in the map viam-server passes in
         for name, dep in dependencies.items():
@@ -746,35 +795,59 @@ func (cfg *ConverterConfig) Validate(path string) ([]string, []string, error) {
 }
 
 type TempConverterSensor struct {
-    resource.Named
     resource.AlwaysRebuild
+
+    name resource.Name
+
     logger logging.Logger
-    source sensor.Sensor
+    cfg    *ConverterConfig
+
+    cancelCtx  context.Context
+    cancelFunc func()
+    source     sensor.Sensor
 }
 
 func newTempConverter(
     ctx context.Context,
     deps resource.Dependencies,
-    conf resource.Config,
+    rawConf resource.Config,
     logger logging.Logger,
 ) (sensor.Sensor, error) {
-    cfg, err := resource.NativeConfig[*ConverterConfig](conf)
+    conf, err := resource.NativeConfig[*ConverterConfig](rawConf)
     if err != nil {
         return nil, err
     }
+    return NewTempConverter(ctx, deps, rawConf.ResourceName(), conf, logger)
+}
+
+func NewTempConverter(
+    ctx context.Context,
+    deps resource.Dependencies,
+    name resource.Name,
+    conf *ConverterConfig,
+    logger logging.Logger,
+) (sensor.Sensor, error) {
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     // 2. Resolve: look up the dependency by name from the map viam-server passes in
-    src, err := sensor.FromProvider(deps, cfg.SourceSensor)
+    src, err := sensor.FromProvider(deps, conf.SourceSensor)
     if err != nil {
         return nil, fmt.Errorf("source sensor %q not found: %w",
-            cfg.SourceSensor, err)
+            conf.SourceSensor, err)
     }
 
     return &TempConverterSensor{
-        Named:  conf.ResourceName().AsNamed(),
-        logger: logger,
-        source: src,
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+        source:     src,
     }, nil
+}
+
+func (s *TempConverterSensor) Name() resource.Name {
+    return s.name
 }
 
 func (s *TempConverterSensor) Readings(
@@ -855,8 +928,8 @@ discovers all imported resource classes:
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor  # noqa: F401
-from models.my_camera import MyCamera  # noqa: F401
+from models.my_sensor import MySensor as MySensorModel
+from models.my_camera import MyCamera as MyCameraModel
 
 if __name__ == "__main__":
     asyncio.run(Module.run_from_registry())
@@ -908,7 +981,7 @@ Each model needs its own `init()` function calling `resource.RegisterComponent`
    tab to confirm readings are flowing to the cloud.
 6. Add a new key to the readings map (for example, `"pressure": 1013.25`).
    Rebuild and redeploy with `viam module reload-local`. Verify the new reading
-   appears on the TEST card.
+   appears on the Test section.
 
 ## Troubleshooting
 
@@ -922,7 +995,6 @@ Each model needs its own `init()` function calling `resource.RegisterComponent`
   activated).
 - For Go, verify the binary runs: `./bin/<your-module-name>` (the output path
   is set in your `Makefile`).
-- Check that your entrypoint script has execute permissions: `chmod +x run.sh`.
 
 {{< /expand >}}
 
