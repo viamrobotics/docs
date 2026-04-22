@@ -60,11 +60,15 @@ your use case.
 
 Before you run the generator, [install the Viam CLI](/cli/overview/#install) and log in with `viam login`.
 
+The generator prompts for your organization's public namespace. If you have not set one yet, click the organization dropdown at the upper right of the Viam app, select **Settings**, then **Set a public namespace**. You can also enter your Org ID at the prompt instead.
+
 Run the Viam CLI generator:
 
 ```bash
 viam module generate
 ```
+
+The generator creates a new directory named after your module (for example, `my-sensor-module`) in your current working directory. `cd` into that directory for the rest of the steps.
 
 | Prompt           | What to enter               | Why                              |
 | ---------------- | --------------------------- | -------------------------------- |
@@ -108,7 +112,7 @@ The generator creates a complete project with the following files:
 
 ### 2. Implement the resource API
 
-Open the generated resource file: `src/models/my_sensor.py` (Python) or `module.go` (Go). The generator creates a class (Python) or struct (Go) with stub methods. You need to make four changes:
+Open the generated resource file: `src/models/my_sensor.py` (Python) or `module.go` (Go). The generator creates a class (Python) or struct (Go) with stub methods. You need to make four changes to the resource file, then review the entry point the generator created:
 
 1. Define your config attributes.
 2. Add validation logic.
@@ -202,7 +206,9 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 {{< /tabs >}}
 
 The validation method returns two lists: required dependencies and optional
-dependencies. For a standalone sensor with no dependencies, return empty lists.
+dependencies. In Go, the method also returns an `error` as a third value; in
+Python, raise an exception instead. For a standalone sensor with no
+dependencies, return empty lists and no error.
 See [Step 5](#5-handle-dependencies) for modules that depend on other
 components.
 
@@ -233,6 +239,10 @@ returning it:
         )
         return sensor
 ```
+
+The generator also emits `do_command`, `get_status`, and `get_geometries`
+stubs that raise `NotImplementedError`. Leave them as-is unless your module
+needs custom handling.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -369,6 +379,8 @@ func (s *mySensorModuleMySensor) Readings(ctx context.Context, extra map[string]
 {{< expand "View the complete resource file" >}}
 
 For reference, here is the complete resource file after all the changes above.
+`my-org` in these samples stands in for the namespace you entered when running
+the generator.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -689,6 +701,8 @@ Use the CLI to build and deploy your module to a machine, then verify it works.
 
 Replace `<machine-part-id>` with your machine's part ID. At the top of your machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. The `--model-name` flag adds an instance of your model to the machine config so you don't have to create it by hand, and `--name` names that instance.
 
+Run the reload command from your module's root directory (where `meta.json` lives). If you need to invoke it from elsewhere, pass `--module <path/to/meta.json>`.
+
 ```bash
 # Build in the cloud, deploy, and add a component named `my-sensor-1`
 viam module reload --part-id <machine-part-id> \
@@ -781,6 +795,10 @@ and converts them to Fahrenheit. Watch for the numbered comments in the code.
 
 In Go, the example uses `sensor.FromProvider(deps, name)` to resolve the dependency. It returns a typed `sensor.Sensor` handle, so your code does not need a type assertion. Every component and service package in the SDK exposes its own `FromProvider` helper. For a motor dependency, use `motor.FromProvider(deps, name)`. For a camera, use `camera.FromProvider(deps, name)`. And so on.
 
+The Python SDK has no equivalent helper. Iterate the `dependencies` map and match by `ResourceName.name`, as the example below shows.
+
+Place `TempConverter` alongside `MySensor`: in Python, as a new file under `src/models/` (for example, `src/models/temp_converter.py`); in Go, in the same package as `MySensor` -- either extend `module.go` or add a new `.go` file in the same directory. Registration is covered in [Step 7](#7-add-multiple-models-to-one-module-optional).
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -827,6 +845,16 @@ class TempConverter(Sensor, EasyResource):
 {{% tab name="Go" %}}
 
 ```go
+var TempConverter = resource.NewModel("my-org", "my-sensor-module", "temp-converter")
+
+func init() {
+    resource.RegisterComponent(sensor.API, TempConverter,
+        resource.Registration[sensor.Sensor, *ConverterConfig]{
+            Constructor: newMySensorModuleTempConverter,
+        },
+    )
+}
+
 type ConverterConfig struct {
     SourceSensor string `json:"source_sensor"`
 }
@@ -977,7 +1005,11 @@ To add a second model:
    the new model's scaffolding. Do not register it -- you only need the
    generated resource file.
 2. Copy the generated resource file into your existing module's source
-   directory.
+   directory. In Go, a literal paste will not compile. The Step 5
+   `TempConverter` example shows the post-rename shape: compound struct
+   named `<yourModuleName><Model>`, `Config` renamed to a unique name
+   (for example, `ConverterConfig`), and `resource.NewModel`'s middle
+   argument set to your existing module name.
 3. Update the entry point to register both models.
 
 {{< tabs >}}
@@ -1040,8 +1072,9 @@ Each model needs its own `init()` function calling `resource.RegisterComponent`
 3. Configure the module on your machine as a local module.
 4. Expand the **Test** section on your sensor. Verify readings appear
    automatically under **GetReadings**.
-5. Enable data capture on the sensor. Wait one minute, then check the **DATA**
-   tab to confirm readings are flowing to the cloud.
+5. [Enable data capture](/data/capture-sync/capture-and-sync-data/) on the
+   sensor. Wait one minute, then check the **DATA** tab to confirm readings
+   are flowing to the cloud.
 6. Add a new key to the readings map (for example, `"pressure": 1013.25`).
    Rebuild and redeploy with `viam module reload-local`. Verify the new reading
    appears on the Test section.
