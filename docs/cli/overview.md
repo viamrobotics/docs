@@ -202,3 +202,51 @@ viam --help
 viam machines --help
 viam machines part shell --help
 ```
+
+## Enable shell completion
+
+The CLI supports tab completion for commands, subcommands, and flag names.
+To enable it, source the completion script for your shell.
+
+{{< tabs >}}
+{{% tab name="bash" %}}
+
+Add to your `~/.bashrc`:
+
+```sh {class="command-line" data-prompt="$"}
+source <(viam completion bash)
+```
+
+{{% /tab %}}
+{{% tab name="zsh" %}}
+
+Add to your `~/.zshrc`:
+
+```sh {class="command-line" data-prompt="$"}
+source <(viam completion zsh)
+```
+
+{{% /tab %}}
+{{% tab name="fish" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam completion fish > ~/.config/fish/completions/viam.fish
+```
+
+{{% /tab %}}
+{{% tab name="PowerShell" %}}
+
+```powershell {class="command-line" data-prompt=">"}
+viam completion pwsh | Out-String | Invoke-Expression
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+After sourcing the script, press **Tab** to complete commands and flags:
+
+```sh {class="command-line" data-prompt="$"}
+viam <Tab>         # lists all commands
+viam machines <Tab> # lists subcommands of machines
+viam data export <Tab> # lists subcommands of export
+```
