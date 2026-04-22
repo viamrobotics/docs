@@ -284,8 +284,10 @@ type MySensor struct {
 ```
 
 Leave the generated `resource.AlwaysRebuild` embed in place. The generated
-`Name()` and `Close()` methods also stay. `Close` calls `cancelFunc()` to stop
-any background work you start.
+`Name()`, `Close()`, and `DoCommand()` methods also stay. `Close` calls
+`cancelFunc()` to stop any background work. `DoCommand` is a stub returning
+`fmt.Errorf("not implemented")`. Leave it as-is unless your module needs
+custom `DoCommand` handling.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -574,6 +576,10 @@ func (s *MySensor) Readings(
         "temperature": data.Temp,
         "humidity":    data.Humidity,
     }, nil
+}
+
+func (s *MySensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
 }
 
 func (s *MySensor) Close(ctx context.Context) error {
@@ -866,6 +872,15 @@ func (s *TempConverterSensor) Readings(
     return map[string]interface{}{
         "temperature_f": celsius*9.0/5.0 + 32.0,
     }, nil
+}
+
+func (s *TempConverterSensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *TempConverterSensor) Close(ctx context.Context) error {
+    s.cancelFunc()
+    return nil
 }
 ```
 
