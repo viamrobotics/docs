@@ -22,7 +22,7 @@ viam [global options] command [command options] [arguments...]
 ### `completion`
 
 The `completion` command outputs a shell completion script.
-Source the output in your shell to enable tab completion for commands, subcommands, and flag names.
+Load the output in your shell to enable tab completion for commands, subcommands, and flag names.
 
 ```sh {class="command-line" data-prompt="$"}
 viam completion bash
