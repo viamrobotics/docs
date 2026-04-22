@@ -131,6 +131,8 @@ class variables. They will be populated from the config in `new`:
 
 ```python
 class MySensor(Sensor, EasyResource):
+    # To enable debug-level logging, either run viam-server with the --debug option,
+    # or configure your resource/machine to display debug logs.
     MODEL: ClassVar[Model] = Model(
         ModelFamily("my-org", "my-sensor-module"), "my-sensor"
     )
@@ -233,20 +235,15 @@ returning it:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The generator produces two constructor functions: a private `newMySensor` that
-unpacks the raw config and delegates to a public `NewMySensor` that takes a
-typed `*Config`. The split lets tests call `NewMySensor` directly with a
-typed config. Leave `newMySensor` alone and update `NewMySensor` to
-initialize any state your module needs:
+The generator produces two constructor functions: a private
+`newMySensorModuleMySensor` that unpacks the raw config and delegates to a
+public `NewMySensor` that takes a typed `*Config`. The split lets tests call
+`NewMySensor` directly with a typed config. Leave
+`newMySensorModuleMySensor` alone and update `NewMySensor` to initialize any
+state your module needs:
 
 ```go
-func NewMySensor(
-    ctx context.Context,
-    deps resource.Dependencies,
-    name resource.Name,
-    conf *Config,
-    logger logging.Logger,
-) (sensor.Sensor, error) {
+func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     timeout := time.Duration(conf.PollInterval) * time.Second
@@ -254,7 +251,7 @@ func NewMySensor(
         timeout = 10 * time.Second
     }
 
-    s := &MySensor{
+    s := &mySensorModuleMySensor{
         name:       name,
         logger:     logger,
         cfg:        conf,
@@ -269,7 +266,7 @@ func NewMySensor(
 Add fields to the generated struct for any state your module needs at runtime:
 
 ```go
-type MySensor struct {
+type mySensorModuleMySensor struct {
     resource.AlwaysRebuild
 
     name resource.Name
@@ -339,10 +336,7 @@ type sensorResponse struct {
     Humidity float64 `json:"humidity"`
 }
 
-func (s *MySensor) Readings(
-    ctx context.Context,
-    extra map[string]interface{},
-) (map[string]interface{}, error) {
+func (s *mySensorModuleMySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
     req, err := http.NewRequestWithContext(ctx, http.MethodGet, s.cfg.SourceURL, nil)
     if err != nil {
         return nil, fmt.Errorf("building request: %w", err)
@@ -380,21 +374,23 @@ For reference, here is the complete resource file after all the changes above.
 `src/models/my_sensor.py`:
 
 ```python
-import requests
-from typing import Any, ClassVar, Mapping, Optional, Sequence, Self, Tuple
+from typing import (Any, ClassVar, Dict, Final, List, Mapping, Optional,
+                    Sequence, Tuple)
 
-from viam.components.sensor import Sensor
+import requests
+from typing_extensions import Self
+from viam.components.sensor import *
 from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import ResourceName
+from viam.proto.common import Geometry, ResourceName
 from viam.resource.base import ResourceBase
 from viam.resource.easy_resource import EasyResource
 from viam.resource.types import Model, ModelFamily
-from viam.utils import SensorReading
+from viam.utils import SensorReading, ValueTypes
 
 
 class MySensor(Sensor, EasyResource):
-    """A custom sensor that reads from an HTTP endpoint."""
-
+    # To enable debug-level logging, either run viam-server with the --debug option,
+    # or configure your resource/machine to display debug logs.
     MODEL: ClassVar[Model] = Model(
         ModelFamily("my-org", "my-sensor-module"), "my-sensor"
     )
@@ -403,8 +399,19 @@ class MySensor(Sensor, EasyResource):
     poll_interval: float
 
     @classmethod
-    def new(cls, config: ComponentConfig,
-            dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+        """This method creates a new instance of this Sensor component.
+        The default implementation sets the name from the `config` parameter.
+
+        Args:
+            config (ComponentConfig): The configuration for this resource
+            dependencies (Mapping[ResourceName, ResourceBase]): The dependencies (both required and optional)
+
+        Returns:
+            Self: The resource
+        """
         sensor = super().new(config, dependencies)
         fields = config.attributes.fields
         sensor.source_url = fields["source_url"].string_value
@@ -419,6 +426,17 @@ class MySensor(Sensor, EasyResource):
     def validate_config(
         cls, config: ComponentConfig
     ) -> Tuple[Sequence[str], Sequence[str]]:
+        """This method allows you to validate the configuration object received from the machine,
+        as well as to return any required dependencies or optional dependencies based on that `config`.
+
+        Args:
+            config (ComponentConfig): The configuration for this resource
+
+        Returns:
+            Tuple[Sequence[str], Sequence[str]]: A tuple where the
+                first element is a list of required dependencies and the
+                second element is a list of optional dependencies
+        """
         fields = config.attributes.fields
         if "source_url" not in fields:
             raise Exception("source_url is required")
@@ -431,7 +449,7 @@ class MySensor(Sensor, EasyResource):
         *,
         extra: Optional[Mapping[str, Any]] = None,
         timeout: Optional[float] = None,
-        **kwargs,
+        **kwargs
     ) -> Mapping[str, SensorReading]:
         try:
             response = requests.get(self.source_url, timeout=5)
@@ -445,8 +463,27 @@ class MySensor(Sensor, EasyResource):
             self.logger.error(f"Failed to read from {self.source_url}: {e}")
             raise
 
-    async def close(self):
-        self.logger.info("Shutting down MySensor")
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        self.logger.error("`do_command` is not implemented")
+        raise NotImplementedError()
+
+    async def get_status(
+        self, *, timeout: Optional[float] = None, **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        self.logger.error("`get_status` is not implemented")
+        raise NotImplementedError()
+
+    async def get_geometries(
+        self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None
+    ) -> Sequence[Geometry]:
+        self.logger.error("`get_geometries` is not implemented")
+        raise NotImplementedError()
 ```
 
 {{% /tab %}}
@@ -460,16 +497,20 @@ package mysensormodule
 import (
     "context"
     "encoding/json"
+    "errors"
     "fmt"
     "net/http"
     "time"
 
-    "go.viam.com/rdk/components/sensor"
+    sensor "go.viam.com/rdk/components/sensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
 )
 
-var Model = resource.NewModel("my-org", "my-sensor-module", "my-sensor")
+var (
+    MySensor         = resource.NewModel("my-org", "my-sensor-module", "my-sensor")
+    errUnimplemented = errors.New("unimplemented")
+)
 
 type Config struct {
     SourceURL    string  `json:"source_url"`
@@ -484,14 +525,14 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 }
 
 func init() {
-    resource.RegisterComponent(sensor.API, Model,
+    resource.RegisterComponent(sensor.API, MySensor,
         resource.Registration[sensor.Sensor, *Config]{
-            Constructor: newMySensor,
+            Constructor: newMySensorModuleMySensor,
         },
     )
 }
 
-type MySensor struct {
+type mySensorModuleMySensor struct {
     resource.AlwaysRebuild
 
     name resource.Name
@@ -504,12 +545,7 @@ type MySensor struct {
     client     *http.Client
 }
 
-func newMySensor(
-    ctx context.Context,
-    deps resource.Dependencies,
-    rawConf resource.Config,
-    logger logging.Logger,
-) (sensor.Sensor, error) {
+func newMySensorModuleMySensor(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (sensor.Sensor, error) {
     conf, err := resource.NativeConfig[*Config](rawConf)
     if err != nil {
         return nil, err
@@ -517,13 +553,7 @@ func newMySensor(
     return NewMySensor(ctx, deps, rawConf.ResourceName(), conf, logger)
 }
 
-func NewMySensor(
-    ctx context.Context,
-    deps resource.Dependencies,
-    name resource.Name,
-    conf *Config,
-    logger logging.Logger,
-) (sensor.Sensor, error) {
+func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     timeout := time.Duration(conf.PollInterval) * time.Second
@@ -531,7 +561,7 @@ func NewMySensor(
         timeout = 10 * time.Second
     }
 
-    s := &MySensor{
+    s := &mySensorModuleMySensor{
         name:       name,
         logger:     logger,
         cfg:        conf,
@@ -542,7 +572,7 @@ func NewMySensor(
     return s, nil
 }
 
-func (s *MySensor) Name() resource.Name {
+func (s *mySensorModuleMySensor) Name() resource.Name {
     return s.name
 }
 
@@ -551,10 +581,7 @@ type sensorResponse struct {
     Humidity float64 `json:"humidity"`
 }
 
-func (s *MySensor) Readings(
-    ctx context.Context,
-    extra map[string]interface{},
-) (map[string]interface{}, error) {
+func (s *mySensorModuleMySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
     req, err := http.NewRequestWithContext(ctx, http.MethodGet, s.cfg.SourceURL, nil)
     if err != nil {
         return nil, fmt.Errorf("building request: %w", err)
@@ -578,16 +605,16 @@ func (s *MySensor) Readings(
     }, nil
 }
 
-func (s *MySensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+func (s *mySensorModuleMySensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
     return nil, fmt.Errorf("not implemented")
 }
 
-func (s *MySensor) Status(ctx context.Context) (map[string]interface{}, error) {
+func (s *mySensorModuleMySensor) Status(ctx context.Context) (map[string]interface{}, error) {
     return nil, fmt.Errorf("not implemented")
 }
 
-func (s *MySensor) Close(ctx context.Context) error {
-    s.logger.CInfof(ctx, "Shutting down MySensor")
+func (s *mySensorModuleMySensor) Close(context.Context) error {
+    // Put close code here
     s.cancelFunc()
     return nil
 }
@@ -614,7 +641,7 @@ from viam.module.module import Module
 from models.my_sensor import MySensor as MySensorModel
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
 ```
 
@@ -631,14 +658,16 @@ them here.
 package main
 
 import (
-    mysensormodule "my-org/my-sensor-module"
-    "go.viam.com/rdk/components/sensor"
+    "mysensormodule"
+
     "go.viam.com/rdk/module"
     "go.viam.com/rdk/resource"
+    sensor "go.viam.com/rdk/components/sensor"
 )
 
 func main() {
-    module.ModularMain(resource.APIModel{sensor.API, mysensormodule.Model})
+    // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+    module.ModularMain(resource.APIModel{sensor.API, mysensormodule.MySensor})
 }
 ```
 
@@ -750,7 +779,7 @@ and converts them to Fahrenheit. Watch for the numbered comments in the code:
 {{% tab name="Python" %}}
 
 ```python
-class TempConverterSensor(Sensor, EasyResource):
+class TempConverter(Sensor, EasyResource):
     MODEL: ClassVar[Model] = Model(
         ModelFamily("my-org", "my-sensor-module"), "temp-converter"
     )
@@ -804,7 +833,7 @@ func (cfg *ConverterConfig) Validate(path string) ([]string, []string, error) {
     return []string{cfg.SourceSensor}, nil, nil
 }
 
-type TempConverterSensor struct {
+type mySensorModuleTempConverter struct {
     resource.AlwaysRebuild
 
     name resource.Name
@@ -817,7 +846,7 @@ type TempConverterSensor struct {
     source     sensor.Sensor
 }
 
-func newTempConverter(
+func newMySensorModuleTempConverter(
     ctx context.Context,
     deps resource.Dependencies,
     rawConf resource.Config,
@@ -847,7 +876,7 @@ func NewTempConverter(
             conf.SourceSensor, err)
     }
 
-    return &TempConverterSensor{
+    return &mySensorModuleTempConverter{
         name:       name,
         logger:     logger,
         cfg:        conf,
@@ -857,11 +886,11 @@ func NewTempConverter(
     }, nil
 }
 
-func (s *TempConverterSensor) Name() resource.Name {
+func (s *mySensorModuleTempConverter) Name() resource.Name {
     return s.name
 }
 
-func (s *TempConverterSensor) Readings(
+func (s *mySensorModuleTempConverter) Readings(
     ctx context.Context,
     extra map[string]interface{},
 ) (map[string]interface{}, error) {
@@ -879,15 +908,15 @@ func (s *TempConverterSensor) Readings(
     }, nil
 }
 
-func (s *TempConverterSensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+func (s *mySensorModuleTempConverter) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
     return nil, fmt.Errorf("not implemented")
 }
 
-func (s *TempConverterSensor) Status(ctx context.Context) (map[string]interface{}, error) {
+func (s *mySensorModuleTempConverter) Status(ctx context.Context) (map[string]interface{}, error) {
     return nil, fmt.Errorf("not implemented")
 }
 
-func (s *TempConverterSensor) Close(ctx context.Context) error {
+func (s *mySensorModuleTempConverter) Close(ctx context.Context) error {
     s.cancelFunc()
     return nil
 }
@@ -955,7 +984,7 @@ from viam.module.module import Module
 from models.my_sensor import MySensor as MySensorModel
 from models.my_camera import MyCamera as MyCameraModel
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
 ```
 
