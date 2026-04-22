@@ -58,6 +58,8 @@ your use case.
 
 ### 1. Generate the module
 
+Before you run the generator, [install the Viam CLI](/cli/overview/#install) and log in with `viam login`.
+
 Run the Viam CLI generator:
 
 ```bash
@@ -95,7 +97,7 @@ The generator creates a complete project with the following files:
 | File                           | Purpose                                                |
 | ------------------------------ | ------------------------------------------------------ |
 | `cmd/module/main.go`           | Entry point -- starts the module server                |
-| `my_sensor_module.go`          | Resource implementation skeleton -- you will edit this |
+| `module.go`                    | Resource implementation skeleton -- you will edit this |
 | `go.mod`                       | Go module definition                                   |
 | `Makefile`                     | Build targets                                          |
 | `meta.json`                    | Module metadata for the registry                       |
@@ -106,12 +108,12 @@ The generator creates a complete project with the following files:
 
 ### 2. Implement the resource API
 
-Open the generated resource file. The generator creates a class (Python) or
-struct (Go) with stub methods. You need to make three changes:
+Open the generated resource file: `src/models/my_sensor.py` (Python) or `module.go` (Go). The generator creates a class (Python) or struct (Go) with stub methods. You need to make four changes:
 
 1. Define your config attributes.
 2. Add validation logic.
-3. Implement the API methods for your resource type.
+3. Populate your resource from config in the constructor.
+4. Implement the API methods for your resource type.
 
 The following example builds a sensor that reads temperature and humidity from
 a custom HTTP API endpoint. Replace the HTTP call with whatever data source
@@ -145,7 +147,7 @@ class MySensor(Sensor, EasyResource):
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-In the generated `.go` file, find the empty `Config` struct and add fields.
+In `module.go`, find the empty `Config` struct and add fields.
 Each field needs a `json` tag that matches the attribute name users will set in
 their config JSON:
 
@@ -489,7 +491,7 @@ class MySensor(Sensor, EasyResource):
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-`my_sensor_module.go`:
+`module.go`:
 
 ```go
 package mysensormodule
@@ -685,27 +687,29 @@ Use the CLI to build and deploy your module to a machine, then verify it works.
 
 **Deploy with hot reloading:**
 
-Replace `<machine-part-id>` with your machine's part ID. At the top of your machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it.
+Replace `<machine-part-id>` with your machine's part ID. At the top of your machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. The `--model-name` flag adds an instance of your model to the machine config so you don't have to create it by hand, and `--name` names that instance.
 
 ```bash
-# Build in the cloud and deploy to the machine
-viam module reload --part-id <machine-part-id>
+# Build in the cloud, deploy, and add a component named `my-sensor-1`
+viam module reload --part-id <machine-part-id> \
+  --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
 ```
 
 If your development machine and target machine share the same architecture (for example, both are `linux/arm64`), you can build locally instead:
 
 ```bash
-# Build locally and transfer to the machine
-viam module reload-local --part-id <machine-part-id>
+# Build locally, transfer, and add the component
+viam module reload-local --part-id <machine-part-id> \
+  --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
 ```
 
 Use `reload` (cloud build) when developing on a different architecture than your target, for example when developing on macOS and deploying to a Raspberry Pi. Use `reload-local` when architectures match for faster iteration.
 
-After deploying, configure the component's attributes in the Viam app:
+After the first reload succeeds, open the machine's **CONFIGURE** tab and set your new sensor's attributes. Replace `source_url` with a real endpoint that returns JSON matching the shape your `Readings` implementation expects (the example reads `temp` and `humidity` keys from the response body):
 
 ```json
 {
-  "source_url": "https://api.example.com/sensor/data"
+  "source_url": "https://your-endpoint.example.com/readings"
 }
 ```
 
@@ -773,7 +777,9 @@ another resource, you need to do three things:
 
 The following example shows all three. It implements a sensor that depends on
 another sensor -- it reads Celsius temperature readings from the source sensor
-and converts them to Fahrenheit. Watch for the numbered comments in the code:
+and converts them to Fahrenheit. Watch for the numbered comments in the code.
+
+In Go, the example uses `sensor.FromProvider(deps, name)` to resolve the dependency. It returns a typed `sensor.Sensor` handle, so your code does not need a type assertion. Every component and service package in the SDK exposes its own `FromProvider` helper. For a motor dependency, use `motor.FromProvider(deps, name)`. For a camera, use `camera.FromProvider(deps, name)`. And so on.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -925,6 +931,8 @@ func (s *mySensorModuleTempConverter) Close(ctx context.Context) error {
 {{% /tab %}}
 {{< /tabs >}}
 
+`TempConverter` is a second model in the same module. To register it alongside your first model, see [Step 7](#7-add-multiple-models-to-one-module-optional).
+
 ### 6. Use the module data directory
 
 Every module gets a persistent data directory at the path specified by the
@@ -997,17 +1005,19 @@ Add more `resource.APIModel` entries to `ModularMain`:
 package main
 
 import (
-    mymodule "my-org/my-module"
-    "go.viam.com/rdk/components/camera"
-    "go.viam.com/rdk/components/sensor"
+    "mysensormodule"
+
     "go.viam.com/rdk/module"
     "go.viam.com/rdk/resource"
+    camera "go.viam.com/rdk/components/camera"
+    sensor "go.viam.com/rdk/components/sensor"
 )
 
 func main() {
+    // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
     module.ModularMain(
-        resource.APIModel{sensor.API, mymodule.SensorModel},
-        resource.APIModel{camera.API, mymodule.CameraModel},
+        resource.APIModel{sensor.API, mysensormodule.MySensor},
+        resource.APIModel{camera.API, mysensormodule.MyCamera},
     )
 }
 ```
