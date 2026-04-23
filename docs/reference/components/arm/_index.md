@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a arm component on your machine, see [Arm](/hardware/common-components/add-an-arm/).
 - For the methods you call on a arm in code, see the [Arm API reference](/reference/apis/components/arm/).
-- For arm models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=arm). Each registry module's configuration is documented in its own README on its registry page.
+- For arm models outside the built-in set, search for `arm` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

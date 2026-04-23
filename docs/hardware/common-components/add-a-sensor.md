@@ -19,7 +19,7 @@ The sensor component provides a single method: `GetReadings`, which returns a
 map of key-value pairs. This simple interface works for any sensor that
 produces named measurements.
 
-Most physical sensors in Viam come from modules in the [Viam registry](https://app.viam.com/registry?type=component&subtype=sensor) rather than
+Most physical sensors in Viam come from modules in the [Viam registry](https://app.viam.com/registry) (search for `sensor`) rather than
 built-in models. This is because the sensor ecosystem is enormous. Thousands
 of different devices with different communication protocols exist, and modules cover
 specific hardware while keeping the same `GetReadings` API.
@@ -43,7 +43,7 @@ Viam-maintained sensor modules:
 | [`viam:viam-telegraf-sensor`](https://app.viam.com/module/viam/viam-telegraf-sensor) | Machine metrics through Telegraf                                |
 | [`viam:lorawan`](https://app.viam.com/module/viam/lorawan)                           | LoRaWAN gateway and node sensors (Milesight, Dragino, and more) |
 
-For sensors not covered above, browse [all sensor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=sensor).
+For sensors not covered above, search for `sensor` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 

@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a base component on your machine, see [Base](/hardware/common-components/add-a-base/).
 - For the methods you call on a base in code, see the [Base API reference](/reference/apis/components/base/).
-- For base models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=base). Each registry module's configuration is documented in its own README on its registry page.
+- For base models outside the built-in set, search for `base` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 
