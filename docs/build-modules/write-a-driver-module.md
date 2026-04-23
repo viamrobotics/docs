@@ -63,15 +63,17 @@ viam module generate
 
 The generator creates a new directory named after your module (for example, `my-sensor-module`) in your current working directory. `cd` into that directory for the rest of the steps.
 
-| Prompt           | What to enter               | Why                              |
-| ---------------- | --------------------------- | -------------------------------- |
-| Module name      | `my-sensor-module`          | A short, descriptive name        |
-| Language         | `python` or `go`            | Your implementation language     |
-| Visibility       | `private`                   | Keep it private while developing |
-| Namespace        | Your organization namespace | Scopes the module to your org    |
-| Resource subtype | `sensor`                    | The resource API to implement    |
-| Model name       | `my-sensor`                 | The model name for your sensor   |
-| Register         | `yes`                       | Registers the module with Viam   |
+When run without flags, the generator prompts for each value below. If you pass these as `--name`, `--language`, `--visibility`, `--public-namespace`, `--resource-subtype`, `--model-name`, and `--register` flags instead, use the flag forms noted in the table (where different from the interactive labels).
+
+| Prompt                                       | What to enter               | Why                                                                                                                                                                                                      |
+| -------------------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set a module name:                           | `my-sensor-module`          | A short, descriptive name                                                                                                                                                                                |
+| Specify the language for the module:         | `python` or `go`            | Your implementation language                                                                                                                                                                             |
+| Visibility:                                  | `private`                   | `private`: visible only within your org. `public`: visible to everyone. `public_unlisted`: usable by anyone who knows the module ID, but hidden from the registry page. You can change visibility later. |
+| Namespace/Organization ID                    | Your organization namespace | Scopes the module to your org                                                                                                                                                                            |
+| Select a resource to be added to the module: | `Sensor Component`          | The resource API to implement                                                                                                                                                                            |
+| Set a model name of the resource:            | `my-sensor`                 | The model name for your sensor                                                                                                                                                                           |
+| Register module                              | `yes`                       | Registers the module with Viam                                                                                                                                                                           |
 
 The generator creates a complete project with the following files:
 
