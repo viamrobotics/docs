@@ -20,7 +20,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a servo component on your machine, see [Servo](/hardware/common-components/add-a-servo/).
 - For the methods you call on a servo in code, see the [Servo API reference](/reference/apis/components/servo/).
-- For servo models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo). Each registry module's configuration is documented in its own README on its registry page.
+- For servo models outside the built-in set, search for `servo` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

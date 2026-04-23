@@ -81,7 +81,7 @@ Common depth-capable cameras and the modules that wrap them:
 - Orbbec cameras, through the [Orbbec module](https://github.com/viam-modules/orbbec)
 - The `fake` camera model, for development without hardware (returns synthetic but structurally correct point clouds)
 
-For other depth cameras, search the [registry](https://app.viam.com/registry?type=component&subtype=camera) for a matching module.
+For other depth cameras, search for `camera` in the [Viam registry](https://app.viam.com/registry).
 
 Check that the depth stream is enabled in the camera's configuration, and confirm the camera reports `supports_pcd: true` through [`GetProperties`](/reference/apis/components/camera/#getproperties). Without depth support, none of the steps below will work.
 

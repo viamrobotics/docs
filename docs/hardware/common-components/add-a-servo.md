@@ -18,7 +18,7 @@ A servo moves to a specific angle (typically 0-180 degrees) and holds that posit
 
 The built-in `gpio` servo model uses a single PWM-capable pin on a [board component](/hardware/common-components/add-a-board/). Other servo models in the registry support serial, I2C, or dedicated servo-driver boards.
 
-Browse all available servo models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
+Search for `servo` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 ### Built-in models
 
@@ -37,7 +37,7 @@ Viam-maintained servo modules:
 | -------------------------------------------------------------------- | ----------------------------------------------------------- |
 | [`viam:raspberry-pi`](https://app.viam.com/module/viam/raspberry-pi) | `rpi-servo` model for hobby servos on Raspberry Pi variants |
 
-For servos not covered above, browse [all servo modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=servo).
+For servos not covered above, search for `servo` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 

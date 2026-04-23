@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a input controller component on your machine, see [Input controller](/hardware/common-components/add-an-input-controller/).
 - For the methods you call on a input controller in code, see the [Input controller API reference](/reference/apis/components/input-controller/).
-- For input controller models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=input_controller). Each registry module's configuration is documented in its own README on its registry page.
+- For input controller models outside the built-in set, search for `input controller` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 
