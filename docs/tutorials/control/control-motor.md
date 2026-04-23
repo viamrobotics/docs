@@ -608,4 +608,4 @@ int main() {
 
 You now know how to build a machine that controls two {{< glossary_tooltip term_id="component" text="components" >}}.
 
-For a more elaborate tutorial using more componenst, see the [Desk Safari Tutorial](/try/).
+For a more elaborate tutorial using more componenst, see the [Try Viam tutorial](/try/).
