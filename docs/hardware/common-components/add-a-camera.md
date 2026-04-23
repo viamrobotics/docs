@@ -43,7 +43,7 @@ Viam-maintained camera modules:
 | [`viam:csi-cam-pi`](https://app.viam.com/module/viam/csi-cam-pi) | Raspberry Pi CSI cameras                                                                |
 | [`viam:rplidar`](https://app.viam.com/module/viam/rplidar)       | RPLidar 2D lidar (exposed as a point-cloud camera)                                      |
 
-For cameras not covered above, browse [all camera modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=camera).
+For cameras not covered above, search for `camera` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 
