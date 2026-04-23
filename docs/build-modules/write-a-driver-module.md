@@ -37,18 +37,11 @@ aliases:
   - /operate/get-started/other-hardware/micro-module/
 ---
 
-You want to use hardware that Viam doesn't support out of the box. A driver
-module integrates it with the platform by implementing a standard resource API
-(sensor, camera, motor, or any other type). Once your hardware speaks a Viam
-API, data capture, Test sections, the SDKs, and other platform features work
-with it automatically.
+You want to use hardware that Viam doesn't support out of the box, whether it's a sensor, camera, motor, or any other component. A driver module bridges that gap: it implements a standard Viam resource API so that data capture, the Test section, the SDKs, and other platform features work with your hardware automatically.
 
-A driver module runs as a separate process alongside `viam-server`. It has its
-own dependencies, can crash without affecting `viam-server`, and can be
-packaged and distributed through the Viam registry.
+Driver modules run as separate processes alongside `viam-server`, so they carry their own dependencies and can crash without bringing `viam-server` down. You package and distribute them through the Viam registry.
 
-For background on choosing a resource API, module lifecycle, and dependencies,
-see the [overview](/build-modules/overview/).
+This page walks through seven steps for writing a driver module, using a temperature-and-humidity sensor as the worked example. For background on choosing a resource API, module lifecycle, and dependencies, see the [overview](/build-modules/overview/).
 
 ## Steps
 
@@ -214,10 +207,7 @@ components.
 
 #### Populate your resource from config
 
-When the user changes your module's configuration, `viam-server` stops the
-existing resource instance and creates a fresh one with the new config. Your
-constructor runs on both initial creation and every config change, so read
-config fields and initialize your state there.
+Your constructor runs on both initial creation and every config change, so read config fields and initialize state there. When a user changes the configuration, `viam-server` stops the existing resource instance and creates a fresh one with the new config.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -695,13 +685,11 @@ add more `resource.APIModel` entries to the `ModularMain` call.
 
 ### 3. Test locally
 
-Use the CLI to build and deploy your module to a machine, then verify it works.
+Use the CLI to build and deploy your module to a machine, then verify it works. Two commands cover the common development loop: `viam module reload` (cloud build) for cross-architecture work, and `viam module reload-local` (local build) for same-architecture iteration. Use `reload` when developing on a different architecture than your target, for example on macOS deploying to a Raspberry Pi. Use `reload-local` when architectures match for faster iteration.
 
 **Deploy with hot reloading:**
 
-Replace `<machine-part-id>` with your machine's part ID. At the top of your machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. The `--model-name` flag adds an instance of your model to the machine config so you don't have to create it by hand, and `--name` names that instance.
-
-Run the reload command from your module's root directory (where `meta.json` lives). If you need to invoke it from elsewhere, pass `--module <path/to/meta.json>`.
+First, find your machine's part ID. At the top of the machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. In the commands below, `--model-name` adds an instance of your model to the machine config so you don't have to create it by hand, and `--name` names that instance. Run these commands from your module's root directory (where `meta.json` lives). If you need to invoke them from elsewhere, pass `--module <path/to/meta.json>`.
 
 ```bash
 # Build in the cloud, deploy, and add a component named `my-sensor-1`
@@ -709,15 +697,11 @@ viam module reload --part-id <machine-part-id> \
   --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
 ```
 
-If your development machine and target machine share the same architecture (for example, both are `linux/arm64`), you can build locally instead:
-
 ```bash
-# Build locally, transfer, and add the component
+# Build locally (same-architecture only), transfer, and add the component
 viam module reload-local --part-id <machine-part-id> \
   --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
 ```
-
-Use `reload` (cloud build) when developing on a different architecture than your target, for example when developing on macOS and deploying to a Raspberry Pi. Use `reload-local` when architectures match for faster iteration.
 
 After the first reload succeeds, open the machine's **CONFIGURE** tab and set your new sensor's attributes. Replace `source_url` with a real endpoint that returns JSON matching the shape your `Readings` implementation expects (the example reads `temp` and `humidity` keys from the response body):
 
@@ -797,7 +781,7 @@ In Go, the example uses `sensor.FromProvider(deps, name)` to resolve the depende
 
 The Python SDK has no equivalent helper. Iterate the `dependencies` map and match by `ResourceName.name`, as the example below shows.
 
-Place `TempConverter` alongside `MySensor`: in Python, as a new file under `src/models/` (for example, `src/models/temp_converter.py`); in Go, in the same package as `MySensor` -- either extend `module.go` or add a new `.go` file in the same directory. Registration is covered in [Step 7](#7-add-multiple-models-to-one-module-optional).
+Place `TempConverter` alongside `MySensor`. In Python, add it as a new file under `src/models/` (for example, `src/models/temp_converter.py`). In Go, put it in the same package as `MySensor`, either by extending `module.go` or adding another `.go` file in the same directory. For registration, see [Step 7](#7-add-multiple-models-to-one-module-optional).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -1001,15 +985,8 @@ per module.
 
 To add a second model:
 
-1. Run `viam module generate` again in a separate directory to generate
-   the new model's scaffolding. Do not register it -- you only need the
-   generated resource file.
-2. Copy the generated resource file into your existing module's source
-   directory. In Go, a literal paste will not compile. The Step 5
-   `TempConverter` example shows the post-rename shape: compound struct
-   named `<yourModuleName><Model>`, `Config` renamed to a unique name
-   (for example, `ConverterConfig`), and `resource.NewModel`'s middle
-   argument set to your existing module name.
+1. Run `viam module generate` again in a separate directory. You only need the generated resource file, so skip the registration prompt.
+2. Copy that file into your existing module's source directory. In Go, rename three things before the file compiles: the compound struct to `<yourModuleName><Model>`, the config struct to something unique like `ConverterConfig`, and `resource.NewModel`'s middle argument to your existing module name. The Step 5 `TempConverter` example shows the result.
 3. Update the entry point to register both models.
 
 {{< tabs >}}
