@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a power sensor component on your machine, see [Power sensor](/hardware/common-components/add-a-power-sensor/).
 - For the methods you call on a power sensor in code, see the [Power sensor API reference](/reference/apis/components/power-sensor/).
-- For power sensor models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=power_sensor). Each registry module's configuration is documented in its own README on its registry page.
+- For power sensor models outside the built-in set, search for `power sensor` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

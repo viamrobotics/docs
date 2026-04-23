@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a movement sensor component on your machine, see [Movement sensor](/hardware/common-components/add-a-movement-sensor/).
 - For the methods you call on a movement sensor in code, see the [Movement sensor API reference](/reference/apis/components/movement-sensor/).
-- For movement sensor models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor). Each registry module's configuration is documented in its own README on its registry page.
+- For movement sensor models outside the built-in set, search for `movement sensor` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

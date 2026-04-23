@@ -27,7 +27,7 @@ module author defines what commands are supported and what they do.
 
 Use generic when no other component type fits. If your hardware produces images, use [camera](/hardware/common-components/add-a-camera/). If it produces readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard types give you typed SDK methods like `GetImage` or `GetReadings`, richer test-panel controls tailored to the component, and motion or vision services that know how to work with them. Generic exposes only `DoCommand`, so callers have to know the module-specific command shape.
 
-Browse available generic models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic).
+Search for `generic` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 The `fake` built-in model echoes commands back for testing.
 
@@ -37,7 +37,7 @@ The `fake` built-in model echoes commands back for testing.
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic). Each module's configuration is documented on its registry page.
+For hardware the built-in models don't cover, search for `generic` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 

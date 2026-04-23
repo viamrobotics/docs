@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a motor component on your machine, see [Motor](/hardware/common-components/add-a-motor/).
 - For the methods you call on a motor in code, see the [Motor API reference](/reference/apis/components/motor/).
-- For motor models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=motor). Each registry module's configuration is documented in its own README on its registry page.
+- For motor models outside the built-in set, search for `motor` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 
