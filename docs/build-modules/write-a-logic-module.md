@@ -78,20 +78,27 @@ The generator creates a complete project. The key files you will edit:
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-| File                       | Purpose                                                     |
-| -------------------------- | ----------------------------------------------------------- |
-| `src/models/temp_alert.py` | Service class skeleton -- you will edit this                |
-| `src/main.py`              | Entry point -- starts the module server (no changes needed) |
-| `meta.json`                | Module metadata for the registry                            |
+| File                           | Purpose                                      |
+| ------------------------------ | -------------------------------------------- |
+| `src/main.py`                  | Entry point -- starts the module server      |
+| `src/models/temp_alert.py`     | Service class skeleton -- you will edit this |
+| `requirements.txt`             | Python dependencies                          |
+| `meta.json`                    | Module metadata for the registry             |
+| `setup.sh`                     | Installs dependencies into a virtualenv      |
+| `build.sh`                     | Packages the module for upload               |
+| `.github/workflows/deploy.yml` | CI workflow for cloud builds                 |
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-| File                 | Purpose                                                     |
-| -------------------- | ----------------------------------------------------------- |
-| `alert_monitor.go`   | Service implementation skeleton -- you will edit this       |
-| `cmd/module/main.go` | Entry point -- starts the module server (no changes needed) |
-| `meta.json`          | Module metadata for the registry                            |
+| File                           | Purpose                                               |
+| ------------------------------ | ----------------------------------------------------- |
+| `cmd/module/main.go`           | Entry point -- starts the module server               |
+| `module.go`                    | Service implementation skeleton -- you will edit this |
+| `go.mod`                       | Go module definition                                  |
+| `Makefile`                     | Build targets                                         |
+| `meta.json`                    | Module metadata for the registry                      |
+| `.github/workflows/deploy.yml` | CI workflow for cloud builds                          |
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -182,7 +189,7 @@ Update `validate_config` and `new`:
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        instance = cls(config.name)
+        instance = super().new(config, dependencies)
         instance.alerts = []
 
         fields = config.attributes.fields
@@ -209,10 +216,14 @@ Update `validate_config` and `new`:
         return instance
 ```
 
+The generator also emits `do_command` and `get_status` method stubs that raise `NotImplementedError`. You'll replace `do_command` in Step 5; leave `get_status` alone unless your service has a meaningful status to report.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
 The generator emits a compound struct type (`alertMonitorTempAlert`) with `resource.AlwaysRebuild` embedded and two constructor functions; a private `newAlertMonitorTempAlert` that unpacks the raw config and delegates to a public `NewTempAlert` that takes a typed `*Config`. Keep that layout. `resource.NativeConfig` converts the raw config into your typed struct. `sensor.FromProvider` looks up a sensor dependency by name from the dependencies map.
+
+The generator also emits `Name()`, `Close()`, `DoCommand()`, and `Status()` methods on the struct. Leave `Name()` and `Status()` as generated. You'll replace `DoCommand()` in Step 5 and `Close()` in Step 6.
 
 ```go
 type alertMonitorTempAlert struct {
@@ -504,7 +515,420 @@ loop; the fresh constructor starts a new one.
 {{% /tab %}}
 {{< /tabs >}}
 
-### 7. Test locally
+{{< expand "View the complete resource file" >}}
+
+For reference, here is the complete resource file after all the changes above. `my-org` in these samples stands in for the namespace you entered when running the generator.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+`src/models/temp_alert.py`:
+
+```python
+import asyncio
+from datetime import datetime
+from typing import ClassVar, Mapping, Optional, Sequence, Tuple
+
+from typing_extensions import Self
+from viam.proto.app.robot import ComponentConfig
+from viam.proto.common import ResourceName
+from viam.resource.base import ResourceBase
+from viam.resource.easy_resource import EasyResource
+from viam.resource.types import Model, ModelFamily
+from viam.services.generic import *
+from viam.utils import ValueTypes
+
+
+class TempAlert(Generic, EasyResource):
+    MODEL: ClassVar[Model] = Model(
+        ModelFamily("my-org", "alert-monitor"), "temp-alert"
+    )
+
+    sensor_names: list[str]
+    max_temp: float
+    poll_interval_secs: float
+    alerts: list[dict]
+    _monitor_task: Optional[asyncio.Task]
+    _stop_event: asyncio.Event
+
+    @classmethod
+    def validate_config(
+        cls, config: ComponentConfig
+    ) -> Tuple[Sequence[str], Sequence[str]]:
+        fields = config.attributes.fields
+        if "sensor_names" not in fields:
+            raise Exception("sensor_names is required")
+        if "max_temp" not in fields:
+            raise Exception("max_temp is required")
+        sensor_names = [
+            v.string_value
+            for v in fields["sensor_names"].list_value.values
+        ]
+        return sensor_names, []
+
+    @classmethod
+    def new(cls, config: ComponentConfig,
+            dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
+        instance = super().new(config, dependencies)
+        instance.alerts = []
+
+        fields = config.attributes.fields
+        instance.sensor_names = [
+            v.string_value
+            for v in fields["sensor_names"].list_value.values
+        ]
+        instance.max_temp = fields["max_temp"].number_value
+        instance.poll_interval_secs = (
+            fields["poll_interval_secs"].number_value
+            if "poll_interval_secs" in fields
+            else 10.0
+        )
+
+        instance.sensors = {}
+        for name, dep in dependencies.items():
+            if name.name in instance.sensor_names:
+                instance.sensors[name.name] = dep
+
+        instance._stop_event = asyncio.Event()
+        instance._monitor_task = asyncio.create_task(instance._monitor_loop())
+        return instance
+
+    async def _monitor_loop(self):
+        while not self._stop_event.is_set():
+            for name, s in self.sensors.items():
+                try:
+                    readings = await s.get_readings()
+                    temp = readings.get("temperature")
+                    if temp is not None and temp > self.max_temp:
+                        alert = {
+                            "sensor": name,
+                            "value": temp,
+                            "threshold": self.max_temp,
+                            "time": datetime.now().isoformat(),
+                        }
+                        self.alerts.append(alert)
+                        self.logger.warning(
+                            "Alert: %s reported %.1f (threshold: %.1f)",
+                            name, temp, self.max_temp,
+                        )
+                except Exception as e:
+                    self.logger.error("Failed to read %s: %s", name, e)
+
+            try:
+                await asyncio.wait_for(
+                    self._stop_event.wait(),
+                    timeout=self.poll_interval_secs,
+                )
+                break
+            except asyncio.TimeoutError:
+                pass
+
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs,
+    ) -> Mapping[str, ValueTypes]:
+        cmd = command.get("command", "")
+
+        if cmd == "get_alerts":
+            return {"alerts": list(self.alerts)}
+
+        if cmd == "get_alert_count":
+            return {"count": len(self.alerts)}
+
+        if cmd == "acknowledge":
+            self.alerts.clear()
+            return {"status": "ok"}
+
+        if cmd == "set_threshold":
+            self.max_temp = command["max_temp"]
+            return {"status": "ok", "max_temp": self.max_temp}
+
+        raise Exception(f"Unknown command: {cmd}")
+
+    async def get_status(
+        self, *, timeout: Optional[float] = None, **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        self.logger.error("`get_status` is not implemented")
+        raise NotImplementedError()
+
+    async def close(self):
+        self._stop_event.set()
+        if self._monitor_task is not None:
+            await self._monitor_task
+            self._monitor_task = None
+        self.logger.info("TempAlert monitor stopped")
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+`module.go`:
+
+```go
+package alertmonitor
+
+import (
+    "context"
+    "errors"
+    "fmt"
+    "sync"
+    "time"
+
+    sensor "go.viam.com/rdk/components/sensor"
+    "go.viam.com/rdk/logging"
+    "go.viam.com/rdk/resource"
+    generic "go.viam.com/rdk/services/generic"
+)
+
+var (
+    TempAlert        = resource.NewModel("my-org", "alert-monitor", "temp-alert")
+    errUnimplemented = errors.New("unimplemented")
+)
+
+func init() {
+    resource.RegisterService(generic.API, TempAlert,
+        resource.Registration[resource.Resource, *Config]{
+            Constructor: newAlertMonitorTempAlert,
+        },
+    )
+}
+
+type Config struct {
+    SensorNames      []string `json:"sensor_names"`
+    MaxTemp          float64  `json:"max_temp"`
+    PollIntervalSecs float64  `json:"poll_interval_secs"`
+}
+
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+    if len(cfg.SensorNames) == 0 {
+        return nil, nil, fmt.Errorf("sensor_names is required")
+    }
+    if cfg.MaxTemp == 0 {
+        return nil, nil, fmt.Errorf("max_temp is required")
+    }
+    return cfg.SensorNames, nil, nil
+}
+
+type Alert struct {
+    Sensor    string  `json:"sensor"`
+    Value     float64 `json:"value"`
+    Threshold float64 `json:"threshold"`
+    Time      string  `json:"time"`
+}
+
+type alertMonitorTempAlert struct {
+    resource.AlwaysRebuild
+
+    name resource.Name
+
+    logger  logging.Logger
+    cfg     *Config
+    sensors map[string]sensor.Sensor
+
+    mu     sync.Mutex
+    alerts []Alert
+
+    cancelCtx  context.Context
+    cancelFunc func()
+}
+
+func newAlertMonitorTempAlert(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (resource.Resource, error) {
+    conf, err := resource.NativeConfig[*Config](rawConf)
+    if err != nil {
+        return nil, err
+    }
+    return NewTempAlert(ctx, deps, rawConf.ResourceName(), conf, logger)
+}
+
+func NewTempAlert(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (resource.Resource, error) {
+    sensors := make(map[string]sensor.Sensor)
+    for _, sensorName := range conf.SensorNames {
+        s, err := sensor.FromProvider(deps, sensorName)
+        if err != nil {
+            return nil, fmt.Errorf("sensor %q not found: %w", sensorName, err)
+        }
+        sensors[sensorName] = s
+    }
+
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
+    svc := &alertMonitorTempAlert{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        sensors:    sensors,
+        alerts:     []Alert{},
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+    }
+
+    go svc.monitorLoop(cancelCtx)
+
+    return svc, nil
+}
+
+func (s *alertMonitorTempAlert) Name() resource.Name {
+    return s.name
+}
+
+func (s *alertMonitorTempAlert) monitorLoop(ctx context.Context) {
+    interval := time.Duration(s.cfg.PollIntervalSecs) * time.Second
+    if interval == 0 {
+        interval = 10 * time.Second
+    }
+
+    ticker := time.NewTicker(interval)
+    defer ticker.Stop()
+
+    for {
+        select {
+        case <-ctx.Done():
+            return
+        case <-ticker.C:
+            s.checkSensors(ctx)
+        }
+    }
+}
+
+func (s *alertMonitorTempAlert) checkSensors(ctx context.Context) {
+    s.mu.Lock()
+    defer s.mu.Unlock()
+
+    for name, sens := range s.sensors {
+        readings, err := sens.Readings(ctx, nil)
+        if err != nil {
+            s.logger.CErrorw(ctx, "failed to read sensor", "sensor", name, "error", err)
+            continue
+        }
+        temp, ok := readings["temperature"].(float64)
+        if !ok {
+            continue
+        }
+        if temp > s.cfg.MaxTemp {
+            alert := Alert{
+                Sensor:    name,
+                Value:     temp,
+                Threshold: s.cfg.MaxTemp,
+                Time:      time.Now().Format(time.RFC3339),
+            }
+            s.alerts = append(s.alerts, alert)
+            s.logger.CWarnw(ctx, "alert triggered",
+                "sensor", name, "value", temp, "threshold", s.cfg.MaxTemp)
+        }
+    }
+}
+
+func (s *alertMonitorTempAlert) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    command, _ := cmd["command"].(string)
+
+    switch command {
+    case "get_alerts":
+        s.mu.Lock()
+        defer s.mu.Unlock()
+        alertList := make([]interface{}, len(s.alerts))
+        for i, a := range s.alerts {
+            alertList[i] = map[string]interface{}{
+                "sensor":    a.Sensor,
+                "value":     a.Value,
+                "threshold": a.Threshold,
+                "time":      a.Time,
+            }
+        }
+        return map[string]interface{}{"alerts": alertList}, nil
+
+    case "get_alert_count":
+        s.mu.Lock()
+        defer s.mu.Unlock()
+        return map[string]interface{}{"count": len(s.alerts)}, nil
+
+    case "acknowledge":
+        s.mu.Lock()
+        defer s.mu.Unlock()
+        s.alerts = s.alerts[:0]
+        return map[string]interface{}{"status": "ok"}, nil
+
+    case "set_threshold":
+        newMax, ok := cmd["max_temp"].(float64)
+        if !ok {
+            return nil, fmt.Errorf("max_temp must be a number")
+        }
+        s.mu.Lock()
+        s.cfg.MaxTemp = newMax
+        s.mu.Unlock()
+        return map[string]interface{}{"status": "ok", "max_temp": newMax}, nil
+
+    default:
+        return nil, fmt.Errorf("unknown command: %s", command)
+    }
+}
+
+func (s *alertMonitorTempAlert) Status(ctx context.Context) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *alertMonitorTempAlert) Close(ctx context.Context) error {
+    s.cancelFunc()
+    s.logger.CInfof(ctx, "TempAlert monitor stopped")
+    return nil
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+{{< /expand >}}
+
+### 7. Review the entry point
+
+The generator also creates the entry point file that `viam-server` launches. You typically do not need to modify it.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+`src/main.py`:
+
+```python
+import asyncio
+from viam.module.module import Module
+from models.temp_alert import TempAlert as TempAlertModel
+
+
+if __name__ == '__main__':
+    asyncio.run(Module.run_from_registry())
+```
+
+`run_from_registry()` automatically discovers all imported resource classes and registers them with `viam-server`. If you add more models to your module, import them here.
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+`cmd/module/main.go`:
+
+```go
+package main
+
+import (
+    "alertmonitor"
+
+    "go.viam.com/rdk/module"
+    "go.viam.com/rdk/resource"
+    generic "go.viam.com/rdk/services/generic"
+)
+
+func main() {
+    // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+    module.ModularMain(resource.APIModel{generic.API, alertmonitor.TempAlert})
+}
+```
+
+`ModularMain` handles socket parsing, signal handling, and graceful shutdown. The import of the resource package triggers its `init()` function, which calls `resource.RegisterService` to register the model. If you add more models, add more `resource.APIModel` entries to the `ModularMain` call.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### 8. Test locally
 
 **Deploy with hot reloading:**
 
@@ -597,7 +1021,7 @@ Each time you make changes, run `viam module reload` (or `reload-local`) again. 
 4. You should see alerts in the response.
 5. Send `{"command": "acknowledge"}` to clear them.
 
-### 8. Schedule logic with jobs (optional)
+### 9. Schedule logic with jobs (optional)
 
 Instead of running a continuous background loop, you can use
 {{< glossary_tooltip term_id="job" text="jobs" >}} to have `viam-server` call
