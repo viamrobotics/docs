@@ -27,7 +27,7 @@ signal transitions ("ticks") that correspond to motor shaft rotation.
 
 Once you configure an encoder and reference it from a motor component, the
 motor gains accurate position control. `GoFor` and `GoTo` use actual encoder
-feedback instead of time-based estimates. Browse all available encoder models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=encoder).
+feedback instead of time-based estimates. Search for `encoder` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 ### Built-in models
 
@@ -48,7 +48,7 @@ Viam-maintained encoder modules:
 | -------------------------------------------------- | ------------------------------------------- |
 | [`viam:ams`](https://app.viam.com/module/viam/ams) | AMS AS5048 magnetic rotary absolute encoder |
 
-For encoders not covered above, browse [all encoder modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=encoder).
+For encoders not covered above, search for `encoder` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 

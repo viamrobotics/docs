@@ -19,7 +19,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a camera component on your machine, see [Add a camera](/hardware/common-components/add-a-camera/).
 - For the methods you call on a camera in code, see the [Camera API reference](/reference/apis/components/camera/).
-- For camera modules outside the built-in set (for example, `realsense` or `viamrtsp`), browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=camera). Each registry module's configuration is documented in its own README on its registry page.
+- For camera modules outside the built-in set (for example, `realsense` or `viamrtsp`), search for `camera` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

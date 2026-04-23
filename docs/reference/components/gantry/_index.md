@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a gantry component on your machine, see [Gantry](/hardware/common-components/add-a-gantry/).
 - For the methods you call on a gantry in code, see the [Gantry API reference](/reference/apis/components/gantry/).
-- For gantry models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=gantry). Each registry module's configuration is documented in its own README on its registry page.
+- For gantry models outside the built-in set, search for `gantry` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

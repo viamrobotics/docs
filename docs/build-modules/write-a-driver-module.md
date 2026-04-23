@@ -37,18 +37,11 @@ aliases:
   - /operate/get-started/other-hardware/micro-module/
 ---
 
-You want to use hardware that Viam doesn't support out of the box. A driver
-module integrates it with the platform by implementing a standard resource API
-(sensor, camera, motor, or any other type). Once your hardware speaks a Viam
-API, data capture, TEST cards, the SDKs, and other platform features work
-with it automatically.
+You want to use hardware that Viam doesn't support out of the box, whether it's a sensor, camera, motor, or any other component. A driver module bridges that gap: it implements a standard Viam resource API so that data capture, the Test section, the SDKs, and other platform features work with your hardware automatically.
 
-A driver module runs as a separate process alongside `viam-server`. It has its
-own dependencies, can crash without affecting `viam-server`, and can be
-packaged and distributed through the Viam registry.
+Driver modules run as separate processes alongside `viam-server`, so they carry their own dependencies and can crash without bringing `viam-server` down. You package and distribute them through the Viam registry.
 
-For background on choosing a resource API, module lifecycle, and dependencies,
-see the [overview](/build-modules/overview/).
+This page walks through seven steps for writing a driver module, using a temperature-and-humidity sensor as the worked example. For background on choosing a resource API, module lifecycle, and dependencies, see the [overview](/build-modules/overview/).
 
 ## Steps
 
@@ -58,21 +51,29 @@ your use case.
 
 ### 1. Generate the module
 
+Before you run the generator, [install the Viam CLI](/cli/overview/#install) and log in with `viam login`.
+
+The generator prompts for your organization's public namespace. If you have not set one yet, click the organization dropdown at the upper right of the Viam app, select **Settings**, then **Set a public namespace**. You can also enter your Org ID at the prompt instead.
+
 Run the Viam CLI generator:
 
 ```bash
 viam module generate
 ```
 
-| Prompt           | What to enter               | Why                              |
-| ---------------- | --------------------------- | -------------------------------- |
-| Module name      | `my-sensor-module`          | A short, descriptive name        |
-| Language         | `python` or `go`            | Your implementation language     |
-| Visibility       | `private`                   | Keep it private while developing |
-| Namespace        | Your organization namespace | Scopes the module to your org    |
-| Resource subtype | `sensor`                    | The resource API to implement    |
-| Model name       | `my-sensor`                 | The model name for your sensor   |
-| Register         | `yes`                       | Registers the module with Viam   |
+The generator creates a new directory named after your module (for example, `my-sensor-module`) in your current working directory. `cd` into that directory for the rest of the steps.
+
+When run without flags, the generator prompts for each value below. If you pass these as `--name`, `--language`, `--visibility`, `--public-namespace`, `--resource-subtype`, `--model-name`, and `--register` flags instead, use the flag forms noted in the table (where different from the interactive labels).
+
+| Prompt                                       | What to enter               | Why                                                                                                                                                                                                      |
+| -------------------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set a module name:                           | `my-sensor-module`          | A short, descriptive name                                                                                                                                                                                |
+| Specify the language for the module:         | `python` or `go`            | Your implementation language                                                                                                                                                                             |
+| Visibility:                                  | `private`                   | `private`: visible only within your org. `public`: visible to everyone. `public_unlisted`: usable by anyone who knows the module ID, but hidden from the registry page. You can change visibility later. |
+| Namespace/Organization ID                    | Your organization namespace | Scopes the module to your org                                                                                                                                                                            |
+| Select a resource to be added to the module: | `Sensor Component`          | The resource API to implement                                                                                                                                                                            |
+| Set a model name of the resource:            | `my-sensor`                 | The model name for your sensor                                                                                                                                                                           |
+| Register module                              | `yes`                       | Registers the module with Viam                                                                                                                                                                           |
 
 The generator creates a complete project with the following files:
 
@@ -95,7 +96,7 @@ The generator creates a complete project with the following files:
 | File                           | Purpose                                                |
 | ------------------------------ | ------------------------------------------------------ |
 | `cmd/module/main.go`           | Entry point -- starts the module server                |
-| `my_sensor_module.go`          | Resource implementation skeleton -- you will edit this |
+| `module.go`                    | Resource implementation skeleton -- you will edit this |
 | `go.mod`                       | Go module definition                                   |
 | `Makefile`                     | Build targets                                          |
 | `meta.json`                    | Module metadata for the registry                       |
@@ -106,12 +107,12 @@ The generator creates a complete project with the following files:
 
 ### 2. Implement the resource API
 
-Open the generated resource file. The generator creates a class (Python) or
-struct (Go) with stub methods. You need to make three changes:
+Open the generated resource file: `src/models/my_sensor.py` (Python) or `module.go` (Go). The generator creates a class (Python) or struct (Go) with stub methods. You need to make four changes to the resource file, then review the entry point the generator created:
 
 1. Define your config attributes.
 2. Add validation logic.
-3. Implement the API methods for your resource type.
+3. Populate your resource from config in the constructor.
+4. Implement the API methods for your resource type.
 
 The following example builds a sensor that reads temperature and humidity from
 a custom HTTP API endpoint. Replace the HTTP call with whatever data source
@@ -131,6 +132,8 @@ class variables. They will be populated from the config in `new`:
 
 ```python
 class MySensor(Sensor, EasyResource):
+    # To enable debug-level logging, either run viam-server with the --debug option,
+    # or configure your resource/machine to display debug logs.
     MODEL: ClassVar[Model] = Model(
         ModelFamily("my-org", "my-sensor-module"), "my-sensor"
     )
@@ -143,7 +146,7 @@ class MySensor(Sensor, EasyResource):
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-In the generated `.go` file, find the empty `Config` struct and add fields.
+In `module.go`, find the empty `Config` struct and add fields.
 Each field needs a `json` tag that matches the attribute name users will set in
 their config JSON:
 
@@ -198,16 +201,15 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 {{< /tabs >}}
 
 The validation method returns two lists: required dependencies and optional
-dependencies. For a standalone sensor with no dependencies, return empty lists.
+dependencies. In Go, the method also returns an `error` as a third value; in
+Python, raise an exception instead. For a standalone sensor with no
+dependencies, return empty lists and no error.
 See [Step 5](#5-handle-dependencies) for modules that depend on other
 components.
 
 #### Populate your resource from config
 
-When the user changes your module's configuration, `viam-server` stops the
-existing resource instance and creates a fresh one with the new config. Your
-constructor runs on both initial creation and every config change, so read
-config fields and initialize your state there.
+Your constructor runs on both initial creation and every config change, so read config fields and initialize state there. When a user changes the configuration, `viam-server` stops the existing resource instance and creates a fresh one with the new config.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -219,7 +221,7 @@ returning it:
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        sensor = cls(config.name)
+        sensor = super().new(config, dependencies)
         fields = config.attributes.fields
         sensor.source_url = fields["source_url"].string_value
         sensor.poll_interval = (
@@ -230,52 +232,63 @@ returning it:
         return sensor
 ```
 
+The generator also emits `do_command`, `get_status`, and `get_geometries`
+stubs that raise `NotImplementedError`. Leave them as-is unless your module
+needs custom handling.
+
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Find the generated constructor function. Update it to read your config fields
-and initialize your struct:
+The generator produces two constructor functions: a private
+`newMySensorModuleMySensor` that unpacks the raw config and delegates to a
+public `NewMySensor` that takes a typed `*Config`. The split lets tests call
+`NewMySensor` directly with a typed config. Leave
+`newMySensorModuleMySensor` alone and update `NewMySensor` to initialize any
+state your module needs:
 
 ```go
-func newMySensor(
-    ctx context.Context,
-    deps resource.Dependencies,
-    conf resource.Config,
-    logger logging.Logger,
-) (sensor.Sensor, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
-    if err != nil {
-        return nil, err
-    }
+func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
-    timeout := time.Duration(cfg.PollInterval) * time.Second
+    timeout := time.Duration(conf.PollInterval) * time.Second
     if timeout == 0 {
         timeout = 10 * time.Second
     }
 
-    return &MySensor{
-        Named:     conf.ResourceName().AsNamed(),
-        logger:    logger,
-        sourceURL: cfg.SourceURL,
-        client:    &http.Client{Timeout: timeout},
-    }, nil
+    s := &mySensorModuleMySensor{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+        client:     &http.Client{Timeout: timeout},
+    }
+    return s, nil
 }
 ```
 
-You will also need to add fields to the generated struct for any state your
-module needs at runtime:
+Add fields to the generated struct for any state your module needs at runtime:
 
 ```go
-type MySensor struct {
-    resource.Named
+type mySensorModuleMySensor struct {
     resource.AlwaysRebuild
-    logger    logging.Logger
-    sourceURL string
-    client    *http.Client
+
+    name resource.Name
+
+    logger logging.Logger
+    cfg    *Config
+
+    cancelCtx  context.Context
+    cancelFunc func()
+    client     *http.Client
 }
 ```
 
-Leave the generated `resource.AlwaysRebuild` embed in place.
+Leave the generated `resource.AlwaysRebuild` embed in place. The generated
+`Name()`, `Close()`, `DoCommand()`, and `Status()` methods also stay. `Close`
+calls `cancelFunc()` to stop any background work. `DoCommand` and `Status`
+are stubs returning `fmt.Errorf("not implemented")`. Leave them as-is unless
+your module needs custom handling.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -313,7 +326,7 @@ Add a `get_readings` method to your class. The return type is
             }
         except requests.RequestException as e:
             self.logger.error(f"Failed to read from {self.source_url}: {e}")
-            return {"error": str(e)}
+            raise
 ```
 
 {{% /tab %}}
@@ -327,15 +340,16 @@ type sensorResponse struct {
     Humidity float64 `json:"humidity"`
 }
 
-func (s *MySensor) Readings(
-    ctx context.Context,
-    extra map[string]interface{},
-) (map[string]interface{}, error) {
-    resp, err := s.client.Get(s.sourceURL)
+func (s *mySensorModuleMySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+    req, err := http.NewRequestWithContext(ctx, http.MethodGet, s.cfg.SourceURL, nil)
+    if err != nil {
+        return nil, fmt.Errorf("building request: %w", err)
+    }
+    resp, err := s.client.Do(req)
     if err != nil {
         s.logger.CErrorw(ctx, "failed to read from source",
-            "url", s.sourceURL, "error", err)
-        return nil, fmt.Errorf("failed to read from %s: %w", s.sourceURL, err)
+            "url", s.cfg.SourceURL, "error", err)
+        return nil, fmt.Errorf("failed to read from %s: %w", s.cfg.SourceURL, err)
     }
     defer resp.Body.Close()
 
@@ -357,6 +371,8 @@ func (s *MySensor) Readings(
 {{< expand "View the complete resource file" >}}
 
 For reference, here is the complete resource file after all the changes above.
+`my-org` in these samples stands in for the namespace you entered when running
+the generator.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -364,21 +380,23 @@ For reference, here is the complete resource file after all the changes above.
 `src/models/my_sensor.py`:
 
 ```python
-import requests
-from typing import Any, ClassVar, Mapping, Optional, Sequence, Self, Tuple
+from typing import (Any, ClassVar, Dict, Final, List, Mapping, Optional,
+                    Sequence, Tuple)
 
-from viam.components.sensor import Sensor
+import requests
+from typing_extensions import Self
+from viam.components.sensor import *
 from viam.proto.app.robot import ComponentConfig
-from viam.proto.common import ResourceName
+from viam.proto.common import Geometry, ResourceName
 from viam.resource.base import ResourceBase
 from viam.resource.easy_resource import EasyResource
 from viam.resource.types import Model, ModelFamily
-from viam.utils import SensorReading
+from viam.utils import SensorReading, ValueTypes
 
 
 class MySensor(Sensor, EasyResource):
-    """A custom sensor that reads from an HTTP endpoint."""
-
+    # To enable debug-level logging, either run viam-server with the --debug option,
+    # or configure your resource/machine to display debug logs.
     MODEL: ClassVar[Model] = Model(
         ModelFamily("my-org", "my-sensor-module"), "my-sensor"
     )
@@ -387,9 +405,20 @@ class MySensor(Sensor, EasyResource):
     poll_interval: float
 
     @classmethod
-    def new(cls, config: ComponentConfig,
-            dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        sensor = cls(config.name)
+    def new(
+        cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+    ) -> Self:
+        """This method creates a new instance of this Sensor component.
+        The default implementation sets the name from the `config` parameter.
+
+        Args:
+            config (ComponentConfig): The configuration for this resource
+            dependencies (Mapping[ResourceName, ResourceBase]): The dependencies (both required and optional)
+
+        Returns:
+            Self: The resource
+        """
+        sensor = super().new(config, dependencies)
         fields = config.attributes.fields
         sensor.source_url = fields["source_url"].string_value
         sensor.poll_interval = (
@@ -403,6 +432,17 @@ class MySensor(Sensor, EasyResource):
     def validate_config(
         cls, config: ComponentConfig
     ) -> Tuple[Sequence[str], Sequence[str]]:
+        """This method allows you to validate the configuration object received from the machine,
+        as well as to return any required dependencies or optional dependencies based on that `config`.
+
+        Args:
+            config (ComponentConfig): The configuration for this resource
+
+        Returns:
+            Tuple[Sequence[str], Sequence[str]]: A tuple where the
+                first element is a list of required dependencies and the
+                second element is a list of optional dependencies
+        """
         fields = config.attributes.fields
         if "source_url" not in fields:
             raise Exception("source_url is required")
@@ -415,7 +455,7 @@ class MySensor(Sensor, EasyResource):
         *,
         extra: Optional[Mapping[str, Any]] = None,
         timeout: Optional[float] = None,
-        **kwargs,
+        **kwargs
     ) -> Mapping[str, SensorReading]:
         try:
             response = requests.get(self.source_url, timeout=5)
@@ -427,16 +467,35 @@ class MySensor(Sensor, EasyResource):
             }
         except requests.RequestException as e:
             self.logger.error(f"Failed to read from {self.source_url}: {e}")
-            return {"error": str(e)}
+            raise
 
-    async def close(self):
-        self.logger.info("Shutting down MySensor")
+    async def do_command(
+        self,
+        command: Mapping[str, ValueTypes],
+        *,
+        timeout: Optional[float] = None,
+        **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        self.logger.error("`do_command` is not implemented")
+        raise NotImplementedError()
+
+    async def get_status(
+        self, *, timeout: Optional[float] = None, **kwargs
+    ) -> Mapping[str, ValueTypes]:
+        self.logger.error("`get_status` is not implemented")
+        raise NotImplementedError()
+
+    async def get_geometries(
+        self, *, extra: Optional[Dict[str, Any]] = None, timeout: Optional[float] = None
+    ) -> Sequence[Geometry]:
+        self.logger.error("`get_geometries` is not implemented")
+        raise NotImplementedError()
 ```
 
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-`my_sensor_module.go`:
+`module.go`:
 
 ```go
 package mysensormodule
@@ -444,16 +503,20 @@ package mysensormodule
 import (
     "context"
     "encoding/json"
+    "errors"
     "fmt"
     "net/http"
     "time"
 
-    "go.viam.com/rdk/components/sensor"
+    sensor "go.viam.com/rdk/components/sensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
 )
 
-var Model = resource.NewModel("my-org", "my-sensor-module", "my-sensor")
+var (
+    MySensor         = resource.NewModel("my-org", "my-sensor-module", "my-sensor")
+    errUnimplemented = errors.New("unimplemented")
+)
 
 type Config struct {
     SourceURL    string  `json:"source_url"`
@@ -468,43 +531,55 @@ func (cfg *Config) Validate(path string) ([]string, []string, error) {
 }
 
 func init() {
-    resource.RegisterComponent(sensor.API, Model,
+    resource.RegisterComponent(sensor.API, MySensor,
         resource.Registration[sensor.Sensor, *Config]{
-            Constructor: newMySensor,
+            Constructor: newMySensorModuleMySensor,
         },
     )
 }
 
-type MySensor struct {
-    resource.Named
+type mySensorModuleMySensor struct {
     resource.AlwaysRebuild
-    logger    logging.Logger
-    sourceURL string
-    client    *http.Client
+
+    name resource.Name
+
+    logger logging.Logger
+    cfg    *Config
+
+    cancelCtx  context.Context
+    cancelFunc func()
+    client     *http.Client
 }
 
-func newMySensor(
-    ctx context.Context,
-    deps resource.Dependencies,
-    conf resource.Config,
-    logger logging.Logger,
-) (sensor.Sensor, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
+func newMySensorModuleMySensor(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (sensor.Sensor, error) {
+    conf, err := resource.NativeConfig[*Config](rawConf)
     if err != nil {
         return nil, err
     }
+    return NewMySensor(ctx, deps, rawConf.ResourceName(), conf, logger)
+}
 
-    timeout := time.Duration(cfg.PollInterval) * time.Second
+func NewMySensor(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (sensor.Sensor, error) {
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
+
+    timeout := time.Duration(conf.PollInterval) * time.Second
     if timeout == 0 {
         timeout = 10 * time.Second
     }
 
-    return &MySensor{
-        Named:     conf.ResourceName().AsNamed(),
-        logger:    logger,
-        sourceURL: cfg.SourceURL,
-        client:    &http.Client{Timeout: timeout},
-    }, nil
+    s := &mySensorModuleMySensor{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+        client:     &http.Client{Timeout: timeout},
+    }
+    return s, nil
+}
+
+func (s *mySensorModuleMySensor) Name() resource.Name {
+    return s.name
 }
 
 type sensorResponse struct {
@@ -512,15 +587,16 @@ type sensorResponse struct {
     Humidity float64 `json:"humidity"`
 }
 
-func (s *MySensor) Readings(
-    ctx context.Context,
-    extra map[string]interface{},
-) (map[string]interface{}, error) {
-    resp, err := s.client.Get(s.sourceURL)
+func (s *mySensorModuleMySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+    req, err := http.NewRequestWithContext(ctx, http.MethodGet, s.cfg.SourceURL, nil)
+    if err != nil {
+        return nil, fmt.Errorf("building request: %w", err)
+    }
+    resp, err := s.client.Do(req)
     if err != nil {
         s.logger.CErrorw(ctx, "failed to read from source",
-            "url", s.sourceURL, "error", err)
-        return nil, fmt.Errorf("failed to read from %s: %w", s.sourceURL, err)
+            "url", s.cfg.SourceURL, "error", err)
+        return nil, fmt.Errorf("failed to read from %s: %w", s.cfg.SourceURL, err)
     }
     defer resp.Body.Close()
 
@@ -533,6 +609,20 @@ func (s *MySensor) Readings(
         "temperature": data.Temp,
         "humidity":    data.Humidity,
     }, nil
+}
+
+func (s *mySensorModuleMySensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *mySensorModuleMySensor) Status(ctx context.Context) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *mySensorModuleMySensor) Close(context.Context) error {
+    // Put close code here
+    s.cancelFunc()
+    return nil
 }
 ```
 
@@ -554,10 +644,10 @@ You typically do not need to modify it.
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor  # noqa: F401
+from models.my_sensor import MySensor as MySensorModel
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
 ```
 
@@ -574,14 +664,16 @@ them here.
 package main
 
 import (
-    mysensormodule "my-org/my-sensor-module"
-    "go.viam.com/rdk/components/sensor"
+    "mysensormodule"
+
     "go.viam.com/rdk/module"
     "go.viam.com/rdk/resource"
+    sensor "go.viam.com/rdk/components/sensor"
 )
 
 func main() {
-    module.ModularMain(resource.APIModel{sensor.API, mysensormodule.Model})
+    // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
+    module.ModularMain(resource.APIModel{sensor.API, mysensormodule.MySensor})
 }
 ```
 
@@ -595,29 +687,29 @@ add more `resource.APIModel` entries to the `ModularMain` call.
 
 ### 3. Test locally
 
-Use the CLI to build and deploy your module to a machine, then verify it works.
+Use the CLI to build and deploy your module to a machine, then verify it works. Two commands cover the common development loop: `viam module reload` (cloud build) for cross-architecture work, and `viam module reload-local` (local build) for same-architecture iteration. Use `reload` when developing on a different architecture than your target, for example on macOS deploying to a Raspberry Pi. Use `reload-local` when architectures match for faster iteration.
 
 **Deploy with hot reloading:**
 
-```bash
-# Build in the cloud and deploy to the machine
-viam module reload --part-id <machine-part-id>
-```
-
-If your development machine and target machine share the same architecture (for example, both are `linux/arm64`), you can build locally instead:
+First, find your machine's part ID. At the top of the machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. In the commands below, `--model-name` adds an instance of your model to the machine config so you don't have to create it by hand, and `--name` names that instance. Run these commands from your module's root directory (where `meta.json` lives). If you need to invoke them from elsewhere, pass `--module <path/to/meta.json>`.
 
 ```bash
-# Build locally and transfer to the machine
-viam module reload-local --part-id <machine-part-id>
+# Build in the cloud, deploy, and add a component named `my-sensor-1`
+viam module reload --part-id <machine-part-id> \
+  --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
 ```
 
-Use `reload` (cloud build) when developing on a different architecture than your target, for example when developing on macOS and deploying to a Raspberry Pi. Use `reload-local` when architectures match for faster iteration.
+```bash
+# Build locally (same-architecture only), transfer, and add the component
+viam module reload-local --part-id <machine-part-id> \
+  --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
+```
 
-After deploying, configure the component's attributes in the Viam app:
+After the first reload succeeds, open the machine's **CONFIGURE** tab and set your new sensor's attributes. Replace `source_url` with a real endpoint that returns JSON matching the shape your `Readings` implementation expects (the example reads `temp` and `humidity` keys from the response body):
 
 ```json
 {
-  "source_url": "https://api.example.com/sensor/data"
+  "source_url": "https://your-endpoint.example.com/readings"
 }
 ```
 
@@ -659,7 +751,7 @@ self.logger.error("Failed to connect to source: %s", error)
 {{% tab name="Go" %}}
 
 ```go
-s.logger.CInfof(ctx, "Sensor initialized with source URL: %s", s.sourceURL)
+s.logger.CInfof(ctx, "Sensor initialized with source URL: %s", s.cfg.SourceURL)
 s.logger.CDebugf(ctx, "Raw response from source: %v", data)
 s.logger.CWarnw(ctx, "Source returned unexpected field", "field", fieldName)
 s.logger.CErrorw(ctx, "Failed to connect to source", "error", err)
@@ -685,13 +777,19 @@ another resource, you need to do three things:
 
 The following example shows all three. It implements a sensor that depends on
 another sensor -- it reads Celsius temperature readings from the source sensor
-and converts them to Fahrenheit. Watch for the numbered comments in the code:
+and converts them to Fahrenheit. Watch for the numbered comments in the code.
+
+In Go, the example uses `sensor.FromProvider(deps, name)` to resolve the dependency. It returns a typed `sensor.Sensor` handle, so your code does not need a type assertion. Every component and service package in the SDK exposes its own `FromProvider` helper. For a motor dependency, use `motor.FromProvider(deps, name)`. For a camera, use `camera.FromProvider(deps, name)`. And so on.
+
+The Python SDK has no equivalent helper. Iterate the `dependencies` map and match by `ResourceName.name`, as the example below shows.
+
+Place `TempConverter` alongside `MySensor`. In Python, add it as a new file under `src/models/` (for example, `src/models/temp_converter.py`). In Go, put it in the same package as `MySensor`, either by extending `module.go` or adding another `.go` file in the same directory. For registration, see [Step 7](#7-add-multiple-models-to-one-module-optional).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
-class TempConverterSensor(Sensor, EasyResource):
+class TempConverter(Sensor, EasyResource):
     MODEL: ClassVar[Model] = Model(
         ModelFamily("my-org", "my-sensor-module"), "temp-converter"
     )
@@ -712,7 +810,7 @@ class TempConverterSensor(Sensor, EasyResource):
     @classmethod
     def new(cls, config: ComponentConfig,
             dependencies: Mapping[ResourceName, ResourceBase]) -> Self:
-        instance = cls(config.name)
+        instance = super().new(config, dependencies)
         source_name = config.attributes.fields["source_sensor"].string_value
         # 2. Resolve: find the dependency in the map viam-server passes in
         for name, dep in dependencies.items():
@@ -733,6 +831,16 @@ class TempConverterSensor(Sensor, EasyResource):
 {{% tab name="Go" %}}
 
 ```go
+var TempConverter = resource.NewModel("my-org", "my-sensor-module", "temp-converter")
+
+func init() {
+    resource.RegisterComponent(sensor.API, TempConverter,
+        resource.Registration[sensor.Sensor, *ConverterConfig]{
+            Constructor: newMySensorModuleTempConverter,
+        },
+    )
+}
+
 type ConverterConfig struct {
     SourceSensor string `json:"source_sensor"`
 }
@@ -745,39 +853,64 @@ func (cfg *ConverterConfig) Validate(path string) ([]string, []string, error) {
     return []string{cfg.SourceSensor}, nil, nil
 }
 
-type TempConverterSensor struct {
-    resource.Named
+type mySensorModuleTempConverter struct {
     resource.AlwaysRebuild
+
+    name resource.Name
+
     logger logging.Logger
-    source sensor.Sensor
+    cfg    *ConverterConfig
+
+    cancelCtx  context.Context
+    cancelFunc func()
+    source     sensor.Sensor
 }
 
-func newTempConverter(
+func newMySensorModuleTempConverter(
     ctx context.Context,
     deps resource.Dependencies,
-    conf resource.Config,
+    rawConf resource.Config,
     logger logging.Logger,
 ) (sensor.Sensor, error) {
-    cfg, err := resource.NativeConfig[*ConverterConfig](conf)
+    conf, err := resource.NativeConfig[*ConverterConfig](rawConf)
     if err != nil {
         return nil, err
     }
+    return NewTempConverter(ctx, deps, rawConf.ResourceName(), conf, logger)
+}
+
+func NewTempConverter(
+    ctx context.Context,
+    deps resource.Dependencies,
+    name resource.Name,
+    conf *ConverterConfig,
+    logger logging.Logger,
+) (sensor.Sensor, error) {
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     // 2. Resolve: look up the dependency by name from the map viam-server passes in
-    src, err := sensor.FromProvider(deps, cfg.SourceSensor)
+    src, err := sensor.FromProvider(deps, conf.SourceSensor)
     if err != nil {
+        cancelFunc()
         return nil, fmt.Errorf("source sensor %q not found: %w",
-            cfg.SourceSensor, err)
+            conf.SourceSensor, err)
     }
 
-    return &TempConverterSensor{
-        Named:  conf.ResourceName().AsNamed(),
-        logger: logger,
-        source: src,
+    return &mySensorModuleTempConverter{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
+        source:     src,
     }, nil
 }
 
-func (s *TempConverterSensor) Readings(
+func (s *mySensorModuleTempConverter) Name() resource.Name {
+    return s.name
+}
+
+func (s *mySensorModuleTempConverter) Readings(
     ctx context.Context,
     extra map[string]interface{},
 ) (map[string]interface{}, error) {
@@ -794,10 +927,25 @@ func (s *TempConverterSensor) Readings(
         "temperature_f": celsius*9.0/5.0 + 32.0,
     }, nil
 }
+
+func (s *mySensorModuleTempConverter) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *mySensorModuleTempConverter) Status(ctx context.Context) (map[string]interface{}, error) {
+    return nil, fmt.Errorf("not implemented")
+}
+
+func (s *mySensorModuleTempConverter) Close(ctx context.Context) error {
+    s.cancelFunc()
+    return nil
+}
 ```
 
 {{% /tab %}}
 {{< /tabs >}}
+
+`TempConverter` is a second model in the same module. To register it alongside your first model, see [Step 7](#7-add-multiple-models-to-one-module-optional).
 
 ### 6. Use the module data directory
 
@@ -839,11 +987,8 @@ per module.
 
 To add a second model:
 
-1. Run `viam module generate` again in a separate directory to generate
-   the new model's scaffolding. Do not register it -- you only need the
-   generated resource file.
-2. Copy the generated resource file into your existing module's source
-   directory.
+1. Run `viam module generate` again in a separate directory. You only need the generated resource file, so skip the registration prompt.
+2. Copy that file into your existing module's source directory. In Go, rename three things before the file compiles: the compound struct to `<yourModuleName><Model>`, the config struct to something unique like `ConverterConfig`, and `resource.NewModel`'s middle argument to your existing module name. The Step 5 `TempConverter` example shows the result.
 3. Update the entry point to register both models.
 
 {{< tabs >}}
@@ -855,10 +1000,10 @@ discovers all imported resource classes:
 ```python
 import asyncio
 from viam.module.module import Module
-from models.my_sensor import MySensor  # noqa: F401
-from models.my_camera import MyCamera  # noqa: F401
+from models.my_sensor import MySensor as MySensorModel
+from models.my_camera import MyCamera as MyCameraModel
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     asyncio.run(Module.run_from_registry())
 ```
 
@@ -871,17 +1016,19 @@ Add more `resource.APIModel` entries to `ModularMain`:
 package main
 
 import (
-    mymodule "my-org/my-module"
-    "go.viam.com/rdk/components/camera"
-    "go.viam.com/rdk/components/sensor"
+    "mysensormodule"
+
     "go.viam.com/rdk/module"
     "go.viam.com/rdk/resource"
+    camera "go.viam.com/rdk/components/camera"
+    sensor "go.viam.com/rdk/components/sensor"
 )
 
 func main() {
+    // ModularMain can take multiple APIModel arguments, if your module implements multiple models.
     module.ModularMain(
-        resource.APIModel{sensor.API, mymodule.SensorModel},
-        resource.APIModel{camera.API, mymodule.CameraModel},
+        resource.APIModel{sensor.API, mysensormodule.MySensor},
+        resource.APIModel{camera.API, mysensormodule.MyCamera},
     )
 }
 ```
@@ -904,11 +1051,12 @@ Each model needs its own `init()` function calling `resource.RegisterComponent`
 3. Configure the module on your machine as a local module.
 4. Expand the **Test** section on your sensor. Verify readings appear
    automatically under **GetReadings**.
-5. Enable data capture on the sensor. Wait one minute, then check the **DATA**
-   tab to confirm readings are flowing to the cloud.
+5. [Enable data capture](/data/capture-sync/capture-and-sync-data/) on the
+   sensor. Wait one minute, then check the **DATA** tab to confirm readings
+   are flowing to the cloud.
 6. Add a new key to the readings map (for example, `"pressure": 1013.25`).
    Rebuild and redeploy with `viam module reload-local`. Verify the new reading
-   appears on the TEST card.
+   appears on the Test section.
 
 ## Troubleshooting
 
@@ -922,7 +1070,6 @@ Each model needs its own `init()` function calling `resource.RegisterComponent`
   activated).
 - For Go, verify the binary runs: `./bin/<your-module-name>` (the output path
   is set in your `Makefile`).
-- Check that your entrypoint script has execute permissions: `chmod +x run.sh`.
 
 {{< /expand >}}
 
