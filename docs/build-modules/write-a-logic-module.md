@@ -36,8 +36,9 @@ Both are modules. The difference is what they do, not how they're built. The
 lifecycle, config validation, dependency, and deployment patterns are the same.
 {{< /alert >}}
 
-For background on the generic service API, module lifecycle, dependencies, and
-background tasks, see the [overview](/build-modules/overview/).
+The generic service API is a minimal service interface that exposes `DoCommand` and `GetStatus`. If you are writing custom control logic for a robotics application, this is the API you want. Pick a more specific typed API like vision or motion only when your module's work fits one.
+
+For background on module lifecycle, dependencies, and background tasks, see the [overview](/build-modules/overview/).
 
 ## Steps {#program-control-logic-in-module}
 
@@ -48,19 +49,29 @@ and maintains a list of active alerts that your application code can query.
 
 ### 1. Generate a generic service module
 
+Before you run the generator, [install the Viam CLI](/cli/overview/#install) and log in with `viam login`.
+
+The generator prompts for your organization's public namespace. If you have not set one yet, click the organization dropdown at the upper right of the Viam app, select **Settings**, then **Set a public namespace**. You can also enter your Org ID at the prompt instead.
+
+Run the Viam CLI generator:
+
 ```bash
 viam module generate
 ```
 
-| Prompt           | What to enter               | Why                              |
-| ---------------- | --------------------------- | -------------------------------- |
-| Module name      | `alert-monitor`             | A short, descriptive name        |
-| Language         | `python` or `go`            | Your implementation language     |
-| Visibility       | `private`                   | Keep it private while developing |
-| Namespace        | Your organization namespace | Scopes the module to your org    |
-| Resource subtype | `generic` (under services)  | Flexible service API             |
-| Model name       | `temp-alert`                | The model name for your service  |
-| Register         | `yes`                       | Registers the module with Viam   |
+The generator creates a new directory named after your module (for example, `alert-monitor`) in your current working directory. `cd` into that directory for the rest of the steps.
+
+When run without flags, the generator prompts for each value below. If you pass these as `--name`, `--language`, `--visibility`, `--public-namespace`, `--resource-subtype`, `--model-name`, and `--register` flags instead, use the flag forms noted in the table (where different from the interactive labels).
+
+| Prompt                                       | What to enter                               | Why                                                                                                                                                                                                      |
+| -------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Set a module name:                           | `alert-monitor`                             | A short, descriptive name                                                                                                                                                                                |
+| Specify the language for the module:         | `python` or `go`                            | Your implementation language                                                                                                                                                                             |
+| Visibility:                                  | `private`                                   | `private`: visible only within your org. `public`: visible to everyone. `public_unlisted`: usable by anyone who knows the module ID, but hidden from the registry page. You can change visibility later. |
+| Namespace/Organization ID                    | Your organization namespace                 | Scopes the module to your org                                                                                                                                                                            |
+| Select a resource to be added to the module: | `Generic Service` (flag: `generic-service`) | Flexible service API                                                                                                                                                                                     |
+| Set a model name of the resource:            | `temp-alert`                                | The model name for your service                                                                                                                                                                          |
+| Register module                              | `yes`                                       | Registers the module with Viam                                                                                                                                                                           |
 
 The generator creates a complete project. The key files you will edit:
 
@@ -88,22 +99,21 @@ The generator creates a complete project. The key files you will edit:
 ### 2. Define the config
 
 Open the generated resource file. Define config attributes for the sensors to
-monitor and the alert thresholds.
+monitor and the alert thresholds. For this example, we use:
+
+- `sensor_names` — names of the sensors to poll. Required.
+- `max_temp` — temperature threshold above which to create an alert. Required; units match whatever your sensor reports.
+- `poll_interval_secs` — seconds between polls. Optional; defaults to 10.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-In `src/models/temp_alert.py`, add config attributes to your class:
+In `src/models/temp_alert.py`, find the generated `class TempAlert(Generic, EasyResource):` and add the following instance-variable declarations inside the class, after the existing `MODEL` declaration:
 
 ```python
-class TempAlert(Generic, EasyResource):
-    MODEL: ClassVar[Model] = Model(
-        ModelFamily("my-org", "alert-monitor"), "temp-alert"
-    )
-
     sensor_names: list[str]
     max_temp: float
-    poll_interval: float
+    poll_interval_secs: float
     alerts: list[dict]
     _monitor_task: Optional[asyncio.Task]
     _stop_event: asyncio.Event
@@ -181,7 +191,7 @@ Update `validate_config` and `new`:
             for v in fields["sensor_names"].list_value.values
         ]
         instance.max_temp = fields["max_temp"].number_value
-        instance.poll_interval = (
+        instance.poll_interval_secs = (
             fields["poll_interval_secs"].number_value
             if "poll_interval_secs" in fields
             else 10.0
@@ -202,20 +212,23 @@ Update `validate_config` and `new`:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-Update the struct and constructor. `resource.Named` provides the `Name()`
-method that `viam-server` requires. `resource.NativeConfig` converts the raw
-config into your typed struct. `sensor.FromProvider` looks up a sensor
-dependency by name from the dependencies map.
+The generator emits a compound struct type (`alertMonitorTempAlert`) with `resource.AlwaysRebuild` embedded and two constructor functions; a private `newAlertMonitorTempAlert` that unpacks the raw config and delegates to a public `NewTempAlert` that takes a typed `*Config`. Keep that layout. `resource.NativeConfig` converts the raw config into your typed struct. `sensor.FromProvider` looks up a sensor dependency by name from the dependencies map.
 
 ```go
-type TempAlert struct {
-    resource.Named
-    logger   logging.Logger
-    cfg      *Config
-    sensors  map[string]sensor.Sensor
-    mu       sync.Mutex
-    alerts   []Alert
-    cancelFn func()
+type alertMonitorTempAlert struct {
+    resource.AlwaysRebuild
+
+    name resource.Name
+
+    logger  logging.Logger
+    cfg     *Config
+    sensors map[string]sensor.Sensor
+
+    mu     sync.Mutex
+    alerts []Alert
+
+    cancelCtx  context.Context
+    cancelFunc func()
 }
 
 type Alert struct {
@@ -225,39 +238,38 @@ type Alert struct {
     Time      string  `json:"time"`
 }
 
-func newTempAlert(
-    ctx context.Context,
-    deps resource.Dependencies,
-    conf resource.Config,
-    logger logging.Logger,
-) (resource.Resource, error) {
-    cfg, err := resource.NativeConfig[*Config](conf)
+func newAlertMonitorTempAlert(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (resource.Resource, error) {
+    conf, err := resource.NativeConfig[*Config](rawConf)
     if err != nil {
         return nil, err
     }
+    return NewTempAlert(ctx, deps, rawConf.ResourceName(), conf, logger)
+}
 
+func NewTempAlert(ctx context.Context, deps resource.Dependencies, name resource.Name, conf *Config, logger logging.Logger) (resource.Resource, error) {
     // 2. Resolve: find each sensor in the dependencies map
     sensors := make(map[string]sensor.Sensor)
-    for _, name := range cfg.SensorNames {
-        s, err := sensor.FromProvider(deps, name)
+    for _, sensorName := range conf.SensorNames {
+        s, err := sensor.FromProvider(deps, sensorName)
         if err != nil {
-            return nil, fmt.Errorf("sensor %q not found: %w", name, err)
+            return nil, fmt.Errorf("sensor %q not found: %w", sensorName, err)
         }
-        sensors[name] = s
+        sensors[sensorName] = s
     }
 
-    monitorCtx, cancelFn := context.WithCancel(context.Background())
-    svc := &TempAlert{
-        Named:    conf.ResourceName().AsNamed(),
-        logger:   logger,
-        cfg:      cfg,
-        sensors:  sensors,
-        alerts:   []Alert{},
-        cancelFn: cancelFn,
+    cancelCtx, cancelFunc := context.WithCancel(context.Background())
+    svc := &alertMonitorTempAlert{
+        name:       name,
+        logger:     logger,
+        cfg:        conf,
+        sensors:    sensors,
+        alerts:     []Alert{},
+        cancelCtx:  cancelCtx,
+        cancelFunc: cancelFunc,
     }
 
     // Start background monitor loop
-    go svc.monitorLoop(monitorCtx)
+    go svc.monitorLoop(cancelCtx)
 
     return svc, nil
 }
@@ -300,7 +312,7 @@ thresholds. When a reading exceeds the threshold, it creates an alert.
             try:
                 await asyncio.wait_for(
                     self._stop_event.wait(),
-                    timeout=self.poll_interval,
+                    timeout=self.poll_interval_secs,
                 )
                 break  # Stop event was set
             except asyncio.TimeoutError:
@@ -311,7 +323,7 @@ thresholds. When a reading exceeds the threshold, it creates an alert.
 {{% tab name="Go" %}}
 
 ```go
-func (s *TempAlert) monitorLoop(ctx context.Context) {
+func (s *alertMonitorTempAlert) monitorLoop(ctx context.Context) {
     interval := time.Duration(s.cfg.PollInterval) * time.Second
     if interval == 0 {
         interval = 10 * time.Second
@@ -330,7 +342,7 @@ func (s *TempAlert) monitorLoop(ctx context.Context) {
     }
 }
 
-func (s *TempAlert) checkSensors(ctx context.Context) {
+func (s *alertMonitorTempAlert) checkSensors(ctx context.Context) {
     s.mu.Lock()
     defer s.mu.Unlock()
 
@@ -368,6 +380,8 @@ func (s *TempAlert) checkSensors(ctx context.Context) {
 `DoCommand` is the interface your application code uses to interact with the
 service. Define a command vocabulary that makes sense for your module.
 
+The generic service API also provides `GetStatus`. The generator does not implement it; calling it on an unmodified generated service raises `NotImplementedError`. Override it if your service has a meaningful status to report.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -382,7 +396,8 @@ service. Define a command vocabulary that makes sense for your module.
         cmd = command.get("command", "")
 
         if cmd == "get_alerts":
-            return {"alerts": self.alerts}
+            # Snapshot so the list isn't mutated during serialization
+            return {"alerts": list(self.alerts)}
 
         if cmd == "get_alert_count":
             return {"count": len(self.alerts)}
@@ -402,7 +417,7 @@ service. Define a command vocabulary that makes sense for your module.
 {{% tab name="Go" %}}
 
 ```go
-func (s *TempAlert) DoCommand(
+func (s *alertMonitorTempAlert) DoCommand(
     ctx context.Context,
     cmd map[string]interface{},
 ) (map[string]interface{}, error) {
@@ -475,8 +490,8 @@ must stop cleanly. Without this, goroutines or async tasks leak.
 {{% tab name="Go" %}}
 
 ```go
-func (s *TempAlert) Close(ctx context.Context) error {
-    s.cancelFn()
+func (s *alertMonitorTempAlert) Close(ctx context.Context) error {
+    s.cancelFunc()
     s.logger.CInfof(ctx, "TempAlert monitor stopped")
     return nil
 }
@@ -495,7 +510,7 @@ loop; the fresh constructor starts a new one.
 
 Ensure you have at least one sensor configured on your machine (this is the resource your logic module will monitor).
 
-Use the CLI to build and deploy your module:
+Use the CLI to build and deploy your module. Replace `<machine-part-id>` with your machine's part ID. At the top of your machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it.
 
 ```bash
 # Build in the cloud and deploy to the machine
@@ -511,7 +526,7 @@ viam module reload-local --part-id <machine-part-id>
 
 Use `reload` (cloud build) when developing on a different architecture than your target. Use `reload-local` when architectures match for faster iteration.
 
-After deploying, configure the service's attributes in the Viam app:
+After deploying, open the machine's **CONFIGURE** tab and set your new service's attributes. Replace `"my-temp-sensor"` with the name of a sensor configured on your machine. Adjust `max_temp` and `poll_interval_secs` for your use case.
 
 ```json
 {
@@ -531,7 +546,37 @@ On the **CONFIGURE** tab, expand your service's **Test** section and then expand
 { "command": "get_alerts" }
 ```
 
-You should see a response with any alerts that have been triggered.
+You should see a response shaped like:
+
+```json
+{
+  "alerts": [
+    {
+      "sensor": "my-temp-sensor",
+      "value": 32.5,
+      "threshold": 30.0,
+      "time": "2026-04-24T14:23:17Z"
+    }
+  ]
+}
+```
+
+A Python implementation returns the same shape, but `time` matches `datetime.now().isoformat()` output:
+
+```json
+{
+  "alerts": [
+    {
+      "sensor": "my-temp-sensor",
+      "value": 32.5,
+      "threshold": 30.0,
+      "time": "2026-04-24T14:23:17.123456"
+    }
+  ]
+}
+```
+
+If no alerts have triggered yet, the `alerts` array is empty.
 
 **Get a ready-to-run code sample:**
 
@@ -559,8 +604,7 @@ Instead of running a continuous background loop, you can use
 your service's `DoCommand` method on a schedule. This is useful for periodic
 tasks that don't need sub-second polling.
 
-1. In the [Viam app](https://app.viam.com), click the **+** icon next to your
-   machine part and select **Job**.
+1. In the [Viam app](https://app.viam.com), open your machine's **CONFIGURE** tab. Click the **+** icon to add a resource and select **Job**.
 2. Name the job and click **Create**.
 3. Set the **Schedule** to one of:
    - **Interval** -- a Go duration string like `5s`, `1m`, or `2h30m`.
@@ -572,7 +616,8 @@ tasks that don't need sub-second polling.
    { "command": "get_alerts" }
    ```
 
-6. Click **Save**.
+6. Optionally, adjust the **Log threshold** to raise or lower the log verbosity for this job's invocations compared to the module's default.
+7. Click **Save**.
 
 `viam-server` calls `DoCommand` with the specified arguments on the configured
 schedule. You can view job history (last 10 successes and failures) in the
@@ -598,7 +643,6 @@ Jobs also support calling other gRPC methods on resources (such as
 
 - Check the **LOGS** tab for errors from the monitor loop. A failing sensor
   read can cause the loop to exit silently.
-- Verify the `poll_interval_secs` is greater than 0.
 - In Python, ensure you are creating an `asyncio.Task` (not just calling the
   async function without `await` or `create_task`).
 - In Go, ensure the goroutine context is not prematurely canceled. Use
