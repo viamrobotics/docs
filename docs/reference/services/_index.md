@@ -21,5 +21,6 @@ Configuration reference for Viam built-in services. Each page covers available m
 {{% card link="/reference/services/motion/" %}}
 {{% card link="/reference/services/navigation/" %}}
 {{% card link="/reference/services/vision/" %}}
+{{% card link="/reference/services/video/" %}}
 {{% card link="/reference/services/motion/" %}}
 {{< /cards >}}

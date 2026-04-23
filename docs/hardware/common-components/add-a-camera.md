@@ -342,3 +342,4 @@ If you are using a camera with the motion service for arm movement or pick-and-p
 - [Camera API reference](/reference/apis/components/camera/): full method documentation.
 - [Capture and Sync Data](/data/capture-sync/capture-and-sync-data/): configure your camera to automatically capture images and sync them to the cloud.
 - [Add Computer Vision](/vision/configure/): run ML models on your camera feed to detect or classify objects.
+- [Video service](/reference/services/video/): record RTSP video to disk and stream stored footage between timestamps.
