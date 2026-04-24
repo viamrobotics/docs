@@ -102,27 +102,16 @@ You declared "this machine has a camera called `inspection-cam`" by running two 
 
 ## 1.4 Test the Camera
 
-Verify the camera loaded without errors:
+The easiest way to verify the camera is working is to use the Viam app's built-in test panel, which shows a live video feed.
 
-```sh {class="command-line" data-prompt="$"}
-viam machines part logs --part=<part-id> | grep -i inspection-cam
-```
+1. Open [app.viam.com](https://app.viam.com) and navigate to your machine
+2. Click the **CONFIGURE** tab and select `inspection-cam`
+3. Expand the **TEST** section at the bottom of the camera's configuration panel
 
-You should see log lines confirming the module started and the component is ready, with no error messages.
-
-To confirm the camera is actually returning images, call the camera API directly:
-
-```sh {class="command-line" data-prompt="$"}
-viam machines part run \
-  --part=<part-id> \
-  --data='{"name": "inspection-cam", "mime_type": "image/jpeg"}' \
-  viam.component.camera.v1.CameraService.GetImage
-```
-
-A successful response returns base64-encoded JPEG data. If you get an error instead, check the logs for details.
+You should see a live overhead view of the conveyor/staging area.
 
 {{< alert title="Checkpoint" color="success" >}}
-Your camera is working. You can capture images from the simulated inspection station.
+Your camera is working. You can stream video and capture images from the simulated inspection station.
 {{< /alert >}}
 
 ## 1.5 Add a vision pipeline with a fragment
