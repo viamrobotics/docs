@@ -196,17 +196,9 @@ This fragment works with any camera. If you were using a USB webcam instead of t
 
 ### Test the vision service
 
-Stream live detections from the vision service:
-
-```sh {class="command-line" data-prompt="$"}
-viam machines part run \
-  --part=<part-id> \
-  --stream=500ms \
-  --data='{"name": "vision-service", "camera_name": "inspection-cam", "n": 5}' \
-  viam.service.vision.v1.VisionService.GetDetectionsFromCamera
-```
-
-This streams detection results every 500ms. You'll see JSON output with bounding boxes and PASS/FAIL labels for each detected can. Press `Ctrl+C` to stop streaming.
+1. Open [app.viam.com](https://app.viam.com) and navigate to your machine
+2. Click the **CONFIGURE** tab and find `vision-service`
+3. Expand the **TEST** section, select `inspection-cam` as the camera source, and set **Detections/Classifications** to `Live`
 
 {{< alert title="What you've built" color="info" >}}
 A complete ML inference pipeline. The vision service grabs an image from the camera, runs it through the TensorFlow Lite model, and returns structured detection results. This same pattern works for any ML task: object detection, classification, segmentation. Swap the model and camera, and the pipeline still works.
