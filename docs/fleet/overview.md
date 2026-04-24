@@ -9,7 +9,7 @@ description: "Scale from one machine to a fleet: templatize configuration with f
 
 You have a single machine working. Now you need 10, or 100, or 1,000 machines running the same software with the same configuration. Fleet deployment is how you get there without configuring each machine by hand.
 
-The shift from one machine to a fleet usually starts to matter around 50 machines, when manually tracking which machine runs which version stops being feasible. Three properties change when Viam runs your fleet:
+Three properties change when Viam runs your fleet:
 
 - **The cloud config is the source of truth.** Each machine pulls its configuration from Viam Cloud and converges to it. A local edit on a single device cannot silently drift the device away from the rest of the fleet.
 - **Machines connect outbound.** Each machine reaches Viam Cloud over an outbound gRPC connection. No port-forwarding, reverse SSH tunnels, or VPN setup is required at customer sites.
