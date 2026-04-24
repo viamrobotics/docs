@@ -13,7 +13,7 @@ aliases:
 
 **Goal:** Get a computer vision pipeline working.
 
-**Skills:** Connect a machine to Viam, configure components in the Viam UI, use fragments to add preconfigured services.
+**Skills:** Connect a machine to Viam, configure components with the Viam CLI, use fragments to add preconfigured services.
 
 **Time:** ~10 min
 
@@ -27,30 +27,38 @@ Before starting this tutorial, you need the can inspection simulation running. F
 
 Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
 
+You also need the Viam CLI installed and authenticated.
+See [Viam CLI overview](/cli/overview/) for installation and authentication instructions.
+
 {{< alert title="What you're working with" color="info" >}}
-The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
+The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure applies to the simulated hardware.
 {{< /alert >}}
 
 ## 1.1 Verify Your Machine is Online
 
 If you followed the [setup guide](../gazebo-setup/), your machine should already be online.
 
-1. Open [app.viam.com](https://app.viam.com) (the "Viam app")
-2. Navigate to your machine (for example, `inspection-station-1`)
-3. Verify the status indicator shows **Live**
-4. Click the **CONFIGURE** tab if not already selected
+Run:
 
-{{<imgproc src="/tutorials/first-project/machine-live-status.png" resize="x1100" declaredimensions=true alt="Machine page showing the green Live status indicator next to the machine name." class="imgzoom shadow">}}
+```sh {class="command-line" data-prompt="$"}
+viam machines status --machine=<machine-id>
+```
+
+Look for `status: live` in the output. If your machine isn't live yet, check that the Docker container is running and that the logs show "Can Inspection Simulation Running!".
 
 Ordinarily, after creating a machine in Viam, you would download and install `viam-server` together with the cloud credentials for your machine. For this tutorial, we've already installed `viam-server` and launched it in the simulation Docker container.
 
-## 1.2 Locate Your Machine Part
+## 1.2 Get Your Part ID
 
-Your machine is online but empty. To configure your machine, you will add components and services to your machine part in the Viam app. Your machine part is the compute hardware for your robot. This might be a PC, Mac, Raspberry Pi, or another computer.
+Your machine is online but empty. To configure your machine, you will add components and services to your machine part. Your machine part is the compute hardware — in this tutorial, a virtual machine running Linux in the Docker container.
 
-In the case of this tutorial, your machine part is a virtual machine running Linux in the Docker container.
+Get the part ID for `inspection-station-1-main`:
 
-Find `inspection-station-1-main` in the **CONFIGURE** tab.
+```sh {class="command-line" data-prompt="$"}
+viam machines part list --machine=<machine-id>
+```
+
+Copy the part ID from the output. You'll use it in every command that follows.
 
 ## 1.3 Configure the Camera
 
@@ -64,51 +72,57 @@ In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensor
 
 ### Add a camera component
 
-To add the camera component to your machine part:
+Add the `gz-camera` module's `rgb-camera` model and name it `inspection-cam`:
 
-1. Click the **+** button and select **Configuration block**
-2. Click **Camera**
-3. Search for `gz-camera`
-4. Select `gz-camera/rgb-camera`
-5. Click **Add Component**
-6. Enter `inspection-cam` for the name
+```sh {class="command-line" data-prompt="$"}
+viam machines part add-resource \
+  --part=<part-id> \
+  --name=inspection-cam \
+  --model-name=gz-camera:gz-camera:rgb-camera
+```
 
-{{< expand "Why were two items added to my machine part?" >}}
-After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **CONFIGURE** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
+{{< expand "Why does the model triplet have three parts?" >}}
+The model triplet format is `namespace:module-name:model-name`. Here, `gz-camera` is both the namespace and module name, and `rgb-camera` is the specific model within that module. The module (`gz-camera`) is what implements the Viam camera API for this simulated hardware. When you add a component that comes from a registry module, `viam-server` downloads and runs the module automatically.
 {{< /expand >}}
 
 ### Configure the camera
 
-To configure your camera component to work with the camera in the simulation, you need to specify the correct camera ID. Most components require a few configuration parameters.
+Set the camera ID so the module knows which Gazebo camera to connect to:
 
-1. In the **Attributes** section, add:
-
-   ```json
-   {
-     "id": "/inspection_camera"
-   }
-   ```
-
-2. Click **Save** in the top right
+```sh {class="command-line" data-prompt="$"}
+viam resource update \
+  --part=<part-id> \
+  --resource-name=inspection-cam \
+  --config '{"id": "/inspection_camera"}'
+```
 
 {{< alert title="What happened behind the scenes" color="info" >}}
-You declared "this machine has a camera called `inspection-cam`" by editing the configuration in the Viam app. When you clicked **Save**, `viam-server` loaded the camera module, added a camera component, and made the camera available through Viam's standard camera API. Software you write, other services, and user interface components will use the API to get the images they need. Using the API as an abstraction means that everything still works if you swap cameras.
+You declared "this machine has a camera called `inspection-cam`" by running two CLI commands. `viam-server` picks up configuration changes immediately — no restart needed. It loaded the camera module, added the camera component, and made it available through Viam's standard camera API. Software you write, other services, and UI components all use the same API. Using the API as an abstraction means everything still works if you swap cameras.
 {{< /alert >}}
 
 ## 1.4 Test the Camera
 
-Verify the camera is working. Every component in Viam has a built-in test card right in the configuration view.
+Verify the camera loaded without errors:
 
-### Open the test panel
+```sh {class="command-line" data-prompt="$"}
+viam machines part logs --part=<part-id> | grep -i inspection-cam
+```
 
-1. You should still be on the **CONFIGURE** tab with your `inspection-cam` selected
-2. Look for the **Test** section at the bottom of the camera's configuration panel
-3. Expand the **TEST** section to open the camera's test card
+You should see log lines confirming the module started and the component is ready, with no error messages.
 
-The camera component test card uses the camera API to add an image feed to the Viam app, enabling you to determine whether your camera is working. You should see a live video feed from the simulated camera. This is an overhead view of the conveyor/staging area.
+To confirm the camera is actually returning images, call the camera API directly:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part run \
+  --part=<part-id> \
+  --data='{"name": "inspection-cam", "mime_type": "image/jpeg"}' \
+  viam.component.camera.v1.CameraService.GetImage
+```
+
+A successful response returns base64-encoded JPEG data. If you get an error instead, check the logs for details.
 
 {{< alert title="Checkpoint" color="success" >}}
-Your camera is working. You can stream video and capture images from the simulated inspection station.
+Your camera is working. You can capture images from the simulated inspection station.
 {{< /alert >}}
 
 ## 1.5 Add a vision pipeline with a fragment
@@ -134,25 +148,49 @@ The `try-vision-pipeline` fragment includes an ML model service loaded with a ca
 
 ### Add the fragment
 
-1. Click **+** next to your machine name
-2. Select **Configuration block**
-3. Search for `try-vision-pipeline`
-4. Select `try-vision-pipeline` and click **Add Fragment**
+Apply the `try-vision-pipeline` fragment to your machine part:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part fragments add \
+  --part=<part-id> \
+  --fragment=<try-vision-pipeline-fragment-id>
+```
+
+{{< expand "How do I find the fragment ID?" >}}
+You can find the fragment ID in the [Viam registry](https://app.viam.com/registry) by searching for `try-vision-pipeline` and copying the ID from the fragment's detail page.
+{{< /expand >}}
 
 ### Set the camera variable
 
-The fragment needs to know which camera to use for inference.
+The fragment uses a `camera_name` variable to wire the vision service to your specific camera. Set it in the machine's JSON configuration:
 
-1. In the fragment's configuration panel, find the **Variables** section
-2. Set the `camera_name` variable to `inspection-cam`
+```sh {class="command-line" data-prompt="$"}
+viam machines part run \
+  --part=<part-id> \
+  --data='{"name": "inspection-station-1-main"}' \
+  viam.app.v1.RobotService.GetRobotPart
+```
 
-   ```json
-   {
-     "camera_name": "inspection-cam"
-   }
-   ```
+Then update the fragment's variable override. Open the machine's JSON config and add the `fragment_mods` entry:
 
-3. Click **Save** in the upper right corner
+```json
+{
+  "fragment_mods": [
+    {
+      "fragment_id": "<try-vision-pipeline-fragment-id>",
+      "mods": [
+        {
+          "$ set": {
+            "camera_name": "inspection-cam"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+Save this as `fragment-vars.json` and apply it with the app API, or set the variable in the [Viam app](https://app.viam.com) if you prefer.
 
 {{< alert title="What the fragment added" color="info" >}}
 The fragment added two services and their dependencies to your machine:
@@ -169,24 +207,34 @@ This fragment works with any camera. If you were using a USB webcam instead of t
 
 ### Test the vision service
 
-1. Find the **Test** section at the bottom of the `vision-service` configuration panel
-2. Expand the **Test** card
-3. If not already selected, select `inspection-cam` as the camera source
-4. Set **Detections/Classifications** to `Live`
-5. Check that detection and labeling are working
+Stream live detections from the vision service:
 
-{{<imgproc src="/tutorials/first-project/vision-service-test.png" resize="x1100" declaredimensions=true alt="Vision service test panel showing a can detected with a bounding box and FAIL label." class="imgzoom shadow">}}
+```sh {class="command-line" data-prompt="$"}
+viam machines part run \
+  --part=<part-id> \
+  --stream=500ms \
+  --data='{"name": "vision-service", "camera_name": "inspection-cam", "n": 5}' \
+  viam.service.vision.v1.VisionService.GetDetectionsFromCamera
+```
+
+This streams detection results every 500ms. You'll see JSON output with bounding boxes and PASS/FAIL labels for each detected can. Press `Ctrl+C` to stop streaming.
 
 {{< alert title="What you've built" color="info" >}}
 A complete ML inference pipeline. The vision service grabs an image from the camera, runs it through the TensorFlow Lite model, and returns structured detection results. This same pattern works for any ML task: object detection, classification, segmentation. Swap the model and camera, and the pipeline still works.
 {{< /alert >}}
 
 {{< alert title="Checkpoint" color="success" >}}
-You added a camera component manually and used a fragment to add a complete ML vision pipeline. The system can detect defective cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
+You added a camera component and used a fragment to add a complete ML vision pipeline — entirely from the command line. The system can detect defective cans. Next, you'll set up continuous data capture so every detection is recorded and queryable.
 {{< /alert >}}
 
 {{< alert title="Explore the JSON configuration" color="tip" >}}
-Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the Configure tab to see the raw configuration. You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
+Everything you configured is stored as JSON in Viam's cloud. You can inspect the full configuration at any time:
+
+```sh {class="command-line" data-prompt="$"}
+viam metadata read --part-id=<part-id>
+```
+
+You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
 {{< /alert >}}
 
 **[Continue to Part 2: Data Capture →](../part-2/)**
