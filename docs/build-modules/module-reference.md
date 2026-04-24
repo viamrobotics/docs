@@ -497,20 +497,21 @@ are set to the target platform. See [Environment variables](#environment-variabl
 
 `reload` flags: `--part-id` (target machine part), `--path` (root of git
 repo to build), `--annotation` (text note describing the purpose of this
-reload build), `--model-name` (add a resource to config with this model
-triple), `--resource-name` (name the resource instance), `--id` (module ID),
-`--cloud-config` (path to `viam.json`, alternative to `--part-id`),
-`--workdir` (subdirectory containing `meta.json`), `--local` (run entrypoint
-directly on localhost).
+reload build), `--module` (path to `meta.json`), `--model-name` (add a
+resource to config with this model triple), `--resource-name` (name the
+resource instance), `--id` (module ID), `--cloud-config` (path to
+`viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
+containing `meta.json`), `--local` (run entrypoint directly on localhost).
 
 `reload-local` flags: `--part-id` (target machine part), `--no-build` (skip
 build), `--local` (run entrypoint directly on localhost instead of bundling),
-`--model-name` (add a resource to config with this model triple),
-`--name` (name the added resource), `--resource-name` (name the resource
-instance), `--id` (module ID, alternative to `--name`),
-`--cloud-config` (path to `viam.json`, alternative to `--part-id`),
-`--workdir` (subdirectory containing `meta.json`), `--home-dir` (remote
-user's home directory), `--no-progress` (hide transfer progress).
+`--module` (path to `meta.json`), `--model-name` (add a resource to config
+with this model triple), `--name` (name the added resource),
+`--resource-name` (name the resource instance), `--id` (module ID,
+alternative to `--name`), `--cloud-config` (path to `viam.json`, alternative
+to `--part-id`), `--workdir` (subdirectory containing `meta.json`),
+`--home-dir` (remote user's home directory), `--no-progress` (hide transfer
+progress).
 
 ## Environment variables
 
