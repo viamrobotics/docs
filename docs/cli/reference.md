@@ -17,6 +17,19 @@ All commands use this format:
 viam [global options] command [command options] [arguments...]
 ```
 
+## Global options
+
+You can pass global options after the `viam` CLI keyword with any command.
+
+<!-- prettier-ignore -->
+| Global option | Description |
+| ------------- | ----------- |
+| `--debug` | Enable debug logging. Default: `false`. |
+| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. Default: `false`. |
+| `--help`, `-h` | Show help. Default: `false`. |
+| `--profile` | Specify a particular [profile](#profiles) for the current command. |
+| `--quiet`, `-q` | Suppress warnings. Default: `false` |
+
 ## `data`
 
 The `data` command allows you to manage machine data.
@@ -2746,16 +2759,3 @@ Convert a xacro file to URDF.
 | `--collapse-fixed-joints` | Collapse fixed-joint chains to ensure only one end effector exists. | Optional |
 | `--install-packages` | Install `ros-<distro>-xacro` in the container (required for the default image). Disable only if your custom image already includes xacro. | Optional |
 | `--dry-run` | Show the docker command without executing it. | Optional |
-
-## Global options
-
-You can pass global options after the `viam` CLI keyword with any command.
-
-<!-- prettier-ignore -->
-| Global option | Description |
-| ------------- | ----------- |
-| `--debug` | Enable debug logging. Default: `false`. |
-| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. Default: `false`. |
-| `--help`, `-h` | Show help. Default: `false`. |
-| `--profile` | Specify a particular [profile](#profiles) for the current command. |
-| `--quiet`, `-q` | Suppress warnings. Default: `false` |
