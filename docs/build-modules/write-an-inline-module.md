@@ -21,6 +21,12 @@ directly in the Viam app's browser-based editor -- no IDE, terminal, or GitHub
 account required. When you click **Save & Deploy**, Viam builds your module in
 the cloud and deploys it to your machine automatically.
 
+Inline modules implement the Generic service API -- a single `DoCommand`
+method for arbitrary control logic. To write a hardware driver or use a more
+specific API, see
+[Write a driver module](/build-modules/write-a-driver-module/) or
+[Write a logic module](/build-modules/write-a-logic-module/).
+
 {{< alert title="Availability" color="tip" >}}
 Inline modules are currently available to organizations that have the feature
 enabled. If you do not see the **Viam-hosted** option when adding code, contact
@@ -30,6 +36,11 @@ Viam support to request access.
 For background on inline modules, how they compare to externally managed
 modules, and the Generic service API, see the
 [overview](/build-modules/overview/#inline-and-externally-managed-modules).
+
+To illustrate each step, this page uses a distance-responsive servo controller
+as a worked example -- a service that reads an ultrasonic sensor and adjusts a
+servo angle based on distance. The same patterns apply to any control logic;
+substitute your own attributes, dependencies, and command behavior.
 
 ## Steps
 
@@ -43,6 +54,10 @@ modules, and the Generic service API, see the
 4. Name your module (for example, `servo-distance-control`) and choose a language
    (**Python** or **Go**).
 5. Click **Create module**.
+
+You can also reach this dialog from your machine's **CONNECT** tab by selecting
+**Control code sample** from the sidebar and clicking **Create inline module**.
+Both paths open the same dialog and land you in the same editor.
 
 The browser opens the code editor with a working template that includes all
 necessary imports and method stubs.
@@ -61,7 +76,7 @@ extends `GenericService` and `EasyResource`:
 ```python
 class MyGenericService(GenericService, EasyResource):
     MODEL: ClassVar[Model] = Model(
-        ModelFamily("my-org", "my-module"), "generic-service"
+        ModelFamily("my-org", "servo-distance-control"), "generic-service"
     )
 ```
 
@@ -85,8 +100,9 @@ The editable file is `module.go`. It contains a struct, a config type, and
 registration logic:
 
 ```go
-var GenericService = resource.NewModel(
-    "my-org", "my-module", "generic-service",
+var (
+    GenericService   = resource.NewModel("my-org", "servo-distance-control", "generic-service")
+    errUnimplemented = errors.New("unimplemented")
 )
 
 func init() {
@@ -98,12 +114,20 @@ func init() {
 }
 ```
 
-The three areas to implement:
+`errUnimplemented` is a pre-declared error value you can return from method
+branches you have not implemented yet (for example,
+`return nil, errUnimplemented`).
 
+The areas you'll edit:
+
+- **`Config` struct** -- add JSON-tagged fields for each attribute your
+  service accepts.
 - **`Validate`** on the `Config` struct -- check attributes, return
   dependencies.
-- **`NewGenericService`** -- initialize the service with attributes and
-  dependencies.
+- **`genericService` struct** -- add fields to hold runtime state
+  (resolved dependencies, parsed config values).
+- **`NewGenericService`** -- populate the struct fields from attributes
+  and dependencies.
 - **`DoCommand`** -- your control logic.
 
 {{< alert title="Important" color="caution" >}}
@@ -123,7 +147,17 @@ on other components or services.
 
 This example validates attributes for a distance-responsive servo controller --
 a service that reads an ultrasonic sensor and adjusts a servo angle based on
-distance:
+distance.
+
+For this example, we use:
+
+- `sensor_range_start` -- lowest expected sensor reading, in meters. Required.
+- `sensor_range_end` -- highest expected sensor reading, in meters. Required.
+- `servo_angle_min` -- servo angle at the low end of the sensor range, in degrees. Optional; defaults to 0.
+- `servo_angle_max` -- servo angle at the high end of the sensor range, in degrees. Optional; defaults to 180.
+- `reversed` -- if true, map the low sensor reading to the high servo angle. Optional; defaults to false.
+- `servo` -- name of the servo component the service controls. Required.
+- `sensor` -- name of the distance sensor the service reads. Required.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -248,7 +282,7 @@ def new(
     cls, config: ComponentConfig,
     dependencies: Mapping[ResourceName, ResourceBase]
 ) -> Self:
-    self = await super().new(config, dependencies)
+    self = super().new(config, dependencies)
     attrs = struct_to_dict(config.attributes)
 
     # Required attributes
@@ -319,6 +353,12 @@ func NewGenericService(
     }, nil
 }
 ```
+
+The scaffold contains both a private constructor, `newGenericService`, and a
+public constructor, `NewGenericService`. The private constructor converts the
+raw `resource.Config` into a typed `*Config` and delegates to the public
+constructor. Leave the private constructor alone -- put your logic in
+`NewGenericService`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -415,8 +455,12 @@ added.
 #### Configure the service
 
 1. In the module section, click **Add** to add a model of your generic service.
-2. Click **+** to add each dependency your service requires (for example, a servo and
-   a sensor). Configure each dependency with the appropriate attributes.
+2. If your service depends on any hardware that isn't already configured on the
+   machine, add those components now. Click the **+** icon next to your machine
+   part's name in the left sidebar and follow
+   [Configure hardware components](/hardware/configure-hardware/) to pick a
+   model and set attributes. The service references components by the names
+   you give them.
 3. Configure the attributes for your generic service:
 
 ```json
