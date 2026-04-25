@@ -220,5 +220,5 @@ The Pi reads and removes `wpa_supplicant.conf` on boot, updating the stored WiFi
 Continue setting up `viam-server` on your Raspberry Pi in [the Viam app](https://app.viam.com/):
 
 {{< cards >}}
-{{% card link="/set-up-a-machine/overview/" %}}
+{{% card link="/set-up-a-machine/first-machine/" %}}
 {{< /cards >}}

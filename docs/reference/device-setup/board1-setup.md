@@ -64,7 +64,7 @@ You have now installed an operating system on your BOARD.
 To use your BOARD, follow the [setup guide](/set-up-a-machine/overview/):
 
 {{< cards >}}
-{{% card link="/set-up-a-machine/overview/" %}}
+{{% card link="/set-up-a-machine/first-machine/" %}}
 {{< /cards >}}
 
 ## Troubleshooting

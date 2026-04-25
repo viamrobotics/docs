@@ -81,7 +81,7 @@ You have now installed an operating system on your Orange Pi.
 To use your Orange Pi, follow the [setup guide](/set-up-a-machine/overview/):
 
 {{< cards >}}
-{{% card link="/set-up-a-machine/overview/" %}}
+{{% card link="/set-up-a-machine/first-machine/" %}}
 {{< /cards >}}
 
 If you want to use the GPIO pins on the board, add a [`orangepi` board as a component](https://github.com/viam-modules/orange-pi/) after installing `viam-server`.

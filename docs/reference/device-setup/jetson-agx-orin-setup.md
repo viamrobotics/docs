@@ -122,7 +122,7 @@ You have now installed an operating system on your Jetson board.
 To use your Jetson board, follow the [setup guide](/set-up-a-machine/overview/):
 
 {{< cards >}}
-{{% card link="/set-up-a-machine/overview/" %}}
+{{% card link="/set-up-a-machine/first-machine/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
