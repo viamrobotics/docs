@@ -17,8 +17,6 @@ All commands use this format:
 viam [global options] command [command options] [arguments...]
 ```
 
-## Global options
-
 You can pass global options after the `viam` CLI keyword with any command.
 
 <!-- prettier-ignore -->
