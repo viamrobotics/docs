@@ -134,7 +134,6 @@ done
 | `--tags` | Filter by (`export`, `delete`) or add (`tag`) specified tag (accepts comma-separated list). | `export binary`, `delete`, `tag ids`, `tag filter` | Optional |
 | `--filter-tags` | Filter tags. Options: `'tagged'`, `'untagged'`, or a comma-separated list of tags for all data matching any of the tags. | `tag filter` | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | `tag filter`, `export binary` | Optional |
-| `--chunk-limit` | Maximum number of results per download request (tabular data only). | `tag filter` | Optional |
 | `--org-id` | The organization ID. Required for `delete tabular`. Uses default org if set for other commands. | `delete tabular`, `database configure`, `database hostname`, `index create`, `index delete`, `index list` | Optional, **Required** for `delete tabular` |
 | `--password` | Password for the database user being configured. | `database configure` | **Required** |
 | `--resource-name` | Resource name. Sometimes called "component name". | `export tabular` | **Required** |
@@ -221,6 +220,7 @@ viam dataset list --org-id=<org-id>
 viam dataset list --dataset-ids=<dataset-ids>
 viam dataset delete --dataset-id=<dataset-id>
 viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
+viam dataset merge --name=<new-dataset-name> --dataset-ids=<dataset-id-1>,<dataset-id-2> [--org-id=<org-id>]
 viam dataset data add filter --dataset-id=<dataset-id> [...named args]
 viam dataset data remove filter --dataset-id=<dataset-id> [...named args]
 viam dataset data add ids --dataset-id=<dataset-id>  --binary-data-ids=<binary-data-ids>
@@ -248,6 +248,9 @@ viam dataset delete --dataset-id=123
 # export dataset abc to output directory ./dataset/example in two folders called "data" and "metadata"
 viam dataset export --destination=./dataset/example --dataset-id=abc
 
+# merge datasets 123 and 456 into a new dataset named CombinedDataset
+viam dataset merge --name=CombinedDataset --dataset-ids=123,456 --org-id=789
+
 # add images tagged with the "example" tag between January and October of 2023 to dataset abc
 viam dataset data add filter --dataset-id=abc --location-ids=123 --org-ids=456 --start=2023-01-01T05:00:00.000Z --end=2023-10-01T04:00:00.000Z --tags=example
 
@@ -273,6 +276,7 @@ viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 | `data add` | Add new images to an existing dataset by binary data ID or add images that match a specified [filter](#using-the-filter-argument). | `ids`, `filter` |
 | `data remove` | Remove images from an existing dataset by binary data ID or remove images that match a specified [filter](#using-the-filter-argument). | `ids`, `filter` |
 | `export` | Download all the data from a dataset. | - |
+| `merge` | Merge multiple datasets into a new dataset. | - |
 | `--help` | Return help. | - |
 
 ##### Positional arguments
@@ -290,13 +294,14 @@ viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 | Argument | Description | Applicable commands | Required? |
 | -------- | ----------- | ------------------- | --------- |
 | `--dataset-id` | Dataset to perform an operation on. To retrieve the ID, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID** | `rename`, `delete`, `data add`, `data remove`, `export` | **Required** |
-| `--dataset-ids` | Dataset IDs of datasets to be listed. To retrieve these IDs, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID** | `list` | Optional |
+| `--dataset-ids` | Dataset IDs of datasets to be listed or merged (comma-separated list). To retrieve these IDs, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID** | `list`, `merge` | Optional for `list`; **Required** for `merge` |
 | `--destination` | Output directory for downloaded data. | `export` | **Required** |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | `data add`, `data remove` | Optional |
 | `--binary-data-ids` | The binary data IDs of the files to perform an operation on. | `data add ids`, `data remove ids` | **Required** |
-| `--include-jsonl` | Set to `true` to include JSON Lines files for local testing. | `export` | Optional |
-| `--name` | The name of the dataset to create or rename. | `create`, `rename` | **Required** |
-| `--org-id` | Organization ID of the organization the dataset belongs to. | `create`, `data add`, `list` | **Required** |
+| `--only-jsonl` | Include only the JSON Lines files for local testing. No binary data is downloaded. | `export` | Optional |
+| `--force-linux-path` | Force the use of Linux-style paths in the dataset.jsonl file. | `export` | Optional |
+| `--name` | The name of the dataset to create, rename, or merge into. | `create`, `rename`, `merge` | **Required** |
+| `--org-id` | Organization ID of the organization the dataset belongs to. | `create`, `data add`, `list`, `merge` | **Required** for `create` and `merge`; Optional otherwise |
 | `--org-ids` | Organization IDs of the organizations to filter data on. | `data add filter`, `data remove filter` | Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 100. | `export` | Optional |
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | `data add`, `data remove` | Optional |
@@ -370,6 +375,36 @@ Removing the `viam data export` string, you can use the same filter parameters (
 You cannot use the `--binary-data-ids` argument when using `filter`.
 
 See [Create a dataset](/train/create-a-dataset/) for more information.
+
+### `defaults`
+
+The `defaults` command sets or clears default argument values so you do not have to pass the same `--org-id` or `--location-id` flag on every command. Once set, the value is read from your CLI config and used as the default for any command that accepts that argument.
+
+```sh {class="command-line" data-prompt="$"}
+viam defaults set-org --org-id=<org-id>
+viam defaults clear-org
+viam defaults set-location --location-id=<location-id>
+viam defaults clear-location
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description |
+| -------------- | ----------- |
+| `set-org` | Set the default organization argument. |
+| `clear-org` | Clear the default organization argument. |
+| `set-location` | Set the default location argument. |
+| `clear-location` | Clear the default location argument. |
+| `--help` | Return help. |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--org-id` | The organization ID to set as the default. | `set-org` | **Required** |
+| `--location-id` | The location ID to set as the default. | `set-location` | **Required** |
 
 ### `infer`
 
@@ -1337,6 +1372,57 @@ You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment v
 | `--key-id` | The `key id` (UUID) of the API key. | `add`, `update` | **Required** |
 | `--key` | The `key value` of the API key. | `api-key`, `update` | **Required** |
 
+### `resource`
+
+The `resource` command enables, disables, or updates individual resources (components and services) on a machine part. Use it to temporarily disable a resource without removing it from the configuration, or to update attributes without using the Viam app.
+
+```sh {class="command-line" data-prompt="$"}
+viam resource enable --part=<part> --resource-name=<resource-name> [--resource-name=<resource-name> ...]
+viam resource disable --part=<part> --resource-name=<resource-name> [--resource-name=<resource-name> ...]
+viam resource update --part=<part> --resource-name=<resource-name> --config=<json-or-path>
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# enable a single resource
+viam resource enable --part=abc123 --resource-name=my-sensor
+
+# enable multiple resources at once
+viam resource enable --part=abc123 --resource-name=my-sensor --resource-name=arm-1
+
+# update a resource attribute inline
+viam resource update --part=abc123 --resource-name=my-sensor --config='{"pin": "38"}'
+
+# update from a JSON file
+viam resource update --part=abc123 --resource-name=my-sensor --config=/path/to/updates.json
+
+# delete an attribute by passing an empty value
+viam resource update --part=abc123 --resource-name=my-sensor --config='{"pin": ""}'
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description |
+| -------------- | ----------- |
+| `enable` | Enable one or more resources on a machine part. |
+| `disable` | Disable one or more resources on a machine part. Disabled resources are not started by viam-server. |
+| `update` | Replace a resource's attributes with new values. The `--config` flag accepts inline JSON or a path to a JSON file. An empty JSON object deletes all attributes. |
+| `--help` | Return help. |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--part` | Machine part ID or name. | `enable`, `disable`, `update` | **Required** |
+| `--resource-name` | Name of the resource. Repeat the flag to apply `enable` or `disable` to multiple resources at once. | `enable`, `disable`, `update` | **Required** |
+| `--config` | Inline JSON or path to a JSON file containing the new attributes. | `update` | **Required** |
+| `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | `enable`, `disable`, `update` | Optional |
+| `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | `enable`, `disable`, `update` | Optional |
+| `--machine` | Machine ID or name. Required when using a name (rather than ID) to identify the part. | `enable`, `disable`, `update` | Optional |
+
 ### `training-script`
 
 Manage training scripts for [custom ML training](/train/custom-training-scripts/).
@@ -1440,7 +1526,7 @@ viam train list --org-id=123 --job-status=completed
 | `managed` | Submits training job on data in the Viam Cloud with a Viam-managed training script. | - |
 | `custom` | Submits custom training job on data in the Viam Cloud. | `from-registry`, `with-upload` |
 
-##### Position arguments: `submit custom`
+##### Positional arguments: `submit custom`
 
 <!-- prettier-ignore -->
 | Argument | Description |
@@ -1457,8 +1543,8 @@ viam train list --org-id=123 --job-status=completed
 | `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit managed`, `submit custom with-upload` | **Required** |
 | `--org-id` | The organization ID to train and save the ML model in or list training jobs from. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | `submit custom from-registry`, `list` | **Required** |
 | `--model-name` | The name of the ML model. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | **Required** |
-| `--model-type` | Type of model to train. Can be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
-| `--model-framework` | The framework of model to train. Options: `tflite`, `tensorflow`, `pytorch`, `onnx`. | `submit managed` | **Required** |
+| `--model-type` | Type of model to train. For `submit managed`, must be one of `single_label_classification`, `multi_label_classification`, or `object_detection`. For `submit custom with-upload`, also accepts `unspecified`. | `submit managed`, `submit custom with-upload` | **Required**, Optional |
+| `--model-framework` | The framework of model to train. Must be one of `tflite` or `tensorflow`. | `submit managed` | **Required** |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | `submit managed` | **Required** |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | `submit managed`, `submit custom from-registry`, `submit custom with-upload` | Optional |
 | `--script-name` | The registry name of the ML training script to use for training. If uploading, this sets the name. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
@@ -1468,7 +1554,44 @@ viam train list --org-id=123 --job-status=completed
 | `--job-status` | Training status to filter for. Can be one of `canceled`, `canceling`, `completed`, `failed`, `in_progress`, `pending`, or `unspecified`. | `list` | Optional |
 | `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | `submit custom with-upload` | **Required** |
 | `--container-version` | Docker container version for training. Use `viam train containers list` to see available versions. | `submit custom from-registry`, `submit custom with-upload` | **Required** |
+| `--url` | URL of the GitHub repository associated with the training scripts. | `submit custom with-upload` | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | `submit custom from-registry`, `submit custom with-upload` | Optional |
+
+### `traces`
+
+The `traces` command imports viam-server trace files to an OTLP endpoint or prints them to the console. Use it to debug machine performance and request flow with a tracing backend such as Jaeger or Tempo.
+
+The `import-remote`, `print-remote`, and `get-remote` subcommands require the machine to have a valid shell-type service. Organization and location are required if you are identifying the part by name rather than ID.
+
+```sh {class="command-line" data-prompt="$"}
+viam traces import-local <traces-file> [--endpoint=<host:port>]
+viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization=<org>] [--location=<location>]
+viam traces print-local <traces-file>
+viam traces print-remote --part=<part> [--organization=<org>] [--location=<location>]
+viam traces get-remote --part=<part> [target] [--organization=<org>] [--location=<location>]
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description |
+| -------------- | ----------- |
+| `import-local` | Import traces from a local viam-server trace file to an OTLP endpoint. |
+| `import-remote` | Import traces from a remote machine to an OTLP endpoint. |
+| `print-local` | Print traces from a local trace file to the console. |
+| `print-remote` | Print traces from a remote machine to the console. |
+| `get-remote` | Download traces from a remote machine to a local file. If `[target]` is omitted, the file is saved to the current working directory. |
+| `--help` | Return help. |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--endpoint` | OTLP endpoint in `host:port` format. Default: `localhost:4317`. | `import-local`, `import-remote` | Optional |
+| `--part` | Machine part ID or name. | `import-remote`, `print-remote`, `get-remote` | **Required** |
+| `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | `import-remote`, `print-remote`, `get-remote` | Optional |
+| `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | `import-remote`, `print-remote`, `get-remote` | Optional |
 
 ### `update`
 
@@ -1503,6 +1626,50 @@ The `whoami` command returns the Viam user for an authenticated CLI session, or 
 ```sh {class="command-line" data-prompt="$"}
 viam whoami
 ```
+
+### `xacro`
+
+The `xacro` command converts ROS xacro files to URDF using a Docker container. Use it to integrate ROS-based robot descriptions with Viam's frame system.
+
+```sh {class="command-line" data-prompt="$"}
+viam xacro convert --input-file=<file> --output-file=<file> [other options]
+```
+
+Examples:
+
+```sh {class="command-line" data-prompt="$"}
+# basic conversion
+viam xacro convert --input-file=robot.xacro --output-file=robot.urdf
+
+# pass xacro arguments
+viam xacro convert --input-file=arm.xacro --output-file=arm.urdf --args=name:=ur20
+
+# collapse fixed-joint chains so only one end effector exists
+viam xacro convert --input-file=robot.xacro --output-file=robot.urdf --collapse-fixed-joints
+```
+
+#### Command options
+
+<!-- prettier-ignore -->
+| Command option | Description |
+| -------------- | ----------- |
+| `convert` | Convert a xacro file to URDF. |
+| `--help` | Return help. |
+
+##### Named arguments
+
+<!-- prettier-ignore -->
+| Argument | Description | Applicable commands | Required? |
+| -------- | ----------- | ------------------- | --------- |
+| `--input-file` | Path to the xacro file to expand. | `convert` | **Required** |
+| `--output-file` | Path where the URDF file will be written. | `convert` | **Required** |
+| `--args` | xacro arguments to pass through, in the form `name:=value`. Repeat the flag for multiple arguments. Required if the xacro file uses `<xacro:arg>` tags. | `convert` | Optional |
+| `--ros-distro` | ROS distribution to use. Auto-detected from the docker image if not specified. | `convert` | Optional |
+| `--docker-image` | Docker image to use for xacro processing. Default: `osrf/ros:humble-desktop`. | `convert` | Optional |
+| `--package-xml` | Path to `package.xml` if not in the current directory. | `convert` | Optional |
+| `--collapse-fixed-joints` | Collapse fixed-joint chains to ensure only one end effector exists. | `convert` | Optional |
+| `--install-packages` | Install `ros-<distro>-xacro` in the container (required for the default image). Disable only if your custom image already includes xacro. | `convert` | Optional |
+| `--dry-run` | Show the docker command without executing it. | `convert` | Optional |
 
 ## Global options
 
