@@ -17,9 +17,7 @@ All commands use this format:
 viam [global options] command [command options] [arguments...]
 ```
 
-## Commands
-
-### `data`
+## `data`
 
 The `data` command allows you to manage machine data.
 With it, you can export data in a variety of formats, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
@@ -41,7 +39,7 @@ viam data index delete --collection-type=<type> --index-name=<name> [--org-id=<o
 viam data index list --collection-type=<type> [--org-id=<org-id>]
 ```
 
-#### `data export tabular`
+### `data export tabular`
 
 Export tabular or sensor data to a specified location in the <file>.ndjson</file> output format. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command).
 
@@ -61,7 +59,7 @@ viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resou
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | Optional |
 
-#### `data export binary filter`
+### `data export binary filter`
 
 Export binary or image data matching a filter to a specified location. Binary data will be downloaded in the original output it was specified as. You can copy this from the UI with a filter. See [Copy `export` command](#copy-export-command).
 
@@ -91,7 +89,7 @@ viam data export binary filter --mime-types=image/jpeg,image/png --org-ids=12345
 | `--tags` | Filter by specified tag (accepts comma-separated list). | Optional |
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | Optional |
 
-#### `data export binary ids`
+### `data export binary ids`
 
 Export binary or image data by binary data ID to a specified location.
 
@@ -107,7 +105,7 @@ viam data export binary ids --destination=<output path> --binary-data-ids=<binar
 | `--parallel` | Number of download requests to make in parallel. Default: `100`. | Optional |
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | Optional |
 
-#### `data delete binary`
+### `data delete binary`
 
 Delete binary data from the Viam Cloud.
 
@@ -144,7 +142,7 @@ for i in {00..59}; do
 done
 ```
 
-#### `data delete tabular`
+### `data delete tabular`
 
 Delete tabular data from the Viam Cloud.
 
@@ -158,7 +156,7 @@ viam data delete tabular --org-id=<org-id> --delete-older-than-days=<N>
 | `--org-id` | The organization ID. | **Required** |
 | `--delete-older-than-days` | Number of days, 0 means all data will be deleted. | **Required** |
 
-#### `data database configure`
+### `data database configure`
 
 Create a new database user for the Viam organization's MongoDB Atlas Data Federation instance, or change the password of an existing user. See [Configure data query](/data/query-data/).
 
@@ -174,7 +172,7 @@ viam data database configure --org-id=abc --password=my_password123
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 | `--password` | Password for the database user being configured. | **Required** |
 
-#### `data database hostname`
+### `data database hostname`
 
 Get the MongoDB Atlas Data Federation instance hostname and connection URI. See [Configure data query](/data/query-data/).
 
@@ -188,7 +186,7 @@ viam data database hostname --org-id=abc
 | -------- | ----------- | --------- |
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 
-#### `data tag ids add`
+### `data tag ids add`
 
 Add tags to all data that matches the given binary data IDs.
 
@@ -205,7 +203,7 @@ See [Using the `ids` argument](#using-the-ids-argument) for details on retrievin
 | `--binary-data-ids` | Binary data IDs to add tags to. | **Required** |
 | `--tags` | Tags to add (accepts comma-separated list). | Optional |
 
-#### `data tag ids remove`
+### `data tag ids remove`
 
 Remove tags from all data that matches the given binary data IDs.
 
@@ -220,7 +218,7 @@ viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=
 | `--binary-data-ids` | Binary data IDs to remove tags from. | **Required** |
 | `--tags` | Tags to remove (accepts comma-separated list). | Optional |
 
-#### `data tag filter add`
+### `data tag filter add`
 
 Add tags to all data that matches a given filter. See [Using the `filter` argument](#using-the-filter-argument).
 
@@ -248,7 +246,7 @@ viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | Optional |
 
-#### `data tag filter remove`
+### `data tag filter remove`
 
 Remove tags from all data that matches a given filter. See [Using the `filter` argument](#using-the-filter-argument).
 
@@ -276,7 +274,7 @@ viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=c
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | Optional |
 
-#### `data index create`
+### `data index create`
 
 Create a custom index on a data collection.
 
@@ -292,7 +290,7 @@ viam data index create --collection-type=<type> --index-path=<file> [--org-id=<o
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 | `--pipeline-name` | Name of the data pipeline (required when `--collection-type` is `pipeline-sink`). | Conditional |
 
-#### `data index delete`
+### `data index delete`
 
 Delete a custom index from a data collection.
 
@@ -308,7 +306,7 @@ viam data index delete --collection-type=<type> --index-name=<name> [--org-id=<o
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 | `--pipeline-name` | Name of the data pipeline (required when `--collection-type` is `pipeline-sink`). | Conditional |
 
-#### `data index list`
+### `data index list`
 
 List all custom indexes for a data collection.
 
@@ -322,7 +320,7 @@ viam data index list --collection-type=<type> [--org-id=<org-id>]
 | `--collection-type` | Data collection type for index operations. Options: `hot-storage`, `pipeline-sink`. | **Required** |
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 
-### `datapipelines`
+## `datapipelines`
 
 The `datapipelines` command provides access to data pipelines for processing machine data with {{< glossary_tooltip term_id="mql" text="MQL" >}} queries.
 Data pipelines help you optimize query performance for frequently accessed complex data transformations.
@@ -337,7 +335,7 @@ viam datapipelines disable --id=<pipeline-id>
 viam datapipelines delete --id=<pipeline-id>
 ```
 
-#### `datapipelines create`
+### `datapipelines create`
 
 Create a new data pipeline.
 
@@ -360,7 +358,7 @@ viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | Optional |
 | `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. | Optional |
 
-#### `datapipelines rename`
+### `datapipelines rename`
 
 Rename a data pipeline.
 
@@ -374,7 +372,7 @@ viam datapipelines rename --id=<pipeline-id> --name=<new-name>
 | `--id` | ID of the data pipeline. | **Required** |
 | `--name` | New name for the data pipeline. | **Required** |
 
-#### `datapipelines list`
+### `datapipelines list`
 
 List all data pipelines in an organization.
 
@@ -387,7 +385,7 @@ viam datapipelines list --org-id=123
 | -------- | ----------- | --------- |
 | `--org-id` | ID of the organization that owns the data pipelines. Uses default org if set. | Optional |
 
-#### `datapipelines describe`
+### `datapipelines describe`
 
 Get detailed information about a specific data pipeline.
 
@@ -400,7 +398,7 @@ viam datapipelines describe --id=abc123
 | -------- | ----------- | --------- |
 | `--id` | ID of the data pipeline. | **Required** |
 
-#### `datapipelines enable`
+### `datapipelines enable`
 
 Resume executing a disabled data pipeline.
 
@@ -413,7 +411,7 @@ viam datapipelines enable --id=abc123
 | -------- | ----------- | --------- |
 | `--id` | ID of the data pipeline. | **Required** |
 
-#### `datapipelines disable`
+### `datapipelines disable`
 
 Stop executing a data pipeline without deleting it.
 
@@ -426,7 +424,7 @@ viam datapipelines disable --id=abc123
 | -------- | ----------- | --------- |
 | `--id` | ID of the data pipeline. | **Required** |
 
-#### `datapipelines delete`
+### `datapipelines delete`
 
 Delete a data pipeline.
 
@@ -439,7 +437,7 @@ viam datapipelines delete --id=abc123
 | -------- | ----------- | --------- |
 | `--id` | ID of the data pipeline. | **Required** |
 
-### `dataset`
+## `dataset`
 
 The `dataset` command allows you to manage machine data in datasets.
 With it, you can add or remove images from a dataset, export data from a dataset, or filter a dataset by tags.
@@ -458,7 +456,7 @@ viam dataset data add ids --dataset-id=<dataset-id>  --binary-data-ids=<binary-d
 viam dataset data remove ids --dataset-id=<dataset-id> --binary-data-ids=<binary-data-ids>
 ```
 
-#### `dataset create`
+### `dataset create`
 
 Create a new dataset.
 
@@ -472,7 +470,7 @@ viam dataset create --org-id=123 --name=MyDataset
 | `--org-id` | Organization ID of the organization the dataset belongs to. | **Required** |
 | `--name` | The name of the dataset to create. | **Required** |
 
-#### `dataset rename`
+### `dataset rename`
 
 Rename an existing dataset.
 
@@ -486,7 +484,7 @@ viam dataset rename --dataset-id=123 --name=MyCoolDataset
 | `--dataset-id` | Dataset to rename. To retrieve the ID, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID**. | **Required** |
 | `--name` | The new name for the dataset. | **Required** |
 
-#### `dataset list`
+### `dataset list`
 
 List dataset information from specified IDs or for an org ID.
 
@@ -504,7 +502,7 @@ viam dataset list --dataset-ids=123,456
 | `--org-id` | Organization ID of the organization the dataset belongs to. | Optional |
 | `--dataset-ids` | Dataset IDs of datasets to be listed (comma-separated list). To retrieve these IDs, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID**. | Optional |
 
-#### `dataset delete`
+### `dataset delete`
 
 Delete a dataset.
 
@@ -517,7 +515,7 @@ viam dataset delete --dataset-id=123
 | -------- | ----------- | --------- |
 | `--dataset-id` | Dataset to delete. | **Required** |
 
-#### `dataset export`
+### `dataset export`
 
 Download all the data from a dataset to a specified output directory in two folders called "data" and "metadata".
 
@@ -534,7 +532,7 @@ viam dataset export --destination=./dataset/example --dataset-id=abc
 | `--force-linux-path` | Force the use of Linux-style paths in the dataset.jsonl file. | Optional |
 | `--parallel` | Number of download requests to make in parallel, with a default value of 100. | Optional |
 
-#### `dataset merge`
+### `dataset merge`
 
 Merge multiple datasets into a new dataset.
 
@@ -549,7 +547,7 @@ viam dataset merge --name=CombinedDataset --dataset-ids=123,456 --org-id=789
 | `--dataset-ids` | Dataset IDs of datasets to merge (comma-separated list). | **Required** |
 | `--org-id` | Organization ID of the organization the dataset belongs to. | **Required** |
 
-#### `dataset data add ids`
+### `dataset data add ids`
 
 Add new images to an existing dataset by binary data ID. See [Using the `ids` argument](#using-the-ids-argument) for details on retrieving the IDs.
 
@@ -564,7 +562,7 @@ viam dataset data add ids --dataset-id=abc --binary-data-ids=aaa,bbb
 | `--binary-data-ids` | The binary data IDs of the images to add. | **Required** |
 | `--org-id` | Organization ID of the organization the dataset belongs to. | Optional |
 
-#### `dataset data add filter`
+### `dataset data add filter`
 
 Add to an existing dataset images that match a specified [filter](#using-the-filter-argument).
 
@@ -592,7 +590,7 @@ viam dataset data add filter --dataset-id=abc --location-ids=123 --org-ids=456 -
 | `--part-id` | Filter data on part ID. | Optional |
 | `--part-name` | Filter data on part name. | Optional |
 
-#### `dataset data remove ids`
+### `dataset data remove ids`
 
 Remove images from an existing dataset by binary data ID. See [Using the `ids` argument](#using-the-ids-argument) for details on retrieving the IDs.
 
@@ -606,7 +604,7 @@ viam dataset data remove ids --dataset-id=abc --binary-data-ids=aaa,bbb
 | `--dataset-id` | Dataset to remove images from. | **Required** |
 | `--binary-data-ids` | The binary data IDs of the images to remove. | **Required** |
 
-#### `dataset data remove filter`
+### `dataset data remove filter`
 
 Remove from an existing dataset images that match a specified [filter](#using-the-filter-argument).
 
@@ -633,7 +631,7 @@ viam dataset data remove filter --dataset-id=abc --location-ids=123 --org-ids=45
 | `--part-id` | Filter data on part ID. | Optional |
 | `--part-name` | Filter data on part name. | Optional |
 
-#### Using the `ids` argument
+### Using the `ids` argument
 
 When you use the `viam dataset data add` and `viam dataset data remove` commands, you specify images to add or remove using their binary data IDs as a comma-separated list.
 For example, the following command adds three images specified by their binary data IDs to the specified dataset:
@@ -661,7 +659,7 @@ The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the
 
 You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
 
-#### Using the `filter` argument
+### Using the `filter` argument
 
 When you use the `viam dataset data add`, `viam dataset data remove` or `viam data tag` commands, you can optionally `filter` by common search criteria to `add` or `remove` a specific subset of images based on a search filter.
 For example, the following command adds all images captured between January 1 and October 1, 2023, that have the `example` tag applied, to the specified dataset:
@@ -681,7 +679,7 @@ Click **...** in the left-hand menu and click **Copy dataset ID**.
 
 To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) and copy from **Location ID**.
 
-##### Copy `export` command
+#### Copy `export` command
 
 You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
 Navigate to the [**DATA** tab](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
@@ -692,7 +690,7 @@ You cannot use the `--binary-data-ids` argument when using `filter`.
 
 See [Create a dataset](/train/create-a-dataset/) for more information.
 
-### `defaults`
+## `defaults`
 
 The `defaults` command sets or clears default argument values so you do not have to pass the same `--org-id` or `--location-id` flag on every command. Once set, the value is read from your CLI config and used as the default for any command that accepts that argument.
 
@@ -703,7 +701,7 @@ viam defaults set-location --location-id=<location-id>
 viam defaults clear-location
 ```
 
-#### `defaults set-org`
+### `defaults set-org`
 
 Set the default organization argument.
 
@@ -712,11 +710,11 @@ Set the default organization argument.
 | -------- | ----------- | --------- |
 | `--org-id` | The organization ID to set as the default. | **Required** |
 
-#### `defaults clear-org`
+### `defaults clear-org`
 
 Clear the default organization argument.
 
-#### `defaults set-location`
+### `defaults set-location`
 
 Set the default location argument.
 
@@ -725,11 +723,11 @@ Set the default location argument.
 | -------- | ----------- | --------- |
 | `--location-id` | The location ID to set as the default. | **Required** |
 
-#### `defaults clear-location`
+### `defaults clear-location`
 
 Clear the default location argument.
 
-### `infer`
+## `infer`
 
 The `infer` command enables you to run [cloud inference](/vision/configure/) on data. Cloud inference runs in the cloud, instead of on a local machine.
 
@@ -763,7 +761,7 @@ Bounding Box Format: [x_min, y_min, x_max, y_max]
 | `--org-id` | The organization ID of the organization that will run the inference. | **Required** |
 | `--model-org-id` | The organization ID of the organization that owns the model. | **Required** |
 
-### `locations`
+## `locations`
 
 The `locations` command allows you to manage the [locations](/reference/) that you have access to.
 With it, you can list available locations, filter locations by organization, or create a new location API key.
@@ -773,7 +771,7 @@ viam locations list [<organization id>]
 viam locations api-key create --location-id=<location-id>
 ```
 
-#### `locations list`
+### `locations list`
 
 List all locations (name and id) that the authenticated session has access to, grouped by organization.
 
@@ -783,7 +781,7 @@ viam locations list [<organization id>]
 
 Pass an organization ID as a positional argument to return results for that organization only. Optional.
 
-#### `locations api-key create`
+### `locations api-key create`
 
 Create an API key for a specific location.
 
@@ -798,7 +796,7 @@ viam locations api-key create --location-id=<location-id>
 | `--name` | The name of the API key. | Optional |
 | `--org-id` | The organization ID to attach the key to. | Optional |
 
-### `login`
+## `login`
 
 The `login` command authorizes your device for CLI usage.
 By default, `viam login` opens a browser to authenticate using a personal access token.
@@ -817,7 +815,7 @@ viam login print-access-token
 | -------- | ----------- | --------- |
 | `--no-browser` | Authenticate in a headless environment by preventing the opening of the default browser during login. Default: `false`. | Optional |
 
-#### `login api-key`
+### `login api-key`
 
 Authenticate to Viam using an organization, location, or machine part API key.
 
@@ -831,7 +829,7 @@ viam login api-key --key-id=<api-key-uuid> --key=<api-key-secret-value>
 | `--key-id` | The `key id` (UUID) of the API key. | **Required** |
 | `--key` | The `key value` of the API key. | **Required** |
 
-#### `login print-access-token`
+### `login print-access-token`
 
 Print the access token used to authenticate the current CLI session.
 
@@ -839,7 +837,7 @@ Print the access token used to authenticate the current CLI session.
 viam login print-access-token
 ```
 
-### `logout`
+## `logout`
 
 The `logout` command ends an authenticated CLI session.
 
@@ -847,7 +845,7 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
-### `machines` (alias `robots` and `machine`)
+## `machines` (alias `robots` and `machine`)
 
 The `machines` command allows you to manage your machine fleet.
 This includes:
@@ -881,7 +879,7 @@ viam machines part cp --part=<part id> <file name> machine:/path/to/file
 
 To use `part shell` and `part cp`, add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the latest version of the shell service.
 
-#### `machines create`
+### `machines create`
 
 Create a new machine in a specified location.
 
@@ -895,7 +893,7 @@ viam machines create --name="My Machine" --location=12345
 | `--name` | Name for the machine. | **Required** |
 | `--location` | ID of the location that the machine belongs to. | **Required** |
 
-#### `machines update`
+### `machines update`
 
 Move a machine from one location to another and/or rename the machine.
 
@@ -913,7 +911,7 @@ viam machines update --machine=123 --location=67890
 | `--organization` | ID of the organization that the machine belongs to. | Optional |
 | `--location` | ID of the current location of the machine. | Optional |
 
-#### `machines delete`
+### `machines delete`
 
 Delete a machine. Passing location and organization is optional but speeds up the process.
 
@@ -928,7 +926,7 @@ viam machines delete --machine=123
 | `--location` | ID of the location that the machine belongs to. | Optional |
 | `--organization` | ID of the organization that the machine belongs to. | Optional |
 
-#### `machines list`
+### `machines list`
 
 List all machines that the authenticated session has access to in a specified organization or location. Defaults to first organization and location alphabetically.
 
@@ -944,7 +942,7 @@ viam machines list --all --organization=12345
 | `--location` | ID of the location to list machines in. | Optional |
 | `--organization` | ID of the organization to list machines in. | Optional |
 
-#### `machines status`
+### `machines status`
 
 Retrieve machine status for a specified machine.
 
@@ -960,7 +958,7 @@ viam machines status --machine=123
 | `--location` | ID of the location that the machine belongs to. | Optional |
 | `--organization` | ID of the organization that the machine belongs to. | Optional |
 
-#### `machines logs`
+### `machines logs`
 
 Retrieve logs for a specified machine.
 
@@ -984,7 +982,7 @@ viam machines logs --machine=123
 | `--location` | ID of the location that the machine belongs to. | Optional |
 | `--organization` | ID of the organization that the machine belongs to. | Optional |
 
-#### `machines api-key create`
+### `machines api-key create`
 
 Create an API key for a specific machine.
 
@@ -999,7 +997,7 @@ viam machines api-key create --machine-id=123 --name=MyKey
 | `--machine-id` | The ID of the machine to create an API key for. | **Required** |
 | `--name` | The optional name of the API key. If omitted, a name will be auto-generated. | Optional |
 
-#### `machines part list`
+### `machines part list`
 
 List machine parts.
 
@@ -1015,7 +1013,7 @@ viam machines part list --machine=123
 | `--location` | ID of the location that the machine belongs to. | Optional |
 | `--organization` | ID of the organization that the machine belongs to. | Optional |
 
-#### `machines part status`
+### `machines part status`
 
 Retrieve machine status for a specified machine part.
 
@@ -1030,7 +1028,7 @@ viam machines part status --machine=<machine id>
 | `--location` | ID of the location that the machine belongs to. | Optional |
 | `--organization` | ID of the organization that the machine belongs to. | Optional |
 
-#### `machines part run`
+### `machines part run`
 
 Run a component or service command, optionally at a specified interval. For commands that return data in their response, you can use this to stream data. See [Using the `--stream` and `--data` arguments](#using-the---stream-and---data-arguments).
 
@@ -1048,7 +1046,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 | `--data` | Command data for the command being request to run. See [Using the `--stream` and `--data` arguments](#using-the---stream-and---data-arguments). | **Required** |
 | `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | Optional |
 
-#### `machines part logs`
+### `machines part logs`
 
 Get logs for the specified machine part.
 
@@ -1071,7 +1069,7 @@ viam machines part logs --part=myrover-main --tail=true
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 
-#### `machines part shell`
+### `machines part shell`
 
 Access a machine part securely using a secure shell to execute commands. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json). The `ViamShellDanger` fragment contains the latest version of the shell service, which you must add to your machine before copying files or using the shell.
 
@@ -1084,7 +1082,7 @@ viam machines part shell --machine=<machine id> --part=<part id>
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 
-#### `machines part restart`
+### `machines part restart`
 
 Restart a machine part.
 
@@ -1098,7 +1096,7 @@ viam machines part restart --part=123
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 
-#### `machines part cp`
+### `machines part cp`
 
 Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command to copy files to and from machines.
 
@@ -1129,7 +1127,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
 | `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | Optional |
 
-#### `machines part tunnel`
+### `machines part tunnel`
 
 Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/fleet/system-settings/).
 
@@ -1145,7 +1143,7 @@ viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
 | `--destination-port` | The port on a machine part to tunnel to. | **Required** |
 | `--local-port` | The local port from which to tunnel. | **Required** |
 
-#### `machines part get-ftdc`
+### `machines part get-ftdc`
 
 Download FTDC data from a machine part. Requires the shell service.
 
@@ -1159,7 +1157,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 
-#### `machines part create`
+### `machines part create`
 
 Create a new part on a machine.
 
@@ -1173,7 +1171,7 @@ viam machines part create --machine=<machine id> --part-name=<new part name>
 | `--machine` | Machine ID or name. | **Required** |
 | `--part-name` | Name for the new part. | **Required** |
 
-#### `machines part delete`
+### `machines part delete`
 
 Delete a part.
 
@@ -1186,7 +1184,7 @@ viam machines part delete --part=<part id>
 | -------- | ----------- | --------- |
 | `--part` | Part ID to delete. | **Required** |
 
-#### `machines part add-resource`
+### `machines part add-resource`
 
 Add a component or service to a part's configuration by specifying an API and model triplet.
 
@@ -1201,7 +1199,7 @@ viam machines part add-resource --part=<part id> --name=<resource name> --model-
 | `--name` | Name for the resource. | **Required** |
 | `--model-name` | Model triplet (`namespace:type:model`) for the resource to add. | **Required** |
 
-#### `machines part remove-resource`
+### `machines part remove-resource`
 
 Remove a resource from a part's configuration.
 
@@ -1215,7 +1213,7 @@ viam machines part remove-resource --part=<part id> --name=<resource name>
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--name` | Name of the resource to remove. | **Required** |
 
-#### `machines part fragments add`
+### `machines part fragments add`
 
 Attach a configuration fragment to a part.
 
@@ -1229,7 +1227,7 @@ viam machines part fragments add --part=<part id> [--fragment=<fragment id>]
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--fragment` | Fragment ID to add. If omitted, the CLI prompts interactively. | Optional |
 
-#### `machines part fragments remove`
+### `machines part fragments remove`
 
 Detach a configuration fragment from a part.
 
@@ -1243,7 +1241,7 @@ viam machines part fragments remove --part=<part id> [--fragment=<fragment id>]
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--fragment` | Fragment ID to remove. | Optional |
 
-#### `machines part motion print-config`
+### `machines part motion print-config`
 
 Print the motion planning configuration for the part.
 
@@ -1256,7 +1254,7 @@ viam machines part motion print-config --part=<part id>
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 
-#### `machines part motion print-status`
+### `machines part motion print-status`
 
 Print current motion state for the part.
 
@@ -1269,7 +1267,7 @@ viam machines part motion print-status --part=<part id>
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 
-#### `machines part motion get-pose`
+### `machines part motion get-pose`
 
 Get the pose of a component in a reference frame.
 
@@ -1283,7 +1281,7 @@ viam machines part motion get-pose --part=<part id> --component=<component name>
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--component` | Component name for the motion command. | **Required** |
 
-#### `machines part motion set-pose`
+### `machines part motion set-pose`
 
 Command a component to move to a specific pose.
 
@@ -1297,7 +1295,7 @@ viam machines part motion set-pose --part=<part id> --component=<component name>
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--component` | Component name for the motion command. | **Required** |
 
-#### Using the `--stream` and `--data` arguments
+### Using the `--stream` and `--data` arguments
 
 Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
 
@@ -1323,7 +1321,7 @@ viam.service.vision.v1.VisionService.GetClassificationsFromCamera
 
 The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
 
-### `metadata`
+## `metadata`
 
 The `metadata` command allows you to read organization, location, machine, and machine part metadata.
 
@@ -1331,7 +1329,7 @@ The `metadata` command allows you to read organization, location, machine, and m
 viam metadata read --part-id=<part-id>
 ```
 
-#### `metadata read`
+### `metadata read`
 
 Read organization, location, machine, and machine part metadata.
 
@@ -1343,7 +1341,7 @@ Read organization, location, machine, and machine part metadata.
 | `--org-id` | The ID of the org to read metadata from. | Optional |
 | `--part-id` | The ID of the part to read metadata from. | Optional |
 
-### `module`
+## `module`
 
 The `module` command allows to you to work with {{< glossary_tooltip term_id="module" text="modules" >}}.
 This includes:
@@ -1378,7 +1376,7 @@ viam module download [command options]
 viam module local-app-testing --app-url http://localhost:3000
 ```
 
-#### `module generate`
+### `module generate`
 
 Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module.
 
@@ -1431,7 +1429,7 @@ Services:
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | Optional |
 | `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | Optional |
 
-#### `module create`
+### `module create`
 
 Generate a <file>meta.json</file> file and register the metadata with the Viam registry. Recommended when you already have working module code.
 
@@ -1451,7 +1449,7 @@ viam module create --name=my-module --org-id=abc
 | `--public-namespace` | The namespace to associate the module to. See [Using the `--org-id` and `--public-namespace` arguments](#using-the---org-id-and---public-namespace-arguments). | **Required** |
 | `--local-only` | Create a meta.json file for local use, but don't create the module on the backend. Default: `false`. | Optional |
 
-#### `module update`
+### `module update`
 
 Update your module's metadata and documentation in the Viam registry. Updates are based on changes to [<file>meta.json</file>](/build-modules/module-reference/), the module <file>README.md</file>, and the model readme <FILE>namespace_module_model.md</FILE>. Viam automatically runs `update` when you `upload` your module, as well as when you trigger a cloud build with Viam's default build action.
 
@@ -1465,7 +1463,7 @@ viam module update --module=./meta.json
 | -------- | ----------- | --------- |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 
-#### `module update-models`
+### `module update-models`
 
 Update the module's metadata file with the models it provides.
 
@@ -1480,7 +1478,7 @@ viam module update-models --binary=./packaged-module.tar.gz --module=./meta.json
 | `--binary` | The module executable to run (binary or script). Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | Optional |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 
-#### `module upload`
+### `module upload`
 
 Validate and upload a new or existing custom module on your local filesystem to the Viam Registry. See [Upload validation](#upload-validation) for more information.
 
@@ -1503,7 +1501,7 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the Raspberry Pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | Optional |
 
-#### `module reload`
+### `module reload`
 
 Build a module in the cloud and configure the target machine to download it directly. Rebuild and restart if the module is already running.
 
@@ -1525,7 +1523,7 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 | `--path` | The path to the root of the git repo to build. Default: `.`. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 
-#### `module reload-local`
+### `module reload-local`
 
 Build a module locally and run it on a target machine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine.
 
@@ -1550,7 +1548,7 @@ viam module reload-local --local
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | Optional |
 | `--name` | The name of the module. For example: `hello-world`. | Optional |
 
-#### `module restart`
+### `module restart`
 
 Restart a running module.
 
@@ -1567,7 +1565,7 @@ viam module restart --id viam:python-example-module
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json`. | Optional |
 | `--name` | The name of the module. For example: `hello-world`. | Optional |
 
-#### `module build start`
+### `module build start`
 
 Start a module build in a cloud runner using the build step in your [`meta.json` file](/build-modules/module-reference/). See [Using the `build` subcommand](#using-the-build-subcommand).
 
@@ -1589,7 +1587,7 @@ viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnop
 | `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 
-#### `module build local`
+### `module build local`
 
 Start a module build locally using the build step in your [`meta.json` file](/build-modules/module-reference/). See [Using the `build` subcommand](#using-the-build-subcommand).
 
@@ -1603,7 +1601,7 @@ viam module build local
 | -------- | ----------- | --------- |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 
-#### `module build list`
+### `module build list`
 
 List the status of your cloud module builds. See [Using the `build` subcommand](#using-the-build-subcommand).
 
@@ -1618,7 +1616,7 @@ viam module build list
 | `--id` | The build ID to list, as returned from `build start`. | Optional |
 | `--count` | Number of cloud builds to list. Defaults to displaying all builds. | Optional |
 
-#### `module build logs`
+### `module build logs`
 
 Show the logs from a specific cloud module build. See [Using the `build` subcommand](#using-the-build-subcommand).
 
@@ -1635,7 +1633,7 @@ viam module build logs --wait --id=$(viam module build start --version "0.1.2")
 | `--wait` | Wait for the build to finish before outputting any logs. | Optional |
 | `--group-logs` | Group log output by platform. | Optional |
 
-#### `module download`
+### `module download`
 
 Download a module package from the registry.
 
@@ -1658,7 +1656,7 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--platform` | The architecture of the module binary to download. See [Using the `--platform` argument](#using-the---platform-argument). | Optional |
 | `--destination` | Output directory for downloaded package. Default: `.`. | Optional |
 
-#### `module local-app-testing`
+### `module local-app-testing`
 
 Test your viam application locally. This will stand up a local proxy at `http://localhost:8012` to simulate the Viam application server.
 
@@ -1673,7 +1671,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--app-url` | The url where local app is running, including port number. For example `http://localhost:5000`. | **Required** |
 | `--machine-id` | The machine ID of the machine you want to test with. You can get your machine ID on the [Fleet page](https://app.viam.com/fleet/machines). | Optional |
 
-#### Using the `--org-id` and `--public-namespace` arguments
+### Using the `--org-id` and `--public-namespace` arguments
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
@@ -1683,7 +1681,7 @@ All of the `module` commands accept either the `--org-id` or `--public-namespace
 
 You may use either argument for the `viam module create` command, but must use `--public-namespace` for the `update` and `upload` commands when uploading as a public module (`"visibility": "public"`) to the Viam Registry.
 
-#### Using the `--platform` argument
+### Using the `--platform` argument
 
 The `--platform` argument accepts one of the following architectures:
 
@@ -1718,7 +1716,7 @@ The Viam Registry page for your module displays the platforms your module suppor
 
 If you are using the `build logs` command, the `--platform` argument instead restricts the logs returned by the command to only those build jobs that match the specified platform.
 
-#### Using the `--version` argument
+### Using the `--version` argument
 
 The `--version` argument accepts a valid [semver 2.0](https://semver.org/) version (example: `1.0.0`).
 You set an initial version for your custom module with your first `viam module upload` command for that module, and can later increment the version with subsequent `viam module upload` commands.
@@ -1734,7 +1732,7 @@ Users can choose to pin to a specific patch version, permit upgrades within majo
 When you `update` a module configuration and then `upload` it, the `entrypoint` for that module defined in the [`meta.json` file](/build-modules/module-reference/) is associated with the specific `--version` for that `upload`.
 Therefore, you are able to change the `entrypoint` file from version to version, if desired.
 
-#### Upload validation
+### Upload validation
 
 When you `upload` a module, the command performs basic validation of your module to check for common errors.
 The following criteria are checked for every `upload`:
@@ -1746,7 +1744,7 @@ The following criteria are checked for every `upload`:
 
 See [Create a module](/build-modules/write-a-driver-module/) and [Update and manage modules you created](/build-modules/manage-modules/) for a detailed walkthrough of the `viam module` commands.
 
-#### Using the `build` subcommand
+### Using the `build` subcommand
 
 You can use the `module build start` or `module build local` commands to build your custom module according to the build steps in your <file>meta.json</file> file:
 
@@ -1919,7 +1917,7 @@ To list all in-progress builds and their build status, use the following command
 viam module build list
 ```
 
-### `organizations`
+## `organizations`
 
 The `organizations` command allows you to list the organizations your authenticated session has access to, and to create a new organization API key.
 
@@ -1943,7 +1941,7 @@ viam organization auth-service oauth-app [read | delete] --org-id=<org-id> --cli
 
 See [Manage API keys](/cli/administer-your-organization/#manage-api-keys) for more information.
 
-#### `organizations list`
+### `organizations list`
 
 List all organizations (name, ID, and [namespace](/build-modules/module-reference/)) that the authenticated session has access to.
 
@@ -1952,7 +1950,7 @@ List all organizations (name, ID, and [namespace](/build-modules/module-referenc
 viam organizations list
 ```
 
-#### `organizations api-key create`
+### `organizations api-key create`
 
 Create a new organization API key.
 
@@ -1967,7 +1965,7 @@ viam organizations api-key create --org-id=123 --name=my-key
 | `--org-id` | The organization to create the API key in. | **Required** |
 | `--name` | The optional name for the organization API key. If omitted, a name will be auto-generated based on your login info and the current time. | Optional |
 
-#### `organizations support-email get`
+### `organizations support-email get`
 
 Get the support email for an organization.
 
@@ -1980,7 +1978,7 @@ viam organizations support-email get --org-id=<org-id>
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
 
-#### `organizations support-email set`
+### `organizations support-email set`
 
 Set the support email for an organization.
 
@@ -1994,7 +1992,7 @@ viam organizations support-email set --org-id=<org-id> --support-email=<support-
 | `--org-id` | The organization to perform the command on. | **Required** |
 | `--support-email` | The support email to set for the organization. | **Required** |
 
-#### `organizations logo set`
+### `organizations logo set`
 
 Upload the logo for an organization from a local file.
 
@@ -2008,7 +2006,7 @@ viam organizations logo set --org-id=<org-id> --logo-path=<logo-path>
 | `--org-id` | The organization to perform the command on. | **Required** |
 | `--logo-path` | Path to the logo file to upload. | **Required** |
 
-#### `organizations billing-service get-config`
+### `organizations billing-service get-config`
 
 Get the billing service config for an organization.
 
@@ -2021,7 +2019,7 @@ viam organizations billing-service get-config --org-id=<org-id>
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
 
-#### `organizations billing-service enable`
+### `organizations billing-service enable`
 
 Enable the billing service for an organization.
 
@@ -2035,7 +2033,7 @@ viam organizations billing-service enable --org-id=<org-id> --address=<address>
 | `--org-id` | The organization to perform the command on. | **Required** |
 | `--address` | The stringified billing address that follows the pattern: line1, line2 (optional), city, state, zipcode. | **Required** |
 
-#### `organizations billing-service update`
+### `organizations billing-service update`
 
 Update the billing service for an organization.
 
@@ -2049,7 +2047,7 @@ viam organizations billing-service update --org-id=<org-id> --address=<address>
 | `--org-id` | The organization to perform the command on. | **Required** |
 | `--address` | The stringified billing address that follows the pattern: line1, line2 (optional), city, state, zipcode. | **Required** |
 
-#### `organizations billing-service disable`
+### `organizations billing-service disable`
 
 Disable the billing service for an organization.
 
@@ -2062,7 +2060,7 @@ viam organizations billing-service disable --org-id=<org-id>
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
 
-#### `organizations auth-service enable`
+### `organizations auth-service enable`
 
 Enable auth-service for OAuth applications.
 
@@ -2075,7 +2073,7 @@ viam organization auth-service enable --org-id=<org-id>
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
 
-#### `organizations auth-service disable`
+### `organizations auth-service disable`
 
 Disable auth-service for OAuth applications. Disabling the auth-service does not delete your OAuth token, it will just take off the custom branding.
 
@@ -2088,7 +2086,7 @@ viam organization auth-service disable --org-id=<org-id>
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
 
-#### `organizations auth-service oauth-app create`
+### `organizations auth-service oauth-app create`
 
 Create a new OAuth application.
 
@@ -2109,7 +2107,7 @@ viam organization auth-service oauth-app create --client-authentication=<policy>
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
 
-#### `organizations auth-service oauth-app update`
+### `organizations auth-service oauth-app update`
 
 Update an existing OAuth application.
 
@@ -2131,7 +2129,7 @@ viam organization auth-service oauth-app update --org-id=<org-id> --client-id=<c
 | `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
 | `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
 
-#### `organizations auth-service oauth-app list`
+### `organizations auth-service oauth-app list`
 
 List OAuth applications for an organization.
 
@@ -2144,7 +2142,7 @@ viam organization auth-service oauth-app list --org-id=<org-id>
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
 
-#### `organizations auth-service oauth-app read`
+### `organizations auth-service oauth-app read`
 
 Read an OAuth application.
 
@@ -2158,7 +2156,7 @@ viam organization auth-service oauth-app read --org-id=<org-id> --client-id=<cli
 | `--org-id` | The organization to perform the command on. | **Required** |
 | `--client-id` | The client ID of the OAuth application. | **Required** |
 
-#### `organizations auth-service oauth-app delete`
+### `organizations auth-service oauth-app delete`
 
 Delete an OAuth application.
 
@@ -2172,7 +2170,7 @@ viam organization auth-service oauth-app delete --org-id=<org-id> --client-id=<c
 | `--org-id` | The organization to perform the command on. | **Required** |
 | `--client-id` | The client ID of the OAuth application. | **Required** |
 
-### `packages`
+## `packages`
 
 The `packages` command allows you to upload packages to the Viam Cloud or export packages from the Viam Cloud.
 For example, you can use this command to download ML models or modules from the registry.
@@ -2182,7 +2180,7 @@ viam packages upload --org-id=<org-id> --name=<package-name> --version=<version>
 viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
 ```
 
-#### `packages upload`
+### `packages upload`
 
 Upload a package to the Viam Cloud.
 
@@ -2201,7 +2199,7 @@ viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_mod
 | `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | **Required** |
 | `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | **Required** |
 
-#### `packages export`
+### `packages export`
 
 Download a package from the Viam Cloud.
 
@@ -2218,7 +2216,7 @@ viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_mo
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
 | `--destination` | The output directory for downloaded package. | **Required** |
 
-### `parse-ftdc`
+## `parse-ftdc`
 
 The `parse-ftdc` command parses an FTDC (Full-Time Diagnostic Data Capture) file and opens an interactive REPL for inspecting performance metrics collected by `viam-server`.
 This is a diagnostic tool. Viam support may ask you to run it when troubleshooting performance issues.
@@ -2233,7 +2231,7 @@ viam parse-ftdc --path ftdc-tmp/<part-id>/viam-server-<date>-<time>.ftdc
 | -------- | ----------- | --------- |
 | `--path` | The absolute file path to the FTDC file. | **Required** |
 
-### `profiles`
+## `profiles`
 
 The `profiles` command allows you to manage different CLI authentication profiles, so you can easily switch between API key authentications (for example authentication to one organization versus another).
 
@@ -2269,7 +2267,7 @@ See [Manage API keys](/cli/administer-your-organization/#manage-api-keys) for mo
 You can set a default profile by using the `VIAM_CLI_PROFILE_NAME` environment variable.
 {{% /alert %}}
 
-#### `profiles add`
+### `profiles add`
 
 Add a new profile for authentication. Throws an error if the profile already exists.
 
@@ -2284,7 +2282,7 @@ viam profiles add --profile-name=<name-of-profile-to-add> --key-id=<API-key-ID> 
 | `--key-id` | The `key id` (UUID) of the API key. | **Required** |
 | `--key` | The `key value` of the API key. | **Required** |
 
-#### `profiles update`
+### `profiles update`
 
 Update an existing profile for authentication, or add it if it doesn't exist.
 
@@ -2299,7 +2297,7 @@ viam profiles update --profile-name=<name-of-profile-to-update> --key-id=<API-ke
 | `--key-id` | The `key id` (UUID) of the API key. | **Required** |
 | `--key` | The `key value` of the API key. | **Required** |
 
-#### `profiles list`
+### `profiles list`
 
 List all existing profiles by name.
 
@@ -2307,7 +2305,7 @@ List all existing profiles by name.
 viam profiles list
 ```
 
-#### `profiles remove`
+### `profiles remove`
 
 Remove a profile.
 
@@ -2320,7 +2318,7 @@ viam profiles remove --profile-name=<name-of-profile-to-remove>
 | -------- | ----------- | --------- |
 | `--profile-name` | Name of the profile to remove. | **Required** |
 
-### `resource`
+## `resource`
 
 The `resource` command enables, disables, or updates individual resources (components and services) on a machine part. Use it to temporarily disable a resource without removing it from the configuration, or to update attributes without using the Viam app.
 
@@ -2349,7 +2347,7 @@ viam resource update --part=abc123 --resource-name=my-sensor --config=/path/to/u
 viam resource update --part=abc123 --resource-name=my-sensor --config='{"pin": ""}'
 ```
 
-#### `resource enable`
+### `resource enable`
 
 Enable one or more resources on a machine part.
 
@@ -2366,7 +2364,7 @@ viam resource enable --part=<part> --resource-name=<resource-name> [--resource-n
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--machine` | Machine ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 
-#### `resource disable`
+### `resource disable`
 
 Disable one or more resources on a machine part. Disabled resources are not started by viam-server.
 
@@ -2383,7 +2381,7 @@ viam resource disable --part=<part> --resource-name=<resource-name> [--resource-
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--machine` | Machine ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 
-#### `resource update`
+### `resource update`
 
 Replace a resource's attributes with new values. The `--config` flag accepts inline JSON or a path to a JSON file. An empty JSON object deletes all attributes.
 
@@ -2401,7 +2399,7 @@ viam resource update --part=<part> --resource-name=<resource-name> --config=<jso
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--machine` | Machine ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 
-### `train`
+## `train`
 
 Use a training script to train an ML model on data.
 
@@ -2416,7 +2414,7 @@ viam train list --org-id=<org-id> --job-status=<job-status>
 viam train containers list
 ```
 
-#### `train submit managed`
+### `train submit managed`
 
 Submit a training job on data in the Viam Cloud with a Viam-managed training script.
 
@@ -2436,7 +2434,7 @@ viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoo
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | **Required** |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 
-#### `train submit custom from-registry`
+### `train submit custom from-registry`
 
 Submit a custom training job with an existing training script in the registry on data in the Viam Cloud.
 
@@ -2457,7 +2455,7 @@ viam train submit custom from-registry --dataset-id=<INSERT DATASET ID> --org-id
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | Optional |
 
-#### `train submit custom with-upload`
+### `train submit custom with-upload`
 
 Upload a draft training script and submit a custom training job on data in the Viam Cloud.
 
@@ -2482,7 +2480,7 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | Optional |
 
-#### `train get`
+### `train get`
 
 Get a training job from the Viam Cloud based on training job ID.
 
@@ -2496,7 +2494,7 @@ viam train get --job-id=123
 | -------- | ----------- | --------- |
 | `--job-id` | The ID of the training job to get. You can retrieve this value with `train list`. | **Required** |
 
-#### `train logs`
+### `train logs`
 
 Get the logs of a training job from the Viam Cloud based on training job ID.
 
@@ -2510,7 +2508,7 @@ viam train logs --job-id=123
 | -------- | ----------- | --------- |
 | `--job-id` | The ID of the training job to get logs for. | **Required** |
 
-#### `train cancel`
+### `train cancel`
 
 Cancel a training job in the Viam Cloud based on training job ID.
 
@@ -2524,7 +2522,7 @@ viam train cancel --job-id=123
 | -------- | ----------- | --------- |
 | `--job-id` | The ID of the training job to cancel. | **Required** |
 
-#### `train list`
+### `train list`
 
 List training jobs in Viam Cloud based on organization ID and job status.
 
@@ -2539,7 +2537,7 @@ viam train list --org-id=123 --job-status=completed
 | `--org-id` | The organization ID to list training jobs from. | **Required** |
 | `--job-status` | Training status to filter for. Can be one of `canceled`, `canceling`, `completed`, `failed`, `in_progress`, `pending`, or `unspecified`. | Optional |
 
-#### `train containers list`
+### `train containers list`
 
 List supported Docker container images for custom training.
 
@@ -2547,7 +2545,7 @@ List supported Docker container images for custom training.
 viam train containers list
 ```
 
-### `training-script`
+## `training-script`
 
 Manage training scripts for [custom ML training](/train/custom-training-scripts/).
 
@@ -2556,7 +2554,7 @@ viam training-script upload --framework=<framework> --org-id=<org-id> --path=<pa
 viam training-script update --org-id=<org-id> --script-name=<script-name> --visibility=<visibility>
 ```
 
-#### `training-script upload`
+### `training-script upload`
 
 Upload an ML training script to the registry.
 
@@ -2577,7 +2575,7 @@ viam training-script upload --framework=tflite --org-id=123 --path=. --script-na
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | Optional |
 
-#### `training-script update`
+### `training-script update`
 
 Update the visibility of an ML training script in the registry.
 
@@ -2594,7 +2592,7 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 | `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | **Required** |
 | `--description` | Description of the ML training script. | Optional |
 
-### `traces`
+## `traces`
 
 The `traces` command imports viam-server trace files to an OTLP endpoint or prints them to the console. Use it to debug machine performance and request flow with a tracing backend such as Jaeger or Tempo.
 
@@ -2608,7 +2606,7 @@ viam traces print-remote --part=<part> [--organization=<org>] [--location=<locat
 viam traces get-remote --part=<part> [target] [--organization=<org>] [--location=<location>]
 ```
 
-#### `traces import-local`
+### `traces import-local`
 
 Import traces from a local viam-server trace file to an OTLP endpoint.
 
@@ -2623,7 +2621,7 @@ Pass the path to a local viam-server trace file as a positional argument.
 | -------- | ----------- | --------- |
 | `--endpoint` | OTLP endpoint in `host:port` format. Default: `localhost:4317`. | Optional |
 
-#### `traces import-remote`
+### `traces import-remote`
 
 Import traces from a remote machine to an OTLP endpoint.
 
@@ -2639,7 +2637,7 @@ viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 
-#### `traces print-local`
+### `traces print-local`
 
 Print traces from a local trace file to the console.
 
@@ -2649,7 +2647,7 @@ viam traces print-local <traces-file>
 
 Pass the path to a local viam-server trace file as a positional argument.
 
-#### `traces print-remote`
+### `traces print-remote`
 
 Print traces from a remote machine to the console.
 
@@ -2664,7 +2662,7 @@ viam traces print-remote --part=<part> [--organization=<org>] [--location=<locat
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 
-#### `traces get-remote`
+### `traces get-remote`
 
 Download traces from a remote machine to a local file. If `[target]` is omitted, the file is saved to the current working directory.
 
@@ -2679,7 +2677,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 
-### `update`
+## `update`
 
 The `update` command updates the CLI to the latest version.
 If the CLI was installed with Homebrew, it updates through Homebrew.
@@ -2694,7 +2692,7 @@ viam update
 | -------- | ----------- | --------- |
 | `--no-progress` | Hide progress output during the update. Default: `false`. | Optional |
 
-### `version`
+## `version`
 
 The `version` command returns the version of the Viam CLI.
 To update to the latest version of the CLI, run [`viam update`](#update).
@@ -2703,7 +2701,7 @@ To update to the latest version of the CLI, run [`viam update`](#update).
 viam version
 ```
 
-### `whoami`
+## `whoami`
 
 The `whoami` command returns the Viam user for an authenticated CLI session, or "Not logged in" if there is no authenticated session.
 
@@ -2711,7 +2709,7 @@ The `whoami` command returns the Viam user for an authenticated CLI session, or 
 viam whoami
 ```
 
-### `xacro`
+## `xacro`
 
 The `xacro` command converts ROS xacro files to URDF using a Docker container. Use it to integrate ROS-based robot descriptions with Viam's frame system.
 
@@ -2732,7 +2730,7 @@ viam xacro convert --input-file=arm.xacro --output-file=arm.urdf --args=name:=ur
 viam xacro convert --input-file=robot.xacro --output-file=robot.urdf --collapse-fixed-joints
 ```
 
-#### `xacro convert`
+### `xacro convert`
 
 Convert a xacro file to URDF.
 
