@@ -56,6 +56,8 @@ Click **Save** after adding and configuring your resources.
 
 ## Apply a fragment to a machine
 
+### In the Viam app
+
 1. Navigate to your machine's **CONFIGURE** tab.
 1. Click **+** and select **Configuration block**.
 1. Search for your fragment by name and select it.
@@ -65,7 +67,7 @@ Click **Save** after adding and configuring your resources.
 
 The fragment's resources now appear on the machine's configuration page. The machine downloads and applies the configuration on its next sync.
 
-To apply a fragment to many machines, use the CLI in a loop or script:
+### With the CLI
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
@@ -73,7 +75,7 @@ viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
 
 To find your part ID, run `viam machines part list --machine=<machine-id>`. To find your fragment ID, copy it from the fragment's page in the Viam app (it appears in the URL and under the fragment name).
 
-See [automate with scripts](/cli/automate-with-scripts/) for examples of scripting fleet operations.
+To apply a fragment across many machines, see [Automate with scripts](/cli/automate-with-scripts/).
 
 ### Avoid resource name conflicts with a prefix
 
