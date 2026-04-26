@@ -15,17 +15,27 @@ Use API keys to authenticate SDK connections, CLI scripts, and automated workflo
 
 ## Choose the right scope
 
-Every API key is scoped to an organization, location, or machine, and assigned an Owner or Operator role.
+Every API key is scoped to an organization, location, or machine.
 Follow the principle of least privilege: grant the narrowest scope that lets the key do its job.
 
-| Use case                                 | Recommended scope   |
-| ---------------------------------------- | ------------------- |
-| SDK connection to one machine            | Machine, Operator   |
-| Automated deployment script for one site | Location, Owner     |
-| CI/CD pipeline for module uploads        | Organization, Owner |
-| Monitoring dashboard for a location      | Location, Operator  |
+| Use case                                 | Recommended scope |
+| ---------------------------------------- | ----------------- |
+| SDK connection to one machine            | Machine           |
+| Automated deployment script for one site | Location          |
+| CI/CD pipeline for module uploads        | Organization      |
+| Monitoring dashboard for a location      | Location          |
 
-For details on what each role can do, see [Permissions](/organization/rbac/).
+## Choose the role
+
+Each key is assigned a role: **Owner** or **Operator**.
+Owner has full access at the key's scope.
+Operator can control machines through the **CONTROL** tab and view some data, but cannot configure machines, view logs, or manage members.
+
+The Viam app and CLI both create Owner-role keys.
+To create an Operator-role key, use the Python SDK with `APIKeyAuthorization(role="operator", ...)`.
+See [Create an Operator-role key](#create-an-operator-role-key) below.
+
+For the full permission matrix, see [Permissions](/organization/rbac/).
 
 ## Create an API key
 
@@ -44,22 +54,28 @@ For details on what each role can do, see [Permissions](/organization/rbac/).
 
 Create a key at the organization, location, or machine level:
 
-```sh {class="command-line" data-prompt="$" data-output="2-3"}
+```sh {class="command-line" data-prompt="$" data-output="2-5"}
 viam organizations api-key create --org-id <org-id> --name "deploy-pipeline"
+Successfully created key:
 Key ID: xxxx-xxxx
-Key: xxxx-xxxx-xxxx
+Key Value: xxxx-xxxx-xxxx
+Keep this key somewhere safe; it has full write access to your organization
 ```
 
-```sh {class="command-line" data-prompt="$" data-output="2-3"}
+```sh {class="command-line" data-prompt="$" data-output="2-5"}
 viam locations api-key create --location-id <location-id> --name "warehouse-monitoring"
+Successfully created key:
 Key ID: xxxx-xxxx
-Key: xxxx-xxxx-xxxx
+Key Value: xxxx-xxxx-xxxx
+Keep this key somewhere safe; it has full write access to your location
 ```
 
-```sh {class="command-line" data-prompt="$" data-output="2-3"}
+```sh {class="command-line" data-prompt="$" data-output="2-5"}
 viam machines api-key create --machine-id <machine-id> --name "arm-control"
+Successfully created key:
 Key ID: xxxx-xxxx
-Key: xxxx-xxxx-xxxx
+Key Value: xxxx-xxxx-xxxx
+Keep this key somewhere safe; it has full write access to your machine
 ```
 
 {{% /tab %}}
@@ -92,6 +108,25 @@ Viam does not store the key value after creation.
 If you lose it, you must rotate or create a new key.
 {{< /alert >}}
 
+### Create an Operator-role key
+
+The Python SDK is the only path to Operator-role keys.
+Pass `role="operator"` to `APIKeyAuthorization`:
+
+```python
+api_key, api_key_id = await client.app_client.create_key(
+    org_id="<org-id>",
+    authorizations=[
+        APIKeyAuthorization(
+            role="operator",
+            resource_type="location",
+            resource_id="<location-id>",
+        )
+    ],
+    name="control-dashboard-readonly",
+)
+```
+
 ## List API keys
 
 {{< tabs >}}
@@ -100,7 +135,7 @@ If you lose it, you must rotate or create a new key.
 ```python
 keys = await client.app_client.list_keys(org_id="<org-id>")
 for key in keys:
-    print(f"{key.api_key_id}: {key.name}")
+    print(f"{key.api_key.id}: {key.api_key.name}")
 ```
 
 {{% /tab %}}
@@ -109,7 +144,7 @@ for key in keys:
 ```go
 keys, err := client.ListKeys(ctx, "<org-id>")
 for _, key := range keys {
-    fmt.Printf("%s: %s\n", key.APIKeyID, key.Name)
+    fmt.Printf("%s: %s\n", key.APIKey.ID, key.APIKey.Name)
 }
 ```
 
@@ -141,7 +176,7 @@ new_key, new_key_id = await client.app_client.rotate_key(id="<api-key-id>")
 {{% tab name="Go" %}}
 
 ```go
-newKey, newKeyID, err := client.RotateKey(ctx, "<api-key-id>")
+newKeyID, newKey, err := client.RotateKey(ctx, "<api-key-id>")
 ```
 
 {{% /tab %}}
@@ -158,7 +193,7 @@ For zero-downtime rotation, use the create-then-delete approach instead.
 Give a key a more descriptive name:
 
 ```go
-err := client.RenameKey(ctx, "<api-key-id>", "new-descriptive-name")
+_, _, err := client.RenameKey(ctx, "<api-key-id>", "new-descriptive-name")
 ```
 
 {{< alert title="Note" color="note" >}}
