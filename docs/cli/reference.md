@@ -22,11 +22,12 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
-| `--debug` | Enable debug logging. Default: `false`. |
-| `--disable-profiles`, `disable-profile` | Disable usage of [profiles](#profiles), falling back to default (false) behavior. Default: `false`. |
+| `--config`, `-c` | Load configuration from `FILE`. |
+| `--debug`, `--vvv` | Enable debug logging. Default: `false`. |
+| `--disable-profiles`, `--disable-profile` | Disable usage of [profiles](#profiles), falling back to default behavior. Default: `false`. |
 | `--help`, `-h` | Show help. Default: `false`. |
 | `--profile` | Specify a particular [profile](#profiles) for the current command. |
-| `--quiet`, `-q` | Suppress warnings. Default: `false` |
+| `--quiet`, `-q` | Suppress warnings. Default: `false`. |
 
 ## `data`
 
@@ -69,6 +70,7 @@ viam data export tabular --part-id=e1234f0c-912c-1234-a123-5ac1234612345 --resou
 | `--method` | Filter by specified method. | **Required** |
 | `--start` | ISO-8601 timestamp indicating the start of the interval. | Optional |
 | `--end` | ISO-8601 timestamp indicating the end of the interval. | Optional |
+| `--additional-params` | Additional parameters to pass to the tabular data export query. Accepts a JSON string of key-value pairs. | Optional |
 
 ### `data export binary filter`
 
@@ -112,8 +114,7 @@ viam data export binary ids --destination=<output path> --binary-data-ids=<binar
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--destination` | Output directory for downloaded data. | **Required** |
-| `--binary-data-ids` | Binary data IDs to download. | **Required** |
-| `--parallel` | Number of download requests to make in parallel. Default: `100`. | Optional |
+| `--binary-data-ids` | Binary data IDs to download. Accepts a single ID or a comma-separated list. | **Required** |
 | `--timeout` | Number of seconds to wait for file downloads. Default: `30`. | Optional |
 
 ### `data delete binary`
@@ -128,9 +129,10 @@ viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). | Optional |
-| `--start` | ISO-8601 timestamp indicating the start of the interval. | Optional |
-| `--end` | ISO-8601 timestamp indicating the end of the interval. | Optional |
+| `--org-ids` | Filter by specified organizations ID (accepts comma-separated list). | **Required** |
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | **Required** |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | **Required** |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | Optional |
 | `--component-name` | Filter by specified component name. | Optional |
 | `--component-type` | Filter by specified component type. | Optional |
 | `--location-ids` | Filter by specified location ID (accepts comma-separated list). | Optional |
@@ -138,10 +140,9 @@ viam data delete binary --org-ids=123 --mime-types=image/jpeg --start 2024-08-20
 | `--machine-name` | Filter by specified machine name. | Optional |
 | `--method` | Filter by specified method. | Optional |
 | `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | Optional |
-| `--parallel` | Number of download requests to make in parallel. Default: `100`. | Optional |
 | `--part-id` | Filter by specified part ID. | Optional |
 | `--part-name` | Filter by specified part name. | Optional |
-| `--tags` | Filter by specified tag (accepts comma-separated list). | Optional |
+| `--tags` | Filter by specified tag. Accepts `tagged` for all tagged data, `untagged` for all untagged data, or a comma-separated list of tags. | Optional |
 
 Viam currently only supports deleting approximately 500 files at a time.
 To delete more data iterate over the data with a shell script:
@@ -212,7 +213,7 @@ See [Using the `ids` argument](#using-the-ids-argument) for details on retrievin
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--binary-data-ids` | Binary data IDs to add tags to. | **Required** |
-| `--tags` | Tags to add (accepts comma-separated list). | Optional |
+| `--tags` | Tags to add (accepts comma-separated list). | **Required** |
 
 ### `data tag ids remove`
 
@@ -227,7 +228,7 @@ viam data tag ids remove --tags=new_tag_1,new_tag_2,new_tag_3 --binary-data-ids=
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--binary-data-ids` | Binary data IDs to remove tags from. | **Required** |
-| `--tags` | Tags to remove (accepts comma-separated list). | Optional |
+| `--tags` | Tags to remove (accepts comma-separated list). | **Required** |
 
 ### `data tag filter add`
 
@@ -241,7 +242,7 @@ viam data tag filter add --tags=new_tag_1,new_tag_2 --location-ids=012 --machine
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--tags` | Tags to add (accepts comma-separated list). | Optional |
+| `--tags` | Tags to add (accepts comma-separated list). | **Required** |
 | `--filter-tags` | Filter tags. Options: `'tagged'`, `'untagged'`, or a comma-separated list of tags for all data matching any of the tags. | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | Optional |
 | `--component-name` | Filter by specified component name. | Optional |
@@ -269,7 +270,7 @@ viam data tag filter remove --tags=new_tag_1 --location-ids=012 --machine-name=c
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--tags` | Tags to remove (accepts comma-separated list). | Optional |
+| `--tags` | Tags to remove (accepts comma-separated list). | **Required** |
 | `--filter-tags` | Filter tags. Options: `'tagged'`, `'untagged'`, or a comma-separated list of tags for all data matching any of the tags. | Optional |
 | `--bbox-labels` | String labels corresponding to bounding boxes within images. | Optional |
 | `--component-name` | Filter by specified component name. | Optional |
@@ -541,7 +542,8 @@ viam dataset export --destination=./dataset/example --dataset-id=abc
 | `--destination` | Output directory for downloaded data. | **Required** |
 | `--only-jsonl` | Include only the JSON Lines files for local testing. No binary data is downloaded. | Optional |
 | `--force-linux-path` | Force the use of Linux-style paths in the dataset.jsonl file. | Optional |
-| `--parallel` | Number of download requests to make in parallel, with a default value of 100. | Optional |
+| `--parallel` | Number of download requests to make in parallel. Default: `100`. | Optional |
+| `--timeout` | Number of seconds to wait for large file downloads. Default: `30`. | Optional |
 
 ### `dataset merge`
 
@@ -571,7 +573,6 @@ viam dataset data add ids --dataset-id=abc --binary-data-ids=aaa,bbb
 | -------- | ----------- | --------- |
 | `--dataset-id` | Dataset to add images to. To retrieve the ID, navigate to your dataset's page, click **…** in the left-hand menu, and click **Copy dataset ID**. | **Required** |
 | `--binary-data-ids` | The binary data IDs of the images to add. | **Required** |
-| `--org-id` | Organization ID of the organization the dataset belongs to. | Optional |
 
 ### `dataset data add filter`
 
@@ -859,7 +860,7 @@ The `logout` command ends an authenticated CLI session.
 viam logout
 ```
 
-## `machines` (alias `robots` and `machine`)
+## `machines` (aliases `robots`, `robot`, `machine`)
 
 The `machines` command allows you to manage your machine fleet.
 This includes:
@@ -876,16 +877,16 @@ This includes:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines create --name=<machine name> --location=<location id>
-viam machines update --machine=<machine id> [--name=<new name>] [--location=<new location id>]
+viam machines update --machine=<machine id> [--new-name=<new name>] [--new-location=<new location id>]
 viam machines delete --machine=<machine id>
 viam machines list
 viam machines status --machine=<machine id>
 viam machines logs --machine=<machine id> [...named args]
 viam machines api-key create --machine-id=<machine id> --org-id=<org id> --name=<key name>
 viam machines part list --machine=<machine id>
-viam machines part logs --machine=<machine id> --part=<part id> [...named args]
-viam machines part status --machine=<machine id>
-viam machines part run --machine=<machine id> [--stream] --data <method>
+viam machines part logs --part=<part id> [...named args]
+viam machines part status --part=<part id>
+viam machines part run --part=<part id> --method=<method> [--data=<data>] [--stream=<interval>]
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part history --part=<part id>
@@ -918,8 +919,8 @@ viam machines create --name="My Machine" --location=12345
 Move a machine from one location to another and/or rename the machine.
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines update --machine=123 --name="New Name"
-viam machines update --machine=123 --location=67890
+viam machines update --machine=123 --new-name="New Name"
+viam machines update --machine=123 --new-location=67890
 ```
 
 <!-- prettier-ignore -->
@@ -1055,16 +1056,21 @@ Run a component or service command, optionally at a specified interval. For comm
 ```sh {class="command-line" data-prompt="$"}
 # stream classifications from a machine part every 500 milliseconds from the Viam Vision Service with classifier "stuff_detector"
 viam machines part run --part=myrover-main --stream=500ms \
---data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}' \
-viam.service.vision.v1.VisionService.GetClassificationsFromCamera
+--method=viam.service.vision.v1.VisionService.GetClassificationsFromCamera \
+--data='{"name": "vision", "camera_name": "cam", "classifier_name": "stuff_classifier", "n":1}'
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--data` | Command data for the command being request to run. See [Using the `--stream` and `--data` arguments](#using-the---stream-and---data-arguments). | **Required** |
-| `--stream` | If specified, the interval in which to stream the specified data, for example, 100ms or 1s. | Optional |
+| `--method` | Method name (for example, `DoCommand`) or full service method (for example, `viam.component.camera.v1.CameraService.DoCommand`). | **Required** |
+| `--data`, `-d` | Command data for the command being requested to run. See [Using the `--stream` and `--data` arguments](#using-the---stream-and---data-arguments). | Optional |
+| `--component`, `-c` | Component name. Automatically sets `name` in `--data` and resolves short method names. | Optional |
+| `--stream`, `-s` | If specified, the interval at which to stream the specified data, for example, `100ms` or `1s`. Default: `0s`. | Optional |
+| `--organization` | Organization ID or name. | Optional |
+| `--location` | Location ID or name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
 
 ### `machines part logs`
 
@@ -1459,29 +1465,21 @@ viam machines part delete-trigger --part=<part id> --name=<trigger name>
 
 ### Using the `--stream` and `--data` arguments
 
-Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
+Issuing the `machines part run` command allows you to run component and service (resource) commands for a selected machine part.
 
-The `--data` parameter is required and you must specify both:
+You specify the resource method with `--method`. Use either the short name (for example, `DoCommand` or `GetReadings`) together with `--component=<name>`, or the full {{< glossary_tooltip term_id="protobuf" text="protobuf" >}} package and method path (for example, `viam.service.vision.v1.VisionService.GetClassificationsFromCamera`).
 
-- Method arguments in JSON format
-- A resource method (in the form of the {{< glossary_tooltip term_id="protobuf" text="protobuf" >}} package and method path)
-
-The format of what is passed to the `--data` argument is:
+The `--data` parameter accepts method arguments as a JSON object. For example:
 
 ```sh {class="command-line" data-prompt="$"}
-'{"arg1": "val1"}' <protobuf path>
+viam machines part run --part=<part-id> \
+    --method=viam.service.vision.v1.VisionService.GetClassificationsFromCamera \
+    --data='{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}'
 ```
 
-You can find the protobuf path for the Viam package and method in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
+You can find the protobuf path for any Viam package and method in the [Viam API package](https://github.com/viamrobotics/api/tree/main/proto/viam) by navigating to the component or service directory and then clicking on the resource file. The protobuf path is the package name.
 
-For example:
-
-```sh {class="command-line" data-prompt="$"}
-'{"name": "vision", "camera_name": "cam", "classifier_name": "my_classifier", "n":1}' \
-viam.service.vision.v1.VisionService.GetClassificationsFromCamera
-```
-
-The `--stream` argument, when included in the CLI command prior to the `--data` command, will stream data back at the specified interval.
+The `--stream` argument streams data back at the specified interval, for example `100ms` or `1s`.
 
 ## `metadata`
 
@@ -2656,8 +2654,8 @@ viam train submit managed --dataset-id=456 --model-org-id=123 --model-name=MyCoo
 | `--model-org-id` | The organization ID to train and save the ML model in. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | **Required** |
 | `--model-name` | The name of the ML model. | **Required** |
 | `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, or `object_detection`. | **Required** |
-| `--model-framework` | The framework of model to train. Must be one of `tflite` or `tensorflow`. | **Required** |
 | `--model-labels` | Labels to train on. These will either be classification or object detection labels. | **Required** |
+| `--model-framework` | The framework of model to train. Must be one of `tflite` or `tensorflow`. | Optional |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 
 ### `train submit custom from-registry`
@@ -2694,14 +2692,15 @@ viam train submit custom with-upload --dataset-id=<INSERT DATASET ID> --model-or
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--dataset-id` | The ID of the dataset to train on. | **Required** |
-| `--model-org-id` | The organization ID to train and save the ML model in. | **Required** |
+| `--org-id` | The organization ID to save the custom training script in. | **Required** |
+| `--model-org-id` | The organization ID to upload and run the training job in. | **Required** |
 | `--model-name` | The name of the ML model. | **Required** |
-| `--script-name` | The registry name of the ML training script to use for training. This sets the name on upload. | **Required** |
-| `--version` | The version of the ML training script to use for training. | **Required** |
 | `--path` | The path to the ML training script to upload. | **Required** |
-| `--framework` | Framework of the ML training script to upload, can be `tflite`, `tensorflow`, `pytorch`, or `onnx`. | **Required** |
+| `--script-name` | The registry name of the ML training script to use for training. This sets the name on upload. | **Required** |
 | `--container-version` | Docker container version for training. Use `viam train containers list` to see available versions. | **Required** |
+| `--framework` | Framework of the ML training script to upload. Options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, `onnx`. | Optional |
 | `--model-type` | Type of model to train. Must be one of `single_label_classification`, `multi_label_classification`, `object_detection`, or `unspecified`. | Optional |
+| `--version` | The version of the ML training script to upload. Default: current timestamp. | Optional |
 | `--model-version` | Set the version of the submitted model. Defaults to current timestamp if unspecified. | Optional |
 | `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
 | `--args` | Pass custom comma-separated arguments to the training script. Example: `num_epochs=3,model_type=multi_label`. To include whitespace, enclose the value with whitespace in single and double quotes. Example: `num_epochs=3,labels="'green_square blue_star'"`. | Optional |
@@ -2800,6 +2799,7 @@ viam training-script upload --framework=tflite --org-id=123 --path=. --script-na
 | `--url` | URL of GitHub repository associated with the training script. | Optional |
 | `--type` | Task type of the ML training script to upload, can be `single_label_classification`, `multi_label_classification`, or `object_detection`. | Optional |
 | `--draft` | Indicate draft mode, drafts are not viewable in the registry. | Optional |
+| `--visibility` | Visibility of the training script. Options: `public`, `private`. | Optional |
 
 ### `training-script update`
 
@@ -2815,8 +2815,9 @@ viam training-script update --org-id=123 --script-name=MyCustomTrainingScript --
 | -------- | ----------- | --------- |
 | `--org-id` | The organization ID hosting the script. You can find your organization ID by running `viam organizations list` or by visiting your organization's **Settings** page in the [Viam app](https://app.viam.com/). | **Required** |
 | `--script-name` | Name of the ML training script to update. | **Required** |
-| `--visibility` | Visibility of the registry item, can be `public`, `private`, or `draft`. | **Required** |
+| `--visibility` | Visibility of the registry item. Options: `public`, `private`. | **Required** |
 | `--description` | Description of the ML training script. | Optional |
+| `--url` | URL of the GitHub repository associated with the training scripts. | Optional |
 
 ## `traces`
 
