@@ -778,8 +778,8 @@ The `locations` command allows you to manage the [locations](/reference/) that y
 With it, you can list available locations, filter locations by organization, or create a new location API key.
 
 ```sh {class="command-line" data-prompt="$"}
-viam locations list [<organization id>]
-viam locations api-key create --location-id=<location-id>
+viam locations list [--organization=<organization>]
+viam locations api-key create [--location-id=<location-id>] [--name=<name>] [--org-id=<org-id>]
 ```
 
 ### `locations list`
@@ -787,10 +787,13 @@ viam locations api-key create --location-id=<location-id>
 List all locations (name and id) that the authenticated session has access to, grouped by organization.
 
 ```sh {class="command-line" data-prompt="$"}
-viam locations list [<organization id>]
+viam locations list [--organization=<organization>]
 ```
 
-Pass an organization ID as a positional argument to return results for that organization only. Optional.
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--organization` | Restrict results to this organization. Default: the org set by `viam defaults set-org` if it exists, else the first one alphabetically. | Optional |
 
 ### `locations api-key create`
 
@@ -803,9 +806,9 @@ viam locations api-key create --location-id=<location-id>
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--location-id` | The location to create an API key for. | **Required** |
-| `--name` | The name of the API key. | Optional |
-| `--org-id` | The organization ID to attach the key to. | Optional |
+| `--location-id` | The location to create an API key for. Default: the default location set with `viam defaults set-location`. | Optional |
+| `--name` | The name of the API key. Default: your login info with the current time. | Optional |
+| `--org-id` | The organization ID to attach the key to. Default: attempts to attach the key to the org of the location if only one org is attached to the location. | Optional |
 
 ## `login`
 
@@ -885,7 +888,13 @@ viam machines part status --machine=<machine id>
 viam machines part run --machine=<machine id> [--stream] --data <method>
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
+viam machines part history --part=<part id>
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
+viam machines part add-job --part=<part id> [--config=<json or path>]
+viam machines part update-job --part=<part id> --name=<job name> --config=<json or path>
+viam machines part delete-job --part=<part id> --name=<job name>
+viam machines part add-trigger --part=<part id> [--config=<json or path>]
+viam machines part delete-trigger --part=<part id> --name=<trigger name>
 ```
 
 To use `part shell` and `part cp`, add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the latest version of the shell service.
@@ -1107,6 +1116,23 @@ viam machines part restart --part=123
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 
+### `machines part history`
+
+Display the configuration history for a machine part.
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part history --part=<part id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+| `--filter-by-email` | Show only history entries saved by this email address. | Optional |
+
 ### `machines part cp`
 
 Copy files to and from a machine part. To use this feature you must add the [`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json), which contains the shell service, to your machine. Once added you can use `cp` in a similar way to the Linux `scp` command to copy files to and from machines.
@@ -1306,6 +1332,131 @@ viam machines part motion set-pose --part=<part id> --component=<component name>
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--component` | Component name for the motion command. | **Required** |
 
+### `machines part add-job`
+
+Add a scheduled job that runs a method on a resource at a given interval. Run without `--config` to launch an interactive builder, or pass `--config` with inline JSON or a path to a JSON file.
+
+A job config object accepts the following fields:
+
+- `name` (required): unique name for this job.
+- `schedule` (required): one of `continuous`, a Go duration (for example, `5s`, `1h30m`, `500ms`), or a cron expression (for example, `0 0 * * *`, or `*/5 * * * * *` with seconds).
+- `resource` (required): name of the component or service to run the method on.
+- `method` (required): gRPC method name. For example, `DoCommand` or `GetReadings`.
+- `command` (optional): JSON object passed as the argument to `DoCommand`.
+- `log_configuration` (optional): for example, `{"level":"debug"}`. Level must be one of `debug`, `info`, `warn`, or `error`.
+
+```sh {class="command-line" data-prompt="$"}
+# launch the interactive job builder
+viam machines part add-job --part=<part id>
+
+# add a job from inline JSON
+viam machines part add-job --part=<part id> \
+    --config '{"name":"my-job","schedule":"1h","resource":"my-sensor","method":"GetReadings"}'
+
+# add a job from a JSON file
+viam machines part add-job --part=<part id> --config ./job.json
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--config` | JSON job config or path to JSON file. Omit to use the interactive form. | Optional |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+
+### `machines part update-job`
+
+Update an existing job's configuration by name. The `--config` flag accepts a single JSON object (inline or a path to a JSON file) with the fields to change. Only the fields provided will be updated; all other fields remain unchanged. The job name cannot be changed.
+
+```sh {class="command-line" data-prompt="$"}
+# change the schedule
+viam machines part update-job --part=<part id> --name=my-job --config '{"schedule":"30m"}'
+
+# change multiple fields
+viam machines part update-job --part=<part id> --name=my-job \
+    --config '{"schedule":"0 0 * * *","method":"DoCommand","command":{"action":"reset"}}'
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--name` | Name of the job to update. | **Required** |
+| `--config` | JSON job config or path to JSON file with fields to update. | **Required** |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+
+### `machines part delete-job`
+
+Delete an existing scheduled job by name.
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part delete-job --part=<part id> --name=my-job
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--name` | Name of the job to delete. | **Required** |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+
+### `machines part add-trigger`
+
+Add a trigger to a machine part. Run without `--config` to use an interactive form, or provide `--config` with inline JSON or a path to a JSON file.
+
+Trigger configs support the following event types:
+
+- `part_online`: liveness check.
+- `part_data_ingested`: fires when data of the specified types is ingested.
+- `conditional_data_ingested`: fires when data ingested by a specific data capture method matches a condition.
+- `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
+
+Each trigger requires `notifications`, an array of objects with `type` (`email` or `webhook`), `value`, and `seconds_between_notifications`.
+
+```sh {class="command-line" data-prompt="$"}
+# launch the interactive trigger builder
+viam machines part add-trigger --part=<part id>
+
+# add a trigger from inline JSON
+viam machines part add-trigger --part=<part id> \
+    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com","seconds_between_notifications":60}]}'
+
+# add a trigger from a JSON file
+viam machines part add-trigger --part=<part id> --config ./trigger.json
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--config` | JSON trigger config or path to JSON file. Omit to use the interactive form. | Optional |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+
+### `machines part delete-trigger`
+
+Delete a trigger from a machine part by name.
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part delete-trigger --part=<part id> --name=<trigger name>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--name` | Name of the trigger to delete. | **Required** |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+
 ### Using the `--stream` and `--data` arguments
 
 Issuing the `part` command with the `run` positional argument allows you to run component and service (resource) commands for a selected machine part.
@@ -1380,7 +1531,7 @@ viam module update-models [--binary=<binary>] [...named args]
 viam module build start --version=<version> [...named args]
 viam module build local --module=<path to meta.json> [arguments...]
 viam module build list [command options] [arguments...]
-viam module build logs --id=<id> [...named args]
+viam module build logs --build-id=<build-id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 viam module download [command options]
@@ -1437,8 +1588,13 @@ Services:
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
+| `--name` | Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. We recommend _not_ using this option and instead following the prompts. | Optional |
+| `--language` | Language to use for the module. Options: `python`, `go`. We recommend _not_ using this option and instead following the prompts. | Optional |
+| `--visibility` | Module visibility. Options: `private`, `public`, `public_unlisted`. We recommend _not_ using this option and instead following the prompts. | Optional |
+| `--public-namespace` | Namespace or organization ID of the module. Must be either a valid organization ID, or a namespace that exists within a user organization. We recommend _not_ using this option and instead following the prompts. | Optional |
 | `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | Optional |
-| `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | Optional |
+| `--model-name` | Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. We recommend _not_ using this option and instead following the prompts. | Optional |
+| `--register` | Register the module with Viam to associate it with your organization. Default: `false`. | Optional |
 
 ### `module create`
 
@@ -1507,7 +1663,8 @@ viam module upload --version=1.0.0 --platform=darwin/arm64 packaged-module.tar.g
 | `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | **Required** |
 | `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` and `--public-namespace` arguments](#using-the---org-id-and---public-namespace-arguments). | **Required** |
 | `--public-namespace` | The namespace to associate the module to. See [Using the `--org-id` and `--public-namespace` arguments](#using-the---org-id-and---public-namespace-arguments). | **Required** |
-| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
+| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. Default: `./meta.json`. | Optional |
+| `--name` | Name of the module. Used if you don't have a <file>meta.json</file>. | Optional |
 | `--upload` | The path to the upload. | Optional |
 | `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the Raspberry Pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | Optional |
 | `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | Optional |
@@ -1524,14 +1681,12 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). | Optional |
-| `--part-id` | Part ID of the machine part. Required if running on a remote device. | Optional |
+| `--part-id` | Part ID of the machine part. Get from the **Live**/**Offline** dropdown in the web app. Default: the part ID present in the cloud credentials at <file>/etc/viam.json</file>. | Optional |
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json`. | Optional |
-| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
+| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. Default: `meta.json`. | Optional |
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | Optional |
-| `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | Optional |
-| `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | Optional |
-| `--path` | The path to the root of the git repo to build. Default: `.`. | Optional |
+| `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: resource type with a unique numerical suffix. | Optional |
+| `--path` | The path to the root of the module's git repo to build. Default: `.`. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 
 ### `module reload-local`
@@ -1571,10 +1726,11 @@ viam module restart --id viam:python-example-module
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). | Optional |
-| `--part-id` | Part ID of the machine part. Required if running on a remote device. | Optional |
+| `--id` | ID of the module to restart, for example `viam:wifi-sensor`. Pass at most one of `--name`, `--id`. | Optional |
+| `--name` | Name of the module to restart. Pass at most one of `--name`, `--id`. | Optional |
+| `--part-id` | Part ID of the machine part. Required if running on a remote device. Default: the part ID present in <file>/etc/viam.json</file>. | Optional |
 | `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json`. | Optional |
-| `--name` | The name of the module. For example: `hello-world`. | Optional |
+| `--module` | The path to the <file>meta.json</file> file. Used for module ID. Can be overridden with `--id` or `--name`. Default: `meta.json`. | Optional |
 
 ### `module build start`
 
@@ -1624,7 +1780,8 @@ viam module build list
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The build ID to list, as returned from `build start`. | Optional |
+| `--module` | Path to <file>meta.json</file>. Default: `./meta.json`. | Optional |
+| `--id` | Restrict output to just return builds that match this build ID. | Optional |
 | `--count` | Number of cloud builds to list. Defaults to displaying all builds. | Optional |
 
 ### `module build logs`
@@ -1633,16 +1790,16 @@ Show the logs from a specific cloud module build. See [Using the `build` subcomm
 
 ```sh {class="command-line" data-prompt="$"}
 # initiate a build and return the build logs as soon as completed
-viam module build logs --wait --id=$(viam module build start --version "0.1.2")
+viam module build logs --wait --build-id=$(viam module build start --version "0.1.2")
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--id` | The build ID to show logs for, as returned from `build start`. | Optional |
-| `--platform` | Restricts the logs returned by the command to only those build jobs that match the specified platform. See [Using the `--platform` argument](#using-the---platform-argument). | Optional |
-| `--wait` | Wait for the build to finish before outputting any logs. | Optional |
-| `--group-logs` | Group log output by platform. | Optional |
+| `--build-id` | The build ID to show logs for, as returned from `build start`. | **Required** |
+| `--platform` | Restricts the logs returned by the command to only those build jobs that match the specified platform. See [Using the `--platform` argument](#using-the---platform-argument). Default: all platforms. | Optional |
+| `--wait` | Wait for the build to finish before outputting any logs. Default: `false`. | Optional |
+| `--group-logs` | Write `::group::` commands so GitHub Actions logs collapse. Default: `false`. | Optional |
 
 ### `module download`
 
@@ -1919,7 +2076,7 @@ Provide that build ID to the `module build logs` command to show the relevant bu
 For example, use the following to initiate a build, and return the build logs as soon as it completes:
 
 ```sh {class="command-line" data-prompt="$"}
-viam module build logs --wait --id=$(viam module build start --version "0.1.2")
+viam module build logs --wait --build-id=$(viam module build start --version "0.1.2")
 ```
 
 To list all in-progress builds and their build status, use the following command:
@@ -1936,7 +2093,8 @@ The `organizations` command allows you to list the organizations your authentica
 viam organizations list
 viam organizations api-key create --org-id=<org-id> [--name=<key-name>]
 viam organizations support-email [get | set] --org-id=<org-id> --support-email=<support-email>
-viam organizations logo set --org-id=<org-id> --logo-path=<logo-path>
+viam organizations logo [get | set] --org-id=<org-id> [--logo-path=<logo-path>]
+viam organizations firebase-config [set | read | delete] --org-id=<org-id> [--app-id=<app-id>] [--firebase-config-path=<path>]
 viam organizations billing-service get-config --org-id=<org-id>
 viam organizations billing-service [enable | update] --org-id=<org-id> --address=<address>
 viam organizations billing-service disable --org-id=<org-id>
@@ -2015,7 +2173,62 @@ viam organizations logo set --org-id=<org-id> --logo-path=<logo-path>
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--org-id` | The organization to perform the command on. | **Required** |
-| `--logo-path` | Path to the logo file to upload. | **Required** |
+| `--logo-path` | Path to the logo file to upload. Must be a PNG file. | **Required** |
+
+### `organizations logo get`
+
+Get the logo for an organization.
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations logo get --org-id=<org-id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--org-id` | The organization to get the logo for. | **Required** |
+
+### `organizations firebase-config set`
+
+Upload a Firebase config JSON for a specific app ID. Organization owner only.
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations firebase-config set --org-id=<org-id> --app-id=com.example.myapp --firebase-config-path=./firebase-config.json
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--org-id` | Organization ID. | **Required** |
+| `--app-id` | App ID. For example, `com.example.myapp`. | **Required** |
+| `--firebase-config-path` | Path to the Firebase config JSON file. | **Required** |
+
+### `organizations firebase-config read`
+
+Read Firebase config metadata for an organization. Organization owner only.
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations firebase-config read --org-id=<org-id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--org-id` | Organization ID. | **Required** |
+
+### `organizations firebase-config delete`
+
+Delete a Firebase config for a specific app ID. Organization owner only.
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations firebase-config delete --org-id=<org-id> --app-id=com.example.myapp
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--org-id` | Organization ID. | **Required** |
+| `--app-id` | App ID. For example, `com.example.myapp`. | **Required** |
 
 ### `organizations billing-service get-config`
 
@@ -2109,14 +2322,15 @@ viam organization auth-service oauth-app create --client-authentication=<policy>
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--org-id` | The organization ID that is tied to the OAuth application. | **Required** |
-| `--client-authentication` | The client authentication policy for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_pkce`. Default: `unspecified`. | **Required** |
-| `--client-name` | The name for the OAuth application. | **Required** |
+| `--client-authentication` | The client authentication policy for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_pkce`. | **Required** |
 | `--enabled-grants` | Comma-separated enabled grants for the OAuth application. Options: `unspecified`, `refresh_token`, `password`, `implicit`, `device_code`, `authorization_code`. | **Required** |
-| `--logout-uri` | The logout uri for the OAuth application. | **Required** |
-| `--origin-uris` | Comma-separated origin URIs for the OAuth application. | **Required** |
-| `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | **Required** |
-| `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
-| `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
+| `--logout-uri` | The logout URI for the OAuth application. | **Required** |
+| `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. | **Required** |
+| `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. Requires at least one. | **Required** |
+| `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. | **Required** |
+| `--client-name` | The name for the OAuth application. | Optional |
+| `--origin-uris` | Comma-separated origin URIs for the OAuth application. | Optional |
+| `--invite-redirect-uri` | Redirect URI to send users after they accept an org invite. | Optional |
 
 ### `organizations auth-service oauth-app update`
 
@@ -2130,15 +2344,16 @@ viam organization auth-service oauth-app update --org-id=<org-id> --client-id=<c
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--org-id` | The organization ID that is tied to the OAuth application. | **Required** |
-| `--client-id` | The client ID of the OAuth application. | **Required** |
-| `--client-authentication` | The client authentication policy for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_pkce`. Default: `unspecified`. | **Required** |
-| `--client-name` | The name for the OAuth application. | **Required** |
-| `--enabled-grants` | Comma-separated enabled grants for the OAuth application. Options: `unspecified`, `refresh_token`, `password`, `implicit`, `device_code`, `authorization_code`. | **Required** |
-| `--logout-uri` | The logout uri for the OAuth application. | **Required** |
-| `--origin-uris` | Comma-separated origin URIs for the OAuth application. | **Required** |
-| `--pkce` | Proof Key for Code Exchange (PKCE) for the OAuth application. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | **Required** |
-| `--redirect-uris` | Comma-separated redirect URIs for the OAuth application. | **Required** |
-| `--url-validation` | URL validation for the OAuth application. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | **Required** |
+| `--client-id` | The client ID of the OAuth application to be updated. | **Required** |
+| `--client-name` | Updated name for the OAuth application. | Optional |
+| `--client-authentication` | Updated client authentication policy. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_pkce`. Default: `unspecified`. | Optional |
+| `--enabled-grants` | Updated comma-separated enabled grants. Options: `unspecified`, `refresh_token`, `password`, `implicit`, `device_code`, `authorization_code`. | Optional |
+| `--logout-uri` | Updated logout URI for the OAuth application. | Optional |
+| `--origin-uris` | Updated comma-separated origin URIs for the OAuth application. | Optional |
+| `--pkce` | Updated PKCE policy. Options: `unspecified`, `required`, `not_required`, `not_required_when_using_client_authentication`. Default: `unspecified`. | Optional |
+| `--redirect-uris` | Updated comma-separated redirect URIs for the OAuth application. | Optional |
+| `--url-validation` | Updated URL validation. Options: `unspecified`, `exact_match`, `allow_wildcards`. Default: `unspecified`. | Optional |
+| `--invite-redirect-uri` | Redirect URI to send users after they accept an org invite. | Optional |
 
 ### `organizations auth-service oauth-app list`
 
@@ -2187,8 +2402,8 @@ The `packages` command allows you to upload packages to the Viam Cloud or export
 For example, you can use this command to download ML models or modules from the registry.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --upload=<path-to-package.tar.gz> --model-framework=<framework>
-viam packages export --org-id=<org-id> --name=<package-name> --version=<version> --type=<type> --destination=<path-to-export-destination>
+viam packages upload --path=<path-to-package.tar.gz> --org-id=<org-id> --name=<package-name> --version=<version> --type=<type>
+viam packages export --type=<type> [--org-id=<org-id>] [--name=<package-name>] [--version=<version>] [--destination=<path-to-export-destination>]
 ```
 
 ### `packages upload`
@@ -2196,36 +2411,36 @@ viam packages export --org-id=<org-id> --name=<package-name> --version=<version>
 Upload a package to the Viam Cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages upload --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --upload=./the_package.tar.gz --model-framework=tensorflow
+viam packages upload --path=./the_package.tar.gz --org-id=123 --name=MyMLModel --version=1.0.0 --type=ml_model --model-framework=tensorflow
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
+| `--path` | The path to the package for upload. Executable or zipped tar with the `.tar.gz` extension. | **Required** |
 | `--org-id` | The organization ID of the package. | **Required** |
 | `--name` | The name of the package. | **Required** |
 | `--version` | The version of the package or `latest`. | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
-| `--upload` | The path to the package for upload. Executable or zipped tar with the `.tar.gz` extension. | **Required** |
-| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | **Required** |
-| `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | **Required** |
+| `--model-framework` | The framework for an uploaded `ml_model`. Valid options: `unspecified`, `tflite`, `tensorflow`, `pytorch`, or `onnx`. | Required if `--type=ml_model` |
+| `--model-type` | The type of the model. Valid options: `unspecified`, `single_label_classification`, `multi_label_classification`, `object_detection`. | Required if `--type=ml_model` |
 
 ### `packages export`
 
 Download a package from the Viam Cloud.
 
 ```sh {class="command-line" data-prompt="$"}
-viam packages export --org-id=123 --name=MyMLModel --version=latest --type=ml_model --destination=.
+viam packages export --type=ml_model --org-id=123 --name=MyMLModel --version=latest --destination=.
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--org-id` | The organization ID of the package. | **Required** |
-| `--name` | The name of the package. | **Required** |
-| `--version` | The version of the package or `latest`. | **Required** |
 | `--type` | The type of the package: `ml_model`, `archive`, `module`, `slam_map`, or `unspecified`. | **Required** |
-| `--destination` | The output directory for downloaded package. | **Required** |
+| `--org-id` | The organization ID or namespace of the package. Default: `default-org` value if set, else attempts to read from <file>meta.json</file>. | Optional |
+| `--name` | The name of the package. Default: attempts to read from <file>meta.json</file>. | Optional |
+| `--version` | The version of the package or `latest`. Default: `latest`. | Optional |
+| `--destination` | The output directory for downloaded package. Default: `.`. | Optional |
 
 ## `parse-ftdc`
 
