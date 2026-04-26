@@ -99,7 +99,7 @@ See NVIDIA's documentation on [Configuring the Jetson Expansion Headers](https:/
 ## Next steps
 
 You have now installed an operating system on your Jetson board.
-To use your Jetson board, follow the [setup guide](/set-up-a-machine/overview/):
+To use your Jetson board, follow the [setup guide](/set-up-a-machine/first-machine/):
 
 {{< cards >}}
 {{% card link="/set-up-a-machine/first-machine/" %}}

@@ -47,7 +47,7 @@ Before you power the board, you need to install an operating system.
 1. Insert the micro-SD card into the SD card reader and connect the reader to your development machine.
 1. Follow [this guide](https://sbc-community.org/docs/general_guides/prepare_sd_card/) to flash the OS to your micro-SD card using [balenaEtcher](https://etcher.balena.io/).
    {{< alert title="Tip: How to think about building a machine" color="tip" >}}
-   While flashing your microSD card, we recommend reading [How to think about building a machine](/set-up-a-machine/overview/).
+   While flashing your microSD card, we recommend reading [How to think about building a machine](/set-up-a-machine/first-machine/).
    {{< /alert >}}
 1. Insert the micro-SD into the Orange Pi.
 
@@ -78,7 +78,7 @@ For more information, consult the [official user manual](https://drive.google.co
 ## Next steps
 
 You have now installed an operating system on your Orange Pi.
-To use your Orange Pi, follow the [setup guide](/set-up-a-machine/overview/):
+To use your Orange Pi, follow the [setup guide](/set-up-a-machine/first-machine/):
 
 {{< cards >}}
 {{% card link="/set-up-a-machine/first-machine/" %}}

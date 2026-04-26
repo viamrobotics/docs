@@ -63,7 +63,7 @@ You must extract the image from the zip file before flashing the microSD card.
    The flashing and verification process may take 10-20 minutes, depending on your system.
 
    {{< alert title="Tip: How to think about building a machine" color="tip" >}}
-   While the Etcher is flashing your microSD card, we recommend reading [How to think about building a machine](/set-up-a-machine/overview/).
+   While the Etcher is flashing your microSD card, we recommend reading [How to think about building a machine](/set-up-a-machine/first-machine/).
    {{< /alert >}}
 
 8. On completion of the flashing and validation process, remove the microSD card from your computer and insert it into the TDA4VM.
@@ -111,7 +111,7 @@ From the SSH session on the TDA4VM board:
 ## Next steps
 
 You have now installed an operating system on your board.
-To use your board, follow the [setup guide](/set-up-a-machine/overview/):
+To use your board, follow the [setup guide](/set-up-a-machine/first-machine/):
 
 {{< cards >}}
 {{% card link="/set-up-a-machine/first-machine/" %}}

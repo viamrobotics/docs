@@ -83,7 +83,7 @@ After SSH'ing into your BeagleBone, verify all packages are up to date:
 ## Next steps
 
 You have now installed an operating system on your BeagleBone.
-To use your BeagleBone, follow the [setup guide](/set-up-a-machine/overview/):
+To use your BeagleBone, follow the [setup guide](/set-up-a-machine/first-machine/):
 
 {{< cards >}}
 {{% card link="/set-up-a-machine/first-machine/" %}}
