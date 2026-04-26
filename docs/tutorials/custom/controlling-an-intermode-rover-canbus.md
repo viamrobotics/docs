@@ -76,7 +76,7 @@ The tutorial uses the following hardware:
 ### Machine setup
 
 Before you can use Viam on your device, you must ensure it has a supported operating system.
-See [Start a new machine](/set-up-a-machine/overview/) for platform requirements and instructions.
+See [Start a new machine](/set-up-a-machine/first-machine/) for platform requirements and instructions.
 
 {{% snippet "setup.md" %}}
 

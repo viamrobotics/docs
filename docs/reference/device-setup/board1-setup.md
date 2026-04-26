@@ -61,10 +61,10 @@ Once you're connected to your board, you can verify all packages are up to date 
 ## Next steps
 
 You have now installed an operating system on your BOARD.
-To use your BOARD, follow the [setup guide](/set-up-a-machine/overview/):
+To use your BOARD, follow the [setup guide](/set-up-a-machine/first-machine/):
 
 {{< cards >}}
-{{% card link="/set-up-a-machine/overview/" %}}
+{{% card link="/set-up-a-machine/first-machine/" %}}
 {{< /cards >}}
 
 ## Troubleshooting
