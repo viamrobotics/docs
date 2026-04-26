@@ -1261,28 +1261,28 @@ viam machines part remove-resource --part=<part id> --name=<resource name>
 Attach a configuration fragment to a part.
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part id> [--fragment=<fragment id>]
+viam machines part fragments add --part=<part id> [--fragment=<fragment name or id>]
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--fragment` | Fragment ID to add. If omitted, the CLI prompts interactively. | Optional |
+| `--fragment` | Fragment name or ID to add. If omitted, the CLI prompts interactively. | Optional |
 
 ### `machines part fragments remove`
 
 Detach a configuration fragment from a part.
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments remove --part=<part id> [--fragment=<fragment id>]
+viam machines part fragments remove --part=<part id> [--fragment=<fragment name or id>]
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--fragment` | Fragment ID to remove. | Optional |
+| `--fragment` | Fragment name or ID to remove. If omitted, the CLI prompts interactively. | Optional |
 
 ### `machines part motion print-config`
 

@@ -167,10 +167,10 @@ viam resource disable --part=<part-id> \
 
 Fragments are reusable configuration blocks that can define a set of components, services, and their attributes.
 Apply the same fragment across multiple machines to keep their configuration consistent.
-Add a fragment to a machine part by specifying its fragment ID:
+Add a fragment to a machine part by specifying its name or ID:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
 If you omit the `--fragment` flag, the CLI prompts you to select a fragment interactively.
@@ -178,7 +178,7 @@ If you omit the `--fragment` flag, the CLI prompts you to select a fragment inte
 Remove a fragment:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments remove --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments remove --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
 See [Reuse machine configuration](/fleet/reuse-configuration/) for details on creating and managing fragments.
