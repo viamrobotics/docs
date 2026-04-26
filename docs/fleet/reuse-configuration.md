@@ -70,12 +70,12 @@ The fragment's resources now appear on the machine's configuration page. The mac
 ### With the CLI
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. To find your fragment ID, copy it from the fragment's page in the Viam app (it appears in the URL and under the fragment name).
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID (in the URL of the page). Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
 
-If you omit `--fragment`, the CLI prompts you to pick a fragment interactively from the ones available to your organization.
+If you omit `--fragment`, the CLI prompts you to pick a fragment interactively from the ones available to you.
 
 To apply a fragment across many machines, see [Automate with scripts](/cli/automate-with-scripts/).
 
