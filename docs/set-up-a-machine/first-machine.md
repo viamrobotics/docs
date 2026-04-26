@@ -130,4 +130,4 @@ If the connection succeeds, the script prints your machine's available resources
 ## What's next
 
 - [Configure hardware](/hardware/configure-hardware/) to add cameras, motors, sensors, and other components to your machine.
-- [Set up machines as code](/set-up-a-machine/as-code/) to provision additional machines from the command line, scripted and reproducible.
+- [Set up machines with the CLI](/set-up-a-machine/with-cli/) to provision additional machines from the command line.

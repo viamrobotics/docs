@@ -1,13 +1,15 @@
 ---
-linkTitle: "Set up machines as code"
-title: "Set up machines as code"
+linkTitle: "Set up machines with the CLI"
+title: "Set up machines with the CLI"
 weight: 2
 layout: "docs"
 type: "docs"
-description: "Create and connect machines from the command line. Repeatable, version-controllable, and ready to scale."
+description: "Create and connect machines from the command line."
+aliases:
+  - /set-up-a-machine/as-code/
 ---
 
-When you set up machines from the command line, every step lives in a command you can re-run, share with your team, and check into git.
+Create and connect a machine to the Viam platform from the command line, instead of clicking through the Viam app.
 
 You'll need:
 
