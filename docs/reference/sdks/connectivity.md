@@ -20,7 +20,7 @@ When connecting to a machine using the connection code from the [**CONNECT** tab
 
 To connect directly to your local machine, you can use the connection code from the **CONNECT** tab if you are using the Python SDK, Go SDK, Flutter SDK, or C++ SDK.
 
-For the TypeScript SDK, you must disable TLS verification for your `viam-server` and change the sinaling address for the connection code:
+For the TypeScript SDK, you must disable TLS on your `viam-server` and set `signalingInsecure: true` in the connection code:
 
 {{< tabs >}}
 {{% tab name="Command-line" %}}
@@ -44,10 +44,11 @@ Restart `viam-server` with the `-no-tls` flag.
 {{% /tab %}}
 {{< /tabs >}}
 
-Update the signaling address in your connection code:
+Update your connection code to set `signalingInsecure` to `true` and point the signaling address at your machine's local address:
 
-```ts {class="line-numbers linkable-line-numbers" data-line="1,12"}
+```ts {class="line-numbers linkable-line-numbers" data-line="1,2,14,15"}
 const host = "mymachine-main.0a1bcdefgi.viam.cloud";
+const localAddress = "my-machine.local:8080";
 
 const machine = await VIAM.createRobotClient({
   host,
@@ -58,7 +59,8 @@ const machine = await VIAM.createRobotClient({
     authEntity: "<API-KEY-ID>",
     /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
   },
-  signalingAddress: `http://${host}.local:8080`,
+  signalingAddress: localAddress,
+  signalingInsecure: true,
 });
 ```
 
