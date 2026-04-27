@@ -16,9 +16,10 @@ A few important boundaries:
 - **Different from bounding boxes and labels.** Tags apply to a whole item. Bounding boxes mark regions of an image and are used for object-detection training. See [Annotate images](/train/annotate-images/) for both classification tags and bounding boxes in the ML training context.
 - **Different from tabular `tags` capture attributes.** The `tags` field in a [data capture method config](/data/reference/#capture_methods) attaches a fixed list of tags at capture time. The operations on this page apply tags after data is captured.
 
-## Tag binary data through the Viam app
+## Apply tags to binary data
 
-Tag a single item:
+{{< tabs >}}
+{{% tab name="Viam app" %}}
 
 1. On your organization's **DATA** page, click an item to open the side panel.
 1. Open the **Actions** tab.
@@ -29,7 +30,8 @@ Repeat to add more tags. Click the **x** next to a tag to remove it.
 The Viam app applies tags one item at a time.
 To tag many items in a single operation, use the CLI or the SDK.
 
-## Tag binary data with the CLI
+{{% /tab %}}
+{{% tab name="CLI" %}}
 
 Tag specific items by their binary data IDs:
 
@@ -67,15 +69,7 @@ For the full list of flags, see the [`viam data tag` CLI reference](/cli/manage-
 
 To find binary data IDs, run `viam data export binary filter` and read the IDs from the JSON metadata file each download produces, or query through the SDK with `BinaryDataByFilter`.
 
-## Tag binary data with the SDK
-
-The [data client API](/reference/apis/data-client/) supports the same tag operations:
-
-- Add or remove tags on specific items by binary data ID.
-- Add or remove tags on every item matching a filter.
-- List the distinct tags that match a filter.
-
-{{< tabs >}}
+{{% /tab %}}
 {{% tab name="Python" %}}
 
 ```python
@@ -86,6 +80,8 @@ await data_client.add_tags_to_binary_data_by_ids(
     binary_ids=binary_ids,
 )
 ```
+
+The [data client API](/reference/apis/data-client/) also supports adding and removing tags by filter, removing tags by ID, and listing the distinct tags that match a filter.
 
 {{% /tab %}}
 {{% tab name="Go" %}}
@@ -100,10 +96,10 @@ err := dataClient.AddTagsToBinaryDataByIDs(
 )
 ```
 
+The [data client API](/reference/apis/data-client/) also supports adding and removing tags by filter, removing tags by ID, and listing the distinct tags that match a filter.
+
 {{% /tab %}}
 {{< /tabs >}}
-
-See your SDK's data client reference for the full set of methods and signatures.
 
 ## Use tags downstream
 
