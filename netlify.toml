@@ -1,6 +1,9 @@
 [build]
   publish = "public"
 
+[build.environment]
+  HUGO_VERSION = "0.152.2"
+
 [[redirects]]
   from = "/data/"
   to = "/data/overview/"
