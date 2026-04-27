@@ -238,6 +238,11 @@ function watchConnection() {
         statusEl.textContent = "Connecting...";
         statusEl.className = "";
         break;
+      case VIAM.MachineConnectionEvent.RECONNECTING:
+        statusEl.textContent = "Reconnecting...";
+        statusEl.className = "";
+        break;
+      case VIAM.MachineConnectionEvent.RECONNECTION_FAILED:
       case VIAM.MachineConnectionEvent.DISCONNECTING:
       case VIAM.MachineConnectionEvent.DISCONNECTED:
         statusEl.textContent = "Disconnected";
@@ -250,7 +255,7 @@ function watchConnection() {
 
 Call `watchConnection()` at the end of `main()`, after the motor buttons are wired.
 
-Save and refresh. The status indicator still says `Connected` on load. To test the state change, turn off your machine or disconnect your computer from the network briefly. The indicator switches to `Disconnected` (red). Restore connectivity and the SDK reconnects automatically, switching the indicator back to `Connected` (green). The camera stream may or may not resume on its own depending on how long the disconnection lasted; see [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the rebuild-after-reconnect pattern.
+Save and refresh. The status indicator still says `Connected` on load. To test the state change, turn off your machine or disconnect your computer from the network briefly. The indicator switches to `Reconnecting...` while the SDK retries with backoff. Restore connectivity and the SDK reconnects automatically, switching the indicator back to `Connected` (green). If reconnection attempts are exhausted, the SDK emits `RECONNECTION_FAILED` and the indicator switches to `Disconnected`. The camera stream may or may not resume on its own depending on how long the disconnection lasted; see [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the rebuild-after-reconnect pattern.
 
 ## What you built
 

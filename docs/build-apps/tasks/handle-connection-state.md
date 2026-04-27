@@ -12,6 +12,14 @@ Show a connection status indicator in your app, react to connection events, and 
 
 For an explanation of how the SDK reconnects under the hood, see [Connection model](/build-apps/concepts/how-apps-connect/#reconnection).
 
+{{< alert title="Behavior change" color="caution" >}}
+In versions of the Viam TypeScript SDK prior to v0.69.0, `DISCONNECTED` fired on any connection drop, including transient network interruptions.
+From v0.69.0 onward, `DISCONNECTED` fires only on intentional close or when `noReconnect` is set.
+Transient drops emit `RECONNECTING` instead, followed by `CONNECTED` on success or `RECONNECTION_FAILED` when retries are exhausted.
+
+If your app listens for `DISCONNECTED` to detect network drops, listen for `RECONNECTING` instead.
+{{< /alert >}}
+
 ## Prerequisites
 
 - A project with an active machine connection (see [Connect to a machine](/build-apps/tasks/connect-to-machine/))
@@ -37,6 +45,12 @@ machine.on("connectionstatechange", (event) => {
     case VIAM.MachineConnectionEvent.CONNECTED:
       console.log("Connected");
       break;
+    case VIAM.MachineConnectionEvent.RECONNECTING:
+      console.log("Connection dropped, reconnecting...");
+      break;
+    case VIAM.MachineConnectionEvent.RECONNECTION_FAILED:
+      console.log("Reconnection failed, giving up");
+      break;
     case VIAM.MachineConnectionEvent.DISCONNECTING:
     case VIAM.MachineConnectionEvent.DISCONNECTED:
       console.log("Disconnected");
@@ -45,7 +59,17 @@ machine.on("connectionstatechange", (event) => {
 });
 ```
 
-`MachineConnectionEvent` has five values: `DIALING`, `CONNECTING`, `CONNECTED`, `DISCONNECTING`, `DISCONNECTED`.
+`MachineConnectionEvent` has seven values:
+
+| Value                 | When the SDK emits it                                                                                                                        |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DIALING`             | The SDK is dialing the initial connection.                                                                                                   |
+| `CONNECTING`          | The SDK is establishing the WebRTC or gRPC channel.                                                                                          |
+| `CONNECTED`           | The connection is up and ready for calls.                                                                                                    |
+| `RECONNECTING`        | The connection dropped and the SDK is retrying with backoff. Replaces the immediate `DISCONNECTED` event for unintentional drops.            |
+| `RECONNECTION_FAILED` | All reconnection attempts were exhausted. The event payload includes `error` and `attempts` fields.                                          |
+| `DISCONNECTING`       | The app initiated a disconnect (`disconnect()` or app shutdown).                                                                             |
+| `DISCONNECTED`        | The connection is closed and will not retry. Emitted when `noReconnect` is set, when the client was closed, or after intentional disconnect. |
 
 To listen for a specific state only, subscribe to that event type directly:
 
@@ -77,6 +101,10 @@ machine.on("connectionstatechange", (event) => {
     case VIAM.MachineConnectionEvent.CONNECTING:
       setStatus("Connecting...", "orange");
       break;
+    case VIAM.MachineConnectionEvent.RECONNECTING:
+      setStatus("Reconnecting...", "orange");
+      break;
+    case VIAM.MachineConnectionEvent.RECONNECTION_FAILED:
     case VIAM.MachineConnectionEvent.DISCONNECTING:
     case VIAM.MachineConnectionEvent.DISCONNECTED:
       setStatus("Disconnected", "red");
@@ -196,19 +224,28 @@ The SDK reconnects the transport layer automatically, but anything your app buil
 - **Operation handles** — any operation IDs, session IDs, or other handles from before the reconnection are no longer valid. Drop them.
 - **UI state derived from the connection** — lists of resources, last-known readings, and similar cached data may be stale. Re-fetch after reconnection.
 
-A concrete pattern in TypeScript: when the connection handler reaches `CONNECTED` after having seen `DISCONNECTED`, call a `rebuildAfterReconnect()` function that restarts streams and polling:
+A concrete pattern in TypeScript: when the connection handler reaches `CONNECTED` after having seen `RECONNECTING`, call a `rebuildAfterReconnect()` function that restarts streams and polling:
 
 ```ts
-let wasDisconnected = false;
+let wasReconnecting = false;
 
 machine.on("connectionstatechange", async (event) => {
   const { eventType } = event as { eventType: VIAM.MachineConnectionEvent };
-  if (eventType === VIAM.MachineConnectionEvent.DISCONNECTED) {
-    wasDisconnected = true;
-  }
-  if (eventType === VIAM.MachineConnectionEvent.CONNECTED && wasDisconnected) {
-    wasDisconnected = false;
-    await rebuildAfterReconnect();
+  switch (eventType) {
+    case VIAM.MachineConnectionEvent.RECONNECTING:
+      wasReconnecting = true;
+      break;
+    case VIAM.MachineConnectionEvent.CONNECTED:
+      if (wasReconnecting) {
+        wasReconnecting = false;
+        await rebuildAfterReconnect();
+      }
+      break;
+    case VIAM.MachineConnectionEvent.RECONNECTION_FAILED:
+    case VIAM.MachineConnectionEvent.DISCONNECTED:
+      // Reset the flag so a later fresh connect is not treated as a reconnect.
+      wasReconnecting = false;
+      break;
   }
 });
 
@@ -216,6 +253,8 @@ async function rebuildAfterReconnect() {
   // Recreate camera streams, restart polling, re-fetch resource names, etc.
 }
 ```
+
+Use `RECONNECTING` as the trigger rather than `DISCONNECTED`. The SDK emits `RECONNECTING` as soon as it loses an unintentional connection and starts retrying; `DISCONNECTED` is now only emitted for closed clients or when `noReconnect` is set. Clear `wasReconnecting` on `RECONNECTION_FAILED` and `DISCONNECTED` so that a later reconnect attempt (for example, after the user manually reconnects) does not incorrectly trigger `rebuildAfterReconnect()` on its first `CONNECTED` event. Listen for `RECONNECTION_FAILED` separately if you want to surface the give-up state to the user.
 
 ## Next
 
