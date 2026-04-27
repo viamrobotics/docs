@@ -66,6 +66,24 @@ With the updated dataset, start a new training job. See [Train a model](/train/t
 
 Viam runs training jobs on cloud infrastructure. You do not need to provision a GPU machine locally. Logs stay available for seven days after the job completes.
 
+### Schedule automatic retraining
+
+Instead of manually starting a training job each time you add new data, you can set a retraining schedule on a model.
+Viam evaluates retraining schedules once per day at midnight UTC and submits a new training job when the model is due.
+
+To set a retraining schedule:
+
+1. Navigate to the [**MODELS** tab](https://app.viam.com/models) and open the model you want to retrain automatically.
+1. Click the context menu on the model details page and select **Retraining schedule**.
+1. Choose a frequency: **Daily**, **Weekly** (pick a day of the week), or **Monthly** (pick a day of the month).
+1. Click **Save**.
+
+Viam retrains the model using the same dataset and labels from the most recent model version.
+Each retraining run produces a new version named `retrain-<timestamp>`.
+
+Scheduled retraining is available for models trained through Viam's built-in training flow with a linked dataset.
+Models trained with [custom training scripts](/train/custom-training-scripts/) do not support scheduled retraining yet.
+
 ## 5. Deploy the new version
 
 ### Test on one machine first
