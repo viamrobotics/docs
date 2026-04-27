@@ -56,6 +56,12 @@ Click **Save** after adding and configuring your resources.
 
 ## Apply a fragment to a machine
 
+{{< alert title="CLI coverage" color="note" >}}
+The CLI supports applying and removing fragments. Authoring fragments, setting variables when applying, overriding fields, tagging revisions, pinning machines to versions, and listing which machines use a fragment all require the Viam app or the JSON config. There is no top-level `viam fragments` command.
+{{< /alert >}}
+
+### In the Viam app
+
 1. Navigate to your machine's **CONFIGURE** tab.
 1. Click **+** and select **Configuration block**.
 1. Search for your fragment by name and select it.
@@ -65,15 +71,19 @@ Click **Save** after adding and configuring your resources.
 
 The fragment's resources now appear on the machine's configuration page. The machine downloads and applies the configuration on its next sync.
 
-To apply a fragment to many machines, use the CLI in a loop or script:
+### With the CLI
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add \
+  --part=<part-id> \
+  --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. To find your fragment ID, copy it from the fragment's page in the Viam app (it appears in the URL and under the fragment name).
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID (in the URL of the page). Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
 
-See [automate with scripts](/cli/automate-with-scripts/) for examples of scripting fleet operations.
+If you omit `--fragment`, the CLI prompts you to pick a fragment interactively from the ones available to you.
+
+To apply a fragment across many machines, see [Automate with scripts](/cli/automate-with-scripts/).
 
 ### Avoid resource name conflicts with a prefix
 
