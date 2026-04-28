@@ -27,12 +27,6 @@ specific API, see
 [Write a driver module](/build-modules/write-a-driver-module/) or
 [Write a logic module](/build-modules/write-a-logic-module/).
 
-{{< alert title="Availability" color="tip" >}}
-Inline modules are currently available to organizations that have the feature
-enabled. If you do not see the **Viam-hosted** option when adding code, contact
-Viam support to request access.
-{{< /alert >}}
-
 For background on inline modules, how they compare to externally managed
 modules, and the Generic service API, see the
 [overview](/build-modules/overview/#inline-and-externally-managed-modules).
@@ -518,14 +512,6 @@ it run automatically:
 6. Set up a scheduled job to run the logic continuously.
 
 ## Troubleshooting
-
-{{< expand "\"Viam-hosted\" option not visible" >}}
-
-The inline module feature is gated by a feature flag. If you do not see the
-"Viam-hosted" option when clicking **+** → **Control code**, your organization
-may not have the feature enabled. Contact Viam support to request access.
-
-{{< /expand >}}
 
 {{< expand "Build fails after saving" >}}
 
