@@ -218,7 +218,10 @@ If log configurations are applied at a resource level using the `log_configurati
 By default, `viam-server` deduplicates log messages that are deemed noisy.
 A log is deemed noisy if it has been output 3 times in the past 10 seconds.
 
-To disable log deduplication, set `disable_log_deduplication` in your machine's configuration:
+Log deduplication is automatically disabled when debug logging is active, whether you enable it with `"debug": true` in your machine's configuration or with the `-debug` command-line flag.
+You do not need to set `disable_log_deduplication` separately when running in debug mode.
+
+To disable log deduplication without enabling debug mode, set `disable_log_deduplication` in your machine's configuration:
 
 ```json
 "disable_log_deduplication": true
