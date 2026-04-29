@@ -148,7 +148,8 @@ empty or near-empty `attributes` block. Their physical extent is not configured
 through attributes; it is configured through the frame.
 
 - For a gripper that has no length attribute, set `frame.translation.z` to the
-  arm-flange-to-tip offset and `frame.geometry` to the collision shape.
+  offset from the arm's tool flange to the tool center point (TCP), and
+  `frame.geometry` to the collision shape.
 - For a camera that has no mount-offset attribute, set `frame.translation` to
   the camera's position relative to its parent.
 - For an IMU that has no mounted-orientation attribute, set `frame.orientation`

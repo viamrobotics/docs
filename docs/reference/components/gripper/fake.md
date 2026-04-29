@@ -39,8 +39,8 @@ See [GitHub](https://github.com/viamrobotics/rdk/blob/main/components/gripper/fa
 
 The `fake` gripper has no attribute for length or collision volume. The motion
 planner reads both from the component's `frame` field. Set `frame.translation.z`
-to the distance from the arm's tool flange to the gripper tip, and
-`frame.geometry` to the collision shape.
+to the offset from the arm's tool flange to the tool center point (TCP) you
+want the planner to drive to, and `frame.geometry` to the collision shape.
 
 For a typical 120 mm parallel-jaw gripper bolted directly to the arm flange:
 
@@ -62,16 +62,21 @@ For a typical 120 mm parallel-jaw gripper bolted directly to the arm flange:
       "x": 80,
       "y": 80,
       "z": 120,
-      "translation": { "x": 0, "y": 0, "z": 60 }
+      "translation": { "x": 0, "y": 0, "z": -60 }
     }
   }
 }
 ```
 
+`frame.translation.z: 120` puts the frame origin at the TCP, 120 mm out from
+the arm flange. `geometry.translation.z: -60` sits the box's center halfway
+back toward the flange, so the box covers the gripper body from the flange to
+the TCP.
+
 Why this matters: motion planning, reachability checks, and approach and
-retract poses all use the gripper tip as the tool center point. With no
-`frame`, the planner treats the tool flange as the tip and the gripper as a
-zero-volume point.
+retract poses all drive the TCP, not the tool flange, to a target pose. With
+no `frame`, the planner has no TCP defined and treats the gripper as a
+zero-volume point at the flange.
 
 Symptoms if wrong: motion plans validate, then the physical gripper tip lands
 short or long of the target, or the planner returns "outside workspace" for
