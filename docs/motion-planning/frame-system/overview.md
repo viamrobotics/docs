@@ -141,6 +141,27 @@ it relative to the frame.
 For detailed information about obstacle geometry, see
 [Define obstacles](/motion-planning/obstacles/).
 
+### When the model has no physical-extent attribute
+
+Many component models, including every `fake` model and some real ones, have an
+empty or near-empty `attributes` block. Their physical extent is not configured
+through attributes; it is configured through the frame.
+
+- For a gripper that has no length attribute, set `frame.translation.z` to the
+  arm-flange-to-tip offset and `frame.geometry` to the collision shape.
+- For a camera that has no mount-offset attribute, set `frame.translation` to
+  the camera's position relative to its parent.
+- For an IMU that has no mounted-orientation attribute, set `frame.orientation`
+  to its physical mounting rotation.
+
+If you skip this step, the planner treats the component as a zero-volume point
+at the parent's origin. Motion plans validate, then the physical robot misses
+its target by the unconfigured offset, or reachability checks fail for poses
+the robot can clearly reach.
+
+For a worked example with a gripper, see
+[Configure a frame for an arm, gripper, and camera](/motion-planning/frame-system/arm-gripper-camera/).
+
 ## Edit a frame in the Viam app
 
 To configure a frame, open the **CONFIGURE** tab in the Viam app, click
