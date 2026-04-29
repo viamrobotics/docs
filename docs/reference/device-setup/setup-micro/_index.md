@@ -71,7 +71,7 @@ To get started quickly with the pre-built `viam-micro-server` binary, follow the
 1. Add a new _{{< glossary_tooltip term_id="machine" text="machine" >}}_ using the button in the top right corner of the **LOCATIONS** tab in the app.
    A machine represents your device.
 
-1. On your machine's page, click **View setup instructions** and follow the steps for your operating system.
+1. On your machine's page, click **Set up** in the banner and follow the steps for your operating system.
    The app provides commands to install `viam-micro-server` and connect it to the cloud with your machine's unique credentials.
 
 1. A secure connection is automatically established between your machine and Viam.
