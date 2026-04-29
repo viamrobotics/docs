@@ -48,7 +48,7 @@ A banner prompts you to set up the machine part.
 
 ## 2. Open the setup page
 
-1. Click **View setup instructions** in the banner.
+1. Click **Set up** in the banner.
 2. In the wizard dialog that opens, click **Go to Advanced setup**.
 
 ## 3. Select your platform {#sbc-setup-instructions}
