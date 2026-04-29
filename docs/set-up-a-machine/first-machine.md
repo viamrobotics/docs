@@ -127,7 +127,21 @@ Your machine is online. Now connect to it programmatically.
 
 If the connection succeeds, the script prints your machine's available resources.
 
+## 8. Add hardware in the CONFIGURE tab
+
+Your machine is connected, but it has no components configured yet.
+To make the machine do anything, add the hardware you want to use through the **CONFIGURE** tab on your machine's page.
+
+For each piece of hardware (camera, motor, sensor, arm, gripper, base):
+
+1. Click the **+** button on the **CONFIGURE** tab.
+2. Select **Component**.
+3. Search for the model that matches your hardware. Search by manufacturer or hardware type (for example, `webcam`, `viam:raspberry-pi:rpi5`, `ufactory:xarm6`).
+4. Name the component and click **Create**.
+5. Fill in the required attributes (pin numbers, device paths, API keys) and click **Save**.
+
+For walkthroughs by component type and the full configuration reference, see [Configure hardware](/hardware/configure-hardware/).
+
 ## What's next
 
-- [Configure hardware](/hardware/configure-hardware/) to add cameras, motors, sensors, and other components to your machine.
 - [Set up machines with the CLI](/set-up-a-machine/with-cli/) to provision additional machines from the command line.
