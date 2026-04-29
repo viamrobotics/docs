@@ -190,18 +190,14 @@ if err != nil {
     logger.Fatal(err)
 }
 
-// Capture an image first
+// Capture an image from the camera
 images, _, err := cam.Images(ctx, nil, nil)
-if err != nil {
-    logger.Fatal(err)
-}
-img, err := images[0].Image(ctx)
 if err != nil {
     logger.Fatal(err)
 }
 
 // Run detection on the captured image
-detections, err := detector.Detections(ctx, img, nil)
+detections, err := detector.Detections(ctx, &images[0], nil)
 if err != nil {
     logger.Fatal(err)
 }
