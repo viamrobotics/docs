@@ -101,23 +101,24 @@ In the sidebar, click your gripper component to open its card. On the card, clic
 #### Pick where the gripper frame origin sits
 
 A point near the center of the gripper jaws is usually the most
-convenient frame origin. When you later call the motion service to move
-the gripper to a target pose, whatever point you pick here is what gets
-moved to that pose.
+convenient frame origin. The point you pick here is what `translation`
+measures _to_, and what gets moved to a target pose when you later call
+the motion service.
 
 #### Configure the frame
 
 In the JSON, set `parent` to your arm's component name, `translation` to
-the gripper frame origin's offset in mm from the arm's end effector, and
-`orientation` to the gripper's rotation relative to the arm.
+the offset in mm from the arm's end effector to the gripper frame
+origin, and `orientation` to the gripper's rotation relative to the arm.
 
-If the gripper attaches directly to the arm's end effector with no
-adapter plate and no rotation, use a zero offset:
+For a parallel-jaw gripper that bolts directly to the arm's end effector
+with the frame origin at the jaw tip, the offset is the gripper's body
+length. 120 mm is typical:
 
 ```json
 {
   "parent": "my-arm",
-  "translation": { "x": 0, "y": 0, "z": 0 },
+  "translation": { "x": 0, "y": 0, "z": 120 },
   "orientation": {
     "type": "ov_degrees",
     "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
@@ -125,20 +126,13 @@ adapter plate and no rotation, use a zero offset:
 }
 ```
 
-If the gripper is mounted through an adapter plate or flange that adds
-height, set the z translation to the adapter height in millimeters. For
-example, with a 50 mm adapter plate:
+If the gripper is mounted through an adapter plate or flange, add the
+plate height to `translation.z`. For a 50 mm plate plus the 120 mm
+gripper above, use `z: 170`.
 
-```json
-{
-  "parent": "my-arm",
-  "translation": { "x": 0, "y": 0, "z": 50 },
-  "orientation": {
-    "type": "ov_degrees",
-    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
-  }
-}
-```
+A wrong `translation.z` produces silent failures: motion plans validate,
+then the physical gripper tip lands short or long of the target, or the
+planner returns "outside workspace" for poses the arm can clearly reach.
 
 Click **Save**.
 

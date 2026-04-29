@@ -66,23 +66,51 @@ For a physical gripper, you'll typically configure the connection to the
 gripper controller. Check your module's documentation for the full list of
 attributes.
 
-### 3. Configure a frame (recommended)
+### 3. Configure a frame
 
-If you're using the gripper with an arm and motion planning, add a frame to
-define the gripper's position relative to the arm:
+For motion planning, the gripper must declare two things through its frame:
+the position of the tool center point (TCP) relative to the arm's tool flange,
+and the collision volume of the gripper body. The TCP is the point you want
+the planner to drive to. The motion service reads both from
+`frame.translation` and `frame.geometry`, not from `attributes`.
+
+For a typical parallel-jaw gripper that bolts directly to the arm flange and
+projects 120 mm forward, with an 80 × 80 × 120 mm body:
 
 ```json
 {
   "frame": {
     "parent": "my-arm",
-    "translation": { "x": 0, "y": 0, "z": 0 },
+    "translation": { "x": 0, "y": 0, "z": 120 },
     "orientation": {
       "type": "ov_degrees",
       "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+    },
+    "geometry": {
+      "type": "box",
+      "x": 80,
+      "y": 80,
+      "z": 120,
+      "translation": { "x": 0, "y": 0, "z": -60 }
     }
   }
 }
 ```
+
+Two things to notice in the JSON. `frame.translation.z: 120` puts the frame
+origin at the TCP, 120 mm out from the arm flange. `geometry.translation.z: -60`
+sits the box's center halfway back toward the flange, so the box covers the
+gripper body from the flange to the TCP. Measure `translation.z` to the point
+you want the planner to drive to: jaw tip for a finger gripper, suction cup
+face for a vacuum tool. If the gripper module ships its own kinematics (call
+`GetKinematics` to check), you can omit `geometry` because the kinematic model
+already carries the collision shape.
+
+Symptoms of a wrong offset: motion plans validate, then the gripper tip lands
+short or long of the target, or the planner returns "outside workspace" for
+poses the arm can clearly reach. See
+[When the model has no physical-extent attribute](/motion-planning/frame-system/overview/#when-the-model-has-no-physical-extent-attribute)
+for the broader pattern.
 
 ### 4. Save and test
 
