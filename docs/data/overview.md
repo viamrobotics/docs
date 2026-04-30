@@ -52,47 +52,11 @@ See [Export data](/data/export-data/) and [Sync to your database](/data/sync-dat
 
 ## Delete data
 
-You can delete captured data through the Viam app, the CLI, or the SDK. The SQL and MQL query editor is read-only: you cannot run `DELETE`, `DROP TABLE`, or any write operation through it.
+Delete captured data on demand through the Viam app, the CLI, or the SDK, or set retention policies to auto-delete data after a configured number of days.
 
-**In the Viam app:**
+The SQL and MQL query editor is read-only: you cannot delete data through it.
 
-- **Images and binary data**: on the **DATA** tab, select one or more items and click **Delete selected**, or use **Delete all** with the current filters applied. Point clouds, video, and file uploads can also be deleted this way.
-- **Tabular data (sensor readings)**: the Sensors tab does not have a delete button. Use the CLI or SDK instead.
-
-**From the CLI:**
-
-Delete tabular data older than a number of days:
-
-```bash
-viam data delete tabular --org-id=<org-id> --delete-older-than-days=30
-```
-
-If the organization has a [hot data store](/data/hot-data-store/), matching data is deleted from that store as well.
-
-{{< alert title="Caution" color="caution" >}}
-`--delete-older-than-days=0` deletes **all** tabular data in the organization. The CLI tabular delete has no component or location filter: it applies to the entire org.
-{{< /alert >}}
-
-Delete binary data within a time range:
-
-```bash
-viam data delete binary \
-  --org-ids=<org-id> \
-  --start=2026-01-01T00:00:00Z \
-  --end=2026-02-01T00:00:00Z
-```
-
-The binary delete command requires `--org-ids`, `--start`, and `--end`. You can narrow deletion with optional filters for location, component, MIME type, and more. For the full, up-to-date list of filters, see the [`viam data delete binary` CLI reference](/cli/manage-data/#delete-data).
-
-**From the SDK:**
-
-The [data client API](/reference/apis/data-client/) supports these delete operations; see the API reference for your SDK's method names and signatures:
-
-- Delete tabular data older than a specified number of days. Also deletes matching data from the [hot data store](/data/hot-data-store/) when one is configured.
-- Delete binary data matching a filter, such as organization, location, or time range.
-- Delete specific binary items by ID.
-
-**Retention policies** can also auto-delete data in the cloud after a configured number of days. See [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings) for the `retention_policy` field.
+See [Delete data](/data/delete-data/) and [Platform-managed capture settings](/data/reference/#platform-managed-capture-settings).
 
 ## Annotate and train
 
