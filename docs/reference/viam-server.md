@@ -291,6 +291,16 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-webprofile` | Include profiler in HTTP server. |
 | `-webrtc` | Force WebRTC connections instead of direct connections. Default: `true`. |
 
+## Environment variables
+
+You can set the following environment variables to configure `viam-server` behavior without command-line flags:
+
+<!-- prettier-ignore -->
+| Variable | Description |
+| -------- | ----------- |
+| `VIAM_LOGFILE` | Path to a log file. Equivalent to the `-log-file` flag. If both the flag and the variable are set, the flag takes precedence. |
+| `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger. Only relevant on Windows. |
+
 ## Install `viam-server` without the web UI
 
 {{% alert title="Tip" color="tip" %}}
