@@ -40,7 +40,7 @@ To export your data from the cloud using the Viam CLI:
 {{% tablestep start=1 %}}
 **Filter the data you want to download**
 
-Navigate to the [**DATA**](https://app.viam.com/data/view) page.
+Navigate to the [**DATA**](https://app.viam.com/data/all) page.
 
 Use the filters on the left side of the page to filter the data you wish to export.
 

@@ -666,7 +666,7 @@ Click **...** in the left-hand menu and click **Copy dataset ID**.
 
 To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) and copy the **Location ID**.
 
-To find the binary data ID of a given image, navigate to the [**DATA** tab](https://app.viam.com/data/view) and select your image.
+To find the binary data ID of a given image, navigate to the [**DATA** tab](https://app.viam.com/data/all) and select your image.
 The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
@@ -694,7 +694,7 @@ To find a location ID, run `viam locations list` or visit your [fleet's page](ht
 #### Copy `export` command
 
 You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
-Navigate to the [**DATA** tab](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+Navigate to the [**DATA** tab](https://app.viam.com/data/all), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
 Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the data type `binary` and `tabular` subcommands and `--destination` flags, which are specific to `viam data export`.
 

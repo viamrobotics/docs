@@ -59,7 +59,7 @@ The control card calls `CaptureAllFromCamera` under the hood, so what you see on
 Accuracy almost always drops when a model moves from the lab to production. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. Viam provides the pieces to close that loop on production machines:
 
 1. Capture failing images from deployed machines with [data capture](/data/capture-sync/capture-and-sync-data/).
-2. Label the new images in the [**DATA** tab](https://app.viam.com/data/view) and update a dataset.
+2. Label the new images in the [**DATA** tab](https://app.viam.com/data/all) and update a dataset.
 3. Retrain the model with [managed training](/train/train-a-model/) or a custom script.
 4. Deploy the new model version through the ML model service and push it to your fleet.
 
