@@ -21,14 +21,13 @@ A few important boundaries:
 {{< tabs >}}
 {{% tab name="Viam app" %}}
 
-1. On your organization's **DATA** page, click an item to open the side panel.
-1. Open the **Actions** tab.
-1. In the **Tags** section, type a tag name and press Enter.
+The in-app tag UI works for images. For other binary types (files, point clouds, audio), tag with the CLI or the SDK.
 
-Repeat to add more tags. Click the **x** next to a tag to remove it.
+1. On the **DATA** page, click an image (the **Images** sub-tab is the default view). A side panel slides in from the right with the **ACTIONS** tab selected.
+1. In the side panel, scroll to the **Tags** section.
+1. Type a tag name and press Enter. Click the **x** next to a tag to remove it.
 
-The Viam app applies tags one item at a time.
-To tag many items in a single operation, use the CLI or the SDK.
+The Viam app applies tags one image at a time. To tag many items in one operation, or to tag non-image binary data, use the CLI or the SDK.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
