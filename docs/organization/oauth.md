@@ -117,9 +117,9 @@ You can update any value after setup using `viam organization auth-service oauth
 
 If you want invite links to use a custom login screen instead of Viam's default, designate which of your registered OAuth apps drives the flow.
 
-1. Open the organization dropdown in the top right of Viam, next to your initials.
-1. Click **Settings and invites** to open the organization settings menu.
-1. Under **White Labeling**, find **Login client ID**. The field appears once you have at least one OAuth app registered, and its help text lists the valid client IDs.
+1. In the top nav, click your organization's name to open the organization dropdown.
+1. Click **Settings**.
+1. Scroll to **White Labeling** and find **Login client ID**. The field appears once you have at least one OAuth app registered, and its help text lists the valid client IDs.
 1. Enter the client ID of one of your registered OAuth apps and click **Save**.
 
 The client ID must match one of your registered OAuth apps. The OAuth app's redirect URI list must include Viam's invite redirect URI; this is added automatically when you create the OAuth app, so you only need to add it manually if you've removed it.
