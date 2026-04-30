@@ -29,7 +29,7 @@ Use `viam infer` to run a deployed ML model against an image that is already sto
 
 ## 1. Find the binary data ID
 
-1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) in the Viam app.
+1. Navigate to the [**DATA** tab](https://app.viam.com/data/all) in the Viam app.
 2. Filter to the image you want to run inference on.
 3. Click the image to open its side panel.
 4. Copy the binary data ID from the panel header.

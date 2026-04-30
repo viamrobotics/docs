@@ -227,7 +227,7 @@ To make sure the detector camera is capturing and syncing labeled images:
 
 1. Position yourself in front of your webcam for approximately 30 seconds to let it capture a few images of a person without a hard hat on.
 
-2. Navigate to your [**DATA** page](https://app.viam.com/data/view?view=images).
+2. Navigate to your [**DATA** page](https://app.viam.com/data/all?view=images).
    You should see some images with bounding boxes on them.
    If you do not, try refreshing the page.
 
@@ -328,7 +328,7 @@ The following code is adapted from that example.
         html_content='Hello!<br><br>Please remember to keep \
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">\
+        <a href="https://app.viam.com/data/all?view=images">\
         the DATA tab</a>.'
     )
 
@@ -381,7 +381,7 @@ def email(request):
         html_content='Hello!<br><br>Please remember to keep \
         hard hats on where required. Thank you! \
         <br><br>You can view captured images in \
-        <a href="https://app.viam.com/data/view?view=images">\
+        <a href="https://app.viam.com/data/all?view=images">\
         the DATA tab</a>.'
     )
 

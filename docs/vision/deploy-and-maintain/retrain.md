@@ -46,11 +46,11 @@ Two capture strategies, depending on volume:
 - **Time-based capture** saves a frame every N seconds. Good for building a broad dataset across a day or week. Adjust the interval to control storage cost.
 - **Conditional capture** saves frames only when a trigger condition fires (for example, "when the vision service returns a confidence below 0.6"). This keeps only the hard cases, which is what you need for retraining.
 
-Both strategies are configured on the data management service. The images sync to the [**DATA** tab](https://app.viam.com/data/view) where you label them in the next step.
+Both strategies are configured on the data management service. The images sync to the [**DATA** tab](https://app.viam.com/data/all) where you label them in the next step.
 
 ## 3. Label the new images
 
-Open the [**DATA** tab](https://app.viam.com/data/view) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate images](/train/annotate-images/) for the UI walkthrough.
+Open the [**DATA** tab](https://app.viam.com/data/all) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate images](/train/annotate-images/) for the UI walkthrough.
 
 If you have a lot of images, use [automatic annotation](/train/automate-annotation/) to generate initial labels from an existing model, then review and correct them. Correction is usually faster than labeling from scratch.
 
