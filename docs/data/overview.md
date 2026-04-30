@@ -104,7 +104,7 @@ Captured images can be tagged, annotated with bounding boxes, and organized into
 4. Submit a training job (Vertex AI AutoML or your own training container).
 5. Deploy the trained model back to your robot.
 
-See [Create a dataset](/train/create-a-dataset/) and the training section for details.
+See [Tag data](/data/tag-data/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
 
 ## Monitor and debug
 
