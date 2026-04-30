@@ -220,3 +220,7 @@ div.code-toolbar.code-terminal > .toolbar > .toolbar-item > span {
 .command-line span.token.output {
   opacity: 0.7;
 }
+pre[class*="language-"] > code.wrap {
+  white-space: pre-wrap;
+  word-break: break-word;
+}

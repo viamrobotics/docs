@@ -34,28 +34,20 @@ The Viam app applies tags one image at a time. To tag many items in one operatio
 
 Tag specific items by their binary data IDs:
 
-```sh {class="command-line" data-prompt="$"}
-viam data tag ids add \
-  --tags=reviewed,approved \
-  --binary-data-ids=<id1>,<id2>
+```sh {class="command-line wrap" data-prompt="$"}
+viam data tag ids add --tags=reviewed,approved --binary-data-ids=<id1>,<id2>
 ```
 
 Remove tags from specific items:
 
-```sh {class="command-line" data-prompt="$"}
-viam data tag ids remove \
-  --tags=reviewed \
-  --binary-data-ids=<id1>,<id2>
+```sh {class="command-line wrap" data-prompt="$"}
+viam data tag ids remove --tags=reviewed --binary-data-ids=<id1>,<id2>
 ```
 
 Tag every item that matches a filter (organization, location, MIME type, time range, and more):
 
-```sh {class="command-line" data-prompt="$"}
-viam data tag filter add \
-  --tags=reviewed,approved \
-  --org-ids=<org-id> \
-  --location-ids=<location-id> \
-  --mime-types=image/jpeg
+```sh {class="command-line wrap" data-prompt="$"}
+viam data tag filter add --tags=reviewed,approved --org-ids=<org-id> --location-ids=<location-id> --mime-types=image/jpeg
 ```
 
 {{< alert title="Note" color="note" >}}
