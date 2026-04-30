@@ -113,6 +113,21 @@ Enabled Grants: authorization_code, password
 The generated client ID is unique to your OAuth app and linked to your organization.
 You can update any value after setup using `viam organization auth-service oauth-app update`.
 
+## Designate a login client ID
+
+If you want invite links to use a custom login screen instead of Viam's default, designate which of your registered OAuth apps drives the flow.
+
+1. In the top nav, click your organization's name to open the organization dropdown.
+1. Click **Settings**.
+1. Scroll to **White Labeling** and find **Login client ID**. The field appears once you have at least one OAuth app registered, and its help text lists the valid client IDs.
+1. Enter the client ID of one of your registered OAuth apps and click **Save**.
+
+The client ID must match one of your registered OAuth apps. The OAuth app's redirect URI list must include Viam's invite redirect URI; this is added automatically when you create the OAuth app, so you only need to add it manually if you've removed it.
+
+When **Login client ID** is set, organization invite links route users to the FusionAuth login screen for the designated OAuth app, which uses that app's own branding. When the field is empty, invite links route users to Viam's default login screen, which displays your organization's logo if you've uploaded one through the same **White Labeling** section.
+
+**Behavior change.** Before this setting existed, organizations with any registered OAuth app had the first one used automatically as the login client. That fallback no longer exists. If you want a branded invite login flow, set **Login client ID** explicitly.
+
 ## Use the generated client ID and secret in your app
 
 Your authentication is built on top of FusionAuth.
