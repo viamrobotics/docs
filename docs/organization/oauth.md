@@ -115,16 +115,18 @@ You can update any value after setup using `viam organization auth-service oauth
 
 ## Designate a login client ID
 
-If your organization has one or more OAuth apps, designate which one is used for the login and invite flow. The designated client ID controls which branded login screen users see when they open an organization invite link.
+If you want invite links to use a custom login screen instead of Viam's default, designate which of your registered OAuth apps drives the flow.
 
 1. Open the organization dropdown in the top right of Viam, next to your initials.
 1. Click **Settings and invites** to open the organization settings menu.
-1. Under **White Labeling**, find **Login client ID**.
+1. Under **White Labeling**, find **Login client ID**. The field appears once you have at least one OAuth app registered, and its help text lists the valid client IDs.
 1. Enter the client ID of one of your registered OAuth apps and click **Save**.
 
-The client ID must match one of the OAuth apps created in the previous step. The OAuth app must also include the organization invite redirect URI in its redirect URIs list; otherwise the save fails with a validation error.
+The client ID must match one of your registered OAuth apps. The OAuth app's redirect URI list must include Viam's invite redirect URI; this is added automatically when you create the OAuth app, so you only need to add it manually if you've removed it.
 
-When this field is set, organization invite links redirect users to the custom login screen for the designated OAuth app and pass your organization's logo URL to the login screen. When this field is empty, invite links use Viam's default login screen instead.
+When **Login client ID** is set, organization invite links route users to the FusionAuth login screen for the designated OAuth app, which uses that app's own branding. When the field is empty, invite links route users to Viam's default login screen, which displays your organization's logo if you've uploaded one through the same **White Labeling** section.
+
+**Behavior change.** Before this setting existed, organizations with any registered OAuth app had the first one used automatically as the login client. That fallback no longer exists. If you want a branded invite login flow, set **Login client ID** explicitly.
 
 ## Use the generated client ID and secret in your app
 
