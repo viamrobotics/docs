@@ -105,7 +105,13 @@ This frame places the arm's base at the world origin, which is common for single
 
 For two-arm setups, one arm is typically at the world origin and the other is offset by its distance from the first arm in the x and y directions using the `translation` field.
 
-See [Frame System](/motion-planning/frame-system/) for details on configuring frames.
+To attach a gripper, camera, or other tool to the end effector, set the attached component's frame `parent` to the arm's name.
+See [Add a gripper](/hardware/common-components/add-a-gripper/#3-configure-a-frame-recommended) for a worked example.
+
+If you're writing a driver module for an arm that isn't in the registry, the module implements the arm's `Kinematics` method to return the arm's kinematic model.
+See [Kinematics](/motion-planning/reference/kinematics/) for the URDF and SVA JSON formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
+
+See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
 
 ### 4. Save and test
 
