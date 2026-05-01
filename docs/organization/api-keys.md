@@ -31,9 +31,18 @@ Each key is assigned a role: **Owner** or **Operator**.
 Owner has full access at the key's scope.
 Operator can control machines through the **CONTROL** tab and view some data, but cannot configure machines, view logs, or manage members.
 
-The Viam app and CLI both create Owner-role keys.
-To create an Operator-role key, use the Python SDK with `APIKeyAuthorization(role="operator", ...)`.
-See [Create an Operator-role key](#create-an-operator-role-key) below.
+How you create the key determines which roles you can choose:
+
+| Creation path | Roles supported        |
+| ------------- | ---------------------- |
+| Viam app      | Owner or Operator      |
+| Python SDK    | Owner or Operator      |
+| Go SDK        | Owner or Operator      |
+| CLI           | Owner only (hardcoded) |
+
+If you need an Operator-role key, create it from the Viam app or an SDK. The CLI's `viam organizations api-key create`, `viam locations api-key create`, and `viam machines api-key create` commands always produce Owner-role keys.
+
+For an SDK example with Operator role, see [Create an Operator-role key with the SDK](#create-an-operator-role-key-with-the-sdk) below.
 
 For the full permission matrix, see [Permissions](/organization/rbac/).
 
@@ -108,10 +117,9 @@ Viam does not store the key value after creation.
 If you lose it, you must rotate or create a new key.
 {{< /alert >}}
 
-### Create an Operator-role key
+### Create an Operator-role key with the SDK
 
-The Python SDK is the only path to Operator-role keys.
-Pass `role="operator"` to `APIKeyAuthorization`:
+The CLI does not expose a `--role` flag, so use the Viam app or an SDK to create an Operator-role key. The Python example below passes `role="operator"` to `APIKeyAuthorization`:
 
 ```python
 api_key, api_key_id = await client.app_client.create_key(
@@ -126,6 +134,8 @@ api_key, api_key_id = await client.app_client.create_key(
     name="control-dashboard-readonly",
 )
 ```
+
+The Go SDK accepts the same role values through `APIKeyAuthorization` and `CreateKey`.
 
 ## List API keys
 
