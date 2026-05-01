@@ -7,9 +7,10 @@ description: "Reference for the single-axis gantry model. Single-axis gantry."
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
+  - "/operate/reference/components/gantry/single-axis/"
   - "/components/gantry/oneaxis/"
   - "/components/gantry/single-axis/"
-  - "/operate/reference/components/gantry/single-axis/"
+  - "/reference/components/gantry/single-axis/"
 component_description: "Supports a gantry with a singular linear rail."
 # SME: Rand, Martha
 ---

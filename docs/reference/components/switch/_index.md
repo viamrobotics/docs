@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a switch component on your machine, see [Switch](/hardware/common-components/add-a-switch/).
 - For the methods you call on a switch in code, see the [Switch API reference](/reference/apis/components/switch/).
-- For switch models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=switch). Each registry module's configuration is documented in its own README on its registry page.
+- For switch models outside the built-in set, search for `switch` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

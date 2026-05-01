@@ -15,8 +15,9 @@ tags:
     "odometry",
   ]
 aliases:
-  - "/components/movement-sensor/wheeled-odometry/"
   - "/operate/reference/components/movement-sensor/wheeled-odometry/"
+  - "/components/movement-sensor/wheeled-odometry/"
+  - "/reference/components/movement-sensor/wheeled-odometry/"
 component_description: "A model that uses encoders to get an odometry estimate from a wheeled base."
 # SMEs: Rand, Martha
 ---

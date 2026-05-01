@@ -6,10 +6,11 @@ description: "Reference for the single encoder model. Single encoder with a micr
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:
+  - "/operate/reference/components/encoder/single-micro-rdk/"
   - /micro-rdk/encoder/single/
   - /build/micro-rdk/encoder/single/
   - /components/encoder/single-micro-rdk/
-  - "/operate/reference/components/encoder/single-micro-rdk/"
+  - "/reference/components/encoder/single-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
 ---

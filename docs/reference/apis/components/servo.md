@@ -8,12 +8,13 @@ icon: true
 images: ["/icons/components/servo.svg"]
 date: "2022-10-10"
 aliases:
+  - /operate/modules/component-apis/servo/
   - /dev/reference/apis/components/servo/
   - /appendix/apis/components/servo/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The servo API allows you to give commands to your [servo components](/operate/reference/components/servo/) for controlling the angular position of a hobby servo precisely or getting its current status.
+The servo API allows you to give commands to your [servo components](/reference/components/servo/) for controlling the angular position of a hobby servo precisely or getting its current status.
 
 Industrial servos should use the [motor API](/reference/apis/components/motor/) which provides more features than the servo API.
 

@@ -7,8 +7,9 @@ description: "Reference for the sensor-controlled base model. Sensor-controlled 
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
-  - "/components/base/sensor-controlled/"
   - "/operate/reference/components/base/sensor-controlled/"
+  - "/components/base/sensor-controlled/"
+  - "/reference/components/base/sensor-controlled/"
 component_description: "Wrap other base models and add feedback control using a movement sensor."
 # SMEs: Rand H., Martha J.
 ---

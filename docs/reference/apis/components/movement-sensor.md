@@ -8,12 +8,13 @@ icon: true
 images: ["/icons/components/imu.svg"]
 date: "2022-10-10"
 aliases:
+  - /operate/modules/component-apis/movement-sensor/
   - /dev/reference/apis/components/movement-sensor/
   - /appendix/apis/components/movement-sensor/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The movement sensor API allows you to give commands to your [movement sensor components](/operate/reference/components/movement-sensor/) for getting a GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.
+The movement sensor API allows you to give commands to your [movement sensor components](/reference/components/movement-sensor/) for getting a GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.
 
 Different movement sensors provide different data, so be aware that not all of the methods below are supported by all movement sensors.
 

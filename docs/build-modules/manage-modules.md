@@ -8,6 +8,7 @@ icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Update or delete your existing modules, or change their privacy settings."
 aliases:
+  - /operate/modules/advanced/manage-modules/
   - /use-cases/deploy-code/
   - /use-cases/manage-modules/
   - /how-tos/manage-modules/

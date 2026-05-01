@@ -7,6 +7,7 @@ type: "docs"
 description: "Set up the Gazebo simulation environment for the inspection tutorial."
 date: "2025-01-30"
 aliases:
+  - /operate/hello-world/first-project/sim-setup/
   - /try/first-project/gazebo-setup/
 ---
 

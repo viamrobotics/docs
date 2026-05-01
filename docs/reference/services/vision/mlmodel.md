@@ -204,7 +204,7 @@ Test an `mlmodel` vision service from the [Control tab](/monitor/default-interfa
 
 {{< imgproc src="/services/vision/detections.png" alt="A vision service test panel showing bounding boxes on a live camera feed" resize="450x" declaredimensions=true >}}
 
-If you want a continuous overlay in the Control tab, configure a [transform camera](/operate/reference/components/camera/transform/):
+If you want a continuous overlay in the Control tab, configure a [transform camera](/reference/components/camera/transform/):
 
 {{< tabs >}}
 {{% tab name="Detections overlay" %}}

@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Write code to control your machine with Viam's Python, Go, TypeScript, Flutter, and C++ SDKs."
 aliases:
+  - /operate/control/sdks/
   - /sdks/
 ---
 

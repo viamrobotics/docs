@@ -7,9 +7,10 @@ description: "Reference for the multi-axis gantry model. Multi-axis gantry."
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:
+  - "/operate/reference/components/gantry/multi-axis/"
   - "/components/gantry/multiaxis/"
   - "/components/gantry/multi-axis/"
-  - "/operate/reference/components/gantry/multi-axis/"
+  - "/reference/components/gantry/multi-axis/"
 component_description: "Supports a gantry with multiple linear rails. Composed of multiple single-axis gantries."
 # SME: Rand, Martha
 ---

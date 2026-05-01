@@ -7,6 +7,7 @@ type: "docs"
 description: "Package, upload, and distribute a module through the Viam registry."
 date: "2025-01-30"
 aliases:
+  - /operate/modules/deploy-a-module/
   - /build/development/deploy-a-module/
   - /development/deploy-a-module/
   - /extend/modular-resources/upload/
