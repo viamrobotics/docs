@@ -14,7 +14,7 @@ A few important boundaries:
 
 - **Binary data only.** You can tag images, point clouds, audio, and other binary uploads. Tabular data (sensor readings) does not support post-capture tagging.
 - **Different from bounding boxes and labels.** Tags apply to a whole item. Bounding boxes mark regions of an image and are used for object-detection training. See [Annotate images](/train/annotate-images/) for both classification tags and bounding boxes in the ML training context.
-- **Different from tabular `tags` capture attributes.** The `tags` field in a [data capture method config](/data/reference/#capture_methods) attaches a fixed list of tags at capture time. The operations on this page apply tags after data is captured.
+- **Different from tabular `tags` capture attributes.** The `tags` field in a [data capture method config](/data/reference/#data-capture-method-attributes) attaches a fixed list of tags at capture time. The operations on this page apply tags after data is captured.
 
 ## Apply tags to binary data
 
