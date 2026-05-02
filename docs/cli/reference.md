@@ -1538,20 +1538,22 @@ viam module local-app-testing --app-url http://localhost:3000
 
 ### `module generate`
 
-Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module.
+Generate a new module or a new [Viam application](/build-apps/hosting/) with stub files and a <file>meta.json</file> file.
 
 ```sh {class="command-line" data-prompt="$"}
-# auto-generate stub files for a new modular resource by following prompts
+# follow interactive prompts to generate a module or app
 viam module generate
 ```
 
+The first prompt asks whether you want to generate a **module** (a modular resource that adds custom components or services to a machine) or an **app** (a web application that connects to machines through the Viam SDK and is hosted on [Viam Applications](/build-apps/hosting/)).
+
 {{% alert title="Note" color="note" %}}
-If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
+If you are generating a module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
 {{% /alert %}}
 
 {{% hiddencontent %}}
 
-The `viam module generate` command can generate code for the following resource types:
+When generating a module, the command can generate code for the following resource types:
 
 Components:
 
@@ -1586,13 +1588,16 @@ Services:
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--name` | Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--language` | Language to use for the module. Options: `python`, `go`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--visibility` | Module visibility. Options: `private`, `public`, `public_unlisted`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--public-namespace` | Namespace or organization ID of the module. Must be either a valid organization ID, or a namespace that exists within a user organization. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | Optional |
-| `--model-name` | Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--register` | Register the module with Viam to associate it with your organization. Default: `false`. | Optional |
+| `--generate-type` | Type of project to generate. Options: `module`, `app`. If omitted, the CLI prompts you to choose. | Optional |
+| `--name` | (Module only) Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. | Optional |
+| `--language` | (Module only) Language to use for the module. Options: `python`, `go`. | Optional |
+| `--visibility` | Visibility. Options: `private`, `public`, `public_unlisted`. | Optional |
+| `--public-namespace` | Namespace or organization ID. Must be either a valid organization ID or a namespace that exists within a user organization. | Optional |
+| `--resource-subtype` | (Module only) The API to implement with the modular resource. For example, `motor`. | Optional |
+| `--model-name` | (Module only) Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. | Optional |
+| `--register` | Register with Viam to associate it with your organization. Default: `false`. | Optional |
+| `--app-name` | (App only) Name for the app. Alphanumeric characters, dashes, and underscores only. Must start with a letter. | Optional |
+| `--app-type` | (App only) App type. Options: `single_machine`, `multi_machine`. See [Two application types](/build-apps/hosting/overview/#two-application-types). | Optional |
 
 ### `module create`
 
