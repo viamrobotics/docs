@@ -46,17 +46,17 @@ Find your machine's part ID first. At the top of the machine's page, click the *
 Run the command from your module's root directory (where `meta.json` lives):
 
 ```sh {class="command-line wrap" data-prompt="$"}
-viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
+viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
 ```
 
-`--model-name` adds an instance of your model to the machine config (so you don't have to add it by hand), and `--name` names that instance.
+`--model-name` adds an instance of your model to the machine config (so you don't have to add it by hand), and `--resource-name` names that instance.
 
 **What to expect:**
 
 - The CLI prints build progress, then upload progress, then a success line.
 - The machine's **CONFIGURE** tab shows the new component (named `my-sensor-1` in the example above). Open it and set the attributes your module expects.
-- The module starts within a few seconds. The **LOGS** tab shows `module my-sensor-module-private started`.
-- Each subsequent code change: rerun `viam module reload` (or `reload-local`) to push a new build. Use `--no-build` to skip the build step if you already built manually, or `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
+- The module starts within a few seconds. The **LOGS** tab shows a `Module successfully added` entry with your module name.
+- Each subsequent code change: rerun `viam module reload` (or `reload-local`) to push a new build. With `reload-local`, pass `--no-build` to skip the build step if you already built manually. Run `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
 
 For the full hot-reload walkthrough including how it fits into the dev loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
 
@@ -182,8 +182,8 @@ Pick one path:
 
 Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. You can trigger it two ways:
 
-- Tag a release in GitHub. The generator's `.github/workflows/deploy.yml` workflow runs `viam module build start` for you.
-- Run `viam module build start` directly from your laptop. This runs the same backend build without going through GitHub Actions.
+- Tag a release in GitHub. The generator's `.github/workflows/deploy.yml` workflow uses the [`viamrobotics/build-action`](https://github.com/viamrobotics/build-action) GitHub action to trigger the build.
+- Run `viam module build start` directly from your laptop. This triggers the same Viam-side build without going through GitHub Actions.
 
 Set up GitHub Actions once, then every tagged release deploys automatically.
 
@@ -293,9 +293,9 @@ viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
 
 **What to expect:**
 
-- Each `viam module upload` prints `successfully uploaded <module-id> version <version> for <platform>` on success.
+- Each `viam module upload` prints `Version successfully uploaded! you can view your changes online here: <url>` on success.
 - Your module appears at `https://app.viam.com/registry` with the uploaded version. Each platform you uploaded is listed under that version.
-- Before uploading, the CLI checks that the entrypoint exists in the archive, has execute permissions, and that no symlinks escape the archive. To skip these checks (not recommended for production), pass `--force`.
+- Before uploading, the CLI checks that the entrypoint exists in the archive and has execute permissions. Both checks block the upload if they fail. The CLI also warns (but does not block) if the archive contains symlinks that point outside the archive. To skip the entrypoint checks (not recommended for production), pass `--force`.
 
 ### Step 5: Configure on a machine {#step-5-configure-on-a-machine}
 
@@ -317,7 +317,7 @@ With your module in the registry, any authorized machine can use it.
 **What to expect:**
 
 - `viam-server` downloads the module from the registry within a few seconds.
-- The **LOGS** tab shows `module <module-name> started`.
+- The **LOGS** tab shows a `Module successfully added` entry with your module name.
 - Open the **CONTROL** tab and verify the component responds.
 - If the module fails to start, the **LOGS** tab shows the error. See [Module works locally but fails after deployment](#module-works-locally-but-fails-after-deployment) below.
 
