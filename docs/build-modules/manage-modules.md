@@ -23,7 +23,7 @@ cost: "0"
 
 After you [create and upload a module](/build-modules/write-a-driver-module/), you can update, delete, or change its visibility settings.
 
-For information on pinning module deployments to versions, see [Module versioning](/build-modules/deploy-a-module/#7-manage-versions).
+For information on pinning module deployments to versions, see [Release new versions](/build-modules/deploy-a-module/#manage-versions).
 
 ## Update a module
 
@@ -51,7 +51,7 @@ Use [GitHub Actions](https://docs.github.com/actions) to automatically build and
 
    {{% alert title="Tip" color="tip" %}}
 
-   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to deploy with cloud build](/build-modules/deploy-a-module/#4-deploy-with-cloud-build-recommended) including adding API keys for the build action, all you need to do to trigger a new build is publish a release in GitHub as you did when you first published the module.
+   If you used `viam module generate` to create your module and enabled cloud build, and you followed all the [steps to deploy with cloud build](/build-modules/deploy-a-module/#release-with-cloud-build) including adding API keys for the build action, all you need to do to trigger a new build is publish a release in GitHub as you did when you first published the module.
 
    {{% /alert %}}
 
@@ -259,7 +259,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
 
-   Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry), and the machines set to use the latest [version](/build-modules/deploy-a-module/#7-manage-versions) of the module will automatically update to the new version.
+   Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry), and the machines set to use the latest [version](/build-modules/deploy-a-module/#manage-versions) of the module will automatically update to the new version.
 
 #### Supported platforms for automatic updates
 
