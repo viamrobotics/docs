@@ -21,9 +21,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and upload a module](/build-modules/write-a-driver-module/), you can update, delete, or change its visibility settings.
-
-For information on pinning module deployments to versions, see [Release new versions](/build-modules/deploy-a-module/#manage-versions).
+After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, change visibility, or delete the module.
 
 ## Update a module
 
@@ -259,7 +257,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
 1. Create a [release](https://docs.github.com/en/repositories/releasing-projects-on-github) in GitHub to trigger the build.
    The build can be quick or take over 15 minutes to complete, depending on factors including the size of the module.
 
-   Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry), and the machines set to use the latest [version](/build-modules/deploy-a-module/#manage-versions) of the module will automatically update to the new version.
+   Once the build is complete, the module will automatically update in the [registry](https://app.viam.com/registry). Machines tracking the **latest** version pick up the new release within a few minutes. To control which version a machine uses, see [Pin a module to a specific version](#pin-a-module-to-a-specific-version).
 
 #### Supported platforms for automatic updates
 
@@ -313,6 +311,54 @@ Use the [Viam CLI](/cli/) to manually update your module:
 When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
 
 For more information, see the [`viam module` command](/cli/#module).
+
+## Pin a module to a specific version
+
+When a machine's module **Version** field is set to **latest** (the default), the machine picks up new releases automatically, within a few minutes. Machines pinned to a specific version stay on that version until you change the pin.
+
+To pin a machine to a specific version:
+
+1. In the Viam app, go to the machine's **CONFIGURE** tab.
+1. Find the module in the configuration.
+1. Set the **Version** field to a specific version (for example, `0.1.0`).
+1. Click **Save**.
+
+## Auto-detect models with `update-models`
+
+As your module grows, you can keep `meta.json`'s `models` array in sync with your code automatically:
+
+```sh {class="command-line" data-prompt="$"}
+viam module update-models --binary ./bin/module
+viam module update
+```
+
+`update-models` inspects the binary, discovers registered models, and rewrites the `models` array. `viam module update` pushes the updated metadata to the registry.
+
+## Restrict an upload to specific platforms
+
+You can restrict an upload to machines that report specific platform tags. For example, to require Debian:
+
+```sh {class="command-line" data-prompt="$"}
+viam module upload --version=0.1.0 --platform=linux/amd64 --tags=distro:debian dist/archive.tar.gz
+```
+
+A machine uses a constrained upload only if it reports a matching tag. Uploads with no constraints are available to all machines on that platform.
+
+## Upload limits
+
+| Limit                          | Value  |
+| ------------------------------ | ------ |
+| Compressed package (`.tar.gz`) | 50 GB  |
+| Decompressed contents          | 250 GB |
+| Single file within package     | 25 GB  |
+
+## Download a module from the registry
+
+For inspection, debugging, or local testing of someone else's module:
+
+```sh {class="command-line wrap" data-prompt="$"}
+viam module download --id my-org:my-sensor-module --version 0.1.0 --platform linux/amd64 --destination ./downloaded-module
+```
 
 ## Change module visibility
 
