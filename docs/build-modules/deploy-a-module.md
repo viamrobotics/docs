@@ -60,11 +60,6 @@ viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-mod
 
 If your laptop and the target share an architecture, `reload-local` builds on your laptop and copies the archive directly to the target over the network. No cloud round-trip.
 
-| Command                    | What it does                                                                                             | Use when                                                                                                                     |
-| -------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `viam module reload`       | Builds in the cloud for the target's architecture; the target machine then pulls it from the registry.   | Your laptop and the target machine have different architectures (for example, an Apple Silicon Mac targeting `linux/amd64`). |
-| `viam module reload-local` | Builds on your laptop and copies it directly to the target machine over the network. No registry upload. | Your laptop's architecture matches the target's (for example, both `linux/arm64`).                                           |
-
 Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
 
 The flags are the same as `reload`. From your module's root directory:
