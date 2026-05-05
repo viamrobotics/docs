@@ -89,7 +89,7 @@ For cloud build you also need:
 
 For manual upload you need:
 
-- A way to build a binary for each platform you want to support. Cross-compiling from x86 to ARM (Raspberry Pi) requires `GOOS`/`GOARCH` for Go or building on the target architecture for Python (PyInstaller does not cross-compile).
+- A way to build a binary for each platform you want to support. Cross-compiling from `linux/amd64` to `linux/arm64` requires `GOOS`/`GOARCH` for Go or building on the target architecture for Python (PyInstaller does not cross-compile).
 
 ### Step 1: Review meta.json
 
@@ -277,7 +277,7 @@ GOOS=linux GOARCH=arm64 go build -o dist/module cmd/module/main.go
 tar -czf dist/archive.tar.gz -C dist module
 ```
 
-Set `GOARCH` to match your target machine: `amd64` for x86_64, `arm64` for ARM (Raspberry Pi 4, Jetson, etc.).
+Set `GOARCH` to match your target machine: `amd64` for x86_64, `arm64` for ARM.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -437,11 +437,11 @@ A machine uses a constrained upload only if it reports a matching tag. Uploads w
 
 {{< expand "Exec format error on target machine" >}}
 
-This means the binary was compiled for the wrong architecture. For example, you built on an x86 laptop but the target machine is ARM (Raspberry Pi).
+This means the binary was compiled for the wrong architecture. For example, you built a `linux/amd64` binary but the target machine is `linux/arm64`.
 
 - Use [cloud build](#release-with-cloud-build) to compile for all target platforms automatically.
 - If deploying manually, cross-compile with the correct `GOOS` and `GOARCH` before uploading.
-- Verify the platform flag in your `upload` command matches the binary's architecture (for example, `--platform=linux/arm64` for Raspberry Pi 4).
+- Verify the platform flag in your `upload` command matches the binary's architecture (for example, `--platform=linux/arm64` for an `arm64` target).
 
 {{< /expand >}}
 
