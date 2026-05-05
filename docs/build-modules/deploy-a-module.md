@@ -4,7 +4,7 @@ title: "Deploy a module"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Pick a deployment path for your module: hot-reload onto one machine, release a versioned package through the registry, or rely on Viam's automatic deploy for inline modules."
+description: "Pick a deployment path for your module: hot-reload onto one machine, or release a versioned package through the registry."
 date: "2025-01-30"
 aliases:
   - /operate/modules/deploy-a-module/
@@ -20,11 +20,10 @@ There are several ways to deploy a module you wrote onto a machine. Which one to
 
 ## Pick a path
 
-| You want to...                                         | Path                                                                        | When to use it                                                                                                                                                                                                                                                      |
-| ------------------------------------------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Test on one machine right now                          | [Hot-reload](#hot-reload-onto-one-machine)                                  | You wrote a module on your laptop and want to deploy it for testing on the compute machine for your robot. This is the fastest develop-deploy loop. The CLI builds the module, gets it onto the target machine, and adds it to the machine's config in one command. |
-| Release a versioned module for others (or for a fleet) | [Versioned release](#release-a-versioned-module)                            | You want a stable version that any machine in your org (or any Viam user, if public) can install. This is what you do once your module is ready to share.                                                                                                           |
-| Deploy a module you wrote in the browser               | [`Save & Deploy`](/build-modules/write-an-inline-module/#6-save-and-deploy) | You used the inline editor in the Viam app. Deployment is one click: Viam builds and deploys for you. You don't need this page.                                                                                                                                     |
+| You want to...                                         | Path                                             | When to use it                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test on one machine right now                          | [Hot-reload](#hot-reload-onto-one-machine)       | You wrote a module on your laptop and want to deploy it for testing on the compute machine for your robot. This is the fastest develop-deploy loop. The CLI builds the module, gets it onto the target machine, and adds it to the machine's config in one command. |
+| Release a versioned module for others (or for a fleet) | [Versioned release](#release-a-versioned-module) | You want a stable version that any machine in your org (or any Viam user, if public) can install. This is what you do once your module is ready to share.                                                                                                           |
 
 Hot-reload gets your module onto a target machine and adds it to the machine's config in one command. A versioned release is a tagged upload to the Viam registry, numbered with a semantic version like `0.1.0`. Any machine in your org (or any Viam user's machine, if public) can install it.
 
