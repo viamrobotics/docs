@@ -1,3 +1,11 @@
+{{< alert title="Not supported by the builtin motion service" color="caution" >}}
+The [builtin motion service](/reference/services/motion/) no longer implements `MoveOnMap` and returns the error `MoveOnMap not supported by builtin` when called.
+The implementation was removed in [rdk#5475](https://github.com/viamrobotics/rdk/pull/5475) (November 2025).
+
+`MoveOnMap` is still part of the motion service API, so a third-party module can implement it.
+Check the [Viam registry](https://app.viam.com/registry) for a motion-service module that supports it before relying on this method.
+{{< /alert >}}
+
 Move a [base](/reference/components/base/) component to a destination [pose](/motion-planning/reference/orientation-vectors/) on a SLAM map.
 
 `MoveOnMap()` is non blocking, meaning the motion service will move the component to the destination [pose](/motion-planning/reference/orientation-vectors/) after `MoveOnMap()` returns.
