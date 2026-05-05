@@ -29,14 +29,14 @@ Hot-reload gets your module onto a target machine and adds it to the machine's c
 
 ## Hot-reload onto one machine
 
-`viam module reload` builds your module, gets it onto a single target machine, and adds it to the machine's config in one command. Use this for the inner development loop.
+`viam module reload` builds your module, gets it onto a single target machine, and adds it to the machine's config in one command.
 
 **Pick a variant:**
 
-| Command                    | What it does                                                                                             | Use when                                                                                                           |
-| -------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `viam module reload`       | Builds in the cloud for the target's architecture; the target machine then pulls it from the registry.   | Your laptop and the target machine have different architectures (for example, macOS laptop → Raspberry Pi target). |
-| `viam module reload-local` | Builds on your laptop and copies it directly to the target machine over the network. No registry upload. | Your laptop's architecture matches the target's (for example, both `linux/arm64`). Faster: no cloud round-trip.    |
+| Command                    | What it does                                                                                             | Use when                                                                                                                     |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `viam module reload`       | Builds in the cloud for the target's architecture; the target machine then pulls it from the registry.   | Your laptop and the target machine have different architectures (for example, an Apple Silicon Mac targeting `linux/amd64`). |
+| `viam module reload-local` | Builds on your laptop and copies it directly to the target machine over the network. No registry upload. | Your laptop's architecture matches the target's (for example, both `linux/arm64`). Faster: no cloud round-trip.              |
 
 Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
 
