@@ -16,28 +16,34 @@ aliases:
   - /how-tos/upload-module/
 ---
 
-You have several ways to get a module you wrote onto a machine. Which one to use depends on what you want to do next.
+There are several ways to deploy a module you wrote onto a machine. Which one to use depends on where you are in your software development cycle.
 
 ## Pick a path
 
-| You want to...                                         | Path                                                                        | When to use it                                                                                                                                                                                              |
-| ------------------------------------------------------ | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Test on one machine right now                          | [Hot-reload](#hot-reload-onto-one-machine)                                  | You wrote a module on your laptop and want to try it on a Pi or another machine. Fastest dev loop. Module is uploaded as a private version on your org and configured on the target machine in one command. |
-| Release a versioned module for others (or for a fleet) | [Versioned release](#release-a-versioned-module)                            | You want a stable version that any machine in your org (or any Viam user, if public) can install. This is what you do once your module is ready to share.                                                   |
-| Deploy a module you wrote in the browser               | [`Save & Deploy`](/build-modules/write-an-inline-module/#6-save-and-deploy) | You used the inline editor in the Viam app. Deployment is one click: Viam builds and deploys for you. You don't need this page.                                                                             |
+| You want to...                                         | Path                                                                        | When to use it                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------ | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test on one machine right now                          | [Hot-reload](#hot-reload-onto-one-machine)                                  | You wrote a module on your laptop and want to deploy it for testing on the compute machine for your robot. This is the fastest develop-deploy loop. The CLI builds the module, gets it onto the target machine, and adds it to the machine's config in one command. |
+| Release a versioned module for others (or for a fleet) | [Versioned release](#release-a-versioned-module)                            | You want a stable version that any machine in your org (or any Viam user, if public) can install. This is what you do once your module is ready to share.                                                                                                           |
+| Deploy a module you wrote in the browser               | [`Save & Deploy`](/build-modules/write-an-inline-module/#6-save-and-deploy) | You used the inline editor in the Viam app. Deployment is one click: Viam builds and deploys for you. You don't need this page.                                                                                                                                     |
 
-Hot-reload and versioned release both go through the Viam registry. Hot-reload uploads as a private development version on your org and immediately configures it on the machine you specify. A versioned release is a tagged, semver-numbered upload that any authorized machine can pull.
+Hot-reload gets your module onto a target machine and adds it to the machine's config in one command. A versioned release is a tagged upload to the Viam registry, numbered with a semantic version like `0.1.0`. Any machine in your org (or any Viam user's machine, if public) can install it.
 
 ## Hot-reload onto one machine
 
-`viam module reload` builds your module, uploads it as a private development version, and adds it to the machine you specify, all in one command. Use this for the inner dev loop.
+`viam module reload` builds your module, gets it onto a single target machine, and adds it to the machine's config in one command. Use this for the inner development loop.
 
 **Pick a variant:**
 
-| Command                    | What it does                                          | Use when                                                                                         |
-| -------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `viam module reload`       | Builds in the cloud, then deploys.                    | Your laptop and target machine have different architectures (for example, macOS → Raspberry Pi). |
-| `viam module reload-local` | Builds locally, transfers the artifact, then deploys. | Architectures match. Faster, no cloud round-trip.                                                |
+| Command                    | What it does                                                                                             | Use when                                                                                                           |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `viam module reload`       | Builds in the cloud for the target's architecture; the target machine then pulls it from the registry.   | Your laptop and the target machine have different architectures (for example, macOS laptop → Raspberry Pi target). |
+| `viam module reload-local` | Builds on your laptop and copies it directly to the target machine over the network. No registry upload. | Your laptop's architecture matches the target's (for example, both `linux/arm64`). Faster: no cloud round-trip.    |
+
+Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
+
+**Why this is faster than a versioned release:**
+
+The main savings come from building only for the target's platform, not every platform a versioned release covers. Hot-reload also skips GitHub Actions runner setup, and the CLI tells the machine to restart the module right away with the new code instead of letting the machine pick up the change on its next sync with the cloud.
 
 **Run it:**
 
@@ -56,15 +62,15 @@ viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-mod
 - The CLI prints build progress, then upload progress, then a success line.
 - The machine's **CONFIGURE** tab shows the new component (named `my-sensor-1` in the example above). Open it and set the attributes your module expects.
 - The module starts within a few seconds. The **LOGS** tab shows a `Module successfully added` entry with your module name.
-- Each subsequent code change: rerun `viam module reload` (or `reload-local`) to push a new build. With `reload-local`, pass `--no-build` to skip the build step if you already built manually. Run `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
+- Each subsequent code change: rerun `viam module reload` (or `reload-local`) to deploy it. With `reload-local`, pass `--no-build` to skip the build step if you already built manually. Run `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
 
-For the full hot-reload walkthrough including how it fits into the dev loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
+For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
 
 When you're ready to share the module beyond the one machine you tested on, do a [versioned release](#release-a-versioned-module).
 
 ## Release a versioned module
 
-A versioned release uploads a numbered package to the registry. Any authorized machine (across your org, or across all Viam users if the module is public) can install it. New uploads with a higher version number deploy automatically to machines tracking the latest, usually within a minute or two.
+A versioned release uploads a numbered package to the registry. Any machine in your org can install it (or any Viam user's machine, if the module is public). Machines that aren't pinned to a specific version pick up new uploads automatically, within a minute or two.
 
 Two ways to build and upload:
 
@@ -132,7 +138,7 @@ The generator creates a `meta.json` file in your module directory. Open it and r
 Visibility options:
 
 - **`private`**: only your organization can see and use the module.
-- **`public`**: all Viam users can see and use it. Requires your organization to have a public namespace.
+- **`public`**: all Viam users can see and use it. Requires your organization to have a public namespace, set up at your org's **Settings** page in the Viam app.
 - **`public_unlisted`**: any user can use the module if they know the ID, but it does not appear in registry search results.
 
 ### Step 2: Review the build scripts
@@ -180,10 +186,10 @@ Pick one path:
 
 #### Option A: Release with cloud build (recommended) {#release-with-cloud-build}
 
-Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. You can trigger it two ways:
+Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. You can start it two ways:
 
-- Tag a release in GitHub. The generator's `.github/workflows/deploy.yml` workflow uses the [`viamrobotics/build-action`](https://github.com/viamrobotics/build-action) GitHub action to trigger the build.
-- Run `viam module build start` directly from your laptop. This triggers the same Viam-side build without going through GitHub Actions.
+- Tag a release in GitHub. The generator's `.github/workflows/deploy.yml` workflow uses the [`viamrobotics/build-action`](https://github.com/viamrobotics/build-action) GitHub action to start the build.
+- Run `viam module build start` directly from your laptop. This starts the same Viam-side build without going through GitHub Actions.
 
 Set up GitHub Actions once, then every tagged release deploys automatically.
 
@@ -219,7 +225,7 @@ git push origin v0.1.0
 - When the workflow turns green, your module appears at `https://app.viam.com/registry` with the tagged version.
 - If the workflow fails, click into the run for the build log. See the **Cloud build fails in GitHub Actions** entry under [Troubleshooting](#troubleshooting) for the common causes.
 
-To trigger a build without tagging a GitHub release (useful for testing the build pipeline before your first tagged release):
+To start a build without tagging a GitHub release (useful for testing the build pipeline before your first tagged release):
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build start --version 0.1.0
@@ -295,11 +301,11 @@ viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
 
 - Each `viam module upload` prints `Version successfully uploaded! you can view your changes online here: <url>` on success.
 - Your module appears at `https://app.viam.com/registry` with the uploaded version. Each platform you uploaded is listed under that version.
-- Before uploading, the CLI checks that the entrypoint exists in the archive and has execute permissions. Both checks block the upload if they fail. The CLI also warns (but does not block) if the archive contains symlinks that point outside the archive. To skip the entrypoint checks (not recommended for production), pass `--force`.
+- Before uploading, the CLI checks that the entrypoint exists in the archive and has execute permissions. If either check fails, the CLI stops the upload. The CLI also warns (but does not block) if the archive contains symlinks that point outside the archive. To skip the entrypoint checks (not recommended for production), pass `--force`.
 
 ### Step 5: Configure on a machine {#step-5-configure-on-a-machine}
 
-With your module in the registry, any authorized machine can use it.
+With your module in the registry, any machine in your org can use it (and any Viam user's machine, if the module is public).
 
 1. In the [Viam app](https://app.viam.com), open your machine's **CONFIGURE** tab.
 1. Click **+** and select **Configuration block**.
@@ -338,7 +344,7 @@ git push origin main v0.2.0
 
 For manual upload, rebuild and run `viam module upload --version=0.2.0` for each platform.
 
-**Automatic updates:** Machines tracking the latest version pick up the new release within a few minutes. Machines pinned to a specific version stay on that version until you change the pin.
+**Automatic updates:** When a machine's module **Version** field is set to **latest** (the default), the machine picks up new releases automatically, within a few minutes. Machines pinned to a specific version stay on that version until you change the pin.
 
 **Pin to a specific version:**
 
@@ -376,7 +382,7 @@ You can restrict an upload to machines that report specific platform tags. For e
 viam module upload --version=0.1.0 --platform=linux/amd64 --tags=distro:debian dist/archive.tar.gz
 ```
 
-The machine must report a matching tag for the constrained upload to be selected. Uploads with no constraints are available to all machines on that platform.
+A machine uses a constrained upload only if it reports a matching tag. Uploads with no constraints are available to all machines on that platform.
 
 ### Upload limits
 
