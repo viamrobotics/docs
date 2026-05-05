@@ -39,8 +39,8 @@ Find your machine's part ID first. At the top of the machine's page, click the *
 
 In the command below:
 
-- `--model-name` adds an instance of your model to the machine config (so you don't have to add it by hand).
-- `--resource-name` names that instance.
+- `--model-name` is the full model identifier from your `meta.json`, in the form `namespace:module-name:model-name`. Copy it from the `model` field of the entry in `meta.json`'s `models` array. If your module declares more than one model, pick the one you want to add.
+- `--resource-name` is a name you choose for this instance. Any unique string works. It appears as the component name on the **CONFIGURE** tab and is how you reference the component from client code.
 
 From your module's root directory (where `meta.json` lives), run:
 
@@ -54,10 +54,7 @@ viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-mod
 - The machine's **CONFIGURE** tab shows the new component (named `my-sensor-1` in the example above). Open it and set the attributes your module expects.
 - The module starts within a few seconds. The **LOGS** tab shows a `Module successfully added` entry with your module name.
 
-**On each code change:**
-
-- Rerun the same command to deploy the new code.
-- Run `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
+**On each code change:** rerun the same command to deploy the new code.
 
 ### Build on your laptop with `reload-local` {#reload-local}
 
@@ -70,7 +67,18 @@ If your laptop and the target share an architecture, `reload-local` builds on yo
 
 Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
 
-With `reload-local`, pass `--no-build` to skip the build step if you already built the archive manually.
+The flags are the same as `reload`. From your module's root directory:
+
+```sh {class="command-line wrap" data-prompt="$"}
+viam module reload-local --part-id <machine-part-id> --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
+```
+
+The target machine must be online (visible in the Viam app). The CLI reaches it through Viam's cloud, so most network setups work without configuration.
+
+**Useful flags:**
+
+- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`.
+- `--local` runs the module from source files on your laptop instead of shipping a tarball. Use this only when the target machine is your laptop. In `--local` mode, `viam module restart` picks up Python source edits without a rebuild.
 
 For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
 
