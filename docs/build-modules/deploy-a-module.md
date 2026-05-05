@@ -29,39 +29,48 @@ Hot-reload gets your module onto a target machine and adds it to the machine's c
 
 ## Hot-reload onto one machine
 
-`viam module reload` builds your module, gets it onto a single target machine, and adds it to the machine's config in one command.
+Hot-reload deploys your in-progress module to a single machine in one command: build, copy, add to the machine's config. It's faster than a versioned release because it builds only for the target's platform, skips GitHub Actions runner setup, and tells the machine to restart the module right away with the new code instead of waiting for the next cloud sync.
 
-**Pick a variant:**
-
-| Command                    | What it does                                                                                             | Use when                                                                                                                     |
-| -------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `viam module reload`       | Builds in the cloud for the target's architecture; the target machine then pulls it from the registry.   | Your laptop and the target machine have different architectures (for example, an Apple Silicon Mac targeting `linux/amd64`). |
-| `viam module reload-local` | Builds on your laptop and copies it directly to the target machine over the network. No registry upload. | Your laptop's architecture matches the target's (for example, both `linux/arm64`). Faster: no cloud round-trip.              |
-
-Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
-
-**Why this is faster than a versioned release:**
-
-The main savings come from building only for the target's platform, not every platform a versioned release covers. Hot-reload also skips GitHub Actions runner setup, and the CLI tells the machine to restart the module right away with the new code instead of letting the machine pick up the change on its next sync with the cloud.
+The CLI provides two commands: `viam module reload` (build in the cloud) and `viam module reload-local` (build on your laptop). The procedure below uses `viam module reload`, which works regardless of your laptop's architecture. To skip the cloud round-trip when your laptop matches the target, see [Build on your laptop with `reload-local`](#reload-local) at the end of this section.
 
 **Run it:**
 
 Find your machine's part ID first. At the top of the machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it.
 
-Run the command from your module's root directory (where `meta.json` lives):
+In the command below:
+
+- `--model-name` adds an instance of your model to the machine config (so you don't have to add it by hand).
+- `--resource-name` names that instance.
+
+From your module's root directory (where `meta.json` lives), run:
 
 ```sh {class="command-line wrap" data-prompt="$"}
 viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
 ```
-
-`--model-name` adds an instance of your model to the machine config (so you don't have to add it by hand), and `--resource-name` names that instance.
 
 **What to expect:**
 
 - The CLI prints build progress, then upload progress, then a success line.
 - The machine's **CONFIGURE** tab shows the new component (named `my-sensor-1` in the example above). Open it and set the attributes your module expects.
 - The module starts within a few seconds. The **LOGS** tab shows a `Module successfully added` entry with your module name.
-- Each subsequent code change: rerun `viam module reload` (or `reload-local`) to deploy it. With `reload-local`, pass `--no-build` to skip the build step if you already built manually. Run `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
+
+**On each code change:**
+
+- Rerun the same command to deploy the new code.
+- Run `viam module restart` to restart the running module without rebuilding (useful for Python source edits).
+
+### Build on your laptop with `reload-local` {#reload-local}
+
+If your laptop and the target share an architecture, `reload-local` builds on your laptop and copies the archive directly to the target over the network. No cloud round-trip.
+
+| Command                    | What it does                                                                                             | Use when                                                                                                                     |
+| -------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `viam module reload`       | Builds in the cloud for the target's architecture; the target machine then pulls it from the registry.   | Your laptop and the target machine have different architectures (for example, an Apple Silicon Mac targeting `linux/amd64`). |
+| `viam module reload-local` | Builds on your laptop and copies it directly to the target machine over the network. No registry upload. | Your laptop's architecture matches the target's (for example, both `linux/arm64`).                                           |
+
+Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
+
+With `reload-local`, pass `--no-build` to skip the build step if you already built the archive manually.
 
 For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
 
