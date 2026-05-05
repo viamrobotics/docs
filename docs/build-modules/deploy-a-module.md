@@ -217,7 +217,7 @@ git push origin v0.1.0
 
 - The GitHub Action starts immediately. Watch progress in the **Actions** tab of your GitHub repo. A typical first build takes 5-15 minutes (longer for the first run because dependencies aren't cached).
 - When the workflow turns green, your module appears at `https://app.viam.com/registry` with the tagged version.
-- If the workflow fails, click into the run for the build log. See [Cloud build fails in GitHub Actions](#cloud-build-fails-in-github-actions) below for the common causes.
+- If the workflow fails, click into the run for the build log. See the **Cloud build fails in GitHub Actions** entry under [Troubleshooting](#troubleshooting) for the common causes.
 
 To trigger a build without tagging a GitHub release (useful for testing the build pipeline before your first tagged release):
 
@@ -319,7 +319,7 @@ With your module in the registry, any authorized machine can use it.
 - `viam-server` downloads the module from the registry within a few seconds.
 - The **LOGS** tab shows a `Module successfully added` entry with your module name.
 - Open the **CONTROL** tab and verify the component responds.
-- If the module fails to start, the **LOGS** tab shows the error. See [Module works locally but fails after deployment](#module-works-locally-but-fails-after-deployment) below.
+- If the module fails to start, the **LOGS** tab shows the error. See the **Module works locally but fails after deployment** entry under [Troubleshooting](#troubleshooting) below.
 
 You're done with first deploy. From here, you can release new versions, manage who can use the module, or set platform constraints. See [After your first release](#after-your-first-release) below.
 
