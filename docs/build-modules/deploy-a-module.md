@@ -134,6 +134,8 @@ The generated `build.sh` uses `GOOS` and `GOARCH` environment variables to cross
 {{% /tab %}}
 {{< /tabs >}}
 
+With prep complete, follow one of the two sections below to publish your module. Cloud build is recommended for most cases; use a manual upload only when cloud build isn't an option.
+
 ### Publish with cloud build (recommended) {#release-with-cloud-build}
 
 Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. Both paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
