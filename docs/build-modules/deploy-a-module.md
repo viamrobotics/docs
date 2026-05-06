@@ -134,7 +134,7 @@ The generated `build.sh` uses `GOOS` and `GOARCH` environment variables to cross
 {{% /tab %}}
 {{< /tabs >}}
 
-With prep complete, follow one of the two sections below to publish your module. Cloud build is recommended for most cases; use a manual upload only when cloud build isn't an option.
+With prep complete, follow one of the two sections below to publish your module. [Cloud build](#release-with-cloud-build) is recommended for most cases; use a [manual upload](#release-manually) only when cloud build isn't an option.
 
 ### Publish with cloud build (recommended) {#release-with-cloud-build}
 
