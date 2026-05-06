@@ -92,17 +92,13 @@ Both paths share the same prep work first.
 
 ### Before you start
 
-The page from here on assumes you ran `viam module generate` to scaffold your module. The generator creates `meta.json`, build scripts, an entrypoint, and (for cloud build) a GitHub Actions workflow. If you wrote your module from scratch, see [Module reference](/build-modules/module-reference/) for the file formats you need to create by hand.
+**For cloud build (recommended):** create a Viam organization API key in the Viam app at your org's **Settings** page. The key value is shown once and can't be retrieved later, so save it before navigating away. You'll also need your module's code in a GitHub repo with the `url` set in `meta.json`; if you don't have one yet, you'll set it up in [Publish with cloud build](#release-with-cloud-build) below.
 
-To use cloud build (recommended), create a Viam organization API key in the Viam app at your org's **Settings** page. The key value is shown once and can't be retrieved later, so save it before navigating away.
-
-If you don't have a GitHub repo yet, you'll set one up in [Publish with cloud build](#release-with-cloud-build) below.
-
-For manual upload only, you need a way to build a binary for each platform you want to support. Cross-compiling from `linux/amd64` to `linux/arm64` requires `GOOS`/`GOARCH` for Go or building on the target architecture for Python (PyInstaller does not cross-compile).
+**For manual upload:** you need a way to build a binary for each platform you want to support. Cross-compiling from `linux/amd64` to `linux/arm64` requires `GOOS`/`GOARCH` for Go or building on the target architecture for Python (PyInstaller does not cross-compile).
 
 ### Update meta.json for publishing
 
-The generator created a working `meta.json` in your module directory. Before publishing, update these fields if needed:
+The Viam module generator created a working `meta.json` in your module directory. Before publishing, update these fields if needed:
 
 - **`visibility`**: defaults to `private` (only your organization can install). Change to `public` if you want any Viam user to install your module, or `public_unlisted` to make it reachable by ID but not listed in registry search results. Public visibility requires your organization to have a public namespace, set up at your org's **Settings** page in the Viam app.
 - **`url`**: link to the source repository. **Required for cloud build** — set this to your GitHub repo's URL.
