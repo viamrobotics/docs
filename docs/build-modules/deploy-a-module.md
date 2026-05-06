@@ -277,7 +277,7 @@ viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
 - Your module appears at the registry with the uploaded version. Each platform you uploaded is listed under that version.
 - Before uploading, the CLI checks that the entrypoint exists in the archive and has execute permissions. If either check fails, the CLI stops the upload. The CLI also warns (but does not block) if the archive contains symlinks that point outside the archive. To skip the entrypoint checks (not recommended for production), pass `--force`.
 
-### Configure on a machine {#step-5-configure-on-a-machine}
+## Configure on a machine {#step-5-configure-on-a-machine}
 
 With your module in the registry, any machine in your org can use it (and any Viam user's machine, if the module is public).
 
