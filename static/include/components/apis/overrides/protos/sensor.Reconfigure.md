@@ -1,2 +1,2 @@
 Reconfigure this resource.
-Reconfigure must reconfigure the resource atomically and in place.
+For modular resources, reconfiguration destroys the existing resource instance and creates a new one using the constructor.
