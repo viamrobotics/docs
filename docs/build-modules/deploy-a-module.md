@@ -60,7 +60,7 @@ viam module reload --part-id <machine-part-id> --model-name <namespace:module-na
 
 If your laptop and the target have the same architecture (for example, both `linux/arm64`), `reload-local` builds on your laptop and copies the archive directly to the target over the network. No cloud round-trip.
 
-Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
+For cross-architecture deploys, use cloud `reload` rather than `reload-local`. Python in particular has no alternative because PyInstaller can't cross-compile.
 
 The flags are the same as `reload`. From your module's root directory:
 
@@ -68,7 +68,7 @@ The flags are the same as `reload`. From your module's root directory:
 viam module reload-local --part-id <machine-part-id> --model-name <namespace:module-name:model> --resource-name <resource-name>
 ```
 
-The target machine must be online (visible in the Viam app). The CLI reaches it through Viam's cloud, so most network setups work without configuration.
+The target machine must be online (visible in the Viam app). The CLI connects over WebRTC, authenticates with your `viam login` session, and uses the machine's shell service to copy the archive. You don't need LAN access, a VPN, SSH keys, or port forwarding.
 
 **Useful flags:**
 
