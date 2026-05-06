@@ -39,8 +39,8 @@ Find your machine's part ID first. At the top of the machine's page, click the *
 
 In the command below:
 
-- `--model-name` is the full model identifier from your `meta.json`, in the form `namespace:module-name:model-name`. Copy it from the `model` field of the entry in `meta.json`'s `models` array. If your module declares more than one model, pick the one you want to add.
-- `--resource-name` is a name you choose for this instance. Any unique string works. It appears as the component name on the **CONFIGURE** tab and is how you reference the component from client code.
+- `--model-name` is the full model identifier from your `meta.json`, in the form `namespace:module-name:model-name`. Copy it from the `model` field of the entry in `meta.json`'s `models` array. If your module declares more than one model, pick the one you want to add to the machine.
+- `--resource-name` is the name for the new resource on the machine. Any unique string works. It appears on the **CONFIGURE** tab and is how you reference the resource from client code.
 
 From your module's root directory (where `meta.json` lives), run:
 
