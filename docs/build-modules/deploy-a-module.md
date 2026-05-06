@@ -150,7 +150,7 @@ git remote add origin <your-repo-url>
 git push -u origin main
 ```
 
-There are two ways to start a build.
+There are two ways to start a build: a [one-shot build from the CLI](#one-shot-build-from-the-cli) for a single release, or [auto-build on every GitHub release](#auto-build-on-every-github-release) for ongoing releases.
 
 #### One-shot build from the CLI
 
