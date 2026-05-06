@@ -58,7 +58,7 @@ viam module reload --part-id <machine-part-id> --model-name <namespace:module-na
 
 ### Build on your laptop with `reload-local` {#reload-local}
 
-If your laptop and the target share an architecture, `reload-local` builds on your laptop and copies the archive directly to the target over the network. No cloud round-trip.
+If your laptop and the target have the same architecture (for example, both `linux/arm64`), `reload-local` builds on your laptop and copies the archive directly to the target over the network. No cloud round-trip.
 
 Python with PyInstaller can't cross-compile, so use cloud `reload` if your target's architecture differs from your laptop's, regardless of language.
 
