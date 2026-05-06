@@ -187,7 +187,7 @@ chmod +x setup.sh build.sh run.sh
 
 ### Step 3: Document your module (recommended)
 
-Add a README so users (or future-you) know how to configure each model. If your module is going public, a README is essential. Set `markdown_link` in `meta.json` to point the registry page at it.
+Add a README so users (or future-you) know how to configure each model your module provides. If your module is going public, a README is essential. Set `markdown_link` in `meta.json` to point the registry page at it.
 
 For starter templates, see [README templates](#readme-templates) at the bottom of this page.
 
