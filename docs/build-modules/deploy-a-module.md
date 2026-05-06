@@ -40,18 +40,18 @@ Find your machine's part ID first. At the top of the machine's page, click the *
 In the command below:
 
 - `--model-name` is the full model identifier from your `meta.json`, in the form `namespace:module-name:model-name`. Copy it from the `model` field of the entry in `meta.json`'s `models` array. If your module declares more than one model, pick the one you want to add to the machine.
-- `--resource-name` is the name for the new resource on the machine. Any unique string works. It appears on the **CONFIGURE** tab and is how you reference the resource from client code.
+- `--resource-name` names the component or service that the model adds to the machine — a component (sensor, motor, camera, and so on) or a service (ML model, vision, motion, and so on), depending on which API the model implements. Pick any unique string. It appears on the **CONFIGURE** tab and is how you reference the component or service from client code.
 
 From your module's root directory (where `meta.json` lives), run:
 
 ```sh {class="command-line wrap" data-prompt="$"}
-viam module reload --part-id <machine-part-id> --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
+viam module reload --part-id <machine-part-id> --model-name <namespace:module-name:model> --resource-name <resource-name>
 ```
 
 **What to expect:**
 
 - The CLI prints build progress, then upload progress, then a success line.
-- The machine's **CONFIGURE** tab shows the new component (named `my-sensor-1` in the example above). Open it and set the attributes your module expects.
+- The machine's **CONFIGURE** tab shows the new component or service with the name you passed to `--resource-name`. Open it and set the attributes your module expects.
 - The module starts within a few seconds. The **LOGS** tab shows a `Module successfully added` entry with your module name.
 
 **On each code change:** rerun the same command to deploy the new code.
@@ -65,7 +65,7 @@ Python with PyInstaller can't cross-compile, so use cloud `reload` if your targe
 The flags are the same as `reload`. From your module's root directory:
 
 ```sh {class="command-line wrap" data-prompt="$"}
-viam module reload-local --part-id <machine-part-id> --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
+viam module reload-local --part-id <machine-part-id> --model-name <namespace:module-name:model> --resource-name <resource-name>
 ```
 
 The target machine must be online (visible in the Viam app). The CLI reaches it through Viam's cloud, so most network setups work without configuration.
