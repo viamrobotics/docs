@@ -28,7 +28,7 @@
 | [Navigation service](/reference/services/navigation/) | `DoCommand` |
 | Shell service | `DoCommand` |
 
-`GetWorldPose` captures the component's position and orientation in the world reference frame using the [frame system](/motion-planning/frame-system/overview/). It is available for all component types. To use it, [configure a frame](/motion-planning/frame-system/overview/#configure-a-frame) for the component.
+`GetWorldPose` captures the component's position and orientation in the world reference frame using the [frame system](/motion-planning/frame-system/overview/). It is available for all component types. To use it, [edit a frame](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app) for the component.
 
 {{% /tab %}}
 {{% tab name="Micro-RDK" %}}

@@ -109,7 +109,7 @@ Any built-in or modular component that implements a capturable method can be con
 
 Every component and service also supports capturing `DoCommand` responses.
 All components also support `GetWorldPose`, which captures the component's position and orientation in the world reference frame using the [frame system](/motion-planning/frame-system/overview/).
-To use `GetWorldPose`, [configure a frame](/motion-planning/frame-system/overview/#configure-a-frame) for the component.
+To use `GetWorldPose`, [edit a frame](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app) for the component.
 Modular components that return readings through any of these methods are automatically capturable.
 
 ## Troubleshooting
