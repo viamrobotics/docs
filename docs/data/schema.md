@@ -60,7 +60,7 @@ The metadata fields (`organization_id` through `additional_parameters`) are the 
 | `part_id`               | String    | Machine part UUID. Identifies which part of the machine.                                                           |
 | `component_type`        | String    | Resource type as a triplet (for example, `rdk:component:sensor`).                                                  |
 | `component_name`        | String    | The name you gave this component in your config (for example, `my-sensor`). This is what you filter on most often. |
-| `method_name`           | String    | The capture method (for example, `Readings`, `GetImages`, `EndPosition`).                                          |
+| `method_name`           | String    | The capture method (for example, `Readings`, `GetImages`, `EndPosition`, `GetWorldPose`).                          |
 | `time_requested`        | Timestamp | When the capture was requested on the machine (machine's clock).                                                   |
 | `time_received`         | Timestamp | When the cloud received and stored the data. Use this for time-range queries since it's indexed.                   |
 | `tags`                  | Array     | User-applied tags from your data management config.                                                                |
@@ -166,6 +166,43 @@ To query detections, use MQL since SQL cannot easily traverse arrays:
 ```
 
 To query: `data.position`
+
+{{% /tab %}}
+{{% tab name="GetWorldPose" %}}
+
+`GetWorldPose` captures the component's position and orientation in the world reference frame. This method is available for all component types when a [frame](/motion-planning/frame-system/overview/) is configured.
+
+```json
+{
+  "pose": {
+    "x": 100.0,
+    "y": 200.0,
+    "z": 300.0,
+    "o_x": 0.0,
+    "o_y": 0.0,
+    "o_z": 1.0,
+    "theta": 45.0
+  }
+}
+```
+
+To query: `data.pose.x`, `data.pose.y`, `data.pose.z`
+
+Example:
+
+```sql
+SELECT time_received,
+  data.pose.x AS x,
+  data.pose.y AS y,
+  data.pose.z AS z,
+  data.pose.theta AS theta
+FROM readings
+WHERE component_name = 'my-arm'
+  AND method_name = 'GetWorldPose'
+  AND time_received >= CAST('2000-01-01T00:00:00.000Z' AS TIMESTAMP)
+ORDER BY time_received DESC
+LIMIT 10
+```
 
 {{% /tab %}}
 {{% tab name="Encoder (Position)" %}}

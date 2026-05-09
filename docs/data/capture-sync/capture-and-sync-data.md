@@ -107,7 +107,10 @@ Any built-in or modular component that implements a capturable method can be con
 | Vision service  | `CaptureAllFromCamera`                                                                                                                  |
 | SLAM service    | `GetPosition`, `GetPointCloudMap`                                                                                                       |
 
-Every component and service also supports capturing `DoCommand` responses. Modular components that return readings through any of these methods are automatically capturable.
+Every component and service also supports capturing `DoCommand` responses.
+All components also support `GetWorldPose`, which captures the component's position and orientation in the world reference frame using the [frame system](/motion-planning/frame-system/overview/).
+To use `GetWorldPose`, [configure a frame](/motion-planning/frame-system/overview/#configure-a-frame) for the component.
+Modular components that return readings through any of these methods are automatically capturable.
 
 ## Troubleshooting
 
