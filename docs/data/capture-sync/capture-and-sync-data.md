@@ -92,22 +92,22 @@ If you see data flowing in, capture and sync are working correctly.
 
 Any built-in or modular component that implements a capturable method can be configured for data capture. The following table lists the most commonly captured component types and their methods:
 
-| Component type  | Capturable methods                                                                                                                      |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Camera          | `ReadImage`, `GetImages`, `NextPointCloud`                                                                                              |
-| Sensor          | `GetReadings`                                                                                                                           |
-| Movement sensor | `GetPosition`, `GetLinearVelocity`, `GetAngularVelocity`, `GetCompassHeading`, `GetLinearAcceleration`, `GetOrientation`, `GetReadings` |
-| Encoder         | `GetTicksCount`                                                                                                                         |
-| Motor           | `GetPosition`, `IsPowered`                                                                                                              |
-| Power sensor    | `GetVoltage`, `GetCurrent`, `GetPower`, `GetReadings`                                                                                   |
-| Servo           | `GetPosition`                                                                                                                           |
-| Arm             | `GetEndPosition`, `GetJointPositions`                                                                                                   |
-| Gantry          | `GetPosition`, `GetLengths`                                                                                                             |
-| Board           | `Analogs`, `Gpios`                                                                                                                      |
-| Vision service  | `CaptureAllFromCamera`                                                                                                                  |
-| SLAM service    | `GetPosition`, `GetPointCloudMap`                                                                                                       |
+| Component type  | Capturable methods                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Camera          | `ReadImage`, `GetImages`, `NextPointCloud`, `GetWorldPose`                                                                                              |
+| Sensor          | `GetReadings`, `GetWorldPose`                                                                                                                           |
+| Movement sensor | `GetPosition`, `GetLinearVelocity`, `GetAngularVelocity`, `GetCompassHeading`, `GetLinearAcceleration`, `GetOrientation`, `GetReadings`, `GetWorldPose` |
+| Encoder         | `GetTicksCount`, `GetWorldPose`                                                                                                                         |
+| Motor           | `GetPosition`, `IsPowered`, `GetWorldPose`                                                                                                              |
+| Power sensor    | `GetVoltage`, `GetCurrent`, `GetPower`, `GetReadings`, `GetWorldPose`                                                                                   |
+| Servo           | `GetPosition`, `GetWorldPose`                                                                                                                           |
+| Arm             | `GetEndPosition`, `GetJointPositions`, `GetWorldPose`                                                                                                   |
+| Gantry          | `GetPosition`, `GetLengths`, `GetWorldPose`                                                                                                             |
+| Board           | `Analogs`, `Gpios`, `GetWorldPose`                                                                                                                      |
+| Vision service  | `CaptureAllFromCamera`                                                                                                                                  |
+| SLAM service    | `GetPosition`, `GetPointCloudMap`                                                                                                                       |
 
-Every component and service also supports capturing `DoCommand` responses. Modular components that return readings through any of these methods are automatically capturable.
+Every component also supports `GetWorldPose` (requires a configured [frame system](/motion-planning/frame-system/)) and `DoCommand`. Modular components that return readings through any of these methods are automatically capturable.
 
 ## Troubleshooting
 
