@@ -13,11 +13,11 @@ Show a connection status indicator in your app, react to connection events, and 
 For an explanation of how the SDK reconnects under the hood, see [Connection model](/build-apps/concepts/how-apps-connect/#reconnection).
 
 {{< alert title="Behavior change" color="caution" >}}
-In versions of the Viam TypeScript SDK prior to v0.69.0, `DISCONNECTED` fired on any connection drop, including transient network interruptions.
-From v0.69.0 onward, `DISCONNECTED` fires only on intentional close or when `noReconnect` is set.
-Transient drops emit `RECONNECTING` instead, followed by `CONNECTED` on success or `RECONNECTION_FAILED` when retries are exhausted.
+In versions of the Viam TypeScript SDK prior to v0.70.0, `DISCONNECTED` fired on any connection drop, including transient network interruptions.
+From v0.70.0 onward, `DISCONNECTED` fires only on intentional close, when `noReconnect` is set, or when an initial dial attempt fails.
+Transient drops during an established connection emit `RECONNECTING` instead, followed by `CONNECTED` on success or `RECONNECTION_FAILED` when retries are exhausted.
 
-If your app listens for `DISCONNECTED` to detect network drops, listen for `RECONNECTING` instead.
+If your app listens for `DISCONNECTED` to detect network drops mid-session, listen for `RECONNECTING` instead.
 {{< /alert >}}
 
 ## Prerequisites
@@ -61,15 +61,15 @@ machine.on("connectionstatechange", (event) => {
 
 `MachineConnectionEvent` has seven values:
 
-| Value                 | When the SDK emits it                                                                                                                        |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DIALING`             | The SDK is dialing the initial connection.                                                                                                   |
-| `CONNECTING`          | The SDK is establishing the WebRTC or gRPC channel.                                                                                          |
-| `CONNECTED`           | The connection is up and ready for calls.                                                                                                    |
-| `RECONNECTING`        | The connection dropped and the SDK is retrying with backoff. Replaces the immediate `DISCONNECTED` event for unintentional drops.            |
-| `RECONNECTION_FAILED` | All reconnection attempts were exhausted. The event payload includes `error` and `attempts` fields.                                          |
-| `DISCONNECTING`       | The app initiated a disconnect (`disconnect()` or app shutdown).                                                                             |
-| `DISCONNECTED`        | The connection is closed and will not retry. Emitted when `noReconnect` is set, when the client was closed, or after intentional disconnect. |
+| Value                 | When the SDK emits it                                                                                                                                                                                                                                   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DIALING`             | The SDK is attempting to dial the initial connection. Fires per attempt during the initial-dial phase (the SDK may retry with backoff before establishing the connection or failing). The payload includes `method` (`webrtc` or `grpc`) and `attempt`. |
+| `CONNECTING`          | The SDK is establishing the WebRTC or gRPC channel. Suppressed during reconnection (the SDK emits `RECONNECTING` instead).                                                                                                                              |
+| `CONNECTED`           | The connection is up and ready for calls.                                                                                                                                                                                                               |
+| `RECONNECTING`        | An established connection dropped and the SDK is retrying with backoff. Replaces the immediate `DISCONNECTED` event for unintentional mid-session drops.                                                                                                |
+| `RECONNECTION_FAILED` | All reconnection attempts were exhausted. The event payload includes `error` and `attempts` fields.                                                                                                                                                     |
+| `DISCONNECTING`       | The app called `disconnect()`.                                                                                                                                                                                                                          |
+| `DISCONNECTED`        | The connection is closed and will not retry. Emitted on intentional disconnect, when `noReconnect` is set, when the client was closed, or when an initial dial attempt fails.                                                                           |
 
 To listen for a specific state only, subscribe to that event type directly:
 
@@ -254,7 +254,7 @@ async function rebuildAfterReconnect() {
 }
 ```
 
-Use `RECONNECTING` as the trigger rather than `DISCONNECTED`. The SDK emits `RECONNECTING` as soon as it loses an unintentional connection and starts retrying; `DISCONNECTED` is now only emitted for closed clients or when `noReconnect` is set. Clear `wasReconnecting` on `RECONNECTION_FAILED` and `DISCONNECTED` so that a later reconnect attempt (for example, after the user manually reconnects) does not incorrectly trigger `rebuildAfterReconnect()` on its first `CONNECTED` event. Listen for `RECONNECTION_FAILED` separately if you want to surface the give-up state to the user.
+Use `RECONNECTING` as the trigger rather than `DISCONNECTED`. The SDK emits `RECONNECTING` as soon as it loses an established connection and starts retrying; `DISCONNECTED` is now only emitted on intentional disconnect, when `noReconnect` is set, when the client was closed, or when an initial dial attempt fails. Clear `wasReconnecting` on `RECONNECTION_FAILED` and `DISCONNECTED` so that a later reconnect attempt (for example, after the user manually reconnects) does not incorrectly trigger `rebuildAfterReconnect()` on its first `CONNECTED` event. Listen for `RECONNECTION_FAILED` separately if you want to surface the give-up state to the user.
 
 ## Next
 
