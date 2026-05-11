@@ -79,6 +79,15 @@ machine.on(VIAM.MachineConnectionEvent.DISCONNECTED, () => {
 });
 ```
 
+Subscribe directly when you need access to the event payload. The `connectionstatechange` handler only receives `{ eventType }`; the original payload fields, such as `error` and `attempts` on `RECONNECTION_FAILED`, are available through a direct subscription:
+
+```ts
+machine.on(VIAM.MachineConnectionEvent.RECONNECTION_FAILED, (payload) => {
+  const { error, attempts } = payload as { error: unknown; attempts: number };
+  console.error(`Reconnection failed after ${attempts} attempts:`, error);
+});
+```
+
 ### Show a status indicator in the browser
 
 A minimal connection indicator in a vanilla browser app:
