@@ -451,8 +451,8 @@ Do not move the robot between the generation of the initial pointcloud and the r
 **Parameters:**
 
 - `point_cloud_pcd` ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes)) (required): The point cloud data to transform.
-- `source` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the reference frame the point cloud data came from, i.e. camera resource.
-- `destination` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the reference frame to transform the given data to, i.e. world.
+- `source` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the reference frame the point cloud data came from, such as a camera resource.
+- `destination` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the reference frame to transform the given data to, such as world.
 
 **Returns:**
 
