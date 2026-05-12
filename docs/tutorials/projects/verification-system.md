@@ -51,7 +51,7 @@ The system decides whether to raise an alarm based on whether it recognizes the 
 {{% expand "A camera, connected to your machine, to capture images" %}}
 
 Connect a camera to your machine.
-This tutorial uses the [webcam](/operate/reference/components/camera/webcam/) model but you can also use other [camera components](/operate/reference/components/camera/).
+This tutorial uses the [webcam](/reference/components/camera/webcam/) model but you can also use other [camera components](/reference/components/camera/).
 
 {{% /expand %}}
 
@@ -63,7 +63,7 @@ Navigate to the **CONFIGURE** tab of your machine's page.
 {{% tablestep start=1 %}}
 **Configure the camera you want to use for your security system.**
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `camera` type, then select the `webcam` model or another model if you are using a different camera.
 Enter the name `my_webcam` for your camera and click **Create**.
 
@@ -94,7 +94,7 @@ If you wish to train your own ML model, see [Train a TF or TFLite model](/train/
 
 To run the machine learning model on your machine, use the [ML model service](/vision/configure/):
 
-1. On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+1. On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 1. Select type `ML model`, then select model `TFLite CPU`.
 1. Enter `persondetect` as the name for your ML model service, then click **Create**.
 1. On the ML model service panel, select **Deploy model on machine** for the **Deployment** field.

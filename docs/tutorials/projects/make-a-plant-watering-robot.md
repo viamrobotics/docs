@@ -54,7 +54,7 @@ The tutorial uses the following hardware, but you can adjust it as needed:
 - A water container
 - A screwdriver
 
-Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/) to prepare your machine to run `viam-server`.
+Before starting this tutorial, follow the [Raspberry Pi Setup Guide](/reference/device-setup/rpi-setup/) to prepare your machine to run `viam-server`.
 Your Pi must run a Viam-compatible operating system, and you must have SSH access.
 
 ## Set up your plant watering robot
@@ -219,12 +219,12 @@ sudo reboot
 
 Then, navigate to the **CONFIGURE** tab of your new machine's page in the app.
 
-First, add your machine as a [board component](/operate/reference/components/board/):
+First, add your machine as a [board component](/reference/components/board/):
 
 {{< tabs name="Configure a Raspberry Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` model (for example, `viam:raspberry-pi:pi4` for Raspberry Pi 4).
 Enter a name for your board and click **Create**.
 This tutorial uses the name `local`.
@@ -255,7 +255,7 @@ This tutorial uses the name `local`.
 
 _Resources_ refer to the different {{< glossary_tooltip term_id="component" text="components" >}} and {{< glossary_tooltip term_id="service" text="services" >}} Viam provides for robots to use.
 _Components_ refer to types of hardware, and each component's built-in `models` support the most common models of this hardware.
-For example, the [sensor component](/operate/reference/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
+For example, the [sensor component](/reference/components/sensor/) has an `ultrasonic` model built in for the ubiquitous [ultrasonic sensor](https://www.sparkfun.com/products/15569).
 
 However, there are many different types of sensors used for sensing different things across the [Internet of Things](https://medium.com/@siddharth.parakh/the-complete-list-of-types-of-sensors-used-in-iot-63b4003ab6b3).
 Although the resistive soil moisture sensor is not currently one of Viam's built-in models, you can add an analog-to-digital-converter (ADC) as a module and use it to get readings from the moisture sensor.
@@ -269,7 +269,7 @@ You can add a module from the Viam Registry directly from your machine's **CONFI
 To add the [mcp300x-adc-sensor](https://github.com/viam-labs/mcp300x-adc-sensor) module to your machine, follow these steps:
 
 1. Go to your machine's **CONFIGURE** tab.
-   Click the **+** icon next to your machine part in the left-hand menu and select **Component or service**.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 1. Search for `mcp300x` and select `sensor / mcp300x`.
    Click **Add module**.
 1. Give your module a name of your choice. We used the name `sensor`.

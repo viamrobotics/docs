@@ -7,8 +7,9 @@ description: "Reference for the webgamepad input-controller model. Web-based gam
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:
-  - "/components/input-controller/webgamepad/"
   - "/operate/reference/components/input-controller/webgamepad/"
+  - "/components/input-controller/webgamepad/"
+  - "/reference/components/input-controller/webgamepad/"
 component_description: "Supports a remote, web based gamepad."
 # SMEs: James
 ---

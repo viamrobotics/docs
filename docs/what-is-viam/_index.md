@@ -9,6 +9,16 @@ images: ["/general/understand.png"]
 imageAlt: "Viam platform overview"
 description: "Viam is a software platform for building, deploying, and managing robotics applications."
 aliases:
+  - /architecture/
+  - /architecture/machine-to-machine-comms/
+  - /reference/architecture/
+  - /reference/architecture/machine-to-machine-comms/
+  - /operate/reference/architecture/
+  - /operate/reference/architecture/machine-to-machine-comms/
+  - /dev/reference/architecture/
+  - /internals/robot-to-robot-comms/
+  - /internals/machine-to-machine-comms/
+  - /dev/
   - /understand/
   - /understand/what-is-viam/
   - /what-is-viam/problems-viam-solves/
@@ -155,6 +165,6 @@ Viam provides these so you can focus on your product.
 
 ## Next steps
 
-We recommend putting these concepts into practice by following the [Desk Safari tutorial](/operate/hello-world/tutorial-desk-safari/) to build your first machine.
+We recommend putting these concepts into practice by following the [Try Viam tutorial](/try/) to build your first machine.
 
 For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).

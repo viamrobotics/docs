@@ -8,8 +8,9 @@ tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]
 aliases:
-  - "/components/servo/fake/"
   - "/operate/reference/components/servo/fake/"
+  - "/components/servo/fake/"
+  - "/reference/components/servo/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: Rand
 ---

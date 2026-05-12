@@ -9,10 +9,11 @@ images: ["/icons/components/button.svg"]
 date: "2025-02-20"
 # updated: ""  # When the content was last entirely checked
 aliases:
+  - /operate/modules/component-apis/button/
   - /dev/reference/apis/components/button/
 ---
 
-The button API allows you to get button presses from your [button components](/operate/reference/components/button/).
+The button API allows you to get button presses from your [button components](/reference/components/button/).
 
 The button component supports the following methods:
 

@@ -4,9 +4,10 @@ title: "Deploy a module"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Package, upload, and distribute a module through the Viam registry."
+description: "Pick a deployment path for your module: hot-reload onto one machine, or release a versioned package through the registry."
 date: "2025-01-30"
 aliases:
+  - /operate/modules/deploy-a-module/
   - /build/development/deploy-a-module/
   - /development/deploy-a-module/
   - /extend/modular-resources/upload/
@@ -15,85 +16,100 @@ aliases:
   - /how-tos/upload-module/
 ---
 
-A module that only runs locally on your development machine is useful for testing
-but limits what you can do. Deploying through the Viam module registry lets you:
+There are several ways to deploy a module you wrote onto a machine. Which one to use depends on where you are in your software development cycle.
 
-- **Install on any machine** in your organization (or publicly) through the
-  Viam app -- no SSH or manual file copying.
-- **Update over the air** -- release a new version and machines pick it up
-  automatically within minutes.
-- **Target multiple platforms** -- cloud build compiles for every architecture
-  you need so you don't have to cross-compile locally.
+## Pick a path
 
-For background on the module registry, versioning, and cloud builds, see the
-[overview](/build-modules/overview/#the-module-registry).
+| You want to...                                         | Path                                             | When to use it                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Test on one machine right now                          | [Hot-reload](#hot-reload-onto-one-machine)       | You wrote a module on your laptop and want to deploy it for testing on the compute machine for your robot. This is the fastest develop-deploy loop. The CLI builds the module, gets it onto the target machine, and adds it to the machine's config in one command. |
+| Release a versioned module for others (or for a fleet) | [Versioned release](#release-a-versioned-module) | You want a stable version that any machine in your org (or any Viam user, if public) can install. This is what you do once your module is ready to share.                                                                                                           |
 
-## Steps
+Hot-reload gets your module onto a target machine and adds it to the machine's config in one command. A versioned release is a tagged upload to the Viam registry, numbered with a semantic version like `0.1.0`. Any machine in your org (or any Viam user's machine, if public) can install it.
 
-### 1. Review meta.json
+## Hot-reload onto one machine
 
-The generator creates a `meta.json` file in your module directory. Open it and
-review each field:
+Hot-reload deploys your in-progress module to a single machine in one command: build, copy, add to the machine's config. It's faster than a versioned release because it builds only for the target's platform, skips GitHub Actions runner setup, and tells the machine to restart the module right away with the new code instead of waiting for the next cloud sync.
 
-```json
-{
-  "module_id": "my-org:my-sensor-module",
-  "visibility": "private",
-  "url": "https://github.com/my-org/my-sensor-module",
-  "description": "A custom sensor module that reads temperature and humidity from an HTTP endpoint.",
-  "models": [
-    {
-      "api": "rdk:component:sensor",
-      "model": "my-org:my-sensor-module:my-sensor"
-    }
-  ],
-  "entrypoint": "run.sh",
-  "build": {
-    "setup": "./setup.sh",
-    "build": "./build.sh",
-    "path": "dist/archive.tar.gz",
-    "arch": ["linux/amd64", "linux/arm64"]
-  }
-}
+The CLI provides two commands: `viam module reload` (build in the cloud) and `viam module reload-local` (build on your laptop). The procedure below uses `viam module reload`, which works regardless of your laptop's architecture. To skip the cloud round-trip when your laptop matches the target, see [Build on your laptop with `reload-local`](#reload-local) at the end of this section.
+
+**Run it:**
+
+Find your machine's part ID first. At the top of the machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it.
+
+In the command below:
+
+- `--model-name` is the full model identifier from your `meta.json`, in the form `namespace:module-name:model-name`. Copy it from the `model` field of the entry in `meta.json`'s `models` array. If your module declares more than one model, pick the one you want to add to the machine.
+- `--resource-name` names the component or service that the model adds to the machine — a component (sensor, motor, camera, and so on) or a service (ML model, vision, motion, and so on), depending on which API the model implements. Pick any unique string. It appears on the **CONFIGURE** tab and is how you reference the component or service from client code.
+
+From your module's root directory (where `meta.json` lives), run:
+
+```sh {class="command-line wrap" data-prompt="$"}
+viam module reload --part-id <machine-part-id> --model-name <namespace:module-name:model> --resource-name <resource-name>
 ```
 
-| Field               | Required | Purpose                                                                                                                                                                                              |
-| ------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$schema`           | No       | JSON Schema URL for editor validation. Set to `https://dl.viam.dev/module.schema.json`.                                                                                                              |
-| `module_id`         | Yes      | Unique ID in the registry. Format: `namespace:name`.                                                                                                                                                 |
-| `visibility`        | Yes      | Who can see and install the module: `private`, `public`, or `public_unlisted`.                                                                                                                       |
-| `url`               | No       | Link to the source code repository. Required for cloud builds.                                                                                                                                       |
-| `description`       | Yes      | Shown in the registry UI and search results.                                                                                                                                                         |
-| `models`            | No       | List of resource models the module provides. Each has `api`, `model`, and optionally `short_description` and `markdown_link`. Models can be auto-detected with `viam module update-models --binary`. |
-| `entrypoint`        | Yes      | The path to the command that starts the module inside the archive.                                                                                                                                   |
-| `first_run`         | No       | Path to a setup script that runs once after first install (default timeout: 1 hour).                                                                                                                 |
-| `markdown_link`     | No       | Path to a README file (or `README.md#section` anchor) used as the registry description.                                                                                                              |
-| `build.setup`       | No       | Script that installs build dependencies (runs once).                                                                                                                                                 |
-| `build.build`       | No       | Script that compiles and packages the module.                                                                                                                                                        |
-| `build.path`        | No       | Path to the packaged output archive (default: `module.tar.gz`).                                                                                                                                      |
-| `build.arch`        | No       | Target platforms to build for (default: `["linux/amd64", "linux/arm64"]`).                                                                                                                           |
-| `build.darwin_deps` | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                                                                                                        |
+**What to expect:**
 
-Visibility options:
+- The CLI prints build progress, then upload progress, then a success line.
+- The machine's **CONFIGURE** tab shows the new component or service with the name you passed to `--resource-name`. Open it and set the attributes your module expects.
+- The module starts within a few seconds. The **LOGS** tab shows a `Module successfully added` entry with your module name.
 
-- **`private`** -- only your organization can see and use the module.
-- **`public`** -- all Viam users can see and use it. Requires your organization
-  to have a public namespace.
-- **`public_unlisted`** -- any user can use the module if they know the ID, but
-  it does not appear in registry search results.
+**On each code change:** rerun the same command to deploy the new code.
 
-Common `api` values:
+### Build on your laptop with `reload-local` {#reload-local}
 
-- `rdk:component:sensor` for sensors
-- `rdk:component:camera` for cameras
-- `rdk:component:motor` for motors
-- `rdk:component:generic` for generic components
-- `rdk:service:vision` for vision services
+If your laptop and the target have the same architecture (for example, both `linux/arm64`), `reload-local` builds on your laptop and copies the archive directly to the target over the network. No cloud round-trip.
 
-### 2. Review the generated build scripts
+For cross-architecture deploys, use cloud `reload` rather than `reload-local`. Python in particular has no alternative because PyInstaller can't cross-compile.
 
-The generator creates build and setup scripts for your module. Review them
-and customize if needed:
+The flags are the same as `reload`. From your module's root directory:
+
+```sh {class="command-line wrap" data-prompt="$"}
+viam module reload-local --part-id <machine-part-id> --model-name <namespace:module-name:model> --resource-name <resource-name>
+```
+
+The target machine must be online (visible in the Viam app). The CLI connects over WebRTC, authenticates with your `viam login` session, and uses the machine's shell service to copy the archive. You don't need LAN access, a VPN, SSH keys, or port forwarding.
+
+**Useful flags:**
+
+- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`.
+- `--local` runs the module from source files on your laptop instead of shipping a tarball. Use this only when the target machine is your laptop. In `--local` mode, `viam module restart` picks up Python source edits without a rebuild.
+
+For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
+
+When you're ready to share the module beyond the one machine you tested on, do a [versioned release](#release-a-versioned-module).
+
+## Release a versioned module
+
+If you've been testing with `viam module reload`, your code is already running on a single target machine. A versioned release publishes the same code as a numbered package in the Viam registry. Any machine in your org can install it (or any Viam user's machine, if the module is public). Machines that aren't pinned to a specific version pick up new releases automatically, within a minute or two.
+
+Two ways to build and upload:
+
+- **Cloud build (recommended).** Viam compiles your module for every target platform from your GitHub repo. Trigger it manually with one CLI command, or set up GitHub Actions to auto-build on every release tag. No local cross-compilation.
+- **Manual upload.** You build locally and run `viam module upload`. You're responsible for cross-compiling for each target platform yourself.
+
+Both paths share the same prep work first.
+
+### Before you start
+
+**For cloud build (recommended):** create a Viam organization API key in the Viam app at your org's **Settings** page. The key value is shown once and can't be retrieved later, so save it before navigating away. You'll also need your module's code in a GitHub repo with the `url` set in `meta.json`; if you don't have one yet, you'll set it up in [Publish with cloud build](#release-with-cloud-build) below.
+
+**For manual upload:** you need a way to build a binary for each platform you want to support. Cross-compiling from `linux/amd64` to `linux/arm64` requires `GOOS`/`GOARCH` for Go or building on the target architecture for Python (PyInstaller does not cross-compile).
+
+### Update meta.json for publishing
+
+The Viam module generator created a working `meta.json` in your module directory. Before publishing, update these fields if needed:
+
+- **`visibility`**: defaults to `private` (only your organization can install). Change to `public` if you want any Viam user to install your module, or `public_unlisted` to make it reachable by ID but not listed in registry search results. Public visibility requires your organization to have a public namespace, set up at your org's **Settings** page in the Viam app.
+- **`url`**: link to the source repository. **Required for cloud build** — set this to your GitHub repo's URL.
+- **`description`**: shown in the registry UI and search results. Replace the generator default with what your module actually does.
+- **`markdown_link`** (optional): path to a README. If your module is going public, a README is essential. For starter templates, see [README templates](#readme-templates) at the bottom of this page.
+
+For the full `meta.json` field reference, see [Module reference](/build-modules/module-reference/).
+
+### Review the build scripts
+
+The generator creates build and setup scripts. The defaults work for typical Python and Go modules. Review and customize them if you need additional build steps (for example, compiling native extensions or installing system packages).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -104,9 +120,6 @@ and customize if needed:
 | `build.sh` | Packages the module into a `.tar.gz` archive         |
 | `run.sh`   | Entrypoint script that starts the module             |
 
-If your module has additional build steps (for example, compiling native extensions),
-add them to `build.sh`.
-
 {{% /tab %}}
 {{% tab name="Go" %}}
 
@@ -116,22 +129,246 @@ add them to `build.sh`.
 | `build.sh` | Cross-compiles the binary and packages it into a `.tar.gz` archive    |
 | `Makefile` | Local build targets                                                   |
 
-The generated `build.sh` uses `GOOS` and `GOARCH` environment variables to
-cross-compile for the target platform. Cloud build sets these automatically.
+The generated `build.sh` uses `GOOS` and `GOARCH` environment variables to cross-compile for the target platform. Cloud build sets these automatically.
 
 {{% /tab %}}
 {{< /tabs >}}
 
-Make sure all scripts are executable:
+With prep complete, follow one of the two sections below to publish your module. [Cloud build](#release-with-cloud-build) is recommended for most cases; use a [manual upload](#release-manually) only when cloud build isn't an option.
 
-```bash
-chmod +x setup.sh build.sh run.sh
+### Publish with cloud build (recommended) {#release-with-cloud-build}
+
+Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. Both paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+
+If you don't have a GitHub repo yet, push your module's code to one. From your module's root directory:
+
+```sh {class="command-line" data-prompt="$"}
+git init
+git add .
+git commit -m "Initial module code"
+git remote add origin <your-repo-url>
+git push -u origin main
 ```
 
-### 3. Write a README (recommended)
+There are two ways to start a build: a [one-shot build from the CLI](#one-shot-build-from-the-cli) for a single release, or [auto-build on every GitHub release](#auto-build-on-every-github-release) for ongoing releases.
 
-Document your module and its models so users know how to configure and use
-them. If you plan to make your module public, a good README is essential.
+#### One-shot build from the CLI
+
+Use this for a single release without setting up GitHub Actions. From your module's root directory:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build start --version 0.1.0
+```
+
+The `--version` value is what the package will be tagged as in the registry. Increment it for each release.
+
+{{< alert title="Non-main default branches" color="tip" >}}
+Cloud build expects your repository's default branch to be `main`. If your repository uses `master` (or another branch), pass the `--ref` flag:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build start --ref master --version 0.1.0
+```
+
+{{< /alert >}}
+
+**What to expect:**
+
+- The CLI prints a build ID and exits. The build runs in Viam's cloud.
+- Follow the logs with `viam module build logs --id <build-id>`.
+- On success, your module appears at `https://app.viam.com/module/<namespace>/<module-name>` with the version you passed to `--version`.
+
+#### Auto-build on every GitHub release
+
+Use this for ongoing releases. Set up once, then every new release tag triggers a build automatically. The generator's `.github/workflows/deploy.yml` workflow uses the [`viamrobotics/build-action`](https://github.com/viamrobotics/build-action) GitHub action to start the build.
+
+**1. Add Viam credentials as GitHub secrets.**
+
+1. In your GitHub repository: **Settings → Secrets and variables → Actions**.
+1. Add two repository secrets:
+   - `VIAM_KEY_ID`: your API key ID
+   - `VIAM_KEY_VALUE`: your API key value
+
+**2. Tag a release.**
+
+```sh {class="command-line" data-prompt="$"}
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+**What to expect:**
+
+- The GitHub Action starts immediately. Watch progress in the **Actions** tab of your GitHub repo. A typical first build takes 5-15 minutes (longer for the first run because dependencies aren't cached).
+- When the workflow turns green, your module appears at the registry with the tagged version.
+- If the workflow fails, click into the run for the build log. See the **Cloud build fails in GitHub Actions** entry under [Troubleshooting](#troubleshooting) for the common causes.
+
+### Publish with a manual upload {#release-manually}
+
+Use this when you can't use cloud build (no GitHub repo, restricted CI, etc.). You build locally and upload one archive per target platform.
+
+{{< alert title="You must build for the target platform" color="caution" >}}
+The binary in your archive must already be compiled for the target machine's OS and architecture. If you build on an x86 laptop and upload as `linux/arm64` without cross-compiling, the module will fail with `exec format error` on ARM machines.
+{{< /alert >}}
+
+**1. Build for each target platform:**
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+PyInstaller doesn't cross-compile, so each platform you want to support needs its own build run on a machine of that architecture. (Or use [cloud build](#release-with-cloud-build), which handles this for you.)
+
+```sh {class="command-line" data-prompt="$"}
+cd my-sensor-module
+bash build.sh
+```
+
+The generated `build.sh` uses [PyInstaller](https://pypi.org/project/pyinstaller/) to compile your module into a standalone executable containing the Python interpreter and all dependencies.
+
+{{< alert title="PyInstaller limitation: relative imports" color="note" >}}
+PyInstaller does not support relative imports in entrypoints (imports starting with `.`). If you get `ImportError: attempted relative import with no known parent package`, see the [PyInstaller workaround](https://github.com/pyinstaller/pyinstaller/issues/2560).
+{{< /alert >}}
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {class="command-line" data-prompt="$"}
+cd my-sensor-module
+GOOS=linux GOARCH=arm64 go build -o dist/module cmd/module/main.go
+tar -czf dist/archive.tar.gz -C dist module
+```
+
+Set `GOARCH` to match your target machine: `amd64` for x86_64, `arm64` for ARM.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+**2. Upload the archive:**
+
+```sh {class="command-line" data-prompt="$"}
+viam module upload --version=0.1.0 --platform=linux/arm64 dist/archive.tar.gz
+```
+
+**3. Repeat for each platform you want to support:**
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+On each target architecture, build and upload separately:
+
+```sh {class="command-line" data-prompt="$"}
+bash build.sh
+viam module upload --version=0.1.0 --platform=<linux/amd64-or-linux/arm64> dist/archive.tar.gz
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```sh {class="command-line" data-prompt="$"}
+GOOS=linux GOARCH=amd64 go build -o dist/module cmd/module/main.go
+tar -czf dist/archive.tar.gz -C dist module
+viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+**What to expect:**
+
+- Each `viam module upload` prints `Version successfully uploaded! you can view your changes online here: <url>` on success.
+- Your module appears at the registry with the uploaded version. Each platform you uploaded is listed under that version.
+- Before uploading, the CLI checks that the entrypoint exists in the archive and has execute permissions. If either check fails, the CLI stops the upload. The CLI also warns (but does not block) if the archive contains symlinks that point outside the archive. To skip the entrypoint checks (not recommended for production), pass `--force`.
+
+## Configure on a machine {#step-5-configure-on-a-machine}
+
+With your module in the registry, any machine in your org can use it (and any Viam user's machine, if the module is public).
+
+1. In the [Viam app](https://app.viam.com), open your machine's **CONFIGURE** tab.
+1. Click **+** and select **Configuration block**.
+1. Search for your module by name or browse the registry, then add it.
+1. Pick a model from your module and create an instance. Name the instance and configure its attributes:
+
+   ```json
+   {
+     "source_url": "https://api.example.com/sensor/data"
+   }
+   ```
+
+1. Click **Save**.
+
+**What to expect:**
+
+- `viam-server` downloads the module from the registry within a few seconds.
+- The **LOGS** tab shows a `Module successfully added` entry with your module name.
+- Open the **CONTROL** tab and verify the component responds.
+- If the module fails to start, the **LOGS** tab shows the error. See the **Module works locally but fails after deployment** entry under [Troubleshooting](#troubleshooting) below.
+
+That's the first deploy. To release new versions, pin a machine to a specific version, change visibility, restrict uploads to specific platforms, or perform other lifecycle operations, see [Update and manage modules](/build-modules/manage-modules/).
+
+## Troubleshooting
+
+{{< expand "Upload fails with \"not authenticated\"" >}}
+
+- Log in to the Viam CLI: `viam login`.
+- If using an API key, verify it has organization-level access.
+- Check that `VIAM_KEY_ID` and `VIAM_KEY_VALUE` are set correctly in your GitHub secrets (for cloud build).
+
+{{< /expand >}}
+
+{{< expand "Upload fails with \"invalid meta.json\"" >}}
+
+- Verify `meta.json` is valid JSON. Run `python -m json.tool meta.json` or `jq . meta.json` to check.
+- Confirm the `module_id` matches the format `namespace:module-name`.
+- Ensure all model entries have both `api` and `model` fields.
+
+{{< /expand >}}
+
+{{< expand "Module not appearing in the registry" >}}
+
+- Check the module's visibility. If it is `private`, it only appears for users in your organization.
+- Verify the upload completed successfully.
+- The module may take a minute to propagate. Refresh the page and try again.
+
+{{< /expand >}}
+
+{{< expand "Machine cannot find the module" >}}
+
+- Verify the module version supports the machine's platform. If your machine runs `linux/arm64` but you only uploaded for `linux/amd64`, the machine cannot use it.
+- Check the module version. If the machine is pinned to a nonexistent version, it will fail.
+- Confirm the machine is online and connected to the cloud.
+
+{{< /expand >}}
+
+{{< expand "Cloud build fails in GitHub Actions" >}}
+
+- Check the **Actions** tab in your GitHub repository for the build log.
+- If your repository's default branch is not `main` (for example, it uses `master`), pass `--ref master` to `viam module build start`.
+- Verify your `setup.sh` and `build.sh` scripts work locally.
+- Confirm the `build.path` in `meta.json` matches the actual output location.
+- Ensure the GitHub secrets are set and not expired.
+
+{{< /expand >}}
+
+{{< expand "Exec format error on target machine" >}}
+
+This means the binary was compiled for the wrong architecture. For example, you built a `linux/amd64` binary but the target machine is `linux/arm64`.
+
+- Use [cloud build](#release-with-cloud-build) to compile for all target platforms automatically.
+- If deploying manually, cross-compile with the correct `GOOS` and `GOARCH` before uploading.
+- Verify the platform flag in your `upload` command matches the binary's architecture (for example, `--platform=linux/arm64` for an `arm64` target).
+
+{{< /expand >}}
+
+{{< expand "Module works locally but fails after deployment" >}}
+
+- Check for hard-coded paths, missing environment variables, or dependencies installed on your machine but not in the build environment.
+- For Python, verify all dependencies are in `requirements.txt`.
+- For Go, verify the binary is compiled for the correct target architecture.
+- Check the module logs in the **LOGS** tab.
+
+{{< /expand >}}
+
+## Reference
+
+### README templates {#readme-templates}
 
 {{< expand "Module README template" >}}
 
@@ -204,344 +441,4 @@ If your model implements DoCommand, document each supported command.
 
 {{< /expand >}}
 
-You can point your module's registry page to a README by setting the
-`markdown_link` field in `meta.json` to a file path (for example, `README.md`) or a
-section anchor (for example, `README.md#my-sensor`).
-
-### 4. Deploy with cloud build (recommended)
-
-Cloud build is the recommended way to deploy modules. It uses GitHub Actions to
-compile your module for every target platform automatically, so you don't need
-to cross-compile locally.
-
-The generator creates the workflow file at
-`.github/workflows/deploy.yml`. To use it:
-
-**Push your code to GitHub:**
-
-```bash
-cd my-sensor-module
-git init
-git add .
-git commit -m "Initial module code"
-git remote add origin https://github.com/my-org/my-sensor-module.git
-git push -u origin main
-```
-
-**Add Viam credentials as GitHub secrets:**
-
-1. In the [Viam app](https://app.viam.com), go to your organization's settings.
-2. Create an API key with organization-level access (or use an existing one).
-3. In your GitHub repository, go to **Settings > Secrets and variables >
-   Actions**.
-4. Add two secrets:
-   - `VIAM_KEY_ID` -- your API key ID
-   - `VIAM_KEY_VALUE` -- your API key
-
-**Tag a release to trigger the build:**
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-```
-
-The GitHub Action runs automatically. Monitor progress in the **Actions** tab
-of your GitHub repository. When it completes, your module is in the registry
-and ready to install on any machine.
-
-You can also trigger a cloud build from the CLI:
-
-```bash
-viam module build start
-```
-
-{{< alert title="Non-main default branches" color="tip" >}}
-Cloud build expects your repository's default branch to be `main`. If your
-repository uses a different default branch (for example, `master`), use the `--ref`
-flag:
-
-```bash
-viam module build start --ref master
-```
-
-{{< /alert >}}
-
-### 5. Deploy manually (alternative)
-
-If you cannot use cloud build, you can build and upload from the command line.
-
-{{< alert title="You must build for the target platform" color="caution" >}}
-When you upload manually, the binary in your archive must already be compiled
-for the target machine's OS and architecture. If you build on an x86 laptop
-and upload for `linux/arm64` without cross-compiling, the module will fail
-with an exec format error on ARM machines (like Raspberry Pi).
-
-Cloud build handles this automatically. If you deploy manually, you must
-cross-compile yourself or build on a machine with the target architecture.
-{{< /alert >}}
-
-**Build locally:**
-
-{{< tabs >}}
-{{% tab name="Python" %}}
-
-```bash
-cd my-sensor-module
-bash build.sh
-```
-
-The generated `build.sh` uses [PyInstaller](https://pypi.org/project/pyinstaller/)
-to compile your module into a standalone executable containing the Python
-interpreter and all dependencies.
-
-{{< alert title="PyInstaller limitations" color="note" >}}
-
-- PyInstaller does not support relative imports in entrypoints (imports
-  starting with `.`). If you get `"ImportError: attempted relative import with
-no known parent package"`, see the
-  [PyInstaller workaround](https://github.com/pyinstaller/pyinstaller/issues/2560).
-- PyInstaller does not support cross-compilation. Use
-  [cloud build](#4-deploy-with-cloud-build-recommended) to build for multiple
-  architectures automatically.
-  {{< /alert >}}
-
-{{% /tab %}}
-{{% tab name="Go" %}}
-
-```bash
-cd my-sensor-module
-# Cross-compile for the target platform
-GOOS=linux GOARCH=arm64 go build -o dist/module cmd/module/main.go
-tar -czf dist/archive.tar.gz -C dist module
-```
-
-Set `GOARCH` to match your target machine: `amd64` for x86_64, `arm64` for
-ARM (Raspberry Pi 4, Jetson, etc.).
-
-{{% /tab %}}
-{{< /tabs >}}
-
-**Upload to the registry:**
-
-```bash
-viam module upload \
-    --version=0.1.0 \
-    --platform=linux/arm64 \
-    dist/archive.tar.gz
-```
-
-To support multiple platforms, cross-compile and upload once per platform:
-
-```bash
-# Build and upload for amd64
-GOOS=linux GOARCH=amd64 go build -o dist/module cmd/module/main.go
-tar -czf dist/archive.tar.gz -C dist module
-viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
-
-# Build and upload for arm64
-GOOS=linux GOARCH=arm64 go build -o dist/module cmd/module/main.go
-tar -czf dist/archive.tar.gz -C dist module
-viam module upload --version=0.1.0 --platform=linux/arm64 dist/archive.tar.gz
-```
-
-### 6. Configure the module on a machine
-
-Once your module is in the registry, any machine in your organization can use it.
-
-1. In the [Viam app](https://app.viam.com), navigate to your machine's
-   **CONFIGURE** tab.
-2. Click **+** and select **Configuration block**.
-3. Search for your module by name or browse the registry.
-4. Add the module and create a component (or service) instance.
-5. Name the component and configure the attributes your module expects:
-
-```json
-{
-  "source_url": "https://api.example.com/sensor/data"
-}
-```
-
-7. Click **Save**.
-
-`viam-server` downloads the module from the registry, starts it, and makes the
-component available. Test it from the **CONTROL** tab.
-
-### 7. Manage versions
-
-**Release a new version:**
-
-```bash
-git add .
-git commit -m "Add humidity calibration offset"
-git tag v0.2.0
-git push origin main v0.2.0
-```
-
-If using cloud build, the workflow runs automatically. For manual upload:
-
-```bash
-viam module upload --version=0.2.0 --platform=linux/amd64 dist/archive.tar.gz
-```
-
-**Automatic updates:** By default, machines track the latest version. When you
-upload `v0.2.0`, all machines update automatically within a few minutes.
-
-**Pin to a specific version:**
-
-1. In the Viam app, go to the machine's **CONFIGURE** tab.
-2. Find the module in the configuration.
-3. Set the **Version** field to the specific version (for example, `0.1.0`).
-4. Click **Save**.
-
-**View module details:**
-
-You can view version history and details for your module in the
-[Viam registry](https://app.viam.com/registry).
-
-### 8. Keep meta.json in sync with your code
-
-As you add models to your module, you can auto-detect them from a built binary
-instead of editing `meta.json` by hand:
-
-```bash
-viam module update-models --binary ./bin/module
-```
-
-This inspects the binary, discovers registered models, and updates the `models`
-array in `meta.json`.
-
-Then push the updated metadata to the registry:
-
-```bash
-viam module update
-```
-
-### 9. Download a module
-
-To download a module from the registry (for testing or inspection):
-
-```bash
-viam module download --id my-org:my-sensor-module --version 0.1.0 --platform linux/amd64 --destination ./downloaded-module
-```
-
-### Platform constraints
-
-When uploading, you can attach platform constraint tags that restrict which
-machines can use a particular upload. For example, to require Debian:
-
-```bash
-viam module upload \
-    --version=0.1.0 \
-    --platform=linux/amd64 \
-    --tags=distro:debian \
-    dist/archive.tar.gz
-```
-
-The machine must report matching platform tags for the constrained upload to be
-selected. If no constraints are specified, the upload is available to all
-machines on that platform.
-
-### Upload limits
-
-The registry enforces these size limits:
-
-| Limit                          | Value  |
-| ------------------------------ | ------ |
-| Compressed package (`.tar.gz`) | 50 GB  |
-| Decompressed contents          | 250 GB |
-| Single file within package     | 25 GB  |
-
-Before uploading, the CLI validates that:
-
-- The entrypoint executable exists in the archive
-- The entrypoint has execute permissions
-- No symlinks escape the archive boundaries
-
-Use `--force` to skip these checks (not recommended for production uploads).
-
-## Try It
-
-1. Review the generated `meta.json` and build scripts in your module directory.
-2. Push your code to GitHub and add the Viam API key secrets.
-3. Tag a release (`v0.1.0`) to trigger a cloud build.
-4. Navigate to a machine in the Viam app and add your module from the registry.
-5. Configure a component and set the required attributes.
-6. Open the **CONTROL** tab and verify the component works.
-7. Tag a new release (`v0.2.0`) and verify the machine picks it up
-   automatically within a few minutes.
-
-## Troubleshooting
-
-{{< expand "Upload fails with \"not authenticated\"" >}}
-
-- Log in to the Viam CLI: `viam login`.
-- If using an API key, verify it has organization-level access.
-- Check that `VIAM_KEY_ID` and `VIAM_KEY_VALUE` are set correctly in your GitHub
-  secrets (for cloud build).
-
-{{< /expand >}}
-
-{{< expand "Upload fails with \"invalid meta.json\"" >}}
-
-- Verify `meta.json` is valid JSON. Run `python -m json.tool meta.json` or
-  `jq . meta.json` to check.
-- Confirm the `module_id` matches the format `namespace:module-name`.
-- Ensure all model entries have both `api` and `model` fields.
-
-{{< /expand >}}
-
-{{< expand "Module not appearing in the registry" >}}
-
-- Check the module's visibility. If it is `private`, it only appears for users
-  in your organization.
-- Verify the upload completed successfully.
-- The module may take a minute to propagate. Refresh the page and try again.
-
-{{< /expand >}}
-
-{{< expand "Machine cannot find the module" >}}
-
-- Verify the module version supports the machine's platform. If your machine
-  runs `linux/arm64` but you only uploaded for `linux/amd64`, the machine
-  cannot use it.
-- Check the module version. If the machine is pinned to a nonexistent version,
-  it will fail.
-- Confirm the machine is online and connected to the cloud.
-
-{{< /expand >}}
-
-{{< expand "Cloud build fails in GitHub Actions" >}}
-
-- Check the Actions tab in your GitHub repository for the build log.
-- If your repository's default branch is not `main` (for example, it uses `master`),
-  use `viam module build start --ref master`. The cloud build system expects
-  `main` by default.
-- Verify your `setup.sh` and `build.sh` scripts work locally.
-- Confirm the `build.path` in `meta.json` matches the actual output location.
-- Ensure the GitHub secrets are set and not expired.
-
-{{< /expand >}}
-
-{{< expand "Exec format error on target machine" >}}
-
-This means the binary was compiled for the wrong architecture. For example,
-you built on an x86 laptop but the target machine is ARM (Raspberry Pi).
-
-- Use [cloud build](#4-deploy-with-cloud-build-recommended) to compile for all
-  target platforms automatically.
-- If deploying manually, cross-compile with the correct `GOOS` and `GOARCH`
-  before uploading. See [Deploy manually](#5-deploy-manually-alternative).
-- Verify the platform flag in your `upload` command matches the binary's
-  architecture (for example, `--platform=linux/arm64` for Raspberry Pi 4).
-
-{{< /expand >}}
-
-{{< expand "Module works locally but fails after deployment" >}}
-
-- Check for hard-coded paths, missing environment variables, or dependencies
-  installed on your machine but not in the build environment.
-- For Python, verify all dependencies are in `requirements.txt`.
-- For Go, verify the binary is compiled for the correct target architecture.
-- Check the module logs in the **LOGS** tab.
-
-{{< /expand >}}
+You can point your module's registry page to a README by setting the `markdown_link` field in `meta.json` to a file path (for example, `README.md`) or a section anchor (for example, `README.md#my-sensor`).

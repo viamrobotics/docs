@@ -96,16 +96,17 @@ For example:
        return req_deps, []
    ```
 
-1. Edit your `reconfigure` function to add the motion service as an instance variable so that you can use it in your module:
+1. Edit your `new` method to add the motion service as an instance variable so that you can use it in your module:
 
    ```python {class="line-numbers linkable-line-numbers"}
-   def reconfigure(
-       self, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
-   ):
+   @classmethod
+   def new(
+       cls, config: ComponentConfig, dependencies: Mapping[ResourceName, ResourceBase]
+   ) -> Self:
+       instance = cls(config.name)
        motion_resource = dependencies[Motion.get_resource_name("builtin")]
-       self.motion_service = cast(MotionClient, motion_resource)
-
-       return super().reconfigure(config, dependencies)
+       instance.motion_service = cast(MotionClient, motion_resource)
+       return instance
    ```
 
 1. You can now use the motion service in your module, for example:
@@ -119,27 +120,38 @@ For example:
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-The following example assumes your module uses `AlwaysRebuild` and does not have a `Reconfigure` function defined.
-
 ```go {class="line-numbers linkable-line-numbers"}
-// Return the motion service as a dependency
+// Return the built-in motion service as a required dependency.
 func (cfg *Config) Validate(path string) ([]string, []string, error) {
   deps := []string{motion.Named("builtin").String()}
   return deps, nil, nil
 }
 
-// Then use the motion service, for example:
-func (c *Component) MoveAroundInSomeWay() error {
-  c.Motion, err = motion.FromDependencies(deps, "builtin")
+// Store the motion service on the component in your constructor.
+func newComponent(
+  ctx context.Context,
+  deps resource.Dependencies,
+  conf resource.Config,
+  logger logging.Logger,
+) (resource.Resource, error) {
+  motionService, err := motion.FromProvider(deps, "builtin")
   if err != nil {
     return nil, err
   }
-  moved, err := c.Motion.Move(context.Background(), motion.MoveReq{
+  return &Component{
+    Named:  conf.ResourceName().AsNamed(),
+    logger: logger,
+    motion: motionService,
+  }, nil
+}
+
+// Use the stored motion service, for example:
+func (c *Component) MoveAroundInSomeWay(ctx context.Context) (bool, error) {
+  return c.motion.Move(ctx, motion.MoveReq{
     ComponentName: gripperName,
-    Destination: destination,
-    WorldState: worldState
+    Destination:   destination,
+    WorldState:    worldState,
   })
-  return moved, err
 }
 ```
 
@@ -161,8 +173,6 @@ The [motion service API](/reference/apis/services/motion/) supports the followin
 ## Test the motion service
 
 You can test motion on your machine from the [**CONTROL** tab](/monitor/).
-
-![Motion card on the Control tab](/services/motion/motion-rc-card.png)
 
 Enter x and y coordinates to move your machine to, then click the **Move** button to issue a `MoveOnMap()` request.
 

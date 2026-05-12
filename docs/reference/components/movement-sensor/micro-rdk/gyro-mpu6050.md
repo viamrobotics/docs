@@ -6,10 +6,11 @@ type: "docs"
 description: "Reference for the gyro-mpu6050 movement-sensor model. MPU-6050 movement sensor with a microcontroller."
 images: ["/icons/components/imu.svg"]
 aliases:
+  - "/operate/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"
   - /micro-rdk/movement-sensor/gyro-mpu6050/
   - /build/micro-rdk/movement-sensor/gyro-mpu6050/
   - /components/movement-sensor/gyro-mpu6050-micro-rdk/
-  - "/operate/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"
+  - "/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
 ---

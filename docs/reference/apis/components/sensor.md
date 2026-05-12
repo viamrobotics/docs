@@ -8,12 +8,13 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 date: "2022-10-10"
 aliases:
+  - /operate/modules/component-apis/sensor/
   - /dev/reference/apis/components/sensor/
   - /appendix/apis/components/sensor/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The sensor API allows you to get measurements from your [sensor components](/operate/reference/components/sensor/).
+The sensor API allows you to get measurements from your [sensor components](/reference/components/sensor/).
 
 The sensor component supports the following methods:
 
