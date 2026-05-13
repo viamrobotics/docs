@@ -12,7 +12,6 @@ aliases:
   - /mobility/base-rc/
 ---
 
-
 ## Used with
 
 {{< cards >}}
@@ -22,7 +21,7 @@ aliases:
 {{< /cards >}}
 
 {{% snippet "required-legend.md" %}}
-** Input controller is required hardware + related Viam component
+\*\* Input controller is required hardware + related Viam component
 
 The base remote control service implements an [input controller](/reference/components/input-controller/) as a remote control for a [base](/reference/components/base/).
 This uses the [`input` API](/reference/apis/components/input-controller/) to make it easy to add remote drive controls for your rover or other mobile robot with a controller like a gamepad.
@@ -38,7 +37,6 @@ Control mode is determined by the configuration attribute `"control_mode"`, for 
 5. `"droneControl"`: Two joysticks control speed and angle
 
 You can monitor the input from these controls in the **CONTROL** tab.
-
 
 ## Configuration
 
