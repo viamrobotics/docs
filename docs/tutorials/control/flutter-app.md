@@ -41,9 +41,9 @@ As you work through this project you will learn the following:
 
 ## Requirements
 
-You do not need any hardware for this tutorial other than a computer capable of running [`viam-server`](/set-up-a-machine/overview/).
+You do not need any hardware for this tutorial other than a computer capable of running [`viam-server`](/set-up-a-machine/first-machine/).
 
-This tutorial assumes you already have a machine [configured](/set-up-a-machine/overview/).
+This tutorial assumes you already have a machine [configured](/set-up-a-machine/first-machine/).
 
 ## Set up your Flutter development environment
 

@@ -1,12 +1,13 @@
 ---
-linkTitle: "Set up a machine"
-title: "Set up a machine"
+linkTitle: "Set up your first machine"
+title: "Set up your first machine"
 weight: 1
 layout: "docs"
 type: "docs"
 description: "Create a machine in the Viam app and install Viam on your compute machine."
 date: "2025-01-30"
 aliases:
+  - /set-up-a-machine/overview/
   - /foundation/
   - /build/foundation/
   - /foundation/initialize-a-viam-machine/
@@ -31,8 +32,8 @@ aliases:
   - /operate/install/setup/
 ---
 
-Connect a machine to the Viam platform so you can configure, control, and monitor it from anywhere.
-You'll create a machine in the Viam app, install Viam on your machine, and confirm it's online.
+Connect your first machine to the Viam platform so you can configure, control, and monitor it from anywhere.
+You'll create a machine in the Viam app, install Viam on your compute device, and confirm it's online.
 
 ## 1. Create a machine in the Viam app
 
@@ -119,13 +120,14 @@ Your machine is online. Now connect to it programmatically.
 
 1. Go to your machine's page in the Viam app.
 2. Click the **CONNECT** tab.
-3. Select **API keys** and copy your **API key** and **API key ID**.
-4. Copy the **machine address** from the same tab.
-5. Choose your language (Python, TypeScript, Golang, C++, or Flutter).
-6. Copy the code sample, install the SDK, paste in your credentials, and run it.
+3. Select **SDK code sample**.
+4. Choose your language (Python, TypeScript, Golang, C++, or Flutter).
+5. Toggle **Include API key** to embed your credentials directly in the snippet.
+6. Copy the code sample, install the SDK, and run it.
 
 If the connection succeeds, the script prints your machine's available resources.
 
 ## What's next
 
-- [Configure hardware](/hardware/configure-hardware/) — Add cameras, motors, sensors, and other components to your machine.
+- [Configure hardware](/hardware/configure-hardware/) to add cameras, motors, sensors, and other components to your machine.
+- [Set up machines with the CLI](/set-up-a-machine/with-cli/) to provision additional machines from the command line.

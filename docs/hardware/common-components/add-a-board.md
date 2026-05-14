@@ -23,7 +23,7 @@ A board component exposes the low-level I/O on your single-board computer:
 
 Most of the time a board represents the single-board computer itself (Raspberry Pi, Jetson, Orange Pi). A board can also represent an IO expander such as the [PCA9685](https://app.viam.com/module/viam/pca) or a microcontroller connected over serial that exposes GPIO-like interfaces. In both cases, motors, encoders, and servos reference the board by name to access the pins they're wired to.
 
-Browse all available board models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=board).
+Search for `board` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 {{< alert title="Pin numbering" color="note" >}}
 
@@ -50,7 +50,7 @@ Viam-maintained board modules:
 | [`viam:texas-instruments`](https://app.viam.com/module/viam/texas-instruments) | Texas Instruments TDA4VM board                                    |
 | [`viam:pca`](https://app.viam.com/module/viam/pca)                             | PCA9685 16-channel PWM IO expander                                |
 
-For boards not covered above, browse [all board modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=board).
+For boards not covered above, search for `board` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 

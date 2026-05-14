@@ -14,9 +14,8 @@ enough to drive the robot.
 
 ## Choose a GPS module
 
-Browse GPS-capable movement sensor models in the
-[Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor).
-Search for your GPS hardware by manufacturer or chip name.
+In the [Viam registry](https://app.viam.com/registry), search for `gps` to see GPS-capable
+movement sensor models. You can also search by manufacturer or chip name.
 
 ### GPS accuracy and what it means for navigation
 
