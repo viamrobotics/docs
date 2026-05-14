@@ -64,6 +64,8 @@ const machine = await VIAM.createRobotClient({
 });
 ```
 
+Port `8080` is the `viam-server` default; use a different port if your machine is configured to listen on one.
+
 ## Connectivity Issues
 
 When a machine loses its connection to the internet but is still connected to a LAN or WAN:
