@@ -237,9 +237,14 @@ viam completion fish > ~/.config/fish/completions/viam.fish
 {{% /tab %}}
 {{% tab name="PowerShell" %}}
 
+Save the script as `viam.ps1` and dot-source it from your `$PROFILE`:
+
 ```powershell {class="command-line" data-prompt=">"}
-viam completion pwsh | Out-String | Invoke-Expression
+viam completion pwsh > "$(Split-Path $PROFILE)/viam.ps1"
+Add-Content $PROFILE ". $(Split-Path $PROFILE)/viam.ps1"
 ```
+
+The generated script uses its filename to register completion for the `viam` command, so the file must be named `viam.ps1`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -247,7 +252,7 @@ viam completion pwsh | Out-String | Invoke-Expression
 After loading the script, press **Tab** to complete commands and flags:
 
 ```sh {class="command-line" data-prompt="$"}
-viam <Tab>         # lists all commands
-viam machines <Tab> # lists subcommands of machines
+viam <Tab>             # lists all commands
+viam machines <Tab>    # lists subcommands of machines
 viam data export <Tab> # lists subcommands of export
 ```
