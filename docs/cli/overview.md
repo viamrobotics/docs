@@ -206,7 +206,8 @@ viam machines part shell --help
 ## Enable shell completion
 
 The CLI supports tab completion for commands, subcommands, and flag names.
-To enable it, load the completion script for your shell.
+If you installed the CLI with Homebrew, completions are set up automatically.
+Otherwise, load the completion script for your shell.
 
 {{< tabs >}}
 {{% tab name="bash" %}}
