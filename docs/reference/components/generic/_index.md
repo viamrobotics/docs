@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a generic component on your machine, see [Generic](/hardware/common-components/add-a-generic/).
 - For the methods you call on a generic in code, see the [Generic API reference](/reference/apis/components/generic/).
-- For generic models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic). Each registry module's configuration is documented in its own README on its registry page.
+- For generic models outside the built-in set, search for `generic` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

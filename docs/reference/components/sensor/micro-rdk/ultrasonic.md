@@ -9,9 +9,10 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 micrordk_component: true
 aliases:
+  - "/operate/reference/components/sensor/ultrasonic-micro-rdk/"
   - /build/micro-rdk/sensor/ultrasonic/
   - /components/sensor/ultrasonic-micro-rdk/
-  - "/operate/reference/components/sensor/ultrasonic-micro-rdk/"
+  - "/reference/components/sensor/ultrasonic-micro-rdk/"
 # SME: Andrew Morrow
 ---
 

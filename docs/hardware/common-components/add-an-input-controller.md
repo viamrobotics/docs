@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a gamepad, joystick, or other input device for manual machine control."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/input-controller/
   - /hardware-components/add-an-input-controller/
 ---
 
@@ -28,7 +29,7 @@ callbacks for these events and translates them into machine actions.
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=input_controller). Each module's configuration is documented on its registry page.
+For hardware the built-in models don't cover, search for `input controller` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 

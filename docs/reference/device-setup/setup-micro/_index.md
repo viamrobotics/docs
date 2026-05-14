@@ -9,7 +9,12 @@ imageAlt: "Install Viam"
 no_list: false
 description: "Install the lightweight version of the software that drives hardware and connects your device to the cloud."
 aliases:
+  - /operate/reference/viam-micro-server/
   - /operate/install/setup-micro/
+  - /set-up-a-machine/setup-micro/
+  - /foundation/setup-micro/
+  - /reference/viam-micro-server/
+  - /architecture/viam-micro-server/
   - /installation/microcontrollers/
   - /installation/prepare/microcontrollers/
   - /build/micro-rdk/

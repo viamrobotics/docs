@@ -1,7 +1,7 @@
 You can visualize your machine's geometries and frames in the Viam app:
 
 {{% alert title="Tip" color="tip" %}}
-To visualize a component without moving any real-world hardware, configure a `fake` model to represent your component (for example, a [`fake` arm](/operate/reference/components/arm/fake/)), then follow the steps below using the fake component.
+To visualize a component without moving any real-world hardware, configure a `fake` model to represent your component (for example, a [`fake` arm](/reference/components/arm/fake/)), then follow the steps below using the fake component.
 {{% /alert %}}
 
 1. In Viam, navigate to your machine's page.

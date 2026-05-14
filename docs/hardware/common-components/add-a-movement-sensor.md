@@ -7,6 +7,8 @@ type: "docs"
 description: "Add and configure a movement sensor like a GPS, IMU, or odometry source."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/movement-sensor/
+  - /operate/reference/components/movement-sensor/set-up-base-station/
   - /hardware-components/add-a-movement-sensor/
 ---
 
@@ -50,7 +52,7 @@ Viam-maintained movement-sensor modules:
 | [`viam:gps`](https://app.viam.com/module/viam/gps)                       | NMEA GPS, RTK GPS (serial / PMTK), and dual-antenna RTK |
 | [`viam:wit-motion`](https://app.viam.com/module/viam/wit-motion)         | Wit-Motion multi-axis tilt and IMU sensors              |
 
-For movement sensors not covered above, browse [all movement-sensor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=movement_sensor).
+For movement sensors not covered above, search for `movement sensor` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 

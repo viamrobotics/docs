@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a power sensor to monitor voltage, current, and power consumption."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/power-sensor/
   - /hardware-components/add-a-power-sensor/
 ---
 
@@ -32,7 +33,7 @@ Viam-maintained power-sensor modules:
 | ------------------------------------------------------------------------------ | -------------------------------------------- |
 | [`viam:texas-instruments`](https://app.viam.com/module/viam/texas-instruments) | Texas Instruments INA219 and INA226 monitors |
 
-For power sensors not covered above (Renogy controllers, other chips), browse [all power-sensor modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=power_sensor).
+For power sensors not covered above (Renogy controllers, other chips), search for `power sensor` in the [Viam registry](https://app.viam.com/registry).
 
 ## Steps
 

@@ -7,6 +7,12 @@ type: "docs"
 description: "Connect multiple computers so one machine can access another's components and services."
 date: "2026-04-16"
 aliases:
+  - /manage/parts-and-remotes/
+  - /build/configure/parts-and-remotes/
+  - /configure/parts/
+  - /build/configure/parts/
+  - /architecture/parts/
+  - /reference/architecture/parts/
   - /operate/reference/architecture/parts/
 ---
 
@@ -94,4 +100,4 @@ If the client goes silent (network loss, crashed process), `viam-server` automat
 A rover will not keep driving, an arm will not keep moving, and a gripper will not keep closing when the commanding process vanishes.
 This applies equally to local and remote resources.
 
-For the lower-level details of how machines communicate, see [Machine-to-machine communication](/operate/reference/architecture/machine-to-machine-comms/).
+For the lower-level details of how machines communicate, see [Machine-to-machine communication](/hardware/multi-machine/overview/).

@@ -7,6 +7,9 @@ type: "docs"
 description: "Add and configure a robotic arm, verify joint motion, and test end-effector positioning."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/arm/
+  - /operate/reference/components/arm/eva/
+  - /operate/reference/components/arm/yahboom-dofbot/
   - /hardware-components/add-an-arm/
 ---
 
@@ -42,7 +45,7 @@ Viam-maintained arm modules:
 | [`viam:universal-robots`](https://app.viam.com/module/viam/universal-robots) | UR3e, UR5e, UR7e, UR20       |
 | [`viam:yaskawa`](https://app.viam.com/module/viam/yaskawa)                   | GP12, GP180-120              |
 
-For arms not covered above, browse [all arm modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=arm). Each module's configuration is documented on its registry page.
+For arms not covered above, search for `arm` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 

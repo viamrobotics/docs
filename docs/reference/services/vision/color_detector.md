@@ -126,7 +126,7 @@ Object colors vary dramatically with lighting. Verify your target color value un
 
 {{< imgproc src="/services/vision/detections.png" alt="Live camera feed with bounding boxes drawn around detected regions" resize="450x" declaredimensions=true >}}
 
-For a continuous overlay, configure a [transform camera](/operate/reference/components/camera/transform/):
+For a continuous overlay, configure a [transform camera](/reference/components/camera/transform/):
 
 ```json
 {

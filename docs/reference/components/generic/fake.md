@@ -6,8 +6,9 @@ type: "docs"
 description: "Reference for the fake generic model. Fake generic component."
 tags: ["generic", "components"]
 aliases:
-  - "/components/generic/fake/"
   - "/operate/reference/components/generic/fake/"
+  - "/components/generic/fake/"
+  - "/reference/components/generic/fake/"
 component_description: "A model used for testing, with no physical hardware."
 ---
 

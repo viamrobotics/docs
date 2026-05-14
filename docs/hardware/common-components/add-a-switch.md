@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a switch component to read and set the position of a multi-position switch."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/switch/
   - /hardware-components/add-a-switch/
 ---
 
@@ -25,7 +26,7 @@ Physical switch hardware typically comes from a **module in the registry** that
 reads GPIO pins or communicates with a switch controller.
 
 The `fake` built-in model simulates a switch with configurable positions and
-is useful for testing. Browse available switch models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=switch).
+is useful for testing. Search for `switch` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 ### Built-in models
 
@@ -33,7 +34,7 @@ is useful for testing. Browse available switch models in the [Viam registry](htt
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=switch). Each module's configuration is documented on its registry page.
+For hardware the built-in models don't cover, search for `switch` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 

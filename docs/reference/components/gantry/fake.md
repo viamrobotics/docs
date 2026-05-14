@@ -8,8 +8,9 @@ tags: ["gantry", "components"]
 icon: true
 images: ["/icons/components/gantry.svg"]
 aliases:
-  - "/components/gantry/fake/"
   - "/operate/reference/components/gantry/fake/"
+  - "/components/gantry/fake/"
+  - "/reference/components/gantry/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: Rand
 ---
