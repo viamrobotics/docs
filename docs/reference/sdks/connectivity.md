@@ -46,7 +46,7 @@ Restart `viam-server` with the `-no-tls` flag.
 
 Update your connection code to set `signalingInsecure` to `true` and point the signaling address at your machine's local address:
 
-```ts {class="line-numbers linkable-line-numbers" data-line="1,2,14,15"}
+```ts {class="line-numbers linkable-line-numbers" data-line="1,2,13,14"}
 const host = "mymachine-main.0a1bcdefgi.viam.cloud";
 const localAddress = "my-machine.local:8080";
 
