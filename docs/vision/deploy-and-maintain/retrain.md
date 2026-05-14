@@ -1,6 +1,6 @@
 ---
-linkTitle: "Retrain when accuracy drops"
-title: "Retrain when your model drifts"
+linkTitle: "Retrain a model"
+title: "Retrain a model"
 weight: 30
 layout: "docs"
 type: "docs"
