@@ -17,11 +17,11 @@ Viam's data, training, and fleet tools are the pieces of that loop. This guide w
 ## The cycle
 
 ```text
-   Production ───► Capture failing ───► Label ───► Train ───► Deploy ───► Production
-   detections       images from the     new         a new      new version    (again, with
-   start drifting   machine              data        model      to the fleet   the new model)
-         ▲                                                                          │
-         └──────────────────────────────── monitor ─────────────────────────────────┘
+   Production ───► Capture failing ───► Label ───► Train ───► Deploy ───►  Production
+   detections      images from the      new        a new      new version  (again, with
+   start drifting  machine              data       model      to the fleet the new model)
+         ▲                                                                           │
+         └──────────────────────────────── monitor ──────────────────────────────────┘
 ```
 
 You do not have to complete every step in a single sitting, and you do not have to do it manually every time. Scheduled data capture and training jobs can automate most of the loop once you have configured it.
