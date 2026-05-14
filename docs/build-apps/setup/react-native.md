@@ -21,7 +21,7 @@ The Viam TypeScript SDK does not work with Expo (neither Expo Go nor development
 - A configured Viam machine
 - The machine's address, an API key, and an API key ID
 
-Get the credentials from the machine's **CONNECT** tab in the Viam app. Click **CONNECT**, select **TypeScript**, toggle **Include API key** on, and copy the `host`, `authEntity`, and `payload` values.
+Get the credentials from the machine's **CONNECT** tab in the Viam app. Click **CONNECT**, select **Browser TS**, toggle **Include API key** on, and copy the `host`, `authEntity`, and `payload` values.
 
 ## Create a project
 
