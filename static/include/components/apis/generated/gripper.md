@@ -63,7 +63,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Open the gripper
 await gripper.open();
@@ -107,7 +107,7 @@ Closes the gripper until it grabs something or closes completely, and returns wh
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Indicates if the gripper grabbed something.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): : Indicates if the gripper grabbed something.
 
 **Example:**
 
@@ -130,7 +130,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(bool)](https://pkg.go.dev/builtin#bool):  True if the gripper grabbed something with non-zero thickness.
+- [(bool)](https://pkg.go.dev/builtin#bool): True if the gripper grabbed something with non-zero thickness.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -159,7 +159,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Close the gripper to grab
 await gripper.grab();
@@ -202,7 +202,7 @@ Returns whether the gripper is actively moving (or attempting to move) under its
 
 **Returns:**
 
-- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Whether the gripper is moving.
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): : Whether the gripper is moving.
 
 **Example:**
 
@@ -258,11 +258,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Check if the gripper is currently moving
 const moving = await gripper.isMoving();
-console.log('Gripper is moving:', moving);
+console.log("Gripper is moving:", moving);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#ismoving).
@@ -303,7 +303,7 @@ Return if the gripper is holding something.
 
 **Returns:**
 
-- ([viam.components.gripper.gripper.Gripper.HoldingStatus](https://python.viam.dev/autoapi/viam/components/gripper/gripper/index.html#viam.components.gripper.gripper.Gripper.HoldingStatus)): :   see documentation on HoldingStatus for more information.
+- ([viam.components.gripper.gripper.Gripper.HoldingStatus](https://python.viam.dev/autoapi/viam/components/gripper/gripper/index.html#viam.components.gripper.gripper.Gripper.HoldingStatus)): : see documentation on HoldingStatus for more information.
 
 **Example:**
 
@@ -416,7 +416,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Stop the gripper's current motion
 await gripper.stop();
@@ -461,7 +461,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): : The geometries associated with the Component.
 
 **Example:**
 
@@ -521,14 +521,125 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const gripper = new VIAM.GripperClient(machine, 'my_gripper');
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
 
 // Get the geometries of this component
 const geometries = await gripper.getGeometries();
-console.log('Geometries:', geometries);
+console.log("Geometries:", geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getgeometries).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetCurrentInputs
+
+Get the current joint input values of the gripper.
+This method is part of the frame system's `InputEnabled` interface and is relevant for grippers with non-zero degrees of freedom that participate in motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([List[float]](https://docs.python.org/3/library/stdtypes.html#list)): The current input values of the gripper.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
+
+# Get the current input values of the gripper.
+inputs = await my_gripper.get_current_inputs()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_current_inputs).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<number[]>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
+
+// Get the current inputs of the gripper
+const inputs = await gripper.getCurrentInputs();
+console.log("Current inputs:", inputs);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#getcurrentinputs).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GoToInputs
+
+Move the gripper to the specified joint input values.
+This method is part of the frame system's `InputEnabled` interface and is relevant for grippers with non-zero degrees of freedom that participate in motion planning.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `values` ([List[float]](https://docs.python.org/3/library/stdtypes.html#list)) (required): The input values to move the gripper to.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_gripper = Gripper.from_robot(robot=machine, name="my_gripper")
+
+# Move the gripper to specific input values.
+await my_gripper.go_to_inputs([0.5, 0.8])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.go_to_inputs).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `values` (number[]) (required): The input values to move the gripper to.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const gripper = new VIAM.GripperClient(machine, "my_gripper");
+
+// Move the gripper to specific input values
+await gripper.goToInputs([0.5]);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#gotoinputs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -573,7 +684,7 @@ If you are implementing your own gripper and want to add features that have no c
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): : Result of the executed command.
 
 **Raises:**
 
@@ -631,14 +742,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ```ts {class="line-numbers linkable-line-numbers"}
 // Plain object (recommended)
 const result = await resource.doCommand({
-  myCommand: { key: 'value' },
+  myCommand: { key: "value" },
 });
 
 // Struct (still supported)
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
+  Struct.fromJson({ myCommand: { key: "value" } }),
 );
 ```
 
@@ -682,11 +793,11 @@ Get the kinematics information associated with the gripper as the format and byt
 
 **Returns:**
 
-- ([viam.components.KinematicsReturn](https://python.viam.dev/autoapi/viam/components/index.html#viam.components.KinematicsReturn)): :   A tuple containing two values; the first [0] value represents the format of the
-    file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
-    Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
-    and the second [1] value represents the byte contents of the file.
-    If available, a third [2] value provides meshes keyed by URDF filepath.
+- ([viam.components.KinematicsReturn](https://python.viam.dev/autoapi/viam/components/index.html#viam.components.KinematicsReturn)): : A tuple containing two values; the first [0] value represents the format of the
+  file, either in URDF format (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_URDF`) or
+  Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
+  and the second [1] value represents the byte contents of the file.
+  If available, a third [2] value provides meshes keyed by URDF filepath.
 
 **Example:**
 
@@ -755,7 +866,7 @@ Get the `ResourceName` for this gripper.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): : The ResourceName of this Resource.
 
 **Example:**
 
@@ -800,7 +911,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-gripper.name
+gripper.name;
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GripperClient.html#name).

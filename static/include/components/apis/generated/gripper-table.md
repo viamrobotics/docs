@@ -7,6 +7,8 @@
 | [`IsHoldingSomething`](/reference/apis/components/gripper/#isholdingsomething) | Return if the gripper is holding something. |
 | [`Stop`](/reference/apis/components/gripper/#stop) | Stops the gripper. |
 | [`GetGeometries`](/reference/apis/components/gripper/#getgeometries) | Get all the geometries associated with the gripper in its current configuration, in the frame of the gripper. |
+| [`GetCurrentInputs`](/reference/apis/components/gripper/#getcurrentinputs) | Get the current joint input values of the gripper. |
+| [`GoToInputs`](/reference/apis/components/gripper/#gotoinputs) | Move the gripper to the specified joint input values. |
 | [`Reconfigure`](/reference/apis/components/gripper/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/components/gripper/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
 | [`GetKinematics`](/reference/apis/components/gripper/#getkinematics) | Get the kinematics information associated with the gripper as the format and byte contents of the kinematics file. |
