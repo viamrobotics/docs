@@ -4,7 +4,7 @@ title: "Set up your first machine"
 weight: 1
 layout: "docs"
 type: "docs"
-description: "Create a machine in the Viam app and install Viam on your compute machine."
+description: "Create a machine in the Viam app and install Viam on your compute device."
 date: "2025-01-30"
 aliases:
   - /set-up-a-machine/overview/
@@ -37,50 +37,55 @@ You'll create a machine in the Viam app, install Viam on your compute device, an
 
 ## 1. Create a machine in the Viam app
 
-1. Go to [app.viam.com](https://app.viam.com) and log in (or create an
-   account).
-2. Create or select an organization, then create or select a location.
-3. Click **Add machine**.
-4. Give your machine a name (for example, `my-first-machine`). Click **Add machine**.
+1. Go to [app.viam.com](https://app.viam.com) and log in (or create an account).
+2. Open a location.
+3. Click **Add machine**, enter a name (for example, `my-first-machine`), and click **Add machine** again.
 
-The app creates a machine entry and opens the **CONFIGURE** tab.
-A banner prompts you to set up the machine part.
+The app opens your new machine's page on the **CONFIGURE** tab.
+The tab shows a card titled **Set up your machine part**.
 
-## 2. Open the setup page
+## 2. Open the setup wizard
 
-1. Click **View setup instructions** in the banner.
-2. In the wizard dialog that opens, click **Go to Advanced setup**.
+In the **Set up your machine part** card, click **Set up**.
 
-## 3. Select your platform {#sbc-setup-instructions}
+A wizard dialog opens with the heading **Install `viam-server`**.
+Click **Next** to begin.
 
-Use the **Platform you want to run on** dropdown to select the operating system and architecture of the compute machine for your robot, the computer to which you've attached cameras, sensors, arms, or other components.
+## 3. Tell the wizard about your hardware {#sbc-setup-instructions}
 
-Options include Linux / Aarch64, Linux / x86, Mac, Windows native, Windows (WSL), Linux / Armv7l, and ESP32.
+The wizard asks a few questions so it can build the right install command for your platform.
+Answer each one by clicking the card that matches your setup:
 
-If you're using a single-board computer, make sure it's running a compatible Linux OS before continuing. See [Device setup guides](/reference/device-setup/) for board-specific instructions.
+- **Does your project have a separate board/computer?**
+  Choose **Yes** if you'll install `viam-server` on a board or industrial PC connected to your hardware.
+  Choose **No** if you're running on a laptop or desktop, typically for testing or development.
+- **What kind of board is it?** or **What operating system?**
+  Pick the matching card: **Raspberry Pi**, **NVIDIA Jetson**, or **Something else** for boards; **MacOS**, **Linux**, or **Windows** for laptops and desktops.
+- **Operating system check.**
+  Depending on what you picked, the wizard either confirms that your machine has a 64-bit Linux OS, walks you through installing one, or shows a command that verifies system requirements.
 
-## 4. Select your installation method
+If you're using a single-board computer that doesn't come with an OS pre-installed, the wizard links to board-specific setup guides on the **Install an operating system** screen.
+Install a 64-bit Linux OS on your board following that guide, then return to the wizard, check **I've installed a compatible OS on my `<board>`**, and click **Continue setup**.
 
-If your platform supports multiple installation methods, a second dropdown appears.
+## 4. Run the install command
 
-- **viam-agent**: Choose this unless you have a reason not to.
-- **manual**: Installs `viam-server` directly.
+The wizard reaches the **Download and install `viam-server`** screen with a platform-specific command.
+The command embeds an API key so your machine can authenticate to Viam on its own.
 
-## 5. Run the install command
+Run the command on your compute device.
 
-The setup page displays platform-specific install instructions.
-Follow the steps shown on your compute machine.
+## 5. Wait for the success screen
 
-## 6. Wait for confirmation
-
-After the install command finishes, the setup page polls for your machine's connection status.
-When the banner changes to **"Your machine is connected!"**, your machine is online and ready to configure.
+After the install command finishes, the wizard polls for your machine's connection status.
+When the wizard shows **Success! Your machine is connected.**, your machine is online and ready to configure.
 
 This should happen within 30 seconds.
+Click **Configure my machine** to close the wizard and return to the **CONFIGURE** tab.
 
 {{< alert title="Tip" color="tip" >}}
 
-To return to the setup page later, click the **...** menu next to any part name in the **CONFIGURE** tab and select **View setup instructions**.
+To reopen the wizard later, open the machine status dropdown at the top of the machine page and click **View setup instructions** under the part name.
+The wizard starts from the beginning each time; it does not remember where you left off.
 
 {{< /alert >}}
 
@@ -114,7 +119,7 @@ To return to the setup page later, click the **...** menu next to any part name 
 
 {{< /expand >}}
 
-## 7. Connect with code
+## 6. Connect with code
 
 Your machine is online. Now connect to it programmatically.
 
