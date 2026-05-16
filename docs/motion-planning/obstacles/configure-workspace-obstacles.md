@@ -36,8 +36,8 @@ The `erh:vmodutils:obstacle` module accepts a list of geometries under one compo
 2. Click the **+** icon and select **Configuration block**.
 3. Search for `obstacle` and click the **gripper/obstacle** result card for the `erh:vmodutils` module.
    The Viam app installs the `erh:vmodutils` module automatically.
-4. Click **Add component** on the detail page.
-5. Name the component after what it represents (for example, `table`, `back-wall`, `ceiling`) and click **Add component**.
+4. Click **Add to machine** on the detail page.
+5. Name the component after what it represents (for example, `table`, `back-wall`, `ceiling`) and click **Add to machine**.
 
 {{< alert title="Why a gripper?" color="note" >}}
 The obstacle module is registered under the gripper API because that API natively exposes a `Geometries()` method, which is what the motion planner reads to pull custom collision shapes.
@@ -187,8 +187,8 @@ The component's frame positions the whole group.
 For a single primitive shape when you do not want to add the `erh:vmodutils` module, use a `generic`/`fake` component:
 
 1. Click the **+** icon and select **Configuration block**.
-2. Search for `generic` and click the **generic/fake** result card. Click **Add component**.
-3. Name the component (for example, `table`) and click **Add component**.
+2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.
+3. Name the component (for example, `table`) and click **Add to machine**.
 4. Click **Frame** on the new component card. Replace the JSON:
 
    ```json
@@ -293,8 +293,8 @@ The motion planner should treat them as collision volume, but Viam has no compon
 Use the `generic`/`fake` pattern, parented to the moving component instead of `world`:
 
 1. Click the **+** icon and select **Configuration block**.
-2. Search for `generic` and click the **generic/fake** result card. Click **Add component**.
-3. Name the component descriptively (for example, `arm-camera-mount`) and click **Add component**.
+2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.
+3. Name the component descriptively (for example, `arm-camera-mount`) and click **Add to machine**.
 4. Click **Frame** on the new component card. Set `parent` to the component the object attaches to (the arm's name for an end-effector mount, the gripper's name for a gripper attachment). Add a `geometry` field:
 
    ```json
