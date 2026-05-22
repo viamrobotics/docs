@@ -28,6 +28,7 @@ audio_in,Close,,close,Close,,
 
 ## AudioOut
 audio_out,Play,,play,Play,play,play
+audio_out,PlayStream,,play_stream,PlayStream,,
 audio_out,GetProperties,,get_properties,Properties,getProperties,getProperties
 audio_out,GetGeometries,,get_geometries,,,
 audio_out,Reconfigure,,,Reconfigure,,
