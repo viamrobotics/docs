@@ -13,8 +13,6 @@ and [`MoveOnMap`](/motion-planning/reference/api/#moveonmap) calls to
 override defaults for a single execution. It is not used with `Move`,
 which is synchronous and does not expose per-call motion parameters.
 
-The navigation service uses `MoveOnGlobe` internally and builds a `MotionConfiguration` from its own attributes; see [Navigation service correspondence](#navigation-service-correspondence) below for the mapping.
-
 ## Fields
 
 | Field                           | Type                 | Default                                | Description                                                                                                                                           |
@@ -103,19 +101,6 @@ executionID, err := motionService.MoveOnGlobe(ctx, motion.MoveOnGlobeReq{
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Navigation service correspondence
-
-When you configure the navigation service, it builds a `MotionConfiguration` from its attributes on every internal `MoveOnGlobe` call. The attributes map to `MotionConfiguration` fields as follows:
-
-| Navigation service attribute    | MotionConfiguration field       |
-| ------------------------------- | ------------------------------- |
-| `meters_per_sec`                | `linear_m_per_sec`              |
-| `degs_per_sec`                  | `angular_degs_per_sec`          |
-| `plan_deviation_m`              | `plan_deviation_m`              |
-| `position_polling_frequency_hz` | `position_polling_frequency_hz` |
-| `obstacle_polling_frequency_hz` | `obstacle_polling_frequency_hz` |
-| `obstacle_detectors[]`          | `obstacle_detectors[]`          |
 
 ## What's next
 

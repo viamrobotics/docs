@@ -101,8 +101,6 @@ Detectors are only active during execution, not initial planning.
 Initial obstacles come from the `WorldState` in the request or from
 static machine config.
 
-### Replan cost factor (navigation service only)
-
 ## What replanning does not do
 
 Several things users reasonably expect from "replanning" that Viam's
@@ -129,16 +127,15 @@ avoidance for an arm, you build it in application code: monitor the
 world, call `Move` with a new `WorldState`. The motion service does
 not do this for you.
 
-`MoveOnGlobe` and `MoveOnMap` replan during execution. That makes base
-navigation resilient to changing conditions but harder to reason about
+`MoveOnGlobe` and `MoveOnMap` replan during execution. That makes those
+methods resilient to changing conditions but harder to reason about
 offline: `GetPlan` can return different answers a second apart.
 
 ## What's next
 
-- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
-  observe plan state transitions including replans.
 - [Plan monitoring](/motion-planning/reference/plan-monitoring/):
-  reference for `GetPlan`, `ListPlanStatuses`, and `StopPlan`.
+  observe plan state transitions including replans, and reference
+  `GetPlan`, `ListPlanStatuses`, and `StopPlan`.
 - [MotionConfiguration](/motion-planning/reference/motion-configuration/):
   the per-call options that tune replanning, including
   `plan_deviation_m` and polling frequencies.

@@ -81,7 +81,6 @@ returns a collision-free path from the current pose to your target.
 
 {{< cards >}}
 {{% card link="/motion-planning/move-gantry/" noimage="true" %}}
-{{% card link="/motion-planning/monitor-a-running-plan/" noimage="true" %}}
 {{% card link="/motion-planning/debug-motion-with-cli/" noimage="true" %}}
 {{< /cards >}}
 

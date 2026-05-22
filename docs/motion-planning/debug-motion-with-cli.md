@@ -187,7 +187,7 @@ the arm's frame and in the world frame describes two different places.
   the starting point for the rest of your debugging.
 - The CLI does not currently report plan state (`PlanState`), plan
   history, or replan reasons. For non-blocking executions, see
-  [Monitor a running plan](/motion-planning/monitor-a-running-plan/).
+  [Plan monitoring](/motion-planning/reference/plan-monitoring/).
 
 ## What's next
 

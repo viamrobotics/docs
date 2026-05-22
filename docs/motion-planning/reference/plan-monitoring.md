@@ -5,6 +5,11 @@ weight: 35
 layout: "docs"
 type: "docs"
 description: "Reference for the motion service methods, types, and states used to track long-running motion plans."
+aliases:
+  - /motion-planning/monitor-a-running-plan/
+  - /motion-planning/motion-how-to/monitor-plan-execution/
+  - /motion-planning/motion-how-to/monitor-a-running-plan/
+  - /operate/mobility/monitor-plan-execution/
 ---
 
 `MoveOnMap` and `MoveOnGlobe` return immediately; the actual motion runs in the background. To monitor and control a running plan, callers use `GetPlan`, `ListPlanStatuses`, and `StopPlan`, backed by the `Plan`, `PlanStatus`, and `PlanState` types. This page lists those methods, types, and the state machine that ties them together.
@@ -15,11 +20,6 @@ description: "Reference for the motion service methods, types, and states used t
 | --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Builtin                                             | No. `Move` is synchronous; the plan-tracking RPCs return "not supported". |
 | Modules that implement `MoveOnGlobe` or `MoveOnMap` | Yes (typical case).                                                       |
-
-If you are using navigation: the navigation service uses a motion
-service internally. When you configure navigation with a plan-tracking
-motion service, navigation's own `GetPaths`, `GetLocation`, and mode
-transitions expose progress without calling `GetPlan` directly.
 
 ## PlanState
 
@@ -116,12 +116,12 @@ The helper polls `PlanHistory` at the given interval and returns `nil`
 when the state reaches `SUCCEEDED`, or an error if the state reaches
 `STOPPED` or `FAILED`.
 
-The Python SDK has no equivalent helper, so Python callers poll `get_plan` in a loop; [Monitor a running plan](/motion-planning/monitor-a-running-plan/) shows the pattern.
+The Python SDK has no equivalent helper, so Python callers poll
+`get_plan` in a loop until `current_plan_with_status.status.state`
+reaches a terminal state (`SUCCEEDED`, `STOPPED`, or `FAILED`).
 
 ## What's next
 
-- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
-  start a non-blocking motion and react to state changes.
 - [Motion service API](/motion-planning/reference/api/): the full motion
   service method list.
 - [Motion service configuration](/motion-planning/reference/motion-service/):

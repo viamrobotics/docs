@@ -82,9 +82,9 @@ previously-successful request sometimes times out.
 
 **It does not replan mid-execution.** The motion service computes the
 full path before execution begins. If a new obstacle appears after the
-arm starts moving, the planner does not react. Base navigation through
-`MoveOnMap` and `MoveOnGlobe` is different: those methods monitor plan
-deviation and replan dynamically.
+arm starts moving, the planner does not react. `MoveOnMap` and
+`MoveOnGlobe` are different: those methods monitor plan deviation and
+replan dynamically.
 
 **It is not a controller.** cBiRRT produces the plan, but the arm's
 module executes it. Vendor-level protections (singularity protective
@@ -130,5 +130,5 @@ algorithm's probabilistic nature means some retries succeed.
   terse summary of the algorithm, defaults, and tuning surface.
 - [Configure motion constraints](/motion-planning/move-an-arm/constraints/):
   the four constraint types the planner enforces.
-- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
+- [Plan monitoring](/motion-planning/reference/plan-monitoring/):
   handle non-blocking plans and reason about state transitions.
