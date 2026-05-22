@@ -1,37 +1,43 @@
 {{- /*
-  api-overview: renders a compact CSS-grid overview of every API in a data file
-  and its methods. One positional arg: the data-file key (component_apis or
+  api-overview: renders a compact overview of every API in a data file and its
+  methods. One positional arg: the data-file key (component_apis or
   service_apis, from data/<key>.yaml).
 
   Method lists are read at build time from the per-API method-table includes
   (the same -table.md files the detail pages render), so the grid never goes
   stale. Each table row's first cell is a `[`Method`](url#anchor)` link; we keep
   only data rows (those starting with "| ["), take that first cell, and pull the
-  method name + URL from it.
+  method name + URL from it. APIs and methods are both listed alphabetically.
 */ -}}
 {{- $entries := index site.Data (.Get 0) -}}
 {{- if not $entries -}}
   {{- errorf "api-overview: no data file found for key %q" (.Get 0) -}}
 {{- end -}}
 <div class="api-overview-grid">
-  {{- range $entries -}}
+  {{- range (sort $entries "title") -}}
     {{- if not (fileExists .table) -}}
       {{- errorf "api-overview: table file %q not found for %q" .table .title -}}
     {{- end -}}
     {{- $raw := os.ReadFile .table -}}
-    <div class="api-overview-card">
-      <h3 class="api-overview-card-title"><a href="{{ .link | relLangURL }}">{{ .title }}</a></h3>
-      <div class="api-method-chips">
-        {{- range (split $raw "\n") -}}
-          {{- /* keep only data rows: "| [`Method`](url) | ... |" */ -}}
-          {{- if hasPrefix . "| [" -}}
-            {{- $cell := index (split . "|") 1 -}}
-            {{- range findRESubmatch `\[\x60([^\x60]+)\x60\]\(([^)]+)\)` $cell -}}
-              <a class="api-method-chip" href="{{ index . 2 | relLangURL }}"><code>{{ index . 1 }}</code></a>
-            {{- end -}}
-          {{- end -}}
+    {{- $methods := slice -}}
+    {{- range (split $raw "\n") -}}
+      {{- /* keep only data rows: "| [`Method`](url) | ... |" */ -}}
+      {{- if hasPrefix . "| [" -}}
+        {{- $cell := index (split . "|") 1 -}}
+        {{- range findRESubmatch `\[\x60([^\x60]+)\x60\]\(([^)]+)\)` $cell -}}
+          {{- $methods = $methods | append (dict "name" (index . 1) "url" (index . 2)) -}}
         {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    <div class="api-overview-card">
+      <div class="api-overview-card-header">
+        <h3 class="api-overview-card-title"><a href="{{ .link | relLangURL }}">{{ .title }}</a></h3>
       </div>
+      <ul class="api-method-list">
+        {{- range (sort $methods "name") -}}
+          <li><a href="{{ .url | relLangURL }}"><code>{{ .name }}</code></a></li>
+        {{- end -}}
+      </ul>
     </div>
   {{- end -}}
 </div>
