@@ -17,11 +17,9 @@ learn when it completes, fails, or stops. This page gives the polling pattern
 in Go and Python.
 
 Neither RPC is implemented by the built-in motion service: the built-in
-returns "not supported" for both. You need the
-[navigation service](/navigation/), which calls `MoveOnGlobe` internally,
-or a motion-service module that provides them. If you are using the
-built-in `Move` instead (which blocks until completion), skip to the
-last section.
+returns "not supported" for both. You need a motion-service module that
+provides them. If you are using the built-in `Move` instead (which blocks
+until completion), skip to the last section.
 
 For background on the methods and states, see
 [Plan monitoring](/motion-planning/reference/plan-monitoring/).
@@ -311,8 +309,5 @@ if err != nil {
 
 - [Plan monitoring](/motion-planning/reference/plan-monitoring/):
   method, type, and state reference.
-- [Navigate to a waypoint](/navigation/how-to/navigate-to-waypoint/):
-  end-to-end example using the navigation service, which internally
-  uses `MoveOnGlobe` and exposes its own progress API.
 - [Move an arm to a pose](/motion-planning/move-an-arm/move-to-pose/):
   the builtin `Move` equivalent for arms and gantries.
