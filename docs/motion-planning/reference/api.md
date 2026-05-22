@@ -30,26 +30,6 @@ Key parameters:
 - `world_state`: optional obstacles and transforms
 - `constraints`: optional linear, orientation, or collision constraints
 
-### MoveOnMap
-
-Plans and executes motion on a SLAM map.
-
-### MoveOnGlobe
-
-Plans and executes motion to a GPS coordinate.
-
-### GetPlan
-
-Retrieves the plan for an executing motion.
-
-### ListPlanStatuses
-
-Lists all active and recently completed plan statuses.
-
-### StopPlan
-
-Stops an executing plan.
-
 ### GetPose (deprecated)
 
 Returns a component's pose. Deprecated in favor of the robot service's `GetPose`. Python callers still use this motion-service method today; see the [Frame system API reference](/motion-planning/reference/frame-system-api/).
