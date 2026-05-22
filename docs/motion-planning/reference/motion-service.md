@@ -74,31 +74,17 @@ Example configuration:
 }
 ```
 
-## Per-request configuration
-
-Pass a `MotionConfiguration` on a `MoveOnGlobe` or `MoveOnMap` call to override per-request settings. See [MotionConfiguration](/motion-planning/reference/motion-configuration/) for the full field reference.
-
-## Builtin service limitations
-
-The builtin service implements only `Move` (plus `DoCommand` and `GetStatus`). The other motion RPCs return "not supported" errors; to use them, install a module that implements them.
-
-- `MoveOnMap()`: requires a SLAM service. The builtin implementation is legacy; use a module that implements `MoveOnMap` instead.
-- `MoveOnGlobe()`: requires a module that implements it.
-- `GetPlan()`, `ListPlanStatuses()`, `StopPlan()`: only available with implementations that support `MoveOnMap` or `MoveOnGlobe`.
-
 ## Planning defaults
 
 The builtin service compiles the defaults below into the binary. To change them at runtime, pass overrides through the `extra` map on a `Move` call (see the algorithms reference for the tunable list).
 
-| Parameter                  | Value                      | Description                                                                                                                                                          |
-| -------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Planning timeout           | 300 seconds                | Maximum time to search for a path.                                                                                                                                   |
-| Resolution                 | 2.0                        | Constraint-checking granularity (mm or degrees per step).                                                                                                            |
-| Max IK solutions           | 100                        | Maximum inverse kinematics solutions to seed the search.                                                                                                             |
-| Smoothing iterations       | 3 passes of sizes 10, 3, 1 | Post-planning path smoothing passes applied in sequence.                                                                                                             |
-| Collision buffer           | 1e-8 mm (effectively zero) | Default buffer. Size obstacle geometries to include any safety margin, or pass `collision_buffer_mm` through the `extra` map on a Move call to override per request. |
-| MoveOnMap plan deviation   | 1000 mm (1.0 m)            | Default for `MoveOnMap` calls.                                                                                                                                       |
-| MoveOnGlobe plan deviation | 2600 mm (2.6 m)            | Default for `MoveOnGlobe` calls.                                                                                                                                     |
+| Parameter            | Value                      | Description                                                                                                                                                          |
+| -------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Planning timeout     | 300 seconds                | Maximum time to search for a path.                                                                                                                                   |
+| Resolution           | 2.0                        | Constraint-checking granularity (mm or degrees per step).                                                                                                            |
+| Max IK solutions     | 100                        | Maximum inverse kinematics solutions to seed the search.                                                                                                             |
+| Smoothing iterations | 3 passes of sizes 10, 3, 1 | Post-planning path smoothing passes applied in sequence.                                                                                                             |
+| Collision buffer     | 1e-8 mm (effectively zero) | Default buffer. Size obstacle geometries to include any safety margin, or pass `collision_buffer_mm` through the `extra` map on a Move call to override per request. |
 
 ## DoCommand
 

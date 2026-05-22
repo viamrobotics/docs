@@ -35,6 +35,13 @@ aliases:
   - /use-cases/navigate/
   - /motion-planning/motion-how-to/drive-a-base/
   - /tutorials/services/navigate-with-rover-base/
+  - /motion-planning/replanning-behavior/
+  - /motion-planning/reference/motion-configuration/
+  - /motion-planning/reference/plan-monitoring/
+  - /motion-planning/monitor-a-running-plan/
+  - /motion-planning/motion-how-to/monitor-plan-execution/
+  - /motion-planning/motion-how-to/monitor-a-running-plan/
+  - /operate/mobility/monitor-plan-execution/
 ---
 
 Your robot arm needs to move from one pose to another without colliding with
@@ -88,7 +95,6 @@ returns a collision-free path from the current pose to your target.
 
 {{< cards >}}
 {{% card link="/motion-planning/how-planning-works/" noimage="true" %}}
-{{% card link="/motion-planning/replanning-behavior/" noimage="true" %}}
 {{< /cards >}}
 
 ## Reference

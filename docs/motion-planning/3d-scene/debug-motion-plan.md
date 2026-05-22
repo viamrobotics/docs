@@ -17,9 +17,8 @@ immediately visible in 3D.
 The **3D SCENE** tab does not replay motion plans and has no timeline,
 scrubber, or plan-playback control. It is an inspector of the
 configured frame system and live component poses. If you need to watch
-a plan execute over time, poll `GetPlan` from code (see
-[Plan monitoring](/motion-planning/reference/plan-monitoring/)) or
-step the arm to intermediate joint positions manually and reinspect.
+a plan execute over time, step the arm to intermediate joint positions
+manually and reinspect.
 
 ## Prerequisites
 
