@@ -66,6 +66,14 @@ Manage sessions, heartbeats, and safety timeouts for connected clients.
 These APIs provide interfaces for controlling and getting information from the {{< glossary_tooltip term_id="component" text="components" >}} of a machine:
 
 {{< cards >}}
+{{% manualcard link="/reference/apis/components/overview/" title="Component APIs overview" %}}
+
+See every component API and its methods at a glance in one compact grid.
+
+{{% /manualcard %}}
+{{< /cards >}}
+
+{{< cards >}}
 {{< card link="/reference/apis/components/arm/" customTitle="Arm API" noimage="True" >}}
 {{< card link="/reference/apis/components/audio-in/" customTitle="Audio in API" noimage="True" >}}
 {{< card link="/reference/apis/components/audio-out/" customTitle="Audio out API" noimage="True" >}}
@@ -89,6 +97,14 @@ These APIs provide interfaces for controlling and getting information from the {
 ## Service APIs
 
 These APIs provide interfaces for controlling and getting information from the services you configured on a machine.
+
+{{< cards >}}
+{{% manualcard link="/reference/apis/services/overview/" title="Service APIs overview" %}}
+
+See every service API and its methods at a glance in one compact grid.
+
+{{% /manualcard %}}
+{{< /cards >}}
 
 {{< cards >}}
 {{% card link="/reference/apis/services/data/" customTitle="Data management service API" noimage="True" %}}
