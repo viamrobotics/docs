@@ -80,10 +80,10 @@ Pass a `MotionConfiguration` on a `MoveOnGlobe` or `MoveOnMap` call to override 
 
 ## Builtin service limitations
 
-The builtin service implements only `Move` (plus `DoCommand` and `GetStatus`). The other motion RPCs return "not supported" errors; to use them, install a module that implements them or, for GPS navigation, use the navigation service.
+The builtin service implements only `Move` (plus `DoCommand` and `GetStatus`). The other motion RPCs return "not supported" errors; to use them, install a module that implements them.
 
-- `MoveOnMap()`: requires a SLAM service. The builtin implementation is legacy; use a module that implements `MoveOnMap` or the navigation service instead.
-- `MoveOnGlobe()`: use the [navigation service](/navigation/) instead.
+- `MoveOnMap()`: requires a SLAM service. The builtin implementation is legacy; use a module that implements `MoveOnMap` instead.
+- `MoveOnGlobe()`: requires a module that implements it.
 - `GetPlan()`, `ListPlanStatuses()`, `StopPlan()`: only available with implementations that support `MoveOnMap` or `MoveOnGlobe`.
 
 ## Planning defaults

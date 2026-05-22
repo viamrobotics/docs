@@ -17,7 +17,7 @@ Add a button to your machine's configuration so you can trigger button presses p
 
 A button component represents a momentary push button. The API is intentionally simple: a single `Push` method that simulates pressing the button. The button API does not listen for or report incoming presses; a module can still react to real presses internally, but from SDK code you only initiate presses.
 
-Physical button hardware typically comes from a module in the [Viam registry](https://app.viam.com/registry?type=component&subtype=button) that watches a GPIO pin.
+Physical button hardware typically comes from a module in the [Viam registry](https://app.viam.com/registry) (search for `button`) that watches a GPIO pin.
 
 The `fake` built-in model is useful for testing code without physical hardware.
 
@@ -25,7 +25,7 @@ The `fake` built-in model is useful for testing code without physical hardware.
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=button). Each module's configuration is documented on its registry page.
+For hardware the built-in models don't cover, search for `button` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 

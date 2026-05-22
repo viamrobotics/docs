@@ -117,16 +117,7 @@ When you configure the navigation service, it builds a `MotionConfiguration` fro
 | `obstacle_polling_frequency_hz` | `obstacle_polling_frequency_hz` |
 | `obstacle_detectors[]`          | `obstacle_detectors[]`          |
 
-The navigation service also has a `replan_cost_factor` attribute with
-no `MotionConfiguration` equivalent; it is a navigation-service-only
-tuning knob.
-
 ## What's next
 
 - [Motion service API](/motion-planning/reference/api/): the methods
   that accept `MotionConfiguration`.
-- [Navigation service configuration](/navigation/reference/navigation-service/):
-  service-level defaults that become the `MotionConfiguration` for
-  navigation-driven moves.
-- [Tune navigation](/navigation/how-to/tune-navigation/): guidance for
-  choosing specific values for your environment.
