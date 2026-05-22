@@ -27,6 +27,13 @@ aliases:
   - /navigation/reference/
   - /navigation/reference/api/
   - /navigation/reference/navigation-service/
+  - /navigation/how-to/detect-while-moving/
+  - /navigation/how-to/drive-the-base/
+  - /navigation/how-to/move-to-gps-coordinate/
+  - /operate/mobility/move-base/
+  - /how-tos/navigate/
+  - /use-cases/navigate/
+  - /motion-planning/motion-how-to/drive-a-base/
   - /tutorials/services/navigate-with-rover-base/
 ---
 
