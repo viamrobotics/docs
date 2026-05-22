@@ -103,13 +103,6 @@ static machine config.
 
 ### Replan cost factor (navigation service only)
 
-When the navigation service drives a base through `MoveOnGlobe`, its
-`replan_cost_factor` attribute multiplies the cost of the current plan
-before comparing it to a candidate replan. Higher values prefer the
-current plan (less eager to replan); lower values replan more
-aggressively. See
-[Navigation service configuration](/navigation/reference/navigation-service/).
-
 ## What replanning does not do
 
 Several things users reasonably expect from "replanning" that Viam's

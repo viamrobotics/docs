@@ -36,7 +36,7 @@ Plans and executes motion on a SLAM map.
 
 ### MoveOnGlobe
 
-Plans and executes motion to a GPS coordinate. Most GPS use cases go through the [navigation service](/navigation/), which wraps `MoveOnGlobe` with replanning and configuration.
+Plans and executes motion to a GPS coordinate.
 
 ### GetPlan
 

@@ -345,7 +345,6 @@ If your rover has a [`camera`](/reference/components/camera/) or a [`movement_se
 {{< cards >}}
 {{% card link="/tutorials/control/drive-rover/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
-{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}
 
 {{< snippet "social.md" >}}

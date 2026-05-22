@@ -14,6 +14,20 @@ aliases:
   - /operate/mobility/
   - /operate/mobility/motion-concepts/
   - /motion-planning/motion-how-to/
+  - /navigation/
+  - /navigation/how-to/
+  - /navigation/how-to/avoid-obstacles/
+  - /navigation/how-to/drive-a-base/
+  - /navigation/how-to/follow-a-patrol-route/
+  - /navigation/how-to/monitor-and-troubleshoot/
+  - /navigation/how-to/navigate-to-waypoint/
+  - /navigation/how-to/run-actions-at-waypoints/
+  - /navigation/how-to/set-up-gps/
+  - /navigation/how-to/tune-navigation/
+  - /navigation/reference/
+  - /navigation/reference/api/
+  - /navigation/reference/navigation-service/
+  - /tutorials/services/navigate-with-rover-base/
 ---
 
 Your robot arm needs to move from one pose to another without colliding with
@@ -25,8 +39,7 @@ Viam's motion service plans a collision-free path and executes it, using a
 frame system you describe and obstacles you declare. You tell it where to go;
 it handles the search.
 
-This section covers motion planning for arms and gantries. For GPS-based
-autonomous navigation with mobile bases, see [Navigation](/navigation/).
+This section covers motion planning for arms and gantries.
 
 ## Start here
 
