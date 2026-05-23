@@ -1,7 +1,7 @@
 ---
-linkTitle: "Your own Viam Rover"
-title: "Your own Viam Rover"
-weight: 30
+linkTitle: "Viam Rover"
+title: "Viam Rover"
+weight: 60
 layout: "docs"
 type: "docs"
 no_list: true

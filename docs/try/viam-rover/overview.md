@@ -1,6 +1,6 @@
 ---
 linkTitle: "Overview"
-title: "Your own Viam Rover"
+title: "Viam Rover"
 weight: 1
 layout: "docs"
 type: "docs"
