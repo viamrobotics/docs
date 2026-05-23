@@ -201,7 +201,7 @@ The components and services included in the fragment will now appear as cards on
 
 ## Modify the config
 
-The fragment you added is read-only, but if you need to modify your rover's config you can [overwrite sections of the fragment](/fleet/reuse-configuration/#modify-fragment-settings-on-a-machine).
+The fragment you added is read-only, but if you need to modify your rover's config you can [overwrite sections of the fragment](/fleet/reuse-configuration/#override-specific-settings).
 
 ## Next steps
 
