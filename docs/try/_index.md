@@ -11,9 +11,6 @@ date: "2025-01-30"
 aliases:
   - /operate/hello-world/
   - /operate/hello-world/first-project/
-  - /dev/reference/try-viam/
-  - /dev/reference/try-viam/reserve-a-rover/
-  - /dev/reference/try-viam/try-viam-tutorial/
   - /operate/hello-world/quickstart/
   - /operate/hello-world/tutorial-desk-safari/
 ---

@@ -30,6 +30,10 @@ In this guide you'll write code that makes a rover drive in a square.
 
 {{< /alert >}}
 
+{{< alert title="Renting a Viam Rover?" color="tip" >}}
+See [Rent a Viam Rover](/try/viam-rover/rent-a-rover/) for reservation steps, session time limits, and answers to common rental questions.
+{{< /alert >}}
+
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
 ## Requirements
@@ -50,11 +54,11 @@ Follow these steps to get your rover ready and write code to control it:
 {{% tab name="Borrowed Try Viam Rover" %}}
 {{< expand "Step 1: Borrow a Viam Rover" >}}
 
-Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
+Go to [Try Viam](https://app.viam.com/try) and [borrow a rover](/try/viam-rover/rent-a-rover/).
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your session, you can extend your rover session from the Try Viam page as long as there are no other reservations.
+If you are running out of time during your session, you can [extend your rover session](/try/viam-rover/rent-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}

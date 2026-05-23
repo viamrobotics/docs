@@ -8,7 +8,7 @@ simple_list: true
 tags: ["rover", "viam rover"]
 images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover in a box"
-description: "If you want a convenient mobile base for robotics projects, order a Viam rover and set it up."
+description: "Rent a Viam Rover in our robotics lab or order one of your own, and use it to learn Viam."
 date: "2026-05-23"
 aliases:
   - /viam-rover-resources/
@@ -19,9 +19,12 @@ aliases:
   - /dev/reference/try-viam/rover-resources/
 ---
 
-{{< alert title="Tip" color="tip" >}}
-If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%}} for a variety of robotics projects, you can [order your own Viam rover](https://www.viam.com/resources/rover).
-{{< /alert >}}
+There are two ways to get hands on a Viam Rover:
+
+- **[Rent one](/try/viam-rover/rent-a-rover/)** in our robotics lab.
+  Reserve a rover, drive it remotely for 10 minutes, and try the Viam platform with no hardware setup.
+- **[Order your own](https://www.viam.com/resources/rover)** for use in your own projects.
+  The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled and is ready to configure with Viam.
 
 <div class="td-max-width-on-larger-screens">
 <div class="row">
@@ -41,7 +44,7 @@ If you want a convenient mobile {{% glossary_tooltip term_id="base" text="base"%
 </div>
 
 {{< alert title="Important" color="note" >}}
-You must purchase the following hardware separately:
+If you order your own Viam Rover, you must purchase the following hardware separately:
 
 - A Raspberry Pi 4
 - Four 18650 batteries or RC-type battery (with charger)
@@ -52,5 +55,6 @@ You must purchase the following hardware separately:
 ## Next steps
 
 {{< cards >}}
+{{% card link="/try/viam-rover/rent-a-rover/" %}}
 {{% card link="/try/viam-rover/setup/" %}}
 {{< /cards >}}
