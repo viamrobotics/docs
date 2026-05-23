@@ -1,7 +1,7 @@
 ---
 title: "Unbox and set up your Viam Rover 1"
 linkTitle: "Unbox and set up your Viam Rover 1"
-weight: 25
+weight: 30
 type: "docs"
 tags: ["rover", "tutorial"]
 images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
@@ -265,7 +265,7 @@ Before you can use your Viam rover with the Viam platform you need to configure 
 After you have configured your rover, follow this tutorial:
 
 {{< cards >}}
-{{% card link="/tutorials/control/drive-rover/" %}}
+{{% card link="/try/viam-rover/drive-rover/" %}}
 {{< /cards >}}
 
 ### Rover build

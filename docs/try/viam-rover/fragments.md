@@ -208,5 +208,5 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 After you have configured your rover, follow this tutorial:
 
 {{< cards >}}
-{{% card link="/tutorials/control/drive-rover/" %}}
+{{% card link="/try/viam-rover/drive-rover/" %}}
 {{< /cards >}}

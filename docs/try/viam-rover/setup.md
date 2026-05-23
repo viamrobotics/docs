@@ -389,7 +389,7 @@ Before you can use your Viam rover with the Viam platform you need to configure 
 After you have configured your rover, follow this tutorial:
 
 {{< cards >}}
-{{% card link="/tutorials/control/drive-rover/" %}}
+{{% card link="/try/viam-rover/drive-rover/" %}}
 {{< /cards >}}
 
 ### Extensibility

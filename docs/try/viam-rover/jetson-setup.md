@@ -168,5 +168,5 @@ To configure your rover so you can start driving it, [add a Viam Rover 2 fragmen
 After adding the appropriate fragment, follow this tutorial with your owned rover:
 
 {{< cards >}}
-{{% card link="/tutorials/control/drive-rover/" %}}
+{{% card link="/try/viam-rover/drive-rover/" %}}
 {{< /cards >}}

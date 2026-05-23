@@ -1,7 +1,8 @@
 ---
 title: "Drive a rover in a square in 2 minutes"
-linkTitle: "Drive a rover (2 min)"
+linkTitle: "Drive your rover"
 type: "docs"
+weight: 25
 description: "Use a Viam SDK to program a rover to move in a square."
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
@@ -10,23 +11,14 @@ images: ["/tutorials/try-viam-sdk/image1.gif"]
 aliases:
   - /tutorials/appendix/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
-  - /tutorials/viam-rover/try-viam-sdk
-  - "/try-viam/try-viam-tutorial/"
-  - "/get-started/try-viam/try-viam-tutorial/"
-  - "/get-started/quickstarts/drive-rover/"
-  - "/how-tos/drive-rover/"
+  - /try-viam/try-viam-tutorial/
+  - /get-started/try-viam/try-viam-tutorial/
+  - /get-started/quickstarts/drive-rover/
+  - /how-tos/drive-rover/
   - /get-started/drive-rover/
-tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
-level: "Beginner"
-authors: []
-weight: 10
-resource: "quickstart"
-languages: ["python", "go", "typescript", "flutter", "c++"]
-viamresources: ["base"]
-platformarea: ["core"]
+  - /tutorials/control/drive-rover/
 date: "2022-12-08"
-updated: "2024-08-06"
-cost: "0"
+updated: "2026-05-23"
 ---
 
 In this guide you'll write code that makes a rover drive in a square.
@@ -62,7 +54,7 @@ Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your session, you can [extend your rover session](/try/) as long as there are no other reservations.
+If you are running out of time during your session, you can extend your rover session from the Try Viam page as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}
