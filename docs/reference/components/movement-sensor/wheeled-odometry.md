@@ -15,8 +15,9 @@ tags:
     "odometry",
   ]
 aliases:
-  - "/components/movement-sensor/wheeled-odometry/"
   - "/operate/reference/components/movement-sensor/wheeled-odometry/"
+  - "/components/movement-sensor/wheeled-odometry/"
+  - "/reference/components/movement-sensor/wheeled-odometry/"
 component_description: "A model that uses encoders to get an odometry estimate from a wheeled base."
 # SMEs: Rand, Martha
 ---
@@ -30,8 +31,6 @@ This model uses [encoders](/reference/components/encoder/) from [position report
 With a configured `wheeled-odometry` movement sensor, your machine calculates an estimation of the position, orientation, linear velocity, and angular velocity of the wheeled base each time `time_interval_msec` elapses during a [session](/reference/apis/sessions/).
 You can access these readings through the [movement sensor API](/reference/apis/components/movement-sensor/#api).
 For the best accuracy with odometry calculations, it is recommended you configure a time interval of less than `1000` milliseconds.
-
-After configuring a `wheeled-odometry` movement sensor, you can operate your base with Viam's built-in services like the [navigation service](/navigation/).
 
 ## Set-up requirements
 

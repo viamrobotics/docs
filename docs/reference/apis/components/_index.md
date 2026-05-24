@@ -7,6 +7,7 @@ layout: "empty"
 canonical: "/reference/apis/"
 type: "docs"
 aliases:
+  - /operate/modules/component-apis/
   - /dev/reference/apis/components/
   - /appendix/apis/components/
   - /components/

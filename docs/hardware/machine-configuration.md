@@ -22,14 +22,14 @@ issues by reading the raw config.
 Every component in your machine's configuration is a JSON block with these
 fields:
 
-| Field        | What it does                                                                                       |
-| ------------ | -------------------------------------------------------------------------------------------------- |
-| `name`       | A unique name for this component on this machine. Your code references the component by this name. |
-| `api`        | The component type, in the form `rdk:component:<type>` (for example, `rdk:component:arm`).         |
-| `model`      | The specific driver, in the form `namespace:family:name` (for example, `viam:ufactory:xArm6`).     |
-| `attributes` | Model-specific settings that control how to connect to the hardware and how it should behave.      |
-| `depends_on` | Other components this one requires (for example, a motor depends on a board).                      |
-| `frame`      | Optional spatial relationship to a parent component, used by the motion service.                   |
+| Field        | What it does                                                                                                                                                                     |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`       | A unique name for this component on this machine. Your code references the component by this name.                                                                               |
+| `api`        | The component type, in the form `rdk:component:<type>` (for example, `rdk:component:arm`).                                                                                       |
+| `model`      | The specific implementation, in the form `namespace:family:name` (for example, `viam:ufactory:xArm6`). Built-in models use `rdk:builtin:name` (for example, `rdk:builtin:gpio`). |
+| `attributes` | Model-specific settings that control how to connect to the hardware and how it should behave.                                                                                    |
+| `depends_on` | Other components this one requires (for example, a motor depends on a board).                                                                                                    |
+| `frame`      | Optional spatial relationship to a parent component, used by the motion service.                                                                                                 |
 
 ### Example: a motor controlled by a board
 

@@ -7,6 +7,17 @@ type: "docs"
 description: "Understand how Viam represents hardware, add components to your machine, and configure them."
 date: "2025-03-07"
 aliases:
+  - /program/extend/modular-resources/configure/
+  - /extend/modular-resources/configure/
+  - /modular-resources/configure/
+  - /registry/configure/
+  - /registry/modular-resources/
+  - /configure/
+  - /manage/configuration/
+  - /build/configure/
+  - /registry/program/extend/modular-resources/configure/
+  - /how-tos/use-cases/configure/
+  - /use-cases/configure/
   - /hardware-components/add-a-component/
   - /hardware/add-a-component/
   - /operate/modules/configure-modules/
@@ -22,11 +33,11 @@ Each component has three things:
 - A **type** that defines what it can do: camera, motor, sensor, arm, and so on.
   Every component of the same type exposes the same API, regardless of the
   underlying hardware.
-- A **model** that provides the driver for your specific hardware.
+- A **model** that implements the component API for your specific hardware.
   For example, the camera type has models for USB webcams, IP cameras through
   FFmpeg, and others.
 - **Attributes** that configure how the model talks to your hardware:
-  a device path, a baud rate, a pin mapping, or whatever else the driver needs.
+  a device path, a baud rate, a pin mapping, or whatever else the model needs.
 
 In your machine's configuration, each component is a JSON block.
 The type appears in the `api` field as `rdk:component:<type>`:
@@ -50,11 +61,15 @@ For the full JSON structure and dependencies, see [Machine configuration](/hardw
 
 ## Models
 
-When you add a component, you search for a **model** that matches your hardware. Models are drivers that know how to communicate with specific devices. Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors wired to GPIO pins). Most hardware-specific models (arms, grippers, specialized sensors, motor controllers) come from **modules** in the [Viam registry](https://app.viam.com/registry).
+When you add a component, you search for a **model** that matches your hardware. A model is an implementation of a component API for one piece of hardware (or class of hardware). Some models ship with `viam-server` (like `webcam` for USB cameras or `gpio` for motors wired to GPIO pins). Most hardware-specific models (arms, grippers, specialized sensors, motor controllers) come from **modules** in the [Viam registry](https://app.viam.com/registry); a module is a code package that provides one or more models.
 
 You don't need to think about where a model comes from. The Viam app shows all available models in one search, and they all work the same way: same API, same data capture, same test sections, same SDKs.
 
-If no model exists for your hardware, you can [write a driver module](/build-modules/write-a-driver-module/) that implements the Viam API for your device.
+If no model exists for your hardware, you can [write your own module](/build-modules/write-a-driver-module/) that provides a model implementing the component API.
+
+<a id="browse-supported-hardware-by-component-api"></a>
+
+Browse all available components and services in the [Viam registry](https://app.viam.com/registry). The registry also contains software modules that add capabilities beyond hardware drivers: vision and ML services, conversational and audio processing, device discovery, custom logic, and external integrations.
 
 ## Switching hardware without changing code
 
@@ -70,7 +85,7 @@ This works whether `drive-motor` is configured as a `gpio` motor on a Raspberry 
 To switch hardware, you change the model and attributes in your machine's configuration.
 Your code stays the same.
 
-## Add a component
+## Add a component {#configure-hardware-on-your-machine}
 
 The process for adding any component is the same whether you're adding a motor,
 a sensor, a board, or anything else. For step-by-step guides for specific
@@ -95,7 +110,7 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 ### 3. Configure attributes
 
 After creating the component, you'll see its configuration panel.
-Every model has its own set of attributes. These settings tell the driver
+Every model has its own set of attributes. These settings tell the model
 how to communicate with your specific hardware.
 
 Common attributes include:

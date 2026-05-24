@@ -18,7 +18,7 @@ Use these pages when you are writing a JSON configuration, debugging a config va
 
 - For how to add and configure a board component on your machine, see [Board](/hardware/common-components/add-a-board/).
 - For the methods you call on a board in code, see the [Board API reference](/reference/apis/components/board/).
-- For board models outside the built-in set, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=board). Each registry module's configuration is documented in its own README on its registry page.
+- For board models outside the built-in set, search for `board` in the [Viam registry](https://app.viam.com/registry). Each registry module's configuration is documented in its own README on its registry page.
 
 ## Built-in models
 

@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a generic component for hardware that doesn't fit any other component type."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/generic/
   - /hardware-components/add-a-generic/
 ---
 
@@ -26,7 +27,7 @@ module author defines what commands are supported and what they do.
 
 Use generic when no other component type fits. If your hardware produces images, use [camera](/hardware/common-components/add-a-camera/). If it produces readings, use [sensor](/hardware/common-components/add-a-sensor/). Standard types give you typed SDK methods like `GetImage` or `GetReadings`, richer test-panel controls tailored to the component, and motion or vision services that know how to work with them. Generic exposes only `DoCommand`, so callers have to know the module-specific command shape.
 
-Browse available generic models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic).
+Search for `generic` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 The `fake` built-in model echoes commands back for testing.
 
@@ -36,7 +37,7 @@ The `fake` built-in model echoes commands back for testing.
 
 ### Registry modules
 
-For hardware the built-in models don't cover, browse the [Viam registry](https://app.viam.com/registry?type=component&subtype=generic). Each module's configuration is documented on its registry page.
+For hardware the built-in models don't cover, search for `generic` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 
@@ -49,7 +50,7 @@ For hardware the built-in models don't cover, browse the [Viam registry](https:/
 4. Name your component (for example, `my-device`) and click **Create**.
 
 If no model exists for your hardware, you can
-[write a driver module](/build-modules/write-a-driver-module/) that implements
+[write your own module](/build-modules/write-a-driver-module/) that implements
 the generic component API.
 
 ### 2. Configure attributes
@@ -212,7 +213,7 @@ go run main.go
 ## Related
 
 - [Generic API reference](/reference/apis/components/generic/): full method documentation.
-- [Write a driver module](/build-modules/write-a-driver-module/): create a
+- [Write a module](/build-modules/write-a-driver-module/): create a
   module for your custom hardware.
 - [Add a component](/hardware/common-components/): check if a more specific
   component type fits your hardware before using generic.

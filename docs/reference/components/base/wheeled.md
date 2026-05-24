@@ -7,8 +7,9 @@ description: "Reference for the wheeled base model. And wire a wheeled base."
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
-  - "/components/base/wheeled/"
   - "/operate/reference/components/base/wheeled/"
+  - "/components/base/wheeled/"
+  - "/reference/components/base/wheeled/"
 component_description: "Supports mobile wheeled robotic bases with motors on both sides for differential steering."
 # SMEs: Steve B
 ---

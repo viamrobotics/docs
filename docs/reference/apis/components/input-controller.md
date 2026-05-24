@@ -9,6 +9,7 @@ icon: true
 images: ["/icons/components/controller.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/input-controller/
   - /appendix/apis/components/input-controller/
 # updated: ""  # When the content was last entirely checked
 ---

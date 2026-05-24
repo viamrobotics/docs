@@ -7,6 +7,7 @@ type: "docs"
 description: "Set up the Gazebo simulation environment for the inspection tutorial."
 date: "2025-01-30"
 aliases:
+  - /operate/hello-world/first-project/sim-setup/
   - /try/first-project/gazebo-setup/
 ---
 
@@ -47,7 +48,7 @@ This takes 5-10 minutes depending on your internet connection.
 
 ## Step 3: Create a credentials file
 
-1. Click the **Awaiting setup** button
+1. Click the 1. Click the <span style="display:inline-flex; align-items:center; gap:5px; background-color:#eff6ff; color:#3b82f6; border:1.5px solid #93c5fd; padding:2px 8px; border-radius:6px; font-size:0.85em; font-weight:500;">Awaiting setup</span> button
 2. Click **Machine cloud credentials** to copy your machine's credentials
 3. In the `can-inspection-simulation` directory, create a file called `station1-viam.json`
 4. Paste your machine's credentials into this file and save

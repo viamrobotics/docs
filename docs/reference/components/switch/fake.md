@@ -7,8 +7,9 @@ description: "Reference for the fake switch model. Fake switch for testing."
 images: ["/icons/components/switch.svg"]
 tags: ["switch", "components"]
 aliases:
-  - "/components/switch/fake/"
   - "/operate/reference/components/switch/fake/"
+  - "/components/switch/fake/"
+  - "/reference/components/switch/fake/"
 component_description: "A model used for testing, with no physical hardware."
 ---
 

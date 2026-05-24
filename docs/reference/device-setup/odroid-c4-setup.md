@@ -70,8 +70,8 @@ sudo apt update && sudo apt upgrade
 ## Next steps
 
 {{< cards >}}
-{{% card link="/operate/modules/configure-modules/" %}}
-{{% card link="/operate/hello-world/tutorial-desk-safari/" %}}
+{{% card link="/hardware/configure-hardware/" %}}
+{{% card link="/try/" %}}
 {{% card link="/tutorials/" %}}
 {{< /cards >}}
 

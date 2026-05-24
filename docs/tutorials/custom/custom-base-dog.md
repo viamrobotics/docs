@@ -31,7 +31,7 @@ After following this tutorial, you will know about Viam's modules and be able to
 Consider if can be merged with intermode rover one to create more generalized guidance.
  -->
 
-The [base component type](/operate/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the machine's **CONTROL** tab.
+The [base component type](/reference/components/base/) is useful for controlling mobile robots because it gives users intuitive steering controls to use in code as well as from the machine's **CONTROL** tab.
 
 Viam natively supports a wheeled base model, but if you have a quadruped or other form of base that requires a different underlying implementation, you can create a custom component as a {{< glossary_tooltip term_id="modular-resource" text="modular resource" >}}.
 
@@ -63,7 +63,7 @@ You’ll learn to implement a custom component type in Viam, and you’ll be equ
 
 Freenove documentation includes Raspberry Pi setup instructions but we recommend the following steps to make sure the Pi is set up for this tutorial:
 
-Follow the steps in our [Raspberry Pi Setup Guide](/operate/reference/prepare/rpi-setup/) to install Raspberry Pi OS.
+Follow the steps in our [Raspberry Pi Setup Guide](/reference/device-setup/rpi-setup/) to install Raspberry Pi OS.
 
 {{% alert title=Note color="note" %}}
 
@@ -220,7 +220,7 @@ You can also try turning the robot off and on again, and then retrying the proce
 
 ## Implement the custom base code
 
-Now that the Freenove server is set up, you will follow the [process for creating modular resources](/operate/modules/write-a-driver-module/).
+Now that the Freenove server is set up, you will follow the [process for creating modular resources](/build-modules/write-a-driver-module/).
 
 ### Prerequisites
 
@@ -362,7 +362,7 @@ Don't forget to save.
 ### Make your module executable
 
 Now that you defined the methods for the custom component, you need to set up an [executable file](https://en.wikipedia.org/wiki/Executable) to run your custom component module.
-You can find more information in [Create a module](/operate/modules/write-a-driver-module/).
+You can find more information in [Create a module](/build-modules/write-a-driver-module/).
 Since the command line tool already created a <file>run.sh</file> for you, all you need to do is make that shell script executable by running this command from your <file>robotdog</file> directory:
 
 ```sh {class="command-line" data-prompt="$"}
@@ -387,7 +387,7 @@ Now that the custom base code is set up, you need to configure all your hardware
 
 ### Configure the camera
 
-Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/operate/reference/components/camera/webcam/).
+Configure the ribbon camera on the dog as a `webcam` following our [webcam documentation](/reference/components/camera/webcam/).
 
 Click **Save**.
 
@@ -492,5 +492,5 @@ You learned about configuring modules and processes.
 You drove the robot dog around using the Viam **CONTROL** tab.
 
 To add more functionality, try using the generic `do_command` method to add different behaviors to your robot dog.
-You could also use the Viam [vision service](/reference/services/vision/) with the robot dog's [camera component](/operate/reference/components/camera/).
+You could also use the Viam [vision service](/reference/services/vision/) with the robot dog's [camera component](/reference/components/camera/).
 For example, you could write code to tell the robot dog to [move towards a colored target](/tutorials/services/color-detection-scuttle/) or to [follow a colored line](/tutorials/services/webcam-line-follower-robot/), similarly to how these tasks are done with wheeled bases in the tutorials linked here.

@@ -15,7 +15,7 @@ If you have not yet decided between a sub-part and a remote part, start at the [
 
 ## Before you start
 
-- The main part is set up and online. If not, work through [Set up a machine](/foundation/) first.
+- The main part is set up and online. If not, work through [Set up a machine](/set-up-a-machine/) first.
 - You have the second computer ready: powered on, on the network, and able to reach the public internet. `viam-server` does not have to be installed yet.
 
 ## 1. Create the sub-part entry
@@ -37,7 +37,7 @@ The sub-part now exists in the configuration. It is not yet running.
 3. Follow the platform and install method selections, then run the install command on the second computer.
 
 The install flow is the same one used for the main part.
-See [Set up a machine](/foundation/) for details on platform choices and troubleshooting.
+See [Set up a machine](/set-up-a-machine/) for details on platform choices and troubleshooting.
 
 ## 3. Confirm the sub-part is online
 

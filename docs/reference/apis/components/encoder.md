@@ -8,6 +8,7 @@ icon: true
 images: ["/icons/components/encoder.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/encoder/
   - /dev/reference/apis/components/encoder/
   - /appendix/apis/components/encoder/
 # updated: ""  # When the content was last entirely checked

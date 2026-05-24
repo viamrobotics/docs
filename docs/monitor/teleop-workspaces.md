@@ -20,7 +20,7 @@ For an explanation of widget types and capabilities, see [Data dashboards overvi
 
 Your machine needs at least one camera, movement sensor, sensor, base, arm, board, gantry, gripper, motor, or servo.
 
-See [configure a machine](/operate/modules/configure-modules/) for more information.
+See [configure a machine](/hardware/configure-hardware/) for more information.
 
 {{% /expand%}}
 

@@ -16,7 +16,7 @@ In this tutorial, you will set up a complete data pipeline: capture sensor data 
 
 **What you need:**
 
-- A machine connected to the Viam app (if you don't have one yet, follow [Set up a machine](/foundation/))
+- A machine connected to the Viam app (if you don't have one yet, follow [Set up a machine](/set-up-a-machine/))
 - Python 3 installed on your laptop or desktop (for the final step)
 
 We will use a fake sensor so this tutorial works without any physical hardware.

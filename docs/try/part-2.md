@@ -7,6 +7,7 @@ type: "docs"
 description: "Configure automatic image capture and cloud sync for your inspection system."
 date: "2025-01-30"
 aliases:
+  - /operate/hello-world/first-project/part-2/
   - /try/first-project/part-2/
 ---
 

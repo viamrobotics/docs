@@ -18,4 +18,4 @@ Models are either included with `viam-server` or provided through {{< glossary_t
 All models are uniquely namespaced as colon-delimited-triplets.
 Built-in model names have the form `rdk:builtin:name`.
 Modular resource model names have the form `namespace:module-name:model-name`.
-See [Write your module](/operate/modules/write-a-driver-module/#2-implement-the-resource-api) for more information.
+See [Write your module](/build-modules/write-a-driver-module/#2-implement-the-resource-api) for more information.

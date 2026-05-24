@@ -8,12 +8,13 @@ icon: true
 images: ["/icons/components/gantry.svg"]
 date: "2022-01-01"
 aliases:
+  - /operate/modules/component-apis/gantry/
   - /dev/reference/apis/components/gantry/
   - /appendix/apis/components/gantry/
 # updated: ""  # When the content was last entirely checked
 ---
 
-The gantry API allows you to give commands to your [gantry components](/operate/reference/components/gantry/) for coordinated control of one or more linear actuators.
+The gantry API allows you to give commands to your [gantry components](/reference/components/gantry/) for coordinated control of one or more linear actuators.
 
 The gantry component supports the following methods:
 

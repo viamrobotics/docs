@@ -7,6 +7,7 @@ type: "docs"
 description: "Add and configure a gantry component for precise linear positioning along one or more axes."
 date: "2025-03-07"
 aliases:
+  - /operate/reference/components/gantry/
   - /hardware-components/add-a-gantry/
 ---
 
@@ -30,7 +31,7 @@ Viam includes two built-in gantry models:
 | `single-axis` | Controls one linear rail driven by a motor.                       |
 | `multi-axis`  | Composes multiple single-axis gantries into a coordinated system. |
 
-The `fake` built-in model is useful for testing without hardware. Browse all available gantry models in the [Viam registry](https://app.viam.com/registry?type=component&subtype=gantry).
+The `fake` built-in model is useful for testing without hardware. Search for `gantry` in the [Viam registry](https://app.viam.com/registry) to see available models.
 
 ### Built-in models
 
@@ -46,7 +47,7 @@ Viam-maintained gantry modules:
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
 | [`viam:generic-gantry`](https://app.viam.com/module/viam/generic-gantry) | Single- and multi-axis gantries with motor control, limit switches, and encoder homing |
 
-For gantries not covered above, browse [all gantry modules in the Viam registry](https://app.viam.com/registry?type=component&subtype=gantry). Each module's configuration is documented on its registry page.
+For gantries not covered above, search for `gantry` in the [Viam registry](https://app.viam.com/registry). Each module's configuration is documented on its registry page.
 
 ## Steps
 
