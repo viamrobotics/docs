@@ -34,7 +34,6 @@ viamresources: [
     "motion",
     "frame_system",
     "mlmodel",
-    "navigation",
     "base_remote_control",
     "sensors",
     "slam",

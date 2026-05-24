@@ -1,7 +1,8 @@
 ---
 title: "Drive a rover in a square in 2 minutes"
-linkTitle: "Drive a rover (2 min)"
+linkTitle: "Drive your rover"
 type: "docs"
+weight: 25
 description: "Use a Viam SDK to program a rover to move in a square."
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
@@ -10,23 +11,14 @@ images: ["/tutorials/try-viam-sdk/image1.gif"]
 aliases:
   - /tutorials/appendix/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
-  - /tutorials/viam-rover/try-viam-sdk
-  - "/try-viam/try-viam-tutorial/"
-  - "/get-started/try-viam/try-viam-tutorial/"
-  - "/get-started/quickstarts/drive-rover/"
-  - "/how-tos/drive-rover/"
+  - /try-viam/try-viam-tutorial/
+  - /get-started/try-viam/try-viam-tutorial/
+  - /get-started/quickstarts/drive-rover/
+  - /how-tos/drive-rover/
   - /get-started/drive-rover/
-tags: ["base", "viam rover", "try viam", "sdk", "python", "flutter"]
-level: "Beginner"
-authors: []
-weight: 10
-resource: "quickstart"
-languages: ["python", "go", "typescript", "flutter", "c++"]
-viamresources: ["base"]
-platformarea: ["core"]
+  - /tutorials/control/drive-rover/
 date: "2022-12-08"
-updated: "2024-08-06"
-cost: "0"
+updated: "2026-05-23"
 ---
 
 In this guide you'll write code that makes a rover drive in a square.
@@ -38,6 +30,10 @@ In this guide you'll write code that makes a rover drive in a square.
 
 {{< /alert >}}
 
+{{< alert title="Renting a Viam Rover?" color="tip" >}}
+See [Rent a Viam Rover](/try/viam-rover/rent-a-rover/) for reservation steps, session time limits, and answers to common rental questions.
+{{< /alert >}}
+
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
 
 ## Requirements
@@ -46,7 +42,7 @@ You don't need to buy or own any hardware to complete this tutorial.
 You only need the following:
 
 - A Linux, macOS or Windows computer that can run SDK code.
-- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try/), or [another mobile robot](/tutorials/configure/configure-rover/).
+- A [borrowed Viam Rover](https://app.viam.com/try), [your own Viam Rover](/try/viam-rover/), or [another mobile robot](/tutorials/configure/configure-rover/).
   You can use [Try Viam](https://app.viam.com/try) to borrow a rover online at no cost which is already configured with all the components you need.
   If you have your own rover on hand, whether it's a [Viam rover](https://www.viam.com/resources/rover) or not, these instructions work for any wheeled robot that can be configured as a [base component](/reference/components/base/wheeled/).
 
@@ -58,11 +54,11 @@ Follow these steps to get your rover ready and write code to control it:
 {{% tab name="Borrowed Try Viam Rover" %}}
 {{< expand "Step 1: Borrow a Viam Rover" >}}
 
-Go to [Try Viam](https://app.viam.com/try) and borrow a rover.
+Go to [Try Viam](https://app.viam.com/try) and [borrow a rover](/try/viam-rover/rent-a-rover/).
 If a rover is available, the rover will take up to 30 seconds to be configured for you.
 
 {{< alert title="Tip" color="tip" >}}
-If you are running out of time during your session, you can [extend your rover session](/try/) as long as there are no other reservations.
+If you are running out of time during your session, you can [extend your rover session](/try/viam-rover/rent-a-rover/#extend-your-reservation) as long as there are no other reservations.
 {{< /alert >}}
 
 {{< /expand >}}
