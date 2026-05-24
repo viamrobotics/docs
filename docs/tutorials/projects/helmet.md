@@ -464,5 +464,4 @@ Here are some ways you could expand on this project:
 {{< cards >}}
 {{% card link="/tutorials/projects/send-security-photo/" %}}
 {{% card link="/train/train-a-model/" %}}
-{{% card link="/tutorials/services/navigate-with-rover-base/" %}}
 {{< /cards >}}

@@ -75,7 +75,3 @@ planner.
   the motion planner accepts, including the
   [`WorldState.obstacles`](/motion-planning/obstacles/avoid-obstacles/)
   pattern for per-call dynamic obstacles.
-- [ObstacleDetector](/motion-planning/reference/motion-configuration/#obstacledetector):
-  configures the motion service to poll a vision service during
-  `MoveOnMap` and `MoveOnGlobe`, so detections trigger replans without
-  re-issuing `Move`.

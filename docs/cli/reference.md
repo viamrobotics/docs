@@ -29,6 +29,28 @@ You can pass global options after the `viam` CLI keyword with any command.
 | `--profile` | Specify a particular [profile](#profiles) for the current command. |
 | `--quiet`, `-q` | Suppress warnings. Default: `false`. |
 
+## `completion`
+
+The `completion` command outputs a shell completion script.
+Load the output in your shell to enable tab completion for commands, subcommands, and flag names.
+
+```sh {class="command-line" data-prompt="$"}
+viam completion bash
+viam completion zsh
+viam completion fish
+viam completion pwsh
+```
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `bash` | Output a bash completion script. |
+| `zsh` | Output a zsh completion script. |
+| `fish` | Output a fish completion script. |
+| `pwsh` | Output a PowerShell completion script. |
+
+For setup instructions, see [Enable shell completion](/cli/overview/#enable-shell-completion).
+
 ## `data`
 
 The `data` command allows you to manage machine data.
