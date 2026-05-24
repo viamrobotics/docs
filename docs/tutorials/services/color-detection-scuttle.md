@@ -163,7 +163,7 @@ Next, create a file named <file>main.py</file> with the sample code from the **C
 Then, save your file.
 
 Run the code to verify that the Viam SDK is properly installed and that the `viam-server` instance on your robot is live.
-If you haven't yet installed `viam-server`, follow the [installation guide](/set-up-a-machine/overview/) to install `viam-server` on your robot before proceeding with this tutorial.
+If you haven't yet installed `viam-server`, follow the [installation guide](/set-up-a-machine/first-machine/) to install `viam-server` on your robot before proceeding with this tutorial.
 
 You can run your code by typing the following into your terminal from the same directory as your `main.py` file:
 
@@ -315,7 +315,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 ## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your rover move in a square](/tutorials/control/drive-rover//).
+You could also write some code with a Viam SDK to [make your rover move in a square](/try/viam-rover/drive-rover/).
 
 {{< snippet "social.md" >}}
 

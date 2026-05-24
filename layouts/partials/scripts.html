@@ -112,7 +112,6 @@ window.markmap = {
 {{ $jsZoom := resources.Get "js/zoom.js" }}
 {{ $jsAnchor := resources.Get "js/anchor.js" }}
 {{ $jsSearch := resources.Get "js/search.js" | resources.ExecuteAsTemplate "js/search.js" .Site.Home }}
-{{ $jsMermaid := resources.Get "js/mermaid.js" | resources.ExecuteAsTemplate "js/mermaid.js" . }}
 {{ $jsMarkmap := resources.Get "js/markmap.js" | resources.ExecuteAsTemplate "js/markmap.js" . }}
 {{ $jsPlantuml := resources.Get "js/plantuml.js" | resources.ExecuteAsTemplate "js/plantuml.js" . }}
 {{ $jsDrawio := resources.Get "js/drawio.js" | resources.ExecuteAsTemplate "js/plantuml.js" .}}
@@ -123,10 +122,10 @@ window.markmap = {
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
 {{ if not hugo.IsProduction }}
-{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom $jsFeedback) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom $jsFeedback) | resources.Concat "js/main.js" }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
-{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsMermaid $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom $jsFeedback) | resources.Concat "js/main.js" }}
+{{ $js := (slice $jsIndex $jsTabpanePersist $jsToc $jsBase $jsAnchor $jsSearch $jsPlantuml $jsMarkmap $jsDrawio $jsPrismViam $jsZoom $jsFeedback) | resources.Concat "js/main.js" }}
 {{ $js := $js | minify | fingerprint }}
 {{ $jsSentry := $jsSentry | minify }}
 <script async src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
