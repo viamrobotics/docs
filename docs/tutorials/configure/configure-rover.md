@@ -28,13 +28,13 @@ This tutorial will guide you through configuring a rover.
 If you are using a SCUTTLE, a Yahboom rover, or a different rover, this tutorial covers instructions for your rover model.
 
 {{< alert title="Viam Rover" color="note" >}}
-If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/try/) instead.
+If you are using a Viam Rover, use the [Viam Rover tutorial fragment](/try/viam-rover/fragments/) instead.
 {{< /alert >}}
 
 ## Requirements
 
 - A running an instance of `viam-server`.
-  See our [Installation Guide](/set-up-a-machine/overview/) for instructions.
+  See our [Installation Guide](/set-up-a-machine/first-machine/) for instructions.
 - A rover like the [SCUTTLE robot](https://www.scuttlerobot.org/shop/) or the Yahboom 4WD Smart Robot.
 
 Make sure your rover is assembled before starting this tutorial.

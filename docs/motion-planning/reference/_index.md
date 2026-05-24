@@ -18,10 +18,8 @@ task-based guidance, start from the [section landing](/motion-planning/).
 
 {{< cards >}}
 {{% card link="/motion-planning/reference/motion-service/" noimage="true" %}}
-{{% card link="/motion-planning/reference/motion-configuration/" noimage="true" %}}
 {{% card link="/motion-planning/reference/api/" noimage="true" %}}
 {{% card link="/motion-planning/reference/cli-commands/" noimage="true" %}}
-{{% card link="/motion-planning/reference/plan-monitoring/" noimage="true" %}}
 {{< /cards >}}
 
 **Formats and machinery**: the underlying schemas the service operates on.
