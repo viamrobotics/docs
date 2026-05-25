@@ -1,6 +1,9 @@
 [build]
   publish = "public"
 
+[build.environment]
+  HUGO_VERSION = "0.152.2"
+
 [[redirects]]
   from = "/data/"
   to = "/data/overview/"
@@ -530,20 +533,20 @@
   to = "/motion-planning/frame-system/overview/"
   status = 301
 
-# SLAM URLs — content removed; redirect to navigation per Shannon
+# SLAM URLs — content removed; redirect to motion-planning
 [[redirects]]
   from = "/operate/reference/services/slam/*"
-  to = "/navigation/"
+  to = "/motion-planning/"
   status = 301
 
 [[redirects]]
   from = "/services/slam/*"
-  to = "/navigation/"
+  to = "/motion-planning/"
   status = 301
 
 [[redirects]]
   from = "/mobility/slam/*"
-  to = "/navigation/"
+  to = "/motion-planning/"
   status = 301
 
 # Old IA paths from previous site versions
