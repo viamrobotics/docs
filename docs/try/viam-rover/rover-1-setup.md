@@ -249,7 +249,6 @@ An alert will be present directing you to **Set up your machine part**.
 Click **View setup instructions** to open the setup instructions.
 Follow the instructions to install `viam-server` on **Linux / Aarch64**.
 
-{{< glossary_tooltip term_id="RDK" text="RDK" >}} type.
 `ssh` into your Pi and follow the setup instructions to install and run `viam-server` on the machine.
 
 To configure your rover so you can start driving it, [add the Viam fragment to your Machine](/try/viam-rover/fragments/).
@@ -275,13 +274,13 @@ If you want to learn more about the rover, you can find the CAD files and bill-o
 ### Extensibility
 
 Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover 1.
-With it, you can customize your rover by mounting additional sensors, lidar, robot arms, or other components.
+With it, you can customize your rover by mounting additional sensors, LiDAR, robot arms, or other components.
 The following are just a few ideas, but you can expand or modify the rover kit with any components you want:
 
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/reference/components/movement-sensor/) for more information.
-- For LiDAR laser range scanning, we recommend RPlidar (including A1, which is a sub-$100 LIDAR).
+- For LiDAR laser range scanning, we recommend RPlidar (including the A1, a sub-$100 LiDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
 ### Mount an RPlidar to the rover

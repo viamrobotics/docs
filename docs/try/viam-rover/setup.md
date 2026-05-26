@@ -29,7 +29,7 @@ You can use it with [other types of boards](#motherboard) with some additional s
 You must purchase the following hardware separately:
 
 - A Raspberry Pi 4
-- Four 18650 batteries (with charger) or a RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
+- Four 18650 batteries or an RC-type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH), with charger
 - A MicroSD card and an adapter/reader
   {{< /alert >}}
 
@@ -251,9 +251,9 @@ Some shorter batteries might need to be pushed along to ensure that contact is b
 {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/rcbattery-underneath.png" resize="400x" declaredimensions=true alt="Under view of rover with battery pack." >}}
 
 For users who prefer a higher capacity battery option, the Viam Rover 2 can house RC-type batteries that do not exceed the following dimensions: 142mm x 47mm x 60mm (LxWxH).
-Using a RC-type battery requires some re-wiring of the Viam Rover 2 which should only be undertaken by users who are comfortable handling electrical assemblies.
+Using an RC-type battery requires some re-wiring of the Viam Rover 2 which should only be undertaken by users who are comfortable handling electrical assemblies.
 Improper configuration of the power supply could result in damage to the battery and poses a fire hazard.
-A 4-S RC-type battery is recommended (14.8V).
+A 4S RC-type battery is recommended (14.8V).
 We make no recommendations regarding specific RC battery brands.
 
 To change the rover's power supply configuration for a RC-battery:
@@ -395,13 +395,13 @@ After you have configured your rover, follow this tutorial:
 ### Extensibility
 
 Due to the aluminum chassis and its expandable mounting features, you can extend the Viam Rover.
-With it, you can customize your rover by mounting additional sensors, lidar, robot arms, or other components.
+With it, you can customize your rover by mounting additional sensors, LiDAR, robot arms, or other components.
 The following are just a few ideas, but you can expand or modify the rover kit with any components you want:
 
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/reference/components/movement-sensor/) for more information.
-- For LiDAR laser range scanning, we recommend RPlidar (including A1, which is a sub-$100 LIDAR).
+- For LiDAR laser range scanning, we recommend RPlidar (including the A1, a sub-$100 LiDAR).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
 ### Mount an RPlidar to the rover
