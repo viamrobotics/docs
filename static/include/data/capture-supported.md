@@ -5,6 +5,8 @@
 | Type                                            | Method |
 | ----------------------------------------------- | ------ |
 | [Arm](/hardware/common-components/add-an-arm/)                         | `EndPosition`, `JointPositions`, `GetWorldPose`, `DoCommand` |
+| [Audio input](/reference/apis/components/audio-in/)                    | `GetAudio`, `GetWorldPose`, `DoCommand` |
+| [Audio output](/reference/apis/components/audio-out/)                  | `GetWorldPose` |
 | [Base](/hardware/common-components/add-a-base/)                       | `Position`, `GetWorldPose`, `DoCommand` |
 | [Board](/hardware/common-components/add-a-board/)                     | `Analogs`, `Gpios`, `GetWorldPose`, `DoCommand` |
 | [Button](/hardware/common-components/add-a-button/)                   | `GetWorldPose`, `DoCommand` |
