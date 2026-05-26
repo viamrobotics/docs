@@ -95,6 +95,7 @@ Any built-in or modular component that implements a capturable method can be con
 | Component type  | Capturable methods                                                                                                                                      |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Camera          | `ReadImage`, `GetImages`, `NextPointCloud`, `GetWorldPose`                                                                                              |
+| Audio in        | `GetAudio`, `GetWorldPose`                                                                                                                              |
 | Sensor          | `GetReadings`, `GetWorldPose`                                                                                                                           |
 | Movement sensor | `GetPosition`, `GetLinearVelocity`, `GetAngularVelocity`, `GetCompassHeading`, `GetLinearAcceleration`, `GetOrientation`, `GetReadings`, `GetWorldPose` |
 | Encoder         | `GetTicksCount`, `GetWorldPose`                                                                                                                         |
