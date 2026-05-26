@@ -106,18 +106,18 @@ Refer to your motor and motor driver data sheets for specifics.
 
 The step-pin pulse frequency required to spin the motor at a given RPM is:
 
-```
+```text
 freq_Hz = rpm × ticks_per_rotation × microsteps / 60
 ```
 
 For example, a NEMA 17 (`ticks_per_rotation: 200`) driven in 1/8 microstep mode (`microsteps: 8`) at 60 RPM emits `60 × 200 × 8 / 60 = 1600` pulses per second on the step pin. Setting `max_rpm` caps that frequency: with `max_rpm: 300` on the same motor, the driver will be pulsed at no more than `300 × 200 × 8 / 60 = 8000` Hz, even if a caller requests a higher RPM.
 
-If you are migrating an existing config that already folded microsteps into `ticks_per_rotation` (e.g. `ticks_per_rotation: 1600` for a 200-step motor in 1/8 mode), you have two equivalent options:
+If you are migrating an existing config that already folded microsteps into `ticks_per_rotation` (for example, `ticks_per_rotation: 1600` for a 200-step motor in 1/8 mode), you have two equivalent options:
 
 1. Leave `ticks_per_rotation: 1600` and omit `microsteps` — behaviour is unchanged.
 2. Set `ticks_per_rotation: 200` and `microsteps: 8` — clearer to read; identical at runtime.
 
-Do **not** do both at once (`ticks_per_rotation: 1600` *and* `microsteps: 8`) or you will get 8× the expected speed.
+Do **not** do both at once (`ticks_per_rotation: 1600` _and_ `microsteps: 8`) or you will get 8× the expected speed.
 
 ## Wiring example
 
