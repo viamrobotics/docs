@@ -46,7 +46,8 @@ Configure the [board](/reference/components/board/) to which the motor driver is
           "dir": "<pin-number>"
         },
         "ticks_per_rotation": <int>,
-        "stepper_delay_usec": <int>
+        "microsteps": <int>,
+        "max_rpm": <number>
       },
       "depends_on": []
     }
@@ -94,10 +95,29 @@ The following attributes are available for `gpiostepper` motors:
 | ---- | ---- | --------- | ---------- |
 | `board` | string | **Required** | `name` of the [board](/reference/components/board/) the motor driver is wired to. |
 | `pins` | object | **Required** |  A struct containing the [board](/reference/components/board/) {{< glossary_tooltip term_id="pin-number" text="pin numbers" >}} that the `step` and `dir` pins of the motor driver are wired to. |
-| `ticks_per_rotation` | int | **Required** | Number of full steps in a rotation. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. |
-| `stepper_delay_usec` | int | Optional | Time in microseconds to remain high for each step. Required when using the SetPower API. |
+| `ticks_per_rotation` | int | **Required** | Number of **full** motor steps in one shaft revolution. 200 (equivalent to 1.8 degrees per step) is very common. If your data sheet specifies this in terms of degrees per step, divide 360 by that number to get ticks per rotation. The effective pulses sent per revolution on the `step` pin is `ticks_per_rotation × microsteps`. |
+| `microsteps` | int | Optional | Microstep divisor configured on the driver (typically `1`, `2`, `4`, `8`, `16`, or `32`) — should match whatever the driver's `MS1`/`MS2`/`MS3` pins are wired for. Defaults to `1` (full-step). Setting this lets you keep `ticks_per_rotation` at the motor's physical full-step count and have Viam compute the pulse-per-revolution math for you. |
+| `max_rpm` | number | Optional | Maximum shaft speed in RPM. Used to cap the step-pin pulse frequency so it stays within what your driver and motor can handle. Required when using the `SetPower` API — a `SetPower(1.0)` runs the motor at `max_rpm`. The internal cap is `max_freq = max_rpm × ticks_per_rotation × microsteps / 60` Hz. |
+| `stepper_delay_usec` | int | Optional | **Deprecated** — set `max_rpm` instead. Minimum time in microseconds between consecutive step pulses, which caps the maximum step frequency at `1 / stepper_delay_usec`. Still honored when `max_rpm` is not set, so existing configs keep working. If both `max_rpm` and `stepper_delay_usec` are set, `max_rpm` wins and a deprecation warning is logged. |
 
 Refer to your motor and motor driver data sheets for specifics.
+
+### Microstepping and speed math
+
+The step-pin pulse frequency required to spin the motor at a given RPM is:
+
+```
+freq_Hz = rpm × ticks_per_rotation × microsteps / 60
+```
+
+For example, a NEMA 17 (`ticks_per_rotation: 200`) driven in 1/8 microstep mode (`microsteps: 8`) at 60 RPM emits `60 × 200 × 8 / 60 = 1600` pulses per second on the step pin. Setting `max_rpm` caps that frequency: with `max_rpm: 300` on the same motor, the driver will be pulsed at no more than `300 × 200 × 8 / 60 = 8000` Hz, even if a caller requests a higher RPM.
+
+If you are migrating an existing config that already folded microsteps into `ticks_per_rotation` (e.g. `ticks_per_rotation: 1600` for a 200-step motor in 1/8 mode), you have two equivalent options:
+
+1. Leave `ticks_per_rotation: 1600` and omit `microsteps` — behaviour is unchanged.
+2. Set `ticks_per_rotation: 200` and `microsteps: 8` — clearer to read; identical at runtime.
+
+Do **not** do both at once (`ticks_per_rotation: 1600` *and* `microsteps: 8`) or you will get 8× the expected speed.
 
 ## Wiring example
 
