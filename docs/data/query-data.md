@@ -250,7 +250,7 @@ and project individually.
 
 ## Save and reuse queries
 
-You can save MQL queries for reuse. To save a query, switch to MQL mode, click **Save query**, and give it a name. It appears under the **Saved** tab in the editor sidebar, next to a **Recent** tab of your recent queries. Saved queries are available to your whole organization. Saving is not available for SQL queries.
+You can save MQL queries for reuse. To save a query, switch to MQL mode, click **Save query**, and give it a name. It appears under the **Saved** tab in the editor sidebar, next to a **Recent** tab of your recent queries. Saved queries are available to your whole organization. You can also run a saved query from code by passing its name to [`TabularDataByMQL`](/data/query-data-from-code/#reuse-a-saved-query). Saving is not available for SQL queries.
 
 ## Get help writing queries with the Query Assistant
 
