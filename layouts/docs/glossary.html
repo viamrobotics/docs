@@ -44,7 +44,7 @@
                           </h4>
                         </div>
                         <div id="{{ .Params.id }}">
-                            {{ .Content | strings.TrimPrefix .Summary | safeHTML }}
+                            {{ .Content | safeHTML }}
                         </div>
                       </div>
                     {{ end }}
