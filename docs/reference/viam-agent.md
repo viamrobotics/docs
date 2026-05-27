@@ -85,6 +85,9 @@ In the machine settings card, open **Settings** and expand **System**:
 | ---------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `os_auto_upgrade_type` | string | `""`    | Controls automatic OS package updates. Options: `"all"` (upgrade all packages), `"security"` (security updates only), `"disable"` (no automatic updates), `""` (do not manage, leave OS defaults). |
 
+Automatic OS package updates require Debian Linux with one of these release codenames: Bullseye, Bookworm, or Trixie.
+On unsupported distributions, the agent logs a warning and the setting has no effect.
+
 ### Log forwarding
 
 | Field                                        | Type    | Default | Description                                                                                                                                                                                                                                                                                                         |
