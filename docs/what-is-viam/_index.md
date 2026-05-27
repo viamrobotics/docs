@@ -28,9 +28,9 @@ date: "2026-05-27"
 
 Viam is a software platform for building, deploying, and managing robotics applications.
 
-A Viam machine is hardware plus the software that runs it: cameras, motors, arms, and sensors, together with the services and code that control them. You build a machine by declaring the parts you need in a JSON configuration, and `viam-server` installs the drivers and modules to support them.
+A Viam machine is hardware plus the software that runs it: cameras, motors, arms, and sensors, together with the services and code that control them. You build a machine by declaring the parts you need in a JSON configuration, and `viam-server` installs the necessary modules, including the drivers for your hardware.
 
-Every component of the same type exposes the same API. All cameras work through one camera interface, all motors through one motor interface, and the same holds for sensors, arms, and other component types. Your code does not change when the hardware does: swap an Intel RealSense camera for an Orbbec Astra, update the configuration, and your application keeps working.
+Each type of component has a standard API, and every model of that type implements it: every camera implements the camera API, every motor implements the motor API, and the same holds for sensors, arms, and other component types. Your code does not change when the hardware does: swap an Intel RealSense camera for an Orbbec Astra, update the configuration, and your application keeps working.
 
 Vision, motion planning, data management, and most other capabilities are either built into `viam-server` or available in the [Viam Registry](https://app.viam.com/registry), a shared catalog of modules, machine learning models, and training scripts maintained by Viam and the robotics community. You build on these instead of writing them from scratch.
 
@@ -38,7 +38,7 @@ You manage a machine the way you manage software. Configuration, code, and model
 
 ## How it works
 
-Every Viam machine runs two programs.
+Every Viam machine runs `viam-agent` and `viam-server`.
 `viam-agent` installs with a single command, then installs `viam-server`, supervises it, and keeps it up to date.
 `viam-server` is the runtime: it pulls your machine's configuration from [app.viam.com](https://app.viam.com), fetches the modules it needs from the Registry, and runs the hardware drivers, services, and code your application requires.
 
