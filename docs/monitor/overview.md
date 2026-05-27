@@ -27,13 +27,13 @@ See [Data dashboards](/monitor/dashboards/overview/).
 
 ## Set up alerts
 
-Triggers send email or webhook notifications when specific events occur on your machines:
+Triggers send email, webhook, or push notifications when specific events occur on your machines:
 
 - **Telemetry thresholds**: alert when a sensor reading (CPU usage, temperature, battery level) crosses a threshold.
 - **Machine status**: alert when a machine part comes online or goes offline.
 - **Log levels**: alert when error, warning, or info logs appear on a machine.
 
-You configure the alert frequency to control how often alerts fire, which helps prevent alert fatigue as your fleet grows. Notifications can go to specific email addresses, all machine owners, or a webhook endpoint that integrates with services like PagerDuty, Twilio, or Zapier.
+You configure the alert frequency to control how often alerts fire, which helps prevent alert fatigue as your fleet grows. Notifications can go to specific email addresses, all machine owners, a webhook endpoint that integrates with services like PagerDuty, Twilio, or Zapier, or a push notification to the Viam mobile app.
 
 For alerts based on data sync events, see [Trigger on data events](/data/trigger-on-data/). For alerts based on ML model detections, see [Alert on detections](/vision/object-detection/alert-on-detections/).
 

@@ -4,7 +4,7 @@ title: "Set up alerts"
 weight: 20
 layout: "docs"
 type: "docs"
-description: "Configure triggers to receive email or webhook notifications when machines need attention."
+description: "Configure triggers to receive email, webhook, or push notifications when machines need attention."
 aliases:
   - /manage/troubleshoot/alert/
   - /build/configure/webhooks/
@@ -15,7 +15,7 @@ aliases:
   - /services/data/capture/performance-metrics/
 ---
 
-Configure triggers to receive email or webhook notifications when your machines need attention. Triggers fire when specific events occur, such as a sensor reading crossing a threshold, a machine going offline, or error logs appearing.
+Configure triggers to receive email, webhook, or push notifications when your machines need attention. Triggers fire when specific events occur, such as a sensor reading crossing a threshold, a machine going offline, or error logs appearing.
 
 ## Types of alerts
 
@@ -102,6 +102,8 @@ Wait a minute for data to capture and sync, then refresh.
    - **Email all machine owners**: toggle on, set alert frequency.
    - **Webhook**: click **Add Webhook**, enter your cloud function URL, set alert frequency.
      See [Trigger configuration](/reference/triggers/#webhook-attributes) for webhook payload details.
+   - **Push notifications**: click **Add push notifications**, choose the target mobile app, add recipient email addresses or enable notifications for all machine owners, and set alert frequency.
+     Recipients must be machine owners or operators.
 1. Click **Save**.
 
 {{% /tab %}}
@@ -191,7 +193,7 @@ Viam checks for matching logs once per hour.
 1. Enter a name and click **Create**.
 1. Select **Conditional logs ingestion** as the trigger **Type**.
 1. Select the log levels to alert on: **Error**, **Warn**, or **Info**.
-1. Add notification methods (email or webhook) and set the alert frequency.
+1. Add notification methods (email, webhook, or push notification) and set the alert frequency.
 1. Click **Save**.
 
 {{% /tab %}}
