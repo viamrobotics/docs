@@ -188,12 +188,8 @@ images, _, err := cam.Images(ctx, nil, nil)
 if err != nil {
     logger.Fatal(err)
 }
-img, err := images[0].Image(ctx)
-if err != nil {
-    logger.Fatal(err)
-}
 
-classifications, err := classifier.Classifications(ctx, img, 5, nil)
+classifications, err := classifier.Classifications(ctx, &images[0], 5, nil)
 if err != nil {
     logger.Fatal(err)
 }
