@@ -108,8 +108,8 @@ See the proto definitions in [`app.proto`](https://github.com/viamrobotics/api/b
 | Field | What to send |
 | ----- | ------------ |
 | `app_id` | Your mobile app's package name, the same value used with `firebase-config set`. |
-| `device_token` | FCM registration token from `FirebaseMessaging.getToken()`. On iOS, call `getAPNSToken()` first; FCM normalizes both. |
-| `device_uuid` | A stable device identifier. Android: `android.id` from `device_info_plus`. iOS: `identifierForVendor`. |
+| `device_token` | The FCM registration token for the device. Flutter apps obtain this from `FirebaseMessaging.instance.getToken()`. iOS apps call `getAPNSToken()` first; FCM normalizes both. |
+| `device_uuid` | A stable identifier for the device, so Viam does not accumulate duplicate registrations across re-uploads. The Viam mobile app uses `android.id` (from the `device_info_plus` Flutter package) on Android and `identifierForVendor` on iOS; pick whatever stable identifier fits your platform. |
 
 User identity comes from the authenticated Viam session on the call, so there is no `user_id` parameter.
 
