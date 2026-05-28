@@ -178,14 +178,18 @@ from Python; the arm uses its module's default speed profile.
 | `max_acc_degs_per_sec2`        | `double` (optional)   | Uniform acceleration cap across every joint, in degrees per second squared.                                      |
 | `max_vel_degs_per_sec_joints`  | `[]double` (repeated) | Per-joint velocity caps. Length must match the arm's degrees of freedom. Overrides the uniform cap when set.     |
 | `max_acc_degs_per_sec2_joints` | `[]double` (repeated) | Per-joint acceleration caps. Length must match the arm's degrees of freedom. Overrides the uniform cap when set. |
+| `max_tcp_speed`                | `double` (optional)   | Maximum speed of the tool center point in meters per second. The arm moves as fast as possible up to this limit. |
 
+All fields are optional ceilings. Any combination may be set. Every
+constraint that is set is respected at every point along the trajectory.
 Per-joint fields take precedence over global fields. Pass `nil`
 options to use the module's default motion profile.
 
 The field names above are the proto field names, also used by the Python
 SDK. The Go SDK `arm.MoveOptions` struct uses shorter names and stores
 values in **radians**: `MaxVelRads`, `MaxAccRads`, `MaxVelRadsJoints`,
-`MaxAccRadsJoints`. The conversion happens at the wire boundary.
+`MaxAccRadsJoints`, `MaxTCPSpeedMPerSec`. The conversion happens at the
+wire boundary.
 
 ## Reading current joint positions
 

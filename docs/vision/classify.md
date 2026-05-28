@@ -426,4 +426,4 @@ If you need the image and its classifications together in one call, use [`Captur
 
 - [Detect objects](/vision/object-detection/detect/): get per-object bounding boxes instead of whole-image labels.
 - [Track objects across frames](/vision/object-detection/track/): maintain object identities across consecutive frames.
-- [Alert on detections](/vision/object-detection/alert-on-detections/): send email or webhook notifications when specific objects or labels are detected.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send email, webhook, or push notifications when specific objects or labels are detected.
