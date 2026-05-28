@@ -9,7 +9,7 @@ date: "2025-09-12"
 aliases:
 ---
 
-Get alerted when your robot's data meets a condition. Triggers send webhooks, email notifications, or push notifications to the Viam mobile app when events occur on a machine, so you can respond to temperature spikes, low battery, detection results, or connectivity changes without polling.
+Get alerted when your robot's data meets a condition. Triggers send webhooks, email notifications, or push notifications to a mobile app when events occur on a machine, so you can respond to temperature spikes, low battery, detection results, or connectivity changes without polling.
 
 Triggers are configured in the machine's config and are scoped to that machine. Each trigger fires when its event occurs on the specific machine it is configured on.
 

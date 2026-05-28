@@ -33,7 +33,7 @@ Triggers send email, webhook, or push notifications when specific events occur o
 - **Machine status**: alert when a machine part comes online or goes offline.
 - **Log levels**: alert when error, warning, or info logs appear on a machine.
 
-You configure the alert frequency to control how often alerts fire, which helps prevent alert fatigue as your fleet grows. Notifications can go to specific email addresses, all machine owners, a webhook endpoint that integrates with services like PagerDuty, Twilio, or Zapier, or a push notification to the Viam mobile app.
+You configure the alert frequency to control how often alerts fire, which helps prevent alert fatigue as your fleet grows. Notifications can go to specific email addresses, all machine owners, a webhook endpoint that integrates with services like PagerDuty, Twilio, or Zapier, or a push notification to the Viam mobile app or your own custom mobile app.
 
 For alerts based on data sync events, see [Trigger on data events](/data/trigger-on-data/). For alerts based on ML model detections, see [Alert on detections](/vision/object-detection/alert-on-detections/).
 
