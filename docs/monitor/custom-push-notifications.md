@@ -128,9 +128,9 @@ If it fails, the trigger fires, but no notification is delivered.
 
 To authorize a machine for your custom app:
 
-1. In the Viam app, create a fragment owned by the organization you registered the Firebase config under.
-   The fragment does not need to contain the trigger config.
-1. On the machine's **CONFIGURE** tab, import that fragment.
+1. [Create a fragment](/hardware/fragments/#save-your-own-configurations) owned by the organization that uploaded the Firebase config.
+   The fragment does not need to contain the trigger config; any fragment owned by that organization satisfies the check.
+1. On the machine's **CONFIGURE** tab, click **+**, select **Configuration block**, search for your fragment, and click **Add fragment**.
 
 `com.viam.viammobile` is exempt from this check.
 Triggers targeting the Viam mobile app work on any machine the recipient owns or operates.
