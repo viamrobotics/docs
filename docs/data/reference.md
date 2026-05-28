@@ -124,6 +124,8 @@ The following components and services support data capture and cloud sync. The t
 
 {{< readfile "/static/include/data/capture-supported.md" >}}
 
+`GetWorldPose` captures the component's position in world coordinates using the [frame system](/motion-planning/frame-system/). It requires a configured frame system on the machine and a frame configured for the component.
+
 If the resource type you need is not listed, you can still capture data from it using the `DoCommand` method with a custom `docommand_input` parameter.
 
 ## Capture and sync configuration

@@ -108,7 +108,7 @@ See [Tag data](/data/tag-data/), [Create a dataset](/train/create-a-dataset/), a
 
 ## Monitor and debug
 
-Triggers send webhooks or email alerts when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
+Triggers send webhooks, email alerts, or push notifications when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
 
 Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana connected to your data through MongoDB.
 
