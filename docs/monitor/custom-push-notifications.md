@@ -25,6 +25,7 @@ If the Viam mobile app meets your needs, set `application` to `com.viam.viammobi
 - A mobile app (Flutter, native iOS or Android, or web) that you build and distribute.
 - Organization owner access on the Viam organization that will own the trigger.
 - The Viam CLI installed and authenticated. See [`viam login`](/cli/reference/#login).
+- Your organization ID. Find it at [app.viam.com](https://app.viam.com) under your organization's settings, or run `viam organizations list`.
 
 ## 1. Register your Firebase service account with Viam
 
@@ -133,6 +134,9 @@ To authorize a machine for your custom app:
    The fragment does not need to contain the trigger config; any fragment owned by that organization satisfies the check.
 1. On the machine's **CONFIGURE** tab, click **+**, select **Configuration block**, search for your fragment, and click **Add fragment**.
 
+For cross-organization deployments, create the fragment in the Firebase-config-owning organization first, then import it on machines in any other organization.
+The check compares the fragment's owning organization, not the machine's.
+
 `com.viam.viammobile` is exempt from this check.
 Triggers targeting the Viam mobile app work on any machine the recipient owns or operates.
 
@@ -175,6 +179,7 @@ For all `notifications` fields, see [Trigger configuration](/reference/triggers/
 ## 5. Verify and troubleshoot
 
 Fire the trigger by creating the condition (sync matching data, take the machine offline, etc.) and confirm the notification arrives on a device that registered a token for the recipient and `app_id`.
+If no notification arrives, see [Troubleshoot](#troubleshoot).
 
 ### Troubleshoot
 
