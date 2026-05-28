@@ -79,7 +79,7 @@ For the full attribute reference for all trigger types, see [Trigger configurati
    1. Toggle **Email all machine owners** on.
    1. Set the alert frequency (minimum time between notifications).
 
-   To add a push notification to the Viam mobile app:
+   To add a push notification:
 
    1. Click **Add push notifications**.
    1. Choose the target mobile app (Viam mobile or a custom app ID).
@@ -161,7 +161,7 @@ When a trigger fires and sends a webhook, the HTTP request includes identifying 
 
 For the full header and body reference, see [Webhook attributes](/reference/triggers/#webhook-attributes). For example cloud functions that process the payload, see [Example cloud function](/reference/triggers/#example-cloud-function).
 
-## Notification frequency
+## Notification interval
 
 The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
 

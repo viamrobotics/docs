@@ -1446,7 +1446,8 @@ Trigger configs support the following event types:
 - `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
 
 Each trigger requires `notifications`, an array of objects with `type` (`email`, `webhook`, or `push`), `value`, and `seconds_between_notifications`.
-For push notifications, also include `application` (use `com.viam.viammobile` for the Viam mobile app).
+For push notifications, also include `application`: use `com.viam.viammobile` for the Viam mobile app, or a custom application ID for which you have uploaded Firebase credentials with [`organizations firebase-config set`](#organizations-firebase-config-set).
+The recipient in `value` must be a machine owner or operator who has accepted push notification permissions.
 
 ```sh {class="command-line" data-prompt="$"}
 # launch the interactive trigger builder
