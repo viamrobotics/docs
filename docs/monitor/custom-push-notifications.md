@@ -88,7 +88,8 @@ await viam.appClient.deleteDevicePushToken(appId, deviceUuid);
 final tokens = await viam.appClient.getDevicePushTokens(appId);
 ```
 
-Call `uploadDevicePushToken` after the user grants notification permission, on every FCM token refresh, and on a stale-token check (the Viam mobile app re-uploads if the stored token is older than 30 days).
+Call `uploadDevicePushToken` after the user grants notification permission and on every FCM token refresh.
+A periodic re-upload at app startup defends against missed refresh events; pick a cadence that fits your app.
 Call `deleteDevicePushToken` on logout.
 
 ### Other languages
