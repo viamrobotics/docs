@@ -111,7 +111,7 @@
                               "imageAlt" .Params.imageAlt
                               "videoAlt" .Params.videoAlt
                               "languages" .Params.languages
-                              "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
+                              "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "base_remote_control" "sensors" "slam" "vision"))
                               "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "generic" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "power_sensor" "sensor" "servo"))
                               "platformarea" (intersect (.Params.platformarea) (slice "ml" "data" "registry" "fleet" "mobility" "core") )
                               "level" .Params.level

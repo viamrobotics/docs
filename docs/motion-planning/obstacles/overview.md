@@ -131,12 +131,6 @@ from `WorldState.obstacles` are included only for that call. The
 planner has no memory between calls, so a dynamic obstacle passed to
 one `Move` is forgotten by the next unless you pass it again.
 
-`MoveOnGlobe` and `MoveOnMap` do maintain some state during a single
-execution: configured obstacle detectors poll vision services and feed
-new detections to the planner for as long as the execution runs. That
-state is bounded to the execution; it does not persist once the plan
-completes.
-
 Practical consequences:
 
 - **Stale obstacles decay automatically.** An obstacle you include in
@@ -148,8 +142,7 @@ Practical consequences:
   motion service does not build its own picture over time.
 - **For dynamic obstacle avoidance with arms,** check the world between
   calls and call `Move` again with an updated `WorldState`. `Move` does
-  not re-evaluate obstacles during execution. For the per-method
-  behavior, see [Replanning behavior](/motion-planning/replanning-behavior/).
+  not re-evaluate obstacles during execution.
 
 {{< /expand >}}
 

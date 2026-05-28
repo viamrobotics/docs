@@ -252,7 +252,7 @@ If you want a continuous overlay in the Control tab, configure a [transform came
 
 If you have images stored in the [Viam Cloud](/data/capture-sync/capture-and-sync-data/), you can run your classifier against them:
 
-1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click an image to open the expanded view.
+1. Navigate to the [**DATA** tab](https://app.viam.com/data/all) and click an image to open the expanded view.
 2. Click the **Auto-prediction mode** icon in the image toolbar (or press `M`).
 3. In the **Run model** panel, click **Choose ML model**, pick your model and version, then click **Run**.
 
