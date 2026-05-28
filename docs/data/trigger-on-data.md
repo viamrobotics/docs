@@ -87,6 +87,8 @@ For the full attribute reference for all trigger types, see [Trigger configurati
       Recipients must be machine owners or operators.
    1. Set the alert frequency (minimum time between notifications).
 
+   For end-to-end setup of a custom application ID (Firebase upload, device registration, machine authorization), see [Set up custom push notifications](/monitor/custom-push-notifications/).
+
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
 
