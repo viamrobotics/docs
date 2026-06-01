@@ -4,12 +4,12 @@ title: "Trigger on data events"
 weight: 55
 layout: "docs"
 type: "docs"
-description: "Use triggers to send email notifications or webhook requests when data from the machine is synced."
+description: "Use triggers to send email, webhook, or push notifications when data from the machine is synced."
 date: "2025-09-12"
 aliases:
 ---
 
-Get alerted when your robot's data meets a condition. Triggers send webhooks or email notifications when events occur on a machine, so you can respond to temperature spikes, low battery, detection results, or connectivity changes without polling.
+Get alerted when your robot's data meets a condition. Triggers send webhooks, email notifications, or push notifications to a mobile app when events occur on a machine, so you can respond to temperature spikes, low battery, detection results, or connectivity changes without polling.
 
 Triggers are configured in the machine's config and are scoped to that machine. Each trigger fires when its event occurs on the specific machine it is configured on.
 
@@ -59,7 +59,7 @@ For the full attribute reference for all trigger types, see [Trigger configurati
         For a full reference of trigger configuration attributes, see [Trigger configuration](/reference/triggers/).
 
 1. Next, configure what should happen when an event occurs.
-   You can add **Webhooks** and **Email** notifications:
+   You can add **Webhooks**, **Email**, and **Push** notifications:
 
    To add a webhook:
 
@@ -77,6 +77,14 @@ For the full attribute reference for all trigger types, see [Trigger configurati
    To add an email notification for all machine owners:
 
    1. Toggle **Email all machine owners** on.
+   1. Set the alert frequency (minimum time between notifications).
+
+   To add a push notification:
+
+   1. Click **Add push notifications**.
+   1. Choose the target mobile app (Viam mobile or a custom app ID).
+   1. Add specific email addresses of recipients who should receive push notifications, or toggle on notifications for all machine owners.
+      Recipients must be machine owners or operators.
    1. Set the alert frequency (minimum time between notifications).
 
 {{% /tab %}}
@@ -153,7 +161,7 @@ When a trigger fires and sends a webhook, the HTTP request includes identifying 
 
 For the full header and body reference, see [Webhook attributes](/reference/triggers/#webhook-attributes). For example cloud functions that process the payload, see [Example cloud function](/reference/triggers/#example-cloud-function).
 
-## Notification frequency
+## Notification interval
 
 The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
 

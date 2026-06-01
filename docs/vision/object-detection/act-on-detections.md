@@ -323,6 +323,6 @@ If your module wraps another resource, update any services or processes that ref
 
 ## What's next
 
-- [Alert on detections](/vision/object-detection/alert-on-detections/): send email or webhook notifications when specific objects are detected.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send email, webhook, or push notifications when specific objects are detected.
 - [Deploy a module](/build-modules/deploy-a-module/): package and upload your module to the Viam [registry](https://app.viam.com/registry).
 - [Vision service API](/reference/apis/services/vision/): full API documentation for detections, classifications, and more.

@@ -4,7 +4,7 @@ title: "Alert on detections"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Send email or webhook alerts when your vision service detects specific objects or classifications."
+description: "Send email, webhook, or push notification alerts when your vision service detects specific objects or classifications."
 aliases:
   - /vision/alert/
   - /vision/how-to/alert-on-detections/
@@ -13,7 +13,7 @@ aliases:
 date: "2026-04-14"
 ---
 
-You want to be notified when your camera detects something specific: a person in a restricted area, a missing hard hat, or an anomaly on a production line. This guide shows you how to connect your vision service to Viam's trigger system so you receive an email or webhook whenever a detection occurs. No custom code is required.
+You want to be notified when your camera detects something specific: a person in a restricted area, a missing hard hat, or an anomaly on a production line. This guide shows you how to connect your vision service to Viam's trigger system so you receive an email, webhook, or push notification whenever a detection occurs. No custom code is required.
 
 ## Concepts
 
@@ -23,7 +23,7 @@ The alert system chains three resources together:
 
 1. **Filtered camera**: a camera module that only passes images to the data management service when specific detections or classifications are present.
 2. **Data management service**: captures images from the filtered camera and syncs them to the Viam cloud.
-3. **Trigger**: fires when new data syncs, sending an email or webhook notification.
+3. **Trigger**: fires when new data syncs, sending an email, webhook, or push notification.
 
 Because the filtered camera only passes images that match your criteria, every synced image represents a detection event. The trigger fires on each sync, turning data events into alerts.
 
@@ -145,7 +145,7 @@ Before trying the end-to-end flow, confirm you have all three pieces from above 
 1. Point your camera at an object your model recognizes and wait for the capture interval to pass.
 2. Check the **TEST** panel on your vision service to confirm detections are occurring with sufficient confidence.
 3. Navigate to the **DATA** tab and verify that images are syncing.
-4. Check your email or webhook endpoint for the alert.
+4. Check your email, webhook endpoint, or mobile app for the alert.
 
 ## Troubleshooting
 
@@ -171,7 +171,7 @@ Before trying the end-to-end flow, confirm you have all three pieces from above 
 
 - Confirm the trigger is configured with **Data has been synced to the cloud** as the type.
 - Check that **Binary (image)** is selected as the data type.
-- Verify that at least one notification method (email or webhook) is configured.
+- Verify that at least one notification method (email, webhook, or push notification) is configured.
 
 {{< /expand >}}
 
