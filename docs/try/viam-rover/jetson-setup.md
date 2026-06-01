@@ -17,7 +17,7 @@ date: "2026-05-23"
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
 It is primarily designed for use with a Raspberry Pi 4, but you can use it with a larger Jetson board with some additional setup.
 
-This guide provides supplemental instructions for setting up your rover with a Jetson Nano or Jetson Orin Nano.
+This guide provides supplemental instructions for setting up your rover with a  Jetson Orin Nano.
 
 {{< tabs >}}
 {{% tab name="Jetson Nano" %}}
