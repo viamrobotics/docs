@@ -401,7 +401,7 @@ The following are just a few ideas, but you can expand or modify the rover kit w
 - For GPS navigation, we support NMEA (using serial and I<sup>2</sup>C) and RTK.
   Make and model don't make a difference as long as you use these protocols.
   See [Movement Sensor Component](/reference/components/movement-sensor/) for more information.
-- For LiDAR laser range scanning, we recommend RPlidar (including the A1, a sub-$100 LiDAR).
+- For LiDAR laser range scanning, we recommend RPlidar (including the A1).
 - For robot arms, we tried the [Yahboom DOFBOT robotics arm](https://category.yahboom.net/products/dofbot-jetson_nano) with success.
 
 ### Mount an RPlidar to the rover
