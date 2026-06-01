@@ -3,8 +3,7 @@ title: "Tutorials"
 linkTitle: "Tutorials"
 weight: 300
 type: docs
-layout: "empty"
-canonical: "/tutorials/"
+layout: "tutorials"
 aliases:
   - /dev/tools/tutorials/
 toc_hide: true
