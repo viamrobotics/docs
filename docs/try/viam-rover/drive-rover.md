@@ -121,7 +121,7 @@ flutter pub add viam_sdk
 {{% /tab %}}
 {{% tab name="C++" %}}
 
-Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/BUILDING.md).
+Follow the [instructions on the GitHub repository](https://github.com/viamrobotics/viam-cpp-sdk/blob/main/doc/BUILDING.md).
 
 {{% /tab %}}
 
@@ -303,7 +303,7 @@ The program prints an array of resources.
 These are the components and services that the machine is configured with on Viam.
 
 ```sh {class="command-line" data-prompt="$" data-output="2-20"}
-./src/viam/examples/camera/example_camera
+./drive_in_square
 Resources:
   rdk:component:motor/right
   rdk:component:encoder/Renc

@@ -56,7 +56,7 @@ The fragment adds the following components to your machine's JSON configuration:
 - A [power sensor](https://github.com/viam-modules/texas-instruments/)
 
 For information about how to configure components yourself when you are not using the fragment, click the links on each component above.
-To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=7c413f24-691d-4ae6-a759-df3654cfe4c8).
+To see the configured pin numbers and other values specific to this fragment, [view it in the app](https://app.viam.com/fragment?id=11d1059b-eaed-4ad8-9fd8-d60ad7386aa2).
 
 {{% /tab %}}
 {{% tab name="Viam Rover 2 (RPi 4)" %}}
