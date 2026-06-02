@@ -112,15 +112,13 @@ See the proto definitions in [`app.proto`](https://github.com/viamrobotics/api/b
 | `device_token` | The FCM registration token for the device. Flutter apps obtain this from `FirebaseMessaging.instance.getToken()`. iOS apps call `getAPNSToken()` first; FCM normalizes both. |
 | `device_uuid` | A stable identifier for the device, so Viam does not accumulate duplicate registrations across re-uploads. The Viam mobile app uses `android.id` (from the `device_info_plus` Flutter package) on Android and `identifierForVendor` on iOS; pick whatever stable identifier fits your platform. |
 
-User identity comes from the authenticated Viam session on the call, so there is no `user_id` parameter.
-
 ### Token lifecycle
 
 - Tokens are stored per `(user_id, app_id)`.
   A user can have parallel tokens for `com.viam.viammobile` and a custom app, and only the matching set receives any given push.
 - Viam prunes dead tokens automatically when FCM reports "not registered."
   No server-side cleanup is required for stale tokens.
-- Calling `DeleteDevicePushToken` on logout is still recommended so a shared device does not receive notifications for the previous user.
+- Calling `DeleteDevicePushToken` on logout is still required so a shared device does not receive notifications for the previous user.
 
 ## 3. Authorize the machine
 
@@ -136,9 +134,6 @@ To authorize a machine for your custom app:
 
 For cross-organization deployments, create the fragment in the Firebase-config-owning organization first, then import it on machines in any other organization.
 The check compares the fragment's owning organization, not the machine's.
-
-`com.viam.viammobile` is exempt from this check.
-Triggers targeting the Viam mobile app work on any machine the recipient owns or operates.
 
 ## 4. Configure the trigger
 
