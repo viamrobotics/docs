@@ -178,7 +178,7 @@ docker start gz-station1
 docker rm gz-station1
 ```
 
-**View logs:**
+**Follow logs:**
 
 ```bash
 docker logs -f gz-station1
