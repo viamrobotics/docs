@@ -41,7 +41,7 @@ This takes 5-10 minutes depending on your internet connection.
 ## Step 2: Create a Machine in Viam
 
 1. Go to [app.viam.com](https://app.viam.com) and log in
-2. Click the **Locations** tab
+2. Click the **Locations** tab and open a location
 3. Click **+ Add machine**
 4. Name it `inspection-station-1`
 5. Click **Add machine**
