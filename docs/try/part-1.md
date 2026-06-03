@@ -25,7 +25,7 @@ Before starting this tutorial, you need the can inspection simulation running. F
 2. Create a machine in Viam and get credentials
 3. Start the container with your Viam credentials
 
-Once you see "Can Inspection Simulation Running!" in the container logs and your machine shows **Live** in the Viam app, return here to continue.
+Once the container logs show `can-spawner`, `web-viewer`, and `viam-server` each entered RUNNING state, and your machine shows **Live** in the Viam app, return here to continue.
 
 {{< alert title="What you're working with" color="info" >}}
 The simulation runs Gazebo Harmonic inside a Docker container. It simulates a conveyor belt with cans (some dented) passing under an inspection camera. viam-server runs on the Linux virtual machine inside the container and connects to Viam's cloud, just like it would on a physical machine. Everything you configure in the Viam app applies to the simulated hardware.
