@@ -240,12 +240,11 @@ if __name__ == '__main__':
 
 The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                                           | Python                                                                                   |
-| ------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource) | Default (`viam-server` destroys and re-creates the resource)                             |
-| In-place reconfigure     | Not supported for modular resources                          | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
-| No-op close              | Embed `resource.TriviallyCloseable`                          | Default on `ResourceBase`                                                                |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig`                     | Default on `EasyResource`                                                                |
+| Behavior                 | Go                                                           | Python                                                       |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource) | Default (`viam-server` destroys and re-creates the resource) |
+| No-op close              | Embed `resource.TriviallyCloseable`                          | Default on `ResourceBase`                                    |
+| Skip config validation   | Embed `resource.TriviallyValidateConfig`                     | Default on `EasyResource`                                    |
 
 ## Logging
 
