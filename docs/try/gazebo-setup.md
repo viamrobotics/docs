@@ -42,6 +42,8 @@ This takes 5-10 minutes depending on your internet connection.
 
 1. Go to [app.viam.com](https://app.viam.com) and log in
 2. Click the **Locations** tab
+   - **No locations yet:** Click **+ Add location**, enter a name (for example, `my-location`), and click **Add**.
+   - **Multiple locations:** Click the location you want to use.
 3. Click **+ Add machine**
 4. Name it `inspection-station-1`
 5. Click **Add machine**
