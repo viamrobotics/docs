@@ -87,10 +87,10 @@ docker run --name gz-station1 -d `
 **Check container logs:**
 
 ```bash
-docker logs gz-station1
+docker logs -f gz-station1
 ```
 
-Look for:
+Wait for the following messages, then press Ctrl+C:
 
 - "Can Inspection Station 1 Running!"
 - viam-server startup messages
