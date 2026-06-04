@@ -189,6 +189,16 @@ viam data export binary filter \
 The `--parallel` flag controls how many concurrent downloads run (default: 100).
 Increase it for faster exports on high-bandwidth connections, or decrease it to reduce load.
 
+## Non-interactive mode
+
+The CLI detects whether it is connected to a terminal.
+When running without a terminal, commands that normally prompt for user input instead require explicit flags:
+
+- `viam module generate` requires `--name`, `--language`, `--public-namespace`, `--resource-subtype`, and `--model-name`.
+- `viam machines part fragments remove` requires `--fragment`.
+
+If you omit a required flag in non-interactive mode, the CLI prints an error listing the missing flags.
+
 ## Tips for scripting
 
 - Use `--quiet` (`-q`) to suppress non-essential output when parsing command results
