@@ -48,7 +48,7 @@ Configure an [ML model service](/vision/deploy-and-maintain/deploy-from-registry
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 3. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
-4. Click **Add component**, enter a name for your service, and click **Add component** again to confirm.
+4. Click **Add to machine**, enter a name for your service, and click **Add to machine** again to confirm.
 5. In the **ML MODEL** section, select the ML model service your model is deployed on.
 6. In the **DEFAULT CAMERA** section, select the camera the service should use by default for calls such as `GetDetectionsFromCamera`.
 7. Adjust other attributes in the attributes table as applicable.

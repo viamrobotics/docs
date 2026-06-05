@@ -32,9 +32,9 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
 2. Click **+** and select **Configuration block**.
 3. Search for the ML model service matching your framework (for example,
    `tflite_cpu`) and select the matching result.
-4. Click the block, then click **Add component**.
+4. Click the block, then click **Add to machine**.
 5. Enter a name for the service (for example, `my-ml-model`) and click
-   **Add component**. The supporting module is installed automatically.
+   **Add to machine**. The supporting module is installed automatically.
 6. In the service configuration card, under **Deployment**, leave
    **Deploy model on machine** selected.
 7. Click **Select model**. In the dialog, browse **My models** or
@@ -48,9 +48,9 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
 1. Click **+** and select **Configuration block**.
 2. Search for `mlmodel` and find the **mlmodel** block (type: **VISION**,
    built-in).
-3. Click the block, then click **Add component**.
+3. Click the block, then click **Add to machine**.
 4. Enter a name for the service (for example, `my-detector`) and click
-   **Add component**.
+   **Add to machine**.
 5. In the **ML Model** dropdown, select the ML model service you added in
    step 1 (for example, `my-ml-model`).
 6. Optionally, select a **Default Camera** and adjust the
