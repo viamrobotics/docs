@@ -1448,6 +1448,7 @@ Trigger configs support the following event types:
 Each trigger requires `notifications`, an array of objects with `type` (`email`, `webhook`, or `push`), `value`, and `seconds_between_notifications`.
 For push notifications, also include `application`: use `com.viam.viammobile` for the Viam mobile app, or a custom application ID for which you have uploaded Firebase credentials with [`organizations firebase-config set`](#organizations-firebase-config-set).
 The recipient in `value` must be a machine owner or operator who has accepted push notification permissions.
+For the full custom-app setup flow, see [Set up custom push notifications](/monitor/custom-push-notifications/).
 
 ```sh {class="command-line" data-prompt="$"}
 # launch the interactive trigger builder
@@ -2218,6 +2219,7 @@ viam organizations logo get --org-id=<org-id>
 ### `organizations firebase-config set`
 
 Upload a Firebase config JSON for a specific app ID. Organization owner only.
+For the full custom push notification setup flow, see [Set up custom push notifications](/monitor/custom-push-notifications/).
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations firebase-config set --org-id=<org-id> --app-id=com.example.myapp --firebase-config-path=./firebase-config.json

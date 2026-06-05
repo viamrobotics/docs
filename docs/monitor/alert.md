@@ -104,6 +104,7 @@ Wait a minute for data to capture and sync, then refresh.
      See [Trigger configuration](/reference/triggers/#webhook-attributes) for webhook payload details.
    - **Push notifications**: click **Add push notifications**, choose the target mobile app, add recipient email addresses or enable notifications for all machine owners, and set alert frequency.
      Recipients must be machine owners or operators.
+     To route notifications to a custom mobile app instead of the Viam mobile app, see [Set up custom push notifications](/monitor/custom-push-notifications/).
 1. Click **Save**.
 
 {{% /tab %}}
