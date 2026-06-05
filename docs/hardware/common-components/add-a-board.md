@@ -124,9 +124,8 @@ it up.
 
 Toggle a GPIO pin and read its state programmatically.
 
-To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+To get the credentials for the code below, go to your machine's page in the Viam app and navigate to the **CONNECT** tab.
+Select **SDK code sample** and toggle **Include API key** on to view your **machine address**, **API key**, and **API key ID** within the code sample.
 If you have an LED wired to pin 11, you'll see it turn on and off when you run the code below.
 {{< tabs >}}
 {{% tab name="Python" %}}

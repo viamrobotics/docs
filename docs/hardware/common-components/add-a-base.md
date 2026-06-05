@@ -116,9 +116,8 @@ area. Start with low speeds.
 
 Drive the base forward, spin it, and stop.
 
-To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+To get the credentials for the code below, go to your machine's page in the Viam app and navigate to the **CONNECT** tab.
+Select **SDK code sample** and toggle **Include API key** on to view your **machine address**, **API key**, and **API key ID** within the code sample.
 If you're using real hardware, you'll see the robot drive forward and spin when you run the code below.
 With a fake base, the commands complete without physical motion.
 {{< tabs >}}
