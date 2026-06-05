@@ -59,11 +59,11 @@ For the full attribute reference for all trigger types, see [Trigger configurati
         For a full reference of trigger configuration attributes, see [Trigger configuration](/reference/triggers/).
 
 1. Next, configure what should happen when an event occurs.
-   You can add **Webhooks**, **Email**, and **Push** notifications:
+   You can add **Webhook**, **Email**, and **Push** notifications:
 
    To add a webhook:
 
-   1. Click **Add Webhook**.
+   1. Click **Add webhook**.
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the webhook payload.
