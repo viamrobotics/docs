@@ -50,7 +50,7 @@ This takes 5-10 minutes depending on your internet connection.
 
 1. Click the 1. Click the <span style="display:inline-flex; align-items:center; gap:5px; background-color:#eff6ff; color:#3b82f6; border:1.5px solid #93c5fd; padding:2px 8px; border-radius:6px; font-size:0.85em; font-weight:500;">Awaiting setup</span> button
 2. Click **Machine cloud credentials** to copy your machine's credentials
-3. In the `can-inspection-simulation` directory, create a file called `station1-viam.json`
+3. In the `can-inspection-simulation` directory created when you cloned the repository, create a file called `station1-viam.json`
 4. Paste your machine's credentials into this file and save
 
 ## Step 4: Start the Container
