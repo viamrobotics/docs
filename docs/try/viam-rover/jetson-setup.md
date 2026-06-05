@@ -17,7 +17,7 @@ date: "2026-05-23"
 The [Viam Rover 2](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
 It is primarily designed for use with a Raspberry Pi 4, but you can use it with a larger Jetson board with some additional setup.
 
-This guide provides supplemental instructions for setting up your rover with a Jetson Nano.
+This guide provides supplemental instructions for setting up your rover with a Jetson Orin Nano.
 
 {{< tabs >}}
 {{% tab name="Jetson Nano" %}}
@@ -25,7 +25,7 @@ This guide provides supplemental instructions for setting up your rover with a J
 {{% alert title="Important" color="note" %}}
 You must purchase the following hardware separately:
 
-- Four 18650 batteries (with charger) or a RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
+- Four 18650 batteries or an RC-type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH), with charger
 - A MicroSD card and an adapter/reader
 - A longer 40 pin ribbon cable: female-female
 - 4 25 mm female-female standoffs
@@ -91,7 +91,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 {{% alert title="Important" color="note" %}}
 You must purchase the following hardware separately:
 
-- A 4S RC type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH) (with charger)
+- A 4S RC-type battery with dimensions no greater than 142mm x 47mm x 60mm (LxWxH), with charger
 - A MicroSD card and an adapter/reader
 - A longer ribbon cable: female-female (ensure that the contacts are correct)
 - 4 25 mm female-female standoffs
