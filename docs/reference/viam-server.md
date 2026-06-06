@@ -303,6 +303,7 @@ You can set the following environment variables to configure `viam-server` behav
 | -------- | ----------- |
 | `VIAM_LOGFILE` | Path to a log file. `viam-server` writes logs to this file in addition to standard output. This differs from the `-log-file` flag, which writes to the file instead of standard output. |
 | `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger. Only relevant on Windows. |
+| `VIAM_HOME` | Path to the directory where `viam-server` stores cached files and module data. Defaults to `~/.viam`. |
 | `VIAM_CONFIG_READ_TIMEOUT` | Override the default 15-second timeout for reading the machine configuration, for example `30s` or `1m`. |
 | `VIAM_RESOURCE_REQUESTS_LIMIT` | Override the default limit of 100 concurrent gRPC requests allowed per resource. |
 | `VIAM_MODULE_STARTUP_TIMEOUT` | Override the default 5-minute module startup timeout, for example `10m` or `30s`. |
