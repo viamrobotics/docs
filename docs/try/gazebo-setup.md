@@ -87,13 +87,16 @@ docker run --name gz-station1 -d `
 **Check container logs:**
 
 ```bash
-docker logs gz-station1
+docker logs -f gz-station1
 ```
 
-Look for:
+Wait for the following messages, then press Ctrl+C:
 
-- "Can Inspection Station 1 Running!"
-- viam-server startup messages
+- `can-spawner entered RUNNING state`
+- `web-viewer entered RUNNING state`
+- `viam-server entered RUNNING state`
+
+Once running, you can also observe cans being recycled in the simulation, for example: `pool_can_01 recycled`
 
 **View the simulation:**
 
@@ -175,7 +178,7 @@ docker start gz-station1
 docker rm gz-station1
 ```
 
-**View logs:**
+**Follow logs:**
 
 ```bash
 docker logs -f gz-station1
