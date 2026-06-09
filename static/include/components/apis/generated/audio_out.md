@@ -160,6 +160,67 @@ err = myAudioOut.PlayStream(context.Background(), info, chunks, nil)
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/audioout#AudioOut).
 
 {{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `audioInfo` ([AudioInfo](https://ts.viam.dev/classes/commonApi.AudioInfo.html)) (required): Information about the audio format (codec, sample rate, channels) that applies to every chunk.
+- `chunks` (AsyncIterable\<Uint8Array\>) (required): Async iterable of audio byte chunks to play in order.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise\<void\>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const audioOut = new VIAM.AudioOutClient(machine, "my_audio_out");
+const audioInfo = {
+  codec: "pcm16",
+  sampleRateHz: 22050,
+  numChannels: 1,
+};
+
+async function* chunks() {
+  for (const chunk of pcmChunks) yield chunk;
+}
+
+await audioOut.playStream(audioInfo, chunks());
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioOutClient.html#playstream).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `audioInfo` [AudioInfo](https://flutter.viam.dev/viam_protos.common.common/AudioInfo-class.html) (required): Information about the audio format (codec, sample rate, channels) that applies to every chunk.
+- `audioStream` [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html)\<[Uint8List](https://api.flutter.dev/flutter/dart-typed_data/Uint8List-class.html)\> (required): A stream of raw audio byte chunks to play in order.
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)\<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic\>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)\<[PlayStreamResponse](https://flutter.viam.dev/viam_protos.component.audioout/PlayStreamResponse-class.html)\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final audioOut = AudioOut.fromRobot(robot, 'my_audio_out');
+final audioInfo = AudioInfo()
+  ..codec = AudioCodec.PCM16
+  ..sampleRateHz = 22050
+  ..numChannels = 1;
+
+final stream = Stream.fromIterable(audioChunks);
+await audioOut.playStream(audioInfo: audioInfo, audioStream: stream);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/AudioOutClient/playStream.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetProperties
