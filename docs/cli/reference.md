@@ -1714,6 +1714,7 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: resource type with a unique numerical suffix. | Optional |
 | `--path` | The path to the root of the module's git repo to build. Default: `.`. | Optional |
+| `--annotation` | A text note describing the purpose of this reload build. Stored alongside the reload metadata in the machine config. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 
 ### `module reload-local`
@@ -1866,47 +1867,7 @@ viam module local-app-testing --app-url http://localhost:3000
 | `--app-url` | The url where local app is running, including port number. For example `http://localhost:5000`. | **Required** |
 | `--machine-id` | The machine ID of the machine you want to test with. You can get your machine ID on the [Fleet page](https://app.viam.com/fleet/machines). | Optional |
 
-##### Named arguments
-
-<!-- prettier-ignore -->
-| Argument | Description | Applicable commands | Required? |
-| -------- | ----------- | ------------------- | --------- |
-| `--annotation` | A text note describing the purpose of this reload build. Stored alongside the reload metadata in the machine config. | `reload` | Optional |
-| `--binary` | The module executable to run (binary or script). Must work on the OS or processor of the device. If omitted, the CLI uses the entrypoint defined in <file>meta.json</file>. | `update-models` | Optional |
-| `--count` | Number of cloud builds to list, defaults to displaying all builds | `build list` | Optional |
-| `--cloud-config` | The location of the <FILE>viam.json</FILE> file which contains the machine ID to lookup the part-id. Alternative to `--part-id`. Default: `/etc/viam.json` | `reload`, `reload-local`, `restart` | Optional |
-| `--destination` | Output directory for downloaded package (default: `.`) | `download` | Optional |
-| `--force` | Skip local validation of the packaged module, which may result in an unusable module if the contents of the packaged module are not correct. | `upload` | Optional |
-| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | `reload-local` | Optional |
-| `--id` | For `build`, the build ID to list or show logs for, as returned from `build start`. For `reload`, `reload-local`, `restart`, and `download`, the module ID (`namespace:module-name` or `org-id:module-name`). | `build list`, `build logs`, `reload`, `reload`, `reload-local`, `restart`, `download` | Optional |
-| `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | `reload`, `reload-local` | Optional |
-| `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | `update`, `upload`, `build`, `reload`, `reload-local` | Optional |
-| `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
-| `--no-build` | Skip build step. Default: `false`. | `reload-local` | Optional |
-| `--no-progress` | Hide progress of the file transfer. Default: `false`. | `reload-local` | Optional |
-| `--part-id` | Part ID of the machine part. Required if running on a remote device. | `reload`, `reload-local`, `restart` | Optional |
-| `--path` | The path to the root of the git repo to build. Default: `.` | `reload` | Optional |
-| `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | `reload`, `reload-local` | Optional |
-| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | `generate` | Optional |
-| `--resource-type` | Whether the new resource is a component or a service. For example, `component`. We recommend _not_ using this option and instead following the prompts. | `generate` | Optional |
-| `--local-only` | Create a meta.json file for local use, but don't create the module on the backend (default: `false`). | `create` | Optional |
-| `--name` | The name of the module. For example: `hello-world`. | `create`, `reload-local`, `restart` | Optional |
-| `--org-id` | The organization ID to associate the module to. See [Using the `--org-id` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
-| `--public-namespace` | The namespace to associate the module to. See [Using the `--public-namespace` argument](#using-the---org-id-and---public-namespace-arguments). | `create`, `upload` | **Required** |
-| `--platform` | The architecture of your module binary. See [Using the `--platform` argument](#using-the---platform-argument). | `upload`, `build logs`, `download` | **Required** for `upload` |
-| `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | `build start` | Optional |
-| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | `build start` | Optional |
-| `--tags` | Comma-separated list of platform tags that determine to which platforms this binary can be deployed. Examples: `distro:debian,distro:ubuntu, os_version:22.04,os_codename:jammy`. For a machine to use an uploaded binary, all tags must be satisfied as well as the `--platform` field. <ul><li>`distro`: Distribution. You can find this in `/etc/os-release`. `"debian"` or `"ubuntu"`.</li><li>`os_version`:  Operating System version. On Linux, you can find this in `/etc/os-release`. Example for linux: `22.04`. On Mac, run `sw_vers --productVersion` and use the major version only. Example for mac: `14`.</li><li>`codename`: The operating system codename. Find this in `/etc/os-release`. For example: `"bullseye"`, `"bookworm"`, or `"jammy"`.</li><li>`cuda`: Whether using CUDA compiler. Run `nvcc --version`. For example: `"true"`.</li><li>`cuda_version`: The CUDA compiler version. Run `nvcc --version`. For example: `"11"` or `"12"`.</li><li>`jetpack`: Version of the NVIDIA JetPack SDK. Run `apt-cache show nvidia-jetpack`. For example: `"5"`.</li><li>`pi`: Version of the Raspberry Pi: `"4"` or `"5"`.</li><li>`pifull`: Compute module or model number, for example `cm5p` or `5B`.</li></ul> | `upload` | Optional |
-| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | `build start` | Optional |
-| `--upload` | The path to the upload. | `upload` | Optional |
-| `--version` | The version of your module to set for this upload or download. For `download`, defaults to `latest`. See [Using the `--version` argument](#using-the---version-argument). | `upload`, `download` | **Required** for `upload` |
-| `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.` | `build start`, `reload`, `reload-local` | Optional |
-| `--wait` | Wait for the build to finish before outputting any logs. | `build logs` | Optional |
-| `--group-logs` | Group log output by platform. | `build logs` | Optional |
-| `--app-url` | The url where local app is running, including port number. For example `http://localhost:5000`. | `local-app-testing` | **Required** |
-| `--machine-id` | The machine ID of the machine you want to test with. You can get your machine ID on the [Fleet page](https://app.viam.com/fleet/machines). | `local-app-testing` | Optional |
-
-##### Using the `--org-id` and `--public-namespace` arguments
+### Using the `--org-id` and `--public-namespace` arguments
 
 All of the `module` commands accept either the `--org-id` or `--public-namespace` argument.
 
