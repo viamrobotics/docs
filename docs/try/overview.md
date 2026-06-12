@@ -13,6 +13,10 @@ aliases:
 
 **Time:** ~55 minutes
 
+{{% alert title="Note" color="primary" %}}
+If you don't have any hardware at hand, this set up lets you simulate a visual inspection system using a Gazebo simulation environment running in Docker. If you already have hardware, you can start setting up your machine at [app.viam.com](https://app.viam.com).
+{{% /alert %}}
+
 ## Scenario
 
 This tutorial uses the simplest work cell (camera + compute) to teach patterns that apply to _all_ Viam applications.
