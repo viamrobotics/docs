@@ -30,7 +30,7 @@ When you use the WebRTC transport, the SDK needs two pieces of configuration in 
 
 **Signaling address.** Required. The URL of the signaling service that brokers the WebRTC handshake. For machines deployed on Viam Cloud, the value is `https://app.viam.com:443`. The Viam app's CONNECT tab writes this literal string into the code sample it generates, so you copy it along with the rest of the connection code. For self-hosted or air-gapped setups, you point to a different signaling service.
 
-**ICE servers.** Optional. The SDK needs ICE servers (STUN and optionally TURN) to traverse NATs. If you do not pass `iceServers`, the SDK defaults to Twilio's public STUN server at `stun:global.stun.twilio.com:3478`. Override `iceServers` if you have custom STUN or TURN requirements for your network.
+**ICE servers.** Optional. The SDK needs ICE servers (STUN and optionally TURN) to traverse NATs. The signaling server provides ICE server configuration during the WebRTC handshake, so most apps do not need to set this field. Override `iceServers` if you have custom STUN or TURN requirements for your network.
 
 Most apps never change either field. See [the connectivity reference](/reference/sdks/connectivity/) for advanced options like TURN-only relay mode, forced peer-to-peer, and custom TURN URI overrides.
 
