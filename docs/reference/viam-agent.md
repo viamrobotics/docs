@@ -81,9 +81,19 @@ In the machine settings card, open **Settings** and expand **System**:
 
 ### OS package updates
 
-| Field                  | Type   | Default | Description                                                                                                                                                                                        |
-| ---------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `os_auto_upgrade_type` | string | `""`    | Controls automatic OS package updates. Options: `"all"` (upgrade all packages), `"security"` (security updates only), `"disable"` (no automatic updates), `""` (do not manage, leave OS defaults). |
+| Field                               | Type   | Default | Description                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ----------------------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `os_auto_upgrade_type`              | string | `""`    | Controls automatic OS package updates. Options: `"all"` (upgrade all packages using the OS package manager's built-in schedule), `"security"` (security updates only using the OS schedule), `"managed-all"` (upgrade all packages on a schedule controlled by `viam-agent`), `"managed-security"` (security updates only on a schedule controlled by `viam-agent`), `"disable"` (no automatic updates), `""` (do not manage, leave OS defaults). |
+| `os_managed_upgrade_interval_hours` | float  | `24`    | How often `viam-agent` checks for and installs packages, in hours. Minimum value: `1`. Only applies when `os_auto_upgrade_type` is `"managed-all"` or `"managed-security"`.                                                                                                                                                                                                                                                                       |
+
+The `"all"` and `"security"` modes delegate scheduling to the operating system's built-in upgrade timer (`unattended-upgrades` on Debian and Ubuntu). The `"managed-all"` and `"managed-security"` modes let `viam-agent` control the upgrade schedule directly, which also enables upgrade support on RPM-based distributions (Fedora, RHEL, Rocky Linux, AlmaLinux, CentOS).
+
+When using a managed mode, `viam-agent` disables the OS's built-in upgrade timer and runs upgrades itself at the configured interval. If an upgrade requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+
+| Mode                                  | Supported distributions                                                                    | Schedule controlled by     | Reboot coordination          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------- | ---------------------------- |
+| `"all"`, `"security"`                 | Debian, Ubuntu, Raspberry Pi OS (apt-based only)                                           | OS (`unattended-upgrades`) | None                         |
+| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 8+, Rocky, AlmaLinux, CentOS 7 (apt and RPM) | `viam-agent`               | Waits for maintenance window |
 
 Automatic OS package updates require Debian Linux with one of these release codenames: Bullseye, Bookworm, or Trixie.
 On unsupported distributions, the agent logs a warning and the setting has no effect.
