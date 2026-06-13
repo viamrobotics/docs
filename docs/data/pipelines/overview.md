@@ -36,9 +36,9 @@ A pipeline has four parts:
 
 2. **A [cron schedule](/data/pipelines/reference/#cron-schedule).** Determines how often the pipeline runs. The schedule also determines the query time window: an hourly schedule (`0 * * * *`) scopes each run to the previous hour of data. A 15-minute schedule (`*/15 * * * *`) scopes each run to the previous 15 minutes. Schedules are in UTC.
 
-3. **A data source.** Either `standard` (the raw readings collection containing all historical data) or `hotstorage` (the [hot data store](/data/hot-data-store/) containing a rolling window of recent data). See [Data source types](/data/pipelines/reference/#data-source-types) for the full list.
+3. **A data source.** Either `standard` (the raw readings collection containing all historical data) or `hot-storage` (the [hot data store](/data/hot-data-store/) containing a rolling window of recent data). See [Data source types](/data/pipelines/reference/#data-source-types) for the full list.
 
-4. **A pipeline sink.** The destination collection where results are stored. Each pipeline has its own sink. You query pipeline results by specifying the `pipeline_sink` data source type and the pipeline's ID.
+4. **A pipeline sink.** The destination collection where results are stored. Each pipeline has its own sink. You query pipeline results by specifying the `pipeline-sink` data source type and the pipeline's ID.
 
 ### Execution flow
 
@@ -72,8 +72,8 @@ When backfill is disabled, each time window is processed exactly once. Late-arri
 | Source type     | What it queries                                                                        | When to use                                                                                                                                  |
 | --------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `standard`      | The raw `readings` collection containing all historical tabular data                   | Default. Use for aggregations over any time range.                                                                                           |
-| `hotstorage`    | The [hot data store](/data/hot-data-store/) containing a rolling window of recent data | Use when your pipeline only needs recent data and you want lower query latency.                                                              |
-| `pipeline_sink` | The output of another pipeline                                                         | Use when chaining pipelines: one pipeline produces summaries, another aggregates those summaries further. Requires the source pipeline's ID. |
+| `hot-storage`   | The [hot data store](/data/hot-data-store/) containing a rolling window of recent data | Use when your pipeline only needs recent data and you want lower query latency.                                                              |
+| `pipeline-sink` | The output of another pipeline                                                         | Use when chaining pipelines: one pipeline produces summaries, another aggregates those summaries further. Requires the source pipeline's ID. |
 
 ## What's next
 
