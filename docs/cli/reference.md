@@ -1714,6 +1714,7 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: resource type with a unique numerical suffix. | Optional |
 | `--path` | The path to the root of the module's git repo to build. Default: `.`. | Optional |
+| `--annotation` | A text note describing the purpose of this reload build. Stored alongside the reload metadata in the machine config. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 
 ### `module reload-local`
