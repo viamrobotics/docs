@@ -16,7 +16,7 @@ Set up a project for building a Viam web app with TypeScript: a custom dashboard
 - A configured Viam machine
 - The machine's host address, an API key, and an API key ID
 
-Get all three credentials from the machine's **CONNECT** tab in the Viam app: go to the machine's page, click **CONNECT**, select **TypeScript**, and toggle **Include API key** on. Copy the `host`, `authEntity` (the API key ID), and `payload` (the API key) from the generated code sample.
+Get all three credentials from the machine's **CONNECT** tab in the Viam app: go to the machine's page, click **CONNECT**, select **Browser TS**, and toggle **Include API key** on. Copy the `host`, `authEntity` (the API key ID), and `payload` (the API key) from the generated code sample.
 
 ## Create a project
 
