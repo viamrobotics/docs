@@ -2851,10 +2851,10 @@ The `import-remote`, `print-remote`, and `get-remote` subcommands require the ma
 
 ```sh {class="command-line" data-prompt="$"}
 viam traces import-local <traces-file> [--endpoint=<host:port>]
-viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization=<org>] [--location=<location>]
+viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization=<org>] [--location=<location>] [--viam-home-dir=<path>]
 viam traces print-local <traces-file>
-viam traces print-remote --part=<part> [--organization=<org>] [--location=<location>]
-viam traces get-remote --part=<part> [target] [--organization=<org>] [--location=<location>]
+viam traces print-remote --part=<part> [--organization=<org>] [--location=<location>] [--viam-home-dir=<path>]
+viam traces get-remote --part=<part> [target] [--organization=<org>] [--location=<location>] [--viam-home-dir=<path>]
 ```
 
 ### `traces import-local`
@@ -2877,7 +2877,7 @@ Pass the path to a local viam-server trace file as a positional argument.
 Import traces from a remote machine to an OTLP endpoint.
 
 ```sh {class="command-line" data-prompt="$"}
-viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization=<org>] [--location=<location>]
+viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization=<org>] [--location=<location>] [--viam-home-dir=<path>]
 ```
 
 <!-- prettier-ignore -->
@@ -2887,6 +2887,7 @@ viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization
 | `--endpoint` | OTLP endpoint in `host:port` format. Default: `localhost:4317`. | Optional |
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
+| `--viam-home-dir` | Path to the target machine's VIAM_HOME directory. Use when the machine uses a non-default VIAM_HOME location. Default: `~/.viam`. | Optional |
 
 ### `traces print-local`
 
@@ -2903,7 +2904,7 @@ Pass the path to a local viam-server trace file as a positional argument.
 Print traces from a remote machine to the console.
 
 ```sh {class="command-line" data-prompt="$"}
-viam traces print-remote --part=<part> [--organization=<org>] [--location=<location>]
+viam traces print-remote --part=<part> [--organization=<org>] [--location=<location>] [--viam-home-dir=<path>]
 ```
 
 <!-- prettier-ignore -->
@@ -2912,13 +2913,14 @@ viam traces print-remote --part=<part> [--organization=<org>] [--location=<locat
 | `--part` | Machine part ID or name. | **Required** |
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
+| `--viam-home-dir` | Path to the target machine's VIAM_HOME directory. Use when the machine uses a non-default VIAM_HOME location. Default: `~/.viam`. | Optional |
 
 ### `traces get-remote`
 
 Download traces from a remote machine to a local file. If `[target]` is omitted, the file is saved to the current working directory.
 
 ```sh {class="command-line" data-prompt="$"}
-viam traces get-remote --part=<part> [target] [--organization=<org>] [--location=<location>]
+viam traces get-remote --part=<part> [target] [--organization=<org>] [--location=<location>] [--viam-home-dir=<path>]
 ```
 
 <!-- prettier-ignore -->
@@ -2927,6 +2929,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 | `--part` | Machine part ID or name. | **Required** |
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
+| `--viam-home-dir` | Path to the target machine's VIAM_HOME directory. Use when the machine uses a non-default VIAM_HOME location. Default: `~/.viam`. | Optional |
 
 ## `update`
 
