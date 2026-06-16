@@ -1278,7 +1278,6 @@ td > ol {
   gap: 1px;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #e4e4e6;
   margin-left: 0rem;
 }
 
@@ -1363,10 +1362,25 @@ td > ol {
 }
 
 .tab-content {
-  padding: 0.7rem 0;
+  margin-top: 0.5rem;
+  padding: 1rem;
   background-color: white;
-  border-bottom: 1px solid rgb(215, 215, 217);
+  border: 1px solid rgb(215, 215, 217);
   max-width: 1000px;
+}
+
+.table .tab-content > div {
+  border: none;
+}
+
+.table .tab-content > div .code-toolbar {
+  border: none;
+  width: fit-content;
+  max-width: 100%;;
+}
+
+.table .tab-content .tab-pane {  
+  max-width: none;
 }
 
 .horizontalheaders * .tab-content,
