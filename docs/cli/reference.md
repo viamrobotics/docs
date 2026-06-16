@@ -61,7 +61,7 @@ viam data export binary filter --destination=<output path> [...named args]
 viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
 viam data query sql --org-id=<org-id> --sql=<query> [--destination=<output path>]
-viam data query mql --org-id=<org-id> --mql=<query> [--data-source-type=<type>] [--destination=<output path>]
+viam data query mql --org-id=<org-id> --mql=<query> [--data-source-type=<type>] [--pipeline-id=<id> | --pipeline-name=<name>] [--destination=<output path>]
 viam data delete binary --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data delete tabular --org-id=<org-id> --delete-older-than-days=<N>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
@@ -255,8 +255,11 @@ viam data query mql --org-id=abc --mql-path=./my-query.json
 # query against the hot data store
 viam data query mql --org-id=abc --data-source-type=hot-storage --mql='[{"$limit":5}]'
 
-# query pipeline results
+# query pipeline results by ID
 viam data query mql --org-id=abc --data-source-type=pipeline-sink --pipeline-id=<pipeline-id> --mql='[{"$limit":5}]'
+
+# query pipeline results by name
+viam data query mql --org-id=abc --data-source-type=pipeline-sink --pipeline-name=my-pipeline --mql='[{"$limit":5}]'
 ```
 
 <!-- prettier-ignore -->
@@ -266,7 +269,8 @@ viam data query mql --org-id=abc --data-source-type=pipeline-sink --pipeline-id=
 | `--mql-path` | Path to a JSON file containing the MQL query. You must specify either `--mql` or `--mql-path`. | Optional |
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 | `--data-source-type` | Data source to query. Options: `standard` (default), `hot-storage`, `pipeline-sink`. | Optional |
-| `--pipeline-id` | Pipeline ID to query. Required when `--data-source-type=pipeline-sink`. | Optional |
+| `--pipeline-id` | Pipeline ID to query. Specify either `--pipeline-id` or `--pipeline-name`, not both. Required when `--data-source-type=pipeline-sink` if `--pipeline-name` is not specified. | Optional |
+| `--pipeline-name` | Pipeline name to query. Specify either `--pipeline-id` or `--pipeline-name`, not both. Required when `--data-source-type=pipeline-sink` if `--pipeline-id` is not specified. | Optional |
 | `--destination` | Output directory for query results. Prints to stdout if omitted. | Optional |
 
 ### `data tag ids add`

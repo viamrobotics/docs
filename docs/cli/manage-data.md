@@ -217,9 +217,13 @@ Use `--data-source-type` to query data from different sources:
 viam data query mql --org-id=<org-id> --data-source-type=hot-storage \
   --mql='[{"$limit":5}]'
 
-# query pipeline results
+# query pipeline results by ID
 viam data query mql --org-id=<org-id> --data-source-type=pipeline-sink \
   --pipeline-id=<pipeline-id> --mql='[{"$limit":5}]'
+
+# query pipeline results by name
+viam data query mql --org-id=<org-id> --data-source-type=pipeline-sink \
+  --pipeline-name=my-pipeline --mql='[{"$limit":5}]'
 ```
 
 See [Query data in the app](/data/query-data/) for SQL and MQL syntax reference.
