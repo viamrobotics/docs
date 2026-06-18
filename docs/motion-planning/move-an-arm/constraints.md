@@ -113,6 +113,15 @@ constraints), see
 For `CollisionSpecification` (allow specific frame pairs to collide), see
 [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/).
 
+## Relax the goal with a pose cloud
+
+Constraints restrict the _path_ between poses. The complementary tool is to
+relax the _goal_ itself. If your task does not require an exact destination pose,
+you can give the planner a region of acceptable poses instead of a single one,
+which enlarges the solution set and makes planning faster and more reliable. This
+is a pose cloud, and it is often the right move when a goal is failing or
+planning slowly. See [Pose clouds](/motion-planning/move-an-arm/pose-clouds/).
+
 ## Performance considerations
 
 Every constraint adds a check to every candidate path segment, and
