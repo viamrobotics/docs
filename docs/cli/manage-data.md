@@ -178,34 +178,34 @@ Passing `--delete-older-than-days=0` deletes **all** tabular data in the organiz
 
 ## Query data
 
-Run SQL or MQL queries against your organization's tabular data directly from the CLI.
+Run SQL or MQL queries against your organization's tabular data, or query binary data metadata by filter, directly from the CLI.
 
-### Query with SQL
+### Query tabular data with SQL
 
 ```sh {class="command-line" data-prompt="$"}
-viam data query sql --org-id=<org-id> \
+viam data query tabular sql --org-id=<org-id> \
   --sql="SELECT component_name, data FROM readings WHERE time_received >= CAST('2025-01-01T00:00:00Z' AS TIMESTAMP) LIMIT 10"
 ```
 
 Results are printed to stdout as NDJSON (one JSON object per line). Use `--destination` to write results to a file instead:
 
 ```sh {class="command-line" data-prompt="$"}
-viam data query sql --org-id=<org-id> \
+viam data query tabular sql --org-id=<org-id> \
   --sql="SELECT * FROM readings WHERE time_received >= CAST('2025-01-01T00:00:00Z' AS TIMESTAMP) LIMIT 100" \
   --destination=./query-results
 ```
 
-### Query with MQL
+### Query tabular data with MQL
 
 ```sh {class="command-line" data-prompt="$"}
-viam data query mql --org-id=<org-id> \
+viam data query tabular mql --org-id=<org-id> \
   --mql='[{"$match":{"component_name":"my-sensor"}},{"$limit":10}]'
 ```
 
 For complex queries, put the MQL in a JSON file and use `--mql-path`:
 
 ```sh {class="command-line" data-prompt="$"}
-viam data query mql --org-id=<org-id> --mql-path=./my-query.json
+viam data query tabular mql --org-id=<org-id> --mql-path=./my-query.json
 ```
 
 ### Query the hot data store or pipeline results
@@ -214,16 +214,28 @@ Use `--data-source-type` to query data from different sources:
 
 ```sh {class="command-line" data-prompt="$"}
 # query the hot data store
-viam data query mql --org-id=<org-id> --data-source-type=hot-storage \
+viam data query tabular mql --org-id=<org-id> --data-source-type=hot-storage \
   --mql='[{"$limit":5}]'
 
 # query pipeline results by ID
-viam data query mql --org-id=<org-id> --data-source-type=pipeline-sink \
+viam data query tabular mql --org-id=<org-id> --data-source-type=pipeline-sink \
   --pipeline-id=<pipeline-id> --mql='[{"$limit":5}]'
 
 # query pipeline results by name
-viam data query mql --org-id=<org-id> --data-source-type=pipeline-sink \
+viam data query tabular mql --org-id=<org-id> --data-source-type=pipeline-sink \
   --pipeline-name=my-pipeline --mql='[{"$limit":5}]'
+```
+
+### Query binary data metadata
+
+Query binary data metadata matching a filter. Returns metadata only, not binary content.
+
+```sh {class="command-line" data-prompt="$"}
+# query binary data metadata for a specific component
+viam data query binary filter --org-ids=<org-id> --component-name=front-camera --mime-types=image/jpeg --limit=10
+
+# save results to a file
+viam data query binary filter --org-ids=<org-id> --component-name=front-camera --destination=./query-results
 ```
 
 See [Query data in the app](/data/query-data/) for SQL and MQL syntax reference.
