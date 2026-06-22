@@ -4,26 +4,24 @@ title: "End effector frames"
 weight: 5
 layout: "docs"
 type: "docs"
-description: "How the motion service moves a named frame to a target pose, and how the frame attribute and WorldState transforms control which point on the robot that frame represents."
+description: "How Move places a named frame at a target pose, and how the frame attribute and WorldState transforms set which point on the robot a frame represents."
 ---
 
-When you ask the motion service to move an arm, you do not move "the arm." You
-move a _frame_. The destination you pass is a pose for a named frame in the
-frame system, and the planner solves for joint angles that place that frame's
-origin at the destination. Understanding which frame you are moving, and where
-that frame sits on the physical robot, is the difference between the tool tip
-landing on the target and the arm's mounting flange landing there instead.
+When you move an arm with the motion service, you move a _frame_. The
+destination you pass is a pose for a named frame in the frame system, and the
+planner solves for joint angles that place that frame's origin at the
+destination. The frame you name decides whether the tool tip lands on the target
+or the arm's mounting flange lands there instead.
 
-This page explains how the motion service targets frames, how the `frame`
-attribute defines an end effector frame, and how a `WorldState` transform lets
-you add or reposition that frame for a single request.
+This page explains how `Move` resolves a component name to a frame, how the
+`frame` attribute defines an end effector frame, and how a `WorldState`
+transform lets you add or reposition that frame for a single request.
 
-## Move targets a frame, not a component
+## Which frame Move acts on
 
 The `Move` request takes a component name and a destination. The component name
-is not treated as a piece of hardware to actuate directly; it is resolved to a
-frame in the frame system. The planner then searches for an arm configuration
-that brings that frame's origin to the destination pose.
+resolves to a frame in the frame system. The planner then searches for an arm
+configuration that brings that frame's origin to the destination pose.
 
 ```python
 await motion_service.move(
@@ -78,8 +76,8 @@ the gripper frame is a child of the arm, it tracks the flange automatically:
 when the arm moves, the gripper's tool center point moves with it, and the
 planner reasons about the tool's position at every step of a candidate path.
 
-This tree is built from your saved configuration. To target a frame that is not
-in the saved configuration, or to shift an existing one for a single motion, you
+This tree is built from your saved configuration. To target a frame absent from
+the saved configuration, or to shift an existing one for a single motion, you
 extend the tree at request time with a transform.
 
 ## Extend the frame system with a WorldState transform
@@ -166,8 +164,9 @@ different things, and only one affects a `Move`.
   the previous section is a `WorldState` transform, so it shapes the plan.
 - The world state store service is a separate service that holds transforms for
   client-side visualization in the [3D scene](/motion-planning/3d-scene/). The
-  motion planner does not read it, so publishing a transform there draws it in
-  the scene but has no effect on a `Move`.
+  motion planner reads only the `WorldState` you pass to `Move`, so a transform
+  published to the store renders in the scene while planning stays driven by
+  `WorldState` alone.
 
 To change where the arm goes, put the transform in the `WorldState` you pass to
 `Move`, as shown above. To render a custom visual without affecting planning,
