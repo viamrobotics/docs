@@ -7,12 +7,11 @@ type: "docs"
 description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path, then compare it against obstacles and reach to debug failures."
 ---
 
-The **3D SCENE** tab does not show motion plans on its own. It is a static
-inspector of the configured frame system and live component poses: it has no
-timeline, no scrubber, and no plan playback. To see a plan, the trajectory the
-arm will follow, the goals it aims for, and how that path relates to your
-obstacles, you publish the plan as **custom visuals** through a world state store
-service. The scene then renders the path you can otherwise only read as numbers.
+The **3D SCENE** tab is a static inspector: it shows the configured frame system
+and live component poses. To see a motion plan, the trajectory the arm will follow,
+the goals it aims for, and how that path relates to your obstacles, you publish the
+plan as **custom visuals** through a world state store service. The scene then renders
+the path you can otherwise only read as numbers.
 
 This page shows how to turn a plan into transforms the scene can draw, and how to
 use the rendered path to debug a plan that failed or moved unexpectedly.
@@ -81,7 +80,7 @@ from the trajectory leading to it.
 
 Serve the transforms through a world state store service so the **3D SCENE** tab
 renders them. The plan markers stream in alongside the frames and obstacle
-geometry the scene already shows. For the service interface, the poll-and-update
+geometry the scene already shows. For the service methods, the poll-and-update
 loop, and how a module pulls data from its dependencies, see
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
 
@@ -94,11 +93,10 @@ the rest of the scene:
   geometry, that is where the planner reports a collision. Check whether the
   obstacle is real or an oversized geometry.
 - **Does the goal fall outside the arm's reach?** If a goal marker sits far from
-  any reachable arm configuration, the planner cannot get there. Move the goal or
+  any reachable arm configuration, the goal is out of reach. Move the goal or
   check the frame system.
 - **Why the detour?** An unexpected route usually means an obstacle is forcing
-  the planner around it. Look for geometry between the start and goal you did not
-  intend to add.
+  the planner around it. Look for stray geometry between the start and goal.
 
 For checking the obstacle geometry itself, separate from the plan, see
 [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
@@ -112,7 +110,7 @@ The 3D scene serves three distinct purposes, and it helps to keep them straight:
 - **Inspect static frames and geometry**: use the stock scene to check frame
   positions and obstacle coverage with no plan involved.
 - **Check feasibility**: use `armplanning.PlanMotion` to confirm a goal is
-  reachable and a path exists before you visualize or execute anything.
+  reachable and a path exists before you visualize or run anything.
 
 Visualization shows you _what the path looks like_; static inspection shows you
 _what the world looks like_; feasibility checking tells you _whether a plan

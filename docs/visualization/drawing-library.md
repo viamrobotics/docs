@@ -77,16 +77,33 @@ then push visuals to it from Go with the client API. Reusing an entity ID update
 that visual in place; a new ID adds another:
 
 ```go
-import "github.com/viam-labs/motion-tools/client/api"
+import (
+    "github.com/viam-labs/motion-tools/client/api"
+    "github.com/viam-labs/motion-tools/draw"
+)
 
-// Update in place by reusing the ID; add a new entity with a different ID.
-err := api.DrawGeometry(box, api.WithID("obstacle-1"), api.WithColor(red))
+// Reuse an ID to update that visual in place; change or omit it to add another.
+_, err := api.DrawGeometry(api.DrawGeometryOptions{
+    ID:       "obstacle-1",
+    Geometry: box,
+    Color:    draw.NewColor(draw.WithName("red")),
+})
 ```
 
 This lets you preview spatial data, a point cloud, a set of detections, a planned
 path, straight from a script or test, without deploying a module or connecting
 through the Viam app. For setup, the local server, and the full client API, see
 the [Viam Visualization documentation](https://viamrobotics.github.io/visualization/).
+
+## How updates reach the browser
+
+The Viam Visualization app runs a **draw service** that the client API calls. The service
+exposes `AddEntity`, `UpdateEntity`, and `RemoveEntity` for the changes you push, and a
+`StreamEntity` stream the browser subscribes to. When you draw, update, or remove an
+entity, the service fans that single change out over `StreamEntity` to the browser, which
+applies it incrementally instead of re-rendering the whole scene. This is the same add,
+update, and remove model the world state store service uses to feed the in-app 3D scene,
+so a busy scene stays in sync as your data changes.
 
 ## What's next
 

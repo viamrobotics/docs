@@ -4,15 +4,15 @@ title: "Visuals and collisions"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "How a Transform defines a custom visual, and why a visual in the scene is not the same as geometry the motion planner avoids."
+description: "How a Transform defines a custom visual, and which geometry the motion planner actually collision-checks."
 ---
 
 A custom visual in the 3D scene is a `Transform`: a piece of geometry placed
 somewhere in the frame system, with styling that controls how it draws. The
 world state store service streams these transforms to the scene. This page
-covers what a transform contains, how the scene tracks it over time, and the
-distinction that trips people up most: a visual you can see is not automatically
-an obstacle the motion planner avoids.
+covers what a transform contains, how the scene tracks it over time, and the point
+that trips people up most: the scene draws your visual, while the planner avoids a
+separate collision geometry.
 
 ## Anatomy of a transform
 
@@ -63,27 +63,25 @@ geometry:
 - `collision_allowed`: a hint about whether the geometry represents an allowed
   collision
 
-These are **visualization attributes**, not planning inputs. They change how a
-visual looks in the scene. They do not change what the motion planner does,
-including `collision_allowed`: setting it affects how the visual is presented,
-not whether the planner treats anything as solid.
+These are **visualization attributes**: the scene reads them when it draws the
+geometry. They control how the visual looks, including `collision_allowed`, which is
+a rendering hint about the visual. The planner reads its solid geometry from the frame
+system and `WorldState` instead, so these attributes shape the picture while the
+planner's obstacles come from elsewhere.
 
-## A visual is not an obstacle
+## The scene draws, the planner collision-checks
 
-This is the distinction to internalize: the geometry on a world state store
-transform renders in the 3D scene, but the motion planner does not read the
-world state store. Publishing a box to the scene draws a box. It does not add an
-obstacle the arm will avoid.
-
-The geometry the planner actually collision-checks comes from two places:
+The geometry on a world state store transform renders in the 3D scene: publishing a
+box draws a box. The motion planner collision-checks a separate geometry, which it
+reads from two places:
 
 - The **frame system**: each component's `frame.geometry`.
 - The **`WorldState`** you pass to a `Move` call: obstacles and transforms
   supplied for that single planning request.
 
-A transform in the world state store and an obstacle in a `WorldState` are
-therefore different things on different paths, even when they describe the same
-shape.
+A world state store transform and a `WorldState` obstacle travel two paths, each with
+its own job: one is drawn in the scene, the other is planned around. The same shape can
+take both paths.
 
 ## Making a geometry both visible and collision-checked
 
@@ -95,8 +93,8 @@ you do both, separately:
 - **For planning**: add it to the frame system, or include it in the
   `WorldState` you pass to `Move`.
 
-There is no single field today that does both. Treat the visual and the
-collision geometry as two outputs you produce from the same source data.
+Today these are two separate outputs you produce from the same source data: one
+transform for the scene, one geometry for the planner.
 
 ## What's next
 

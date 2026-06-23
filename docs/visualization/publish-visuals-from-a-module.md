@@ -13,7 +13,7 @@ shapes, you implement a **world state store service**. A module that implements
 this service is a producer: it reads data from other resources, turns that data
 into transforms, and streams them to the scene as they change.
 
-This page covers when to implement the service, the interface to implement, how
+This page covers when to implement the service, the methods to implement, how
 to build transforms with the `draw` library, and the poll-and-update loop that
 keeps the scene in sync. The pattern throughout is **pull**: the module depends
 on the resources it visualizes and reads their data, rather than having those
@@ -21,14 +21,13 @@ resources push into it.
 
 ## When to implement a world state store service
 
-Implement one when you want custom visuals in the 3D scene that the default
-content cannot show. The scene already draws component frames and configured
-geometry, so you do not need a module to see those. You do need one to visualize
-anything computed or sensed at runtime: a vision service's detections, a sensor's
-obstacle readings, a motion plan's trajectory, or any annotation specific to your
-application.
+Implement one when you want custom visuals in the 3D scene beyond the default
+content. The scene already draws component frames and configured geometry on its
+own. A module adds anything computed or sensed at runtime: a vision service's
+detections, a sensor's obstacle readings, a motion plan's trajectory, or any
+annotation specific to your application.
 
-## Implement the service interface
+## Implement the service methods
 
 The world state store service exposes three read methods, which the 3D scene
 calls to discover and follow your visuals:
@@ -83,7 +82,7 @@ func buildTransform(o obstacle) (*commonpb.Transform, error) {
 ```
 
 The library produces standard `commonpb.Transform` values, the same type the
-service interface returns, so the transforms you build this way flow straight
+service methods return, so the transforms you build this way flow straight
 through `ListUUIDs`, `GetTransform`, and `StreamTransformChanges` to the scene.
 
 ## Drive a poll-and-update loop
@@ -135,10 +134,10 @@ reads everything else. Data flows one way:
 This is why the loop above calls `s.sensor.Readings(...)`: the sensor is a
 dependency, and the module pulls from it.
 
-## Visualize a resource that is not a world state store
+## Visualize any other resource
 
-A module whose primary job is something else, an arm, a sensor, a planner, does
-not push visuals into the scene. Instead, you write a world state store module
+A module whose primary job is something else (an arm, a sensor, a planner) stays
+focused on that job. To visualize it, you write a separate world state store module
 that takes that resource as a dependency and pulls from its existing API:
 
 - a sensor's `Readings`
@@ -163,7 +162,7 @@ func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstate
 ## What's next
 
 - [Visuals and collisions](/visualization/visuals-and-collisions/):
-  what a transform contains and why a visual is not an obstacle.
+  what a transform contains, and which geometry the planner collision-checks.
 - [The drawing library and Viam visualization](/visualization/drawing-library/):
   the `draw` primitives and the standalone visualizer app.
 - [Frame system](/motion-planning/frame-system/): position the transforms you
