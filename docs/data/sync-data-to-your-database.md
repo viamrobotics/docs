@@ -170,7 +170,9 @@ directly to your own MongoDB cluster.
 Install dependencies:
 
 ```sh
-pip install viam-sdk pymongo
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk pymongo
 ```
 
 Save this as `sync_to_db.py`:

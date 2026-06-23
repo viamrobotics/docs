@@ -96,7 +96,9 @@ Replace `YOUR-API-KEY`, `YOUR-API-KEY-ID`, and `YOUR-MACHINE-ADDRESS`
 with the values from the **CONNECT** tab. Then run:
 
 ```sh
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 python first_arm.py
 ```
 

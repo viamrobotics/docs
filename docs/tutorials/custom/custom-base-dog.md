@@ -110,7 +110,9 @@ If the name of the directory where you store and run your code is different, be 
 1. Install the [Viam Python SDK](https://python.viam.dev/):
 
    ```sh {class="command-line" data-prompt="$"}
-   pip install viam-sdk
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip3 install viam-sdk
    ```
 
 1. Enable I<sup>2</sup>C on your Pi using `sudo raspi-config`.

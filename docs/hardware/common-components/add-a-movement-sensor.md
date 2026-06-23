@@ -140,7 +140,9 @@ When you run the code below, you'll see which methods your sensor supports and t
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `movement_sensor_test.py`:

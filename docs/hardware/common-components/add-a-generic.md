@@ -82,7 +82,9 @@ With the fake model, you'll see your command echoed back. With a real module, th
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `generic_test.py`:

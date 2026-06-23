@@ -132,7 +132,9 @@ If you have an LED wired to pin 11, you'll see it turn on and off when you run t
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `board_test.py`:

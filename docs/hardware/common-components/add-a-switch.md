@@ -84,7 +84,9 @@ When you run the code below, you'll see the switch cycle through all positions. 
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `switch_test.py`:

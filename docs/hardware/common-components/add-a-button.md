@@ -76,7 +76,9 @@ When you run the code below, the button's Push method fires. With a physical but
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `button_test.py`:

@@ -141,7 +141,9 @@ Without an encoder, position readings will be estimates based on time and max RP
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `motor_test.py`:

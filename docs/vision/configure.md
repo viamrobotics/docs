@@ -212,7 +212,9 @@ Verify end-to-end by pulling a detection from your own code.
 Install the SDK if you have not already:
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 {{< tabs >}}

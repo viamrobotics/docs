@@ -125,7 +125,9 @@ With a fake base, the commands complete without physical motion.
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `base_test.py`:

@@ -100,7 +100,9 @@ The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allow
 To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
 
 ```sh {class="command-line" data-prompt="$"}
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 ## Test the SDK with your machine

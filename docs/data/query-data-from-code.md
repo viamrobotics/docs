@@ -41,7 +41,9 @@ Tabular data queries (`TabularDataByMQL` and `TabularDataBySQL`) share a 100&nbs
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 ```python

@@ -294,7 +294,9 @@ Viam SDK to query data and a plotting library to render it.
 Install the dependencies:
 
 ```bash
-pip install viam-sdk matplotlib
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk matplotlib
 ```
 
 Save this as `visualize_data.py`:

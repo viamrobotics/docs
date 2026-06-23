@@ -102,7 +102,9 @@ If you're using real hardware, you'll see the servo sweep through positions when
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `servo_test.py`:

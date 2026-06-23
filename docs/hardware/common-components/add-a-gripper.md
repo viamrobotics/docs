@@ -139,7 +139,9 @@ With the fake model, Grab always returns true.
 {{% tab name="Python" %}}
 
 ```bash
-pip install viam-sdk
+python3 -m venv .venv
+source .venv/bin/activate
+pip3 install viam-sdk
 ```
 
 Save this as `gripper_test.py`:
