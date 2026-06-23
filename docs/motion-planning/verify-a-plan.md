@@ -9,13 +9,13 @@ description: "Use armplanning.PlanMotion to compute and inspect a trajectory bef
 
 Before an arm moves, you often want to know whether the motion is even possible:
 whether a goal is reachable, whether a path exists around the obstacles you have
-declared, or what trajectory the planner would produce. Executing a `Move` to
-find out is slow and, on real hardware, risky. Planning without executing
-answers those questions first, then leaves it to you whether to run the result.
+declared, or what trajectory the planner would produce. Running a `Move` to find out
+makes the arm move, which is slow and, on real hardware, risky. Planning without
+executing answers those questions first, then leaves it to you whether to run the result.
 
 `armplanning.PlanMotion` runs the same planner the motion service uses, but
 returns the `Plan` instead of moving the arm. This page shows how to compute and
-inspect a plan in process, and closes with how to get the same plan over the
+inspect a plan in process, and shows how to get the same plan over the
 motion service API from a remote client.
 
 ## When to plan without executing
@@ -36,39 +36,51 @@ result and where they run:
 - `PlanMotion` is an in-process Go function. It plans and returns the trajectory.
   Nothing moves until you run the result yourself.
 
-Because `PlanMotion` runs in process, you assemble the planning inputs directly
-rather than letting the service collect them from the robot. That is more setup,
-but it gives you the plan as data with no side effects.
-
 ## Assemble a PlanRequest
 
-A `PlanRequest` carries everything the planner needs: the frame system, the
-world state, the start state, and one or more goals. Build the frame system from
-the running machine, set the start state to the configuration you want to plan
-from, and give the goal as a pose for a named frame.
+To use `PlanMotion` you build a `PlanRequest`. It carries the frame system, the start
+state, and one or more goals, plus optional obstacles as a world state. Build the
+frame system from the running machine, set the start state to the configuration
+you want to plan from, and give the goal as a pose for a named frame.
 
 ```go
 import (
+    "github.com/golang/geo/r3"
+    "go.viam.com/rdk/components/arm"
     "go.viam.com/rdk/motionplan/armplanning"
     "go.viam.com/rdk/referenceframe"
     "go.viam.com/rdk/spatialmath"
-    "github.com/golang/geo/r3"
 )
 
-// Frame system from the running machine.
+// Get the frame system config from the running machine.
 fsCfg, err := machine.FrameSystemConfig(ctx)
 if err != nil {
     logger.Fatal(err)
 }
+
+// Create a frame system from the config.
 fs, err := referenceframe.NewFrameSystem("robot", fsCfg.Parts, nil)
 if err != nil {
     logger.Fatal(err)
 }
 
-// Plan from a known start configuration. Use the arm's current joints to
-// verify a real move, or any configuration to test a hypothetical one.
+// Read the arm's current joints so the plan starts from where the arm is now.
+// JointPositions returns []referenceframe.Input, the same type a start
+// configuration holds. The second argument, extra, passes optional
+// driver-specific parameters to the component; nil means none.
+myArm, err := arm.FromRobot(machine, "my-arm")
+if err != nil {
+    logger.Fatal(err)
+}
+current, err := myArm.JointPositions(ctx, nil)
+if err != nil {
+    logger.Fatal(err)
+}
+
+// Plan from that start configuration. Supply any joint values instead to test
+// a hypothetical start without moving the arm.
 startState := armplanning.NewPlanState(nil, referenceframe.FrameSystemInputs{
-    "my-arm": []referenceframe.Input{0, 0, 0, 0, 0, 0},
+    "my-arm": current,
 })
 
 // Goal: place the gripper frame at a pose in the world frame.
@@ -80,9 +92,9 @@ goal := armplanning.NewPlanState(referenceframe.FrameSystemPoses{
         )),
 }, nil)
 
-// Fail fast on an infeasible goal instead of grinding for the full default.
+// Set a max timeout so the plan fails quickly if it can't find a solution.
 opts := armplanning.NewBasicPlannerOptions()
-opts.Timeout = 15
+opts.Timeout = 15 // The default planner timeout is 300 seconds.
 
 plan, _, err := armplanning.PlanMotion(ctx, logger, &armplanning.PlanRequest{
     FrameSystem:    fs,
@@ -91,10 +103,6 @@ plan, _, err := armplanning.PlanMotion(ctx, logger, &armplanning.PlanRequest{
     PlannerOptions: opts,
 })
 ```
-
-The default planner timeout is 300 seconds, so an infeasible plan grinds for
-five minutes before failing. When you are verifying feasibility, set a shorter
-`Timeout` so an impossible goal fails quickly.
 
 ## Read the plan
 
@@ -122,13 +130,13 @@ expected path, or hand to the arm for execution once you are satisfied.
 
 ## Plan from a remote client
 
-`PlanMotion` requires running Go in process with the machine. A remote client
+The examples above use `PlanMotion` through the armplanning Go library. A remote client
 that only has the motion service API can still get a plan without executing, by
 sending the plan request through the service's `DoCommand` method. The
 built-in motion service handles a `"plan"` command that runs the same planner as
 `Move` and returns the trajectory without moving the arm.
 
-The mechanism is: build a `MoveRequest`, serialize it, and send it under the key
+This is done by building a `MoveRequest`, serializing it, and sending it under the key
 `"plan"`.
 
 ```go
@@ -162,16 +170,13 @@ The trade-offs versus the in-process call:
 - The response is untyped. The trajectory comes back as generic map data, and
   its exact shape depends on the transport, so you parse it by hand rather than
   receiving a typed `Plan`.
-- You drive it with string keys instead of typed parameters, which is easier to
-  get wrong.
+- You drive it with string keys instead of typed parameters, which can be tricky to get right.
 - It works for any remote client of the motion service, with no need to
   assemble the frame system or pull the planner into your process.
 
 Use the in-process `PlanMotion` when you have Go access to the machine and want
 the plan as typed data. Use the `"plan"` `DoCommand` when you are a remote client
-and the motion service is all you have. The
-[viamkit](https://github.com/viam-labs/viamkit) library wraps the `DoCommand`
-form and smooths over the response parsing.
+and the motion service is all you have.
 
 ## What's next
 
