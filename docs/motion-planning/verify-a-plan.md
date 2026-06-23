@@ -24,8 +24,8 @@ motion service API from a remote client.
   committing the arm to it.
 - **Check feasibility.** Confirm a goal is reachable and a collision-free path
   exists, without driving the arm into a failed attempt.
-- **Validate from a hypothetical state.** Plan from a start configuration the
-  arm is not currently in, to test reachability before you move there.
+- **Validate from a hypothetical state.** Plan from a start configuration other
+  than the arm's current one, to test reachability before you move there.
 
 ## PlanMotion compared to Move
 
@@ -34,7 +34,7 @@ result and where they run:
 
 - `Move` is a motion service API call. It plans, then executes, moving the arm.
 - `PlanMotion` is an in-process Go function. It plans and returns the trajectory.
-  Nothing moves until you execute the result yourself.
+  Nothing moves until you run the result yourself.
 
 Because `PlanMotion` runs in process, you assemble the planning inputs directly
 rather than letting the service collect them from the robot. That is more setup,
@@ -120,11 +120,11 @@ An error means no plan was found within the timeout, which is your feasibility
 answer. A returned trajectory is yours to inspect, log, compare against an
 expected path, or hand to the arm for execution once you are satisfied.
 
-## Plan over the wire with the motion service
+## Plan from a remote client
 
 `PlanMotion` requires running Go in process with the machine. A remote client
 that only has the motion service API can still get a plan without executing, by
-sending the plan request through the service's `DoCommand` interface. The
+sending the plan request through the service's `DoCommand` method. The
 built-in motion service handles a `"plan"` command that runs the same planner as
 `Move` and returns the trajectory without moving the arm.
 

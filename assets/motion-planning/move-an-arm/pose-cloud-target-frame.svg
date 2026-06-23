@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="660"
+   height="266"
+   viewBox="0 0 660 266"
+   font-family="Helvetica, Arial, sans-serif"
+   version="1.1"
+   id="svg15"
+   sodipodi:docname="pose-cloud-target-frame.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview15"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.8288353"
+     inkscape:cx="298.55067"
+     inkscape:cy="184.54369"
+     inkscape:window-width="1854"
+     inkscape:window-height="1011"
+     inkscape:window-x="1986"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g14" />
+  <defs
+     id="defs4">
+    <marker
+       id="aR"
+       markerWidth="10"
+       markerHeight="10"
+       refX="7"
+       refY="3.2"
+       orient="auto">
+      <path
+         d="M0,0 L8,3.2 L0,6.4 z"
+         fill="#e23b3b"
+         id="path1" />
+    </marker>
+    <marker
+       id="aG"
+       markerWidth="10"
+       markerHeight="10"
+       refX="7"
+       refY="3.2"
+       orient="auto">
+      <path
+         d="M0,0 L8,3.2 L0,6.4 z"
+         fill="#2fa84f"
+         id="path2" />
+    </marker>
+    <marker
+       id="aB"
+       markerWidth="10"
+       markerHeight="10"
+       refX="7"
+       refY="3.2"
+       orient="auto">
+      <path
+         d="M0,0 L8,3.2 L0,6.4 z"
+         fill="#2f6fe0"
+         id="path3" />
+    </marker>
+    <marker
+       id="aT"
+       markerWidth="8"
+       markerHeight="6.4"
+       refX="5"
+       refY="3.2"
+       orient="auto"
+       viewBox="0 0 8 6.4"
+       preserveAspectRatio="xMidYMid">
+      <path
+         d="M0,0 L8,3.2 L0,6.4 z"
+         fill="#7a4fce"
+         id="path4" />
+    </marker>
+    <marker
+       id="aB-6"
+       markerWidth="10"
+       markerHeight="10"
+       refX="7"
+       refY="3.2"
+       orient="auto">
+      <path
+         d="M 0,0 8,3.2 0,6.4 Z"
+         fill="#2f6fe0"
+         id="path3-8" />
+    </marker>
+  </defs>
+  <text
+     x="330"
+     y="28"
+     text-anchor="middle"
+     font-size="14"
+     font-weight="bold"
+     fill="#1f2937"
+     id="text4">Tolerances are read in the target's frame</text>
+  <g
+     transform="translate(0,-110)"
+     id="g14">
+    <!-- tilted slab (slightly isometric): thickness edges then top surface -->
+    <path
+       d="m 154.362,305.98126 215.04467,22.74999 11.90347,18 -215.04466,-22.74999 z"
+       fill="#c9b98e"
+       stroke="#9c8a63"
+       stroke-width="1.3"
+       id="path5" />
+    <path
+       d="m 369.40667,328.73125 73.97927,-84.71251 11.90347,18 -73.97927,84.71251 z"
+       fill="#b8a679"
+       stroke="#9c8a63"
+       stroke-width="1.3"
+       id="path6" />
+    <path
+       d="m 154.362,305.98126 215.04467,22.74999 73.97927,-84.71251 -215.04467,-22.74999 z"
+       fill="#e0d2b0"
+       stroke="#9c8a63"
+       stroke-width="1.3"
+       id="path7" />
+    <!-- pose-cloud region on the inclined surface (in-plane tolerance) -->
+    <path
+       d="m 180.08187,304.91283 68.41476,-79.00673 179.94855,18.00555 -68.41477,79.00673 z"
+       fill="#2f6fe0"
+       fill-opacity="0.2"
+       stroke="#2f6fe0"
+       stroke-width="2.21131"
+       stroke-dasharray="6, 4"
+       id="path8" />
+    <text
+       x="340.98422"
+       y="266.9462"
+       font-size="11.5px"
+       fill="#2f6fe0"
+       id="text8"
+       transform="rotate(7.5429052)">pose cloud</text>
+    <text
+       x="236.12857"
+       y="278.15408"
+       font-size="11.5px"
+       fill="#2f6fe0"
+       id="text8-8">target frame</text>
+    <!-- OX/OY tolerance cone around the orientation vector (surface normal) -->
+    <path
+       d="M 304.77591,273.87846 259.44854,216.5521 295.84477,200.91101 Z"
+       fill="#7a4fce"
+       fill-opacity="0.16"
+       stroke="#7a4fce"
+       stroke-width="1.36348"
+       stroke-dasharray="5, 4"
+       id="path9"
+       sodipodi:nodetypes="cccc"
+       style="stroke:none;fill:none" />
+    <!-- target frame: x,y in-plane; z = orientation vector (normal) -->
+    <line
+       x1="304.87378"
+       y1="274.50824"
+       x2="338.30276"
+       y2="233.77124"
+       stroke="#e23b3b"
+       stroke-width="2.4"
+       marker-end="url(#aR)"
+       id="line9" />
+    <text
+       x="353"
+       y="246"
+       font-size="11.5"
+       font-style="italic"
+       fill="#e23b3b"
+       id="text9">x</text>
+    <line
+       x1="306.09509"
+       y1="276.38275"
+       x2="353.9097"
+       y2="281.45825"
+       stroke="#2fa84f"
+       stroke-width="2.4"
+       marker-end="url(#aG)"
+       id="line10" />
+    <text
+       x="355"
+       y="293"
+       font-size="11.5"
+       font-style="italic"
+       fill="#2fa84f"
+       id="text10">y</text>
+    <line
+       x1="305.38666"
+       y1="275.38666"
+       x2="281.38666"
+       y2="218.38664"
+       stroke="#2f6fe0"
+       stroke-width="2.6"
+       marker-end="url(#aB)"
+       id="line11" />
+    <line
+       x1="304.37125"
+       y1="275.392"
+       x2="267.61081"
+       y2="225.65601"
+       stroke="#2f6fe0"
+       stroke-width="2.6"
+       marker-end="url(#aB-6)"
+       id="line11-4"
+       style="fill:#ff9c00;fill-opacity:1;stroke:#972fe0;marker-end:url(#aT);stroke-opacity:1;stroke-dasharray:2.5999999, 2.5999999;stroke-dashoffset:0" />
+    <circle
+       cx="305"
+       cy="275"
+       r="3.2"
+       fill="#1f2937"
+       id="circle11" />
+    <text
+       x="221.95027"
+       y="187.88341"
+       text-anchor="middle"
+       font-size="11.5px"
+       fill="#2f6fe0"
+       id="text11"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         x="221.95027"
+         y="187.88341">Pose Cloud</tspan><tspan
+         sodipodi:role="line"
+         id="tspan18"
+         x="221.95027"
+         y="202.25841">Orientation vector</tspan></text>
+    <!-- Theta: rotation about the orientation vector, drawn in the surface plane -->
+    <path
+       style="fill:none;fill-opacity:0.15686275;stroke:#c513ad;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#aT)"
+       id="path15"
+       transform="rotate(-23.759334)"
+       sodipodi:type="arc"
+       sodipodi:cx="169.39534"
+       sodipodi:cy="303.7464"
+       sodipodi:rx="18.752197"
+       sodipodi:ry="5.0263619"
+       sodipodi:start="0.97409908"
+       sodipodi:end="5.7090607"
+       sodipodi:arc-type="arc"
+       d="m 179.93245,307.90419 a 18.752197,5.0263619 0 0 1 -20.92398,0.0271 18.752197,5.0263619 0 0 1 -7.99158,-5.18338 18.752197,5.0263619 0 0 1 14.89093,-3.94015 18.752197,5.0263619 0 0 1 19.23314,2.20885"
+       sodipodi:open="true" />
+  </g>
+  <text
+     x="330"
+     y="254"
+     text-anchor="middle"
+     font-size="13"
+     fill="#41506a"
+     id="text15">The pose cloud follows the tilted surface, and OX, OY, and Theta bound the orientation.</text>
+</svg>

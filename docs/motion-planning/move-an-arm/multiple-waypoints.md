@@ -7,11 +7,11 @@ type: "docs"
 description: "Plan a single continuous trajectory through an ordered list of intermediate goals using armplanning.PlanMotion."
 ---
 
-Sometimes the endpoint is not enough. You need the arm to pass through a
-specific approach point before reaching a target, to thread between two pieces
-of equipment in a set order, or to follow a sequence of stations in one motion.
-A single `Move` to the final pose lets the planner choose any collision-free
-path, which may skip the intermediate points you care about.
+Sometimes you need the arm to pass through a specific approach point before
+reaching a target, to thread between two pieces of equipment in a set order,
+or to follow a sequence of stations in one motion. A single `Move` to the final
+pose lets the planner choose any collision-free path, which may skip the intermediate
+poses you care about.
 
 `armplanning.PlanMotion` accepts an ordered list of goals and plans one
 continuous trajectory that hits each in turn. This page shows how to build a
@@ -28,7 +28,7 @@ calling the service, see [Verify a motion plan](/motion-planning/verify-a-plan/)
 
 ## Why route through ordered goals
 
-Chaining separate `Move` calls is not the same as one multi-goal plan:
+One multi-goal plan differs from chaining separate `Move` calls:
 
 - Each `Move` plans and executes independently, so the arm stops at every
   waypoint instead of flowing through it.
@@ -41,6 +41,8 @@ A multi-goal `PlanRequest` produces one trajectory spanning every segment. The
 planner hits each goal in the order you list it, and uses each waypoint's solved
 configuration as the start of the next segment, so the whole motion is
 continuous and consistent.
+
+{{<imgproc src="/motion-planning/move-an-arm/waypoint-trajectory.svg" declaredimensions=true alt="A cobot arm with two dashed paths to the same target slot. A red single-Move path goes straight to the slot and enters from the side, skipping the approach. A blue multi-goal plan goes up to a required approach waypoint above the slot, then straight down into it." style="max-width:760px" class="aligncenter">}}
 
 ## Build a multi-goal PlanRequest
 
@@ -62,12 +64,15 @@ fsCfg, err := machine.FrameSystemConfig(ctx)
 if err != nil {
     logger.Fatal(err)
 }
+
+// Assemble the configured parts into a frame system the planner can use.
 fs, err := referenceframe.NewFrameSystem("robot", fsCfg.Parts, nil)
 if err != nil {
     logger.Fatal(err)
 }
 
-// Start from a known arm configuration.
+// The start state is required and cannot be nil. To plan from where the arm is
+// now, read its current joints with arm.JointPositions and use those here.
 startState := armplanning.NewPlanState(nil, referenceframe.FrameSystemInputs{
     "my-arm": []referenceframe.Input{0, 0, 0, 0, 0, 0},
 })
@@ -108,9 +113,8 @@ if err != nil {
 
 Each goal names the frame it constrains, so a Cartesian waypoint can target the
 gripper frame while a configuration waypoint pins the arm's joints. Pose clouds
-work as goals too, which lets you relax the waypoints that do not need an exact
-pose. See [Pose clouds](/motion-planning/move-an-arm/pose-clouds/) for when to
-use them.
+work as goals too, which lets you relax the waypoints where close enough is fine.
+See [Pose clouds](/motion-planning/move-an-arm/pose-clouds/) for when to use them.
 
 ## Read the trajectory
 
