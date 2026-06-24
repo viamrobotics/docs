@@ -3,7 +3,7 @@ title: "Vision-Guided Pick-and-Place with the xArm6"
 linkTitle: "Pick-and-Place Workshop"
 type: "docs"
 weight: 50
-description: "Build a robot that detects, picks, and sorts colored cubes using computer vision and motion planning, progressing from static positions to a local Python script to an optional on-robot module."
+description: "Build a robot that detects, picks, and sorts colored cubes with vision and motion planning, from static poses to a Python script to an optional module."
 authors: []
 level: "Intermediate"
 languages: ["python"]
