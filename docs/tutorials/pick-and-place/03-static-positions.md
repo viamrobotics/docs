@@ -1,5 +1,5 @@
 ---
-title: "Phase 3: Static positions and safety obstacles"
+title: "Phase 3: Static positions and obstacles"
 linkTitle: "3. Static positions"
 type: "docs"
 slug: "static-positions"
@@ -82,6 +82,8 @@ For this workshop you define three categories of obstacle: the table surface, on
 Your workshop facilitator provides the table and bin dimensions. To find each bin's position relative to the arm base, move the arm over the center of the bin and read the x and y values from **Get end position**. The z coordinate for a box obstacle is the center of the box, not its top surface.
 
 The following JSON shows the structure for the obstacles array. Add this to the WorldState configuration for your motion service:
+
+<!-- TODO: this obstacle JSON is illustrative and must be reconciled with the actual Viam motion-service obstacle config schema and the companion repo's obstacles-template.json before this page is published. -->
 
 ```json
 {
