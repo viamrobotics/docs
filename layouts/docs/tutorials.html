@@ -62,8 +62,18 @@
               </div>
               {{ $pctx := .Site }} {{- $pages := (where (where
               $pctx.RegularPages ".Section" "tutorials") "Kind" "page") -}}
+              {{/* Exclude sequential-workshop phase pages; each workshop
+              surfaces via a single overview card below. */}}
+              {{- $phasePages := where $pages "Params.workshop" "!=" nil -}}
+              {{- $pages = complement $phasePages $pages -}}
+              {{/* One card per workshop overview (the workshop's _index.md). */}}
+              {{- $workshops := where $pctx.Pages "Params.workshop_overview" true
+              -}}
               <div id="archive" class="card-container">
                 <div class="row-no-margin">
+                  {{ range $workshops }} {{ partial "card.html" (dict "link"
+                  (.File.Dir) "class" "" "customTitle" "" "customDescription" ""
+                  "customCanonicalLink" "") }} {{ end }}
                   {{ range sort $pages ".Weight"}} {{ partial "card.html" (dict
                   "link" (.Page.File.Path) "class" "" "customTitle" ""
                   "customDescription" "" "customCanonicalLink"
