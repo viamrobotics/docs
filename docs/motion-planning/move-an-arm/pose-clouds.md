@@ -65,8 +65,16 @@ can take a large `Theta` while keeping its pointing direction fixed.
 
 The position tolerances (`X`, `Y`, `Z`) are millimeters and `Theta` is degrees. The
 orientation-vector tolerances (`OX`, `OY`, `OZ`) are unitless deviations of the pointing
-direction on a unit sphere, not angles: a value of `1` accepts any value for that
-component, and `0` holds it exact.
+direction on a unit sphere, not angles: on its own, a value of `1` accepts any value for
+that component, and `0` holds it exact.
+
+Because the pointing direction is a unit vector, `OX`, `OY`, and `OZ` share one budget: the
+squares of the three always sum to 1. They move together rather than one at a time. Tilting
+the tool grows `OX` and `OY` and lowers `OZ` at the same time. To let the direction vary,
+widen all three as a set; to hold it fixed, leave all three at `0`. Consider the combination
+`OX: 1, OY: 1, OZ: 0`. It looks like "point in any direction", but `OZ: 0` holds `OZ` fixed,
+and the unit-sphere constraint then keeps `OX` and `OY` at `0`. The tool stays exactly
+aligned despite the wide `OX` and `OY` leeways.
 
 The more freedom you give the planner, the larger the set of arm configurations
 that satisfy the goal, so inverse kinematics is more likely to find a solution
