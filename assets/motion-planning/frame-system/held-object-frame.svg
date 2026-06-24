@@ -74,51 +74,30 @@
       <line
          x1="0"
          y1="0"
-         x2="24"
+         x2="-22"
+         y2="15"
+         stroke="#2fa84f"
+         stroke-width="2.4"
+         marker-end="url(#aG)"
+         id="line5" />
+      <line
+         x1="0"
+         y1="0"
+         x2="0"
+         y2="24"
+         stroke="#2f6fe0"
+         stroke-width="2.4"
+         marker-end="url(#aB)"
+         id="line4" />
+      <line
+         x1="0"
+         y1="0"
+         x2="-24"
          y2="0"
          stroke="#e23b3b"
          stroke-width="2.4"
          marker-end="url(#aR)"
          id="line3" />
-      <text
-         x="28"
-         y="4"
-         fill="#e23b3b"
-         font-size="11.5"
-         font-style="italic"
-         id="text3">x</text>
-      <line
-         x1="0"
-         y1="0"
-         x2="0"
-         y2="-24"
-         stroke="#2f6fe0"
-         stroke-width="2.4"
-         marker-end="url(#aB)"
-         id="line4" />
-      <text
-         x="4"
-         y="-25"
-         fill="#2f6fe0"
-         font-size="11.5"
-         font-style="italic"
-         id="text4">z</text>
-      <line
-         x1="0"
-         y1="0"
-         x2="-16"
-         y2="11"
-         stroke="#2fa84f"
-         stroke-width="2.4"
-         marker-end="url(#aG)"
-         id="line5" />
-      <text
-         x="-26"
-         y="19"
-         fill="#2fa84f"
-         font-size="11.5"
-         font-style="italic"
-         id="text5">y</text>
       <circle
          cx="0"
          cy="0"
@@ -132,17 +111,17 @@
       <line
          x1="0"
          y1="0"
-         x2="16"
-         y2="0"
-         stroke="#e23b3b"
+         x2="-14"
+         y2="10"
+         stroke="#2fa84f"
          stroke-width="2"
-         marker-end="url(#aR)"
-         id="line6" />
+         marker-end="url(#aG)"
+         id="line8" />
       <line
          x1="0"
          y1="0"
          x2="0"
-         y2="-16"
+         y2="16"
          stroke="#2f6fe0"
          stroke-width="2"
          marker-end="url(#aB)"
@@ -150,12 +129,12 @@
       <line
          x1="0"
          y1="0"
-         x2="-11"
-         y2="8"
-         stroke="#2fa84f"
+         x2="-16"
+         y2="0"
+         stroke="#e23b3b"
          stroke-width="2"
-         marker-end="url(#aG)"
-         id="line8" />
+         marker-end="url(#aR)"
+         id="line6" />
       <circle
          cx="0"
          cy="0"
@@ -460,12 +439,15 @@
      fill="#1f2937"
      id="text25">object-tip frame</text>
   <text
-     x="251.48778"
+     x="228"
      y="197.5282"
      font-size="12.5px"
      font-weight="bold"
      fill="#1f2937"
      id="text25-0">gripper frame</text>
+  <text x="332" y="188" fill="#e23b3b" font-size="11.5" font-style="italic" id="lblx">x</text>
+  <text x="333" y="210" fill="#2fa84f" font-size="11.5" font-style="italic" id="lbly">y</text>
+  <text x="358" y="222" fill="#2f6fe0" font-size="11.5" font-style="italic" id="lblz">z</text>
   <text
      x="300"
      y="330"
