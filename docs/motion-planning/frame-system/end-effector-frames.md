@@ -19,7 +19,7 @@ First, look at where the end effector frame could be defined for two example use
 {{<imgproc src="/motion-planning/frame-system/end-effector-types.svg" declaredimensions=true alt="Two arms drawn schematically. On the left, a two-finger gripper with its end effector frame between the fingertips. On the right, a drill whose end effector frame sits at the bit tip, offset from the arm frame in both x and z. Both panels also show small coordinate axes for the world frame at the base and the arm frame at the flange." style="max-width:820px" class="aligncenter">}}
 
 The end effector frame is hardware and task dependent. For a two-finger gripper, the
-end effector frame sits between the fingertips, a short offset below the arm's frame. For
+end effector frame typically sits between the fingertips, a short offset below the arm's frame. For
 a drill, it sits at the bit tip, offset from the arm's frame both forward and down,
 and the orientation may be flipped, so a positive z would mean to drill deeper.
 When you call `Move`, you have the option to specify which frame you are moving, and
