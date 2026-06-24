@@ -72,7 +72,7 @@
               <div id="archive" class="card-container">
                 <div class="row-no-margin">
                   {{ range $workshops }} {{ partial "card.html" (dict "link"
-                  (.File.Dir) "class" "" "customTitle" "" "customDescription" ""
+                  (.Path) "class" "" "customTitle" "" "customDescription" ""
                   "customCanonicalLink" "") }} {{ end }}
                   {{ range sort $pages ".Weight"}} {{ partial "card.html" (dict
                   "link" (.Page.File.Path) "class" "" "customTitle" ""
