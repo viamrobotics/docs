@@ -7,7 +7,8 @@ description: "Build a robot that detects, picks, and sorts colored cubes with vi
 authors: []
 level: "Intermediate"
 languages: ["python"]
-viamresources: ["arm", "gripper", "camera", "vision", "motion", "frame_system", "switch"]
+viamresources:
+  ["arm", "gripper", "camera", "vision", "motion", "frame_system", "switch"]
 platformarea: ["mobility", "core"]
 tags: ["tutorial", "workshop", "arm", "vision", "motion"]
 workshop: "pick-and-place"

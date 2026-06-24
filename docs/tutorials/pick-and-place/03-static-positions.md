@@ -25,26 +25,26 @@ When you add perception and motion planning at the same time, a failure could li
 
 The table below shows what each step in the static sequence validates:
 
-| Step | What it validates |
-|------|-------------------|
-| Arm reaches home pose | Observation position is safe and repeatable |
+| Step                      | What it validates                                 |
+| ------------------------- | ------------------------------------------------- |
+| Arm reaches home pose     | Observation position is safe and repeatable       |
 | Arm reaches approach pose | Arm can get above the workspace without collision |
-| Arm reaches grasp pose | Descent distance is correct |
-| Gripper opens and closes | Finger timing is right |
-| Arm reaches travel pose | Safe carrying height clears obstacles |
-| Arm reaches place pose | Bin position is correct |
+| Arm reaches grasp pose    | Descent distance is correct                       |
+| Gripper opens and closes  | Finger timing is right                            |
+| Arm reaches travel pose   | Safe carrying height clears obstacles             |
+| Arm reaches bin pose      | Bin position is correct                           |
 
 ## The key poses
 
 Each saved pose has a specific role in the sequence:
 
-| Pose | Purpose |
-|------|---------|
-| home-pose | Observation position above the workspace; the camera has a clear view of all cubes |
-| approach-pose | Directly above the pick zone, roughly 80 to 100 mm above the highest cube |
-| grasp-pose | At the cube with the gripper open; fingertips are level with the cube top |
-| travel-pose | Safe carrying height that clears bins and table edges while holding a cube |
-| [color]-bin-pose | Above each target sorting bin; one pose per color (red, blue, green) |
+| Pose             | Purpose                                                                            |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| home-pose        | Observation position above the workspace; the camera has a clear view of all cubes |
+| approach-pose    | Directly above the pick zone, roughly 80 to 100 mm above the highest cube          |
+| grasp-pose       | At the cube with the gripper open; fingertips are level with the cube top          |
+| travel-pose      | Safe carrying height that clears bins and table edges while holding a cube         |
+| [color]-bin-pose | Above each target sorting bin; one pose per color (red, blue, green)               |
 
 The approach pose and the grasp pose share the same x and y coordinates. The only motion between them is straight down the z axis, so if the arm drifts sideways during the descent you have a frame or calibration issue to investigate.
 
