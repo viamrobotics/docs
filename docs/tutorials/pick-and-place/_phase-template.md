@@ -1,0 +1,29 @@
+---
+title: "Phase N: Title in under 70 characters"
+linkTitle: "N. Short title"
+type: "docs"
+slug: "phase-slug"
+weight: 0          # 10, 20, 30, ... in 10s for sidebar order
+description: "One-sentence description of this phase."
+workshop: "pick-and-place"
+phase: 0
+phase_total: 5
+time_estimate: "NN minutes"
+prev: "/tutorials/pick-and-place/previous-slug/"
+next: "/tutorials/pick-and-place/next-slug/"
+languages: ["python"]
+draft: true
+headless: true
+---
+
+<!-- One short paragraph: what this phase accomplishes and why it comes here. -->
+
+## Section heading
+
+<!-- Content. Use the shortcodes below where relevant. -->
+
+{{< checkpoint >}}
+What the learner runs, and the expected result that means "continue".
+{{< /checkpoint >}}
+
+{{< workshop-nav >}}
