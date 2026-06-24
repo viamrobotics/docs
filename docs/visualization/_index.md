@@ -2,9 +2,9 @@
 linkTitle: "Visualization"
 title: "Visualization"
 weight: 165
-layout: "docs"
+empty_node: true
+layout: "empty"
+canonical: "/visualization/overview/"
 type: "docs"
-no_list: true
-manualLink: "/visualization/overview/"
 description: "See your machine in 3D: frames, geometries, point clouds, and custom visuals your modules publish."
 ---

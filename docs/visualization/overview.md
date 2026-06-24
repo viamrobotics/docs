@@ -7,12 +7,12 @@ type: "docs"
 description: "Ways to visualize a Viam machine: the 3D scene, the standalone Viam Visualization app, component data in apps, and time-series dashboards."
 ---
 
-There are several approaches to visualizing information in Viam. For things like frames,
-robot state, motion, collisions, and perception data, you can use the 3D scene view or an
-offline visualizer called Viam Visualization. This data can be retrieved from components
-and used in Viam apps or custom user applications. For time series data, services and
-modules can push data to the cloud and visualize it with Viam's Teleop workspaces and
-dashboards to get live information across a machine or fleet.
+There are several approaches to visualizing information in Viam. For things like motion,
+visualizing frames, checking the robot state, reviewing collisions, and viewing live perception
+data, you can use the 3D scene view or an offline visualizer called Viam Visualization. This
+data can be retrieved from components and used in Viam apps or custom user applications.
+For time series data, services and modules can push data to the cloud to be visualized with
+Viam's Teleop workspaces and dashboards to get live information across a machine or fleet.
 
 ## The 3D scene
 
