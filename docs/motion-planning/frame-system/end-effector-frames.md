@@ -82,7 +82,7 @@ Here is a gripper `frame` attribute from the [Arm with gripper and wrist camera]
 ## Why the frame you name matters
 
 A `Move` call that uses the arm frame produces different motion than one that
-uses the drill-tip frame. The arm's frame sits at the flange, and the drill-tip
+uses the end-effector frame. The arm's frame sits at the flange, and the end effector
 frame sits at the bit tip, so the same `target_pose` produces different motions.
 In the example below, the target pose is defined on the face of a box. If you use
 the drill-tip frame, the bit moves to the box face. If you use the arm frame, the
