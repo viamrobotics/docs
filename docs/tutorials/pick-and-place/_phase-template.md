@@ -12,8 +12,8 @@ time_estimate: "NN minutes"
 prev: "/tutorials/pick-and-place/previous-slug/"
 next: "/tutorials/pick-and-place/next-slug/"
 languages: ["python"]
-draft: true
-headless: true
+draft: true # set to false when this phase is ready to publish
+headless: true # REMOVE this line when you copy the template to a real phase page (it keeps only the template itself from rendering)
 ---
 
 <!-- One short paragraph: what this phase accomplishes and why it comes here. -->
