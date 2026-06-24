@@ -7,20 +7,21 @@ type: "docs"
 description: "How a Transform defines a custom visual, and which geometry the motion planner actually collision-checks."
 ---
 
-A custom visual in the 3D scene is a `Transform`: a piece of geometry placed
-somewhere in the frame system, with styling that controls how it draws. The
-world state store service streams these transforms to the scene. This page
-covers what a transform contains, how the scene tracks it over time, and the point
-that trips people up most: the scene draws your visual, while the planner avoids a
-separate collision geometry.
+Viam uses several standard types to define static and dynamic geometries, and
+the same types are used to create visuals or to tell the motion planner about
+obstacles.
+
+To create a custom visual in the 3D scene, you must create a geometry and
+attach it to `Transform.Geometry` then provide that transform to a World State Store Service.
+The world state store service streams these transforms to the 3d scene. This page
+covers what a transform contains, how the scene tracks it over time, and discusses
+the difference between planner geometry and visualization geometry.
 
 ## Anatomy of a transform
 
-A `Transform` carries four things that together place and style one visual:
+A `Transform` carries four things that together place and style a visual:
 
-- **Reference frame and pose**: where the visual sits. The pose is given in a
-  parent reference frame, so the visual is positioned in the frame system and
-  moves with its parent.
+- **Reference frame and pose**: This defines the visual's origin.
 - **Geometry**: the shape to draw (a box, sphere, capsule, mesh, or point
   cloud).
 - **Metadata**: styling such as color and opacity.
@@ -40,7 +41,7 @@ incremental add, update, and remove operations to individual visuals.
 
 ## Geometry types
 
-A transform's geometry is the shape the scene draws. The supported types are:
+The supported types are:
 
 - **box**: dimensions in millimeters
 - **sphere**: a radius
@@ -51,6 +52,222 @@ A transform's geometry is the shape the scene draws. The supported types are:
 Choose the type that matches what you are representing: a box or capsule to
 approximate a physical object, a mesh for a precise model, a point cloud for
 sensor data.
+
+You build a geometry as a `Geometry` proto, the same type a world state store
+transform and a `WorldState` obstacle both carry. The Python SDK and the Go SDK
+construct that proto directly, with no helper library. The box, sphere, and
+capsule primitives also have a machine config (JSON) form. The transform you
+attach the geometry to supplies its reference frame and pose.
+
+### Box
+
+A box takes its `x`, `y`, and `z` dimensions in millimeters.
+
+{{< tabs >}}
+{{% tab name="JSON" %}}
+
+```json
+{ "type": "box", "x": 100, "y": 100, "z": 100 }
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+```python
+from viam.proto.common import Geometry, RectangularPrism, Vector3
+
+box = Geometry(
+    label="box",
+    box=RectangularPrism(dims_mm=Vector3(x=100, y=100, z=100)),
+)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import commonpb "go.viam.com/api/common/v1"
+
+box := &commonpb.Geometry{
+    Label: "box",
+    GeometryType: &commonpb.Geometry_Box{
+        Box: &commonpb.RectangularPrism{
+            DimsMm: &commonpb.Vector3{X: 100, Y: 100, Z: 100},
+        },
+    },
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Sphere
+
+A sphere takes a radius `radius_mm` in millimeters.
+
+{{< tabs >}}
+{{% tab name="JSON" %}}
+
+```json
+{ "type": "sphere", "r": 50 }
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+```python
+from viam.proto.common import Geometry, Sphere
+
+sphere = Geometry(label="sphere", sphere=Sphere(radius_mm=50))
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import commonpb "go.viam.com/api/common/v1"
+
+sphere := &commonpb.Geometry{
+    Label: "sphere",
+    GeometryType: &commonpb.Geometry_Sphere{
+        Sphere: &commonpb.Sphere{RadiusMm: 50},
+    },
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Capsule
+
+A capsule takes a radius and a length in millimeters. The length must be at
+least twice the radius.
+
+{{< tabs >}}
+{{% tab name="JSON" %}}
+
+```json
+{ "type": "capsule", "r": 50, "l": 200 }
+```
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+```python
+from viam.proto.common import Capsule, Geometry
+
+capsule = Geometry(
+    label="capsule",
+    capsule=Capsule(radius_mm=50, length_mm=200),
+)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import commonpb "go.viam.com/api/common/v1"
+
+capsule := &commonpb.Geometry{
+    Label: "capsule",
+    GeometryType: &commonpb.Geometry_Capsule{
+        Capsule: &commonpb.Capsule{RadiusMm: 50, LengthMm: 200},
+    },
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Mesh
+
+A mesh comes from an STL or PLY file. Read the file and embed its bytes in the
+geometry with a `content_type`. The renderer draws PLY, so convert an STL file
+to PLY first.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from pathlib import Path
+
+from viam.proto.common import Geometry, Mesh
+
+mesh = Geometry(
+    label="mesh",
+    mesh=Mesh(content_type="ply", mesh=Path("model.ply").read_bytes()),
+)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+    "os"
+
+    commonpb "go.viam.com/api/common/v1"
+)
+
+plyBytes, err := os.ReadFile("model.ply")
+if err != nil {
+    return err
+}
+mesh := &commonpb.Geometry{
+    Label: "mesh",
+    GeometryType: &commonpb.Geometry_Mesh{
+        Mesh: &commonpb.Mesh{ContentType: "ply", Mesh: plyBytes},
+    },
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### Point cloud
+
+A point cloud is sensor output, so you read it as PCD bytes in binary PCD format
+and embed them in the geometry. Add a color per point in the PCD data itself.
+A point cloud has no machine config form, so you build it in code.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from pathlib import Path
+
+from viam.proto.common import Geometry, PointCloud
+
+point_cloud = Geometry(
+    label="point-cloud",
+    pointcloud=PointCloud(point_cloud=Path("cloud.pcd").read_bytes()),
+)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+import (
+    "os"
+
+    commonpb "go.viam.com/api/common/v1"
+)
+
+pcdBytes, err := os.ReadFile("cloud.pcd")
+if err != nil {
+    return err
+}
+pointCloud := &commonpb.Geometry{
+    Label: "point-cloud",
+    GeometryType: &commonpb.Geometry_Pointcloud{
+        Pointcloud: &commonpb.PointCloud{PointCloud: pcdBytes},
+    },
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 ## Metadata styles the visual
 

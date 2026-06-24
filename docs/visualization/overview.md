@@ -4,22 +4,27 @@ title: "Visualization"
 weight: 1
 layout: "docs"
 type: "docs"
-description: "Ways to visualize a Viam machine: the 3D scene, the standalone Viam Visualization app, component data in apps, and time-series dashboards."
+description: "Ways to visualize a Viam machine: the 3D scene, the standalone Viam Visualization app, your own apps, and time-series dashboards."
 ---
 
 There are several approaches to visualizing information in Viam. For things like motion,
-visualizing frames, checking the robot state, reviewing collisions, and viewing live perception
-data, you can use the 3D scene view or an offline visualizer called Viam Visualization. This
-data can be retrieved from components and used in Viam apps or custom user applications.
-For time series data, services and modules can push data to the cloud to be visualized with
-Viam's Teleop workspaces and dashboards to get live information across a machine or fleet.
+frames, robot state, collisions, and live perception data, you can use the 3D scene view in
+the Viam web app or the standalone Viam Visualization app. You can also read this data from
+components with a Viam SDK and present it in an app you build, which runs in a browser, on a
+phone, or on a server. For time series data, services and modules push readings to the
+cloud, where the Viam web app's Teleop workspaces and dashboards show live information across
+a machine or fleet.
 
 ## The 3D scene
 
 The **3D SCENE** tab on your machine's page renders an interactive 3D view of your
 machine: component frames from the frame system, configured geometries, depth-camera
-point clouds, and custom visuals a module publishes at runtime. Use it to check spatial
-configuration and watch live data in context.
+point clouds, and custom visuals a module publishes at runtime.
+
+- Use it while configuring or debugging a machine, to see frames, geometry, and live poses
+  with no code.
+- Best for catching frame and obstacle misconfigurations and inspecting a motion plan in
+  context. It runs right in the Viam app, ready to use.
 
 {{< cards >}}
 {{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
@@ -30,26 +35,44 @@ configuration and watch live data in context.
 ## Viam Visualization
 
 Viam Visualization is a standalone 3D app you run yourself to preview and debug spatial
-data from a Go client, without deploying a module or opening the Viam app. It shares the
-same `draw` library as the in-app 3D scene, so the visuals you build work either way.
+data from a Go client. It shares the same `draw` library as the in-app 3D scene, so the
+visuals you build work either way.
+
+- Use it while developing, to preview spatial data such as a point cloud, detections, or a
+  planned path straight from a script or test.
+- Best when you want to iterate from Go quickly, without deploying a module or opening the
+  Viam app.
 
 {{< cards >}}
 {{% card link="/visualization/drawing-library/" noimage="true" %}}
 {{< /cards >}}
 
-## Component data in your applications
+## Viam apps
 
-Components report spatial data, geometries and poses, through their APIs. Read it with an
-SDK and render or process it yourself in a Viam app or a custom application.
+A Viam app uses a Viam SDK to read your machine's data and present it however you design.
+It runs outside the machine, in a browser, on a phone, or on a server, so you can build a
+custom dashboard, an operator console, or a fleet view.
+
+- Use it when operators or stakeholders need a tailored UI beyond the built-in scene.
+- Best when you want to choose exactly which data to show and how, for one machine or a
+  whole fleet.
 
 {{< cards >}}
-{{% card link="/build-apps/" noimage="true" %}}
+{{% card link="/build-apps/overview/" noimage="true" %}}
+{{% card link="/build-apps/app-tutorials/tutorial-dashboard/" noimage="true" %}}
+{{% card link="/build-apps/app-tutorials/tutorial-fleet/" noimage="true" %}}
+{{% card link="/build-apps/app-tutorials/tutorial-flutter-app/" noimage="true" %}}
+{{% card link="/build-apps/app-tutorials/tutorial-monitoring-service/" noimage="true" %}}
 {{< /cards >}}
 
 ## Time series data
 
 Services and modules push readings to the cloud, where you watch them live with Viam's
-Teleop workspaces and dashboards across a single machine or a whole fleet.
+Teleop workspaces and dashboards.
+
+- Use it for values that change over time: temperatures, speeds, counts, and sensor
+  readings.
+- Best for live monitoring and historical trends across a single machine or a whole fleet.
 
 {{< cards >}}
 {{% card link="/monitor/teleop-workspaces/" noimage="true" %}}

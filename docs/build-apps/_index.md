@@ -2,10 +2,10 @@
 linkTitle: "Build apps"
 title: "Build apps"
 weight: 65
-layout: "docs"
+empty_node: true
+layout: "empty"
+canonical: "/build-apps/overview/"
 type: "docs"
-no_list: true
-manualLink: "/build-apps/overview/"
 description: "Build client apps that talk to your Viam machines and the Viam cloud."
 date: "2026-04-10"
 aliases:
