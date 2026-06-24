@@ -3,7 +3,7 @@ title: "Phase N: Title in under 70 characters"
 linkTitle: "N. Short title"
 type: "docs"
 slug: "phase-slug"
-weight: 0          # 10, 20, 30, ... in 10s for sidebar order
+weight: 0 # 10, 20, 30, ... in 10s for sidebar order
 description: "One-sentence description of this phase."
 workshop: "pick-and-place"
 phase: 0
