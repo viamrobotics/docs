@@ -562,6 +562,29 @@ inputs = await my_gripper.get_current_inputs()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.get_current_inputs).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [([]referenceframe.Input)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Input): The current input values of the gripper.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
+
+// Get the current input values of the gripper.
+inputs, err := myGripper.CurrentInputs(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -616,6 +639,29 @@ await my_gripper.go_to_inputs([0.5, 0.8])
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/gripper/client/index.html#viam.components.gripper.client.GripperClient.go_to_inputs).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `inputSteps` [([][]referenceframe.Input)](https://pkg.go.dev/go.viam.com/rdk/referenceframe#Input): One or more sets of input values to move the gripper through, in order.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGripper, err := gripper.FromProvider(machine, "my_gripper")
+
+// Move the gripper to specific input values.
+err = myGripper.GoToInputs(context.Background(), []referenceframe.Input{0.5})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
