@@ -4,7 +4,7 @@ title: "Alert on detections"
 weight: 60
 layout: "docs"
 type: "docs"
-description: "Send email or webhook alerts when your vision service detects specific objects or classifications."
+description: "Send email, webhook, or push notification alerts when your vision service detects specific objects or classifications."
 aliases:
   - /vision/alert/
   - /vision/how-to/alert-on-detections/
@@ -13,7 +13,7 @@ aliases:
 date: "2026-04-14"
 ---
 
-You want to be notified when your camera detects something specific: a person in a restricted area, a missing hard hat, or an anomaly on a production line. This guide shows you how to connect your vision service to Viam's trigger system so you receive an email or webhook whenever a detection occurs. No custom code is required.
+You want to be notified when your camera detects something specific: a person in a restricted area, a missing hard hat, or an anomaly on a production line. This guide shows you how to connect your vision service to Viam's trigger system so you receive an email, webhook, or push notification whenever a detection occurs. No custom code is required.
 
 ## Concepts
 
@@ -23,7 +23,7 @@ The alert system chains three resources together:
 
 1. **Filtered camera**: a camera module that only passes images to the data management service when specific detections or classifications are present.
 2. **Data management service**: captures images from the filtered camera and syncs them to the Viam cloud.
-3. **Trigger**: fires when new data syncs, sending an email or webhook notification.
+3. **Trigger**: fires when new data syncs, sending an email, webhook, or push notification.
 
 Because the filtered camera only passes images that match your criteria, every synced image represents a detection event. The trigger fires on each sync, turning data events into alerts.
 
@@ -49,7 +49,7 @@ Add the filtered camera module to your machine:
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Configuration block**.
 3. In the search field, type `filtered-camera` and select the matching result.
-4. Click **Add component**, name the component `objectfilter-cam`, and click **Add component** again to confirm. The module is installed automatically.
+4. Click **Add to machine**, name the component `objectfilter-cam`, and click **Add to machine** again to confirm. The module is installed automatically.
 5. Add configuration attributes:
 
    {{< tabs >}}
@@ -106,7 +106,7 @@ Add the data management service to capture and sync filtered images:
 
 1. Click **+** and select **Configuration block**.
 2. In the search field, type `data management` and select `data_manager/builtin` from the results.
-3. Click **Add component**, name the service `data-manager`, and click **Add component** again to confirm.
+3. Click **Add to machine**, name the service `data-manager`, and click **Add to machine** again to confirm.
 4. Leave the default attributes and click **Save**.
 
 Enable data capture on the filtered camera:
@@ -124,16 +124,13 @@ Add a trigger to send alerts when filtered images sync:
 2. Enter a name and click **Create**.
 3. Set **Type** to **Data has been synced to the cloud**.
 4. Set **Data Types** to **Binary (image)**.
+5. Add notification methods. The following options live in the **Email**, **Webhook**, and **Push notifications** sections of the trigger card:
 
-   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with 'Data has been synced to the cloud' as the type and 'Binary (image)' as the data type." class="shadow imgzoom" >}}
+   **Email**: In the **Email** section, toggle **Send to specific users** on, enter each email address, and set the **Alert frequency** per row. Or toggle **Send to all machine owners** on and set the **Alert frequency** for the all-owners row.
 
-5. Add notification methods. The following options live in the **ALERT OPTIONS** and **WEBHOOKS** sections of the trigger card:
+   **Webhook**: In the **Webhook** section click **Add webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/reference/triggers/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
 
-   **Email specific addresses**: Toggle on and add email addresses. Each row has its own **Alert frequency**.
-
-   **Email all machine owners**: Toggle on. Set the **Alert frequency** for the all-owners row.
-
-   **Webhook**: In the **WEBHOOKS** section click **Add Webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/reference/triggers/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
+   **Push notifications**: In the **Push notifications** section click **Add push notifications**. Choose the **Application** (Viam mobile or a custom app ID). Then toggle **Send to all machine owners** on, or toggle **Send to specific users** on, add each recipient's **User email**, and click **Add user**. Recipients must be machine owners or operators. Set the **Alert frequency**.
 
 6. Set each **Alert frequency** you enabled (for example, maximum one alert per hour).
 7. Click **Save**.
@@ -145,7 +142,7 @@ Before trying the end-to-end flow, confirm you have all three pieces from above 
 1. Point your camera at an object your model recognizes and wait for the capture interval to pass.
 2. Check the **TEST** panel on your vision service to confirm detections are occurring with sufficient confidence.
 3. Navigate to the **DATA** tab and verify that images are syncing.
-4. Check your email or webhook endpoint for the alert.
+4. Check your email, webhook endpoint, or mobile app for the alert.
 
 ## Troubleshooting
 
@@ -171,7 +168,7 @@ Before trying the end-to-end flow, confirm you have all three pieces from above 
 
 - Confirm the trigger is configured with **Data has been synced to the cloud** as the type.
 - Check that **Binary (image)** is selected as the data type.
-- Verify that at least one notification method (email or webhook) is configured.
+- Verify that at least one notification method (email, webhook, or push notification) is configured.
 
 {{< /expand >}}
 

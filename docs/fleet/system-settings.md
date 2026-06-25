@@ -127,6 +127,9 @@ When using a managed mode (`"managed-all"` or `"managed-security"`), you can als
 
 If an upgrade in a managed mode requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
 
+Automatic OS package updates require Debian Linux with one of these release codenames: Bullseye, Bookworm, or Trixie.
+On unsupported distributions, the agent logs a warning and the setting has no effect.
+
 ## Configure OS log forwarding
 
 Forward operating system logs from the machine to Viam's cloud log viewer.

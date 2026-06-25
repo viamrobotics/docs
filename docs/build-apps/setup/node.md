@@ -16,7 +16,7 @@ Set up a project for running Viam SDK code from a Node.js process: a backend ser
 - A configured Viam machine
 - The machine's host address, an API key, and an API key ID
 
-Get the three credentials from the machine's **CONNECT** tab in the Viam app: go to the machine's page, click **CONNECT**, select **TypeScript**, and toggle **Include API key** on. Copy the `host`, `authEntity` (API key ID), and `payload` (API key) from the generated code sample.
+Get the three credentials from the machine's **CONNECT** tab in the Viam app: go to the machine's page, click **CONNECT**, select **Server-side TS**, and toggle **Include API key** on. Copy the `host`, `authEntity` (API key ID), and `payload` (API key) from the generated code sample.
 
 ## Create a project
 

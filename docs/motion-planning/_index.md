@@ -14,6 +14,34 @@ aliases:
   - /operate/mobility/
   - /operate/mobility/motion-concepts/
   - /motion-planning/motion-how-to/
+  - /navigation/
+  - /navigation/how-to/
+  - /navigation/how-to/avoid-obstacles/
+  - /navigation/how-to/drive-a-base/
+  - /navigation/how-to/follow-a-patrol-route/
+  - /navigation/how-to/monitor-and-troubleshoot/
+  - /navigation/how-to/navigate-to-waypoint/
+  - /navigation/how-to/run-actions-at-waypoints/
+  - /navigation/how-to/set-up-gps/
+  - /navigation/how-to/tune-navigation/
+  - /navigation/reference/
+  - /navigation/reference/api/
+  - /navigation/reference/navigation-service/
+  - /navigation/how-to/detect-while-moving/
+  - /navigation/how-to/drive-the-base/
+  - /navigation/how-to/move-to-gps-coordinate/
+  - /operate/mobility/move-base/
+  - /how-tos/navigate/
+  - /use-cases/navigate/
+  - /motion-planning/motion-how-to/drive-a-base/
+  - /tutorials/services/navigate-with-rover-base/
+  - /motion-planning/replanning-behavior/
+  - /motion-planning/reference/motion-configuration/
+  - /motion-planning/reference/plan-monitoring/
+  - /motion-planning/monitor-a-running-plan/
+  - /motion-planning/motion-how-to/monitor-plan-execution/
+  - /motion-planning/motion-how-to/monitor-a-running-plan/
+  - /operate/mobility/monitor-plan-execution/
 ---
 
 Your robot arm needs to move from one pose to another without colliding with
@@ -25,8 +53,7 @@ Viam's motion service plans a collision-free path and executes it, using a
 frame system you describe and obstacles you declare. You tell it where to go;
 it handles the search.
 
-This section covers motion planning for arms and gantries. For GPS-based
-autonomous navigation with mobile bases, see [Navigation](/navigation/).
+This section covers motion planning for arms and gantries.
 
 ## Start here
 
@@ -61,7 +88,6 @@ returns a collision-free path from the current pose to your target.
 
 {{< cards >}}
 {{% card link="/motion-planning/move-gantry/" noimage="true" %}}
-{{% card link="/motion-planning/monitor-a-running-plan/" noimage="true" %}}
 {{% card link="/motion-planning/debug-motion-with-cli/" noimage="true" %}}
 {{< /cards >}}
 
@@ -69,7 +95,6 @@ returns a collision-free path from the current pose to your target.
 
 {{< cards >}}
 {{% card link="/motion-planning/how-planning-works/" noimage="true" %}}
-{{% card link="/motion-planning/replanning-behavior/" noimage="true" %}}
 {{< /cards >}}
 
 ## Reference

@@ -17,7 +17,7 @@ aliases:
 
 This tutorial uses the simplest work cell (camera + compute) to teach patterns that apply to _all_ Viam applications.
 
-You're building a **quality inspection station** for a canning line. Cans move past a camera on a conveyor belt. Your system must:
+You're building a quality inspection station for a canning line. Cans move past a camera on a conveyor belt. Your system must:
 
 1. Detect when a can is present
 2. Classify it as PASS or FAIL (identifying dented cans)

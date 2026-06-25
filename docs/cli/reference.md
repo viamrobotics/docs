@@ -29,6 +29,28 @@ You can pass global options after the `viam` CLI keyword with any command.
 | `--profile` | Specify a particular [profile](#profiles) for the current command. |
 | `--quiet`, `-q` | Suppress warnings. Default: `false`. |
 
+## `completion`
+
+The `completion` command outputs a shell completion script.
+Load the output in your shell to enable tab completion for commands, subcommands, and flag names.
+
+```sh {class="command-line" data-prompt="$"}
+viam completion bash
+viam completion zsh
+viam completion fish
+viam completion pwsh
+```
+
+<!-- prettier-ignore -->
+| Argument | Description |
+| -------- | ----------- |
+| `bash` | Output a bash completion script. |
+| `zsh` | Output a zsh completion script. |
+| `fish` | Output a fish completion script. |
+| `pwsh` | Output a PowerShell completion script. |
+
+For setup instructions, see [Enable shell completion](/cli/overview/#enable-shell-completion).
+
 ## `data`
 
 The `data` command allows you to manage machine data.
@@ -666,7 +688,7 @@ Click **...** in the left-hand menu and click **Copy dataset ID**.
 
 To find a location ID, run `viam locations list` or visit your [fleet's page](https://app.viam.com/robots) and copy the **Location ID**.
 
-To find the binary data ID of a given image, navigate to the [**DATA** tab](https://app.viam.com/data/view) and select your image.
+To find the binary data ID of a given image, navigate to the [**DATA** tab](https://app.viam.com/data/all) and select your image.
 The **Binary Data ID** is shown under the **DETAILS** subtab that appears on the right.
 
 You cannot use filter arguments such as `--start` or `--end` with the `ids` argument.
@@ -694,7 +716,7 @@ To find a location ID, run `viam locations list` or visit your [fleet's page](ht
 #### Copy `export` command
 
 You can also have the filter parameters generated for you using the **Filters** pane of the **DATA** tab.
-Navigate to the [**DATA** tab](https://app.viam.com/data/view), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
+Navigate to the [**DATA** tab](https://app.viam.com/data/all), make your selections from the search parameters under the **Filters** pane (such as robot name, start and end time, or tags), and click the **Copy export command** button.
 A `viam data export` command string will be copied to your clipboard that includes the search parameters you selected.
 Removing the `viam data export` string, you can use the same filter parameters (such as `--start`, `--end`, etc) with your `viam data database add filter`, `viam data database remove filter`, or `viam data tag filter` commands, except you _must_ exclude the data type `binary` and `tabular` subcommands and `--destination` flags, which are specific to `viam data export`.
 
@@ -1423,7 +1445,9 @@ Trigger configs support the following event types:
 - `conditional_data_ingested`: fires when data ingested by a specific data capture method matches a condition.
 - `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
 
-Each trigger requires `notifications`, an array of objects with `type` (`email` or `webhook`), `value`, and `seconds_between_notifications`.
+Each trigger requires `notifications`, an array of objects with `type` (`email`, `webhook`, or `push`), `value`, and `seconds_between_notifications`.
+For push notifications, also include `application`: use `com.viam.viammobile` for the Viam mobile app, or a custom application ID for which you have uploaded Firebase credentials with [`organizations firebase-config set`](#organizations-firebase-config-set).
+The recipient in `value` must be a machine owner or operator who has accepted push notification permissions.
 
 ```sh {class="command-line" data-prompt="$"}
 # launch the interactive trigger builder
@@ -1538,20 +1562,22 @@ viam module local-app-testing --app-url http://localhost:3000
 
 ### `module generate`
 
-Generate a new module with stub files and a <file>meta.json</file> file. Recommended when starting a new module.
+Generate a new module or a new [Viam application](/build-apps/hosting/) with stub files and a <file>meta.json</file> file.
 
 ```sh {class="command-line" data-prompt="$"}
-# auto-generate stub files for a new modular resource by following prompts
+# follow interactive prompts to generate a module or app
 viam module generate
 ```
 
+The first prompt asks whether you want to generate a **module** (a modular resource that adds custom components or services to a machine) or an **app** (a web application that connects to machines through the Viam SDK and is hosted on [Viam Applications](/build-apps/hosting/)).
+
 {{% alert title="Note" color="note" %}}
-If you are writing your module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
+If you are generating a module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
 {{% /alert %}}
 
 {{% hiddencontent %}}
 
-The `viam module generate` command can generate code for the following resource types:
+When generating a module, the command can generate code for the following resource types:
 
 Components:
 
@@ -1586,13 +1612,16 @@ Services:
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--name` | Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--language` | Language to use for the module. Options: `python`, `go`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--visibility` | Module visibility. Options: `private`, `public`, `public_unlisted`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--public-namespace` | Namespace or organization ID of the module. Must be either a valid organization ID, or a namespace that exists within a user organization. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--resource-subtype` | The API to implement with the modular resource. For example, `motor`. We recommend _not_ using this option and instead following the prompts after running the command. | Optional |
-| `--model-name` | Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. We recommend _not_ using this option and instead following the prompts. | Optional |
-| `--register` | Register the module with Viam to associate it with your organization. Default: `false`. | Optional |
+| `--generate-type` | Type of project to generate. Options: `module`, `app`. If omitted, the CLI prompts you to choose. | Optional |
+| `--name` | (Module only) Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. | Optional |
+| `--language` | (Module only) Language to use for the module. Options: `python`, `go`. | Optional |
+| `--visibility` | Visibility. Options: `private`, `public`, `public_unlisted`. | Optional |
+| `--public-namespace` | Namespace or organization ID. Must be either a valid organization ID or a namespace that exists within a user organization. | Optional |
+| `--resource-subtype` | (Module only) The API to implement with the modular resource. For example, `motor`. | Optional |
+| `--model-name` | (Module only) Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. | Optional |
+| `--register` | Register with Viam to associate it with your organization. Default: `false`. | Optional |
+| `--app-name` | (App only) Name for the app. Alphanumeric characters, dashes, and underscores only. Must start with a letter. | Optional |
+| `--app-type` | (App only) App type. Options: `single_machine`, `multi_machine`. See [Two application types](/build-apps/hosting/overview/#two-application-types). | Optional |
 
 ### `module create`
 
@@ -1685,6 +1714,7 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 | `--model-name` | If passed, creates a resource in the part config with the given model triple. Use with `--resource-name`. Default: Creates no new resource. | Optional |
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: resource type with a unique numerical suffix. | Optional |
 | `--path` | The path to the root of the module's git repo to build. Default: `.`. | Optional |
+| `--annotation` | A text note describing the purpose of this reload build. Stored alongside the reload metadata in the machine config. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 
 ### `module reload-local`

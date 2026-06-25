@@ -48,7 +48,7 @@ Configure an [ML model service](/vision/deploy-and-maintain/deploy-from-registry
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 2. Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
 3. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
-4. Click **Add component**, enter a name for your service, and click **Add component** again to confirm.
+4. Click **Add to machine**, enter a name for your service, and click **Add to machine** again to confirm.
 5. In the **ML MODEL** section, select the ML model service your model is deployed on.
 6. In the **DEFAULT CAMERA** section, select the camera the service should use by default for calls such as `GetDetectionsFromCamera`.
 7. Adjust other attributes in the attributes table as applicable.
@@ -252,7 +252,7 @@ If you want a continuous overlay in the Control tab, configure a [transform came
 
 If you have images stored in the [Viam Cloud](/data/capture-sync/capture-and-sync-data/), you can run your classifier against them:
 
-1. Navigate to the [**DATA** tab](https://app.viam.com/data/view) and click an image to open the expanded view.
+1. Navigate to the [**DATA** tab](https://app.viam.com/data/all) and click an image to open the expanded view.
 2. Click the **Auto-prediction mode** icon in the image toolbar (or press `M`).
 3. In the **Run model** panel, click **Choose ML model**, pick your model and version, then click **Run**.
 

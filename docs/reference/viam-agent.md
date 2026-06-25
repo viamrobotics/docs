@@ -95,6 +95,9 @@ When using a managed mode, `viam-agent` disables the OS's built-in upgrade timer
 | `"all"`, `"security"`                 | Debian, Ubuntu, Raspberry Pi OS (apt-based only)                                           | OS (`unattended-upgrades`) | None                         |
 | `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM) | `viam-agent`               | Waits for maintenance window |
 
+Automatic OS package updates require Debian Linux with one of these release codenames: Bullseye, Bookworm, or Trixie.
+On unsupported distributions, the agent logs a warning and the setting has no effect.
+
 ### Log forwarding
 
 | Field                                        | Type    | Default | Description                                                                                                                                                                                                                                                                                                         |

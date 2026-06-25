@@ -136,5 +136,3 @@ print("Retreated from placement")
 
 - [Pick an object](/motion-planning/move-an-arm/pick-an-object/):
   the pick half of the pick-and-place workflow.
-- [Monitor a running plan](/motion-planning/monitor-a-running-plan/):
-  track plan status during execution.
