@@ -60,108 +60,14 @@ Fragments support variable substitution and per-machine overwrites, so you can d
 
 ## Viam capabilities
 
-{{< alert title="In this section" color="note" >}}
-
-- [Get hardware running in minutes](#get-hardware-running-in-minutes)
-- [Operate from anywhere](#operate-from-anywhere)
-- [Capture data from edge to cloud](#capture-data-from-edge-to-cloud)
-- [Train and deploy models](#train-and-deploy-models)
-- [Develop code remotely](#develop-code-remotely)
-- [Manage software deployments](#manage-software-deployments)
-- [Scale easily](#scale-easily)
-- [Productize with Viam apps](#productize-with-viam-apps)
-
-{{< /alert >}}
-
-### Get hardware running in minutes
-
-Add a camera, motor, arm, or sensor to your JSON config with a few parameters: model, connection type, any device-specific settings.
-`viam-server` handles the rest—pulls the driver, initializes the device, and exposes it through a consistent API.
-You don't have to write device drivers or worry about dependencies.
-
-- **Consistent APIs across hardware:** All cameras expose the same interface regardless of manufacturer. Same for motors, sensors, arms, and other component types. Your code doesn't change when hardware does.
-- **Swap hardware without changing code:** Replace an Intel RealSense with an Orbbec Astra camera, or swap one motor controller for another—update the config and your application keeps working.
-- **Drivers for hundreds of devices:** The Registry includes modules for most common hardware. If yours isn't supported, write a module once and reuse it everywhere.
-
-### Operate from anywhere
-
-Connect to your machine from anywhere.
-No VPN, no port forwarding, no firewall configuration.
-Viam handles NAT traversal automatically.
-The web app, SDKs, and CLI all use the same connection infrastructure, so you can debug from your laptop and monitor from the Viam web app.
-
-- **Stream logs remotely:** View machine logs in the web app, filtered by level, keyword, or time range.
-- **Run code against remote hardware:** Write scripts on your laptop that connect to a machine over the network. Inspect component state, run diagnostics, or test behavior without deploying code.
-- **View live camera and sensor data:** See camera feeds and sensor readings in the web app's TEST panel for each component.
-- **Teleoperate from the browser:** Drive a base with keyboard controls, move an arm to specific positions, or reposition a gantry, all from the web UI.
-- **Visualize in 3D:** See a live 3D view of your machine showing component positions, camera feeds, and point clouds. Move components and watch the visualization update in real time.
-
-### Capture data from edge to cloud
-
-Configure [data capture](/data/) in JSON: which components, how often, what to keep.
-Viam handles the pipeline.
-Data syncs to the cloud when connectivity allows, survives network interruptions and restarts, and queues locally on devices with constrained bandwidth.
-No custom sync logic, no managing local storage, no worrying about edge cases.
-
-- **Capture from any component:** Record images from cameras, readings from sensors, or custom data from your own modules—all with configuration, no code required.
-- **Sync automatically:** Data syncs when bandwidth is available. If your machine goes offline, data queues locally and syncs when connectivity returns.
-- **Filter at the edge:** Reduce bandwidth and storage costs by filtering before sync. Keep only images with detections, sensor readings outside normal ranges, or samples at specified intervals.
-- **Query across your fleet:** Find data by machine, location, time range, component, or tags. Export for analysis or training.
-- **Manage storage automatically:** Set retention policies to delete old data. Configure local storage limits for edge devices with constrained disk space.
-
-### Train and deploy models
-
-[Train models](/train/) on data you've captured, or bring models trained elsewhere.
-Deploy to your fleet with the same versioning and update mechanisms as code.
-
-- **Train in Viam:** Select captured data, annotate, choose a model architecture, and start a training job. No GPU provisioning, no training pipeline setup. Viam handles it.
-- **Bring your own model:** Import models trained in TensorFlow, PyTorch, ONNX, or other frameworks. Upload to the Registry and deploy like any other versioned asset.
-- **Deploy to your fleet:** Push a model to the Registry and configure machines to pull it. Pin to specific versions or allow automatic updates—same as modules.
-- **Run inference on device:** The ML model service runs on the machine. Inference happens locally without round-trips to the cloud.
-
-### Develop code remotely
-
-Traditional robotics development means standing next to the robot or SSH'ing into it.
-Viam lets you treat your robot like a machine in the cloud.
-Develop and test from your laptop.
-Your code connects to your robot machine over the network, through firewalls and NAT, without VPN.
-
-- **Iterate from your IDE:** Write code on your laptop, run it against your robot hardware over the network. No copying files, no deploy step. Just run and see results.
-- **Run on the robot machine when latency matters:** For tight control loops, run scripts directly on your robot machine. Same code, same APIs—just a different execution environment.
-- **Package as a module for production:** When you're ready, package your code as a module. `viam-agent` ensures it starts on boot and stays updated. `viam-server` manages the module process, restarts it on failure, and reconfigures it when settings change.
-- **Call built-in services from your code:** Motion planning, computer vision, navigation, and data capture are available as services you call from any SDK.
-
-### Manage software deployments
-
-Package your control logic as a [module](/build-modules/write-a-logic-module/) and deploy through the Viam Registry for version control, remote updates, and fleet-wide rollouts.
-No cross-compiling.
-Viam handles everything.
-
-- **Managed lifecycle:** `viam-agent` installs and updates your modules. `viam-server` manages module processes at runtime—starts them, restarts on failure, and reconfigures when settings change.
-- **Reconfigure on the fly:** Tune the application parameters you define with configuration updates in the Viam app. Changes apply within seconds. No restarts or redeployment.
-- **Version control:** Pin machines to exact versions for stability, or allow automatic updates at the patch, minor, or major level.
-- **OTA updates:** `viam-agent` pulls new versions of `viam-server`, modules, and ML models from the Registry. Push a new version with the CLI; `viam-agent` handles delivery to your fleet.
-
-### Scale easily
-
-Your prototype configuration becomes your production configuration.
-Turn a working machine setup into a [fragment](/fleet/reuse-configuration/) and apply it to several, dozens, or even hundreds of machines.
-No deployment scripts, no copying files, no per-machine setup.
-
-- **Create a fragment from your prototype:** Once your machine works, export the configuration as a fragment. That exact setup is now reusable across any number of machines. `viam-agent` provisions new devices automatically—sets up networking, connects to the cloud, and installs `viam-server` and your configuration.
-- **Update configurations fleet-wide:** Change a fragment and every machine using it pulls the update. No scripting, no SSH loops.
-- **Override per-machine differences:** If some machines have a different camera model or site-specific parameter value, override for just those machines without forking the base fragment.
-- **Roll out changes incrementally:** Deploy configuration changes, module versions, or ML models to a subset of machines first. Validate before rolling out fleet-wide.
-- **Roll back with one change:** Viam maintains configuration history. Revert to a previous version of a fragment, module, or model with a single update.
-
-### Productize with Viam apps
-
-Building a robotics product means building customer infrastructure—auth systems, dashboards, billing.
-Viam provides these so you can focus on your product.
-
-- **White-label authentication:** Customers authenticate through a login screen with your logo and branding, not Viam's.
-- **Build customer-facing apps:** Use the TypeScript SDK for web dashboards or the Flutter SDK for iOS and Android apps. Both handle authentication and provide access to all component and service APIs.
-- **Built-in billing:** Define pricing tiers—per-machine fees, data costs, or both. Viam handles invoicing and payment collection.
+- **[Get hardware running in minutes](/hardware/):** Add a camera, motor, arm, or sensor to your configuration with a few parameters. `viam-server` pulls the driver and exposes the device through a consistent API. No writing drivers, no managing dependencies.
+- **[Operate from anywhere](/monitor/):** Connect to a machine over the network with no VPN or port forwarding. Stream logs, view live camera and sensor data, teleoperate, and see a 3D view of the machine, all from the browser.
+- **[Capture data from edge to cloud](/data/):** Configure which components to record and how often. Data syncs when bandwidth allows, queues locally when a machine goes offline, and can be filtered at the edge to control cost.
+- **[Train and deploy models](/train/):** Train machine learning models on captured data, or bring models from TensorFlow, PyTorch, or ONNX. Deploy them to your fleet and run inference on the device.
+- **[Develop code remotely](/reference/sdks/):** Write code on your laptop and run it against machine hardware over the network. When you are ready, package it as a module for production.
+- **[Manage software deployments](/build-modules/):** Package your control logic as a module and deploy it through the Registry. Pin machines to exact versions or allow automatic updates, and push new versions over the air.
+- **[Scale easily](/fleet/):** Apply one fragment to dozens or hundreds of machines, update them fleet-wide from a single change, override per-machine differences, and roll changes out or back incrementally.
+- **[Productize with Viam apps](/build-apps/overview/):** Build customer-facing web and mobile apps with the TypeScript and Flutter SDKs, add white-label authentication, and bill customers through Viam.
 
 ## Next steps
 

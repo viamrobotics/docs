@@ -43,8 +43,8 @@ To control when updates are applied, configure a maintenance window. See [manage
 1. Navigate to each machine's **CONFIGURE** tab.
 1. Click **+** and select **Configuration block**.
 1. Search for your fragment and select it.
-1. Click **Add fragment**.
-1. Click **Add fragment** again to confirm, then **Save**.
+1. Click **Add to machine**.
+1. Click **Add to machine** again to confirm, then **Save**.
 
 **Through provisioning:**
 

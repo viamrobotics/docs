@@ -100,14 +100,46 @@ You can also set resolution and frame rate:
 }
 ```
 
-### 4. Save the configuration
+### 4. Configure a frame (recommended)
+
+If you plan to use motion planning, computer vision with spatial context, or pose queries that include the camera, add a frame to define where the camera sits in your workspace.
+
+**Wrist-mounted on an arm.**
+Set `parent` to the arm's name so the camera's pose tracks the end effector as the arm moves.
+The translation offsets the camera's optical center from the arm's flange; measure your physical mount.
+
+```json
+{
+  "frame": {
+    "parent": "my-arm",
+    "translation": { "x": 0, "y": 0, "z": 0 },
+    "orientation": {
+      "type": "ov_degrees",
+      "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+    }
+  }
+}
+```
+
+**Fixed in the workspace.**
+Set `parent` to `"world"` with the absolute position of the camera's mounting point.
+
+**Mounted on a mobile base.**
+Set `parent` to the base's name. The camera's pose is a static offset from the base's mounting frame.
+Unlike an arm (whose kinematics update the tip frame live from joint positions), a base's frame does not automatically track the robot's position as it drives; live world-space tracking requires a movement sensor or odometry that updates the base's frame.
+
+If the camera lives on a separate machine from the main compute (for example, an end-effector Raspberry Pi that exposes the camera as a remote), see [Frames across machines](/hardware/multi-machine/cross-machine-frames/).
+
+See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
+
+### 5. Save the configuration
 
 Click **Save** in the upper right of the configuration panel.
 
 When you save, `viam-server` automatically reloads the configuration and initializes the new component.
 You do not need to restart anything.
 
-### 5. Test the camera
+### 6. Test the camera
 
 Every component in Viam has a built-in **test panel** in the Configure tab.
 The test panel uses the exact same APIs your code will use, so if the camera works here, it will work in your programs.

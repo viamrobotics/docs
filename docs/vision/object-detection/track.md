@@ -43,7 +43,7 @@ For example, the first person detected becomes `person_0_20250413_143052`. The `
 
 1. Click **+** and select **Configuration block**.
 2. In the search field, type `object-tracker` and select the `viam:vision:object-tracker` result (the card shows the module name and model name; the badge says `VISION`).
-3. Click **Add component**, name the service (for example, `my-tracker`), and click **Add component** again to confirm. The module is installed automatically.
+3. Click **Add to machine**, name the service (for example, `my-tracker`), and click **Add to machine** again to confirm. The module is installed automatically.
 
 ### 2. Configure attributes
 

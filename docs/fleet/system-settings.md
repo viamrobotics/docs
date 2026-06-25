@@ -119,6 +119,9 @@ In the machine settings card, open **Settings** and expand **System**. Set `os_a
 | `"disable"`  | Disable automatic OS updates.                                            |
 | `""` (empty) | Do not change the system's current update settings. This is the default. |
 
+Automatic OS package updates require Debian Linux with one of these release codenames: Bullseye, Bookworm, or Trixie.
+On unsupported distributions, the agent logs a warning and the setting has no effect.
+
 ## Configure OS log forwarding
 
 Forward operating system logs from the machine to Viam's cloud log viewer.
