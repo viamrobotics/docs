@@ -1,6 +1,6 @@
 ---
-linkTitle: "Retrain when accuracy drops"
-title: "Retrain when your model drifts"
+linkTitle: "Retrain a model"
+title: "Retrain a model"
 weight: 30
 layout: "docs"
 type: "docs"
@@ -16,13 +16,16 @@ Viam's data, training, and fleet tools are the pieces of that loop. This guide w
 
 ## The cycle
 
+<div style="max-width: fit-content;">
+
 ```text
-   Production ───► Capture failing ───► Label ───► Train ───► Deploy ───► Production
-   detections       images from the     new         a new      new version    (again, with
-   start drifting   machine              data        model      to the fleet   the new model)
-         ▲                                                                          │
-         └──────────────────────────────── monitor ─────────────────────────────────┘
+Production      ───► Capture        ───► Label          ───► Train ───► Deploy
+detections fail      failing images      failing images
+    ▲                                                                         │
+    └──────────────────────────────── monitor ────────────────────────────────┘
 ```
+
+</div>
 
 You do not have to complete every step in a single sitting, and you do not have to do it manually every time. Scheduled data capture and training jobs can automate most of the loop once you have configured it.
 
@@ -46,11 +49,11 @@ Two capture strategies, depending on volume:
 - **Time-based capture** saves a frame every N seconds. Good for building a broad dataset across a day or week. Adjust the interval to control storage cost.
 - **Conditional capture** saves frames only when a trigger condition fires (for example, "when the vision service returns a confidence below 0.6"). This keeps only the hard cases, which is what you need for retraining.
 
-Both strategies are configured on the data management service. The images sync to the [**DATA** tab](https://app.viam.com/data/view) where you label them in the next step.
+Both strategies are configured on the data management service. The images sync to the [**DATA** tab](https://app.viam.com/data/all) where you label them in the next step.
 
 ## 3. Label the new images
 
-Open the [**DATA** tab](https://app.viam.com/data/view) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate images](/train/annotate-images/) for the UI walkthrough.
+Open the [**DATA** tab](https://app.viam.com/data/all) in the Viam app and filter to your captured images. For each image, draw bounding boxes and apply class labels. See [Annotate images](/train/annotate-images/) for the UI walkthrough.
 
 If you have a lot of images, use [automatic annotation](/train/automate-annotation/) to generate initial labels from an existing model, then review and correct them. Correction is usually faster than labeling from scratch.
 
@@ -65,6 +68,27 @@ With the updated dataset, start a new training job. See [Train a model](/train/t
 - **Same or new model name.** If you train under the same model name, the new version replaces the last version when deployed. If you train under a new name, both versions exist and you can promote one to production while keeping the old one as a fallback.
 
 Viam runs training jobs on cloud infrastructure. You do not need to provision a GPU machine locally. Logs stay available for seven days after the job completes.
+
+### Schedule automatic retraining
+
+Instead of manually starting a training job each time you add new data, you can set a retraining schedule on a model.
+Viam evaluates retraining schedules once per day at midnight UTC and submits a new training job when the model is due.
+
+To set a retraining schedule:
+
+1. Navigate to the [**MODELS** tab](https://app.viam.com/models) and open the model you want to retrain automatically.
+1. Click the context menu on the model details page and select **Retraining schedule**.
+1. Choose a frequency: **Daily**, **Weekly** (pick a day of the week), or **Monthly** (pick a day from 1 through 28).
+1. Click **Save schedule**.
+
+Viam retrains the model using the same dataset and labels from the most recent model version.
+Each retraining run produces a new version named `retrain-<timestamp>`.
+Annotate new images as you add them to the dataset, or retraining may not complete successfully.
+
+To turn off a schedule, reopen the dialog and click **Disable**.
+
+Scheduled retraining is available for models trained through Viam's built-in training flow with a linked dataset.
+Models trained with [custom training scripts](/train/custom-training-scripts/) do not support scheduled retraining yet.
 
 ## 5. Deploy the new version
 

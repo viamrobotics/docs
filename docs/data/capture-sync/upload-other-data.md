@@ -50,7 +50,7 @@ Unlike the data management service, the [`FileUploadFromPath`](/reference/apis/d
    You must provide a {{< glossary_tooltip term_id="part" text="machine part" >}} ID to associate the data with.
 3. Run your code once.
    Running it again uploads the same files a second time.
-4. Check the [**DATA** tab](https://app.viam.com/data/view) to confirm your data appears.
+4. Check the [**DATA** tab](https://app.viam.com/data/all) to confirm your data appears.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

@@ -20,7 +20,7 @@
     "@eggnstone/netlify-plugin-no-more-404": "^1.5.0",
     "@types/node": "^24.2.0",
     "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.31",
+    "postcss": "^8.5.10",
     "postcss-cli": "^9.1.0",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",

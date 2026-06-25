@@ -1,1 +1,0 @@
-An array of paths, each path being a user-provided destination, or [`Waypoint`](#addwaypoint), and the set of [geo `Point`s](https://pkg.go.dev/github.com/kellydunn/golang-geo#Point) the robot plans to travel through to get there.

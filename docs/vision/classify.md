@@ -188,12 +188,8 @@ images, _, err := cam.Images(ctx, nil, nil)
 if err != nil {
     logger.Fatal(err)
 }
-img, err := images[0].Image(ctx)
-if err != nil {
-    logger.Fatal(err)
-}
 
-classifications, err := classifier.Classifications(ctx, img, 5, nil)
+classifications, err := classifier.Classifications(ctx, &images[0], 5, nil)
 if err != nil {
     logger.Fatal(err)
 }
@@ -426,4 +422,4 @@ If you need the image and its classifications together in one call, use [`Captur
 
 - [Detect objects](/vision/object-detection/detect/): get per-object bounding boxes instead of whole-image labels.
 - [Track objects across frames](/vision/object-detection/track/): maintain object identities across consecutive frames.
-- [Alert on detections](/vision/object-detection/alert-on-detections/): send email or webhook notifications when specific objects or labels are detected.
+- [Alert on detections](/vision/object-detection/alert-on-detections/): send email, webhook, or push notifications when specific objects or labels are detected.
