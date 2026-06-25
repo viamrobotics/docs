@@ -132,8 +132,9 @@ The fake arm simulates kinematics for the specified model. Set `arm-model` to `u
 
 Read the arm's current joint positions, move two joints, and confirm the positions changed.
 
-To get the credentials for the code below, go to your machine's page in the Viam app and navigate to the **CONNECT** tab.
-Select **SDK code sample** and toggle **Include API key** on to view your **machine address**, **API key**, and **API key ID** within the code sample.
+To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 
 If you're using a real arm, you'll see it physically move when you run the code below.
 With a fake arm, the positions update in memory without physical motion, but you can watch the joint values update in real time by expanding the **test** section on the arm's component card in the **CONFIGURE** tab.

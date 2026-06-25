@@ -120,8 +120,9 @@ Click **Save**, then expand the **Test** section.
 
 Read the gantry's position and move it along the axis.
 
-To get the credentials for the code below, go to your machine's page in the Viam app and navigate to the **CONNECT** tab.
-Select **SDK code sample** and toggle **Include API key** on to view your **machine address**, **API key**, and **API key ID** within the code sample.
+To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 If you're using real hardware, you'll see the gantry move along its axis when you run the code below.
 With a fake gantry, position values update without physical motion.
 {{< tabs >}}
