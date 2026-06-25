@@ -21,7 +21,7 @@ The fastest way to deploy a model is from the model's page in the Viam app:
 
 1. Navigate to **Models** and click the model you want to deploy.
 1. Click **Deploy** in the model header to open the deploy dialog, which walks you through a few steps.
-1. On the first step, select a model version, location, machine, and machine part, then click **Continue**.
+1. Select a model version, location, machine, and machine part, then click **Continue**.
 1. Name the ML model service, then click **Continue**.
 1. Name the vision service. By default, it uses an existing camera on your machine.
 1. Click **Deploy** to add the services to the machine's configuration.
