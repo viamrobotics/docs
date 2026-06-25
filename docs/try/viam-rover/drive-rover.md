@@ -201,7 +201,7 @@ If you have run this command and added your environment variables, skip ahead to
 
 {{< /alert >}}
 
-Go to the **CONNECT** tab and select **TypeScript**.
+Go to the **CONNECT** tab and select **Browser TS**.
 Save your API key and API key ID as environment variables or include them in the code:
 
 {{% snippet "show-secret.md" %}}
