@@ -548,7 +548,7 @@ The following variables are set during [cloud builds](#build), not at runtime:
 
 ### Server-side
 
-Environment variables that control `viam-server` startup behavior (not passed to modules), including `VIAM_MODULE_STARTUP_TIMEOUT` and `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`, are documented in [viam-server environment variables](/reference/viam-server/#environment-variables).
+Environment variables that control how `viam-server` starts and manages modules, including `VIAM_MODULE_STARTUP_TIMEOUT` and `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`, are documented in [viam-server environment variables](/reference/viam-server/#environment-variables). `viam-server` reads these variables itself; unlike the runtime variables above, it does not set them in the module's process environment.
 
 ## Supported platforms
 
