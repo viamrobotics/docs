@@ -54,9 +54,11 @@ You can switch between machine parts directly from the CONTROL tab using the par
 The Viam mobile app provides similar access from your phone:
 
 - See which machines are online
+- View machine details including OS, platform, network info, and IDs
 - View live camera feeds
 - Adjust component settings
 - Switch between components
+- Restart machines
 - [View machine logs](/monitor/troubleshoot/#check-logs)
 - [Upload images from your phone to the cloud](/data/capture-sync/upload-other-data/)
 
