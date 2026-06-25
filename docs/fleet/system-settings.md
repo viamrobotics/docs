@@ -114,8 +114,8 @@ In the machine settings card, open **Settings** and expand **System**. Set `os_a
 
 | Value                                                       | Description                                                                                                                             |
 | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `"all"`                                                     | Install all available OS package updates using the OS's built-in upgrade schedule. Debian and Ubuntu only.                              |
-| `"security"`                                                | Install security updates only using the OS's built-in upgrade schedule. Debian and Ubuntu only.                                         |
+| `"all"`                                                     | Install all available OS package updates using the OS's built-in upgrade schedule. Debian only.                                         |
+| `"security"`                                                | Install security updates only using the OS's built-in upgrade schedule. Debian only.                                                    |
 | <code style="white-space: nowrap">"managed-all"</code>      | Install all available OS package updates on a schedule controlled by `viam-agent`. Works on both apt-based and RPM-based distributions. |
 | <code style="white-space: nowrap">"managed-security"</code> | Install security updates only on a schedule controlled by `viam-agent`. Works on both apt-based and RPM-based distributions.            |
 | `"disable"`                                                 | Disable automatic OS updates.                                                                                                           |
@@ -127,8 +127,7 @@ When using a managed mode (`"managed-all"` or `"managed-security"`), you can als
 
 If an upgrade in a managed mode requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
 
-Automatic OS package updates require Debian Linux with one of these release codenames: Bullseye, Bookworm, or Trixie.
-On unsupported distributions, the agent logs a warning and the setting has no effect.
+The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu or an RPM-based distribution, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 
 ## Configure OS log forwarding
 
