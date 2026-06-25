@@ -557,12 +557,7 @@ The following variables are set during [cloud builds](#build), not at runtime:
 
 ### Server-side
 
-The following variables control `viam-server` startup behavior (not passed to modules):
-
-| Variable                              | Description                                                                |
-| ------------------------------------- | -------------------------------------------------------------------------- |
-| `VIAM_MODULE_STARTUP_TIMEOUT`         | Override the default 5-minute startup timeout (for example, `10m`, `30s`). |
-| `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Override the default 2-minute per-resource configuration timeout.          |
+Environment variables that control how `viam-server` starts and manages modules, including `VIAM_MODULE_STARTUP_TIMEOUT` and `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`, are documented in [viam-server environment variables](/reference/viam-server/#environment-variables). `viam-server` reads these variables itself rather than setting them in a module's process environment.
 
 ## Supported platforms
 
