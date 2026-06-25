@@ -156,8 +156,8 @@ You should see a live feed from the camera.
 Capture an image from your camera programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 
 When you run the code below, it saves an image file to your current directory. Check that the image shows what the camera sees.
 {{< tabs >}}
