@@ -39,7 +39,7 @@ The CLI is particularly well-suited for tasks that are awkward or impossible in 
 
 Some operations are only available through the CLI:
 
-- **Module scaffolding** (`viam module generate`) creates a new module project with boilerplate code and a build script.
+- **Module and app scaffolding** (`viam module generate`) creates a new module or [Viam application](/build-apps/hosting/) project with boilerplate code and a build script.
 - **Shell access** (`viam machines part shell`) opens an interactive terminal on a remote machine.
 - **File transfer** (`viam machines part cp`) copies files to and from machines.
 - **Port tunneling** (`viam machines part tunnel`) forwards a local port to a remote machine.
@@ -201,4 +201,59 @@ Every command supports the `--help` flag:
 viam --help
 viam machines --help
 viam machines part shell --help
+```
+
+## Enable shell completion
+
+The CLI supports tab completion for commands, subcommands, and flag names.
+If you installed the CLI with Homebrew, completions are set up automatically.
+Otherwise, load the completion script for your shell.
+
+{{< tabs >}}
+{{% tab name="bash" %}}
+
+Add to your `~/.bashrc`:
+
+```sh {class="command-line" data-prompt="$"}
+source <(viam completion bash)
+```
+
+{{% /tab %}}
+{{% tab name="zsh" %}}
+
+Add to your `~/.zshrc`:
+
+```sh {class="command-line" data-prompt="$"}
+source <(viam completion zsh)
+```
+
+{{% /tab %}}
+{{% tab name="fish" %}}
+
+```sh {class="command-line" data-prompt="$"}
+mkdir -p ~/.config/fish/completions
+viam completion fish > ~/.config/fish/completions/viam.fish
+```
+
+{{% /tab %}}
+{{% tab name="PowerShell" %}}
+
+Save the script as `viam.ps1` and dot-source it from your `$PROFILE`:
+
+```powershell {class="command-line" data-prompt=">"}
+viam completion pwsh > "$(Split-Path $PROFILE)/viam.ps1"
+Add-Content $PROFILE ". $(Split-Path $PROFILE)/viam.ps1"
+```
+
+The generated script uses its filename to register completion for the `viam` command, so the file must be named `viam.ps1`.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+After loading the script, press **Tab** to complete commands and flags:
+
+```sh {class="command-line" data-prompt="$"}
+viam <Tab>             # lists all commands
+viam machines <Tab>    # lists subcommands of machines
+viam data export <Tab> # lists subcommands of export
 ```

@@ -73,7 +73,6 @@ _3D Object Segmentation_ is the process of separating and returning a list of th
 The "objects" are usually a list of point clouds with associated metadata, like the label, the 3D bounding box, and center coordinates of the object.
 
 3D object segmentation is useful for obstacle detection.
-See our guide [Navigate with a Rover Base](/tutorials/services/navigate-with-rover-base/#next-steps-automate-obstacle-detection) for an example of automating obstacle avoidance with 3D object segmentation for obstacle detection.
 
 Any camera that can return 3D pointclouds can use 3D object segmentation.
 
