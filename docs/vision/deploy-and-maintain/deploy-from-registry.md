@@ -62,7 +62,7 @@ The ML model service loads the model file and exposes it for inference. It does 
 1. Open your machine in the Viam app and go to the **CONFIGURE** tab.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
 3. In the search field, type the ML model service name (for example, `tflite_cpu` for TFLite models) and select the matching result.
-4. Click **Add component**, give it a name (for example, `my-ml-model`), and click **Add component** again to confirm.
+4. Click **Add to machine**, give it a name (for example, `my-ml-model`), and click **Add to machine** again to confirm.
 
 ## 3. Select the model
 
@@ -84,7 +84,7 @@ The ML model service is a building block. To get detections, classifications, or
 
 1. Click the **+** icon and select **Configuration block**.
 2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
-3. Click **Add component**, name the service (for example, `my-detector`), and click **Add component** again to confirm.
+3. Click **Add to machine**, name the service (for example, `my-detector`), and click **Add to machine** again to confirm.
 4. In the vision service panel's **ML MODEL** section, select the ML model service from step 3.
 5. In the **DEFAULT CAMERA** section, pick the camera the vision service should use by default.
 6. Save.

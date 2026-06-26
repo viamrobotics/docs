@@ -100,7 +100,7 @@ Wait a minute for data to capture and sync, then refresh.
 1. Add notification methods:
    - **Email specific addresses**: toggle on, add addresses, set alert frequency.
    - **Email all machine owners**: toggle on, set alert frequency.
-   - **Webhook**: click **Add Webhook**, enter your cloud function URL, set alert frequency.
+   - **Webhook**: click **Add webhook**, enter your cloud function URL, set alert frequency.
      See [Trigger configuration](/reference/triggers/#webhook-attributes) for webhook payload details.
    - **Push notifications**: click **Add push notifications**, choose the target mobile app, add recipient email addresses or enable notifications for all machine owners, and set alert frequency.
      Recipients must be machine owners or operators.

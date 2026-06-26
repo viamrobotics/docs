@@ -49,7 +49,7 @@ Add the filtered camera module to your machine:
 1. Navigate to your machine's **CONFIGURE** tab.
 2. Click **+** and select **Configuration block**.
 3. In the search field, type `filtered-camera` and select the matching result.
-4. Click **Add component**, name the component `objectfilter-cam`, and click **Add component** again to confirm. The module is installed automatically.
+4. Click **Add to machine**, name the component `objectfilter-cam`, and click **Add to machine** again to confirm. The module is installed automatically.
 5. Add configuration attributes:
 
    {{< tabs >}}
@@ -106,7 +106,7 @@ Add the data management service to capture and sync filtered images:
 
 1. Click **+** and select **Configuration block**.
 2. In the search field, type `data management` and select `data_manager/builtin` from the results.
-3. Click **Add component**, name the service `data-manager`, and click **Add component** again to confirm.
+3. Click **Add to machine**, name the service `data-manager`, and click **Add to machine** again to confirm.
 4. Leave the default attributes and click **Save**.
 
 Enable data capture on the filtered camera:
@@ -124,16 +124,13 @@ Add a trigger to send alerts when filtered images sync:
 2. Enter a name and click **Create**.
 3. Set **Type** to **Data has been synced to the cloud**.
 4. Set **Data Types** to **Binary (image)**.
+5. Add notification methods. The following options live in the **Email**, **Webhook**, and **Push notifications** sections of the trigger card:
 
-   {{<imgproc src="/tutorials/helmet/trigger.png" resize="x600" style="width: 500px" declaredimensions=true alt="The trigger configured with 'Data has been synced to the cloud' as the type and 'Binary (image)' as the data type." class="shadow imgzoom" >}}
+   **Email**: In the **Email** section, toggle **Send to specific users** on, enter each email address, and set the **Alert frequency** per row. Or toggle **Send to all machine owners** on and set the **Alert frequency** for the all-owners row.
 
-5. Add notification methods. The following options live in the **ALERT OPTIONS** and **WEBHOOKS** sections of the trigger card:
+   **Webhook**: In the **Webhook** section click **Add webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/reference/triggers/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
 
-   **Email specific addresses**: Toggle on and add email addresses. Each row has its own **Alert frequency**.
-
-   **Email all machine owners**: Toggle on. Set the **Alert frequency** for the all-owners row.
-
-   **Webhook**: In the **WEBHOOKS** section click **Add Webhook**, enter the URL of your cloud function, and implement logic to process the [webhook payload](/reference/triggers/#webhook-attributes). Use this to integrate with external services like Twilio, PagerDuty, or Zapier.
+   **Push notifications**: In the **Push notifications** section click **Add push notifications**. Choose the **Application** (Viam mobile or a custom app ID). Then toggle **Send to all machine owners** on, or toggle **Send to specific users** on, add each recipient's **User email**, and click **Add user**. Recipients must be machine owners or operators. Set the **Alert frequency**.
 
 6. Set each **Alert frequency** you enabled (for example, maximum one alert per hour).
 7. Click **Save**.

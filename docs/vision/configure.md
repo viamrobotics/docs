@@ -38,7 +38,7 @@ The ML model service matches your model file's framework. For most tasks, `tflit
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
 2. Click the **+** icon next to your machine part and select **Configuration block**.
 3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
-4. Click **Add component**, name the service `my-ml-model`, and click **Add component** again to confirm.
+4. Click **Add to machine**, name the service `my-ml-model`, and click **Add to machine** again to confirm.
 
 ## 2. Configure the ML model service
 
@@ -118,7 +118,7 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
 
 1. Click the **+** icon and select **Configuration block**.
 2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
-3. Click **Add component**, name the service `my-detector`, and click **Add component** again to confirm.
+3. Click **Add to machine**, name the service `my-detector`, and click **Add to machine** again to confirm.
 
 ## 4. Configure the vision service
 

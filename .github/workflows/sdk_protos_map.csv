@@ -28,6 +28,7 @@ audio_in,Close,,close,Close,,
 
 ## AudioOut
 audio_out,Play,,play,Play,play,play
+audio_out,PlayStream,,play_stream,PlayStream,playStream,playStream
 audio_out,GetProperties,,get_properties,Properties,getProperties,getProperties
 audio_out,GetGeometries,,get_geometries,,,
 audio_out,Reconfigure,,,Reconfigure,,
@@ -137,6 +138,8 @@ gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
+gripper,GetCurrentInputs,,get_current_inputs,CurrentInputs,,getCurrentInputs
+gripper,GoToInputs,,go_to_inputs,GoToInputs,,goToInputs
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gripper,GetKinematics,,get_kinematics,Kinematics,getKinematics,

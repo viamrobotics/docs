@@ -13,7 +13,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): : The geometries associated with the Component.
 
 **Example:**
 
@@ -27,6 +27,35 @@ if geometries:
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/generic/client/index.html#viam.components.generic.client.GenericClient.get_geometries).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [([]spatialmath.Geometry)](https://pkg.go.dev/go.viam.com/rdk/spatialmath#Geometry): The geometries associated with this resource, in any order.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myGenericComponent, err := generic.FromProvider(machine, "my_generic_component")
+
+geometries, err := myGenericComponent.Geometries(context.Background(), nil)
+
+if len(geometries) > 0 {
+    // Get the center of the first geometry
+    elem := geometries[0]
+    fmt.Println("Pose of the first geometry's center point:", elem.Pose())
+}
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Shaped).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}
@@ -45,12 +74,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 ```ts {class="line-numbers linkable-line-numbers"}
 const generic = new VIAM.GenericComponentClient(
   machine,
-  'my_generic_component'
+  "my_generic_component",
 );
 
 // Get the geometries of this component
 const geometries = await generic.getGeometries();
-console.log('Geometries:', geometries);
+console.log("Geometries:", geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#getgeometries).
@@ -74,7 +103,7 @@ Supported by `viam-micro-server`.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): : Result of the executed command.
 
 **Raises:**
 
@@ -132,14 +161,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ```ts {class="line-numbers linkable-line-numbers"}
 // Plain object (recommended)
 const result = await resource.doCommand({
-  myCommand: { key: 'value' },
+  myCommand: { key: "value" },
 });
 
 // Struct (still supported)
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
 const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
+  Struct.fromJson({ myCommand: { key: "value" } }),
 );
 ```
 
@@ -182,7 +211,7 @@ Get the `ResourceName` for this generic component.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): : The ResourceName of this Resource.
 
 **Example:**
 
@@ -227,7 +256,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-generic_component.name
+generic_component.name;
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/GenericComponentClient.html#name).
