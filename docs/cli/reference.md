@@ -70,7 +70,7 @@ viam data tag filter add --tags=<tags> [...named args from filter]
 viam data tag filter remove --tags=<tags> [...named args from filter]
 viam data index create --collection-type=<type> --index-path=<file> [--org-id=<org-id>] [--pipeline-name=<name>]
 viam data index delete --collection-type=<type> --index-name=<name> [--org-id=<org-id>] [--pipeline-name=<name>]
-viam data index list --collection-type=<type> [--org-id=<org-id>]
+viam data index list --collection-type=<type> [--org-id=<org-id>] [--pipeline-name=<name>]
 ```
 
 ### `data export tabular`
@@ -345,7 +345,7 @@ viam data index delete --collection-type=<type> --index-name=<name> [--org-id=<o
 List all custom indexes for a data collection.
 
 ```sh {class="command-line" data-prompt="$"}
-viam data index list --collection-type=<type> [--org-id=<org-id>]
+viam data index list --collection-type=<type> [--org-id=<org-id>] [--pipeline-name=<name>]
 ```
 
 <!-- prettier-ignore -->
@@ -353,6 +353,7 @@ viam data index list --collection-type=<type> [--org-id=<org-id>]
 | -------- | ----------- | --------- |
 | `--collection-type` | Data collection type for index operations. Options: `hot-storage`, `pipeline-sink`. | **Required** |
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
+| `--pipeline-name` | Name of the data pipeline (required when `--collection-type` is `pipeline-sink`). | Conditional |
 
 ## `datapipelines`
 
