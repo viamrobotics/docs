@@ -227,6 +227,8 @@ viam data database hostname --org-id=abc
 
 Query tabular data using SQL. Results are printed to stdout as NDJSON (one JSON object per line), or written to a file if `--destination` is specified.
 
+SQL queries run against `standard` tabular data. To query the [hot data store](/data/hot-data-store/) or a pipeline sink, use [`data query tabular mql`](#data-query-tabular-mql), which supports `--data-source-type`.
+
 ```sh {class="command-line" data-prompt="$"}
 # query tabular data with SQL and print results to stdout
 viam data query tabular sql --org-id=abc --sql="SELECT * FROM readings WHERE time_received >= CAST('2025-01-01T00:00:00Z' AS TIMESTAMP) LIMIT 10"

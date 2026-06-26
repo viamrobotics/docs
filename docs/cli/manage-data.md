@@ -195,6 +195,8 @@ viam data query tabular sql --org-id=<org-id> \
   --destination=./query-results
 ```
 
+SQL queries run against your `standard` tabular data. To query the [hot data store](/data/hot-data-store/) or pipeline results, use MQL with `--data-source-type`, shown below.
+
 ### Query tabular data with MQL
 
 ```sh {class="command-line" data-prompt="$"}
