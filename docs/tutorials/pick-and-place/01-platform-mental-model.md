@@ -11,7 +11,6 @@ phase_total: 5
 time_estimate: "15 minutes"
 next: "/tutorials/pick-and-place/configure-resources/"
 languages: ["python"]
-draft: true
 ---
 
 Before you configure a single resource, this phase gives you the mental map you need to understand what happens when you make an API call, why config changes appear instantly on the robot, and how Python code on your laptop talks to hardware on the other side of the room.

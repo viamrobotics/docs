@@ -12,7 +12,6 @@ time_estimate: "30 minutes"
 prev: "/tutorials/pick-and-place/static-positions/"
 next: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
-draft: true
 ---
 
 This is the core phase of the workshop: you write and run a Python script on your laptop that connects to the robot, executes the static pick-and-place sequence from Phase 3, and then adds live color detection to sort cubes autonomously.

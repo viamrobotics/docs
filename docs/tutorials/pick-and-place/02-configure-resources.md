@@ -12,7 +12,6 @@ time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/platform-mental-model/"
 next: "/tutorials/pick-and-place/static-positions/"
 languages: ["python"]
-draft: true
 ---
 
 In this phase you open the pre-loaded machine configuration, verify that each resource is live, and get familiar with the Viam app tools you will use throughout the rest of the workshop.

@@ -11,7 +11,6 @@ phase_total: 5
 time_estimate: "15 minutes"
 prev: "/tutorials/pick-and-place/local-python-script/"
 languages: ["python"]
-draft: true
 ---
 
 This phase is optional: if you want the pick-and-sort cycle to run on the robot without a laptop connection, you can package your Phase 4 script as an inline module using the Viam app's built-in editor.
