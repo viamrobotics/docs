@@ -19,6 +19,8 @@ draft: true
 
 In this phase you move the arm through the full pick-and-place sequence using saved poses, with no perception yet. The goal is to prove that the hardware and motion planning work before you add detection, so that any bug you encounter later has only one new cause.
 
+{{< workshop-phases >}}
+
 ## Why static positions first
 
 When you add perception and motion planning at the same time, a failure could live in detection, the frame transform, the pose math, the motion planner, or gripper timing, and there is no straightforward way to tell which. Saving fixed poses lets you run the full hardware loop first. Once the arm reliably travels through every stage of the sequence, perception becomes the only new variable when you move to Phase 4.

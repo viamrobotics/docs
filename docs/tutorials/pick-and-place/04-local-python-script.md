@@ -17,6 +17,8 @@ draft: true
 
 This is the core phase of the workshop: you write and run a Python script on your laptop that connects to the robot, executes the static pick-and-place sequence from Phase 3, and then adds live color detection to sort cubes autonomously.
 
+{{< workshop-phases >}}
+
 ## Why a script before a module
 
 <!-- TODO: explain from slides Phase 4 why starting with a local script (fast iteration, local debugger, print statements) is the right approach before packaging as a module. -->

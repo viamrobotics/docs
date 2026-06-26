@@ -17,6 +17,8 @@ draft: true
 
 In this phase you open the pre-loaded machine configuration, verify that each resource is live, and get familiar with the Viam app tools you will use throughout the rest of the workshop.
 
+{{< workshop-phases >}}
+
 ## What is already configured
 
 <!-- TODO: walk through the imported config fragment from slides Phase 2: arm, gripper, camera, frame system, and vision service components and their key parameters. -->
