@@ -10,7 +10,7 @@ date: "2026-03-27"
 
 Once you have [created a pipeline](/data/pipelines/create-a-pipeline/), its results land in a dedicated sink collection that is separate from your raw data. This page covers how to query that sink.
 
-You query pipeline results the same way you query raw readings, except you specify the `pipeline_sink` data source type and the **pipeline ID** of the pipeline whose results you want. The pipeline ID is returned on creation. If you did not save it, retrieve it with:
+You query pipeline results the same way you query raw readings, except you specify the `pipeline-sink` data source type and the **pipeline ID** of the pipeline whose results you want. The pipeline ID is returned on creation. If you did not save it, retrieve it with:
 
 ```bash
 viam datapipelines list --org-id=<org-id>

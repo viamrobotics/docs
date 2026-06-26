@@ -498,14 +498,23 @@ are set to the target platform. See [Environment variables](#environment-variabl
 | `viam module reload --part-id <id>`       | Build in cloud; machine downloads the package directly.     |
 | `viam module restart --part-id <id>`      | Restart a running module without rebuilding.                |
 
+`reload` flags: `--part-id` (target machine part), `--path` (root of git
+repo to build), `--annotation` (text note describing the purpose of this
+reload build), `--module` (path to `meta.json`), `--model-name` (add a
+resource to config with this model triple), `--resource-name` (name the
+resource instance), `--id` (module ID), `--cloud-config` (path to
+`viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
+containing `meta.json`), `--local` (run entrypoint directly on localhost).
+
 `reload-local` flags: `--part-id` (target machine part), `--no-build` (skip
 build), `--local` (run entrypoint directly on localhost instead of bundling),
-`--model-name` (add a resource to config with this model triple),
-`--name` (name the added resource), `--resource-name` (name the resource
-instance), `--id` (module ID, alternative to `--name`),
-`--cloud-config` (path to `viam.json`, alternative to `--part-id`),
-`--workdir` (subdirectory containing `meta.json`), `--home-dir` (remote
-user's home directory), `--no-progress` (hide transfer progress).
+`--module` (path to `meta.json`), `--model-name` (add a resource to config
+with this model triple), `--name` (name the added resource),
+`--resource-name` (name the resource instance), `--id` (module ID,
+alternative to `--name`), `--cloud-config` (path to `viam.json`, alternative
+to `--part-id`), `--workdir` (subdirectory containing `meta.json`),
+`--home-dir` (remote user's home directory), `--no-progress` (hide transfer
+progress).
 
 ## Environment variables
 
@@ -551,12 +560,7 @@ The following variables are set during [cloud builds](#build), not at runtime:
 
 ### Server-side
 
-The following variables control `viam-server` startup behavior (not passed to modules):
-
-| Variable                              | Description                                                                |
-| ------------------------------------- | -------------------------------------------------------------------------- |
-| `VIAM_MODULE_STARTUP_TIMEOUT`         | Override the default 5-minute startup timeout (for example, `10m`, `30s`). |
-| `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Override the default 2-minute per-resource configuration timeout.          |
+Environment variables that control how `viam-server` starts and manages modules, including `VIAM_MODULE_STARTUP_TIMEOUT` and `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`, are documented in [viam-server environment variables](/reference/viam-server/#environment-variables). `viam-server` reads these variables itself rather than setting them in a module's process environment.
 
 ## Supported platforms
 

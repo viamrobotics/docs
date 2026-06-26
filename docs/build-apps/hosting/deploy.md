@@ -18,9 +18,34 @@ Viam Applications are distributed through the Viam module registry, which is why
 - The [Viam CLI](/cli/) installed and authenticated (`viam login`).
 - A public namespace for your organization. Set this in the [organization settings](/organization/) if you have not already. Viam Applications require a public namespace because the app's URL uses it.
 
-## Create the module registry entry
+## Scaffold with the CLI (recommended)
 
-First-time setup only. Each Viam Application is represented as a module in the Viam registry. Create the registry entry:
+The fastest way to create a new Viam application is to run the generator:
+
+```sh {class="command-line" data-prompt="$"}
+viam module generate
+```
+
+Choose **App** when prompted, then follow the interactive prompts to set the app name and type (`single_machine` or `multi_machine`). The CLI creates a project directory with a `meta.json`, a Go-based module entrypoint, a `Makefile`, and a `dist/index.html` placeholder.
+
+You can also pass flags to skip the interactive prompts:
+
+```sh {class="command-line" data-prompt="$"}
+viam module generate \
+  --generate-type=app \
+  --app-name=my-app \
+  --app-type=single_machine \
+  --visibility=public \
+  --public-namespace=your-namespace
+```
+
+After scaffolding, skip to [Build your app](#build-your-app) to add your frontend code and upload the app.
+
+## Create the module registry entry manually
+
+If you prefer to set up the registry entry and `meta.json` yourself instead of using the generator, follow these steps.
+
+Each Viam Application is represented as a module in the Viam registry. Create the registry entry:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module create --name my-app --public-namespace your-namespace

@@ -12,7 +12,7 @@ aliases:
   - /build/data/query-data/
 ---
 
-Explore and analyze your captured data using SQL or MQL queries. You can run queries interactively in the Viam app's query editor or programmatically through the SDK for ad-hoc analysis, building dashboards, or integrating with your own tools.
+Explore and analyze your captured data using SQL or MQL queries. You can run queries interactively in the Viam app's query editor, from the command line with the [Viam CLI](/cli/manage-data/#query-data), or programmatically through the SDK. Use CLI or SDK queries for ad-hoc analysis, building dashboards, or integrating with your own tools.
 
 Tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is queryable through SQL and MQL. Binary data (images, point clouds) is stored separately and accessible through the [data client API](/reference/apis/data-client/).
 
@@ -247,6 +247,14 @@ Find all detections above a confidence threshold:
 The `$unwind` stage is important when your data contains arrays. It flattens
 the array so each element becomes its own document, which you can then filter
 and project individually.
+
+## Save and reuse queries
+
+You can save MQL queries for reuse. To save a query, switch to MQL mode, click **Save query**, and give it a name. It appears under the **Saved** tab in the editor sidebar, next to a **Recent** tab of your recent queries. Saved queries are available to your whole organization. You can also run a saved query from code by passing its name to [`TabularDataByMQL`](/data/query-data-from-code/#reuse-a-saved-query). Saving is not available for SQL queries.
+
+## Get help writing queries with the Query Assistant
+
+The **Query Assistant** (Beta) is a chat panel that turns a plain-language description into a query. It works in both SQL and MQL: click **Assistant**, describe the data you want, and click **Insert** to add the suggested query to the editor. It helps whenever you are not sure how to express what you want, from a simple filter to a multi-stage MQL aggregation pipeline.
 
 ## Query from code
 

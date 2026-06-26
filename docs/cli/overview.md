@@ -39,7 +39,7 @@ The CLI is particularly well-suited for tasks that are awkward or impossible in 
 
 Some operations are only available through the CLI:
 
-- **Module and app scaffolding** (`viam module generate`) creates a new module, app, or combined module+app project with boilerplate code and a build script. Use `viam module add-model` and `viam module add-app` to extend existing modules.
+- **Module and app scaffolding** (`viam module generate`) creates a new module, [Viam application](/build-apps/hosting/), or combined module+app project with boilerplate code and a build script. Use `viam module add-model` and `viam module add-app` to extend existing modules.
 - **Shell access** (`viam machines part shell`) opens an interactive terminal on a remote machine.
 - **File transfer** (`viam machines part cp`) copies files to and from machines.
 - **Port tunneling** (`viam machines part tunnel`) forwards a local port to a remote machine.
