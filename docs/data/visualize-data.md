@@ -291,12 +291,10 @@ Viam SDK to query data and a plotting library to render it.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Install the dependencies:
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/). Then install `matplotlib`:
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip3 install viam-sdk matplotlib
+pip3 install matplotlib
 ```
 
 Save this as `visualize_data.py`:

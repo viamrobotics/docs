@@ -134,11 +134,7 @@ The same data is accessible from your own code through the Viam SDK.
 
 Install the Viam Python SDK:
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip3 install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `query_data.py`:
 

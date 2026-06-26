@@ -211,11 +211,7 @@ Verify end-to-end by pulling a detection from your own code.
 
 Install the SDK if you have not already:
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip3 install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

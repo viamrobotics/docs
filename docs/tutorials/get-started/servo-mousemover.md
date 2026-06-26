@@ -97,13 +97,7 @@ pip3 --version
 ```
 
 The [Viam Python SDK](https://python.viam.dev/) (Software Development Kit) allows you to write programs in the Python programming language to operate machines using Viam.
-To get the Python SDK working on the Raspberry Pi, run the following command in your Raspberry Pi terminal:
-
-```sh {class="command-line" data-prompt="$"}
-python3 -m venv .venv
-source .venv/bin/activate
-pip3 install viam-sdk
-```
+To get the Python SDK working on the Raspberry Pi, follow [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 ## Test the SDK with your machine
 

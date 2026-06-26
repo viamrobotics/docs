@@ -128,11 +128,7 @@ With a fake gantry, position values update without physical motion.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip3 install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `gantry_test.py`:
 
