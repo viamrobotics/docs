@@ -40,17 +40,17 @@ You will configure an xArm6 robotic arm fitted with a finger gripper and an Inte
 
 ## Phases
 
-1. **Platform mental model** (~15 min): learn how Viam resources, the frame system, and the motion service fit together before touching any hardware.
-2. **Configure resources and explore the app** (~20 min): add the arm, gripper, camera, and vision service in the Viam app; confirm each resource is live.
-3. **Static positions and safety obstacles** (~20 min): define named arm poses and add a virtual obstacle to prevent the arm from hitting the table.
-4. **Local Python script** (~30 min): write and run the pick-and-sort script from your laptop; this is the core goal of the workshop.
-5. **Inline module** (~15 min, optional): package the script as an on-robot module so the cycle runs without a laptop connection.
+1. **[Platform mental model](/tutorials/pick-and-place/platform-mental-model/)** (~15 min): learn how Viam resources, the frame system, and the motion service fit together before touching any hardware.
+2. **[Configure resources and explore the app](/tutorials/pick-and-place/configure-resources/)** (~20 min): add the arm, gripper, camera, and vision service in the Viam app; confirm each resource is live.
+3. **[Static positions and safety obstacles](/tutorials/pick-and-place/static-positions/)** (~20 min): define named arm poses and add a virtual obstacle to prevent the arm from hitting the table.
+4. **[Local Python script](/tutorials/pick-and-place/local-python-script/)** (~30 min): write and run the pick-and-sort script from your laptop; this is the core goal of the workshop.
+5. **[Inline module](/tutorials/pick-and-place/inline-module/)** (~15 min, optional): package the script as an on-robot module so the cycle runs without a laptop connection.
 
 ## Prerequisites
 
-**Hardware pre-provisioned for you:** if you are in a guided workshop where the hardware is already set up, skip directly to Phase 1.
+**Hardware pre-provisioned for you:** if you are in a guided workshop where the hardware is already set up, skip directly to [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 
-**Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for Phase 1. The setup guide covers mounting the camera, connecting the arm controller, and installing viam-server on the Meerkat.
+**Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/). The setup guide covers mounting the camera, connecting the arm controller, and installing viam-server on the Meerkat.
 
 Before Phase 4 you also need Python 3.10 or newer and the Viam Python SDK on the machine you will run the script from. Verify with:
 
