@@ -177,7 +177,11 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 
 ## Find which machines use a fragment
 
-Before changing or removing a fragment, you usually want to know which machines use it. Viam exposes this through `GetFragmentUsage` (returns a count of machines per revision) and `ListMachineSummaries` (returns the full list of machines and their resolved fragments). Neither is yet wrapped as a high-level method on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
+Before changing or removing a fragment, you usually want to know which machines use it.
+
+**In the Viam app**, navigate to [app.viam.com/fragments](https://app.viam.com/fragments) and click the **Fragments in use** tab. This shows every fragment that at least one machine in your organization uses, along with the version pinned in your configuration and the version actually deployed on machines. It also flags how many machines are running a version older than the latest available. Click a fragment to see a per-machine breakdown of which version or tag each machine is pinned to, and whether an upgrade is available.
+
+**Through the API**, Viam exposes `GetFragmentUsage` (returns a count of machines per revision) and `ListMachineSummaries` (returns the full list of machines and their resolved fragments). Neither is yet wrapped as a high-level method on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
 
 ## Set default fragments for an organization
 
