@@ -1575,7 +1575,7 @@ The first prompt asks whether you want to generate a **module** (a modular resou
 If you are generating a module using Python, you must have Python version 3.11 or newer installed on your computer for the `viam module generate` command to work.
 {{% /alert %}}
 
-When running without a terminal (in scripts or CI/CD), you must provide `--name`, `--language`, `--public-namespace`, `--resource-subtype`, and `--model-name` as flags.
+When generating a module without a terminal (in scripts or CI/CD), you must provide `--name`, `--language`, `--public-namespace`, `--resource-subtype`, and `--model-name` as flags.
 You must also authenticate before running the command.
 See [Automate with scripts](/cli/automate-with-scripts/) for details on non-interactive authentication.
 
@@ -1620,7 +1620,7 @@ Services:
 | `--name` | (Module only) Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. Required in non-interactive mode. | Optional |
 | `--language` | (Module only) Language to use for the module. Options: `python`, `go`. Required in non-interactive mode. | Optional |
 | `--visibility` | Visibility. Options: `private`, `public`, `public_unlisted`. | Optional |
-| `--public-namespace` | Namespace or organization ID. Must be either a valid organization ID or a namespace that exists within a user organization. Required in non-interactive mode. | Optional |
+| `--public-namespace` | Namespace or organization ID. Must be either a valid organization ID or a namespace that exists within a user organization. Required in non-interactive module generation. | Optional |
 | `--resource-subtype` | (Module only) The API to implement with the modular resource. For example, `motor`. Required in non-interactive mode. | Optional |
 | `--model-name` | (Module only) Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. Required in non-interactive mode. | Optional |
 | `--register` | Register with Viam to associate it with your organization. Default: `false`. | Optional |

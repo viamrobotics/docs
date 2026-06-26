@@ -194,7 +194,7 @@ Increase it for faster exports on high-bandwidth connections, or decrease it to 
 The CLI detects whether it is connected to a terminal.
 When running without a terminal, commands that normally prompt for user input instead require explicit flags:
 
-- `viam module generate` requires `--name`, `--language`, `--public-namespace`, `--resource-subtype`, and `--model-name`.
+- `viam module generate`, when generating a module, requires `--name`, `--language`, `--public-namespace`, `--resource-subtype`, and `--model-name`.
 - `viam machines part fragments remove` requires `--fragment`.
 
 If you omit a required flag in non-interactive mode, the CLI prints an error listing the missing flags.
