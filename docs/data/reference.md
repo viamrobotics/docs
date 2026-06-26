@@ -124,6 +124,8 @@ The following components and services support data capture and cloud sync. The t
 
 {{< readfile "/static/include/data/capture-supported.md" >}}
 
+`GetWorldPose` captures the component's position in world coordinates using the [frame system](/motion-planning/frame-system/). It requires a configured frame system on the machine and a frame configured for the component.
+
 If the resource type you need is not listed, you can still capture data from it using the `DoCommand` method with a custom `docommand_input` parameter.
 
 ## Capture and sync configuration
@@ -286,7 +288,7 @@ The following settings are processed by the Viam cloud platform, not by `viam-se
 <!-- prettier-ignore -->
 | Name | Type | Level | Description |
 | --- | --- | --- | --- |
-| `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
+| `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the default data store. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
 | `recent_data_store` | object | Inside a `capture_methods[]` entry | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
 For remote parts capture, see [Capture from multi-part machines](/data/capture-sync/remote-parts-capture/).

@@ -105,7 +105,13 @@ This frame places the arm's base at the world origin, which is common for single
 
 For two-arm setups, one arm is typically at the world origin and the other is offset by its distance from the first arm in the x and y directions using the `translation` field.
 
-See [Frame System](/motion-planning/frame-system/) for details on configuring frames.
+To attach a gripper, camera, or other tool to the end effector, set the attached component's frame `parent` to the arm's name.
+See [Add a gripper](/hardware/common-components/add-a-gripper/#3-configure-a-frame) for a worked example.
+
+If you're writing a driver module for an arm that isn't in the registry, the module implements the arm's `Kinematics` method to return the arm's kinematic model.
+See [Kinematics](/motion-planning/reference/kinematics/) for the URDF and SVA JSON formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
+
+See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
 
 ### 4. Save and test
 
@@ -133,8 +139,8 @@ The fake arm simulates kinematics for the specified model. Set `arm-model` to `u
 Read the arm's current joint positions, move two joints, and confirm the positions changed.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 
 If you're using a real arm, you'll see it physically move when you run the code below.
 With a fake arm, the positions update in memory without physical motion, but you can watch the joint values update in real time by expanding the **test** section on the arm's component card in the **CONFIGURE** tab.
