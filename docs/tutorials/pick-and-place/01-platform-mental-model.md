@@ -16,6 +16,8 @@ draft: true
 
 Before you configure a single resource, this phase gives you the mental map you need to understand what happens when you make an API call, why config changes appear instantly on the robot, and how Python code on your laptop talks to hardware on the other side of the room.
 
+{{< workshop-phases >}}
+
 ## Three questions to answer first
 
 <!-- TODO: pose and answer the three orienting questions from slides Phase 1 that frame why the Viam model is different from a traditional robotics SDK. -->

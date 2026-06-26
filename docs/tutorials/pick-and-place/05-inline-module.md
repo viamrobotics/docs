@@ -16,6 +16,8 @@ draft: true
 
 This phase is optional: if you want the pick-and-sort cycle to run on the robot without a laptop connection, you can package your Phase 4 script as an inline module using the Viam app's built-in editor.
 
+{{< workshop-phases >}}
+
 ## Script versus module
 
 <!-- TODO: contrast a standalone script (requires a laptop) with a module (runs as a managed service on the robot) from slides Phase 5. -->
