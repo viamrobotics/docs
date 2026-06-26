@@ -2887,7 +2887,7 @@ viam traces import-remote --part=<part> [--endpoint=<host:port>] [--organization
 | `--endpoint` | OTLP endpoint in `host:port` format. Default: `localhost:4317`. | Optional |
 | `--organization` | Organization ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
 | `--location` | Location ID or name. Required when using a name (rather than ID) to identify the part. | Optional |
-| `--viam-home-dir` | Path to the target machine's VIAM_HOME directory. Use when the machine uses a non-default VIAM_HOME location. Default: `~/.viam`. | Optional |
+| `--viam-home-dir` | Path to the target machine's [VIAM_HOME](/reference/viam-server/#environment-variables) directory. Use when the machine uses a non-default VIAM_HOME location. Default: `~/.viam`. | Optional |
 
 ### `traces print-local`
 
