@@ -21,7 +21,6 @@ hardware:
   - "System76 Meerkat"
 companion_repo: "https://github.com/viam-devrel/pick-and-place"
 no_list: true
-draft: true
 ---
 
 In this workshop you build a vision-guided robot that detects colored cubes, picks each one up, and drops it in the correct bin, sorted by color. The workshop is structured as five sequential phases, each ending with a working system state you can verify before moving on. Completing Phase 4 (the local Python script) is a full success; Phase 5 (packaging your script as an inline module) is optional.

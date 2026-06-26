@@ -12,7 +12,6 @@ time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/configure-resources/"
 next: "/tutorials/pick-and-place/local-python-script/"
 languages: ["python"]
-draft: true
 ---
 
 <!-- TODO: companion repo viam-devrel/pick-and-place does not exist yet; these links are placeholders. -->
