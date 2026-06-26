@@ -76,7 +76,7 @@ top-level README](../../README.md#continuous-integration).
 #### `vale-lint.yml` — _vale-lint_
 
 - **Purpose:** Runs the Vale prose style linter and reports violations as
-  GitHub checks via reviewdog.
+  GitHub checks through reviewdog.
 - **Trigger:** `pull_request` (`opened`, `synchronize`).
 - **Blocking:** **Yes** — `fail_on_error: true`, `level: error`. This is the
   prose-style gate referenced in `CLAUDE.md`.
