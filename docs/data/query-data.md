@@ -12,7 +12,7 @@ aliases:
   - /build/data/query-data/
 ---
 
-Explore and analyze your captured data using SQL or MQL queries. You can run queries interactively in the Viam app's query editor or programmatically through the SDK for ad-hoc analysis, building dashboards, or integrating with your own tools.
+Explore and analyze your captured data using SQL or MQL queries. You can run queries interactively in the Viam app's query editor, from the command line with the [Viam CLI](/cli/manage-data/#query-data), or programmatically through the SDK. Use CLI or SDK queries for ad-hoc analysis, building dashboards, or integrating with your own tools.
 
 Tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) is queryable through SQL and MQL. Binary data (images, point clouds) is stored separately and accessible through the [data client API](/reference/apis/data-client/).
 

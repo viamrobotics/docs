@@ -54,12 +54,15 @@ For setup instructions, see [Enable shell completion](/cli/overview/#enable-shel
 ## `data`
 
 The `data` command allows you to manage machine data.
-With it, you can export data in a variety of formats, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
+With it, you can export data in a variety of formats, query tabular or binary data with SQL or MQL, delete data, add or remove tags from all data that matches a given filter, or configure a database user to enable querying synced data directly in the cloud.
 
 ```sh {class="command-line" data-prompt="$"}
 viam data export binary filter --destination=<output path> [...named args]
 viam data export binary ids --destination=<output path> [...named args]
 viam data export tabular --destination=<destination> --part-id=<part-id> --resource-name=<resource-name> --resource-subtype=<resource-subtype> --method=<method> [other options]
+viam data query tabular sql --org-id=<org-id> --sql=<query> [--destination=<output path>]
+viam data query tabular mql --org-id=<org-id> --mql=<query> [--data-source-type=<type>] [--pipeline-id=<id> | --pipeline-name=<name>] [--destination=<output path>]
+viam data query binary filter [--destination=<output path>] [--limit=<N>] [...named args from filter]
 viam data delete binary --org-ids=<org-ids> --start=<timestamp> --end=<timestamp> [...named args]
 viam data delete tabular --org-id=<org-id> --delete-older-than-days=<N>
 viam data database configure --org-id=<org-id> --password=<db-user-password>
@@ -220,6 +223,90 @@ viam data database hostname --org-id=abc
 | -------- | ----------- | --------- |
 | `--org-id` | The organization ID. Uses default org if set. | Optional |
 
+### `data query tabular sql`
+
+Query tabular data using SQL. Results are printed to stdout as NDJSON (one JSON object per line), or written to a file if `--destination` is specified.
+
+SQL queries run against `standard` tabular data. To query the [hot data store](/data/hot-data-store/) or a pipeline sink, use [`data query tabular mql`](#data-query-tabular-mql), which supports `--data-source-type`.
+
+```sh {class="command-line" data-prompt="$"}
+# query tabular data with SQL and print results to stdout
+viam data query tabular sql --org-id=abc --sql="SELECT * FROM readings WHERE time_received >= CAST('2025-01-01T00:00:00Z' AS TIMESTAMP) LIMIT 10"
+
+# query and save results to a file
+viam data query tabular sql --org-id=abc --sql="SELECT component_name, data FROM readings WHERE time_received >= CAST('2025-01-01T00:00:00Z' AS TIMESTAMP) LIMIT 100" --destination=./query-results
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--sql` | SQL query to run against the organization's tabular data. | **Required** |
+| `--org-id` | The organization ID. Uses default org if set. | Optional |
+| `--destination` | Output directory for query results. Prints to stdout if omitted. | Optional |
+
+### `data query tabular mql`
+
+Query tabular data using MQL (MongoDB Query Language). Results are printed to stdout as NDJSON (one JSON object per line), or written to a file if `--destination` is specified.
+
+```sh {class="command-line" data-prompt="$"}
+# query tabular data with MQL and print results to stdout
+viam data query tabular mql --org-id=abc --mql='[{"$match":{"component_name":"my-sensor"}},{"$limit":10}]'
+
+# query from a JSON file
+viam data query tabular mql --org-id=abc --mql-path=./my-query.json
+
+# query against the hot data store
+viam data query tabular mql --org-id=abc --data-source-type=hot-storage --mql='[{"$limit":5}]'
+
+# query pipeline results by ID
+viam data query tabular mql --org-id=abc --data-source-type=pipeline-sink --pipeline-id=<pipeline-id> --mql='[{"$limit":5}]'
+
+# query pipeline results by name
+viam data query tabular mql --org-id=abc --data-source-type=pipeline-sink --pipeline-name=my-pipeline --mql='[{"$limit":5}]'
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--mql` | MQL query as a JSON string. You must specify either `--mql` or `--mql-path`. | Optional |
+| `--mql-path` | Path to a JSON file containing the MQL query. You must specify either `--mql` or `--mql-path`. | Optional |
+| `--org-id` | The organization ID. Uses default org if set. | Optional |
+| `--data-source-type` | Data source to query. Options: `standard` (default), `hot-storage`, `pipeline-sink`. | Optional |
+| `--pipeline-id` | Pipeline ID to query. Specify either `--pipeline-id` or `--pipeline-name`, not both. Required when `--data-source-type=pipeline-sink` if `--pipeline-name` is not specified. | Optional |
+| `--pipeline-name` | Pipeline name to query. Specify either `--pipeline-id` or `--pipeline-name`, not both. Required when `--data-source-type=pipeline-sink` if `--pipeline-id` is not specified. | Optional |
+| `--destination` | Output directory for query results. Prints to stdout if omitted. | Optional |
+
+### `data query binary filter`
+
+Query binary data metadata by filter. Returns metadata only (no binary content). Results are printed to stdout as NDJSON (one JSON object per line), or written to a file if `--destination` is specified.
+
+```sh {class="command-line" data-prompt="$"}
+# query binary data metadata for a specific component
+viam data query binary filter --org-ids=<org-id> --component-name=front-camera --mime-types=image/jpeg --limit=10
+
+# save results to a file
+viam data query binary filter --org-ids=<org-id> --component-name=front-camera --destination=./query-results
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--destination` | Output directory for query results. Prints to stdout if omitted. | Optional |
+| `--limit` | Maximum number of results to return. 0 returns all matches. | Optional |
+| `--bbox-labels` | String labels corresponding to bounding boxes within images. | Optional |
+| `--component-name` | Filter by specified component name. | Optional |
+| `--component-type` | Filter by specified component type. | Optional |
+| `--location-ids` | Filter by specified location ID (accepts comma-separated list). | Optional |
+| `--machine-id` | Filter by specified machine ID. | Optional |
+| `--machine-name` | Filter by specified machine name. | Optional |
+| `--method` | Filter by specified method. | Optional |
+| `--mime-types` | Filter by specified MIME type (accepts comma-separated list). | Optional |
+| `--org-ids` | Filter by specified organization ID (accepts comma-separated list). | Optional |
+| `--part-id` | Filter by specified part ID. | Optional |
+| `--part-name` | Filter by specified part name. | Optional |
+| `--start` | ISO-8601 timestamp indicating the start of the interval. | Optional |
+| `--end` | ISO-8601 timestamp indicating the end of the interval. | Optional |
+
 ### `data tag ids add`
 
 Add tags to all data that matches the given binary data IDs.
@@ -379,7 +466,7 @@ Create a new data pipeline.
 viam datapipelines create --org-id=123 --name="Daily Sensor Summary" --schedule="0 9 * * *" --data-source-type=standard --mql='[{"$match": {"component_name": "sensor-1"}}]' --enable-backfill=False
 
 # create a data pipeline with hot storage data source type for faster access
-viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hotstorage --mql='[{"$match": {"component_name": "camera-1"}}]' --enable-backfill=False
+viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="*/5 * * * *" --data-source-type=hot-storage --mql='[{"$match": {"component_name": "camera-1"}}]' --enable-backfill=False
 ```
 
 <!-- prettier-ignore -->
@@ -391,7 +478,7 @@ viam datapipelines create --org-id=123 --name="Real-time Analytics" --schedule="
 | `--org-id` | ID of the organization that owns the data pipeline. Uses default org if set. | Optional |
 | `--mql` | MQL (MongoDB Query Language) query as a JSON string for data processing. You must specify either `--mql` or `--mql-path` when creating a pipeline. | Optional |
 | `--mql-path` | Path to a JSON file containing the MQL query for the data pipeline. You must specify either `--mql` or `--mql-path` when creating a pipeline. | Optional |
-| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hotstorage`. | Optional |
+| `--data-source-type` | Data source type for the pipeline. Options: `standard` (default), `hot-storage`. | Optional |
 
 ### `datapipelines rename`
 

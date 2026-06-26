@@ -21,7 +21,7 @@ These are the underlying fields on the pipeline resource. The CLI flags and SDK 
 | `schedule`         | string | Yes      | `--schedule`            | Cron expression in UTC. Determines both when the pipeline runs and the query time window. See [Cron schedule](#cron-schedule).  |
 | `mql_binary`       | array  | Yes      | `--mql` or `--mql-path` | MQL aggregation pipeline as an array of stage objects. See [Supported MQL operators](/data/reference/#supported-mql-operators). |
 | `enable_backfill`  | bool   | Yes      | `--enable-backfill`     | Whether to process historical time windows. See [Backfill behavior](#backfill-behavior).                                        |
-| `data_source_type` | enum   | Yes      | `--data-source-type`    | Data source to query. Accepts `standard` or `hotstorage`. See [Data source types](#data-source-types).                          |
+| `data_source_type` | enum   | Yes      | `--data-source-type`    | Data source to query. Accepts `standard` or `hot-storage`. See [Data source types](#data-source-types).                         |
 
 ## Cron schedule
 
@@ -47,8 +47,8 @@ Pipelines support three data source types. You use them in two contexts: when cr
 | Type          | Value string    | Description                                                                                                                                                                                      |
 | ------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Standard      | `standard`      | The raw `readings` collection containing all historical tabular data.                                                                                                                            |
-| Hot storage   | `hotstorage`    | The [hot data store](/data/hot-data-store/). A rolling window of recent data, with lower latency.                                                                                                |
-| Pipeline sink | `pipeline_sink` | The output of another pipeline. **Query-time only**: you cannot pass `pipeline_sink` to `--data-source-type` when creating a pipeline; use it in query calls alongside the source pipeline's ID. |
+| Hot storage   | `hot-storage`   | The [hot data store](/data/hot-data-store/). A rolling window of recent data, with lower latency.                                                                                                |
+| Pipeline sink | `pipeline-sink` | The output of another pipeline. **Query-time only**: you cannot pass `pipeline-sink` to `--data-source-type` when creating a pipeline; use it in query calls alongside the source pipeline's ID. |
 
 The SDK constants for each type:
 
@@ -58,7 +58,7 @@ The SDK constants for each type:
 | Hot storage   | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_HOT_STORAGE`   | `app.TabularDataSourceTypeHotStorage`   |
 | Pipeline sink | `TabularDataSourceType.TABULAR_DATA_SOURCE_TYPE_PIPELINE_SINK` | `app.TabularDataSourceTypePipelineSink` |
 
-To query the output of another pipeline, use `pipeline_sink` in your query call alongside the source pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
+To query the output of another pipeline, use `pipeline-sink` in your query call alongside the source pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
 
 ## Run statuses
 
@@ -127,7 +127,7 @@ Each pipeline stores its output in a dedicated sink collection named `sink-<pipe
 
 The `_viam_pipeline_run` field is added automatically. Your pipeline's `$project` output fields appear alongside it.
 
-To query the sink, use data source type `pipeline_sink` with the pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
+To query the sink, use data source type `pipeline-sink` with the pipeline's ID. See [Query pipeline results](/data/pipelines/query-results/).
 
 {{< alert title="Deleting a pipeline is irreversible" color="caution" >}}
 Deleting a pipeline removes its sink collection and every result stored in it. Export the results first if you need to preserve them. See [Delete a pipeline](/data/pipelines/manage-pipelines/#delete-a-pipeline).
