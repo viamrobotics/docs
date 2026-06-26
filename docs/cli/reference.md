@@ -1547,8 +1547,8 @@ If you update and release your module as part of a continuous integration (CI) w
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate
-viam module add-model [--resource-subtype=<subtype>] [--model-name=<name>]
-viam module add-app [--app-name=<name>] [--app-type=<type>]
+viam module add-model [--resource-subtype=<subtype>] [--model-name=<name>] [--dry-run]
+viam module add-app [--app-name=<name>] [--app-type=<type>] [--dry-run]
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module update-models [--binary=<binary>] [...named args]
@@ -1622,6 +1622,7 @@ Services:
 | `--register` | Register the module with Viam to associate it with your organization. Default: `false`. | Optional |
 | `--app-name` | (App only) Name for the app. Alphanumeric characters, dashes, and underscores only. Must start with a letter. | Optional |
 | `--app-type` | (App only) App type. Options: `single_machine`, `multi_machine`. | Optional |
+| `--dry-run` | Preview the changes without writing or modifying any files. | Optional |
 
 ### `module add-model`
 
@@ -1644,6 +1645,7 @@ The command reads module metadata from the `.viam-gen-info` file in the current 
 | -------- | ----------- | --------- |
 | `--resource-subtype` | Resource subtype for the new model. For example, `arm`, `camera`, or `motion`. See the [glossary](/reference/glossary/#term-subtype) for the full list. If omitted, the CLI prompts you to choose. | Optional |
 | `--model-name` | Name for the new model implementation. For example, `my-arm`. Alphanumeric characters, dashes, and underscores only. Must start with a letter. If omitted, the CLI prompts you. | Optional |
+| `--dry-run` | Preview the changes without writing or modifying any files. | Optional |
 
 ### `module add-app`
 
@@ -1658,13 +1660,14 @@ viam module add-app
 viam module add-app --app-name=my-app --app-type=single_machine
 ```
 
-The command generates a `webapp.go` file, updates the module entry point, creates a `dist/` directory with a placeholder `index.html`, updates the `Makefile`, and adds the app entry to `meta.json`.
+The command generates a `webapp.go` file and an `auth.js` helper, updates the module entry point, creates a `dist/` directory with a placeholder `index.html`, updates the `Makefile`, and adds the app entry to `meta.json`. Replace `dist/index.html` with your own frontend, built with any framework.
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--app-name` | Name for the app. Alphanumeric characters, dashes, and underscores only. Must start with a letter. If omitted, the CLI prompts you. | Optional |
 | `--app-type` | App type. Options: `single_machine`, `multi_machine`. If omitted, the CLI prompts you to choose. | Optional |
+| `--dry-run` | Preview the changes without writing or modifying any files. | Optional |
 
 ### `module create`
 
