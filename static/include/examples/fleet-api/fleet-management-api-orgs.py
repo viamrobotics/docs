@@ -192,7 +192,27 @@ async def main():
         assert new_num_keys == num_keys
 
         # setup
-        user_id = member_list[-1].user_id
+        # Pick an organization member who does not already hold (or inherit)
+        # owner permissions, so that add_role grants a brand-new authorization.
+        # Members who are already owners -- for example org owners, who inherit
+        # location ownership -- cannot have the role added again, which would
+        # make add_role fail.
+        existing_authorizations = await cloud.list_authorizations(org_id=ORG_ID)
+        privileged_identity_ids = {
+            authorization.identity_id for authorization in existing_authorizations
+        }
+        user_id = next(
+            (
+                member.user_id
+                for member in member_list
+                if member.user_id not in privileged_identity_ids
+            ),
+            None,
+        )
+        assert user_id is not None, (
+            "Expected at least one organization member without existing "
+            "authorizations to test add_role/change_role/remove_role."
+        )
 
         await cloud.add_role(
           org_id=ORG_ID,

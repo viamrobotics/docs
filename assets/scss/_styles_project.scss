@@ -1278,7 +1278,6 @@ td > ol {
   gap: 1px;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #e4e4e6;
   margin-left: 0rem;
 }
 
@@ -1363,10 +1362,25 @@ td > ol {
 }
 
 .tab-content {
-  padding: 0.7rem 0;
+  margin-top: 0.5rem;
+  padding: 1rem;
   background-color: white;
-  border-bottom: 1px solid rgb(215, 215, 217);
+  border: 1px solid rgb(215, 215, 217);
   max-width: 1000px;
+}
+
+.table .tab-content > div {
+  border: none;
+}
+
+.table .tab-content > div .code-toolbar {
+  border: none;
+  width: fit-content;
+  max-width: 100%;;
+}
+
+.table .tab-content .tab-pane {  
+  max-width: none;
 }
 
 .horizontalheaders * .tab-content,
@@ -4090,3 +4104,78 @@ footer {
 }
 
 /* Feedback System Styles END */
+
+/* API overview grid START */
+
+.api-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+  /* default align-items: stretch — every card in a row shares the row height */
+}
+
+.api-overview-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.api-overview-card-header {
+  padding: 0.7rem 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eceef0;
+}
+
+.api-overview-card-title {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.api-overview-card-title a {
+  color: #1b1b1f;
+  text-decoration: none;
+}
+
+.api-overview-card-title a:hover {
+  color: #3176d9;
+}
+
+.api-method-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem;
+}
+
+.api-method-list li {
+  margin: 0;
+}
+
+.api-method-list li a {
+  display: block;
+  padding: 0.16rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.api-method-list li a:hover {
+  background-color: #eef2fb;
+}
+
+/* The rendered method is <a><code>Method</code></a>; cancel the global
+   inline-code background/padding so it reads as a plain monospace link. */
+.api-method-list code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* API overview grid END */

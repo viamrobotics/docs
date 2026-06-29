@@ -47,7 +47,7 @@ The CLI prints the pipeline ID on success. Save this ID to query results and man
 | `--mql`              | One of `--mql` or `--mql-path` | The MQL aggregation pipeline as a JSON string.                                                                                  |
 | `--mql-path`         | One of `--mql` or `--mql-path` | Path to a file containing the MQL aggregation pipeline as JSON.                                                                 |
 | `--enable-backfill`  | Yes                            | Whether to process historical time windows. `true` or `false`.                                                                  |
-| `--data-source-type` | Yes                            | `standard` or `hotstorage`.                                                                                                     |
+| `--data-source-type` | Yes                            | `standard` or `hot-storage`.                                                                                                    |
 
 For complex queries, use `--mql-path` to read from a file:
 
@@ -216,7 +216,7 @@ Only organization owners can create data pipelines. Verify your API key has owne
 
 - **Check the `$match` stage.** Field names and values must match your actual data. Run the same MQL query in the query editor to verify it returns results.
 - **Check the time window.** If no data was captured during the pipeline's time window, the run produces no output.
-- **Check the data source type.** If you set `hotstorage` but the hot data store is not configured for your components, the pipeline has no data to query.
+- **Check the data source type.** If you set `hot-storage` but the hot data store is not configured for your components, the pipeline has no data to query.
 
 {{< /expand >}}
 

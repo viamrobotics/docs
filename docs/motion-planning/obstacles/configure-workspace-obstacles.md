@@ -15,7 +15,7 @@ Three config patterns cover most cases:
 | Pattern                                                                   | Use when                                                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | [`erh:vmodutils:obstacle`](#default-obstacle-pattern)                     | Most workspace obstacles: tables, walls, fixtures, bespoke shapes. One component, any geometry.        |
-| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)     | A single box, sphere, or capsule when you do not want to add a registry module.                        |
+| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)     | A single box, sphere, capsule, or cylinder when you do not want to add a registry module.              |
 | [`erh:vmodutils:obstacle-open-box`](#containers-and-work-cell-boundaries) | Containers, bins, or rectangular work-cell envelopes. Generates five geometries from outer dimensions. |
 
 For obstacles your code builds at runtime (objects detected by vision, temporary keep-out zones), see [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/) instead.
@@ -368,7 +368,7 @@ For the full visualization and verification workflow, see [Verify obstacles](/mo
 
 - A box with fewer than three dimensions (a box needs all three: `x`, `y`, `z`).
 - A capsule with `l` less than twice `r` (capsule length must be at least twice the radius).
-- A mistyped `type` value (valid values are `box`, `sphere`, `capsule`, `point`, `mesh`).
+- A mistyped `type` value (valid values are `box`, `sphere`, `capsule`, `cylinder`, `point`, `mesh`).
 
 Fix the geometry in the component's attributes and save again.
 
