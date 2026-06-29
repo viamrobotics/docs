@@ -1635,6 +1635,8 @@ If you update and release your module as part of a continuous integration (CI) w
 
 ```sh {class="command-line" data-prompt="$"}
 viam module generate
+viam module add-model [--resource-subtype=<subtype>] [--model-name=<name>] [--dry-run]
+viam module add-app [--app-name=<name>] [--app-type=<type>] [--dry-run]
 viam module create --name=<module-name> [--org-id=<org-id> | --public-namespace=<namespace>]
 viam module update [--module=<path to meta.json>]
 viam module update-models [--binary=<binary>] [...named args]
@@ -1650,10 +1652,10 @@ viam module local-app-testing --app-url http://localhost:3000
 
 ### `module generate`
 
-Generate a new module or a new [Viam application](/build-apps/hosting/) with stub files and a <file>meta.json</file> file.
+Generate a new module, [Viam application](/build-apps/hosting/), or combined module-and-app project with stub files and a <file>meta.json</file> file.
 
 ```sh {class="command-line" data-prompt="$"}
-# follow interactive prompts to generate a module or app
+# follow interactive prompts to generate a module, app, or module+app
 viam module generate
 ```
 
@@ -1704,16 +1706,62 @@ Services:
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
-| `--generate-type` | Type of project to generate. Options: `module`, `app`. If omitted, the CLI prompts you to choose. | Optional |
+| `--generate-type` | Type of project to generate. Options: `module`, `app`, `module+app`. If omitted, the CLI prompts you to choose. The `module+app` option generates a Go module with an embedded web application. | Optional |
 | `--name` | (Module only) Name to use for the module. For example, a module that contains sensor implementations might be named `sensors`. Required in non-interactive mode. | Optional |
-| `--language` | (Module only) Language to use for the module. Options: `python`, `go`. Required in non-interactive mode. | Optional |
-| `--visibility` | Visibility. Options: `private`, `public`, `public_unlisted`. | Optional |
-| `--public-namespace` | Namespace or organization ID. Must be either a valid organization ID or a namespace that exists within a user organization. Required in non-interactive module generation. | Optional |
+| `--language` | (Module only) Language to use for the module. Options: `python`, `go`, `cpp`. Required in non-interactive mode. | Optional |
+| `--visibility` | Module visibility. Options: `private`, `public`, `public_unlisted`. | Optional |
+| `--public-namespace` | Namespace or organization ID of the module. Must be either a valid organization ID, or a namespace that exists within a user organization. Required in non-interactive module generation. | Optional |
 | `--resource-subtype` | (Module only) The API to implement with the modular resource. For example, `motor`. Required in non-interactive mode. | Optional |
 | `--model-name` | (Module only) Name for the particular resource subtype implementation. For example, a sensor model that detects moisture might be named `moisture`. Required in non-interactive mode. | Optional |
-| `--register` | Register with Viam to associate it with your organization. Default: `false`. | Optional |
+| `--register` | Register the module with Viam to associate it with your organization. Default: `false`. | Optional |
 | `--app-name` | (App only) Name for the app. Alphanumeric characters, dashes, and underscores only. Must start with a letter. | Optional |
 | `--app-type` | (App only) App type. Options: `single_machine`, `multi_machine`. See [Two application types](/build-apps/hosting/overview/#two-application-types). | Optional |
+| `--dry-run` | Preview the changes without writing or modifying any files. | Optional |
+
+### `module add-model`
+
+Add a new resource model to an existing module created with `viam module generate`.
+Run this command from within the module directory.
+Supports Go, Python, and C++ modules.
+
+```sh {class="command-line" data-prompt="$"}
+# follow interactive prompts to add a model
+viam module add-model
+
+# pass flags to skip interactive prompts
+viam module add-model --resource-subtype=sensor --model-name=my-sensor
+```
+
+The command reads module metadata from the `.viam-gen-info` file in the current directory, generates the model source file, registers the model in `meta.json`, and updates the module entry point to import the new model.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--resource-subtype` | Resource subtype for the new model. For example, `arm`, `camera`, or `motion`. See the [glossary](/reference/glossary/#term-subtype) for the full list. If omitted, the CLI prompts you to choose. | Optional |
+| `--model-name` | Name for the new model implementation. For example, `my-arm`. Alphanumeric characters, dashes, and underscores only. Must start with a letter. If omitted, the CLI prompts you. | Optional |
+| `--dry-run` | Preview the changes without writing or modifying any files. | Optional |
+
+### `module add-app`
+
+Add a web application to an existing Go module created with `viam module generate`.
+Run this command from within the module directory.
+
+```sh {class="command-line" data-prompt="$"}
+# follow interactive prompts to add an app
+viam module add-app
+
+# pass flags to skip interactive prompts
+viam module add-app --app-name=my-app --app-type=single_machine
+```
+
+The command generates a `webapp.go` file and an `auth.js` helper, updates the module entry point, creates a `dist/` directory with a placeholder `index.html`, updates the `Makefile`, and adds the app entry to `meta.json`. Replace `dist/index.html` with your own frontend, built with any framework.
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--app-name` | Name for the app. Alphanumeric characters, dashes, and underscores only. Must start with a letter. If omitted, the CLI prompts you. | Optional |
+| `--app-type` | App type. Options: `single_machine`, `multi_machine`. If omitted, the CLI prompts you to choose. | Optional |
+| `--dry-run` | Preview the changes without writing or modifying any files. | Optional |
 
 ### `module create`
 

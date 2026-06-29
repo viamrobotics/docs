@@ -451,14 +451,17 @@ All module CLI commands are under `viam module`. You must be logged in
 
 ### Create and generate
 
-| Command                            | Description                                                              |
-| ---------------------------------- | ------------------------------------------------------------------------ |
-| `viam module create --name <name>` | Register a module in the registry and generate `meta.json`.              |
-| `viam module generate`             | Scaffold a complete module project with templates (interactive prompts). |
+| Command                            | Description                                                            |
+| ---------------------------------- | ---------------------------------------------------------------------- |
+| `viam module create --name <name>` | Register a module in the registry and generate `meta.json`.            |
+| `viam module generate`             | Scaffold a complete module, app, or module+app project with templates. |
+| `viam module add-model`            | Add a new resource model to an existing module.                        |
+| `viam module add-app`              | Add a web application to an existing Go module.                        |
 
-`generate` flags: `--name`, `--language` (`python` or `go`), `--visibility`,
+`generate` flags: `--generate-type` (`module`, `app`, or `module+app`), `--name`,
+`--language` (`python`, `go`, or `cpp`), `--visibility`,
 `--public-namespace`, `--resource-subtype`, `--model-name`, `--register`,
-`--dry-run`.
+`--app-name`, `--app-type`, `--dry-run`.
 
 ### Build
 

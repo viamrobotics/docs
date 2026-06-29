@@ -985,11 +985,15 @@ A single module can provide multiple models, even across different APIs
 (for example, a sensor and a camera). There is no limit on the number of models
 per module.
 
-To add a second model:
+To add a second model, run [`viam module add-model`](/cli/reference/#module-add-model) from within the module directory:
 
-1. Run `viam module generate` again in a separate directory. You only need the generated resource file, so skip the registration prompt.
-2. Copy that file into your existing module's source directory. In Go, rename three things before the file compiles: the compound struct to `<yourModuleName><Model>`, the config struct to something unique like `ConverterConfig`, and `resource.NewModel`'s middle argument to your existing module name. The Step 5 `TempConverter` example shows the result.
-3. Update the entry point to register both models.
+```sh {class="command-line" data-prompt="$"}
+viam module add-model --resource-subtype=sensor --model-name=my-sensor
+```
+
+The command generates the model source file, registers it in `meta.json`, and updates the entry point to import the new model.
+
+You can also add a model manually:
 
 {{< tabs >}}
 {{% tab name="Python" %}}
