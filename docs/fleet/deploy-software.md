@@ -53,10 +53,10 @@ Include the fragment ID in your `viam-defaults.json` file. New machines apply th
 **Through the CLI:**
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. To find the fragment ID, copy it from the fragment's page in the Viam app or run `viam organizations list` and check your fragments.
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name or its ID; find the ID on the fragment's page in the Viam app, or run `viam organizations list` and check your fragments.
 
 ## 4. Verify the deployment
 
