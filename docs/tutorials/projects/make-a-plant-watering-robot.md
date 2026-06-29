@@ -305,14 +305,6 @@ sudo apt update
 sudo apt upgrade
 ```
 
-Then run the following command to create and activate the virtual environment:
-If you want to read more on virtual environments, check out [the documentation](/reference/sdks/python/python-venv/).
-
-```sh {class="command-line" data-prompt="$"}
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
 Make sure you have `pip` installed for Python 3:
 
 ```shell {class="command-line" data-prompt="$"}
@@ -325,11 +317,7 @@ If not, run the following command:
 sudo apt install python3-pip
 ```
 
-Run the following command to install the SDK:
-
-```sh {class="command-line" data-prompt="$"}
-pip3 install viam-sdk
-```
+After that, follow [Install the Python SDK](/reference/sdks/python/python-venv/) to create and activate a virtual environment and install `viam-sdk` on your Pi.
 
 ### Add Python control code
 

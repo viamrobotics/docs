@@ -131,9 +131,7 @@ If you have an LED wired to pin 11, you'll see it turn on and off when you run t
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `board_test.py`:
 

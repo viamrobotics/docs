@@ -167,10 +167,10 @@ directly to your own MongoDB cluster.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-Install dependencies:
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/). Then install `pymongo`:
 
 ```sh
-pip install viam-sdk pymongo
+pip3 install pymongo
 ```
 
 Save this as `sync_to_db.py`:

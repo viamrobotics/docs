@@ -81,9 +81,7 @@ With the fake model, you'll see your command echoed back. With a real module, th
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `generic_test.py`:
 
