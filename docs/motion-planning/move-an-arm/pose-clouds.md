@@ -83,7 +83,7 @@ and the search reaches it faster.
 ## Tolerances are measured in the target's frame
 
 The tolerances are evaluated in the reference frame of the target, not in world
-coordinates. This matters whenever the target is tilted relative to the world.
+coordinates. This matters when the target is tilted relative to the world.
 
 Consider a gripper approaching an inclined surface. You want to allow tolerance
 _along_ the surface but stay tight _into_ it, so the tool rides the surface
