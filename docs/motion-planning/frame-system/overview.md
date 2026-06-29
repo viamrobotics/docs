@@ -284,7 +284,7 @@ If a component's pose looks wrong, check the translation and orientation values
 in its frame configuration. For details on all CLI motion commands, see
 [Motion Service Configuration](/motion-planning/reference/motion-service/#cli-commands).
 
-## Targeting frames in motion
+## Target an end effector for motion planning
 
 The motion service moves a named frame to a target pose, so which frame you
 configure for an end effector determines where the arm actually goes. For how
