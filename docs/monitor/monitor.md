@@ -72,7 +72,7 @@ To find the machine ID, click the **...** menu on the machine's page and select 
 
 ## Set up offline alerts
 
-To receive an email or webhook notification when a machine goes offline, configure a trigger.
+To receive an email, webhook, or push notification when a machine goes offline, configure a trigger.
 See [Set up alerts](/monitor/alert/).
 
 ## Use the mobile app

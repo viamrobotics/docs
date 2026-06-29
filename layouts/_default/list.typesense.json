@@ -111,7 +111,7 @@
                               "imageAlt" .Params.imageAlt
                               "videoAlt" .Params.videoAlt
                               "languages" .Params.languages
-                              "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "navigation" "base_remote_control" "sensors" "slam" "vision"))
+                              "viamservices" (intersect (.Params.viamresources) (slice "data_manager" "motion" "frame_system" "mlmodel" "base_remote_control" "sensors" "slam" "vision"))
                               "viamcomponents" (intersect (.Params.viamresources) (slice "arm" "base" "board" "camera" "encoder" "generic" "encoder" "gantry" "gripper" "input_controller" "motor" "movement_sensor" "power_sensor" "sensor" "servo"))
                               "platformarea" (intersect (.Params.platformarea) (slice "ml" "data" "registry" "fleet" "mobility" "core") )
                               "level" .Params.level
@@ -121,9 +121,9 @@
                         )}}
                   {{- end -}}
             {{- end -}}
-            {{- if (eq .Section "operate") -}}
-                  {{- if ne .Title "Build and Integrate" -}}
-                        {{- if eq .Parent.Parent.Title "Components" -}}
+            {{- if (eq .Section "reference") -}}
+                  {{- if and (ne .Title "Build and Integrate") .Parent.Parent -}}
+                        {{- if eq .Parent.Parent.Title "Built-in components" -}}
                         {{- if and (and (and (ne .Parent.Title "Components") (not .Draft)) (not .Params.no_component)) (not .Params.micrordk_component) -}}
                         {{- if .Params.canonical -}}
                               {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
@@ -159,10 +159,10 @@
                         {{- end -}}
                   {{- end -}}
             {{- end -}}
-            {{- if (eq .Section "operate") -}}
-                  {{- if ne .Title "Build and Integrate" -}}
-                        {{- if eq .Parent.Parent.Title "Services" -}}
-                              {{ $services_with_resources := slice "Generic Service" "ML Model" "Vision Service" }}
+            {{- if (eq .Section "reference") -}}
+                  {{- if and (ne .Title "Build and Integrate") .Parent.Parent -}}
+                        {{- if eq .Parent.Parent.Title "Services reference" -}}
+                              {{ $services_with_resources := slice "Generic" "Vision" }}
                               {{- if and (in $services_with_resources .Parent.LinkTitle) (and (not .Draft) (not .Params.no_service)) -}}
                               {{- if .Params.canonical -}}
                                     {{- $.Scratch.Set "permalink" (printf "%s" .Params.canonical) -}}
@@ -173,14 +173,10 @@
                               {{- end -}}
 
                               {{- $.Scratch.Set "id" (printf "builtin:rdk:service:%s:%s" (strings.Replace (strings.ToLower .Parent.LinkTitle) " " "_" ) (strings.ToLower .LinkTitle) ) -}}
-                              {{- if eq .Parent.LinkTitle "ML Model" -}}
-                                    {{- $.Scratch.Set "api" (printf "rdk:service:mlmodel" ) -}}
-                              {{- else -}}
-                                    {{- if eq .Parent.LinkTitle "Generic Service" -}}
+                              {{- if eq .Parent.LinkTitle "Generic" -}}
                                     {{- $.Scratch.Set "api" (printf "rdk:service:generic" ) -}}
-                                    {{- else -}}
+                              {{- else -}}
                                     {{- $.Scratch.Set "api" (printf "rdk:service:vision" ) -}}
-                                    {{- end -}}
                               {{- end -}}
                               {{- $.Scratch.Set "service_description" (printf "Built-in service: %s" .Params.service_description) -}}
                               {{- if .Params.usage -}}

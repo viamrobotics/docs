@@ -71,7 +71,7 @@ viam datapipelines create \
 | `--schedule`            | Yes          | Cron expression for when the pipeline runs                    |
 | `--enable-backfill`     | Yes          | `true` to run over historical data, `false` for new data only |
 | `--org-id`              | No           | Your organization ID (uses default if set)                    |
-| `--data-source-type`    | No           | `standard` (default) or `hotstorage` (hot data store)         |
+| `--data-source-type`    | No           | `standard` (default) or `hot-storage` (hot data store)        |
 | `--mql` or `--mql-path` | One required | MQL query as inline JSON or path to a JSON file               |
 
 ## List pipelines

@@ -81,9 +81,21 @@ In the machine settings card, open **Settings** and expand **System**:
 
 ### OS package updates
 
-| Field                  | Type   | Default | Description                                                                                                                                                                                        |
-| ---------------------- | ------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `os_auto_upgrade_type` | string | `""`    | Controls automatic OS package updates. Options: `"all"` (upgrade all packages), `"security"` (security updates only), `"disable"` (no automatic updates), `""` (do not manage, leave OS defaults). |
+| Field                               | Type   | Default | Description                                                                                                                                                                           |
+| ----------------------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `os_auto_upgrade_type`              | string | `""`    | Controls automatic OS package updates. Accepts `"all"`, `"security"`, `"managed-all"`, `"managed-security"`, `"disable"`, or `""` (leave OS defaults). The modes are described below. |
+| `os_managed_upgrade_interval_hours` | float  | `24`    | How often `viam-agent` checks for and installs packages, in hours. Minimum value: `1`. Only applies when `os_auto_upgrade_type` is `"managed-all"` or `"managed-security"`.           |
+
+The `"all"` and `"security"` modes delegate scheduling to the operating system's built-in upgrade timer (`unattended-upgrades` on Debian). The `"managed-all"` and `"managed-security"` modes let `viam-agent` control the upgrade schedule directly, which also enables upgrade support on Ubuntu and RPM-based distributions (Fedora, RHEL, Rocky Linux, AlmaLinux, CentOS).
+
+When using a managed mode, `viam-agent` disables the OS's built-in upgrade timer and runs upgrades itself at the configured interval. If an upgrade requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+
+| Mode                                  | Supported distributions                                                                    | Schedule controlled by     | Reboot coordination          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------- | ---------------------------- |
+| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                    | OS (`unattended-upgrades`) | None                         |
+| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM) | `viam-agent`               | Waits for maintenance window |
+
+The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu or an RPM-based distribution, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 
 ### Log forwarding
 

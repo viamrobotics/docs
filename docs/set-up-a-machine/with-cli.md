@@ -69,7 +69,7 @@ The install script downloads `viam-agent`, fetches the machine's cloud config to
 viam machines status --machine=<machine-id>
 ```
 
-If the machine is connected, the CLI prints its part list and status. If not, see the troubleshooting tips on [Set up your first machine](/set-up-a-machine/first-machine/#troubleshooting).
+If the machine is connected, the CLI prints its part list and status. If not, see [Troubleshoot problems](/monitor/troubleshoot/).
 
 ## 6. Apply a baseline configuration (optional)
 

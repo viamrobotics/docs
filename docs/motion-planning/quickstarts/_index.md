@@ -21,19 +21,3 @@ the machine configuration changes; your code does not.
 {{% card link="/motion-planning/quickstarts/first-arm/" noimage="true" %}}
 {{% card link="/motion-planning/quickstarts/frame-system/" noimage="true" %}}
 {{< /cards >}}
-
-## Related
-
-Base-motion and GPS-waypoint quickstarts live in
-[Navigation](/navigation/), because a first-time walkthrough of
-localization or GPS navigation needs real hardware.
-
-{{< cards >}}
-{{% card link="/navigation/how-to/drive-a-base/" noimage="true" %}}
-{{% card link="/navigation/how-to/navigate-to-waypoint/" noimage="true" %}}
-{{< /cards >}}
-
-{{< cards >}}
-{{% card link="/navigation/how-to/drive-a-base/" noimage="true" %}}
-{{% card link="/navigation/how-to/navigate-to-waypoint/" noimage="true" %}}
-{{< /cards >}}

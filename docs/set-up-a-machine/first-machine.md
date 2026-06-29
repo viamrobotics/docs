@@ -4,7 +4,7 @@ title: "Set up your first machine"
 weight: 1
 layout: "docs"
 type: "docs"
-description: "Create a machine in the Viam app and install Viam on your compute machine."
+description: "Create a machine in the Viam app and install Viam on your compute device."
 date: "2025-01-30"
 aliases:
   - /set-up-a-machine/overview/
@@ -37,97 +37,35 @@ You'll create a machine in the Viam app, install Viam on your compute device, an
 
 ## 1. Create a machine in the Viam app
 
-1. Go to [app.viam.com](https://app.viam.com) and log in (or create an
-   account).
-2. Create or select an organization, then create or select a location.
-3. Click **Add machine**.
-4. Give your machine a name (for example, `my-first-machine`). Click **Add machine**.
+1. Go to [app.viam.com](https://app.viam.com) and log in (or create an account).
+2. Open a location.
+3. Click **Add machine**, enter a name (for example, `my-first-machine`), and click **Add machine** again.
 
-The app creates a machine entry and opens the **CONFIGURE** tab.
-A banner prompts you to set up the machine part.
+The app opens your new machine's page on the **CONFIGURE** tab.
+The tab shows a card titled **Set up your machine part**.
 
-## 2. Open the setup page
+## 2. Open the setup wizard
 
-1. Click **View setup instructions** in the banner.
-2. In the wizard dialog that opens, click **Go to Advanced setup**.
+In the **Set up your machine part** card, click **Set up**.
 
-## 3. Select your platform {#sbc-setup-instructions}
+A wizard dialog will open with the heading **Install `viam-server`**.
+Click **Next** to begin. Follow the guidance in the setup wizard to set up your machine on Viam.
 
-Use the **Platform you want to run on** dropdown to select the operating system and architecture of the compute machine for your robot, the computer to which you've attached cameras, sensors, arms, or other components.
+## 8. Add hardware in the CONFIGURE tab
 
-Options include Linux / Aarch64, Linux / x86, Mac, Windows native, Windows (WSL), Linux / Armv7l, and ESP32.
+Your machine is connected, but it has no components configured yet.
+To make the machine do anything, add the hardware you want to use through the **CONFIGURE** tab on your machine's page.
 
-If you're using a single-board computer, make sure it's running a compatible Linux OS before continuing. See [Device setup guides](/reference/device-setup/) for board-specific instructions.
+For each piece of hardware (camera, motor, sensor, arm, gripper, base):
 
-## 4. Select your installation method
+1. Click the **+** button on the **CONFIGURE** tab.
+2. Select **Component**.
+3. Search for the model that matches your hardware. Search by manufacturer or hardware type (for example, `webcam`, `viam:raspberry-pi:rpi5`, `ufactory:xarm6`).
+4. Name the component and click **Create**.
+5. Fill in the required attributes (pin numbers, device paths, API keys) and click **Save**.
 
-If your platform supports multiple installation methods, a second dropdown appears.
-
-- **viam-agent**: Choose this unless you have a reason not to.
-- **manual**: Installs `viam-server` directly.
-
-## 5. Run the install command
-
-The setup page displays platform-specific install instructions.
-Follow the steps shown on your compute machine.
-
-## 6. Wait for confirmation
-
-After the install command finishes, the setup page polls for your machine's connection status.
-When the banner changes to **"Your machine is connected!"**, your machine is online and ready to configure.
-
-This should happen within 30 seconds.
-
-{{< alert title="Tip" color="tip" >}}
-
-To return to the setup page later, click the **...** menu next to any part name in the **CONFIGURE** tab and select **View setup instructions**.
-
-{{< /alert >}}
-
-## Troubleshooting
-
-{{< expand "Machine shows offline in the Viam app" >}}
-
-- **Is `viam-agent` running?** On Linux, check with
-  `sudo systemctl status viam-agent`. If it's not running, start it with
-  `sudo systemctl start viam-agent`. This will also start `viam-server`.
-- **Does the machine have network access?** Verify with `ping google.com`.
-- **Is the config correct?** Inspect `/etc/viam.json` and confirm it contains
-  valid credentials. If in doubt, re-run the install command from the Viam app.
-
-{{< /expand >}}
-
-{{< expand "\"Permission denied\" during install" >}}
-
-- The install script requires `sudo`. Run the `curl` command exactly as shown on
-  the setup page.
-- On some systems, your user may not be in the `sudo` group. Consult your
-  device's documentation for how to grant sudo access.
-
-{{< /expand >}}
-
-{{< expand "viam-server starts but immediately exits" >}}
-
-- Check the logs: `sudo journalctl -u viam-server -n 50`.
-- Common causes: invalid JSON in `/etc/viam.json`, port conflicts (another
-  service on port 8080), or missing system libraries.
-
-{{< /expand >}}
-
-## 7. Connect with code
-
-Your machine is online. Now connect to it programmatically.
-
-1. Go to your machine's page in the Viam app.
-2. Click the **CONNECT** tab.
-3. Select **SDK code sample**.
-4. Choose your language (Python, TypeScript, Golang, C++, or Flutter).
-5. Toggle **Include API key** to embed your credentials directly in the snippet.
-6. Copy the code sample, install the SDK, and run it.
-
-If the connection succeeds, the script prints your machine's available resources.
+For walkthroughs by component type and the full configuration reference, see [Configure hardware](/hardware/configure-hardware/).
 
 ## What's next
 
-- [Configure hardware](/hardware/configure-hardware/) to add cameras, motors, sensors, and other components to your machine.
 - [Set up machines with the CLI](/set-up-a-machine/with-cli/) to provision additional machines from the command line.

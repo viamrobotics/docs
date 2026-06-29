@@ -26,7 +26,7 @@ To get started recording data, see [Capture and sync data](/data/capture-sync/ca
 
 ## Query and explore
 
-All captured tabular data is queryable through SQL and MQL, either in the Viam app's query editor or programmatically through the SDK. You can run ad-hoc queries for data exploration, create custom indexes to speed up frequent queries, and save queries for reuse. An AI-assisted query builder helps you write MQL aggregation pipelines.
+All captured tabular data is queryable through SQL and MQL, either in the Viam app's query editor or programmatically through the SDK. You can run ad-hoc queries for data exploration, create custom indexes to speed up frequent queries, and save MQL queries for reuse. The Query Assistant (Beta) helps you write SQL and MQL queries from a plain-language description.
 
 Binary data (images, point clouds) is browsable and filterable in the Viam app's Data tab, with viewers for images, video, and 3D point clouds.
 
@@ -68,11 +68,11 @@ Captured images can be tagged, annotated with bounding boxes, and organized into
 4. Submit a training job (Vertex AI AutoML or your own training container).
 5. Deploy the trained model back to your robot.
 
-See [Create a dataset](/train/create-a-dataset/) and the training section for details.
+See [Tag data](/data/tag-data/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
 
 ## Monitor and debug
 
-Triggers send webhooks or email alerts when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
+Triggers send webhooks, email alerts, or push notifications when synced data meets a condition, so you can respond to events like temperature spikes or detection results without polling.
 
 Monitoring dashboards can be built with Viam's Teleop workspace or with Grafana connected to your data through MongoDB.
 

@@ -69,8 +69,8 @@ Click **Save**, then expand the **Test** section.
 Push the button programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, the button's Push method fires. With a physical button connected with a module, this triggers whatever action the module defines.
 {{< tabs >}}
 {{% tab name="Python" %}}
