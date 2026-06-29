@@ -60,7 +60,7 @@ For each piece of hardware (camera, motor, sensor, arm, gripper, base):
 
 1. Click the **+** button on the **CONFIGURE** tab.
 2. Select **Component**.
-3. Search for the model that matches your hardware. Search by manufacturer or hardware type (for example, `webcam`, `viam:raspberry-pi:rpi5`, `ufactory:xarm6`).
+3. Search for the model that matches your hardware. Search by manufacturer or hardware type (for example, `webcam`, `viam:raspberry-pi:rpi5`, `viam:ufactory:xArm6`).
 4. Name the component and click **Create**.
 5. Fill in the required attributes (pin numbers, device paths, API keys) and click **Save**.
 
