@@ -15,7 +15,24 @@ vision service to run it against camera input.
 For the full guide to configuring vision services and cloud inference, see [Configure computer vision](/vision/configure/).
 {{< /alert >}}
 
-## 1. Add the ML model service
+## Deploy from the model details page
+
+The fastest way to deploy a model is from the model's page in the Viam app:
+
+1. Navigate to **Models** and click the model you want to deploy.
+1. Click **Deploy** in the model header to open the deploy dialog, which walks you through a few steps.
+1. Select a model version, location, machine, and machine part, then click **Continue**.
+1. Name the ML model service, then click **Continue**.
+1. Name the vision service. By default, it uses an existing camera on your machine.
+1. Click **Deploy** to add the services to the machine's configuration.
+
+After deploying, verify the model on the machine's **CONTROL** tab.
+
+## Deploy from the machine's configure tab
+
+To deploy a model by configuring services manually:
+
+### 1. Add the ML model service
 
 The ML model service loads the model. Pick the module that matches your
 trained model's framework:
@@ -43,7 +60,7 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
    **Choose**. The model path and label path are set automatically.
 9. Click **Save** in the top right.
 
-## 2. Add the vision service
+### 2. Add the vision service
 
 1. Click **+** and select **Configuration block**.
 2. Search for `mlmodel` and find the **mlmodel** block (type: **VISION**,
@@ -57,7 +74,7 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
    **Minimum confidence threshold** (default: 0.5).
 7. Click **Save**.
 
-## 3. Verify
+### 3. Verify
 
 1. In the vision service's configuration card, click **Test**.
 2. Select a camera to run the model against.

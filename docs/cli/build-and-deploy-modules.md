@@ -49,7 +49,7 @@ The generator first asks whether you want to generate a **module** or an **app**
 Choose **Module**, then follow the interactive prompts to choose:
 
 - Module name
-- Programming language (Python or Go)
+- Programming language (Python, Go, or C++)
 - Namespace and visibility
 - Resource type (component or service) and API
 
@@ -64,6 +64,9 @@ viam module generate \
   --language=python \
   --visibility=public
 ```
+
+To add a new resource model to an existing module, use [`viam module add-model`](/cli/reference/#module-add-model) from within the module directory.
+To add a web application to an existing Go module, use [`viam module add-app`](/cli/reference/#module-add-app).
 
 ## Iterate during development
 

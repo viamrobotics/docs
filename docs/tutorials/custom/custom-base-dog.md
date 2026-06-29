@@ -285,7 +285,7 @@ Modify the `validate` and `reconfigure` methods to use these attributes, and def
 The code below shows what the top of your class definition should look like.
 
 ```python {class="line-numbers linkable-line-numbers"}
-class robotdog(Base, Reconfigurable):
+class robotdog(Base):
     MODEL: ClassVar[Model] = Model(ModelFamily("viamlabs", "base"), "robotdog")
 
     # Class parameters
