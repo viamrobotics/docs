@@ -240,12 +240,12 @@ if __name__ == '__main__':
 
 The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                                                                 | Python                                                                                   |
-| ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)                       | Default (`viam-server` destroys and re-creates the resource)                             |
-| In-place reconfigure     | Implement `Reconfigure()` (replace the `AlwaysRebuild` embed with your own method) | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
-| No-op close              | Embed `resource.TriviallyCloseable`                                                | Default on `ResourceBase`                                                                |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig`                                           | Default on `EasyResource`                                                                |
+| Behavior                 | Go                                                                                 | Python                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)                       | Default (`viam-server` destroys and re-creates the resource)                          |
+| In-place reconfigure     | Implement `Reconfigure()` (replace the `AlwaysRebuild` embed with your own method) | Not supported; resources always rebuild (the `Reconfigurable` protocol is deprecated) |
+| No-op close              | Embed `resource.TriviallyCloseable`                                                | Default on `ResourceBase`                                                             |
+| Skip config validation   | Embed `resource.TriviallyValidateConfig`                                           | Default on `EasyResource`                                                             |
 
 ## Logging
 
