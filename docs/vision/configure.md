@@ -155,7 +155,7 @@ Bounding boxes or classification labels should appear within a second or two. If
 
 If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
 
-From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response is three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime.
+From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response includes three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime, and optionally the name of the default camera if one is configured.
 
 ## 7. Complete configuration
 
