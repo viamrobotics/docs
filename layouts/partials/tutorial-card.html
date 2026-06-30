@@ -1,0 +1,18 @@
+{{- $p := .page -}}
+{{- $isWorkshop := $p.Params.workshop_overview -}}
+{{- $phaseCount := cond $isWorkshop (len $p.RegularPages) 0 -}}
+<div class="col hover-card tutorial-card">
+  <a href="{{ $p.RelPermalink }}">
+    <div class="tutorial-card__body">
+      <div class="tutorial-card__title">{{ $p.LinkTitle }}</div>
+      {{- with $p.Description }}<p class="tutorial-card__desc">{{ . }}</p>{{ end -}}
+      <div class="tutorial-card__badges">
+        {{- if $isWorkshop }}<span class="badge badge--workshop">Workshop</span>{{ end -}}
+        {{- with $p.Params.level }}<span class="badge">{{ . }}</span>{{ end -}}
+        {{- with $p.Params.time_estimate }}<span class="badge">{{ . }}</span>{{ end -}}
+        {{- if gt $phaseCount 0 }}<span class="badge">{{ $phaseCount }} phases</span>{{ end -}}
+        {{- range $p.Params.languages }}<span class="badge badge--lang">{{ . }}</span>{{ end -}}
+      </div>
+    </div>
+  </a>
+</div>
