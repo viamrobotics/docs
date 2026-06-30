@@ -91,6 +91,16 @@ If a machine already has a resource with the same name as one in the fragment, o
 
 When you insert a fragment that would cause a conflict, the UI prompts you for a prefix. The prefix is prepended to every resource name from the fragment. For example, a component named `camera-1` in a fragment with prefix `front` becomes `front-camera-1`.
 
+### Temporarily disable a fragment
+
+To keep a fragment in the machine's configuration but skip loading its resources, disable it:
+
+1. On the machine's **CONFIGURE** tab, find the fragment in the resource list.
+1. Open the fragment's actions menu (**...**) and click **Disable**.
+1. Click **Save**.
+
+The fragment stays in your configuration, and the machine skips loading its resources on the next sync. Re-enable it the same way. In JSON mode, set the fragment import's [`disabled` field](#json-reference-fragment-imports) to `true`.
+
 ## Customize fragments with variables
 
 Fragments support variable substitution for values that differ between machines. Define a variable in the fragment's JSON configuration using the `$variable` syntax, then set the value when applying the fragment to each machine.
@@ -206,12 +216,13 @@ To configure default fragments:
 
 In JSON mode on a machine's **CONFIGURE** tab, fragments are listed in the `fragments` array. Each entry supports:
 
-| Field       | Type   | Description                                                                                |
-| ----------- | ------ | ------------------------------------------------------------------------------------------ |
-| `id`        | string | The fragment ID. Required.                                                                 |
-| `version`   | string | Pin to a specific revision number or tag name. Omit to track the latest revision.          |
-| `prefix`    | string | A string prepended to all resource names from this fragment. Use to avoid name collisions. |
-| `variables` | object | A map of variable names to values, overriding the defaults defined in the fragment.        |
+| Field       | Type    | Description                                                                                            |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `id`        | string  | The fragment ID. Required.                                                                             |
+| `version`   | string  | Pin to a specific revision number or tag name. Omit to track the latest revision.                      |
+| `prefix`    | string  | A string prepended to all resource names from this fragment. Use to avoid name collisions.             |
+| `variables` | object  | A map of variable names to values, overriding the defaults defined in the fragment.                    |
+| `disabled`  | boolean | Set to `true` to keep the fragment in your config but skip loading its resources. Defaults to `false`. |
 
 Example:
 
