@@ -39,30 +39,36 @@
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
             "breadcrumb.html" . }}{{ end }}
             <div class="td-content tutorials">
-              <h1>{{ .Title }}</h1>
-              <p>
-                Hands-on guides that walk you through building a working project with Viam,
-                step by step.
-              </p>
+              <header class="tutorials-intro">
+                <h1>{{ .Title }}</h1>
+                <p>
+                  Hands-on guides that walk you through building a working
+                  project with Viam, step by step.
+                </p>
+              </header>
 
               {{ $pctx := .Site }}
               {{/* Featured set: opt-in `featured: true` singles OR workshop overviews. */}}
               {{- $featured := where (where $pctx.RegularPages ".Section" "tutorials") "Params.featured" true -}}
               {{- $workshops := where (where $pctx.Pages ".Section" "tutorials") "Params.workshop_overview" true -}}
-              {{- $cards := $workshops | union $featured -}}
+              {{- $cards := sort ($workshops | union $featured) ".Weight" -}}
 
               {{ with $cards }}
-              <div id="featured-tutorials" class="card-container">
+              {{/* First featured item leads as a hero; any others flow into a grid below. */}}
+              {{ partial "tutorial-hero.html" (dict "page" (index . 0)) }}
+              {{ with (after 1 .) }}
+              <div id="featured-tutorials" class="card-container tutorials-grid">
                 <div class="row-no-margin">
-                  {{ range sort . ".Weight" }}
+                  {{ range . }}
                   {{ partial "tutorial-card.html" (dict "page" .) }}
                   {{ end }}
                 </div>
               </div>
               {{ end }}
+              {{ end }}
 
               <p class="browse-all-tutorials">
-                <a href="{{ "tutorials/all/" | relURL }}">Browse all tutorials &rarr;</a>
+                <a class="browse-all-link" href="{{ "tutorials/all/" | relURL }}">Browse all tutorials <span aria-hidden="true">&rarr;</span></a>
               </p>
             </div>
             <p>
