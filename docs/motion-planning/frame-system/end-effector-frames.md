@@ -1,72 +1,50 @@
 ---
-linkTitle: "End effector frames"
-title: "End effector frames"
+linkTitle: "Arm and end effector frames"
+title: "Arm and end effector frames"
 weight: 5
 layout: "docs"
 type: "docs"
 description: "How Move places a named frame at a target pose, and how the frame attribute and WorldState transforms set which point on the robot a frame represents."
 ---
 
-When you move an arm with the motion service, you move a _frame_ from its current
+When you move an arm with the motion service, you move a
+[_frame_](/motion-planning/frame-system/overview/#frame) from its current
 pose to a destination pose. That frame is called the **end effector frame**, also called
-the tool control point (TCP) or the manipulation control frame. Where the end effector
-frame sits depends on the arm, the tool, and the task, and that frame can change partway
-through a job. This page explains why the end effector frame exists, how `Move` resolves it,
-and how you define and visualize it with Viam.
+the tool control point (TCP) or the manipulation control frame. The end effector
+frame's location depends on the arm, the tool, and the task, and it can change partway
+through a job. This page explains the arm frame and the end effector frame, how the motion
+service resolves frames, and how you define and visualize them.
 
-First, look at where the end effector frame could be defined for two example use cases:
+## The arm frame
+
+Every arm has a special built-in frame named after its component name. Configure an arm called
+`my-arm`, and Viam creates a frame named `my-arm` at the arm's **tool flange**, the
+end of the kinematic chain where a tool mounts. The arm's kinematics file (URDF or Viam JSON)
+defines how that frame is attached to the arm.
+
+Viam also creates a frame for each link and joint along the arm's kinematic chain, named
+`my-arm:<name>` after the kinematics file: link frames such as `my-arm:forearm_link` and
+joint frames such as `my-arm:elbow_joint`. Parent a component to one of these frames to
+mount it partway along the arm. For more information, see [Parent to an intermediate arm link](/motion-planning/frame-system/overview/#parent-to-an-intermediate-arm-link).
+
+{{<imgproc src="/motion-planning/frame-system/arm-joint-frames.svg" declaredimensions=true alt="A robot arm with the my-arm frame at its tool flange and a world frame on the ground beside the base. Coordinate frames sit at the joints along the kinematic chain, labeled my-arm:shoulder_lift_joint, my-arm:elbow_joint, and my-arm:wrist_1_joint. Each frame shows red x, green y, and blue z axes." style="max-width:640px" class="aligncenter">}}
+
+## End effector frames
+
+The built-in arm frame is enough when you want to move the arm without an attached gripper or end effector. For most tasks, you attach a gripper or a tool to the end of the arm, and then the location you want to control is
+where the tool acts, not where the arm flange is. An **end effector frame** marks that location.
+The end effector frame is a user-defined frame that is both hardware and task dependent. For a two-finger gripper, the
+end effector frame is typically between the fingertips, a short offset below the arm's
+frame. For a drill, it is at the bit tip.
 
 {{<imgproc src="/motion-planning/frame-system/end-effector-types.svg" declaredimensions=true alt="Two arms drawn schematically. On the left, a two-finger gripper with its end effector frame between the fingertips. On the right, a drill whose end effector frame sits at the bit tip, offset from the arm frame in both x and z. Both panels also show small coordinate axes for the world frame at the base and the arm frame at the flange." style="max-width:820px" class="aligncenter">}}
 
-The end effector frame is hardware and task dependent. For a two-finger gripper, the
-end effector frame typically sits between the fingertips, a short offset below the arm's frame. For
-a drill, it sits at the bit tip, offset from the arm's frame both forward and down,
-and the orientation may be flipped, so a positive z would mean to drill deeper.
-When you call `Move`, you have the option to specify which frame you are moving, and
-using the arm frame is always an option. By creating an end effector frame at the
-correct location, a `Move` call becomes easier and better represents the task being
-performed.
+## Define an end effector frame through a component frame
 
-Now look at how the motion service describes the move. The snippets on this page
-assume a connected motion service client, `motion_service` in Python and
-`motionService` in Go. For how to set this up in more detail, see
-[Access the motion service in your code](/reference/services/motion/#access-the-motion-service-in-your-code).
+For end effector locations that are statically defined, such as a two-finger gripper or another tool that mounts rigidly to the arm's flange, you define a static frame through the component's `frame` attribute.
+On the component's configuration card, set a `parent` to attach to (usually the arm), a `translation` that offsets the component's origin from the parent in millimeters, and an `orientation` that rotates its axes. Viam creates a frame named after the component, and uses it whenever you name that component.
 
-```python
-from viam.proto.common import Pose, PoseInFrame
-
-# A pose in world frame facing Z Down
-target_pose = PoseInFrame(
-    reference_frame="world",
-    pose=Pose(x=400, y=0, z=300, o_x=0, o_y=0, o_z=-1, theta=0),
-)
-
-# Move the Gripper Frame to the target_pose
-await motion_service.move(
-    component_name="my-gripper",
-    destination=target_pose,
-)
-```
-
-You pass two parameters to `Move`: a string `component_name` and a `destination`
-pose.
-
-## Which frame Move resolves
-
-The `destination` you pass is a target pose for the resolved frame, and the planner
-tries to find a collision-free motion that moves the frame to the destination.
-
-The `component_name` can be a component name or a frame name. The motion service
-looks for a frame with that name in the frame system. When you pass a component name
-such as `"my-arm"` or `"my-gripper"`, Viam supplies a frame for it behind the scenes:
-
-- **An arm**: its kinematics file (URDF or Viam JSON) defines a single output frame at the
-  terminal link of the kinematic chain, commonly called the tool flange. That output frame
-  is the arm's built-in end effector frame.
-- **Another component**, such as a gripper, defines a static frame through its `frame`
-  attribute, which you set on the component's configuration card.
-
-Here is a gripper `frame` attribute from the [Arm with gripper and wrist camera](/motion-planning/frame-system/arm-gripper-camera/) example, whose origin sits 120 mm past the flange:
+Here is a gripper `frame` attribute from the [Arm with gripper and wrist camera](/motion-planning/frame-system/arm-gripper-camera/) example, which is 120 mm past the flange:
 
 ```json
 {
@@ -79,11 +57,48 @@ Here is a gripper `frame` attribute from the [Arm with gripper and wrist camera]
 }
 ```
 
+## Moving an arm with the motion service
+
+With the arm and component frames defined, you can move any of them to a pose. The
+**motion service** moves a named frame to a destination pose. Its `Move` method takes a
+frame name and a target pose, and the planner finds a collision-free path that brings that
+frame to the pose:
+
+```python
+from viam.proto.common import Pose, PoseInFrame
+
+# A target pose in the world frame, tool pointing down
+target_pose = PoseInFrame(
+    reference_frame="world",
+    pose=Pose(x=400, y=0, z=300, o_x=0, o_y=0, o_z=-1, theta=0),
+)
+
+# Move the my-arm frame to the target pose
+await motion_service.move(
+    component_name="my-arm",
+    destination=target_pose,
+)
+```
+
+You pass two parameters to `Move`: a string `component_name` and a `destination`, a
+`PoseInFrame` that pairs the target pose with the reference frame it is expressed in
+(here, `world`).
+
+The `component_name` can be a component name or a frame name. The motion service
+looks for a frame with that name in the frame system. When you pass a component name
+such as `"my-arm"` or `"my-gripper"`, Viam supplies a frame for it automatically:
+
+- **An arm**: its kinematics file (URDF or Viam JSON) defines a single output frame at the
+  terminal link of the kinematic chain, commonly called the tool flange. That output frame
+  is the arm's built-in end effector frame.
+- **Another component**, such as a gripper, defines a static frame through its `frame`
+  attribute, which you set on the component's configuration card.
+
 ## Why the frame you name matters
 
 A `Move` call that uses the arm frame produces different motion than one that
-uses the end-effector frame. The arm's frame sits at the flange, and the end effector
-frame sits at the bit tip, so the same `target_pose` produces different motions.
+uses the end-effector frame. The arm's frame is at the flange and the end effector
+frame at the bit tip, so the same `target_pose` produces different motions.
 In the example below, the target pose is defined on the face of a box. If you use
 the drill-tip frame, the bit moves to the box face. If you use the arm frame, the
 drill drives into the box, because the planner tries to move the arm frame to the
@@ -94,31 +109,25 @@ target pose.
 ## Define an end effector frame in code
 
 The `frame` attribute described above works well when the end effector frame is static.
-When the end effector frame moves during a task, or when defining it in code suits
-the job better, add a new frame to the frame system with a `WorldState` transform.
+When a task needs the end effector frame to change, or when defining it in code suits
+the job better, add a new frame to the frame system with a [`WorldState`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState) transform.
 
-A great example is a grasped part. Prior to pickup, the end effector frame is located
+One example is when your end effector grasps an object. Before pickup, the end effector frame is located
 with the gripper. After pickup, the end effector frame may need to move to the part for
-an assembly step. The grasped part may not have been in the machine configuration,
-so you add its frame to the frame system at request time with a `WorldState` transform,
-attached to the gripper so it moves with the grasp:
+an assembly step:
 
 {{<imgproc src="/motion-planning/frame-system/held-object-frame.svg" declaredimensions=true alt="A cobot arm whose gripper holds a bent, L-shaped object. The arm frame sits at the flange and the gripper frame at the jaws. An object-tip frame sits at the far end of the object, offset from the gripper in multiple axes and rotated to point along it. Each frame shows labeled x, y, and z axes." style="max-width:600px" class="aligncenter">}}
 
-To extend that frame system for
-one motion, pass a
-[`WorldState`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState)
-to `Move` with extra frames. The steps differ slightly by language, but the shape is
+The `WorldState` holds obstacles and frames that the motion service uses to plan collision-free motion. `Move` can consume a `world_state` to expand the obstacles and frames it plans around. To create a new frame, the steps differ slightly by language, but the approach is
 the same:
 
-1. Define the translation and orientation from the parent frame to the origin of the
+1. Create a WorldState Object
+2. Define the translation and orientation from the parent frame to the
    new frame. In Python, this is a `PoseInFrame`; in Go, it is the pose you pass to
-   `NewLinkInFrame`. The parent is usually an arm or gripper component name, such as
-   `"my-gripper"` for a grasped object.
-2. Build a transform from that pose and add it to the `WorldState`.
-
-The `WorldState` applies to a single `Move` call. A later call needs its own
-`WorldState` to keep using the transform.
+   `NewLinkInFrame`. In the example above, the parent frame is the gripper
+   (`"my-gripper"`).
+3. Build a transform from that pose and add it to a `WorldState`.
+4. Call move using the `WorldState` object
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -181,10 +190,13 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 {{% /tab %}}
 {{< /tabs >}}
 
+The motion service keeps its own copy of the `WorldState` with any frames and collision geometries created by the machine's components and services. The `WorldState` you pass to `Move` is not added to it, so later calls must pass the `WorldState` again for the service to see those new frames or collisions.
+
 ### Attach a geometry to a transform
 
-A transform can also carry a collision geometry, a shape the planner avoids while it
-tries to find collision-free motion to the destination. For a grasped object, it can be
+A transform can also carry a collision geometry, a 3D shape the planner avoids while it
+tries to find collision-free motion to the destination. A frame marks a location; a
+geometry gives it size. For a grasped object, it can be
 helpful to attach geometry so the planner routes the grasped object around obstacles.
 Give the transform a box, sphere, capsule, or mesh defined in the frame's own coordinates:
 
@@ -242,7 +254,7 @@ objectTipLink := referenceframe.NewLinkInFrame(
 
 ## WorldState versus the world state store service
 
-The names are similar, but `WorldState` and the world state store service are
+The names are similar, but [`WorldState`](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.WorldState) and the [world state store service](/reference/apis/services/world-state-store/) are
 different things, and only one affects a `Move` call.
 
 - `WorldState` is the argument you pass to a single `Move` call. The obstacles
@@ -258,7 +270,8 @@ publish it to the world state store service instead.
 
 ## Visualize the end effector frame
 
-Static frames render in the 3D scene automatically. Open the **3D SCENE** tab on
+A static frame stays fixed relative to its parent. Static frames render in the 3D scene
+automatically. Open the **3D SCENE** tab on
 your machine's page, and the arm's built-in end effector frame and any `frame`
 attributes you configured appear as coordinate axes at their computed poses, the
 same axes drawn in the diagrams on this page.

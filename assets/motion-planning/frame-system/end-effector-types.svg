@@ -34,37 +34,37 @@
      id="defs23">
     <marker
        id="aR"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#e23b3b"
          id="path1" />
     </marker>
     <marker
        id="aG"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2fa84f"
          id="path2" />
     </marker>
     <marker
        id="aB"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2f6fe0"
          id="path3" />
     </marker>
@@ -92,7 +92,7 @@
       <line
          x1="0"
          y1="0"
-         x2="-24"
+         x2="24"
          y2="0"
          stroke="#e23b3b"
          stroke-width="2.4"
@@ -111,8 +111,8 @@
       <line
          x1="0"
          y1="0"
-         x2="-11"
-         y2="8"
+         x2="16"
+         y2="-11"
          stroke="#2fa84f"
          stroke-width="2"
          marker-end="url(#aG)"
@@ -121,7 +121,7 @@
          x1="0"
          y1="0"
          x2="0"
-         y2="-16"
+         y2="-22"
          stroke="#2f6fe0"
          stroke-width="2"
          marker-end="url(#aB)"
@@ -129,7 +129,7 @@
       <line
          x1="0"
          y1="0"
-         x2="16"
+         x2="22"
          y2="0"
          stroke="#e23b3b"
          stroke-width="2"
@@ -345,109 +345,109 @@
     </symbol>
     <marker
        id="aR-3"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#e23b3b"
          id="path1-6" />
     </marker>
     <marker
        id="aB-7"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2f6fe0"
          id="path3-5" />
     </marker>
     <marker
        id="aG-3"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2fa84f"
          id="path2-5" />
     </marker>
     <marker
        id="aR-1"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#e23b3b"
          id="path1-2" />
     </marker>
     <marker
        id="aB-70"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2f6fe0"
          id="path3-9" />
     </marker>
     <marker
        id="aG-36"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2fa84f"
          id="path2-0" />
     </marker>
     <marker
        id="aR-8"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#e23b3b"
          id="path1-7" />
     </marker>
     <marker
        id="aB-9"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2f6fe0"
          id="path3-2" />
     </marker>
     <marker
        id="aG-0"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2fa84f"
          id="path2-2" />
     </marker>
@@ -493,8 +493,8 @@
      font-size="12"
      fill="#41506a"
      id="text26">arm frame</text>
-  <text x="269" y="219" fill="#e23b3b" font-size="11.5" font-style="italic" id="lblx">x</text>
-  <text x="270" y="237" fill="#2fa84f" font-size="11.5" font-style="italic" id="lbly">y</text>
+  <text x="316" y="219" fill="#e23b3b" font-size="11.5" font-style="italic" id="lblx">x</text>
+  <text x="270" y="238" fill="#2fa84f" font-size="11.5" font-style="italic" id="lbly">y</text>
   <text x="297" y="248" fill="#2f6fe0" font-size="11.5" font-style="italic" id="lblz">z</text>
   <line
      x1="324"
@@ -561,25 +561,25 @@
      x="726"
      y="285"
      id="use32"
-     transform="matrix(0.5234801,0,0,0.5234801,346.254,136.608)" />
+     transform="matrix(0.78,0,0,0.78,160.020,63.500)" />
   <use
      href="#triadL"
      x="726"
      y="285"
      id="use32-2"
-     transform="matrix(0.5234801,0,0,0.5234801,346.60515,71.8312)" />
+     transform="matrix(0.78,0,0,0.78,160.372,-1.277)" />
   <use
      href="#triadL"
      x="726"
      y="285"
      id="use32-2-7"
-     transform="matrix(0.5234801,0,0,0.5234801,-84.474618,108.43634)" />
+     transform="matrix(0.78,0,0,0.78,-270.708,35.328)" />
   <use
      href="#triadL"
      x="726"
      y="285"
      id="use32-26"
-     transform="matrix(0.5234801,0,0,0.5234801,-85.755161,72.049347)" />
+     transform="matrix(0.78,0,0,0.78,-271.989,-1.059)" />
   <line
      x1="748.22339"
      y1="290.77661"

@@ -34,37 +34,37 @@
      id="defs22">
     <marker
        id="aR"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#e23b3b"
          id="path1" />
     </marker>
     <marker
        id="aG"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2fa84f"
          id="path2" />
     </marker>
     <marker
        id="aB"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2f6fe0"
          id="path3" />
     </marker>
@@ -92,7 +92,7 @@
       <line
          x1="0"
          y1="0"
-         x2="-24"
+         x2="24"
          y2="0"
          stroke="#e23b3b"
          stroke-width="2.4"
@@ -111,8 +111,8 @@
       <line
          x1="0"
          y1="0"
-         x2="-14"
-         y2="10"
+         x2="-18"
+         y2="13"
          stroke="#2fa84f"
          stroke-width="2"
          marker-end="url(#aG)"
@@ -121,7 +121,7 @@
          x1="0"
          y1="0"
          x2="0"
-         y2="16"
+         y2="22"
          stroke="#2f6fe0"
          stroke-width="2"
          marker-end="url(#aB)"
@@ -129,7 +129,7 @@
       <line
          x1="0"
          y1="0"
-         x2="-16"
+         x2="22"
          y2="0"
          stroke="#e23b3b"
          stroke-width="2"
@@ -316,37 +316,37 @@
     </symbol>
     <marker
        id="aR-2"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#e23b3b"
          id="path1-9" />
     </marker>
     <marker
        id="aB-3"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2f6fe0"
          id="path3-1" />
     </marker>
     <marker
        id="aG-9"
-       markerWidth="10"
-       markerHeight="10"
-       refX="7"
-       refY="3.2"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
        orient="auto">
       <path
-         d="M0,0 L8,3.2 L0,6.4 z"
+         d="M0,0 L5,2 L0,4 z"
          fill="#2fa84f"
          id="path2-4" />
     </marker>
@@ -411,11 +411,11 @@
   <use
      href="#triadS"
      x="356"
-     y="159"
+     y="143"
      id="use24" />
   <text
      x="385.7858"
-     y="161.84558"
+     y="145.84558"
      font-size="12px"
      fill="#41506a"
      id="text24">arm frame</text>
@@ -424,13 +424,13 @@
      x="356"
      y="272"
      id="use25"
-     transform="matrix(0.67427158,-0.26554146,0.26554146,0.67427158,89.205933,188.71285)" />
+     transform="matrix(0.7443,-0.2932,0.2932,0.7443,56.65,179.45)" />
   <use
      href="#triadL"
      x="356"
      y="272"
      id="use25-8"
-     transform="matrix(0.7246754,0,0,0.7246754,98.035621,-5.6738564)" />
+     transform="matrix(0.80,0,0,0.80,71.22,-26.16)" />
   <text
      x="429.80573"
      y="277.74347"
@@ -445,8 +445,8 @@
      font-weight="bold"
      fill="#1f2937"
      id="text25-0">gripper frame</text>
-  <text x="332" y="188" fill="#e23b3b" font-size="11.5" font-style="italic" id="lblx">x</text>
-  <text x="333" y="210" fill="#2fa84f" font-size="11.5" font-style="italic" id="lbly">y</text>
+  <text x="378" y="189" fill="#e23b3b" font-size="11.5" font-style="italic" id="lblx">x</text>
+  <text x="330" y="210" fill="#2fa84f" font-size="11.5" font-style="italic" id="lbly">y</text>
   <text x="358" y="222" fill="#2f6fe0" font-size="11.5" font-style="italic" id="lblz">z</text>
   <text
      x="300"
