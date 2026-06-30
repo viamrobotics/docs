@@ -562,7 +562,7 @@ func newCamera(ctx context.Context, deps resource.Dependencies, conf resource.Co
         Named: conf.ResourceName().AsNamed(),
         logger: logger,
     }
-    if err := c.Reconfigure(ctx, deps, conf); err != nil {
+    if err := c.reconfigure(ctx, deps, conf); err != nil {
         return nil, err
     }
     return c, nil
@@ -596,8 +596,8 @@ type colorFilterCam struct {
     logger loggingg.Logger
 }
 
-// Reconfigure reconfigures the modular component with new settings.
-func (c *colorFilterCam) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
+// reconfigure applies config settings to the component. Called from the constructor.
+func (c *colorFilterCam) reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
     camConfig, err := resource.NativeConfig[*Config](conf)
     if err != nil {
         return err

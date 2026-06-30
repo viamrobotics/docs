@@ -334,13 +334,13 @@ defined in `proto/viam/module/v1/module.proto`:
 
 All RPCs are initiated by `viam-server` and handled by the module:
 
-| RPC                   | Purpose                                                                                                                     |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `Ready`               | Handshake: module returns its supported API/model pairs.                                                                    |
-| `AddResource`         | Create a new resource instance from config.                                                                                 |
-| `ReconfigureResource` | Rebuild an existing resource with new config (removes and re-creates the resource). The name is retained for compatibility. |
-| `RemoveResource`      | Destroy a resource instance.                                                                                                |
-| `ValidateConfig`      | Validate config and return implicit dependencies.                                                                           |
+| RPC                   | Purpose                                                                                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Ready`               | Handshake: module returns its supported API/model pairs.                                                                                           |
+| `AddResource`         | Create a new resource instance from config.                                                                                                        |
+| `ReconfigureResource` | No longer called by `viam-server`. Config changes go through `RemoveResource` + `AddResource` instead. The RPC name is retained for compatibility. |
+| `RemoveResource`      | Destroy a resource instance.                                                                                                                       |
+| `ValidateConfig`      | Validate config and return implicit dependencies.                                                                                                  |
 
 The module also connects back to the parent `viam-server` to access other
 resources (dependencies) on the machine.
