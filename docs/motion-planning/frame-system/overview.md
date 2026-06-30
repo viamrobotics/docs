@@ -37,6 +37,16 @@ things are in physical space.
 
 ## Concepts
 
+### Frames and poses
+
+A **frame** is a coordinate system: an origin and three axes (x, y, z) attached to a
+component or to a fixed point in the world. The frame system tracks where every frame sits
+relative to the others.
+
+A **pose** is a position and orientation expressed in a particular frame. It pairs a
+translation (the x, y, z offset from the frame's origin) with an orientation (the direction
+something faces), so a pose only has meaning together with its reference frame.
+
 ### The world frame
 
 The world frame is the fixed root of your frame system. You do not configure it

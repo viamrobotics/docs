@@ -8,7 +8,7 @@ description: "How Move places a named frame at a target pose, and how the frame 
 ---
 
 When you move an arm with the motion service, you move a
-[_frame_](/motion-planning/frame-system/overview/#frame) from its current
+[_frame_](/motion-planning/frame-system/overview/#frames-and-poses) from its current
 pose to a destination pose. That frame is called the **end effector frame**, also called
 the tool control point (TCP) or the manipulation control frame. The end effector
 frame's location depends on the arm, the tool, and the task, and it can change partway
