@@ -240,12 +240,12 @@ if __name__ == '__main__':
 
 The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                                                                 | Python                                                                                |
-| ------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)                       | Default (`viam-server` destroys and re-creates the resource)                          |
-| In-place reconfigure     | Implement `Reconfigure()` (replace the `AlwaysRebuild` embed with your own method) | Not supported; resources always rebuild (the `Reconfigurable` protocol is deprecated) |
-| No-op close              | Embed `resource.TriviallyCloseable`                                                | Default on `ResourceBase`                                                             |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig`                                           | Default on `EasyResource`                                                             |
+| Behavior                 | Go                                                                  | Python                                                                                |
+| ------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)        | Default (`viam-server` destroys and re-creates the resource)                          |
+| In-place reconfigure     | Not supported for modular resources (`viam-server` always rebuilds) | Not supported; resources always rebuild (the `Reconfigurable` protocol is deprecated) |
+| No-op close              | Embed `resource.TriviallyCloseable`                                 | Default on `ResourceBase`                                                             |
+| Skip config validation   | Embed `resource.TriviallyValidateConfig`                            | Default on `EasyResource`                                                             |
 
 ## Logging
 
@@ -331,13 +331,13 @@ defined in `proto/viam/module/v1/module.proto`:
 
 All RPCs are initiated by `viam-server` and handled by the module:
 
-| RPC                   | Purpose                                                  |
-| --------------------- | -------------------------------------------------------- |
-| `Ready`               | Handshake: module returns its supported API/model pairs. |
-| `AddResource`         | Create a new resource instance from config.              |
-| `ReconfigureResource` | Update an existing resource with new config.             |
-| `RemoveResource`      | Destroy a resource instance.                             |
-| `ValidateConfig`      | Validate config and return implicit dependencies.        |
+| RPC                   | Purpose                                                                                               |
+| --------------------- | ----------------------------------------------------------------------------------------------------- |
+| `Ready`               | Handshake: module returns its supported API/model pairs.                                              |
+| `AddResource`         | Create a new resource instance from config.                                                           |
+| `ReconfigureResource` | _Deprecated._ Rebuilds the resource. `viam-server` now uses `RemoveResource` + `AddResource` instead. |
+| `RemoveResource`      | Destroy a resource instance.                                                                          |
+| `ValidateConfig`      | Validate config and return implicit dependencies.                                                     |
 
 The module also connects back to the parent `viam-server` to access other
 resources (dependencies) on the machine.
