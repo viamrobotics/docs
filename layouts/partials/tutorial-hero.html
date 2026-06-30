@@ -1,0 +1,67 @@
+{{- /* Featured hero for the flagship tutorial/workshop on the tutorials
+landing. For workshops, the right panel lists phases as a clickable numbered
+stepper. */ -}} {{- $p := .page -}} {{- $isWorkshop :=
+$p.Params.workshop_overview -}} {{- $phases := cond $isWorkshop
+$p.RegularPages.ByWeight slice -}} {{- $phaseCount := len $phases -}} {{- $start
+:= cond (gt $phaseCount 0) (index $phases 0).RelPermalink $p.RelPermalink -}}
+<section
+  class="tutorial-hero{{ if not $isWorkshop }} tutorial-hero--solo{{ end }}"
+  aria-label="Featured tutorial"
+>
+  <div class="tutorial-hero__main">
+    <span class="tutorial-hero__eyebrow"
+      >{{ if $isWorkshop }}Featured workshop{{ else }}Featured tutorial{{ end
+      }}</span
+    >
+    <h2 class="tutorial-hero__title">
+      <a href="{{ $p.RelPermalink }}">{{ $p.LinkTitle }}</a>
+    </h2>
+    {{- with $p.Description }}
+    <p class="tutorial-hero__desc">{{ . }}</p>
+    {{ end }}
+    <dl class="tutorial-hero__spec">
+      {{- with $p.Params.level }}
+      <div>
+        <dt>Level</dt>
+        <dd>{{ . }}</dd>
+      </div>
+      {{ end }} {{- with $p.Params.time_estimate }}
+      <div>
+        <dt>Time</dt>
+        <dd>{{ . }}</dd>
+      </div>
+      {{ end }} {{- if gt $phaseCount 0 }}
+      <div>
+        <dt>Phases</dt>
+        <dd>{{ $phaseCount }}</dd>
+      </div>
+      {{ end }} {{- with $p.Params.languages }}
+      <div>
+        <dt>Language</dt>
+        <dd>{{ delimit . ", " }}</dd>
+      </div>
+      {{ end }}
+    </dl>
+    <a class="tutorial-hero__cta" href="{{ $start }}"
+      >{{ if $isWorkshop }}Start the workshop{{ else }}Start tutorial{{ end }}
+      <span aria-hidden="true">&rarr;</span></a
+    >
+  </div>
+  {{- if gt $phaseCount 0 }}
+  <aside class="tutorial-hero__phases" aria-label="Workshop phases">
+    <span class="tutorial-hero__phases-label">{{ $phaseCount }} phases</span>
+    <ol>
+      {{- range $i, $phase := $phases }}
+      <li style="--i: {{ $i }}">
+        <a href="{{ $phase.RelPermalink }}">
+          <span class="num">{{ printf "%02d" (add $i 1) }}</span>
+          <span class="label"
+            >{{ replaceRE "^[0-9]+[.)]\\s*" "" $phase.LinkTitle }}</span
+          >
+        </a>
+      </li>
+      {{- end }}
+    </ol>
+  </aside>
+  {{- end }}
+</section>
