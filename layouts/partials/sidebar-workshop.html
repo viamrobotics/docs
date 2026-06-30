@@ -8,7 +8,7 @@
         <a href="{{ "tutorials/" | relURL }}" class="td-sidebar-link td-sidebar-link__section">Tutorials</a>
       </li>
       <li class="td-sidebar-nav__section-title{{ if $cur.Eq $section }} active{{ end }}">
-        <a href="{{ $section.RelPermalink }}" class="td-sidebar-link td-sidebar-link__section{{ if $cur.Eq $section }} td-sidebar-nav-active-item{{ end }}">
+        <a href="{{ $section.RelPermalink }}" class="td-sidebar-link td-sidebar-link__section{{ if $cur.Eq $section }} td-sidebar-nav-active-item{{ end }}"{{ if $cur.Eq $section }} aria-current="page"{{ end }}>
           {{ $section.LinkTitle }}
         </a>
         <ul class="td-sidebar-nav__section">
