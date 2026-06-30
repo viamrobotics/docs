@@ -6,6 +6,7 @@ slug: "inline-module"
 weight: 50
 description: "Optional: package your working script as an inline module that runs on the robot."
 workshop: "pick-and-place"
+toc_hide: true
 phase: 5
 phase_total: 5
 time_estimate: "15 minutes"

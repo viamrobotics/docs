@@ -6,6 +6,7 @@ slug: "configure-resources"
 weight: 20
 description: "Tour the pre-configured resources, the color-detection vision pipeline, and the control and scene tabs."
 workshop: "pick-and-place"
+toc_hide: true
 phase: 2
 phase_total: 5
 time_estimate: "20 minutes"

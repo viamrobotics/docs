@@ -6,6 +6,7 @@ slug: "local-python-script"
 weight: 40
 description: "Connect from your laptop, run the static sequence, then add perception to complete the pick-and-sort loop."
 workshop: "pick-and-place"
+toc_hide: true
 phase: 4
 phase_total: 5
 time_estimate: "30 minutes"

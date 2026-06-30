@@ -6,6 +6,7 @@ slug: "phase-slug"
 weight: 0 # 10, 20, 30, ... in 10s for sidebar order
 description: "One-sentence description of this phase."
 workshop: "pick-and-place"
+toc_hide: true
 phase: 0
 phase_total: 5
 time_estimate: "NN minutes"
