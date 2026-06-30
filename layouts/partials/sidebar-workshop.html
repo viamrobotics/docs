@@ -12,10 +12,10 @@
           {{ $section.LinkTitle }}
         </a>
         <ul class="td-sidebar-nav__section">
-          {{- range $i, $phase := $phases }}
+          {{- range $phase := $phases }}
           <li class="td-sidebar-nav-item{{ if $cur.Eq $phase }} active{{ end }}">
             <a href="{{ $phase.RelPermalink }}" class="td-sidebar-link{{ if $cur.Eq $phase }} td-sidebar-nav-active-item{{ end }}"{{ if $cur.Eq $phase }} aria-current="page"{{ end }}>
-              {{ add $i 1 }}. {{ $phase.LinkTitle }}
+              {{ $phase.LinkTitle }}
             </a>
           </li>
           {{- end }}
