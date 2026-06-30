@@ -1,0 +1,26 @@
+{{- $cur := . -}}
+{{- $section := .CurrentSection -}}
+{{- $phases := $section.RegularPages.ByWeight -}}
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  <nav class="collapse td-sidebar-nav" id="td-section-nav" aria-label="Workshop phases">
+    <ul class="td-sidebar-nav__section pr-md-3 ul-0">
+      <li class="td-sidebar-nav__section-title">
+        <a href="{{ "tutorials/" | relURL }}" class="td-sidebar-link td-sidebar-link__section">Tutorials</a>
+      </li>
+      <li class="td-sidebar-nav__section-title{{ if $cur.Eq $section }} active{{ end }}">
+        <a href="{{ $section.RelPermalink }}" class="td-sidebar-link td-sidebar-link__section{{ if $cur.Eq $section }} td-sidebar-nav-active-item{{ end }}">
+          {{ $section.LinkTitle }}
+        </a>
+        <ul class="td-sidebar-nav__section">
+          {{- range $i, $phase := $phases }}
+          <li class="td-sidebar-nav-item{{ if $cur.Eq $phase }} active{{ end }}">
+            <a href="{{ $phase.RelPermalink }}" class="td-sidebar-link{{ if $cur.Eq $phase }} td-sidebar-nav-active-item{{ end }}"{{ if $cur.Eq $phase }} aria-current="page"{{ end }}>
+              {{ add $i 1 }}. {{ $phase.LinkTitle }}
+            </a>
+          </li>
+          {{- end }}
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
