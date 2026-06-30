@@ -4,7 +4,7 @@ title: "Relax a goal with a pose cloud"
 weight: 45
 layout: "docs"
 type: "docs"
-description: "Give the planner a region of acceptable destinations instead of a single exact pose, so it can find a solution faster and more reliably."
+description: "Give the planner a region of acceptable destinations instead of a single exact pose, so it can find a solution faster."
 ---
 
 By default `Move` requires a destination pose, which defines where the end effector must
@@ -20,9 +20,11 @@ relaxes and how to use a `pose cloud` with the motion service.
 
 ## When to reach for a pose cloud
 
-- **Target regions.** When the destination is a region rather than one exact pose, use a
-  pose cloud. For example, an object that may rest anywhere on a table, or a soup can that
-  may spin about its long axis.
+- **Target regions.** When any spot in an area is an acceptable place to move,
+  use a pose cloud. For example, place a cup anywhere on a clear area of the table.
+- **Grasp ranges.** When an object can be grasped from a range of positions or rotations, a
+  pose cloud lets the planner choose a reachable grasp. For example, grasp a cup that may sit
+  at any rotation about its vertical axis.
 - **Dynamic collisions.** When the target area may contain obstacles, a pose cloud lets
   the planner place the object at a clear spot while avoiding collisions at the destination.
 - **Kinematic constraints.** When a goal fails or plans slowly because the arm struggles
@@ -38,9 +40,10 @@ choose a destination within a region instead:
 
 ## Relaxing the destination pose
 
-A pose cloud defines a tolerance on each component of the goal pose.
-Each permits +/- deviation, so the goal becomes a box around the target pose rather than a single
-pose. The destination pose is the center of the box.
+A pose cloud is modeled as a box with the destination pose at its center. The size of the box
+in three dimensions defines a tolerance on the goal pose, and the orientation and `Theta` components define a
+rotation tolerance for the end effector frame. The destination may land anywhere within the
+box and rotation tolerance.
 
 ```go
 &referenceframe.PoseCloud{
@@ -66,39 +69,33 @@ can take a large `Theta` while keeping its pointing direction fixed.
 The position tolerances (`X`, `Y`, `Z`) are millimeters and `Theta` is degrees. The
 orientation-vector tolerances (`OX`, `OY`, `OZ`) are unitless deviations of the pointing
 direction on a unit sphere, not angles: on its own, a value of `1` accepts any value for
-that component, and `0` holds it exact.
+that component, and `0` holds it exact. Because the pointing direction is a unit vector
+(its components satisfy `OX² + OY² + OZ² = 1`), these leeways are coupled: more room on one
+component leaves less on the others, and a wide orientation leeway interacts with `Theta`,
+so a tolerance that is safe at a small rotation can let the tool tip too far at a larger one
+(a held cup starts to spill).
 
-Because the pointing direction is a unit vector, `OX`, `OY`, and `OZ` share one budget: the
-squares of the three always sum to 1. They move together rather than one at a time. Tilting
-the tool grows `OX` and `OY` and lowers `OZ` at the same time. To let the direction vary,
-widen all three as a set; to hold it fixed, leave all three at `0`. Consider the combination
-`OX: 1, OY: 1, OZ: 0`. It looks like "point in any direction", but `OZ: 0` holds `OZ` fixed,
-and the unit-sphere constraint then keeps `OX` and `OY` at `0`. The tool stays exactly
-aligned despite the wide `OX` and `OY` leeways.
-
-The more freedom you give the planner, the larger the set of arm configurations
-that satisfy the goal, so inverse kinematics is more likely to find a solution
-and the search reaches it faster.
+**Orientation vector normalization:** If you build a goal pose whose orientation vector is
+unset or all-zero (`OX:0, OY:0, OZ:0`), Viam normalizes it to the default `OX:0, OY:0, OZ:1`
+before the leeways apply. A wide pose cloud is then measured against that default pointing
+direction, not the one you intended, so set the goal's orientation explicitly and verify the
+resulting plan.
 
 ## Tolerances are measured in the target's frame
 
 The tolerances are evaluated in the reference frame of the target, not in world
 coordinates. This matters when the target is tilted relative to the world.
 
-Consider a gripper approaching an inclined surface. You want to allow tolerance
-_along_ the surface but stay tight _into_ it, so the tool rides the surface
-instead of driving through it. Expressed in world coordinates that is an awkward
-mix of all three axes, because the surface is tilted. Expressed in the surface's
-own frame, you give large tolerance on the two in-plane axes and tight tolerance on the
-axis normal to the surface.
-Because pose clouds use the target's frame, you describe the tolerance the way
-the task is shaped rather than translating it into world axes by hand.
+Consider a gripper approaching an inclined surface. Express the tolerance in the surface's
+own frame: large on the two in-plane axes so the tool can ride along the surface, and tight
+on the axis normal to the surface so it stays on the surface. Because a pose cloud uses the
+target's frame, these tolerances follow the tilt of the surface directly.
 
 {{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="Two panels. On the left, a pose-cloud region drawn as a thin slab lying along an inclined surface, large along the surface and tight into it, with the target frame tilted to match the surface. On the right, the orientation tolerance shown as a cone around the tool's pointing direction for OX and OY, plus an ellipse for Theta rotation about the axis." style="max-width:820px" class="aligncenter">}}
 
 ## Use a pose cloud with the motion service
 
-A pose cloud attaches to the destination object. In Go, attach a pose cloud to the destination with
+A pose cloud travels with the destination pose. In Go, attach the pose cloud to the destination with
 `NewPoseInFrameWithGoalCloud`, then pass that destination to `Move`. The pose is
 the center of the region and the `PoseCloud` is the tolerance around it. This example includes an orientation constraint for the water example, so the cup stays upright for the whole motion, not only at
 the goal.
@@ -148,9 +145,8 @@ if err != nil {
 ```
 
 {{% alert title="Available through the Go SDK" color="note" %}}
-Today the Go SDK provides the `NewPoseInFrameWithGoalCloud` constructor;
-The goal cloud travels on the destination's `PoseInFrame`, which is part of the
-`Move` request sent to the motion service, so the planner honors it server side.
+The Go SDK provides `NewPoseInFrameWithGoalCloud` to attach a pose cloud to the destination.
+The goal cloud travels in the `Move` request, so the motion service honors it on the server.
 {{% /alert %}}
 
 ## What's next

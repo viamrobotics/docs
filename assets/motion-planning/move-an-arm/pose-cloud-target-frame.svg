@@ -142,8 +142,8 @@
        id="text8"
        transform="rotate(7.5429052)">pose cloud</text>
     <text
-       x="236.12857"
-       y="278.15408"
+       x="214"
+       y="305"
        font-size="11.5px"
        fill="#2f6fe0"
        id="text8-8">target frame</text>
@@ -178,15 +178,15 @@
     <line
        x1="306.09509"
        y1="276.38275"
-       x2="353.9097"
-       y2="281.45825"
+       x2="258.28048"
+       y2="271.30725"
        stroke="#2fa84f"
        stroke-width="2.4"
        marker-end="url(#aG)"
        id="line10" />
     <text
-       x="355"
-       y="293"
+       x="250"
+       y="263"
        font-size="11.5"
        font-style="italic"
        fill="#2fa84f"

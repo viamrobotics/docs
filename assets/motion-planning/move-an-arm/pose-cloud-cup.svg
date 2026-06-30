@@ -493,15 +493,15 @@
     <line
        x1="0"
        y1="0"
-       x2="-16"
-       y2="11"
+       x2="16"
+       y2="-11"
        stroke="#2fa84f"
        stroke-width="2.4"
        marker-end="url(#aG)"
        id="line30" />
     <text
-       x="-26"
-       y="19"
+       x="20"
+       y="-13"
        fill="#2fa84f"
        font-size="11.5px"
        font-style="italic"
