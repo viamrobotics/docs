@@ -65,15 +65,16 @@ To control when updates are applied, configure a [maintenance window](/fleet/man
 
 In the machine settings card, open **Settings** and expand **Advanced**:
 
-| Field                               | Type    | Default | Description                                                                                                                        |
-| ----------------------------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `debug`                             | boolean | `false` | Enable debug logging for `viam-agent`.                                                                                             |
-| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting `viam-server`. Useful for ensuring the latest version runs on boot. |
-| `disable_viam_server`               | boolean | `false` | Prevent `viam-agent` from starting `viam-server`. For development use.                                                             |
-| `disable_network_configuration`     | boolean | `false` | Disable `viam-agent`'s network and hotspot management.                                                                             |
-| `disable_system_configuration`      | boolean | `false` | Disable `viam-agent`'s system configuration management (OS updates, log forwarding).                                               |
-| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                   |
-| `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules.                                                                     |
+| Field                               | Type    | Default | Description                                                                                                                                                                                                                   |
+| ----------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `debug`                             | boolean | `false` | Enable debug logging for `viam-agent`.                                                                                                                                                                                        |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting `viam-server`. Useful for ensuring the latest version runs on boot.                                                                                            |
+| `disable_viam_server`               | boolean | `false` | Prevent `viam-agent` from starting `viam-server`. For development use.                                                                                                                                                        |
+| `disable_network_configuration`     | boolean | `false` | Disable `viam-agent`'s network and hotspot management.                                                                                                                                                                        |
+| `disable_system_configuration`      | boolean | `false` | Disable `viam-agent`'s system configuration management (OS updates, log forwarding).                                                                                                                                          |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                                                                                                              |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules.                                                                                                                                                                |
+| `disable_log_deduplication`         | boolean | `false` | Disable log deduplication for `viam-agent`. By default, `viam-agent` collapses noisy log messages (those that repeat within a short window) into a single message with a repeat count. Set to `true` to print every log line. |
 
 ## System configuration
 
@@ -90,12 +91,12 @@ The `"all"` and `"security"` modes delegate scheduling to the operating system's
 
 When using a managed mode, `viam-agent` disables the OS's built-in upgrade timer and runs upgrades itself at the configured interval. If an upgrade requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
 
-| Mode                                  | Supported distributions                                                                    | Schedule controlled by     | Reboot coordination          |
-| ------------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------- | ---------------------------- |
-| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                    | OS (`unattended-upgrades`) | None                         |
-| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM) | `viam-agent`               | Waits for maintenance window |
+| Mode                                  | Supported distributions                                                                                                   | Schedule controlled by     | Reboot coordination          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ---------------------------- |
+| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                                                   | OS (`unattended-upgrades`) | None                         |
+| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM), and Windows (PSWindowsUpdate) | `viam-agent`               | Waits for maintenance window |
 
-The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu or an RPM-based distribution, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
+The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. On Windows, managed modes use the `PSWindowsUpdate` PowerShell module. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 
 ### Log forwarding
 
