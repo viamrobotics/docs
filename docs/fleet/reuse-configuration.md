@@ -206,12 +206,13 @@ To configure default fragments:
 
 In JSON mode on a machine's **CONFIGURE** tab, fragments are listed in the `fragments` array. Each entry supports:
 
-| Field       | Type   | Description                                                                                |
-| ----------- | ------ | ------------------------------------------------------------------------------------------ |
-| `id`        | string | The fragment ID. Required.                                                                 |
-| `version`   | string | Pin to a specific revision number or tag name. Omit to track the latest revision.          |
-| `prefix`    | string | A string prepended to all resource names from this fragment. Use to avoid name collisions. |
-| `variables` | object | A map of variable names to values, overriding the defaults defined in the fragment.        |
+| Field       | Type    | Description                                                                                            |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `id`        | string  | The fragment ID. Required.                                                                             |
+| `version`   | string  | Pin to a specific revision number or tag name. Omit to track the latest revision.                      |
+| `prefix`    | string  | A string prepended to all resource names from this fragment. Use to avoid name collisions.             |
+| `variables` | object  | A map of variable names to values, overriding the defaults defined in the fragment.                    |
+| `disabled`  | boolean | Set to `true` to keep the fragment in your config but skip loading its resources. Defaults to `false`. |
 
 Example:
 
