@@ -4204,6 +4204,9 @@ footer {
   text-decoration: none;
   color: inherit;
 }
+.tutorial-card > a {
+  padding: 0;
+}
 .tutorial-card__body {
   padding: 20px 22px;
 }
@@ -4222,7 +4225,7 @@ footer {
   flex-wrap: wrap;
   gap: 6px;
 }
-.tutorial-card__badges .badge {
+.tutorial-card__badge {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 600;
@@ -4233,11 +4236,11 @@ footer {
   background: #f0f0f2;
   color: #282829;
 }
-.tutorial-card__badges .badge--workshop {
+.tutorial-card__badge--workshop {
   background: #282829;
   color: #fff;
 }
-.tutorial-card__badges .badge--lang {
+.tutorial-card__badge--lang {
   background: #e6effa;
   color: #1b4f8a;
 }

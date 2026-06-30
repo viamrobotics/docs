@@ -49,7 +49,7 @@
               {{ $pctx := .Site }}
               {{/* Featured set: opt-in `featured: true` singles OR workshop overviews. */}}
               {{- $featured := where (where $pctx.RegularPages ".Section" "tutorials") "Params.featured" true -}}
-              {{- $workshops := where $pctx.Pages "Params.workshop_overview" true -}}
+              {{- $workshops := where (where $pctx.Pages ".Section" "tutorials") "Params.workshop_overview" true -}}
               {{- $cards := $workshops | union $featured -}}
 
               {{ with $cards }}
