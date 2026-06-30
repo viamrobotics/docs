@@ -6,6 +6,7 @@ slug: "static-positions"
 weight: 30
 description: "Save the arm's key poses and configure WorldState obstacles, proving the hardware and motion planning work before you add perception."
 workshop: "pick-and-place"
+toc_hide: true
 phase: 3
 phase_total: 5
 time_estimate: "20 minutes"

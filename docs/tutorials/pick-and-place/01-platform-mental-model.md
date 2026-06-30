@@ -6,6 +6,7 @@ slug: "platform-mental-model"
 weight: 10
 description: "Understand how the Viam cloud, agent, and server fit together before you configure anything."
 workshop: "pick-and-place"
+toc_hide: true
 phase: 1
 phase_total: 5
 time_estimate: "15 minutes"
