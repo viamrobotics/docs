@@ -27,23 +27,13 @@
             {{ partial "sidebar.html" . }}
           </aside>
           <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
-            <div id="rss-feed">
-              <a
-                target="_blank"
-                title="Open RSS feed"
-                aria-label="Open RSS feed"
-                href="{{ .Permalink }}feed.xml"
-              >
-                <p><i class="fas fa-rss"></i> RSS Feed</p>
-              </a>
-            </div>
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
             "breadcrumb.html" . }}{{ end }}
             <div class="td-content tutorials">
               <h1>{{ .Title }}</h1>
               <p>Browse every Viam tutorial. Filter by language, component, service, level, or content type.</p>
-              {{ $pctx := .Site }}
               {{ if not hugo.IsProduction }}
+              {{ $pctx := .Site }}
               <div class="alert alert-caution" role="alert">
                 <h4 class="alert-heading">Missing the filtering UI?</h4>
                 <p>
@@ -53,7 +43,7 @@
                 </p>
               </div>
               {{- $pages := (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page") -}}
-              {{/* Exclude sequential-workshop phase pages; each workshop surfaces via its overview card above. */}}
+              {{/* Full-catalog archive fallback for local/staging builds where Typesense is unavailable. Exclude sequential-workshop phase pages; they surface through their workshop overview on the main landing. */}}
               {{- $phasePages := where $pages "Params.workshop" "!=" nil -}}
               {{- $pages = complement $phasePages $pages -}}
               <div id="archive" class="card-container">
