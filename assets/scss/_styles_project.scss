@@ -1431,6 +1431,10 @@ td > ol {
 }
 
 #navSearchBar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   margin: 0px;
   min-width: 300px;
   max-width: 300px;
@@ -3180,22 +3184,26 @@ nav {
   padding: 0.25rem 1rem;
   min-height: 50px;
   background-color: white;
+  position: relative;
 }
 
 .td-topbar-sections {
   margin-right: auto !important;
-  margin-left: auto !important;
+  margin-left: 0 !important;
   line-height: unset !important;
 }
 
 .td-topbar-sections > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 0;
-  padding-left: 1.25rem;
   margin: 0;
 }
 
 .td-topbar-sections > ul > li {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   text-transform: uppercase;
   font-family:
     Roboto Mono Variable,
@@ -3206,17 +3214,26 @@ nav {
   line-height: 1.25rem;
 }
 
-.td-topbar-sections > ul > li > a {
+/* "|" separator before each topbar link; fixed height matches the brand divider */
+.td-topbar-sections > ul > li::before {
+  content: "";
+  width: 1px;
+  height: 20px;
+  background-color: #e4e4e6;
+  margin: 0 0.5rem;
+}
+
+/* No distinct hover/focus state — matches the brand link, which also stays static */
+.td-navbar .td-topbar-sections > ul > li > .nav-link,
+.td-navbar .td-topbar-sections > ul > li > .nav-link.active,
+.td-navbar .td-topbar-sections > ul > li > .nav-link:hover,
+.td-navbar .td-topbar-sections > ul > li > .nav-link:focus {
   color: black;
+  text-decoration: none;
   padding-bottom: 4px;
   padding-top: 8px;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
-}
-
-.td-topbar-sections > ul > li > a:hover {
-  text-decoration: none;
-  background-color: rgb(232, 232, 234);
 }
 
 @media (min-width: 768px) {
