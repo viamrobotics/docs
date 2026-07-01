@@ -28,6 +28,11 @@ Click a pipeline name to open its detail page, which has three tabs:
 
 Use the three-dot menu next to any pipeline to **Copy ID**, **Query pipeline data**, **Enable** or **Disable** the pipeline, or **Delete** it.
 
+{{< alert title="Note" color="note" >}}
+To rename a pipeline or edit its MQL query and schedule after creation, use the CLI or SDK.
+The app does not support renaming or editing pipelines.
+{{< /alert >}}
+
 ## List pipelines
 
 {{< tabs >}}
@@ -311,8 +316,8 @@ You can create, list, and delete indexes from the Viam app, the CLI, or the SDK.
 1. Click **Create index**.
 
 The index build starts in the background.
-The **Custom indexes** tab shows the build status, which progresses from **Pending** to **In progress** to **Completed**.
-If the build fails, the tab shows the error.
+The **Custom indexes** tab shows a status badge on each index: **Building** while the index is being created, **Ready** when complete, or **Failed** if the build encountered an error.
+You can only delete an index once it reaches the **Ready** or **Failed** state.
 
 To delete an index, click the delete icon on the index card.
 
