@@ -102,12 +102,12 @@ To confirm the final pose, read the localization source directly:
 
 If a navigation attempt fails, match the symptom to the input it depends on:
 
-| Symptom                                                                      | Missing input        | Fix                                                                                                                                          |
-| ---------------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Error that the base has no pose, or the plan starts from the wrong location. | Localization source. | Confirm the movement sensor has a GPS fix or the SLAM service reports a pose (Step 1).                                                       |
-| `MoveOnMap` reports no map, or the base leaves the mapped area.              | SLAM map.            | Confirm the SLAM service is running and the destination falls within its map (Step 1).                                                       |
-| Base stops early or refuses to plan a path near an object.                   | Obstacle source.     | Pass known obstacles to the `obstacles` argument, or add a [vision service](/operate/reference/services/vision/) obstacle detector (Step 3). |
-| Motion service cannot relate the base and its sensor.                        | Frame system.        | Confirm the frame system places the sensor on the base (Step 2).                                                                             |
+| Symptom                                                                      | Missing input        | Fix                                                                                                                                  |
+| ---------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Error that the base has no pose, or the plan starts from the wrong location. | Localization source. | Confirm the movement sensor has a GPS fix or the SLAM service reports a pose (Step 1).                                               |
+| `MoveOnMap` reports no map, or the base leaves the mapped area.              | SLAM map.            | Confirm the SLAM service is running and the destination falls within its map (Step 1).                                               |
+| Base stops early or refuses to plan a path near an object.                   | Obstacle source.     | Pass known obstacles to the `obstacles` argument, or add a [vision service](/reference/services/vision/) obstacle detector (Step 3). |
+| Motion service cannot relate the base and its sensor.                        | Frame system.        | Confirm the frame system places the sensor on the base (Step 2).                                                                     |
 
 ## Next steps
 

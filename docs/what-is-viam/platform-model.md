@@ -69,7 +69,7 @@ As a developer, you meet Viam from one of two directions, and telling them apart
 When you write a **client script**, _you_ are the caller.
 Your program connects to a machine, gets a handle to a resource, and calls its API methods, read this sensor, move that arm, run detections on this camera.
 Control flows outward from your code into the machine, and this is how most applications, dashboards, and automations are built.
-See [Control a machine](/operate/control/) for this path.
+See [Control a machine](/hardware/) for this path.
 
 When you **author a module**, the relationship inverts: _the platform_ is the caller.
 You implement the methods of a component or service API, and `viam-server` invokes your code whenever a client asks that resource to do something.
@@ -92,6 +92,6 @@ With this vocabulary in place, the rest of the documentation, configuration, mod
 
 ## Next steps
 
-- [Configure and control a machine](/operate/), put components and services on a real part and drive them.
+- [Configure and control a machine](/hardware/), put components and services on a real part and drive them.
 - [Build a module](/build-modules/overview/), author your own modular resource against a standard API.
-- [Machine architecture reference](/operate/reference/architecture/), a closer look at how parts, resources, and `viam-server` connect.
+- [Machine architecture reference](/reference/machine-to-machine-comms/), a closer look at how parts, resources, and `viam-server` connect.

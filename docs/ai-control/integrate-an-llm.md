@@ -24,7 +24,7 @@ Steps 4 and 5 cover this validation and the timeouts and human-confirmation gate
 
 ## Prerequisites
 
-- A machine with the components and services your robot uses (for example a [base](/reference/apis/components/base/) and an [arm](/reference/apis/components/arm/)), already [configured](/operate/get-started/supported-hardware/).
+- A machine with the components and services your robot uses (for example a [base](/reference/apis/components/base/) and an [arm](/reference/apis/components/arm/)), already [configured](/hardware/).
 - Credentials for an LLM provider, or a local model you can query.
 - Familiarity with [writing a module](/build-modules/).
 

@@ -30,7 +30,7 @@ wall on the map, the robot needs to know where it was standing when it saw the
 wall; to know where it is standing, it needs a map to compare its view against.
 SLAM breaks the loop by solving both together. Each new sensor reading nudges the
 map and the pose estimate at the same time, and the two converge as the robot
-explores. This is what separates SLAM from plain [localization](localization/):
+explores. This is what separates SLAM from plain [localization](/navigation/localization/):
 localization answers _where am I_ against a map that already exists, while SLAM
 produces the map and the answer together.
 
@@ -79,7 +79,7 @@ Because these are configuration choices on the SLAM service rather than separate
 components, you can switch modes by changing the service configuration. For the
 configuration shape and supported sensors of a specific implementation, see the
 SLAM modules in the [Viam Registry](https://app.viam.com/registry) and
-[How a robot knows its position](localization/).
+[How a robot knows its position](/navigation/localization/).
 
 ## How the map feeds navigation
 
@@ -87,13 +87,13 @@ The map and pose are inputs, not the goal. Once SLAM reports where the robot is 
 a map, navigation can plan a route across that map to a destination and drive the
 base there, steering around the obstacles the map records. That handoff, from
 "where am I on the map" to "drive me to that spot", is covered in
-[Navigate a mobile base to a goal](navigate-a-mobile-base/).
+[Navigate a mobile base to a goal](/navigation/navigate-a-mobile-base/).
 
 ## Next steps
 
-- [How a robot knows its position](localization/): how odometry, GPS, and SLAM
+- [How a robot knows its position](/navigation/localization/): how odometry, GPS, and SLAM
   compare as sources of position.
-- [Navigate a mobile base to a goal](navigate-a-mobile-base/): turn a map and a
+- [Navigate a mobile base to a goal](/navigation/navigate-a-mobile-base/): turn a map and a
   pose into motion toward a destination.
 - [SLAM modules in the registry](https://app.viam.com/registry): configuration
   fields and supported sensors for a specific SLAM implementation.

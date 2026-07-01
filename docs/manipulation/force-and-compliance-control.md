@@ -81,7 +81,7 @@ Force control is an active area rather than a single turnkey primitive. The
 building blocks are a force-capable arm or an arm paired with a wrist F/T
 sensor, a fast feedback loop, and a control strategy tuned to the task. In
 practice, teams implement this pattern as a custom
-[module](/operate/get-started/other-hardware/) that reads the F/T sensor,
+[module](/build-modules/write-a-driver-module/) that reads the F/T sensor,
 runs the force loop, and commands the arm. Treat any specific force-control API
 as something you provide in your module rather than a built-in signature, and
 size the approach to the hardware you actually have: a sensitive insertion needs

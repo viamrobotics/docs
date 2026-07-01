@@ -99,7 +99,7 @@ The tolerable loop rate follows from what the loop controls.
 **Real-time control** acts on the physical world, where staleness compounds.
 A base moving at 1 m/s travels 20 cm during a 200&nbsp;ms inference call, so at 5 Hz every decision is based on a frame already 20 cm out of date.
 For steering, obstacle avoidance, or closed-loop reaction, you generally want inference well under the physical time constant of the system, and you want that latency to be steady rather than bursty.
-Viam's feedback controllers expose their own cadence directly: a [sensor-controlled base](/components/base/sensor-controlled/) accepts a `control_frequency_hz` value (default 10 Hz), and its movement sensors must report at least that fast for the loop to hold rate.
+Viam's feedback controllers expose their own cadence directly: a [sensor-controlled base](/reference/components/base/sensor-controlled/) accepts a `control_frequency_hz` value (default 10 Hz), and its movement sensors must report at least that fast for the loop to hold rate.
 
 **Monitoring and logging** consume detections rather than steering on them, so a loop running at 1 Hz, or slower, is often plenty.
 Here you can favor a larger, more accurate model or a remote GPU and accept the higher per-frame latency, because no actuator is waiting on the result.
@@ -112,5 +112,5 @@ Because these levers trade accuracy and cost against speed, measuring inference 
 ## Next steps
 
 - Learn how detection and classification calls work in the [vision service](/vision/).
-- See how a feedback loop consumes sensor input at a fixed rate on a [sensor-controlled base](/components/base/sensor-controlled/).
+- See how a feedback loop consumes sensor input at a fixed rate on a [sensor-controlled base](/reference/components/base/sensor-controlled/).
 - Explore the [components](/components/) that a perception or control loop reads from and acts on.
