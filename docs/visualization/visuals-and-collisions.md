@@ -7,15 +7,15 @@ type: "docs"
 description: "How a Transform defines a custom visual, and which geometry the motion planner actually collision-checks."
 ---
 
-Viam uses several standard types to define static and dynamic geometries, and
-the same types are used to create visuals or to tell the motion planner about
-obstacles.
+A geometry is a simple shape, such as a box, sphere, or capsule, that represents an
+object's physical extent. Viam uses one set of geometry types for two jobs: drawing a
+custom visual in the 3D scene, and telling the motion planner about an obstacle.
 
-To create a custom visual in the 3D scene, you must create a geometry and
-attach it to `Transform.Geometry` then provide that transform to a World State Store Service.
-The world state store service streams these transforms to the 3d scene. This page
-covers what a transform contains, how the scene tracks it over time, and discusses
-the difference between planner geometry and visualization geometry.
+To create a custom visual, you attach a geometry to `Transform.Geometry` and provide
+that transform to a [world state store service](/reference/apis/services/world-state-store/).
+This service holds the transforms you publish and streams them to the 3D scene. This
+page covers what a transform contains, the difference between planner geometry and
+visualization geometry, and how to build each geometry type.
 
 ## Anatomy of a transform
 
@@ -38,6 +38,52 @@ re-sends a transform with the same UUID; to remove it, it references that UUID;
 to add a new one, it uses a fresh UUID. Without stable identifiers the client
 would have to re-render everything on every change. With them, the scene applies
 incremental add, update, and remove operations to individual visuals.
+
+## Metadata styles the visual
+
+The metadata is a set of rendering attributes the scene reads when it draws the
+geometry:
+
+- `color`: the fill color
+- `opacity`: how transparent the shape is
+- per-point colors: for point cloud geometry
+- `collision_allowed`: a rendering hint that marks the visual as a permitted
+  contact, for display only
+
+These are all **visualization attributes**: they control how the visual looks,
+`collision_allowed` included. The planner reads its solid geometry from the frame
+system and the [`WorldState`](/motion-planning/obstacles/) you pass to `Move`, so
+metadata changes what you see without changing what the planner plans around.
+
+## The scene draws, the planner collision-checks
+
+The geometry on a world state store transform renders in the 3D scene: publishing a
+box draws a box. The motion planner collision-checks a separate geometry, which it
+reads from two places:
+
+- The **frame system**: each component's `frame.geometry`.
+- The **`WorldState`** you pass to a `Move` call: obstacles and transforms
+  supplied for that single planning request.
+
+Despite the similar names, these are different things: the
+[world state store service](/reference/apis/services/world-state-store/) holds transforms
+for the scene to draw, and the [`WorldState`](/motion-planning/obstacles/) you pass to
+`Move` carries obstacles for the planner to avoid. A world state store transform and a
+`WorldState` obstacle travel two paths, each with its own job: one is drawn in the scene,
+the other is planned around. The same shape can take both paths.
+
+## Making a geometry both visible and collision-checked
+
+If you want a geometry to appear in the scene _and_ be avoided by the planner,
+you do both, separately:
+
+- **For the scene**: publish it as a transform through the world state store
+  service (see [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)).
+- **For planning**: add it to the frame system, or include it in the
+  `WorldState` you pass to `Move`.
+
+Today these are two separate outputs you produce from the same source data: one
+transform for the scene, one geometry for the planner.
 
 ## Geometry types
 
@@ -268,50 +314,6 @@ pointCloud := &commonpb.Geometry{
 
 {{% /tab %}}
 {{< /tabs >}}
-
-## Metadata styles the visual
-
-The metadata is a set of rendering attributes the scene reads when it draws the
-geometry:
-
-- `color`: the fill color
-- `opacity`: how transparent the shape is
-- per-point colors: for point cloud geometry
-- `collision_allowed`: a hint about whether the geometry represents an allowed
-  collision
-
-These are **visualization attributes**: the scene reads them when it draws the
-geometry. They control how the visual looks, including `collision_allowed`, which is
-a rendering hint about the visual. The planner reads its solid geometry from the frame
-system and `WorldState` instead, so these attributes shape the picture while the
-planner's obstacles come from elsewhere.
-
-## The scene draws, the planner collision-checks
-
-The geometry on a world state store transform renders in the 3D scene: publishing a
-box draws a box. The motion planner collision-checks a separate geometry, which it
-reads from two places:
-
-- The **frame system**: each component's `frame.geometry`.
-- The **`WorldState`** you pass to a `Move` call: obstacles and transforms
-  supplied for that single planning request.
-
-A world state store transform and a `WorldState` obstacle travel two paths, each with
-its own job: one is drawn in the scene, the other is planned around. The same shape can
-take both paths.
-
-## Making a geometry both visible and collision-checked
-
-If you want a geometry to appear in the scene _and_ be avoided by the planner,
-you do both, separately:
-
-- **For the scene**: publish it as a transform through the world state store
-  service (see [Publish visuals from a module](/visualization/publish-visuals-from-a-module/)).
-- **For planning**: add it to the frame system, or include it in the
-  `WorldState` you pass to `Move`.
-
-Today these are two separate outputs you produce from the same source data: one
-transform for the scene, one geometry for the planner.
 
 ## What's next
 

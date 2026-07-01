@@ -8,9 +8,10 @@ description: "Use the draw library to build visuals, and run the standalone Viam
 ---
 
 Viam Visualization is a standalone 3D app you run yourself. Unlike the **3D
-SCENE** tab in the Viam app, which renders a machine's world state store service,
-Viam Visualization is a separate tool for monitoring, testing, and debugging
-spatial data: you start it locally and push visuals to it from your own Go code.
+SCENE** tab in the Viam app, which renders a configured machine's frames,
+geometry, point clouds, and published visuals, Viam Visualization is a separate tool for
+monitoring, testing, and debugging spatial data: you start it locally and push
+visuals to it from your own Go code.
 It shares the same `draw` library used to build world state store transforms, so
 the visuals you construct are the same either way.
 
@@ -21,8 +22,9 @@ to run the app and drive it from a Go client.
 
 The two render 3D visuals, but they are different tools for different moments:
 
-- The **3D SCENE tab** lives in the Viam app and renders a machine's world state
-  store service. It is the in-app view of a configured machine.
+- The **3D SCENE tab** lives in the Viam app and renders a configured machine:
+  its frames, geometry, point clouds, and the custom visuals published to its
+  world state store service. It is the in-app view of a machine.
 - **Viam Visualization** is a standalone app you run on your own machine and push
   to from a client. It is for previewing and debugging spatial data while you
   develop, without deploying a module or opening the Viam app.
@@ -92,18 +94,11 @@ _, err := api.DrawGeometry(api.DrawGeometryOptions{
 
 This lets you preview spatial data, a point cloud, a set of detections, a planned
 path, straight from a script or test, without deploying a module or connecting
-through the Viam app. For setup, the local server, and the full client API, see
-the [Viam Visualization documentation](https://viamrobotics.github.io/visualization/).
-
-## How updates reach the browser
-
-The Viam Visualization app runs a **draw service** that the client API calls. The service
-exposes `AddEntity`, `UpdateEntity`, and `RemoveEntity` for the changes you push, and a
-`StreamEntity` stream the browser subscribes to. When you draw, update, or remove an
-entity, the service fans that single change out over `StreamEntity` to the browser, which
-applies it incrementally instead of re-rendering the whole scene. This is the same add,
-update, and remove model the world state store service uses to feed the in-app 3D scene,
-so a busy scene stays in sync as your data changes.
+through the Viam app. Each push updates the app incrementally, the same add,
+update, and remove model the world state store service uses to feed the in-app 3D
+scene, so a busy scene stays in sync as your data changes. For setup, the local
+server, and the full client API, see the
+[Viam Visualization documentation](https://viamrobotics.github.io/visualization/).
 
 ## What's next
 

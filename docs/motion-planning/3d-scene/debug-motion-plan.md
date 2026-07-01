@@ -61,7 +61,8 @@ import (
 )
 
 func stepMarker(i int, pose spatialmath.Pose) (*commonpb.Transform, error) {
-    sphere, err := spatialmath.NewSphere(pose, 5, fmt.Sprintf("step-%d", i))
+    id := fmt.Sprintf("step-%d", i)
+    sphere, err := spatialmath.NewSphere(pose, 5, id)
     if err != nil {
         return nil, err
     }
@@ -69,7 +70,9 @@ func stepMarker(i int, pose spatialmath.Pose) (*commonpb.Transform, error) {
     if err != nil {
         return nil, err
     }
-    return drawn.Draw(fmt.Sprintf("step-%d", i), draw.WithPose(pose))
+    // WithID derives a stable UUID from the string, so re-planning updates each
+    // marker in place instead of drawing a duplicate.
+    return drawn.Draw(id, draw.WithID(id), draw.WithPose(pose))
 }
 ```
 

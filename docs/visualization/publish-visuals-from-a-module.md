@@ -123,7 +123,7 @@ lets the scene apply incremental changes instead of re-rendering. The diff
 against cached state is what turns a full snapshot each tick into a stream of
 minimal updates.
 
-## The producer reads its dependencies
+## Pull from the resources you visualize
 
 The module is the producer, and the resources it visualizes are its
 dependencies. The 3D scene reads only the world state store service; the service
@@ -132,21 +132,18 @@ reads everything else. Data flows one way:
 > dependency resources → world state store module (reads, builds transforms) → 3D scene
 
 This is why the loop above calls `s.sensor.Readings(...)`: the sensor is a
-dependency, and the module pulls from it.
-
-## Visualize any other resource
-
-A module whose primary job is something else (an arm, a sensor, a planner) stays
-focused on that job. To visualize it, you write a separate world state store module
-that takes that resource as a dependency and pulls from its existing API:
+dependency, and the module pulls from it. The same pattern visualizes any other
+resource. A module whose primary job is something else (an arm, a sensor, a
+planner) stays focused on that job. To visualize it, you write a separate world
+state store module that takes that resource as a dependency and pulls from its
+existing API:
 
 - a sensor's `Readings`
 - a component's geometry getters
 - any resource's `DoCommand`
 
-The world state store module converts what it reads into transforms and streams
-them. The visualized resource needs no changes and no awareness that it is being
-drawn. The store depends on it, not the other way around.
+The visualized resource needs no changes and no awareness that it is being drawn.
+The store depends on it, not the other way around.
 
 ```go
 func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstatestore.Service, error) {
