@@ -147,7 +147,7 @@ To raise the belt speed, shrink the latency budget: use a faster detector,
 reduce planning time by constraining the workspace, or shorten arm travel by
 starting each cycle from a pose near the belt. Measure each stage separately so
 you tune the one that dominates. For how inference time enters this budget and
-how to measure it, see [Inference latency](/concepts/inference-latency/).
+how to measure it, see [Inference latency](/ai-control/inference-latency/).
 
 If picks miss intermittently, compare your assumed `t_pick` against the measured
 end-to-end time under load. A budget that holds at rest often grows once the

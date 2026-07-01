@@ -1,7 +1,7 @@
 ---
 linkTitle: "Capture frequency versus sample rate"
 title: "Capture frequency versus sample rate"
-weight: 40
+weight: 5
 layout: "docs"
 type: "docs"
 description: "Understand how the data-capture polling frequency differs from a sensor's internal sample rate, and how to choose a capture frequency that balances fidelity against storage cost."

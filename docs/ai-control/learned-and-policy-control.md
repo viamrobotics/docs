@@ -110,7 +110,7 @@ compute available on the machine, and whether the model runs on CPU, GPU, or an
 accelerator. Before you commit a policy to hardware, measure its worst-case
 inference time on the target device and confirm it leaves room for sensor reads
 and actuation within the loop period. See
-[inference latency](/concepts/inference-latency/) for how to reason about this
+[inference latency](/ai-control/inference-latency/) for how to reason about this
 budget.
 
 This constraint often shapes the policy itself. A smaller or quantized model that
@@ -122,7 +122,7 @@ not really controlling in real time.
 
 - Learn how to package and deploy code on a machine in
   [Build modules](/build-modules/).
-- Understand the timing budget in [inference latency](/concepts/inference-latency/).
+- Understand the timing budget in [inference latency](/ai-control/inference-latency/).
 - Review the classical baseline in the
   [controls package](/reference/controls-package/) before reaching for a learned
   policy.

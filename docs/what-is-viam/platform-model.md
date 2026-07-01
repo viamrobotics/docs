@@ -1,7 +1,7 @@
 ---
 linkTitle: "How Viam fits together"
 title: "How Viam fits together"
-weight: 10
+weight: 20
 layout: "docs"
 type: "docs"
 description: "A tour of Viam's core vocabulary, machine, part, component, service, module, and modular resource, for developers new to robotics."

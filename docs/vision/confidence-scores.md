@@ -1,7 +1,7 @@
 ---
 linkTitle: "Confidence scores"
 title: "What a confidence score is (and isn't)"
-weight: 20
+weight: 7
 layout: "docs"
 type: "docs"
 description: "What the confidence value on a detection or classification measures, why it is not a calibrated probability, and how to reason about accept and reject thresholds for a quality-control task."

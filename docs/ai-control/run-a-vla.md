@@ -56,7 +56,7 @@ Weigh latency against model size for your target action rate: a 1 Hz "observe,
 plan, act" loop tolerates cloud latency, while a 10 Hz visual servoing loop
 needs edge inference.
 For a fuller treatment of this tradeoff, see
-[Inference latency](/concepts/inference-latency/).
+[Inference latency](/ai-control/inference-latency/).
 
 ### 2. Wrap the model as a module, or call a hosted API
 
@@ -172,7 +172,7 @@ latency plus the time each command takes to execute, and leave margin so
 commands do not queue up.
 When inference is slower than your target action rate, either move the model to
 the edge, choose a smaller model, or slow the loop to match.
-See [Inference latency](/concepts/inference-latency/) for how latency shapes a
+See [Inference latency](/ai-control/inference-latency/) for how latency shapes a
 control loop.
 
 ## Next steps

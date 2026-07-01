@@ -18,6 +18,8 @@ model in a [module](/build-modules/) that implements a component or service
 API, and your application talks to it through the standard APIs. This section
 explains how each kind of model fits that pattern.
 
+- [Inference latency and loop rate](inference-latency/): why a model in the
+  loop cannot run faster than its own inference time, and how to size it.
 - [Learned and policy-based control](learned-and-policy-control/): when a
   trained policy beats a hand-written controller, and how it runs on a machine.
 - [Run a vision-language-action model](run-a-vla/): drive a robot from a camera

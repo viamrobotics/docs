@@ -1,7 +1,7 @@
 ---
 linkTitle: "Inference latency and loop rate"
 title: "Inference latency and loop rate"
-weight: 30
+weight: 5
 layout: "docs"
 type: "docs"
 description: "Understand why model inference latency sets the ceiling on how fast a perception or control loop can run, and estimate an achievable loop rate from model size, image resolution, and hardware."
