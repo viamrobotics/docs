@@ -84,15 +84,11 @@ You pass two parameters to `Move`: a string `component_name` and a `destination`
 `PoseInFrame` that pairs the target pose with the reference frame it is expressed in
 (here, `world`).
 
-The `component_name` can be a component name or a frame name. The motion service
-looks for a frame with that name in the frame system. When you pass a component name
-such as `"my-arm"` or `"my-gripper"`, Viam supplies a frame for it automatically:
-
-- **An arm**: its kinematics file (URDF or Viam JSON) defines a single output frame at the
-  terminal link of the kinematic chain, commonly called the tool flange. That output frame
-  is the arm's built-in end effector frame.
-- **Another component**, such as a gripper, defines a static frame through its `frame`
-  attribute, which you set on the component's configuration card.
+Pass a component name, and the motion service uses the frame defined for that component.
+For an arm, that frame is the `my-arm` frame at the tool flange, shown above. For a gripper
+or another tool, it is the static frame you defined through its `frame` attribute, at the
+point where the tool acts rather than at the flange. You can also pass a frame name directly,
+such as one you add in code with a `WorldState` transform.
 
 ## Why the frame you name matters
 
