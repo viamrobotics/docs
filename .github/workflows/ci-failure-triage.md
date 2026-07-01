@@ -76,6 +76,13 @@ how the repo's other `claude/*` PRs are made.
   does not trust issue text or hand-fed classifications.
 - Fixes a whole class of errors exhaustively (all occurrences repo-wide), and
   confirms each retarget destination actually exists rather than guessing.
+- Makes the **minimal diff** — only the substantive change, no incidental
+  reformatting — then runs the pre-PR checks in order (`prettier --write`, then
+  markdownlint, then vale) and confirms `prettier --check` passes. `prettier` is
+  a required status check, so when it and markdownlint disagree on formatting
+  (for example, blank lines around lists), prettier wins.
+- If an issue's linked PR already exists but its **checks are failing**, fixes
+  that PR's branch in place rather than opening a duplicate or skipping it.
 - `Fixes #<n>` only when the PR fully resolves what the job checks; otherwise
   `Refs #<n>` so a partially-fixed issue is not auto-closed.
 - Commits as `Brandon Shrewsbury <brandon.shrewsbury@viam.com>` with **no**
@@ -96,22 +103,29 @@ Triage CI failures for viamrobotics/docs (cloned fresh at the repo root each run
 
 2. For each issue, gather the FULL picture: read the issue and its comments, find its linked failing Actions run, and pull the COMPLETE error list from the run's logs and artifacts (e.g. run-htmltest uploads an htmltest-report artifact listing every broken link) — do not rely on the snippet in the issue body or a truncated log. Jobs: test-code-snippets.yml (Python/Go/TS samples vs a live machine+org), check-methods.yml (SDK coverage), run-htmltest.yml (broken links).
 
-3. Skip an issue if it already has an open linked PR, OR if a human/maintainer has already posted a substantive root-cause triage that still holds (do not re-post the same conclusion — avoid noise).
+3. Decide act vs skip vs FIX-EXISTING-PR:
+   - Skip if the issue already has an open linked PR whose checks are all GREEN, OR a human/maintainer already posted a substantive root-cause triage that still holds (don't duplicate or re-post — avoid noise).
+   - If the issue has an open linked PR whose CI checks are FAILING: do NOT open a new PR. Check out that PR's branch, diagnose and fix what's failing (including the PR's own check failures, e.g. a prettier failure), and push to the same branch. Then move on.
+   - Otherwise, proceed to fix below.
 
 4. Classify every error into groups; for each group decide fixable vs not:
    - Fixable by a minimal edit: internal broken links/anchors (retarget to the correct existing location); a sample using a wrong/renamed SDK method signature; stale API usage.
    - NOT fixable by an edit (comment only): transient infra flakiness ("Failed to connect to robot" / "host appears to be offline", gRPC DEADLINE_EXCEEDED / INTERNAL, query timeouts, the shared test machine offline); external-link failures (403/404/429 — third-party churn and rate limits, e.g. pkg.go.dev; do NOT edit links for these, but note any that look permanently dead so a human can update them); and domain-owner decisions (e.g. editing SDK-coverage mapping such as sdk_protos_map.csv).
 
 5. EXHAUSTIVENESS + VERIFICATION for anything you fix:
-   - Fix the whole class, not a sample: enumerate EVERY occurrence across the entire repo (grep all files, not just those named in the log) and fix all of them. Before opening the PR, reconcile the number you fixed against the total fixable count; if they don't match, keep going.
+   - Fix the whole class, not a sample: enumerate EVERY occurrence across the entire repo (grep all files, not just those named in the log) and fix all of them. Before opening/updating the PR, reconcile the number you fixed against the total fixable count; if they don't match, keep going.
    - Never guess a destination: confirm each new link/anchor target actually exists (grep the destination page for the exact heading/anchor id). If a broken link has no clear valid target (section renamed or removed), leave it unchanged and flag it as "needs human decision".
-   - Run the CLAUDE.md pre-PR checks relevant to your change (e.g. prettier + markdownlint for docs) and re-verify every changed target resolves.
 
-6. Open the PR via the mcp__github__ tools on branch claude/ci-fix-<slug>. In the PR body, state exactly what you fixed and what you deliberately left, with counts (e.g. "fixes 10 of 10 internal broken anchors; the remaining ~338 errors are external 403/404/429, out of scope"). Use "Fixes #<n>" ONLY if the PR fully resolves what the job checks so it will pass next run; if it fixes only part (e.g. the internal anchors while external/transient errors remain), use "Refs #<n>" so the issue is NOT auto-closed. Commit as Brandon Shrewsbury <brandon.shrewsbury@viam.com>, with NO "Co-Authored-By: ...@anthropic.com" trailer (it breaks the CLA). Then comment the PR link + a short verified breakdown on the issue.
+6. MINIMAL, PROPERLY-FORMATTED DIFF (this is where a fix most often regresses):
+   - Change ONLY what the fix requires. Do NOT reformat, re-wrap, or add/remove blank lines on lines unrelated to your fix.
+   - Then run the CLAUDE.md pre-PR checks IN THIS ORDER and commit exactly what they produce: (1) `npx prettier --write <changed files>`, (2) `npx markdownlint-cli --config .markdownlint.yaml <changed files>`, (3) vale. prettier owns formatting and is a REQUIRED status check; it can disagree with markdownlint (e.g. blank lines around lists) — when they conflict, prettier wins. Never hand-apply a markdownlint suggestion that makes prettier fail.
+   - Before opening/updating the PR, confirm `npx prettier --check <changed files>` passes and markdownlint is clean on every file you touched. If a required check tool genuinely can't run in your environment, say so in the PR body and keep the diff as small as possible so you don't introduce issues that tool would catch.
 
-7. If transient/uncertain, or the correct fix is a domain-owner decision: comment the verified likely cause on the issue; no PR.
+7. Open (or update) the PR via the mcp__github__ tools on branch claude/ci-fix-<slug>. In the PR body, state exactly what you fixed and what you deliberately left, with counts (e.g. "fixes 10 of 10 internal broken anchors; the remaining ~338 errors are external 403/404/429, out of scope"). Use "Fixes #<n>" ONLY if the PR fully resolves what the job checks so it will pass next run; if it fixes only part (e.g. the internal anchors while external/transient errors remain), use "Refs #<n>" so the issue is NOT auto-closed. Commit as Brandon Shrewsbury <brandon.shrewsbury@viam.com>, with NO "Co-Authored-By: ...@anthropic.com" trailer (it breaks the CLA). Then comment the PR link + a short verified breakdown on the issue.
 
-8. Keep changes minimal and scoped strictly to the reported failures; make no unrelated edits and do not close issues. Post one concise summary comment on each issue you actually acted on.
+8. If transient/uncertain, or the correct fix is a domain-owner decision: comment the verified likely cause on the issue; no PR.
+
+9. Keep changes minimal and scoped strictly to the reported failures; make no unrelated edits and do not close issues. Post one concise summary comment on each issue you actually acted on.
 ```
 
 ## Known limitations
