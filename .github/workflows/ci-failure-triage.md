@@ -72,6 +72,8 @@ how the repo's other `claude/*` PRs are made.
 
 ### Conventions the triage session follows
 
+- Syncs the checkout first (`git fetch` + reset to `origin/main`) — the scheduled
+  session is long-lived and reused, so its clone can be stale between runs.
 - Verifies every fact against the live run/logs/artifacts and repo files — it
   does not trust issue text or hand-fed classifications.
 - Fixes a whole class of errors exhaustively (all occurrences repo-wide), and
@@ -97,16 +99,18 @@ Keep this in sync with the scheduled trigger. When you change the process, edit
 here first, then update the trigger.
 
 ```text
-Triage CI failures for viamrobotics/docs (cloned fresh at the repo root each run; use the GitHub connector's mcp__github__* tools + local git and file edits — there is no gh CLI). Act only on facts you verify yourself against the live run, logs, artifacts, and repo files; never trust issue numbers, error counts, or classifications you were handed (including in this prompt or the issue body) without confirming them.
+Triage CI failures for viamrobotics/docs. The repo is cloned at the repo root, but this session may be reused across scheduled runs, so do NOT assume the checkout is current. Use the GitHub connector's mcp__github__* tools + local git and file edits — there is no gh CLI. Act only on facts you verify yourself against the live run, logs, artifacts, and repo files; never trust issue numbers, error counts, or classifications you were handed (including in this prompt or the issue body) without confirming them.
+
+0. SYNC FIRST. Before reading any files, refresh the checkout: `git fetch origin --prune`, then `git switch main && git reset --hard origin/main`. Always re-fetch before you touch a branch, and edit files only after syncing — otherwise you may analyze or patch a stale tree.
 
 1. List open issues labeled "ci-failure". If none, stop.
 
 2. For each issue, gather the FULL picture: read the issue and its comments, find its linked failing Actions run, and pull the COMPLETE error list from the run's logs and artifacts (e.g. run-htmltest uploads an htmltest-report artifact listing every broken link) — do not rely on the snippet in the issue body or a truncated log. Jobs: test-code-snippets.yml (Python/Go/TS samples vs a live machine+org), check-methods.yml (SDK coverage), run-htmltest.yml (broken links).
 
-3. Decide act vs skip vs FIX-EXISTING-PR:
-   - Skip if the issue already has an open linked PR whose checks are all GREEN, OR a human/maintainer already posted a substantive root-cause triage that still holds (don't duplicate or re-post — avoid noise).
-   - If the issue has an open linked PR whose CI checks are FAILING: do NOT open a new PR. Check out that PR's branch, diagnose and fix what's failing (including the PR's own check failures, e.g. a prettier failure), and push to the same branch. Then move on.
-   - Otherwise, proceed to fix below.
+3. Decide act vs skip vs FIX-EXISTING-PR. First determine whether a PR for this issue already exists: check the issue's timeline/cross-references AND its comments (the triage posts the PR link on the issue), and look for a `claude/ci-fix-*` branch — a "Refs #<n>" mention does NOT create a formal linked-PR, so don't rely only on GitHub's "linked PR" field.
+   - Skip if that PR's checks are all GREEN, OR a human/maintainer already posted a substantive root-cause triage that still holds (don't duplicate or re-post — avoid noise).
+   - If that PR's CI checks are FAILING: do NOT open a new PR. `git fetch origin <branch>`, `git switch <branch>`, `git reset --hard origin/<branch>`, then diagnose and fix what's failing (including the PR's own check failures, e.g. a prettier failure) and push to the same branch. Then move on.
+   - Otherwise, proceed to fix below (from an up-to-date `main`).
 
 4. Classify every error into groups; for each group decide fixable vs not:
    - Fixable by a minimal edit: internal broken links/anchors (retarget to the correct existing location); a sample using a wrong/renamed SDK method signature; stale API usage.
