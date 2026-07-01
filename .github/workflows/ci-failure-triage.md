@@ -92,10 +92,15 @@ how the repo's other `claude/*` PRs are made.
 - Fixes a whole class of errors exhaustively (all occurrences repo-wide), and
   confirms each retarget destination actually exists rather than guessing.
 - Makes the **minimal diff** — only the substantive change, no incidental
-  reformatting — then runs the pre-PR checks in order (`prettier --write`, then
-  markdownlint, then vale) and confirms `prettier --check` passes. `prettier` is
-  a required status check, so when it and markdownlint disagree on formatting
-  (for example, blank lines around lists), prettier wins.
+  reformatting — then runs the pre-PR checks in order (`prettier@3.2.5 --write`,
+  then markdownlint, then vale) and confirms `prettier@3.2.5 --check` passes
+  before pushing. `prettier` is a required status check, so when it and
+  markdownlint disagree on formatting (for example, blank lines around lists),
+  prettier wins. The version pin matters: an unpinned `npx prettier` can
+  resolve to a newer local version than the `3.2.5` that
+  [`prettier-lint.yml`](prettier-lint.yml) runs in CI, and the two
+  disagree on blank lines before nested lists — always run the pinned
+  `npx prettier@3.2.5` (matching CLAUDE.md), not a bare `npx prettier`.
 - If an issue's linked PR already exists but its **checks are failing**, fixes
   that PR's branch in place rather than opening a duplicate or skipping it.
 - Titles its PRs `[Claude CI Failure] …` so maintainers can spot and filter
@@ -137,8 +142,9 @@ Triage CI failures for viamrobotics/docs. The repo is cloned at the repo root, b
 
 6. MINIMAL, PROPERLY-FORMATTED DIFF (this is where a fix most often regresses):
    - Change ONLY what the fix requires. Do NOT reformat, re-wrap, or add/remove blank lines on lines unrelated to your fix.
-   - Then run the CLAUDE.md pre-PR checks IN THIS ORDER and commit exactly what they produce: (1) `npx prettier --write <changed files>`, (2) `npx markdownlint-cli --config .markdownlint.yaml <changed files>`, (3) vale. prettier owns formatting and is a REQUIRED status check; it can disagree with markdownlint (e.g. blank lines around lists) — when they conflict, prettier wins. Never hand-apply a markdownlint suggestion that makes prettier fail.
-   - Before opening/updating the PR, confirm `npx prettier --check <changed files>` passes and markdownlint is clean on every file you touched. If a required check tool genuinely can't run in your environment, say so in the PR body and keep the diff as small as possible so you don't introduce issues that tool would catch.
+   - Then run the CLAUDE.md pre-PR checks IN THIS ORDER and commit exactly what they produce: (1) `npx prettier@3.2.5 --write <changed files>`, (2) `npx markdownlint-cli --config .markdownlint.yaml <changed files>`, (3) vale. Pin the prettier version to `3.2.5` (check `.github/workflows/prettier-lint.yml` for the current pin) — a bare `npx prettier` can silently resolve to a newer version that formats blank-lines-before-nested-lists differently than the pinned version, producing a diff that looks clean locally but fails the required `prettier` check in CI. prettier owns formatting and is a REQUIRED status check; it can disagree with markdownlint (e.g. blank lines around lists) — when they conflict, prettier wins. Never hand-apply a markdownlint suggestion that makes prettier fail.
+   - Before opening/updating the PR, confirm `npx prettier@3.2.5 --check <changed files>` passes and markdownlint is clean on every file you touched.
+   - AFTER PUSHING, before considering the fix done: check the actual CI run status on the pushed branch/PR (not just your local check). If prettier or any other required check fails in CI despite passing locally, re-diagnose the tool-version mismatch (or other environment difference) rather than assuming the CI failure is unrelated, fix it, and push again — repeat until the PR's checks are green. If a required check tool genuinely can't run in your environment at all, say so in the PR body and keep the diff as small as possible so you don't introduce issues that tool would catch.
 
 7. Open (or update) the PR via the mcp__github__ tools on branch claude/ci-fix-<slug>. Title it "[Claude CI Failure] <concise summary>" — keep that exact prefix, including when you update an existing PR's title. In the PR body, state exactly what you fixed and what you deliberately left, with counts (e.g. "fixes 10 of 10 internal broken anchors; the remaining ~338 errors are external 403/404/429, out of scope"). Use "Fixes #<n>" ONLY if the PR fully resolves what the job checks so it will pass next run; if it fixes only part (e.g. the internal anchors while external/transient errors remain), use "Refs #<n>" so the issue is NOT auto-closed. Commit as Brandon Shrewsbury <brandon.shrewsbury@viam.com>, with NO "Co-Authored-By: ...@anthropic.com" trailer (it breaks the CLA). Then comment the PR link + a short verified breakdown on the issue.
 

@@ -7,10 +7,10 @@ Run these checks from the worktree directory before committing or pushing. All f
 ### 1. Format with prettier
 
 ```bash
-npx prettier --write docs/[section]/**/*.md
+npx prettier@3.2.5 --write docs/[section]/**/*.md
 ```
 
-Prettier auto-formats markdown. Run with `--write` to fix in place, or `--check` to see what would change without modifying files.
+Prettier auto-formats markdown. Run with `--write` to fix in place, or `--check` to see what would change without modifying files. Pin the version to match CI's `.github/workflows/prettier-lint.yml` (currently `3.2.5`) — a bare `npx prettier` can resolve to a newer local version that formats blank lines before nested lists differently, producing a diff that looks clean locally but fails the required `prettier` check in CI.
 
 ### 2. Lint markdown structure
 
