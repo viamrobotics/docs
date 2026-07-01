@@ -117,21 +117,23 @@ A GitHub workflow automatically publishes the docs to [https://docs.viam.com/](h
 
 GitHub Actions workflows run linting and link checks on every pull request, publish and sync search on merges to `main`, and validate code samples and SDK coverage on a weekly schedule. The table below is a quick reference; see [`.github/workflows/README.md`](.github/workflows/README.md) for full descriptions, triggers, secrets, and known issues.
 
-| Workflow | What it does | When it runs | Blocks PR? |
-| --- | --- | --- | --- |
-| `vale-lint.yml` | Vale prose style check | Pull request | Yes |
-| `codespell.yml` | Spell-check `docs/` | Pull request | Yes |
-| `run-htmltest-local.yml` | Internal link check | Pull request | Yes |
-| `markdown-lint.yml` | Markdown structure lint | Pull request | Informational |
-| `prettier-lint.yml` | Prettier formatting check | Pull request, push to `main` | Informational |
-| `python-lint.yml` | Lint Python snippets in Markdown | Pull request | Informational |
-| `pr-labeler.yml` | Add `safe to build` label / welcome comment | PR opened | No |
-| `alias-reminder.yml` | Remind authors to add redirect aliases | PR moved files | No |
-| `docs.yml` | Build site, sync search index | Push to `main` | N/A |
-| `inkeep.yml` | Sync docs source to Inkeep AI search | Push to `main` (`docs/`) | N/A |
-| `run-htmltest.yml` | External link check | Tuesdays 10:00 UTC | N/A (Jira) |
-| `test-code-snippets.yml` | Run Python/Go/TS code samples against live Viam | Mondays 09:00 UTC, push to samples | N/A (Jira) |
-| `check-methods.yml` | Check docs coverage of SDK API methods | Wednesdays 10:00 UTC | N/A (Jira) |
+| Workflow                 | What it does                                    | When it runs                       | Blocks PR?                     |
+| ------------------------ | ----------------------------------------------- | ---------------------------------- | ------------------------------ |
+| `vale-lint.yml`          | Vale prose style check                          | Pull request                       | Yes                            |
+| `codespell.yml`          | Spell-check `docs/`                             | Pull request                       | Yes                            |
+| `run-htmltest-local.yml` | Internal link check                             | Pull request                       | Yes                            |
+| `markdown-lint.yml`      | Markdown structure lint                         | Pull request                       | Informational                  |
+| `prettier-lint.yml`      | Prettier formatting check                       | Pull request, push to `main`       | Informational                  |
+| `python-lint.yml`        | Lint Python snippets in Markdown                | Pull request                       | Informational                  |
+| `pr-labeler.yml`         | Add `safe to build` label / welcome comment     | PR opened                          | No                             |
+| `alias-reminder.yml`     | Remind authors to add redirect aliases          | PR moved files                     | No                             |
+| `docs.yml`               | Build site, sync search index                   | Push to `main`                     | N/A                            |
+| `inkeep.yml`             | Sync docs source to Inkeep AI search            | Push to `main` (`docs/`)           | N/A                            |
+| `run-htmltest.yml`       | External link check                             | Tuesdays 10:00 UTC                 | N/A (opens `ci-failure` issue) |
+| `test-code-snippets.yml` | Run Python/Go/TS code samples against live Viam | Mondays 09:00 UTC, push to samples | N/A (opens `ci-failure` issue) |
+| `check-methods.yml`      | Check docs coverage of SDK API methods          | Wednesdays 10:00 UTC               | N/A (opens `ci-failure` issue) |
 
 > [!NOTE]
 > The scheduled `test-code-snippets.yml` and `check-methods.yml` jobs run against a live Viam test organization and external SDK sites, so their results depend on that org's state and on upstream changes. See [`.github/workflows/README.md`](.github/workflows/README.md#test-org-dependency) for details.
+>
+> On failure, the scheduled jobs open a deduplicated GitHub issue labeled `ci-failure`, and a daily Claude Code session triages those issues into fix PRs or comments. See [CI failure triage](.github/workflows/ci-failure-triage.md).
