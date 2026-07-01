@@ -125,6 +125,8 @@ jobs:
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
         VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
         VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+        VIAM_API_KEY_ORGS: ${{ secrets.VIAM_API_KEY_ORGS }}
+        VIAM_API_KEY_ID_ORGS: ${{ secrets.VIAM_API_KEY_ID_ORGS }}
         TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
 
     - name: Set up Go

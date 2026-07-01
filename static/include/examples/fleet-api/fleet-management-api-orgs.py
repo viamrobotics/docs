@@ -19,11 +19,15 @@ EMAIL_ADDRESS = ""  # Email address of the user to get the user id for
 LOCATION_ID = ""  # Location ID, find or create in your organization settings
 
 # :remove-start:
-ORG_ID = os.environ["TEST_ORG_ID"]
-ORG_ID_2 = "b5e9f350-cbcf-4d2a-bbb1-a2e2fd6851e1"
-API_KEY = os.environ["VIAM_API_KEY"]
-API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
-LOCATION_ID = "pg5q3j3h95"
+# This sample manages org members, roles, and invites, so it runs against its
+# own dedicated test org (docs-scheduled-tests) rather than the shared machine
+# test org. It needs an org member that holds no authorizations; keep one in
+# place in that org (see the CI notes).
+ORG_ID = "ab59cadc-00c6-4bc1-9b2f-8121e07afb81"
+ORG_ID_2 = "00a50909-20e7-40fc-a84f-3b53cf63d394"
+API_KEY = os.environ["VIAM_API_KEY_ORGS"]
+API_KEY_ID = os.environ["VIAM_API_KEY_ID_ORGS"]
+LOCATION_ID = "rip7c2j43l"
 TEST_EMAIL = os.environ["TEST_EMAIL"]
 # :remove-end:
 
