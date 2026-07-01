@@ -16,9 +16,9 @@ This page assembles the localization and motion inputs a base needs, issues the 
 
 Before you start, configure the following on your machine:
 
-- A [mobile base](/components/base/) that you can already drive with velocity or position commands.
+- A [mobile base](/reference/components/base/) that you can already drive with velocity or position commands.
 - A localization source that reports the base's pose:
-  - A [movement sensor](/components/movement-sensor/) that provides GPS position, for a geographic goal.
+  - A [movement sensor](/reference/components/movement-sensor/) that provides GPS position, for a geographic goal.
   - A [SLAM service](/navigation/slam-and-mapping/) that provides a map and pose, for a map goal.
 - The [motion service](/reference/apis/services/motion/), which plans the path and issues drive commands to the base.
 
@@ -95,7 +95,7 @@ For full parameters, obstacle geometry types, and other SDKs, see the [motion se
 Track progress and completion with `GetPlan` and `ListPlanStatuses`, and stop an in-progress move with `StopPlan`.
 To confirm the final pose, read the localization source directly:
 
-- For a geographic goal, read the [movement sensor](/components/movement-sensor/) position.
+- For a geographic goal, read the [movement sensor](/reference/components/movement-sensor/) position.
 - For a map goal, read the base pose from the [SLAM service](/navigation/slam-and-mapping/).
 
 ## Troubleshooting
@@ -113,4 +113,4 @@ If a navigation attempt fails, match the symptom to the input it depends on:
 
 - [Localization](/navigation/localization/): compare GPS and SLAM localization sources.
 - [Motion service API](/reference/apis/services/motion/): full `MoveOnGlobe` and `MoveOnMap` parameters.
-- [Base component](/components/base/): tune the base that carries out the plan.
+- [Base component](/reference/components/base/): tune the base that carries out the plan.

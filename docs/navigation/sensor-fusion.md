@@ -28,7 +28,7 @@ A fused pose reflects the IMU's fast, fine-grained motion and the GPS's absolute
 
 ## How Viam's `merged` movement sensor differs
 
-Viam ships a [`merged` movement sensor](/components/movement-sensor/) model, and the name invites a natural assumption.
+Viam ships a [`merged` movement sensor](/reference/components/movement-sensor/) model, and the name invites a natural assumption.
 It is worth being precise, so you set the right expectations.
 
 The `merged` model performs **selection and aggregation**, not statistical fusion.
@@ -77,4 +77,4 @@ Either way, the fusion lives in software you choose or hardware you select, and 
 ## Next steps
 
 - Learn how a machine turns sensor readings into a position estimate in [Localization](/navigation/localization/).
-- See the available movement sensor models, including [`merged`](/components/movement-sensor/), to decide which sensors to combine.
+- See the available movement sensor models, including [`merged`](/reference/components/movement-sensor/), to decide which sensors to combine.

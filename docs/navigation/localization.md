@@ -28,7 +28,7 @@ Every wheel slip, uneven tile, or rounding error adds a small mistake to the est
 After a long run the estimated pose can be meters away from the true pose, even though each individual reading looked reasonable.
 Drift is why a robot that relies only on odometry gradually loses track of the dock.
 
-Viam exposes wheel odometry through the [movement sensor](/components/movement-sensor/) component, using the `wheeled-odometry` model, which derives velocity and position from motor encoders.
+Viam exposes wheel odometry through the [movement sensor](/reference/components/movement-sensor/) component, using the `wheeled-odometry` model, which derives velocity and position from motor encoders.
 
 ## GPS: an absolute outdoor fix
 
@@ -39,7 +39,7 @@ Because each reading is independent, GPS does not drift: an error in one reading
 The trade-offs are environment and precision.
 GPS needs a clear view of the sky, so it works outdoors but degrades or fails indoors, in tunnels, and under dense cover.
 Standard GPS is accurate to a few meters, which is fine for a lawn robot crossing a yard but too coarse to dock precisely.
-In Viam, GPS receivers and inertial measurement units (IMUs) are also [movement sensor](/components/movement-sensor/) models, so the same component API surfaces both absolute position and orientation.
+In Viam, GPS receivers and inertial measurement units (IMUs) are also [movement sensor](/reference/components/movement-sensor/) models, so the same component API surfaces both absolute position and orientation.
 
 ## SLAM: building a map while you use it
 
@@ -80,10 +80,10 @@ Which sources a machine needs follows from where it runs and how precise it must
 - **High precision anywhere** (docking, tight aisles): pair an absolute source with odometry, because odometry alone will not stay accurate long enough to line up.
 
 Start from the environment to rule sources in or out (GPS outdoors, SLAM indoors), then decide whether the required precision and run length demand an absolute source at all.
-That decision tells you which [movement sensors](/components/movement-sensor/) or range sensors to put on the machine.
+That decision tells you which [movement sensors](/reference/components/movement-sensor/) or range sensors to put on the machine.
 
 ## Next steps
 
-- [Movement sensor component](/components/movement-sensor/): configure GPS, IMU, and wheeled-odometry models.
+- [Movement sensor component](/reference/components/movement-sensor/): configure GPS, IMU, and wheeled-odometry models.
 - [SLAM and mapping](/navigation/slam-and-mapping/): build and use maps for indoor localization.
 - [Sensor fusion](/navigation/sensor-fusion/): combine relative and absolute sources into one pose estimate.

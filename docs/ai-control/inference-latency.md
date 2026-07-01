@@ -113,4 +113,4 @@ Because these levers trade accuracy and cost against speed, measuring inference 
 
 - Learn how detection and classification calls work in the [vision service](/vision/).
 - See how a feedback loop consumes sensor input at a fixed rate on a [sensor-controlled base](/reference/components/base/sensor-controlled/).
-- Explore the [components](/components/) that a perception or control loop reads from and acts on.
+- Explore the [components](/reference/components/) that a perception or control loop reads from and acts on.
