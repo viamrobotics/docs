@@ -37,3 +37,8 @@ MD030: false
 
 MD055:
   style: "leading_and_trailing"
+
+# MD060/table-column-style - conflicts with prettier's table formatting.
+# prettier is the canonical formatter (its CI check passes on these tables), so
+# enforcing MD060 would fight it. Disabled, consistent with MD030 above.
+MD060: false

@@ -19,11 +19,15 @@ EMAIL_ADDRESS = ""  # Email address of the user to get the user id for
 LOCATION_ID = ""  # Location ID, find or create in your organization settings
 
 # :remove-start:
-ORG_ID = os.environ["TEST_ORG_ID"]
-ORG_ID_2 = "b5e9f350-cbcf-4d2a-bbb1-a2e2fd6851e1"
-API_KEY = os.environ["VIAM_API_KEY"]
-API_KEY_ID = os.environ["VIAM_API_KEY_ID"]
-LOCATION_ID = "pg5q3j3h95"
+# This sample manages org members, roles, and invites, so it runs against its
+# own dedicated test org (docs-scheduled-tests) rather than the shared machine
+# test org. It needs an org member that holds no authorizations; keep one in
+# place in that org (see the CI notes).
+ORG_ID = "ab59cadc-00c6-4bc1-9b2f-8121e07afb81"
+ORG_ID_2 = "00a50909-20e7-40fc-a84f-3b53cf63d394"
+API_KEY = os.environ["VIAM_API_KEY_ORGS"]
+API_KEY_ID = os.environ["VIAM_API_KEY_ID_ORGS"]
+LOCATION_ID = "rip7c2j43l"
 TEST_EMAIL = os.environ["TEST_EMAIL"]
 # :remove-end:
 
@@ -122,6 +126,8 @@ async def main():
         # CANT TEST
         # await cloud.delete_organization_member(org_id="<YOUR-ORG-ID>", user_id=first_user_id)
 
+        num_locations = len(await cloud.list_locations(ORG_ID))
+
         new_location = await cloud.create_location(org_id=ORG_ID, name="Robotville", parent_location_id=LOCATION_ID)
         assert new_location.name == "Robotville"
 
@@ -153,7 +159,7 @@ async def main():
 
         await cloud.delete_location(location_id=new_location.id)
         locations = await cloud.list_locations(ORG_ID)
-        assert len(locations) == 2
+        assert len(locations) == num_locations
 
         keys = await cloud.list_keys(ORG_ID)
         num_keys = len(keys)
@@ -192,26 +198,29 @@ async def main():
         assert new_num_keys == num_keys
 
         # setup
-        # Pick an organization member who does not already hold (or inherit)
-        # owner permissions, so that add_role grants a brand-new authorization.
-        # Members who are already owners -- for example org owners, who inherit
-        # location ownership -- cannot have the role added again, which would
-        # make add_role fail.
+        # Pick an organization member to exercise add_role/change_role/remove_role
+        # on. A member's *last* authorization cannot be removed without removing
+        # them from the org, so choose a member that already holds a baseline
+        # role (for example an operator) rather than an org owner. The sample
+        # adds, moves, and then removes an *additional* role, leaving the
+        # baseline role -- and the member -- intact so it can run repeatedly.
         existing_authorizations = await cloud.list_authorizations(org_id=ORG_ID)
-        privileged_identity_ids = {
-            authorization.identity_id for authorization in existing_authorizations
+        org_owner_identity_ids = {
+            authorization.identity_id
+            for authorization in existing_authorizations
+            if authorization.authorization_id == "organization_owner"
         }
         user_id = next(
             (
                 member.user_id
                 for member in member_list
-                if member.user_id not in privileged_identity_ids
+                if member.user_id not in org_owner_identity_ids
             ),
             None,
         )
         assert user_id is not None, (
-            "Expected at least one organization member without existing "
-            "authorizations to test add_role/change_role/remove_role."
+            "Expected an organization member that is not an org owner (for "
+            "example an operator) to test add_role/change_role/remove_role."
         )
 
         await cloud.add_role(
