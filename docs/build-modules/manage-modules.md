@@ -28,7 +28,6 @@ After you [create and upload a module](/build-modules/write-a-driver-module/), y
 Once your module is in the [registry](https://app.viam.com/registry), there are two ways to update it:
 
 - [Update automatically](#update-automatically-from-a-github-repo-with-cloud-build) using GitHub Actions: Recommended for ongoing projects with continuous integration (CI) workflows, or if you want to build for multiple platforms.
-
   - If you enabled cloud build when you generated your module, the GitHub Actions are already set up for you.
 
 - [Update manually](#update-manually) using the [Viam CLI](/cli/): Fine for small projects with one contributor.
@@ -182,7 +181,7 @@ tar -czvf dist/archive.tar.gz ./dist/main
 
 {{< /expand >}}
 
-You can test this build configuration by running the Viam CLI's [`build local` command](/cli/#using-the-build-subcommand) on your development machine:
+You can test this build configuration by running the Viam CLI's [`build local` command](/cli/reference/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
@@ -232,9 +231,9 @@ When you are ready to test the action, uncomment `if: github.event_name == 'rele
 
 For guidance on configuring the other parameters, see the documentation for each:
 
-- [`org-id`](/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-- [`platform`](/cli/#using-the---platform-argument): You can only upload one platform at a time.
-- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): See [Using the --version argument](/cli/#using-the---version-argument) for more details on the types of versioning supported.
+- [`org-id`](/cli/reference/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+- [`platform`](/cli/reference/#using-the---platform-argument): You can only upload one platform at a time.
+- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): See [Using the --version argument](/cli/reference/#using-the---version-argument) for more details on the types of versioning supported.
 
 For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
@@ -246,7 +245,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
   {{% /tab %}}
   {{< /tabs >}}
 
-3. [Create an organization API key](/cli/#create-an-organization-api-key) with owner role:
+3. [Create an organization API key](/cli/reference/#organizations-api-key-create) with owner role:
 
    ```sh {class="command-line" data-prompt="$"}
    viam organizations api-key create --org-id <org-id> --name <key-name>
@@ -308,9 +307,9 @@ Use the [Viam CLI](/cli/) to manually update your module:
 
    For example, `viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz`.
 
-When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
+When you `upload` a module, the command performs basic [validation](/cli/reference/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/cli/#module).
+For more information, see the [`viam module` command](/cli/reference/#module).
 
 ## Pin a module to a specific version
 
@@ -375,14 +374,13 @@ To change the visibility:
    {{<imgproc src="/registry/upload/edit-module-visibility.png" resize="x150" declaredimensions=true alt="A module page with a Visibility heading on the right side. Under it, an Edit button has appeared." class="shadow" >}}
 
    The options are:
-
    - **Private**: Only users inside your organization can view, use, and edit the module.
    - **Public**: Any user inside or outside of your organization can view, use, and edit the module.
    - **Unlisted**: Any user inside or outside of your organization, with a direct link, can view and use the module.
      Only organization members can edit the module.
      Not listed in the registry for users outside of your organization.
 
-You can also edit the visibility by editing the [meta.json](/build-modules/module-reference/) file and then running the following [CLI](/cli/#module) command:
+You can also edit the visibility by editing the [meta.json](/build-modules/module-reference/) file and then running the following [CLI](/cli/reference/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update
@@ -449,13 +447,11 @@ To transfer ownership of a module from one organization to another:
    If the repository is using Viam's cloud build, the secrets contain an organization API key that will be exposed to the new owner after the repository transfer.
 
 1. Update the `meta.json` file to reflect the new organization:
-
    - Change the first part of the `module_id` field to the new organization's [namespace](/build-modules/module-reference/#organization-namespace).
    - For each model, change the first part of the `model` field to the new organization's namespace.
    - Update the `url` field to point to the new code repository if it has moved.
 
 1. Update the module code:
-
    - Throughout your module implementation code, change the model names in your component or service classes to match the changes you made to the `meta.json` file.
 
 1. Publish a new version of the module to the registry by following either set of update steps on this page.
