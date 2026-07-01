@@ -89,13 +89,7 @@ viam machines api-key create --machine-id=<machine-id>
 
 ## Set up OAuth
 
-OAuth setup is CLI-only. There is no web UI for these operations.
-
-### Enable the auth service
-
-```sh {class="command-line" data-prompt="$"}
-viam organizations auth-service enable --org-id=<org-id>
-```
+OAuth setup is CLI-only. There is no web UI for these operations. Before OAuth can be enabled, first ensure a logo and support email are set on your organization.
 
 ### Set branding
 
@@ -105,6 +99,12 @@ viam organizations logo set --org-id=<org-id> --logo-path=./logo.png
 
 ```sh {class="command-line" data-prompt="$"}
 viam organizations support-email set --org-id=<org-id> --support-email=support@example.com
+```
+
+### Enable the auth service
+
+```sh {class="command-line" data-prompt="$"}
+viam organizations auth-service enable --org-id=<org-id>
 ```
 
 ### Create an OAuth application
