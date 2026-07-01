@@ -91,7 +91,7 @@ own frame: large on the two in-plane axes so the tool can ride along the surface
 on the axis normal to the surface so it stays on the surface. Because a pose cloud uses the
 target's frame, these tolerances follow the tilt of the surface directly.
 
-{{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="Two panels. On the left, a pose-cloud region drawn as a thin slab lying along an inclined surface, large along the surface and tight into it, with the target frame tilted to match the surface. On the right, the orientation tolerance shown as a cone around the tool's pointing direction for OX and OY, plus an ellipse for Theta rotation about the axis." style="max-width:820px" class="aligncenter">}}
+{{<imgproc src="/motion-planning/move-an-arm/pose-cloud-target-frame.svg" declaredimensions=true alt="A tilted rectangular surface with the target frame at its center: the x and y axes lie in the surface and the z axis points along the surface normal. A dashed blue outline on the surface marks the pose-cloud region, which follows the tilt. A purple arrow offset from the z axis, with a dotted arc around it, shows the OX and OY leeway on the pointing direction and the Theta rotation about it." style="max-width:820px" class="aligncenter">}}
 
 ## Use a pose cloud with the motion service
 
