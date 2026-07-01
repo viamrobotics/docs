@@ -136,4 +136,4 @@ GitHub Actions workflows run linting and link checks on every pull request, publ
 > [!NOTE]
 > The scheduled `test-code-snippets.yml` and `check-methods.yml` jobs run against a live Viam test organization and external SDK sites, so their results depend on that org's state and on upstream changes. See [`.github/workflows/README.md`](.github/workflows/README.md#test-org-dependency) for details.
 >
-> On failure, the scheduled jobs open a deduplicated GitHub issue labeled `ci-failure`, and a daily Claude Code session triages those issues into fix PRs or comments. See [CI failure triage](.github/workflows/ci-failure-triage.md).
+> On failure, the scheduled jobs open a deduplicated GitHub issue labeled `ci-failure`. A daily **CI-failure triage routine** (a scheduled Claude Code session) then reviews those issues and either opens a fix PR titled `[Claude CI Failure] …` or comments with the root cause. See [CI failure triage](.github/workflows/ci-failure-triage.md) for the full flow, schedule, setup, and prompt.

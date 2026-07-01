@@ -56,6 +56,19 @@ open `ci-failure` issues. It runs under a maintainer's Claude account (no API ke
 or extra secret) and produces PRs on `claude/ci-fix-<slug>` branches, mirroring
 how the repo's other `claude/*` PRs are made.
 
+**At a glance:**
+
+- **Frequency:** daily, ~6 AM US Eastern / 10:00 UTC (fixed offset — no DST
+  adjustment).
+- **Runs as:** a repo-scoped Claude Code session under a maintainer's Claude
+  account — no API key or extra secret.
+- **Trigger:** a scheduled Claude Code (web) trigger created from a repo-scoped
+  session (see [Setup notes](#setup-notes-how-it-must-be-configured)).
+- **Input:** open issues labeled `ci-failure`.
+- **Output:** a fix PR on a `claude/ci-fix-<slug>` branch titled
+  `[Claude CI Failure] …`, or a root-cause comment on the issue when it's not
+  auto-fixable.
+
 ### Setup notes (how it must be configured)
 
 - **It must run in a session that is scoped to `viamrobotics/docs`** — that is,
