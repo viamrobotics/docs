@@ -24,9 +24,11 @@ gripper, already configured.
 A related capability is **open-vocabulary** (or **zero-shot**) detection: a
 vision model detects objects named by a text prompt, such as "coffee mug," with
 no task-specific training.
-You can run open-vocabulary detection through the
-[vision service](/reference/services/vision/) and use its bounding boxes
-either as a standalone perception step or as an input to the VLA loop below.
+Viam does not ship an open-vocabulary detector; as with the VLA model, you
+deploy one yourself, typically as a vision-service module. The
+[vision service](/reference/services/vision/) is then the interface that returns
+its bounding boxes, which you can use either as a standalone perception step or
+as an input to the VLA loop below.
 
 ## Prerequisites
 

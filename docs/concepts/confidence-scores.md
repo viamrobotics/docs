@@ -27,7 +27,7 @@ Three comparisons that feel natural also break down:
 - **Across models.** A `0.80` from one model says nothing about a `0.80` from another. They were trained differently and their scores land on different scales.
 - **Across versions.** Retraining or re-exporting the same model can shift the whole score distribution. A threshold that fit last month's version can behave differently after an update.
 
-Heuristic detectors expose a confidence value too, and it follows the same rules. A [`color_detector`](/reference/services/vision/color_detector/) computes its confidence from a rule about how much of a region falls within a target color range. That is a useful, repeatable score, but it is a measure of color match, not a probability that an object is present. Whatever produces the number, the discipline is the same: use it to rank and threshold, not as odds.
+Heuristic detectors expose a confidence value too, and it can mean even less. The [`color_detector`](/reference/services/vision/color_detector/) assigns every region it returns a constant confidence of `1.0`: the score reports that a color-matched region was found, and carries no information for ranking one detection above another. It is the clearest reminder that a confidence field is only ever as meaningful as the model behind it. Whatever produces the number, the discipline is the same: understand what it measures before you rank or threshold on it, and never read it as odds.
 
 ## Choosing a threshold for a quality-control task
 

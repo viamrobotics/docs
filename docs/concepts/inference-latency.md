@@ -78,7 +78,7 @@ The pattern holds across cases: moving the same model from a general-purpose CPU
 
 ## Why remote inference adds latency
 
-The ML model service's `Infer` method is the lower-level call that a [vision service](/vision/) detection ultimately blocks on, and you can run that model locally on the machine or call one hosted elsewhere.
+For an ML-backed [vision service](/vision/), the detection ultimately blocks on the ML model service's `Infer` method, and you can run that model locally on the machine or call one hosted elsewhere. (A heuristic detector such as `color_detector` runs no model and skips this cost.)
 Running inference on a remote or cloud server can give you access to hardware far more powerful than an edge device.
 That power comes with an added cost: every frame travels to the server and every result travels back.
 

@@ -33,20 +33,15 @@ It is worth being precise, so you set the right expectations.
 
 The `merged` model performs **selection and aggregation**, not statistical fusion.
 You configure it by property, such as `position`, `orientation`, or `angular_velocity`, and for each property you list one or more source sensors.
-When your code requests a reading, `merged` returns the value from the first sensor in that property's list that answers without error.
-If that sensor fails or is unavailable, `merged` falls through to the next one.
+When the sensor starts, `merged` picks, for each property, the first listed sensor that reports that property, and every reading of that property then comes from the chosen sensor.
 
-This design does two useful things:
-
-- **Aggregation across sensors.**
-  A GPS reports position and a separate IMU reports orientation and angular velocity.
-  `merged` presents both through one movement sensor client, so your application reads a complete pose from a single component instead of juggling several.
-- **Failover within a property.**
-  If you list two sensors that both report angular velocity, `merged` uses the first one that responds and switches to the second only when the first errors.
+This design gives you aggregation across sensors: a GPS reports position while a separate IMU reports orientation and angular velocity, and `merged` presents both through one movement sensor client.
+Your application reads a complete pose from a single component instead of juggling several.
 
 What `merged` does not do is blend two readings of the same quantity into a weighted average.
-If two sensors both report position, `merged` picks one of them for each reading; it does not compute a combined position that is more accurate than either.
-In short, `merged` is an excellent way to assemble a full set of readings from complementary hardware and to stay running when a sensor drops out, but it is not the Kalman-filter-style estimator described above.
+If two sensors both report position, `merged` chooses one at startup and reads position from it; it does not compute a combined position that is more accurate than either.
+The listed order sets that startup preference, not a per-reading failover: if the chosen sensor errors on a given read, `merged` returns that error rather than switching to another source mid-run.
+In short, `merged` is a clean way to assemble a full pose from complementary hardware, but it is not the Kalman-filter-style estimator described above.
 
 ## When fusing an IMU with an absolute source helps
 

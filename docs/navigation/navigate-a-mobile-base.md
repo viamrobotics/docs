@@ -91,9 +91,9 @@ For full parameters, obstacle geometry types, and other SDKs, see the [motion se
 
 ### 4. Verify the move
 
-Watch the base drive toward the goal.
-Both calls return `true` when the base reaches the destination within the configured tolerance.
-To confirm progress and final pose, read the localization source directly:
+`MoveOnGlobe` and `MoveOnMap` run asynchronously: each returns an execution ID immediately and the base keeps driving in the background.
+Track progress and completion with `GetPlan` and `ListPlanStatuses`, and stop an in-progress move with `StopPlan`.
+To confirm the final pose, read the localization source directly:
 
 - For a geographic goal, read the [movement sensor](/components/movement-sensor/) position.
 - For a map goal, read the base pose from the [SLAM service](/operate/reference/services/slam/).

@@ -19,7 +19,7 @@ that predicted pose.
 
 - A configured [camera](/reference/components/camera/) viewing the belt
 - A configured vision service detector that recognizes the part. See
-  [Detect objects](/vision/object-detection/).
+  [Detect objects](/vision/object-detection/detect/).
 - A configured [arm](/reference/components/arm/) and
   [gripper](/reference/components/gripper/) that reach the belt
 - The [motion service](/reference/apis/services/motion/) and a
@@ -48,10 +48,10 @@ this frame to the same part in the next frame.
 ### 2. Track the part across frames
 
 To follow one part through the stream, give each detection a persistent ID. The
-[`viam:object-tracker` module](/vision/object-detection/) wraps your detector
+[`viam:object-tracker` module](/vision/object-detection/track/) wraps your detector
 and camera, matches detections between consecutive frames, and assigns each part
 a stable track ID such as `part_0_20260701_143052`. Configure it as described in
-[Track objects across frames](/vision/object-detection/), then read its
+[Track objects across frames](/vision/object-detection/track/), then read its
 detections the same way you read any detector.
 
 With a stable ID you can measure motion. Record the part's position and the
@@ -156,7 +156,7 @@ point past where you aimed.
 
 ## Next steps
 
-- [Detect objects](/vision/object-detection/)
-- [Track objects across frames](/vision/object-detection/)
+- [Detect objects](/vision/object-detection/detect/)
+- [Track objects across frames](/vision/object-detection/track/)
 - [Move an arm to a pose](/motion-planning/move-an-arm/move-to-pose/)
 - [Motion service API](/reference/apis/services/motion/)

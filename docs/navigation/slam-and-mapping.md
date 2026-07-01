@@ -78,7 +78,7 @@ in localize-only mode for day-to-day operation and remap when the layout changes
 Because these are configuration choices on the SLAM service rather than separate
 components, you can switch modes by changing the service configuration. For the
 exact configuration shape, supported sensors, and available SLAM modules, see the
-[navigation and SLAM reference](/reference/services/navigation/) and
+[SLAM service reference](/operate/reference/services/slam/) and
 [How a robot knows where it is](localization/).
 
 ## How the map feeds navigation

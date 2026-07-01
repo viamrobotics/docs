@@ -47,7 +47,7 @@ A **model** is a specific _implementation_ of one of those APIs.
 
 The camera API is a single contract, but a Logitech webcam, a RealSense depth camera, and a simulated fake camera are three different models that all satisfy it.
 When you configure a component or service, you choose a model, and behind that model sits real code that fulfills the API.
-Models are named with a triplet like `namespace:family:name` (for example `viam:camera:webcam`), which keeps a community-contributed model distinct from Viam's own.
+Models are named with a triplet, `namespace:family:name`. The built-in webcam is `rdk:builtin:webcam`; a community model might be `myorg:realsense:d435`. The middle slot is the model's _family_, not the API it implements, and the namespace keeps a community-contributed model distinct from Viam's own.
 
 ## Modules and modular resources
 
