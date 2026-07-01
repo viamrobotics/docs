@@ -102,7 +102,7 @@ The following attributes are available for `gpiostepper` motors:
 
 Refer to your motor and motor driver data sheets for specifics.
 
-### Microstepping and speed math
+## Microstepping and speed math
 
 The step-pin pulse frequency required to spin the motor at a given RPM is:
 
