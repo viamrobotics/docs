@@ -13,10 +13,10 @@ top-level README](../../README.md#continuous-integration).
 - **Trigger:** what causes the workflow to run.
 - **Blocking:** whether a failure blocks a pull request from merging.
   "Informational" workflows set `continue-on-error: true` and never block.
-  Scheduled workflows have no PR to block; they open a Jira ticket on failure
-  instead.
+  Scheduled workflows have no PR to block; they open a deduplicated GitHub issue
+  on failure instead (see [Failure notifications](#failure-notifications)).
 - **Secrets:** repository secrets the workflow needs. Several scheduled jobs
-  authenticate to a shared Viam test organization and to Jira.
+  authenticate to a shared Viam test organization.
 
 > [!NOTE]
 > Some scheduled jobs run code samples and SDK checks against a **live Viam
@@ -64,10 +64,12 @@ top-level README](../../README.md#continuous-integration).
 
 - **Purpose:** Weekly broken-link check that **includes external** links.
 - **Trigger:** Schedule—`0 10 * * 2` (Tuesdays 10:00 UTC).
-- **Blocking:** N/A (scheduled); opens a Jira `DOCS` bug on failure.
+- **Blocking:** N/A (scheduled); opens a deduplicated GitHub issue labeled
+  `ci-failure` on failure (see [Failure notifications](#failure-notifications)).
 - **What it does:** Builds the site and runs `wjdp/htmltest-action` with
   `.htmltest.yml` (the external-links-inclusive config); uploads `htmltest.log`.
-- **Secrets:** `JIRA_BASE_URL`, `JIRA_USER_EMAIL`, `JIRA_API_TOKEN`.
+- **Secrets:** None (uses the automatic `GITHUB_TOKEN` to open the failure
+  issue).
 - **Notes:** Same moving-branch pin on `wjdp/htmltest-action@master`. External
   link failures are expected to be noisy (third-party sites change/expire).
 
@@ -130,36 +132,37 @@ top-level README](../../README.md#continuous-integration).
   to verify the documented SDK samples still execute without error.
 - **Trigger:** Schedule—`0 9 * * 1` (Mondays 09:00 UTC); push to `main`
   touching `static/include/examples/**` or this workflow; manual.
-- **Blocking:** N/A (scheduled/push); opens a Jira `DOCS` bug on failure.
+- **Blocking:** N/A (scheduled/push); opens a deduplicated GitHub issue labeled
+  `ci-failure` on failure (see [Failure notifications](#failure-notifications)).
 - **What it does:** Fetches a machine config from `app.viam.com`, starts the
   stable `viam-server` AppImage in the background, then runs each `*.py`,
-  `*.go`, and `*.ts` sample in turn, tallying pass/fail.
+  `*.go`, and `*.ts` sample in turn, tallying pass/fail. Each language step
+  records its failure count and a final "Evaluate results" step fails the job if
+  any language had a failure, so one language failing no longer hides the others.
 - **Tests:** Yes—end-to-end execution of the real samples against live APIs.
 - **Secrets:** `TEST_MACHINE_KEY`, `VIAM_API_KEY`, `VIAM_API_KEY_ID`,
   `TEST_ORG_ID`, `VIAM_API_KEY_DATA_REGIONS`, `VIAM_API_KEY_ID_DATA_REGIONS`,
-  `TEST_EMAIL`, plus the Jira secrets.
-- **Notes / current status:** Language steps run sequentially in one job, so a
-  failure in the Python step aborts the Go and TypeScript steps. This job has
-  been failing on every run since 2025-11-10, driven by
-  `fleet-api/fleet-management-api-orgs.py` depending on the test org having a
-  member with no existing roles. See [Test-org dependency](#test-org-dependency).
-  The `viam-server` AppImage is re-pulled as "stable" each run, so a server
-  release can change the test surface with no repo change. A literal machine
-  `id`/`key_id` is hardcoded in the server-start step; if that machine or key
-  is deleted the whole job fails at startup.
+  `TEST_EMAIL`.
+- **Notes / current status:** The `viam-server` AppImage is re-pulled as
+  "stable" each run, so a server release can change the test surface with no repo
+  change. A literal machine `id`/`key_id` is hardcoded in the server-start step;
+  if that machine or key is deleted the whole job fails at startup. See
+  [Test-org dependency](#test-org-dependency).
 
 #### `check-methods.yml`—_SDK method coverage_
 
 - **Purpose:** Detects when the Viam SDKs gain or remove API methods that the
   docs' generated API reference has not accounted for.
 - **Trigger:** Schedule—`0 10 * * 3` (Wednesdays 10:00 UTC); manual.
-- **Blocking:** N/A—job-level `continue-on-error: true`; opens a Jira `DOCS`
-  task on failure (its only real signal).
+- **Blocking:** N/A—job-level `continue-on-error: true`; opens a deduplicated
+  GitHub issue labeled `ci-failure` on failure (its only real signal; see
+  [Failure notifications](#failure-notifications)).
 - **What it does:** `make coveragetest` runs `update_sdk_methods.py --coverage`,
   which scrapes the four SDK doc sites and the upstream gRPC protos and diffs
   them against `sdk_protos_map.csv`; unmapped or missing methods fail the check.
 - **Tests:** Documentation-coverage validation (no live robot calls).
-- **Secrets:** Jira only.
+- **Secrets:** None (uses the automatic `GITHUB_TOKEN` to open the failure
+  issue).
 - **Notes:** The cron comment says "weekdays" but the schedule is Wednesday
   only. Because it scrapes external doc-site HTML, upstream layout changes can
   break parsing and open spurious tickets. The `concurrency.group` references a
@@ -200,6 +203,26 @@ top-level README](../../README.md#continuous-integration).
 - **Secrets:** `INKEEP_API_KEY` (plus `GITHUB_TOKEN`).
 - **Notes:** Has both a top-level `paths` filter and a redundant in-job
   `dorny/paths-filter` check. Hardcoded Inkeep `sourceId`.
+
+## Failure notifications
+
+Scheduled jobs have no PR to block, so they report failures by opening a GitHub
+issue. Each of `test-code-snippets.yml`, `check-methods.yml`, and
+`run-htmltest.yml` ends with a `Report failure` step (gated `if: failure()`) that
+calls the local composite action `.github/actions/report-ci-failure`:
+
+- It opens an issue titled `CI failure: <job name>` labeled `ci-failure`, with a
+  link to the failing run.
+- If an open `ci-failure` issue for the same job already exists, it adds a
+  comment with the new run link instead of opening a duplicate, so repeated
+  weekly failures collapse into one tracking issue.
+- It authenticates with the automatic `GITHUB_TOKEN`; the workflows grant
+  `issues: write`. No external service or extra secret is required.
+
+This replaced the previous `atlassian/gajira-*` Jira integration, which had
+stopped authenticating and left the scheduled jobs unmonitored. A Claude Code
+Remote routine triages open `ci-failure` issues—opening a fix PR when the cause
+is clear, or commenting on the issue when it is not.
 
 ## Helper scripts
 
@@ -264,30 +287,29 @@ state. Roughly ordered by impact.
 ### Restore failure visibility (highest impact)
 
 Three scheduled jobs (`test-code-snippets.yml`, `check-methods.yml`,
-`run-htmltest.yml`) report failures only by opening a Jira ticket, and the Jira
-steps are themselves failing—so these jobs currently run unmonitored.
+`run-htmltest.yml`) previously reported failures only by opening a Jira ticket,
+and the Jira steps were themselves failing—so these jobs ran unmonitored.
 
-- [ ] Fix the `atlassian/gajira-login` / `gajira-create` steps (refresh
-      `JIRA_BASE_URL` / `JIRA_USER_EMAIL` / `JIRA_API_TOKEN`, confirm the `DOCS`
-      project still accepts the issue types used).
-- [ ] Confirm the `DOCS` Jira project is actively watched; if not, add a second
-      notification path (for example a Slack or email alert on failure).
+- [x] Replace the broken `atlassian/gajira-*` steps with the
+      `.github/actions/report-ci-failure` composite action, which opens a
+      deduplicated GitHub issue labeled `ci-failure`. See
+      [Failure notifications](#failure-notifications).
+- [x] Add a triage path: a Claude Code Remote routine picks up `ci-failure`
+      issues and opens a fix PR or comments.
 
 ### `test-code-snippets.yml` (Test Code Samples)
 
 - [ ] Add a member with no roles to the `docs-scheduled-tests` test org so
       `fleet-api/fleet-management-api-orgs.py` can grant a fresh location-owner
-      role. (Sample-side change tracked in #5106.)
-- [ ] Re-run the job and confirm it goes green end to end (the Python failure
-      currently blocks the Go and TypeScript steps).
-- [ ] Split the Python, Go, and TypeScript runs into separate jobs (or add
-      `continue-on-error` per language with a final gate) so one language
-      failing no longer hides the others.
+      role. (Sample-side change tracked in #5106, now merged.)
+- [ ] Re-run the job and confirm it goes green end to end.
+- [x] Isolate the Python, Go, and TypeScript runs so one language failing no
+      longer hides the others (each records its failure count; a final
+      "Evaluate results" step fails the job if any language failed).
 - [ ] Replace the hardcoded machine `id` / `key_id` in the server-start step
       with secrets so a rotated machine or key does not break startup.
-- [ ] Add resilience to samples that make live calls returning transient
-      `INTERNAL` errors (the `data-pipelines` teardown deletes), so flaky
-      backend responses do not fail the run.
+- [x] Add resilience to the `data-pipelines` teardown deletes, which can return
+      transient `INTERNAL` errors, so flaky backend responses do not fail the run.
 
 ### `alias-reminder.yml` (Alias reminder)
 

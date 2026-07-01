@@ -149,11 +149,6 @@ func main() {
 		logger.Fatal("Support email mismatch")
 	}
 
-	err = cloud.OrganizationSetSupportEmail(ctx, ORG_ID, "none")
-	if err != nil {
-		logger.Fatal(err)
-	}
-
 	// err = cloud.EnableBillingService(ctx, ORG_ID, &app.BillingAddress{
 	// 	AddressLine1: "123 Test Street",
 	// 	AddressLine2: stringPtr("Company Name"),
