@@ -10,6 +10,10 @@ on:
     - cron: '0 10 * * 3'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   method-coverage:
     runs-on: ubuntu-latest
@@ -29,24 +33,8 @@ jobs:
 
       - name: Run Coverage test
         run: make coveragetest
-      - name: Login to Jira
+      - name: Report failure
         if: failure()
-        uses: atlassian/gajira-login@v3
-        env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-      - name: Create Jira ticket
-        if: failure()
-        id: create
-        uses: atlassian/gajira-create@v3
-        env:
-          GITHUB_RUN_ID: ${{ github.run_id }}
+        uses: ./.github/actions/report-ci-failure
         with:
-          project: DOCS
-          issuetype: Task
-          summary: New SDK Methods
-          description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
-      - name: Log created Jira issue
-        if: failure()
-        run: echo "Issue ${{ steps.create.outputs.issue }} was created"
+          job-name: SDK method coverage
