@@ -94,11 +94,17 @@ _, err := api.DrawGeometry(api.DrawGeometryOptions{
 
 This lets you preview spatial data, a point cloud, a set of detections, a planned
 path, straight from a script or test, without deploying a module or connecting
-through the Viam app. Each push updates the app incrementally, the same add,
-update, and remove model the world state store service uses to feed the in-app 3D
-scene, so a busy scene stays in sync as your data changes. For setup, the local
-server, and the full client API, see the
+through the Viam app. For setup, the local server, and the full client API, see the
 [Viam Visualization documentation](https://viamrobotics.github.io/visualization/).
+
+## How updates reach the browser
+
+The app runs a **draw service** that the client API calls. Each push becomes an
+`AddEntity`, `UpdateEntity`, or `RemoveEntity` operation, and the service fans that
+single change out over a `StreamEntity` stream the browser subscribes to. The browser
+applies the one change instead of re-rendering the scene. This is the same add,
+update, and remove model the world state store service uses to feed the in-app 3D
+scene, so a busy scene stays in sync as your data changes.
 
 ## What's next
 

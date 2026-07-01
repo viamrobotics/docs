@@ -55,6 +55,51 @@ func (s *visualizer) ListUUIDs(
 }
 ```
 
+`GetTransform` is a map lookup by UUID. `StreamTransformChanges` hands the caller a
+stream backed by a fresh subscriber channel, and the poll loop pushes each change
+onto every subscriber through a small `emit` helper:
+
+```go
+func (s *visualizer) GetTransform(
+    ctx context.Context, uuid []byte, extra map[string]any,
+) (*commonpb.Transform, error) {
+    s.mu.RLock()
+    defer s.mu.RUnlock()
+    tf, ok := s.transforms[string(uuid)]
+    if !ok {
+        return nil, fmt.Errorf("no transform with uuid %s", uuid)
+    }
+    return tf, nil
+}
+
+func (s *visualizer) StreamTransformChanges(
+    ctx context.Context, extra map[string]any,
+) (*worldstatestore.TransformChangeStream, error) {
+    ch := make(chan worldstatestore.TransformChange, 32)
+    s.mu.Lock()
+    s.subscribers = append(s.subscribers, ch)
+    s.mu.Unlock()
+    return worldstatestore.NewTransformChangeStreamFromChannel(ctx, ch), nil
+}
+
+// emit fans one change out to every stream subscriber.
+func (s *visualizer) emit(
+    tf *commonpb.Transform, kind pb.TransformChangeType, updated []string,
+) {
+    change := worldstatestore.TransformChange{
+        ChangeType: kind, Transform: tf, UpdatedFields: updated,
+    }
+    s.mu.RLock()
+    defer s.mu.RUnlock()
+    for _, ch := range s.subscribers {
+        select {
+        case ch <- change:
+        default: // skip a subscriber whose buffer is full
+        }
+    }
+}
+```
+
 ## Build transforms with the draw library
 
 Rather than assembling `commonpb.Transform` protos by hand, use the `draw`
@@ -69,7 +114,8 @@ import (
 )
 
 func buildTransform(o obstacle) (*commonpb.Transform, error) {
-    box, err := spatialmath.NewBox(o.Pose, o.Dims, o.ID)
+    // Build the box at the origin; WithPose below places it at the obstacle pose.
+    box, err := spatialmath.NewBox(spatialmath.NewZeroPose(), o.Dims, o.ID)
     if err != nil {
         return nil, err
     }

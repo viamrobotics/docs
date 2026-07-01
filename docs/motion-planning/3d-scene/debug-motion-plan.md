@@ -62,7 +62,8 @@ import (
 
 func stepMarker(i int, pose spatialmath.Pose) (*commonpb.Transform, error) {
     id := fmt.Sprintf("step-%d", i)
-    sphere, err := spatialmath.NewSphere(pose, 5, id)
+    // Build the sphere at the origin; WithPose below places it at the step pose.
+    sphere, err := spatialmath.NewSphere(spatialmath.NewZeroPose(), 5, id)
     if err != nil {
         return nil, err
     }
@@ -74,10 +75,26 @@ func stepMarker(i int, pose spatialmath.Pose) (*commonpb.Transform, error) {
     // marker in place instead of drawing a duplicate.
     return drawn.Draw(id, draw.WithID(id), draw.WithPose(pose))
 }
+
+// goalMarker draws a destination pose. Unlike the trajectory poses, a goal pose is
+// not a ComputePoses output: it is the destination you passed to the planner.
+func goalMarker(i int, goalPose spatialmath.Pose) (*commonpb.Transform, error) {
+    id := fmt.Sprintf("goal-%d", i)
+    sphere, err := spatialmath.NewSphere(spatialmath.NewZeroPose(), 8, id)
+    if err != nil {
+        return nil, err
+    }
+    drawn, err := draw.NewDrawnGeometry(sphere, draw.WithGeometryColor(goalColor))
+    if err != nil {
+        return nil, err
+    }
+    return drawn.Draw(id, draw.WithID(id), draw.WithPose(goalPose))
+}
 ```
 
-Draw the goal poses the same way with a distinct color, so the target stands out
-from the trajectory leading to it.
+The trajectory poses come from `ComputePoses`, but the goal pose is the destination
+you passed to the planner. `goalMarker` draws it with a distinct color, so the target
+stands out from the trajectory leading to it.
 
 ## Serve the transforms to the scene
 
