@@ -85,6 +85,8 @@ how the repo's other `claude/*` PRs are made.
   (for example, blank lines around lists), prettier wins.
 - If an issue's linked PR already exists but its **checks are failing**, fixes
   that PR's branch in place rather than opening a duplicate or skipping it.
+- Titles its PRs `[Claude CI Failure] …` so maintainers can spot and filter
+  them.
 - `Fixes #<n>` only when the PR fully resolves what the job checks; otherwise
   `Refs #<n>` so a partially-fixed issue is not auto-closed.
 - Commits as `Brandon Shrewsbury <brandon.shrewsbury@viam.com>` with **no**
@@ -125,7 +127,7 @@ Triage CI failures for viamrobotics/docs. The repo is cloned at the repo root, b
    - Then run the CLAUDE.md pre-PR checks IN THIS ORDER and commit exactly what they produce: (1) `npx prettier --write <changed files>`, (2) `npx markdownlint-cli --config .markdownlint.yaml <changed files>`, (3) vale. prettier owns formatting and is a REQUIRED status check; it can disagree with markdownlint (e.g. blank lines around lists) — when they conflict, prettier wins. Never hand-apply a markdownlint suggestion that makes prettier fail.
    - Before opening/updating the PR, confirm `npx prettier --check <changed files>` passes and markdownlint is clean on every file you touched. If a required check tool genuinely can't run in your environment, say so in the PR body and keep the diff as small as possible so you don't introduce issues that tool would catch.
 
-7. Open (or update) the PR via the mcp__github__ tools on branch claude/ci-fix-<slug>. In the PR body, state exactly what you fixed and what you deliberately left, with counts (e.g. "fixes 10 of 10 internal broken anchors; the remaining ~338 errors are external 403/404/429, out of scope"). Use "Fixes #<n>" ONLY if the PR fully resolves what the job checks so it will pass next run; if it fixes only part (e.g. the internal anchors while external/transient errors remain), use "Refs #<n>" so the issue is NOT auto-closed. Commit as Brandon Shrewsbury <brandon.shrewsbury@viam.com>, with NO "Co-Authored-By: ...@anthropic.com" trailer (it breaks the CLA). Then comment the PR link + a short verified breakdown on the issue.
+7. Open (or update) the PR via the mcp__github__ tools on branch claude/ci-fix-<slug>. Title it "[Claude CI Failure] <concise summary>" — keep that exact prefix, including when you update an existing PR's title. In the PR body, state exactly what you fixed and what you deliberately left, with counts (e.g. "fixes 10 of 10 internal broken anchors; the remaining ~338 errors are external 403/404/429, out of scope"). Use "Fixes #<n>" ONLY if the PR fully resolves what the job checks so it will pass next run; if it fixes only part (e.g. the internal anchors while external/transient errors remain), use "Refs #<n>" so the issue is NOT auto-closed. Commit as Brandon Shrewsbury <brandon.shrewsbury@viam.com>, with NO "Co-Authored-By: ...@anthropic.com" trailer (it breaks the CLA). Then comment the PR link + a short verified breakdown on the issue.
 
 8. If transient/uncertain, or the correct fix is a domain-owner decision: comment the verified likely cause on the issue; no PR.
 
