@@ -72,7 +72,7 @@ Each concept page lives in the section of the thing it is about, not a generic b
 | 26  | Industrial manipulation        | Random bin picking         | Pick randomly-oriented parts using 3D pose estimation                          |
 | 27  | Fleet management / ops         | Zero-touch provisioning    | Provision 1,000 new devices with no per-unit manual setup                      |
 | 28  | Fleet management / ops         | Staged model rollout       | Roll a new ML model to a fleet in canary then full stages                      |
-| 29  | Fleet management / ops         | Fleet config via fragments | Manage shared config across many machines with fragments                       |
+| 29  | Fleet management / ops         | Fleet config with fragments | Manage shared config across many machines with fragments                       |
 | 30  | Fleet management / ops         | RBAC for customer fleet    | Grant scoped access to customers over their own machines                       |
 | 31  | Fleet management / ops         | Fleet health monitoring    | Dashboard + alerts on fleet health and offline devices                         |
 | 32  | Fleet management / ops         | Remote teleop intervention | Remotely take control of a stuck robot to recover it                           |
