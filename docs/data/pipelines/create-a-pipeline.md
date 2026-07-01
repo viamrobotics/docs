@@ -18,8 +18,32 @@ Create a pipeline that runs a scheduled MQL aggregation against your captured da
 ## Prerequisites
 
 - Captured tabular data in the cloud (see [Start data capture](/data/capture-sync/capture-and-sync-data/))
-- Your organization ID (find it in the Viam app under **Settings**)
-- Viam CLI installed, or the Python/Go SDK
+- For CLI or SDK: your organization ID (find it in the Viam app under **Settings**)
+
+## Create in the Viam app
+
+1. Navigate to the [**DATA** page](https://app.viam.com/data) in the Viam app, then select the **Pipelines** subtab.
+1. Click **Create pipeline**.
+1. In the **Details** step, fill in:
+
+   - **Name**: A descriptive, unique name for the pipeline within your organization.
+   - **Schedule**: A cron expression in UTC that sets how often the pipeline runs and the data time window for each run.
+     Expand **Show examples** for common cron patterns, or see [Cron schedule](/data/pipelines/reference/#cron-schedule) for the full syntax.
+   - **Enable backfill**: Toggle on to process all historical data when the pipeline is created.
+     This can take a while for large datasets.
+
+1. Click **Next** to proceed to the **Query** step.
+1. Build your MQL aggregation pipeline using the visual stage editor or switch to text mode with the **Stages** / **Text** toggle.
+   Use the data source dropdown to choose between **Standard storage** and **Hot data store** as the input for your pipeline.
+
+   The editor shows a preview of the first stage's intermediate results to help you iterate.
+   Click **Test query** to run the full pipeline against a sample time window and verify the output before creating.
+
+1. Click **Next** to proceed to the **Review and run** step.
+   Confirm the pipeline name, schedule, query, data source, and backfill setting.
+1. Click **Create and run**.
+
+After the pipeline is created, the app redirects to the pipeline detail page where you can monitor runs.
 
 ## Create with the CLI
 
