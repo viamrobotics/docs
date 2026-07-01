@@ -58,6 +58,8 @@ Define a combination of components, services, and modules once, then apply that 
 Use fragments to configure a camera-arm combination, a camera-to-object-detection pipeline, or an entire work cell.
 Fragments support variable substitution and per-machine overwrites, so you can deploy the same base configuration to hundreds of machines while accommodating site-specific settings.
 
+For a closer look at how machines, parts, components, services, and modules relate, and the difference between using the APIs and authoring a module, see [How Viam fits together](platform-model/).
+
 ## Viam capabilities
 
 - **[Get hardware running in minutes](/hardware/):** Add a camera, motor, arm, or sensor to your configuration with a few parameters. `viam-server` pulls the driver and exposes the device through a consistent API. No writing drivers, no managing dependencies.
