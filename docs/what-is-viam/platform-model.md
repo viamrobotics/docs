@@ -5,6 +5,9 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "A tour of Viam's core vocabulary, machine, part, component, service, module, and modular resource, for developers new to robotics."
+aliases:
+  - "/concepts/platform-model/"
+  - "/concepts/"
 ---
 
 Picture a small delivery robot: two motors, a camera up front, a GPS unit, and a single-board computer that ties them together.

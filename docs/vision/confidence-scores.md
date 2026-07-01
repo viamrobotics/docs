@@ -5,6 +5,8 @@ weight: 7
 layout: "docs"
 type: "docs"
 description: "What the confidence value on a detection or classification measures, why it is not a calibrated probability, and how to reason about accept and reject thresholds for a quality-control task."
+aliases:
+  - "/concepts/confidence-scores/"
 ---
 
 Point a person detector at an image and it returns something like `person: 0.82`. That `0.82` is a confidence score: a number between `0.0` and `1.0` that rides along with every result from [`GetDetections`](/reference/apis/services/vision/#getdetections) and [`GetClassifications`](/reference/apis/services/vision/#getclassifications). It is one of the most useful signals the vision service gives you, and one of the easiest to misread. This page explains what the number measures, how far you can trust it, and how to turn it into an accept or reject decision.

@@ -5,6 +5,8 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Understand how the data-capture polling frequency differs from a sensor's internal sample rate, and how to choose a capture frequency that balances fidelity against storage cost."
+aliases:
+  - "/concepts/capture-frequency/"
 ---
 
 Suppose you configure data capture on a temperature sensor with `capture_frequency_hz` set to `1`, and the sensor hardware samples its internal thermistor at 100&nbsp;Hz.

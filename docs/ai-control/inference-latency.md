@@ -5,6 +5,8 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Understand why model inference latency sets the ceiling on how fast a perception or control loop can run, and estimate an achievable loop rate from model size, image resolution, and hardware."
+aliases:
+  - "/concepts/inference-latency/"
 ---
 
 Consider a small program that watches a camera and reacts to what it sees:
