@@ -10,6 +10,24 @@ date: "2026-03-27"
 
 Monitor and manage your data pipelines after creation. For creating pipelines, see [Create a pipeline](/data/pipelines/create-a-pipeline/).
 
+## View pipelines in the Viam app
+
+Navigate to the [**DATA** page](https://app.viam.com/data) in the Viam app, then select the **Pipelines** subtab.
+
+The pipelines list shows each pipeline's name, schedule, last execution time, and error count.
+Disabled pipelines display a **Disabled** badge next to the name.
+Pipelines with backfill in progress show the completion percentage.
+
+Click a pipeline name to open its detail page, which has three tabs:
+
+- **Runs**: A table of all pipeline executions with the data window, status, runtime, and start time for each run.
+  Failed runs show an error icon you can expand for details.
+- **Details**: The pipeline's configuration, including its ID, schedule, data source type, creation date, backfill status, and the full MQL query.
+- **Custom indexes**: MongoDB indexes on the pipeline's output collection.
+  See [Manage custom indexes](#manage-custom-indexes) for details.
+
+Use the three-dot menu next to any pipeline to **Copy ID**, **Query pipeline data**, **Enable** or **Disable** the pipeline, or **Delete** it.
+
 ## List pipelines
 
 {{< tabs >}}
@@ -270,6 +288,37 @@ err = dataClient.DeleteDataPipeline(ctx, "YOUR-PIPELINE-ID")
 {{< alert title="Deleting a pipeline is irreversible" color="caution" >}}
 Deleting a pipeline removes the pipeline configuration, its execution history, and all output data in the pipeline sink. If you need to preserve pipeline results, export them first.
 {{< /alert >}}
+
+## Manage custom indexes
+
+Custom indexes speed up queries against a pipeline's output collection.
+You can create, list, and delete indexes from the Viam app, the CLI, or the SDK.
+
+### Create an index in the Viam app
+
+1. Open the pipeline detail page by clicking the pipeline name on the **Pipelines** subtab.
+1. Select the **Custom indexes** tab.
+1. Click **Create custom index**.
+1. Enter a [MongoDB index specification](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/#options-for-all-index-types) in JSON format with a `key` field and optional `options`:
+
+   ```json
+   {
+     "key": { "location_id": 1, "avg_temp": -1 },
+     "options": { "name": "location-avg-temp" }
+   }
+   ```
+
+1. Click **Create index**.
+
+The index build starts in the background.
+The **Custom indexes** tab shows the build status, which progresses from **Pending** to **In progress** to **Completed**.
+If the build fails, the tab shows the error.
+
+To delete an index, click the delete icon on the index card.
+
+### Create an index with the CLI or SDK
+
+See [Manage data indexes](/cli/manage-data/#manage-data-indexes) for CLI commands, or use the SDK's `CreateIndex`, `ListIndexes`, and `DeleteIndex` methods documented in the [data client API reference](/reference/apis/data-client/).
 
 ## Troubleshooting
 
