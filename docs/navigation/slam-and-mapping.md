@@ -77,9 +77,9 @@ in localize-only mode for day-to-day operation and remap when the layout changes
 
 Because these are configuration choices on the SLAM service rather than separate
 components, you can switch modes by changing the service configuration. For the
-exact configuration shape, supported sensors, and available SLAM modules, see the
-[SLAM service reference](/operate/reference/services/slam/) and
-[How a robot knows where it is](localization/).
+configuration shape and supported sensors of a specific implementation, see the
+SLAM modules in the [Viam Registry](https://app.viam.com/registry) and
+[How a robot knows its position](localization/).
 
 ## How the map feeds navigation
 
@@ -91,9 +91,9 @@ base there, steering around the obstacles the map records. That handoff, from
 
 ## Next steps
 
-- [How a robot knows where it is](localization/): how odometry, GPS, and SLAM
+- [How a robot knows its position](localization/): how odometry, GPS, and SLAM
   compare as sources of position.
 - [Navigate a mobile base to a goal](navigate-a-mobile-base/): turn a map and a
   pose into motion toward a destination.
-- [Navigation and SLAM reference](/reference/services/navigation/): configuration
-  fields, supported sensors, and the API.
+- [SLAM modules in the registry](https://app.viam.com/registry): configuration
+  fields and supported sensors for a specific SLAM implementation.

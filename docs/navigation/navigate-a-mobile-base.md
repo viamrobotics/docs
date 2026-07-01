@@ -8,7 +8,7 @@ description: "Drive a configured mobile base to a GPS or SLAM-map waypoint with 
 ---
 
 The motion service can drive a mobile base to a destination and plan a collision-free path along the way.
-For a base that knows its own pose, one call moves it to a waypoint: `MoveOnGlobe` for a geographic goal or `MoveOnMap` for a goal on a [SLAM](/operate/reference/services/slam/) map.
+For a base that knows its own pose, one call moves it to a waypoint: `MoveOnGlobe` for a geographic goal or `MoveOnMap` for a goal on a [SLAM](/navigation/slam-and-mapping/) map.
 
 This page assembles the localization and motion inputs a base needs, issues the move, and maps common failures back to the missing input.
 
@@ -19,7 +19,7 @@ Before you start, configure the following on your machine:
 - A [mobile base](/components/base/) that you can already drive with velocity or position commands.
 - A localization source that reports the base's pose:
   - A [movement sensor](/components/movement-sensor/) that provides GPS position, for a geographic goal.
-  - A [SLAM service](/operate/reference/services/slam/) that provides a map and pose, for a map goal.
+  - A [SLAM service](/navigation/slam-and-mapping/) that provides a map and pose, for a map goal.
 - The [motion service](/reference/apis/services/motion/), which plans the path and issues drive commands to the base.
 
 ## Steps
@@ -37,7 +37,7 @@ For the localization options and how each one supplies a pose, see [Localization
 ### 2. Set up the motion service with the base and its localization source
 
 Add the [motion service](/reference/apis/services/motion/) to your machine.
-The motion service reads the machine's [frame system](/operate/mobility/frame-system/) to relate the base, its localization source, and any obstacles in a shared coordinate space.
+The motion service reads the machine's [frame system](/motion-planning/frame-system/) to relate the base, its localization source, and any obstacles in a shared coordinate space.
 
 Make sure your frame system places:
 
@@ -96,7 +96,7 @@ Track progress and completion with `GetPlan` and `ListPlanStatuses`, and stop an
 To confirm the final pose, read the localization source directly:
 
 - For a geographic goal, read the [movement sensor](/components/movement-sensor/) position.
-- For a map goal, read the base pose from the [SLAM service](/operate/reference/services/slam/).
+- For a map goal, read the base pose from the [SLAM service](/navigation/slam-and-mapping/).
 
 ## Troubleshooting
 

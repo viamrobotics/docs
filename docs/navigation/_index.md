@@ -13,7 +13,7 @@ question: _where am I?_ Everything else, planning a path, driving to a goal,
 coordinating with other robots, builds on that answer. This section covers
 how a machine estimates its own position and uses that estimate to move.
 
-- [How a robot knows where it is](localization/): odometry, GPS, and SLAM as
+- [How a robot knows its position](localization/): odometry, GPS, and SLAM as
   localization sources, and their drift and cost trade-offs.
 - [SLAM and mapping](slam-and-mapping/): building a map and locating within it.
 - [Combine sensors with sensor fusion](sensor-fusion/): why one sensor is
