@@ -315,6 +315,46 @@ pointCloud := &commonpb.Geometry{
 {{% /tab %}}
 {{< /tabs >}}
 
+## Assemble a transform
+
+The geometry above is only the shape. To render it as a visual, wrap it in a transform
+that carries the other anatomy fields: a reference frame and pose, metadata, and a UUID.
+The `draw` library assembles them for you, so you do not build the `Transform` proto by
+hand:
+
+```go
+import (
+    "github.com/golang/geo/r3"
+    "github.com/viam-labs/motion-tools/draw"
+    "go.viam.com/rdk/spatialmath"
+)
+
+// A red box at (400, 0, 200) in the world frame.
+box, err := spatialmath.NewBox(
+    spatialmath.NewZeroPose(), r3.Vector{X: 100, Y: 100, Z: 100}, "target-box",
+)
+if err != nil {
+    return nil, err
+}
+drawn, err := draw.NewDrawnGeometry(
+    box,
+    draw.WithGeometryColor(draw.NewColor(draw.WithName("red"))), // metadata: color
+)
+if err != nil {
+    return nil, err
+}
+transform, err := drawn.Draw(
+    "target-box",             // the name of this visual's frame
+    draw.WithID("target-box"), // UUID: a stable identity for later updates
+    draw.WithParent("world"),  // reference frame the pose is expressed in
+    draw.WithPose(spatialmath.NewPoseFromPoint(r3.Vector{X: 400, Y: 0, Z: 200})), // pose
+)
+```
+
+Publish `transform` through a world state store service to draw it. For the full module
+that serves transforms this way, see
+[Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
+
 ## What's next
 
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/):

@@ -99,9 +99,10 @@ stands out from the trajectory leading to it.
 ## Serve the transforms to the scene
 
 Serve the transforms through a world state store service so the **3D SCENE** tab
-renders them. The plan markers stream in alongside the frames and obstacle
-geometry the scene already shows. For the service methods, the poll-and-update
-loop, and how a module pulls data from its dependencies, see
+renders them. Return your step and goal markers from the service's `ListUUIDs`,
+`GetTransform`, and `StreamTransformChanges` methods, and the plan streams in alongside
+the frames and obstacle geometry the scene already shows. For those methods, the
+poll-and-update loop, and how a module pulls data from its dependencies, see
 [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
 
 ## Diagnose a failed or surprising plan

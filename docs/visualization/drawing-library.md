@@ -74,9 +74,11 @@ styles, not field-by-field struct assembly.
 
 ## Run the app and push from a Go client
 
-Viam Visualization runs locally and renders in your browser. You start the app,
-then push visuals to it from Go with the client API. Reusing an entity ID updates
-that visual in place; a new ID adds another:
+Viam Visualization runs locally and renders in your browser. From the
+[motion-tools repository](https://github.com/viam-labs/motion-tools), run `make setup`
+once, then `make up` to start the app at `http://localhost:5173`. With the app running,
+push visuals to it from Go with the client API. Reusing an entity ID updates that visual
+in place; a new ID adds another:
 
 ```go
 import (
