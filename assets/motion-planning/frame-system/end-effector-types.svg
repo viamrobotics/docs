@@ -613,5 +613,5 @@
      text-anchor="middle"
      font-size="13"
      fill="#41506a"
-     id="text34">Every end effector frame is defined relative to the arm frame at the flange.</text>
+     id="text34">The tool frame sits where the tool acts, not at the arm flange.</text>
 </svg>
