@@ -12,6 +12,8 @@ phase_total: 6
 time_estimate: "15 minutes"
 prev: "/tutorials/pick-and-place/static-positions/"
 next: "/tutorials/pick-and-place/perception-guided-picking/"
+aliases:
+  - /tutorials/pick-and-place/local-python-script/
 languages: ["python"]
 ---
 
@@ -59,6 +61,7 @@ Open `starter-script.py` and find the `connect()` function. It mirrors the boile
 MACHINE_ADDRESS = "<paste from Connect tab>"
 API_KEY = "<paste from Connect tab>"
 API_KEY_ID = "<paste from Connect tab>"
+
 
 async def connect() -> RobotClient:
     return await RobotClient.at_address(

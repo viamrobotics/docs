@@ -74,6 +74,7 @@ A small illustrative sketch of that mapping, not a complete implementation:
 from typing import cast
 from viam.components.arm import Arm
 
+
 def reconfigure(self, config, dependencies):
     self.arm = cast(Arm, dependencies[Arm.get_resource_name("arm-1")])
 ```
@@ -93,6 +94,7 @@ Use this pattern exactly as written:
 ```python
 import os
 from viam.robot.client import RobotClient
+
 
 async def create_robot_client_from_module():
     opts = RobotClient.Options.with_api_key(
