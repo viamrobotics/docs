@@ -8,10 +8,10 @@ description: "Save the arm's key poses and configure WorldState obstacles, provi
 workshop: "pick-and-place"
 toc_hide: true
 phase: 3
-phase_total: 5
+phase_total: 6
 time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/configure-resources/"
-next: "/tutorials/pick-and-place/local-python-script/"
+next: "/tutorials/pick-and-place/control-the-robot-from-python/"
 languages: ["python"]
 ---
 

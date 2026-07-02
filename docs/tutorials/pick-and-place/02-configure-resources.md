@@ -8,7 +8,7 @@ description: "Tour the pre-configured resources, the color-detection vision pipe
 workshop: "pick-and-place"
 toc_hide: true
 phase: 2
-phase_total: 5
+phase_total: 6
 time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/platform-mental-model/"
 next: "/tutorials/pick-and-place/static-positions/"
