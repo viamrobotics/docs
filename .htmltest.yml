@@ -3,10 +3,16 @@ EnforceHTTPS: true
 IgnoreEmptyHref: true
 IgnoreInternalEmptyHash: true
 IgnoreDirectoryMissingTrailingSlash: false
-# rate limiting settings
-MaxConcurrency: 1
-RequestDelay: 1000ms
-Timeout: 30s
+# Rate limiting. htmltest has no per-request delay option, and MaxConcurrency /
+# RequestDelay / Timeout are NOT valid htmltest keys -- they were silently
+# ignored, so external links were being checked at the default concurrency of
+# 16, hitting each domain with a burst of simultaneous requests. That is what
+# caused the transient 403/429/timeout failures on otherwise-valid links (for
+# example docs.flutter.dev, apps.apple.com, ri.cmu.edu). Limit HTTP concurrency
+# to 1 so external links are checked one at a time and no single domain is hit
+# in a burst.
+HTTPConcurrencyLimit: 1
+ExternalTimeout: 30
 IgnoreURLs:
   # Valid links that automated checkers cannot verify: pkg.go.dev rate-limits
   # requests (HTTP 429); analog.com, fandom.com, cloud.google.com, and ebay.com
