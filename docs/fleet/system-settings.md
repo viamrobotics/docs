@@ -135,11 +135,12 @@ Forward operating system logs from the machine to Viam's cloud log viewer.
 
 In the machine settings card, open **Settings** and expand **System**:
 
-| Field                                        | Type    | Default | Description                                                             |
-| -------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------- |
-| `forward_system_logs`                        | string  | `""`    | Which system logs to forward. Empty string disables forwarding.         |
-| `logging_journald_runtime_max_use_megabytes` | integer | `512`   | Maximum temporary log storage in MB. Set to `-1` to disable the limit.  |
-| `logging_journald_system_max_use_megabytes`  | integer | `512`   | Maximum persistent log storage in MB. Set to `-1` to disable the limit. |
+| Field                                        | Type    | Default | Description                                                                                                                                                                                                                                                  |
+| -------------------------------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `forward_system_logs`                        | string  | `""`    | Which system logs to forward. Empty string disables forwarding.                                                                                                                                                                                              |
+| `logging_journald_storage`                   | string  | `""`    | Controls journal log persistence. Options: `"persistent"` (written to disk), `"volatile"` (RAM only, lost on reboot), `"auto"` (persistent if `/var/log/journal` exists), `"none"` (disable journal logging). Empty string means do not manage this setting. |
+| `logging_journald_runtime_max_use_megabytes` | integer | `512`   | Maximum temporary log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                       |
+| `logging_journald_system_max_use_megabytes`  | integer | `512`   | Maximum persistent log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                      |
 
 ### Log forwarding filter syntax
 
