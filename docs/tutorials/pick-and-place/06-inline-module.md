@@ -44,6 +44,9 @@ Two tiers, so you can stop at whichever one matches what you came here for:
 
 ## Open the inline module editor
 
+<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+<!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
+
 Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. It is not instant the way rerunning a local script is, so give it that minute rather than assuming a save failed.
 
 Open your machine's **CONFIGURE** tab and add a new module. Choose to create a local module with an inline editor rather than pulling one from the registry, and select Python as the language. The Viam app opens a code editor in your browser with a generated module skeleton, so there is no local project setup to do first.
@@ -55,6 +58,8 @@ The module finishes its cloud build and starts without errors in the **LOGS** ta
 {{< /checkpoint >}}
 
 ## Dependency injection
+
+<!-- ASSET P1 diagram-script-vs-module (DIAGRAM): from_robot(...) vs cast(..., dependencies[get_resource_name(...)]), identical resource names, transform_pose via in-module RobotClient -->
 
 A script builds its resource handles once, right after it connects, by calling `Arm.from_robot(machine, "arm-1")` and similar for each resource it needs. A module does not connect to itself, so it cannot call `from_robot` the same way. Instead, the module framework hands your module its dependencies.
 
@@ -76,6 +81,8 @@ def reconfigure(self, config, dependencies):
 Keep the rest of your `reconfigure` close to this shape: look up each resource your Phase 5 script used, cast it to its typed client, and store it on `self` so your pick-and-place logic can call it later.
 
 ## The frame system from inside a module
+
+<!-- ASSET P0 module-env-vars (UI+): module environment config with VIAM_API_KEY / VIAM_API_KEY_ID / VIAM_MACHINE_FQDN set, values REDACTED -->
 
 This is the one genuine change from Phase 5, so read it carefully even if you skim the rest of this phase.
 
@@ -120,6 +127,8 @@ The resource name, `"arm-1"`, is identical in both, and the same is true of `gri
 {{< /alert >}}
 
 ## do_command and a scheduled job
+
+<!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
 
 With dependencies wired up and `transform_pose` reachable, assemble your Phase 5 pick-and-place logic into a single method on the module, the same detection, transform, pose math, and motion calls, unchanged. What differs is how that method gets triggered.
 

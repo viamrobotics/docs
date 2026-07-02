@@ -21,6 +21,9 @@ In this phase you replace the fixed approach and grasp poses from Phase 4 with l
 
 ## Configure the vision pipeline
 
+<!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
+<!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
+
 Phase 2 previewed two vision services and asked you to hold off configuring them. Add both now, in order, since the second depends on the first.
 
 Add a **vision** service:
@@ -80,6 +83,8 @@ vision = VisionClient.from_robot(machine, "vision-segment")
 
 ## The frame system and transform_pose
 
+<!-- ASSET P0 diagram-frame-transform (DIAGRAM): block position in the cam-1 frame vs world, wrist camera on the arm -->
+
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
 The motion service does not think in camera coordinates. It plans in the `world` frame, the same frame your obstacle geometry in Phase 3 was defined against. To hand a detected pose to the motion service, you first have to express it in `world` instead of `cam-1`.
@@ -94,6 +99,8 @@ obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 `PoseInFrame` pairs a `Pose` with the name of the frame it is expressed in. `transform_pose` reads that source frame, reads the destination frame you passed as the second argument, and returns a new `PoseInFrame` with the same physical point re-expressed in `world` coordinates. You will wire this into the full detection code in the next section, once there is an actual `geometry.center` to transform.
 
 ## Detect from home (the wrist-camera rule)
+
+<!-- ASSET P0 diagram-detect-from-home (DIAGRAM): same block, two arm poses, two different world answers -->
 
 The `cam-1` frame is only a fixed thing to reason about when the arm is in a fixed pose. Because the camera is wrist-mounted, jogging any joint changes where `cam-1` sits in space, which changes what `transform_pose` reports for the exact same physical block. If you detect once with the arm near the bin and again with the arm hovering over the table, `transform_pose` gives two different world answers for two different arm positions, even if no block has moved at all.
 
@@ -130,6 +137,8 @@ Add a `print(obj_in_world.pose)` after the transform and run the script. Watch t
 {{< /checkpoint >}}
 
 ## Compute the approach and grasp poses
+
+<!-- ASSET P0 diagram-approach-grasp-offsets (DIAGRAM): block center; approach = +100mm; grasp = TCP one gripper-length (60mm) above; gripper-1 TCP vs arm end -->
 
 Before you turn `obj_in_world.pose` into a place to move the gripper, it matters exactly what `motion.move` moves. Two motions that sound similar are not the same thing:
 
@@ -173,6 +182,8 @@ grasp_pose = offset_pose(obj_in_world.pose, GRIPPER_LENGTH_MM)
 `GRIPPER_LENGTH_MM` is 60. If you used `APPROACH_MM` here by mistake, the gripper stops well above the block instead of at it; if you used zero, you would drive the TCP itself to the block center, sinking the fingers a full gripper-length past the block instead of closing them around it.
 
 ## Run the full pick loop
+
+<!-- ASSET P0 perception-pick (MOTION): full detect -> approach -> descend -> grab -> place cycle (milestone-two hero asset) -->
 
 With `approach_pose` and `grasp_pose` computed, assemble the full cycle:
 
@@ -231,6 +242,8 @@ This is a refinement, not a requirement for a working pick loop. Try the unconst
 {{< /alert >}}
 
 ## Debugging guide
+
+<!-- ASSET P1 3dscene-planned-path (UI): 3D scene during a move, arm path relative to the Phase 3 obstacles -->
 
 Work through these in order. The first one causes most of the rest. If you get stuck, compare your loop against the complete [`reference-solution.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/reference-solution.py) in the companion repo.
 
