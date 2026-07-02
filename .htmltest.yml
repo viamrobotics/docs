@@ -8,6 +8,11 @@ MaxConcurrency: 1
 RequestDelay: 1000ms
 Timeout: 30s
 IgnoreURLs:
+  # Valid links that automated checkers cannot verify: pkg.go.dev rate-limits
+  # requests (HTTP 429), and analog.com / fandom.com block non-browser clients.
+  - "pkg.go.dev"
+  - "analog.com"
+  - "fandom.com"
   - "example.com"
   - "^/misc/js/script.js$"
   - "linkedin.com"

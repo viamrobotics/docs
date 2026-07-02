@@ -31,7 +31,7 @@ Follow this guide to create a fresh virtual environment on your working computer
 
    The expected output is the pip version number.
 
-2. [Install `virtualenv` using `pip`](https://virtualenv.pypa.io/en/latest/installation.html#via-pip):
+2. [Install `virtualenv` using `pip`](https://virtualenv.pypa.io/en/latest/how-to/install.html):
 
    ```sh {class="command-line" data-prompt="$"}
    python3 -m pip install --user virtualenv
