@@ -15,7 +15,7 @@ next: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
 ---
 
-In this phase you replace the fixed grasp pose from Phase 4 with live perception: the vision service detects a block, the frame system transforms its position into world space, and the motion service plans a collision-free pick.
+In this phase you replace the fixed approach and grasp poses from Phase 4 with live perception: the vision service detects a block, the frame system transforms its position into world space, and the motion service plans a collision-free pick.
 
 {{< workshop-phases >}}
 
@@ -232,7 +232,7 @@ This is a refinement, not a requirement for a working pick loop. Try the unconst
 
 ## Debugging guide
 
-Work through these in order. The first one causes most of the rest.
+Work through these in order. The first one causes most of the rest. If you get stuck, compare your loop against the complete [`reference-solution.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/reference-solution.py) in the companion repo.
 
 - **Did you detect from `home-pose`?** This is the first thing to check for nearly every perception symptom below. If the `await home.set_position(2)` guard is missing before a `get_object_point_clouds` call, or if you added a second detection somewhere that skips it, every downstream pose is computed against the wrong camera position.
 - **No objects detected.** Open the **CONTROL** tab and run the `vision-segment` card by hand while a block sits in view. If that also returns nothing, check the `shape-detector` card on its own: a detector that finds nothing means the block is out of frame, or lighting has changed enough to affect the shape detection. If `shape-detector` finds the block but `vision-segment` does not, check that a block is close enough and clearly separated from the table surface for the depth fusion step to segment it.
