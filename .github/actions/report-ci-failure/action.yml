@@ -1,0 +1,69 @@
+name: Report CI failure
+description: >-
+  Open a deduplicated GitHub issue when a scheduled job fails, so a triage
+  routine (or a maintainer) can pick it up. If an open issue for the same job
+  already exists, add a comment with the new run link instead of opening a
+  duplicate.
+
+inputs:
+  job-name:
+    description: Human-readable name of the failing job (used in the issue title).
+    required: true
+  label:
+    description: Label applied to the tracking issue.
+    required: false
+    default: ci-failure
+
+runs:
+  using: composite
+  steps:
+    - name: Open or update failure issue
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        JOB_NAME: ${{ inputs.job-name }}
+        ISSUE_LABEL: ${{ inputs.label }}
+      run: |
+        set -euo pipefail
+
+        title="CI failure: ${JOB_NAME}"
+        run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+        # Ensure the tracking label exists (ignore error if it already does).
+        gh label create "${ISSUE_LABEL}" \
+          --repo "${GITHUB_REPOSITORY}" \
+          --color B60205 \
+          --description "Failing scheduled CI job for triage" 2>/dev/null || true
+
+        # Find an existing open issue with this exact title and label.
+        existing="$(gh issue list \
+          --repo "${GITHUB_REPOSITORY}" \
+          --state open \
+          --label "${ISSUE_LABEL}" \
+          --search "in:title \"${title}\"" \
+          --json number,title \
+          --jq "map(select(.title == \"${title}\")) | .[0].number // empty")"
+
+        if [ -n "${existing}" ]; then
+          echo "Existing issue #${existing} found; adding a comment."
+          gh issue comment "${existing}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --body "Job **${JOB_NAME}** failed again. Run: ${run_url}"
+        else
+          echo "No open issue found; creating one."
+          body="$(printf '%s\n' \
+            "The scheduled job **${JOB_NAME}** failed." \
+            "" \
+            "- Workflow: \`${GITHUB_WORKFLOW}\`" \
+            "- Failing run: ${run_url}" \
+            "" \
+            "Please investigate: open a fix PR if the cause is clear, otherwise" \
+            "comment on this issue explaining what is needed. This issue is" \
+            "created automatically on failure and reused (commented on) for" \
+            "repeat failures.")"
+          gh issue create \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "${title}" \
+            --label "${ISSUE_LABEL}" \
+            --body "${body}"
+        fi

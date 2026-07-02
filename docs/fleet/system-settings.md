@@ -112,22 +112,22 @@ Control automatic operating system package updates on the machine.
 
 In the machine settings card, open **Settings** and expand **System**. Set `os_auto_upgrade_type`:
 
-| Value                                                       | Description                                                                                                                             |
-| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `"all"`                                                     | Install all available OS package updates using the OS's built-in upgrade schedule. Debian only.                                         |
-| `"security"`                                                | Install security updates only using the OS's built-in upgrade schedule. Debian only.                                                    |
-| <code style="white-space: nowrap">"managed-all"</code>      | Install all available OS package updates on a schedule controlled by `viam-agent`. Works on both apt-based and RPM-based distributions. |
-| <code style="white-space: nowrap">"managed-security"</code> | Install security updates only on a schedule controlled by `viam-agent`. Works on both apt-based and RPM-based distributions.            |
-| `"disable"`                                                 | Disable automatic OS updates.                                                                                                           |
-| `""` (empty)                                                | Do not change the system's current update settings. This is the default.                                                                |
+| Value                                                       | Description                                                                                                                                  |
+| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `"all"`                                                     | Install all available OS package updates using the OS's built-in upgrade schedule. Debian only.                                              |
+| `"security"`                                                | Install security updates only using the OS's built-in upgrade schedule. Debian only.                                                         |
+| <code style="white-space: nowrap">"managed-all"</code>      | Install all available OS package updates on a schedule controlled by `viam-agent`. Works on apt-based, RPM-based, and Windows distributions. |
+| <code style="white-space: nowrap">"managed-security"</code> | Install security updates only on a schedule controlled by `viam-agent`. Works on apt-based, RPM-based, and Windows distributions.            |
+| `"disable"`                                                 | Disable automatic OS updates.                                                                                                                |
+| `""` (empty)                                                | Do not change the system's current update settings. This is the default.                                                                     |
 
-Managed modes work on apt-based distributions (Debian, Ubuntu, Raspberry Pi OS) and RPM-based distributions (Fedora, RHEL 7+, Rocky Linux, AlmaLinux, CentOS 7).
+Managed modes work on apt-based distributions (Debian, Ubuntu, Raspberry Pi OS), RPM-based distributions (Fedora, RHEL 7+, Rocky Linux, AlmaLinux, CentOS 7), and Windows (using the PSWindowsUpdate PowerShell module).
 
 When using a managed mode (`"managed-all"` or `"managed-security"`), you can also set `os_managed_upgrade_interval_hours` to control how often `viam-agent` checks for and installs updates. The default is `24` hours. The minimum value is `1` hour.
 
 If an upgrade in a managed mode requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
 
-The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu or an RPM-based distribution, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
+The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 
 ## Configure OS log forwarding
 
@@ -135,11 +135,12 @@ Forward operating system logs from the machine to Viam's cloud log viewer.
 
 In the machine settings card, open **Settings** and expand **System**:
 
-| Field                                        | Type    | Default | Description                                                             |
-| -------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------- |
-| `forward_system_logs`                        | string  | `""`    | Which system logs to forward. Empty string disables forwarding.         |
-| `logging_journald_runtime_max_use_megabytes` | integer | `512`   | Maximum temporary log storage in MB. Set to `-1` to disable the limit.  |
-| `logging_journald_system_max_use_megabytes`  | integer | `512`   | Maximum persistent log storage in MB. Set to `-1` to disable the limit. |
+| Field                                        | Type    | Default        | Description                                                                                                                                                                                                                                                                                                                                  |
+| -------------------------------------------- | ------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `forward_system_logs`                        | string  | `""`           | Which system logs to forward. Empty string disables forwarding.                                                                                                                                                                                                                                                                              |
+| `logging_journald_storage`                   | string  | `"persistent"` | Controls how system logs (`journald`) are stored locally. Options: `"persistent"` (store on disk in `/var/log/journal`, persists across reboots), `"volatile"` (store in memory in `/run/log/journal`, deleted on reboot), `"auto"` (persistent if `/var/log/journal` exists, otherwise volatile), `"none"` (do not store any logs locally). |
+| `logging_journald_runtime_max_use_megabytes` | integer | `512`          | Maximum temporary log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                                                                                                       |
+| `logging_journald_system_max_use_megabytes`  | integer | `512`          | Maximum persistent log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                                                                                                      |
 
 ### Log forwarding filter syntax
 

@@ -93,10 +93,9 @@ if __name__ == "__main__":
 ```
 
 Replace `YOUR-API-KEY`, `YOUR-API-KEY-ID`, and `YOUR-MACHINE-ADDRESS`
-with the values from the **CONNECT** tab. Then run:
+with the values from the **CONNECT** tab. Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/). Then run:
 
 ```sh
-pip install viam-sdk
 python first_arm.py
 ```
 

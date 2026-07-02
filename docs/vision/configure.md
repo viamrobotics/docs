@@ -155,7 +155,7 @@ Bounding boxes or classification labels should appear within a second or two. If
 
 If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
 
-From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response is three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime.
+From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response includes three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime. If a default camera is configured, the response also includes its name.
 
 ## 7. Complete configuration
 
@@ -211,9 +211,7 @@ Verify end-to-end by pulling a detection from your own code.
 
 Install the SDK if you have not already:
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}

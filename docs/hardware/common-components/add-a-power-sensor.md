@@ -90,9 +90,7 @@ When you run the code below, you'll see voltage, current, and power readings. Ve
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `power_sensor_test.py`:
 

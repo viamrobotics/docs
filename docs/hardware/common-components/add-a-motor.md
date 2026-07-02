@@ -140,9 +140,7 @@ Without an encoder, position readings will be estimates based on time and max RP
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `motor_test.py`:
 

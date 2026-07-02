@@ -182,7 +182,7 @@ tar -czvf dist/archive.tar.gz ./dist/main
 
 {{< /expand >}}
 
-You can test this build configuration by running the Viam CLI's [`build local` command](/cli/#using-the-build-subcommand) on your development machine:
+You can test this build configuration by running the Viam CLI's [`build local` command](/cli/reference/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
@@ -232,9 +232,9 @@ When you are ready to test the action, uncomment `if: github.event_name == 'rele
 
 For guidance on configuring the other parameters, see the documentation for each:
 
-- [`org-id`](/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-- [`platform`](/cli/#using-the---platform-argument): You can only upload one platform at a time.
-- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): See [Using the --version argument](/cli/#using-the---version-argument) for more details on the types of versioning supported.
+- [`org-id`](/cli/reference/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+- [`platform`](/cli/reference/#using-the---platform-argument): You can only upload one platform at a time.
+- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): See [Using the --version argument](/cli/reference/#using-the---version-argument) for more details on the types of versioning supported.
 
 For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
@@ -246,7 +246,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
   {{% /tab %}}
   {{< /tabs >}}
 
-3. [Create an organization API key](/cli/#create-an-organization-api-key) with owner role:
+3. [Create an organization API key](/cli/reference/#organizations-api-key-create) with owner role:
 
    ```sh {class="command-line" data-prompt="$"}
    viam organizations api-key create --org-id <org-id> --name <key-name>
@@ -308,9 +308,9 @@ Use the [Viam CLI](/cli/) to manually update your module:
 
    For example, `viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz`.
 
-When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
+When you `upload` a module, the command performs basic [validation](/cli/reference/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/cli/#module).
+For more information, see the [`viam module` command](/cli/reference/#module).
 
 ## Pin a module to a specific version
 
@@ -382,7 +382,7 @@ To change the visibility:
      Only organization members can edit the module.
      Not listed in the registry for users outside of your organization.
 
-You can also edit the visibility by editing the [meta.json](/build-modules/module-reference/) file and then running the following [CLI](/cli/#module) command:
+You can also edit the visibility by editing the [meta.json](/build-modules/module-reference/) file and then running the following [CLI](/cli/reference/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update

@@ -165,9 +165,7 @@ When you run the code below, it saves an image file to your current directory. C
 
 Install the SDK if you haven't already:
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `camera_test.py`:
 

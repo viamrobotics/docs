@@ -75,9 +75,7 @@ When you run the code below, the button's Push method fires. With a physical but
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `button_test.py`:
 
