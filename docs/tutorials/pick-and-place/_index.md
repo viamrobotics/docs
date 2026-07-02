@@ -3,7 +3,7 @@ title: "Vision-Guided Pick-and-Place with the xArm6"
 linkTitle: "Pick-and-Place Workshop"
 type: "docs"
 weight: 50
-description: "Build a robot that detects blocks by shape and sorts them into a bin with computer vision and motion planning, from static poses to a Python perception loop to an optional module."
+description: "Build a vision-guided robot that detects blocks by shape and sorts them into a bin with motion planning, from static arm poses to a Python perception loop."
 authors: []
 level: "Intermediate"
 languages: ["python"]
