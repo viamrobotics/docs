@@ -1,146 +1,117 @@
 ---
 linkTitle: "Debug a motion plan"
-title: "Visualize and debug a motion plan"
+title: "Debug a motion plan"
 weight: 45
 layout: "docs"
 type: "docs"
-description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path, then compare it against obstacles and reach to debug failures."
+description: "Use the 3D scene to inspect the frame system and obstacle geometry behind a motion plan that failed or produced unexpected results."
 ---
 
-The **3D SCENE** tab shows your configured frame system and live component poses. To
-also see a motion plan, the trajectory the arm will follow, the goals it aims for, and
-how that path relates to your obstacles, you publish the plan as **custom visuals**
-through a world state store service. The scene then renders the path you can otherwise
-only read as numbers.
+When a motion plan fails with a collision error or takes a path that does not look
+right, start in the **3D SCENE** tab. It shows the world the planner sees: configured
+frame positions, collision geometries, and the arm's current pose. Most motion planning
+failures come down to a few problems you can spot in 3D before writing any code.
 
-This page shows how to turn a plan into transforms the scene can draw, and how to
-use the rendered path to debug a plan that failed or moved unexpectedly.
+The checks below find those problems by eye. To render the plan's trajectory itself, the
+path the arm takes from start to goal, see
+[Visualize a motion plan](/motion-planning/3d-scene/visualize-a-motion-plan/).
 
-## Why publish the plan as custom visuals
+## Prerequisites
 
-A plan is a sequence of joint configurations. Read as numbers it tells you
-little; rendered in the scene it tells you immediately whether the path clips an
-obstacle, swings wide, or aims at a target outside the arm's reach. Publishing
-the plan as world state store transforms puts the trajectory and goals in the
-same 3D view as the frames and obstacle geometry the planner used, so you can see
-the path and the world together.
+- A machine with an arm or gantry configured and at least one frame defined.
+- A motion plan that is failing or producing unexpected results.
 
-## Convert the trajectory into poses
+## Diagnose the problem
 
-A plan's `Trajectory` is a sequence of joint configurations
-(`FrameSystemInputs`), one per step. The scene places geometry by pose, so
-convert each step into end-effector poses with the frame system. `ComputePoses`
-takes a configuration and returns the pose of each frame:
+### 1. Open the 3D SCENE tab
 
-```go
-for i, step := range plan.Trajectory() {
-    poses, err := step.ComputePoses(fs)
-    if err != nil {
-        return err
-    }
-    gripperPose := poses["my-gripper"].Pose()
-    // Place a marker for this step at gripperPose (next section).
-    _ = i
-    _ = gripperPose
-}
-```
+Navigate to your machine in the [Viam app](https://app.viam.com) and
+click the **3D SCENE** tab. The scene loads your current frame system
+configuration.
 
-Each `step` is the arm's configuration at that point in the trajectory, and
-`poses["my-gripper"]` is where the gripper sits in that configuration.
+If your machine is online, the scene connects for live pose data.
+If your machine is offline, the scene still renders the configured
+frame positions.
 
-## Build transforms for the plan
+### 2. Check frame positions
 
-With a pose per step, build the visuals with the `draw` library: a marker per
-trajectory step and a marker for each goal. Give each a stable UUID so the scene
-can update them when you re-plan.
+In the **World** panel in the upper-left, expand the tree and click
+each component in turn. The Details panel on the right shows the
+selected entity's **world position** and **world orientation**, plus
+editable **local position** and **local orientation** relative to the
+parent frame. Compare these values to your physical measurements.
 
-```go
-import (
-    "github.com/viam-labs/motion-tools/draw"
-    "go.viam.com/rdk/spatialmath"
-)
+Three common mismatches to look for:
 
-func stepMarker(i int, pose spatialmath.Pose) (*commonpb.Transform, error) {
-    id := fmt.Sprintf("step-%d", i)
-    // Build the sphere at the origin; WithPose below places it at the step pose.
-    sphere, err := spatialmath.NewSphere(spatialmath.NewZeroPose(), 5, id)
-    if err != nil {
-        return nil, err
-    }
-    drawn, err := draw.NewDrawnGeometry(sphere, draw.WithGeometryColor(stepColor))
-    if err != nil {
-        return nil, err
-    }
-    // WithID derives a stable UUID from the string, so re-planning updates each
-    // marker in place instead of drawing a duplicate.
-    return drawn.Draw(id, draw.WithID(id), draw.WithPose(pose))
-}
+- **Wrong location**: translation values in the frame configuration do not match the physical setup. Compare **local position** (mm) to your physical measurements.
+- **Wrong orientation**: the arm base is rotated 90 degrees, or a camera points the wrong direction. Check **local orientation** in the Details panel.
+- **Wrong parent**: the component is attached to the wrong parent, which places it in an unexpected part of the scene. Check the **parent frame** field in the Details panel.
 
-// goalMarker draws a destination pose. Unlike the trajectory poses, a goal pose is
-// not a ComputePoses output: it is the destination you passed to the planner.
-func goalMarker(i int, goalPose spatialmath.Pose) (*commonpb.Transform, error) {
-    id := fmt.Sprintf("goal-%d", i)
-    sphere, err := spatialmath.NewSphere(spatialmath.NewZeroPose(), 8, id)
-    if err != nil {
-        return nil, err
-    }
-    drawn, err := draw.NewDrawnGeometry(sphere, draw.WithGeometryColor(goalColor))
-    if err != nil {
-        return nil, err
-    }
-    return drawn.Draw(id, draw.WithID(id), draw.WithPose(goalPose))
-}
-```
+### 3. Check obstacle geometry
 
-The trajectory poses come from `ComputePoses`, but the goal pose is the destination
-you passed to the planner. `goalMarker` draws it with a distinct color, so the target
-stands out from the trajectory leading to it.
+Obstacles appear as translucent shapes in the scene and as child rows
+under their parent frame in the **World** panel. Select each obstacle
+from the tree to see its **geometry** type and **dimensions** in the
+Details panel.
 
-## Serve the transforms to the scene
+Verify that:
 
-Serve the transforms through a world state store service so the **3D SCENE** tab
-renders them. Return your step and goal markers from the service's `ListUUIDs`,
-`GetTransform`, and `StreamTransformChanges` methods, and the plan streams in alongside
-the frames and obstacle geometry the scene already shows. For those methods, the
-poll-and-update loop, and how a module pulls data from its dependencies, see
-[Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
+- Every physical obstacle in your workspace has a corresponding
+  geometry in the scene.
+- Each geometry covers the actual physical object. If a box geometry
+  is too small, the planner will find paths that clip the real
+  obstacle.
+- Geometries are positioned correctly. A table surface defined at
+  `z: 0` when the arm base is at `z: 500` will not protect against
+  table collisions.
 
-## Diagnose a failed or surprising plan
-
-With the plan rendered, debugging becomes visual. Compare the trajectory against
-the rest of the scene:
-
-- **Where does the path collide?** If a step marker passes through an obstacle
-  geometry, that is where the planner reports a collision. Check whether the
-  obstacle is real or an oversized geometry.
-- **Does the goal fall outside the arm's reach?** If a goal marker sits far from
-  any reachable arm configuration, the goal is out of reach. Move the goal or
-  check the frame system.
-- **Why the detour?** An unexpected route usually means an obstacle is forcing
-  the planner around it. Look for stray geometry between the start and goal.
-
-For checking the obstacle geometry itself, separate from the plan, see
+If obstacles are missing or misplaced, see
 [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
 
-## When to visualize versus inspect or verify
+### 4. Look for impossible targets
 
-The 3D scene serves three distinct purposes, and it helps to keep them straight:
+If the motion plan target is outside the arm's reach or inside an
+obstacle, the planner cannot find a path.
 
-- **Visualize a plan** (this page): publish the trajectory and goals as custom
-  visuals to see the path in context.
-- **Inspect static frames and geometry**: use the stock scene to check frame
-  positions and obstacle coverage with no plan involved.
-- **Check feasibility**: use `armplanning.PlanMotion` to confirm a goal is
-  reachable and a path exists before you visualize or run anything.
+In the **World** panel, expand the arm and select its tip link or the
+gripper frame (whichever is configured as the motion target). Read the
+**world position** and compare it to the target pose your code
+commanded. Then mentally place the target: is it inside an obstacle
+geometry? Is it further than the arm can reach from its base?
 
-Visualization shows you _what the path looks like_; static inspection shows you
-_what the world looks like_; feasibility checking tells you _whether a plan
-exists at all_. Reach for the one that matches the question you are asking.
+If the target is inside an obstacle geometry, either move the target
+or adjust the obstacle definition.
+
+### 5. Check for self-collision geometry
+
+Some arm models include collision geometry for each link. If a motion
+plan fails with a self-collision error, inspect the arm's link
+geometries for overlap in the current configuration.
+
+If the arm renders without collision geometry, the feature may be
+disabled: open **Settings → Scene → Arm Models** and verify that the
+rendering mode includes colliders.
+
+Self-collisions can happen when wrist joints are commanded to
+positions that bring adjacent links too close together. If the
+overlap is a modeling artifact rather than a real collision, allow
+the frame pair with
+[`CollisionSpecification`](/motion-planning/obstacles/allow-frame-collisions/).
+
+## Common causes of motion plan failures
+
+| Symptom                       | Likely cause                                  | What to check in 3D SCENE                                                  |
+| ----------------------------- | --------------------------------------------- | -------------------------------------------------------------------------- |
+| "no valid path found"         | Target unreachable or blocked by obstacles    | Is the target inside an obstacle? Is it within the arm's reach?            |
+| Collision error               | Obstacle geometry intersects the planned path | Are obstacles positioned correctly? Are they the right size?               |
+| Path goes through the table   | Table obstacle missing or too small           | Is there a geometry covering the table surface? Does it extend far enough? |
+| Arm takes an unexpected route | Obstacles force the planner to go around      | Are there obstacles you did not intend to add? Is geometry oversized?      |
+| Self-collision error          | Arm links collide with each other             | Do link geometries overlap in the failing configuration?                   |
 
 ## What's next
 
-- [Publish visuals from a module](/visualization/publish-visuals-from-a-module/):
-  the world state store service that serves these transforms.
+- [Visualize a motion plan](/motion-planning/3d-scene/visualize-a-motion-plan/):
+  render the plan's trajectory and goals as custom visuals when a visual check is not enough.
 - [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/):
   check obstacle geometry against the real workspace.
 - [How motion planning works](/motion-planning/how-planning-works/):

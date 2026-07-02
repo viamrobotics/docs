@@ -29,7 +29,7 @@ point clouds, and custom visuals a module publishes at runtime.
 {{< cards >}}
 {{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
 {{% card link="/visualization/publish-visuals-from-a-module/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/debug-motion-plan/" noimage="true" %}}
+{{% card link="/motion-planning/3d-scene/visualize-a-motion-plan/" noimage="true" %}}
 {{< /cards >}}
 
 ## Viam Visualization
