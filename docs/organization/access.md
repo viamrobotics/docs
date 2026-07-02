@@ -41,7 +41,7 @@ You must have the **Owner** role to be able to grant permissions.
 
    For more information on roles and the permissions they provide, see [Manage access with Role-Based Access Control](/organization/rbac/).
 
-8. Click **invite**.
+8. Click **Send invitation**.
 
    {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="shadow" declaredimensions=true alt="Limit user access">}}
 
