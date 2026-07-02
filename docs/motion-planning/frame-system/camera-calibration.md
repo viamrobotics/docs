@@ -236,7 +236,7 @@ working distance of 500-1000 mm, your calibration is good.
 For a visual sanity check, open the [3D SCENE tab](/motion-planning/3d-scene/).
 The camera frame should sit in the correct position and orientation relative
 to the arm, and any visible obstacles should appear in plausible locations.
-See [Calibrate frame offsets](/motion-planning/3d-scene/calibrate-frame-offsets/)
+See [Measuring between frames](/visualization/3d-scene-tools/measuring-between-frames/)
 for the full workflow.
 
 ## Troubleshooting

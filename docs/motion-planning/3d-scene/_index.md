@@ -40,7 +40,7 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 **Dashboard toolbar** (top-center): Visible buttons, left to right:
 
 - **Orthographic / Perspective** toggle — switch between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
-- **Add frames** — opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Edit frames visually](/motion-planning/3d-scene/edit-frames/).
+- **Add frames** — opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene-tools/editing-frames-visually/).
 - **Measurement** (ruler icon) — activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler) — toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **Logs** — shows a count badge for errors/warnings from the scene renderer.
@@ -100,10 +100,7 @@ This is useful for comparing point clouds that should align (a registered scan a
 ## How-to guides
 
 {{< cards >}}
-{{% card link="/motion-planning/3d-scene/calibrate-frame-offsets/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/verify-point-cloud-alignment/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/set-up-obstacle-avoidance/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/debug-motion-plan/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/visualize-a-motion-plan/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/edit-frames/" noimage="true" %}}
 {{< /cards >}}

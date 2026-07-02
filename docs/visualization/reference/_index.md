@@ -11,5 +11,6 @@ description: "Reference material for the types and services behind the 3D scene 
 Reference pages for the types and services that back the 3D scene and custom visuals.
 
 {{< cards >}}
+{{% card link="/reference/apis/services/world-state-store/" noimage="true" %}}
 {{% card link="/visualization/reference/world-state/" noimage="true" %}}
 {{< /cards >}}

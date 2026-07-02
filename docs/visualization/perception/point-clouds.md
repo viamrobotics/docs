@@ -40,4 +40,4 @@ To compare two point clouds that should align, such as a scan and a transformed 
 them with **HoverLink**: select one point cloud, add a HoverLink relationship to the other,
 and hovering a point in one highlights the matching point in the other. For a full alignment
 walkthrough, see
-[Verify point cloud alignment](/motion-planning/3d-scene/verify-point-cloud-alignment/).
+[Verify point cloud alignment](/visualization/perception/verify-point-cloud-alignment/).

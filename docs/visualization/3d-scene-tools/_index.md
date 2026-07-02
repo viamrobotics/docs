@@ -12,5 +12,7 @@ The 3D scene includes tools for reading live data and adjusting your frame syste
 leaving the view.
 
 {{< cards >}}
+{{% card link="/visualization/3d-scene-tools/measuring-between-frames/" noimage="true" %}}
+{{% card link="/visualization/3d-scene-tools/editing-frames-visually/" noimage="true" %}}
 {{% card link="/visualization/3d-scene-tools/3d-scene-widgets/" noimage="true" %}}
 {{< /cards >}}

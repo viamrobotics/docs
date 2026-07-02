@@ -14,4 +14,5 @@ your machine senses in the same space as the components that sense it.
 {{< cards >}}
 {{% card link="/visualization/perception/point-clouds/" noimage="true" %}}
 {{% card link="/visualization/perception/cameras/" noimage="true" %}}
+{{% card link="/visualization/perception/verify-point-cloud-alignment/" noimage="true" %}}
 {{< /cards >}}
