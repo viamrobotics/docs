@@ -8,7 +8,7 @@ description: "Understand how the Viam cloud, agent, and server fit together befo
 workshop: "pick-and-place"
 toc_hide: true
 phase: 1
-phase_total: 5
+phase_total: 6
 time_estimate: "15 minutes"
 next: "/tutorials/pick-and-place/configure-resources/"
 languages: ["python"]

@@ -1,20 +1,20 @@
 ---
-title: "Phase 5: Inline module"
-linkTitle: "5. Inline module"
+title: "Phase 6: Inline module"
+linkTitle: "6. Inline module"
 type: "docs"
 slug: "inline-module"
-weight: 50
+weight: 60
 description: "Optional: package your working script as an inline module that runs on the robot."
 workshop: "pick-and-place"
 toc_hide: true
-phase: 5
-phase_total: 5
-time_estimate: "15 minutes"
-prev: "/tutorials/pick-and-place/local-python-script/"
+phase: 6
+phase_total: 6
+time_estimate: "20 minutes"
+prev: "/tutorials/pick-and-place/perception-guided-picking/"
 languages: ["python"]
 ---
 
-This phase is optional: if you want the pick-and-sort cycle to run on the robot without a laptop connection, you can package your Phase 4 script as an inline module using the Viam app's built-in editor.
+This phase is optional: if you want the pick-and-sort cycle to run on the robot without a laptop connection, you can package your Phase 5 script as an inline module using the Viam app's built-in editor.
 
 {{< workshop-phases >}}
 

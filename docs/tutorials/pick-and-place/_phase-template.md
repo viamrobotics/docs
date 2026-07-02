@@ -8,7 +8,7 @@ description: "One-sentence description of this phase."
 workshop: "pick-and-place"
 toc_hide: true
 phase: 0
-phase_total: 5
+phase_total: 6
 time_estimate: "NN minutes"
 prev: "/tutorials/pick-and-place/previous-slug/"
 next: "/tutorials/pick-and-place/next-slug/"
