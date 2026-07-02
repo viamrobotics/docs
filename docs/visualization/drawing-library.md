@@ -1,13 +1,13 @@
 ---
 linkTitle: "Drawing library"
-title: "The drawing library and Viam visualization"
+title: "The drawing library and Viam Visualization"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Use the draw library to build visuals, and run the standalone Viam Visualization app to preview spatial data from a Go client."
+description: "Use the draw library to build visuals, and run the standalone Viam visualizer to preview spatial data from a Go client."
 ---
 
-Viam Visualization is a standalone 3D app you run yourself. Unlike the **3D
+Viam Visualization is a standalone 3D visualizer you run yourself. Unlike the **3D
 SCENE** tab in the Viam app, which renders a configured machine's frames,
 geometry, point clouds, and published visuals, Viam Visualization is a separate tool for
 monitoring, testing, and debugging spatial data: you start it locally and push
@@ -16,7 +16,7 @@ It shares the same `draw` library used to build world state store transforms, so
 the visuals you construct are the same either way.
 
 This page covers what the drawing library is, the primitives it exposes, and how
-to run the app and drive it from a Go client.
+to run the visualizer and drive it from a Go client.
 
 ## Viam Visualization versus the 3D scene tab
 
@@ -25,7 +25,7 @@ The two render 3D visuals, but they are different tools for different moments:
 - The **3D SCENE tab** lives in the Viam app and renders a configured machine:
   its frames, geometry, point clouds, and the custom visuals published to its
   world state store service. It is the in-app view of a machine.
-- **Viam Visualization** is a standalone app you run on your own machine and push
+- **Viam Visualization** is a standalone visualizer you run on your own machine and push
   to from a client. It is for previewing and debugging spatial data while you
   develop, without deploying a module or opening the Viam app.
 
@@ -72,7 +72,7 @@ shape := draw.NewShape(center, "approach", draw.WithArrows(arrows))
 Because the library owns the proto details, you work in terms of shapes and
 styles, not field-by-field struct assembly.
 
-## Run the app and push from a Go client
+## Run the visualizer and push from a Go client
 
 Viam Visualization runs locally and renders in your browser. From the
 [motion-tools repository](https://github.com/viam-labs/motion-tools), run `make setup`

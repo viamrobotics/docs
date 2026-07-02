@@ -5,7 +5,7 @@ weight: 90
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Reference material for the types and services behind Viam visualization."
+description: "Reference material for the types and services behind the 3D scene and custom visuals."
 ---
 
 Reference pages for the types and services that back the 3D scene and custom visuals.

@@ -206,7 +206,7 @@ func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstate
 
 - [Visuals and collisions](/visualization/visuals-and-collisions/):
   what a transform contains, and which geometry the planner collision-checks.
-- [The drawing library and Viam visualization](/visualization/drawing-library/):
-  the `draw` primitives and the standalone visualizer app.
+- [The drawing library and Viam Visualization](/visualization/drawing-library/):
+  the `draw` primitives and the standalone visualizer.
 - [Frame system](/motion-planning/frame-system/): position the transforms you
   publish.

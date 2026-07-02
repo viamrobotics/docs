@@ -4,16 +4,16 @@ title: "Visualization"
 weight: 1
 layout: "docs"
 type: "docs"
-description: "Ways to visualize a Viam machine: the 3D scene, the standalone Viam Visualization app, your own apps, and time-series dashboards."
+description: "Ways to visualize a Viam machine: the 3D scene, the standalone Viam visualizer, custom apps you build, and time-series dashboards."
 ---
 
 There are several approaches to visualizing information in Viam. For things like motion,
 frames, robot state, collisions, and live perception data, you can use the 3D scene view in
-the Viam web app or the standalone Viam Visualization app. You can also read this data from
-components with a Viam SDK and present it in an app you build, which runs in a browser, on a
-phone, or on a server. For time series data, services and modules push readings to the
-cloud, where the Viam web app's Teleop workspaces and dashboards show live information across
-a machine or fleet.
+the Viam app, or Viam Visualization, a standalone visualizer you run yourself. You can also
+read this data from components with a Viam SDK and present it in a custom user interface you
+build, which runs in a browser, on a phone, or on a server. For time series data, services
+and modules push readings to the cloud, where the Viam app's Teleop workspaces and dashboards
+show live information across a machine or fleet.
 
 ## The 3D scene
 
@@ -34,9 +34,9 @@ point clouds, and custom visuals a module publishes at runtime.
 
 ## Viam Visualization
 
-Viam Visualization is a standalone 3D app you run yourself to preview and debug spatial
-data from a Go client. It shares the same `draw` library as the in-app 3D scene, so the
-visuals you build work either way.
+Viam Visualization is a standalone 3D visualizer you run yourself to preview and debug
+spatial data from a Go client. It shares the same `draw` library as the in-app 3D scene, so
+the visuals you build work either way.
 
 - Use it while developing, to preview spatial data such as a point cloud, detections, or a
   planned path straight from a script or test.
@@ -47,9 +47,9 @@ visuals you build work either way.
 {{% card link="/visualization/drawing-library/" noimage="true" %}}
 {{< /cards >}}
 
-## Viam apps
+## Custom apps
 
-A Viam app uses a Viam SDK to read your machine's data and present it however you design.
+A custom app uses a Viam SDK to read your machine's data and present it however you design.
 It runs outside the machine, in a browser, on a phone, or on a server, so you can build a
 custom dashboard, an operator console, or a fleet view.
 
