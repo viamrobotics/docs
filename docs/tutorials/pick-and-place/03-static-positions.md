@@ -38,6 +38,8 @@ The table below shows what each step in the static sequence validates:
 
 ## The key poses
 
+<!-- ASSET P0 diagram-five-poses (DIAGRAM): the five poses in space (home/approach/grasp/travel/place) with the motion path. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
 Each saved pose has a specific role in the sequence:
 
 | Pose          | Purpose                                                                                   |
@@ -51,6 +53,9 @@ Each saved pose has a specific role in the sequence:
 The approach pose and the grasp pose share the same x and y coordinates. The only motion between them is straight down the z axis, so if the arm drifts sideways during the descent you have a frame or calibration issue to investigate.
 
 ## Save each pose with the arm position saver
+
+<!-- ASSET P0 control-armsaver-switch (UI+): arm-position-saver switch card with position 1 = save and 2 = execute annotated -->
+<!-- ASSET P1 configure-duplicate-feature (UI+): the resource Duplicate control highlighted -->
 
 You configure pose saving by hand, the same way you configured the arm, gripper, and camera in Phase 2.
 
@@ -97,6 +102,8 @@ Obstacles are not a separate WorldState file you import. Each obstacle is an `er
 
 ### Measure your workspace
 
+<!-- ASSET P1 photo-measure-workspace (PHOTO): tape measure on the table / measuring a boundary -->
+
 Before you can fill in the obstacle geometry, measure your own table and workspace boundary. You need two kinds of measurement, and each one feeds a different part of the config:
 
 - **Tape-measure dimensions** for the box sizes: the table's length, width, and thickness go into the table obstacle's `x`, `y`, and `z`. Use the tape measure for how big each box is, not for where it sits.
@@ -110,6 +117,8 @@ Each obstacle geometry is a box defined by its `x`, `y`, and `z` dimensions (the
 - The safety walls are thin, tall boxes. A wall that is 600 mm tall has `z: 600` for its dimension, but its `translation.z` is `300`, half the height, for the same reason.
 
 ### Add the table obstacle
+
+<!-- ASSET P0 diagram-obstacle-geometry (DIAGRAM): box-center z-math (table 30mm z=-15; walls 600mm z=300; world origin at arm base) -->
 
 Add a component:
 
@@ -140,6 +149,8 @@ Add a component:
 Replace the `x`, `y`, and `z` dimensions with your own measured table length, width, and thickness. If your table is not centered on the arm base in x and y, adjust `translation.x` and `translation.y` to match, using the values you read from **Get end position** when jogging to the table edges.
 
 ### Add the safety walls
+
+<!-- ASSET P1 3dscene-obstacles (UI): 3D scene rendering the table + wall boxes around the arm -->
 
 Add two more `erh:vmodutils:obstacle` components, one per boundary you want to wall off:
 
@@ -198,6 +209,9 @@ Replace `REPLACE_WITH_MEASURED_FRONT_Y` and `REPLACE_WITH_MEASURED_SIDE_X` with 
 You can check your obstacle configuration against the companion repo's [obstacles-template.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/obstacles-template.json), which has the full set with example measurements filled in. The full machine configuration, including all pose switches, is in [machine-fragment.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/machine-fragment.json). Treat both as references to check your work against, not as files to import over what you configured by hand.
 
 ## Test the full static sequence
+
+<!-- ASSET P0 static-sequence (MOTION): the arm running the full static loop home->approach->grasp->travel->place->home -->
+<!-- ASSET P2 logs-clean-sequence (UI): LOGS with no collision errors after the run -->
 
 From the **CONTROL** tab, trigger the pose switches in this order:
 

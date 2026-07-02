@@ -51,6 +51,8 @@ python3 starter-script.py
 
 ## Connect to your robot
 
+<!-- ASSET P0 connect-tab-boilerplate (UI+): CONNECT -> Python SDK, connection block highlighted, credentials REDACTED. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
 Open `starter-script.py` and find the `connect()` function. It mirrors the boilerplate the Viam app generates for you on the machine's **CONNECT** tab, under **Python SDK**:
 
 ```python
@@ -100,6 +102,8 @@ Before you run the script, make sure that line is not active. If it is uncomment
 You enable it in Phase 5 once the vision service exists. The `motion` handle is safe to leave as it is, since the `builtin` motion service is always present, but nothing in this phase calls it either.
 
 ## Run the script
+
+<!-- ASSET P0 term-resource-names (TERM+): uv run output with resource_names printed; label arm-1/gripper-1/cam-1/pose switches/obstacle grippers -->
 
 Run the script now with `uv run python starter-script.py`. It happens in a single run: `connect()` opens the connection, the script prints every resource on the machine, and then it immediately drives the arm through the static sequence. Watch the printed resource list scroll past in your terminal before the arm starts moving.
 

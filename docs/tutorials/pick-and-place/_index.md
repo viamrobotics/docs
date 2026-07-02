@@ -29,6 +29,8 @@ The workshop is structured as six sequential phases, each ending with a working 
 
 ## What you'll build
 
+<!-- ASSET P0 hero-hardware-overview (PHOTO): complete rig staged (xArm6 + gripper + wrist RealSense + blocks + bin + Meerkat). See plans/2026-07-02-pick-and-place-shot-list.md -->
+
 You will configure an xArm6 robotic arm fitted with a finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks in camera space, and the Viam motion service plans and executes collision-free picks that place each block in the bin. By the end of Phase 5 you have a Python script you run from your laptop that drives the full detect-pick-place loop.
 
 <!-- TODO: add hardware-overview photo to assets/tutorials/pick-and-place/ and reference via images frontmatter once available -->
@@ -62,6 +64,8 @@ This is a self-serve workshop, so confirm each of the following before you start
 
 ### Validate your environment
 
+<!-- ASSET P1 env-validate (TERM): python3 --version and uv run --with viam-sdk import viam printing a version -->
+
 Before starting Phase 4, confirm your environment is ready:
 
 ```sh
@@ -72,6 +76,8 @@ uv run --with viam-sdk python -c "import viam; print(viam.__version__)"   # prin
 If either command fails, revisit the checklist above before continuing.
 
 ### Where to start
+
+<!-- ASSET P1 live-indicator (UI+): machine page with the green Live indicator boxed -->
 
 - **Physical hardware ready:** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 - **Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).

@@ -33,6 +33,10 @@ You will not touch the vision service in this phase. The `shape-detector` and `v
 
 ## Configure the arm
 
+<!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+<!-- ASSET P0 logs-xarm-module-start (UI+): LOGS showing the viam:ufactory module download + start (the module-download moment) -->
+<!-- ASSET P1 configure-arm-attributes (UI): arm-1 card with host / port 502 -->
+
 On the **CONFIGURE** tab, add a new component. In the add-component dialog, search for `xArm6` and select the `viam:ufactory:xArm6` result. Name the component `arm-1`.
 
 Set the following attributes:
@@ -50,6 +54,8 @@ The `viam:ufactory` module provides both the arm model and the gripper model you
 
 ## Configure the gripper
 
+<!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
+
 Add another component. In the add-component dialog, search for the `viam:ufactory:gripper` model and select it. This model comes from the same `viam:ufactory` module as the arm. Name it `gripper-1`.
 
 Set one attribute:
@@ -59,6 +65,8 @@ Set one attribute:
 This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is running, because the gripper is physically mounted on the arm and controlled through the same connection. Save the config and check the **LOGS** tab again. Because `viam-server` already has the `viam:ufactory` module running from the previous step, `gripper-1` comes online immediately with no second download.
 
 ## Configure the camera
+
+<!-- ASSET P2 configure-camera (UI): cam-1 realsense config (sensors color+depth, 640x480) -->
 
 Add a third component. In the add-component dialog, search for `realsense` and select the `viam:camera:realsense` result. Name it `cam-1`.
 
@@ -71,6 +79,10 @@ Set the following attributes:
 Save the config and confirm in the **LOGS** tab that `viam-server` downloads the `viam:camera-realsense` module and starts `cam-1`. This is a separate module from `viam:ufactory`, since it comes from a different publisher and family.
 
 ## Test each resource from the CONTROL tab
+
+<!-- ASSET P1 control-camera-stream (UI): CONTROL camera card, live color + depth -->
+<!-- ASSET P1 control-arm-card (UI+): joint sliders + Get end position boxed -->
+<!-- ASSET P1 control-gripper-grab (MOTION): gripper closing on a block via Grab, then Open releasing -->
 
 Open the **CONTROL** tab. You should now see a test card for each of the three components you just added.
 
@@ -93,6 +105,8 @@ With a block between the fingers, **Grab** closes the fingers and the gripper ho
 {{< /checkpoint >}}
 
 ## The 3D scene tab
+
+<!-- ASSET P0 3dscene-wrist-camera (MOTION): jog joint 1 and watch the cam-1 frame move with the arm (the wrist-camera insight) -->
 
 Open the **3D scene** tab. You should see a rendered model of the arm and the `cam-1` frame positioned at the end of its wrist.
 
