@@ -1,7 +1,7 @@
 ---
 linkTitle: "How planning works"
 title: "How motion planning works"
-weight: 90
+weight: 80
 layout: "docs"
 type: "docs"
 description: "The algorithm Viam uses to plan robot arm motion, why it works for arms, and what to try when planning fails."

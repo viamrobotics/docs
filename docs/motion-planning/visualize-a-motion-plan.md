@@ -1,14 +1,16 @@
 ---
 linkTitle: "Visualize a motion plan"
 title: "Visualize a motion plan"
-weight: 50
+weight: 86
 layout: "docs"
 type: "docs"
 description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path, then compare it against obstacles and reach to debug failures."
+aliases:
+  - /motion-planning/3d-scene/visualize-a-motion-plan/
 ---
 
 The **3D SCENE** tab renders your configured frame system and live component poses, and the
-[visual checks for a failing plan](/motion-planning/3d-scene/debug-motion-plan/) find most
+[visual checks for a failing plan](/motion-planning/debug-motion-plan/) find most
 problems by eye. When those checks do not reveal the problem, or you want to see the
 trajectory itself, publish the plan as **custom visuals** through a world state store
 service. The scene then renders the path you can otherwise only read as numbers.
@@ -128,7 +130,7 @@ The 3D scene serves three distinct purposes, and it helps to keep them straight:
 
 - **Visualize a plan** (this page): publish the trajectory and goals as custom
   visuals to see the path in context.
-- **[Inspect static frames and geometry](/motion-planning/3d-scene/debug-motion-plan/)**:
+- **[Inspect static frames and geometry](/motion-planning/debug-motion-plan/)**:
   use the stock scene to check frame positions and obstacle coverage with no plan involved.
 - **Check feasibility**: use `armplanning.PlanMotion` to confirm a goal is
   reachable and a path exists before you visualize or run anything.
@@ -139,7 +141,7 @@ exists at all_. Reach for the one that matches the question you are asking.
 
 ## What's next
 
-- [Debug a motion plan](/motion-planning/3d-scene/debug-motion-plan/):
+- [Debug a motion plan](/motion-planning/debug-motion-plan/):
   the no-code visual checks to try first.
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/):
   the world state store service that serves these transforms.
