@@ -1,0 +1,20 @@
+{{/* checkpoint.html
+     A "verify before continuing" callout for sequential workshop tutorials.
+     CSS is injected once per page via a Scratch guard (mirrors notice.html). */}}
+{{- $title := .Get "title" | default "Checkpoint" -}}
+{{- $inner := .Inner | .Page.RenderString -}}
+{{- if not ($.Page.Scratch.Get "checkpointcss") -}}
+<style type="text/css">
+.checkpoint{--cp-accent:#1a7f4b;--cp-bg:#f1faf4;--cp-title:#0f5c34;border:1px solid var(--cp-accent);border-left:6px solid var(--cp-accent);border-radius:4px;background:var(--cp-bg);padding:16px 18px;margin:24px 0}
+.checkpoint .checkpoint-title{margin:0 0 8px;font-weight:700;color:var(--cp-title);display:flex;align-items:center}
+.checkpoint .checkpoint-title .icon{margin-right:8px}
+.checkpoint .checkpoint-body> :last-child{margin-bottom:0}
+@media (prefers-color-scheme:dark){.checkpoint{--cp-bg:#0c2417;--cp-title:#7fe0a6}}
+body.dark .checkpoint{--cp-bg:#0c2417;--cp-title:#7fe0a6}
+</style>
+{{- $.Page.Scratch.Set "checkpointcss" 1 -}}
+{{- end -}}
+<div class="checkpoint">
+  <p class="checkpoint-title"><i class="icon fas fa-check-circle"></i>{{ $title }}</p>
+  <div class="checkpoint-body">{{ $inner }}</div>
+</div>

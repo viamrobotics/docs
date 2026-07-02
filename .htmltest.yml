@@ -26,6 +26,7 @@ IgnoreURLs:
   - "instagram.com"
   - "twitter.com"
   - "github.com/viamrobotics/docs"
+  - "github.com/viam-devrel/pick-and-place"
   - "openai.com"
   - "espressif.com"
   - "pinout.xyz"
