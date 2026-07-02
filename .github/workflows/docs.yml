@@ -39,12 +39,14 @@ jobs:
         with:
           name: tutorials-file
           path: ./public/tutorials/typesense.json
+          if-no-files-found: error
 
       - name: Upload components models file
         uses: actions/upload-artifact@v4
         with:
           name: components-models-file
-          path: ./public/operate/reference/components/typesense.json
+          path: ./public/reference/components/typesense.json
+          if-no-files-found: error
 
   # deploy:
   #   environment:

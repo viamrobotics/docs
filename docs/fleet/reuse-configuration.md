@@ -56,6 +56,12 @@ Click **Save** after adding and configuring your resources.
 
 ## Apply a fragment to a machine
 
+{{< alert title="CLI coverage" color="note" >}}
+The CLI supports applying and removing fragments. Authoring fragments, setting variables when applying, overriding fields, tagging revisions, pinning machines to versions, and listing which machines use a fragment all require the Viam app or the JSON config. There is no top-level `viam fragments` command.
+{{< /alert >}}
+
+### In the Viam app
+
 1. Navigate to your machine's **CONFIGURE** tab.
 1. Click **+** and select **Configuration block**.
 1. Search for your fragment by name and select it.
@@ -65,21 +71,35 @@ Click **Save** after adding and configuring your resources.
 
 The fragment's resources now appear on the machine's configuration page. The machine downloads and applies the configuration on its next sync.
 
-To apply a fragment to many machines, use the CLI in a loop or script:
+### With the CLI
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add \
+  --part=<part-id> \
+  --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. To find your fragment ID, copy it from the fragment's page in the Viam app (it appears in the URL and under the fragment name).
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name (visible on its page in the Viam app) or its ID (in the URL of the page). Names created in the Viam app contain only letters, numbers, and dashes, so they don't need shell quoting.
 
-See [automate with scripts](/cli/automate-with-scripts/) for examples of scripting fleet operations.
+If you omit `--fragment`, the CLI prompts you to pick a fragment interactively from the ones available to you.
+
+To apply a fragment across many machines, see [Automate with scripts](/cli/automate-with-scripts/).
 
 ### Avoid resource name conflicts with a prefix
 
 If a machine already has a resource with the same name as one in the fragment, or if you apply the same fragment twice, you need a prefix to avoid name collisions.
 
 When you insert a fragment that would cause a conflict, the UI prompts you for a prefix. The prefix is prepended to every resource name from the fragment. For example, a component named `camera-1` in a fragment with prefix `front` becomes `front-camera-1`.
+
+### Temporarily disable a fragment
+
+To keep a fragment in the machine's configuration but skip loading its resources, disable it:
+
+1. On the machine's **CONFIGURE** tab, find the fragment in the resource list.
+1. Open the fragment's actions menu (**...**) and click **Disable**.
+1. Click **Save**.
+
+The fragment stays in your configuration, and the machine skips loading its resources on the next sync. Re-enable it the same way. In JSON mode, set the fragment import's [`disabled` field](#json-reference-fragment-imports) to `true`.
 
 ## Customize fragments with variables
 
@@ -177,7 +197,11 @@ On the machine's **CONFIGURE** tab, find the fragment card and look for the **Up
 
 ## Find which machines use a fragment
 
-Before changing or removing a fragment, you usually want to know which machines use it. Viam exposes this through `GetFragmentUsage` (returns a count of machines per revision) and `ListMachineSummaries` (returns the full list of machines and their resolved fragments). Neither is yet wrapped as a high-level method on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
+Before changing or removing a fragment, you usually want to know which machines use it.
+
+**In the Viam app**, navigate to [app.viam.com/fragments](https://app.viam.com/fragments) and click the **Fragments in use** tab. This shows every fragment that at least one machine in your organization uses, along with the version pinned in your configuration and the version actually deployed on machines. It also flags how many machines are running a version older than the latest available. Click a fragment to see a per-machine breakdown of which version or tag each machine is pinned to, and whether an upgrade is available.
+
+**Through the API**, Viam exposes `GetFragmentUsage` (returns a count of machines per revision) and `ListMachineSummaries` (returns the full list of machines and their resolved fragments). Neither is yet wrapped as a high-level method on the Python SDK's `AppClient`. To use them today, call the gRPC stubs from the proto bindings directly, or use any other gRPC client.
 
 ## Set default fragments for an organization
 
@@ -192,12 +216,13 @@ To configure default fragments:
 
 In JSON mode on a machine's **CONFIGURE** tab, fragments are listed in the `fragments` array. Each entry supports:
 
-| Field       | Type   | Description                                                                                |
-| ----------- | ------ | ------------------------------------------------------------------------------------------ |
-| `id`        | string | The fragment ID. Required.                                                                 |
-| `version`   | string | Pin to a specific revision number or tag name. Omit to track the latest revision.          |
-| `prefix`    | string | A string prepended to all resource names from this fragment. Use to avoid name collisions. |
-| `variables` | object | A map of variable names to values, overriding the defaults defined in the fragment.        |
+| Field       | Type    | Description                                                                                            |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| `id`        | string  | The fragment ID. Required.                                                                             |
+| `version`   | string  | Pin to a specific revision number or tag name. Omit to track the latest revision.                      |
+| `prefix`    | string  | A string prepended to all resource names from this fragment. Use to avoid name collisions.             |
+| `variables` | object  | A map of variable names to values, overriding the defaults defined in the fragment.                    |
+| `disabled`  | boolean | Set to `true` to keep the fragment in your config but skip loading its resources. Defaults to `false`. |
 
 Example:
 

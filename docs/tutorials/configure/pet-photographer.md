@@ -366,7 +366,6 @@ from typing import (
     ClassVar, Mapping, Sequence, Optional, cast, Tuple, List, Any, Dict
 )
 from typing_extensions import Self
-from viam.module.types import Reconfigurable
 from viam.proto.app.robot import ComponentConfig
 from viam.proto.common import ResourceName, ResponseMetadata, Geometry
 from viam.components.camera import Camera
@@ -380,10 +379,7 @@ from viam.utils import from_dm_from_extra
 from viam.media.utils.pil import viam_to_pil_image
 
 
-class ColorFilterCam(
-        Camera,
-        Reconfigurable
-  ):
+class ColorFilterCam(Camera):
 
     """A ColorFilterCam wraps the underlying camera
     `actual_cam` and only keeps the data captured on the

@@ -74,8 +74,8 @@ async function main(): Promise<number> {
         "camera",
         CAMERA_NAME,
         "GetImages",
-        [new Date(), new Date()],
-        { mimeType: "image/jpeg" }
+        ".jpg",
+        [new Date(), new Date()]
     );
     console.log(`Uploaded image: ${fileId}`);
 

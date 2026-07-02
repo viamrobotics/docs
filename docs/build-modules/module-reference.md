@@ -240,12 +240,12 @@ if __name__ == '__main__':
 
 The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                                           | Python                                                                                   |
-| ------------------------ | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource) | Default (`viam-server` destroys and re-creates the resource)                             |
-| In-place reconfigure     | Not supported for modular resources                          | Implement `reconfigure()` (called if your class satisfies the `Reconfigurable` protocol) |
-| No-op close              | Embed `resource.TriviallyCloseable`                          | Default on `ResourceBase`                                                                |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig`                     | Default on `EasyResource`                                                                |
+| Behavior                 | Go                                                                                 | Python                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)                       | Default (`viam-server` destroys and re-creates the resource)                          |
+| In-place reconfigure     | Implement `Reconfigure()` (replace the `AlwaysRebuild` embed with your own method) | Not supported; resources always rebuild (the `Reconfigurable` protocol is deprecated) |
+| No-op close              | Embed `resource.TriviallyCloseable`                                                | Default on `ResourceBase`                                                             |
+| Skip config validation   | Embed `resource.TriviallyValidateConfig`                                           | Default on `EasyResource`                                                             |
 
 ## Logging
 
@@ -451,14 +451,17 @@ All module CLI commands are under `viam module`. You must be logged in
 
 ### Create and generate
 
-| Command                            | Description                                                              |
-| ---------------------------------- | ------------------------------------------------------------------------ |
-| `viam module create --name <name>` | Register a module in the registry and generate `meta.json`.              |
-| `viam module generate`             | Scaffold a complete module project with templates (interactive prompts). |
+| Command                            | Description                                                            |
+| ---------------------------------- | ---------------------------------------------------------------------- |
+| `viam module create --name <name>` | Register a module in the registry and generate `meta.json`.            |
+| `viam module generate`             | Scaffold a complete module, app, or module+app project with templates. |
+| `viam module add-model`            | Add a new resource model to an existing module.                        |
+| `viam module add-app`              | Add a web application to an existing Go module.                        |
 
-`generate` flags: `--name`, `--language` (`python` or `go`), `--visibility`,
+`generate` flags: `--generate-type` (`module`, `app`, or `module+app`), `--name`,
+`--language` (`python`, `go`, or `cpp`), `--visibility`,
 `--public-namespace`, `--resource-subtype`, `--model-name`, `--register`,
-`--dry-run`.
+`--app-name`, `--app-type`, `--dry-run`.
 
 ### Build
 
@@ -557,12 +560,7 @@ The following variables are set during [cloud builds](#build), not at runtime:
 
 ### Server-side
 
-The following variables control `viam-server` startup behavior (not passed to modules):
-
-| Variable                              | Description                                                                |
-| ------------------------------------- | -------------------------------------------------------------------------- |
-| `VIAM_MODULE_STARTUP_TIMEOUT`         | Override the default 5-minute startup timeout (for example, `10m`, `30s`). |
-| `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Override the default 2-minute per-resource configuration timeout.          |
+Environment variables that control how `viam-server` starts and manages modules, including `VIAM_MODULE_STARTUP_TIMEOUT` and `VIAM_RESOURCE_CONFIGURATION_TIMEOUT`, are documented in [viam-server environment variables](/reference/viam-server/#environment-variables). `viam-server` reads these variables itself rather than setting them in a module's process environment.
 
 ## Supported platforms
 

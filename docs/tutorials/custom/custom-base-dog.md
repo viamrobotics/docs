@@ -107,11 +107,7 @@ If the name of the directory where you store and run your code is different, be 
 
    If it isn’t Python 3.8 or later, install an updated version of Python and double-check that you're running the latest Raspberry Pi OS.
 
-1. Install the [Viam Python SDK](https://python.viam.dev/):
-
-   ```sh {class="command-line" data-prompt="$"}
-   pip install viam-sdk
-   ```
+1. Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 1. Enable I<sup>2</sup>C on your Pi using `sudo raspi-config`.
 
@@ -285,7 +281,7 @@ Modify the `validate` and `reconfigure` methods to use these attributes, and def
 The code below shows what the top of your class definition should look like.
 
 ```python {class="line-numbers linkable-line-numbers"}
-class robotdog(Base, Reconfigurable):
+class robotdog(Base):
     MODEL: ClassVar[Model] = Model(ModelFamily("viamlabs", "base"), "robotdog")
 
     # Class parameters

@@ -216,7 +216,7 @@ If log configurations are applied at a resource level using the `log_configurati
 ### Disable log deduplication
 
 By default, `viam-server` deduplicates log messages that are deemed noisy.
-A log is deemed noisy if it has been output 3 times in the past 10 seconds.
+A log is deemed noisy after the same message is logged more than 3 times within one minute.
 
 Log deduplication is automatically disabled when debug logging is active, whether you enable logging with `"debug": true` in your machine's configuration or with the `-debug` command-line flag.
 You do not need to set `disable_log_deduplication` separately when running in debug mode.
@@ -293,6 +293,21 @@ Enabling debug level logs will take precedence over all logging configuration se
 | `-version` | Print version. |
 | `-webprofile` | Include profiler in HTTP server. |
 | `-webrtc` | Force WebRTC connections instead of direct connections. Default: `true`. |
+
+## Environment variables
+
+You can set the following environment variables to configure `viam-server` behavior without command-line flags:
+
+<!-- prettier-ignore -->
+| Variable | Description |
+| -------- | ----------- |
+| `VIAM_HOME` | Path to the directory where `viam-server` stores cached files and module data. Defaults to `~/.viam`. |
+| `VIAM_CONFIG_READ_TIMEOUT` | Override the default 15-second timeout for reading the machine configuration, for example `30s` or `1m`. |
+| `VIAM_RESOURCE_REQUESTS_LIMIT` | Override the default limit of 100 concurrent gRPC requests allowed per resource. |
+| `VIAM_MODULE_STARTUP_TIMEOUT` | Override the default 5-minute module startup timeout, for example `10m` or `30s`. |
+| `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Override the default 2-minute per-resource configuration timeout. |
+| `VIAM_LOGFILE` | Path to a log file. `viam-server` writes logs to this file in addition to standard output. This differs from the `-log-file` flag, which writes to the file instead of standard output. |
+| `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger and Event Tracing for Windows (ETW). Only relevant on Windows. |
 
 ## Install `viam-server` without the web UI
 
@@ -383,7 +398,7 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
-Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-windows-installer.exe).
+Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi) and follow the on-screen instructions to complete the installation.
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>C:\opt\viam\cache</FILE>.
 

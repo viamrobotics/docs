@@ -133,16 +133,14 @@ Click **Save**, then expand the **Test** section for the motor.
 Spin the motor forward for 2 revolutions, then check if it's still moving.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 If you're using real hardware, you'll see the motor spin when you run the code below.
 Without an encoder, position readings will be estimates based on time and max RPM.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `motor_test.py`:
 

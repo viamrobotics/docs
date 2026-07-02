@@ -75,15 +75,13 @@ or the Viam app's test panel.
 Send a command to the generic component and read the response.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 With the fake model, you'll see your command echoed back. With a real module, the response depends on what commands the module supports.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `generic_test.py`:
 

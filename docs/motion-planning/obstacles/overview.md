@@ -40,16 +40,17 @@ serve as keep-out zones; the planner treats them identically.
 
 ### Geometry types
 
-Viam supports five geometry types for defining obstacles. The three primitives
+Viam supports six geometry types for defining obstacles. The four primitives
 are the most commonly used:
 
-| Type        | JSON `type` | Config fields                          | Best for                                                                                                                                         |
-| ----------- | ----------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Box**     | `"box"`     | `x`, `y`, `z` (dimensions in mm)       | Tables, shelves, walls, rectangular equipment. Match surface dimensions; include thickness if the arm could approach from below.                 |
-| **Sphere**  | `"sphere"`  | `r` (radius in mm)                     | Balls, round obstacles, keep-out zones. Use the bounding radius.                                                                                 |
-| **Capsule** | `"capsule"` | `r` (radius in mm), `l` (length in mm) | Posts, columns, pipes. Set the radius to match the column width and length to the height.                                                        |
-| **Point**   | `"point"`   | (none, position only)                  | Single points in space.                                                                                                                          |
-| **Mesh**    | `"mesh"`    | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files when no primitive fits. More expensive to collision-check; use a primitive bounding shape if accuracy permits. |
+| Type         | JSON `type`  | Config fields                          | Best for                                                                                                                                         |
+| ------------ | ------------ | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Box**      | `"box"`      | `x`, `y`, `z` (dimensions in mm)       | Tables, shelves, walls, rectangular equipment. Match surface dimensions; include thickness if the arm could approach from below.                 |
+| **Sphere**   | `"sphere"`   | `r` (radius in mm)                     | Balls, round obstacles, keep-out zones. Use the bounding radius.                                                                                 |
+| **Capsule**  | `"capsule"`  | `r` (radius in mm), `l` (length in mm) | Posts, columns, pipes. Set the radius to match the column width and length to the height.                                                        |
+| **Cylinder** | `"cylinder"` | `r` (radius in mm), `l` (height in mm) | Cylindrical obstacles like cans, drums, and flat discs. Unlike capsule, a cylinder can be arbitrarily flat (no minimum height-to-radius ratio).  |
+| **Point**    | `"point"`    | (none, position only)                  | Single points in space.                                                                                                                          |
+| **Mesh**     | `"mesh"`     | `mesh_data`, `mesh_content_type`       | Complex shapes from STL/PLY files when no primitive fits. More expensive to collision-check; use a primitive bounding shape if accuracy permits. |
 
 For irregular objects, use a Box that fully encloses the object (over-approximation is safer than under-approximation, even though it shrinks the planner's solution space).
 
