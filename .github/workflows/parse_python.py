@@ -59,7 +59,7 @@ python_datatype_links = {
     "viam.proto.common.ResponseMetadata": "https://python.viam.dev/autoapi/viam/gen/common/v1/common_pb2/index.html#viam.gen.common.v1.common_pb2.ResponseMetadata",
     "viam.proto.component.encoder.PositionType.ValueType": "https://python.viam.dev/autoapi/viam/gen/component/encoder/v1/encoder_pb2/index.html#viam.gen.component.encoder.v1.encoder_pb2.PositionType",
     "viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy": "https://python.viam.dev/autoapi/viam/components/movement_sensor/movement_sensor/index.html#viam.components.movement_sensor.movement_sensor.MovementSensor.Accuracy",
-    "viam.services.vision.vision.Vision.Properties": "https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties"
+    "viam.services.vision.vision.Vision.Properties": "https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties"
 }
 
 ## Link any matching data types to their reference links, based on {sdk}_datatype_links[] array,
