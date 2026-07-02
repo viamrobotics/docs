@@ -7,6 +7,7 @@ type: "docs"
 description: "Display a depth camera's point cloud in the 3D scene to verify that the data aligns with your frame system and workspace geometry."
 aliases:
   - /motion-planning/3d-scene/inspect-point-clouds/
+  - /motion-planning/3d-scene/verify-point-cloud-alignment/
 ---
 
 Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The **3D SCENE** tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.
@@ -46,7 +47,7 @@ The point cloud sits wherever the camera's frame puts it. If the frame configura
 - The floor appears at the expected height relative to the world frame.
 
 If the point cloud appears shifted, rotated, or in an unexpected location, the camera's frame offset or orientation is likely wrong.
-See [Calibrate frame offsets](/motion-planning/3d-scene/calibrate-frame-offsets/).
+See [Measuring between frames](/visualization/3d-scene/measuring-between-frames/).
 
 ### 4. Check data quality
 

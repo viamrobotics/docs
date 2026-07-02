@@ -151,6 +151,7 @@ Practical consequences:
 
 {{< cards >}}
 {{% card link="/motion-planning/obstacles/configure-workspace-obstacles/" noimage="true" %}}
+{{% card link="/motion-planning/obstacles/verify-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/avoid-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/attach-detach-geometries/" noimage="true" %}}
 {{% card link="/motion-planning/obstacles/allow-frame-collisions/" noimage="true" %}}
