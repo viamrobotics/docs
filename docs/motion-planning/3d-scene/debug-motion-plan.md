@@ -66,7 +66,7 @@ Verify that:
   table collisions.
 
 If obstacles are missing or misplaced, see
-[Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
+[Verify obstacles](/motion-planning/obstacles/verify-obstacles/).
 
 ### 4. Look for impossible targets
 
@@ -112,7 +112,7 @@ the frame pair with
 
 - [Visualize a motion plan](/motion-planning/3d-scene/visualize-a-motion-plan/):
   render the plan's trajectory and goals as custom visuals when a visual check is not enough.
-- [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/):
+- [Verify obstacles](/motion-planning/obstacles/verify-obstacles/):
   check obstacle geometry against the real workspace.
 - [How motion planning works](/motion-planning/how-planning-works/):
   why a plan can be infeasible and what to adjust.

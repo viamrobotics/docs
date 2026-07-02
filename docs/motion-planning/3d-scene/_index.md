@@ -100,7 +100,7 @@ This is useful for comparing point clouds that should align (a registered scan a
 ## How-to guides
 
 {{< cards >}}
-{{% card link="/motion-planning/3d-scene/set-up-obstacle-avoidance/" noimage="true" %}}
+{{% card link="/motion-planning/obstacles/verify-obstacles/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/debug-motion-plan/" noimage="true" %}}
 {{% card link="/motion-planning/3d-scene/visualize-a-motion-plan/" noimage="true" %}}
 {{< /cards >}}

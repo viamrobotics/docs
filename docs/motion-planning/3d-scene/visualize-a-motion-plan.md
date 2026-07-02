@@ -120,7 +120,7 @@ the rest of the scene:
   the planner around it. Look for stray geometry between the start and goal.
 
 For checking the obstacle geometry itself, separate from the plan, see
-[Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/).
+[Verify obstacles](/motion-planning/obstacles/verify-obstacles/).
 
 ## When to visualize versus inspect or verify
 
@@ -143,7 +143,7 @@ exists at all_. Reach for the one that matches the question you are asking.
   the no-code visual checks to try first.
 - [Publish visuals from a module](/visualization/publish-visuals-from-a-module/):
   the world state store service that serves these transforms.
-- [Verify obstacles](/motion-planning/3d-scene/set-up-obstacle-avoidance/):
+- [Verify obstacles](/motion-planning/obstacles/verify-obstacles/):
   check obstacle geometry against the real workspace.
 - [How motion planning works](/motion-planning/how-planning-works/):
   why a plan can be infeasible and what to adjust.
