@@ -1,12 +1,13 @@
 ---
 linkTitle: "Editing frames visually"
 title: "Editing frames visually"
-weight: 20
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Add, edit, and attach geometry to frames directly in the 3D scene instead of editing JSON configuration."
 aliases:
   - /motion-planning/3d-scene/edit-frames/
+  - /visualization/3d-scene-tools/editing-frames-visually/
 ---
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.

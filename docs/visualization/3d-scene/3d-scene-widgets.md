@@ -1,10 +1,12 @@
 ---
 linkTitle: "3D Scene Widgets"
 title: "3D scene widgets"
-weight: 30
+weight: 40
 layout: "docs"
 type: "docs"
 description: "Overlay live data on the 3D scene with widgets: an arm's joint positions and a camera's live feed."
+aliases:
+  - /visualization/3d-scene-tools/3d-scene-widgets/
 ---
 
 Widgets are floating panels you overlay on the 3D scene to read live data next to the 3D

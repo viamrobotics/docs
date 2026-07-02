@@ -1,10 +1,13 @@
 ---
-linkTitle: "Visualizing with the 3D scene"
+linkTitle: "3D scene"
 title: "Visualizing with the 3D scene"
 weight: 5
 layout: "docs"
 type: "docs"
 description: "What the 3D scene renders, where each element comes from, and how built-in configuration content differs from custom visuals a module publishes at runtime."
+aliases:
+  - /visualization/visualizing-with-the-3d-scene/
+  - /motion-planning/3d-scene/
 ---
 
 The **3D SCENE** tab renders your machine in an interactive 3D view: the frames of every
@@ -14,8 +17,8 @@ otherwise read as JSON numbers into a picture you can inspect, so you can confir
 sits where the arm expects it or watch a motion plan against the obstacles around it.
 
 This page describes what the scene shows, where each element comes from, and how the scene
-stays current. For the tab's panels, navigation, and settings, see the
-[3D scene tab reference](/motion-planning/3d-scene/).
+stays current. For the tab's panels, navigation, and settings, see
+[The 3D scene interface](/visualization/3d-scene/the-3d-scene-interface/).
 
 ## What the scene renders
 
@@ -75,8 +78,10 @@ To publish your own custom visuals this way, see
 ## What's next
 
 {{< cards >}}
+{{% card link="/visualization/3d-scene/the-3d-scene-interface/" noimage="true" %}}
+{{% card link="/visualization/3d-scene/measuring-between-frames/" noimage="true" %}}
+{{% card link="/visualization/3d-scene/editing-frames-visually/" noimage="true" %}}
+{{% card link="/visualization/3d-scene/3d-scene-widgets/" noimage="true" %}}
 {{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
 {{% card link="/visualization/publish-visuals-from-a-module/" noimage="true" %}}
-{{% card link="/visualization/drawing-library/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/" noimage="true" %}}
 {{< /cards >}}

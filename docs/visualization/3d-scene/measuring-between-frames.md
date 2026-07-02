@@ -1,12 +1,13 @@
 ---
 linkTitle: "Measuring between frames"
 title: "Measuring between frames"
-weight: 10
+weight: 20
 layout: "docs"
 type: "docs"
 description: "Verify and adjust the spatial relationship between components using the 3D scene and measurement tool."
 aliases:
   - /motion-planning/3d-scene/calibrate-frame-offsets/
+  - /visualization/3d-scene-tools/measuring-between-frames/
 ---
 
 When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off; the arm then reaches for the wrong spot, or the point cloud sits behind the table instead of on it. The **3D SCENE** tab lets you verify offsets visually and measure distances directly, so you can catch these errors before they produce bad motion.

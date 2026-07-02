@@ -1,17 +1,16 @@
 ---
-linkTitle: "3D scene tab"
-title: "3D scene tab"
-weight: 30
+linkTitle: "The 3D scene interface"
+title: "The 3D scene interface"
+weight: 10
 layout: "docs"
 type: "docs"
-no_list: true
-description: "Visualize your machine's frame system, geometries, and point clouds in an interactive 3D view."
+description: "The panels, toolbar, navigation, and settings of the 3D SCENE tab in the Viam app."
 ---
 
-The **3D SCENE** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
-Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The **3D SCENE** tab makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
-
-The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame. Attached geometries render as translucent shapes, and point clouds from depth cameras render as colored point sets.
+The **3D SCENE** tab on your machine's page in the [Viam app](https://app.viam.com) is where
+you inspect the 3D scene. This page is a reference to its panels, toolbar, navigation, and
+settings. For what the scene renders and where each element comes from, see
+[Visualizing with the 3D scene](/visualization/3d-scene/).
 
 ## The interface
 
@@ -40,7 +39,7 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 **Dashboard toolbar** (top-center): Visible buttons, left to right:
 
 - **Orthographic / Perspective** toggle — switch between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
-- **Add frames** — opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene-tools/editing-frames-visually/).
+- **Add frames** — opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 - **Measurement** (ruler icon) — activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler) — toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **Logs** — shows a count badge for errors/warnings from the scene renderer.
@@ -96,11 +95,3 @@ To add a HoverLink:
 After the link is added, hovering a point in the source entity highlights the matching point in the target entity (and updates the hover tooltip with both points' positions). Existing links appear under **Relationships** in the Details panel and have per-link remove buttons.
 
 This is useful for comparing point clouds that should align (a registered scan against a transformed version, ground-truth points against predicted points) without flipping back and forth between separate views.
-
-## How-to guides
-
-{{< cards >}}
-{{% card link="/motion-planning/obstacles/verify-obstacles/" noimage="true" %}}
-{{% card link="/motion-planning/debug-motion-plan/" noimage="true" %}}
-{{% card link="/motion-planning/visualize-a-motion-plan/" noimage="true" %}}
-{{< /cards >}}

@@ -47,7 +47,7 @@ The point cloud sits wherever the camera's frame puts it. If the frame configura
 - The floor appears at the expected height relative to the world frame.
 
 If the point cloud appears shifted, rotated, or in an unexpected location, the camera's frame offset or orientation is likely wrong.
-See [Measuring between frames](/visualization/3d-scene-tools/measuring-between-frames/).
+See [Measuring between frames](/visualization/3d-scene/measuring-between-frames/).
 
 ### 4. Check data quality
 

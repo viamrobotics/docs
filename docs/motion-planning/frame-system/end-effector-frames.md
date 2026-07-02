@@ -258,7 +258,7 @@ different things, and only one affects a `Move` call.
   plan this motion, and they are gone when the call returns. The transform in
   the previous section is a `WorldState` transform, so it shapes the plan.
 - The world state store service is a separate service that holds transforms for
-  client-side visualization in the [3D scene](/motion-planning/3d-scene/).
+  client-side visualization in the [3D scene](/visualization/3d-scene/).
 
 To change where the arm goes, put the transform in the `WorldState` you pass to
 `Move`, as shown above. To render a custom visual that leaves planning unchanged,
@@ -274,7 +274,7 @@ same axes drawn in the diagrams on this page.
 
 A frame you add in code with a `WorldState` transform lasts only for that `Move`
 call, so it stays out of the 3D scene by default. To draw a code-defined frame in
-the [3D scene](/motion-planning/3d-scene/), publish it through a world state store
+the [3D scene](/visualization/3d-scene/), publish it through a world state store
 service. A module that implements this service holds your transforms and streams
 them to the scene, which renders a frame with no geometry as a set of coordinate axes
 alongside the static frames.
