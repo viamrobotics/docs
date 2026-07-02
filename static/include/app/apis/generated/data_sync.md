@@ -84,7 +84,7 @@ const binaryDataId = await dataClient.binaryDataCaptureUpload(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binarydatacaptureupload).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#binarydatacaptureupload).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -243,7 +243,7 @@ const fileId = await dataClient.tabularDataCaptureUpload(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabulardatacaptureupload).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#tabulardatacaptureupload).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}

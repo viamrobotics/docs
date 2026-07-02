@@ -91,7 +91,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- (Promise<[TransformWithUUID](https://ts.viam.dev/interfaces/TransformWithUUID-1.html)>)
+- (Promise<[TransformWithUUID](https://ts.viam.dev/interfaces/TransformWithUUID.html)>)
 
 **Example:**
 

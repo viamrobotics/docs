@@ -62,7 +62,7 @@ const members = await appClient.listOrganizationMembers(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getuseridbyemail).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getuseridbyemail).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -122,7 +122,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): The new organization.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createorganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -187,7 +187,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const organizations = await appClient.listOrganizations();
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listorganizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -235,7 +235,7 @@ const organizations =
   );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationswithaccesstolocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganizationswithaccesstolocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -295,7 +295,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - (Promise<[OrgDetails](https://ts.viam.dev/classes/appApi.OrgDetails.html)[]>): The list of locations the requested user has access to.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizationsbyuser).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listorganizationsbyuser).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -367,7 +367,7 @@ const organization = await appClient.getOrganization(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -439,7 +439,7 @@ const isAvailable =
   await appClient.getOrganizationNamespaceAvailability('name');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationnamespaceavailability).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganizationnamespaceavailability).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -534,7 +534,7 @@ const organization = await appClient.updateOrganization(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updateorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -598,7 +598,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteOrganization('<YOUR-ORGANIZATION-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganization).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteorganization).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -669,7 +669,7 @@ const members = await appClient.listOrganizationMembers(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listorganizationmembers).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listorganizationmembers).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -775,7 +775,7 @@ const invite = await appClient.createOrganizationInvite(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createorganizationinvite).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createorganizationinvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -898,7 +898,7 @@ const invite = await appClient.updateOrganizationInviteAuthorizations(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganizationinviteauthorizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updateorganizationinviteauthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -975,7 +975,7 @@ await appClient.deleteOrganizationMember(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganizationmember).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteorganizationmember).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1053,7 +1053,7 @@ await appClient.deleteOrganizationInvite(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteorganizationinvite).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteorganizationinvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1129,7 +1129,7 @@ const invite = await appClient.resendOrganizationInvite(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#resendorganizationinvite).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#resendorganizationinvite).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1199,7 +1199,7 @@ const metadata = await appClient.getOrganizationMetadata(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getorganizationmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganizationmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1278,7 +1278,7 @@ await appClient.updateOrganizationMetadata('<YOUR-ORGANIZATION-ID>', {
 });
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateorganizationmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updateorganizationmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1367,7 +1367,7 @@ const location = await appClient.createLocation(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createlocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createlocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1437,7 +1437,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const location = await appClient.getLocation('<YOUR-LOCATION-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getlocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getlocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1544,7 +1544,7 @@ const location = await appClient.updateLocation(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatelocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updatelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1613,7 +1613,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteLocation('<YOUR-LOCATION-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletelocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deletelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1681,7 +1681,7 @@ const locations = await appClient.listLocations(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listlocations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listlocations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1752,7 +1752,7 @@ await appClient.shareLocation(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#sharelocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#sharelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1823,7 +1823,7 @@ await appClient.unshareLocation(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#unsharelocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#unsharelocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1895,7 +1895,7 @@ const locationAuth = await appClient.locationAuth(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#locationauth).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#locationauth).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1967,7 +1967,7 @@ const locationAuth = await appClient.createLocationSecret(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createlocationsecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createlocationsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2049,7 +2049,7 @@ await appClient.deleteLocationSecret(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletelocationsecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deletelocationsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2117,7 +2117,7 @@ const metadata = await appClient.getLocationMetadata(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getlocationmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getlocationmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2195,7 +2195,7 @@ await appClient.updateLocationMetadata('<YOUR-LOCATION-ID>', {
 });
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatelocationmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updatelocationmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2265,7 +2265,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const robot = await appClient.getRobot('<YOUR-ROBOT-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2332,7 +2332,7 @@ const robotAPIKeys =
   await appClient.getRobotAPIKeys('<YOUR-ROBOT-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotapikeys).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotapikeys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2404,7 +2404,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const robotParts = await appClient.getRobotParts('<YOUR-ROBOT-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotparts).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotparts).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2498,7 +2498,7 @@ if (
 }
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2609,7 +2609,7 @@ const robotPartLogs = await appClient.getRobotPartLogs(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartlogs).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotpartlogs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2639,7 +2639,7 @@ const robotPart = await appClient.getRobotPartByNameAndLocation(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartbynameandlocation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotpartbynameandlocation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2725,7 +2725,7 @@ const robotPartLogs = await appClient.tailRobotPartLogs(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#tailrobotpartlogs).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#tailrobotpartlogs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2801,7 +2801,7 @@ const robotPartHistory = await appClient.getRobotPartHistory(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotparthistory).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotparthistory).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2903,7 +2903,7 @@ const robotPart = await appClient.updateRobotPart(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotpart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updaterobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2984,7 +2984,7 @@ const robotPartId = await appClient.newRobotPart(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newrobotpart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#newrobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3055,7 +3055,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteRobotPart('<YOUR-ROBOT-PART-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobotpart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleterobotpart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3125,7 +3125,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.markPartAsMain('<YOUR-ROBOT-PART-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markpartasmain).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#markpartasmain).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3195,7 +3195,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.markPartForRestart('<YOUR-ROBOT-PART-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#markpartforrestart).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#markpartforrestart).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3270,7 +3270,7 @@ const robotPart = await appClient.createRobotPartSecret(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createrobotpartsecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createrobotpartsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3350,7 +3350,7 @@ await appClient.deleteRobotPartSecret(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobotpartsecret).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleterobotpartsecret).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3420,7 +3420,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const robots = await appClient.listRobots('<YOUR-LOCATION-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listrobots).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listrobots).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3496,7 +3496,7 @@ const robotId = await appClient.newRobot(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#newrobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#newrobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3600,7 +3600,7 @@ const robot = await appClient.updateRobot(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updaterobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3669,7 +3669,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteRobot('<YOUR-ROBOT-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleterobot).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleterobot).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3737,7 +3737,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const metadata = await appClient.getRobotMetadata('<YOUR-ROBOT-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3807,7 +3807,7 @@ const metadata = await appClient.getRobotPartMetadata(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getrobotpartmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotpartmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3886,7 +3886,7 @@ await appClient.updateRobotMetadata('<YOUR-ROBOT-ID>', {
 });
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updaterobotmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -3965,7 +3965,7 @@ await appClient.updateRobotPartMetadata('<YOUR-ROBOT-PART-ID>', {
 });
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updaterobotpartmetadata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updaterobotpartmetadata).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4046,7 +4046,7 @@ const fragments = await appClient.listFragments(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listfragments).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listfragments).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4102,7 +4102,7 @@ const fragments = await appClient.listMachineFragments(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinefragments).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listmachinefragments).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4136,7 +4136,7 @@ const summaries = await appClient.listMachineSummaries(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmachinesummaries).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listmachinesummaries).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4213,7 +4213,7 @@ const fragment = await appClient.getFragment(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getfragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getfragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4311,7 +4311,7 @@ const fragment = await appClient.createFragment(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createfragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createfragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4420,7 +4420,7 @@ const fragment = await appClient.updateFragment(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatefragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updatefragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4490,7 +4490,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteFragment('12a12ab1-1234-5678-abcd-abcd01234567');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletefragment).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deletefragment).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4641,7 +4641,7 @@ await appClient.addRole(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#addrole).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#addrole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4726,7 +4726,7 @@ await appClient.removeRole(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#removerole).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#removerole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4829,7 +4829,7 @@ const newAuth = new VIAM.appApi.Authorization({
 await appClient.changeRole(oldAuth, newAuth);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#changerole).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#changerole).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -4904,7 +4904,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - (Promise<[Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)[]>): The list of authorizations.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listauthorizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listauthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5044,7 +5044,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - (Promise<[AuthorizedPermissions](https://ts.viam.dev/classes/appApi.AuthorizedPermissions.html)[]>): A filtered list of the authorized permissions.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#checkpermissions).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#checkpermissions).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5113,7 +5113,7 @@ const registryItem = await appClient.getRegistryItem(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getregistryitem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5195,7 +5195,7 @@ await appClient.createRegistryItem(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createregistryitem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5291,7 +5291,7 @@ await appClient.updateRegistryItem(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updateregistryitem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updateregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5420,7 +5420,7 @@ const registryItems = await appClient.listRegistryItems(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listregistryitems).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listregistryitems).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5485,7 +5485,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteRegistryItem('<YOUR-REGISTRY-ITEM-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deleteregistryitem).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteregistryitem).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5567,7 +5567,7 @@ const module = await appClient.createModule(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createmodule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createmodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5694,7 +5694,7 @@ const module = await appClient.updateModule(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#updatemodule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updatemodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5829,7 +5829,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const module = await appClient.getModule('<YOUR-MODULE-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getmodule).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getmodule).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5896,7 +5896,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const modules = await appClient.listModules('<YOUR-ORGANIZATION-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listmodules).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listmodules).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -5973,7 +5973,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - (Promise<[CreateKeyResponse](https://ts.viam.dev/classes/appApi.CreateKeyResponse.html)>): The new key and ID.
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkey).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createkey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -6038,7 +6038,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await appClient.deleteKey('<YOUR-KEY-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#deletekey).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deletekey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -6105,7 +6105,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const key = await appClient.rotateKey('<YOUR-KEY-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#rotatekey).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#rotatekey).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -6171,7 +6171,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const keys = await appClient.listKeys('<YOUR-ORGANIZATION-ID>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#listkeys).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listkeys).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -6250,7 +6250,7 @@ const key =
   );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#createkeyfromexistingkeyauthorizations).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createkeyfromexistingkeyauthorizations).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -6280,7 +6280,7 @@ const appContent = await appClient.getAppContent(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappcontent).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getappcontent).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -6310,7 +6310,7 @@ const branding = await appClient.getAppBranding(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AppClient.html#getappbranding).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getappbranding).
 
 {{% /tab %}}
 {{< /tabs >}}
