@@ -57,6 +57,8 @@ from the table above.
 {{% card link="/motion-planning/move-an-arm/move-to-pose/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/move-with-constraints/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/move-by-joint-positions/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/multiple-waypoints/" noimage="true" %}}
+{{% card link="/motion-planning/move-an-arm/pose-clouds/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/pick-an-object/" noimage="true" %}}
 {{% card link="/motion-planning/move-an-arm/place-an-object/" noimage="true" %}}
 {{< /cards >}}

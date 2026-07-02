@@ -37,6 +37,16 @@ things are in physical space.
 
 ## Concepts
 
+### Frames and poses
+
+A **frame** is a coordinate system: an origin and three axes (x, y, z) attached to a
+component or to a fixed point in the world. The frame system tracks where every frame sits
+relative to the others.
+
+A **pose** is a position and orientation expressed in a particular frame. It pairs a
+translation (the x, y, z offset from the frame's origin) with an orientation (the direction
+something faces), so a pose only has meaning together with its reference frame.
+
 ### The world frame
 
 The world frame is the fixed root of your frame system. You do not configure it
@@ -284,9 +294,18 @@ If a component's pose looks wrong, check the translation and orientation values
 in its frame configuration. For details on all CLI motion commands, see
 [Motion Service Configuration](/motion-planning/reference/motion-service/#cli-commands).
 
+## Target an end effector for motion planning
+
+The motion service moves a named frame to a target pose, so which frame you
+configure for an end effector determines where the arm actually goes. For how
+`Move` resolves a component name to a frame, and how a `WorldState` transform
+adds or repositions that frame for a single request, see
+[End effector frames](/motion-planning/frame-system/end-effector-frames/).
+
 ## Configure frames for your hardware
 
 {{< cards >}}
+{{% card link="/motion-planning/frame-system/end-effector-frames/" noimage="true" %}}
 {{% card link="/motion-planning/frame-system/arm-gripper-camera/" noimage="true" %}}
 {{% card link="/motion-planning/frame-system/arm-fixed-camera/" noimage="true" %}}
 {{% card link="/motion-planning/frame-system/mobile-base-sensors/" noimage="true" %}}
