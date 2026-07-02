@@ -46,7 +46,7 @@ Phases 1 through 5 are the core workshop. Phase 6 is optional.
 
 1. **[Platform mental model](/tutorials/pick-and-place/platform-mental-model/)** (~15 min)
 2. **[Configure resources and explore the app](/tutorials/pick-and-place/configure-resources/)** (~20 min)
-3. **[Static positions and safety obstacles](/tutorials/pick-and-place/static-positions/)** (~20 min)
+3. **[Static positions and obstacles](/tutorials/pick-and-place/static-positions/)** (~20 min)
 4. **[Control the robot from Python](/tutorials/pick-and-place/control-the-robot-from-python/)** (~15 min, milestone one)
 5. **[Perception-guided picking](/tutorials/pick-and-place/perception-guided-picking/)** (~22 min, milestone two)
 6. **[Inline module](/tutorials/pick-and-place/inline-module/)** (~20 min, optional)
@@ -76,11 +76,11 @@ If either command fails, revisit the checklist above before continuing.
 - **Physical hardware ready:** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 - **Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 
-Only the physical hardware, viam-agent, and viam-server may be pre-provisioned for you. Configuring the arm, gripper, camera, and vision and motion services is always your hands-on work in this workshop, starting in Phase 2.
+Only the physical hardware, viam-agent, viam-server, and the frame calibration (the camera's mounting offset on the arm) may be pre-provisioned for you or come from the hardware setup guide. Configuring the arm, gripper, camera, and the vision and motion services is always your hands-on work in this workshop, starting in Phase 2.
 
 ## Companion code
 
 All supporting files for this workshop live in the [viam-devrel/pick-and-place](https://github.com/viam-devrel/pick-and-place) repository.
 
-- `config/` holds a machine config fragment for each phase. Use it to check your work after you configure resources by hand, not as something to import wholesale.
+- `config/` holds a machine config fragment and an obstacles template. Use them to check your work after you configure resources by hand, not as something to import wholesale.
 - `scripts/` holds the starter script for Phase 4 and the reference solution for Phase 5.
