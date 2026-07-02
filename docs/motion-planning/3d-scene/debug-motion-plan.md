@@ -7,11 +7,11 @@ type: "docs"
 description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path, then compare it against obstacles and reach to debug failures."
 ---
 
-The **3D SCENE** tab is a static inspector: it shows the configured frame system
-and live component poses. To see a motion plan, the trajectory the arm will follow,
-the goals it aims for, and how that path relates to your obstacles, you publish the
-plan as **custom visuals** through a world state store service. The scene then renders
-the path you can otherwise only read as numbers.
+The **3D SCENE** tab shows your configured frame system and live component poses. To
+also see a motion plan, the trajectory the arm will follow, the goals it aims for, and
+how that path relates to your obstacles, you publish the plan as **custom visuals**
+through a world state store service. The scene then renders the path you can otherwise
+only read as numbers.
 
 This page shows how to turn a plan into transforms the scene can draw, and how to
 use the rendered path to debug a plan that failed or moved unexpectedly.
