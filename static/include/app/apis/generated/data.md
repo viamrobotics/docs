@@ -93,7 +93,7 @@ const data = await dataClient.getLatestTabularData(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getlatesttabulardata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getlatesttabulardata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -231,7 +231,7 @@ const data = await dataClient.exportTabularData(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#exporttabulardata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#exporttabulardata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -384,7 +384,7 @@ const data = await dataClient.tabularDataByFilter(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabulardatabyfilter).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#tabulardatabyfilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -504,7 +504,7 @@ const data = await dataClient.tabularDataBySQL(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabulardatabysql).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#tabulardatabysql).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -632,7 +632,7 @@ const data = await dataClient.tabularDataByMQL(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tabulardatabymql).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#tabulardatabymql).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -804,7 +804,7 @@ const data = await dataClient.binaryDataByFilter(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binarydatabyfilter).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#binarydatabyfilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -933,7 +933,7 @@ const data = await dataClient.binaryDataByIds([
 ]);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#binarydatabyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#binarydatabyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1076,7 +1076,7 @@ const data = await dataClient.deleteTabularData(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletetabulardata).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletetabulardata).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1187,7 +1187,7 @@ const data = await dataClient.deleteBinaryDataByFilter({
 } as Filter);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletebinarydatabyfilter).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletebinarydatabyfilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1308,7 +1308,7 @@ const data = await dataClient.deleteBinaryDataByIds([
 ]);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletebinarydatabyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletebinarydatabyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1435,7 +1435,7 @@ const data = await dataClient.addTagsToBinaryDataByIds(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addtagstobinarydatabyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#addtagstobinarydatabyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1569,7 +1569,7 @@ const data = await dataClient.removeTagsFromBinaryDataByIds(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removetagsfrombinarydatabyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#removetagsfrombinarydatabyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1661,7 +1661,7 @@ const data = await dataClient.tagsByFilter({
 } as Filter);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#tagsbyfilter).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#tagsbyfilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1803,7 +1803,7 @@ const bboxId = await dataClient.addBoundingBoxToImageById(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addboundingboxtoimagebyid).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#addboundingboxtoimagebyid).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -1916,7 +1916,7 @@ await dataClient.removeBoundingBoxFromImageById(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removeboundingboxfromimagebyid).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#removeboundingboxfromimagebyid).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -2025,7 +2025,7 @@ const data = await dataClient.boundingBoxLabelsByFilter({
 } as Filter);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#boundingboxlabelsbyfilter).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#boundingboxlabelsbyfilter).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -2124,7 +2124,7 @@ const hostname = await dataClient.getDatabaseConnection(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getdatabaseconnection).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getdatabaseconnection).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -2229,7 +2229,7 @@ await dataClient.configureDatabaseUser(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#configuredatabaseuser).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#configuredatabaseuser).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -2346,7 +2346,7 @@ await dataClient.addBinaryDataToDatasetByIds(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#addbinarydatatodatasetbyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#addbinarydatatodatasetbyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -2472,7 +2472,7 @@ await dataClient.removeBinaryDataFromDatasetByIds(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#removebinarydatafromdatasetbyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#removebinarydatafromdatasetbyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -2577,7 +2577,7 @@ const pipeline = await dataClient.getPipeline(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#getdatapipeline).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getdatapipeline).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2639,7 +2639,7 @@ const pipelines = await dataClient.listDataPipelines(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#listdatapipelines).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#listdatapipelines).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2739,7 +2739,7 @@ const pipelineId = await dataClient.createDataPipeline(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#createdatapipeline).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#createdatapipeline).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2799,7 +2799,7 @@ await dataClient.deleteDataPipeline(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletedatapipeline).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletedatapipeline).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -2872,7 +2872,7 @@ page.runs.forEach((run) => {
 });
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#listdatapipelineruns).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#listdatapipelineruns).
 
 {{% /tab %}}
 {{< /tabs >}}
