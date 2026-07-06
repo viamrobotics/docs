@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="760"
+   height="350"
+   viewBox="0 0 760 350"
+   font-family="Helvetica, Arial, sans-serif"
+   version="1.1"
+   id="svg24"
+   sodipodi:docname="pose-cloud-cup.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview24"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.1657895"
+     inkscape:cx="345.68849"
+     inkscape:cy="203.7246"
+     inkscape:window-width="1854"
+     inkscape:window-height="1011"
+     inkscape:window-x="1986"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg24" />
+  <defs
+     id="defs17">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Gingham"
+       preserveAspectRatio="xMidYMid"
+       id="pattern34"
+       patternTransform="matrix(0.18806979,0,0,0.09741556,-702.96572,57.979984)"
+       x="0"
+       y="0" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="100"
+       height="100"
+       id="Gingham"
+       preserveAspectRatio="xMidYMid"
+       patternTransform="scale(0.5,0.5)"
+       style="fill:#0000ff"
+       inkscape:collect="always"
+       inkscape:isstock="true"
+       inkscape:label="Gingham">
+      <rect
+   style="fill-opacity:0.5;stroke:none"
+   id="rect3"
+   width="50"
+   height="50"
+   x="50"
+   y="0" />
+
+      <rect
+   style="stroke:none"
+   id="rect4"
+   width="50"
+   height="50"
+   x="50"
+   y="50" />
+
+      <rect
+   style="fill-opacity:0.5;stroke:none"
+   id="rect5"
+   width="50"
+   height="50"
+   x="0"
+   y="50" />
+
+    </pattern>
+    <linearGradient
+       id="swatch33"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop33" />
+    </linearGradient>
+    <marker
+       id="arw"
+       markerWidth="11"
+       markerHeight="11"
+       refX="8"
+       refY="3.6"
+       orient="auto">
+      <path
+         d="M0,0 L9,3.6 L0,7.2 z"
+         fill="#475569"
+         id="path1" />
+    </marker>
+    <symbol
+       id="armP"
+       overflow="visible">
+      <ellipse
+         cx="0"
+         cy="5"
+         rx="44"
+         ry="7"
+         fill="#000000"
+         opacity="0.08"
+         id="ellipse1" />
+      <rect
+         x="-30"
+         y="-20"
+         width="60"
+         height="22"
+         rx="5"
+         fill="#6b7480"
+         stroke="#444b54"
+         stroke-width="1.5"
+         id="rect1" />
+      <rect
+         x="-11"
+         y="-31"
+         width="22"
+         height="13"
+         rx="3"
+         fill="#7a828d"
+         stroke="#444b54"
+         stroke-width="1.2"
+         id="rect2" />
+      <line
+         x1="0"
+         y1="-30"
+         x2="64"
+         y2="-150"
+         stroke="#444b54"
+         stroke-width="20"
+         stroke-linecap="round"
+         id="line2" />
+      <line
+         x1="0"
+         y1="-30"
+         x2="64"
+         y2="-150"
+         stroke="#c2cad4"
+         stroke-width="15"
+         stroke-linecap="round"
+         id="line3" />
+      <line
+         x1="64"
+         y1="-150"
+         x2="196"
+         y2="-150"
+         stroke="#444b54"
+         stroke-width="20"
+         stroke-linecap="round"
+         id="line4" />
+      <line
+         x1="64"
+         y1="-150"
+         x2="196"
+         y2="-150"
+         stroke="#c2cad4"
+         stroke-width="15"
+         stroke-linecap="round"
+         id="line5" />
+      <line
+         x1="196"
+         y1="-150"
+         x2="196"
+         y2="-122"
+         stroke="#444b54"
+         stroke-width="18"
+         stroke-linecap="round"
+         id="line6" />
+      <line
+         x1="196"
+         y1="-150"
+         x2="196"
+         y2="-122"
+         stroke="#c2cad4"
+         stroke-width="13"
+         stroke-linecap="round"
+         id="line7" />
+      <circle
+         cx="0"
+         cy="-30"
+         r="11"
+         fill="#aab2bd"
+         stroke="#444b54"
+         stroke-width="1.5"
+         id="circle7" />
+      <circle
+         cx="0"
+         cy="-30"
+         r="4"
+         fill="#7a828d"
+         id="circle8" />
+      <circle
+         cx="64"
+         cy="-150"
+         r="11"
+         fill="#aab2bd"
+         stroke="#444b54"
+         stroke-width="1.5"
+         id="circle9" />
+      <circle
+         cx="64"
+         cy="-150"
+         r="4"
+         fill="#7a828d"
+         id="circle10" />
+      <circle
+         cx="196"
+         cy="-150"
+         r="10"
+         fill="#aab2bd"
+         stroke="#444b54"
+         stroke-width="1.5"
+         id="circle11" />
+      <circle
+         cx="196"
+         cy="-150"
+         r="3.5"
+         fill="#7a828d"
+         id="circle12" />
+      <rect
+         x="180"
+         y="-124"
+         width="32"
+         height="10"
+         rx="2"
+         fill="#b7bfca"
+         stroke="#444b54"
+         stroke-width="1.2"
+         id="rect12" />
+    </symbol>
+    <symbol
+       id="gripperP"
+       overflow="visible">
+      <rect
+         x="-18"
+         y="0"
+         width="36"
+         height="13"
+         rx="3"
+         fill="#9aa3af"
+         stroke="#444b54"
+         stroke-width="1.2"
+         id="rect13" />
+      <rect
+         x="-17"
+         y="13"
+         width="8"
+         height="22"
+         rx="2"
+         fill="#b7bfca"
+         stroke="#444b54"
+         stroke-width="1.1"
+         id="rect14" />
+      <rect
+         x="9"
+         y="13"
+         width="8"
+         height="22"
+         rx="2"
+         fill="#b7bfca"
+         stroke="#444b54"
+         stroke-width="1.1"
+         id="rect15" />
+    </symbol>
+    <symbol
+       id="cup"
+       overflow="visible">
+      <path
+         d="M-13,-34 L13,-34 L10,0 L-10,0 Z"
+         fill="#eef4fb"
+         stroke="#6f96b8"
+         stroke-width="1.3"
+         id="path15" />
+      <path
+         d="M-11.5,-26 L11.5,-26 L10,0 L-10,0 Z"
+         fill="#4a90d9"
+         id="path16" />
+      <ellipse
+         cx="0"
+         cy="-34"
+         rx="13"
+         ry="3.4"
+         fill="#cfe0f0"
+         stroke="#6f96b8"
+         stroke-width="1.1"
+         id="ellipse16" />
+      <ellipse
+         cx="0"
+         cy="-26"
+         rx="11.5"
+         ry="2.6"
+         fill="#6fb0e8"
+         id="ellipse17" />
+    </symbol>
+    <marker
+       id="aR"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
+       orient="auto">
+      <path
+         d="M0,0 L5,2 L0,4 z"
+         fill="#e23b3b"
+         id="path1-2" />
+    </marker>
+    <marker
+       id="aB"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
+       orient="auto">
+      <path
+         d="M0,0 L5,2 L0,4 z"
+         fill="#2f6fe0"
+         id="path3" />
+    </marker>
+    <marker
+       id="aG"
+       markerWidth="6"
+       markerHeight="6"
+       refX="4"
+       refY="2"
+       orient="auto">
+      <path
+         d="M0,0 L5,2 L0,4 z"
+         fill="#2fa84f"
+         id="path2" />
+    </marker>
+  </defs>
+  <use
+     href="#armP"
+     x="110"
+     y="300"
+     id="use17" />
+  <!-- table -->
+  <path
+     d="m 369.52015,265.05766 h 260.53682 l 31.77278,-58.99569 H 401.29293 Z"
+     fill="#d9c9a8"
+     stroke="#9c8a63"
+     stroke-width="1.7318"
+     id="path19" />
+  <path
+     d="M 369.11428,265.15942 H 629.66226 V 303.125 H 369.11428 Z"
+     fill="#c2ad82"
+     stroke="#9c8a63"
+     stroke-width="1.23441"
+     id="path20" />
+  <!-- pose cloud: the region of acceptable destinations on the table -->
+  <rect
+     style="fill:#0000ff;fill-opacity:0.210293;stroke:url(#pattern34);stroke-width:1.55699"
+     id="rect33"
+     width="204.64658"
+     height="54.599392"
+     x="541.37952"
+     y="238.4613"
+     rx="19.64632"
+     ry="1.725316"
+     transform="matrix(1,0,-0.46369595,0.8859944,0,0)"
+     inkscape:transform-center-x="-187.31961"
+     inkscape:transform-center-y="1.3394366" />
+  <text
+     x="574.42389"
+     y="254.06406"
+     text-anchor="middle"
+     font-size="12.5px"
+     font-weight="bold"
+     fill="#1f2937"
+     id="text21"><tspan
+       sodipodi:role="line"
+       id="tspan30"
+       x="574.42389"
+       y="254.06406">pose cloud</tspan><tspan
+       sodipodi:role="line"
+       id="tspan31"
+       x="574.42389"
+       y="269.68906" /></text>
+  <text
+     x="558.99615"
+     y="162.12234"
+     text-anchor="middle"
+     font-size="12.5px"
+     font-weight="bold"
+     fill="#1f2937"
+     id="text21-4"><tspan
+       sodipodi:role="line"
+       id="tspan30-7"
+       x="558.99615"
+       y="162.12234">valid</tspan><tspan
+       sodipodi:role="line"
+       id="tspan31-6"
+       x="558.99615"
+       y="177.74734">destination</tspan></text>
+  <!-- ghost cups: a few acceptable destinations inside the cloud -->
+  <!-- the move -->
+  <path
+     d="m 382.91035,194.44329 q 61.64623,26.65952 107.51418,38.27676"
+     fill="none"
+     stroke="#475569"
+     stroke-width="1.33289"
+     stroke-dasharray="6, 4"
+     marker-end="url(#arw)"
+     id="path24" />
+  <text
+     x="379.14221"
+     y="331.14221"
+     text-anchor="middle"
+     font-size="13px"
+     fill="#1f2937"
+     id="text24">Planner can find a solution anywhere in the pose cloud</text>
+  <rect
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:1.05452"
+     id="rect24"
+     width="14.32867"
+     height="37.688148"
+     x="319.75241"
+     y="162.14915"
+     rx="16.998936"
+     ry="1.9516107" />
+  <rect
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:1.04393"
+     id="rect25"
+     width="38.98542"
+     height="6.8183756"
+     x="334.13031"
+     y="174.15289"
+     rx="27.20628"
+     ry="0.26650795" />
+  <use
+     href="#cup"
+     x="306"
+     y="232"
+     id="use19"
+     transform="translate(62.917452,-38.034844)" />
+  <use
+     href="#cup"
+     x="306"
+     y="232"
+     id="use19-4"
+     transform="translate(252.82941,-9.2921803)" />
+  <rect
+     style="fill:#b3b3b3;stroke:#000000;stroke-width:1.04393"
+     id="rect25-3"
+     width="38.98542"
+     height="6.8183756"
+     x="333.89737"
+     y="181.21419"
+     rx="27.20628"
+     ry="0.26650795" />
+  <g
+     id="use25-8"
+     transform="matrix(0.7246754,0,0,0.7246754,520.10357,235.47397)">
+    <line
+       x1="0"
+       y1="0"
+       x2="36"
+       y2="0"
+       stroke="#e23b3b"
+       stroke-width="2.4"
+       marker-end="url(#aR)"
+       id="line28" />
+    <text
+       x="40"
+       y="4"
+       fill="#e23b3b"
+       font-size="11.5px"
+       font-style="italic"
+       id="text28">x</text>
+    <line
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="-36"
+       stroke="#2f6fe0"
+       stroke-width="2.4"
+       marker-end="url(#aB)"
+       id="line29" />
+    <text
+       x="4"
+       y="-38"
+       fill="#2f6fe0"
+       font-size="11.5px"
+       font-style="italic"
+       id="text29">z</text>
+    <line
+       x1="0"
+       y1="0"
+       x2="24"
+       y2="-16.5"
+       stroke="#2fa84f"
+       stroke-width="2.4"
+       marker-end="url(#aG)"
+       id="line30" />
+    <text
+       x="28"
+       y="-19"
+       fill="#2fa84f"
+       font-size="11.5px"
+       font-style="italic"
+       id="text30">y</text>
+    <circle
+       cx="0"
+       cy="0"
+       r="3"
+       fill="#1f2937"
+       id="circle30" />
+  </g>
+</svg>
