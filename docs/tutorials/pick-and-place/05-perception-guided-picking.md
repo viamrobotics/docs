@@ -24,11 +24,7 @@ In this phase you replace the fixed approach and grasp poses from Phase 4 with l
 
 Phase 2 previewed two vision services and asked you to hold off configuring them. Add both now, in order, since the second depends on the first.
 
-Add a **vision** service:
-
-- API: `rdk:service:vision`
-- Model: `devrel:shape-finder:detector`
-- Name: `shape-detector`
+On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `shape-finder` and select the `devrel:shape-finder:detector` vision model. Name it `shape-detector` and set its attribute:
 
 ```json
 {
@@ -43,11 +39,7 @@ Add a **vision** service:
 
 The `camera_name` attribute is also a dependency: `shape-detector` cannot run until `cam-1` is online, the same dependency pattern you have already seen with `gripper-1` and `arm-1`. This service reads color frames from `cam-1` and finds blocks by shape, in two dimensions, with no depth information yet.
 
-Add a second **vision** service:
-
-- API: `rdk:service:vision`
-- Model: `viam:vision:detections-to-segments`
-- Name: `vision-segment`
+Add the second service the same way. Click the **+** icon and select **Blocks**, search for `detections-to-segments`, and select the `viam:vision:detections-to-segments` model. Name it `vision-segment` and set its attributes:
 
 ```json
 {
@@ -126,7 +118,7 @@ obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
 obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 ```
 
-`get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the most points, ordinarily the block closest to the camera or most fully in view. Use `len(o.point_cloud)` here, not a `.size` attribute; a point cloud in the Python SDK is a plain sequence of points, and `len()` is how you count them.
+`get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the largest point cloud, ordinarily the block closest to the camera or most fully in view. Each `point_cloud` is the object's PCD data stored as raw bytes, so `len(o.point_cloud)` measures its encoded size in bytes; that grows with the number of points, which makes it a reliable proxy for object size. Use `len(o.point_cloud)`, not a `.size` attribute, which the bytes do not have.
 
 Add a `print(obj_in_world.pose)` after the transform and run the script. Watch the x, y, and z values it prints as you move a block around the table.
 
@@ -204,6 +196,10 @@ await home.set_position(2)
 ```
 
 Notice the shape of this cycle: it picks with `motion.move` and places with the saved-pose switches from Phase 3. That split is deliberate, not an inconsistency. The pick target moves every cycle, so it needs the Cartesian precision and obstacle-aware planning that `motion.move` provides against a freshly computed world pose. The place target never moves: it is the same bin in the same spot every time, so a pre-measured, pre-verified saved pose is simpler and just as reliable as planning a fresh path there. Use the right tool for each half of the cycle rather than forcing one approach to do both jobs.
+
+{{< alert title="The arm moves under code control" color="caution" >}}
+This loop drives the arm to a computed grasp pose with `motion.move` and replays saved poses, all from your script. Keep the workspace clear and the e-stop within reach, and run it the first few times ready to stop the arm if a computed pose looks wrong.
+{{< /alert >}}
 
 Run the script and watch the sequence in stages: the approach move first, then the grasp move, then the full cycle through to a placed block.
 

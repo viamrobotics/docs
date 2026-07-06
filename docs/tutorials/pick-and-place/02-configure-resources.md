@@ -33,7 +33,7 @@ You will not touch the vision service in this phase. The `shape-detector` and `v
 
 <!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
 
-Start with the gripper. On the **CONFIGURE** tab, click the **+** icon and select **Configuration block**. Search for the `viam:ufactory:gripper` model and select it. Name it `gripper-1`.
+Start with the gripper. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for the `viam:ufactory:gripper` model and select it. Name it `gripper-1`.
 
 {{< alert title="One module, two models" color="note" >}}
 The `viam:ufactory` module you downloaded in Phase 1 provides both the arm model and this gripper model, so `viam-server` already has the code it needs. No second download happens here.
@@ -49,13 +49,13 @@ This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is r
 
 <!-- ASSET P0 configure-add-discovery (UI+): add-component dialog, "realsense" searched, discovery / realsense:discovery result highlighted -->
 <!-- ASSET P0 discovery-test-panel (UI+): realsense discovery TEST panel showing a camera config snippet with serial_number filled in -->
-<!-- ASSET P2 configure-camera (UI): cam-1 realsense config, sensors color+depth, 640x480, align_color_depth true, serial_number populated -->
+<!-- ASSET P2 configure-camera (UI): cam-1 realsense config, sensors color+depth, align_color_depth true, serial_number populated -->
 
 You could add the camera by hand like the arm and gripper, but the RealSense module ships a **discovery service** that does the tedious part for you: it finds the connected camera and hands you a ready-made config with the correct serial number already filled in. A discovery service reports the hardware attached to a machine and suggests configurations for it, so you configure the right device without hunting for identifiers by hand. See [Discovery service](/reference/services/discovery/) for the general pattern.
 
 ### Add the discovery service
 
-Click the **+** icon and select **Configuration block**. Search for `realsense` and select the `discovery / realsense:discovery` service. Leave its name as the default and save the config.
+Click the **+** icon and select **Blocks**. Search for `realsense` and select the `discovery / realsense:discovery` service. Leave its name as the default and save the config.
 
 Saving now is the moment `viam-server` fetches the `viam:realsense` module: the discovery service and the camera model both come from it, so the download happens once here, the same way `viam:ufactory` downloaded once for the arm and gripper. Watch the **LOGS** tab for the module download and the discovery service starting.
 
@@ -63,13 +63,11 @@ Saving now is the moment `viam-server` fetches the `viam:realsense` module: the 
 
 Open the discovery service's **TEST** panel. It lists every RealSense it detects on the machine, each as a copy-pasteable configuration snippet with that camera's `serial_number` already populated. With one camera connected you see one entry. Select **Add component** next to it to create a camera component from the snippet.
 
-The discovered component arrives named `realsense-<serial_number>`, with `sensors` set to `["color", "depth"]` and `serial_number` already filled in. Rename it to `cam-1` so it matches the rest of this workshop, then add the three attributes discovery does not set:
+The discovered component arrives named `realsense-<serial_number>`, with `sensors` set to `["color", "depth"]` and `serial_number` already filled in. Rename it to `cam-1` so it matches the rest of this workshop, then add the one attribute discovery does not set:
 
-- `width_px`: `640`
-- `height_px`: `480`
 - `align_color_depth`: `true`
 
-Leave the discovered `sensors` and `serial_number` as they are; letting discovery set the serial number is the whole point of using the service.
+Leave the discovered `sensors` and `serial_number` as they are; letting discovery set the serial number is the whole point of using the service. You do not need to set `width_px` or `height_px`; the module uses a supported default resolution, and pinning one that the camera cannot produce would fail the build.
 
 `align_color_depth` is the attribute that makes perception work later. With it set to `true`, the module aligns each depth frame to the color frame, so a given pixel in the color image and the same pixel in the depth image describe the same physical point. The `vision-segment` service in Phase 5 relies on that alignment to turn a 2D detection into a 3D point cloud segment. Both `color` and `depth` must be in the `sensors` list for it to take effect.
 

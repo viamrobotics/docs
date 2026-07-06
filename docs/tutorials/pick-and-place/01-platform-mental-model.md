@@ -62,7 +62,7 @@ Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the
 
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.
 
-On the **CONFIGURE** tab, click the **+** icon and select **Configuration block**. Search for `xArm6`, select the `viam:ufactory:xArm6` result, and name the component `arm-1`.
+On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `xArm6`, select the `viam:ufactory:xArm6` result, and name the component `arm-1`.
 
 Set the following attributes:
 

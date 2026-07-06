@@ -57,15 +57,17 @@ The approach pose and the grasp pose share the same x and y coordinates. The onl
 
 You configure pose saving by hand, the same way you configured the arm, gripper, and camera in Phases 1 and 2.
 
-Add the `erh:vmodutils` module from the Viam registry to your machine. This module provides the `erh:vmodutils:arm-position-saver` switch model you use to save and recall poses, and the `erh:vmodutils:obstacle` model you use later in this phase.
+On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `arm-position-saver`, select the `erh:vmodutils:arm-position-saver` switch model, and name it `home-pose`. This is the first model you use from the `erh:vmodutils` module, so `viam-server` downloads that module now; the same module also provides the `erh:vmodutils:obstacle` model you configure later in this phase, so it downloads only once.
 
-Add a **switch** component for `home-pose`:
+Set one attribute:
 
-- API: `rdk:component:switch`
-- Model: `erh:vmodutils:arm-position-saver`
-- Attribute: `arm`: `"arm-1"`
+- `arm`: `"arm-1"`
 
 This attribute is also a dependency, the same way `gripper-1` depends on `arm-1`: the switch cannot save or recall a pose until the arm it points at is running.
+
+{{< alert title="The arm will move" color="caution" >}}
+The steps in this phase move the physical arm, both when you jog it into position and when you set a switch to position 2 to replay a saved pose. Keep the workspace clear and the e-stop within reach. Verify each pose individually before you run the full sequence at the end of the phase, since a pose saved in a bad spot is replayed exactly on position 2.
+{{< /alert >}}
 
 With the `home-pose` switch added, save and verify it:
 
@@ -79,7 +81,7 @@ Now that `home-pose` is saved, open its resource card on the **CONFIGURE** tab a
 Run the same four save-and-verify steps for each of the four new poses: jog the arm into position, confirm it with **Get end position**, set the switch to position 1 to save, and set it to position 2 to confirm the arm returns.
 
 {{< alert title="Switch positions" color="note" >}}
-On an `arm-position-saver` switch, position 1 saves the current joint positions, position 2 moves the arm to the saved pose, and position 0 clears any saved data. Always save with position 1 before you attempt position 2. Setting position 2 on an unsaved switch does nothing.
+On an `arm-position-saver` switch, position 1 saves the current joint positions and position 2 moves the arm to the saved pose. Position 0 is the idle resting state the switch returns to after a save or a move; it does not clear the saved pose. Always save with position 1 before you attempt position 2. Setting position 2 on an unsaved switch does nothing.
 {{< /alert >}}
 
 {{< checkpoint >}}
@@ -118,10 +120,7 @@ Each obstacle geometry is a box defined by its `x`, `y`, and `z` dimensions (the
 
 <!-- ASSET P0 diagram-obstacle-geometry (DIAGRAM): box-center z-math (table 30mm z=-15; walls 600mm z=300; world origin at arm base) -->
 
-Add a component:
-
-- API: `rdk:component:gripper`
-- Model: `erh:vmodutils:obstacle`
+Click the **+** icon and select **Blocks**, then search for `obstacle` and select the `erh:vmodutils:obstacle` model. Name it `table` and set its geometry attributes:
 
 ```json
 {
@@ -150,7 +149,7 @@ Replace the `x`, `y`, and `z` dimensions with your own measured table length, wi
 
 <!-- ASSET P1 3dscene-obstacles (UI): 3D scene rendering the table + wall boxes around the arm -->
 
-Add two more `erh:vmodutils:obstacle` components, one per boundary you want to wall off:
+Add two more `erh:vmodutils:obstacle` components the same way, one per boundary you want to wall off:
 
 ```json
 {

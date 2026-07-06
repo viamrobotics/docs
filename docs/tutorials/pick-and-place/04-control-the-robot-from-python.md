@@ -106,6 +106,10 @@ You enable it in Phase 5 once the vision service exists. The `motion` handle is 
 
 <!-- ASSET P0 term-resource-names (TERM+): uv run output with resource_names printed; label arm-1/gripper-1/cam-1/pose switches/obstacle grippers -->
 
+{{< alert title="The script moves the arm" color="caution" >}}
+Running the script drives the arm through the full static sequence immediately after it prints the resource list. Clear the workspace and keep the e-stop within reach before you run it.
+{{< /alert >}}
+
 Run the script now with `uv run python starter-script.py`. It happens in a single run: `connect()` opens the connection, the script prints every resource on the machine, and then it immediately drives the arm through the static sequence. Watch the printed resource list scroll past in your terminal before the arm starts moving.
 
 The first thing printed is the full resource list:
