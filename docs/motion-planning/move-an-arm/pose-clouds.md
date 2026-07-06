@@ -31,10 +31,10 @@ relaxes and how to use a `pose cloud` with the motion service.
   to reach that exact pose, relaxing the destination tolerance enlarges the solution space
   and often turns a failing plan into a success.
 
-Pose clouds are powerful when coupled with motion constraints: together they describe the motion you want without pinning down the destination exactly. Moving a cup of water is a good example. You define an
-orientation constraint to keep the cup upright, but you may not know which exact target
-pose lets the arm hold that orientation across its workspace. A pose cloud lets the planner
-choose a destination within a region instead:
+Pose clouds are powerful when coupled with motion constraints: together they describe the motion you want without pinning down the destination exactly. Moving a cup of water is a good example. You define a linear constraint to move the cup along
+a straight, level path so it does not spill, but you may not know which exact target pose the
+arm can reach while holding that path. A pose cloud lets the planner choose a destination
+within a region instead:
 
 {{<imgproc src="/motion-planning/move-an-arm/pose-cloud-cup.svg" declaredimensions=true alt="A cobot arm holds a cup of water above a table. A translucent dashed region on the table marks the pose cloud, with several faded ghost cups inside it showing acceptable destinations. The cup may land anywhere in the region at any rotation while staying upright." style="max-width:760px" class="aligncenter">}}
 
@@ -97,7 +97,8 @@ target's frame, these tolerances follow the tilt of the surface directly.
 
 A pose cloud travels with the destination pose. In Go, attach the pose cloud to the destination with
 `NewPoseInFrameWithGoalCloud`, then pass that destination to `Move`. The pose is
-the center of the region and the `PoseCloud` is the tolerance around it. This example includes an orientation constraint for the water example, so the cup stays upright for the whole motion, not only at
+the center of the region and the `PoseCloud` is the tolerance around it. This example adds a
+linear constraint, so the cup travels a straight, level path for the whole motion, not only at
 the goal.
 
 ```go
@@ -127,10 +128,11 @@ destination := referenceframe.NewPoseInFrameWithGoalCloud(
     },
 )
 
-// Keep the cup upright along the whole path, within 5 degrees, not just at the goal.
+// Move the cup along a straight path (within 5 mm) and keep it level (within 5 degrees)
+// the whole way, not just at the goal.
 constraints := &motionplan.Constraints{
-    OrientationConstraint: []motionplan.OrientationConstraint{
-        {OrientationToleranceDegs: 5},
+    LinearConstraint: []motionplan.LinearConstraint{
+        {LineToleranceMm: 5, OrientationToleranceDegs: 5},
     },
 }
 
