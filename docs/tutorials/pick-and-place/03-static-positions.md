@@ -71,14 +71,14 @@ The steps in this phase move the physical arm, both when you jog it into positio
 
 With the `home-pose` switch added, save and verify it:
 
-1. Open the **CONTROL** tab and find the arm test card. Use the joint sliders to jog the arm into position.
-2. Select **Get end position** on the arm card and note the x, y, and z values to confirm the arm is where you expect it.
+1. Open the **CONTROL** tab and find the arm test card. Set the **MoveToJointPositions** sliders and press **Execute** to jog the arm into position.
+2. Under **MoveToPosition**, press **Current position** and note the x, y, and z values to confirm the arm is where you expect it.
 3. On the switch test card, set the switch to **position 1** to save the current joint positions.
 4. Set the switch to **position 2** to confirm the arm returns to the saved pose from any starting position.
 
 Now that `home-pose` is saved, open its resource card on the **CONFIGURE** tab and use the **Duplicate** feature to create a copy. Rename the copy to `approach-pose`, and its `arm` attribute carries over automatically since it is already set to `"arm-1"`. Duplicate three more times for `grasp-pose`, `travel-pose`, and `place-pose`. This is faster than adding five switches from scratch and less error-prone, since you only type the `arm` attribute once.
 
-Run the same four save-and-verify steps for each of the four new poses: jog the arm into position, confirm it with **Get end position**, set the switch to position 1 to save, and set it to position 2 to confirm the arm returns.
+Run the same four save-and-verify steps for each of the four new poses: jog the arm into position, confirm it with **Current position** under **MoveToPosition**, set the switch to position 1 to save, and set it to position 2 to confirm the arm returns.
 
 {{< alert title="Switch positions" color="note" >}}
 On an `arm-position-saver` switch, position 1 saves the current joint positions and position 2 moves the arm to the saved pose. Position 0 is the idle resting state the switch returns to after a save or a move; it does not clear the saved pose. Always save with position 1 before you attempt position 2. Setting position 2 on an unsaved switch does nothing.
@@ -107,9 +107,9 @@ Obstacles are not a separate WorldState file you import. Each obstacle is an `er
 Before you can fill in the obstacle geometry, measure your own table and workspace boundary. You need two kinds of measurement, and each one feeds a different part of the config:
 
 - **Tape-measure dimensions** for the box sizes: the table's length, width, and thickness go into the table obstacle's `x`, `y`, and `z`. Use the tape measure for how big each box is, not for where it sits.
-- **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the side boundary, and select **Get end position** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. These are the numbers that fill the `REPLACE_WITH_MEASURED_FRONT_Y` and `REPLACE_WITH_MEASURED_SIDE_X` placeholders in the safety walls below.
+- **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the side boundary, and press **Current position** under **MoveToPosition** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. These are the numbers that fill the `REPLACE_WITH_MEASURED_FRONT_Y` and `REPLACE_WITH_MEASURED_SIDE_X` placeholders in the safety walls below.
 
-All obstacle geometry is expressed against the world origin, which in this setup sits at the arm base, so the x and y coordinates you read from **Get end position** drop straight into the `translation` fields without any conversion.
+All obstacle geometry is expressed against the world origin, which in this setup sits at the arm base, so the x and y coordinates you read from **Current position** drop straight into the `translation` fields without any conversion.
 
 Each obstacle geometry is a box defined by its `x`, `y`, and `z` dimensions (the box's full size in millimeters) and a `translation` (the box's center point in the parent frame). Two details trip people up:
 
@@ -143,7 +143,7 @@ Click the **+** icon and select **Blocks**, then search for `obstacle` and selec
 }
 ```
 
-Replace the `x`, `y`, and `z` dimensions with your own measured table length, width, and thickness. If your table is not centered on the arm base in x and y, adjust `translation.x` and `translation.y` to match, using the values you read from **Get end position** when jogging to the table edges.
+Replace the `x`, `y`, and `z` dimensions with your own measured table length, width, and thickness. If your table is not centered on the arm base in x and y, adjust `translation.x` and `translation.y` to match, using the values you read from **Current position** when jogging to the table edges.
 
 ### Add the safety walls
 

@@ -138,7 +138,7 @@ The translation and orientation above describe the specific gripper and camera m
 ## Test each resource from the CONTROL tab
 
 <!-- ASSET P1 control-camera-stream (UI): CONTROL camera card, live color + depth -->
-<!-- ASSET P1 control-arm-card (UI+): joint sliders + Get end position boxed -->
+<!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
 <!-- ASSET P1 control-gripper-grab (MOTION): gripper closing on a block via Grab, then Open releasing -->
 
 Open the **CONTROL** tab. You should now see a test card for each of the three components you just added.
@@ -150,13 +150,13 @@ The camera card shows a live color stream from `cam-1`. Because you configured b
 {{< /checkpoint >}}
 
 {{< alert title="The arm is about to move" color="caution" >}}
-Jogging a joint slider moves the physical arm immediately. Before you touch a slider, confirm the workspace is clear, keep the e-stop within reach, and move one joint a small amount at a time. Large or combined joint moves can drive the arm into the table, the camera, or itself.
+Jogging the arm (setting the joint sliders and pressing **Execute**) moves the physical arm. Before you run a move, confirm the workspace is clear, keep the e-stop within reach, and change one joint a small amount at a time. Large or combined joint moves can drive the arm into the table, the camera, or itself.
 {{< /alert >}}
 
-On the arm card, jog a joint with the sliders and confirm the arm moves. Then select **Get end position** and confirm it returns x, y, and z coordinates.
+On the arm card, set a joint with the **MoveToJointPositions** sliders and press **Execute** to move the arm. Then, under **MoveToPosition**, press **Current position** and confirm the Pose Values populate with the arm's current x, y, and z.
 
 {{< checkpoint >}}
-Jogging a joint slider moves the physical arm, and **Get end position** returns a coordinate rather than an error. If jogging does nothing, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
+Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values rather than erroring. If nothing moves, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
 {{< /checkpoint >}}
 
 On the gripper card, place a block between the gripper fingers by hand, then select **Grab**. The fingers should close and hold the block. Select **Open** and confirm the fingers release it.
