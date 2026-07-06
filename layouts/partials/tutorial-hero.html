@@ -2,8 +2,10 @@
 landing. For workshops, the right panel lists phases as a clickable numbered
 stepper. */ -}} {{- $p := .page -}} {{- $isWorkshop :=
 $p.Params.workshop_overview -}} {{- $phases := cond $isWorkshop
-$p.RegularPages.ByWeight slice -}} {{- $phaseCount := len $phases -}} {{- $start
-:= cond (gt $phaseCount 0) (index $phases 0).RelPermalink $p.RelPermalink -}}
+$p.RegularPages.ByWeight slice -}} {{- $phaseCount := len $phases -}} {{- /*
+Start the workshop from the overview index (the 1000-ft view), not straight
+into Phase 1. For solo tutorials this is the tutorial page itself. */ -}} {{-
+$start := $p.RelPermalink -}}
 <section
   class="tutorial-hero{{ if not $isWorkshop }} tutorial-hero--solo{{ end }}"
   aria-label="Featured tutorial"

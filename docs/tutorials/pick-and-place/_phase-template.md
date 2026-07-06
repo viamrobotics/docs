@@ -19,8 +19,6 @@ headless: true # REMOVE this line when you copy the template to a real phase pag
 
 <!-- One short paragraph: what this phase accomplishes and why it comes here. -->
 
-{{< workshop-phases >}}
-
 ## Section heading
 
 <!-- Content. Use the shortcodes below where relevant. -->

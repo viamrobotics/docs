@@ -16,8 +16,6 @@ languages: ["python"]
 
 This phase is optional. Phase 5 already gave you a complete pick-and-place loop that runs from your own laptop: detection, the frame transform, planned motion, and a reliable place. This phase packages that same loop as a module so it runs on the robot directly, with no laptop connection required once it is deployed.
 
-{{< workshop-phases >}}
-
 ## Why bother with a module
 
 A script you run from your laptop is a complete result. It is not a lesser version of a module, and nothing about Phase 5 was a placeholder waiting for this phase to finish it. Reach for a module only when one of these is true for your setup:

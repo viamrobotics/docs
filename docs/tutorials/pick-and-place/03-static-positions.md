@@ -17,8 +17,6 @@ languages: ["python"]
 
 In this phase you move the arm through the full pick-and-place sequence using saved poses, with no perception yet. The goal is to prove that the hardware and motion planning work before you add detection, so that any bug you encounter later has only one new cause.
 
-{{< workshop-phases >}}
-
 ## Why static positions first
 
 When you add perception and motion planning at the same time, a failure could live in detection, the frame transform, the pose math, the motion planner, or gripper timing, and there is no straightforward way to tell which. Saving fixed poses lets you run the full hardware loop first. In Phase 4 you drive this same proven sequence from a Python script, and perception does not enter the picture until Phase 5. Once the arm reliably travels through every stage of the sequence, perception becomes the only new variable when you reach it.
@@ -57,7 +55,7 @@ The approach pose and the grasp pose share the same x and y coordinates. The onl
 <!-- ASSET P0 control-armsaver-switch (UI+): arm-position-saver switch card with position 1 = save and 2 = execute annotated -->
 <!-- ASSET P1 configure-duplicate-feature (UI+): the resource Duplicate control highlighted -->
 
-You configure pose saving by hand, the same way you configured the arm, gripper, and camera in Phase 2.
+You configure pose saving by hand, the same way you configured the arm, gripper, and camera in Phases 1 and 2.
 
 Add the `erh:vmodutils` module from the Viam registry to your machine. This module provides the `erh:vmodutils:arm-position-saver` switch model you use to save and recall poses, and the `erh:vmodutils:obstacle` model you use later in this phase.
 

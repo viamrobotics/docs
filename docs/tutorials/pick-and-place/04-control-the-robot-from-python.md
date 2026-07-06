@@ -19,8 +19,6 @@ languages: ["python"]
 
 In this phase you write and run a Python script on your laptop that connects to the robot and executes the static pick-and-place sequence from Phase 3. This proves your connection, environment, and named positions work end to end before you add perception in Phase 5.
 
-{{< workshop-phases >}}
-
 ## Why a script before a module
 
 Everything you did in Phase 3 happened by clicking test cards on the **CONTROL** tab. That is a fine way to verify hardware, but it does not scale: you cannot loop, branch on a sensor reading, or retry a failed grasp from a button. A local Python script gives you those things, plus fast iteration, a local debugger, and the ability to sprinkle in `print` statements wherever you need visibility into what the robot is doing.

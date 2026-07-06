@@ -23,19 +23,19 @@ companion_repo: "https://github.com/viam-devrel/pick-and-place"
 no_list: true
 ---
 
-In this workshop you build a vision-guided robot that finds blocks by shape and picks each one into a bin. A `shape-detector` vision service locates blocks in camera space and feeds a `vision-segment` service (model `detections-to-segments`) that turns each detection into a point cloud segment the motion planner can grasp.
+In this workshop you build a vision-guided robot that finds blocks by shape and places each one into a bin. A `shape-detector` vision service locates blocks in camera space and feeds a `vision-segment` service (model `detections-to-segments`) that turns each detection into a point cloud segment the motion planner can grasp.
 
-The workshop is structured as six sequential phases, each ending with a working system state you can verify before moving on. The workshop has two milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one, a real and bankable win), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two). At minimum, aim to complete the Phase 4 script.
+The workshop is structured as six sequential phases, each ending with a working system state you can verify before moving on. The workshop has two milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two).
 
 ## What you'll build
 
 <!-- ASSET P0 hero-hardware-overview (PHOTO): complete rig staged (xArm6 + gripper + wrist RealSense + blocks + bin + Meerkat). See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-You will configure an xArm6 robotic arm fitted with a finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks in camera space, and the Viam motion service plans and executes collision-free picks that place each block in the bin. By the end of Phase 5 you have a Python script you run from your laptop that drives the full detect-pick-place loop.
+You will configure an xArm6 robotic arm fitted with a two-finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks in camera space, and the Viam motion service plans and executes collision-free picks that place each block in the bin. By the end of Phase 5 you have a Python script you run from your laptop that drives the full detect-pick-place loop.
 
 <!-- TODO: add hardware-overview photo to assets/tutorials/pick-and-place/ and reference via images frontmatter once available -->
 
-## Hardware
+## Required hardware
 
 - **uFactory xArm6**: the six-axis robotic arm that picks and places the blocks.
 - **Intel RealSense D435**: the wrist-mounted depth camera that detects block positions by shape.
@@ -46,12 +46,19 @@ You will configure an xArm6 robotic arm fitted with a finger gripper and a wrist
 
 Phases 1 through 5 are the core workshop. Phase 6 is optional.
 
-1. **[Platform mental model](/tutorials/pick-and-place/platform-mental-model/)** (~15 min)
-2. **[Configure resources and explore the app](/tutorials/pick-and-place/configure-resources/)** (~20 min)
+1. **[Platform mental model](/tutorials/pick-and-place/platform-mental-model/)** (~20 min)
+2. **[Configure resources and explore the app](/tutorials/pick-and-place/configure-resources/)** (~15 min)
 3. **[Static positions and obstacles](/tutorials/pick-and-place/static-positions/)** (~20 min)
 4. **[Control the robot from Python](/tutorials/pick-and-place/control-the-robot-from-python/)** (~15 min, milestone one)
 5. **[Perception-guided picking](/tutorials/pick-and-place/perception-guided-picking/)** (~22 min, milestone two)
 6. **[Inline module](/tutorials/pick-and-place/inline-module/)** (~20 min, optional)
+
+## Companion code
+
+All supporting files for this workshop live in the [viam-devrel/pick-and-place](https://github.com/viam-devrel/pick-and-place) repository. You do not need it to start, but the prerequisites below reference its `scripts/` project, and later phases pull from it.
+
+- `config/` holds a machine config fragment and an obstacles template. Use them to check your work after you configure resources by hand.
+- `scripts/` holds the starter script for Phase 4 and the reference solution for Phase 5.
 
 ## Prerequisites
 
@@ -79,14 +86,7 @@ If either command fails, revisit the checklist above before continuing.
 
 <!-- ASSET P1 live-indicator (UI+): machine page with the green Live indicator boxed -->
 
-- **Physical hardware ready:** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
+- **Hardware ready (`viam-server` running):** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 - **Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 
-Only the physical hardware, viam-agent, viam-server, and the frame calibration (the camera's mounting offset on the arm) may be pre-provisioned for you or come from the hardware setup guide. Configuring the arm, gripper, camera, and the vision and motion services is always your hands-on work in this workshop, starting in Phase 2.
-
-## Companion code
-
-All supporting files for this workshop live in the [viam-devrel/pick-and-place](https://github.com/viam-devrel/pick-and-place) repository.
-
-- `config/` holds a machine config fragment and an obstacles template. Use them to check your work after you configure resources by hand, not as something to import wholesale.
-- `scripts/` holds the starter script for Phase 4 and the reference solution for Phase 5.
+Only the physical hardware, viam-agent, and viam-server may be pre-provisioned for you or come from the hardware setup guide. Configuring the arm, gripper, and camera, their frames, and the vision and motion services is always your hands-on work in this workshop, starting in Phase 1.

@@ -17,8 +17,6 @@ languages: ["python"]
 
 In this phase you replace the fixed approach and grasp poses from Phase 4 with live perception: the vision service detects a block, the frame system transforms its position into world space, and the motion service plans a collision-free pick.
 
-{{< workshop-phases >}}
-
 ## Configure the vision pipeline
 
 <!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
