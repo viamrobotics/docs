@@ -65,7 +65,7 @@ Configure your [webcam](/reference/components/camera/webcam/) so that your machi
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `cam` in all example code.
-   Click **Create**.
+   Click **Add to machine**.
 
 3. Leave the **video_path** blank and the camera will use the default video path for your machine.
    If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the camera's configuration panel.
@@ -96,7 +96,7 @@ If you want to train your own model instead, follow the instructions to [train a
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing `ML model` and select **ML model / TFLite CPU** from the builtin options.
 
-   Enter `people` as the name, click **Add Module**, then click **Create**.
+   Enter `people` as the name, then click **Add to machine**.
 
    In the new ML Model service panel, configure your service.
 
@@ -110,7 +110,7 @@ If you want to train your own model instead, follow the instructions to [train a
    Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing `ML model` and select **vision / ML model** from the builtin options.
 
-   Enter `myPeopleDetector` as the name, then click **Create**.
+   Enter `myPeopleDetector` as the name, then click **Add to machine**.
 
    In the new vision service panel, configure your service.
 

@@ -90,7 +90,7 @@ Configure your [webcam](/reference/components/camera/webcam/) so that your machi
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `my_webcam` in all example code.
-   Click **Create**.
+   Click **Add to machine**.
 
 3. Leave the **video_path** blank and the camera will use the default video path for your machine.
    If this doesn't work when you test your camera later, you can try a different video path by following the prompt on the camera's configuration panel.

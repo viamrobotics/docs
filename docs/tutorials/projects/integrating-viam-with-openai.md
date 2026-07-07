@@ -251,7 +251,7 @@ To configure an ML model service:
 - Select the **CONFIGURE** tab.
 - Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 - Select the `ML model` type, then select the `TFLite CPU` model.
-- Enter the name `stuff_detector` for your service, click **Add module** and click **Create**.
+- Enter the name `stuff_detector` for your service and click **Add to machine**.
 
 Your robot registers this as a machine learning model and makes it available for use.
 
