@@ -27,8 +27,6 @@ By the end of this phase your CONFIGURE tab holds all three components: `arm-1` 
 | `gripper-1` | `rdk:component:gripper` | `viam:ufactory:gripper` |
 | `cam-1`     | `rdk:component:camera`  | `viam:camera:realsense` |
 
-You will not touch the vision service in this phase. The `shape-detector` and `vision-segment` services that let the machine find blocks by shape come later, in Phase 5, right before you write the code that calls them. For now, focus on the hardware.
-
 ## Configure the gripper
 
 <!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
@@ -41,7 +39,11 @@ The `viam:ufactory` module you downloaded in Phase 1 provides both the arm model
 
 Set one attribute:
 
-- `arm`: `"arm-1"`
+```json
+{
+  "arm": "arm-1"
+}
+```
 
 This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is running, because the gripper is physically mounted on the arm and controlled through the same connection. Save the config and check the **LOGS** tab: `gripper-1` comes online immediately, because the `viam:ufactory` module has been running since Phase 1.
 
@@ -146,8 +148,10 @@ Open the **CONTROL** tab. You should now see a test card for each of the three c
 On the camera card, confirm you get a live feed:
 
 {{< checkpoint >}}
-The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the card to the depth view and confirm that stream updates too. If the card is blank, check the LOGS tab for a camera error before moving on.
+The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the **GetImages** stream rate to "Refresh every second" and the source to depth and confirm that stream updates too. If the card is blank, check the LOGS tab for a camera error before moving on.
 {{< /checkpoint >}}
+
+Below the **GetImages** control, you can toggle **GetPointCloud** on and set the "Camera up vector" to "-y" to see a live stream of the pointcloud data from the camera as a 3D scene. Hovering over any part of the point cloud with your mouse will display the x, y, z coordinates of that point from the perspective of the camera and distance from the camera sensor.
 
 {{< alert title="The arm is about to move" color="caution" >}}
 Jogging the arm (setting the joint sliders and pressing **Execute**) moves the physical arm. Before you run a move, confirm the workspace is clear, keep the e-stop within reach, and change one joint a small amount at a time. Large or combined joint moves can drive the arm into the table, the camera, or itself.

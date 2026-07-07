@@ -5,12 +5,13 @@
 {{- $inner := .Inner | .Page.RenderString -}}
 {{- if not ($.Page.Scratch.Get "checkpointcss") -}}
 <style type="text/css">
-.checkpoint{--cp-accent:#1a7f4b;--cp-bg:#f1faf4;--cp-title:#0f5c34;border:1px solid var(--cp-accent);border-left:6px solid var(--cp-accent);border-radius:4px;background:var(--cp-bg);padding:16px 18px;margin:24px 0}
+.checkpoint{--cp-accent:#1a7f4b;--cp-bg:#f1faf4;--cp-title:#0f5c34;--cp-text:#14231b;border:1px solid var(--cp-accent);border-left:6px solid var(--cp-accent);border-radius:4px;background:var(--cp-bg);color:var(--cp-text);padding:16px 18px;margin:24px 0}
 .checkpoint .checkpoint-title{margin:0 0 8px;font-weight:700;color:var(--cp-title);display:flex;align-items:center}
 .checkpoint .checkpoint-title .icon{margin-right:8px}
 .checkpoint .checkpoint-body> :last-child{margin-bottom:0}
-@media (prefers-color-scheme:dark){.checkpoint{--cp-bg:#0c2417;--cp-title:#7fe0a6}}
-body.dark .checkpoint{--cp-bg:#0c2417;--cp-title:#7fe0a6}
+.checkpoint code{color:var(--cp-text)!important}
+@media (prefers-color-scheme:dark){.checkpoint{--cp-bg:#0c2417;--cp-title:#7fe0a6;--cp-text:#dcefe3}}
+body.dark .checkpoint{--cp-bg:#0c2417;--cp-title:#7fe0a6;--cp-text:#dcefe3}
 </style>
 {{- $.Page.Scratch.Set "checkpointcss" 1 -}}
 {{- end -}}

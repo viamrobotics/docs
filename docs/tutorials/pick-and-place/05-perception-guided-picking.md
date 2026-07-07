@@ -15,25 +15,18 @@ next: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
 ---
 
-In this phase you replace the fixed approach and grasp poses from Phase 4 with live perception: the vision service detects a block, the frame system transforms its position into world space, and the motion service plans a collision-free pick.
+In this phase you replace the fixed approach and grasp poses from Phase 4 with live perception: a vision service detects a block, the frame system transforms its position into world space, and the motion service plans a collision-free pick.
 
 ## Configure the vision pipeline
 
 <!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
 <!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
 
-Phase 2 previewed two vision services and asked you to hold off configuring them. Add both now, in order, since the second depends on the first.
-
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `shape-finder` and select the `devrel:shape-finder:detector` vision model. Name it `shape-detector` and set its attribute:
 
 ```json
 {
-  "name": "shape-detector",
-  "api": "rdk:service:vision",
-  "model": "devrel:shape-finder:detector",
-  "attributes": {
-    "camera_name": "cam-1"
-  }
+  "camera_name": "cam-1"
 }
 ```
 
@@ -43,21 +36,16 @@ Add the second service the same way. Click the **+** icon and select **Blocks**,
 
 ```json
 {
-  "name": "vision-segment",
-  "api": "rdk:service:vision",
-  "model": "viam:vision:detections-to-segments",
-  "attributes": {
-    "detector_name": "shape-detector",
-    "confidence_threshold_pct": 0.5,
-    "mean_k": 50,
-    "sigma": 1.5
-  }
+  "detector_name": "shape-detector",
+  "camera_name": "cam-1",
+  "mean_k": 5,
+  "sigma": 1.25
 }
 ```
 
-`vision-segment` depends on `shape-detector`, the same graph relationship as before: it takes each 2D shape detection, pulls the matching depth points from `cam-1`, filters noisy points out with the `mean_k` and `sigma` attributes, and fuses the result into a 3D object point cloud per detected block. The `confidence_threshold_pct` value is a fraction from 0 to 1, not a percentage figure, so `0.5` means keep detections at 50 percent confidence or higher. A 2D detection alone cannot tell you how far away a block is or where it sits in space; `vision-segment` is what turns "a block-shaped region of pixels" into "a block at this point in three dimensions."
+`vision-segment` depends on `shape-detector` and `cam-1`, the same graph relationship as before: it takes each 2D shape detection, pulls the matching depth points from `cam-1`, filters noisy points out with the `mean_k` and `sigma` attributes, and fuses the result into a 3D object point cloud per detected block. A 2D detection alone cannot tell you how far away a block is or where it sits in space; `vision-segment` is what turns "a block-shaped region of pixels" into "a block at this point in three dimensions."
 
-Save the config and open the **CONTROL** tab. Find the `vision-segment` test card and run it against `cam-1`. You should see one or more segmented objects, each drawn as a point cloud with a bounding box, over the shapes sitting in front of the camera.
+Save the config and open the **CONTROL** tab. Find the `vision-segment` test card. You should see the detections coming from the `shape-detector` service and one or more segmented objects under the **Object point clouds** section after toggling **Show object point clouds**. Each segmented object is displayed as a small point cloud a label matching the paired bounding-box detection, with estimated dimensions and 3D position from the perspective of the camera.
 
 {{< checkpoint >}}
 The `vision-segment` test card returns at least one object when a block is in view. If it returns nothing, confirm a block actually sits in the camera's field of view, then check the `shape-detector` card on its own: if that also returns nothing, the problem is upstream in shape detection, not in the depth fusion step.
@@ -69,8 +57,6 @@ With the service live, go back to `starter-script.py` and uncomment the vision h
 vision = VisionClient.from_robot(machine, "vision-segment")
 ```
 
-`VisionClient.from_robot` raised a `ResourceNotFoundError` in Phase 4 because `vision-segment` did not exist yet. Now that it is configured and online, the same line resolves.
-
 ## The frame system and transform_pose
 
 <!-- ASSET P0 diagram-frame-transform (DIAGRAM): block position in the cam-1 frame vs world, wrist camera on the arm -->
@@ -79,7 +65,7 @@ Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That
 
 The motion service does not think in camera coordinates. It plans in the `world` frame, the same frame your obstacle geometry in Phase 3 was defined against. To hand a detected pose to the motion service, you first have to express it in `world` instead of `cam-1`.
 
-This is the frame system you already saw in Phase 2's 3D scene tab, when the `cam-1` frame visibly moved as you jogged joint 1. `viam-server` maintains that same relationship as a graph: the camera's offset from the wrist, the wrist's offset from the next joint, and so on, all the way down to the arm's base at the world origin. `RobotClient.transform_pose` walks that graph for you. Give it a pose tagged with its source frame and a destination frame, and it returns the equivalent pose in the destination frame:
+This is the frame system you already saw in Phase 2's 3D scene tab, when the `cam-1` frame visibly moved as you jogged joint 1. `viam-server` maintains that same relationship as a graph: the camera's offset from the wrist, the wrist's offset from the next joint, and so on, all the way down to the arm's base at the world origin. `RobotClient.transform_pose` walks that graph for you. Give it a pose tagged with its source reference frame and a destination frame, and it returns the equivalent pose in the destination frame:
 
 ```python
 obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
@@ -92,11 +78,7 @@ obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 
 <!-- ASSET P0 diagram-detect-from-home (DIAGRAM): same block, two arm poses, two different world answers -->
 
-The `cam-1` frame is only a fixed thing to reason about when the arm is in a fixed pose. Because the camera is wrist-mounted, jogging any joint changes where `cam-1` sits in space, which changes what `transform_pose` reports for the exact same physical block. If you detect once with the arm near the bin and again with the arm hovering over the table, `transform_pose` gives two different world answers for two different arm positions, even if no block has moved at all.
-
-The fix is a rule, not a calculation: always move to `home-pose`, the observation position from Phase 3, before you call the vision service. Every detection in this workshop starts from the same known arm position, so `cam-1` always means the same thing when `transform_pose` reads it.
-
-Enforce the rule structurally, as a guard clause at the top of every pick attempt, rather than trusting yourself to remember it:
+We can continue to use the `home-pose` saved position because it provides a good view of the workspace for the camera to detect objects to be picked up by the arm. We can update the control flow to replace the `approach` and `grasp` set positions with the perception logic:
 
 ```python
 # Observe from home so the wrist-mounted camera frame is in a known position.
@@ -107,7 +89,7 @@ if not objects:
     print("No objects detected")
     return False
 
-# Largest object by point count. Use len(point_cloud), NOT .size.
+# Largest object by point count. Use len(point_cloud).
 obj = max(objects, key=lambda o: len(o.point_cloud))
 geometry = obj.geometries.geometries[0]
 label = geometry.label
@@ -118,7 +100,7 @@ obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
 obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 ```
 
-`get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the largest point cloud, ordinarily the block closest to the camera or most fully in view. Each `point_cloud` is the object's PCD data stored as raw bytes, so `len(o.point_cloud)` measures its encoded size in bytes; that grows with the number of points, which makes it a reliable proxy for object size. Use `len(o.point_cloud)`, not a `.size` attribute, which the bytes do not have.
+`get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the largest point cloud, ordinarily the block closest to the camera or most fully in view. Each `point_cloud` is the object's pointcloud data (PCD) stored as raw bytes, so `len(o.point_cloud)` measures its encoded size in bytes; that grows with the number of points, which makes it a reliable proxy for object size.
 
 Add a `print(obj_in_world.pose)` after the transform and run the script. Watch the x, y, and z values it prints as you move a block around the table.
 
@@ -129,6 +111,14 @@ Add a `print(obj_in_world.pose)` after the transform and run the script. Watch t
 ## Compute the approach and grasp poses
 
 <!-- ASSET P0 diagram-approach-grasp-offsets (DIAGRAM): block center; approach = +100mm; grasp = TCP one gripper-length (60mm) above; gripper-1 TCP vs arm end -->
+
+The pick uses the **motion service**: it plans a collision-free path to a Cartesian goal. Unlike the vision service, you never configured it. The motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+
+```python
+motion = MotionClient.from_robot(machine, "builtin")
+```
+
+Passing `"builtin"` to `MotionClient.from_robot` reaches that default motion service; there is no motion component on the **CONFIGURE** tab to point at, which is why `builtin` showed up in `machine.resource_names` back in Phase 4.
 
 Before you turn `obj_in_world.pose` into a place to move the gripper, it matters exactly what `motion.move` moves. Two motions that sound similar are not the same thing:
 
@@ -195,7 +185,7 @@ await gripper.open()
 await home.set_position(2)
 ```
 
-Notice the shape of this cycle: it picks with `motion.move` and places with the saved-pose switches from Phase 3. That split is deliberate, not an inconsistency. The pick target moves every cycle, so it needs the Cartesian precision and obstacle-aware planning that `motion.move` provides against a freshly computed world pose. The place target never moves: it is the same bin in the same spot every time, so a pre-measured, pre-verified saved pose is simpler and just as reliable as planning a fresh path there. Use the right tool for each half of the cycle rather than forcing one approach to do both jobs.
+Notice the shape of this cycle: it picks with `motion.move` and places with the saved-pose switches from Phase 3. The pick target moves every cycle, so it needs the Cartesian precision and obstacle-aware planning that `motion.move` provides against a freshly computed world pose. The place target never moves: it is the same bin in the same spot every time, so a pre-measured, pre-verified saved pose is simpler and just as reliable as planning a fresh path there. Use the right tool for each half of the cycle rather than forcing one approach to do both jobs.
 
 {{< alert title="The arm moves under code control" color="caution" >}}
 This loop drives the arm to a computed grasp pose with `motion.move` and replays saved poses, all from your script. Keep the workspace clear and the e-stop within reach, and run it the first few times ready to stop the arm if a computed pose looks wrong.
@@ -232,7 +222,7 @@ await motion.move(
 )
 ```
 
-This is a refinement, not a requirement for a working pick loop. Try the unconstrained version first, and reach for this only if an arcing descent causes the gripper to clip a block on the way down.
+This is a refinement. Try the unconstrained version first, and reach for this only if an arcing descent causes the gripper to clip a block on the way down.
 {{< /alert >}}
 
 ## Debugging guide

@@ -61,24 +61,28 @@ On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for
 
 Set one attribute:
 
-- `arm`: `"arm-1"`
+```json
+{
+  "arm": "arm-1"
+}
+```
 
 This attribute is also a dependency, the same way `gripper-1` depends on `arm-1`: the switch cannot save or recall a pose until the arm it points at is running.
 
 {{< alert title="The arm will move" color="caution" >}}
-The steps in this phase move the physical arm, both when you jog it into position and when you set a switch to position 2 to replay a saved pose. Keep the workspace clear and the e-stop within reach. Verify each pose individually before you run the full sequence at the end of the phase, since a pose saved in a bad spot is replayed exactly on position 2.
+The steps in this phase move the physical arm, both when you jog it into position and when you set a switch to "go to" (position 2) to replay a saved pose. Keep the workspace clear and the e-stop within reach. Verify each pose individually before you run the full sequence at the end of the phase, since a pose saved in a bad spot is replayed exactly on position 2.
 {{< /alert >}}
 
 With the `home-pose` switch added, save and verify it:
 
 1. Open the **CONTROL** tab and find the arm test card. Set the **MoveToJointPositions** sliders and press **Execute** to jog the arm into position.
 2. Under **MoveToPosition**, press **Current position** and note the x, y, and z values to confirm the arm is where you expect it.
-3. On the switch test card, set the switch to **position 1** to save the current joint positions.
-4. Set the switch to **position 2** to confirm the arm returns to the saved pose from any starting position.
+3. On the switch test card, set the switch to **update config** (position 1) to save the current joint positions.
+4. Set the switch to **go to** (position 2) to confirm the arm returns to the saved pose from any starting position.
 
 Now that `home-pose` is saved, open its resource card on the **CONFIGURE** tab and use the **Duplicate** feature to create a copy. Rename the copy to `approach-pose`, and its `arm` attribute carries over automatically since it is already set to `"arm-1"`. Duplicate three more times for `grasp-pose`, `travel-pose`, and `place-pose`. This is faster than adding five switches from scratch and less error-prone, since you only type the `arm` attribute once.
 
-Run the same four save-and-verify steps for each of the four new poses: jog the arm into position, confirm it with **Current position** under **MoveToPosition**, set the switch to position 1 to save, and set it to position 2 to confirm the arm returns.
+Run the same four save-and-verify steps for each of the four new poses: jog the arm into position, confirm it with **Current position** under **MoveToPosition**, set the switch to "update config" to save, and set it to "go to" to confirm the arm returns.
 
 {{< alert title="Switch positions" color="note" >}}
 On an `arm-position-saver` switch, position 1 saves the current joint positions and position 2 moves the arm to the saved pose. Position 0 is the idle resting state the switch returns to after a save or a move; it does not clear the saved pose. Always save with position 1 before you attempt position 2. Setting position 2 on an unsaved switch does nothing.
@@ -96,9 +100,10 @@ This matters both for correctness and for safety. Without the table obstacle, th
 
 In this workshop you configure two categories of obstacle: the table surface and two safety walls at the workspace boundary. Bin geometry is out of scope for this phase.
 
-## Obstacles are components
+## Obstacles as components
 
-Obstacles are not a separate WorldState file you import. Each obstacle is an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. The obstacle model uses the gripper API, so once configured, each obstacle shows up in `resource_names` as a gripper. That is expected; the model reuses the gripper API purely as a resource container for geometry, it does not add a real gripper to your machine.
+An obstacle can be configured an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle shows up in `resource_names` as a gripper. That is expected; the model reuses the gripper API purely as a resource container for geometry, it does not add a real gripper to your machine.
+This will automatically include the geometry of the component in the World State used by the motion service to plan a safe path for the arm to a target position in 3D space.
 
 ### Measure your workspace
 
@@ -107,103 +112,112 @@ Obstacles are not a separate WorldState file you import. Each obstacle is an `er
 Before you can fill in the obstacle geometry, measure your own table and workspace boundary. You need two kinds of measurement, and each one feeds a different part of the config:
 
 - **Tape-measure dimensions** for the box sizes: the table's length, width, and thickness go into the table obstacle's `x`, `y`, and `z`. Use the tape measure for how big each box is, not for where it sits.
-- **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the side boundary, and press **Current position** under **MoveToPosition** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. These are the numbers that fill the `REPLACE_WITH_MEASURED_FRONT_Y` and `REPLACE_WITH_MEASURED_SIDE_X` placeholders in the safety walls below.
+- **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the side boundary, and press **Current position** under **MoveToPosition** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. These are the numbers that fill the `REPLACE_WITH_MEASURED_FRONT_X` and `REPLACE_WITH_MEASURED_BACK_X` placeholders in the safety walls below.
 
-All obstacle geometry is expressed against the world origin, which in this setup sits at the arm base, so the x and y coordinates you read from **Current position** drop straight into the `translation` fields without any conversion.
+All obstacle geometry is expressed against the world origin, which in this setup sits at the arm base, so the x and y coordinates you read from **Current position** drop straight into the frame's `translation` fields without any conversion.
 
-Each obstacle geometry is a box defined by its `x`, `y`, and `z` dimensions (the box's full size in millimeters) and a `translation` (the box's center point in the parent frame). Two details trip people up:
+Each obstacle is one `erh:vmodutils:obstacle` component with two parts. Its `geometries` attribute holds the box's `x`, `y`, and `z` **dimensions** (the full size in millimeters, centered on the component's own origin). Its `frame` places that component in the world: `parent` is `world`, and `translation` is where the box **center** sits relative to the world origin. An obstacle only appears in the 3D scene and the planner's world state once it has this frame. Two details trip people up:
 
-- The `z` value in a box's dimensions is its height, but the `translation.z` you provide is the box's **center**, not its top or bottom surface. A 30 mm thick table sitting flush with the world origin at `z = 0` needs a `translation.z` of `-15`, half the thickness, because the box extends from `-30` to `0` and its center is at `-15`.
-- The safety walls are thin, tall boxes. A wall that is 600 mm tall has `z: 600` for its dimension, but its `translation.z` is `300`, half the height, for the same reason.
+- The `z` in the geometry dimensions is the box's height, but the frame's `translation.z` is the box's **center**, not its top or bottom surface. A 30 mm thick table sitting flush with the world origin at `z = 0` needs a frame `translation.z` of `-15`, half the thickness, because the box extends from `-30` to `0` and its center is at `-15`.
+- The safety walls are thin, tall boxes. A wall that is 600 mm tall has `z: 600` for its geometry dimension, but its frame `translation.z` is `300`, half the height, for the same reason.
 
 ### Add the table obstacle
 
 <!-- ASSET P0 diagram-obstacle-geometry (DIAGRAM): box-center z-math (table 30mm z=-15; walls 600mm z=300; world origin at arm base) -->
 
-Click the **+** icon and select **Blocks**, then search for `obstacle` and select the `erh:vmodutils:obstacle` model. Name it `table` and set its geometry attributes:
+Click the **+** icon and select **Blocks**, then search for `obstacle` and select the `erh:vmodutils:obstacle` model. Name it `table`. Paste the box dimensions into the attributes editor, then click **Frame** on the component card and set the frame that positions it in the world.
+
+The attributes should look similar to the following:
 
 ```json
 {
-  "name": "table",
-  "api": "rdk:component:gripper",
-  "model": "erh:vmodutils:obstacle",
-  "attributes": {
-    "geometries": [
-      {
-        "label": "table",
-        "type": "box",
-        "x": 1200,
-        "y": 800,
-        "z": 30,
-        "translation": { "x": 0, "y": 0, "z": -15 },
-        "parent": "world"
-      }
-    ]
+  "geometries": [
+    {
+      "type": "box",
+      "x": 1200,
+      "y": 800,
+      "z": 30
+    }
+  ]
+}
+```
+
+Replace the `x`, `y`, and `z` dimensions with your own measured table length, width, and thickness.
+
+The frame configuration should look similar to:
+
+```json
+{
+  "parent": "world",
+  "translation": { "x": 0, "y": 0, "z": -15 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
   }
 }
 ```
 
-Replace the `x`, `y`, and `z` dimensions with your own measured table length, width, and thickness. If your table is not centered on the arm base in x and y, adjust `translation.x` and `translation.y` to match, using the values you read from **Current position** when jogging to the table edges.
+If your table is not centered on the arm base in x and y, adjust the frame's `translation.x` and `translation.y` to match, using the values you read from **Current position** when jogging to the table edges.
 
 ### Add the safety walls
 
 <!-- ASSET P1 3dscene-obstacles (UI): 3D scene rendering the table + wall boxes around the arm -->
 
-Add two more `erh:vmodutils:obstacle` components the same way, one per boundary you want to wall off:
+Add two more `erh:vmodutils:obstacle` components the same way, one per boundary you want to wall off. Each has its box dimensions in `geometries` and a `world`-parented `frame` that places it.
+
+`safety-wall-front` attributes:
 
 ```json
 {
-  "name": "safety-wall-front",
-  "api": "rdk:component:gripper",
-  "model": "erh:vmodutils:obstacle",
-  "attributes": {
-    "geometries": [
-      {
-        "label": "safety-wall-front",
-        "type": "box",
-        "x": 1200,
-        "y": 20,
-        "z": 600,
-        "translation": {
-          "x": 0,
-          "y": "REPLACE_WITH_MEASURED_FRONT_Y",
-          "z": 300
-        },
-        "parent": "world"
-      }
-    ]
+  "geometries": [{ "type": "box", "x": 20, "y": 1200, "z": 600 }]
+}
+```
+
+`safety-wall-front` frame:
+
+```json
+{
+  "parent": "world",
+  "translation": {
+    "x": "REPLACE_WITH_MEASURED_FRONT_X",
+    "y": 0,
+    "z": 300
+  },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
   }
 }
 ```
 
+`safety-wall-back` attributes:
+
 ```json
 {
-  "name": "safety-wall-side",
-  "api": "rdk:component:gripper",
-  "model": "erh:vmodutils:obstacle",
-  "attributes": {
-    "geometries": [
-      {
-        "label": "safety-wall-side",
-        "type": "box",
-        "x": 20,
-        "y": 800,
-        "z": 600,
-        "translation": {
-          "x": "REPLACE_WITH_MEASURED_SIDE_X",
-          "y": 0,
-          "z": 300
-        },
-        "parent": "world"
-      }
-    ]
+  "geometries": [{ "type": "box", "x": 20, "y": 1200, "z": 600 }]
+}
+```
+
+`safety-wall-back` frame:
+
+```json
+{
+  "parent": "world",
+  "translation": {
+    "x": "REPLACE_WITH_MEASURED_BACK_X",
+    "y": 0,
+    "z": 300
+  },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
   }
 }
 ```
 
-Replace `REPLACE_WITH_MEASURED_FRONT_Y` and `REPLACE_WITH_MEASURED_SIDE_X` with the coordinates you measured for the front and side boundaries of your workspace. Both walls are 600 mm tall, so their `translation.z` is 300, half the height.
+Replace `REPLACE_WITH_MEASURED_FRONT_X` and `REPLACE_WITH_MEASURED_BACK_X` with the coordinates you measured for the front and back boundaries of your workspace. Both walls are 600 mm tall, so their frame `translation.z` is 300, half the height.
 
-You can check your obstacle configuration against the companion repo's [obstacles-template.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/obstacles-template.json), which has the full set with example measurements filled in. The full machine configuration, including all pose switches, is in [machine-fragment.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/machine-fragment.json). Treat both as references to check your work against, not as files to import over what you configured by hand.
+You can check your obstacle configuration against the companion repo's [obstacles-template.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/obstacles-template.json), which has the full set with example measurements filled in. The full machine configuration, including all pose switches and obstacles, is in [machine-fragment.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/machine-fragment.json). Treat both as references to check your work against, not as files to import over what you configured by hand.
 
 ## Test the full static sequence
 

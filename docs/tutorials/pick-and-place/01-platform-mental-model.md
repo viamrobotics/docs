@@ -58,7 +58,7 @@ Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the
 
 <!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 <!-- ASSET P0 logs-xarm-module-start (UI+): LOGS showing the viam:ufactory module download + start (the module-download moment) -->
-<!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 in CONFIGURE with its viam:ufactory:xArm6 namespace:family:name highlighted -->
+<!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 card showing the ufactory/xArm6 model label and "from ufactory", plus the full viam:ufactory:xArm6 triplet in the JSON model field -->
 
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.
 
@@ -66,14 +66,18 @@ On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for
 
 Set the following attributes:
 
-- `host`: the xArm controller's IP address, provided by your workshop facilitator
-- `speed_degs_per_sec`: `30`
+```json
+{
+  "host": "",
+  "speed_degs_per_sec": 30
+}
+```
 
-`host` is the only required attribute; `port` defaults to `502`, which is correct for the xArm, so you can leave it out. Setting `speed_degs_per_sec` to `30` keeps the arm moving slowly enough to stay safe while you work near it. You can leave `acceleration_degs_per_sec_per_sec` unset; it is optional and defaults to a safe value.
+`host` is the only required attribute; it can be found on the arm's control box. Setting `speed_degs_per_sec` to `30` keeps the arm moving slowly enough to stay safe while you work near it.
 
 Save the config, then open the **LOGS** tab and watch what happens: a log line for a module download, then one for the module starting, then `arm-1` coming online, usually well under a minute. You just set the module system in motion; the [Builtin resources and modules](#builtin-resources-and-modules) section below explains what you saw.
 
-Back on the **CONFIGURE** tab, look at what sits next to the name you gave the arm: its model, written as a triplet in the form `namespace:family:name`, here `viam:ufactory:xArm6`. That triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`), the family of models it belongs to (`family`), and the specific model name (`name`).
+Back on the **CONFIGURE** tab, look at the `arm-1` card. Next to the name, it shows the model as `ufactory/xArm6`, the family and model name, with `from ufactory` marking the module it came from. That is the short form. The model's full name is a **triplet**, `namespace:family:name`, which you can see written out as `viam:ufactory:xArm6` if you switch to the JSON view. The triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`, here `viam`), the family of models it belongs to (`family`, here `ufactory`), and the specific model name (`name`, here `xArm6`).
 
 You will configure the gripper and camera the same way in Phase 2. Each is a resource too, with its own name, API, and model, even though one drives a gripper and the other reads a depth camera.
 
@@ -85,10 +89,6 @@ Resources split into two kinds:
 - **Services** represent software tasks or capabilities. A motion service plans collision-free paths for an arm. Later, in Phase 5, you configure a `shape-detector` vision service that reads frames from `cam-1` and finds blocks by shape, and a `vision-segment` service (model `detections-to-segments`) that takes those detections and turns them into point cloud segments the motion planner can grasp. Neither service is a physical thing; each one composes other resources into a new capability.
 
 Open the **CONTROL** tab. Because `arm-1` is the only resource you have configured so far, you see a single card, for the arm; it lets you interact with the hardware directly. In Phase 2, adding the gripper and camera gives each its own card, and any service you add later gets a card that exercises a capability built on top of that hardware.
-
-{{< alert title="Foreshadowing" color="note" >}}
-You will not configure `shape-detector` or `vision-segment` until Phase 5. For now, just notice the pattern: a service is defined by what resources it depends on or features it provides, not by hardware it owns.
-{{< /alert >}}
 
 ## Builtin resources and modules
 
