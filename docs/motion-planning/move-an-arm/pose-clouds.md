@@ -110,21 +110,26 @@ import (
     "go.viam.com/rdk/spatialmath"
 )
 
-// Place the cup somewhere on the table. The exact spot does not matter, and the
-// cup may end up rotated about vertical, but it must stay upright.
+// Place the cup somewhere on the table, held from the side. The exact spot and
+// the cup's rotation about vertical do not matter, but it must stay upright.
 destination := referenceframe.NewPoseInFrameWithGoalCloud(
     "table", // the target frame: tolerances follow the table surface
     spatialmath.NewPose(
-        r3.Vector{X: 0, Y: 0, Z: 0},                   // center of the region, on the table surface
-        &spatialmath.OrientationVectorDegrees{OZ: -1}, // upright: the tool's z-axis points into the table
+        r3.Vector{X: 0, Y: 0, Z: 0}, // center of the region, on the table surface
+        // Grasp from the side: the tool points horizontally across the table (OZ: 0).
+        // OX: 1 sets a definite pointing direction, so the pose cloud's OX and OY leeway
+        // is measured from the grasp you intend, not a normalized default.
+        &spatialmath.OrientationVectorDegrees{OX: 1, OZ: 0, Theta: 180},
     ),
     // Tolerances are applied in the table frame, each as [-value, +value].
     &referenceframe.PoseCloud{
-        X:     75,  // mm of slack across the table surface in x
-        Y:     75,  // mm of slack across the table surface in y
-        Z:     0,   // hold the cup on the surface
-        Theta: 180, // degrees: any rotation about vertical; spinning the cup does not spill it
-        // OX, OY, OZ stay 0, so the upright pointing direction is held exact.
+        X:  75,  // mm of slack across the table surface in x
+        Y:  75,  // mm of slack across the table surface in y
+        Z:  0,   // hold the cup on the surface
+        OX: 1,   // let the approach swing to any side of the cup...
+        OY: 1,   // ...so the cup may rest at any rotation about vertical
+        OZ: 0.1, // keep the approach nearly horizontal, so the cup stays upright
+        // Theta stays 0, so the tool does not roll and tip the cup.
     },
 )
 
