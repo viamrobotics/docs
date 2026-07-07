@@ -37,9 +37,9 @@ world
 In the [Viam app](https://app.viam.com), go to your machine's
 **CONFIGURE** tab.
 
-1. Click **+** and add an **arm** component.
-2. Choose the **fake** model.
-3. Name it **my-arm**.
+1. Click **+** and select **Blocks**.
+2. Search for **arm** and choose the **arm/fake** component.
+3. Name it **my-arm** and click **Add to machine**.
 4. In the arm's attributes, set `arm-model` to `"ur5e"`.
 5. Click **Frame** on the arm's card. The Frame section is a JSON
    editor with no form, parent dropdown, or geometry-type picker.
@@ -60,9 +60,9 @@ Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ## 2. Add the gripper
 
-1. Click **+** and add a **gripper** component.
-2. Choose the **fake** model.
-3. Name it **my-gripper**.
+1. Click **+** and select **Blocks**.
+2. Search for **gripper** and choose the **gripper/fake** component.
+3. Name it **my-gripper** and click **Add to machine**.
 4. Click **Frame** on the gripper's card. Edit the JSON so the
    parent is the arm and the origin is offset 110 mm along the arm's
    z axis (the end of a typical gripper mount):
@@ -83,9 +83,9 @@ pose moves with the arm automatically.
 
 ## 3. Add the camera
 
-1. Click **+** and add a **camera** component.
-2. Choose the **fake** model.
-3. Name it **my-camera**.
+1. Click **+** and select **Blocks**.
+2. Search for **camera** and choose the **camera/fake** component.
+3. Name it **my-camera** and click **Add to machine**.
 4. Click **Frame** on the camera's card. Edit the JSON so the camera
    sits 30 mm to the side of the arm's end effector and 60 mm above it,
    tilted 30 degrees downward about the x axis:
