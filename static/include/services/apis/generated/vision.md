@@ -974,7 +974,7 @@ Fetch information about which vision methods a given vision service supports.
 
 **Returns:**
 
-- ([Vision.Properties](https://python.viam.dev/autoapi/viam/components/audio_input/audio_input/index.html#viam.components.audio_input.audio_input.AudioInput.Properties)): : The properties of the vision service.
+- ([Vision.Properties](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties)): : The properties of the vision service.
 
 **Example:**
 

@@ -857,6 +857,23 @@ def write_markdown(type, names, methods):
                     flutter_method_name = row.split(',')[5].rstrip()
                     typescript_method_name = row.split(',')[6].rstrip()
 
+                    ## A proto RPC can map to an SDK method that the SDK's own
+                    ## resource doc page does not surface -- for example gripper's
+                    ## CurrentInputs/GoToInputs, which are inherited via
+                    ## framesystem.InputEnabled and documented on that interface's
+                    ## page, not the gripper page. If the scraper did not find the
+                    ## mapped method for a given SDK, treat that SDK as not having
+                    ## it so the proto still documents in the SDKs that do surface
+                    ## it, instead of raising a KeyError.
+                    if py_method_name and "python" in sdks and py_method_name not in methods['python'][type].get(resource, {}):
+                        py_method_name = ''
+                    if go_method_name and "go" in sdks and go_method_name not in methods['go'][type].get(resource, {}):
+                        go_method_name = ''
+                    if flutter_method_name and "flutter" in sdks and flutter_method_name not in methods['flutter'][type].get(resource, {}):
+                        flutter_method_name = ''
+                    if typescript_method_name and "typescript" in sdks and typescript_method_name not in methods['typescript'][type].get(resource, {}):
+                        typescript_method_name = ''
+
                     if py_method_name and "python" in sdks:
                         methods['python'][type][resource][py_method_name]["used"] = True
                     if go_method_name and "go" in sdks:

@@ -64,7 +64,7 @@ const datasetId = await dataClient.createDataset(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#createdataset).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#createdataset).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -160,7 +160,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await dataClient.deleteDataset('12ab3de4f56a7bcd89ef0ab1');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#deletedataset).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletedataset).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -262,7 +262,7 @@ await dataClient.renameDataset(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#renamedataset).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#renamedataset).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -362,7 +362,7 @@ const datasets = await dataClient.listDatasetsByOrganizationID(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#listdatasetsbyorganizationid).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#listdatasetsbyorganizationid).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
@@ -461,7 +461,7 @@ const datasets = await dataClient.listDatasetsByIds([
 ]);
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataClient.html#listdatasetsbyids).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#listdatasetsbyids).
 
 {{% /tab %}}
 {{% tab name="Flutter" %}}
