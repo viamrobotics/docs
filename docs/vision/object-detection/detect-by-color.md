@@ -55,7 +55,7 @@ The practical approach:
 ## 2. Add the color_detector vision service
 
 1. Open the **CONFIGURE** tab in the Viam app.
-2. Click the **+** icon and select **Configuration block**.
+2. Click the **+** icon and select **Blocks**.
 3. In the search field, type `color detector` and select the `vision/color_detector` result.
 4. Click **Add to machine**, name the service (for example, `red_detector`), and click **Add to machine** again to confirm.
 
