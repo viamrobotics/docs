@@ -15,7 +15,7 @@ camera perceives in the same space as the rest of your machine.
 
 When your machine is online, the scene streams point clouds from your depth cameras and
 draws each as a set of points at the camera's frame. Because each point cloud sits at its
-camera's frame, a point cloud that lands in the wrong place usually points to a wrong camera
+camera's frame, a point cloud that appears in the wrong place usually points to a wrong camera
 frame, not wrong perception.
 
 Vision services can also contribute point-cloud entities, such as the points behind a

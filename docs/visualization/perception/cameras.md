@@ -29,5 +29,5 @@ a point cloud. For how point clouds render, display, and compare, see
 ## Camera frames
 
 A camera appears in the scene as a coordinate frame, and its point cloud renders at that
-frame. If a camera's point cloud lands in the wrong place, check the camera's frame
+frame. If a camera's point cloud appears in the wrong place, check the camera's frame
 configuration rather than the camera itself.

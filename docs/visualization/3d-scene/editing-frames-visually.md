@@ -72,10 +72,10 @@ To delete a frame, remove it from the component's configuration on the CONFIGURE
 
 Visual editing covers most cases, but a few are faster in JSON:
 
-- **Bulk changes** (renaming many frames, regenerating a layout) — JSON
+- **Bulk changes** (renaming many frames, regenerating a layout): JSON
   edits are easier in a text editor.
-- **Frames that reference components on a different machine part** —
+- **Frames that reference components on a different machine part**:
   the visual editor's parent dropdown only shows local frames.
 - **Complex orientations** (rotations expressed in `axis_angles` or
-  `quaternion` rather than `ov_degrees`) — the visual editor surfaces
+  `quaternion` rather than `ov_degrees`): the visual editor surfaces
   only the orientation vector form.
