@@ -228,7 +228,6 @@ You can check your obstacle configuration against the companion repo's [obstacle
 
 ## Test the full static sequence
 
-<!-- ASSET P0 static-sequence (MOTION): the arm running the full static loop home->approach->grasp->travel->place->home -->
 <!-- ASSET P2 logs-clean-sequence (UI): LOGS with no collision errors after the run -->
 
 From the **CONTROL** tab, trigger the pose switches in this order:
@@ -240,6 +239,10 @@ place-pose (2) -> Open gripper -> home-pose (2)
 ```
 
 The **Open** and **Grab** buttons are the same gripper controls you used in Phase 2: **Grab** closes the fingers on a block and **Open** releases it.
+
+<!-- ASSET P0 static-sequence (MOTION): the arm running the full static loop home->approach->grasp->travel->place->home -->
+
+{{<youtube embed_url="https://www.youtube-nocookie.com/embed/7wRyUKvnjSg">}}
 
 As the arm moves, open the **3D scene** tab to watch its path alongside the table surface and the safety walls. The planner refuses to plan through configured geometry, so an obstacle conflict shows up as a planning failure in the logs, not as the arm passing through the obstacle. Open the **LOGS** tab alongside the 3D scene to catch any such planning failure in real time.
 
