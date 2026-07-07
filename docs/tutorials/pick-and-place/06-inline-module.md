@@ -11,6 +11,7 @@ phase: 6
 phase_total: 6
 time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/perception-guided-picking/"
+next: "/tutorials/pick-and-place/wrap-up/"
 languages: ["python"]
 ---
 
@@ -18,7 +19,7 @@ This phase is optional. Phase 5 already gave you a complete pick-and-place loop 
 
 ## Why bother with a module
 
-A script you run from your laptop is a complete result. It is not a lesser version of a module, and nothing about Phase 5 was a placeholder waiting for this phase to finish it. Reach for a module only when one of these is true for your setup:
+Reach for a module only when one of these is true for your setup:
 
 - The cycle has to keep running after you close your laptop or walk away.
 - The cycle has to restart on its own if it crashes or the robot reboots.
@@ -29,25 +30,27 @@ If none of those apply, stop here. You have already built the thing this worksho
 
 ## Mostly packaging, plus one real change
 
-Set expectations before you start: this phase is not a rewrite. The detection, the frame transform, the pose math, and the motion calls are the pick-and-place logic from Phase 5, moved into a module's lifecycle methods with no change to what they do.
+Set expectations before you start: this phase should be considered a refactor. The detection, the frame transform, the pose math, and the motion calls are the pick-and-place logic from Phase 5, moved into a module's lifecycle methods with no change to what they do.
 
-One piece of that logic does genuinely change, and it is worth calling out up front so it does not surprise you partway through: how you reach `transform_pose`. In Phase 5, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. A module does not automatically receive that same handle. The corrected pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below. Everything else in this phase is packaging.
+One piece of that logic does genuinely change: how you reach `transform_pose`. In Phase 5, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. A module does not automatically receive that same handle. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
 
 ## Tier the scope
 
 Two tiers, so you can stop at whichever one matches what you came here for:
 
-- **A minimal viable module.** Repackage the Phase 5 logic into a module, and add a `do_command` handler you trigger by hand to run one pick-and-place cycle. This is the core path for the rest of this phase.
-- **Level 2: scheduled and autonomous operation.** Once the minimal module runs a cycle on command, wiring it to a timer or a fully autonomous loop is a small additional step, covered briefly at the end of this phase as a low-effort on-ramp, not a requirement.
+- **A minimal viable module.** Repackage the Phase 5 logic into a module, and add a `do_command` handler you trigger by hand to run one pick-and-place cycle.
+- **Level 2: scheduled and autonomous operation.** Once the minimal module runs a cycle on command, wiring it to a timer or a fully autonomous loop is a small additional step, covered briefly at the end of this phase as a low-effort on-ramp.
 
 ## Open the inline module editor
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 <!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
 
+{{< alert title="Module build feedback loop" color="note" >}}
 Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. It is not instant the way rerunning a local script is, so give it that minute rather than assuming a save failed.
+{{< /alert >}}
 
-Open your machine's **CONFIGURE** tab and add a new module. Choose to create a local module with an inline editor rather than pulling one from the registry, and select Python as the language. The Viam app opens a code editor in your browser with a generated module skeleton, so there is no local project setup to do first.
+On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates new configured resource with en embedded code editor in your browser with a generated module skeleton.
 
 Replace the skeleton's logic with your Phase 5 pick-and-place code: the connection to typed resource handles, the detection call, the frame transform, the pose math, and the motion calls, moved into the module's lifecycle methods as described below. Save the module. The Viam app packages your code and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed module downloads back in Phase 2.
 
@@ -152,6 +155,6 @@ That manual trigger is the whole minimal viable module. Level 2 is wiring the sa
 
 ## Where you landed
 
-You now have the same pick-and-place loop running two ways: as a script you control from your own laptop, and as a module that keeps running on the robot without one. Phase 5 gave you the complete win. This phase gave you the option to deploy it. There is no next phase; the workshop ends here.
+You now have the same pick-and-place loop running two ways: as a script you control from your own laptop, and as a module that keeps running on the robot without one. Phase 5 gave you the complete win. This phase gave you the option to deploy it. Head to the [wrap-up](/tutorials/pick-and-place/wrap-up/) to review everything you built and where to take it next.
 
 {{< workshop-nav >}}

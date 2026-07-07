@@ -53,6 +53,8 @@ Phases 1 through 5 are the core workshop. Phase 6 is optional.
 5. **[Perception-guided picking](/tutorials/pick-and-place/perception-guided-picking/)** (~22 min, milestone two)
 6. **[Inline module](/tutorials/pick-and-place/inline-module/)** (~20 min, optional)
 
+When you finish, the **[wrap-up](/tutorials/pick-and-place/wrap-up/)** reviews what you built and points to next steps.
+
 ## Companion code
 
 All supporting files for this workshop live in the [viam-devrel/pick-and-place](https://github.com/viam-devrel/pick-and-place) repository. You do not need it to start, but the prerequisites below reference its `scripts/` project, and later phases pull from it.
