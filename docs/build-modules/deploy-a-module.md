@@ -380,7 +380,7 @@ With this model, you can gather temperature and humidity data from a custom HTTP
 
 Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** button, select **Blocks**, then select the `sensor / my-sensor-module:my-sensor` model provided by the [`my-sensor-module` module](https://app.viam.com/module/my-org/my-sensor-module).
-Click **Add module**, enter a name for your sensor, and click **Create**.
+Enter a name for your sensor and click **Add to machine**.
 
 ## Models
 
