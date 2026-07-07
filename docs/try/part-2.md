@@ -32,7 +32,7 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 
 1. Click **+** next to **inspection-station-1-main** in the **CONFIGURE** tab
 2. Click **Blocks**
-3. Select **data_manager/builtin**
+3. Search for `data_manager` and select **data_manager/builtin**
 4. Name it `data-service`
 5. Click **Add to machine**
 6. **Save** your updated machine configuration
