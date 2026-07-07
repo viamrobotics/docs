@@ -30,7 +30,20 @@ You will not write any code in this phase, but you will configure your first res
 
 <!-- ASSET P0 diagram-three-layers (DIAGRAM): cloud app (source of truth) -> viam-server pulls config; viam-agent supervises; SDK arrow to viam-server. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-{{<imgproc src="/tutorials/pick-and-place/diagram-three-layers.png" resize="1200x" declaredimensions=true alt="How the Viam cloud app, viam-agent, and viam-server relate, and where the Python SDK connects.">}}
+```text
+Viam cloud app
+  └─ machine configuration  (the source of truth)
+           │
+           │  viam-server pulls config
+           ▼
+The robot's computer
+  ├─ viam-agent    supervises viam-server (installs, updates, restarts)
+  └─ viam-server   runs components and services, exposes the control API
+           ▲
+           │  control API calls
+           │
+Your Python script (on your laptop)
+```
 
 A Viam machine is made of three layers that each do one job:
 
@@ -116,7 +129,19 @@ You can read this straight off the namespace. `arm-1`'s namespace is `viam`, a t
 
 <!-- ASSET P0 diagram-dependency-graph (DIAGRAM): cam-1 -> shape-detector -> vision-segment; arm-1 -> gripper-1 + five pose switches; motion service -->
 
-{{<imgproc src="/tutorials/pick-and-place/diagram-dependency-graph.png" resize="1200x" declaredimensions=true alt="The workshop's resource dependency graph: arm-1 feeds the gripper and pose switches; cam-1 feeds the shape-detector and vision-segment services.">}}
+```text
+arm-1 (arm)
+  ├─→ gripper-1 (gripper)
+  └─→ home / approach / grasp / travel / place  (pose switches)
+
+cam-1 (camera)
+  └─→ shape-detector (vision)
+        └─→ vision-segment (vision)
+
+motion  (builtin service, no configuration)
+
+"A → B" means B depends on A: A must be online before B starts.
+```
 
 Resources can depend on each other. A gripper attaches to an arm, so `gripper-1`'s config points at `arm-1`. A vision service reads from a camera, so it depends on `cam-1`. `viam-server` reads these dependencies out of your config and builds a dependency graph, then starts resources in an order that respects it: a resource cannot start until everything it depends on has started.
 
