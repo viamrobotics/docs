@@ -67,10 +67,10 @@ In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensor
 To add the camera component to your machine part:
 
 1. Click the **+** button and select **Blocks**
-3. Search for `gz-camera`
-4. Select `gz-camera/rgb-camera`
-5. Click **Add Component**
-6. Enter `inspection-cam` for the name
+2. Search for `gz-camera`
+3. Select `gz-camera/rgb-camera`
+4. Click **Add Component**
+5. Enter `inspection-cam` for the name
 
 {{< expand "Why were two items added to my machine part?" >}}
 After adding the camera component, you will see two items appear under your machine part. One is the actual camera hardware (`inspection-cam`) that you will use through the Viam camera API. The other is the software module (`gz-camera`) that implements this API for the specific model of camera you are using. All components that are supported through modules available in the Viam registry will appear this way in the **CONFIGURE** tab. For built-in components, such as webcams, you will not also see a module appear in the configuration.
