@@ -31,10 +31,10 @@ Data gets buffered locally, synced to the cloud at an interval you configure, an
 **Include the data service in your machine configuration:**
 
 1. Click **+** next to **inspection-station-1-main** in the **CONFIGURE** tab
-2. Click **Configuration block**
+2. Click **Blocks**
 3. Select **data_manager/builtin**
 4. Name it `data-service`
-5. Click **Create**
+5. Click **Add to machine**
 6. **Save** your updated machine configuration
 
 The default configuration options for the data service are correct for our application so we can move on to capturing data from the vision service.

@@ -66,7 +66,7 @@ In Viam, a **component** is any piece of hardware: cameras, motors, arms, sensor
 
 To add the camera component to your machine part:
 
-1. Click the **+** button and select **Configuration block**
+1. Click the **+** button and select **Blocks**
 2. Click **Camera**
 3. Search for `gz-camera`
 4. Select `gz-camera/rgb-camera`
@@ -135,7 +135,7 @@ The `try-vision-pipeline` fragment includes an ML model service loaded with a ca
 ### Add the fragment
 
 1. Click **+** next to your machine name
-2. Select **Configuration block**
+2. Select **Blocks**
 3. Search for `try-vision-pipeline`
 4. Select `try-vision-pipeline` and click **Add Fragment**
 
