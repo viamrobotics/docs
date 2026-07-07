@@ -37,11 +37,11 @@ an existing one that has `viam-server` running. Go to its
 
 ## 2. Add the fake arm component
 
-1. Click **+** and choose **Component**.
-2. Select **arm**.
-3. Choose the **fake** model.
+1. Click **+** and choose **Blocks**.
+2. Search for **arm**.
+3. Choose the **arm/fake** component.
 4. Name the component **my-arm**.
-5. Click **Create**.
+5. Click **Add to machine**.
 
 In the arm's configuration card, set the `arm-model` attribute to
 `"ur5e"` so the fake arm exposes UR5e kinematics:
@@ -113,6 +113,26 @@ What matters is that the arm responds and returns a pose.
 You now have a script that connects to the machine and reads the arm's
 pose. Next you will add the motion service call that plans a path and
 executes it, plus a verification read after the motion completes.
+
+Add the arm to the frame system so the motion service can plan
+its movements. On the arm's card, click **Frame**. The default values
+(parent `world`, zero translation and rotation) place the arm's base
+at the world origin, which is what we want here, so you don't need to
+change anything:
+
+```json
+{
+  "parent": "world",
+  "translation": { "x": 0, "y": 0, "z": 0 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+  }
+}
+```
+
+Click **Save** again.
+
 Replace the `main` function with:
 
 ```python
