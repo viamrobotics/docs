@@ -365,14 +365,14 @@ If this doesn't work when you test your camera later, you can try a different vi
 If your rover has its camera mounted on a pair of [servos](/reference/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
+Search for `servo`, then select the `raspberry-pi/rpi-servo` model.
 Enter `pan` as the name and click **Add to machine**.
 
 Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`23` for the Yahboom rover).
 
 Finally, add the tilt `servo` as well.
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
+Search for `servo`, then select the `raspberry-pi/rpi-servo` model.
 Enter `tilt` as the name and click **Add to machine**.
 
 Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` for the Yahboom rover).
@@ -395,7 +395,7 @@ If your rover is not supported out of the box, follow the [Create a Modular Reso
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `base` type, then select the `wheeled` model.
+Search for `base`, then select the `base/wheeled` model.
 Enter a name or use the suggested name for your base and click **Add to machine**.
 
 {{< tabs >}}
