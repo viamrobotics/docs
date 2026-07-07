@@ -100,10 +100,10 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 ### 2. Add the component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your hardware (for example, "webcam", "gpio
    motor", "xArm6"). The search covers all available models and fragments.
-4. Give your component a **name** and click **Create**. The name is how
+4. Give your component a **name** and click **Add to machine**. The name is how
    you reference it in code and configuration, so keep it short,
    descriptive, and unique on this machine.
 

@@ -51,10 +51,10 @@ For servos not covered above, search for `servo` in the [Viam registry](https://
 ### 2. Add a servo component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. For a standard hobby servo controlled by a PWM pin on your board,
    search for **gpio servo**.
-4. Name your servo (for example, `pan-servo`) and click **Create**.
+4. Name your servo (for example, `pan-servo`) and click **Add to machine**.
 
 ### 3. Configure servo attributes
 

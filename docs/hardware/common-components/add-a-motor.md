@@ -61,7 +61,7 @@ For motors not covered above, search for `motor` in the [Viam registry](https://
 ### 2. Add a motor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the motor model that matches your hardware:
    - For a brushed DC motor controlled through a motor driver with GPIO
      pins, search for **gpio motor**.
@@ -69,7 +69,7 @@ For motors not covered above, search for `motor` in the [Viam registry](https://
      pins, search for **gpiostepper**.
    - For other motor types, search by your motor driver or manufacturer
      name.
-4. Name your motor (for example, `left-motor`) and click **Create**.
+4. Name your motor (for example, `left-motor`) and click **Add to machine**.
 
 ### 3. Configure motor attributes
 

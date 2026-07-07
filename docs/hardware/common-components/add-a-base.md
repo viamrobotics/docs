@@ -59,11 +59,11 @@ For bases not covered above, search for `base` in the [Viam registry](https://ap
 ### 2. Add a base component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the base model that matches your hardware. For a
    differential-drive robot with left and right motors, search for
    **wheeled**.
-4. Name your base (for example, `my-base`) and click **Create**.
+4. Name your base (for example, `my-base`) and click **Add to machine**.
 
 ### 3. Configure base attributes
 

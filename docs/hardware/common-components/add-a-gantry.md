@@ -62,13 +62,13 @@ For gantries not covered above, search for `gantry` in the [Viam registry](https
 ### 2. Add a gantry component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the gantry model that matches your setup:
    - For a single linear rail driven by a motor, search for
      **single-axis**.
    - For a multi-axis system composed of multiple single-axis gantries,
      search for **multi-axis**.
-4. Name your gantry (for example, `my-gantry`) and click **Create**.
+4. Name your gantry (for example, `my-gantry`) and click **Add to machine**.
 
 ### 3. Configure gantry attributes
 

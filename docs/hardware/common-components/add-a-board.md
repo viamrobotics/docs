@@ -62,13 +62,13 @@ Confirm it shows as **Live** in the upper left.
 ### 2. Add a board component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your hardware:
    - For a Raspberry Pi, search for **raspberry pi** and pick the model that matches your Pi version (for example, `viam:raspberry-pi:rpi5`).
    - For an NVIDIA Jetson, search for **jetson**.
    - For an Orange Pi, search for **orangepi**.
    - For an IO expander, search for it by chip name (for example, **pca9685**).
-4. Name your board (for example, `my-board`) and click **Create**.
+4. Name your board (for example, `my-board`) and click **Add to machine**.
 
 ### 3. Configure board attributes
 

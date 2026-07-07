@@ -61,11 +61,11 @@ For encoders not covered above, search for `encoder` in the [Viam registry](http
 ### 2. Add an encoder component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the encoder model that matches your hardware:
    - For a two-channel quadrature encoder, search for **incremental**.
    - For a single-channel encoder, search for **single encoder**.
-4. Name your encoder (for example, `left-encoder`) and click **Create**.
+4. Name your encoder (for example, `left-encoder`) and click **Add to machine**.
 
 ### 3. Configure encoder attributes
 
