@@ -398,9 +398,9 @@ You can deprecate a module to signal that it should no longer be used.
 Deprecating a module:
 
 - Marks it with a **Deprecated** badge in the registry
-- Hides it from registry search results
+- Hides it from registry search results for users outside the owning organization
 - Prevents users from adding it to new machines
-- Does not affect machines that already use the module
+- Existing machines that already use the module will continue running it, but warnings will be shown on the config page
 
 To deprecate a module:
 
