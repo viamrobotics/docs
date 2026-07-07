@@ -36,19 +36,15 @@ One piece of that logic does genuinely change: how you reach `transform_pose`. I
 
 ## Create a control code module
 
-<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
-
-{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
-
-<!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
-
-{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the inline module cloud build.">}}
-
 {{< alert title="Module build feedback loop" color="note" >}}
 Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. It is not instant the way rerunning a local script is, so give it that minute rather than assuming a save failed.
 {{< /alert >}}
 
 On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
+
+<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
 
 Control code for adding application logic to a robot is typically modeled as a generic service: a resource class built on the Generic service API plus the `EasyResource` convenience mixin, whose `do_command` method is its entry point. Over the next three sections you move your pick-and-place code into this skeleton's lifecycle methods: the connection to typed resource handles becomes dependency injection, reaching `transform_pose` changes, and the detection, pose math, and motion calls gather behind a `do_command` entry point. Work through them in order; you save and build the module at the end, once the code is in place.
 
@@ -144,10 +140,6 @@ The resource name is still `"arm-1"` in both. In the module you do not hardcode 
 
 ## Trigger the module with do_command
 
-<!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
-
-{{<imgproc src="/tutorials/pick-and-place/control-do-command.png" resize="1200x" declaredimensions=true alt="The module DoCommand test card running the pick_cycle action.">}}
-
 With dependencies wired up and `transform_pose` reachable, assemble your pick-and-place logic into a single `run_pick_cycle` method on the module, the same detection, transform, pose math, and motion calls, unchanged. What differs is how that method gets triggered.
 
 You trigger the module through `do_command`. Because a generic service has no typed API of its own, `do_command` is its entry point: the method you dispatch on to run the actions your service exposes. A small illustrative sketch:
@@ -162,11 +154,19 @@ async def do_command(self, command, *, timeout=None, **kwargs):
 
 With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed module downloads back in Phase 2.
 
+<!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
+
+{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the inline module cloud build.">}}
+
 {{< checkpoint >}}
 The module finishes its cloud build and starts without errors in the **LOGS** tab, and its resource shows online on the **CONFIGURE** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
 From the **CONTROL** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your laptop. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
+
+<!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-do-command.png" resize="1200x" declaredimensions=true alt="The module DoCommand test card running the pick_cycle action.">}}
 
 {{< checkpoint >}}
 Sending a `do_command` trigger runs one complete pick-and-place cycle: detection, transform, approach, grasp, travel, and place, ending with a block in the bin.

@@ -56,21 +56,13 @@ Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the
 
 ## Resources: configure your first one
 
-<!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-add-component.png" resize="1200x" declaredimensions=true alt="The add-component dialog with xArm6 searched and the ufactory/xArm6 result selected.">}}
-
-<!-- ASSET P0 logs-xarm-module-start (UI+): LOGS showing the viam:ufactory module download + start (the module-download moment) -->
-
-{{<imgproc src="/tutorials/pick-and-place/logs-xarm-module-start.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the viam:ufactory module downloading and starting.">}}
-
-<!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 card showing the ufactory/xArm6 model label and "from ufactory", plus the full viam:ufactory:xArm6 triplet in the JSON model field -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-arm1-triplet.png" resize="1200x" declaredimensions=true alt="The arm-1 resource card showing its ufactory/xArm6 model and from ufactory module label.">}}
-
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.
 
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `xArm6`, select the `viam:ufactory:xArm6` result, and name the component `arm-1`.
+
+<!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-add-component.png" resize="1200x" declaredimensions=true alt="The add-component dialog with xArm6 searched and the ufactory/xArm6 result selected.">}}
 
 Set the following attributes:
 
@@ -89,7 +81,15 @@ Set the following attributes:
 
 Save the config, then open the **LOGS** tab and watch what happens: a log line for a module download, then one for the module starting, then `arm-1` coming online, usually well under a minute. You just set the module system in motion; the [Builtin resources and modules](#builtin-resources-and-modules) section below explains what you saw.
 
+<!-- ASSET P0 logs-xarm-module-start (UI+): LOGS showing the viam:ufactory module download + start (the module-download moment) -->
+
+{{<imgproc src="/tutorials/pick-and-place/logs-xarm-module-start.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the viam:ufactory module downloading and starting.">}}
+
 Back on the **CONFIGURE** tab, look at the `arm-1` card. Next to the name, it shows the model as `ufactory/xArm6`, the family and model name, with `from ufactory` marking the module it came from. That is the short form. The model's full name is a **triplet**, `namespace:family:name`, which you can see written out as `viam:ufactory:xArm6` if you switch to the JSON view. The triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`, here `viam`), the family of models it belongs to (`family`, here `ufactory`), and the specific model name (`name`, here `xArm6`).
+
+<!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 card showing the ufactory/xArm6 model label and "from ufactory", plus the full viam:ufactory:xArm6 triplet in the JSON model field -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-arm1-triplet.png" resize="1200x" declaredimensions=true alt="The arm-1 resource card showing its ufactory/xArm6 model and from ufactory module label.">}}
 
 You will configure the gripper and camera the same way in Phase 2. Each is a resource too, with its own name, API, and model, even though one drives a gripper and the other reads a depth camera.
 

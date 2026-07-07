@@ -52,14 +52,6 @@ The approach pose and the grasp pose share the same x and y coordinates. The onl
 
 ## Save each pose with the arm position saver
 
-<!-- ASSET P0 control-armsaver-switch (UI+): arm-position-saver switch card with position 1 = save and 2 = execute annotated -->
-
-{{<imgproc src="/tutorials/pick-and-place/control-armsaver-switch.png" resize="1200x" declaredimensions=true alt="The arm-position-saver switch test card with its update config and go to positions.">}}
-
-<!-- ASSET P1 configure-duplicate-feature (UI+): the resource Duplicate control highlighted -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-duplicate-feature.png" resize="1200x" declaredimensions=true alt="A resource card menu with the Duplicate option.">}}
-
 You configure pose saving by hand, the same way you configured the arm, gripper, and camera in Phases 1 and 2.
 
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `arm-position-saver`, select the `erh:vmodutils:arm-position-saver` switch model, and name it `home-pose`. This is the first model you use from the `erh:vmodutils` module, so `viam-server` downloads that module now; the same module also provides the `erh:vmodutils:obstacle` model you configure later in this phase, so it downloads only once.
@@ -85,7 +77,15 @@ With the `home-pose` switch added, save and verify it:
 3. On the switch test card, set the switch to **update config** (position 1) to save the current joint positions.
 4. Set the switch to **go to** (position 2) to confirm the arm returns to the saved pose from any starting position.
 
+<!-- ASSET P0 control-armsaver-switch (UI+): arm-position-saver switch card with position 1 = save and 2 = execute annotated -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-armsaver-switch.png" resize="1200x" declaredimensions=true alt="The arm-position-saver switch test card with its update config and go to positions.">}}
+
 Now that `home-pose` is saved, open its resource card on the **CONFIGURE** tab and use the **Duplicate** feature to create a copy. Rename the copy to `approach-pose`, and its `arm` attribute carries over automatically since it is already set to `"arm-1"`. Duplicate three more times for `grasp-pose`, `travel-pose`, and `place-pose`. This is faster than adding five switches from scratch and less error-prone, since you only type the `arm` attribute once.
+
+<!-- ASSET P1 configure-duplicate-feature (UI+): the resource Duplicate control highlighted -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-duplicate-feature.png" resize="1200x" declaredimensions=true alt="A resource card menu with the Duplicate option.">}}
 
 Run the same four save-and-verify steps for each of the four new poses: jog the arm into position, confirm it with **Current position** under **MoveToPosition**, set the switch to "update config" to save, and set it to "go to" to confirm the arm returns.
 
@@ -166,10 +166,6 @@ If your table is not centered on the arm base in x and y, adjust the frame's `tr
 
 ### Add the safety walls
 
-<!-- ASSET P1 3dscene-obstacles (UI): 3D scene rendering the table + wall boxes around the arm -->
-
-{{<imgproc src="/tutorials/pick-and-place/3dscene-obstacles.png" resize="1200x" declaredimensions=true alt="The 3D scene showing the table and safety-wall obstacle boxes around the arm.">}}
-
 Add two more `erh:vmodutils:obstacle` components the same way, one per boundary you want to wall off. Each has its box dimensions in `geometries` and a `world`-parented `frame` that places it.
 
 `safety-wall-front` attributes:
@@ -223,6 +219,10 @@ Add two more `erh:vmodutils:obstacle` components the same way, one per boundary 
 ```
 
 Replace `REPLACE_WITH_MEASURED_FRONT_X` and `REPLACE_WITH_MEASURED_BACK_X` with the coordinates you measured for the front and back boundaries of your workspace. Both walls are 600 mm tall, so their frame `translation.z` is 300, half the height.
+
+<!-- ASSET P1 3dscene-obstacles (UI): 3D scene rendering the table + wall boxes around the arm -->
+
+{{<imgproc src="/tutorials/pick-and-place/3dscene-obstacles.png" resize="1200x" declaredimensions=true alt="The 3D scene showing the table and safety-wall obstacle boxes around the arm.">}}
 
 You can check your obstacle configuration against the companion repo's [obstacles-template.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/obstacles-template.json), which has the full set with example measurements filled in. The full machine configuration, including all pose switches and obstacles, is in [machine-fragment.json](https://github.com/viam-devrel/pick-and-place/blob/main/config/machine-fragment.json). Treat both as references to check your work against, not as files to import over what you configured by hand.
 

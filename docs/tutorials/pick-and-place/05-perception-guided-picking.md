@@ -19,14 +19,6 @@ In this phase you replace the fixed approach and grasp poses from Phase 4 with l
 
 ## Configure the vision pipeline
 
-<!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
-
-{{<imgproc src="/tutorials/pick-and-place/control-vision-detections.png" resize="1200x" declaredimensions=true alt="The shape-detector vision card showing a detected block with a bounding box and label.">}}
-
-<!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-vision-pipeline.png" resize="1200x" declaredimensions=true alt="The shape-detector vision service config with its camera_name attribute.">}}
-
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `shape-finder` and select the `devrel:shape-finder:detector` vision model. Name it `shape-detector` and set its attribute:
 
 ```json
@@ -36,6 +28,10 @@ On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for
 ```
 
 The `camera_name` attribute is also a dependency: `shape-detector` cannot run until `cam-1` is online, the same dependency pattern you have already seen with `gripper-1` and `arm-1`. This service reads color frames from `cam-1` and finds blocks by shape, in two dimensions, with no depth information yet.
+
+<!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-vision-pipeline.png" resize="1200x" declaredimensions=true alt="The shape-detector vision service config with its camera_name attribute.">}}
 
 Add the second service the same way. Click the **+** icon and select **Blocks**, search for `detections-to-segments`, and select the `viam:vision:detections-to-segments` model. Name it `vision-segment` and set its attributes:
 
@@ -51,6 +47,10 @@ Add the second service the same way. Click the **+** icon and select **Blocks**,
 `vision-segment` depends on `shape-detector` and `cam-1`, the same graph relationship as before: it takes each 2D shape detection, pulls the matching depth points from `cam-1`, filters noisy points out with the `mean_k` and `sigma` attributes, and fuses the result into a 3D object point cloud per detected block. A 2D detection alone cannot tell you how far away a block is or where it sits in space; `vision-segment` is what turns "a block-shaped region of pixels" into "a block at this point in three dimensions."
 
 Save the config and open the **CONTROL** tab. Find the `vision-segment` test card. You should see the detections coming from the `shape-detector` service and one or more segmented objects under the **Object point clouds** section after toggling **Show object point clouds**. Each segmented object is displayed as a small point cloud with a label matching the paired bounding-box detection, with estimated dimensions and 3D position from the perspective of the camera.
+
+<!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-vision-detections.png" resize="1200x" declaredimensions=true alt="The shape-detector vision card showing a detected block with a bounding box and label.">}}
 
 {{< checkpoint >}}
 The `vision-segment` test card returns at least one object when a block is in view. If it returns nothing, confirm a block actually sits in the camera's field of view, then check the `shape-detector` card on its own: if that also returns nothing, the problem is upstream in shape detection, not in the depth fusion step.

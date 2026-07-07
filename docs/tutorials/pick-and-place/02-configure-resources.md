@@ -29,10 +29,6 @@ By the end of this phase your CONFIGURE tab holds all three components: `arm-1` 
 
 ## Configure the gripper
 
-<!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-gripper.png" resize="1200x" declaredimensions=true alt="The gripper-1 config with its arm attribute set to arm-1.">}}
-
 Start with the gripper. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for the `viam:ufactory:gripper` model and select it. Name it `gripper-1`.
 
 {{< alert title="One module, two models" color="note" >}}
@@ -49,19 +45,11 @@ Set one attribute:
 
 This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is running, because the gripper is physically mounted on the arm and controlled through the same connection. Save the config and check the **LOGS** tab: `gripper-1` comes online immediately, because the `viam:ufactory` module has been running since Phase 1.
 
+<!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-gripper.png" resize="1200x" declaredimensions=true alt="The gripper-1 config with its arm attribute set to arm-1.">}}
+
 ## Configure the camera with a discovery service
-
-<!-- ASSET P0 configure-add-discovery (UI+): add-component dialog, "realsense" searched, discovery / realsense:discovery result highlighted -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-add-discovery.png" resize="1200x" declaredimensions=true alt="The add-component dialog with realsense searched and the discovery / realsense:discovery service selected.">}}
-
-<!-- ASSET P0 discovery-test-panel (UI+): realsense discovery TEST panel showing a camera config snippet with serial_number filled in -->
-
-{{<imgproc src="/tutorials/pick-and-place/discovery-test-panel.png" resize="1200x" declaredimensions=true alt="The RealSense discovery service TEST panel showing a discovered camera config with its serial number.">}}
-
-<!-- ASSET P2 configure-camera (UI): cam-1 realsense config, sensors color+depth, align_color_depth true, serial_number populated -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-camera.png" resize="1200x" declaredimensions=true alt="The cam-1 config with color and depth sensors, align_color_depth enabled, and a serial number.">}}
 
 You could add the camera by hand like the arm and gripper, but the RealSense module ships a **discovery service** that does the tedious part for you: it finds the connected camera and hands you a ready-made config with the correct serial number already filled in. A discovery service reports the hardware attached to a machine and suggests configurations for it, so you configure the right device without hunting for identifiers by hand. See [Discovery service](/reference/services/discovery/) for the general pattern.
 
@@ -69,17 +57,29 @@ You could add the camera by hand like the arm and gripper, but the RealSense mod
 
 Click the **+** icon and select **Blocks**. Search for `realsense` and select the `discovery / realsense:discovery` service. Leave its name as the default and save the config.
 
+<!-- ASSET P0 configure-add-discovery (UI+): add-component dialog, "realsense" searched, discovery / realsense:discovery result highlighted -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-add-discovery.png" resize="1200x" declaredimensions=true alt="The add-component dialog with realsense searched and the discovery / realsense:discovery service selected.">}}
+
 Saving now is the moment `viam-server` fetches the `viam:realsense` module: the discovery service and the camera model both come from it, so the download happens once here, the same way `viam:ufactory` downloaded once for the arm and gripper. Watch the **LOGS** tab for the module download and the discovery service starting.
 
 ### Discover the camera
 
 Open the discovery service's **TEST** panel. It lists every RealSense it detects on the machine, each as a copy-pasteable configuration snippet with that camera's `serial_number` already populated. With one camera connected you see one entry. Select **Add component** next to it to create a camera component from the snippet.
 
+<!-- ASSET P0 discovery-test-panel (UI+): realsense discovery TEST panel showing a camera config snippet with serial_number filled in -->
+
+{{<imgproc src="/tutorials/pick-and-place/discovery-test-panel.png" resize="1200x" declaredimensions=true alt="The RealSense discovery service TEST panel showing a discovered camera config with its serial number.">}}
+
 The discovered component arrives named `realsense-<serial_number>`, with `sensors` set to `["color", "depth"]` and `serial_number` already filled in. Rename it to `cam-1` so it matches the rest of this workshop, then add the one attribute discovery does not set:
 
 - `align_color_depth`: `true`
 
 Leave the discovered `sensors` and `serial_number` as they are; letting discovery set the serial number is the whole point of using the service. You do not need to set `width_px` or `height_px`; the module uses a supported default resolution, and pinning one that the camera cannot produce would fail the build.
+
+<!-- ASSET P2 configure-camera (UI): cam-1 realsense config, sensors color+depth, align_color_depth true, serial_number populated -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-camera.png" resize="1200x" declaredimensions=true alt="The cam-1 config with color and depth sensors, align_color_depth enabled, and a serial number.">}}
 
 `align_color_depth` is the attribute that makes perception work later. With it set to `true`, the module aligns each depth frame to the color frame, so a given pixel in the color image and the same pixel in the depth image describe the same physical point. The `vision-segment` service in Phase 5 relies on that alignment to turn a 2D detection into a 3D point cloud segment. Both `color` and `depth` must be in the `sensors` list for it to take effect.
 
@@ -90,14 +90,6 @@ The discovery service is not part of the pick-and-place pipeline; it only helped
 {{< /alert >}}
 
 ## Connect the components with frames
-
-<!-- ASSET P1 configure-arm-frame (UI): arm-1 card Frame editor, parent world, translation 0,0,0 -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-arm-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor for arm-1 with parent world and zero translation.">}}
-
-<!-- ASSET P0 configure-camera-frame (UI+): cam-1 Frame editor JSON, parent arm-1, translation -73,40,18 -->
-
-{{<imgproc src="/tutorials/pick-and-place/configure-camera-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor JSON for cam-1 with parent arm-1 and a wrist-mount translation.">}}
 
 Adding the arm, gripper, and camera tells `viam-server` how to talk to each one, but not where each sits in space. The motion service needs that spatial relationship: it has to know the gripper rides on the end of the arm and the camera looks out from the wrist, or it cannot plan a pick. You supply it by adding a **frame** to each component.
 
@@ -113,6 +105,10 @@ world
 ### Frame the arm
 
 Open the `arm-1` card and select **Frame**. The default frame already describes what you want: parent `world`, translation `(0, 0, 0)`, no rotation. That places the arm's base at the origin of the world, and every other frame is measured from there. Leave the defaults and save.
+
+<!-- ASSET P1 configure-arm-frame (UI): arm-1 card Frame editor, parent world, translation 0,0,0 -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-arm-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor for arm-1 with parent world and zero translation.">}}
 
 ### Frame the gripper
 
@@ -148,27 +144,23 @@ Open the `cam-1` card and select **Frame**. Switch the editor to JSON and set:
 
 Parent `arm-1` mounts the camera on the wrist so it moves with the arm. The translation places the camera's optical center relative to the end effector, and the 270-degree rotation around z lines the camera's axes up with the arm's. Save the config.
 
+<!-- ASSET P0 configure-camera-frame (UI+): cam-1 Frame editor JSON, parent arm-1, translation -73,40,18 -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-camera-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor JSON for cam-1 with parent arm-1 and a wrist-mount translation.">}}
+
 {{< alert title="These values match this workshop's hardware" color="note" >}}
 The translation and orientation above describe the specific gripper and camera mount used in this workshop. If your hardware differs, work through the [frame calibration worksheet](https://github.com/viam-devrel/pick-and-place/blob/main/setup/frame-calibration-worksheet.md) to measure your own offsets, and see [Configure frames for an arm, gripper, and wrist camera](/motion-planning/frame-system/arm-gripper-camera/) for the full method.
 {{< /alert >}}
 
 ## Test each resource from the CONTROL tab
 
-<!-- ASSET P1 control-camera-stream (UI): CONTROL camera card, live color + depth -->
-
-{{<imgproc src="/tutorials/pick-and-place/control-camera-stream.png" resize="1200x" declaredimensions=true alt="The cam-1 CONTROL card showing a live color stream of the blocks.">}}
-
-<!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
-
-{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm CONTROL card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
-
-<!-- ASSET P1 control-gripper-grab (MOTION): gripper closing on a block via Grab, then Open releasing -->
-
-{{<imgproc src="/tutorials/pick-and-place/control-gripper-grab.jpeg" resize="1200x" declaredimensions=true alt="The two-finger gripper holding a block.">}}
-
 Open the **CONTROL** tab. You should now see a test card for each of the three components you just added.
 
 On the camera card, confirm you get a live feed:
+
+<!-- ASSET P1 control-camera-stream (UI): CONTROL camera card, live color + depth -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-camera-stream.png" resize="1200x" declaredimensions=true alt="The cam-1 CONTROL card showing a live color stream of the blocks.">}}
 
 {{< checkpoint >}}
 The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the **GetImages** stream rate to "Refresh every second" and the source to depth and confirm that stream updates too. If the card is blank, check the LOGS tab for a camera error before moving on.
@@ -182,11 +174,19 @@ Jogging the arm (setting the joint sliders and pressing **Execute**) moves the p
 
 On the arm card, set a joint with the **MoveToJointPositions** sliders and press **Execute** to move the arm. Then, under **MoveToPosition**, press **Current position** and confirm the Pose Values populate with the arm's current x, y, and z.
 
+<!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm CONTROL card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
+
 {{< checkpoint >}}
 Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values rather than erroring. If nothing moves, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
 {{< /checkpoint >}}
 
 On the gripper card, place a block between the gripper fingers by hand, then select **Grab**. The fingers should close and hold the block. Select **Open** and confirm the fingers release it.
+
+<!-- ASSET P1 control-gripper-grab (MOTION): gripper closing on a block via Grab, then Open releasing -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-gripper-grab.jpeg" resize="1200x" declaredimensions=true alt="The two-finger gripper holding a block.">}}
 
 {{< checkpoint >}}
 With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. This grab-and-release is the same action your Python code performs later in the workshop when it picks a block and drops it in a bin. If your gripper card also shows a holding status indicator, it now reads true while the block is held and false once the gripper is open and empty.

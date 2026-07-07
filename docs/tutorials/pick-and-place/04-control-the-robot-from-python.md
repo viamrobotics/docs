@@ -51,10 +51,6 @@ python3 starter-script.py
 
 ## Connect to your robot
 
-<!-- ASSET P0 connect-tab-boilerplate (UI+): CONNECT -> Python SDK, connection block highlighted, credentials REDACTED. See plans/2026-07-02-pick-and-place-shot-list.md -->
-
-{{<imgproc src="/tutorials/pick-and-place/connect-tab-boilerplate.png" resize="1200x" declaredimensions=true alt="The CONNECT tab showing the Python SDK connection code with the machine address and API key.">}}
-
 Open `starter-script.py` and find the `connect()` function. It mirrors the boilerplate the Viam app generates for you on the machine's **CONNECT** tab, under **Python SDK**:
 
 ```python
@@ -72,6 +68,10 @@ async def connect() -> RobotClient:
 ```
 
 Open the **CONNECT** tab on your machine's page in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the three values it shows you: the machine address and an API key and key ID pair. Paste them into `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` at the top of the script. You are reading and understanding this boilerplate rather than writing it from scratch, the same connection code every Viam Python script starts with.
+
+<!-- ASSET P0 connect-tab-boilerplate (UI+): CONNECT -> Python SDK, connection block highlighted, credentials REDACTED. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/connect-tab-boilerplate.png" resize="1200x" declaredimensions=true alt="The CONNECT tab showing the Python SDK connection code with the machine address and API key.">}}
 
 The machine address, also known as the "remote address" or fully-qualified domain name (FQDN), can also be found in the dropdown from the **Online** indicator. The API key and ID can also be found and created from the **API keys** section of the **CONNECT** tab.
 
