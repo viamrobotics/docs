@@ -20,7 +20,12 @@ In this phase you replace the fixed approach and grasp poses from Phase 4 with l
 ## Configure the vision pipeline
 
 <!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-vision-detections.png" resize="1200x" declaredimensions=true alt="The shape-detector vision card showing a detected block with a bounding box and label.">}}
+
 <!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-vision-pipeline.png" resize="1200x" declaredimensions=true alt="The shape-detector vision service config with its camera_name attribute.">}}
 
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `shape-finder` and select the `devrel:shape-finder:detector` vision model. Name it `shape-detector` and set its attribute:
 

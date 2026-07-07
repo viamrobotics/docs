@@ -57,8 +57,16 @@ Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the
 ## Resources: configure your first one
 
 <!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-add-component.png" resize="1200x" declaredimensions=true alt="The add-component dialog with xArm6 searched and the ufactory/xArm6 result selected.">}}
+
 <!-- ASSET P0 logs-xarm-module-start (UI+): LOGS showing the viam:ufactory module download + start (the module-download moment) -->
+
+{{<imgproc src="/tutorials/pick-and-place/logs-xarm-module-start.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the viam:ufactory module downloading and starting.">}}
+
 <!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 card showing the ufactory/xArm6 model label and "from ufactory", plus the full viam:ufactory:xArm6 triplet in the JSON model field -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-arm1-triplet.png" resize="1200x" declaredimensions=true alt="The arm-1 resource card showing its ufactory/xArm6 model and from ufactory module label.">}}
 
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.
 
@@ -74,6 +82,10 @@ Set the following attributes:
 ```
 
 `host` is the only required attribute; it can be found on the arm's control box. Setting `speed_degs_per_sec` to `30` keeps the arm moving slowly enough to stay safe while you work near it.
+
+<!-- ASSET P2 arm-controller-host (PHOTO): the xArm controller box with its IP address label -->
+
+{{<imgproc src="/tutorials/pick-and-place/arm-controller-host.jpeg" resize="1200x" declaredimensions=true alt="The xArm controller box; the IP address to use for the host attribute is printed on a label.">}}
 
 Save the config, then open the **LOGS** tab and watch what happens: a log line for a module download, then one for the module starting, then `arm-1` coming online, usually well under a minute. You just set the module system in motion; the [Builtin resources and modules](#builtin-resources-and-modules) section below explains what you saw.
 

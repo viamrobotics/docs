@@ -31,6 +31,8 @@ By the end of this phase your CONFIGURE tab holds all three components: `arm-1` 
 
 <!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
 
+{{<imgproc src="/tutorials/pick-and-place/configure-gripper.png" resize="1200x" declaredimensions=true alt="The gripper-1 config with its arm attribute set to arm-1.">}}
+
 Start with the gripper. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for the `viam:ufactory:gripper` model and select it. Name it `gripper-1`.
 
 {{< alert title="One module, two models" color="note" >}}
@@ -50,8 +52,16 @@ This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is r
 ## Configure the camera with a discovery service
 
 <!-- ASSET P0 configure-add-discovery (UI+): add-component dialog, "realsense" searched, discovery / realsense:discovery result highlighted -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-add-discovery.png" resize="1200x" declaredimensions=true alt="The add-component dialog with realsense searched and the discovery / realsense:discovery service selected.">}}
+
 <!-- ASSET P0 discovery-test-panel (UI+): realsense discovery TEST panel showing a camera config snippet with serial_number filled in -->
+
+{{<imgproc src="/tutorials/pick-and-place/discovery-test-panel.png" resize="1200x" declaredimensions=true alt="The RealSense discovery service TEST panel showing a discovered camera config with its serial number.">}}
+
 <!-- ASSET P2 configure-camera (UI): cam-1 realsense config, sensors color+depth, align_color_depth true, serial_number populated -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-camera.png" resize="1200x" declaredimensions=true alt="The cam-1 config with color and depth sensors, align_color_depth enabled, and a serial number.">}}
 
 You could add the camera by hand like the arm and gripper, but the RealSense module ships a **discovery service** that does the tedious part for you: it finds the connected camera and hands you a ready-made config with the correct serial number already filled in. A discovery service reports the hardware attached to a machine and suggests configurations for it, so you configure the right device without hunting for identifiers by hand. See [Discovery service](/reference/services/discovery/) for the general pattern.
 
@@ -82,7 +92,12 @@ The discovery service is not part of the pick-and-place pipeline; it only helped
 ## Connect the components with frames
 
 <!-- ASSET P1 configure-arm-frame (UI): arm-1 card Frame editor, parent world, translation 0,0,0 -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-arm-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor for arm-1 with parent world and zero translation.">}}
+
 <!-- ASSET P0 configure-camera-frame (UI+): cam-1 Frame editor JSON, parent arm-1, translation -73,40,18 -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-camera-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor JSON for cam-1 with parent arm-1 and a wrist-mount translation.">}}
 
 Adding the arm, gripper, and camera tells `viam-server` how to talk to each one, but not where each sits in space. The motion service needs that spatial relationship: it has to know the gripper rides on the end of the arm and the camera looks out from the wrist, or it cannot plan a pick. You supply it by adding a **frame** to each component.
 
@@ -140,8 +155,16 @@ The translation and orientation above describe the specific gripper and camera m
 ## Test each resource from the CONTROL tab
 
 <!-- ASSET P1 control-camera-stream (UI): CONTROL camera card, live color + depth -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-camera-stream.png" resize="1200x" declaredimensions=true alt="The cam-1 CONTROL card showing a live color stream of the blocks.">}}
+
 <!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm CONTROL card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
+
 <!-- ASSET P1 control-gripper-grab (MOTION): gripper closing on a block via Grab, then Open releasing -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-gripper-grab.jpeg" resize="1200x" declaredimensions=true alt="The two-finger gripper holding a block.">}}
 
 Open the **CONTROL** tab. You should now see a test card for each of the three components you just added.
 

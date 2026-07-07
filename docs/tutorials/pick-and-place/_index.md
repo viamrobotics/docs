@@ -31,9 +31,9 @@ The workshop is structured as six sequential phases, each ending with a working 
 
 <!-- ASSET P0 hero-hardware-overview (PHOTO): complete rig staged (xArm6 + gripper + wrist RealSense + blocks + bin + Meerkat). See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-You will configure an xArm6 robotic arm fitted with a two-finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks in camera space, and the Viam motion service plans and executes collision-free picks that place each block in the bin. By the end of Phase 5 you have a Python script you run from your laptop that drives the full detect-pick-place loop.
+{{<imgproc src="/tutorials/pick-and-place/hero-hardware-overview.jpeg" resize="1200x" declaredimensions=true alt="The staged pick-and-place workstation: a uFactory xArm6 arm with a two-finger gripper and a wrist-mounted RealSense camera, colored blocks, and a bin.">}}
 
-<!-- TODO: add hardware-overview photo to assets/tutorials/pick-and-place/ and reference via images frontmatter once available -->
+You will configure an xArm6 robotic arm fitted with a two-finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks in camera space, and the Viam motion service plans and executes collision-free picks that place each block in the bin. By the end of Phase 5 you have a Python script you run from your laptop that drives the full detect-pick-place loop.
 
 ## Required hardware
 
@@ -87,6 +87,8 @@ If either command fails, revisit the checklist above before continuing.
 ### Where to start
 
 <!-- ASSET P1 live-indicator (UI+): machine page with the green Live indicator boxed -->
+
+{{<imgproc src="/tutorials/pick-and-place/live-indicator.png" resize="1200x" declaredimensions=true alt="A Viam machine page showing the green Live indicator.">}}
 
 - **Hardware ready (`viam-server` running):** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 - **Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).

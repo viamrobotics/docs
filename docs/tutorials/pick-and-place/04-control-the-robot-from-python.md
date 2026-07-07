@@ -53,6 +53,8 @@ python3 starter-script.py
 
 <!-- ASSET P0 connect-tab-boilerplate (UI+): CONNECT -> Python SDK, connection block highlighted, credentials REDACTED. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
+{{<imgproc src="/tutorials/pick-and-place/connect-tab-boilerplate.png" resize="1200x" declaredimensions=true alt="The CONNECT tab showing the Python SDK connection code with the machine address and API key.">}}
+
 Open `starter-script.py` and find the `connect()` function. It mirrors the boilerplate the Viam app generates for you on the machine's **CONNECT** tab, under **Python SDK**:
 
 ```python

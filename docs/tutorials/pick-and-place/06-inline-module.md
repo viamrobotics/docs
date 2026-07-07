@@ -37,7 +37,12 @@ One piece of that logic does genuinely change: how you reach `transform_pose`. I
 ## Create a control code module
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+
+{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
+
 <!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
+
+{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the inline module cloud build.">}}
 
 {{< alert title="Module build feedback loop" color="note" >}}
 Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. It is not instant the way rerunning a local script is, so give it that minute rather than assuming a save failed.
@@ -140,6 +145,8 @@ The resource name is still `"arm-1"` in both. In the module you do not hardcode 
 ## Trigger the module with do_command
 
 <!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-do-command.png" resize="1200x" declaredimensions=true alt="The module DoCommand test card running the pick_cycle action.">}}
 
 With dependencies wired up and `transform_pose` reachable, assemble your pick-and-place logic into a single `run_pick_cycle` method on the module, the same detection, transform, pose math, and motion calls, unchanged. What differs is how that method gets triggered.
 
