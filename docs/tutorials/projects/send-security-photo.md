@@ -61,7 +61,7 @@ Configure your [webcam](/reference/components/camera/webcam/) so that your machi
 1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `cam` in all example code.
@@ -93,7 +93,7 @@ If you want to train your own model instead, follow the instructions to [train a
 
    Navigate to your machine's **CONFIGURE** tab.
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing `ML model` and select **ML model / TFLite CPU** from the builtin options.
 
    Enter `people` as the name, click **Add Module**, then click **Create**.
@@ -107,7 +107,7 @@ If you want to train your own model instead, follow the instructions to [train a
 
 1. **Configure an mlmodel detector** [vision service](/reference/services/vision/)
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing `ML model` and select **vision / ML model** from the builtin options.
 
    Enter `myPeopleDetector` as the name, then click **Create**.

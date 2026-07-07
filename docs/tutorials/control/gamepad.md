@@ -90,7 +90,7 @@ Go to your rover's **CONFIGURE** tab.
 
 Configure a [gamepad](/reference/components/input-controller/gamepad/):
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 Search for `gamepad`, then select the official `input_controller/gamepad` block from `viam-server`.
 Click **Add to machine**, enter a name (or use the suggested name) for your input controller, then click **Add to machine** to confirm.
 
@@ -128,7 +128,7 @@ To link the controller's input to the base functionality, you need to configure 
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 Search for 'base_remote_control' and select the official `base_remote_control/builtin` block from `viam-server`.
 Click **Add to machine**, enter a name (or use the suggested name) for your service, then click **Add to machine** to confirm.
 
