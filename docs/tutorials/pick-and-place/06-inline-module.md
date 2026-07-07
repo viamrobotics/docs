@@ -32,7 +32,7 @@ If none of those apply, stop here. You have already built the thing this worksho
 
 Set expectations before you start: this phase should be considered a refactor. The detection, the frame transform, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do.
 
-One piece of that logic does genuinely change: how you reach `transform_pose`. In previous phase, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. A module does not automatically receive that same handle. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
+One piece of that logic does genuinely change: how you reach `transform_pose`. In the previous phase, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. A module does not automatically receive that same handle. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
 
 ## Create a control code module
 

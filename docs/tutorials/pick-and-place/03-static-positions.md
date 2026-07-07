@@ -102,7 +102,7 @@ In this workshop you configure two categories of obstacle: the table surface and
 
 ## Obstacles as components
 
-An obstacle can be configured an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle shows up in `resource_names` as a gripper. That is expected; the model reuses the gripper API purely as a resource container for geometry, it does not add a real gripper to your machine.
+An obstacle can be configured as an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle shows up in `resource_names` as a gripper. That is expected; the model reuses the gripper API purely as a resource container for geometry, it does not add a real gripper to your machine.
 This will automatically include the geometry of the component in the World State used by the motion service to plan a safe path for the arm to a target position in 3D space.
 
 ### Measure your workspace
@@ -112,7 +112,7 @@ This will automatically include the geometry of the component in the World State
 Before you can fill in the obstacle geometry, measure your own table and workspace boundary. You need two kinds of measurement, and each one feeds a different part of the config:
 
 - **Tape-measure dimensions** for the box sizes: the table's length, width, and thickness go into the table obstacle's `x`, `y`, and `z`. Use the tape measure for how big each box is, not for where it sits.
-- **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the side boundary, and press **Current position** under **MoveToPosition** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. These are the numbers that fill the `REPLACE_WITH_MEASURED_FRONT_X` and `REPLACE_WITH_MEASURED_BACK_X` placeholders in the safety walls below.
+- **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the safe working boundary behind the arm, and press **Current position** under **MoveToPosition** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. These are the numbers that fill the `REPLACE_WITH_MEASURED_FRONT_X` and `REPLACE_WITH_MEASURED_BACK_X` placeholders in the safety walls below.
 
 All obstacle geometry is expressed against the world origin, which in this setup sits at the arm base, so the x and y coordinates you read from **Current position** drop straight into the frame's `translation` fields without any conversion.
 
