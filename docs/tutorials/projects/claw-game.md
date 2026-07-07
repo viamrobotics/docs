@@ -170,7 +170,7 @@ Click the **Create component** button in the lower-left corner.
 
 Add your [board](/reference/components/board/) with type `board` and model `viam:raspberry-pi:rpi` if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
 If you are using a Raspberry Pi 5, use the `pi5` model.
-Name your board `myBoard` and click **Create**.
+Name your board `myBoard` and click **Add to machine**.
 
 ![Create component panel, with the name attribute filled as myBoard, type attribute filled as board and model attribute filled as pi.](/tutorials/claw-game/app-component-myboard.png)
 
@@ -213,10 +213,10 @@ Use the parts dropdown menu to navigate to the `planning` sub-part.
 {{< tabs >}}
 {{% tab name="Builder UI" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 
 Select type `arm`, and model `viam:ufactory:xArm6`.
-Name it `myArm` and click **Create**.
+Name it `myArm` and click **Add to machine**.
 
 Configure the arm component with the arm's IP address in the `host` field.
 Our arm's address was `10.1.1.26`, but you should use the IP address for your arm.
@@ -277,7 +277,7 @@ Click **Save config** in the bottom left corner of the screen.
 
 Click **Create component** and add your [gripper](/reference/components/gripper/).
 Choose type `gripper` and model `fake`.
-Name it `gripper` and click **Create**.
+Name it `gripper` and click **Add to machine**.
 
 ![Create component panel, with the name attribute filled as gripper, type attribute filled as gripper and model attribute filled as fake. In the Frame section, there is a myArm parent in the frame.](/tutorials/claw-game/app-gripper.png)
 
