@@ -27,9 +27,9 @@ We need a component that produces data. The built-in `sensor/fake` component ret
 
 1. Go to your machine's page in the Viam app.
 2. Click the **+** button in the left sidebar.
-3. Select **Configuration block**.
+3. Select **Blocks**.
 4. Search for **sensor/fake** and select the result.
-5. Name it `test-sensor` and click **Create**.
+5. Name it `test-sensor` and click **Add to machine**.
 6. Click **Save** in the upper right.
 
 Expand the **test** section on the sensor's component card. You should see `{"a": 1, "b": 2, "c": 3}` returned from `GetReadings`. This confirms the sensor is working.

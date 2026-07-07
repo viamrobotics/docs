@@ -46,7 +46,7 @@ For hardware-specific alternatives (for example, `triton` for Nvidia GPU),
 see [Supported frameworks and hardware](/train/overview/#supported-frameworks-and-hardware).
 
 1. Navigate to your machine's **CONFIGURE** tab.
-2. Click **+** and select **Configuration block**.
+2. Click **+** and select **Blocks**.
 3. Search for the ML model service matching your framework (for example,
    `tflite_cpu`) and select the matching result.
 4. Click the block, then click **Add to machine**.
@@ -62,7 +62,7 @@ see [Supported frameworks and hardware](/train/overview/#supported-frameworks-an
 
 ### 2. Add the vision service
 
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 2. Search for `mlmodel` and find the **mlmodel** block (type: **VISION**,
    built-in).
 3. Click the block, then click **Add to machine**.
