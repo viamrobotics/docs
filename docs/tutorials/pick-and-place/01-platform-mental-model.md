@@ -30,6 +30,8 @@ You will not write any code in this phase, but you will configure your first res
 
 <!-- ASSET P0 diagram-three-layers (DIAGRAM): cloud app (source of truth) -> viam-server pulls config; viam-agent supervises; SDK arrow to viam-server. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
+{{<imgproc src="/tutorials/pick-and-place/diagram-three-layers.png" resize="1200x" declaredimensions=true alt="How the Viam cloud app, viam-agent, and viam-server relate, and where the Python SDK connects.">}}
+
 A Viam machine is made of three layers that each do one job:
 
 - **The Viam cloud app** is the source of truth for configuration. When you add a component, change an attribute, or wire up a service, you are editing a JSON document stored in the cloud. The app never controls your robot directly; it describes what should run.
@@ -113,6 +115,8 @@ You can read this straight off the namespace. `arm-1`'s namespace is `viam`, a t
 ## The resource dependency graph
 
 <!-- ASSET P0 diagram-dependency-graph (DIAGRAM): cam-1 -> shape-detector -> vision-segment; arm-1 -> gripper-1 + five pose switches; motion service -->
+
+{{<imgproc src="/tutorials/pick-and-place/diagram-dependency-graph.png" resize="1200x" declaredimensions=true alt="The workshop's resource dependency graph: arm-1 feeds the gripper and pose switches; cam-1 feeds the shape-detector and vision-segment services.">}}
 
 Resources can depend on each other. A gripper attaches to an arm, so `gripper-1`'s config points at `arm-1`. A vision service reads from a camera, so it depends on `cam-1`. `viam-server` reads these dependencies out of your config and builds a dependency graph, then starts resources in an order that respects it: a resource cannot start until everything it depends on has started.
 

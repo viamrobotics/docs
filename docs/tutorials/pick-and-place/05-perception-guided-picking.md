@@ -66,6 +66,8 @@ vision = VisionClient.from_robot(machine, "vision-segment")
 
 <!-- ASSET P0 diagram-frame-transform (DIAGRAM): block position in the cam-1 frame vs world, wrist camera on the arm -->
 
+{{<imgproc src="/tutorials/pick-and-place/diagram-frame-transform.png" resize="1200x" declaredimensions=true alt="The frame tree from world to arm-1 to gripper-1 and cam-1, and how transform_pose re-expresses a cam-1 pose in the world frame.">}}
+
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
 The motion service does not think in camera coordinates. It plans in the `world` frame, the same frame your obstacle geometry in Phase 3 was defined against. To hand a detected pose to the motion service, you first have to express it in `world` instead of `cam-1`.

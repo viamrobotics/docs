@@ -52,6 +52,8 @@ Control code for adding application logic to a robot is typically modeled as a g
 
 <!-- ASSET P1 diagram-script-vs-module (DIAGRAM): from_robot(...) vs new() attribute-named deps dependencies[Arm.get_resource_name(attrs["arm"])], resource names set once as config attributes, transform_pose via in-module RobotClient -->
 
+{{<imgproc src="/tutorials/pick-and-place/diagram-script-vs-module.png" resize="1200x" declaredimensions=true alt="How the script builds resource handles with from_robot versus how the module receives them by dependency injection.">}}
+
 A script builds its resource handles once, right after it connects, by calling `Arm.from_robot(machine, "arm-1")` and similar for each resource it needs. A module does not connect to itself, so it cannot call `from_robot` the same way. Instead, the module framework hands your module its dependencies.
 
 Two lifecycle methods carry this pattern:
