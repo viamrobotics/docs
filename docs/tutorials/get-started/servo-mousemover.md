@@ -172,7 +172,7 @@ Create a [board component](/reference/components/board/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-1. Select the `board` type, then select the `viam:raspberry-pi:rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
+1. Search for `board`, then select the `raspberry-pi/rpi` model if you are using a Raspberry Pi 4, Raspberry Pi 3 or Raspberry Pi Zero 2 W.
    If you are using a Raspberry Pi 5, use the `pi5` model instead.
 
 1. Enter the name `local` for your board and click **Add to machine**.
@@ -187,7 +187,7 @@ Create a [servo component](/reference/components/servo/):
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Component**.
-1. Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
+1. Search for `servo`, then select the `raspberry-pi/rpi-servo` model.
 1. Enter the name `fs90f` for your servo and click **Add to machine**.
 
 After clicking **Add to machine**, you see where you can put in attributes for the servo.

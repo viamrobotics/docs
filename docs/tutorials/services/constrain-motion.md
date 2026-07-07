@@ -159,7 +159,7 @@ This configured table won't be taken into account by the motion service, but it'
 
 Navigate to the **CONFIGURE** tab of your machine's page.
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `generic` type, then select the `fake` model.
+Search for `generic`, then select the `generic/fake` model.
 Enter the name `"table"` for your movement sensor and click **Add to machine**.
 
 Select the **Frame** mode on the **CONFIGURE** tab.

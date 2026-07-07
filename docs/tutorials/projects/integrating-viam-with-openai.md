@@ -214,7 +214,7 @@ Now, configure your rover to:
 To configure your [servo](/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
 - Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-- Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
+- Search for `servo`, then select the `raspberry-pi/rpi-servo` model.
 - Enter the name `servo1` for your servo and click **Add to machine**.
 
 Now, in the panel for `servo1`, add the following attribute configuration:
