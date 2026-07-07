@@ -31,7 +31,9 @@ The TypeScript SDK emits events on the `RobotClient` whenever the connection sta
 ```ts
 import * as VIAM from "@viamrobotics/sdk";
 
-const machine = await VIAM.createRobotClient({/* ... */});
+const machine = await VIAM.createRobotClient({
+  /* ... */
+});
 
 machine.on("connectionstatechange", (event) => {
   const { eventType } = event as { eventType: VIAM.MachineConnectionEvent };
