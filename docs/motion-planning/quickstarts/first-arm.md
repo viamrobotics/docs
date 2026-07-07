@@ -117,8 +117,7 @@ executes it, plus a verification read after the motion completes.
 Add the arm to the frame system so the motion service can plan
 its movements. On the arm's card, click **Frame**. The default values
 (parent `world`, zero translation and rotation) place the arm's base
-at the world origin, which is correct for this tutorial, so you don't need to
-change anything:
+at the world origin, so you don't need to change anything:
 
 ```json
 {
