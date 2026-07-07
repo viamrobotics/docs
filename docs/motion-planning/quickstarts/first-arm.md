@@ -7,8 +7,8 @@ type: "docs"
 description: "From zero to an arm moving under motion service control, using a fake arm that runs on any machine."
 ---
 
-In this quickstart we will configure a fake arm with UR5e kinematics,
-connect to it from Python, and call the motion service to drive the
+This quickstart configures a fake arm with UR5e kinematics,
+connects to it from Python, and calls the motion service to drive the
 arm's end effector to a target pose. The whole thing runs on any
 machine that has `viam-server`; no physical arm required. When you
 have a real UR5e (or any other arm with a Viam module) later, the only
@@ -117,7 +117,7 @@ executes it, plus a verification read after the motion completes.
 Add the arm to the frame system so the motion service can plan
 its movements. On the arm's card, click **Frame**. The default values
 (parent `world`, zero translation and rotation) place the arm's base
-at the world origin, which is what we want here, so you don't need to
+at the world origin, which is correct for this tutorial, so you don't need to
 change anything:
 
 ```json
