@@ -46,7 +46,7 @@ To monitor machine health metrics like CPU usage, memory, and temperature, add a
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-On your machine's **CONFIGURE** page, click the **+** icon next to your machine part and select **Configuration block**.
+On your machine's **CONFIGURE** page, click the **+** icon next to your machine part and select **Blocks**.
 Search for and add the `hwmonitor:cpu_monitor` model from the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module.
 
 You can add additional sensors for memory, temperature, and other metrics.
