@@ -138,6 +138,29 @@ def same_page(a, b):
     )
 
 
+# Landing pages that mean "the specific page is gone" -- a redirect here is a
+# dead end, not a useful canonicalization, so treat it as broken.
+GENERIC_LANDINGS = {
+    "/", "/reference/", "/reference/apis/", "/reference/overview/",
+}
+
+
+def is_dead_end(orig, final):
+    """True if `orig` redirects to a generic index or an ancestor of itself.
+
+    Distinguishes a real move (``/services/motion/`` -> ``/reference/services/
+    motion/``, same topic) from a page that was removed and now dumps the
+    visitor on an index (``/reference/apis/services/slam/`` -> ``/reference/
+    apis/``). The latter should be reported as broken.
+    """
+    op = urlsplit(orig).path.rstrip("/") + "/"
+    fp = urlsplit(final).path.rstrip("/") + "/"
+    if fp in GENERIC_LANDINGS:
+        return True
+    # Final is a strict ancestor of the original path (specificity collapsed).
+    return op.startswith(fp) and fp != op
+
+
 def resolve(url, session, retries=1, max_hops=6):
     """Follow HTTP 3xx and Hugo meta-refresh aliases to the final page.
 
@@ -202,7 +225,10 @@ def classify(url, session, delay):
     fragment = urlsplit(url).fragment
 
     if not same_page(url, final_url):
-        # Report only the move; the canonical target is the actionable fix. Any
+        if is_dead_end(url, final_url):
+            # Redirects to a generic index / ancestor: the specific page is gone.
+            return "broken", f"page removed; redirects to index {final_url}"
+        # A real move. Report only the move; the canonical target is the fix. Any
         # missing anchor on the target surfaces as its own broken-anchor finding
         # once the source is repointed to the canonical URL.
         return "stale-redirect", final_url
