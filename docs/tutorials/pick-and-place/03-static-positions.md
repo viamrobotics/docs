@@ -38,6 +38,25 @@ The table below shows what each step in the static sequence validates:
 
 <!-- ASSET P0 diagram-five-poses (DIAGRAM): the five poses in space (home/approach/grasp/travel/place) with the motion path. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
+```text
+home      observe and rest, above the workspace
+  │
+  ▼
+approach  standoff directly above the block
+  │  gripper.open()
+  ▼
+grasp     down at the block
+  │  gripper.grab()
+  ▼
+travel    lift clear of obstacles
+  │
+  ▼
+place     above the bin
+  │  gripper.open()
+  ▼
+home      back to the start
+```
+
 Each saved pose has a specific role in the sequence:
 
 | Pose          | Purpose                                                                                   |
@@ -129,6 +148,23 @@ Each obstacle is one `erh:vmodutils:obstacle` component with two parts. Its `geo
 ### Add the table obstacle
 
 <!-- ASSET P0 diagram-obstacle-geometry (DIAGRAM): box-center z-math (table 30mm z=-15; walls 600mm z=300; world origin at arm base) -->
+
+```text
+Vertical (z) layout — world origin z = 0 is the arm base, at table-top height:
+
+  +600  ── top of the safety walls
+        │
+        │   safety walls: 600 mm tall box, frame z = +300 (its center),
+        │   so each spans z = 0 to +600
+        │
+     0  ──┼── world origin = table top ─────────────────
+        │   table: 30 mm thick box, frame z = -15 (its center),
+        │   so it spans z = -30 to 0
+   -30  ── bottom of the table
+
+A box's frame translation sets its CENTER: a box of height h resting on
+a surface has its center h/2 above that surface.
+```
 
 Click the **+** icon and select **Blocks**, then search for `obstacle` and select the `erh:vmodutils:obstacle` model. Name it `table`. Paste the box dimensions into the attributes editor, then click **Frame** on the component card and set the frame that positions it in the world.
 

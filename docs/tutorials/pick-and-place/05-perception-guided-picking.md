@@ -96,6 +96,18 @@ obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 
 <!-- ASSET P0 diagram-detect-from-home (DIAGRAM): same block, two arm poses, two different world answers -->
 
+```text
+One block, fixed on the table
+        │
+        ├─ read from an unfixed / unknown arm pose
+        │     cam-1 frame depends on the arm pose
+        │     → transform_pose to world can differ each time   (unreliable)
+        │
+        └─ read from home-pose (a known position)
+              cam-1 frame is in a known, repeatable place
+              → transform_pose to world is consistent          (reliable)
+```
+
 We can continue to use the `home-pose` saved position because it provides a good view of the workspace for the camera to detect objects to be picked up by the arm. We can update the control flow to replace the `approach` and `grasp` set positions with the perception logic:
 
 ```python
@@ -129,6 +141,21 @@ Add a `print(obj_in_world.pose)` after the transform and run the script. Watch t
 ## Compute the approach and grasp poses
 
 <!-- ASSET P0 diagram-approach-grasp-offsets (DIAGRAM): block center; approach = +100mm; grasp = TCP one gripper-length (60mm) above; gripper-1 TCP vs arm end -->
+
+```text
+Offsets applied to obj_in_world.pose (the block center). They move the
+gripper-1 TCP, not the arm's end frame:
+
+  +100 mm  ── approach pose  (APPROACH_MM): standoff above the block
+        │
+        │  descend
+        ▼
+   +60 mm  ── grasp pose     (GRIPPER_LENGTH_MM): the gripper-1 TCP,
+        │                     one gripper-length above the fingertips
+        │  fingers close here
+        ▼
+     0 mm  ── block center   (obj_in_world.pose)
+```
 
 The pick uses the **motion service**: it plans a collision-free path to a Cartesian goal. Unlike the vision service, you never configured it. The motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
