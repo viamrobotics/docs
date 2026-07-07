@@ -69,10 +69,10 @@ and velocity estimates without any additional sensors.
 #### 2. Add the movement sensor
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for **wheeled-odometry**. This is the built-in model that
    computes position from wheel encoder data.
-4. Name it (for example, `odometry`) and click **Create**.
+4. Name it (for example, `odometry`) and click **Add to machine**.
 
 #### 3. Configure attributes
 
@@ -96,10 +96,10 @@ and velocity estimates without any additional sensors.
 #### 1. Add the component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your sensor hardware. Search by
    sensor name or chip (for example, **NMEA GPS**, **BNO055**, **MPU6050**).
-4. Name it and click **Create**.
+4. Name it and click **Add to machine**.
 5. Configure attributes per the model's documentation (typically I2C
    address or serial port).
 

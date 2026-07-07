@@ -44,10 +44,10 @@ For hardware the built-in models don't cover, search for `generic` in the [Viam 
 ### 1. Add a generic component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your component (for example, `my-device`) and click **Create**.
+4. Name your component (for example, `my-device`) and click **Add to machine**.
 
 If no model exists for your hardware, you can
 [write your own module](/build-modules/write-a-driver-module/) that implements

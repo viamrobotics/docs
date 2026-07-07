@@ -48,10 +48,10 @@ For power sensors not covered above (Renogy controllers, other chips), search fo
 ### 2. Add a power sensor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the power sensor model that matches your hardware. Search
    by chip name (for example, **ina219**, **ina226**).
-4. Name it (for example, `battery-monitor`) and click **Create**.
+4. Name it (for example, `battery-monitor`) and click **Add to machine**.
 
 ### 3. Configure attributes
 

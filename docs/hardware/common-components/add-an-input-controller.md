@@ -39,10 +39,10 @@ For hardware the built-in models don't cover, search for `input controller` in t
 
 1. Plug your gamepad into the machine's USB port.
 2. Click the **+** button.
-3. Select **Configuration block**.
+3. Select **Blocks**.
 4. Search for **gamepad**. This is the built-in model for USB game
    controllers.
-5. Name it (for example, `my-gamepad`) and click **Create**.
+5. Name it (for example, `my-gamepad`) and click **Add to machine**.
 
 #### 2. Configure attributes
 
@@ -62,10 +62,10 @@ If you have multiple controllers, specify which one:
 #### 1. Add a webgamepad component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for **webgamepad**. This model provides browser-based
    controls in the Viam app.
-4. Name it (for example, `web-controller`) and click **Create**.
+4. Name it (for example, `web-controller`) and click **Add to machine**.
 
 No attributes needed. The web gamepad appears in the Viam app's CONTROL tab
 and works with browser-compatible game controllers or on-screen controls.
@@ -80,10 +80,10 @@ and works with browser-compatible game controllers or on-screen controls.
 #### 2. Add and configure
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for **gpio input controller**. This model maps GPIO pins to
    controller buttons.
-4. Name it and click **Create**.
+4. Name it and click **Add to machine**.
 5. Configure the pins:
 
 ```json

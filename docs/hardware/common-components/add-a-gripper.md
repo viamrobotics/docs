@@ -49,10 +49,10 @@ For grippers not covered above, search for `gripper` in the [Viam registry](http
 ### 1. Add a gripper component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your gripper hardware. Search by
    manufacturer name or gripper type (for example, "gripper", "finger gripper", "vacuum").
-4. Name your gripper (for example, `my-gripper`) and click **Create**.
+4. Name your gripper (for example, `my-gripper`) and click **Add to machine**.
 
 ### 2. Configure gripper attributes
 

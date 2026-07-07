@@ -41,10 +41,10 @@ For hardware the built-in models don't cover, search for `switch` in the [Viam r
 ### 1. Add a switch component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your switch hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your switch (for example, `my-switch`) and click **Create**.
+4. Name your switch (for example, `my-switch`) and click **Add to machine**.
 
 ### 2. Configure switch attributes
 

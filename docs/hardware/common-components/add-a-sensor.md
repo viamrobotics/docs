@@ -50,11 +50,11 @@ For sensors not covered above, search for `sensor` in the [Viam registry](https:
 ### 1. Add a sensor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your sensor hardware. Search by
    sensor name or chip (for example, **DHT22**, **BME280**, **SHT31**). For I2C
    or serial sensors, you can also search by protocol or manufacturer.
-4. Name your sensor (for example, `temperature-sensor`) and click **Create**.
+4. Name your sensor (for example, `temperature-sensor`) and click **Add to machine**.
 
 If no model exists for your sensor, you can
 [write your own module](/build-modules/write-a-driver-module/) to add support.

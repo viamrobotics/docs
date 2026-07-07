@@ -32,10 +32,10 @@ For hardware the built-in models don't cover, search for `button` in the [Viam r
 ### 1. Add a button component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your button hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your button (for example, `my-button`) and click **Create**.
+4. Name your button (for example, `my-button`) and click **Add to machine**.
 
 ### 2. Configure button attributes
 
