@@ -7,6 +7,7 @@ type: "docs"
 description: "What the 3D scene renders, where each element comes from, and how built-in configuration content differs from custom visuals a module publishes at runtime."
 aliases:
   - /visualization/visualizing-with-the-3d-scene/
+  - /visualization/3d-scene-tools/
   - /motion-planning/3d-scene/
 ---
 
