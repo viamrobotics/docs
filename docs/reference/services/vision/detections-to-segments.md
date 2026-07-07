@@ -29,7 +29,7 @@ This model previously shipped with core RDK as `detector_3d_segmenter`. It now s
 ## Install the module
 
 1. In the Viam app, open your machine's **CONFIGURE** tab.
-2. Click the **+** icon next to your machine part and select **Configuration block**.
+2. Click the **+** icon next to your machine part and select **Blocks**.
 3. In the search field, type `detections-to-segments` and select the matching result.
 4. Click **Add to machine**, enter a name for the service, and click **Add to machine** again to confirm. The module is installed automatically.
 
