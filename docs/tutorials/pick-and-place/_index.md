@@ -23,8 +23,6 @@ companion_repo: "https://github.com/viam-devrel/pick-and-place"
 no_list: true
 ---
 
-In this workshop you build a vision-guided robot that finds blocks by shape and places each one into a bin. A `shape-detector` vision service locates blocks in camera space and feeds a `vision-segment` service (model `detections-to-segments`) that turns each detection into a point cloud segment the motion planner can grasp.
-
 The workshop is structured as six sequential phases, each ending with a working system state you can verify before moving on. The workshop has two milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two).
 
 ## What you'll build
