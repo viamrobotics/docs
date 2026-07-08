@@ -80,7 +80,7 @@ You can use natural language to:
 The AI edits only the frames of existing components.
 It cannot add new components to or remove components from the machine configuration.
 
-Like manual edits, AI-applied changes are held locally until you save them on the **CONFIGURE** tab.
+After the AI applies changes, save or discard buttons appear in the **3D SCENE** tab.
 
 ## When to edit JSON instead
 
