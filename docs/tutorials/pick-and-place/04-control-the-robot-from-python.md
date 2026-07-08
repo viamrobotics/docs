@@ -38,7 +38,6 @@ cd pick-and-place/scripts
 
 `uv` reads the project's `pyproject.toml` and `.python-version` and resolves `viam-sdk` for you automatically. If you are not using `uv`, pip works as a fallback once you have installed the project's dependencies yourself.
 
-
 ## Connect to your robot
 
 Open `starter-script.py` and find the `connect()` function. It mirrors the boilerplate the Viam app generates for you on the machine's **CONNECT** tab, under **Python SDK**:

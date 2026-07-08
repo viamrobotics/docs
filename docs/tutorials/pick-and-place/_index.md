@@ -90,4 +90,3 @@ If either command fails, revisit the checklist above before continuing.
 
 - **Hardware ready (`viam-server` running):** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 - **Provisioning your own hardware:** complete [the hardware setup](https://docs.viam.com/set-up-a-machine/first-machine/), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
-
