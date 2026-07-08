@@ -4,7 +4,7 @@ linkTitle: "4. Control from Python"
 type: "docs"
 slug: "control-the-robot-from-python"
 weight: 40
-description: "Connect from your laptop and drive the saved static pick-and-place sequence from a Python script."
+description: "Connect from your personal computer and drive the saved static pick-and-place sequence from a Python script."
 workshop: "pick-and-place"
 toc_hide: true
 phase: 4
@@ -17,15 +17,15 @@ aliases:
 languages: ["python"]
 ---
 
-In this phase you write and run a Python script on your laptop that connects to the robot and executes the static pick-and-place sequence from Phase 3. This proves your connection, environment, and named positions work end to end before you add perception in Phase 5.
+In this phase you write and run a Python script on your personal computer that connects to the robot and executes the static pick-and-place sequence from the previous phase. This proves your connection, environment, and named positions work end to end before you add vision feedback.
 
 ## Why a script before a module
 
-Everything you did in Phase 3 happened by clicking test cards on the **CONTROL** tab. That is a fine way to verify hardware, but it does not scale: you cannot loop, branch on a sensor reading, or retry a failed grasp from a button. A local Python script gives you those things, plus fast iteration, a local debugger, and the ability to sprinkle in `print` statements wherever you need visibility into what the robot is doing.
+Everything you did before happened by clicking test cards on the **CONTROL** tab. That is a fine way to verify hardware, but it does not scale: you cannot loop, branch on a sensor reading, or retry a failed grasp from a button. A program script gives you those things, plus fast iteration, a local debugger, and the ability to sprinkle in `print` statements wherever you need visibility into what the robot is doing.
 
-A script is also the right starting point before you package anything as a module. A module has to satisfy a defined lifecycle and run inside `viam-server`, which makes it slower to iterate on and harder to debug. In Phase 6 you package this same logic as a module. For now, a script you run from your own terminal, that you can stop, edit, and rerun in seconds, is the faster path to a working pick-and-place loop.
+In the next phase, you package this same logic as a module. For now, a script you run from your own terminal, that you can stop, edit, and rerun in seconds, is the faster path to a working pick-and-place loop.
 
-This phase is worth the detour because of what it buys you. Every control you clicked in Phases 2 and 3 maps directly onto an SDK method: the arm card's joint sliders become `Arm` methods, **Grab** and **Open** on the gripper card become `gripper.grab()` and `gripper.open()`, and setting a switch to position 2 becomes `switch.set_position(2)`. Once you can call those methods from code, you can compose them into logic no UI card lets you express by clicking.
+Every control you clicked in the UI maps directly onto an SDK method: the arm card's joint sliders become `Arm` methods, **Grab** and **Open** on the gripper card become `gripper.grab()` and `gripper.open()`, and setting a switch to position 2 becomes `switch.set_position(2)`. Once you can call those methods from code, you can compose them into logic no UI card lets you express by clicking.
 
 ## Get the companion project
 
@@ -36,18 +36,8 @@ git clone https://github.com/viam-devrel/pick-and-place.git
 cd pick-and-place/scripts
 ```
 
-Your environment was already validated in the workshop prerequisites, so this phase is about connecting and running, not debugging Python installs. Run the starter script with `uv`, the primary path for this workshop:
+`uv` reads the project's `pyproject.toml` and `.python-version` and resolves `viam-sdk` for you automatically. If you are not using `uv`, pip works as a fallback once you have installed the project's dependencies yourself.
 
-```sh
-uv run starter-script.py
-```
-
-`uv` reads the project's `pyproject.toml` and `.python-version` and resolves `viam-sdk` for you automatically, so there is no separate install step. If you are not using `uv`, pip works as a fallback once you have installed the project's dependencies yourself:
-
-```sh
-pip install viam-sdk
-python3 starter-script.py
-```
 
 ## Connect to your robot
 
@@ -67,7 +57,7 @@ async def connect() -> RobotClient:
     return await RobotClient.at_address(MACHINE_ADDRESS, opts)
 ```
 
-Open the **CONNECT** tab on your machine's page in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the three values it shows you: the machine address and an API key and key ID pair. Paste them into `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` at the top of the script. You are reading and understanding this boilerplate rather than writing it from scratch, the same connection code every Viam Python script starts with.
+Open the **CONNECT** tab on your machine's page in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the three values it shows you: the machine address and an API key and key ID pair. Paste them into `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` at the top of the script. This is the same connection code every Viam Python script starts with.
 
 <!-- ASSET P0 connect-tab-boilerplate (UI+): CONNECT -> Python SDK, connection block highlighted, credentials REDACTED. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
@@ -94,7 +84,7 @@ travel = Switch.from_robot(machine, "travel-pose")
 place_pose = Switch.from_robot(machine, "place-pose")
 ```
 
-Phase 4 drives only the arm, the gripper, and these pose switches. Right below them, the starter script keeps a `vision` handle for the `vision-segment` service commented out, because you do not add that service until Phase 5. `VisionClient.from_robot` raises a `ResourceNotFoundError` for a service that is not present, so leave that line commented for now:
+This code drives only the gripper and these pose switches. Right below them, the starter script keeps a `vision` handle for an upcoming `vision-segment` service commented out. This will raise a `ResourceNotFoundError` for a service that is not present, so leave that line commented for now:
 
 ```python
 # vision = VisionClient.from_robot(machine, "vision-segment")
@@ -108,7 +98,7 @@ Phase 4 drives only the arm, the gripper, and these pose switches. Right below t
 Running the script drives the arm through the full static sequence immediately after it prints the resource list. Clear the workspace and keep the e-stop within reach before you run it.
 {{< /alert >}}
 
-Run the script now with `uv run starter-script.py`. It happens in a single run: `connect()` opens the connection, the script prints every resource on the machine, and then it immediately drives the arm through the static sequence. Watch the printed resource list scroll past in your terminal before the arm starts moving.
+Run the script now with `uv run starter-script.py` (or `python3 starter-script.py` if you're not using `uv`). It happens in a single run: `connect()` opens the connection, the script prints every resource on the machine, and then it immediately drives the arm through the static sequence. Watch the printed resource list scroll past in your terminal before the arm starts moving.
 
 The first thing printed is the full resource list:
 
@@ -138,18 +128,18 @@ await home.set_position(2)
 The short sleep after `gripper.grab()` gives the two-finger gripper time to settle its grip on the block before the arm starts moving again; without it, the arm can begin the travel move before the fingers have finished closing.
 
 {{< checkpoint >}}
-After the resource list prints, the same run drives the arm through the full sequence end to end: home, approach, open, grasp, grab, travel, place, open, home. The arm should complete every step without stopping, in the same order you validated manually in Phase 3.
+After the resource list prints, the same run drives the arm through the full sequence end to end: home, approach, open, grasp, grab, travel, place, open, home. The arm should complete every step without stopping, in the same order you validated manually previously.
 {{< /checkpoint >}}
 
 ## Debugging guide
 
-Most Phase 4 problems fall into one of a few categories:
+Most problems fall into one of a few categories:
 
 - **`ResourceNotFoundError: vision-segment`** (or a similar not-found error for the vision service) means you tried to build the vision handle before configuring the vision service. That service is not added until Phase 5. Comment out the `vision = VisionClient.from_robot(...)` line for now, as described above, and rerun.
 - **Connection failures.** If `connect()` raises an error or hangs, double-check the `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` values against the **CONNECT** tab. A stale or mistyped API key produces an authentication error immediately; a wrong address usually times out instead. Also confirm the machine shows the green **Live** indicator in the Viam app. A machine that is not live cannot accept a connection no matter how correct your credentials are.
 - **Resource-name mismatches.** If `Arm.from_robot(machine, "arm-1")` or a similar call raises a not-found error, the name in your script does not match the name on the **CONFIGURE** tab. Names are exact strings, not approximations, so `arm-1` and `arm_1` are different resources as far as the SDK is concerned. Open `resource_names` from the connection checkpoint above and compare it character for character against the names your script uses.
 - **A switch does nothing on `set_position(2)`.** This means the pose was never saved. Go back to the **CONTROL** tab and set that switch to position 1 to save the current arm position, as you did in Phase 3, then rerun the script.
 
-With `resource_names` printing everything you expect and the static sequence running end to end from your own code, you have working proof that your connection, your named resources, and your saved poses all hold up under real code, not just button clicks. In Phase 5 you replace the fixed `approach-pose` and `grasp-pose` in this sequence with positions computed from images and depth data from the camera, so the arm picks whichever block the camera actually detects instead of always reaching for the same spot.
+With `resource_names` printing everything you expect and the static sequence running end to end from your own code, you have working proof that your connection, your named resources, and your saved poses all hold up under real code. In the next phase you replace the fixed `approach-pose` and `grasp-pose` in this sequence with positions computed from images and depth data from the camera, so the arm picks whichever block the camera actually detects instead of always reaching for the same spot.
 
 {{< workshop-nav >}}

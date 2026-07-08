@@ -15,7 +15,7 @@ next: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
 ---
 
-In this phase you replace the fixed approach and grasp poses from Phase 4 with live perception: a vision service detects a block, the frame system transforms its position into world space, and the motion service plans a collision-free pick.
+In this phase you replace the fixed approach and grasp poses with live data from the camera: a vision service detects a block, the robot transforms the block's position as coordinates in the world, and the motion service plans a collision-free pick.
 
 ## Configure the vision pipeline
 
@@ -27,7 +27,7 @@ On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for
 }
 ```
 
-The `camera_name` attribute is also a dependency: `shape-detector` cannot run until `cam-1` is online, the same dependency pattern you have already seen with `gripper-1` and `arm-1`. This service reads color frames from `cam-1` and finds blocks by shape, in two dimensions, with no depth information yet.
+The `camera_name` attribute is also a dependency: `shape-detector` cannot run until `cam-1` is online, the same dependency pattern you have already seen with `gripper-1` and `arm-1`. This service reads color frames from `cam-1` and finds blocks by shape.
 
 <!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
 
@@ -53,7 +53,7 @@ Save the config and open the **CONTROL** tab. Find the `vision-segment` test car
 {{<imgproc src="/tutorials/pick-and-place/control-vision-detections.png" resize="1200x" declaredimensions=true alt="The shape-detector vision card showing a detected block with a bounding box and label.">}}
 
 {{< checkpoint >}}
-The `vision-segment` test card returns at least one object when a block is in view. If it returns nothing, confirm a block actually sits in the camera's field of view, then check the `shape-detector` card on its own: if that also returns nothing, the problem is upstream in shape detection, not in the depth fusion step.
+The `vision-segment` test card returns at least one object when a block is in view. If it returns nothing, confirm a block actually sits in the camera's field of view, then check the `shape-detector` card on its own: if that also returns nothing, the problem is upstream in shape detection.
 {{< /checkpoint >}}
 
 With the service live, go back to `starter-script.py` and uncomment the vision handle you commented out in Phase 4:
@@ -81,9 +81,9 @@ Detected block:
 
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
-The motion service does not think in camera coordinates. It plans in the `world` frame, the same frame your obstacle geometry in Phase 3 was defined against. To hand a detected pose to the motion service, you first have to express it in `world` instead of `cam-1`.
+The motion service plans in the `world` frame, the same frame your obstacle geometry was defined against. To hand a detected pose to the motion service, you first have to express it in `world` instead of `cam-1`.
 
-This is the frame system you already saw in Phase 2's 3D scene tab, when the `cam-1` frame visibly moved as you jogged joint 1. `viam-server` maintains that same relationship as a graph: the camera's offset from the wrist, the wrist's offset from the next joint, and so on, all the way down to the arm's base at the world origin. `RobotClient.transform_pose` walks that graph for you. Give it a pose tagged with its source reference frame and a destination frame, and it returns the equivalent pose in the destination frame:
+This is the frame system you see visualized in 3D scene tab, when the `cam-1` frame visibly moved as you jogged joint 1. `viam-server` maintains that same relationship as a graph: the camera's offset from the wrist, the wrist's offset from the next joint, and so on, all the way down to the arm's base at the world origin. `RobotClient.transform_pose` walks that graph for you. Give it a pose tagged with its source reference frame and a destination frame, and it returns the equivalent pose in the destination frame:
 
 ```python
 obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
@@ -157,13 +157,13 @@ gripper-1 TCP, not the arm's end frame:
      0 mm  ── block center   (obj_in_world.pose)
 ```
 
-The pick uses the **motion service**: it plans a collision-free path to a Cartesian goal. Unlike the vision service, you never configured it. The motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+The pick uses the **motion service**: it plans a collision-free path to a Cartesian (coordinates in 3D space) goal. Unlike the vision service, you never configured it. The motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
 ```python
 motion = MotionClient.from_robot(machine, "builtin")
 ```
 
-Passing `"builtin"` to `MotionClient.from_robot` reaches that default motion service; there is no motion component on the **CONFIGURE** tab to point at, which is why `builtin` showed up in `machine.resource_names` back in Phase 4.
+Passing `"builtin"` to `MotionClient.from_robot` reaches that default motion service; there is no motion component on the **CONFIGURE** tab to point at, which is why `builtin` showed up in `machine.resource_names`.
 
 Before you turn `obj_in_world.pose` into a place to move the gripper, it matters exactly what `motion.move` moves. Two motions that sound similar are not the same thing:
 
@@ -196,7 +196,7 @@ approach_pose = offset_pose(obj_in_world.pose, APPROACH_MM)
 
 `APPROACH_MM` is 100. Since every offset here is applied to `obj_in_world.pose`, which is the block's bounding-box center, this places the standoff 100 mm above the block center: enough clearance for the gripper to descend cleanly, with room to spare for a small pose error.
 
-Now compute the grasp pose yourself. What you actually want at the block is the gripper's fingers, not its TCP: the fingers have to close around the block. The `gripper-1` TCP frame sits one gripper-length above the fingertip contact point, so to put the fingers at the block center you place the TCP one gripper-length (`GRIPPER_LENGTH_MM`) above it, not at it. Remember that `motion.move` is already driving the gripper's own TCP, not the arm's end, so this is the only offset you add here; you do not account for the whole arm reach again. Work out the offset before reading on.
+Now compute the grasp pose yourself. What you actually want at the block is the gripper's fingers, not its TCP: the fingers have to close around the block. The `gripper-1` TCP frame sits one gripper-length above the fingertip contact point, so to put the fingers at the block center you place the TCP one gripper-length (`GRIPPER_LENGTH_MM`) above it. Remember that `motion.move` is already driving the gripper's own TCP, not the arm's end, so this is the only offset you add here. Work out the offset before reading on.
 
 The offset is `GRIPPER_LENGTH_MM`, the depth from the gripper's TCP down to its fingertip contact point:
 
@@ -239,7 +239,7 @@ This loop drives the arm to a computed grasp pose with `motion.move` and replays
 Run the script and watch the sequence in stages: the approach move first, then the grasp move, then the full cycle through to a placed block.
 
 {{< checkpoint >}}
-The approach move completes without a planning error, positioning the gripper above the block. If it fails here, open the **3D scene** tab during the next run and check whether `approach_pose` lands inside the table or safety-wall geometry from Phase 3; a block detected very close to a boundary can push the standoff outside the planner's reachable space.
+The approach move completes without a planning error, positioning the gripper above the block. If it fails here, open the **3D scene** tab during the next run and check whether `approach_pose` lands inside the table or safety-wall geometry; a block detected very close to a boundary can push the arm outside the planner's reachable space.
 {{< /checkpoint >}}
 
 {{< checkpoint >}}
@@ -247,28 +247,8 @@ The grasp move completes and **Grab** closes the fingers around the block, holdi
 {{< /checkpoint >}}
 
 {{< checkpoint >}}
-The full loop runs end to end: approach, open, grasp, grab, travel, place, open, home, with the block landing in the bin. This is the same sequence you drove by hand in Phase 3 and by fixed poses in Phase 4, now driven by a pose your code computed from a live detection.
+The full loop runs end to end: approach, open, grasp, grab, travel, place, open, home, with the block landing in the bin. This is the same sequence you drove by hand in the UI and by fixed poses in the initial Python script, now driven by a pose your code computed from a live detection.
 {{< /checkpoint >}}
-
-{{< alert title="Optional: force a straight descent" color="note" >}}
-The plan above lets the planner choose its own path from the approach pose down to the grasp pose, which is sometimes a shallow arc rather than a straight vertical drop. If you want the gripper to descend in a straight line instead, pass a `LinearConstraint` on the grasp move:
-
-```python
-from viam.proto.service.motion import Constraints, LinearConstraint
-
-linear_down = Constraints(
-    linear_constraint=[LinearConstraint(line_tolerance_mm=5.0)]
-)
-
-await motion.move(
-    component_name="gripper-1",
-    destination=PoseInFrame(reference_frame="world", pose=grasp_pose),
-    constraints=linear_down,
-)
-```
-
-This is a refinement. Try the unconstrained version first, and reach for this only if an arcing descent causes the gripper to clip a block on the way down.
-{{< /alert >}}
 
 ## Debugging guide
 
@@ -281,6 +261,6 @@ Work through these in order. The first one causes most of the rest. If you get s
 - **The pick point drifts from cycle to cycle, even for a block that has not moved.** This is almost always the wrist-camera rule again: some code path is detecting from a pose other than `home-pose`. Print `obj_in_world.pose` on every cycle and confirm the arm is fully settled at `home-pose` before each detection call.
 - **Motion planning fails, or the target looks unreachable.** Open the **3D scene** tab during the failing move and look at where `approach_pose` or `grasp_pose` lands relative to the table and safety-wall geometry from Phase 3. A detected pose near a workspace boundary can place the standoff or the grasp point outside the region the planner is allowed to move through. If you skipped or under-measured the obstacle configuration in Phase 3, this is where it bites: geometry that does not match your physical setup makes the planner reject moves that are perfectly safe, or, worse, accept ones that are not. Revisit [Teach the planner about obstacles](/tutorials/pick-and-place/static-positions/#teach-the-planner-about-obstacles) and recheck your measurements before assuming the pose math is wrong.
 
-With a full perception-guided pick loop running end to end, you have every piece of the workshop's core loop working from your own laptop: detection, the frame transform, planned motion, and a reliable place. Phase 6 is optional, and picks up from here to package this same script as a module that runs on the robot directly, with no laptop connection required once it is deployed. If you are stopping here, the [wrap-up](/tutorials/pick-and-place/wrap-up/) reviews what you built and where to go next.
+With a full perception-guided pick loop running end to end, you have every piece of the workshop's core loop working from your own computer: detection, the frame transform, planned motion, and a reliable place. The next phase picks up from here to package this same script as a module that runs on the robot directly, with no laptop connection required once it is deployed. If you are stopping here, the [wrap-up](/tutorials/pick-and-place/wrap-up/) reviews what you built and where to go next.
 
 {{< workshop-nav >}}

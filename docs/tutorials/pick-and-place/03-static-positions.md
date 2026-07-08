@@ -19,9 +19,9 @@ In this phase you will teach an arm to move through a set of named poses that to
 
 ## Why static positions first
 
-When you add perception and motion planning at the same time, a failure could live in detection, the frame transform, the pose math, the motion planner, or gripper timing, and there is no straightforward way to tell which. Saving fixed poses lets you run the full hardware loop first. In Phase 4 you drive this same proven sequence from a Python script, and perception does not enter the picture until Phase 5. Once the arm reliably travels through every stage of the sequence, perception becomes the only new variable when you reach it.
+When you add perception and motion planning at the same time, a failure could live in detection, the frame transform, the pose math, the motion planner, or gripper timing, and there is no straightforward way to tell which. Saving fixed poses lets you run the full hardware loop first. In the following phase, you drive this same proven sequence from a Python script. Once the arm reliably travels through every stage of the sequence, perception becomes the only new variable when you reach it.
 
-This is not just a classroom shortcut. Pose-to-pose motion without perception is a real production workcell pattern: any time a part always lands in the same spot, a fixed sequence of saved poses is simpler and more reliable than running detection on every cycle.
+Pose-to-pose motion without perception is a real production workcell pattern: any time a part always lands in the same spot, a fixed sequence of saved poses is simpler and more reliable than running detection on every cycle.
 
 Each move in that sequence also validates one part of your setup, which the next section lays out pose by pose.
 
@@ -68,7 +68,7 @@ You configure pose saving by hand, the same way you configured the arm, gripper,
 
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `arm-position-saver`, select the `vmodutils/arm-position-saver` result, and name it `home-pose`. This is the first model you use from the `erh:vmodutils` module, so `viam-server` downloads that module now; the same module also provides the `vmodutils/obstacle` model you configure later in this phase, so it downloads only once.
 
-The `arm-position-saver` is a **switch**: a resource whose numbered positions each trigger an action instead of reporting a value. You use two of its positions, one to save the arm's current joint positions and one to replay them. Throughout this phase, "the switch" refers to this pose-saver resource.
+The `arm-position-saver` is a **switch**: a resource whose numbered positions each trigger an action instead of reporting a value. You use two of its positions, one to save the arm's current joint positions ("update config") and one to replay them ("go to"). Throughout this phase, "the switch" refers to this pose-saver resource.
 
 Set one attribute:
 
@@ -126,11 +126,11 @@ The Viam motion planner is collision-aware, but it can only avoid geometry it kn
 
 This matters both for correctness and for safety. Without the table obstacle, the planner might find a path that swings the arm through the table surface. Virtual safety walls at the workspace boundary also prevent the arm from swinging into people standing nearby. This is not just a classroom convenience: it is the same pattern you would use to keep a production workcell's motion planner honoring the real boundaries of its cell.
 
-In this workshop you configure two categories of obstacle: the table surface and two safety walls at the workspace boundary. Bin geometry is out of scope for this phase.
+In this workshop you configure two types of obstacles: the table surface and two safety walls at the workspace boundary.
 
 ## Obstacles as components
 
-An obstacle can be configured as an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle shows up in `resource_names` as a gripper. That is expected; the model reuses the gripper API purely as a resource container for geometry, it does not add a real gripper to your machine.
+An obstacle can be configured as an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle has the same control UI as a gripper. This is purely as a resource container for geometry.
 
 The obstacle geometry is then automatically included in the world state the motion service uses to plan a safe path for the arm to a target position in 3D space.
 
@@ -180,7 +180,7 @@ The one detail that trips people up is that `translation.z` is the box's **cente
 
 The dimensions and translation above are examples. Replace them with measurements of your own table and workspace boundary. You need two kinds of measurement, and each one feeds a different part of the config:
 
-- **Tape-measure dimensions** for the box sizes: the table's length, width, and thickness go into the table obstacle's `x`, `y`, and `z`. Use the tape measure for how big each box is, not for where it sits.
+- **Tape-measure dimensions** for the box sizes: the table's length, width, and thickness go into the table obstacle's `x`, `y`, and `z`. Use the tape measure for how big each box is.
 - **Arm-relative positions** for the box translations: jog the arm to a landmark, such as the front edge of the table or the safe working boundary behind the arm, and press **Current position** under **MoveToPosition** on the arm's CONTROL card to read the x and y coordinates in the arm's coordinate frame. Because all obstacle geometry is expressed against the world origin at the arm base, these coordinates drop straight into the frame's `translation` fields without any conversion. They fill the `REPLACE_WITH_MEASURED_FRONT_X` and `REPLACE_WITH_MEASURED_BACK_X` placeholders in the safety walls below.
 
 If your table is not centered on the arm base in x and y, adjust the frame's `translation.x` and `translation.y` to match, using the values you read from **Current position** when jogging to the table edges.

@@ -32,12 +32,12 @@ If none of those apply, stop here. You have already built the thing this worksho
 
 Set expectations before you start: this phase should be considered a refactor. The detection, the frame transform, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do.
 
-One piece of that logic does genuinely change: how you reach `transform_pose`. In the previous phase, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. A module does not automatically receive that same handle. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
+One piece of that logic does genuinely change: how you reach `transform_pose`. In the previous phase, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
 
 ## Create a control code module
 
 {{< alert title="Module build feedback loop" color="note" >}}
-Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. It is not instant the way rerunning a local script is, so give it that minute rather than assuming a save failed.
+Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. Give it that minute rather than assuming a save failed.
 {{< /alert >}}
 
 On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
@@ -71,7 +71,7 @@ Two lifecycle methods carry this pattern:
 - `validate_config` runs before your module starts and declares which resources it depends on, so `viam-server` knows to hold your module back until those resources are online, the same dependency ordering you already saw between `gripper-1` and `arm-1` in Phase 2. It reads the module's own config attributes, where each attribute value is the name of a resource on the machine, and returns those names as the required dependencies.
 - `new` receives the resolved dependencies as a mapping keyed by resource name, and this is where you build the typed handles your pick-and-place logic calls. `new` is the `EasyResource` classmethod that constructs your resource; it reads the same config attributes to look each dependency up by its configured name.
 
-A small illustrative sketch of both methods, not a complete implementation:
+A small illustrative sketch of both methods:
 
 ```python
 from viam.components.arm import Arm
@@ -135,19 +135,19 @@ world_pose = await self.robot_client.transform_pose(obj_in_cam, "world")
 Four rules go with this pattern:
 
 - Create exactly one `RobotClient` and reuse it. Do not open a new connection on every `do_command` call or every pick cycle; check `self.robot_client` first, the same way the snippet does, and only connect if it is not already set.
-- Do not hardcode the API key, key ID, or machine address in your module's code. The operator sets `VIAM_API_KEY`, `VIAM_API_KEY_ID`, and `VIAM_MACHINE_FQDN` as environment variables in the module's configuration on the machine; they are not automatically injected the way component dependencies are.
+- Do not hardcode the API key, key ID, or machine address in your module's code. They are automatically injected into the environment by `viam-server`.
 - Close the connection on module shutdown by calling `await self.robot_client.close()` from an overridden `close` lifecycle method on your module (the companion `module-reference.py` demonstrates this), the same cleanup discipline you would apply to any open connection.
 - Everything else your module needs (the arm, the gripper, the vision service, the pose switches) still comes through the injected dependencies described above.
 
 See [Use the machine management API from a module](/build-modules/platform-apis/#use-the-machine-management-api-from-a-module) for the full reference on this pattern.
 
 {{< alert title="Same resource names, different retrieval" color="note" >}}
-Do not let the change above convince you that everything is different inside a module. Compare how you got the arm handle in the Python script against how you get it inside the module:
+Compare how you got the arm handle in the Python script against how you get it inside the module:
 
 - Local script (Phases 4-5): `arm = Arm.from_robot(machine, "arm-1")`.
 - Module: `arm = dependencies[Arm.get_resource_name(attrs["arm"])]`.
 
-The resource name is still `"arm-1"` in both. In the module you do not hardcode it: you set it once as the module's `arm` config attribute, which the operator points at `arm-1`, and `attrs["arm"]` reads it back. The same is true of the gripper, camera, every pose switch, and the vision service. Only the retrieval mechanism changes, from calling `from_robot` on a connected `machine` handle to looking the resource up in the `dependencies` mapping `new` received. `transform_pose` is the only resource access in this workshop that does not follow this pattern, for the reason described above.
+The resource name is still `"arm-1"` in both. In the module you set it once as the module's `arm` config attribute, which the operator points at `arm-1`, and `attrs["arm"]` reads it back. The same is true of the gripper, camera, every pose switch, and the vision service. Only the retrieval mechanism changes, from calling `from_robot` on a connected `machine` handle to looking the resource up in the `dependencies` mapping `new` received. `transform_pose` is the only resource access in this workshop that does not follow this pattern, for the reason described above.
 {{< /alert >}}
 
 ## Trigger the module with do_command
@@ -174,7 +174,7 @@ With the code in place, save the module. The Viam app packages it and deploys it
 The module finishes its cloud build and starts without errors in the **LOGS** tab, and its resource shows online on the **CONFIGURE** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
-From the **CONTROL** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your laptop. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
+From the **CONTROL** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
 
 <!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
 
@@ -186,6 +186,6 @@ Sending a `do_command` trigger runs one complete pick-and-place cycle: detection
 
 ## Where you landed
 
-You now have the same pick-and-place loop running two ways: as a script you control from your own laptop, and as a module that keeps running on the robot without one. This phase gave you the option to deploy it. Head to the [wrap-up](/tutorials/pick-and-place/wrap-up/) to review everything you built and where to take it next.
+You now have the same pick-and-place loop running two ways: as a script you control from your personal computer, and as a module that keeps running on the robot. Head to the [wrap-up](/tutorials/pick-and-place/wrap-up/) to review everything you built and where to take it next.
 
 {{< workshop-nav >}}

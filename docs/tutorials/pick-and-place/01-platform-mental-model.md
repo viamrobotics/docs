@@ -14,11 +14,11 @@ next: "/tutorials/pick-and-place/configure-resources/"
 languages: ["python"]
 ---
 
-This phase introduces you to Viam machine management and gives you the mental map you need before the rest of the workshop: what happens when you make an API call, why config changes appear instantly on the robot, and how Python code on your laptop talks to hardware across the room. You configure your first resource, the arm, as you go.
+This phase introduces you to Viam machine management and gives you the mental map you need before the rest of the workshop: what happens when you make an API call, why config changes appear instantly on the robot, and how Python code on your laptop talks to hardware across the room. You will configure your first resource as you go.
 
 ## Three questions to consider
 
-By the end of this phase you should be able to answer these three questions. Keep them in mind as you read, and check yourself against them again at the end.
+By the end of this phase you should be able to answer the following questions. Keep them in mind as you read, and check yourself against them again at the end.
 
 1. What are the three layers of a Viam machine, and which one does your Python code actually talk to?
 2. What is the difference between a component and a service?
@@ -59,15 +59,15 @@ When a Python script imports the Viam SDK and connects to your machine, the conn
 
 This matters because it explains why your script keeps working even if your laptop briefly loses its connection to the internet at large but keeps a path to the robot: the cloud app is not in the request path for control, only for discovery and configuration delivery.
 
-Open the **CONNECT** tab on your machine's page in the Viam app and look at the code sample it generates. It contains your machine's address and an API key, the two things any script needs to authenticate and reach `viam-server`. You will paste these into your own script in Phase 4; for now, just note where they live.
+Open the **CONNECT** tab on your machine's page in the Viam app and look at the code sample it generates. It contains your machine's address and an API key + ID pair, the main things any script needs to authenticate and reach `viam-server`.
 
 ## Configuration is the source of truth
 
-Whatever you set in the app's **CONFIGURE** tab is what the machine runs. There is no separate step to "deploy" a change: when you save an edit, the cloud app updates the config document, and `viam-server` picks up the new config and applies it, typically within seconds, without a restart for most changes.
+Whatever you set in the app's **CONFIGURE** tab is what the machine runs. When you save an edit, the app updates the config document, and `viam-server` picks up the new config and applies it, typically within seconds, without a restart for most changes.
 
 This is why the workshop asks you to make changes in the app rather than by editing a file on the robot directly. The app's CONFIGURE tab is the only place you need to look to know what a machine will do.
 
-Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources, starting in the next section.
+Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources.
 
 ## Resources: configure your first one
 
@@ -106,26 +106,24 @@ Back on the **CONFIGURE** tab, look at the `arm-1` card. Next to the name, it sh
 
 {{<imgproc src="/tutorials/pick-and-place/configure-arm1-triplet.png" resize="1200x" declaredimensions=true alt="The arm-1 resource card showing its ufactory/xArm6 model and from ufactory module label.">}}
 
-You will configure the gripper and camera the same way in Phase 2. Each is a resource too, with its own name, API, and model, even though one drives a gripper and the other reads a depth camera.
+You will configure the gripper and camera the same way in the next phase. Each is a resource too, with its own name, API, and model, even though one drives a gripper and the other reads a depth camera.
 
 ## Components and services
 
 Resources split into two kinds:
 
 - **Components** represent physical hardware. `arm-1` is a component, and so are the `gripper-1` and `cam-1` you add in Phase 2: each one wraps a piece of hardware and exposes a standard API for it (an arm API with move commands, a camera API that returns images, and so on).
-- **Services** represent software tasks or capabilities. A motion service plans collision-free paths for an arm. Later, in Phase 5, you configure a `shape-detector` vision service that reads frames from `cam-1` and finds blocks by shape, and a `vision-segment` service (model `detections-to-segments`) that takes those detections and turns them into point cloud segments the motion planner can grasp. Neither service is a physical thing; each one composes other resources into a new capability.
+- **Services** represent software tasks or capabilities. A motion service plans collision-free paths for an arm. Later, you configure a `shape-detector` vision service that gets images from `cam-1` and finds blocks by shape, and a 3D segmenter vision service that takes those detections and turns them into point cloud objects with 3D positions used for planning arm motions. Neither service is a physical thing; each one composes other resources into a new capability.
 
-The difference shows up in what each API does: a component's API maps onto its hardware, so an arm moves to a pose and a camera returns an image, while a service's API exposes a capability, so the motion service plans a path and a vision service returns detections. Keep that split in mind: for the rest of the workshop, "component" means a piece of hardware you can point at, and "service" means a behavior built on top of one or more of those components.
-
-Open the **CONTROL** tab. Because `arm-1` is the only resource you have configured so far, you see a single card, for the arm; it lets you interact with the hardware directly. In Phase 2, adding the gripper and camera gives each its own card, and any service you add later gets a card that exercises a capability built on top of that hardware.
+The difference shows up in what each API does: a component's API maps onto its hardware, so an arm moves to a pose and a camera returns an image, while a service's API exposes a capability, so the motion service plans a path and a vision service returns detections. Keep that split in mind: for the rest of the workshop, "component" means a piece of hardware you can point at or visualize, and "service" means a behavior built on top of one or more of those components.
 
 ## Builtin resources and modules
 
 Some resources are **builtin**: `viam-server` (also called the RDK, the robot development kit) ships with support for common APIs and a handful of default models out of the box. Most of the interesting functionality on a real machine, though, comes from **modules**: packages that `viam-server` downloads and runs to add support for a specific model.
 
-The `viam:ufactory:xArm6` arm you just added is module-provided. That is what the LOGS activity was when you saved it: `viam-server` recognized it does not have `viam:ufactory:xArm6` built in, so it downloaded the module that provides it from the Viam registry and started it. Every other module-provided resource you add follows the same pattern.
+The `ufactory/xArm6` arm you just added comes from a module. That is what the LOGS activity was when you saved it: `viam-server` recognized it does not have `ufactory/xArm6` model built in, so it downloaded the module that provides it from the Viam registry and started it. Every other module-provided resource you add follows the same pattern.
 
-You can read this straight off the namespace. `arm-1`'s namespace is `viam`, a third-party namespace, which is why it arrived as a module. A namespace of `rdk` would mean the model ships inside `viam-server` itself and needs no download; any other namespace, like `viam` or `erh`, means the model comes from a module.
+You can read this straight off the triplet seen in the JSON view of the machine configuration. `arm-1`'s namespace is `viam`, a third-party namespace, which is why it arrived as a module. A namespace of `rdk` would mean the model ships inside `viam-server` itself and needs no download; any other namespace, like `viam` or `erh`, means the model comes from a module.
 
 ## The resource dependency graph
 
@@ -147,11 +145,9 @@ motion  (builtin service, no configuration)
 "A → B" means B depends on A: A must be online before B starts.
 ```
 
-Resources can depend on each other. A dependency means one resource needs another to be configured and running before it can start, because it relies on that resource to do its job. A gripper attaches to an arm, so `gripper-1`'s config points at `arm-1`. A vision service reads from a camera, so it depends on `cam-1`. `viam-server` reads these dependencies out of your config and builds a dependency graph, then starts resources in an order that respects it: a resource cannot start until everything it depends on has started.
+Resources can depend on each other. A dependency means one resource needs another to be configured and running before it can start, because it relies on that resource to do its job. A gripper attaches to an arm, so `gripper-1`'s config points at `arm-1`. A vision service reads from a camera, so it depends on `cam-1`. `viam-server` reads these dependencies returned by resources when validating their configuration and builds a dependency graph, then starts resources in an order that respects it: a resource cannot start until everything it depends on has started.
 
-This is the same pattern you will see again in Phase 5: `vision-segment` depends on `shape-detector`, which depends on `cam-1`. Neither can produce meaningful output until the resource beneath it is running.
-
-Open the **LOGS** tab and look at the startup sequence the next time the machine restarts (you do not need to trigger one now). The order resources come online in the log follows the dependency graph, not the order they appear in the config file.
+Open the **LOGS** tab and look at the startup sequence the next time the machine restarts. The order resources come online in the log follows the dependency graph, not the order they appear in the config file.
 
 {{< alert title="Check yourself" color="note" >}}
 Before moving to Phase 2, make sure you can answer the three questions from the top of this page: name the three layers of a Viam machine and which one your code talks to, what separates a component from a service, and why adding the arm triggers a module download. If any answer feels shaky, re-skim the relevant section above.

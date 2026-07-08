@@ -3,7 +3,7 @@ title: "Vision-Guided Pick-and-Place with the xArm6"
 linkTitle: "Pick-and-Place Workshop"
 type: "docs"
 weight: 50
-description: "Build a vision-guided robot that detects blocks by shape and sorts them into a bin with motion planning, from static arm poses to a Python perception loop."
+description: "Build a vision-guided robot that detects blocks by shape and places them into a bin with motion planning, from manual control to programming an autonomous workflow in Python."
 authors: []
 level: "Intermediate"
 languages: ["python"]
@@ -23,7 +23,7 @@ companion_repo: "https://github.com/viam-devrel/pick-and-place"
 no_list: true
 ---
 
-The workshop is structured as six sequential phases, each ending with a working system state you can verify before moving on. The workshop has two milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two).
+The workshop is structured as six sequential phases, each ending with checkpoints you can verify before moving on. The workshop has two milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two).
 
 ## What you'll build
 
@@ -31,7 +31,7 @@ The workshop is structured as six sequential phases, each ending with a working 
 
 {{<imgproc src="/tutorials/pick-and-place/hero-hardware-overview.jpeg" resize="1200x" declaredimensions=true alt="The staged pick-and-place workstation: a uFactory xArm6 arm with a two-finger gripper and a wrist-mounted RealSense camera, colored blocks, and a bin.">}}
 
-You will configure an xArm6 robotic arm fitted with a two-finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks in camera space, and the Viam motion service plans and executes collision-free picks that place each block in the bin. By the end of Phase 5 you have a Python script you run from your laptop that drives the full detect-pick-place loop.
+You will configure an xArm6 robotic arm fitted with a two-finger gripper and a wrist-mounted Intel RealSense depth camera. A shape-detection vision service finds blocks, and the motion service plans collision-free picks that place each block in the bin. By the end, you will have a Python script you run from your laptop and a deployable module that drives the full detect-pick-place loop.
 
 ## Required hardware
 
@@ -66,8 +66,8 @@ This is a self-serve workshop, so confirm each of the following before you start
 
 - **Python 3.10 or newer.** Install it with [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or from [python.org](https://www.python.org/downloads/).
 - **The Viam Python SDK.** The companion `scripts/` project already declares `viam-sdk`, so `uv run` installs it for you in Phase 4. See the [Python SDK docs](https://python.viam.dev/) for reference. Pip works too if you prefer it.
-- **A working terminal** on the machine you will run the Phase 4 and Phase 5 scripts from, typically your laptop rather than the robot's Meerkat.
-- **A Viam account with an accessible machine.** Log in at [app.viam.com](https://app.viam.com), open your machine, and confirm the green **Live** indicator before you begin.
+- **A working terminal** on the machine you will run the Phase 4 and Phase 5 scripts from, typically your personal computer rather than the robot's Meerkat.
+- **A Viam account with an online machine.** Log in at [app.viam.com](https://app.viam.com), [create a machine](https://docs.viam.com/set-up-a-machine/first-machine/), and confirm the green **Live** indicator before you begin.
 
 ### Validate your environment
 
@@ -89,6 +89,5 @@ If either command fails, revisit the checklist above before continuing.
 {{<imgproc src="/tutorials/pick-and-place/live-indicator.png" resize="1200x" declaredimensions=true alt="A Viam machine page showing the green Live indicator.">}}
 
 - **Hardware ready (`viam-server` running):** start at [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
-- **Provisioning your own hardware:** complete the hardware setup guide first (forthcoming), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
+- **Provisioning your own hardware:** complete [the hardware setup](https://docs.viam.com/set-up-a-machine/first-machine/), then return here for [Phase 1](/tutorials/pick-and-place/platform-mental-model/).
 
-Only the physical hardware, viam-agent, and viam-server may be pre-provisioned for you or come from the hardware setup guide. Configuring the arm, gripper, and camera, their frames, and the vision and motion services is always your hands-on work in this workshop, starting in Phase 1.

@@ -81,7 +81,7 @@ Leave the discovered `sensors` and `serial_number` as they are; letting discover
 
 {{<imgproc src="/tutorials/pick-and-place/configure-camera.png" resize="1200x" declaredimensions=true alt="The cam-1 config with color and depth sensors, align_color_depth enabled, and a serial number.">}}
 
-`align_color_depth` is the attribute that makes perception work later. With it set to `true`, the module aligns each depth frame to the color frame, so a given pixel in the color image and the same pixel in the depth image describe the same physical point. The `vision-segment` service in Phase 5 relies on that alignment to turn a 2D detection into a 3D point cloud segment. Both `color` and `depth` must be in the `sensors` list for it to take effect.
+`align_color_depth` When set to `true`, the module aligns each depth frame to the color frame, so a given pixel in the color image and the same pixel in the depth image describe the same physical point. The `vision-segment` service in Phase 5 relies on that alignment to turn a 2D detection into a 3D point cloud segment. Both `color` and `depth` must be in the `sensors` list for it to take effect.
 
 Save the config and confirm in the **LOGS** tab that `cam-1` starts. Because `viam-server` already downloaded the `viam:realsense` module when you added the discovery service, the camera comes online with no second download.
 
@@ -91,7 +91,7 @@ The discovery service is not part of the pick-and-place pipeline; it only helped
 
 ## Connect the components with frames
 
-Adding the arm, gripper, and camera tells `viam-server` how to talk to each one, but not where each sits in space. The motion service needs that spatial relationship: it has to know the gripper rides on the end of the arm and the camera looks out from the wrist, or it cannot plan a pick. You supply it by adding a **frame** to each component.
+Adding the arm, gripper, and camera tells `viam-server` how to talk to each one, but not where each sits in space. The motion service needs that spatial relationship: it has to know the gripper is mounted on the end of the arm and the camera looks out from the wrist, or it cannot plan a pick. You supply it by adding a **frame** to each component.
 
 The three frames form a tree rooted at `world`:
 
@@ -144,6 +144,8 @@ Open the `cam-1` card and select **Frame**. Switch the editor to JSON and set:
 
 Parent `arm-1` mounts the camera on the wrist so it moves with the arm. The translation places the camera's optical center relative to the end effector, and the 270-degree rotation around z lines the camera's axes up with the arm's. Save the config.
 
+Check that your camera configuration matches the image below: Check the component name is cam-1, the module / model selected is realsense/realsesne and the frame values match. Note that the attributes may change their order, you only need to verify the values,
+
 <!-- ASSET P0 configure-camera-frame (UI+): cam-1 Frame editor JSON, parent arm-1, translation -73,40,18 -->
 
 {{<imgproc src="/tutorials/pick-and-place/configure-camera-frame.png" resize="1200x" declaredimensions=true alt="The Frame editor JSON for cam-1 with parent arm-1 and a wrist-mount translation.">}}
@@ -166,6 +168,8 @@ On the camera card, confirm you get a live feed:
 
 Below the **GetImages** control, you can toggle **GetPointCloud** on and set the "Camera up vector" to "-y" to see a live stream of the pointcloud data from the camera as a 3D scene. Hovering over any part of the point cloud with your mouse will display the x, y, z coordinates of that point from the perspective of the camera and distance from the camera sensor.
 
+<!-- ASSET P1 control-camera-pointcloud (UI): CONTROL camera card, live point clouds -->
+
 {{< checkpoint >}}
 The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the **GetImages** stream rate to "Refresh every second" and the source to depth and confirm that stream updates too. If the card is blank, check the LOGS tab for a camera error before moving on.
 {{< /checkpoint >}}
@@ -173,22 +177,22 @@ The camera card shows a live color stream from `cam-1`. Because you configured b
 ### Move the arm
 
 {{< alert title="The arm is about to move" color="caution" >}}
-Jogging the arm (setting the joint sliders and pressing **Execute**) moves the physical arm. Before you run a move, confirm the workspace is clear, keep the e-stop within reach, and change one joint a small amount at a time. Large or combined joint moves can drive the arm into the table, the camera, or itself.
+The next section moves the physical arm using joint control. Before you run a move, confirm the workspace is clear, keep the e-stop within reach, and change one joint a small amount at a time. Large or combined joint moves can drive the arm into the table, the camera, or itself.
 {{< /alert >}}
 
-On the arm card, set a joint with the **MoveToJointPositions** sliders and press **Execute** to move the arm. Then, under **MoveToPosition**, press **Current position** and confirm the Pose Values populate with the arm's current x, y, and z.
+The arm card shows the arm's current joint positions, and provides two different control methods to test the arm, Joint Control and Cartesian control. Joint Control lets you manually set a joint's desired position and click execute, while the cartesian control lets you move the arm to a specific pose in space. Before using either, it is always a good idea to press Current Position to set the desired values to match the robot's current state. Try moving joint 5 and 6 with the **MoveToJointPositions** sliders and press **Execute** and watch the end of the arm move. Then, under **MoveToPosition**, press **Current position** and confirm the Pose Values populate with the arm's current x, y, and z.
 
 <!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
 
 {{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm CONTROL card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
 
 {{< checkpoint >}}
-Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values rather than erroring. If nothing moves, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
+Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values rather than erroring. If nothing moves or you see an error message, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ### Control the gripper
 
-On the gripper card, place a block between the gripper fingers by hand, then select **Grab**. The fingers should close and hold the block. Select **Open** and confirm the fingers release it.
+The gripper test card lets you open and close a gripper, check whether the gripper is moving and whether it believes it's holding an object. Place a block between the fingers, and press **Grab** to close the fingers and hold the block. **Open** releases the block. This grab-and-release is the same action your Python code performs later in the workshop when it picks a block and drops it in a bin. If your gripper card also shows a holding status indicator, it now reads true while the block is held and false once the gripper is open and empty.
 
 <!-- ASSET P1 control-gripper-grab (MOTION): gripper closing on a block via Grab, then Open releasing -->
 
