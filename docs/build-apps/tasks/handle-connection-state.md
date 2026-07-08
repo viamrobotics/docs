@@ -217,7 +217,7 @@ The Python SDK does not expose a connection-event API. For long-running services
 // Connection options are set through RobotClientOption functions
 machine, err := client.New(
     ctx, address, logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(apiKeyID, creds)),
+    client.WithDialOptions(client.WithEntityCredentials(apiKeyID, creds)),
     client.WithCheckConnectedEvery(10 * time.Second),
 )
 ```

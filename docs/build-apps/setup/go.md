@@ -48,7 +48,6 @@ import (
 
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -62,10 +61,10 @@ func main() {
         context.Background(),
         address,
         logger,
-        client.WithDialOptions(rpc.WithEntityCredentials(
+        client.WithDialOptions(client.WithEntityCredentials(
             apiKeyID,
-            rpc.Credentials{
-                Type:    "api-key",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
                 Payload: apiKey,
             },
         )),
@@ -107,7 +106,7 @@ The example above reads credentials from environment variables set inline on the
 
 - **`go mod tidy` errors.** The RDK has many transitive dependencies. If `go mod tidy` fails with version conflicts, check that your Go version is 1.21 or later and that you are not inside another module's directory.
 - **Connection hangs or times out.** Verify the machine address matches the **CONNECT** tab exactly. Verify the machine is online in the Viam app.
-- **Credentials wrong.** The `rpc.WithEntityCredentials` call takes the API key ID as the first argument and the API key secret as `Payload`. Reversing them causes an authentication failure with a generic error message.
+- **Credentials wrong.** The `client.WithEntityCredentials` call takes the API key ID as the first argument and the API key secret as `Payload`. Reversing them causes an authentication failure with a generic error message.
 
 ## Next
 
