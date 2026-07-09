@@ -73,7 +73,6 @@ Your API key grants control of the robot to anyone who has it. Do not commit it 
 After the connection opens, the script builds typed handles for each resource you drive in this phase:
 
 ```python
-arm = Arm.from_robot(machine, "arm-1")
 gripper = Gripper.from_robot(machine, "gripper-1")
 
 home = Switch.from_robot(machine, "home-pose")
@@ -85,33 +84,29 @@ place_pose = Switch.from_robot(machine, "place-pose")
 
 `from_robot` returns a typed client for each resource: a Python object whose methods mirror that resource's API. `gripper.grab()` and `gripper.open()` are the same actions as the gripper card's **Grab** and **Open** buttons, and every call travels over the connection to `viam-server`, which routes it to the right resource. You are not driving the hardware directly; you are calling the same API the CONTROL tab calls, from code.
 
-This code drives only the gripper and these pose switches. Right below them, the starter script keeps a `vision` handle for an upcoming `vision-segment` service commented out. This will raise a `ResourceNotFoundError` for a service that is not present, so leave that line commented for now:
-
-```python
-# vision = VisionClient.from_robot(machine, "vision-segment")
-```
+This code drives only the gripper and these pose switches. The script also keeps `motion` and `vision` handles commented out just below them, marked `# Used in Phase 5`; leave them commented until you add the vision service in the next phase.
 
 ## Run the script
 
 <!-- ASSET P0 term-resource-names (TERM+): uv run output with resource_names printed; label arm-1/gripper-1/cam-1/pose switches/obstacle grippers -->
 
-{{< alert title="The script moves the arm" color="caution" >}}
-Running the script drives the arm through the full static sequence immediately after it prints the resource list. Clear the workspace and keep the e-stop within reach before you run it.
-{{< /alert >}}
+You run the script twice: first to confirm the connection without moving anything, then again to drive the arm.
 
-Run the script now with `uv run starter-script.py` (or `python3 starter-script.py` if you're not using `uv`). It happens in a single run: `connect()` opens the connection, the script prints every resource on the machine, and then it immediately drives the arm through the static sequence. Watch the printed resource list scroll past in your terminal before the arm starts moving.
+### First run: confirm the connection
 
-The first thing printed is the full resource list:
+Run the script with `uv run starter-script.py` (or `python3 starter-script.py` if you're not using `uv`). As shipped, the static sequence is commented out, so this first run only opens the connection and prints every resource on the machine. Nothing moves.
 
 ```python
 print(machine.resource_names)
 ```
 
 {{< checkpoint >}}
-`machine.resource_names` prints a list that includes at least `arm-1`, `gripper-1`, and `cam-1`, the five poses (`home-pose`, `approach-pose`, `grasp-pose`, `travel-pose`, `place-pose`) as switches, and the three obstacles from Phase 3 as grippers. The list also contains the `builtin` motion service and other `erh:vmodutils` entries, so expect more names than just these.
+`machine.resource_names` prints a list that includes at least `arm-1`, `gripper-1`, and `cam-1`, the five poses (`home-pose`, `approach-pose`, `grasp-pose`, `travel-pose`, `place-pose`) as switches, and the three obstacles from Phase 3 as grippers. The list also contains the `builtin` motion service and other `erh:vmodutils` entries, so expect more names than just these. Nothing moves on this run.
 {{< /checkpoint >}}
 
-Right after the print, the script runs the static sequence. This is the same sequence you tested by hand from the **CONTROL** tab at the end of Phase 3, now expressed as code instead of button clicks. On a switch, `set_position(2)` executes the pose it has saved:
+### Second run: drive the arm
+
+With the connection and resource names confirmed, uncomment the static sequence block in the starter script (the lines under `TODO 4`). This is the same sequence you tested by hand from the **CONTROL** tab at the end of Phase 3, now expressed as code instead of button clicks. On a switch, `set_position(2)` executes the pose it has saved:
 
 ```python
 await home.set_position(2)
@@ -128,17 +123,23 @@ await home.set_position(2)
 
 The short sleep after `gripper.grab()` gives the two-finger gripper time to settle its grip on the block before the arm starts moving again; without it, the arm can begin the travel move before the fingers have finished closing.
 
+{{< alert title="The arm moves on this run" color="caution" >}}
+With the sequence uncommented, running the script drives the arm through the full static sequence right after it prints the resource list. Clear the workspace and keep the e-stop within reach before you run it again.
+{{< /alert >}}
+
+Run the script again. This time it prints the resource list, then drives the arm through the full sequence.
+
 {{< checkpoint >}}
-After the resource list prints, the same run drives the arm through the full sequence end to end: home, approach, open, grasp, grab, travel, place, open, home. The arm should complete every step without stopping, in the same order you validated manually previously.
+On the second run the arm moves through the full sequence end to end: home, approach, open, grasp, grab, travel, place, open, home. The arm should complete every step without stopping, in the same order you validated manually previously.
 {{< /checkpoint >}}
 
 ## Debugging guide
 
 Most problems fall into one of a few categories:
 
-- **`ResourceNotFoundError: vision-segment`** (or a similar not-found error for the vision service) means you tried to build the vision handle before configuring the vision service. That service is not added until Phase 5. Comment out the `vision = VisionClient.from_robot(...)` line for now, as described above, and rerun.
+- **`ResourceNotFoundError: vision-segment`** (or a similar not-found error for the vision service) means you uncommented the vision handle before configuring the vision service. That service is not added until Phase 5, so leave the `vision = VisionClient.from_robot(...)` line commented (it is marked `# Used in Phase 5` in the starter script) until then, and rerun.
 - **Connection failures.** If `connect()` raises an error or hangs, double-check the `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` values against the **CONNECT** tab. A stale or mistyped API key produces an authentication error immediately; a wrong address usually times out instead. Also confirm the machine shows the green **Live** indicator in the Viam app. A machine that is not live cannot accept a connection no matter how correct your credentials are.
-- **Resource-name mismatches.** If `Arm.from_robot(machine, "arm-1")` or a similar call raises a not-found error, the name in your script does not match the name on the **CONFIGURE** tab. Names are exact strings, not approximations, so `arm-1` and `arm_1` are different resources as far as the SDK is concerned. Open `resource_names` from the connection checkpoint above and compare it character for character against the names your script uses.
+- **Resource-name mismatches.** If `Gripper.from_robot(machine, "gripper-1")` or a similar call raises a not-found error, the name in your script does not match the name on the **CONFIGURE** tab. Names are exact strings, not approximations, so `gripper-1` and `gripper_1` are different resources as far as the SDK is concerned. Open `resource_names` from the connection checkpoint above and compare it character for character against the names your script uses.
 - **A switch does nothing on `set_position(2)`.** This means the pose was never saved. Go back to the **CONTROL** tab, jog the arm to the correct pose, and set that switch to **update config** (position 1) to save it, as you did in Phase 3, then rerun the script.
 
 With `resource_names` printing everything you expect and the static sequence running end to end from your own code, you have working proof that your connection, your named resources, and your saved poses all hold up under real code. You are ready to integrate perception in [Phase 5](/tutorials/pick-and-place/perception-guided-picking/).
