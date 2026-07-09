@@ -821,7 +821,7 @@ To enable data capture on your machine, add and configure the [data management s
 {{% tab name="Config Builder" %}}
 
 1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-1. Choose `data_manager/builtin` as the type.
+1. Search for `data management`, then select the `data_manager/builtin` block.
 1. Enter a name or use the suggested name for your instance of the data manager.
    This tutorial uses the name 'dm' in all example code.
 1. Click **Add to machine**.
@@ -865,7 +865,7 @@ If you have a different item you want to use, or want to match to a color that m
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-1. Search for `vision`, then select the `vision/color_detector` model.
+1. Search for `color detector`, then select the `vision/color_detector` block.
 1. Enter a name or use the suggested name for your color detector.
    This tutorial uses the name 'my_color_detector' in all example code.
 1. click **Add to machine**.

@@ -214,7 +214,7 @@ Now, configure your rover to:
 To configure your [servo](/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
 - Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-- Search for `servo`, then select the `raspberry-pi/rpi-servo` model.
+- Search for `rpi-servo`, then select the `raspberry-pi/rpi-servo` block.
 - Enter the name `servo1` for your servo and click **Add to machine**.
 
 Now, in the panel for `servo1`, add the following attribute configuration:
@@ -250,7 +250,7 @@ To configure an ML model service:
 
 - Select the **CONFIGURE** tab.
 - Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-- Select the `ML model` type, then select the `TFLite CPU` model.
+- Search for `tflite`, then select the `tflite_cpu/tflite_cpu` block.
 - Enter the name `stuff_detector` for your service and click **Add to machine**.
 
 Your robot registers this as a machine learning model and makes it available for use.
@@ -262,7 +262,7 @@ Now, create a vision service to visualize your ML model:
 
 - Select the **CONFIGURE** tab.
 - Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-- Select the `vision` type, then select the `ML model` model.
+- Search for `mlmodel`, then select the `vision/mlmodel` block.
 - Enter the name `mlmodel` for your service and click **Add to machine**.
 
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!

@@ -64,7 +64,7 @@ Navigate to the **CONFIGURE** tab of your machine's page.
 **Configure the camera you want to use for your security system.**
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Search for `camera`, then select the `camera/webcam` model or another model if you are using a different camera.
+Search for `webcam`, then select the `camera/webcam` block, or another model if you are using a different camera.
 Enter the name `my_webcam` for your camera and click **Add to machine**.
 
 {{% /tablestep %}}
