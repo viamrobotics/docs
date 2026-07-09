@@ -23,7 +23,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the shape detector
 
-`devrel:shape-finder:detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `devrel:shape-finder:detector` model, and name it `shape-detector`. Set its one attribute:
+`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
 
 ```json
 {
@@ -39,7 +39,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the segmenter
 
-`viam:vision:detections-to-segments` is a builtin vision model that reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. Add it the same way: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `viam:vision:detections-to-segments` model, and name it `vision-segment`. Set its attributes:
+`vision/detections-to-segments` is a builtin vision model that reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. Add it the same way: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` model, and name it `vision-segment`. Set its attributes:
 
 ```json
 {

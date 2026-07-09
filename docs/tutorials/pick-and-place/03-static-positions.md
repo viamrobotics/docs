@@ -146,7 +146,7 @@ In this workshop you configure two types of obstacles: the table surface and two
 
 ## Obstacles as components
 
-An obstacle can be configured as an `erh:vmodutils:obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle has the same control UI as a gripper. This is purely as a resource container for geometry.
+An obstacle can be configured as a `vmodutils/obstacle` component you add on the **CONFIGURE** tab, the same way you added the arm, gripper, and camera. This obstacle model uses the gripper API, so once configured, each obstacle has the same control UI as a gripper. This is purely as a resource container for geometry.
 
 The obstacle geometry is then automatically included in the world state the motion service uses to plan a safe path for the arm to a target position in 3D space.
 
@@ -203,7 +203,7 @@ If your table is not centered on the arm base in x and y, adjust the frame's `tr
 
 ### Add the safety walls
 
-Add two more `erh:vmodutils:obstacle` components the same way, one per boundary you want to wall off. Each has its box dimensions in `geometries` and a `world`-parented `frame` that places it.
+Add two more `vmodutils/obstacle` components the same way, one per boundary you want to wall off. Each has its box dimensions in `geometries` and a `world`-parented `frame` that places it.
 
 `safety-wall-front` attributes:
 
