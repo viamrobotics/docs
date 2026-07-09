@@ -142,7 +142,6 @@ import (
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/services/vision"
-  "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -150,10 +149,10 @@ func main() {
   logger := logging.NewLogger("segmenter")
 
   machine, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
       "YOUR-API-KEY-ID",
-      rpc.Credentials{
-        Type:    rpc.CredentialsTypeAPIKey,
+      client.Credentials{
+        Type:    client.CredentialsTypeAPIKey,
         Payload: "YOUR-API-KEY",
       })),
   )
