@@ -69,7 +69,7 @@ To add the camera component to your machine part:
 1. Click the **+** button and select **Blocks**
 2. Search for `gz-camera`
 3. Select `gz-camera/rgb-camera`
-4. Click **Add Component**
+4. Click **Add to machine**
 5. Enter `inspection-cam` for the name
 
 {{< expand "Why were two items added to my machine part?" >}}
@@ -136,7 +136,7 @@ The `try-vision-pipeline` fragment includes an ML model service loaded with a ca
 1. Click **+** next to your machine name
 2. Select **Blocks**
 3. Search for `try-vision-pipeline`
-4. Select `try-vision-pipeline` and click **Add Fragment**
+4. Select `try-vision-pipeline` and click **Add to machine**
 
 ### Set the camera variable
 
