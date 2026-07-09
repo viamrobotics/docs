@@ -121,6 +121,60 @@ The resource name is still `"arm-1"` in both. In the module you set it once as t
 
 With dependencies wired up, assemble your pick-and-place logic into a single `run_pick_cycle` method on the module, the same detection, pose math, and motion calls, unchanged. What differs is how that method gets triggered.
 
+Assembled onto the module, using the dependencies you looked up in `new`, `run_pick_cycle` looks like this:
+
+```python
+async def run_pick_cycle(self) -> bool:
+    """Run one detect-pick-place cycle. Returns False if no object was detected, True on a completed cycle."""
+    # 1. Observe from home so the wrist-mounted camera frame is in a known position.
+    await self.home.set_position(2)
+
+    # 2. Detect. vision-segment fuses the 2D shape detections with depth into
+    #    3D objects, each with a point cloud and a label.
+    objects = await self.vision.get_object_point_clouds(self.camera_name)
+    if not objects:
+        print("No objects detected")
+        return False
+
+    # Largest object by point-cloud byte size (a proxy for point count).
+    # point_cloud is raw PCD bytes, so use len(point_cloud), not .size.
+    obj = max(objects, key=lambda o: len(o.point_cloud))
+    geometry = obj.geometries.geometries[0]
+    label = geometry.label
+    print(f"Detected: {label}")
+
+    # 3. Tag the detected pose with the camera frame; motion.move resolves it.
+    obj_in_cam = PoseInFrame(reference_frame=self.camera_name, pose=geometry.center)
+
+    # 4. Derive the approach and grasp poses from the object center.
+    approach_pose = offset_pose(obj_in_cam.pose, APPROACH_MM)
+    grasp_pose = offset_pose(obj_in_cam.pose, GRIPPER_LENGTH_MM)
+
+    # 5. Pick: move above, open, descend down, grab, lift.
+    await self.motion.move(
+        component_name=self.gripper_name,
+        destination=PoseInFrame(
+            reference_frame=self.camera_name, pose=approach_pose
+        ),
+    )
+    await self.gripper.open()
+    await asyncio.sleep(SETTLE_S)
+    await self.motion.move(
+        component_name=self.gripper_name,
+        destination=PoseInFrame(reference_frame=self.camera_name, pose=grasp_pose),
+    )
+    await self.gripper.grab()
+    await asyncio.sleep(SETTLE_S)
+
+    # 6. Place: lift to the safe carrying height, drop at the saved bin pose.
+    await self.travel.set_position(2)
+    await self.place_pose.set_position(2)
+    await self.gripper.open()
+    await self.home.set_position(2)
+
+    return True
+```
+
 You trigger the module through `do_command`. Because a generic service has no typed API of its own, `do_command` is its entry point: the method you dispatch on to run the actions your service exposes. A small illustrative sketch:
 
 ```python
