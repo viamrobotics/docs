@@ -83,6 +83,8 @@ travel = Switch.from_robot(machine, "travel-pose")
 place_pose = Switch.from_robot(machine, "place-pose")
 ```
 
+`from_robot` returns a typed client for each resource: a Python object whose methods mirror that resource's API. `gripper.grab()` and `gripper.open()` are the same actions as the gripper card's **Grab** and **Open** buttons, and every call travels over the connection to `viam-server`, which routes it to the right resource. You are not driving the hardware directly; you are calling the same API the CONTROL tab calls, from code.
+
 This code drives only the gripper and these pose switches. Right below them, the starter script keeps a `vision` handle for an upcoming `vision-segment` service commented out. This will raise a `ResourceNotFoundError` for a service that is not present, so leave that line commented for now:
 
 ```python

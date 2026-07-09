@@ -207,6 +207,10 @@ grasp_pose = offset_pose(obj_in_cam.pose, GRIPPER_LENGTH_MM)
 
 `GRIPPER_LENGTH_MM` is `-60`. If you used `APPROACH_MM` here by mistake, the gripper stops well short of the block instead of at it; if you used zero, you would drive the TCP itself to the block center, sinking the fingers a full gripper-length past the block instead of closing them around it.
 
+{{< checkpoint >}}
+Before wiring up the moves, print `approach_pose` and `grasp_pose` and compare their `z` to `obj_in_cam.pose.z`: the approach `z` should sit about 100 mm toward the camera and the grasp `z` about 60 mm toward it. If either offset went the wrong way, the pick drives into or well short of the block, so fix the sign before running a move.
+{{< /checkpoint >}}
+
 ## Run the full pick loop
 
 <!-- ASSET P0 perception-pick (MOTION): full detect -> approach -> descend -> grab -> place cycle (milestone-two hero asset) -->
@@ -237,15 +241,21 @@ This cycle picks with `motion.move` and places with the saved-pose switches from
 This loop drives the arm to a computed grasp pose with `motion.move` and replays saved poses, all from your script. Keep the workspace clear and the e-stop within reach, and run it the first few times ready to stop the arm if a computed pose looks wrong.
 {{< /alert >}}
 
-Run the script and watch the sequence in stages: the approach move first, then the grasp move, then the full cycle through to a placed block.
+Run the script and watch the sequence come together in three stages.
+
+First, the approach move lifts the gripper to the standoff above the detected block:
 
 {{< checkpoint >}}
 The approach move completes without a planning error, positioning the gripper above the block. If it fails here, open the **3D scene** tab during the next run and check whether `approach_pose` lands inside the table or safety-wall geometry; a block detected very close to a boundary can push the arm outside the planner's reachable space.
 {{< /checkpoint >}}
 
+Next, the grasp move descends onto the block and the gripper closes:
+
 {{< checkpoint >}}
 The grasp move completes and **Grab** closes the fingers around the block, holding it through the lift into `travel-pose`. If the gripper closes on empty air, the block likely shifted between detection and grasp, or the grasp offset is off; revisit the offset math above.
 {{< /checkpoint >}}
+
+Finally, the place and return steps carry the block to the bin and send the arm home:
 
 {{< checkpoint >}}
 The full loop runs end to end: approach, open, grasp, grab, travel, place, open, home, with the block landing in the bin. This is the same sequence you drove by hand in the UI and by fixed poses in the initial Python script, now driven by a pose your code computed from a live detection.
