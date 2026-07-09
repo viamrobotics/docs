@@ -75,7 +75,7 @@ To create a [color detector vision service](/reference/apis/services/vision/#det
 
 Navigate to your machine's **CONFIGURE** tab.
 Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `vision` type, then select the `color detector` model.
+Search for `color detector`, then select the `vision/color_detector` block.
 Enter `my_color_detector` as the name for your service and click **Add to machine**.
 
 In your vision service's panel, set the following **Attributes**:

@@ -55,7 +55,7 @@ In the following, you can see two popular examples with components that are pres
 The first component you will add is the [board](/reference/components/board/) which represents the Raspberry Pi to which the other components are wired.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `board` type, then select the `viam:raspberry-pi:rpi` model.
+Search for `raspberry pi`, then select the `raspberry-pi/rpi` block.
 Enter `local` as the name and click **Add to machine**.
 You can use a different name but will then need to adjust the name in the following steps to the name you choose.
 
@@ -85,7 +85,7 @@ Start with the right encoder:
 #### Right encoder
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `encoder` type, then select the `AMS-AS5048` model.
+Search for `as5048`, then select the `ams/as5048` block.
 Enter `renc` as the name and click **Add to machine**.
 
 Click the **board** dropdown list and select the name of your board, `local`.
@@ -95,7 +95,7 @@ In the **i2c bus** field type `1`, and in the **i2c address** field type `65`.
 #### Left encoder
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `encoder` type, then select the `AMS-AS5048` model.
+Search for `as5048`, then select the `ams/as5048` block.
 Enter `lenc` as the name for your encoder and click **Add to machine**.
 
 Click the **board** dropdown list and select the name of your board, `local`.
@@ -158,7 +158,7 @@ Start with the right motor:
 #### Right motor
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `motor` type, then select the `gpio` model.
+Search for `gpio`, then select the `motor/gpio` block.
 Enter `right` as the name or use the suggested name for your motor and click **Add to machine**.
 
 Then from the **Board** dropdown, select `local`, the Raspberry Pi the motor is wired to.
@@ -177,7 +177,7 @@ Next, describe how the motor is wired to the Pi:
 #### Left motor
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `motor` type, then select the `gpio` model.
+Search for `gpio`, then select the `motor/gpio` block.
 Enter `left` as the name or use the suggested name for your motor and click **Add to machine**.
 
 Then select `local` from the **Board** dropdown to choose the Raspberry Pi the motor is wired to.
@@ -245,7 +245,7 @@ Start with the right set of wheels.
 #### Right motor
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `motor` type, then select the `gpio` model.
+Search for `gpio`, then select the `motor/gpio` block.
 Enter `right` as the name or use the suggested name for your motor and click **Add to machine**.
 
 ![G P I O motor config in the builder UI with the In1 and In2 pins configured and the PWM pin field left blank.](/components/motor/gpio-config-ui.png)
@@ -268,7 +268,7 @@ You can ignore the other optional attributes.
 #### Left motor
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `motor` type, then select the `gpio` model.
+Search for `gpio`, then select the `motor/gpio` block.
 Enter `left` as the name or use the suggested name for your motor and click **Add to machine**.
 
 Click the **Board** dropdown and select `local` as the board the motor driver is wired to.
@@ -337,7 +337,7 @@ Optionally, add a camera to your rover.
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `camera` type, then select the `webcam` model.
+Search for `webcam`, then select the `camera/webcam` block.
 Enter a name or use the suggested name for your camera and click **Add to machine**.
 
 {{< imgproc src="/components/camera/configure-webcam.png" alt="Configuration of a webcam camera." resize="1200x" style="width=600x" >}}
@@ -365,14 +365,14 @@ If this doesn't work when you test your camera later, you can try a different vi
 If your rover has its camera mounted on a pair of [servos](/reference/components/servo/), like the Yahboom rover, you can use these to control the pan and tilt of the camera.
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
+Search for `rpi-servo`, then select the `raspberry-pi/rpi-servo` block.
 Enter `pan` as the name and click **Add to machine**.
 
 Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`23` for the Yahboom rover).
 
 Finally, add the tilt `servo` as well.
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
+Search for `rpi-servo`, then select the `raspberry-pi/rpi-servo` block.
 Enter `tilt` as the name and click **Add to machine**.
 
 Set `Depends On` to `local`, and `pin` to the pin the servo is wired to (`21` for the Yahboom rover).
@@ -395,7 +395,7 @@ If your rover is not supported out of the box, follow the [Create a Modular Reso
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `base` type, then select the `wheeled` model.
+Search for `wheeled`, then select the `base/wheeled` block.
 Enter a name or use the suggested name for your base and click **Add to machine**.
 
 {{< tabs >}}

@@ -225,7 +225,7 @@ First, add your machine as a [board component](/reference/components/board/):
 {{% tab name="Config Builder" %}}
 
 Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
-Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` model (for example, `viam:raspberry-pi:pi4` for Raspberry Pi 4).
+Search for `raspberry pi`, then select the block that matches your Pi (for example, `raspberry-pi/rpi4` for a Raspberry Pi 4).
 Enter a name for your board and click **Add to machine**.
 This tutorial uses the name `local`.
 
