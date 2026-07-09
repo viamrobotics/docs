@@ -90,11 +90,12 @@ The motion service plans in the `world` frame, the same frame your obstacle geom
 This is the frame system you see visualized in 3D scene tab, when the `cam-1` frame visibly moved as you jogged joint 1. `viam-server` maintains that same relationship as a graph: the camera's offset from the wrist, the wrist's offset from the next joint, and so on, all the way down to the arm's base at the world origin. `RobotClient.transform_pose` walks that graph for you. Give it a pose tagged with its source reference frame and a destination frame, and it returns the equivalent pose in the destination frame:
 
 ```python
+# geometry is a detected object from vision-segment; geometry.center is its pose
 obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
 obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 ```
 
-`PoseInFrame` pairs a `Pose` with the name of the frame it is expressed in. `transform_pose` reads that source frame, reads the destination frame you passed as the second argument, and returns a new `PoseInFrame` with the same physical point re-expressed in `world` coordinates. You will wire this into the full detection code in the next section, once there is an actual `geometry.center` to transform.
+`PoseInFrame` pairs a `Pose` with the name of the frame it is expressed in. `transform_pose` reads that source frame, reads the destination frame you passed as the second argument, and returns a new `PoseInFrame` with the same physical point re-expressed in the destination frame. The example above takes the detected object's pose in the `cam-1` frame and transforms it to `world`. You will wire this into the full detection code in the next section, once there is an actual `geometry.center` to transform.
 
 ## Detect from home (the wrist-camera rule)
 
@@ -112,7 +113,7 @@ One block, fixed on the table
               → transform_pose to world is consistent          (reliable)
 ```
 
-We can continue to use the `home-pose` saved position because it provides a good view of the workspace for the camera to detect objects to be picked up by the arm. We can update the control flow to replace the `approach` and `grasp` set positions with the perception logic:
+The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_object_point_clouds`. You replace the static `approach` and `grasp` poses with poses derived from the point cloud segments:
 
 ```python
 # Observe from home so the wrist-mounted camera frame is in a known position.
@@ -139,7 +140,7 @@ obj_in_world = await machine.transform_pose(obj_in_cam, "world")
 Add a `print(obj_in_world.pose)` after the transform and run the script. Watch the x, y, and z values it prints as you move a block around the table.
 
 {{< checkpoint >}}
-`obj_in_world.pose` prints coordinates that make physical sense: a `z` roughly at the table surface plus the block's height, and `x`/`y` values that land somewhere over the table rather than off in empty space or underneath it. If the numbers look physically wrong, the most common cause is a detection that was not taken from `home-pose`. Confirm the guard clause runs before every `get_object_point_clouds` call.
+`obj_in_world.pose` prints coordinates that make physical sense: a `z` roughly at the table surface plus the block's height, and `x`/`y` values that land somewhere over the table rather than off in empty space or underneath it. If the numbers look physically wrong, the most common cause is a detection that was not taken from `home-pose`. Confirm the arm returns to `home-pose` (the `await home.set_position(2)` call) before every `get_object_point_clouds` call.
 {{< /checkpoint >}}
 
 ## Compute the approach and grasp poses
@@ -161,13 +162,11 @@ gripper-1 TCP, not the arm's end frame:
      0 mm  ── block center   (obj_in_world.pose)
 ```
 
-The pick uses the **motion service**: it plans a collision-free path to a Cartesian (coordinates in 3D space) goal. Unlike the vision service, you never configured it. The motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+The pick uses the **motion service**: it plans a collision-free path to a Cartesian (coordinates in 3D space) goal. Unlike the vision service, you never configured it. The motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **CONFIGURE** tab to point at. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
 ```python
 motion = MotionClient.from_robot(machine, "builtin")
 ```
-
-Passing `"builtin"` to `MotionClient.from_robot` reaches that default motion service; there is no motion component on the **CONFIGURE** tab to point at, which is why `builtin` showed up in `machine.resource_names`.
 
 Before you turn `obj_in_world.pose` into a place to move the gripper, it matters exactly what `motion.move` moves. Two motions that sound similar are not the same thing:
 
@@ -234,7 +233,7 @@ await gripper.open()
 await home.set_position(2)
 ```
 
-Notice the shape of this cycle: it picks with `motion.move` and places with the saved-pose switches from Phase 3. The pick target moves every cycle, so it needs the Cartesian precision and obstacle-aware planning that `motion.move` provides against a freshly computed world pose. The place target never moves: it is the same bin in the same spot every time, so a pre-measured, pre-verified saved pose is simpler and just as reliable as planning a fresh path there. Use the right tool for each half of the cycle rather than forcing one approach to do both jobs.
+This cycle picks with `motion.move` and places with the saved-pose switches from Phase 3. The pick target moves every cycle, so it needs the Cartesian precision and obstacle-aware planning that `motion.move` provides against a freshly computed world pose. The place target never moves: it is the same bin in the same spot every time. The saved-pose switch replays fixed joint positions directly, without invoking the motion planner, so for a target that never changes it is simpler and just as reliable as planning a fresh path each cycle.
 
 {{< alert title="The arm moves under code control" color="caution" >}}
 This loop drives the arm to a computed grasp pose with `motion.move` and replays saved poses, all from your script. Keep the workspace clear and the e-stop within reach, and run it the first few times ready to stop the arm if a computed pose looks wrong.
@@ -265,6 +264,6 @@ Work through these in order. The first one causes most of the rest. If you get s
 - **The pick point drifts from cycle to cycle, even for a block that has not moved.** This is almost always the wrist-camera rule again: some code path is detecting from a pose other than `home-pose`. Print `obj_in_world.pose` on every cycle and confirm the arm is fully settled at `home-pose` before each detection call.
 - **Motion planning fails, or the target looks unreachable.** Open the **3D scene** tab during the failing move and look at where `approach_pose` or `grasp_pose` lands relative to the table and safety-wall geometry from Phase 3. A detected pose near a workspace boundary can place the standoff or the grasp point outside the region the planner is allowed to move through. If you skipped or under-measured the obstacle configuration in Phase 3, this is where it bites: geometry that does not match your physical setup makes the planner reject moves that are perfectly safe, or, worse, accept ones that are not. Revisit [Teach the planner about obstacles](/tutorials/pick-and-place/static-positions/#teach-the-planner-about-obstacles) and recheck your measurements before assuming the pose math is wrong.
 
-With a full perception-guided pick loop running end to end, you have every piece of the workshop's core loop working from your own computer: detection, the frame transform, planned motion, and a reliable place. The next phase picks up from here to package this same script as a module that runs on the robot directly, with no laptop connection required once it is deployed. If you are stopping here, the [wrap-up](/tutorials/pick-and-place/wrap-up/) reviews what you built and where to go next.
+With a full perception-guided pick loop running end to end, you have every piece of the workshop's core loop working from your own computer: detection, the frame transform, planned motion, and a reliable place. [The next phase](/tutorials/pick-and-place/inline-module/) picks up from here to package this same script as a module that runs on the robot directly, with no laptop connection required once it is deployed. If you are stopping here, the [wrap-up](/tutorials/pick-and-place/wrap-up/) reviews what you built and where to go next.
 
 {{< workshop-nav >}}

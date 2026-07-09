@@ -17,7 +17,7 @@ languages: ["python"]
 
 This phase is optional. The previous phase already gave you a complete pick-and-place loop that runs from your own laptop: detection, the frame transform, planned motion, and a reliable place. This phase packages that same loop as a module so it runs on the robot directly, with no laptop connection required once it is deployed.
 
-## Why bother with a module
+## Why use a module
 
 Reach for a module only when one of these is true for your setup:
 
@@ -30,7 +30,7 @@ If none of those apply, stop here. You have already built the thing this worksho
 
 ## Mostly packaging, plus one real change
 
-Set expectations before you start: this phase should be considered a refactor. The detection, the frame transform, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do.
+The detection, the frame transform, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do.
 
 One piece of that logic does genuinely change: how you reach `transform_pose`. In the previous phase, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
 
