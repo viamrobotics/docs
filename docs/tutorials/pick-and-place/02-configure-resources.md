@@ -125,7 +125,7 @@ Open the `gripper-1` card and select **Frame**. Switch the editor to JSON and se
 }
 ```
 
-Parent `arm-1` attaches the gripper to the end of the arm, and `z: 105` places the gripper frame 105 mm out from the arm's end effector, at the gripper's tool center point. This is the point the motion service drives to a target when you call `motion.move` later in the workshop, and the reference the grasp math in Phase 5 builds on. This frame is separate from the `arm` attribute you set earlier: the attribute shares the arm's connection, while the frame tells the planner where the gripper sits.
+Parent `arm-1` attaches the gripper to the end of the arm, and `z: 105` places the gripper frame 105 mm out from the arm's end effector, at the gripper's tool center point. This is the point the motion service drives to a target when you call `motion.move` later in the workshop, and the reference the grasp math in Phase 5 builds on. This frame is separate from the `arm` attribute you set earlier: the attribute shares the arm's connection, while the frame tells the planner where the gripper sits. To go deeper on how parent frames and translations place an end effector like this, see [Arm and end effector frames](/motion-planning/frame-system/end-effector-frames/).
 
 ### Frame the camera
 

@@ -98,7 +98,23 @@ Run these four steps to save and verify the pose:
 3. On the switch test card, set the switch to **update config** (position 1) to save the current joint positions.
 4. Set the switch to **go to** (position 2) to confirm the arm returns to the saved pose from any starting position.
 
-Setting the switch to **update config** writes the current joint positions straight into the switch's own configuration. Unlike the components you added in Phases 1 and 2, there is no separate **Save** step here: the pose is persisted as soon as you trigger position 1, and you can see the saved joint values appear in the switch's config JSON.
+Setting the switch to **update config** writes the current joint positions straight into the switch's own configuration. Unlike the components you added in Phases 1 and 2, there is no separate **Save** step here: the pose is persisted as soon as you trigger position 1, and you can see the saved joint values appear in the switch's config JSON:
+
+```json
+{
+  "arm": "arm-1",
+  "joints": [
+    0.0000025790882318688095, -0.7929777503013611, -0.8206289410591125,
+    -6.174358873067831e-7, 1.611369013786316, 2.2541650324114926e-8
+  ],
+  "motion": "",
+  "vision_services": [],
+  "constraints": {},
+  "extra": {}
+}
+```
+
+The `joints` array holds the six joint angles, in radians, captured the moment you triggered position 1; `arm` is the dependency you set earlier, and the remaining fields stay at their defaults for this workshop. Triggering **update config** again overwrites `joints` with wherever the arm is now, which is why you jog to the pose you want before saving.
 
 <!-- ASSET P0 control-armsaver-switch (UI+): arm-position-saver switch card with position 1 = save and 2 = execute annotated -->
 
