@@ -15,11 +15,13 @@ next: "/tutorials/pick-and-place/wrap-up/"
 languages: ["python"]
 ---
 
-This phase is optional. The previous phase already gave you a complete pick-and-place loop that runs from your own laptop: detection, the frame transform, planned motion, and a reliable place. This phase packages that same loop as a module so it runs on the robot directly, with no laptop connection required once it is deployed.
+This phase is optional. The previous phase already gave you a complete pick-and-place loop that runs from your own laptop: detection, planned motion, and a reliable place. This phase packages that same loop as a module so it runs on the robot directly, with no laptop connection required once it is deployed.
 
 ## Why use a module
 
-Reach for a module only when one of these is true for your setup:
+A [module](/build-modules/) packages a resource so `viam-server` can run it directly, the same way the `ufactory` and `realsense` modules you added earlier run their drivers. Modules are the unit Viam shares and deploys: they live in a registry where they can be reused across machines, they carry versions so you can roll a deployment forward or back, and they build for each platform your fleet runs. Packaging your pick-and-place loop as a module puts your control code on that same footing as any driver.
+
+For your own control code, reach for a module when one of these is true for your setup:
 
 - The cycle has to keep running after you close your laptop or walk away.
 - The cycle has to restart on its own if it crashes or the robot reboots.
@@ -28,11 +30,16 @@ Reach for a module only when one of these is true for your setup:
 
 If none of those apply, stop here. You have already built the thing this workshop set out to teach.
 
-## Mostly packaging, plus one real change
+This phase builds an **inline module**: the Viam app hosts the code and builds it for you in the cloud, with the source in an editor in your browser. A conventional module lives in its own Git repository that you build and upload yourself, and it is the better choice for code you share across many machines or maintain as a team. Inline is the faster path for a single machine's control code, so it is what you use here; everything you learn about the module lifecycle applies to both.
 
-The detection, the frame transform, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do.
+## What changes when you package it
 
-One piece of that logic does genuinely change: how you reach `transform_pose`. In the previous phase, `transform_pose` was a method on the `machine` handle your script already held from `RobotClient.at_address`. The pattern for reaching `transform_pose` from inside a module is in [The frame system from inside a module](#the-frame-system-from-inside-a-module) below.
+The detection, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do. Only the wiring around that logic changes, in two places:
+
+- **How the module gets its resources.** A script calls `from_robot` after it connects; a module receives its resources through **dependency injection** instead.
+- **How the logic gets triggered.** A script runs top to bottom under `__main__`; a module runs its logic behind a **`do_command`** entry point that something else calls.
+
+The next two sections cover those two changes in turn.
 
 ## Create a control code module
 
@@ -46,22 +53,24 @@ On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to cr
 
 {{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
 
-Control code for adding application logic to a robot is typically modeled as a generic service: a resource class built on the Generic service API plus the `EasyResource` convenience mixin, whose `do_command` method is its entry point. Over the next three sections you move your pick-and-place code into this skeleton's lifecycle methods: the connection to typed resource handles becomes dependency injection, reaching `transform_pose` changes, and the detection, pose math, and motion calls gather behind a `do_command` entry point. Work through them in order; you save and build the module at the end, once the code is in place.
+Control code like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenience base class that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
+
+Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Save and build the module at the end, once the code is in place.
 
 ## Dependency injection
 
-<!-- ASSET P1 diagram-script-vs-module (DIAGRAM): from_robot(...) vs new() attribute-named deps dependencies[Arm.get_resource_name(attrs["arm"])], resource names set once as config attributes, transform_pose via in-module RobotClient -->
+The same resources reach your code differently in a script and in a module:
+
+<!-- ASSET P1 diagram-script-vs-module (DIAGRAM): from_robot(...) vs new() attribute-named deps dependencies[Arm.get_resource_name(attrs["arm"])], resource names set once as config attributes -->
 
 ```text
 Script  (Phases 4 and 5)
   connect  →  RobotClient.at_address(...)
   arm      =  Arm.from_robot(machine, "arm-1")
-  frames   =  machine.transform_pose(...)
 
 Module  (Phase 6)   (same logic, different wiring)
   validate_config()   declares dependencies from the config attributes
   new(config, deps)   looks up each dependency by its configured name
-  transform_pose      via an in-module RobotClient
 ```
 
 A script builds its resource handles once, right after it connects, by calling `Arm.from_robot(machine, "arm-1")` and similar for each resource it needs. A module does not connect to itself, so it cannot call `from_robot` the same way. Instead, the module framework hands your module its dependencies.
@@ -103,56 +112,18 @@ Keep the rest of your `new` close to this shape: look up each resource your exis
 
 The motion service is injected the same way. `validate_config` declares it as `"builtin"`, and `new` retrieves it with `dependencies[Motion.get_resource_name("builtin")]` (from `viam.services.motion import Motion`), so `motion.move` works straight from the injected dependencies.
 
-## The frame system from inside a module
-
-<!-- ASSET P0 module-env-vars (UI+): module environment config with VIAM_API_KEY / VIAM_API_KEY_ID / VIAM_MACHINE_FQDN set, values REDACTED -->
-
-This is the one genuine change from the Python script, so read it carefully even if you skim the rest of this phase.
-
-No injected dependency gives you frame-system access the way `dependencies[Arm.get_resource_name(attrs["arm"])]` gives you the arm; there is no such dependency to inject. `transform_pose` lives on the machine-management API, and a module reaches that API the same way a script does: through a `RobotClient`. The difference is that a module has to build that `RobotClient` itself, from credentials in its own environment, rather than receiving one as a dependency.
-
-Use this pattern exactly as written:
-
-```python
-import os
-from viam.robot.client import RobotClient
-
-
-async def create_robot_client_from_module():
-    opts = RobotClient.Options.with_api_key(
-        api_key=os.environ["VIAM_API_KEY"],
-        api_key_id=os.environ["VIAM_API_KEY_ID"],
-    )
-    return await RobotClient.at_address(os.environ["VIAM_MACHINE_FQDN"], opts)
-
-# self.robot_client is initialized to None in new()
-# in the upcoming do_command logic, create once and reuse:
-if not self.robot_client:
-    self.robot_client = await create_robot_client_from_module()
-world_pose = await self.robot_client.transform_pose(obj_in_cam, "world")
-```
-
-Four rules go with this pattern:
-
-- Create exactly one `RobotClient` and reuse it. Do not open a new connection on every `do_command` call or every pick cycle; check `self.robot_client` first, the same way the snippet does, and only connect if it is not already set.
-- Do not hardcode the API key, key ID, or machine address in your module's code. They are automatically injected into the environment by `viam-server`.
-- Close the connection on module shutdown by calling `await self.robot_client.close()` from an overridden `close` lifecycle method on your module (the companion `module-reference.py` demonstrates this), the same cleanup discipline you would apply to any open connection.
-- Everything else your module needs (the arm, the gripper, the vision service, the pose switches) still comes through the injected dependencies described above.
-
-See [Use the machine management API from a module](/build-modules/platform-apis/#use-the-machine-management-api-from-a-module) for the full reference on this pattern.
-
 {{< alert title="Same resource names, different retrieval" color="note" >}}
 Compare how you got the arm handle in the Python script against how you get it inside the module:
 
 - Local script (Phases 4-5): `arm = Arm.from_robot(machine, "arm-1")`.
 - Module: `arm = dependencies[Arm.get_resource_name(attrs["arm"])]`.
 
-The resource name is still `"arm-1"` in both. In the module you set it once as the module's `arm` config attribute, which the operator points at `arm-1`, and `attrs["arm"]` reads it back. The same is true of the gripper, camera, every pose switch, and the vision service. Only the retrieval mechanism changes, from calling `from_robot` on a connected `machine` handle to looking the resource up in the `dependencies` mapping `new` received. `transform_pose` is the only resource access in this workshop that does not follow this pattern, for the reason described above.
+The resource name is still `"arm-1"` in both. In the module you set it once as the module's `arm` config attribute, which the operator points at `arm-1`, and `attrs["arm"]` reads it back. The same is true of the gripper, camera, every pose switch, the vision service, and the motion service. Only the retrieval mechanism changes, from calling `from_robot` on a connected `machine` handle to looking the resource up in the `dependencies` mapping `new` received.
 {{< /alert >}}
 
 ## Trigger the module with do_command
 
-With dependencies wired up and `transform_pose` reachable, assemble your pick-and-place logic into a single `run_pick_cycle` method on the module, the same detection, transform, pose math, and motion calls, unchanged. What differs is how that method gets triggered.
+With dependencies wired up, assemble your pick-and-place logic into a single `run_pick_cycle` method on the module, the same detection, pose math, and motion calls, unchanged. What differs is how that method gets triggered.
 
 You trigger the module through `do_command`. Because a generic service has no typed API of its own, `do_command` is its entry point: the method you dispatch on to run the actions your service exposes. A small illustrative sketch:
 
@@ -181,7 +152,7 @@ From the **CONTROL** tab, find your module's test card and send a command such a
 {{<imgproc src="/tutorials/pick-and-place/control-do-command.png" resize="1200x" declaredimensions=true alt="The module DoCommand test card running the pick_cycle action.">}}
 
 {{< checkpoint >}}
-Sending a `do_command` trigger runs one complete pick-and-place cycle: detection, transform, approach, grasp, travel, and place, ending with a block in the bin.
+Sending a `do_command` trigger runs one complete pick-and-place cycle: detection, approach, grasp, travel, and place, ending with a block in the bin.
 {{< /checkpoint >}}
 
 ## Where you landed

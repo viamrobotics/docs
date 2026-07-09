@@ -16,7 +16,7 @@ Congrats, you have finished the pick-and-place workshop! Starting from an empty 
 ## What you built
 
 - **Milestone one.** You drove the arm through a fixed pick-and-place sequence from your own Python script, proving your connection, resources, and saved poses all hold up under real code.
-- **Milestone two.** You closed the loop with live perception: the vision service detects a block, the frame system transforms its position into world coordinates, and the motion service plans a collision-free pick, all from a pose your code computes each cycle.
+- **Milestone two.** You closed the loop with live perception: the vision service detects a block, and the motion service plans a collision-free pick from the block's camera-frame position, all from a pose your code computes each cycle.
 
 If you completed the optional Phase 6, you also packaged that same loop as a module that runs on the robot itself.
 
@@ -26,8 +26,8 @@ This workshop was small on purpose, but it touched most of the moving parts you 
 
 - **Configuration and runtime:** the Viam app as the single source of truth (the CONFIGURE tab and its JSON view), `viam-server` running your resources while `viam-agent` keeps it alive, and the module system, including a discovery service that configured the camera for you.
 - **Resources:** components for the arm, gripper, depth camera, and pose-saving switches; obstacles configured as components so the planner sees the table and safety walls; and services for capability, a two-stage vision pipeline (a shape detector feeding a 3D segmenter) and the builtin motion service.
-- **Motion and perception:** the frame system and `transform_pose` turning a wrist-camera detection into a world-frame pose, collision-aware planning against your configured obstacles, and the wrist-camera rule of detecting from a known pose.
-- **Code:** the Python SDK (`RobotClient`, typed component and service clients, and `motion.move`), plus reaching the machine-management API from inside a module.
+- **Motion and perception:** the frame system letting the motion service plan a collision-free pick straight from a wrist-camera detection, no manual transform required; planning against your configured obstacles; and the wrist-camera rule of detecting from a known pose.
+- **Code:** the Python SDK (`RobotClient`, typed component and service clients, and `motion.move`), plus packaging that same script as an inline module.
 
 ## Where to go next
 
