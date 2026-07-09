@@ -66,7 +66,7 @@ Save the config and open the **CONTROL** tab. Find the `vision-segment` test car
 The `vision-segment` test card returns at least one object when a block is in view. If it returns nothing, confirm a block actually sits in the camera's field of view, then check the `shape-detector` card on its own: if that also returns nothing, the problem is upstream in shape detection.
 {{< /checkpoint >}}
 
-With the service live, go back to `starter-script.py` and uncomment the vision handle you commented out in Phase 4:
+With the service live, go back to `starter-script.py` and uncomment the `vision` handle, the line marked `# Used in Phase 5` that you left commented in Phase 4:
 
 ```python
 vision = VisionClient.from_robot(machine, "vision-segment")
@@ -188,7 +188,7 @@ toward the camera, up and away from the block, is a negative z offset:
 
 Because you observe from `home-pose` every cycle, the wrist camera looks down at the workspace from the same angle each time, so its depth axis stays roughly vertical and a `z` offset moves the target up and down as you would expect. This is one more reason the detect-from-home rule matters: it keeps the frame you are offsetting in a known orientation.
 
-The workshop's `offset_pose` helper raises or lowers a pose in `z` while leaving `x`, `y`, and orientation untouched:
+The vision service hands you the block's center, `obj_in_cam.pose`, but that is not where you send the gripper: driving its TCP to the center would sink the fingers straight through the block. Instead you derive two targets from that center, a standoff to approach from and a grasp point where the fingers close, by shifting it along `z`. The workshop's `offset_pose` helper does exactly that, moving a pose in `z` while leaving `x`, `y`, and orientation untouched:
 
 ```python
 def offset_pose(pose: Pose, z_offset_mm: float) -> Pose:
@@ -203,6 +203,16 @@ def offset_pose(pose: Pose, z_offset_mm: float) -> Pose:
         theta=pose.theta,
     )
 ```
+
+Shifting a detected center toward the camera looks like this:
+
+```python
+# obj_in_cam.pose.z is the block center, say 387 mm from the camera
+standoff = offset_pose(obj_in_cam.pose, -50)
+# standoff.z is now 337 mm: same x and y, 50 mm nearer the camera
+```
+
+The approach and grasp poses below apply this same shift with the offsets tuned for this gripper.
 
 The approach pose is a standoff directly above the block, high enough that the gripper can descend onto it without first colliding with it sideways. That offset is worked for you:
 
