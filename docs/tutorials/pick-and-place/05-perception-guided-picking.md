@@ -19,7 +19,11 @@ In this phase you replace the fixed approach and grasp poses with live data from
 
 ## Configure the vision pipeline
 
-On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `shape-finder` and select the `devrel:shape-finder:detector` vision model. Name it `shape-detector` and set its attribute:
+Perception here is a two-stage pipeline. A **detector** finds blocks in the camera's 2D color image and returns a labeled bounding box for each. A **segmenter** then takes those 2D boxes, pulls the matching depth points from the camera, and fuses each into a 3D object point cloud with a real-world position. A 2D detection alone cannot tell you how far away a block is or where it sits in space; the segmenter is what turns "a block-shaped region of pixels" into "a block at this point in three dimensions." You configure the two as separate vision services, wired so the segmenter depends on the detector.
+
+### Add the shape detector
+
+`devrel:shape-finder:detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `devrel:shape-finder:detector` model, and name it `shape-detector`. Set its one attribute:
 
 ```json
 {
@@ -27,13 +31,15 @@ On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for
 }
 ```
 
-The `camera_name` attribute is also a dependency: `shape-detector` cannot run until `cam-1` is online, the same dependency pattern you have already seen with `gripper-1` and `arm-1`. This service reads color frames from `cam-1` and finds blocks by shape.
+`camera_name` tells the detector which camera to read color frames from, and it is also a dependency: `shape-detector` cannot run until `cam-1` is online, the same dependency pattern you have already seen with `gripper-1` and `arm-1`.
 
 <!-- ASSET P1 configure-vision-pipeline (UI): the shape-detector and vision-segment service configs -->
 
 {{<imgproc src="/tutorials/pick-and-place/configure-vision-pipeline.png" resize="1200x" declaredimensions=true alt="The shape-detector vision service config with its camera_name attribute.">}}
 
-Add the second service the same way. Click the **+** icon and select **Blocks**, search for `detections-to-segments`, and select the `viam:vision:detections-to-segments` model. Name it `vision-segment` and set its attributes:
+### Add the segmenter
+
+`viam:vision:detections-to-segments` is a builtin vision model that reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. Add it the same way: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `viam:vision:detections-to-segments` model, and name it `vision-segment`. Set its attributes:
 
 ```json
 {
@@ -44,7 +50,7 @@ Add the second service the same way. Click the **+** icon and select **Blocks**,
 }
 ```
 
-`vision-segment` depends on `shape-detector` and `cam-1`, the same graph relationship as before: it takes each 2D shape detection, pulls the matching depth points from `cam-1`, filters noisy points out with the `mean_k` and `sigma` attributes, and fuses the result into a 3D object point cloud per detected block. A 2D detection alone cannot tell you how far away a block is or where it sits in space; `vision-segment` is what turns "a block-shaped region of pixels" into "a block at this point in three dimensions."
+`detector_name` and `camera_name` are dependencies, so `vision-segment` waits for both `shape-detector` and `cam-1` before it starts. `mean_k` and `sigma` tune a statistical outlier filter that cleans up the depth points before fusion: `mean_k` is how many neighbors each point is compared against, and `sigma` is how far from the local average a point may sit before it is dropped as noise. The values here are sensible defaults; see [detections-to-segments](/reference/services/vision/detections-to-segments/) for the full attribute reference.
 
 Save the config and open the **CONTROL** tab. Find the `vision-segment` test card. You should see the detections coming from the `shape-detector` service and one or more segmented objects under the **Object point clouds** section after toggling **Show object point clouds**. Each segmented object is displayed as a small point cloud with a label matching the paired bounding-box detection, with estimated dimensions and 3D position from the perspective of the camera.
 
@@ -96,6 +102,15 @@ It also matters exactly what `motion.move` moves. Two motions that sound similar
 
 - The **CONTROL** tab's arm card, and a direct `Arm` method, move the arm's own end frame: the flange at the end of the last joint.
 - `motion.move(component_name="gripper-1", ...)` moves the `gripper-1` frame instead: the gripper's tool center point (TCP), which sits further down the kinematic chain because the gripper is bolted on past the arm's end.
+
+A `motion.move` call names that component and a goal pose tagged with its reference frame:
+
+```python
+await motion.move(
+    component_name="gripper-1",
+    destination=PoseInFrame(reference_frame="cam-1", pose=target_pose),
+)
+```
 
 Because you move `gripper-1`, every offset you compute later is measured to where you want the gripper's TCP to end up, not the arm's end. Keep that distinction in mind or the offset math will not make sense.
 

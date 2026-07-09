@@ -43,10 +43,6 @@ The next two sections cover those two changes in turn.
 
 ## Create a control code module
 
-{{< alert title="Module build feedback loop" color="note" >}}
-Before you start pasting code, know what to expect: saving an inline Python module triggers a cloud build, and that build takes about a minute. Give it that minute rather than assuming a save failed.
-{{< /alert >}}
-
 On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
@@ -134,6 +130,10 @@ async def do_command(self, command, *, timeout=None, **kwargs):
         return {"success": success}
     return {}
 ```
+
+{{< alert title="Module build feedback loop" color="note" >}}
+Saving an inline Python module triggers a cloud build that takes about a minute. Give it that minute rather than assuming the save failed.
+{{< /alert >}}
 
 With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed module downloads back in Phase 2.
 
