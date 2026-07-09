@@ -52,6 +52,10 @@ Save the config and open the **CONTROL** tab. Find the `vision-segment` test car
 
 {{<imgproc src="/tutorials/pick-and-place/control-vision-detections.png" resize="1200x" declaredimensions=true alt="The shape-detector vision card showing a detected block with a bounding box and label.">}}
 
+<!-- ASSET P1 control-vision-segment-object (UI): vision-segment Object point clouds view, one segmented object with dimensions and position -->
+
+{{<imgproc src="/tutorials/pick-and-place/control-vision-segment-object.png" resize="1200x" declaredimensions=true alt="A vision-segment object point cloud labeled square-red (box) with its estimated dimensions and 3D position in the camera frame.">}}
+
 {{< checkpoint >}}
 The `vision-segment` test card returns at least one object when a block is in view. If it returns nothing, confirm a block actually sits in the camera's field of view, then check the `shape-detector` card on its own: if that also returns nothing, the problem is upstream in shape detection.
 {{< /checkpoint >}}

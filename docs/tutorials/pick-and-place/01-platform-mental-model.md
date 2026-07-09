@@ -69,6 +69,10 @@ This is why the workshop asks you to make changes in the app rather than by edit
 
 Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources.
 
+<!-- ASSET P1 configure-json-toggle (UI+): CONFIGURE tab JSON view toggle highlighted, near-empty {} config document -->
+
+{{<imgproc src="/tutorials/pick-and-place/configure-json-toggle.png" resize="1200x" declaredimensions=true alt="The CONFIGURE tab with the JSON view toggle highlighted, showing a near-empty config document for the pick-and-place-main machine.">}}
+
 ## Resources: configure your first one
 
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.

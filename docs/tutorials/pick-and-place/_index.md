@@ -67,7 +67,7 @@ This is a self-serve workshop, so confirm each of the following before you start
 - **Python 3.10 or newer.** Install it with [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or from [python.org](https://www.python.org/downloads/).
 - **The Viam Python SDK.** The companion `scripts/` project already declares `viam-sdk`, so `uv run` installs it for you in Phase 4. See the [Python SDK docs](https://python.viam.dev/) for reference. Pip works too if you prefer it.
 - **A working terminal** on the machine you will run the Phase 4 and Phase 5 scripts from, typically your personal computer rather than the robot's Meerkat.
-- **A Viam account with an online machine.** Log in at [app.viam.com](https://app.viam.com), [create a machine](https://docs.viam.com/set-up-a-machine/first-machine/), and confirm the green **Live** indicator before you begin.
+- **A Viam account with an online machine.** Log in at [app.viam.com](https://app.viam.com), [create a machine](https://docs.viam.com/set-up-a-machine/first-machine/), and confirm the green **Live** indicator before you begin. "Online" means `viam-server` is running on the machine and reachable from the Viam app, so the app can deliver config and you can reach it from your own computer; the green **Live** indicator is how you confirm that connection.
 
 ### Validate your environment
 

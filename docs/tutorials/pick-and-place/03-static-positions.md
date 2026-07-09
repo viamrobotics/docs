@@ -81,7 +81,7 @@ Set one attribute:
 This attribute is also a dependency, the same way `gripper-1` depends on `arm-1`: the switch cannot save or recall a pose until the arm it points at is running.
 
 {{< alert title="The arm will move" color="caution" >}}
-The steps in this phase move the physical arm, both when you jog it into position and when you set a switch to "go to" (position 2) to replay a saved pose. Keep the workspace clear and the e-stop within reach. Verify each pose individually before you run the full sequence at the end of the phase, since a pose saved in a bad spot is replayed exactly on position 2.
+The steps in this phase move the physical arm, both when you jog it into position and when you set a switch to "go to" (position 2) to replay a saved pose. Keep the workspace clear and the e-stop within reach. Verify each pose individually before you run the full sequence at the end of the phase.
 {{< /alert >}}
 
 With the `home-pose` switch added, save and verify it. Home is your observation pose, so jog the arm to a spot above the workspace where the wrist camera has a clear, unobstructed view of the blocks; Phase 5 detects from exactly this pose.

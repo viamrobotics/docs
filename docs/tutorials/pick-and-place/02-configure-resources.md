@@ -144,7 +144,7 @@ Open the `cam-1` card and select **Frame**. Switch the editor to JSON and set:
 
 Parent `arm-1` mounts the camera on the wrist so it moves with the arm. The translation places the camera's optical center relative to the end effector, and the 270-degree rotation around z lines the camera's axes up with the arm's. Save the config.
 
-Check that your camera configuration matches the image below: Check the component name is cam-1, the module / model selected is realsense/realsesne and the frame values match. Note that the attributes may change their order, you only need to verify the values,
+Check that your camera configuration matches the image below: the component name is `cam-1`, the module / model selected is `realsense`/`realsense`, and the frame values match. Note that the attributes may change their order; you only need to verify the values.
 
 <!-- ASSET P0 configure-camera-frame (UI+): cam-1 Frame editor JSON, parent arm-1, translation -73,40,18 -->
 
@@ -170,6 +170,8 @@ Below the **GetImages** control, you can toggle **GetPointCloud** on and set the
 
 <!-- ASSET P1 control-camera-pointcloud (UI): CONTROL camera card, live point clouds -->
 
+{{<imgproc src="/tutorials/pick-and-place/control-camera-pointcloud.png" resize="1200x" declaredimensions=true alt="The GetPointCloud control showing a live point cloud of the blocks, with a hovered point's x, y, z coordinates and distance to origin.">}}
+
 {{< checkpoint >}}
 The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the **GetImages** stream rate to "Refresh every second" and the source to depth and confirm that stream updates too. If the card is blank, check the LOGS tab for a camera error before moving on.
 {{< /checkpoint >}}
@@ -187,7 +189,7 @@ The arm card shows the arm's current joint positions, and provides two different
 {{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm CONTROL card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
 
 {{< checkpoint >}}
-Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values rather than erroring. If nothing moves or you see an error message, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
+Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values. If nothing moves or you see an error message, confirm `arm-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ### Control the gripper
@@ -199,7 +201,7 @@ The gripper test card lets you open and close a gripper, check whether the gripp
 {{<imgproc src="/tutorials/pick-and-place/control-gripper-grab.jpeg" resize="1200x" declaredimensions=true alt="The two-finger gripper holding a block.">}}
 
 {{< checkpoint >}}
-With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. This grab-and-release is the same action your Python code performs later in the workshop when it picks a block and drops it in a bin. If your gripper card also shows a holding status indicator, it now reads true while the block is held and false once the gripper is open and empty. If nothing moves, confirm `gripper-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
+With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. If nothing moves, confirm `gripper-1` shows as online in the CONFIGURE tab and that the LOGS tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ## The 3D scene tab
