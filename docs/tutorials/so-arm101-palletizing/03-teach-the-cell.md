@@ -130,7 +130,7 @@ The staging pose is not part of this grid. It stays a single fixed pose for the 
 
 ## Save your anchors
 
-Keep the two poses you recorded, staging and pallet origin, somewhere you can copy them from: a note, or a small `poses.py` file with two constants, `STAGING_POSE` and `PALLET_ORIGIN`, each holding the x, y, and z you read back with `capture_pose.py`. In Phase 4, when you write `palletizer.py`, these are the two constants you start from: you pass `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and you use `STAGING_POSE` as the fixed pick location for every cycle.
+Set the two constants `STAGING_POSE` and `PALLET_ORIGIN` in the companion project's `helpers.py` to the two poses you just captured, each holding the x, y, and z you read back with `capture_pose.py`. In Phase 4, `palletizer.py` reads them from there: it passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
 
 {{< checkpoint >}}
 With torque disabled, running `capture_pose.py` repeatedly while you move the arm by hand returns different x, y, and z values each time, confirming the readback tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, saved into the constants Phase 4 reads. If `capture_pose.py` returns the same values every time, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
