@@ -54,7 +54,7 @@ Phases 1 through 4 are the core workshop. Phase 5 adds obstacle avoidance, and P
 
 ## How this relates to Viam 101
 
-This workshop is the physical twin of the simulated palletizer in the Viam 101 course: the same frame system, motion, and WorldState ideas apply here. On real hardware, you also learn to map the physical world into the arm's frame and to reason about the reach of a 5-DOF arm. Because the cubes are rotationally symmetric, the arm's coupled wrist yaw does not matter for this task.
+This workshop is the physical twin of the simulated palletizer in the Viam 101 course: the same frame system, motion, and WorldState ideas apply here. On real hardware, you also learn to map the physical world into the arm's frame and to reason about a 5-DOF arm's reach. A 5-DOF arm plans to a target position without pinning the final orientation, and because the cubes are rotationally symmetric, that does not matter for this task.
 
 ## Companion code
 

@@ -55,10 +55,10 @@ The **frame system** answers "where is everything, relative to the arm?" Every p
 
 The simulated Viam 101 course hands you the coordinates of every object in the cell: the pick station, the pallet, and each box already have a frame. On real hardware, nothing comes pre-measured. You have to map the physical world, the staging spot and the pallet grid in front of you, into the arm's frame yourself. You will do exactly that by hand in Phase 3, jogging the arm to each anchor point and recording where it is.
 
-The SO-ARM101 is a five degree-of-freedom (5-DOF) arm, one fewer than the six-axis arms used in many industrial cells. On a top-down grasp, that missing degree of freedom couples the wrist's yaw to the rest of the approach: you cannot set an arbitrary wrist rotation independently of the arm's position the way a 6-DOF arm can. In this workshop that coupling does not matter, because the cubes are rotationally symmetric: however the gripper's fingers land on a cube's sides, the grasp works.
+The SO-ARM101 also has one fewer joint than an industrial arm: it has five degrees of freedom (5-DOF) rather than six. A 5-DOF arm cannot reach an arbitrary position at an arbitrary orientation the way a 6-DOF arm can, so the arm's motion planner defaults to matching the target position and letting the final orientation fall where it may (a `position_only` goal). Because the cubes are rotationally symmetric, the exact rotation of the gripper around a cube does not matter, so this limitation never gets in the way in this workshop.
 
 {{< checkpoint >}}
-Open your machine in the Viam app and confirm the green **Live** indicator. You should be able to name the two components you will configure (arm and gripper) and the two services that will move the arm (frame system and motion). If your machine is not Live, start `viam-server` on the host before continuing.
+Open your machine in the Viam app and confirm the green **Live** indicator. You should be able to name the two components you will configure (arm and gripper) and the two services the arm relies on to move (frame system and motion). If your machine is not Live, start `viam-server` on the host before continuing.
 {{< /checkpoint >}}
 
 {{< workshop-nav >}}
