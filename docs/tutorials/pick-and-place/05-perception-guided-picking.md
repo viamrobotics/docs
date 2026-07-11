@@ -167,24 +167,9 @@ Add a `print(obj_in_cam.pose)` and run the script. Watch the x, y, and z values 
 
 <!-- ASSET P0 diagram-approach-grasp-offsets (DIAGRAM): block center in cam-1; approach -100mm toward camera; grasp = gripper-1 TCP one gripper-length (-60mm) toward camera; gripper-1 TCP vs arm end -->
 
-```text
-Offsets applied to obj_in_cam.pose (the block center, in the cam-1 frame).
-In the camera frame, +z points out of the lens into the scene, so moving
-toward the camera, up and away from the block, is a negative z offset:
+{{<imgproc src="/tutorials/pick-and-place/diagram-approach-grasp-offsets.png" resize="1200x" declaredimensions=true alt="Isometric diagram of the cam-1 frame: along the camera z-axis, the approach pose sits -100 mm toward the camera and the grasp pose (the gripper-1 TCP) -60 mm above the block center at obj_in_cam.pose. -z points toward the camera and +z into the scene.">}}
 
-  (toward the camera)  ▲  -z
-                       │
-  -100 mm  ── approach pose  (APPROACH_MM): standoff between camera and block
-        │
-        │  descend
-        │
-   -60 mm  ── grasp pose     (GRIPPER_LENGTH_MM): the gripper-1 TCP, offset so
-        │                     the fingertips land on the block center
-        │
-     0 mm  ── block center   (obj_in_cam.pose)
-                       │
-  (deeper into scene)  ▼  +z
-```
+Both offsets are applied to `obj_in_cam.pose`, the block center in the `cam-1` frame. In the camera frame, `+z` points out of the lens into the scene, so moving toward the camera, up and away from the block, is a negative `z` offset.
 
 Because you observe from `home-pose` every cycle, the wrist camera looks down at the workspace from the same angle each time, so its depth axis stays roughly vertical and a `z` offset moves the target up and down as you would expect. This is one more reason the detect-from-home rule matters: it keeps the frame you are offsetting in a known orientation.
 
