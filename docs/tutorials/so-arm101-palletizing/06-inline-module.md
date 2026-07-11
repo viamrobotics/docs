@@ -19,13 +19,13 @@ This phase is optional. It takes the working pack loop from Phase 5 off your lap
 
 ## From script to module
 
-<!-- TODO: explain why wrap the loop in a module: it runs on the machine instead of depending on a connected laptop, and something else (the test card, another program) can trigger it through DoCommand. Source: seed 06-inline-module.md. -->
+<!-- TODO: explain why wrap the loop in a module: it runs on the machine instead of depending on a connected laptop, and something else (the test card, another program) can trigger it through DoCommand. -->
 
 <!-- TODO (content fidelity): the finger gripper's grab() returns whether it actually closed on something; use that return value to verify the hold before lifting, rather than assuming the grasp succeeded. -->
 
 ## Scaffold the inline module
 
-<!-- TODO: use `viam module generate` to scaffold an inline module, move the palletizer logic into it, and expose a `pack` action through DoCommand. Source: seed Phase 6 + Viam 101 08-scaffold.md. -->
+<!-- TODO: use `viam module generate` to scaffold an inline module, move the palletizer logic into it, and expose a `pack` action through DoCommand. -->
 
 ## Reload and run on the machine
 

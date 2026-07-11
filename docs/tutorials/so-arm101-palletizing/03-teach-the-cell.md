@@ -16,7 +16,7 @@ languages: ["python"]
 draft: true
 ---
 
-In this phase you map the physical cell into the arm's frame. In the simulated Viam 101 course, every object already has a pose handed to you. On your real SO-ARM101, nothing is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading back where it ended up. You capture two anchor poses this way, then compute the rest of the pallet grid from them arithmetically.
+In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading back where it ended up. You capture two anchor poses this way, then compute the rest of the pallet grid from them arithmetically.
 
 {{< alert title="The arm goes limp" color="caution" >}}
 Disabling torque lets you move the arm by hand, but it also means the arm no longer holds its position against gravity. It drops as soon as you disable torque, and stays free to fall until you re-enable it. Support the arm with one hand while torque is off, clear the workspace and cubes from underneath it, and re-enable torque before you send any motion command.
@@ -24,7 +24,7 @@ Disabling torque lets you move the arm by hand, but it also means the arm no lon
 
 ## Why teach by hand
 
-An arm-position-saver switch, like the one the pick-and-place workshop uses, replays a single saved pose. This cell needs eight target poses, one per cube, and typing or jogging to all eight by hand would be slow and error-prone. Instead, you capture just two anchors: the staging spot, where you hand-feed each cube, and the pallet's origin corner, the bottom-layer cell at grid position [0, 0]. Every other pallet position is a fixed offset from that origin corner, so once you know the origin and the grid spacing, you compute the remaining seven poses instead of teaching them individually. This is also the one step a simulation cannot do for you: it has no physical staging spot or pallet to measure.
+This cell needs eight target poses, one per cube, and teaching all eight by hand would be slow and error-prone. Instead, you capture just two anchors: the staging spot, where you hand-feed each cube, and the pallet's origin corner, the bottom-layer cell at grid position [0, 0]. Every other pallet position is a fixed offset from that origin corner, so once you know the origin and the grid spacing, you compute the remaining seven poses instead of teaching them individually.
 
 ## Disable torque
 

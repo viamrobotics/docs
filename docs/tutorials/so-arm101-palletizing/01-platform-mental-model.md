@@ -53,7 +53,7 @@ The **frame system** answers "where is everything, relative to the arm?" Every p
 
 ## Why a real arm changes the job
 
-The simulated Viam 101 course hands you the coordinates of every object in the cell: the pick station, the pallet, and each box already have a frame. On real hardware, nothing comes pre-measured. You have to map the physical world, the staging spot and the pallet grid in front of you, into the arm's frame yourself. You will do exactly that by hand in Phase 3, jogging the arm to each anchor point and recording where it is.
+Nothing in your cell comes pre-measured. To plan a motion, the arm needs to know where the staging spot and the pallet grid actually sit, expressed in its own frame. You map that yourself: in Phase 3 you jog the arm to each anchor point and record where it is.
 
 The SO-ARM101 also has one fewer joint than an industrial arm: it has five degrees of freedom (5-DOF) rather than six. A 5-DOF arm cannot reach an arbitrary position at an arbitrary orientation the way a 6-DOF arm can, so the arm's motion planner defaults to matching the target position and letting the final orientation fall where it may (a `position_only` goal). Because the cubes are rotationally symmetric, the exact rotation of the gripper around a cube does not matter, so this limitation never gets in the way in this workshop.
 

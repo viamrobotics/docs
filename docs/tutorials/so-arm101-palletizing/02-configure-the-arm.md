@@ -16,7 +16,7 @@ languages: ["python"]
 draft: true
 ---
 
-In this phase you get the arm and gripper configured and verified on the **CONTROL** tab, then place the arm in the frame system so the rest of the platform knows where it sits.
+In this phase you configure the arm and gripper, verify them with their test cards on the **CONTROL** tab, then place the arm in the frame system so the rest of the platform knows where it sits.
 
 ## Add the discovery service
 
@@ -89,7 +89,7 @@ Pressing **Open** and **Grab** on the gripper's test card opens and closes the p
 
 ## Place the arm in the frame system
 
-Adding the arm and gripper tells `viam-server` how to talk to them, but not where the arm sits in the cell. As Phase 1 covered, the frame system answers that question for every component in the workshop, the same idea the simulated Viam 101 course uses for its palletizer: a frame places a component relative to a parent, and every frame traces back to `world`. See [Frame system](/motion-planning/frame-system/overview/) for the general concept.
+Adding the arm and gripper tells `viam-server` how to talk to them, but not where the arm sits in the cell. As Phase 1 covered, the frame system answers that question for every component in the workshop: a frame places a component relative to a parent, and every frame traces back to `world`. See [Frame system](/motion-planning/frame-system/overview/) for the general concept.
 
 Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's frame so its base sits at the world origin: parent `world`, translation `(0, 0, 0)`, no rotation, which is what the default frame already describes. Leave the defaults and save. Keeping the base at the world origin means the poses you read back in Phase 3 are already world poses, which keeps your motion code simple.
 
@@ -104,7 +104,7 @@ Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's
 }
 ```
 
-You do not add a frame for the gripper. Unlike a gripper bolted onto a separate arm, the SO-ARM101's gripper is part of the arm module's own kinematic chain: the arm's kinematics already define a tool frame at the fingertip, the gripper's tool-center-point (TCP). Every motion command you send later in this workshop, through the motion service, already plans to that fingertip, with no separate frame to configure.
+The gripper needs no frame of its own. It is part of the SO-ARM101's own kinematic chain, so the arm's kinematics already define a tool frame at the fingertip, the gripper's tool-center-point (TCP). Every motion command you send later in this workshop, through the motion service, already plans to that fingertip, with no separate frame to configure.
 
 ## See it in the 3D scene
 

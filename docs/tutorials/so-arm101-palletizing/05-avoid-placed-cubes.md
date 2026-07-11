@@ -20,17 +20,17 @@ In this phase you teach the motion service about the cubes already on the pallet
 
 ## Why the planner collides
 
-<!-- TODO: explain that the motion service only avoids obstacles you pass it on each move; the bottom-layer pack in Phase 4 had nothing to avoid, but stacking the second layer on top of the first means the arm and the held cube now pass near cubes that are already placed. Without modeling them, the planner routes straight through. Source: Viam 101 13-watch-it-collide.md. -->
+<!-- TODO: explain that the motion service only avoids obstacles you pass it on each move; the bottom-layer pack in Phase 4 had nothing to avoid, but stacking the second layer on top of the first means the arm and the held cube now pass near cubes that are already placed. Without modeling them, the planner routes straight through. -->
 
 ## Model placed cubes as obstacles
 
-<!-- TODO: build a WorldState of RectangularPrism geometries (one per placed cube) in the "world" frame and pass it to motion.move via the world_state argument. Source: Viam 101 14-avoid-placed.md + reference palletizer.py obstacle set. Imports needed: WorldState, GeometriesInFrame, Geometry, RectangularPrism, Vector3. -->
+<!-- TODO: build a WorldState of RectangularPrism geometries (one per placed cube) in the "world" frame and pass it to motion.move via the world_state argument. Imports needed: WorldState, GeometriesInFrame, Geometry, RectangularPrism, Vector3. -->
 
 <!-- TODO (content fidelity): obstacle z = half the geometry height, since the pose is the CENTER of the prism, not its base. Dynamic obstacles like this belong in the per-move WorldState, not in the static machine config. -->
 
 ## Model the held cube
 
-<!-- TODO: attach the held cube's geometry to the gripper frame so it moves with the arm and the planner accounts for it while carrying a cube between cells. Source: Viam 101 15-held-box.md. -->
+<!-- TODO: attach the held cube's geometry to the gripper frame so it moves with the arm and the planner accounts for it while carrying a cube between cells. -->
 
 ## Run the full two-layer pack
 

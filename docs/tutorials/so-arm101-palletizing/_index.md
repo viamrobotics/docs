@@ -3,7 +3,7 @@ title: "Miniature Palletizing with the SO-ARM101"
 linkTitle: "SO-ARM101 Palletizing Workshop"
 type: "docs"
 weight: 60
-description: "Build a desktop palletizing robot with an affordable SO-ARM101 arm, the physical twin of the simulated Viam 101 palletizer. Teach its poses by hand, then program a collision-free pick-and-stack in Python."
+description: "Build a desktop palletizing robot with an affordable SO-ARM101 arm. Teach its poses by hand, then program a collision-free pick-and-stack in Python."
 authors: []
 level: "Intermediate"
 languages: ["python"]
@@ -22,7 +22,7 @@ no_list: true
 draft: true
 ---
 
-You will build a miniature palletizing cell: an SO-ARM101 arm picks cubes from a staging spot and stacks them on a small pallet, two layers of four. It's the same set of concepts as the simulated Viam 101 course, but running on a real arm you can hold in your hands.
+You will build a miniature palletizing cell: an SO-ARM101 arm picks cubes from a staging spot and stacks them on a small pallet, two layers of four. It all runs on a real arm you can hold in your hands.
 
 The workshop is structured as six sequential phases, each ending with checkpoints you can verify before moving on. Finishing Phase 4, where you drive the robot from your own Python code through a static, pre-planned pack, is a complete success. Phases 5 and 6 go further.
 
@@ -39,8 +39,6 @@ You will configure an SO-ARM101 arm with its finger gripper, teach it a small se
 - **A flat surface** with a marked pallet area about 60 by 60 mm, plus a staging spot for the cubes.
 - **A host**, either a Raspberry Pi or a laptop, running `viam-agent` and `viam-server`.
 
-You do not need a camera or a 3D-printed jig for this workshop.
-
 ## Phases
 
 Phases 1 through 4 are the core workshop. Phase 5 adds obstacle avoidance, and Phase 6 is optional.
@@ -52,9 +50,9 @@ Phases 1 through 4 are the core workshop. Phase 5 adds obstacle avoidance, and P
 5. **[Avoid placed cubes](/tutorials/so-arm101-palletizing/avoid-placed-cubes/)** (~22 min, milestone two: a collision-free full pack)
 6. **[Wrap it in a module](/tutorials/so-arm101-palletizing/inline-module/)** (~15 min, optional)
 
-## How this relates to Viam 101
+## Working with a 5-DOF arm
 
-This workshop is the physical twin of the simulated palletizer in the Viam 101 course: the same frame system, motion, and WorldState ideas apply here. On real hardware, you also learn to map the physical world into the arm's frame and to reason about a 5-DOF arm's reach. A 5-DOF arm plans to a target position without pinning the final orientation, and because the cubes are rotationally symmetric, that does not matter for this task.
+Along the way you learn to map the physical world into the arm's frame and to reason about a five degree-of-freedom (5-DOF) arm's reach. A 5-DOF arm plans to a target position without pinning the final orientation, and because the cubes are rotationally symmetric, that does not matter for this task.
 
 ## Companion code
 

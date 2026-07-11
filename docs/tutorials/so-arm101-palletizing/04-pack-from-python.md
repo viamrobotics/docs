@@ -126,7 +126,7 @@ You test this once `main` is in place, at the end of this section.
         await self.move_gripper(hover)
 ```
 
-There is no pick-station here, unlike the simulated Viam 101 course: the staging spot is a single fixed pose, and you hand-feed one cube to it before every call to `pick`. Hovering above the staging pose first, then descending straight down, keeps the approach vertical instead of dragging the gripper sideways into a cube that is already sitting there. Note the grasp target is `staging.z - GRASP_DEPTH`, a few millimeters below the taught height, so the fingers close around the cube rather than stopping level with its top.
+The staging spot is a single fixed pose, and you hand-feed one cube to it before every call to `pick`. Hovering above the staging pose first, then descending straight down, keeps the approach vertical instead of dragging the gripper sideways into a cube that is already sitting there. Note the grasp target is `staging.z - GRASP_DEPTH`, a few millimeters below the taught height, so the fingers close around the cube rather than stopping level with its top.
 
 {{< checkpoint >}}
 Hand-feed a cube to the staging spot, then run `pick` on its own once `main` is wired up at the end of this section. The gripper hovers above the staging pose, descends, closes on the cube, and lifts it back to the hover height. If the fingers close on air, check that the cube is centered under `helpers.STAGING_POSE` and that `GRASP_DEPTH` is not so small that the fingers stop above the cube's top.
