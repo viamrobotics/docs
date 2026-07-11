@@ -16,7 +16,7 @@ languages: ["python"]
 draft: true
 ---
 
-In this phase you write `palletizer.py`, a Python script that reads back the two anchor poses from phase 3 and drives the arm through a pick-and-place cycle for each of the four bottom-layer cells. Getting through this phase is milestone one: you drive the arm through a static pack from your own code, with no obstacle avoidance yet, on real hardware.
+In this phase you write `palletizer.py`, a Python script that reads back the two anchor poses from Phase 3 and drives the arm through a pick-and-place cycle for each of the four bottom-layer cells. Getting through this phase is milestone one: you drive the arm through a static pack from your own code, with no obstacle avoidance yet, on real hardware.
 
 ## Set up the companion project
 
@@ -31,19 +31,19 @@ The project ships with a `pyproject.toml`, so `uv run` resolves and installs the
 
 Open the machine's **CONNECT** tab in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the machine address and the application programming interface (API) key and key ID pair it shows you. `helpers.py` reads these from constants near the top of the file; paste your own values in before you run anything.
 
-Open `helpers.py` and set the two constants `STAGING_POSE` and `PALLET_ORIGIN` to the two poses you captured by hand in phase 3. `palletizer.py` reads both from `helpers.py`, so this is where the numbers you recorded become the code's picking and stacking targets.
+Open `helpers.py` and set the two constants `STAGING_POSE` and `PALLET_ORIGIN` to the two poses you captured by hand in Phase 3. `palletizer.py` reads both from `helpers.py`, so this is where the numbers you recorded become the code's picking and stacking targets.
 
-`helpers.py` is provided for you, from the same companion project you cloned in phase 3. You write `palletizer.py` yourself in this phase, starting from an empty file in the same directory.
+`helpers.py` is provided for you as part of the companion project. You write `palletizer.py` yourself in this phase, starting from an empty file in the same directory.
 
 ## What the helpers give you
 
 Start from [helpers.py](https://github.com/viam-devrel/so-arm101-palletizing/blob/main/helpers.py); import it rather than rewriting the connection and grid math. It gives you:
 
 - `helpers.connect()`, an `async` function that returns a connected `RobotClient`.
-- The arm's resource name (`helpers.ARM`), which you hand to the motion service, plus the gripper and motion-service names (`helpers.GRIPPER`, `helpers.MOTION`), which you pass to `from_robot`. All three name resources configured in phase 2.
+- The arm's resource name (`helpers.ARM`), which you hand to the motion service, plus the gripper and motion-service names (`helpers.GRIPPER`, `helpers.MOTION`), which you pass to `from_robot`. All three name resources configured in Phase 2.
 - `down_pose(x, y, z)`, which returns a `Pose` at that position with the tool pointing straight down.
-- `helpers.grid(origin, pitch, cube)`, the same function from phase 3 that expands one origin corner into the eight target poses of a two-layer, four-cell pallet.
-- `helpers.STAGING_POSE` and `helpers.PALLET_ORIGIN`, the two anchor poses you captured by hand in phase 3.
+- `helpers.grid(origin, pitch, cube)`, the same function from Phase 3 that expands one origin corner into the eight target poses of a two-layer, four-cell pallet.
+- `helpers.STAGING_POSE` and `helpers.PALLET_ORIGIN`, the two anchor poses you captured by hand in Phase 3.
 
 You do not rewrite any of this. `palletizer.py` imports these names and composes them into motion calls.
 
@@ -80,7 +80,7 @@ class Palletizer:
         self.placed = []
 ```
 
-`PITCH` and `CUBE` are the same constants phase 3 used to derive the grid. `APPROACH` and `GRASP_DEPTH` are new: `APPROACH` is how high above a target pose the arm hovers before descending, and `GRASP_DEPTH` is how far past a cube's top surface the gripper descends so its fingers close around the cube rather than skim its top. `self.placed` tracks which grid cells already hold a cube.
+`PITCH` and `CUBE` are the same constants Phase 3 used to derive the grid. `APPROACH` and `GRASP_DEPTH` are new: `APPROACH` is how high above a target pose the arm hovers before descending, and `GRASP_DEPTH` is how far past a cube's top surface the gripper descends so its fingers close around the cube rather than skim its top. `self.placed` tracks which grid cells already hold a cube.
 
 There is nothing to run yet. This class only sets up handles; the next method makes the first move.
 
@@ -98,7 +98,7 @@ Every move in this workshop reduces to one call: hand the motion service a desti
         )
 ```
 
-Name the arm, `helpers.ARM`, not the gripper. As phase 2 covered, the SO-ARM101's kinematics already define the tool-center-point at the fingertip, so naming the arm is enough for the motion service to plan the fingertip to `pose`. `world_state=None` because this phase has no obstacles to avoid yet; phase 5 adds them.
+Name the arm, `helpers.ARM`, not the gripper. As Phase 2 covered, the SO-ARM101's kinematics already define the tool-center-point at the fingertip, so naming the arm is enough for the motion service to plan the fingertip to `pose`. `world_state=None` because this phase has no obstacles to avoid yet; Phase 5 adds them.
 
 Add a small `move` method to the same class to smoke-test this before building `pick` and `place`:
 
@@ -151,7 +151,7 @@ Hand-feed a cube to the staging spot, then run `pick` on its own once `main` is 
 `helpers.grid` returns all eight target poses, bottom layer followed by top layer; `seq` indexes into that list, and this phase only ever passes `0` through `3`, the four bottom-layer cells. The hover-then-descend pattern mirrors `pick`: transit above the cell first, then lower straight down, so the cube does not drag across neighboring cells on its way in. Unlike `pick`, `place` releases at exactly `target.z`, the taught cell height, rather than pressing below it, so the cube rests on the pallet surface at the height you captured.
 
 {{< checkpoint >}}
-With a cube held from `pick`, running `place(0)` lowers it into the first grid cell and opens the gripper. The cube should land inside the marked cell, not on top of an edge or a neighboring cell. If it lands off-center, recheck the pallet origin pose you captured in phase 3, or confirm `PITCH` and `CUBE` match your measured cube spacing.
+`place` takes a `seq` argument, so there is no standalone step for it in `STEPS` yet; you verify it as the first cycle of `pack`, in the next section. When you run `pack`, the first cube is lowered into grid cell 0 and released. The cube should land inside the marked cell, not on top of an edge or a neighboring cell. If it lands off-center, recheck the pallet origin pose you captured in Phase 3, or confirm `PITCH` and `CUBE` match your measured cube spacing.
 {{< /checkpoint >}}
 
 ### Pack the bottom layer

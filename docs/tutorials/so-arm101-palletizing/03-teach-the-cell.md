@@ -43,7 +43,7 @@ You can send the same command from a terminal with `viam machines part run` if y
 
 With torque disabled, gently guide the gripper to the staging spot, the place where you will set down one cube at the start of every pick cycle in later phases. Hold the arm steady once it's in position.
 
-The companion repo's `capture_pose.py` connects to your machine and prints the arm's current end-effector pose. Its core is a single call to the arm's `get_end_position` API:
+`capture_pose.py` is a small, self-contained script that connects to your machine and prints the arm's current end-effector pose. It needs nothing beyond the Viam Python SDK: no companion project, no helper file, just the code below. Its core is a single call to the arm's `get_end_position` API:
 
 ```python
 import asyncio
@@ -66,13 +66,13 @@ async def main():
 asyncio.run(main())
 ```
 
-Fill in the API key, key ID, and machine address from your machine's **CONNECT** tab, then run it from your terminal:
+Fill in the API key, key ID, and machine address from your machine's **CONNECT** tab. Save this as `capture_pose.py` and run it with:
 
 ```bash
-python capture_pose.py
+uv run --with viam-sdk python capture_pose.py
 ```
 
-The script calls the arm's standard [`get_end_position`](/reference/apis/components/arm/#getendposition) API, which returns the gripper's tool pose computed by forward kinematics: x, y, and z in millimeters, plus an orientation, already expressed in the arm's own frame. Because you placed the arm's base at the world origin in phase 2, this pose is also the pose in the world frame, which is what the motion service expects when you write `palletizer.py` in phase 4. Move the arm slightly and run the script again to confirm the printed numbers change with it.
+The script calls the arm's standard [`get_end_position`](/reference/apis/components/arm/#getendposition) API, which returns the gripper's tool pose computed by forward kinematics: x, y, and z in millimeters, plus an orientation, already expressed in the arm's own frame. Because you placed the arm's base at the world origin in Phase 2, this pose is also the pose in the world frame, which is what the motion service expects when you write `palletizer.py` in Phase 4. Move the arm slightly and run the script again to confirm the printed numbers change with it.
 
 Record the printed x, y, and z for the staging pose. You will save these numbers in the last section of this phase.
 
@@ -109,7 +109,7 @@ The four bottom-layer cells are the origin corner plus every combination of `(0,
 (0, PITCH)  (PITCH, PITCH)
 ```
 
-The top layer repeats those same four x, y offsets at `z + CUBE`. The companion repo's `helpers.py` wraps this arithmetic in a `grid` function:
+The top layer repeats those same four x, y offsets at `z + CUBE`. In Phase 4, the companion project's `helpers.py` wraps this same arithmetic in a `grid` function:
 
 ```python
 def grid(origin, pitch, cube):
@@ -124,16 +124,16 @@ def grid(origin, pitch, cube):
     return bottom + top
 ```
 
-These are positions only. In phase 4 you apply a straight-down tool orientation to each one with a `down_pose` helper before sending it to the motion service.
+These are positions only. In Phase 4 you apply a straight-down tool orientation to each one with a `down_pose` helper before sending it to the motion service.
 
 The staging pose is not part of this grid. It stays a single fixed pose for the whole pack sequence: you hand-feed one cube to that same spot at the start of every cycle, and the arm always picks from there.
 
 ## Save your anchors
 
-Set the two constants `STAGING_POSE` and `PALLET_ORIGIN` in the companion project's `helpers.py` to the two poses you just captured, each holding the x, y, and z you read back with `capture_pose.py`. In Phase 4, `palletizer.py` reads them from there: it passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
+Write down the two poses you just captured, staging and pallet origin, each as the x, y, and z you read back with `capture_pose.py`. Keep this note handy: in Phase 4 you paste these numbers into the companion project's `helpers.py`, into the `STAGING_POSE` and `PALLET_ORIGIN` constants that `palletizer.py` reads. From there, `palletizer.py` passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
 
 {{< checkpoint >}}
-With torque disabled, running `capture_pose.py` repeatedly while you move the arm by hand returns different x, y, and z values each time, confirming the readback tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, saved into the constants Phase 4 reads. If `capture_pose.py` returns the same values every time, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
+With torque disabled, running `capture_pose.py` repeatedly while you move the arm by hand returns different x, y, and z values each time, confirming the readback tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, written down and ready to carry into Phase 4. If `capture_pose.py` returns the same values every time, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
 {{< /checkpoint >}}
 
 {{< workshop-nav >}}
