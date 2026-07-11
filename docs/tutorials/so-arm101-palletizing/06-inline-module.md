@@ -15,7 +15,7 @@ languages: ["python"]
 draft: true
 ---
 
-This phase is optional. It takes the working pack loop from phase 5 off your laptop and onto the machine, where it runs as a module and can be triggered on demand instead of from a script.
+This phase is optional. It takes the working pack loop from Phase 5 off your laptop and onto the machine, where it runs as a module and can be triggered on demand instead of from a script.
 
 ## From script to module
 
@@ -25,7 +25,7 @@ This phase is optional. It takes the working pack loop from phase 5 off your lap
 
 ## Scaffold the inline module
 
-<!-- TODO: use `viam module generate` to scaffold an inline module, move the palletizer logic into it, and expose a `pack` action through DoCommand. Source: seed phase 6 + Viam 101 08-scaffold.md. -->
+<!-- TODO: use `viam module generate` to scaffold an inline module, move the palletizer logic into it, and expose a `pack` action through DoCommand. Source: seed Phase 6 + Viam 101 08-scaffold.md. -->
 
 ## Reload and run on the machine
 

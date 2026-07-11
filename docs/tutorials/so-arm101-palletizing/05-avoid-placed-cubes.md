@@ -20,7 +20,7 @@ In this phase you teach the motion service about the cubes already on the pallet
 
 ## Why the planner collides
 
-<!-- TODO: explain that the motion service only avoids obstacles you pass it on each move; the bottom-layer pack in phase 4 had nothing to avoid, but stacking the second layer on top of the first means the arm and the held cube now pass near cubes that are already placed. Without modeling them, the planner routes straight through. Source: Viam 101 13-watch-it-collide.md. -->
+<!-- TODO: explain that the motion service only avoids obstacles you pass it on each move; the bottom-layer pack in Phase 4 had nothing to avoid, but stacking the second layer on top of the first means the arm and the held cube now pass near cubes that are already placed. Without modeling them, the planner routes straight through. Source: Viam 101 13-watch-it-collide.md. -->
 
 ## Model placed cubes as obstacles
 

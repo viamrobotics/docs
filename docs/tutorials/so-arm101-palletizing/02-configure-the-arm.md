@@ -20,7 +20,7 @@ In this phase you get the arm and gripper configured and verified on the **CONTR
 
 ## Add the discovery service
 
-Rather than typing the arm and gripper configs by hand, start with the SO-101 module's **discovery service**. A discovery service reports the hardware attached to a machine and suggests configurations for it, so you configure the right components without hunting for serial ports or attribute names by hand. See [Discovery service](/reference/services/discovery/) for the general pattern.
+Rather than typing the arm and gripper configs by hand, start with the SO-ARM101 module's **discovery service**. A discovery service reports the hardware attached to a machine and suggests configurations for it, so you configure the right components without hunting for serial ports or attribute names by hand. See [Discovery service](/reference/services/discovery/) for the general pattern.
 
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `so101` and select the `devrel:so101:discovery` result. Leave its name as the default and save the config. Saving is the moment `viam-server` downloads the `devrel:so101` module; the arm, gripper, and calibration models you add later in this phase come from that same module, so the download happens only once.
 
@@ -91,7 +91,7 @@ Pressing **Open** and **Grab** on the gripper's test card opens and closes the p
 
 Adding the arm and gripper tells `viam-server` how to talk to them, but not where the arm sits in the cell. As Phase 1 covered, the frame system answers that question for every component in the workshop, the same idea the simulated Viam 101 course uses for its palletizer: a frame places a component relative to a parent, and every frame traces back to `world`. See [Frame system](/motion-planning/frame-system/overview/) for the general concept.
 
-Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's frame so its base sits at the world origin: parent `world`, translation `(0, 0, 0)`, no rotation, which is what the default frame already describes. Leave the defaults and save. Keeping the base at the world origin means the poses you read back in phase 3 are already world poses, which keeps your motion code simple.
+Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's frame so its base sits at the world origin: parent `world`, translation `(0, 0, 0)`, no rotation, which is what the default frame already describes. Leave the defaults and save. Keeping the base at the world origin means the poses you read back in Phase 3 are already world poses, which keeps your motion code simple.
 
 ```json
 {
