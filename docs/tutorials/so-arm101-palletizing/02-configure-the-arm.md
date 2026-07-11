@@ -41,7 +41,15 @@ Like the config it suggests, the discovery service is not part of the pack seque
 
 ## Calibrate the arm (first-time builds)
 
-If discovery did not find an existing calibration file, your SO-ARM101 has not been calibrated yet and needs one guided pass before its joint positions are accurate. Add the `devrel:so101:calibration` sensor discovery suggested (or add it by hand with the same `port` as your arm), open its test panel, and follow the guided workflow: first you set the homing position, then you move each joint through its full range while the sensor records the min and max it sees. The sensor saves the result to a calibration file the arm and gripper read on startup.
+If discovery did not find an existing calibration file, your SO-ARM101 has not been calibrated yet and needs one guided pass before its joint positions are accurate. Add the `devrel:so101:calibration` sensor discovery suggested, or add it by hand: click the **+** icon, select **Blocks**, search for `so101`, select the `devrel:so101:calibration` result, and set its `port` to the same value as the arm.
+
+```json
+{
+  "port": "/dev/ttyUSB0"
+}
+```
+
+Open the sensor's test panel and follow the guided workflow: first you set the homing position, then you move each joint through its full range while the sensor records the min and max it sees. The sensor saves the result to a calibration file the arm and gripper read on startup.
 
 This workshop does not reproduce the full calibration flow. If you built and calibrated your arm following the [prerequisites](/tutorials/so-arm101-palletizing/#prerequisites), skip this section. Otherwise, follow the guided steps in the [SO-ARM101 module documentation](https://app.viam.com/module/devrel/so101-arm) before continuing.
 
