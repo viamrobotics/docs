@@ -1,5 +1,5 @@
 ---
-title: "Phase 1: The platform and the miniature cell"
+title: "Phase 1: The platform and the cell"
 linkTitle: "1. Platform mental model"
 type: "docs"
 slug: "platform-mental-model"
