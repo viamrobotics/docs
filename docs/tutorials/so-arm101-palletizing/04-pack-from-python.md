@@ -98,7 +98,7 @@ Every move in this workshop reduces to one call: hand the motion service a desti
         )
 ```
 
-Name the arm, `helpers.ARM`, not the gripper. As Phase 2 covered, the SO-ARM101's kinematics already define the tool-center-point at the fingertip, so naming the arm is enough for the motion service to plan the fingertip to `pose`. `world_state=None` because this phase has no obstacles to avoid yet; Phase 5 adds them.
+Name the arm, `helpers.ARM`. The motion service drives the arm's end point, where the gripper mounts, to `pose`. The anchor poses you taught in Phase 3 were recorded at that same end point with the gripper's jaws in position, so replaying them returns the jaws to where you taught them. The gripper, attached to the arm in Phase 2, rides along, and the planner accounts for its shape. `world_state=None` because this phase has no obstacles to avoid yet; Phase 5 adds them.
 
 Add a small `move` method to the same class to smoke-test this before building `pick` and `place`:
 

@@ -72,7 +72,7 @@ Fill in the API key, key ID, and machine address from your machine's **CONNECT**
 uv run --with viam-sdk python capture_pose.py
 ```
 
-The script calls the arm's standard [`get_end_position`](/reference/apis/components/arm/#getendposition) API, which returns the gripper's tool pose computed by forward kinematics: x, y, and z in millimeters, plus an orientation, already expressed in the arm's own frame. Because you placed the arm's base at the world origin in Phase 2, this pose is also the pose in the world frame, which is what the motion service expects when you write `palletizer.py` in Phase 4. Move the arm slightly and run the script again to confirm the printed numbers change with it.
+The script calls the arm's standard [`get_end_position`](/reference/apis/components/arm/#getendposition) API, which returns the arm's end point, where the gripper mounts, computed by forward kinematics: x, y, and z in millimeters, plus an orientation, already expressed in the arm's own frame. You position the arm so the gripper's jaws sit at the spot you want, then record that end point; because the gripper is rigidly attached, driving the end point back to the same pose in Phase 4 returns the jaws to the same spot. Because you placed the arm's base at the world origin in Phase 2, this pose is also the pose in the world frame, which is what the motion service expects when you write `palletizer.py` in Phase 4. Move the arm slightly and run the script again to confirm the printed numbers change with it.
 
 Record the printed x, y, and z for the staging pose. You will save these numbers in the last section of this phase.
 

@@ -16,7 +16,7 @@ languages: ["python"]
 draft: true
 ---
 
-In this phase you configure the arm and gripper, verify them with their test cards on the **CONTROL** tab, then place the arm in the frame system so the rest of the platform knows where it sits.
+In this phase you configure the arm and gripper, verify them with their test cards on the **CONTROL** tab, then place both in the frame system so the rest of the platform knows where they sit.
 
 ## Add the discovery service
 
@@ -87,9 +87,9 @@ Open the gripper's test card on the **CONTROL** tab. Press **Open** and watch th
 Pressing **Open** and **Grab** on the gripper's test card opens and closes the physical jaw. If nothing moves, confirm the gripper shows online in the CONFIGURE tab and that its `port` matches the arm's.
 {{< /checkpoint >}}
 
-## Place the arm in the frame system
+## Place the arm and gripper in the frame system
 
-Adding the arm and gripper tells `viam-server` how to talk to them, but not where the arm sits in the cell. As Phase 1 covered, the frame system answers that question for every component in the workshop: a frame places a component relative to a parent, and every frame traces back to `world`. See [Frame system](/motion-planning/frame-system/overview/) for the general concept.
+Adding the arm and gripper tells `viam-server` how to talk to them, but not where they sit in the cell. As Phase 1 covered, the frame system answers that question for every component in the workshop: a frame places a component relative to a parent, and every frame traces back to `world`. See [Frame system](/motion-planning/frame-system/overview/) for the general concept.
 
 Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's frame so its base sits at the world origin: parent `world`, translation `(0, 0, 0)`, no rotation, which is what the default frame already describes. Leave the defaults and save. Keeping the base at the world origin means the poses you read back in Phase 3 are already world poses, which keeps your motion code simple.
 
@@ -104,18 +104,33 @@ Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's
 }
 ```
 
-The gripper needs no frame of its own. It is part of the SO-ARM101's own kinematic chain, so the arm's kinematics already define a tool frame at the fingertip, the gripper's tool-center-point (TCP). Every motion command you send later in this workshop, through the motion service, already plans to that fingertip, with no separate frame to configure.
+The gripper is a separate component with its own collision geometry, so it needs its own frame to place that geometry in the cell. You attach it to the arm. Open the gripper's card, select **Frame**, set its parent to `arm`, and leave the translation and rotation at zero:
+
+```json
+{
+  "parent": "arm",
+  "translation": { "x": 0, "y": 0, "z": 0 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+  }
+}
+```
+
+The zero offset is specific to this arm. The `devrel:so101:gripper` model already positions its jaw geometry relative to the arm's end point, so attaching the gripper there with no offset places the jaws correctly. A gripper on a different arm would instead need the measured offset from the arm's end point to the jaws entered here.
+
+Attaching the gripper to the arm does two things. The 3D scene draws the gripper on the end of the arm, and the motion service includes the gripper's shape when it plans, so it keeps the jaws clear of obstacles. The arm's kinematic chain ends at the point where the gripper mounts, and that end point is what the motion service drives to the poses you command later. You never enter a tool-center-point (TCP) by hand: in Phase 3 you position the gripper's jaws where you want them and record where the arm's end point lands, and replaying that record in Phase 4 returns the jaws to the same place.
 
 ## See it in the 3D scene
 
-Open the **3D scene** tab. The arm renders using the kinematics built into the `devrel:so101:arm` model, sitting at the frame you just configured. This is the same view you will return to throughout the rest of the workshop to watch the pack sequence run.
+Open the **3D scene** tab. The arm renders using the kinematics built into the `devrel:so101:arm` model, sitting at the frame you configured, with the gripper attached at its end point. This is the same view you will return to throughout the rest of the workshop to watch the pack sequence run.
 
 <!-- ASSET 3dscene-arm (UI): 3D scene tab showing the SO-ARM101 model -->
 
 Jog a joint on the arm's test card again and watch the 3D scene update alongside the physical arm.
 
 {{< checkpoint >}}
-The 3D scene shows the SO-ARM101 model at its current joint positions, and it updates as you jog a joint from the CONTROL tab. If the scene is blank, confirm the arm's frame saved and that the arm shows online in the CONFIGURE tab.
+The 3D scene shows the SO-ARM101 model, gripper included, at its current joint positions, and it updates as you jog a joint from the CONTROL tab. If the gripper is missing or floating away from the arm, recheck that its frame parent is set to `arm` with zero translation. If the scene is blank, confirm the arm's frame saved and that the arm shows online in the CONFIGURE tab.
 {{< /checkpoint >}}
 
 With the arm and gripper configured, verified, and placed in the frame system, you are ready for [Phase 3](/tutorials/so-arm101-palletizing/teach-the-cell/), where you map the physical cell, the staging spot and the pallet, into the arm's frame by hand.
