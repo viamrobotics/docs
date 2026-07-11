@@ -132,6 +132,20 @@ viam machines part tunnel \
   --destination-port=8080
 ```
 
+If the destination port is not already in the machine's tunnel configuration, the CLI adds it automatically.
+
+To tunnel directly without internet access, pass the machine address and API key:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part tunnel \
+  --part=<part-id> \
+  --local-port=8080 \
+  --destination-port=8080 \
+  --address=my-machine.local:8080 \
+  --key-id=<key-id> \
+  --key=<key-value>
+```
+
 ## Run component and service methods
 
 Call a gRPC method on a component or service directly from the CLI, like `curl` for Viam's API:
