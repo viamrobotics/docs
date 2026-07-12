@@ -22,7 +22,7 @@ In this phase you write `palletizer.py`, a Python script that reads back the two
 
 Clone the workshop's companion repository and work from it for the rest of this phase:
 
-```bash
+```sh
 git clone https://github.com/viam-devrel/so-arm101-palletizing.git
 cd so-arm101-palletizing
 ```
@@ -204,7 +204,7 @@ Run each step with `uv run`, watching both the physical arm and the **3D scene**
 
 First, confirm the connection and a basic move:
 
-```bash
+```sh
 uv run palletizer.py move
 ```
 
@@ -214,7 +214,7 @@ The gripper moves to a fixed pose, pointing straight down. If the script raises 
 
 Next, hand-feed one cube to the staging spot and run `pick`:
 
-```bash
+```sh
 uv run palletizer.py pick
 ```
 
@@ -222,7 +222,7 @@ The arm should hover above the staging pose, descend, grab the cube, and lift it
 
 Now run the full bottom-layer pack:
 
-```bash
+```sh
 uv run palletizer.py pack
 ```
 

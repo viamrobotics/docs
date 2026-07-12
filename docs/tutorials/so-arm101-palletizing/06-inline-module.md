@@ -11,6 +11,7 @@ phase: 6
 phase_total: 6
 time_estimate: "15 minutes"
 prev: "/tutorials/so-arm101-palletizing/avoid-placed-cubes/"
+next: "/tutorials/so-arm101-palletizing/wrap-up/"
 languages: ["python"]
 draft: true
 ---

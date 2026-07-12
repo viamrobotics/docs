@@ -68,7 +68,7 @@ asyncio.run(main())
 
 Fill in the API key, key ID, and machine address from your machine's **CONNECT** tab. Save this as `capture_pose.py` and run it with:
 
-```bash
+```sh
 uv run --with viam-sdk python capture_pose.py
 ```
 
@@ -135,5 +135,7 @@ Write down the two poses you just captured, staging and pallet origin, each as t
 {{< checkpoint >}}
 With torque disabled, running `capture_pose.py` repeatedly while you move the arm by hand returns different x, y, and z values each time, confirming the readback tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, written down and ready to carry into Phase 4. If `capture_pose.py` returns the same values every time, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
 {{< /checkpoint >}}
+
+With your two anchor poses recorded, [Phase 4](/tutorials/so-arm101-palletizing/pack-from-python/) is where you write the Python that reads them back and drives the arm through a pick-and-place pack.
 
 {{< workshop-nav >}}

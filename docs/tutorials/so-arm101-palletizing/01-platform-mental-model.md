@@ -61,4 +61,6 @@ The SO-ARM101 also has one fewer joint than an industrial arm: it has five degre
 Open your machine in the Viam app and confirm the green **Live** indicator. You should be able to name the two components you will configure (arm and gripper) and the two services the arm relies on to move (frame system and motion). If your machine is not Live, start `viam-server` on the host before continuing.
 {{< /checkpoint >}}
 
+With the mental model in place, [Phase 2](/tutorials/so-arm101-palletizing/configure-the-arm/) is where you add the arm and gripper, verify them, and place them in the frame system.
+
 {{< workshop-nav >}}

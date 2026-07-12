@@ -50,6 +50,8 @@ Phases 1 through 4 are the core workshop. Phase 5 adds obstacle avoidance, and P
 5. **[Avoid placed cubes](/tutorials/so-arm101-palletizing/avoid-placed-cubes/)** (~22 min, milestone two: a collision-free full pack)
 6. **[Wrap it in a module](/tutorials/so-arm101-palletizing/inline-module/)** (~15 min, optional)
 
+When you finish, the **[wrap-up](/tutorials/so-arm101-palletizing/wrap-up/)** reviews what you built and points to next steps.
+
 ## Working with a 5-DOF arm
 
 Along the way you learn to map the physical world into the arm's frame and to reason about a five degree-of-freedom (5-DOF) arm's reach. A 5-DOF arm plans to a target position without pinning the final orientation, and because the cubes are rotationally symmetric, that does not matter for this task.
@@ -76,3 +78,10 @@ uv run --with viam-sdk python -c "import viam; print(viam.__version__)"   # prin
 ```
 
 If either command fails, revisit the checklist above before continuing.
+
+### Where to start
+
+<!-- ASSET P1 live-indicator (UI+): machine page with the green Live indicator boxed -->
+
+- **Arm built and machine online (`viam-server` running):** start at [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).
+- **Still building your SO-ARM101:** complete the [first-time arm setup](https://app.viam.com/module/devrel/so101-arm) (install LeRobot, configure the motors, build, and calibrate), then return here for [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).
