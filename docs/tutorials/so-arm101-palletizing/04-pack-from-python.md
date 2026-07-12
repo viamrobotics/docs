@@ -9,22 +9,21 @@ workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 4
 phase_total: 6
-time_estimate: "20 minutes"
 prev: "/tutorials/so-arm101-palletizing/teach-the-cell/"
 next: "/tutorials/so-arm101-palletizing/avoid-placed-cubes/"
 languages: ["python"]
 draft: true
 ---
 
-In this phase you write `palletizer.py`, a Python script that reads back the two anchor poses from Phase 3 and drives the arm through a pick-and-place cycle for each of the four bottom-layer cells. Getting through this phase is milestone one: you drive the arm through a static pack from your own code, with no obstacle avoidance yet, on real hardware.
+In this phase you write `palletizer.py`, a Python script that reads back the two anchor poses from Phase 3 and drives the arm through a packing routine for each of the four bottom-layer cells. Getting through this phase is milestone one: you drive the arm through a static pack from your own code, on real hardware.
 
 ## Set up the companion project
 
 Clone the workshop's companion repository and work from it for the rest of this phase:
 
 ```sh
-git clone https://github.com/viam-devrel/so-arm101-palletizing.git
-cd so-arm101-palletizing
+git clone https://github.com/viam-devrel/mini-palletizer.git
+cd mini-palletizer
 ```
 
 The project ships with a `pyproject.toml`, so `uv run` resolves and installs the Viam Python SDK (software development kit) for you the first time you run any script in the directory. If you are not using `uv`, install `viam-sdk` yourself and use `python3` instead.
@@ -37,7 +36,7 @@ Open `helpers.py` and set the two constants `STAGING_POSE` and `PALLET_ORIGIN` t
 
 ## What the helpers give you
 
-Start from [helpers.py](https://github.com/viam-devrel/so-arm101-palletizing/blob/main/helpers.py); import it rather than rewriting the connection and grid math. It gives you:
+Start from [helpers.py](https://github.com/viam-devrel/mini-palletizer/blob/main/helpers.py); import it rather than rewriting the connection and grid math. It gives you:
 
 - `helpers.connect()`, an `async` function that returns a connected `RobotClient`.
 - The arm's resource name (`helpers.ARM`), which you hand to the motion service, plus the gripper and motion-service names (`helpers.GRIPPER`, `helpers.MOTION`), which you pass to `from_robot`. All three name resources configured in Phase 2.

@@ -15,50 +15,43 @@ workshop_overview: true
 time_estimate: "2 hours"
 hardware:
   - "SO-ARM101 (5-DOF + gripper)"
-  - "8 × ~20 mm cubes"
-  - "Raspberry Pi or laptop host"
-companion_repo: "https://github.com/viam-devrel/so-arm101-palletizing"
+  - "Eight ~20 mm cubes"
+  - "Personal computer"
+companion_repo: "https://github.com/viam-devrel/mini-palletizer"
 no_list: true
 draft: true
 ---
 
-You will build a miniature palletizing cell: an SO-ARM101 arm picks cubes from a staging spot and stacks them on a small pallet, two layers of four. It all runs on a real arm you can hold in your hands.
+Warehouse robots spend all day stacking boxes onto pallets. In this workshop you build the same thing in miniature, on your desk: an affordable SO-ARM101 arm that picks up cubes and stacks them neatly, two layers at a time.
 
-The workshop is structured as six sequential phases, each ending with checkpoints you can verify before moving on. Finishing Phase 4, where you drive the robot from your own Python code through a static, pre-planned pack, is a complete success. Phases 5 and 6 go further.
+It is a hands-on introduction to robot manipulation with Viam, for developers and makers who would rather program a real arm than a simulator. You do not need industrial hardware or prior robotics experience, just a desktop arm you can build yourself. You configure it, teach it where the cubes and the pallet are by guiding it with your own hands, then write the Python that runs the whole packing routine. By the end, the arm packs a full stack of cubes on its own, driven entirely by code you wrote.
 
 ## What you'll build
 
-You will configure an SO-ARM101 arm with its finger gripper, teach it a small set of anchor poses by hand using its freedrive (torque-off) capability, then write a Python script that reads those poses back and plans a collision-free pick-and-stack sequence. By the end, you will have packed a two-by-two-by-two stack of cubes onto a marked pallet area, all driven by code you wrote yourself.
+You configure an SO-ARM101 arm and its finger gripper, teach it a small set of anchor poses by hand using its freedrive (torque-off) capability, then write a Python program that reads those poses back and plans a collision-free pick-and-stack. The finished cell packs a two-by-two-by-two stack of eight cubes onto a marked pallet, one cube at a time.
 
 <!-- ASSET hero-cell-overview (PHOTO): staged SO-ARM101 + cubes + pallet grid + staging spot -->
 
 ## Required hardware
 
-- **SO-ARM101**: the five degree-of-freedom (5-DOF) arm with a finger gripper, connected to its host over USB serial.
-- **Eight cubes**, roughly 20 mm on a side.
-- **A flat surface** with a marked pallet area about 60 by 60 mm, plus a staging spot for the cubes.
-- **A host**, either a Raspberry Pi or a laptop, running `viam-agent` and `viam-server`.
+- **An SO-ARM101 arm** with its finger gripper, connected to your computer over USB.
+- **Eight cubes and a pallet mat.** You need eight cubes about 20 mm on a side, a two-by-two pallet grid to stack them on, and a staging spot to feed cubes from. The companion project includes a printable template: paper cube nets you fold into 20 mm cubes, and a mat that marks the pallet grid and the staging spot at the exact spacing the code expects. Print it, cut it out, and you are ready. Wooden or foam 20 mm cubes work too if you have them.
+- **A personal computer** running `viam-agent` and `viam-server`, with the arm plugged into it over USB.
 
 ## Phases
 
-Phases 1 through 4 are the core workshop. Phase 5 adds obstacle avoidance, and Phase 6 is optional.
-
-1. **[Platform mental model](/tutorials/so-arm101-palletizing/platform-mental-model/)** (~15 min)
-2. **[Configure the SO-ARM101](/tutorials/so-arm101-palletizing/configure-the-arm/)** (~20 min)
-3. **[Teach the cell by hand](/tutorials/so-arm101-palletizing/teach-the-cell/)** (~20 min)
-4. **[Pack from Python](/tutorials/so-arm101-palletizing/pack-from-python/)** (~20 min, milestone one: a static pack from your own code)
-5. **[Avoid placed cubes](/tutorials/so-arm101-palletizing/avoid-placed-cubes/)** (~22 min, milestone two: a collision-free full pack)
-6. **[Wrap it in a module](/tutorials/so-arm101-palletizing/inline-module/)** (~15 min, optional)
+1. **[Platform mental model](/tutorials/so-arm101-palletizing/platform-mental-model/)**
+2. **[Configure the SO-ARM101](/tutorials/so-arm101-palletizing/configure-the-arm/)**
+3. **[Teach the cell by hand](/tutorials/so-arm101-palletizing/teach-the-cell/)**
+4. **[Pack from Python](/tutorials/so-arm101-palletizing/pack-from-python/)** (milestone one: a static pack from your own code)
+5. **[Avoid placed cubes](/tutorials/so-arm101-palletizing/avoid-placed-cubes/)** (milestone two: a collision-free full pack)
+6. **[Wrap it in a module](/tutorials/so-arm101-palletizing/inline-module/)** (optional)
 
 When you finish, the **[wrap-up](/tutorials/so-arm101-palletizing/wrap-up/)** reviews what you built and points to next steps.
 
-## Working with a 5-DOF arm
-
-Along the way you learn to map the physical world into the arm's frame and to reason about a five degree-of-freedom (5-DOF) arm's reach. A 5-DOF arm plans to a target position without pinning the final orientation, and because the cubes are rotationally symmetric, that does not matter for this task.
-
 ## Companion code
 
-All supporting files for this workshop live in the [viam-devrel/so-arm101-palletizing](https://github.com/viam-devrel/so-arm101-palletizing) repository. `helpers.py` is provided for you; you build `palletizer.py` yourself as you work through the phases.
+All supporting files for this workshop live in the [viam-devrel/mini-palletizer](https://github.com/viam-devrel/mini-palletizer) repository, including the printable cube-and-pallet template. `helpers.py` is provided for you; you build `palletizer.py` yourself as you work through the phases.
 
 ## Prerequisites
 
@@ -66,7 +59,7 @@ This is a self-serve workshop, so confirm each of the following before you start
 
 - **A Viam account with an online machine.** Log in at [app.viam.com](https://app.viam.com), [create a machine](https://docs.viam.com/set-up-a-machine/first-machine/), and confirm the green **Live** indicator before you begin.
 - **Python 3.10 or newer.** Install it with [uv](https://docs.astral.sh/uv/getting-started/installation/) (recommended) or from [python.org](https://www.python.org/downloads/).
-- **An SO-ARM101 that's built, has its motors configured, and is calibrated.** Follow the first-time arm setup steps in the [SO-ARM101 module](https://app.viam.com/module/devrel/so101-arm) documentation: install the LeRobot software, configure the motors, build the arm, and calibrate it.
+- **An SO-ARM101 that's built, has its motors configured, and is calibrated.** Follow the first-time arm setup steps in the [SO-ARM101 module](https://app.viam.com/module/devrel/so101-arm) documentation: configure the motors, build the arm, and calibrate it.
 
 ### Validate your environment
 
@@ -84,4 +77,4 @@ If either command fails, revisit the checklist above before continuing.
 <!-- ASSET P1 live-indicator (UI+): machine page with the green Live indicator boxed -->
 
 - **Arm built and machine online (`viam-server` running):** start at [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).
-- **Still building your SO-ARM101:** complete the [first-time arm setup](https://app.viam.com/module/devrel/so101-arm) (install LeRobot, configure the motors, build, and calibrate), then return here for [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).
+- **Still building your SO-ARM101:** complete the [first-time arm setup](https://app.viam.com/module/devrel/so101-arm) (configure the motors, build the arm, and calibrate it), then return here for [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).

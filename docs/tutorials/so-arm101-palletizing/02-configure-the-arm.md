@@ -9,7 +9,6 @@ workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 2
 phase_total: 6
-time_estimate: "20 minutes"
 prev: "/tutorials/so-arm101-palletizing/platform-mental-model/"
 next: "/tutorials/so-arm101-palletizing/teach-the-cell/"
 languages: ["python"]
@@ -22,36 +21,22 @@ In this phase you configure the arm and gripper, verify them with their test car
 
 Rather than typing the arm and gripper configs by hand, start with the SO-ARM101 module's **discovery service**. A discovery service reports the hardware attached to a machine and suggests configurations for it, so you configure the right components without hunting for serial ports or attribute names by hand. See [Discovery service](/reference/services/discovery/) for the general pattern.
 
-On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `so101` and select the `devrel:so101:discovery` result. Leave its name as the default and save the config. Saving is the moment `viam-server` downloads the `devrel:so101` module; the arm, gripper, and calibration models you add later in this phase come from that same module, so the download happens only once.
+On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `so101` and select the `so101/discovery` result. Leave its name as the default and save the config. Saving is the moment `viam-server` downloads the SO-ARM101 module; the arm and gripper models you add later in this phase come from that same module, so the download happens only once.
 
 Before you open the discovery service's test panel, know what it is looking for: the serial port your SO-ARM101 is connected to over USB.
 
 - On Linux, the port shows up as `/dev/ttyUSB0` or `/dev/ttyACM0`.
 - On macOS, look under `/dev/tty.*` for a name containing `usbmodem` or `usbserial`.
 
-Open the discovery service's **TEST** panel. It scans for a connected SO-ARM101 and, if it finds one, returns ready-made configuration snippets for the arm and the gripper, with the detected `port` already filled in. The discovery service also suggests a calibration sensor you can add if the arm still needs calibrating.
+Open the discovery service's **TEST** panel. It scans for a connected SO-ARM101 and, if it finds one, returns ready-made configuration snippets for the arm and the gripper, with the detected `port` already filled in.
 
 <!-- ASSET discovery-test-panel (UI): discovery service test panel with suggested components -->
 
-With the arm connected and powered, select **Add component** next to each suggested snippet to create the arm and gripper components from it. If discovery does not find your arm, confirm the USB cable is connected and that no other program (such as a LeRobot script) is holding the serial port open, then retry.
+With the arm connected and powered, select **Add component** next to each suggested snippet to create the arm and gripper components from it. If discovery does not find your arm, confirm the USB cable is connected and that no other program is holding the serial port open, then retry.
 
 {{< alert title="Discovery has done its job" color="note" >}}
 Like the config it suggests, the discovery service is not part of the pack sequence you build later in this workshop. Leave it in place if you expect to re-discover hardware, or remove it once the arm and gripper are configured.
 {{< /alert >}}
-
-## Calibrate the arm (first-time builds)
-
-If discovery did not find an existing calibration file, your SO-ARM101 has not been calibrated yet and needs one guided pass before its joint positions are accurate. Add the `devrel:so101:calibration` sensor discovery suggested, or add it by hand: click the **+** icon, select **Blocks**, search for `so101`, select the `devrel:so101:calibration` result, and set its `port` to the same value as the arm.
-
-```json
-{
-  "port": "/dev/ttyUSB0"
-}
-```
-
-Open the sensor's test panel and follow the guided workflow: first you set the homing position, then you move each joint through its full range while the sensor records the min and max it sees. The sensor saves the result to a calibration file the arm and gripper read on startup.
-
-This workshop does not reproduce the full calibration flow. If you built and calibrated your arm following the [prerequisites](/tutorials/so-arm101-palletizing/#prerequisites), skip this section. Otherwise, follow the guided steps in the [SO-ARM101 module documentation](https://app.viam.com/module/devrel/so101-arm) before continuing.
 
 ## Add the arm component
 
@@ -63,9 +48,9 @@ If you used discovery, confirm the arm component it created has one attribute, `
 }
 ```
 
-If you are configuring the arm by hand instead, click the **+** icon, select **Blocks**, search for `so101`, and select the `devrel:so101:arm` result. Name it `arm`, paste the attribute above with your own port, and save.
+If you are configuring the arm by hand instead, click the **+** icon, select **Blocks**, search for `so101`, and select the `so101/arm` result. Name it `arm`, paste the attribute above with your own port, and save.
 
-Open the **CONTROL** tab and find the arm's test card. Test cards call the same API your Python code calls later in this workshop; jogging a joint here is an API call, not a simulation. Move one joint slider a small amount and press **Execute**, then watch the physical arm turn.
+Open the **CONTROL** tab and find the arm's test card. Test cards call the same API your Python code calls later in this workshop; jogging a joint here is a real API call that moves the hardware. Move one joint slider a small amount and press **Execute**, then watch the physical arm turn.
 
 {{< alert title="The arm is about to move" color="caution" >}}
 Keep the workspace clear and change one joint a small amount at a time. Large or combined joint moves can drive the arm into the table or itself.
@@ -87,7 +72,7 @@ If you used discovery, confirm the gripper component it created carries this sam
 }
 ```
 
-If you are configuring the gripper by hand, click the **+** icon, select **Blocks**, search for `so101`, and select the `devrel:so101:gripper` result. Name it `gripper`, set `port` to the same value as the arm's, and save.
+If you are configuring the gripper by hand, click the **+** icon, select **Blocks**, search for `so101`, and select the `so101/gripper` result. Name it `gripper`, set `port` to the same value as the arm's, and save.
 
 Open the gripper's test card on the **CONTROL** tab. Press **Open** and watch the jaw open, then press **Grab** and watch it close.
 
@@ -125,13 +110,11 @@ The gripper is a separate component with its own collision geometry, so it needs
 }
 ```
 
-The zero offset is specific to this arm. The `devrel:so101:gripper` model already positions its jaw geometry relative to the arm's end point, so attaching the gripper there with no offset places the jaws correctly. A gripper on a different arm would instead need the measured offset from the arm's end point to the jaws entered here.
-
-Attaching the gripper to the arm does two things. The 3D scene draws the gripper on the end of the arm, and the motion service includes the gripper's shape when it plans, so it keeps the jaws clear of obstacles. The arm's kinematic chain ends at the point where the gripper mounts, and that end point is what the motion service drives to the poses you command later. You never enter a tool-center-point (TCP) by hand: in Phase 3 you position the gripper's jaws where you want them and record where the arm's end point lands, and replaying that record in Phase 4 returns the jaws to the same place.
+Attaching the gripper to the arm places its shape in the cell: the 3D scene draws the gripper on the end of the arm, and the motion service accounts for the gripper's shape when it plans, so it keeps the jaws clear of obstacles.
 
 ## See it in the 3D scene
 
-Open the **3D scene** tab. The arm renders using the kinematics built into the `devrel:so101:arm` model, sitting at the frame you configured, with the gripper attached at its end point. This is the same view you will return to throughout the rest of the workshop to watch the pack sequence run.
+Open the **3D scene** tab. The arm renders using the kinematics built into the `so101/arm` model, sitting at the frame you configured, with the gripper attached at its end point. This is the same view you will return to throughout the rest of the workshop to watch the pack sequence run.
 
 <!-- ASSET 3dscene-arm (UI): 3D scene tab showing the SO-ARM101 model -->
 

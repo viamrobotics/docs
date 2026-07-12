@@ -9,7 +9,6 @@ workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 5
 phase_total: 6
-time_estimate: "22 minutes"
 prev: "/tutorials/so-arm101-palletizing/pack-from-python/"
 next: "/tutorials/so-arm101-palletizing/inline-module/"
 languages: ["python"]

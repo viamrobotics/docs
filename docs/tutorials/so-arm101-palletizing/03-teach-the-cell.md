@@ -4,19 +4,18 @@ linkTitle: "3. Teach the cell"
 type: "docs"
 slug: "teach-the-cell"
 weight: 30
-description: "Move the arm by hand with torque disabled, read back two anchor poses, and compute the pallet grid from them."
+description: "Move the arm by hand with torque disabled, read two anchor poses off its test card, and compute the pallet grid from them."
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 3
 phase_total: 6
-time_estimate: "20 minutes"
 prev: "/tutorials/so-arm101-palletizing/configure-the-arm/"
 next: "/tutorials/so-arm101-palletizing/pack-from-python/"
 languages: ["python"]
 draft: true
 ---
 
-In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading back where it ended up. You capture two anchor poses this way, then compute the rest of the pallet grid from them arithmetically.
+In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading its position back from the Viam app. You capture two anchor poses this way, then compute the rest of the pallet grid from them arithmetically.
 
 {{< alert title="The arm goes limp" color="caution" >}}
 Disabling torque lets you move the arm by hand, but it also means the arm no longer holds its position against gravity. It drops as soon as you disable torque, and stays free to fall until you re-enable it. Support the arm with one hand while torque is off, clear the workspace and cubes from underneath it, and re-enable torque before you send any motion command.
@@ -37,48 +36,23 @@ The SO-ARM101 module exposes a `set_torque` command over `DoCommand`. On the arm
 }
 ```
 
-You can send the same command from a terminal with `viam machines part run` if you prefer the command-line interface (CLI) to the test card. Once the command succeeds, the arm's joints go slack and you can move it by hand.
+Once the command succeeds, the arm's joints go slack and you can move it by hand.
+
+## Read the arm's position from the app
+
+You do not need any code to read where the arm is. The arm's test card on the **CONTROL** tab shows its current **end position**: the x, y, and z of the arm's end point, in millimeters, plus an orientation. As you move the arm by hand with torque disabled, that readout updates to track it. Because you placed the arm's base at the world origin in Phase 2, this end position is also a world pose, which is exactly what the motion service expects when you write `palletizer.py` in Phase 4.
+
+You position the arm so the gripper's jaws sit where you want them, then read the end position off the card. Because the gripper is rigidly attached, driving the arm's end point back to that same pose later returns the jaws to the same spot.
+
+<!-- ASSET arm-endposition-card (UI): arm test card end-position readout (x, y, z) highlighted -->
 
 ## Capture the staging pose
 
-With torque disabled, gently guide the gripper to the staging spot, the place where you will set down one cube at the start of every pick cycle in later phases. Hold the arm steady once it's in position.
-
-`capture_pose.py` is a small, self-contained script that connects to your machine and prints the arm's current end-effector pose. It needs nothing beyond the Viam Python SDK: no companion project, no helper file, just the code below. Its core is a single call to the arm's `get_end_position` API:
-
-```python
-import asyncio
-from viam.robot.client import RobotClient
-from viam.components.arm import Arm
-
-
-async def main():
-    opts = RobotClient.Options.with_api_key(
-        api_key="<api-key>", api_key_id="<api-key-id>"
-    )
-    robot = await RobotClient.at_address("<machine-address>", opts)
-    arm = Arm.from_robot(robot, "arm")
-    pose = await arm.get_end_position()
-    print(f"x={pose.x:.1f} y={pose.y:.1f} z={pose.z:.1f}")
-    print(f"o_x={pose.o_x:.3f} o_y={pose.o_y:.3f} o_z={pose.o_z:.3f} theta={pose.theta:.1f}")
-    await robot.close()
-
-
-asyncio.run(main())
-```
-
-Fill in the API key, key ID, and machine address from your machine's **CONNECT** tab. Save this as `capture_pose.py` and run it with:
-
-```sh
-uv run --with viam-sdk python capture_pose.py
-```
-
-The script calls the arm's standard [`get_end_position`](/reference/apis/components/arm/#getendposition) API, which returns the arm's end point, where the gripper mounts, computed by forward kinematics: x, y, and z in millimeters, plus an orientation, already expressed in the arm's own frame. You position the arm so the gripper's jaws sit at the spot you want, then record that end point; because the gripper is rigidly attached, driving the end point back to the same pose in Phase 4 returns the jaws to the same spot. Because you placed the arm's base at the world origin in Phase 2, this pose is also the pose in the world frame, which is what the motion service expects when you write `palletizer.py` in Phase 4. Move the arm slightly and run the script again to confirm the printed numbers change with it.
-
-Record the printed x, y, and z for the staging pose. You will save these numbers in the last section of this phase.
+With torque disabled, gently guide the gripper to the staging spot, the place where you will set down one cube at the start of every pick cycle in later phases. Hold the arm steady once it is in position, then read the **end position** off the arm's test card and record the x, y, and z. This is your staging pose. Move the arm slightly and watch the readout change, so you know it is tracking the live position, then guide it back and re-read if needed.
 
 ## Capture the pallet origin corner
 
-Still with torque disabled, guide the gripper to the bottom-layer corner of the pallet, cell [0, 0], the corner you treat as the origin of the pallet grid. Run `capture_pose.py` again and record the printed x, y, and z. This is your pallet origin pose.
+Still with torque disabled, guide the gripper to the bottom-layer corner of the pallet, cell [0, 0], the corner you treat as the origin of the pallet grid. Read the **end position** again and record the x, y, and z. This is your pallet origin pose.
 
 ## Re-enable torque
 
@@ -130,10 +104,10 @@ The staging pose is not part of this grid. It stays a single fixed pose for the 
 
 ## Save your anchors
 
-Write down the two poses you just captured, staging and pallet origin, each as the x, y, and z you read back with `capture_pose.py`. Keep this note handy: in Phase 4 you paste these numbers into the companion project's `helpers.py`, into the `STAGING_POSE` and `PALLET_ORIGIN` constants that `palletizer.py` reads. From there, `palletizer.py` passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
+Write down the two poses you just read, staging and pallet origin, each as the x, y, and z from the arm's test card. Keep this note handy: in Phase 4 you paste these numbers into the companion project's `helpers.py`, into the `STAGING_POSE` and `PALLET_ORIGIN` constants that `palletizer.py` reads. From there, `palletizer.py` passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
 
 {{< checkpoint >}}
-With torque disabled, running `capture_pose.py` repeatedly while you move the arm by hand returns different x, y, and z values each time, confirming the readback tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, written down and ready to carry into Phase 4. If `capture_pose.py` returns the same values every time, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
+With torque disabled, the arm's end position on its test card changes as you move the arm by hand, confirming the readout tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, written down and ready to carry into Phase 4. If the readout does not change as you move the arm, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
 {{< /checkpoint >}}
 
 With your two anchor poses recorded, [Phase 4](/tutorials/so-arm101-palletizing/pack-from-python/) is where you write the Python that reads them back and drives the arm through a pick-and-place pack.
