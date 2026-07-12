@@ -63,7 +63,7 @@ Everything a Viam machine does is modeled as a resource, and resources split int
 
 Three concepts carry the whole workshop. This section only previews them; you will work with each one directly in a later phase.
 
-The **frame system** answers "where is everything around the robot, and how is it related?" It tracks the position of every component and object in the cell, and the parent-child relationships between them, all traced back to the world origin. You teach the two key positions to the arm by hand in Phase 3. See [Frame system](/motion-planning/frame-system/) for the full picture.
+The **frame system** answers "where is everything around the robot, and how is it related?" It tracks the position of every component and object in the cell, and the parent-child relationships between them, all traced back to the world origin. You teach the two key positions to the arm by hand in Phase 3. See [Frame system](/motion-planning/frame-system/overview/) for the full picture.
 
 **Motion planning** answers "how does the arm get there?" Given a target pose, the motion service works out a path of joint movements that reaches it without colliding with anything.
 

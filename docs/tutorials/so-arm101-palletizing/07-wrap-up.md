@@ -25,9 +25,9 @@ If you completed the optional Phase 6, you also packaged that same pack loop as 
 
 This workshop was small on purpose, but it touched most of the moving parts you will use on any Viam machine:
 
-- **Configuration and runtime:** the Viam app as the single source of truth (the CONFIGURE tab and its JSON view), `viam-server` running your resources while `viam-agent` keeps it alive, and the module system, including a discovery service that suggested the arm and gripper configuration for you.
-- **Resources:** the arm and gripper components from the SO-ARM101 module, with the gripper attached to the arm through the frame system, plus the calibration sensor that made the arm's joint positions accurate.
-- **Frame system and motion:** placing the arm at the world origin so hand-taught poses are world poses, teaching real-world anchor poses by back-driving the arm with torque disabled, and letting the motion service plan to the arm's end point. You also learned how a five degree-of-freedom (5-DOF) arm plans to a position without pinning orientation, and how a WorldState of placed and held cubes keeps the planner from routing through the stack.
+- **Configuration and runtime:** the Viam app as the single source of truth (the CONFIGURE tab and its JSON view), `viam-server` running your resources, and the module system, including a discovery service that suggested the arm and gripper configuration for you.
+- **Resources:** the arm and gripper components from the SO-ARM101 module, with the gripper attached to the arm through the frame system.
+- **Frame system and motion:** placing the arm at the world origin so hand-taught poses are world poses, teaching real-world anchor poses by back-driving the arm with torque disabled, and letting the motion service plan to the arm's end point. You also saw how a WorldState of placed cubes and the held cube keeps the planner from routing through the stack.
 - **Code:** the Python SDK (`RobotClient`, the typed `Gripper` and `MotionClient`, and `motion.move`), built up one method at a time into `palletizer.py`, plus packaging that same script as an inline module.
 
 ## Where to go next
