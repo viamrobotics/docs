@@ -23,6 +23,8 @@ Rather than typing the arm and gripper configs by hand, start with the SO-ARM101
 
 On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `so101` and select the `so101/discovery` result. Leave its name as the default and save the config. Saving is the moment `viam-server` downloads the SO-ARM101 module; the arm and gripper models you add later in this phase come from that same module, so the download happens only once.
 
+<!-- ASSET configure-add-discovery (UI+): the add-block dialog with "so101" searched and the so101/discovery result highlighted -->
+
 Before you open the discovery service's test panel, know what it is looking for: the serial port your SO-ARM101 is connected to over USB.
 
 - On Linux, the port shows up as `/dev/ttyUSB0` or `/dev/ttyACM0`.
@@ -52,6 +54,8 @@ If you are configuring the arm by hand instead, click the **+** icon, select **B
 
 Open the **CONTROL** tab and find the arm's test card. Test cards call the same API your Python code calls later in this workshop; jogging a joint here is a real API call that moves the hardware. Move one joint slider a small amount and press **Execute**, then watch the physical arm turn.
 
+<!-- ASSET control-arm-jog (VIDEO): jogging one joint slider on the arm test card and the physical arm turning in sync -->
+
 {{< alert title="The arm is about to move" color="caution" >}}
 Keep the workspace clear and change one joint a small amount at a time. Large or combined joint moves can drive the arm into the table or itself.
 {{< /alert >}}
@@ -75,6 +79,8 @@ If you used discovery, confirm the gripper component it created carries this sam
 If you are configuring the gripper by hand, click the **+** icon, select **Blocks**, search for `so101`, and select the `so101/gripper` result. Name it `gripper`, set `port` to the same value as the arm's, and save.
 
 Open the gripper's test card on the **CONTROL** tab. Press **Open** and watch the jaw open, then press **Grab** and watch it close.
+
+<!-- ASSET control-gripper-openclose (VIDEO): gripper test card Open then Grab, the physical jaw opening and closing -->
 
 {{< checkpoint >}}
 Pressing **Open** and **Grab** on the gripper's test card opens and closes the physical jaw. If nothing moves, confirm the gripper shows online in the CONFIGURE tab and that its `port` matches the arm's.

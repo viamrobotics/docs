@@ -35,6 +35,8 @@ Before you capture anything, set the printed markers in place. Print the cube-an
 
 With the markers fixed, you teach the arm two spots: the origin square on the mat and the staging square.
 
+<!-- ASSET mat-placement (PHOTO): printed pallet mat and staging square taped flat under the arm, x and y arrows aligned with the arm axes -->
+
 ## Disable torque
 
 The standard arm API covers moving the arm and reading its position, but hardware often has extra capabilities that do not fit those standard methods. Viam exposes those through **`DoCommand`**, a general-purpose command channel a module can use to accept commands specific to its hardware. The SO-ARM101 module uses it for a `set_torque` command that turns the servos' holding torque on and off.
@@ -50,6 +52,8 @@ On the arm's test card on the **CONTROL** tab, open the DoCommand box and send:
 
 Once the command succeeds, the arm's joints go slack and you can move it by hand.
 
+<!-- ASSET control-set-torque (UI): the arm test card DoCommand box with the set_torque enable:false command entered -->
+
 ## Read the arm's position from the app
 
 The arm's test card on the **CONTROL** tab shows its current **end position**: the x, y, and z of the arm's end point, in millimeters, plus an orientation. As you move the arm by hand with torque disabled, that readout updates to track it. Because you placed the arm's base at the world origin in Phase 2, this end position is also a position in the world frame.
@@ -61,6 +65,8 @@ You position the arm so the gripper's jaws sit where you want them, then read th
 ## Capture the staging pose
 
 With torque disabled, gently guide the gripper to the staging spot, the place where you will set down one cube at the start of every pick cycle in later phases. Hold the arm steady once it is in position, then read the **end position** off the arm's test card and record the x, y, and z. This is your staging pose. Move the arm slightly and watch the readout change, so you know it is tracking the live position, then guide it back and re-read if needed.
+
+<!-- ASSET teach-by-hand (VIDEO): back-driving the arm by hand to the staging square while the end-position readout on the test card updates live (signature moment) -->
 
 ## Capture the pallet origin corner
 

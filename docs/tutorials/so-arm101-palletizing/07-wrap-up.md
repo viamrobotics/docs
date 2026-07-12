@@ -14,6 +14,8 @@ draft: true
 
 Congratulations, you have finished the SO-ARM101 palletizing workshop! Starting from an empty machine, you configured a real desktop arm, taught it the cell by hand, and wrote the code that packs cubes onto a pallet.
 
+<!-- ASSET completed-pallet (PHOTO): the finished two-by-two-by-two stack of eight cubes on the pallet mat, arm at rest above it -->
+
 ## What you built
 
 - **Milestone one.** You drove the arm through a static bottom-layer pack from your own Python script, proving your connection, your configured resources, and the poses you taught by hand all hold up under real code.

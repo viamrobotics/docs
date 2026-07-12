@@ -131,11 +131,15 @@ Saving an inline Python module triggers a cloud build that takes about a minute.
 
 Save the module. The Viam app packages it and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed the `so101` module downloading back in Phase 2.
 
+<!-- ASSET logs-cloud-build (UI): the LOGS tab showing the inline module's ~1 minute cloud build and start -->
+
 {{< checkpoint >}}
 The module finishes its cloud build and starts without errors in the **LOGS** tab, and its resource shows online on the **CONFIGURE** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from `palletizer.py` is the most common cause.
 {{< /checkpoint >}}
 
 From the **CONTROL** tab, find your module's test card and send `{"action": "pack"}` to run a full eight-cube pack on the machine, no laptop script required. To compare your module against a finished one, read the complete [`palletizer.py` reference](https://github.com/viam-devrel/mini-palletizer/blob/main/reference/palletizer.py) in the companion repo.
+
+<!-- ASSET control-docommand-pack (UI+): the module test card with {"action": "pack"} entered, triggering a pack on the machine -->
 
 {{< checkpoint >}}
 Sending `{"action": "pack"}` from the test card runs the eight-cell pack loop on the machine, the same collision-free motion you drove from your laptop in Phase 5, now with no laptop in the loop and no hand-feed pause. If the command errors out partway through, check the LOGS tab for the raised exception, most likely a pose attribute that does not match what you taught in Phase 3, or the start-state collision from the held-cube geometry if you carried that over without a collision specification.
