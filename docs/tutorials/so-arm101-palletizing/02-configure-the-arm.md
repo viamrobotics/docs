@@ -84,7 +84,11 @@ Pressing **Open** and **Grab** on the gripper's test card opens and closes the p
 
 Adding the arm and gripper tells `viam-server` how to talk to them, but not where they sit in the cell. As Phase 1 covered, the frame system answers that question for every component in the workshop: a frame places a component relative to a parent, and every frame traces back to `world`. See [Frame system](/motion-planning/frame-system/overview/) for the general concept.
 
-Open the arm's card on the **CONFIGURE** tab and select **Frame**. Set the arm's frame so its base sits at the world origin: parent `world`, translation `(0, 0, 0)`, no rotation, which is what the default frame already describes. Leave the defaults and save. Keeping the base at the world origin means the poses you read back in Phase 3 are already world poses, which keeps your motion code simple.
+The **world frame** is the fixed reference point for the whole cell, the origin that every other position is measured from. Every frame in the system traces back to it. Placing the arm's frame with parent `world` and translation `(0, 0, 0)` puts the arm's base exactly at that origin.
+
+That choice matters for the next phase. Because the arm's base is the world origin, any position you read from the arm, including the poses you capture by hand in Phase 3, is already a position in the world frame, with no conversion needed. You use the arm itself as your measuring tool, and what it reports is directly usable.
+
+Open the arm's card on the **CONFIGURE** tab and select **Frame**. The default frame already describes parent `world`, translation `(0, 0, 0)`, and no rotation, so you can leave the defaults and save.
 
 ```json
 {

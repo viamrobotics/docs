@@ -24,11 +24,7 @@ draft: true
 
 Warehouse robots spend all day stacking boxes onto pallets. In this workshop you build the same thing in miniature, on your desk: an affordable SO-ARM101 arm that picks up cubes and stacks them neatly, two layers at a time.
 
-It is a hands-on introduction to robot manipulation with Viam, for developers and makers who would rather program a real arm than a simulator. You do not need industrial hardware or prior robotics experience, just a desktop arm you can build yourself. You configure it, teach it where the cubes and the pallet are by guiding it with your own hands, then write the Python that runs the whole packing routine. By the end, the arm packs a full stack of cubes on its own, driven entirely by code you wrote.
-
-## What you'll build
-
-You configure an SO-ARM101 arm and its finger gripper, teach it a small set of anchor poses by hand using its freedrive (torque-off) capability, then write a Python program that reads those poses back and plans a collision-free pick-and-stack. The finished cell packs a two-by-two-by-two stack of eight cubes onto a marked pallet, one cube at a time.
+It is a hands-on introduction to robot manipulation with Viam, for developers and makers who would rather program a real arm than a simulator. You do not need industrial hardware or prior robotics experience, just a desktop arm you can build yourself. You configure it, teach it where the cubes and the pallet are by guiding it with your own hands, then write the Python that runs the whole packing routine. By the end, the arm packs a full two-by-two-by-two stack of cubes on its own, driven entirely by code you wrote.
 
 <!-- ASSET hero-cell-overview (PHOTO): staged SO-ARM101 + cubes + pallet grid + staging spot -->
 
@@ -36,7 +32,7 @@ You configure an SO-ARM101 arm and its finger gripper, teach it a small set of a
 
 - **An SO-ARM101 arm** with its finger gripper, connected to your computer over USB.
 - **Eight cubes and a pallet mat.** You need eight cubes about 20 mm on a side, a two-by-two pallet grid to stack them on, and a staging spot to feed cubes from. The companion project includes a printable template: paper cube nets you fold into 20 mm cubes, and a mat that marks the pallet grid and the staging spot at the exact spacing the code expects. Print it, cut it out, and you are ready. Wooden or foam 20 mm cubes work too if you have them.
-- **A personal computer** running `viam-agent` and `viam-server`, with the arm plugged into it over USB.
+- **A personal computer** running `viam-server`, with the arm plugged into it over USB.
 
 ## Phases
 

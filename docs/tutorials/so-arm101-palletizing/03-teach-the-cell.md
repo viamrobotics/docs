@@ -15,7 +15,7 @@ languages: ["python"]
 draft: true
 ---
 
-In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading its position back from the Viam app. You capture two anchor poses this way, then compute the rest of the pallet grid from them arithmetically.
+In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading its position back from the Viam app. You capture two anchor poses this way; the code you write in Phase 4 computes the rest of the pallet grid from them.
 
 {{< alert title="The arm goes limp" color="caution" >}}
 Disabling torque lets you move the arm by hand, but it also means the arm no longer holds its position against gravity. It drops as soon as you disable torque, and stays free to fall until you re-enable it. Support the arm with one hand while torque is off, clear the workspace and cubes from underneath it, and re-enable torque before you send any motion command.
@@ -27,7 +27,9 @@ This cell needs eight target poses, one per cube, and teaching all eight by hand
 
 ## Disable torque
 
-The SO-ARM101 module exposes a `set_torque` command over `DoCommand`. On the arm's test card on the **CONTROL** tab, open the DoCommand box and send:
+The standard arm API covers moving the arm and reading its position, but hardware often has extra capabilities that do not fit those standard methods. Viam exposes those through **`DoCommand`**, a general-purpose command channel a module can use to accept commands specific to its hardware. The SO-ARM101 module uses it for a `set_torque` command that turns the servos' holding torque on and off.
+
+On the arm's test card on the **CONTROL** tab, open the DoCommand box and send:
 
 ```json
 {
@@ -40,7 +42,7 @@ Once the command succeeds, the arm's joints go slack and you can move it by hand
 
 ## Read the arm's position from the app
 
-You do not need any code to read where the arm is. The arm's test card on the **CONTROL** tab shows its current **end position**: the x, y, and z of the arm's end point, in millimeters, plus an orientation. As you move the arm by hand with torque disabled, that readout updates to track it. Because you placed the arm's base at the world origin in Phase 2, this end position is also a world pose, which is exactly what the motion service expects when you write `palletizer.py` in Phase 4.
+The arm's test card on the **CONTROL** tab shows its current **end position**: the x, y, and z of the arm's end point, in millimeters, plus an orientation. As you move the arm by hand with torque disabled, that readout updates to track it. Because you placed the arm's base at the world origin in Phase 2, this end position is also a position in the world frame.
 
 You position the arm so the gripper's jaws sit where you want them, then read the end position off the card. Because the gripper is rigidly attached, driving the arm's end point back to that same pose later returns the jaws to the same spot.
 
@@ -66,41 +68,6 @@ Send the same `DoCommand` with `enable` flipped to `true`:
 ```
 
 The arm's joints stiffen and it holds its current position. Confirm this by letting go of the arm; it should stay put instead of drooping.
-
-## Derive the grid
-
-With the pallet origin corner captured, the remaining seven target poses follow from two constants: the center-to-center spacing between cube slots, and the cube's own size, which sets the offset between the two stacked layers.
-
-```python
-PITCH = 30  # mm, center-to-center spacing between adjacent pallet cells
-CUBE = 20  # mm, cube side length, and the z offset between layers
-```
-
-The four bottom-layer cells are the origin corner plus every combination of `(0, PITCH)` in x and y:
-
-```text
-(0, 0)  (PITCH, 0)
-(0, PITCH)  (PITCH, PITCH)
-```
-
-The top layer repeats those same four x, y offsets at `z + CUBE`. In Phase 4, the companion project's `helpers.py` wraps this same arithmetic in a `grid` function:
-
-```python
-def grid(origin, pitch, cube):
-    """Return the eight target poses for a two-layer, four-cell pallet,
-    given the bottom-layer origin corner (cell [0, 0])."""
-    bottom = [
-        Pose(x=origin.x + dx, y=origin.y + dy, z=origin.z)
-        for dx in (0, pitch)
-        for dy in (0, pitch)
-    ]
-    top = [Pose(x=p.x, y=p.y, z=p.z + cube) for p in bottom]
-    return bottom + top
-```
-
-These are positions only. In Phase 4 you apply a straight-down tool orientation to each one with a `down_pose` helper before sending it to the motion service.
-
-The staging pose is not part of this grid. It stays a single fixed pose for the whole pack sequence: you hand-feed one cube to that same spot at the start of every cycle, and the arm always picks from there.
 
 ## Save your anchors
 

@@ -41,10 +41,60 @@ Start from [helpers.py](https://github.com/viam-devrel/mini-palletizer/blob/main
 - `helpers.connect()`, an `async` function that returns a connected `RobotClient`.
 - The arm's resource name (`helpers.ARM`), which you hand to the motion service, plus the gripper and motion-service names (`helpers.GRIPPER`, `helpers.MOTION`), which you pass to `from_robot`. All three name resources configured in Phase 2.
 - `down_pose(x, y, z)`, which returns a `Pose` at that position with the tool pointing straight down.
-- `helpers.grid(origin, pitch, cube)`, the same function from Phase 3 that expands one origin corner into the eight target poses of a two-layer, four-cell pallet.
+- `helpers.grid(origin, pitch, cube)`, which expands one origin corner into the eight target poses of a two-layer, four-cell pallet (explained in the next section).
 - `helpers.STAGING_POSE` and `helpers.PALLET_ORIGIN`, the two anchor poses you captured by hand in Phase 3.
 
-You do not rewrite any of this. `palletizer.py` imports these names and composes them into motion calls.
+`palletizer.py` imports these names and composes them into motion calls.
+
+## The pallet grid
+
+You captured one pallet corner in Phase 3. The other seven target poses follow from two constants: the center-to-center spacing between cells, and the cube's size, which sets the gap between the two stacked layers.
+
+```python
+PITCH = 30  # mm, center-to-center spacing between adjacent pallet cells
+CUBE = 20  # mm, cube side length, and the z offset between layers
+```
+
+The four bottom-layer cells are the origin corner plus every combination of `0` and `PITCH` in x and y. The top layer repeats those four positions one `CUBE` higher in z, giving eight target poses in all: four on the pallet and four stacked directly on top.
+
+<!-- ASSET grid-iso (DIAGRAM): isometric view of the 2x2x2 cube stack, cells 0-7, origin corner (cell 0) and the z + CUBE top layer labeled -->
+
+```text
+  top layer (cells 4-7), one CUBE higher in z
+       +-----+-----+
+       |  4  |  5  |
+       +-----+-----+
+       |  6  |  7  |
+       +-----+-----+
+            stacked directly above
+  bottom layer (cells 0-3), resting on the pallet
+       +-----+-----+
+       |  0  |  1  |
+       +-----+-----+
+       |  2  |  3  |
+       +-----+-----+
+       ^
+       origin corner (cell 0) = the pallet pose you captured
+```
+
+`helpers.grid` builds that list of eight poses for you from the origin corner you captured:
+
+```python
+def grid(origin, pitch, cube):
+    """Return the eight target poses for a two-layer, four-cell pallet,
+    given the bottom-layer origin corner (cell [0, 0])."""
+    bottom = [
+        Pose(x=origin.x + dx, y=origin.y + dy, z=origin.z)
+        for dx in (0, pitch)
+        for dy in (0, pitch)
+    ]
+    top = [Pose(x=p.x, y=p.y, z=p.z + cube) for p in bottom]
+    return bottom + top
+```
+
+These are positions only. You apply a straight-down tool orientation to each one with the `down_pose` helper before sending it to the motion service, which the `place` method does below.
+
+The staging pose is not part of this grid. It stays a single fixed pose for the whole routine: you hand-feed one cube to that same spot at the start of every cycle, and the arm always picks from there.
 
 ## Build palletizer.py
 
@@ -79,7 +129,7 @@ class Palletizer:
         self.placed = []
 ```
 
-`PITCH` and `CUBE` are the same constants Phase 3 used to derive the grid. `APPROACH` and `GRASP_DEPTH` are new: `APPROACH` is how high above a target pose the arm hovers before descending, and `GRASP_DEPTH` is how far past a cube's top surface the gripper descends so its fingers close around the cube rather than skim its top. `self.placed` tracks which grid cells already hold a cube.
+`PITCH` and `CUBE` are the constants from the pallet grid above. `APPROACH` and `GRASP_DEPTH` are new: `APPROACH` is how high above a target pose the arm hovers before descending, and `GRASP_DEPTH` is how far past a cube's top surface the gripper descends so its fingers close around the cube rather than skim its top. `self.placed` tracks which grid cells already hold a cube.
 
 There is nothing to run yet. This class only sets up handles; the next method makes the first move.
 
