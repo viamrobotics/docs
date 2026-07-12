@@ -21,6 +21,8 @@ You are building a miniature palletizing cell. An SO-ARM101 arm picks cubes, one
 
 <!-- ASSET diagram-cell-layout (DIAGRAM): arm base, staging spot, 2x2 pallet grid, two layers -->
 
+{{<imgproc src="/tutorials/so-arm101-palletizing/diagram-cell-layout.svg" declaredimensions=true class="aligncenter" style="max-width:720px" alt="Top-down layout of the cell: the arm base at the world origin reaches over a staging spot where you feed one cube and a two-by-two pallet grid at 30 mm pitch with the origin corner (cell 0) highlighted. A curved arrow shows the pick-then-place flow from staging to pallet, and an inset shows two cubes stacked, since each cell holds two layers.">}}
+
 ## The three layers
 
 A Viam machine is made of three layers that each do one job:
