@@ -15,7 +15,7 @@ languages: ["python"]
 draft: true
 ---
 
-In this phase you write `palletizer.py`, a Python script that reads back the two anchor poses from Phase 3 and drives the arm through a packing routine for each of the four bottom-layer cells. Getting through this phase is milestone one: you drive the arm through a static pack from your own code, on real hardware.
+In this phase you write `palletizer.py`, a Python script that reads back the two anchor poses from Phase 3 and drives the arm through a packing routine for each of the four bottom-layer cells. Getting through this phase is milestone one: you drive the arm through a static pack from your own code.
 
 ## Set up the companion project
 

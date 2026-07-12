@@ -53,7 +53,7 @@ Over the next two sections you move the pack loop into this skeleton: the typed 
 
 ## Dependency injection
 
-A script builds its resource handles once, right after it connects: `Gripper.from_robot(robot, helpers.GRIPPER)`, `MotionClient.from_robot(robot, helpers.MOTION)`, and `helpers.ARM` for the arm's name. A module cannot do that, so the module framework hands your module its dependencies instead, through two lifecycle methods:
+A script builds its resource handles once, right after it connects: `Gripper.from_robot(robot, helpers.GRIPPER)`, `MotionClient.from_robot(robot, helpers.MOTION)`, and `helpers.ARM` for the arm's name. A module works differently: it relies on `viam-server` to provide its dependencies to its constructor, which it declares through a configuration validation step. Two lifecycle methods carry this:
 
 - `validate_config` runs before your module starts and declares which resources it depends on, so `viam-server` knows to hold your module back until those resources are online. It reads the module's own config attributes, where each attribute value is the name of a resource on the machine, and returns those names as required dependencies.
 - `new` receives the resolved dependencies as a mapping keyed by resource name, and this is where you build the typed handles `pick`, `place`, and `pack` call. It reads the same config attributes to look each dependency up by its configured name.
@@ -127,7 +127,7 @@ async def do_command(self, command, *, timeout=None, **kwargs):
 Saving an inline Python module triggers a cloud build that takes about a minute. Give it that minute rather than assuming the save failed.
 {{< /alert >}}
 
-## Reload and run on the machine
+## Run the pack sequence
 
 Save the module. The Viam app packages it and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed the `so101` module downloading back in Phase 2.
 
