@@ -12,7 +12,6 @@ phase_total: 6
 prev: "/tutorials/so-arm101-palletizing/configure-the-arm/"
 next: "/tutorials/so-arm101-palletizing/pack-from-python/"
 languages: ["python"]
-draft: true
 ---
 
 In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading its position back from the Viam app. You capture two anchor poses this way; the code you write in Phase 4 computes the rest of the pallet grid from them.

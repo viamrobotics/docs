@@ -11,7 +11,6 @@ phase: 1
 phase_total: 6
 next: "/tutorials/so-arm101-palletizing/configure-the-arm/"
 languages: ["python"]
-draft: true
 ---
 
 Before you configure anything, this phase gives you a mental model of the cell you are about to build and the platform it runs on. Everything after this leans on the ideas introduced here.

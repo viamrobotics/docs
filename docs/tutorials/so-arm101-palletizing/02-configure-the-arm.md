@@ -12,7 +12,6 @@ phase_total: 6
 prev: "/tutorials/so-arm101-palletizing/platform-mental-model/"
 next: "/tutorials/so-arm101-palletizing/teach-the-cell/"
 languages: ["python"]
-draft: true
 ---
 
 In this phase you configure the arm and gripper, verify them with their test cards on the **CONTROL** tab, then place both in the frame system so the rest of the platform knows where they sit.

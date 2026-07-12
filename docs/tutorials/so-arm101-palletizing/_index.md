@@ -19,7 +19,6 @@ hardware:
   - "Personal computer"
 companion_repo: "https://github.com/viam-devrel/mini-palletizer"
 no_list: true
-draft: true
 ---
 
 Warehouse robots spend all day stacking boxes onto pallets. In this workshop you build the same thing in miniature, on your desk: an affordable SO-ARM101 arm that picks up cubes and stacks them neatly, two layers at a time.

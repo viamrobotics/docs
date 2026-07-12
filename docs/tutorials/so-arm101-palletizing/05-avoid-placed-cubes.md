@@ -12,7 +12,6 @@ phase_total: 6
 prev: "/tutorials/so-arm101-palletizing/pack-from-python/"
 next: "/tutorials/so-arm101-palletizing/inline-module/"
 languages: ["python"]
-draft: true
 ---
 
 In this phase you teach the motion service about the cubes already on the pallet and the cube in the gripper, so it plans around them instead of through them. Finishing this phase is milestone two: a full, collision-free two-layer pack.

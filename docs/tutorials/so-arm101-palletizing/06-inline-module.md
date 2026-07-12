@@ -12,7 +12,6 @@ phase_total: 6
 prev: "/tutorials/so-arm101-palletizing/avoid-placed-cubes/"
 next: "/tutorials/so-arm101-palletizing/wrap-up/"
 languages: ["python"]
-draft: true
 ---
 
 This phase is optional. It takes the working pack loop from Phase 5 off your laptop and onto the machine, where it runs as a module and can be triggered on demand instead of from a script.

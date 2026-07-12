@@ -9,7 +9,6 @@ workshop: "so-arm101-palletizing"
 toc_hide: true
 prev: "/tutorials/so-arm101-palletizing/inline-module/"
 languages: ["python"]
-draft: true
 ---
 
 Congratulations, you have finished the SO-ARM101 palletizing workshop! Starting from an empty machine, you configured a real desktop arm, taught it the cell by hand, and wrote the code that packs cubes onto a pallet.
