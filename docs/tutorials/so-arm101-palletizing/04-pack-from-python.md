@@ -59,23 +59,7 @@ The four bottom-layer cells are the origin corner plus every combination of `0` 
 
 <!-- ASSET grid-iso (DIAGRAM): isometric view of the 2x2x2 cube stack, cells 0-7, origin corner (cell 0) and the z + CUBE top layer labeled -->
 
-```text
-  top layer (cells 4-7), one CUBE higher in z
-       +-----+-----+
-       |  4  |  5  |
-       +-----+-----+
-       |  6  |  7  |
-       +-----+-----+
-            stacked directly above
-  bottom layer (cells 0-3), resting on the pallet
-       +-----+-----+
-       |  0  |  1  |
-       +-----+-----+
-       |  2  |  3  |
-       +-----+-----+
-       ^
-       origin corner (cell 0) = the pallet pose you captured
-```
+{{<imgproc src="/tutorials/so-arm101-palletizing/grid-iso.png" resize="1200x" declaredimensions=true alt="Isometric view of the finished pallet: eight cubes stacked two layers of four at 30 mm pitch. The bottom layer holds cells 0 to 3 and the top layer holds cells 4 to 7, one cube height above. The origin corner, cell 0, is highlighted.">}}
 
 `helpers.grid` builds that list of eight poses for you from the origin corner you captured:
 

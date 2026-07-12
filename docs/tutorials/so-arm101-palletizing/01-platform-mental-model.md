@@ -57,17 +57,17 @@ Open the **CONNECT** tab on your machine's page and look at the code sample it g
 Everything a Viam machine does is modeled as a resource, and resources split into components and services.
 
 - The arm and the gripper are **components**: each one wraps a piece of physical hardware and exposes a standard API for it. An arm moves to a pose; a gripper opens and closes.
-- The **motion service** is a service: software that plans how the arm should move, rather than hardware you can point at. You configure it like any other resource and call its API to move the arm.
+- The **motion service** is a service: software that plans how the arm should move, rather than hardware you can point at. It is a **builtin** service, so it ships with `viam-server` and needs no configuration; you just call its API. The arm and gripper components, by contrast, come from a module that `viam-server` downloads when you configure them in Phase 2.
 
 ## Three robotics concepts to learn
 
 Three concepts carry the whole workshop. This section only previews them; you will work with each one directly in a later phase.
 
-The **frame system** answers "where is everything, relative to the arm?" Every pose you teach, and every obstacle you configure, is a position in the frame system, expressed relative to the arm's base. You teach the two key positions to the arm by hand in Phase 3.
+The **frame system** answers "where is everything around the robot, and how is it related?" It tracks the position of every component and object in the cell, and the parent-child relationships between them, all traced back to the world origin. You teach the two key positions to the arm by hand in Phase 3. See [Frame system](/motion-planning/frame-system/) for the full picture.
 
 **Motion planning** answers "how does the arm get there?" Given a target pose, the motion service works out a path of joint movements that reaches it without colliding with anything.
 
-**WorldState** answers "what must the planner avoid?" It is the set of obstacles, expressed in the frame system, that the motion service treats as solid. In this workshop, WorldState grows as you pack: once a cube is sitting on the pallet, it becomes an obstacle the planner routes around when placing the next one.
+**WorldState** answers "what is in the world around the robot?" On each move, it tells the motion service what to account for: **obstacles**, the things to avoid, and **transforms**, the things that move with the arm, like the gripper and any cube it is holding. In this workshop, WorldState grows as you pack: each cube already on the pallet is an obstacle to route around, and the cube in the gripper rides along as a transform. See [Obstacles and WorldState](/motion-planning/obstacles/) for more.
 
 {{< checkpoint >}}
 Open your machine in the Viam app and confirm the green **Live** indicator, so you know `viam-server` is running and reachable before you configure anything. You should also be able to say, in your own words, what the frame system, the motion service, and WorldState each do, since every later phase builds on them. If the machine is not Live, start `viam-server` on your computer before continuing.

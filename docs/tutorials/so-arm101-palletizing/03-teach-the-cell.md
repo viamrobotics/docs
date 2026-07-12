@@ -25,6 +25,16 @@ Disabling torque lets you move the arm by hand, but it also means the arm no lon
 
 This cell needs eight target poses, one per cube, and teaching all eight by hand would be slow and error-prone. Instead, you capture just two anchors: the staging spot, where you hand-feed each cube, and the pallet's origin corner, the bottom-layer cell at grid position [0, 0]. Every other pallet position is a fixed offset from that origin corner, so once you know the origin and the grid spacing, you compute the remaining seven poses instead of teaching them individually.
 
+## Place the pallet mat and staging marker
+
+Before you capture anything, set the printed markers in place. Print the cube-and-pallet template from the [companion project](https://github.com/viam-devrel/mini-palletizer) at 100% scale and cut out the pallet mat and the staging square. (If you are using your own cubes, you still want the mat and staging marker for consistent positions.)
+
+- Set the **pallet mat** on a flat surface within the arm's reach. Line up the mat's **x** and **y** arrows with the arm's x and y axes, which you can see on the world frame in the **3D scene** tab. The mat's **origin** square is the pallet corner you will teach.
+- Set the **staging square** to one side of the pallet, also within reach. This is where you hand-feed each cube.
+- **Tape both down.** They must not move while you teach poses or while the arm runs the pack later, or the cubes will miss their marks. Once they are fixed, leave them put for the rest of the workshop.
+
+With the markers fixed, you teach the arm two spots: the origin square on the mat and the staging square.
+
 ## Disable torque
 
 The standard arm API covers moving the arm and reading its position, but hardware often has extra capabilities that do not fit those standard methods. Viam exposes those through **`DoCommand`**, a general-purpose command channel a module can use to accept commands specific to its hardware. The SO-ARM101 module uses it for a `set_torque` command that turns the servos' holding torque on and off.
