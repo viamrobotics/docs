@@ -114,8 +114,8 @@ Copy a directory recursively:
 viam machines part cp --part=<part-id> -r ./local-dir machine:/home/user/
 ```
 
-File permissions are preserved by default, matching `scp` behavior.
-Use `--preserve` to also keep modification timestamps and force exact permission bits (bypassing umask):
+File permissions are preserved by default, respecting the destination `umask`.
+Use `--preserve` to also keep modification timestamps and force exact permission bits (overriding the destination `umask`):
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part cp --part=<part-id> -r --preserve ./local-dir machine:/home/user/

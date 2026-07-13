@@ -1278,7 +1278,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
-| `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, bypassing umask. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
+| `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, overriding the destination `umask`. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
 
 ### `machines part tunnel`
 
