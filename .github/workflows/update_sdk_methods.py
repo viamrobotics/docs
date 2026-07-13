@@ -965,6 +965,9 @@ def write_markdown(type, names, methods):
                             with open(proto_override_file, 'r') as f:
                                 file_contents = f.read().strip()
                                 file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
+                                ## Same, for angle-bracket shortcodes ({{< alert >}}...{{< /alert >}}), which
+                                ## otherwise leak an unclosed shortcode opener into the table description:
+                                file_contents = regex.sub(r'\{\{<.*?>\}\}.*?\{\{< \/[a-b].*? >\}\}', '', file_contents, flags=regex.DOTALL)
                                 search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
                                 ## If the proto description contains any MD links, strip them out:

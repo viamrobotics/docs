@@ -2,7 +2,7 @@
 | Method Name | Description |
 | ----------- | ----------- |
 | [`Move`](/dev/reference/apis/services/motion/#move) | The `Move` method is the primary way to move multiple components, or to move any object to any other location. |
-| [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) | {{< alert title="Not supported by the builtin motion service" color="caution" >}} The builtin motion service no longer implements `MoveOnMap` and returns the error `MoveOnMap not supported by builtin` when called. |
+| [`MoveOnMap`](/dev/reference/apis/services/motion/#moveonmap) | Move a base component to a destination pose on a SLAM map. |
 | [`MoveOnGlobe`](/dev/reference/apis/services/motion/#moveonglobe) | Move a base component to a destination GPS point, represented in geographic notation _(latitude, longitude)_. |
 | [`GetPose`](/dev/reference/apis/services/motion/#getpose) | `GetPose` gets the location and orientation of a component within the frame system. |
 | [`StopPlan`](/dev/reference/apis/services/motion/#stopplan) | Stop a base component being moved by an in progress `MoveOnGlobe` or `MoveOnMap` call. |
