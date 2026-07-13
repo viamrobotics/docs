@@ -9,7 +9,7 @@ date: "2022-01-01"
 aliases:
   - /dev/reference/apis/services/navigation/
   - /appendix/apis/services/navigation/
-_build:
+build:
   render: always
   list: never
   publishResources: true

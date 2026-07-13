@@ -6,7 +6,7 @@ type: "docs"
 tags: ["slam", "services"]
 description: "Simultaneous localization and mapping (SLAM) allows your machine to create a map of its surroundings and find its location within that map."
 date: "2022-01-01"
-_build:
+build:
   render: always
   list: never
   publishResources: true

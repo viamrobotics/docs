@@ -7,10 +7,10 @@ description: "The navigation service uses GPS to autonomously navigate a rover t
 tags: ["navigation", "services", "base", "rover"]
 date: "2022-01-01"
 aliases:
-  - /operate/reference/services/navigation/
+  - /reference/services/navigation/
   - /services/navigation/
   - /mobility/navigation/
-_build:
+build:
   render: always
   list: never
   publishResources: true
@@ -21,14 +21,14 @@ Support for the navigation service has been discontinued.
 This page is retained for reference only.
 {{< /alert >}}
 
-The navigation service is the stateful definition of Viam's [motion service](/operate/reference/services/motion/).
-It uses GPS to autonomously navigate a rover [base](/operate/reference/components/base/) to user-defined waypoints.
+The navigation service is the stateful definition of Viam's [motion service](/reference/services/motion/).
+It uses GPS to autonomously navigate a rover [base](/reference/components/base/) to user-defined waypoints.
 
 Configure your base with a navigation service, add waypoints, and set the mode of the service to [**Waypoint**](/reference/apis/services/navigation/#setmode) to move your rover along a defined path at your desired motion configuration.
 
 ## Requirements
 
-You must configure a [base](/operate/reference/components/base/) with [movement sensors](/operate/reference/components/movement-sensor/) as part of your machine to configure a navigation service.
+You must configure a [base](/reference/components/base/) with [movement sensors](/reference/components/movement-sensor/) as part of your machine to configure a navigation service.
 
 To use the navigation service, configure a stack of movement sensors that implement the following methods in their {{< glossary_tooltip term_id="model" text="models'" >}} implementations of the [movement sensor API](/reference/apis/components/movement-sensor/#api):
 
@@ -155,25 +155,25 @@ The following attributes are available for `Navigation` services:
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
 | `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
-| `base` | string | **Required** | The `name` you have configured for the [base](/operate/reference/components/base/) you are operating with this service. |
-| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/operate/reference/components/movement-sensor/) you have configured for the base you are operating with this service. |
-| `motion_service` | string | Optional | The `name` of the [motion service](/operate/reference/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
-| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/operate/reference/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/operate/reference/services/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
+| `base` | string | **Required** | The `name` you have configured for the [base](/reference/components/base/) you are operating with this service. |
+| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/reference/components/movement-sensor/) you have configured for the base you are operating with this service. |
+| `motion_service` | string | Optional | The `name` of the [motion service](/reference/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
+| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/reference/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/reference/services/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
 | `position_polling_frequency_hz` | float | Optional | The frequency in Hz to poll for the position of the machine. <br> Default: `1` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in Hz to poll each vision service for new obstacles. <br> Default: `1` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a machine is allowed to deviate from the motion plan. <br> Default: `2.6`|
-| `degs_per_sec` | float | Optional | The default angular velocity for the [base](/operate/reference/components/base/) in degrees per second. <br> Default: `20` |
-| `meters_per_sec` | float | Optional | The default linear velocity for the [base](/operate/reference/components/base/) in meters per second. <br> Default: `0.3` |
-| `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/operate/reference/services/motion/) for more information. |
-| `bounding_regions` | obj | Optional | Set of bounds which the robot must remain within while navigating. See the [motion service](/operate/reference/services/motion/) for more information. |
+| `degs_per_sec` | float | Optional | The default angular velocity for the [base](/reference/components/base/) in degrees per second. <br> Default: `20` |
+| `meters_per_sec` | float | Optional | The default linear velocity for the [base](/reference/components/base/) in meters per second. <br> Default: `0.3` |
+| `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/reference/services/motion/) for more information. |
+| `bounding_regions` | obj | Optional | Set of bounds which the robot must remain within while navigating. See the [motion service](/reference/services/motion/) for more information. |
 
 ### Configure and calibrate the frame system service for GPS navigation
 
 {{% alert title="Info" color="info" %}}
 
-The [frame system service](/operate/reference/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
+The [frame system service](/reference/services/frame-system/) is an internally managed and mostly static system for storing the reference frame of each component of a machine within a coordinate system configured by the user.
 
-It stores the required contextual information for Viam's services like [Motion](/operate/reference/services/motion/) and [Vision](/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/operate/reference/components/movement-sensor/).
+It stores the required contextual information for Viam's services like [Motion](/reference/services/motion/) and [Vision](/reference/services/vision/) to use the position and orientation readings returned by components like [movement sensors](/reference/components/movement-sensor/).
 
 {{% /alert %}}
 
@@ -181,7 +181,7 @@ To make sure your rover base's autonomous GPS navigation with the navigation ser
 
 #### Configure
 
-Add [reference frames](/reference/services/frame-system/#configuration) to your rover [base](/operate/reference/components/base/) and [movement sensor](/operate/reference/components/movement-sensor/) configurations:
+Add [reference frames](/reference/services/frame-system/#configuration) to your rover [base](/reference/components/base/) and [movement sensor](/reference/components/movement-sensor/) configurations:
 
 - Navigate to the **CONFIGURE** tab of your machine's page.
 - Find your base configuration card and click the **Frame** button.
@@ -208,7 +208,7 @@ Add [reference frames](/reference/services/frame-system/#configuration) to your 
   {{<imgproc src="/services/navigation/full-frame-movement-sensor-ui.png" resize="700x" style="width: 300px" alt="The frame card for the movement sensor.">}}
 
 You can also adjust the `orientation` and `geometry` of your movement sensor or base, if necessary.
-See [the frame system service](/operate/reference/services/frame-system/) for instructions.
+See [the frame system service](/reference/services/frame-system/) for instructions.
 
 #### Calibrate
 
@@ -240,7 +240,7 @@ Here, you can add waypoints and obstacles and view the position of your rover ba
 ## Navigation concepts
 
 The following concepts are important to understand when utilizing the navigation service.
-Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/operate/reference/components/movement-sensor/), which can then be used by your machine to navigate across space.
+Each concept is a type of relative or absolute measurement, taken by a [movement sensor](/reference/components/movement-sensor/), which can then be used by your machine to navigate across space.
 
 Here's how to use the following types of measurements:
 
@@ -253,7 +253,7 @@ Here's how to use the following types of measurements:
 
 ### Compass heading
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/operate/reference/components/movement-sensor/) take compass heading measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/reference/components/movement-sensor/) take compass heading measurements:
 
 - [gps-nmea](https://github.com/viam-modules/gps/) - some GPS hardware only report heading while moving.
 - [gps-nmea-rtk-pmtk](https://github.com/viam-modules/gps/) - some GPS hardware only report heading while moving.
@@ -270,16 +270,16 @@ heading, err := gps.CompassHeading(context.Background(), nil)
 
 Use compass heading readings to determine the _bearing_ of your machine, or, the [cardinal direction](https://en.wikipedia.org/wiki/Cardinal_direction) that your machine is facing.
 
-To read compass headings, [configure a capable movement sensor](/operate/reference/components/movement-sensor/) on your machine.
+To read compass headings, [configure a capable movement sensor](/reference/components/movement-sensor/) on your machine.
 Then use the movement sensor API's [`GetCompassHeading()`](/reference/apis/components/movement-sensor/#getcompassheading) method to get readings from the sensor.
 
 ### Orientation
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/operate/reference/components/movement-sensor/) take orientation measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/reference/components/movement-sensor/) take orientation measurements:
 
 - [imu-wit](https://github.com/viam-modules/wit-motion/)
 - [imu-wit-hwt905](https://github.com/viam-modules/wit-motion/)
-- [wheeled-odometry](/operate/reference/components/movement-sensor/wheeled-odometry/)
+- [wheeled-odometry](/reference/components/movement-sensor/wheeled-odometry/)
 
 An example of an `Orientation` reading:
 
@@ -290,20 +290,20 @@ orientation, err := imuwit.Orientation(context.Background(), nil)
 
 Use orientation readings to determine the orientation of an object in 3D space as an [_orientation vector_](/motion-planning/reference/orientation-vectors/).
 An orientation vector indicates how it is rotated relative to an origin coordinate system around the x, y, and z axes.
-You can choose the origin reference frame by configuring it using Viam's [frame system](/operate/reference/services/frame-system/).
+You can choose the origin reference frame by configuring it using Viam's [frame system](/reference/services/frame-system/).
 The `GetOrientation` readings will report orientations relative to that initial frame.
 
-To read orientation, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/) on your machine.
+To read orientation, first [configure a capable movement sensor](/reference/components/movement-sensor/) on your machine.
 Additionally, follow [these instructions](/reference/services/frame-system/#configuration) to configure the geometries of each component of your machine within the frame system.
 Then use the movement sensor API's [`GetOrientation()`](/reference/apis/components/movement-sensor/#getorientation) method to get orientation readings.
 
 ### Angular velocity
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/operate/reference/components/movement-sensor/) component take angular velocity measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/reference/components/movement-sensor/) component take angular velocity measurements:
 
 - [imu-wit](https://github.com/viam-modules/wit-motion/)
 - [imu-wit-hwt905](https://github.com/viam-modules/wit-motion/)
-- [wheeled-odometry](/operate/reference/components/movement-sensor/wheeled-odometry/)
+- [wheeled-odometry](/reference/components/movement-sensor/wheeled-odometry/)
 - [gyro-mpu6050](https://github.com/viam-modules/tdk-invensense/)
 
 An example of an `AngularVelocity` reading:
@@ -315,17 +315,17 @@ angularVelocity, err := imu.AngularVelocity(context.Background(), nil)
 
 Use angular velocity readings to determine the speed and direction at which your machine is rotating.
 
-To get an angular velocity reading, first [configure a capable movement sensor](/operate/reference/components/movement-sensor/) on your machine.
+To get an angular velocity reading, first [configure a capable movement sensor](/reference/components/movement-sensor/) on your machine.
 Then use the movement sensor API's [`GetAngularVelocity()`](/reference/apis/components/movement-sensor/#getangularvelocity) method to get angular velocity readings from the sensor.
 
 ### Position
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/operate/reference/components/movement-sensor/) component take position measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of the [movement sensor](/reference/components/movement-sensor/) component take position measurements:
 
 - [gps-nmea](https://github.com/viam-modules/gps/)
 - [gps-nmea-rtk-pmtk](https://github.com/viam-modules/gps/)
 - [gps-nmea-rtk-serial](https://github.com/viam-modules/gps/)
-- [wheeled-odometry](/operate/reference/components/movement-sensor/wheeled-odometry/)
+- [wheeled-odometry](/reference/components/movement-sensor/wheeled-odometry/)
 
 An example of a `Position` reading:
 
@@ -337,17 +337,17 @@ position, altitude, err := imu.Position(context.Background(), nil)
 Use position readings to determine the GPS coordinates of an object in 3D space or its position in the geographic coordinate system [(GCS)](https://en.wikipedia.org/wiki/Geographic_coordinate_system).
 These position readings reflect the _absolute_ position of components.
 
-To get a position, [configure a capable movement sensor](/operate/reference/components/movement-sensor/) on your machine.
+To get a position, [configure a capable movement sensor](/reference/components/movement-sensor/) on your machine.
 Then use the movement sensor API's [`GetPosition()`](/reference/apis/components/movement-sensor/#getposition) method to get position readings from the sensor.
 
 ### Linear velocity
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/operate/reference/components/movement-sensor/) take linear velocity measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/reference/components/movement-sensor/) take linear velocity measurements:
 
 - [gps-nmea](https://github.com/viam-modules/gps/)
 - [gps-nmea-rtk-pmtk](https://github.com/viam-modules/gps/)
 - [gps-nmea-rtk-serial](https://github.com/viam-modules/gps/)
-- [wheeled-odometry](/operate/reference/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
+- [wheeled-odometry](/reference/components/movement-sensor/wheeled-odometry/) (provides a relative estimate only based on where the base component has started)
 
 An example of a `LinearVelocity` reading:
 
@@ -358,12 +358,12 @@ linearVelocity, err := imu.LinearVelocity(context.Background(), nil)
 
 Use linear velocity readings to determine the speed at which your machine is moving through space.
 
-To get linear velocity, [configure a capable movement sensor](/operate/reference/components/movement-sensor/) on your machine.
+To get linear velocity, [configure a capable movement sensor](/reference/components/movement-sensor/) on your machine.
 Then use the movement sensor API's [`GetLinearVelocity()`](/reference/apis/components/movement-sensor/#getlinearvelocity) method to get linear velocity readings from the sensor.
 
 ### Linear acceleration
 
-The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/operate/reference/components/movement-sensor/) take linear acceleration measurements:
+The following {{< glossary_tooltip term_id="model" text="models" >}} of [movement sensor](/reference/components/movement-sensor/) take linear acceleration measurements:
 
 - [accel-adxl345](https://github.com/viam-modules/analog-devices/)
 - [imu-wit](https://github.com/viam-modules/wit-motion/)
@@ -379,5 +379,5 @@ linearAcceleration, err := imu.LinearAcceleration(context.Background(), nil)
 
 You can use linear acceleration readings to determine the rate of change of the [linear velocity](#linear-velocity) of your machine, or, the acceleration at which your machine is moving through space.
 
-To get linear acceleration, [configure a capable movement sensor](/operate/reference/components/movement-sensor/) on your machine.
+To get linear acceleration, [configure a capable movement sensor](/reference/components/movement-sensor/) on your machine.
 Then use the movement sensor API's [`GetLinearAcceleration()`](/reference/apis/components/movement-sensor/#getlinearacceleration) method to get linear acceleration readings from the sensor.
