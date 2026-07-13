@@ -15,10 +15,7 @@ Install `viam-server` on the computer or single-board computer (SBC) that is dir
 
    On most Linux operating systems, you can run `uname -m` to confirm your computer's architecture.
 
-   If you selected **Linux / Aarch 64** or **Linux / x86** also select your installation method:
-
-   - `viam-agent` (recommended): installs viam-agent, which will automatically install (and update) viam-server **and** provide additional functionality such as [provisioning](/fleet/provision-devices/) and operating system update configuration.
-   - `manual`: installs only `viam-server` on your machine.
+   For **Linux / Aarch64** and **Linux / x86_64**, Viam installs [`viam-agent`](/reference/viam-agent/), which installs and automatically updates `viam-server` **and** provides additional functionality such as [provisioning](/fleet/provision-devices/) and operating system update configuration.
 
 1. Follow the instructions on the page to install `viam-server` and connect it to the cloud with your machine’s unique credentials.
 
