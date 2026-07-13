@@ -7,8 +7,6 @@ tags: ["slam", "services"]
 description: "Give commands to get a machine's position within a map."
 date: "2022-01-01"
 aliases:
-  - /reference/apis/services/SLAM/
-  - /dev/reference/apis/services/SLAM/
   - /dev/reference/apis/services/slam/
   - /appendix/apis/services/slam/
 build:
