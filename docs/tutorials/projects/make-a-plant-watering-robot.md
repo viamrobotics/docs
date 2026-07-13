@@ -224,9 +224,9 @@ First, add your machine as a [board component](/reference/components/board/):
 {{< tabs name="Configure a Raspberry Pi Board" >}}
 {{% tab name="Config Builder" %}}
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-Select the `board` type, then select the appropriate `viam:raspberry-pi:pi` model (for example, `viam:raspberry-pi:pi4` for Raspberry Pi 4).
-Enter a name for your board and click **Create**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+Search for `raspberry pi`, then select the block that matches your Pi (for example, `raspberry-pi/rpi4` for a Raspberry Pi 4).
+Enter a name for your board and click **Add to machine**.
 This tutorial uses the name `local`.
 
 ![Creation of a board.](/tutorials/plant-watering-pi/pi-board-config-builder.png)
@@ -269,7 +269,7 @@ You can add a module from the Viam Registry directly from your machine's **CONFI
 To add the [mcp300x-adc-sensor](https://github.com/viam-labs/mcp300x-adc-sensor) module to your machine, follow these steps:
 
 1. Go to your machine's **CONFIGURE** tab.
-   Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+   Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 1. Search for `mcp300x` and select `sensor / mcp300x`.
    Click **Add module**.
 1. Give your module a name of your choice. We used the name `sensor`.

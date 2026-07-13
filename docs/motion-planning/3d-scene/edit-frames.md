@@ -65,6 +65,23 @@ Edits are held locally until you save. The CONFIGURE tab shows an unsaved-change
 
 To delete a frame, remove it from the component's configuration on the CONFIGURE tab (there is no **Delete frame** button in the embedded **3D SCENE** tab).
 
+## Edit frames with AI
+
+The **3D SCENE** tab includes an AI scene builder that lets you edit frames using natural language instead of entering values manually.
+Type a prompt describing the change you want, and the AI interprets your request and applies the frame updates to the scene.
+
+You can use natural language to:
+
+- Move components ("move the camera 50 mm to the left")
+- Rotate components ("rotate the gripper 90 degrees around the z-axis")
+- Re-parent frames ("attach the sensor to the arm instead of the base")
+- Add, resize, or change collision geometry ("add a 100 mm box to the sensor", "make the arm's capsule wider")
+
+The AI edits only the frames of existing components.
+It cannot add new components to or remove components from the machine configuration.
+
+After the AI applies changes, save or discard buttons appear in the **3D SCENE** tab.
+
 ## When to edit JSON instead
 
 Visual editing covers most cases, but a few are faster in JSON:

@@ -15,7 +15,6 @@ import (
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/services/motion"
   "go.viam.com/rdk/spatialmath"
-  "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -37,10 +36,10 @@ func main() {
 		context.Background(),
 		machineAddress,
 		logger,
-		client.WithDialOptions(rpc.WithEntityCredentials(
+		client.WithDialOptions(client.WithEntityCredentials(
 			apiKeyID,
-			rpc.Credentials{
-				Type:    rpc.CredentialsTypeAPIKey,
+			client.Credentials{
+				Type:    client.CredentialsTypeAPIKey,
 				Payload: apiKey,
 			})),
 	)

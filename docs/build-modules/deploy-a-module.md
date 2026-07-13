@@ -282,7 +282,7 @@ viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
 With your module in the registry, any machine in your org can use it (and any Viam user's machine, if the module is public).
 
 1. In the [Viam app](https://app.viam.com), open your machine's **CONFIGURE** tab.
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 1. Search for your module by name or browse the registry, then add it.
 1. Pick a model from your module and create an instance. Name the instance and configure its attributes:
 
@@ -379,8 +379,8 @@ This module implements the [Viam sensor API](https://docs.viam.com/reference/api
 With this model, you can gather temperature and humidity data from a custom HTTP endpoint.
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** button, select **Configuration block**, then select the `sensor / my-sensor-module:my-sensor` model provided by the [`my-sensor-module` module](https://app.viam.com/module/my-org/my-sensor-module).
-Click **Add module**, enter a name for your sensor, and click **Create**.
+Click the **+** button, select **Blocks**, then select the `sensor / my-sensor-module:my-sensor` model provided by the [`my-sensor-module` module](https://app.viam.com/module/my-org/my-sensor-module).
+Enter a name for your sensor and click **Add to machine**.
 
 ## Models
 

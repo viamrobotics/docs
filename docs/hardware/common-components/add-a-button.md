@@ -32,10 +32,10 @@ For hardware the built-in models don't cover, search for `button` in the [Viam r
 ### 1. Add a button component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your button hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your button (for example, `my-button`) and click **Create**.
+4. Name your button (for example, `my-button`) and click **Add to machine**.
 
 ### 2. Configure button attributes
 
@@ -132,7 +132,6 @@ import (
     "go.viam.com/rdk/components/button"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -140,11 +139,12 @@ func main() {
     logger := logging.NewLogger("button-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

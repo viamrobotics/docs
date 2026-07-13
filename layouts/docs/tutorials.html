@@ -23,10 +23,9 @@
     <div class="container-fluid td-outer">
       <div class="td-main">
         <div class="row flex-xl-nowrap">
-          <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-            {{ partial "sidebar.html" . }}
-          </aside>
-          <main class="col-12 col-md-9 col-xl-10 pl-md-5" role="main">
+          {{/* No left sidebar on the tutorials landing: it would only repeat the
+          page title. The full browsable list lives at /tutorials/all/. */}}
+          <main class="col-12" role="main">
             <div id="rss-feed">
               <a
                 target="_blank"
@@ -40,156 +39,37 @@
             {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
             "breadcrumb.html" . }}{{ end }}
             <div class="td-content tutorials">
-              <h1>{{ .Title }}</h1>
-              <p>
-                Tutorials provide instructions to build small projects while
-                teaching you new skills.
-              </p>
-              <p>
-                Select a language, component, or service that you're interested
-                in and browse relevant tutorials. If you don't know where to
-                start, start by selecting the beginner level for introductory
-                tutorials.
-              </p>
-              {{ if not hugo.IsProduction }}
-              <div class="alert alert-caution" role="alert">
-                <h4 class="alert-heading">Missing the filtering UI?</h4>
+              <header class="tutorials-intro">
+                <h1>{{ .Title }}</h1>
                 <p>
-                  The filtering UI relies on data from Typesense which is only
-                  generated on publish. (This message is only visible on
-                  staging.)
+                  Hands-on guides that walk you through building a working
+                  project with Viam, step by step.
                 </p>
-              </div>
-              {{ $pctx := .Site }} {{- $pages := (where (where
-              $pctx.RegularPages ".Section" "tutorials") "Kind" "page") -}}
-              <div id="archive" class="card-container">
-                <div class="row-no-margin">
-                  {{ range sort $pages ".Weight"}} {{ partial "card.html" (dict
-                  "link" (.Page.File.Path) "class" "" "customTitle" ""
-                  "customDescription" "" "customCanonicalLink"
-                  (.Page.Params.canonical) ) }} {{ end }}
-                </div>
-              </div>
-              {{ else }}
-              <div id="tutorial-menu" class="lozad">
-                <div id="tutorial-filters">
-                  <div
-                    class="filter"
-                    id="filter-languages"
-                    aria-expanded="false"
-                    data-toggle="collapse"
-                    data-target="#languages-list"
-                  >
-                    Languages
-                  </div>
-                  <div
-                    class="filter"
-                    id="filter-components"
-                    aria-expanded="false"
-                    data-toggle="collapse"
-                    data-target="#components-list"
-                  >
-                    Components
-                  </div>
-                  <div
-                    class="filter"
-                    id="filter-services"
-                    aria-expanded="false"
-                    data-toggle="collapse"
-                    data-target="#services-list"
-                  >
-                    Services
-                  </div>
-                  <div
-                    class="filter"
-                    id="filter-level"
-                    aria-expanded="false"
-                    data-toggle="collapse"
-                    data-target="#level-list"
-                  >
-                    Level
-                  </div>
-                  <div
-                    class="filter"
-                    id="filter-resources"
-                    aria-expanded="false"
-                    data-toggle="collapse"
-                    data-target="#resource-list"
-                  >
-                    Content Types
-                  </div>
-                </div>
-                <div
-                  class="accordion-group search-panel__filters show-on-wide lozad"
-                  id="tutorial-filter-items"
-                >
-                  <div
-                    id="languages-list"
-                    class="search-facets collapse"
-                    data-parent="#tutorial-menu"
-                  ></div>
-                  <div
-                    id="components-list"
-                    class="search-facets collapse"
-                    data-parent="#tutorial-menu"
-                  ></div>
-                  <div
-                    id="services-list"
-                    class="search-facets collapse"
-                    data-parent="#tutorial-menu"
-                  ></div>
-                  <div
-                    id="level-list"
-                    class="search-facets collapse"
-                    data-parent="#tutorial-menu"
-                  ></div>
-                  <div
-                    id="platformarea-list"
-                    class="search-facets collapse"
-                    data-parent="#tutorial-menu"
-                  ></div>
-                  <div
-                    id="resource-list"
-                    class="search-facets collapse"
-                    data-parent="#tutorial-menu"
-                  ></div>
-                </div>
-              </div>
+              </header>
 
-              <div class="search-panel__results card-container lozad">
-                <div id="hits" class="row-no-margin"></div>
-                <div id="pagination"></div>
+              {{ $pctx := .Site }}
+              {{/* Featured set: opt-in `featured: true` singles OR workshop overviews. */}}
+              {{- $featured := where (where $pctx.RegularPages ".Section" "tutorials") "Params.featured" true -}}
+              {{- $workshops := where (where $pctx.Pages ".Section" "tutorials") "Params.workshop_overview" true -}}
+              {{- $cards := sort ($workshops | union $featured) ".Weight" -}}
+
+              {{ with $cards }}
+              {{/* First featured item leads as a hero; any others flow into a grid below. */}}
+              {{ partial "tutorial-hero.html" (dict "page" (index . 0)) }}
+              {{ with (after 1 .) }}
+              <div id="featured-tutorials" class="card-container tutorials-grid">
+                <div class="row-no-margin">
+                  {{ range . }}
+                  {{ partial "tutorial-card.html" (dict "page" .) }}
+                  {{ end }}
+                </div>
               </div>
               {{ end }}
-              <!-- if no javscript show the tutorials -->
-              <noscript>
-                <div class="alert alert-caution" role="alert">
-                  <h4 class="alert-heading">Javascript</h4>
-                  <p>Please enable javascript to see all tutorials.</p>
-                </div>
-                <div class="card-container">
-                  <div class="row-no-margin">
-                    {{ partial "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/get-started/blink-an-led/") }} {{ partial
-                    "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/get-started/servo-mousemover/") }} {{ partial
-                    "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/get-started/lazy-susan/") }} {{ partial
-                    "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/services/plan-motion-with-arm-gripper/") }} {{
-                    partial "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/services/constrain-motion/") }} {{ partial
-                    "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/services/color-detection-scuttle/") }} {{
-                    partial "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/services/webcam-line-follower-robot/") }} {{
-                    partial "tutorialcard-no-js.html" (dict "link"
-                    "/train/train-a-model/") }} {{ partial
-                    "tutorialcard-no-js.html" (dict "link"
-                    "/tutorials/projects/verification-system/") }}
-                  </div>
-                </div>
-              </noscript>
+              {{ end }}
+
+              <p class="browse-all-tutorials">
+                <a class="browse-all-link" href="{{ "tutorials/all/" | relURL }}">Browse all tutorials <span aria-hidden="true">&rarr;</span></a>
+              </p>
             </div>
             <p>
               Find more examples of how Viam is being used in the world by
@@ -232,28 +112,5 @@
     </div>
 
     {{ partial "scripts.html" . }}
-
-    <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
-
-    {{ $jsTutorials := resources.Get "js/tutorials.js" }} {{ if (eq (substr
-    .Site.BaseURL -1) "/" ) }} {{- $opts := dict "params" (dict "baseURL"
-    (substr .Site.BaseURL 0 -1 )) -}} {{- $jsTutorials = $jsTutorials | js.Build
-    $opts -}} {{ $jsTutorials := $jsTutorials | minify }}
-    <script
-      type="text/javascript"
-      src="{{ $jsTutorials.RelPermalink }}"
-      crossorigin="anonymous"
-    ></script>
-    {{ else }} {{- $opts := dict "params" (dict "baseURL" .Site.BaseURL) -}} {{-
-    $jsTutorials = $jsTutorials | js.Build $opts -}} {{ $jsTutorials :=
-    $jsTutorials | minify }}
-    <script
-      type="text/javascript"
-      src="{{ $jsTutorials.RelPermalink }}"
-      crossorigin="anonymous"
-    ></script>
-    {{ end }}
   </body>
 </html>

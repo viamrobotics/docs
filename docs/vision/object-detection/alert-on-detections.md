@@ -47,7 +47,7 @@ Triggers support a configurable alert frequency to prevent alert fatigue. For ex
 Add the filtered camera module to your machine:
 
 1. Navigate to your machine's **CONFIGURE** tab.
-2. Click **+** and select **Configuration block**.
+2. Click **+** and select **Blocks**.
 3. In the search field, type `filtered-camera` and select the matching result.
 4. Click **Add to machine**, name the component `objectfilter-cam`, and click **Add to machine** again to confirm. The module is installed automatically.
 5. Add configuration attributes:
@@ -104,7 +104,7 @@ To verify your confidence threshold, expand the **TEST** panel on your vision se
 
 Add the data management service to capture and sync filtered images:
 
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 2. In the search field, type `data management` and select `data_manager/builtin` from the results.
 3. Click **Add to machine**, name the service `data-manager`, and click **Add to machine** again to confirm.
 4. Leave the default attributes and click **Save**.
