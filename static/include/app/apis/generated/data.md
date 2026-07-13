@@ -69,16 +69,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `partId` (string) (required): The ID of the part that owns the data.
-- `resourceName` (string) (required): The name of the requested resource that captured the data. Ex: "my-sensor".
-- `resourceSubtype` (string) (required): The subtype of the requested resource that captured the data. Ex:
-  "rdk:component:sensor".
+- `resourceName` (string) (required): The name of the requested resource that captured the
+  data. Ex: "my-sensor".
+- `resourceSubtype` (string) (required): The subtype of the requested resource that captured
+  the data. Ex: "rdk:component:sensor".
 - `methodName` (string) (required): The data capture method name. Ex: "Readings".
 - `additionalParams` (Record) (optional)
 
 **Returns:**
 
-- (Promise<[Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>] | null>): A tuple containing [timeCaptured, timeSynced, payload] or null if no data has been
-synced for the specified resource OR the most recently captured data was over a year ago.
+- (Promise<null | [Date, Date, Record<string, [JsonValue](https://ts.viam.dev/types/JsonValue.html)>]>): A tuple containing [timeCaptured, timeSynced, payload] or null if
+no data has been synced for the specified resource OR the most recently
+captured data was over a year ago.
 
 **Example:**
 
@@ -87,7 +89,7 @@ const data = await dataClient.getLatestTabularData(
   '123abc45-1234-5678-90ab-cdef12345678',
   'my-sensor',
   'rdk:component:sensor',
-  'Readings',
+  'Readings'
 );
 ```
 
@@ -201,11 +203,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `partId` (string) (required): The ID of the part that owns the data.
-- `resourceName` (string) (required): The name of the requested resource that captured the data.
-- `resourceSubtype` (string) (required): The subtype of the requested resource that captured the data.
+- `resourceName` (string) (required): The name of the requested resource that captured the
+  data.
+- `resourceSubtype` (string) (required): The subtype of the requested resource that captured
+  the data.
 - `methodName` (string) (required): The data capture method name.
-- `startTime` (Date) (optional): Optional start time (`Date` object) for requesting a specific range of data.
-- `endTime` (Date) (optional): Optional end time (`Date` object) for requesting a specific range of data.
+- `startTime` (Date) (optional): Optional start time (`Date` object) for requesting a
+  specific range of data.
+- `endTime` (Date) (optional): Optional end time (`Date` object) for requesting a specific
+  range of data.
 - `additionalParams` (Record) (optional)
 
 **Returns:**
@@ -221,7 +227,7 @@ const data = await dataClient.exportTabularData(
   'rdk:component:sensor',
   'Readings',
   new Date('2025-03-25'),
-  new Date('2024-03-27'),
+  new Date('2024-03-27')
 );
 ```
 
@@ -348,20 +354,23 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying tabular data to retrieve. No `filter` implies all
-  tabular data.
-- `limit` (number) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecfied.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying tabular data to retrieve. No
+  `filter` implies all tabular data.
+- `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
+  to 50 if unspecfied.
 - `sortOrder` ([Order](https://ts.viam.dev/enums/dataApi.Order.html)) (optional): The desired sort order of the data.
-- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If provided, the
-  server will return the next data entries after the `last` ID.
+- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
+  provided, the server will return the next data entries after the `last`
+  ID.
 - `countOnly` (boolean) (optional): Whether to return only the total count of entries.
-- `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is used for
-  Viam-specific data ingestion, like cloud SLAM. Defaults to `false`.
+- `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is
+  used for Viam-specific data ingestion, like cloud SLAM. Defaults to
+  `false`.
 
 **Returns:**
 
-- (Promise<{ count: bigint; data: TabularData[]; last: string }>): An array of data objects, the count (number of entries), and the last-returned page
-ID.
+- (Promise<{ count: bigint; data: TabularData[]; last: string }>): An array of data objects, the count (number of entries), and the
+last-returned page ID.
 
 **Example:**
 
@@ -371,7 +380,7 @@ const data = await dataClient.tabularDataByFilter(
     componentName: 'sensor-1',
     componentType: 'rdk:component:sensor',
   } as Filter,
-  5,
+  5
 );
 ```
 
@@ -469,7 +478,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]map[string]any)](https://pkg.go.dev/builtin#any)
+- [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataBySQL).
@@ -491,7 +500,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.tabularDataBySQL(
   '123abc45-1234-5678-90ab-cdef12345678',
-  'SELECT * FROM readings LIMIT 5',
+  'SELECT * FROM readings LIMIT 5'
 );
 ```
 
@@ -576,12 +585,12 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `organizationID` [(string)](https://pkg.go.dev/builtin#string)
-- `query` [([]map[string]any)](https://pkg.go.dev/builtin#any)
+- `query` [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
 - `opts` [(*TabularDataByMQLOptions)](https://pkg.go.dev/go.viam.com/rdk/app#TabularDataByMQLOptions)
 
 **Returns:**
 
-- [([]map[string]any)](https://pkg.go.dev/builtin#any)
+- [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#DataClient.TabularDataByMQL).
@@ -593,8 +602,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The ID of the organization that owns the data.
 - `query` (Uint8Array) (required): The MQL query to run as a list of BSON documents.
-- `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data store. Defaults to
-  false. Deprecated - use dataSource instead.
+- `useRecentData` (boolean) (optional): Whether to query blob storage or your recent data
+  store. Defaults to false. Deprecated - use dataSource instead.
 - `tabularDataSource` ([TabularDataSource](https://ts.viam.dev/classes/dataApi.TabularDataSource.html)) (optional)
 - `queryPrefixName` (string) (optional): Optional name of the query prefix.
 
@@ -619,7 +628,7 @@ const mqlQuery: Record<string, JsonValue>[] = [
 
 const data = await dataClient.tabularDataByMQL(
   '123abc45-1234-5678-90ab-cdef12345678',
-  mqlQuery,
+  mqlQuery
 );
 ```
 
@@ -763,21 +772,25 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to retrieve. No `filter` implies all
-  binary data.
-- `limit` (number) (optional): The maximum number of entries to include in a page. Defaults to 50 if unspecfied.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to retrieve. No
+  `filter` implies all binary data.
+- `limit` (number) (optional): The maximum number of entries to include in a page. Defaults
+  to 50 if unspecfied.
 - `sortOrder` ([Order](https://ts.viam.dev/enums/dataApi.Order.html)) (optional): The desired sort order of the data.
-- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If provided, the
-  server will return the next data entries after the `last` ID.
-- `includeBinary` (boolean) (optional): Whether to include binary file data with each retrieved file.
+- `last` (string) (optional): Optional string indicating the ID of the last-returned data. If
+  provided, the server will return the next data entries after the `last`
+  ID.
+- `includeBinary` (boolean) (optional): Whether to include binary file data with each
+  retrieved file.
 - `countOnly` (boolean) (optional): Whether to return only the total count of entries.
-- `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is used for
-  Viam-specific data ingestion, like cloud SLAM. Defaults to `false`.
+- `includeInternalData` (boolean) (optional): Whether to retun internal data. Internal data is
+  used for Viam-specific data ingestion, like cloud SLAM. Defaults to
+  `false`.
 
 **Returns:**
 
-- (Promise<{ count: bigint; data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]; last: string }>): An array of data objects, the count (number of entries), and the last-returned page
-ID.
+- (Promise<{ count: bigint; data: [BinaryData](https://ts.viam.dev/classes/dataApi.BinaryData.html)[]; last: string }>): An array of data objects, the count (number of entries), and the
+last-returned page ID.
 
 **Example:**
 
@@ -787,7 +800,7 @@ const data = await dataClient.binaryDataByFilter(
     componentName: 'camera-1',
     componentType: 'rdk:component:camera',
   } as Filter,
-  1,
+  1
 );
 ```
 
@@ -905,7 +918,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `ids` (string) (required): The IDs of the requested binary data.
-- `includeBinary` (boolean) (optional): Whether to include binary file data with each retrieved file.
+- `includeBinary` (boolean) (optional): Whether to include binary file data with each
+  retrieved file.
 
 **Returns:**
 
@@ -1032,12 +1046,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of organization to delete data from.
-- `deleteOlderThanDays` (number) (required): Delete data that was captured more than this many days ago. For
-  example, a value of 10 deletes any data that was captured more than 10 days ago. A value of 0
-  deletes all existing data.
-- `filter` (PartialMessage) (optional): Optional filter to further constrain which data is deleted. If provided, only
-  data matching the filter will be deleted. If omitted, data is deleted based on
-  organization\_id and delete\_older\_than\_days.
+- `deleteOlderThanDays` (number) (required): Delete data that was captured more than this
+  many days ago. For example, a value of 10 deletes any data that was
+  captured more than 10 days ago. A value of 0 deletes all existing data.
+- `filter` (PartialMessage) (optional): Optional filter to further constrain which data is deleted.
+  If provided, only data matching the filter will be deleted. If omitted,
+  data is deleted based on organization\_id and delete\_older\_than\_days.
 
 **Returns:**
 
@@ -1048,7 +1062,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 const data = await dataClient.deleteTabularData(
   '123abc45-1234-5678-90ab-cdef12345678',
-  10,
+  10
 );
 
 // Delete with additional filter constraints
@@ -1058,7 +1072,7 @@ const data = await dataClient.deleteTabularData(
   {
     locationIds: ['location-id'],
     componentName: 'camera',
-  },
+  }
 );
 ```
 
@@ -1152,9 +1166,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to delete. No `filter` implies all
-  binary data.
-- `includeInternalData` (boolean) (optional): Whether or not to delete internal data. Default is true.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying binary data to delete. No
+  `filter` implies all binary data.
+- `includeInternalData` (boolean) (optional): Whether or not to delete internal data. Default
+  is true.
 
 **Returns:**
 
@@ -1401,7 +1416,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `tags` (string) (required): The list of tags to add to specified binary data. Must be non-empty.
+- `tags` (string) (required): The list of tags to add to specified binary data. Must be
+  non-empty.
 - `ids` (string) (required): The IDs of the data to be tagged. Must be non-empty.
 
 **Returns:**
@@ -1415,7 +1431,7 @@ const data = await dataClient.addTagsToBinaryDataByIds(
   ['tag1', 'tag2'],
   [
     'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
-  ],
+  ]
 );
 ```
 
@@ -1534,7 +1550,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `tags` (string) (required): List of tags to remove from specified binary data. Must be non-empty.
+- `tags` (string) (required): List of tags to remove from specified binary data. Must be
+  non-empty.
 - `ids` (string) (required): The IDs of the data to be edited. Must be non-empty.
 
 **Returns:**
@@ -1548,7 +1565,7 @@ const data = await dataClient.removeTagsFromBinaryDataByIds(
   ['tag1', 'tag2'],
   [
     'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
-  ],
+  ]
 );
 ```
 
@@ -1629,8 +1646,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying what data to get tags from. No `filter` implies
-  all data.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying what data to get tags from.
+  No `filter` implies all data.
 
 **Returns:**
 
@@ -1754,14 +1771,19 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `binaryId` (string) (required): The ID of the image to add the bounding box to.
+- `binaryId` (string) (required): The ID of the image to add the bounding
+  box to.
 - `label` (string) (required): A label for the bounding box.
-- `xMinNormalized` (number) (required): The min X value of the bounding box normalized from 0 to 1.
-- `yMinNormalized` (number) (required): The min Y value of the bounding box normalized from 0 to 1.
-- `xMaxNormalized` (number) (required): The max X value of the bounding box normalized from 0 to 1.
-- `yMaxNormalized` (number) (required): The max Y value of the bounding box normalized from 0 to 1.
-- `confidence` (number) (optional): Model's confidence in a predicted bounding box expressed as a
-  normalized value from 0 to 1.
+- `xMinNormalized` (number) (required): The min X value of the bounding box
+  normalized from 0 to 1.
+- `yMinNormalized` (number) (required): The min Y value of the bounding box
+  normalized from 0 to 1.
+- `xMaxNormalized` (number) (required): The max X value of the bounding box
+  normalized from 0 to 1.
+- `yMaxNormalized` (number) (required): The max Y value of the bounding box
+  normalized from 0 to 1.
+- `confidence` (number) (optional): Model's confidence in a predicted bounding box
+  expressed as a normalized value from 0 to 1.
 
 **Returns:**
 
@@ -1777,7 +1799,7 @@ const bboxId = await dataClient.addBoundingBoxToImageById(
   0.3,
   0.6,
   0.6,
-  0.4,
+  0.4
 );
 ```
 
@@ -1890,7 +1912,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 await dataClient.removeBoundingBoxFromImageById(
   'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
-  '5Z9ryhkW7ULaXROjJO6ghPYulNllnH20QImda1iZFroZpQbjahK6igQ1WbYigXED',
+  '5Z9ryhkW7ULaXROjJO6ghPYulNllnH20QImda1iZFroZpQbjahK6igQ1WbYigXED'
 );
 ```
 
@@ -1988,8 +2010,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying what data to get tags from. No `filter` implies
-  all labels.
+- `filter` ([Filter](https://ts.viam.dev/classes/dataApi.Filter.html)) (optional): Optional `pb.Filter` specifying what data to get tags from.
+  No `filter` implies all labels.
 
 **Returns:**
 
@@ -2098,7 +2120,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const hostname = await dataClient.getDatabaseConnection(
-  '123abc45-1234-5678-90ab-cdef12345678',
+  '123abc45-1234-5678-90ab-cdef12345678'
 );
 ```
 
@@ -2203,7 +2225,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 await dataClient.configureDatabaseUser(
   '123abc45-1234-5678-90ab-cdef12345678',
-  'Password01!',
+  'Password01!'
 );
 ```
 
@@ -2320,7 +2342,7 @@ await dataClient.addBinaryDataToDatasetByIds(
   [
     'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
   ],
-  '12ab3de4f56a7bcd89ef0ab1',
+  '12ab3de4f56a7bcd89ef0ab1'
 );
 ```
 
@@ -2446,7 +2468,7 @@ await dataClient.removeBinaryDataFromDatasetByIds(
   [
     'ccb74b53-1235-4328-a4b9-91dff1915a50/x5vur1fmps/YAEzj5I1kTwtYsDdf4a7ctaJpGgKRHmnM9bJNVyblk52UpqmrnMVTITaBKZctKEh',
   ],
-  '12ab3de4f56a7bcd89ef0ab1',
+  '12ab3de4f56a7bcd89ef0ab1'
 );
 ```
 
@@ -2545,12 +2567,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<DataPipeline | null>): The data pipeline configuration or null if it does not exist.
+- (Promise<null | DataPipeline>): The data pipeline configuration or null if it does not exist.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const pipeline = await dataClient.getPipeline('123abc45-1234-5678-90ab-cdef12345678');
+const pipeline = await dataClient.getPipeline(
+  '123abc45-1234-5678-90ab-cdef12345678'
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#getdatapipeline).
@@ -2611,7 +2635,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const pipelines = await dataClient.listDataPipelines(
-  '123abc45-1234-5678-90ab-cdef12345678',
+  '123abc45-1234-5678-90ab-cdef12345678'
 );
 ```
 
@@ -2662,7 +2686,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `organizationID`
 - `name` [(string)](https://pkg.go.dev/builtin#string)
-- `query` [([]map[string]any)](https://pkg.go.dev/builtin#any)
+- `query` [([]map[string]interface{})](https://pkg.go.dev/builtin#string)
 - `schedule` [(string)](https://pkg.go.dev/builtin#string)
 - `enableBackfill` [(bool)](https://pkg.go.dev/builtin#bool)
 - `opts` [(*CreateDataPipelineOptions)](https://pkg.go.dev/go.viam.com/rdk/app#CreateDataPipelineOptions)
@@ -2770,7 +2794,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await dataClient.deleteDataPipeline('123abc45-1234-5678-90ab-cdef12345678');
+await dataClient.deleteDataPipeline(
+  '123abc45-1234-5678-90ab-cdef12345678'
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#deletedatapipeline).
@@ -2834,7 +2860,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const page = await dataClient.listDataPipelineRuns('123abc45-1234-5678-90ab-cdef12345678');
+const page = await dataClient.listDataPipelineRuns(
+  '123abc45-1234-5678-90ab-cdef12345678'
+);
 page.runs.forEach((run) => {
   console.log(run);
 });
@@ -2998,7 +3026,7 @@ List all custom indexes for an organization.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.data.Index]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   A list of indexes.
+- ([Sequence[viam.proto.app.data.Index]](https://python.viam.dev/autoapi/viam/proto/app/data/index.html#viam.proto.app.data.Index)): :   A list of indexes.
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/data_client/index.html#viam.app.data_client.DataClient.list_indexes).
 
@@ -3068,15 +3096,15 @@ Update an existing bounding box on an image. You can change the label, position,
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-bbox_id = await data_client.update_bounding_box_to_image_by_id(
+await data_client.update_bounding_box(
     binary_id="<YOUR-BINARY-DATA-ID>",
-    bbox_id="2"
+    bbox_id="2",
     label="label",
     x_min_normalized=0,
-    y_min_normalized=.1,
-    x_max_normalized=.2,
-    y_max_normalized=.3,
-    confidence_score=.95
+    y_min_normalized=0.1,
+    x_max_normalized=0.2,
+    y_max_normalized=0.3,
+    confidence_score=0.95
 )
 ```
 
