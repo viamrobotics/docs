@@ -23,7 +23,7 @@ sdks_supported = ["go", "python", "flutter", "typescript"]
 ## at runtime if desired:
 components = ["arm", "base", "board", "button", "camera", "encoder", "gantry", "generic_component", "gripper",
               "input_controller", "motor", "movement_sensor", "power_sensor", "sensor", "servo", "switch", "audio_in", "audio_out"]
-services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "navigation", "slam", "vision", "world_state_store"]
+services = ["base_remote_control", "data_manager", "discovery", "generic_service", "mlmodel", "motion", "slam", "vision", "world_state_store"]
 app_apis = ["app", "billing", "data", "dataset", "data_sync", "mltraining"]
 robot_apis = ["robot"]
 
@@ -277,11 +277,6 @@ proto_map = {
     "motion": {
         "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/motion/v1/motion_grpc.pb.go",
         "name": "MotionServiceClient",
-        "methods": []
-    },
-    "navigation": {
-        "url": "https://raw.githubusercontent.com/viamrobotics/api/main/service/navigation/v1/navigation_grpc.pb.go",
-        "name": "NavigationServiceClient",
         "methods": []
     },
     "slam": {
@@ -936,7 +931,7 @@ def write_markdown(type, names, methods):
                             ## Replace underscores, and convert generic_component to just generic:
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
                             proto_anchor_link = '/dev/reference/apis/components/' + resource_adjusted + '/#' + proto_link
-                        elif type == 'service' and resource in ['base_remote_control', 'motion', 'navigation', 'slam', 'vision']:
+                        elif type == 'service' and resource in ['base_remote_control', 'motion', 'slam', 'vision']:
                             proto_anchor_link = '/dev/reference/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
                             proto_anchor_link = '/dev/reference/apis/services/data/#' + proto_link
@@ -966,20 +961,28 @@ def write_markdown(type, names, methods):
                         ## first sentence:
 
 
-                        with open(proto_override_file, 'r') as f:
-                            file_contents = f.read().strip()
-                            file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
-                            search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
+                        if os.path.isfile(proto_override_file):
+                            with open(proto_override_file, 'r') as f:
+                                file_contents = f.read().strip()
+                                file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
+                                search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
-                            ## If the proto description contains any MD links, strip them out:
-                            search_result = regex.sub(r'\[([A-Za-z0-9\.\(\)\-\_\`\s]*)\]\([A-Za-z0-9\.\:\/\-\_\#]*\)', r'\1', search_result)
+                                ## If the proto description contains any MD links, strip them out:
+                                search_result = regex.sub(r'\[([A-Za-z0-9\.\(\)\-\_\`\s]*)\]\([A-Za-z0-9\.\:\/\-\_\#]*\)', r'\1', search_result)
 
-                            ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
-                            ## (restore) the period character:
-                            if not search_result.endswith('.'):
-                                proto_description_first_sentence = search_result + '.'
-                            else:
-                                proto_description_first_sentence = search_result
+                                ## If the proto description is missing a trailing period, or we stripped it off during the above matching, append
+                                ## (restore) the period character:
+                                if not search_result.endswith('.'):
+                                    proto_description_first_sentence = search_result + '.'
+                                else:
+                                    proto_description_first_sentence = search_result
+                        else:
+                            ## No proto description override file (for example a proto whose
+                            ## docs section was removed); leave the description blank instead
+                            ## of crashing on the missing file, but warn so a genuinely
+                            ## missing override (an authoring gap) is still surfaced.
+                            print(f"WARNING: {type} {resource} {proto} has no proto description override file ({proto_override_file}); leaving description blank")
+                            proto_description_first_sentence = ''
 
                         ## Write out this proto's entry to this resource's table_file:
                         if resource != 'movement_sensor':
