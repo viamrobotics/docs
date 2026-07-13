@@ -107,6 +107,35 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### Stream
+
+Stream live video frames from the camera.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+{{% alert title="Info" color="info" %}}
+
+Unlike most Viam [component APIs](/reference/apis/#component-apis), the methods of the Go camera client do not map exactly to the names of the other SDK's camera methods.
+To get an image in the Go SDK, you first need to construct a `Stream` and then you can get the next image from that stream.
+
+{{% /alert %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `errHandlers` [(...gostream.ErrorHandler)](https://pkg.go.dev/go.viam.com/rdk/gostream#ErrorHandler): A handler for errors allowing for logic based on consecutively retrieved errors.
+
+**Returns:**
+
+- [(gostream.VideoStream)](https://pkg.go.dev/go.viam.com/rdk/gostream#VideoStream): A `VideoStream` that streams video until closed.
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/camera#VideoSource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetPointCloud
 
 Get a point cloud from the camera as bytes with a MIME type describing the structure of the data.
