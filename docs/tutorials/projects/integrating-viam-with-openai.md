@@ -213,9 +213,9 @@ Now, configure your rover to:
 
 To configure your [servo](/reference/components/servo/), go to your rover's **CONFIGURE** tab.
 
-- Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-- Select the `servo` type, then select the `viam:raspberry-pi:pi-servo` model.
-- Enter the name `servo1` for your servo and click **Create**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+- Search for `rpi-servo`, then select the `raspberry-pi/rpi-servo` block.
+- Enter the name `servo1` for your servo and click **Add to machine**.
 
 Now, in the panel for `servo1`, add the following attribute configuration:
 
@@ -249,9 +249,9 @@ This model can detect a variety of objects, which you can find in the provided <
 To configure an ML model service:
 
 - Select the **CONFIGURE** tab.
-- Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-- Select the `ML model` type, then select the `TFLite CPU` model.
-- Enter the name `stuff_detector` for your service, click **Add module** and click **Create**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+- Search for `tflite`, then select the `tflite_cpu/tflite_cpu` block.
+- Enter the name `stuff_detector` for your service and click **Add to machine**.
 
 Your robot registers this as a machine learning model and makes it available for use.
 
@@ -261,9 +261,9 @@ Click **Select model**, then select the `viam-labs:EfficientDet-COCO` model from
 Now, create a vision service to visualize your ML model:
 
 - Select the **CONFIGURE** tab.
-- Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-- Select the `vision` type, then select the `ML model` model.
-- Enter the name `mlmodel` for your service and click **Create**.
+- Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+- Search for `mlmodel`, then select the `vision/mlmodel` block.
+- Enter the name `mlmodel` for your service and click **Add to machine**.
 
 Your companion robot will use this to interface with the machine learning model allowing you to - well, detect stuff!
 

@@ -820,11 +820,11 @@ To enable data capture on your machine, add and configure the [data management s
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-1. Choose `data management` as the type.
+1. On the **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+1. Search for `data management`, then select the `data_manager/builtin` block.
 1. Enter a name or use the suggested name for your instance of the data manager.
    This tutorial uses the name 'dm' in all example code.
-1. Click **Create**.
+1. Click **Add to machine**.
    On the panel that appears, you can manage the capturing and syncing functions individually.
    By default, the data management service captures data every 0.1 minutes to the <file>~/.viam/capture</file> directory.
    Leave the default settings as they are.
@@ -864,11 +864,11 @@ If you have a different item you want to use, or want to match to a color that m
 {{% tab name="Config Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-1. Select the `vision` type, then select the `color detector` model.
+1. Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+1. Search for `color detector`, then select the `vision/color_detector` block.
 1. Enter a name or use the suggested name for your color detector.
    This tutorial uses the name 'my_color_detector' in all example code.
-1. click **Create**.
+1. click **Add to machine**.
 1. In the vision service's **Attributes** section, click the color selection box to set the color to detect.
    For this tutorial, set the color to `#43A1D0` or `rgb(67, 161, 208)`.
    Alternatively, you can provide the color of your pet, or use a different brightly-colored collar or ribbon.
@@ -913,11 +913,11 @@ With the vision and data management services configured, you can now configure y
 
 If you haven't already, add a [camera](/reference/components/camera/) component to your smart machine:
 
-1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+1. On the **CONFIGURE** tab, click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing "webcam" and select **camera / webcam**.
    Enter a name or use the suggested name for your camera.
    This tutorial uses the name 'cam' in all example code.
-   Click **Create**.
+   Click **Add to machine**.
 
 1. Leave the **video_path** blank and the camera will use the default video path for your machine.
    If this doesn't work when you test your camera later, you can try a different video path by following the prompt in the camera's configuration panel.

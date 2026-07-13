@@ -19,9 +19,9 @@ Configure a `fake` generic service to test implementing a generic service on you
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** button and select **Configuration block**.
+Click the **+** button and select **Blocks**.
 Select the `generic` type, then select the `fake` model.
-Enter a name or use the suggested name for your generic service and click **Create**.
+Enter a name or use the suggested name for your generic service and click **Add to machine**.
 
 ![An example configuration for a fake generic service.](/services/fake-generic-service-config.png)
 

@@ -41,10 +41,10 @@ For hardware the built-in models don't cover, search for `switch` in the [Viam r
 ### 1. Add a switch component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your switch hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your switch (for example, `my-switch`) and click **Create**.
+4. Name your switch (for example, `my-switch`) and click **Add to machine**.
 
 ### 2. Configure switch attributes
 
@@ -150,7 +150,6 @@ import (
     toggleswitch "go.viam.com/rdk/components/switch"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -158,11 +157,12 @@ func main() {
     logger := logging.NewLogger("switch-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

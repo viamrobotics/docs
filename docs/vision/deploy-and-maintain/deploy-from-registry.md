@@ -60,7 +60,7 @@ For ML model services that support GPUs (like [Triton on Jetson](https://github.
 The ML model service loads the model file and exposes it for inference. It does not interpret the output; that is the vision service's job.
 
 1. Open your machine in the Viam app and go to the **CONFIGURE** tab.
-2. Click the **+** icon next to your machine part and select **Configuration block**.
+2. Click the **+** icon next to your machine part and select **Blocks**.
 3. In the search field, type the ML model service name (for example, `tflite_cpu` for TFLite models) and select the matching result.
 4. Click **Add to machine**, give it a name (for example, `my-ml-model`), and click **Add to machine** again to confirm.
 
@@ -82,7 +82,7 @@ Save the configuration. `viam-server` downloads the model package to the machine
 
 The ML model service is a building block. To get detections, classifications, or point cloud objects from your code, add a vision service that wraps it.
 
-1. Click the **+** icon and select **Configuration block**.
+1. Click the **+** icon and select **Blocks**.
 2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
 3. Click **Add to machine**, name the service (for example, `my-detector`), and click **Add to machine** again to confirm.
 4. In the vision service panel's **ML MODEL** section, select the ML model service from step 3.

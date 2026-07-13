@@ -2147,7 +2147,7 @@ pip3 install -r requirements.txt
 ```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2174,7 +2174,7 @@ fi
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2208,7 +2208,7 @@ sudo apt-get install -y python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2224,7 +2224,7 @@ brew install python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 

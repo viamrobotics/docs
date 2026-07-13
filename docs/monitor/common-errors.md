@@ -387,11 +387,11 @@ You can use any Viam SDK to implement a camera module, but only Go-based modules
         context.Background(),
         "mac-main.vw3iu72d8n.viam.cloud",
       logger,
-      client.WithDialOptions(rpc.WithEntityCredentials(
+      client.WithDialOptions(client.WithEntityCredentials(
           /* Replace "<API-KEY-ID>" (including brackets) with your machine's API key ID */
         "<API-KEY-ID>",
-        rpc.Credentials{
-            Type:    rpc.CredentialsTypeAPIKey,
+        client.Credentials{
+            Type:    client.CredentialsTypeAPIKey,
             /* Replace "<API-KEY>" (including brackets) with your machine's API key */
           Payload: "<API-KEY>",
         })),
