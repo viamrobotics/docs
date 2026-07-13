@@ -13,9 +13,9 @@ Get a list of detections from the next image from a specified camera using a con
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): : A list of 2D bounding boxes, their labels, and the
-  confidence score of the labels, around the found objects in the next 2D image
-  from the given camera, with the given detector applied to it.
+- ([list[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): :   A list of 2D bounding boxes, their labels, and the
+    confidence score of the labels, around the found objects in the next 2D image
+    from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -78,13 +78,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): \* The list of Detections.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): * The list of Detections.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const vision = new VIAM.VisionClient(machine, "my_vision");
-const detections = await vision.getDetectionsFromCamera("my_camera");
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const detections = await vision.getDetectionsFromCamera('my_camera');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getdetectionsfromcamera).
@@ -128,9 +128,9 @@ Get a list of detections from a given image using a configured [detector](/refer
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): : A list of 2D bounding boxes, their labels, and the
-  confidence score of the labels, around the found objects in the next 2D image
-  from the given camera, with the given detector applied to it.
+- ([list[viam.proto.service.vision.Detection]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Detection)): :   A list of 2D bounding boxes, their labels, and the
+    confidence score of the labels, around the found objects in the next 2D image
+    from the given camera, with the given detector applied to it.
 
 **Raises:**
 
@@ -158,7 +158,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `img` [(\*camera.NamedImage)](https://pkg.go.dev/go.viam.com/rdk/components/camera#NamedImage): The image in which to look for detections.
+- `img` [(*camera.NamedImage)](https://pkg.go.dev/go.viam.com/rdk/components/camera#NamedImage): The image in which to look for detections.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -169,17 +169,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+ // add "go.viam.com/rdk/utils" to imports to use this code snippet
+
   myCam, err := camera.FromProvider(machine, "my_camera")
   if err != nil {
     logger.Error(err)
     return
   }
-  // Capture an image from the camera
-  images, _, err := myCam.Images(context.Background(), nil, nil)
-  if err != nil {
-    logger.Error(err)
-    return
-  }
+  // Get an image from the camera decoded as an image.Image
+  img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
   myDetectorService, err := vision.FromProvider(machine, "my_detector")
   if err != nil {
@@ -187,7 +185,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
     return
   }
   // Get the detections from the image
-  detections, err := myDetectorService.Detections(context.Background(), &images[0], nil)
+  detections, err := myDetectorService.Detections(context.Background(), img, nil)
   if err != nil {
     logger.Fatalf("Could not get detections: %v", err)
   }
@@ -212,13 +210,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): \* The list of Detections.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]>): * The list of Detections.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, "my_camera");
-const vision = new VIAM.VisionClient(machine, "my_vision");
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const vision = new VIAM.VisionClient(machine, 'my_vision');
 
 const { images } = await camera.getImages();
 const detections = await vision.getDetections(
@@ -272,7 +270,7 @@ Get a list of classifications from the next image from a specified camera using 
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): : The list of Classifications.
+- ([list[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): :   The list of Classifications.
 
 **Example:**
 
@@ -333,16 +331,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): \* The list of Classifications.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): * The list of Classifications.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const vision = new VIAM.VisionClient(machine, "my_vision");
-const classifications = await vision.getClassificationsFromCamera(
-  "my_camera",
-  10,
-);
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const classifications = await vision.getClassificationsFromCamera('my_camera', 10);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getclassificationsfromcamera).
@@ -388,7 +383,7 @@ Get a list of classifications from a given image using a configured [classifier]
 
 **Returns:**
 
-- ([List[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): : The list of Classifications.
+- ([list[viam.proto.service.vision.Classification]](https://python.viam.dev/autoapi/viam/proto/service/vision/index.html#viam.proto.service.vision.Classification)): :   The list of Classifications.
 
 **Example:**
 
@@ -412,7 +407,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `img` [(\*camera.NamedImage)](https://pkg.go.dev/go.viam.com/rdk/components/camera#NamedImage): The image in which to look for classifications.
+- `img` [(*camera.NamedImage)](https://pkg.go.dev/go.viam.com/rdk/components/camera#NamedImage): The image in which to look for classifications.
 - `n` [(int)](https://pkg.go.dev/builtin#int): The number of classifications to return. For example, if you specify `3` you will get the top three classifications with the greatest confidence scores.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
@@ -424,17 +419,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+ // add "go.viam.com/rdk/utils" to imports to use this code snippet
+
   myCam, err := camera.FromProvider(machine, "my_camera")
   if err != nil {
     logger.Error(err)
     return
   }
-  // Capture an image from the camera
-  images, _, err := myCam.Images(context.Background(), nil, nil)
-  if err != nil {
-    logger.Error(err)
-    return
-  }
+  // Get an image from the camera decoded as an image.Image
+  img, err = camera.DecodeImageFromCamera(context.Background(), utils.MimeTypeJPEG, nil, myCam)
 
   myClassifierService, err := vision.FromProvider(machine, "my_classifier")
   if err != nil {
@@ -442,7 +435,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
     return
   }
   // Get the 2 classifications with the highest confidence scores from the image
-  classifications, err := myClassifierService.Classifications(context.Background(), &images[0], 2, nil)
+  classifications, err := myClassifierService.Classifications(context.Background(), img, 2, nil)
   if err != nil {
     logger.Fatalf("Could not get classifications: %v", err)
   }
@@ -468,13 +461,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): \* The list of Classifications.
+- (Promise<[visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]>): * The list of Classifications.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const camera = new VIAM.CameraClient(machine, "my_camera");
-const vision = new VIAM.VisionClient(machine, "my_vision");
+const camera = new VIAM.CameraClient(machine, 'my_camera');
+const vision = new VIAM.VisionClient(machine, 'my_vision');
 
 const { images } = await camera.getImages();
 const classifications = await vision.getClassifications(
@@ -529,7 +522,7 @@ Get a list of 3D point cloud objects and associated metadata in the latest pictu
 
 **Returns:**
 
-- ([List[viam.proto.common.PointCloudObject]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject)): : The pointcloud objects with metadata.
+- ([list[viam.proto.common.PointCloudObject]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PointCloudObject)): :   The pointcloud objects with metadata.
 
 **Example:**
 
@@ -560,7 +553,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [([]\*viz.Object)](https://pkg.go.dev/go.viam.com/rdk/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
+- [([]*viz.Object)](https://pkg.go.dev/go.viam.com/rdk/vision#Object): A list of point clouds and associated metadata like the center coordinates of each point cloud.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 **Example:**
@@ -594,13 +587,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): \* The list of PointCloudObjects.
+- (Promise<[commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]>): * The list of PointCloudObjects.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const vision = new VIAM.VisionClient(machine, "my_vision");
-const pointCloudObjects = await vision.getObjectPointClouds("my_camera");
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const pointCloudObjects = await vision.getObjectPointClouds('my_camera');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getobjectpointclouds).
@@ -649,9 +642,9 @@ Used for visualization.
 
 **Returns:**
 
-- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): : A class that stores all potential returns from the vision service.
-  It can return the image from the camera along with its associated detections, classifications,
-  and objects, as well as any extra info the model may provide.
+- ([viam.services.vision.vision.CaptureAllResult](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.CaptureAllResult)): :   A class that stores all potential returns from the vision service.
+    It can return the image from the camera along with its associated detections, classifications,
+    and objects, as well as any extra info the model may provide.
 
 **Example:**
 
@@ -711,22 +704,21 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Parameters:**
 
-- `cameraName` (string) (required): The name of the camera to use for classification,
-  detection, and segmentation.
-- `__namedParameters` (CaptureAllOptions) (required)
+- `cameraName` (string) (required): The name of the camera to use for classification, detection, and
+  segmentation.
+- `opts` (CaptureAllOptions) (required): The fields desired in the response.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; extra: undefined | [Struct](https://ts.viam.dev/classes/Struct.html); image: undefined | [Image](https://ts.viam.dev/classes/cameraApi.Image.html); objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }, >): \* The requested image, classifications, detections, and 3d point
-  cloud objects.
+- (Promise< { classifications: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Classification](https://ts.viam.dev/classes/visionApi.Classification.html)[]; detections: [visionApi](https://ts.viam.dev/modules/visionApi.html).[Detection](https://ts.viam.dev/classes/visionApi.Detection.html)[]; extra: [Struct](https://ts.viam.dev/classes/Struct.html) | undefined; image: [Image](https://ts.viam.dev/classes/cameraApi.Image.html) | undefined; objectPointClouds: [commonApi](https://ts.viam.dev/modules/commonApi.html).[PointCloudObject](https://ts.viam.dev/classes/commonApi.PointCloudObject.html)[]; }, >): * The requested image, classifications, detections, and 3d point cloud objects.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const vision = new VIAM.VisionClient(machine, "my_vision");
-const captureAll = await vision.captureAllFromCamera("my_camera", {
+const vision = new VIAM.VisionClient(machine, 'my_vision');
+const captureAll = await vision.captureAllFromCamera('my_camera', {
   returnImage: true,
   returnClassifications: true,
   returnDetections: true,
@@ -779,7 +771,7 @@ If you are implementing your own vision service and want to add features that ha
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): : Result of the executed command.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
 
 **Example:**
 
@@ -825,8 +817,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -838,15 +830,13 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ```ts {class="line-numbers linkable-line-numbers"}
 // Plain object (recommended)
 const result = await resource.doCommand({
-  myCommand: { key: "value" },
+  myCommand: { key: 'value' },
 });
 
 // Struct (still supported)
-import { Struct } from "@viamrobotics/sdk";
+import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: "value" } }),
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#docommand).
@@ -875,6 +865,58 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetStatus
+
+Get the current status of the vision service as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the service.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await service.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/vision/client/index.html#viam.services.vision.client.VisionClient.get_status).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#getstatus).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/VisionClient/getStatus.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetResourceName
 
 Get the `ResourceName` for this instance of the vision service.
@@ -888,7 +930,7 @@ Get the `ResourceName` for this instance of the vision service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): : The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
 
 **Example:**
 
@@ -933,7 +975,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-vision.name;
+vision.name
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/VisionClient.html#name).
@@ -974,7 +1016,7 @@ Fetch information about which vision methods a given vision service supports.
 
 **Returns:**
 
-- ([Vision.Properties](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties)): : The properties of the vision service.
+- ([Vision.Properties](https://python.viam.dev/autoapi/viam/services/vision/vision/index.html#viam.services.vision.vision.Vision.Properties)): :   The properties of the vision service.
 
 **Example:**
 
@@ -997,7 +1039,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(\*Properties)](https://pkg.go.dev/go.viam.com/rdk/services/vision#Properties)
+- [(*Properties)](https://pkg.go.dev/go.viam.com/rdk/services/vision#Properties)
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/vision#Service).
@@ -1012,12 +1054,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 
 **Returns:**
 
-- (Promise< { classificationsSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean; }, >): \* The properties of the vision service.
+- (Promise< { classificationsSupported: boolean; detectionsSupported: boolean; objectPointCloudsSupported: boolean; }, >): * The properties of the vision service.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const vision = new VIAM.VisionClient(machine, "my_vision");
+const vision = new VIAM.VisionClient(machine, 'my_vision');
 const properties = await vision.getProperties();
 ```
 

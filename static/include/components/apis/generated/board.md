@@ -63,8 +63,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `pin` (string) (required): The pin number.
-- `high` (boolean) (required): When true, set the given pin to high. When false, set the
-  given pin to low.
+- `high` (boolean) (required): When true, set the given pin to high. When false, set the given pin to low.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -615,8 +614,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Parameters:**
 
 - `pin` (string) (required): The pin.
-- `frequencyHz` (number) (required): The PWM frequency, in hertz. 0 will use the board's
-  default PWM frequency.
+- `frequencyHz` (number) (required): The PWM frequency, in hertz. 0 will use the board's default PWM frequency.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -739,9 +737,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 const board = new VIAM.BoardClient(machine, 'my_board');
 
 // Get the number of times this DigitalInterrupt has been interrupted with a tick.
-const count = await board.getDigitalInterruptValue(
-  'my_example_digital_interrupt'
-);
+const count = await board.getDigitalInterruptValue('my_example_digital_interrupt');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getdigitalinterruptvalue).
@@ -852,9 +848,7 @@ const board = new VIAM.BoardClient(machine, 'my_board');
 
 // Get the value of the analog signal "my_example_analog_reader" has most
 // recently measured.
-const reading = await board.readAnalogReader(
-  'my_example_analog_reader'
-);
+const reading = await board.readAnalogReader('my_example_analog_reader');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#readanalogreader).
@@ -1083,7 +1077,7 @@ const ticks = await board.streamTicks(['8', '11']);
 
 for await (const tick of ticks) {
   console.log(
-    `Pin ${tick.pinName} changed to ${tick.high ? 'high' : 'low'} at ${tick.time}`
+    `Pin ${tick.pinName} changed to ${tick.high ? 'high' : 'low'} at ${tick.time}`,
   );
 }
 ```
@@ -1507,8 +1501,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1526,9 +1520,7 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#docommand).
@@ -1553,6 +1545,58 @@ var result = myArm.doCommand(command);
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the board as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await component.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/board/client/index.html#viam.components.board.client.BoardClient.get_status).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BoardClient.html#getstatus).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/getStatus.html).
 
 {{% /tab %}}
 {{< /tabs >}}
