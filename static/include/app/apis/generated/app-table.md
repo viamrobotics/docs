@@ -46,6 +46,7 @@
 | [`CreateRobotPartSecret`](/reference/apis/fleet/#createrobotpartsecret) | Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret. |
 | [`DeleteRobotPartSecret`](/reference/apis/fleet/#deleterobotpartsecret) | Delete a machine part secret. |
 | [`ListRobots`](/reference/apis/fleet/#listrobots) | Get a list of all machines in a specified location. |
+| [`ListMachineSummaries`](/reference/apis/fleet/#listmachinesummaries) | List summary information for the machines in an organization, optionally filtered by fragment or location. |
 | [`NewRobot`](/reference/apis/fleet/#newrobot) | Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`UpdateRobot`](/reference/apis/fleet/#updaterobot) | Update an existing machine's name and/or location. |
 | [`DeleteRobot`](/reference/apis/fleet/#deleterobot) | Delete a specified machine. |
@@ -55,7 +56,7 @@
 | [`UpdateRobotPartMetadata`](/reference/apis/fleet/#updaterobotpartmetadata) | Updates the user-defined metadata for a machine part. |
 | [`ListFragments`](/reference/apis/fleet/#listfragments) | Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in the organization you are currently authenticated to. |
 | [`ListMachineFragments`](/reference/apis/fleet/#listmachinefragments) | Get a list of top level and nested {{< glossary_tooltip term_id="fragment" text="fragments" >}} for a machine, as well as additionally specified fragment IDs. |
-| [`ListMachineSummaries`](/reference/apis/fleet/#listmachinesummaries) | Lists machine summaries for an organization, optionally filtered by fragment IDs, location IDs, and limit. |
+| [`ListMachineSummaries`](/reference/apis/fleet/#listmachinesummaries) | List summary information for the machines in an organization, optionally filtered by fragment or location. |
 | [`GetFragment`](/reference/apis/fleet/#getfragment) | Get a {{< glossary_tooltip term_id="fragment" text="fragment" >}} by ID. |
 | [`CreateFragment`](/reference/apis/fleet/#createfragment) | Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}. |
 | [`UpdateFragment`](/reference/apis/fleet/#updatefragment) | Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and its config and/or visibility. |
@@ -71,6 +72,10 @@
 | [`UpdateRegistryItem`](/reference/apis/fleet/#updateregistryitem) | Update a registry item. |
 | [`ListRegistryItems`](/reference/apis/fleet/#listregistryitems) | List the registry items in an organization. |
 | [`DeleteRegistryItem`](/reference/apis/fleet/#deleteregistryitem) | Delete a registry item. |
+| [`DeprecateRegistryItem`](/reference/apis/fleet/#deprecateregistryitem) | Mark a registry item, such as a module or training script, as deprecated. |
+| [`UndeprecateRegistryItem`](/reference/apis/fleet/#undeprecateregistryitem) | Remove the deprecated status from a registry item. |
+| [`DeprecateRegistryItemVersion`](/reference/apis/fleet/#deprecateregistryitemversion) | Mark a specific version of a registry item as deprecated. |
+| [`UndeprecateRegistryItemVersion`](/reference/apis/fleet/#undeprecateregistryitemversion) | Remove the deprecated status from a specific version of a registry item. |
 | [`CreateModule`](/reference/apis/fleet/#createmodule) | Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organization you are currently authenticated to. |
 | [`UpdateModule`](/reference/apis/fleet/#updatemodule) | Update the documentation URL, description, models, entrypoint, and/or the visibility of a {{< glossary_tooltip term_id="module" text="module" >}}. |
 | [`UploadModuleFile`](/reference/apis/fleet/#uploadmodulefile) | Upload a {{< glossary_tooltip term_id="module" text="module" >}} file. |
