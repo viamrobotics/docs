@@ -276,6 +276,7 @@ base_remote_control,Close,,,Close,,
 ## Data Manager
 data_manager,Sync,No,,Sync,,sync
 data_manager,UploadBinaryDataToDatasets,No,,UploadBinaryDataToDatasets,,uploadBinaryDataToDatasets
+data_manager,UploadImageToDatasets,No,,UploadImageToDatasets,,
 ## HACK: No proto for these (and/or inherited in Go SDK), manually mapping:
 data_manager,Reconfigure,No,,Reconfigure,,
 data_manager,DoCommand,No,,DoCommand,,doCommand
