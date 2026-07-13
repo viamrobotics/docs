@@ -8,10 +8,10 @@ arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
 arm,Get3DModels,,,Get3DModels,get3DModels,get3DModels
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-arm,GetKinematics,,get_kinematics,Kinematics,,getKinematics
+arm,GetKinematics,,get_kinematics,Kinematics,getKinematics,getKinematics
 arm,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 arm,Stop,,stop,Stop,stop,stop
-arm,GetGeometries,,get_geometries,Geometries,,getGeometries
+arm,GetGeometries,,get_geometries,Geometries,getGeometries,getGeometries
 arm,Reconfigure,,,Reconfigure,,
 arm,DoCommand,,do_command,DoCommand,doCommand,doCommand
 arm,GetStatus,,get_status,,getStatus,getStatus
@@ -91,6 +91,7 @@ button,Close,No,close,Close,,
 
 ## Camera
 camera,GetImages,,get_images,Images,getImages,getImages
+camera,Stream,,,Stream,,
 camera,GetPointCloud,,get_point_cloud,NextPointCloud,pointCloud,getPointCloud
 camera,GetProperties,,get_properties,Properties,properties,getProperties
 ## TED: Camera in Go SDK doesn't appear to implement (inherit) these:
@@ -119,14 +120,14 @@ gantry,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPosi
 gantry,GetLengths,,get_lengths,Lengths,lengths,getLengths
 gantry,Home,,home,Home,home,home
 ## TED: Gantry in Go SDK doesn't appear to implement (inherit) this:
-gantry,GetGeometries,,get_geometries,,,getGeometries
+gantry,GetGeometries,,get_geometries,Geometries,getGeometries,getGeometries
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 gantry,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gantry,Stop,,stop,Stop,stop,stop
 gantry,Reconfigure,,,Reconfigure,,
 gantry,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gantry,GetStatus,,get_status,,getStatus,getStatus
-gantry,GetKinematics,,get_kinematics,Kinematics,,
+gantry,GetKinematics,,get_kinematics,Kinematics,getKinematics,getKinematics
 gantry,GetResourceName,,get_resource_name,Name,getResourceName,name
 gantry,Close,,close,Close,,
 
@@ -145,11 +146,11 @@ gripper,Open,,open,Open,open,open
 gripper,Grab,,grab,Grab,grab,grab
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
-gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,
+gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,isHoldingSomething
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
-gripper,GetCurrentInputs,,get_current_inputs,CurrentInputs,,getCurrentInputs
-gripper,GoToInputs,,go_to_inputs,GoToInputs,,goToInputs
+gripper,GetCurrentInputs,,get_current_inputs,CurrentInputs,getCurrentInputs,getCurrentInputs
+gripper,GoToInputs,,go_to_inputs,GoToInputs,goToInputs,goToInputs
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gripper,GetStatus,,get_status,,getStatus,getStatus

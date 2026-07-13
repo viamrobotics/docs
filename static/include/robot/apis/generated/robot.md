@@ -11,7 +11,7 @@ Get the list of operations currently running on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): : The list of operations currently running on a given machine.
+- ([List[viam.proto.robot.Operation]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.Operation)): :   The list of operations currently running on a given machine.
 
 **Example:**
 
@@ -56,7 +56,7 @@ Get status information about the machine including the status of the machine and
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): : current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]) and the revision of the config of the machine.
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): :   current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]), the revision of the config of the machine, and the status of modules (List[ModuleStatus]).
 
 **Example:**
 
@@ -66,6 +66,7 @@ machine_state = machine_status.state
 resource_statuses = machine_status.resources
 cloud_metadata = machine_status.resources[0].cloud_metadata
 config_status = machine_status.config
+module_statuses = machine_status.modules
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
@@ -278,7 +279,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.cancelOperation("INSERT OPERATION ID");
+await machine.cancelOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#canceloperation).
@@ -324,7 +325,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.blockForOperation("INSERT OPERATION ID");
+await machine.blockForOperation('INSERT OPERATION ID');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#blockforoperation).
@@ -345,7 +346,7 @@ Get the configuration of the frame system of a given machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): : The configuration of a given machine’s frame system.
+- ([List[viam.proto.robot.FrameSystemConfig]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.FrameSystemConfig)): :   The configuration of a given machine’s frame system.
 
 **Example:**
 
@@ -394,7 +395,7 @@ Transform a given source Pose from the original reference frame to a new destina
 
 **Returns:**
 
-- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): : The pose and the reference frame for the new destination.
+- ([viam.proto.common.PoseInFrame](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.PoseInFrame)): :   The pose and the reference frame for the new destination.
 
 **Example:**
 
@@ -428,8 +429,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `source` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
 - `destination` (string) (required): The name of the reference frame to transform the given.
-- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required): Pose information on any additional
-  reference frames that are needed to perform the transform.
+- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required): Pose information on any additional reference frames that are
+  needed to perform the transform.
+- `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
@@ -446,32 +448,6 @@ Transforms the pointcloud to the desired frame in the robot's frame system.
 Do not move the robot between the generation of the initial pointcloud and the receipt of the transformed pointcloud, as doing so will make the transformations inaccurate.
 
 {{< tabs >}}
-{{% tab name="Python" %}}
-
-**Parameters:**
-
-- `point_cloud_pcd` ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)) (required): The point cloud data to transform, in PCD format.
-- `source` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The reference frame of the point cloud.
-- `destination` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The reference frame to transform the point cloud into.
-
-**Returns:**
-
-- ([bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)): The point cloud data relative to the destination reference frame.
-
-**Example:**
-
-```python {class="line-numbers linkable-line-numbers"}
-from viam.components.camera import Camera
-
-my_camera = Camera.from_robot(robot=machine, name="my_camera")
-data, _ = await my_camera.get_point_cloud()
-
-transformed_pcd = await machine.transform_pcd(data, "my_camera", "world")
-```
-
-For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pcd).
-
-{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -479,15 +455,14 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 - `pointCloudPCD` (Uint8Array) (required): The point clouds to transform. This should be in the
   [PCD format encoded into bytes](https://pointclouds.org/documentation/tutorials/pcd_file_format.html).
 - `source` (string) (required): The reference frame of the point cloud.
-- `destination` (string) (required): The reference frame into which the source data should
-  be transformed, if unset this defaults to the "world" reference frame. Do
-  not move the robot between the generation of the initial pointcloud and
-  the receipt of the transformed pointcloud because that will make the
-  transformations inaccurate.
+- `destination` (string) (required): The reference frame into which the source data should be transformed, if
+  unset this defaults to the "world" reference frame. Do not move the robot between the
+  generation of the initial pointcloud and the receipt of the transformed pointcloud because
+  that will make the transformations inaccurate.
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array<ArrayBufferLike>>)
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#transformpcd).
 
@@ -508,7 +483,7 @@ This includes models that are not currently configured on the machine.
 
 **Returns:**
 
-- ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): : A list of discovered models.
+- ([List[viam.proto.robot.ModuleModel]](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.ModuleModel)): :   A list of discovered models.
 
 **Example:**
 
@@ -695,10 +670,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `moduleId` (string) (optional): The id matching the module_id field of the registry
-  module in your part configuration.
-- `moduleName` (string) (optional): The name matching the name field of the local/registry
-  module in your part configuration.
+- `moduleId` (string) (optional): The id matching the module\_id field of the registry module in your part
+  configuration.
+- `moduleName` (string) (optional): The name matching the name field of the local/registry module in your part
+  configuration.
 
 **Returns:**
 
@@ -707,7 +682,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await machine.restartModule("namespace:module:model", "my_model_name");
+await machine.restartModule('namespace:module:model', 'my_model_name');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/Client.html#restartmodule).
@@ -752,7 +727,7 @@ Get app-related information about the robot.
 
 **Returns:**
 
-- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): : App-related metadata.
+- ([viam.proto.robot.GetCloudMetadataResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetCloudMetadataResponse)): :   App-related metadata.
 
 **Example:**
 
@@ -844,7 +819,7 @@ Return version information about the machine.
 
 **Returns:**
 
-- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): : Machine version related information.
+- ([viam.proto.robot.GetVersionResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetVersionResponse)): :   Machine version related information.
 
 **Example:**
 
@@ -902,7 +877,7 @@ Pass these options to [`AtAddress`](#ataddress).
 
 **Returns:**
 
-- (Self): : the RobotClient.Options.
+- (Self): :   the RobotClient.Options.
 
 **Raises:**
 

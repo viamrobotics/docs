@@ -77,7 +77,7 @@ await mlTrainingClient.submitTrainingJob(
   '<your-model-name>',
   '1.0.0',
   ModelType.SINGLE_LABEL_CLASSIFICATION,
-  ['tag1', 'tag2']
+  ['tag1', 'tag2'],
 );
 ```
 
@@ -165,7 +165,7 @@ await mlTrainingClient.submitCustomTrainingJob(
   'viam:classification-tflite',
   '1.0.0',
   '<your-model-name>',
-  '1.0.0'
+  '1.0.0',
 );
 ```
 
@@ -222,7 +222,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)>)
+- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html) | undefined>)
 
 **Example:**
 
@@ -295,7 +295,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 const jobs = await mlTrainingClient.listTrainingJobs(
   '<organization-id>',
-  TrainingStatus.RUNNING
+  TrainingStatus.RUNNING,
 );
 ```
 

@@ -614,6 +614,25 @@ API](https://docs.viam.com/dev/reference/apis/components/arm/#getkinematics).
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getkinematics).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<Kinematics>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var kinematics = await myArm.getKinematics();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/getKinematics.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### IsMoving
@@ -891,6 +910,25 @@ console.log(geometries);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getgeometries).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final geometries = await myArm.getGeometries();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/getGeometries.html).
 
 {{% /tab %}}
 {{< /tabs >}}

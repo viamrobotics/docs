@@ -57,9 +57,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 // This method is used internally only. To obtain a user's ID, use the listOrganizationsByUser method.
-const members = await appClient.listOrganizationMembers(
-  '<YOUR-ORGANIZATION-ID>'
-);
+const members = await appClient.listOrganizationMembers('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getuseridbyemail).
@@ -120,7 +118,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): The new organization.
+- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): The new organization.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createorganization).
 
@@ -140,7 +138,7 @@ List the {{< glossary_tooltip term_id="organization" text="organizations" >}} th
 
 **Returns:**
 
-- ([List[viam.proto.app.Organization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): :   The list of organizations.
+- ([list[viam.proto.app.Organization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Organization)): :   The list of organizations.
 
 **Example:**
 
@@ -205,7 +203,7 @@ Get all organizations that have access to a location.
 
 **Returns:**
 
-- ([List[viam.proto.app.OrganizationIdentity]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationIdentity)): :   The list of organizations.
+- ([list[viam.proto.app.OrganizationIdentity]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationIdentity)): :   The list of organizations.
 
 **Example:**
 
@@ -230,9 +228,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const organizations =
-  await appClient.getOrganizationsWithAccessToLocation(
-    '<YOUR-LOCATION-ID>'
-  );
+  await appClient.getOrganizationsWithAccessToLocation('<YOUR-LOCATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganizationswithaccesstolocation).
@@ -253,7 +249,7 @@ List the organizations a user belongs to.
 
 **Returns:**
 
-- ([List[viam.proto.app.OrgDetails]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrgDetails)): :   The list of organizations.
+- ([list[viam.proto.app.OrgDetails]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrgDetails)): :   The list of organizations.
 
 **Example:**
 
@@ -357,14 +353,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): Details about the organization, if it exists.
+- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): Details about the organization, if it exists.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const organization = await appClient.getOrganization(
-  '<YOUR-ORGANIZATION-ID>'
-);
+const organization = await appClient.getOrganization('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganization).
@@ -435,8 +429,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const isAvailable =
-  await appClient.getOrganizationNamespaceAvailability('name');
+const isAvailable = await appClient.getOrganizationNamespaceAvailability('name');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganizationnamespaceavailability).
@@ -458,7 +451,7 @@ Updates organization details.
 - `public_namespace` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If provided, sets the org’s namespace if it hasn’t already been set.
 - `region` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If provided, updates the org’s region.
 - `cid` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): If provided, update’s the org’s CRM ID.
-- `default_fragments` ([List[viam.proto.app.FragmentImport]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.FragmentImport)) (optional)
+- `default_fragments` ([list[viam.proto.app.FragmentImport]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.FragmentImport)) (optional)
 
 **Returns:**
 
@@ -518,19 +511,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `publicNamespace` (string) (optional): Optional namespace to update the organization with.
 - `region` (string) (optional): Optional region to update the organization with.
 - `cid` (string) (optional): Optional CRM ID to update the organization with.
-- `defaultFragments` ([FragmentImportList](https://ts.viam.dev/classes/appApi.FragmentImportList.html)) (optional): Optional default fragments to set for the
-  organization.
+- `defaultFragments` ([FragmentImportList](https://ts.viam.dev/classes/appApi.FragmentImportList.html)) (optional): Optional default fragments to set for the organization.
 
 **Returns:**
 
-- (Promise<undefined | [Organization](https://ts.viam.dev/classes/appApi.Organization.html)>): The updated organization details.
+- (Promise<[Organization](https://ts.viam.dev/classes/appApi.Organization.html) | undefined>): The updated organization details.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const organization = await appClient.updateOrganization(
   '<YOUR-ORGANIZATION-ID>',
-  'newName'
+  'newName',
 );
 ```
 
@@ -616,7 +608,7 @@ List the members and invites of the {{< glossary_tooltip term_id="organization" 
 
 **Returns:**
 
-- (Tuple[List[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], List[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): :   A tuple containing two lists; the first
+- (tuple[list[[app.OrganizationMember](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationMember)], list[[app.OrganizationInvite](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.OrganizationInvite)]]): :   A tuple containing two lists; the first
     [0] of organization members, and the second [1] of organization invites.
 
 **Example:**
@@ -658,15 +650,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>): An object containing organization members, pending invites, and
-org ID.
+- (Promise<[ListOrganizationMembersResponse](https://ts.viam.dev/classes/appApi.ListOrganizationMembersResponse.html)>): An object containing organization members, pending invites, and org ID.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const members = await appClient.listOrganizationMembers(
-  '<YOUR-ORGANIZATION-ID>'
-);
+const members = await appClient.listOrganizationMembers('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listorganizationmembers).
@@ -685,7 +674,7 @@ Create an {{< glossary_tooltip term_id="organization" text="organization" >}} in
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create an invite for. You can obtain your organization ID from the organization settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The email address to send the invite to.
-- `authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Specifications of the authorizations to include in the invite. If not provided, full owner permissions will be granted.
+- `authorizations` ([list[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Specifications of the authorizations to include in the invite. If not provided, full owner permissions will be granted.
 - `send_email_invite` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether or not an email should be sent to the recipient of an invite. The user must accept the email to be added to the associated authorizations. When set to false, the user automatically receives the associated authorization on the next login of the user with the associated email address.
 
 **Returns:**
@@ -747,12 +736,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `organizationId` (string) (required): The id of the organization to create the invite for.
 - `email` (string) (required): The email address of the user to generate an invite for.
 - `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The authorizations to associate with the new invite.
-- `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or
-  automatically add a user. Defaults to true.
+- `sendEmailInvite` (boolean) (optional): Bool of whether to send an email invite (true) or automatically add a
+  user. Defaults to true.
 
 **Returns:**
 
-- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The organization invite.
+- (Promise<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The organization invite.
 
 **Example:**
 
@@ -771,7 +760,7 @@ const auth = new VIAM.appApi.Authorization({
 const invite = await appClient.createOrganizationInvite(
   '<YOUR-ORGANIZATION-ID>',
   'youremail@email.com',
-  [auth]
+  [auth],
 );
 ```
 
@@ -792,8 +781,8 @@ If an invitation has only one authorization and you want to remove it, delete th
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization that the invite is for. You can obtain your organization ID from the organization settings page.
 - `email` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Email of the user the invite was sent to.
-- `add_authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to add to the invite.
-- `remove_authorizations` ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to remove from the invite.
+- `add_authorizations` ([list[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to add to the invite.
+- `remove_authorizations` ([list[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (optional): Optional list of authorizations to remove from the invite.
 
 **Returns:**
 
@@ -875,7 +864,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The organization invite.
+- (Promise<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The organization invite.
 
 **Example:**
 
@@ -894,7 +883,7 @@ const invite = await appClient.updateOrganizationInviteAuthorizations(
   '<YOUR-ORGANIZATION-ID>',
   'youremail@email.com',
   [auth],
-  []
+  [],
 );
 ```
 
@@ -969,10 +958,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.deleteOrganizationMember(
-  '<YOUR-ORGANIZATION-ID>',
-  '<YOUR-USER-ID>'
-);
+await appClient.deleteOrganizationMember('<YOUR-ORGANIZATION-ID>', '<YOUR-USER-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteorganizationmember).
@@ -1047,10 +1033,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.deleteOrganizationInvite(
-  '<YOUR-ORGANIZATION-ID>',
-  'youremail@email.com'
-);
+await appClient.deleteOrganizationInvite('<YOUR-ORGANIZATION-ID>', 'youremail@email.com');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteorganizationinvite).
@@ -1118,14 +1101,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html)>): The invite.
+- (Promise<[OrganizationInvite](https://ts.viam.dev/classes/appApi.OrganizationInvite.html) | undefined>): The invite.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const invite = await appClient.resendOrganizationInvite(
   '<YOUR-ORGANIZATION-ID>',
-  'youremail@email.com'
+  'youremail@email.com',
 );
 ```
 
@@ -1147,7 +1130,7 @@ Gets the user-defined metadata for an organization.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -1194,9 +1177,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const metadata = await appClient.getOrganizationMetadata(
-  '<YOUR-ORGANIZATION-ID>'
-);
+const metadata = await appClient.getOrganizationMetadata('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getorganizationmetadata).
@@ -1215,7 +1196,7 @@ User-defined metadata is billed as data.
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required)
-- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata to upload as a Python dictionary.
+- `metadata` (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata to upload as a Python dictionary.
 
 **Returns:**
 
@@ -1348,23 +1329,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `organizationId` (string) (required): The ID of the organization to create the location
-  under.
+- `organizationId` (string) (required): The ID of the organization to create the location under.
 - `name` (string) (required): The name of the location to create.
-- `parentLocationId` (string) (optional): Optional name of a parent location to create the
-  new location under.
+- `parentLocationId` (string) (optional): Optional name of a parent location to create the new location under.
 
 **Returns:**
 
-- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
+- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const location = await appClient.createLocation(
-  '<YOUR-ORGANIZATION-ID>',
-  'name'
-);
+const location = await appClient.createLocation('<YOUR-ORGANIZATION-ID>', 'name');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createlocation).
@@ -1429,7 +1405,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
+- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
@@ -1527,21 +1503,17 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `locId` (string) (required): The ID of the location to update.
 - `name` (string) (optional): Optional string to update the location's name to.
-- `parentLocId` (string) (optional): Optional string to update the location's parent location
-  to.
+- `parentLocId` (string) (optional): Optional string to update the location's parent location to.
 - `region` (string) (optional): Optional string to update the location's region to.
 
 **Returns:**
 
-- (Promise<undefined | [Location](https://ts.viam.dev/classes/appApi.Location.html)>): The location object.
+- (Promise<[Location](https://ts.viam.dev/classes/appApi.Location.html) | undefined>): The location object.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const location = await appClient.updateLocation(
-  '<YOUR-LOCATION-ID>',
-  'newName'
-);
+const location = await appClient.updateLocation('<YOUR-LOCATION-ID>', 'newName');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updatelocation).
@@ -1631,7 +1603,7 @@ Get a list of all {{< glossary_tooltip term_id="location" text="locations" >}} u
 
 **Returns:**
 
-- ([List[viam.proto.app.Location]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): :   The list of locations.
+- ([list[viam.proto.app.Location]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Location)): :   The list of locations.
 
 **Example:**
 
@@ -1676,9 +1648,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const locations = await appClient.listLocations(
-  '<YOUR-ORGANIZATION-ID>'
-);
+const locations = await appClient.listLocations('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listlocations).
@@ -1746,10 +1716,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.shareLocation(
-  '<OTHER-ORGANIZATION-ID>',
-  '<YOUR-LOCATION-ID>'
-);
+await appClient.shareLocation('<OTHER-ORGANIZATION-ID>', '<YOUR-LOCATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#sharelocation).
@@ -1817,10 +1784,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.unshareLocation(
-  '<OTHER-ORGANIZATION-ID>',
-  '<YOUR-LOCATION-ID>'
-);
+await appClient.unshareLocation('<OTHER-ORGANIZATION-ID>', '<YOUR-LOCATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#unsharelocation).
@@ -1885,14 +1849,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>): The `LocationAuth` for the requested location.
+- (Promise<[LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html) | undefined>): The `LocationAuth` for the requested location.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const locationAuth = await appClient.locationAuth(
-  '<YOUR-LOCATION-ID>'
-);
+const locationAuth = await appClient.locationAuth('<YOUR-LOCATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#locationauth).
@@ -1957,14 +1919,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html)>): The newly created `LocationAuth`.
+- (Promise<[LocationAuth](https://ts.viam.dev/classes/appApi.LocationAuth.html) | undefined>): The newly created `LocationAuth`.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const locationAuth = await appClient.createLocationSecret(
-  '<YOUR-LOCATION-ID>'
-);
+const locationAuth = await appClient.createLocationSecret('<YOUR-LOCATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createlocationsecret).
@@ -2043,10 +2003,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.deleteLocationSecret(
-  '<YOUR-LOCATION-ID>',
-  '<YOUR-SECRET-ID>'
-);
+await appClient.deleteLocationSecret('<YOUR-LOCATION-ID>', '<YOUR-SECRET-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deletelocationsecret).
@@ -2067,7 +2024,7 @@ Get the user-defined metadata for a location.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -2112,9 +2069,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const metadata = await appClient.getLocationMetadata(
-  '<YOUR-LOCATION-ID>'
-);
+const metadata = await appClient.getLocationMetadata('<YOUR-LOCATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getlocationmetadata).
@@ -2132,7 +2087,7 @@ Update the user-defined metadata for a location.
 **Parameters:**
 
 - `location_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the location with which to associate the user-defined metadata. You can obtain your location ID from the location’s page.
-- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
+- `metadata` (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
 
@@ -2257,7 +2212,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The `Robot` object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html) | undefined>): The `Robot` object.
 
 **Example:**
 
@@ -2283,7 +2238,7 @@ Gets the [API keys](/organization/api-keys/) for the machine.
 
 **Returns:**
 
-- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): :   The list of API keys.
+- ([list[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): :   The list of API keys.
 
 **Example:**
 
@@ -2328,8 +2283,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotAPIKeys =
-  await appClient.getRobotAPIKeys('<YOUR-ROBOT-ID>');
+const robotAPIKeys = await appClient.getRobotAPIKeys('<YOUR-ROBOT-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotapikeys).
@@ -2350,7 +2304,7 @@ Get a list of all the {{< glossary_tooltip term_id="part" text="parts" >}} under
 
 **Returns:**
 
-- ([List[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): :   The list of machine parts.
+- ([list[RobotPart]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPart)): :   The list of machine parts.
 
 **Raises:**
 
@@ -2490,10 +2444,7 @@ const robotPart = await appClient.getRobotPart('<YOUR-ROBOT-PART-ID>');
 // Get the part's address
 const address = robotPart.part.fqdn;
 // Check if machine is live (last access time less than 10 sec ago)
-if (
-  Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <=
-  10000
-) {
+if (Date.now() - Number(robotPart.part.lastAccess.seconds) * 1000 <= 10000) {
   console.log('Machine is live');
 }
 ```
@@ -2515,14 +2466,14 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the machine part to get logs from.
 - `filter` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Only include logs with messages that contain the string filter. Defaults to empty string “” (that is, no filter).
 - `dest` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional filepath to write the log entries to.
-- `log_levels` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of log levels for which entries should be returned. Defaults to empty list, which returns all logs.
+- `log_levels` (list[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): List of log levels for which entries should be returned. Defaults to empty list, which returns all logs.
 - `num_log_entries` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Number of log entries to return. Passing 0 returns all logs. Defaults to 100. All logs or the first num_log_entries logs will be returned, whichever comes first.
 - `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time for log retrieval. Only logs created after this time will be returned.
 - `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time for log retrieval. Only logs created before this time will be returned.
 
 **Returns:**
 
-- ([List[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): :   The list of log entries.
+- ([list[LogEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): :   The list of log entries.
 
 **Raises:**
 
@@ -2587,26 +2538,22 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `id` (string) (required): The ID of the requested robot part.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `levels` (string) (optional): Optional array of log levels to return. Defaults to returning
-  all log levels.
-- `start` (Date) (optional): Optional start time for log retrieval. Only logs created after
-  this time will be returned.
-- `end` (Date) (optional): Optional end time for log retrieval. Only logs created before
-  this time will be returned.
-- `pageToken` (string) (optional): Optional string indicating which page of logs to query.
-  Defaults to the most recent.
+- `levels` (string) (optional): Optional array of log levels to return. Defaults to returning all log levels.
+- `start` (Date) (optional): Optional start time for log retrieval. Only logs created after this time will be
+  returned.
+- `end` (Date) (optional): Optional end time for log retrieval. Only logs created before this time will be
+  returned.
+- `pageToken` (string) (optional): Optional string indicating which page of logs to query. Defaults to the most
+  recent.
 
 **Returns:**
 
-- (Promise<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>): The robot requested logs and the page token for the next page of
-logs.
+- (Promise<[GetRobotPartLogsResponse](https://ts.viam.dev/classes/appApi.GetRobotPartLogsResponse.html)>): The robot requested logs and the page token for the next page of logs.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotPartLogs = await appClient.getRobotPartLogs(
-  '<YOUR-ROBOT-PART-ID>'
-);
+const robotPartLogs = await appClient.getRobotPartLogs('<YOUR-ROBOT-PART-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotpartlogs).
@@ -2635,7 +2582,7 @@ Query a specific robot part by name and location id.
 ```ts {class="line-numbers linkable-line-numbers"}
 const robotPart = await appClient.getRobotPartByNameAndLocation(
   '<YOUR-ROBOT-PART-NAME>',
-  '<YOUR-LOCATION-ID>'
+  '<YOUR-LOCATION-ID>',
 );
 ```
 
@@ -2659,7 +2606,7 @@ Get an asynchronous iterator that receives live machine part logs.
 
 **Returns:**
 
-- ([viam.app._logs._LogsStream[List[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): :   The asynchronous iterator receiving live machine part logs.
+- ([viam.app._logs._LogsStream[list[LogEntry]]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.LogEntry)): :   The asynchronous iterator receiving live machine part logs.
 
 **Example:**
 
@@ -2710,8 +2657,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `id` (string) (required): The ID of the requested robot part.
 - `queue` ([LogEntry](https://ts.viam.dev/classes/commonApi.LogEntry.html)) (required): A queue to put the log entries into.
 - `filter` (string) (optional): Optional string to filter logs on.
-- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level
-  logs should be returned. Defaults to true.
+- `errorsOnly` (boolean) (optional): Optional bool to indicate whether or not only error-level logs should be
+  returned. Defaults to true.
 
 **Returns:**
 
@@ -2720,9 +2667,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotPartLogs = await appClient.tailRobotPartLogs(
-  '<YOUR-ROBOT-PART-ID>'
-);
+const robotPartLogs = await appClient.tailRobotPartLogs('<YOUR-ROBOT-PART-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#tailrobotpartlogs).
@@ -2743,7 +2688,7 @@ Get a list containing the history of a machine {{< glossary_tooltip term_id="par
 
 **Returns:**
 
-- ([List[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): :   The list of the machine part’s history.
+- ([list[RobotPartHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.RobotPartHistoryEntry)): :   The list of the machine part’s history.
 
 **Raises:**
 
@@ -2796,9 +2741,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotPartHistory = await appClient.getRobotPartHistory(
-  '<YOUR-ROBOT-PART-ID>'
-);
+const robotPartHistory = await appClient.getRobotPartHistory('<YOUR-ROBOT-PART-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotparthistory).
@@ -2818,7 +2761,7 @@ You can only change the name and configuration of the machine part, not the loca
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the robot part to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to be updated on the robot part.
-- `robot_config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional new config represented as a dictionary to be updated on the machine part. The machine part’s config will remain as is (no change) if one isn’t passed.
+- `robot_config` ([collections.abc.Mapping[str, viam.utils.ValueTypes]](https://python.viam.dev/autoapi/viam/components/component_base/index.html#viam.components.component_base.ValueTypes)) (optional): Optional new config represented as a dictionary to be updated on the machine part. The machine part’s config will remain as is (no change) if one isn’t passed.
 - `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this part’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
 - `robot_config_json` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): Optional raw JSON string of the robot config, preserving user-defined key order. When set, this takes precedence over robot_config for storage purposes.
 
@@ -2892,15 +2835,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>): The updated robot part.
+- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html) | undefined>): The updated robot part.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotPart = await appClient.updateRobotPart(
-  '<YOUR-ROBOT-PART-ID>',
-  'newName'
-);
+const robotPart = await appClient.updateRobotPart('<YOUR-ROBOT-PART-ID>', 'newName');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#updaterobotpart).
@@ -2978,10 +2918,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotPartId = await appClient.newRobotPart(
-  '<YOUR-ROBOT-ID>',
-  'newPart'
-);
+const robotPartId = await appClient.newRobotPart('<YOUR-ROBOT-ID>', 'newPart');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#newrobotpart).
@@ -3260,14 +3197,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html)>): The robot part object.
+- (Promise<[RobotPart](https://ts.viam.dev/classes/appApi.RobotPart.html) | undefined>): The robot part object.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotPart = await appClient.createRobotPartSecret(
-  '<YOUR-ROBOT-PART-ID>'
-);
+const robotPart = await appClient.createRobotPartSecret('<YOUR-ROBOT-PART-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createrobotpartsecret).
@@ -3344,10 +3279,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.deleteRobotPartSecret(
-  '<YOUR-ROBOT-PART-ID>',
-  '<YOUR-SECRET-ID>'
-);
+await appClient.deleteRobotPartSecret('<YOUR-ROBOT-PART-ID>', '<YOUR-SECRET-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleterobotpartsecret).
@@ -3368,7 +3300,7 @@ Get a list of all machines in a specified location.
 
 **Returns:**
 
-- ([List[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The list of robots.
+- ([list[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The list of robots.
 
 **Raises:**
 
@@ -3490,10 +3422,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const robotId = await appClient.newRobot(
-  '<YOUR-LOCATION-ID>',
-  'newRobot'
-);
+const robotId = await appClient.newRobot('<YOUR-LOCATION-ID>', 'newRobot');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#newrobot).
@@ -3588,7 +3517,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html)>): The newly-modified robot object.
+- (Promise<[appApi](https://ts.viam.dev/modules/appApi.html).[Robot](https://ts.viam.dev/classes/appApi.Robot.html) | undefined>): The newly-modified robot object.
 
 **Example:**
 
@@ -3596,7 +3525,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const robot = await appClient.updateRobot(
   '<YOUR-ROBOT-ID>',
   '<YOUR-LOCATION-ID>',
-  'newName'
+  'newName',
 );
 ```
 
@@ -3687,7 +3616,7 @@ Gets the user-defined metadata for a machine.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -3755,7 +3684,7 @@ Gets the user-defined metadata for a machine part.
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
+- (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The user-defined metadata converted from JSON to a Python dictionary.
 
 **Example:**
 
@@ -3802,9 +3731,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const metadata = await appClient.getRobotPartMetadata(
-  '<YOUR-ROBOT-PART-ID>'
-);
+const metadata = await appClient.getRobotPartMetadata('<YOUR-ROBOT-PART-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getrobotpartmetadata).
@@ -3823,7 +3750,7 @@ User-defined metadata is billed as data.
 **Parameters:**
 
 - `robot_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the robot with which to associate the user-defined metadata. You can obtain your robot ID from the machine page.
-- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
+- `metadata` (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
 
@@ -3902,7 +3829,7 @@ User-defined metadata is billed as data.
 **Parameters:**
 
 - `robot_part_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required)
-- `metadata` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
+- `metadata` (collections.abc.Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (required): The user-defined metadata converted from JSON to a Python dictionary.
 
 **Returns:**
 
@@ -3981,11 +3908,11 @@ Get a list of {{< glossary_tooltip term_id="fragment" text="fragments" >}} in th
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list fragments for. You can obtain your organization ID from the organization settings page.
 - `show_public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Optional boolean specifying whether or not to only show public fragments. If True, only public fragments will return. If False, only private fragments will return. Defaults to True.  Deprecated since version 0.25.0: Use visibilities instead.
-- `visibilities` ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
+- `visibilities` ([list[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): List of FragmentVisibilities specifying which types of fragments to include in the results. If empty, by default only public fragments will be returned.
 
 **Returns:**
 
-- ([List[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): :   The list of fragments.
+- ([list[Fragment]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment)): :   The list of fragments.
 
 **Example:**
 
@@ -4029,9 +3956,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to list fragments for.
-- `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities
-  instead. If true then only public fragments will be listed. Defaults to
-  true.
+- `publicOnly` (boolean) (optional): Optional, deprecated boolean. Use fragmentVisibilities instead. If true then
+  only public fragments will be listed. Defaults to true.
 - `fragmentVisibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional)
 
 **Returns:**
@@ -4041,9 +3967,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const fragments = await appClient.listFragments(
-  '<YOUR-ORGANIZATION-ID>'
-);
+const fragments = await appClient.listFragments('<YOUR-ORGANIZATION-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listfragments).
@@ -4082,24 +4006,21 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `machineId` (string) (required): The machine ID used to filter fragments defined in a
-  machine's parts. Also returns any fragments nested within the fragments
-  defined in parts.
-- `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the
-  response. Useful when needing to view fragments that will be
-  provisionally added to the machine alongside existing fragments.
+- `machineId` (string) (required): The machine ID used to filter fragments defined in a machine's parts. Also
+  returns any fragments nested within the fragments defined in parts.
+- `additionalFragmentIds` (string) (optional): Additional fragment IDs to append to the response. Useful when
+  needing to view fragments that will be provisionally added to the machine alongside existing
+  fragments.
 
 **Returns:**
 
-- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well
-as additionally specified fragment IDs.
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)[]>): The list of top level and nested fragments for a machine, as well as additionally
+specified fragment IDs.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const fragments = await appClient.listMachineFragments(
-  '<YOUR-MACHINE-ID>'
-);
+const fragments = await appClient.listMachineFragments('<YOUR-MACHINE-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listmachinefragments).
@@ -4128,12 +4049,7 @@ Lists machine summaries for an organization, optionally filtered by fragment IDs
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const summaries = await appClient.listMachineSummaries(
-  'orgId',
-  ['frag1'],
-  ['loc1'],
-  10
-);
+const summaries = await appClient.listMachineSummaries('orgId', ['frag1'], ['loc1'], 10);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#listmachinesummaries).
@@ -4203,14 +4119,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The requested fragment.
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The requested fragment.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const fragment = await appClient.getFragment(
-  '12a12ab1-1234-5678-abcd-abcd01234567'
-);
+const fragment = await appClient.getFragment('12a12ab1-1234-5678-abcd-abcd01234567');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getfragment).
@@ -4229,7 +4143,7 @@ Create a new private {{< glossary_tooltip term_id="fragment" text="fragment" >}}
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the fragment within. You can obtain your organization ID from the organization settings page.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Name of the fragment.
-- `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Can be assigned by updating the fragment.
+- `config` ([collections.abc.Mapping[str, viam.utils.ValueTypes]](https://python.viam.dev/autoapi/viam/components/component_base/index.html#viam.components.component_base.ValueTypes)) (optional): Optional Dictionary representation of new config to assign to specified fragment. Can be assigned by updating the fragment.
 
 **Returns:**
 
@@ -4293,22 +4207,18 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `organizationId` (string) (required): The ID of the organization to create the fragment
-  under.
+- `organizationId` (string) (required): The ID of the organization to create the fragment under.
 - `name` (string) (required): The name of the new fragment.
 - `config` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The new fragment's config.
 
 **Returns:**
 
-- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The newly created fragment.
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The newly created fragment.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const fragment = await appClient.createFragment(
-  '<YOUR-ORGANIZATION-ID>',
-  'newFragment'
-);
+const fragment = await appClient.createFragment('<YOUR-ORGANIZATION-ID>', 'newFragment');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createfragment).
@@ -4327,9 +4237,9 @@ Update a {{< glossary_tooltip term_id="fragment" text="fragment" >}} name and it
 
 - `fragment_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the fragment to update.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New name to associate with the fragment.
-- `config` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
+- `config` ([collections.abc.Mapping[str, viam.utils.ValueTypes]](https://python.viam.dev/autoapi/viam/components/component_base/index.html#viam.components.component_base.ValueTypes)) (optional): Optional Dictionary representation of new config to assign to specified fragment. Not passing this parameter will leave the fragment’s config unchanged.
 - `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (optional): Boolean specifying whether the fragment is public. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.  Deprecated since version 0.25.0: Use visibility instead.
-- `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/gen/app/v1/app_pb2/index.html#viam.gen.app.v1.app_pb2.FragmentVisibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
+- `visibility` ([Fragment](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.Fragment.Visibility)) (optional): Optional FragmentVisibility list specifying who should be allowed to view the fragment. Not passing this parameter will leave the fragment’s visibility unchanged. A fragment is private by default when created.
 - `last_known_update` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional time of the last known update to this fragment’s config. If provided, this will result in a GRPCError if the upstream config has changed since this time, indicating that the local config is out of date. Omitting this parameter will result in an overwrite of the upstream config.
 
 **Returns:**
@@ -4398,25 +4308,24 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `id` (string) (required): The ID of the fragment to update.
 - `name` (string) (required): The name to update the fragment to.
 - `config` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The config to update the fragment to.
-- `makePublic` (boolean) (optional): Optional, deprecated boolean specifying whether the
-  fragment should be public or not. If not passed, the visibility will be
-  unchanged. Fragments are private by default when created.
-- `visibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional): Optional FragmentVisibility specifying the updated
-  fragment visibility. If not passed, the visibility will be unchanged. If
-  visibility is not set and makePublic is set, makePublic takes effect. If
-  makePublic and visibility are set, they must not be conflicting. If
-  neither is set, the fragment visibility will remain unchanged.
+- `makePublic` (boolean) (optional): Optional, deprecated boolean specifying whether the fragment should be public
+  or not. If not passed, the visibility will be unchanged. Fragments are private by default
+  when created.
+- `visibility` ([FragmentVisibility](https://ts.viam.dev/enums/appApi.FragmentVisibility.html)) (optional): Optional FragmentVisibility specifying the updated fragment visibility. If
+  not passed, the visibility will be unchanged. If visibility is not set and makePublic is set,
+  makePublic takes effect. If makePublic and visibility are set, they must not be conflicting.
+  If neither is set, the fragment visibility will remain unchanged.
 
 **Returns:**
 
-- (Promise<undefined | [Fragment](https://ts.viam.dev/classes/appApi.Fragment.html)>): The updated fragment.
+- (Promise<[Fragment](https://ts.viam.dev/classes/appApi.Fragment.html) | undefined>): The updated fragment.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const fragment = await appClient.updateFragment(
   '12a12ab1-1234-5678-abcd-abcd01234567',
-  'better_name'
+  'better_name',
 );
 ```
 
@@ -4509,7 +4418,7 @@ Get fragment history.
 
 **Returns:**
 
-- ([List[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): :   A list of documents with the fragment history.
+- ([list[FragmentHistoryEntry]](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.FragmentHistoryEntry)): :   A list of documents with the fragment history.
 
 **Raises:**
 
@@ -4568,8 +4477,8 @@ Add a role under the organization you are currently authenticated to.
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the role in. You can obtain your organization ID from the organization settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (Literal['owner'] | Literal['operator']) (required): The role to add (either `"owner"` or `"operator"`).
-- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
+- `role` (_ROLE_TYPE) (required): The role to add (either `"owner"` or `"operator"`).
+- `resource_type` (_RESOURCE_TYPE_TYPE) (required): The type of the resource to add the role to (either `"organization"`, `"location"`, or `"robot"`). Must match the type of the `resource_id`'s resource.
 - `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (the ID of either an {{< glossary_tooltip term_id="organization" text="organization" >}}, {{< glossary_tooltip term_id="location" text="location" >}}, or {{< glossary_tooltip term_id="machine" text="machine" >}}.).
 
 **Returns:**
@@ -4618,11 +4527,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to create the role under.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example a
-  user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
 - `role` (string) (required): The role to add ("owner" or "operator").
-- `resourceType` (string) (required): The type of resource to create the role for ("robot",
-  "location", or "organization").
+- `resourceType` (string) (required): The type of resource to create the role for ("robot", "location", or
+  "organization").
 - `resourceId` (string) (required): The ID of the resource the role is being created for.
 
 **Returns:**
@@ -4637,7 +4545,7 @@ await appClient.addRole(
   '<YOUR-USER-ID>',
   'owner',
   'robot',
-  '<YOUR-ROBOT-ID>'
+  '<YOUR-ROBOT-ID>',
 );
 ```
 
@@ -4657,8 +4565,8 @@ Remove a role under the organization you are currently authenticated to.
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization the role exists in. You can obtain your organization ID from the organization settings page.
 - `identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `role` (Literal['owner'] | Literal['operator']) (required): The role to remove.
-- `resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource the role is being removed from. Must match resource_id.
+- `role` (_ROLE_TYPE) (required): The role to remove.
+- `resource_type` (_RESOURCE_TYPE_TYPE) (required): Type of the resource the role is being removed from. Must match resource_id.
 - `resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
 
 **Returns:**
@@ -4703,11 +4611,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to remove the role from.
-- `entityId` (string) (required): The ID of the entity the role belongs to (for example a
-  user ID).
+- `entityId` (string) (required): The ID of the entity the role belongs to (for example a user ID).
 - `role` (string) (required): The role to remove ("owner" or "operator").
-- `resourceType` (string) (required): The type of resource to remove the role from ("robot",
-  "location", or "organization").
+- `resourceType` (string) (required): The type of resource to remove the role from ("robot", "location", or
+  "organization").
 - `resourceId` (string) (required): The ID of the resource the role is being removes from.
 
 **Returns:**
@@ -4722,7 +4629,7 @@ await appClient.removeRole(
   '<YOUR-USER-ID>',
   'owner',
   'robot',
-  '<YOUR-ROBOT-ID>'
+  '<YOUR-ROBOT-ID>',
 );
 ```
 
@@ -4742,12 +4649,12 @@ Changes an existing role to a new role.
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the organization.
 - `old_identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the entity the role belongs to (for example, a user ID).
-- `old_role` (Literal['owner'] | Literal['operator']) (required): The role to be changed.
-- `old_resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource the role is added to. Must match old_resource_id.
+- `old_role` (_ROLE_TYPE) (required): The role to be changed.
+- `old_resource_type` (_RESOURCE_TYPE_TYPE) (required): Type of the resource the role is added to. Must match old_resource_id.
 - `old_resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the resource the role applies to (that is, either an organization, location, or robot ID).
 - `new_identity_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the entity the role belongs to (for example, a user ID).
-- `new_role` (Literal['owner'] | Literal['operator']) (required): The new role.
-- `new_resource_type` (Literal['organization'] | Literal['location'] | Literal['robot']) (required): Type of the resource to add role to. Must match new_resource_id.
+- `new_role` (_ROLE_TYPE) (required): The new role.
+- `new_resource_type` (_RESOURCE_TYPE_TYPE) (required): Type of the resource to add role to. Must match new_resource_id.
 - `new_resource_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): New ID of the resource the role applies to (that is, either an organization, location, or robot ID).
 
 **Returns:**
@@ -4845,11 +4752,11 @@ If no resource IDs are provided, all resource authorizations within the organiza
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to list authorizations for.
-- `resource_ids` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): IDs of the resources to retrieve authorizations from. If None, defaults to all resources.
+- `resource_ids` (list[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): IDs of the resources to retrieve authorizations from. If None, defaults to all resources.
 
 **Returns:**
 
-- ([List[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)): :   The list of authorizations.
+- ([list[viam.proto.app.Authorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)): :   The list of authorizations.
 
 **Raises:**
 
@@ -4897,8 +4804,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization to list authorizations for.
-- `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations
-  for. If not provided, all resources will be included.
+- `resourceIds` (string) (optional): Optional list of IDs of resources to list authorizations for. If not
+  provided, all resources will be included.
 
 **Returns:**
 
@@ -4918,11 +4825,11 @@ Check if the organization, location, or robot your `ViamClient` is authenticated
 
 **Parameters:**
 
-- `permissions` ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)) (required): the permissions to validate (for example, “read_organization”, “control_robot”).
+- `permissions` ([list[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)) (required): the permissions to validate (for example, “read_organization”, “control_robot”).
 
 **Returns:**
 
-- ([List[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)): :   The permissions argument, with invalid permissions filtered out.
+- ([list[viam.proto.app.AuthorizedPermissions]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.AuthorizedPermissions)): :   The permissions argument, with invalid permissions filtered out.
 
 **Raises:**
 
@@ -5103,14 +5010,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html)>): The requested item.
+- (Promise<[RegistryItem](https://ts.viam.dev/classes/appApi.RegistryItem.html) | undefined>): The requested item.
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const registryItem = await appClient.getRegistryItem(
-  '<YOUR-REGISTRY-ITEM-ID>'
-);
+const registryItem = await appClient.getRegistryItem('<YOUR-REGISTRY-ITEM-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#getregistryitem).
@@ -5176,8 +5081,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `organizationId` (string) (required): The ID of the organization to create the registry
-  item under.
+- `organizationId` (string) (required): The ID of the organization to create the registry item under.
 - `name` (string) (required): The name of the registry item.
 - `type` (PackageType) (required): The type of the item in the registry.
 
@@ -5188,11 +5092,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await appClient.createRegistryItem(
-  '<YOUR-ORGANIZATION-ID>',
-  'newRegistryItemName',
-  5
-);
+await appClient.createRegistryItem('<YOUR-ORGANIZATION-ID>', 'newRegistryItemName', 5);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createregistryitem).
@@ -5287,7 +5187,7 @@ await appClient.updateRegistryItem(
   '<YOUR-REGISTRY-ITEM-ID>',
   5, // Package: ML Model
   'new description',
-  1 // Private
+  1, // Private
 );
 ```
 
@@ -5306,16 +5206,16 @@ List the registry items in an organization.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to return registry items for.
-- `types` (List[viam.proto.app.packages.PackageType.ValueType]) (required): The types of registry items.
-- `visibilities` (List[viam.proto.app.Visibility.ValueType]) (required): The visibilities of registry items.
-- `platforms` (List[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The platforms of registry items.
-- `statuses` (List[viam.proto.app.RegistryItemStatus.ValueType]) (required): The types of the items in the registry.
+- `types` (list[viam.proto.app.packages.PackageType.ValueType]) (required): The types of registry items.
+- `visibilities` (list[viam.proto.app.Visibility.ValueType]) (required): The visibilities of registry items.
+- `platforms` (list[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): The platforms of registry items.
+- `statuses` (list[viam.proto.app.RegistryItemStatus.ValueType]) (required): The types of the items in the registry.
 - `search_term` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The search term of the registry items.
 - `page_token` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): The page token of the registry items.
 
 **Returns:**
 
-- ([List[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): :   The list of registry items.
+- ([list[viam.proto.app.RegistryItem]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.RegistryItem)): :   The list of registry items.
 
 **Example:**
 
@@ -5391,18 +5291,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Parameters:**
 
-- `organizationId` (string) (required): The ID of the organization to query registry items
-  for.
+- `organizationId` (string) (required): The ID of the organization to query registry items for.
 - `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
-- `visibilities` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not
-  filter on visibility.
-- `platforms` (string) (required): A list of platforms to query for. If empty, will not
-  filter on platform.
-- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter
-  on status.
+- `visibilities` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not filter on
+  visibility.
+- `platforms` (string) (required): A list of platforms to query for. If empty, will not filter on platform.
+- `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter on status.
 - `searchTerm` (string) (optional): Optional search term to filter on.
-- `pageToken` (string) (optional): Optional page token for results. If not provided, will
-  return all results.
+- `pageToken` (string) (optional): Optional page token for results. If not provided, will return all results.
 
 **Returns:**
 
@@ -5416,7 +5312,7 @@ const registryItems = await appClient.listRegistryItems(
   [], // All package types
   [1], // Private packages
   [],
-  [1] // Active packages
+  [1], // Active packages
 );
 ```
 
@@ -5504,7 +5400,7 @@ Create a {{< glossary_tooltip term_id="module" text="module" >}} under the organ
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing the ID [0] of the new module and its URL [1].
+- (tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   A tuple containing the ID [0] of the new module and its URL [1].
 
 **Raises:**
 
@@ -5561,10 +5457,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const module = await appClient.createModule(
-  '<YOUR-ORGANIZATION-ID>',
-  'newModule'
-);
+const module = await appClient.createModule('<YOUR-ORGANIZATION-ID>', 'newModule');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createmodule).
@@ -5584,7 +5477,7 @@ Update the documentation URL, description, models, entrypoint, and/or the visibi
 - `module_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): ID of the module being updated, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
 - `url` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The url to reference for documentation and code (NOT the url of the module itself).
 - `description` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): A short description of the module that explains its purpose.
-- `models` ([List[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
+- `models` ([list[viam.proto.app.Model]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Model)) (optional): list of models that are available in the module.
 - `entrypoint` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The executable to run to start the module program.
 - `public` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): The visibility that should be set for the module. Defaults to False (private).
 
@@ -5690,7 +5583,7 @@ const module = await appClient.updateModule(
   'https://example.com',
   'new description',
   [{ model: 'namespace:group:model1', api: 'rdk:component:generic' }],
-  'entrypoint'
+  'entrypoint',
 );
 ```
 
@@ -5821,7 +5714,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [Module](https://ts.viam.dev/classes/appApi.Module.html)>): The requested module.
+- (Promise<[Module](https://ts.viam.dev/classes/appApi.Module.html) | undefined>): The requested module.
 
 **Example:**
 
@@ -5847,7 +5740,7 @@ List the {{< glossary_tooltip term_id="module" text="modules" >}} under the orga
 
 **Returns:**
 
-- ([List[viam.proto.app.Module]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): :   The list of modules.
+- ([list[viam.proto.app.Module]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Module)): :   The list of modules.
 
 **Example:**
 
@@ -5911,12 +5804,12 @@ Create a new [API key](/organization/api-keys/).
 **Parameters:**
 
 - `org_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization to create the key for. You can obtain your organization ID from the organization settings page.
-- `authorizations` ([List[APIKeyAuthorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (required): A list of authorizations to associate with the key.
+- `authorizations` ([list[APIKeyAuthorization]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Authorization)) (required): A list of authorizations to associate with the key.
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A name for the key. If None, defaults to the current timestamp.
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The api key and api key ID.
+- (tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The api key and api key ID.
 
 **Raises:**
 
@@ -5966,8 +5859,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `authorizations` ([Authorization](https://ts.viam.dev/classes/appApi.Authorization.html)) (required): The list of authorizations to provide for the API key.
-- `name` (string) (optional): An optional name for the key. If none is passed, defaults to
-  present timestamp.
+- `name` (string) (optional): An optional name for the key. If none is passed, defaults to present timestamp.
 
 **Returns:**
 
@@ -6056,7 +5948,7 @@ Rotate an [API key](/organization/api-keys/#rotate-a-key).
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The API key and API key id.
+- (tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The API key and API key id.
 
 **Example:**
 
@@ -6123,7 +6015,7 @@ List all keys for the {{< glossary_tooltip term_id="organization" text="organiza
 
 **Returns:**
 
-- ([List[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): :   The existing API keys and authorizations.
+- ([list[viam.proto.app.APIKeyWithAuthorizations]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.APIKeyWithAuthorizations)): :   The existing API keys and authorizations.
 
 **Example:**
 
@@ -6219,7 +6111,7 @@ Create a new API key with an existing key’s authorizations.
 
 **Returns:**
 
-- (Tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The API key and API key id.
+- (tuple[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]): :   The API key and API key id.
 
 **Example:**
 
@@ -6244,10 +6136,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const key =
-  await appClient.createKeyFromExistingKeyAuthorizations(
-    '<YOUR-KEY-ID>'
-  );
+const key = await appClient.createKeyFromExistingKeyAuthorizations('<YOUR-KEY-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#createkeyfromexistingkeyauthorizations).
@@ -6276,7 +6165,7 @@ Retrieve the app content for an organization.
 ```ts {class="line-numbers linkable-line-numbers"}
 const appContent = await appClient.getAppContent(
   '<YOUR-PUBLIC-NAMESPACE>',
-  '<YOUR-APP-NAME>'
+  '<YOUR-APP-NAME>',
 );
 ```
 
@@ -6306,7 +6195,7 @@ Retrieves the app branding for an organization or app.
 ```ts {class="line-numbers linkable-line-numbers"}
 const branding = await appClient.getAppBranding(
   '<YOUR-PUBLIC-NAMESPACE>',
-  '<YOUR-APP-NAME>'
+  '<YOUR-APP-NAME>',
 );
 ```
 

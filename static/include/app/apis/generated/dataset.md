@@ -9,6 +9,7 @@ Create a new dataset.
 
 - `name` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The name of the dataset being created.
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization where the dataset is being created. To find your organization ID, visit the organization settings page.
+- `type` (viam.proto.app.dataset.DatasetType.ValueType) (optional): The membership kind for the new dataset. Defaults to DATASET_TYPE_BINARY_DATA when unset.
 
 **Returns:**
 
@@ -48,8 +49,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `name` (string) (required): The name of the new dataset.
-- `organizationId` (string) (required): The ID of the organization the dataset is being
-  created in.
+- `organizationId` (string) (required): The ID of the organization the dataset is being created in.
 
 **Returns:**
 
@@ -60,7 +60,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 const datasetId = await dataClient.createDataset(
   'my-new-dataset',
-  '123abc45-1234-5678-90ab-cdef12345678'
+  '123abc45-1234-5678-90ab-cdef12345678',
 );
 ```
 
@@ -256,10 +256,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-await dataClient.renameDataset(
-  '12ab3de4f56a7bcd89ef0ab1',
-  'my-new-dataset'
-);
+await dataClient.renameDataset('12ab3de4f56a7bcd89ef0ab1', 'my-new-dataset');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#renamedataset).
@@ -312,10 +309,11 @@ Get the datasets in an organization.
 **Parameters:**
 
 - `organization_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the organization you’d like to retrieve datasets from. To find your organization ID, visit the organization settings page.
+- `dataset_type` (viam.proto.app.dataset.DatasetType.ValueType) (optional): Optional filter on dataset type. If not provided, all dataset types will be returned.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)): :   The list of datasets in the organization.
+- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   The list of datasets in the organization.
 
 **Example:**
 
@@ -349,6 +347,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `organizationId` (string) (required): The ID of the organization.
+- `type` ([DatasetType](https://ts.viam.dev/enums/DatasetType.html)) (optional): Optional dataset type to filter on.
 
 **Returns:**
 
@@ -358,7 +357,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 ```ts {class="line-numbers linkable-line-numbers"}
 const datasets = await dataClient.listDatasetsByOrganizationID(
-  '123abc45-1234-5678-90ab-cdef12345678'
+  '123abc45-1234-5678-90ab-cdef12345678',
 );
 ```
 
@@ -414,7 +413,7 @@ Get a list of datasets using their IDs.
 
 **Returns:**
 
-- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/proto/app/dataset/index.html#viam.proto.app.dataset.Dataset)): :   The list of datasets.
+- ([Sequence[viam.proto.app.dataset.Dataset]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   The list of datasets.
 
 **Example:**
 
@@ -456,9 +455,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const datasets = await dataClient.listDatasetsByIds([
-  '12ab3de4f56a7bcd89ef0ab1',
-]);
+const datasets = await dataClient.listDatasetsByIds(['12ab3de4f56a7bcd89ef0ab1']);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/DataClient.html#listdatasetsbyids).
