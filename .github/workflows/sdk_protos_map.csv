@@ -513,15 +513,17 @@ robot,CancelOperation,,cancel_operation,,,cancelOperation
 robot,BlockForOperation,,block_for_operation,,,blockForOperation
 robot,FrameSystemConfig,,get_frame_system_config,,,frameSystemConfig
 robot,TransformPose,,transform_pose,,,transformPose
-robot,TransformPCD,,,,,transformPCD
+robot,GetPose,,,,,getPose
+robot,TransformPCD,,transform_pcd,,,transformPCD
 robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
 robot,GetModelsFromModules,,get_models_from_modules,GetModelsFromModules,getModelsFromModules,getModelsFromModules
 robot,StopAll,,stop_all,StopAll,,stopAll
-robot,RestartModule,,restart_module,RestartModule,,restartModule
+robot,RestartModule,,restart_module,RestartModule,restartModule,restartModule
 robot,StartSession,,,,,
 robot,SendSessionHeartbeat,,,,,
 robot,Log,,log,,,
+robot,UploadDataFromPath,,upload_data_from_path,,,
 robot,GetCloudMetadata,,get_cloud_metadata,CloudMetadata,getCloudMetadata,getCloudMetadata
 robot,GetVersion,,get_version,Version,,getVersion
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:
