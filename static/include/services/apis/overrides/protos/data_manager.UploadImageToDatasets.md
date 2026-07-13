@@ -1,1 +1,1 @@
-Upload an image from the machine to one or more datasets, with optional tags.
+Upload an image data to the specified datasets.

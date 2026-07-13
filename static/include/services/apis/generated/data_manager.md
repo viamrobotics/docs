@@ -109,31 +109,6 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/
 {{% /tab %}}
 {{< /tabs >}}
 
-### UploadImageToDatasets
-
-Upload an image from the machine to one or more datasets, with optional tags.
-
-{{< tabs >}}
-{{% tab name="Go" %}}
-
-**Parameters:**
-
-- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `image` [(image.Image)](https://pkg.go.dev/image#Image)
-- `datasetIDs`
-- `tags` [([]string)](https://pkg.go.dev/builtin#string)
-- `mimeType` [(datasyncpb.MimeType)](https://pkg.go.dev/go.viam.com/api/app/datasync/v1#MimeType)
-- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
-
-**Returns:**
-
-- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
-
-For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/datamanager#Service).
-
-{{% /tab %}}
-{{< /tabs >}}
-
 ### Reconfigure
 
 Reconfigure this resource.
