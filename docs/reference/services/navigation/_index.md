@@ -7,7 +7,7 @@ description: "The navigation service uses GPS to autonomously navigate a rover t
 tags: ["navigation", "services", "base", "rover"]
 date: "2022-01-01"
 aliases:
-  - /reference/services/navigation/
+  - /operate/reference/services/navigation/
   - /services/navigation/
   - /mobility/navigation/
 build:
