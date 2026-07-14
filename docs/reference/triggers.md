@@ -38,13 +38,15 @@ The following template demonstrates the structure of a JSON configuration for a 
      "notifications": [
       {
         "type": "<webhook|email|push>",
-        "value": "<webhook URL, email address, or all_machine_owners>",
-        "seconds_between_notifications": <number of seconds>
+        "value": "<webhook URL, email address, or all_machine_owners>"
       }
      ]
   }
 ]
 ```
+
+Part status triggers fire on every state transition.
+Viam sends a notification each time the part comes online or goes offline, with no cooldown interval between notifications.
 
 ### Data sync trigger template
 
@@ -137,7 +139,7 @@ Triggers support the following attributes:
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
 | `event` | object | **Required** | The trigger event object, which contains the following fields: <ul><li>`type`: The type of the event to trigger on. Options: <ul><li>`part_data_ingested`: fire when data syncs</li> <li>`conditional_data_ingested`: fire when data that meets a certain condition syncs</li> <li>`part_online`: fire when the part is online</li> <li>`part_offline`: fire when the part is offline</li> <li>`conditional_logs_ingested`: check every hour and fire if logs of the specified log level are present</li></ul></li><li>`data_types`: Required with `type` `part_data_ingested`. An array of data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required when `type` is `conditional_data_ingested`. For more information about this field, see [Conditional attributes](/reference/triggers/#conditional-attributes). </li><li> `log_levels`: Required when `type` is `conditional_logs_ingested`. An array of log levels. Options: `error`, `warn`, `info`. </li></ul> |
-| `notifications` | object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`, `push`</li><li>`value`: The URL to send the request to, the email address to notify, or `all_machine_owners` to notify all machine owners.</li><li>`seconds_between_notifications`: The interval between notifications in seconds. This field is ignored for event type `conditional_logs_ingested` where the interval is always one hour.</li><li>`application`: Required when `type` is `push`. The application ID for push notifications. Use `com.viam.viammobile` for the Viam mobile app, or provide your own custom application ID. To use a custom application ID, you must first upload your Firebase credentials to Viam with the [`organizations firebase-config set`](/cli/reference/#organizations-firebase-config-set) CLI command. For the full setup flow, see [Set up custom push notifications](/monitor/custom-push-notifications/).</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). For push notifications, the recipient specified in `value` must be a machine owner or operator, and the recipient must have accepted push notification permissions for the application. |
+| `notifications` | object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`, `push`</li><li>`value`: The URL to send the request to, the email address to notify, or `all_machine_owners` to notify all machine owners.</li><li>`seconds_between_notifications`: The interval between notifications in seconds. This field is ignored for `part_online` and `part_offline` triggers, which fire on every state transition. It is also ignored for `conditional_logs_ingested` triggers, where the check interval is always one hour.</li><li>`application`: Required when `type` is `push`. The application ID for push notifications. Use `com.viam.viammobile` for the Viam mobile app, or provide your own custom application ID. To use a custom application ID, you must first upload your Firebase credentials to Viam with the [`organizations firebase-config set`](/cli/reference/#organizations-firebase-config-set) CLI command. For the full setup flow, see [Set up custom push notifications](/monitor/custom-push-notifications/).</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). For push notifications, the recipient specified in `value` must be a machine owner or operator, and the recipient must have accepted push notification permissions for the application. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this trigger. |
 
 ## Conditional attributes

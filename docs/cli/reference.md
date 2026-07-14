@@ -1528,7 +1528,8 @@ Add a trigger to a machine part. Run without `--config` to use an interactive fo
 
 Trigger configs support the following event types:
 
-- `part_online`: liveness check.
+- `part_online`: fires on each online state transition.
+- `part_offline`: fires on each offline state transition.
 - `part_data_ingested`: fires when data of the specified types is ingested.
 - `conditional_data_ingested`: fires when data ingested by a specific data capture method matches a condition.
 - `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
@@ -1544,7 +1545,7 @@ viam machines part add-trigger --part=<part id>
 
 # add a trigger from inline JSON
 viam machines part add-trigger --part=<part id> \
-    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com","seconds_between_notifications":60}]}'
+    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com"}]}'
 
 # add a trigger from a JSON file
 viam machines part add-trigger --part=<part id> --config ./trigger.json

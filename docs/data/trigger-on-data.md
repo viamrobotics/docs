@@ -165,7 +165,9 @@ For the full header and body reference, see [Webhook attributes](/reference/trig
 
 ## Notification interval
 
-The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
+The `seconds_between_notifications` field sets the minimum time between notifications for data triggers (`part_data_ingested` and `conditional_data_ingested`). If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour).
+
+This field is ignored for `part_online` and `part_offline` triggers, which fire on every state transition. It is also ignored for `conditional_logs_ingested` triggers, where the check interval is always one hour.
 
 ## Machine telemetry triggers
 
