@@ -4,7 +4,7 @@ title: "Debug a motion plan"
 weight: 84
 layout: "docs"
 type: "docs"
-description: "Find why a motion plan failed or moved unexpectedly by inspecting frames, obstacles, and reach, either visually in the 3D scene or from the command line with the Viam CLI."
+description: "Find why a motion plan failed or moved unexpectedly by checking frames, obstacles, and reach in the 3D scene or from the Viam CLI."
 aliases:
   - /motion-planning/3d-scene/debug-motion-plan/
   - /motion-planning/debug-motion-with-cli/

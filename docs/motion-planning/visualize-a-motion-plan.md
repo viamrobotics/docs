@@ -4,7 +4,7 @@ title: "Visualize a motion plan"
 weight: 86
 layout: "docs"
 type: "docs"
-description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path, then compare it against obstacles and reach to debug failures."
+description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path against obstacles and reach."
 aliases:
   - /motion-planning/3d-scene/visualize-a-motion-plan/
 ---
