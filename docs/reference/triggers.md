@@ -46,7 +46,7 @@ The following template demonstrates the structure of a JSON configuration for a 
 ```
 
 Part status triggers fire on every state transition.
-Viam sends a notification each time the part comes online or goes offline, with no cooldown interval between notifications.
+Viam sends a notification each time the part comes online or goes offline.
 
 ### Data sync trigger template
 
