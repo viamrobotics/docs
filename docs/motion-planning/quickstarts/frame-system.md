@@ -42,7 +42,7 @@ In the [Viam app](https://app.viam.com), go to your machine's
 3. Name it **my-arm** and click **Add to machine**.
 4. In the arm's attributes, set `arm-model` to `"ur5e"`.
 5. Click **Frame** on the arm's card. The Frame section is a JSON
-   editor with no form, parent dropdown, or geometry-type picker.
+   editor: edit the frame's fields directly as JSON.
    Edit the JSON so the frame sits at the world origin:
 
 ```json
@@ -65,7 +65,8 @@ Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 3. Name it **my-gripper** and click **Add to machine**.
 4. Click **Frame** on the gripper's card. Edit the JSON so the
    parent is the arm and the origin is offset 110 mm along the arm's
-   z axis (the end of a typical gripper mount):
+   end effector's z axis (a typical gripper body length). A frame
+   parented to an arm attaches to the arm's end effector:
 
 ```json
 {
@@ -88,7 +89,7 @@ pose moves with the arm automatically.
 3. Name it **my-camera** and click **Add to machine**.
 4. Click **Frame** on the camera's card. Edit the JSON so the camera
    sits 30 mm to the side of the arm's end effector and 60 mm above it,
-   tilted 30 degrees downward about the x axis:
+   tilted 30 degrees away from the arm's tool axis:
 
 ```json
 {
@@ -96,18 +97,21 @@ pose moves with the arm automatically.
   "translation": { "x": 0, "y": 30, "z": 60 },
   "orientation": {
     "type": "ov_degrees",
-    "value": { "x": 1, "y": 0, "z": 0, "th": -30 }
+    "value": { "x": 0, "y": -0.5, "z": 0.87, "th": 0 }
   }
 }
 ```
 
-In `ov_degrees`, `(x, y, z)` names the rotation axis and `th` is the
-angle. `(1, 0, 0), -30` rotates 30 degrees about the camera's x axis,
-which tilts the camera downward when its parent's z is up.
+In `ov_degrees`, `(x, y, z)` is the direction the frame's z axis points
+in the parent frame, and `th` spins the frame about that direction. A
+camera's z axis is its lens, so `(0, -0.5, 0.87)` tips the lens
+30 degrees away from the arm's tool axis. Viam normalizes the vector
+for you. For the full format, see
+[orientation vectors](/motion-planning/reference/orientation-vectors/).
 
 Click **Save**. You now have three components in a frame tree: the arm
-at the world origin, the gripper 110 mm above its end effector, and the
-camera offset to the side and tilted down.
+based at the world origin, the gripper 110 mm out from its end
+effector, and the camera offset to the side and tilted.
 
 ## 4. Verify with the CLI
 
@@ -129,14 +133,19 @@ viam machines part motion print-status --part "YOUR-PART-NAME"
 You should see something like:
 
 ```text
-              my-arm : X:    0.00 Y:    0.00 Z:    0.00 OX:   0.00 OY:   0.00 OZ:   1.00 Theta:   0.00
-          my-gripper : X:    0.00 Y:    0.00 Z:  110.00 OX:   0.00 OY:   0.00 OZ:   1.00 Theta:   0.00
-           my-camera : X:    0.00 Y:   30.00 Z:   60.00 OX:  ...
+              my-arm : X: -817.20 Y: -232.90 Z:   62.80 OX:   0.00 OY:  -1.00 OZ:   0.00 Theta:  90.00
+          my-gripper : X: -817.20 Y: -342.90 Z:   62.80 OX:   0.00 OY:  -1.00 OZ:   0.00 Theta:  90.00
+           my-camera : X: ...
 ```
 
-The gripper sits 110 mm above the arm origin. The camera sits 30 mm
-to the side and 60 mm above, with the downward tilt reflected in the
-orientation vector.
+Each line is that component's frame origin expressed in the world
+frame. An arm's printed pose is its end effector, the end of the
+kinematic chain, so `my-arm` prints where the UR5e's end effector sits
+at its zero joint configuration rather than the world origin where you
+placed the arm's base. The gripper prints 110 mm from the end effector
+along the end effector's z axis (which points along world -y at this
+configuration), and the camera prints at its own offset from the same
+end effector.
 
 ## 5. Transform a detected object to the world frame
 
@@ -191,10 +200,11 @@ translation, downward tilt, and the arm's current pose.
 
 Change the arm's joint configuration (through the **CONTROL** tab or
 by calling `move_to_joint_positions`), then re-run `print-status`.
-You will see `my-camera` and `my-gripper` poses change while
-`my-arm` stays at the world origin. That is the parent-child
+You will see all three poses change together: `my-arm` prints the end
+effector's new pose, and the gripper and camera stay at their fixed
+offsets from it wherever it moves. That is the parent-child
 propagation in action: the camera and gripper frames are fixed
-relative to the arm, so they move wherever the arm moves.
+relative to the arm's end effector, so they move wherever it moves.
 
 ## What you learned
 

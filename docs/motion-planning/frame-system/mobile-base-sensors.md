@@ -4,19 +4,17 @@ title: "Mobile base with sensors"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Configure frames for a mobile base with mounted cameras and LIDAR sensors."
+description: "Configure frames for a mobile base with mounted cameras and lidar sensors."
 aliases:
   - /motion-planning/frame-system-how-to/mobile-base-sensors/
 ---
 
-A mobile base's sense of its own position comes from its sensors,
-nothing else. Lidar sweeps tell the base what is around it; front and
-rear cameras feed detection and SLAM. Every sensor reading is in the
-sensor's own reference frame: a lidar point at `(2.0 m, 0, 0)` is two
-meters in front of the lidar, not in front of the base. The frame
-system converts sensor frames to the base frame and on to the world
-frame, so the navigation stack sees consistent positions. Configuring
-it is a one-time setup; this guide walks through it.
+A lidar point at `(2.0 m, 0, 0)` is two meters in front of the _lidar_,
+not two meters in front of the base. Every sensor reports positions in
+its own reference frame. The frame system converts each sensor's
+readings to the base frame and on to the world frame, so object
+detections, mapping data, and camera images line up with each other.
+This guide configures frames for a base with a lidar and two cameras.
 
 ## Frame hierarchy
 
@@ -35,11 +33,12 @@ All sensors are children of the base, so the entire sensor subtree moves with th
 
 ### 1. Choose your world frame origin
 
-For a mobile base, the world frame origin is the base center at machine
-start: not a fixed point in the room, but wherever the base was when it
-came online. Sensor positions are measured relative to the base center,
-so you do not need to mark anything physically. The frame system tracks
-the base's motion from that initial origin.
+For a mobile base, configure the base with zero translation so the
+world frame origin sits at the base center. Sensor positions are
+measured relative to the base center, so you do not need to mark
+anything physically. The frame system holds these configured
+relationships; tracking the base's position as it drives is the job of
+SLAM or a movement sensor, not the frame system.
 
 ### 2. Add a frame to the base
 
@@ -60,12 +59,12 @@ Since the world frame origin is at the base center, the translation is zero:
 
 Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
-### 3. Add a frame to the LIDAR
+### 3. Add a frame to the lidar
 
-In the sidebar, click your LIDAR component to open its card. On the card, click **Frame**.
-Measure the offset from the center of the base to the LIDAR's sensor origin.
+In the sidebar, click your lidar component to open its card. On the card, click **Frame**.
+Measure the offset from the center of the base to the lidar's sensor origin.
 
-For a LIDAR mounted on top of the base, centered horizontally and 150 mm above the base center:
+For a lidar mounted on top of the base, centered horizontally and 150 mm above the base center:
 
 ```json
 {
@@ -78,8 +77,8 @@ For a LIDAR mounted on top of the base, centered horizontally and 150 mm above t
 }
 ```
 
-If the LIDAR is offset forward or to one side, include x and y values.
-For example, a LIDAR mounted 50 mm forward of center and 150 mm above:
+If the lidar is offset forward or to one side, include x and y values.
+For example, a lidar mounted 50 mm forward of center and 150 mm above:
 
 ```json
 {
@@ -108,19 +107,22 @@ For a camera mounted at the front of the base, 200 mm forward and 120 mm above t
   "translation": { "x": 0, "y": 200, "z": 120 },
   "orientation": {
     "type": "ov_degrees",
-    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+    "value": { "x": 0, "y": 1, "z": 0, "th": 0 }
   }
 }
 ```
 
-The default orientation has the camera looking along the +y axis (forward).
-If your camera is mounted rotated, set `value.th` to the rotation angle in degrees.
+In an orientation vector, `(x, y, z)` is the direction the camera's +z
+axis (the lens) points. A base's forward direction is +y, so `(0, 1, 0)`
+faces the camera forward; the identity orientation `(0, 0, 1)` would aim
+the lens at the ceiling. If the image appears rotated, adjust `th`,
+which spins the camera about the lens axis.
 
 **Rear-facing camera:**
 
 The rear camera's configuration mirrors the front camera's, with two changes:
-a negative y translation (it is behind the base center) and a 180-degree
-rotation around z (so it faces backward).
+a negative y translation (it is behind the base center) and a pointing
+vector aimed backward.
 
 For a camera mounted at the back of the base, 200 mm backward and 120 mm above the base center, facing backward:
 
@@ -130,12 +132,12 @@ For a camera mounted at the back of the base, 200 mm backward and 120 mm above t
   "translation": { "x": 0, "y": -200, "z": 120 },
   "orientation": {
     "type": "ov_degrees",
-    "value": { "x": 0, "y": 0, "z": 1, "th": 180 }
+    "value": { "x": 0, "y": -1, "z": 0, "th": 0 }
   }
 }
 ```
 
-The 180-degree rotation around the z axis points the camera backward (along -y).
+`(0, -1, 0)` points the lens backward, along -y.
 
 Click **Save** after adding each camera frame.
 
@@ -158,9 +160,9 @@ For details on the TransformPose API, see [Frame system: TransformPose](/motion-
 
 ## Troubleshooting
 
-{{< expand "LIDAR data does not align with camera data" >}}
+{{< expand "Lidar data does not align with camera data" >}}
 
-Check that both the LIDAR and camera frames have the correct translation offsets from the base.
+Check that both the lidar and camera frames have the correct translation offsets from the base.
 Even small errors in the offsets can cause the two data sources to disagree about object positions.
 Verify by placing an object at a known distance and checking that both sensors report consistent positions after frame transformation.
 
@@ -168,15 +170,15 @@ Verify by placing an object at a known distance and checking that both sensors r
 
 {{< expand "Front and rear camera frames overlap in the visualizer" >}}
 
-Make sure the y translations have opposite signs. The front camera should have a positive y offset and the rear camera a negative y offset (or vice versa, depending on your axis convention).
-Also verify that the rear camera has a 180-degree rotation to face backward.
+Make sure the y translations have opposite signs. A base's forward direction is +y, so the front camera has a positive y offset and the rear camera a negative y offset.
+Also verify that the rear camera's pointing vector is `(0, -1, 0)` so it faces backward.
 
 {{< /expand >}}
 
-{{< expand "Sensor frames are not updating as the base moves" >}}
+{{< expand "A sensor frame sits at the world origin instead of on the base" >}}
 
-Confirm that each sensor's `parent` field is set to the base component name (for example, `"my-base"`), not `"world"`.
-Frames parented to the world stay fixed in space.
+Confirm that the sensor's `parent` field is set to the base component name (for example, `"my-base"`), not `"world"`.
+A frame parented to `"world"` ignores the base entirely, and its readings no longer transform through the base frame.
 
 {{< /expand >}}
 
