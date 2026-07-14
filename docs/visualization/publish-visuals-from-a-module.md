@@ -39,7 +39,9 @@ calls to discover and follow your visuals:
 
 A typical implementation keeps the current transforms in a map keyed by UUID,
 serves `ListUUIDs` and `GetTransform` from that map, and fans out change events
-to subscribers from `StreamTransformChanges`.
+to subscribers from `StreamTransformChanges`. In the snippets below, `commonpb`
+is `go.viam.com/api/common/v1` and `pb` is
+`go.viam.com/api/service/worldstatestore/v1`.
 
 ```go
 func (s *visualizer) ListUUIDs(

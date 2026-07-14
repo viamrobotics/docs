@@ -100,9 +100,9 @@ reference, see [Motion CLI commands](/motion-planning/reference/cli-commands/).
 
 ### Frames are in the wrong place
 
-The arm reaches where it thinks is `x=300, y=200` and physically ends up elsewhere, or the
-scene shows the gripper off to the side of the arm. The frame configuration does not match
-what the machine does. Dump the configured frame tree:
+The arm reports reaching `x=300, y=200` but physically sits elsewhere, or the
+scene shows the gripper off to the side of the arm. Both symptoms point to a frame
+configuration that disagrees with the physical setup. Dump the configured frame tree:
 
 ```sh
 viam machines part motion print-config --part "my-machine-main"
@@ -123,7 +123,7 @@ viam machines part motion print-status --part "my-machine-main"
 `print-status` prints one line per frame part with its computed world-frame pose:
 
 ```text
-         my-arm : X:    0.00 Y:    0.00 Z:    0.00 OX:   0.00 OY:   0.00 OZ:   1.00 Theta:   0.00
+        my-arm : X:    0.00 Y:    0.00 Z:    0.00 OX:   0.00 OY:   0.00 OZ:   1.00 Theta:   0.00
     my-gripper : X:    0.00 Y:    0.00 Z:  110.00 OX:   0.00 OY:   0.00 OZ:   1.00 Theta:  90.00
 ```
 
@@ -177,8 +177,9 @@ commanded, the pose may have been interpreted in an unexpected reference frame. 
 `reference_frame` on the target `PoseInFrame`: the same `(x, y, z)` in the arm's frame and in
 the world frame describes two different places.
 
-The CLI commands `print-status`, `get-pose`, and `set-pose` call `Motion.GetPose`, which is
-deprecated in favor of `Robot.GetPose`; the commands and their output format are stable.
+The CLI commands `print-status`, `get-pose`, and `set-pose` call the motion service's
+`GetPose`, which is deprecated in favor of the frame system service's `GetPose`; the
+commands and their output format are stable.
 `set-pose` calls the motion service's `Move` and blocks until the motion finishes or fails,
 returning a non-zero exit status with the error message on failure.
 

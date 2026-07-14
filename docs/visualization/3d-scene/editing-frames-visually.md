@@ -12,7 +12,7 @@ aliases:
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.
 
-Visual editing is most useful while you are still figuring out where things go. Typing coordinates into JSON and reloading the 3D view to check them is slow; editing in the viewport and seeing the result immediately is faster. The trade-off is that the visual editor writes the same JSON fields through a smaller surface area, so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and the app surfaces an unsaved-changes banner on the CONFIGURE tab where you save them with **Save** or `⌘/Ctrl+S`.
+Visual editing is most useful while you are still figuring out where things go. Typing coordinates into JSON and reloading the 3D view to check them is slow; editing in the viewport and seeing the result immediately is faster. The trade-off is that the visual editor edits fewer fields than the JSON editor, so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and the app shows an unsaved-changes banner on the CONFIGURE tab where you save them with **Save** or `⌘/Ctrl+S`.
 
 ## Prerequisites
 
@@ -77,5 +77,5 @@ Visual editing covers most cases, but a few are faster in JSON:
 - **Frames that reference components on a different machine part**:
   the visual editor's parent dropdown only shows local frames.
 - **Complex orientations** (rotations expressed in `axis_angles` or
-  `quaternion` rather than `ov_degrees`): the visual editor surfaces
+  `quaternion` rather than `ov_degrees`): the visual editor offers
   only the orientation vector form.

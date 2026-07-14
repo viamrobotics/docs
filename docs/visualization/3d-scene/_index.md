@@ -15,7 +15,8 @@ The **3D SCENE** tab renders your machine in an interactive 3D view: the frames 
 component, the geometry attached to them, point clouds from depth cameras, and any custom
 visuals a module publishes while the machine runs. It turns configuration you would
 otherwise read as JSON numbers into a picture you can inspect, so you can confirm a gripper
-sits where the arm expects it or watch a motion plan against the obstacles around it.
+sits where its frame configuration places it or watch a motion plan against the obstacles
+around it.
 
 This page describes what the scene shows, where each element comes from, and how the scene
 stays current. For the tab's panels, navigation, and settings, see

@@ -11,7 +11,8 @@ A geometry is a simple shape, such as a box, sphere, or capsule, that represents
 object's physical extent. Viam uses one set of geometry types for two jobs: drawing a
 custom visual in the 3D scene, and telling the motion planner about an obstacle.
 
-To create a custom visual, you attach a geometry to `Transform.Geometry` and provide
+To create a custom visual, you attach a geometry to a transform's `physical_object`
+field and provide
 that transform to a [world state store service](/reference/apis/services/world-state-store/).
 This service holds the transforms you publish and streams them to the 3D scene. This
 page covers what a transform contains, the difference between planner geometry and
@@ -21,9 +22,9 @@ visualization geometry, and how to build each geometry type.
 
 A `Transform` carries four things that together place and style a visual:
 
-- **Reference frame and pose**: This defines the visual's origin.
-- **Geometry**: the shape to draw (a box, sphere, capsule, mesh, or point
-  cloud).
+- **Reference frame and pose**: the visual's origin.
+- **Geometry** (the `physical_object` field): the shape to draw (a box, sphere,
+  capsule, mesh, or point cloud).
 - **Metadata**: styling such as color and opacity.
 - **UUID**: a stable identifier for this specific visual.
 
@@ -149,7 +150,8 @@ box := &commonpb.Geometry{
 
 ### Sphere
 
-A sphere takes a radius `radius_mm` in millimeters.
+A sphere takes a radius in millimeters: the `r` key in JSON, the `radius_mm`
+field in the proto.
 
 {{< tabs >}}
 {{% tab name="JSON" %}}

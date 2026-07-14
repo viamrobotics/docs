@@ -7,11 +7,9 @@ type: "docs"
 description: "Use the draw library to build visuals, and run the standalone Viam visualizer to preview spatial data from a Go client."
 ---
 
-Viam Visualization is a standalone 3D visualizer you run yourself. Unlike the **3D
-SCENE** tab in the Viam app, which renders a configured machine's frames,
-geometry, point clouds, and published visuals, Viam Visualization is a separate tool for
-monitoring, testing, and debugging spatial data: you start it locally and push
-visuals to it from your own Go code.
+Viam Visualization is a standalone 3D visualizer for monitoring, testing, and
+debugging spatial data: you start it locally and push visuals to it from your
+own Go code while you develop.
 It shares the same `draw` library used to build world state store transforms, so
 the visuals you construct are the same either way.
 
@@ -60,7 +58,7 @@ and approach directions as arrows.
 ## Construct visuals with the library
 
 Building visuals with the library rather than by hand keeps producer code
-readable and guarantees the identifiers and metadata are correct. You construct
+readable and fills in the identifiers and metadata for you. You construct
 a shape with a styling option and let the library assemble the entity:
 
 ```go

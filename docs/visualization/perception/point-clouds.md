@@ -1,5 +1,5 @@
 ---
-linkTitle: "Point Clouds"
+linkTitle: "Point clouds"
 title: "Point clouds in the 3D scene"
 weight: 10
 layout: "docs"

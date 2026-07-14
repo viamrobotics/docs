@@ -20,9 +20,9 @@ use the rendered path to debug a plan that failed or moved unexpectedly.
 
 ## Why publish the plan as custom visuals
 
-A plan is a sequence of joint configurations. Read as numbers it tells you
-little; rendered in the scene it tells you immediately whether the path clips an
-obstacle, swings wide, or aims at a target outside the arm's reach. Publishing
+A plan is a sequence of joint configurations. Rendered in the scene, the path
+shows immediately whether it clips an obstacle, swings wide, or aims at a
+target outside the arm's reach. Publishing
 the plan as world state store transforms puts the trajectory and goals in the
 same 3D view as the frames and obstacle geometry the planner used, so you can see
 the path and the world together.
@@ -35,16 +35,21 @@ convert each step into end-effector poses with the frame system. `ComputePoses`
 takes a configuration and returns the pose of each frame:
 
 ```go
+var transforms []*commonpb.Transform
 for i, step := range plan.Trajectory() {
     poses, err := step.ComputePoses(fs)
     if err != nil {
         return err
     }
     gripperPose := poses["my-gripper"].Pose()
-    // Place a marker for this step at gripperPose (next section).
-    _ = i
-    _ = gripperPose
+    // stepMarker (next section) turns this pose into a visual.
+    transform, err := stepMarker(i, gripperPose)
+    if err != nil {
+        return err
+    }
+    transforms = append(transforms, transform)
 }
+// Serve transforms through a world state store service (last section).
 ```
 
 Each `step` is the arm's configuration at that point in the trajectory, and
@@ -59,7 +64,14 @@ can update them when you re-plan.
 ```go
 import (
     "github.com/viam-labs/motion-tools/draw"
+    commonpb "go.viam.com/api/common/v1"
     "go.viam.com/rdk/spatialmath"
+)
+
+// Distinct colors keep the trajectory and its goals apart in the scene.
+var (
+    stepColor = draw.NewColor(draw.WithName("blue"))
+    goalColor = draw.NewColor(draw.WithName("green"))
 )
 
 func stepMarker(i int, pose spatialmath.Pose) (*commonpb.Transform, error) {

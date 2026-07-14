@@ -1,5 +1,5 @@
 ---
-linkTitle: "World State"
+linkTitle: "WorldState"
 title: "WorldState"
 weight: 10
 layout: "docs"
@@ -8,8 +8,8 @@ description: "What a WorldState is: the per-request set of obstacles and frame t
 ---
 
 A `WorldState` is the argument you pass to a single `Move` call. It carries the obstacles
-and frame transforms that the motion planner should account for on that one request, and
-nothing else uses it. When the call returns, the `WorldState` is gone.
+and frame transforms that the motion planner should account for on that one request. When
+the call returns, the `WorldState` is gone.
 
 ## What a WorldState carries
 
@@ -22,11 +22,11 @@ A `WorldState` holds two kinds of item:
   reposition where the arm moves (for example, a frame at a grasped object's tip) or carry a
   geometry that travels with a component.
 
-## It applies to one request
+## A WorldState applies to one request
 
 A `WorldState` is per-request. The motion service uses it to plan the single motion you
-attach it to, then discards it. It is not stored, so a later `Move` call sees none of it
-unless you pass a `WorldState` again. To build obstacles and transforms and attach them to a
+attach it to, then discards it. To carry the same obstacles into a later `Move` call, pass
+a `WorldState` again. To build obstacles and transforms and attach them to a
 `Move` call, see [Define obstacles](/motion-planning/obstacles/) and
 [Arm and end effector frames](/motion-planning/frame-system/end-effector-frames/).
 

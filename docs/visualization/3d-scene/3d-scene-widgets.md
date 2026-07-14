@@ -1,5 +1,5 @@
 ---
-linkTitle: "3D Scene Widgets"
+linkTitle: "3D scene widgets"
 title: "3D scene widgets"
 weight: 40
 layout: "docs"
