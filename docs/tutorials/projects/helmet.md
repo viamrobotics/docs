@@ -86,11 +86,11 @@ Configure your [webcam](/reference/components/camera/webcam/) so that your machi
 1. Navigate to your machine's page.
    Check that the part status dropdown in the upper left of the page, next to your machine's name, reads "Live"; this indicates that your machine is turned on and that its instance of `viam-server` is in contact with Viam.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing "webcam" and select **camera / webcam**.
    Give your camera a name.
    This tutorial uses the name `my_webcam` in all example code.
-   Click **Create**.
+   Click **Add to machine**.
 
 3. Leave the **video_path** blank and the camera will use the default video path for your machine.
    If this doesn't work when you test your camera later, you can try a different video path by following the prompt on the camera's configuration panel.
@@ -113,11 +113,11 @@ The [YOLOv8 module](https://github.com/viam-labs/YOLOv8) enables you to use any 
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing `yolo` and select **vision / yolov8** from the registry options.
    Click **Add module**.
 
-3. Give your vision service a name, for example `yolo`, and click **Create**.
+3. Give your vision service a name, for example `yolo`, and click **Add to machine**.
 
 4. In the attributes field of your new vision service, paste the following JSON:
 
@@ -145,11 +145,11 @@ This module also filters the output so that later, when you configure data manag
 
 1. Navigate to your machine's **CONFIGURE** tab.
 
-2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+2. Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Start typing `objectfilter` and select **camera / objectfilter** from the results.
    Click **Add module**.
 
-3. Name your filtering camera something like `objectfilter-cam` and click **Create**.
+3. Name your filtering camera something like `objectfilter-cam` and click **Add to machine**.
 
 4. Paste the following into the attributes field:
 
@@ -204,9 +204,9 @@ Configure data capture on the `objectfilter` camera to capture images of people 
 
    Navigate to your machine's **CONFIGURE** tab.
 
-   Click the **+** (Create) button next to your main part in the left-hand menu and select **Configuration block**.
+   Click the **+** (Create) button next to your main part in the left-hand menu and select **Blocks**.
    Type "data" and click **data management / RDK**.
-   Name your data management service `data-manager` and click **Create**.
+   Name your data management service `data-manager` and click **Add to machine**.
 
    Leave all the default data service attributes as they are and click **Save** in the top right corner of the screen to save your changes.
 

@@ -296,21 +296,6 @@ motion,DoCommand,,do_command,DoCommand,,doCommand
 motion,GetResourceName,,get_resource_name,Name,,name
 motion,Close,,close,Close,,
 
-## Navigation
-navigation,GetMode,,get_mode,Mode,,getMode
-navigation,SetMode,,set_mode,SetMode,,setMode
-navigation,GetLocation,,get_location,Location,,getLocation
-navigation,GetWaypoints,,get_waypoints,Waypoints,,getWayPoints
-navigation,AddWaypoint,,add_waypoint,AddWaypoint,,addWayPoint
-navigation,RemoveWaypoint,,remove_waypoint,RemoveWaypoint,,removeWayPoint
-navigation,GetObstacles,,get_obstacles,Obstacles,,getObstacles
-navigation,GetPaths,,get_paths,Paths,,getPaths
-navigation,GetProperties,,get_properties,Properties,,getProperties
-## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-navigation,Reconfigure,,,Reconfigure,,
-navigation,DoCommand,,do_command,DoCommand,,doCommand
-navigation,GetResourceName,,get_resource_name,Name,,name
-navigation,Close,,close,Close,,
 
 ## SLAM
 slam,GetPosition,,get_position,Position,,getPosition

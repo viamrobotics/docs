@@ -59,11 +59,11 @@ For bases not covered above, search for `base` in the [Viam registry](https://ap
 ### 2. Add a base component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the base model that matches your hardware. For a
    differential-drive robot with left and right motors, search for
    **wheeled**.
-4. Name your base (for example, `my-base`) and click **Create**.
+4. Name your base (for example, `my-base`) and click **Add to machine**.
 
 ### 3. Configure base attributes
 
@@ -188,7 +188,6 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -196,11 +195,12 @@ func main() {
     logger := logging.NewLogger("base-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

@@ -84,6 +84,16 @@ jobs:
         passed_files_py=0
         failed_files_py=0
 
+        # Run a sample, retrying once after a delay. The live backend
+        # intermittently returns transient errors (gRPC INTERNAL,
+        # DEADLINE_EXCEEDED) that clear within seconds.
+        run_sample() {
+          if "$@"; then return 0; fi
+          echo "⚠️ Failed, retrying once in 30s in case the error is transient..."
+          sleep 30
+          "$@"
+        }
+
         echo "Starting to test Python code samples..."
         echo "========================================"
 
@@ -91,8 +101,8 @@ jobs:
           echo "Testing: $file"
           total_files_py=$((total_files_py + 1))
 
-          # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" python "$file"; then
+          # Credentials come from this step's env block.
+          if run_sample python "$file"; then
             passed_files_py=$((passed_files_py + 1))
             echo "✅ PASSED: $file"
           else
@@ -150,6 +160,16 @@ jobs:
         passed_files_go=0
         failed_files_go=0
 
+        # Run a sample, retrying once after a delay. The live backend
+        # intermittently returns transient errors (gRPC INTERNAL,
+        # DEADLINE_EXCEEDED) that clear within seconds.
+        run_sample() {
+          if "$@"; then return 0; fi
+          echo "⚠️ Failed, retrying once in 30s in case the error is transient..."
+          sleep 30
+          "$@"
+        }
+
         echo "Starting to test Go code samples..."
         echo "========================================"
 
@@ -166,7 +186,8 @@ jobs:
 
           # Check if directory exists before changing to it
           if [ -d "$file_dir" ]; then
-            if (cd "$file_dir" && VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$file_name"); then
+            # Credentials come from this step's env block.
+            if (cd "$file_dir" && run_sample go run "$file_name"); then
               passed_files_go=$((passed_files_go + 1))
               echo "✅ PASSED: $file"
             else
@@ -229,6 +250,16 @@ jobs:
         passed_files_ts=0
         failed_files_ts=0
 
+        # Run a sample, retrying once after a delay. The live backend
+        # intermittently returns transient errors (gRPC INTERNAL,
+        # DEADLINE_EXCEEDED) that clear within seconds.
+        run_sample() {
+          if "$@"; then return 0; fi
+          echo "⚠️ Failed, retrying once in 30s in case the error is transient..."
+          sleep 30
+          "$@"
+        }
+
         echo "Starting to test TypeScript code samples..."
         echo "========================================"
 
@@ -236,8 +267,8 @@ jobs:
           echo "Testing: $file"
           total_files_ts=$((total_files_ts + 1))
 
-          # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" node "$file"; then
+          # Credentials come from this step's env block.
+          if run_sample node "$file"; then
             passed_files_ts=$((passed_files_ts + 1))
             echo "✅ PASSED: $file"
           else

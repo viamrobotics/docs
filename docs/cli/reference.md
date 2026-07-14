@@ -1260,7 +1260,7 @@ viam machines part cp --part=123 my_file machine:/home/user/
 # Recursively copy a directory to a machine:
 viam machines part cp --part=123 -r my_dir machine:/home/user/
 
-# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+# Copy multiple files to a machine with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
@@ -1269,7 +1269,7 @@ viam machines part cp --part=123 machine:my_file ~/Downloads/
 # Recursively copy a directory from a machine to a local destination:
 viam machines part cp --part=123 -r machine:my_dir ~/Downloads/
 
-# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+# Copy multiple files from the machine to a local destination with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
@@ -1278,7 +1278,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
-| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | Optional |
+| `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, overriding the destination `umask`. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
 
 ### `machines part tunnel`
 
@@ -2135,7 +2135,7 @@ pip3 install -r requirements.txt
 ```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2162,7 +2162,7 @@ fi
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2196,7 +2196,7 @@ sudo apt-get install -y python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2212,7 +2212,7 @@ brew install python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 

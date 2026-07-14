@@ -52,11 +52,11 @@ For arms not covered above, search for `arm` in the [Viam registry](https://app.
 ### 1. Add an arm component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your arm manufacturer and model:
    - For a UFactory xArm, search for **xArm6** (or xArm5, xArm7, Lite6).
    - For a Universal Robots arm, search for **ur5e** (or ur3e, ur10e, ur16e).
-4. Name your arm (for example, `my-arm`) and click **Create**.
+4. Name your arm (for example, `my-arm`) and click **Add to machine**.
 
 ### 2. Configure arm attributes
 
@@ -222,7 +222,6 @@ import (
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/referenceframe"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -230,11 +229,12 @@ func main() {
     logger := logging.NewLogger("arm-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

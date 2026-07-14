@@ -62,13 +62,13 @@ For gantries not covered above, search for `gantry` in the [Viam registry](https
 ### 2. Add a gantry component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the gantry model that matches your setup:
    - For a single linear rail driven by a motor, search for
      **single-axis**.
    - For a multi-axis system composed of multiple single-axis gantries,
      search for **multi-axis**.
-4. Name your gantry (for example, `my-gantry`) and click **Create**.
+4. Name your gantry (for example, `my-gantry`) and click **Add to machine**.
 
 ### 3. Configure gantry attributes
 
@@ -199,7 +199,6 @@ import (
     "go.viam.com/rdk/components/gantry"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -207,11 +206,12 @@ func main() {
     logger := logging.NewLogger("gantry-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

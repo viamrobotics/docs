@@ -6,7 +6,7 @@ weight: 32
 images: ["/registry/create-module.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
-description: "Update or delete your existing modules, or change their privacy settings."
+description: "Update, deprecate, or delete your existing modules, or change their privacy settings."
 aliases:
   - /operate/modules/advanced/manage-modules/
   - /use-cases/deploy-code/
@@ -21,7 +21,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, change visibility, or delete the module.
+After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, change visibility, deprecate, or delete the module.
 
 ## Update a module
 
@@ -176,7 +176,7 @@ if ! $PYTHON -m pip install pyinstaller -Uqq; then
     exit 1
 fi
 
-$PYTHON -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+$PYTHON -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz ./dist/main
 ```
 
@@ -391,6 +391,39 @@ viam module update
 {{% hiddencontent %}}
 If you don't see a private module of yours in the registry, make sure that you have the correct organization selected in the upper right corner of the page.
 {{% /hiddencontent %}}
+
+## Deprecate a module
+
+You can deprecate a module to signal that it should no longer be used.
+Deprecating a module:
+
+- Marks it with a **Deprecated** badge in the registry
+- Hides it from registry search results for users outside the owning organization
+- Prevents users from adding it to new machines
+- Existing machines that already use the module will continue running it, but warnings will be shown on the config page
+
+To deprecate a module:
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+1. Click the **...** (menu) icon in the upper-right corner of the page.
+1. Click **Deprecate**.
+1. Optionally, enter a message for users (for example, "Use acme:sensor:v2 instead").
+1. Click **Deprecate** to confirm.
+
+To reverse the deprecation, open the same **...** menu and click **Undeprecate**.
+
+### Deprecate a single version
+
+You can deprecate individual versions instead of the entire module.
+This is useful when a specific release has a known issue but the module itself is still active.
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+1. Click **Show previous versions** under the **Latest version** heading.
+1. Click the **...** (menu) icon next to the version you want to deprecate.
+1. Click **Deprecate version**, optionally enter a message, and confirm.
+
+Deprecated versions appear with a strikethrough and a **Deprecated** badge.
+To reverse a version deprecation, click the **...** menu on the deprecated version and select **Undeprecate version**.
 
 ## Delete a module
 
