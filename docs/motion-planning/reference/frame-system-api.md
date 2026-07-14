@@ -4,7 +4,7 @@ title: "Frame system API reference"
 weight: 27
 layout: "docs"
 type: "docs"
-description: "The RPCs for querying and transforming frame system poses live on the robot service, not a standalone frame system service."
+description: "Query and transform frame system poses with the robot service RPCs: FrameSystemConfig, GetPose, TransformPose, and TransformPCD."
 ---
 
 The RPCs for querying and transforming frame system poses live on the robot service, not on a dedicated `FrameSystemService`. New users often look for a separate service matching the concept; there is none. All four methods below belong to `RobotService` in `api/proto/viam/robot/v1/robot.proto`.
@@ -16,13 +16,12 @@ The RPCs for querying and transforming frame system poses live on the robot serv
 | `TransformPose`     | Convert a pose between reference frames.                                |
 | `TransformPCD`      | Convert a point cloud between reference frames.                         |
 
-The SDK client classes surface these as methods on the robot or
-machine client object (`machine.transform_pose`, `machine.get_pose`,
-and so on). You do not instantiate a separate frame system client.
+Call these methods directly on the robot or machine client
+(`machine.transform_pose`, `machine.get_pose`, and so on).
 
 ## Service names
 
-You do not reference these names directly when calling the frame system from an SDK. They appear here so you can recognize them in error messages or module configuration: inside RDK, the frame system is registered under `builtin` (the default instance that ships with `viam-server`) and `$framesystem` (the name modules use to resolve a dependency on it). The RPCs on the robot/machine client hit the frame system transparently.
+These names appear in error messages and module configuration: inside RDK, the frame system is registered under `builtin` (the default instance included with `viam-server`) and `$framesystem` (the name modules use to resolve a dependency on it). The RPCs on the robot/machine client hit the frame system transparently.
 
 ## FrameSystemConfig
 
@@ -106,13 +105,11 @@ gripperInWorld, err := machine.GetPose(
 
 ### Python goes through the motion service, Go through the robot service
 
-`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK surfaces the robot service version as `RobotClient.GetPose`; Go callers go through the robot service. The Python SDK never wrapped the robot service version, so Python callers use `MotionClient.get_pose` and hit the deprecated motion service path.
+`GetPose` exists on two services in the proto: the robot service (current) and the motion service (older, deprecated, same parameter shape). The Go SDK exposes the robot service version as `RobotClient.GetPose`; Go callers go through the robot service. The Python SDK never wrapped the robot service version, so Python callers use `MotionClient.get_pose` and hit the deprecated motion service path.
 
-The two paths return equivalent results today. The underlying API
-surface will eventually consolidate, but until then Python callers
-stay on the motion-service path. The CLI's `print-status`, `get-pose`,
-and `set-pose` commands also invoke the deprecated motion-service
-method internally.
+The two paths return equivalent results. The CLI's `print-status`,
+`get-pose`, and `set-pose` commands also invoke the deprecated
+motion-service method internally.
 
 ## TransformPose
 
@@ -183,8 +180,8 @@ motion to it.
 from viam.proto.common import PoseInFrame, Pose, Transform
 
 # 1. Declare the detected box as a supplemental transform.
-#    The Transform's reference_frame is the parent; the pose is the
-#    box's position in that parent.
+#    The Transform's reference_frame names the new frame (detected-box);
+#    pose_in_observer_frame gives its pose in the parent frame (my-camera).
 detected_box = Transform(
     reference_frame="detected-box",
     pose_in_observer_frame=PoseInFrame(
@@ -245,7 +242,8 @@ arm navigates relative to), pass the same transform on the motion
 
 Transform a point cloud from one reference frame to another. Useful for
 aligning point clouds from multiple cameras into a common frame, or for
-expressing lidar scans in world coordinates.
+expressing lidar scans in world coordinates. The Go client exposes this
+RPC as `TransformPointCloud`.
 
 | Parameter         | Description                                                                        |
 | ----------------- | ---------------------------------------------------------------------------------- |

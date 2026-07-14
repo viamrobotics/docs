@@ -9,8 +9,8 @@ description: "Configuration, API, and technical reference for the motion service
 
 The motion service turns a high-level "move to this pose" request into a
 collision-free joint trajectory. This reference documents what you
-configure, what the API exposes, and the formats and algorithms it uses
-under the hood. For conceptual background, see
+configure, what the API exposes, and the formats and algorithms behind
+those requests. For conceptual background, see
 [How motion planning works](/motion-planning/how-planning-works/); for
 task-based guidance, start from the [section landing](/motion-planning/).
 
