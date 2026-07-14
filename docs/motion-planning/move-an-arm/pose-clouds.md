@@ -31,10 +31,10 @@ relaxes and how to use a `pose cloud` with the motion service.
   to reach that exact pose, relaxing the destination tolerance enlarges the solution space
   and often turns a failing plan into a success.
 
-Pose clouds are powerful when coupled with motion constraints: together they describe the motion you want without pinning down the destination exactly. Moving a cup of water is a good example. You define an
-orientation constraint to keep the cup upright, but you may not know which exact target
-pose lets the arm hold that orientation across its workspace. A pose cloud lets the planner
-choose a destination within a region instead:
+Pose clouds are powerful when coupled with motion constraints: together they describe the motion you want without pinning down the destination exactly. Moving a cup of water is a good example. You define a linear constraint to move the cup along
+a straight, level path so it does not spill, but you may not know which exact target pose the
+arm can reach while holding that path. A pose cloud lets the planner choose a destination
+within a region instead:
 
 {{<imgproc src="/motion-planning/move-an-arm/pose-cloud-cup.svg" declaredimensions=true alt="A cobot arm holds a cup of water above a table. A translucent dashed region on the table marks the pose cloud, with several faded ghost cups inside it showing acceptable destinations. The cup may land anywhere in the region at any rotation while staying upright." style="max-width:760px" class="aligncenter">}}
 
@@ -97,7 +97,8 @@ target's frame, these tolerances follow the tilt of the surface directly.
 
 A pose cloud travels with the destination pose. In Go, attach the pose cloud to the destination with
 `NewPoseInFrameWithGoalCloud`, then pass that destination to `Move`. The pose is
-the center of the region and the `PoseCloud` is the tolerance around it. This example includes an orientation constraint for the water example, so the cup stays upright for the whole motion, not only at
+the center of the region and the `PoseCloud` is the tolerance around it. This example adds a
+linear constraint, so the cup travels a straight, level path for the whole motion, not only at
 the goal.
 
 ```go
@@ -109,28 +110,34 @@ import (
     "go.viam.com/rdk/spatialmath"
 )
 
-// Place the cup somewhere on the table. The exact spot does not matter, and the
-// cup may end up rotated about vertical, but it must stay upright.
+// Place the cup somewhere on the table, held from the side. The exact spot and
+// the cup's rotation about vertical do not matter, but it must stay upright.
 destination := referenceframe.NewPoseInFrameWithGoalCloud(
     "table", // the target frame: tolerances follow the table surface
     spatialmath.NewPose(
-        r3.Vector{X: 0, Y: 0, Z: 0},                   // center of the region, on the table surface
-        &spatialmath.OrientationVectorDegrees{OZ: -1}, // upright: the tool's z-axis points into the table
+        r3.Vector{X: 0, Y: 0, Z: 0}, // center of the region, on the table surface
+        // Grasp from the side: the tool points horizontally across the table (OZ: 0).
+        // OX: 1 sets a definite pointing direction, so the pose cloud's OX and OY leeway
+        // is measured from the grasp you intend, not a normalized default.
+        &spatialmath.OrientationVectorDegrees{OX: 1, OZ: 0, Theta: 180},
     ),
     // Tolerances are applied in the table frame, each as [-value, +value].
     &referenceframe.PoseCloud{
-        X:     75,  // mm of slack across the table surface in x
-        Y:     75,  // mm of slack across the table surface in y
-        Z:     0,   // hold the cup on the surface
-        Theta: 180, // degrees: any rotation about vertical; spinning the cup does not spill it
-        // OX, OY, OZ stay 0, so the upright pointing direction is held exact.
+        X:  75,  // mm of slack across the table surface in x
+        Y:  75,  // mm of slack across the table surface in y
+        Z:  0,   // hold the cup on the surface
+        OX: 1,   // let the approach swing to any side of the cup...
+        OY: 1,   // ...so the cup may rest at any rotation about vertical
+        OZ: 0.1, // keep the approach nearly horizontal, so the cup stays upright
+        // Theta stays 0, so the tool does not roll and tip the cup.
     },
 )
 
-// Keep the cup upright along the whole path, within 5 degrees, not just at the goal.
+// Move the cup along a straight path (within 5 mm) and keep it level (within 5 degrees)
+// the whole way, not just at the goal.
 constraints := &motionplan.Constraints{
-    OrientationConstraint: []motionplan.OrientationConstraint{
-        {OrientationToleranceDegs: 5},
+    LinearConstraint: []motionplan.LinearConstraint{
+        {LineToleranceMm: 5, OrientationToleranceDegs: 5},
     },
 }
 

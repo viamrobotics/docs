@@ -82,8 +82,8 @@ The builtin service compiles the defaults below into the binary. To change them 
 | -------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Planning timeout     | 300 seconds                | Maximum time to search for a path.                                                                                                                                   |
 | Resolution           | 2.0                        | Constraint-checking granularity (mm or degrees per step).                                                                                                            |
-| Max IK solutions     | 100                        | Maximum inverse kinematics solutions to seed the search.                                                                                                             |
-| Smoothing iterations | 3 passes of sizes 10, 3, 1 | Post-planning path smoothing passes applied in sequence.                                                                                                             |
+| Max IK solutions     | 100                        | Maximum inverse kinematics solutions to test for a direct path and seed the fallback search.                                                                         |
+| Smoothing iterations | 3 passes of sizes 10, 3, 1 | Path smoothing passes applied in sequence to cBiRRT fallback paths.                                                                                                  |
 | Collision buffer     | 1e-8 mm (effectively zero) | Default buffer. Size obstacle geometries to include any safety margin, or pass `collision_buffer_mm` through the `extra` map on a Move call to override per request. |
 
 ## DoCommand
