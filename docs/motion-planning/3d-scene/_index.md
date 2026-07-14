@@ -9,11 +9,11 @@ description: "Visualize your machine's frame system, geometries, and point cloud
 ---
 
 The **3D SCENE** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
-Frame configuration is otherwise invisible: a JSON translation of `{x: 50, y: 0, z: 110}` tells you nothing about whether the gripper actually sits where the arm needs it. The **3D SCENE** tab makes that spatial relationship visible so you can catch misconfigurations before a motion plan fails.
+It shows the spatial relationships your frame configuration describes: the offset you configured as `{x: 50, y: 0, z: 110}` renders as a gripper 50 mm forward and 110 mm above the arm flange, so you can catch a misplaced frame before a motion plan fails.
 
-The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame. Attached geometries render as translucent shapes, and point clouds from depth cameras render as colored point sets.
+The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame.
 
-## The interface
+## Interface
 
 The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the **Dashboard toolbar** changes how the viewport renders.
 
@@ -29,7 +29,7 @@ Click a row to select the entity; its details appear in the Details panel.
 The panel is draggable and anchors to the top-right of the viewport by default.
 It includes:
 
-- **world position** (mm) and **world orientation** (deg, as an orientation vector `x / y / z / th`): the entity's absolute pose in the world frame. Read-only.
+- **world position** (mm) and **world orientation** (an orientation vector: `x / y / z` unit-vector components, `th` in degrees): the entity's absolute pose in the world frame. Read-only.
 - **parent frame**: which frame this entity is a child of. Editable when the entity is a configurable frame.
 - **local position** (mm) and **local orientation** (deg): pose relative to the parent frame. Editable for configurable frames; these correspond to the `translation` and `orientation` in your frame configuration.
 - **geometry**: four buttons (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm).
@@ -39,13 +39,13 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 
 **Dashboard toolbar** (top-center): Visible buttons, left to right:
 
-- **Orthographic / Perspective** toggle — switch between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
-- **Add frames** — opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Edit frames visually](/motion-planning/3d-scene/edit-frames/).
-- **Measurement** (ruler icon) — activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
-- **Measurement settings** (sliders icon next to the ruler) — toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
-- **AI Scene Builder** — opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/motion-planning/3d-scene/edit-frames/#edit-frames-with-ai).
-- **Logs** — shows a count badge for errors/warnings from the scene renderer.
-- **Settings** (gear icon) — opens the Settings panel.
+- **Orthographic / Perspective** toggle: switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
+- **Add frames**: opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Edit frames visually](/motion-planning/3d-scene/edit-frames/).
+- **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
+- **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
+- **AI Scene Builder**: opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/motion-planning/3d-scene/edit-frames/#edit-frames-with-ai).
+- **Logs**: shows a count badge for errors/warnings from the scene renderer.
+- **Settings** (gear icon): opens the Settings panel.
 
 ## Navigation controls
 
