@@ -31,6 +31,7 @@ point clouds, and custom visuals a module publishes at runtime.
 {{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
 {{% card link="/visualization/publish-visuals-from-a-module/" noimage="true" %}}
 {{% card link="/motion-planning/visualize-a-motion-plan/" noimage="true" %}}
+{{% card link="/visualization/troubleshoot-the-3d-scene/" noimage="true" %}}
 {{< /cards >}}
 
 ## Viam Visualization
@@ -45,7 +46,7 @@ the visuals you build work either way.
   Viam app.
 
 {{< cards >}}
-{{% card link="/visualization/drawing-library/" noimage="true" %}}
+{{% card link="/visualization/viam-visualization/" noimage="true" %}}
 {{< /cards >}}
 
 ## Custom apps

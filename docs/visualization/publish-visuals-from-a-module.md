@@ -43,6 +43,13 @@ to subscribers from `StreamTransformChanges`. In the snippets below, `commonpb`
 is `go.viam.com/api/common/v1` and `pb` is
 `go.viam.com/api/service/worldstatestore/v1`.
 
+{{% alert title="Implementing in Python" color="tip" %}}
+The Python SDK also includes the service, in `viam.services.worldstatestore`: implement
+the same three methods there. The `draw` helper library below is Go-only; a Python
+module builds its `Transform` protos directly, with the geometry constructors shown in
+[Visuals and collisions](/visualization/visuals-and-collisions/).
+{{% /alert %}}
+
 ```go
 func (s *visualizer) ListUUIDs(
     ctx context.Context, extra map[string]any,
@@ -208,7 +215,9 @@ func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstate
 
 - [Visuals and collisions](/visualization/visuals-and-collisions/):
   what a transform contains, and which geometry the planner collision-checks.
-- [The drawing library and Viam Visualization](/visualization/drawing-library/):
-  the `draw` primitives and the standalone visualizer.
+- [Viam Visualization](/visualization/viam-visualization/):
+  preview the same visuals from a script with the standalone visualizer.
+- [Transform metadata](/visualization/reference/transform-metadata/):
+  the styling keys the scene reads and their wire formats.
 - [Frame system](/motion-planning/frame-system/): position the transforms you
   publish.
