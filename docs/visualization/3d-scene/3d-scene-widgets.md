@@ -10,15 +10,15 @@ aliases:
 ---
 
 Widgets are floating panels you overlay on the 3D scene to read live data next to the 3D
-view. Each widget is draggable and resizable, and you turn them on and off in the scene's
-settings.
+view. Each widget is draggable and resizable.
 
 ## Enable a widget
 
 Open the **Settings** panel (the gear icon in the scene toolbar) and select **Widgets**.
 Toggle a widget on and it appears floating over the viewport; toggle it off to remove it. The
 panel lists two kinds of widget: **Arm positions**, and a **Camera widgets** section with one
-toggle per configured camera.
+toggle per configured camera. A third widget, the [frame POV](#frame-pov), opens from the
+Details panel instead.
 
 ## Arm positions
 
@@ -38,6 +38,19 @@ while you inspect its pose in the 3D view.
 
 ## Camera widgets
 
-A camera widget shows a camera's live feed as a panel over the 3D scene. Each configured
-camera has its own toggle under **Camera widgets**. For the feed's resolution and frame-rate
-controls, see [Cameras](/visualization/perception/cameras/).
+A camera widget shows a camera's live feed as a panel over the 3D scene, with its current
+frame rate, for example `20.0fps`. Each configured camera has its own toggle under
+**Camera widgets**.
+
+A resolution dropdown on the widget sets the feed size: **Default**, `1280x720`, `640x360`,
+`320x180`, `160x90`, or `80x44`. A lower resolution costs less bandwidth, which helps when
+you watch several cameras at once or work over a slow connection. For how a camera's data
+appears in the scene itself, see [Cameras](/visualization/perception/cameras/).
+
+## Frame POV
+
+The frame POV widget renders the scene from a selected frame's perspective, so you can
+check what a camera's view covers, or what an end effector approaches, from its configured
+pose. Select an entity in the **World** panel, then click the camera icon (**View from this
+frame**) in the Details panel. A panel titled **POV** opens for that frame; open one per
+frame you want to watch.

@@ -53,7 +53,9 @@ the visuals you build work either way.
 
 A custom app uses a Viam SDK to read your machine's data and present it however you design.
 It runs outside the machine, in a browser, on a phone, or on a server, so you can build a
-custom dashboard, an operator console, or a fleet view.
+custom dashboard, an operator console, or a fleet view. A Svelte app can also
+[embed the 3D scene's own renderer](https://viamrobotics.github.io/visualization/guides/embedding/)
+as a component, so a custom UI gets the full 3D view alongside your own controls.
 
 - Use it when operators or stakeholders need a tailored UI beyond the built-in scene.
 - Best when you want to choose exactly which data to show and how, for one machine or a

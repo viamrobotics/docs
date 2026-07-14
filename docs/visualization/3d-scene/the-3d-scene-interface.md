@@ -33,7 +33,7 @@ It includes:
 - **local position** (mm) and **local orientation** (deg): pose relative to the parent frame. Editable for configurable frames; these correspond to the `translation` and `orientation` in your frame configuration.
 - **geometry**: four buttons (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm).
 
-The panel header includes a **Zoom to object** button (centers the camera on the selected entity) and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
+The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
 **Dashboard toolbar** (top-center): Visible buttons, left to right:

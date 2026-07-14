@@ -26,8 +26,8 @@ stays current. For the tab's panels, navigation, and settings, see
 
 The scene draws four kinds of element, each with its own appearance:
 
-- **Component frames** render as sets of red, green, and blue coordinate axes, one per
-  component, positioned by each frame's translation and orientation.
+- **Component frames** render as sets of red, green, and blue coordinate axes (X, Y, and
+  Z), one per component, positioned by each frame's translation and orientation.
 - **Geometries** render as translucent shapes (a box, sphere, or capsule) at the frame they
   are attached to.
 - **Point clouds** from depth cameras render as colored point sets.

@@ -13,12 +13,10 @@ its live feed shows what it currently sees, and a depth camera also produces a p
 ## See a camera's live feed
 
 To watch a camera's feed next to the 3D view, open the **Settings** panel (gear icon), select
-**Widgets**, and toggle the camera on under **Camera widgets**. A floating panel then shows
-the live feed with its current frame rate, for example `20.0fps`.
-
-A resolution dropdown on the widget sets the feed size: **Default**, `1280x720`, `640x360`,
-`320x180`, `160x90`, or `80x44`. A lower resolution costs less bandwidth, which helps when you
-watch several cameras at once or work over a slow connection.
+**Widgets**, and toggle the camera on under **Camera widgets**. For the widget's resolution
+and frame-rate controls, see [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
+To view the scene from the camera's own perspective, open its
+[frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov).
 
 ## Point clouds from depth cameras
 

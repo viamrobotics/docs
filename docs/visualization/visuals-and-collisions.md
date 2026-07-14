@@ -98,7 +98,8 @@ The supported types are:
 
 Choose the type that matches what you are representing: a box or capsule to
 approximate a physical object, a mesh for a precise model, a point cloud for
-sensor data.
+sensor data. For guidance on matching a geometry type to a physical object, see the
+[geometry types table](/motion-planning/obstacles/overview/#geometry-types).
 
 You build a geometry as a `Geometry` proto, the same type a world state store
 transform and a `WorldState` obstacle both carry. The Python SDK and the Go SDK
