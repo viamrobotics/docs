@@ -105,9 +105,9 @@ For a camera mounted 200 mm to the right, 300 mm forward, and 800 mm above the w
 In an orientation vector, `(x, y, z)` is the direction the camera's +z
 axis points in the parent frame, and the camera's +z axis is the lens.
 An overhead camera's lens points at the floor, so set the pointing
-vector to `(0, 0, -1)`: straight down at the workspace. Use `th` to
-spin the camera about the lens axis if the image needs to rotate to
-line up with your world axes.
+vector to `(0, 0, -1)`: straight down at the workspace. If the image
+needs to rotate to line up with your world axes, use `th` to spin the
+camera about the lens axis.
 
 **Tripod-mounted camera at an angle:**
 For a camera on a tripod 500 mm to the left, 600 mm forward, and 700 mm above the origin, tilted 45 degrees downward:

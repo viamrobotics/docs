@@ -142,8 +142,8 @@ Click **Save**.
 Some gripper modules include a kinematics file that describes the position
 of the jaws as they open and close, along with collision geometry for the
 jaw linkages. If the gripper has one, the motion planner already has the
-gripper's collision geometry and you do not need to add it to the gripper
-frame.
+gripper's collision geometry, so leave the gripper frame's `geometry`
+field empty.
 
 Call `GetKinematics` on the gripper (or check the module source). If
 the call returns kinematics data, verify the gripper renders as expected

@@ -12,7 +12,7 @@ aliases:
   - /operate/reference/orientation-vector/
 ---
 
-In machine JSON configuration (frame definitions and world state files), you choose one of five orientation formats with the `type` field. API `Pose` messages always express orientation as an orientation vector in degrees (`o_x`, `o_y`, `o_z`, `theta`); there is no format field to choose. The format you pick in configuration affects validation and singularity behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.
+In machine JSON configuration (frame definitions and world state files), you choose one of five orientation formats with the `type` field. API `Pose` messages always express orientation as an orientation vector in degrees (`o_x`, `o_y`, `o_z`, `theta`). The format you pick in configuration affects validation and singularity behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.
 
 Viam's default format, the orientation vector (OV), is structured similarly
 to the
@@ -44,7 +44,7 @@ The orientation vector format: a pointing direction plus a spin in degrees. Use 
   wrap every 360 degrees, so `th: 370` and `th: 10` describe the same
   orientation.
 
-Default (identity): `{"x": 0, "y": 0, "z": 1, "th": 0}`. This points the component along +z with no spin, which is no rotation.
+Default (identity): `{"x": 0, "y": 0, "z": 1, "th": 0}`. This points the component along +z with zero spin, leaving it unrotated.
 
 The pointing vector must be non-zero. `(x, y, z) = (0, 0, 0)` is a
 singularity: the pointing direction is undefined and validation rejects it.
@@ -124,14 +124,14 @@ When using `euler_angles`, certain pitch values (near +/- 90 degrees or pi/2
 radians) cause gimbal lock, where roll and yaw become ambiguous. `quaternion`
 and `axis_angles` represent every orientation without this singularity.
 
-An orientation vector has one discontinuity of its own: when the component
-points exactly along +z or -z, `th` behaves like a gimbal-locked Euler angle,
-and orientations near straight up or straight down can produce large jumps in
+An orientation vector has one discontinuity of its own. When the component
+points exactly along +z or -z, `th` behaves like a gimbal-locked Euler angle:
+orientations near straight up or straight down can produce large jumps in
 `th`. If you need smooth behavior near those poles, use `quaternion`.
 
 ## Validation
 
-For `ov_degrees` and `ov_radians`, the axis `(x, y, z)` must have a non-zero magnitude. Passing an all-zero axis returns the error `has a normal of 0, probably X, Y, and Z are all 0`.
+For `ov_degrees` and `ov_radians`, the pointing vector `(x, y, z)` must have a non-zero magnitude. Passing an all-zero axis returns the error `has a normal of 0, probably X, Y, and Z are all 0`.
 
 For `axis_angles`, a zero-norm axis causes a panic during normalization. Always
 provide a non-zero axis vector.

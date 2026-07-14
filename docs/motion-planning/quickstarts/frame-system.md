@@ -139,10 +139,10 @@ You should see something like:
 ```
 
 Each line is that component's frame origin expressed in the world
-frame. An arm's printed pose is its end effector, the end of the
-kinematic chain, so `my-arm` prints where the UR5e's end effector sits
-at its zero joint configuration rather than the world origin where you
-placed the arm's base. The gripper prints 110 mm from the end effector
+frame. An arm's printed pose is the pose of its end effector, the end
+of the kinematic chain. `my-arm` therefore prints where the UR5e's end
+effector sits at its zero joint configuration rather than the world
+origin where you placed the arm's base. The gripper prints 110 mm from the end effector
 along the end effector's z axis (which points along world -y at this
 configuration), and the camera prints at its own offset from the same
 end effector.

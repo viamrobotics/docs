@@ -41,8 +41,8 @@ while the arm reaches for something.
 For a mobile base, configure the base with zero translation so the
 world frame origin sits at the base center. The frame system holds this
 configured relationship; tracking the base's actual position as it
-drives is the job of SLAM or a movement sensor through the motion
-service, not the frame system. All component offsets on the machine are
+drives is the job of SLAM or a movement sensor, not the frame system.
+All component offsets on the machine are
 measured from this point.
 
 ### 2. Add a frame to the base
@@ -175,7 +175,7 @@ Click **Save** after adding each frame.
 
 1. Open the **3D SCENE** tab.
 2. Confirm the tree structure: arm, gripper, and wrist camera under the base; navigation sensors as direct children of the base.
-3. **Jog the arm from the CONTROL tab.** This is the clearest test that your hierarchy is correct: only the arm subtree should move; the base and navigation sensors should stay put. (Frames parented to the base keep the base's configured pose in the scene; the visualizer does not follow the base as it drives.)
+3. **Jog the arm from the CONTROL tab.** This is the clearest test that your hierarchy is correct: only the arm subtree should move; the base and navigation sensors should stay put. (The visualizer shows frames parented to the base at the base's configured pose, even while the base drives.)
 4. Measure a known physical offset (base center to lidar, for example) and compare to the translation values in your config.
 
 ### 7. Verify with TransformPose
