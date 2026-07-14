@@ -488,7 +488,7 @@ Do not move the robot between the generation of the initial pointcloud and the r
 my_camera = Camera.from_robot(robot=machine, name="my_camera")
 data, _ = await my_camera.get_point_cloud()
 
-transformed_pcd = await machine.transform_pcd(pcd, "my_camera", "world")
+transformed_pcd = await machine.transform_pcd(data, "my_camera", "world")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pcd).
