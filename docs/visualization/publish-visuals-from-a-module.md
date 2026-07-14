@@ -211,6 +211,28 @@ func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstate
 }
 ```
 
+## Add the service to your machine
+
+The module registers a model against the world state store API, so you configure it like
+any other modular service: add the module to your machine, then add a service with
+`"api": "rdk:service:world_state_store"` and your model. Name the resources the module
+pulls from in `depends_on`, so the module starts after them:
+
+```json
+"services": [
+  {
+    "name": "visualizer",
+    "api": "rdk:service:world_state_store",
+    "model": "<namespace>:<module-name>:<model-name>",
+    "depends_on": ["obstacle-sensor"]
+  }
+]
+```
+
+Once the machine is online with the service running, the **3D SCENE** tab discovers the
+service and streams its transforms. For packaging and deploying the module itself, see
+[Build modules](/build-modules/).
+
 ## What's next
 
 - [Visuals and collisions](/visualization/visuals-and-collisions/):
