@@ -45,14 +45,14 @@ incremental add, update, and remove operations to individual visuals.
 The metadata is a set of rendering attributes the scene reads when it draws the
 geometry:
 
-- `color`: the fill color
-- `opacity`: how transparent the shape is
-- per-point colors: for point cloud geometry
-- `collision_allowed`: a rendering hint that marks the visual as a permitted
-  contact, for display only
+- `colors`: the fill color, or one color per point for point cloud geometry
+- `opacities`: how transparent the shape is
+- `show_axes_helper`: draws a coordinate triad at the visual's origin
+- `invisible`: hides the visual by default
 
-These are all **visualization attributes**: they control how the visual looks,
-`collision_allowed` included. The planner reads its solid geometry from the frame
+The scene reads only the keys it recognizes and ignores the rest. These are all
+**visualization attributes**: they control how the visual looks.
+The planner reads its solid geometry from the frame
 system and the [`WorldState`](/motion-planning/obstacles/) you pass to `Move`, so
 metadata changes what you see without changing what the planner plans around.
 
