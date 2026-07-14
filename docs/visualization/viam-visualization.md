@@ -35,7 +35,12 @@ Visualization to iterate on spatial data from a script or test.
 
 From the [motion-tools repository](https://github.com/viam-labs/motion-tools), run
 `make setup` once, then `make up` to start the app at `http://localhost:5173`. It
-renders in your browser.
+renders in your browser. For prerequisites and incremental-rebuild details, see the
+[Running locally guide](https://viamrobotics.github.io/visualization/guides/local-usage/).
+
+To try the visualizer before installing anything, open the hosted
+[playground](https://viamrobotics.github.io/visualization/playground/snapshot), which
+renders a sample scene snapshot in your browser.
 
 ## Push visuals from a Go client
 
@@ -70,8 +75,16 @@ shape := draw.NewShape(center, "approach", draw.WithArrows(arrows))
 ```
 
 This lets you preview spatial data, a point cloud, a set of detections, a planned
-path, straight from a script or test. For setup, the local server, and the full client
-API, see the [Viam Visualization documentation](https://viamrobotics.github.io/visualization/).
+path, straight from a script or test. For every call and option, see the generated
+[client API reference](https://viamrobotics.github.io/visualization/api/client-api/).
+
+## Connect to a live machine
+
+The visualizer can also connect to a Viam machine and render its frame system, arms, and
+cameras, the way the in-app **3D SCENE** tab does. Put the machine's credentials in a
+<file>.env.local</file> file at the repository root, run `make up`, then pick the machine
+in the machine config panel (lower right). For the credential format, see the
+[Running locally guide](https://viamrobotics.github.io/visualization/guides/local-usage/#connecting-to-a-viam-machine).
 
 ## Save and load scene snapshots
 

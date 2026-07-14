@@ -235,6 +235,9 @@ service and streams its transforms. For packaging and deploying the module itsel
 
 ## What's next
 
+- [Implementing WorldStateStoreService](https://viamrobotics.github.io/visualization/guides/worldstatestore/):
+  the upstream guide this pattern follows, with a
+  [complete runnable module](https://github.com/viam-labs/motion-tools/tree/main/docs/examples/worldstatestore).
 - [Visuals and collisions](/visualization/visuals-and-collisions/):
   what a transform contains, and which geometry the planner collision-checks.
 - [Viam Visualization](/visualization/viam-visualization/):

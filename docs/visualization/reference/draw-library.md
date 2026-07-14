@@ -11,7 +11,8 @@ The [`draw` library](https://pkg.go.dev/github.com/viam-labs/motion-tools/draw)
 (`github.com/viam-labs/motion-tools/draw`) builds the transforms and entities that the 3D
 scene and [Viam Visualization](/visualization/viam-visualization/) render. This page lists
 the options you reach for while writing a producer. The library lives in `viam-labs` and
-moves faster than the RDK, so treat
+moves faster than the RDK, so treat the project's
+[generated API docs](https://viamrobotics.github.io/visualization/api/draw/) and
 [pkg.go.dev](https://pkg.go.dev/github.com/viam-labs/motion-tools/draw) as the full and
 current inventory.
 
