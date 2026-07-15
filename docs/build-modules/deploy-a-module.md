@@ -357,6 +357,15 @@ This means the binary was compiled for the wrong architecture. For example, you 
 
 {{< /expand >}}
 
+{{< expand "Module fails to start or keeps restarting" >}}
+
+- Read the module's lifecycle state from [`GetMachineStatus`](/reference/apis/robot/#getmachinestatus). A module in `STATE_UNHEALTHY` reports the cause in its `error` field and the time it entered that state in `last_updated`.
+- Check `consecutive_failures`. A count that keeps climbing indicates a restart loop, such as a module failing repeatedly on a syntax error.
+- For the state list and field details, see [Module status states](/build-modules/module-reference/#module-status-states).
+- Check the module logs in the **LOGS** tab for the full traceback.
+
+{{< /expand >}}
+
 {{< expand "Module works locally but fails after deployment" >}}
 
 - Check for hard-coded paths, missing environment variables, or dependencies installed on your machine but not in the build environment.
