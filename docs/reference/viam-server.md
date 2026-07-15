@@ -379,7 +379,7 @@ The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin
 {{% tab name="macOS" %}}
 
 ```bash {class="line-numbers linkable-line-numbers"}
-brew tap viamrobotics/brews && brew install viam-server
+brew tap viamrobotics/brews && brew trust viamrobotics/brews && brew install viam-server
 ```
 
 The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
