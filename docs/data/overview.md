@@ -127,7 +127,7 @@ When tracing is enabled, each incoming component or service method call in your 
 Reading a camera, for example, produces a `GetImage` span under the caller's request span, so you can see how long that method takes as part of the whole request.
 
 The Go, Python, and C++ SDKs all create these per-method spans.
-viam-server sets the `VIAM_MODULE_TRACING` environment variable on each module process when tracing is enabled in the machine config.
+`viam-server` sets the `VIAM_MODULE_TRACING` environment variable on each module process when tracing is enabled in the machine config.
 The SDK inside the module reads that variable to decide whether to record spans.
 You enable tracing once in the `tracing` config block above, and individual modules pick it up.
 
@@ -146,7 +146,7 @@ pip install 'viam-sdk[tracing]'
 Add this extra to your module's dependencies (for example, in `requirements.txt`) so it is present wherever the module runs.
 
 The extra is the only change your module needs.
-With the extra installed and tracing enabled in the machine config, each component and service method your module implements emits a span, and the module sends those spans to viam-server.
+With the extra installed and tracing enabled in the machine config, each component and service method your module implements emits a span, and the module sends those spans to `viam-server`.
 Without the extra installed, tracing stays off and your module runs unchanged.
 
 #### Enable tracing in a C++ module
