@@ -76,9 +76,9 @@ assistant to explain what a component does before you add it.
 
 After you send a request, the assistant replies in the panel and stages the
 change: the new or updated resource appears in the Builder marked as modified.
-For the request above, the assistant replied "Added the fake sensor
-`test-sensor-doc`. Save the config to apply it." The sensor appeared in the
-Builder, ready for you to review.
+For the request above, the assistant replies with a confirmation such as
+"Added the fake sensor `test-sensor`. Save the config to apply it.", and the
+sensor appears in the Builder, ready for you to review.
 
 ## Review each staged edit, then save or discard
 
@@ -114,7 +114,7 @@ Changes you save to a fragment apply to every machine that uses the fragment on
 its next config sync, so you can make a shared change once and let it propagate
 across the machines that share the fragment.
 
-## When to use the assistant instead of editing config directly
+## When to use the assistant instead of editing the configuration directly
 
 Reach for the **AI assistant** when:
 
