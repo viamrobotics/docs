@@ -151,25 +151,41 @@ Without the extra installed, tracing stays off and your module runs unchanged.
 
 #### Enable tracing in a C++ module
 
-The C++ SDK creates a per-method span the same way, but only when you build the SDK with OpenTelemetry support (the `VIAMCPPSDK_OPENTELEMETRY_TRACING` build option).
-A build without that option compiles the tracing calls as no-ops.
-Build the C++ SDK with OpenTelemetry support to record spans from a C++ module.
+C++ tracing has two requirements: you build the SDK with OpenTelemetry support, and, as with Go and Python, tracing is enabled on `viam-server` in the machine config.
+Compiling with OpenTelemetry support alone records nothing until the module runs under a `viam-server` that has tracing enabled; a build without OpenTelemetry support compiles the tracing calls as no-ops.
 
-To trace a section of your own code inside a method, create a child span with `TracingSpan` from `<viam/sdk/tracing/span.hpp>`:
+How you enable the build support depends on how you build the SDK:
+
+- **With Conan:** the `opentelemetry_tracing` option is on by default.
+  It pulls in `opentelemetry-cpp` with the OTLP gRPC exporter and compiles tracing into the SDK.
+  To build without tracing, set the option off (`-o opentelemetry_tracing=False`).
+- **With CMake directly:** the `VIAMCPPSDK_OPENTELEMETRY_TRACING` option is off by default.
+  Turn it on with `-DVIAMCPPSDK_OPENTELEMETRY_TRACING=ON`, and provide `opentelemetry-cpp` (built with the OTLP gRPC exporter) as a dependency.
+
+Because tracing must be compiled in, prebuilt SDK packages and the [cloud build](/cli/build-and-deploy-modules/#cloud-builds) image do not include it.
+Build the SDK from source with the option above to record spans from a C++ module.
+
+To trace a section of your own code inside a method, create a child span with `TracingSpan` from `<viam/sdk/tracing/span.hpp>`.
+The span begins when you construct it and ends when it leaves scope, so scope it to the region you want to measure:
 
 ```cpp
 #include <viam/sdk/tracing/span.hpp>
 
 ProtoStruct MySensor::get_readings(const ProtoStruct&) {
     TracingSpan span("readings implementation");
+    span.set_attribute("multiplier", multiplier_);  // attach structured context
     span.add_event("computing signal");
     // your logic here
+    span.set_status_ok();
     return {{"signal", multiplier_}};
 }
 ```
 
-This span nests under the automatic `GetReadings` span for the call.
-If the SDK is built without OpenTelemetry support, `TracingSpan` is a no-op and the code runs unchanged.
+`TracingSpan` also provides `set_status_error()`, `record_exception()` and `record_unknown_exception()` to mark a failure, and `end()` to end the span before it leaves scope.
+You cannot copy or move a `TracingSpan`.
+
+This span nests under the automatic `GetReadings` span for the call, and the SDK exports it over OTLP gRPC to the destination you set in the `tracing` config block above.
+If the SDK is built without OpenTelemetry support, every `TracingSpan` call is a no-op and the code runs unchanged.
 
 #### Use traces to find latency and failures
 
