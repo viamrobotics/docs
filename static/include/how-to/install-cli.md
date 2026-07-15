@@ -5,6 +5,7 @@ To download the Viam CLI on a macOS computer, install [brew](https://brew.sh/) a
 
 ```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews
+brew trust viamrobotics/brews
 brew install viam
 ```
 
@@ -32,6 +33,7 @@ You can also install the Viam CLI using [brew](https://brew.sh/) on Linux `amd64
 
 ```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews
+brew trust viamrobotics/brews
 brew install viam
 ```
 
