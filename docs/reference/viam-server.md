@@ -398,7 +398,14 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
-Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi) and follow the on-screen instructions to complete the installation.
+To install `viam-agent` on native Windows, open **Command Prompt as administrator** and run the following command, replacing `<KEY_ID>`, `<KEY>`, and `<CONFIG_URL>` with the values from your machine's **CONNECT** tab in the [Viam app](https://app.viam.com):
+
+```bat {class="line-numbers linkable-line-numbers"}
+mkdir C:\etc 2>nul & curl -fsSL -H "key_id:<KEY_ID>" -H "key:<KEY>" "<CONFIG_URL>" -o C:\etc\viam.json && curl -fsSL "https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi" -o "%TEMP%\viam-agent.msi" && msiexec /i "%TEMP%\viam-agent.msi" /qn /norestart
+```
+
+This command fetches the machine configuration, downloads the installer, and installs `viam-agent` silently.
+Use Cmd, not PowerShell.
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>C:\opt\viam\cache</FILE>.
 
