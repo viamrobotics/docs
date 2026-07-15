@@ -121,6 +121,65 @@ For local development, see the [Jaeger getting started guide](https://www.jaeger
 
 You can combine multiple destinations (for example, `"disk": true` and `"otlpendpoint": "<collector-host>:4317"` together).
 
+#### Trace your module's methods
+
+When tracing is enabled, each incoming component or service method call in your module opens its own span, nested under the RPC that triggered it.
+Reading a camera, for example, produces a `GetImage` span under the caller's request span, so you can see how long that method takes as part of the whole request.
+
+The Go, Python, and C++ SDKs all create these per-method spans.
+viam-server sets the `VIAM_MODULE_TRACING` environment variable on each module process when tracing is enabled in the machine config.
+The SDK inside the module reads that variable to decide whether to record spans.
+You enable tracing once in the `tracing` config block above, and individual modules pick it up.
+
+Go modules record per-method spans automatically.
+Python and C++ modules each need one more step, described below.
+
+#### Enable tracing in a Python module
+
+Python module tracing is an opt-in extra.
+Install `viam-sdk` with the `tracing` extra so the module has the OpenTelemetry packages it needs:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[tracing]'
+```
+
+Add this extra to your module's dependencies (for example, in `requirements.txt`) so it is present wherever the module runs.
+
+The extra is the only change your module needs.
+With the extra installed and tracing enabled in the machine config, each component and service method your module implements emits a span, and the module sends those spans to viam-server.
+Without the extra installed, tracing stays off and your module runs unchanged.
+
+#### Enable tracing in a C++ module
+
+The C++ SDK creates a per-method span the same way, but only when you build the SDK with OpenTelemetry support (the `VIAMCPPSDK_OPENTELEMETRY_TRACING` build option).
+A build without that option compiles the tracing calls as no-ops.
+Build the C++ SDK with OpenTelemetry support to record spans from a C++ module.
+
+To trace a section of your own code inside a method, create a child span with `TracingSpan` from `<viam/sdk/tracing/span.hpp>`:
+
+```cpp
+#include <viam/sdk/tracing/span.hpp>
+
+ProtoStruct MySensor::get_readings(const ProtoStruct&) {
+    TracingSpan span("readings implementation");
+    span.add_event("computing signal");
+    // your logic here
+    return {{"signal", multiplier_}};
+}
+```
+
+This span nests under the automatic `GetReadings` span for the call.
+If the SDK is built without OpenTelemetry support, `TracingSpan` is a no-op and the code runs unchanged.
+
+#### Use traces to find latency and failures
+
+Because each method span nests under the request that called it, a trace shows where time goes across service boundaries.
+If a `Move` request is slow, expand its trace to see whether the delay is in the arm's `GetJointPositions` span, a vision service's `GetDetections` span, or the network between them.
+A method that returns an error marks its span with an error status, so a failed span points to the method and machine that returned the failure.
+
+Retrieve and inspect traces with the `viam traces` CLI commands.
+See [Traces](/monitor/troubleshoot/#traces) and [Work with traces](/cli/manage-your-fleet/#work-with-traces).
+
 See [Trigger on data events](/data/trigger-on-data/) and [Visualize data](/data/visualize-data/).
 
 ## Manage data volume
