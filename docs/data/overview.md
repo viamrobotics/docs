@@ -128,7 +128,7 @@ Reading a camera, for example, produces a `GetImage` span under the caller's req
 
 The Go, Python, and C++ SDKs all create these per-method spans.
 `viam-server` sets the `VIAM_MODULE_TRACING` environment variable on each module process when tracing is enabled in the machine config.
-The SDK inside the module reads that variable to decide whether to record spans.
+The SDK inside the module records spans only when that variable is set.
 You enable tracing once in the `tracing` config block above, and individual modules pick it up.
 
 Go modules record per-method spans automatically.
