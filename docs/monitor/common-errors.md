@@ -104,9 +104,11 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Related Error:** `dlopen(): error loading libfuse.so.2`
 
-**Description:** `viam-server` is distributed for Linux as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
-FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with `viam-server`.
-For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well to support `viam-server`.
+**Description:** When installed manually using the AppImage binary, `viam-server` requires FUSE (Filesystem-in-Userspace) version 2.
+If you installed `viam-server` using `viam-agent` (the recommended method), you should not encounter this error.
+
+FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with the AppImage.
+For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well.
 
 In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
 FUSE is not required for macOS installations of `viam-server`.
