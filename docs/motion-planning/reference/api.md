@@ -10,7 +10,9 @@ aliases:
   - /appendix/apis/services/motion/
 ---
 
-The motion service exposes the methods below for planning and executing component motion. Most methods are implemented only by module-based motion services. The builtin service implements `Move`, `GetPose` (deprecated), `DoCommand`, and `GetStatus`. `MoveOnMap`, `MoveOnGlobe`, `StopPlan`, `ListPlanStatuses`, and `GetPlan` return a `not supported by builtin` error; module-based motion services implement them.
+The motion service exposes the methods below for planning and executing component motion. Most methods are implemented only by module-based motion services. The builtin service implements `Move`, `GetPose` (deprecated), `DoCommand`, and `GetStatus`.
+
+`MoveOnMap`, `MoveOnGlobe`, `StopPlan`, `ListPlanStatuses`, and `GetPlan` return a `not supported by builtin` error; module-based motion services may implement them.
 
 {{< readfile "/static/include/services/apis/generated/motion-table.md" >}}
 
