@@ -29,6 +29,7 @@ world
 
 Unlike a wrist-mounted camera, this camera is a child of the world frame, not the arm.
 The camera frame stays fixed in space when the arm moves.
+`table-surface` is workspace obstacle geometry, configured separately; see [Define obstacles](/motion-planning/obstacles/).
 
 ## Steps
 
@@ -96,17 +97,17 @@ For a camera mounted 200 mm to the right, 300 mm forward, and 800 mm above the w
   "translation": { "x": 200, "y": 300, "z": 800 },
   "orientation": {
     "type": "ov_degrees",
-    "value": { "x": 1, "y": 0, "z": 0, "th": 180 }
+    "value": { "x": 0, "y": 0, "z": -1, "th": 0 }
   }
 }
 ```
 
-An overhead camera's lens points at the floor. In the default camera
-frame, +z points out of the lens, so an unrotated overhead camera has
-its +z pointing up rather than down at the workspace. The 180-degree
-rotation around x flips the camera's +z to point downward, matching the
-lens's actual aim, so 2D image coordinates map intuitively to world
-positions.
+In an orientation vector, `(x, y, z)` is the direction the camera's +z
+axis points in the parent frame, and the camera's +z axis is the lens.
+An overhead camera's lens points at the floor, so set the pointing
+vector to `(0, 0, -1)`: straight down at the workspace. If the image
+needs to rotate to line up with your world axes, use `th` to spin the
+camera about the lens axis.
 
 **Tripod-mounted camera at an angle:**
 For a camera on a tripod 500 mm to the left, 600 mm forward, and 700 mm above the origin, tilted 45 degrees downward:
@@ -117,12 +118,16 @@ For a camera on a tripod 500 mm to the left, 600 mm forward, and 700 mm above th
   "translation": { "x": -500, "y": 600, "z": 700 },
   "orientation": {
     "type": "ov_degrees",
-    "value": { "x": 1, "y": 0, "z": 0, "th": -45 }
+    "value": { "x": 0.7, "y": 0, "z": -0.7, "th": 0 }
   }
 }
 ```
 
-A negative angle around the x axis tilts the camera's view downward from the horizontal.
+Set `(x, y, z)` to the direction the lens points; Viam normalizes the
+vector for you. `(0.7, 0, -0.7)` aims the lens 45 degrees below
+horizontal, facing the +x direction. To aim at a different part of the
+bench, change the horizontal components: for example,
+`(0.5, -0.5, -0.7)` faces between +x and -y.
 
 Click **Save**.
 
@@ -131,8 +136,10 @@ Click **Save**.
 For the arm, jog in **CONTROL** along +x, +y, +z and watch the physical
 direction. For the camera, open the camera stream in **CONTROL** and move a
 known object (a pen, a ruler) in the physical +x direction; the object should
-move in the +x direction in the camera's image coordinates. If either is
-wrong, rotate the relevant component's `orientation` until it matches.
+move along one consistent axis in the camera's image. If it moves along the
+wrong image axis or in the wrong direction, adjust `th` (which spins the
+image about the lens axis) or the pointing vector until image motion matches
+physical motion.
 
 ### 6. Visualize the frame system
 
@@ -160,9 +167,9 @@ Change the parent to `"world"` so the camera frame remains fixed in space.
 
 {{< expand "Overhead camera orientation looks wrong in the visualizer" >}}
 
-For a camera pointing straight down, the rotation should be 180 degrees around the x axis: `"value": { "x": 1, "y": 0, "z": 0, "th": 180 }`.
-This flips the camera's z axis to point downward.
-If the camera is rotated in the horizontal plane as well (not aligned with the x or y axis), you may need to combine rotations or use a different orientation type.
+For a camera pointing straight down, set the pointing vector to `(0, 0, -1)`: `"value": { "x": 0, "y": 0, "z": -1, "th": 0 }`.
+In an orientation vector, `(x, y, z)` is the direction the lens points, so point it wherever the lens actually aims.
+If the image appears rotated in the visualizer, adjust `th`, which spins the camera about the lens axis.
 
 {{< /expand >}}
 
