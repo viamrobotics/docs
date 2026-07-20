@@ -104,18 +104,17 @@ This is only required for the first `ssh` connection you make to a newly-imaged 
 
 **Related Error:** `dlopen(): error loading libfuse.so.2`
 
-**Description:** When installed manually using the AppImage binary, `viam-server` requires FUSE (Filesystem-in-Userspace) version 2.
-If you installed `viam-server` using `viam-agent` (the recommended method), you should not encounter this error.
+**Description:** On 32-bit ARM Linux (armhf), `viam-server` is distributed as an [AppImage](https://appimage.org/), which requires FUSE (Filesystem-in-Userspace) version 2.
+On 64-bit Linux (aarch64, x86_64) and macOS, install `viam-server` using [`viam-agent`](/reference/viam-agent/) instead. You will not encounter this error with `viam-agent`.
 
 FUSE version 2 is included in almost all modern Linux distributions by default, but some older Linux distros or minimal installs might not provide it out of the box, and some newer systems may ship with FUSE version 3 installed by default, which is not compatible with the AppImage.
 For example, the latest Raspberry Pi OS (Debian GNU/Linux 12 bookworm) includes FUSE version 3 as its default FUSE installation, and requires FUSE version 2 to be installed as well.
 
 In addition, if you are installing `viam-server` within a Docker container, you may also experience this error due to its default security restrictions.
-FUSE is not required for macOS installations of `viam-server`.
 
 {{% alert title="Important" color="note" %}}
-`viam-server` requires FUSE version 2 (`libfuse2`), _not_ FUSE version 3 (`fuse3` or `libfuse3`) or versions of FUSE previous to FUSE version 2 (`fuse`).
-To support a `viam-server` installation, you must install `libfuse2`.
+The AppImage requires FUSE version 2 (`libfuse2`), _not_ FUSE version 3 (`fuse3` or `libfuse3`) or versions of FUSE previous to FUSE version 2 (`fuse`).
+To resolve this error, you must install `libfuse2`.
 {{% /alert %}}
 
 **Solution:** If you receive this error, install FUSE version 2 on your Linux system according to one of the following steps:

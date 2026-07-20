@@ -78,11 +78,9 @@ If you intend to use GPIO, however, we recommend installing Jetpack 5 on your Je
 Look at the Troubleshooting section below for help navigating these instructions.
 Once you have reached _Next Steps_, return to the Viam docs.
 
-{{< alert title="Tip: <code>viam-server</code> installation with <code>curl</code>" color="tip" >}}
+{{< alert title="Tip: <code>curl</code> installation" color="tip" >}}
 
-If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
-
-If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-latest-aarch64.AppImage` to download the `viam-server` binary.
+If `curl` is not installed on your Orin, run `sudo apt install curl` before proceeding with installation.
 
 {{% /alert %}}
 
@@ -150,9 +148,7 @@ To use your Jetson board, follow the [setup guide](/set-up-a-machine/first-machi
 
 ### Install `curl`
 
-If `curl` is not installed on your Orin, run `sudo apt install curl` before downloading the `viam-server` binary.
-
-If this command fails, try using `wget https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage` to download the `viam-server` binary.
+If `curl` is not installed on your Orin, run `sudo apt install curl` before proceeding with installation.
 
 You can find additional assistance in the [Troubleshooting section](/monitor/troubleshoot/).
 
