@@ -240,12 +240,15 @@ if __name__ == '__main__':
 
 The default behavior when you don't implement a method:
 
-| Behavior                 | Go                                                                                 | Python                                                                                |
-| ------------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Rebuild on config change | Default (`viam-server` destroys and re-creates the resource)                       | Default (`viam-server` destroys and re-creates the resource)                          |
-| In-place reconfigure     | Implement `Reconfigure()` (replace the `AlwaysRebuild` embed with your own method) | Not supported; resources always rebuild (the `Reconfigurable` protocol is deprecated) |
-| No-op close              | Embed `resource.TriviallyCloseable`                                                | Default on `ResourceBase`                                                             |
-| Skip config validation   | Embed `resource.TriviallyValidateConfig`                                           | Default on `EasyResource`                                                             |
+| To get this behavior   | Go                                       | Python                    |
+| ---------------------- | ---------------------------------------- | ------------------------- |
+| No-op close            | Embed `resource.TriviallyCloseable`      | Default on `ResourceBase` |
+| Skip config validation | Embed `resource.TriviallyValidateConfig` | Default on `EasyResource` |
+
+`viam-server` always rebuilds modular resources when their configuration
+or dependencies change. It closes the existing resource instance and
+creates a new one using the constructor. In-place reconfiguration is not
+supported for modular resources in any language.
 
 ## Logging
 
@@ -331,13 +334,13 @@ defined in `proto/viam/module/v1/module.proto`:
 
 All RPCs are initiated by `viam-server` and handled by the module:
 
-| RPC                   | Purpose                                                  |
-| --------------------- | -------------------------------------------------------- |
-| `Ready`               | Handshake: module returns its supported API/model pairs. |
-| `AddResource`         | Create a new resource instance from config.              |
-| `ReconfigureResource` | Update an existing resource with new config.             |
-| `RemoveResource`      | Destroy a resource instance.                             |
-| `ValidateConfig`      | Validate config and return implicit dependencies.        |
+| RPC                   | Purpose                                                                                                                                            |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Ready`               | Handshake: module returns its supported API/model pairs.                                                                                           |
+| `AddResource`         | Create a new resource instance from config.                                                                                                        |
+| `ReconfigureResource` | No longer called by `viam-server`. Config changes go through `RemoveResource` + `AddResource` instead. The RPC name is retained for compatibility. |
+| `RemoveResource`      | Destroy a resource instance.                                                                                                                       |
+| `ValidateConfig`      | Validate config and return implicit dependencies.                                                                                                  |
 
 The module also connects back to the parent `viam-server` to access other
 resources (dependencies) on the machine.
