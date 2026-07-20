@@ -34,7 +34,7 @@ Key parameters:
 
 ### MoveOnMap, MoveOnGlobe, StopPlan, ListPlanStatuses, and GetPlan
 
-Navigate mobile bases and manage the resulting plans. The builtin motion service returns a `not supported by builtin` error for each of these methods (for example, `MoveOnMap not supported by builtin`); module-based motion services implement them.
+Navigate mobile bases and manage the resulting plans. The builtin motion service returns a `not supported by builtin` error for each of these methods (for example, `MoveOnMap not supported by builtin`); module-based motion services may implement them.
 
 ### GetPose (deprecated)
 
@@ -46,8 +46,10 @@ Sends arbitrary commands. The builtin motion service supports a `"plan"`
 command (returns a trajectory without executing it), an `"execute"` command
 (runs a trajectory; add the `"executeCheckStart"` key to an execute request
 to verify the resource is at the trajectory's start first), and the teleop
-commands (`teleop_start`, `teleop_move`, `teleop_stop`, and `teleop_status`).
+commands (`teleop_start`, `teleop_move`, `teleop_stop`, and `teleop_status`),
+which stream smoothed, incremental joint commands for interactive arm
+teleoperation.
 
 ### GetStatus
 
-Returns generic resource status for the motion service. `GetStatus` is a common resource RPC, so the generated table above omits it. Use it for liveness checks.
+Returns generic resource status. `GetStatus` is part of the common resource API that every resource implements, including the builtin motion service; the generated table above omits common RPCs. Use it for liveness checks.

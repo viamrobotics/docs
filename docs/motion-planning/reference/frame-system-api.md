@@ -7,7 +7,7 @@ type: "docs"
 description: "Query and transform frame system poses with the robot service RPCs: FrameSystemConfig, GetPose, TransformPose, and TransformPCD."
 ---
 
-The RPCs for querying and transforming frame system poses live on the robot service, not on a dedicated `FrameSystemService`. New users often look for a separate service matching the concept; there is none. All four methods below belong to `RobotService` in `api/proto/viam/robot/v1/robot.proto`.
+The RPCs for querying and transforming frame system poses live on the robot service, not on a dedicated `FrameSystemService`. New users often look for a separate service matching the concept; the public API has none. All four methods below belong to `RobotService` in `api/proto/viam/robot/v1/robot.proto`. (Go module authors are the one exception: see [Service names](#service-names).)
 
 | Method              | Purpose                                                                 |
 | ------------------- | ----------------------------------------------------------------------- |
@@ -17,11 +17,16 @@ The RPCs for querying and transforming frame system poses live on the robot serv
 | `TransformPCD`      | Convert a point cloud between reference frames.                         |
 
 Call these methods directly on the robot or machine client
-(`machine.transform_pose`, `machine.get_pose`, and so on).
+(`machine.transform_pose`, `machine.transform_pcd`, and so on).
+Method availability varies by SDK: Go exposes all four, while Python
+reaches `GetPose` through the motion service (see
+[GetPose](#getpose) below).
 
 ## Service names
 
 These names appear in error messages and module configuration: inside RDK, the frame system is registered under `builtin` (the default instance included with `viam-server`) and `$framesystem` (the name modules use to resolve a dependency on it). The RPCs on the robot/machine client hit the frame system transparently.
+
+Go module authors can go one step further: declare a dependency on the frame system by the `$framesystem` name (`framesystem.PublicServiceName` in the RDK) and call the returned `framesystem.Service` directly. This gives module code the same frame-system queries with a resource dependency in place of a robot client connection.
 
 ## FrameSystemConfig
 
