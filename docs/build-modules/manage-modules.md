@@ -6,7 +6,7 @@ weight: 32
 images: ["/registry/create-module.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
-description: "Update or delete your existing modules, or change their privacy settings."
+description: "Update, deprecate, or delete your existing modules, or change their privacy settings."
 aliases:
   - /operate/modules/advanced/manage-modules/
   - /use-cases/deploy-code/
@@ -21,7 +21,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, change visibility, or delete the module.
+After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, set a minimum `viam-server` version, change visibility, deprecate, or delete the module.
 
 ## Update a module
 
@@ -176,13 +176,13 @@ if ! $PYTHON -m pip install pyinstaller -Uqq; then
     exit 1
 fi
 
-$PYTHON -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+$PYTHON -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz ./dist/main
 ```
 
 {{< /expand >}}
 
-You can test this build configuration by running the Viam CLI's [`build local` command](/cli/#using-the-build-subcommand) on your development machine:
+You can test this build configuration by running the Viam CLI's [`build local` command](/cli/reference/#using-the-build-subcommand) on your development machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam module build local
@@ -232,9 +232,9 @@ When you are ready to test the action, uncomment `if: github.event_name == 'rele
 
 For guidance on configuring the other parameters, see the documentation for each:
 
-- [`org-id`](/cli/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
-- [`platform`](/cli/#using-the---platform-argument): You can only upload one platform at a time.
-- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): See [Using the --version argument](/cli/#using-the---version-argument) for more details on the types of versioning supported.
+- [`org-id`](/cli/reference/#using-the---org-id-and---public-namespace-arguments): Not required if your module is public.
+- [`platform`](/cli/reference/#using-the---platform-argument): You can only upload one platform at a time.
+- [`version`](https://github.com/viamrobotics/upload-module/blob/main/README.md#versioning): See [Using the --version argument](/cli/reference/#using-the---version-argument) for more details on the types of versioning supported.
 
 For more details, see the [`upload-module` GitHub Action documentation](https://github.com/viamrobotics/upload-module), or take a look through one of the following example repositories that show how to package and deploy modules using the Viam SDKs:
 
@@ -246,7 +246,7 @@ For more details, see the [`upload-module` GitHub Action documentation](https://
   {{% /tab %}}
   {{< /tabs >}}
 
-3. [Create an organization API key](/cli/#create-an-organization-api-key) with owner role:
+3. [Create an organization API key](/cli/reference/#organizations-api-key-create) with owner role:
 
    ```sh {class="command-line" data-prompt="$"}
    viam organizations api-key create --org-id <org-id> --name <key-name>
@@ -308,9 +308,9 @@ Use the [Viam CLI](/cli/) to manually update your module:
 
    For example, `viam module upload --version 1.0.1 --platform darwin/arm64 my-module.tar.gz`.
 
-When you `upload` a module, the command performs basic [validation](/cli/#upload-validation) of your module to check for common errors.
+When you `upload` a module, the command performs basic [validation](/cli/reference/#upload-validation) of your module to check for common errors.
 
-For more information, see the [`viam module` command](/cli/#module).
+For more information, see the [`viam module` command](/cli/reference/#module).
 
 ## Pin a module to a specific version
 
@@ -322,6 +322,39 @@ To pin a machine to a specific version:
 1. Find the module in the configuration.
 1. Set the **Version** field to a specific version (for example, `0.1.0`).
 1. Click **Save**.
+
+## Set a minimum viam-server version
+
+Some module versions rely on `viam-server` features that older servers lack.
+To warn machine builders before they reach a runtime failure, set the minimum `viam-server` version your module needs.
+Machines running an older server then show a compatibility warning wherever your module is configured or added.
+
+This requirement is advisory: it warns machine builders while still allowing them to add and run the module.
+
+To set the minimum version (module owners only):
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+2. In the right-hand sidebar, click the pencil icon next to the minimum `viam-server` version.
+3. Enter the full version your module needs, in `x.y.z` form (for example, `0.62.0`).
+   The field requires a valid `x.y.z` version, so **Save** stays disabled until the value parses.
+4. Click **Save**.
+
+To clear the requirement, open the same field, remove the value, and save the empty input.
+
+The requirement is stamped onto your module's current latest version and applied to the versions you publish next.
+Each new version inherits the minimum in effect when you publish it, and you can change the minimum for that version afterward.
+Earlier versions keep the minimum they were stamped with.
+The **Version history** on your module's page shows the value each version carries, so you can see which versions require which server version.
+
+### Resolve a compatibility warning
+
+When a machine runs a `viam-server` older than a configured module requires, the machine builder sees a compatibility warning in two places:
+
+- On the configured module's card in the machine config, which compares the deployed version's requirement against the running server.
+- In the add-module search preview, which compares the module's current requirement against the running server.
+
+The warning names the version the module requires and the version the machine reports running.
+To resolve it, either upgrade `viam-server` on the machine to that version or newer, or [pin the module](#pin-a-module-to-a-specific-version) to a version whose requirement the machine already meets.
 
 ## Auto-detect models with `update-models`
 
@@ -382,7 +415,7 @@ To change the visibility:
      Only organization members can edit the module.
      Not listed in the registry for users outside of your organization.
 
-You can also edit the visibility by editing the [meta.json](/build-modules/module-reference/) file and then running the following [CLI](/cli/#module) command:
+You can also edit the visibility by editing the [meta.json](/build-modules/module-reference/) file and then running the following [CLI](/cli/reference/#module) command:
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 viam module update
@@ -391,6 +424,39 @@ viam module update
 {{% hiddencontent %}}
 If you don't see a private module of yours in the registry, make sure that you have the correct organization selected in the upper right corner of the page.
 {{% /hiddencontent %}}
+
+## Deprecate a module
+
+You can deprecate a module to signal that it should no longer be used.
+Deprecating a module:
+
+- Marks it with a **Deprecated** badge in the registry
+- Hides it from registry search results for users outside the owning organization
+- Prevents users from adding it to new machines
+- Existing machines that already use the module will continue running it, but warnings will be shown on the config page
+
+To deprecate a module:
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+1. Click the **...** (menu) icon in the upper-right corner of the page.
+1. Click **Deprecate**.
+1. Optionally, enter a message for users (for example, "Use acme:sensor:v2 instead").
+1. Click **Deprecate** to confirm.
+
+To reverse the deprecation, open the same **...** menu and click **Undeprecate**.
+
+### Deprecate a single version
+
+You can deprecate individual versions instead of the entire module.
+This is useful when a specific release has a known issue but the module itself is still active.
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+1. Click **Show previous versions** under the **Latest version** heading.
+1. Click the **...** (menu) icon next to the version you want to deprecate.
+1. Click **Deprecate version**, optionally enter a message, and confirm.
+
+Deprecated versions appear with a strikethrough and a **Deprecated** badge.
+To reverse a version deprecation, click the **...** menu on the deprecated version and select **Undeprecate version**.
 
 ## Delete a module
 

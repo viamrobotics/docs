@@ -48,10 +48,10 @@ For power sensors not covered above (Renogy controllers, other chips), search fo
 ### 2. Add a power sensor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the power sensor model that matches your hardware. Search
    by chip name (for example, **ina219**, **ina226**).
-4. Name it (for example, `battery-monitor`) and click **Create**.
+4. Name it (for example, `battery-monitor`) and click **Add to machine**.
 
 ### 3. Configure attributes
 
@@ -84,15 +84,13 @@ Click **Save**, then expand the **Test** section.
 Read voltage, current, and power programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, you'll see voltage, current, and power readings. Verify the voltage matches your power supply.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `power_sensor_test.py`:
 
@@ -161,7 +159,6 @@ import (
     "go.viam.com/rdk/components/powersensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -169,11 +166,12 @@ func main() {
     logger := logging.NewLogger("power-sensor-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

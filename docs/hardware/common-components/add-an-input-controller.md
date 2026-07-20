@@ -39,10 +39,10 @@ For hardware the built-in models don't cover, search for `input controller` in t
 
 1. Plug your gamepad into the machine's USB port.
 2. Click the **+** button.
-3. Select **Configuration block**.
+3. Select **Blocks**.
 4. Search for **gamepad**. This is the built-in model for USB game
    controllers.
-5. Name it (for example, `my-gamepad`) and click **Create**.
+5. Name it (for example, `my-gamepad`) and click **Add to machine**.
 
 #### 2. Configure attributes
 
@@ -62,10 +62,10 @@ If you have multiple controllers, specify which one:
 #### 1. Add a webgamepad component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for **webgamepad**. This model provides browser-based
    controls in the Viam app.
-4. Name it (for example, `web-controller`) and click **Create**.
+4. Name it (for example, `web-controller`) and click **Add to machine**.
 
 No attributes needed. The web gamepad appears in the Viam app's CONTROL tab
 and works with browser-compatible game controllers or on-screen controls.
@@ -80,10 +80,10 @@ and works with browser-compatible game controllers or on-screen controls.
 #### 2. Add and configure
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for **gpio input controller**. This model maps GPIO pins to
    controller buttons.
-4. Name it and click **Create**.
+4. Name it and click **Add to machine**.
 5. Configure the pins:
 
 ```json
@@ -108,15 +108,13 @@ Click **Save**, then expand the **Test** section.
 List available controls and print events as they happen.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, press buttons on your gamepad and watch the events print in real time.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `input_test.py`:
 
@@ -194,7 +192,6 @@ import (
     "go.viam.com/rdk/components/input"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -202,11 +199,12 @@ func main() {
     logger := logging.NewLogger("input-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

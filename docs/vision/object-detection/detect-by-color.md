@@ -55,9 +55,9 @@ The practical approach:
 ## 2. Add the color_detector vision service
 
 1. Open the **CONFIGURE** tab in the Viam app.
-2. Click the **+** icon and select **Configuration block**.
+2. Click the **+** icon and select **Blocks**.
 3. In the search field, type `color detector` and select the `vision/color_detector` result.
-4. Click **Add component**, name the service (for example, `red_detector`), and click **Add component** again to confirm.
+4. Click **Add to machine**, name the service (for example, `red_detector`), and click **Add to machine** again to confirm.
 
 ## 3. Configure the detector
 
@@ -152,7 +152,6 @@ import (
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/services/vision"
-  "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -160,10 +159,10 @@ func main() {
   logger := logging.NewLogger("detector")
 
   machine, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
       "YOUR-API-KEY-ID",
-      rpc.Credentials{
-        Type:    rpc.CredentialsTypeAPIKey,
+      client.Credentials{
+        Type:    client.CredentialsTypeAPIKey,
         Payload: "YOUR-API-KEY",
       })),
   )

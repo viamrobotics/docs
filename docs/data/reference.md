@@ -288,7 +288,7 @@ The following settings are processed by the Viam cloud platform, not by `viam-se
 <!-- prettier-ignore -->
 | Name | Type | Level | Description |
 | --- | --- | --- | --- |
-| `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the cloud. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
+| `retention_policy` | object | `attributes` (sibling to `capture_methods`) | How long captured data is retained in the default data store. Options: `"days": <int>`, `"binary_limit_gb": <int>`, `"tabular_limit_gb": <int>`. Days are in UTC. |
 | `recent_data_store` | object | Inside a `capture_methods[]` entry | Store a rolling window of recent data in a [hot data store](/data/hot-data-store/) for faster queries. Example: `{ "stored_hours": 24 }` |
 
 For remote parts capture, see [Capture from multi-part machines](/data/capture-sync/remote-parts-capture/).

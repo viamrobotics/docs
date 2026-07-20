@@ -41,10 +41,10 @@ For hardware the built-in models don't cover, search for `switch` in the [Viam r
 ### 1. Add a switch component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your switch hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your switch (for example, `my-switch`) and click **Create**.
+4. Name your switch (for example, `my-switch`) and click **Add to machine**.
 
 ### 2. Configure switch attributes
 
@@ -77,15 +77,13 @@ Click **Save**, then expand the **Test** section.
 Read the switch position, cycle through positions, and read labels.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, you'll see the switch cycle through all positions. With the fake model, positions update in memory. With real hardware, verify the switch physically changes state.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `switch_test.py`:
 
@@ -152,7 +150,6 @@ import (
     toggleswitch "go.viam.com/rdk/components/switch"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -160,11 +157,12 @@ func main() {
     logger := logging.NewLogger("switch-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

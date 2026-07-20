@@ -49,10 +49,10 @@ For grippers not covered above, search for `gripper` in the [Viam registry](http
 ### 1. Add a gripper component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your gripper hardware. Search by
    manufacturer name or gripper type (for example, "gripper", "finger gripper", "vacuum").
-4. Name your gripper (for example, `my-gripper`) and click **Create**.
+4. Name your gripper (for example, `my-gripper`) and click **Add to machine**.
 
 ### 2. Configure gripper attributes
 
@@ -131,16 +131,14 @@ with no objects in the workspace until you're confident in the configuration.
 Open the gripper, grab an object, and check if it's held.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 If you're using real hardware, you'll see the gripper open and close when you run the code below.
 With the fake model, Grab always returns true.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `gripper_test.py`:
 
@@ -209,7 +207,6 @@ import (
     "go.viam.com/rdk/components/gripper"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -217,11 +214,12 @@ func main() {
     logger := logging.NewLogger("gripper-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

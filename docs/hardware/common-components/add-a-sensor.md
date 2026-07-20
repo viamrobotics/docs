@@ -50,11 +50,11 @@ For sensors not covered above, search for `sensor` in the [Viam registry](https:
 ### 1. Add a sensor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your sensor hardware. Search by
    sensor name or chip (for example, **DHT22**, **BME280**, **SHT31**). For I2C
    or serial sensors, you can also search by protocol or manufacturer.
-4. Name your sensor (for example, `temperature-sensor`) and click **Create**.
+4. Name your sensor (for example, `temperature-sensor`) and click **Add to machine**.
 
 If no model exists for your sensor, you can
 [write your own module](/build-modules/write-a-driver-module/) to add support.
@@ -108,15 +108,13 @@ Click **Save**, then expand the **Test** section.
 Read sensor data programmatically and print it.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, you'll see sensor readings printed once per second. Verify the values make sense for your environment.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `sensor_test.py`:
 
@@ -185,7 +183,6 @@ import (
     "go.viam.com/rdk/components/sensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -193,11 +190,12 @@ func main() {
     logger := logging.NewLogger("sensor-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

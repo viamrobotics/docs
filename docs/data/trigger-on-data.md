@@ -59,11 +59,11 @@ For the full attribute reference for all trigger types, see [Trigger configurati
         For a full reference of trigger configuration attributes, see [Trigger configuration](/reference/triggers/).
 
 1. Next, configure what should happen when an event occurs.
-   You can add **Webhooks**, **Email**, and **Push** notifications:
+   You can add **Webhook**, **Email**, and **Push** notifications:
 
    To add a webhook:
 
-   1. Click **Add Webhook**.
+   1. Click **Add webhook**.
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
    1. Write your cloud function to process the webhook payload.
@@ -86,6 +86,8 @@ For the full attribute reference for all trigger types, see [Trigger configurati
    1. Add specific email addresses of recipients who should receive push notifications, or toggle on notifications for all machine owners.
       Recipients must be machine owners or operators.
    1. Set the alert frequency (minimum time between notifications).
+
+   For end-to-end setup of a custom application ID (Firebase upload, device registration, machine authorization), see [Set up custom push notifications](/monitor/custom-push-notifications/).
 
 {{% /tab %}}
 {{% tab name="JSON Example" %}}
@@ -163,7 +165,9 @@ For the full header and body reference, see [Webhook attributes](/reference/trig
 
 ## Notification interval
 
-The `seconds_between_notifications` field sets the minimum time between notifications for the same trigger. If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour). For `conditional_logs_ingested` triggers, the check interval is always one hour regardless of this setting.
+The `seconds_between_notifications` field sets the minimum time between notifications for data triggers (`part_data_ingested` and `conditional_data_ingested`). If a trigger fires more frequently than this interval, additional notifications are suppressed until the interval has elapsed. To avoid floods of notifications, set the interval to a value appropriate for your use case (for example, 3600 to allow at most one alert per hour).
+
+This field is ignored for `part_online` and `part_offline` triggers, which fire on every state transition. It is also ignored for `conditional_logs_ingested` triggers, where the check interval is always one hour.
 
 ## Machine telemetry triggers
 

@@ -201,7 +201,7 @@ If you have run this command and added your environment variables, skip ahead to
 
 {{< /alert >}}
 
-Go to the **CONNECT** tab and select **TypeScript**.
+Go to the **CONNECT** tab and select **Browser TS**.
 Save your API key and API key ID as environment variables or include them in the code:
 
 {{% snippet "show-secret.md" %}}
@@ -420,12 +420,12 @@ func main() {
       // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
       "<MACHINE-ADDRESS>",
       logger,
-      client.WithDialOptions(rpc.WithEntityCredentials(
+      client.WithDialOptions(client.WithEntityCredentials(
         // Replace "<API-KEY-ID>" (including brackets) with your machine's
         // API key ID
         "<API-KEY-ID>",
-        rpc.Credentials{
-          Type:    rpc.CredentialsTypeAPIKey,
+        client.Credentials{
+          Type:    client.CredentialsTypeAPIKey,
           // Replace "<API-KEY>" (including brackets) with your machine's API key
           Payload: "<API-KEY>",
         })),
@@ -881,8 +881,7 @@ import (
 
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
-    "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils")
+    "go.viam.com/rdk/robot/client")
 
 func moveInSquare(ctx context.Context, base base.Base, logger logging.Logger) {
     for i := 0; i < 4; i++ {
@@ -902,12 +901,12 @@ func main() {
       // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
       "<MACHINE-ADDRESS>",
       logger,
-      client.WithDialOptions(utils.WithEntityCredentials(
+      client.WithDialOptions(client.WithEntityCredentials(
       // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
       // API key ID
       "<API-KEY-ID>",
-      utils.Credentials{
-          Type:    utils.CredentialsTypeAPIKey,
+      client.Credentials{
+          Type:    client.CredentialsTypeAPIKey,
           // TODO: Replace "<API-KEY>" (including brackets) with your machine's
           // API key
           Payload: "<API-KEY>",

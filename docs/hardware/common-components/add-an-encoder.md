@@ -61,11 +61,11 @@ For encoders not covered above, search for `encoder` in the [Viam registry](http
 ### 2. Add an encoder component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the encoder model that matches your hardware:
    - For a two-channel quadrature encoder, search for **incremental**.
    - For a single-channel encoder, search for **single encoder**.
-4. Name your encoder (for example, `left-encoder`) and click **Create**.
+4. Name your encoder (for example, `left-encoder`) and click **Add to machine**.
 
 ### 3. Configure encoder attributes
 
@@ -137,15 +137,13 @@ position.
 Read the encoder position and reset it.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, you'll see the encoder's current position, then reset it to zero. Manually rotate the motor shaft to verify the count changes.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `encoder_test.py`:
 
@@ -210,7 +208,6 @@ import (
     "go.viam.com/rdk/components/encoder"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -218,11 +215,12 @@ func main() {
     logger := logging.NewLogger("encoder-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

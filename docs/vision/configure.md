@@ -36,9 +36,9 @@ Three resources (camera, vision service, ML model service) plus the model file i
 The ML model service matches your model file's framework. For most tasks, `tflite_cpu` is the right starting point: it runs on almost any CPU and keeps hardware costs down. When you need GPU acceleration (larger models, higher frame rates, Nvidia Jetson hardware), use [`triton`](https://app.viam.com/module/viam/mlmodelservice-triton-jetpack) instead. The framework-support table in [Deploy a model from the registry](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support) lists which implementations support which frameworks and hardware paths.
 
 1. Navigate to the **CONFIGURE** tab of your machine in the Viam app.
-2. Click the **+** icon next to your machine part and select **Configuration block**.
+2. Click the **+** icon next to your machine part and select **Blocks**.
 3. In the search field, type `tflite_cpu` (or the service matching your model format) and select the matching result. For other frameworks, see the [framework table](/vision/deploy-and-maintain/deploy-from-registry/#model-framework-support).
-4. Click **Add component**, name the service `my-ml-model`, and click **Add component** again to confirm.
+4. Click **Add to machine**, name the service `my-ml-model`, and click **Add to machine** again to confirm.
 
 ## 2. Configure the ML model service
 
@@ -116,9 +116,9 @@ For more on the deployment flow, see [Deploy a model from the registry](/vision/
 
 ## 3. Add a vision service
 
-1. Click the **+** icon and select **Configuration block**.
+1. Click the **+** icon and select **Blocks**.
 2. In the search field, type `vision` or `mlmodel` and select the `vision/mlmodel` result.
-3. Click **Add component**, name the service `my-detector`, and click **Add component** again to confirm.
+3. Click **Add to machine**, name the service `my-detector`, and click **Add to machine** again to confirm.
 
 ## 4. Configure the vision service
 
@@ -155,7 +155,7 @@ Bounding boxes or classification labels should appear within a second or two. If
 
 If the camera feed appears but no detections are shown, see [Tune detection quality](/vision/object-detection/tune/).
 
-From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response is three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime.
+From code, you can confirm which roles the vision service registered by calling [`GetProperties`](/reference/apis/services/vision/#getproperties). The response includes three booleans reporting whether detections, classifications, and 3D point clouds are supported at runtime. If a default camera is configured, the response also includes its name.
 
 ## 7. Complete configuration
 
@@ -211,9 +211,7 @@ Verify end-to-end by pulling a detection from your own code.
 
 Install the SDK if you have not already:
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -275,7 +273,6 @@ import (
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
     "go.viam.com/rdk/services/vision"
-    "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -283,10 +280,10 @@ func main() {
     logger := logging.NewLogger("vision-test")
 
     machine, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithDialOptions(rpc.WithEntityCredentials(
+        client.WithDialOptions(client.WithEntityCredentials(
             "YOUR-API-KEY-ID",
-            rpc.Credentials{
-                Type:    rpc.CredentialsTypeAPIKey,
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
                 Payload: "YOUR-API-KEY",
             })),
     )

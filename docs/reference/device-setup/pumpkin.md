@@ -212,9 +212,9 @@ Configure your board as a [`customlinux`](https://app.viam.com/module/viam/custo
 {{% tab name="Config Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 Select the `board` type, then select the `customlinux` model.
-Enter a name or use the suggested name for your `customlinux` board and click **Create**.
+Enter a name or use the suggested name for your `customlinux` board and click **Add to machine**.
 
 [Example configuration for a pumpkin board using customlinux](https://github.com/viam-modules/customlinux/blob/main/README.md#example-configuration-for-a-pumpkin-board)
 

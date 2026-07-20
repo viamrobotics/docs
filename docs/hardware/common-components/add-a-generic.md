@@ -44,10 +44,10 @@ For hardware the built-in models don't cover, search for `generic` in the [Viam 
 ### 1. Add a generic component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your hardware. Search by
    manufacturer name, chip, or device type.
-4. Name your component (for example, `my-device`) and click **Create**.
+4. Name your component (for example, `my-device`) and click **Add to machine**.
 
 If no model exists for your hardware, you can
 [write your own module](/build-modules/write-a-driver-module/) that implements
@@ -75,15 +75,13 @@ or the Viam app's test panel.
 Send a command to the generic component and read the response.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 With the fake model, you'll see your command echoed back. With a real module, the response depends on what commands the module supports.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `generic_test.py`:
 
@@ -145,7 +143,6 @@ import (
     "go.viam.com/rdk/components/generic"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -153,11 +150,12 @@ func main() {
     logger := logging.NewLogger("generic-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

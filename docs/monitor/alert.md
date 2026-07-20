@@ -46,7 +46,7 @@ To monitor machine health metrics like CPU usage, memory, and temperature, add a
 {{< tabs >}}
 {{% tab name="Linux" %}}
 
-On your machine's **CONFIGURE** page, click the **+** icon next to your machine part and select **Configuration block**.
+On your machine's **CONFIGURE** page, click the **+** icon next to your machine part and select **Blocks**.
 Search for and add the `hwmonitor:cpu_monitor` model from the [`sbc-hwmonitor`](https://app.viam.com/module/rinzlerlabs/sbc-hwmonitor) module.
 
 You can add additional sensors for memory, temperature, and other metrics.
@@ -100,10 +100,11 @@ Wait a minute for data to capture and sync, then refresh.
 1. Add notification methods:
    - **Email specific addresses**: toggle on, add addresses, set alert frequency.
    - **Email all machine owners**: toggle on, set alert frequency.
-   - **Webhook**: click **Add Webhook**, enter your cloud function URL, set alert frequency.
+   - **Webhook**: click **Add webhook**, enter your cloud function URL, set alert frequency.
      See [Trigger configuration](/reference/triggers/#webhook-attributes) for webhook payload details.
    - **Push notifications**: click **Add push notifications**, choose the target mobile app, add recipient email addresses or enable notifications for all machine owners, and set alert frequency.
      Recipients must be machine owners or operators.
+     To route notifications to a custom mobile app instead of the Viam mobile app, see [Set up custom push notifications](/monitor/custom-push-notifications/).
 1. Click **Save**.
 
 {{% /tab %}}
@@ -233,7 +234,7 @@ The notification interval for log triggers is always one hour.
    Click **+** in the left sidebar and select **Trigger**.
 1. Enter a name and click **Create**.
 1. Select **Part is online** as the trigger **Type**.
-1. Add notification methods and set the alert frequency.
+1. Add notification methods.
 1. Click **Save**.
 
 {{% /tab %}}
@@ -249,13 +250,14 @@ The notification interval for log triggers is always one hour.
     "notifications": [
       {
         "type": "email",
-        "value": "you@example.com",
-        "seconds_between_notifications": 600
+        "value": "you@example.com"
       }
     ]
   }
 ]
 ```
+
+Part online triggers fire on every state transition, so you receive a notification each time the part comes online.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -269,7 +271,7 @@ The notification interval for log triggers is always one hour.
    Click **+** in the left sidebar and select **Trigger**.
 1. Enter a name and click **Create**.
 1. Select **Part is offline** as the trigger **Type**.
-1. Add notification methods and set the alert frequency.
+1. Add notification methods.
 1. Click **Save**.
 
 {{% /tab %}}
@@ -285,13 +287,14 @@ The notification interval for log triggers is always one hour.
     "notifications": [
       {
         "type": "email",
-        "value": "you@example.com",
-        "seconds_between_notifications": 300
+        "value": "you@example.com"
       }
     ]
   }
 ]
 ```
+
+Part offline triggers fire on every state transition, so you receive a notification each time the part goes offline.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -301,16 +304,19 @@ This prevents false alerts from brief network interruptions.
 
 ## Manage alert frequency
 
-Every notification method has a `seconds_between_notifications` setting that controls the minimum time between consecutive alerts.
+For data and conditional triggers, each notification method has a `seconds_between_notifications` setting that controls the minimum time between consecutive alerts.
 If a trigger fires more frequently than this interval, Viam suppresses the extra notifications.
 
 Set this value based on how quickly you need to respond:
 
-- **Critical alerts** (machine offline, safety thresholds): 60-300 seconds
+- **Safety thresholds**: 60-300 seconds
 - **Operational alerts** (elevated CPU, low battery): 300-600 seconds
 - **Informational alerts** (data sync confirmations): 3600 seconds or more
 
 Starting with a longer interval and shortening it as needed is better than starting short and dealing with notification noise.
+
+Part online and part offline triggers do not use this setting.
+They fire on every state transition, so you receive a notification each time the machine comes online or goes offline.
 
 ## Use the CLI
 

@@ -61,7 +61,7 @@ For motors not covered above, search for `motor` in the [Viam registry](https://
 ### 2. Add a motor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the motor model that matches your hardware:
    - For a brushed DC motor controlled through a motor driver with GPIO
      pins, search for **gpio motor**.
@@ -69,7 +69,7 @@ For motors not covered above, search for `motor` in the [Viam registry](https://
      pins, search for **gpiostepper**.
    - For other motor types, search by your motor driver or manufacturer
      name.
-4. Name your motor (for example, `left-motor`) and click **Create**.
+4. Name your motor (for example, `left-motor`) and click **Add to machine**.
 
 ### 3. Configure motor attributes
 
@@ -133,16 +133,14 @@ Click **Save**, then expand the **Test** section for the motor.
 Spin the motor forward for 2 revolutions, then check if it's still moving.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 If you're using real hardware, you'll see the motor spin when you run the code below.
 Without an encoder, position readings will be estimates based on time and max RPM.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `motor_test.py`:
 
@@ -206,7 +204,6 @@ import (
     "go.viam.com/rdk/components/motor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -214,11 +211,12 @@ func main() {
     logger := logging.NewLogger("motor-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

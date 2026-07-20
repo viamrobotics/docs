@@ -56,7 +56,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const usage = await billing.getCurrentMonthUsage('<organization-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getcurrentmonthusage).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getcurrentmonthusage).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -120,7 +120,7 @@ const billingInfo = await billing.getOrgBillingInformation(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getorgbillinginformation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getorgbillinginformation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -185,7 +185,7 @@ const invoicesSummary = await billing.getInvoicesSummary(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicessummary).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getinvoicessummary).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -254,7 +254,7 @@ const invoicePdf = await billing.getInvoicePdf(
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicepdf).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getinvoicepdf).
 
 {{% /tab %}}
 {{< /tabs >}}

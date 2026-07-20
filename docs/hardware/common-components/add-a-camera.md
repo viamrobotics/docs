@@ -56,12 +56,12 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 ### 2. Add a camera component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your camera:
    - For a USB webcam or built-in laptop camera, search for **webcam**.
    - For an IP camera that supports RTSP, search for **rtsp** and pick one of the `viam:viamrtsp` models (`rtsp` autodetects codec; specific codecs like `rtsp-h264` or `rtsp-h265` are also available).
    - For an Intel RealSense depth camera, search for **realsense**.
-4. Name your camera (this guide uses `my-camera`) and click **Create**.
+4. Name your camera (this guide uses `my-camera`) and click **Add to machine**.
 
 {{< alert title="Finding your camera" color="tip" >}}
 
@@ -100,14 +100,46 @@ You can also set resolution and frame rate:
 }
 ```
 
-### 4. Save the configuration
+### 4. Configure a frame (recommended)
+
+If you plan to use motion planning, computer vision with spatial context, or pose queries that include the camera, add a frame to define where the camera sits in your workspace.
+
+**Wrist-mounted on an arm.**
+Set `parent` to the arm's name so the camera's pose tracks the end effector as the arm moves.
+The translation offsets the camera's optical center from the arm's flange; measure your physical mount.
+
+```json
+{
+  "frame": {
+    "parent": "my-arm",
+    "translation": { "x": 0, "y": 0, "z": 0 },
+    "orientation": {
+      "type": "ov_degrees",
+      "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+    }
+  }
+}
+```
+
+**Fixed in the workspace.**
+Set `parent` to `"world"` with the absolute position of the camera's mounting point.
+
+**Mounted on a mobile base.**
+Set `parent` to the base's name. The camera's pose is a static offset from the base's mounting frame.
+Unlike an arm (whose kinematics update the tip frame live from joint positions), a base's frame does not automatically track the robot's position as it drives; live world-space tracking requires a movement sensor or odometry that updates the base's frame.
+
+If the camera lives on a separate machine from the main compute (for example, an end-effector Raspberry Pi that exposes the camera as a remote), see [Frames across machines](/hardware/multi-machine/cross-machine-frames/).
+
+See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
+
+### 5. Save the configuration
 
 Click **Save** in the upper right of the configuration panel.
 
 When you save, `viam-server` automatically reloads the configuration and initializes the new component.
 You do not need to restart anything.
 
-### 5. Test the camera
+### 6. Test the camera
 
 Every component in Viam has a built-in **test panel** in the Configure tab.
 The test panel uses the exact same APIs your code will use, so if the camera works here, it will work in your programs.
@@ -124,8 +156,8 @@ You should see a live feed from the camera.
 Capture an image from your camera programmatically.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 
 When you run the code below, it saves an image file to your current directory. Check that the image shows what the camera sees.
 {{< tabs >}}
@@ -133,9 +165,7 @@ When you run the code below, it saves an image file to your current directory. C
 
 Install the SDK if you haven't already:
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `camera_test.py`:
 
@@ -205,7 +235,6 @@ import (
     "go.viam.com/rdk/components/camera"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -213,11 +242,12 @@ func main() {
     logger := logging.NewLogger("camera-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

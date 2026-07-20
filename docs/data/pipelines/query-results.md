@@ -4,13 +4,13 @@ title: "Query pipeline results"
 weight: 15
 layout: "docs"
 type: "docs"
-description: "Query the output of a data pipeline from Python, Go, or TypeScript."
+description: "Query the output of a data pipeline from the Viam app, Python, Go, or TypeScript."
 date: "2026-03-27"
 ---
 
 Once you have [created a pipeline](/data/pipelines/create-a-pipeline/), its results land in a dedicated sink collection that is separate from your raw data. This page covers how to query that sink.
 
-You query pipeline results the same way you query raw readings, except you specify the `pipeline_sink` data source type and the **pipeline ID** of the pipeline whose results you want. The pipeline ID is returned on creation. If you did not save it, retrieve it with:
+You query pipeline results the same way you query raw readings, except you specify the `pipeline-sink` data source type and the **pipeline ID** of the pipeline whose results you want. The pipeline ID is returned on creation. If you did not save it, retrieve it with:
 
 ```bash
 viam datapipelines list --org-id=<org-id>
@@ -23,6 +23,18 @@ viam datapipelines describe --id=<pipeline-id>
 ```
 
 Both commands are also documented in [Manage pipelines](/data/pipelines/manage-pipelines/).
+
+## Query in the Viam app
+
+You can query pipeline results directly in the app's query editor:
+
+1. Navigate to the [**DATA** page](https://app.viam.com/data) and select the **Query** subtab, or click **Query pipeline data** in the three-dot menu next to a pipeline on the **Pipelines** subtab.
+1. In the query header, open the data source dropdown and select **Pipeline sink**.
+1. A second dropdown labeled **Pipeline** appears. Select the pipeline whose results you want to query.
+1. Write your MQL query and click **Run query**.
+
+The query runs against the pipeline's output collection.
+All MQL stages you add operate on the pipeline's result documents, not the raw readings.
 
 ## Query with the SDK
 

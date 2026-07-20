@@ -15,7 +15,7 @@ Three config patterns cover most cases:
 | Pattern                                                                   | Use when                                                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
 | [`erh:vmodutils:obstacle`](#default-obstacle-pattern)                     | Most workspace obstacles: tables, walls, fixtures, bespoke shapes. One component, any geometry.        |
-| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)     | A single box, sphere, or capsule when you do not want to add a registry module.                        |
+| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)     | A single box, sphere, capsule, or cylinder when you do not want to add a registry module.              |
 | [`erh:vmodutils:obstacle-open-box`](#containers-and-work-cell-boundaries) | Containers, bins, or rectangular work-cell envelopes. Generates five geometries from outer dimensions. |
 
 For obstacles your code builds at runtime (objects detected by vision, temporary keep-out zones), see [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/) instead.
@@ -33,11 +33,11 @@ The `erh:vmodutils:obstacle` module accepts a list of geometries under one compo
 ### 1. Add the obstacle component
 
 1. In the Viam app, open your machine's **CONFIGURE** tab.
-2. Click the **+** icon and select **Configuration block**.
+2. Click the **+** icon and select **Blocks**.
 3. Search for `obstacle` and click the **gripper/obstacle** result card for the `erh:vmodutils` module.
    The Viam app installs the `erh:vmodutils` module automatically.
-4. Click **Add component** on the detail page.
-5. Name the component after what it represents (for example, `table`, `back-wall`, `ceiling`) and click **Add component**.
+4. Click **Add to machine** on the detail page.
+5. Name the component after what it represents (for example, `table`, `back-wall`, `ceiling`) and click **Add to machine**.
 
 {{< alert title="Why a gripper?" color="note" >}}
 The obstacle module is registered under the gripper API because that API natively exposes a `Geometries()` method, which is what the motion planner reads to pull custom collision shapes.
@@ -186,9 +186,9 @@ The component's frame positions the whole group.
 
 For a single primitive shape when you do not want to add the `erh:vmodutils` module, use a `generic`/`fake` component:
 
-1. Click the **+** icon and select **Configuration block**.
-2. Search for `generic` and click the **generic/fake** result card. Click **Add component**.
-3. Name the component (for example, `table`) and click **Add component**.
+1. Click the **+** icon and select **Blocks**.
+2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.
+3. Name the component (for example, `table`) and click **Add to machine**.
 4. Click **Frame** on the new component card. Replace the JSON:
 
    ```json
@@ -292,9 +292,9 @@ The motion planner should treat them as collision volume, but Viam has no compon
 
 Use the `generic`/`fake` pattern, parented to the moving component instead of `world`:
 
-1. Click the **+** icon and select **Configuration block**.
-2. Search for `generic` and click the **generic/fake** result card. Click **Add component**.
-3. Name the component descriptively (for example, `arm-camera-mount`) and click **Add component**.
+1. Click the **+** icon and select **Blocks**.
+2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.
+3. Name the component descriptively (for example, `arm-camera-mount`) and click **Add to machine**.
 4. Click **Frame** on the new component card. Set `parent` to the component the object attaches to (the arm's name for an end-effector mount, the gripper's name for a gripper attachment). Add a `geometry` field:
 
    ```json
@@ -368,7 +368,7 @@ For the full visualization and verification workflow, see [Verify obstacles](/mo
 
 - A box with fewer than three dimensions (a box needs all three: `x`, `y`, `z`).
 - A capsule with `l` less than twice `r` (capsule length must be at least twice the radius).
-- A mistyped `type` value (valid values are `box`, `sphere`, `capsule`, `point`, `mesh`).
+- A mistyped `type` value (valid values are `box`, `sphere`, `capsule`, `cylinder`, `point`, `mesh`).
 
 Fix the geometry in the component's attributes and save again.
 

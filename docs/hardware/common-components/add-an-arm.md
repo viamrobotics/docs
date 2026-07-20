@@ -52,11 +52,11 @@ For arms not covered above, search for `arm` in the [Viam registry](https://app.
 ### 1. Add an arm component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your arm manufacturer and model:
    - For a UFactory xArm, search for **xArm6** (or xArm5, xArm7, Lite6).
    - For a Universal Robots arm, search for **ur5e** (or ur3e, ur10e, ur16e).
-4. Name your arm (for example, `my-arm`) and click **Create**.
+4. Name your arm (for example, `my-arm`) and click **Add to machine**.
 
 ### 2. Configure arm attributes
 
@@ -105,7 +105,13 @@ This frame places the arm's base at the world origin, which is common for single
 
 For two-arm setups, one arm is typically at the world origin and the other is offset by its distance from the first arm in the x and y directions using the `translation` field.
 
-See [Frame System](/motion-planning/frame-system/) for details on configuring frames.
+To attach a gripper, camera, or other tool to the end effector, set the attached component's frame `parent` to the arm's name.
+See [Add a gripper](/hardware/common-components/add-a-gripper/#3-configure-a-frame) for a worked example.
+
+If you're writing a driver module for an arm that isn't in the registry, the module implements the arm's `Kinematics` method to return the arm's kinematic model.
+See [Kinematics](/motion-planning/reference/kinematics/) for the URDF and SVA JSON formats Viam accepts, and [Write a driver module](/build-modules/write-a-driver-module/) for the module-code side.
+
+See [Frame System](/motion-planning/frame-system/) for the full frame configuration reference.
 
 ### 4. Save and test
 
@@ -133,8 +139,8 @@ The fake arm simulates kinematics for the specified model. Set `arm-model` to `u
 Read the arm's current joint positions, move two joints, and confirm the positions changed.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 
 If you're using a real arm, you'll see it physically move when you run the code below.
 With a fake arm, the positions update in memory without physical motion, but you can watch the joint values update in real time by expanding the **test** section on the arm's component card in the **CONFIGURE** tab.
@@ -143,9 +149,7 @@ The **3D Scene** tab on your machine's page renders the arm's live pose, which a
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `arm_test.py`:
 
@@ -218,7 +222,6 @@ import (
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/referenceframe"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -226,11 +229,12 @@ func main() {
     logger := logging.NewLogger("arm-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

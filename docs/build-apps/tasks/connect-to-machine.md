@@ -79,7 +79,6 @@ import (
     "context"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/utils/rpc"
 )
 
 logger := logging.NewDebugLogger("client")
@@ -87,10 +86,10 @@ machine, err := client.New(
     context.Background(),
     "my-robot-main.xxxx.viam.cloud",
     logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
         "your-api-key-id",
-        rpc.Credentials{
-            Type:    "api-key",
+        client.Credentials{
+            Type:    client.CredentialsTypeAPIKey,
             Payload: "your-api-key-secret",
         },
     )),
@@ -210,10 +209,10 @@ machine, err := client.New(
     context.Background(),
     "my-robot-main.xxxx.viam.cloud",
     logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
         "your-api-key-id",
-        rpc.Credentials{
-            Type:    "api-key",
+        client.Credentials{
+            Type:    client.CredentialsTypeAPIKey,
             Payload: "your-api-key-secret",
         },
     )),

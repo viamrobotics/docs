@@ -7,8 +7,8 @@ type: "docs"
 description: "From zero to an arm moving under motion service control, using a fake arm that runs on any machine."
 ---
 
-In this quickstart we will configure a fake arm with UR5e kinematics,
-connect to it from Python, and call the motion service to drive the
+This quickstart configures a fake arm with UR5e kinematics,
+connects to it from Python, and calls the motion service to drive the
 arm's end effector to a target pose. The whole thing runs on any
 machine that has `viam-server`; no physical arm required. When you
 have a real UR5e (or any other arm with a Viam module) later, the only
@@ -37,11 +37,11 @@ an existing one that has `viam-server` running. Go to its
 
 ## 2. Add the fake arm component
 
-1. Click **+** and choose **Component**.
-2. Select **arm**.
-3. Choose the **fake** model.
+1. Click **+** and choose **Blocks**.
+2. Search for **arm**.
+3. Choose the **arm/fake** component.
 4. Name the component **my-arm**.
-5. Click **Create**.
+5. Click **Add to machine**.
 
 In the arm's configuration card, set the `arm-model` attribute to
 `"ur5e"` so the fake arm exposes UR5e kinematics:
@@ -93,10 +93,9 @@ if __name__ == "__main__":
 ```
 
 Replace `YOUR-API-KEY`, `YOUR-API-KEY-ID`, and `YOUR-MACHINE-ADDRESS`
-with the values from the **CONNECT** tab. Then run:
+with the values from the **CONNECT** tab. Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/). Then run:
 
 ```sh
-pip install viam-sdk
 python first_arm.py
 ```
 
@@ -114,6 +113,25 @@ What matters is that the arm responds and returns a pose.
 You now have a script that connects to the machine and reads the arm's
 pose. Next you will add the motion service call that plans a path and
 executes it, plus a verification read after the motion completes.
+
+Add the arm to the frame system so the motion service can plan
+its movements. On the arm's card, click **Frame**. The default values
+(parent `world`, zero translation and rotation) place the arm's base
+at the world origin, so you don't need to change anything:
+
+```json
+{
+  "parent": "world",
+  "translation": { "x": 0, "y": 0, "z": 0 },
+  "orientation": {
+    "type": "ov_degrees",
+    "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+  }
+}
+```
+
+Click **Save** again.
+
 Replace the `main` function with:
 
 ```python
@@ -180,10 +198,12 @@ Under the hood, the motion service:
 1. Asked the frame system for the arm's current joint state.
 2. Used the UR5e kinematics from the fake module to compute where the
    end effector is right now.
-3. Ran the cBiRRT planner to find a joint-space path from the current
-   configuration to one that places the end effector at the target
-   pose.
-4. Smoothed the path and commanded the fake arm to follow it.
+3. Solved inverse kinematics for a configuration that places the end
+   effector at the target pose, then checked the straight line through
+   joint space to it for collisions. With an empty workspace, that
+   direct path succeeds; in a cluttered one, the planner falls back to
+   the [cBiRRT search algorithm](/motion-planning/how-planning-works/).
+4. Commanded the fake arm to follow the path.
 
 Because the fake arm has no obstacles and no real dynamics, every
 step is instantaneous and deterministic. With a real arm, the same

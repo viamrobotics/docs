@@ -1,9 +1,9 @@
 ---
-title: "Prepare your Python Virtual Environment"
-linkTitle: "Virtualenv for Python SDK"
+title: "Install the Python SDK"
+linkTitle: "Install the Python SDK"
 weight: 10
 type: "docs"
-description: "Prepare your Python Virtual Environment to program machines with the Python SDK."
+description: "Create a virtual environment and install the Python SDK for Viam."
 images: ["/services/icons/sdk.svg"]
 tags:
   ["client", "sdk", "application", "sdk", "fleet", "program", "python", "venv"]
@@ -18,7 +18,7 @@ date: "2022-01-01"
 To manage Python packages for your code, it is recommended that you use a virtual environment, or `venv`.
 By using a `venv`, you can install Python packages like Viam's client SDK within a virtual environment, avoiding conflicts with other projects or your system.
 
-Follow this guide to set up a fresh virtual environment on your working computer and install the Python SDK as a requirement for your Viam client application.
+Follow this guide to create a fresh virtual environment on your working computer and install the Python SDK for your Viam client application.
 
 ## Install virtualenv
 
@@ -31,7 +31,7 @@ Follow this guide to set up a fresh virtual environment on your working computer
 
    The expected output is the pip version number.
 
-2. [Install `virtualenv` using `pip`](https://virtualenv.pypa.io/en/latest/installation.html#via-pip):
+2. [Install `virtualenv` using `pip`](https://virtualenv.pypa.io/en/latest/how-to/install.html):
 
    ```sh {class="command-line" data-prompt="$"}
    python3 -m pip install --user virtualenv

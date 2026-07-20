@@ -70,9 +70,13 @@ async def main() -> int:
         )
         print(f"Pipeline created with ID: {pipeline_id}")
         # :remove-start:
-        # Teardown - delete the pipeline
-        await data_client.delete_data_pipeline(pipeline_id)
-        print(f"Pipeline deleted with ID: {pipeline_id}")
+        # Teardown - delete the pipeline. This cleanup is incidental to what the
+        # sample demonstrates, so tolerate transient backend errors here.
+        try:
+            await data_client.delete_data_pipeline(pipeline_id)
+            print(f"Pipeline deleted with ID: {pipeline_id}")
+        except Exception as e:
+            print(f"Teardown delete failed (ignored): {e}")
         # :remove-end:
 
         return 0

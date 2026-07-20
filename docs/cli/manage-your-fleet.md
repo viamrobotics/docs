@@ -114,7 +114,8 @@ Copy a directory recursively:
 viam machines part cp --part=<part-id> -r ./local-dir machine:/home/user/
 ```
 
-Preserve file permissions and timestamps:
+File permissions are preserved by default, respecting the destination `umask`.
+Use `--preserve` to also keep modification timestamps and force exact permission bits (overriding the destination `umask`):
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part cp --part=<part-id> -r --preserve ./local-dir machine:/home/user/
@@ -298,4 +299,4 @@ Key Value: your-secret-key-value
 - [Monitor machine status](/monitor/monitor/) for monitoring with the Viam app
 - [Troubleshoot](/monitor/troubleshoot/) for debugging machine issues
 - [Deploy software](/fleet/deploy-software/) for deploying with fragments
-- [CLI reference](/cli/#machines-alias-robots-and-machine) for the complete `machines` command reference
+- [CLI reference](/cli/reference/#machines-aliases-robots-robot-machine) for the complete `machines` command reference

@@ -40,9 +40,7 @@ Tabular data queries (`TabularDataByMQL` and `TabularDataBySQL`) share a 100&nbs
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 ```python
 import asyncio
@@ -212,6 +210,44 @@ for _, entry := range results {
 
 {{% /tab %}}
 {{< /tabs >}}
+
+## Reuse a saved query
+
+If you saved a query in the Viam app's query editor, you can run it from code by passing its name as `query_prefix_name`. The saved query runs first, and any stages you include in `query` run on its output, so you can keep a common pipeline in one place and add stages when you call it.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+# Run the saved query "daily-averages", then keep the top 10 results
+results = await data_client.tabular_data_by_mql(
+    organization_id=ORG_ID,
+    query=[
+        {"$limit": 10},
+    ],
+    query_prefix_name="daily-averages",
+)
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+// Run the saved query "daily-averages", then keep the top 10 results
+results, err := dataClient.TabularDataByMQL(ctx, orgID,
+    []map[string]interface{}{
+        {"$limit": 10},
+    },
+    &app.TabularDataByMQLOptions{QueryPrefixName: "daily-averages"})
+if err != nil {
+    logger.Fatal(err)
+}
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+Saving queries is available for MQL only. See [Save and reuse queries](/data/query-data/#save-and-reuse-queries) to create one in the app.
 
 ## What's next
 

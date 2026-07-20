@@ -69,10 +69,10 @@ and velocity estimates without any additional sensors.
 #### 2. Add the movement sensor
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for **wheeled-odometry**. This is the built-in model that
    computes position from wheel encoder data.
-4. Name it (for example, `odometry`) and click **Create**.
+4. Name it (for example, `odometry`) and click **Add to machine**.
 
 #### 3. Configure attributes
 
@@ -96,10 +96,10 @@ and velocity estimates without any additional sensors.
 #### 1. Add the component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your sensor hardware. Search by
    sensor name or chip (for example, **NMEA GPS**, **BNO055**, **MPU6050**).
-4. Name it and click **Create**.
+4. Name it and click **Add to machine**.
 5. Configure attributes per the model's documentation (typically I2C
    address or serial port).
 
@@ -133,15 +133,13 @@ Click **Save**, then expand the **Test** section.
 Read position and velocity data from the movement sensor.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 When you run the code below, you'll see which methods your sensor supports and the current readings for each.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `movement_sensor_test.py`:
 
@@ -208,7 +206,6 @@ import (
     "go.viam.com/rdk/components/movementsensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -216,11 +213,12 @@ func main() {
     logger := logging.NewLogger("movement-sensor-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

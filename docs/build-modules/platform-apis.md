@@ -221,17 +221,16 @@ To use the [machine management (`robot_client`) API](/reference/apis/robot/), yo
    ```go {class="line-numbers linkable-line-numbers"}
    "os"
    "go.viam.com/rdk/robot/client"
-   "go.viam.com/utils/rpc"
 
    func createRobotClientFromModule(ctx context.Context, logger logging.Logger) (*client.RobotClient, error) {
      robotClient, err := client.New(
            ctx,
            os.Getenv("VIAM_MACHINE_FQDN"),
            logger,
-           client.WithDialOptions(rpc.WithEntityCredentials(
+           client.WithDialOptions(client.WithEntityCredentials(
                os.Getenv("VIAM_API_KEY_ID"),
-               rpc.Credentials{
-                   Type:    rpc.CredentialsTypeAPIKey,
+               client.Credentials{
+                   Type:    client.CredentialsTypeAPIKey,
                    Payload: os.Getenv("VIAM_API_KEY"),
                })),
        )

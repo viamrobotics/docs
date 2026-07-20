@@ -90,11 +90,11 @@ lets you whitelist specific pairs.
 | --------- | ------------------- | ---------------------------------------------------- |
 | `allows`  | list of frame pairs | Each entry has `frame1` and `frame2` (string names). |
 
-This is useful when:
+Allow a collision when:
 
 - A gripper is expected to contact the object it is picking up.
 - Two components are physically close and their simplified collision geometries
-  overlap, but the real components do not collide.
+  overlap, while the real components stay clear of each other.
 
 Frame names support hierarchical matching: specifying `"my-arm"` matches all
 sub-geometries of the arm (such as `my-arm:upper_arm_link`,
@@ -112,6 +112,15 @@ constraints), see
 [Move with constraints](/motion-planning/move-an-arm/move-with-constraints/).
 For `CollisionSpecification` (allow specific frame pairs to collide), see
 [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/).
+
+## Relax the goal with a pose cloud
+
+Constraints restrict the _path_ between poses. The complementary tool is to
+relax the _goal_ itself. When close enough is acceptable, give the planner a
+region of acceptable poses instead of a single one,
+which enlarges the solution set and makes planning faster. This
+is a pose cloud, and it is often the right move when a goal is failing or
+planning slowly. See [Pose clouds](/motion-planning/move-an-arm/pose-clouds/).
 
 ## Performance considerations
 

@@ -28,6 +28,7 @@ audio_in,Close,,close,Close,,
 
 ## AudioOut
 audio_out,Play,,play,Play,play,play
+audio_out,PlayStream,,play_stream,PlayStream,playStream,playStream
 audio_out,GetProperties,,get_properties,Properties,getProperties,getProperties
 audio_out,GetGeometries,,get_geometries,,,
 audio_out,Reconfigure,,,Reconfigure,,
@@ -137,6 +138,8 @@ gripper,IsMoving,,is_moving,IsMoving,isMoving,isMoving
 gripper,IsHoldingSomething,,is_holding_something,IsHoldingSomething,isHoldingSomething,
 gripper,Stop,,stop,Stop,stop,stop
 gripper,GetGeometries,,get_geometries,Geometries,,getGeometries
+gripper,GetCurrentInputs,,get_current_inputs,CurrentInputs,,getCurrentInputs
+gripper,GoToInputs,,go_to_inputs,GoToInputs,,goToInputs
 gripper,Reconfigure,,,Reconfigure,,
 gripper,DoCommand,,do_command,DoCommand,doCommand,doCommand
 gripper,GetKinematics,,get_kinematics,Kinematics,getKinematics,
@@ -293,21 +296,6 @@ motion,DoCommand,,do_command,DoCommand,,doCommand
 motion,GetResourceName,,get_resource_name,Name,,name
 motion,Close,,close,Close,,
 
-## Navigation
-navigation,GetMode,,get_mode,Mode,,getMode
-navigation,SetMode,,set_mode,SetMode,,setMode
-navigation,GetLocation,,get_location,Location,,getLocation
-navigation,GetWaypoints,,get_waypoints,Waypoints,,getWayPoints
-navigation,AddWaypoint,,add_waypoint,AddWaypoint,,addWayPoint
-navigation,RemoveWaypoint,,remove_waypoint,RemoveWaypoint,,removeWayPoint
-navigation,GetObstacles,,get_obstacles,Obstacles,,getObstacles
-navigation,GetPaths,,get_paths,Paths,,getPaths
-navigation,GetProperties,,get_properties,Properties,,getProperties
-## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
-navigation,Reconfigure,,,Reconfigure,,
-navigation,DoCommand,,do_command,DoCommand,,doCommand
-navigation,GetResourceName,,get_resource_name,Name,,name
-navigation,Close,,close,Close,,
 
 ## SLAM
 slam,GetPosition,,get_position,Position,,getPosition
@@ -525,15 +513,17 @@ robot,CancelOperation,,cancel_operation,,,cancelOperation
 robot,BlockForOperation,,block_for_operation,,,blockForOperation
 robot,FrameSystemConfig,,get_frame_system_config,,,frameSystemConfig
 robot,TransformPose,,transform_pose,,,transformPose
-robot,TransformPCD,,,,,transformPCD
+robot,GetPose,,,,,getPose
+robot,TransformPCD,,transform_pcd,,,transformPCD
 robot,StreamStatus,,,,,
 # DEPRECATED robot,DiscoverComponents,,discover_components,DiscoverComponents,,discoverComponents
 robot,GetModelsFromModules,,get_models_from_modules,GetModelsFromModules,getModelsFromModules,getModelsFromModules
 robot,StopAll,,stop_all,StopAll,,stopAll
-robot,RestartModule,,restart_module,RestartModule,,restartModule
+robot,RestartModule,,restart_module,RestartModule,restartModule,restartModule
 robot,StartSession,,,,,
 robot,SendSessionHeartbeat,,,,,
 robot,Log,,log,,,
+robot,UploadDataFromPath,,upload_data_from_path,,,
 robot,GetCloudMetadata,,get_cloud_metadata,CloudMetadata,getCloudMetadata,getCloudMetadata
 robot,GetVersion,,get_version,Version,,getVersion
 ## HACK: Robot (python) provides additional helper function, adding 4 pseudo-entries:

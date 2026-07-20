@@ -62,13 +62,13 @@ For gantries not covered above, search for `gantry` in the [Viam registry](https
 ### 2. Add a gantry component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the gantry model that matches your setup:
    - For a single linear rail driven by a motor, search for
      **single-axis**.
    - For a multi-axis system composed of multiple single-axis gantries,
      search for **multi-axis**.
-4. Name your gantry (for example, `my-gantry`) and click **Create**.
+4. Name your gantry (for example, `my-gantry`) and click **Add to machine**.
 
 ### 3. Configure gantry attributes
 
@@ -121,16 +121,14 @@ Click **Save**, then expand the **Test** section.
 Read the gantry's position and move it along the axis.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 If you're using real hardware, you'll see the gantry move along its axis when you run the code below.
 With a fake gantry, position values update without physical motion.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `gantry_test.py`:
 
@@ -201,7 +199,6 @@ import (
     "go.viam.com/rdk/components/gantry"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -209,11 +206,12 @@ func main() {
     logger := logging.NewLogger("gantry-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

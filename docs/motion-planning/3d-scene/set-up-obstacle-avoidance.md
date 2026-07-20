@@ -7,7 +7,7 @@ type: "docs"
 description: "Visualize and adjust obstacle geometry so the motion planner routes around physical objects."
 ---
 
-The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, or capsules positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The **3D SCENE** tab lets you see what the planner sees, so you can check coverage before running a plan.
+The motion planner avoids obstacles only if it knows about them, and it knows about them only as geometries you define: boxes, spheres, capsules, or cylinders positioned in the frame system. That definition is invisible in JSON. A box specified as `{x: 800, y: 1200, z: 20}` at some parent-relative translation either covers the table or it doesn't, and you can't tell which from the numbers. The **3D SCENE** tab lets you see what the planner sees, so you can check coverage before running a plan.
 
 ## Prerequisites
 

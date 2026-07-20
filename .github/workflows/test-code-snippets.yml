@@ -12,6 +12,10 @@ on:
     - cron: '0 9 * * 1'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   test-code-samples:
     runs-on: ubuntu-latest
@@ -58,7 +62,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install viam-sdk
-        pip install asyncio
         pip install pytest
         pip install pytest-asyncio
         pip install numpy
@@ -81,6 +84,16 @@ jobs:
         passed_files_py=0
         failed_files_py=0
 
+        # Run a sample, retrying once after a delay. The live backend
+        # intermittently returns transient errors (gRPC INTERNAL,
+        # DEADLINE_EXCEEDED) that clear within seconds.
+        run_sample() {
+          if "$@"; then return 0; fi
+          echo "⚠️ Failed, retrying once in 30s in case the error is transient..."
+          sleep 30
+          "$@"
+        }
+
         echo "Starting to test Python code samples..."
         echo "========================================"
 
@@ -88,8 +101,8 @@ jobs:
           echo "Testing: $file"
           total_files_py=$((total_files_py + 1))
 
-          # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" python "$file"; then
+          # Credentials come from this step's env block.
+          if run_sample python "$file"; then
             passed_files_py=$((passed_files_py + 1))
             echo "✅ PASSED: $file"
           else
@@ -113,16 +126,17 @@ jobs:
         echo "passed=$passed_files_py" >> $GITHUB_OUTPUT
         echo "failed=$failed_files_py" >> $GITHUB_OUTPUT
 
-        # Exit with failure if any tests failed
-        if [ $failed_files_py -gt 0 ]; then
-          exit 1
-        fi
+        # Record failures for the final gate. Do not exit here, so the Go and
+        # TypeScript steps still run even when a Python sample fails.
+        echo "FAILED_PY=$failed_files_py" >> $GITHUB_ENV
       env:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
         TEST_ORG_ID: ${{ secrets.TEST_ORG_ID }}
         VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
         VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
+        VIAM_API_KEY_ORGS: ${{ secrets.VIAM_API_KEY_ORGS }}
+        VIAM_API_KEY_ID_ORGS: ${{ secrets.VIAM_API_KEY_ID_ORGS }}
         TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
 
     - name: Set up Go
@@ -146,6 +160,16 @@ jobs:
         passed_files_go=0
         failed_files_go=0
 
+        # Run a sample, retrying once after a delay. The live backend
+        # intermittently returns transient errors (gRPC INTERNAL,
+        # DEADLINE_EXCEEDED) that clear within seconds.
+        run_sample() {
+          if "$@"; then return 0; fi
+          echo "⚠️ Failed, retrying once in 30s in case the error is transient..."
+          sleep 30
+          "$@"
+        }
+
         echo "Starting to test Go code samples..."
         echo "========================================"
 
@@ -162,7 +186,8 @@ jobs:
 
           # Check if directory exists before changing to it
           if [ -d "$file_dir" ]; then
-            if (cd "$file_dir" && VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" go run "$file_name"); then
+            # Credentials come from this step's env block.
+            if (cd "$file_dir" && run_sample go run "$file_name"); then
               passed_files_go=$((passed_files_go + 1))
               echo "✅ PASSED: $file"
             else
@@ -190,10 +215,9 @@ jobs:
         echo "passed=$passed_files_go" >> $GITHUB_OUTPUT
         echo "failed=$failed_files_go" >> $GITHUB_OUTPUT
 
-        # Exit with failure if any tests failed
-        if [ $failed_files_go -gt 0 ]; then
-          exit 1
-        fi
+        # Record failures for the final gate. Do not exit here, so the
+        # TypeScript step still runs even when a Go sample fails.
+        echo "FAILED_GO=$failed_files_go" >> $GITHUB_ENV
       env:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
@@ -226,6 +250,16 @@ jobs:
         passed_files_ts=0
         failed_files_ts=0
 
+        # Run a sample, retrying once after a delay. The live backend
+        # intermittently returns transient errors (gRPC INTERNAL,
+        # DEADLINE_EXCEEDED) that clear within seconds.
+        run_sample() {
+          if "$@"; then return 0; fi
+          echo "⚠️ Failed, retrying once in 30s in case the error is transient..."
+          sleep 30
+          "$@"
+        }
+
         echo "Starting to test TypeScript code samples..."
         echo "========================================"
 
@@ -233,8 +267,8 @@ jobs:
           echo "Testing: $file"
           total_files_ts=$((total_files_ts + 1))
 
-          # Run the test with environment variables explicitly passed
-          if VIAM_API_KEY="$VIAM_API_KEY" VIAM_API_KEY_ID="$VIAM_API_KEY_ID" TEST_ORG_ID="$TEST_ORG_ID" VIAM_API_KEY_DATA_REGIONS="$VIAM_API_KEY_DATA_REGIONS" VIAM_API_KEY_ID_DATA_REGIONS="$VIAM_API_KEY_ID_DATA_REGIONS" node "$file"; then
+          # Credentials come from this step's env block.
+          if run_sample node "$file"; then
             passed_files_ts=$((passed_files_ts + 1))
             echo "✅ PASSED: $file"
           else
@@ -258,10 +292,8 @@ jobs:
         echo "passed=$passed_files_ts" >> $GITHUB_OUTPUT
         echo "failed=$failed_files_ts" >> $GITHUB_OUTPUT
 
-        # Exit with failure if any tests failed
-        if [ $failed_files_ts -gt 0 ]; then
-          exit 1
-        fi
+        # Record failures for the final gate.
+        echo "FAILED_TS=$failed_files_ts" >> $GITHUB_ENV
       env:
         VIAM_API_KEY: ${{ secrets.VIAM_API_KEY }}
         VIAM_API_KEY_ID: ${{ secrets.VIAM_API_KEY_ID }}
@@ -269,6 +301,19 @@ jobs:
         VIAM_API_KEY_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_DATA_REGIONS }}
         VIAM_API_KEY_ID_DATA_REGIONS: ${{ secrets.VIAM_API_KEY_ID_DATA_REGIONS }}
         TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+
+    - name: Evaluate results
+      if: github.repository_owner == 'viamrobotics'
+      run: |
+        py="${FAILED_PY:-0}"
+        go="${FAILED_GO:-0}"
+        ts="${FAILED_TS:-0}"
+        echo "Failed samples - Python: $py, Go: $go, TypeScript: $ts"
+        if [ "$py" -gt 0 ] || [ "$go" -gt 0 ] || [ "$ts" -gt 0 ]; then
+          echo "One or more code samples failed."
+          exit 1
+        fi
+        echo "All code samples passed."
 
     - name: Stop viam-server
       if: always()  # This ensures cleanup runs even if tests fail
@@ -295,24 +340,8 @@ jobs:
           echo "No viam-server PID found"
         fi
 
-    - name: Login to Jira
+    - name: Report failure
       if: failure()
-      uses: atlassian/gajira-login@v3
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-    - name: Create Jira ticket
-      if: failure()
-      id: create
-      uses: atlassian/gajira-create@v3
-      env:
-        GITHUB_RUN_ID: ${{ github.run_id }}
+      uses: ./.github/actions/report-ci-failure
       with:
-        project: DOCS
-        issuetype: Bug
-        summary: Code Sample Tests Failed
-        description: "For more info see https://github.com/viamrobotics/docs/actions/runs/${{ env.GITHUB_RUN_ID }}."
-    - name: Log created Jira issue
-      if: failure()
-      run: echo "Issue ${{ steps.create.outputs.issue }} was created"
+        job-name: Test Code Samples

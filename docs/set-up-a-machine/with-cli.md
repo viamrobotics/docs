@@ -76,7 +76,7 @@ If the machine is connected, the CLI prints its part list and status. If not, se
 If you have a fragment defining your standard component setup, attach it to the machine's main part:
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
 See [Reuse machine configuration](/fleet/reuse-configuration/) for the fragment authoring workflow.

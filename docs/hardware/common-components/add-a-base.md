@@ -59,11 +59,11 @@ For bases not covered above, search for `base` in the [Viam registry](https://ap
 ### 2. Add a base component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the base model that matches your hardware. For a
    differential-drive robot with left and right motors, search for
    **wheeled**.
-4. Name your base (for example, `my-base`) and click **Create**.
+4. Name your base (for example, `my-base`) and click **Add to machine**.
 
 ### 3. Configure base attributes
 
@@ -117,16 +117,14 @@ area. Start with low speeds.
 Drive the base forward, spin it, and stop.
 
 To get the credentials for the code below, go to your machine's page in the Viam app, click the **CONNECT** tab, and select **API keys**.
-Copy the **API key** and **API key ID**.
-Copy the **machine address** from the **Connection details** section on the same tab.
+Copy the **Key** and **ID**.
+Then click the **CONFIGURE** tab, and click **Details**, and copy the **Remote address**.
 If you're using real hardware, you'll see the robot drive forward and spin when you run the code below.
 With a fake base, the commands complete without physical motion.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-```bash
-pip install viam-sdk
-```
+Install the Viam Python SDK in a virtual environment by following [Install the Python SDK](/reference/sdks/python/python-venv/).
 
 Save this as `base_test.py`:
 
@@ -190,7 +188,6 @@ import (
     "go.viam.com/rdk/components/base"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -198,11 +195,12 @@ func main() {
     logger := logging.NewLogger("base-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

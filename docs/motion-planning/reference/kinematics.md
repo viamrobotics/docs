@@ -190,7 +190,7 @@ Each field:
 - **`links[].id`**: unique name for the link
 - **`links[].parent`**: the joint or frame this link attaches to
 - **`links[].translation`**: offset in mm from the parent's origin
-- **`links[].geometry`**: optional collision shape (uses `type`, `x`/`y`/`z` for box, `r` for sphere/capsule, `l` for capsule length)
+- **`links[].geometry`**: optional collision shape (uses `type`, `x`/`y`/`z` for box, `r` for sphere/capsule/cylinder, `l` for capsule length or cylinder height)
 - **`joints[].id`**: unique name for the joint
 - **`joints[].type`**: `"revolute"` (rotates) or `"prismatic"` (slides)
 - **`joints[].parent`**: the link this joint attaches to

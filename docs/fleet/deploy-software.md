@@ -17,7 +17,7 @@ Deploy modules (hardware drivers, control logic, or other custom code) to one ma
 ## 1. Add the module to a fragment
 
 1. Navigate to your fragment's page at [app.viam.com/fragments](https://app.viam.com/fragments).
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 1. Search for your module in the registry and add it.
 1. Configure the module's attributes as needed.
 1. Click **Save**.
@@ -41,10 +41,10 @@ To control when updates are applied, configure a maintenance window. See [manage
 **Through the Viam app:**
 
 1. Navigate to each machine's **CONFIGURE** tab.
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 1. Search for your fragment and select it.
-1. Click **Add fragment**.
-1. Click **Add fragment** again to confirm, then **Save**.
+1. Click **Add to machine**.
+1. Click **Add to machine** again to confirm, then **Save**.
 
 **Through provisioning:**
 
@@ -53,10 +53,10 @@ Include the fragment ID in your `viam-defaults.json` file. New machines apply th
 **Through the CLI:**
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part fragments add --part=<part-id> --fragment=<fragment-id>
+viam machines part fragments add --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
-To find your part ID, run `viam machines part list --machine=<machine-id>`. To find the fragment ID, copy it from the fragment's page in the Viam app or run `viam organizations list` and check your fragments.
+To find your part ID, run `viam machines part list --machine=<machine-id>`. Pass either the fragment's name or its ID; find the ID on the fragment's page in the Viam app, or run `viam organizations list` and check your fragments.
 
 ## 4. Verify the deployment
 
