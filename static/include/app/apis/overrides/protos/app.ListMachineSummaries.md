@@ -1,1 +1,1 @@
-Lists machine summaries for an organization, optionally filtered by fragment IDs, location IDs, and limit.
+List summary information for the machines in an organization, optionally filtered by fragment or location.

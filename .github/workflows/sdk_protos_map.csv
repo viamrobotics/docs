@@ -397,7 +397,7 @@ app,GetRoverRentalRobots,,,,,
 app,GetRobotParts,,get_robot_parts,GetRobotParts,,getRobotParts
 app,GetRobotPart,,get_robot_part,GetRobotPart,,getRobotPart
 app,GetRobotPartLogs,,get_robot_part_logs,GetRobotPartLogs,,getRobotPartLogs
-app,GetRobotPartByNameAndLocation,,,,,getRobotPartByNameAndLocation
+app,GetRobotPartByNameAndLocation,,,GetRobotPartByNameAndLocation,,getRobotPartByNameAndLocation
 app,TailRobotPartLogs,,tail_robot_part_logs,TailRobotPartLogs,,tailRobotPartLogs
 app,GetRobotPartHistory,,get_robot_part_history,GetRobotPartHistory,,getRobotPartHistory
 app,UpdateRobotPart,,update_robot_part,UpdateRobotPart,,updateRobotPart
@@ -408,6 +408,7 @@ app,MarkPartForRestart,,mark_part_for_restart,MarkPartForRestart,,markPartForRes
 app,CreateRobotPartSecret,,create_robot_part_secret,CreateRobotPartSecret,,createRobotPartSecret
 app,DeleteRobotPartSecret,,delete_robot_part_secret,DeleteRobotPartSecret,,deleteRobotPartSecret
 app,ListRobots,,list_robots,ListRobots,,listRobots
+app,ListMachineSummaries,,,ListMachineSummaries,,
 app,NewRobot,,new_robot,NewRobot,,newRobot
 app,UpdateRobot,,update_robot,UpdateRobot,,updateRobot
 app,DeleteRobot,,delete_robot,DeleteRobot,,deleteRobot
@@ -433,6 +434,10 @@ app,CreateRegistryItem,,create_registry_item,CreateRegistryItem,,createRegistryI
 app,UpdateRegistryItem,,update_registry_item,UpdateRegistryItem,,updateRegistryItem
 app,ListRegistryItems,,list_registry_items,ListRegistryItems,,listRegistryItems
 app,DeleteRegistryItem,,delete_registry_item,DeleteRegistryItem,,deleteRegistryItem
+app,DeprecateRegistryItem,,deprecate_registry_item,,,deprecateRegistryItem
+app,UndeprecateRegistryItem,,undeprecate_registry_item,,,undeprecateRegistryItem
+app,DeprecateRegistryItemVersion,,deprecate_registry_item_version,,,deprecateRegistryItemVersion
+app,UndeprecateRegistryItemVersion,,undeprecate_registry_item_version,,,undeprecateRegistryItemVersion
 app,CreateModule,,create_module,CreateModule,,createModule
 app,UpdateModule,,update_module,UpdateModule,,updateModule
 app,UploadModuleFile,,upload_module_file,UploadModuleFile,,
