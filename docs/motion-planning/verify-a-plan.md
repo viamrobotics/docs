@@ -1,7 +1,7 @@
 ---
-linkTitle: "Verify a plan"
+linkTitle: "Verify a plan before running it"
 title: "Verify a motion plan without executing it"
-weight: 60
+weight: 82
 layout: "docs"
 type: "docs"
 description: "Use armplanning.PlanMotion to compute and inspect a trajectory before the arm moves, and learn how to get the same plan over the motion service API."
@@ -184,5 +184,5 @@ and the motion service is all you have.
   plan one trajectory through an ordered list of goals.
 - [How motion planning works](/motion-planning/how-planning-works/):
   why a plan can be infeasible and what to adjust.
-- [Debug motion with the CLI](/motion-planning/debug-motion-with-cli/):
+- [Debug motion with the CLI](/motion-planning/debug-motion-plan/):
   inspect frames and poses from the command line.

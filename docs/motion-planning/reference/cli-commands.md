@@ -150,11 +150,11 @@ position.
 - **Quick reachability test**: run `get-pose` to read the current pose, then run `set-pose` with a small offset to confirm the motion service can drive the arm. Start with small offsets; large ones risk collisions.
 
 For a step-by-step debugging workflow using these commands, see
-[Debug motion with the CLI](/motion-planning/debug-motion-with-cli/).
+[Debug motion with the CLI](/motion-planning/debug-motion-plan/).
 
 ## What's next
 
-- [Debug motion with the CLI](/motion-planning/debug-motion-with-cli/):
+- [Debug motion with the CLI](/motion-planning/debug-motion-plan/):
   step-by-step debugging using these commands.
 - [Frame system](/motion-planning/frame-system/): the concept the CLI
   inspects.

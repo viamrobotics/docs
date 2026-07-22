@@ -1,7 +1,7 @@
 ---
 linkTitle: "How planning works"
 title: "How motion planning works"
-weight: 90
+weight: 80
 layout: "docs"
 type: "docs"
 description: "How Viam plans arm motion: the direct joint-space path it tries first, the cBiRRT fallback, and what to try when planning fails."
