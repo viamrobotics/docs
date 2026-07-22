@@ -145,6 +145,12 @@ viam module upload --version=1.0.0 --platform=linux/arm64 dist/archive-arm64.tar
 
 For CI/CD workflows, use cloud builds to compile your module on Viam's build infrastructure.
 
+{{% alert title="C++ build environment" color="note" %}}
+On Linux, cloud builds compile C++ modules in a Debian-based environment, the same one that builds the Viam {{< glossary_tooltip term_id="rdk" text="RDK" >}}.
+To match this environment locally and add any libraries your module needs, install build dependencies with `apt-get` in your module's setup step.
+The [C++ example module](https://github.com/viamrobotics/module-example-cpp) follows this pattern in its `apt-setup.sh` script.
+{{% /alert %}}
+
 Start a cloud build:
 
 ```sh {class="command-line" data-prompt="$"}
