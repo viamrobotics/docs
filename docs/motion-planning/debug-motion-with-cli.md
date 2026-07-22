@@ -174,6 +174,37 @@ interpreted in an unexpected reference frame. Double-check the
 `reference_frame` on the target `PoseInFrame`: the same `(x, y, z)` in
 the arm's frame and in the world frame describes two different places.
 
+## Symptom: "Some frames are not linked to the world frame"
+
+The motion service refuses to plan if any frame in your configuration is
+not connected to the world frame through its parent chain. This happens
+when you rename a component without updating the `parent` field on
+components that were attached to it.
+
+### 1. Find the unlinked parts
+
+The error message lists which parts are unlinked. Run `print-config` to
+see each part's declared parent:
+
+```sh
+viam machines part motion print-config --part "my-machine-main"
+```
+
+Look for parts whose parent names do not match any other part in the
+output. A typo, a stale reference to a deleted or renamed component, or
+a circular reference all produce this error.
+
+### 2. Fix the parent references
+
+In the [Viam app](https://app.viam.com), open the **CONFIGURE** tab.
+Find each unlinked component's **Frame** configuration and correct the
+`parent` field so it references an existing component or `"world"`.
+
+### 3. Verify
+
+After saving the configuration, run `print-config` again and confirm
+every part traces back to the world frame. Then retry your motion call.
+
 ## Limitations
 
 - **Internal RPC is deprecated but the CLI output is not.**
