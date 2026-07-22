@@ -1912,6 +1912,9 @@ viam module build start --version "0.1.2"
 
 # initiate a cloud build for a private GitHub repo
 viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnopqrstuvwxyzABCD
+
+# build from local source without pushing to GitHub
+viam module build start --version "0.1.2" --from-source --platforms linux/amd64,linux/arm64 --wait
 ```
 
 <!-- prettier-ignore -->
@@ -1920,9 +1923,13 @@ viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnop
 | `--version` | The version of your module to set for this build. See [Using the `--version` argument](#using-the---version-argument). | **Required** |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 | `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | Optional |
-| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | Optional |
-| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | Optional |
+| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. Ignored when `--from-source` is set. | Optional |
+| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. Ignored when `--from-source` is set. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
+| `--from-source` | Package your local source directory and upload it to the cloud builder instead of building from a git ref. `.gitignore` is honored when packaging. | Optional |
+| `--path` | Path to the local source directory to upload. Only used with `--from-source`. Default: `.`. | Optional |
+| `--wait` | Wait for the build to finish. Surfaces failed-platform logs and returns a non-zero exit code on failure. Only used with `--from-source`. | Optional |
+| `--no-progress` | Hide the progress spinner. Only used with `--from-source`. | Optional |
 
 ### `module build local`
 

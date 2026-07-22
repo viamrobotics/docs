@@ -163,6 +163,12 @@ Build from a specific git ref:
 viam module build start --version=1.0.0 --ref=main
 ```
 
+Build from your local source directory without pushing to GitHub first:
+
+```sh {class="command-line" data-prompt="$"}
+viam module build start --version=1.0.0 --from-source --platforms=linux/amd64,linux/arm64 --wait
+```
+
 Build locally to test before pushing:
 
 ```sh {class="command-line" data-prompt="$"}
