@@ -22,6 +22,7 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
+| `--check-connection-interval` | For commands that connect to a machine: check the connection on this interval and close the client if a faulty connection cannot be repaired. Default: `0` (disabled). |
 | `--config`, `-c` | Load configuration from `FILE`. |
 | `--debug`, `--vvv` | Enable debug logging. Default: `false`. |
 | `--disable-profiles`, `--disable-profile` | Disable usage of [profiles](#profiles), falling back to default behavior. Default: `false`. |
