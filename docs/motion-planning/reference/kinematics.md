@@ -12,9 +12,9 @@ aliases:
 
 A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it.
 
-{{< alert title="Most arms handle this automatically" color="tip" >}}
+{{< alert title="Most arm modules handle this automatically" color="tip" >}}
 
-Most arm modules in the Viam registry include a kinematics file. For standard
+Most arm modules in the Viam Registry include a kinematics file. For standard
 commercial arms like the UR5e, xArm6, or Viam Arm, the module handles
 kinematics automatically; you do not need to provide or configure a
 kinematics file. Read this page if you are building a custom arm, using a
@@ -75,7 +75,7 @@ Viam supports two kinematics file formats at the API level:
 | **SVA** (Spatial Vector Algebra) | Viam's native JSON format                     | When writing a Viam kinematics file directly.                |
 | **URDF**                         | XML format used by ROS and many manufacturers | When the manufacturer ships a URDF and you want to reuse it. |
 
-`GetKinematics` returns one of these two formats. Viam's SVA schema also accepts Denavit-Hartenberg parameters inline, as a convenience when you are converting a textbook DH table; DH is not a third API-level format.
+`GetKinematics` returns one of these two formats. The same JSON file format also accepts Denavit-Hartenberg (DH) parameters: set `kinematic_param_type` to `"DH"` and supply a `dhParams` array, a convenience when you are converting a textbook DH table.
 
 Most registry arm modules use SVA internally. You rarely need to write a
 kinematics file from scratch unless you are building a custom arm.
@@ -93,7 +93,7 @@ kinematics file.
 
 ### 1. Check if your arm has a built-in kinematics file
 
-Most arm modules in the Viam registry ship with a kinematics file built into
+Most arm modules in the Viam Registry include a kinematics file built into
 the module. The module loads and applies the kinematics automatically when
 `viam-server` starts.
 
@@ -190,6 +190,9 @@ Each field:
 - **`links[].id`**: unique name for the link
 - **`links[].parent`**: the joint or frame this link attaches to
 - **`links[].translation`**: offset in mm from the parent's origin
+- **`links[].orientation`**: optional orientation of the link relative to its
+  parent, in any of the
+  [orientation formats](/motion-planning/reference/orientation-vectors/)
 - **`links[].geometry`**: optional collision shape (uses `type`, `x`/`y`/`z` for box, `r` for sphere/capsule/cylinder, `l` for capsule length or cylinder height)
 - **`joints[].id`**: unique name for the joint
 - **`joints[].type`**: `"revolute"` (rotates) or `"prismatic"` (slides)
@@ -197,12 +200,14 @@ Each field:
 - **`joints[].axis`**: the axis of rotation or translation (unit vector)
 - **`joints[].min`** / **`joints[].max`**: joint limits in degrees (revolute)
   or mm (prismatic)
+- **`joints[].geometry`**: optional collision shape, prismatic joints only
 - **`joints[].mimic`** (optional): make this joint follow another joint at a
   fixed multiplier and offset, for parallel-jaw grippers and other mechanically
   coupled axes. The mimic object takes `joint` (the source joint's `id`),
   `multiplier`, and `offset`; the joint's value is computed as
-  `multiplier * source_value + offset`. Mimic joints must not declare their own
-  `min`/`max`; the source joint's limits apply.
+  `multiplier * source_value + offset`. An omitted `multiplier` defaults to
+  1.0. Mimic joints must not declare their own `min`/`max`; the source joint's
+  limits apply.
 
 ### 3. Import a URDF file
 
