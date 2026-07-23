@@ -319,62 +319,22 @@ If you need to install `viam-server` without the web UI, you can run the followi
 
 {{< tabs >}}
 {{% tab name="Linux (Aarch64)" %}}
-{{< tabs >}}
-{{% tab name="Install manually" %}}
-
-```bash {class="line-numbers linkable-line-numbers"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server
-```
-
-Next, to make the `viam-server` executable and install as a system service, run the following command:
-
-```bash {class="line-numbers linkable-line-numbers"}
-chmod 755 viam-server && sudo ./viam-server --aix-install
-```
-
-The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Linux (x86_64)" %}}
 
-{{< tabs >}}
-{{% tab name="Install manually" %}}
-
-```bash {class="line-numbers linkable-line-numbers"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server
-```
-
-Next, to make the `viam-server` executable and install as a system service, run the following command:
-
-```bash {class="line-numbers linkable-line-numbers"}
-chmod 755 viam-server && sudo ./viam-server --aix-install
-```
-
-The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{% tab name="Install using viam-agent" %}}
-
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
-{{% /tab %}}
-{{< /tabs >}}
 {{% /tab %}}
 {{% tab name="macOS" %}}
 
