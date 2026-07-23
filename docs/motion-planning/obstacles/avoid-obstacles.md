@@ -9,12 +9,10 @@ aliases:
   - /motion-planning/motion-how-to/avoid-obstacles/
 ---
 
-A motion plan that ignores the table, the back wall, and the fixture on the
-bench next to the arm will collide on its way to the target. The motion service
-can plan around these obstacles, but only if you describe them in a
-`WorldState`. This guide walks through building a `WorldState` for a typical
-bench setup, running a plan against it, and verifying that the planner actually
-routes around each obstacle.
+The motion service plans around the table, the back wall, and the fixture on
+the bench when you describe them in a `WorldState`. This guide builds a
+`WorldState` for a typical bench setup, runs a plan against it, and verifies
+that the planner routes around each obstacle.
 
 This page covers dynamic `WorldState` obstacles passed at call time. For
 permanent fixtures (the table the arm is bolted to, the back wall, a
@@ -25,17 +23,18 @@ of re-sending it on every `Move`. See
 ## Prerequisites
 
 - An arm or gantry configured on a machine.
-- [Frame system](/motion-planning/frame-system/) configured.
-- [Obstacles concept](/motion-planning/obstacles/) understood.
+- Configure a [frame system](/motion-planning/frame-system/).
+- Read the [obstacles overview](/motion-planning/obstacles/).
 
 ## Steps
 
 ### 1. Describe your workspace obstacles
 
-A `WorldState` is a list of geometries expressed in a reference frame. Each
-geometry needs a shape (box, capsule, or sphere), a pose relative to the frame,
-and a label. Model every significant obstacle: surfaces the arm can press into,
-fixtures it can strike, and vertical obstructions like posts or walls.
+A `WorldState`'s `obstacles` field is a list of geometries expressed in a
+reference frame. Each geometry needs a shape (box, capsule, or sphere), a pose
+relative to the frame, and a label. Model every significant obstacle: surfaces
+the arm can press into, fixtures it can strike, and vertical obstructions such
+as posts or walls.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -78,6 +77,12 @@ world_state = WorldState(obstacles=[obstacles])
 {{% tab name="Go" %}}
 
 ```go
+import (
+    "github.com/golang/geo/r3"
+    "go.viam.com/rdk/referenceframe"
+    "go.viam.com/rdk/spatialmath"
+)
+
 obstacles := make([]spatialmath.Geometry, 0)
 
 table, _ := spatialmath.NewBox(
@@ -134,6 +139,10 @@ await motion_service.move(
 {{% tab name="Go" %}}
 
 ```go
+import "go.viam.com/rdk/services/motion"
+
+// worldState continues from step 1. motionService and destination follow
+// the same setup as Move an arm to a pose.
 _, err = motionService.Move(ctx, motion.MoveReq{
     ComponentName: "my-arm",
     Destination:   destination,
@@ -144,7 +153,7 @@ _, err = motionService.Move(ctx, motion.MoveReq{
 {{% /tab %}}
 {{< /tabs >}}
 
-### 3. Verify the planner is actually routing around obstacles
+### 3. Verify the planner routes around obstacles
 
 You need a concrete test that proves `WorldState` reached the planner.
 A before-and-after with an obstacle placed between start and target works:
@@ -158,4 +167,4 @@ the `WorldState` is not reaching the planner.
 
 - [Move an arm to a target pose](/motion-planning/move-an-arm/move-to-pose/)
 - [Pick an object](/motion-planning/move-an-arm/pick-an-object/)
-- [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/) — when the planner rejects expected contact
+- [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/): when the planner rejects expected contact

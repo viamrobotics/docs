@@ -56,10 +56,11 @@ await motion_service.move(
 ### 2. Descend to the placement surface
 
 The descent pose puts the object where you want it to end up.
-`SURFACE_HEIGHT` is the world-frame z of the placement surface plus half the
-object's height (roughly: you want the bottom of the object touching the
-surface at release). For a known surface, measure once and hard-code it. For
-a detected surface, set it from the vision result.
+`SURFACE_HEIGHT` is the world-frame z of the placement surface plus the
+distance from the arm's end effector to the bottom of the held object (the
+grasp offset plus the part of the object below the grasp), so the object's
+bottom touches the surface at release. For a known surface, measure once and
+hard-code it. For a detected surface, set it from the vision result.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -68,7 +69,7 @@ a detected surface, set it from the vision result.
 # Place: at the surface.
 # Set z to the height of the placement surface in your workspace.
 # For example, if you detected the target location, use its z coordinate.
-SURFACE_HEIGHT = 50  # mm: world-frame z of the surface plus half the object's height
+SURFACE_HEIGHT = 50  # mm: surface z plus the end-effector-to-object-bottom distance
 place_pose = PoseInFrame(
     reference_frame="world",
     pose=Pose(
@@ -129,8 +130,8 @@ print("Retreated from placement")
   and y as the place pose and only the z raised.
 - **Update `WorldState` after release.** The placed object is now a static
   obstacle. If the next motion passes near the placement location, add a
-  `Geometry` matching the placed object to `WorldState.obstacles` so the
-  planner routes around it.
+  `Geometry` matching the placed object to a `GeometriesInFrame` entry in
+  `WorldState.obstacles` so the planner routes around it.
 
 ## What's next
 
