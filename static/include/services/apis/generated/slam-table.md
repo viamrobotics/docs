@@ -9,5 +9,6 @@
 | [`PointCloudMapFull`](/reference/apis/services/slam/#pointcloudmapfull) | `PointCloudMapFull` concatenates the streaming responses from `PointCloudMap` into a full point cloud. |
 | [`Reconfigure`](/reference/apis/services/slam/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/services/slam/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetStatus`](/reference/apis/services/slam/#getstatus) | Get the current status of the SLAM service as a map of key-value pairs describing its state. |
 | [`GetResourceName`](/reference/apis/services/slam/#getresourcename) | Get the `ResourceName` for this instance of the SLAM service. |
 | [`Close`](/reference/apis/services/slam/#close) | Safely shut down the resource and prevent further use. |

@@ -128,10 +128,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const controller = new VIAM.InputControllerClient(
-  machine,
-  'my_controller'
-);
+const controller = new VIAM.InputControllerClient(machine, 'my_controller');
 
 // Get the most recent Event for each Control
 const recentEvents = await controller.getEvents();
@@ -202,7 +199,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `event` ([PlainMessage](https://ts.viam.dev/types/PlainMessage.html)) (required)
+- `event` ([InputControllerEvent](https://ts.viam.dev/types/InputControllerEvent.html)) (required)
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -213,10 +210,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const controller = new VIAM.InputControllerClient(
-  machine,
-  'my_controller'
-);
+const controller = new VIAM.InputControllerClient(machine, 'my_controller');
 
 // Create a "Button is Pressed" event for the control BUTTON_START
 const buttonPressEvent = new VIAM.InputControllerEvent({
@@ -465,6 +459,67 @@ result, err := myInputController.DoCommand(context.Background(), command)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the input controller as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await component.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/input/client/index.html#viam.components.input.client.ControllerClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myInputController, err := input.FromProvider(machine, "my_input_controller")
+
+status, err := myInputController.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/InputControllerClient.html#getstatus).
 
 {{% /tab %}}
 {{< /tabs >}}

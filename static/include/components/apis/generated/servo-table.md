@@ -8,5 +8,6 @@
 | [`GetGeometries`](/reference/apis/components/servo/#getgeometries) | Get all the geometries associated with the servo in its current configuration, in the frame of the servo. |  |
 | [`Reconfigure`](/reference/apis/components/servo/#reconfigure) | Reconfigure this resource. |  |
 | [`DoCommand`](/reference/apis/components/servo/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetStatus`](/reference/apis/components/servo/#getstatus) | Get the current status of the servo as a map of key-value pairs describing its state. |  |
 | [`GetResourceName`](/reference/apis/components/servo/#getresourcename) | Get the `ResourceName` for this servo. |  |
 | [`Close`](/reference/apis/components/servo/#close) | Safely shut down the resource and prevent further use. |  |

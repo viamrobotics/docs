@@ -10,6 +10,7 @@
 | [`Stop`](/reference/apis/components/gantry/#stop) | Stop all motion of the gantry. |
 | [`Reconfigure`](/reference/apis/components/gantry/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/components/gantry/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetStatus`](/reference/apis/components/gantry/#getstatus) | Get the current status of the gantry as a map of key-value pairs describing its state. |
 | [`GetKinematics`](/reference/apis/components/gantry/#getkinematics) | Get the kinematics information associated with the gantry. |
 | [`GetResourceName`](/reference/apis/components/gantry/#getresourcename) | Get the `ResourceName` for this gantry. |
 | [`Close`](/reference/apis/components/gantry/#close) | Safely shut down the resource and prevent further use. |

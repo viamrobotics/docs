@@ -66,8 +66,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `positionType` ([PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or
-  degrees).
+- `positionType` ([PositionType](https://ts.viam.dev/enums/encoderApi.PositionType.html)) (optional): The type of position the encoder returns (ticks or degrees).
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)
 
@@ -82,7 +81,7 @@ const encoder = new VIAM.EncoderClient(machine, 'my_encoder');
 
 // Get the position of the encoder in ticks
 const [position, posType] = await encoder.getPosition(
-  EncoderPositionType.POSITION_TYPE_TICKS_COUNT
+  EncoderPositionType.POSITION_TYPE_TICKS_COUNT,
 );
 console.log('The encoder position is currently', position, posType);
 ```
@@ -368,8 +367,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -387,12 +386,71 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#docommand).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the encoder as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await component.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/encoder/client/index.html#viam.components.encoder.client.EncoderClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myEncoder, err := encoder.FromProvider(machine, "my_encoder")
+
+status, err := myEncoder.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/EncoderClient.html#getstatus).
 
 {{% /tab %}}
 {{< /tabs >}}

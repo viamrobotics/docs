@@ -5,5 +5,6 @@
 | [`Metadata`](/reference/apis/services/ml/#metadata) | Get the metadata: name, data type, expected tensor/array shape, inputs, and outputs associated with the ML model. |
 | [`Reconfigure`](/reference/apis/services/ml/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/services/ml/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetStatus`](/reference/apis/services/ml/#getstatus) | Get the current status of the ML model service as a map of key-value pairs describing its state. |
 | [`GetResourceName`](/reference/apis/services/ml/#getresourcename) | Get the `ResourceName` for this instance of the ML model service. |
 | [`Close`](/reference/apis/services/ml/#close) | Safely shut down the resource and prevent further use. |

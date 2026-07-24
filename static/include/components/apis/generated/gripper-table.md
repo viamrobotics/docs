@@ -11,6 +11,7 @@
 | [`GoToInputs`](/reference/apis/components/gripper/#gotoinputs) | Move the gripper to the specified joint input values. |
 | [`Reconfigure`](/reference/apis/components/gripper/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/components/gripper/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetStatus`](/reference/apis/components/gripper/#getstatus) | Get the current status of the gripper as a map of key-value pairs describing its state. |
 | [`GetKinematics`](/reference/apis/components/gripper/#getkinematics) | Get the kinematics information associated with the gripper as the format and byte contents of the kinematics file. |
 | [`GetResourceName`](/reference/apis/components/gripper/#getresourcename) | Get the `ResourceName` for this gripper. |
 | [`Close`](/reference/apis/components/gripper/#close) | Safely shut down the resource and prevent further use. |

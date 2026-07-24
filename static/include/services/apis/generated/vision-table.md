@@ -9,6 +9,7 @@
 | [`CaptureAllFromCamera`](/reference/apis/services/vision/#captureallfromcamera) | Get the next image, detections, classifications, and objects all together, given a camera name. |
 | [`Reconfigure`](/reference/apis/services/vision/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/services/vision/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetStatus`](/reference/apis/services/vision/#getstatus) | Get the current status of the vision service as a map of key-value pairs describing its state. |
 | [`GetResourceName`](/reference/apis/services/vision/#getresourcename) | Get the `ResourceName` for this instance of the vision service. |
 | [`GetProperties`](/reference/apis/services/vision/#getproperties) | Fetch information about which vision methods a given vision service supports. |
 | [`Close`](/reference/apis/services/vision/#close) | Safely shut down the resource and prevent further use. |

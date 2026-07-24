@@ -14,7 +14,7 @@ Multiple images returned from `GetImages()` do not represent a time series of im
 
 **Parameters:**
 
-- `filter_source_names` (Sequence[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (optional): The filter_source_names parameter can be used to filter only the images from the specified source names. When unspecified, all images are returned.
+- `filter_source_names` ([Sequence[str]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)) (optional): The filter_source_names parameter can be used to filter only the images from the specified source names. When unspecified, all images are returned.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -65,14 +65,14 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `filterSourceNames` (string) (optional): A list of source names to filter the images by.
-  If empty or undefined, all images will be returned.
+- `filterSourceNames` (string) (optional): A list of source names to filter the images by. If empty or
+  undefined, all images will be returned.
 - `extra` (None) (optional): Extra parameters to pass to the camera.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
 
-- (Promise< { images: { image: Uint8Array; mimeType: string; sourceName: string }[]; metadata: ResponseMetadata; }, >)
+- (Promise< { images: { image: Uint8Array<ArrayBufferLike>; mimeType: string; sourceName: string; }[]; metadata: ResponseMetadata; }, >)
 
 **Example:**
 
@@ -178,7 +178,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array<ArrayBufferLike>>)
 
 **Example:**
 
@@ -355,8 +355,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -374,9 +374,7 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#docommand).
@@ -405,6 +403,80 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### GetStatus
+
+Get the current status of the camera as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Dict[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]): :   The status of the component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await component.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/camera/client/index.html#viam.components.camera.client.CameraClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myCamera, err := camera.FromProvider(machine, "my_camera")
+
+status, err := myCamera.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/CameraClient.html#getstatus).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/getStatus.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetGeometries
 
 Get all the geometries associated with the camera in its current configuration, in the [frame](/reference/services/frame-system/) of the camera.
@@ -420,7 +492,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- ([Sequence[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/gen/app/data/v1/data_pb2/index.html#viam.gen.app.data.v1.data_pb2.Sequence)): :   The geometries associated with the Component.
 
 **Example:**
 

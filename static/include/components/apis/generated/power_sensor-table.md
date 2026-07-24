@@ -7,5 +7,6 @@
 | [`GetReadings`](/reference/apis/components/power-sensor/#getreadings) | Get the measurements or readings that this power sensor provides. |
 | [`Reconfigure`](/reference/apis/components/power-sensor/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/components/power-sensor/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetStatus`](/reference/apis/components/power-sensor/#getstatus) | Get the current status of the power sensor as a map of key-value pairs describing its state. |
 | [`GetResourceName`](/reference/apis/components/power-sensor/#getresourcename) | Get the `ResourceName` for this power sensor. |
 | [`Close`](/reference/apis/components/power-sensor/#close) | Safely shut down the resource and prevent further use. |
