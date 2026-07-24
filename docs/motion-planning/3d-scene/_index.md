@@ -44,6 +44,7 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **AI Scene Builder**: opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/motion-planning/3d-scene/edit-frames/#edit-frames-with-ai).
+- **Import from data** (database icon): opens a dialog for importing captured motion plans from the data manager. Select plans from the list, then replay them in the scene. Plans are identified by the `motion-plan` tag applied during data capture.
 - **Logs**: shows a count badge for errors/warnings from the scene renderer.
 - **Settings** (gear icon): opens the Settings panel.
 
