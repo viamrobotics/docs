@@ -365,7 +365,9 @@ class GoParser:
                                     self.go_methods[type][resource]['Readings']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
                             ## Similarly, if the resource being considered inherits from framesystem.InputEnabled (Arm, for example),
-                            ## then add the one inherited method manually: Kinematics():
+                            ## then add its three inherited methods manually: Kinematics(), CurrentInputs(), and GoToInputs().
+                            ## These are documented on the framesystem.InputEnabled interface page, not the resource's own
+                            ## pkg.go.dev page, so the inline method scraper above does not find them.
                             if '\tframesystem.InputEnabled' in resource_interface.text:
                                 self.go_methods[type][resource]['Kinematics'] = {'proto': 'GetKinematics', \
                                     'description': 'Kinematics returns the kinematics model of the resource.', \
@@ -374,6 +376,14 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Kinematics example:" in code_sample_tag.text)
                                 if code_sample:
                                     self.go_methods[type][resource]['Kinematics']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                self.go_methods[type][resource]['CurrentInputs'] = {'proto': 'GetCurrentInputs', \
+                                    'description': 'CurrentInputs returns the current inputs of the resource.', \
+                                    'usage': 'CurrentInputs(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/go.viam.com/rdk/referenceframe#Input">[]referenceframe.Input</a>, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
+                                self.go_methods[type][resource]['GoToInputs'] = {'proto': 'GoToInputs', \
+                                    'description': 'GoToInputs moves the resource to the specified inputs, in order.', \
+                                    'usage': 'GoToInputs(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, inputSteps ...<a href="/go.viam.com/rdk/referenceframe#Input">[]referenceframe.Input</a>) <a href="/builtin#error">error</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
 
                 ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
                 if resource == 'slam':
