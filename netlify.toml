@@ -293,8 +293,13 @@
   status = 301
 
 [[redirects]]
+  from = "/dev/reference/apis/components/encode/*"
+  to = "/reference/apis/components/encoder/:splat"
+  status = 301
+
+[[redirects]]
   from = "/dev/reference/apis/*"
-  to = "/reference/apis/"
+  to = "/reference/apis/:splat"
   status = 301
 
 [[redirects]]
@@ -548,6 +553,24 @@
   from = "/mobility/slam/*"
   to = "/motion-planning/"
   status = 301
+
+[[redirects]]
+  from = "/reference/apis/services/slam/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/services/slam/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/appendix/apis/services/slam/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
 
 # Old IA paths from previous site versions
 [[redirects]]
