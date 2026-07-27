@@ -328,6 +328,12 @@
   status = 301
 
 [[redirects]]
+  from = "/reference/services/slam/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/reference/services/*"
   to = "/reference/"
   status = 301
@@ -556,12 +562,6 @@
 
 [[redirects]]
   from = "/reference/apis/services/slam/*"
-  to = "/motion-planning/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/reference/services/slam/*"
   to = "/motion-planning/"
   status = 301
   force = true
