@@ -298,6 +298,18 @@
   status = 301
 
 [[redirects]]
+  from = "/dev/reference/apis/services/slam/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/dev/reference/apis/services/SLAM/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/dev/reference/apis/*"
   to = "/reference/apis/:splat"
   status = 301
@@ -562,6 +574,12 @@
 
 [[redirects]]
   from = "/reference/apis/services/slam/*"
+  to = "/motion-planning/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/reference/apis/services/SLAM/*"
   to = "/motion-planning/"
   status = 301
   force = true
