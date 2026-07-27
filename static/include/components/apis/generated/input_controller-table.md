@@ -8,5 +8,6 @@
 | [`RegisterControlCallback`](/reference/apis/components/input-controller/#registercontrolcallback) | Defines a callback function to execute whenever one of the EventTypes selected occurs on the given Control. |
 | [`Reconfigure`](/reference/apis/components/input-controller/#reconfigure) | Reconfigure this resource. |
 | [`DoCommand`](/reference/apis/components/input-controller/#docommand) | Execute model-specific commands that are not otherwise defined by the component API. |
+| [`GetStatus`](/reference/apis/components/input-controller/#getstatus) | Get the current status of the input controller as a map of key-value pairs describing its state. |
 | [`GetResourceName`](/reference/apis/components/input-controller/#getresourcename) | Get the `ResourceName` for this input controller. |
 | [`Close`](/reference/apis/components/input-controller/#close) | Safely shut down the resource and prevent further use. |
