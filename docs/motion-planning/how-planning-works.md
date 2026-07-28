@@ -132,21 +132,29 @@ and may cause execution-time errors even after planning succeeds.
 The planner returns an error if it cannot find a path within the
 planning timeout (300 seconds by default). Common causes:
 
-1. **Constraints are too tight.** A linear or orientation tolerance below
+1. **Frames are not linked to the world frame.** If any configured frame
+   has a parent that does not exist or creates an orphaned subtree
+   disconnected from the world frame, the motion service returns an
+   error listing the unlinked parts. Fix the frame configuration so
+   every component traces back to the world frame through its parent
+   chain. This commonly happens when you rename a component (such as an
+   arm) without updating the `parent` field on components attached to
+   it (such as a gripper or camera).
+2. **Constraints are too tight.** A linear or orientation tolerance below
    a few millimeters or a few degrees can make the constrained space too
    small for the algorithm to explore. Start with larger tolerances and
    tighten only as needed.
-2. **Obstacles leave no room.** Oversized obstacle geometries close off
+3. **Obstacles leave no room.** Oversized obstacle geometries close off
    valid corridors. Try smaller geometries or remove temporarily to
    isolate the problem.
-3. **Joint limits are more restrictive than you expect.** Check the
+4. **Joint limits are more restrictive than you expect.** Check the
    kinematics file: the planner only explores configurations inside the
    declared limits.
-4. **The destination is inside an obstacle or outside the arm's reach.**
+5. **The destination is inside an obstacle or outside the arm's reach.**
    Use `GetEndPosition` on the arm to read its current pose, then try a
    simpler target close to the current position to isolate whether the
    planner works at all.
-5. **Multiple IK solutions exist but the one the planner picks is bad.**
+6. **Multiple IK solutions exist but the one the planner picks is bad.**
    The planner prefers the IK solution with the least joint travel, but
    when the fallback runs, cBiRRT returns the first feasible path it
    finds. For some Cartesian targets it routes through a wrist flip or
