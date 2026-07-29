@@ -16,10 +16,13 @@ immediately visible in 3D.
 
 The **3D SCENE** tab can import motion plans captured by the data
 manager, letting you replay the path the planner found. To import a
-plan, click **Import from data** in the toolbar and select a plan from
-the list. For a purely static inspection of your frame system without
-a captured plan, the tab also works as an inspector of the configured
-frame positions and live component poses.
+plan, click **Motion Plan Replayer** in the toolbar. Upload a plan as
+JSON, or import a plan from captured data. Plans are identified by the
+`motion-plan` tag applied during data capture.
+
+These debugging steps describe an inspection of your frame system
+using the configured frame system and live component poses, but
+without a captured plan.
 
 ## Prerequisites
 
