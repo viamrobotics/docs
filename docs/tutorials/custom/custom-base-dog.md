@@ -370,9 +370,19 @@ sudo chmod +x run.sh
 You need to tell your robot how to access the module you created.
 
 Navigate to your machine's **CONFIGURE** tab.
-Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
-Name your module `my-custom-base`.
-Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
+Switch to **JSON** mode and add a `modules` entry for your module:
+
+```json
+"modules": [
+  {
+    "name": "my-custom-base",
+    "executable_path": "/home/fido/robotdog/run.sh",
+    "type": "local"
+  }
+]
+```
+
+Replace the `executable_path` with the absolute path to your module's executable file.
 Click **Save** at the top right of the page to save your config.
 
 ![Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
@@ -389,11 +399,16 @@ Click **Save**.
 
 ### Configure the base
 
-Now, add the local base component from the local module.
-Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local component**.
-Select `base` as the **Type**.
-Name your component `quadruped`.
-For the colon-delimited triplet, select or enter `viamlabs:base:robotdog`.
+Now, add the base component from the module.
+In the **JSON** editor, add an entry to the `components` array:
+
+```json
+{
+  "name": "quadruped",
+  "api": "rdk:component:base",
+  "model": "viamlabs:base:robotdog"
+}
+```
 
 Then, in the configuration panel that appears for the local base, copy and paste the follow attributes:
 

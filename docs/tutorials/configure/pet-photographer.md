@@ -798,11 +798,22 @@ Note the absolute path to your module’s executable for use in the next section
 Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine as a local module:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
+1. Switch to **JSON** mode.
+1. Add a `modules` entry with the module name and executable path. For example, add the following inside the top-level JSON object:
 
-1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/build-modules/write-a-driver-module/#3-test-locally), then click **Create**.
-   - The name must use only lowercase characters.
-1. Then, click the **Save** button in the top right corner of the page to save your changes.
+   ```json
+   "modules": [
+     {
+       "name": "colorfilter",
+       "executable_path": "/path/to/colorfilter/run.sh",
+       "type": "local"
+     }
+   ]
+   ```
+
+   Replace `/path/to/colorfilter/run.sh` with the absolute path to your module's executable.
+
+1. Click **Save** in the top right corner of the page to save your changes.
 
 ![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
 
@@ -928,17 +939,17 @@ If you haven't already, add a [camera](/reference/components/camera/) component 
 
 ### Add the color filter component
 
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Local module**, then **Local component**.
-1. On the **Create** menu:
+1. In the **JSON** editor on the **CONFIGURE** tab, add an entry to the `components` array for the color filter camera.
+   Use the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet" >}} `example:camera:colorfilter` and choose a name for this instance that is different from the module name:
 
-   1. Select the `camera` type from the dropdown menu.
-   1. Select or enter `example:camera:colorfilter`, the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
-   1. Provide a name for this instance of your modular resource.
-      This name must be different from the module name.
+   ```json
+   {
+     "name": "my-color-filter",
+     "api": "rdk:component:camera",
+     "model": "example:camera:colorfilter"
+   }
+   ```
 
-      {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
-
-1. Click **Create** to create the modular resource.
 1. In the resulting module configuration pane, copy the following JSON configuration into the attributes field:
 
    ```json {class="line-numbers linkable-line-numbers"}

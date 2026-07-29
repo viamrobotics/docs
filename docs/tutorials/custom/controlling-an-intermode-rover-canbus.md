@@ -290,28 +290,29 @@ Go to the [machine you added during setup](#machine-setup).
 To make your module accessible to `viam-server`, add it as a local module:
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
-1. Enter a **Name** for this instance of your modular resource, for example `my-custom-base-module`.
-1. Enter the module's [executable path](/build-modules/write-a-driver-module/#3-test-locally).
-   This path must be the absolute path to the executable on your machine's filesystem.
-   Add the path to where you downloaded the [compiled binary](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/intermode-model).
-1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
+1. Switch to **JSON** mode.
+1. Add a `modules` entry with the module name and the absolute path to the [compiled binary](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/intermode-model) you downloaded, and a `components` entry for the base:
 
-Now that `viam-server` can find the module, you can add the base component it provides for your Intermode base:
+   ```json
+   "modules": [
+     {
+       "name": "my-custom-base-module",
+       "executable_path": "/path/to/intermode-model",
+       "type": "local"
+     }
+   ],
+   "components": [
+     {
+       "name": "base-1",
+       "api": "rdk:component:base",
+       "model": "viamlabs:tutorial:intermode",
+       "depends_on": []
+     }
+   ]
+   ```
 
-1. On the **CONFIGURE** tab of your machine's page:
+   Replace `/path/to/intermode-model` with the absolute path to where you downloaded the compiled binary.
 
-   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
-   - Then, select **Local component**.
-
-1. On the **Create** menu for a **Local component**:
-
-   - Select the type of modular resource provided by your module: [base](/reference/components/base/), from the dropdown menu.
-   - Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}: `viamlabs:tutorial:intermode`.
-   - Enter a name for this instance of your base, for example `base-1`.
-     This name must be different from the module name.
-
-1. Click **Create** to create the modular resource provided by the local module.
 1. Click **Save** in the top right corner.
 
 For more information on modules and how they work, see the [Create a module](/build-modules/write-a-driver-module/).
