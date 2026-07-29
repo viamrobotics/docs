@@ -1282,19 +1282,31 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 
 ### `machines part tunnel`
 
-Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/fleet/system-settings/).
+Tunnel connections from a local port to a destination port on a machine part.
+
+By default, the tunnel resolves the machine and authenticates through app.viam.com.
+To tunnel directly without internet access, provide all three of `--address`, `--key-id`, and `--key`.
+
+If the destination port is not already listed in the machine's `traffic_tunnel_endpoints` configuration, the CLI attempts to add it automatically. See [Configure tunneling](/fleet/system-settings/#configure-networking-settings-for-tunneling).
 
 ```sh {class="command-line" data-prompt="$"}
-# tunnel connections to the specified port on a machine part
-viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
+# tunnel through app.viam.com (default)
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222
+
+# tunnel directly to a machine without internet
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222 \
+  --address=my-machine.local:8080 --key-id=<key-id> --key=<key-value>
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--destination-port` | The port on a machine part to tunnel to. | **Required** |
+| `--destination-port` | The port on the machine part to tunnel to. | **Required** |
 | `--local-port` | The local port from which to tunnel. | **Required** |
+| `--address` | Machine FQDN to dial directly. Requires `--key-id` and `--key`. | Optional |
+| `--key-id` | ID of the machine API key. Requires `--address` and `--key`. | Optional |
+| `--key` | Value of the machine API key. Requires `--address` and `--key-id`. | Optional |
 
 ### `machines part get-ftdc`
 
