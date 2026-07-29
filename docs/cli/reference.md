@@ -1649,6 +1649,7 @@ viam module build logs --build-id=<build-id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 viam module download [command options]
+viam module versions [--id=<module-id>] [--latest] [--count=<n>]
 viam module local-app-testing --app-url http://localhost:3000
 ```
 
@@ -1993,6 +1994,28 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--version` | The version of the module to download. Defaults to `latest`. | Optional |
 | `--platform` | The architecture of the module binary to download. See [Using the `--platform` argument](#using-the---platform-argument). | Optional |
 | `--destination` | Output directory for downloaded package. Default: `.`. | Optional |
+
+### `module versions`
+
+List a module's released versions and their platforms.
+
+```sh {class="command-line" data-prompt="$"}
+# list all released versions, newest first
+viam module versions --id=acme:my-module
+
+# show only the latest version for each platform
+viam module versions --id=acme:my-module --latest
+
+# show the 5 newest versions
+viam module versions --id=acme:my-module --count=5
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). If omitted, reads the module ID from `meta.json` in the current directory. | Optional |
+| `--latest` | Print the latest version for each platform instead of the full list. | Optional |
+| `--count` | Show only the N newest versions. Default: all versions. | Optional |
 
 ### `module local-app-testing`
 
