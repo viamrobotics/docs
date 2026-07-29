@@ -112,14 +112,14 @@ Control automatic operating system package updates on the machine.
 
 In the machine settings card, open **Settings** and expand **System**. Set `os_auto_upgrade_type`:
 
-| Value                                                       | Description                                                                                                                                  |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `"all"`                                                     | Install all available OS package updates using the OS's built-in upgrade schedule. Debian only.                                              |
-| `"security"`                                                | Install security updates only using the OS's built-in upgrade schedule. Debian only.                                                         |
-| <code style="white-space: nowrap">"managed-all"</code>      | Install all available OS package updates on a schedule controlled by `viam-agent`. Works on apt-based, RPM-based, and Windows distributions. |
-| <code style="white-space: nowrap">"managed-security"</code> | Install security updates only on a schedule controlled by `viam-agent`. Works on apt-based, RPM-based, and Windows distributions.            |
-| `"disable"`                                                 | Disable automatic OS updates.                                                                                                                |
-| `""` (empty)                                                | Do not change the system's current update settings. This is the default.                                                                     |
+| Value                                                       | Description                                                                                                                                            |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `"all"`                                                     | Install all available OS package updates using the OS's built-in upgrade schedule. Debian only.                                                        |
+| `"security"`                                                | Install security updates only using the OS's built-in upgrade schedule. Debian only.                                                                   |
+| <code style="white-space: nowrap">"managed-all"</code>      | Install all available OS package updates on a schedule controlled by `viam-agent`. Works on apt-based, RPM-based, and Windows distributions.           |
+| <code style="white-space: nowrap">"managed-security"</code> | Install security updates only on a schedule controlled by `viam-agent`. Works on apt-based, RPM-based, and Windows distributions. This is the default. |
+| `"disable"`                                                 | Disable automatic OS updates.                                                                                                                          |
+| `""` (empty)                                                | Treated as `"managed-security"`. To disable automatic updates, set `"disable"` explicitly.                                                             |
 
 Managed modes work on apt-based distributions (Debian, Ubuntu, Raspberry Pi OS), RPM-based distributions (Fedora, RHEL 7+, Rocky Linux, AlmaLinux, CentOS 7), and Windows (using the PSWindowsUpdate PowerShell module).
 
