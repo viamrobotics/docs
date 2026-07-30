@@ -12,7 +12,17 @@ brew install viam
 {{% /tab %}}
 {{% tab name="Linux aarch64" %}}
 
-To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
+On Debian-based distributions (Debian, Ubuntu, Raspberry Pi OS 64-bit), install the Viam CLI from Viam's apt repository so `apt upgrade` keeps it up to date:
+
+```sh {class="command-line" data-prompt="$"}
+curl -fsSL https://us-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/viam.gpg
+echo "deb [signed-by=/usr/share/keyrings/viam.gpg] https://us-apt.pkg.dev/projects/static-file-server-310021 viam main" | sudo tee /etc/apt/sources.list.d/viam.list
+sudo apt update && sudo apt install viam-cli
+```
+
+The package is named `viam-cli`; the installed command is `viam` (a `viam-cli` alias also works).
+
+On other distributions, download the binary directly:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo curl --compressed -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
@@ -22,19 +32,21 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+On Debian-based distributions (Debian, Ubuntu), install the Viam CLI from Viam's apt repository so `apt upgrade` keeps it up to date:
+
+```sh {class="command-line" data-prompt="$"}
+curl -fsSL https://us-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/viam.gpg
+echo "deb [signed-by=/usr/share/keyrings/viam.gpg] https://us-apt.pkg.dev/projects/static-file-server-310021 viam main" | sudo tee /etc/apt/sources.list.d/viam.list
+sudo apt update && sudo apt install viam-cli
+```
+
+The package is named `viam-cli`; the installed command is `viam` (a `viam-cli` alias also works).
+
+On other distributions, download the binary directly:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo curl --compressed -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
 sudo chmod a+rx /usr/local/bin/viam
-```
-
-You can also install the Viam CLI using [brew](https://brew.sh/) on Linux `amd64` (Intel `x86_64`):
-
-```sh {class="command-line" data-prompt="$"}
-brew tap viamrobotics/brews
-brew trust viamrobotics/brews
-brew install viam
 ```
 
 {{% /tab %}}
