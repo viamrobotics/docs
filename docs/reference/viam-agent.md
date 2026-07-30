@@ -82,10 +82,10 @@ In the machine settings card, open **Settings** and expand **System**:
 
 ### OS package updates
 
-| Field                               | Type   | Default              | Description                                                                                                                                                                                                              |
-| ----------------------------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `os_auto_upgrade_type`              | string | `"managed-security"` | Controls automatic OS package updates. Accepts `"all"`, `"security"`, `"managed-all"`, `"managed-security"`, `"disable"`, or `""`. If empty or missing, defaults to `"managed-security"`. The modes are described below. |
-| `os_managed_upgrade_interval_hours` | float  | `24`                 | How often `viam-agent` checks for and installs packages, in hours. Minimum value: `1`. Only applies when `os_auto_upgrade_type` is `"managed-all"` or `"managed-security"`.                                              |
+| Field                               | Type   | Default | Description                                                                                                                                                                           |
+| ----------------------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `os_auto_upgrade_type`              | string | `""`    | Controls automatic OS package updates. Accepts `"all"`, `"security"`, `"managed-all"`, `"managed-security"`, `"disable"`, or `""` (leave OS defaults). The modes are described below. |
+| `os_managed_upgrade_interval_hours` | float  | `24`    | How often `viam-agent` checks for and installs packages, in hours. Minimum value: `1`. Only applies when `os_auto_upgrade_type` is `"managed-all"` or `"managed-security"`.           |
 
 The `"all"` and `"security"` modes delegate scheduling to the operating system's built-in upgrade timer (`unattended-upgrades` on Debian). The `"managed-all"` and `"managed-security"` modes let `viam-agent` control the upgrade schedule directly, which also enables upgrade support on Ubuntu and RPM-based distributions (Fedora, RHEL, Rocky Linux, AlmaLinux, CentOS).
 
