@@ -20,7 +20,7 @@ echo "deb [signed-by=/usr/share/keyrings/viam.gpg] https://us-apt.pkg.dev/projec
 sudo apt update && sudo apt install viam-cli
 ```
 
-The package is named `viam-cli`; the installed command is `viam`.
+The package is named `viam-cli`; the installed command is `viam` (a `viam-cli` alias also works).
 
 On other distributions, download the binary directly:
 
@@ -40,7 +40,7 @@ echo "deb [signed-by=/usr/share/keyrings/viam.gpg] https://us-apt.pkg.dev/projec
 sudo apt update && sudo apt install viam-cli
 ```
 
-The package is named `viam-cli`; the installed command is `viam`.
+The package is named `viam-cli`; the installed command is `viam` (a `viam-cli` alias also works).
 
 On other distributions, download the binary directly:
 
