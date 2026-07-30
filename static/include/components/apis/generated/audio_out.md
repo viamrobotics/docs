@@ -38,7 +38,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `data` [([]byte)](https://pkg.go.dev/builtin#byte)
-- `info` [(*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
+- `info` [(\*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -99,8 +99,8 @@ Stream audio data in chunks for playback.
 
 **Parameters:**
 
-- `chunks` (AsyncIterator[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): async iterator of audio data chunks to play.
-- `info` (viam.components.audio_out.audio_out.AudioInfo) (optional): (optional) information about the audio data such as codec, sample rate, and channel count.
+- `info` (viam.components.audio_out.audio_out.AudioInfo) (required): Information about the audio stream such as codec, sample rate, and channel count.
+- `chunks` (AsyncIterable[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): Async iterable of audio bytes to play in order.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -113,12 +113,12 @@ Stream audio data in chunks for playback.
 ```python {class="line-numbers linkable-line-numbers"}
 my_audio_out = AudioOut.from_robot(robot=machine, name="my_audio_out")
 
-async def audio_generator():
-    for chunk in audio_chunks:
+async def chunk_source():
+    for chunk in pcm_chunks:
         yield chunk
 
 audio_info = AudioInfo(codec=AudioCodec.PCM16, sample_rate_hz=44100, num_channels=2)
-await my_audio_out.play_stream(audio_generator(), audio_info)
+await my_audio_out.play_stream(audio_info, chunk_source())
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_out/client/index.html#viam.components.audio_out.client.AudioOutClient.play_stream).
@@ -129,8 +129,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `info` [(*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
-- `info` [(*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
+- `info` [(\*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
+- `info` [(\*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -157,9 +157,9 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const audioOut = new VIAM.AudioOutClient(machine, 'my_audio_out');
+const audioOut = new VIAM.AudioOutClient(machine, "my_audio_out");
 const audioInfo = {
-  codec: 'pcm16',
+  codec: "pcm16",
   sampleRateHz: 22050,
   numChannels: 1,
 };
@@ -205,7 +205,7 @@ Get the audio device’s properties.
 
 **Returns:**
 
-- ([viam.components.audio_out.audio_out.AudioOut.Properties](https://python.viam.dev/autoapi/viam/components/audio_out/audio_out/index.html#viam.components.audio_out.audio_out.AudioOut.Properties)): :   The properties of the audio output device.
+- ([viam.components.audio_out.audio_out.AudioOut.Properties](https://python.viam.dev/autoapi/viam/components/audio_out/audio_out/index.html#viam.components.audio_out.audio_out.AudioOut.Properties)): : The properties of the audio output device.
 
 **Example:**
 
@@ -246,7 +246,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const audioOut = new VIAM.AudioOutClient(machine, 'my_audio_out');
+const audioOut = new VIAM.AudioOutClient(machine, "my_audio_out");
 const properties = await audioOut.getProperties();
 ```
 
@@ -283,7 +283,7 @@ The [motion](/reference/services/motion/) and [navigation](/reference/services/n
 
 **Returns:**
 
-- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): :   The geometries associated with the Component.
+- ([List[viam.proto.common.Geometry]](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.Geometry)): : The geometries associated with the Component.
 
 **Example:**
 
@@ -341,7 +341,7 @@ If you are implementing your own arm and want to add features that have no corre
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): : Result of the executed command.
 
 **Raises:**
 
@@ -399,13 +399,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ```ts {class="line-numbers linkable-line-numbers"}
 // Plain object (recommended)
 const result = await resource.doCommand({
-  myCommand: { key: 'value' },
+  myCommand: { key: "value" },
 });
 
 // Struct (still supported)
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
-const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
+const result = await resource.doCommand(
+  Struct.fromJson({ myCommand: { key: "value" } }),
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioOutClient.html#docommand).
@@ -447,7 +449,7 @@ Get the current status of the audio output component as a map of key-value pairs
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): : The status of the component.
 
 **Example:**
 
@@ -521,7 +523,7 @@ Get the `ResourceName` for this audio out component.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): : The ResourceName of this Resource.
 
 **Example:**
 
@@ -566,7 +568,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-audio_out.name
+audio_out.name;
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/AudioOutClient.html#name).
