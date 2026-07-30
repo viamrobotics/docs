@@ -297,14 +297,19 @@ For remote parts capture, see [Capture from multi-part machines](/data/capture-s
 
 ### Part-level retention policy
 
-A part-level retention policy applies one retention period to all data a machine {{< glossary_tooltip term_id="part" text="part" >}} captures, across every component and service. Once per day, the Viam cloud platform deletes captured data (binary and tabular) older than the configured number of days.
+A part-level retention policy applies one retention period to all data a machine {{< glossary_tooltip term_id="part" text="part" >}} captures, across every component and service. The Viam cloud platform deletes the part's captured data (binary and tabular) from the default data store when the retention period passes. The policy covers the default data store only: a [hot data store](/data/hot-data-store/) keeps its own rolling window of recent data, set by `stored_hours`.
 
 Set the policy in **JSON** mode on the **CONFIGURE** tab. `data_retention_policy` is a top-level field in the part's configuration, alongside `components` and `services`:
 
 ```json
 {
-  "components": [],
-  "services": [],
+  "components": [
+    {
+      "name": "my-sensor",
+      "api": "rdk:component:sensor",
+      "model": "rdk:builtin:fake"
+    }
+  ],
   "data_retention_policy": {
     "days": 30
   }
@@ -314,13 +319,13 @@ Set the policy in **JSON** mode on the **CONFIGURE** tab. `data_retention_policy
 <!-- prettier-ignore -->
 | Name | Type | Description |
 | --- | --- | --- |
-| `days` | int | Number of days to keep the part's captured data in the default data store. Must be a positive whole number. The platform ignores other values. Days are in UTC. |
+| `days` | int | Number of days to keep the part's captured data in the default data store. Days are UTC calendar days: the platform deletes data once its capture day is `days` or more days in the past. Must be a positive whole number. The platform ignores other values. |
 
 The part-level policy supports one option: `days`. Set size-based limits (`binary_limit_gb` and `tabular_limit_gb`) per resource in a [resource-level `retention_policy`](#platform-managed-capture-settings).
 
 When a resource also has its own `retention_policy`, the shorter of the two retention periods applies to that resource's data. For example, set a long period for the whole part and a shorter period for a high-volume resource, such as a camera.
 
-A {{< glossary_tooltip term_id="fragment" text="fragment" >}} can include `data_retention_policy`. The policy then applies to every part that uses the fragment.
+A {{< glossary_tooltip term_id="fragment" text="fragment" >}} can include `data_retention_policy` to set the policy for every part that uses the fragment. A `data_retention_policy` set directly on a part takes precedence over one from a fragment.
 
 ## Local storage
 
