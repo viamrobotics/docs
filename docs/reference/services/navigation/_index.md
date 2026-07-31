@@ -159,7 +159,7 @@ The following attributes are available for `Navigation` services:
 | `map_type` | string | Optional | The type of map to use for navigation. <br> Default: `"GPS"` |
 | `movement_sensor` | string | Conditionally required | The `name` of the [movement sensor](/reference/components/movement-sensor/) you have configured for the base you are operating with this service. Required when `map_type` is `"GPS"`. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/reference/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
-| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/reference/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/reference/services/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
+| `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/reference/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/reference/services/vision/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
 | `position_polling_frequency_hz` | float | Optional | The frequency in Hz to poll for the position of the machine. <br> Default: `1` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in Hz to poll each vision service for new obstacles. <br> Default: `1` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a machine is allowed to deviate from the motion plan. <br> Default: `2.6`|
@@ -247,12 +247,12 @@ Each concept is a type of relative or absolute measurement, taken by a [movement
 
 Here's how to use the following types of measurements:
 
-- [Compass Heading](#compass-heading)
+- [Compass heading](#compass-heading)
 - [Orientation](#orientation)
-- [Angular Velocity](#angular-velocity)
+- [Angular velocity](#angular-velocity)
 - [Position](#position)
-- [Linear Acceleration](#linear-acceleration)
-- [Linear Velocity](#linear-velocity)
+- [Linear acceleration](#linear-acceleration)
+- [Linear velocity](#linear-velocity)
 
 ### Compass heading
 
