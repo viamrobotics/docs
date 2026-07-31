@@ -45,10 +45,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const dataManager = new VIAM.DataManagerClient(
-  machine,
-  'my_data_manager'
-);
+const dataManager = new VIAM.DataManagerClient(machine, 'my_data_manager');
 await dataManager.sync();
 ```
 
@@ -98,15 +95,12 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const dataManager = new VIAM.DataManagerClient(
-  machine,
-  'my_data_manager'
-);
+const dataManager = new VIAM.DataManagerClient(machine, 'my_data_manager');
 await dataManager.uploadBinaryDataToDatasets(
   new Uint8Array([1, 2, 3]),
   ['tag1', 'tag2'],
   ['datasetId1', 'datasetId2'],
-  MimeType.MIME_TYPE_JPEG
+  MimeType.MIME_TYPE_JPEG,
 );
 ```
 
@@ -174,8 +168,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -193,12 +187,59 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#docommand).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the data management service as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myDataManagerSvc, err := datamanager.FromProvider(machine, "my_data_manager_svc")
+
+status, err := myDataManagerSvc.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional): Call options for the command.
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const dataManager = new VIAM.DataManagerClient(machine, 'my_data_manager');
+await dataManager.doCommand(new Struct({ cmd: 'test', data1: 500 }));
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/DataManagerClient.html#getstatus).
 
 {{% /tab %}}
 {{< /tabs >}}

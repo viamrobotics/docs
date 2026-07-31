@@ -1260,7 +1260,7 @@ viam machines part cp --part=123 my_file machine:/home/user/
 # Recursively copy a directory to a machine:
 viam machines part cp --part=123 -r my_dir machine:/home/user/
 
-# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+# Copy multiple files to a machine with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
@@ -1269,7 +1269,7 @@ viam machines part cp --part=123 machine:my_file ~/Downloads/
 # Recursively copy a directory from a machine to a local destination:
 viam machines part cp --part=123 -r machine:my_dir ~/Downloads/
 
-# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+# Copy multiple files from the machine to a local destination with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
@@ -1278,7 +1278,7 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
-| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | Optional |
+| `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, overriding the destination `umask`. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
 
 ### `machines part tunnel`
 
@@ -1528,7 +1528,8 @@ Add a trigger to a machine part. Run without `--config` to use an interactive fo
 
 Trigger configs support the following event types:
 
-- `part_online`: liveness check.
+- `part_online`: fires on each online state transition.
+- `part_offline`: fires on each offline state transition.
 - `part_data_ingested`: fires when data of the specified types is ingested.
 - `conditional_data_ingested`: fires when data ingested by a specific data capture method matches a condition.
 - `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
@@ -1544,7 +1545,7 @@ viam machines part add-trigger --part=<part id>
 
 # add a trigger from inline JSON
 viam machines part add-trigger --part=<part id> \
-    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com","seconds_between_notifications":60}]}'
+    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com"}]}'
 
 # add a trigger from a JSON file
 viam machines part add-trigger --part=<part id> --config ./trigger.json
@@ -3083,6 +3084,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 
 The `update` command updates the CLI to the latest version.
 If the CLI was installed with Homebrew, it updates through Homebrew.
+If the CLI was installed with apt, it updates through apt.
 Otherwise, it downloads and replaces the binary directly.
 
 ```sh {class="command-line" data-prompt="$"}

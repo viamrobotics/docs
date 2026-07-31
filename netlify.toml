@@ -293,8 +293,13 @@
   status = 301
 
 [[redirects]]
+  from = "/dev/reference/apis/components/encode/*"
+  to = "/reference/apis/components/encoder/:splat"
+  status = 301
+
+[[redirects]]
   from = "/dev/reference/apis/*"
-  to = "/reference/apis/"
+  to = "/reference/apis/:splat"
   status = 301
 
 [[redirects]]

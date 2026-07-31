@@ -354,7 +354,7 @@ override_description_links = {
     "organization settings page": "/manage/reference/organize/",
     "image tags": "/data-ai/train/create-dataset/#label-your-images",
     "API key": "/fleet/cli/#authenticate",
-    "board model": "/dev/reference/apis/components/board/"
+    "board model": "/reference/apis/components/board/"
 }
 
 ## Map sdk language to specific code fence formatting syntax for that language:
@@ -459,7 +459,7 @@ def get_proto_apis():
 
 ## Link matching text, used in write_markdown():
 ## NOTE: Currently does not support formatting for link titles
-## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/dev/reference/apis/data-client/#binarydatabyfilter)
+## (EXAMPLE: bolded DATA tab here: https://docs.viam.com/reference/apis/data-client/#binarydatabyfilter)
 def link_description(format_type, full_description, link_text, link_url):
 
     ## Supports 'md' link styling or 'html' link styling.
@@ -771,7 +771,7 @@ def check_for_unused_methods(methods, type):
                 if not "used" in methods[lang][type][resource][method].keys():
                     if resource in ["data_sync", "dataset", "data"]:
                         continue
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand"] or \
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus"] or \
                         lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
@@ -930,41 +930,46 @@ def write_markdown(type, names, methods):
                         if type == 'component':
                             ## Replace underscores, and convert generic_component to just generic:
                             resource_adjusted = resource.replace('generic_component', 'generic').replace('_','-')
-                            proto_anchor_link = '/dev/reference/apis/components/' + resource_adjusted + '/#' + proto_link
+                            proto_anchor_link = '/reference/apis/components/' + resource_adjusted + '/#' + proto_link
                         elif type == 'service' and resource in ['base_remote_control', 'motion', 'slam', 'vision']:
-                            proto_anchor_link = '/dev/reference/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/' + resource.replace('base_remote_control', 'base-rc') + '/#' + proto_link
                         elif type == 'service' and resource == 'data_manager':
-                            proto_anchor_link = '/dev/reference/apis/services/data/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/data/#' + proto_link
                         elif type == 'service' and resource == 'discovery':
-                            proto_anchor_link = '/dev/reference/apis/services/discovery/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/discovery/#' + proto_link
                         elif type == 'service' and resource == 'generic_service':
-                            proto_anchor_link = '/dev/reference/apis/services/generic/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/generic/#' + proto_link
                         elif type == 'service' and resource == 'audio_in':
-                            proto_anchor_link = '/dev/reference/apis/services/audio-in/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/audio-in/#' + proto_link
                         elif type == 'service' and resource == 'audio_out':
-                            proto_anchor_link = '/dev/reference/apis/services/audio-out/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/audio-out/#' + proto_link
                         elif type == 'service' and resource == 'mlmodel':
-                            proto_anchor_link = '/dev/reference/apis/services/ml/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/ml/#' + proto_link
                         elif type == 'service' and resource == 'world_state_store':
-                            proto_anchor_link = '/dev/reference/apis/services/world-state-store/#' + proto_link
+                            proto_anchor_link = '/reference/apis/services/world-state-store/#' + proto_link
                         elif type == 'app' and resource == 'app':
-                            proto_anchor_link = '/dev/reference/apis/fleet/#' + proto_link
+                            proto_anchor_link = '/reference/apis/fleet/#' + proto_link
                         elif type == 'app' and resource in ["billing", "mltraining"]:
-                            proto_anchor_link = '/dev/reference/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto_link
+                            proto_anchor_link = '/reference/apis/' + resource.replace('mltraining','ml-training') + '-client/#' + proto_link
                         elif type == 'app' and resource in ["data", "dataset", "data_sync"]:
-                            proto_anchor_link = '/dev/reference/apis/data-client/#' + proto_link
+                            proto_anchor_link = '/reference/apis/data-client/#' + proto_link
                         elif type == 'robot':
-                            proto_anchor_link = '/dev/reference/apis/' + resource + '/#' + proto_link
+                            proto_anchor_link = '/reference/apis/' + resource + '/#' + proto_link
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
-                        ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
-                        ## first sentence:
+                        ## shortcodes like alerts ('{{% alert %}}...{{% /alert %}}'), which precede some override files' (proto descriptions')
+                        ## first sentence. The closing tag must match the same shortcode name as the opener (via backreference), so a
+                        ## self-closing shortcode earlier in the file (e.g. {{< glossary_tooltip ... >}}, no closing tag of its own) can't
+                        ## get matched up with an unrelated block shortcode's closer later in the file:
 
 
                         if os.path.isfile(proto_override_file):
                             with open(proto_override_file, 'r') as f:
                                 file_contents = f.read().strip()
-                                file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
+                                file_contents = regex.sub(r'\{\{\%\s*(\w+)[^%]*\%\}\}.*?\{\{\%\s*\/\1\s*\%\}\}', '', file_contents, flags=regex.DOTALL)
+                                ## Same, for angle-bracket shortcodes ({{< alert >}}...{{< /alert >}}), which
+                                ## otherwise leak an unclosed shortcode opener into the table description:
+                                file_contents = regex.sub(r'\{\{<\s*(\w+)[^>]*>\}\}.*?\{\{<\s*\/\1\s*>\}\}', '', file_contents, flags=regex.DOTALL)
                                 search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
                                 ## If the proto description contains any MD links, strip them out:
