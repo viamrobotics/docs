@@ -52,10 +52,10 @@ Then, configure the service:
 {{< tabs >}}
 {{% tab name="Config Builder" %}}
 
-Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-Select the `navigation` type.
-Enter a name or use the suggested name for your service and click **Create**.
+Navigate to the **CONFIGURE** tab of your machine's page and click the **+** icon next to your machine part in the left-hand menu to add a service.
+
+Because the navigation service is discontinued, it may no longer appear in the configuration UI's service catalog.
+If so, use the **JSON** tab instead to add it directly, using the template below.
 
 {{<imgproc src="/services/navigation/navigation-ui-config.png" resize="1200x" style="width: 900px" alt="An example configuration for a navigation service.">}}
 
@@ -103,45 +103,45 @@ Edit the attributes as applicable to your machine, according to the table below.
       "config": {
         "uri": "mongodb://127.0.0.1:12345"
       }
-    }
-  },
-  "movement_sensor": "your-movement-sensor",
-  "obstacle_detectors": [
-    {
-      "vision_service": "your-vision-service",
-      "camera": "your-camera"
     },
-    {
-      "vision_service": "your-vision-service-2",
-      "camera": "your-camera-2"
-    }
-  ]
-  "base": "your-base",
-  "obstacles": [
-    {
-      "geometries": [
-        {
-          "label": "your-label-for-this-obstacle",
-          "orientation": {
-            "type": "ov_degrees",
-            "value": {
-              "x": 1,
-              "y": 0,
-              "z": 0,
-              "th": 90
-            }
-          },
-          "x": 10,
-          "y": 10,
-          "z": 10
-        }
-      ],
-      "location": {
-        "latitude": 1,
-        "longitude": 1
+    "movement_sensor": "your-movement-sensor",
+    "obstacle_detectors": [
+      {
+        "vision_service": "your-vision-service",
+        "camera": "your-camera"
+      },
+      {
+        "vision_service": "your-vision-service-2",
+        "camera": "your-camera-2"
       }
-    }
-  ]
+    ],
+    "base": "your-base",
+    "obstacles": [
+      {
+        "geometries": [
+          {
+            "label": "your-label-for-this-obstacle",
+            "orientation": {
+              "type": "ov_degrees",
+              "value": {
+                "x": 1,
+                "y": 0,
+                "z": 0,
+                "th": 90
+              }
+            },
+            "x": 10,
+            "y": 10,
+            "z": 10
+          }
+        ],
+        "location": {
+          "latitude": 1,
+          "longitude": 1
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -154,18 +154,21 @@ The following attributes are available for `Navigation` services:
 <!-- prettier-ignore -->
 | Name | Type | Required? | Description |
 | ---- | ---- | --------- | ----------- |
-| `store` | obj | **Required** | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
+| `store` | obj | Optional | The type and configuration of data storage to use. Either type `"memory"`, where no additional configuration is needed and the waypoints are stored in local memory while the navigation process is running, or `"mongodb"`, where data persists at the specified [MongoDB URI](https://www.mongodb.com/docs/manual/reference/connection-string) of your MongoDB deployment. <br> Default: `"memory"` |
 | `base` | string | **Required** | The `name` you have configured for the [base](/reference/components/base/) you are operating with this service. |
-| `movement_sensor` | string | **Required** | The `name` of the [movement sensor](/reference/components/movement-sensor/) you have configured for the base you are operating with this service. |
+| `map_type` | string | Optional | The type of map to use for navigation. <br> Default: `"GPS"` |
+| `movement_sensor` | string | Conditionally required | The `name` of the [movement sensor](/reference/components/movement-sensor/) you have configured for the base you are operating with this service. Required when `map_type` is `"GPS"`. |
 | `motion_service` | string | Optional | The `name` of the [motion service](/reference/services/motion/) you have configured for the base you are operating with this service. If you have not added a motion service to your machine, the default motion service will be used. Reference this default service in your code with the name `"builtin"`. |
 | `obstacle_detectors` | array | Optional | An array containing objects with the `name` of each [`"camera"`](/reference/components/camera/) you have configured for the base you are navigating, along with the `name` of the [`"vision_service"`](/reference/services/motion/) you are using to detect obstacles. Note that any vision services on remote parts will only be able to access cameras on the same remote part. |
 | `position_polling_frequency_hz` | float | Optional | The frequency in Hz to poll for the position of the machine. <br> Default: `1` |
 | `obstacle_polling_frequency_hz` | float | Optional | The frequency in Hz to poll each vision service for new obstacles. <br> Default: `1` |
 | `plan_deviation_m` | float | Optional | The distance in meters that a machine is allowed to deviate from the motion plan. <br> Default: `2.6`|
+| `replan_cost_factor` | float | Optional | A multiplier applied to the cost of replanning when the machine deviates from its plan, weighed against the cost of continuing on the existing plan. <br> Default: `1.0` |
 | `degs_per_sec` | float | Optional | The default angular velocity for the [base](/reference/components/base/) in degrees per second. <br> Default: `20` |
 | `meters_per_sec` | float | Optional | The default linear velocity for the [base](/reference/components/base/) in meters per second. <br> Default: `0.3` |
 | `obstacles` | obj | Optional | Any obstacles you wish to add to the machine's path. See the [motion service](/reference/services/motion/) for more information. |
 | `bounding_regions` | obj | Optional | Set of bounds which the robot must remain within while navigating. See the [motion service](/reference/services/motion/) for more information. |
+| `log_file_path` | string | Optional | The file path to write navigation logs to. |
 
 ### Configure and calibrate the frame system service for GPS navigation
 
