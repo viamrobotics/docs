@@ -3084,6 +3084,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 
 The `update` command updates the CLI to the latest version.
 If the CLI was installed with Homebrew, it updates through Homebrew.
+If the CLI was installed with apt, it updates through apt.
 Otherwise, it downloads and replaces the binary directly.
 
 ```sh {class="command-line" data-prompt="$"}
