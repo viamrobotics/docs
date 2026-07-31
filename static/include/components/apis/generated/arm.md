@@ -597,7 +597,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<GetKinematicsResult>): The legacy kinematics data shape or the newer object containing kinematics data plus a
+- (Promise<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
 map of URDF mesh file paths to mesh data.
 
 **Example:**

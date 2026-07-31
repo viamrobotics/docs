@@ -56,7 +56,7 @@ Get status information about the machine including the status of the machine and
 
 **Returns:**
 
-- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): :   current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]), the revision of the config of the machine, and the status of modules (List[ModuleStatus]).
+- ([viam.proto.robot.GetMachineStatusResponse](https://python.viam.dev/autoapi/viam/proto/robot/index.html#viam.proto.robot.GetMachineStatusResponse)): :   current status of the machine (initializing or running), current status of the resources (List[ResourceStatus]), the revision of the config of the machine, the status of modules (List[ModuleStatus]), and the status of packages (List[PackageStatus]).
 
 **Example:**
 
@@ -67,6 +67,7 @@ resource_statuses = machine_status.resources
 cloud_metadata = machine_status.resources[0].cloud_metadata
 config_status = machine_status.config
 module_statuses = machine_status.modules
+package_statuses = machine_status.packages
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.get_machine_status).
@@ -488,7 +489,7 @@ Do not move the robot between the generation of the initial pointcloud and the r
 my_camera = Camera.from_robot(robot=machine, name="my_camera")
 data, _ = await my_camera.get_point_cloud()
 
-transformed_pcd = await machine.transform_pcd(data, "my_camera", "world")
+transformed_pcd = await machine.transform_pcd(pcd, "my_camera", "world")
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/robot/client/index.html#viam.robot.client.RobotClient.transform_pcd).
