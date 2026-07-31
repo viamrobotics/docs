@@ -124,7 +124,7 @@ You can filter logs by:
 - **Level**: Error, Warn, Info, Debug
 - **Keyword**: full text search (supports regular expressions)
 - **Time range**: set start and end times, or use live mode to stream logs in real time
-- **Resource**: filter by a specific component or service name
+- **Source**: filter by a specific component or service name
 
 The default log level is `Info`.
 If you are not seeing helpful logs, enable debug logging.
