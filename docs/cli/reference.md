@@ -1105,9 +1105,9 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 | `--location` | ID of the location that the machine belongs to. | Optional |
@@ -1199,9 +1199,9 @@ viam machines part logs --part=myrover-main --tail=true
 | `--errors` | Return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. | Optional |
+| `--start` | Filter logs to include only those after the start time. Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 
