@@ -73,7 +73,6 @@ const wrtc = require("node-datachannel/polyfill");
 const connectNode = require("@connectrpc/connect-node");
 
 // Register a Node-compatible gRPC transport.
-// @ts-expect-error -- globalThis.VIAM is not in standard types
 globalThis.VIAM = {
   GRPC_TRANSPORT_FACTORY: (opts: any) =>
     connectNode.createGrpcTransport({ httpVersion: "2", ...opts }),
