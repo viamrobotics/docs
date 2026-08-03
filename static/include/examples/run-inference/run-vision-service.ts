@@ -5,7 +5,6 @@ import * as connectNode from "@connectrpc/connect-node";
 import * as wrtc from "node-datachannel/polyfill";
 
 // Register a Node-compatible gRPC transport.
-// @ts-expect-error -- globalThis.VIAM is not in standard types
 globalThis.VIAM = {
     GRPC_TRANSPORT_FACTORY: (opts: any) =>
         connectNode.createGrpcTransport({ httpVersion: "2", ...opts }),
