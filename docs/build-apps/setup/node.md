@@ -34,10 +34,12 @@ Node.js needs three runtime packages:
 - `@connectrpc/connect-node` — the Node-compatible gRPC transport
 - `node-datachannel` — a WebRTC implementation for Node
 
+The SDK depends on the Connect-ES v1 API, so pin `@connectrpc/connect-node` to the matching major version. Installing it unpinned resolves to the incompatible v2 line and fails with a `TypeError` when the SDK tries to connect.
+
 Install everything at once:
 
 ```sh {class="command-line" data-prompt="$"}
-npm install @viamrobotics/sdk @connectrpc/connect-node node-datachannel
+npm install @viamrobotics/sdk @connectrpc/connect-node@^1.7.0 node-datachannel
 npm install --save-dev tsx typescript @types/node
 ```
 
