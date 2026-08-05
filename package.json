@@ -27,7 +27,7 @@
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@connectrpc/connect-node": "^1.7.0",
+    "@connectrpc/connect-node": "^2.1.2",
     "@viamrobotics/sdk": "^0.55.0",
     "bluehawk": "^1.6.0",
     "node-datachannel": "^0.32.3"
