@@ -1309,6 +1309,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
+| `--viam-home-dir` | Path to the target machine's [VIAM_HOME](/reference/viam-server/#environment-variables) directory. Use when the machine uses a non-default VIAM_HOME location, for example when managed by `viam-agent`. Default: `~/.viam`. | Optional |
 
 ### `machines part create`
 
