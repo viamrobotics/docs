@@ -14,8 +14,7 @@ aliases:
 The motion service plans and executes component motion: arm end-effector moves, base moves across a SLAM map, and base moves to a GPS coordinate. The builtin service ships with every machine running `viam-server`, so you do not need to add it to your configuration.
 
 Most users never configure the motion service. Read this page if you need
-to log planning errors, cap planning threads, or narrow a joint's range
-below its kinematic limits.
+to log planning errors or narrow a joint's range below its kinematic limits.
 
 ## Access the motion service
 
@@ -50,15 +49,14 @@ if err != nil {
 The builtin motion service accepts the following optional configuration
 attributes:
 
-| Attribute                         | Type   | Default          | Description                                                                                                                                                                                                                                                                    |
-| --------------------------------- | ------ | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `log_file_path`                   | string | (none)           | Path to write planning debug logs.                                                                                                                                                                                                                                             |
-| `num_threads`                     | int    | (system default) | Number of threads for parallel planning.                                                                                                                                                                                                                                       |
-| `plan_file_path`                  | string | (none)           | Path to write plan output files.                                                                                                                                                                                                                                               |
-| `plan_directory_include_trace_id` | bool   | false            | Include trace ID in plan output directory names.                                                                                                                                                                                                                               |
-| `log_planner_errors`              | bool   | false            | Log planning errors to the log file.                                                                                                                                                                                                                                           |
-| `log_slow_plan_threshold_ms`      | int    | (none)           | Log plans that take longer than this threshold in milliseconds.                                                                                                                                                                                                                |
-| `input_range_override`            | object | (none)           | Narrow a joint's allowed range below its kinematic limits. The value is a map from frame name to a map from joint index (string) to `{"min": <value>, "max": <value>}`. For example, `{"my-arm": {"3": {"min": 0, "max": 2}}}` restricts joint 3 of `my-arm` to the range 0-2. |
+| Attribute                         | Type   | Default | Description                                                                                                                                                                                                                                                                    |
+| --------------------------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `log_file_path`                   | string | (none)  | Path to write planning debug logs.                                                                                                                                                                                                                                             |
+| `plan_file_path`                  | string | (none)  | Path to write plan output files.                                                                                                                                                                                                                                               |
+| `plan_directory_include_trace_id` | bool   | false   | Include trace ID in plan output directory names.                                                                                                                                                                                                                               |
+| `log_planner_errors`              | bool   | false   | Log planning errors to the log file.                                                                                                                                                                                                                                           |
+| `log_slow_plan_threshold_ms`      | int    | (none)  | Log plans that take longer than this threshold in milliseconds.                                                                                                                                                                                                                |
+| `input_range_override`            | object | (none)  | Narrow a joint's allowed range below its kinematic limits. The value is a map from frame name to a map from joint index (string) to `{"min": <value>, "max": <value>}`. For example, `{"my-arm": {"3": {"min": 0, "max": 2}}}` restricts joint 3 of `my-arm` to the range 0-2. |
 
 Example configuration:
 
