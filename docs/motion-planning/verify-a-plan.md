@@ -184,5 +184,5 @@ and the motion service is all you have.
   plan one trajectory through an ordered list of goals.
 - [How motion planning works](/motion-planning/how-planning-works/):
   why a plan can be infeasible and what to adjust.
-- [Debug motion with the CLI](/motion-planning/debug-motion-plan/):
+- [Debug a motion plan](/motion-planning/debug-motion-plan/):
   inspect frames and poses from the command line.

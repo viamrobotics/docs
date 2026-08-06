@@ -200,13 +200,35 @@ existing API:
 The visualized resource needs no changes and no awareness that it is being drawn.
 The store depends on it, not the other way around.
 
+Take the resource's name as a config attribute and return it from `Validate` as an implicit
+dependency, the same way any other module declares what it needs. See
+[Dependencies](/build-modules/dependencies/) for the full pattern.
+
 ```go
-func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstatestore.Service, error) {
-    obstacleSensor, err := sensor.FromProvider(deps, "obstacle-sensor")
-    if err != nil {
-        return nil, fmt.Errorf("getting obstacle-sensor: %w", err)
+type Config struct {
+    ObstacleSensor string `json:"obstacle_sensor"`
+}
+
+func (cfg *Config) Validate(path string) ([]string, []string, error) {
+    if cfg.ObstacleSensor == "" {
+        return nil, nil,
+            resource.NewConfigValidationFieldRequiredError(path, "obstacle_sensor")
     }
-    // The module depends on obstacle-sensor and pulls its readings on a loop.
+    // Returning the name here makes it an implicit dependency, so the module
+    // starts after the sensor and follows it when the sensor is renamed.
+    return []string{cfg.ObstacleSensor}, nil, nil
+}
+
+func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstatestore.Service, error) {
+    cfg, err := resource.NativeConfig[*Config](conf)
+    if err != nil {
+        return nil, err
+    }
+    obstacleSensor, err := sensor.FromProvider(deps, cfg.ObstacleSensor)
+    if err != nil {
+        return nil, fmt.Errorf("getting %s: %w", cfg.ObstacleSensor, err)
+    }
+    // The module depends on that sensor and pulls its readings on a loop.
     return startVisualizer(obstacleSensor), nil
 }
 ```
@@ -216,7 +238,8 @@ func newVisualizer(deps resource.Dependencies, conf resource.Config) (worldstate
 The module registers a model against the world state store API, so you configure it like
 any other modular service: add the module to your machine, then add a service with
 `"api": "rdk:service:world_state_store"` and your model. Name the resources the module
-pulls from in `depends_on`, so the module starts after them:
+pulls from in its attributes; because `Validate` returns them as implicit dependencies,
+you do not also need a `depends_on` list:
 
 ```json
 "services": [
@@ -224,7 +247,9 @@ pulls from in `depends_on`, so the module starts after them:
     "name": "visualizer",
     "api": "rdk:service:world_state_store",
     "model": "<namespace>:<module-name>:<model-name>",
-    "depends_on": ["obstacle-sensor"]
+    "attributes": {
+      "obstacle_sensor": "obstacle-sensor"
+    }
   }
 ]
 ```

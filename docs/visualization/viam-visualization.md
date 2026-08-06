@@ -99,7 +99,12 @@ snapshot := draw.NewSnapshot(
     draw.WithSceneCamera(camera), // where the scene camera starts
     draw.WithGrid(true),
 )
-if err := snapshot.DrawGeometry(box, boxPose, "world", draw.ColorFromName("dodgerblue")); err != nil {
+if _, err := snapshot.DrawGeometry(draw.DrawGeometryOptions{
+    Geometry: box,
+    Pose:     boxPose,
+    Parent:   "world",
+    Color:    draw.ColorFromName("dodgerblue"),
+}); err != nil {
     return err
 }
 data, err := snapshot.MarshalJSON()

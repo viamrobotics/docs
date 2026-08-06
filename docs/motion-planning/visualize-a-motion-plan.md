@@ -18,6 +18,19 @@ service. The scene then renders the path you can otherwise only read as numbers.
 This page shows how to turn a plan into transforms the scene can draw, and how to
 use the rendered path to debug a plan that failed or moved unexpectedly.
 
+## Prerequisites
+
+The code on this page starts from a plan you already have in Go:
+
+- A `plan` and the `fs` (`*referenceframe.FrameSystem`) it was planned against. Both come
+  out of `armplanning.PlanMotion`; see
+  [Verify a plan](/motion-planning/verify-a-plan/) for assembling the `PlanRequest` that
+  produces them.
+- The goal pose you passed to the planner, to mark the destination.
+- A module that can serve a world state store service, which is how the transforms reach
+  the scene. See
+  [Publish visuals from a module](/visualization/publish-visuals-from-a-module/).
+
 ## Why publish the plan as custom visuals
 
 A plan is a sequence of joint configurations. Rendered in the scene, the path
@@ -49,6 +62,13 @@ for i, step := range plan.Trajectory() {
     }
     transforms = append(transforms, transform)
 }
+
+// Mark the destination you passed to the planner (goalMarker, next section).
+goalTransform, err := goalMarker(0, goalPose)
+if err != nil {
+    return err
+}
+transforms = append(transforms, goalTransform)
 // Serve transforms through a world state store service (last section).
 ```
 
@@ -63,6 +83,8 @@ can update them when you re-plan.
 
 ```go
 import (
+    "fmt"
+
     "github.com/viam-labs/motion-tools/draw"
     commonpb "go.viam.com/api/common/v1"
     "go.viam.com/rdk/spatialmath"
