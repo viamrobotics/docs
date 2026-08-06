@@ -43,6 +43,7 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **AI Scene Builder**: opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/visualization/3d-scene/editing-frames-visually/#edit-frames-with-ai).
+- **Control widgets** (joystick icon): opens a panel listing the machine's resources, where you turn on interactive controls for them. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 - **Logs**: shows a count badge for errors/warnings from the scene renderer.
 - **Settings** (gear icon): opens the Settings panel.
 
@@ -64,16 +65,17 @@ Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you
 
 ## Settings
 
-Settings are grouped by what they affect: connection, scene decoration, point clouds, vision, widgets, and a few utility tabs. Click the gear icon to open the panel.
+Settings are grouped by what they affect: connection, scene decoration, point clouds, vision, and a few utility tabs. Click the gear icon to open the panel.
 
 - **Connection**: polling rates for the scene's data streams.
 - **Scene**: toggle the grid, **Object labels**, hover detail tooltips, arm-model rendering (`Arm Models`), and line thickness.
 - **Pointclouds**: set default point size and color, and enable or disable point cloud display per camera under **Enabled cameras**.
 - **Vision**: enable or disable vision-service point-cloud entities.
-- **Widgets**: show or hide the **Arm positions** widget and per-camera **Camera widgets** (a live camera feed floating alongside the 3D view).
-- **Stats**: performance counters.
+- **Debug**: toggle **Render stats**, an on-screen performance counter.
 - **Weblabs**: feature-flag overrides (usually empty).
 - **VR / AR**: only visible when the browser supports WebXR.
+
+Widgets have no settings tab: you turn them on from the **Control widgets** panel in the toolbar. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 
 ## File import
 

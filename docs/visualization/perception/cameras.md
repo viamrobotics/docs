@@ -12,9 +12,9 @@ its live feed shows what it currently sees, and a depth camera also produces a p
 
 ## See a camera's live feed
 
-To watch a camera's feed next to the 3D view, open the **Settings** panel (gear icon), select
-**Widgets**, and toggle the camera on under **Camera widgets**. For the widget's resolution
-and frame-rate controls, see [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
+To watch a camera's feed next to the 3D view, click **Control widgets** (joystick icon) in the
+scene toolbar, expand the camera in the list, and toggle its control on. See
+[3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 To view the scene from the camera's own perspective, open its
 [frame POV](/visualization/3d-scene/3d-scene-widgets/#frame-pov).
 
