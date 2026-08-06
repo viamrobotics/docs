@@ -32,6 +32,7 @@ It includes:
 - **parent frame**: which frame this entity is a child of. Editable in build mode when the entity is a configurable frame.
 - **local position** (mm) and **local orientation**: pose relative to the parent frame, corresponding to the `translation` and `orientation` in your frame configuration. Orientation has an **OV (deg)** tab and a **Euler** tab. Editable in build mode for configurable frames.
 - **geometry**: a tab per geometry type (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm). Editable in build mode.
+- **color**, **opacity**, and **show axes helper**: how the entity draws in the viewport. These affect the rendering only, not the configuration.
 
 The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
@@ -40,17 +41,19 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 
 Next to the mode toggle, in the same top-right strip:
 
-- **Control widgets** (joystick icon): opens a panel listing the machine's resources, where you turn on interactive controls for them. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 - **Fullscreen**: expands the scene to fill the browser window.
 - **Settings** (gear icon): opens the Settings panel.
+- **Control widgets** (joystick icon): opens a panel listing the machine's resources, where you turn on interactive controls for them. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 
-**Dashboard toolbar** (top-center): tools that act on the scene. Which buttons appear depends on the mode and on your permissions:
+**Dashboard toolbar** (top-center): tools that act on the scene. Which buttons appear depends on the mode and on your permissions. In every mode:
 
-- **Add frames** (axis-arrow icon, build mode only): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **Focus selection**: centers the view on the selected entity.
-- **AI Scene Builder**: opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/visualization/3d-scene/editing-frames-visually/#edit-frames-with-ai).
+
+Build mode adds the editing tools: transform controls (**Translate**, **Rotate**, **Scale**, or none), **Snapping** with its settings, a **Local space** / **World space** toggle, **AI Scene Builder**, and:
+
+- **Add frames** (axis-arrow icon): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 
 **Camera controls** (bottom-right): **Reset camera** returns the view to its starting pose, and the **Orthographic / Perspective** toggle switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
 

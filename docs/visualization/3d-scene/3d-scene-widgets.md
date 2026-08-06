@@ -23,9 +23,9 @@ each showing the resource's name and how many of its controls are currently open
 `1/2`.
 
 Click a resource row to expand it, then toggle on a control. Each control you turn on opens
-as its own panel over the viewport, titled `<resource-name> · <control>`. Toggle it off to
-close the panel. If the machine has no resources with controls, the panel reads "No widgets
-available for this machine."
+as its own panel over the viewport, labeled with the resource's API and titled
+`<resource-name> · <control>`. Toggle it off to close the panel. If the machine has no
+resources with controls, the panel reads "No widgets available for this machine."
 
 Which widgets you have open, and where you dragged and sized their panels, are remembered per
 machine part, so the layout you build survives a reload.
@@ -35,7 +35,9 @@ machine part, so the layout you build survives a reload.
 Control widgets come from the same library of resource controls as the machine's **CONTROL**
 tab, so what a resource offers depends on its API:
 
-- Resources whose API is broken into individual controls list one toggle per control.
+- Resources whose API is broken into individual controls list one toggle per control, named
+  for the API method it drives. An arm, for example, lists **MoveToJointPositions**,
+  **MoveToPosition**, **Quick move**, **GetJointPositions**, **IsMoving**, and **DoCommand**.
 - Resources without individual controls list a single **Overview** toggle that opens the
   resource's full control card.
 - The motion service lists a **Move** control: the frame-aware move panel that commands the
@@ -47,6 +49,22 @@ tab, so what a resource offers depends on its API:
 
 Resources with nothing to drive do not appear at all: the data manager, the sensors service,
 the shell service, and internal resources are left out of the list.
+
+## Read an arm's joint positions
+
+To watch an arm's joint angles beside the 3D view, expand the arm in the **Control widgets**
+panel and toggle on **GetJointPositions**. The panel lists each joint by index with its
+current position and updates on its own as the arm moves:
+
+| Joint | Position (degrees) |
+| ----- | ------------------ |
+| 0     | -4.68              |
+| 1     | -69.52             |
+| 2     | 36.77              |
+| ...   | ...                |
+
+A button in the panel switches the readout between degrees and radians, and a second button
+copies the current values to the clipboard.
 
 ## Frame POV
 
