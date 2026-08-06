@@ -19,8 +19,8 @@ show live information across a machine or fleet.
 ## The 3D scene
 
 The **3D SCENE** tab on your machine's page renders an interactive 3D view of your
-machine: component frames from the frame system, configured geometries, depth-camera
-point clouds, and custom visuals a module publishes at runtime.
+machine and the spatial data around it. For what it draws and where each element comes
+from, see [Visualizing with the 3D scene](/visualization/3d-scene/).
 
 - Use it while configuring or debugging a machine, to see frames, geometry, and live poses
   with no code.
@@ -28,6 +28,7 @@ point clouds, and custom visuals a module publishes at runtime.
   context. It runs right in the Viam app, ready to use.
 
 {{< cards >}}
+{{% card link="/visualization/3d-scene/" noimage="true" %}}
 {{% card link="/visualization/visuals-and-collisions/" noimage="true" %}}
 {{% card link="/visualization/publish-visuals-from-a-module/" noimage="true" %}}
 {{% card link="/motion-planning/visualize-a-motion-plan/" noimage="true" %}}

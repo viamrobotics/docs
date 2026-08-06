@@ -20,9 +20,9 @@ Three signals tell you what the scene is receiving before you change anything:
 - **Online state.** An offline machine renders the saved frame configuration only, with
   every component at its configured pose. Live poses, point clouds, and custom visuals
   need the machine online and connected.
-- **The Logs button** in the top-center toolbar shows a count of renderer errors and
-  warnings. A nonzero badge means the scene received data it could not draw; open it and
-  read the message before assuming data is missing.
+- **Mode.** Build mode pauses live updates and shows a **Live updates paused** banner. A
+  scene that has stopped following the machine is often a scene left in build mode; switch
+  back to **Monitor** to resume.
 - **Polling rates** under **Settings** > **Connection** control how often the scene
   fetches each data stream. A stream set to off explains a layer that never updates.
 
@@ -31,7 +31,7 @@ Three signals tell you what the scene is receiving before you change anything:
 Frames and configured geometry come from the machine configuration, so a misplaced one
 is a configuration problem. Select the entity in the **World** panel and compare its
 **local position** and **parent frame** to your physical measurements. Then fix the
-values in the configuration or
+values in the configuration or, in build mode,
 [edit the frame in the scene](/visualization/3d-scene/editing-frames-visually/).
 For the full checklist of frame and obstacle checks, see
 [Debug a motion plan](/motion-planning/debug-motion-plan/).

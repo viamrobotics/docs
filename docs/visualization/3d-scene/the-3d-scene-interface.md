@@ -51,7 +51,7 @@ Next to the mode toggle, in the same top-right strip:
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
 - **Focus selection**: centers the view on the selected entity.
 
-Build mode adds the editing tools: transform controls (**Translate**, **Rotate**, **Scale**, or none), **Snapping** with its settings, a **Local space** / **World space** toggle, **AI Scene Builder**, and:
+Build mode adds the editing tools: transform controls (**Translate**, **Rotate**, **Scale**, or none), **Snapping** with its settings, a **Local space** / **World space** toggle, [**AI Scene Builder**](/visualization/3d-scene/editing-frames-visually/#edit-frames-with-ai), and:
 
 - **Add frames** (axis-arrow icon): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 
