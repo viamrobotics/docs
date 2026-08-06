@@ -11,5 +11,6 @@
 | [`Reconfigure`](/reference/apis/services/motion/#reconfigure) | Reconfigure this resource. |
 | [`FromRobot`](/reference/apis/services/motion/#fromrobot) | Get the resource from the provided machine. |
 | [`DoCommand`](/reference/apis/services/motion/#docommand) | Execute model-specific commands that are not otherwise defined by the service API. |
+| [`GetStatus`](/reference/apis/services/motion/#getstatus) | Get the current status of the motion service as a map of key-value pairs describing its state. |
 | [`GetResourceName`](/reference/apis/services/motion/#getresourcename) | Get the `ResourceName` for this instance of the motion service. |
 | [`Close`](/reference/apis/services/motion/#close) | Safely shut down the resource and prevent further use. |

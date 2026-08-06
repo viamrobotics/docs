@@ -1105,9 +1105,9 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 | `--location` | ID of the location that the machine belongs to. | Optional |
@@ -1199,9 +1199,9 @@ viam machines part logs --part=myrover-main --tail=true
 | `--errors` | Return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. | Optional |
+| `--start` | Filter logs to include only those after the start time. Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 
@@ -1309,6 +1309,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
+| `--viam-home-dir` | Path to the target machine's [VIAM_HOME](/reference/viam-server/#environment-variables) directory. Use when the machine uses a non-default VIAM_HOME location, for example when managed by `viam-agent`. Default: `~/.viam`. | Optional |
 
 ### `machines part create`
 
@@ -1649,6 +1650,7 @@ viam module build logs --build-id=<build-id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 viam module download [command options]
+viam module versions [--id=<module-id>] [--latest] [--count=<n>]
 viam module local-app-testing --app-url http://localhost:3000
 ```
 
@@ -1993,6 +1995,28 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--version` | The version of the module to download. Defaults to `latest`. | Optional |
 | `--platform` | The architecture of the module binary to download. See [Using the `--platform` argument](#using-the---platform-argument). | Optional |
 | `--destination` | Output directory for downloaded package. Default: `.`. | Optional |
+
+### `module versions`
+
+List a module's released versions and their platforms.
+
+```sh {class="command-line" data-prompt="$"}
+# list all released versions, newest first
+viam module versions --id=acme:my-module
+
+# show only the latest version for each platform
+viam module versions --id=acme:my-module --latest
+
+# show the 5 newest versions
+viam module versions --id=acme:my-module --count=5
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). If omitted, reads the module ID from `meta.json` in the current directory. | Optional |
+| `--latest` | Print the latest version for each platform instead of the full list. | Optional |
+| `--count` | Show only the N newest versions. Default: all versions. | Optional |
 
 ### `module local-app-testing`
 
@@ -3084,6 +3108,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 
 The `update` command updates the CLI to the latest version.
 If the CLI was installed with Homebrew, it updates through Homebrew.
+If the CLI was installed with apt, it updates through apt.
 Otherwise, it downloads and replaces the binary directly.
 
 ```sh {class="command-line" data-prompt="$"}
