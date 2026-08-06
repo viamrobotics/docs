@@ -1,21 +1,20 @@
 ---
-linkTitle: "3D scene tab"
-title: "3D scene tab"
-weight: 30
+linkTitle: "The 3D scene interface"
+title: "The 3D scene interface"
+weight: 10
 layout: "docs"
 type: "docs"
-no_list: true
-description: "Visualize your machine's frame system, geometries, and point clouds in an interactive 3D view."
+description: "The panels, toolbar, navigation, and settings of the 3D SCENE tab in the Viam app."
 ---
 
-The **3D SCENE** tab renders your machine's frame system as an interactive 3D visualization on your machine's page in the [Viam app](https://app.viam.com).
-It shows the spatial relationships your frame configuration describes: the offset you configured as `{x: 50, y: 0, z: 110}` renders as a gripper 50 mm forward and 110 mm above the arm flange, so you can catch a misplaced frame before a motion plan fails.
-
-The tab reads your machine's configuration and, when the machine is online, connects for live data. Each component's frame appears as a set of coordinate axes positioned by its translation and orientation relative to its parent frame.
+The **3D SCENE** tab on your machine's page in the [Viam app](https://app.viam.com) is where
+you inspect the 3D scene. This page is a reference to its panels, toolbar, navigation, and
+settings. For what the scene renders and where each element comes from, see
+[Visualizing with the 3D scene](/visualization/3d-scene/).
 
 ## Interface
 
-The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the **Dashboard toolbar** changes how the viewport renders.
+The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the toolbars set the mode, open panels, and act on the scene.
 
 **3D viewport** (center): the interactive rendering area. Orbit, pan, and zoom to see your frame system from any angle. Components appear as labeled coordinate axes; attached geometries render as translucent shapes; point clouds render as colored point sets. An XY grid provides spatial reference.
 
@@ -30,22 +29,37 @@ The panel is draggable and anchors to the top-right of the viewport by default.
 It includes:
 
 - **world position** (mm) and **world orientation** (an orientation vector: `x / y / z` unit-vector components, `th` in degrees): the entity's absolute pose in the world frame. Read-only.
-- **parent frame**: which frame this entity is a child of. Editable when the entity is a configurable frame.
-- **local position** (mm) and **local orientation** (deg): pose relative to the parent frame. Editable for configurable frames; these correspond to the `translation` and `orientation` in your frame configuration.
-- **geometry**: four buttons (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm).
+- **parent frame**: which frame this entity is a child of. Editable in build mode when the entity is a configurable frame.
+- **local position** (mm) and **local orientation**: pose relative to the parent frame, corresponding to the `translation` and `orientation` in your frame configuration. Orientation has an **OV (deg)** tab and a **Euler** tab. Editable in build mode for configurable frames.
+- **geometry**: a tab per geometry type (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm). Editable in build mode.
+- **color**, **opacity**, and **show axes helper**: how the entity draws in the viewport. These affect the rendering only, not the configuration.
 
-The panel header includes a **Zoom to object** button (centers the camera on the selected entity) and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
+The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
-**Dashboard toolbar** (top-center): Visible buttons, left to right:
+**Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used.
 
-- **Orthographic / Perspective** toggle: switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
-- **Add frames**: opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Edit frames visually](/motion-planning/3d-scene/edit-frames/).
+Next to the mode toggle, in the same top-right strip:
+
+- **Fullscreen**: expands the scene to fill the browser window.
+- **Settings** (gear icon): opens the Settings panel.
+- **Control widgets** (joystick icon): opens a panel listing the machine's resources, where you turn on interactive controls for them. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
+
+**Dashboard toolbar** (top-center): tools that act on the scene. Which buttons appear depends on the mode and on your permissions. In every mode:
+
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
-- **AI Scene Builder**: opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/motion-planning/3d-scene/edit-frames/#edit-frames-with-ai).
-- **Logs**: shows a count badge for errors/warnings from the scene renderer.
-- **Settings** (gear icon): opens the Settings panel.
+- **Focus selection**: centers the view on the selected entity.
+
+Monitor mode adds the **Motion Plan Replayer**, which imports plans the motion service
+dumped and steps through their trajectories. See
+[Visualize a motion plan](/motion-planning/visualize-a-motion-plan/#replay-a-saved-plan-in-the-3d-scene).
+
+Build mode adds the editing tools: transform controls (**Translate**, **Rotate**, **Scale**, or none), **Snapping** with its settings, a **Local space** / **World space** toggle, [**AI Scene Builder**](/visualization/3d-scene/editing-frames-visually/#edit-frames-with-ai), and:
+
+- **Add frames** (axis-arrow icon): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
+
+**Camera controls** (bottom-right): **Reset camera** returns the view to its starting pose, and the **Orthographic / Perspective** toggle switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
 
 ## Navigation controls
 
@@ -65,16 +79,17 @@ Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you
 
 ## Settings
 
-Settings are grouped by what they affect: connection, scene decoration, point clouds, vision, widgets, and a few utility tabs. Click the gear icon to open the panel.
+Settings are grouped by what they affect: connection, scene decoration, point clouds, vision, and a few utility tabs. Click the gear icon to open the panel.
 
 - **Connection**: polling rates for the scene's data streams.
 - **Scene**: toggle the grid, **Object labels**, hover detail tooltips, arm-model rendering (`Arm Models`), and line thickness.
 - **Pointclouds**: set default point size and color, and enable or disable point cloud display per camera under **Enabled cameras**.
 - **Vision**: enable or disable vision-service point-cloud entities.
-- **Widgets**: show or hide the **Arm positions** widget and per-camera **Camera widgets** (a live camera feed floating alongside the 3D view).
-- **Stats**: performance counters.
+- **Debug**: toggle **Render stats**, an on-screen performance counter.
 - **Weblabs**: feature-flag overrides (usually empty).
-- **VR / AR**: only visible when the browser supports WebXR.
+- **AR**: settings for the immersive WebXR view.
+
+Widgets have no settings tab: you turn them on from the **Control widgets** panel in the top-right strip. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 
 ## File import
 
@@ -97,13 +112,3 @@ To add a HoverLink:
 After the link is added, hovering a point in the source entity highlights the matching point in the target entity (and updates the hover tooltip with both points' positions). Existing links appear under **Relationships** in the Details panel and have per-link remove buttons.
 
 This is useful for comparing point clouds that should align (a registered scan against a transformed version, ground-truth points against predicted points) without flipping back and forth between separate views.
-
-## How-to guides
-
-{{< cards >}}
-{{% card link="/motion-planning/3d-scene/calibrate-frame-offsets/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/verify-point-cloud-alignment/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/set-up-obstacle-avoidance/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/debug-motion-plan/" noimage="true" %}}
-{{% card link="/motion-planning/3d-scene/edit-frames/" noimage="true" %}}
-{{< /cards >}}
