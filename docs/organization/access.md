@@ -29,7 +29,11 @@ You must have the **Owner** role to be able to grant permissions.
 2. Click on **Settings**.
 3. Find the **Members** section of the organization settings page.
 4. Click on **Grant access**.
-5. Enter a user's **Email** address.
+5. Enter one or more email addresses in the **Emails** field.
+   You can enter multiple addresses separated by commas or on separate lines.
+   All invitations use the same role and resource.
+
+   <!-- TODO: screenshot needs updating for bulk invite UI -->
 
    {{< imgproc alt="The user invitation menu on the Organization settings page." src="/fleet/app-usage/invite-user.png" resize="700x" declaredimensions=true class="shadow" >}}
 
@@ -41,7 +45,7 @@ You must have the **Owner** role to be able to grant permissions.
 
    For more information on roles and the permissions they provide, see [Manage access with Role-Based Access Control](/organization/rbac/).
 
-8. Click **Send invitation**.
+8. Click **Send invitation** (or **Send invitations** if you entered multiple email addresses).
 
    {{<imgproc src="/fleet/app-usage/limit-access.png" resize="1000x" style="width: 600px" class="shadow" declaredimensions=true alt="Limit user access">}}
 
