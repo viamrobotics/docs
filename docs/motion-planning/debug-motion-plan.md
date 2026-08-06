@@ -146,8 +146,8 @@ Look for parts whose parent names do not match any other part in the output. A t
 reference to a deleted or renamed component, or a circular reference all produce this error.
 In the [Viam app](https://app.viam.com), open the **CONFIGURE** tab, find each unlinked
 component's **Frame** configuration, and correct the `parent` field so that it references an
-existing component or `world`. Run `print-config` again and confirm that every part traces
-back to the world frame before you retry the motion call.
+existing component or `world`. Save the configuration, then run `print-config` again and
+confirm that every part traces back to the world frame before you retry the motion call.
 
 ### Find where one component is
 

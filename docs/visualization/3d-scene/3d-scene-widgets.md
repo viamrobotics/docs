@@ -16,7 +16,7 @@ widgets, which you open from the toolbar for any resource on the machine, and th
 
 ## Open a control widget
 
-Click **Control widgets** (joystick icon) in the scene toolbar. A panel titled **Control
+Click **Control widgets** (joystick icon) in the top-right strip of the scene toolbar. A panel titled **Control
 widgets** opens, listing the machine's resources grouped by type: a heading per resource type
 (**Arm**, **Camera**, **Motor**, and so on), and under it one row per resource of that type,
 each showing the resource's name and how many of its controls are currently open, for example
@@ -32,20 +32,21 @@ machine part, so the layout you build survives a reload.
 
 ## What each resource offers
 
-Control widgets are the same interactive controls the machine's **CONTROL** tab uses, so what
-a resource offers depends on its API:
+Control widgets come from the same library of resource controls as the machine's **CONTROL**
+tab, so what a resource offers depends on its API:
 
 - Resources whose API is broken into individual controls list one toggle per control.
 - Resources without individual controls list a single **Overview** toggle that opens the
   resource's full control card.
-- The motion service lists a **Move** control, the same frame-aware move used when you
-  [edit frames visually](/visualization/3d-scene/editing-frames-visually/).
+- The motion service lists a **Move** control: the frame-aware move panel that commands the
+  machine to move a selected frame, the same one the scene's move mode uses. The **CONTROL**
+  tab omits the motion service, so this control is specific to the scene.
 - Every resource that supports `DoCommand` also lists a **DoCommand** control: a JSON editor
   for sending a raw command and reading the response. Generic components and services, whose
   only API is `DoCommand`, list that one control.
 
 Resources with nothing to drive do not appear at all: the data manager, the sensors service,
-and internal resources are left out of the list.
+the shell service, and internal resources are left out of the list.
 
 ## Frame POV
 

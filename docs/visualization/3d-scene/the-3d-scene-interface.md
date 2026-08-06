@@ -14,7 +14,7 @@ settings. For what the scene renders and where each element comes from, see
 
 ## Interface
 
-The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the **Dashboard toolbar** changes how the viewport renders.
+The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the toolbars set the mode, open panels, and act on the scene.
 
 **3D viewport** (center): the interactive rendering area. Orbit, pan, and zoom to see your frame system from any angle. Components appear as labeled coordinate axes; attached geometries render as translucent shapes; point clouds render as colored point sets. An XY grid provides spatial reference.
 
@@ -29,23 +29,30 @@ The panel is draggable and anchors to the top-right of the viewport by default.
 It includes:
 
 - **world position** (mm) and **world orientation** (an orientation vector: `x / y / z` unit-vector components, `th` in degrees): the entity's absolute pose in the world frame. Read-only.
-- **parent frame**: which frame this entity is a child of. Editable when the entity is a configurable frame.
-- **local position** (mm) and **local orientation** (deg): pose relative to the parent frame. Editable for configurable frames; these correspond to the `translation` and `orientation` in your frame configuration.
-- **geometry**: four buttons (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm).
+- **parent frame**: which frame this entity is a child of. Editable in build mode when the entity is a configurable frame.
+- **local position** (mm) and **local orientation**: pose relative to the parent frame, corresponding to the `translation` and `orientation` in your frame configuration. Orientation has an **OV (deg)** tab and a **Euler** tab. Editable in build mode for configurable frames.
+- **geometry**: a tab per geometry type (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm). Editable in build mode.
 
 The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
-**Dashboard toolbar** (top-center): Visible buttons, left to right:
+**Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used.
 
-- **Orthographic / Perspective** toggle: switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
-- **Add frames**: opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
+Next to the mode toggle, in the same top-right strip:
+
+- **Control widgets** (joystick icon): opens a panel listing the machine's resources, where you turn on interactive controls for them. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
+- **Fullscreen**: expands the scene to fill the browser window.
+- **Settings** (gear icon): opens the Settings panel.
+
+**Dashboard toolbar** (top-center): tools that act on the scene. Which buttons appear depends on the mode and on your permissions:
+
+- **Add frames** (axis-arrow icon, build mode only): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
+- **Focus selection**: centers the view on the selected entity.
 - **AI Scene Builder**: opens a prompt panel for editing frames with natural language. See [Edit frames with AI](/visualization/3d-scene/editing-frames-visually/#edit-frames-with-ai).
-- **Control widgets** (joystick icon): opens a panel listing the machine's resources, where you turn on interactive controls for them. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
-- **Logs**: shows a count badge for errors/warnings from the scene renderer.
-- **Settings** (gear icon): opens the Settings panel.
+
+**Camera controls** (bottom-right): **Reset camera** returns the view to its starting pose, and the **Orthographic / Perspective** toggle switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
 
 ## Navigation controls
 
@@ -73,9 +80,9 @@ Settings are grouped by what they affect: connection, scene decoration, point cl
 - **Vision**: enable or disable vision-service point-cloud entities.
 - **Debug**: toggle **Render stats**, an on-screen performance counter.
 - **Weblabs**: feature-flag overrides (usually empty).
-- **VR / AR**: only visible when the browser supports WebXR.
+- **AR**: settings for the immersive WebXR view.
 
-Widgets have no settings tab: you turn them on from the **Control widgets** panel in the toolbar. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
+Widgets have no settings tab: you turn them on from the **Control widgets** panel in the top-right strip. See [3D scene widgets](/visualization/3d-scene/3d-scene-widgets/).
 
 ## File import
 
