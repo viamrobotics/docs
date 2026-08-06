@@ -12,7 +12,7 @@ you inspect the 3D scene. This page is a reference to its panels, toolbar, navig
 settings. For what the scene renders and where each element comes from, see
 [Visualizing with the 3D scene](/visualization/3d-scene/).
 
-## The interface
+## Interface
 
 The tab has four areas, each doing a distinct job: the **viewport** renders the scene; the **World panel** and **Details panel** select and inspect entities; the **Dashboard toolbar** changes how the viewport renders.
 
@@ -28,7 +28,7 @@ Click a row to select the entity; its details appear in the Details panel.
 The panel is draggable and anchors to the top-right of the viewport by default.
 It includes:
 
-- **world position** (mm) and **world orientation** (deg, as an orientation vector `x / y / z / th`): the entity's absolute pose in the world frame. Read-only.
+- **world position** (mm) and **world orientation** (an orientation vector: `x / y / z` unit-vector components, `th` in degrees): the entity's absolute pose in the world frame. Read-only.
 - **parent frame**: which frame this entity is a child of. Editable when the entity is a configurable frame.
 - **local position** (mm) and **local orientation** (deg): pose relative to the parent frame. Editable for configurable frames; these correspond to the `translation` and `orientation` in your frame configuration.
 - **geometry**: four buttons (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm).
@@ -38,7 +38,7 @@ Entities that can be removed (for example, dropped PCD files) also show a **Remo
 
 **Dashboard toolbar** (top-center): Visible buttons, left to right:
 
-- **Orthographic / Perspective** toggle: switch between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
+- **Orthographic / Perspective** toggle: switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
 - **Add frames**: opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.

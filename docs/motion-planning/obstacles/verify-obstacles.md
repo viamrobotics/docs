@@ -9,7 +9,7 @@ aliases:
   - /motion-planning/3d-scene/set-up-obstacle-avoidance/
 ---
 
-The motion planner routes around an obstacle only when a geometry represents it: a box, sphere, capsule, or cylinder positioned in the frame system. The **3D SCENE** tab renders each configured geometry in place, so you can confirm that a box defined as `{x: 800, y: 1200, z: 20}` at a parent-relative translation actually covers the table, and check coverage of the whole workspace, before you run a plan.
+The motion planner avoids only the obstacles you define as geometries: boxes, spheres, capsules, or cylinders positioned in the frame system. The **3D SCENE** tab draws each geometry at its configured position and size, so you can see whether a box specified as `{x: 800, y: 1200, z: 20}` actually covers the table before you run a plan.
 
 ## Prerequisites
 
@@ -36,6 +36,8 @@ Click an obstacle in the scene or in the World panel to see its details:
 - **dimensions**: `x` / `y` / `z` (mm) for Box; `r` (mm) for Sphere; `r` and `l` (mm) for Capsule.
 - **local position** (mm): the geometry's center relative to its parent frame.
 - **parent frame**: which frame the geometry is attached to.
+
+Cylinders configured in JSON render in the scene; the geometry buttons cover box, sphere, and capsule only.
 
 ### 3. Compare geometry to physical objects
 
@@ -69,15 +71,16 @@ After defining obstacles, run through this checklist in the **3D SCENE** tab:
 
 ## Dynamic obstacles
 
-Static obstacles in configuration cover fixed workspace objects. For objects
-that move, pass geometry at runtime through the `WorldState` parameter of the
-`Move` request. See
+The scene draws only geometries from saved configuration; obstacles passed
+in a `Move` call's `WorldState` are not drawn. Static obstacles in
+configuration cover fixed workspace objects. For objects that move, pass
+geometry at runtime through the `WorldState` parameter of the `Move`
+request. See
 [Static vs dynamic obstacles](/motion-planning/obstacles/overview/#static-vs-dynamic-obstacles)
 for the distinction and
 [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/)
 for code examples.
 
-Dynamic obstacles passed to a single `Move` call are not drawn in the **3D
-SCENE** tab. To verify a dynamic obstacle's position visually, log its pose
+To verify a dynamic obstacle's position visually, log its pose
 from your code or temporarily add a static geometry with the same dimensions
 to a component frame.

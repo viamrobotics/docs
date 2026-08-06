@@ -131,6 +131,24 @@ A pose that does not match where the component physically sits means the frame c
 is wrong. Edit the configuration in the Viam app, then run both commands again to confirm the
 change took effect.
 
+### Some frames are not linked to the world frame
+
+The motion service refuses to plan when a frame in your configuration does not connect to the
+world frame through its parent chain, and the error lists the unlinked parts. Renaming a
+component without updating the `parent` field on the components attached to it is the usual
+cause. Dump the frame tree to see each part's declared parent:
+
+```sh
+viam machines part motion print-config --part "my-machine-main"
+```
+
+Look for parts whose parent names do not match any other part in the output. A typo, a stale
+reference to a deleted or renamed component, or a circular reference all produce this error.
+In the [Viam app](https://app.viam.com), open the **CONFIGURE** tab, find each unlinked
+component's **Frame** configuration, and correct the `parent` field so that it references an
+existing component or `world`. Run `print-config` again and confirm that every part traces
+back to the world frame before you retry the motion call.
+
 ### Find where one component is
 
 To read a single component's pose without the rest of the frame tree:

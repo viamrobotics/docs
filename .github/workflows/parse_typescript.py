@@ -138,7 +138,7 @@ class TypeScriptParser:
                 param_object = {}
                 if method.find('div', class_="tsd-parameters"):
                     parameters = method.find('div', class_="tsd-parameters")
-                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").children
+                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").find_all('li', recursive=False)
 
                     for param in parameter_list:
                         param_name = param.find('span', class_="tsd-kind-parameter").text
@@ -166,9 +166,9 @@ class TypeScriptParser:
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
                 returns = " ".join(returns.split())
                 return_description = ""
-                if method.find('h4', class_="tsd-returns-title").next_sibling:
-                    if not method.find('h4', class_="tsd-returns-title").next_sibling.get('class'):
-                        return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
+                if method.find('h4', class_="tsd-returns-title").find_next_sibling():
+                    if not method.find('h4', class_="tsd-returns-title").find_next_sibling().get('class'):
+                        return_description = md(str(method.find('h4', class_="tsd-returns-title").find_next_sibling())).strip()
                     else:
                         return_description = None
                 else:
