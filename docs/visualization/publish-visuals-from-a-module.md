@@ -46,8 +46,8 @@ is `go.viam.com/api/common/v1` and `pb` is
 {{% alert title="Implementing in Python" color="tip" %}}
 The Python SDK also includes the service, in `viam.services.worldstatestore`: implement
 the same three methods there. The `draw` helper library below is Go-only; a Python
-module builds its `Transform` protos directly, with the geometry constructors shown in
-[Visuals and collisions](/visualization/visuals-and-collisions/).
+module builds its `Transform` protos directly, with the
+[geometry constructors](/visualization/reference/geometry-constructors/).
 {{% /alert %}}
 
 ```go

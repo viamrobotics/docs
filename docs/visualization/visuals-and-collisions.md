@@ -112,7 +112,7 @@ For the constructor for each type, in JSON, Python, and Go, see
 
 ## Assemble a transform
 
-The geometry above is only the shape. To render it as a visual, wrap it in a transform
+A geometry is only the shape. To render it as a visual, wrap it in a transform
 that carries the other anatomy fields: a reference frame and pose, metadata, and a UUID.
 The `draw` library assembles them for you, so you do not build the `Transform` proto by
 hand:

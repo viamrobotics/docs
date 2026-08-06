@@ -18,14 +18,56 @@ service. The scene then renders the path you can otherwise only read as numbers.
 This page shows how to turn a plan into transforms the scene can draw, and how to
 use the rendered path to debug a plan that failed or moved unexpectedly.
 
+## Replay a saved plan in the 3D scene
+
+If the plan already ran, you do not need to write any code to see it. The motion service
+dumps qualifying plans as JSON files, and the **3D SCENE** tab replays those files step by
+step.
+
+The service does not dump every plan. Configure which ones it keeps
+(see [Motion service configuration](/motion-planning/reference/motion-service/)):
+
+- `plan_file_path` is where the dumps go. On its own it writes nothing; it is required by
+  both of the settings below.
+- `log_planner_errors: true` dumps a plan that failed. A failed dump is the request only,
+  with no trajectory to replay, but it still shows the world the planner was working in.
+- `log_slow_plan_threshold_ms` dumps a plan that took longer than that many milliseconds.
+  This is what captures successful plans, trajectory included, so set it if you want to
+  replay plans that worked.
+
+Then add the plan directory to the data manager's `additional_sync_paths` so the files reach
+the cloud (see [Upload external data](/data/capture-sync/upload-other-data/)). Syncing
+walks the `tag=` subdirectories the service writes and carries those tags to the cloud,
+which is how the import dialog finds the plans.
+
+With plans synced, open the **3D SCENE** tab in monitor mode:
+
+1. Open the **Motion Plan Replayer** panel from the top-center toolbar.
+2. Click **Import from data**, then pick up to five plans. The dialog lists synced files
+   tagged `motion-plan`, which are plans that succeeded, and `motion-plan-err`, which are
+   plans that failed. It searches the current machine by default; widen it to the whole
+   organization if the plan ran elsewhere. You can also upload a plan JSON from your
+   computer instead.
+3. Select a plan to render it. A plan that failed is a request without a trajectory, so it
+   renders the scene it planned against with nothing to step through.
+4. Scrub the trajectory with the player at the bottom of the viewport: play and pause, step
+   one position at a time, jump to either end, or drag the slider. Each step moves the arm's
+   links and joints to their pose at that step, with the plan's obstacles in place.
+
+Select a plan's entity to change its color, opacity, or axes helper in the Details panel;
+those edits hold as you scrub. Plan frames render without axes helpers by default.
+
+Replay shows a plan the service already computed. To render a plan you are computing
+yourself, or to keep visuals live while the machine runs, publish the plan as custom
+visuals instead.
+
 ## Prerequisites
 
-The code on this page starts from a plan you already have in Go:
+The custom-visuals path below starts from a plan you already have in Go:
 
-- A `plan` and the `fs` (`*referenceframe.FrameSystem`) it was planned against. Both come
-  out of `armplanning.PlanMotion`; see
-  [Verify a plan](/motion-planning/verify-a-plan/) for assembling the `PlanRequest` that
-  produces them.
+- A `plan` from `armplanning.PlanMotion`, and the `fs` (`*referenceframe.FrameSystem`) you
+  assembled into its `PlanRequest`. See
+  [Verify a plan](/motion-planning/verify-a-plan/) for building both.
 - The goal pose you passed to the planner, to mark the destination.
 - A module that can serve a world state store service, which is how the transforms reach
   the scene. See
