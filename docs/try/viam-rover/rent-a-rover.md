@@ -161,11 +161,12 @@ You can also follow this tutorial:
 
 - [Drive a rover in a square with the Viam SDK](/try/viam-rover/drive-rover/)
 
-If you want to get your own Viam Rover, [you can](https://www.viam.com/resources/rover).
+Viam no longer sells the [Viam Rover 2](https://www.viam.com/resources/rover).
+If you already have a rover, follow the [setup instructions](/try/viam-rover/setup/) to get started with it.
 
 ### Why can't I use the rover's microphone?
 
 For security reasons, Viam has disabled the microphone on rover rentals.
-The microphone on [Viam Rovers shipped to you](/try/viam-rover/) functions normally.
+The microphone on [your own Viam Rover](/try/viam-rover/) functions normally.
 
 {{< snippet "social.md" >}}

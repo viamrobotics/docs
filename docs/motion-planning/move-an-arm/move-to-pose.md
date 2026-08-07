@@ -4,7 +4,7 @@ title: "Move an arm to a target pose"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "Use the motion service to move a robot arm to a position in 3D space."
+description: "Use the motion service to move a robot arm to a target pose (position and orientation) in 3D space."
 aliases:
   - /operate/mobility/move-arm/
   - /operate/mobility/move-arm/arm-motion/
@@ -17,10 +17,8 @@ aliases:
   - /motion-planning/motion-how-to/move-arm-to-pose/
 ---
 
-A robot arm needs to reach a specific position and orientation in 3D space, but
-joint angles alone do not tell you whether the end effector ends up where you
-want it, and a naive joint trajectory may swing through the table or the back
-wall. The motion service takes a target pose, solves inverse kinematics, and
+A naive joint trajectory can swing the arm through the table on the way to a
+target. The motion service takes a target pose, solves inverse kinematics, and
 returns a collision-free path that respects the frame system and any obstacles
 you declare.
 
@@ -65,6 +63,8 @@ import (
     "github.com/golang/geo/r3"
 )
 
+// machine is a connected robot client; copy the connection snippet from
+// your machine's CONNECT tab in the Viam app.
 motionService, err := motion.FromProvider(machine, "builtin")
 if err != nil {
     logger.Fatal(err)
@@ -142,7 +142,7 @@ fmt.Println("Arm moved to target pose")
 ### 4. Move with obstacle avoidance
 
 To make the planner avoid things in the workspace, pass a `WorldState` that
-lists them. The planner checks every frame in the scene against every obstacle
+lists them. The planner checks the robot's geometries against every obstacle
 you include.
 
 {{< tabs >}}
@@ -269,7 +269,7 @@ viam machines part motion set-pose --part "my-machine-main" --component "my-arm"
 
 - Verify the `reference_frame` on your destination. The point
   `(x=300, y=200, z=400)` in `"world"` and the same point in `"my-arm"` name
-  different physical locations; whichever one you set, the arm drives to.
+  different physical locations; the arm drives to whichever one you set.
 - Check the frame system configuration. Incorrect translations or orientations
   shift the target.
 - Read the arm's position before and after to see what actually changed.

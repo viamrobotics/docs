@@ -319,54 +319,16 @@ If you need to install `viam-server` without the web UI, you can run the followi
 
 {{< tabs >}}
 {{% tab name="Linux (Aarch64)" %}}
-{{< tabs >}}
-{{% tab name="Install manually" %}}
-
-```bash {class="line-numbers linkable-line-numbers"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-aarch64.AppImage -o viam-server
-```
-
-Next, to make the `viam-server` executable and install as a system service, run the following command:
-
-```bash {class="line-numbers linkable-line-numbers"}
-chmod 755 viam-server && sudo ./viam-server --aix-install
-```
-
-The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{% tab name="Install using viam-agent" %}}
 
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{< /tabs >}}
 
 {{% /tab %}}
 {{% tab name="Linux (x86_64)" %}}
 
-{{< tabs >}}
-{{% tab name="Install manually" %}}
-
-```bash {class="line-numbers linkable-line-numbers"}
-curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64.AppImage -o viam-server
-```
-
-Next, to make the `viam-server` executable and install as a system service, run the following command:
-
-```bash {class="line-numbers linkable-line-numbers"}
-chmod 755 viam-server && sudo ./viam-server --aix-install
-```
-
-The `viam-server` binary is installed at <FILE>/usr/local/bin/viam-server</FILE>.
-
-{{% /tab %}}
-{{% tab name="Install using viam-agent" %}}
-
 ```sh {id="terminal-prompt" class="command-line" data-prompt="$"}
 sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/apps/viam-agent/install.sh)"
 ```
@@ -374,12 +336,10 @@ sudo /bin/sh -c "$(curl -fsSL https://storage.googleapis.com/packages.viam.com/a
 The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin/viam-server</FILE>.
 
 {{% /tab %}}
-{{< /tabs >}}
-{{% /tab %}}
 {{% tab name="macOS" %}}
 
 ```bash {class="line-numbers linkable-line-numbers"}
-brew tap viamrobotics/brews && brew install viam-server
+brew tap viamrobotics/brews && brew trust viamrobotics/brews && brew install viam-server
 ```
 
 The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
@@ -398,7 +358,16 @@ curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-serv
 {{% /tab %}}
 {{% tab name="Windows native" %}}
 
-Manual installation is not available for native Windows; you must download the [Viam Agent installer](https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi) and follow the on-screen instructions to complete the installation.
+To install `viam-agent` on native Windows, open **Command Prompt as administrator** and run the following command.
+Replace `<KEY_ID>` and `<KEY>` with an [API key](/organization/api-keys/) that can access your machine, and `<PART_ID>` with your machine part's ID.
+To copy the part ID, click the **Live** / **Offline** status dropdown at the top of your machine's page, then click **Part ID**.
+
+```bat {class="line-numbers linkable-line-numbers"}
+mkdir C:\etc 2>nul & curl -fsSL -H "key_id:<KEY_ID>" -H "key:<KEY>" "https://app.viam.com/api/json1/config?id=<PART_ID>&client=true" -o C:\etc\viam.json && curl -fsSL "https://storage.googleapis.com/packages.viam.com/apps/viam-agent/viam-agent-stable-windows-x86_64.msi" -o "%TEMP%\viam-agent.msi" && msiexec /i "%TEMP%\viam-agent.msi" /qn /norestart
+```
+
+This command fetches the machine configuration, downloads the installer, and installs `viam-agent` silently.
+Use Cmd, not PowerShell.
 
 The `viam-agent` and `viam-server` binaries are installed at <FILE>C:\opt\viam\cache</FILE>.
 

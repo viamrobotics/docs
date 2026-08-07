@@ -128,8 +128,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 ### Reconfigure
 
-Reconfigure this resource.
-Reconfigure must reconfigure the resource atomically and in place.
+Reconstruct this resource.
+For modular resources, reconstruction destroys the existing resource instance and creates a new one using the constructor.
 
 {{< tabs >}}
 {{% tab name="Go" %}}
@@ -281,6 +281,28 @@ status = await component.get_status()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/sensor/client/index.html#viam.components.sensor.client.SensorClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySensor, err := sensor.FromProvider(machine, "my_sensor")
+
+status, err := mySensor.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

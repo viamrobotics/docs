@@ -21,7 +21,7 @@ date: "2024-06-30"
 cost: "0"
 ---
 
-After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, change visibility, deprecate, or delete the module.
+After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, set a minimum `viam-server` version, change visibility, deprecate, or delete the module.
 
 ## Update a module
 
@@ -322,6 +322,39 @@ To pin a machine to a specific version:
 1. Find the module in the configuration.
 1. Set the **Version** field to a specific version (for example, `0.1.0`).
 1. Click **Save**.
+
+## Set a minimum viam-server version
+
+Some module versions rely on `viam-server` features that older servers lack.
+To warn machine builders before they reach a runtime failure, set the minimum `viam-server` version your module needs.
+Machines running an older server then show a compatibility warning wherever your module is configured or added.
+
+This requirement is advisory: it warns machine builders while still allowing them to add and run the module.
+
+To set the minimum version (module owners only):
+
+1. Navigate to your module's page in the [registry](https://app.viam.com/registry).
+2. In the right-hand sidebar, click the pencil icon next to the minimum `viam-server` version.
+3. Enter the full version your module needs, in `x.y.z` form (for example, `0.62.0`).
+   The field requires a valid `x.y.z` version, so **Save** stays disabled until the value parses.
+4. Click **Save**.
+
+To clear the requirement, open the same field, remove the value, and save the empty input.
+
+The requirement is stamped onto your module's current latest version and applied to the versions you publish next.
+Each new version inherits the minimum in effect when you publish it, and you can change the minimum for that version afterward.
+Earlier versions keep the minimum they were stamped with.
+The **Version history** on your module's page shows the value each version carries, so you can see which versions require which server version.
+
+### Resolve a compatibility warning
+
+When a machine runs a `viam-server` older than a configured module requires, the machine builder sees a compatibility warning in two places:
+
+- On the configured module's card in the machine config, which compares the deployed version's requirement against the running server.
+- In the add-module search preview, which compares the module's current requirement against the running server.
+
+The warning names the version the module requires and the version the machine reports running.
+To resolve it, either upgrade `viam-server` on the machine to that version or newer, or [pin the module](#pin-a-module-to-a-specific-version) to a version whose requirement the machine already meets.
 
 ## Auto-detect models with `update-models`
 
