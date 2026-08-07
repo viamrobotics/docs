@@ -34,6 +34,7 @@ IgnoreURLs:
   - "twitter.com"
   - "github.com/viamrobotics/docs"
   - "github.com/viam-devrel/pick-and-place"
+  - "github.com/viam-devrel/mini-palletizer"
   - "openai.com"
   - "espressif.com"
   - "pinout.xyz"
