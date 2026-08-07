@@ -285,36 +285,35 @@ To run the modular resource, first copy the module binary to your Raspberry Pi.
 
 ### Configure the Intermode base resource
 
-You will now configure your base.
+You will now deploy the module to your machine and add the base component it provides.
 Go to the [machine you added during setup](#machine-setup).
-To make your module accessible to `viam-server`, add it as a local module:
 
-1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**, then **Local module**.
-1. Enter a **Name** for this instance of your modular resource, for example `my-custom-base-module`.
-1. Enter the module's [executable path](/build-modules/write-a-driver-module/#3-test-locally).
-   This path must be the absolute path to the executable on your machine's filesystem.
-   Add the path to where you downloaded the [compiled binary](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/intermode-model).
-1. Then, click the **Create** button, and click **Save** in the upper right corner to save your config.
+1. If you have not already, [install the Viam CLI](/cli/reference/) and log in:
 
-Now that `viam-server` can find the module, you can add the base component it provides for your Intermode base:
+   ```sh {class="command-line" data-prompt="$"}
+   viam login
+   ```
 
-1. On the **CONFIGURE** tab of your machine's page:
+1. From the directory containing the [compiled binary](https://github.com/viam-labs/tutorial-intermode/blob/main/intermode-base/intermode-model), create a module entry in your Viam organization:
 
-   - Click the **+** (Create) icon next to your machine part in the left-hand menu and select **Local module**.
-   - Then, select **Local component**.
+   ```sh {class="command-line" data-prompt="$"}
+   viam module create --name=intermode-base
+   ```
 
-1. On the **Create** menu for a **Local component**:
+1. Find your machine's part ID. At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
 
-   - Select the type of modular resource provided by your module: [base](/reference/components/base/), from the dropdown menu.
-   - Select or enter the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}: `viamlabs:tutorial:intermode`.
-   - Enter a name for this instance of your base, for example `base-1`.
-     This name must be different from the module name.
+1. Deploy the module and add the base component in one step:
 
-1. Click **Create** to create the modular resource provided by the local module.
-1. Click **Save** in the top right corner.
+   ```sh {class="command-line" data-prompt="$"}
+   viam module reload-local --part-id <your-part-id> \
+     --model-name viamlabs:tutorial:intermode --name base-1
+   ```
 
-For more information on modules and how they work, see the [Create a module](/build-modules/write-a-driver-module/).
+   Replace `<your-part-id>` with the part ID you copied.
+
+1. Click **Save** in the top right corner of the **CONFIGURE** tab.
+
+For more information on modules and how they work, see [Create a module](/build-modules/write-a-driver-module/).
 
 ### Control the rover
 
