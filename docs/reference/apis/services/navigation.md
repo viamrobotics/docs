@@ -3,13 +3,29 @@ title: "Navigation service API"
 linkTitle: "Navigation"
 weight: 70
 type: "docs"
-description: "The navigation service API has been removed."
-date: "2026-05-22"
+tags: ["navigation", "services", "base", "rover"]
+description: "Give commands to define waypoints and move your machine along those waypoints while avoiding obstacles."
+date: "2022-01-01"
 aliases:
   - /dev/reference/apis/services/navigation/
   - /appendix/apis/services/navigation/
+build:
+  render: always
+  list: never
+  publishResources: true
 ---
 
-The navigation service API has been removed.
+{{< alert title="Discontinued" color="caution" >}}
+Support for the navigation service has been discontinued.
+This page is retained for reference only.
+{{< /alert >}}
 
-For motion planning APIs, see [Motion service API](/reference/apis/services/motion/).
+The navigation service API allows you to define waypoints and move your machine along those waypoints while avoiding obstacles.
+
+The [navigation service](/reference/services/navigation/) supports the following methods:
+
+{{< readfile "/static/include/services/apis/generated/navigation-table.md" >}}
+
+## API
+
+{{< readfile "/static/include/services/apis/generated/navigation.md" >}}
