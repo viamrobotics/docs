@@ -57,20 +57,17 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="Source" %}}
 
-If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
+If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI from source.
+The RDK module replaces one of its dependencies, and Go refuses `go install <package>@<version>` for a module carrying replace directives, so clone the repository and build it with `make`:
 
 ```sh {class="command-line" data-prompt="$"}
-go install go.viam.com/rdk/cli/viam@latest
+git clone --depth 1 https://github.com/viamrobotics/rdk.git
+cd rdk
+make cli
+sudo cp "bin/$(go env GOOS)-$(go env GOARCH)/viam-cli" /usr/local/bin/viam
 ```
 
-To confirm `viam` is installed and ready to use, issue the _viam_ command from your terminal.
-If you see help instructions, everything is correctly installed.
-If you do not see help instructions, add your local <file>go/bin/\*</file> directory to your `PATH` variable.
-If you use `bash` as your shell, you can use the following command:
-
-```sh {class="command-line" data-prompt="$"}
-echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
-```
+To confirm `viam` is installed and ready to use, run `viam version` from your terminal.
 
 {{% /tab %}}
 {{< /tabs >}}
