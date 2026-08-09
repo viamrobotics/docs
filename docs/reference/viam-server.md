@@ -352,7 +352,9 @@ brew services start viam-server
 ```
 
 The service restarts `viam-server` if it exits and writes logs to <FILE>$(brew --prefix)/var/log/viam-server.log</FILE>.
-For automatic `viam-server` version updates from the cloud, install [`viam-agent`](/reference/viam-agent/) instead.
+
+[`viam-agent`](/reference/viam-agent/) does not support macOS, so brew is the only way to keep `viam-server` running in the background on a Mac.
+Upgrade it yourself with `brew upgrade viam-server`; nothing updates it from the cloud.
 
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}
