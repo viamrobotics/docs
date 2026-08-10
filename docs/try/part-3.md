@@ -46,6 +46,7 @@ The Viam CLI is used for authentication, module generation, and deployment.
 
 ```bash
 brew tap viamrobotics/brews
+brew trust viamrobotics/brews
 brew install viam
 ```
 

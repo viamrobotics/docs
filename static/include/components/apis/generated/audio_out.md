@@ -99,8 +99,8 @@ Stream audio data in chunks for playback.
 
 **Parameters:**
 
-- `chunks` (AsyncIterator[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): async iterator of audio data chunks to play.
-- `info` (viam.components.audio_out.audio_out.AudioInfo) (optional): (optional) information about the audio data such as codec, sample rate, and channel count.
+- `info` (viam.components.audio_out.audio_out.AudioInfo) (required): information about the audio stream such as codec, sample rate, and channel count.
+- `chunks` (AsyncIterable[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]) (required): async iterable of audio bytes to play in order.
 - `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
 - `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
 
@@ -111,14 +111,12 @@ Stream audio data in chunks for playback.
 **Example:**
 
 ```python {class="line-numbers linkable-line-numbers"}
-my_audio_out = AudioOut.from_robot(robot=machine, name="my_audio_out")
-
-async def audio_generator():
-    for chunk in audio_chunks:
+async def chunk_source():
+    for chunk in pcm_chunks:
         yield chunk
 
-audio_info = AudioInfo(codec=AudioCodec.PCM16, sample_rate_hz=44100, num_channels=2)
-await my_audio_out.play_stream(audio_generator(), audio_info)
+audio_info = AudioInfo(codec="pcm16", sample_rate_hz=22050, num_channels=1)
+await my_audio_out.play_stream(audio_info, chunk_source())
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_out/client/index.html#viam.components.audio_out.client.AudioOutClient.play_stream).
@@ -456,6 +454,28 @@ status = await component.get_status()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/audio_out/client/index.html#viam.components.audio_out.client.AudioOutClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myAudioOut, err := audioout.FromProvider(machine, "my_audio_out")
+
+status, err := myAudioOut.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

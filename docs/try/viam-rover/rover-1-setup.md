@@ -16,11 +16,11 @@ date: "2026-05-23"
 ---
 
 {{% alert title="Tip" color="tip" %}}
-A new version of the Viam Rover is available, the [Viam Rover 2](https://www.viam.com/resources/rover).
-If you have purchased a Viam Rover 2, follow [these instructions](/try/viam-rover/setup/) instead.
+A newer version of the Viam Rover, the [Viam Rover 2](https://www.viam.com/resources/rover), replaced the Viam Rover 1.
+If you have a Viam Rover 2, follow [these instructions](/try/viam-rover/setup/) instead.
 {{% /alert %}}
 
-The [Viam Rover 1](https://www.viam.com/resources/rover) arrives preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
+The Viam Rover 1 shipped preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
 
 {{< alert title="Important" color="note" >}}
 You must purchase the following hardware separately:

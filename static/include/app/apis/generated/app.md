@@ -512,6 +512,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `region` (string) (optional): Optional region to update the organization with.
 - `cid` (string) (optional): Optional CRM ID to update the organization with.
 - `defaultFragments` ([FragmentImportList](https://ts.viam.dev/classes/appApi.FragmentImportList.html)) (optional): Optional default fragments to set for the organization.
+- `allowedLoginMethods` ([AllowedLoginMethods](https://ts.viam.dev/classes/appApi.AllowedLoginMethods.html)) (optional): Optional allowed login methods to set for the organization.
 
 **Returns:**
 
@@ -5234,6 +5235,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `type` (PackageType) (required): The PackageType to update the item to.
 - `description` (string) (required): A description of the item.
 - `visibility` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A visibility value to update to.
+- `billing` ([RegistryItemBilling](https://ts.viam.dev/classes/appApi.RegistryItemBilling.html)) (optional): Optional usage cost information to store on the item. When unset, the existing
+  billing configuration is left unchanged.
 
 **Returns:**
 

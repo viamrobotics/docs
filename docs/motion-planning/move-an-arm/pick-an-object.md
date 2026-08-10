@@ -19,6 +19,9 @@ steps, calls out the common places things go wrong, and leaves the result
 ready for the
 [placement](/motion-planning/move-an-arm/place-an-object/) half.
 
+The code examples on this page are Python. The Go flow is the same: the
+motion, vision, and gripper APIs take the same arguments in both SDKs.
+
 ## Prerequisites
 
 - Arm with [frame system](/motion-planning/frame-system/) and
@@ -37,7 +40,9 @@ Detection tells you _which_ object the camera sees; localization tells you
 _where_ it is in 3D. For grasping, you need both. 2D detections from
 `GetDetections` are not enough on their own: use `GetObjectPointClouds`, which
 returns 3D geometries in the camera's frame, then `TransformPose` the result
-into the world frame so the motion service can plan against the pose.
+into the world frame so the motion service can plan against the pose. In the
+code below, the detection is a presence check: it confirms the camera sees an
+object before you commit to 3D localization.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -52,7 +57,7 @@ vision = VisionClient.from_robot(machine, "my-detector")
 detections = await vision.get_detections_from_camera("my-camera")
 if not detections:
     print("No objects detected")
-    exit()
+    return
 
 target = detections[0]
 print(f"Detected: {target.class_name} ({target.confidence:.2f})")
@@ -87,12 +92,32 @@ descent. The two-motion approach gives the planner a clean path that does not
 brush obstacles on the way down, and it makes the grasp itself nearly
 deterministic since only one axis is moving at the end.
 
+Every `move()` call in this guide passes the same `world_state`: here, a
+single 800 mm x 600 mm x 40 mm table box in the world frame. Extend it with
+the rest of the obstacles from your prerequisites.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
 ```python
 from viam.services.motion import MotionClient
+from viam.proto.common import (
+    Vector3, RectangularPrism, Geometry,
+    GeometriesInFrame, WorldState
+)
+
 motion_service = MotionClient.from_robot(machine, "builtin")
+
+# The table the arm is mounted on: an 800mm x 600mm x 40mm box
+# whose top surface is at z=0 in the world frame.
+table = Geometry(
+    center=Pose(x=0, y=0, z=-20),
+    box=RectangularPrism(dims_mm=Vector3(x=800, y=600, z=40)),
+    label="table"
+)
+world_state = WorldState(obstacles=[
+    GeometriesInFrame(reference_frame="world", geometries=[table])
+])
 
 # Pre-grasp: 100mm above the object, end effector pointing down
 pre_grasp = PoseInFrame(
@@ -155,10 +180,10 @@ print("At grasp position")
 
 The grasp itself closes the gripper on the object, confirms contact, and lifts
 straight up before planning any further motion. `gripper.grab()` returns a
-boolean: true if the gripper's contact sensor confirms closure, false if it
-closed but sensed nothing. Treat a false return as "try again with a different
-approach": pressing onward with an empty gripper wastes time and can damage
-downstream setups.
+boolean: `True` if the gripper module reports it grabbed something, `False`
+if it closed without detecting an object. Treat a `False` return as "try
+again with a different approach": pressing onward with an empty gripper
+wastes time and can damage downstream setups.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -204,8 +229,8 @@ print("Object lifted")
   reported top surface prevents the gripper from crashing into it when depth
   is off.
 - **Confirm the grasp before moving.** `gripper.grab()`'s boolean return is
-  fast but not infallible. For fragile or expensive objects, poll force
-  feedback or `is_moving` for a second after closure to catch slippage before
+  fast but not infallible. For fragile or expensive objects, call
+  `is_holding_something()` a moment after closing to catch slippage before
   you lift.
 
 ## What's next
