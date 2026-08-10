@@ -2567,6 +2567,28 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 Query a specific robot part by name and location id.
 
 {{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `name`
+- `locationID` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*RobotPart)](https://pkg.go.dev/go.viam.com/rdk/app#RobotPart)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robotPart, err := cloud.GetRobotPartByNameAndLocation(context.Background(), "my-robot-main", "ab1c2d3e45")
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetRobotPartByNameAndLocation).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -3358,6 +3380,43 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
+### ListMachineSummaries
+
+List summary information for the machines in an organization, optionally filtered by fragment or location.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `organizationID` [(string)](https://pkg.go.dev/builtin#string)
+- `fragmentIDs`
+- `locationIDs` [([]string)](https://pkg.go.dev/builtin#string)
+- `limit` [(int32)](https://pkg.go.dev/builtin#int32)
+
+**Returns:**
+
+- [([]*LocationSummary)](https://pkg.go.dev/go.viam.com/rdk/app#LocationSummary)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+ summaries, err := cloud.ListMachineSummaries(
+		context.Background(),
+	   	"a1bcdefghi2jklmnopqrstuvw3xyzabc",
+	   	[]string{locationID},
+	   	[]string{fragmetnID},
+	  	0,
+ )
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListMachineSummaries).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### NewRobot
 
 Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}.
@@ -4031,7 +4090,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 ### ListMachineSummaries
 
-Lists machine summaries for an organization, optionally filtered by fragment IDs, location IDs, and limit.
+List summary information for the machines in an organization, optionally filtered by fragment or location.
 
 {{< tabs >}}
 {{% tab name="TypeScript" %}}
@@ -5385,6 +5444,198 @@ await appClient.deleteRegistryItem('<YOUR-REGISTRY-ITEM-ID>');
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deleteregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeprecateRegistryItem
+
+Mark a registry item, such as a module or training script, as deprecated.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item to deprecate, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+- `message` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Message explaining the reason for deprecation.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.deprecate_registry_item("your-namespace:your-name", "This item is deprecated")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.deprecate_registry_item).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the item to deprecate.
+- `message` (string) (required): The reason for deprecation.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deprecateRegistryItem('<YOUR-REGISTRY-ITEM-ID>', 'reason for deprecation');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deprecateregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UndeprecateRegistryItem
+
+Remove the deprecated status from a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item to undeprecate, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.undeprecate_registry_item("your-namespace:your-name")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.undeprecate_registry_item).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the item to undeprecate.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.undeprecateRegistryItem('<YOUR-REGISTRY-ITEM-ID>');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#undeprecateregistryitem).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### DeprecateRegistryItemVersion
+
+Mark a specific version of a registry item as deprecated.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+- `version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The semver string of the version to deprecate.
+- `message` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): Message explaining the reason for deprecation.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.deprecate_registry_item_version("your-namespace:your-name", "1.0.0", "This version has a bug")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.deprecate_registry_item_version).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the registry item.
+- `version` (string) (required): The semver string of the version to deprecate.
+- `message` (string) (required): The reason for deprecation.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.deprecateRegistryItemVersion(
+  '<YOUR-REGISTRY-ITEM-ID>',
+  '1.2.3',
+  'reason for deprecation',
+);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#deprecateregistryitemversion).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### UndeprecateRegistryItemVersion
+
+Remove the deprecated status from a specific version of a registry item.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `item_id` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The ID of the registry item, containing either the namespace and module name (for example, my-org:my-module) or organization ID and module name (org-id:my-module).
+- `version` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (required): The semver string of the version to undeprecate.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+await cloud.undeprecate_registry_item_version("your-namespace:your-name", "1.0.0")
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.undeprecate_registry_item_version).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `itemId` (string) (required): The ID of the registry item.
+- `version` (string) (required): The semver string of the version to undeprecate.
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+await appClient.undeprecateRegistryItemVersion('<YOUR-REGISTRY-ITEM-ID>', '1.2.3');
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/AppClient.html#undeprecateregistryitemversion).
 
 {{% /tab %}}
 {{< /tabs >}}
