@@ -11,7 +11,7 @@ aliases:
 
 Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The **3D SCENE** tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.
 
-Misalignment usually means one of two things: the camera's frame offset is wrong, or the camera itself has a problem. Finding that out now, before a motion plan runs or an ML detector ships, costs minutes; finding it out later costs a day of debugging a downstream pipeline.
+Misalignment usually means one of two things: the camera's frame offset is wrong, or the camera itself has a problem. Catch it before a motion plan runs or you train an ML detector on the data.
 
 ## Prerequisites
 
@@ -62,15 +62,14 @@ Adjust the camera's configuration, mounting angle, or lighting conditions to add
 
 ## What's next
 
-The motion planner does not consume raw point clouds directly: a vision
-service with a 3D segmenter (such as the
+The motion planner accepts bounded geometries, not raw point clouds: a
+vision service with a 3D segmenter (such as the
 [`obstacles_pointcloud` module](https://app.viam.com/module/viam/obstacles-pointcloud))
-turns point clouds into bounded 3D objects, and you feed those to the
-planner.
+turns point clouds into bounded 3D objects that you pass to the planner.
 
 - [Pick an object](/motion-planning/move-an-arm/pick-an-object/):
-  uses `GetObjectPointClouds` to localize the target the arm should
-  grasp on a single `Move` call.
+  uses `GetObjectPointClouds` to localize the grasp target, then moves
+  to it with a single `Move` call.
 - [Define obstacles](/motion-planning/obstacles/): the geometry types
   the motion planner accepts, including the
   [`WorldState.obstacles`](/motion-planning/obstacles/avoid-obstacles/)

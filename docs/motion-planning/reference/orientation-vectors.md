@@ -12,7 +12,7 @@ aliases:
   - /operate/reference/orientation-vector/
 ---
 
-When you write a `Pose` payload (in frame system configuration, a motion planning destination, or anywhere else), the orientation format you choose affects validation and gimbal-lock behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.
+In machine JSON configuration (frame definitions and world state files), you choose one of five orientation formats with the `type` field. API `Pose` messages always express orientation as an orientation vector in degrees (`o_x`, `o_y`, `o_z`, `theta`). The format you pick in configuration affects validation and singularity behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.
 
 Viam's default format, the orientation vector (OV), is structured similarly
 to the
@@ -29,7 +29,7 @@ orientation configuration:
 
 ### `ov_degrees` (default)
 
-The orientation vector format (axis plus angle in degrees). Use this for most configurations; the other formats exist to interoperate with Euler, axis-angle, or quaternion inputs.
+The orientation vector format: a pointing direction plus a spin in degrees. Use this for most configurations; the other formats exist to interoperate with Euler, axis-angle, or quaternion inputs.
 
 ```json
 {
@@ -38,15 +38,16 @@ The orientation vector format (axis plus angle in degrees). Use this for most co
 }
 ```
 
-- `x`, `y`, `z`: components of the rotation axis vector (must be non-zero;
-  normalized internally)
-- `th`: rotation angle in degrees. Values wrap every 360 degrees, so
-  `th: 370` and `th: 10` describe the same orientation.
+- `x`, `y`, `z`: the direction the component's +z axis points, as a point
+  on the unit sphere (must be non-zero; normalized internally)
+- `th`: rotation in degrees around that same pointing direction. Values
+  wrap every 360 degrees, so `th: 370` and `th: 10` describe the same
+  orientation.
 
-Default (identity): `{"x": 0, "y": 0, "z": 1, "th": 0}`. This represents no rotation.
+Default (identity): `{"x": 0, "y": 0, "z": 1, "th": 0}`. This points the component along +z with zero spin, leaving it unrotated.
 
-The axis must be a non-zero vector. `(x, y, z) = (0, 0, 0)` is a
-singularity: the rotation axis is undefined and validation rejects it.
+The pointing vector must be non-zero. `(x, y, z) = (0, 0, 0)` is a
+singularity: the pointing direction is undefined and validation rejects it.
 
 ### `ov_radians`
 
@@ -78,7 +79,7 @@ Default: `{"roll": 0, "pitch": 0, "yaw": 0}`.
 
 ### `axis_angles`
 
-Rotation axis plus angle in radians, using the R4AA (Rotation 4 Axis Angle) representation. Choose `axis_angles` when your input already comes from an R4AA source; otherwise `ov_radians` is equivalent and more common in Viam configs.
+Rotation axis plus angle in radians, using the R4 axis-angle representation. Choose `axis_angles` when your input is a true axis-angle rotation. The value keys match an orientation vector's, but the meaning differs: here `(x, y, z)` is the axis to rotate around, while in `ov_radians` it is the direction the component points.
 
 ```json
 {
@@ -108,25 +109,29 @@ Unit quaternion. Values are auto-normalized.
 
 ## Common orientations
 
-| Description                         | `ov_degrees` value                    |
-| ----------------------------------- | ------------------------------------- |
-| No rotation (identity)              | `{"x": 0, "y": 0, "z": 1, "th": 0}`   |
-| 90 degrees around z                 | `{"x": 0, "y": 0, "z": 1, "th": 90}`  |
-| 180 degrees around z (flip x and y) | `{"x": 0, "y": 0, "z": 1, "th": 180}` |
-| 90 degrees around x                 | `{"x": 1, "y": 0, "z": 0, "th": 90}`  |
-| Pointing straight down (-z)         | `{"x": 0, "y": 0, "z": -1, "th": 0}`  |
-| 30 degree tilt around y             | `{"x": 0, "y": 1, "z": 0, "th": 30}`  |
+| Description                                   | `ov_degrees` value                        |
+| --------------------------------------------- | ----------------------------------------- |
+| No rotation (identity)                        | `{"x": 0, "y": 0, "z": 1, "th": 0}`       |
+| Pointing up, spun 90 degrees                  | `{"x": 0, "y": 0, "z": 1, "th": 90}`      |
+| Pointing up, spun 180 degrees (flips x and y) | `{"x": 0, "y": 0, "z": 1, "th": 180}`     |
+| Pointing horizontally along +x                | `{"x": 1, "y": 0, "z": 0, "th": 0}`       |
+| Pointing straight down (-z)                   | `{"x": 0, "y": 0, "z": -1, "th": 0}`      |
+| Tilted 30 degrees from vertical toward +x     | `{"x": 0.5, "y": 0, "z": 0.866, "th": 0}` |
 
 ## Gimbal lock
 
 When using `euler_angles`, certain pitch values (near +/- 90 degrees or pi/2
-radians) cause gimbal lock, where roll and yaw become ambiguous. If you need
-orientations near these values, use `ov_degrees`, `axis_angles`, or `quaternion`
-instead. These formats do not suffer from gimbal lock.
+radians) cause gimbal lock, where roll and yaw become ambiguous. `quaternion`
+and `axis_angles` represent every orientation without this singularity.
+
+An orientation vector has one discontinuity of its own. When the component
+points exactly along +z or -z, `th` behaves like a gimbal-locked Euler angle:
+orientations near straight up or straight down can produce large jumps in
+`th`. If you need smooth behavior near those poles, use `quaternion`.
 
 ## Validation
 
-For `ov_degrees` and `ov_radians`, the axis `(x, y, z)` must have a non-zero magnitude. Passing an all-zero axis returns the error `has a normal of 0, probably X, Y, and Z are all 0`.
+For `ov_degrees` and `ov_radians`, the pointing vector `(x, y, z)` must have a non-zero magnitude. Passing an all-zero axis returns the error `has a normal of 0, probably X, Y, and Z are all 0`.
 
 For `axis_angles`, a zero-norm axis causes a panic during normalization. Always
 provide a non-zero axis vector.
