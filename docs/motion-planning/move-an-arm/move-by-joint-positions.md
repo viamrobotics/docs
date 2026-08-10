@@ -28,7 +28,7 @@ commanded configuration makes the arm swing through the table or your
 workspace fixture, the arm will swing through the table. Joint-space is for
 configurations you have already verified safe.
 
-## Before you start
+## Prerequisites
 
 - A configured arm component and an SDK client.
 - You know the joint angles you want. For a 6-DOF arm, this is six
@@ -178,10 +178,11 @@ from Python; the arm uses its module's default speed profile.
 | `max_acc_degs_per_sec2`        | `double` (optional)   | Uniform acceleration cap across every joint, in degrees per second squared.                                      |
 | `max_vel_degs_per_sec_joints`  | `[]double` (repeated) | Per-joint velocity caps. Length must match the arm's degrees of freedom. Overrides the uniform cap when set.     |
 | `max_acc_degs_per_sec2_joints` | `[]double` (repeated) | Per-joint acceleration caps. Length must match the arm's degrees of freedom. Overrides the uniform cap when set. |
-| `max_tcp_speed`                | `double` (optional)   | Maximum speed of the tool center point in meters per second. The arm moves as fast as possible up to this limit. |
+| `max_tcp_speed`                | `double` (optional)   | Caps the tool center point's speed, in meters per second. Unset means no cap.                                    |
 
-All fields are optional ceilings. Any combination may be set. Every
-constraint that is set is respected at every point along the trajectory.
+All fields are optional ceilings. Any combination may be set. Each cap
+you set applies along the whole trajectory; the arm module is responsible
+for enforcing it.
 Per-joint fields take precedence over global fields. Pass `nil`
 options to use the module's default motion profile.
 
@@ -218,8 +219,9 @@ logger.Infof("joint positions (radians): %v", current)
 {{% /tab %}}
 {{< /tabs >}}
 
-Pair `GetJointPositions` with `MoveToJointPositions` to capture a pose
-by hand (teach-by-demonstration) and replay it programmatically.
+Pair `GetJointPositions` with `MoveToJointPositions` to capture a
+configuration by hand (teach-by-demonstration) and replay it
+programmatically.
 
 ## Joint-space moves compared to motion.Move
 

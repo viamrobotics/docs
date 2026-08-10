@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" class="no-js">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body
+    class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}"
+  >
+    {{- if hugo.IsProduction -}}{{- if .Site.Config.Services.GoogleAnalytics.ID
+    -}}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id={{ .Site.Config.Services.GoogleAnalytics.ID }}"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {{- end -}}{{- end -}}
+    <header>{{ partial "navbar.html" . }}</header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          {{/* No left sidebar on the archive: the filter UI is the navigation,
+          and a sidebar here would only repeat the page title. */}}
+          <main class="col-12" role="main">
+            {{ if not .Site.Params.ui.breadcrumb_disable }}{{ partial
+            "breadcrumb.html" . }}{{ end }}
+            <div class="td-content tutorials">
+              <h1>{{ .Title }}</h1>
+              <p>Browse every Viam tutorial. Filter by language, component, service, level, or content type.</p>
+              {{ if not hugo.IsProduction }}
+              {{ $pctx := .Site }}
+              <div class="alert alert-caution" role="alert">
+                <h4 class="alert-heading">Missing the filtering UI?</h4>
+                <p>
+                  The filtering UI relies on data from Typesense which is only
+                  generated on publish. (This message is only visible on
+                  staging.)
+                </p>
+              </div>
+              {{- $pages := (where (where $pctx.RegularPages ".Section" "tutorials") "Kind" "page") -}}
+              {{/* Full-catalog archive fallback for local/staging builds where Typesense is unavailable. Exclude sequential-workshop phase pages; they surface through their workshop overview on the main landing. */}}
+              {{- $phasePages := where $pages "Params.workshop" "!=" nil -}}
+              {{- $pages = complement $phasePages $pages -}}
+              <div id="archive" class="card-container">
+                <div class="row-no-margin">
+                  {{ range sort $pages ".Weight"}} {{ partial "card.html" (dict "link" (.Page.File.Path) "class" "" "customTitle" "" "customDescription" "" "customCanonicalLink" (.Page.Params.canonical) ) }} {{ end }}
+                </div>
+              </div>
+              {{ else }}
+              <div id="tutorial-menu" class="lozad">
+                <div id="tutorial-filters">
+                  <div
+                    class="filter"
+                    id="filter-languages"
+                    aria-expanded="false"
+                    data-toggle="collapse"
+                    data-target="#languages-list"
+                  >
+                    Languages
+                  </div>
+                  <div
+                    class="filter"
+                    id="filter-components"
+                    aria-expanded="false"
+                    data-toggle="collapse"
+                    data-target="#components-list"
+                  >
+                    Components
+                  </div>
+                  <div
+                    class="filter"
+                    id="filter-services"
+                    aria-expanded="false"
+                    data-toggle="collapse"
+                    data-target="#services-list"
+                  >
+                    Services
+                  </div>
+                  <div
+                    class="filter"
+                    id="filter-level"
+                    aria-expanded="false"
+                    data-toggle="collapse"
+                    data-target="#level-list"
+                  >
+                    Level
+                  </div>
+                  <div
+                    class="filter"
+                    id="filter-resources"
+                    aria-expanded="false"
+                    data-toggle="collapse"
+                    data-target="#resource-list"
+                  >
+                    Content Types
+                  </div>
+                </div>
+                <div
+                  class="accordion-group search-panel__filters show-on-wide lozad"
+                  id="tutorial-filter-items"
+                >
+                  <div
+                    id="languages-list"
+                    class="search-facets collapse"
+                    data-parent="#tutorial-menu"
+                  ></div>
+                  <div
+                    id="components-list"
+                    class="search-facets collapse"
+                    data-parent="#tutorial-menu"
+                  ></div>
+                  <div
+                    id="services-list"
+                    class="search-facets collapse"
+                    data-parent="#tutorial-menu"
+                  ></div>
+                  <div
+                    id="level-list"
+                    class="search-facets collapse"
+                    data-parent="#tutorial-menu"
+                  ></div>
+                  <div
+                    id="platformarea-list"
+                    class="search-facets collapse"
+                    data-parent="#tutorial-menu"
+                  ></div>
+                  <div
+                    id="resource-list"
+                    class="search-facets collapse"
+                    data-parent="#tutorial-menu"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="search-panel__results card-container lozad">
+                <div id="hits" class="row-no-margin"></div>
+                <div id="pagination"></div>
+              </div>
+              {{ end }}
+              <!-- if no javscript show the tutorials -->
+              <noscript>
+                <div class="alert alert-caution" role="alert">
+                  <h4 class="alert-heading">Javascript</h4>
+                  <p>Please enable javascript to see all tutorials.</p>
+                </div>
+                <div class="card-container">
+                  <div class="row-no-margin">
+                    {{ partial "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/get-started/blink-an-led/") }} {{ partial
+                    "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/get-started/servo-mousemover/") }} {{ partial
+                    "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/get-started/lazy-susan/") }} {{ partial
+                    "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/services/plan-motion-with-arm-gripper/") }} {{
+                    partial "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/services/constrain-motion/") }} {{ partial
+                    "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/services/color-detection-scuttle/") }} {{
+                    partial "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/services/webcam-line-follower-robot/") }} {{
+                    partial "tutorialcard-no-js.html" (dict "link"
+                    "/train/train-a-model/") }} {{ partial
+                    "tutorialcard-no-js.html" (dict "link"
+                    "/tutorials/projects/verification-system/") }}
+                  </div>
+                </div>
+              </noscript>
+            </div>
+            <p>
+              Find more examples of how Viam is being used in the world by
+              reviewing
+              <a href="https://www.viam.com/customers" target="_blank"
+                >Customer Stories</a
+              >
+              or
+              <a
+                href="https://www.viam.com/blog/build-and-learn"
+                target="_blank"
+                >blog posts</a
+              >.
+            </p>
+
+            <button
+              class="docsbutton"
+              id="chatButton"
+              title="Chatbot and support"
+            >
+              <span id="chatButtonContent">
+                <i style="font-size: x-large" class="fas fa-comments"></i>
+                <span>Ask AI</span>
+              </span>
+            </button>
+            <button
+              onclick="toTop()"
+              class="docsbutton"
+              id="scrollButton"
+              title="Go to top"
+              style="visibility: hidden"
+            >
+              <i style="font-size: x-large" class="fas fa-chevron-up"></i>
+            </button>
+
+            {{ partial "footer.html" . "tutorials" }}
+          </main>
+        </div>
+      </div>
+    </div>
+
+    {{ partial "scripts.html" . }}
+
+    <script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.46.0"></script>
+
+    {{ $jsTutorials := resources.Get "js/tutorials.js" }} {{ if (eq (substr
+    .Site.BaseURL -1) "/" ) }} {{- $opts := dict "params" (dict "baseURL"
+    (substr .Site.BaseURL 0 -1 )) -}} {{- $jsTutorials = $jsTutorials | js.Build
+    $opts -}} {{ $jsTutorials := $jsTutorials | minify }}
+    <script
+      type="text/javascript"
+      src="{{ $jsTutorials.RelPermalink }}"
+      crossorigin="anonymous"
+    ></script>
+    {{ else }} {{- $opts := dict "params" (dict "baseURL" .Site.BaseURL) -}} {{-
+    $jsTutorials = $jsTutorials | js.Build $opts -}} {{ $jsTutorials :=
+    $jsTutorials | minify }}
+    <script
+      type="text/javascript"
+      src="{{ $jsTutorials.RelPermalink }}"
+      crossorigin="anonymous"
+    ></script>
+    {{ end }}
+  </body>
+</html>

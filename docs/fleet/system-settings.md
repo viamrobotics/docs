@@ -126,6 +126,7 @@ Managed modes work on apt-based distributions (Debian, Ubuntu, Raspberry Pi OS),
 When using a managed mode (`"managed-all"` or `"managed-security"`), you can also set `os_managed_upgrade_interval_hours` to control how often `viam-agent` checks for and installs updates. The default is `24` hours. The minimum value is `1` hour.
 
 If an upgrade in a managed mode requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+It also defers reboots while any package manager transaction is in progress, whether started by `viam-agent` itself or by an external tool, to prevent interrupting an installation mid-transaction.
 
 The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 

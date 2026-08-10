@@ -24,15 +24,15 @@ releases dynamically.
 
 ## Before you start
 
-- A working motion service call (`motion.Move` for arms, a
-  grasp-capable gripper configured on the machine).
+- A working motion service call (`motion.Move` for an arm).
+- A grasp-capable gripper configured on the machine.
 - The grasped object's rough dimensions. You can approximate with a
   box, sphere, or capsule.
 - The offset between the gripper frame origin and the object's center
   (usually close to the gripper's tool center point when the object is
   held centered).
 
-## The Transform message
+## Transform message fields
 
 `WorldState.transforms` is a list of `Transform` entries. Each entry
 defines a new frame and optionally attaches a geometry to it:
@@ -70,7 +70,8 @@ from viam.proto.common import (
     Geometry, GeometriesInFrame, Transform, WorldState,
 )
 
-# Object: a 80mm x 80mm x 100mm box centered 50mm below the gripper origin.
+# Object: an 80 mm x 80 mm x 100 mm box, offset 50 mm along the
+# gripper frame's +z axis (toward the fingers).
 grasped_object = Transform(
     reference_frame="grasped-object",
     pose_in_observer_frame=PoseInFrame(
@@ -101,6 +102,7 @@ world_state = WorldState(
 )
 
 # Use world_state on every Move call while the object is held.
+# destination from your existing Move call
 await motion_service.move(
     component_name="my-arm",
     destination=destination,
@@ -120,7 +122,8 @@ import (
     "go.viam.com/rdk/services/motion"
 )
 
-// Object: a 80mm x 80mm x 100mm box centered 50mm below the gripper origin.
+// Object: an 80 mm x 80 mm x 100 mm box, offset 50 mm along the
+// gripper frame's +z axis (toward the fingers).
 grasped, err := spatialmath.NewBox(
     spatialmath.NewZeroPose(),
     r3.Vector{X: 80, Y: 80, Z: 100},
@@ -159,6 +162,7 @@ if err != nil {
     logger.Fatal(err)
 }
 
+// destination from your existing Move call
 _, err = motionService.Move(ctx, motion.MoveReq{
     ComponentName: "my-arm",
     Destination:   destination,
@@ -189,9 +193,6 @@ await motion_service.move(
     world_state=world_state,
 )
 ```
-
-The planner's view of the world for this and subsequent calls does
-not include the grasped object.
 
 ## Allow contact while grasping
 
@@ -252,10 +253,11 @@ includes the transform) on every call while the object is held.
 
 {{< /expand >}}
 
-{{< expand "Error: unknown parent frame for transform" >}}
+{{< expand "Error: Cannot construct frame system. Some parts are not linked to the world frame." >}}
 
-The `pose_in_observer_frame.reference_frame` must name a frame that
-exists in the machine's frame system. A typo, a component that is
+The error lists the unlinked part names, including your transform's
+frame. The `pose_in_observer_frame.reference_frame` must name a frame
+that exists in the machine's frame system. A typo, a component that is
 missing, or a component whose frame is not configured will all produce
 this error. Run
 [`viam machines part motion print-config`](/motion-planning/reference/cli-commands/#print-config)
