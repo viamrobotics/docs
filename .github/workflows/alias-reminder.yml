@@ -1,36 +1,56 @@
 name: Alias reminder
 
+# Privileged half of the alias reminder: alias-check.yml diffs the PR without
+# secrets and uploads its findings; this workflow only reads that artifact and
+# posts the sticky comment. Fork code never runs with secrets in scope.
 on:
-  pull_request_target:
-    branches: [ main ]
-    types: [ labeled, synchronize ]
+  workflow_run:
+    workflows: [ "Alias check" ]
+    types: [ completed ]
+
+permissions:
+  actions: read  # download the artifact from the triggering run
 
 jobs:
-    alias_reminder:
-        name: Check for moved files
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-              with:
-                  ref: ${{github.event.pull_request.head.sha}}
-                  fetch-depth: 0
-            - name: Check for moved files
-              shell: pwsh
-              id: check_files_moved
-              run: |
-                $diff = git diff -M --find-renames=10 --summary ${{github.event.pull_request.base.sha}}
-                $SourceDiff = $diff | Where-Object { $_ -match 'rename.*.md.*$' }
-                $HasDiff = $SourceDiff.Length -gt 0
-
-                Write-Host "::set-output name=files_moved::$HasDiff"
-                Write-Host "::set-output name=files::$SourceDiff"
-            - name: Comment on PR with changed files
-              if: steps.check_files_moved.outputs.files_moved == 'True'
-              uses: marocchino/sticky-pull-request-comment@v2.2.0
-              with:
-                recreate: true
-                message: |
-                  It looks like the following files may have been renamed. Please ensure you set all needed aliases:
-                  ${{ steps.check_files_moved.outputs.files }}
-                GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}
+  comment:
+    name: Comment on PR with changed files
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download check results
+        # actions/download-artifact@v8.0.1
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: alias-check-results
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Read results
+        id: results
+        shell: bash
+        # Artifact content is PR-author-controlled: take only digits for the PR
+        # number and fence the file list so names cannot inject markdown.
+        run: |
+          pr=$(tr -cd '0-9' < pr-number.txt)
+          if [ -z "$pr" ]; then
+            echo "no PR number in artifact; skipping"
+            exit 0
+          fi
+          echo "pr=$pr" >> "$GITHUB_OUTPUT"
+          if [ -s files.txt ]; then
+            echo "moved=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "It looks like the following files may have been renamed. Please ensure you set all needed aliases:"
+              echo '```'
+              cat files.txt
+              echo '```'
+            } > body.md
+          fi
+      - name: Comment on PR
+        if: steps.results.outputs.moved == 'true'
+        # marocchino/sticky-pull-request-comment@v3.0.4
+        uses: marocchino/sticky-pull-request-comment@0ea0beb66eb9baf113663a64ec522f60e49231c0
+        with:
+          recreate: true
+          number: ${{ steps.results.outputs.pr }}
+          path: body.md
+          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}

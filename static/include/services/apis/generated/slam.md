@@ -11,7 +11,7 @@ Get the current position of the component the SLAM service is configured to sour
 
 **Returns:**
 
-- ([viam.services.slam.Pose](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose)): :   The current position of the specified component.
+- ([viam.services.slam.Pose](https://python.viam.dev/autoapi/viam/services/slam/index.html#viam.services.slam.Pose)): : The current position of the specified component.
 
 **Example:**
 
@@ -60,11 +60,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, 'my_slam');
+const slam = new VIAM.SlamClient(machine, "my_slam");
 
 // Get the current position of the robot in the SLAM map
 const position = await slam.getPosition();
-console.log('Current position:', position);
+console.log("Current position:", position);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getposition).
@@ -86,8 +86,8 @@ Get the point cloud map.
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): :   Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
-    GetPointCloudMapResponse.point\_cloud\_pcd\_chunk values.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): : Complete pointcloud in standard PCD format. Chunks of the PointCloud, concatenating all
+  GetPointCloudMapResponse.point_cloud_pcd_chunk values.
 
 **Example:**
 
@@ -129,7 +129,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, 'my_slam');
+const slam = new VIAM.SlamClient(machine, "my_slam");
 
 // Get the point cloud map
 const pointCloudMap = await slam.getPointCloudMap();
@@ -156,7 +156,7 @@ Get the internal state of the SLAM algorithm required to continue mapping/locali
 
 **Returns:**
 
-- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): :   Chunks of the internal state of the SLAM algorithm.
+- (List[[bytes](https://docs.python.org/3/library/stdtypes.html#bytes-objects)]): : Chunks of the internal state of the SLAM algorithm.
 
 **Example:**
 
@@ -196,7 +196,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, 'my_slam');
+const slam = new VIAM.SlamClient(machine, "my_slam");
 
 // Get the internal state of the SLAM algorithm
 const internalState = await slam.getInternalState();
@@ -220,7 +220,7 @@ Get information about the current SLAM session.
 
 **Returns:**
 
-- ([viam.services.slam.slam.SLAM.Properties](https://python.viam.dev/autoapi/viam/services/slam/slam/index.html#viam.services.slam.slam.SLAM.Properties)): :   The properties of SLAM.
+- ([viam.services.slam.slam.SLAM.Properties](https://python.viam.dev/autoapi/viam/services/slam/slam/index.html#viam.services.slam.slam.SLAM.Properties)): : The properties of SLAM.
 
 **Example:**
 
@@ -242,13 +242,13 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Returns:**
 
-- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties): 
-Information about the current SLAM session.
-An object containing four fields:
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/services/slam#Properties):
+  Information about the current SLAM session.
+  An object containing four fields:
 
 - `SensorInfo` [(SensorInfo[])](https://pkg.go.dev/go.viam.com/api/service/slam/v1#SensorInfo): Information about the sensors (camera and movement sensor) configured for your SLAM service, including the name and type of sensor.
 - `CloudSlam` [(bool)](https://pkg.go.dev/builtin#bool): A boolean which indicates whether the session is being run in the cloud.
-- `MappingMode` [(MappingMode)](https://pkg.go.dev/go.viam.com/rdk/services/slam#MappingMode): Represents the [form of mapping and localizing the current session is performing](/reference/services/slam/cartographer/#using-cartographer). This includes creating a new map, localizing on an existing map and updating an existing map.
+- `MappingMode` [(MappingMode)](https://pkg.go.dev/go.viam.com/rdk/services/slam#MappingMode): Represents the form of mapping and localizing the current session is performing. This includes creating a new map, localizing on an existing map and updating an existing map.
 - `InternalStateFileType` [(string)](https://pkg.go.dev/builtin#string): The file type the service's internal state algorithm is stored in.
 - [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
@@ -275,11 +275,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const slam = new VIAM.SlamClient(machine, 'my_slam');
+const slam = new VIAM.SlamClient(machine, "my_slam");
 
 // Get the properties of the SLAM service
 const properties = await slam.getProperties();
-console.log('SLAM properties:', properties);
+console.log("SLAM properties:", properties);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#getproperties).
@@ -372,7 +372,7 @@ If you are implementing your own SLAM service and want to add features that have
 
 **Returns:**
 
-- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   Result of the executed command.
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): : Result of the executed command.
 
 **Example:**
 
@@ -431,13 +431,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 ```ts {class="line-numbers linkable-line-numbers"}
 // Plain object (recommended)
 const result = await resource.doCommand({
-  myCommand: { key: 'value' },
+  myCommand: { key: "value" },
 });
 
 // Struct (still supported)
-import { Struct } from '@viamrobotics/sdk';
+import { Struct } from "@viamrobotics/sdk";
 
-const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
+const result = await resource.doCommand(
+  Struct.fromJson({ myCommand: { key: "value" } }),
+);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#docommand).
@@ -469,6 +471,28 @@ status = await service.get_status()
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/slam/client/index.html#viam.services.slam.client.SLAMClient.get_status).
 
 {{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")
+
+status, err := mySLAMService.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -497,7 +521,7 @@ Get the `ResourceName` for this instance of the SLAM service.
 
 **Returns:**
 
-- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): :   The ResourceName of this Resource.
+- ([viam.proto.common.ResourceName](https://python.viam.dev/autoapi/viam/proto/common/index.html#viam.proto.common.ResourceName)): : The ResourceName of this Resource.
 
 **Example:**
 
@@ -542,7 +566,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-slam.name
+slam.name;
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/SlamClient.html#name).

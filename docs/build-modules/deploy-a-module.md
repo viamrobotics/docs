@@ -138,7 +138,9 @@ With prep complete, follow one of the two sections below to publish your module.
 
 ### Publish with cloud build (recommended) {#release-with-cloud-build}
 
-Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. Both paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+Cloud build is a Viam-side build service that compiles your module for every target platform listed in `meta.json`'s `build.arch`. By default, cloud build clones your GitHub repo. Both default-mode paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+
+Alternatively, pass `--from-source` to upload your local source directory directly to the cloud builder without requiring a GitHub repo or a git push. See the [CLI reference](/cli/reference/#module-build-start) for the full flag list.
 
 If you don't have a GitHub repo yet, push your module's code to one. From your module's root directory:
 
@@ -354,6 +356,15 @@ This means the binary was compiled for the wrong architecture. For example, you 
 - Use [cloud build](#release-with-cloud-build) to compile for all target platforms automatically.
 - If deploying manually, cross-compile with the correct `GOOS` and `GOARCH` before uploading.
 - Verify the platform flag in your `upload` command matches the binary's architecture (for example, `--platform=linux/arm64` for an `arm64` target).
+
+{{< /expand >}}
+
+{{< expand "Module fails to start or keeps restarting" >}}
+
+- Read the module's lifecycle state from [`GetMachineStatus`](/reference/apis/robot/#getmachinestatus). A module in `STATE_UNHEALTHY` reports the cause in its `error` field and the time it entered that state in `last_updated`.
+- Check `consecutive_failures`. A count that keeps climbing indicates a restart loop, such as a module failing repeatedly on a syntax error.
+- For the state list and field details, see [Module status states](/build-modules/module-reference/#module-status-states).
+- Check the module logs in the **LOGS** tab for the full traceback.
 
 {{< /expand >}}
 

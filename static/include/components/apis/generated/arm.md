@@ -597,7 +597,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Returns:**
 
-- (Promise<GetKinematicsResult>): The legacy kinematics data shape or the newer object containing kinematics data plus a
+- (Promise<[GetKinematicsResult](https://ts.viam.dev/types/GetKinematicsResult.html)>): The legacy kinematics data shape or the newer object containing kinematics data plus a
 map of URDF mesh file paths to mesh data.
 
 **Example:**
@@ -612,6 +612,25 @@ API](https://docs.viam.com/dev/reference/apis/components/arm/#getkinematics).
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getkinematics).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<Kinematics>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+var kinematics = await myArm.getKinematics();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/getKinematics.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -893,6 +912,25 @@ console.log(geometries);
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getgeometries).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final geometries = await myArm.getGeometries();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/getGeometries.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### Reconfigure
@@ -1050,6 +1088,28 @@ status = await component.get_status()
 ```
 
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myArm, err := arm.FromProvider(machine, "my_arm")
+
+status, err := myArm.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
 
 {{% /tab %}}
 {{% tab name="TypeScript" %}}

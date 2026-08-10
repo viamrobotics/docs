@@ -5,13 +5,24 @@ To download the Viam CLI on a macOS computer, install [brew](https://brew.sh/) a
 
 ```sh {class="command-line" data-prompt="$"}
 brew tap viamrobotics/brews
+brew trust viamrobotics/brews
 brew install viam
 ```
 
 {{% /tab %}}
 {{% tab name="Linux aarch64" %}}
 
-To download the Viam CLI on a Linux computer with the `aarch64` architecture, run the following commands:
+On Debian-based distributions (Debian, Ubuntu, Raspberry Pi OS 64-bit), install the Viam CLI from Viam's apt repository so `apt upgrade` keeps it up to date:
+
+```sh {class="command-line" data-prompt="$"}
+curl -fsSL https://us-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/viam.gpg
+echo "deb [signed-by=/usr/share/keyrings/viam.gpg] https://us-apt.pkg.dev/projects/static-file-server-310021 viam main" | sudo tee /etc/apt/sources.list.d/viam.list
+sudo apt update && sudo apt install viam-cli
+```
+
+The package is named `viam-cli`; the installed command is `viam` (a `viam-cli` alias also works).
+
+On other distributions, download the binary directly:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo curl --compressed -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-arm64
@@ -21,18 +32,21 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="Linux x86_64" %}}
 
-To download the Viam CLI on a Linux computer with the `amd64` (Intel `x86_64`) architecture, run the following commands:
+On Debian-based distributions (Debian, Ubuntu), install the Viam CLI from Viam's apt repository so `apt upgrade` keeps it up to date:
+
+```sh {class="command-line" data-prompt="$"}
+curl -fsSL https://us-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/viam.gpg
+echo "deb [signed-by=/usr/share/keyrings/viam.gpg] https://us-apt.pkg.dev/projects/static-file-server-310021 viam main" | sudo tee /etc/apt/sources.list.d/viam.list
+sudo apt update && sudo apt install viam-cli
+```
+
+The package is named `viam-cli`; the installed command is `viam` (a `viam-cli` alias also works).
+
+On other distributions, download the binary directly:
 
 ```sh {class="command-line" data-prompt="$"}
 sudo curl --compressed -o /usr/local/bin/viam https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-linux-amd64
 sudo chmod a+rx /usr/local/bin/viam
-```
-
-You can also install the Viam CLI using [brew](https://brew.sh/) on Linux `amd64` (Intel `x86_64`):
-
-```sh {class="command-line" data-prompt="$"}
-brew tap viamrobotics/brews
-brew install viam
 ```
 
 {{% /tab %}}
@@ -43,20 +57,20 @@ brew install viam
 {{% /tab %}}
 {{% tab name="Source" %}}
 
-If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI directly from source using the `go install` command:
+If you have [Go installed](https://go.dev/doc/install), you can build the Viam CLI from source. Clone the repository and build it with `make`:
 
 ```sh {class="command-line" data-prompt="$"}
-go install go.viam.com/rdk/cli/viam@latest
+git clone --depth 1 https://github.com/viamrobotics/rdk.git
+cd rdk
+make cli
+sudo cp "bin/$(go env GOOS)-$(go env GOARCH)/viam-cli" /usr/local/bin/viam
 ```
 
-To confirm `viam` is installed and ready to use, issue the _viam_ command from your terminal.
-If you see help instructions, everything is correctly installed.
-If you do not see help instructions, add your local <file>go/bin/\*</file> directory to your `PATH` variable.
-If you use `bash` as your shell, you can use the following command:
+To confirm `viam` is installed and ready to use, run `viam version` from your terminal.
 
-```sh {class="command-line" data-prompt="$"}
-echo 'export PATH="$HOME/go/bin:$PATH"' >> ~/.bashrc
-```
+{{< alert title="Why not `go install`?" color="caution" >}}
+The RDK module replaces one of its dependencies, and Go refuses `go install <package>@<version>` for a module carrying replace directives.
+{{< /alert >}}
 
 {{% /tab %}}
 {{< /tabs >}}

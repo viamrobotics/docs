@@ -10,7 +10,7 @@ description: "Delete captured tabular and binary data through the Viam app, the 
 You can delete captured data through the Viam app, the CLI, or the SDK.
 The SQL and MQL query editor is read-only: you cannot run `DELETE`, `DROP TABLE`, or any write operation through it.
 
-[Retention policies](/data/reference/#platform-managed-capture-settings) can also auto-delete data in the cloud after a configured number of days, without anyone running a delete operation.
+[Retention policies](/data/reference/#platform-managed-capture-settings) can also auto-delete data in the cloud after a configured number of days, without anyone running a delete operation. Set them per resource or for [a whole machine part](/data/reference/#part-level-retention-policy).
 
 ## Delete captured data
 
@@ -120,4 +120,4 @@ See the [data client API](/reference/apis/data-client/) for the full set of meth
 - [Manage data with the CLI](/cli/manage-data/) for the full CLI reference, including all `viam data delete` filters
 - [Data client API](/reference/apis/data-client/) for SDK methods
 - [Hot data store](/data/hot-data-store/) for how the hot store interacts with tabular deletes
-- [Data management reference](/data/reference/#platform-managed-capture-settings) for `retention_policy` configuration
+- [Data management reference](/data/reference/#platform-managed-capture-settings) for resource-level and [part-level](/data/reference/#part-level-retention-policy) retention policy configuration

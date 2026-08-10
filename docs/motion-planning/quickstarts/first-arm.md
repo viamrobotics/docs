@@ -198,10 +198,12 @@ Under the hood, the motion service:
 1. Asked the frame system for the arm's current joint state.
 2. Used the UR5e kinematics from the fake module to compute where the
    end effector is right now.
-3. Ran the cBiRRT planner to find a joint-space path from the current
-   configuration to one that places the end effector at the target
-   pose.
-4. Smoothed the path and commanded the fake arm to follow it.
+3. Solved inverse kinematics for a configuration that places the end
+   effector at the target pose, then checked the straight line through
+   joint space to it for collisions. With an empty workspace, that
+   direct path succeeds; in a cluttered one, the planner falls back to
+   the [cBiRRT search algorithm](/motion-planning/how-planning-works/).
+4. Commanded the fake arm to follow the path.
 
 Because the fake arm has no obstacles and no real dynamics, every
 step is instantaneous and deterministic. With a real arm, the same
