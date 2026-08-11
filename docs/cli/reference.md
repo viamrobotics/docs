@@ -1288,7 +1288,10 @@ Tunnel connections from a local port to a destination port on a machine part.
 By default, the tunnel resolves the machine and authenticates through app.viam.com.
 To tunnel directly without internet access, provide all three of `--address`, `--key-id`, and `--key`.
 
-If the destination port is not already listed in the machine's `traffic_tunnel_endpoints` configuration, the CLI attempts to add it automatically. See [Configure tunneling](/fleet/system-settings/#configure-networking-settings-for-tunneling).
+If the destination port is not already listed in the machine's `traffic_tunnel_endpoints` configuration, the CLI attempts to add it automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+When tunneling directly, the destination port must already be configured.
+See [Configure tunneling](/fleet/system-settings/#configure-networking-settings-for-tunneling).
 
 ```sh {class="command-line" data-prompt="$"}
 # tunnel through app.viam.com (default)

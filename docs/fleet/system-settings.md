@@ -59,6 +59,7 @@ In the machine settings card, open **Settings** and expand **Known Networks**. C
 Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection.
 
 If you run `viam machines part tunnel` and the destination port is not already configured, the CLI attempts to add it to the machine config automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
 You can also list allowed ports manually in the machine configuration:
 
 ```json
@@ -85,7 +86,8 @@ To connect through the tunnel, use the CLI:
 viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080
 ```
 
-To tunnel directly to a machine without internet access, pass the machine address and API key credentials:
+To tunnel directly to a machine without internet access, pass the machine address and API key credentials.
+The destination port must already be configured in `traffic_tunnel_endpoints`:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080 \

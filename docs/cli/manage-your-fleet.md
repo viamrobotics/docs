@@ -134,8 +134,10 @@ viam machines part tunnel \
 ```
 
 If the destination port is not already in the machine's tunnel configuration, the CLI adds it automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
 
-To tunnel directly without internet access, pass the machine address and API key:
+To tunnel directly without internet access, pass the machine address and API key.
+The destination port must already be configured on the machine:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part tunnel \
