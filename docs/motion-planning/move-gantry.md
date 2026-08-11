@@ -10,8 +10,9 @@ aliases:
   - /motion-planning/motion-how-to/move-gantry/
 ---
 
-A gantry is a Cartesian robot: three linear axes, no joint-angle to pose
-conversion to do. Most gantry motion is a direct axis command and nothing
+A gantry moves along one or more linear axes, so an axis position is already
+a Cartesian coordinate: no joint-angle conversion needed.
+Most gantry motion is a direct axis command and nothing
 more. But if the gantry shares its workspace with obstacles, carries a payload
 that must avoid something, or moves alongside another machine, the motion
 service plans a collision-aware path the same way it does for an arm. This
@@ -20,9 +21,9 @@ guide covers both.
 ## Direct axis control
 
 Use the gantry component API for direct moves to specific positions.
-Direct axis control bypasses the motion service: there is no obstacle
-checking, no IK, no path planning. Use it when you know the path is
-clear and you want the move to happen now. Read current state first
+Direct axis control skips the motion service: the gantry drives straight
+to the target positions without collision checking. Use it when you know
+the path is clear and you want the move to happen now. Read current state first
 (`get_position`, `get_lengths`) so you know where each axis sits and
 how much travel is available.
 
@@ -89,13 +90,13 @@ if err != nil {
 
 ## Motion-service planning
 
-The motion service treats a gantry the same way it treats an arm: you pass
-a target pose and the planner returns a collision-free path that respects
-the obstacles in the frame system and any `WorldState` you supply. Planning
-takes longer than a direct move (a planning call before execution), but it
-is the only safe choice when obstacles share the workspace, when you need
-to coordinate the gantry with other components, or when you want the same
-planning API across every machine in your fleet.
+The motion service treats a gantry the same way it treats an arm. You pass
+a target pose; the motion service plans a collision-free path that respects
+the obstacles in the frame system and any `WorldState` you supply, and moves
+the gantry along it. Planning takes longer than a direct move (a planning
+call before execution). Plan through the motion service when obstacles share
+the workspace, when you coordinate the gantry with other components, or when
+you want one planning API across your fleet.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
@@ -121,6 +122,14 @@ await motion_service.move(
 {{% tab name="Go" %}}
 
 ```go
+import (
+    "github.com/golang/geo/r3"
+    "go.viam.com/rdk/referenceframe"
+    "go.viam.com/rdk/services/motion"
+    "go.viam.com/rdk/spatialmath"
+)
+
+// motionService follows the same setup as Move an arm to a pose.
 destination := referenceframe.NewPoseInFrame("world",
     spatialmath.NewPose(
         r3.Vector{X: 200, Y: 300, Z: 100},

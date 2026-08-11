@@ -66,10 +66,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const linearVelocity = await movementSensor.getLinearVelocity();
 ```
 
@@ -171,10 +168,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const angularVelocity = await movementSensor.getAngularVelocity();
 ```
 
@@ -270,10 +264,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const compassHeading = await movementSensor.getCompassHeading();
 ```
 
@@ -377,10 +368,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const orientation = await movementSensor.getOrientation();
 ```
 
@@ -478,10 +466,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const position = await movementSensor.getPosition();
 ```
 
@@ -577,10 +562,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const properties = await movementSensor.getProperties();
 ```
 
@@ -690,10 +672,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const accuracy = await movementSensor.getAccuracy();
 ```
 
@@ -792,12 +771,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
-const linearAcceleration =
-  await movementSensor.getLinearAcceleration();
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
+const linearAcceleration = await movementSensor.getLinearAcceleration();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getlinearacceleration).
@@ -925,10 +900,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const movementSensor = new VIAM.MovementSensorClient(
-  machine,
-  'my_movement_sensor'
-);
+const movementSensor = new VIAM.MovementSensorClient(machine, 'my_movement_sensor');
 const readings = await movementSensor.getReadings();
 ```
 
@@ -1042,8 +1014,8 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/r
 
 **Parameters:**
 
-- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or
-  a plain object, which will be converted automatically.
+- `command` ([Struct](https://ts.viam.dev/classes/Struct.html)) (required): The command to execute. Accepts either a [Struct](https://ts.viam.dev/classes/Struct.html) or a plain object,
+  which will be converted automatically.
 - `callOptions` (CallOptions) (optional)
 
 **Returns:**
@@ -1061,9 +1033,7 @@ const result = await resource.doCommand({
 // Struct (still supported)
 import { Struct } from '@viamrobotics/sdk';
 
-const result = await resource.doCommand(
-  Struct.fromJson({ myCommand: { key: 'value' } })
-);
+const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'value' } }));
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#docommand).
@@ -1088,6 +1058,80 @@ var result = myArm.doCommand(command);
 ```
 
 For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/doCommand.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetStatus
+
+Get the current status of the movement sensor as a map of key-value pairs describing its state.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.utils.ValueTypes]): :   The status of the component.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+status = await component.get_status()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/movement_sensor/client/index.html#viam.components.movement_sensor.client.MovementSensorClient.get_status).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+
+**Returns:**
+
+- [(map[string]interface{})](https://pkg.go.dev/builtin#string)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+myMovementSensor, err := movementsensor.FromProvider(machine, "my_movement_sensor")
+
+status, err := myMovementSensor.Status(context.Background())
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Resource).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[JsonValue](https://ts.viam.dev/types/JsonValue.html)>)
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MovementSensorClient.html#getstatus).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- None.
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Resource/getStatus.html).
 
 {{% /tab %}}
 {{< /tabs >}}

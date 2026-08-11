@@ -284,6 +284,19 @@ class GoParser:
                                         if resource == "slam":
                                             self.go_methods[type][resource]['DoCommand']['code_sample'] = 'mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := mySLAMService.DoCommand(context.Background(), command)\n'
 
+                                self.go_methods[type][resource]['Status'] = {'proto': 'GetStatus', \
+                                    'description': 'Status returns the current status of the resource as a map of key-value pairs.', \
+                                    'usage': 'Status(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource'}
+                                if type == "component":
+                                    self.go_methods[type][resource]['Status']['code_sample'] = 'my' + resource.title().replace("_", "") + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromProvider(machine, "my_' + resource + '")\n\nstatus, err := my' + resource.title().replace("_", "") + '.Status(context.Background())\n'
+                                    if resource == "generic_component":
+                                        self.go_methods[type][resource]['Status']['code_sample'] = 'myGenericComponent, err := generic.FromProvider(machine, "my_generic_component")\n\nstatus, err := myGenericComponent.Status(context.Background())\n'
+                                else:
+                                    self.go_methods[type][resource]['Status']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource.replace("_", "") + '.FromProvider(machine, "my_' + resource + '_svc")\n\nstatus, err := my' + resource.title().replace("_", "") + 'Svc.Status(context.Background())\n'
+                                    if resource == "slam":
+                                        self.go_methods[type][resource]['Status']['code_sample'] = 'mySLAMService, err := slam.FromProvider(machine, "my_slam_svc")\n\nstatus, err := mySLAMService.Status(context.Background())\n'
+
                                 self.go_methods[type][resource]['Close'] = {'proto': 'Close', \
                                     'description': 'Close must safely shut down the resource and prevent further use. Close must be idempotent. Later reconfiguration may allow a resource to be "open" again.', \
                                     'usage': 'Close(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) <a href="/builtin#error">error</a>', \
@@ -365,7 +378,9 @@ class GoParser:
                                     self.go_methods[type][resource]['Readings']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
                             ## Similarly, if the resource being considered inherits from framesystem.InputEnabled (Arm, for example),
-                            ## then add the one inherited method manually: Kinematics():
+                            ## then add its three inherited methods manually: Kinematics(), CurrentInputs(), and GoToInputs().
+                            ## These are documented on the framesystem.InputEnabled interface page, not the resource's own
+                            ## pkg.go.dev page, so the inline method scraper above does not find them.
                             if '\tframesystem.InputEnabled' in resource_interface.text:
                                 self.go_methods[type][resource]['Kinematics'] = {'proto': 'GetKinematics', \
                                     'description': 'Kinematics returns the kinematics model of the resource.', \
@@ -374,6 +389,14 @@ class GoParser:
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Kinematics example:" in code_sample_tag.text)
                                 if code_sample:
                                     self.go_methods[type][resource]['Kinematics']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                self.go_methods[type][resource]['CurrentInputs'] = {'proto': 'GetCurrentInputs', \
+                                    'description': 'CurrentInputs returns the current inputs of the resource.', \
+                                    'usage': 'CurrentInputs(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/go.viam.com/rdk/referenceframe#Input">[]referenceframe.Input</a>, <a href="/builtin#error">error</a>)', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
+                                self.go_methods[type][resource]['GoToInputs'] = {'proto': 'GoToInputs', \
+                                    'description': 'GoToInputs moves the resource to the specified inputs, in order.', \
+                                    'usage': 'GoToInputs(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, inputSteps ...<a href="/go.viam.com/rdk/referenceframe#Input">[]referenceframe.Input</a>) <a href="/builtin#error">error</a>', \
+                                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/robot/framesystem#InputEnabled'}
 
                 ## For SLAM service only, additionally fetch data for two helper methods defined outside of the resource's interface:
                 if resource == 'slam':
@@ -421,8 +444,15 @@ class GoParser:
                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
                     'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromProvider(machine, "my_' + resource.lower() + '")\n\nerr = my' + resource.title().replace("_", "") + '.Name()\n'}
 
+                self.go_methods[type][resource]['Status'] = {'proto': 'GetStatus', \
+                    'description': 'Status returns the current status of the resource as a map of key-value pairs.', \
+                    'usage': 'Status(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (map[<a href="/builtin#string">string</a>]interface{}, <a href="/builtin#error">error</a>)', \
+                    'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Resource', \
+                    'code_sample': 'my' + resource.title().replace("_", "") + ', err := generic.FromProvider(machine, "my_' + resource.lower() + '")\n\nstatus, err := my' + resource.title().replace("_", "") + '.Status(context.Background())\n'}
+
                 if resource == "generic_service":
                     self.go_methods[type][resource]['DoCommand']['code_sample'] = 'myGenericService, err := generic.FromProvider(machine, "my_generic_service")\n\ncommand := map[string]interface{}{"cmd": "test", "data1": 500}\nresult, err := myGenericService.DoCommand(context.Background(), command)\n'
+                    self.go_methods[type][resource]['Status']['code_sample'] = 'myGenericService, err := generic.FromProvider(machine, "my_generic_service")\n\nstatus, err := myGenericService.Status(context.Background())\n'
 
             elif type == "app":
                 soup = make_soup(url)

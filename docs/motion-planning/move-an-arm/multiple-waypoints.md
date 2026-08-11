@@ -26,6 +26,13 @@ than over the service API. For the difference between planning in process and
 calling the service, see [Verify a motion plan](/motion-planning/verify-a-plan/).
 {{% /alert %}}
 
+## Prerequisites
+
+- A running machine with an arm component configured.
+- A [frame system](/motion-planning/frame-system/) configured for the arm.
+- A Go program or module that imports the RDK. Planning runs in-process,
+  not over the service API.
+
 ## Why route through ordered goals
 
 One multi-goal plan differs from chaining separate `Move` calls:
@@ -101,6 +108,7 @@ goals := []*armplanning.PlanState{
     }, nil),
 }
 
+// second return is plan metadata
 plan, _, err := armplanning.PlanMotion(ctx, logger, &armplanning.PlanRequest{
     FrameSystem: fs,
     StartState:  startState,
