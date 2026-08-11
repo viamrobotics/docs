@@ -22,6 +22,7 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
+| `--check-connection-interval` | For commands that connect to a machine: check the connection on this interval (a Go duration, for example `30s` or `1m`) and close the client if a faulty connection cannot be repaired. Default: `0` (disabled). |
 | `--config`, `-c` | Load configuration from `FILE`. |
 | `--debug`, `--vvv` | Enable debug logging. Default: `false`. |
 | `--disable-profiles`, `--disable-profile` | Disable usage of [profiles](#profiles), falling back to default behavior. Default: `false`. |
@@ -1105,9 +1106,9 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 | `--location` | ID of the location that the machine belongs to. | Optional |
@@ -1199,9 +1200,9 @@ viam machines part logs --part=myrover-main --tail=true
 | `--errors` | Return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. | Optional |
+| `--start` | Filter logs to include only those after the start time. Default: 24 hours ago. | Optional |
 | `--end` | Filter logs to include only those before the end time. | Optional |
-| `--count` | The number of logs to fetch. | Optional |
+| `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
 
@@ -1260,7 +1261,7 @@ viam machines part cp --part=123 my_file machine:/home/user/
 # Recursively copy a directory to a machine:
 viam machines part cp --part=123 -r my_dir machine:/home/user/
 
-# Copy multiple files to a machine with recursion and keep original permissions and metadata for the files:
+# Copy multiple files to a machine with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p my_dir my_file machine:/home/user/some/existing/dir/
 
 # Copy a single file from a machine to a local destination:
@@ -1269,7 +1270,7 @@ viam machines part cp --part=123 machine:my_file ~/Downloads/
 # Recursively copy a directory from a machine to a local destination:
 viam machines part cp --part=123 -r machine:my_dir ~/Downloads/
 
-# Copy multiple files from the machine to a local destination with recursion and keep original permissions and metadata for the files:
+# Copy multiple files from the machine to a local destination with recursion and preserve exact permissions and timestamps:
 viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/existing/dir/
 ```
 
@@ -1278,23 +1279,38 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
 | `--recursive`, `-r` | Recursively copy files. Default: `false`. | Optional |
-| `--preserve`, `-p` | Preserve modification times and file mode bits from the source files. Default: `false`. | Optional |
+| `--preserve`, `-p` | Preserve modification times and set exact file permissions from the source, overriding the destination `umask`. File permissions are always transferred by default; this flag additionally preserves timestamps and forces exact permission bits. Default: `false`. | Optional |
 
 ### `machines part tunnel`
 
-Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/fleet/system-settings/).
+Tunnel connections from a local port to a destination port on a machine part.
+
+By default, the tunnel resolves the machine and authenticates through app.viam.com.
+To tunnel directly without internet access, provide all three of `--address`, `--key-id`, and `--key`.
+
+If the destination port is not already listed in the machine's `traffic_tunnel_endpoints` configuration, the CLI attempts to add it automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+When tunneling directly, the destination port must already be configured.
+See [Configure tunneling](/fleet/system-settings/#configure-networking-settings-for-tunneling).
 
 ```sh {class="command-line" data-prompt="$"}
-# tunnel connections to the specified port on a machine part
-viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
+# tunnel through app.viam.com (default)
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222
+
+# tunnel directly to a machine without internet
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222 \
+  --address=my-machine.local:8080 --key-id=<key-id> --key=<key-value>
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--destination-port` | The port on a machine part to tunnel to. | **Required** |
+| `--destination-port` | The port on the machine part to tunnel to. | **Required** |
 | `--local-port` | The local port from which to tunnel. | **Required** |
+| `--address` | Machine FQDN to dial directly. Requires `--key-id` and `--key`. | Optional |
+| `--key-id` | ID of the machine API key. Requires `--address` and `--key`. | Optional |
+| `--key` | Value of the machine API key. Requires `--address` and `--key-id`. | Optional |
 
 ### `machines part get-ftdc`
 
@@ -1309,6 +1325,7 @@ viam machines part get-ftdc --part=123 ~/some/existing/dir/
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
+| `--viam-home-dir` | Path to the target machine's [VIAM_HOME](/reference/viam-server/#environment-variables) directory. Use when the machine uses a non-default VIAM_HOME location, for example when managed by `viam-agent`. Default: `~/.viam`. | Optional |
 
 ### `machines part create`
 
@@ -1528,7 +1545,8 @@ Add a trigger to a machine part. Run without `--config` to use an interactive fo
 
 Trigger configs support the following event types:
 
-- `part_online`: liveness check.
+- `part_online`: fires on each online state transition.
+- `part_offline`: fires on each offline state transition.
 - `part_data_ingested`: fires when data of the specified types is ingested.
 - `conditional_data_ingested`: fires when data ingested by a specific data capture method matches a condition.
 - `conditional_logs_ingested`: fires when logs at the specified levels are ingested.
@@ -1544,7 +1562,7 @@ viam machines part add-trigger --part=<part id>
 
 # add a trigger from inline JSON
 viam machines part add-trigger --part=<part id> \
-    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com","seconds_between_notifications":60}]}'
+    --config '{"name":"my-online-trigger","event":{"type":"part_online"},"notifications":[{"type":"email","value":"user@example.com"}]}'
 
 # add a trigger from a JSON file
 viam machines part add-trigger --part=<part id> --config ./trigger.json
@@ -1648,6 +1666,7 @@ viam module build logs --build-id=<build-id> [...named args]
 viam module reload [...named args]
 viam module upload --version=<version> --platform=<platform> [--org-id=<org-id> | --public-namespace=<namespace>] [--module=<path to meta.json>] <module-path> --tags=<tags>
 viam module download [command options]
+viam module versions [--id=<module-id>] [--latest] [--count=<n>]
 viam module local-app-testing --app-url http://localhost:3000
 ```
 
@@ -1911,6 +1930,9 @@ viam module build start --version "0.1.2"
 
 # initiate a cloud build for a private GitHub repo
 viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnopqrstuvwxyzABCD
+
+# build from local source without pushing to GitHub
+viam module build start --version "0.1.2" --from-source --platforms linux/amd64,linux/arm64 --wait
 ```
 
 <!-- prettier-ignore -->
@@ -1919,9 +1941,13 @@ viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnop
 | `--version` | The version of your module to set for this build. See [Using the `--version` argument](#using-the---version-argument). | **Required** |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 | `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | Optional |
-| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | Optional |
-| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | Optional |
+| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. Ignored when `--from-source` is set. | Optional |
+| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. Ignored when `--from-source` is set. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
+| `--from-source` | Package your local source directory and upload it to the cloud builder instead of building from a git ref. `.gitignore` is honored when packaging. | Optional |
+| `--path` | Path to the local source directory to upload. Only used with `--from-source`. Default: `.`. | Optional |
+| `--wait` | Wait for the build to finish. Surfaces failed-platform logs and returns a non-zero exit code on failure. Only used with `--from-source`. | Optional |
+| `--no-progress` | Hide the progress spinner. Only used with `--from-source`. | Optional |
 
 ### `module build local`
 
@@ -1992,6 +2018,28 @@ viam module download --id=acme:my-module --version=1.0.0 --platform=linux/amd64
 | `--version` | The version of the module to download. Defaults to `latest`. | Optional |
 | `--platform` | The architecture of the module binary to download. See [Using the `--platform` argument](#using-the---platform-argument). | Optional |
 | `--destination` | Output directory for downloaded package. Default: `.`. | Optional |
+
+### `module versions`
+
+List a module's released versions and their platforms.
+
+```sh {class="command-line" data-prompt="$"}
+# list all released versions, newest first
+viam module versions --id=acme:my-module
+
+# show only the latest version for each platform
+viam module versions --id=acme:my-module --latest
+
+# show the 5 newest versions
+viam module versions --id=acme:my-module --count=5
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--id` | The module ID (`namespace:module-name` or `org-id:module-name`). If omitted, reads the module ID from `meta.json` in the current directory. | Optional |
+| `--latest` | Print the latest version for each platform instead of the full list. | Optional |
+| `--count` | Show only the N newest versions. Default: all versions. | Optional |
 
 ### `module local-app-testing`
 
@@ -2135,7 +2183,7 @@ pip3 install -r requirements.txt
 ```sh {class="line-numbers linkable-line-numbers"}
 #!/bin/bash
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2162,7 +2210,7 @@ fi
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2196,7 +2244,7 @@ sudo apt-get install -y python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -2212,7 +2260,7 @@ brew install python3-venv
 python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
-python3 -m PyInstaller --onefile --hidden-import="googleapiclient" src/main.py
+python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
 tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
 ```
 
@@ -3083,6 +3131,7 @@ viam traces get-remote --part=<part> [target] [--organization=<org>] [--location
 
 The `update` command updates the CLI to the latest version.
 If the CLI was installed with Homebrew, it updates through Homebrew.
+If the CLI was installed with apt, it updates through apt.
 Otherwise, it downloads and replaces the binary directly.
 
 ```sh {class="command-line" data-prompt="$"}

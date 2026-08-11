@@ -75,7 +75,7 @@ The model is now available in your organization. You can change visibility betwe
 On the machine you want the model to run on:
 
 1. Open the **CONFIGURE** tab.
-2. Click the **+** icon and select **Configuration block**.
+2. Click the **+** icon and select **Blocks**.
 3. In the search field, type the ML model service name matching your model's framework (for example, `tflite_cpu` for TFLite models) and select the matching result.
 4. Click **Add to machine**, name the service (for example, `my-ml-model`), and click **Add to machine** again to confirm.
 5. In the ML model service panel, click **Select model** and pick the model you just uploaded. Choose a version (or **Latest** during development).

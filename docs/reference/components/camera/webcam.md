@@ -94,7 +94,7 @@ To add and use the service:
 1. Click the **+** icon next to your machine part in the left-hand menu and select **Service**.
 1. Search for `find-webcams` and select the `discovery / find-webcams:webcam-discovery` service.
 1. Click **Add module**.
-1. Enter a name or use the suggested name for your camera and click **Create**.
+1. Enter a name or use the suggested name for your camera and click **Add to machine**.
 1. Save your configuration, and wait a moment for the service to start.
 1. Click **Test** to see the available `video_path`s.
 1. Click the **Copy attributes** button for the camera you want to use.

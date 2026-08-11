@@ -10,11 +10,13 @@
 | [`BlockForOperation`](/reference/apis/robot/#blockforoperation) | Blocks on the specified operation on the machine. |
 | [`FrameSystemConfig`](/reference/apis/robot/#framesystemconfig) | Get the configuration of the frame system of a given machine. |
 | [`TransformPose`](/reference/apis/robot/#transformpose) | Transform a given source Pose from the original reference frame to a new destination reference frame. |
+| [`GetPose`](/reference/apis/robot/#getpose) | Get the pose of a component in the frame system of the machine, relative to a specified destination frame. |
 | [`TransformPCD`](/reference/apis/robot/#transformpcd) | Transforms the pointcloud to the desired frame in the robot's frame system. |
 | [`GetModelsFromModules`](/reference/apis/robot/#getmodelsfrommodules) | Get a list of all models provided by local and registry modules on the machine. |
 | [`StopAll`](/reference/apis/robot/#stopall) | Cancel all current and outstanding operations for the machine and stop all actuators and movement. |
 | [`RestartModule`](/reference/apis/robot/#restartmodule) | Reload a module as if its config changed. |
 | [`Log`](/reference/apis/robot/#log) | Create a LogEntry object from the log to send to the RDK over gRPC. |
+| [`UploadDataFromPath`](/reference/apis/robot/#uploaddatafrompath) | Upload data from a file or folder path on the machine to the Viam cloud. |
 | [`GetCloudMetadata`](/reference/apis/robot/#getcloudmetadata) | Get app-related information about the robot. |
 | [`GetVersion`](/reference/apis/robot/#getversion) | Return version information about the machine. |
 | [`Options.with_api_key`](/reference/apis/robot/#optionswith_api_key) | Create a `RobotClient.Options` using an API key as credentials. |

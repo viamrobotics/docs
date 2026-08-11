@@ -142,12 +142,12 @@ robot, err := client.New(
     client.WithCheckConnectedEvery(0), // Checking the connection can safely be disabled
     client.WithReconnectEvery(0), // Same for Attempting to reconnect
     client.WithRefreshEvery(0), // viam-micro-server configures once at boot, so we don't need to check if the components have changed
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
         // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
         // API key ID
         "<API-KEY-ID>",
-        rpc.Credentials{
-            Type: rpc.CredentialsTypeAPIKey,
+        client.Credentials{
+            Type: client.CredentialsTypeAPIKey,
             // TODO: Replace "<API-KEY>" (including brackets) with your
             // machine's API key
             Payload: "<API-KEY>",

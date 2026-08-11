@@ -63,7 +63,7 @@ The CLI supports applying and removing fragments. Authoring fragments, setting v
 ### In the Viam app
 
 1. Navigate to your machine's **CONFIGURE** tab.
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 1. Search for your fragment by name and select it.
 1. Click **Add to machine**.
 1. Click **Add to machine** again to confirm.

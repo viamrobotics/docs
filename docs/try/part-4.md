@@ -212,10 +212,10 @@ viam module upload --version 0.0.1 --platform linux/arm64 --upload module.tar.gz
 
 1. In the Viam app, go to your machine's **Configure** tab
 2. Click **+** next to your machine part
-3. Select **Configuration block**
+3. Select **Blocks**
 4. Search for your model (for example, `your-namespace:inspection-module:inspector`)
 5. Name it `inspector-service`
-6. Click **Create**
+6. Click **Add to machine**
 
 When you add a service from the registry, the module that provides it is added automatically.
 

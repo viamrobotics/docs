@@ -56,12 +56,12 @@ If it shows as offline, verify that `viam-server` is running on your machine.
 ### 2. Add a camera component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your camera:
    - For a USB webcam or built-in laptop camera, search for **webcam**.
    - For an IP camera that supports RTSP, search for **rtsp** and pick one of the `viam:viamrtsp` models (`rtsp` autodetects codec; specific codecs like `rtsp-h264` or `rtsp-h265` are also available).
    - For an Intel RealSense depth camera, search for **realsense**.
-4. Name your camera (this guide uses `my-camera`) and click **Create**.
+4. Name your camera (this guide uses `my-camera`) and click **Add to machine**.
 
 {{< alert title="Finding your camera" color="tip" >}}
 
@@ -235,7 +235,6 @@ import (
     "go.viam.com/rdk/components/camera"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -243,11 +242,12 @@ func main() {
     logger := logging.NewLogger("camera-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

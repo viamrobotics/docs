@@ -63,9 +63,9 @@ Navigate to the **CONFIGURE** tab of your machine's page.
 {{% tablestep start=1 %}}
 **Configure the camera you want to use for your security system.**
 
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
-Select the `camera` type, then select the `webcam` model or another model if you are using a different camera.
-Enter the name `my_webcam` for your camera and click **Create**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
+Search for `webcam`, then select the `camera/webcam` block, or another model if you are using a different camera.
+Enter the name `my_webcam` for your camera and click **Add to machine**.
 
 {{% /tablestep %}}
 {{% tablestep %}}
@@ -94,9 +94,9 @@ If you wish to train your own ML model, see [Train a TF or TFLite model](/train/
 
 To run the machine learning model on your machine, use the [ML model service](/vision/configure/):
 
-1. On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+1. On your machine's **CONFIGURE** tab, click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 1. Select type `ML model`, then select model `TFLite CPU`.
-1. Enter `persondetect` as the name for your ML model service, then click **Create**.
+1. Enter `persondetect` as the name for your ML model service, then click **Add to machine**.
 1. On the ML model service panel, select **Deploy model on machine** for the **Deployment** field.
 1. Click **Select model**, then select the **EfficientDet-COCO** model by **viam-labs** from the **Registry** tab of the modal that appears.
 1. Add the `vision / ML model` vision service to your machine and name it `person-detector`.

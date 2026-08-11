@@ -53,7 +53,7 @@ See [Default control interface](/monitor/default-interface/) and [Teleop workspa
 
 When something goes wrong, Viam provides a set of debugging tools you can use without physical access to the machine:
 
-- **Logs**: the LOGS tab shows machine logs filterable by level, keyword, time range, and resource. You can enable debug logging for individual resources or log name patterns without restarting.
+- **Logs**: the LOGS tab shows machine logs filterable by level, keyword, time range, and source. You can enable debug logging for individual resources or log name patterns without restarting.
 - **Remote shell**: access a terminal on the machine through the CLI (`viam machines part shell`) without setting up SSH tunnels.
 - **Debug endpoints**: enable pprof profiling and resource graph visualization for performance issues.
 - **Configuration history**: view and revert to previous configurations if a config change caused the problem.

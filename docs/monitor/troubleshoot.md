@@ -8,12 +8,11 @@ description: "Debug a misbehaving machine using logs, remote shell access, debug
 aliases:
   - /manage/troubleshoot/troubleshoot/
   - /appendix/troubleshooting/
-  - /dev/tools/common-errors/
 ---
 
 When a machine is not working as expected, follow this debugging workflow: check logs, enable debug logging if needed, access the machine remotely, and if necessary use advanced diagnostics.
 
-For common errors and their solutions, see [Common Errors](/monitor/troubleshoot/).
+For common errors and their solutions, see [Common errors](/monitor/common-errors/).
 
 ## Check logs
 
@@ -125,7 +124,7 @@ You can filter logs by:
 - **Level**: Error, Warn, Info, Debug
 - **Keyword**: full text search (supports regular expressions)
 - **Time range**: set start and end times, or use live mode to stream logs in real time
-- **Resource**: filter by a specific component or service name
+- **Source**: filter by a specific component or service name
 
 The default log level is `Info`.
 If you are not seeing helpful logs, enable debug logging.

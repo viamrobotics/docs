@@ -138,7 +138,9 @@ With prep complete, follow one of the two sections below to publish your module.
 
 ### Publish with cloud build (recommended) {#release-with-cloud-build}
 
-Cloud build is a Viam-side build service that compiles your module from your GitHub repo for every target platform listed in `meta.json`'s `build.arch`. Both paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+Cloud build is a Viam-side build service that compiles your module for every target platform listed in `meta.json`'s `build.arch`. By default, cloud build clones your GitHub repo. Both default-mode paths below require your module to be in a GitHub repo with the URL set in `meta.json`.
+
+Alternatively, pass `--from-source` to upload your local source directory directly to the cloud builder without requiring a GitHub repo or a git push. See the [CLI reference](/cli/reference/#module-build-start) for the full flag list.
 
 If you don't have a GitHub repo yet, push your module's code to one. From your module's root directory:
 
@@ -282,7 +284,7 @@ viam module upload --version=0.1.0 --platform=linux/amd64 dist/archive.tar.gz
 With your module in the registry, any machine in your org can use it (and any Viam user's machine, if the module is public).
 
 1. In the [Viam app](https://app.viam.com), open your machine's **CONFIGURE** tab.
-1. Click **+** and select **Configuration block**.
+1. Click **+** and select **Blocks**.
 1. Search for your module by name or browse the registry, then add it.
 1. Pick a model from your module and create an instance. Name the instance and configure its attributes:
 
@@ -357,6 +359,15 @@ This means the binary was compiled for the wrong architecture. For example, you 
 
 {{< /expand >}}
 
+{{< expand "Module fails to start or keeps restarting" >}}
+
+- Read the module's lifecycle state from [`GetMachineStatus`](/reference/apis/robot/#getmachinestatus). A module in `STATE_UNHEALTHY` reports the cause in its `error` field and the time it entered that state in `last_updated`.
+- Check `consecutive_failures`. A count that keeps climbing indicates a restart loop, such as a module failing repeatedly on a syntax error.
+- For the state list and field details, see [Module status states](/build-modules/module-reference/#module-status-states).
+- Check the module logs in the **LOGS** tab for the full traceback.
+
+{{< /expand >}}
+
 {{< expand "Module works locally but fails after deployment" >}}
 
 - Check for hard-coded paths, missing environment variables, or dependencies installed on your machine but not in the build environment.
@@ -379,8 +390,8 @@ This module implements the [Viam sensor API](https://docs.viam.com/reference/api
 With this model, you can gather temperature and humidity data from a custom HTTP endpoint.
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** button, select **Configuration block**, then select the `sensor / my-sensor-module:my-sensor` model provided by the [`my-sensor-module` module](https://app.viam.com/module/my-org/my-sensor-module).
-Click **Add module**, enter a name for your sensor, and click **Create**.
+Click the **+** button, select **Blocks**, then select the `sensor / my-sensor-module:my-sensor` model provided by the [`my-sensor-module` module](https://app.viam.com/module/my-org/my-sensor-module).
+Enter a name for your sensor and click **Add to machine**.
 
 ## Models
 

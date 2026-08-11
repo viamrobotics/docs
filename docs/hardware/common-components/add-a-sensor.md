@@ -50,11 +50,11 @@ For sensors not covered above, search for `sensor` in the [Viam registry](https:
 ### 1. Add a sensor component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your sensor hardware. Search by
    sensor name or chip (for example, **DHT22**, **BME280**, **SHT31**). For I2C
    or serial sensors, you can also search by protocol or manufacturer.
-4. Name your sensor (for example, `temperature-sensor`) and click **Create**.
+4. Name your sensor (for example, `temperature-sensor`) and click **Add to machine**.
 
 If no model exists for your sensor, you can
 [write your own module](/build-modules/write-a-driver-module/) to add support.
@@ -183,7 +183,6 @@ import (
     "go.viam.com/rdk/components/sensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -191,11 +190,12 @@ func main() {
     logger := logging.NewLogger("sensor-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

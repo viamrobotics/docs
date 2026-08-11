@@ -77,11 +77,11 @@ await mlTrainingClient.submitTrainingJob(
   '<your-model-name>',
   '1.0.0',
   ModelType.SINGLE_LABEL_CLASSIFICATION,
-  ['tag1', 'tag2']
+  ['tag1', 'tag2'],
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submittrainingjob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#submittrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -165,11 +165,11 @@ await mlTrainingClient.submitCustomTrainingJob(
   'viam:classification-tflite',
   '1.0.0',
   '<your-model-name>',
-  '1.0.0'
+  '1.0.0',
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#submitcustomtrainingjob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#submitcustomtrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -222,7 +222,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<undefined | [TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html)>)
+- (Promise<[TrainingJobMetadata](https://ts.viam.dev/classes/mlTrainingApi.TrainingJobMetadata.html) | undefined>)
 
 **Example:**
 
@@ -230,7 +230,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const job = await mlTrainingClient.getTrainingJob('<training-job-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#gettrainingjob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#gettrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -295,11 +295,11 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 ```ts {class="line-numbers linkable-line-numbers"}
 const jobs = await mlTrainingClient.listTrainingJobs(
   '<organization-id>',
-  TrainingStatus.RUNNING
+  TrainingStatus.RUNNING,
 );
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#listtrainingjobs).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#listtrainingjobs).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -363,7 +363,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await mlTrainingClient.cancelTrainingJob('<training-job-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#canceltrainingjob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#canceltrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -423,7 +423,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 await mlTrainingClient.deleteCompletedTrainingJob('<training-job-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MlTrainingClient.html#deletecompletedtrainingjob).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/MlTrainingClient.html#deletecompletedtrainingjob).
 
 {{% /tab %}}
 {{< /tabs >}}

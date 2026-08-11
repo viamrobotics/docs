@@ -8,7 +8,8 @@ description: "The two programs that run on every Viam machine: what each does, h
 date: "2026-04-17"
 ---
 
-When you install Viam on a computer, two programs land on the machine: `viam-agent` and `viam-server`. They have distinct jobs.
+When you install Viam on a Linux or Windows computer, two programs land on the machine: `viam-agent` and `viam-server`. They have distinct jobs.
+On macOS you install `viam-server` on its own, as `viam-agent` does not support macOS.
 
 ## viam-server
 
@@ -21,7 +22,7 @@ Most of what people mean by "Viam running on my robot" is `viam-server`. When yo
 ## viam-agent
 
 `viam-agent` is a process manager that sits above `viam-server`.
-It runs as a system service (systemd on Linux, launchd on macOS) and manages three subsystems:
+It runs as a system service (systemd on Linux, a Windows service on Windows) and manages three subsystems:
 
 - **viam-server**: launches it, restarts it on unexpected exit, and applies version updates from the cloud.
 - **networking**: helps with connectivity when the machine boots, including Wi-Fi provisioning on supported platforms.
@@ -29,9 +30,11 @@ It runs as a system service (systemd on Linux, launchd on macOS) and manages thr
 
 `viam-agent` is the always-on layer. If the machine reboots, `viam-agent` comes up first and starts `viam-server`. If `viam-server` crashes, `viam-agent` restarts it.
 
+`viam-agent` supports Linux and Windows. On macOS, [install `viam-server` with brew](/reference/viam-server/) and run it as a brew service; nothing manages its version for you.
+
 ## How they work together
 
-At a typical startup, the OS starts the systemd or launchd service, which runs `viam-agent`. `viam-agent` starts `viam-server` as a subprocess, monitors it, and handles restarts. If a new `viam-server` version is released and your cloud config permits it, `viam-agent` downloads and installs the update, then restarts `viam-server` on the new version.
+At a typical startup, the OS starts the service that runs `viam-agent`. `viam-agent` starts `viam-server` as a subprocess, monitors it, and handles restarts. If a new `viam-server` version is released and your cloud config permits it, `viam-agent` downloads and installs the update, then restarts `viam-server` on the new version.
 
 You interact with `viam-server` through the Viam app, the CLI, and SDKs. You do not typically interact with `viam-agent` directly unless you are troubleshooting install or version-update issues.
 

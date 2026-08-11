@@ -1,0 +1,105 @@
+name: Org docs-link check
+
+# Nightly: scan Viam's source repos for docs.viam.com links and verify each is
+# working (not 404) and canonical (not a stale alias/redirect; anchors resolve).
+# Findings open/update a single deduplicated issue for the CI-failure triage
+# routine (or a maintainer) to act on. See check_org_docs_links.py.
+
+on:
+  schedule:
+    # 07:00 UTC daily (staggered off the other scheduled jobs).
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    # Let the reporting step run even when the check step exits non-zero.
+    continue-on-error: true
+
+    steps:
+      - name: Check out docs
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests
+
+      - name: Clone target repos
+        # Public repos clone tokenless. The private 'app' repo needs a read
+        # token (fine-grained PAT / App installation token) in the
+        # ORG_REPO_READ_TOKEN secret; if it is absent we scan the rest and warn.
+        # The scanned set is duplicated in check_org_docs_links.py (DEFAULT_REPOS);
+        # keep the two in sync. The checker skips any repo whose clone is missing.
+        env:
+          APP_TOKEN: ${{ secrets.ORG_REPO_READ_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p repos
+          for repo in rdk api viam-python-sdk viam-typescript-sdk viam-flutter-sdk; do
+            echo "Cloning ${repo} ..."
+            git clone --filter=blob:none --depth 1 \
+              "https://github.com/viamrobotics/${repo}.git" "repos/${repo}"
+          done
+          if [ -n "${APP_TOKEN}" ]; then
+            echo "Cloning private app ..."
+            git clone --filter=blob:none --depth 1 \
+              "https://x-access-token:${APP_TOKEN}@github.com/viamrobotics/app.git" \
+              "repos/app"
+          else
+            echo "::warning::ORG_REPO_READ_TOKEN not set; skipping private 'app' repo."
+          fi
+
+      - name: Check docs links
+        id: check
+        run: |
+          python .github/workflows/check_org_docs_links.py \
+            --base-dir repos --out link-findings.md
+
+      - name: Upload findings artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-findings
+          path: link-findings.md
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Prepare findings body
+        if: failure()
+        id: findings
+        env:
+          # GitHub issue bodies cap at 65536 chars; leave headroom for the
+          # action's own boilerplate and truncate to the full artifact.
+          MAX_BYTES: "58000"
+        run: |
+          {
+            echo 'body<<FINDINGS_EOF'
+            if [ -s link-findings.md ]; then
+              size=$(wc -c < link-findings.md)
+              if [ "${size}" -gt "${MAX_BYTES}" ]; then
+                head -c "${MAX_BYTES}" link-findings.md
+                run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+                printf '\n\n_...truncated (%s chars). Full list in the `link-findings` artifact: %s_\n' \
+                  "${size}" "${run_url}"
+              else
+                cat link-findings.md
+              fi
+            else
+              echo "The link checker failed before producing a findings file."
+              echo "See the run log for the error."
+            fi
+            echo 'FINDINGS_EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Report failure
+        if: failure()
+        uses: ./.github/actions/report-ci-failure
+        with:
+          job-name: Org docs links
+          details: ${{ steps.findings.outputs.body }}

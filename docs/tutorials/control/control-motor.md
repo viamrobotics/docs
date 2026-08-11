@@ -206,7 +206,6 @@ import (
   "time"
 
   "go.viam.com/rdk/logging"
-  "go.viam.com/utils/rpc"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/components/motor")
 
@@ -217,12 +216,12 @@ func main() {
     // TODO: Replace "<MACHINE-ADDRESS>" with address from the CONNECT tab.
     "<MACHINE-ADDRESS>",
     logger,
-    client.WithDialOptions(utils.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
       // TODO: Replace "<API-KEY-ID>" (including brackets) with your machine's
       // API key ID
       "<API-KEY-ID>",
-      utils.Credentials{
-        Type:    utils.CredentialsTypeAPIKey,
+      client.Credentials{
+        Type:    client.CredentialsTypeAPIKey,
         // TODO: Replace "<API-KEY>" (including brackets) with your machine's
         // API key
         Payload: "<API-KEY>",

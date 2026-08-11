@@ -102,12 +102,12 @@ func main() {
     timeoutContext,
     "<machine address>",
     logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
       // Replace "<API-KEY-ID>" (including brackets) with your machine's
       // API key ID
       "<API-KEY-ID>",
-      rpc.Credentials{
-        Type:    rpc.CredentialsTypeAPIKey,
+      client.Credentials{
+        Type:    client.CredentialsTypeAPIKey,
         // Replace "<API-KEY>" (including brackets) with your machine's API key
         Payload: "<API-KEY>",
       })),

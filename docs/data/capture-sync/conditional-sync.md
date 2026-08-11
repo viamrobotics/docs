@@ -44,7 +44,7 @@ This example uses the [`sync-at-time/timesyncsensor`](https://app.viam.com/modul
 
 1. On your machine's **CONFIGURE** tab, click **+** next to your machine part and select **Component or service**.
 2. Search for **sync-at-time/timesyncsensor** and select the result.
-3. Click **Add module**, enter a name (for example, `timesensor`), and click **Create**.
+3. Enter a name (for example, `timesensor`) and click **Add to machine**.
 4. Configure the time window in the sensor's attributes:
 
    ```json

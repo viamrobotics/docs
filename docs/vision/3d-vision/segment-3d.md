@@ -53,7 +53,7 @@ Name the detector something memorable, for example `person_detector` or `red_blo
 ## 3. Add the detections-to-segments module
 
 1. Open the **CONFIGURE** tab in the Viam app.
-2. Click the **+** icon and select **Configuration block**.
+2. Click the **+** icon and select **Blocks**.
 3. In the search field, type `detections-to-segments` and select the matching result.
 4. Click **Add to machine**, give the service a name (for example, `my_segmenter`), and click **Add to machine** again to confirm. The module is installed automatically.
 
@@ -142,7 +142,6 @@ import (
   "go.viam.com/rdk/logging"
   "go.viam.com/rdk/robot/client"
   "go.viam.com/rdk/services/vision"
-  "go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -150,10 +149,10 @@ func main() {
   logger := logging.NewLogger("segmenter")
 
   machine, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-    client.WithDialOptions(rpc.WithEntityCredentials(
+    client.WithDialOptions(client.WithEntityCredentials(
       "YOUR-API-KEY-ID",
-      rpc.Credentials{
-        Type:    rpc.CredentialsTypeAPIKey,
+      client.Credentials{
+        Type:    client.CredentialsTypeAPIKey,
         Payload: "YOUR-API-KEY",
       })),
   )

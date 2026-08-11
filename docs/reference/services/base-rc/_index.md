@@ -49,9 +49,9 @@ Then, configure the service:
 {{% tab name="Builder" %}}
 
 Navigate to the **CONFIGURE** tab of your machine's page.
-Click the **+** icon next to your machine part in the left-hand menu and select **Configuration block**.
+Click the **+** icon next to your machine part in the left-hand menu and select **Blocks**.
 Select the `base remote control` type.
-Enter a name or use the suggested name for your service and click **Create**.
+Enter a name or use the suggested name for your service and click **Add to machine**.
 
 In your base remote control service's configuration panel, copy and paste the following JSON object into the attributes field:
 

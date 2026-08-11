@@ -12,7 +12,6 @@ import (
 	"go.viam.com/rdk/robot/client"
 	"go.viam.com/rdk/services/vision"
 	"go.viam.com/rdk/components/camera"
-	"go.viam.com/utils/rpc"
 )
 
 func main() {
@@ -37,10 +36,10 @@ func main() {
 		context.Background(),
 		machineAddress,
 		logger,
-		client.WithDialOptions(rpc.WithEntityCredentials(
+		client.WithDialOptions(client.WithEntityCredentials(
 			apiKeyID,
-			rpc.Credentials{
-				Type:    rpc.CredentialsTypeAPIKey,
+			client.Credentials{
+				Type:    client.CredentialsTypeAPIKey,
 				Payload: apiKey,
 			})),
 	)
@@ -59,10 +58,6 @@ func main() {
 		logger.Fatal(err)
 	}
 	image := images[0]
-	img, err := image.Image(ctx)
-	if err != nil {
-		logger.Fatal(err)
-	}
 
 	// Get classifications using the image
 	classifier, err := vision.FromProvider(machine, classifierName)
@@ -70,7 +65,7 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	classifications, err := classifier.Classifications(ctx, img, 2, nil)
+	classifications, err := classifier.Classifications(ctx, &image, 2, nil)
 	if err != nil {
 		logger.Fatal(err)
 	}

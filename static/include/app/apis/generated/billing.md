@@ -56,7 +56,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 const usage = await billing.getCurrentMonthUsage('<organization-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getcurrentmonthusage).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getcurrentmonthusage).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -115,12 +115,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const billingInfo = await billing.getOrgBillingInformation(
-  '<organization-id>'
-);
+const billingInfo = await billing.getOrgBillingInformation('<organization-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getorgbillinginformation).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getorgbillinginformation).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -180,12 +178,10 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const invoicesSummary = await billing.getInvoicesSummary(
-  '<organization-id>'
-);
+const invoicesSummary = await billing.getInvoicesSummary('<organization-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicessummary).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getinvoicessummary).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -243,18 +239,15 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 **Returns:**
 
-- (Promise<Uint8Array>)
+- (Promise<Uint8Array<ArrayBuffer>>)
 
 **Example:**
 
 ```ts {class="line-numbers linkable-line-numbers"}
-const invoicePdf = await billing.getInvoicePdf(
-  '<invoice-id>',
-  '<organization-id>'
-);
+const invoicePdf = await billing.getInvoicePdf('<invoice-id>', '<organization-id>');
 ```
 
-For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/BillingClient.html#getinvoicepdf).
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfaces/BillingClient.html#getinvoicepdf).
 
 {{% /tab %}}
 {{< /tabs >}}

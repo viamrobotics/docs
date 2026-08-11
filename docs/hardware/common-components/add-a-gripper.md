@@ -49,10 +49,10 @@ For grippers not covered above, search for `gripper` in the [Viam registry](http
 ### 1. Add a gripper component
 
 1. Click the **+** button.
-2. Select **Configuration block**.
+2. Select **Blocks**.
 3. Search for the model that matches your gripper hardware. Search by
    manufacturer name or gripper type (for example, "gripper", "finger gripper", "vacuum").
-4. Name your gripper (for example, `my-gripper`) and click **Create**.
+4. Name your gripper (for example, `my-gripper`) and click **Add to machine**.
 
 ### 2. Configure gripper attributes
 
@@ -207,7 +207,6 @@ import (
     "go.viam.com/rdk/components/gripper"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/robot/client"
-    "go.viam.com/rdk/utils"
 )
 
 func main() {
@@ -215,11 +214,12 @@ func main() {
     logger := logging.NewLogger("gripper-test")
 
     robot, err := client.New(ctx, "YOUR-MACHINE-ADDRESS", logger,
-        client.WithCredentials(utils.Credentials{
-            Type:    utils.CredentialsTypeAPIKey,
-            Payload: "YOUR-API-KEY",
-        }),
-        client.WithAPIKeyID("YOUR-API-KEY-ID"),
+        client.WithDialOptions(client.WithEntityCredentials(
+            "YOUR-API-KEY-ID",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "YOUR-API-KEY",
+            })),
     )
     if err != nil {
         logger.Fatal(err)

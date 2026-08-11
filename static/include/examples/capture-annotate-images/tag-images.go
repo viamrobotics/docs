@@ -4,17 +4,16 @@ package main
 import (
 	"context"
 	"fmt"
-	"image/jpeg"
-	"bytes"
 	// :remove-start:
 	"os"
 	// :remove-end:
 
 	"go.viam.com/rdk/app"
+	"go.viam.com/rdk/components/camera"
+	rdkdata "go.viam.com/rdk/data"
 	"go.viam.com/rdk/logging"
 	"go.viam.com/rdk/robot/client"
 	"go.viam.com/rdk/services/vision"
-	"go.viam.com/utils/rpc"
 )
 
 
@@ -47,10 +46,10 @@ func main() {
 		context.Background(),
 		machineAddress,
 		logger,
-		client.WithDialOptions(rpc.WithEntityCredentials(
+		client.WithDialOptions(client.WithEntityCredentials(
 			apiKeyID,
-			rpc.Credentials{
-				Type:    rpc.CredentialsTypeAPIKey,
+			client.Credentials{
+				Type:    client.CredentialsTypeAPIKey,
 				Payload: apiKey,
 			})),
 	)
@@ -86,8 +85,8 @@ func main() {
 	}
 	binaryData := data[0]
 
-	// Convert binary data to image.Image
-	img, err := jpeg.Decode(bytes.NewReader(binaryData.Binary))
+	// Convert binary data to a named image
+	img, err := camera.NamedImageFromBytes(binaryData.Binary, "camera", "image/jpeg", rdkdata.Annotations{})
 	if err != nil {
 		logger.Fatal(err)
 	}
@@ -98,7 +97,7 @@ func main() {
 		logger.Fatal(err)
 	}
 
-	classifications, err := classifier.Classifications(ctx, img, 2, nil)
+	classifications, err := classifier.Classifications(ctx, &img, 2, nil)
 	if err != nil {
 		logger.Fatal(err)
 	}

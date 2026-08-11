@@ -56,7 +56,11 @@ In the machine settings card, open **Settings** and expand **Known Networks**. C
 
 ## Configure tunneling {#configure-networking-settings-for-tunneling}
 
-Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection. You must list allowed ports in the machine configuration.
+Allow secure port forwarding from a local machine to a remote machine through Viam's cloud connection.
+
+If you run `viam machines part tunnel` and the destination port is not already configured, the CLI attempts to add it to the machine config automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+You can also list allowed ports manually in the machine configuration:
 
 ```json
 {
@@ -80,6 +84,14 @@ To connect through the tunnel, use the CLI:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080
+```
+
+To tunnel directly to a machine without internet access, pass the machine address and API key credentials.
+The destination port must already be configured in `traffic_tunnel_endpoints`:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part tunnel --part=<part-id> --local-port=8080 --destination-port=8080 \
+  --address=my-machine.local:8080 --key-id=<key-id> --key=<key-value>
 ```
 
 ## Disable TLS
@@ -126,6 +138,7 @@ Managed modes work on apt-based distributions (Debian, Ubuntu, Raspberry Pi OS),
 When using a managed mode (`"managed-all"` or `"managed-security"`), you can also set `os_managed_upgrade_interval_hours` to control how often `viam-agent` checks for and installs updates. The default is `24` hours. The minimum value is `1` hour.
 
 If an upgrade in a managed mode requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+It also defers reboots while any package manager transaction is in progress, whether started by `viam-agent` itself or by an external tool, to prevent interrupting an installation mid-transaction.
 
 The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 
@@ -135,11 +148,12 @@ Forward operating system logs from the machine to Viam's cloud log viewer.
 
 In the machine settings card, open **Settings** and expand **System**:
 
-| Field                                        | Type    | Default | Description                                                             |
-| -------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------- |
-| `forward_system_logs`                        | string  | `""`    | Which system logs to forward. Empty string disables forwarding.         |
-| `logging_journald_runtime_max_use_megabytes` | integer | `512`   | Maximum temporary log storage in MB. Set to `-1` to disable the limit.  |
-| `logging_journald_system_max_use_megabytes`  | integer | `512`   | Maximum persistent log storage in MB. Set to `-1` to disable the limit. |
+| Field                                        | Type    | Default        | Description                                                                                                                                                                                                                                                                                                                                  |
+| -------------------------------------------- | ------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `forward_system_logs`                        | string  | `""`           | Which system logs to forward. Empty string disables forwarding.                                                                                                                                                                                                                                                                              |
+| `logging_journald_storage`                   | string  | `"persistent"` | Controls how system logs (`journald`) are stored locally. Options: `"persistent"` (store on disk in `/var/log/journal`, persists across reboots), `"volatile"` (store in memory in `/run/log/journal`, deleted on reboot), `"auto"` (persistent if `/var/log/journal` exists, otherwise volatile), `"none"` (do not store any logs locally). |
+| `logging_journald_runtime_max_use_megabytes` | integer | `512`          | Maximum temporary log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                                                                                                       |
+| `logging_journald_system_max_use_megabytes`  | integer | `512`          | Maximum persistent log storage in MB. Set to `-1` to disable the limit.                                                                                                                                                                                                                                                                      |
 
 ### Log forwarding filter syntax
 

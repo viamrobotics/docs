@@ -33,7 +33,7 @@ Object colors vary dramatically with lighting. Verify your target color value un
 {{% tab name="Builder" %}}
 
 1. Navigate to the **CONFIGURE** tab of your machine's page.
-2. Click the **+** icon next to your machine part and select **Configuration block**.
+2. Click the **+** icon next to your machine part and select **Blocks**.
 3. In the search field, type `color detector` and select the `vision/color_detector` result.
 4. Click **Add to machine**, enter a name, and click **Add to machine** again to confirm.
 5. Choose a color and a hue tolerance, then set a segment size in pixels.

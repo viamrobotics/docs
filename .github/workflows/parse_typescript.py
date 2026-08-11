@@ -64,9 +64,13 @@ class TypeScriptParser:
                     print(f'DEBUG: Skipping unsupported TypeScript resource: {resource}')
                 continue
 
-            url = f"{self.scrape_url}/classes/{resource.capitalize()}Client.html"
+            # App-layer SDK clients (app, billing, data, mltraining, ...) are
+            # emitted as interfaces by typedoc; component/service clients remain
+            # classes.
+            tsd_kind = "interfaces" if type == "app" else "classes"
+            url = f"{self.scrape_url}/{tsd_kind}/{resource.capitalize()}Client.html"
             if resource in typescript_resource_overrides:
-                url = f"{self.scrape_url}/classes/{typescript_resource_overrides[resource]}Client.html"
+                url = f"{self.scrape_url}/{tsd_kind}/{typescript_resource_overrides[resource]}Client.html"
 
             # if args.verbose:
             #     print(f'DEBUG: Parsing TypeScript URL: {url}')
@@ -134,7 +138,7 @@ class TypeScriptParser:
                 param_object = {}
                 if method.find('div', class_="tsd-parameters"):
                     parameters = method.find('div', class_="tsd-parameters")
-                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").children
+                    parameter_list = parameters.find('ul', class_="tsd-parameter-list").find_all('li', recursive=False)
 
                     for param in parameter_list:
                         param_name = param.find('span', class_="tsd-kind-parameter").text
@@ -162,9 +166,9 @@ class TypeScriptParser:
                 returns = md(str(method.find('h4', class_="tsd-returns-title"))).replace("#### Returns ", "").strip().replace('\\', '')
                 returns = " ".join(returns.split())
                 return_description = ""
-                if method.find('h4', class_="tsd-returns-title").next_sibling:
-                    if not method.find('h4', class_="tsd-returns-title").next_sibling.get('class'):
-                        return_description = md(str(method.find('h4', class_="tsd-returns-title").next_sibling)).strip()
+                if method.find('h4', class_="tsd-returns-title").find_next_sibling():
+                    if not method.find('h4', class_="tsd-returns-title").find_next_sibling().get('class'):
+                        return_description = md(str(method.find('h4', class_="tsd-returns-title").find_next_sibling())).strip()
                     else:
                         return_description = None
                 else:

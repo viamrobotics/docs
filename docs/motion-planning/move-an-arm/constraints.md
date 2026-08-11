@@ -1,7 +1,7 @@
 ---
 linkTitle: "Configure constraints"
 title: "Configure motion constraints"
-weight: 5
+weight: 25
 layout: "docs"
 type: "docs"
 description: "Restrict how the arm moves between poses using linear, orientation, and collision constraints."
@@ -52,9 +52,9 @@ Forces the end effector to maintain a consistent orientation throughout the
 motion. Use this when the end effector must stay level or keep a fixed
 orientation (for example, carrying a liquid).
 
-| Parameter                    | Type             | Description                                                                                                                                               |
-| ---------------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `orientation_tolerance_degs` | float (required) | Maximum orientation deviation, in degrees, for orientations that fall outside the start-to-goal box. A value of 0 rejects any deviation outside that box. |
+| Parameter                    | Type                        | Description                                                                                                                                               |
+| ---------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orientation_tolerance_degs` | float (optional, default 0) | Maximum orientation deviation, in degrees, for orientations that fall outside the start-to-goal box. A value of 0 rejects any deviation outside that box. |
 
 The planner checks each orientation vector component (`OX`, `OY`, `OZ`,
 `Theta`) against the start and goal independently. If every component of
@@ -83,18 +83,19 @@ short move gets a tight tolerance; a long move gets a proportionally larger one.
 ### CollisionSpecification
 
 Allows specific pairs of frames to collide during planning. By default, the
-planner rejects any path where any two frames collide. CollisionSpecification
-lets you whitelist specific pairs.
+planner rejects any path where any two non-adjacent frames collide.
+CollisionSpecification lets you list specific pairs the planner allows to
+collide.
 
 | Parameter | Type                | Description                                          |
 | --------- | ------------------- | ---------------------------------------------------- |
 | `allows`  | list of frame pairs | Each entry has `frame1` and `frame2` (string names). |
 
-This is useful when:
+Allow a collision when:
 
 - A gripper is expected to contact the object it is picking up.
 - Two components are physically close and their simplified collision geometries
-  overlap, but the real components do not collide.
+  overlap, while the real components stay clear of each other.
 
 Frame names support hierarchical matching: specifying `"my-arm"` matches all
 sub-geometries of the arm (such as `my-arm:upper_arm_link`,
@@ -113,6 +114,15 @@ constraints), see
 For `CollisionSpecification` (allow specific frame pairs to collide), see
 [Allow frame collisions](/motion-planning/obstacles/allow-frame-collisions/).
 
+## Relax the goal with a pose cloud
+
+Constraints restrict the _path_ between poses. The complementary tool is to
+relax the _goal_ itself. When close enough is acceptable, give the planner a
+region of acceptable poses instead of a single one,
+which enlarges the solution set and makes planning faster. This
+is a pose cloud, and it is often the right move when a goal is failing or
+planning slowly. See [Pose clouds](/motion-planning/move-an-arm/pose-clouds/).
+
 ## Performance considerations
 
 Every constraint adds a check to every candidate path segment, and
@@ -121,7 +131,11 @@ and the failure rate.
 
 - **Tight tolerances** (small `line_tolerance_mm` or `orientation_tolerance_degs`)
   increase planning time and may cause the planner to fail if no path exists
-  within the tolerance.
+  within the tolerance. A `LinearConstraint` also switches planning to
+  Cartesian-step subdivision, and tolerances below 10 mm or 10 degrees disable
+  the cBiRRT fallback entirely: each step then needs a direct straight-line IK
+  solution, or planning fails. See
+  [How motion planning works](/motion-planning/how-planning-works/).
 - **Start with larger tolerances** and tighten only as needed. A 10 mm linear
   tolerance is easier to satisfy than a 1 mm tolerance.
 - **Combining constraints** multiplies the difficulty. Use the minimum set of

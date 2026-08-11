@@ -4,12 +4,12 @@ title: "Edit frames visually"
 weight: 50
 layout: "docs"
 type: "docs"
-description: "Add, edit, and attach geometry to frames directly in the 3D scene instead of editing JSON configuration."
+description: "Add, edit, and attach geometry to frames directly in the 3D scene."
 ---
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.
 
-Visual editing is most useful while you are still figuring out where things go. Typing coordinates into JSON and reloading the 3D view to check them is slow; editing in the viewport and seeing the result immediately is faster. The trade-off is that the visual editor writes the same JSON fields through a smaller surface area, so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and the app surfaces an unsaved-changes banner on the CONFIGURE tab where you save them with **Save** or `⌘/Ctrl+S`.
+Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (translation, orientation vector, and a single geometry), so it is less suited to bulk changes or cross-machine-part frames.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ You can then reposition it using the Details panel.
 1. Select the component in the **World** panel on the upper-left, or by clicking it in the 3D viewport.
 2. The Details panel (upper-right) shows the entity's current values. There is no edit-mode toggle; for any configurable frame, the **local position** and **local orientation** fields are editable inputs.
 3. Edit the position values (`x`, `y`, `z` in mm) to set the translation relative to the parent frame.
-4. Edit the orientation values (`x`, `y`, `z`, `th` in degrees) to set the orientation as an orientation vector.
+4. Edit the orientation values (`x`, `y`, `z` unit-vector components and `th` in degrees) to set the orientation as an orientation vector.
 
 Changes appear immediately in the 3D viewport as you type.
 The values you enter here correspond directly to the `translation` and `orientation` fields in the frame JSON configuration.
@@ -65,14 +65,31 @@ Edits are held locally until you save. The CONFIGURE tab shows an unsaved-change
 
 To delete a frame, remove it from the component's configuration on the CONFIGURE tab (there is no **Delete frame** button in the embedded **3D SCENE** tab).
 
+## Edit frames with AI
+
+The **3D SCENE** tab includes an AI scene builder that lets you edit frames using natural language instead of entering values manually.
+Type a prompt describing the change you want, and the AI interprets your request and applies the frame updates to the scene.
+
+You can use natural language to:
+
+- Move components ("move the camera 50 mm to the left")
+- Rotate components ("rotate the gripper 90 degrees around the z-axis")
+- Re-parent frames ("attach the sensor to the arm instead of the base")
+- Add, resize, or change collision geometry ("add a 100 mm box to the sensor", "make the arm's capsule wider")
+
+The AI edits only the frames of existing components.
+It cannot add new components to or remove components from the machine configuration.
+
+After the AI applies changes, save or discard buttons appear in the **3D SCENE** tab.
+
 ## When to edit JSON instead
 
 Visual editing covers most cases, but a few are faster in JSON:
 
-- **Bulk changes** (renaming many frames, regenerating a layout) — JSON
+- **Bulk changes** (renaming many frames, regenerating a layout): JSON
   edits are easier in a text editor.
-- **Frames that reference components on a different machine part** —
+- **Frames that reference components on a different machine part**:
   the visual editor's parent dropdown only shows local frames.
 - **Complex orientations** (rotations expressed in `axis_angles` or
-  `quaternion` rather than `ov_degrees`) — the visual editor surfaces
+  `quaternion` rather than `ov_degrees`): the visual editor shows
   only the orientation vector form.

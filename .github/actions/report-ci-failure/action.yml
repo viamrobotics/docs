@@ -13,6 +13,13 @@ inputs:
     description: Label applied to the tracking issue.
     required: false
     default: ci-failure
+  details:
+    description: >-
+      Optional extra markdown appended to the issue body (on create) and to the
+      repeat-failure comment. Use it to carry specific findings (e.g. the list
+      of broken links) so a triage routine can act without re-running the job.
+    required: false
+    default: ""
 
 runs:
   using: composite
@@ -23,6 +30,7 @@ runs:
         GH_TOKEN: ${{ github.token }}
         JOB_NAME: ${{ inputs.job-name }}
         ISSUE_LABEL: ${{ inputs.label }}
+        DETAILS: ${{ inputs.details }}
       run: |
         set -euo pipefail
 
@@ -46,9 +54,13 @@ runs:
 
         if [ -n "${existing}" ]; then
           echo "Existing issue #${existing} found; adding a comment."
+          comment="$(printf '%s\n' "Job **${JOB_NAME}** failed again. Run: ${run_url}")"
+          if [ -n "${DETAILS}" ]; then
+            comment="$(printf '%s\n\n%s\n' "${comment}" "${DETAILS}")"
+          fi
           gh issue comment "${existing}" \
             --repo "${GITHUB_REPOSITORY}" \
-            --body "Job **${JOB_NAME}** failed again. Run: ${run_url}"
+            --body "${comment}"
         else
           echo "No open issue found; creating one."
           body="$(printf '%s\n' \
@@ -61,6 +73,9 @@ runs:
             "comment on this issue explaining what is needed. This issue is" \
             "created automatically on failure and reused (commented on) for" \
             "repeat failures.")"
+          if [ -n "${DETAILS}" ]; then
+            body="$(printf '%s\n\n%s\n' "${body}" "${DETAILS}")"
+          fi
           gh issue create \
             --repo "${GITHUB_REPOSITORY}" \
             --title "${title}" \

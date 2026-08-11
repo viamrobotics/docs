@@ -7,7 +7,7 @@ type: "docs"
 description: "Verify and adjust the spatial relationship between components using the 3D scene and measurement tool."
 ---
 
-When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off; the arm then reaches for the wrong spot, or the point cloud sits behind the table instead of on it. The **3D SCENE** tab lets you verify offsets visually and measure distances directly, so you can catch these errors before they produce bad motion.
+When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off, and the arm reaches for the wrong spot. The **3D SCENE** tab lets you verify offsets visually and measure distances directly, so you can catch these errors before you run a plan.
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ Select a component and compare its coordinate axes in 3D to the physical compone
 - A camera's Z axis (blue) should point forward along the optical axis.
 - An arm's axes should follow the manufacturer's convention.
 
-If the axes are rotated relative to what you expect, adjust the orientation vector in the frame configuration. The Details panel displays it as (`x`, `y`, `z`, `th` in degrees).
+If the axes are rotated relative to what you expect, adjust the orientation vector in the frame configuration. The Details panel displays it as (`x`, `y`, `z` as unit-vector components and `th` in degrees).
 
 ### 5. Verify with a point cloud
 

@@ -9,7 +9,6 @@ import (
 	"go.viam.com/rdk/components/camera"
 	"go.viam.com/rdk/logging"
 	"go.viam.com/rdk/robot/client"
-	"go.viam.com/utils/rpc"
 )
 
 
@@ -35,10 +34,10 @@ func main() {
 		context.Background(),
 		machineAddress,
 		logger,
-		client.WithDialOptions(rpc.WithEntityCredentials(
+		client.WithDialOptions(client.WithEntityCredentials(
 			apiKeyID,
-			rpc.Credentials{
-				Type:    rpc.CredentialsTypeAPIKey,
+			client.Credentials{
+				Type:    client.CredentialsTypeAPIKey,
 				Payload: apiKey,
 			})),
 	)

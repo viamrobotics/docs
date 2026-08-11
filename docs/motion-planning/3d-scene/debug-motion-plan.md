@@ -14,11 +14,13 @@ positions, collision geometries, and the arm's current pose. Most
 motion planning failures come down to one of a few problems that are
 immediately visible in 3D.
 
-The **3D SCENE** tab does not replay motion plans and has no timeline,
-scrubber, or plan-playback control. It is an inspector of the
-configured frame system and live component poses. If you need to watch
-a plan execute over time, step the arm to intermediate joint positions
-manually and reinspect.
+{{% alert title="Replaying captured motion plans" color="tip" %}}
+The **3D SCENE** tab can also import motion plans and replay the path the motion planner found. To import a plan, click **Motion Plan Replayer** in the toolbar. Upload a plan as JSON, or import a plan from captured data. Plans are identified by the `motion-plan` tag applied during data capture.
+
+These debugging steps describe an inspection of your frame system
+using the configured frame system and live component poses, but
+without a captured plan.
+{{% /alert %}}
 
 ## Prerequisites
 

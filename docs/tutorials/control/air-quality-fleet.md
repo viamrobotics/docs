@@ -111,9 +111,9 @@ When your machine shows as connected, continue to the next step.
 {{< table >}}
 {{% tablestep start=1 %}}
 
-Navigate to the **CONFIGURE** tab of the machine, click the **+** button and select **Configuration block**.
+Navigate to the **CONFIGURE** tab of the machine, click the **+** button and select **Blocks**.
 Click **sensor**, then search for `sds011` and add the **sds001:v1** {{< glossary_tooltip term_id="module" text="module" >}}.
-Name the sensor `PM_sensor` and click **Create**.
+Name the sensor `PM_sensor` and click **Add to machine**.
 
 {{<imgproc src="/tutorials/air-quality-fleet/add-sensor-module.png" resize="700x" declaredimensions=true alt="The Add Module button that appears after you click the model name." style="width:400px" class="imgzoom shadow">}}
 
