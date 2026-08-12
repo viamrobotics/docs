@@ -220,9 +220,11 @@ calls the local composite action `.github/actions/report-ci-failure`:
   `issues: write`. No external service or extra secret is required.
 
 This replaced the previous `atlassian/gajira-*` Jira integration, which had
-stopped authenticating and left the scheduled jobs unmonitored. A Claude Code
-Remote routine triages open `ci-failure` issues—opening a fix PR when the cause
-is clear, or commenting on the issue when it is not.
+stopped authenticating and left the scheduled jobs unmonitored. A scheduled
+Claude Code session then triages open `ci-failure` issues daily—opening a fix PR
+when the cause is clear, or commenting on the issue when it is not. See
+[CI failure triage](ci-failure-triage.md) for the full flow, setup, and the
+triage prompt.
 
 ## Helper scripts
 
