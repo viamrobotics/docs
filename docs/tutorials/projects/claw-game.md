@@ -38,9 +38,9 @@ To build your own claw game machine, you need the following hardware:
 
 - A [Raspberry Pi](https://a.co/d/bxEdcAT) with a microSD card, set up following the [Raspberry Pi Setup Guide](/reference/device-setup/rpi-setup/).
 - An [xarm6](https://www.ufactory.us/product/ufactory-xarm-6) robotic arm
-- An [Arcade claw](https://www.ebay.com/itm/393988987705)
+- An [Arcade claw](https://www.ebay.com/itm/389205760045)
 - A [Relay](https://www.amazon.com/gp/product/B095YFJ69T)
-- A [24V power supply](https://www.amazon.com/gp/product/B08F7DVY8G) for the claw
+- A [24V power supply](https://a.co/d/0iAPD3A4) for the claw
 - An iPad or other tablet
 - 1 x 4’x4’ fiberboard
 - 10 x 2”x4”x8’ lumber
