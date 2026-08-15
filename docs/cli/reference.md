@@ -1879,7 +1879,7 @@ viam module reload --part-id e1234f0c-912c-1234-a123-5ac1234612345
 
 ### `module reload-local`
 
-Build a module locally and run it on a target machine. Rebuild and restart if it is already running. The module is loaded to <FILE>~/.viam/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine.
+Build a module locally and run it on a target machine. Rebuild and restart if it is already running. The module is loaded to <FILE><VIAM_HOME>/packages-local/namespace_module-name_from_reload-module.tar.gz</FILE> on the target machine, where `<VIAM_HOME>` is the machine's Viam home directory (typically `~/.viam` on Linux).
 
 ```sh {class="command-line" data-prompt="$"}
 # build and configure a module running on your local machine without shipping a tarball.
@@ -1899,7 +1899,7 @@ viam module reload-local --local
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
 | `--no-build` | Skip build step. Default: `false`. | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | Optional |
-| `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | Optional |
+| `--home` | Remote machine home directory under which `<home>/.viam` is used as the module destination. By default the CLI queries the machine for its `VIAM_HOME`; pass `--home` only if the machine cannot be reached or reports a wrong value. | Optional |
 | `--name` | The name of the module. For example: `hello-world`. | Optional |
 
 ### `module restart`
