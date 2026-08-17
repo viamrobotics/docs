@@ -31,13 +31,13 @@ npm init -y
 Node.js needs three runtime packages:
 
 - `@viamrobotics/sdk` — the Viam SDK
-- `@connectrpc/connect-node` — the Node-compatible gRPC transport
+- `@connectrpc/connect-node@^1.7.0` — the Node-compatible gRPC transport
 - `node-datachannel` — a WebRTC implementation for Node
 
 Install everything at once:
 
 ```sh {class="command-line" data-prompt="$"}
-npm install @viamrobotics/sdk @connectrpc/connect-node node-datachannel
+npm install @viamrobotics/sdk "@connectrpc/connect-node@^1.7.0" node-datachannel
 npm install --save-dev tsx typescript @types/node
 ```
 
@@ -71,7 +71,7 @@ const wrtc = require("node-datachannel/polyfill");
 const connectNode = require("@connectrpc/connect-node");
 
 // Register a Node-compatible gRPC transport.
-// @ts-expect-error -- globalThis.VIAM is not in standard types
+// @ts-expect-error -- the require()-style snippet doesn't load the SDK's global VIAM declaration
 globalThis.VIAM = {
   GRPC_TRANSPORT_FACTORY: (opts: any) =>
     connectNode.createGrpcTransport({ httpVersion: "2", ...opts }),
@@ -151,6 +151,7 @@ If the script hangs or errors, the most common causes are:
 - **Polyfills registered too late.** The polyfill loop and transport factory must run before the first call into the SDK. If you split them into a separate module that is imported after the SDK, the SDK initializes without them.
 - **`.env` not loaded.** The `tsx --env-file=.env` flag loads the file. If you run the script a different way (`node`, `ts-node`, a bundler), use `dotenv` or your runtime's env loader instead.
 - **Wrong transport.** If you see `Unsupported HTTP version` or similar, confirm that `@connectrpc/connect-node` is installed and the transport factory is registered on `globalThis.VIAM`.
+- **Wrong `@connectrpc/connect-node` version.** The SDK depends on the Connect-ES v1 API. An unpinned install resolves to the incompatible v2 line and fails with a `TypeError` when the SDK tries to connect. Pin it to `^1.7.0`, as in the install command above.
 
 ## Next
 

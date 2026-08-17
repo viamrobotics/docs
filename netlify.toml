@@ -298,18 +298,6 @@
   status = 301
 
 [[redirects]]
-  from = "/dev/reference/apis/services/slam/*"
-  to = "/motion-planning/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/dev/reference/apis/services/SLAM/*"
-  to = "/motion-planning/"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/dev/reference/apis/*"
   to = "/reference/apis/:splat"
   status = 301
@@ -338,12 +326,6 @@
   from = "/reference/components/*"
   to = "/reference/"
   status = 301
-
-[[redirects]]
-  from = "/reference/services/slam/*"
-  to = "/motion-planning/"
-  status = 301
-  force = true
 
 [[redirects]]
   from = "/reference/services/*"
@@ -572,21 +554,18 @@
   to = "/motion-planning/"
   status = 301
 
+# Capitalized SLAM API aliases consolidated to the lowercase canonical page.
+# A Hugo alias here would create a /SLAM/ stub that shadows the real /slam/
+# page on case-insensitive serving, so redirect at the edge instead.
 [[redirects]]
-  from = "/reference/apis/services/slam/*"
-  to = "/motion-planning/"
+  from = "/reference/apis/services/SLAM/"
+  to = "/reference/apis/services/slam/"
   status = 301
   force = true
 
 [[redirects]]
-  from = "/reference/apis/services/SLAM/*"
-  to = "/motion-planning/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/appendix/apis/services/slam/*"
-  to = "/motion-planning/"
+  from = "/dev/reference/apis/services/SLAM/"
+  to = "/reference/apis/services/slam/"
   status = 301
   force = true
 
@@ -781,7 +760,7 @@
   # (for development) turn true for extra diagnostic logging
   debug = true
 
-  skipPatterns = ["/tags/"]
+  skipPatterns = ["/tags/", "/reference/apis/services/SLAM/", "/dev/reference/apis/services/SLAM/"]
 
 [[context.deploy-preview.plugins]]
   package = "@eggnstone/netlify-plugin-no-more-404"
@@ -790,7 +769,7 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/tags/"]
+  skipPatterns = ["/tags/", "/reference/apis/services/SLAM/", "/dev/reference/apis/services/SLAM/"]
 
 
 [[context.branch-deploy.plugins]]
@@ -800,4 +779,4 @@
 
   failBuildOnError = true
   failPluginOnError = true
-  skipPatterns = ["/tags/"]
+  skipPatterns = ["/tags/", "/reference/apis/services/SLAM/", "/dev/reference/apis/services/SLAM/"]

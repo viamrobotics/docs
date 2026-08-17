@@ -22,6 +22,7 @@ You can pass global options after the `viam` CLI keyword with any command.
 <!-- prettier-ignore -->
 | Global option | Description |
 | ------------- | ----------- |
+| `--check-connection-interval` | For commands that connect to a machine: check the connection on this interval (a Go duration, for example `30s` or `1m`) and close the client if a faulty connection cannot be repaired. Default: `0` (disabled). |
 | `--config`, `-c` | Load configuration from `FILE`. |
 | `--debug`, `--vvv` | Enable debug logging. Default: `false`. |
 | `--disable-profiles`, `--disable-profile` | Disable usage of [profiles](#profiles), falling back to default behavior. Default: `false`. |
@@ -1282,19 +1283,34 @@ viam machines part cp --part=123 -r -p machine:my_dir machine:my_file ~/some/exi
 
 ### `machines part tunnel`
 
-Tunnel connections to a specified port on a machine part. You must explicitly enumerate ports to which you are allowed to tunnel in your machine's JSON config. See [Tunnel to a machine part](/fleet/system-settings/).
+Tunnel connections from a local port to a destination port on a machine part.
+
+By default, the tunnel resolves the machine and authenticates through app.viam.com.
+To tunnel directly without internet access, provide all three of `--address`, `--key-id`, and `--key`.
+
+If the destination port is not already listed in the machine's `traffic_tunnel_endpoints` configuration, the CLI attempts to add it automatically.
+Automatic port configuration requires a connection to the Viam app for both the CLI and machine.
+When tunneling directly, the destination port must already be configured.
+See [Configure tunneling](/fleet/system-settings/#configure-networking-settings-for-tunneling).
 
 ```sh {class="command-line" data-prompt="$"}
-# tunnel connections to the specified port on a machine part
-viam machines part tunnel --part=123 --destination-port=1111 --local-port 2222
+# tunnel through app.viam.com (default)
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222
+
+# tunnel directly to a machine without internet
+viam machines part tunnel --part=123 --destination-port=1111 --local-port=2222 \
+  --address=my-machine.local:8080 --key-id=<key-id> --key=<key-value>
 ```
 
 <!-- prettier-ignore -->
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--part` | Part ID for which the command is being issued. | **Required** |
-| `--destination-port` | The port on a machine part to tunnel to. | **Required** |
+| `--destination-port` | The port on the machine part to tunnel to. | **Required** |
 | `--local-port` | The local port from which to tunnel. | **Required** |
+| `--address` | Machine FQDN to dial directly. Requires `--key-id` and `--key`. | Optional |
+| `--key-id` | ID of the machine API key. Requires `--address` and `--key`. | Optional |
+| `--key` | Value of the machine API key. Requires `--address` and `--key-id`. | Optional |
 
 ### `machines part get-ftdc`
 
@@ -1914,6 +1930,9 @@ viam module build start --version "0.1.2"
 
 # initiate a cloud build for a private GitHub repo
 viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnopqrstuvwxyzABCD
+
+# build from local source without pushing to GitHub
+viam module build start --version "0.1.2" --from-source --platforms linux/amd64,linux/arm64 --wait
 ```
 
 <!-- prettier-ignore -->
@@ -1922,9 +1941,13 @@ viam module build start --version "0.1.2" --token ghp_1234567890abcdefghijklmnop
 | `--version` | The version of your module to set for this build. See [Using the `--version` argument](#using-the---version-argument). | **Required** |
 | `--module` | The path to the [`meta.json` file](/build-modules/module-reference/) for the module, if not in the current directory. | Optional |
 | `--platforms` | List of platforms to cloud build for. Default: `build.arch` in <file>meta.json</file>. | Optional |
-| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. | Optional |
-| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. | Optional |
+| `--ref` | Git reference to clone when building your module. This can be a branch name or a commit hash. Default: `main`. Ignored when `--from-source` is set. | Optional |
+| `--token` | GitHub token with repository **Contents** read access, and **Actions** read and write access. Required for private repos, not necessary for public repos. Ignored when `--from-source` is set. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
+| `--from-source` | Package your local source directory and upload it to the cloud builder instead of building from a git ref. `.gitignore` is honored when packaging. | Optional |
+| `--path` | Path to the local source directory to upload. Only used with `--from-source`. Default: `.`. | Optional |
+| `--wait` | Wait for the build to finish. Surfaces failed-platform logs and returns a non-zero exit code on failure. Only used with `--from-source`. | Optional |
+| `--no-progress` | Hide the progress spinner. Only used with `--from-source`. | Optional |
 
 ### `module build local`
 
