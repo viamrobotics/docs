@@ -51,7 +51,7 @@ In the **Set up your machine part** card, click **Set up**.
 A wizard dialog will open with the heading **Install `viam-server`**.
 Click **Next** to begin. Follow the guidance in the setup wizard to set up your machine on Viam.
 
-## 8. Add hardware in the CONFIGURE tab
+## 3. Add hardware in the CONFIGURE tab
 
 Your machine is connected, but it has no components configured yet.
 To make the machine do anything, add the hardware you want to use through the **CONFIGURE** tab on your machine's page.
