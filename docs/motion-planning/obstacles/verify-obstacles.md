@@ -1,10 +1,12 @@
 ---
 linkTitle: "Verify obstacles"
 title: "Verify obstacles"
-weight: 40
+weight: 25
 layout: "docs"
 type: "docs"
 description: "Visualize and adjust obstacle geometry so the motion planner routes around physical objects."
+aliases:
+  - /motion-planning/3d-scene/set-up-obstacle-avoidance/
 ---
 
 The motion planner avoids only the obstacles you define as geometries: boxes, spheres, capsules, or cylinders positioned in the frame system. The **3D SCENE** tab draws each geometry at its configured position and size, so you can see whether a box specified as `{x: 800, y: 1200, z: 20}` actually covers the table before you run a plan.
