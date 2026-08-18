@@ -149,6 +149,26 @@ The extra is the only change your module needs.
 With the extra installed and tracing enabled in the machine config, each component and service method your module implements emits a span, and the module sends those spans to `viam-server`.
 Without the extra installed, tracing stays off and your module runs unchanged.
 
+To trace a section of your own code inside a method, open a child span with the OpenTelemetry API the extra installs.
+The span nests under the automatic span for that method call:
+
+```python
+from opentelemetry import trace
+
+tracer = trace.get_tracer(__name__)
+
+
+class MySensor(Sensor):
+    async def get_readings(self, **kwargs):
+        with tracer.start_as_current_span("readings implementation") as span:
+            span.set_attribute("multiplier", self.multiplier)  # attach structured context
+            span.add_event("computing signal")
+            return {"signal": self.multiplier}
+```
+
+Mark a failure on the span with `span.record_exception(error)` and `span.set_status(...)`.
+When tracing is off, `start_as_current_span` returns a non-recording span, so the same code runs unchanged.
+
 #### Enable tracing in a C++ module
 
 C++ tracing has two requirements: you build the SDK with OpenTelemetry support, and, as with Go and Python, tracing is enabled on `viam-server` in the machine config.
