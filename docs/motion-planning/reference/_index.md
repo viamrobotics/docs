@@ -29,4 +29,5 @@ task-based guidance, start from the [section landing](/motion-planning/).
 {{% card link="/motion-planning/reference/kinematics/" noimage="true" %}}
 {{% card link="/motion-planning/reference/orientation-vectors/" noimage="true" %}}
 {{% card link="/motion-planning/reference/algorithms/" noimage="true" %}}
+{{% card link="/visualization/reference/world-state/" noimage="true" %}}
 {{< /cards >}}
