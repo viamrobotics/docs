@@ -21,7 +21,7 @@ In this phase you write and run a Python script on your personal computer that c
 
 ## Why a script before a module
 
-Everything you did before happened by clicking test cards on the **CONTROL** tab. That is a fine way to verify hardware, but it does not scale: you cannot loop, branch on a sensor reading, or retry a failed grasp from a button. A program script gives you those things, plus fast iteration, a local debugger, and the ability to sprinkle in `print` statements wherever you need visibility into what the robot is doing.
+Everything you did before happened by clicking test cards on the **Control** tab. That is a fine way to verify hardware, but it does not scale: you cannot loop, branch on a sensor reading, or retry a failed grasp from a button. A program script gives you those things, plus fast iteration, a local debugger, and the ability to sprinkle in `print` statements wherever you need visibility into what the robot is doing.
 
 In the next phase, you package this same logic as a module. For now, a script you run from your own terminal, that you can stop, edit, and rerun in seconds, is the faster path to a working pick-and-place loop.
 
@@ -58,9 +58,9 @@ async def connect() -> RobotClient:
 
 Open the **CONNECT** tab on your machine's page in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the three values it shows you: the machine address and an API key and key ID pair. Paste them into `MACHINE_ADDRESS`, `API_KEY`, and `API_KEY_ID` at the top of the script. This is the same connection code every Viam Python script starts with.
 
-<!-- ASSET P0 connect-tab-boilerplate (UI+): CONNECT -> Python SDK, connection block highlighted, credentials REDACTED. See plans/2026-07-02-pick-and-place-shot-list.md -->
+<!-- ASSET P0 auth-details (UI+): CONNECT -> Python SDK, connection block with api_key, api_key_id, and machine address boxed in red. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-{{<imgproc src="/tutorials/pick-and-place/connect-tab-boilerplate.png" resize="1200x" declaredimensions=true alt="The CONNECT tab showing the Python SDK connection code with the machine address and API key.">}}
+{{<imgproc src="/tutorials/pick-and-place/auth-details.png" resize="1200x" declaredimensions=true alt="The CONNECT tab showing the Python SDK connection code with the api_key, api_key_id, and machine address boxed in red.">}}
 
 The machine address, also known as the "remote address" or fully-qualified domain name (FQDN), can also be found in the dropdown from the **Online** indicator. The API key and ID can also be found and created from the **API keys** section of the **CONNECT** tab.
 
@@ -90,11 +90,11 @@ This code drives only the gripper and these pose switches. The script also keeps
 
 <!-- ASSET P0 term-resource-names (TERM+): uv run output with resource_names printed; label arm-1/gripper-1/cam-1/pose switches/obstacle grippers -->
 
-You run the script twice: first to confirm the connection without moving anything, then again to drive the arm.
+Start by confirming the connection without moving anything, then test drive the arm.
 
 ### First run: confirm the connection
 
-Run the script with `uv run starter-script.py` (or `python3 starter-script.py` if you're not using `uv`). As shipped, the static sequence is commented out, so this first run only opens the connection and prints every resource on the machine. Nothing moves.
+Run the script with `uv run starter-script.py` (or `python3 starter-script.py` if you're not using `uv`). As shipped, the static sequence is commented out so nothing moves. This first run (listed under TODO 2 in starter-script.py) only opens the connection and prints every resource on the machine using:
 
 ```python
 print(machine.resource_names)
@@ -114,7 +114,7 @@ await approach.set_position(2)
 await gripper.open()
 await grasp.set_position(2)
 await gripper.grab()
-await asyncio.sleep(0.3)  # finger gripper settle
+await asyncio.sleep(1)  # finger gripper settle
 await travel.set_position(2)
 await place_pose.set_position(2)
 await gripper.open()

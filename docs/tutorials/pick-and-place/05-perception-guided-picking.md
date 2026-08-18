@@ -15,7 +15,7 @@ next: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
 ---
 
-In this phase you replace the fixed approach and grasp poses with live data from the camera: a vision service detects a block, and the motion service takes the block's camera-frame position and plans a collision-free pick.
+In this phase you replace the fixed approach and grasp poses with live data from the camera: a vision service detects a block in the camera's own frame, you convert that detection to the arm's static world frame, and the motion service plans a collision-free pick against it.
 
 ## Configure the vision pipeline
 
@@ -39,7 +39,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the segmenter
 
-`vision/detections-to-segments` is a builtin vision model that reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. Add it the same way: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` model, and name it `vision-segment`. Set its attributes:
+`detections-to-segments` reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `detections-to-segments/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
 
 ```json
 {
@@ -76,31 +76,39 @@ vision = VisionClient.from_robot(machine, "vision-segment")
 
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
-The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **CONFIGURE** tab to point at. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **CONFIGURE** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
 ```python
 motion = MotionClient.from_robot(machine, "builtin")
 ```
 
-You do not convert the detected pose to the `world` frame yourself. `motion.move` takes a `PoseInFrame`: a `Pose` paired with the name of the frame it is expressed in. Tag the detected pose with `reference_frame="cam-1"` and the motion service walks the frame graph for you, the same graph you watched move in the **3D scene** tab when the `cam-1` frame swung with the arm as you jogged joint 1. It knows the camera's offset from the wrist, the wrist's offset from the next joint, and so on down to the arm's base at the world origin, so it can plan a collision-free path in `world` from a goal you hand it in `cam-1`.
+`motion.move` takes a `PoseInFrame`: a `Pose` paired with the name of the frame it is expressed in. For a single move issued right after detection, you can tag the destination `reference_frame="cam-1"` and the motion service will walk the frame graph for you, the same graph you watched move in the **3D scene** tab when the `cam-1` frame swung with the arm as you jogged joint 1. It knows the camera's offset from the wrist, the wrist's offset from the next joint, and so on down to the arm's base at the world origin.
 
-<!-- ASSET P0 diagram-frame-transform (DIAGRAM): wrist camera on the arm; block pose reported in cam-1, motion.move resolves it against world -->
+That works for one move, but here the arm works through two moves: approach and grasp, both built from the same detection. `cam-1` is wrist-mounted, so it moves the instant the arm does, and `motion.move` resolves a `cam-1`-tagged destination against wherever `cam-1` actually is _at the moment that specific call runs_, not where it was when you computed the pose. The first move to approach pose is fine, since the arm hasn't left `home-pose` yet. But by the second move, the arm has already traveled to the approach standoff, so `cam-1` is no longer where it was during detection. Reusing a `cam-1`-tagged pose there resolves it against the camera's new position instead of the one the offset math assumed, and the grasp drives to the wrong place. [Converting to world before you move](#convert-to-world-before-you-move), later in this phase, is how you avoid that trap.
+
+<!-- ASSET P0 diagram-frame-transform (DIAGRAM): wrist camera on the arm; block pose reported in cam-1, transform_pose converts once to world -->
 
 ```text
 Frame tree (rooted at world):
 
-world  (origin at the arm base)
-└─ arm-1
-   ├─ gripper-1   (z +105 from the arm end — the TCP motion.move drives)
-   └─ cam-1       (wrist-mounted — the frame vision-segment reports in)
-
-motion.move plans in world from a goal you give it in cam-1;
-the motion service walks this tree for you.
+One block, fixed on the table
+        │
+        ├─ read from an unfixed / unknown arm pose
+        │     cam-1 frame depends on the arm pose
+        │     → motion.move resolves cam-1 to a different spot each time  (unreliable)
+        │
+        └─ read from home-pose (a known position)
+        │     cam-1 frame is in a known, repeatable place
+        │     → motion.move always resolves cam-1 the same way on the first move   (reliable for first move)
+        |
+        └─ read from world (fixed position)
+              block is in a known, repeatable place
+              → motion.move does not rely on cam-1 position (reliable for subsequent moves)
 ```
 
 It also matters exactly what `motion.move` moves. Two motions that sound similar are not the same thing:
 
-- The **CONTROL** tab's arm card, and a direct `Arm` method, move the arm's own end frame: the flange at the end of the last joint.
+- The **Control** tab's arm card, and a direct `Arm` method, move the arm's own end frame: the flange at the end of the last joint.
 - `motion.move(component_name="gripper-1", ...)` moves the `gripper-1` frame instead: the gripper's tool center point (TCP), which sits further down the kinematic chain because the gripper is bolted on past the arm's end.
 
 A `motion.move` call names that component and a goal pose tagged with its reference frame:
@@ -108,14 +116,14 @@ A `motion.move` call names that component and a goal pose tagged with its refere
 ```python
 await motion.move(
     component_name="gripper-1",
-    destination=PoseInFrame(reference_frame="cam-1", pose=target_pose),
+    destination=PoseInFrame(reference_frame="world", pose=target_pose),
 )
 ```
 
 Because you move `gripper-1`, every offset you compute later is measured to where you want the gripper's TCP to end up, not the arm's end. Keep that distinction in mind or the offset math will not make sense.
 
 {{< alert title="Seeing a pose in world coordinates" color="note" >}}
-`motion.move` does not need a world-frame pose, but you might still want one to check a detection by eye. `RobotClient.transform_pose` converts a `PoseInFrame` from one frame to another: `world_pose = await machine.transform_pose(PoseInFrame(reference_frame="cam-1", pose=geometry.center), "world")` returns the block's center in `world`, where a `z` near the table surface and `x`/`y` over the table confirm the detection landed where you expect.
+You will use `RobotClient.transform_pose` below to convert `approach_pose` and `grasp_pose` to `world`. The same call works on any `PoseInFrame`, so you can also reach for it any time you want to eyeball a raw detection by eye: `world_pose = await machine.transform_pose(PoseInFrame(reference_frame="cam-1", pose=geometry.center), "world")` returns the block's center in `world`, where a `z` near the table surface and `x`/`y` over the table confirm the detection landed where you expect.
 {{< /alert >}}
 
 ## Detect from home (the wrist-camera rule)
@@ -134,7 +142,7 @@ One block, fixed on the table
               → motion.move resolves cam-1 the same way every time        (reliable)
 ```
 
-The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_object_point_clouds`. You replace the static `approach` and `grasp` poses with poses derived from the point cloud segments:
+The `home-pose` provides a good view of the workspace for the camera to detect objects to be picked up by the arm. Each pick-and-place cycle, the arm moves to the home pose and the `shape-detector` looks for known shapes. If it has detections, it provides them to the `vision-segment` service, which you query with `vision.get_object_point_clouds`. In your script, comment out the `await approach.set_position(2)` and `await grasp.set_position(2)` lines from Phase 4. You replace them with the block below, which detects the block and computes its pose instead of replaying a fixed one:
 
 ```python
 # Observe from home so the wrist-mounted camera frame is in a known position.
@@ -157,7 +165,7 @@ obj_in_cam = PoseInFrame(reference_frame="cam-1", pose=geometry.center)
 
 `get_object_point_clouds` returns one entry per object `vision-segment` fused together, each carrying its own point cloud and geometry. A workspace with several blocks in view returns several entries, so you need a rule for which one to pick this cycle. `max(objects, key=lambda o: len(o.point_cloud))` picks the object with the largest point cloud, ordinarily the block closest to the camera or most fully in view. Each `point_cloud` is the object's pointcloud data (PCD) stored as raw bytes, so `len(o.point_cloud)` measures its encoded size in bytes; that grows with the number of points, which makes it a reliable proxy for object size.
 
-Add a `print(obj_in_cam.pose)` and run the script. Watch the x, y, and z values it prints as you move a block around the table.
+Add a `print(obj_in_cam.pose)` line right after `obj_in_cam` is set, and run the script. Watch the x, y, and z values it prints as you move a block around the table. Once the values look right, comment out or delete that print line before continuing to the next section: you are about to compute `approach_pose` and `grasp_pose` from `obj_in_cam.pose`, and the print statement was only there to sanity-check the raw detection.
 
 {{< checkpoint >}}
 `obj_in_cam.pose` prints coordinates in the camera's own frame: a `z` of roughly the camera-to-block distance, a few hundred millimeters, with small `x`/`y` values near the optical center. To check the detection against the workspace instead, use the `transform_pose` tip above to print the pose in `world`. If the numbers look wrong, the most common cause is a detection that was not taken from `home-pose`. Confirm the arm returns to `home-pose` (the `await home.set_position(2)` call) before every `get_object_point_clouds` call.
@@ -199,16 +207,17 @@ standoff = offset_pose(obj_in_cam.pose, -50)
 
 The approach and grasp poses below apply this same shift with the offsets tuned for this gripper.
 
-The approach pose is a standoff directly above the block, high enough that the gripper can descend onto it without first colliding with it sideways. That offset is worked for you:
+The approach pose is a standoff directly above the block, high enough that the gripper can descend onto it without first colliding with it sideways. That offset (APPROACH_MM / 100 mm) is provided here:
 
 ```python
 approach_pose = offset_pose(obj_in_cam.pose, APPROACH_MM)
 ```
 
-`APPROACH_MM` is `-100`. Applied to `obj_in_cam.pose`, the block's bounding-box center, this places the standoff 100 mm toward the camera from the block: enough clearance for the gripper to descend cleanly, with room to spare for a small pose error.
+Applied to `obj_in_cam.pose`, the block's bounding-box center, this places the standoff 100 mm toward the camera from the block: enough clearance for the gripper to descend cleanly, with room to spare for a small pose error.
 
-Now compute the grasp pose yourself. At the block you want the gripper's fingertips, not its TCP: the fingers have to close around the block. `motion.move` drives the `gripper-1` TCP, which sits one gripper-length back from the fingertip contact point, so to land the fingertips on the block center you stop the TCP one gripper-length short of it, toward the camera. That single offset is all you add, because `motion.move` is already driving the gripper's TCP rather than the arm's end. Work out the offset before reading on.
+Now compute the grasp pose yourself. At the block you want the gripper's fingertips, not its TCP: the fingers have to close around the block. `motion.move` drives the `gripper-1` TCP, which sits one gripper-length back from the fingertip contact point, so to land the fingertips on the block center you stop the TCP one gripper-length short of it, toward the camera. That single offset is all you add, because `motion.move` is already driving the gripper's TCP rather than the arm's end. Work out the offset, including its sign, before expanding the answer below.
 
+{{< expand "Reveal the grasp offset" >}}
 The offset is `GRIPPER_LENGTH_MM`, the depth from the gripper's TCP out to its fingertip contact point:
 
 ```python
@@ -216,26 +225,44 @@ grasp_pose = offset_pose(obj_in_cam.pose, GRIPPER_LENGTH_MM)
 ```
 
 `GRIPPER_LENGTH_MM` is `-60`. If you used `APPROACH_MM` here by mistake, the gripper stops well short of the block instead of at it; if you used zero, you would drive the TCP itself to the block center, sinking the fingers a full gripper-length past the block instead of closing them around it.
+{{< /expand >}}
 
 {{< checkpoint >}}
 Before wiring up the moves, print `approach_pose` and `grasp_pose` and compare their `z` to `obj_in_cam.pose.z`: the approach `z` should sit about 100 mm toward the camera and the grasp `z` about 60 mm toward it. If either offset went the wrong way, the pick drives into or well short of the block, so fix the sign before running a move.
 {{< /checkpoint >}}
 
+## Convert to world before you move
+
+`approach_pose` and `grasp_pose` are still expressed in the `cam-1` frame. As covered above, that frame is only trustworthy for a move issued before the arm leaves the pose the detection was taken from, and this pick issues two moves from one detection: approach, then grasp. By the second move the arm has already traveled to the approach standoff, carrying `cam-1` with it, so a `cam-1`-tagged grasp pose would resolve against the camera's new position rather than the one the offset math assumed.
+
+`world` fixes this: it is anchored at the arm's base and never moves, no matter where the arm travels afterward. Convert both poses to `world` once, right here, while the arm is still at `home-pose` and `cam-1` is where the detection assumed it was:
+
+```python
+approach_in_world = await machine.transform_pose(
+    PoseInFrame(reference_frame="cam-1", pose=approach_pose), "world"
+)
+grasp_in_world = await machine.transform_pose(
+    PoseInFrame(reference_frame="cam-1", pose=grasp_pose), "world"
+)
+```
+
+`transform_pose` returns a `PoseInFrame` already tagged `reference_frame="world"`, so `approach_in_world` and `grasp_in_world` are ready to hand to `motion.move` as-is, and they stay valid for the rest of the cycle no matter how many moves the arm makes in between.
+
 ## Run the full pick loop
 
 <!-- ASSET P0 perception-pick (MOTION): full detect -> approach -> descend -> grab -> place cycle (milestone-two hero asset) -->
 
-With `approach_pose` and `grasp_pose` computed, assemble the full cycle:
+With `approach_in_world` and `grasp_in_world` computed, assemble the full cycle:
 
 ```python
 await motion.move(
     component_name="gripper-1",
-    destination=PoseInFrame(reference_frame="cam-1", pose=approach_pose),
+    destination=approach_in_world,
 )
 await gripper.open()
 await motion.move(
     component_name="gripper-1",
-    destination=PoseInFrame(reference_frame="cam-1", pose=grasp_pose),
+    destination=grasp_in_world,
 )
 await gripper.grab()
 await asyncio.sleep(0.3)  # finger gripper settle
@@ -278,9 +305,10 @@ The full loop runs end to end: approach, open, grasp, grab, travel, place, open,
 Work through these in order. The first one causes most of the rest. If you get stuck, compare your loop against the complete [`reference-solution.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/reference-solution.py) in the companion repo.
 
 - **Did you detect from `home-pose`?** This is the first thing to check for nearly every perception symptom below. If the `await home.set_position(2)` guard is missing before a `get_object_point_clouds` call, or if you added a second detection somewhere that skips it, every downstream pose is computed against the wrong camera position.
-- **No objects detected.** Open the **CONTROL** tab and run the `vision-segment` card by hand while a block sits in view. If that also returns nothing, check the `shape-detector` card on its own: a detector that finds nothing means the block is out of frame, or lighting has changed enough to affect the shape detection. If `shape-detector` finds the block but `vision-segment` does not, check that a block is close enough and clearly separated from the table surface for the depth fusion step to segment it.
+- **No objects detected.** Open the **Control** tab and run the `vision-segment` card by hand while a block sits in view. If that also returns nothing, check the `shape-detector` card on its own: a detector that finds nothing means the block is out of frame, or lighting has changed enough to affect the shape detection. If `shape-detector` finds the block but `vision-segment` does not, check that a block is close enough and clearly separated from the table surface for the depth fusion step to segment it.
 - **The pick point drifts from cycle to cycle, even for a block that has not moved.** This is almost always the wrist-camera rule again: some code path is detecting from a pose other than `home-pose`. Print `obj_in_cam.pose` on every cycle and confirm the arm is fully settled at `home-pose` before each detection call.
 - **Motion planning fails, or the target looks unreachable.** Open the **3D scene** tab during the failing move and look at where `approach_pose` or `grasp_pose` lands relative to the table and safety-wall geometry from Phase 3. A detected pose near a workspace boundary can place the standoff or the grasp point outside the region the planner is allowed to move through. If you skipped or under-measured the obstacle configuration in Phase 3, this is where it bites: geometry that does not match your physical setup makes the planner reject moves that are perfectly safe, or, worse, accept ones that are not. Revisit [Teach the planner about obstacles](/tutorials/pick-and-place/static-positions/#teach-the-planner-about-obstacles) and recheck your measurements before assuming the pose math is wrong.
+- **The grasp move plans past the block and heads into the table.** This is the signature of resolving a chained move against a stale frame: the planner reports IK solutions failing on a claws-versus-table constraint, and the arm visibly travels too far instead of stopping at the block. It happens if a destination for the second or later move in a chain is still tagged `reference_frame="cam-1"` (or any other frame that rides on the arm) instead of `reference_frame="world"`. By the time that move runs, the arm has already relocated, so the moving frame no longer matches the position the pose was computed against, and the offset gets applied again on top of a position that is already most of the way there. Confirm every `motion.move` after the first in a chain uses a pose you already converted with `transform_pose`, as in [Convert to world before you move](#convert-to-world-before-you-move).
 
 With a full perception-guided pick loop running end to end, you have every piece of the workshop's core loop working from your own computer: detection, planned motion, and a reliable place. [The next phase](/tutorials/pick-and-place/inline-module/) picks up from here to package this same script as a module that runs on the robot directly, with no laptop connection required once it is deployed. If you are stopping here, the [wrap-up](/tutorials/pick-and-place/wrap-up/) reviews what you built and where to go next.
 

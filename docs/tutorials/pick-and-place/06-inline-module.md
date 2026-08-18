@@ -43,13 +43,13 @@ The next two sections cover those two changes in turn.
 
 ## Create a control code module
 
-On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
+On the **Configure** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module, click **Proceed**, and select **Python** as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
 
 <!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
 {{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
 
-Control code like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenience base class that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
+Control code like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenient base class that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
 
 Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Save and build the module at the end, once the code is in place.
 
