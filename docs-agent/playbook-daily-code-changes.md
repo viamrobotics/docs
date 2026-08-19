@@ -880,12 +880,16 @@ When a docs PR is opened against a DOCS ticket, that ticket moves to
 `Review in progress`, so the board shows the work as written and awaiting review
 rather than untouched.
 
-This is implemented as a Jira Automation rule in the DOCS project, not by the
-agent:
+This is implemented as a Jira Automation rule in the DOCS project —
+`Docs PR opened > Review in progress` — not by the agent:
 
 - **When:** Pull request created
-- **If:** repository is `viamrobotics/docs`
-- **Then:** Transition issue to `Review in progress`
+- **If:** `{{pullRequest.repository.url}}` contains `viamrobotics/docs`
+- **And:** status is not one of `Closed`, `Review in progress`
+- **Then:** Transition work item to `Review in progress`
+
+The status condition is what keeps a closed ticket from being reopened by a
+later PR, and stops a repeat trigger logging a failed transition.
 
 The agent does not transition tickets itself — its run environment has no Jira
 write access. The rule is what performs the change, and it can only fire if
