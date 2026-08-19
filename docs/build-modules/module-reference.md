@@ -561,7 +561,7 @@ with this model triple), `--name` (name the added resource),
 `--resource-name` (name the resource instance), `--id` (module ID,
 alternative to `--name`), `--cloud-config` (path to `viam.json`, alternative
 to `--part-id`), `--workdir` (subdirectory containing `meta.json`),
-`--home-dir` (remote user's home directory), `--no-progress` (hide transfer
+`--home` (override the remote machine's home directory), `--no-progress` (hide transfer
 progress).
 
 ## Environment variables

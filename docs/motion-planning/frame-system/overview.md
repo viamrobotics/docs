@@ -195,7 +195,7 @@ A typical frame configuration looks like this:
 }
 ```
 
-After saving, the [3D SCENE tab](/motion-planning/3d-scene/) renders the
+After saving, the [3D SCENE tab](/visualization/3d-scene/) renders the
 frame at its computed world pose so you can verify visually. For
 hardware-specific walkthroughs (table-mounted arm with gripper and
 camera, mobile manipulator, mobile base with sensors), see the cards at
@@ -271,7 +271,7 @@ Common uses:
 
 ## Verify visually with the 3D SCENE tab
 
-The [3D SCENE tab](/motion-planning/3d-scene/) renders your frame hierarchy in
+The [3D SCENE tab](/visualization/3d-scene/) renders your frame hierarchy in
 3D: every configured component appears at its computed world pose, with
 geometry and axes drawn. Open it after a configuration change to confirm the
 arm is mounted on the table, the camera is above the arm, and any obstacles
