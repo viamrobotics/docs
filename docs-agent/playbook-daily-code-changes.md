@@ -874,6 +874,29 @@ project = DOCS AND issue in linkedIssues("APP-17295") AND statusCategory != Done
 Write the bare key either way. `viamrobotics/app#12896` alone is not matchable;
 `APP-17295` is.
 
+### Moving the ticket to Review in progress
+
+When a docs PR is opened against a DOCS ticket, that ticket moves to
+`Review in progress`, so the board shows the work as written and awaiting review
+rather than untouched.
+
+This is implemented as a Jira Automation rule in the DOCS project, not by the
+agent:
+
+- **When:** Pull request created
+- **If:** repository is `viamrobotics/docs`
+- **Then:** Transition issue to `Review in progress`
+
+The agent does not transition tickets itself — its run environment has no Jira
+write access. The rule is what performs the change, and it can only fire if
+GitHub for Jira has already linked the PR to the ticket. That link requires the
+DOCS key to be present in the branch name when the PR is opened, which is what
+the previous section establishes. A key added later does not retroactively
+trigger the rule.
+
+The counterpart rule — transition to `Closed` when the PR merges — is a separate
+decision and is not assumed here.
+
 ### Creating PRs for new docs pages
 
 For Case 4 findings (new capabilities without docs), the agent writes a complete new docs page following **Playbook 2**:
