@@ -1106,8 +1106,10 @@ viam machines logs --machine=123
 | `--errors` | Boolean, return only errors. Default: `false`. | Optional |
 | `--levels` | Filter logs by levels (debug, info, warn, error). Accepts multiple inputs in comma-separated list. | Optional |
 | `--keyword` | Filter logs by keyword. | Optional |
-| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago. | Optional |
+| `--start` | Filter logs to include only those after the start time. Time format example: `2025-01-13T21:30:00Z` (ISO-8601 timestamp in RFC3339). Default: 24 hours ago, unless `--range` is set. | Optional |
 | `--end` | Filter logs to include only those before the end time. Time format example: `2025-01-13T21:35:00Z` (ISO-8601 timestamp in RFC3339). | Optional |
+| `--range` | Duration string in minutes, hours, or days (for example, `10m`, `10h`, `10d`) that sets a relative time window. Resolved against whichever of `--start` and `--end` is present: with only `--end`, the window is `[end - range, end]`; with only `--start`, the window is `[start, start + range]`; with neither, the window is `[now - range, now]`. Cannot be used together with both `--start` and `--end`. | Optional |
+| `--order` | Order in which logs are returned by time. Accepted values: `asc` (oldest first), `desc` (newest first). Default: `desc`. | Optional |
 | `--count` | Maximum number of logs to fetch. Default: all logs in the time range. | Optional |
 | `--format` | The file format for the output file. Options: `text` or `json`. | Optional |
 | `--output` | The path to the output file to store logs in. | Optional |
