@@ -2184,7 +2184,7 @@ pip3 install -r requirements.txt
 #!/bin/bash
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand %}}
@@ -2211,7 +2211,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 {{% /expand%}}
@@ -2245,7 +2245,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
@@ -2261,7 +2261,7 @@ python3 -m venv .venv
 . .venv/bin/activate
 pip3 install -r requirements.txt
 python3 -m PyInstaller --onefile --collect-all viam --hidden-import="googleapiclient" src/main.py
-tar -czvf dist/archive.tar.gz <PATH-TO-EXECUTABLE>
+tar -czvf dist/archive.tar.gz meta.json <PATH-TO-EXECUTABLE>
 ```
 
 { {% /expand%}}
