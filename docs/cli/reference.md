@@ -1897,6 +1897,7 @@ viam module reload-local --local
 | `--resource-name` | If passed, creates a new resource with the given resource name. Use with `--model-name`. Default: Creates no new resource. | Optional |
 | `--local` | Use if the target machine is localhost, to run the entrypoint directly rather than transferring a bundle. Default: `false`. | Optional |
 | `--workdir` | Use this to indicate that your <file>meta.json</file> is in a subdirectory of your repo. `--module` flag should be relative to this. Default: `.`. | Optional |
+| `--file` | Path to a pre-built module tarball to upload. Implies `--no-build` and does not require `build.path` in `meta.json`. Cannot be combined with `--local`. | Optional |
 | `--no-build` | Skip build step. Default: `false`. | Optional |
 | `--no-progress` | Hide progress of the file transfer. Default: `false`. | Optional |
 | `--home` | Specify home directory for a remote machine where `$HOME` is not the default `/root`. | Optional |
