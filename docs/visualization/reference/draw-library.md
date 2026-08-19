@@ -4,81 +4,53 @@ title: "draw library"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Lookup tables for the draw library: placement and identity options, shape constructors, colors, metadata, and snapshot options."
+description: "A map of the draw library's option categories: placement and identity, shapes, colors, metadata, and snapshots, with links to the full API."
 ---
 
 The [`draw` library](https://pkg.go.dev/github.com/viam-labs/motion-tools/draw)
 (`github.com/viam-labs/motion-tools/draw`) builds the transforms and entities that the 3D
-scene and [Viam Visualization](/visualization/viam-visualization/) render. This page lists
-the options you reach for while writing a producer. The library lives in `viam-labs` and
-moves faster than the RDK, so treat the project's
+scene and [Viam Visualization](/visualization/viam-visualization/) render. This page maps
+the library's option categories to what they control. The library lives in `viam-labs` and
+moves faster than the RDK, so the project's
 [generated API docs](https://viamrobotics.github.io/visualization/api/draw/) and
-[pkg.go.dev](https://pkg.go.dev/github.com/viam-labs/motion-tools/draw) as the full and
-current inventory.
+[pkg.go.dev](https://pkg.go.dev/github.com/viam-labs/motion-tools/draw) carry the
+option-by-option detail and stay current as the library changes.
 
 ## Placement and identity
 
-Options for `Draw` calls and `NewDrawConfig`, all of type `DrawableOption`:
-
-| Option           | What it sets                                                                               |
-| ---------------- | ------------------------------------------------------------------------------------------ |
-| `WithParent`     | The reference frame the pose is expressed in. Defaults to `world`.                         |
-| `WithPose`       | The entity's pose in the parent frame.                                                     |
-| `WithCenter`     | An offset applied at the entity's own center.                                              |
-| `WithID`         | A string identity; the library derives a stable UUID from it, so re-sends update in place. |
-| `WithUUID`       | An explicit UUID, when you manage identity yourself.                                       |
-| `WithAxesHelper` | Draws a coordinate triad at the entity's origin.                                           |
-| `WithInvisible`  | Hides the entity by default; the viewer can re-enable it.                                  |
+`Draw` calls and `NewDrawConfig` take `DrawableOption` values that place an entity and
+give it an identity: the parent reference frame (`world` by default), the pose in that
+frame, and an offset at the entity's own center. Identity is the option that matters most:
+pass a string ID and the library derives a stable UUID from it, so re-sending the same ID
+updates the entity in place instead of adding a duplicate. Options in this category also
+toggle the entity's axes helper and its default visibility.
 
 ## Shapes
 
-| Constructor                           | Builds                                                                              |
-| ------------------------------------- | ----------------------------------------------------------------------------------- |
-| `NewDrawnGeometry`                    | A styled `spatialmath.Geometry`; its `Draw` method returns a `*commonpb.Transform`. |
-| `NewShape` + `WithArrows`             | Arrows, for directions, normals, or vectors.                                        |
-| `NewShape` + `WithLine` / `NewLine`   | A line, for paths, segments, or connections.                                        |
-| `NewShape` + `WithPoints`             | Points, for sampled data or markers.                                                |
-| `NewShape` + `WithModel`              | A detailed 3D mesh model.                                                           |
-| `NewShape` + `WithNurbs` / `NewNurbs` | A smooth NURBS curve or surface.                                                    |
-
-Style a geometry with `WithGeometryColor` (one color) or `WithGeometryColors` (per-point
-colors) when you call `NewDrawnGeometry`.
+`NewDrawnGeometry` wraps a `spatialmath.Geometry` with styling; its `Draw` method returns
+the `*commonpb.Transform` that a world state store service serves. `NewShape` builds the
+drawing primitives: arrows for directions and normals, lines for paths, points for
+sampled data, mesh models, and NURBS curves, each with its own option set.
 
 ## Colors
 
-Build a `Color` with `NewColor` plus one option, or use the one-call helpers:
-
-| With `NewColor` | Helper          | Input                                  |
-| --------------- | --------------- | -------------------------------------- |
-| `WithRGB`       | `ColorFromRGB`  | `r, g, b` as 0 to 255                  |
-| `WithRGBA`      | `ColorFromRGBA` | `r, g, b` plus alpha for opacity       |
-| `WithName`      | `ColorFromName` | A CSS color name, such as `dodgerblue` |
-| `WithHex`       | `ColorFromHex`  | A hex string                           |
-| `WithHSV`       | `ColorFromHSV`  | Hue, saturation, value                 |
+`NewColor` composes a `Color` from one option: RGB values, RGBA with alpha carrying
+opacity, a CSS color name such as `dodgerblue`, a hex string, or HSV. Each form also has a
+one-call `ColorFrom*` helper.
 
 ## Metadata
 
-Options for `NewDrawing` and `NewTransform`, all of type `DrawMetadataOption`. Each writes
-one of the [metadata keys](/visualization/reference/transform-metadata/) the scene reads:
-
-| Option                      | Metadata it writes                           |
-| --------------------------- | -------------------------------------------- |
-| `WithMetadataColors`        | `colors` (and `opacities` from alpha)        |
-| `WithMetadataAxesHelper`    | `show_axes_helper`                           |
-| `WithMetadataInvisible`     | `invisible`                                  |
-| `WithMetadataRelationships` | `relationships`, for links such as HoverLink |
+`NewDrawing` and `NewTransform` take `DrawMetadataOption` values, each of which writes one
+of the metadata keys the scene reads: colors and opacities, the axes helper, default
+visibility, and entity relationships such as HoverLink. The key names and wire formats are
+on [Transform metadata](/visualization/reference/transform-metadata/).
 
 ## Snapshots
 
-Options for `NewSnapshot`, which builds a loadable
-[scene snapshot](/visualization/viam-visualization/#save-and-load-scene-snapshots):
-
-| Option                                      | What it sets                                       |
-| ------------------------------------------- | -------------------------------------------------- |
-| `WithSceneCamera`                           | Where the scene camera starts.                     |
-| `WithGrid`, `WithGridCellSize`              | The reference grid and its cell size.              |
-| `WithScenePointSize`, `WithScenePointColor` | Default point rendering.                           |
-| `WithRenderArmModels`                       | Whether arms render as colliders, models, or both. |
+`NewSnapshot` builds a loadable
+[scene snapshot](/visualization/viam-visualization/#save-and-load-scene-snapshots); its
+options set the starting scene camera, the reference grid, default point rendering, and
+whether arms render as colliders, models, or both.
 
 ## What's next
 
