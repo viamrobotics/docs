@@ -1,22 +1,5 @@
 // :snippet-start: add-metadata-location
 import { createViamClient } from "@viamrobotics/sdk";
-// :remove-start:
-import pkg from "@koush/wrtc";
-const {
-    RTCPeerConnection,
-    RTCSessionDescription,
-    RTCIceCandidate,
-    MediaStream,
-    MediaStreamTrack
-} = pkg;
-
-// Set up global WebRTC classes
-global.RTCPeerConnection = RTCPeerConnection;
-global.RTCSessionDescription = RTCSessionDescription;
-global.RTCIceCandidate = RTCIceCandidate;
-global.MediaStream = MediaStream;
-global.MediaStreamTrack = MediaStreamTrack;
-// :remove-end:
 
 // Configuration constants – replace with your actual values
 let API_KEY = "";  // API key, find or create in your organization settings

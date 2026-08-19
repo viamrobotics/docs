@@ -43,6 +43,14 @@ If you need the ML model service, install with the optional dependency:
 pip install 'viam-sdk[mlmodel]'
 ```
 
+For OpenTelemetry request tracing in a Python module, install the `tracing` extra:
+
+```sh {class="command-line" data-prompt="$"}
+pip install 'viam-sdk[tracing]'
+```
+
+See [OpenTelemetry distributed tracing](/data/overview/#opentelemetry-distributed-tracing) for how to enable it.
+
 ## Configure credentials
 
 Create a `.env` file in your project root:

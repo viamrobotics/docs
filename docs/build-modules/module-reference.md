@@ -519,7 +519,9 @@ All module CLI commands are under `viam module`. You must be logged in
 | `viam module build logs --id <build-id>`     | Stream logs from a cloud build job.               |
 
 `build start` flags: `--ref` (git ref, default: `main`), `--platforms`,
-`--token` (for private repos), `--workdir`.
+`--token` (for private repos), `--workdir`, `--from-source` (upload local
+source instead of building from a git ref), `--path`, `--wait`,
+`--no-progress`.
 
 During builds, the environment variables `VIAM_BUILD_OS` and `VIAM_BUILD_ARCH`
 are set to the target platform. See [Environment variables](#environment-variables).
@@ -559,7 +561,7 @@ with this model triple), `--name` (name the added resource),
 `--resource-name` (name the resource instance), `--id` (module ID,
 alternative to `--name`), `--cloud-config` (path to `viam.json`, alternative
 to `--part-id`), `--workdir` (subdirectory containing `meta.json`),
-`--home-dir` (remote user's home directory), `--no-progress` (hide transfer
+`--home` (override the remote machine's home directory), `--no-progress` (hide transfer
 progress).
 
 ## Environment variables

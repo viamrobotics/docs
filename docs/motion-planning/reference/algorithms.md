@@ -50,10 +50,10 @@ The planner-relevant entries are:
 
 Callers override a default in one of two places: persistently in the motion service config, or per call through the `extra` map on a `Move` request. The table below shows which tunables live where.
 
-| Where                                | Scope                   | Example tunables                                                |
-| ------------------------------------ | ----------------------- | --------------------------------------------------------------- |
-| Motion service config (`attributes`) | Persistent, per-service | `num_threads`, `input_range_override`, planner-diagnostic flags |
-| `extra` map on a Move request        | Per-request             | `collision_buffer_mm`, `max_ik_solutions`, `timeout`            |
+| Where                                | Scope                   | Example tunables                                     |
+| ------------------------------------ | ----------------------- | ---------------------------------------------------- |
+| Motion service config (`attributes`) | Persistent, per-service | `input_range_override`, planner-diagnostic flags     |
+| `extra` map on a Move request        | Per-request             | `collision_buffer_mm`, `max_ik_solutions`, `timeout` |
 
 See [Motion service configuration](/motion-planning/reference/motion-service/)
 for the full list of configuration attributes.

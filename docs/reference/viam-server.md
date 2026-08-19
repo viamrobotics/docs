@@ -342,11 +342,19 @@ The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin
 brew tap viamrobotics/brews && brew trust viamrobotics/brews && brew install viam-server
 ```
 
-The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE>.
+The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE> on Apple silicon and at <FILE>/usr/local/bin/viam-server</FILE> on Intel Macs.
+The tap ships bottles for Apple silicon only, so on an Intel Mac brew builds `viam-server` from source, which takes considerably longer.
 
-The brew installation of `viam-server` CANNOT be run as a system service in the
-background. If you would like to run `viam-server` in the background, install
-[`viam-agent`](/reference/viam-agent/) instead.
+To run `viam-server` in the background, save your machine configuration to <FILE>$(brew --prefix)/etc/viam.json</FILE>, then start it as a launchd service:
+
+```sh {class="command-line" data-prompt="$"}
+brew services start viam-server
+```
+
+The service restarts `viam-server` if it exits and writes logs to <FILE>$(brew --prefix)/var/log/viam-server.log</FILE>.
+
+[`viam-agent`](/reference/viam-agent/) does not support macOS, so brew is the only way to keep `viam-server` running in the background on a Mac.
+Upgrade it yourself with `brew upgrade viam-server`; nothing updates it from the cloud.
 
 {{% /tab %}}
 {{% tab name="Windows Subsystem for Linux (WSL)" %}}

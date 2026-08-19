@@ -1127,10 +1127,11 @@ If `reload-local` fails:
 - **"no build command"** -- Your `meta.json` is missing a `build.build` field.
   Add the path to your build script (for example, `"build": "./build.sh"`).
 - **"could not find module ID"** -- Run the command from the directory
-  containing `meta.json`, or use `--home <path>` to specify the module
-  directory.
-- **PermissionDenied errors** -- Try `--home $HOME` to ensure the CLI can
-  locate the module metadata.
+  containing `meta.json`, or pass `--module <path>` to point to your
+  `meta.json` file.
+- **Wrong destination directory** -- The CLI asks the target machine for
+  its Viam home directory automatically. If that query fails or returns a
+  wrong path, pass `--home <path>` to override it.
 
 {{< /expand >}}
 
