@@ -72,7 +72,8 @@ The target machine must be online (visible in the Viam app). The CLI connects ov
 
 **Useful flags:**
 
-- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`.
+- `--file <path>` uploads a pre-built tarball without running the build step or requiring `build.path` in `meta.json`. Use this when you build the archive outside the CLI (for example, in CI or with a custom script).
+- `--no-build` skips the build step if you already built the archive manually with `bash build.sh`. Unlike `--file`, this still requires `build.path` in `meta.json` to locate the archive.
 - `--local` runs the module from source files on your laptop instead of shipping a tarball. Use this only when the target machine is your laptop. In `--local` mode, `viam module restart` picks up Python source edits without a rebuild.
 
 For the full hot-reload walkthrough including how it fits into the development loop, see [Test locally](/build-modules/write-a-driver-module/#3-test-locally) on the driver-module page.
