@@ -62,9 +62,18 @@ Every joint has limits that define its range of motion:
   degrees. For example, a shoulder joint might allow -180 to 180 degrees.
 - **Min/max position** (prismatic joints): the minimum and maximum extension in
   millimeters.
+- **Max velocity** (optional): the maximum speed the joint can move, in
+  degrees per second (revolute) or millimeters per second (prismatic). A
+  `nil` or omitted value means the joint has no velocity bound.
+- **Max acceleration** (optional): the maximum acceleration the joint can
+  sustain, in degrees per second squared (revolute) or millimeters per
+  second squared (prismatic). A `nil` or omitted value means the joint has
+  no acceleration bound.
 
-Joint limits prevent the motion planner from computing solutions that would
-require the arm to bend past its physical limits.
+Position limits prevent the motion planner from computing solutions that
+would require the arm to bend past its physical limits. Velocity and
+acceleration limits let the trajectory generator produce timed paths that
+respect hardware speed constraints.
 
 ### Kinematics file formats
 
@@ -200,14 +209,19 @@ Each field:
 - **`joints[].axis`**: the axis of rotation or translation (unit vector)
 - **`joints[].min`** / **`joints[].max`**: joint limits in degrees (revolute)
   or mm (prismatic)
+- **`joints[].max_velocity`** (optional): maximum joint speed in degrees per
+  second (revolute) or mm per second (prismatic). Omit for unbounded.
+- **`joints[].max_acceleration`** (optional): maximum joint acceleration in
+  degrees per second squared (revolute) or mm per second squared (prismatic).
+  Omit for unbounded.
 - **`joints[].geometry`**: optional collision shape, prismatic joints only
 - **`joints[].mimic`** (optional): make this joint follow another joint at a
   fixed multiplier and offset, for parallel-jaw grippers and other mechanically
   coupled axes. The mimic object takes `joint` (the source joint's `id`),
   `multiplier`, and `offset`; the joint's value is computed as
   `multiplier * source_value + offset`. An omitted `multiplier` defaults to
-  1.0. Mimic joints must not declare their own `min`/`max`; the source joint's
-  limits apply.
+  1.0. Mimic joints must not declare their own `min`/`max` or
+  `max_velocity`/`max_acceleration`; the source joint's limits apply.
 
 ### 3. Import a URDF file
 
