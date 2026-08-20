@@ -124,7 +124,7 @@ You can filter logs by:
 - **Level**: Error, Warn, Info, Debug
 - **Keyword**: full text search (supports regular expressions)
 - **Time range**: set start and end times, or use live mode to stream logs in real time
-- **Resource**: filter by a specific component or service name
+- **Source**: filter by a specific component or service name
 
 The default log level is `Info`.
 If you are not seeing helpful logs, enable debug logging.
@@ -178,6 +178,18 @@ Filter by keyword and time range:
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines logs --machine <machine-name-or-id> --keyword "motor" --start 2026-04-07T10:00:00Z --end 2026-04-07T11:00:00Z
+```
+
+Filter by a relative time window:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines logs --machine <machine-name-or-id> --range 2h --levels error
+```
+
+View oldest logs first:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines logs --machine <machine-name-or-id> --range 1d --order asc
 ```
 
 ## Remote shell access

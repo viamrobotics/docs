@@ -90,11 +90,12 @@ In the machine settings card, open **Settings** and expand **System**:
 The `"all"` and `"security"` modes delegate scheduling to the operating system's built-in upgrade timer (`unattended-upgrades` on Debian). The `"managed-all"` and `"managed-security"` modes let `viam-agent` control the upgrade schedule directly, which also enables upgrade support on Ubuntu and RPM-based distributions (Fedora, RHEL, Rocky Linux, AlmaLinux, CentOS).
 
 When using a managed mode, `viam-agent` disables the OS's built-in upgrade timer and runs upgrades itself at the configured interval. If an upgrade requires a reboot, `viam-agent` waits until the configured [maintenance window](/fleet/manage-versions/#maintenance-windows) before rebooting the machine.
+It also defers reboots while any package manager transaction is in progress, whether started by `viam-agent` itself or by an external tool, to prevent interrupting an installation mid-transaction.
 
-| Mode                                  | Supported distributions                                                                                                   | Schedule controlled by     | Reboot coordination          |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ---------------------------- |
-| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                                                   | OS (`unattended-upgrades`) | None                         |
-| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM), and Windows (PSWindowsUpdate) | `viam-agent`               | Waits for maintenance window |
+| Mode                                  | Supported distributions                                                                                                   | Schedule controlled by     | Reboot coordination                                        |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ---------------------------------------------------------- |
+| `"all"`, `"security"`                 | Debian, Raspberry Pi OS (Bullseye, Bookworm, or Trixie)                                                                   | OS (`unattended-upgrades`) | None                                                       |
+| `"managed-all"`, `"managed-security"` | Debian, Ubuntu, Raspberry Pi OS, Fedora, RHEL 7+, Rocky, AlmaLinux, CentOS 7 (apt and RPM), and Windows (PSWindowsUpdate) | `viam-agent`               | Waits for maintenance window and active installs to finish |
 
 The `"all"` and `"security"` modes require Debian (including Debian-based systems like Raspberry Pi OS) with the Bullseye, Bookworm, or Trixie release codename. On Ubuntu, an RPM-based distribution, or Windows, use a managed mode instead. On Windows, managed modes use the `PSWindowsUpdate` PowerShell module. When a selected mode is not supported on the running OS, the agent logs a warning and the setting has no effect.
 

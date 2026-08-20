@@ -772,7 +772,7 @@ def check_for_unused_methods(methods, type):
                     if resource in ["data_sync", "dataset", "data"]:
                         continue
                     if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus"] or \
-                        lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter"] or \
+                        lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter", "CurrentInputs", "GoToInputs"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
                         print(f"WARNING: {lang} {type} {resource} {method} is unused")
@@ -957,17 +957,19 @@ def write_markdown(type, names, methods):
                             proto_anchor_link = '/reference/apis/' + resource + '/#' + proto_link
 
                         ## Fetch just the first sentence from the proto_override_file (first text string terminated by '.\n'), ignoring hugo
-                        ## shortcodes like alerts ('{{%.*%}}.*{{% \[a-b].* %}}'), which precede some override files' (proto descriptions')
-                        ## first sentence:
+                        ## shortcodes like alerts ('{{% alert %}}...{{% /alert %}}'), which precede some override files' (proto descriptions')
+                        ## first sentence. The closing tag must match the same shortcode name as the opener (via backreference), so a
+                        ## self-closing shortcode earlier in the file (e.g. {{< glossary_tooltip ... >}}, no closing tag of its own) can't
+                        ## get matched up with an unrelated block shortcode's closer later in the file:
 
 
                         if os.path.isfile(proto_override_file):
                             with open(proto_override_file, 'r') as f:
                                 file_contents = f.read().strip()
-                                file_contents = regex.sub(r'\{\{\%.*\%\}\}.*\{\{\% \/[a-b].* \%\}\}', '', file_contents, flags=regex.DOTALL)
+                                file_contents = regex.sub(r'\{\{\%\s*(\w+)[^%]*\%\}\}.*?\{\{\%\s*\/\1\s*\%\}\}', '', file_contents, flags=regex.DOTALL)
                                 ## Same, for angle-bracket shortcodes ({{< alert >}}...{{< /alert >}}), which
                                 ## otherwise leak an unclosed shortcode opener into the table description:
-                                file_contents = regex.sub(r'\{\{<.*?>\}\}.*?\{\{< \/[a-b].*? >\}\}', '', file_contents, flags=regex.DOTALL)
+                                file_contents = regex.sub(r'\{\{<\s*(\w+)[^>]*>\}\}.*?\{\{<\s*\/\1\s*>\}\}', '', file_contents, flags=regex.DOTALL)
                                 search_result = file_contents.split('.\n', 1)[0].strip().replace("\n", " ")
 
                                 ## If the proto description contains any MD links, strip them out:
