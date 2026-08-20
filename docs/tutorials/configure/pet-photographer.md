@@ -803,10 +803,10 @@ Whether you downloaded the `colorfilter` module or wrote your own, the next step
    viam login
    ```
 
-1. From the module directory, create a module entry in your Viam organization:
+1. From the module directory, create a module entry in your Viam organization. Find your organization ID by running `viam organizations list`, or from your organization's **Settings** page in the Viam app:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam module create --name=colorfilter
+   viam module create --name=colorfilter --org-id=<your-org-id>
    ```
 
    This generates a `meta.json` file.
@@ -817,7 +817,7 @@ Whether you downloaded the `colorfilter` module or wrote your own, the next step
 
    ```sh {class="command-line" data-prompt="$"}
    viam module reload-local --part-id <your-part-id> \
-     --model-name example:camera:colorfilter --name my-color-filter
+     --model-name example:camera:colorfilter --resource-name my-color-filter
    ```
 
    Replace `<your-part-id>` with the part ID you copied.

@@ -375,10 +375,10 @@ You need to tell your robot how to access the module you created.
    viam login
    ```
 
-1. From the module directory, create a module entry in your Viam organization:
+1. From the module directory, create a module entry in your Viam organization. Find your organization ID by running `viam organizations list`, or from your organization's **Settings** page in the Viam app:
 
    ```sh {class="command-line" data-prompt="$"}
-   viam module create --name=my-custom-base
+   viam module create --name=my-custom-base --org-id=<your-org-id>
    ```
 
 1. Find your machine's part ID. At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
@@ -387,7 +387,7 @@ You need to tell your robot how to access the module you created.
 
    ```sh {class="command-line" data-prompt="$"}
    viam module reload-local --part-id <your-part-id> \
-     --model-name viamlabs:base:robotdog --name quadruped
+     --model-name viamlabs:base:robotdog --resource-name quadruped
    ```
 
    Replace `<your-part-id>` with the part ID you copied.
