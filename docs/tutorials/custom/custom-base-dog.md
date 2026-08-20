@@ -365,21 +365,36 @@ Since the command line tool already created a <file>run.sh</file> for you, all y
 sudo chmod +x run.sh
 ```
 
-## Configure the module on your robot
+## Deploy the module to your robot
 
 You need to tell your robot how to access the module you created.
 
-Navigate to your machine's **CONFIGURE** tab.
-Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
-Name your module `my-custom-base`.
-Enter the path (for example, `/home/fido/robotdog/run.sh`) to your module's executable file in the **Executable path** field.
-Click **Save** at the top right of the page to save your config.
+1. If you have not already, [install the Viam CLI](/cli/reference/) and log in:
 
-![Config tab with the Modules subtab open, showing my-custom-base configured.](/tutorials/custom-base-dog/module-config.png)
+   ```sh {class="command-line" data-prompt="$"}
+   viam login
+   ```
+
+1. From the module directory, create a module entry in your Viam organization. Find your organization ID by running `viam organizations list`, or from your organization's **Settings** page in the Viam app:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam module create --name=my-custom-base --org-id=<your-org-id>
+   ```
+
+1. Find your machine's part ID. At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
+
+1. Deploy the module and add the base component in one step:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam module reload-local --part-id <your-part-id> \
+     --model-name viamlabs:base:robotdog --resource-name quadruped
+   ```
+
+   Replace `<your-part-id>` with the part ID you copied.
 
 ## Configure the components
 
-Now that the custom base code is set up, you need to configure all your hardware components.
+Now that the module is deployed, configure your hardware components.
 
 ### Configure the camera
 
@@ -389,13 +404,8 @@ Click **Save**.
 
 ### Configure the base
 
-Now, add the local base component from the local module.
-Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local component**.
-Select `base` as the **Type**.
-Name your component `quadruped`.
-For the colon-delimited triplet, select or enter `viamlabs:base:robotdog`.
-
-Then, in the configuration panel that appears for the local base, copy and paste the follow attributes:
+Open the **CONFIGURE** tab and click the `quadruped` component (added by `reload-local`) to expand its configuration.
+Add the following attributes:
 
 ```json
 {
