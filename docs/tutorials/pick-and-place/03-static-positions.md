@@ -52,17 +52,17 @@ home      back to the start
 
 Each pose has a specific role, and reaching it cleanly validates one part of your setup:
 
-| Pose          | Purpose                                                                                   | What reaching it validates                                        |
-| ------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Pose          | Purpose                                                                                    | What reaching it validates                                        |
+| ------------- | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
 | home-pose     | Observation position above the workspace; the wrist camera has a clear view of the blocks. | Observation position is safe and repeatable                       |
-| approach-pose | Standoff directly above the pick zone, roughly 80 to 100 mm above the highest block       | Arm can get above the workspace without collision                 |
-| grasp-pose    | At the block, gripper open and ready to close; fingertips are level with the block top    | Descent distance is correct and the gripper's finger timing works |
-| travel-pose   | Safe carrying height that clears obstacles while holding a block                          | Safe carrying height clears obstacles                             |
-| place-pose    | Above the bin where blocks are dropped                                                    | Bin position is correct                                           |
+| approach-pose | Standoff directly above the pick zone, roughly 80 to 100 mm above the highest block        | Arm can get above the workspace without collision                 |
+| grasp-pose    | At the block, gripper open and ready to close; fingertips are level with the block top     | Descent distance is correct and the gripper's finger timing works |
+| travel-pose   | Safe carrying height that clears obstacles while holding a block                           | Safe carrying height clears obstacles                             |
+| place-pose    | Above the bin where blocks are dropped                                                     | Bin position is correct                                           |
 
 The approach pose and the grasp pose share the same x and y coordinates. The only motion between them is straight down the z axis, so if the arm drifts sideways during the descent you have a frame or calibration issue to investigate.
 
-If your bin in a rectangle or box shape and it's visible in home pose, the vision service may try to pick it up. To be safe, place the bin outside the camera's view in home pose. 
+If your bin in a rectangle or box shape and it's visible in home pose, the vision service may try to pick it up. To be safe, place the bin outside the camera's view in home pose.
 
 ## Save each pose with the arm position saver
 
@@ -90,18 +90,18 @@ With the `home-pose` switch added, save and verify it. Home is your observation 
 
 You have three ways to jog the arm on its Control card, and you can mix them:
 
-- **Joint control (`MoveToJointPositions`)** sets each joint angle directly. Move one joint slider a small amount, press **Execute**, and that joint rotates. It is the most predictable way to make coarse changes and to lift the arm clear before repositioning. You can also use quick move mode (indicated by the lightning bolt icon) to move a joint five percent at a time. 
+- **Joint control (`MoveToJointPositions`)** sets each joint angle directly. Move one joint slider a small amount, press **Execute**, and that joint rotates. It is the most predictable way to make coarse changes and to lift the arm clear before repositioning. You can also use quick move mode (indicated by the lightning bolt icon) to move a joint five percent at a time.
 - **End-effector control (`MoveToPosition`)** moves the tip of the arm to a Cartesian target instead of setting joints. Press **Current position** to load the arm's current pose into the fields, then change a coordinate and press **Execute**. The values are millimeters in the world frame at the arm base: raising or lowering **z** moves the gripper straight up or down, while **x** and **y** slide it horizontally across the workspace. Change one value by a small amount and watch the arm, or the 3D scene, to learn which way each axis points for your setup. Use this to nudge the gripper in a specific direction without solving for joint angles.
 - **Manual mode** lets you physically manipulate the arm to a desired position. To enter manual mode, go to the arm's **Control** card, then find the **Do command** section. `DoCommand` is a generic method that Viam components and services expose for functionality outside the standard API, letting you send arbitrary commands from the **Control** tab or your code without needing a dedicated method for every action.
   In the **Input** panel, enter:
 
-    ```json
-    {
-      "enter_manual_mode":true 
-    }
-    ```
+  ```json
+  {
+    "enter_manual_mode": true
+  }
+  ```
 
-  Press **Execute**. The **Output** should read, `"status": "entered manual mode"` and you should be able to easily move the arm by hand. 
+  Press **Execute**. The **Output** should read, `"status": "entered manual mode"` and you should be able to easily move the arm by hand.
 
 Run these four steps to save and verify the pose:
 
@@ -110,7 +110,7 @@ Run these four steps to save and verify the pose:
 3. On the switch test card, click **update config** to save the current joint positions.
 4. To validate, move the arm away to a different position. From the switch test card, click **go to** and confirm the arm returns to the saved pose.
 
-Setting the switch to **update config** writes the current joint positions straight into the switch's own configuration. Unlike the components you added in Phases 1 and 2, there is no separate **Save** step here: the pose is persisted as soon as you trigger 
+Setting the switch to **update config** writes the current joint positions straight into the switch's own configuration. Unlike the components you added in Phases 1 and 2, there is no separate **Save** step here: the pose is persisted as soon as you trigger
 **update config**, and you can see the saved joint values appear in the switch's config JSON:
 
 ```json
@@ -173,9 +173,9 @@ The 3D scene below is the goal for this section: the table surface and two safet
 
 ### Add the table obstacle
 
-Start with the table. 
+Start with the table.
 
-Click the **+** icon and select **Blocks**, then search for `obstacle` and select the `vmodutils/obstacle` result. Name it `table`. In the attributes editor, paste the geometries blob: 
+Click the **+** icon and select **Blocks**, then search for `obstacle` and select the `vmodutils/obstacle` result. Name it `table`. In the attributes editor, paste the geometries blob:
 
 ```json
 {
@@ -189,6 +189,7 @@ Click the **+** icon and select **Blocks**, then search for `obstacle` and selec
   ]
 }
 ```
+
 This defines the table as a box with placeholder dimensions 1200 x 800 x 30 millimeters. Replace these with your own table's length, width, and thickness; [Position the obstacles](#position-the-obstacles) below covers when and how to swap in your own measurements.
 
 Next click **Frame** and set the frame that positions the table obstacle in the world.

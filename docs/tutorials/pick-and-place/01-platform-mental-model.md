@@ -17,7 +17,6 @@ languages: ["python"]
 
 This phase introduces you to Viam machine management and gives you the mental map you need before the rest of the workshop: what happens when you make an API call, why config changes appear instantly on the machine, and how Python code on your laptop talks to hardware across the room. You will configure your first resource as you go.
 
-
 ## Three questions to consider
 
 By the end of this phase you should be able to answer the following questions. Keep them in mind as you read, and check yourself against them again at the end.
