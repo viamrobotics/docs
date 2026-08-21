@@ -7,6 +7,8 @@ arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJoi
 arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
 arm,Get3DModels,,,Get3DModels,get3DModels,get3DModels
+## Flutter-only client-side helper, sums link lengths from getKinematics() locally; no proto/RPC and no analog in other SDKs:
+arm,CalculateMaxReach,,,,calculateMaxReach,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 arm,GetKinematics,,get_kinematics,Kinematics,getKinematics,getKinematics
 arm,IsMoving,,is_moving,IsMoving,isMoving,isMoving
