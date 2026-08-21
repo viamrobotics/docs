@@ -28,7 +28,12 @@ IgnoreURLs:
   - "example.com"
   - "^/misc/js/script.js$"
   - "linkedin.com"
+  # app.viam.com and elevenlabs.io/app are authenticated client-rendered SPAs:
+  # the server always returns 200 with the app shell and the login gate only
+  # appears after JS runs, so an HTTP status check can't verify these either
+  # way.
   - "app.viam.com"
+  - "elevenlabs.io/app"
   - "beaglebone.local"
   - "instagram.com"
   - "twitter.com"
