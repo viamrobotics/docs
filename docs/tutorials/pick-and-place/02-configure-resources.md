@@ -15,7 +15,7 @@ next: "/tutorials/pick-and-place/static-positions/"
 languages: ["python"]
 ---
 
-You configured the arm in Phase 1. In this phase you add the two resources that work alongside it, a gripper and a camera, connect all three with frames, and confirm each one works from the CONTROL tab before moving on.
+You configured the arm in Phase 1. In this phase you add the two resources that work alongside it, a gripper and a camera, connect all three with frames, and confirm each one works from the Control tab before moving on.
 
 ## The target state
 
@@ -43,7 +43,7 @@ Set one attribute:
 }
 ```
 
-This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is running, because the gripper is physically mounted on the arm and controlled through the same connection. Save the config and check the **LOGS** tab: `gripper-1` comes online immediately, because the `viam:ufactory` module has been running since Phase 1.
+This attribute is also a dependency: `gripper-1` cannot start until `arm-1` is running, because the gripper is physically mounted on the arm and controlled through the same connection. Save the config and check the **Logs** tab: `gripper-1` comes online immediately, because the `viam:ufactory` module has been running since Phase 1.
 
 <!-- ASSET P2 configure-gripper (UI): gripper-1 config with arm: "arm-1" -->
 
@@ -67,9 +67,9 @@ Saving now is the moment `viam-server` fetches the `viam:realsense` module: the 
 
 Open the discovery service's **Test** panel. It lists every RealSense it detects on the machine, each as a copy-pasteable configuration snippet with that camera's `serial_number` already populated. With one camera connected you see one entry. Select **Add component** next to it to create a camera component from the snippet.
 
-<!-- ASSET P0 discovery-test-panel (UI+): realsense discovery TEST panel showing a camera config snippet with serial_number filled in -->
+<!-- ASSET P0 discovery-test-panel (UI+): realsense discovery Test panel showing a camera config snippet with serial_number filled in -->
 
-{{<imgproc src="/tutorials/pick-and-place/discovery-test-panel.png" resize="1200x" declaredimensions=true alt="The RealSense discovery service TEST panel showing a discovered camera config with its serial number.">}}
+{{<imgproc src="/tutorials/pick-and-place/discovery-test-panel.png" resize="1200x" declaredimensions=true alt="The RealSense discovery service Test panel showing a discovered camera config with its serial number.">}}
 
 The discovered component arrives named `realsense-<serial_number>`, with `sensors` set to `["color", "depth"]` and `serial_number` already filled in. Rename the camera to `cam-1` so it matches the rest of this workshop. Add one more attribute that discovery does not set:
 
@@ -170,12 +170,12 @@ On the camera card, confirm you get a live feed:
 
 Below the **GetImages** control, you can toggle **GetPointCloud** on and set the "Camera up vector" to "-y" to see a live stream of the pointcloud data from the camera as a 3D scene. Hovering over any part of the point cloud with your mouse will display the x, y, z coordinates of that point from the perspective of the camera and distance from the camera sensor.
 
-<!-- ASSET P1 control-camera-pointcloud (UI): CONTROL camera card, live point clouds -->
+<!-- ASSET P1 control-camera-pointcloud (UI): Control camera card, live point clouds -->
 
 {{<imgproc src="/tutorials/pick-and-place/control-camera-pointcloud.png" resize="1200x" declaredimensions=true alt="The GetPointCloud control showing a live point cloud of the blocks, with a hovered point's x, y, z coordinates and distance to origin.">}}
 
 {{< checkpoint >}}
-The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the **GetImages** stream rate to "Refresh every second" and the source to depth and confirm that stream updates too. If the card is blank, check the LOGS tab for a camera error before moving on.
+The camera card shows a live color stream from `cam-1`. Because you configured both the `color` and `depth` sensors, switch the **GetImages** stream rate to "Refresh every second" and the source to depth and confirm that stream updates too. If the card is blank, check the Logs tab for a camera error before moving on.
 {{< /checkpoint >}}
 
 ### Move the arm
@@ -188,10 +188,10 @@ The arm card shows the arm's current joint positions, and provides two different
 
 <!-- ASSET P1 control-arm-card (UI+): MoveToJointPositions sliders + Execute, and the MoveToPosition "Current position" button boxed -->
 
-{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm CONTROL card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
+{{<imgproc src="/tutorials/pick-and-place/control-arm-card.png" resize="1200x" declaredimensions=true alt="The arm Control card with joint sliders, Execute, and the MoveToPosition Current position button.">}}
 
 {{< checkpoint >}}
-Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values. If nothing moves or you see an error message, confirm `arm-1` shows as online in the Configure tab and that the LOGS tab has no connection errors for it.
+Pressing **Execute** after setting a joint slider moves the physical arm, and pressing **Current position** under **MoveToPosition** fills the Pose Values. If nothing moves or you see an error message, confirm `arm-1` shows as online in the Configure tab and that the Logs tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ### Control the gripper
@@ -203,7 +203,7 @@ The gripper test card lets you open and close a gripper, check whether the gripp
 {{<imgproc src="/tutorials/pick-and-place/control-gripper-grab.jpeg" resize="1200x" declaredimensions=true alt="The two-finger gripper holding a block.">}}
 
 {{< checkpoint >}}
-With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. If nothing moves, confirm `gripper-1` shows as online in the Configure tab and that the LOGS tab has no connection errors for it.
+With a block between the fingers, **Grab** closes the fingers and the gripper holds the block without dropping it. **Open** releases the block. If nothing moves, confirm `gripper-1` shows as online in the Configure tab and that the Logs tab has no connection errors for it.
 {{< /checkpoint >}}
 
 ## The 3D scene tab

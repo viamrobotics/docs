@@ -23,7 +23,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the shape detector
 
-`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **CONFIGURE** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
+`shape-finder/detector` is a vision model that finds known block shapes in a color image and returns a labeled bounding box for each. On the **Configure** tab, click the **+** icon and select **Blocks**, search for `shape-finder`, select the `shape-finder/detector` model, and name it `shape-detector`. Set its one attribute:
 
 ```json
 {
@@ -39,7 +39,7 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 ### Add the segmenter
 
-`detections-to-segments` reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `detections-to-segments/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
+`detections-to-segments` reads a detector's output together with the camera's depth data and produces one point cloud per detection, each with an estimated size and 3D position. It is not a builtin: unlike the `builtin` motion service you meet later in this phase, this model does not ship inside `viam-server`; it comes from its own module, so saving this config triggers a new module download the same way `viam:ufactory` and `viam:realsense` did earlier in the workshop. Add it the same way you added the shape detector: click the **+** icon and select **Blocks**, search for `detections-to-segments`, select the `vision/detections-to-segments` result, and name it `vision-segment`. Set its attributes:
 
 ```json
 {
@@ -52,9 +52,9 @@ Perception here is a two-stage pipeline. A **detector** finds blocks in the came
 
 `detector_name` and `camera_name` are dependencies, so `vision-segment` waits for both `shape-detector` and `cam-1` before it starts. `mean_k` and `sigma` tune a statistical outlier filter that cleans up the depth points before fusion: `mean_k` is how many neighbors each point is compared against, and `sigma` is how far from the local average a point may sit before it is dropped as noise. The values here are sensible defaults; see [detections-to-segments](/reference/services/vision/detections-to-segments/) for the full attribute reference.
 
-Save the config and open the **CONTROL** tab. Find the `vision-segment` test card. You should see the detections coming from the `shape-detector` service and one or more segmented objects under the **Object point clouds** section after toggling **Show object point clouds**. Each segmented object is displayed as a small point cloud with a label matching the paired bounding-box detection, with estimated dimensions and 3D position from the perspective of the camera.
+Save the config and open the **Control** tab. Find the `vision-segment` test card. You should see the detections coming from the `shape-detector` service and one or more segmented objects under the **Object point clouds** section after toggling **Show object point clouds**. Each segmented object is displayed as a small point cloud with a label matching the paired bounding-box detection, with estimated dimensions and 3D position from the perspective of the camera.
 
-<!-- ASSET P0 control-vision-detections (UI+): CONTROL vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
+<!-- ASSET P0 control-vision-detections (UI+): Control vision card showing detected blocks with boxes + labels. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
 {{<imgproc src="/tutorials/pick-and-place/control-vision-detections.png" resize="1200x" declaredimensions=true alt="The shape-detector vision card showing a detected block with a bounding box and label.">}}
 
@@ -76,7 +76,7 @@ vision = VisionClient.from_robot(machine, "vision-segment")
 
 Every pose that `vision-segment` returns is expressed in the `cam-1` frame. That is the only frame the vision service knows about: it looked at pixels and depth values coming out of one camera, so the coordinates it hands back describe where a block sits relative to that camera's own origin and orientation.
 
-The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **CONFIGURE** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
+The pick uses the **motion service** to move the arm to that block. You never configured it: the motion service is one of a handful of services the RDK builds into `viam-server` itself, so it is present on every machine under the reserved name `builtin`, which is why `builtin` appeared in `machine.resource_names` even though there is no motion component on the **Configure** tab to point at. This `builtin` is the same concept from [Phase 1](/tutorials/pick-and-place/platform-mental-model/#builtin-resources-and-modules): a `rdk` namespace model that ships inside `viam-server` and needs no module download, unlike `vision-segment`. Uncomment its handle in the script, the same way you uncommented the vision handle earlier in this phase:
 
 ```python
 motion = MotionClient.from_robot(machine, "builtin")
@@ -97,10 +97,10 @@ One block, fixed on the table
         │     cam-1 frame depends on the arm pose
         │     → motion.move resolves cam-1 to a different spot each time  (unreliable)
         │
-        └─ read from home-pose (a known position)
+        ├─ read from home-pose (a known position)
         │     cam-1 frame is in a known, repeatable place
         │     → motion.move always resolves cam-1 the same way on the first move   (reliable for first move)
-        |
+        │
         └─ read from world (fixed position)
               block is in a known, repeatable place
               → motion.move does not rely on cam-1 position (reliable for subsequent moves)
