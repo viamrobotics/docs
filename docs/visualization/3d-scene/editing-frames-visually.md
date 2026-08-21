@@ -1,23 +1,33 @@
 ---
-linkTitle: "Edit frames visually"
-title: "Edit frames visually"
-weight: 50
+linkTitle: "Editing frames visually"
+title: "Editing frames visually"
+weight: 30
 layout: "docs"
 type: "docs"
 description: "Add, edit, and attach geometry to frames directly in the 3D scene."
+aliases:
+  - /motion-planning/3d-scene/edit-frames/
+  - /visualization/3d-scene-tools/editing-frames-visually/
 ---
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.
 
-Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (translation, orientation vector, and a single geometry), so it is less suited to bulk changes or cross-machine-part frames.
+Visual editing is most useful while you are still figuring out where things go. Edits render in the viewport as you type, so you can position a frame by eye and read off the values. The trade-off is that the visual editor edits only a subset of the frame JSON (parent, translation, orientation, and a single geometry), so it is less suited to bulk changes or cross-machine-part frames. Changes flow back to the machine configuration, and you save them from the 3D scene itself with **Save** or `⌘/Ctrl+S`.
 
 ## Prerequisites
 
 - A machine with at least one component configured.
+- Permission to edit the machine's configuration. Without it, the scene stays read-only.
+
+## Switch to build mode
+
+The tab opens in **Monitor** mode, which watches live data and keeps every field read-only. Editing lives in **Build** mode: click **Build** (hammer icon) in the mode toggle at the top right.
+
+Build mode pauses live updates so the poses you edit hold still, and a **Live updates paused** banner appears with **Undo** and **Redo** buttons for stepping back through your frame edits. Switch back to **Monitor** to resume live data.
 
 ## Add a frame to a component
 
-1. Open the **3D SCENE** tab.
+1. Open the **3D SCENE** tab and switch to build mode.
 2. Click the **Add frames** button (axis-arrow icon) in the top-center toolbar. A floating panel opens listing components that do not yet have a frame.
 3. Select a component from the dropdown.
 4. Click **Add frame** (singular) inside the panel.
@@ -28,9 +38,9 @@ You can then reposition it using the Details panel.
 ## Edit a frame's position and orientation
 
 1. Select the component in the **World** panel on the upper-left, or by clicking it in the 3D viewport.
-2. The Details panel (upper-right) shows the entity's current values. There is no edit-mode toggle; for any configurable frame, the **local position** and **local orientation** fields are editable inputs.
+2. The Details panel (upper-right) shows the entity's current values. In build mode, the **local position** and **local orientation** fields of any configurable frame are editable inputs.
 3. Edit the position values (`x`, `y`, `z` in mm) to set the translation relative to the parent frame.
-4. Edit the orientation values (`x`, `y`, `z` unit-vector components and `th` in degrees) to set the orientation as an orientation vector.
+4. Edit the orientation values. The **OV (deg)** tab takes an orientation vector (`x`, `y`, `z` unit-vector components and `th` in degrees); the **Euler** tab takes roll, pitch, and yaw. Either way, the frame JSON stores an orientation vector.
 
 Changes appear immediately in the 3D viewport as you type.
 The values you enter here correspond directly to the `translation` and `orientation` fields in the frame JSON configuration.
@@ -49,8 +59,8 @@ All children of this frame move with it.
 ## Add or change geometry
 
 1. Select the component.
-2. In the Details panel, find the **geometry** row (four buttons: `None`, `Box`, `Sphere`, `Capsule`).
-3. Click a geometry type.
+2. In the Details panel, find the **geometry** row, which has a tab per type: `None`, `Box`, `Sphere`, `Capsule`.
+3. Select a geometry type.
 4. **Dimensions** fields appear below:
    - **Box**: `x`, `y`, `z` in mm.
    - **Sphere**: `r` (radius) in mm.
@@ -61,7 +71,7 @@ To remove a geometry, click **None**.
 
 ## Save your changes
 
-Edits are held locally until you save. The CONFIGURE tab shows an unsaved-changes banner with a **Save** button; click it (or press `⌘/Ctrl+S` on the CONFIGURE tab) to commit them. If you navigate away first, the edits are lost.
+Edits are held locally until you save. The **Save** button in the machine's header shows unsaved changes and works from the 3D scene, so you do not have to leave the tab; `⌘/Ctrl+S` saves as well. If you navigate away first, the edits are lost.
 
 To delete a frame, remove it from the component's configuration on the CONFIGURE tab (there is no **Delete frame** button in the embedded **3D SCENE** tab).
 

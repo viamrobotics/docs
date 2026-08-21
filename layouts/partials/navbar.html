@@ -15,16 +15,14 @@
           {{ end -}}
         {{ end -}}
       {{- /**/ -}}
-      <span>
-        Docs
-      </span>
+      <span>Docs</span>
       {{- /**/ -}}
     </a>
     </span>
     <div class="td-navbar-nav-scroll ml-md-auto td-topbar-sections" id="main_navbar">
       {{- $currentPage := .Page -}}
           {{ $s := .Page.Section -}}
-        <ul class="navbar-nav mt-2 mt-lg-0">
+        <ul class="navbar-nav mt-lg-0">
           {{ $p := . -}}
           {{ range .Site.Menus.main -}}
           <li class="nav-item mr-4 mb-2 mb-lg-0">

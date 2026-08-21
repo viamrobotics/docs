@@ -180,6 +180,18 @@ Filter by keyword and time range:
 viam machines logs --machine <machine-name-or-id> --keyword "motor" --start 2026-04-07T10:00:00Z --end 2026-04-07T11:00:00Z
 ```
 
+Filter by a relative time window:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines logs --machine <machine-name-or-id> --range 2h --levels error
+```
+
+View oldest logs first:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines logs --machine <machine-name-or-id> --range 1d --order asc
+```
+
 ## Remote shell access
 
 Access a terminal on the machine without setting up SSH tunnels:

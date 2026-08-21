@@ -535,6 +535,26 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### CalculateMaxReach
+
+Calculate the maximum reach of the arm by summing all link lengths from its kinematics data.
+
+{{< tabs >}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `arm` [Arm](https://flutter.viam.dev/viam_sdk/Arm-class.html) (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[double](https://api.flutter.dev/flutter/dart-core/double-class.html)>
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/calculateMaxReach.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetKinematics
 
 Get the kinematics information associated with the arm as the format and byte contents of the [kinematics file](/motion-planning/frame-system/overview/).
