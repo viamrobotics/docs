@@ -43,13 +43,13 @@ The next two sections cover those two changes in turn.
 
 ## Create a control code module
 
-On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
+On the **Configure** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module, click **Proceed**, and select **Python** as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
 
-<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in Configure with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
+{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in Configure with the generated Python skeleton.">}}
 
-Control code like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenience base class that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
+Control code like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenient base class that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
 
 Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Save and build the module at the end, once the code is in place.
 
@@ -189,17 +189,17 @@ async def do_command(self, command, *, timeout=None, **kwargs):
 Saving an inline Python module triggers a cloud build that takes about a minute. Give it that minute rather than assuming the save failed.
 {{< /alert >}}
 
-With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed module downloads back in Phase 2.
+With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **Logs** tab shows the build progress the same way it showed module downloads back in Phase 2.
 
-<!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
+<!-- ASSET P1 logs-cloud-build (UI): Logs showing the ~1 min cloud build + module start -->
 
-{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the inline module cloud build.">}}
+{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module cloud build.">}}
 
 {{< checkpoint >}}
-The module finishes its cloud build and starts without errors in the **LOGS** tab, and its resource shows online on the **CONFIGURE** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
+The module finishes its cloud build and starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
-From the **CONTROL** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
+From the **Control** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
 
 <!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
 
