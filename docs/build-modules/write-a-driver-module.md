@@ -691,18 +691,18 @@ Use the CLI to build and deploy your module to a machine, then verify it works. 
 
 **Deploy with hot reloading:**
 
-First, find your machine's part ID. At the top of the machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. In the commands below, `--model-name` adds an instance of your model to the machine config so you don't have to create it by hand, and `--name` names that instance. Run these commands from your module's root directory (where `meta.json` lives). If you need to invoke them from elsewhere, pass `--module <path/to/meta.json>`.
+First, find your machine's part ID. At the top of the machine's page, click the **Live** / **Offline** status dropdown, then click **Part ID** to copy it. In the commands below, `--model-name` adds an instance of your model to the machine config so you don't have to create it by hand, and `--resource-name` names that instance. Run these commands from your module's root directory (where `meta.json` lives). If you need to invoke them from elsewhere, pass `--module <path/to/meta.json>`.
 
 ```bash
 # Build in the cloud, deploy, and add a component named `my-sensor-1`
 viam module reload --part-id <machine-part-id> \
-  --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
+  --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
 ```
 
 ```bash
 # Build locally (same-architecture only), transfer, and add the component
 viam module reload-local --part-id <machine-part-id> \
-  --model-name my-org:my-sensor-module:my-sensor --name my-sensor-1
+  --model-name my-org:my-sensor-module:my-sensor --resource-name my-sensor-1
 ```
 
 After the first reload succeeds, open the machine's **CONFIGURE** tab and set your new sensor's attributes. Replace `source_url` with a real endpoint that returns JSON matching the shape your `Readings` implementation expects (the example reads `temp` and `humidity` keys from the response body):
