@@ -56,15 +56,34 @@ A robot arm is modeled as a chain of rigid bodies (links) connected by joints:
 
 ### Joint limits
 
-Every joint has limits that define its range of motion:
+Every joint declares position bounds and, optionally, speed bounds:
 
 - **Min/max angle** (revolute joints): the minimum and maximum rotation in
   degrees. For example, a shoulder joint might allow -180 to 180 degrees.
 - **Min/max position** (prismatic joints): the minimum and maximum extension in
   millimeters.
+- **Max velocity** (optional): the maximum speed the joint can move, in
+  degrees per second (revolute) or millimeters per second (prismatic). Omit
+  the field to leave the joint unbounded. An explicit value of `0` is
+  different from omitting the field: `0` means the joint cannot move at all.
+- **Max acceleration** (optional): the maximum acceleration the joint can
+  sustain, in degrees per second squared (revolute) or millimeters per
+  second squared (prismatic). Omit the field to leave the joint unbounded.
+  An explicit value of `0` means the joint cannot accelerate.
 
-Joint limits prevent the motion planner from computing solutions that would
-require the arm to bend past its physical limits.
+Position limits prevent the motion planner from computing solutions that
+would require the arm to bend past its physical limits.
+
+{{< alert title="Velocity and acceleration limits are not yet enforced" color="caution" >}}
+
+You can declare `max_velocity` and `max_acceleration` in your kinematics
+file today, but the motion planner does not yet use them to constrain
+trajectories. They are stored in the kinematic model and returned by
+`GetKinematics`, but no built-in planner or arm module enforces them during
+planning or execution. Do not rely on these fields to limit joint speed
+until a future release adds enforcement.
+
+{{< /alert >}}
 
 ### Kinematics file formats
 
@@ -200,14 +219,19 @@ Each field:
 - **`joints[].axis`**: the axis of rotation or translation (unit vector)
 - **`joints[].min`** / **`joints[].max`**: joint limits in degrees (revolute)
   or mm (prismatic)
+- **`joints[].max_velocity`** (optional): maximum joint speed in degrees per
+  second (revolute) or mm per second (prismatic). Omit for unbounded.
+- **`joints[].max_acceleration`** (optional): maximum joint acceleration in
+  degrees per second squared (revolute) or mm per second squared (prismatic).
+  Omit for unbounded.
 - **`joints[].geometry`**: optional collision shape, prismatic joints only
 - **`joints[].mimic`** (optional): make this joint follow another joint at a
   fixed multiplier and offset, for parallel-jaw grippers and other mechanically
   coupled axes. The mimic object takes `joint` (the source joint's `id`),
   `multiplier`, and `offset`; the joint's value is computed as
   `multiplier * source_value + offset`. An omitted `multiplier` defaults to
-  1.0. Mimic joints must not declare their own `min`/`max`; the source joint's
-  limits apply.
+  1.0. Mimic joints must not declare their own `min`/`max` or
+  `max_velocity`/`max_acceleration`; the source joint's limits apply.
 
 ### 3. Import a URDF file
 
