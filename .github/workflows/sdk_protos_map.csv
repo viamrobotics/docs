@@ -453,8 +453,8 @@ app,RotateKey,,rotate_key,RotateKey,,rotateKey
 app,ListKeys,,list_keys,ListKeys,,listKeys
 app,RenameKey,,,RenameKey,,
 app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
-app,GetAppContent,,,,,getAppContent
-app,GetAppBranding,,,,,getAppBranding
+app,GetAppContent,,,GetAppContent,,getAppContent
+app,GetAppBranding,,,GetAppBranding,,getAppBranding
 
 ## Billing
 billing,GetCurrentMonthUsage,,get_current_month_usage,GetCurrentMonthUsage,,getCurrentMonthUsage

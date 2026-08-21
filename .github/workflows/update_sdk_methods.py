@@ -771,10 +771,14 @@ def check_for_unused_methods(methods, type):
                 if not "used" in methods[lang][type][resource][method].keys():
                     if resource in ["data_sync", "dataset", "data"]:
                         continue
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus"] or \
+                    ## "create_oauth_app_user" / "createOAuthAppUser": part of the undocumented OAuth-apps
+                    ## family (CreateOAuthApp/ReadOAuthApp/UpdateOAuthApp/DeleteOAuthApp also have no docs
+                    ## coverage); push tokens and Firebase config are Viam mobile-app infrastructure, not
+                    ## customer-facing. See #5188.
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus", "create_oauth_app_user", "upload_device_push_token", "get_device_push_tokens", "delete_device_push_token", "set_firebase_config", "get_firebase_config", "delete_firebase_config"] or \
                         lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter", "CurrentInputs", "GoToInputs"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource", "RobotClient.withClient"] or \
-                        lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:
+                        lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand", "createOAuthAppUser"]:
                         print(f"WARNING: {lang} {type} {resource} {method} is unused")
                         warnings = True
 
