@@ -1,12 +1,19 @@
 ---
-linkTitle: "Part 5: Productize"
-title: "Part 5: Productize"
-weight: 50
-layout: "docs"
+title: "Phase 6: Productize"
+linkTitle: "6. Productize"
 type: "docs"
+slug: "productize"
+weight: 60
 description: "Build a monitoring dashboard for your inspection system using Viam's Teleop interface."
-date: "2025-01-30"
+workshop: "quality-inspection"
+toc_hide: true
+phase: 6
+phase_total: 6
+time_estimate: "10 minutes"
+prev: "/tutorials/quality-inspection/deploy-module/"
+languages: ["go"]
 aliases:
+  - /try/part-5/
   - /operate/hello-world/first-project/part-5/
   - /operate/hello-world/first-project/part-6/
   - /try/first-project/part-5/
@@ -15,8 +22,6 @@ aliases:
 **Goal:** Build a dashboard to monitor your inspection system.
 
 **Skills:** Creating Teleop workspaces, configuring dashboard widgets, writing MQL aggregation pipelines.
-
-**Time:** ~10 min
 
 ## What You'll Build
 
@@ -55,7 +60,7 @@ You should see the live feed from your inspection camera with cans passing on th
 
 Now you'll create a time series graph showing how many defective cans are detected per minute. This requires a custom MQL aggregation pipeline to filter for failures and count them in time buckets.
 
-**Recall the data structure** from Part 4—each detection looks like:
+**Recall the data structure** from the deploy-module phase—each detection looks like:
 
 ```json
 {
@@ -265,4 +270,6 @@ You've completed the tutorial. Here's what you built:
 
 You've gone from an empty machine to a production-ready inspection system with monitoring—patterns that apply to any Viam application.
 
-**[← Back to Overview](../overview/)** to review what you learned.
+**[← Back to Quality Inspection overview](/tutorials/quality-inspection/)**
+
+{{< workshop-nav >}}

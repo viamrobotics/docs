@@ -1,12 +1,20 @@
 ---
-linkTitle: "Part 2: Data Capture"
-title: "Part 2: Data Capture"
-weight: 20
-layout: "docs"
+title: "Phase 3: Data capture"
+linkTitle: "3. Data capture"
 type: "docs"
+slug: "data-capture"
+weight: 30
 description: "Configure automatic image capture and cloud sync for your inspection system."
-date: "2025-01-30"
+workshop: "quality-inspection"
+toc_hide: true
+phase: 3
+phase_total: 6
+time_estimate: "5 minutes"
+prev: "/tutorials/quality-inspection/vision-pipeline/"
+next: "/tutorials/quality-inspection/control-logic/"
+languages: ["go"]
 aliases:
+  - /try/part-2/
   - /operate/hello-world/first-project/part-2/
   - /try/first-project/part-2/
 ---
@@ -14,8 +22,6 @@ aliases:
 **Goal:** Configure and use a machine to cloud data capture pipeline.
 
 **Skills:** Data capture configuration, cloud sync, browsing captured data.
-
-**Time:** ~5 min
 
 For inspection applications such as this one, monitoring defect detection is important both to ensure production line health and product quality.
 You want to ensure the vision model is detecting a very high percentage of defects and quickly detect any problems.
@@ -102,10 +108,10 @@ Data capture is now running in the background:
 - Syncs to cloud automatically
 - Available for visual review and filtering
 
-This foundation records everything your vision pipeline sees. In Part 3, you'll write custom control logic to act on detections. Later, you'll configure tabular data capture to enable SQL queries on detection results.
+This foundation records everything your vision pipeline sees. In the next phase, you'll write custom control logic to act on detections. Later, you'll configure tabular data capture to enable SQL queries on detection results.
 
 {{< alert title="Checkpoint" color="success" >}}
 Your system captures every detection as an image. Data syncs to the cloud where you can browse, filter, and review results.
 {{< /alert >}}
 
-**[Continue to Part 3: Control Logic →](../part-3/)**
+{{< workshop-nav >}}

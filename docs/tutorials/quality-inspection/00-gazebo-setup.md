@@ -1,17 +1,24 @@
 ---
-linkTitle: "Gazebo Simulation Setup"
-title: "Gazebo Simulation Setup"
-weight: 5
-layout: "docs"
+title: "Phase 1: Gazebo simulation setup"
+linkTitle: "1. Gazebo simulation setup"
 type: "docs"
+slug: "gazebo-setup"
+weight: 10
 description: "Set up the Gazebo simulation environment for the inspection tutorial."
-date: "2025-01-30"
+workshop: "quality-inspection"
+toc_hide: true
+phase: 1
+phase_total: 6
+time_estimate: "10 minutes"
+next: "/tutorials/quality-inspection/vision-pipeline/"
+languages: ["go"]
 aliases:
+  - /try/gazebo-setup/
   - /operate/hello-world/first-project/sim-setup/
   - /try/first-project/gazebo-setup/
 ---
 
-This guide walks you through setting up the Gazebo simulation used in the [Your First Project](../) tutorial.
+This guide walks you through setting up the Gazebo simulation used in the [Quality Inspection tutorial](/tutorials/quality-inspection/).
 
 ## Prerequisites
 
@@ -185,4 +192,4 @@ docker logs -f gz-station1
 
 Once your machine shows **Live** in the Viam app, you're ready to continue with the tutorial.
 
-**[Continue to Part 1: Vision Pipeline →](../part-1/)**
+{{< workshop-nav >}}

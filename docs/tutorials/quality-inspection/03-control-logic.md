@@ -1,12 +1,20 @@
 ---
-linkTitle: "Part 3: Control Logic"
-title: "Part 3: Control Logic"
-weight: 30
-layout: "docs"
+title: "Phase 4: Control logic"
+linkTitle: "4. Control logic"
 type: "docs"
+slug: "control-logic"
+weight: 40
 description: "Write inspection logic that detects defective cans."
-date: "2025-01-30"
+workshop: "quality-inspection"
+toc_hide: true
+phase: 4
+phase_total: 6
+time_estimate: "10 minutes"
+prev: "/tutorials/quality-inspection/data-capture/"
+next: "/tutorials/quality-inspection/deploy-module/"
+languages: ["go"]
 aliases:
+  - /try/part-3/
   - /operate/hello-world/first-project/part-3/
   - /try/first-project/part-3/
 ---
@@ -14,8 +22,6 @@ aliases:
 **Goal:** Write inspection logic that detects defective cans.
 
 **Skills:** Generate module scaffolding using the Viam CLI, experience with Viam SDKs, develop code iteratively against remote hardware
-
-**Time:** ~10 min
 
 ## What You'll Build
 
@@ -309,7 +315,7 @@ Your inspector needs a vision service to detect cans. Rather than hardcoding how
 
 The Config struct tells Viam what resources your inspector needs. The Validate method returns those resource names so Viam knows to inject them.
 
-Remember in Part 1 when you configured the camera with `"id": "/inspection_camera"`? When you add the service we're building now to your machine (in Part 4 of this tutorial), you'll configure it with attributes for the camera and vision service to use.
+Remember in the vision pipeline phase when you configured the camera with `"id": "/inspection_camera"`? When you add the service we're building now to your machine (in the deploy-module phase of this tutorial), you'll configure it with attributes for the camera and vision service to use.
 
 The Config struct in the code below specifies what the names of those attributes will be in the configuration JSON you'll update after including this module in your machine config.
 
@@ -548,7 +554,7 @@ Your laptop connected to the remote machine, your code called the vision service
 
 **"failed to get vision service" error:**
 
-- Verify `vision-service` exists in your machine config (Part 1)
+- Verify `vision-service` exists in your machine config (vision pipeline phase)
 - Check the exact name matches—it's case-sensitive
 
 **"NO_DETECTION" result:**
@@ -585,6 +591,6 @@ In a production system, you could extend `DoCommand` to trigger actuators—for 
 
 Your inspector code doesn't know whether it's running from the CLI on your laptop or deployed as a module on the machine. It just uses the dependencies it's given. This abstraction is what makes rapid iteration possible during development and seamless deployment to production.
 
-**Your code is ready.** In Part 4, you'll deploy it to run on the machine and configure data capture for the detection results.
+**Your code is ready.** In the next phase, you'll deploy it to run on the machine and configure data capture for the detection results.
 
-**[Continue to Part 4: Deploy a Module →](../part-4/)**
+{{< workshop-nav >}}
