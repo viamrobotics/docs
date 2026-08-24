@@ -1,95 +1,27 @@
 ---
 linkTitle: "Overview"
-title: "Overview"
+title: "Try Viam"
 weight: 1
 layout: "docs"
 type: "docs"
 no_list: true
-description: "Build a complete quality inspection system with Viam — from camera setup to customer-facing product."
+description: "Pick a hands-on way to try Viam. Most pathways need no hardware to get started."
 date: "2025-01-30"
 aliases:
   - /try/first-project/
 ---
 
-**Time:** ~55 minutes
+Viam enables you to build and manage real robotics applications, but you don't need any hardware to start learning it.
 
-## Scenario
+{{% alert title="Viam 101" color="tip" %}}
+Our [**Viam 101 course**](https://www.viam.com/viam-101) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required—just coding fundamentals and curiosity. You'll build a palletizing application from scratch: a robot arm that picks boxes from a station and stacks them on a pallet.
+{{% /alert %}}
 
-This tutorial uses the simplest work cell (camera + compute) to teach patterns that apply to _all_ Viam applications.
+The other pathways below teach practical Viam skills through various hands-on projects—pick whichever matches your learning goals.
 
-You're building a quality inspection station for a canning line. Cans move past a camera on a conveyor belt. Your system must:
-
-1. Detect when a can is present
-2. Classify it as PASS or FAIL (identifying dented cans)
-3. Log results for review and analysis
-4. Provide a monitoring dashboard for operators
-
-### Tutorial
-
-In this tutorial you will work through a series of tasks that are common to many robotics applications. The techniques you learn here are applicable regardless of what hardware, software, data, or machine learning models you are working with.
-
-| Part                                        | Time    | What you'll do                                         |
-| ------------------------------------------- | ------- | ------------------------------------------------------ |
-| [Gazebo Simulation Setup](../gazebo-setup/) | ~10 min | Set up the Gazebo simulation environment               |
-| [Part 1: Vision pipeline](../part-1/)       | ~10 min | Set up camera, ML model, and vision service            |
-| [Part 2: Data capture](../part-2/)          | ~5 min  | Configure automatic image capture and cloud sync       |
-| [Part 3: Control logic](../part-3/)         | ~10 min | Generate module, write inspection logic, test from CLI |
-| [Part 4: Deploy a module](../part-4/)       | ~10 min | Deploy module, configure detection data capture        |
-| [Part 5: Productize](../part-5/)            | ~10 min | Build monitoring dashboard with Teleop                 |
-
-{{< expand "Full section outline" >}}
-
-**[Gazebo Simulation Setup](../gazebo-setup/)** (~10 min)
-
-- [Prerequisites](../gazebo-setup/#prerequisites)
-- [Step 1: Build the Docker Image](../gazebo-setup/#step-1-build-the-docker-image)
-- [Step 2: Create a Machine in Viam](../gazebo-setup/#step-2-create-a-machine-in-viam)
-- [Step 3: Create a credentials file](../gazebo-setup/#step-3-create-a-credentials-file)
-- [Step 4: Start the Container](../gazebo-setup/#step-4-start-the-container)
-- [Step 5: Verify the Setup](../gazebo-setup/#step-5-verify-the-setup)
-
-**[Part 1: Vision pipeline](../part-1/)** (~10 min)
-
-- [1.1 Verify your machine is online](../part-1/#11-verify-your-machine-is-online)
-- [1.2 Locate your machine part](../part-1/#12-locate-your-machine-part)
-- [1.3 Configure the camera](../part-1/#13-configure-the-camera)
-- [1.4 Test the camera](../part-1/#14-test-the-camera)
-- [1.5 Add a vision pipeline with a fragment](../part-1/#15-add-a-vision-pipeline-with-a-fragment)
-
-**[Part 2: Data capture](../part-2/)** (~5 min)
-
-- [2.1 Configure data capture](../part-2/#21-configure-data-capture)
-- [2.2 View captured data](../part-2/#22-view-captured-data)
-- [2.3 Summary](../part-2/#23-summary)
-
-**[Part 3: Control logic](../part-3/)** (~10 min)
-
-- [3.1 Generate the module scaffolding](../part-3/#31-generate-the-module-scaffolding)
-- [3.2 Add remote machine connection](../part-3/#32-add-remote-machine-connection)
-- [3.3 Add detection logic](../part-3/#33-add-detection-logic)
-- [3.4 Summary](../part-3/#34-summary)
-
-**[Part 4: Deploy a module](../part-4/)** (~10 min)
-
-- [4.1 Review the generated module structure](../part-4/#41-review-the-generated-module-structure)
-- [4.2 Build and upload your module](../part-4/#42-build-and-upload-your-module)
-- [4.3 Add the module to your machine](../part-4/#43-add-the-module-to-your-machine)
-- [4.4 Configure detection data capture](../part-4/#44-configure-detection-data-capture)
-- [4.5 Summary](../part-4/#45-summary)
-
-**[Part 5: Productize](../part-5/)** (~10 min)
-
-- [5.1 Create a workspace](../part-5/#51-create-a-workspace)
-- [5.2 Add a camera stream widget](../part-5/#52-add-a-camera-stream-widget)
-- [5.3 Add a defects per minute widget](../part-5/#53-add-a-defects-per-minute-widget)
-- [5.4 Add a confidence trend widget](../part-5/#54-add-a-confidence-trend-widget)
-- [5.5 Arrange your dashboard](../part-5/#55-arrange-your-dashboard)
-- [5.6 Summary](../part-5/#56-summary)
-
-{{< /expand >}}
-
-## Get started
-
-Before starting, set up the Gazebo simulation environment by following the **[Gazebo Simulation Setup](../gazebo-setup/)** guide (~10 min).
-
-**[Begin Gazebo Simulation Setup →](../gazebo-setup/)**
+| Pathway | Description | Hardware required | Time |
+| --- | --- | --- | --- |
+| [Viam 101](https://www.viam.com/viam-101) | Learn robotics fundamentals for working with physical spaces, motion planning, and how to build applications for a robotic arm in the Viam framework using your own control logic. | None (Viam visualization) | ~90 minutes |
+| [Quality Inspection](/try/gazebo-setup/) | Use a vision pipeline and ML model to capture data and write inspection logic for a simulated canning line. | None (Gazebo simulation) | ~55 minutes |
+| [Viam Rover](/try/viam-rover/overview/) | Use a Viam SDK to control a rover remotely.  | None (check one out in our lab) | ~10 minutes |
+| [Pick and Place](/tutorials/pick-and-place/) | Use Viam's Python SDK and vision models to program an arm to detect, pick up, and place blocks on its own. | uFactory xArm6 and gripper, Intel RealSense D435 | ~90 minutes |
