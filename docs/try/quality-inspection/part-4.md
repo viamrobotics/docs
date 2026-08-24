@@ -1,18 +1,11 @@
 ---
-title: "Phase 5: Deploy a module"
-linkTitle: "5. Deploy a module"
+linkTitle: "Part 4: Deploy a Module"
+title: "Part 4: Deploy a Module"
+weight: 40
+layout: "docs"
 type: "docs"
-slug: "deploy-module"
-weight: 50
 description: "Deploy your inspector module and configure queryable detection data capture."
-workshop: "quality-inspection"
-toc_hide: true
-phase: 5
-phase_total: 6
-time_estimate: "10 minutes"
-prev: "/tutorials/quality-inspection/control-logic/"
-next: "/tutorials/quality-inspection/productize/"
-languages: ["go"]
+date: "2025-01-30"
 aliases:
   - /try/part-4/
   - /operate/hello-world/first-project/part-4/
@@ -23,9 +16,11 @@ aliases:
 
 **Skills:** Module packaging, registry deployment, tabular data capture.
 
+**Time:** ~10 min
+
 ## What You'll Do
 
-In the previous phase, you built inspection logic that runs from your laptop. That's great for development, but in production the code needs to run on the machine itself—so it works even when your laptop is closed.
+In Part 3, you built inspection logic that runs from your laptop. That's great for development, but in production the code needs to run on the machine itself—so it works even when your laptop is closed.
 
 The module generator already created most of what you need:
 
@@ -104,7 +99,7 @@ The generator created module infrastructure. You added business logic (`detect`)
 
 **Update the module's model list:**
 
-The module was already registered in the Viam registry when you ran `viam module generate` in the previous phase (you answered "Yes" to "Register module"). Now you need to update its model metadata. First, build a local binary:
+The module was already registered in the Viam registry when you ran `viam module generate` in Part 3 (you answered "Yes" to "Register module"). Now you need to update its model metadata. First, build a local binary:
 
 ```bash
 make
@@ -257,7 +252,7 @@ The module is now ready. You'll configure automatic detection in the next sectio
 
 ## 4.4 Configure Detection Data Capture
 
-In the data capture phase, you captured images from the vision service. Those images are great for visual review, but they're binary data—you can't query them with SQL. Now you'll configure **tabular data capture** on your inspector's DoCommand, which will let you query detection results.
+In Part 2, you captured images from the vision service. Those images are great for visual review, but they're binary data—you can't query them with SQL. Now you'll configure **tabular data capture** on your inspector's DoCommand, which will let you query detection results.
 
 **Add inspector-service as a data manager dependency:**
 
@@ -385,12 +380,12 @@ You can also query using MQL (MongoDB Query Language), which is useful for aggre
 ];
 ```
 
-You'll use MQL aggregation pipelines in the next phase to build dashboard widgets.
+You'll use MQL aggregation pipelines in Part 5 to build dashboard widgets.
 
 {{< alert title="Two types of captured data" color="info" >}}
 You now have two complementary data streams:
 
-- **Vision service images** (data capture phase): Visual records for review and model retraining
+- **Vision service images** (Part 2): Visual records for review and model retraining
 - **Inspector tabular data** (this section): Queryable detection results for analytics
 
 The images show what the system saw; the tabular data tracks what it decided.
@@ -411,4 +406,4 @@ You deployed your inspection logic as a Viam module:
 
 **Your inspection system now runs 24/7** detecting defects without your laptop connected.
 
-{{< workshop-nav >}}
+**[Continue to Part 5: Productize →](../part-5/)**

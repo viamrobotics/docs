@@ -1,18 +1,11 @@
 ---
-title: "Phase 2: Vision pipeline"
-linkTitle: "2. Vision pipeline"
+linkTitle: "Part 1: Vision Pipeline"
+title: "Part 1: Vision Pipeline"
+weight: 10
+layout: "docs"
 type: "docs"
-slug: "vision-pipeline"
-weight: 20
 description: "Set up a camera, ML model, and vision service to detect defects."
-workshop: "quality-inspection"
-toc_hide: true
-phase: 2
-phase_total: 6
-time_estimate: "10 minutes"
-prev: "/tutorials/quality-inspection/gazebo-setup/"
-next: "/tutorials/quality-inspection/data-capture/"
-languages: ["go"]
+date: "2025-01-30"
 aliases:
   - /try/part-1/
   - /operate/hello-world/first-project/part-1/
@@ -23,9 +16,11 @@ aliases:
 
 **Skills:** Connect a machine to Viam, configure components in the Viam UI, use fragments to add preconfigured services.
 
+**Time:** ~10 min
+
 ## Prerequisites
 
-Before starting this tutorial, you need the can inspection simulation running. Follow the **[Gazebo simulation setup guide](/tutorials/quality-inspection/gazebo-setup/)** to:
+Before starting this tutorial, you need the can inspection simulation running. Follow the **[Gazebo Simulation Setup Guide](../gazebo-setup/)** to:
 
 1. Build the Docker image with Gazebo Harmonic
 2. Create a machine in Viam and get credentials
@@ -39,7 +34,7 @@ The simulation runs Gazebo Harmonic inside a Docker container. It simulates a co
 
 ## 1.1 Verify Your Machine is Online
 
-If you followed the [setup guide](/tutorials/quality-inspection/gazebo-setup/), your machine should already be online.
+If you followed the [setup guide](../gazebo-setup/), your machine should already be online.
 
 1. Open [app.viam.com](https://app.viam.com) (the "Viam app")
 2. Navigate to your machine (for example, `inspection-station-1`)
@@ -194,4 +189,4 @@ You added a camera component manually and used a fragment to add a complete ML v
 Everything you configured through the UI is stored as JSON. Click **JSON** in the upper left of the Configure tab to see the raw configuration. You'll see your camera component, the fragment reference, and how the fragment's services connect to your camera. As configurations grow more complex, the JSON view helps you understand how components and services connect.
 {{< /alert >}}
 
-{{< workshop-nav >}}
+**[Continue to Part 2: Data Capture →](../part-2/)**
