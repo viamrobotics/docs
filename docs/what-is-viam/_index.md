@@ -71,6 +71,10 @@ Fragments support variable substitution and per-machine overwrites, so you can d
 
 ## Next steps
 
-We recommend putting these concepts into practice by following the [Try Viam tutorial](/try/) to build your first machine.
+{{% alert title="Viam 101" color="tip" %}}
+Our [**Viam 101 course**](https://www.viam.com/viam-101) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required. You'll build a palletizing application from scratch: a robot arm that picks boxes from a station and stacks them on a pallet.
+{{% /alert %}}
+
+Visit [Try Viam](/try/overview) to build your first machine using one of our available tutorials.
 
 For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
