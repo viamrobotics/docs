@@ -358,7 +358,7 @@
 # operate/hello-world/
 [[redirects]]
   from = "/operate/hello-world/first-project/gazebo-setup/"
-  to = "/try/gazebo-setup/"
+  to = "/try/quality-inspection/gazebo-setup/"
   status = 301
 
 [[redirects]]
