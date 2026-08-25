@@ -17,8 +17,19 @@ Control which versions of `viam-agent` and `viam-server` run on each machine.
 
 Manage version selection in the Viam app, not in your machine's JSON configuration. In the machine settings card, open **Settings** and expand **Software Updates**:
 
-- **Agent version**: choose `stable`, a specific semver release such as `5.6.77`, or a URL to a custom binary.
-- **viam-server version**: choose `stable`, a specific semver release, or a URL to a custom binary.
+- **Agent version**: choose a release channel, a specific semver release such as `1.4.0`, or a URL to a custom binary.
+- **viam-server version**: same options as agent.
+
+The available release channels are:
+
+<!-- prettier-ignore -->
+| Channel | Description |
+| -------- | --------------------------------------------------------- |
+| `stable` | Newest tested release. The default; use it in production. |
+| `rc` | Newest release candidate. |
+| `dev` | Newest build off `main`. Use for debugging only. |
+
+To pin to a specific build, use its exact published version, for example `1.4.0`, `1.5.0-rc0`, or `1.4.1-dev.16-c2c9600c6`. The version must exist for the machine's platform.
 
 When you change a version, the cloud sends an update instruction to viam-agent on the machine. The agent downloads and installs the new version on its next check cycle. To control when the new version actually starts, configure a [maintenance window](/fleet/manage-versions/#maintenance-windows). To verify the new version landed across the fleet, see [verify a rollout across the fleet](/fleet/manage-versions/#verify-a-rollout-across-the-fleet).
 
