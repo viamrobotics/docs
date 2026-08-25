@@ -279,10 +279,29 @@ A rectangular work-cell envelope with no ceiling:
 This gives a floor plus four walls in one component.
 If the arm can reach above its envelope (ceiling-mounted installations, tall arms), add a separate `erh:vmodutils:obstacle` for the ceiling.
 
+### Round containers (open cylinder)
+
+For round containers like pots, pans, or tubes, use an open cylinder instead of approximating the wall with multiple boxes.
+Set `"capped": false` on a cylinder geometry to remove the end caps, leaving a hollow tube that the arm can reach into:
+
+```json
+{
+  "geometry": {
+    "type": "cylinder",
+    "r": 150,
+    "l": 200,
+    "capped": false
+  }
+}
+```
+
+An open cylinder is a surface, not a solid: collisions occur only when the arm crosses the wall.
+The hollow interior is free space, so the planner routes through it.
+
 ### Caveats
 
-- **Opens in +z only.** If your container opens in a different direction, rotate the whole component through the frame's `orientation`, but note that the `Grab` action assumes a tool-down approach regardless.
-- **Rectangular only.** L-shaped cells or irregular enclosures need multiple components.
+- **Open boxes open in +z only.** If your container opens in a different direction, rotate the whole component through the frame's `orientation`, but note that the `Grab` action assumes a tool-down approach regardless.
+- **Open boxes are rectangular only.** L-shaped cells or irregular enclosures need multiple components. For round containers, use an [open cylinder](#round-containers-open-cylinder) instead.
 - **Thickness defaults to 1 mm.** Thin but still a solid collision surface. Raise it for visual clarity in **3D SCENE** or for a wider safety margin.
 
 ## Attach geometry to a moving component
