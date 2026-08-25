@@ -10,13 +10,14 @@ description: "Configure the static collision geometry for your workspace through
 Static obstacles are the fixed shapes in your workspace: the table the arm is bolted to, a back wall, a ceiling, a bin the arm reaches into.
 Configure them once through the Viam app and the motion planner includes them on every plan.
 
-Three config patterns cover most cases:
+Four config patterns cover most cases:
 
-| Pattern                                                                   | Use when                                                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [`erh:vmodutils:obstacle`](#default-obstacle-pattern)                     | Most workspace obstacles: tables, walls, fixtures, bespoke shapes. One component, any geometry.        |
-| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)     | A single box, sphere, capsule, or cylinder when you do not want to add a registry module.              |
-| [`erh:vmodutils:obstacle-open-box`](#containers-and-work-cell-boundaries) | Containers, bins, or rectangular work-cell envelopes. Generates five geometries from outer dimensions. |
+| Pattern                                                                         | Use when                                                                                               |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [`erh:vmodutils:obstacle`](#default-obstacle-pattern)                           | Most workspace obstacles: tables, walls, fixtures, bespoke shapes. One component, any geometry.        |
+| [`rdk:builtin:fake` generic component](#configure-a-single-primitive)           | A single box, sphere, capsule, or cylinder when you do not want to add a registry module.              |
+| [`erh:vmodutils:obstacle-open-box`](#containers-and-work-cell-boundaries)       | Rectangular containers, bins, or work-cell envelopes. Generates five geometries from outer dimensions. |
+| [Open cylinder (`"capped": false`)](#configure-a-round-container-open-cylinder) | Round containers like pots, pans, or tubes. A single hollow cylinder the arm can reach into.           |
 
 For obstacles your code builds at runtime (objects detected by vision, temporary keep-out zones), see [Plan collision-free paths](/motion-planning/obstacles/avoid-obstacles/) instead.
 
@@ -279,30 +280,69 @@ A rectangular work-cell envelope with no ceiling:
 This gives a floor plus four walls in one component.
 If the arm can reach above its envelope (ceiling-mounted installations, tall arms), add a separate `erh:vmodutils:obstacle` for the ceiling.
 
-### Round containers (open cylinder)
-
-For round containers like pots, pans, or tubes, use an open cylinder instead of approximating the wall with multiple boxes.
-Set `"capped": false` on a cylinder geometry to remove the end caps, leaving a hollow tube that the arm can reach into:
-
-```json
-{
-  "geometry": {
-    "type": "cylinder",
-    "r": 150,
-    "l": 200,
-    "capped": false
-  }
-}
-```
-
-An open cylinder is a surface, not a solid: collisions occur only when the arm crosses the wall.
-The hollow interior is free space, so the planner routes through it.
-
 ### Caveats
 
-- **Open boxes open in +z only.** If your container opens in a different direction, rotate the whole component through the frame's `orientation`, but note that the `Grab` action assumes a tool-down approach regardless.
-- **Open boxes are rectangular only.** L-shaped cells or irregular enclosures need multiple components. For round containers, use an [open cylinder](#round-containers-open-cylinder) instead.
+- **Opens in +z only.** If your container opens in a different direction, rotate the whole component through the frame's `orientation`, but note that the `Grab` action assumes a tool-down approach regardless.
+- **Rectangular only.** L-shaped cells or irregular enclosures need multiple components. For round containers, use an [open cylinder](#configure-a-round-container-open-cylinder) instead.
 - **Thickness defaults to 1 mm.** Thin but still a solid collision surface. Raise it for visual clarity in **3D SCENE** or for a wider safety margin.
+
+## Configure a round container (open cylinder)
+
+For round containers like pots, pans, or tubes, use a cylinder geometry with `"capped": false`.
+This removes the flat end caps, leaving a hollow tube that the arm can reach into.
+An open cylinder is a surface, not a solid: collisions occur only when the arm crosses the wall, and the hollow interior is free space.
+
+Use either `erh:vmodutils:obstacle` or the `generic`/`fake` pattern:
+
+**With `erh:vmodutils:obstacle`:**
+
+1. Follow the [default obstacle pattern](#default-obstacle-pattern) to add an `erh:vmodutils:obstacle` component.
+2. Name the component (for example, `mixing-bowl`).
+3. In the component's **Attributes**, set the geometry to an open cylinder:
+
+   ```json
+   {
+     "geometries": [
+       {
+         "type": "cylinder",
+         "r": 150,
+         "l": 200,
+         "capped": false
+       }
+     ]
+   }
+   ```
+
+4. Click **Frame** on the component card and set `parent`, `translation`, and `orientation` to position the cylinder in your workspace.
+5. Click **Save**.
+
+**With `rdk:builtin:fake` (no registry module):**
+
+1. Click the **+** icon and select **Blocks**.
+2. Search for `generic` and click the **generic/fake** result card. Click **Add to machine**.
+3. Name the component (for example, `mixing-bowl`) and click **Add to machine**.
+4. Click **Frame** on the new component card. Replace the JSON:
+
+   ```json
+   {
+     "parent": "world",
+     "translation": { "x": 600, "y": 0, "z": 100 },
+     "orientation": {
+       "type": "ov_degrees",
+       "value": { "x": 0, "y": 0, "z": 1, "th": 0 }
+     },
+     "geometry": {
+       "type": "cylinder",
+       "r": 150,
+       "l": 200,
+       "capped": false
+     }
+   }
+   ```
+
+5. Click **Save**.
+
+The cylinder's central axis is along Z. The `translation` positions the cylinder's center, so for a 200 mm tall container sitting on a table, set the Z translation to half the height above the table surface.
 
 ## Attach geometry to a moving component
 
