@@ -51,7 +51,7 @@ When we think of robots, most of us tend to group them into categories:
 
 One type of “good” robot is a companion robot - a robot created for the purposes of providing real or apparent companionship for human beings.
 While some [examples](https://www.google.com/search?q=companion+robot) have recently been brought to market, primarily marketed towards children and the elderly, we are all familiar with robots from popular movies that ultimately have proven to be endearing companions and became embedded in our culture.
-Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosey](https://thejetsons.fandom.com/wiki/Rosey) from the Jetsons.
+Think [C-3P0](https://en.wikipedia.org/wiki/C-3PO), [Baymax](https://en.wikipedia.org/wiki/Baymax!), and [Rosie](https://en.wikipedia.org/wiki/List_of_The_Jetsons_characters#Rosie) from the Jetsons.
 
 AI language models like OpenAI's [ChatGPT](https://openai.com/blog/chatgpt/) are making companion robots with realistic, human-like speech a potential reality.
 By combining ChatGPT with the Viam platform’s built-in [computer vision service](/reference/services/vision/), ML model support, and [locomotion](/reference/components/base/), you can within a few hours create a basic companion robot that:
@@ -407,7 +407,7 @@ Use the above configuration to set up listening mode, use an ElevenLabs voice `"
 Edit the attributes as applicable:
 
 - Edit `"completion_provider_org"` and `"completion_provider_key"` to match your AI API organization and API credentials, for example your [OpenAI organization header and API key credentials](https://platform.openai.com/account/api-keys).
-- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://docs.elevenlabs.io/api-quick-start/authentication) or another speech provider.
+- Edit `"speech_provider_key"` to match [your API key from elevenlabs](https://elevenlabs.io/app/settings/api-keys) or another speech provider.
 - Edit `"mic_device_name"` to match the name your microphone is assigned on your robot's computer.
   Available microphone device names will logged on module startup.
   If left blank, the module will attempt to auto-detect the microphone.

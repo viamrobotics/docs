@@ -7,6 +7,7 @@ type: "docs"
 description: "Set up a camera, ML model, and vision service to detect defects."
 date: "2025-01-30"
 aliases:
+  - /try/part-1/
   - /operate/hello-world/first-project/part-1/
   - /try/first-project/part-1/
 ---

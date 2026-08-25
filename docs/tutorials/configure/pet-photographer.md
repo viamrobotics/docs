@@ -85,7 +85,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
 
 1. Navigate to the Python color filter directory, `pycolorfilter`.
 1. Note the path to your module's executable, <file>run.sh</file>, for later use.
-1. [Add the `colorfilter` module to your smart machine as a local module](#add-as-a-local-module) and continue the tutorial from there.
+1. [Deploy the `colorfilter` module to your machine](#deploy-the-module-to-your-machine) and continue the tutorial from there.
 
 {{% /tab %}}
 {{% tab name="Go"%}}
@@ -99,7 +99,7 @@ Follow the instructions below to download the `colorfilter` module in your prefe
 1. Navigate to the Go color filter directory, `colorfilter`.
 1. Inside of the `module` directory, [compile the executable](/build-modules/write-a-driver-module/#3-test-locally) that runs your module.
 1. Save the path to your module's executable for later use.
-1. [Add the `colorfilter` module to your smart machine as a local module](#add-as-a-local-module) and continue the tutorial from there.
+1. [Deploy the `colorfilter` module to your machine](#deploy-the-module-to-your-machine) and continue the tutorial from there.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -793,18 +793,34 @@ Once you've written your filter module, [compile your module into a single execu
 
 Note the absolute path to your module’s executable for use in the next section.
 
-### Add as a local module
+### Deploy the module to your machine
 
-Whether you've downloaded the `colorfilter` module, or written your own color filtering module, the next step is to add the module to your smart machine as a local module:
+Whether you downloaded the `colorfilter` module or wrote your own, the next step is to deploy it to your machine using the Viam CLI.
 
-1. Navigate to the **CONFIGURE** tab of your machine's page.
-1. Click the **+** (Create) button next to your main part in the left-hand menu and select **Local module**, then **Local module**.
+1. If you have not already, [install the Viam CLI](/cli/reference/) and log in:
 
-1. Enter a name or use the suggested name for your local module, enter the [module's executable path](/build-modules/write-a-driver-module/#3-test-locally), then click **Create**.
-   - The name must use only lowercase characters.
-1. Then, click the **Save** button in the top right corner of the page to save your changes.
+   ```sh {class="command-line" data-prompt="$"}
+   viam login
+   ```
 
-![A color filter module that has been added.](/tutorials/pet-photographer/add-colorfilter-module.png)
+1. From the module directory, create a module entry in your Viam organization. Find your organization ID by running `viam organizations list`, or from your organization's **Settings** page in the Viam app:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam module create --name=colorfilter --org-id=<your-org-id>
+   ```
+
+   This generates a `meta.json` file.
+
+1. Find your machine's part ID. At the top of the machine's page, click the **Live** or **Offline** status dropdown, then click **Part ID** to copy it.
+
+1. Deploy the module and add the `colorfilter` camera component in one step:
+
+   ```sh {class="command-line" data-prompt="$"}
+   viam module reload-local --part-id <your-part-id> \
+     --model-name example:camera:colorfilter --resource-name my-color-filter
+   ```
+
+   Replace `<your-part-id>` with the part ID you copied.
 
 ## Add services
 
@@ -926,20 +942,11 @@ If you haven't already, add a [camera](/reference/components/camera/) component 
 
 ![An instance of the webcam component named 'cam'](/tutorials/pet-photographer/webcam-component.png)
 
-### Add the color filter component
+### Configure the color filter component
 
-1. Click the **+** icon next to your machine part in the left-hand menu and select **Local module**, then **Local component**.
-1. On the **Create** menu:
+1. Open the **CONFIGURE** tab. The `reload-local` command added the module and a `my-color-filter` component. Click the component to expand its configuration.
 
-   1. Select the `camera` type from the dropdown menu.
-   1. Select or enter `example:camera:colorfilter`, the {{< glossary_tooltip term_id="model-namespace-triplet" text="model namespace triplet">}} of your modular resource's {{< glossary_tooltip term_id="model" text="model" >}}.
-   1. Provide a name for this instance of your modular resource.
-      This name must be different from the module name.
-
-      {{<imgproc src="/tutorials/pet-photographer/add-colorfilter-module-create.png" resize="400x" declaredimensions=true alt="The add a component model showing the create a module step for a local color filter module">}}
-
-1. Click **Create** to create the modular resource.
-1. In the resulting module configuration pane, copy the following JSON configuration into the attributes field:
+1. Add the following JSON attributes:
 
    ```json {class="line-numbers linkable-line-numbers"}
    {

@@ -7,6 +7,7 @@
 | [`MoveThroughJointPositions`](/reference/apis/components/arm/#movethroughjointpositions) | Move the arm's joints through the given positions in the order they are specified. |
 | [`GetJointPositions`](/reference/apis/components/arm/#getjointpositions) | Get the current position of each joint on the arm. |
 | [`Get3DModels`](/reference/apis/components/arm/#get3dmodels) | Get the 3D models of the arm. |
+| [`CalculateMaxReach`](/reference/apis/components/arm/#calculatemaxreach) | Calculate the maximum reach of the arm by summing all link lengths from its kinematics data. |
 | [`GetKinematics`](/reference/apis/components/arm/#getkinematics) | Get the kinematics information associated with the arm as the format and byte contents of the kinematics file. |
 | [`IsMoving`](/reference/apis/components/arm/#ismoving) | Get if the arm is currently moving. |
 | [`Stop`](/reference/apis/components/arm/#stop) | Stop all motion of the arm. |
