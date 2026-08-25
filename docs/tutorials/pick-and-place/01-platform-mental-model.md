@@ -10,6 +10,7 @@ toc_hide: true
 phase: 1
 phase_total: 6
 time_estimate: "20 minutes"
+prev: "/tutorials/pick-and-place/"
 next: "/tutorials/pick-and-place/configure-resources/"
 languages: ["python"]
 ---
@@ -47,7 +48,7 @@ Your Python script (on your laptop)
 
 A Viam machine is made of three layers that each do one job:
 
-- **The Viam cloud app** is the source of truth for configuration. When you add a component, change an attribute, or wire up a service, you are editing a JSON document stored in the cloud. The app never controls your robot directly; it describes what should run.
+- **The Viam cloud app** is the source of truth for configuration. When you add a component, change an attribute, or wire up a service, you are editing a JSON document stored in the cloud. The app never controls your robot directly; it describes what should run. Later, when you click **Grab** on the gripper card or jog the arm from the **Control** tab, that action does not go through this config path either: the app's browser page sends the control call straight to `viam-server`, the same as the Python scripts you write later, so the cloud app still is not in the loop for control, only the Control tab's UI is.
 - **viam-agent** is a service that runs on the computer controlling the arm. viam-agent manages `viam-server`: it installs, updates, and keeps `viam-server` running, restarts the server if it crashes, and provides the initial bootstrap credentials viam-server needs to reach the cloud. Think of viam-agent as the process supervisor, not as the source of your resource config, and not as something you interact with directly during this workshop.
 - **viam-server** pulls the machine resource configuration from the cloud app, starts every component and service that configuration describes, and exposes the components and services over an API. This is the layer that handles the modules that drive the arm, reads the camera, and runs the vision pipeline.
 
@@ -59,25 +60,25 @@ When a Python script imports the Viam SDK and connects to your machine, the conn
 
 This matters because it explains why your script keeps working even if your laptop briefly loses its connection to the internet at large but keeps a path to the robot: the cloud app is not in the request path for control, only for discovery and configuration delivery.
 
-Open the **CONNECT** tab on your machine's page in the Viam app and look at the code sample it generates. It contains your machine's address and an API key + ID pair, the main things any script needs to authenticate and reach `viam-server`.
+Open the **Connect** tab on your machine's page in the Viam app and look at the code sample it generates. It contains your machine's address and an API key + ID pair, the main things any script needs to authenticate and reach `viam-server`.
 
 ## Configuration is the source of truth
 
-Whatever you set in the app's **CONFIGURE** tab is what the machine runs. When you save an edit, the app updates the config document, and `viam-server` picks up the new config and applies it, typically within seconds, without a restart for most changes.
+Whatever you set in the app's **Configure** tab is what the machine runs. When you save an edit, the app updates the config document, and `viam-server` picks up the new config and applies it, typically within seconds, without a restart for most changes.
 
-This is why the workshop asks you to make changes in the app rather than by editing a file on the robot directly. The app's CONFIGURE tab is the only place you need to look to know what a machine will do.
+This is why the workshop asks you to make changes in the app rather than by editing a file on the robot directly. The app's Configure tab is the only place you need to look to know what a machine will do.
 
-Open the **CONFIGURE** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources.
+Open the **Configure** tab now and find the JSON view toggle near the top of the panel. Switching to JSON shows you the exact document that `viam-server` receives. Your machine has no resources configured yet, so the document is nearly empty; it fills in as you add resources.
 
-<!-- ASSET P1 configure-json-toggle (UI+): CONFIGURE tab JSON view toggle highlighted, near-empty {} config document -->
+<!-- ASSET P1 configure-json-toggle (UI+): Configure tab JSON view toggle highlighted, near-empty {} config document -->
 
-{{<imgproc src="/tutorials/pick-and-place/configure-json-toggle.png" resize="1200x" declaredimensions=true alt="The CONFIGURE tab with the JSON view toggle highlighted, showing a near-empty config document for the pick-and-place-main machine.">}}
+{{<imgproc src="/tutorials/pick-and-place/configure-json-toggle.png" resize="1200x" declaredimensions=true alt="The Configure tab with the JSON view toggle highlighted, showing a near-empty config document for the pick-and-place-main machine.">}}
 
-## Resources: configure your first one
+## Configure your first resource
 
 Everything a Viam machine does, hardware and software alike, is modeled as a **resource**. Each resource has a name you choose (like `arm-1`), an API that describes what kind of thing it is (an arm, a camera, a vision service), and a model that identifies the specific implementation. The fastest way to understand a resource is to configure one, so add the arm now.
 
-On the **CONFIGURE** tab, click the **+** icon and select **Blocks**. Search for `xArm6`, select the `ufactory/xArm6` result, and name the component `arm-1`.
+On the **Configure** tab, click the **+** icon and select **Blocks**. Search for `xArm6`, select the `ufactory/xArm6` result, **Add to machine**, and name the component `arm-1`.
 
 <!-- ASSET P0 configure-add-component (UI+): add-component dialog, "xArm6" searched, viam:ufactory:xArm6 result highlighted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
@@ -92,19 +93,19 @@ Set the following attributes:
 }
 ```
 
-`host` is the only required attribute; it can be found on the arm's control box. Setting `speed_degs_per_sec` to `30` keeps the arm moving slowly enough to stay safe while you work near it.
+`host` is the only required attribute; it is the IP address listed on the arm's control box. Setting `speed_degs_per_sec` to `30` keeps the arm moving slowly enough to stay safe while you work near it.
 
 <!-- ASSET P2 arm-controller-host (PHOTO): the xArm controller box with its IP address label -->
 
 {{<imgproc src="/tutorials/pick-and-place/arm-controller-host.jpeg" resize="1200x" declaredimensions=true alt="The xArm controller box; the IP address to use for the host attribute is printed on a label.">}}
 
-Save the config, then open the **LOGS** tab and watch what happens: a log line for a module download, then one for the module starting, then `arm-1` coming online, usually well under a minute. You just set the module system in motion; the [Builtin resources and modules](#builtin-resources-and-modules) section below explains what you saw.
+Save the config, then open the **Logs** tab and watch what happens: a log line for a module download, then one for the module starting, then `arm-1` coming online, usually well under a minute. You just set the module system in motion; the [Builtin resources and modules](#builtin-resources-and-modules) section below explains what you saw.
 
-<!-- ASSET P0 logs-xarm-module-start (UI+): LOGS showing the viam:ufactory module download + start (the module-download moment) -->
+<!-- ASSET P0 logs-xarm-module-start (UI+): Logs showing the viam:ufactory module download + start (the module-download moment) -->
 
-{{<imgproc src="/tutorials/pick-and-place/logs-xarm-module-start.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the viam:ufactory module downloading and starting.">}}
+{{<imgproc src="/tutorials/pick-and-place/logs-xarm-module-start.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the viam:ufactory module downloading and starting.">}}
 
-Back on the **CONFIGURE** tab, look at the `arm-1` card. Next to the name, it shows the model as `ufactory/xArm6`, the family and model name, with `from ufactory` marking the module it came from. That is the short form. The model's full name is a **triplet**, `namespace:family:name`, which you can see written out as `viam:ufactory:xArm6` if you switch to the JSON view. The triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`, here `viam`), the family of models it belongs to (`family`, here `ufactory`), and the specific model name (`name`, here `xArm6`).
+Back on the **Configure** tab, look at the `arm-1` card. Next to the name, it shows the model as `ufactory/xArm6`, the family and model name, with `from ufactory` marking the module it came from. That is the short form. The model's full name is a **triplet**, `namespace:family:name`, which you can see written out as `viam:ufactory:xArm6` if you switch to the JSON view. The triplet tells `viam-server` exactly which code to run for this resource: who published it (`namespace`, here `viam`), the family of models it belongs to (`family`, here `ufactory`), and the specific model name (`name`, here `xArm6`).
 
 <!-- ASSET P1 configure-arm1-triplet (UI+): arm-1 card showing the ufactory/xArm6 model label and "from ufactory", plus the full viam:ufactory:xArm6 triplet in the JSON model field -->
 
@@ -125,7 +126,7 @@ The difference shows up in what each API does: a component's API maps onto its h
 
 Some resources are **builtin**: `viam-server` (also called the RDK, the robot development kit) ships with support for common APIs and a handful of default models out of the box. Most of the interesting functionality on a real machine, though, comes from **modules**: packages that `viam-server` downloads and runs to add support for a specific model.
 
-The `ufactory/xArm6` arm you just added comes from a module. That is what the LOGS activity was when you saved it: `viam-server` recognized it does not have `ufactory/xArm6` model built in, so it downloaded the module that provides it from the Viam registry and started it. Every other module-provided resource you add follows the same pattern.
+The `ufactory/xArm6` arm you just added comes from a module. That is what the Logs activity was when you saved it: `viam-server` recognized it does not have `ufactory/xArm6` model built in, so it downloaded the module that provides it from the Viam registry and started it. Every other module-provided resource you add follows the same pattern.
 
 You can read this straight off the triplet seen in the JSON view of the machine configuration. `arm-1`'s namespace is `viam`, a third-party namespace, which is why it arrived as a module. A namespace of `rdk` would mean the model ships inside `viam-server` itself and needs no download; any other namespace, like `viam` or `erh`, means the model comes from a module.
 
@@ -151,7 +152,7 @@ motion  (builtin service, no configuration)
 
 Resources can depend on each other. A dependency means one resource needs another to be configured and running before it can start, because it relies on that resource to do its job. A gripper attaches to an arm, so `gripper-1`'s config points at `arm-1`. A vision service reads from a camera, so it depends on `cam-1`. `viam-server` reads these dependencies returned by resources when validating their configuration and builds a dependency graph, then starts resources in an order that respects it: a resource cannot start until everything it depends on has started.
 
-Open the **LOGS** tab and look at the startup sequence the next time the machine restarts. The order resources come online in the log follows the dependency graph, not the order they appear in the config file.
+Open the **Logs** tab and look at the startup sequence the next time the machine restarts. The order resources come online in the log follows the dependency graph, not the order they appear in the config file.
 
 {{< alert title="Check yourself" color="note" >}}
 Before moving to Phase 2, make sure you can answer the three questions from the top of this page: name the three layers of a Viam machine and which one your code talks to, what separates a component from a service, and why adding the arm triggers a module download. If any answer feels shaky, re-skim the relevant section above.
