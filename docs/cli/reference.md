@@ -1000,7 +1000,7 @@ viam machines part status --part=<part id>
 viam machines part run --part=<part id> --method=<method> [--data=<data>] [--stream=<interval>]
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
-viam machines part history --part=<part id>
+viam machines part history --part=<part id> [--start=<timestamp>] [--end=<timestamp>] [--count=<n>]
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
 viam machines part add-job --part=<part id> [--config=<json or path>]
 viam machines part update-job --part=<part id> --name=<job name> --config=<json or path>
@@ -1240,7 +1240,7 @@ viam machines part restart --part=123
 Display the configuration history for a machine part.
 
 ```sh {class="command-line" data-prompt="$"}
-viam machines part history --part=<part id>
+viam machines part history --part=<part id> [--start=<timestamp>] [--end=<timestamp>] [--count=<n>]
 ```
 
 <!-- prettier-ignore -->
@@ -1251,6 +1251,9 @@ viam machines part history --part=<part id>
 | `--location` | Location name. | Optional |
 | `--machine` | Machine ID or name. | Optional |
 | `--filter-by-email` | Show only history entries saved by this email address. | Optional |
+| `--start` | ISO-8601 timestamp in RFC 3339 format for the start of the time range filter (for example, `2025-01-15T14:00:00Z`). | Optional |
+| `--end` | ISO-8601 timestamp in RFC 3339 format for the end of the time range filter (for example, `2025-01-15T15:00:00Z`). | Optional |
+| `--count` | Maximum number of history entries to list. Set to `0` for every entry in the range. Default: `100`. | Optional |
 
 ### `machines part cp`
 
