@@ -7,6 +7,7 @@ type: "docs"
 description: "Deploy your inspector module and configure queryable detection data capture."
 date: "2025-01-30"
 aliases:
+  - /try/part-4/
   - /operate/hello-world/first-project/part-4/
   - /try/first-project/part-4/
 ---
