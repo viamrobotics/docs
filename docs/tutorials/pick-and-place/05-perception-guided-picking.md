@@ -243,9 +243,9 @@ Before wiring up the moves, print `approach_pose` and compare its `z` to `obj_in
 
 ## Descend in the gripper frame
 
-The approach move runs first, tagged `reference_frame="cam-1"`. At that instant the arm is still at `home-pose`, so `cam-1` sits exactly where the detection assumed and the motion service resolves the standoff correctly. The trouble only starts with the _second_ move: once the arm travels to the standoff it carries `cam-1` with it, so any further pose you tag `cam-1` resolves against the camera's new position, not the one your offset math used.
+The approach move runs first, tagged `reference_frame="cam-1"`. At that instant the arm is still at `home-pose`, so `cam-1` sits exactly where the detection assumed and the motion service resolves the standoff correctly. This assumption shifts after that move; once the arm travels to the standoff it carries `cam-1` with it, so any further pose you tag `cam-1` resolves against the camera's new position, not the one your offset math used.
 
-Rather than chase the camera frame, re-anchoring the block pose after every move, you sidestep it. The gripper is now parked directly above the block at the standoff, already lined up to come straight down. All that is left is to drop the last stretch, and that distance is a property of the gripper, not the camera: descend `grasp_distance` millimeters along the gripper's own `z` axis.
+Rather than chase the camera frame, re-anchoring the block pose after every move, you sidestep it. The gripper is now parked directly above the block at the standoff, already lined up to come straight down. All that is left is to drop the last stretch, and we can describe that move in the frame of the gripper instead of the camera: descend `grasp_distance` millimeters along the gripper's own `z` axis.
 
 Express that as a `Pose` in the `gripper-1` frame:
 

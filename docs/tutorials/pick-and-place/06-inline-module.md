@@ -40,7 +40,7 @@ The detection, the pose math, and the motion calls are the same pick-and-place l
 - **How the module gets its resources.** A script calls `from_robot` after it connects; a module receives its resources through **dependency injection** instead.
 - **Config-driven resources.** Your local script uses hardcoded component names like "arm-1." The module reads those names dynamically, which allows a module to be used across different machines that may have different naming conventions.
 - **How the logic gets triggered.** A script runs top to bottom under `__main__`; a module runs its logic behind a **`do_command`** entry point that something else calls.
-- **Hard constraints in class structure.** The model identifier and class name are auto-generated and must not change.
+- **Hard constraints in class structure.** For an inline module, the Viam app auto-generates the model identifier and class name, and you must not change them.
 
 ## Create the module
 

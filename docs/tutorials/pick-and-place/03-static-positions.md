@@ -90,7 +90,7 @@ With the `home-pose` switch added, save and verify it. Home is your observation 
 
 You have three ways to jog the arm on its Control card, and you can mix them:
 
-- **Joint control (`MoveToJointPositions`)** sets each joint angle directly. Move one joint slider a small amount, press **Execute**, and that joint rotates. It is the most predictable way to make coarse changes and to lift the arm clear before repositioning. You can also use quick move mode (indicated by the lightning bolt icon) to move a joint five percent at a time.
+- **Joint control (`MoveToJointPositions`)** sets each joint angle directly. Move one joint slider a small amount, press **Execute**, and that joint rotates. It is the most predictable way to make coarse changes and to lift the arm clear before repositioning. You can also use quick move mode (indicated by the lightning bolt icon) to move a joint five degrees at a time.
 - **End-effector control (`MoveToPosition`)** moves the tip of the arm to a Cartesian target instead of setting joints. Press **Current position** to load the arm's current pose into the fields, then change a coordinate and press **Execute**. The values are millimeters in the world frame at the arm base: raising or lowering **z** moves the gripper straight up or down, while **x** and **y** slide it horizontally across the workspace. Change one value by a small amount and watch the arm, or the 3D scene, to learn which way each axis points for your setup. Use this to nudge the gripper in a specific direction without solving for joint angles.
 - **Manual mode** lets you physically manipulate the arm to a desired position. To enter manual mode, go to the arm's **Control** card, then find the **Do command** section. `DoCommand` is a generic method that Viam components and services expose for functionality outside the standard API, letting you send arbitrary commands from the **Control** tab or your code without needing a dedicated method for every action.
   In the **Input** panel, enter:
@@ -152,8 +152,6 @@ Working one pose at a time, set each saved switch to position 2 and confirm the 
 ## Teach the planner about obstacles
 
 The Viam motion planner is collision-aware, but it can only avoid geometry it knows about. Without any obstacle configuration, the planner avoids self-collisions only. Once you add obstacle geometry, the planner treats the table surface and the workspace boundary as hard obstacles it cannot plan through.
-
-This matters both for correctness and for safety. Without the table obstacle, the planner might find a path that swings the arm through the table surface. Virtual safety walls at the workspace boundary also prevent the arm from swinging into people standing nearby. This is not just a classroom convenience: it is the same pattern you would use to keep a production workcell's motion planner honoring the real boundaries of its cell.
 
 In this workshop you configure two types of obstacles: the table surface and two safety walls at the workspace boundary.
 
