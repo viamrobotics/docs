@@ -106,14 +106,27 @@ Drives the arm through a sequence of joint configurations in order,
 with optional per-motion velocity and acceleration limits through
 `MoveOptions`.
 
-{{< alert title="SDK availability" color="caution" >}}
-`MoveThroughJointPositions` is available in the **Go SDK** and through
-the proto, but is **not currently exposed by the Python SDK**. Python
-callers who need the same behavior must call each waypoint with
-`move_to_joint_positions` in sequence.
-{{< /alert >}}
-
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+```python
+from viam.components.arm import Arm, JointPositions, MoveOptions
+
+my_arm = Arm.from_robot(machine, "my-arm")
+
+waypoints = [
+    JointPositions(values=[0, -45, 90, 0, 45, 0]),
+    JointPositions(values=[0, 0, 90, 0, 0, 0]),
+    JointPositions(values=[0, 45, 0, 0, -45, 0]),
+]
+
+# Cap every joint at 15 deg/s and 30 deg/s^2.
+options = MoveOptions(max_vel_degs_per_sec=15.0, max_acc_degs_per_sec2=30.0)
+
+await my_arm.move_through_joint_positions(waypoints, options=options)
+```
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 ```go
@@ -141,31 +154,6 @@ if err := myArm.MoveThroughJointPositions(ctx, waypoints, options, nil); err != 
     logger.Fatal(err)
 }
 ```
-
-{{% /tab %}}
-{{% tab name="Python" %}}
-
-The Python SDK does not expose `MoveThroughJointPositions`. Use a loop
-with `move_to_joint_positions` for the equivalent behavior:
-
-```python
-from viam.components.arm import Arm
-from viam.proto.component.arm import JointPositions
-
-my_arm = Arm.from_robot(machine, "my-arm")
-
-waypoints = [
-    JointPositions(values=[0, -45, 90, 0, 45, 0]),
-    JointPositions(values=[0, 0, 90, 0, 0, 0]),
-    JointPositions(values=[0, 45, 0, 0, -45, 0]),
-]
-
-for wp in waypoints:
-    await my_arm.move_to_joint_positions(wp)
-```
-
-Without `MoveOptions` you cannot cap velocity or acceleration per call
-from Python; the arm uses its module's default speed profile.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -225,12 +213,12 @@ programmatically.
 
 ## Joint-space moves compared to motion.Move
 
-| Motion path                          | Use when                                                                                            |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| `arm.MoveToJointPositions`           | You know the joint angles you want.                                                                 |
-| `arm.MoveThroughJointPositions` (Go) | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
-| `arm.MoveToPosition`                 | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
-| `motion.Move`                        | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
+| Motion path                     | Use when                                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `arm.MoveToJointPositions`      | You know the joint angles you want.                                                                 |
+| `arm.MoveThroughJointPositions` | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
+| `arm.MoveToPosition`            | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
+| `motion.Move`                   | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
 
 Joint-space moves are the right call when you need to control the
 posture of the arm precisely. They do not protect against collisions
@@ -255,8 +243,9 @@ range, update the kinematics file (see
 
 Without `MoveOptions`, the speed profile comes from the arm module's
 default. Different modules pick different defaults. If you need a
-specific speed, use Go's `MoveOptions`, or break a long motion into
-shorter `MoveToJointPositions` calls with sleeps between.
+specific speed, pass `MoveOptions` to `MoveThroughJointPositions`, or
+break a long motion into shorter `MoveToJointPositions` calls with
+sleeps between.
 
 {{< /expand >}}
 
