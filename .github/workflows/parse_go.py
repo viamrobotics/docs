@@ -469,7 +469,16 @@ class GoParser:
                 for method in go_methods_raw:
                     this_method_dict = {}
                     method_name = method.find('a', class_='Documentation-source').text
-                    method_link = method.find('a', class_='Documentation-idLink')['href']
+                    id_link_tag = method.find('a', class_='Documentation-idLink')
+                    if id_link_tag:
+                        method_link = id_link_tag['href']
+                    else:
+                        # pkg.go.dev wraps deprecated methods in <details>/<summary> and
+                        # omits the Documentation-idLink permalink anchor for them, but the
+                        # heading id (e.g. "DataClient.TabularDataByFilter") is still present
+                        # and matches the anchor idLink would otherwise have pointed to.
+                        header_tag = method.find(attrs={"data-kind": "method"})
+                        method_link = url + '#' + header_tag['id']
 
                     # Get all text after the Documentation-declaration div
                     declaration_div = method.find('div', class_='Documentation-declaration')
