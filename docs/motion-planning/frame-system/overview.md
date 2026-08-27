@@ -178,7 +178,8 @@ For a worked example with a gripper, see
 To configure a frame, open the **CONFIGURE** tab in the Viam app and
 click the component's card in the sidebar. Arms and grippers show the
 **Frame** section automatically with a setup banner; click **Set
-defaults** to initialize it, then edit the values. For other component
+defaults** to initialize the frame with parent `world`, zero
+translation, and identity orientation, then edit the values. For other component
 types, click **Frame** to add the section. Edit the JSON directly to
 set parent, translation, orientation, and any geometry. Save with the
 **Save** button (or `⌘`/`Ctrl`+`S`).

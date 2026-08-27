@@ -42,8 +42,9 @@ In the [Viam app](https://app.viam.com), go to your machine's
 3. Name it **my-arm** and click **Add to machine**.
 4. In the arm's attributes, set `arm-model` to `"ur5e"`.
 5. Find the **Frame** section on the arm's card (arms always show it).
-   Click **Set defaults**, then edit the JSON so the frame sits at the
-   world origin:
+   Click **Set defaults** to initialize the frame with parent `world`,
+   zero translation, and identity orientation. Then edit the JSON so
+   the frame sits at the world origin:
 
 ```json
 {
@@ -64,8 +65,10 @@ Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 2. Search for **gripper** and choose the **gripper/fake** component.
 3. Name it **my-gripper** and click **Add to machine**.
 4. Find the **Frame** section on the gripper's card (grippers always
-   show it). Click **Set defaults**, then edit the JSON so the parent
-   is the arm and the origin is offset 110 mm along the arm's
+   show it). Click **Set defaults** to initialize the frame (parent
+   `world`, zero translation, identity orientation), then edit the
+   JSON so the parent is the arm and the origin is offset 110 mm
+   along the arm's
    end effector's z axis (a typical gripper body length). A frame
    parented to an arm attaches to the arm's end effector:
 
