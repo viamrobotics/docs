@@ -42,7 +42,7 @@ Mark the origin physically so you can take consistent measurements to both the a
 
 ### 2. Add a frame to the arm
 
-In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
+In the **CONFIGURE** tab, click the arm component's card and find the **Frame** section (arms always show it). Click **Set defaults**, then edit the values. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
 
 Measure the distance from your world frame origin to the arm base along each axis.
 For an arm base 300 mm to the right and 250 mm forward from a table corner:
@@ -62,7 +62,7 @@ Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ### 3. Add a frame to the gripper
 
-In the sidebar, click your gripper component to open its card. On the card, click **Frame**.
+In the sidebar, click your gripper component to open its card. Find the **Frame** section (grippers always show it) and click **Set defaults**.
 Set the parent to the arm:
 
 ```json

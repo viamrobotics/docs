@@ -115,9 +115,10 @@ pose. Next you will add the motion service call that plans a path and
 executes it, plus a verification read after the motion completes.
 
 Add the arm to the frame system so the motion service can plan
-its movements. On the arm's card, click **Frame**. The default values
-(parent `world`, zero translation and rotation) place the arm's base
-at the world origin, so you don't need to change anything:
+its movements. On the arm's card, find the **Frame** section (arms
+always show it). Click **Set defaults** to accept the default values
+(parent `world`, zero translation and rotation), which place the arm's
+base at the world origin:
 
 ```json
 {
