@@ -186,6 +186,12 @@ async for change in worldstatestore.stream_transform_changes():
     print(f"Transform {change.transform.uuid} {change.change_type}")
 ```
 
+Each `change` carries a `change_type` (one of `TRANSFORM_CHANGE_TYPE_ADDED`, `TRANSFORM_CHANGE_TYPE_UPDATED`, `TRANSFORM_CHANGE_TYPE_REMOVED`, or `TRANSFORM_CHANGE_TYPE_UNSPECIFIED` from `viam.proto.service.worldstatestore`) and an `updated_fields` field mask:
+
+- For `TRANSFORM_CHANGE_TYPE_ADDED`, `updated_fields` is empty; use the whole transform.
+- For `TRANSFORM_CHANGE_TYPE_UPDATED`, `updated_fields.paths` lists the field paths that changed, so you can apply a partial update instead of replacing the whole transform.
+- For `TRANSFORM_CHANGE_TYPE_REMOVED`, `updated_fields.paths` holds the transform's UUID path.
+
 For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/services/worldstatestore/index.html#viam.services.worldstatestore.WorldStateStore.stream_transform_changes).
 
 {{% /tab %}}
@@ -220,6 +226,14 @@ for {
 }
 ```
 
+Each `TransformChange` carries a `ChangeType` (one of `pb.TransformChangeType_TRANSFORM_CHANGE_TYPE_ADDED`, `_UPDATED`, `_REMOVED`, or `_UNSPECIFIED`) and an `UpdatedFields []string`:
+
+- For an added transform, `UpdatedFields` is empty; use the whole transform.
+- For an updated transform, `UpdatedFields` lists the field paths that changed, so you can apply a partial update instead of replacing the whole transform.
+- For a removed transform, `UpdatedFields` holds the transform's UUID path.
+
+`StreamTransformChanges` returns a `*TransformChangeStream`, not a channel: call `Next()` repeatedly until it returns `io.EOF`, as shown above.
+
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/services/worldstatestore#Service).
 
 {{% /tab %}}
@@ -245,6 +259,12 @@ for await (const change of stream) {
   console.log('Transform change:', change.changeType, change.transform);
 }
 ```
+
+Each `change` carries a `changeType` (one of `TransformChangeType.ADDED`, `.UPDATED`, `.REMOVED`, or `.UNSPECIFIED`) and an `updatedFields` field mask:
+
+- For `ADDED`, `updatedFields` is `undefined`; use the whole transform.
+- For `UPDATED`, `updatedFields.paths` lists the field paths that changed, so you can apply a partial update instead of replacing the whole transform.
+- For `REMOVED`, `updatedFields.paths` holds the transform's UUID path.
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/WorldStateStoreClient.html#streamtransformchanges).
 
