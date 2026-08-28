@@ -5,6 +5,8 @@ full_link:
 short_description: The origin frame is the frame at the base of an arm or other component that has a complex kinematics chain.
 aliases:
   - /dev/reference/glossary/origin-frame/
+capabilities:
+  - glossary
 ---
 
 The origin frame is the frame at the base of an arm, gantry, or other component.

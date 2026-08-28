@@ -22,6 +22,9 @@ cost: 8400
 no_list: true
 aliases:
   - /tutorials/services/plan-motion-with-arm-gripper/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 With Viam you can move individual components, like [arms](/reference/components/arm/), by issuing commands like `MoveToPosition` or `MoveToJointPosition`.

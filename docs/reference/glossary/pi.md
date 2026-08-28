@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/pi/
+capabilities:
+  - glossary
 ---
 
 Pi is short for Raspberry Pi, a series of small, affordable single-board computers developed by the Raspberry Pi Foundation.

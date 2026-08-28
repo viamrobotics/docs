@@ -12,6 +12,8 @@ aliases:
   - /services/frame-system/frame-config/
   - /mobility/frame-system/
   - /mobility/frame-system/frame-config/
+capabilities:
+  - frame-system
 ---
 
 The frame system is the basis for some of Viam's other services, like [motion](/reference/services/motion/) and [vision](/reference/services/vision/).

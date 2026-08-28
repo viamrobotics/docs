@@ -8,6 +8,9 @@ description: "Control gantry axes directly or plan complex gantry motion."
 aliases:
   - /operate/mobility/move-gantry/
   - /motion-planning/motion-how-to/move-gantry/
+capabilities:
+  - motion-planning
+  - hw-gantry
 ---
 
 A gantry moves along one or more linear axes, so an axis position is already

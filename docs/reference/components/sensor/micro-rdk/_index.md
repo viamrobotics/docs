@@ -6,6 +6,8 @@ type: "docs"
 description: "Sensor models available in the Micro-RDK."
 tags: ["sensor", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-sensing
 ---
 
 Sensor models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

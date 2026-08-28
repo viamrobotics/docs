@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/sensor/
   - /appendix/apis/components/sensor/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-sensing
 ---
 
 The sensor API allows you to get measurements from your [sensor components](/reference/components/sensor/).

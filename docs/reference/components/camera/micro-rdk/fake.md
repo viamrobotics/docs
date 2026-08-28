@@ -14,6 +14,8 @@ aliases:
 component_description: "A camera model for testing."
 micrordk_component: true
 # SMEs: Matt Perez, Micro-RDK team
+capabilities:
+  - hw-camera
 ---
 
 A `fake` camera is a camera model for testing.

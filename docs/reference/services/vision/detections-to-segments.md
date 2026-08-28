@@ -13,6 +13,8 @@ aliases:
   - /ml/vision/detector_3d_segmenter/
   - /services/vision/segmentation/
   - /data-ai/services/vision/detector_3d_segmenter/
+capabilities:
+  - vision-service
 ---
 
 The `viam:vision:detections-to-segments` vision service wraps an existing 2D detector and projects its bounding boxes into 3D point cloud objects using a depth camera's intrinsic parameters. Each 2D detection produces a corresponding 3D segment that carries the original label and whose point cloud contains the projected pixels from inside the 2D box.

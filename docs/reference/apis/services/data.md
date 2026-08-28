@@ -11,6 +11,8 @@ aliases:
   - /dev/reference/apis/services/data/
   - /appendix/apis/services/data/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - data-capture
 ---
 
 The data management service API allows you to sync data stored on the machine it is deployed on to the cloud.

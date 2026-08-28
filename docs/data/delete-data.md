@@ -5,6 +5,8 @@ weight: 27
 layout: "docs"
 type: "docs"
 description: "Delete captured tabular and binary data through the Viam app, the CLI, or the SDK."
+capabilities:
+  - data-storage
 ---
 
 You can delete captured data through the Viam app, the CLI, or the SDK.

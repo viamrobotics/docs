@@ -10,6 +10,8 @@ aliases:
   - /build/vision-detection/track-objects-across-frames/
   - /vision-detection/track-objects-across-frames/
   - /vision/track/
+capabilities:
+  - vision-service
 ---
 
 Object detection operates on single frames. It tells you what is in the image right now, but nothing about what was in the previous frame. When you run detections at 5 frames per second, you get 5 independent lists of bounding boxes with no way to tell whether a detection in frame 2 corresponds to the same object as in frame 1.

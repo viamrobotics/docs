@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Attach a second computer to your existing machine as a sub-part so the main part can access its components."
 date: "2026-04-16"
+capabilities:
+  - machine-config
 ---
 
 A sub-part is a second computer that the Viam cloud wires into your existing machine automatically.

@@ -12,6 +12,8 @@ aliases:
   - /operate/hello-world/first-project/
   - /operate/hello-world/quickstart/
   - /operate/hello-world/tutorial-desk-safari/
+capabilities:
+  - device-setup
 ---
 
 {{% alert title="Viam 101" color="tip" %}}

@@ -33,4 +33,7 @@ updated: "2024-04-18"
 # updated: ""
 cost: "0"
 resource: "blogpost"
+capabilities:
+  - vision-service
+  - ml-models
 ---

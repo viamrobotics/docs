@@ -7,6 +7,8 @@ type: "docs"
 description: "Configure network connections, OS updates, tunneling, TLS, and log forwarding for deployed machines."
 aliases:
   - /manage/fleet/system-settings/
+capabilities:
+  - machine-config
 ---
 
 Configure system-level settings for deployed machines. These settings are managed by `viam-agent` and configured in your machine's JSON configuration under the agent config section. You can configure them directly on a machine or deploy them fleet-wide through a fragment.

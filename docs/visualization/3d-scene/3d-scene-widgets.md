@@ -7,6 +7,8 @@ type: "docs"
 description: "Overlay live controls on the 3D scene: interactive controls for any resource on the machine, and a frame's point of view."
 aliases:
   - /visualization/3d-scene-tools/3d-scene-widgets/
+capabilities:
+  - scene-3d
 ---
 
 Widgets are floating panels you overlay on the 3D scene so you can drive and read a machine

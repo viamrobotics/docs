@@ -5,6 +5,8 @@ full_link:
 short_description: The Viam provisioning application for deploying viam-server.
 aliases:
   - /dev/reference/glossary/viam-agent/
+capabilities:
+  - glossary
 ---
 
 The Viam Agent is a provisioning application for deploying and managing `viam-server` across a fleet of machines.

@@ -39,4 +39,7 @@ aliases:
   - /data-ai/
   - /data-ai/capture-data/
   - /data-ai/data/
+capabilities:
+  - data-capture
+  - data-storage
 ---

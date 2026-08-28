@@ -7,4 +7,6 @@ empty_node: true
 open_on_desktop: true
 header_only: true
 canonical: "/monitor/dashboards/overview/"
+capabilities:
+  - dashboards
 ---

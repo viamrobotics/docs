@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Show a connection status indicator, react to reconnection, and rebuild your app's UI state after the SDK reconnects to a machine."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Show a connection status indicator in your app, react to connection events, and rebuild UI state after the SDK reconnects. The SDK reconnects the transport layer automatically; your app is responsible for rebuilding streams, timers, and anything else that depended on the old connection.

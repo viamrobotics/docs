@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Query sensor and binary data from a client app using SQL and MQL through DataClient."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - data-storage
 ---
 
 Query data that your Viam machines have captured and synced to the cloud, from inside a client app. This page covers the SDK calls for running SQL and MQL queries from app code. For the query languages themselves (schema, operators, examples), see [Query data](/data/query-data/) in the data section.

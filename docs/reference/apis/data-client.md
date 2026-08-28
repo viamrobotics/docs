@@ -25,6 +25,8 @@ aliases:
 
 date: "2024-09-19"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - data-storage
 ---
 
 The data client allows you to upload and retrieve data to and from the Viam Cloud.

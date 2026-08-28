@@ -8,6 +8,9 @@ description: "Close the loop when a vision model's accuracy drops in production:
 date: "2026-04-14"
 aliases:
   - /vision/retrain/
+capabilities:
+  - ml-models
+  - ml-training
 ---
 
 Every vision model loses accuracy over time. Lighting shifts, new object variations appear, someone moves a camera, a new SKU shows up on the line. The [training-to-production gap](https://medium.com/sciforce/why-your-computer-vision-model-struggles-in-the-real-world-3a6a999cdf8f) is the single most common reason a vision system fails after launch. The fix is never a one-time deployment. It is a loop.

@@ -22,6 +22,8 @@ aliases:
   - /installation/viam-micro-server-setup/
   - /operate/reference/viam-micro-server/viam-micro-server-troubleshooting/
   - /operate/get-started/setup-micro/
+capabilities:
+  - device-setup
 ---
 
 Viam maintains a lightweight version of `viam-server` for microcontrollers.

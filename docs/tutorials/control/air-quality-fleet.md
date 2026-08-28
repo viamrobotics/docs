@@ -22,6 +22,9 @@ cost: 30
 #    The reader can create their own fragments for their projects and knows what to include and exclude from them.
 # 3. The reader recognizes how permissions enable the management of data for a business across multiple customers while providing each customer access to their own data.
 # 4. The reader can deploy custom front ends that end users can use to operate their machines.
+capabilities:
+  - hw-sensing
+  - fleet-deployment
 ---
 
 This tutorial walks you through how to set up a fleet of air quality monitoring machines as though you were creating a company selling air quality machines.

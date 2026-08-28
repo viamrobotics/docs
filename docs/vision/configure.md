@@ -9,6 +9,8 @@ date: "2026-04-14"
 aliases:
   - /build/vision-detection/add-computer-vision/
   - /vision-detection/add-computer-vision/
+capabilities:
+  - vision-service
 ---
 
 You have a camera on your machine, and you have an ML model. The model could have come from the [registry](https://app.viam.com/registry), from the [Train ML Models section](/train/) through [managed training](/train/train-a-model/) or a [custom training script](/train/custom-training-scripts/), or from elsewhere entirely: GitHub, Hugging Face, or your own training run outside Viam. This how-to wires the pieces together: an ML model service loads the model, and a vision service turns the model's output into detections, classifications, or 3D point cloud objects.

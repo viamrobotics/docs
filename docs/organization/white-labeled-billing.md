@@ -10,6 +10,8 @@ aliases:
   - /manage/manage/white-labeled-billing/
   - /manage/manage/white-labeled-billing
   - /manage/manage/white-labelled-billing/
+capabilities:
+  - billing
 ---
 
 You can use Viam to bill your customers using your own logo.

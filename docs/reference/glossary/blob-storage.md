@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/blob-storage/
+capabilities:
+  - glossary
 ---
 
 A cheap but slow storage medium.

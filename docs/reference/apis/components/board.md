@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/board/
   - /appendix/apis/components/board/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-compute
 ---
 
 The board API allows you to give commands to your [board components](/reference/components/board/) for setting GPIO pins to high or low, setting PWM, and working with analog and digital interrupts.

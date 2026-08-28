@@ -7,4 +7,6 @@ type: "docs"
 no_list: true
 manualLink: "/visualization/overview/"
 description: "See your machine in 3D: frames, geometries, point clouds, and custom visuals your modules publish."
+capabilities:
+  - scene-3d
 ---

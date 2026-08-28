@@ -9,6 +9,8 @@ date: "2025-01-30"
 aliases:
   - /build/train/train-a-model/
   - /data-ai/ai/train/
+capabilities:
+  - ml-training
 ---
 
 Submit a training job from your labeled dataset. Viam runs the job on

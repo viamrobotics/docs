@@ -5,6 +5,9 @@ weight: 45
 layout: "docs"
 type: "docs"
 description: "Give the planner a region of acceptable destinations instead of a single exact pose, so it can find a solution faster."
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 By default `Move` requires a destination pose, which defines where the end effector must

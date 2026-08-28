@@ -22,6 +22,8 @@ aliases:
   - /extend/custom-components-remotes/
   - /modular-resources/advanced/custom-components-remotes/
   - /registry/advanced/custom-components-remotes/
+capabilities:
+  - module-development
 ---
 
 Some use cases require approaches beyond the standard module workflow. This page covers three advanced patterns: defining a new resource API, deploying custom components as remote parts, and packaging modules with Docker.

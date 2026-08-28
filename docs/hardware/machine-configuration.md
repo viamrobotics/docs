@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /hardware-components/configure-components/
   - /hardware/configure-components/
+capabilities:
+  - machine-config
 ---
 
 When you add components through the Viam app, you're building a JSON

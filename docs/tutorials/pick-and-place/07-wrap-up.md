@@ -9,6 +9,9 @@ workshop: "pick-and-place"
 toc_hide: true
 prev: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 Congrats, you have finished the pick-and-place workshop! Starting from an empty machine, you configured every resource by hand and wrote the code that drives a vision-guided robot to detect a block, plan around obstacles, and place it in a bin.

@@ -5,6 +5,9 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "Manage API keys, OAuth, billing, and organization settings from the command line."
+capabilities:
+  - cli
+  - org-management
 ---
 
 Create and manage API keys, configure OAuth authentication for end users, and set up white-label billing for your organization.

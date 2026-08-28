@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "How data pipelines work: scheduled MQL aggregations that transform raw captured data into precomputed summaries."
 date: "2026-03-27"
+capabilities:
+  - data-pipelines
 ---
 
 A data pipeline runs a scheduled MQL aggregation query against your captured data and stores the results as precomputed summary documents. Instead of querying 86,000 raw sensor readings to compute an hourly average, you query a single summary document that the pipeline already computed.

@@ -8,6 +8,8 @@ description: "Before writing a module, check whether one already exists. The reg
 date: "2026-04-17"
 aliases:
   - /registry/
+capabilities:
+  - module-registry
 ---
 
 Before you write a module, check whether one already exists. The Viam registry contains more than hardware drivers. Many software capabilities you might want to build are already published as modules you can configure and use directly.

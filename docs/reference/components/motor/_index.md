@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/components/motor/"
+capabilities:
+  - hw-actuation
 ---
 
 This section documents the configuration attributes for each built-in motor model.

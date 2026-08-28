@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/ml/
+capabilities:
+  - glossary
 ---
 
 ML stands for machine learning, a field of artificial intelligence that focuses on building systems that can learn from and make decisions based on data.

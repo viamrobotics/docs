@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Write MQL aggregation pipelines to create advanced dashboard visualizations."
+capabilities:
+  - dashboards
 ---
 
 When the built-in window and aggregation methods are not enough, you can write custom MQL (MongoDB Query Language) aggregation pipelines to transform your data. Custom queries give you full control over how data is processed before it reaches a widget.

@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Display live camera feeds in a client app. Covers single-camera and multi-camera streaming, resolution tradeoffs, and bandwidth considerations."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - hw-camera
 ---
 
 Display a live camera feed from a Viam machine in your client app. The TypeScript and Flutter SDKs use WebRTC for video streaming, which gives low latency suitable for teleoperation. Python, Go, and C++ access camera data through single-frame methods (`get_images`, `GetImages`) rather than WebRTC streams; for live video in those languages, poll `get_images` on a timer. This page focuses on the WebRTC streaming path available in TypeScript and Flutter.

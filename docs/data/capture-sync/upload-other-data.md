@@ -16,6 +16,8 @@ aliases:
 date: "2024-12-04"
 updated: "2025-09-11"
 description: "Upload data to Viam from your local computer or mobile device using the data client API or the Viam mobile app."
+capabilities:
+  - data-capture
 ---
 
 The [data management service](/data/capture-sync/capture-and-sync-data/) captures and syncs data from your machines automatically.

@@ -10,4 +10,6 @@ canonical: "https://python.viam.dev/"
 aliases:
   - /dev/reference/sdks/python/
   - /sdks/python/
+capabilities:
+  - sdks
 ---

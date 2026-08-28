@@ -6,4 +6,6 @@ empty_node: true
 layout: "empty"
 canonical: "/try/viam-rover/overview/"
 type: "docs"
+capabilities:
+  - hw-mobility
 ---

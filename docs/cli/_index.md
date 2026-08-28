@@ -9,4 +9,6 @@ manualLink: "/cli/overview/"
 description: "The Viam CLI gives you command-line access to every operation in the Viam platform, from machine configuration to data export to fleet management."
 aliases:
   - /dev/tools/cli/
+capabilities:
+  - cli
 ---

@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Create datasets from captured images and train ML models for classification or object detection."
+capabilities:
+  - ml-training
 ---
 
 Your machines capture images in the field. ML model training turns those images

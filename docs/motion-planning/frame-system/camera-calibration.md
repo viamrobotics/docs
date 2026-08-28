@@ -10,6 +10,8 @@ aliases:
   - /build/work-cell-layout/calibrate-camera-to-robot/
   - /motion-planning/camera-calibration/
   - /operate/reference/components/camera/calibrate/
+capabilities:
+  - frame-system
 ---
 
 Configuring a camera's frame tells the motion service where the camera

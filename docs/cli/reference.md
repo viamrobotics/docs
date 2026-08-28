@@ -6,6 +6,8 @@ type: "docs"
 description: "Complete command reference for the Viam CLI: every command, subcommand, flag, and alias."
 date: "2026-04-25"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - cli
 ---
 
 This page documents every command, subcommand, flag, and alias in the Viam CLI.

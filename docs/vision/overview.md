@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Run detection, classification, and 3D segmentation on camera feeds with Viam's vision service. Use ML models, heuristic color detection, or point cloud segmenters, and close the loop with retraining."
 date: "2026-04-14"
+capabilities:
+  - vision-service
 ---
 
 Computer vision on Viam turns camera frames into structured results your code can act on: bounding boxes, class labels, or 3D point cloud objects. Three built-in vision service models cover the common tasks, and the [registry](https://app.viam.com/registry) has more for specialized cases.

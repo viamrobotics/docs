@@ -46,6 +46,8 @@ level: "" # Beginner, Intermediate, Advanced
 date: "2023-01-01" # When the tutorial was created or last entirely checked
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0" # Approximate cost in USD - Only specify number
+capabilities:
+  - section-index
 ---
 
 Outline the why.

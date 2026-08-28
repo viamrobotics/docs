@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/switch.svg"]
 aliases:
   - "/components/switch/"
+capabilities:
+  - hw-actuation
 ---
 
 This section documents the configuration attributes for each built-in switch model.

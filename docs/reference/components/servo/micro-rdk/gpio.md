@@ -15,6 +15,8 @@ aliases:
   - "/reference/components/servo/gpio-micro-rdk/"
 micrordk_component: true
 # SME: Gautham
+capabilities:
+  - hw-actuation
 ---
 
 Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins into your machine.

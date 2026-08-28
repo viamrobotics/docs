@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Build a Python service that connects to a Viam machine, monitors a sensor, controls a motor based on sensor readings, and shuts down cleanly."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
+  - dashboards
 ---
 
 In this tutorial, you will build a Python service that runs without a user interface. The finished service:

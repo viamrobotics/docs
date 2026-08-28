@@ -8,6 +8,8 @@ description: "Query captured data programmatically using the Viam Python or Go S
 date: "2026-03-26"
 aliases:
   - /data/query-data-from-code/
+capabilities:
+  - data-storage
 ---
 
 Pull captured data into your own programs using the Viam data client API. You can run the same SQL and MQL queries available in the app's query editor from Python or Go code.

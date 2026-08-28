@@ -5,6 +5,8 @@ full_link:
 short_description: The specification for communication with resources.
 aliases:
   - /dev/reference/glossary/viam-robot-api/
+capabilities:
+  - glossary
 ---
 
 The specification for communication with resources.

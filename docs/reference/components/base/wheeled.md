@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/base/wheeled/"
 component_description: "Supports mobile wheeled robotic bases with motors on both sides for differential steering."
 # SMEs: Steve B
+capabilities:
+  - hw-mobility
 ---
 
 A `wheeled` base supports mobile robotic bases with motors on both sides (differential steering).

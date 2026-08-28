@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Capture working hardware configurations and keep them consistent across your fleet."
 date: "2025-03-07"
+capabilities:
+  - machine-config
 ---
 
 Getting hardware to work together takes effort. Calibrating a camera mounted

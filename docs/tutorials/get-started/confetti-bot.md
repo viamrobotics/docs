@@ -22,4 +22,6 @@ date: "2023-05-29"
 updated: "2024-04-16"
 cost: 145
 resource: "blogpost"
+capabilities:
+  - hw-actuation
 ---

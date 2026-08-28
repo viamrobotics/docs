@@ -15,6 +15,9 @@ next: "/tutorials/pick-and-place/perception-guided-picking/"
 aliases:
   - /tutorials/pick-and-place/local-python-script/
 languages: ["python"]
+capabilities:
+  - hw-arm
+  - sdks
 ---
 
 In this phase you write and run a Python script on your personal computer that connects to the robot and executes the static pick-and-place sequence from the previous phase. This proves your connection, environment, and named positions work end to end before you add vision feedback.

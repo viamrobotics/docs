@@ -47,4 +47,6 @@ aliases:
   - /build/micro-rdk/
   - /get-started/installation/microcontrollers/
   - /operate/get-started/setup-micro/
+capabilities:
+  - section-index
 ---

@@ -22,6 +22,8 @@ date: "2023-07-03"
 cost: 8400
 aliases:
   - /tutorials/services/constrain-motion/
+capabilities:
+  - motion-planning
 ---
 
 {{<gif webm_src="/tutorials/videos/motion_constraints.webm" mp4_src="/tutorials/videos/motion_constraints.mp4" alt="An arm moving a cup from one side of a tissue box to the other, across a table. The cup stays upright." class="alignright" max-width="250px">}}

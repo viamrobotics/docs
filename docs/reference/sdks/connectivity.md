@@ -12,6 +12,8 @@ aliases:
   - /sdks/connectivity/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - sdks
 ---
 
 When connecting to a machine using the connection code from the [**CONNECT** tab](/reference/sdks/), a [client session](/reference/apis/sessions/) automatically uses the most efficient route to connect to your machine either through local LAN or WAN or the internet.

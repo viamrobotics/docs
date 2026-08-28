@@ -13,6 +13,10 @@ time_estimate: "22 minutes"
 prev: "/tutorials/pick-and-place/control-the-robot-from-python/"
 next: "/tutorials/pick-and-place/inline-module/"
 languages: ["python"]
+capabilities:
+  - motion-planning
+  - vision-service
+  - hw-arm
 ---
 
 In this phase you replace the fixed approach and grasp poses with live data from the camera: a vision service detects a block in the camera's own frame, you compute an approach standoff from that detection, and the motion service plans a collision-free pick against it. The arm approaches in the camera frame while it is still at home, then descends onto the block in the gripper's own frame.

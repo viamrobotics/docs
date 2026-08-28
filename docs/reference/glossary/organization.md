@@ -5,6 +5,8 @@ full_link: /manage/reference/organize/
 short_description: An organization is a group of one or more locations that helps you organize your fleet and manage who has access to your fleet.
 aliases:
   - /dev/reference/glossary/organization/
+capabilities:
+  - glossary
 ---
 
 An organization or org is the highest level grouping in the Viam platform, which generally represents a company, or other institution.

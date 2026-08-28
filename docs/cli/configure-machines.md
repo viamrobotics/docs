@@ -5,6 +5,9 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Create machines, add components and services, and manage fragments from the command line."
+capabilities:
+  - cli
+  - machine-config
 ---
 
 Create and configure machines, add and remove components and services, and apply configuration fragments from the command line.

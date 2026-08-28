@@ -15,6 +15,9 @@ date: "2023-03-30"
 updated: "2024-05-01"
 cost: "0"
 no_list: true
+capabilities:
+  - vision-service
+  - sdks
 ---
 
 In this tutorial, you will create a desk security system with no hardware other than your laptop and the built-in webcam.

@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/button.svg"]
 aliases:
   - "/components/button/"
+capabilities:
+  - hw-actuation
 ---
 
 This section documents the configuration attributes for each built-in button model.

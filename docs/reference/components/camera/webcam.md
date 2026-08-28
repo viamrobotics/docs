@@ -13,6 +13,8 @@ aliases:
 component_description: "A standard USB camera or other webcam that streams camera data."
 usage: 999999
 # SMEs: Bijan, vision team
+capabilities:
+  - hw-camera
 ---
 
 `webcam` is the general camera model.

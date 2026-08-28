@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/gantry/
   - /appendix/apis/components/gantry/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-gantry
 ---
 
 The gantry API allows you to give commands to your [gantry components](/reference/components/gantry/) for coordinated control of one or more linear actuators.

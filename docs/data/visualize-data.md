@@ -14,6 +14,9 @@ aliases:
   - /how-tos/configure-teleop-workspace/
   - /tutorials/services/visualize-data-grafana/
   - /data/debug-and-trace/
+capabilities:
+  - data-storage
+  - dashboards
 ---
 
 Build dashboards and monitoring views for your captured data. Visualization helps you spot trends, detect anomalies, and monitor machine health.

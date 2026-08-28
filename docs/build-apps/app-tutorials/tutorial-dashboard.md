@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Build a TypeScript web dashboard for a single Viam machine. Displays a camera feed, a live sensor reading, and a motor control button, with a connection status indicator."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - dashboards
 ---
 
 In this tutorial, you will build a browser-based dashboard for a single Viam machine. The finished dashboard shows:

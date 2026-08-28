@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Technical reference for the Viam platform: APIs, SDKs, built-in components and services, runtime behavior, supported hardware, and term definitions."
 date: "2026-04-18"
+capabilities:
+  - section-index
 ---
 
 Technical reference for the Viam platform. Use this section when you need authoritative details on APIs, built-in models, SDKs, runtime behavior, or supported hardware.

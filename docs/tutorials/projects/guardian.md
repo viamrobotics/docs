@@ -18,4 +18,7 @@ date: "2023-05-15"
 updated: "2024-04-18"
 cost: 90
 resource: "blogpost"
+capabilities:
+  - vision-service
+  - hw-actuation
 ---

@@ -8,6 +8,9 @@ description: "Move an arm along a straight line or with a fixed orientation usin
 aliases:
   - /tutorials/services/constrain-motion/
   - /motion-planning/motion-how-to/move-arm-with-constraints/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 Welding requires the torch to follow a straight line. Carrying a cup of water

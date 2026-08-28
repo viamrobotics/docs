@@ -5,6 +5,8 @@ weight: 80
 layout: "docs"
 type: "docs"
 description: "Trace a wrong or missing element in the 3D scene to its source: the machine configuration, a module, or the connection."
+capabilities:
+  - scene-3d
 ---
 
 Every element in the 3D scene comes from one of three layers: the machine's saved

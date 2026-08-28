@@ -24,6 +24,8 @@ aliases:
   - /what-is-viam/problems-viam-solves/
   - /what-is-viam/what-is-viam/
 date: "2025-01-30"
+capabilities:
+  - section-index
 ---
 
 Viam is a software platform for building, deploying, and managing robotics applications.

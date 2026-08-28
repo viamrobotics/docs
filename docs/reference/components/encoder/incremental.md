@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/encoder/incremental/"
 component_description: "Supports a two phase encoder, which can measure the speed and direction of rotation in relation to a given reference point."
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 Use the `incremental` encoder model to configure [a quadrature encoder](https://en.wikipedia.org/wiki/Incremental_encoder).

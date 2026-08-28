@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/services/base-rc/
   - /appendix/apis/services/base-rc/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-mobility
 ---
 
 The base remote control service API allows you to get a list of inputs from the controller that are being monitored for that control mode.

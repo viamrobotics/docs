@@ -8,6 +8,8 @@ no_list: true
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
 aliases:
   - /dev/tools/common-errors/
+capabilities:
+  - logging
 ---
 
 This document lists common errors encountered when working with Viam, and provides steps to resolve them.

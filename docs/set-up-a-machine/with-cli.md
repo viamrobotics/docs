@@ -7,6 +7,9 @@ type: "docs"
 description: "Create and connect machines from the command line."
 aliases:
   - /set-up-a-machine/as-code/
+capabilities:
+  - device-setup
+  - cli
 ---
 
 Create and connect a machine to the Viam platform from the command line, instead of clicking through the Viam app.

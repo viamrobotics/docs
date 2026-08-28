@@ -6,6 +6,8 @@ type: "docs"
 description: "Servo models available in the Micro-RDK."
 tags: ["servo", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-actuation
 ---
 
 Servo models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

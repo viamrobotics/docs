@@ -8,6 +8,8 @@ description: "Label images with tags or bounding boxes for training an ML model.
 date: "2025-01-30"
 aliases:
   - /data-ai/train/capture-annotate-images/
+capabilities:
+  - datasets
 ---
 
 Label your images with tags for classification or bounding boxes for object

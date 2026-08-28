@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for writing a Viam app in Go: a backend service, a fleet orchestrator, a CLI tool, or any other Go program that talks to a Viam machine."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
+  - sdks
 ---
 
 Set up a project for writing a Viam app in Go: a backend service, a fleet orchestrator, a CLI tool, or any other Go program that talks to a Viam machine. The Go client lives in the RDK package at `go.viam.com/rdk/robot/client`, not in a separate SDK. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

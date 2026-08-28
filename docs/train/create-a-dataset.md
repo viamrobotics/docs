@@ -9,6 +9,8 @@ date: "2025-01-30"
 aliases:
   - /build/train/create-a-dataset/
   - /data-ai/train/create-dataset/
+capabilities:
+  - datasets
 ---
 
 A dataset is a named collection of images at the organization level that you

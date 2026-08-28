@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/servo/gpio/"
 component_description: "Supports a hobby servo wired to a board that supports PWM, for example Raspberry Pi 5, Orange Pi, Jetson, or PCAXXXX."
 # SME: Rand
+capabilities:
+  - hw-actuation
 ---
 
 Configure a `gpio` servo to integrate a hobby servo controlled by general-purpose input/output (GPIO) pins on a non-`viam:raspberry-pi:rpi` model [board](/reference/components/board/) into your machine.

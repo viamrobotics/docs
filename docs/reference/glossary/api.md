@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/api/
+capabilities:
+  - glossary
 ---
 
 API stands for application programming interface.

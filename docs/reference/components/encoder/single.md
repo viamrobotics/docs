@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/encoder/single/"
 component_description: "A single pin 'pulse output' encoder which returns its relative position but no direction."
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/reference/components/board/).

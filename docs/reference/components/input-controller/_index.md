@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/controller.svg"]
 aliases:
   - "/components/input-controller/"
+capabilities:
+  - hw-actuation
 ---
 
 This section documents the configuration attributes for each built-in input controller model.

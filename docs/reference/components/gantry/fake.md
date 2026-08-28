@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/gantry/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: Rand
+capabilities:
+  - hw-gantry
 ---
 
 Configure a `fake` gantry to test implementing a gantry component on your machine without any physical hardware.

@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/power-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."
 # SME: #team-bucket
+capabilities:
+  - hw-sensing
 ---
 
 Configure a `fake` power sensor to test implementing a power sensor component on your machine without any physical hardware:

@@ -7,6 +7,8 @@ type: "docs"
 no_list: true
 description: "Deploy a pre-trained or custom ML model to a machine, retrain when accuracy drops, roll out new versions to a fleet, and run batch inference against stored images."
 date: "2026-04-14"
+capabilities:
+  - ml-models
 ---
 
 The model is the artifact at the center of every vision pipeline. Deploy one from the registry or bring your own, roll out new versions as you retrain, and validate models against stored data before they go live.

@@ -10,6 +10,8 @@ no_list: true
 aliases:
   - /operate/reference/controls-package/
   - /internals/controls-package/
+capabilities:
+  - hw-actuation
 ---
 
 [Encoded motors](/reference/components/motor/encoded-motor/) and [sensor-controlled bases](/reference/components/base/sensor-controlled/) use a control loop implemented by `viam-server`.

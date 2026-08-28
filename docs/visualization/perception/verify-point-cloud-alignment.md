@@ -8,6 +8,9 @@ description: "Display a depth camera's point cloud in the 3D scene to verify tha
 aliases:
   - /motion-planning/3d-scene/inspect-point-clouds/
   - /motion-planning/3d-scene/verify-point-cloud-alignment/
+capabilities:
+  - vision-3d
+  - scene-3d
 ---
 
 Depth cameras produce point clouds: sets of 3D points that represent the surfaces the camera sees. The **3D SCENE** tab renders those points in your frame system, so you can check two things at once: the camera is producing usable data, and the data lines up with the rest of the workspace.

@@ -5,6 +5,9 @@ weight: 32
 layout: "docs"
 type: "docs"
 description: "Roll out trained ML models to machines using fragments and the Viam registry."
+capabilities:
+  - fleet-deployment
+  - ml-models
 ---
 
 Deploy a trained ML model to one machine or your entire fleet using the same fragment workflow you use for modules. When you retrain and upload a new model version, machines configured to track that version update automatically.

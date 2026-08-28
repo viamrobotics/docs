@@ -10,6 +10,8 @@ aliases:
   - "/components/generic/fake/"
   - "/reference/components/generic/fake/"
 component_description: "A model used for testing, with no physical hardware."
+capabilities:
+  - hw-generic
 ---
 
 Configure a `fake` generic component to test implementing a generic component on your machine without any physical hardware:

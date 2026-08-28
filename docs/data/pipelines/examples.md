@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "MQL patterns for common robotics use cases and tips for writing effective pipeline queries."
 date: "2026-03-27"
+capabilities:
+  - data-pipelines
 ---
 
 MQL patterns for common robotics data pipeline use cases. Each example can be passed to `--mql` or `--mql-path` when [creating a pipeline](/data/pipelines/create-a-pipeline/).

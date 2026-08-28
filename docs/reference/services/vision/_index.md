@@ -9,6 +9,8 @@ description: "Configuration reference for built-in vision service models: mlmode
 date: "2026-04-14"
 aliases:
   - /operate/reference/services/vision/
+capabilities:
+  - vision-service
 ---
 
 The vision service has three built-in models with distinct configuration shapes:

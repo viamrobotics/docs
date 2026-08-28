@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Attach a remote part's components into your machine's frame tree with the correct spatial offset."
 date: "2026-04-16"
+capabilities:
+  - machine-config
+  - frame-system
 ---
 
 When a component lives on a different computer than your main part, the motion service still needs to know where that component sits in space.

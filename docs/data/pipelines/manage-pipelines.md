@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "List, monitor, enable, disable, rename, and delete data pipelines."
 date: "2026-03-27"
+capabilities:
+  - data-pipelines
 ---
 
 Monitor and manage your data pipelines after creation. For creating pipelines, see [Create a pipeline](/data/pipelines/create-a-pipeline/).

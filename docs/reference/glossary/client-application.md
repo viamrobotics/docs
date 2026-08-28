@@ -5,6 +5,8 @@ full_link:
 short_description: Client applications run business logic to operate your machine.
 aliases:
   - /dev/reference/glossary/client-application/
+capabilities:
+  - glossary
 ---
 
 Client applications run business logic to operate your machine.

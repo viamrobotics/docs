@@ -20,6 +20,8 @@ aliases:
   - "/reference/components/movement-sensor/wheeled-odometry/"
 component_description: "A model that uses encoders to get an odometry estimate from a wheeled base."
 # SMEs: Rand, Martha
+capabilities:
+  - hw-sensing
 ---
 
 Configure a `wheeled-odometry` movement sensor to implement _wheeled odometry_ on your machine.

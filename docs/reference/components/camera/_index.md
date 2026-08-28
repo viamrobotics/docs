@@ -12,6 +12,8 @@ images: ["/icons/components/camera.svg"]
 aliases:
   - "/components/camera/"
 # SMEs: Bijan, vision team
+capabilities:
+  - hw-camera
 ---
 
 This section documents the configuration attributes for each built-in camera model.

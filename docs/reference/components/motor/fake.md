@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/motor/fake/"
 component_description: "A model for testing, with no physical hardware."
 # SMEs: Rand, James
+capabilities:
+  - hw-actuation
 ---
 
 Configuring a `fake` motor can be convenient for testing software without using any hardware.

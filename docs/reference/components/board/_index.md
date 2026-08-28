@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/board.svg"]
 aliases:
   - "/components/board/"
+capabilities:
+  - hw-compute
 ---
 
 This section documents the configuration attributes for each built-in board model.

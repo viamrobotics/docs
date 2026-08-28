@@ -8,6 +8,9 @@ description: "Move a grasped object to a target location and release it."
 aliases:
   - /motion-planning/motion-how-to/place-an-object/
   - /motion-planning/pick-and-place/place-an-object/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 Placing is the mirror image of picking, but with a different failure mode:

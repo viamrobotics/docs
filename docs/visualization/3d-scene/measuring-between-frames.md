@@ -8,6 +8,8 @@ description: "Verify and adjust the spatial relationship between components usin
 aliases:
   - /motion-planning/3d-scene/calibrate-frame-offsets/
   - /visualization/3d-scene-tools/measuring-between-frames/
+capabilities:
+  - scene-3d
 ---
 
 When you configure a camera on an arm, or a sensor on a base, the frame system needs the exact translation and orientation between the two components. A 15 mm error in a camera offset places a detected object 15 mm off, and the arm reaches for the wrong spot. The **3D SCENE** tab lets you verify offsets visually and measure distances directly, so you can catch these errors before you run a plan.

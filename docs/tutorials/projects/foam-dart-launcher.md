@@ -22,4 +22,7 @@ updated: "2024-04-17"
 cost: 145
 no_list: true
 resource: "blogpost"
+capabilities:
+  - hw-mobility
+  - hw-actuation
 ---

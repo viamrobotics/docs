@@ -8,6 +8,8 @@ description: "Match a detection quality symptom to the mlmodel vision service at
 date: "2026-04-14"
 aliases:
   - /vision/tune/
+capabilities:
+  - vision-service
 ---
 
 Your vision service is configured and returning detections, but the results are wrong in a specific way. This guide matches common failure modes to the `mlmodel` vision service attribute that fixes each one. Most tuning is a configuration change, not a code change.

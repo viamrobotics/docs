@@ -12,6 +12,8 @@ aliases:
   - /vision-detection/localize-objects-in-3d/
   - /build/vision-detection/localize-objects-in-3d/
   - /vision/measure-depth/
+capabilities:
+  - vision-3d
 ---
 
 A standard camera gives you a flat 2D image. You can see that there is a box on the table, but you cannot tell whether the box is 30 centimeters away or 3 meters away. This how-to shows you how to get depth data from your perception sensor (a depth camera, LiDAR, or ToF sensor) and extract useful distance measurements for robotics tasks that involve physical interaction.

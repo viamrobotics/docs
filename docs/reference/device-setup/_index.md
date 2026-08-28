@@ -7,6 +7,8 @@ type: "docs"
 description: "Board-specific setup instructions for single-board computers and microcontrollers supported by Viam."
 aliases:
   - /operate/reference/prepare/
+capabilities:
+  - device-setup
 ---
 
 Before installing Viam on a single-board computer, follow the setup guide for your board to ensure the OS and firmware are ready.

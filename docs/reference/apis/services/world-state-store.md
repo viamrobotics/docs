@@ -11,6 +11,8 @@ date: "2025-09-12"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /dev/reference/apis/services/world-state-store/
+capabilities:
+  - motion-planning
 ---
 
 The world state store service API lets a client list, get, and stream the transforms a

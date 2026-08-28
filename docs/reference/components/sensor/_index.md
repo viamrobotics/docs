@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/sensor.svg"]
 aliases:
   - "/components/sensor/"
+capabilities:
+  - hw-sensing
 ---
 
 This section documents the configuration attributes for each built-in sensor model.

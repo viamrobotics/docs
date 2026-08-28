@@ -24,6 +24,8 @@ aliases:
   - /operate/modules/supported-hardware/
   - /operate/modules/support-hardware/
   - /operate/get-started/supported-hardware/
+capabilities:
+  - machine-config
 ---
 
 Viam represents every piece of physical hardware on your machine as a

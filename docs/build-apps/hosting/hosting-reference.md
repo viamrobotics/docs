@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "URL patterns, cookie structure, caching behavior, and limits for the Viam Applications hosting platform."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Reference for the runtime behavior of the Viam Applications hosting platform. For the deployment workflow, see [Deploy a Viam application](/build-apps/hosting/deploy/). For the `meta.json` schema that configures the application, see [the meta.json applications reference](/build-apps/hosting/meta-json-reference/).

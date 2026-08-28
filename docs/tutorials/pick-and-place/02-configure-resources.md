@@ -13,6 +13,10 @@ time_estimate: "15 minutes"
 prev: "/tutorials/pick-and-place/platform-mental-model/"
 next: "/tutorials/pick-and-place/static-positions/"
 languages: ["python"]
+capabilities:
+  - hw-arm
+  - hw-camera
+  - frame-system
 ---
 
 You configured the arm in Phase 1. In this phase you add the two resources that work alongside it, a gripper and a camera, connect all three with frames, and confirm each one works from the Control tab before moving on.

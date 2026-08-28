@@ -14,6 +14,9 @@ images: ["/tutorials/flutter-app/preview.gif"]
 level: "Intermediate"
 date: "2024-01-17"
 cost: "0"
+capabilities:
+  - mobile-app
+  - sdks
 ---
 
 <!-- LEARNING GOALS

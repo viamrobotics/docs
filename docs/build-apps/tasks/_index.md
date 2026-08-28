@@ -8,4 +8,6 @@ no_list: true
 manualLink: "/build-apps/tasks/connect-to-machine/"
 description: "Connect to machines, stream video, query data, handle disconnections, and test locally."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
 ---

@@ -10,6 +10,9 @@ aliases:
   - /fleet/control/
   - /manage/app-usage/
   - /monitor/teleoperate/
+capabilities:
+  - teleop
+  - mobile-app
 ---
 
 The CONTROL tab provides a ready-made interface for testing and operating any configured machine. Every component and service on the machine gets a control card with relevant controls and readouts. No code required.

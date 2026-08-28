@@ -10,4 +10,6 @@ canonical: "https://flutter.viam.dev/"
 aliases:
   - /dev/reference/sdks/flutter/
   - /sdks/flutter/
+capabilities:
+  - sdks
 ---

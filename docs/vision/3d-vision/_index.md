@@ -7,6 +7,8 @@ type: "docs"
 no_list: true
 description: "Project 2D detections into 3D point cloud objects, and read depth data from a depth camera to measure distance to detected objects."
 date: "2026-04-14"
+capabilities:
+  - vision-3d
 ---
 
 Move from 2D images to 3D positions: segment detected objects in point clouds and measure distance from a depth camera so a robot can reason about physical space.

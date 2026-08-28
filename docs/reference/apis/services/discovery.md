@@ -9,6 +9,8 @@ date: "2025-02-18"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /dev/reference/apis/services/discovery/
+capabilities:
+  - discovery
 ---
 
 The discovery service API allows you to get a list of resources available to configure on a machine based on the hardware that is connected to or part of the machine.

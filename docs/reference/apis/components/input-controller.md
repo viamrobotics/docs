@@ -12,6 +12,8 @@ aliases:
   - /operate/modules/component-apis/input-controller/
   - /appendix/apis/components/input-controller/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-actuation
 ---
 
 The input controller API allows you to give commands to your [input controller components](/hardware/common-components/add-an-input-controller/) for configuring callbacks for events, allowing you to configure input devices to control your machines.

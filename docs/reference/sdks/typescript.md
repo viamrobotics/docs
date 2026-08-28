@@ -10,4 +10,6 @@ canonical: "https://ts.viam.dev/"
 aliases:
   - /dev/reference/sdks/typescript/
   - /sdks/typescript/
+capabilities:
+  - sdks
 ---

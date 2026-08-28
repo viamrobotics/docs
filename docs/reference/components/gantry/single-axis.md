@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/gantry/single-axis/"
 component_description: "Supports a gantry with a singular linear rail."
 # SME: Rand, Martha
+capabilities:
+  - hw-gantry
 ---
 
 Configure a `single-axis` gantry to integrate a single-axis gantry into your machine.

@@ -21,4 +21,7 @@ date: "2022-08-26"
 updated: "2024-05-01"
 cost: 570
 resource: "codelab"
+capabilities:
+  - vision-service
+  - hw-mobility
 ---

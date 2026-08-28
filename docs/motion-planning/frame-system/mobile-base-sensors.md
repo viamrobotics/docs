@@ -7,6 +7,8 @@ type: "docs"
 description: "Configure frames for a mobile base with mounted cameras and lidar sensors."
 aliases:
   - /motion-planning/frame-system-how-to/mobile-base-sensors/
+capabilities:
+  - frame-system
 ---
 
 A lidar point at `(2.0 m, 0, 0)` is two meters in front of the _lidar_,

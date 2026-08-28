@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/machine-id/
+capabilities:
+  - glossary
 ---
 
 A **Machine ID** is a unique identifier assigned to each {{< glossary_tooltip term_id="machine" text="machine" >}} in the Viam platform.

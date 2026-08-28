@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/motor/
   - /appendix/apis/components/motor/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-actuation
 ---
 
 The motor API allows you to give commands to your [motor components](/reference/components/motor/) for operating a motor or getting its current status.

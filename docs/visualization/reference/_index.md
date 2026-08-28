@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Reference material for the types and services behind the 3D scene and custom visuals."
+capabilities:
+  - scene-3d
 ---
 
 Reference pages for the types and services that back the 3D scene and custom visuals.

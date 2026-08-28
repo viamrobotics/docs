@@ -7,6 +7,8 @@ type: "docs"
 description: "Run the standalone Viam Visualization app locally and push geometries, point clouds, and frame systems to it from a Go client."
 aliases:
   - /visualization/drawing-library/
+capabilities:
+  - scene-3d
 ---
 
 Viam Visualization is a standalone 3D visualizer for monitoring, testing, and debugging

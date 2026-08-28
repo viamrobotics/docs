@@ -5,6 +5,8 @@ full_link:
 short_description: MQL is the MongoDB query language, similar to SQL but specific to the MongoDB document model.
 aliases:
   - /dev/reference/glossary/mql/
+capabilities:
+  - glossary
 ---
 
 MQL is the [MongoDB query language](https://www.mongodb.com/docs/manual/tutorial/query-documents/), similar to {{< glossary_tooltip term_id="sql" text="SQL" >}} but specific to the MongoDB document model.

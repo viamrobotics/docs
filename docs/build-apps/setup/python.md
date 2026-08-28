@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for writing a Viam app in Python: a control script, a backend service, a data pipeline, or any other Python program that talks to a Viam machine."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
+  - sdks
 ---
 
 Set up a project for writing a Viam app in Python: a control script, a backend service, a data pipeline, or any other Python program that talks to a Viam machine. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

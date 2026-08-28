@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Construct each geometry type a visual or an obstacle can carry, in JSON, Python, and Go."
+capabilities:
+  - scene-3d
 ---
 
 Every geometry a visual or an obstacle carries is a `Geometry` proto: a box, sphere,

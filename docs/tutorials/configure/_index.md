@@ -7,4 +7,6 @@ type: docs
 empty_node: true
 layout: "empty"
 canonical: "tutorials/"
+capabilities:
+  - section-index
 ---

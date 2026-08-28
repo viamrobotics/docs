@@ -23,6 +23,8 @@ aliases:
   - /installation/manage-viam-server/
   - /get-started/installation/manage-viam-server/
   - /dev/reference/glossary/viam-server/
+capabilities:
+  - viam-server
 ---
 
 The `viam-server` executable runs on a computer and manages hardware, software, and data for a machine.

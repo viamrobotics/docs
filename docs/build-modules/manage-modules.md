@@ -19,6 +19,8 @@ level: "Beginner"
 date: "2024-06-30"
 # updated: ""  # When the tutorial was last entirely checked
 cost: "0"
+capabilities:
+  - module-registry
 ---
 
 After you [create and upload a module](/build-modules/write-a-driver-module/), you can release new versions, pin machines to a specific version, set a minimum `viam-server` version, change visibility, deprecate, or delete the module.

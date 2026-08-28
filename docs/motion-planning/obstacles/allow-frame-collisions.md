@@ -7,6 +7,8 @@ type: "docs"
 description: "Permit specific pairs of frames to collide so the motion planner stops flagging expected contact as a collision failure."
 aliases:
   - /motion-planning/motion-how-to/allow-frame-collisions/
+capabilities:
+  - motion-planning
 ---
 
 Some contact is part of the job. A gripper has to touch the object it grasps.

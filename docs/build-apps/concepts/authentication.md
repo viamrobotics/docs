@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "The credential types a Viam client app uses and when to use each. Covers API keys, access tokens, and hosted-app credential injection."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - org-management
 ---
 
 A Viam client application proves its identity to the machine or to the Viam cloud through a credential. The SDK supports two credential types: API keys for service-identity access and access tokens for user-identity access. Hosted Viam Applications inject credentials into the browser automatically through cookies.

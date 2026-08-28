@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Record sensor data on your robot, sync it to the cloud, and query, export, or use it for ML training."
+capabilities:
+  - data-storage
 ---
 
 Your robot's sensors, cameras, and other components produce data you need to record, analyze, and act on. Viam's data management service lets you configure which components to capture from, sync captured data to the cloud, and query, export, or use it for ML training without building a custom data pipeline.

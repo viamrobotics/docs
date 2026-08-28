@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Open a connection to the Viam cloud to access the fleet, data, ML training, billing, and provisioning APIs, and to enumerate and connect to multiple machines."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Open a connection to the Viam cloud to access the fleet, data, ML training, billing, and provisioning APIs, and to enumerate and connect to multiple machines from one app. For connecting directly to a single known machine, use [Connect to a machine](/build-apps/tasks/connect-to-machine/) instead.

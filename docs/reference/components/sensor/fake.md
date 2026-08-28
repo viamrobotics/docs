@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/sensor/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: #team-bucket
+capabilities:
+  - hw-sensing
 ---
 
 Configure a `fake` sensor to test implementing a sensor component on your machine without any physical hardware:

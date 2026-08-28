@@ -10,6 +10,8 @@ aliases:
   - /billing/
   - /manage/reference/billing/
   - /reference/account/billing/
+capabilities:
+  - billing
 ---
 
 The billing page shows your organization's current usage, payment method, and invoice history.

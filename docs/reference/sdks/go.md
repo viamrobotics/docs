@@ -10,4 +10,6 @@ canonical: "https://pkg.go.dev/go.viam.com/rdk"
 aliases:
   - /dev/reference/sdks/go/
   - /sdks/go/
+capabilities:
+  - sdks
 ---

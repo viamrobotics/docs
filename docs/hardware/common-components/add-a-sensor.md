@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/sensor/
   - /hardware-components/add-a-sensor/
+capabilities:
+  - hw-sensing
 ---
 
 Add a sensor to your machine's configuration so you can read environmental data from the Viam app and from code.

@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Capture and sync data from components on sub-parts and remote parts of a multi-part machine."
 date: "2025-02-10"
+capabilities:
+  - data-capture
 ---
 
 Viam machines can be split across multiple computers. When that happens, data capture behaves differently depending on whether the additional computer is a sub-part or a remote part. Understanding which pattern you have is the key to configuring capture correctly.

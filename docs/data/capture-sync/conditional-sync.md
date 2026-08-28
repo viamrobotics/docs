@@ -18,6 +18,8 @@ viamresources: ["sensor", "data_manager"]
 platformarea: ["data", "registry"]
 date: "2024-12-04"
 updated: "2025-12-04"
+capabilities:
+  - data-capture
 ---
 
 By default, the data management service syncs all captured data at a regular interval. Conditional sync lets you control _when_ sync happens, so data accumulates locally until your conditions are met: sync only during off-peak hours, when connected to WiFi, after a sensor reading crosses a threshold, or based on any other logic you define.

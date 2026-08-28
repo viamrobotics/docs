@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/gripper/
   - /appendix/apis/components/gripper/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-actuation
 ---
 
 The gripper API allows you to give commands to your [gripper components](/reference/components/gripper/) for opening and closing a device.

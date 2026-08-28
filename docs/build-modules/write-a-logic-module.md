@@ -11,6 +11,8 @@ aliases:
   - /manage/software/control-logic
   - /operate/modules/control-logic/
   - /operate/modules/write-a-logic-module/
+capabilities:
+  - module-development
 ---
 
 Your machine has resources -- sensors, motors, cameras -- that work individually.

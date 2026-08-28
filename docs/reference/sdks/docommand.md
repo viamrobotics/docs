@@ -9,6 +9,8 @@ date: "2025-04-29"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /dev/reference/sdks/docommand/
+capabilities:
+  - sdks
 ---
 
 The `DoCommand` method is a flexible wrapper that you can use to send commands that have no corresponding built-in API method.

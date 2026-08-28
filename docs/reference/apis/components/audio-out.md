@@ -10,6 +10,8 @@ date: "2025-11-12"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /dev/reference/apis/components/audio-out/
+capabilities:
+  - hw-audio
 ---
 
 <!-- The audio in API allows you to give commands to your [audio out components](/reference/components/audioOut/) for playing audio.

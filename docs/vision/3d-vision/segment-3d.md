@@ -8,6 +8,8 @@ description: "Use the vision service's GetObjectPointClouds method to find and l
 date: "2026-04-14"
 aliases:
   - /vision/segment-3d/
+capabilities:
+  - vision-3d
 ---
 
 When a robot needs to know where objects are in 3D space (not just where they appear in a 2D image), use 3D object segmentation. The vision service returns a list of point cloud objects, one per detected object, each with a label, a 3D bounding box, and a center coordinate. Typical uses are guiding an arm to pick up an object, feeding obstacle positions into a navigation stack, or measuring the size of a physical item.

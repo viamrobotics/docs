@@ -5,6 +5,8 @@ full_link:
 short_description: A machine or device that lives in the real world and has some ability to perceive the world (with a sensor, for example) and perform actions like operating a motor.
 aliases:
   - /dev/reference/glossary/smart-machine/
+capabilities:
+  - glossary
 ---
 
 A machine or device that lives in the real world and has some ability to perceive the world (with a sensor, for example) and perform actions like operating a motor.

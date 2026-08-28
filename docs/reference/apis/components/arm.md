@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/arm/
   - /appendix/apis/components/arm/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-arm
 ---
 
 The arm API allows you to give commands to your [arm components](/hardware/common-components/add-an-arm/) for linear motion planning with self-collision prevention.

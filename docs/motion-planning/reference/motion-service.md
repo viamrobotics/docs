@@ -9,6 +9,8 @@ aliases:
   - /reference/services/motion/
   - /services/motion/
   - /mobility/motion/
+capabilities:
+  - motion-planning
 ---
 
 The motion service plans and executes component motion: arm end-effector moves, base moves across a SLAM map, and base moves to a GPS coordinate. The builtin service ships with every machine running `viam-server`, so you do not need to add it to your configuration.

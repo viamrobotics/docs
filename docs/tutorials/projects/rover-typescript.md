@@ -17,4 +17,7 @@ date: "2024-08-31"
 updated: "2024-08-31"
 cost: "0"
 resource: "codelab"
+capabilities:
+  - hw-mobility
+  - sdks
 ---

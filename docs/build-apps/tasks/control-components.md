@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Read from sensors and control motors, arms, and other actuators from your app using the SDK component clients."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
 ---
 
 Read sensor data and send commands to motors, arms, grippers, and other actuators from your app. Each component type has its own SDK client with methods specific to that type. This page shows the pattern for getting a component client and calling its methods.

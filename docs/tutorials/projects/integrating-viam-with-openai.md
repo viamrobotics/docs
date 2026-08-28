@@ -29,6 +29,9 @@ date: "2023-02-15"
 # updated: ""
 cost: 200
 no_list: true
+capabilities:
+  - hw-mobility
+  - sdks
 ---
 
 <!-- LEARNING GOALS

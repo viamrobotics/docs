@@ -10,6 +10,8 @@ aliases:
   - /build/development/write-an-inline-module/
   - /development/write-an-inline-module/
   - /operate/modules/write-an-inline-module/
+capabilities:
+  - module-development
 ---
 
 Viam provides built-in support for many types of hardware and software, but you

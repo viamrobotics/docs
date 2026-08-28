@@ -24,6 +24,9 @@ updated: "2024-05-01"
 cost: 540
 no_list: true
 toc_hide: true
+capabilities:
+  - vision-service
+  - hw-mobility
 ---
 
 <!-- LEARNING GOALS

@@ -10,6 +10,8 @@ aliases:
   - /try/part-4/
   - /operate/hello-world/first-project/part-4/
   - /try/first-project/part-4/
+capabilities:
+  - vision-service
 ---
 
 **Goal:** Deploy your inspector to run on the machine autonomously.

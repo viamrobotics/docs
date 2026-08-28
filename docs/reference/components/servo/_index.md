@@ -13,6 +13,8 @@ aliases:
   - "/components/servo/"
   - "/reference/components/servo/"
   - "/operate/reference/components/servo/"
+capabilities:
+  - hw-actuation
 ---
 
 This section documents the configuration attributes for each built-in servo model.

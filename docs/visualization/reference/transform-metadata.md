@@ -5,6 +5,9 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "The metadata keys the 3D scene reads from a transform, with the wire format for each: colors, opacities, axes helper, and visibility."
+capabilities:
+  - scene-3d
+  - frame-system
 ---
 
 A transform's `metadata` field is a protobuf `Struct` of rendering attributes. The 3D

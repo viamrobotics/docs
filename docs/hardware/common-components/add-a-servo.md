@@ -8,6 +8,8 @@ description: "Add and configure a hobby servo controlled by a GPIO PWM pin."
 date: "2025-03-07"
 aliases:
   - /hardware-components/add-a-servo/
+capabilities:
+  - hw-actuation
 ---
 
 Add a servo to your machine's configuration so you can control its angular position from the Viam app and from code.

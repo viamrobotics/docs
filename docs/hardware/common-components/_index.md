@@ -12,6 +12,8 @@ aliases:
   - /hardware/common-components/
   - /hardware/component-types/
   - /hardware-components/component-types/
+capabilities:
+  - section-index
 ---
 
 Every component on your machine has a **type** that determines its API, which defines what methods your code can call on it.

@@ -15,6 +15,8 @@ next: "/tutorials/pick-and-place/next-slug/"
 languages: ["python"]
 draft: true # set to false when this phase is ready to publish
 headless: true # REMOVE this line when you copy the template to a real phase page (it keeps only the template itself from rendering)
+capabilities:
+  - section-index
 ---
 
 <!-- One short paragraph: what this phase accomplishes and why it comes here. -->

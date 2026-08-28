@@ -8,4 +8,6 @@ no_list: true
 manualLink: "/build-apps/concepts/how-apps-connect/"
 description: "Mental models for building Viam client apps: how connections work and how authentication works."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---

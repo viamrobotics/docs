@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/base/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SMEs: Steve B
+capabilities:
+  - hw-mobility
 ---
 
 Configure a `fake` base to test implementing a base component on your machine without any physical hardware:

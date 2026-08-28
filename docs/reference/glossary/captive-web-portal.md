@@ -4,6 +4,8 @@ id: captive-web-portal
 short_description: A web page which is automatically displayed to users when connecting to a network.
 aliases:
   - /dev/reference/glossary/captive-web-portal/
+capabilities:
+  - glossary
 ---
 
 A captive portal is a web page that is automatically displayed to users often as a landing or log-in page when connecting to a network.

@@ -8,6 +8,8 @@ description: "Add, edit, and attach geometry to frames directly in the 3D scene.
 aliases:
   - /motion-planning/3d-scene/edit-frames/
   - /visualization/3d-scene-tools/editing-frames-visually/
+capabilities:
+  - scene-3d
 ---
 
 The **3D SCENE** tab can serve as a configuration editor: you can add, move, re-parent, and reshape frames without writing JSON.

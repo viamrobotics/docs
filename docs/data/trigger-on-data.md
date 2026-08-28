@@ -7,6 +7,9 @@ type: "docs"
 description: "Use triggers to send email, webhook, or push notifications when data from the machine is synced."
 date: "2025-09-12"
 aliases:
+capabilities:
+  - data-storage
+  - triggers-alerts
 ---
 
 Get alerted when your robot's data meets a condition. Triggers send webhooks, email notifications, or push notifications to a mobile app when events occur on a machine, so you can respond to temperature spikes, low battery, detection results, or connectivity changes without polling.

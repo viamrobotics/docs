@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/gripper.svg"]
 aliases:
   - "/components/gripper/"
+capabilities:
+  - hw-actuation
 ---
 
 This section documents the configuration attributes for each built-in gripper model.

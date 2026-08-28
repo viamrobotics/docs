@@ -10,6 +10,8 @@ aliases:
   - /operate/reference/services/motion/constraints/
   - /services/motion/constraints/
   - /mobility/motion/constraints/
+capabilities:
+  - motion-planning
 ---
 
 You can constrain the motion of your machine using the motion service's built-in constraint options.

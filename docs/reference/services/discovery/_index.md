@@ -9,6 +9,8 @@ modulescript: true
 date: "2026-04-18"
 aliases:
   - "/operate/reference/services/discovery/"
+capabilities:
+  - discovery
 ---
 
 A discovery service allows you to return a list of physical hardware available on a machine, and suggest configurations for those components to integrate the hardware into the machine.

@@ -9,6 +9,8 @@ aliases:
   - /motion-planning/3d-scene/debug-motion-plan/
   - /motion-planning/debug-motion-with-cli/
   - /motion-planning/motion-how-to/debug-motion-with-cli/
+capabilities:
+  - motion-planning
 ---
 
 When a motion plan fails with a collision error, or the arm ends up somewhere unexpected,

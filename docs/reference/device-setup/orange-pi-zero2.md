@@ -15,6 +15,8 @@ aliases:
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 # SME: Olivia Miller
+capabilities:
+  - device-setup
 ---
 
 The [Orange Pi Zero2](http://www.orangepi.org/html/hardWare/computerAndMicrocontrollers/details/Orange-Pi-Zero-2.html) is a highly compact, open-source single-board computer equipped with dual-band WiFi and Bluetooth 5.0.

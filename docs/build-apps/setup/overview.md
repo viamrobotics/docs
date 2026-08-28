@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "The pattern every Viam app project follows: create a project, install the SDK, configure credentials, and verify the connection."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
+  - sdks
 ---
 
 Every Viam app follows the same scaffolding pattern regardless of language. The per-language pages in this section walk through each step for a specific SDK, but the shape is always the same:

@@ -10,6 +10,8 @@ aliases:
   - /build/vision-detection/detect-objects-2d/
   - /vision-detection/detect-objects-2d/
   - /vision/detect/
+capabilities:
+  - vision-service
 ---
 
 Your vision service is configured and running, but you need to do something useful with the results. This how-to shows you how to retrieve detections programmatically, filter them to reduce noise, and extract the information you need to build real applications such as counting objects, triggering an action when something appears, or feeding positions into a control loop.

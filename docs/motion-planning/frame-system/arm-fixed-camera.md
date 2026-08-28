@@ -7,6 +7,8 @@ type: "docs"
 description: "Configure frames for a table-mounted arm with a camera mounted separately, such as overhead or on a tripod."
 aliases:
   - /motion-planning/frame-system-how-to/arm-fixed-camera/
+capabilities:
+  - frame-system
 ---
 
 An overhead or tripod-mounted camera sees the whole workspace at once. A

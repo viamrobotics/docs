@@ -14,6 +14,8 @@ aliases:
   - /components/sensor/ultrasonic-micro-rdk/
   - "/reference/components/sensor/ultrasonic-micro-rdk/"
 # SME: Andrew Morrow
+capabilities:
+  - hw-sensing
 ---
 
 Configure an `ultrasonic` sensor to integrate the [HC-S204](https://www.sparkfun.com/products/15569) ultrasonic distance sensor into your machine.

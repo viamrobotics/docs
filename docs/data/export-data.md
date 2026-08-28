@@ -13,6 +13,8 @@ aliases:
   - /manage/data/export/
 date: "2024-12-03"
 updated: "2025-09-12"
+capabilities:
+  - data-storage
 ---
 
 You can download machine data to your computer with the Viam CLI.

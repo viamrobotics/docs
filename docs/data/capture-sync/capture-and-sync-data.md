@@ -11,6 +11,8 @@ aliases:
   - /build/foundation/capture-and-sync-data/
   - /foundation/capture-and-sync-data/
   - /data-ai/capture-data/capture-sync/
+capabilities:
+  - data-capture
 ---
 
 Configure your machine to automatically record sensor readings, camera images, and other component data, then sync it to the cloud. For an overview of how data capture and sync work, see the [Manage data overview](/data/overview/).

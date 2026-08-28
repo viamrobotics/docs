@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/board/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SMEs: Gautham, Rand
+capabilities:
+  - hw-compute
 ---
 
 The `fake` board returns incrementing values for digital interrupt ticks and analogs.

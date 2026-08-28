@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/movement-sensor/merged/"
 component_description: "A model that allows you to aggregate the API methods supported by multiple sensors into a singular sensor client, effectively merging the models of the individual resources."
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 The `merged` movement sensor model is an abstraction that combines data from multiple movement sensors.

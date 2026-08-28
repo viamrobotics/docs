@@ -5,6 +5,9 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Create and manage scheduled data pipelines from the command line."
+capabilities:
+  - cli
+  - data-pipelines
 ---
 
 Create data pipelines that run MQL aggregations on your captured data on a schedule, transforming raw sensor readings or image metadata into precomputed summaries you can query efficiently.

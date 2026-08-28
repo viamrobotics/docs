@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/camera/ffmpeg/"
 component_description: "Use a camera, a video file, or a stream as a camera component."
 # SMEs: Sean Yu, audio/video team
+capabilities:
+  - hw-camera
 ---
 
 The `ffmpeg` camera model uses a camera device, a video file, or a stream as a camera.

@@ -26,6 +26,8 @@ aliases:
   - /how-tos/deploy-ml/
   - /manage/data/deploy-model/
   - /vision/deploy-from-registry/
+capabilities:
+  - ml-models
 ---
 
 The fastest way to get a working vision pipeline is to pick a pre-trained model from the Viam [registry](https://app.viam.com/registry). Select a model, pick a framework-matching ML model service, and save the config. `viam-server` downloads the model to the machine and the vision service can use it immediately.

@@ -13,6 +13,9 @@ time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/configure-resources/"
 next: "/tutorials/pick-and-place/control-the-robot-from-python/"
 languages: ["python"]
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 In this phase you will teach an arm to move through a set of named poses that together form a pick-and-place cycle, and you let Viam's motion service create collision-free paths between them. First you will save each pose by hand, jogging the arm into position and recording where it is. Then you create obstacles so the Motion Service knows what to avoid when creating the collision free motion.

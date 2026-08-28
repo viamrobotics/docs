@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/encoder/fake/"
 component_description: "An encoder model for testing."
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 The `fake` encoder is an encoder model for testing code without any hardware.

@@ -12,6 +12,8 @@ aliases:
   - /appendix/apis/billing-client/
 date: "2024-09-14"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - billing
 ---
 
 The billing client allows you to retrieve billing information from Viam.

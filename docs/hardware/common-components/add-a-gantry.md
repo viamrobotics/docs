@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/gantry/
   - /hardware-components/add-a-gantry/
+capabilities:
+  - hw-gantry
 ---
 
 Add a gantry to your machine's configuration so you can control linear positioning along one or more axes from the Viam app and from code.

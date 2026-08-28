@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Query the output of a data pipeline from the Viam app, Python, Go, or TypeScript."
 date: "2026-03-27"
+capabilities:
+  - data-pipelines
 ---
 
 Once you have [created a pipeline](/data/pipelines/create-a-pipeline/), its results land in a dedicated sink collection that is separate from your raw data. This page covers how to query that sink.

@@ -20,6 +20,8 @@ level: "Beginner"
 date: "2024-07-31"
 # updated: ""  # When the tutorial was last entirely checked
 # draft: true
+capabilities:
+  - hw-actuation
 ---
 
 In this guide you'll configure and control a motor.

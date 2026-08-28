@@ -8,6 +8,9 @@ description: "Update a vision model across many machines at once using fragments
 date: "2026-04-14"
 aliases:
   - /vision/roll-out-to-fleet/
+capabilities:
+  - ml-models
+  - fleet-deployment
 ---
 
 This page covers the vision-specific pieces of rolling a new model to a fleet. The mechanics of fragments, staged rollout, and machine tagging live in the [fleet section](/fleet/).

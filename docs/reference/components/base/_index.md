@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/base.svg"]
 aliases:
   - "/components/base/"
+capabilities:
+  - hw-mobility
 ---
 
 This section documents the configuration attributes for each built-in base model.

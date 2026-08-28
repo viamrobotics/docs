@@ -8,6 +8,8 @@ description: "Debug a misbehaving machine using logs, remote shell access, debug
 aliases:
   - /manage/troubleshoot/troubleshoot/
   - /appendix/troubleshooting/
+capabilities:
+  - logging
 ---
 
 When a machine is not working as expected, follow this debugging workflow: check logs, enable debug logging if needed, access the machine remotely, and if necessary use advanced diagnostics.

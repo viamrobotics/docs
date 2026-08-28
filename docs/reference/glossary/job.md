@@ -5,6 +5,8 @@ full_link: /manage/software/scheduled-jobs/
 short_description: Automated tasks that run on machines at specified intervals to perform routine operations.
 aliases:
   - /dev/reference/glossary/job/
+capabilities:
+  - glossary
 ---
 
 Jobs are automated tasks that run on machines at specified intervals to perform routine operations such as a task based on sensor readings, maintenance operations, and system checks.

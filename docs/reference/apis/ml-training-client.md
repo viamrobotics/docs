@@ -12,6 +12,8 @@ aliases:
   - /appendix/apis/ml-training-client/
 date: "2024-09-16"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - ml-training
 ---
 
 The ML training API allows you to get information about and cancel ML training jobs running on Viam.

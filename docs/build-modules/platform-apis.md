@@ -8,6 +8,8 @@ description: "Write your validate function and constructor to handle dependencie
 aliases:
   - /operate/modules/advanced/platform-apis/
 date: "2025-11-05"
+capabilities:
+  - module-development
 ---
 
 To use the platform or machine APIs, you must authenticate using API keys.

@@ -13,6 +13,8 @@ build:
   render: always
   list: never
   publishResources: true
+capabilities:
+  - motion-planning
 ---
 
 {{< alert title="Discontinued" color="caution" >}}

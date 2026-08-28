@@ -11,6 +11,8 @@ aliases:
   - /operate/reference/components/arm/eva/
   - /operate/reference/components/arm/yahboom-dofbot/
   - /hardware-components/add-an-arm/
+capabilities:
+  - hw-arm
 ---
 
 Add a robotic arm to your machine's configuration so you can control it from the Viam app and from code.

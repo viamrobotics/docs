@@ -30,6 +30,8 @@ aliases:
   - /operate/get-started/setup/
   - /operate/hello-world/building/
   - /operate/install/setup/
+capabilities:
+  - device-setup
 ---
 
 Connect your first machine to the Viam platform so you can configure, control, and monitor it from anywhere.

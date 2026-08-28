@@ -19,4 +19,6 @@ date: "2023-03-30"
 updated: "2024-04-18"
 cost: 20
 resource: "blogpost"
+capabilities:
+  - vision-service
 ---

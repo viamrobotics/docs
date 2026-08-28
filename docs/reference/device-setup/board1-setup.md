@@ -12,6 +12,8 @@ date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /operate/reference/prepare/board1-setup/
+capabilities:
+  - device-setup
 ---
 
 The [<board-series-model>](http://example.com) from <manufacturer/organization> is a <brief-board-description-including-features-and-specifications>.

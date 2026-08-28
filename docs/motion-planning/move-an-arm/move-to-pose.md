@@ -15,6 +15,9 @@ aliases:
   - /tutorials/motion/
   - /tutorials/services/plan-motion-with-arm-gripper/
   - /motion-planning/motion-how-to/move-arm-to-pose/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 A naive joint trajectory can swing the arm through the table on the way to a

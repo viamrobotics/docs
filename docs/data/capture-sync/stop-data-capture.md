@@ -10,6 +10,8 @@ aliases:
   - /data/stop-data-capture/
   - /build/foundation/stop-data-capture/
   - /foundation/stop-data-capture/
+capabilities:
+  - data-capture
 ---
 
 Stop data capture temporarily (during maintenance, testing, or debugging) or permanently. You can disable capture for a single resource, turn it off for all resources on a machine, or leave capture running locally but stop syncing to the cloud.

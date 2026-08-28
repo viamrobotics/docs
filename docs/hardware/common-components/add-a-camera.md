@@ -13,6 +13,8 @@ aliases:
   - /hardware-components/add-a-camera/
   - /hardware/add-a-camera/
   - /hardware/components/add-a-camera/
+capabilities:
+  - hw-camera
 ---
 
 Add a camera to your machine's configuration so you can capture images and video from the Viam app and from code.

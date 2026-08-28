@@ -6,4 +6,6 @@ empty_node: true
 layout: "empty"
 canonical: "/try/quality-inspection/overview/"
 type: "docs"
+capabilities:
+  - vision-service
 ---

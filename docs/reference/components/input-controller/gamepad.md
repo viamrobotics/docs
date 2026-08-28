@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/input-controller/gamepad/"
 component_description: "Supports X-box, Playstation, and similar controllers with Linux support."
 # SMEs: James
+capabilities:
+  - hw-actuation
 ---
 
 Configuring a `gamepad` input controller allows you to use a Linux-supported gamepad as a device to communicate with your machine.

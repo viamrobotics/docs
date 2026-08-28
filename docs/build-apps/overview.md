@@ -17,6 +17,8 @@ aliases:
   - /program/debug/
   - /how-tos/develop-app/
   - /use-cases/develop-app/
+capabilities:
+  - viam-apps
 ---
 
 A Viam app is software that uses a Viam SDK to talk to a machine or to the Viam cloud. It runs outside `viam-server`: in a browser, on a phone, on a server, or on a laptop. Viam apps come in many shapes: a browser dashboard, a Flutter app on a kiosk, a Python service that polls sensors, a Go program that orchestrates a fleet.

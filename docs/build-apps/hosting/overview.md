@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Host a browser-based Viam app on Viam Applications with built-in authentication, credential injection, and a dedicated URL."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
 ---
 
 Viam Applications is a hosting service for browser-based apps built with the TypeScript SDK or any frontend framework that produces HTML, JavaScript, and CSS. You upload your app's build output to the Viam registry, and Viam serves it at `{name}_{namespace}.viamapplications.com`.

@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Configure components, services, and modules by describing the change to the AI assistant, then review and save each staged edit."
 date: "2026-07-15"
+capabilities:
+  - machine-config
 ---
 
 On any tab of your machine's page in the Viam app, you can describe a

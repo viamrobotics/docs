@@ -35,6 +35,8 @@ aliases:
   - /operate/get-started/other-hardware/
   - /operate/get-started/other-hardware/create-module/
   - /operate/get-started/other-hardware/micro-module/
+capabilities:
+  - module-development
 ---
 
 You want to use hardware that Viam doesn't support out of the box, whether it's a sensor, camera, motor, or any other component. A driver module bridges that gap: it implements a standard Viam resource API so that data capture, the Test section, the SDKs, and other platform features work with your hardware automatically.

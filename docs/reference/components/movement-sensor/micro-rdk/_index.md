@@ -6,6 +6,8 @@ type: "docs"
 description: "Movement sensor models available in the Micro-RDK."
 tags: ["movement-sensor", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-sensing
 ---
 
 Movement sensor models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

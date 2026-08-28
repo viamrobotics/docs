@@ -6,6 +6,8 @@ type: "docs"
 description: "Camera models available in the Micro-RDK."
 tags: ["camera", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-camera
 ---
 
 Camera models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

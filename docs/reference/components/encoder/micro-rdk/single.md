@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/encoder/single-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 A `single` encoder sends a signal from the rotating encoder over a single wire to one pin on the [board](/reference/components/board/).

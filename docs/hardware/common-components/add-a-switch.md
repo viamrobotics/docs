@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/switch/
   - /hardware-components/add-a-switch/
+capabilities:
+  - hw-actuation
 ---
 
 Add a switch to your machine's configuration so you can read and set switch positions from the Viam app and from code.

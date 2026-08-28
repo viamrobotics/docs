@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Guided end-to-end projects that build a working Viam app you can run. Pick by UI shape, machine scope, and language."
 date: "2026-04-20"
+capabilities:
+  - viam-apps
 ---
 
 Each tutorial in this section builds one small but complete Viam app end-to-end, from empty project directory to a program you can run against your own machine. The tutorials assume your project is already scaffolded, see [App scaffolding](/build-apps/setup/overview/) for the prerequisite setup.

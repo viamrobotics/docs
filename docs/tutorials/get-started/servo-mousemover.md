@@ -21,6 +21,9 @@ date: "2023-03-30"
 cost: 80
 no_list: true
 toc_hide: true
+capabilities:
+  - hw-actuation
+  - sdks
 ---
 
 <!-- LEARNING GOALS

@@ -16,6 +16,8 @@ aliases:
   - /fleet/organizations/
   - /fleet/account/
   - /cloud/account/
+capabilities:
+  - org-management
 ---
 
 Viam organizes your machines into a three-level hierarchy: organizations contain locations, and locations contain machines.

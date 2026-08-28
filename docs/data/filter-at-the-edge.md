@@ -11,6 +11,8 @@ aliases:
   - /data-ai/capture-data/filter-before-sync/
   - /how-tos/image-data/
   - /tutorials/projects/filtered-camera/
+capabilities:
+  - data-capture
 ---
 
 Reduce the volume of data your robot captures and syncs. Robots can generate gigabytes per day from cameras and sensors, but most of that data is redundant. Edge filtering means the machine decides what is worth recording or syncing, so you save bandwidth, storage costs, and noise in your datasets.

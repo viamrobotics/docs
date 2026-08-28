@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/encoder/
   - /hardware-components/add-an-encoder/
+capabilities:
+  - hw-sensing
 ---
 
 Add an encoder to your machine's configuration so you can track motor position and direction from the Viam app and from code.

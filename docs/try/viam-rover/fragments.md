@@ -11,6 +11,8 @@ aliases:
   - /appendix/try-viam/rover-resources/rover-tutorial-fragments/
   - /dev/reference/try-viam/rover-resources/rover-tutorial-fragments/
 date: "2026-05-23"
+capabilities:
+  - machine-config
 ---
 
 To be able to drive your rover, you need to configure it.

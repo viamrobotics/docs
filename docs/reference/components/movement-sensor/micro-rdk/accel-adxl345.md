@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/movement-sensor/accel-adxl345-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand, Kim Mishra
+capabilities:
+  - hw-sensing
 ---
 
 The `accel-adxl345` movement sensor model supports the Analog Devices [ADXL345 digital accelerometer](https://www.analog.com/en/products/adxl345.html).

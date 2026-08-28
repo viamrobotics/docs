@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/generic/
   - /hardware-components/add-a-generic/
+capabilities:
+  - hw-generic
 ---
 
 Add a generic component to your machine's configuration for hardware that doesn't fit any standard component type.

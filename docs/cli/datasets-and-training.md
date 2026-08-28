@@ -5,6 +5,10 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Create datasets, manage training data, and submit ML training jobs from the command line."
+capabilities:
+  - cli
+  - datasets
+  - ml-training
 ---
 
 Create and populate datasets, submit training jobs, manage training scripts, and run inference from the command line or in automation scripts.

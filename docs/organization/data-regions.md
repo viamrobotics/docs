@@ -5,6 +5,9 @@ description: "Configure where in the world Viam stores your cloud data."
 weight: 40
 type: "docs"
 tags: ["data region", "region", "data continent", "compliance", "performance"]
+capabilities:
+  - org-management
+  - data-storage
 ---
 
 When you specify a data region, Viam stores all data captured by your machines in that region.

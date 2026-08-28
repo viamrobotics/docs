@@ -15,6 +15,8 @@ aliases:
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 # SMEs: Pete Garafano
+capabilities:
+  - device-setup
 ---
 
 <div class="td-max-width-on-larger-screens text-center">

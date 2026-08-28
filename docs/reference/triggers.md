@@ -10,6 +10,8 @@ updated: "2025-09-18"
 aliases:
   - /data-ai/reference/triggers-configuration/
   - /reference/configuration/triggers/
+capabilities:
+  - triggers-alerts
 ---
 
 Triggers can alert you by email, webhook, or push notification when any of the following events occur:

@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/motor/gpiostepper/"
 component_description: "Supports stepper motors driven by basic GPIO-controlled stepper driver chips."
 # SMEs: Rand, James
+capabilities:
+  - hw-actuation
 ---
 
 The `gpiostepper` model of the motor component supports bipolar [stepper motors](https://en.wikipedia.org/wiki/Stepper_motor) controlled by basic stepper driver chips (such as [DRV8825](https://www.ti.com/product/DRV8825), [A4988](https://www.pololu.com/product/1182), or [TMC2209](https://www.trinamic.com/support/eval-kits/details/tmc2209-bob/)) that take step and direction input through GPIO and move the motor one step per pulse.

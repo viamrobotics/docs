@@ -5,6 +5,10 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Monitor machine status, visualize data, set up alerts, teleoperate machines, and troubleshoot problems."
+capabilities:
+  - dashboards
+  - triggers-alerts
+  - teleop
 ---
 
 Your machines are running. Now you need to know what they're doing, get alerted when something needs attention, operate them remotely, and fix problems when they arise. This section covers the observability and operations tools that Viam provides for deployed machines.

@@ -14,6 +14,9 @@ aliases:
   - /appendix/try-viam/rover-resources/rover-tutorial/
   - /dev/reference/try-viam/rover-resources/rover-tutorial/
 date: "2026-05-23"
+capabilities:
+  - hw-mobility
+  - device-setup
 ---
 
 {{% alert title="Tip" color="tip" %}}

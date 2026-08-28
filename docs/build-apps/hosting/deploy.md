@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Package your app with meta.json and upload it to Viam Applications for hosting with built-in authentication and credential injection."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Package your client app and upload it to Viam Applications, Viam's hosting service for web apps. Once uploaded, your app is served at `{appname}_{namespace}.viamapplications.com` with authentication and machine-credential injection handled by the platform.

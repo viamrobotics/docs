@@ -13,6 +13,8 @@ aliases:
   - /how-tos/performance-metrics/
   - /data/capture/performance-metrics/
   - /services/data/capture/performance-metrics/
+capabilities:
+  - triggers-alerts
 ---
 
 Configure triggers to receive email, webhook, or push notifications when your machines need attention. Triggers fire when specific events occur, such as a sensor reading crossing a threshold, a machine going offline, or error logs appearing.

@@ -7,6 +7,8 @@ type: "docs"
 description: "Check which machines are online, view part status, and inspect machine health across your fleet."
 aliases:
   - /manage/troubleshoot/monitor/
+capabilities:
+  - dashboards
 ---
 
 Check the status of your machines from the Viam app, the mobile app, or the command line.

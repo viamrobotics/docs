@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Build a cross-platform Flutter app for a single Viam machine. Uses prebuilt widgets for the camera feed, sensor display, and motor control."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - mobile-app
 ---
 
 In this tutorial, you will build a Flutter app for a single Viam machine using the widgets that ship with the Flutter SDK. The finished app shows:

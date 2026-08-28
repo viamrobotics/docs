@@ -11,6 +11,8 @@ aliases:
   - /dev/reference/apis/services/motion/
   - /appendix/apis/services/motion/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - motion-planning
 ---
 
 The motion service API allows you to give commands to your [motion service](/reference/services/motion/) for moving a mobile robot based on a SLAM map or GPS coordinates or for moving a machine's components from one pose to another.

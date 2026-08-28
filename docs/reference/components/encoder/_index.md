@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/encoder.svg"]
 aliases:
   - "/components/encoder/"
+capabilities:
+  - hw-sensing
 ---
 
 This section documents the configuration attributes for each built-in encoder model.

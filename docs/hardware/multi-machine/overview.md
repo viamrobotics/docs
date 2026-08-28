@@ -14,6 +14,8 @@ aliases:
   - /architecture/parts/
   - /reference/architecture/parts/
   - /operate/reference/architecture/parts/
+capabilities:
+  - machine-config
 ---
 
 When you configure a machine in Viam, you're describing one computer running `viam-server` and the components attached to it.

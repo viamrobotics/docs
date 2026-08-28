@@ -5,6 +5,9 @@ weight: 45
 layout: "docs"
 type: "docs"
 description: "Reference for the Viam CLI commands that inspect the frame system and test motion from the command line."
+capabilities:
+  - motion-planning
+  - cli
 ---
 
 `viam machines part motion` exposes four commands that wrap the frame system and motion service RPCs. Use them to inspect frame configuration and test motion from the command line, without writing code.

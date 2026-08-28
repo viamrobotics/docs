@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/camera/image-file/"
 component_description: "Gets color and depth image frames from a file path."
 # SMEs: Bijan, vision team
+capabilities:
+  - hw-camera
 ---
 
 An `image_file` camera gets color and depth image frames or point clouds from a file path on your local system.

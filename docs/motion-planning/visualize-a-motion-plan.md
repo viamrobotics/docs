@@ -7,6 +7,8 @@ type: "docs"
 description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path against obstacles and reach."
 aliases:
   - /motion-planning/3d-scene/visualize-a-motion-plan/
+capabilities:
+  - motion-planning
 ---
 
 The **3D SCENE** tab renders your configured frame system and live component poses, and the

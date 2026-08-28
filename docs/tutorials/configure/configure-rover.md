@@ -19,6 +19,9 @@ level: "Beginner"
 date: "2022-08-02"
 updated: "2024-04-17"
 cost: 540
+capabilities:
+  - hw-mobility
+  - machine-config
 ---
 
 This tutorial will guide you through configuring a rover.

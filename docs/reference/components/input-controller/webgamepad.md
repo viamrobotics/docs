@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/input-controller/webgamepad/"
 component_description: "Supports a remote, web based gamepad."
 # SMEs: James
+capabilities:
+  - hw-actuation
 ---
 
 Configuring a `webgamepad` input controller allows you to use a web-based gamepad as a device to communicate with your machine.

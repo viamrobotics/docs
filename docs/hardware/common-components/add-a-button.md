@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/button/
   - /hardware-components/add-a-button/
+capabilities:
+  - hw-actuation
 ---
 
 Add a button to your machine's configuration so you can trigger button presses programmatically and represent a physical button in your machine config.

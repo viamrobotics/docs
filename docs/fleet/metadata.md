@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Attach custom key-value data to machine parts, machines, locations, and organizations."
+capabilities:
+  - machine-config
 ---
 
 Attach custom metadata as a JSON object to any level of your fleet hierarchy: machine parts, machines, locations, or organizations. Use metadata to store deployment details, maintenance notes, device serial numbers, or any other data you need to track alongside your machines.

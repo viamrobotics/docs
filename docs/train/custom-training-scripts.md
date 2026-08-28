@@ -11,6 +11,8 @@ platformarea: ["ml"]
 description: "Use or write custom training scripts to train ML models on the Viam platform with any framework or logic."
 date: "2024-12-04"
 updated: "2025-10-13"
+capabilities:
+  - ml-training
 ---
 
 Viam's [managed training](/train/train-a-model/) handles TensorFlow and TFLite classification and detection out of the box.

@@ -11,6 +11,8 @@ date: "2026-04-14"
 aliases:
   - /dev/reference/apis/services/ml/
   - /appendix/apis/services/ml/
+capabilities:
+  - ml-models
 ---
 
 The ML model service API allows you to make inferences based on a provided ML model.

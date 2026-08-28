@@ -5,6 +5,8 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Understand the directory structure and key files that make up a Viam module."
+capabilities:
+  - module-development
 ---
 
 When you run `viam module generate`, the CLI creates a complete project with

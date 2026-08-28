@@ -7,6 +7,8 @@ type: "docs"
 description: "Configure frames for a table-mounted arm with an attached gripper and wrist-mounted camera."
 aliases:
   - /motion-planning/frame-system-how-to/arm-gripper-camera/
+capabilities:
+  - frame-system
 ---
 
 A table-mounted arm, a gripper bolted to the end effector, and a camera

@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/gripper/
   - /hardware-components/add-a-gripper/
+capabilities:
+  - hw-actuation
 ---
 
 Add a gripper to your machine's configuration so you can open, close, and grasp objects from the Viam app and from code.

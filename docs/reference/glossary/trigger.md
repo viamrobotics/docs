@@ -5,6 +5,8 @@ full_link: /data-ai/reference/triggers-configuration/
 short_description: A mechanism that sends alerts by email, webhook, or push notification when specific events occur in your machine or data.
 aliases:
   - /dev/reference/glossary/trigger/
+capabilities:
+  - glossary
 ---
 
 A trigger is a mechanism that sends alerts by email, webhook, or push notification when specific events occur in your machine or data.

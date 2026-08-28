@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/attribute/
+capabilities:
+  - glossary
 ---
 
 A configuration parameter of a resource.

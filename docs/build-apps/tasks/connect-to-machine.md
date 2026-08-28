@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Open a connection to a single Viam machine from your app, structure the connection code correctly, and close the connection when your app is done with it."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Open a connection to a single Viam machine from your app, structure the connection code so you do not reconnect unnecessarily, and close the connection when the app is done with it. This page covers the basic connection pattern. For reconnection, UI indicators, and connection-state events, see [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/). For apps that access multiple machines or the fleet APIs, see [Connect to the Viam cloud](/build-apps/tasks/connect-to-cloud/).

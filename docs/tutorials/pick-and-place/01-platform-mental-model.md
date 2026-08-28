@@ -13,6 +13,9 @@ time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/"
 next: "/tutorials/pick-and-place/configure-resources/"
 languages: ["python"]
+capabilities:
+  - hw-arm
+  - machine-config
 ---
 
 This phase introduces you to Viam machine management and gives you the mental map you need before the rest of the workshop: what happens when you make an API call, why config changes appear instantly on the robot, and how Python code on your laptop talks to hardware across the room. You will configure your first resource as you go.

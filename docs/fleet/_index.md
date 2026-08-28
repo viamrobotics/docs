@@ -10,4 +10,6 @@ description: "Scale from one machine to a fleet: templatize configuration with f
 aliases:
   - /cloud/
   - /product-overviews/fleet-management/
+capabilities:
+  - fleet-deployment
 ---

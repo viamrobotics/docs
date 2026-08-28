@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for writing a Viam app in C++: an embedded application, a high-performance service, or any other C++ program that talks to a Viam machine."
 date: "2026-04-13"
+capabilities:
+  - viam-apps
+  - sdks
 ---
 
 Set up a project for writing a Viam app in C++: an embedded application, a high-performance service, or any other C++ program that talks to a Viam machine. The C++ SDK has a heavier build setup than the other SDKs because it requires CMake and several system-level dependencies. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

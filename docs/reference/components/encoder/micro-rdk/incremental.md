@@ -14,6 +14,8 @@ aliases:
   - "/reference/components/encoder/incremental-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 Use the `incremental` encoder model to configure [a quadrature encoder](https://en.wikipedia.org/wiki/Incremental_encoder).

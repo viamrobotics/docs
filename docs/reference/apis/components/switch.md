@@ -11,6 +11,8 @@ date: "2025-02-20"
 aliases:
   - /operate/modules/component-apis/switch/
   - /dev/reference/apis/components/switch/
+capabilities:
+  - hw-actuation
 ---
 
 The switch API allows you to give commands to your [switch components](/reference/components/switch/) for reading the state of a physical switch that has multiple discrete positions.

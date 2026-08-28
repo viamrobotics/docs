@@ -7,4 +7,7 @@ type: "docs"
 no_list: true
 manualLink: "/organization/overview/"
 description: "Manage access, roles, authentication, data regions, and billing for your organization."
+capabilities:
+  - org-management
+  - billing
 ---

@@ -8,6 +8,9 @@ description: "Detect, localize, and grasp an object with a robot arm and gripper
 aliases:
   - /motion-planning/motion-how-to/pick-an-object/
   - /motion-planning/pick-and-place/pick-an-object/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 Picking an object has four steps, and each step has a failure mode. The camera

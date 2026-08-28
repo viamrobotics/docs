@@ -10,6 +10,8 @@ aliases:
   - /operate/reference/services/motion/algorithms/
   - /services/motion/algorithms/
   - /mobility/motion/algorithms/
+capabilities:
+  - motion-planning
 ---
 
 The builtin motion service plans in two stages. It first generates inverse kinematics (IK) solutions for the goal pose and checks whether the arm can reach one along a straight line through joint space. When no straight-line path clears collisions and constraints, it falls back to the cBiRRT search algorithm. When you need to change how the motion service plans, this page tells you what runs in each stage, what the defaults are, and where each tunable lives. For how the two stages work, their limits, and what to try when planning fails, see [How motion planning works](/motion-planning/how-planning-works/).

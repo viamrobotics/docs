@@ -10,6 +10,8 @@ aliases:
   - /operate/reference/components/movement-sensor/
   - /operate/reference/components/movement-sensor/set-up-base-station/
   - /hardware-components/add-a-movement-sensor/
+capabilities:
+  - hw-sensing
 ---
 
 Add a movement sensor to your machine's configuration so you can track position, velocity, and orientation from the Viam app and from code.

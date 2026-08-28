@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Understand dashboard widget types, the windowing and aggregation query model, and how dashboards differ from teleop workspaces."
+capabilities:
+  - dashboards
 ---
 
 Dashboards and teleop workspaces both use widgets to display data from your machines. This page explains what each widget type does, how the query model behind them works, and where dashboards and teleop workspaces differ.

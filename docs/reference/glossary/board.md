@@ -5,6 +5,8 @@ full_link: /components/board/
 short_description: A board is the signal wire hub of a machine that provides access to GPIO pins.
 aliases:
   - /dev/reference/glossary/board/
+capabilities:
+  - glossary
 ---
 
 A board is the signal wire hub of a machine that provides access to GPIO pins.

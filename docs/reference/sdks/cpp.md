@@ -10,4 +10,6 @@ canonical: "https://cpp.viam.dev/"
 aliases:
   - /dev/reference/sdks/cpp/
   - /sdks/cpp/
+capabilities:
+  - sdks
 ---

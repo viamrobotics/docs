@@ -16,6 +16,8 @@ aliases:
   - /mobility/frame-system/nested-frame-config/
   - /reference/services/frame-system/nested-frame-config/
   - /operate/reference/services/frame-system/nested-frame-config/
+capabilities:
+  - motion-planning
 ---
 
 A robot arm that knows nothing about its surroundings plans the shortest path

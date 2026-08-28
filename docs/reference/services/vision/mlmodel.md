@@ -15,6 +15,8 @@ aliases:
   - /ml/vision/mlmodel/
   - /services/vision/mlmodel/
   - /data-ai/services/vision/mlmodel/
+capabilities:
+  - vision-service
 ---
 
 The `mlmodel` vision service wraps a deployed ML model and exposes it through the standard [vision service API](/reference/apis/services/vision/). At startup, the service reads the model's tensor metadata and decides which of three roles the model can fulfill: classifier, detector, or 3D segmenter. It registers every role the model supports.

@@ -10,4 +10,7 @@ description: "Create datasets and train ML models from captured data."
 aliases:
   - /build/train/
   - /data-ai/ai/train-tflite/
+capabilities:
+  - ml-training
+  - datasets
 ---

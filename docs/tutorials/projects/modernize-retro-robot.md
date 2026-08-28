@@ -19,4 +19,7 @@ date: "2023-05-04"
 updated: "2024-04-16"
 cost: 580
 resource: "blogpost"
+capabilities:
+  - hw-actuation
+  - ml-models
 ---

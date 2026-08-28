@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/movement-sensor/fake/"
 component_description: "A model for testing, with no physical hardware."
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 You can use the `fake` movement sensor model to test movement sensor code without connecting to any actual hardware.

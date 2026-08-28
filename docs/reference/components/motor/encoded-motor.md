@@ -11,6 +11,8 @@ aliases:
   - "/reference/components/motor/encoded-motor/"
 component_description: "Standard brushed or brushless DC motor with an encoder."
 # SMEs: Rand, James
+capabilities:
+  - hw-actuation
 ---
 
 Use an [encoder](/reference/components/encoder/) with a motor to create a closed feedback loop for better control of your machine.

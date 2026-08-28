@@ -7,6 +7,9 @@ type: "docs"
 description: "Command an arm directly in joint space using MoveToJointPositions and MoveThroughJointPositions, bypassing the motion planner."
 aliases:
   - /motion-planning/motion-how-to/move-arm-joint-positions/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 Cartesian motion asks "what pose should the end effector reach?" and lets the

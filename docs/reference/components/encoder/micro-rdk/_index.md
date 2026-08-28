@@ -6,6 +6,8 @@ type: "docs"
 description: "Encoder models available in the Micro-RDK."
 tags: ["encoder", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-sensing
 ---
 
 Encoder models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

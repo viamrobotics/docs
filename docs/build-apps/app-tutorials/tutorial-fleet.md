@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Build a TypeScript web dashboard that connects to the Viam cloud, enumerates machines across an organization, and displays aggregated sensor data from a fleet."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - fleet-deployment
 ---
 
 In this tutorial, you will build a browser-based dashboard that reads captured sensor data from a fleet of Viam machines and displays aggregated values per machine. The finished dashboard:

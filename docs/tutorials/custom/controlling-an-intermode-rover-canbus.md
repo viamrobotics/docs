@@ -26,6 +26,9 @@ cost: 1500
 no_list: true
 # SME: Matt Vella, James Otting
 toc_hide: true
+capabilities:
+  - hw-mobility
+  - module-development
 ---
 
 <!-- LEARNING GOALS

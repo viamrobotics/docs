@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Three kinds of registry entries feed a vision pipeline: ML model service implementations, vision service models, and public ML models. How to pick among them."
 date: "2026-04-14"
+capabilities:
+  - ml-models
 ---
 
 The [Viam registry](https://app.viam.com/registry) has three kinds of entries you reach for when building a vision pipeline. Understanding what each one is makes the rest of the deploy and tune flow easier.

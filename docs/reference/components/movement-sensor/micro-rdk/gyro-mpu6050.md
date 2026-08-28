@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand
+capabilities:
+  - hw-sensing
 ---
 
 The `gyro-mpu6050` movement sensor model supports a combination [gyroscope and accelerometer manufactured by TDK InvenSense](https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/).

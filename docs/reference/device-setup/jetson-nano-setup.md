@@ -15,6 +15,8 @@ aliases:
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
 # SMEs: Pete Garafano
+capabilities:
+  - device-setup
 ---
 
 The [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano) and [Jetson Orin Nano](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin) from [NVIDIA](https://www.nvidia.com/) are small computers built for embedded applications and capable of supporting modern AI workloads.

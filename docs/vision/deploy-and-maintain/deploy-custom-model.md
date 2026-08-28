@@ -8,6 +8,8 @@ description: "Deploy a model you trained outside Viam (or trained yourself on Vi
 date: "2026-04-14"
 aliases:
   - /vision/deploy-custom-model/
+capabilities:
+  - ml-models
 ---
 
 Use this guide when you have a trained model file that is not already in the Viam [registry](https://app.viam.com/registry). That covers three cases:

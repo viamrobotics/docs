@@ -11,6 +11,8 @@ icon: true
 images: ["/services/icons/vision.svg"]
 tags: ["vision", "computer vision", "CV", "services"]
 date: "2026-04-14"
+capabilities:
+  - vision-service
 ---
 
 The vision service enables your machine to use its on-board [cameras](/hardware/) to intelligently see and interpret the world around it.

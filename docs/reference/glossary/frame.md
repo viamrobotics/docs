@@ -5,6 +5,8 @@ full_link:
 short_description: A frame represents a coordinate system that describes the position and orientation of an object.
 aliases:
   - /dev/reference/glossary/frame/
+capabilities:
+  - glossary
 ---
 
 A frame represents a coordinate system that describes the position and orientation of an object.

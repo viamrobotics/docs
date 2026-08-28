@@ -6,6 +6,10 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for building a Viam app that runs across iOS, Android, and desktop platforms from a single codebase."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - mobile-app
+  - sdks
 ---
 
 Set up a project for building a Viam app that runs across iOS, Android, and desktop platforms from a single codebase: a tablet operator interface, a warehouse kiosk, a phone app for technicians in the field. This page covers the project scaffolding with [Flutter](https://flutter.dev/), the Viam Flutter SDK install, and the iOS/macOS and Android platform configuration. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

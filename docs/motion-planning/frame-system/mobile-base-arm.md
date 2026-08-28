@@ -7,6 +7,8 @@ type: "docs"
 description: "Configure frames for a mobile base with a mounted arm, gripper, and sensors."
 aliases:
   - /motion-planning/frame-system-how-to/mobile-base-arm/
+capabilities:
+  - frame-system
 ---
 
 A mobile manipulator is a base with an arm on top. It has two distinct

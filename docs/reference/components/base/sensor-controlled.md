@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/base/sensor-controlled/"
 component_description: "Wrap other base models and add feedback control using a movement sensor."
 # SMEs: Rand H., Martha J.
+capabilities:
+  - hw-mobility
 ---
 
 A `sensor-controlled` base supports a robotic base with feedback control from a movement sensor.

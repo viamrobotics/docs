@@ -15,6 +15,8 @@ aliases:
   - "/reference/components/camera/esp32-camera-micro-rdk/"
   - "/operate/reference/components/camera/esp32-camera-micro-rdk/"
 # SMEs: Matt Perez, Micro-RDK team
+capabilities:
+  - hw-camera
 ---
 
 `esp32-camera` is the camera model that supports all cameras that work with Espressif's [esp32-camera drivers](https://github.com/espressif/esp32-camera) including:

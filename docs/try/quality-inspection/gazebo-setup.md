@@ -10,6 +10,8 @@ aliases:
   - /try/gazebo-setup/
   - /operate/hello-world/first-project/sim-setup/
   - /try/first-project/gazebo-setup/
+capabilities:
+  - device-setup
 ---
 
 This guide walks you through setting up the Gazebo simulation used in the [Your First Project](../) tutorial.

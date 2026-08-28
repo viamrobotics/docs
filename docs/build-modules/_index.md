@@ -13,4 +13,6 @@ aliases:
   - /hardware-components/hardware-to-logic/
   - /hardware/hardware-to-logic/
   - /build/
+capabilities:
+  - module-development
 ---

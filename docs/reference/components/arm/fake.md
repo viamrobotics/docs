@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/arm/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SMEs: Bucket, Motion
+capabilities:
+  - hw-arm
 ---
 
 Configure a `fake` arm to test different models of robotic arms without any physical hardware:

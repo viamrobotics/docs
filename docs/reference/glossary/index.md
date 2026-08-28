@@ -13,4 +13,6 @@ aliases:
   - /operate/reference/glossary/
   - /dev/reference/glossary/
   - "/appendix/glossary/"
+capabilities:
+  - glossary
 ---

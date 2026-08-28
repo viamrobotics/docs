@@ -16,6 +16,8 @@ aliases:
   - "/operate/reference/components/board/esp32-micro-rdk/"
 micrordk_component: true
 # SMEs: Gautham, Nico, Andrew
+capabilities:
+  - hw-compute
 ---
 
 {{% alert title="REQUIREMENTS" color="caution" %}}

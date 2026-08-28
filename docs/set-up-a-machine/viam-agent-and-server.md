@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "The two programs that run on every Viam machine: what each does, how they relate, and how they run modules."
 date: "2026-04-17"
+capabilities:
+  - viam-agent
+  - viam-server
 ---
 
 When you install Viam on a Linux or Windows computer, two programs land on the machine: `viam-agent` and `viam-server`. They have distinct jobs.

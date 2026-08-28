@@ -15,6 +15,8 @@ aliases:
   - /foundation/setup-micro/micro-troubleshooting/
 # date: "2024-10-07"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - device-setup
 ---
 
 {{% alert title="Tip" color="tip" %}}

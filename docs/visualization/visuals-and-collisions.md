@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "How a Transform defines a custom visual, and which geometry the motion planner actually collision-checks."
+capabilities:
+  - scene-3d
 ---
 
 A geometry is a simple shape, such as a box, sphere, or capsule, that represents an

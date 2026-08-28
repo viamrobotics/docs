@@ -16,6 +16,8 @@ aliases:
   - "/operate/reference/components/base/two_wheeled_base-micro-rdk/"
 micrordk_component: true
 # SMEs: Gautham V.
+capabilities:
+  - hw-mobility
 ---
 
 A `two_wheeled_base` base supports mobile robotic bases with drive motors on both sides (differential steering).

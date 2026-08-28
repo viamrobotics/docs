@@ -11,6 +11,8 @@ aliases:
   - /data-ai/ai/act/
   - /vision/act-on-detections/
 date: "2026-04-14"
+capabilities:
+  - vision-service
 ---
 
 You have a vision service detecting or classifying objects, but you need your machine to respond automatically: stop an arm when a person is nearby, sort items by color, or trigger an action when an anomaly appears. This guide shows you how to build a module that reads vision results and controls other resources based on what it sees.

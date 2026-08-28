@@ -5,6 +5,9 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Connect a Viam-powered device to your WiFi network using the mobile app or captive portal."
+capabilities:
+  - device-setup
+  - fleet-deployment
 ---
 
 If you received a device with Viam pre-installed, follow these instructions to connect it to your WiFi network and complete setup. The method you use depends on how the device manufacturer configured provisioning.

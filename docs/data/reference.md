@@ -18,6 +18,8 @@ aliases:
   - /data/query/query-reference/
   - /data/capture-sync/advanced-data-capture-sync/
 date: "2025-02-10"
+capabilities:
+  - data-storage
 ---
 
 ## Data schema

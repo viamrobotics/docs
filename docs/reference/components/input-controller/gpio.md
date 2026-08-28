@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/input-controller/gpio/"
 component_description: "Customizable GPIO/ADC based device using a board component."
 # SMEs: James
+capabilities:
+  - hw-actuation
 ---
 
 Configure a `gpio` input controller to use a GPIO- or ADC-based device to communicate with your machine.

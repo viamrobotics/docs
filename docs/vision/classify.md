@@ -9,6 +9,8 @@ date: "2025-01-30"
 aliases:
   - /build/vision-detection/classify-objects/
   - /vision-detection/classify-objects/
+capabilities:
+  - vision-service
 ---
 
 Detection tells you where objects are in an image. Classification tells you what the entire image (or a region of it) contains. If you need to answer "is this a picture of a cat or a dog?" rather than "where are the cats and dogs in this picture?", classification is the right tool. This how-to shows you how to get classifications from your vision service and use them in application logic.

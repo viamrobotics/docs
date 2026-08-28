@@ -9,6 +9,8 @@ description: "Build a complete quality inspection system with Viam — from came
 date: "2025-01-30"
 aliases:
   - /try/first-project/
+capabilities:
+  - vision-service
 ---
 
 **Time:** ~55 minutes

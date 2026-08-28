@@ -12,6 +12,8 @@ aliases:
 no_list: true
 component_description: "Supports standard brushed or brushless DC motors."
 # SMEs: Rand, James
+capabilities:
+  - hw-actuation
 ---
 
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).

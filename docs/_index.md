@@ -23,4 +23,6 @@ aliases:
   - "/get-started/"
   - "/platform/"
   - "/operate/"
+capabilities:
+  - section-index
 ---

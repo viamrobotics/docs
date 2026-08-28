@@ -10,6 +10,8 @@ date: "2026-04-18"
 aliases:
   - "/operate/reference/services/generic/"
   - /registry/advanced/generic/
+capabilities:
+  - hw-generic
 ---
 
 The _generic_ service API enables you to add support for unique types of services that do not already have an [appropriate API](/reference/apis/#service-apis) defined for them.

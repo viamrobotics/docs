@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/motor/
   - /hardware-components/add-a-motor/
+capabilities:
+  - hw-actuation
 ---
 
 Add a motor to your machine's configuration so you can control it from the Viam app and from code.

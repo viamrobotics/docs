@@ -9,6 +9,8 @@ aliases:
   - /fleet/rbac/
 date: "2022-01-01"
 no_list: true
+capabilities:
+  - org-management
 ---
 
 Role-Based Access Control (RBAC) is a way to enforce security by assigning organization members or [API keys](/organization/api-keys/) roles that confer permissions.

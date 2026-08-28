@@ -7,6 +7,9 @@ type: "docs"
 description: "Command an arm to a target pose, along a constrained path, or directly in joint space. Build pick-and-place flows from those primitives."
 aliases:
   - /motion-planning/pick-and-place/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 Viam exposes three ways to command an arm. Three questions sort them:

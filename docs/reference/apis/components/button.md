@@ -11,6 +11,8 @@ date: "2025-02-20"
 aliases:
   - /operate/modules/component-apis/button/
   - /dev/reference/apis/components/button/
+capabilities:
+  - hw-actuation
 ---
 
 The button API allows you to get button presses from your [button components](/reference/components/button/).

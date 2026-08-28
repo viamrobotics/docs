@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/gantry.svg"]
 aliases:
   - "/components/gantry/"
+capabilities:
+  - hw-gantry
 ---
 
 This section documents the configuration attributes for each built-in gantry model.

@@ -19,6 +19,8 @@ aliases:
   - /tutorials/control/drive-rover/
 date: "2022-12-08"
 updated: "2026-05-23"
+capabilities:
+  - hw-mobility
 ---
 
 In this guide you'll write code that makes a rover drive in a square.

@@ -5,6 +5,8 @@ weight: 27
 layout: "docs"
 type: "docs"
 description: "Query and transform frame system poses with the robot service RPCs: FrameSystemConfig, GetPose, TransformPose, and TransformPCD."
+capabilities:
+  - frame-system
 ---
 
 The RPCs for querying and transforming frame system poses live on the robot service, not on a dedicated `FrameSystemService`. New users often look for a separate service matching the concept; the public API has none. All four methods below belong to `RobotService` in `api/proto/viam/robot/v1/robot.proto`. (Go module authors are the one exception: see [Service names](#service-names).)

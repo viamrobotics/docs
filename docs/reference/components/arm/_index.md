@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/arm.svg"]
 aliases:
   - "/components/arm/"
+capabilities:
+  - hw-arm
 ---
 
 This section documents the configuration attributes for each built-in arm model.

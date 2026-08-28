@@ -5,6 +5,9 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Monitor machines, view logs, access remote shells, and deploy software from the command line."
+capabilities:
+  - cli
+  - fleet-deployment
 ---
 
 Monitor machine status, stream logs, connect to remote machines with a shell, copy files, and deploy software packages across your fleet.

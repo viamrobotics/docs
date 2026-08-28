@@ -17,4 +17,6 @@ aliases:
   - /operate/control/viam-applications/
   - /operate/control/kiosk-app/
   - /operate/control/voice-app/
+capabilities:
+  - viam-apps
 ---

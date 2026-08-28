@@ -10,6 +10,9 @@ aliases:
   - /internals/orientation-vector/
   - /appendix/orientation-vector/
   - /operate/reference/orientation-vector/
+capabilities:
+  - motion-planning
+  - frame-system
 ---
 
 In machine JSON configuration (frame definitions and world state files), you choose one of five orientation formats with the `type` field. API `Pose` messages always express orientation as an orientation vector in degrees (`o_x`, `o_y`, `o_z`, `theta`). The format you pick in configuration affects validation and singularity behavior. The sections below cover the five supported formats, their schemas, common orientations, and validation rules.

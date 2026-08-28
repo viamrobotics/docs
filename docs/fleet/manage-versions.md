@@ -5,6 +5,8 @@ weight: 35
 layout: "docs"
 type: "docs"
 description: "Control which software versions reach your machines, stage rollouts with fragment tags, and verify what each machine is running."
+capabilities:
+  - fleet-deployment
 ---
 
 Control which software versions your machines run, when updates are applied, and how to confirm a rollout actually reached every machine. By default, machines track the latest version of every module and model. Use version pinning, fragment tags, and maintenance windows to control rollouts more precisely.

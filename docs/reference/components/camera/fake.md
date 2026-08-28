@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/camera/fake/"
 component_description: "A camera model for testing."
 # SMEs: Bijan, vision team
+capabilities:
+  - hw-camera
 ---
 
 A `fake` camera is a camera model for testing.

@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/camera/
   - /appendix/apis/components/camera/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-camera
 ---
 
 The camera API allows you to give commands to your [camera components](/reference/components/camera/) for getting images or point clouds.

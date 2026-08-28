@@ -14,6 +14,8 @@ aliases:
   - /operate/modules/lifecycle-module/
   - /operate/modules/lifecycle-of-a-module/
   - /operate/modules/other-hardware/lifecycle-module/
+capabilities:
+  - module-development
 ---
 
 This page is a reference for module developers. For step-by-step

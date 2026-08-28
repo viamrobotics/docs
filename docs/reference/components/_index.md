@@ -10,4 +10,6 @@ empty_node: true
 toc_hide: false
 aliases:
   - /operate/reference/components/
+capabilities:
+  - section-index
 ---

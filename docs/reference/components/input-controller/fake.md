@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/input-controller/fake/"
 component_description: "A model for testing, with no physical hardware."
 # SMEs: James
+capabilities:
+  - hw-actuation
 ---
 
 Configuring a `fake` input controller allows you to test an input controller communicating with your machine, without any physical hardware.

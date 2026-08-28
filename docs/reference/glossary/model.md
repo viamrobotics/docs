@@ -5,6 +5,8 @@ full_link:
 short_description: A particular implementation of a resource. For example, UR5e is a model of the arm component API.
 aliases:
   - /dev/reference/glossary/model/
+capabilities:
+  - glossary
 ---
 
 A particular implementation of a {{< glossary_tooltip term_id="resource" text="resource" >}} [API](/reference/apis/).

@@ -22,6 +22,8 @@ aliases:
   - /appendix/apis/fleet/
 date: "2024-09-20"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - fleet-deployment
 ---
 
 The fleet management API allows you to manage your machine fleet with code the same way you can do in the [web UI](https://app.viam.com/).

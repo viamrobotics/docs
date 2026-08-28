@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/motor/gpio-micro-rdk/"
 micrordk_component: true
 # SMEs: Rand, James
+capabilities:
+  - hw-actuation
 ---
 
 The `gpio` model supports [DC motors](https://en.wikipedia.org/wiki/DC_motor) (both brushed and brushless).

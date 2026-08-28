@@ -10,6 +10,8 @@ aliases:
   - /try/part-1/
   - /operate/hello-world/first-project/part-1/
   - /try/first-project/part-1/
+capabilities:
+  - vision-service
 ---
 
 **Goal:** Get a computer vision pipeline working.

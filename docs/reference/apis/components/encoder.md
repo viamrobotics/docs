@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/encoder/
   - /appendix/apis/components/encoder/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-sensing
 ---
 
 The encoder API allows you to give commands to your [encoder components](/hardware/common-components/add-an-encoder/) for getting the position of a motor or a joint in ticks or degrees.

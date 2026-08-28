@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/input-controller/mux/"
 component_description: "Supports multiplexed controllers, combining multiple sources of input."
 # SMEs: James
+capabilities:
+  - hw-actuation
 ---
 
 Configuring a `mux` (multiplexed) input controller allows you to combine one or more controllers into a single virtual controller.

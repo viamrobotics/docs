@@ -6,6 +6,8 @@ type: "docs"
 description: "Board models available in the Micro-RDK."
 tags: ["board", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-compute
 ---
 
 Board models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

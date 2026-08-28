@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/power-sensor/
   - /appendix/apis/components/power-sensor/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-sensing
 ---
 
 The power sensor API allows you to give commands to your [power sensor components](/reference/components/power-sensor/) for getting measurements of voltage, current, and power consumption.

@@ -23,6 +23,9 @@ date: "2023-05-15"
 updated: "2024-05-07"
 cost: 190
 # SMEs: James Otting, Eric Daniels
+capabilities:
+  - hw-mobility
+  - module-development
 ---
 
 <!-- LEARNING GOAL:

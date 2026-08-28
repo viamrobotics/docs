@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/board/
   - /hardware-components/add-a-board/
+capabilities:
+  - hw-compute
 ---
 
 Add a board to your machine's configuration so other components can use your single-board computer's GPIO pins, analog readers, and digital interrupts.

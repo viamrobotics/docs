@@ -8,6 +8,8 @@ description: "Create reusable configuration templates and apply them across mult
 aliases:
   - /fleet/fragments/
   - /manage/fleet/reuse-configuration/
+capabilities:
+  - machine-config
 ---
 
 As a fleet grows, machines tend to drift into unique, undocumented configurations (often called "snowflake robots") because each one was set up by hand. Fragments solve this: a fragment is a reusable configuration template that you apply to many machines, and when you update the fragment, every machine that uses it receives the change.

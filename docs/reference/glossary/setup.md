@@ -5,6 +5,8 @@ full_link:
 short_description: To view setup instructions for a machine part, navigate to the CONFIGURE tab, find the part's card, click the "..." menu in the upper right corner of the card, and select "View setup instructions".
 aliases:
   - /dev/reference/glossary/setup/
+capabilities:
+  - glossary
 ---
 
 Before configuring a machine {{< glossary_tooltip term_id="part" text="part" >}}, you must follow the correct setup instructions for your machine's architecture.

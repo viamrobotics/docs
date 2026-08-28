@@ -5,6 +5,8 @@ weight: 200
 layout: "docs"
 type: "docs"
 description: "Configuration, API, and technical reference for the motion service."
+capabilities:
+  - motion-planning
 ---
 
 The motion service turns a high-level "move to this pose" request into a

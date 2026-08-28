@@ -14,6 +14,9 @@ platformarea: ["ml", "data"]
 level: "Intermediate"
 date: "2024-03-05"
 cost: 120
+capabilities:
+  - vision-service
+  - triggers-alerts
 ---
 
 {{<imgproc src="/tutorials/helmet/ppe-hooks.png" resize="x300" declaredimensions=true alt="Hard hats and neon reflective vests on hooks." class="alignright" style="width: 350px">}}

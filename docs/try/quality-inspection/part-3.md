@@ -10,6 +10,8 @@ aliases:
   - /try/part-3/
   - /operate/hello-world/first-project/part-3/
   - /try/first-project/part-3/
+capabilities:
+  - vision-service
 ---
 
 **Goal:** Write inspection logic that detects defective cans.

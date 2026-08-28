@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Set up a table-mounted arm with a gripper and a wrist camera, and verify the frame configuration with TransformPose."
+capabilities:
+  - frame-system
 ---
 
 Every multi-component machine eventually hits the same question: when the

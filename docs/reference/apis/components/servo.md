@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/servo/
   - /appendix/apis/components/servo/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-actuation
 ---
 
 The servo API allows you to give commands to your [servo components](/reference/components/servo/) for controlling the angular position of a hobby servo precisely or getting its current status.

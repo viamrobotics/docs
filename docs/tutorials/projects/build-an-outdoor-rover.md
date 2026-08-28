@@ -22,4 +22,6 @@ date: "2023-03-29"
 updated: "2024-04-15"
 cost: 420
 resource: "blogpost"
+capabilities:
+  - hw-mobility
 ---

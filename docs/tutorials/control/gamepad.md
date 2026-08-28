@@ -23,6 +23,9 @@ level: "Intermediate"
 date: "2022-08-10"
 updated: "2024-04-17"
 cost: 575
+capabilities:
+  - hw-mobility
+  - hw-actuation
 ---
 
 By the end of this tutorial, you'll be able to drive your rover around like an RC car.

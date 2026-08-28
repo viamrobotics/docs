@@ -28,6 +28,8 @@ aliases:
   - /getting-started/try-viam/
   - /tutorials/viam-rover/
 date: "2026-05-23"
+capabilities:
+  - hw-mobility
 ---
 
 _Try Viam_ is a way to try the Viam platform without setting up any hardware yourself.

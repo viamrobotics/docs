@@ -12,6 +12,8 @@ aliases:
   - /appendix/apis/robot/
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - sdks
 ---
 
 The _machine API_ allows you to connect to your machine from within a supported [Viam SDK](/reference/apis/), retrieve status information, and send commands remotely.

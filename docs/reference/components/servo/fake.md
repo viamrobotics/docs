@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/servo/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: Rand
+capabilities:
+  - hw-actuation
 ---
 
 Configure a `fake` servo to test implementing a servo component on your machine without any physical hardware:

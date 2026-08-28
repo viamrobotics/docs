@@ -6,6 +6,8 @@ short_description: The fixed, user-defined global coordinate system that is the 
 aka: world frame, world
 aliases:
   - /dev/reference/glossary/world-frame/
+capabilities:
+  - glossary
 ---
 
 The world reference [frame](/reference/) is the fixed, global coordinate system that serves as the reference point for all other coordinate frames in a robotic system.

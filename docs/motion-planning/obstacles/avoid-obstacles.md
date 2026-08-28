@@ -7,6 +7,8 @@ type: "docs"
 description: "Configure obstacles and plan motion paths that avoid collisions."
 aliases:
   - /motion-planning/motion-how-to/avoid-obstacles/
+capabilities:
+  - motion-planning
 ---
 
 The motion service plans around the table, the back wall, and the fixture on

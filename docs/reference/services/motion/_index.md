@@ -10,6 +10,8 @@ aliases:
   - /operate/reference/services/motion/
   - /services/motion/
   - /mobility/motion/
+capabilities:
+  - motion-planning
 ---
 
 The motion service enables your machine to plan and move itself or its components relative to itself, other machines, and the world.

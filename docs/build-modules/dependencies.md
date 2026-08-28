@@ -10,6 +10,8 @@ aliases:
   - /operate/modules/other-hardware/dependencies/
   - /operate/modules/support-hardware/create-module/dependencies/
 date: "2025-11-11"
+capabilities:
+  - module-development
 ---
 
 From within a modular resource, you can access other machine {{< glossary_tooltip term_id="resource" text="resources" >}} using dependencies.

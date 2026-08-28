@@ -6,6 +6,8 @@ type: "docs"
 description: "Base models available in the Micro-RDK."
 tags: ["base", "components", "Micro-RDK"]
 no_list: true
+capabilities:
+  - hw-mobility
 ---
 
 Base models available in the [Micro-RDK](/reference/device-setup/setup-micro/).

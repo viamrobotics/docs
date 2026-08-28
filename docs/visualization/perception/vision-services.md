@@ -5,6 +5,9 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Render a vision service's segmented objects in the 3D scene and tune detection parameters against the live view."
+capabilities:
+  - scene-3d
+  - vision-3d
 ---
 
 A vision service with a 3D segmenter returns the objects it finds as point clouds, one

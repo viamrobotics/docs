@@ -9,6 +9,8 @@ aliases:
   - /operate/modules/
   - /operate/modules/advanced/
   - /build-modules/from-hardware-to-logic/
+capabilities:
+  - module-development
 ---
 
 Modules extend what your machine can do. They come in two varieties: driver

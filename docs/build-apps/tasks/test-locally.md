@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Develop a Viam client app against a real machine without deploying. Covers direct local-network connections and the viam module local-app-testing CLI."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Develop your Viam client app against a real machine without deploying to production on every change. There are two ways: open a direct connection to the machine from your local dev server, or use the `viam module local-app-testing` CLI to emulate the Viam Applications hosting environment.

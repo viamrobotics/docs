@@ -8,6 +8,8 @@ description: "The motion service API for planning and executing component moveme
 aliases:
   - /reference/apis/services/motion/
   - /appendix/apis/services/motion/
+capabilities:
+  - motion-planning
 ---
 
 The motion service exposes the methods below for planning and executing component motion. Most methods are implemented only by module-based motion services. The builtin service implements `Move`, `GetPose` (deprecated), `DoCommand`, and `GetStatus`.

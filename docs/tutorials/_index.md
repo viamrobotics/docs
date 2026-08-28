@@ -19,4 +19,6 @@ outputs:
   - rss
   - html
   - typesense
+capabilities:
+  - section-index
 ---

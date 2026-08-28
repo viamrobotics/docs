@@ -6,6 +6,10 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for building a Viam mobile app using React Native specifically. For new cross-platform apps, prefer Flutter."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - mobile-app
+  - sdks
 ---
 
 Set up a project for building a Viam mobile app using React Native specifically. **If you do not already have a React Native codebase, prefer [Flutter](/build-apps/setup/flutter/) for new cross-platform apps; React Native is here for teams whose existing apps are React Native.** This page covers the project scaffolding, the Viam SDK install, six runtime polyfill packages, a custom XHR-based gRPC transport, a Metro bundler configuration fix for a dependency version conflict, and platform permissions on Android and iOS. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

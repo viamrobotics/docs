@@ -20,6 +20,8 @@ aliases:
   - /get-started/installation/viam-micro-server-dev/
   - /installation/viam-micro-server-dev/
   - /operate/modules/other-hardware/micro-module/
+capabilities:
+  - device-setup
 ---
 
 If no existing modules support your hardware or software, you can create your own.

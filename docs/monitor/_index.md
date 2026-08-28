@@ -9,4 +9,8 @@ manualLink: "/monitor/overview/"
 description: "Monitor machine status, visualize data, set up alerts, teleoperate machines, and troubleshoot problems."
 aliases:
   - /manage/troubleshoot/
+capabilities:
+  - dashboards
+  - triggers-alerts
+  - teleop
 ---

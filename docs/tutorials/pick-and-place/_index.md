@@ -21,6 +21,10 @@ hardware:
   - "System76 Meerkat"
 companion_repo: "https://github.com/viam-devrel/pick-and-place"
 no_list: true
+capabilities:
+  - motion-planning
+  - vision-service
+  - hw-arm
 ---
 
 In this workshop, you will use Python to build a vision-guided robot that can identify colored blocks, pick them up, and move them to a bin.

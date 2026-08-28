@@ -20,6 +20,8 @@ aliases:
 # SME: James
 date: "2022-01-01"
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - device-setup
 ---
 
 We recommend using Viam on a 64-bit Linux distribution.

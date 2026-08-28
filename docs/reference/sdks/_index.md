@@ -7,6 +7,8 @@ description: "Write code to control your machine with Viam's Python, Go, TypeScr
 aliases:
   - /operate/control/sdks/
   - /sdks/
+capabilities:
+  - sdks
 ---
 
 ## Backend SDKs

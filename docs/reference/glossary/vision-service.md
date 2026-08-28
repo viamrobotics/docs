@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/vision-service/
+capabilities:
+  - glossary
 ---
 
 The vision service is a {{< glossary_tooltip term_id="service" text="service" >}} in the Viam platform that enables machines to interpret visual data captured by camera using computer vision and {{< glossary_tooltip term_id="ml" text="machine learning" >}} techniques.

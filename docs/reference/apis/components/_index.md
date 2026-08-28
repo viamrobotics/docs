@@ -11,4 +11,6 @@ aliases:
   - /dev/reference/apis/components/
   - /appendix/apis/components/
   - /components/
+capabilities:
+  - section-index
 ---

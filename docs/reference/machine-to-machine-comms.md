@@ -11,6 +11,8 @@ aliases:
   - /internals/machine-to-machine-comms/
   - /architecture/machine-to-machine-comms/
   - /operate/reference/architecture/machine-to-machine-comms/
+capabilities:
+  - machine-connectivity
 ---
 
 When building a smart machine application, a user typically begins by configuring their machine which can consist of one or more {{< glossary_tooltip term_id="part" text="parts" >}}.

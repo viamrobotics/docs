@@ -12,6 +12,8 @@ aliases:
   - /appendix/apis/services/generic/
   - /services/generic/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-generic
 ---
 
 The generic service API allows you to give commands to your [generic services](/reference/services/generic/) for running model-specific commands using [`DoCommand`](/reference/apis/services/generic/#docommand).

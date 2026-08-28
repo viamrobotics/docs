@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Structure of captured tabular data: document format, column reference, the data column, and common per-component data structures."
 date: "2025-02-10"
+capabilities:
+  - data-storage
 ---
 
 When you enable data capture on a component, `viam-server` records its readings to local disk and the data management service syncs those recordings to the cloud. Once synced, the captured tabular data (sensor readings, motor positions, encoder ticks, and other structured key-value data) lands in a single table called `readings` in the `sensorData` database. Each row represents one capture event from one resource.

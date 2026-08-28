@@ -17,6 +17,8 @@ aliases:
   - /get-started/try-viam/rover-resources/
   - /appendix/try-viam/rover-resources/
   - /dev/reference/try-viam/rover-resources/
+capabilities:
+  - hw-mobility
 ---
 
 There are two ways to get hands on a Viam Rover:

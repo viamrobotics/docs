@@ -7,6 +7,8 @@ type: "docs"
 description: "Create a branded login screen for your application."
 images: ["/operate/oauth.png"]
 date: "2025-01-22"
+capabilities:
+  - org-management
 ---
 
 If you are building a product on Viam, you can set up branded authentication for your end users.

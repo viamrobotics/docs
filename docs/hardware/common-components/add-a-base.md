@@ -10,6 +10,8 @@ aliases:
   - /operate/reference/components/base/
   - /operate/reference/components/base/boat/
   - /hardware-components/add-a-base/
+capabilities:
+  - hw-mobility
 ---
 
 Add a base to your machine's configuration to drive a mobile robot with movement commands like "move forward 300mm" or "spin 90 degrees." A base wraps your robot's drive system, whatever the motor layout, into a single interface that handles steering and speed for you.

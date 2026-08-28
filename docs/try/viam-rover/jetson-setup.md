@@ -12,6 +12,8 @@ aliases:
   - /appendix/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
   - /dev/reference/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
 date: "2026-05-23"
+capabilities:
+  - device-setup
 ---
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) comes preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.

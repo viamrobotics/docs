@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Scale from one machine to a fleet: templatize configuration with fragments, provision devices, deploy software and ML models, and manage updates."
+capabilities:
+  - fleet-deployment
 ---
 
 You have a single machine working. Now you need 10, or 100, or 1,000 machines running the same software with the same configuration. Fleet deployment is how you get there without configuring each machine by hand.

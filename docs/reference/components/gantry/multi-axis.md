@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/gantry/multi-axis/"
 component_description: "Supports a gantry with multiple linear rails. Composed of multiple single-axis gantries."
 # SME: Rand, Martha
+capabilities:
+  - hw-gantry
 ---
 
 Configure a `multi-axis` gantry to integrate a gantry made up of multiple [`single-axis`](/reference/components/gantry/single-axis/) gantries into your machine.

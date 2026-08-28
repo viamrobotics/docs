@@ -11,6 +11,8 @@ aliases:
   - /operate/hello-world/first-project/part-5/
   - /operate/hello-world/first-project/part-6/
   - /try/first-project/part-5/
+capabilities:
+  - vision-service
 ---
 
 **Goal:** Build a dashboard to monitor your inspection system.

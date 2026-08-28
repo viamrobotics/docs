@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Reference for the applications array in meta.json, which declares one or more Viam Applications for hosted deployment."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
 ---
 
 Reference for the `applications` array in `meta.json`. This array declares one or more Viam Applications that Viam hosts at `*.viamapplications.com` after you upload the module. For the deployment workflow that produces and uploads `meta.json`, see [Deploy a Viam application](/build-apps/hosting/deploy/).

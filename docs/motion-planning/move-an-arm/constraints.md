@@ -10,6 +10,9 @@ aliases:
   - /services/motion/constraints/
   - /mobility/motion/constraints/
   - /motion-planning/constraints/
+capabilities:
+  - motion-planning
+  - hw-arm
 ---
 
 By default, the motion planner returns any collision-free path to the target

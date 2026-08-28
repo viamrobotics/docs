@@ -5,6 +5,8 @@ full_link:
 short_description: namespace:type:subtype, for example `rdk:component:sensor`
 aliases:
   - /dev/reference/glossary/api-namespace-triplet/
+capabilities:
+  - glossary
 ---
 
 Every Viam {{< glossary_tooltip term_id="resource" text="resource" >}} implements an [application programming interface (API)](https://en.wikipedia.org/wiki/API) that describes how you can interact with that resource.

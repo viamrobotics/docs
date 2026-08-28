@@ -21,6 +21,9 @@ updated: "2025-09-11"
 cost: "0"
 no_list: true
 # SMEs: Bijan Haney
+capabilities:
+  - vision-service
+  - triggers-alerts
 ---
 
 Security systems often include a human component, like a supervisor who monitors camera streams for suspicious activity.

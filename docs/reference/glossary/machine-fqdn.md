@@ -7,6 +7,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/machine-fqdn/
+capabilities:
+  - glossary
 ---
 
 The fully qualified domain name (FQDN) of a {{< glossary_tooltip term_id="machine" text="machine" >}} in the Viam platform, typically in the format `<machine-name>.<location-id>.viam.cloud`.

@@ -42,6 +42,8 @@ aliases:
   - /motion-planning/motion-how-to/monitor-plan-execution/
   - /motion-planning/motion-how-to/monitor-a-running-plan/
   - /operate/mobility/monitor-plan-execution/
+capabilities:
+  - motion-planning
 ---
 
 Your robot arm needs to move from one pose to another without colliding with

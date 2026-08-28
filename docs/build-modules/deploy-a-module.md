@@ -14,6 +14,8 @@ aliases:
   - /modular-resources/upload/
   - /registry/upload/
   - /how-tos/upload-module/
+capabilities:
+  - module-registry
 ---
 
 There are several ways to deploy a module you wrote onto a machine. Which one to use depends on where you are in your software development cycle.

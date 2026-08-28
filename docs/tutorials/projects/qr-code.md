@@ -17,4 +17,7 @@ date: "2024-12-09"
 updated: "2024-12-09"
 cost: "0"
 resource: "codelab"
+capabilities:
+  - vision-service
+  - module-development
 ---

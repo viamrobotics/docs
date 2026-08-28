@@ -10,6 +10,8 @@ aliases:
   - /try/part-2/
   - /operate/hello-world/first-project/part-2/
   - /try/first-project/part-2/
+capabilities:
+  - vision-service
 ---
 
 **Goal:** Configure and use a machine to cloud data capture pipeline.

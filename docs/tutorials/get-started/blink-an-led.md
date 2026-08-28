@@ -23,6 +23,9 @@ date: "2022-10-04"
 cost: 70
 no_list: true
 toc_hide: true
+capabilities:
+  - hw-compute
+  - sdks
 ---
 
 <!-- LEARNING GOALS:

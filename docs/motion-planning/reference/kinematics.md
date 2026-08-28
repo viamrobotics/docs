@@ -8,6 +8,8 @@ description: "Set up the kinematic model that describes how your arm's joints an
 aliases:
   - /work-cell-layout/configure-robot-kinematics/
   - /build/work-cell-layout/configure-robot-kinematics/
+capabilities:
+  - motion-planning
 ---
 
 A kinematics file describes your arm's physical structure (link lengths, joint axes, joint limits) so the motion planner can solve the inverse kinematics problem: given a target pose, find joint angles that reach it.

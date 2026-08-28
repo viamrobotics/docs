@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Use ML models to auto-label images and programmatically build annotated datasets."
 date: "2025-01-30"
+capabilities:
+  - datasets
 ---
 
 Manually labeling hundreds of images is slow. If you already have a trained ML

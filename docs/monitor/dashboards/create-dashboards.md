@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Create a dashboard to visualize sensor data from machines across your organization."
+capabilities:
+  - dashboards
 ---
 
 Create a dashboard to visualize sensor data from machines across your organization. Dashboards display data through widgets that you configure to pull from specific sensors.

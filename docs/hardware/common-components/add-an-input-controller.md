@@ -9,6 +9,8 @@ date: "2025-03-07"
 aliases:
   - /operate/reference/components/input-controller/
   - /hardware-components/add-an-input-controller/
+capabilities:
+  - hw-actuation
 ---
 
 Add an input controller to your machine's configuration so you can use a gamepad, joystick, or other input device to control your machine.

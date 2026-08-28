@@ -9,6 +9,8 @@ aka:
 type: "page"
 aliases:
   - /dev/reference/glossary/flashed/
+capabilities:
+  - glossary
 ---
 
 Flashed or flashing refers to the process of writing an operating system, firmware, or other software directly to a device's non-volatile storage medium, such as an SD card, eMMC storage, or flash memory.

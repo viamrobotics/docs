@@ -12,6 +12,8 @@ aliases:
   - /dev/reference/apis/components/movement-sensor/
   - /appendix/apis/components/movement-sensor/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-sensing
 ---
 
 The movement sensor API allows you to give commands to your [movement sensor components](/reference/components/movement-sensor/) for getting a GPS location, linear velocity and acceleration, angular velocity and acceleration and heading.

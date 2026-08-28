@@ -10,6 +10,8 @@ aliases:
   - "/operate/reference/services/base-rc/"
   - /services/base-rc/
   - /mobility/base-rc/
+capabilities:
+  - hw-mobility
 ---
 
 ## Used with

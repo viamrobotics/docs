@@ -8,6 +8,8 @@ description: "Configure the color_detector vision service to find regions of a s
 date: "2026-04-14"
 aliases:
   - /vision/detect-by-color/
+capabilities:
+  - vision-service
 ---
 
 Use the `color_detector` vision service when you need to detect objects that stand out by color. It runs a heuristic hue-match on every frame with no ML model, no training data, and negligible compute cost.

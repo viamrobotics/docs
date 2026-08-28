@@ -13,6 +13,9 @@ time_estimate: "20 minutes"
 prev: "/tutorials/pick-and-place/perception-guided-picking/"
 next: "/tutorials/pick-and-place/wrap-up/"
 languages: ["python"]
+capabilities:
+  - module-development
+  - hw-arm
 ---
 
 This phase is optional. The previous phase already gave you a complete pick-and-place loop that runs from your own laptop: detection, planned motion, and a reliable place. This phase packages that same loop as a module so it runs on the robot directly, with no laptop connection required once it is deployed.

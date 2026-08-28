@@ -17,4 +17,6 @@ date: "2024-08-21"
 updated: "2024-08-21"
 cost: "0"
 resource: "codelab"
+capabilities:
+  - sdks
 ---

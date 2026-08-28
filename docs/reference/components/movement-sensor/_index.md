@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/components/movement-sensor/"
+capabilities:
+  - hw-sensing
 ---
 
 This section documents the configuration attributes for each built-in movement sensor model.

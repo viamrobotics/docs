@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Why Viam splits ML inference into two services, what each one does, and how they compose to produce detections, classifications, and point cloud objects."
 date: "2026-04-14"
+capabilities:
+  - vision-service
 ---
 
 Most robotics platforms handle machine learning inference as a single block: one configuration entry that loads a model and runs it against a camera. Viam splits this into two services. Understanding why makes the rest of the vision section make more sense.

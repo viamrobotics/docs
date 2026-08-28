@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/power-sensor.svg"]
 aliases:
   - "/components/power-sensor/"
+capabilities:
+  - hw-sensing
 ---
 
 This section documents the configuration attributes for each built-in power sensor model.

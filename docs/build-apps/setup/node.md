@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for running Viam SDK code from a Node.js process: a backend service, a CLI tool, or another Node app that talks to a Viam machine."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - sdks
 ---
 
 Set up a project for running Viam SDK code from a Node.js process: a backend service that supports a web app frontend, a CLI tool, or another Node app that talks to a Viam machine. Node.js requires extra setup compared to the browser because Node does not provide WebRTC natively: you register a WebRTC polyfill and plug in a Node-compatible gRPC transport before calling any SDK function. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

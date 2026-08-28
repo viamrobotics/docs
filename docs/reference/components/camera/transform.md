@@ -12,6 +12,8 @@ aliases:
   - "/reference/components/camera/transform/"
 component_description: "Use pipelines for applying transformations to an input image source."
 # SMEs: Rand, AV team
+capabilities:
+  - hw-camera
 ---
 
 Use the `transform` model to apply transformations to input source images.

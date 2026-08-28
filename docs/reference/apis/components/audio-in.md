@@ -10,6 +10,8 @@ date: "2025-11-12"
 # updated: ""  # When the content was last entirely checked
 aliases:
   - /dev/reference/apis/components/audio-in/
+capabilities:
+  - hw-audio
 ---
 
 <!-- The audio in API allows you to give commands to your [audio in components](/reference/components/audioIn/) for capturing audio.

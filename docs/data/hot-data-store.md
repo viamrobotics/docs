@@ -11,6 +11,8 @@ aliases:
   - /data/hot-data-store/
   - /build/data/hot-data-store/
   - /data-ai/data/hot-data-store/
+capabilities:
+  - data-storage
 ---
 
 Keep a rolling window of recent data in a fast-query database for significantly faster queries on the last few hours or days of captured data. All data continues to be written to blob storage regardless of hot data store settings. The hot data store is an additional copy, not a replacement.

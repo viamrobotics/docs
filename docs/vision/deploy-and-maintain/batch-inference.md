@@ -9,6 +9,8 @@ date: "2026-04-14"
 aliases:
   - /data-ai/ai/run-inference/
   - /vision/batch-inference/
+capabilities:
+  - ml-models
 ---
 
 Use `viam infer` to run a deployed ML model against an image that is already stored in the Viam Cloud. The model runs in Viam's cloud infrastructure, so this is the path to use when:

@@ -13,6 +13,8 @@ aliases:
   - "/reference/components/gripper/fake/"
 component_description: "A model used for testing, with no physical hardware."
 # SME: Rand
+capabilities:
+  - hw-actuation
 ---
 
 Configure a `fake` gripper to test implementing a gripper on your machine without any physical hardware:

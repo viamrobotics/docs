@@ -11,6 +11,8 @@ aliases:
   - /operate/modules/component-apis/generic/
   - /appendix/apis/components/generic/
 # updated: ""  # When the content was last entirely checked
+capabilities:
+  - hw-generic
 ---
 
 The generic API allows you to give commands to your [generic components](/reference/components/generic/) for running model-specific commands using [`DoCommand`](/reference/apis/components/generic/#docommand).

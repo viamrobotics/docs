@@ -11,6 +11,8 @@ aliases:
   - /manage/reference/viam-agent/manage-viam-agent/
   - /configure/agent/
   - /dev/reference/glossary/viam-agent/
+capabilities:
+  - viam-agent
 ---
 
 `viam-agent` is the on-device service manager for Viam. It runs as a systemd service on Linux machines and handles four responsibilities:

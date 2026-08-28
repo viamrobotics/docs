@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Add an ML model service and vision service to run a trained model on your machine."
+capabilities:
+  - ml-models
 ---
 
 Configure your machine to load a trained model from the registry and apply it

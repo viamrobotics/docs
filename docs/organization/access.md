@@ -11,6 +11,8 @@ aliases:
   - /cloud/rbac/
   - /fleet/rbac/
   - /manage/manage/access/
+capabilities:
+  - org-management
 ---
 
 To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations.

@@ -15,6 +15,8 @@ date: "2023-03-29"
 # updated: "2025-05-15"
 cost: 150
 no_list: true
+capabilities:
+  - hw-actuation
 ---
 
 <!-- LEARNING GOALS:

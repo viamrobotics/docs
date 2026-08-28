@@ -4,6 +4,8 @@ id: component
 short_description: A resource that often represents a physical piece of hardware which a computer controls; for example, a servo, a camera, or an arm.
 aliases:
   - /dev/reference/glossary/component/
+capabilities:
+  - glossary
 ---
 
 A resource that often represents a physical piece of hardware in a machine which a computer controls; for example, a servo, a camera, or an arm.

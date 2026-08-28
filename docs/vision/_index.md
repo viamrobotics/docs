@@ -11,4 +11,6 @@ aliases:
   - /build/vision-detection/
   - /vision-detection/
   - /vision/how-to/
+capabilities:
+  - vision-service
 ---

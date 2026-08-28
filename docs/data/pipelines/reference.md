@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Configuration fields, run statuses, cron schedule syntax, data source types, and execution limits."
 date: "2026-03-27"
+capabilities:
+  - data-pipelines
 ---
 
 Configuration fields, execution behavior, and limits for data pipelines. For an overview of how pipelines work, see [Data pipelines overview](/data/pipelines/overview/).

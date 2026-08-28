@@ -11,6 +11,8 @@ icon: true
 images: ["/icons/components/generic.svg"]
 aliases:
   - "/components/generic/"
+capabilities:
+  - hw-generic
 ---
 
 This section documents the configuration attributes for each built-in generic model.

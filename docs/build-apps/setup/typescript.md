@@ -6,6 +6,9 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for building a Viam web app with TypeScript: a custom dashboard, an operator interface, or any other browser-based app that talks to a Viam machine."
 date: "2026-04-10"
+capabilities:
+  - viam-apps
+  - sdks
 ---
 
 Set up a project for building a Viam web app with TypeScript: a custom dashboard, an operator interface, or any other browser-based app that talks to a Viam machine. This page covers the project scaffolding with [Vite](https://vitejs.dev/) and the Viam TypeScript SDK install. For the connection patterns your app will actually use, see [Connect to a machine](/build-apps/tasks/connect-to-machine/).

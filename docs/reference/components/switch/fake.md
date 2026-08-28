@@ -11,6 +11,8 @@ aliases:
   - "/components/switch/fake/"
   - "/reference/components/switch/fake/"
 component_description: "A model used for testing, with no physical hardware."
+capabilities:
+  - hw-actuation
 ---
 
 The `fake` switch model is a model for testing switch functionality without physical hardware.

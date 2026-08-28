@@ -6,6 +6,8 @@ layout: "docs"
 type: "docs"
 description: "Connect to another machine's resources by adding it as a remote part with an address and API key."
 date: "2026-04-16"
+capabilities:
+  - machine-config
 ---
 
 A remote part is a connection you configure yourself between two machines.

@@ -9,6 +9,8 @@ aliases:
   - /visualization/visualizing-with-the-3d-scene/
   - /visualization/3d-scene-tools/
   - /motion-planning/3d-scene/
+capabilities:
+  - scene-3d
 ---
 
 The **3D SCENE** tab renders your machine in an interactive 3D view: the frames of every

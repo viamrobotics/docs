@@ -16,6 +16,9 @@ date: "2023-09-17"
 cost: "0"
 no_list: true
 toc_hide: true
+capabilities:
+  - module-development
+  - hw-camera
 ---
 
 <!-- LEARNING GOALS

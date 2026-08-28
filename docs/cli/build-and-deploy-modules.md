@@ -5,6 +5,9 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Scaffold, build, upload, and version modules from the command line."
+capabilities:
+  - cli
+  - module-development
 ---
 
 Scaffold a new module, iterate on it locally with hot-reload, upload it to the registry, and manage versions and cloud builds.
