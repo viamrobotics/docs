@@ -18,6 +18,7 @@ go_resource_overrides = {
     "data_manager": "datamanager",
     "audio_in": "audioin",
     "audio_out": "audioout",
+    "world_state_store": "worldstatestore",
 }
 
 ## Ignore these specific APIs if they error, are deprecated, etc:
@@ -114,9 +115,6 @@ class GoParser:
 
         for resource in viam_resources:
 
-            if resource == "world_state_store":
-                print(f'Skipping Resource: {resource}')
-                continue
             ## Determine URL form for Go depending on type (like 'component'):
             if type in ("component", "service") and resource in go_resource_overrides:
                 url = f"{self.scrape_url}/go.viam.com/rdk/{type}s/{go_resource_overrides[resource]}"
@@ -248,6 +246,13 @@ class GoParser:
                                 ## in its entirety to the go_methods dictionary by type (like 'component'), by resource (like 'arm'),
                                 ## using the method_name as key:
 
+                                ## HACK: RDK's own StreamTransformChanges doc comment example uses "for change := range changes",
+                                ## but *TransformChangeStream is a plain struct with a Next() method, not a rangeable type, so
+                                ## that example does not compile. Override with the Next()/io.EOF loop the type's own doc comment
+                                ## describes (rdk services/worldstatestore/world_state_store.go, TransformChangeStream.Next):
+                                if resource == "world_state_store" and method_name == "StreamTransformChanges":
+                                    this_method_dict["code_sample"] = 'changes, err := myWorldStateStoreService.StreamTransformChanges(ctx, nil)\nif err != nil {\n  logger.Fatal(err)\n}\nfor {\n  change, err := changes.Next()\n  if err == io.EOF {\n    break\n  }\n  if err != nil {\n    logger.Fatal(err)\n  }\n  fmt.Printf("Change: %v\\n", change)\n}\n'
+
                                 self.go_methods[type][resource][method_name] = this_method_dict
 
                         ## If this Go interface inherits from another interface, also fetch data for those inherited methods:
@@ -315,7 +320,7 @@ class GoParser:
                                         elif resource == "mlmodel":
                                             self.go_methods[type][resource]['Close']['code_sample'] = 'my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")\n\nerr := my_mlmodel.Close(context.Background())\n'
                                         else:
-                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
+                                            self.go_methods[type][resource]['Close']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource.replace("_", "") + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Close(context.Background())\n'
 
                                 self.go_methods[type][resource]['Name'] = {'proto': 'Name', \
                                     'description': 'Get the name of the resource.', \
@@ -335,7 +340,7 @@ class GoParser:
                                         elif resource == "mlmodel":
                                             self.go_methods[type][resource]['Name']['code_sample'] = 'my_mlmodel, err := mlmodel.FromProvider(machine, "my_ml_model")\n\nerr := my_mlmodel.Name()\n'
                                         else:
-                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
+                                            self.go_methods[type][resource]['Name']['code_sample'] = 'my' + resource.title().replace("_", "") + 'Svc, err := ' + resource.replace("_", "") + '.FromProvider(machine, "my_' + resource + '_svc")\n\nerr = my' + resource.title().replace("_", "") + 'Svc.Name()\n'
 
                             ## Similarly, if the resource being considered inherits from resource.Actuator (Servo, for example),
                             ## then add the two inherited methods manually: IsMoving() and Stop():
