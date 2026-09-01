@@ -17,6 +17,7 @@ export default async (request: Request, context: Context) => {
       method: request.method,
       status: response.status,
       user_agent: request.headers.get("user-agent") ?? "",
+      accept: request.headers.get("accept") ?? "",
       country: context.geo?.country?.code ?? null,
     };
 
