@@ -23,3 +23,6 @@ typesense.env
 # Claude Code
 .claude/worktrees
 .claude/settings.local.json
+
+# Local Netlify folder
+.netlify
