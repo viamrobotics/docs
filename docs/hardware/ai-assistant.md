@@ -29,9 +29,15 @@ configuration change that you review before it takes effect.
   assistant opens in a panel on the right side of the page.
 - **What it can change.** From your request, the assistant adds, updates, or
   deletes components, services, modules, remotes, and triggers.
+- **What it can run.** On a machine page (not a fragment), the assistant can
+  propose shell commands for diagnostics such as checking network
+  connectivity, listing USB devices, or reading system information. Each
+  command requires your explicit approval before it runs. See
+  [Run shell commands for diagnostics](#run-shell-commands-for-diagnostics).
 - **What it reads.** The assistant reads your current configuration (including
   unsaved edits and resolved fragments), your machine's status, its logs,
-  validation errors, Viam documentation, and the module registry, and uses
+  validation errors, Viam documentation, the module registry, and your
+  machine's metadata (operating system, location, and organization), and uses
   them when it generates a proposal. For example, when you ask it to fix a
   problem, it reads the error the machine reported and proposes a change that
   addresses it.
@@ -90,6 +96,32 @@ Because every proposal waits for you to save or discard it, you review each
 change before it reaches your machine. You can also edit a staged resource by
 hand in the Builder or in JSON before you save.
 
+## Run shell commands for diagnostics
+
+When you ask the assistant to troubleshoot a problem on a machine, it may
+propose running a shell command on the machine to gather information. For
+example, "Why can't my camera connect?" might prompt the assistant to run
+`lsusb` to list USB devices, or "Why is my machine offline?" might prompt it to
+check network interfaces.
+
+Shell commands require your explicit approval every time:
+
+1. The assistant displays the exact command in an approval box with an
+   **Approve** and **Deny** button.
+1. Review the command. Click **Approve** to run it on the machine, or
+   **Deny** to skip it.
+1. If you approve, the assistant shows the command output and uses it to
+   continue troubleshooting or suggest a configuration change.
+
+The assistant detects your machine's operating system and uses the appropriate
+commands (Linux, macOS, or Windows PowerShell). Shell commands are available
+only on machine pages, not on fragment pages.
+
+If the machine does not have the shell service configured, the assistant adds
+the
+[`ViamShellDanger` fragment](https://app.viam.com/fragment/b511adfa-80ab-4a70-9bd5-fbb14696b17e/json)
+to enable it and asks you to save the configuration before continuing.
+
 ## Use the assistant on a fragment
 
 The AI assistant is also available when you edit a
@@ -113,6 +145,9 @@ Reach for the **AI assistant** when:
 - You want to add more than one related resource in a single request.
 - You want to fix an error the machine reported. The assistant reads the
   validation error or log and proposes a change that addresses it.
+- You want to troubleshoot a connectivity or hardware issue. The assistant
+  can run diagnostic commands on the machine to check network settings, USB
+  devices, or system information.
 - You want to learn what a resource does before you add it.
 
 Edit the configuration directly, through the form fields or in **JSON** mode,
