@@ -89,6 +89,20 @@ You must update any configurations that reference your modules using the old nam
 1. Click the organization name in the top navigation bar and click **Settings**.
 1. At the bottom of the page, click **Delete organization**.
 
+### Restrict sign-in methods
+
+Organization owners can restrict which sign-in methods members can use.
+By default, all methods are allowed: password, Google, GitHub, and Apple.
+
+1. Click the organization name in the top navigation bar and click **Settings**.
+1. In the **Security** section, toggle **Restrict sign-in methods**.
+1. Select the sign-in methods you want to allow.
+1. Click **Save**.
+
+Members who attempt to sign in with a restricted method are redirected to choose an allowed method.
+
+You can also restrict sign-in methods programmatically using the [`UpdateOrganization`](/reference/apis/fleet/#updateorganization) API method.
+
 ## Create and manage locations
 
 ### Create a location

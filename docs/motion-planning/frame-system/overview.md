@@ -175,12 +175,21 @@ For a worked example with a gripper, see
 
 ## Edit a frame in the Viam app
 
-To configure a frame, open the **CONFIGURE** tab in the Viam app, click
-the component's card in the sidebar, and click **Frame**. The Frame
-section is a JSON editor with no form, parent dropdown, or
-geometry-type picker. Edit the JSON directly to set parent, translation,
-orientation, and any geometry. Save with the **Save** button (or
-`⌘`/`Ctrl`+`S`).
+To configure a frame, open the **CONFIGURE** tab in the Viam app and
+click the component's card in the sidebar. Arms and grippers show the
+**Frame** section automatically with a setup banner; click **Set
+defaults** to initialize the frame, then edit the values. The defaults
+place the component at the world origin with no offset or rotation:
+
+- **Parent `world`**: the component's position is defined relative to
+  the fixed world reference point rather than another component.
+- **Zero translation**: no offset from the parent origin (x, y, and z
+  are all 0 mm).
+- **Identity orientation**: no rotation from the parent frame's axes.
+
+For other component types, click **Frame** to add the section.
+Edit the JSON directly to set parent, translation, orientation, and
+any geometry. Save with the **Save** button (or `⌘`/`Ctrl`+`S`).
 
 A typical frame configuration looks like this:
 

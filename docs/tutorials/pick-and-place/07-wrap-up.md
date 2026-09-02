@@ -24,7 +24,7 @@ If you completed the optional Phase 6, you also packaged that same loop as a mod
 
 This workshop was small on purpose, but it touched most of the moving parts you will use on any Viam machine:
 
-- **Configuration and runtime:** the Viam app as the single source of truth (the CONFIGURE tab and its JSON view), `viam-server` running your resources while `viam-agent` keeps it alive, and the module system, including a discovery service that configured the camera for you.
+- **Configuration and runtime:** the Viam app as the single source of truth (the Configure tab and its JSON view), `viam-server` running your resources while `viam-agent` keeps it alive, and the module system, including a discovery service that configured the camera for you.
 - **Resources:** components for the arm, gripper, depth camera, and pose-saving switches; obstacles configured as components so the planner sees the table and safety walls; and services for capability, a two-stage vision pipeline (a shape detector feeding a 3D segmenter) and the builtin motion service.
 - **Motion and perception:** the frame system letting the motion service plan a collision-free pick straight from a wrist-camera detection, no manual transform required; planning against your configured obstacles; and the wrist-camera rule of detecting from a known pose.
 - **Code:** the Python SDK (`RobotClient`, typed component and service clients, and `motion.move`), plus packaging that same script as an inline module.
