@@ -19,9 +19,9 @@ This phase is optional. The previous phase already gave you a complete pick-and-
 
 ## Why use a module
 
-A [module](/build-modules/) packages a resource so `viam-server` can run it directly, the same way the `ufactory` and `realsense` modules you added earlier run their drivers. Modules are the unit Viam shares and deploys: they live in a registry where they can be reused across machines, they carry versions so you can roll a deployment forward or back, and they build for each platform your fleet runs. Packaging your pick-and-place loop as a module puts your control code on that same footing as any driver.
+A [module](/build-modules/) packages a resource so `viam-server` can run it directly, the same way the `ufactory` and `realsense` modules you added earlier run their drivers. Modules are the unit Viam shares and deploys: they live in a registry where they can be reused across machines, they carry versions so you can roll a deployment forward or back, and they build for each platform your fleet runs. Packaging your pick-and-place loop as a module puts your pick-and-place code on that same footing as any driver.
 
-For your own control code, reach for a module when one of these is true for your setup:
+For your own robot logic, reach for a module when one of these is true for your setup:
 
 - The cycle has to keep running after you close your laptop or walk away.
 - The cycle has to restart on its own if it crashes or the robot reboots.
@@ -30,32 +30,37 @@ For your own control code, reach for a module when one of these is true for your
 
 If none of those apply, stop here. You have already built the thing this workshop set out to teach.
 
-This phase builds an **inline module**: the Viam app hosts the code and builds it for you in the cloud, with the source in an editor in your browser. A conventional module lives in its own Git repository that you build and upload yourself, and it is the better choice for code you share across many machines or maintain as a team. Inline is the faster path for a single machine's control code, so it is what you use here; everything you learn about the module lifecycle applies to both.
+This phase builds an **inline module**: the Viam app hosts the code and builds it for you in the cloud, with the source in an editor in your browser. A conventional module lives in its own Git repository that you build and upload yourself, and it is the better choice for code you share across many machines or maintain as a team. Inline is the faster path for a single machine's own logic, so it is what you use here; everything you learn about the module lifecycle applies to both.
 
 ## What changes when you package it
 
-The detection, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do. Only the wiring around that logic changes, in two places:
+The detection, the pose math, and the motion calls are the same pick-and-place logic, moved into a module's lifecycle methods with no change to what they do. Only the wiring around that logic changes, in a few places:
 
+- **No connection code necessary.** The module is part of the machine, so authentication is no longer necessary.
 - **How the module gets its resources.** A script calls `from_robot` after it connects; a module receives its resources through **dependency injection** instead.
+- **Config-driven resources.** Your local script uses hardcoded component names like "arm-1." The module reads those names dynamically, which allows a module to be used across different machines that may have different naming conventions.
 - **How the logic gets triggered.** A script runs top to bottom under `__main__`; a module runs its logic behind a **`do_command`** entry point that something else calls.
+- **Hard constraints in class structure.** For an inline module, the Viam app auto-generates the model identifier and class name, and you must not change them.
 
-The next two sections cover those two changes in turn.
+## Create the module
 
-## Create a control code module
+On the **Configure** tab, click the **+** icon then **Code**. Choose a "Viam-hosted" module, click **Proceed**, and select **Python** as the language. The Viam app creates a new configured resource with an embedded code editor and a generated module skeleton.
 
-On the **CONFIGURE** tab, click the **+** icon and select **Code**. Choose to create a "Viam-hosted" module with an inline editor, proceed past the information about configuring components, and select Python as the language. The Viam app creates a new configured resource with an embedded code editor in your browser with a generated module skeleton.
+<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in Configure with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
 
-<!-- ASSET P0 inline-module-editor (UI+): the inline module editor open in CONFIGURE with code pasted. See plans/2026-07-02-pick-and-place-shot-list.md -->
+{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in Configure with the generated Python skeleton.">}}
 
-{{<imgproc src="/tutorials/pick-and-place/inline-module-editor.png" resize="1200x" declaredimensions=true alt="The inline module code editor open in CONFIGURE with the generated Python skeleton.">}}
+Logic like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenient base class from the Viam SDK that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
 
-Control code like this is typically modeled as a **generic service**: a resource that exposes no specialized API of its own, so you can put arbitrary logic behind it. The skeleton builds that service on the `EasyResource` mixin, a convenience base class that fills in the boilerplate every resource needs and lets you override only the parts you care about. Those parts are **lifecycle methods**: functions the module framework calls at set points, such as `validate_config` when the config is checked, `new` when the resource starts, and `close` when it shuts down. One more method, **`do_command`**, is the generic service's entry point: because the service has no typed API, `do_command` is how a caller runs the actions it exposes.
+{{< alert title="Module identification on the registry" color="caution" >}}
+One value in that skeleton you should not change is the class's **`MODEL`**: a three-part `namespace:module-name:model-name` identifier, such as `your-org:your-module:pick-and-place`, that the Viam app generates when it creates the module. Together with the class name, it names your model uniquely on the registry, and the platform matches your code to its registry registration by exactly these values. Leave the `MODEL` and the class name as generated; changing either breaks that match, and the module fails to build.
+{{< /alert >}}
 
-Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Save and build the module at the end, once the code is in place.
+Over the next two sections you move your pick-and-place code into this skeleton: the typed resource handles become dependency injection through `new`, and the detection, pose math, and motion calls gather behind the `do_command` entry point. Once all the code is in place, you can save and build your code block, then run it on the robot.
 
 ## Dependency injection
 
-The same resources reach your code differently in a script and in a module:
+The same resources reach your code differently in a script versus a module:
 
 <!-- ASSET P1 diagram-script-vs-module (DIAGRAM): from_robot(...) vs new() attribute-named deps dependencies[Arm.get_resource_name(attrs["arm"])], resource names set once as config attributes -->
 
@@ -90,7 +95,7 @@ def validate_config(cls, config):
     if "arm" not in attrs or not attrs["arm"]:
         raise ValueError("attribute 'arm' (non-empty string) is required")
     required_deps.append(attrs["arm"])
-    # ...same for gripper, camera, home_pose, travel_pose, place_pose, vision...
+    # ...same for gripper, camera, "home-pose", "travel-pose", "place-pose", vision...
     required_deps.append("builtin")  # motion service
     return required_deps, []
 
@@ -104,9 +109,9 @@ def new(cls, config, dependencies):
     return self
 ```
 
-Keep the rest of your `new` close to this shape: look up each resource your existing Python script used by its configured attribute name, and store it on `self` so your pick-and-place logic can call it later.
+Keep the rest of your `new` close to this shape: look up each resource your existing Python script used by its configured attribute name, and store it on `self` so your pick-and-place logic can call it later. Note that the derived poses for approach and grasp do not need to be declared in new or validate config.
 
-The motion service is injected the same way. `validate_config` declares it as `"builtin"`, and `new` retrieves it with `dependencies[Motion.get_resource_name("builtin")]` (from `viam.services.motion import Motion`), so `motion.move` works straight from the injected dependencies.
+The motion service is injected the same way. `validate_config` declares it as `"builtin"`, and `new` retrieves it with `dependencies[MotionClient.get_resource_name("builtin")]` (from `viam.services.motion import MotionClient`), so `motion.move` works straight from the injected dependencies.
 
 {{< alert title="Same resource names, different retrieval" color="note" >}}
 Compare how you got the arm handle in the Python script against how you get it inside the module:
@@ -127,50 +132,51 @@ Assembled onto the module, using the dependencies you looked up in `new`, `run_p
 async def run_pick_cycle(self) -> bool:
     """Run one detect-pick-place cycle. Returns False if no object was detected, True on a completed cycle."""
     # 1. Observe from home so the wrist-mounted camera frame is in a known position.
-    await self.home.set_position(2)
-
+    await self.home_pose.set_position(2)
     # 2. Detect. vision-segment fuses the 2D shape detections with depth into
     #    3D objects, each with a point cloud and a label.
     objects = await self.vision.get_object_point_clouds(self.camera_name)
     if not objects:
         print("No objects detected")
         return False
-
     # Largest object by point-cloud byte size (a proxy for point count).
     # point_cloud is raw PCD bytes, so use len(point_cloud), not .size.
     obj = max(objects, key=lambda o: len(o.point_cloud))
     geometry = obj.geometries.geometries[0]
     label = geometry.label
     print(f"Detected: {label}")
-
-    # 3. Tag the detected pose with the camera frame; motion.move resolves it.
+    # 3. Derive the approach pose from the object center, in the camera
+    #    frame. cam-1 is wrist-mounted, but the approach move is resolved
+    #    from the camera frame while the arm is still at home, so it lands
+    #    accurately above the block.
     obj_in_cam = PoseInFrame(reference_frame=self.camera_name, pose=geometry.center)
-
-    # 4. Derive the approach and grasp poses from the object center.
     approach_pose = offset_pose(obj_in_cam.pose, APPROACH_MM)
-    grasp_pose = offset_pose(obj_in_cam.pose, GRIPPER_LENGTH_MM)
-
-    # 5. Pick: move above, open, descend down, grab, lift.
+    # 4. Pick: move above in the camera frame, open, then descend the
+    #    remaining distance straight down in the gripper's own frame, grab,
+    #    lift. Descending relative to the gripper avoids the wrist-mounted
+    #    camera frame shifting once the arm moves for the approach.
     await self.motion.move(
-        component_name=self.gripper_name,
-        destination=PoseInFrame(
-            reference_frame=self.camera_name, pose=approach_pose
-        ),
+        self.gripper_name,
+        PoseInFrame(reference_frame=self.camera_name, pose=approach_pose),
     )
     await self.gripper.open()
     await asyncio.sleep(SETTLE_S)
+    # Move the remaining distance from the approach pose (as a positive value).
+    grasp_distance = (APPROACH_MM - GRIPPER_LENGTH_MM) * -1
     await self.motion.move(
-        component_name=self.gripper_name,
-        destination=PoseInFrame(reference_frame=self.camera_name, pose=grasp_pose),
+        self.gripper_name,
+        PoseInFrame(
+            reference_frame=self.gripper_name,
+            pose=Pose(x=0, y=0, z=grasp_distance, o_x=0, o_y=0, o_z=1, theta=0),
+        ),
     )
     await self.gripper.grab()
     await asyncio.sleep(SETTLE_S)
-
-    # 6. Place: lift to the safe carrying height, drop at the saved bin pose.
-    await self.travel.set_position(2)
+    # 5. Place: lift to the safe carrying height, drop at the saved bin pose.
+    await self.travel_pose.set_position(2)
     await self.place_pose.set_position(2)
     await self.gripper.open()
-    await self.home.set_position(2)
+    await self.home_pose.set_position(2)
 
     return True
 ```
@@ -189,17 +195,17 @@ async def do_command(self, command, *, timeout=None, **kwargs):
 Saving an inline Python module triggers a cloud build that takes about a minute. Give it that minute rather than assuming the save failed.
 {{< /alert >}}
 
-With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **LOGS** tab shows the build progress the same way it showed module downloads back in Phase 2.
+With the code in place, save the module. The Viam app packages it and deploys it to the machine, and the **Logs** tab shows the build progress the same way it showed module downloads back in Phase 2.
 
-<!-- ASSET P1 logs-cloud-build (UI): LOGS showing the ~1 min cloud build + module start -->
+<!-- ASSET P1 logs-cloud-build (UI): Logs showing the ~1 min cloud build + module start -->
 
-{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The LOGS tab showing the inline module cloud build.">}}
+{{<imgproc src="/tutorials/pick-and-place/logs-cloud-build.png" resize="1200x" declaredimensions=true alt="The Logs tab showing the inline module cloud build.">}}
 
 {{< checkpoint >}}
-The module finishes its cloud build and starts without errors in the **LOGS** tab, and its resource shows online on the **CONFIGURE** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
+The module finishes its cloud build and starts without errors in the **Logs** tab, and its resource shows online on the **Configure** tab. If the build fails, read the build log for the specific error; a missing import or a syntax error carried over from the script is the most common cause.
 {{< /checkpoint >}}
 
-From the **CONTROL** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
+From the **Control** tab, find your module's test card and send a command such as `{"action": "pick_cycle"}` to run one full pick-and-place cycle on demand, the same cycle you watched run from your script, now running on the robot instead of your personal computer. To compare your module against a finished one, read the complete [`module-reference.py`](https://github.com/viam-devrel/pick-and-place/blob/main/scripts/module-reference.py) in the companion repo.
 
 <!-- ASSET P1 control-do-command (UI+): triggering the do_command from the app -->
 

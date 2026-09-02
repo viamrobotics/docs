@@ -1,6 +1,6 @@
 ---
-title: "Vision-Guided Pick-and-Place with the xArm6"
-linkTitle: "Pick-and-Place Workshop"
+title: "Vision-guided pick-and-place with the xArm6"
+linkTitle: "Pick-and-place Workshop"
 type: "docs"
 weight: 50
 description: "Build a vision-guided robot that detects blocks by shape and places them into a bin with motion planning, from manual control to programming an autonomous workflow in Python."
@@ -23,7 +23,9 @@ companion_repo: "https://github.com/viam-devrel/pick-and-place"
 no_list: true
 ---
 
-The workshop is structured as six sequential phases, each ending with checkpoints you can verify before moving on. The workshop has two milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two).
+In this workshop, you will use Python to build a vision-guided robot that can identify colored blocks, pick them up, and move them to a bin.
+
+The workshop is structured as six sequential phases, each ending with checkpoints you can verify before moving on. There are two key milestones: by the end of Phase 4 you drive the robot from your own code through a static, pre-planned sequence (milestone one), and by the end of Phase 5 you close the loop with live perception so the robot detects, picks, and places blocks on its own (milestone two).
 
 ## What you'll build
 

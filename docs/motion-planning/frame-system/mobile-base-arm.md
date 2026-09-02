@@ -64,7 +64,7 @@ Click **Save** in the top-right of the page (or press ⌘/Ctrl+S).
 
 ### 3. Add a frame to the arm
 
-In the sidebar, click your arm component to open its card. On the card, click **Frame**.
+In the sidebar, click your arm component to open its card. Find the **Frame** section (arms always show it) and click **Set defaults** to initialize the frame with parent `world`, zero translation, and identity orientation.
 The arm's parent is the base, not the world frame.
 
 Measure the offset from the center of the base to the arm's mounting point.
@@ -89,7 +89,7 @@ Click **Save**.
 
 Both the gripper and wrist camera are children of the arm.
 
-**Gripper** (attached directly to the end effector). In the sidebar, click your gripper component to open its card, then click **Frame**:
+**Gripper** (attached directly to the end effector). In the sidebar, click your gripper component to open its card. Find the **Frame** section (grippers always show it) and click **Set defaults** to initialize the frame (parent `world`, zero translation, identity orientation), then edit the values:
 
 ```json
 {

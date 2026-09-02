@@ -45,7 +45,7 @@ will refer to it every time you add or adjust a frame.
 
 ### 2. Add a frame to the arm
 
-In the **CONFIGURE** tab, click the arm component's card and then click **Frame**. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
+In the **CONFIGURE** tab, click the arm component's card and find the **Frame** section (arms always show it). Click **Set defaults** to initialize the frame with parent `world`, zero translation, and identity orientation. Then edit the values. (For details on the Frame editor, see [Edit a frame in the Viam app](/motion-planning/frame-system/overview/#edit-a-frame-in-the-viam-app).)
 
 If the arm base is your world frame origin:
 
@@ -97,7 +97,7 @@ For example, if the arm's +x points opposite to your intended +x, rotate 180 deg
 
 ### 4. Add a frame to the gripper
 
-In the sidebar, click your gripper component to open its card. On the card, click **Frame**.
+In the sidebar, click your gripper component to open its card. Find the **Frame** section (grippers always show it) and click **Set defaults** to initialize the frame with parent `world`, zero translation, and identity orientation.
 
 #### Pick where the gripper frame origin sits
 

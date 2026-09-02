@@ -356,13 +356,13 @@ vision,GetProperties,,get_properties,GetProperties,properties,getProperties
 vision,Close,,close,Close,,
 
 ## World State Store
-world_state_store,ListUUIDs,,list_uuids,,,listUUIDs
-world_state_store,GetTransform,,get_transform,,,getTransform
-world_state_store,StreamTransformChanges,,stream_transform_changes,,,streamTransformChanges
-world_state_store,DoCommand,,do_command,,,doCommand
-world_state_store,GetStatus,,get_status,,,getStatus
-world_state_store,GetResourceName,,get_resource_name,,,name
-world_state_store,Close,,close,,,
+world_state_store,ListUUIDs,,list_uuids,ListUUIDs,,listUUIDs
+world_state_store,GetTransform,,get_transform,GetTransform,,getTransform
+world_state_store,StreamTransformChanges,,stream_transform_changes,StreamTransformChanges,,streamTransformChanges
+world_state_store,DoCommand,,do_command,DoCommand,,doCommand
+world_state_store,GetStatus,,get_status,Status,,getStatus
+world_state_store,GetResourceName,,get_resource_name,Name,,name
+world_state_store,Close,,close,Close,,
 
 ## App
 app,GetUserIDByEmail,,get_user_id_by_email,GetUserIDByEmail,,getUserIDByEmail
