@@ -1,0 +1,25 @@
+# Viam
+
+> Viam is a platform for building, operating, and managing robots and other machines. A machine runs viam-server, exposes its hardware and services through typed gRPC APIs, and can be discovered, observed, and operated from the CLI, from SDKs, or from an AI agent holding an API key.
+
+## Start here for agents
+
+- [Use Viam from an AI agent](https://docs.viam.com/build-apps/use-viam-from-an-agent/): the model, the ways in, what to do before moving, and what the platform does when a session ends.
+- [Drive a machine from the CLI](https://docs.viam.com/cli/drive-a-machine/): discover resources, observe, plan motion, and stop, with exact method names and request shapes.
+- [Viam CLI reference](https://docs.viam.com/cli/reference/): every command, flag, and alias.
+
+## Reference
+
+- [Component APIs](https://docs.viam.com/reference/apis/components/)
+- [Service APIs](https://docs.viam.com/reference/apis/services/)
+- [Machine management API](https://docs.viam.com/reference/apis/robot/)
+- [Fleet and data APIs](https://docs.viam.com/reference/apis/fleet/)
+- [Component configuration reference](https://docs.viam.com/reference/components/)
+- [Service configuration reference](https://docs.viam.com/reference/services/)
+
+## Guides
+
+- [Set up a machine](https://docs.viam.com/set-up-a-machine/)
+- [Build apps with the SDKs](https://docs.viam.com/build-apps/)
+- [Motion planning](https://docs.viam.com/motion-planning/)
+- [Build and deploy modules](https://docs.viam.com/build-modules/)
