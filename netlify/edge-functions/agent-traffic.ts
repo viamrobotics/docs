@@ -1,7 +1,7 @@
 import type { Config, Context } from "@netlify/edge-functions";
 
 export default async (request: Request, context: Context) => {
-  const response = context.next();
+  const response = await context.next();
 
   const token = Netlify.env.get("AXIOM_TOKEN");
   const ingestUrl = Netlify.env.get("AXIOM_INGEST_URL");
@@ -15,7 +15,9 @@ export default async (request: Request, context: Context) => {
       _time: new Date().toISOString(),
       path: url.pathname,
       method: request.method,
+      status: response.status,
       user_agent: request.headers.get("user-agent") ?? "",
+      accept: request.headers.get("accept") ?? "",
       country: context.geo?.country?.code ?? null,
     };
 
