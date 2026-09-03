@@ -58,6 +58,8 @@ export const config: Config = {
     "/*.woff2",
     "/*.ttf",
     "/*.eot",
+    "/*.otf",
+    "/*.webmanifest",
     "/*.mp4",
     "/*.webm",
     "/*.pdf",
