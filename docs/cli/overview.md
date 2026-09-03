@@ -27,6 +27,7 @@ The CLI is particularly well-suited for tasks that are awkward or impossible in 
 | Area                     | What you can do                                                  | Guide                                                              |
 | ------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
 | Machine configuration    | Create machines, add components and services, apply fragments    | [Configure machines](/cli/configure-machines/)                     |
+| Operating a machine      | List resources, read cameras and sensors, plan motion, stop      | [Drive a machine](/cli/drive-a-machine/)                           |
 | Data management          | Export, tag, and delete captured data; configure database access | [Manage data](/cli/manage-data/)                                   |
 | Datasets and ML training | Create datasets, submit training jobs, run inference             | [Datasets and training](/cli/datasets-and-training/)               |
 | Data pipelines           | Create and manage scheduled MQL aggregation pipelines            | [Data pipelines](/cli/data-pipelines/)                             |
