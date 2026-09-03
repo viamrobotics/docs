@@ -153,6 +153,31 @@ const moved = await motion.move(goalPoseInFrame, gripperName);
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#move).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `destination` [PoseInFrame](https://flutter.viam.dev/viam_sdk/PoseInFrame-class.html) (required)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `worldState` [WorldState](https://flutter.viam.dev/viam_protos.common.common/WorldState-class.html)? (optional)
+- `constraints` [Constraints](https://flutter.viam.dev/viam_protos.service.motion/Constraints-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final destination = PoseInFrame(referenceFrame: 'world', pose: Pose(x: 100, y: 0, z: 100, oZ: 1));
+final success = await myMotionService.move(destination, 'myArm');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/move.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### MoveOnMap
@@ -336,6 +361,31 @@ const executionId = await motion.moveOnMap(myPose, baseName, slamServiceName);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonmap).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `destination` [Pose](https://flutter.viam.dev/viam_sdk/Pose-class.html) (required)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `slamServiceName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `motionConfiguration` [MotionConfiguration](https://flutter.viam.dev/viam_protos.service.motion/MotionConfiguration-class.html)? (optional)
+- `obstacles` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Geometry](https://flutter.viam.dev/viam_protos.common.common/Geometry-class.html)>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final executionId = await myMotionService.moveOnMap(Pose(x: 1000, y: 0, z: 0), 'myBase', 'mySlamService');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/moveOnMap.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -529,6 +579,37 @@ const globeExecutionId = await motion.moveOnGlobe(
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#moveonglobe).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `destination` [GeoPoint](https://flutter.viam.dev/viam_sdk/GeoPoint-class.html) (required)
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `movementSensorName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `heading` [double](https://api.flutter.dev/flutter/dart-core/double-class.html)? (optional)
+- `obstacles` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoGeometry](https://flutter.viam.dev/viam_protos.common.common/GeoGeometry-class.html)>? (optional)
+- `boundingRegions` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[GeoGeometry](https://flutter.viam.dev/viam_protos.common.common/GeoGeometry-class.html)>? (optional)
+- `motionConfiguration` [MotionConfiguration](https://flutter.viam.dev/viam_protos.service.motion/MotionConfiguration-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final executionId = await myMotionService.moveOnGlobe(
+  GeoPoint(latitude: 40.7, longitude: -73.9),
+  'myBase',
+  'myMovementSensor',
+);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/moveOnGlobe.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetPose
@@ -661,6 +742,29 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/s
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getpose).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `destinationFrame` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `supplementalTransforms` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[Transform](https://flutter.viam.dev/viam_protos.common.common/Transform-class.html)>? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[PoseInFrame](https://flutter.viam.dev/viam_sdk/PoseInFrame-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final pose = await myMotionService.getPose('myArm', 'world');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/getPose.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### StopPlan
@@ -752,6 +856,27 @@ await motion.stopPlan(baseName);
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#stopplan).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+await myMotionService.stopPlan('myBase');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/stopPlan.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### ListPlanStatuses
@@ -836,6 +961,27 @@ const response = await motion.listPlanStatuses();
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#listplanstatuses).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `onlyActivePlans` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[PlanStatusWithID](https://flutter.viam.dev/viam_protos.service.motion/PlanStatusWithID-class.html)>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final statuses = await myMotionService.listPlanStatuses(onlyActivePlans: true);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/listPlanStatuses.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -942,6 +1088,29 @@ const response = await motion.getPlan(baseName);
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#getplan).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `componentName` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+- `lastPlanOnly` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)? (optional)
+- `executionId` [String](https://api.flutter.dev/flutter/dart-core/String-class.html)? (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[MotionPlan](https://flutter.viam.dev/viam_sdk/MotionPlan.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example:
+final plan = await myMotionService.getPlan('myBase');
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/getPlan.html).
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -1096,6 +1265,27 @@ const result = await resource.doCommand(Struct.fromJson({ myCommand: { key: 'val
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#docommand).
 
 {{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `command` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic> (required)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>\>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+// Example using doCommand with an arm component
+const command = {'cmd': 'test', 'data1': 500};
+var result = myArm.doCommand(command);
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/doCommand.html).
+
+{{% /tab %}}
 {{< /tabs >}}
 
 ### GetStatus
@@ -1221,6 +1411,19 @@ motion.name
 ```
 
 For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/MotionClient.html#name).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `name` [String](https://api.flutter.dev/flutter/dart-core/String-class.html) (required)
+
+**Returns:**
+
+- [ResourceName](https://flutter.viam.dev/viam_sdk/ResourceName-class.html)
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/MotionClient/getResourceName.html).
 
 {{% /tab %}}
 {{< /tabs >}}

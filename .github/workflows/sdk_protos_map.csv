@@ -307,19 +307,19 @@ mlmodel,GetResourceName,,get_resource_name,Name,,
 mlmodel,Close,,close,Close,,
 
 ## Motion
-motion,Move,,move,Move,,move
-motion,MoveOnMap,,move_on_map,MoveOnMap,,moveOnMap
-motion,MoveOnGlobe,,move_on_globe,MoveOnGlobe,,moveOnGlobe
-motion,GetPose,,get_pose,GetPose,,getPose
-motion,StopPlan,,stop_plan,StopPlan,,stopPlan
-motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,,listPlanStatuses
-motion,GetPlan,,get_plan,PlanHistory,,getPlan
+motion,Move,,move,Move,move,move
+motion,MoveOnMap,,move_on_map,MoveOnMap,moveOnMap,moveOnMap
+motion,MoveOnGlobe,,move_on_globe,MoveOnGlobe,moveOnGlobe,moveOnGlobe
+motion,GetPose,,get_pose,GetPose,getPose,getPose
+motion,StopPlan,,stop_plan,StopPlan,stopPlan,stopPlan
+motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,listPlanStatuses,listPlanStatuses
+motion,GetPlan,,get_plan,PlanHistory,getPlan,getPlan
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 motion,Reconfigure,,,Reconfigure,,
 motion,FromRobot,,from_robot,,,
-motion,DoCommand,,do_command,DoCommand,,doCommand
+motion,DoCommand,,do_command,DoCommand,doCommand,doCommand
 motion,GetStatus,,get_status,Status,,getStatus
-motion,GetResourceName,,get_resource_name,Name,,name
+motion,GetResourceName,,get_resource_name,Name,getResourceName,name
 motion,Close,,close,Close,,
 
 
