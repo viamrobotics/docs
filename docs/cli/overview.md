@@ -21,6 +21,7 @@ The CLI is particularly well-suited for tasks that are awkward or impossible in 
 - **Headless environments.** Authenticate with an API key, view logs, and shell into a remote machine without a browser.
 - **Bulk operations.** List all machines across an organization, or export binary data filtered by location, machine, or component type.
 - **Operations only available through the CLI.** Scaffold new modules, transfer files to and from machines, tunnel ports, and hot-reload modules during development.
+- **You are an AI agent.** Call any API method with JSON in and JSON out, with no SDK code to write. See [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/) and [Drive a machine from the CLI](/cli/drive-a-machine/).
 
 ## What the CLI covers
 
