@@ -52,12 +52,18 @@ weight = 1
 disableAliases = true
 
 [outputs]
-home = ["HTML", "REDIR"]
+home = ["HTML", "REDIR", "SITETREE"]
 section = ["HTML", "Typesense"]
 
 [outputFormats.REDIR]
 mediaType = "text/netlify"
 baseName = "_redirects"
+isPlainText = true
+notAlternative = true
+
+[outputFormats.SITETREE]
+mediaType = "application/json"
+baseName = "sitetree"
 isPlainText = true
 notAlternative = true
 

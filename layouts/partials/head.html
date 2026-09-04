@@ -50,7 +50,10 @@
     type="{{ .MediaType.Type }}"
     href="{{ .Permalink | safeURL }}"
 />
-{{ end -}} {{ $outputFormat := partial "outputformat.html" . -}} {{ if and
+{{ end -}}
+<link rel="alternate" type="text/plain" title="llms.txt" href="{{ "llms.txt" | absURL }}" />
+<link rel="alternate" type="application/json" title="sitetree.json" href="{{ "sitetree.json" | absURL }}" />
+{{ $outputFormat := partial "outputformat.html" . -}} {{ if and
 hugo.IsProduction (ne $outputFormat "print") -}}
 <meta name="robots" content="index, follow" />
 {{ else -}}

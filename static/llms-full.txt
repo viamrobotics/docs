@@ -1,0 +1,338 @@
+# Viam — agent-facing pages, full text
+
+> The full text of the pages linked under "Start here for agents" in
+> [llms.txt](https://docs.viam.com/llms.txt), inlined here so an agent can
+> read both in a single fetch instead of following each link separately.
+
+# Use Viam from an AI agent
+
+Source: https://docs.viam.com/build-apps/use-viam-from-an-agent/
+
+An AI agent with a shell or an SDK can operate a Viam machine the same way a person or a program can.
+This page is written for the agent, or for the person setting one up.
+It covers what a machine is made of, how to reach it, what to do before moving anything, and what the platform does for you when things go wrong.
+
+If you already have a key and a terminal, the shortest path is [Drive a machine from the CLI](/cli/drive-a-machine/).
+
+## The model in one screen
+
+- A **machine** is a robot or device running `viam-server`.
+  It has one or more **parts**; the main part is the one you talk to.
+- A part serves **resources**: **components** (hardware such as an arm, a camera, a gripper, a motor) and **services** (software such as motion planning, vision, or data management).
+  Every resource has an **API** (its type, for example `rdk:component:arm`), a **model** (the implementation, often from a module), and a **name**.
+- Every API is defined in protobuf and served over gRPC.
+  The machine can list its resources and describe its methods at runtime, so you can learn a machine without documentation for its hardware.
+- The **frame system** is the machine's kinematic tree: where each component is relative to its parent and to the `world` frame.
+  The motion service plans against it.
+- A **key** authenticates you.
+  Keys are scoped to a machine, a location, or an organization.
+  Today every key minted from the CLI has full write access to its scope, and a machine checks only that a key is valid, not what it may do.
+
+## Ways in
+
+| Path | Use it when                                                                                                                                      | Guide                                                                                                                      |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| CLI  | You have a shell. One command calls any API method with JSON in and JSON out; no code to write.                                                  | [Drive a machine from the CLI](/cli/drive-a-machine/)                                                                      |
+| SDK  | You need to hold state across steps (a grasp, then a lift, then a place), stream frames, or run a loop. One long-lived client keeps one session. | [Connect to a machine](/build-apps/tasks/connect-to-machine/), [Control components](/build-apps/tasks/control-components/) |
+
+The two paths call the same API.
+Anything you can do with one you can do with the other; the difference is whether you want a process that stays connected.
+
+## Look before you move
+
+The order that works, and the reason for each step:
+
+1. **List the resources** (`ResourceNames`) and **their state** (`GetMachineStatus`).
+   A resource that is still configuring or unhealthy will fail every call; the status says why.
+2. **Read the frame system** (`FrameSystemConfig`) and each component's **kinematics and geometry**.
+   That tells you which frames exist, what is attached to what, and what the planner already knows about.
+3. **Observe** before acting: an image, a point cloud, a sensor reading.
+   A vision service can return an image, detections, and object point clouds in one call (`CaptureAllFromCamera`).
+4. **Plan motion through the motion service** rather than commanding joints or poses directly.
+   `Move` takes a goal pose in any frame, plus obstacles and constraints you declare, and returns collision-checked motion against the frame system's geometry.
+   The arm's own `MoveToPosition` is unplanned.
+5. **Verify by observation, not by return value.**
+   A gripper's `Grab` reporting success does not prove it lifted anything; look, or call `IsHoldingSomething` after the lift.
+
+Two known limits of perception worth planning around: a 3D segmenter's bounding-box center can include background points behind an object's edges, so it reads farther from the camera axis than the object is; and depth is least reliable at the near edge of a camera's range.
+Observing from directly above an object, from a moderate height, avoids both.
+
+## What the platform does for you
+
+- **Stops actuators when your session ends.**
+  Each client connection carries a heartbeat.
+  If it lapses because your process exits or crashes, the machine stops the actuators that session commanded, within about two seconds.
+  Consequences: from the CLI each command is its own session, so a motion started by one command stops when that command exits; and on some gripper models the stop releases the drive, dropping what it holds.
+  Sequences that must hold an object belong in one process with one client.
+- **Names every operation and lets you cancel it.**
+  `GetOperations` lists what is running; `CancelOperation` stops one; `StopAll` stops everything in one call.
+- **Refuses motion it cannot plan.**
+  A goal inside the table, or inside an obstacle you declared, fails with an error that names the constraint.
+- **Converges configuration.**
+  When you add a component or service, the machine applies it within about ten seconds; `GetMachineStatus` reports the revision it reached and each resource's state.
+
+Two things the heartbeat does not cover today: motion-service moves continue after the client that started them disappears, and there is no per-resource permission or approval step.
+A key that can read a camera can also move an arm.
+Use `StopAll` when a move must end, and give an agent a machine-scoped key rather than a location or organization key when it only needs one machine.
+
+## Remembering across sessions
+
+Machines, parts, locations, and organizations each carry a metadata document you can read and write through the app API: a place for notes such as calibration offsets or what worked last time.
+It is a single JSON object replaced whole on every write, with no revision check, so two writers can overwrite each other; keep notes small and read before you write.
+
+## Growing the machine
+
+A procedure that works can become a permanent capability of the machine.
+`viam module generate` scaffolds a module, `viam module reload` hot-loads it onto the running part, and the new resource then appears in `ResourceNames` like any built-in.
+See [Build and deploy modules](/cli/build-and-deploy-modules/).
+
+## Reading errors
+
+| Error                                                                            | Meaning                                                                                             |
+| -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `resource rdk:component:arm/my-arm not found`                                    | Wrong name or not configured; check `ResourceNames`.                                                |
+| `Unimplemented`                                                                  | This model does not implement that method. No further detail is given.                              |
+| `all IK solutions failed constraints. Failures: { obstacle constraint: 62.00% }` | The planner could not reach the goal; the percentages say which constraint blocked most candidates. |
+| `arm stalled at waypoint 2/2 (stuck joints: j3: at 110.0 want 118.8)`            | The arm hit something during execution.                                                             |
+| `modular resource config validation error: context deadline exceeded`            | The module did not answer in time, usually because it is still starting.                            |
+
+## Next
+
+- [Drive a machine from the CLI](/cli/drive-a-machine/): every command above, with the exact method names and request shapes.
+- [Connect to a machine](/build-apps/tasks/connect-to-machine/) and [Control components](/build-apps/tasks/control-components/) for the SDK path.
+- [Motion service](/motion-planning/) for planning, obstacles, and constraints in depth.
+
+---
+
+# Drive a machine from the CLI
+
+Source: https://docs.viam.com/cli/drive-a-machine/
+
+The CLI can call any API method a machine serves, with JSON in and JSON out.
+That makes it a complete way to operate a machine from a shell, for a person or for an AI agent, without writing SDK code.
+This page shows the commands in the order you need them.
+For the concepts behind them, see [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/).
+
+Prerequisites: you need the Viam CLI installed and authenticated with an API key.
+See [Viam CLI overview](/cli/overview/) for installation and authentication instructions.
+A machine-scoped key can reach one machine; a location or organization key can also list and create machines.
+
+## Find the machine
+
+```sh
+viam organizations list
+viam locations list --organization=<org-id>
+viam machines list --location=<location-id>
+viam machines part list --machine=<machine-id>
+viam machines part status --part=<part-id>
+```
+
+A machine has one or more parts; the main part is the one running `viam-server`.
+Every command below takes `--part=<part-id>`.
+`status` shows when the part was last reachable.
+
+## Call any API method
+
+```sh
+viam machines part run --part=<part-id> --method=<method> --data='<json>'
+```
+
+`run` invokes any gRPC method the machine serves, using the machine's own reflection, so it works for every component, service, and module.
+Name the method one of two ways:
+
+- **Full name**, for machine-level calls: `--method=viam.robot.v1.RobotService.ResourceNames`.
+- **Short name with a component**: `--component=my-arm --method=GetJointPositions`.
+  The CLI looks up the component's API, expands the name, and fills in the `name` field of the request.
+
+`--data` is the request message as JSON, with field names as they appear in the proto (`camera_name`, not `cameraName`).
+Omit it when the request needs nothing beyond the resource name.
+
+## Discover what the machine has
+
+Run these first, before any motion.
+
+```sh
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.ResourceNames
+```
+
+Every resource on the machine, with its API.
+
+```sh
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.GetMachineStatus
+```
+
+Every resource's state (configuring, ready, or unhealthy, with the error), the config revision the machine has applied, and module health.
+
+```sh
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.ResourceRPCSubtypes
+```
+
+The gRPC service descriptors for every API the machine serves: method names and request fields.
+
+```sh
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.FrameSystemConfig
+```
+
+The kinematic frame tree: which frames exist, their parents, and their geometry.
+
+Per resource, ask for the detail you need:
+
+```sh
+viam machines part run --part=<part-id> --component=my-arm --method=GetKinematics
+viam machines part run --part=<part-id> --component=my-arm --method=GetGeometries
+viam machines part run --part=<part-id> --component=my-cam --method=GetProperties
+```
+
+The motion service prints a readable frame table with current poses:
+
+```sh
+viam machines part motion print-config --part=<part-id>
+viam machines part motion print-status --part=<part-id>
+```
+
+Note: the CLI has no command that prints a machine's saved configuration (models and attributes).
+The SDKs can read it with `get_robot_part`.
+The calls above are the runtime truth and are usually what you want.
+
+## Observe
+
+```sh
+viam machines part run --part=<part-id> --component=my-cam --method=GetImages
+viam machines part run --part=<part-id> --component=my-cam --method=GetPointCloud
+viam machines part run --part=<part-id> --component=my-sensor --method=GetReadings
+viam machines part run --part=<part-id> --component=my-arm --method=GetJointPositions
+viam machines part run --part=<part-id> --component=my-arm --method=GetEndPosition
+```
+
+Images and point clouds come back inline, base64-encoded in the JSON.
+
+A vision service returns an image, detections, and object point clouds in one call:
+
+```sh
+viam machines part run --part=<part-id> --component=my-vision --method=CaptureAllFromCamera \
+  --data='{"camera_name":"my-cam","return_image":true,"return_detections":true,"return_object_point_clouds":true}'
+```
+
+Detections only:
+
+```sh
+viam machines part run --part=<part-id> --component=my-vision --method=GetDetectionsFromCamera \
+  --data='{"camera_name":"my-cam"}'
+```
+
+`--stream=1s` repeats a call on an interval and prints each result.
+It is polling, not a video stream; live video is on the machine's page in the Viam app.
+
+## Act
+
+Prefer planned motion.
+The motion service takes a goal pose and returns collision-checked motion against the frame system's geometry and any obstacles you declare.
+An arm's own `MoveToPosition` is unplanned and will drive straight through things.
+
+```sh
+viam machines part motion get-pose --part=<part-id> --component=my-gripper
+viam machines part motion set-pose --part=<part-id> --component=my-gripper \
+  --x=300 --y=250 --z=900 --ox=0 --oy=0 --oz=-1 --theta=0
+```
+
+`set-pose` moves a component's frame to a pose in the world frame: millimeters, and an orientation vector with theta in degrees.
+
+The same call through the raw API, with a declared obstacle and a straight-line constraint:
+
+```sh
+viam machines part run --part=<part-id> --component=builtin --method=Move --data='{
+  "component_name": "my-gripper",
+  "destination": {"reference_frame": "world",
+                  "pose": {"x": 300, "y": 250, "z": 900, "o_x": 0, "o_y": 0, "o_z": -1, "theta": 0}},
+  "world_state": {"obstacles": [{"reference_frame": "world", "geometries": [
+      {"center": {"x": 450, "y": -50, "z": 780, "o_z": 1},
+       "box": {"dims_mm": {"x": 60, "y": 60, "z": 60}}, "label": "blue-block"}]}]},
+  "constraints": {"linear_constraint": [{"line_tolerance_mm": 5, "orientation_tolerance_degs": 5}]}
+}'
+```
+
+Typed verbs on components:
+
+```sh
+viam machines part run --part=<part-id> --component=my-gripper --method=Open
+viam machines part run --part=<part-id> --component=my-gripper --method=Grab
+viam machines part run --part=<part-id> --component=my-gripper --method=IsHoldingSomething
+viam machines part run --part=<part-id> --component=my-arm --method=MoveToJointPositions \
+  --data='{"positions": {"values": [0, -90, 0, -90, 90, 0]}}'
+viam machines part run --part=<part-id> --component=my-base --method=SetVelocity \
+  --data='{"linear": {"y": 100}, "angular": {"z": 0}}'
+viam machines part run --part=<part-id> --component=my-motor --method=SetPower --data='{"power_pct": 0.5}'
+```
+
+Anything a resource offers beyond its typed API goes through `DoCommand`.
+The request wraps your command in a `command` object:
+
+```sh
+viam machines part run --part=<part-id> --component=my-service --method=DoCommand \
+  --data='{"command": {"command": "status"}}'
+```
+
+## Stop, and what stops for you
+
+```sh
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.StopAll
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.GetOperations
+viam machines part run --part=<part-id> --method=viam.robot.v1.RobotService.CancelOperation --data='{"id": "<op-id>"}'
+```
+
+`StopAll` stops every operation and every actuator in one call.
+
+Each client connection to the machine carries a heartbeat.
+When it lapses because the client exits or crashes, `viam-server` stops the actuators that client commanded, within about two seconds.
+For CLI users that means:
+
+- Every `part run` is its own connection, so a command that starts a motion and exits has that motion stopped when the connection ends.
+  Long moves belong in the motion service, whose `Move` returns when the motion finishes.
+- On some gripper models the same stop releases the drive, dropping what the gripper holds.
+  A sequence that must hold an object across steps belongs in one process with one connection, which means an SDK script rather than separate CLI commands.
+  Check `IsHoldingSomething` after a lift; do not trust `Grab`'s return value alone.
+
+Motion-service moves are not covered by the heartbeat: a `Move` in progress continues after the client that started it disappears.
+Use `StopAll` if it must end.
+
+## Change the machine
+
+```sh
+viam machines part add-resource --part=<part-id> --name=my-cam --resource-subtype=camera --model-name=viam:camera:realsense
+viam machines part remove-resource --part=<part-id> --name=my-cam
+viam machines api-key create --machine-id=<machine-id> --name=agent-key
+viam machines create --name=my-robot --location=<location-id>
+viam machines part logs --part=<part-id> --count=50
+viam machines part logs --part=<part-id> --tail
+```
+
+After a configuration change the machine converges within about ten seconds.
+Confirm with `GetMachineStatus`, which reports the config revision and each resource's state, rather than by waiting.
+
+## Reading errors
+
+| Error                                                                            | Meaning                                                                                             |
+| -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `resource rdk:component:arm/my-arm not found`                                    | Wrong name or not configured; check `ResourceNames`.                                                |
+| `Unimplemented`                                                                  | This model does not implement that method. No further detail is given.                              |
+| `all IK solutions failed constraints. Failures: { obstacle constraint: 62.00% }` | The planner could not reach the goal; the percentages say which constraint blocked most candidates. |
+| `arm stalled at waypoint 2/2 (stuck joints: j3: at 110.0 want 118.8)`            | The arm hit something during execution.                                                             |
+| `modular resource config validation error: context deadline exceeded`            | The module did not answer in time, usually because it is still starting.                            |
+
+## Method names by API
+
+| API                                                     | Read                                                                                                                       | Act                                                                           |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Machine (full names under `viam.robot.v1.RobotService`) | `ResourceNames`, `GetMachineStatus`, `ResourceRPCSubtypes`, `FrameSystemConfig`, `TransformPose`, `GetOperations`          | `StopAll`, `CancelOperation`, `RestartModule`                                 |
+| Arm                                                     | `GetJointPositions`, `GetEndPosition`, `GetKinematics`, `GetGeometries`, `IsMoving`                                        | `MoveToPosition`, `MoveToJointPositions`, `MoveThroughJointPositions`, `Stop` |
+| Gripper                                                 | `IsHoldingSomething`, `GetGeometries`, `GetKinematics`, `IsMoving`                                                         | `Open`, `Grab`, `Stop`                                                        |
+| Camera                                                  | `GetImages`, `GetPointCloud`, `GetProperties`, `GetGeometries`                                                             |                                                                               |
+| Sensor                                                  | `GetReadings`                                                                                                              |                                                                               |
+| Base                                                    | `GetProperties`, `IsMoving`                                                                                                | `MoveStraight`, `Spin`, `SetVelocity`, `SetPower`, `Stop`                     |
+| Motor                                                   | `GetPosition`, `GetProperties`, `IsPowered`, `IsMoving`                                                                    | `SetPower`, `GoFor`, `GoTo`, `SetRPM`, `Stop`                                 |
+| Vision service                                          | `GetDetectionsFromCamera`, `GetClassificationsFromCamera`, `GetObjectPointClouds`, `CaptureAllFromCamera`, `GetProperties` |                                                                               |
+| Motion service                                          | `GetPose`, `GetPlan`, `ListPlanStatuses`                                                                                   | `Move`, `StopPlan`                                                            |
+| Any resource                                            |                                                                                                                            | `DoCommand`                                                                   |
+
+The full, current list always comes from the machine itself through `ResourceRPCSubtypes`.
+When in doubt, ask the machine.
