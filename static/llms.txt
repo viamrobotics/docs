@@ -7,6 +7,7 @@
 - [Use Viam from an AI agent](https://docs.viam.com/build-apps/use-viam-from-an-agent/): the model, the ways in, what to do before moving, and what the platform does when a session ends.
 - [Drive a machine from the CLI](https://docs.viam.com/cli/drive-a-machine/): discover resources, observe, plan motion, and stop, with exact method names and request shapes.
 - [Viam CLI reference](https://docs.viam.com/cli/reference/): every command, flag, and alias.
+- [llms-full.txt](https://docs.viam.com/llms-full.txt): the full text of the two pages above, inlined in one file.
 
 ## Reference
 
@@ -19,7 +20,17 @@
 
 ## Guides
 
+- [What is Viam?](https://docs.viam.com/what-is-viam/)
 - [Set up a machine](https://docs.viam.com/set-up-a-machine/)
+- [Configure hardware](https://docs.viam.com/hardware/)
+- [Manage data](https://docs.viam.com/data/)
+- [Train ML models](https://docs.viam.com/train/)
+- [Computer vision](https://docs.viam.com/vision/)
+- [Build and deploy modules](https://docs.viam.com/build-modules/)
 - [Build apps with the SDKs](https://docs.viam.com/build-apps/)
 - [Motion planning](https://docs.viam.com/motion-planning/)
-- [Build and deploy modules](https://docs.viam.com/build-modules/)
+- [Visualization](https://docs.viam.com/visualization/)
+- [Fleet deployment](https://docs.viam.com/fleet/)
+- [Monitor and operate](https://docs.viam.com/monitor/)
+- [Admin and access](https://docs.viam.com/organization/)
+- [Tutorials](https://docs.viam.com/tutorials/)
