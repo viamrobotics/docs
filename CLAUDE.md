@@ -29,7 +29,7 @@ vale docs/[section]/
 
 `vale sync` downloads the latest style rules. `vale` then checks for style violations: em dashes, obscure abbreviations, parenthetical plurals, title case in headings, and other Viam style rules. Fix errors manually.
 
-CI's `vale` job (`.github/workflows/vale.yml`) runs across the whole repo, not just `docs/`. It only reports errors in files that changed in the PR (using reviewdog's `filter_mode: file`), but that includes any changed file anywhere, not only under `docs/`. If your PR touches CLAUDE.md, a script, or anything outside `docs/`, run `vale` on those files too; `vale docs/[section]/` alone won't catch it.
+CI's `vale` job (`.github/workflows/vale-lint.yml`) runs across the whole repo, not just `docs/`. There's no path filter on the workflow trigger, and `.vale.ini`'s `[*.{md}]` section scopes by file extension only, with no directory restriction. It only reports errors in files that changed in the PR (using reviewdog's `filter_mode: file`), but that includes any changed file anywhere, not only under `docs/`. If your PR touches CLAUDE.md, a script, or anything outside `docs/`, run `vale` on those files too; `vale docs/[section]/` alone won't catch it.
 
 Also pin the vale binary version when running locally. CI's `vale-action` pins `version: 3.12.0`; a newer local install (for example, a bare `brew install vale`) can silently disagree with CI on individual rule behavior—this bit us once when `Viam.DashesSpaces` misfired on 3.12.0 for an em dash sitting directly against a closing backtick with no separating character, a pattern 3.16.0 didn't flag. Download the pinned release from `https://github.com/errata-ai/vale/releases/download/v3.12.0/` if in doubt, rather than trusting whatever `vale` resolves to on `PATH`.
 
