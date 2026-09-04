@@ -3,6 +3,7 @@ title: Jobs
 id: job
 full_link: /manage/software/scheduled-jobs/
 short_description: Automated tasks that run on machines at specified intervals to perform routine operations.
+description: "Automated tasks that run on machines at specified intervals to perform routine operations."
 aliases:
   - /dev/reference/glossary/job/
 ---

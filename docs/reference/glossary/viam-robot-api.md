@@ -3,6 +3,7 @@ title: Viam Robot API
 id: viam-robot-api
 full_link:
 short_description: The specification for communication with resources.
+description: "The specification for communication with resources."
 aliases:
   - /dev/reference/glossary/viam-robot-api/
 ---
