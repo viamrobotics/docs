@@ -11,6 +11,7 @@
 
 ## Reference
 
+- [Full site structure (JSON)](https://docs.viam.com/sitetree.json): every page on the site, with hierarchy, always current.
 - [Component APIs](https://docs.viam.com/reference/apis/components/)
 - [Service APIs](https://docs.viam.com/reference/apis/services/)
 - [Machine management API](https://docs.viam.com/reference/apis/robot/)
