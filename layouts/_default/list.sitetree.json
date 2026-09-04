@@ -1,6 +1,7 @@
 {{- /*
   /sitetree.json: the full site IA as JSON, for agents (linked from
-  llms.txt). Mirrors the same child-selection and manualLink logic as
+  llms.txt, which this in turn points back to). Mirrors the same
+  child-selection and manualLink logic as
   themes/docsy/layouts/partials/sidebar-tree.html, so this matches the real
   sidebar rather than an independent notion of structure.
 
@@ -9,7 +10,7 @@
   `partial` returning a Go value, matching how sidebar-tree.html itself
   recurses.
 */ -}}
-{{- template "sitetree-node" . -}}
+{ "llms_txt": {{ "llms.txt" | absURL | jsonify }}, "tree": {{ template "sitetree-node" . }} }
 {{- define "sitetree-node" -}}
 {{- $s := . -}}
 {{- $path := cond (isset $s.Params "manuallink") ($s.Params.manualLink | absURL) (cond (isset $s.Params "manuallinkrelref") ((relref $s $s.Params.manualLinkRelref) | absURL) $s.Permalink) -}}
