@@ -29,6 +29,8 @@ vale docs/[section]/
 
 `vale sync` downloads the latest style rules. `vale` then checks for style violations: em dashes, obscure abbreviations, parenthetical plurals, title case in headings, and other Viam style rules. Fix errors manually.
 
+CI's `vale` job (`.github/workflows/vale.yml`) runs across the whole repo, not just `docs/`—it only reports errors in files that changed in the PR (using reviewdog's `filter_mode: file`), but that includes any changed file anywhere, not only under `docs/`. If your PR touches CLAUDE.md, a script, or anything outside `docs/`, run `vale` on those files too—`vale docs/[section]/` alone won't catch it.
+
 ### 4. Build the full site
 
 ```bash
@@ -64,6 +66,6 @@ Run prettier first because it can change line breaks that affect markdownlint re
 
 ## Glossary content structure
 
-`docs/reference/glossary/` is a Hugo leaf bundle (it has `index.md`, not `_index.md`)—the only one in the content tree. The other `.md` files in that directory (`api.md`, `frame-system.md`, etc.) are page resources of that single bundle, not standalone site pages: they have no permalink of their own and never render their own HTML. `layouts/docs/glossary.html` and `layouts/partials/glossary-terms.html` read them via `.Resources.ByType "page"` and inline each one into the single `/reference/glossary/` page.
+`docs/reference/glossary/` is a Hugo leaf bundle (it has `index.md`, not `_index.md`)—the only one in the content tree. The other `.md` files in that directory (`api.md`, `frame-system.md`, etc.) are page resources of that single bundle, not standalone site pages: they have no permalink of their own and never render their own HTML. `layouts/docs/glossary.html` and `layouts/partials/glossary-terms.html` read them with `.Resources.ByType "page"` and inline each one into the single `/reference/glossary/` page.
 
 Practical implications: individual term files' `description:`/other page-level frontmatter has no rendering consumer—don't backfill it expecting an SEO/meta effect. Any tooling that walks `docs/**/*.md` expecting one page per file (sitemaps, link checkers, the Tier 2 Markdown-mirror script) needs to special-case or skip these files rather than treat them as independent pages. The term's content and `short_description` (used by the `glossary_tooltip` shortcode) are the fields that actually matter.
