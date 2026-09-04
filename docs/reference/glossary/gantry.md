@@ -3,7 +3,6 @@ title: Gantry
 id: gantry
 full_link: /components/gantry/
 short_description: A mechanical system that only uses linear motion to carry out a task.
-description: "A mechanical system that only uses linear motion to carry out a task."
 aliases:
   - /dev/reference/glossary/gantry/
 ---

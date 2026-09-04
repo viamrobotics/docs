@@ -3,7 +3,6 @@ title: API Namespace Triplet
 id: api-namespace-triplet
 full_link:
 short_description: namespace:type:subtype, for example `rdk:component:sensor`
-description: "namespace:type:subtype, for example `rdk:component:sensor`."
 aliases:
   - /dev/reference/glossary/api-namespace-triplet/
 ---

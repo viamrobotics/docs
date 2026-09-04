@@ -3,7 +3,6 @@ title: Resource
 id: resource
 full_link:
 short_description: Resources are individual, addressable elements of a machine such as components or services.
-description: "Resources are individual, addressable elements of a machine such as components or services."
 aliases:
   - /dev/reference/glossary/resource/
 ---
