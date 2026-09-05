@@ -7,3 +7,5 @@ Given a destination pose and a component to move to that destination, `Move` wil
 4. Return whether or not this process succeeded.
 
 The motion service takes the volumes associated with all configured machine components (local and remote) into account for each request to ensure that the machine does not collide with itself or other known objects.
+
+`component_name` is the name of the component to move, as a string. Earlier SDK versions took a `ResourceName` message here; passing one now fails with `bad argument type for built-in operation`. Poses are in millimeters and degrees. If the path must avoid something that is not in the frame system, pass it as an obstacle in `world_state`.
