@@ -4,10 +4,9 @@
 
 ## Start here for agents
 
-- [Use Viam from an AI agent](https://docs.viam.com/build-apps/use-viam-from-an-agent/): the model, the ways in, what to do before moving, and what the platform does when a session ends.
-- [Drive a machine from the CLI](https://docs.viam.com/cli/drive-a-machine/): discover resources, observe, plan motion, and stop, with exact method names and request shapes.
+{{AGENT_PAGES}}
 - [Viam CLI reference](https://docs.viam.com/cli/reference/): every command, flag, and alias.
-- [llms-full.txt](https://docs.viam.com/llms-full.txt): the full text of the two pages above, inlined in one file.
+- [llms-full.txt](https://docs.viam.com/llms-full.txt): the full text of the pages above, inlined in one file.
 
 ## Reference
 

@@ -26,3 +26,7 @@ typesense.env
 
 # Local Netlify folder
 .netlify
+
+# Python
+__pycache__/
+*.pyc

@@ -1,0 +1,7 @@
+# Drives scripts/generate-llms-files.py: the curated, ordered list of pages
+# considered "agent-facing" enough to inline in full into llms-full.txt, and
+# to list first under llms.txt's "Start here for agents" section. Title and
+# description are pulled from each page's own frontmatter, not repeated
+# here, so there's one place that text lives.
+- /build-apps/use-viam-from-an-agent/
+- /cli/drive-a-machine/

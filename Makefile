@@ -22,6 +22,7 @@ purge:
 build-prod: clean setup
 	hugo $(PROD_OPTIONS)
 	python3 scripts/generate-markdown-mirror.py
+	python3 scripts/generate-llms-files.py
 
 build-dist: clean setup
 	hugo $(LOCAL_OPTIONS) -d dist
