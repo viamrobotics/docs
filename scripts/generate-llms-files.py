@@ -1,26 +1,20 @@
 #!/usr/bin/env python3
 """
-Generate public/llms.txt and public/llms-full.txt at build time, so neither
-can drift from the pages they describe.
+Generate public/llms.txt and public/llms-full.txt at build time, so
+neither can drift from the pages they describe.
 
-llms-full.txt is assembled by concatenating the already-generated Tier 2
-.md mirrors (see generate-markdown-mirror.py) for the pages listed in
-data/agent_pages.yaml -- no shortcode-resolution logic of its own, it just
-reads files that script already produced. Run this after
-generate-markdown-mirror.py.
+llms-full.txt concatenates the already-generated Markdown mirrors (see
+generate-markdown-mirror.py) for the pages in data/agent_pages.yaml -- no
+shortcode logic of its own. Run this after generate-markdown-mirror.py.
 
-llms.txt is scripts/llms-txt-template.md with the {{AGENT_PAGES}}
-placeholder replaced by one generated bullet per data/agent_pages.yaml
-entry (title and description pulled from the page's own frontmatter). The
-rest of the template (Reference, Guides) is hand-curated prose, not
-generated -- see the freshness-policy discussion on #5298 for why: which
-sections exist is editorial judgment, not a list of paths, so automating
-it away would lose the thing that makes it useful. A lightweight
-broken-link/coverage check for that hand-curated part is separate,
-follow-up work.
+llms.txt is scripts/llms-txt-template.md with {{AGENT_PAGES}} replaced by
+one bullet per agent_pages.yaml entry. The rest of the template
+(Reference, Guides) stays hand-curated: which sections exist is editorial
+judgment, not a list of paths, so automating it away would lose the thing
+that makes it useful.
 
-Neither file is checked into static/ -- like sitetree.json, they're pure
-build output, so staleness isn't possible by construction.
+Neither file lives in static/ (like sitetree.json, both are pure build
+output).
 
 Usage: python3 scripts/generate-llms-files.py
 (intended to run as a build step after generate-markdown-mirror.py, see
@@ -64,10 +58,8 @@ def main():
         sys.exit("public/ not found -- run `hugo` before this script")
 
     paths = load_agent_page_paths()
-    # Keyed by path, not the full permalink -- Hugo's actual configured
-    # baseURL varies by build context (production vs. a PR preview vs.
-    # local dev), so matching on path is what makes this work regardless
-    # of which build produced the current public/.
+    # Keyed by path, not the full permalink: baseURL varies by build
+    # context, so matching on path works regardless of which build ran.
     rows_by_path = {permalink_path(row["permalink"]): row for row in hugo_list_published()}
 
     bullets = []

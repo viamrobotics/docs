@@ -20,12 +20,10 @@ FRONTMATTER_RE = re.compile(r"\A---\n(.*?\n)---\n?", re.DOTALL)
 
 
 def permalink_path(permalink):
-    """The path portion of a permalink, independent of scheme/host -- e.g.
-    both "https://docs.viam.com/data/" and
-    "https://deploy-preview-1--viam-docs.netlify.app/data/" give "/data/".
-    Use this instead of assuming BASE_URL: Hugo's actual configured baseURL
-    varies by build context (production vs. a PR preview vs. local dev),
-    and permalinks always reflect whatever that build actually used."""
+    """The path portion of a permalink, independent of scheme/host, e.g.
+    "https://docs.viam.com/data/" -> "/data/". Use this instead of
+    assuming BASE_URL: Hugo's configured baseURL varies by build context
+    (production, PR preview, local dev)."""
     return urlparse(permalink).path
 
 
@@ -60,11 +58,10 @@ def output_file_for_permalink(permalink):
 
 
 def md_url_for_permalink(permalink):
-    """The .md mirror *URL* for a page's permalink -- same logic as
-    output_file_for_permalink, but a URL string rather than a filesystem
-    path. Used when one mirror's content needs to link to another mirror
-    (e.g. a redirect pointer) and should point at its .md variant rather
-    than kicking a markdown-consuming reader back into HTML."""
+    """The .md mirror *URL* for a page's permalink (same logic as
+    output_file_for_permalink, but a URL, not a filesystem path). Used so
+    a mirror linking to another mirror (e.g. a redirect pointer) points at
+    its .md variant, not its HTML page."""
     parsed = urlparse(permalink)
     path = parsed.path.strip("/")
     segments = path.split("/") if path else []
@@ -82,12 +79,9 @@ def _normalize_path(path):
 
 def netlify_force_redirects():
     """Returns {from_path: to_path} for every internal, force=true redirect
-    in netlify.toml (from/to both site-relative paths, not external URLs or
-    wildcards). These are 301s Netlify applies even when a real file exists
-    at `from` (force=true overrides Netlify's normal serve-existing-file-
-    first behavior), so a page at one of these paths is never actually seen
-    by a visitor -- mirroring its own (often thin) body would be actively
-    misleading, not just incomplete."""
+    in netlify.toml. force=true means the 301 fires even if a real file
+    exists at `from`, so that page's own body is never seen by a visitor.
+    Mirroring it would be misleading, not just thin."""
     with open(REPO_ROOT / "netlify.toml", "rb") as f:
         config = tomllib.load(f)
     redirects = {}
@@ -99,13 +93,10 @@ def netlify_force_redirects():
 
 
 def alias_redirects():
-    """Returns {from_path: to_path} parsed from Hugo's own generated
-    public/_redirects (built from every page's `aliases:` frontmatter --
-    see layouts/docs/index.redir). A netlify.toml redirect's target can
-    itself be one of these rather than a real page (a real visitor's
-    browser just follows both 301s in turn), so this is needed to follow a
-    redirect chain to its actual destination rather than stopping after
-    one hop."""
+    """Returns {from_path: to_path} parsed from Hugo's generated
+    public/_redirects (built from page `aliases:` frontmatter, see
+    layouts/docs/index.redir). Needed because a netlify.toml redirect's
+    target can itself be one of these, not a real page."""
     redirects_file = PUBLIC_DIR / "_redirects"
     redirects = {}
     if not redirects_file.is_file():
@@ -119,19 +110,14 @@ def alias_redirects():
 
 def resolve_redirect_chain(start_path, rows_by_path, max_hops=10):
     """Follows netlify.toml + alias redirects from start_path to their
-    final destination path, in case a hop lands on another redirect rather
-    than a real page. A step stops only when the current path is a real
-    published page *and* isn't itself force-redirected elsewhere -- a real
-    page can still be force-redirected away by a different rule (chained
-    force-redirects), so "it's a real page" alone isn't sufficient to stop;
-    matches Netlify's actual precedence, where force=true overrides even an
-    existing file but a plain (non-forced) redirect never does. Returns the
-    final path reached.
+    final destination. Stops only at a page that's both real *and* not
+    itself force-redirected elsewhere (chained force-redirects exist).
+    Matches Netlify's precedence, where force=true beats an existing file
+    but a plain redirect never does. Returns the final path.
 
-    A cycle or an excessively long chain is a hard failure (sys.exit), not
-    a warning -- nothing else in this pipeline validates netlify.toml or
-    page aliases against each other, so this is the only place either
-    would ever be caught at all."""
+    A cycle or excessive chain length is a hard failure: nothing else
+    validates netlify.toml/aliases against each other, so this is the
+    only place either would be caught."""
     force = netlify_force_redirects()
     combined = {**alias_redirects(), **force}
     current = start_path

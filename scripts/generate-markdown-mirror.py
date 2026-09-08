@@ -18,17 +18,9 @@ at present -- this is not expected to be an obstacle to LLM comprehension.
 Usage: python3 scripts/generate-markdown-mirror.py
 (intended to run as a build step after `hugo`, see the Makefile)
 
-Every failure mode below is a hard build failure (sys.exit), not a
-warning: this script runs unattended as part of every deploy, and a
-soft warning printed to a build log nobody is watching is equivalent to
-no signal at all. Human reviewers: this means a single bad include path,
-redirect cycle, or stale netlify.toml target blocks the *entire* site's
-deploy until fixed, not just that one page's mirror -- deliberate, since
-each of these conditions indicates something structurally broken (a
-bug in this script's own path logic, or a real, previously-invisible
-site bug) rather than routine content drift. If that trade-off ever
-stops making sense for a specific case, downgrade it deliberately, not
-by accident.
+Every failure mode below is a hard build failure, not a warning, to
+avoid any signals here being ignored. Failure to include the most
+technical content defeats the purpose of .md mirror generation.
 """
 
 import re
@@ -86,13 +78,10 @@ MAX_INCLUDE_DEPTH = 5
 
 
 def resolve_includes(body, source_path):
-    # Included files can themselves contain include shortcodes (e.g. a
-    # troubleshooting snippet that readfile's a test-command snippet), so
-    # resolve to a fixed point rather than a single pass. Hugo's own
-    # behavior (via .Page.RenderString) keeps relative paths anchored to
-    # the *original* page throughout, since .Page doesn't change identity
-    # across nested RenderString calls -- so page_dir stays fixed here too,
-    # it doesn't need to track per-level directories.
+    # Included files can themselves contain include shortcodes, so resolve
+    # to a fixed point, not a single pass. Relative paths stay anchored to
+    # the original page throughout (matches Hugo's own .Page.RenderString
+    # behavior), so page_dir doesn't need to track per-level directories.
     page_dir = source_path.parent
 
     def replace(m):
@@ -150,28 +139,18 @@ def build_page(row, redirects, rows_by_path):
         updated = ""  # Hugo's zero-value date sentinel -- page has no real date
     permalink = row["permalink"]
 
-    # netlify.toml force-redirects some pages away even though Hugo builds a
-    # real HTML file for them -- no visitor ever sees that page's own body,
-    # so mirroring it here would be actively misleading, not just thin. A
-    # short pointer to the real destination instead: no Netlify-specific
-    # mechanism involved, so this is fully verifiable locally rather than
-    # only by observing production redirect behavior.
+    # netlify.toml force-redirects some pages away even though Hugo builds
+    # real HTML for them. No visitor sees that body, so mirroring it would
+    # be misleading. A short pointer instead, fully testable locally (no
+    # Netlify-specific mechanism involved).
     redirect_to = redirects.get(permalink_path(permalink))
     if redirect_to is not None:
-        # The first hop can itself be another redirect (e.g. a
-        # netlify.toml redirect landing on an alias-based one) rather than
-        # a real page -- a visitor's browser just follows both 301s in
-        # turn, so follow the whole chain here too instead of stopping
-        # after one hop.
+        # The first hop can itself be another redirect, not a real page.
         final_path = resolve_redirect_chain(redirect_to, rows_by_path)
         target_row = rows_by_path.get(final_path)
         if target_row is None:
-            # The chain ends somewhere that still isn't a published page --
-            # a genuinely stale netlify.toml redirect target, exactly the
-            # kind of previously-invisible site bug this check exists to
-            # catch (nothing else in this pipeline validates netlify.toml
-            # against reality). Fail loudly rather than silently degrading
-            # to a link a real visitor would also 404 on.
+            # Chain ends at an unpublished path: a stale netlify.toml
+            # target. Fail loudly rather than link to a 404.
             sys.exit(
                 f"generate-markdown-mirror: {permalink}: redirect chain (via {redirect_to!r}) "
                 f"ends at {final_path!r}, which is not a published page -- check netlify.toml"
@@ -211,12 +190,7 @@ def main():
     rows_by_path = {permalink_path(row["permalink"]): row for row in rows}
     redirects = netlify_force_redirects()
 
-    # Two different permalinks could in principle map to the same .md
-    # output path (e.g. a page whose own slug happens to end in ".md"
-    # colliding with another page's mirror file) -- silently overwriting
-    # one page's mirror with another's would be a much worse failure mode
-    # than refusing to build, so check explicitly rather than assuming
-    # today's data (no collisions, as of writing) always holds.
+    # Error if two permalinks map to the same .md output path.
     seen_output_paths = {}
     for row in rows:
         out_path = output_file_for_permalink(row["permalink"])
