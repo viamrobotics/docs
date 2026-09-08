@@ -57,6 +57,78 @@ The order that works, and the reason for each step:
 Two known limits of perception worth planning around: a 3D segmenter's bounding-box center can include background points behind an object's edges, so it reads farther from the camera axis than the object is; and depth is least reliable at the near edge of a camera's range.
 Observing from directly above an object, from a moderate height, avoids both.
 
+## What the machine will not tell you
+
+Everything below is true of any Viam machine, and none of it is discoverable from the machine's own configuration or method listing. Read it before you plan a motion.
+
+### Moving with the motion service
+
+The motion service plans a path for a component and executes it on the arm. Give it the name of the component you want moved, the destination as a pose in a named frame, and any constraints:
+
+```python
+from viam.proto.common import Pose, PoseInFrame
+from viam.proto.service.motion import Constraints, LinearConstraint
+from viam.services.motion import MotionClient
+
+motion = MotionClient.from_robot(machine, "builtin")
+
+# Move the gripper's frame to a point 100 mm above the block, pointing straight down.
+above_block = PoseInFrame(
+    reference_frame="world",
+    pose=Pose(x=600, y=100, z=880, o_x=0, o_y=0, o_z=-1, theta=0),
+)
+await motion.move(component_name="pick-grip", destination=above_block)
+
+# Descend on a straight line. Use a linear constraint for the last 100 mm of any
+# approach, and for every move while holding something.
+straight = Constraints(
+    linear_constraint=[LinearConstraint(line_tolerance_mm=5, orientation_tolerance_degs=5)]
+)
+at_grasp = PoseInFrame(reference_frame="world", pose=Pose(x=600, y=100, z=784, o_z=-1))
+await motion.move(component_name="pick-grip", destination=at_grasp, constraints=straight)
+```
+
+Plan the long part of the approach as a free move to the standoff pose, then one linear move straight down, and one linear move back up. Keep the linear constraint for that short final segment. A descent built from many small linear steps tends to fail: with a linear constraint the motion service solves for a direct straight line and will not fall back to a curved path, so a single segment with no direct solution returns `linear with cbirrt not allowed and no direct solutions found`. Read that as this exact straight line being infeasible, not the goal being unreachable, and either widen the tolerance or plan that segment as a free move.
+
+`component_name` is the component's name as a string. Earlier versions of the SDKs took a `ResourceName` message here. If you pass one now, the call fails with `bad argument type for built-in operation`, which is the protobuf library rejecting the message where it expects a string. The same applies to `get_pose`.
+
+`get_pose` reports where a component's frame is, in any other frame:
+
+```python
+gripper_in_world = await motion.get_pose(component_name="pick-grip", destination_frame="world")
+```
+
+### Units and frames
+
+Poses are in millimeters and degrees. Point clouds are in meters. The orientation of a pose is an orientation vector: `o_x`, `o_y`, `o_z` give the direction the frame's z axis points, and `theta` is the roll about it. A gripper pointing straight down at the table has `o_z=-1`.
+
+A vision service returns objects in the frame of the camera it read. To use them as motion targets, convert them with `transform_pose` on the machine client, which applies the frame system:
+
+```python
+from viam.proto.common import PoseInFrame
+
+camera_frame_center = PoseInFrame(reference_frame="wrist-cam", pose=obj.geometries.geometries[0].center)
+world_center = await machine.transform_pose(camera_frame_center, "world")
+```
+
+The frame system holds fixed things: the arm's base, the cameras, the table, a place pad. Read it with `get_frame_system_config`. Things that move are not in it. Read those from vision services, and pass them to `move` as obstacles in a `WorldState` when a path must avoid them.
+
+### Waiting
+
+Pass a timeout on every call. A camera or vision read that takes more than a few seconds is stuck, not slow, and a call without a deadline waits forever. If a call does not return, `get_operations` on the machine client lists it, and `cancel_operation` ends it.
+
+Some drivers report `is_moving` as true while the arm is still. Judge motion by change in joint positions over a short window, not by that flag.
+
+### Grasping
+
+Grasp at or above the object's center height. A grasp near the surface it rests on stalls the jaw on that surface, not on the object.
+
+`grab` returns whether the gripper holds something. `is_holding_something` is the check to make after any move while carrying. When a client's session ends, viam-server stops every actuator that session commanded. A gripper that holds an object keeps holding it. A gripper that closed on nothing stops where it is, with no force, until the next command.
+
+### Looking
+
+Read cameras from 300 mm or more above an object. Closer than that, the gripper's own fingertips enter the frame and color detectors find them. Check a vision result once against an independent depth read, then trust it; the check costs one call, rebuilding perception costs ten minutes. The first frame after a machine boots can be stale. If a reading is far from where the scene should be, read again.
+
 ## What the platform does for you
 
 - **Stops actuators when your session ends.**
