@@ -11,6 +11,10 @@
 
 [build.environment]
   HUGO_VERSION = "0.152.2"
+  # scripts/_docs_build.py uses tomllib (3.11+ stdlib only); Netlify's
+  # documented default is just "latest stable 3.x", not worth leaving to
+  # an assumption given how much of the build now depends on it.
+  PYTHON_VERSION = "3.12"
 
 [[redirects]]
   from = "/data/"
