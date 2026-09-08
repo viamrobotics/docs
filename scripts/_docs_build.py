@@ -9,12 +9,23 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_DIR = REPO_ROOT / "public"
 BASE_URL = "https://docs.viam.com/"
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?\n)---\n?", re.DOTALL)
+
+
+def permalink_path(permalink):
+    """The path portion of a permalink, independent of scheme/host -- e.g.
+    both "https://docs.viam.com/data/" and
+    "https://deploy-preview-1--viam-docs.netlify.app/data/" give "/data/".
+    Use this instead of assuming BASE_URL: Hugo's actual configured baseURL
+    varies by build context (production vs. a PR preview vs. local dev),
+    and permalinks always reflect whatever that build actually used."""
+    return urlparse(permalink).path
 
 
 def hugo_list_published():
@@ -39,7 +50,7 @@ def output_file_for_permalink(permalink):
     https://docs.viam.com/hardware/configure-hardware/ ->
     public/hardware/configure-hardware.md (a sibling of Hugo's own
     public/hardware/configure-hardware/index.html)."""
-    path = permalink[len(BASE_URL) :].strip("/") if permalink.startswith(BASE_URL) else permalink.strip("/")
+    path = permalink_path(permalink).strip("/")
     if not path:
         return PUBLIC_DIR / "index.md"
     segments = path.split("/")

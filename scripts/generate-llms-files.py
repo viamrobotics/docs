@@ -37,6 +37,7 @@ from _docs_build import (
     frontmatter_field,
     hugo_list_published,
     output_file_for_permalink,
+    permalink_path,
     read_frontmatter,
 )
 
@@ -63,24 +64,34 @@ def main():
         sys.exit("public/ not found -- run `hugo` before this script")
 
     paths = load_agent_page_paths()
-    rows_by_permalink = {row["permalink"]: row for row in hugo_list_published()}
+    # Keyed by path, not the full permalink -- Hugo's actual configured
+    # baseURL varies by build context (production vs. a PR preview vs.
+    # local dev), so matching on path is what makes this work regardless
+    # of which build produced the current public/.
+    rows_by_path = {permalink_path(row["permalink"]): row for row in hugo_list_published()}
 
     bullets = []
     full_sections = []
     for path in paths:
-        permalink = BASE_URL + path.strip("/") + "/"
-        row = rows_by_permalink.get(permalink)
+        normalized = "/" + path.strip("/") + "/"
+        row = rows_by_path.get(normalized)
         if row is None:
-            sys.exit(f"generate-llms-files: {path!r} in agent_pages.yaml is not a published page ({permalink})")
+            sys.exit(f"generate-llms-files: {path!r} in agent_pages.yaml is not a published page")
 
         source_path = REPO_ROOT / row["path"]
         fm_text, _ = read_frontmatter(source_path)
         title = frontmatter_field(fm_text, "title") or row["title"]
         description = frontmatter_field(fm_text, "description") or ""
 
-        bullets.append(f"- [{title}]({permalink}){': ' + description if description else ''}")
+        # llms.txt is a hand-curated document describing the real production
+        # site, so its links are always the canonical production URL --
+        # even when this script runs against a PR-preview or local build.
+        canonical_link = BASE_URL + path.strip("/") + "/"
+        bullets.append(f"- [{title}]({canonical_link}){': ' + description if description else ''}")
 
-        mirror_file = output_file_for_permalink(permalink)
+        # ...but the mirror file to *read* is the one this build actually
+        # produced, at whatever permalink this build actually used.
+        mirror_file = output_file_for_permalink(row["permalink"])
         if not mirror_file.is_file():
             sys.exit(f"generate-llms-files: expected mirror file not found: {mirror_file} "
                       "(run generate-markdown-mirror.py first)")
