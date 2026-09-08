@@ -1,5 +1,13 @@
 [build]
   publish = "public"
+  # This overrides the dashboard's "Build command" setting (netlify.toml
+  # wins when both are set) -- deliberate: the previous dashboard-only
+  # command silently diverged from what this repo's Makefile assumed,
+  # which is exactly the kind of drift that shouldn't be possible for
+  # something this load-bearing. Same hugo invocation the dashboard had
+  # (matches Makefile's PROD_OPTIONS), plus the two scripts that generate
+  # the .md mirrors and llms.txt/llms-full.txt at build time.
+  command = "hugo -e production --config config.toml,config_prod.toml --minify && python3 scripts/generate-markdown-mirror.py && python3 scripts/generate-llms-files.py"
 
 [build.environment]
   HUGO_VERSION = "0.152.2"

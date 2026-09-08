@@ -160,8 +160,9 @@ def read_frontmatter(source_path):
 
 def frontmatter_field(fm_text, key):
     """Extract a single simple (single-line, optionally quoted) frontmatter
-    field by regex rather than a full YAML parse -- every field these
-    scripts read (title, description, updated, date) is authored as a plain
-    single-line scalar throughout this repo."""
+    field by regex to avoid a PyYAML dependency. Works because every field
+    these scripts read (title, description, updated, date) is authored as
+    a plain single-line scalar throughout this repo -- would silently miss
+    a multi-line or nested value."""
     m = re.search(rf'^{key}:\s*"?(.*?)"?\s*$', fm_text, re.MULTILINE)
     return m.group(1) if m else None

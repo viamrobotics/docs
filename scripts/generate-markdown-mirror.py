@@ -9,14 +9,11 @@ does not run Hugo's own template pipeline -- Hugo's Goldmark renderer only
 converts Markdown to HTML, so there's no way to get clean Markdown back out
 of Hugo itself for pages that use shortcodes).
 
-v0 scope: most Hugo shortcodes (alert, tabs, card, table, etc.)
-are left as literal `{{< shortcode >}}` syntax in the output -- LLMs parse
-templated syntax like this reasonably well without rendering, and no
-information is lost, just polish. The three file-include shortcodes
-(readfile, read-code-snippet, snippet) are the exception: left raw, they'd
-show an empty shortcode call where a real code example or prose snippet
-belongs, which is a missing-information problem, not a polish one -- so
-those are resolved by inlining the referenced file's content directly.
+The three file-include shortcodes (readfile, read-code-snippet, snippet)
+are parsed in from shortcodes to ensure that all technical information is
+included in the served Markdown. Other Hugo shortcodes (alert, tabs, card,
+table, etc.) are left as literal `{{< shortcode >}}` syntax in the output
+at present -- this is not expected to be an obstacle to LLM comprehension.
 
 Usage: python3 scripts/generate-markdown-mirror.py
 (intended to run as a build step after `hugo`, see the Makefile)
