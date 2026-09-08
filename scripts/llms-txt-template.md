@@ -2,7 +2,7 @@
 
 > Viam is a platform for building, operating, and managing robots and other machines. A machine runs viam-server, exposes its hardware and services through typed gRPC APIs, and can be discovered, observed, and operated from the CLI, from SDKs, or from an AI agent holding an API key.
 
-Every page on this site is also available as Markdown: append `.md` to its URL (e.g. `/hardware/configure-hardware/` becomes `/hardware/configure-hardware.md`). This applies to any link you encounter anywhere on the site, not just the ones listed below. Some pages include literal Hugo shortcode syntax (e.g. `{{< alert >}}...{{< /alert >}}`) rather than fully rendered output.
+Every page on this site is also available as Markdown: append `.md` to its URL (for example, `/hardware/configure-hardware/` becomes `/hardware/configure-hardware.md`). This applies to any link you encounter anywhere on the site, not just the ones listed below. Some pages include literal Hugo shortcode syntax (for example, `{{< alert >}}...{{< /alert >}}`) rather than fully rendered output.
 
 ## Start here for agents
 
