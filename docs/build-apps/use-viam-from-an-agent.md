@@ -88,6 +88,8 @@ at_grasp = PoseInFrame(reference_frame="world", pose=Pose(x=600, y=100, z=784, o
 await motion.move(component_name="pick-grip", destination=at_grasp, constraints=straight)
 ```
 
+Plan the long part of the approach as a free move to the standoff pose, then one linear move straight down, and one linear move back up. Keep the linear constraint for that short final segment. A descent built from many small linear steps tends to fail: with a linear constraint the motion service solves for a direct straight line and will not fall back to a curved path, so a single segment with no direct solution returns `linear with cbirrt not allowed and no direct solutions found`. Read that as this exact straight line being infeasible, not the goal being unreachable, and either widen the tolerance or plan that segment as a free move.
+
 `component_name` is the component's name as a string. Earlier versions of the SDKs took a `ResourceName` message here. If you pass one now, the call fails with `bad argument type for built-in operation`, which is the protobuf library rejecting the message where it expects a string. The same applies to `get_pose`.
 
 `get_pose` reports where a component's frame is, in any other frame:
