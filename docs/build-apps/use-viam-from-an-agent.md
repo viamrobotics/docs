@@ -127,7 +127,7 @@ Grasp at or above the object's center height. A grasp near the surface it rests 
 
 ### Looking
 
-With a wrist-mounted camera like this cell's, read from 300 mm or more above an object. Closer than that, the gripper's own fingertips enter the frame and color detectors find them. A fixed overhead camera, or a machine with no gripper, has no such limit. Check a vision result once against an independent depth read, then trust it; the check costs one call, rebuilding perception costs ten minutes. The first frame after a machine boots can be stale. If a reading is far from where the scene should be, read again.
+With a wrist-mounted camera, read from 300 mm or more above an object. Closer than that, the gripper's own fingertips enter the frame and color detectors find them. A fixed overhead camera, or a machine with no gripper, has no such limit. Check a vision result once against an independent depth read, then trust it; the check costs one call, rebuilding perception costs ten minutes. The first frame after a machine boots can be stale. If a reading is far from where the scene should be, read again.
 
 ## What the platform does for you
 
