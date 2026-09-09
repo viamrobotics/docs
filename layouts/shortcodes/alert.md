@@ -9,4 +9,6 @@
     {{ $label = "Note" }}
   {{ end }}
 {{ end }}
-> **{{ $label }}:** {{ .Inner }}
+**{{ $label }}:**
+
+{{ partial "render-inner-md.html" (dict "Inner" .Inner) }}

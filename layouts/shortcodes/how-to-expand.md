@@ -13,4 +13,4 @@
 ### {{ $title }}
 {{ with $tasks }}_{{ . }} tasks{{ with $level }} | {{ . }}{{ end }}_{{ end }}
 
-{{ .Inner }}
+{{ partial "render-inner-md.html" (dict "Inner" .Inner) }}

@@ -1,0 +1,5 @@
+{{ $inner := .Inner }}
+{{ if findRE `(?is)^\s*<(?:p|div|ul|ol|table|h[1-6]|blockquote|pre|section)\b` $inner 1 }}
+  {{ $inner = $inner | plainify }}
+{{ end }}
+{{ return $inner }}

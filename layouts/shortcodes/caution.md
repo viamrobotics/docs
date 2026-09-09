@@ -3,4 +3,6 @@
   {{ $regex := delimit (slice `(?m)^\s{` (.Get "spaces") `}`) "" }}
   {{ $inner = replaceRE $regex `` .Inner }}
 {{ end }}
-> **Caution:** {{ $inner }}
+**Caution:**
+
+{{ partial "render-inner-md.html" (dict "Inner" $inner) }}

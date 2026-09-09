@@ -6,4 +6,4 @@
 **{{ $title }}**
 {{ end }}
 
-{{ .Inner }}
+{{ partial "render-inner-md.html" (dict "Inner" .Inner) }}
