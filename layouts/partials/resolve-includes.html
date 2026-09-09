@@ -1,0 +1,19 @@
+{{ $content := .content }}
+{{ $dir := .dir }}
+{{ $depth := .depth }}
+{{ $pattern := `\{\{[<%]\s*(readfile|read-code-snippet|snippet)\s+([^}]*?)\s*[%>]\}\}` }}
+{{ $result := $content }}
+{{ $matches := findRE $pattern $content 1 }}
+{{ if gt (len $matches) 0 }}
+  {{ if ge $depth 5 }}
+    {{ errorf "resolve-includes: exceeded max include depth near %s" (substr $content 0 80) }}
+  {{ else }}
+    {{ $matchText := index $matches 0 }}
+    {{ $name := replaceRE $pattern "$1" $matchText }}
+    {{ $params := replaceRE $pattern "$2" $matchText }}
+    {{ $resolved := partial "resolve-one-include.html" (dict "name" $name "params" $params "dir" $dir) }}
+    {{ $spliced := strings.Replace $content $matchText $resolved 1 }}
+    {{ $result = partial "resolve-includes.html" (dict "content" $spliced "dir" $dir "depth" (add $depth 1)) }}
+  {{ end }}
+{{ end }}
+{{ return $result }}

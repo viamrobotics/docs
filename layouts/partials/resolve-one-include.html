@@ -1,0 +1,33 @@
+{{ $name := .name }}
+{{ $params := .params }}
+{{ $dir := .dir }}
+{{ $fparam := "" }}
+{{ $lang := "" }}
+{{ if in $params "file=" }}
+  {{ $fparam = replaceRE `.*file="([^"]*)".*` "$1" $params }}
+{{ else }}
+  {{ $fparam = replaceRE `^"(.*)"$` "$1" $params }}
+{{ end }}
+{{ if in $params "lang=" }}
+  {{ $lang = replaceRE `.*lang="([^"]*)".*` "$1" $params }}
+{{ end }}
+{{ $filepath := "" }}
+{{ if eq $name "snippet" }}
+  {{ $filepath = printf "/static/include/snippet/%s" $fparam }}
+{{ else if eq (substr $fparam 0 1) "/" }}
+  {{ $filepath = $fparam }}
+{{ else }}
+  {{ $filepath = printf "%s%s" $dir $fparam }}
+{{ end }}
+{{ $out := "" }}
+{{ if fileExists $filepath }}
+  {{ $raw := os.ReadFile $filepath }}
+  {{ if eq $name "read-code-snippet" }}
+    {{ $out = printf "```%s\n%s\n```" $lang $raw }}
+  {{ else }}
+    {{ $out = $raw }}
+  {{ end }}
+{{ else }}
+  {{ errorf "resolve-one-include: %s target not found: %s" $name $filepath }}
+{{ end }}
+{{ return $out }}
