@@ -1,0 +1,14 @@
+{{ $target := .target }}
+{{ $context := .context }}
+{{ $body := "" }}
+{{ if not (hasPrefix $target "/") }}
+  {{ $body = printf "This page redirects to [%s](%s). See that page for the full content.\n" $target $target }}
+{{ else }}
+  {{ $page := site.GetPage $target }}
+  {{ if not $page }}
+    {{ errorf "%s redirects to %s, which is not a published page" $context $target }}
+  {{ else }}
+    {{ $body = printf "This page redirects to [%s](%s). See that page for the full content.\n" $page.LinkTitle $page.RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ return $body }}

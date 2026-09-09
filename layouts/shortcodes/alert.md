@@ -9,6 +9,5 @@
     {{ $label = "Note" }}
   {{ end }}
 {{ end }}
-**{{ $label }}:**
-
-{{ partial "render-inner-md.html" (dict "Inner" .Inner) }}
+{{ $inner := partial "render-inner-md.html" (dict "Inner" .Inner) }}
+{{ replaceRE "(?m)^" "> " (printf "**%s:**\n\n%s" $label $inner) }}

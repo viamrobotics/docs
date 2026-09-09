@@ -1,5 +1,5 @@
 {{ $inner := .Inner }}
-{{ if findRE `(?is)^\s*(<!--.*?-->\s*)*<(?:p|div|ul|ol|table|h[1-6]|blockquote|pre|section)\b` $inner 1 }}
+{{ if findRE `(?is)^\s*(<!--.*?-->\s*)*<(?:address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h(?:1|2|3|4|5|6)|header|hgroup|hr|li|main|nav|noscript|ol|output|p|pre|section|table|tfoot|ul|video)\b` $inner 1 }}
   {{ $inner = $inner | plainify }}
 {{ end }}
 {{ return $inner }}
