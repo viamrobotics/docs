@@ -1,0 +1,38 @@
+name: Validate capability tags
+
+concurrency:
+  group: pullrequest-untrusted-capabilities-${{ github.event.number }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "docs/**/*.md"
+      - "data/capabilities.yaml"
+      - "scripts/capabilities/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**/*.md"
+      - "data/capabilities.yaml"
+      - "scripts/capabilities/**"
+
+jobs:
+  validate_capabilities:
+    name: Check docs/ capability frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Validate capabilities
+        run: python3 scripts/capabilities/validate.py

@@ -4,6 +4,7 @@ linkTitle: "esp32-camera"
 weight: 33
 type: "docs"
 description: "Reference for the esp32-camera Micro-RDK camera model. Supports OV2640 and OV3660 cameras connected to an ESP32 board."
+capabilities: ["hw-camera"]
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components", "Micro-RDK"]
 component_description: "An `OV2640` or `OV3660` camera connected to an esp32 board."

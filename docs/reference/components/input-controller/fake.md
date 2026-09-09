@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 30
 type: "docs"
 description: "Reference for the fake input-controller model. Fake input controller for testing."
+capabilities: ["hw-sensing"]
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:

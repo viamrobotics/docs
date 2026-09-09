@@ -4,6 +4,7 @@ linkTitle: "esp32"
 weight: 20
 type: "docs"
 description: "Reference for the esp32 board model. ESP32 board running viam-micro-server."
+capabilities: ["hw-compute"]
 images: ["/installation/thumbnails/esp32-espressif.png"]
 imageAlt: "E S P 32 - espressif"
 tags: ["board", "components"]

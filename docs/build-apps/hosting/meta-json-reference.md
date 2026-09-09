@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Reference for the applications array in meta.json, which declares one or more Viam Applications for hosted deployment."
+capabilities: ["viam-apps"]
 date: "2026-04-10"
 ---
 

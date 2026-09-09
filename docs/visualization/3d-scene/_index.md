@@ -5,6 +5,7 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "What the 3D scene renders, where each element comes from, and how built-in configuration content differs from custom visuals a module publishes at runtime."
+capabilities: ["scene-3d"]
 aliases:
   - /visualization/visualizing-with-the-3d-scene/
   - /visualization/3d-scene-tools/

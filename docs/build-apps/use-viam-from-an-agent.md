@@ -5,6 +5,7 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "What an AI agent needs to know to discover, observe, and operate a Viam machine safely: the model, the ways in, and the rules that keep a robot safe when the agent is driving."
+capabilities: ["sdks", "motion-planning"]
 date: "2026-09-03"
 ---
 

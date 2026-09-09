@@ -6,6 +6,7 @@ type: "docs"
 images: ["/installation/thumbnails/tda4vm.png"]
 imageAlt: "S K - T D A 4 V M"
 description: "Image a Texas Instruments TDA4VM starter kit board to prepare it for viam-server installation."
+capabilities: ["device-provisioning"]
 no_list: true
 aliases:
   - /operate/reference/prepare/sk-tda4vm/

@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Display a depth camera's point cloud in the 3D scene to verify that the data aligns with your frame system and workspace geometry."
+capabilities: ["scene-3d"]
 aliases:
   - /motion-planning/3d-scene/inspect-point-clouds/
   - /motion-planning/3d-scene/verify-point-cloud-alignment/

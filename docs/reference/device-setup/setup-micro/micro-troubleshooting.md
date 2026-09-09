@@ -6,6 +6,7 @@ type: docs
 images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install viam-micro-server"
 description: "Troubleshooting tips and best practices for installing and using viam-micro-server or other Micro-RDK-based firmware on a microcontroller."
+capabilities: ["device-provisioning", "logging"]
 aliases:
   - /operate/install/setup-micro/micro-troubleshooting/
   - /operate/reference/viam-micro-server/viam-micro-server-setup/

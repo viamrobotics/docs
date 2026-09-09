@@ -4,6 +4,7 @@ linkTitle: "mlmodel"
 weight: 10
 type: "docs"
 description: "Configure the mlmodel vision service to turn a deployed ML model into a detector, classifier, or 3D segmenter."
+capabilities: ["vision-service", "ml-models"]
 service_description: "A detector, classifier, or 3D segmenter that wraps a deployed ML model."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/services/vision/dog-detector.png"]

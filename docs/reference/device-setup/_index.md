@@ -5,6 +5,7 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Board-specific setup instructions for single-board computers and microcontrollers supported by Viam."
+capabilities: ["section-index", "device-provisioning"]
 aliases:
   - /operate/reference/prepare/
 ---

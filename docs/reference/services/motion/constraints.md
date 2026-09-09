@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Configure constraints to specify certain types of motion."
+capabilities: ["motion-planning"]
 date: "2026-04-18"
 aliases:
   - /operate/reference/services/motion/constraints/

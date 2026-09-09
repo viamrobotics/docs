@@ -5,6 +5,7 @@ weight: 60
 type: "docs"
 layout: "docs"
 description: "The control package implements PID feedback control loops for encoded motors, sensor-controlled bases, and custom components."
+capabilities: ["hw-actuation", "hw-mobility"]
 date: "2022-01-01"
 no_list: true
 aliases:

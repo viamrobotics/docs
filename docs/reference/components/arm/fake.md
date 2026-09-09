@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 34
 type: "docs"
 description: "Reference for the fake arm model. Fake arm to use for testing."
+capabilities: ["hw-arm"]
 images: ["/icons/components/arm.svg"]
 tags: ["arm", "components"]
 aliases:

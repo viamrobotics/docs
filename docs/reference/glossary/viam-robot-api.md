@@ -1,5 +1,6 @@
 ---
 title: Viam Robot API
+capabilities: ["glossary", "docs"]
 id: viam-robot-api
 full_link:
 short_description: The specification for communication with resources.

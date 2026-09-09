@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure the color_detector vision service to find regions of a specific hue. No ML model, no training data, runs anywhere."
+capabilities: ["vision-service"]
 date: "2026-04-14"
 aliases:
   - /vision/detect-by-color/

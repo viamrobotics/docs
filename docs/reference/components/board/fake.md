@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 20
 type: "docs"
 description: "Reference for the fake board model. Fake board."
+capabilities: ["hw-compute"]
 images: ["/icons/components/board.svg"]
 tags: ["board", "components"]
 aliases:

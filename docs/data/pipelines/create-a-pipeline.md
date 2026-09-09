@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Create a scheduled MQL pipeline that automatically aggregates captured data."
+capabilities: ["data-pipelines"]
 date: "2026-03-27"
 aliases:
   - /data/configure-data-pipelines/

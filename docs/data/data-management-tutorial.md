@@ -5,6 +5,7 @@ weight: 2
 layout: "docs"
 type: "docs"
 description: "Capture sensor data, sync it to the cloud, view it in the Data tab, and query it from code."
+capabilities: ["data-capture", "data-storage"]
 date: "2026-03-26"
 aliases:
   - /data/capture-sync/data-capture-tutorial/

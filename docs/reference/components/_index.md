@@ -1,6 +1,7 @@
 ---
 title: "Built-in components"
 linkTitle: "Built-in components"
+capabilities: ["section-index"]
 weight: 20
 type: docs
 layout: "empty"

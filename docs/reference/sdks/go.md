@@ -1,6 +1,7 @@
 ---
 title: "Go"
 linkTitle: "Go"
+capabilities: ["sdks"]
 weight: 20
 type: "docs"
 layout: "empty"

@@ -8,6 +8,7 @@ no_list: true
 images: ["/general/understand.png"]
 imageAlt: "Viam platform overview"
 description: "Viam is a software platform for building, deploying, and managing robotics applications."
+capabilities: ["docs", "viam-server", "viam-agent"]
 aliases:
   - /architecture/
   - /architecture/machine-to-machine-comms/

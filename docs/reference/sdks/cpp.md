@@ -1,6 +1,7 @@
 ---
 title: "C++"
 linkTitle: "C++"
+capabilities: ["sdks"]
 weight: 40
 type: "docs"
 layout: "empty"

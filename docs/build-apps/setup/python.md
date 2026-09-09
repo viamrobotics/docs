@@ -5,6 +5,7 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Set up a project for writing a Viam app in Python: a control script, a backend service, a data pipeline, or any other Python program that talks to a Viam machine."
+capabilities: ["sdks"]
 date: "2026-04-13"
 ---
 

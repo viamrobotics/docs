@@ -5,6 +5,7 @@ type: "docs"
 layout: "empty"
 canonical: "https://www.viam.com/post/lazy-susan"
 description: "Wire a DC motor to a board, attach a plate on top, and control the motor to rotate the plate."
+capabilities: ["hw-actuation", "hw-compute", "docs"]
 videos:
   ["/tutorials/lazy-susan/preview.webm", "/tutorials/lazy-susan/preview.mp4"]
 videoAlt: "A circular wooden board slowly spinning clockwise with 3 bowls on top filled with snacks."

@@ -9,6 +9,7 @@ languages: ["python"]
 viamresources: ["mlmodel", "data_manager"]
 platformarea: ["ml"]
 description: "Use or write custom training scripts to train ML models on the Viam platform with any framework or logic."
+capabilities: ["ml-training"]
 date: "2024-12-04"
 updated: "2025-10-13"
 ---

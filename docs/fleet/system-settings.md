@@ -5,6 +5,7 @@ weight: 60
 layout: "docs"
 type: "docs"
 description: "Configure network connections, OS updates, tunneling, TLS, and log forwarding for deployed machines."
+capabilities: ["fleet-deployment"]
 aliases:
   - /manage/fleet/system-settings/
 ---

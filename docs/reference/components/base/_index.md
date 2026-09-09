@@ -5,6 +5,7 @@ childTitleEndOverwrite: "Base Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in base models."
+capabilities: ["hw-mobility", "section-index"]
 no_list: true
 tags: ["base", "components"]
 icon: true

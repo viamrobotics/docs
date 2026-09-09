@@ -5,6 +5,7 @@ childTitleEndOverwrite: "Movement Sensor Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in movement sensor models."
+capabilities: ["section-index", "hw-sensing"]
 no_list: true
 tags: ["movement-sensor", "components"]
 icon: true

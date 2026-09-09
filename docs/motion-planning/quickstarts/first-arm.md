@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "From zero to an arm moving under motion service control, using a fake arm that runs on any machine."
+capabilities: ["motion-planning"]
 ---
 
 This quickstart configures a fake arm with UR5e kinematics,

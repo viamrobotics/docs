@@ -4,6 +4,7 @@ linkTitle: "Power sensor"
 weight: 150
 type: "docs"
 description: "Commands for getting measurements of voltage, current, and power consumption."
+capabilities: ["hw-sensing", "sdks"]
 icon: true
 images: ["/icons/components/power-sensor.svg"]
 date: "2022-10-10"

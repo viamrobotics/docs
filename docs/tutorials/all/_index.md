@@ -1,6 +1,7 @@
 ---
 title: "All Tutorials"
 linkTitle: "All Tutorials"
+capabilities: ["section-index", "docs"]
 type: "docs"
 layout: "tutorials-all"
 weight: 1

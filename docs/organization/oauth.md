@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Create a branded login screen for your application."
+capabilities: ["org-management"]
 images: ["/operate/oauth.png"]
 date: "2025-01-22"
 ---

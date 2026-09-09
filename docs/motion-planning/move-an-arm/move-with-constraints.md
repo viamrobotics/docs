@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Move an arm along a straight line or with a fixed orientation using motion constraints."
+capabilities: ["motion-planning"]
 aliases:
   - /tutorials/services/constrain-motion/
   - /motion-planning/motion-how-to/move-arm-with-constraints/

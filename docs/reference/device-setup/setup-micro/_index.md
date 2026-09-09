@@ -8,6 +8,7 @@ images: ["/installation/thumbnails/install.png"]
 imageAlt: "Install Viam"
 no_list: false
 description: "Install the lightweight version of the software that drives hardware and connects your device to the cloud."
+capabilities: ["device-provisioning", "fleet-deployment"]
 aliases:
   - /operate/reference/viam-micro-server/
   - /operate/install/setup-micro/

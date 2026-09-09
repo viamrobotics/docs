@@ -2,6 +2,7 @@
 title: "Role-based access control"
 linkTitle: "Permissions"
 description: "Fleet and data management permissions."
+capabilities: ["org-management"]
 weight: 20
 type: "docs"
 tags: ["data management", "cloud", "app", "fleet management"]

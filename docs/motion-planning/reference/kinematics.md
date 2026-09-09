@@ -5,6 +5,7 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Set up the kinematic model that describes how your arm's joints and links create motion."
+capabilities: ["frame-system", "motion-planning"]
 aliases:
   - /work-cell-layout/configure-robot-kinematics/
   - /build/work-cell-layout/configure-robot-kinematics/

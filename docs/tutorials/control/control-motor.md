@@ -4,6 +4,7 @@ linkTitle: "Control a motor (2 min)"
 type: "docs"
 images: ["/icons/components/motor.svg"]
 description: "Use Viam to control a motor's speed and direction in just a few steps."
+capabilities: ["hw-actuation", "docs"]
 authors: []
 weight: 30
 viamresources: ["motor"]

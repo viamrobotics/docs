@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Close the loop when a vision model's accuracy drops in production: capture the failing images, label them, retrain, and redeploy a new model version to one or many machines."
+capabilities: ["ml-training", "fleet-deployment"]
 date: "2026-04-14"
 aliases:
   - /vision/retrain/

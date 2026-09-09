@@ -4,6 +4,7 @@ linkTitle: "Switch"
 weight: 180
 type: "docs"
 description: "Give commands for getting the state of a physical switch that has two or more discrete positions."
+capabilities: ["hw-sensing", "sdks"]
 icon: true
 images: ["/icons/components/switch.svg"]
 date: "2025-02-20"

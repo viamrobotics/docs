@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Set up a project for building a Viam web app with TypeScript: a custom dashboard, an operator interface, or any other browser-based app that talks to a Viam machine."
+capabilities: ["sdks"]
 date: "2026-04-10"
 ---
 

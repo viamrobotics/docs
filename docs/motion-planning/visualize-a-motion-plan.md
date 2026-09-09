@@ -5,6 +5,7 @@ weight: 86
 layout: "docs"
 type: "docs"
 description: "Publish a motion plan's trajectory and goals as custom visuals so the 3D scene renders the path against obstacles and reach."
+capabilities: ["motion-planning", "scene-3d"]
 aliases:
   - /motion-planning/3d-scene/visualize-a-motion-plan/
 ---

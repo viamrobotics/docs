@@ -5,6 +5,7 @@ weight: 45
 layout: "docs"
 type: "docs"
 description: "Add and configure a gripper component to open, close, and grasp objects."
+capabilities: ["hw-actuation"]
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/gripper/

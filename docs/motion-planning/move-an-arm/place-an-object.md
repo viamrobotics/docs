@@ -5,6 +5,7 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "Move a grasped object to a target location and release it."
+capabilities: ["motion-planning"]
 aliases:
   - /motion-planning/motion-how-to/place-an-object/
   - /motion-planning/pick-and-place/place-an-object/

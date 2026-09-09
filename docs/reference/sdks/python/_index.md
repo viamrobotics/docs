@@ -1,6 +1,7 @@
 ---
 title: "Python"
 linkTitle: "Python"
+capabilities: ["sdks"]
 weight: 10
 type: "docs"
 layout: "empty"

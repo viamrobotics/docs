@@ -1,5 +1,6 @@
 ---
 linkTitle: "Data dashboards"
+capabilities: ["dashboards", "section-index"]
 weight: 15
 layout: "empty"
 type: "docs"

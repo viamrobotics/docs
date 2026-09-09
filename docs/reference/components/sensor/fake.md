@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Reference for the fake sensor model. Fake sensor to use for testing."
+capabilities: ["hw-sensing"]
 tags: ["sensor", "components"]
 icon: true
 images: ["/icons/components/sensor.svg"]

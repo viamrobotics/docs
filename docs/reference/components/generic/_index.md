@@ -5,6 +5,7 @@ childTitleEndOverwrite: "Generic Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in generic models."
+capabilities: ["hw-generic", "section-index"]
 no_list: true
 tags: ["generic", "components"]
 icon: true

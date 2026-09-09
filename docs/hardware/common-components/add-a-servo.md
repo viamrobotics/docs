@@ -5,6 +5,7 @@ weight: 75
 layout: "docs"
 type: "docs"
 description: "Add and configure a hobby servo controlled by a GPIO PWM pin."
+capabilities: ["hw-actuation"]
 date: "2025-03-07"
 aliases:
   - /hardware-components/add-a-servo/

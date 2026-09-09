@@ -3,6 +3,7 @@ title: "single"
 linkTitle: "single"
 type: "docs"
 description: "Reference for the single encoder model. Single encoder with a microcontroller."
+capabilities: ["hw-sensing"]
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:

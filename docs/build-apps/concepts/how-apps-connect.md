@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "The transport paths the SDK uses, the session safety mechanism, and what the SDK reconnects automatically."
+capabilities: ["sdks"]
 date: "2026-04-10"
 aliases:
   - /operate/reference/sessions/

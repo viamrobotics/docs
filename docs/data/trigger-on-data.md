@@ -5,6 +5,7 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email, webhook, or push notifications when data from the machine is synced."
+capabilities: ["triggers-alerts"]
 date: "2025-09-12"
 aliases:
 ---

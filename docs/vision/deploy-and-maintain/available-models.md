@@ -5,6 +5,7 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Three kinds of registry entries feed a vision pipeline: ML model service implementations, vision service models, and public ML models. How to pick among them."
+capabilities: ["ml-models", "vision-service"]
 date: "2026-04-14"
 ---
 

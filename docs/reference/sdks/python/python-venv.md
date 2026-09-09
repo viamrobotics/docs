@@ -4,6 +4,7 @@ linkTitle: "Install the Python SDK"
 weight: 10
 type: "docs"
 description: "Create a virtual environment and install the Python SDK for Viam."
+capabilities: ["sdks"]
 images: ["/services/icons/sdk.svg"]
 tags:
   ["client", "sdk", "application", "sdk", "fleet", "program", "python", "venv"]

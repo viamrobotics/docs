@@ -1,5 +1,6 @@
 ---
 title: Machine ID
+capabilities: ["glossary", "docs"]
 id: machine-id
 full_link:
 short_description: A unique identifier assigned to each machine in the Viam platform.

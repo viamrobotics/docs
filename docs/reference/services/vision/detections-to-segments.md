@@ -4,6 +4,7 @@ linkTitle: "detections-to-segments"
 weight: 30
 type: "docs"
 description: "Project 2D detections into 3D point cloud segments using a depth camera's intrinsic parameters."
+capabilities: ["vision-service"]
 service_description: "A segmenter that projects 2D detection bounding boxes into 3D point cloud objects."
 tags: ["vision", "computer vision", "CV", "services", "segmentation"]
 date: "2026-04-14"

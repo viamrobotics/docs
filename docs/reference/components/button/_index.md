@@ -5,6 +5,7 @@ childTitleEndOverwrite: "Button Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in button models."
+capabilities: ["hw-sensing", "section-index"]
 no_list: true
 tags: ["button", "components"]
 icon: true

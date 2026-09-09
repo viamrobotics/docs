@@ -5,6 +5,7 @@ weight: 6
 layout: "docs"
 type: "docs"
 description: "viam-server is the open-source, on-machine portion of the Viam platform."
+capabilities: ["viam-server"]
 date: "2026-04-17"
 aliases:
   - /operate/reference/viam-server/

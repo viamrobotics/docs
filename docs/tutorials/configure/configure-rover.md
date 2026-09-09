@@ -3,6 +3,7 @@ title: "Configure a Rover like Yahboom or SCUTTLE"
 linkTitle: "Configure a Rover"
 type: "docs"
 description: "Configure a rover like the a Yahboom 4WD Rover or a SCUTTLE robot on the Viam platform."
+capabilities: ["hw-mobility", "hw-actuation", "hw-camera", "docs"]
 images: ["/tutorials/scuttlebot/scuttle-on-floor-cropped.png"]
 imageAlt: "A SCUTTLE robot on a carpeted floor."
 tags: ["base", "camera", "scuttle", "yahboom"]

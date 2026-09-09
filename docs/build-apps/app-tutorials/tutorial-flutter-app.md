@@ -5,6 +5,7 @@ weight: 110
 layout: "docs"
 type: "docs"
 description: "Build a cross-platform Flutter app for a single Viam machine. Uses prebuilt widgets for the camera feed, sensor display, and motor control."
+capabilities: ["sdks"]
 date: "2026-04-10"
 ---
 

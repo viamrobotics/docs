@@ -26,3 +26,7 @@ typesense.env
 
 # Local Netlify folder
 .netlify
+
+# capability tagging scratch
+.capabilities-work/
+__pycache__/

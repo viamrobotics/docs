@@ -5,6 +5,7 @@ weight: 17
 layout: "docs"
 type: "docs"
 description: "Use ML models to auto-label images and programmatically build annotated datasets."
+capabilities: ["datasets"]
 date: "2025-01-30"
 ---
 

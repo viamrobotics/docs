@@ -16,6 +16,7 @@ tags:
     "babysitter",
   ]
 description: "Create a robot babysitter with a webcam and machine learning."
+capabilities: ["vision-service", "ml-models", "hw-camera", "docs"]
 images: ["/tutorials/bedtime-songs-bot/robot_babysitter.gif"]
 videos:
   [

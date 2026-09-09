@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Build a complete quality inspection system with Viam — from camera setup to customer-facing product."
+capabilities: ["section-index", "vision-service", "docs"]
 date: "2025-01-30"
 aliases:
   - /try/first-project/

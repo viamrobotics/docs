@@ -5,6 +5,7 @@ weight: 90
 type: "docs"
 tags: ["world_state_store", "services"]
 description: "List, get, and stream the transforms a world state store service publishes for the 3D scene to draw."
+capabilities: ["sdks", "frame-system"]
 icon: true
 images: ["/icons/components/generic.svg"]
 date: "2025-09-12"

@@ -4,6 +4,7 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Motor models available in the Micro-RDK."
+capabilities: ["section-index", "hw-actuation"]
 tags: ["motor", "components", "Micro-RDK"]
 no_list: true
 ---

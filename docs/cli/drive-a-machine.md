@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Discover, observe, and operate any Viam machine with the CLI alone: list its resources, read its cameras and sensors, plan motion, and stop it, with one key and no SDK code."
+capabilities: ["cli"]
 date: "2026-09-03"
 ---
 

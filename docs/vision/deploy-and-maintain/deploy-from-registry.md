@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Pick a pre-trained ML model from the Viam registry, deploy it to your machine, and wire it through an ML model service so a vision service can use it."
+capabilities: ["ml-models", "vision-service"]
 date: "2026-04-14"
 aliases:
   - /data-ai/ai/deploy/

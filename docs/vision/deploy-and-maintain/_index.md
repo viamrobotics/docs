@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Deploy a pre-trained or custom ML model to a machine, retrain when accuracy drops, roll out new versions to a fleet, and run batch inference against stored images."
+capabilities: ["ml-models", "section-index"]
 date: "2026-04-14"
 ---
 

@@ -5,6 +5,7 @@ weight: 12
 layout: "docs"
 type: "docs"
 description: "Structure of captured tabular data: document format, column reference, the data column, and common per-component data structures."
+capabilities: ["data-storage"]
 date: "2025-02-10"
 ---
 

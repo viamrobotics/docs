@@ -4,6 +4,7 @@ linkTitle: "two_wheeled_base"
 weight: 30
 type: "docs"
 description: "Reference for the two_wheeled_base base model. And wire a two-wheeled base with a microcontroller."
+capabilities: ["hw-mobility"]
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:
