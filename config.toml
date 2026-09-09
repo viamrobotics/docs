@@ -52,14 +52,21 @@ weight = 1
 disableAliases = true
 
 [outputs]
-home = ["HTML", "REDIR"]
-section = ["HTML", "Typesense"]
+home = ["HTML", "REDIR", "MARKDOWN"]
+section = ["HTML", "Typesense", "MARKDOWN"]
+page = ["HTML", "MARKDOWN"]
 
 [outputFormats.REDIR]
 mediaType = "text/netlify"
 baseName = "_redirects"
 isPlainText = true
 notAlternative = true
+
+[outputFormats.MARKDOWN]
+mediaType = "text/markdown"
+isPlainText = true
+isHTML = false
+ugly = true
 
 [outputFormats.Typesense]
 baseName = "typesense"
