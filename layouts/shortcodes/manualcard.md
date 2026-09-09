@@ -1,9 +1,9 @@
-{{ $title := .Get "title" }}
-{{ $link := .Get "link" }}
-{{ if and $title $link }}
+{{- $title := .Get "title" -}}
+{{- $link := .Get "link" -}}
+{{- if and $title $link }}
 **[{{ $title }}]({{ $link }})**
-{{ else if $title }}
+{{- else if $title }}
 **{{ $title }}**
-{{ end }}
+{{- end }}
 
 {{ partial "render-inner-md.html" (dict "Inner" .Inner) }}
