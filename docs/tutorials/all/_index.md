@@ -9,4 +9,5 @@ no_list: true
 hide_children: true
 outputs:
   - html
+  - MARKDOWN
 ---

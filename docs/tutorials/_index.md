@@ -19,4 +19,5 @@ outputs:
   - rss
   - html
   - typesense
+  - MARKDOWN
 ---
