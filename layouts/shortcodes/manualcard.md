@@ -1,8 +1,8 @@
 {{- $title := .Get "title" -}}
 {{- $link := .Get "link" -}}
-{{- if and $title $link }}
+{{- if and $title $link -}}
 **[{{ $title }}]({{ $link }})**
-{{- else if $title }}
+{{- else if $title -}}
 **{{ $title }}**
 {{- end }}
 
