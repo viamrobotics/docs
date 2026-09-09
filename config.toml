@@ -67,6 +67,7 @@ mediaType = "text/markdown"
 isPlainText = true
 isHTML = false
 ugly = true
+notAlternative = true
 
 [outputFormats.Typesense]
 baseName = "typesense"
