@@ -27,9 +27,18 @@
   {{/* Links: <a href="URL" ...>TEXT</a> -> [TEXT](URL) */}}
   {{ $work = replaceRE `(?is)<a\s+[^>]*href="([^"]*)"[^>]*>(.*?)</a>` "[$2]($1)" $work }}
 
-  {{/* Everything else (headings, lists, paragraphs, divs) passes through as literal
-       HTML -- valid inside a Markdown document, and simpler/more correct than trying
-       to regex-convert arbitrarily nested structures to Markdown syntax. */}}
+  {{/* Unwrap leaf inline/block tags that don't self-nest, so converted links aren't
+       left trapped inside a raw <p> block (which suppresses inline Markdown parsing
+       in any real renderer) and basic emphasis survives as Markdown syntax. */}}
+  {{ $work = replaceRE `(?is)<p\b[^>]*>` "" $work }}
+  {{ $work = replaceRE `(?is)</p>` "\n\n" $work }}
+  {{ $work = replaceRE `(?is)<strong\b[^>]*>(.*?)</strong>` "**$1**" $work }}
+  {{ $work = replaceRE `(?is)<em\b[^>]*>(.*?)</em>` "_$1_" $work }}
+  {{ $work = replaceRE `(?is)<code\b[^>]*>(.*?)</code>` "`$1`" $work }}
+
+  {{/* Everything else (headings, lists, divs) passes through as literal HTML --
+       valid inside a Markdown document, and simpler/more correct than trying to
+       regex-convert arbitrarily nested structures to Markdown syntax. */}}
   {{ $work = htmlUnescape $work }}
 
   {{/* Restore protected code fences. */}}

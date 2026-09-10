@@ -10,7 +10,7 @@
 
 {{ $terms := sort ($glossaryItems.Resources.ByType "page") "Title" "asc" }}
 {{ range $terms }}
-### {{ .Title }}
+### {{ .Title }} {#term-{{ .File.ContentBaseName }}}
 
 {{ strings.Trim .RenderShortcodes "\n\t " }}
 {{ end }}
