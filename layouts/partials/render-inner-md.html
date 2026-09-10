@@ -1,5 +1,53 @@
 {{ $inner := .Inner }}
 {{ if findRE `(?is)^\s*(<!--.*?-->\s*)*<(?:address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h(?:1|2|3|4|5|6)|header|hgroup|hr|li|main|nav|noscript|ol|output|p|pre|section|table|tfoot|ul|video)\b` $inner 1 }}
-  {{ $inner = $inner | plainify | htmlUnescape }}
+  {{ $work := $inner }}
+
+  {{/* Protect code blocks behind placeholders before any other rewrite touches them. */}}
+  {{ $codeBlocks := slice }}
+  {{ range $i, $match := findRE `(?is)<pre\b[^>]*>.*?</pre>` $work 50 }}
+    {{ $lang := "" }}
+    {{ with findRE `(?is)<pre[^>]*class="[^"]*language-([a-zA-Z0-9_+-]+)` $match 1 }}
+      {{ $lang = replaceRE `(?is).*language-([a-zA-Z0-9_+-]+)$` "$1" (index . 0) }}
+    {{ end }}
+    {{ $code := replaceRE `(?is)<[^>]+>` "" $match }}
+    {{ $code = strings.TrimSpace (htmlUnescape $code) }}
+    {{ $codeBlocks = $codeBlocks | append (printf "```%s\n%s\n```" $lang $code) }}
+    {{ $work = strings.Replace $work $match (printf "@@CODEBLOCK%d@@" $i) 1 }}
+  {{ end }}
+
+  {{/* Links: <a href="URL" ...>TEXT</a> -> [TEXT](URL) */}}
+  {{ $work = replaceRE `(?is)<a\s+[^>]*href="([^"]*)"[^>]*>(.*?)</a>` "[$2]($1)" $work }}
+
+  {{/* Headers */}}
+  {{ $work = replaceRE `(?is)<h1\b[^>]*>(.*?)</h1>` "\n\n# $1\n\n" $work }}
+  {{ $work = replaceRE `(?is)<h2\b[^>]*>(.*?)</h2>` "\n\n## $1\n\n" $work }}
+  {{ $work = replaceRE `(?is)<h3\b[^>]*>(.*?)</h3>` "\n\n### $1\n\n" $work }}
+  {{ $work = replaceRE `(?is)<h4\b[^>]*>(.*?)</h4>` "\n\n#### $1\n\n" $work }}
+  {{ $work = replaceRE `(?is)<h5\b[^>]*>(.*?)</h5>` "\n\n##### $1\n\n" $work }}
+  {{ $work = replaceRE `(?is)<h6\b[^>]*>(.*?)</h6>` "\n\n###### $1\n\n" $work }}
+
+  {{/* Lists nest arbitrarily deep; regex can't reconstruct that reliably, so pass
+       ul/ol/li through as literal HTML rather than attempting bullet conversion.
+       Raw HTML lists are valid inside Markdown and read fine by humans and bots. */}}
+  {{ $listTags := slice }}
+  {{ range $i, $match := findRE `(?is)</?(?:ul|ol|li)\b[^>]*>` $work 200 }}
+    {{ $listTags = $listTags | append $match }}
+    {{ $work = strings.Replace $work $match (printf "@@LISTTAG%d@@" $i) 1 }}
+  {{ end }}
+
+  {{/* Strip any remaining tags and decode entities. */}}
+  {{ $work = replaceRE `(?is)<[^>]+>` "" $work }}
+  {{ $work = htmlUnescape $work }}
+
+  {{/* Restore protected code fences and list tags. */}}
+  {{ range $i, $fence := $codeBlocks }}
+    {{ $work = strings.Replace $work (printf "@@CODEBLOCK%d@@" $i) $fence 1 }}
+  {{ end }}
+  {{ range $i, $tag := $listTags }}
+    {{ $work = strings.Replace $work (printf "@@LISTTAG%d@@" $i) $tag 1 }}
+  {{ end }}
+
+  {{ $work = replaceRE `\n{3,}` "\n\n" $work }}
+  {{ $inner = strings.TrimSpace $work }}
 {{ end }}
 {{ return $inner }}
