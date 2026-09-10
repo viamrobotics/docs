@@ -50,7 +50,16 @@
     type="{{ .MediaType.Type }}"
     href="{{ .Permalink | safeURL }}"
 />
-{{ end -}} {{ $outputFormat := partial "outputformat.html" . -}} {{ if and
+{{ end -}}
+<link rel="describedby" href="{{ "/llms.txt" | absURL }}" />
+{{- with .OutputFormats.Get "markdown" -}}
+<link
+    rel="alternate"
+    type="text/markdown"
+    href="{{ (strings.TrimSuffix "/" $.Permalink) }}.md"
+/>
+{{ end -}}
+{{ $outputFormat := partial "outputformat.html" . -}} {{ if and
 hugo.IsProduction (ne $outputFormat "print") -}}
 <meta name="robots" content="index, follow" />
 {{ else -}}
