@@ -1,426 +1,71 @@
-# Capability taxonomy for docs frontmatter tagging.
+# Accepted capability tags for docs frontmatter.
 #
-# This is the single source of truth. The tagging scripts, the classifier
-# prompt, and the validator all read this file. Change the vocabulary here,
-# nowhere else.
-#
-# Fields per capability:
-#   summary   one line, what the capability covers (shown to the classifier)
-#   covers    concrete things that belong under it
-#   not       explicit tie-breakers against neighbouring capabilities
-#   kind      topic | structural
-#   status    active | undefined   (undefined = not usable until someone fills it in)
-#   seeds     path globs, relative to docs/, that deterministically imply this tag
-
-version: 1
-
-rules:
-  max_per_page: 3          # hard cap; 4 allowed only for hub pages, flagged in review
-  min_per_page: 1
-  order: primary-first     # first entry is the page's main subject
-  structural_pairing: 1    # a structural tag may sit with at most one topic tag
+# Every docs/ page should carry a capabilities: [...] frontmatter field using
+# one or more of the tags below. scripts/check-capabilities.py reads this
+# file and warns (without failing CI) if a page has no capabilities: field or
+# uses a tag that isn't listed here.
 
 capabilities:
   # ---------------------------------------------------------------- structural
-  glossary:
-    kind: structural
-    status: active
-    summary: Glossary term definitions.
-    covers: [single-term definition pages]
-    not: >
-      Never combine with a topic tag. A glossary entry about cameras is glossary, not hw-camera.
-      The one exception is docs, which every glossary entry also carries.
-    seeds: ["reference/glossary/*.md"]
-
-  docs:
-    kind: structural
-    status: active
-    summary: Guided walkthroughs, demos, glossary terms, and platform-overview content that isn't one specific technical capability.
-    covers: [try/ guided demos and walkthroughs, tutorials guided projects, glossary term definitions, platform overview and marketing pages]
-    not: >
-      A page that teaches a specific capability keeps that capability's tag; docs sits alongside it,
-      it does not replace it. The one exception is glossary, which otherwise stands alone but always
-      pairs with docs.
-    seeds: ["try/**/*.md", "tutorials/**/*.md", "reference/glossary/*.md", "what-is-viam/**/*.md"]
-
-  section-index:
-    kind: structural
-    status: active
-    summary: Section landing pages and navigational overviews.
-    covers: [_index.md landing pages, card-grid nav pages, empty_node pages]
-    not: >
-      A page with substantive prose is not a section-index even if it is named overview.md.
-      Pair with exactly one topic tag naming the section's subject.
-    seeds: []   # applied by the body-length heuristic in prefill.py, not by glob
+  glossary: Glossary term definitions.
+  docs: Guided walkthroughs, demos, glossary terms, and platform-overview content that isn't one specific technical capability.
+  section-index: Section landing pages and navigational overviews.
 
   # ---------------------------------------------------------------- platform
-  billing:
-    kind: topic
-    status: active
-    summary: Usage, pricing, invoices, billing API.
-    covers: [cost breakdowns, invoices, white-labeled billing, billing client API]
-    not: Org structure and permissions are org-management.
-    seeds: ["organization/billing.md", "organization/white-labeled-billing.md", "reference/apis/billing-client.md"]
-
-  org-management:
-    kind: topic
-    status: active
-    summary: Orgs, locations, RBAC, API keys, OAuth.
-    covers: [org and location hierarchy, roles and permissions, API key lifecycle, OAuth apps]
-    not: Money is billing. Machine-level config is machine-config.
-    seeds: ["organization/access.md", "organization/api-keys.md", "organization/oauth.md", "organization/rbac.md", "reference/apis/fleet.md"]
-
-  cli:
-    kind: topic
-    status: active
-    summary: The viam CLI.
-    covers: [CLI installation, auth, commands, scripting the CLI]
-    not: >
-      Only tag pages that teach the CLI itself or are CLI-first workflows. A page that
-      happens to show one viam CLI command inside a longer GUI workflow is NOT cli.
-    seeds: ["cli/*.md", "set-up-a-machine/with-cli.md", "motion-planning/reference/cli-commands.md"]
-
-  sdks:
-    kind: topic
-    status: active
-    summary: Client SDKs, robot API, sessions, connecting from application code.
-    covers: [language SDK setup, robot API, resource API reference pages, sessions, DoCommand]
-    not: >
-      Writing a module is module-development, even though it uses an SDK. Building a
-      hosted web app is viam-apps.
-    seeds: ["reference/sdks/**/*.md", "reference/apis/**/*.md", "build-apps/setup/*.md", "build-apps/concepts/how-apps-connect.md"]
+  billing: Usage, pricing, invoices, billing API.
+  org-management: Orgs, locations, RBAC, API keys, OAuth.
+  cli: The viam CLI.
+  sdks: Client SDKs, robot API, sessions, connecting from application code.
 
   # ---------------------------------------------------------------- machine
-  viam-server:
-    kind: topic
-    status: active
-    summary: viam-server runtime, installation, lifecycle.
-    covers: [install, start/stop, versions, viam-micro-server]
-    not: The agent that manages viam-server is viam-agent.
-    seeds: ["reference/viam-server.md"]
-
-  viam-agent:
-    kind: topic
-    status: active
-    summary: viam-agent - install, update, subsystems.
-    covers: [agent install, subsystem config, update channels]
-    not: The runtime itself is viam-server.
-    seeds: ["reference/viam-agent.md"]
-
-  machine-config:
-    kind: topic
-    status: active
-    summary: Machine configuration, fragments, config reuse, AI config assistant.
-    covers: [config JSON, adding resources to a machine, fragments, AI config assistant]
-    not: >
-      Fleet-wide rollout of config or software is fleet-deployment. A page about what a
-      specific component does is the hw-* tag.
-    seeds: ["hardware/machine-configuration.md", "hardware/fragments.md", "hardware/configure-hardware.md", "hardware/ai-assistant.md", "fleet/reuse-configuration.md"]
-
-  machine-connectivity:
-    kind: topic
-    status: active
-    summary: Machine-to-machine comms, remote parts, network config.
-    covers: [remote parts, sub-parts, network/wifi config, connection handling]
-    not: Cross-machine coordinate frames are frame-system. Per-device OS prep is device-provisioning.
-    seeds: ["hardware/multi-machine/*.md", "reference/machine-to-machine-comms.md", "fleet/change-network.md"]
-
-  device-provisioning:
-    kind: topic
-    status: active
-    summary: Per-board OS installation and device preparation, provisioning to multiple devices.
-    covers: [flashing an OS, per-board setup guides, captive portal provisioning, end-user setup]
-    not: Deploying software versions across an existing fleet is fleet-deployment.
-    seeds: ["reference/device-setup/_index.md", "reference/device-setup/beaglebone-setup.md", "reference/device-setup/board1-setup.md", "reference/device-setup/jetson-agx-orin-setup.md", "reference/device-setup/jetson-nano-setup.md", "reference/device-setup/odroid-c4-setup.md", "reference/device-setup/orange-pi-3-lts.md", "reference/device-setup/orange-pi-zero2.md", "reference/device-setup/pumpkin.md", "reference/device-setup/rpi-setup.md", "reference/device-setup/sk-tda4vm.md", "reference/device-setup/setup-micro/_index.md", "reference/device-setup/setup-micro/micro-troubleshooting.md", "fleet/provision-devices.md", "fleet/end-user-setup.md"]
-
-  fleet-deployment:
-    kind: topic
-    status: active
-    summary: Fleet-wide software deployment, version pinning, scheduled jobs, system settings, metadata.
-    covers: [deploy software/ML across machines, version pinning, scheduled jobs, system settings, fleet metadata]
-    not: Configuring one machine is machine-config. Preparing a new device is device-provisioning.
-    seeds: ["fleet/deploy-software.md", "fleet/deploy-ml-models.md", "fleet/manage-versions.md", "fleet/schedule-jobs.md", "fleet/system-settings.md", "fleet/metadata.md"]
-
-  discovery:
-    kind: topic
-    status: active
-    summary: Discovery service - enumerate attached hardware and generate config.
-    covers: [discovery service API and config]
-    not: null
-    seeds: ["reference/services/discovery/**/*.md", "reference/apis/services/discovery.md"]
-
-  logging:
-    kind: topic
-    status: active
-    summary: Logs, troubleshooting, common errors.
-    covers: [reading logs, log levels, error catalogues, troubleshooting guides]
-    not: Alerting on a condition is triggers-alerts.
-    seeds: ["monitor/common-errors.md", "monitor/troubleshoot.md", "reference/device-setup/setup-micro/micro-troubleshooting.md", "visualization/troubleshoot-the-3d-scene.md"]
+  viam-server: viam-server runtime, installation, lifecycle.
+  viam-agent: viam-agent - install, update, subsystems.
+  machine-config: Machine configuration, fragments, config reuse, AI config assistant.
+  machine-connectivity: Machine-to-machine comms, remote parts, network config.
+  device-provisioning: Per-board OS installation and device preparation, provisioning to multiple devices.
+  fleet-deployment: Fleet-wide software deployment, version pinning, scheduled jobs, system settings, metadata.
+  discovery: Discovery service - enumerate attached hardware and generate config.
+  logging: Logs, troubleshooting, common errors.
 
   # ---------------------------------------------------------------- data
-  data-capture:
-    kind: topic
-    status: active
-    summary: Capture and sync from the machine - capture config, filtering at the edge, conditional sync.
-    covers: [data capture config, sync intervals, conditional sync, edge filtering, uploading other data]
-    not: Anything about data already in the cloud is data-storage.
-    seeds: ["data/capture-sync/**/*.md", "data/filter-at-the-edge.md", "reference/apis/services/data.md"]
-
-  data-storage:
-    kind: topic
-    status: active
-    summary: Stored data - query, export, retention, data client API, data regions.
-    covers: [SQL/MQL query, export, delete/retention, hot data store, schema, data client API, data regions]
-    not: Getting data off the machine is data-capture. Scheduled transforms are data-pipelines.
-    seeds: ["data/query-data.md", "data/query-data-from-code.md", "data/export-data.md", "data/delete-data.md", "data/hot-data-store.md", "data/schema.md", "data/sync-data-to-your-database.md", "data/reference.md", "reference/apis/data-client.md", "organization/data-regions.md", "build-apps/tasks/query-data.md"]
-
-  data-pipelines:
-    kind: topic
-    status: active
-    summary: Scheduled transformation jobs over captured data.
-    covers: [pipeline creation, management, pipeline results, pipeline reference]
-    not: Ad-hoc queries are data-storage.
-    seeds: ["data/pipelines/**/*.md", "cli/data-pipelines.md"]
-
-  datasets:
-    kind: topic
-    status: active
-    summary: Dataset assembly, image annotation, tagging.
-    covers: [creating datasets, bounding boxes and labels, auto-annotation, tagging data]
-    not: Training a model on a dataset is ml-training. Time-window training data is sequences.
-    seeds: ["train/create-a-dataset.md", "train/annotate-images.md", "train/automate-annotation.md", "data/tag-data.md"]
-
-  sequences:
-    kind: topic
-    status: active
-    summary: Training data grouped as a specific time window, analogous to datasets.
-    covers: [sequence assembly, time-window training data]
-    not: Frame-by-frame labelled image collections are datasets.
-    seeds: []
-
-  dashboards:
-    kind: topic
-    status: active
-    summary: Monitoring dashboards, custom dashboard queries, data visualisation surfaces.
-    covers: [dashboard creation, custom dashboard queries, third-party viz integrations]
-    not: Live machine control UI is teleop. The 3D scene viewer is scene-3d.
-    seeds: ["monitor/dashboards/**/*.md", "data/visualize-data.md"]
-
-  triggers-alerts:
-    kind: topic
-    status: active
-    summary: Triggers, webhooks, push notifications, data-condition alerts.
-    covers: [trigger config, webhooks, push notifications, alerting on data or detections]
-    not: Reading logs after the fact is logging.
-    seeds: ["reference/triggers.md", "monitor/alert.md", "monitor/custom-push-notifications.md", "data/trigger-on-data.md", "vision/object-detection/alert-on-detections.md"]
+  data-capture: Capture and sync from the machine - capture config, filtering at the edge, conditional sync.
+  data-storage: Stored data - query, export, retention, data client API, data regions.
+  data-pipelines: Scheduled transformation jobs over captured data.
+  datasets: Dataset assembly, image annotation, tagging.
+  sequences: Training data grouped as a specific time window, analogous to datasets.
+  dashboards: Monitoring dashboards, custom dashboard queries, data visualisation surfaces.
+  triggers-alerts: Triggers, webhooks, push notifications, data-condition alerts.
 
   # ---------------------------------------------------------------- ML + vision
-  ml-training:
-    kind: topic
-    status: active
-    summary: Cloud training jobs, built-in and custom training scripts.
-    covers: [submitting training jobs, custom training scripts, retraining, ML training client API]
-    not: Serving a trained model on a machine is ml-models.
-    seeds: ["train/train-a-model.md", "train/custom-training-scripts.md", "reference/apis/ml-training-client.md", "cli/datasets-and-training.md", "vision/deploy-and-maintain/retrain.md"]
-
-  ml-models:
-    kind: topic
-    status: active
-    summary: ML model service - deploy, version, and serve a trained model on a machine.
-    covers: [ML model service config, model deployment, model versioning, inference on device]
-    not: Producing the model is ml-training. Turning inference into detections is vision-service.
-    seeds: ["train/deploy-a-model.md", "reference/apis/services/ml.md", "reference/services/vision/mlmodel.md", "vision/deploy-and-maintain/deploy-custom-model.md", "vision/deploy-and-maintain/deploy-from-registry.md", "vision/deploy-and-maintain/available-models.md"]
-
-  vision-service:
-    kind: topic
-    status: active
-    summary: Vision service - detectors, classifiers, trackers, segmenters.
-    covers: [detectors, classifiers, object tracking, segmenters, 3D segmentation, depth from vision]
-    not: The camera hardware is hw-camera. The underlying model is ml-models.
-    seeds: ["vision/**/*.md", "reference/services/vision/**/*.md", "reference/apis/services/vision.md", "visualization/perception/vision-services.md"]
+  ml-training: Cloud training jobs, built-in and custom training scripts.
+  ml-models: ML model service - deploy, version, and serve a trained model on a machine.
+  vision-service: Vision service - detectors, classifiers, trackers, segmenters.
 
   # ---------------------------------------------------------------- motion
-  motion-planning:
-    kind: topic
-    status: active
-    summary: Motion service, constraints, path planning.
-    covers: [motion service, obstacles, constraints, plan debugging and verification, planning algorithms]
-    not: Coordinate frames are frame-system. Waypoint navigation of a mobile base is navigation.
-    seeds: ["motion-planning/**/*.md"]
-
-  frame-system:
-    kind: topic
-    status: active
-    summary: Frame system, kinematics, orientation vectors, world state, cross-machine frames.
-    covers: [frame config, transforms, kinematics files, orientation vectors, world state]
-    not: Planning a trajectory is motion-planning.
-    seeds: ["motion-planning/frame-system/**/*.md", "motion-planning/reference/kinematics.md", "motion-planning/reference/orientation-vectors.md", "motion-planning/reference/frame-system-api.md", "reference/services/frame-system/**/*.md", "hardware/multi-machine/cross-machine-frames.md", "visualization/reference/world-state.md", "reference/apis/services/world-state-store.md"]
-
-  navigation:
-    kind: topic
-    status: active
-    summary: Navigation service.
-    covers: [navigation service config, waypoints, GPS-based navigation]
-    not: Arm/gantry trajectory planning is motion-planning.
-    seeds: ["reference/services/navigation/**/*.md", "reference/apis/services/navigation.md"]
-
-  slam:
-    kind: topic
-    status: active
-    summary: SLAM service - mapping and localisation.
-    covers: [SLAM service config, map building, localisation]
-    not: null
-    seeds: ["reference/services/slam/**/*.md", "reference/apis/services/slam.md"]
+  motion-planning: Motion service, constraints, path planning.
+  frame-system: Frame system, kinematics, orientation vectors, world state, cross-machine frames.
+  navigation: Navigation service.
+  slam: SLAM service - mapping and localisation.
 
   # ---------------------------------------------------------------- hardware
-  hw-arm:
-    kind: topic
-    status: active
-    summary: Arm component - drivers, kinematic files, arm API, stream-api.
-    covers: [arm models, arm config, arm API, kinematic file authoring]
-    not: null
-    seeds: ["reference/components/arm/**/*.md", "reference/apis/components/arm.md", "hardware/common-components/add-an-arm.md"]
-
-  hw-actuation:
-    kind: topic
-    status: active
-    summary: Actuation components - motor, servo, gripper.
-    covers: [motor, servo, gripper models, config, and APIs]
-    not: Arms are hw-arm. Gantries are hw-gantry.
-    seeds: ["reference/components/motor/**/*.md", "reference/components/servo/**/*.md", "reference/components/gripper/**/*.md", "reference/apis/components/motor.md", "reference/apis/components/servo.md", "reference/apis/components/gripper.md", "hardware/common-components/add-a-motor.md", "hardware/common-components/add-a-servo.md", "hardware/common-components/add-a-gripper.md"]
-
-  hw-mobility:
-    kind: topic
-    status: active
-    summary: Base component, wheeled and sensor-controlled bases, base remote control, rovers.
-    covers: [base models, base API, base remote control service, rover hardware]
-    not: Path planning for a base is motion-planning or navigation.
-    seeds: ["reference/components/base/**/*.md", "reference/apis/components/base.md", "reference/apis/services/base-rc.md", "reference/services/base-rc/**/*.md", "hardware/common-components/add-a-base.md"]
-
-  hw-gantry:
-    kind: topic
-    status: active
-    summary: Gantry component and gantry motion.
-    covers: [gantry models, gantry config, gantry API, moving a gantry]
-    not: null
-    seeds: ["reference/components/gantry/**/*.md", "reference/apis/components/gantry.md", "hardware/common-components/add-a-gantry.md", "motion-planning/move-gantry.md"]
-
-  hw-camera:
-    kind: topic
-    status: active
-    summary: Camera component - webcam, RTSP, Realsense, Orbbec, CSI, video-store.
-    covers: [camera models, camera config, camera API, video streaming and storage]
-    not: Running a detector on the stream is vision-service.
-    seeds: ["reference/components/camera/**/*.md", "reference/apis/components/camera.md", "hardware/common-components/add-a-camera.md", "build-apps/tasks/stream-video.md"]
-
-  hw-sensing:
-    kind: topic
-    status: active
-    summary: Sensing components - sensor, movement sensor, power sensor, encoder, switch, button, input controller.
-    covers: [sensor family models, config, and APIs]
-    not: Cameras are hw-camera. Microphones are hw-audio.
-    seeds: ["reference/components/sensor/**/*.md", "reference/components/movement-sensor/**/*.md", "reference/components/power-sensor/**/*.md", "reference/components/encoder/**/*.md", "reference/components/switch/**/*.md", "reference/components/button/**/*.md", "reference/components/input-controller/**/*.md", "reference/apis/components/sensor.md", "reference/apis/components/movement-sensor.md", "reference/apis/components/power-sensor.md", "reference/apis/components/encoder.md", "reference/apis/components/switch.md", "reference/apis/components/button.md", "reference/apis/components/input-controller.md", "hardware/common-components/add-a-sensor.md", "hardware/common-components/add-a-movement-sensor.md", "hardware/common-components/add-a-power-sensor.md", "hardware/common-components/add-an-encoder.md", "hardware/common-components/add-a-switch.md", "hardware/common-components/add-a-button.md", "hardware/common-components/add-an-input-controller.md"]
-
-  hw-compute:
-    kind: topic
-    status: active
-    summary: Board component, GPIO, single-board computers.
-    covers: [board models, GPIO pins, SBC specifics, esp32]
-    not: Flashing an OS onto the board is device-provisioning.
-    seeds: ["reference/components/board/**/*.md", "reference/apis/components/board.md", "hardware/common-components/add-a-board.md"]
-
-  hw-audio:
-    kind: topic
-    status: active
-    summary: Audio input component.
-    covers: [audio input and output components and APIs]
-    not: null
-    seeds: ["reference/apis/components/audio-in.md", "reference/apis/components/audio-out.md"]
-
-  hw-generic:
-    kind: topic
-    status: active
-    summary: Generic component and generic service.
-    covers: [generic component, generic service, DoCommand-only resources]
-    not: null
-    seeds: ["reference/components/generic/**/*.md", "reference/apis/components/generic.md", "reference/services/generic/**/*.md", "reference/apis/services/generic.md"]
+  hw-arm: Arm component - drivers, kinematic files, arm API, stream-api.
+  hw-actuation: Actuation components - motor, servo, gripper.
+  hw-mobility: Base component, wheeled and sensor-controlled bases, base remote control, rovers.
+  hw-gantry: Gantry component and gantry motion.
+  hw-camera: Camera component - webcam, RTSP, Realsense, Orbbec, CSI, video-store.
+  hw-sensing: Sensing components - sensor, movement sensor, power sensor, encoder, switch, button, input controller.
+  hw-compute: Board component, GPIO, single-board computers.
+  hw-audio: Audio input component.
+  hw-generic: Generic component and generic service.
 
   # ---------------------------------------------------------------- modules + apps
-  module-development:
-    kind: topic
-    status: active
-    summary: Writing, testing, and publishing driver and externally-managed logic modules.
-    covers: [module anatomy, writing drivers and logic modules, dependencies, testing, publishing, module lifecycle]
-    not: Consuming someone else's module is module-registry. Inline modules are inline-modules.
-    seeds: ["build-modules/module-anatomy.md", "build-modules/write-a-driver-module.md", "build-modules/write-a-logic-module.md", "build-modules/dependencies.md", "build-modules/advanced-patterns.md", "build-modules/platform-apis.md", "build-modules/module-reference.md", "build-modules/manage-modules.md", "build-modules/deploy-a-module.md", "cli/build-and-deploy-modules.md", "reference/device-setup/setup-micro/micro-module.md"]
-
-  inline-modules:
-    kind: topic
-    status: active
-    summary: Building and deploying inline modules.
-    covers: [inline module authoring and deployment]
-    not: Registry-published modules are module-development or module-registry.
-    seeds: ["build-modules/write-an-inline-module.md"]
-
-  module-registry:
-    kind: topic
-    status: active
-    summary: Registry as a marketplace - find, use, and deploy published modules.
-    covers: [browsing the registry, adding a registry module to a machine, versioning a consumed module]
-    not: Authoring a module is module-development.
-    seeds: ["build-modules/use-registry-modules.md"]
-
-  viam-apps:
-    kind: topic
-    status: active
-    summary: Custom web apps on the Viam platform.
-    covers: [app hosting, meta.json, app auth, app deployment, app tutorials]
-    not: >
-      Plain SDK client scripts are sdks, even when they live under build-apps/app-tutorials/ or
-      build-apps/concepts/ — most of that content teaches SDK usage patterns, not the hosting
-      platform. Only tag viam-apps when the page actually covers app hosting, meta.json, or
-      hosted-app auth/deployment.
-    seeds: ["build-apps/hosting/*.md", "build-apps/concepts/authentication.md", "build-apps/app-tutorials/tutorial-fleet.md"]
-
-  mobile-app:
-    kind: topic
-    status: active
-    summary: Viam mobile app, end-user machine setup flow.
-    covers: [mobile app usage, end-user setup through the app]
-    not: null
-    seeds: ["fleet/end-user-setup.md"]
+  module-development: Writing, testing, and publishing driver and externally-managed logic modules.
+  inline-modules: Building and deploying inline modules.
+  module-registry: Registry as a marketplace - find, use, and deploy published modules.
+  viam-apps: Custom web apps on the Viam platform.
+  mobile-app: Viam mobile app, end-user machine setup flow.
 
   # ---------------------------------------------------------------- surfaces
-  teleop:
-    kind: topic
-    status: active
-    summary: Teleop workspaces and live machine control UI, controls on the tab (but not the tab itself).
-    covers: [teleop workspaces, live control widgets, driving a machine from the UI]
-    not: >
-      Dashboards are dashboards. The 3D scene viewer is scene-3d. Driving a machine from the CLI
-      with no UI involved is cli, not teleop.
-    seeds: ["monitor/teleop-workspaces.md", "monitor/default-interface.md"]
-
-  scene-3d:
-    kind: topic
-    status: active
-    summary: 3D scene viewer, visualization workspace and blocks.
-    covers: [3D scene interface, widgets, visual frame editing, draw library, geometry constructors, point cloud viewing]
-    not: Frame configuration itself is frame-system.
-    seeds: ["visualization/**/*.md"]
-
-  surface-finishing:
-    kind: topic
-    status: active
-    summary: Surface finishing application - sanding, polishing, path generation.
-    covers: [surface finishing app, sanding and polishing workflows]
-    not: null
-    seeds: []
-
-  rdk-activity:
-    kind: topic
-    status: undefined     # TODO: define before use. Validator rejects this tag while undefined.
-    summary: UNDEFINED - fill in before running the tagging pass.
-    covers: []
-    not: null
-    seeds: []
+  teleop: Teleop workspaces and live machine control UI, controls on the tab (but not the tab itself).
+  scene-3d: 3D scene viewer, visualization workspace and blocks.
+  surface-finishing: Surface finishing application - sanding, polishing, path generation.
