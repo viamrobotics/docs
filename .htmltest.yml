@@ -73,6 +73,7 @@ IgnoreURLs:
   - "grpc.io"
   - "odroid.com"
   - "viamapplications.com"
+  - "\\.md$"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"

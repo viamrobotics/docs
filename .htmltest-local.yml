@@ -7,6 +7,7 @@ IgnoreURLs:
   - "viam.setup"
   - "orangepi.org"
   - "rtk2go.com"
+  - "\\.md$"
 IgnoreDirs:
   - "lib"
   - "operate"
