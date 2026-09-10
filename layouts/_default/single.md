@@ -6,7 +6,7 @@
 {{- else if and $canonical (ne $canonical .RelPermalink) -}}
   {{- $body = partial "resolve-redirect-body.html" (dict "target" $canonical "context" .RelPermalink) -}}
 {{- else -}}
-  {{- $body = .RenderShortcodes -}}
+  {{- $body = partial "resolve-markdown-links.html" (dict "page" . "text" .RenderShortcodes) -}}
 {{- end -}}
 # {{ .Title }}
 {{ with .Description }}
