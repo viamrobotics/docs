@@ -16,8 +16,8 @@ menu:
 sitemap:
   priority: 1.0
 outputs:
-  - rss
   - html
+  - rss
   - typesense
   - MARKDOWN
 ---
