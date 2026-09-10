@@ -9,15 +9,11 @@ on:
   pull_request:
     paths:
       - "docs/**/*.md"
-      - "data/capabilities.yaml"
-      - "scripts/capabilities/**"
   push:
     branches:
       - main
     paths:
       - "docs/**/*.md"
-      - "data/capabilities.yaml"
-      - "scripts/capabilities/**"
 
 jobs:
   validate_capabilities:
@@ -31,8 +27,5 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install pyyaml
-
-      - name: Validate capabilities
-        run: python3 scripts/capabilities/validate.py
+      - name: Check capabilities
+        run: python3 scripts/check-capabilities.py
