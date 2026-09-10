@@ -7,7 +7,7 @@
   {{- $body = partial "resolve-redirect-body.html" (dict "target" $canonical "context" .RelPermalink) -}}
 {{- else -}}
   {{- $body = .RenderShortcodes -}}
-{{- end }}
+{{- end -}}
 # {{ .Title }}
 {{ with .Description }}
 {{ . }}
