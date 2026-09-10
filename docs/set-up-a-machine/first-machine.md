@@ -5,6 +5,7 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Create a machine in the Viam app and install Viam on your compute device."
+capabilities: ["device-provisioning"]
 date: "2025-01-30"
 aliases:
   - /set-up-a-machine/overview/

@@ -5,6 +5,7 @@ weight: 22
 layout: "docs"
 type: "docs"
 description: "Query captured data programmatically using the Viam Python or Go SDK."
+capabilities: ["data-storage"]
 date: "2026-03-26"
 aliases:
   - /data/query-data-from-code/

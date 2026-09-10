@@ -5,6 +5,7 @@ type: "docs"
 layout: "empty"
 canonical: "https://www.viam.com/post/object-detection-turn-your-lights-on"
 description: "How to turn a light on when your webcam sees a person."
+capabilities: ["vision-service", "ml-models", "hw-camera", "docs"]
 videos:
   ["/tutorials/light-up/light-up.webm", "/tutorials/light-up/light-up.mp4"]
 images: ["/tutorials/light-up/light-up.gif"]

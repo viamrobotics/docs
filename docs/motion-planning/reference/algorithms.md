@@ -5,6 +5,7 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "The two-stage planning strategy the built-in motion service uses and the tuning surfaces exposed to callers."
+capabilities: ["motion-planning"]
 aliases:
   - /reference/services/motion/algorithms/
   - /operate/reference/services/motion/algorithms/

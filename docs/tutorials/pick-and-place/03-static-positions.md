@@ -5,6 +5,7 @@ type: "docs"
 slug: "static-positions"
 weight: 30
 description: "Save the arm's key poses and configure obstacle components, proving the hardware and motion planning work before you add perception."
+capabilities: ["motion-planning", "hw-arm", "docs"]
 workshop: "pick-and-place"
 toc_hide: true
 phase: 3

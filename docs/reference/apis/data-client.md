@@ -4,6 +4,7 @@ linkTitle: "Data client"
 weight: 30
 type: "docs"
 description: "Use the data client API to upload and retrieve data directly."
+capabilities: ["data-storage", "sdks"]
 icon: true
 images: ["/services/icons/sdk.svg"]
 tags:

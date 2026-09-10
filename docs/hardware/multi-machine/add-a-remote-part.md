@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Connect to another machine's resources by adding it as a remote part with an address and API key."
+capabilities: ["machine-connectivity"]
 date: "2026-04-16"
 ---
 

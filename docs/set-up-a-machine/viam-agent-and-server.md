@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "The two programs that run on every Viam machine: what each does, how they relate, and how they run modules."
+capabilities: ["viam-server", "viam-agent"]
 date: "2026-04-17"
 ---
 

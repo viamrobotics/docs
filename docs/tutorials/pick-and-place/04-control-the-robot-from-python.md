@@ -5,6 +5,7 @@ type: "docs"
 slug: "control-the-robot-from-python"
 weight: 40
 description: "Connect from your personal computer and drive the saved static pick-and-place sequence from a Python script."
+capabilities: ["sdks", "hw-arm", "docs"]
 workshop: "pick-and-place"
 toc_hide: true
 phase: 4

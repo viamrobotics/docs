@@ -5,6 +5,7 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "Set up a project for writing a Viam app in C++: an embedded application, a high-performance service, or any other C++ program that talks to a Viam machine."
+capabilities: ["sdks"]
 date: "2026-04-13"
 ---
 

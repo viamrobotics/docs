@@ -1,6 +1,7 @@
 ---
 title: "All Tutorials"
 linkTitle: "All Tutorials"
+capabilities: ["section-index", "docs"]
 type: "docs"
 layout: "tutorials-all"
 description: "Browse every Viam tutorial in a single, searchable list."

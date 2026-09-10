@@ -3,6 +3,7 @@ title: "A Person Detection Security Robot That Sends You Photos"
 linkTitle: "Detect a Person and Send a Photo"
 type: "docs"
 description: "Use the vision service and the Python SDK to send yourself a text message when your webcam detects a person."
+capabilities: ["vision-service", "ml-models", "hw-camera", "docs"]
 imageAlt: "Text message reading 'Alert There is someone at your desk beware' with a photo of a person (Steve) detected by the camera as he approaches the desk."
 images: ["/tutorials/send-security-photo/text-message.png"]
 tags: ["camera", "vision", "detector", "python"]

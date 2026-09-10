@@ -5,6 +5,7 @@ weight: 15
 layout: "docs"
 type: "docs"
 description: "Add and configure a board component to expose GPIO pins, analog readers, and digital interrupts."
+capabilities: ["hw-compute"]
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/board/

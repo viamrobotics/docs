@@ -5,6 +5,7 @@ weight: 120
 layout: "docs"
 type: "docs"
 description: "Build a TypeScript web dashboard that connects to the Viam cloud, enumerates machines across an organization, and displays aggregated sensor data from a fleet."
+capabilities: ["sdks", "viam-apps"]
 date: "2026-04-10"
 ---
 

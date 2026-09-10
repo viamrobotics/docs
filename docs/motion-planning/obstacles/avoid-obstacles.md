@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure obstacles and plan motion paths that avoid collisions."
+capabilities: ["motion-planning"]
 aliases:
   - /motion-planning/motion-how-to/avoid-obstacles/
 ---

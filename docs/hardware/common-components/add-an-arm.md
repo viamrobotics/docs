@@ -5,6 +5,7 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Add and configure a robotic arm, verify joint motion, and test end-effector positioning."
+capabilities: ["hw-arm"]
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/arm/

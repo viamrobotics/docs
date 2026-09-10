@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 tags: ["base", "services", "rover", "input controller", "remote control"]
 description: "Give commands to get a list of inputs from the controller that are being monitored for that control mode."
+capabilities: ["sdks", "hw-mobility"]
 icon: true
 images: ["/services/icons/base-rc.svg"]
 date: "2022-01-01"

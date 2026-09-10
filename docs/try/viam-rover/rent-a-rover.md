@@ -7,6 +7,7 @@ tags: ["rover", "try viam", "rental"]
 images: ["/appendix/try-viam/try-viam-reserve-preview.png"]
 imageAlt: "Rover reservation page"
 description: "Try Viam by reserving a Viam Rover in our robotics lab — no hardware required."
+capabilities: ["docs"]
 aliases:
   - /dev/reference/try-viam/
   - /dev/reference/try-viam/reserve-a-rover/

@@ -5,6 +5,7 @@ weight: 35
 layout: "docs"
 type: "docs"
 description: "Write your validate function and constructor to handle dependencies in your custom modular resource."
+capabilities: ["module-development"]
 aliases:
   - /operate/modules/advanced/platform-apis/
 date: "2025-11-05"

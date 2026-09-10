@@ -4,6 +4,7 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Base models available in the Micro-RDK."
+capabilities: ["hw-mobility", "section-index"]
 tags: ["base", "components", "Micro-RDK"]
 no_list: true
 ---

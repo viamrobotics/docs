@@ -5,6 +5,7 @@ weight: 60
 type: "docs"
 tags: ["data management", "trigger", "webhook", "push notification"]
 description: "Detailed information about how to configure triggers, webhooks, and push notifications."
+capabilities: ["triggers-alerts"]
 date: "2025-05-05"
 updated: "2025-09-18"
 aliases:

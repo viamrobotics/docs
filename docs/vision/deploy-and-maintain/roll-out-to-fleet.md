@@ -5,6 +5,7 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Update a vision model across many machines at once using fragments and model version pinning. Short guide with links to the full fleet and deployment docs."
+capabilities: ["fleet-deployment", "ml-models"]
 date: "2026-04-14"
 aliases:
   - /vision/roll-out-to-fleet/

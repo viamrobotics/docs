@@ -4,6 +4,7 @@ linkTitle: "transform"
 weight: 60
 type: "docs"
 description: "Reference for the transform camera model. Apply pipeline transformations (classifications, crop, detections, resize, rotate) to another camera's output."
+capabilities: ["hw-camera", "vision-service"]
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:

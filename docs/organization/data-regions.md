@@ -2,6 +2,7 @@
 title: "Choose data region"
 linkTitle: "Choose data region"
 description: "Configure where in the world Viam stores your cloud data."
+capabilities: ["data-storage"]
 weight: 40
 type: "docs"
 tags: ["data region", "region", "data continent", "compliance", "performance"]

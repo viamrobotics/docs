@@ -1,6 +1,7 @@
 ---
 linkTitle: "Service APIs"
 title: "Service APIs"
+capabilities: ["sdks", "section-index"]
 weight: 5
 empty_node: true
 layout: "empty"

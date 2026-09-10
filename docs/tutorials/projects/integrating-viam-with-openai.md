@@ -17,6 +17,7 @@ tags:
     "python",
   ]
 description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
+capabilities: ["hw-actuation", "vision-service", "ml-models", "docs"]
 images: ["/tutorials/ai-integration/rosey_robot.jpg"]
 aliases: /tutorials/integrating-viam-with-openai/
 imageAlt: "An AI powered companion robot called Rosey."

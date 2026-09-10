@@ -7,6 +7,7 @@ tags: ["rover", "tutorial"]
 images: ["/appendix/try-viam/rover-resources/viam-rover-2/box-contents.png"]
 imageAlt: "A Viam Rover 2 in a box"
 description: "A list of the contents of the Viam Rover 2 kit, instructions for wiring your rover, and links for additional hardware."
+capabilities: ["hw-mobility", "docs"]
 no_list: true
 aliases:
   - /get-started/try-viam/rover-resources/rover-tutorial/

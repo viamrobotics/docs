@@ -1,6 +1,7 @@
 ---
 linkTitle: "Component APIs"
 title: "Component APIs"
+capabilities: ["section-index", "sdks"]
 weight: 5
 empty_node: true
 layout: "empty"

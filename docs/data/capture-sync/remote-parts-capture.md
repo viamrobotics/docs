@@ -5,6 +5,7 @@ weight: 15
 layout: "docs"
 type: "docs"
 description: "Capture and sync data from components on sub-parts and remote parts of a multi-part machine."
+capabilities: ["data-capture"]
 date: "2025-02-10"
 ---
 

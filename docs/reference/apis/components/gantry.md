@@ -4,6 +4,7 @@ linkTitle: "Gantry"
 weight: 90
 type: "docs"
 description: "Give commands for coordinated control of one or more linear actuators."
+capabilities: ["hw-gantry", "sdks"]
 icon: true
 images: ["/icons/components/gantry.svg"]
 date: "2022-01-01"

@@ -5,6 +5,7 @@ weight: 70
 type: "docs"
 tags: ["navigation", "services", "base", "rover"]
 description: "Give commands to define waypoints and move your machine along those waypoints while avoiding obstacles."
+capabilities: ["sdks", "navigation"]
 date: "2022-01-01"
 aliases:
   - /dev/reference/apis/services/navigation/

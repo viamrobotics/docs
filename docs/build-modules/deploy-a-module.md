@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Pick a deployment path for your module: hot-reload onto one machine, or release a versioned package through the registry."
+capabilities: ["module-development"]
 date: "2025-01-30"
 aliases:
   - /operate/modules/deploy-a-module/

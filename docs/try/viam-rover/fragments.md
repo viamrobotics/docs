@@ -5,6 +5,7 @@ weight: 20
 type: "docs"
 tags: ["rover", "tutorial"]
 description: "Configure your rover by adding the Viam-provided configuration fragment to your rover."
+capabilities: ["hw-mobility", "machine-config", "docs"]
 aliases:
   - /try-viam/rover-resources/rover-tutorial-fragments/
   - /get-started/try-viam/rover-resources/rover-tutorial-fragments/

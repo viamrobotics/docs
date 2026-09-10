@@ -5,6 +5,7 @@ weight: 15
 layout: "docs"
 type: "docs"
 description: "Use a vision service to classify images by label and confidence, make decisions based on classification, and monitor scenes continuously."
+capabilities: ["vision-service"]
 date: "2025-01-30"
 aliases:
   - /build/vision-detection/classify-objects/

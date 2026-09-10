@@ -4,6 +4,7 @@ linkTitle: "Audio in"
 weight: 20
 type: "docs"
 description: "Give commands to your audio in components."
+capabilities: ["hw-audio", "sdks"]
 icon: true
 # images: ["/icons/components/resource.svg"]
 date: "2025-11-12"

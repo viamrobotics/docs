@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Verify and adjust the spatial relationship between components using the 3D scene and measurement tool."
+capabilities: ["scene-3d"]
 aliases:
   - /motion-planning/3d-scene/calibrate-frame-offsets/
   - /visualization/3d-scene-tools/measuring-between-frames/

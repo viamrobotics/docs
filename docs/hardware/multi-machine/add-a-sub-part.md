@@ -5,6 +5,7 @@ weight: 15
 layout: "docs"
 type: "docs"
 description: "Attach a second computer to your existing machine as a sub-part so the main part can access its components."
+capabilities: ["machine-connectivity"]
 date: "2026-04-16"
 ---
 

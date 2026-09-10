@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "The motion service API for planning and executing component movements."
+capabilities: ["motion-planning"]
 aliases:
   - /reference/apis/services/motion/
   - /appendix/apis/services/motion/

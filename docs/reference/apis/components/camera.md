@@ -4,6 +4,7 @@ linkTitle: "Camera"
 weight: 70
 type: "docs"
 description: "Give commands for getting images or point clouds."
+capabilities: ["hw-camera", "sdks"]
 icon: true
 images: ["/icons/components/camera.svg"]
 date: "2022-01-01"

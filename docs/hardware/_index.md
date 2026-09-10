@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Understand how Viam represents hardware, add components to your machine, and configure them."
+capabilities: ["section-index", "machine-config"]
 manualLink: "/hardware/configure-hardware/"
 aliases:
   - /hardware-components/

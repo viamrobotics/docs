@@ -5,6 +5,7 @@ type: "docs"
 layout: "empty"
 canonical: "https://www.viam.com/post/confetti-bot"
 description: "Use a red button to activate a GPIO pin on the board and make a confetti popper go off."
+capabilities: ["hw-compute", "hw-actuation", "docs"]
 tags: ["raspberry pi", "python", "app", "board", "motor"]
 videos:
   [

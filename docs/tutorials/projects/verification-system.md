@@ -3,6 +3,7 @@ title: "A security system based on face identification"
 linkTitle: "Security system"
 type: "docs"
 description: "Create an alarm system that can detect people and recognize faces, allowing it to intelligently trigger alarms."
+capabilities: ["vision-service", "ml-models", "docs"]
 videos:
   [
     "/tutorials/verification-system/demo.webm",

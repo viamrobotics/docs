@@ -5,6 +5,7 @@ childTitleEndOverwrite: "Servo Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in servo models."
+capabilities: ["section-index", "hw-actuation"]
 no_list: true
 tags: ["servo", "components"]
 icon: true

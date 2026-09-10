@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Add, edit, and attach geometry to frames directly in the 3D scene."
+capabilities: ["scene-3d"]
 aliases:
   - /motion-planning/3d-scene/edit-frames/
   - /visualization/3d-scene-tools/editing-frames-visually/

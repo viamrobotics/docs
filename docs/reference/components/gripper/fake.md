@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Reference for the fake gripper model. Fake gripper."
+capabilities: ["hw-actuation"]
 tags: ["gripper", "components"]
 icon: true
 images: ["/icons/components/gripper.svg"]

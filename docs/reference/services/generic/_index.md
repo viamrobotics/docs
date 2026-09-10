@@ -5,6 +5,7 @@ weight: 500
 layout: "docs"
 type: "docs"
 description: "A service that does not fit any of the other APIs."
+capabilities: ["hw-generic"]
 modulescript: true
 date: "2026-04-18"
 aliases:

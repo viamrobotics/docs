@@ -5,6 +5,7 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Read from sensors and control motors, arms, and other actuators from your app using the SDK component clients."
+capabilities: ["sdks"]
 date: "2026-04-13"
 ---
 

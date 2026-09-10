@@ -5,6 +5,7 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Add and configure a camera component, verify the feed, and capture an image programmatically."
+capabilities: ["hw-camera"]
 date: "2025-01-30"
 aliases:
   - /operate/reference/components/camera/

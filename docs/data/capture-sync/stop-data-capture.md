@@ -5,6 +5,7 @@ weight: 6
 layout: "docs"
 type: "docs"
 description: "Stop capturing data for specific resources, all resources, or disable cloud sync."
+capabilities: ["data-capture"]
 date: "2025-01-30"
 aliases:
   - /data/stop-data-capture/

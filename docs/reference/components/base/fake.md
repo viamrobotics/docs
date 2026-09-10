@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 20
 type: "docs"
 description: "Reference for the fake base model. Fake base to use for testing without physical hardware."
+capabilities: ["hw-mobility"]
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:

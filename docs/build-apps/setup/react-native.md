@@ -5,6 +5,7 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Set up a project for building a Viam mobile app using React Native specifically. For new cross-platform apps, prefer Flutter."
+capabilities: ["sdks"]
 date: "2026-04-10"
 ---
 

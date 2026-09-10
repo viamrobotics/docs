@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure triggers to receive email, webhook, or push notifications when machines need attention."
+capabilities: ["triggers-alerts"]
 aliases:
   - /manage/troubleshoot/alert/
   - /build/configure/webhooks/

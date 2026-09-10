@@ -4,6 +4,7 @@ linkTitle: "gyro-mpu6050"
 weight: 40
 type: "docs"
 description: "Reference for the gyro-mpu6050 movement-sensor model. MPU-6050 movement sensor with a microcontroller."
+capabilities: ["hw-sensing"]
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/operate/reference/components/movement-sensor/gyro-mpu6050-micro-rdk/"

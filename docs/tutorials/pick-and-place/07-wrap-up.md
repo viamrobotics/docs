@@ -5,6 +5,7 @@ type: "docs"
 slug: "wrap-up"
 weight: 70
 description: "Review what you built in the pick-and-place workshop, the parts of the Viam platform you exercised, and where to take your solution next."
+capabilities: ["motion-planning", "vision-service", "docs"]
 workshop: "pick-and-place"
 toc_hide: true
 prev: "/tutorials/pick-and-place/inline-module/"

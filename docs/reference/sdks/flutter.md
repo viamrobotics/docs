@@ -1,6 +1,7 @@
 ---
 title: "Flutter"
 linkTitle: "Flutter"
+capabilities: ["sdks"]
 weight: 50
 type: "docs"
 layout: "empty"

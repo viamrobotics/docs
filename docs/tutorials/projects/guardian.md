@@ -4,6 +4,7 @@ linkTitle: "Pet Guardian"
 type: "docs"
 layout: "empty"
 description: "Make a functional guardian with a servo motor, some LEDs, a camera, and the ML Model and vision service to detect people and pets."
+capabilities: ["vision-service", "ml-models", "hw-camera", "docs"]
 videos: ["/tutorials/guardian/preview.webm", "/tutorials/guardian/preview.mp4"]
 videoAlt: "A guardian detecting a person or pet."
 images: ["/tutorials/guardian/preview.gif"]

@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Add and configure a base to drive a mobile robot with movement commands."
+capabilities: ["hw-mobility"]
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/base/

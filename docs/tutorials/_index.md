@@ -1,6 +1,7 @@
 ---
 title: "Tutorials"
 linkTitle: "Tutorials"
+capabilities: ["section-index", "docs"]
 weight: 300
 type: docs
 layout: "tutorials"

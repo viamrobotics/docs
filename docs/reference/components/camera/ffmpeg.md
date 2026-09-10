@@ -4,6 +4,7 @@ linkTitle: "ffmpeg"
 weight: 30
 type: "docs"
 description: "Reference for the ffmpeg camera model. Uses a camera device, video file, or stream as a camera component."
+capabilities: ["hw-camera"]
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:

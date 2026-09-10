@@ -6,5 +6,6 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Capture data from your machines and sync it to the cloud."
+capabilities: ["data-capture", "section-index"]
 manualLink: "/data/capture-sync/capture-and-sync-data/"
 ---

@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Write inspection logic that detects defective cans."
+capabilities: ["module-development", "sdks", "docs"]
 date: "2025-01-30"
 aliases:
   - /try/part-3/

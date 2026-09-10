@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "URL patterns, cookie structure, caching behavior, and limits for the Viam Applications hosting platform."
+capabilities: ["viam-apps"]
 date: "2026-04-10"
 ---
 
