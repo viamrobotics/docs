@@ -28,6 +28,8 @@
 
 Every published page on this site also serves a Markdown version: drop the trailing slash from the page's URL and append `.md`. For example, the page at `https://docs.viam.com/reference/components/board/` is also available as `https://docs.viam.com/reference/components/board.md`. This works uniformly for every page, including section landing pages.
 
-Links inside these Markdown files are always absolute (`https://docs.viam.com/...`), never relative, so they resolve correctly regardless of where you fetched the page from. Code samples are always in real fenced code blocks with the correct language tag and exact original whitespace, never flattened or re-escaped.
+Links inside these Markdown files are always absolute, never relative, so they resolve correctly regardless of where you fetched the page from.
 
 Most page content converts cleanly to Markdown syntax (headings, links, lists, bold, code). A minority of pages retain some embedded raw HTML for specific UI widgets (tabbed instructions nested inside step-by-step tables, glossary term tooltips, images, and card grids) rather than force-converting them — this HTML is valid inside a Markdown document and reads fine for both humans and machine readers; it just isn't pure Markdown syntax in those specific spots.
+
+Code samples are unaffected by this: they're always in real fenced code blocks with the correct language tag and exact original whitespace, never flattened or re-escaped.
