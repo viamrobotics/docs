@@ -12,5 +12,5 @@
 {{ range $terms }}
 ### {{ .Title }}
 
-{{ .RenderShortcodes }}
+{{ strings.Trim .RenderShortcodes "\n\t " }}
 {{ end }}
