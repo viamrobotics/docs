@@ -126,6 +126,8 @@ Grasp at or above the object's center height. A grasp near the surface it rests 
 
 `grab` returns whether the gripper holds something. `is_holding_something` is the check to make after any move while carrying. When a client's session ends, viam-server stops every actuator that session commanded. Whether a held object survives that stop depends on the gripper model: some models keep holding it, and on others the stop releases the drive and drops it, so check `is_holding_something` and keep a carry sequence in one session. A gripper that closed on nothing stops where it is, with no force, until the next command.
 
+Do not read a held object with a wrist-mounted camera: a held object is well under the camera's safe minimum range, so it fills most of the frame and a segmenter returns a biased center that reads like the grasp shifted when it did not. If you need to check the scene before releasing, read it from a fixed camera the arm does not block, not from the wrist camera.
+
 ### Looking
 
 With a wrist-mounted camera, read from 300 mm or more above an object. Closer than that, the gripper's own fingertips enter the frame and color detectors find them. A fixed overhead camera, or a machine with no gripper, has no such limit. Check a vision result once against an independent depth read, then trust it; the check costs one call, rebuilding perception costs ten minutes. The first frame after a machine boots can be stale. If a reading is far from where the scene should be, read again.
