@@ -2,9 +2,9 @@
 {{- $text := .text -}}
 {{- $currentDir := $page.Path -}}
 
-{{/* Protect fenced code blocks first -- content inside them (e.g. Go generics
-     like NativeConfig[*Config](rawConf)) can look like Markdown link syntax
-     but must never be touched. */}}
+{{/* Protect fenced code blocks first -- content inside them, such as the Go
+     generic call NativeConfig[*Config](rawConf), can look like Markdown link
+     syntax but must never be touched. */}}
 {{- $codeBlocks := slice -}}
 {{- range $i, $match := (findRE "(?s)```.*?```" $text 200) -}}
   {{- $codeBlocks = $codeBlocks | append $match -}}
