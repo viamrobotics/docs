@@ -1,10 +1,12 @@
 {{- /*
-  Triggers Hugo Pipes generation of this site's agent-facing
-  discoverability files (sitetree.json, llms.txt, llms-full.txt) and
+  Triggers Hugo Pipes generation of sitetree.json and llms.txt and
   returns their resources so callers (head.html) can link to them.
+  llms-full.txt is deliberately NOT triggered here -- see
+  layouts/_default/list.markdown.md for why (shortcode rendering, not
+  this file's own concern).
 
   IMPORTANT: removing this partial, or its include in head.html, silently
-  stops these files from being generated. A Hugo Pipes resource only
+  stops these two files from being generated. A Hugo Pipes resource only
   publishes if something references it during render -- there is no
   build error or warning if that reference disappears. See CLAUDE.md's
   "Agent discoverability files" section before touching this.
