@@ -22,4 +22,5 @@ outputs:
   - rss
   - typesense
   - MARKDOWN
+  - TUTORIALCATALOG
 ---

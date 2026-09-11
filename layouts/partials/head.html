@@ -55,6 +55,14 @@
 <link rel="describedby" href="{{ $agentFiles.llmsTXT.Permalink }}" />
 <link rel="describedby" type="application/json" title="sitetree.json" href="{{ $agentFiles.sitetreeJSON.Permalink }}" />
 {{- /*
+  Tutorials catalog is a Hugo output format (TUTORIALCATALOG) scoped only
+  to /tutorials/ via that section's own outputs: override, not a Pipes
+  asset -- .OutputFormats.Get only resolves on pages within that section,
+  so this link is a plain hardcoded absolute URL for site-wide visibility,
+  same as every other output-format-generated path in this repo.
+*/ -}}
+<link rel="describedby" title="tutorials catalog" href="{{ "tutorials/catalog.md" | absURL }}" />
+{{- /*
   llms-full.txt is deliberately not linked here (see CLAUDE.md) and not
   triggered here either -- see layouts/_default/list.markdown.md, where
   it's triggered from a template that actually renders in the MARKDOWN

@@ -16,12 +16,16 @@
 {{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
 {{- end }}{{ end }}
 {{- if eq .title "Reference" }}
-- [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page reachable from the site's main navigation, with hierarchy, always current. Pages hidden from navigation (`toc_hide: true`, e.g. individual tutorials) are not included.
+- [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page reachable from the site's main navigation, with hierarchy, always current. Pages hidden from navigation (`toc_hide: true`) are not included -- see the tutorials catalog below for those.
 {{- end }}
 {{ end }}
 ## Full text
 
 - [Full text of agent-first pages]({{ "llms-full.txt" | absURL }}): the pages above flagged for full inclusion, concatenated in one file.
+
+## Tutorials
+
+- [Tutorials catalog]({{ "tutorials/catalog.md" | absURL }}): worked examples and walkthroughs, several hosted outside this site. Not part of the site structure above, but useful if you're looking for an example that matches what you're building.
 
 ## Markdown availability
 
