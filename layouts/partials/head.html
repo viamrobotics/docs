@@ -51,7 +51,9 @@
     href="{{ .Permalink | safeURL }}"
 />
 {{ end -}}
+{{- $agentFiles := partial "agent-discoverability-files.html" . -}}
 <link rel="describedby" href="{{ "/llms.txt" | absURL }}" />
+<link rel="describedby" type="application/json" title="sitetree.json" href="{{ $agentFiles.sitetreeJSON.Permalink }}" />
 {{- with .OutputFormats.Get "markdown" -}}
 <link
     rel="alternate"

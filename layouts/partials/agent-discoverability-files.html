@@ -1,0 +1,22 @@
+{{- /*
+  Triggers Hugo Pipes generation of this site's agent-facing
+  discoverability files (sitetree.json, llms.txt, llms-full.txt) and
+  returns their resources so callers (head.html) can link to them.
+
+  IMPORTANT: removing this partial, or its include in head.html, silently
+  stops these files from being generated. A Hugo Pipes resource only
+  publishes if something references it during render -- there is no
+  build error or warning if that reference disappears. See CLAUDE.md's
+  "Agent discoverability files" section before touching this.
+*/ -}}
+{{- /*
+  Pass site.Home explicitly, not `.` -- this partial is included from
+  head.html, which renders on every page, but a Hugo Pipes resource is
+  only actually executed once (on whichever page happens to trigger it
+  first) and then reused for every other page. If the sitetree recursion
+  were handed the ambient "." here, its root would be whatever random
+  page triggered it first, not the site's home page. Confirmed by
+  building without this and getting a non-home root node.
+*/ -}}
+{{- $sitetreeJSON := resources.Get "sitetree.json" | resources.ExecuteAsTemplate "sitetree.json" site.Home -}}
+{{- return (dict "sitetreeJSON" $sitetreeJSON) -}}
