@@ -13,6 +13,14 @@ IgnoreDirectoryMissingTrailingSlash: false
 # in a burst.
 HTTPConcurrencyLimit: 1
 ExternalTimeout: 30
+# <link> tags (stylesheets, canonical, RSS, and our own Markdown-mirror
+# rel="alternate" links) are all build-generated, not human-authored content.
+# The Markdown-mirror alternate link on section/home pages points at a flat
+# .md URL that only resolves via a Netlify redirect htmltest can't see, so it
+# always reads as broken here even though it works in production. Disabling
+# CheckLinks (not CheckAnchors) skips only <link> tags -- every real <a href>
+# content link, including any that happen to end in .md, is still checked.
+CheckLinks: false
 IgnoreURLs:
   # Valid links that automated checkers cannot verify: pkg.go.dev rate-limits
   # requests (HTTP 429); analog.com, fandom.com, cloud.google.com, ebay.com, and
@@ -73,7 +81,6 @@ IgnoreURLs:
   - "grpc.io"
   - "odroid.com"
   - "viamapplications.com"
-  - "\\.md$"
 IgnoreDirs:
   - "lib"
 CacheExpires: "6h"
