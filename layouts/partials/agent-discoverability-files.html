@@ -1,25 +1,12 @@
 {{- /*
-  Triggers Hugo Pipes generation of sitetree.json and llms.txt and
-  returns their resources so callers (head.html) can link to them.
-  llms-full.txt is deliberately NOT triggered here -- see
-  layouts/_default/list.markdown.md for why (shortcode rendering, not
-  this file's own concern).
-
-  IMPORTANT: removing this partial, or its include in head.html, silently
-  stops these two files from being generated. A Hugo Pipes resource only
-  publishes if something references it during render -- there is no
-  build error or warning if that reference disappears. See CLAUDE.md's
-  "Agent discoverability files" section before touching this.
+  Triggers Pipes generation of sitetree.json/llms.txt and returns their
+  resources for head.html to link to. llms-full.txt is triggered
+  separately, from list.markdown.md -- see CLAUDE.md's "Agent
+  discoverability files" section for why, and for why removing this
+  partial (or its include in head.html) silently stops these files from
+  generating.
 */ -}}
-{{- /*
-  Pass site.Home explicitly, not `.` -- this partial is included from
-  head.html, which renders on every page, but a Hugo Pipes resource is
-  only actually executed once (on whichever page happens to trigger it
-  first) and then reused for every other page. If the sitetree recursion
-  were handed the ambient "." here, its root would be whatever random
-  page triggered it first, not the site's home page. Confirmed by
-  building without this and getting a non-home root node.
-*/ -}}
+{{- /* site.Home, not `.` -- see CLAUDE.md for why. */ -}}
 {{- $sitetreeJSON := resources.Get "sitetree.json" | resources.ExecuteAsTemplate "sitetree.json" site.Home -}}
 {{- $llmsTXT := resources.Get "llms.txt" | resources.ExecuteAsTemplate "llms.txt" site.Home -}}
 {{- return (dict "sitetreeJSON" $sitetreeJSON "llmsTXT" $llmsTXT) -}}
