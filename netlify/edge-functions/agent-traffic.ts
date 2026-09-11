@@ -1,5 +1,11 @@
 import type { Config, Context } from "@netlify/edge-functions";
 
+// .json is a common format for auto-fetched machine metadata, so it is
+// excluded. The exception is /sitetree.json, which our site generates
+// specifically for LLM consumption.
+const AGENT_JSON_ALLOWLIST = new Set(["/sitetree.json"]);
+const NOISY_JSON_EXTENSION = /\.json$/i;
+
 export default async (request: Request, context: Context) => {
   const response = await context.next();
 
@@ -10,6 +16,10 @@ export default async (request: Request, context: Context) => {
   // unless explicitly configured) — skip rather than firing a doomed request.
   if (token && ingestUrl) {
     const url = new URL(request.url);
+
+    if (NOISY_JSON_EXTENSION.test(url.pathname) && !AGENT_JSON_ALLOWLIST.has(url.pathname)) {
+      return response;
+    }
 
     const event = {
       _time: new Date().toISOString(),
@@ -44,9 +54,8 @@ export const config: Config = {
     "/*.css",
     "/*.js",
     "/*.mjs",
-    "/*.json",
+    // .json is handled in code above, not here.
     "/*.xml",
-    "/*.txt",
     "/*.png",
     "/*.jpg",
     "/*.jpeg",
