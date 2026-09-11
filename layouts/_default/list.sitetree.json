@@ -1,0 +1,18 @@
+{{- /*
+  /sitetree.json: the full site IA as JSON, for agents (linked from
+  llms.txt). Mirrors the same child-selection and manualLink logic as
+  themes/docsy/layouts/partials/sidebar-tree.html, so this matches the real
+  sidebar rather than an independent notion of structure.
+
+  Recurses via a named template that emits JSON text directly (each string
+  value individually escaped with `jsonify`), rather than a recursive
+  `partial` returning a Go value, matching how sidebar-tree.html itself
+  recurses.
+*/ -}}
+{{- template "sitetree-node" . -}}
+{{- define "sitetree-node" -}}
+{{- $s := . -}}
+{{- $path := cond (isset $s.Params "manuallink") ($s.Params.manualLink | absURL) (cond (isset $s.Params "manuallinkrelref") ((relref $s $s.Params.manualLinkRelref) | absURL) $s.Permalink) -}}
+{{- $children := where (union $s.Pages $s.Sections).ByWeight ".Params.toc_hide" "!=" true -}}
+{ "title": {{ $s.LinkTitle | jsonify }}, "path": {{ $path | jsonify }}{{ with $s.Params.description }}, "description": {{ . | jsonify }}{{ end }}{{ if gt (len $children) 0 }}, "children": [{{ range $i, $c := $children }}{{ if $i }},{{ end }}{{ template "sitetree-node" $c }}{{ end }}]{{ end }} }
+{{- end -}}

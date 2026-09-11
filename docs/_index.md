@@ -13,6 +13,7 @@ outputs:
   - html
   - REDIR
   - MARKDOWN
+  - SITETREE
 noedit: true
 date: "2024-09-17"
 updated: "2024-10-11"

@@ -52,7 +52,7 @@ weight = 1
 disableAliases = true
 
 [outputs]
-home = ["HTML", "REDIR", "MARKDOWN"]
+home = ["HTML", "REDIR", "MARKDOWN", "SITETREE"]
 section = ["HTML", "Typesense", "MARKDOWN"]
 page = ["HTML", "MARKDOWN"]
 # Taxonomy/terms pages (/tags/*) are intentionally excluded from Markdown.
@@ -62,6 +62,12 @@ term = ["HTML", "RSS"]
 [outputFormats.REDIR]
 mediaType = "text/netlify"
 baseName = "_redirects"
+isPlainText = true
+notAlternative = true
+
+[outputFormats.SITETREE]
+mediaType = "application/json"
+baseName = "sitetree"
 isPlainText = true
 notAlternative = true
 
