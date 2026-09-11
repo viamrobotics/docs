@@ -55,12 +55,7 @@ disableAliases = true
 home = ["HTML", "REDIR", "MARKDOWN"]
 section = ["HTML", "Typesense", "MARKDOWN"]
 page = ["HTML", "MARKDOWN"]
-# Taxonomy/term pages (e.g. /tags/*) are deliberately excluded from the
-# Markdown mirror: they're auto-generated link aggregations with no content
-# of their own, orphaned from site navigation, and better served by the
-# planned sitetree.json/llms.txt work. HTML+RSS matches Hugo's built-in
-# default for these kinds -- listed explicitly so the exclusion is a
-# decision, not an omission.
+# Taxonomy/terms pages (/tags/*) are intentionally excluded from Markdown.
 taxonomy = ["HTML", "RSS"]
 term = ["HTML", "RSS"]
 
