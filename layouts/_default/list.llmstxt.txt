@@ -2,6 +2,13 @@
   /llms.txt: curated agent-facing entry point, generated from
   data/llms_pages.yaml. See CLAUDE.md and that file's header comment for
   the curation strategy.
+
+  Filename note: this template's middle segment ("llmstxt") must match the
+  LLMSTXT output format's Name field exactly, case-insensitive -- baseName
+  controls the public URL (llms.txt) separately. An earlier version named
+  this file list.llms.txt, which silently collided with list.llms-full.txt
+  (both rendered the same content) since neither's middle segment matched
+  its format's actual Name.
 */ -}}
 # Viam
 
