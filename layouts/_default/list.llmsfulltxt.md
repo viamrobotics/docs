@@ -1,6 +1,6 @@
 {{- /*
   /llms-full.txt: full text of pages flagged `full: true` in
-  data/llms_pages.yaml, rendered via the same render-page-markdown.html
+  data/llms_pages.yaml, rendered through the same render-page-markdown.html
   partial every page's own .md mirror uses. See CLAUDE.md.
 
   $full is interpolated with | safeHTML below: Hugo's html/template
