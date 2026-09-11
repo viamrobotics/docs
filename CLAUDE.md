@@ -75,7 +75,32 @@ Every published page also serves a Markdown version (append `.md` to the URL, mi
 - **`render-page-markdown.html`** is the shared partial behind `single.md`/`list.md`'s per-page rendering (both are now a one-line call to it). `llms-full.txt` reuses the same partial for its inlined pages, so there's exactly one implementation of "how a page becomes Markdown."
 - **Relative links** in Markdown body content are rewritten to absolute permalinks by `layouts/partials/resolve-markdown-links.html` (wired into `single.md`/`list.md` only—the shared HTML `render-link.html` hook is untouched). The flat `.md` URL sits one directory level shallower than the nested HTML URL it mirrors, so an unresolved relative link like `../sibling/` lands one level too high.
 - **`htmltest`** (`.htmltest.yml`, `.htmltest-local.yml`) sets `CheckLinks: false` because the section/home alternate-Markdown `<link>` tag only resolves through the Netlify redirect above, which the tool can't see.
-- `/tutorials/` and `/tutorials/all/` mirror to near-empty stubs on purpose—real content is Go-template-generated or (for `/all/`) entirely client-side/Typesense-driven in production. Plan is to point these at `sitetree.json` once it exists rather than building dedicated listing templates.
+- `/tutorials/` and `/tutorials/all/` mirror to near-empty stubs on purpose—real content is Go-template-generated or (for `/all/`) entirely client-side/Typesense-driven in production. `/tutorials/catalog.md` (see "Agent discoverability files" below) is the machine-readable listing instead of building dedicated `.md` templates for these two.
+
+## Agent discoverability files
+
+`/sitetree.json`, `/llms.txt`, `/llms-full.txt` are Hugo Pipes assets (`resources.Get | ExecuteAsTemplate`, same mechanism Docsy uses for its own `offline-search-index.json`) rather than output formats--Pipes assets don't touch Hugo's `list.<format>` template lookup at all, avoiding a naming-collision class entirely, and let `llms-full.txt` keep its real `.txt` name with clean shortcode rendering, no `mediaType`/Netlify-redirect trick needed. `/tutorials/catalog.md` is the one exception, still an output format (`TUTORIALCATALOG`)--its URL is already `.md`, and it directly reuses `list.typesense.json`'s filter, scoped through `docs/tutorials/_index.md`'s own `outputs:` override.
+
+- **`/sitetree.json`** (`assets/sitetree.json`, triggered from `layouts/partials/agent-discoverability-files.html`, included in `head.html`): recurses `(union $s.Pages $s.Sections).ByWeight` filtered on `toc_hide`, mirroring `layouts/partials/sidebar-tree.html`--this repo's own override, not the vendored `themes/docsy/` copy. A node's `path` is present only when it has real content; a pure-signpost section (Hugo's `manualLink`) omits `path` and carries `redirect` instead, so no URL appears twice and a consumer can't accidentally fetch an empty stub. Excludes tutorials (21 of 48 point off-site, no single-parent home) and the sidebar's truncation/`hide_children`/active-path logic (no analog in a static tree).
+- **`/llms.txt`** (`assets/llms.txt`, from `data/llms_pages.yaml`--see that file's header for the curation heuristic): the **sole** discovery path for `llms-full.txt`, deliberately not also `<head>`-linked, since a bare link can't carry the context that "-full" doesn't mean "the whole site."
+- **`/llms-full.txt`** (`assets/llms-full.txt`, reuses `render-page-markdown.html` per curated page): not `<head>`-linked either, same reason.
+
+### The shortcode gotcha
+
+A Pipes resource's shortcode resolution (clean `.md` variant versus raw `.html` one) follows whichever output format is *actually rendering* the template that calls `ExecuteAsTemplate`--not the resource's name, not the `ExecuteAsTemplate` target-path string, not the page data passed in. `head.html` only ever renders as HTML, so triggering `llms-full.txt` there leaked raw `<div>`/`<svg>`/entities; nesting the trigger inside `llms.txt`'s own template didn't help either, since that's still reached through the same HTML-rooted chain. Fix: trigger it from `layouts/_default/list.markdown.md`, which genuinely renders as `MARKDOWN`. Any future Pipes asset calling `.RenderShortcodes` needs its trigger in a template that *is* the target format, not one that merely references one.
+
+### Two more Pipes gotchas
+
+- A Pipes resource only publishes if something dereferences a property on it (`.Permalink`, etc.)--just executing the template isn't enough. `llms-full.txt` is deliberately unlinked, so `head.html` has a no-op-looking `{{- $_ := $agentFiles.llmsFullTXT.RelPermalink -}}` purely to trigger publishing.
+- Pass `site.Home` as `ExecuteAsTemplate`'s context, not ambient `.`, when triggering from something rendered on every page (like `head.html`)--the resource only actually executes once, on whichever page hits it first, so ambient `.` picks a random page as root instead of home.
+
+### Maintainability
+
+`agent-discoverability-files.html` and `list.markdown.md`'s trigger both carry loud comments: removing either silently stops the corresponding file or files from generating, no build error. An automatic CI assertion (`test -f public/llms.txt && ...`) would catch this--deliberately not built here, flagged as a fast-follow.
+
+`/tutorials/catalog.md` (`list.tutorialcatalog.md`, scoped through `docs/tutorials/_index.md`'s `outputs:`) depends entirely on that section existing; if `/tutorials/` is ever removed, this stops generating silently and `llms.txt`'s link to it 404s--remove that link in the same change.
+
+None of this lives under `docs/`, so `prettier-lint.yml`/`markdown-lint.yml` don't apply. `make build-prod` plus a full-site regression sweep (grep every section's/home's Markdown mirror for content that shouldn't be there) is the check--exactly what would have caught this system's one shipped bug, a `list.<format>` collision that replaced every section's real mirror content.
 
 ## Glossary content structure
 
