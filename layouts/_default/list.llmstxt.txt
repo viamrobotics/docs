@@ -11,14 +11,14 @@
 
 > Viam is a platform for building, operating, and managing robots and other machines. A machine runs viam-server, exposes its hardware and services through typed gRPC APIs, and can be discovered, observed, and operated from the CLI, from SDKs, or from an AI agent holding an API key.
 {{ range site.Data.llms_pages.sections }}
-## {{ .title | safeHTML }}
+## {{ .title }}
 {{ range .pages }}{{ with site.GetPage .path }}
-- [{{ .Title | safeHTML }}]({{ .Permalink }}){{ with .Description }}: {{ . | safeHTML }}{{ end }}
+- [{{ .Title }}]({{ .Permalink }}){{ with .Description }}: {{ . }}{{ end }}
 {{- else }}
 {{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
 {{- end }}{{ end }}
 {{- if eq .title "Reference" }}
-- [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page on the site, with hierarchy, always current.
+- [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page reachable from the site's main navigation, with hierarchy, always current. Pages hidden from navigation (`toc_hide: true`, e.g. individual tutorials) are not included.
 {{- end }}
 {{ end }}
 ## Full text

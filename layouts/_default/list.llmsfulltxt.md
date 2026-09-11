@@ -2,8 +2,7 @@
   /llms-full.txt: full text of pages flagged `full: true` in
   data/llms_pages.yaml, rendered through render-page-markdown.html.
   Filename and mediaType both matter here -- see CLAUDE.md's "Agent
-  discoverability files" section for why. $full needs | safeHTML below,
-  same section explains that too.
+  discoverability files" section for why.
 */ -}}
 {{- $out := slice -}}
 {{- range site.Data.llms_pages.sections -}}
@@ -25,4 +24,4 @@
 
 > The full text of the pages flagged for full inclusion in [llms.txt]({{ "llms.txt" | absURL }}), inlined here so an agent can read them in one fetch instead of following each link separately.
 
-{{ $full | safeHTML }}
+{{ $full }}
