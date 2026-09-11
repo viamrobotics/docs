@@ -52,7 +52,7 @@ weight = 1
 disableAliases = true
 
 [outputs]
-home = ["HTML", "REDIR", "MARKDOWN", "SITETREE", "LLMSTXT"]
+home = ["HTML", "REDIR", "MARKDOWN", "SITETREE", "LLMSTXT", "LLMSFULLTXT"]
 section = ["HTML", "Typesense", "MARKDOWN"]
 page = ["HTML", "MARKDOWN"]
 # Taxonomy/terms pages (/tags/*) are intentionally excluded from Markdown.
@@ -74,6 +74,12 @@ notAlternative = true
 [outputFormats.LLMSTXT]
 mediaType = "text/plain"
 baseName = "llms"
+isPlainText = true
+notAlternative = true
+
+[outputFormats.LLMSFULLTXT]
+mediaType = "text/plain"
+baseName = "llms-full"
 isPlainText = true
 notAlternative = true
 
