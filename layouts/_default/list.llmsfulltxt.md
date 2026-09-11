@@ -1,20 +1,9 @@
 {{- /*
   /llms-full.txt: full text of pages flagged `full: true` in
-  data/llms_pages.yaml, rendered through the same render-page-markdown.html
-  partial every page's own .md mirror uses. See CLAUDE.md.
-
-  $full is interpolated with | safeHTML below: Hugo's html/template
-  escaper is active for bare interpolation in a top-level list.<format>
-  template regardless of isPlainText/isHTML on the output format (verified
-  empirically while building list.llmstxt.txt in the prior task), so
-  without it apostrophes in real page content would render as &#39; etc.
-
-  Filename note: this template's middle segment ("llmsfulltxt") must match
-  the LLMSFULLTXT output format's Name field exactly, case-insensitive --
-  baseName controls the public URL (llms-full.txt) separately. An earlier
-  version named this file list.llms-full.txt, which silently collided with
-  list.llms.txt (both rendered the same content) since neither's middle
-  segment matched its format's actual Name.
+  data/llms_pages.yaml, rendered through render-page-markdown.html.
+  Filename and mediaType both matter here -- see CLAUDE.md's "Agent
+  discoverability files" section for why. $full needs | safeHTML below,
+  same section explains that too.
 */ -}}
 {{- $out := slice -}}
 {{- range site.Data.llms_pages.sections -}}
