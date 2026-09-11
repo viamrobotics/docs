@@ -60,7 +60,7 @@
 
 [[redirects]]
   from = "/set-up-a-machine/"
-  to = "/set-up-a-machine/overview/"
+  to = "/set-up-a-machine/first-machine/"
   status = 301
   force = true
 
