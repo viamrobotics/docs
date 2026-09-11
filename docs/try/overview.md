@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Pick a hands-on way to try Viam. Most pathways need no hardware to get started."
+capabilities: ["section-index", "docs"]
 date: "2025-01-30"
 aliases:
   - /operate/hello-world/

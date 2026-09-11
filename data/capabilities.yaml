@@ -1,0 +1,71 @@
+# Accepted capability tags for docs frontmatter.
+#
+# Every docs/ page should carry a capabilities: [...] frontmatter field using
+# one or more of the tags below. scripts/check-capabilities.py reads this
+# file and warns (without failing CI) if a page has no capabilities: field or
+# uses a tag that isn't listed here.
+
+capabilities:
+  # ---------------------------------------------------------------- structural
+  glossary: Glossary term definitions.
+  docs: Guided walkthroughs, demos, glossary terms, and platform-overview content that isn't one specific technical capability.
+  section-index: Section landing pages and navigational overviews.
+
+  # ---------------------------------------------------------------- platform
+  billing: Usage, pricing, invoices, billing API.
+  org-management: Orgs, locations, RBAC, API keys, OAuth.
+  cli: The viam CLI.
+  sdks: Client SDKs, robot API, sessions, connecting from application code.
+
+  # ---------------------------------------------------------------- machine
+  viam-server: viam-server runtime, installation, lifecycle.
+  viam-agent: viam-agent - install, update, subsystems.
+  machine-config: Machine configuration, fragments, config reuse, AI config assistant.
+  machine-connectivity: Machine-to-machine comms, remote parts, network config.
+  device-provisioning: Per-board OS installation and device preparation, provisioning to multiple devices.
+  fleet-deployment: Fleet-wide software deployment, version pinning, scheduled jobs, system settings, metadata.
+  discovery: Discovery service - enumerate attached hardware and generate config.
+  logging: Logs, troubleshooting, common errors.
+
+  # ---------------------------------------------------------------- data
+  data-capture: Capture and sync from the machine - capture config, filtering at the edge, conditional sync.
+  data-storage: Stored data - query, export, retention, data client API, data regions.
+  data-pipelines: Scheduled transformation jobs over captured data.
+  datasets: Dataset assembly, image annotation, tagging.
+  sequences: Training data grouped as a specific time window, analogous to datasets.
+  dashboards: Monitoring dashboards, custom dashboard queries, data visualisation surfaces.
+  triggers-alerts: Triggers, webhooks, push notifications, data-condition alerts.
+
+  # ---------------------------------------------------------------- ML + vision
+  ml-training: Cloud training jobs, built-in and custom training scripts.
+  ml-models: ML model service - deploy, version, and serve a trained model on a machine.
+  vision-service: Vision service - detectors, classifiers, trackers, segmenters.
+
+  # ---------------------------------------------------------------- motion
+  motion-planning: Motion service, constraints, path planning.
+  frame-system: Frame system, kinematics, orientation vectors, world state, cross-machine frames.
+  navigation: Navigation service.
+  slam: SLAM service - mapping and localisation.
+
+  # ---------------------------------------------------------------- hardware
+  hw-arm: Arm component - drivers, kinematic files, arm API, stream-api.
+  hw-actuation: Actuation components - motor, servo, gripper.
+  hw-mobility: Base component, wheeled and sensor-controlled bases, base remote control, rovers.
+  hw-gantry: Gantry component and gantry motion.
+  hw-camera: Camera component - webcam, RTSP, Realsense, Orbbec, CSI, video-store.
+  hw-sensing: Sensing components - sensor, movement sensor, power sensor, encoder, switch, button, input controller.
+  hw-compute: Board component, GPIO, single-board computers.
+  hw-audio: Audio input component.
+  hw-generic: Generic component and generic service.
+
+  # ---------------------------------------------------------------- modules + apps
+  module-development: Writing, testing, and publishing driver and externally-managed logic modules.
+  inline-modules: Building and deploying inline modules.
+  module-registry: Registry as a marketplace - find, use, and deploy published modules.
+  viam-apps: Custom web apps on the Viam platform.
+  mobile-app: Viam mobile app, end-user machine setup flow.
+
+  # ---------------------------------------------------------------- surfaces
+  teleop: Teleop workspaces and live machine control UI, controls on the tab (but not the tab itself).
+  scene-3d: 3D scene viewer, visualization workspace and blocks.
+  surface-finishing: Surface finishing application - sanding, polishing, path generation.

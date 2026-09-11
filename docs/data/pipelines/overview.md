@@ -5,6 +5,7 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "How data pipelines work: scheduled MQL aggregations that transform raw captured data into precomputed summaries."
+capabilities: ["data-pipelines"]
 date: "2026-03-27"
 ---
 

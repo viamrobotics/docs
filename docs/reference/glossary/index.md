@@ -5,6 +5,7 @@ weight: 999
 type: "docs"
 layout: "glossary"
 description: "A glossary that explains robotics and Viam-specific jargon."
+capabilities: ["glossary", "docs"]
 card:
   name: reference
   weight: 10

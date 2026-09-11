@@ -4,6 +4,7 @@ linkTitle: "sensor-controlled"
 weight: 40
 type: "docs"
 description: "Reference for the sensor-controlled base model. Sensor-controlled base, a robotic base with feedback control from a movement sensor."
+capabilities: ["hw-mobility"]
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:

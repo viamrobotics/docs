@@ -4,6 +4,7 @@ linkTitle: "<board-series-model> Setup"
 weight: 16
 type: "docs"
 description: "Flash an <storage-medium> for the <board-series-model> to prepare it for viam-server installation."
+capabilities: ["device-provisioning"]
 images: ["/installation/thumbnails/prepare.png"]
 imageAlt: "<board-series-model>"
 no_list: true

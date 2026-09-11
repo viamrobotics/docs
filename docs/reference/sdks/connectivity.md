@@ -4,6 +4,7 @@ linkTitle: "Network connectivity"
 weight: 80
 type: "docs"
 description: "When you connect to a machine, the machine automatically chooses the best connection over local LAN, WAN or the internet."
+capabilities: ["sdks"]
 tags:
   ["client", "sdk", "viam-server", "networking", "apis", "robot api", "session"]
 aliases:

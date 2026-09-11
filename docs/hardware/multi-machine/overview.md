@@ -5,6 +5,7 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Connect multiple computers so one machine can access another's components and services."
+capabilities: ["machine-connectivity"]
 date: "2026-04-16"
 aliases:
   - /manage/parts-and-remotes/

@@ -4,6 +4,7 @@ linkTitle: "color_detector"
 weight: 20
 type: "docs"
 description: "Configure the color_detector vision service to find regions of a specific hue in camera images. No ML model required."
+capabilities: ["vision-service"]
 service_description: "A heuristic detector that draws boxes around regions of a specified hue."
 tags: ["vision", "computer vision", "CV", "services", "detection"]
 images: ["/services/vision/dog-detector.png"]

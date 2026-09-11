@@ -5,6 +5,7 @@ weight: 999
 layout: "docs"
 type: "docs"
 description: "Data schema, query operators, configuration fields, supported resources, and storage behavior."
+capabilities: ["data-storage", "data-capture"]
 aliases:
   - /data/query-reference/
   - /manage/data/query/

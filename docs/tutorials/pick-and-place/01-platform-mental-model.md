@@ -5,6 +5,7 @@ type: "docs"
 slug: "platform-mental-model"
 weight: 10
 description: "Understand how the Viam cloud, agent, and server fit together, and configure your first resource, the arm."
+capabilities: ["machine-config", "hw-arm", "docs"]
 workshop: "pick-and-place"
 toc_hide: true
 phase: 1

@@ -9,6 +9,7 @@ tags: ["rover", "viam rover"]
 images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover in a box"
 description: "Rent a Viam Rover in our robotics lab or set up your own, and use it to learn Viam."
+capabilities: ["hw-mobility", "docs"]
 date: "2026-05-23"
 aliases:
   - /viam-rover-resources/

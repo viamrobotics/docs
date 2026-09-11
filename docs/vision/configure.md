@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Wire up an ML model service and a vision service so your machine's camera can produce detections, classifications, or 3D point cloud objects."
+capabilities: ["vision-service", "ml-models"]
 date: "2026-04-14"
 aliases:
   - /build/vision-detection/add-computer-vision/

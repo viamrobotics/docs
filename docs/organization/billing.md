@@ -5,6 +5,7 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "View usage, manage payment methods, download invoices, and set billing alerts for your organization."
+capabilities: ["billing"]
 aliases:
   - /fleet/billing/
   - /billing/

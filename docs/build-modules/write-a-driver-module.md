@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Build a module that implements a resource API and runs as a separate process."
+capabilities: ["module-development"]
 date: "2025-01-30"
 aliases:
   - /operate/modules/write-a-driver-module/

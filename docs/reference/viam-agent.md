@@ -5,6 +5,7 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Reference for viam-agent: installation, subsystems, version control, advanced settings, system configuration, and network management."
+capabilities: ["viam-agent"]
 date: "2026-04-17"
 aliases:
   - /manage/reference/viam-agent/

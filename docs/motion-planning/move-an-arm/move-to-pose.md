@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Use the motion service to move a robot arm to a target pose (position and orientation) in 3D space."
+capabilities: ["motion-planning"]
 aliases:
   - /operate/mobility/move-arm/
   - /operate/mobility/move-arm/arm-motion/

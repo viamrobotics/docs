@@ -5,6 +5,7 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Apply tags to captured binary data so you can filter it, build datasets, or scope a delete operation."
+capabilities: ["datasets", "data-storage"]
 ---
 
 Tags are short labels you attach to captured items.

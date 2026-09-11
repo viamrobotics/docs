@@ -3,6 +3,7 @@ title: "Monitor Air Quality with a Fleet of Sensors"
 linkTitle: "Air Quality Fleet"
 type: "docs"
 description: "Configure a fleet of machines to capture air quality sensor data across different locations."
+capabilities: ["data-capture", "hw-sensing", "dashboards", "docs"]
 videos: ["/air-quality-loading.webm", "/air-quality-loading.mp4"]
 videoAlt: "A web dashboard showing PM2.5 readings from two air quality sensors."
 images: ["/air-quality-loading.gif"]

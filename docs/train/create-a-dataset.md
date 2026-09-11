@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Create a dataset of images for training an ML model."
+capabilities: ["datasets"]
 date: "2025-01-30"
 aliases:
   - /build/train/create-a-dataset/

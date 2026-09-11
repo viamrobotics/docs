@@ -5,6 +5,7 @@ type: "docs"
 slug: "perception-guided-picking"
 weight: 50
 description: "Add the vision pipeline and write the perception loop that detects a block, hands its camera-frame pose to the motion service, and picks it with motion planning."
+capabilities: ["vision-service", "motion-planning", "docs"]
 workshop: "pick-and-place"
 toc_hide: true
 phase: 5

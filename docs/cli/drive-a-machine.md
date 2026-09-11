@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Discover, observe, and operate any Viam machine with the CLI alone: list its resources, read its cameras and sensors, plan motion, and stop it, with one key and no SDK code."
+capabilities: ["cli"]
 date: "2026-09-03"
 ---
 
@@ -156,6 +157,8 @@ viam machines part run --part=<part-id> --component=builtin --method=Move --data
 ```
 
 `--data` is parsed as a single string, so the line breaks above are only for readability; writing the same JSON on one line works identically and can be easier to quote correctly in a script.
+
+`component_name` is the component's name as a string. Earlier SDK versions took a `ResourceName` message here, and passing one through an SDK now fails with `bad argument type for built-in operation`; the JSON form above is the current one.
 
 Typed verbs on components:
 

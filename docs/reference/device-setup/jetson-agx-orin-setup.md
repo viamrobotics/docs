@@ -6,6 +6,7 @@ type: "docs"
 images: ["/installation/thumbnails/jetson-agx-orin-dev-kit.png"]
 imageAlt: "Jetson A G X Orin Developer Kit"
 description: "Set up the Jetson AGX Orin Developer Kit to prepare your NVIDIA Jetson AGX Orin for viam-server installation."
+capabilities: ["device-provisioning"]
 no_list: true
 aliases:
   - /operate/reference/prepare/jetson-agx-orin-setup/

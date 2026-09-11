@@ -4,6 +4,7 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Reference for the fake generic model. Fake generic component."
+capabilities: ["hw-generic"]
 tags: ["generic", "components"]
 aliases:
   - "/operate/reference/components/generic/fake/"

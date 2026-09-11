@@ -5,6 +5,7 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Add and configure a button component to detect presses from a physical button."
+capabilities: ["hw-sensing"]
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/button/

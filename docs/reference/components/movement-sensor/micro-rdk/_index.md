@@ -4,6 +4,7 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Movement sensor models available in the Micro-RDK."
+capabilities: ["section-index", "hw-sensing"]
 tags: ["movement-sensor", "components", "Micro-RDK"]
 no_list: true
 ---

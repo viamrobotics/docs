@@ -4,6 +4,7 @@ linkTitle: "Vision"
 weight: 80
 type: "docs"
 description: "Give commands to get detections, classifications, or point cloud objects, depending on the ML model the vision service is using."
+capabilities: ["sdks", "vision-service"]
 aliases:
   - /appendix/apis/services/vision/
   - /services/vision/segmentation/

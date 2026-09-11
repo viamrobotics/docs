@@ -5,6 +5,7 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Run detection, classification, and 3D segmentation on camera feeds with Viam's vision service. Use ML models, heuristic color detection, or point cloud segmenters, and close the loop with retraining."
+capabilities: ["vision-service"]
 date: "2026-04-14"
 ---
 

@@ -6,6 +6,7 @@ type: "docs"
 images: ["/installation/thumbnails/pumpkin.png"]
 imageAlt: "Pumpkin board"
 description: "Configure the pin mappings to use a pumpkin board."
+capabilities: ["device-provisioning"]
 no_list: true
 aliases:
   - /operate/reference/prepare/pumpkin/

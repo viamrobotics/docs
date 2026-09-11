@@ -4,6 +4,7 @@ linkTitle: "Raspberry Pi Setup"
 weight: 15
 type: "docs"
 description: "Image a Raspberry Pi to prepare it for viam-server installation."
+capabilities: ["device-provisioning"]
 images: ["/installation/thumbnails/raspberry-pi-4-b-2gb.png"]
 imageAlt: "Raspberry Pi"
 no_list: true

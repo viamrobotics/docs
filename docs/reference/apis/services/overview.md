@@ -4,6 +4,7 @@ linkTitle: "Overview"
 weight: 1
 type: "docs"
 description: "Scan every Viam service API and its methods at a glance, with links to each method's reference."
+capabilities: ["sdks"]
 ---
 
 The following grid lists every {{< glossary_tooltip term_id="service" text="service" >}} API and its methods.

@@ -4,6 +4,7 @@ linkTitle: "mux"
 weight: 30
 type: "docs"
 description: "Reference for the mux input-controller model. Mux input controller to combine one or more input controllers."
+capabilities: ["hw-sensing"]
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:

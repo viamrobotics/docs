@@ -4,6 +4,7 @@ linkTitle: "APIs"
 weight: 10
 type: "docs"
 description: "Access and control your machine or fleet with the SDKs' client libraries for the resource and robot APIs."
+capabilities: ["section-index", "sdks"]
 images: ["/general/code.png"]
 tags: ["client", "sdk", "viam-server", "networking", "apis", "robot api"]
 aliases:

@@ -5,6 +5,7 @@ childTitleEndOverwrite: "Encoder Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in encoder models."
+capabilities: ["hw-sensing", "section-index"]
 no_list: true
 tags: ["encoder", "components"]
 icon: true

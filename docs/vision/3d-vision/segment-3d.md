@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Use the vision service's GetObjectPointClouds method to find and label objects in 3D space, combining a 2D detector with a depth camera's point cloud."
+capabilities: ["vision-service"]
 date: "2026-04-14"
 aliases:
   - /vision/segment-3d/

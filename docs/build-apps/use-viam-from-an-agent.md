@@ -5,6 +5,7 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "What an AI agent needs to know to discover, observe, and operate a Viam machine safely: the model, the ways in, and the rules that keep a robot safe when the agent is driving."
+capabilities: ["sdks", "motion-planning"]
 date: "2026-09-03"
 ---
 
@@ -59,7 +60,7 @@ Observing from directly above an object, from a moderate height, avoids both.
 
 ## What the machine will not tell you
 
-Everything below is true of any Viam machine, and none of it is discoverable from the machine's own configuration or method listing. Read it before you plan a motion.
+Most of what follows holds for any Viam machine, and none of it is discoverable from the machine's own configuration or method listing. A few points are specific to a cell like this one (an arm with a wrist-mounted camera next to a gripper) and are marked where they appear. Read this before you plan a motion.
 
 ### Moving with the motion service
 
@@ -123,11 +124,13 @@ Some drivers report `is_moving` as true while the arm is still. Judge motion by 
 
 Grasp at or above the object's center height. A grasp near the surface it rests on stalls the jaw on that surface, not on the object.
 
-`grab` returns whether the gripper holds something. `is_holding_something` is the check to make after any move while carrying. When a client's session ends, viam-server stops every actuator that session commanded. A gripper that holds an object keeps holding it. A gripper that closed on nothing stops where it is, with no force, until the next command.
+`grab` returns whether the gripper holds something. `is_holding_something` is the check to make after any move while carrying. When a client's session ends, viam-server stops every actuator that session commanded. Whether a held object survives that stop depends on the gripper model: some models keep holding it, and on others the stop releases the drive and drops it, so check `is_holding_something` and keep a carry sequence in one session. A gripper that closed on nothing stops where it is, with no force, until the next command.
+
+Do not read a held object with a wrist-mounted camera: a held object is well under the camera's safe minimum range, so it fills most of the frame and a segmenter returns a biased center that reads like the grasp shifted when it did not. If you need to check the scene before releasing, read it from a fixed camera the arm does not block, not from the wrist camera.
 
 ### Looking
 
-Read cameras from 300 mm or more above an object. Closer than that, the gripper's own fingertips enter the frame and color detectors find them. Check a vision result once against an independent depth read, then trust it; the check costs one call, rebuilding perception costs ten minutes. The first frame after a machine boots can be stale. If a reading is far from where the scene should be, read again.
+With a wrist-mounted camera, read from 300 mm or more above an object. Closer than that, the gripper's own fingertips enter the frame and color detectors find them. A fixed overhead camera, or a machine with no gripper, has no such limit. Check a vision result once against an independent depth read, then trust it; the check costs one call, rebuilding perception costs ten minutes. The first frame after a machine boots can be stale. If a reading is far from where the scene should be, read again.
 
 ## What the platform does for you
 

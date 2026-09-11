@@ -7,6 +7,7 @@ images: ["/registry/create-module.svg"]
 icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Update, deprecate, or delete your existing modules, or change their privacy settings."
+capabilities: ["module-development"]
 aliases:
   - /operate/modules/advanced/manage-modules/
   - /use-cases/deploy-code/

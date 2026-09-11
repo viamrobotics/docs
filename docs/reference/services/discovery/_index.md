@@ -2,6 +2,7 @@
 title: "Discovery service"
 linkTitle: "Discovery"
 description: "Use a discovery service to discover available resources on a machine."
+capabilities: ["discovery"]
 layout: "docs"
 type: "docs"
 weight: 50

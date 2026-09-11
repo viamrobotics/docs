@@ -5,6 +5,7 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Set up a branded billing dashboard with custom pricing for your customers."
+capabilities: ["billing"]
 images: ["/operate/wlbilling.png"]
 aliases:
   - /manage/manage/white-labeled-billing/

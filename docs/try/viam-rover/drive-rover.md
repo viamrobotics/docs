@@ -4,6 +4,7 @@ linkTitle: "Drive your rover"
 type: "docs"
 weight: 25
 description: "Use a Viam SDK to program a rover to move in a square."
+capabilities: ["hw-mobility", "sdks", "docs"]
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"

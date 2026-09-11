@@ -5,6 +5,7 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "Query sensor and binary data from a client app using SQL and MQL through DataClient."
+capabilities: ["data-storage", "sdks"]
 date: "2026-04-10"
 ---
 

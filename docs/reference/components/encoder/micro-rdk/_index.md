@@ -4,6 +4,7 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Encoder models available in the Micro-RDK."
+capabilities: ["hw-sensing", "section-index"]
 tags: ["encoder", "components", "Micro-RDK"]
 no_list: true
 ---

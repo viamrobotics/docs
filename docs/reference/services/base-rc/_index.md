@@ -5,6 +5,7 @@ weight: 70
 layout: "docs"
 type: "docs"
 description: "The base remote control service allows you to remotely control a base with an input controller like a gamepad."
+capabilities: ["hw-mobility"]
 date: "2026-04-18"
 aliases:
   - "/operate/reference/services/base-rc/"

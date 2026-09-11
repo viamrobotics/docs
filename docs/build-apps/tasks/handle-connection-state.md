@@ -5,6 +5,7 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Show a connection status indicator, react to reconnection, and rebuild your app's UI state after the SDK reconnects to a machine."
+capabilities: ["sdks"]
 date: "2026-04-10"
 ---
 

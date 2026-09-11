@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "To collaborate with others on your machines, you can grant users permissions for individual machines or entire locations."
+capabilities: ["org-management"]
 aliases:
   - /operate/control/api-keys/
   - /cloud/rbac/

@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/qrcode/index.html"
 tags: ["APIs", "python"]
 description: "Learn how to use a QR code scanner to detect and decode QR codes using a Viam module. We'll leverage the pyzbar and OpenCV Python libraries to process images from a camera and extract information encoded in QR codes."
+capabilities: ["vision-service", "hw-camera", "docs"]
 images: ["/codelabs/qr.jpeg"]
 imageAlt: "qr code demo"
 authors: ["Joyce Lin"]

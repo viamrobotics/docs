@@ -5,6 +5,7 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Set up a camera, ML model, and vision service to detect defects."
+capabilities: ["vision-service", "hw-camera", "docs"]
 date: "2025-01-30"
 aliases:
   - /try/part-1/

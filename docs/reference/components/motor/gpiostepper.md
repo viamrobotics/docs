@@ -4,6 +4,7 @@ linkTitle: "gpiostepper"
 weight: 20
 type: "docs"
 description: "Reference for the gpiostepper motor model. Bipolar stepper motor with current regulation and 1/32 microstepping driven by a basic driver."
+capabilities: ["hw-actuation"]
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/operate/reference/components/motor/gpiostepper/"

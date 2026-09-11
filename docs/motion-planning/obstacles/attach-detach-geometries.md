@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Make the motion planner aware of an object the robot has grasped by attaching the object's geometry to the gripper frame for subsequent Move calls."
+capabilities: ["motion-planning"]
 aliases:
   - /motion-planning/motion-how-to/attach-detach-geometries/
 ---

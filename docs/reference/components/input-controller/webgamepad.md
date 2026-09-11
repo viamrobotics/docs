@@ -4,6 +4,7 @@ linkTitle: "webgamepad"
 weight: 30
 type: "docs"
 description: "Reference for the webgamepad input-controller model. Web-based gamepad as an input controller."
+capabilities: ["hw-sensing"]
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:

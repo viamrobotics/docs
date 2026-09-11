@@ -5,6 +5,7 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Configuration fields, run statuses, cron schedule syntax, data source types, and execution limits."
+capabilities: ["data-pipelines"]
 date: "2026-03-27"
 ---
 

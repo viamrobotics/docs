@@ -4,6 +4,7 @@ linkTitle: "ML training client"
 weight: 40
 type: "docs"
 description: "Use the ML training client API to manage ML training jobs taking place in Viam's cloud app."
+capabilities: ["sdks", "ml-training"]
 tags: ["cloud", "sdk", "viam-server", "networking", "apis", "ml model", "ml"]
 aliases:
   - /dev/reference/apis/ml-training-client/

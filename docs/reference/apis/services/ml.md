@@ -5,6 +5,7 @@ weight: 50
 type: "docs"
 tags: ["data management", "ml", "model training"]
 description: "Give commands to your ML model service to make inferences based on a provided ML model."
+capabilities: ["sdks", "ml-models"]
 icon: true
 images: ["/services/icons/ml.svg"]
 date: "2026-04-14"

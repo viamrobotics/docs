@@ -4,6 +4,7 @@ linkTitle: "Micro-RDK"
 weight: 99
 type: "docs"
 description: "Servo models available in the Micro-RDK."
+capabilities: ["section-index", "hw-actuation"]
 tags: ["servo", "components", "Micro-RDK"]
 no_list: true
 ---
