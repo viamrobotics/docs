@@ -14,7 +14,7 @@
 
 > Viam is a platform for building, operating, and managing robots and other machines. A machine runs viam-server, exposes its hardware and services through typed gRPC APIs, and can be discovered, observed, and operated from the CLI, from SDKs, or from an AI agent holding an API key.
 {{ range site.Data.llms_pages.sections }}
-## {{ .title }}
+## {{ .title | safeHTML }}
 {{ range .pages }}{{ with site.GetPage .path }}
 - [{{ .Title | safeHTML }}]({{ .Permalink }}){{ with .Description }}: {{ . | safeHTML }}{{ end }}
 {{- else }}
