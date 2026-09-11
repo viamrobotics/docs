@@ -78,9 +78,18 @@ isPlainText = true
 notAlternative = true
 
 [outputFormats.LLMSFULLTXT]
-mediaType = "text/plain"
+# mediaType is text/markdown (not text/plain) so Hugo's shortcode lookup
+# resolves to the existing .md shortcode variants (expand.md, alert.md,
+# etc.) instead of falling back to their raw .html versions -- shortcode
+# template resolution keys off the output format's suffix, unlike the
+# list.<format> page-template lookup (which keys off Name; see the
+# LLMSTXT/LLMSFULLTXT collision fixed earlier). This produces
+# /llms-full.md; layouts/docs/index.redir rewrites /llms-full.txt to it,
+# the same trick already used for section/home Markdown-mirror URLs.
+mediaType = "text/markdown"
 baseName = "llms-full"
 isPlainText = true
+isHTML = false
 notAlternative = true
 
 [outputFormats.MARKDOWN]

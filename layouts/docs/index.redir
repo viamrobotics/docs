@@ -7,3 +7,4 @@
 {{ (strings.TrimSuffix "/" $p.RelPermalink) }}.md {{ $p.RelPermalink }}index.md 200
 {{ end -}}
 {{ end }}
+/llms-full.txt /llms-full.md 200

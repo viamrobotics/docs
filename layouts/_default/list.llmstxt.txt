@@ -17,11 +17,15 @@
 ## {{ .title }}
 {{ range .pages }}{{ with site.GetPage .path }}
 - [{{ .Title | safeHTML }}]({{ .Permalink }}){{ with .Description }}: {{ . | safeHTML }}{{ end }}
+{{- else }}
+{{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
 {{- end }}{{ end }}
 {{- if eq .title "Reference" }}
 - [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page on the site, with hierarchy, always current.
 {{- end }}
-{{ end -}}
+{{ end }}
+## Full text
+
 - [Full text of agent-first pages]({{ "llms-full.txt" | absURL }}): the pages above flagged for full inclusion, concatenated in one file.
 
 ## Markdown availability

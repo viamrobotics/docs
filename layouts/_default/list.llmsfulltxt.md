@@ -22,6 +22,8 @@
     {{- if .full -}}
       {{- with site.GetPage .path -}}
         {{- $out = $out | append (partial "render-page-markdown.html" .) -}}
+      {{- else -}}
+        {{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
       {{- end -}}
     {{- end -}}
   {{- end -}}
