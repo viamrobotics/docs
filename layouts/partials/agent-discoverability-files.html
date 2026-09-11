@@ -19,4 +19,5 @@
   building without this and getting a non-home root node.
 */ -}}
 {{- $sitetreeJSON := resources.Get "sitetree.json" | resources.ExecuteAsTemplate "sitetree.json" site.Home -}}
-{{- return (dict "sitetreeJSON" $sitetreeJSON) -}}
+{{- $llmsTXT := resources.Get "llms.txt" | resources.ExecuteAsTemplate "llms.txt" site.Home -}}
+{{- return (dict "sitetreeJSON" $sitetreeJSON "llmsTXT" $llmsTXT) -}}
