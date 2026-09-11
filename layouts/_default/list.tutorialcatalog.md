@@ -7,7 +7,7 @@
   directly (it's a search-backend schema, not meant to double as a
   public agent contract).
 
-  Scoped to /tutorials/ only via this section's own outputs: frontmatter
+  Scoped to /tutorials/ only through this section's own outputs: frontmatter
   override (docs/tutorials/_index.md), matching how sitetree.json/
   llms.txt/llms-full.txt are Pipes assets rather than output formats --
   NOT added to the global [outputs] section default, which would emit
