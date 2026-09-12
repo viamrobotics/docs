@@ -50,6 +50,25 @@ Each configured component and service appears as a card. What you can do depends
 
 You can switch between machine parts directly from the CONTROL tab using the part selector at the top.
 
+### Code sandbox
+
+The CONTROL tab includes a TypeScript code sandbox.
+Click **Sandbox** in the sidebar under **Code** to open it.
+
+The sandbox editor is pre-filled with a starter program based on the machine's configured resources.
+You can edit the code, run it, and see output in the console below the editor.
+The sandbox runs against your live machine using the page's existing connection, so you do not need to supply an API key or address.
+
+Use the sandbox to:
+
+- Test SDK calls interactively before writing a full application
+- Experiment with component and service methods on a live machine
+- Prototype a sequence of commands without setting up a local development environment
+
+Programs are not persisted.
+Navigating away from the sandbox discards your code.
+Use the download button to save your program as a file before leaving.
+
 ## Viam mobile app
 
 The Viam mobile app provides similar access from your phone:
