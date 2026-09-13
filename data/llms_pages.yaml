@@ -18,6 +18,10 @@
 # own .md mirror directly beats a monolithic dump. This is a per-page
 # editorial call, not an enforced rule -- flip it either way as real usage
 # shows what's actually helpful.
+#
+# `sitetree_link: true` on a section adds the /sitetree.json pointer line
+# after that section's pages. Keyed on this flag, not the section's
+# title string, so renaming a section can't silently drop the link.
 sections:
   - title: "Start here for agents"
     pages:
@@ -27,9 +31,10 @@ sections:
         full: true
       - path: /cli/reference/
   - title: "Reference"
+    sitetree_link: true
     pages:
-      - path: /reference/apis/components/
-      - path: /reference/apis/services/
+      - path: /reference/apis/components/overview/
+      - path: /reference/apis/services/overview/
       - path: /reference/apis/robot/
       - path: /reference/apis/fleet/
       - path: /reference/components/

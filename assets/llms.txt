@@ -3,7 +3,8 @@
   data/llms_pages.yaml via Hugo Pipes (resources.Get | ExecuteAsTemplate).
   See CLAUDE.md's "Agent discoverability files" section for the full
   system, including why this is a Pipes asset rather than a Hugo output
-  format.
+  format, and for why curated entries are taken literally with no
+  redirect-following or substitution.
 */ -}}
 # Viam
 
@@ -15,7 +16,7 @@
 {{- else }}
 {{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
 {{- end }}{{ end }}
-{{- if eq .title "Reference" }}
+{{- if .sitetree_link }}
 - [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page reachable from the site's main navigation, with hierarchy, always current. Pages hidden from navigation (`toc_hide: true`) are not included -- see the tutorials catalog below for those.
 {{- end }}
 {{ end }}
