@@ -37,11 +37,15 @@ sections:
       - path: /reference/apis/services/overview/
       - path: /reference/apis/robot/
       - path: /reference/apis/fleet/
+      # /reference/components/ has no overview page of its own (unlike
+      # its /reference/services/ sibling) -- it's a stub that redirects
+      # arbitrarily to /reference/components/arm/. Tracked in DOCS-4972;
+      # repoint this entry once that lands.
       - path: /reference/components/
       - path: /reference/services/
   - title: "Guides"
     pages:
-      - path: /set-up-a-machine/
-      - path: /build-apps/
+      - path: /set-up-a-machine/first-machine/
+      - path: /build-apps/overview/
       - path: /motion-planning/
-      - path: /build-modules/
+      - path: /build-modules/overview/
