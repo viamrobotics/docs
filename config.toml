@@ -78,6 +78,16 @@ isPlainText = true
 mediaType = "application/json"
 notAlternative = true
 
+[outputFormats.TUTORIALCATALOG]
+# Deliberately not added to [outputs] section above -- see
+# list.tutorialcatalog.md's header comment. Scoped to /tutorials/ only
+# via that section's own outputs: frontmatter override.
+mediaType = "text/markdown"
+baseName = "catalog"
+isPlainText = true
+isHTML = false
+notAlternative = true
+
 [outputFormats.RSS]
 mediaType = "application/rss+xml"
 baseName = "feed"
