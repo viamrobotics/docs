@@ -54,9 +54,7 @@
 {{- $agentFiles := partial "agent-discoverability-files.html" . -}}
 <link rel="describedby" href="{{ $agentFiles.llmsTXT.Permalink }}" />
 <link rel="describedby" type="application/json" title="sitetree.json" href="{{ $agentFiles.sitetreeJSON.Permalink }}" />
-{{- /* Output format, not Pipes -- .OutputFormats.Get won't resolve site-wide, so this is a plain hardcoded URL. See CLAUDE.md. */ -}}
-<link rel="describedby" title="tutorials catalog" href="{{ "tutorials/catalog.md" | absURL }}" />
-{{- /* llms-full.txt: deliberately not linked or triggered here -- see CLAUDE.md. */ -}}
+{{- /* Tutorials catalog and llms-full.txt deliberately not linked here -- see CLAUDE.md. */ -}}
 {{- with .OutputFormats.Get "markdown" -}}
 <link
     rel="alternate"
