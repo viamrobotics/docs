@@ -20,7 +20,7 @@
 {{- warnf "data/llms_pages.yaml: no page found at %q" .path -}}
 {{- end }}{{ end }}
 {{- if .sitetree_link }}
-- [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page reachable from the site's main navigation, with hierarchy, always current. Pages hidden from navigation (`toc_hide: true`) are not included -- see the tutorials catalog below for those.
+- [Full site structure (JSON)]({{ "sitetree.json" | absURL }}): every page reachable from the site's main navigation, with hierarchy, always current. Pages hidden from navigation (`toc_hide: true`) are not included -- tutorials are the main case, listed in the catalog below instead. Anything else hidden from navigation isn't intended to be part of the site's structure.
 {{- end }}
 {{ end }}
 ## Full text
