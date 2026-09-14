@@ -22,6 +22,18 @@
 # `sitetree_link: true` on a section adds the /sitetree.json pointer line
 # after that section's pages. Keyed on this flag, not the section's
 # title string, so renaming a section can't silently drop the link.
+#
+# `description` on a section is optional and renders verbatim as a line
+# of Markdown between the heading and the section's link list -- use it
+# only to resolve real ambiguity a flat link list can't (e.g. two
+# sections that could be confused for each other), not as boilerplate
+# that just restates the section title. Rendered as-is with no escaping
+# or processing (this file is generated via Go's text/template, not
+# html/template), so Markdown syntax -- bold, inline links -- comes
+# through exactly as written. Real limitation: this is YAML, not just
+# text, so always double-quote a description that contains Markdown --
+# an unquoted value starting with `[` parses as a YAML flow sequence,
+# not a string, and breaks the build.
 sections:
   - title: "Start here for agents"
     pages:
@@ -32,6 +44,7 @@ sections:
       - path: /cli/reference/
   - title: "Reference"
     sitetree_link: true
+    description: "Two distinct reference types share this section: **API reference** (client library methods called from code, e.g. \"Component APIs overview\") and **configuration reference** (JSON used to configure a resource on a machine, e.g. \"Built-in components\"). Match the entry to what you're actually doing."
     pages:
       - path: /reference/apis/components/overview/
       - path: /reference/apis/services/overview/
