@@ -195,13 +195,13 @@
 
 [[redirects]]
   from = "/reference/apis/components/"
-  to = "/reference/apis/"
+  to = "/reference/apis/components/overview/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/reference/apis/services/"
-  to = "/reference/apis/"
+  to = "/reference/apis/services/overview/"
   status = 301
   force = true
 
