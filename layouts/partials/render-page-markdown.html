@@ -8,10 +8,15 @@
 {{- else -}}
   {{- $body = partial "resolve-markdown-links.html" (dict "page" . "text" .RenderShortcodes) -}}
 {{- end -}}
-# {{ .Title }}
-{{ with .Description }}
-{{ . }}
-{{ end -}}
-> Source: {{ .Permalink }}{{ with .Params.updated }} · Last updated: {{ . }}{{ end }}
-
-{{ $body }}
+{{- $description := .Description -}}
+{{- $updated := .Params.updated -}}
+{{- $result := printf "# %s\n\n" .Title -}}
+{{- if $description -}}
+  {{- $result = printf "%s%s\n" $result $description -}}
+{{- end -}}
+{{- $result = printf "%s> Source: %s" $result .Permalink -}}
+{{- if $updated -}}
+  {{- $result = printf "%s · Last updated: %s" $result $updated -}}
+{{- end -}}
+{{- $result = printf "%s\n\n%s" $result $body -}}
+{{ return $result }}

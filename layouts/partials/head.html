@@ -51,7 +51,10 @@
     href="{{ .Permalink | safeURL }}"
 />
 {{ end -}}
-<link rel="describedby" href="{{ "/llms.txt" | absURL }}" />
+{{- $agentFiles := partial "agent-discoverability-files.html" . -}}
+<link rel="describedby" href="{{ $agentFiles.llmsTXT.Permalink }}" />
+<link rel="describedby" type="application/json" title="sitetree.json" href="{{ $agentFiles.sitetreeJSON.Permalink }}" />
+{{- /* Tutorials catalog and llms-full.txt deliberately not linked here -- see CLAUDE.md. */ -}}
 {{- with .OutputFormats.Get "markdown" -}}
 <link
     rel="alternate"

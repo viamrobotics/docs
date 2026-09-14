@@ -5,7 +5,7 @@ capabilities: ["section-index", "sdks"]
 weight: 5
 empty_node: true
 layout: "empty"
-canonical: "/reference/apis/"
+canonical: "/reference/apis/components/overview/"
 type: "docs"
 description: "Client library reference for controlling Viam's built-in and custom components from the SDKs."
 aliases:
