@@ -44,16 +44,21 @@ sections:
       - path: /cli/reference/
   - title: "Reference"
     sitetree_link: true
-    description: "Two distinct reference types share this section: **API reference** (client library methods called from code, e.g. \"Component APIs overview\") and **configuration reference** (JSON used to configure a resource on a machine, e.g. \"Built-in components\"). Match the entry to what you're actually doing."
+    description: "Two distinct reference types share this section: **API reference** (client library methods called from code, e.g. \"Component APIs overview\") and **configuration reference** (JSON used to configure a resource on a machine, e.g. \"Services reference\"). Match the entry to what you're actually doing."
     pages:
       - path: /reference/apis/components/overview/
       - path: /reference/apis/services/overview/
       - path: /reference/apis/robot/
       - path: /reference/apis/fleet/
       # /reference/components/ has no overview page of its own (unlike
-      # its /reference/services/ sibling) -- it's a stub that redirects
-      # arbitrarily to /reference/components/arm/. Tracked in DOCS-4972;
-      # repoint this entry once that lands.
+      # its /reference/services/ sibling). Its frontmatter `canonical`
+      # says /reference/components/arm/, but the netlify.toml forced
+      # redirect that actually governs live traffic sends it to the
+      # unrelated /hardware/common-components/ instead -- that's the
+      # real current destination. Tracked in DOCS-4972; repoint this
+      # entry once a real overview page exists, and note the ticket
+      # will also need a netlify.toml redirect update, or a new page
+      # would be silently shadowed by this same forced redirect.
       - path: /reference/components/
       - path: /reference/services/
   - title: "Guides"
