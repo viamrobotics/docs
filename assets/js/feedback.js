@@ -336,7 +336,7 @@ class FeedbackSystem {
       "User gave feedback '" +
       feedbackText +
       "' on element '" +
-      highlightedInfo[0].text +
+      (highlightedInfo[0]?.text || "(no element selected)") +
       "' on page '" +
       document.title;
 
