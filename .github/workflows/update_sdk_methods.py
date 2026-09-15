@@ -543,6 +543,17 @@ def parse_method_usage(usage_string):
                     type_name = 'ch chan'
                     param_type = 'Tick'
                     type_link = '#Tick'
+                ## Handle directional channel params, such as Arm > MoveThroughJointPositionsStreamed's
+                ## 'batches <-chan []TrajectoryPoint'. The direction arrow arrives HTML-escaped and is
+                ## left that way so the rendered link text shows the arrow instead of swallowing it:
+                elif len(param_raw) == 3 and 'chan' in param_raw[1]:
+                    type_name = param_raw[0]
+                    param_type = param_raw[1] + ' ' + param_raw[2]
+                    try:
+                        type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                    except:
+                        print("DEBUG: No type link found: {}, {}".format(usage_string, param))
+                        type_link = None
                 ## Handle named parameters:
                 elif len(param_raw) == 2:
                     type_name = param_raw[0]

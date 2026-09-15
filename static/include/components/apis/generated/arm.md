@@ -376,6 +376,30 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
+### MoveThroughJointPositionsStreamed
+
+Stream batches of timed trajectory points to the arm and execute them in order as they arrive.
+Unlike `MoveThroughJointPositions`, the full trajectory does not have to be known before the motion starts: the caller keeps appending points while the arm executes the ones it already has.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `batches` [(&lt;-chan []TrajectoryPoint)](https://pkg.go.dev/go.viam.com/rdk/components/arm#TrajectoryPoint): The channel the caller sends trajectory batches on. Each send is one batch of `TrajectoryPoint` values, appended to the motion in order. Close the channel to signal that no more points are coming.
+- `responses` [(chan&lt;- Response)](https://pkg.go.dev/go.viam.com/rdk/components/arm#Response): The channel acknowledgments arrive on while the arm executes. `Response` carries no fields today. The caller must drain this channel for the duration of the call, and closes it only after the call returns.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetJointPositions
 
 Get the current position of each joint on the arm.
