@@ -1,0 +1,1 @@
+The channel you write trajectory points to, one slice per batch. Batches append to the motion in the order you send them, and waypoints cannot be replaced or withdrawn once sent. Close this channel to signal that the trajectory is complete.

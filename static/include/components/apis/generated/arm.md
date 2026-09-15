@@ -376,6 +376,44 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 {{% /tab %}}
 {{< /tabs >}}
 
+### MoveThroughJointPositionsStreamed
+
+Move the arm's joints through a trajectory delivered as a stream of timed waypoints.
+`MoveThroughJointPositions` takes a whole trajectory in one request.
+This method opens a stream instead and accepts batches of waypoints until the caller closes it, so a long or continuously generated trajectory does not have to be complete before the arm starts moving.
+The call blocks until the arm finishes the trajectory, the stream fails, or a new operation cancels it.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `batches` [(<-chan []TrajectoryPoint)](https://pkg.go.dev/go.viam.com/rdk/components/arm#TrajectoryPoint): The channel you write trajectory points to, one slice per batch. Batches append to the motion in the order you send them, and waypoints cannot be replaced or withdrawn once sent. Close this channel to signal that the trajectory is complete.
+- `responses` [(chan<- Response)](https://pkg.go.dev/go.viam.com/rdk/components/arm#Response): The channel the arm writes acknowledgments to. An acknowledgment carries no payload, and an arm is free to send none at all, so read this channel to keep it drained rather than to confirm progress. Close it once the call returns.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+You create and close both channels: `batches` when the trajectory is complete, `responses` only after the call has returned.
+
+Waypoint timing is part of the trajectory rather than a hint:
+
+- `Time` on the first point must be zero, and must strictly increase from one point to the next.
+- If a point carries `Constraints`, the velocities on the first point must be zero.
+- `Positions`, and the velocities and accelerations inside `Constraints`, follow the `referenceframe.Input` convention: radians and radians per second for revolute joints, millimeters and millimeters per second for prismatic ones. The wire format carries degrees, and the conversion happens at the boundary.
+
+When the arm's kinematics are available, each waypoint is checked against the joint limits before it goes on the wire. A waypoint outside the limits fails the call and tears the stream down, which can happen after earlier batches are already executing.
+
+Module authors implementing this method get the mirror image of this contract: the framework owns both channels, writes and closes `batches`, and closes `responses` after the implementation returns. See the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm) for that side of the interface.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### GetJointPositions
 
 Get the current position of each joint on the arm.
