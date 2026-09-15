@@ -4,7 +4,7 @@ title: "Move an arm by setting joint positions"
 weight: 30
 layout: "docs"
 type: "docs"
-description: "Command an arm directly in joint space using MoveToJointPositions and MoveThroughJointPositions, bypassing the motion planner."
+description: "Command an arm directly in joint space using MoveToJointPositions, MoveThroughJointPositions, and streamed trajectories, bypassing the motion planner."
 capabilities: ["motion-planning", "hw-arm"]
 aliases:
   - /motion-planning/motion-how-to/move-arm-joint-positions/
@@ -193,6 +193,94 @@ values in **radians**: `MaxVelRads`, `MaxAccRads`, `MaxVelRadsJoints`,
 `MaxAccRadsJoints`, `MaxTCPSpeedMPerSec`. The conversion happens at the
 wire boundary.
 
+## MoveThroughJointPositionsStreamed
+
+`MoveThroughJointPositions` needs the whole trajectory before the arm starts
+moving. That is fine for a handful of waypoints you already know. It stops
+working when you are producing waypoints as you go: a teleoperation loop, a
+trajectory arriving from another process, or a path still being optimized
+while the arm executes the start of it.
+
+The streamed form takes waypoints in batches over an open stream. The arm
+starts moving on the first batch, so generating the trajectory and executing
+it overlap.
+
+### Waypoints carry time
+
+The two APIs describe motion differently. `MoveThroughJointPositions` takes
+positions and a `MoveOptions` ceiling, then leaves the arm to work out the
+timing. A streamed `TrajectoryPoint` names the time at which the arm should
+arrive, and optionally the velocities and accelerations it should have when it
+gets there. You hand the arm a time-parameterized trajectory instead of asking
+it to build one.
+
+- `Time` is measured from the start of the motion. The first point must be
+  zero, and every point after it must be strictly later than the one before.
+- `Constraints` is optional and set per point. If you set it on the first
+  point, the velocities there must be zero.
+- Positions, velocities, and accelerations use radians and millimeters, the
+  same `referenceframe.Input` convention as `MoveToJointPositions`. The wire
+  format uses degrees.
+
+### Stream a trajectory
+
+You create both channels. Write batches to `batches` and close it to end the
+motion. Read `responses` so a slow reader never stalls the client, and close
+it after the call returns.
+
+```go
+import (
+    "time"
+
+    "go.viam.com/rdk/components/arm"
+    "go.viam.com/rdk/referenceframe"
+)
+
+batches := make(chan []arm.TrajectoryPoint)
+responses := make(chan arm.Response)
+
+// The arm is free to acknowledge nothing at all, so this goroutine drains the
+// channel rather than tracking progress.
+go func() {
+    for range responses {
+    }
+}()
+
+go func() {
+    defer close(batches)
+
+    // Ten waypoints, 100ms apart, sent five at a time. nextWaypoint stands in
+    // for whatever is producing your trajectory.
+    batch := make([]arm.TrajectoryPoint, 0, 5)
+    for i := 0; i < 10; i++ {
+        batch = append(batch, arm.TrajectoryPoint{
+            Time:      time.Duration(i*100) * time.Millisecond,
+            Positions: nextWaypoint(i),
+        })
+        if len(batch) == 5 {
+            batches <- batch
+            batch = make([]arm.TrajectoryPoint, 0, 5)
+        }
+    }
+}()
+
+// Blocks until the arm finishes the trajectory, the stream fails, or another
+// operation cancels it.
+err := myArm.MoveThroughJointPositionsStreamed(ctx, batches, responses, nil)
+close(responses)
+if err != nil {
+    logger.Fatal(err)
+}
+```
+
+Batches append to the motion in the order you send them. A waypoint cannot be
+replaced or withdrawn once it is on the wire, so a trajectory you might still
+revise is one to send late rather than early.
+
+Acknowledgments carry no payload, and an arm may send none, so they tell you
+nothing about how far the motion has progressed. Read `GetJointPositions` if
+you need to know where the arm actually is.
+
 ## Reading current joint positions
 
 Use `GetJointPositions` to capture the arm's current configuration
@@ -226,12 +314,13 @@ programmatically.
 
 ## Joint-space moves compared to motion.Move
 
-| Motion path                          | Use when                                                                                            |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| `arm.MoveToJointPositions`           | You know the joint angles you want.                                                                 |
-| `arm.MoveThroughJointPositions` (Go) | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
-| `arm.MoveToPosition`                 | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
-| `motion.Move`                        | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
+| Motion path                             | Use when                                                                                            |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `arm.MoveToJointPositions`              | You know the joint angles you want.                                                                 |
+| `arm.MoveThroughJointPositions` (Go)    | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
+| `arm.MoveThroughJointPositionsStreamed` | You are producing waypoints as you go, or the trajectory is too long to send in one request.        |
+| `arm.MoveToPosition`                    | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
+| `motion.Move`                           | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
 
 Joint-space moves are the right call when you need to control the
 posture of the arm precisely. They do not protect against collisions
@@ -258,6 +347,16 @@ Without `MoveOptions`, the speed profile comes from the arm module's
 default. Different modules pick different defaults. If you need a
 specific speed, use Go's `MoveOptions`, or break a long motion into
 shorter `MoveToJointPositions` calls with sleeps between.
+
+{{< /expand >}}
+
+{{< expand "Streamed trajectory rejected for point times" >}}
+
+A streamed trajectory is time-parameterized, so the arm rejects a batch whose
+point times do not advance. The first point of the motion must be at time
+zero, and every point after it must be strictly later than the one before,
+across batch boundaries as well as within a batch. Check the time on the first
+point of each batch against the last point of the batch before it.
 
 {{< /expand >}}
 

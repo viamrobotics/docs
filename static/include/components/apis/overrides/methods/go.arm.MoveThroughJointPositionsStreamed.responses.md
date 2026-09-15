@@ -1,0 +1,1 @@
+The channel the arm writes acknowledgments to. An acknowledgment carries no payload, and an arm is free to send none at all, so read this channel to keep it drained rather than to confirm progress. Close it once the call returns.
