@@ -140,7 +140,7 @@ Triggers support the following attributes:
 | ---- | ---- | --------- | ----------- |
 | `name` | string | **Required** | The name of the trigger |
 | `event` | object | **Required** | The trigger event object, which contains the following fields: <ul><li>`type`: The type of the event to trigger on. Options: <ul><li>`part_data_ingested`: fire when data syncs</li> <li>`conditional_data_ingested`: fire when data that meets a certain condition syncs</li> <li>`part_online`: fire when the part is online</li> <li>`part_offline`: fire when the part is offline</li> <li>`conditional_logs_ingested`: check every hour and fire if logs of the specified log level are present</li></ul></li><li>`data_types`: Required with `type` `part_data_ingested`. An array of data types that trigger the event. Options: `binary`, `tabular`, `file`, `unspecified`. </li><li> `conditional`: Required when `type` is `conditional_data_ingested`. For more information about this field, see [Conditional attributes](/reference/triggers/#conditional-attributes). </li><li> `log_levels`: Required when `type` is `conditional_logs_ingested`. An array of log levels. Options: `error`, `warn`, `info`. </li></ul> |
-| `notifications` | object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`, `push`</li><li>`value`: The URL to send the request to, the email address to notify, or `all_machine_owners` to notify all machine owners.</li><li>`seconds_between_notifications`: The interval between notifications in seconds. This field is ignored for `part_online` and `part_offline` triggers, which fire on every state transition. It is also ignored for `conditional_logs_ingested` triggers, where the check interval is always one hour.</li><li>`application`: Required when `type` is `push`. The application ID for push notifications. Use `com.viam.viammobile` for the Viam mobile app, or provide your own custom application ID. To use a custom application ID, you must first upload your Firebase credentials to Viam with the [`organizations firebase-config set`](/cli/reference/#organizations-firebase-config-set) CLI command. For the full setup flow, see [Set up custom push notifications](/monitor/custom-push-notifications/).</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). For push notifications, the recipient specified in `value` must be a machine owner or operator, and the recipient must have accepted push notification permissions for the application. |
+| `notifications` | object | **Required** | The notifications object, which contains the following fields: <ul><li>`type`: The type of the notification. Options: `webhook`, `email`, `push`</li><li>`value`: The URL to send the request to, the email address to notify, or `all_machine_owners` to notify all machine owners.</li><li>`seconds_between_notifications`: The interval between notifications in seconds. This field is ignored for `part_online` and `part_offline` triggers, which fire on every state transition. It is also ignored for `conditional_logs_ingested` triggers, where the check interval is always one hour.</li><li>`auth`: Optional. Authentication credentials for webhook notifications. Currently supports HTTP basic authentication. See [Basic authentication](#basic-authentication).</li><li>`application`: Required when `type` is `push`. The application ID for push notifications. Use `com.viam.viammobile` for the Viam mobile app, or provide your own custom application ID. To use a custom application ID, you must first upload your Firebase credentials to Viam with the [`organizations firebase-config set`](/cli/reference/#organizations-firebase-config-set) CLI command. For the full setup flow, see [Set up custom push notifications](/monitor/custom-push-notifications/).</li></ul> For more information on webhooks, see [Webhook attributes](#webhook-attributes). For push notifications, the recipient specified in `value` must be a machine owner or operator, and the recipient must have accepted push notification permissions for the application. |
 | `notes` | string | Optional | Descriptive text to document the purpose, configuration details, or other important information about this trigger. |
 
 ## Conditional attributes
@@ -224,6 +224,36 @@ The following sensor reading fires the trigger, since `40 < 50` is `true`:
 ```
 
 ## Webhook attributes
+
+### Basic authentication
+
+You can optionally enable HTTP basic authentication for webhook notifications.
+When enabled, Viam includes an `Authorization` header with each webhook request using the username and password you provide.
+
+To configure basic authentication, add the `auth` field to a webhook notification in your trigger's JSON configuration:
+
+```json {class="line-numbers linkable-line-numbers"}
+{
+  "type": "webhook",
+  "value": "https://example.com/my-webhook",
+  "seconds_between_notifications": 60,
+  "auth": {
+    "basic": {
+      "username": "<your username>",
+      "password": "<your password>"
+    }
+  }
+}
+```
+
+Both `username` and `password` are required when basic authentication is enabled.
+
+You can also enable basic authentication in the Viam app by checking **Use basic authentication** on the webhook configuration and entering the username and password.
+
+{{< alert title="Note" color="note" >}}
+Public fragments cannot contain webhook basic authentication credentials.
+If you need to use basic authentication on a webhook in a fragment, make the fragment private.
+{{< /alert >}}
 
 ### Request types
 
