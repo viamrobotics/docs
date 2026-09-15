@@ -5,6 +5,7 @@
 | [`MoveToPosition`](/reference/apis/components/arm/#movetoposition) | Move the end of the arm in a straight line to the desired pose, relative to the base of the arm. |
 | [`MoveToJointPositions`](/reference/apis/components/arm/#movetojointpositions) | Move each joint on the arm to the position specified in `positions`. |
 | [`MoveThroughJointPositions`](/reference/apis/components/arm/#movethroughjointpositions) | Move the arm's joints through the given positions in the order they are specified. |
+| [`MoveThroughJointPositionsStreamed`](/reference/apis/components/arm/#movethroughjointpositionsstreamed) | Stream batches of timed trajectory points to the arm and execute them in order as they arrive. |
 | [`GetJointPositions`](/reference/apis/components/arm/#getjointpositions) | Get the current position of each joint on the arm. |
 | [`Get3DModels`](/reference/apis/components/arm/#get3dmodels) | Get the 3D models of the arm. |
 | [`CalculateMaxReach`](/reference/apis/components/arm/#calculatemaxreach) | Calculate the maximum reach of the arm by summing all link lengths from its kinematics data. |
