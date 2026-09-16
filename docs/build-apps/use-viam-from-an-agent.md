@@ -143,9 +143,12 @@ Read cameras from 300 mm or more above an object. Closer than that, the gripper'
 - **Converges configuration.**
   When you add a component or service, the machine applies it within about ten seconds; `GetMachineStatus` reports the revision it reached and each resource's state.
 
-Two things the heartbeat does not cover today: motion-service moves continue after the client that started them disappears, and there is no per-resource permission or approval step.
-A key that can read a camera can also move an arm.
+One thing the heartbeat does not cover today: motion-service moves continue after the client that started them disappears.
 Use `StopAll` when a move must end, and give an agent a machine-scoped key rather than a location or organization key when it only needs one machine.
+
+You can restrict what each API key or user can do on a machine by adding a `user_permissions` list to the `auth` section of the machine's JSON config.
+Each entry names a user (by API key ID or app user ID) and lists the gRPC methods it may call on specific resources.
+Users without a matching entry are fully restricted unless a `default` entry exists.
 
 ## Remembering across sessions
 
