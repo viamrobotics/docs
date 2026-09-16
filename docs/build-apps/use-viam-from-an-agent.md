@@ -26,7 +26,7 @@ If you already have a key and a terminal, the shortest path is [Drive a machine 
   The motion service plans against it.
 - A **key** authenticates you.
   Keys are scoped to a machine, a location, or an organization.
-  Today every key minted from the CLI has full write access to its scope, and a machine checks only that a key is valid, not what it may do.
+  By default every key has full write access to its scope. Machines can optionally enforce per-resource, per-method restrictions through `user_permissions` in the machine's JSON config (see below).
 
 ## Ways in
 
@@ -146,9 +146,10 @@ Read cameras from 300 mm or more above an object. Closer than that, the gripper'
 One thing the heartbeat does not cover today: motion-service moves continue after the client that started them disappears.
 Use `StopAll` when a move must end, and give an agent a machine-scoped key rather than a location or organization key when it only needs one machine.
 
-You can restrict what each API key or user can do on a machine by adding a `user_permissions` list to the `auth` section of the machine's JSON config.
-Each entry names a user (by API key ID or app user ID) and lists the gRPC methods it may call on specific resources.
+Machines support per-resource, per-method access control through a `user_permissions` list in the `auth` section of the machine's JSON config.
+Each entry identifies a user by API key ID or app user ID and lists the gRPC methods that user may call on named resources.
 Users without a matching entry are fully restricted unless a `default` entry exists.
+Apply `user_permissions` through the machine's **JSON** config editor in the Viam app or the app API; the CLI does not have a command to write machine config.
 
 ## Remembering across sessions
 
