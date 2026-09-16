@@ -198,6 +198,6 @@ After eight cycles, `pack` prints `packed 8 cubes` and both layers of the pallet
 
 ## Milestone two
 
-You now drive a full, collision-free two-layer pack: eight cubes, planned around each other automatically because you model placed cubes as obstacles and the held cube as a transform on every move. That is the complete robotics result this workshop set out to teach. Phase 6 is optional: it takes this same pack loop off your laptop and runs it as a module on the machine itself.
+You now drive a full, collision-free two-layer pack: eight cubes, planned around each other automatically because you model placed cubes as obstacles and the held cube as a transform on every move. That is the complete robotics result this workshop set out to teach.
 
 {{< workshop-nav >}}

@@ -20,8 +20,6 @@ Congratulations, you have finished the SO-ARM101 palletizing workshop! Starting 
 - **Milestone one.** You drove the arm through a static bottom-layer pack from your own Python script, proving your connection, your configured resources, and the poses you taught by hand all hold up under real code.
 - **Milestone two.** You closed the loop with obstacle avoidance: the motion service plans a collision-free path around the cubes already on the pallet and the cube in the gripper, so the second layer stacks cleanly on top of the first.
 
-If you completed the optional Phase 6, you also packaged that same pack loop as a module that runs on the machine itself.
-
 ## What you exercised on the platform
 
 This workshop was small on purpose, but it touched most of the moving parts you will use on any Viam machine:
@@ -29,7 +27,7 @@ This workshop was small on purpose, but it touched most of the moving parts you 
 - **Configuration and runtime:** the Viam app as the single source of truth (the CONFIGURE tab and its JSON view), `viam-server` running your resources, and the module system, including a discovery service that suggested the arm and gripper configuration for you.
 - **Resources:** the arm and gripper components from the SO-ARM101 module, with the gripper attached to the arm through the frame system.
 - **Frame system and motion:** placing the arm at the world origin so hand-taught poses are world poses, teaching real-world anchor poses by back-driving the arm with torque disabled, and letting the motion service plan to the arm's end point. You also saw how a WorldState of placed cubes and the held cube keeps the planner from routing through the stack.
-- **Code:** the Python SDK (`RobotClient`, the typed `Gripper` and `MotionClient`, and `motion.move`), built up one method at a time into `palletizer.py`, plus packaging that same script as an inline module.
+- **Code:** the Python SDK (`RobotClient`, the typed `Gripper` and `MotionClient`, and `motion.move`), built up one method at a time into `palletizer.py`.
 
 ## Where to go next
 

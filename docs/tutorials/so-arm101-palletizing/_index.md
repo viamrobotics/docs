@@ -41,7 +41,6 @@ It is a hands-on introduction to robot manipulation with Viam, for developers an
 3. **[Teach the cell by hand](/tutorials/so-arm101-palletizing/teach-the-cell/)**
 4. **[Pack from Python](/tutorials/so-arm101-palletizing/pack-from-python/)** (milestone one: a static pack from your own code)
 5. **[Avoid placed cubes](/tutorials/so-arm101-palletizing/avoid-placed-cubes/)** (milestone two: a collision-free full pack)
-6. **[Wrap it in a module](/tutorials/so-arm101-palletizing/inline-module/)** (optional)
 
 When you finish, the **[wrap-up](/tutorials/so-arm101-palletizing/wrap-up/)** reviews what you built and points to next steps.
 

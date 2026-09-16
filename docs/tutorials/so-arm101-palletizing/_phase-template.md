@@ -8,7 +8,7 @@ description: "One-sentence description of this phase."
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 0
-phase_total: 6
+phase_total: 5
 time_estimate: "NN minutes"
 prev: "/tutorials/so-arm101-palletizing/previous-slug/"
 next: "/tutorials/so-arm101-palletizing/next-slug/"

@@ -76,11 +76,11 @@ Moving a joint slider and pressing **Execute** on the arm's test card moves the 
 
 The gripper is the SO-ARM101's sixth servo, on the same serial bus as the other five, so its config looks almost identical to the arm's: the same `port` attribute, pointed at the same serial port.
 
-If you used discovery, confirm the gripper component it created carries this same port:
+Update the `arm` key in the gripper's configuration JSON to match the name you gave your arm in the previous step. In this example, it is simply "arm".
 
 ```json
 {
-  "port": "/dev/ttyUSB0"
+  "arm": "arm"
 }
 ```
 
@@ -91,7 +91,7 @@ Open the gripper's test card on the **CONTROL** tab. Press **Open** and watch th
 <!-- ASSET control-gripper-openclose (VIDEO): gripper test card Open then Grab, the physical jaw opening and closing -->
 
 {{< checkpoint >}}
-Pressing **Open** and **Grab** on the gripper's test card opens and closes the physical jaw. If nothing moves, confirm the gripper shows online in the CONFIGURE tab and that its `port` matches the arm's.
+Pressing **Open** and **Grab** on the gripper's test card opens and closes the physical jaw. If nothing moves, confirm the gripper shows online in the CONFIGURE tab and that its `arm` matches the arm's name precisely.
 {{< /checkpoint >}}
 
 ## Place the arm and gripper in the frame system
@@ -133,7 +133,7 @@ The gripper is a separate component with its own collision geometry, so it needs
 ```
 
 {{< alert color="note" >}}
-The value of "parent" is an identity, not a description. The value must match the _name_ you gave to your arm component.
+The value of "parent" is an identity, not a description. The value must match the _name_ you gave to your arm component in the Viam app.
 {{< /alert >}}
 
 Attaching the gripper to the arm places its shape in the cell: the 3D scene draws the gripper on the end of the arm, and the motion service accounts for the gripper's shape when it plans, so it keeps the jaws clear of obstacles.
