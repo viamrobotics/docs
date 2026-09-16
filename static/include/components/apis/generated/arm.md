@@ -382,6 +382,37 @@ Stream batches of timed trajectory points to the arm and execute them in order a
 Unlike `MoveThroughJointPositions`, the full trajectory does not have to be known before the motion starts: the caller keeps appending points while the arm executes the ones it already has.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `batches` ([AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryPoint)) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryUpdate)): :   the arm’s updates, yielded as they arrive.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+async def batches():
+    yield [
+        Arm.TrajectoryPoint(time=timedelta(seconds=0.0), positions=[0.0, 0.0, 0.0, 0.0, 0.0]),
+        Arm.TrajectoryPoint(time=timedelta(seconds=1.0), positions=[10.0, 0.0, 0.0, 0.0, 0.0]),
+    ]
+
+async for update in my_arm.move_through_joint_positions_streamed(batches()):
+    # Observe the arm's updates; a fault raises out of this iteration.
+    pass
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_through_joint_positions_streamed).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
