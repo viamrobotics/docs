@@ -206,7 +206,16 @@ Remove a fragment:
 viam machines part fragments remove --part=<part-id> --fragment=<fragment-name-or-id>
 ```
 
+List the fragments available to your organization, inspect a specific fragment's config, or view its revision history:
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment list
+viam fragment get --fragment=<fragment-id>
+viam fragment history --fragment=<fragment-id>
+```
+
 See [Reuse machine configuration](/fleet/reuse-configuration/) for details on creating and managing fragments.
+See the [fragment CLI reference](/cli/reference/#fragment-alias-fragments) for full flag details.
 
 ## Rename or move a machine
 

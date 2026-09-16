@@ -1002,6 +1002,7 @@ viam machines part run --part=<part id> --method=<method> [--data=<data>] [--str
 viam machines part shell --machine=<machine id> --part=<part id>
 viam machines part restart --machine=<machine id> --part=<part id>
 viam machines part history --part=<part id> [--start=<timestamp>] [--end=<timestamp>] [--count=<n>]
+viam machines part config --part=<part id> [--at=<timestamp>]
 viam machines part cp --part=<part id> <file name> machine:/path/to/file
 viam machines part add-job --part=<part id> [--config=<json or path>]
 viam machines part update-job --part=<part id> --name=<job name> --config=<json or path>
@@ -1255,6 +1256,30 @@ viam machines part history --part=<part id> [--start=<timestamp>] [--end=<timest
 | `--start` | ISO-8601 timestamp in RFC 3339 format for the start of the time range filter (for example, `2025-01-15T14:00:00Z`). | Optional |
 | `--end` | ISO-8601 timestamp in RFC 3339 format for the end of the time range filter (for example, `2025-01-15T15:00:00Z`). | Optional |
 | `--count` | Maximum number of history entries to list. Set to `0` for every entry in the range. Default: `100`. | Optional |
+
+### `machines part config`
+
+Print a machine part's config JSON to stdout with keys sorted for clean diffs.
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part config --part=<part id>
+```
+
+To retrieve the config that was in effect at a past point in time, pass `--at` with an ISO-8601 timestamp.
+The command walks the part's history to find the config that was active at that moment:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part config --part=<part id> --at=2025-01-15T14:00:00Z
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--part` | Part ID for which the command is being issued. | **Required** |
+| `--organization` | Organization name. | Optional |
+| `--location` | Location name. | Optional |
+| `--machine` | Machine ID or name. | Optional |
+| `--at` | ISO-8601 timestamp in RFC 3339 format. Returns the config that was in effect at that time. Default: current config. | Optional |
 
 ### `machines part cp`
 
@@ -2768,6 +2793,64 @@ viam profiles remove --profile-name=<name-of-profile-to-remove>
 | Argument | Description | Required? |
 | -------- | ----------- | --------- |
 | `--profile-name` | Name of the profile to remove. | **Required** |
+
+## `fragment` (alias `fragments`)
+
+The `fragment` command lets you list, inspect, and view revision history for configuration fragments.
+To add or remove a fragment from a machine part, use [`machines part fragments add`](#machines-part-fragments-add) and [`machines part fragments remove`](#machines-part-fragments-remove).
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment list [--organization=<org id or name>]
+viam fragment get --fragment=<fragment id> [--version=<revision or tag>]
+viam fragment history --fragment=<fragment id> [--count=<n>]
+```
+
+### `fragment list`
+
+List all fragments for an organization.
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment list
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--organization` | Organization name or ID. If omitted, uses the default organization or the first organization alphabetically. | Optional |
+
+### `fragment get`
+
+Print a fragment's config JSON to stdout.
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment get --fragment=<fragment id>
+```
+
+To retrieve a specific revision or tag, pass `--version`:
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment get --fragment=<fragment id> --version=3
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--fragment` | Fragment ID to fetch. | **Required** |
+| `--version` | Fragment revision number or tag to fetch. Default: latest. | Optional |
+
+### `fragment history`
+
+Display revision history for a fragment.
+
+```sh {class="command-line" data-prompt="$"}
+viam fragment history --fragment=<fragment id>
+```
+
+<!-- prettier-ignore -->
+| Argument | Description | Required? |
+| -------- | ----------- | --------- |
+| `--fragment` | Fragment ID whose history to display. | **Required** |
+| `--count` | Maximum number of history entries to list. Set to `0` for every entry. Default: `10`. | Optional |
 
 ## `resource`
 
