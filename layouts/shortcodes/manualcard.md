@@ -10,7 +10,7 @@
 - {{ $titleLine }}
 
 {{ replaceRE "(?m)^(\\S)" "    $1" $body }}
-{{ else }}
+{{ else -}}
 - {{ $titleLine }}{{ with $body }}: {{ . }}{{ end }}
 {{ end -}}
 {{- else -}}
