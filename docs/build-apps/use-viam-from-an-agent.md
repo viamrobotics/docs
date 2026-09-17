@@ -146,10 +146,11 @@ Read cameras from 300 mm or more above an object. Closer than that, the gripper'
 One thing the heartbeat does not cover today: motion-service moves continue after the client that started them disappears.
 Use `StopAll` when a move must end, and give an agent a machine-scoped key rather than a location or organization key when it only needs one machine.
 
-Machines support per-resource, per-method access control through a `user_permissions` list in the `auth` section of the machine's JSON config.
-Each entry identifies a user by API key ID or app user ID and lists the gRPC methods that user may call on named resources.
-Users without a matching entry are fully restricted unless a `default` entry exists.
-Apply `user_permissions` through the machine's **JSON** config editor in the Viam app or the app API; the CLI does not have a command to write machine config.
+Machines can restrict what an API key or user is allowed to do through a `user_permissions` list in the `auth` section of the machine's JSON config.
+This is configured by the machine owner, not something you can set up yourself.
+Users without a matching entry are fully restricted unless a `default` entry exists, so a permission error on a key that is otherwise valid may mean it is not listed.
+If you hit this, read the machine's config to see the current `user_permissions` entries and report what you find (the resources, methods, and the raw `api-key-id` or `app-user-id` values you see) to your human operator, who can adjust it through the Viam app's JSON config editor or the app API.
+You have no way to resolve those identifiers to a person, add a new entry, or change the config yourself.
 
 ## Remembering across sessions
 
