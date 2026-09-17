@@ -30,6 +30,7 @@ aliases:
   - /appendix/get-started/try-viam/faq/
   - /getting-started/try-viam/
   - /tutorials/viam-rover/
+  - /try/viam-rover/rent-a-rover/
 ---
 
 {{% alert title="Viam 101" color="tip" %}}
