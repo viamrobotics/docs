@@ -33,7 +33,7 @@
 
 ## Markdown availability
 
-Every published page on this site also serves a Markdown version: drop the trailing slash from the page's URL and append `.md`. For example, the page at `https://docs.viam.com/reference/components/board/` is also available as `https://docs.viam.com/reference/components/board.md`. This works uniformly for every page, including section landing pages.
+Every published page on this site also serves a Markdown version, available two ways: drop the trailing slash from the page's URL and append `.md` (for example, `https://docs.viam.com/reference/components/board/` is also available as `https://docs.viam.com/reference/components/board.md`), or request the canonical URL with an `Accept: text/markdown` header and get the Markdown version back at that same URL. Both work uniformly for every page, including section landing pages.
 
 Links inside these Markdown files are always absolute, never relative, so they resolve correctly regardless of where you fetched the page from.
 
