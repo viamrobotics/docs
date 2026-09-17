@@ -8,7 +8,7 @@ simple_list: true
 tags: ["rover", "viam rover"]
 images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover in a box"
-description: "Rent a Viam Rover in our robotics lab or set up your own, and use it to learn Viam."
+description: "Set up your own Viam Rover and use it to learn Viam."
 capabilities: ["hw-mobility", "docs"]
 date: "2026-05-23"
 aliases:
@@ -20,12 +20,8 @@ aliases:
   - /dev/reference/try-viam/rover-resources/
 ---
 
-There are two ways to get hands on a Viam Rover:
-
-- **[Rent one](/try/viam-rover/rent-a-rover/)** in our robotics lab.
-  Reserve a rover, drive it remotely for 10 minutes, and try the Viam platform with no hardware setup.
-- **[Set up your own](/try/viam-rover/setup/)** for use in your own projects.
-  The [Viam Rover 2](https://www.viam.com/resources/rover) comes preassembled and is ready to configure with Viam.
+If you have a Viam Rover, **[set it up](/try/viam-rover/setup/)** for use in your own projects.
+The [Viam Rover 2](https://www.viam.com/resources/rover) comes preassembled and is ready to configure with Viam.
 
 {{< alert title="Note" color="note" >}}
 Viam no longer sells the Viam Rover 2.
@@ -62,6 +58,6 @@ If you have your own Viam Rover, you must purchase the following hardware separa
 ## Next steps
 
 {{< cards >}}
-{{% card link="/try/viam-rover/rent-a-rover/" %}}
 {{% card link="/try/viam-rover/setup/" %}}
+{{% card link="/try/viam-rover/drive-rover/" %}}
 {{< /cards >}}
