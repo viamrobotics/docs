@@ -27,7 +27,7 @@ If you already have a key and a terminal, the shortest path is [Drive a machine 
   The motion service plans against it.
 - A **key** authenticates you.
   Keys are scoped to a machine, a location, or an organization.
-  Today every key minted from the CLI has full write access to its scope, and a machine checks only that a key is valid, not what it may do.
+  By default every key has full write access to its scope. Machines can optionally enforce per-resource, per-method restrictions through `user_permissions` in the machine's JSON config (see below).
 
 ## Ways in
 
@@ -146,9 +146,14 @@ With a wrist-mounted camera, read from 300 mm or more above an object. Closer th
 - **Converges configuration.**
   When you add a component or service, the machine applies it within about ten seconds; `GetMachineStatus` reports the revision it reached and each resource's state.
 
-Two things the heartbeat does not cover today: motion-service moves continue after the client that started them disappears, and there is no per-resource permission or approval step.
-A key that can read a camera can also move an arm.
+One thing the heartbeat does not cover today: motion-service moves continue after the client that started them disappears.
 Use `StopAll` when a move must end, and give an agent a machine-scoped key rather than a location or organization key when it only needs one machine.
+
+Machines can restrict what an API key or user is allowed to do through a `user_permissions` list in the `auth` section of the machine's JSON config.
+This is configured by the machine owner, not something you can set up yourself.
+Users without a matching entry are fully restricted unless a `default` entry exists, so a permission error on a key that is otherwise valid may mean it is not listed.
+If you hit this, read the machine's config to see the current `user_permissions` entries and report what you find (the resources, methods, and the raw `api-key-id` or `app-user-id` values you see) to your human operator, who can adjust it through the Viam app's JSON config editor or the app API.
+You have no way to resolve those identifiers to a person, add a new entry, or change the config yourself.
 
 ## Remembering across sessions
 
