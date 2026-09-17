@@ -1,7 +1,7 @@
 ---
-linkTitle: "Overview"
+linkTitle: "Viam Rover"
 title: "Viam Rover"
-weight: 1
+weight: 100
 layout: "docs"
 type: "docs"
 simple_list: true
@@ -9,7 +9,7 @@ tags: ["rover", "viam rover"]
 images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover in a box"
 description: "Set up your own Viam Rover and use it to learn Viam."
-capabilities: ["hw-mobility", "docs"]
+capabilities: ["section-index", "hw-mobility", "docs"]
 date: "2026-05-23"
 aliases:
   - /viam-rover-resources/
@@ -18,14 +18,17 @@ aliases:
   - /get-started/try-viam/rover-resources/
   - /appendix/try-viam/rover-resources/
   - /dev/reference/try-viam/rover-resources/
+  - /try/viam-rover/
+  - /try/viam-rover/overview/
 ---
 
-If you have a Viam Rover, **[set it up](/try/viam-rover/setup/)** for use in your own projects.
+If you have a Viam Rover, set it up for use in your own projects.
 The [Viam Rover 2](https://www.viam.com/resources/rover) comes preassembled and is ready to configure with Viam.
 
-{{< alert title="Note" color="note" >}}
-Viam no longer sells the Viam Rover 2.
+{{< alert title="Note" color="alert" >}}
+Viam no longer sells the Viam Rover, and the rover rental program has been discontinued as of September 2026.
 These guides remain available for everyone who already has a rover.
+If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/viam-101) to try Viam in a simulation environment, no hardware required.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
@@ -55,9 +58,19 @@ If you have your own Viam Rover, you must purchase the following hardware separa
 
 {{< /alert >}}
 
-## Next steps
+## Set up your rover
 
 {{< cards >}}
-{{% card link="/try/viam-rover/setup/" %}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/reference/device-setup/viam-rover/setup/" %}}
+{{% card link="/reference/device-setup/viam-rover/rover-1-setup/" %}}
+{{% card link="/reference/device-setup/viam-rover/jetson-setup/" %}}
+{{% card link="/reference/device-setup/viam-rover/fragments/" %}}
+{{< /cards >}}
+
+## Next steps
+
+Once your rover is configured, program it to drive:
+
+{{< cards >}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}

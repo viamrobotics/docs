@@ -12,6 +12,7 @@ aliases:
   - /get-started/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
   - /appendix/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
   - /dev/reference/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
+  - /try/viam-rover/jetson-setup/
 date: "2026-05-23"
 ---
 
@@ -72,9 +73,9 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 1. Install the WiFi board/device on the Nano. Follow the manufacturer's instructions to do so.
 2. Power the Jetson Nano with a power supply and [prepare the device and install `viam-server`](/reference/device-setup/jetson-nano-setup/).
 3. Switch back to the main guide and complete these two steps:
-   [Add the power supply](/try/viam-rover/setup/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/try/viam-rover/setup/#configure-the-low-voltage-cutoff-circuit).
+   [Add the power supply](/reference/device-setup/viam-rover/setup/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/reference/device-setup/viam-rover/setup/#configure-the-low-voltage-cutoff-circuit).
 4. Unscrew the top of the rover with the biggest Allen key.
-5. Take the [height extenders](/try/viam-rover/setup/#whats-inside-the-kit) provided in your kit.
+5. Take the [height extenders](/reference/device-setup/viam-rover/setup/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
 6. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern:
    {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
@@ -138,9 +139,9 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 1. Power the Jetson Orin Nano with a power supply and [prepare the device and install `viam-server`](/reference/device-setup/jetson-nano-setup/).
 2. Switch back to the main guide and complete these two steps:
-   [Add the power supply](/try/viam-rover/setup/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/try/viam-rover/setup/#configure-the-low-voltage-cutoff-circuit).
+   [Add the power supply](/reference/device-setup/viam-rover/setup/#add-the-power-supply) and [Configure the low-voltage cutoff circuit](/reference/device-setup/viam-rover/setup/#configure-the-low-voltage-cutoff-circuit).
 3. Unscrew the top of the rover with the biggest Allen key.
-4. Take the [height extenders](/try/viam-rover/setup/#whats-inside-the-kit) provided in your kit.
+4. Take the [height extenders](/reference/device-setup/viam-rover/setup/#whats-inside-the-kit) provided in your kit.
    Apply them to the rover chassis posts.
 5. Unscrew the standoffs in the motherboard and relocate them to the Jetson board hole pattern:
    {{<imgproc src="appendix/try-viam/rover-resources/viam-rover-2/hole-patterning.png" resize="400x" declaredimensions=true alt="Viam rover 2 motherboard hole patterns" >}}
@@ -162,12 +163,12 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 
 If you followed the instructions in the [Jetson installation guide](/reference/device-setup/jetson-nano-setup/), you should have already made a Viam account, installed `viam-server` on the board, and added a new machine.
 
-To configure your rover so you can start driving it, [add a Viam Rover 2 fragment to your machine](/try/viam-rover/fragments/).
+To configure your rover so you can start driving it, [add a Viam Rover 2 fragment to your machine](/reference/device-setup/viam-rover/fragments/).
 
 ## Next steps
 
 After adding the appropriate fragment, follow this tutorial with your owned rover:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}

@@ -14,6 +14,7 @@ aliases:
   - /get-started/try-viam/rover-resources/rover-tutorial
   - /appendix/try-viam/rover-resources/rover-tutorial/
   - /dev/reference/try-viam/rover-resources/rover-tutorial/
+  - /try/viam-rover/setup/
 date: "2026-05-23"
 ---
 
@@ -22,7 +23,7 @@ Viam no longer sells the Viam Rover 2.
 This guide remains available for everyone who already has a rover.
 
 Another version of the Viam Rover was sold until January 2024.
-If you have a Viam Rover 1, follow [these instructions](/try/viam-rover/rover-1-setup/) instead.
+If you have a Viam Rover 1, follow [these instructions](/reference/device-setup/viam-rover/rover-1-setup/) instead.
 {{% /alert %}}
 
 The [Viam Rover 2](https://www.viam.com/resources/rover) comes preassembled with two encoded motors with suspension, a webcam with a microphone unit, a 6 axis IMU, power management and more.
@@ -214,7 +215,7 @@ Some states do not allow the exclusion or disclaimer of implied warranties, so t
 ## Setup
 
 {{% alert title="Important" color="info" %}}
-If you wish to use a Jetson Nano or Jetson Orin Nano, follow [this guide](/try/viam-rover/jetson-setup/) instead.
+If you wish to use a Jetson Nano or Jetson Orin Nano, follow [this guide](/reference/device-setup/viam-rover/jetson-setup/) instead.
 {{% /alert %}}
 
 ### Install Raspberry Pi OS
@@ -343,7 +344,7 @@ Assuming you are using a Raspberry Pi 4, you can skip the following section and 
 This guide assumes you are using a Raspberry Pi 4, but you can use [different boards](#motherboard) with your Viam Rover 2 with some modifications while attaching the boards.
 
 {{% alert title="Tip" color="tip" %}}
-If you are using a Jetson board, you should be following [this guide](/try/viam-rover/jetson-setup/).
+If you are using a Jetson board, you should be following [this guide](/reference/device-setup/viam-rover/jetson-setup/).
 {{% /alert %}}
 
 Reference the appropriate alternative hole pattern provided on the motherboard:
@@ -361,7 +362,7 @@ If not, you will have to take off the ribbon cable and use [dupont connectors](h
 {{< expand "Raspberry Pi 5" >}}
 If you are using a Raspberry Pi 5, use the same screw placements as for the Raspberry Pi 4.
 The hardware setup is the same.
-The only difference is in the [configuration](/try/viam-rover/fragments/).
+The only difference is in the [configuration](/reference/device-setup/viam-rover/fragments/).
 {{< /expand >}}
 
 Then connect the webcam's USB lead to any USB port on your board.
@@ -380,20 +381,20 @@ If you followed the instructions in the [Pi installation guide](/reference/devic
 
 If not, add a new machine and follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} until your machine is connected.
 
-To configure your rover so you can start driving it, [add a Viam Rover 2 fragment to your machine](/try/viam-rover/fragments/).
+To configure your rover so you can start driving it, [add a Viam Rover 2 fragment to your machine](/reference/device-setup/viam-rover/fragments/).
 
 ## Next steps
 
 Before you can use your Viam rover with the Viam platform you need to configure your rover:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/fragments/" %}}
+{{% card link="/reference/device-setup/viam-rover/fragments/" %}}
 {{< /cards >}}
 
 After you have configured your rover, follow this tutorial:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}
 
 ### Extensibility

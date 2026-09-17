@@ -2,13 +2,19 @@
 title: "Drive a rover in a square in 2 minutes"
 linkTitle: "Drive your rover"
 type: "docs"
-weight: 25
 description: "Use a Viam SDK to program a rover to move in a square."
 capabilities: ["hw-mobility", "sdks", "docs"]
 videos:
   ["/tutorials/try-viam-sdk/image1.webm", "/tutorials/try-viam-sdk/image1.mp4"]
 videoAlt: "A Viam Rover driving in a square"
 images: ["/tutorials/try-viam-sdk/image1.gif"]
+tags: ["base", "rover", "sdk"]
+authors: []
+languages: ["python", "go", "typescript", "cpp", "flutter"]
+viamresources: ["base"]
+platformarea: ["core"]
+level: "Beginner"
+cost: 0
 aliases:
   - /tutorials/appendix/try-viam-sdk
   - /tutorials/viam-rover/try-viam-sdk
@@ -17,22 +23,21 @@ aliases:
   - /get-started/quickstarts/drive-rover/
   - /how-tos/drive-rover/
   - /get-started/drive-rover/
-  - /tutorials/control/drive-rover/
+  - /try/viam-rover/drive-rover/
 date: "2022-12-08"
 updated: "2026-05-23"
 ---
 
 In this guide you'll write code that makes a rover drive in a square.
 
-{{< alert title="You will learn" color="tip" >}}
+You will learn:
 
 - How to run control code with Viam SDKs
 - How to use the base API to move a rover in a square
 
-{{< /alert >}}
-
-{{< alert title="No hardware?" color="tip" >}}
-If you do not have a rover, you can still try Viam with the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation.
+{{< alert title="No hardware?" color="alert" >}}
+If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/viam-101) to try Viam in a simulation environment, no hardware required.
+You can also try the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation.
 {{< /alert >}}
 
 {{<youtube embed_url="https://www.youtube-nocookie.com/embed/daU5iNsSO0w">}}
@@ -42,7 +47,7 @@ If you do not have a rover, you can still try Viam with the [Quality Inspection 
 You need the following:
 
 - A Linux, macOS or Windows computer that can run SDK code.
-- A [Viam Rover](/try/viam-rover/) or [another mobile robot](/tutorials/configure/configure-rover/).
+- A [Viam Rover](/reference/device-setup/viam-rover/) or [another mobile robot](/tutorials/configure/configure-rover/).
   These instructions work for any wheeled robot that can be configured as a [base component](/reference/components/base/wheeled/).
 
 ## Instructions

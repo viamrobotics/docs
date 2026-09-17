@@ -32,6 +32,12 @@ Before installing Viam on a single-board computer, follow the setup guide for yo
 | ----- | ------------------------------------------------------- |
 | ESP32 | [Set up an ESP32](/reference/device-setup/setup-micro/) |
 
+## Robot kits
+
+| Kit        | Guide                                                         |
+| ---------- | ------------------------------------------------------------- |
+| Viam Rover | [Set up your Viam Rover](/reference/device-setup/viam-rover/) |
+
 ## After setup
 
 Once your board is ready, return to [Set up a machine](/set-up-a-machine/) to install Viam and connect to the cloud.
