@@ -538,22 +538,29 @@ def parse_method_usage(usage_string):
                 param_type_link = "https://pkg.go.dev/builtin#error"
             else:
                 param_raw = regex.sub(r'<.*?>', '', param).removesuffix(')').split()
-                ## Handle channel data types (only used for Board > StreamTicks):
-                if len(param_raw) == 3 and param_raw[0] == 'ch':
-                    type_name = 'ch chan'
-                    param_type = 'Tick'
-                    type_link = '#Tick'
-                ## Handle directional channel params, such as Arm > MoveThroughJointPositionsStreamed's
-                ## 'batches <-chan []TrajectoryPoint'. The direction arrow arrives HTML-escaped and is
-                ## left that way so the rendered link text shows the arrow instead of swallowing it:
-                elif len(param_raw) == 3 and 'chan' in param_raw[1]:
+
+                ## pkg.go.dev HTML-escapes the arrows in channel types, so put them back
+                ## before we match on the tokens:
+                param_raw = [token.replace('&lt;', '<').replace('&gt;', '>') for token in param_raw]
+
+                ## Clear the per-parameter state. Python scopes these to the whole function,
+                ## so a parameter shape matching none of the cases below would otherwise
+                ## inherit the previous parameter's values and document itself as a copy of
+                ## its neighbor:
+                type_name = None
+                param_type = None
+                type_link = None
+
+                ## Handle channel parameters, whose type spans two tokens: a direction
+                ## marker and the element type. All three directions occur in the SDK,
+                ## and the element type can itself be a slice:
+                if len(param_raw) == 3 and param_raw[1] in ('chan', '<-chan', 'chan<-'):
                     type_name = param_raw[0]
                     param_type = param_raw[1] + ' ' + param_raw[2]
                     try:
                         type_link = regex.findall(r'href="([^"]+)">', param)[-1]
                     except:
                         print("DEBUG: No type link found: {}, {}".format(usage_string, param))
-                        type_link = None
                 ## Handle named parameters:
                 elif len(param_raw) == 2:
                     type_name = param_raw[0]
@@ -599,6 +606,14 @@ def parse_method_usage(usage_string):
                             type_link = regex.findall(r'href="([^"]+)">', param)[-1]
                         except:
                             print("DEBUG: No type link found: {}, {}, {}".format(usage_string, param, param_raw))
+
+                ## Nothing above claimed this parameter. Fall back to the stripped source
+                ## text so the shape that got missed is visible in the output and in the
+                ## log, rather than quietly taking on its neighbor's identity:
+                if type_name is None and param_type is None:
+                    print("DEBUG: Unhandled parameter shape: {}, {}".format(param, param_raw))
+                    type_name = ''
+                    param_type = ' '.join(param_raw)
 
                 if type_link:
                     param_type_link = type_link
