@@ -10,7 +10,8 @@
 {{- end -}}
 {{- $description := .Description -}}
 {{- $updated := .Params.updated -}}
-{{- $result := printf "# %s\n\n" .Title -}}
+{{- $result := printf "> For AI agents: guidance on navigating Viam documentation is available at %s.\n\n" ("llms.txt" | absURL) -}}
+{{- $result = printf "%s# %s\n\n" $result .Title -}}
 {{- if $description -}}
   {{- $result = printf "%s%s\n" $result $description -}}
 {{- end -}}

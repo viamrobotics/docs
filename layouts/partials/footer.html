@@ -28,6 +28,8 @@
           {{ end }}
 
         {{ with .Site.Params.user_agreement }}<small class="ml-2"><a href="{{ . }}" target="_blank" rel="noopener">{{ "USER AGREEMENT" }}</a></small>{{ end }}
+        <br>
+        <small class="text-white">AI agent guidance: <a href="{{ "llms.txt" | absURL }}">llms.txt</a></small>
       </div>
     </div>
   </div>
