@@ -1,4 +1,3 @@
-<!-- prettier-ignore -->
 | Tool | Category | Description |
 | ---- | -------- | ----------- |
 | `get_registry_item_information` | Read-only | Look up the registry documentation for a Viam resource model. Given a resource's api and model — from read_machine_config, read_fragment_config or search_configuration_blocks — returns the module that provides it: the module's description and documentation, plus the model's own description and documentation, which is where its configuration attributes are described. Use it to learn how to configure a specific component or service model, and prefer it over a web search for registry models. |
