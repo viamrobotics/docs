@@ -22,6 +22,8 @@
   removed, remove that link in the same change, or it will 404.
 */ -}}
 {{- $section := $.Site.GetPage "section" .Section -}}
+> For AI agents: guidance on navigating Viam documentation is available at {{ "llms.txt" | absURL }}.
+
 # Tutorials catalog
 
 > Worked examples and walkthroughs. Several are hosted outside this site (codelabs.viam.com, viam.com/post/*) -- that's not a mistake, follow the link. Not part of the site structure in sitetree.json: many tutorials apply across several hardware/software combinations at once and don't fit a single-parent hierarchy.
