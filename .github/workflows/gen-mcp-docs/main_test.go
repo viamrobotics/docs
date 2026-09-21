@@ -31,6 +31,7 @@ func addTool(s int, tool *toolT, timeout int, h int) {}
 type toolT struct{}
 
 func readOnlyTool(name, title, description string) *toolT { return &toolT{} }
+func machineReadTool(name, title, description string) *toolT { return &toolT{} }
 func writeTool(name, title, description string, destructive bool) *toolT { return &toolT{} }
 func machineTool(name, title, description string) *toolT { return &toolT{} }
 `
@@ -45,6 +46,7 @@ const readDescription = "Read something. " +
 
 func register() {
 	addTool(0, readOnlyTool("read_thing", "Read thing", readDescription), 0, 0)
+	addTool(0, machineReadTool("read_live_thing", "Read live thing", "Reads a live thing without moving it."), 0, 0)
 	addTool(0, writeTool("add_thing", "Add thing", "Adds a thing.", false), 0, 0)
 	addTool(0, writeTool("delete_thing", "Delete thing", "Deletes a thing.", true), 0, 0)
 	addTool(0, machineTool("call_thing", "Call thing", "Calls a live thing."), 0, 0)
@@ -56,18 +58,19 @@ func register() {
 	if err != nil {
 		t.Fatalf("extractTools: %v", err)
 	}
-	if len(tools) != 4 {
-		t.Fatalf("got %d tools, want 4: %+v", len(tools), tools)
+	if len(tools) != 5 {
+		t.Fatalf("got %d tools, want 5: %+v", len(tools), tools)
 	}
 
 	want := map[string]struct {
 		category    string
 		description string
 	}{
-		"read_thing":   {categoryReadOnly, "Read something. Multi-line, like the real ones."},
-		"add_thing":    {categoryWrite, "Adds a thing."},
-		"delete_thing": {categoryDestroy, "Deletes a thing."},
-		"call_thing":   {categoryLiveMachine, "Calls a live thing."},
+		"read_thing":      {categoryReadOnly, "Read something. Multi-line, like the real ones."},
+		"read_live_thing": {categoryLiveMachineRead, "Reads a live thing without moving it."},
+		"add_thing":       {categoryWrite, "Adds a thing."},
+		"delete_thing":    {categoryDestroy, "Deletes a thing."},
+		"call_thing":      {categoryLiveMachine, "Calls a live thing."},
 	}
 	for _, got := range tools {
 		w, ok := want[got.Name]
@@ -93,6 +96,7 @@ func register() {
 	addTool(0, machineTool("z_machine", "t", "d"), 0, 0)
 	addTool(0, writeTool("z_destroy", "t", "d", true), 0, 0)
 	addTool(0, writeTool("a_write", "t", "d", false), 0, 0)
+	addTool(0, machineReadTool("z_machine_read", "t", "d"), 0, 0)
 	addTool(0, readOnlyTool("z_read", "t", "d"), 0, 0)
 	addTool(0, readOnlyTool("a_read", "t", "d"), 0, 0)
 }
@@ -107,7 +111,7 @@ func register() {
 	for _, tl := range tools {
 		gotOrder = append(gotOrder, tl.Name)
 	}
-	wantOrder := []string{"a_read", "z_read", "a_write", "z_destroy", "z_machine"}
+	wantOrder := []string{"a_read", "z_read", "z_machine_read", "a_write", "z_destroy", "z_machine"}
 	if strings.Join(gotOrder, ",") != strings.Join(wantOrder, ",") {
 		t.Errorf("order = %v, want %v", gotOrder, wantOrder)
 	}

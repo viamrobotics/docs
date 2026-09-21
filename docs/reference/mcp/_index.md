@@ -25,9 +25,9 @@ Every tool call is scoped to the organizations, locations, and machines your Via
 
 ## Tool categories
 
-Tools fall into three groups, reflected in the **Category** column below:
+Tools fall into four groups, reflected in the **Category** column below:
 
-- **Read-only** tools only read data and never prompt for confirmation in most MCP clients.
+- **Read-only** and **Live machine (read-only)** tools only read; neither changes anything, so most MCP clients don't prompt for confirmation before running either. The difference is what they read: Read-only tools query Viam's own data (your fleet, a machine's saved configuration), while Live machine (read-only) tools, such as `get_world_state`, connect to an online machine and read its current state directly, so they need the machine to be reachable and can take longer to answer than a data-only read.
 - **Write** tools create or add configuration. Most clients ask for confirmation before running one.
 - **Write (destructive)** and **Live machine (destructive)** tools change or delete existing configuration, or act directly on a live machine (for example, moving hardware with `call_machine_api` or `run_docommand`). These save or act immediately, with no draft and no undo, so review what a tool is about to do before approving it.
 

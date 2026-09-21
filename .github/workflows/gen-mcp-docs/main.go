@@ -37,20 +37,24 @@ type tool struct {
 }
 
 const (
-	categoryReadOnly    = "Read-only"
-	categoryWrite       = "Write"
-	categoryDestroy     = "Write (destructive)"
-	categoryLiveMachine = "Live machine (destructive)"
+	categoryReadOnly        = "Read-only"
+	categoryLiveMachineRead = "Live machine (read-only)"
+	categoryWrite           = "Write"
+	categoryDestroy         = "Write (destructive)"
+	categoryLiveMachine     = "Live machine (destructive)"
 )
 
-// categoryOrder controls both grouping and sort priority in the output table: read-only tools
-// first (safest, closest to what a reader wants to check first), then increasingly consequential
-// write tools, then the two tools that act on live hardware.
+// categoryOrder controls both grouping and sort priority in the output table. Both read-only
+// categories come first, grouped together rather than split by whether they touch a live machine
+// or just Viam's data layer: MCP clients (Claude included) gate confirmation on ReadOnlyHint alone,
+// so that's the distinction that matters most to a reader deciding what needs review. Increasingly
+// consequential write tools follow, then the tools that change or act on a live machine.
 var categoryOrder = map[string]int{
-	categoryReadOnly:    0,
-	categoryWrite:       1,
-	categoryDestroy:     2,
-	categoryLiveMachine: 3,
+	categoryReadOnly:        0,
+	categoryLiveMachineRead: 1,
+	categoryWrite:           2,
+	categoryDestroy:         3,
+	categoryLiveMachine:     4,
 }
 
 func main() {
@@ -126,7 +130,7 @@ func extractTools(mcpserverDir, appDir string) ([]tool, error) {
 		return nil, walkErr
 	}
 	if len(tools) == 0 {
-		return nil, fmt.Errorf("found no tools in %s -- check whether the addTool/readOnlyTool/writeTool/"+
+		return nil, fmt.Errorf("found no tools in %s -- check whether the addTool/readOnlyTool/machineReadTool/writeTool/"+
 			"machineTool registration convention this script relies on still holds", mcpserverDir)
 	}
 
@@ -139,16 +143,16 @@ func extractTools(mcpserverDir, appDir string) ([]tool, error) {
 	return tools, nil
 }
 
-// extractTool reads one addTool call's second argument -- the readOnlyTool/writeTool/machineTool
+// extractTool reads one addTool call's second argument -- the readOnlyTool/machineReadTool/writeTool/machineTool
 // call that builds the *mcp.Tool -- and resolves it to a tool. sc is the scope of the file the
-// addTool call itself appears in, which is where readOnlyTool/writeTool/machineTool's own
+// addTool call itself appears in, which is where readOnlyTool/machineReadTool/writeTool/machineTool's own
 // arguments must be resolved from. An unrecognized constructor is a hard error rather than a skip:
 // silently dropping an unrecognized tool would produce a doc page that looks complete while
 // quietly missing entries, which is worse than failing the run.
 func extractTool(r *resolver, sc scope, arg ast.Expr) (*tool, error) {
 	call, ok := arg.(*ast.CallExpr)
 	if !ok {
-		return nil, fmt.Errorf("expected a tool-constructor call (readOnlyTool/writeTool/machineTool), got %T", arg)
+		return nil, fmt.Errorf("expected a tool-constructor call (readOnlyTool/machineReadTool/writeTool/machineTool), got %T", arg)
 	}
 	fn, ok := call.Fun.(*ast.Ident)
 	if !ok {
@@ -160,13 +164,15 @@ func extractTool(r *resolver, sc scope, arg ast.Expr) (*tool, error) {
 	switch fn.Name {
 	case "readOnlyTool":
 		category, wantArgs = categoryReadOnly, 3
+	case "machineReadTool":
+		category, wantArgs = categoryLiveMachineRead, 3
 	case "writeTool":
 		category, wantArgs = categoryWrite, 4
 	case "machineTool":
 		category, wantArgs = categoryLiveMachine, 3
 	default:
 		return nil, fmt.Errorf("unrecognized tool constructor %q -- this script only knows readOnlyTool, "+
-			"writeTool, and machineTool; teach it the new constructor before trusting this output", fn.Name)
+			"machineReadTool, writeTool, and machineTool; teach it the new constructor before trusting this output", fn.Name)
 	}
 	if len(call.Args) != wantArgs {
 		return nil, fmt.Errorf("%s call has %d arguments, expected %d -- its signature may have changed",
