@@ -34,6 +34,12 @@ jobs:
           filter_mode: file
           fail_on_error: true
           level: error
+          # Generated files under static/include/**/generated/ carry upstream prose (scraped SDK
+          # docs, or here, an app team's Go source strings) this repo doesn't own and can't durably
+          # fix -- any edit is gone on the next regeneration. See CLAUDE.md's "Generated MCP server
+          # reference" section. This must stay narrowly scoped: static/include/ also holds hundreds
+          # of hand-authored snippet files that vale should keep checking normally.
+          glob: "!static/include/app/mcpserver/generated/**"
         env:
           # Required, set by GitHub actions automatically:
           # https://docs.github.com/en/actions/security-guides/automatic-token-authentication#about-the-github_token-secret

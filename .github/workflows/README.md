@@ -85,7 +85,12 @@ top-level README](../../README.md#continuous-integration).
 - **Secrets:** `GITHUB_TOKEN` (automatic).
 - **Notes:** The Python 3.8 / venv setup steps are dead weight—Vale is a Go
   binary and the venv is never used. Python 3.8 is end-of-life. The action is
-  pinned to the `reviewdog` branch rather than a version.
+  pinned to the `reviewdog` branch rather than a version. `glob:
+  "!static/include/app/mcpserver/generated/**"` excludes the one generated
+  file this repo doesn't own the prose in—see `CLAUDE.md`'s "Generated MCP
+  server reference" section. Keep this narrowly scoped: `static/include/`
+  also holds hundreds of hand-authored snippet files vale should keep
+  checking.
 
 #### `codespell.yml`—_codespell_
 

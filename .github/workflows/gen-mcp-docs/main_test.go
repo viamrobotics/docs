@@ -289,12 +289,10 @@ func TestWriteTable(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := "<!-- vale off -->\n" +
-		"<!-- prettier-ignore -->\n" +
+	want := "<!-- prettier-ignore -->\n" +
 		"| Tool | Category | Description |\n" +
 		"| ---- | -------- | ----------- |\n" +
-		"| `a_tool` | Read-only | Does a thing \\| with a pipe. |\n" +
-		"<!-- vale on -->\n"
+		"| `a_tool` | Read-only | Does a thing \\| with a pipe. |\n"
 	if string(got) != want {
 		t.Errorf("writeTable output =\n%s\nwant\n%s", got, want)
 	}

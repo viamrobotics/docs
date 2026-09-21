@@ -519,25 +519,23 @@ func describeCall(e *ast.CallExpr) string {
 
 // writeTable renders tools as the same Markdown-table shape the generated SDK method tables use
 // (static/include/**/apis/generated/*-table.md), so this generated file reads consistently with
-// the site's existing generated-docs convention. It's wrapped in Vale's "vale off"/"vale on"
-// markers because, unlike prettier and markdownlint, this repo's vale check is not directory-
-// scoped -- it applies to every changed *.md file by extension, this file included. Its content is
-// mcpserver's own tool descriptions, written by app engineers for a different audience under a
-// different style guide; holding it to viam-docs prose rules would fail builds over text this repo
-// doesn't own and can't durably fix (any manual edit is gone on the next regeneration), while
-// giving up on style enforcement here trades nothing real away, since this table was never meant to
-// read as hand-edited prose. A specific Viam.* rule name would need updating here every time new
-// upstream text happened to trip a different one; the blanket marker doesn't.
+// the site's existing generated-docs convention. Its content is mcpserver's own tool descriptions,
+// written by app engineers for a different audience under a different style guide, so this repo's
+// vale check is configured (in .github/workflows/vale-lint.yml, via the vale-action's `glob` input)
+// to skip this generated path entirely rather than hold it to viam-docs prose rules -- see
+// CLAUDE.md's "Generated MCP server reference" section for why that's a CI-config exclusion and not
+// an earlier approach this file used, in-document `<!-- vale off/on -->` markers: those worked for
+// CI, but the table is inlined verbatim into this page's Markdown mirror and into llms-full.txt (see
+// data/llms_pages.yaml), so the markers were served to every reader of either as literal visible
+// text -- exactly the audience (AI agents reading llms-full.txt) this table exists for.
 func writeTable(path string, tools []tool) error {
 	var b strings.Builder
-	b.WriteString("<!-- vale off -->\n")
 	b.WriteString("<!-- prettier-ignore -->\n")
 	b.WriteString("| Tool | Category | Description |\n")
 	b.WriteString("| ---- | -------- | ----------- |\n")
 	for _, t := range tools {
 		b.WriteString(fmt.Sprintf("| `%s` | %s | %s |\n", t.Name, t.Category, escapeCell(codeSpanURLs(t.Description))))
 	}
-	b.WriteString("<!-- vale on -->\n")
 
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
 		return fmt.Errorf("creating output directory: %w", err)
