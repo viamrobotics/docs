@@ -246,6 +246,26 @@ These Python files are invoked by the workflows above, not run on their own:
 - **`requirements.txt`**—Python dependencies for the `docs.yml` index-sync
   jobs (`viam-sdk`, `asyncio`, `typesense`).
 
+## Generator scripts not invoked by a workflow here
+
+- **`gen-mcp-docs/`**—a standalone Go program (its own `go.mod`, no dependency
+  on this repo's `go.mod`, which is Hugo's module file) that generates
+  `static/include/app/mcpserver/generated/mcp-tools-table.md` from
+  `viamrobotics/app`'s `mcpserver/` package: the Viam MCP server's tool
+  registrations. See `CLAUDE.md`'s "Generated MCP server reference" section
+  for the design (why it parses source with `go/parser` rather than
+  type-checking with `go/types`, how tool categories are derived, and the
+  per-file import-alias scoping it relies on).
+- **Unlike every workflow-invoked script above, nothing in this directory's
+  `*.yml` files runs it.** It's invoked externally, by the daily code-change
+  agent defined in `shannonbradshaw/viam-code-map`'s
+  `playbook-daily-code-changes.md`, when that agent's diff of `viamrobotics/app`
+  touches `mcpserver/`. No secrets, no network access, no Python
+  venv—`go run ./.github/workflows/gen-mcp-docs --mcpserver-dir=<path>/mcpserver --out=<path>`.
+  If that external wiring is ever formalized as a workflow in this repo, move
+  this description up into "Workflows by category" and document trigger/
+  blocking/secrets the same way the others are.
+
 ## Test-org dependency
 
 `test-code-snippets.yml` (and the index-sync jobs in `docs.yml`) authenticate
