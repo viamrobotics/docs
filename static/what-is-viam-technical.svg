@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 693 570" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 693 558" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif">
   <defs>
     <style>
       .layer-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
@@ -8,18 +8,25 @@
   </defs>
 
   <!-- ==================== YOUR CODE SDK (left side) ==================== -->
-  <rect x="0" y="102" width="110" height="175" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
-  <text x="55" y="122" text-anchor="middle" class="box-label" fill="#252525">Code Anywhere</text>
+  <rect x="0" y="102" width="110" height="268" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
+  <text x="55" y="122" text-anchor="middle" class="box-label" fill="#252525">Code anywhere</text>
   <line x1="10" y1="130" x2="100" y2="130" stroke="#e0e0e0" stroke-width="0.5"/>
   <text x="55" y="148" text-anchor="middle" style="font-size:10px; fill:#808080">write code, test,</text>
   <text x="55" y="164" text-anchor="middle" style="font-size:10px; fill:#808080">and debug from</text>
   <text x="55" y="180" text-anchor="middle" style="font-size:10px; fill:#808080">any computer</text>
   <line x1="10" y1="190" x2="100" y2="190" stroke="#e0e0e0" stroke-width="0.5"/>
   <text x="55" y="208" text-anchor="middle" style="font-size:10px; fill:#808080">execute against</text>
-  <text x="55" y="224" text-anchor="middle" style="font-size:10px; fill:#808080">your robot remotely</text>
+  <text x="55" y="224" text-anchor="middle" style="font-size:10px; fill:#808080">your machine remotely</text>
   <line x1="10" y1="234" x2="100" y2="234" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="55" y="252" text-anchor="middle" style="font-size:10px; fill:#808080">Python · Go</text>
-  <text x="55" y="268" text-anchor="middle" style="font-size:10px; fill:#808080">TS · C++ · Flutter</text>
+  <text x="55" y="250" text-anchor="middle" style="font-size:11px; font-weight:600; fill:#252525">SDKs</text>
+  <text x="55" y="266" text-anchor="middle" style="font-size:10px; fill:#808080">Python · Go · C++</text>
+  <text x="55" y="282" text-anchor="middle" style="font-size:10px; fill:#808080">TypeScript · Flutter</text>
+
+  <text x="55" y="304" text-anchor="middle" style="font-size:11px; font-weight:600; fill:#252525">CLI</text>
+  <text x="55" y="320" text-anchor="middle" style="font-size:10px; fill:#808080">call any API method</text>
+
+  <text x="55" y="342" text-anchor="middle" style="font-size:11px; font-weight:600; fill:#252525">API</text>
+  <text x="55" y="358" text-anchor="middle" style="font-size:10px; fill:#808080">gRPC · protobuf</text>
 
   <!-- Arrow from SDK top, curving right to app.viam.com -->
   <path d="M55,102 L55,67 Q55,52 70,52 L120,52" fill="none" stroke="#252525" stroke-width="1.2"/>
@@ -27,39 +34,29 @@
   <text x="85" y="30" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC signaling</text>
 
   <!-- Arrow from SDK bottom, curving right to YOUR MACHINE -->
-  <path d="M55,277 L55,282 Q55,297 70,297 L120,297" fill="none" stroke="#252525" stroke-width="1.2"/>
-  <polygon points="117,293 126,297 117,301" fill="#252525"/>
-  <text x="88" y="320" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC / gRPC</text>
+  <path d="M55,370 L55,375 Q55,390 70,390 L120,390" fill="none" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="117,386 126,390 117,394" fill="#252525"/>
+  <text x="88" y="413" text-anchor="middle" style="font-size:10px; fill:#252525">WebRTC / gRPC</text>
 
   <!-- ==================== CLOUD LAYER ==================== -->
   <rect x="130" y="2" width="558" height="105" rx="6" fill="#f7f6f3" stroke="#252525" stroke-width="1.5"/>
   <text x="147" y="24" class="layer-label" fill="#252525">app.viam.com</text>
 
   <!-- Cloud boxes -->
-  <rect x="142" y="34" width="105" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="194.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Registry</text>
-  <text x="194.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">modules · models</text>
-  <text x="194.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">training scripts</text>
+  <rect x="142" y="34" width="168" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="226" y="54" text-anchor="middle" class="box-label" fill="#252525">Registry</text>
+  <text x="226" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">modules · ML models</text>
+  <text x="226" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">training scripts</text>
 
-  <rect x="255" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="297.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Data</text>
-  <text x="297.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">storage · query</text>
-  <text x="297.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">export</text>
+  <rect x="325" y="34" width="168" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="409" y="54" text-anchor="middle" class="box-label" fill="#252525">Data/ML</text>
+  <text x="409" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">storage · query · export</text>
+  <text x="409" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">datasets · training · models</text>
 
-  <rect x="348" y="34" width="85" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="390.5" y="54" text-anchor="middle" class="box-label" fill="#252525">ML</text>
-  <text x="390.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">datasets · training</text>
-  <text x="390.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">models</text>
-
-  <rect x="441" y="34" width="125" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="503.5" y="54" text-anchor="middle" class="box-label" fill="#252525">Fleet Management</text>
-  <text x="503.5" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">config · deploys</text>
-  <text x="503.5" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">monitoring</text>
-
-  <rect x="574" y="34" width="102" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="625" y="54" text-anchor="middle" class="box-label" fill="#252525">Apps</text>
-  <text x="625" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">auth · billing</text>
-  <text x="625" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">dashboards</text>
+  <rect x="508" y="34" width="168" height="60" rx="4" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="592" y="54" text-anchor="middle" class="box-label" fill="#252525">Fleet management</text>
+  <text x="592" y="70" text-anchor="middle" style="font-size:10px; fill:#808080">config · deploys</text>
+  <text x="592" y="84" text-anchor="middle" style="font-size:10px; fill:#808080">monitoring · logs</text>
 
   <!-- ==================== ARROWS: Cloud ↔ Machine ==================== -->
   <line x1="319" y1="112" x2="319" y2="138" stroke="#252525" stroke-width="1.2" stroke-dasharray="4,3"/>
@@ -71,101 +68,80 @@
   <text x="511" y="130" class="arrow-label" fill="#252525">data · logs · machine status</text>
 
   <!-- ==================== YOUR MACHINE boundary ==================== -->
-  <rect x="130" y="145" width="558" height="415" rx="10" fill="none" stroke="#252525" stroke-width="1.5"/>
-  <text x="147" y="165" style="font-size:13px; font-weight:700; fill:#252525; letter-spacing:0.03em">YOUR ROBOT</text>
+  <rect x="130" y="145" width="558" height="403" rx="10" fill="none" stroke="#252525" stroke-width="1.5"/>
+  <text x="147" y="165" style="font-size:13px; font-weight:700; fill:#252525; letter-spacing:0.03em">YOUR MACHINE</text>
 
   <!-- ==================== COMPUTE LAYER ==================== -->
-  <rect x="138" y="175" width="542" height="250" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
-  <text x="155" y="197" class="layer-label" fill="#252525">Compute</text>
+  <rect x="138" y="175" width="542" height="252" rx="6" fill="#fff" stroke="#e0e0e0" stroke-width="1.5"/>
+  <text x="155" y="197" class="layer-label" fill="#252525">Compute (part)</text>
 
   <!-- viam-agent container -->
-  <rect x="146" y="207" width="526" height="208" rx="5" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
+  <rect x="146" y="207" width="526" height="210" rx="5" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
   <rect x="154" y="213" width="90" height="20" rx="10" fill="#252525"/>
   <text x="199" y="227" text-anchor="middle" style="font-size:10px; font-weight:600; fill:#fff">viam-agent</text>
-  <text x="258" y="227" style="font-size:10px; fill:#808080">first-boot setup · networking · supervises viam-server</text>
+  <text x="258" y="227" style="font-size:10px; fill:#808080">networking · system config · supervises viam-server</text>
 
   <!-- viam-server container -->
-  <rect x="154" y="240" width="510" height="167" rx="4" fill="#fff" stroke="#d0d0d0" stroke-width="1"/>
+  <rect x="154" y="240" width="510" height="169" rx="4" fill="#fff" stroke="#d0d0d0" stroke-width="1"/>
   <rect x="162" y="246" width="96" height="20" rx="10" fill="#252525"/>
   <text x="210" y="260" text-anchor="middle" style="font-size:10px; font-weight:600; fill:#fff">viam-server</text>
-  <text x="272" y="260" style="font-size:10px; fill:#808080">applies config updates · manages modules</text>
+  <text x="272" y="260" style="font-size:10px; fill:#808080">applies config updates · manages modules · exposes one API per resource type</text>
 
-  <!-- Hardware Drivers: 110px wide -->
-  <rect x="159" y="274" width="110" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="214" y="294" text-anchor="middle" class="box-label" fill="#252525">Hardware</text>
-  <text x="214" y="308" text-anchor="middle" class="box-label" fill="#252525">Drivers</text>
-  <line x1="169" y1="316" x2="259" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="214" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">camera · motor</text>
-  <text x="214" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">arm · sensor</text>
-  <text x="214" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">board · base ...</text>
-  <text x="214" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">modules from Registry</text>
+  <!-- Resources label -->
+  <text x="162" y="286" class="layer-label" fill="#252525">Resources</text>
+  <text x="240" y="286" style="font-size:9.5px; fill:#808080">components and services · built in, from the registry, or from modules you write</text>
 
-  <!-- Built-in Services: 122px wide -->
-  <rect x="277" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="338" y="294" text-anchor="middle" class="box-label" fill="#252525">Built-in</text>
-  <text x="338" y="308" text-anchor="middle" class="box-label" fill="#252525">Services</text>
-  <line x1="287" y1="316" x2="389" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="338" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync</text>
-  <text x="338" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">motion planning</text>
-  <text x="338" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">computer vision</text>
-  <text x="338" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">shipped with viam-server</text>
+  <!-- Components -->
+  <rect x="159" y="294" width="244" height="105" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="281" y="320" text-anchor="middle" class="box-label" fill="#252525">Components</text>
+  <line x1="169" y1="330" x2="393" y2="330" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="281" y="348" text-anchor="middle" style="font-size:10px; fill:#808080">physical hardware on the machine</text>
+  <text x="281" y="364" text-anchor="middle" style="font-size:10px; fill:#808080">camera · motor · arm · sensor</text>
+  <text x="281" y="380" text-anchor="middle" style="font-size:10px; fill:#808080">board · gripper · and more</text>
 
-  <!-- Software Integrations: 122px wide -->
-  <rect x="407" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="468" y="294" text-anchor="middle" class="box-label" fill="#252525">Software</text>
-  <text x="468" y="308" text-anchor="middle" class="box-label" fill="#252525">Integrations</text>
-  <line x1="417" y1="316" x2="519" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="468" y="338" text-anchor="middle" style="font-size:10px; fill:#808080">software for a wide</text>
-  <text x="468" y="354" text-anchor="middle" style="font-size:10px; fill:#808080">variety of automation</text>
-  <text x="468" y="370" text-anchor="middle" style="font-size:10px; fill:#808080">applications</text>
-  <text x="468" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">modules from Registry</text>
-
-  <!-- Your Code (Modules): 122px wide -->
-  <rect x="537" y="274" width="122" height="123" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
-  <text x="598" y="294" text-anchor="middle" class="box-label" fill="#252525">Your Code</text>
-  <text x="598" y="308" text-anchor="middle" class="box-label" fill="#252525">(as Modules)</text>
-  <line x1="547" y1="316" x2="649" y2="316" stroke="#e0e0e0" stroke-width="0.5"/>
-  <text x="598" y="334" text-anchor="middle" style="font-size:10px; fill:#808080">control logic</text>
-  <text x="598" y="350" text-anchor="middle" style="font-size:10px; fill:#808080">custom drivers</text>
-  <text x="598" y="366" text-anchor="middle" style="font-size:10px; fill:#808080">business logic</text>
-  <text x="598" y="390" text-anchor="middle" style="font-size:9px; fill:#808080; font-style:italic">deploy via Registry</text>
+  <!-- Services -->
+  <rect x="415" y="294" width="244" height="105" rx="4" fill="#f7f6f3" stroke="#e0e0e0" stroke-width="1"/>
+  <text x="537" y="320" text-anchor="middle" class="box-label" fill="#252525">Services</text>
+  <line x1="425" y1="330" x2="649" y2="330" stroke="#e0e0e0" stroke-width="0.5"/>
+  <text x="537" y="348" text-anchor="middle" style="font-size:10px; fill:#808080">software capabilities on the machine</text>
+  <text x="537" y="364" text-anchor="middle" style="font-size:10px; fill:#808080">data capture &amp; sync · motion planning</text>
+  <text x="537" y="380" text-anchor="middle" style="font-size:10px; fill:#808080">computer vision · custom logic</text>
 
   <!-- ==================== ARROWS: Compute ↔ Peripherals ==================== -->
-  <line x1="420" y1="428" x2="420" y2="465" stroke="#252525" stroke-width="1.2"/>
-  <polygon points="416,461 420,469 424,461" fill="#252525"/>
-  <text x="432" y="442" style="font-size:10px; fill:#808080">USB · GPIO · Ethernet · Serial · CAN</text>
-  <text x="432" y="456" class="arrow-label" fill="#252525">consistent APIs across all</text>
+  <line x1="420" y1="433" x2="420" y2="454" stroke="#252525" stroke-width="1.2"/>
+  <polygon points="416,446 420,454 424,446" fill="#252525"/>
+  <text x="432" y="448" style="font-size:10px; fill:#808080">USB · GPIO · Ethernet · serial · CAN</text>
 
   <!-- ==================== HARDWARE LAYER ==================== -->
-  <rect x="138" y="470" width="542" height="80" rx="6" fill="#fff" stroke="#d0d0d0" stroke-width="1.5"/>
-  <text x="155" y="490" class="layer-label" fill="#252525">Hardware</text>
+  <rect x="138" y="458" width="542" height="80" rx="6" fill="#fff" stroke="#d0d0d0" stroke-width="1.5"/>
+  <text x="155" y="478" class="layer-label" fill="#252525">Hardware</text>
 
   <!-- Hardware items: left-aligned with HARDWARE label -->
-  <g transform="translate(155, 498)">
+  <g transform="translate(155, 486)">
     <rect width="72" height="36" rx="4" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
     <text x="36" y="22" text-anchor="middle" style="font-size:11px; fill:#252525">Cameras</text>
   </g>
-  <g transform="translate(233, 498)">
+  <g transform="translate(233, 486)">
     <rect width="68" height="36" rx="4" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
     <text x="34" y="22" text-anchor="middle" style="font-size:11px; fill:#252525">Motors</text>
   </g>
-  <g transform="translate(307, 498)">
+  <g transform="translate(307, 486)">
     <rect width="60" height="36" rx="4" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
     <text x="30" y="22" text-anchor="middle" style="font-size:11px; fill:#252525">Arms</text>
   </g>
-  <g transform="translate(373, 498)">
+  <g transform="translate(373, 486)">
     <rect width="72" height="36" rx="4" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
     <text x="36" y="22" text-anchor="middle" style="font-size:11px; fill:#252525">Sensors</text>
   </g>
-  <g transform="translate(451, 498)">
+  <g transform="translate(451, 486)">
     <rect width="68" height="36" rx="4" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
     <text x="34" y="22" text-anchor="middle" style="font-size:11px; fill:#252525">Boards</text>
   </g>
-  <g transform="translate(525, 498)">
+  <g transform="translate(525, 486)">
     <rect width="75" height="36" rx="4" fill="#f7f6f3" stroke="#d0d0d0" stroke-width="1"/>
     <text x="37" y="22" text-anchor="middle" style="font-size:11px; fill:#252525">Grippers</text>
   </g>
-  <g transform="translate(606, 498)">
+  <g transform="translate(606, 486)">
     <rect width="60" height="36" rx="4" fill="#f7f6f3" stroke="#808080" stroke-width="1" stroke-dasharray="4,2"/>
     <text x="30" y="22" text-anchor="middle" style="font-size:11px; fill:#808080">More</text>
   </g>
