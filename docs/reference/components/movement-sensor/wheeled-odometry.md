@@ -4,6 +4,7 @@ linkTitle: "wheeled-odometry"
 type: "docs"
 description: "Reference for the wheeled-odometry movement-sensor model. Wheeled odometry movement sensor."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/imu.svg"]
 tags:
   [

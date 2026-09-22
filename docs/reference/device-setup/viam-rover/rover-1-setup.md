@@ -8,6 +8,7 @@ images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover 1 in a box"
 description: "A list of the contents of the Viam Rover 1 kit, instructions for wiring your rover, and links for additional hardware."
 capabilities: ["hw-mobility", "device-provisioning", "docs"]
+diataxis: how-to
 aliases:
   - /rover-resources/rover-tutorial/
   - /try-viam/rover-resources/rover-tutorial/

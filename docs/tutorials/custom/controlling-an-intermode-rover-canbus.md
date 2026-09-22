@@ -14,6 +14,7 @@ tags:
   ]
 description: "Integrate an Intermode rover as a modular resource base component with CAN bus."
 capabilities: ["module-development", "hw-mobility", "docs"]
+diataxis: tutorial
 imageAlt: "Intermode rover pictured outdoors."
 images: ["/tutorials/intermode/rover_outside.png"]
 authors: ["Matt Vella"]

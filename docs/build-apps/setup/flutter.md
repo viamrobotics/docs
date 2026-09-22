@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for building a Viam app that runs across iOS, Android, and desktop platforms from a single codebase."
 capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

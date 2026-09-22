@@ -5,6 +5,7 @@ weight: 70
 type: "docs"
 description: "Using the extra parameter on resource API methods with Viam's SDKs."
 capabilities: ["sdks"]
+diataxis: reference
 images: ["/services/icons/sdk.svg"]
 tags: ["sdk", "extra", "extend"]
 aliases:

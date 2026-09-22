@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the fake motor model. Fake motor to test software without any hardware."
 capabilities: ["hw-actuation"]
+diataxis: reference
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/operate/reference/components/motor/fake/"

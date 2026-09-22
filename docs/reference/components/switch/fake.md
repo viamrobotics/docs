@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the fake switch model. Fake switch for testing."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/switch.svg"]
 tags: ["switch", "components"]
 aliases:

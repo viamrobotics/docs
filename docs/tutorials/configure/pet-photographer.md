@@ -4,6 +4,7 @@ linkTitle: "Pet Photographer"
 type: "docs"
 description: "Use the filter modular component to photograph your pet in their collar."
 capabilities: ["module-development", "vision-service", "data-capture", "docs"]
+diataxis: tutorial
 tags: ["vision", "filter", "camera", "detector", "services"]
 imageAlt: "Filtered data from the custom colorfiltercam in the DATA tab showing only photos of a dog wearing a blue collar"
 images: ["/tutorials/pet-photographer/data-capture.png"]

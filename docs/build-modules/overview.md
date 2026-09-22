@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Understand the two kinds of modules and how to extend your machine with custom hardware drivers and application logic."
 capabilities: ["module-development", "inline-modules"]
+diataxis: overview
 aliases:
   - /operate/modules/
   - /operate/modules/advanced/

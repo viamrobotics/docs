@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Create machines, add components and services, and manage fragments from the command line."
 capabilities: ["cli", "machine-config"]
+diataxis: how-to
 ---
 
 Create and configure machines, add and remove components and services, and apply configuration fragments from the command line.

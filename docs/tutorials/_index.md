@@ -2,6 +2,7 @@
 title: "Tutorials"
 linkTitle: "Tutorials"
 capabilities: ["section-index", "docs"]
+diataxis: overview
 weight: 300
 type: docs
 layout: "tutorials"

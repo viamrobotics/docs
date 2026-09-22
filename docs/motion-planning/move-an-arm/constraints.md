@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Restrict how the arm moves between poses using linear, orientation, and collision constraints."
 capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /reference/services/motion/constraints/
   - /services/motion/constraints/

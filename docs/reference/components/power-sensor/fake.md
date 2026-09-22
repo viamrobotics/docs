@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the fake power-sensor model. Fake power sensor to test software without the physical hardware."
 capabilities: ["hw-sensing"]
+diataxis: reference
 tags: ["sensor", "power sensor"]
 icon: true
 images: ["/icons/components/sensor.svg"]

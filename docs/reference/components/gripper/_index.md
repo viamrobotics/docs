@@ -6,6 +6,7 @@ weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in gripper models."
 capabilities: ["section-index", "hw-actuation"]
+diataxis: reference
 no_list: true
 tags: ["gripper", "components"]
 icon: true

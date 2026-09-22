@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "A map of the draw library's option categories: placement and identity, shapes, colors, metadata, and snapshots, with links to the full API."
 capabilities: ["scene-3d"]
+diataxis: reference
 ---
 
 The [`draw` library](https://pkg.go.dev/github.com/viam-labs/motion-tools/draw)

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Command an arm directly in joint space using MoveToJointPositions and MoveThroughJointPositions, bypassing the motion planner."
 capabilities: ["motion-planning", "hw-arm"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/move-arm-joint-positions/
 ---

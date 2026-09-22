@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Push joint trajectory points to an arm while it is already moving, using MoveThroughJointPositionsStreamed."
 capabilities: ["motion-planning", "hw-arm"]
+diataxis: how-to
 ---
 
 `MoveThroughJointPositionsStreamed` opens a stream onto which you push joint

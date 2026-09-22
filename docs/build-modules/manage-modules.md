@@ -8,6 +8,7 @@ icon: true
 tags: ["modular resources", "components", "services", "registry"]
 description: "Update, deprecate, or delete your existing modules, or change their privacy settings."
 capabilities: ["module-development"]
+diataxis: how-to
 aliases:
   - /operate/modules/advanced/manage-modules/
   - /use-cases/deploy-code/

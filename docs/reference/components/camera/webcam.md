@@ -5,6 +5,7 @@ weight: 33
 type: "docs"
 description: "Reference for the webcam camera model. The general camera model for USB cameras and laptop webcams."
 capabilities: ["hw-camera"]
+diataxis: reference
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:

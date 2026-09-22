@@ -6,6 +6,7 @@ weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in base models."
 capabilities: ["hw-mobility", "section-index"]
+diataxis: reference
 no_list: true
 tags: ["base", "components"]
 icon: true

@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 description: "Understand how Viam organizes machines into organizations and locations, and how access control works at each level."
 capabilities: ["org-management"]
+diataxis: explanation
 aliases:
   - /cloud/machines/
   - /fleet/robots/

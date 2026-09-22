@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Why Viam splits ML inference into two services, what each one does, and how they compose to produce detections, classifications, and point cloud objects."
 capabilities: ["vision-service", "ml-models"]
+diataxis: explanation
 date: "2026-04-14"
 ---
 

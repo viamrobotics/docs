@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Ways to visualize a Viam machine: the 3D scene, the standalone Viam visualizer, custom apps you build, and time-series dashboards."
 capabilities: ["scene-3d", "dashboards"]
+diataxis: overview
 ---
 
 A machine produces two kinds of data you can watch: spatial state (frames, geometries,

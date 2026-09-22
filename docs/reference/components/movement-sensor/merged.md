@@ -5,6 +5,7 @@ weight: 40
 type: "docs"
 description: "Reference for the merged movement-sensor model. Merged movement sensor."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/operate/reference/components/movement-sensor/merged/"

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Build a monitoring dashboard for your inspection system using Viam's Teleop interface."
 capabilities: ["dashboards", "teleop", "docs"]
+diataxis: tutorial
 date: "2025-01-30"
 aliases:
   - /try/part-5/

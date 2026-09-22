@@ -8,6 +8,7 @@ images: ["/appendix/try-viam/rover-resources/viam-rover-2/box-contents.png"]
 imageAlt: "A Viam Rover 2 in a box"
 description: "Instructions for setting up a Viam Rover 2 with a Jetson Nano or Jetson Orin Nano."
 capabilities: ["hw-mobility", "device-provisioning", "docs"]
+diataxis: how-to
 aliases:
   - /get-started/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/
   - /appendix/try-viam/rover-resources/rover-tutorial/jetson-rover-setup/

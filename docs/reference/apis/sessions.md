@@ -5,6 +5,7 @@ weight: 50
 type: "docs"
 description: "Manage sessions between your machine and clients connected through Viam's SDKs."
 capabilities: ["sdks"]
+diataxis: reference
 tags:
   [
     "client",

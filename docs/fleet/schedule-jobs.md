@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure automated jobs that call component and service methods on a schedule."
 capabilities: ["fleet-deployment"]
+diataxis: how-to
 aliases:
   - /manage/software/scheduled-jobs/
 ---

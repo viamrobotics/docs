@@ -6,6 +6,7 @@ slug: "configure-resources"
 weight: 20
 description: "Add the gripper and camera to the arm from Phase 1, connect the three with frames, then verify each one from the control and 3D scene tabs."
 capabilities: ["frame-system", "discovery", "hw-camera", "docs"]
+diataxis: tutorial
 workshop: "pick-and-place"
 toc_hide: true
 phase: 2

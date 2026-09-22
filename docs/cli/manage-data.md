@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Export, tag, delete, and query your machine data from the command line."
 capabilities: ["cli", "data-storage"]
+diataxis: how-to
 ---
 
 Export captured data to your local machine, organize it with tags, delete old data, and configure database access for direct queries.

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Display live camera feeds in a client app. Covers single-camera and multi-camera streaming, resolution tradeoffs, and bandwidth considerations."
 capabilities: ["sdks", "hw-camera"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 
