@@ -1,4 +1,4 @@
-name: Validate capability tags
+name: Validate docs frontmatter taxonomies
 
 concurrency:
   group: pullrequest-untrusted-capabilities-${{ github.event.number }}
@@ -17,7 +17,7 @@ on:
 
 jobs:
   validate_capabilities:
-    name: Check docs/ capability frontmatter
+    name: Check docs/ capability and Diataxis frontmatter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,3 +32,6 @@ jobs:
 
       - name: Check capabilities
         run: python3 scripts/check-capabilities.py
+
+      - name: Check Diataxis modes
+        run: python3 scripts/check-diataxis.py
