@@ -5,6 +5,7 @@ weight: 30
 type: "docs"
 description: "Reference for the wheeled base model. And wire a wheeled base."
 capabilities: ["hw-mobility"]
+diataxis: reference
 images: ["/icons/components/base.svg"]
 tags: ["base", "components"]
 aliases:

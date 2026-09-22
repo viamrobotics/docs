@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "How depth-camera point clouds render in the 3D scene, how to adjust their display, and how to load and compare external point clouds."
 capabilities: ["scene-3d"]
+diataxis: explanation
 ---
 
 A depth camera reports the distance to points in front of it. The 3D scene renders that data

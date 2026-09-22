@@ -6,6 +6,7 @@ type: "docs"
 tags: ["navigation", "services", "base", "rover"]
 description: "Give commands to define waypoints and move your machine along those waypoints while avoiding obstacles."
 capabilities: ["sdks", "navigation"]
+diataxis: reference
 date: "2022-01-01"
 aliases:
   - /dev/reference/apis/services/navigation/

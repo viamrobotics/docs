@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Set up automated provisioning so machines configure themselves when they first come online."
 capabilities: ["device-provisioning"]
+diataxis: how-to
 aliases:
   - /manage/fleet/provision/setup/
 ---

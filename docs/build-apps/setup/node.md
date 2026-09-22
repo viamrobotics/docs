@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Set up a project for running Viam SDK code from a Node.js process: a backend service, a CLI tool, or another Node app that talks to a Viam machine."
 capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

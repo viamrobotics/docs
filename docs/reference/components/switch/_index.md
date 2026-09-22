@@ -6,6 +6,7 @@ weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in switch models."
 capabilities: ["section-index", "hw-sensing"]
+diataxis: reference
 no_list: true
 tags: ["switch", "components"]
 icon: true

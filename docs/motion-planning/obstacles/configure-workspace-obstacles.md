@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure the static collision geometry for your workspace through the Viam app so the motion planner routes around tables, walls, fixtures, and work-cell boundaries."
 capabilities: ["motion-planning"]
+diataxis: how-to
 ---
 
 Static obstacles are the fixed shapes in your workspace: the table the arm is bolted to, a back wall, a ceiling, a bin the arm reaches into.

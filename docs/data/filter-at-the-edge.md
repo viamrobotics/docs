@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Reduce data volume, bandwidth, and storage costs by filtering data on the machine before syncing to the cloud."
 capabilities: ["data-capture"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/data/filter-at-the-edge/

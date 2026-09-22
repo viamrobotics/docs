@@ -10,6 +10,7 @@ images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover in a box"
 description: "Set up your own Viam Rover and use it to learn Viam."
 capabilities: ["section-index", "hw-mobility", "docs"]
+diataxis: overview
 date: "2026-05-23"
 aliases:
   - /viam-rover-resources/

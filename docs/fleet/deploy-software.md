@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Deploy modules and control logic to your fleet using fragments and the Viam registry."
 capabilities: ["fleet-deployment"]
+diataxis: how-to
 ---
 
 Deploy modules (hardware drivers, control logic, or other custom code) to one machine or an entire fleet. You configure the module in a fragment, apply the fragment to your machines, and the machines download the module from the Viam registry automatically.

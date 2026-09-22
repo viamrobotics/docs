@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Add and configure a generic component for hardware that doesn't fit any other component type."
 capabilities: ["hw-generic"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/generic/

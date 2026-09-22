@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Board-specific setup instructions for single-board computers and microcontrollers supported by Viam."
 capabilities: ["section-index", "device-provisioning"]
+diataxis: overview
 aliases:
   - /operate/reference/prepare/
 ---

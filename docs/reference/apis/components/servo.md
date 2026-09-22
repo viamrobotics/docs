@@ -5,6 +5,7 @@ weight: 170
 type: "docs"
 description: "Give commands for controlling the angular position of a servo precisely or getting its current status."
 capabilities: ["hw-actuation", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/servo.svg"]
 date: "2022-10-10"

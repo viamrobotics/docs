@@ -5,6 +5,7 @@ weight: 20
 type: "docs"
 description: "Give commands to your data management service to sync data stored on the machine it is deployed on to the cloud."
 capabilities: ["sdks", "data-capture"]
+diataxis: reference
 icon: true
 images: ["/icons/components/arm.svg"]
 date: "2022-01-01"

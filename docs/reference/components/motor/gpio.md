@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the gpio motor model. Brushed or brushless DC motors."
 capabilities: ["hw-actuation"]
+diataxis: reference
 images: ["/icons/components/motor.svg"]
 aliases:
   - "/operate/reference/components/motor/gpio/"

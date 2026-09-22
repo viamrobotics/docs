@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Command an arm to a target pose, along a constrained path, or directly in joint space. Build pick-and-place flows from those primitives."
 capabilities: ["motion-planning"]
+diataxis: overview
 aliases:
   - /motion-planning/pick-and-place/
 ---

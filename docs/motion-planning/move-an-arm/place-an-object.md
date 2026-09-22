@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Move a grasped object to a target location and release it."
 capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/place-an-object/
   - /motion-planning/pick-and-place/place-an-object/

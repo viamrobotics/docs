@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Reference for module developers: lifecycle, interfaces, meta.json schema, CLI commands, environment variables, and registry rules."
 capabilities: ["module-development"]
+diataxis: reference
 date: "2025-03-05"
 aliases:
   - /operate/modules/advanced/logging/

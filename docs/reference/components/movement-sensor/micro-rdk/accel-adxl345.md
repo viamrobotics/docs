@@ -6,6 +6,7 @@ weight: 20
 type: "docs"
 description: "Reference for the accel-adxl345 movement-sensor model. ADXL345 digital accelerometer with a microcontroller."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/operate/reference/components/movement-sensor/accel-adxl345-micro-rdk/"

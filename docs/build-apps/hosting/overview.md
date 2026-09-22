@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Host a browser-based Viam app on Viam Applications with built-in authentication, credential injection, and a dedicated URL."
 capabilities: ["viam-apps"]
+diataxis: explanation
 date: "2026-04-13"
 ---
 

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Use the CONTROL tab or the Viam mobile app to remotely test and operate your machines."
 capabilities: ["teleop", "mobile-app"]
+diataxis: reference
 aliases:
   - /manage/troubleshoot/teleoperate/default-interface/
   - /fleet/control/

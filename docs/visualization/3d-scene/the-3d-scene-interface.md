@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "The panels, toolbar, navigation, and settings of the 3D SCENE tab in the Viam app."
 capabilities: ["scene-3d"]
+diataxis: explanation
 ---
 
 The **3D SCENE** tab on your machine's page in the [Viam app](https://app.viam.com) is where

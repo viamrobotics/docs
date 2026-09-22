@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Build a Python service that connects to a Viam machine, monitors a sensor, controls a motor based on sensor readings, and shuts down cleanly."
 capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-13"
 ---
 

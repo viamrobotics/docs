@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Use the viam infer CLI command to run a deployed ML model against images already captured to the Viam Cloud. Useful for labeling assistance, dataset validation, and running large or GPU-only models."
 capabilities: ["cli", "ml-models"]
+diataxis: how-to
 date: "2026-04-14"
 aliases:
   - /data-ai/ai/run-inference/

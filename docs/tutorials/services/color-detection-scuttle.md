@@ -4,6 +4,7 @@ linkTitle: "Colored Object Follower"
 type: "docs"
 description: "Instructions for detecting and following a colored object with a rover, like a SCUTTLE robot."
 capabilities: ["vision-service", "hw-mobility", "docs"]
+diataxis: tutorial
 videos:
   [
     "/tutorials/videos/scuttle-colordetection-preview.webm",

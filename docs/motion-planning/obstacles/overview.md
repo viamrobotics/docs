@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Define collision geometry so the motion planner computes safe, collision-free paths."
 capabilities: ["motion-planning"]
+diataxis: explanation
 aliases:
   - /work-cell-layout/define-obstacles/
   - /build/work-cell-layout/define-obstacles/

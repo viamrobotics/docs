@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure network connections, OS updates, tunneling, TLS, and log forwarding for deployed machines."
 capabilities: ["fleet-deployment"]
+diataxis: reference
 aliases:
   - /manage/fleet/system-settings/
 ---

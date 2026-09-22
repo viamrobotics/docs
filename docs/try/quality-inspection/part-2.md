@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure automatic image capture and cloud sync for your inspection system."
 capabilities: ["data-capture", "docs"]
+diataxis: tutorial
 date: "2025-01-30"
 aliases:
   - /try/part-2/

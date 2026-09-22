@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Capture and sync data from components on sub-parts and remote parts of a multi-part machine."
 capabilities: ["data-capture"]
+diataxis: how-to
 date: "2025-02-10"
 ---
 

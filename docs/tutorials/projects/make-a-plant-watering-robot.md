@@ -4,6 +4,7 @@ linkTitle: "Plant Watering Machine"
 type: "docs"
 description: "Create a plant watering machine with a Raspberry Pi."
 capabilities: ["hw-sensing", "hw-actuation", "hw-compute", "docs"]
+diataxis: tutorial
 tags: ["raspberry pi", "app", "board", "motor"]
 imageAlt: "Picture of the plant watering machine"
 images: ["/tutorials/plant-watering-pi/plant-watering-robot.jpg"]

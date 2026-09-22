@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Train a classification or object detection model from a labeled dataset."
 capabilities: ["ml-training"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/train/train-a-model/

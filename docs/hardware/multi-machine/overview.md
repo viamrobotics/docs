@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Connect multiple computers so one machine can access another's components and services."
 capabilities: ["machine-connectivity"]
+diataxis: overview
 date: "2026-04-16"
 aliases:
   - /manage/parts-and-remotes/

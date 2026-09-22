@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Download data from Viam using the data client API or the CLI."
 capabilities: ["data-storage"]
+diataxis: how-to
 tags: ["data management", "cloud", "sync"]
 aliases:
   - /data/export/export-data/

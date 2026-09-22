@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Permit specific pairs of frames to collide so the motion planner stops flagging expected contact as a collision failure."
 capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/allow-frame-collisions/
 ---

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Deploy a model you trained outside Viam (or trained yourself on Viam data) through an ML model service and use it with the vision service."
 capabilities: ["ml-models", "vision-service"]
+diataxis: how-to
 date: "2026-04-14"
 aliases:
   - /vision/deploy-custom-model/

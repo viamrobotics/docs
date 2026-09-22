@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the fake gantry model. Fake gantry."
 capabilities: ["hw-gantry"]
+diataxis: reference
 tags: ["gantry", "components"]
 icon: true
 images: ["/icons/components/gantry.svg"]

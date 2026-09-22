@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Understand the JSON configuration that defines your machine's components, and how to edit it."
 capabilities: ["machine-config"]
+diataxis: explanation
 date: "2025-03-07"
 aliases:
   - /hardware-components/configure-components/
