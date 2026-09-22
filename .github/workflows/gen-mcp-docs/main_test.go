@@ -267,15 +267,20 @@ func TestExtractTools_NoTools(t *testing.T) {
 	}
 }
 
-func TestCodeSpanURLs(t *testing.T) {
+func TestLinkifyURLs(t *testing.T) {
 	cases := []struct{ in, want string }{
-		{"see (https://docs.viam.com/reference/apis/), such as", "see (`https://docs.viam.com/reference/apis/`), such as"},
-		{"no urls here", "no urls here"},
+		// A URL with a curated label becomes a real Markdown link.
+		{
+			"see (https://docs.viam.com/reference/apis/), such as",
+			"see ([Viam API reference](https://docs.viam.com/reference/apis/)), such as",
+		},
+		// An unmapped URL falls back to a code span, never a bare (autolinkable) URL.
 		{"trailing period at https://example.com/x.", "trailing period at `https://example.com/x`."},
+		{"no urls here", "no urls here"},
 	}
 	for _, c := range cases {
-		if got := codeSpanURLs(c.in); got != c.want {
-			t.Errorf("codeSpanURLs(%q) = %q, want %q", c.in, got, c.want)
+		if got := linkifyURLs(c.in); got != c.want {
+			t.Errorf("linkifyURLs(%q) = %q, want %q", c.in, got, c.want)
 		}
 	}
 }

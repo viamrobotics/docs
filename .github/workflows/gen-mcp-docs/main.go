@@ -542,7 +542,7 @@ func writeTable(path string, tools []tool) error {
 	b.WriteString("| Tool | Category | Description |\n")
 	b.WriteString("| ---- | -------- | ----------- |\n")
 	for _, t := range tools {
-		b.WriteString(fmt.Sprintf("| `%s` | %s | %s |\n", t.Name, t.Category, escapeCell(codeSpanURLs(t.Description))))
+		b.WriteString(fmt.Sprintf("| `%s` | %s | %s |\n", t.Name, t.Category, escapeCell(linkifyURLs(t.Description))))
 	}
 
 	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
@@ -560,17 +560,34 @@ func escapeCell(s string) string {
 
 var bareURLPattern = regexp.MustCompile(`https?://\S+`)
 
-// codeSpanURLs wraps a bare URL in backticks so Goldmark's autolink/linkify extension never turns
-// it into a rendered link: this site's render-link.html render hook fails any link whose visible
-// text contains "https" (a descriptive-link-text check), which a bare autolinked URL always does,
-// and a generated table has no good way to invent better link text for whatever URL a tool
-// description happens to mention.
-func codeSpanURLs(s string) string {
+// urlLabels gives a few known URLs descriptive link text, curated by hand -- the generator has no
+// reliable way to invent good link text for an arbitrary URL a future tool description might
+// mention, and inventing bad text would be worse than not linking at all. This is the same shape as
+// this repo's SDK-generated-docs proto description overrides (static/include/.../overrides/protos):
+// a small hand-maintained mapping with a safe default for anything missing from it, rather than a
+// hard requirement that fails the build. Add an entry here when a PR comment or a new tool
+// description makes a URL worth linking.
+var urlLabels = map[string]string{
+	"https://docs.viam.com/reference/apis/":                      "Viam API reference",
+	"https://docs.viam.com/operate/mobility/orientation-vector/": "orientation vector",
+}
+
+// linkifyURLs turns a bare URL into a proper Markdown link when urlLabels has descriptive text for
+// it, and into a code span otherwise. Either way, the URL never reaches the page as a bare
+// autolinked link: this site's render-link.html render hook fails any link whose visible text
+// contains "https" (a descriptive-link-text check), and Goldmark's autolink/linkify extension turns
+// a bare URL into exactly that kind of link. The check is on the link's visible text, not its
+// destination, so a real `[label](url)` link passes cleanly -- confirmed with a local Hugo build --
+// as long as the label itself doesn't contain "https", "www", or a bare "here".
+func linkifyURLs(s string) string {
 	return bareURLPattern.ReplaceAllStringFunc(s, func(url string) string {
 		trailing := ""
 		for len(url) > 0 && strings.ContainsRune(").,;:", rune(url[len(url)-1])) {
 			trailing = string(url[len(url)-1]) + trailing
 			url = url[:len(url)-1]
+		}
+		if label, ok := urlLabels[url]; ok {
+			return "[" + label + "](" + url + ")" + trailing
 		}
 		return "`" + url + "`" + trailing
 	})

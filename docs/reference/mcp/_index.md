@@ -9,7 +9,7 @@ capabilities: ["mcp"]
 date: "2026-09-21"
 ---
 
-The Viam MCP server exposes your Viam organizations, locations, machines, and fragments to an [MCP](https://modelcontextprotocol.io/) client such as Claude. Once connected, the client can look up fleet and machine information, read and edit machine and fragment configuration, and call APIs on live machines on your behalf.
+The Viam MCP server exposes your Viam organizations, locations, machines, and fragments to an [MCP](https://modelcontextprotocol.io/) client such as Claude, Claude Code, ChatGPT, or Codex. Once connected, the client can look up fleet and machine information, read and edit machine and fragment configuration, and call APIs on live machines on your behalf.
 
 ## Connect
 
