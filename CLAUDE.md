@@ -66,6 +66,13 @@ Run prettier first because it can change line breaks that affect markdownlint re
 - **Proto descriptions are hand-maintained, not scraped**, even though method signatures/params/examples are scraped live from each SDK's docs site. One override file per proto, `static/include/<app|components|services|robot>/apis/overrides/protos/<resource>.<ProtoName>.md`, holding a one-sentence description used both verbatim on the detail page and (first-sentence-only) in the summary table. A missing override doesn't fail the build—it just leaves that method's description blank and prints a `WARNING: ... has no proto description override file` from the weekly coverage job (`check-methods.yml`, `continue-on-error: true`). No README covers this system; the rationale is in comments around `update_sdk_methods.py`'s `write_markdown()`.
 - **Not every scraped SDK method needs a row.** Deprecated/orphaned services aren't necessarily excluded—`slam` is orphaned from navigation but still fully generated. `navigation` (restored as a deprecated orphan page in #5191) is the current exception: it has zero rows in `sdk_protos_map.csv` and isn't registered in the script's resource map, so its generated page is missing methods (for example, `GetStatus`) that the SDKs do implement—deliberately, to avoid actively maintaining a discontinued service's coverage. If another orphaned service shows up excluded like this, add it to this list rather than assuming a fresh investigation is needed.
 
+## MCP server tool table
+
+`static/include/app/mcpserver/generated/mcp-tools-table.md`, included into `docs/reference/mcp/_index.md` through `{{< readfile >}}`, lists the Viam MCP server's tools by name and category (Read-only, Read-only (external), Live machine (read-only), Write, Write (destructive), Live machine (destructive)), kept accurate against `viamrobotics/app`'s `mcpserver` package as tools are added, removed, or recategorized. Do not hand-edit it—regenerate it from source when `mcpserver` changes.
+
+- **Not covered by the standard pre-PR checks above.** `prettier-lint.yml` only checks `docs/**/*.md`, and `markdown-lint.yml` explicitly excludes `static/`. `make build-prod` still applies.
+- **Table has two columns on purpose—name and category, no description.** Each tool's own description is written for the model calling it, not for a human skimming a table; it isn't included here.
+
 ## Markdown mirror
 
 Every published page also serves a Markdown version (append `.md` to the URL, minus any trailing slash). Templates: `layouts/_default/single.md`, `list.markdown.md`, and per-shortcode `.md` variants alongside their `.html` counterparts (`tab.md`, `alert.md`, `table.md`, `tablestep.md`, etc.).
