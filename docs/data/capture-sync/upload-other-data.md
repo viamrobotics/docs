@@ -75,8 +75,10 @@ This is useful for quickly collecting training images for machine learning model
 Install the app from the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) or [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US) if you haven't already.
 
 1. In the app, select an organization, then tap **Locations** and navigate to the machine you want the data associated with.
-2. Tap **...** in the upper right corner, then tap **Upload Images**.
-3. Select the images you want to upload and tap **Add**.
+2. Tap **...** in the upper right corner, then tap **Upload images from camera roll**.
+   To take a new photo instead, tap **Take & upload image**.
+3. On the **Upload Images** screen, tap **Select Images** and choose the images you want to upload from your photo library.
+4. Tap the check mark button to upload the selected images.
 
 Uploaded images are associated with the machine part you selected but not with a specific component or method.
 
