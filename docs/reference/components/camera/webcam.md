@@ -50,7 +50,8 @@ If the camera drivers are among those in [this mediadevices repository](https://
     "video_path": "<your-video-path>",
     "width_px": <int>,
     "height_px": <int>,
-    "frame_rate": <float>
+    "frame_rate": <float>,
+    "idle_timeout_ms": <int>
   }
 }
 ```
@@ -82,6 +83,7 @@ If the camera drivers are among those in [this mediadevices repository](https://
 | `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. Negative values are silently ignored and result in the default being used. <br> Default: Closest possible value to `480` |
 | `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. Negative values are silently ignored and result in the default being used. <br> Default: Closest possible value to `640` |
 | `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
+| `idle_timeout_ms` | int | Optional | How long in milliseconds to wait without an `Images` request before the camera pauses frame reads. The camera driver stays open so exposure settings are preserved, and the next `Images` call resumes reads automatically (with a wake timeout of 15 seconds). Set to `0` to disable idle pausing. Must be non-negative. <br> Default: `0` (disabled) |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 
