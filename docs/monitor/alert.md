@@ -309,6 +309,7 @@ This prevents false alerts from brief network interruptions.
 
 For data and conditional triggers, each notification method has a `seconds_between_notifications` setting that controls the minimum time between consecutive alerts.
 If a trigger fires more frequently than this interval, Viam suppresses the extra notifications.
+The interval is tracked per recipient, not per trigger. If two triggers send the same event type to the same email address or webhook URL (for `part_data_ingested`, from the same machine part; for `conditional_data_ingested`, from the same component and method) and both have a non-zero interval, they share one interval, so only one notification is sent per interval. To send a notification for every event, set `seconds_between_notifications` to `0`.
 
 Set this value based on how quickly you need to respond:
 
