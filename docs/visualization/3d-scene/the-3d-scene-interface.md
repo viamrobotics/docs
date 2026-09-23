@@ -39,7 +39,7 @@ It includes:
 The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
-**Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used.
+**Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used. A link can open the tab in a specific mode with entities already selected; see [Open the scene from a link](#open-the-scene-from-a-link).
 
 Next to the mode toggle, in the same top-right strip:
 
@@ -62,6 +62,27 @@ Build mode adds the editing tools: transform controls (**Translate**, **Rotate**
 - **Add frames** (axis-arrow icon): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 
 **Camera controls** (bottom-right): **Reset camera** returns the view to its starting pose, and the **Orthographic / Perspective** toggle switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
+
+## Open the scene from a link
+
+Query parameters on the 3D scene URL set the mode and select entities when the tab opens.
+The Viam app uses them in two places:
+
+- On the **CONFIGURE** tab, a component card with a frame shows **Use the 3D scene to visualize and preview your frame configuration**. It opens the scene in build mode with that component selected.
+- Above a resource's **Move** controls, on the **CONFIGURE** tab test section and on the **CONTROL** tab, **Use the 3D scene to visualize and preview movement before executing** opens the scene in move mode with that resource selected.
+
+You can build the same links yourself, for example to bookmark a view or share it with a teammate:
+
+```text
+https://app.viam.com/machine/<machine-id>/3d-scene/<part-id>?viz.mode=build&viz.select=arm,gripper
+```
+
+| Parameter    | Values                        | Effect                                                                                                                                                                                                                                                 |
+| ------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `viz.mode`   | `monitor`, `build`, or `move` | Opens the tab in that mode. The mode is remembered, the same as clicking its button. If the key repeats, the first value is used; an unrecognized value is ignored.                                                                                    |
+| `viz.select` | Comma-separated entity names  | Selects each named entity, waiting for it to appear if it has not loaded yet. Names must match exactly, with no spaces after the commas. Selection adds to anything already selected, and each name is applied once, so you can deselect it afterward. |
+
+Other query parameters are ignored, and the scene does not update the URL as you change modes or selection.
 
 ## Navigation controls
 
