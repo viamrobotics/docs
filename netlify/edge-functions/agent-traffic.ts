@@ -21,11 +21,16 @@ export default async (request: Request, context: Context) => {
       return response;
     }
 
+    const contentLength = response.headers.get("content-length");
+
     const event = {
       _time: new Date().toISOString(),
       path: url.pathname,
       method: request.method,
       status: response.status,
+      content_type: response.headers.get("content-type") ?? "",
+      content_length: contentLength ? Number(contentLength) : null,
+      location: response.headers.get("location") ?? null,
       user_agent: request.headers.get("user-agent") ?? "",
       accept: request.headers.get("accept") ?? "",
       country: context.geo?.country?.code ?? null,

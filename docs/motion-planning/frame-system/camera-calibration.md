@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Compute camera intrinsic and distortion parameters for accurate 2D-to-3D projection."
 capabilities: ["frame-system", "hw-camera"]
+diataxis: how-to
 aliases:
   - /work-cell-layout/calibrate-camera-to-robot/
   - /build/work-cell-layout/calibrate-camera-to-robot/

@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the fake generic model. Fake generic component."
 capabilities: ["hw-generic"]
+diataxis: reference
 tags: ["generic", "components"]
 aliases:
   - "/operate/reference/components/generic/fake/"

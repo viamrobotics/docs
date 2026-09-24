@@ -5,6 +5,7 @@ weight: 80
 type: "docs"
 description: "Give commands for getting the position of a motor or a joint in ticks or degrees."
 capabilities: ["hw-sensing", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/encoder.svg"]
 date: "2022-01-01"

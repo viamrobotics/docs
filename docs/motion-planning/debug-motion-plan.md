@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Find why a motion plan failed or moved unexpectedly by checking frames, obstacles, and reach in the 3D scene or from the Viam CLI."
 capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /motion-planning/3d-scene/debug-motion-plan/
   - /motion-planning/debug-motion-with-cli/

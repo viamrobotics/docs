@@ -343,6 +343,37 @@ Move the arm's joints through the given positions in the order they are specifie
 This will block until done or a new operation cancels this one.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `positions` ([List[viam.proto.component.arm.JointPositions]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions)) (required): The waypoints to move through, in order.
+- `options` ([viam.proto.component.arm.MoveOptions](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.MoveOptions)) (optional): Optional kinematic ceilings obeyed at every point along the trajectory. None means no limits are requested.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Move through two waypoints, capping joint speed and acceleration.
+await my_arm.move_through_joint_positions(
+    positions=[
+        JointPositions(values=[0, 45, 0, 0, 0, 0]),
+        JointPositions(values=[0, 0, 0, 0, 0, 0]),
+    ],
+    options=MoveOptions(max_vel_degs_per_sec=15.0, max_acc_degs_per_sec2=30.0),
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_through_joint_positions).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -370,6 +401,61 @@ inputs := [][]referenceframe.Input{
 // Move each joint of the arm through the positions in the slice defined above
 err = myArm.MoveThroughJointPositions(context.Background(), inputs, nil, nil)
 ```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### MoveThroughJointPositionsStreamed
+
+Stream batches of timed trajectory points to the arm and execute them in order as they arrive.
+Unlike `MoveThroughJointPositions`, the full trajectory does not have to be known before the motion starts: the caller keeps appending points while the arm executes the ones it already has.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `batches` ([AsyncIterator[List[viam.components.arm.Arm.TrajectoryPoint]]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryPoint)) (required): an asynchronous iterator of lists of TrajectoryPoint. Each list becomes one wire TrajectoryBatch.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([AsyncIterator[viam.components.arm.Arm.TrajectoryUpdate]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.TrajectoryUpdate)): :   the arm’s updates, yielded as they arrive.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+async def batches():
+    yield [
+        Arm.TrajectoryPoint(time=timedelta(seconds=0.0), positions=[0.0, 0.0, 0.0, 0.0, 0.0]),
+        Arm.TrajectoryPoint(time=timedelta(seconds=1.0), positions=[10.0, 0.0, 0.0, 0.0, 0.0]),
+    ]
+
+async for update in my_arm.move_through_joint_positions_streamed(batches()):
+    # Observe the arm's updates; a fault raises out of this iteration.
+    pass
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_through_joint_positions_streamed).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `batches` [(<-chan []TrajectoryPoint)](https://pkg.go.dev/go.viam.com/rdk/components/arm#TrajectoryPoint): The channel the caller sends trajectory batches on. Each send is one batch of `TrajectoryPoint` values, appended to the motion in order. Close the channel to signal that no more points are coming.
+- `responses` [(chan<- Response)](https://pkg.go.dev/go.viam.com/rdk/components/arm#Response): The channel acknowledgments arrive on while the arm executes. `Response` carries no fields today. The caller must drain this channel for the duration of the call, and closes it only after the call returns.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
 
@@ -477,6 +563,35 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Get the 3D models of the arm.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.proto.common.Mesh]): :   The arm’s 3D models keyed by name. Each `Mesh` carries a
+    `content_type` (for example `"ply"`) and the raw `mesh` bytes in that format.
+    This is distinct from `get_kinematics`’s third return value, which keys meshes
+    by URDF filepath rather than by model name.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Get the arm's 3D models.
+models = await my_arm.get_3d_models()
+
+for name, mesh in models.items():
+    print(name, mesh.content_type, len(mesh.mesh))
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_3d_models).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -574,6 +689,7 @@ Get the kinematics information associated with the arm as the format and byte co
     Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
     and the second [1] value represents the byte contents of the file.
     If available, a third [2] value provides meshes keyed by URDF filepath.
+    See `get_3d_models` for meshes keyed by model name instead.
 
 **Example:**
 

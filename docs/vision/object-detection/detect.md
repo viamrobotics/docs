@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Retrieve 2D bounding-box detections from a vision service, filter by confidence and class, and run detections in a loop."
 capabilities: ["vision-service"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/vision-detection/detect-objects-2d/

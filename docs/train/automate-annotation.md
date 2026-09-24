@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Use ML models to auto-label images and programmatically build annotated datasets."
 capabilities: ["datasets"]
+diataxis: how-to
 date: "2025-01-30"
 ---
 

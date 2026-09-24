@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Attach a remote part's components into your machine's frame tree with the correct spatial offset."
 capabilities: ["frame-system", "machine-connectivity"]
+diataxis: explanation
 date: "2026-04-16"
 ---
 

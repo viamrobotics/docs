@@ -2471,6 +2471,8 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 - `num_log_entries` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): Number of log entries to return. Passing 0 returns all logs. Defaults to 100. All logs or the first num_log_entries logs will be returned, whichever comes first.
 - `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time for log retrieval. Only logs created after this time will be returned.
 - `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time for log retrieval. Only logs created before this time will be returned.
+- `order` (viam.proto.app.LogOrder.ValueType) (optional): The order in which logs are returned by time. Defaults to descending (newest first).
+- `range` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A duration string, such as "10m", "10h", or "10d", that is resolved against whichever of `start` and `end` is present. Cannot be used with both `start` and `end`.
 
 **Returns:**
 
@@ -5234,7 +5236,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `itemId` (string) (required): The ID of the registry item to update.
 - `type` (PackageType) (required): The PackageType to update the item to.
 - `description` (string) (required): A description of the item.
-- `visibility` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A visibility value to update to.
+- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): A visibility value to update to.
 - `billing` ([RegistryItemBilling](https://ts.viam.dev/classes/appApi.RegistryItemBilling.html)) (optional): Optional usage cost information to store on the item. When unset, the existing
   billing configuration is left unchanged.
 
@@ -5355,7 +5357,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The ID of the organization to query registry items for.
 - `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
-- `visibilities` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not filter on
+- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): A list of visibilities to query for. If empty, will not filter on
   visibility.
 - `platforms` (string) (required): A list of platforms to query for. If empty, will not filter on platform.
 - `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter on status.
@@ -5818,7 +5820,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `moduleId` (string) (required): The ID of the module to update.
-- `visibility` ([Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): The visibility to set for the module.
+- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): The visibility to set for the module.
 - `url` (string) (required): The url to reference for documentation, code, etc.
 - `description` (string) (required): A short description of the module.
 - `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)) (required): A list of models available in the module.

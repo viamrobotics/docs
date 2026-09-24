@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "The credential types a Viam client app uses and when to use each. Covers API keys, access tokens, and hosted-app credential injection."
 capabilities: ["sdks", "viam-apps"]
+diataxis: explanation
 date: "2026-04-10"
 ---
 

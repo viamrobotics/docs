@@ -5,6 +5,7 @@ weight: 16
 type: "docs"
 description: "Image a Odroid-C4 to prepare it for viam-server installation."
 capabilities: ["device-provisioning"]
+diataxis: how-to
 images: ["/installation/thumbnails/odroid-c4.png"]
 imageAlt: "Odroid-C4"
 no_list: true

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Detect, localize, and grasp an object with a robot arm and gripper."
 capabilities: ["motion-planning", "vision-service"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/pick-an-object/
   - /motion-planning/pick-and-place/pick-an-object/

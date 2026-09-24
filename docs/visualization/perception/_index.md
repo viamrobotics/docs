@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 description: "View and compare live perception data in the 3D scene: depth-camera point clouds, vision-service entities, and a sensor's own point of view."
 capabilities: ["scene-3d", "section-index"]
+diataxis: overview
 ---
 
 The 3D scene renders live perception data alongside your frame system, so you see what your

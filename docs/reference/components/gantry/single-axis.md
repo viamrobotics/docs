@@ -5,6 +5,7 @@ weight: 70
 type: "docs"
 description: "Reference for the single-axis gantry model. Single-axis gantry."
 capabilities: ["hw-gantry"]
+diataxis: reference
 images: ["/icons/components/gantry.svg"]
 tags: ["gantry", "components"]
 aliases:

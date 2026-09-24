@@ -128,7 +128,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `info` [(*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
-- `info` [(*utils.AudioInfo)](https://pkg.go.dev/go.viam.com/rdk/utils#AudioInfo)
+- `chunks` [(<-chan []byte)](https://pkg.go.dev/builtin#byte)
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**

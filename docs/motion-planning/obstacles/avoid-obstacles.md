@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure obstacles and plan motion paths that avoid collisions."
 capabilities: ["motion-planning"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/avoid-obstacles/
 ---

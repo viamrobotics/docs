@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure frames for a table-mounted arm with an attached gripper and wrist-mounted camera."
 capabilities: ["frame-system"]
+diataxis: how-to
 aliases:
   - /motion-planning/frame-system-how-to/arm-gripper-camera/
 ---

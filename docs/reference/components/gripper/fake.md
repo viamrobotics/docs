@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Reference for the fake gripper model. Fake gripper."
 capabilities: ["hw-actuation"]
+diataxis: reference
 tags: ["gripper", "components"]
 icon: true
 images: ["/icons/components/gripper.svg"]

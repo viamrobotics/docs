@@ -5,6 +5,7 @@ weight: 90
 type: "docs"
 description: "Reference for the gpio servo model. Gpio hobby servo with a microcontroller."
 capabilities: ["hw-actuation"]
+diataxis: reference
 tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Retrieve point clouds and depth images from a depth camera, read depth at specific pixels, and measure distance to detected objects."
 capabilities: ["vision-service"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/vision-detection/measure-depth/

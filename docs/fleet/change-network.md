@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Connect a deployed machine to a different WiFi network."
 capabilities: ["machine-connectivity"]
+diataxis: how-to
 ---
 
 Change the WiFi network on a machine that has already been provisioned and deployed. There are three approaches depending on your situation.

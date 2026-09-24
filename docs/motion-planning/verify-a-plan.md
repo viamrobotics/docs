@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Use armplanning.PlanMotion to compute and inspect a trajectory before the arm moves, and learn how to get the same plan over the motion service API."
 capabilities: ["motion-planning"]
+diataxis: how-to
 ---
 
 Before an arm moves, you often want to know whether the motion is even possible:

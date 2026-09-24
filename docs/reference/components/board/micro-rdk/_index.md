@@ -5,6 +5,7 @@ weight: 99
 type: "docs"
 description: "Board models available in the Micro-RDK."
 capabilities: ["hw-compute", "section-index"]
+diataxis: reference
 tags: ["board", "components", "Micro-RDK"]
 no_list: true
 ---

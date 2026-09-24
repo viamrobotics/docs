@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Route trigger push notifications to your own mobile app instead of the Viam mobile app."
 capabilities: ["triggers-alerts"]
+diataxis: how-to
 ---
 
 By default, push notification triggers deliver to the Viam mobile app (`com.viam.viammobile`).

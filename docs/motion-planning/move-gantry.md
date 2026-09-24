@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Control gantry axes directly or plan complex gantry motion."
 capabilities: ["motion-planning", "hw-gantry"]
+diataxis: how-to
 aliases:
   - /operate/mobility/move-gantry/
   - /motion-planning/motion-how-to/move-gantry/

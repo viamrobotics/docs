@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 description: "Get 2D bounding-box detections from a camera feed using ML or color heuristics, track objects across frames, and act on or alert on results."
 capabilities: ["vision-service", "section-index"]
+diataxis: overview
 date: "2026-04-14"
 ---
 

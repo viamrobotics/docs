@@ -6,6 +6,7 @@ type: "docs"
 tags: ["rover", "tutorial"]
 description: "Configure your rover by adding the Viam-provided configuration fragment to your rover."
 capabilities: ["hw-mobility", "machine-config", "docs"]
+diataxis: how-to
 aliases:
   - /try-viam/rover-resources/rover-tutorial-fragments/
   - /get-started/try-viam/rover-resources/rover-tutorial-fragments/

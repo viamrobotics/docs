@@ -5,6 +5,7 @@ weight: 16
 type: "docs"
 description: "Image an Orange Pi 3 LTS to prepare it for viam-server installation."
 capabilities: ["device-provisioning"]
+diataxis: how-to
 images: ["/installation/thumbnails/orange-pi-3-LTS.png"]
 imageAlt: "Orange Pi 3 LTS"
 no_list: true

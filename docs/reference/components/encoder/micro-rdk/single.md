@@ -4,6 +4,7 @@ linkTitle: "single"
 type: "docs"
 description: "Reference for the single encoder model. Single encoder with a microcontroller."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:

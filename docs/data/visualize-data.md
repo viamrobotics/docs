@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Build dashboards with Teleop, Grafana, or programmatic charts to visualize captured data."
 capabilities: ["dashboards"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/data/visualize-data/

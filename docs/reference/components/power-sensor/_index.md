@@ -6,6 +6,7 @@ weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in power sensor models."
 capabilities: ["section-index", "hw-sensing"]
+diataxis: reference
 no_list: true
 tags: ["power-sensor", "components"]
 icon: true

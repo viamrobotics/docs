@@ -5,6 +5,7 @@ type: "docs"
 weight: 50
 description: "Build a vision-guided robot that detects blocks by shape and places them into a bin with motion planning, from manual control to programming an autonomous workflow in Python."
 capabilities: ["motion-planning", "vision-service", "hw-arm", "docs"]
+diataxis: overview
 authors: []
 level: "Intermediate"
 languages: ["python"]

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "How Viam plans arm motion: the direct joint-space path it tries first, the cBiRRT fallback, and what to try when planning fails."
 capabilities: ["motion-planning"]
+diataxis: explanation
 ---
 
 Motion planning finds a safe, joint-level path from one arm configuration to

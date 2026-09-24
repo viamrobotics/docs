@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Understand how Viam represents hardware, add components to your machine, and configure them."
 capabilities: ["machine-config"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /program/extend/modular-resources/configure/

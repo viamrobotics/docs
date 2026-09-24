@@ -16,6 +16,7 @@ capabilities:
   org-management: Orgs, locations, RBAC, API keys, OAuth.
   cli: The viam CLI.
   sdks: Client SDKs, robot API, sessions, connecting from application code.
+  mcp: The Viam MCP server - fleet, machine, and configuration access for AI agents via Model Context Protocol.
 
   # ---------------------------------------------------------------- machine
   viam-server: viam-server runtime, installation, lifecycle.

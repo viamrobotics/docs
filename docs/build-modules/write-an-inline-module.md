@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Write and deploy a custom module directly in the browser using Viam's inline module editor."
 capabilities: ["inline-modules"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /build/development/write-an-inline-module/

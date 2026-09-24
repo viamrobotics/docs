@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Define new resource APIs, deploy custom components as remote parts, and package modules with Docker."
 capabilities: ["module-development"]
+diataxis: how-to
 date: "2026-04-20"
 aliases:
   - /operate/reference/advanced-modules/

@@ -6,6 +6,7 @@ weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in arm models."
 capabilities: ["hw-arm", "section-index"]
+diataxis: reference
 no_list: true
 tags: ["arm", "components"]
 icon: true

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Implement a world state store service that pulls data from other resources, builds transforms with the draw library, and streams them to the 3D scene."
 capabilities: ["scene-3d"]
+diataxis: how-to
 ---
 
 The 3D scene shows your frame system and configured geometry by default. To draw

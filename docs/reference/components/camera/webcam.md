@@ -5,6 +5,7 @@ weight: 33
 type: "docs"
 description: "Reference for the webcam camera model. The general camera model for USB cameras and laptop webcams."
 capabilities: ["hw-camera"]
+diataxis: reference
 images: ["/icons/components/camera.svg"]
 tags: ["camera", "components"]
 aliases:
@@ -49,7 +50,8 @@ If the camera drivers are among those in [this mediadevices repository](https://
     "video_path": "<your-video-path>",
     "width_px": <int>,
     "height_px": <int>,
-    "frame_rate": <float>
+    "frame_rate": <float>,
+    "idle_timeout_ms": <int>
   }
 }
 ```
@@ -78,9 +80,10 @@ If the camera drivers are among those in [this mediadevices repository](https://
 | ---- | ---- | --------- | ----------- |
 | `video_path` | string | Optional | The ID of or the path to the webcam. If you don't provide a `video_path`, it defaults to the first valid video path it finds. Using the ID of a webcam is more consistent than the path. See [Using `video_path`](#using-video_path). |
 | `format` | string | Optional | The camera image format, used with `video_path` to find the camera. See [Using `format`](#using-format). |
-| `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. Negative values are silently ignored and result in the default being used. <br> Default: Closest possible value to `480` |
-| `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. Negative values are silently ignored and result in the default being used. <br> Default: Closest possible value to `640` |
+| `width_px` | int | Optional | The camera image width in pixels, used with `video_path` to find a camera with this resolution. Negative values are rejected with a configuration error. <br> Default: Closest possible value to `640` |
+| `height_px` | int | Optional | The camera image height in pixels, used with `video_path` to find a camera with this resolution. Negative values are rejected with a configuration error. <br> Default: Closest possible value to `480` |
 | `frame_rate` | float | Optional | The camera capture frequency as frames per second, used with `video_path` to find a camera with this throughput. <br> Default: Closest possible value to `30.0` |
+| `idle_timeout_ms` | int | Optional | How long in milliseconds to wait without an `Images` request before the camera pauses frame reads. The camera driver stays open so exposure settings are preserved, and the next `Images` call resumes reads automatically (with a wake timeout of 15 seconds). Set to `0` to disable idle pausing. Must be non-negative. <br> Default: `0` (disabled) |
 | `intrinsic_parameters` | object | Optional | The intrinsic parameters of the camera used to do 2D <-> 3D projections: <ul> <li> `width_px`: The expected width of the aligned image in pixels. </li> <li> `height_px`: The expected height of the aligned image in pixels. </li> <li> `fx`: The image center x point. </li> <li> `fy`: The image center y point. </li> <li> `ppx`: The image focal x. </li> <li> `ppy`: The image focal y. </li> </ul> |
 | `distortion_parameters` | object | Optional | Modified Brown-Conrady parameters used to correct for distortions caused by the shape of the camera lens: <ul> <li> `rk1`: The radial distortion x. </li> <li> `rk2`: The radial distortion y. </li> <li> `rk3`: The radial distortion z. </li> <li> `tp1`: The tangential distortion x. </li> <li> `tp2`: The tangential distortion y. </li> </ul> |
 

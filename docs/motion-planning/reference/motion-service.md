@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure the motion service for planning and executing component movements."
 capabilities: ["motion-planning"]
+diataxis: reference
 aliases:
   - /reference/services/motion/
   - /services/motion/

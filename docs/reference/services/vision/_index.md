@@ -7,6 +7,7 @@ layout: "docs"
 no_list: true
 description: "Configuration reference for built-in vision service models: mlmodel, color_detector, and detections-to-segments."
 capabilities: ["vision-service", "section-index"]
+diataxis: reference
 date: "2026-04-14"
 aliases:
   - /operate/reference/services/vision/

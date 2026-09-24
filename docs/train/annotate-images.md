@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Label images with tags or bounding boxes for training an ML model."
 capabilities: ["datasets"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /data-ai/train/capture-annotate-images/
