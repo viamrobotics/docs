@@ -5,7 +5,6 @@ arm,GetEndPosition,,get_end_position,EndPosition,endPosition,getEndPosition
 arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPosition
 arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions,moveToJointPositions
 arm,MoveThroughJointPositions,,move_through_joint_positions,MoveThroughJointPositions,,
-arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
 arm,MoveThroughJointPositionsStreamed,,move_through_joint_positions_streamed,MoveThroughJointPositionsStreamed,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
 arm,Get3DModels,,get_3d_models,Get3DModels,get3DModels,get3DModels
