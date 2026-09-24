@@ -314,6 +314,11 @@ outside Viam:
 4. Click **Download images**. Your browser saves a `<dataset-name>.tar.gz`
    archive of the dataset's image files.
 
+The browser builds the whole archive in memory, so a very large dataset can
+exhaust the browser's memory. Images that fail to download are left out of the
+archive without a warning. For a large dataset, or when you need a complete
+copy, use the CLI export below instead.
+
 The browser download includes image files only, not labels, tags, or
 bounding boxes. To export the images together with their annotations, use the
 [Viam CLI](/cli/):
