@@ -2472,7 +2472,7 @@ Get the logs associated with a specific machine {{< glossary_tooltip term_id="pa
 - `start` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional start time for log retrieval. Only logs created after this time will be returned.
 - `end` ([datetime.datetime](https://docs.python.org/3/library/datetime.html)) (optional): Optional end time for log retrieval. Only logs created before this time will be returned.
 - `order` (viam.proto.app.LogOrder.ValueType) (optional): The order in which logs are returned by time. Defaults to descending (newest first).
-- `range` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A duration string (e.g., “10m”, “10h”, “10d”) that is resolved against whichever of start and end is present. Cannot be used with both start and end.
+- `range` ([str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)) (optional): A duration string, such as "10m", "10h", or "10d", that is resolved against whichever of `start` and `end` is present. Cannot be used with both `start` and `end`.
 
 **Returns:**
 
