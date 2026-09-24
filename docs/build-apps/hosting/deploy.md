@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Package your app with meta.json and upload it to Viam Applications for hosting with built-in authentication and credential injection."
 capabilities: ["viam-apps"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

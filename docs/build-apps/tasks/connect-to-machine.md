@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Open a connection to a single Viam machine from your app, structure the connection code correctly, and close the connection when your app is done with it."
 capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

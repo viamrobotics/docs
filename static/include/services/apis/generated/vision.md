@@ -511,6 +511,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 Get a list of 3D point cloud objects and associated metadata in the latest picture from a 3D camera (using a specified [segmenter](/reference/apis/services/vision/#segmentations)).
 
+Objects come back in the frame of the camera that was read, with geometry centers in millimeters and point clouds in meters. Convert a center to another frame with the machine client's `TransformPose`.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -626,6 +628,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 Get the next image, detections, classifications, and objects all together, given a camera name.
 Used for visualization.
+
+Objects are in the camera's frame, with geometry centers in millimeters and point clouds in meters; convert with the machine client's `TransformPose`.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

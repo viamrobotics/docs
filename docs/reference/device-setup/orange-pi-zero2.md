@@ -5,6 +5,7 @@ weight: 16
 type: "docs"
 description: "Image an Orange Pi Zero2 to prepare it for viam-server installation."
 capabilities: ["device-provisioning"]
+diataxis: how-to
 images: ["/installation/thumbnails/orange-pi-zero2.png"]
 imageAlt: "Orange Pi Zero2"
 no_list: true

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Match a detection quality symptom to the mlmodel vision service attribute that fixes it. Covers bounding box order, input normalization, per-label thresholds, and tensor remapping."
 capabilities: ["vision-service"]
+diataxis: how-to
 date: "2026-04-14"
 aliases:
   - /vision/tune/

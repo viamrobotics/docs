@@ -5,6 +5,7 @@ weight: 30
 type: "docs"
 description: "Reference for the gpio input-controller model. GPIO- or ADC-based device as an input controller."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:

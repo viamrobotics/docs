@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "How Move places a named frame at a target pose, and how the frame attribute and WorldState transforms set which point on the robot a frame represents."
 capabilities: ["frame-system"]
+diataxis: explanation
 ---
 
 When you move an arm with the motion service, you move a

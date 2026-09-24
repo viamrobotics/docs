@@ -5,6 +5,7 @@ weight: 10
 type: "docs"
 description: "Give commands to your arm components for linear motion planning."
 capabilities: ["hw-arm", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/arm.svg"]
 date: "2022-01-01"

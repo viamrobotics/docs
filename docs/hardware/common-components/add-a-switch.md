@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Add and configure a switch component to read and set the position of a multi-position switch."
 capabilities: ["hw-sensing"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/switch/

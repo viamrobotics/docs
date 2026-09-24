@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Check which machines are online, view part status, and inspect machine health across your fleet."
 capabilities: ["triggers-alerts"]
+diataxis: how-to
 aliases:
   - /manage/troubleshoot/monitor/
 ---

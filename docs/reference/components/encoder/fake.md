@@ -4,6 +4,7 @@ linkTitle: "fake"
 type: "docs"
 description: "Reference for the fake encoder model. Fake encoder."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 weight: 10

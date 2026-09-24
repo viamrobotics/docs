@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "The Viam CLI gives you command-line access to every operation in the Viam platform, from machine configuration to data export to fleet management."
 capabilities: ["cli"]
+diataxis: overview
 ---
 
 The Viam CLI is a single binary that gives you command-line access to the Viam platform.

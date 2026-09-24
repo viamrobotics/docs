@@ -42,6 +42,8 @@ sections:
       - path: /cli/drive-a-machine/
         full: true
       - path: /cli/reference/
+      - path: /reference/mcp/
+        full: true
   - title: "Reference"
     sitetree_link: true
     description: "Two distinct reference types share this section: **API reference** (client library methods called from code, e.g. \"Component APIs overview\") and **configuration reference** (JSON used to configure a resource on a machine, e.g. \"Services reference\"). Match the entry to what you're actually doing."

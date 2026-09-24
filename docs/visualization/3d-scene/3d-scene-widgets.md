@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Overlay live controls on the 3D scene: interactive controls for any resource on the machine, and a frame's point of view."
 capabilities: ["scene-3d"]
+diataxis: reference
 aliases:
   - /visualization/3d-scene-tools/3d-scene-widgets/
 ---

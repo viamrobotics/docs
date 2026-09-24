@@ -7,6 +7,7 @@ images: ["/installation/thumbnails/jetson-nano-dev-kit.png"]
 imageAlt: "Jetson Nano"
 description: "Prepare your Jetson Nano or Jetson Orin Nano for viam-server installation."
 capabilities: ["device-provisioning"]
+diataxis: how-to
 no_list: true
 aliases:
   - /operate/reference/prepare/jetson-nano-setup/

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Explanation of how a machine and its parts interact at the communication layer."
 capabilities: ["machine-connectivity"]
+diataxis: explanation
 date: "2026-04-27"
 aliases:
   - /internals/robot-to-robot-comms/

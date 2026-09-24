@@ -4,6 +4,7 @@ linkTitle: "Drive a Rover with a Gamepad"
 type: "docs"
 description: "Drive a wheeled rover with a Bluetooth gamepad that has a dongle."
 capabilities: ["hw-mobility", "hw-sensing", "docs"]
+diataxis: tutorial
 videos:
   [
     "/tutorials/videos/scuttle-gamepad-preview.webm",

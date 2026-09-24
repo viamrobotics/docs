@@ -10,6 +10,10 @@ Given a destination pose and a component to move to that destination, `Move` wil
 
 The motion service takes the volumes associated with all configured machine components (local and remote) into account for each request to ensure that the machine does not collide with itself or other known objects.
 
+`component_name` is the name of the component to move, as a string. Earlier SDK versions took a `ResourceName` message here; passing one now fails with `bad argument type for built-in operation`. Poses are in millimeters and degrees. If the path must avoid something that is not in the frame system, pass it as an obstacle in `world_state`.
+
+A linear constraint makes `Move` solve for a straight-line path and refuse a curved fallback, so a segment with no direct solution returns `linear with cbirrt not allowed and no direct solutions found`. Keep the linear constraint for a short final approach and plan the rest as a free move. Read that error as the specific straight line being infeasible, not the goal being unreachable.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -617,6 +621,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 `GetPose` gets the location and orientation of a component within the [frame system](/reference/services/frame-system/).
 The return type of this function is a `PoseInFrame` describing the pose of the specified component with respect to the specified destination frame.
 You can use the `supplemental_transforms` argument to augment the machine's existing frame system with supplemental frames.
+
+`component_name` is the component's name as a string; earlier SDK versions took a `ResourceName` message, which now fails with `bad argument type for built-in operation`. To convert a pose you already have from one frame to another, use the machine client's `TransformPose` instead.
 
 {{< tabs >}}
 {{% tab name="Python" %}}

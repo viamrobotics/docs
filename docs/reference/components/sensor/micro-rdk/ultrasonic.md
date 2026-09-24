@@ -5,6 +5,7 @@ weight: 60
 type: "docs"
 description: "Reference for the ultrasonic sensor model. Ultrasonic sensor with a microcontroller."
 capabilities: ["hw-sensing"]
+diataxis: reference
 tags: ["sensor", "components", "ultrasonic"]
 icon: true
 images: ["/icons/components/sensor.svg"]

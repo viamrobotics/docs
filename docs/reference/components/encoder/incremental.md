@@ -4,6 +4,7 @@ linkTitle: "incremental"
 type: "docs"
 description: "Reference for the incremental encoder model. Incremental encoder."
 capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/encoder.svg"]
 tags: ["encoder", "components"]
 aliases:

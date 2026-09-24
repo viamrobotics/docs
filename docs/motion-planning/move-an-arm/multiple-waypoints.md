@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Plan a single continuous trajectory through an ordered list of intermediate goals using armplanning.PlanMotion."
 capabilities: ["motion-planning"]
+diataxis: how-to
 ---
 
 Sometimes you need the arm to pass through a specific approach point before

@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Open a connection to the Viam cloud to access the fleet, data, ML training, billing, and provisioning APIs, and to enumerate and connect to multiple machines."
 capabilities: ["sdks"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

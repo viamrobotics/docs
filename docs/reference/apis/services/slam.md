@@ -6,6 +6,7 @@ type: "docs"
 tags: ["slam", "services"]
 description: "Give commands to get a machine's position within a map."
 capabilities: ["sdks", "slam"]
+diataxis: reference
 date: "2022-01-01"
 aliases:
   - /dev/reference/apis/services/slam/

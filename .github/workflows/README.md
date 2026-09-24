@@ -173,7 +173,8 @@ top-level README](../../README.md#continuous-integration).
 #### `pr-labeler.yml`—_PR Test Label Manager_
 
 - **Purpose:** When a PR opens, adds the `safe to build` label if the author is
-  a `viamrobotics` org member; otherwise posts a welcome comment.
+  a `viamrobotics` org member, or dependabot / viam-overwatch pushing a
+  same-repo branch; otherwise posts a welcome comment.
 - **Trigger:** `pull_request_target` (`opened`).
 - **Blocking:** No.
 - **Secrets:** `PR_TOKEN`.

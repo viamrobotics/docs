@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configuration, API, and technical reference for the motion service."
 capabilities: ["motion-planning", "section-index"]
+diataxis: reference
 ---
 
 The motion service turns a high-level "move to this pose" request into a

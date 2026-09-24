@@ -5,6 +5,7 @@ weight: 90
 type: "docs"
 description: "Complete command reference for the Viam CLI: every command, subcommand, flag, and alias."
 capabilities: ["cli"]
+diataxis: reference
 date: "2026-04-25"
 # updated: ""  # When the content was last entirely checked
 ---

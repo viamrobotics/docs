@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 description: "Create, rotate, and manage API keys for programmatic access to your organization, locations, and machines."
 capabilities: ["org-management"]
+diataxis: how-to
 ---
 
 API keys provide programmatic access to your Viam resources.

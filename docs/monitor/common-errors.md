@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 description: "A guide to troubleshooting a Viam-based machine or system of machines with fixes to common problems."
 capabilities: ["logging"]
+diataxis: reference
 aliases:
   - /dev/tools/common-errors/
 ---

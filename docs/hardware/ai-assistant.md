@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Configure components, services, and modules by describing the change to the AI assistant, then review and save each staged edit."
 capabilities: ["machine-config"]
+diataxis: how-to
 date: "2026-07-15"
 ---
 

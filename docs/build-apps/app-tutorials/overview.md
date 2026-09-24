@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Guided end-to-end projects that build a working Viam app you can run. Pick by UI shape, machine scope, and language."
 capabilities: ["sdks"]
+diataxis: explanation
 date: "2026-04-20"
 ---
 
