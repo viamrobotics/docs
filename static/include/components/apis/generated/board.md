@@ -1023,7 +1023,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `interrupts` [([]DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): Slice of digital interrupts to receive ticks from.
-- `ch chan` [(Tick)](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick): The channel to stream Ticks, structs containing `Name`, `High`, and `TimestampNanosec` fields.
+- `ch` [(chan Tick)](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick): The channel to stream Ticks, structs containing `Name`, `High`, and `TimestampNanosec` fields.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -1177,7 +1177,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `powerMode` ([boardApi](https://ts.viam.dev/modules/boardApi.html)) (required): The requested power mode.
+- `powerMode` ([PowerMode](https://ts.viam.dev/enums/boardApi.PowerMode.html)) (required): The requested power mode.
 - `duration` ([Duration](https://ts.viam.dev/classes/Duration.html)) (optional): The requested duration to stay in power mode.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)

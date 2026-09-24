@@ -364,7 +364,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `transforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
+- `transforms` ([Transform](https://ts.viam.dev/classes/commonApi.Transform.html)) (required)
 
 **Returns:**
 
@@ -428,9 +428,9 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 **Parameters:**
 
-- `source` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
+- `source` ([PoseInFrame](https://ts.viam.dev/classes/commonApi.PoseInFrame.html)) (required)
 - `destination` (string) (required): The name of the reference frame to transform the given.
-- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required): Pose information on any additional reference frames that are
+- `supplementalTransforms` ([Transform](https://ts.viam.dev/classes/commonApi.Transform.html)) (required): Pose information on any additional reference frames that are
   needed to perform the transform.
 - `callOptions` (CallOptions) (optional)
 
@@ -454,7 +454,7 @@ Get the pose of a component in the frame system of the machine, relative to a sp
 
 - `componentName` (string) (required)
 - `destinationFrame` (string) (required)
-- `supplementalTransforms` ([commonApi](https://ts.viam.dev/modules/commonApi.html)) (required)
+- `supplementalTransforms` ([Transform](https://ts.viam.dev/classes/commonApi.Transform.html)) (required)
 
 **Returns:**
 

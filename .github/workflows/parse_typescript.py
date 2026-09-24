@@ -149,7 +149,15 @@ class TypeScriptParser:
                                 param_description = param_description.replace('\n', '\n  ').rstrip()
 
                         signature = method.find(class_='tsd-signature').text
-                        param_type = md(str(param.find(class_="tsd-signature-type"))).strip()
+                        ## Namespace-qualified types (like appApi.Visibility) render as a
+                        ## namespace link followed by the type link, so skip past the namespace:
+                        param_type_tag = param.find(class_="tsd-signature-type")
+                        while param_type_tag is not None and 'tsd-kind-namespace' in param_type_tag.get('class', []):
+                            next_type_tag = param_type_tag.find_next_sibling(class_="tsd-signature-type")
+                            if next_type_tag is None:
+                                break
+                            param_type_tag = next_type_tag
+                        param_type = md(str(param_type_tag)).strip()
 
                         if param_description:
                             param_usage = "%s (%s) - %s" % (param_name, param_type, param_description)

@@ -343,6 +343,37 @@ Move the arm's joints through the given positions in the order they are specifie
 This will block until done or a new operation cancels this one.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `positions` ([List[viam.proto.component.arm.JointPositions]](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.JointPositions)) (required): The waypoints to move through, in order.
+- `options` ([viam.proto.component.arm.MoveOptions](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.MoveOptions)) (optional): Optional kinematic ceilings obeyed at every point along the trajectory. None means no limits are requested.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Move through two waypoints, capping joint speed and acceleration.
+await my_arm.move_through_joint_positions(
+    positions=[
+        JointPositions(values=[0, 45, 0, 0, 0, 0]),
+        JointPositions(values=[0, 0, 0, 0, 0, 0]),
+    ],
+    options=MoveOptions(max_vel_degs_per_sec=15.0, max_acc_degs_per_sec2=30.0),
+)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.move_through_joint_positions).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -418,8 +449,8 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Parameters:**
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
-- `batches` [(&lt;-chan []TrajectoryPoint)](https://pkg.go.dev/go.viam.com/rdk/components/arm#TrajectoryPoint): The channel the caller sends trajectory batches on. Each send is one batch of `TrajectoryPoint` values, appended to the motion in order. Close the channel to signal that no more points are coming.
-- `responses` [(chan&lt;- Response)](https://pkg.go.dev/go.viam.com/rdk/components/arm#Response): The channel acknowledgments arrive on while the arm executes. `Response` carries no fields today. The caller must drain this channel for the duration of the call, and closes it only after the call returns.
+- `batches` [(<-chan []TrajectoryPoint)](https://pkg.go.dev/go.viam.com/rdk/components/arm#TrajectoryPoint): The channel the caller sends trajectory batches on. Each send is one batch of `TrajectoryPoint` values, appended to the motion in order. Close the channel to signal that no more points are coming.
+- `responses` [(chan<- Response)](https://pkg.go.dev/go.viam.com/rdk/components/arm#Response): The channel acknowledgments arrive on while the arm executes. `Response` carries no fields today. The caller must drain this channel for the duration of the call, and closes it only after the call returns.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
@@ -532,6 +563,35 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 Get the 3D models of the arm.
 
 {{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), viam.proto.common.Mesh]): :   The arm’s 3D models keyed by name. Each `Mesh` carries a
+    `content_type` (for example `"ply"`) and the raw `mesh` bytes in that format.
+    This is distinct from `get_kinematics`’s third return value, which keys meshes
+    by URDF filepath rather than by model name.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Get the arm's 3D models.
+models = await my_arm.get_3d_models()
+
+for name, mesh in models.items():
+    print(name, mesh.content_type, len(mesh.mesh))
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_3d_models).
+
+{{% /tab %}}
 {{% tab name="Go" %}}
 
 **Parameters:**
@@ -590,6 +650,277 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 {{% /tab %}}
 {{< /tabs >}}
 
+### SetManualMode
+
+Enter or exit manual mode on an arm that supports it, optionally for a limited time.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `manual_mode` ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)) (required): Whether to enter (True) or exit (False) manual mode.
+- `enabled_for` ([int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (required): How long to stay in manual mode, in seconds. 0 means no time limit.
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- None.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Enter manual mode for at most 30 seconds.
+await my_arm.set_manual_mode(manual_mode=True, enabled_for=30)
+
+# Exit manual mode.
+await my_arm.set_manual_mode(manual_mode=False)
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.set_manual_mode).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `manualMode` [(bool)](https://pkg.go.dev/builtin#bool)
+- `enabledFor` [(time.Duration)](https://pkg.go.dev/time#Duration)
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `manualMode` (boolean) (required): Whether to enter (true) or exit (false) manual mode.
+- `enabledFor` (number) (optional): How long to stay in manual mode, in seconds. 0 or undefined means no time
+  limit.
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<void>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const arm = new VIAM.ArmClient(machine, 'my_arm');
+
+// Enter manual mode for 60 seconds
+await arm.setManualMode(true, 60);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#setmanualmode).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `manualMode` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (required)
+- `enabledFor` [Duration](https://api.flutter.dev/flutter/dart-core/Duration-class.html) (optional)
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<void>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+await myArm.setManualMode(true, enabledFor: Duration(seconds: 30));
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/setManualMode.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetManualMode
+
+Get whether the arm is currently in manual mode.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([bool](https://docs.python.org/3/library/stdtypes.html#boolean-type-bool)): :   Whether the arm is in manual mode.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Print whether the arm is currently in manual mode.
+print(await my_arm.get_manual_mode())
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_manual_mode).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(bool)](https://pkg.go.dev/builtin#bool)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<boolean>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const arm = new VIAM.ArmClient(machine, 'my_arm');
+const manualMode = await arm.getManualMode();
+console.log(manualMode);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getmanualmode).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[bool](https://api.flutter.dev/flutter/dart-core/bool-class.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+bool inManualMode = await myArm.manualMode();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/manualMode.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
+### GetProperties
+
+Get which features the arm supports, such as manual mode and direct Cartesian commands.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `extra` (Mapping[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), Any]) (optional): Extra options to pass to the underlying RPC call.
+- `timeout` ([float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)) (optional): An option to set how long to wait (in seconds) before calling a time-out and closing the underlying RPC call.
+
+**Returns:**
+
+- ([viam.components.arm.Arm.Properties](https://python.viam.dev/autoapi/viam/components/arm/index.html#viam.components.arm.Arm.Properties)): :   The arm’s properties; whether it supports software-enabled manual mode
+    and whether it supports direct cartesian commands (`move_to_position`).
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+my_arm = Arm.from_robot(robot=machine, name="my_arm")
+
+# Get the properties of the arm.
+properties = await my_arm.get_properties()
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/components/arm/client/index.html#viam.components.arm.client.ArmClient.get_properties).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
+
+**Returns:**
+
+- [(Properties)](https://pkg.go.dev/go.viam.com/rdk/components/arm#Properties)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/components/arm#Arm).
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+**Parameters:**
+
+- `extra` (None) (optional)
+- `callOptions` (CallOptions) (optional)
+
+**Returns:**
+
+- (Promise<[armApi](https://ts.viam.dev/modules/armApi.html).[GetPropertiesResponse](https://ts.viam.dev/classes/armApi.GetPropertiesResponse.html)>)
+
+**Example:**
+
+```ts {class="line-numbers linkable-line-numbers"}
+const arm = new VIAM.ArmClient(machine, 'my_arm');
+const properties = await arm.getProperties();
+console.log(properties);
+```
+
+For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/classes/ArmClient.html#getproperties).
+
+{{% /tab %}}
+{{% tab name="Flutter" %}}
+
+**Parameters:**
+
+- `extra` [Map](https://api.flutter.dev/flutter/dart-core/Map-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html), dynamic>? (optional)
+
+**Returns:**
+
+- [Future](https://api.flutter.dev/flutter/dart-async/Future-class.html)<[ArmProperties](https://flutter.viam.dev/viam_sdk/ArmProperties.html)>
+
+**Example:**
+
+```dart {class="line-numbers linkable-line-numbers"}
+final properties = await myArm.properties();
+```
+
+For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_sdk/Arm/properties.html).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### CalculateMaxReach
 
 Calculate the maximum reach of the arm by summing all link lengths from its kinematics data.
@@ -629,6 +960,7 @@ Get the kinematics information associated with the arm as the format and byte co
     Viam’s kinematic parameter format (spatial vector algebra) (`KinematicsFileFormat.KINEMATICS_FILE_FORMAT_SVA`),
     and the second [1] value represents the byte contents of the file.
     If available, a third [2] value provides meshes keyed by URDF filepath.
+    See `get_3d_models` for meshes keyed by model name instead.
 
 **Example:**
 
