@@ -97,6 +97,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 Closes the gripper until it grabs something or closes completely, and returns whether it grabbed something or not.
 
+A `false` return means the gripper closed on nothing or could not hold what it closed on. Check `IsHoldingSomething` again after moving with a held object.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -293,6 +295,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 Return if the gripper is holding something.
 
+When a client's session ends, viam-server stops every actuator that session commanded. Whether a held object survives that stop depends on the gripper model: some models keep holding it, and on others the stop releases the drive and drops it. A gripper that closed on nothing stops where it is with no force. Check `IsHoldingSomething` after a carry, and keep a sequence that must hold an object across steps in one session.
+
 {{< tabs >}}
 {{% tab name="Python" %}}
 
@@ -377,6 +381,8 @@ For more information, see the [Flutter SDK Docs](https://flutter.viam.dev/viam_s
 
 Stops the gripper.
 It is assumed that the gripper stops immediately, so `IsMoving` will return false after calling `Stop`.
+
+Whether a held object survives the stop depends on the gripper model: some models keep holding it, and on others `Stop` releases the drive and drops it. Check `IsHoldingSomething` afterward.
 
 {{< tabs >}}
 {{% tab name="Python" %}}
