@@ -9,6 +9,8 @@ noedit: true
 open_on_desktop: true
 overview: true
 description: "Plan and execute collision-free movements for robot arms and gantries."
+capabilities: ["motion-planning", "section-index"]
+diataxis: overview
 notoc: true
 aliases:
   - /operate/mobility/

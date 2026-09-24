@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/sticker-wizard/index.html"
 tags: ["APIs", "python"]
 description: "This tutorial will walk you through making your own vending machine from scratch, along with a web application that allows you to operate your machine from any device."
+capabilities: ["hw-actuation", "hw-compute", "viam-apps", "docs"]
 images: ["/codelabs/sticker.jpeg"]
 imageAlt: "sticker machine"
 authors: ["Nick Hehr"]

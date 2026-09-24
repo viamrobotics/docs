@@ -5,6 +5,8 @@ weight: 55
 layout: "docs"
 type: "docs"
 description: "Use triggers to send email, webhook, or push notifications when data from the machine is synced."
+capabilities: ["triggers-alerts"]
+diataxis: how-to
 date: "2025-09-12"
 aliases:
 ---
@@ -66,6 +68,7 @@ For the full attribute reference for all trigger types, see [Trigger configurati
    1. Click **Add webhook**.
    1. Add the URL of your cloud function.
    1. Configure the time between notifications.
+   1. Optionally, check **Use basic authentication** and enter a username and password to include HTTP basic authentication credentials with each webhook request.
    1. Write your cloud function to process the webhook payload.
       Use your cloud function to process data or interact with external APIs, such as Twilio, PagerDuty, or Zapier.
 

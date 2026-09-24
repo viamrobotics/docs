@@ -2,6 +2,7 @@
 title: "Viam Documentation"
 linkTitle: "Viam Documentation"
 description: "Viam integrates with hardware and software on any device. Use AI, machine learning, and more to make any machine smarter — for one machine to thousands."
+capabilities: ["section-index"]
 weight: 1
 type: "docs"
 layout: "empty"
@@ -11,6 +12,7 @@ sitemap:
 outputs:
   - html
   - REDIR
+  - MARKDOWN
 noedit: true
 date: "2024-09-17"
 updated: "2024-10-11"

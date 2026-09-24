@@ -5,6 +5,8 @@ weight: 6
 layout: "docs"
 type: "docs"
 description: "viam-server is the open-source, on-machine portion of the Viam platform."
+capabilities: ["viam-server"]
+diataxis: reference
 date: "2026-04-17"
 aliases:
   - /operate/reference/viam-server/
@@ -339,7 +341,7 @@ The `viam-agent` and `viam-server` binaries are installed at <FILE>/opt/viam/bin
 {{% tab name="macOS" %}}
 
 ```bash {class="line-numbers linkable-line-numbers"}
-brew tap viamrobotics/brews && brew trust viamrobotics/brews && brew install viam-server
+brew trust viamrobotics/brews && brew tap viamrobotics/brews && brew install viam-server
 ```
 
 The `viam-server` binary is installed at <FILE>/opt/homebrew/bin/viam-server</FILE> on Apple silicon and at <FILE>/usr/local/bin/viam-server</FILE> on Intel Macs.

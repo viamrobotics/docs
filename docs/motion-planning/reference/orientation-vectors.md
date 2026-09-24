@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Reference for specifying component orientation using orientation vectors and other rotation formats."
+capabilities: ["frame-system"]
+diataxis: reference
 aliases:
   - /operate/mobility/orientation-vector/
   - /internals/orientation-vector/

@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "Monitor machine status, visualize data, set up alerts, teleoperate machines, and troubleshoot problems."
+capabilities: ["dashboards", "triggers-alerts", "teleop"]
+diataxis: overview
 ---
 
 Your machines are running. Now you need to know what they're doing, get alerted when something needs attention, operate them remotely, and fix problems when they arise. This section covers the observability and operations tools that Viam provides for deployed machines.
@@ -43,7 +45,7 @@ See [Set up alerts](/monitor/alert/).
 
 You can remotely control and test any configured machine without writing code.
 
-The **default control interface** is the CONTROL tab on your machine's page in the Viam app. It provides a control card for every configured component and service: move bases, actuate arms and grippers, read sensors, view camera feeds, and test vision services. The Viam mobile app provides similar access from your phone.
+The **default control interface** is the CONTROL tab on your machine's page in the Viam app. It provides a control card for every configured component and service: move bases, actuate arms and grippers, read sensors, view camera feeds, and test vision services. A built-in code sandbox lets you write and run TypeScript against the live machine directly from the browser. The Viam mobile app provides similar access from your phone.
 
 **Teleop workspaces** let you build custom operator interfaces with only the widgets you need for a specific task. You choose the widgets (camera feeds, sensor readouts, actuation controls, GPS maps) and arrange them into a focused view. This is useful when the full CONTROL tab shows more than the operator needs.
 

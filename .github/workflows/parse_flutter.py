@@ -9,6 +9,7 @@ flutter_resource_overrides = {
     "movement_sensor": "MovementSensor",
     "power_sensor": "PowerSensor",
     "vision": "VisionClient",
+    "motion": "MotionClient",
     "robot": "RobotClient",
     "data": "DataClient",
     "dataset": "DataClient",
@@ -52,7 +53,7 @@ class FlutterParser:
         # Skip resources not supported in Flutter
         unsupported_resources = [
             "base_remote_control", "encoder", "input_controller",
-            "data_manager", "mlmodel", "motion",
+            "data_manager", "mlmodel",
             "navigation", "slam", "switch", "app", "billing", "mltraining"
         ]
 

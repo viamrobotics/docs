@@ -4,6 +4,8 @@ linkTitle: "Navigation"
 weight: 50
 type: "docs"
 description: "The navigation service uses GPS to autonomously navigate a rover to user-defined waypoints."
+capabilities: ["navigation"]
+diataxis: reference
 tags: ["navigation", "services", "base", "rover"]
 date: "2022-01-01"
 aliases:

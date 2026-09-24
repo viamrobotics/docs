@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "List, monitor, enable, disable, rename, and delete data pipelines."
+capabilities: ["data-pipelines"]
+diataxis: how-to
 date: "2026-03-27"
 ---
 

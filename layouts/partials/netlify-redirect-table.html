@@ -1,0 +1,3 @@
+{{ $data := transform.Unmarshal (dict "format" "toml") (os.ReadFile "netlify.toml") }}
+{{ $forced := where $data.redirects "force" true }}
+{{ return $forced }}

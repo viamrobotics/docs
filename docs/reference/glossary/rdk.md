@@ -1,5 +1,6 @@
 ---
 title: RDK (Robot Development Kit)
+capabilities: ["glossary", "docs"]
 id: rdk
 full_link: /reference/glossary/rdk/
 short_description: The official Viam-developed codebase that provides all functionality of an SDK and more.

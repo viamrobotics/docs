@@ -5,6 +5,8 @@ arm,GetEndPosition,,get_end_position,EndPosition,endPosition,getEndPosition
 arm,MoveToPosition,,move_to_position,MoveToPosition,moveToPosition,moveToPosition
 arm,MoveToJointPositions,,move_to_joint_positions,MoveToJointPositions,moveToJointPositions,moveToJointPositions
 arm,MoveThroughJointPositions,,move_through_joint_positions,MoveThroughJointPositions,,
+arm,MoveThroughJointPositions,,,MoveThroughJointPositions,,
+arm,MoveThroughJointPositionsStreamed,,move_through_joint_positions_streamed,MoveThroughJointPositionsStreamed,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
 arm,Get3DModels,,get_3d_models,Get3DModels,get3DModels,get3DModels
 ## Flutter-only client-side helper, sums link lengths from getKinematics() locally; no proto/RPC and no analog in other SDKs:
@@ -307,19 +309,19 @@ mlmodel,GetResourceName,,get_resource_name,Name,,
 mlmodel,Close,,close,Close,,
 
 ## Motion
-motion,Move,,move,Move,,move
-motion,MoveOnMap,,move_on_map,MoveOnMap,,moveOnMap
-motion,MoveOnGlobe,,move_on_globe,MoveOnGlobe,,moveOnGlobe
-motion,GetPose,,get_pose,GetPose,,getPose
-motion,StopPlan,,stop_plan,StopPlan,,stopPlan
-motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,,listPlanStatuses
-motion,GetPlan,,get_plan,PlanHistory,,getPlan
+motion,Move,,move,Move,move,move
+motion,MoveOnMap,,move_on_map,MoveOnMap,moveOnMap,moveOnMap
+motion,MoveOnGlobe,,move_on_globe,MoveOnGlobe,moveOnGlobe,moveOnGlobe
+motion,GetPose,,get_pose,GetPose,getPose,getPose
+motion,StopPlan,,stop_plan,StopPlan,stopPlan,stopPlan
+motion,ListPlanStatuses,,list_plan_statuses,ListPlanStatuses,listPlanStatuses,listPlanStatuses
+motion,GetPlan,,get_plan,PlanHistory,getPlan,getPlan
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
 motion,Reconfigure,,,Reconfigure,,
 motion,FromRobot,,from_robot,,,
-motion,DoCommand,,do_command,DoCommand,,doCommand
+motion,DoCommand,,do_command,DoCommand,doCommand,doCommand
 motion,GetStatus,,get_status,Status,,getStatus
-motion,GetResourceName,,get_resource_name,Name,,name
+motion,GetResourceName,,get_resource_name,Name,getResourceName,name
 motion,Close,,close,Close,,
 
 
@@ -356,13 +358,13 @@ vision,GetProperties,,get_properties,GetProperties,properties,getProperties
 vision,Close,,close,Close,,
 
 ## World State Store
-world_state_store,ListUUIDs,,list_uuids,,,listUUIDs
-world_state_store,GetTransform,,get_transform,,,getTransform
-world_state_store,StreamTransformChanges,,stream_transform_changes,,,streamTransformChanges
-world_state_store,DoCommand,,do_command,,,doCommand
-world_state_store,GetStatus,,get_status,,,getStatus
-world_state_store,GetResourceName,,get_resource_name,,,name
-world_state_store,Close,,close,,,
+world_state_store,ListUUIDs,,list_uuids,ListUUIDs,,listUUIDs
+world_state_store,GetTransform,,get_transform,GetTransform,,getTransform
+world_state_store,StreamTransformChanges,,stream_transform_changes,StreamTransformChanges,,streamTransformChanges
+world_state_store,DoCommand,,do_command,DoCommand,,doCommand
+world_state_store,GetStatus,,get_status,Status,,getStatus
+world_state_store,GetResourceName,,get_resource_name,Name,,name
+world_state_store,Close,,close,Close,,
 
 ## App
 app,GetUserIDByEmail,,get_user_id_by_email,GetUserIDByEmail,,getUserIDByEmail
@@ -453,8 +455,8 @@ app,RotateKey,,rotate_key,RotateKey,,rotateKey
 app,ListKeys,,list_keys,ListKeys,,listKeys
 app,RenameKey,,,RenameKey,,
 app,CreateKeyFromExistingKeyAuthorizations,,create_key_from_existing_key_authorizations,,,createKeyFromExistingKeyAuthorizations
-app,GetAppContent,,,,,getAppContent
-app,GetAppBranding,,,,,getAppBranding
+app,GetAppContent,,,GetAppContent,,getAppContent
+app,GetAppBranding,,,GetAppBranding,,getAppBranding
 
 ## Billing
 billing,GetCurrentMonthUsage,,get_current_month_usage,GetCurrentMonthUsage,,getCurrentMonthUsage

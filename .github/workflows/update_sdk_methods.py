@@ -538,11 +538,29 @@ def parse_method_usage(usage_string):
                 param_type_link = "https://pkg.go.dev/builtin#error"
             else:
                 param_raw = regex.sub(r'<.*?>', '', param).removesuffix(')').split()
-                ## Handle channel data types (only used for Board > StreamTicks):
-                if len(param_raw) == 3 and param_raw[0] == 'ch':
-                    type_name = 'ch chan'
-                    param_type = 'Tick'
-                    type_link = '#Tick'
+
+                ## pkg.go.dev HTML-escapes the arrows in channel types, so put them back
+                ## before we match on the tokens:
+                param_raw = [token.replace('&lt;', '<').replace('&gt;', '>') for token in param_raw]
+
+                ## Clear the per-parameter state. Python scopes these to the whole function,
+                ## so a parameter shape matching none of the cases below would otherwise
+                ## inherit the previous parameter's values and document itself as a copy of
+                ## its neighbor:
+                type_name = None
+                param_type = None
+                type_link = None
+
+                ## Handle channel parameters, whose type spans two tokens: a direction
+                ## marker and the element type. All three directions occur in the SDK,
+                ## and the element type can itself be a slice:
+                if len(param_raw) == 3 and param_raw[1] in ('chan', '<-chan', 'chan<-'):
+                    type_name = param_raw[0]
+                    param_type = param_raw[1] + ' ' + param_raw[2]
+                    try:
+                        type_link = regex.findall(r'href="([^"]+)">', param)[-1]
+                    except:
+                        print("DEBUG: No type link found: {}, {}".format(usage_string, param))
                 ## Handle named parameters:
                 elif len(param_raw) == 2:
                     type_name = param_raw[0]
@@ -588,6 +606,14 @@ def parse_method_usage(usage_string):
                             type_link = regex.findall(r'href="([^"]+)">', param)[-1]
                         except:
                             print("DEBUG: No type link found: {}, {}, {}".format(usage_string, param, param_raw))
+
+                ## Nothing above claimed this parameter. Fall back to the stripped source
+                ## text so the shape that got missed is visible in the output and in the
+                ## log, rather than quietly taking on its neighbor's identity:
+                if type_name is None and param_type is None:
+                    print("DEBUG: Unhandled parameter shape: {}, {}".format(param, param_raw))
+                    type_name = ''
+                    param_type = ' '.join(param_raw)
 
                 if type_link:
                     param_type_link = type_link
@@ -771,7 +797,12 @@ def check_for_unused_methods(methods, type):
                 if not "used" in methods[lang][type][resource][method].keys():
                     if resource in ["data_sync", "dataset", "data"]:
                         continue
-                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus"] or \
+                    ## Push tokens and Firebase config are Viam mobile-app infrastructure, not
+                    ## customer-facing. See #5188. (create_oauth_app_user / createOAuthAppUser
+                    ## deliberately NOT ignored here -- the whole OAuth-apps family needs a
+                    ## domain-owner decision on document-vs-ignore before we suppress the
+                    ## warning; see the #5188/#5276 discussion.)
+                    if lang == "python" and method not in ["from_robot", "close", "get_resource_name", "get_geometries", "do_command", "proto", "transform", "updated_fields", "ListUUIDs", "GetTransform", "StreamTransformChanges", "DoCommand", "GetStatus", "upload_device_push_token", "get_device_push_tokens", "delete_device_push_token", "set_firebase_config", "get_firebase_config", "delete_firebase_config"] or \
                         lang == "go" and method not in ["Reconfigure", "ListTunnels", "Close", "DoCommand", "CurrentPosition", "AddTagsToBinaryDataByFilter", "RemoveTagsFromBinaryDataByFilter", "CurrentInputs", "GoToInputs"] or \
                         lang == "flutter" and method not in ["getResources", "getStream", "getStreamOptions", "resetStreamOptions", "setStreamOptions", "Discovery.fromProto", "addCallbacks", "getResource", "RobotClient.withClient"] or \
                         lang == "typescript" and method not in ["connect", "disconnect", "dial", "isConnected", "discoverComponents", "createServiceClient", "getRoverRentalRobots", "doCommand"]:

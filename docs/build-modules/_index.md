@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 no_list: true
 description: "Understand the two kinds of modules, then write, test, and deploy your own."
+capabilities: ["section-index", "module-development"]
 manualLink: "/build-modules/overview/"
 aliases:
   - /build/development/

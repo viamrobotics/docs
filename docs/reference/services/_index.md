@@ -6,6 +6,8 @@ type: "docs"
 layout: "docs"
 no_list: true
 description: "Configuration reference for Viam built-in services: per-service models, attributes, and JSON templates."
+capabilities: ["section-index"]
+diataxis: overview
 date: "2026-04-14"
 aliases:
   - /operate/reference/services/

@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Write SQL and MQL queries against captured data in the Viam app or programmatically."
+capabilities: ["data-storage"]
+diataxis: how-to
 date: "2025-01-30"
 aliases:
   - /data/query/query-data/

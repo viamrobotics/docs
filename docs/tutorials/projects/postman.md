@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/postman-grpc-apis/index.html"
 tags: ["APIs", "app"]
 description: "You can use the Viam web app or SDKS to control your machines, but you can also use Viam's gRPC APIs directly."
+capabilities: ["sdks", "docs"]
 images: ["/codelabs/postman.png"]
 imageAlt: "Viam API collection on Postman"
 authors: ["Joyce Lin"]

@@ -1,0 +1,4 @@
+# These are Hugo Go templates that happen to have a .md extension
+# (Markdown-format shortcode/page templates), not real Markdown content.
+# prettier's markdown formatter would mangle their template syntax.
+layouts/**/*.md

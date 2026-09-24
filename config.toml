@@ -52,8 +52,12 @@ weight = 1
 disableAliases = true
 
 [outputs]
-home = ["HTML", "REDIR"]
-section = ["HTML", "Typesense"]
+home = ["HTML", "REDIR", "MARKDOWN"]
+section = ["HTML", "Typesense", "MARKDOWN"]
+page = ["HTML", "MARKDOWN"]
+# Taxonomy/terms pages (/tags/*) are intentionally excluded from Markdown.
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
 
 [outputFormats.REDIR]
 mediaType = "text/netlify"
@@ -61,10 +65,27 @@ baseName = "_redirects"
 isPlainText = true
 notAlternative = true
 
+[outputFormats.MARKDOWN]
+mediaType = "text/markdown"
+isPlainText = true
+isHTML = false
+ugly = true
+notAlternative = true
+
 [outputFormats.Typesense]
 baseName = "typesense"
 isPlainText = true
 mediaType = "application/json"
+notAlternative = true
+
+[outputFormats.TUTORIALCATALOG]
+# Deliberately not added to [outputs] section above -- see
+# list.tutorialcatalog.md's header comment. Scoped to /tutorials/ only
+# via that section's own outputs: frontmatter override.
+mediaType = "text/markdown"
+baseName = "catalog"
+isPlainText = true
+isHTML = false
 notAlternative = true
 
 [outputFormats.RSS]

@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Command an arm directly in joint space using MoveToJointPositions and MoveThroughJointPositions, bypassing the motion planner."
+capabilities: ["motion-planning", "hw-arm"]
+diataxis: how-to
 aliases:
   - /motion-planning/motion-how-to/move-arm-joint-positions/
 ---
@@ -20,7 +22,10 @@ are different tools. You reach for joint-space when:
   causes a wrist flip or elbow reconfiguration.
 - You want predictable motion between two configurations you both
   control.
-- You are building a control loop that computes its own joint targets.
+
+Both methods on this page need every waypoint before the arm starts moving. If
+you are computing the trajectory as the arm runs, see
+[Stream joint positions to an arm](/motion-planning/move-an-arm/stream-joint-positions/).
 
 **A caveat before you dive in.** Joint-space moves bypass the motion planner.
 No obstacle avoidance, no constraint satisfaction, no path smoothing. If the
@@ -219,6 +224,7 @@ programmatically.
 | `arm.MoveThroughJointPositions` | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
 | `arm.MoveToPosition`            | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
 | `motion.Move`                   | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
+| [`arm.MoveThroughJointPositionsStreamed`](/motion-planning/move-an-arm/stream-joint-positions/) (Python, Go, C++) | You are producing the trajectory as the arm moves and cannot supply it all up front. |                |
 
 Joint-space moves are the right call when you need to control the
 posture of the arm precisely. They do not protect against collisions
@@ -259,6 +265,8 @@ module's documentation or the kinematics file.
 
 ## What's next
 
+- [Stream joint positions to an arm](/motion-planning/move-an-arm/stream-joint-positions/):
+  push waypoints while the arm is already moving.
 - [Move an arm to a pose](/motion-planning/move-an-arm/move-to-pose/):
   Cartesian motion with obstacle avoidance through `motion.Move`.
 - [Move with constraints](/motion-planning/move-an-arm/move-with-constraints/):

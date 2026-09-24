@@ -2,6 +2,8 @@
 title: "Frame system reference"
 linkTitle: "Frame system"
 description: "The frame system holds reference frame information for the relative position of components in space."
+capabilities: ["frame-system"]
+diataxis: reference
 layout: "docs"
 type: "docs"
 weight: 50

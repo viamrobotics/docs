@@ -1,5 +1,6 @@
 ---
 title: viam-server
+capabilities: ["glossary", "docs"]
 id: viam-server
 full_link: /reference/glossary/viam-server/
 short_description: The executable binary which runs on and provides functionality to machines.

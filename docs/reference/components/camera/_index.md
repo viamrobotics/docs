@@ -5,6 +5,8 @@ childTitleEndOverwrite: "Camera Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in camera models."
+capabilities: ["hw-camera", "section-index"]
+diataxis: reference
 no_list: true
 tags: ["camera", "components"]
 icon: true

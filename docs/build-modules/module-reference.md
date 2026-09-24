@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Reference for module developers: lifecycle, interfaces, meta.json schema, CLI commands, environment variables, and registry rules."
+capabilities: ["module-development"]
+diataxis: reference
 date: "2025-03-05"
 aliases:
   - /operate/modules/advanced/logging/
@@ -554,15 +556,16 @@ resource instance), `--id` (module ID), `--cloud-config` (path to
 `viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
 containing `meta.json`), `--local` (run entrypoint directly on localhost).
 
-`reload-local` flags: `--part-id` (target machine part), `--no-build` (skip
-build), `--local` (run entrypoint directly on localhost instead of bundling),
-`--module` (path to `meta.json`), `--model-name` (add a resource to config
-with this model triple), `--name` (name the added resource),
-`--resource-name` (name the resource instance), `--id` (module ID,
-alternative to `--name`), `--cloud-config` (path to `viam.json`, alternative
-to `--part-id`), `--workdir` (subdirectory containing `meta.json`),
-`--home` (override the remote machine's home directory), `--no-progress` (hide transfer
-progress).
+`reload-local` flags: `--part-id` (target machine part), `--file` (path to a
+pre-built tarball; implies `--no-build`, does not require `build.path` in
+`meta.json`), `--no-build` (skip build), `--local` (run entrypoint directly
+on localhost instead of bundling), `--module` (path to `meta.json`),
+`--model-name` (add a resource to config with this model triple), `--name`
+(name the added resource), `--resource-name` (name the resource instance),
+`--id` (module ID, alternative to `--name`), `--cloud-config` (path to
+`viam.json`, alternative to `--part-id`), `--workdir` (subdirectory
+containing `meta.json`), `--home` (override the remote machine's home
+directory), `--no-progress` (hide transfer progress).
 
 ## Environment variables
 

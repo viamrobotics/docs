@@ -5,6 +5,8 @@ weight: 80
 layout: "docs"
 type: "docs"
 description: "Use the Viam CLI in shell scripts, CI/CD pipelines, and provisioning workflows."
+capabilities: ["cli"]
+diataxis: how-to
 ---
 
 Combine CLI commands into shell scripts, CI/CD pipelines, and provisioning workflows to automate common Viam operations.

@@ -5,6 +5,8 @@ weight: 20
 layout: "docs"
 type: "docs"
 description: "Configure triggers to receive email, webhook, or push notifications when machines need attention."
+capabilities: ["triggers-alerts"]
+diataxis: how-to
 aliases:
   - /manage/troubleshoot/alert/
   - /build/configure/webhooks/
@@ -101,6 +103,7 @@ Wait a minute for data to capture and sync, then refresh.
    - **Email specific addresses**: toggle on, add addresses, set alert frequency.
    - **Email all machine owners**: toggle on, set alert frequency.
    - **Webhook**: click **Add webhook**, enter your cloud function URL, set alert frequency.
+     Optionally, check **Use basic authentication** to include HTTP basic authentication credentials with each request.
      See [Trigger configuration](/reference/triggers/#webhook-attributes) for webhook payload details.
    - **Push notifications**: click **Add push notifications**, choose the target mobile app, add recipient email addresses or enable notifications for all machine owners, and set alert frequency.
      Recipients must be machine owners or operators.

@@ -5,6 +5,8 @@ weight: 40
 type: "docs"
 tags: ["generic", "services"]
 description: "Give commands to your generic components for running model-specific commands using DoCommand."
+capabilities: ["sdks", "hw-generic"]
+diataxis: reference
 icon: true
 images: ["/icons/components/generic.svg"]
 date: "2022-01-01"

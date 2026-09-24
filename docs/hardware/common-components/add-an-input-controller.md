@@ -5,6 +5,8 @@ weight: 50
 layout: "docs"
 type: "docs"
 description: "Add and configure a gamepad, joystick, or other input device for manual machine control."
+capabilities: ["hw-sensing"]
+diataxis: how-to
 date: "2025-03-07"
 aliases:
   - /operate/reference/components/input-controller/

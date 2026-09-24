@@ -1,5 +1,6 @@
 ---
 title: Blob storage
+capabilities: ["glossary", "docs"]
 id: blob-storage
 full_link:
 short_description: A cheap but slow storage medium.

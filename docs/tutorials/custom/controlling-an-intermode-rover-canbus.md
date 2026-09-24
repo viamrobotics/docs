@@ -13,6 +13,8 @@ tags:
     "Intermode",
   ]
 description: "Integrate an Intermode rover as a modular resource base component with CAN bus."
+capabilities: ["module-development", "hw-mobility", "docs"]
+diataxis: tutorial
 imageAlt: "Intermode rover pictured outdoors."
 images: ["/tutorials/intermode/rover_outside.png"]
 authors: ["Matt Vella"]
@@ -342,7 +344,7 @@ Now that you have integrated your rover or mobile base with Viam, you can use th
 If your rover has a [`camera`](/reference/components/camera/) or a [`movement_sensor`](/reference/components/movement-sensor/), you can try the following tutorials:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{% card link="/tutorials/services/color-detection-scuttle/" %}}
 {{< /cards >}}
 

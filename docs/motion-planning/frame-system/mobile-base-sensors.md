@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Configure frames for a mobile base with mounted cameras and lidar sensors."
+capabilities: ["frame-system"]
+diataxis: how-to
 aliases:
   - /motion-planning/frame-system-how-to/mobile-base-sensors/
 ---

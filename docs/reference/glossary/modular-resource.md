@@ -1,5 +1,6 @@
 ---
 title: Modular Resource
+capabilities: ["glossary", "docs"]
 id: modular-resource
 short_description: A modular resource is a model of a component or service provided by a module.
 aliases:

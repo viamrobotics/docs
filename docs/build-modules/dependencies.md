@@ -5,6 +5,8 @@ weight: 36
 layout: "docs"
 type: "docs"
 description: "From within a modular resource, you can access other machine resources using dependencies."
+capabilities: ["module-development"]
+diataxis: reference
 aliases:
   - /operate/modules/advanced/dependencies/
   - /operate/modules/other-hardware/dependencies/

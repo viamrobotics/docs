@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Write inspection logic that detects defective cans."
+capabilities: ["module-development", "sdks", "docs"]
+diataxis: tutorial
 date: "2025-01-30"
 aliases:
   - /try/part-3/
@@ -46,8 +48,8 @@ The Viam CLI is used for authentication, module generation, and deployment.
 {{% tab name="macOS" %}}
 
 ```bash
-brew tap viamrobotics/brews
 brew trust viamrobotics/brews
+brew tap viamrobotics/brews
 brew install viam
 ```
 

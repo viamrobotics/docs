@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "Create reusable configuration templates and apply them across multiple machines."
+capabilities: ["machine-config", "fleet-deployment"]
+diataxis: how-to
 aliases:
   - /fleet/fragments/
   - /manage/fleet/reuse-configuration/

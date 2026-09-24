@@ -4,6 +4,18 @@
 [build.environment]
   HUGO_VERSION = "0.152.2"
 
+# Both match "/*"; order here is authoritative (Netlify docs), not file-name
+# alphabetization. agent-traffic must run first — markdown-negotiation's
+# rewrite() branch skips context.next(), so reversed order would silently
+# drop analytics for negotiated requests.
+[[edge_functions]]
+  path = "/*"
+  function = "agent-traffic"
+
+[[edge_functions]]
+  path = "/*"
+  function = "markdown-negotiation"
+
 [[redirects]]
   from = "/data/"
   to = "/data/overview/"
@@ -60,7 +72,7 @@
 
 [[redirects]]
   from = "/set-up-a-machine/"
-  to = "/set-up-a-machine/overview/"
+  to = "/set-up-a-machine/first-machine/"
   status = 301
   force = true
 
@@ -195,13 +207,13 @@
 
 [[redirects]]
   from = "/reference/apis/components/"
-  to = "/reference/apis/"
+  to = "/reference/apis/components/overview/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/reference/apis/services/"
-  to = "/reference/apis/"
+  to = "/reference/apis/services/overview/"
   status = 301
   force = true
 

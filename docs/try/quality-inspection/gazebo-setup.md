@@ -5,6 +5,8 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Set up the Gazebo simulation environment for the inspection tutorial."
+capabilities: ["docs"]
+diataxis: tutorial
 date: "2025-01-30"
 aliases:
   - /try/gazebo-setup/

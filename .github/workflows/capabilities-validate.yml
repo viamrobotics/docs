@@ -1,0 +1,37 @@
+name: Validate docs frontmatter taxonomies
+
+concurrency:
+  group: pullrequest-untrusted-capabilities-${{ github.event.number }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "docs/**/*.md"
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**/*.md"
+
+jobs:
+  validate_capabilities:
+    name: Check docs/ capability and Diataxis frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Check capabilities
+        run: python3 scripts/check-capabilities.py
+
+      - name: Check Diataxis modes
+        run: python3 scripts/check-diataxis.py

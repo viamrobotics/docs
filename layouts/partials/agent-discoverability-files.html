@@ -1,0 +1,12 @@
+{{- /*
+  Triggers Pipes generation of sitetree.json/llms.txt and returns their
+  resources for head.html to link to. llms-full.txt is triggered
+  separately, from list.markdown.md -- see CLAUDE.md's "Agent
+  discoverability files" section for why, and for why removing this
+  partial (or its include in head.html) silently stops these files from
+  generating.
+*/ -}}
+{{- /* site.Home, not `.` -- see CLAUDE.md for why. */ -}}
+{{- $sitetreeJSON := resources.Get "sitetree.json" | resources.ExecuteAsTemplate "sitetree.json" site.Home -}}
+{{- $llmsTXT := resources.Get "llms.txt" | resources.ExecuteAsTemplate "llms.txt" site.Home -}}
+{{- return (dict "sitetreeJSON" $sitetreeJSON "llmsTXT" $llmsTXT) -}}

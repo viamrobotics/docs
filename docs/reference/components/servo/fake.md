@@ -4,6 +4,8 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Reference for the fake servo model. Fake servo."
+capabilities: ["hw-actuation"]
+diataxis: reference
 tags: ["servo", "components"]
 icon: true
 images: ["/icons/components/servo.svg"]

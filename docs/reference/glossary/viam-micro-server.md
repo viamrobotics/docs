@@ -1,5 +1,6 @@
 ---
 title: viam-micro-server
+capabilities: ["glossary", "docs"]
 id: viam-micro-server
 full_link: /reference/device-setup/setup-micro/
 short_description: The lightweight version of viam-server that can run on ESP32 devices.

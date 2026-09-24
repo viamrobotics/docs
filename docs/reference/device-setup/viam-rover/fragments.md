@@ -5,11 +5,14 @@ weight: 20
 type: "docs"
 tags: ["rover", "tutorial"]
 description: "Configure your rover by adding the Viam-provided configuration fragment to your rover."
+capabilities: ["hw-mobility", "machine-config", "docs"]
+diataxis: how-to
 aliases:
   - /try-viam/rover-resources/rover-tutorial-fragments/
   - /get-started/try-viam/rover-resources/rover-tutorial-fragments/
   - /appendix/try-viam/rover-resources/rover-tutorial-fragments/
   - /dev/reference/try-viam/rover-resources/rover-tutorial-fragments/
+  - /try/viam-rover/fragments/
 date: "2026-05-23"
 ---
 
@@ -19,9 +22,9 @@ Viam provides reusable {{% glossary_tooltip term_id="fragment" text="*fragments*
 ## Prerequisites
 
 - An assembled Viam Rover.
-  For assembly instructions, see [Unbox and set up your Viam Rover](/try/viam-rover/setup/)
+  For assembly instructions, see [Unbox and set up your Viam Rover](/reference/device-setup/viam-rover/setup/)
 - The board is connected to Viam.
-  To add your Pi to Viam, refer to [the rover setup guide](/try/viam-rover/setup/#control-your-rover-on-viam).
+  To add your Pi to Viam, refer to [the rover setup guide](/reference/device-setup/viam-rover/setup/#control-your-rover-on-viam).
 
 ## Add the fragment
 
@@ -208,5 +211,5 @@ The fragment you added is read-only, but if you need to modify your rover's conf
 After you have configured your rover, follow this tutorial:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}

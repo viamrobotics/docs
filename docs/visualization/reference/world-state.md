@@ -5,6 +5,8 @@ weight: 10
 layout: "docs"
 type: "docs"
 description: "What a WorldState is: the per-request set of obstacles and frame transforms you pass to a single Move call for the planner to plan around."
+capabilities: ["frame-system", "scene-3d"]
+diataxis: reference
 ---
 
 A `WorldState` is the argument you pass to a single `Move` call. It carries the obstacles

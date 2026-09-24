@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Debug a misbehaving machine using logs, remote shell access, debug endpoints, and configuration history."
+capabilities: ["logging"]
+diataxis: how-to
 aliases:
   - /manage/troubleshoot/troubleshoot/
   - /appendix/troubleshooting/

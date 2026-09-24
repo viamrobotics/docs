@@ -50,7 +50,19 @@
     type="{{ .MediaType.Type }}"
     href="{{ .Permalink | safeURL }}"
 />
-{{ end -}} {{ $outputFormat := partial "outputformat.html" . -}} {{ if and
+{{ end -}}
+{{- $agentFiles := partial "agent-discoverability-files.html" . -}}
+<link rel="describedby" href="{{ $agentFiles.llmsTXT.Permalink }}" />
+<link rel="describedby" type="application/json" title="sitetree.json" href="{{ $agentFiles.sitetreeJSON.Permalink }}" />
+{{- /* Tutorials catalog and llms-full.txt deliberately not linked here -- see CLAUDE.md. */ -}}
+{{- with .OutputFormats.Get "markdown" -}}
+<link
+    rel="alternate"
+    type="text/markdown"
+    href="{{ (strings.TrimSuffix "/" $.Permalink) }}.md"
+/>
+{{ end -}}
+{{ $outputFormat := partial "outputformat.html" . -}} {{ if and
 hugo.IsProduction (ne $outputFormat "print") -}}
 <meta name="robots" content="index, follow" />
 {{ else -}}

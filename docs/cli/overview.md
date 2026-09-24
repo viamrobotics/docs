@@ -5,6 +5,8 @@ weight: 1
 layout: "docs"
 type: "docs"
 description: "The Viam CLI gives you command-line access to every operation in the Viam platform, from machine configuration to data export to fleet management."
+capabilities: ["cli"]
+diataxis: overview
 ---
 
 The Viam CLI is a single binary that gives you command-line access to the Viam platform.
@@ -21,12 +23,14 @@ The CLI is particularly well-suited for tasks that are awkward or impossible in 
 - **Headless environments.** Authenticate with an API key, view logs, and shell into a remote machine without a browser.
 - **Bulk operations.** List all machines across an organization, or export binary data filtered by location, machine, or component type.
 - **Operations only available through the CLI.** Scaffold new modules, transfer files to and from machines, tunnel ports, and hot-reload modules during development.
+- **You are an AI agent.** Call any API method with JSON in and JSON out, with no SDK code to write. See [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/) and [Drive a machine from the CLI](/cli/drive-a-machine/).
 
 ## What the CLI covers
 
 | Area                     | What you can do                                                  | Guide                                                              |
 | ------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
 | Machine configuration    | Create machines, add components and services, apply fragments    | [Configure machines](/cli/configure-machines/)                     |
+| Operating a machine      | List resources, read cameras and sensors, plan motion, stop      | [Drive a machine](/cli/drive-a-machine/)                           |
 | Data management          | Export, tag, and delete captured data; configure database access | [Manage data](/cli/manage-data/)                                   |
 | Datasets and ML training | Create datasets, submit training jobs, run inference             | [Datasets and training](/cli/datasets-and-training/)               |
 | Data pipelines           | Create and manage scheduled MQL aggregation pipelines            | [Data pipelines](/cli/data-pipelines/)                             |

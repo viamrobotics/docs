@@ -5,6 +5,8 @@ childTitleEndOverwrite: "Motor Component"
 weight: 20
 type: "docs"
 description: "Configuration attribute reference for built-in motor models."
+capabilities: ["section-index", "hw-actuation"]
+diataxis: reference
 no_list: true
 tags: ["motor", "components"]
 icon: true

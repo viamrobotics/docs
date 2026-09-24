@@ -5,6 +5,8 @@ weight: 5
 layout: "docs"
 type: "docs"
 description: "Short end-to-end motion tutorials that run on fake components, so you need no hardware."
+capabilities: ["motion-planning", "section-index"]
+diataxis: overview
 ---
 
 Start with [Move your first arm](/motion-planning/quickstarts/first-arm/)

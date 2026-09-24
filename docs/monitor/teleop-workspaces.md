@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Build custom operator interfaces with camera feeds, sensor readouts, and component controls."
+capabilities: ["teleop"]
+diataxis: how-to
 aliases:
   - /manage/troubleshoot/teleoperate/custom-interface/
   - /monitor/custom-interface/

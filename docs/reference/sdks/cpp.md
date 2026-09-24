@@ -1,9 +1,11 @@
 ---
 title: "C++"
 linkTitle: "C++"
+capabilities: ["sdks"]
 weight: 40
 type: "docs"
 layout: "empty"
+description: "Reference documentation for Viam's C++ SDK client library."
 icon: true
 images: ["/logos/cpp.svg"]
 canonical: "https://cpp.viam.dev/"

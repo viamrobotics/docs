@@ -4,6 +4,8 @@ linkTitle: "Motor"
 weight: 130
 type: "docs"
 description: "Give commands to operate a motor or get its current status."
+capabilities: ["hw-actuation", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/motor.svg"]
 date: "2024-10-10"

@@ -4,6 +4,8 @@ linkTitle: "Sensor"
 weight: 160
 type: "docs"
 description: "Give commands for getting sensor readings."
+capabilities: ["hw-sensing", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/sensor.svg"]
 date: "2022-10-10"

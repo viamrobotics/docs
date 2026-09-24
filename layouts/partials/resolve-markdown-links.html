@@ -1,0 +1,39 @@
+{{- $page := .page -}}
+{{- $text := .text -}}
+{{- $currentDir := $page.Path -}}
+
+{{/* Protect fenced code blocks first -- content inside them, such as the Go
+     generic call NativeConfig[*Config](rawConf), can look like Markdown link
+     syntax but must never be touched. */}}
+{{- $codeBlocks := slice -}}
+{{- range $i, $match := (findRE "(?s)```.*?```" $text 200) -}}
+  {{- $codeBlocks = $codeBlocks | append $match -}}
+  {{- $text = strings.Replace $text $match (printf "@@MDCODEBLOCK%d@@" $i) 1 -}}
+{{- end -}}
+
+{{- range $match := (findRE `\[[^\]]*\]\([^)]+\)` $text 500) -}}
+  {{- $dest := replaceRE `^\[[^\]]*\]\(([^)]+)\)$` "$1" $match -}}
+  {{- if not (or (hasPrefix $dest "/") (hasPrefix $dest "http://") (hasPrefix $dest "https://") (hasPrefix $dest "#") (hasPrefix $dest "mailto:") (hasPrefix $dest "tel:") (in $dest "<")) -}}
+    {{- $destPath := $dest -}}
+    {{- $fragment := "" -}}
+    {{- if in $destPath "#" -}}
+      {{- $parts := split $destPath "#" -}}
+      {{- $destPath = index $parts 0 -}}
+      {{- $fragment = printf "#%s" (index $parts 1) -}}
+    {{- end -}}
+    {{- $resolvedPath := path.Join $currentDir $destPath -}}
+    {{- with site.GetPage $resolvedPath -}}
+      {{- $newDest := printf "%s%s" .RelPermalink $fragment -}}
+      {{- $newMatch := replaceRE `(\]\()[^)]+(\))` (printf "${1}%s${2}" $newDest) $match -}}
+      {{- $text = strings.Replace $text $match $newMatch 1 -}}
+    {{- else -}}
+      {{- warnf "resolve-markdown-links: could not resolve %q (joined: %q) on page %q" $dest $resolvedPath $page.Path -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range $i, $block := $codeBlocks -}}
+  {{- $text = strings.Replace $text (printf "@@MDCODEBLOCK%d@@" $i) $block 1 -}}
+{{- end -}}
+
+{{- return $text -}}

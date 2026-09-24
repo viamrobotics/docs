@@ -4,6 +4,8 @@ linkTitle: "gamepad"
 weight: 30
 type: "docs"
 description: "Reference for the gamepad input-controller model. Linux-supported gamepad as an input controller."
+capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/controller.svg"]
 tags: ["input controller", "components"]
 aliases:

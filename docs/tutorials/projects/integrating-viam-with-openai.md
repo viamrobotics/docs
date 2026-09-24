@@ -17,6 +17,8 @@ tags:
     "python",
   ]
 description: "Harness AI and use ChatGPT to add life to your Viam rover and turn it into a companion robot."
+capabilities: ["hw-actuation", "vision-service", "ml-models", "docs"]
+diataxis: tutorial
 images: ["/tutorials/ai-integration/rosey_robot.jpg"]
 aliases: /tutorials/integrating-viam-with-openai/
 imageAlt: "An AI powered companion robot called Rosey."
@@ -77,7 +79,7 @@ This tutorial will show you how to use the Viam platform to create an AI-integra
 ## Rover setup
 
 This tutorial assumes that you have already set up your Viam Rover.
-If not, first follow the Viam Rover [setup instructions](/try/viam-rover/setup/).
+If not, first follow the Viam Rover [setup instructions](/reference/device-setup/viam-rover/setup/).
 
 If you are not using a Viam Rover, add a new machine.
 Then follow the {{< glossary_tooltip term_id="setup" text="setup instructions" >}} to install `viam-server` on the computer you're using for your project and connect to Viam.

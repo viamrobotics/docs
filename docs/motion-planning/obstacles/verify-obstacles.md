@@ -5,6 +5,8 @@ weight: 25
 layout: "docs"
 type: "docs"
 description: "Visualize and adjust obstacle geometry so the motion planner routes around physical objects."
+capabilities: ["motion-planning", "scene-3d"]
+diataxis: how-to
 aliases:
   - /motion-planning/3d-scene/set-up-obstacle-avoidance/
 ---

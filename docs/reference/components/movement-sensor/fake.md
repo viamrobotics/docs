@@ -4,6 +4,8 @@ linkTitle: "fake"
 weight: 10
 type: "docs"
 description: "Reference for the fake movement-sensor model. Fake movement sensor to test software without any hardware."
+capabilities: ["hw-sensing"]
+diataxis: reference
 images: ["/icons/components/imu.svg"]
 aliases:
   - "/operate/reference/components/movement-sensor/fake/"

@@ -1,0 +1,17 @@
+{{ $path := .path }}
+{{ $depth := .depth }}
+{{ $table := partialCached "netlify-redirect-table.html" "x" }}
+{{ $result := $path }}
+{{ range $table }}
+  {{ if eq .from $path }}
+    {{ $result = .to }}
+  {{ end }}
+{{ end }}
+{{ if ne $result $path }}
+  {{ if ge $depth 5 }}
+    {{ errorf "resolve-chain: exceeded max depth resolving %s" $path }}
+  {{ else }}
+    {{ $result = partial "resolve-chain.html" (dict "path" $result "depth" (add $depth 1)) }}
+  {{ end }}
+{{ end }}
+{{ return $result }}

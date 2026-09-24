@@ -5,6 +5,7 @@ type: "docs"
 layout: "empty"
 canonical: "https://codelabs.viam.com/guide/linefollower/index.html"
 description: "Build a line-following robot that relies on a webcam and color detection."
+capabilities: ["vision-service", "hw-mobility", "docs"]
 tags: ["base", "vision", "detector", "camera", "services", "python"]
 videos:
   [

@@ -4,6 +4,8 @@ linkTitle: "Gripper"
 weight: 110
 type: "docs"
 description: "Give commands for opening and closing a gripper device."
+capabilities: ["hw-actuation", "sdks"]
+diataxis: reference
 icon: true
 images: ["/icons/components/gripper.svg"]
 date: "2022-01-01"

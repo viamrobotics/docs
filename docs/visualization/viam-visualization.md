@@ -5,6 +5,8 @@ weight: 30
 layout: "docs"
 type: "docs"
 description: "Run the standalone Viam Visualization app locally and push geometries, point clouds, and frame systems to it from a Go client."
+capabilities: ["scene-3d"]
+diataxis: explanation
 aliases:
   - /visualization/drawing-library/
 ---

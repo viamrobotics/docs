@@ -5,6 +5,8 @@ weight: 40
 layout: "docs"
 type: "docs"
 description: "Deploy your inspector module and configure queryable detection data capture."
+capabilities: ["module-development", "data-capture", "docs"]
+diataxis: tutorial
 date: "2025-01-30"
 aliases:
   - /try/part-4/

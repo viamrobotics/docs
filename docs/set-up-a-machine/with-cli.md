@@ -5,6 +5,8 @@ weight: 2
 layout: "docs"
 type: "docs"
 description: "Create and connect machines from the command line."
+capabilities: ["cli"]
+diataxis: how-to
 aliases:
   - /set-up-a-machine/as-code/
 ---

@@ -7,17 +7,20 @@ tags: ["rover", "tutorial"]
 images: ["/appendix/try-viam/rover-resources/viam-rover/box-contents.jpg"]
 imageAlt: "A Viam Rover 1 in a box"
 description: "A list of the contents of the Viam Rover 1 kit, instructions for wiring your rover, and links for additional hardware."
+capabilities: ["hw-mobility", "device-provisioning", "docs"]
+diataxis: how-to
 aliases:
   - /rover-resources/rover-tutorial/
   - /try-viam/rover-resources/rover-tutorial/
   - /appendix/try-viam/rover-resources/rover-tutorial-1/
   - /dev/reference/try-viam/rover-resources/rover-tutorial-1/
+  - /try/viam-rover/rover-1-setup/
 date: "2026-05-23"
 ---
 
 {{% alert title="Tip" color="tip" %}}
 A newer version of the Viam Rover, the [Viam Rover 2](https://www.viam.com/resources/rover), replaced the Viam Rover 1.
-If you have a Viam Rover 2, follow [these instructions](/try/viam-rover/setup/) instead.
+If you have a Viam Rover 2, follow [these instructions](/reference/device-setup/viam-rover/setup/) instead.
 {{% /alert %}}
 
 The Viam Rover 1 shipped preassembled with two encoded motors with suspension, a webcam with a microphone unit, and a 3D accelerometer module.
@@ -251,20 +254,20 @@ Follow the instructions to install `viam-server` on **Linux / Aarch64**.
 
 `ssh` into your Pi and follow the setup instructions to install and run `viam-server` on the machine.
 
-To configure your rover so you can start driving it, [add the Viam fragment to your Machine](/try/viam-rover/fragments/).
+To configure your rover so you can start driving it, [add the Viam fragment to your Machine](/reference/device-setup/viam-rover/fragments/).
 
 ## Next steps
 
 Before you can use your Viam rover with the Viam platform you need to configure your rover:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/fragments/" %}}
+{{% card link="/reference/device-setup/viam-rover/fragments/" %}}
 {{< /cards >}}
 
 After you have configured your rover, follow this tutorial:
 
 {{< cards >}}
-{{% card link="/try/viam-rover/drive-rover/" %}}
+{{% card link="/tutorials/control/drive-rover/" %}}
 {{< /cards >}}
 
 ### Rover build

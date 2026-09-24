@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 manualLink: "/build-apps/overview/"
 description: "Build client apps that talk to your Viam machines and the Viam cloud."
+capabilities: ["sdks"]
 date: "2026-04-10"
 aliases:
   # The following aliases are deferred. The pages listed still exist in

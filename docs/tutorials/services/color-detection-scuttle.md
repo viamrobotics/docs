@@ -3,6 +3,8 @@ title: "Follow a Colored Object with a Rover (like SCUTTLE)"
 linkTitle: "Colored Object Follower"
 type: "docs"
 description: "Instructions for detecting and following a colored object with a rover, like a SCUTTLE robot."
+capabilities: ["vision-service", "hw-mobility", "docs"]
+diataxis: tutorial
 videos:
   [
     "/tutorials/videos/scuttle-colordetection-preview.webm",
@@ -315,7 +317,7 @@ Use something like a red sports ball or book cover as a target to follow to test
 ## Next steps
 
 Congratulations! If you're ready for more, try making your rover detect other colors.
-You could also write some code with a Viam SDK to [make your rover move in a square](/try/viam-rover/drive-rover/).
+You could also write some code with a Viam SDK to [make your rover move in a square](/tutorials/control/drive-rover/).
 
 {{< snippet "social.md" >}}
 

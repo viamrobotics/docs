@@ -6,6 +6,7 @@ layout: "empty"
 canonical: "https://codelabs.viam.com/guide/plant-watering-device-workshop/index.html"
 tags: ["APIs", "python"]
 description: "Learn how to physically assemble a functional plant watering device by connecting and wire the components and code the machine."
+capabilities: ["hw-sensing", "hw-compute", "docs"]
 images: ["/codelabs/plant-watering.png"]
 imageAlt: "wiring diagram"
 authors: ["Hazal Mestci"]

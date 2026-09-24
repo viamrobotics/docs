@@ -4,6 +4,8 @@ linkTitle: "Machine management"
 weight: 20
 type: "docs"
 description: "How to use the machine API to monitor and manage your machines."
+capabilities: ["sdks"]
+diataxis: reference
 tags: ["robot state", "sdk", "apis", "robot api"]
 aliases:
   - /dev/reference/apis/robot/

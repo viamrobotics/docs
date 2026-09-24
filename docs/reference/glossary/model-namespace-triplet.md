@@ -1,5 +1,6 @@
 ---
 title: Model Namespace Triplet
+capabilities: ["glossary", "docs"]
 id: model-namespace-triplet
 short_description: namespace:module-name:name or rdk:builtin:name
 aliases:

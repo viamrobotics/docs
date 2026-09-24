@@ -5,6 +5,8 @@ weight: 80
 layout: "docs"
 type: "docs"
 description: "Develop a Viam client app against a real machine without deploying. Covers direct local-network connections and the viam module local-app-testing CLI."
+capabilities: ["sdks", "cli"]
+diataxis: how-to
 date: "2026-04-10"
 ---
 

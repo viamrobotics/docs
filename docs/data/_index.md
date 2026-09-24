@@ -7,6 +7,7 @@ type: "docs"
 no_list: true
 manualLink: "/data/overview/"
 description: "Record sensor data on your robot, sync it to the cloud, and query, export, or use it for ML training."
+capabilities: ["section-index"]
 aliases:
   - /build/data/
   - /services/data/capture/

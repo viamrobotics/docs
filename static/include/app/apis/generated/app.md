@@ -6403,6 +6403,28 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 Retrieve the app content for an organization.
 
 {{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgPublicNamespace`
+- `appName` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*AppContent)](https://pkg.go.dev/go.viam.com/rdk/app#AppContent)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+content, err := cloud.GetAppContent(context.Background(), "my-org", "my-app")
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetAppContent).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
@@ -6433,6 +6455,28 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 Retrieves the app branding for an organization or app.
 
 {{< tabs >}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `orgPublicNamespace`
+- `appName` [(string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [(*AppBranding)](https://pkg.go.dev/go.viam.com/rdk/app#AppBranding)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+branding, err := cloud.GetAppBranding(context.Background(), "my-org", "my-app")
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.GetAppBranding).
+
+{{% /tab %}}
 {{% tab name="TypeScript" %}}
 
 **Parameters:**
