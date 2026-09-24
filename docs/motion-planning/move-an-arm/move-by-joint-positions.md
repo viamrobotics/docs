@@ -218,13 +218,13 @@ programmatically.
 
 ## Joint-space moves compared to motion.Move
 
-| Motion path                     | Use when                                                                                            |
-| ------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `arm.MoveToJointPositions`      | You know the joint angles you want.                                                                 |
-| `arm.MoveThroughJointPositions` | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
-| `arm.MoveToPosition`            | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
-| `motion.Move`                   | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
-| [`arm.MoveThroughJointPositionsStreamed`](/motion-planning/move-an-arm/stream-joint-positions/) (Python, Go, C++) | You are producing the trajectory as the arm moves and cannot supply it all up front. |                |
+| Motion path                                                                                                       | Use when                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --- |
+| `arm.MoveToJointPositions`                                                                                        | You know the joint angles you want.                                                                 |
+| `arm.MoveThroughJointPositions`                                                                                   | You have a sequence of joint targets and want per-call velocity or acceleration caps.               |
+| `arm.MoveToPosition`                                                                                              | You have a Cartesian target pose but don't need obstacle avoidance.                                 |
+| `motion.Move`                                                                                                     | You have a Cartesian target and want obstacle avoidance, constraints, and IK picked by the planner. |
+| [`arm.MoveThroughJointPositionsStreamed`](/motion-planning/move-an-arm/stream-joint-positions/) (Python, Go, C++) | You are producing the trajectory as the arm moves and cannot supply it all up front.                |     |
 
 Joint-space moves are the right call when you need to control the
 posture of the arm precisely. They do not protect against collisions
