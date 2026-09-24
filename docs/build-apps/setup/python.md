@@ -37,7 +37,7 @@ source .venv/bin/activate
 pip install viam-sdk
 ```
 
-Pre-built binaries are available for macOS (Intel and Apple Silicon) and Linux (x86_64, aarch64, armv6l). On Windows, WebRTC is not supported natively; use WSL or connect with `disable_webrtc=True` in the dial options.
+Pre-built binaries are available for macOS (Intel and Apple Silicon) and Linux (x86_64, aarch64, armv6l). On Windows, WebRTC is not supported; pass `disable_webrtc=True` in your dial options to connect over direct gRPC instead.
 
 If you need the ML model service, install with the optional dependency:
 
@@ -126,7 +126,7 @@ All Viam Python SDK methods are async. Your app code runs inside `asyncio.run()`
 ## Troubleshooting
 
 - **`ModuleNotFoundError: No module named 'viam'`.** Confirm the virtual environment is activated (`source .venv/bin/activate`) and that you installed the SDK inside it.
-- **Connection hangs on Windows.** WebRTC is not supported on native Windows. Either use WSL, or pass `disable_webrtc=True` in your `DialOptions` to fall back to direct gRPC.
+- **Connection hangs on Windows.** WebRTC is not supported on Windows. Pass `disable_webrtc=True` in your `DialOptions` to fall back to direct gRPC.
 - **Credentials wrong.** Compare the three values in `.env` to the **CONNECT** tab output.
 
 ## Next

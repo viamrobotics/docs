@@ -79,8 +79,8 @@ source .venv/bin/activate
 pip install viam-sdk
 ```
 
-Windows is not supported.
-If you are using Windows, use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and install the Python SDK using the preceding instructions for Linux.
+On Windows, WebRTC is not supported.
+Pass `disable_webrtc=True` in your dial options to connect over direct gRPC instead.
 For other unsupported systems, see [Installing from source](https://python.viam.dev/#installing-from-source).
 
 {{% /tab %}}
