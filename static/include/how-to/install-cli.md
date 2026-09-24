@@ -52,7 +52,11 @@ sudo chmod a+rx /usr/local/bin/viam
 {{% /tab %}}
 {{% tab name="Windows" %}}
 
-[Download the binary](https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe) and run it directly to use the Viam CLI on a Windows computer.
+[Download the installer](https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-windows-installer.exe) and run it.
+The installer installs `viam.exe` for your user account and adds its folder to your user `PATH`, so you can run `viam` from any new Command Prompt or PowerShell window.
+To upgrade, download and run the latest installer.
+
+Alternatively, [download the binary](https://storage.googleapis.com/packages.viam.com/apps/viam-cli/viam-cli-stable-windows-amd64.exe) and run it directly.
 
 {{% /tab %}}
 {{% tab name="Source" %}}
