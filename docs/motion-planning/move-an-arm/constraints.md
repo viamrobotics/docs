@@ -54,20 +54,19 @@ Forces the end effector to maintain a consistent orientation throughout the
 motion. Use this when the end effector must stay level or keep a fixed
 orientation (for example, carrying a liquid).
 
-| Parameter                    | Type                        | Description                                                                                                                                               |
-| ---------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `orientation_tolerance_degs` | float (optional, default 0) | Maximum orientation deviation, in degrees, for orientations that fall outside the start-to-goal box. A value of 0 rejects any deviation outside that box. |
+| Parameter                    | Type                        | Description                                                                                                                                                                                                            |
+| ---------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orientation_tolerance_degs` | float (optional, default 0) | Maximum angular distance, in degrees, between the end effector's orientation and the direct rotation from the start orientation to the goal orientation. A value of 0 rejects any deviation from that direct rotation. |
 
-The planner checks each orientation vector component (`OX`, `OY`, `OZ`,
-`Theta`) against the start and goal independently. If every component of
-the current orientation falls between the corresponding start and goal
-values, the constraint is satisfied with zero error.
+The planner treats the direct rotation from the start orientation to the
+goal orientation as a path: the shortest (geodesic) arc between them. At
+each point of the motion, it measures the angular distance from the
+current orientation to the nearest orientation on that arc, and rejects
+the path if that distance exceeds `orientation_tolerance_degs`.
 
-Otherwise, the planner measures the angular distance to whichever
-endpoint is closer (start or goal) and rejects the path if that distance
-exceeds `orientation_tolerance_degs`. The per-component box check allows
-smooth transitions when start and goal have different orientations; the
-tolerance gives a cushion on either side.
+The allowed orientations form one connected tube around the direct
+rotation, so the arm can make a large reorientation between start and goal
+while staying close to the most direct way of getting there.
 
 ### PseudolinearConstraint
 
