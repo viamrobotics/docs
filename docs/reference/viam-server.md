@@ -359,9 +359,16 @@ The service restarts `viam-server` if it exits and writes logs to <FILE>$(brew -
 Upgrade it yourself with `brew upgrade viam-server`; nothing updates it from the cloud.
 
 {{% /tab %}}
-{{% tab name="Windows" %}}
+{{% tab name="Windows Subsystem for Linux (WSL)" %}}
 
-To install `viam-agent` on Windows, open **Command Prompt as administrator** and run the following command.
+```bash {class="line-numbers linkable-line-numbers"}
+curl https://storage.googleapis.com/packages.viam.com/apps/viam-server/viam-server-stable-x86_64 -o viam-server && chmod 755 viam-server
+```
+
+{{% /tab %}}
+{{% tab name="Windows native" %}}
+
+To install `viam-agent` on native Windows, open **Command Prompt as administrator** and run the following command.
 Replace `<KEY_ID>` and `<KEY>` with an [API key](/organization/api-keys/) that can access your machine, and `<PART_ID>` with your machine part's ID.
 To copy the part ID, click the **Live** / **Offline** status dropdown at the top of your machine's page, then click **Part ID**.
 
