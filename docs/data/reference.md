@@ -255,7 +255,7 @@ Avoid configuring capture rates higher than your hardware can handle. This leads
 | `name` | string | **Required** | Fully qualified resource name (for example, `rdk:component:sensor/my-sensor`). |
 | `method` | string | **Required** | Depends on the component or service type. See [Supported resources](#supported-resources). Individual tabular readings larger than 4&nbsp;MB are rejected at upload time and will not sync to the cloud. |
 | `capture_frequency_hz` | float   | **Required** | Frequency in hertz. For example, `0.5` = one reading every 2 seconds. |
-| `additional_params` | object | Optional | Method-specific parameters. For example, `DoCommand` requires a `docommand_input` object; `GetImages` accepts a `filter_source_names` list. |
+| `additional_params` | object | Optional | Method-specific parameters. For example, `DoCommand` requires a `docommand_input` object; `GetImages` accepts a `filter_source_names` list (the **Filter by source names** field in the data capture UI). |
 | `disabled` | boolean | Optional | Whether capture is disabled for this method. |
 | `tags` | array of strings | Optional | Tags applied to data captured by this specific method. Added alongside any tags set at the service level. |
 | `capture_directory` | string | Optional | Override the capture directory for this specific resource. If not set, uses the service-level `capture_dir`. |

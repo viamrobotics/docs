@@ -31,10 +31,7 @@ Confirm it shows as **Live** in the upper left.
    your component, and click the **Data Capture** button again.
 4. Select the method to capture:
    - For a camera, select **GetImages**. This captures a frame from the camera
-     each time it fires. If the camera returns images from more than one
-     source (for example, a color and a depth image), enter the sources to
-     keep in **Filter by source names**. Leave it empty to capture every
-     source.
+     each time it fires.
    - For a sensor, select **Readings**. This records the sensor's current
      values.
 5. Set the **capture frequency**. This is specified in hertz (captures per
