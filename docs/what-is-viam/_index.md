@@ -29,7 +29,7 @@ date: "2026-09-23"
 ---
 
 Viam is a platform for building software that runs on physical devices.
-You tell Viam what hardware and software capabilities your device needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your device actually does.
+You tell Viam what hardware and software capabilities your machine needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your machine actually does.
 
 It is the development workflow you already know, applied to physical devices: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
 
