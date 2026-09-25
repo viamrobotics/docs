@@ -94,10 +94,6 @@ In the machine settings card, open **Settings** and expand **Advanced**:
 
 Use `viam_server_env` to set [`viam-server` environment variables](/reference/viam-server/#environment-variables) on machines that `viam-agent` manages. `viam-agent` passes these variables to `viam-server`, and `viam-server` passes them on to its modules. A value set here overrides the same variable in `viam-agent`'s own environment.
 
-Values must be strings. Write `"true"`, not `true`. If any value isn't a string, `viam-agent` ignores all of the machine's agent settings from the cloud, including network settings, and uses its defaults instead.
-
-Changing `viam_server_env` restarts `viam-server` the next time a restart is allowed.
-
 For example, `block_downloads_on_low_disk` covers only downloads that `viam-agent` makes. To also block the module and package downloads that `viam-server` makes, set `VIAM_ENABLE_DISK_SPACE_BLOCK`:
 
 ```json
@@ -112,6 +108,10 @@ For example, `block_downloads_on_low_disk` covers only downloads that `viam-agen
   }
 }
 ```
+
+Values must be strings, as in the example: write `"true"`, not `true`. If any value isn't a string, `viam-agent` ignores all of the machine's agent settings from the cloud, including network settings, and uses its defaults instead.
+
+Changing `viam_server_env` restarts `viam-server` the next time a restart is allowed.
 
 ## System configuration
 
