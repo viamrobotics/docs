@@ -88,6 +88,7 @@ In the machine settings card, open **Settings** and expand **Advanced**:
 | `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                                                                                                                            |
 | `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules.                                                                                                                                                                              |
 | `disable_log_deduplication`         | boolean | `false` | Disable log deduplication for `viam-agent`. By default, `viam-agent` collapses noisy log messages (those that repeat more than 3 times within one minute) into a single message with a repeat count. Set to `true` to print every log line. |
+| `block_downloads_on_low_disk`       | boolean | `false` | Refuse `viam-agent` self-updates and `viam-server` downloads when a download would leave less than 10MB free on the `viam-agent` cache volume. When `false`, `viam-agent` logs a low-disk-space warning and downloads anyway.               |
 
 ## System configuration
 

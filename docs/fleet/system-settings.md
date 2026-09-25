@@ -39,15 +39,16 @@ When you change a version, the cloud sends an update instruction to viam-agent o
 
 In the machine settings card, open **Settings** and expand **Advanced**:
 
-| Field                               | Type    | Default | Description                                                                 |
-| ----------------------------------- | ------- | ------- | --------------------------------------------------------------------------- |
-| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                        |
-| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                        |
-| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                       |
-| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.          |
-| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules.                |
-| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.              |
-| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server. |
+| Field                               | Type    | Default | Description                                                                                                                                                                             |
+| ----------------------------------- | ------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                                                                                                                                    |
+| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                                                                                                                                    |
+| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                                                                                                                                   |
+| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.                                                                                                                      |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules.                                                                                                                            |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.                                                                                                                          |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server.                                                                                                             |
+| `block_downloads_on_low_disk`       | boolean | `false` | Refuse agent self-updates and `viam-server` downloads when a download would leave less than 10MB free on the cache volume. When `false`, the agent logs a warning and downloads anyway. |
 
 ## Configure additional networks
 
