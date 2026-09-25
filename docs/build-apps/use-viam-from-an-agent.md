@@ -36,9 +36,11 @@ If you already have a key and a terminal, the shortest path is [Drive a machine 
 | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | CLI  | You have a shell. One command calls any API method with JSON in and JSON out; no code to write.                                                  | [Drive a machine from the CLI](/cli/drive-a-machine/)                                                                      |
 | SDK  | You need to hold state across steps (a grasp, then a lift, then a place), stream frames, or run a loop. One long-lived client keeps one session. | [Connect to a machine](/build-apps/tasks/connect-to-machine/), [Control components](/build-apps/tasks/control-components/) |
+| MCP  | You are an MCP client (Claude, Claude Code, ChatGPT, Codex, or another). Tool calls replace shell commands; no code or CLI needed.               | [MCP server](/reference/mcp/)                                                                                              |
 
-The two paths call the same API.
-Anything you can do with one you can do with the other; the difference is whether you want a process that stays connected.
+All three paths reach the same underlying APIs.
+The CLI and SDK run where the agent runs and open their own connection to the machine, brokered by Viam's cloud; the MCP server runs in Viam's cloud and holds that connection for you.
+MCP tools cover fleet and configuration management plus live machine interaction, but do not expose every method the CLI and SDK do. Check the [tool list](/reference/mcp/#tools) for what is available.
 
 ## Look before you move
 
@@ -163,8 +165,14 @@ It is a single JSON object replaced whole on every write, with no revision check
 
 ## Growing the machine
 
-A procedure that works can become a permanent capability of the machine.
-`viam module generate` scaffolds a module, `viam module reload` hot-loads it onto the running part, and the new resource then appears in `ResourceNames` like any built-in.
+Before building a new capability, check what already exists.
+Viam ships [built-in components](/reference/components/) and [built-in services](/reference/services/) that cover common hardware and software needs, and the [Viam registry](/build-modules/use-registry-modules/) has hundreds of additional modules maintained by Viam and the community.
+Search the registry before writing a driver or service from scratch; the hardware you need may already be supported.
+
+When nothing in the registry fits, you can develop your own module.
+`viam module generate` creates a module skeleton, `viam module reload` hot-loads it onto the running part, and the new resource then appears in `ResourceNames` like any built-in.
+A reload is a test build: it replaces any registry version of that module on this part until reload is turned off in the part's config, which the CLI cannot do.
+Tell your operator when you have reloaded a module, and publish a versioned release when the module should stay.
 See [Build and deploy modules](/cli/build-and-deploy-modules/).
 
 ## Reading errors

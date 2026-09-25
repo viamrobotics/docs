@@ -7,7 +7,7 @@ type: "docs"
 no_list: true
 images: ["/general/understand.png"]
 imageAlt: "Viam platform overview"
-description: "Viam is a software platform for building, deploying, and managing robotics applications."
+description: "Understand the core concepts behind Viam: machines, parts, resources, models, and modules, and where to go next."
 capabilities: ["docs", "viam-server", "viam-agent"]
 diataxis: explanation
 aliases:
@@ -25,58 +25,78 @@ aliases:
   - /understand/what-is-viam/
   - /what-is-viam/problems-viam-solves/
   - /what-is-viam/what-is-viam/
-date: "2025-01-30"
+date: "2026-09-23"
 ---
 
-Viam is a software platform for building, deploying, and managing robotics applications.
+Viam is a platform for building software that runs on physical devices.
+You tell Viam what hardware and software capabilities your machine needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your machine actually does.
 
-With Viam, you declare the hardware and services you need in a JSON config. Viam installs the drivers and any additional software modules required to support your configuration.
-Vision, motion planning, and most other capabilities you need are built in or available in the Viam module Registry, all with well-defined APIs to support your use case.
-Application code versioning, deployment, and rollback are native to the Viam platform.
-It's the development workflow you're used to, applied to physical devices.
+It is the development workflow you already know, applied to physical devices: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
 
-Viam brings software engineering practices to robotics: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
+<img src="/what-is-viam-technical.svg" alt="How a Viam machine fits together: your code runs on any computer and reaches the machine over WebRTC and gRPC. app.viam.com holds the module registry, data and ML, and fleet management, and sends configuration, modules, and ML models down to the machine, which sends data, logs, and status back up. On the machine's compute (the part), viam-agent supervises viam-server, which exposes resources: components for physical hardware and services for software capabilities. Components connect to cameras, motors, arms, sensors, boards, grippers, and other hardware over USB, GPIO, Ethernet, serial, or CAN." style="width:100%;max-width:720px;height:auto;display:block" >
 
-<img src="/what-is-viam-technical.svg" alt="Architecture diagram showing how a Viam machine works: app.viam.com at top, connected to your machine running viam-agent and viam-server with hardware drivers, software integrations, built-in services, and your code, connected to physical peripherals at bottom." style="width:100%;max-width:720px;height:auto;display:block" >
+## Platform mental model
 
-## Viam fundamentals
+Every device you connect to Viam is a machine made of parts, where each part runs a configuration of resources (components for hardware, services for software), and modules extend the platform with new resource types.
 
-Every Viam machine starts with `viam-agent`.
-Install it with a single command.
-`viam-agent` installs `viam-server`, supervises it, and keeps it up to date.
+### Machines and parts
 
-`viam-server` is the core runtime.
-It pulls your machine's configuration from app.viam.com, fetches the necessary modules from the Viam Registry, launches required processes, and keeps them running to support all the hardware and services your application requires.
+On the Viam platform, a **machine** is the combination of your compute resources and hardware that you want to control using Viam. A machine might be a robot arm with a gripper and a camera, a Raspberry Pi wired to some sensors, or a laptop collecting data through a webcam.
 
-The [Viam Registry](https://app.viam.com/registry) is a central repository of modules, ML models, and training scripts maintained by Viam and the robotics community.
-All registry assets support semantic versioning, enabling controlled deployment to individual robots and across your fleet.
+Every machine has at least one **part**: the computer that runs Viam's software and is connected to one or more physical devices.
 
-Registry modules provide drivers for cameras, motors, sensors, arms, and other hardware, plus services like object detection.
-`viam-server` also includes built-in services such as motion planning and data management.
-For machine learning, the Registry includes pretrained models for common tasks. You can also train and use your own models.
+A part can be almost any computer, including your own Mac or PC.
+Two programs run there, `viam-agent` and `viam-server`, and [installing Viam](/set-up-a-machine/viam-agent-and-server/) sets up both.
 
-Viam supports reusable configuration through [fragments](/fleet/reuse-configuration/).
-Define a combination of components, services, and modules once, then apply that configuration across any number of machines.
-Use fragments to configure a camera-arm combination, a camera-to-object-detection pipeline, or an entire work cell.
-Fragments support variable substitution and per-machine overwrites, so you can deploy the same base configuration to hundreds of machines while accommodating site-specific settings.
+### Configuration, resources, and models
 
-## Viam capabilities
+Every part has a JSON [configuration](/hardware/machine-configuration/) describing what hardware is connected to the part and what that hardware can do.
+You edit it on app.viam.com or the CLI, and the machine picks up your changes automatically.
 
-- **[Get hardware running in minutes](/hardware/):** Add a camera, motor, arm, or sensor to your configuration with a few parameters. `viam-server` pulls the driver and exposes the device through a consistent API. No writing drivers, no managing dependencies.
-- **[Operate from anywhere](/monitor/):** Connect to a machine over the network with no VPN or port forwarding. Stream logs, view live camera and sensor data, teleoperate, and see a 3D view of the machine, all from the browser.
-- **[Capture data from edge to cloud](/data/):** Configure which components to record and how often. Data syncs when bandwidth allows, queues locally when a machine goes offline, and can be filtered at the edge to control cost.
-- **[Train and deploy models](/train/):** Train machine learning models on captured data, or bring models from TensorFlow, PyTorch, or ONNX. Deploy them to your fleet and run inference on the device.
-- **[Develop code remotely](/reference/sdks/):** Write code on your laptop and run it against machine hardware over the network. When you are ready, package it as a module for production.
-- **[Manage software deployments](/build-modules/):** Package your control logic as a module and deploy it through the Registry. Pin machines to exact versions or allow automatic updates, and push new versions over the air.
-- **[Scale easily](/fleet/):** Apply one fragment to dozens or hundreds of machines, update them fleet-wide from a single change, override per-machine differences, and roll changes out or back incrementally.
-- **[Productize with Viam apps](/build-apps/overview/):** Build customer-facing web and mobile apps with the TypeScript and Flutter SDKs, add white-label authentication, and bill customers through Viam.
+Everything in the configuration is a **resource**. Resources come in two kinds:
+
+- **Components** represent physical hardware: a camera, a motor, a sensor, an arm, a gripper, or a board. Each one wraps a piece of hardware and exposes a standard API for it (for example, an arm API with move commands or a camera API that returns images).
+- **Services** are software capabilities running on the machine, such as computer vision, motion planning, data management, and any other code that controls the machine.
+
+Every resource has an API, and a **model** is a specific implementation of that API.
+For example, an SO-101 arm and a uFactory xArm6 arm are both models of the arm component API: they expose the same methods (`MoveToPosition`, `GetEndPosition`, and so on) even though the underlying hardware and protocols differ.
+The same applies to services: the ML model service API has models for TFLite, ONNX, and other inference runtimes, each implementing the same `Infer` method.
+
+When you configure a resource, you choose both the API (what kind of resource it is) and the model (which implementation to use).
+
+### Built-in resources and modules
+
+Some resources are **built-in**, meaning viam-server ships with them by default. These include services like [motion planning](/motion-planning/) and [computer vision](/vision/), as well as basic hardware drivers like [arms](/reference/components/arm/) and [cameras](/reference/components/camera/).
+
+See [built-in components](/reference/components/) and [services](/reference/services/) for the full list.
+
+Beyond builtins, the [Viam registry](https://app.viam.com/registry) has modules for hundreds of hardware drivers and software capabilities, maintained by Viam and the community.
+Before building something yourself, check the registry and the built-in services to see if your use case already exists.
+
+If nothing in the registry fits, you can [write and publish your own module](/build-modules/overview/).
+
+## What you can do with Viam
+
+| To do this                                           | Go here                                                          |
+| ---------------------------------------------------- | ---------------------------------------------------------------- |
+| Get a camera, motor, arm, or sensor running          | [Configure hardware](/hardware/)                                 |
+| Capture data on the machine and sync it to the cloud | [Manage data](/data/)                                            |
+| Train machine learning models on what you captured   | [Train ML models](/train/)                                       |
+| Detect and classify objects in a camera feed         | [Computer vision](/vision/)                                      |
+| Plan and execute motion for arms and mobile robots   | [Motion planning](/motion-planning/)                             |
+| Write code that controls a machine over the network  | [Viam SDKs](/reference/sdks/)                                    |
+| Control a machine from an AI agent or LLM            | [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/) |
+| Package your own logic and deploy it to machines     | [Build and deploy modules](/build-modules/)                      |
+| Build a web or mobile app for your customers         | [Build apps](/build-apps/overview/)                              |
+| Watch machine status, stream data, and teleoperate   | [Monitor and operate](/monitor/)                                 |
+| Configure and update many machines at once           | [Fleet deployment](/fleet/)                                      |
+| Organize machines and control who can reach them     | [Admin and access](/organization/overview/)                      |
 
 ## Next steps
 
 {{% alert title="Viam 101" color="tip" %}}
-Our [**Viam 101 course**](https://www.viam.com/viam-101) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required. You'll build a palletizing application from scratch: a robot arm that picks boxes from a station and stacks them on a pallet.
+Our [**Viam 101 course**](https://www.viam.com/viam-101) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required.
 {{% /alert %}}
 
-Visit [Try Viam](/try/overview/) to build your first machine using one of our available tutorials.
-
-For more information on cloud capabilities like fleet management and provisioning, see [Monitor Air Quality with a Fleet of Sensors](/tutorials/control/air-quality-fleet/).
+- [Try Viam](/try/overview/) to work through a complete project without buying any hardware.
+- [Set up your first machine](/set-up-a-machine/first-machine/) when you have a device ready to connect.
