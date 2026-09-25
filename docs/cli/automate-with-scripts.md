@@ -201,6 +201,8 @@ When running without a terminal, commands that normally prompt for user input in
 
 If you omit a required flag in non-interactive mode, the CLI prints an error listing the missing flags.
 
+Progress spinners are also suppressed automatically when stdout is not a terminal, so piped or redirected output stays clean without requiring `--no-progress`.
+
 ## Tips for scripting
 
 - Use `--quiet` (`-q`) to suppress non-essential output when parsing command results
