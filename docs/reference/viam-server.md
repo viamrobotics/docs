@@ -311,7 +311,7 @@ On machines that `viam-agent` manages, set them through the agent's [`viam_serve
 | `VIAM_RESOURCE_CONFIGURATION_TIMEOUT` | Override the default 2-minute per-resource configuration timeout. |
 | `VIAM_LOGFILE` | Path to a log file. `viam-server` writes logs to this file in addition to standard output. This differs from the `-log-file` flag, which writes to the file instead of standard output. |
 | `VIAM_NO_WINDOWS_EVENT_LOGGER` | If set to any value, disables writing logs to the Windows Event Logger and Event Tracing for Windows (ETW). Only relevant on Windows. |
-| `VIAM_ENABLE_DISK_SPACE_BLOCK` | If set to `true` (or any value starting with `t`, `T`, or `1`), `viam-server` refuses to download, copy, or unpack a package or module when doing so would leave less than 10MB free on the target volume. When unset (the default), `viam-server` logs a warning about low disk space and proceeds. `viam-agent` has a separate setting for its own downloads: [`block_downloads_on_low_disk`](/reference/viam-agent/#advanced-settings). |
+| `VIAM_ENABLE_DISK_SPACE_BLOCK` | If set to `true` (or any value starting with `t`, `T`, or `1`), `viam-server` refuses to download, copy, or unpack a package or module when doing so would leave less than 10MB free on the target volume. When unset (the default), `viam-server` logs a warning about low disk space and proceeds. `viam-agent` has a separate setting for its own downloads. |
 
 ## Install `viam-server` without the web UI
 
