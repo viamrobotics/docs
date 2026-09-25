@@ -33,6 +33,11 @@ The available release channels are:
 
 To pin to a specific build, use its exact published version, for example `1.4.0`, `1.5.0-rc0`, or `1.4.1-dev.16-c2c9600c6`. The version must exist for the machine's platform.
 
+If Viam deprecates a version that a machine is pinned to, that version can no longer be installed.
+The machine's **CONFIGURE** tab then shows a warning banner, **This machine is pinned to a deprecated version**, that names each deprecated pin and says whether the machine still runs that version or now runs a different one.
+Click **Software Updates** in the banner to open the version settings and pin a different version.
+While a machine runs a deprecated `viam-server` or `viam-agent` version, its **LOGS** tab also shows a warning from the `app.version_control` logger: `<subsystem> <version> is deprecated and can no longer be installed; please update this machine's version settings`.
+
 When you change a version, the cloud sends an update instruction to viam-agent on the machine. The agent downloads and installs the new version on its next check cycle. To control when the new version actually starts, configure a [maintenance window](/fleet/manage-versions/#maintenance-windows). To verify the new version landed across the fleet, see [verify a rollout across the fleet](/fleet/manage-versions/#verify-a-rollout-across-the-fleet).
 
 ## Agent advanced settings
