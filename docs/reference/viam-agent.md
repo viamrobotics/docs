@@ -97,9 +97,6 @@ Use `viam_server_env` to set [`viam-server` environment variables](/reference/vi
 A value set here overrides the same variable in `viam-agent`'s own environment.
 Values must be strings, so write `"true"`, not `true`.
 
-Changing `viam_server_env` restarts `viam-server`.
-The restart waits until `viam-server` allows it, so if the machine has a [maintenance window](/fleet/manage-versions/#maintenance-windows), the restart happens during the window.
-
 For example, `block_downloads_on_low_disk` covers only downloads that `viam-agent` makes.
 To also block the module and package downloads that `viam-server` makes, set `VIAM_ENABLE_DISK_SPACE_BLOCK`:
 
