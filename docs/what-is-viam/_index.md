@@ -33,7 +33,7 @@ You tell Viam what hardware and software capabilities your machine needs, and Vi
 
 It is the development workflow you already know, applied to physical devices: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
 
-<img src="/what-is-viam-technical.svg" alt="How a Viam machine fits together: your code runs on any computer and reaches the machine over WebRTC and gRPC. app.viam.com holds the module registry, data and ML, and fleet management, and sends configuration, modules, and ML models down to the machine, which sends data, logs, and status back up. On the machine, viam-agent supervises viam-server, which runs hardware drivers, built-in services, and your control code." style="width:100%;max-width:720px;height:auto;display:block" >
+<img src="/what-is-viam-technical.svg" alt="How a Viam machine fits together: your code runs on any computer and reaches the machine over WebRTC and gRPC. app.viam.com holds the module registry, data and ML, and fleet management, and sends configuration, modules, and ML models down to the machine, which sends data, logs, and status back up. On the machine's compute (the part), viam-agent supervises viam-server, which exposes resources: components for physical hardware and services for software capabilities. Components connect to cameras, motors, arms, sensors, boards, grippers, and other hardware over USB, GPIO, Ethernet, serial, or CAN." style="width:100%;max-width:720px;height:auto;display:block" >
 
 ## Platform mental model
 
