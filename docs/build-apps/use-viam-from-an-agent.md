@@ -39,7 +39,7 @@ If you already have a key and a terminal, the shortest path is [Drive a machine 
 | MCP  | You are an MCP client (Claude, Claude Code, ChatGPT, Codex, or another). Tool calls replace shell commands; no code or CLI needed.               | [MCP server](/reference/mcp/)                                                                                              |
 
 All three paths reach the same underlying APIs.
-The CLI and SDK connect directly to a machine; the MCP server connects through Viam's cloud, authenticates with OAuth, and scopes every call to the signed-in user's existing permissions.
+The CLI and SDK run where the agent runs and open their own connection to the machine, brokered by Viam's cloud; the MCP server runs in Viam's cloud and holds that connection for you.
 MCP tools cover fleet and configuration management plus live machine interaction, but do not expose every method the CLI and SDK do. Check the [tool list](/reference/mcp/#tools) for what is available.
 
 ## Look before you move
