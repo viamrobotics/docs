@@ -54,9 +54,10 @@ Forces the end effector to maintain a consistent orientation throughout the
 motion. Use this when the end effector must stay level or keep a fixed
 orientation (for example, carrying a liquid).
 
-| Parameter                    | Type                        | Description                                                                                                                                                                                                            |
-| ---------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `orientation_tolerance_degs` | float (optional, default 0) | Maximum angular distance, in degrees, between the end effector's orientation and the direct rotation from the start orientation to the goal orientation. A value of 0 rejects any deviation from that direct rotation. |
+| Parameter                    | Type                           | Description                                                                                                                                                                                                                                                       |
+| ---------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `orientation_tolerance_degs` | float (optional, default 0)    | Maximum angular distance, in degrees, between the end effector's orientation and the direct rotation from the start orientation to the goal orientation. A value of 0 rejects any deviation from that direct rotation.                                            |
+| `ignore_theta`               | bool (optional, default false) | When true, deviation is measured between orientation vectors alone, disregarding rotation about the component's own pointing axis. Set this for payloads that are symmetric about that axis, such as an open container that spills when tipped but not when spun. |
 
 The planner treats the direct rotation from the start orientation to the
 goal orientation as a path: the shortest (geodesic) arc between them. At
