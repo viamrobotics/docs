@@ -298,8 +298,7 @@ Enabling debug level logs will take precedence over all logging configuration se
 
 ## Environment variables
 
-You can set the following environment variables to configure `viam-server` behavior without command-line flags.
-On machines that `viam-agent` manages, set them through the agent's [`viam_server_env`](/reference/viam-agent/#set-viam-server-environment-variables) setting.
+You can set the following environment variables to configure `viam-server` behavior without command-line flags. On machines that `viam-agent` manages, set them through the agent's [`viam_server_env`](/reference/viam-agent/#set-viam-server-environment-variables) setting.
 
 <!-- prettier-ignore -->
 | Variable | Description |
