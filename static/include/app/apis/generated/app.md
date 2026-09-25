@@ -5236,7 +5236,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `itemId` (string) (required): The ID of the registry item to update.
 - `type` (PackageType) (required): The PackageType to update the item to.
 - `description` (string) (required): A description of the item.
-- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): A visibility value to update to.
+- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A visibility value to update to.
 - `billing` ([RegistryItemBilling](https://ts.viam.dev/classes/appApi.RegistryItemBilling.html)) (optional): Optional usage cost information to store on the item. When unset, the existing
   billing configuration is left unchanged.
 
@@ -5357,7 +5357,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The ID of the organization to query registry items for.
 - `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
-- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): A list of visibilities to query for. If empty, will not filter on
+- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not filter on
   visibility.
 - `platforms` (string) (required): A list of platforms to query for. If empty, will not filter on platform.
 - `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter on status.
@@ -5820,7 +5820,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `moduleId` (string) (required): The ID of the module to update.
-- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): The visibility to set for the module.
+- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): The visibility to set for the module.
 - `url` (string) (required): The url to reference for documentation, code, etc.
 - `description` (string) (required): A short description of the module.
 - `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)) (required): A list of models available in the module.

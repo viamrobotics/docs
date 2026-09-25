@@ -1177,7 +1177,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/c
 
 **Parameters:**
 
-- `powerMode` ([boardApi](https://ts.viam.dev/modules/boardApi.html)) (required): The requested power mode.
+- `powerMode` ([boardApi](https://ts.viam.dev/modules/boardApi.html).[PowerMode](https://ts.viam.dev/enums/boardApi.PowerMode.html)) (required): The requested power mode.
 - `duration` ([Duration](https://ts.viam.dev/classes/Duration.html)) (optional): The requested duration to stay in power mode.
 - `extra` (None) (optional)
 - `callOptions` (CallOptions) (optional)

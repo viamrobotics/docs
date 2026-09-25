@@ -149,7 +149,16 @@ class TypeScriptParser:
                                 param_description = param_description.replace('\n', '\n  ').rstrip()
 
                         signature = method.find(class_='tsd-signature').text
-                        param_type = md(str(param.find(class_="tsd-signature-type"))).strip()
+                        ## Namespace-qualified types (like appApi.Visibility) render as a namespace
+                        ## link, a '.', then the type link. Keep all of it, joined the way TypeDoc shows it:
+                        param_type_tag = param.find(class_="tsd-signature-type")
+                        param_type_parts = [param_type_tag]
+                        while param_type_tag is not None and 'tsd-kind-namespace' in param_type_tag.get('class', []):
+                            param_type_tag = param_type_tag.find_next_sibling(class_="tsd-signature-type")
+                            if param_type_tag is None:
+                                break
+                            param_type_parts.append(param_type_tag)
+                        param_type = '.'.join(md(str(part)).strip() for part in param_type_parts)
 
                         if param_description:
                             param_usage = "%s (%s) - %s" % (param_name, param_type, param_description)
