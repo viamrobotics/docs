@@ -78,17 +78,36 @@ To control when updates are applied, configure a [maintenance window](/fleet/man
 
 In the machine settings card, open **Settings** and expand **Advanced**:
 
-| Field                               | Type    | Default | Description                                                                                                                                                                                                                                 |
-| ----------------------------------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `debug`                             | boolean | `false` | Enable debug logging for `viam-agent`.                                                                                                                                                                                                      |
-| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting `viam-server`. Useful for ensuring the latest version runs on boot.                                                                                                          |
-| `disable_viam_server`               | boolean | `false` | Prevent `viam-agent` from starting `viam-server`. For development use.                                                                                                                                                                      |
-| `disable_network_configuration`     | boolean | `false` | Disable `viam-agent`'s network and hotspot management.                                                                                                                                                                                      |
-| `disable_system_configuration`      | boolean | `false` | Disable `viam-agent`'s system configuration management (OS updates, log forwarding).                                                                                                                                                        |
-| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                                                                                                                            |
-| `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules.                                                                                                                                                                              |
-| `disable_log_deduplication`         | boolean | `false` | Disable log deduplication for `viam-agent`. By default, `viam-agent` collapses noisy log messages (those that repeat more than 3 times within one minute) into a single message with a repeat count. Set to `true` to print every log line. |
-| `block_downloads_on_low_disk`       | boolean | `false` | Refuse `viam-agent` self-updates and `viam-server` downloads when a download would leave less than 10MB free on the `viam-agent` cache volume. When `false`, `viam-agent` logs a low-disk-space warning and downloads anyway.               |
+| Field                               | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `debug`                             | boolean | `false` | Enable debug logging for `viam-agent`.                                                                                                                                                                                                                                                                                                                               |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting `viam-server`. Useful for ensuring the latest version runs on boot.                                                                                                                                                                                                                                   |
+| `disable_viam_server`               | boolean | `false` | Prevent `viam-agent` from starting `viam-server`. For development use.                                                                                                                                                                                                                                                                                               |
+| `disable_network_configuration`     | boolean | `false` | Disable `viam-agent`'s network and hotspot management.                                                                                                                                                                                                                                                                                                               |
+| `disable_system_configuration`      | boolean | `false` | Disable `viam-agent`'s system configuration management (OS updates, log forwarding).                                                                                                                                                                                                                                                                                 |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive `viam-server`.                                                                                                                                                                                                                                                                                                     |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to `viam-server` and all modules.                                                                                                                                                                                                                                                                                                       |
+| `disable_log_deduplication`         | boolean | `false` | Disable log deduplication for `viam-agent`. By default, `viam-agent` collapses noisy log messages (those that repeat more than 3 times within one minute) into a single message with a repeat count. Set to `true` to print every log line.                                                                                                                          |
+| `block_downloads_on_low_disk`       | boolean | `false` | Refuse `viam-agent` self-updates and downloads of the `viam-server` binary when a download would leave less than 10MB free on the `viam-agent` cache volume. When `false`, `viam-agent` logs a low-disk-space warning and downloads anyway. Does not cover module or package downloads; see [Block downloads on low disk space](#block-downloads-on-low-disk-space). |
+
+### Block downloads on low disk space
+
+`block_downloads_on_low_disk` applies only to downloads that `viam-agent` makes.
+`viam-server` downloads modules and packages itself, and blocks those only when its [`VIAM_ENABLE_DISK_SPACE_BLOCK`](/reference/viam-server/#environment-variables) environment variable is set.
+To block both kinds of download, set both:
+
+```json
+{
+  "agent": {
+    "advanced_settings": {
+      "block_downloads_on_low_disk": true,
+      "viam_server_env": {
+        "VIAM_ENABLE_DISK_SPACE_BLOCK": "true"
+      }
+    }
+  }
+}
+```
 
 ## System configuration
 
