@@ -6,6 +6,7 @@ layout: "docs"
 type: "docs"
 description: "Connect Claude or another MCP client to your Viam fleet, and reference the tools the Viam MCP server exposes."
 capabilities: ["mcp"]
+diataxis: reference
 date: "2026-09-21"
 ---
 
