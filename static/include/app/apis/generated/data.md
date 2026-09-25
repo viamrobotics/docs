@@ -926,7 +926,7 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 
 **Parameters:**
 
-- `binaryIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[BinaryID](https://flutter.viam.dev/viam_protos.app.data/BinaryID-class.html)> (required)
+- `binaryDataIds` [List](https://api.flutter.dev/flutter/dart-core/List-class.html)<[String](https://api.flutter.dev/flutter/dart-core/String-class.html)> (required)
 - `includeBinary` [bool](https://api.flutter.dev/flutter/dart-core/bool-class.html) (optional)
 
 **Returns:**
@@ -943,13 +943,13 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
  final dataClient = _viam.dataClient;
 
  try {
-  final binaryIDs = [
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>'),
-   BinaryID(fileId: '<YOUR-FILE-ID>', organizationId: '<YOUR-ORG-ID>', locationId: '<YOUR-LOCATION-ID>')
+  final binaryDataIds = [
+    '<YOUR-BINARY-DATA-ID>',
+    '<YOUR-BINARY-DATA-ID>'
   ];
 
   final response = await dataClient.binaryDataByIds(
-    binaryIDs,
+    binaryDataIds,
     includeBinary: true
   );
 

@@ -1023,7 +1023,7 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 
 - `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
 - `interrupts` [([]DigitalInterrupt)](https://pkg.go.dev/go.viam.com/rdk/components/board#DigitalInterrupt): Slice of digital interrupts to receive ticks from.
-- `ch chan` [(Tick)](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick): The channel to stream Ticks, structs containing `Name`, `High`, and `TimestampNanosec` fields.
+- `ch` [(chan Tick)](https://pkg.go.dev/go.viam.com/rdk/components/board#Tick): The channel to stream Ticks, structs containing `Name`, `High`, and `TimestampNanosec` fields.
 - `extra` [(map[string]interface{})](https://go.dev/blog/maps): Extra options to pass to the underlying RPC call.
 
 **Returns:**
