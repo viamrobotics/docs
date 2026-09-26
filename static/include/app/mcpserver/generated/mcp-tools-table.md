@@ -7,7 +7,6 @@
 | `read_fragment_config` | Read-only |
 | `read_inline_module_code` | Read-only |
 | `read_machine_config` | Read-only |
-| `read_machine_logs` | Read-only |
 | `read_machine_metadata` | Read-only |
 | `read_part_status` | Read-only |
 | `search_configuration_blocks` | Read-only |
@@ -18,6 +17,7 @@
 | `add_machine_config_item` | Write |
 | `create_fragment` | Write |
 | `create_machine` | Write |
+| `read_machine_logs` | Write |
 | `delete_fragment_config_item` | Write (destructive) |
 | `delete_machine_config_item` | Write (destructive) |
 | `update_fragment_config_item` | Write (destructive) |
