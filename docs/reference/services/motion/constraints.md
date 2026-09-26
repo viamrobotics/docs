@@ -89,6 +89,7 @@ If set to zero, a movement with identical starting and ending orientations will 
 | Parameter Name | Type | Default | Description |
 | -------------- | ---- | ------- | ----------- |
 | orientation_tolerance_degs | float | 2.0 | Allowable deviation from Slerp between start/goal orientations, in degrees. |
+| ignore_theta | bool | false | When true, deviation is measured between orientation vectors alone, disregarding rotation about the component's own pointing axis. Use this for payloads symmetric about that axis (for example, an open container that spills when tipped but not when spun). |
 
 **Example usage**:
 
