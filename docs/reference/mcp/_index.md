@@ -28,12 +28,15 @@ Tools that connect to a live machine, in either **Live machine** category, use t
 
 ## Tool categories
 
-Tools fall into six groups, reflected in the **Category** column below:
+Tools fall into seven groups, reflected in the **Category** column below:
 
 - **Read-only** and **Read-only (external)** tools only read and change nothing, so most MCP clients don't prompt for confirmation before running them. Read-only tools query Viam's own data (your fleet, a machine's saved configuration). Read-only (external) tools, such as `read_viam_docs`, search an index outside Viam: a third-party search service that draws mainly on docs.viam.com and returns each passage with the URL it came from.
+- **Read (billable)** tools, currently only `read_machine_logs`, read data and change no configuration, but they aren't marked read-only to MCP clients: returning logs records billable data egress for the machine's organization. Many clients ask for confirmation before running them.
 - **Live machine (read-only)** tools, such as `read_machine_api` and `get_world_state`, connect to an online machine and read its current state. They don't move hardware or change configuration, but they aren't marked read-only to MCP clients: connecting uses the machine's default API key and creates that key if the machine doesn't have one yet. Many clients ask for confirmation before running them. They need the machine to be reachable and can take longer to answer than the other read tools.
 - **Write** tools create or add configuration. Most clients ask for confirmation before running one.
 - **Write (destructive)** and **Live machine (destructive)** tools change or delete existing configuration, or act directly on a live machine (for example, moving hardware with `call_machine_api` or `run_docommand`). These save or act immediately, with no draft and no undo, so review what a tool is about to do before approving it.
+
+The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragment_config_item`, and `delete_fragment_config_item`), in either **Write** category, are also marked open-world to MCP clients, because the fragment they change can be public or reachable by anyone with its ID.
 
 ## Tools
 

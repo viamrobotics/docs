@@ -7,11 +7,11 @@
 | `read_fragment_config` | Read-only |
 | `read_inline_module_code` | Read-only |
 | `read_machine_config` | Read-only |
-| `read_machine_logs` | Read-only |
 | `read_machine_metadata` | Read-only |
 | `read_part_status` | Read-only |
 | `search_configuration_blocks` | Read-only |
 | `read_viam_docs` | Read-only (external) |
+| `read_machine_logs` | Read (billable) |
 | `get_world_state` | Live machine (read-only) |
 | `read_machine_api` | Live machine (read-only) |
 | `add_fragment_config_item` | Write |

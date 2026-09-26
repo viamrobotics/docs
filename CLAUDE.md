@@ -68,7 +68,7 @@ Run prettier first because it can change line breaks that affect markdownlint re
 
 ## MCP server tool table
 
-`static/include/app/mcpserver/generated/mcp-tools-table.md`, included into `docs/reference/mcp/_index.md` through `{{< readfile >}}`, lists the Viam MCP server's tools by name and category (Read-only, Read-only (external), Live machine (read-only), Write, Write (destructive), Live machine (destructive)), kept accurate against `viamrobotics/app`'s `mcpserver` package as tools are added, removed, or recategorized. Do not hand-edit it—regenerate it from source when `mcpserver` changes.
+`static/include/app/mcpserver/generated/mcp-tools-table.md`, included into `docs/reference/mcp/_index.md` through `{{< readfile >}}`, lists the Viam MCP server's tools by name and category (Read-only, Read-only (external), Read (billable), Live machine (read-only), Write, Write (destructive), Live machine (destructive)), kept accurate against `viamrobotics/app`'s `mcpserver` package as tools are added, removed, or recategorized. Do not hand-edit it—regenerate it from source when `mcpserver` changes.
 
 - **Not covered by the standard pre-PR checks above.** `prettier-lint.yml` only checks `docs/**/*.md`, and `markdown-lint.yml` explicitly excludes `static/`. `make build-prod` still applies.
 - **Table has two columns on purpose—name and category, no description.** Each tool's own description is written for the model calling it, not for a human skimming a table; it isn't included here.
