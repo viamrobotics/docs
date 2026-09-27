@@ -216,9 +216,13 @@ Embed these in your resource struct to get default implementations:
 
 ### Request metadata
 
-To send extra key-value data along with a request, such as a trace or job ID, attach it to the request's context with the `go.viam.com/rdk/utils/contextutils/metadata` package.
-The Go client, `viam-server`, and Go modules forward this metadata on every gRPC call, so a resource can read metadata that a client set, including across module boundaries.
-It arrives only if every hop in between passes its `ctx` on to the next call.
+To send extra key-value data along with a request, such as a trace or job ID,
+attach it to the request's context with the
+`go.viam.com/rdk/utils/contextutils/metadata` package. The Go client,
+`viam-server`, and Go modules forward this metadata on every gRPC call, so a
+resource can read metadata that a client set, including across module
+boundaries. It arrives only if every hop in between passes its `ctx` on to the
+next call.
 
 ```go {class="line-numbers linkable-line-numbers"}
 import "go.viam.com/rdk/utils/contextutils/metadata"
@@ -244,8 +248,9 @@ func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (
 | `metadata.FromContext(ctx)`          | Return a copy of all metadata as a `map[string]string`. |
 | `metadata.All(ctx)`                  | Return an iterator over all metadata keys and values.   |
 
-Use lowercase keys.
-On the wire, each key is sent as a gRPC metadata header named `viam-metadata-<key>`, and gRPC lowercases header names, so a key set as `JobID` arrives as `jobid`.
+Use lowercase keys. On the wire, each key is sent as a gRPC metadata header
+named `viam-metadata-<key>`, and gRPC lowercases header names, so a key set as
+`JobID` arrives as `jobid`.
 
 ## Resource interfaces (Python)
 
