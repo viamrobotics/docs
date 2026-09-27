@@ -214,6 +214,39 @@ Embed these in your resource struct to get default implementations:
 | `module.NewModuleFromArgs(ctx)`   | Create a module from CLI args (for custom entry points).                             |
 | `module.NewLoggerFromArgs(name)`  | Create a logger that routes to `viam-server`.                                        |
 
+### Request metadata
+
+To send extra key-value data along with a request, such as a trace or job ID, attach it to the request's context with the `go.viam.com/rdk/utils/contextutils/metadata` package.
+The Go client, `viam-server`, and Go modules forward this metadata on every gRPC call, so a resource can read metadata that a client set, including across module boundaries.
+It arrives only if every hop in between passes its `ctx` on to the next call.
+
+```go {class="line-numbers linkable-line-numbers"}
+import "go.viam.com/rdk/utils/contextutils/metadata"
+
+// In a client, or in a module before it calls a dependency:
+ctx = metadata.Set(ctx, "job-id", "1234")
+readings, err := tempSensor.Readings(ctx, nil)
+
+// In the resource that handles the call:
+func (s *mySensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+    if jobID, ok := metadata.Get(ctx, "job-id"); ok {
+        s.logger.CInfof(ctx, "reading for job %s", jobID)
+    }
+    // ...
+}
+```
+
+| Function                             | Description                                             |
+| ------------------------------------ | ------------------------------------------------------- |
+| `metadata.Set(ctx, key, value, ...)` | Return a new context with the key-value pairs added.    |
+| `metadata.Get(ctx, key)`             | Return the value for a key and whether it was found.    |
+| `metadata.Delete(ctx, keys...)`      | Return a new context without the given keys.            |
+| `metadata.FromContext(ctx)`          | Return a copy of all metadata as a `map[string]string`. |
+| `metadata.All(ctx)`                  | Return an iterator over all metadata keys and values.   |
+
+Use lowercase keys.
+On the wire, each key is sent as a gRPC metadata header named `viam-metadata-<key>`, and gRPC lowercases header names, so a key set as `JobID` arrives as `jobid`.
+
 ## Resource interfaces (Python)
 
 ### Config validation
