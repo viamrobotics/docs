@@ -98,17 +98,35 @@ There are a couple of exceptions to the general timeout behavior:
 
 When connecting to a machine using the [robot API](/reference/apis/robot/) from a supported [Viam SDK](/reference/apis/), you can configure an [optional timeout](/reference/apis/sessions/#change-the-session-timeout) to account for intermittent or delayed network connectivity.
 
-## Log connection events from the TypeScript SDK
+### Log connection details from an SDK client
 
-To see what the TypeScript SDK does while it connects to a machine, turn on its debug log before you create the client.
-The SDK then emits a structured entry for each connection attempt, each gRPC request and response, and each disconnect.
-Debug logging is off by default and requires `@viamrobotics/sdk` v0.72.0 or later.
+To see more detail about what your client does while it connects to a machine, turn on the SDK's debug logging before you connect.
+Debug logging also records other client activity, such as individual gRPC calls, so expect verbose output.
 
-To print entries to the console, pass the built-in console writer to `setDebugLogWriter`:
+{{< tabs >}}
+{{% tab name="Go" %}}
 
-```ts {class="line-numbers linkable-line-numbers"}
-import * as VIAM from "@viamrobotics/sdk";
+Use a debug logger and pass `client.WithDialDebug()` in the same `client.WithDialOptions` call as your credentials:
 
+```go {class="line-numbers linkable-line-numbers" data-line="1,7"}
+logger := logging.NewDebugLogger("client")
+
+machine, err := client.New(ctx, "<machine address>", logger,
+  client.WithDialOptions(
+    client.WithEntityCredentials("<API-KEY-ID>",
+      client.Credentials{Type: client.CredentialsTypeAPIKey, Payload: "<API-KEY>"}),
+    client.WithDialDebug(),
+  ),
+)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+Pass a debug log writer to `setDebugLogWriter` before you create the client.
+This requires `@viamrobotics/sdk` v0.72.0 or later:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="1"}
 VIAM.setDebugLogWriter(VIAM.createConsoleLogWriter());
 
 const machine = await VIAM.createRobotClient({
@@ -116,31 +134,8 @@ const machine = await VIAM.createRobotClient({
 });
 ```
 
-The console writer prints each entry with `console.debug`, as a JSON string prefixed with `[viam-sdk]`.
-In most browsers, `console.debug` output only shows when you enable the **Verbose** log level in the developer console.
+The console writer logs each entry with `console.debug`, which most browsers only show when you enable the **Verbose** log level in the developer console.
+To send entries somewhere else or turn logging off, see [`setDebugLogWriter`](https://ts.viam.dev/functions/setDebugLogWriter.html).
 
-To send entries somewhere else, pass your own function. It receives each entry as a `DebugLogEntry` object.
-For example, to append entries to a file in Node.js:
-
-```ts {class="line-numbers linkable-line-numbers"}
-import fs from "node:fs";
-import { setDebugLogWriter } from "@viamrobotics/sdk";
-
-const logFile = fs.createWriteStream("viam-debug.log", { flags: "a" });
-setDebugLogWriter((entry) => logFile.write(JSON.stringify(entry) + "\n"));
-```
-
-To turn debug logging off again, call `setDebugLogWriter(undefined)`.
-
-Every entry has a `timestamp`, an `event`, and a `connectionId` that is the same for all events from one connection:
-
-<!-- prettier-ignore -->
-| Event | When it is logged | Other fields |
-| ----- | ----------------- | ------------ |
-| `dial_started` | A connection attempt begins. | `method` (`webrtc` or `grpc`), `host`, `attempt` |
-| `dial_success` | The connection is established. | `method`, `host` |
-| `dial_failed` | A connection attempt fails. | `method`, `host`, `error` |
-| `grpc_request` | The SDK sends a gRPC request. | `type` (`unary` or `stream`), `method` (the full gRPC method name) |
-| `grpc_response` | The SDK receives a gRPC response. | `type`, `method`, and `error` if the call failed |
-| `ice_disconnected` | The WebRTC ICE connection enters the disconnected state. | |
-| `client_closed` | Your code closes the client. | |
+{{% /tab %}}
+{{< /tabs >}}
