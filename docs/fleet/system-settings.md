@@ -33,21 +33,25 @@ The available release channels are:
 
 To pin to a specific build, use its exact published version, for example `1.4.0`, `1.5.0-rc0`, or `1.4.1-dev.16-c2c9600c6`. The version must exist for the machine's platform.
 
+If Viam deprecates a version that a machine is pinned to, that version can no longer be installed, and Viam adds a warning to the machine's logs.
+To fix this, choose a different version in **Software Updates**.
+
 When you change a version, the cloud sends an update instruction to viam-agent on the machine. The agent downloads and installs the new version on its next check cycle. To control when the new version actually starts, configure a [maintenance window](/fleet/manage-versions/#maintenance-windows). To verify the new version landed across the fleet, see [verify a rollout across the fleet](/fleet/manage-versions/#verify-a-rollout-across-the-fleet).
 
 ## Agent advanced settings
 
 In the machine settings card, open **Settings** and expand **Advanced**:
 
-| Field                               | Type    | Default | Description                                                                 |
-| ----------------------------------- | ------- | ------- | --------------------------------------------------------------------------- |
-| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                        |
-| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                        |
-| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                       |
-| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.          |
-| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules.                |
-| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.              |
-| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server. |
+| Field                               | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                                |
+| ----------------------------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `block_downloads_on_low_disk`       | boolean | `false` | Refuse agent self-updates and downloads of the viam-server binary when a download would leave less than 10MB free on the cache volume. When `false`, the agent logs a warning and downloads anyway. To also block module and package downloads, see [Set viam-server environment variables](/reference/viam-agent/#set-viam-server-environment-variables). |
+| `debug`                             | boolean | `false` | Enable debug logging for viam-agent.                                                                                                                                                                                                                                                                                                                       |
+| `disable_network_configuration`     | boolean | `false` | Disable viam-agent's network and hotspot management.                                                                                                                                                                                                                                                                                                       |
+| `disable_system_configuration`      | boolean | `false` | Disable viam-agent's system configuration management.                                                                                                                                                                                                                                                                                                      |
+| `disable_viam_server`               | boolean | `false` | Prevent viam-agent from starting viam-server. For development use.                                                                                                                                                                                                                                                                                         |
+| `viam_server_env`                   | object  | `{}`    | Environment variables passed to viam-server and all modules. See [Set viam-server environment variables](/reference/viam-agent/#set-viam-server-environment-variables).                                                                                                                                                                                    |
+| `viam_server_start_timeout_minutes` | integer | `10`    | Minutes to wait before restarting an unresponsive viam-server.                                                                                                                                                                                                                                                                                             |
+| `wait_for_update_check`             | boolean | `false` | Wait for a network connection and update check before starting viam-server.                                                                                                                                                                                                                                                                                |
 
 ## Configure additional networks
 

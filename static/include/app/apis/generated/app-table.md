@@ -46,6 +46,7 @@
 | [`CreateRobotPartSecret`](/reference/apis/fleet/#createrobotpartsecret) | Create a machine {{< glossary_tooltip term_id="part" text="part" >}} secret. |
 | [`DeleteRobotPartSecret`](/reference/apis/fleet/#deleterobotpartsecret) | Delete a machine part secret. |
 | [`ListRobots`](/reference/apis/fleet/#listrobots) | Get a list of all machines in a specified location. |
+| [`ListRobotsForLocations`](/reference/apis/fleet/#listrobotsforlocations) | Get a list of all machines in multiple specified locations. |
 | [`ListMachineSummaries`](/reference/apis/fleet/#listmachinesummaries) | List summary information for the machines in an organization, optionally filtered by fragment or location. |
 | [`NewRobot`](/reference/apis/fleet/#newrobot) | Create a new {{< glossary_tooltip term_id="machine" text="machine" >}}. |
 | [`UpdateRobot`](/reference/apis/fleet/#updaterobot) | Update an existing machine's name and/or location. |
