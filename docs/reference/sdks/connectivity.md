@@ -99,17 +99,19 @@ machine = await RobotClient.at_address('<MACHINE-ADDRESS>', opts)
 
 Pass `client.WithForceRelay()`, `client.WithForceP2P()`, `client.WithTurnURI(uri)`, `client.WithTurnScheme(scheme)`, `client.WithTurnTransport(transport)`, or `client.WithTurnPort(port)` to `client.WithDialOptions`:
 
-```go {class="line-numbers linkable-line-numbers" data-line="11"}
+```go {class="line-numbers linkable-line-numbers" data-line="13"}
 machine, err := client.New(
     context.Background(),
     "<MACHINE-ADDRESS>",
     logger,
     client.WithDialOptions(
-        client.WithEntityCredentials("<API-KEY-ID>",
+        client.WithEntityCredentials(
+            "<API-KEY-ID>",
             client.Credentials{
                 Type:    client.CredentialsTypeAPIKey,
                 Payload: "<API-KEY>",
-            }),
+            },
+        ),
         client.WithForceRelay(),
     ),
 )
@@ -167,3 +169,53 @@ There are a couple of exceptions to the general timeout behavior:
 ### Configure a connection timeout
 
 When connecting to a machine using the [robot API](/reference/apis/robot/) from a supported [Viam SDK](/reference/apis/), you can configure an [optional timeout](/reference/apis/sessions/#change-the-session-timeout) to account for intermittent or delayed network connectivity.
+
+### Log connection details from an SDK client
+
+To see more detail about what your client does while it connects to a machine, turn on the SDK's debug logging before you connect.
+Debug logging also records other client activity, such as individual gRPC calls, so expect verbose output.
+
+{{< tabs >}}
+{{% tab name="Go" %}}
+
+Use a debug logger and pass `client.WithDialDebug()` in the same `client.WithDialOptions` call as your credentials:
+
+```go {class="line-numbers linkable-line-numbers" data-line="1,15"}
+logger := logging.NewDebugLogger("client")
+
+machine, err := client.New(
+    context.Background(),
+    "<MACHINE-ADDRESS>",
+    logger,
+    client.WithDialOptions(
+        client.WithEntityCredentials(
+            "<API-KEY-ID>",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "<API-KEY>",
+            },
+        ),
+        client.WithDialDebug(),
+    ),
+)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+Pass a debug log writer to `setDebugLogWriter` before you create the client.
+This requires `@viamrobotics/sdk` v0.72.0 or later:
+
+```ts {class="line-numbers linkable-line-numbers" data-line="1"}
+VIAM.setDebugLogWriter(VIAM.createConsoleLogWriter());
+
+const machine = await VIAM.createRobotClient({
+  // your connection options
+});
+```
+
+The console writer logs each entry with `console.debug`, which most browsers only show when you enable the **Verbose** log level in the developer console.
+To send entries somewhere else or turn logging off, see [`setDebugLogWriter`](https://ts.viam.dev/functions/setDebugLogWriter.html).
+
+{{% /tab %}}
+{{< /tabs >}}
