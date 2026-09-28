@@ -80,8 +80,11 @@ The Viam mobile app provides similar access from your phone:
 - Adjust component settings
 - Switch between components
 - Restart machines
+- View a machine's configuration as read-only JSON, and copy it
+- Apply organization control layouts, which set which resource cards a machine shows and in what order (users with permission can also create and edit them)
 - [View machine logs](/monitor/troubleshoot/#check-logs)
 - [Upload images from your phone to the cloud](/data/capture-sync/upload-other-data/)
+- Browse JPEG and PNG images synced from your organization's machines in the **Data** tab, filtered by location and machine
 
 The mobile app is available on the [App Store](https://apps.apple.com/vn/app/viam-robotics/id6451424162) and [Google Play](https://play.google.com/store/apps/details?id=com.viam.viammobile&hl=en&gl=US).
 
