@@ -51,7 +51,6 @@ The tab shows a banner titled **Set up your machine**.
 In the **Set up your machine** banner, click **Install**.
 
 The setup wizard opens and asks **Does your project have a separate board/computer?**
-Choose **Yes • Install `viam-server` there** to install on a board, server, or industrial PC connected to your hardware, or **No • Install on this computer** to install on the computer you're using now, which is generally only for testing and development.
 Follow the guidance in the setup wizard to set up your machine on Viam.
 
 ## 3. Add hardware in the CONFIGURE tab
