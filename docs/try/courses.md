@@ -1,6 +1,6 @@
 ---
 title: "Free Viam courses"
-linkTitle: "Free courses"
+linkTitle: "Courses"
 weight: 5
 layout: "docs"
 type: "docs"
