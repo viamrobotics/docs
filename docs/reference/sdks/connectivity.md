@@ -70,7 +70,7 @@ Port `8080` is the `viam-server` default; use a different port if your machine i
 
 ## Choose the WebRTC connection route
 
-By default, a WebRTC connection tries every route it can find: direct peer-to-peer connections first, then relay through a TURN server if no direct route works.
+By default, a WebRTC connection tries every route it can find and prefers a direct peer-to-peer connection, falling back to relay through a TURN server if no direct route works.
 To test a specific route, or to work around a network that blocks one, you can restrict which routes the SDK uses:
 
 - **Force relay:** use only TURN relay candidates. Use this to check that your machine is reachable through a TURN server.
