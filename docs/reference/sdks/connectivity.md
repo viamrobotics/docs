@@ -99,17 +99,19 @@ machine = await RobotClient.at_address('<MACHINE-ADDRESS>', opts)
 
 Pass `client.WithForceRelay()`, `client.WithForceP2P()`, `client.WithTurnURI(uri)`, `client.WithTurnScheme(scheme)`, `client.WithTurnTransport(transport)`, or `client.WithTurnPort(port)` to `client.WithDialOptions`:
 
-```go {class="line-numbers linkable-line-numbers" data-line="11"}
+```go {class="line-numbers linkable-line-numbers" data-line="13"}
 machine, err := client.New(
     context.Background(),
     "<MACHINE-ADDRESS>",
     logger,
     client.WithDialOptions(
-        client.WithEntityCredentials("<API-KEY-ID>",
+        client.WithEntityCredentials(
+            "<API-KEY-ID>",
             client.Credentials{
                 Type:    client.CredentialsTypeAPIKey,
                 Payload: "<API-KEY>",
-            }),
+            },
+        ),
         client.WithForceRelay(),
     ),
 )
@@ -178,15 +180,23 @@ Debug logging also records other client activity, such as individual gRPC calls,
 
 Use a debug logger and pass `client.WithDialDebug()` in the same `client.WithDialOptions` call as your credentials:
 
-```go {class="line-numbers linkable-line-numbers" data-line="1,7"}
+```go {class="line-numbers linkable-line-numbers" data-line="1,15"}
 logger := logging.NewDebugLogger("client")
 
-machine, err := client.New(ctx, "<machine address>", logger,
-  client.WithDialOptions(
-    client.WithEntityCredentials("<API-KEY-ID>",
-      client.Credentials{Type: client.CredentialsTypeAPIKey, Payload: "<API-KEY>"}),
-    client.WithDialDebug(),
-  ),
+machine, err := client.New(
+    context.Background(),
+    "<MACHINE-ADDRESS>",
+    logger,
+    client.WithDialOptions(
+        client.WithEntityCredentials(
+            "<API-KEY-ID>",
+            client.Credentials{
+                Type:    client.CredentialsTypeAPIKey,
+                Payload: "<API-KEY>",
+            },
+        ),
+        client.WithDialDebug(),
+    ),
 )
 ```
 
