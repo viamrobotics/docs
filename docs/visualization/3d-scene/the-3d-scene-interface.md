@@ -25,18 +25,20 @@ The panel is always visible (it has no close button) but is draggable and resiza
 The root node `World` mirrors your machine's world frame.
 Each row shows an expand caret, the entity name, and an eye toggle. Click the eye or select the row and press `H` to hide or show the entity.
 Click a row to select the entity; its details appear in the Details panel.
+If you can edit the machine's configuration, the panel header also has an **Add object** (**+**) button that adds an obstacle. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/#add-an-obstacle).
 
 **Details panel** (floating, upper-right): Shows the selected entity's spatial properties.
 The panel is draggable and anchors to the top-right of the viewport by default.
-It includes:
+It has two tabs, **Details** and **Appearance**. The **Details** tab includes:
 
 - **world position** (mm) and **world orientation** (an orientation vector: `x / y / z` unit-vector components, `th` in degrees): the entity's absolute pose in the world frame. Read-only.
 - **parent frame**: which frame this entity is a child of. Editable in build mode when the entity is a configurable frame.
 - **local position** (mm) and **local orientation**: pose relative to the parent frame, corresponding to the `translation` and `orientation` in your frame configuration. Orientation has an **OV (deg)** tab and a **Euler** tab. Editable in build mode for configurable frames.
 - **geometry**: a tab per geometry type (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm). Editable in build mode.
-- **color**, **opacity**, and **show axes helper**: how the entity draws in the viewport. These affect the rendering only, not the configuration.
 
-The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
+The **Appearance** tab holds **color**, **opacity**, and **show axes helper**: how the entity draws in the viewport. These affect the rendering only, not the configuration. Entities that carry their own custom details show only the **Details** tab.
+
+The panel header shows the entity's name and type, a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a **Copy details to clipboard** button that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
 **Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used.
@@ -84,7 +86,7 @@ Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you
 Settings are grouped by what they affect: connection, scene decoration, point clouds, vision, and a few utility tabs. Click the gear icon to open the panel.
 
 - **Connection**: polling rates for the scene's data streams.
-- **Scene**: toggle the grid, **Object labels**, hover detail tooltips, arm-model rendering (`Arm Models`), and line thickness.
+- **Scene**: set **Shading** (`wireframe`, `toon`, or `realistic`, the default, which adds lighting and shadows), and toggle the grid, **Object labels**, hover detail tooltips, arm-model rendering (`Arm Models`), and line thickness.
 - **Pointclouds**: set default point size and color, and enable or disable point cloud display per camera under **Enabled cameras**.
 - **Vision**: enable or disable vision-service point-cloud entities.
 - **Debug**: toggle **Render stats**, an on-screen performance counter.
