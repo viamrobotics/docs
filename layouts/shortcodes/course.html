@@ -1,0 +1,22 @@
+{{- /* Callout card for one free course from data/courses.yaml.
+     Usage: {{< course "viam-102" >}} or {{< course id="viam-101" eyebrow="New to Viam? Start here" >}} */ -}}
+{{- $id := .Get 0 | default (.Get "id") -}}
+{{- $course := index (where site.Data.courses.courses "id" $id) 0 -}}
+{{- if not $course -}}
+  {{- errorf "course shortcode: no course with id %q in data/courses.yaml (%s)" $id .Position -}}
+{{- end -}}
+{{- $soon := eq $course.status "coming-soon" -}}
+{{- $eyebrow := .Get "eyebrow" | default "Free course" -}}
+<aside class="course-callout" aria-label="Free course">
+  <p class="course-eyebrow">{{ $eyebrow }}{{ if $soon }} · Coming soon{{ end }}</p>
+  <p class="course-title">
+    <a href="{{ $course.url }}" target="_blank" rel="noopener">{{ $course.title }} <i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i></a>
+  </p>
+  <p class="course-description">{{ $course.description }}</p>
+  {{- $meta := slice -}}
+  {{- with $course.duration }}{{ $meta = $meta | append . }}{{ end -}}
+  {{- with $course.hardware }}{{ $meta = $meta | append . }}{{ end -}}
+  {{- with $meta }}
+  <p class="course-meta">{{ delimit . " · " }}</p>
+  {{- end }}
+</aside>

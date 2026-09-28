@@ -28,6 +28,8 @@ aliases:
 date: "2025-01-30"
 ---
 
+{{< course id="viam-101" eyebrow="New to Viam? Start with a free course" >}}
+
 Viam is a software platform for building, deploying, and managing robotics applications.
 
 With Viam, you declare the hardware and services you need in a JSON config. Viam installs the drivers and any additional software modules required to support your configuration.
@@ -72,10 +74,6 @@ Fragments support variable substitution and per-machine overwrites, so you can d
 - **[Productize with Viam apps](/build-apps/overview/):** Build customer-facing web and mobile apps with the TypeScript and Flutter SDKs, add white-label authentication, and bill customers through Viam.
 
 ## Next steps
-
-{{% alert title="Viam 101" color="tip" %}}
-Our [**Viam 101 course**](https://www.viam.com/viam-101) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required. You'll build a palletizing application from scratch: a robot arm that picks boxes from a station and stacks them on a pallet.
-{{% /alert %}}
 
 Visit [Try Viam](/try/overview/) to build your first machine using one of our available tutorials.
 

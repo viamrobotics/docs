@@ -25,7 +25,7 @@
         <ul class="navbar-nav mt-lg-0">
           {{ $p := . -}}
           {{ range .Site.Menus.main -}}
-          <li class="nav-item mr-4 mb-2 mb-lg-0">
+          <li class="nav-item mb-2 mb-lg-0 {{ with .Params.class }}{{ . }}{{ end }}">
             {{ $active := or ($p.IsMenuCurrent "main" .) ($p.HasMenuCurrent "main" .) -}}
             {{ with .Page }}{{ $active = or $active ( $.IsDescendant .) }}{{ end -}}
             {{ $pre := .Pre -}}
@@ -35,7 +35,7 @@
             <a {{/**/ -}}
               class="nav-link {{- if $active }} active {{- end }}" {{/**/ -}}
               href="{{ with .Page }}{{ .RelPermalink }}{{ else }}{{ .URL | relLangURL }}{{ end }}"
-              {{- if ne $url.Host $baseurl.Host }} target="_blank" {{- end -}}
+              {{- if ne $url.Host $baseurl.Host }} target="_blank" rel="noopener" {{- end -}}
             >
                 {{- with .Pre }}{{ $pre }}{{ end -}}
                 <span {{- if $active }} class="active" {{- end }}>
@@ -59,9 +59,13 @@
     </div>
     {{ partial "search-input.html" . }}
     <div class="navbar-nav d-none d-lg-block" id="navsearch">
+      <div class="nav-icon-group" role="group" aria-label="Community">
+        <a href="https://github.com/viamrobotics/docs" target="_blank" rel="noopener" title="Docs source on GitHub" aria-label="Docs source on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://discord.gg/viam" target="_blank" rel="noopener" title="Join the Viam Discord" aria-label="Join the Viam Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
+      </div>
       <button class="docsbutton" id="appButton" title="web UI">
         <span id="appButtonContent">
-          <a href="https://app.viam.com" target="_blank">app.viam.com <i class="fas fa-external-link-alt fa-sm" style="margin-left: 0.5rem;"></i></a>
+          <a href="https://app.viam.com" target="_blank" rel="noopener">Open app <i class="fas fa-external-link-alt fa-sm" aria-hidden="true" style="margin-left: 0.5rem;"></i></a>
         </span>
       </button>
     </div>

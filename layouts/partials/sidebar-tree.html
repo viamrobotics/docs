@@ -27,6 +27,13 @@
     <ul class="td-sidebar-nav__section pr-md-3 ul-{{ $ulNr }}">
       {{ template "section-tree-nav-section" (dict "page" . "section" $navRoot "shouldDelayActive" $shouldDelayActive "sidebarMenuTruncate" $sidebarMenuTruncate "ulNr" $ulNr "ulShow" (add $ulShow 1)) }}
     </ul>
+    {{/* Off-site navbar links, for widths where navbar.html hides them (below lg). */}}
+    <ul class="sidebar-offsite-links d-lg-none">
+      <li><a href="https://learn.viam.com" target="_blank" rel="noopener">Courses <i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i></a></li>
+      <li><a href="https://discord.gg/viam" target="_blank" rel="noopener">Discord <i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i></a></li>
+      <li><a href="https://github.com/viamrobotics/docs" target="_blank" rel="noopener">GitHub <i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i></a></li>
+      <li><a href="https://app.viam.com" target="_blank" rel="noopener">Open app <i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i></a></li>
+    </ul>
   </nav>
 </div>
 {{ define "section-tree-nav-section" -}}

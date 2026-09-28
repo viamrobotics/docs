@@ -1,0 +1,32 @@
+{{- /* Grid of every free course in data/courses.yaml, linking to the course
+     platform (learn_url). Usage: {{< courses >}} */ -}}
+{{- $learn := site.Data.courses.learn_url -}}
+<section class="courses-strip" aria-label="Free courses">
+  <div class="courses-strip-grid">
+    {{- range site.Data.courses.courses }}
+    {{- $soon := eq .status "coming-soon" }}
+    {{- if $soon }}
+    <div class="courses-strip-card coming-soon">
+      <span class="courses-strip-badge">Coming soon</span>
+    {{- else }}
+    <a class="courses-strip-card" href="{{ $learn }}" target="_blank" rel="noopener">
+    {{- end }}
+      <span class="course-title">{{ .title }}</span>
+      <span class="course-description">{{ .description }}</span>
+      {{- $meta := slice -}}
+      {{- with .duration }}{{ $meta = $meta | append . }}{{ end -}}
+      {{- with .hardware }}{{ $meta = $meta | append . }}{{ end -}}
+      {{- with $meta }}
+      <span class="course-meta">{{ delimit . " · " }}</span>
+      {{- end }}
+    {{- if $soon }}
+    </div>
+    {{- else }}
+    </a>
+    {{- end }}
+    {{- end }}
+  </div>
+  <p class="courses-strip-all">
+    <a href="{{ $learn }}" target="_blank" rel="noopener">Start learning at {{ strings.TrimPrefix "https://" $learn }} <i class="fas fa-external-link-alt fa-sm" aria-hidden="true"></i></a>
+  </p>
+</section>
