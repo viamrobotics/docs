@@ -7,6 +7,7 @@ layout: "docs"
 no_list: true
 description: "Configuration reference for Viam's built-in components: per-component models, attributes, and JSON templates."
 capabilities: ["section-index"]
+diataxis: overview
 date: "2026-09-24"
 aliases:
   - /operate/reference/components/
