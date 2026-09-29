@@ -88,12 +88,12 @@ See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/#2
 ### 4. Confirm the sequence uploaded
 
 When a sequence closes, the data manager uploads it on the next sync.
-Open the **DATA** tab, click **Sequences**, and look for a new row.
+Open the **DATA** tab, click **SEQUENCES**, and look for a new row.
 You can also call [`ListSequences`](/reference/apis/data-client/).
 
 ## View sequences
 
-1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **Sequences**.
+1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **SEQUENCES**.
 2. The list shows each sequence's time range, machine part, resources, and tags.
 3. Click a sequence to open it.
    Pick a resource, shown as `<resource name> · <method>`, to see its images or its readings during the window.

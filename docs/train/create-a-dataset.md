@@ -19,13 +19,13 @@ You can't change it later.
 
 ## Choose a dataset type
 
-|                  | Image dataset                             | Sequence dataset                                                                                         |
-| ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Holds            | Individual images                         | [Sequences](/data/sequences/): time windows of images and readings from one machine part                 |
-| Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
-| Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when the sequence is recorded                                                         |
-| Managed training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
-| Export           | Images plus a `dataset.jsonl` file        | Three Parquet files plus images                                                                          |
+|                  | Image dataset                                              | Sequence dataset                                                                                         |
+| ---------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Holds            | Individual images. The app calls this type **Binary Data** | [Sequences](/data/sequences/): time windows of images and readings from one machine part                 |
+| Use it to        | Classify an image or detect objects in it                  | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
+| Labeling         | You tag images or draw bounding boxes                      | Sequence tags, set when the sequence is recorded                                                         |
+| Managed training | Yes                                                        | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
+| Export           | Images plus a `dataset.jsonl` file                         | Three Parquet files plus images                                                                          |
 
 If you want a model that looks at one image at a time, use an image dataset.
 If the meaning is in how images and readings change over a window of time, use a sequence dataset.
@@ -62,11 +62,11 @@ You can create a dataset from the web UI, the CLI, or programmatically.
 1. Go to [app.viam.com](https://app.viam.com).
 2. Click the **DATA** tab in the top navigation.
 3. Click the **DATASETS** subtab.
-4. Click **+ Create dataset**.
-5. Enter a descriptive name for your dataset. Use a name that reflects the task,
-   such as `inspection-parts-v1` or `package-detection`. Dataset names must be
-   unique within your organization.
-6. Click **Create**.
+4. In the **Dataset Name** field, enter a descriptive name for your dataset.
+   Use a name that reflects the task, such as `inspection-parts-v1` or
+   `package-detection`. Dataset names must be unique within your organization.
+5. Leave **Data type** set to **Binary Data**, the type for image datasets.
+6. Click **Create dataset**.
 
 Your empty dataset now appears in the list.
 
@@ -359,10 +359,10 @@ See [Group captured data into sequences](/data/sequences/).
 {{< tabs >}}
 {{% tab name="Web UI" %}}
 
-1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **Datasets**.
-2. Click **Create dataset**.
-3. Enter a name, and under **Data type**, select **Sequence Data**.
-4. Click **Create**.
+1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **DATASETS**.
+2. In the **Dataset Name** field, enter a name.
+3. Set **Data type** to **Sequence Data**.
+4. Click **Create dataset**.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
@@ -389,13 +389,13 @@ The TypeScript and Go SDKs and `viam dataset create` can't set a dataset's type 
 
 To add a sequence from its detail page:
 
-1. Open the sequence from **DATA** > **Sequences**.
+1. Open the sequence from **DATA** > **SEQUENCES**.
 2. Click **Add to dataset**.
 3. Select the dataset, or enter a new name to create one, and confirm.
 
 To add from the dataset page:
 
-1. Open the dataset from the **Datasets** tab.
+1. Open the dataset from the **DATASETS** tab.
 2. Click **Add sequences**.
 3. In the **All sequences** dialog, select the sequences you want and click **Add**.
 

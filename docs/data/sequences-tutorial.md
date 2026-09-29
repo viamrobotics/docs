@@ -132,10 +132,11 @@ It is a saved filter: one machine part, a time window, and two components.
 
 ## 6. Collect the sequences into a dataset
 
-1. On the **DATA** tab, click **Datasets**, then **Create dataset**.
-2. Name it `demos`, set **Data type** to **Sequence Data**, and click **Create**.
-3. Open the dataset and click **Add sequences**.
-4. Select all three sequences and click **Add**.
+1. On the **DATA** tab, click **DATASETS**.
+2. In the **Dataset Name** field, enter `demos`.
+3. Set **Data type** to **Sequence Data**, and click **Create dataset**.
+4. Open the dataset and click **Add sequences**.
+5. Select all three sequences and click **Add**.
 
 The dataset's sidebar now shows 3 sequences.
 See [Sequence datasets](/train/create-a-dataset/#sequence-datasets).
