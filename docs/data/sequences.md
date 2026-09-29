@@ -12,12 +12,14 @@ platformarea: ["data"]
 date: "2026-09-29"
 ---
 
-A sequence groups the data one machine part captured inside a time window.
-It holds a list of resources, such as a camera's images and an arm's joint positions, plus tags that apply to the whole sequence.
 A sequence is a saved filter over data you already captured, not a copy of it.
+It selects the data one machine part captured inside a time window, and it carries tags that apply to the whole window.
+Each entry in the filter names a component or service and one of its methods, such as a camera's `GetImages` or an arm's `GetJointPositions`.
 
 Use sequences to keep the images and readings from one event together, for example one demonstration of a task, or the seconds around an alarm.
-You can then collect sequences into a [sequence dataset](/train/create-a-sequence-dataset/) and train on them with a custom training script.
+You can then collect sequences into a [sequence dataset](/train/create-a-dataset/#sequence-datasets) and train on them with a custom training script.
+
+To follow a complete example from capture to export, see the [sequences tutorial](/data/sequences-tutorial/).
 
 ## Record sequences from a machine
 
@@ -25,10 +27,10 @@ A machine records sequences through a [capture control sensor](/data/capture-syn
 The sensor returns a `sequences` list from its `Readings` method.
 A sequence opens the first time its entry appears in the list, and closes when the entry disappears.
 
-### 1. Capture the resources you want in the sequence
+### 1. Make sure the data is captured
 
-A sequence records a window of data, and it doesn't start capture.
-Make sure the resources you want are already being captured while the sequence is open.
+A sequence only selects data that data capture wrote down.
+For the sequence to contain images and readings, capture must be running on those components while the sequence is open.
 Either configure data capture on them, or return an `overrides` list from the same sensor to turn capture on for the window.
 See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/).
 
@@ -36,12 +38,12 @@ See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/).
 
 Each entry in the `sequences` list has these fields:
 
-| Field           | Type             | Required? | Description                                                                                                                                        |
-| --------------- | ---------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sequence_tags` | array of strings | Optional  | Tags for the whole sequence.                                                                                                                       |
-| `resources`     | array of objects | Required  | The resources the sequence covers. Each has a `resource_name` and a `method`. Only image methods count as binary data. See [Limitations](#limits). |
+| Field           | Type             | Required? | Description                                                                                                                                                      |
+| --------------- | ---------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sequence_tags` | array of strings | Optional  | Tags for the whole sequence.                                                                                                                                     |
+| `resources`     | array of objects | Required  | The components and services the sequence covers. Each has a `resource_name` and a `method`. Only image methods count as binary data. See [Limitations](#limits). |
 
-The following `Readings` method opens one sequence while `self.recording` is `True`, and turns on capture for the same resources:
+The following `Readings` method opens one sequence while `self.recording` is `True`, and turns on capture for the same components:
 
 ```python
     async def get_readings(self, *, extra=None, timeout=None, **kwargs):
@@ -88,7 +90,7 @@ You can also call [`ListSequences`](/reference/apis/data-client/).
 3. Click a sequence to open it.
    Pick a resource, shown as `<resource name> · <method>`, to see its images or its readings during the window.
 4. To collect the sequence into a dataset, click **Add to dataset**.
-   See [Create a sequence dataset](/train/create-a-sequence-dataset/).
+   See [Create a sequence dataset](/train/create-a-dataset/#sequence-datasets).
 
 To copy a sequence's ID, click the **Sequence actions** menu on its row.
 
@@ -96,7 +98,7 @@ To copy a sequence's ID, click the **Sequence actions** menu on its row.
 
 You can also create a sequence after the fact, for example to label a window of data you already captured.
 The TypeScript and Go data clients can create, get, update, delete, and list sequences.
-You give `createSequence` the ID of the machine part, the resources, and a start and end time.
+You give `createSequence` the ID of the machine part, the components and methods to include, and a start and end time.
 Tags are optional.
 
 {{< tabs >}}
@@ -146,6 +148,6 @@ For every method, see the [data client API](/reference/apis/data-client/).
 
 ## Next steps
 
-- [Create a sequence dataset](/train/create-a-sequence-dataset/): collect sequences for training.
+- [Create a sequence dataset](/train/create-a-dataset/#sequence-datasets): collect sequences for training.
 - [Control capture with a sensor](/data/capture-sync/capture-control-sensor/): the sensor that records sequences.
 - [Data management service reference](/data/reference/#capture-control-sensor-readings): the `sequences` fields.

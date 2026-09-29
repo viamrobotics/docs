@@ -4,8 +4,8 @@ title: "Create a dataset"
 weight: 10
 layout: "docs"
 type: "docs"
-description: "Create a dataset of images for training an ML model."
-capabilities: ["datasets"]
+description: "Create a dataset of images or sequences for training an ML model."
+capabilities: ["datasets", "sequences"]
 diataxis: how-to
 date: "2025-01-30"
 aliases:
@@ -13,10 +13,23 @@ aliases:
   - /data-ai/train/create-dataset/
 ---
 
-A dataset is a named collection of images at the organization level that you
-label and use for training. This page covers datasets of images. To collect
-time windows of images and readings instead, see
-[Create a sequence dataset](/train/create-a-sequence-dataset/).
+A dataset is a named collection of data at the organization level that you use for training.
+Datasets come in two types, and you choose the type when you create the dataset.
+You can't change it later.
+
+## Choose a dataset type
+
+|                  | Image dataset                             | Sequence dataset                                                                                         |
+| ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Holds            | Individual images                         | [Sequences](/data/sequences/): time windows of images and readings from one machine part                 |
+| Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
+| Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when the sequence is recorded                                                         |
+| Managed training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
+| Export           | Images plus a `dataset.jsonl` file        | Three Parquet files plus images                                                                          |
+
+If you want a model that looks at one image at a time, use an image dataset.
+If the meaning is in how images and readings change over a window of time, use a sequence dataset.
+The steps below are for image datasets, up to [Sequence datasets](#sequence-datasets).
 
 ## Platform requirements
 
@@ -332,6 +345,124 @@ viam dataset export --destination=<output-directory> --dataset-id=<dataset-id>
 For an image dataset, this writes the images and a `dataset.jsonl` manifest
 containing their annotations to the destination directory.
 
+## Sequence datasets
+
+A sequence dataset holds [sequences](/data/sequences/) instead of images.
+There is no image selection or annotation step.
+You add sequences, export the dataset as Parquet files, and train on it with a custom training script.
+
+Before you start, record one or more sequences.
+See [Group captured data into sequences](/data/sequences/).
+
+### Create a sequence dataset
+
+{{< tabs >}}
+{{% tab name="Web UI" %}}
+
+1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **Datasets**.
+2. Click **Create dataset**.
+3. Enter a name, and under **Data type**, select **Sequence Data**.
+4. Click **Create**.
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+```python
+from viam.proto.app.dataset import DatasetType
+
+dataset_id = await data_client.create_dataset(
+    name="my-sequence-dataset",
+    organization_id="<ORG-ID>",
+    type=DatasetType.DATASET_TYPE_SEQUENCE_DATA,
+)
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The TypeScript and Go SDKs and `viam dataset create` can't set a dataset's type yet, so create sequence datasets in the web UI or with Python.
+
+### Add sequences
+
+{{< tabs >}}
+{{% tab name="Web UI" %}}
+
+To add a sequence from its detail page:
+
+1. Open the sequence from **DATA** > **Sequences**.
+2. Click **Add to dataset**.
+3. Select the dataset, or enter a new name to create one, and confirm.
+
+To add from the dataset page:
+
+1. Open the dataset from the **Datasets** tab.
+2. Click **Add sequences**.
+3. In the **All sequences** dialog, select the sequences you want and click **Add**.
+
+{{% /tab %}}
+{{% tab name="Python" %}}
+
+```python
+await data_client.add_sequences_to_dataset(
+    dataset_id="<DATASET-ID>",
+    sequence_ids=["<SEQUENCE-ID>"],
+)
+```
+
+{{% /tab %}}
+{{% tab name="TypeScript" %}}
+
+```typescript
+await dataClient.addSequencesToDataset(["<SEQUENCE-ID>"], "<DATASET-ID>");
+```
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+```go
+err := dataClient.AddSequencesToDataset(ctx, "<DATASET-ID>", []string{"<SEQUENCE-ID>"})
+```
+
+{{% /tab %}}
+{{< /tabs >}}
+
+The dataset's sidebar shows how many sequences it holds.
+
+To remove sequences, call `remove_sequences_from_dataset` (Python), `removeSequencesFromDataset` (TypeScript), or `RemoveSequencesFromDataset` (Go).
+See the [data client API](/reference/apis/data-client/).
+
+### Export a sequence dataset {#export-a-sequence-dataset}
+
+The `viam dataset export` command detects a sequence dataset, starts an export job on the server, waits for it, and downloads the result:
+
+```sh {class="command-line" data-prompt="$"}
+viam dataset export \
+  --dataset-id=<dataset-id> \
+  --destination=./my-sequence-dataset
+```
+
+The destination then contains:
+
+- `<dataset-id>.zip`: three Parquet files, `binary_data.parquet`, `tabular_data.parquet`, and `sequences.parquet`.
+  See [Sequence dataset format](/train/sequence-dataset-format/).
+- `binary_data/`: the image files, named `<binary-data-id><extension>`.
+
+To skip the image files and download only the zip, add `--only-parquet`.
+To change how often the CLI checks the job, or how long it waits, use `--poll-interval` (default `5s`) and `--max-wait` (default `30m`).
+
+From code, call `start_sequence_dataset_export` to get a job ID, poll `get_sequence_dataset_export` until its status is `COMPLETED`, then download the zip from `download_url`.
+The URL is short-lived, so download it right away.
+The Python and TypeScript SDKs have these methods.
+The Go SDK doesn't.
+
+### Sequence dataset limitations
+
+- A sequence dataset holds sequences only.
+  You can't add images to it, and you can't [merge](/cli/datasets-and-training/#merge-datasets) sequence datasets.
+- Managed [training](/train/train-a-model/) doesn't accept sequence datasets.
+  Train with a custom training script.
+- Sequence exports run queries against your organization's data, and tabular queries count toward your data query usage.
+
 ## Troubleshooting
 
 {{< expand "Dataset creation fails" >}}
@@ -377,3 +508,5 @@ containing their annotations to the destination directory.
   model to auto-label images instead of doing it by hand.
 - [Train a model](/train/train-a-model/) -- use your labeled dataset to
   train a classification or object detection model.
+- [Sequence dataset format](/train/sequence-dataset-format/) -- the columns in
+  a sequence export, and how to train a custom script on it.

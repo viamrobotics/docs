@@ -22,7 +22,7 @@ The ML training client API supports the following methods:
 
 {{< readfile "/static/include/app/apis/generated/mltraining-table.md" >}}
 
-To train on a [sequence dataset](/train/create-a-sequence-dataset/), use `SubmitCustomTrainingJob`. `SubmitTrainingJob` rejects sequence datasets.
+To train on a [sequence dataset](/train/create-a-dataset/#sequence-datasets), use `SubmitCustomTrainingJob`. `SubmitTrainingJob` rejects sequence datasets.
 
 ## Establish a connection
 

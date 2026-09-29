@@ -21,36 +21,45 @@ To conditionally _sync_ data rather than control capture, see [Conditional sync]
 ## Before you start
 
 - A machine running `viam-server` with a [data management service](/data/capture-sync/capture-and-sync-data/) configured.
-- A sensor you can change or write.
-  The sensor can be any `sensor` component whose `Readings` method returns the keys described below.
+- A sensor you can modify, such as a custom sensor module you build yourself.
+  The sensor's `Readings` method must return the keys described below.
   See [Write a module](/build-modules/write-a-driver-module/) to build one.
 
 ## How a capture control sensor works
 
 The data management service polls the sensor's `Readings` method 10 times per second.
 Each poll returns a list of overrides under a key you choose.
-The service merges each override with the capture settings from the machine config and starts, changes, or stops collectors to match.
+The service merges each override with the capture settings you configured on the component, and starts, changes, or stops capture to match.
 
-Overrides apply on top of the machine config and don't replace it.
-When the sensor stops listing a resource, the service returns that resource to its configured capture settings.
-If the resource has no configured capture, it stops capturing.
+Overrides apply on top of your configured capture settings and don't replace them.
+When the sensor stops listing a resource, that resource returns to its configured capture settings.
+If it has none, it stops capturing.
 
-## Return an overrides list
+## 1. Write a sensor that returns overrides
 
-In your sensor's `Readings` method, return a list under the key you choose.
+In your sensor's `Readings` method, return a list under a key you choose.
 Each entry in the list has these fields:
 
-| Field                  | Type             | Required? | Description                                                                                                                                                                      |
-| ---------------------- | ---------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resource_name`        | string           | Required  | Name of the resource to capture from, for example `my-camera`. Use the short name, without a remote part prefix.                                                                 |
-| `method`               | string           | Required  | Capture method, for example `GetImages` or `Readings`.                                                                                                                           |
-| `capture_frequency_hz` | float            | Optional  | Capture frequency for this resource and method. `0` disables capture. If you omit it, the resource keeps its configured frequency. Required to capture an unconfigured resource. |
-| `tags`                 | array of strings | Optional  | Tags for data captured from this resource and method. Replaces the data management service's `tags` for this resource.                                                           |
+| Field                  | Type             | Required? | Description                                                                                                                                                                                                                                  |
+| ---------------------- | ---------------- | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resource_name`        | string           | Required  | Name of the component or service to capture from, for example `my-camera`. Use the short name, without a remote part prefix.                                                                                                                 |
+| `method`               | string           | Required  | Capture method, for example `GetImages` or `Readings`.                                                                                                                                                                                       |
+| `capture_frequency_hz` | float            | Optional  | Capture frequency for this resource and method. `0` disables capture. If you omit it, capture uses the frequency you set in the resource's own **Data capture** section. A resource with no capture configured has none, so you must set it. |
+| `tags`                 | array of strings | Optional  | Tags for data captured from this resource and method. Replaces the data management service's `tags` for this resource.                                                                                                                       |
 
-The following `Readings` method returns an override that captures `my-camera` at 5 Hz while a `recording` flag is set.
-The flag is a Python attribute on the sensor that your own code, such as a `DoCommand` handler, sets:
+The following sensor captures `my-camera` at 5 Hz while it is recording.
+You turn recording on and off by sending the sensor a `start` or `stop` command with `DoCommand`:
 
 ```python
+    recording = False
+
+    async def do_command(self, command, *, timeout=None, **kwargs):
+        if command.get("command") == "start":
+            self.recording = True
+        elif command.get("command") == "stop":
+            self.recording = False
+        return {"recording": self.recording}
+
     async def get_readings(self, *, extra=None, timeout=None, **kwargs):
         if not self.recording:
             return {"overrides": []}
@@ -66,16 +75,29 @@ The flag is a Python attribute on the sensor that your own code, such as a `DoCo
         }
 ```
 
-## Set the capture control sensor on the data manager
+## 2. Add the sensor to your machine
+
+The data management service can only use a sensor that is already configured on the machine.
+
+- If you built the sensor as a module, deploy it and add it to your machine with `viam module reload-local`.
+  The command adds the sensor to your machine's configuration, using the resource name you pass in `--resource-name`.
+  See [Test locally](/build-modules/write-a-driver-module/#3-test-locally).
+- If the sensor is in the registry, add it on the **CONFIGURE** tab: click **+**, select **Blocks**, search for the sensor, and click **Add to machine**.
+
+Note the sensor's name.
+The next step uses it.
+This page uses `my-capture-sensor`.
+
+## 3. Point the data manager at the sensor
 
 Tell the data management service which sensor to poll, and which key in its readings holds the overrides.
 
 1. On your machine's **CONFIGURE** tab, find your data management service.
-2. Switch to **JSON** mode, or open the service's attributes.
-3. Add the `capture_control_sensor` attribute, with the sensor's name and the key it returns:
+2. Switch to **JSON** mode.
+3. In the service's `attributes`, add `capture_control_sensor` with the sensor's name and the key it returns:
 
    ```json
-   {
+   "attributes": {
      "capture_control_sensor": {
        "name": "my-capture-sensor",
        "key": "overrides"
@@ -83,14 +105,21 @@ Tell the data management service which sensor to poll, and which key in its read
    }
    ```
 
-4. Add the sensor to the data management service's `depends_on` field so it starts first.
+   `key` is required, even if you only use the sensor to record [sequences](/data/sequences/).
+
+4. Next to `attributes`, in the service's own config, add the sensor's name to `depends_on`:
+
+   ```json
+   "depends_on": ["my-capture-sensor"]
+   ```
+
+   `depends_on` lists other resources that must be running before this one starts.
+   With it, `viam-server` starts the sensor before the data management service.
+
 5. Click **Save**.
 
-`name` is the sensor's resource name.
-`key` is required, even if you only use the sensor to record [sequences](/data/sequences/).
-
 Within a moment, the service starts applying the sensor's readings.
-Check the machine's **LOGS** tab for messages that begin `capture control sensor enabling capture for`.
+Send the sensor a `start` command from its **Test** section, and check the machine's **LOGS** tab for messages that begin `capture control sensor enabling capture for`.
 
 ## Capture from resources the data manager doesn't list
 

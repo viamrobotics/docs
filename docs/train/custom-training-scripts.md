@@ -163,7 +163,7 @@ See the [example training script](https://github.com/viam-modules/classification
 
 ### Sequence dataset inputs
 
-A job on a [sequence dataset](/train/create-a-sequence-dataset/) doesn't get a `--dataset_file`.
+A job on a [sequence dataset](/train/create-a-dataset/#sequence-datasets) doesn't get a `--dataset_file`.
 Instead, your script receives three Parquet files: `--binary_data_file`, `--tabular_data_file`, and `--sequences_file`.
 The images are files on disk, and the Parquet files hold their metadata and your readings.
 Join the three files on `sequence_id`.
@@ -229,7 +229,7 @@ This downloads the binary data files and a `dataset.jsonl` metadata file.
 To download only the JSONL file without binary data, add `--only-jsonl`.
 
 For a sequence dataset, the export is a zip of Parquet files plus the images.
-See [Create a sequence dataset](/train/create-a-sequence-dataset/#3-export-the-dataset).
+See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 
 You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
 

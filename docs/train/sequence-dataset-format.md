@@ -16,7 +16,7 @@ Both use the same schema.
 
 ## Export layout
 
-Running [`viam dataset export`](/train/create-a-sequence-dataset/#3-export-the-dataset) on a sequence dataset writes:
+Running [`viam dataset export`](/train/create-a-dataset/#export-a-sequence-dataset) on a sequence dataset writes:
 
 ```text
 <destination>/

@@ -77,7 +77,7 @@ are importing an existing model or need framework-specific features not
 available in TensorFlow.
 
 Datasets come in two types. A dataset of images is the default, and managed
-training works only on these. A [sequence dataset](/train/create-a-sequence-dataset/)
+training works only on these. A [sequence dataset](/train/create-a-dataset/#sequence-datasets)
 holds time windows of images and readings, for tasks such as sequence
 classification. You train on a sequence dataset with a
 [custom training script](/train/custom-training-scripts/), because managed

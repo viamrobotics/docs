@@ -131,7 +131,7 @@ viam dataset export \
 
 For a sequence dataset, `export` starts an export job, waits for it, and writes `<dataset-id>.zip` (three Parquet files) plus a `binary_data/` folder of images to the destination.
 Add `--only-parquet` to skip the images.
-See [Create a sequence dataset](/train/create-a-sequence-dataset/#3-export-the-dataset).
+See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 
 ### Merge datasets
 
