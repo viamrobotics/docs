@@ -45,7 +45,7 @@ A sequence starts and stops when a [capture control sensor](/data/capture-sync/c
 We will use the `capture-control` module, which you switch on and off by hand.
 
 1. On the **CONFIGURE** tab, click **+** and select **Blocks**.
-2. Search for **capture-control** and select the sensor from the `viam` namespace.
+2. Search for **capture-control** and select **capture-control/capture-control-sensor**.
 3. Name it `my-capture-sensor` and click **Add to machine**.
 4. In its attributes, list the two components to control and the capture frequency:
 
@@ -63,7 +63,7 @@ We will use the `capture-control` module, which you switch on and off by hand.
 
 ## 3. Connect the sensor to the data manager
 
-1. On the **CONFIGURE** tab, click **+**, select **Blocks**, and add a **data management** service named `data-manager` if your machine doesn't have one.
+1. On the **CONFIGURE** tab, click **+**, select **Blocks**, and search for **data_manager**. Choose the **data_manager/builtin** service and name it `data-manager`.
 2. Switch to **JSON** mode.
 3. Find the `data-manager` service and add the sensor to its attributes and its `depends_on` list:
 
@@ -111,9 +111,8 @@ Wait about 30 seconds, then:
 
 1. Click the **DATA** tab in the Viam app.
 2. Click **SEQUENCES**.
-3. You should see three rows, each with a 10-second time range, your machine part, and the tag `demo-1`, `demo-2`, or `demo-3`.
-4. Click a sequence.
-   Pick `test-camera · GetImages` to see its images, and `test-sensor · Readings` to see its readings.
+3. You should see three rows, the time range for each sequence, your machine part, the fake camera and sensor resources, and the tag `demo-1`, `demo-2`, or `demo-3`.
+4. Click a sequence. You should see both the recorded images from `test-camera`, and the readings from `test-sensor`.
 
 {{< alert title="What just happened?" color="info" >}}
 
@@ -135,7 +134,7 @@ It is a saved filter: one machine part, a time window, and two components.
 1. On the **DATA** tab, click **DATASETS**.
 2. In the **Dataset Name** field, enter `demos`.
 3. Set **Data type** to **Sequence Data**, and click **Create dataset**.
-4. Open the dataset and click **Add sequences**.
+4. Open the dataset and click **Add data**.
 5. Select all three sequences and click **Add**.
 
 The dataset's sidebar now shows 3 sequences.
@@ -183,14 +182,6 @@ python inspect_export.py demos/<dataset-id>.zip
 You should see three sequences, each with roughly 20 images and 20 readings.
 The rows in the two data files link to a sequence through `sequence_id`.
 See [Sequence dataset format](/train/sequence-dataset-format/) for every column.
-
-## 8. Clean up
-
-1. Send `{"stop_capture": true}` to `my-capture-sensor` if a sequence is still open.
-2. On the **CONFIGURE** tab, remove `capture_control_sensor` and `depends_on` from the data manager, and click **Save**.
-3. To remove the test components, delete `test-camera`, `test-sensor`, and `my-capture-sensor`, and click **Save**.
-
-Data and sequences already synced stay in the cloud.
 
 ## What you learned
 
