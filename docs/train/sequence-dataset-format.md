@@ -17,7 +17,7 @@ To produce an export you can inspect, follow the [sequences tutorial](/data/sequ
 
 ## Export layout
 
-Running [`viam dataset export`](/train/create-a-dataset/#export-a-sequence-dataset) on a sequence dataset writes:
+Running [`viam dataset export`](/train/create-a-dataset/) on a sequence dataset writes:
 
 ```text
 <destination>/

@@ -16,7 +16,7 @@ A sequence marks a time window of data that one machine part captured, so you ca
 It names the part, the start and end times, and the components and methods to include, such as a camera's `GetImages` and an arm's `GetJointPositions`.
 It also carries tags that describe the whole window, such as `pick-success` or `demo-3`.
 
-Sequences exist to feed [sequence datasets](/train/create-a-dataset/#sequence-datasets), which you train on with a [custom training script](/train/custom-training-scripts/).
+Sequences exist to feed [sequence datasets](/train/create-a-dataset/), which you train on with a [custom training script](/train/custom-training-scripts/).
 To follow the whole path from capture to exported training files, see the [sequences tutorial](/data/sequences-tutorial/).
 
 ## How a sequence works
@@ -44,7 +44,7 @@ Sequences sit between captured data and training:
 1. **Capture.** The data management service records images and readings from your machine's components. See [Capture and sync data](/data/capture-sync/capture-and-sync-data/).
 2. **Mark sequences.** A capture control sensor on the machine opens and closes sequences while the machine runs. You can also create a sequence afterward, from code, over data you already have.
 3. **Sync.** The data manager uploads captured data, and uploads each sequence after it closes.
-4. **Collect.** You add sequences to a sequence dataset. See [Create a dataset](/train/create-a-dataset/#sequence-datasets).
+4. **Collect.** You add sequences to a sequence dataset. See [Create a dataset](/train/create-a-dataset/).
 5. **Export and train.** You export the dataset as Parquet files, or run a custom training script on it. See [Sequence dataset format](/train/sequence-dataset-format/).
 
 ## When to use a sequence
@@ -173,7 +173,7 @@ See the [data client API](/reference/apis/data-client/) for each method's parame
 
 To train on sequences, collect them into a sequence dataset.
 On a sequence's detail page, click **Add to dataset**, or call `AddSequencesToDataset` from code.
-See [Sequence datasets](/train/create-a-dataset/#sequence-datasets) to create the dataset, add sequences, and export it.
+See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequences, and export it.
 
 ## Limitations {#limits}
 
@@ -186,6 +186,6 @@ See [Sequence datasets](/train/create-a-dataset/#sequence-datasets) to create th
 ## Next steps
 
 - [Sequences tutorial](/data/sequences-tutorial/): record three sequences, collect them into a dataset, and export it.
-- [Create a sequence dataset](/train/create-a-dataset/#sequence-datasets): collect sequences for training.
+- [Create a sequence dataset](/train/create-a-dataset/): collect sequences for training.
 - [Capture on demand](/data/capture-sync/capture-on-demand/): start and stop capture, and record sequences, with the `capture-control` module.
 - [Sequence dataset format](/train/sequence-dataset-format/): the Parquet files a training script receives.

@@ -485,7 +485,7 @@ If `demos` already exists, pick another name, for example `export DATASET_NAME=d
 {{% /tab %}}
 {{< /tabs >}}
 
-See [Sequence datasets](/train/create-a-dataset/#sequence-datasets).
+See [Create a dataset](/train/create-a-dataset/).
 
 ## 7. Export the dataset
 

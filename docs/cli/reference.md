@@ -644,7 +644,7 @@ viam dataset delete --dataset-id=123
 
 Download all the data from a dataset to a specified output directory.
 For a dataset of images, this writes the image files and a `dataset.jsonl` file.
-For a [sequence dataset](/train/create-a-dataset/#sequence-datasets), it starts an export job on the server, waits for it, and writes `<dataset-id>.zip` (three Parquet files) plus a `binary_data/` folder of images.
+For a [sequence dataset](/train/create-a-dataset/), it starts an export job on the server, waits for it, and writes `<dataset-id>.zip` (three Parquet files) plus a `binary_data/` folder of images.
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=./dataset/example --dataset-id=abc
