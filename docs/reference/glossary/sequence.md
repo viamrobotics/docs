@@ -12,4 +12,4 @@ A sequence groups the data one machine part captured inside a time window: image
 A sequence is a saved filter over captured data and not a copy of it.
 You collect sequences into a sequence dataset to train a model with a custom training script.
 
-For more information, see [Group captured data into sequences](/data/sequences/).
+For more information, see [Sequences](/data/sequences/).

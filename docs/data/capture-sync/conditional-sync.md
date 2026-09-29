@@ -35,7 +35,7 @@ If `selective_syncer_name` is configured but the sensor cannot be found, **sched
 {{< /alert >}}
 
 {{< alert title="Conditional sync does not control capture" color="caution" >}}
-Conditional sync only controls _when data is uploaded_. Capture continues writing to local disk at the configured frequency regardless of whether sync is active. To change what is captured, use a [capture control sensor](/data/capture-sync/capture-control-sensor/). If the sync window is short or bandwidth is limited, the backlog from a full capture cycle may not clear in a single window. Monitor the capture directory size on constrained devices. See [Manage local storage](/data/filter-at-the-edge/#manage-local-storage) for storage management guidance.
+Conditional sync only controls _when data is uploaded_. Capture continues writing to local disk at the configured frequency regardless of whether sync is active. To change what is captured, use a [capture control sensor](/data/capture-sync/capture-on-demand/). If the sync window is short or bandwidth is limited, the backlog from a full capture cycle may not clear in a single window. Monitor the capture directory size on constrained devices. See [Manage local storage](/data/filter-at-the-edge/#manage-local-storage) for storage management guidance.
 {{< /alert >}}
 
 ## Configure conditional sync

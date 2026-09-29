@@ -24,7 +24,7 @@ This page covers four approaches, from simplest to most powerful:
 1. **Reduce capture frequency** -- capture less often.
 2. **Use a filtered camera** -- use an ML model to decide frame-by-frame what to capture.
 3. **Conditional sync** -- capture locally but only sync when conditions are met.
-4. **Control capture with a sensor** -- let a sensor turn capture on and off, or change its frequency, while the machine runs. See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/).
+4. **Control capture with a sensor** -- let a sensor turn capture on and off, or change its frequency, while the machine runs. See [Capture on demand](/data/capture-sync/capture-on-demand/).
 
 ## Reduce capture frequency (time-based sampling)
 
@@ -263,7 +263,7 @@ watch -n 60 du -sh "$HOME/.viam/capture"
   frequency directly reduces storage pressure.
 - **Enable sync.** Without sync, local storage fills indefinitely.
 - **Use filtered capture.** The filtered camera and a
-  [capture control sensor](/data/capture-sync/capture-control-sensor/)
+  [capture control sensor](/data/capture-sync/capture-on-demand/)
   reduce what gets written to disk, not just what gets synced.
 - **Monitor disk space.** Set up a simple cron job or health check that alerts
   you when the capture directory exceeds a size threshold.

@@ -352,7 +352,7 @@ There is no image selection or annotation step.
 You add sequences, export the dataset as Parquet files, and train on it with a custom training script.
 
 Before you start, record one or more sequences.
-See [Group captured data into sequences](/data/sequences/).
+See [Sequences](/data/sequences/).
 To go from recording to export in one pass, follow the [sequences tutorial](/data/sequences-tutorial/).
 
 ### Create a sequence dataset

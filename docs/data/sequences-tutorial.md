@@ -145,7 +145,7 @@ In the next steps, a capture control sensor will turn capture on only while you 
 
 ## 2. Add the capture control sensor
 
-A sequence starts and stops when a [capture control sensor](/data/capture-sync/capture-control-sensor/) says so.
+A sequence starts and stops when a [capture control sensor](/data/capture-sync/capture-on-demand/) says so.
 We will use the `capture-control` module, which you switch on and off by hand.
 
 {{< tabs >}}
@@ -541,7 +541,7 @@ You built the whole path from capture to training data:
 
 ## What's next
 
-- [Control capture with a sensor](/data/capture-sync/capture-control-sensor/): the full reference for overrides.
-- [Group captured data into sequences](/data/sequences/): recording, viewing, and creating sequences from code.
+- [Capture on demand](/data/capture-sync/capture-on-demand/): all of the `capture-control` module's commands, and how to write your own capture control sensor.
+- [Sequences](/data/sequences/): recording, viewing, and creating sequences from code.
 - [Sequence dataset format](/train/sequence-dataset-format/): the columns in each Parquet file.
 - [Custom training scripts](/train/custom-training-scripts/): train a model on the exported data.
