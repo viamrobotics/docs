@@ -13,13 +13,13 @@ date: "2026-09-29"
 In this tutorial, you will record time windows of data from a machine as sequences, review them in the Viam app, collect them into a sequence dataset, and export the dataset as Parquet files.
 By the end, you will have followed the whole path that a training script starts from: from capture on the machine to files you can train on.
 
-**Time:** ~30 minutes
+**Time:** ~20 minutes
 
 **What you need:**
 
 - A machine connected to the Viam app (if you don't have one yet, follow [Set up a machine](/set-up-a-machine/))
 - The [Viam CLI](/cli/overview/), installed and logged in
-- Python 3 on the computer that runs `viam-server`, and on your laptop or desktop for the final step
+- Python 3 on your laptop or desktop, for the final step
 
 We will use a fake camera and a fake sensor, so this tutorial works without physical hardware.
 
@@ -37,64 +37,29 @@ We need components that produce data.
 Expand the **Test** section on each component card to confirm the camera shows an image and the sensor returns readings.
 
 Don't configure data capture on either component.
-In the next steps, a sensor of your own will turn capture on only while you record.
+In the next steps, a capture control sensor will turn capture on only while you record.
 
-## 2. Build the capture control sensor
+## 2. Add the capture control sensor
 
 A sequence starts and stops when a [capture control sensor](/data/capture-sync/capture-control-sensor/) says so.
-We will build one that you can switch on and off by hand.
+We will use the `capture-control` module, which you switch on and off by hand.
 
-1. In a terminal on your laptop or desktop, run `viam module generate`.
-2. At the prompts, use module name `sequence-control`, language `python`, visibility `private`, resource `Sensor Component`, and model name `recorder`.
-   Register the module when asked.
-3. Open the generated file `src/models/recorder.py`.
-4. Replace the generated `get_readings` and `do_command` methods with the following.
-   Keep the rest of the file as generated.
+1. On the **CONFIGURE** tab, click **+** and select **Blocks**.
+2. Search for **capture-control** and select the sensor from the `viam` namespace.
+3. Name it `my-capture-sensor` and click **Add to machine**.
+4. In its attributes, list the two components to control and the capture frequency:
 
-   ```python
-       recording = False
-       tag = "demo"
-
-       async def do_command(self, command, *, timeout=None, **kwargs):
-           if command.get("command") == "start":
-               self.tag = command.get("tag", "demo")
-               self.recording = True
-           elif command.get("command") == "stop":
-               self.recording = False
-           return {"recording": self.recording, "tag": self.tag}
-
-       async def get_readings(self, *, extra=None, timeout=None, **kwargs):
-           if not self.recording:
-               return {"overrides": [], "sequences": []}
-           resources = [
-               {"resource_name": "test-camera", "method": "GetImages"},
-               {"resource_name": "test-sensor", "method": "Readings"},
-           ]
-           return {
-               "overrides": [
-                   {**r, "capture_frequency_hz": 2} for r in resources
-               ],
-               "sequences": [
-                   {"sequence_tags": [self.tag], "resources": resources},
-               ],
-           }
+   ```json
+   {
+     "resources": [
+       { "resource_name": "test-camera", "method": "GetImages" },
+       { "resource_name": "test-sensor", "method": "Readings" }
+     ],
+     "default_capture_frequency_hz": 2
+   }
    ```
 
-   While `recording` is `True`, this sensor does two things.
-   Its `overrides` list turns on capture for the camera and the sensor at 2 Hz.
-   Its `sequences` list opens a sequence over the same two components, tagged with the name you send in the `start` command.
-
-5. Find your machine's part ID: at the top of the machine's page, click the **Live** status dropdown, then click **Part ID**.
-6. From the module's directory, deploy the module and add the sensor to your machine:
-
-   ```bash
-   viam module reload-local --part-id <machine-part-id> \
-     --model-name <your-namespace>:sequence-control:recorder \
-     --resource-name my-capture-sensor
-   ```
-
-When the command finishes, a sensor named `my-capture-sensor` appears on your machine's **CONFIGURE** tab.
-See [Write a module](/build-modules/write-a-driver-module/) for more on the module workflow.
+5. Click **Save**.
 
 ## 3. Connect the sensor to the data manager
 
@@ -129,15 +94,15 @@ Now we will record three demonstrations, 10 seconds each.
 1. Expand the **Test** section of `my-capture-sensor`, find **DoCommand**, and send:
 
    ```json
-   { "command": "start", "tag": "demo-1" }
+   { "start_capture": true, "tags": ["demo-1"] }
    ```
 
 2. Wait 10 seconds.
-3. Send `{"command": "stop"}`.
+3. Send `{"stop_capture": true}`.
 4. Repeat with the tags `demo-2` and `demo-3`.
 
 The data manager watches the sensor's readings.
-Each `start` opened a sequence and began capture, and each `stop` closed the sequence and ended capture.
+Each `start_capture` began capture and opened a sequence, and each `stop_capture` ended capture and closed the sequence.
 The data manager uploads each finished sequence on the next sync.
 
 ## 5. Review the sequences
@@ -155,9 +120,9 @@ Wait about 30 seconds, then:
 Behind the scenes:
 
 1. The data manager polled `my-capture-sensor` 10 times per second.
-2. After `start`, the sensor returned an overrides list, so the data manager began capturing `test-camera` and `test-sensor` at 2 Hz, even though neither has capture configured.
+2. After `start_capture`, the sensor returned an overrides list, so the data manager began capturing `test-camera` and `test-sensor` at 2 Hz, even though neither has capture configured.
 3. The `sequences` entry opened a sequence.
-4. After `stop`, the entry disappeared, so the sequence closed and its start and end times were saved.
+4. After `stop_capture`, the entry disappeared, so the sequence closed and its start and end times were saved.
 5. Sync uploaded the captured data and the sequence.
 
 The sequence doesn't contain the data.
@@ -220,7 +185,7 @@ See [Sequence dataset format](/train/sequence-dataset-format/) for every column.
 
 ## 8. Clean up
 
-1. Send `{"command": "stop"}` to `my-capture-sensor` if a sequence is still open.
+1. Send `{"stop_capture": true}` to `my-capture-sensor` if a sequence is still open.
 2. On the **CONFIGURE** tab, remove `capture_control_sensor` and `depends_on` from the data manager, and click **Save**.
 3. To remove the test components, delete `test-camera`, `test-sensor`, and `my-capture-sensor`, and click **Save**.
 

@@ -21,9 +21,6 @@ To conditionally _sync_ data rather than control capture, see [Conditional sync]
 ## Before you start
 
 - A machine running `viam-server` with a [data management service](/data/capture-sync/capture-and-sync-data/) configured.
-- A sensor you can modify, such as a custom sensor module you build yourself.
-  The sensor's `Readings` method must return the keys described below.
-  See [Write a module](/build-modules/write-a-driver-module/) to build one.
 
 ## How a capture control sensor works
 
@@ -35,7 +32,67 @@ Overrides apply on top of your configured capture settings and don't replace the
 When the sensor stops listing a resource, that resource returns to its configured capture settings.
 If it has none, it stops capturing.
 
-## 1. Write a sensor that returns overrides
+## 1. Choose a capture control sensor
+
+You can use the `capture-control` module, or write a sensor of your own.
+
+|            | `capture-control` module                                                                                      | Your own sensor                                                                                               |
+| ---------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Best when  | Something outside the machine decides when to record: a button, a script, a workflow step, or you in the app. | The machine decides by itself, for example from another sensor's readings, a vision detection, or a schedule. |
+| Trigger    | You send `DoCommand` calls.                                                                                   | Any logic in `Readings`.                                                                                      |
+| Components | A fixed list in the config, all with one frequency and one set of tags.                                       | Any list, changing at any time, each with its own frequency and tags.                                         |
+| Sequences  | One sequence at a time.                                                                                       | As many as you return.                                                                                        |
+| Effort     | Configuration only.                                                                                           | You write and deploy a [module](/build-modules/write-a-driver-module/).                                       |
+
+Start with the module unless you need one of the right-hand column's abilities.
+The module is experimental, so its commands might change.
+
+### Option A: use the `capture-control` module
+
+1. On your machine's **CONFIGURE** tab, click **+**, select **Blocks**, search for **capture-control**, and select the sensor from the `viam` namespace.
+2. Name it `my-capture-sensor` and click **Add to machine**.
+3. In the sensor's attributes, list the components and methods to control, and the frequency to capture at:
+
+   ```json
+   {
+     "resources": [
+       { "resource_name": "my-camera", "method": "GetImages" },
+       { "resource_name": "my-sensor", "method": "Readings" }
+     ],
+     "default_capture_frequency_hz": 2,
+     "default_tags": ["event"]
+   }
+   ```
+
+   | Attribute                      | Required? | Description                                                                                |
+   | ------------------------------ | --------- | ------------------------------------------------------------------------------------------ |
+   | `resources`                    | Required  | The components and methods to control. At least one.                                       |
+   | `default_capture_frequency_hz` | Optional  | Frequency used when `start_capture` doesn't give one. Default `0`, which captures nothing. |
+   | `default_tags`                 | Optional  | Tags used when `start_capture` doesn't give any.                                           |
+
+4. Click **Save**.
+
+{{< alert title="The module turns capture off between recordings" color="caution" >}}
+While the module isn't recording, it tells the data management service to capture the components in `resources` at 0 Hz.
+This overrides any capture you configured on those components, so they capture only while you record.
+{{< /alert >}}
+
+Control the module with `DoCommand`, from the sensor's **Test** section or from code.
+Each command is a key set to `true`, with optional arguments beside it:
+
+| Command                                                         | What it does                                                                                          |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `{"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}` | Starts capture at the frequency, tagged, and opens a [sequence](/data/sequences/) with the same tags. |
+| `{"stop_capture": true}`                                        | Stops capture and closes the sequence.                                                                |
+| `{"start_sequence": true, "tags": ["run-1"]}`                   | Opens a sequence without changing capture. Use it when capture is already running.                    |
+| `{"stop_sequence": true}`                                       | Closes the sequence and leaves capture unchanged.                                                     |
+
+`frequency_hz` and `tags` are optional on `start_capture`.
+If you leave out `frequency_hz` and `default_capture_frequency_hz` is `0`, the sequence opens but nothing is captured.
+Sending `start_capture` again with different tags closes the open sequence and opens a new one.
+The sensor forgets its state when its configuration changes.
+
+### Option B: write your own sensor
 
 In your sensor's `Readings` method, return a list under a key you choose.
 Each entry in the list has these fields:
@@ -75,22 +132,15 @@ You turn recording on and off by sending the sensor a `start` or `stop` command 
         }
 ```
 
-## 2. Add the sensor to your machine
+Deploy the sensor as a module and add it to your machine with `viam module reload-local`.
+The command adds the sensor to your machine's configuration, using the resource name you pass in `--resource-name`.
+See [Test locally](/build-modules/write-a-driver-module/#3-test-locally) and [Write a module](/build-modules/write-a-driver-module/).
 
-The data management service can only use a sensor that is already configured on the machine.
+## 2. Point the data manager at the sensor
 
-- If you built the sensor as a module, deploy it and add it to your machine with `viam module reload-local`.
-  The command adds the sensor to your machine's configuration, using the resource name you pass in `--resource-name`.
-  See [Test locally](/build-modules/write-a-driver-module/#3-test-locally).
-- If the sensor is in the registry, add it on the **CONFIGURE** tab: click **+**, select **Blocks**, search for the sensor, and click **Add to machine**.
-
-Note the sensor's name.
-The next step uses it.
-This page uses `my-capture-sensor`.
-
-## 3. Point the data manager at the sensor
-
+The sensor must already be on your machine.
 Tell the data management service which sensor to poll, and which key in its readings holds the overrides.
+The `capture-control` module uses the key `overrides`.
 
 1. On your machine's **CONFIGURE** tab, find your data management service.
 2. Switch to **JSON** mode.
@@ -119,7 +169,7 @@ Tell the data management service which sensor to poll, and which key in its read
 5. Click **Save**.
 
 Within a moment, the service starts applying the sensor's readings.
-Send the sensor a `start` command from its **Test** section, and check the machine's **LOGS** tab for messages that begin `capture control sensor enabling capture for`.
+Check the machine's **LOGS** tab for messages that begin `capture control sensor enabling capture for`.
 
 ## Capture from resources the data manager doesn't list
 

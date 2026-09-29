@@ -31,12 +31,19 @@ A sequence opens the first time its entry appears in the list, and closes when t
 
 A sequence only selects data that data capture wrote down.
 For the sequence to contain images and readings, capture must be running on those components while the sequence is open.
-Either configure data capture on them, or return an `overrides` list from the same sensor to turn capture on for the window.
+Either configure data capture on them, or let the capture control sensor turn capture on for the window.
+The `capture-control` module's `start_capture` command does both.
 See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/).
 
-### 2. Return a `sequences` list from the sensor
+### 2. Choose how the sensor opens sequences
 
-Each entry in the `sequences` list has these fields:
+The [`capture-control` module](/data/capture-sync/capture-control-sensor/#option-a-use-the-capture-control-module) opens and closes a sequence when you send it a command.
+Send `{"start_capture": true, "tags": ["demo-1"]}` to start capture and open a sequence, and `{"stop_capture": true}` to end both.
+If capture is already running, use `start_sequence` and `stop_sequence` to open and close only the sequence.
+The module keeps one sequence open at a time.
+
+To open sequences from your own logic, or to keep several open at once, write your own capture control sensor that returns a `sequences` list from its `Readings` method.
+Each entry in the list has these fields:
 
 | Field           | Type             | Required? | Description                                                                                                                                                      |
 | --------------- | ---------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -75,7 +82,8 @@ Set `capture_control_sensor` on the data management service, with the sensor's `
 ```
 
 `key` is required even if you only record sequences.
-See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/#set-the-capture-control-sensor-on-the-data-manager).
+Also add the sensor to the service's `depends_on` list.
+See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/#2-point-the-data-manager-at-the-sensor).
 
 ### 4. Confirm the sequence uploaded
 
