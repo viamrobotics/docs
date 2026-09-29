@@ -228,7 +228,7 @@ defer machine.Close(context.Background())
 {{% /tab %}}
 {{< /tabs >}}
 
-The error from a failed connect is generic. The SDK does not always distinguish credential errors from network errors. Log the error message verbatim when debugging, and check the **CONNECT** tab in the Viam app to confirm the machine is online before assuming the code is wrong.
+The error from a failed connect is generic. The SDK does not always distinguish credential errors from network errors. Log the error message verbatim when debugging, and check the **CONNECT** tab in the Viam app to confirm the machine is online before assuming the code is wrong. To see more detail about what the client does while it connects, turn on [connection debug logging](/reference/sdks/connectivity/#log-connection-details-from-an-sdk-client) in the Go or TypeScript SDK.
 
 Once the connection is established, subsequent network drops trigger automatic reconnection rather than thrown errors. See [Handle disconnection and reconnection](/build-apps/tasks/handle-connection-state/) for the reconnection pattern.
 
