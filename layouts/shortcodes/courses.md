@@ -6,7 +6,7 @@
 {{- if eq .status "coming-soon" }}
 - **{{ .title }}** (coming soon): {{ .description }}
 {{- else }}
-- [{{ .title }}]({{ $learn }}): {{ .description }}{{ with $meta }} ({{ delimit . ", " | lower }}){{ end }}
+- [{{ .title }}]({{ .url | default $learn }}): {{ .description }}{{ with $meta }} ({{ delimit . ", " | lower }}){{ end }}
 {{- end }}
 {{ end }}
 [Start learning at {{ strings.TrimPrefix "https://" $learn }}]({{ $learn }})

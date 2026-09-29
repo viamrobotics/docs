@@ -1,10 +1,11 @@
 # Free Viam courses, rendered by the `course` and `courses` shortcodes
 # (layouts/shortcodes/course.html, courses.html, and their .md variants).
 #
-# Each course's own `url` is where a single-course `course` callout links.
+# Each course's own `url` is where both the `course` callout and the `courses`
+# grid link. A course without a `url` links to `learn_url` instead.
 #
 # `learn_url` is the course platform itself. The `courses` grid (used on
-# /try/courses/) links every available course there. Set `status: coming-soon`
+# /try/courses/) also links to it below the cards. Set `status: coming-soon`
 # to show a course in the grid without a link. The navbar's Courses tab
 # (config.toml) and the mobile sidebar link (sidebar-tree.html) hardcode the
 # same URL.
@@ -19,17 +20,16 @@ courses:
     description: "Build a palletizing cell in simulation and learn the core concepts behind every Viam machine."
     duration: "90 minutes"
     hardware: "No hardware required"
-    url: "https://www.viam.com/education"
+    url: "https://www.viam.com/education/viam-101"
     status: "available"
   - id: "viam-102"
     title: "Viam 102: Module Development"
     description: "Turn a control script into a production-grade module: lifecycle, resource management, and publishing to the registry."
     duration: "120 minutes"
     hardware: "No hardware required"
-    url: "https://www.viam.com/education"
+    url: "https://www.viam.com/education/viam-102"
     status: "available"
   - id: "so-101"
     title: "SO-101: Teleop and Motion Capture"
     description: "Go from simulation to real hardware with the SO-101 leader-follower arm kit."
-    url: "https://www.viam.com/education"
     status: "coming-soon"

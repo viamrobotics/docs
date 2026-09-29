@@ -7,4 +7,4 @@
 {{- $meta := slice -}}
 {{- with $course.duration }}{{ $meta = $meta | append . }}{{ end -}}
 {{- with $course.hardware }}{{ $meta = $meta | append . }}{{ end -}}
-> **{{ $eyebrow }}{{ if eq $course.status "coming-soon" }} (coming soon){{ end }}:** [{{ $course.title }}]({{ $course.url }}): {{ $course.description }}{{ with $meta }} ({{ delimit . ", " | lower }}){{ end }}
+> **{{ $eyebrow }}{{ if eq $course.status "coming-soon" }} (coming soon){{ end }}:** [{{ $course.title }}]({{ $course.url | default site.Data.courses.learn_url }}): {{ $course.description }}{{ with $meta }} ({{ delimit . ", " | lower }}){{ end }}
