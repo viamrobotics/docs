@@ -171,8 +171,10 @@ Search the registry before writing a driver or service from scratch; the hardwar
 
 When nothing in the registry fits, you can develop your own module.
 `viam module generate` creates a module skeleton, `viam module reload` hot-loads it onto the running part, and the new resource then appears in `ResourceNames` like any built-in.
-A reload is a test build: it replaces any registry version of that module on this part until reload is turned off in the part's config, which the CLI cannot do.
-Tell your operator when you have reloaded a module, and publish a versioned release when the module should stay.
+
+Use `viam module reload` only for testing.
+After a reload, the part keeps running your local build of the module, even if the part's config specifies a registry version. Note that the CLI has no command to stop reloading, but it can be done with an SDK or MCP server, or by your operator in the Viam app.
+To deploy a module permanently, publish a versioned release to the registry instead.
 See [Build and deploy modules](/cli/build-and-deploy-modules/).
 
 ## Reading errors
