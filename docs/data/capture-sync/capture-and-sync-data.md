@@ -161,5 +161,6 @@ Every component also supports `GetWorldPose` (requires a configured [frame syste
 
 - [Query data](/data/query-data/): write queries, set up data pipelines, and export data
 - [Add computer vision](/vision/configure/): run ML models on your camera feed and capture detection results
+- [Control capture with a sensor](/data/capture-sync/capture-control-sensor/): capture only around events, or change frequency while the machine runs
 - [Create a dataset](/train/create-a-dataset/): organize captured images into training datasets
 - [Reference](/data/reference/): JSON-level config, retention policies, and sync optimization

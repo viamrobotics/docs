@@ -14,7 +14,9 @@ aliases:
 ---
 
 A dataset is a named collection of images at the organization level that you
-label and use for training.
+label and use for training. This page covers datasets of images. To collect
+time windows of images and readings instead, see
+[Create a sequence dataset](/train/create-a-sequence-dataset/).
 
 ## Platform requirements
 

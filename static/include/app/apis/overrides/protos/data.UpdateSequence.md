@@ -1,0 +1,1 @@
+Update the resources, tags, start time, or end time of a sequence. Only the fields listed in the field mask change.

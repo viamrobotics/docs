@@ -17,7 +17,7 @@ Data moves through four stages, from your robot to actionable insights:
 
 <img src="/data/data-flow-overview.svg" alt="Data flow: capture on the machine writes .capture files to local disk, sync uploads to cloud, cloud stores tabular data in MongoDB and binary data in blob storage, and from there you can query, export, train ML models, build dashboards, and trigger alerts." style="width:100%;max-width:720px;height:auto;display:block" >
 
-1. **Capture on the machine.** You configure which components to record from and at what frequency. Captured data is written to local disk. Nothing is captured until you configure it.
+1. **Capture on the machine.** You configure which components to record from and at what frequency. Captured data is written to local disk. Data capture is off until you configure it, either on a component or through a [capture control sensor](/data/capture-sync/capture-control-sensor/).
 2. **Sync to the cloud.** A separate process uploads captured data to Viam's cloud at a configurable interval, then deletes local files. If the machine goes offline, data buffers locally and syncs when connectivity returns.
 3. **Store.** In the cloud, tabular data (sensor readings, motor positions, encoder ticks) is stored in MongoDB. Binary data (images, point clouds, audio) is stored in blob storage. Both are indexed and queryable.
 4. **Use.** From the cloud, you can query data with SQL or MQL, export it to your own database, build datasets for ML training, create monitoring dashboards, or trigger alerts when data meets a condition.
@@ -62,7 +62,7 @@ See [Delete data](/data/delete-data/) and [Platform-managed capture settings](/d
 
 ## Annotate and train
 
-Captured images can be tagged, annotated with bounding boxes, and organized into datasets for ML training. Viam provides a complete path from captured data to a deployed model:
+Captured images can be tagged, annotated with bounding boxes, and organized into datasets for ML training. To keep the images and readings from one event together, record them as a [sequence](/data/sequences/) and collect sequences into a sequence dataset. Viam provides a complete path from captured data to a deployed model:
 
 1. Capture images from your robot's cameras.
 2. Label them with tags and bounding boxes in the Viam app.
@@ -70,7 +70,7 @@ Captured images can be tagged, annotated with bounding boxes, and organized into
 4. Submit a training job (Vertex AI AutoML or your own training container).
 5. Deploy the trained model back to your robot.
 
-See [Tag data](/data/tag-data/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
+See [Tag data](/data/tag-data/), [Group captured data into sequences](/data/sequences/), [Create a dataset](/train/create-a-dataset/), and the training section for details.
 
 ## Monitor and debug
 

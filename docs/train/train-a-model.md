@@ -26,6 +26,12 @@ Managed training uses a fixed internal train/validation split and does not
 currently expose loss curves or a separate test-dataset option. To evaluate
 a trained model, see [Test your model](#4-test-your-model) below.
 
+{{< alert title="Managed training doesn't support sequence datasets" color="note" >}}
+Managed training accepts only datasets of images. To train on a
+[sequence dataset](/train/create-a-sequence-dataset/), use a
+[custom training script](/train/custom-training-scripts/).
+{{< /alert >}}
+
 ## 1. Start a training job from the web UI
 
 1. Go to [app.viam.com](https://app.viam.com).

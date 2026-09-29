@@ -642,7 +642,9 @@ viam dataset delete --dataset-id=123
 
 ### `dataset export`
 
-Download all the data from a dataset to a specified output directory in two folders called "data" and "metadata".
+Download all the data from a dataset to a specified output directory.
+For a dataset of images, this writes the image files and a `dataset.jsonl` file.
+For a [sequence dataset](/train/create-a-sequence-dataset/), it starts an export job on the server, waits for it, and writes `<dataset-id>.zip` (three Parquet files) plus a `binary_data/` folder of images.
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --destination=./dataset/example --dataset-id=abc
@@ -657,6 +659,11 @@ viam dataset export --destination=./dataset/example --dataset-id=abc
 | `--force-linux-path` | Force the use of Linux-style paths in the dataset.jsonl file. | Optional |
 | `--parallel` | Number of download requests to make in parallel. Default: `100`. | Optional |
 | `--timeout` | Number of seconds to wait for large file downloads. Default: `30`. | Optional |
+| `--poll-interval` | Sequence datasets only. How often to check the export job. Default: `5s`. | Optional |
+| `--max-wait` | Sequence datasets only. How long to wait for the export to finish. Default: `30m`. | Optional |
+| `--only-parquet` | Sequence datasets only. Write the Parquet zip and skip downloading the images. | Optional |
+
+`--only-jsonl` and `--force-linux-path` apply only to datasets of images.
 
 ### `dataset merge`
 
