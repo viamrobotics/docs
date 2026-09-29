@@ -67,6 +67,11 @@ fake components so you can run it on any machine:
 {{% card link="/motion-planning/quickstarts/frame-system/" noimage="true" %}}
 {{< /cards >}}
 
+For a guided introduction, the free Viam 101 course walks through building a
+palletizing arm application in simulation:
+
+{{< course "viam-101" >}}
+
 ## How it works
 
 Each `Move` request to the motion service runs the same pipeline: it reads

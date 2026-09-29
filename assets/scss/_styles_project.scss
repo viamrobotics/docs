@@ -60,14 +60,21 @@ div.footnotes > ol > li > p {
   margin-left: 1rem;
 }
 
+// Match the Tutorials/Courses tabs exactly (color, line box, separator
+// height) so "Docs" reads as the first tab rather than part of the logo.
 .td-navbar .navbar-brand span span:last-child {
+  display: inline-block;
   vertical-align: middle;
-  padding: 2px 0 2px 1rem;
+  padding: 0 0 0 1rem;
+  line-height: 1.667em;
+  color: black;
 }
 
 #main_navbar {
   display: flex;
   flex-direction: row;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .navbar-dark .navbar-brand,
@@ -1436,15 +1443,50 @@ td > ol {
   color: #9c9ca4;
 }
 
+// GitHub/Discord icon group, styled after app.viam.com's docs/help pair.
+#navsearch > .nav-icon-group {
+  display: flex;
+  align-items: stretch;
+  margin-right: 0.75rem;
+  border: 1px solid #e4e4e6;
+  border-radius: 4px;
+  background-color: #fbfbfc;
+}
+
+#navsearch > .nav-icon-group > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  color: #4e4f52;
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+
+#navsearch > .nav-icon-group > a + a {
+  border-left: 1px solid #e4e4e6;
+}
+
+#navsearch > .nav-icon-group > a:hover,
+#navsearch > .nav-icon-group > a:focus {
+  color: black;
+  background-color: #f1f1f4;
+}
+
+.td-navbar .nav-link .nav-external-icon {
+  margin-left: 0.5rem;
+  color: #9c9ca4;
+}
+
+// inkeep.js appends this to #main_navbar. It's a flex item centered in the
+// space between the tabs and the right-side buttons, not absolutely
+// positioned, so it shrinks instead of overlapping the tabs.
 #navSearchBar {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0px;
-  min-width: 300px;
-  max-width: 300px;
-  width: 300px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  align-self: center;
+  flex: 0 1 332px;
+  min-width: 200px;
 }
 
 #scrollButton,
@@ -4491,4 +4533,132 @@ footer {
   .tutorial-hero__phases {
     padding: 1.6rem;
   }
+}
+
+/* START CSS FOR COURSE CALLOUTS (course and courses shortcodes) */
+
+.course-callout,
+.courses-strip {
+  border: 1px solid #e4e4e6;
+  border-radius: 4px;
+  background-color: #fbfbfc;
+  margin: 1.5rem 0;
+}
+
+.course-callout {
+  padding: 1rem 1.25rem;
+}
+
+.course-callout p,
+.courses-strip p {
+  margin-bottom: 0.25rem;
+}
+
+.course-eyebrow {
+  font-size: 0.75rem;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+  color: #4e4f52;
+}
+
+.course-title {
+  display: block;
+  font-weight: $font-weight-medium;
+  color: black;
+}
+
+.course-callout .course-title a {
+  text-decoration: none;
+}
+
+.course-callout .course-title a:hover {
+  text-decoration: underline;
+}
+
+.course-description {
+  display: block;
+  color: #282829;
+}
+
+.course-meta {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #4e4f52;
+}
+
+.courses-strip {
+  padding: 1.25rem;
+}
+
+.courses-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.courses-strip-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border: 1px solid #e4e4e6;
+  border-radius: 4px;
+  background-color: white;
+  text-decoration: none;
+}
+
+.courses-strip-card:hover {
+  border-color: #282829;
+  text-decoration: none;
+}
+
+.courses-strip-card.coming-soon .course-title,
+.courses-strip-card.coming-soon .course-description {
+  color: #4e4f52;
+}
+
+.courses-strip-badge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: $font-weight-medium;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  background-color: #e4e4e6;
+  color: #282829;
+}
+
+.courses-strip-all a {
+  text-decoration: none;
+}
+
+.courses-strip-all a:hover {
+  text-decoration: underline;
+}
+
+/* END CSS FOR COURSE CALLOUTS */
+
+// Off-site navbar links repeated at the bottom of the sidebar below lg,
+// where navbar.html hides them (see sidebar-tree.html).
+.sidebar-offsite-links {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0.75rem 0 0 1.25rem;
+  border-top: 1px solid #e4e4e6;
+}
+
+.sidebar-offsite-links li {
+  padding: 0.25rem 0;
+}
+
+.sidebar-offsite-links a {
+  color: #282829;
+  text-decoration: none;
+}
+
+.sidebar-offsite-links i {
+  color: #9c9ca4;
+  margin-left: 0.25rem;
 }

@@ -28,7 +28,10 @@ aliases:
 date: "2026-09-23"
 ---
 
+{{< course id="viam-101" eyebrow="New to Viam? Start with a free course" >}}
+
 Viam is a software platform for building, deploying, and managing robotics applications.
+
 You tell Viam what hardware and software capabilities your machine needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your machine actually does.
 
 It is the development workflow you already know, applied to physical devices: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
@@ -97,10 +100,6 @@ If nothing in the registry fits, you can [write and publish your own module](/bu
 | Organize machines and control who can reach them                        | [Admin and access](/organization/overview/)                       |
 
 ## Next steps
-
-{{% alert title="Viam 101" color="tip" %}}
-Our [**Viam 101 course**](https://www.viam.com/viam-101) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required.
-{{% /alert %}}
 
 - [Try Viam](/try/overview/) to work through a complete project without buying any hardware.
 - [Set up your first machine](/set-up-a-machine/first-machine/) when you have a device ready to connect.
