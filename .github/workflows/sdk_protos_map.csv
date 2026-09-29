@@ -8,6 +8,9 @@ arm,MoveThroughJointPositions,,move_through_joint_positions,MoveThroughJointPosi
 arm,MoveThroughJointPositionsStreamed,,move_through_joint_positions_streamed,MoveThroughJointPositionsStreamed,,
 arm,GetJointPositions,,get_joint_positions,JointPositions,jointPositions,getJointPositions
 arm,Get3DModels,,get_3d_models,Get3DModels,get3DModels,get3DModels
+arm,SetManualMode,,set_manual_mode,SetManualMode,setManualMode,setManualMode
+arm,GetManualMode,,get_manual_mode,ManualMode,manualMode,getManualMode
+arm,GetProperties,,get_properties,Properties,properties,getProperties
 ## Flutter-only client-side helper, sums link lengths from getKinematics() locally; no proto/RPC and no analog in other SDKs:
 arm,CalculateMaxReach,,,,calculateMaxReach,
 ## HACK:  proto for these (and/or inherited in Go SDK), manually mapping:
@@ -413,6 +416,7 @@ app,MarkPartForRestart,,mark_part_for_restart,MarkPartForRestart,,markPartForRes
 app,CreateRobotPartSecret,,create_robot_part_secret,CreateRobotPartSecret,,createRobotPartSecret
 app,DeleteRobotPartSecret,,delete_robot_part_secret,DeleteRobotPartSecret,,deleteRobotPartSecret
 app,ListRobots,,list_robots,ListRobots,,listRobots
+app,ListRobotsForLocations,,list_robots_for_locations,ListRobotsForLocations,,
 app,ListMachineSummaries,,,ListMachineSummaries,,
 app,NewRobot,,new_robot,NewRobot,,newRobot
 app,UpdateRobot,,update_robot,UpdateRobot,,updateRobot

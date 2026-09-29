@@ -8,6 +8,9 @@
 | [`MoveThroughJointPositionsStreamed`](/reference/apis/components/arm/#movethroughjointpositionsstreamed) | Stream batches of timed trajectory points to the arm and execute them in order as they arrive. |
 | [`GetJointPositions`](/reference/apis/components/arm/#getjointpositions) | Get the current position of each joint on the arm. |
 | [`Get3DModels`](/reference/apis/components/arm/#get3dmodels) | Get the 3D models of the arm. |
+| [`SetManualMode`](/reference/apis/components/arm/#setmanualmode) | Enter or exit manual mode on an arm that supports it, optionally for a limited time. |
+| [`GetManualMode`](/reference/apis/components/arm/#getmanualmode) | Get whether the arm is currently in manual mode. |
+| [`GetProperties`](/reference/apis/components/arm/#getproperties) | Get which features the arm supports, such as manual mode and direct Cartesian commands. |
 | [`CalculateMaxReach`](/reference/apis/components/arm/#calculatemaxreach) | Calculate the maximum reach of the arm by summing all link lengths from its kinematics data. |
 | [`GetKinematics`](/reference/apis/components/arm/#getkinematics) | Get the kinematics information associated with the arm as the format and byte contents of the kinematics file. |
 | [`IsMoving`](/reference/apis/components/arm/#ismoving) | Get if the arm is currently moving. |
