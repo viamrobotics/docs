@@ -16,8 +16,10 @@ aliases:
 Built-in services are software capabilities that ship with [`viam-server`](/reference/viam-server/).
 Unlike hardware drivers, which talk to a specific piece of equipment, services provide advanced capabilities that often work across many components, such as motion planning coordinating clear paths for an arm around obstacles.
 
-Because they are built in, you can add built-in services to any machine's configuration without installing a separate module.
-If a built-in service doesn't fit your use case, you can also find community and Viam-maintained service models in the [Viam registry](https://app.viam.com/registry) or [build your own](/build-modules/overview/).
+Before you add a service, search the [Viam registry](https://app.viam.com/registry) for the capability you need.
+The registry has modules maintained by Viam and the community that provide a wide range of services, such as vision models and integrations with external platforms and APIs.
+Use a built-in service when it covers your use case: because it ships with `viam-server`, you can add it to any machine's configuration without installing a module.
+If neither fits, [build your own](/build-modules/overview/).
 
 Each page below covers available models, configuration attributes, and JSON templates.
 For API method reference, see [Service APIs](/reference/apis/services/).
