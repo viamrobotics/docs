@@ -28,7 +28,7 @@ aliases:
 date: "2026-09-23"
 ---
 
-Viam is a platform for building software that runs on physical devices.
+Viam is a software platform for building, deploying, and managing robotics applications.
 You tell Viam what hardware and software capabilities your machine needs, and Viam handles the drivers, networking, and infrastructure so you can focus on what your machine actually does.
 
 It is the development workflow you already know, applied to physical devices: version control, remote monitoring and diagnostics, staged rollouts, and a registry of modules and models you can build on.
@@ -37,7 +37,7 @@ It is the development workflow you already know, applied to physical devices: ve
 
 ## Platform mental model
 
-Every device you connect to Viam is a machine made of parts, where each part runs a configuration of resources (components for hardware, services for software), and modules extend the platform with new resource types.
+This section covers the building blocks you'll see throughout Viam: what a machine is, how you describe its hardware, and where the software that controls it comes from.
 
 ### Machines and parts
 
@@ -46,7 +46,10 @@ On the Viam platform, a **machine** is the combination of your compute resources
 Every machine has at least one **part**: the computer that runs Viam's software and is connected to one or more physical devices.
 
 A part can be almost any computer, including your own Mac or PC.
-Two programs run there, `viam-agent` and `viam-server`, and [installing Viam](/set-up-a-machine/viam-agent-and-server/) sets up both.
+[Installing Viam](/set-up-a-machine/viam-agent-and-server/) on a part sets up two programs:
+
+- `viam-agent` installs `viam-server`, supervises it, and keeps it up to date.
+- `viam-server` is the core runtime. It pulls your machine's configuration from Viam's cloud, downloads the software that configuration needs, and keeps everything running.
 
 ### Configuration, resources, and models
 
@@ -70,27 +73,28 @@ Some resources are **built-in**, meaning viam-server ships with them by default.
 
 See [built-in components](/reference/components/) and [services](/reference/services/) for the full list.
 
-Beyond builtins, the [Viam registry](https://app.viam.com/registry) has modules for hundreds of hardware drivers and software capabilities, maintained by Viam and the community.
+Beyond builtins, the [Viam registry](https://app.viam.com/registry) has modules for thousands of hardware drivers and software capabilities, maintained by Viam and the community.
 Before building something yourself, check the registry and the built-in services to see if your use case already exists.
 
 If nothing in the registry fits, you can [write and publish your own module](/build-modules/overview/).
 
 ## What you can do with Viam
 
-| To do this                                           | Go here                                                          |
-| ---------------------------------------------------- | ---------------------------------------------------------------- |
-| Get a camera, motor, arm, or sensor running          | [Configure hardware](/hardware/)                                 |
-| Capture data on the machine and sync it to the cloud | [Manage data](/data/)                                            |
-| Train machine learning models on what you captured   | [Train ML models](/train/)                                       |
-| Detect and classify objects in a camera feed         | [Computer vision](/vision/)                                      |
-| Plan and execute motion for arms and mobile robots   | [Motion planning](/motion-planning/)                             |
-| Write code that controls a machine over the network  | [Viam SDKs](/reference/sdks/)                                    |
-| Control a machine from an AI agent or LLM            | [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/) |
-| Package your own logic and deploy it to machines     | [Build and deploy modules](/build-modules/)                      |
-| Build a web or mobile app for your customers         | [Build apps](/build-apps/overview/)                              |
-| Watch machine status, stream data, and teleoperate   | [Monitor and operate](/monitor/)                                 |
-| Configure and update many machines at once           | [Fleet deployment](/fleet/)                                      |
-| Organize machines and control who can reach them     | [Admin and access](/organization/overview/)                      |
+| To do this                                                              | Go here                                                           |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Get a camera, motor, arm, or sensor running                             | [Configure hardware](/hardware/)                                  |
+| Capture data on the machine and sync it to the cloud                    | [Manage data](/data/)                                             |
+| Train machine learning models on what you captured                      | [Train ML models](/train/)                                        |
+| Detect and classify objects in a camera feed                            | [Computer vision](/vision/)                                       |
+| Plan and execute motion for arms and mobile robots                      | [Motion planning](/motion-planning/)                              |
+| Write code that controls a machine over the network                     | [Viam SDKs](/reference/sdks/)                                     |
+| Control a machine from an AI agent or LLM                               | [Use Viam from an AI agent](/build-apps/use-viam-from-an-agent/)  |
+| Package your own logic and deploy it to machines                        | [Build and deploy modules](/build-modules/)                       |
+| Build a web or mobile app for your customers                            | [Build apps](/build-apps/overview/)                               |
+| Monitor machine status and receive alerts, stream data, and teleoperate | [Monitor and operate](/monitor/)                                  |
+| Configure and update many machines at once                              | [Fleet deployment](/fleet/)                                       |
+| Configure and reuse a configuration across machines                     | [Reuse configuration with fragments](/fleet/reuse-configuration/) |
+| Organize machines and control who can reach them                        | [Admin and access](/organization/overview/)                       |
 
 ## Next steps
 

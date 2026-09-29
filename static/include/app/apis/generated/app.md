@@ -3382,6 +3382,58 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
+### ListRobotsForLocations
+
+Get a list of all machines in multiple specified locations.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_ids` (list[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): IDs of the locations to retrieve the machines from.
+
+**Returns:**
+
+- ([list[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The machines across all the given locations.
+
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+list_of_machines = await cloud.list_robots_for_locations(
+    location_ids=["123ab12345", "456cd67890"])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots_for_locations).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robots, err := cloud.ListRobotsForLocations(context.Background(), []string{"ab1c2d3e45", "bc2d3e4f56"})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListRobotsForLocations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### ListMachineSummaries
 
 List summary information for the machines in an organization, optionally filtered by fragment or location.

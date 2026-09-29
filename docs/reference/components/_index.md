@@ -7,6 +7,7 @@ layout: "docs"
 no_list: true
 description: "Configuration reference for Viam's built-in components: per-component models, attributes, and JSON templates."
 capabilities: ["section-index"]
+diataxis: overview
 date: "2026-09-24"
 aliases:
   - /operate/reference/components/
@@ -15,8 +16,10 @@ aliases:
 Built-in components are resource types that ship with [`viam-server`](/reference/viam-server/) for controlling common hardware.
 Each component type has one standard API, so your application code works the same way regardless of the exact device attached—a USB webcam and an IP camera are both cameras as far as your code is concerned.
 
-Because they are built in, you can add built-in components to any machine's configuration without installing a separate module.
-If a built-in component doesn't fit your use case, you can also find community and Viam-maintained component models in the [Viam registry](https://app.viam.com/registry) or [build your own](/build-modules/overview/).
+Before you configure hardware, search the [Viam registry](https://app.viam.com/registry) for your device.
+The registry has modules maintained by Viam and the community that support a wide range of cameras, arms, motors, sensors, and other hardware.
+Use a built-in component when it covers your hardware: because it ships with `viam-server`, you can add it to any machine's configuration without installing a module.
+If neither fits, [build your own](/build-modules/overview/).
 
 Each page below covers available models, configuration attributes, and JSON templates.
 For API method reference, see [Component APIs](/reference/apis/components/).
