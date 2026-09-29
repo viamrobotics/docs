@@ -34,10 +34,6 @@ aliases:
   - /try/viam-rover/rent-a-rover/
 ---
 
-{{% alert title="Viam 101" color="tip" %}}
-Our [**Viam 101 course**](https://www.viam.com/education) is the fastest way to learn to build a robot, with no hardware and no prior robotics experience required. You'll build a palletizing application from scratch: a robot arm that picks boxes from a station and stacks them on a pallet.
-{{% /alert %}}
-
 Viam enables you to build and manage real robotics applications, but you don't need any hardware to start learning it.
 
 Each pathway below teaches practical Viam skills through a hands-on project. Choose whichever matches your learning goals.
