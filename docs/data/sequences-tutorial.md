@@ -110,7 +110,7 @@ The data manager uploads each finished sequence on the next sync.
 Wait about 30 seconds, then:
 
 1. Click the **DATA** tab in the Viam app.
-2. Click **Sequences**.
+2. Click **SEQUENCES**.
 3. You should see three rows, each with a 10-second time range, your machine part, and the tag `demo-1`, `demo-2`, or `demo-3`.
 4. Click a sequence.
    Pick `test-camera · GetImages` to see its images, and `test-sensor · Readings` to see its readings.
