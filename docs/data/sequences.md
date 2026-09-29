@@ -38,7 +38,7 @@ See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/).
 ### 2. Choose how the sensor opens sequences
 
 The [`capture-control` module](/data/capture-sync/capture-control-sensor/#option-a-use-the-capture-control-module) opens and closes a sequence when you send it a command.
-Send `{"start_capture": true, "tags": ["demo-1"]}` to start capture and open a sequence, and `{"stop_capture": true}` to end both.
+Send `{"start_capture": true, "frequency_hz": 2, "tags": ["demo-1"]}` to start capture at 2 Hz and open a sequence, and `{"stop_capture": true}` to end both.
 If capture is already running, use `start_sequence` and `stop_sequence` to open and close only the sequence.
 The module keeps one sequence open at a time.
 

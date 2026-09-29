@@ -51,7 +51,7 @@ The module is experimental, so its commands might change.
 
 1. On your machine's **CONFIGURE** tab, click **+**, select **Blocks**, search for **capture-control**, and select the sensor from the `viam` namespace.
 2. Name it `my-capture-sensor` and click **Add to machine**.
-3. In the sensor's attributes, list the components and methods to control, and the frequency to capture at:
+3. In the sensor's attributes, list the components and methods to control:
 
    ```json
    {
@@ -59,21 +59,21 @@ The module is experimental, so its commands might change.
        { "resource_name": "my-camera", "method": "GetImages" },
        { "resource_name": "my-sensor", "method": "Readings" }
      ],
-     "default_capture_frequency_hz": 2,
      "default_tags": ["event"]
    }
    ```
 
-   | Attribute                      | Required? | Description                                                                                |
-   | ------------------------------ | --------- | ------------------------------------------------------------------------------------------ |
-   | `resources`                    | Required  | The components and methods to control. At least one.                                       |
-   | `default_capture_frequency_hz` | Optional  | Frequency used when `start_capture` doesn't give one. Default `0`, which captures nothing. |
-   | `default_tags`                 | Optional  | Tags used when `start_capture` doesn't give any.                                           |
+   | Attribute                      | Required? | Description                                                                                                                                                                                                                   |
+   | ------------------------------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | `resources`                    | Required  | The components and methods to control. At least one.                                                                                                                                                                          |
+   | `default_capture_frequency_hz` | Optional  | Frequency the sensor sends from startup until the first `start_capture`, and when `start_capture` doesn't give one. Default `0`, which captures nothing. Any other value captures continuously until you send `stop_capture`. |
+   | `default_tags`                 | Optional  | Tags used when `start_capture` doesn't give any.                                                                                                                                                                              |
 
 4. Click **Save**.
 
 {{< alert title="The module turns capture off between recordings" color="caution" >}}
 While the module isn't recording, it tells the data management service to capture the components in `resources` at 0 Hz.
+The exception is `default_capture_frequency_hz`: if you set it above `0`, the module captures at that frequency from startup, and after any configuration change, until you send `stop_capture`.
 This overrides any capture you configured on those components, so they capture only while you record.
 {{< /alert >}}
 
