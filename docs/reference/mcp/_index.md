@@ -36,7 +36,7 @@ Tools fall into seven groups, reflected in the **Category** column below:
 - **Write** tools create or add configuration. Most clients ask for confirmation before running one.
 - **Write (destructive)** and **Live machine (destructive)** tools change or delete existing configuration, or act directly on a live machine (for example, moving hardware with `call_machine_api` or `run_docommand`). These save or act immediately, with no draft and no undo, so review what a tool is about to do before approving it.
 
-The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragment_config_item`, and `delete_fragment_config_item`), in either **Write** category, are also marked open-world to MCP clients, because the fragment they change can be public or reachable by anyone with its ID.
+The fragment tools (`create_fragment`, `add_fragment_config_item`, `update_fragment_config_item`, and `delete_fragment_config_item`) change fragments. If a fragment is public or unlisted, users outside your organization can see and use its configuration, including your changes.
 
 ## Tools
 
