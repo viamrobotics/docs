@@ -1,5 +1,5 @@
 ---
-linkTitle: "Tutorial"
+linkTitle: "Capture and query tutorial"
 title: "Capture, sync, and query data tutorial"
 weight: 2
 layout: "docs"

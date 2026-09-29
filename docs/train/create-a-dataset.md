@@ -353,6 +353,7 @@ You add sequences, export the dataset as Parquet files, and train on it with a c
 
 Before you start, record one or more sequences.
 See [Group captured data into sequences](/data/sequences/).
+To go from recording to export in one pass, follow the [sequences tutorial](/data/sequences-tutorial/).
 
 ### Create a sequence dataset
 
@@ -396,7 +397,7 @@ To add a sequence from its detail page:
 To add from the dataset page:
 
 1. Open the dataset from the **DATASETS** tab.
-2. Click **Add sequences**.
+2. Click **Add data**. If the dataset already holds sequences, the button is **Add sequences**.
 3. In the **All sequences** dialog, select the sequences you want and click **Add**.
 
 {{% /tab %}}

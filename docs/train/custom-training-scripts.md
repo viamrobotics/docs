@@ -168,6 +168,7 @@ Instead, your script receives three Parquet files: `--binary_data_file`, `--tabu
 The images are files on disk, and the Parquet files hold their metadata and your readings.
 Join the three files on `sequence_id`.
 See [Sequence dataset format](/train/sequence-dataset-format/) for the columns.
+To record and export a sequence dataset to test your script on, follow the [sequences tutorial](/data/sequences-tutorial/).
 
 Only custom training jobs accept sequence datasets.
 

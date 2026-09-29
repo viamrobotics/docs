@@ -196,5 +196,6 @@ If the sensor isn't found at startup, the service logs an error and the capture 
 ## Next steps
 
 - [Group captured data into sequences](/data/sequences/): return a second key from the same sensor to record time windows of data.
+- [Sequences tutorial](/data/sequences-tutorial/): use the `capture-control` module to record sequences, then build and export a sequence dataset.
 - [Data management service reference](/data/reference/#capture-control-sensor-readings): all readings fields.
 - [Conditional sync](/data/capture-sync/conditional-sync/): control when captured data uploads.

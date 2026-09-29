@@ -13,6 +13,7 @@ date: "2026-09-29"
 A sequence dataset exports as three [Parquet](https://parquet.apache.org/) files.
 The `viam dataset export` command writes them to a zip, and a custom training job receives them as command-line arguments.
 Both use the same schema.
+To produce an export you can inspect, follow the [sequences tutorial](/data/sequences-tutorial/).
 
 ## Export layout
 

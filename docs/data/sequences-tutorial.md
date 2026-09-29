@@ -24,14 +24,11 @@ By the end, you will have followed the whole path that a training script starts 
 
 We will use a fake camera and a fake sensor, so this tutorial works without physical hardware.
 
-Each step has two tabs.
-The **Viam app** tab uses the web UI.
-The **CLI and SDK** tab does the same thing from a terminal, so you can script the whole tutorial or hand it to an AI coding agent.
-If you use the **CLI and SDK** tabs, finish the next section first.
+You can follow each step in the Viam app or from a terminal.
+The **CLI and SDK** tabs let you script the whole tutorial, or hand it to an AI coding agent to run for you.
+If you use those tabs, expand **Set up for the CLI and SDK path** and finish it first.
 
-## Set up for the CLI and SDK path
-
-Skip this section if you use the **Viam app** tabs.
+{{% expand "Set up for the CLI and SDK path" %}}
 
 1. Find your organization ID, your machine's ID, and the ID of its main part:
 
@@ -104,6 +101,8 @@ Skip this section if you use the **Viam app** tabs.
 
    asyncio.run(main())
    ```
+
+{{% /expand %}}
 
 ## 1. Add a fake camera and a fake sensor
 
