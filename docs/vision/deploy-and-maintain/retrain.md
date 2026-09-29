@@ -49,7 +49,7 @@ The image that made your model fail is the single most valuable training example
 Two capture strategies, depending on volume:
 
 - **Time-based capture** saves a frame every N seconds. Good for building a broad dataset across a day or week. Adjust the interval to control storage cost.
-- **Conditional capture** saves frames only when a trigger condition fires (for example, "when the vision service returns a confidence below 0.6"). See [Control capture with a sensor](/data/capture-sync/capture-control-sensor/). This keeps only the hard cases, which is what you need for retraining.
+- **Conditional capture** saves frames only when a trigger condition fires (for example, "when the vision service returns a confidence below 0.6"). See [Start and stop capture on demand](/data/capture-sync/capture-on-demand/). This keeps only the hard cases, which is what you need for retraining.
 
 Both strategies are configured on the data management service. The images sync to the [**DATA** tab](https://app.viam.com/data/all) where you label them in the next step.
 
