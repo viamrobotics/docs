@@ -22,19 +22,15 @@ You can't change it later.
 Both types are created the same way.
 They differ in how you add data and in what you can do with the dataset afterward.
 
-|                  | Image dataset                                              | Sequence dataset                                                                                         |
-| ---------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Holds            | Individual images. The app calls this type **Binary Data** | [Sequences](/data/sequences/): time windows of images and readings from one machine part                 |
-| Use it to        | Classify an image or detect objects in it                  | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
-| Create with      | Web UI, CLI, Python, Go                                    | Web UI, Python                                                                                           |
-| Add data by      | Selecting images, or by filter or ID                       | Selecting sequences, or by ID                                                                            |
-| Labeling         | You tag images or draw bounding boxes                      | Sequence tags, set when the sequence is recorded                                                         |
-| Managed training | Yes                                                        | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
-| Merge datasets   | Yes                                                        | No                                                                                                       |
-| Export           | Images plus a `dataset.jsonl` file                         | Three Parquet files plus images                                                                          |
-
-If you want a model that looks at one image at a time, use an image dataset.
-If the meaning is in how images and readings change over a window of time, use a sequence dataset.
+|                  | Binary dataset                            | Sequence dataset                                                                                         |
+| ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Holds            | Individual images.                        | [Sequences](/data/sequences/): time windows of both images and tabular data from one machine part        |
+| Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
+| Create with      | Web UI, CLI, Python, Go                   | Web UI, Python                                                                                           |
+| Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when the sequence is recorded                                                         |
+| Managed training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
+| Merge datasets   | Yes                                       | No                                                                                                       |
+| Export           | Images plus a `dataset.jsonl` file        | Three Parquet files plus images                                                                          |
 
 ## Create a dataset
 
@@ -55,6 +51,8 @@ Your empty dataset now appears in the list.
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
+This creates an image dataset. The Go SDK can't create sequence datasets.
+
 ```sh {class="command-line" data-prompt="$"}
 viam dataset create --org-id=YOUR-ORG-ID --name=my-inspection-dataset
 ```
@@ -64,6 +62,8 @@ SDK operations.
 
 {{% /tab %}}
 {{% tab name="Python" %}}
+
+This creates a sequence dataset. Python supports both sequence and image datasets.
 
 ```python
 import asyncio
@@ -110,6 +110,8 @@ if __name__ == "__main__":
 
 {{% /tab %}}
 {{% tab name="Go" %}}
+
+This creates an image dataset. The Go SDK can't create sequence datasets.
 
 ```go
 package main

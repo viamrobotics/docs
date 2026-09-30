@@ -132,7 +132,7 @@ We will use the `capture-control` module, which you switch on and off by hand.
 
 The CLI can't add a registry module to a machine.
 `viam machines part add-resource` adds the sensor's entry but not the `viam:capture-control` module entry, so `viam-server` can't build the sensor.
-Use the [Viam MCP server](/reference/mcp/) instead, which adds the module for you.
+You can follow the Viam app instructions, or use the [Viam MCP server](/reference/mcp/) instead, which adds the module for you.
 Ask your MCP client something like:
 
 > On my machine `<machine-name>`, add a sensor named `my-capture-sensor` with the model `viam:capture-control:capture-control-sensor` and these attributes:

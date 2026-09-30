@@ -60,7 +60,7 @@ For example:
 
 There are currently two ways to create sequences: either live readings from a machine, or from a set of existing data.
 
-### From a machine
+### From a running machine
 
 A machine records sequences through a [capture control sensor](/data/capture-sync/capture-on-demand/).
 The data management service polls the sensor 10 times per second and reads a `sequences` list from its readings.

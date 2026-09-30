@@ -88,8 +88,8 @@ Its result includes a `module_added` entry for `viam:capture-control`.
 
 {{< alert title="The module turns capture off between recordings" color="caution" >}}
 While the module isn't recording, it tells the data management service to capture the components in `resources` at 0 Hz.
-The exception is `default_capture_frequency_hz`: if you set it above `0`, the module captures at that frequency from startup, and after any configuration change, until you send `stop_capture`.
-Either way, the module's setting overrides any capture you configured on those components, so they capture only while you record.
+If you want to capture data all the time, set `default_capture_frequency_hz` above `0`. The module then captures at that frequency from startup, and after any configuration change, until you send `stop_capture`.
+Either way, the module's setting overrides any capture you configured on individual components, so they capture only while you record or at the set `default_capture_frequency_hz`.
 {{< /alert >}}
 
 ## 2. Point the data manager at the sensor {#point-the-data-manager-at-the-sensor}
