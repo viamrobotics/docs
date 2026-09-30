@@ -74,7 +74,7 @@ Moving a joint slider and pressing **Execute** on the arm's test card moves the 
 
 ## Add the gripper component
 
-The gripper is the SO-ARM101's sixth servo, on the same serial bus as the other five, so its config looks almost identical to the arm's: the same `port` attribute, pointed at the same serial port.
+The gripper is the SO-ARM101's sixth servo, on the same serial bus as the other five, so instead of its own port, its config points at the arm component.
 
 Update the `arm` key in the gripper's configuration JSON to match the name you gave your arm in the previous step, `arm-1`.
 
