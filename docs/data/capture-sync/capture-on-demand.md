@@ -234,7 +234,6 @@ The service picks up a sensor that becomes available later, such as one from a m
 ## Advanced: write your own capture control sensor {#write-your-own-sensor}
 
 The `capture-control` module covers most uses: something outside the machine, such as a person, a script, or a workflow step, decides when to record.
-If a script can watch for your condition and send `start_capture` and `stop_capture`, use the module and do that instead.
 
 Write your own sensor only when you need one of these:
 
@@ -249,53 +248,7 @@ Your sensor's `Readings` method returns two lists:
 
 For every field, see [Capture control sensor readings](/data/reference/#capture-control-sensor-readings).
 
-A sequence only selects data that was captured, so turn on capture for the same resources while a sequence is open.
-The following sensor records `my-camera` and `my-sensor` at 5 Hz in one sequence while it is recording.
-You turn recording on and off by sending it a `start` or `stop` command with `DoCommand`.
-In your own sensor, replace that with whatever logic should decide:
-
-```python
-    recording = False
-
-    async def do_command(self, command, *, timeout=None, **kwargs):
-        if command.get("command") == "start":
-            self.recording = True
-        elif command.get("command") == "stop":
-            self.recording = False
-        return {"recording": self.recording}
-
-    async def get_readings(self, *, extra=None, timeout=None, **kwargs):
-        if not self.recording:
-            return {"overrides": [], "sequences": []}
-        resources = [
-            {"resource_name": "my-camera", "method": "GetImages"},
-            {"resource_name": "my-sensor", "method": "Readings"},
-        ]
-        return {
-            "overrides": [{**r, "capture_frequency_hz": 5} for r in resources],
-            "sequences": [
-                {"sequence_tags": ["demo-1"], "resources": resources},
-            ],
-        }
-```
-
-While this sensor isn't recording, it returns an empty overrides list, so every component returns to its own capture settings.
-Unlike the `capture-control` module, it doesn't turn off capture you configured on the components.
-To turn capture off between recordings, return the same overrides with `capture_frequency_hz` set to `0`.
-
-Use each resource's short name, without a remote part prefix.
-
-<!-- TODO(eng): confirm that a bare name resolves for a resource on a remote part. The lookup map is keyed by ShortName(), which keeps the remote: prefix (rdk services/datamanager/builtin/builtin.go). -->
-
-Deploy the sensor as a module and add it to your machine with `viam module reload-local`.
-By default, the command adds no resources. Pass `--model-name` with your sensor's model triple to add the sensor to your machine's configuration, and `--resource-name` to name it:
-
-```sh {class="command-line" data-prompt="$"}
-viam module reload-local --model-name=<namespace>:<module>:<model> --resource-name=my-capture-sensor
-```
-
-See [Test locally](/build-modules/write-a-driver-module/#3-test-locally) and [Write a module](/build-modules/write-a-driver-module/).
-Then [point the data manager at the sensor](#point-the-data-manager-at-the-sensor), setting `key` to the key your sensor returns its overrides under.
+For more, see [Build and deploy modules](/build-modules/overview/).
 
 ## Next steps
 
