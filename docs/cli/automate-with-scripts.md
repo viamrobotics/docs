@@ -201,7 +201,7 @@ When running without a terminal, commands that normally prompt for user input in
 
 If you omit a required flag in non-interactive mode, the CLI prints an error listing the missing flags.
 
-Progress spinners are also suppressed automatically when stdout is not a terminal, so piped or redirected output stays clean without requiring `--no-progress`.
+When stdout is not a terminal (for example, when output is piped or redirected), the CLI also hides progress spinners automatically. File-transfer progress in `viam machines part cp` still requires `--no-progress`.
 
 ## Tips for scripting
 
