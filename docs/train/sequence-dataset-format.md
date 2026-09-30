@@ -29,7 +29,10 @@ Running [`viam dataset export`](/train/create-a-dataset/) on a sequence dataset 
     <binary-data-id><extension>
 ```
 
+Binary data IDs contain slashes, so the image files sit in nested folders under `binary_data/`.
+
 In an exported `binary_data.parquet`, the `path` column is relative to the export directory.
+In a training job, `path` is an absolute path, starting with `/gcs/`, that your script can open directly.
 
 ## `binary_data.parquet`
 

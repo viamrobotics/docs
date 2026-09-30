@@ -13,7 +13,7 @@ date: "2026-09-29"
 ---
 
 A sequence marks a time window of data that one machine part captured, so you can train on that window as one example.
-It names the part, the start and end times, and the components and methods to include, such as a camera's `GetImages` and an arm's `GetJointPositions`.
+It names the part, the start and end times, and the components and methods to include, such as a camera's `GetImages` and an arm's `JointPositions`.
 It also carries tags that describe the whole window, such as `pick-success` or `demo-3`.
 
 Sequences exist to feed [sequence datasets](/train/create-a-dataset/), which you train on with a [custom training script](/train/custom-training-scripts/).
@@ -31,11 +31,12 @@ This has three consequences:
 
 A sequence can hold two kinds of data:
 
-- **Images**, from the camera methods `ReadImage`, `GetImages`, and `CaptureAllFromCamera`. These are the only binary data a sequence accepts. Other binary data, such as point clouds, is rejected.
+- **Images**, from the camera methods `ReadImage` and `GetImages`, or the vision service method `CaptureAllFromCamera`. These are the only binary data a sequence accepts. Other binary data, such as point clouds, is rejected. A sequence returns only JPEG and PNG images.
 - **Readings** from any other capture method, such as sensor readings or joint positions, stored as tabular data.
 
 Sequence tags label the sequence as a whole.
-They are separate from the [tags on individual images and readings](/data/tag-data/), although the `capture-control` module sets both to the same values.
+They are separate from the [tags on individual images and readings](/data/tag-data/).
+The `capture-control` module's `start_capture` command sets both to the same values, and its `start_sequence` command sets only the sequence tags.
 
 ## Where sequences fit in data management
 
@@ -65,7 +66,9 @@ There are currently two ways to create sequences: either live readings from a ma
 A machine records sequences through a [capture control sensor](/data/capture-sync/capture-on-demand/).
 The data management service polls the sensor 10 times per second and reads a `sequences` list from its readings.
 A sequence opens the first time its entry appears in the list, and closes when the entry disappears.
-After it closes, the data manager uploads it on the next sync.
+Changing an open entry's tags or resources closes that sequence and opens a new one.
+If the sensor's `Readings` call fails, every open sequence closes.
+After a sequence closes, the data manager uploads it on the next sync.
 
 You can use the `capture-control` module, which opens a sequence when you send it a command, or write your own sensor.
 Start with the module.
@@ -154,17 +157,19 @@ sequenceID, err := dataClient.CreateSequence(
 2. Click a sequence to open it.
 3. Pick a resource, shown as `<resource name> · <method>`, to see its images or readings during the window.
 
-To copy a sequence's ID, click the **Sequence actions** menu on its row.
+To copy a sequence's ID, click the **Sequence actions** menu on its row and select **Copy sequence ID**.
 
-From code, `ListSequences` lists the sequences in an organization, `GetSequence` returns one by ID, and `GetSequenceBinaryData` returns the images inside it.
+From code, `ListSequences` lists the sequences in an organization and `GetSequence` returns one by ID. The TypeScript and Go SDKs have these methods. The Python SDK doesn't yet.
+`GetSequenceBinaryData` returns the images inside a sequence, from Python or TypeScript.
+There is no API for a sequence's readings. View them in the Viam app, or [export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 See the [data client API](/reference/apis/data-client/).
 
 ## Edit and delete sequences
 
-The web UI can't edit or delete a sequence, and the CLI has no sequence commands.
-Use the SDK:
+The Viam app can't edit or delete a sequence, and the CLI has no sequence commands.
+Use the TypeScript or Go SDK. The Python SDK can't edit or delete sequences yet.
 
-- **Edit:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change.
+- **Edit:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change, and the field mask is required.
 - **Delete:** `DeleteSequence` deletes a sequence by its ID.
 
 See the [data client API](/reference/apis/data-client/) for each method's parameters.
@@ -180,7 +185,7 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 - **Images are the only binary data.** See [How a sequence works](#how-a-sequence-works).
 - **A sequence belongs to one machine part.** To combine data from several parts, record a sequence on each part and add them all to one dataset.
 - **A crash loses the open sequence.** If `viam-server` stops uncleanly while a sequence is open, the data manager can't tell when the sequence ended. It moves the sequence to `failed/sequences/` in the capture directory and doesn't upload it. A normal shutdown closes open sequences so they upload on the next sync.
-- **Editing and deleting need the SDK.** The web UI and CLI can't edit or delete a sequence.
+- **Editing and deleting need the TypeScript or Go SDK.** The Viam app, the CLI, and the Python SDK can't edit or delete a sequence.
 - **Managed training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).
 
 ## Next steps

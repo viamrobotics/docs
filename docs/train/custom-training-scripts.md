@@ -230,7 +230,7 @@ This downloads the binary data files and a `dataset.jsonl` metadata file.
 To download only the JSONL file without binary data, add `--only-jsonl`.
 
 For a sequence dataset, the export is a zip of Parquet files plus the images.
-See [Export a sequence dataset](/train/create-a-dataset/).
+See [Export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 
 You can get the dataset ID from the [**DATASETS** tab](https://app.viam.com/data/datasets) or by running [`viam dataset list`](/cli/datasets-and-training/#list-datasets).
 
@@ -250,7 +250,7 @@ viam training-script test-local \
 The `--dataset-file` path is relative to `--dataset-root`.
 The command mounts your script, dataset, and output directories into the container.
 
-`test-local` passes only `--dataset-file`, so it can't run a script written for a sequence dataset.
+`test-local` gives your script only `--dataset_file`, so it can't run a script written for a sequence dataset.
 To test one, run the script directly against the files from a [sequence dataset export](/train/sequence-dataset-format/).
 
 To match a specific cloud container version, use `--container-version`.

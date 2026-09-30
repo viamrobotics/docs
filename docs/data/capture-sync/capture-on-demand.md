@@ -17,7 +17,7 @@ You start and stop recording with a command, and every component you list starts
 
 Use capture on demand to:
 
-- Record [sequences](/data/sequences/), time windows of data that you train on as one example. This is the only way to record sequences from a running machine.
+- Record [sequences](/data/sequences/), time windows of data that you train on as one example. To create a sequence over data you already captured, see [Sequences](/data/sequences/#from-existing-data).
 - Capture from several components together, only while something is happening.
 - Turn on capture for a component that has no data capture configured.
 
@@ -26,7 +26,8 @@ To control when captured data uploads, rather than what is captured, see [Condit
 
 ## Before you start
 
-- A machine running `viam-server` with a data management service, such as `data_manager/builtin`, configured.
+- A machine running `viam-server` v0.130.0 or later, with a data management service, such as `data_manager/builtin`, configured.
+  Capture control sensors need v0.116.0, sequences need v0.127.0, and capturing components that have no data capture configured needs v0.130.0.
 - The components you want to record, such as a camera and an arm, configured on the machine.
 
 ## How capture on demand works
@@ -37,9 +38,11 @@ It polls the sensor's `Readings` method 10 times per second and applies what the
 The `capture-control` module is a ready-made capture control sensor.
 You list the components it controls in its configuration, then send it `DoCommand` calls to start and stop recording.
 
-The sensor's settings apply on top of the capture settings you configured on each component, and don't replace them.
+While the sensor lists a component, the frequency and tags it sets temporarily override that component's capture settings.
+Your component configuration is left unchanged.
 When the sensor stops listing a component, the component returns to its own capture settings.
 If it has none, it stops capturing.
+If the data management service has `capture_disabled` set to `true`, it ignores the sensor.
 
 ## 1. Add the `capture-control` sensor {#add-the-sensor}
 
@@ -81,7 +84,7 @@ Ask your MCP client something like:
 > On my machine `<machine-name>`, add a sensor named `my-capture-sensor` with the model `viam:capture-control:capture-control-sensor` and the attributes shown above.
 
 The client calls the `add_machine_config_item` tool.
-Its result includes a `module_added` entry for `viam:capture-control`.
+If the module wasn't already on the machine, its result includes a `module_added` entry for `viam:capture-control`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -89,7 +92,7 @@ Its result includes a `module_added` entry for `viam:capture-control`.
 {{< alert title="The module turns capture off between recordings" color="caution" >}}
 While the module isn't recording, it tells the data management service to capture the components in `resources` at 0 Hz.
 If you want to capture data all the time, set `default_capture_frequency_hz` above `0`. The module then captures at that frequency from startup, and after any configuration change, until you send `stop_capture`.
-Either way, the module's setting overrides any capture you configured on individual components, so they capture only while you record or at the set `default_capture_frequency_hz`.
+Either way, while the module runs, its setting overrides any capture you configured on the listed components, so they capture only while you record or at the set `default_capture_frequency_hz`.
 {{< /alert >}}
 
 ## 2. Point the data manager at the sensor {#point-the-data-manager-at-the-sensor}
@@ -151,17 +154,22 @@ Within a moment, the service starts applying the sensor's readings.
 Send the sensor `DoCommand` calls.
 Each command is a key set to `true`, with optional arguments beside it:
 
-| Command                                                         | What it does                                                                                          |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `{"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}` | Starts capture at the frequency, tagged, and opens a [sequence](/data/sequences/) with the same tags. |
-| `{"stop_capture": true}`                                        | Stops capture and closes the sequence.                                                                |
-| `{"start_sequence": true, "tags": ["run-1"]}`                   | Opens a sequence without changing capture. Use it when capture is already running.                    |
-| `{"stop_sequence": true}`                                       | Closes the sequence and leaves capture unchanged.                                                     |
+| Command                                                         | What it does                                                                                                   |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `{"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}` | Starts capture at the frequency, tagged, and opens a [sequence](/data/sequences/) with the same tags.          |
+| `{"stop_capture": true}`                                        | Stops capture and closes the sequence.                                                                         |
+| `{"start_sequence": true, "tags": ["run-1"]}`                   | Opens a sequence without changing capture. Use it when capture is already running. Doesn't use `default_tags`. |
+| `{"stop_sequence": true}`                                       | Closes the sequence and leaves capture unchanged.                                                              |
 
 `frequency_hz` and `tags` are optional on `start_capture`.
 If you leave out `frequency_hz` and `default_capture_frequency_hz` is `0`, the sequence opens but nothing is captured.
-Sending `start_capture` again with different tags closes the open sequence and opens a new one.
+Send one command per call. A call with more than one command key set to `true` returns an error.
+
+Sending `start_capture` or `start_sequence` again with different tags closes the open sequence and opens a new one.
+Sending it again with the same tags continues the same sequence.
+
 The sensor forgets its state when its configuration changes.
+Changing its configuration, or restarting the module or `viam-server`, ends any recording in progress.
 
 {{< tabs >}}
 {{% tab name="Viam app" %}}
@@ -193,7 +201,8 @@ To send the commands from code, call `do_command` on the sensor with the same di
 {{% /tab %}}
 {{< /tabs >}}
 
-To check that recording started, look for log messages that begin `capture control sensor enabling capture for`.
+To check that recording started, look for log messages that begin `capture control sensor enabling capture for`, and for `sequence started`.
+If `default_capture_frequency_hz` is above `0`, the capture message begins `capture control sensor changing capture_frequency_hz for` instead.
 Find them on the machine's **LOGS** tab, or with `viam machines part logs --part=$VIAM_PART_ID`.
 After the next sync, the data appears on the **DATA** tab, and any sequences appear under **SEQUENCES**.
 
@@ -214,10 +223,13 @@ If the service can't find the component, or the method isn't capturable, it logs
 
 ## What happens when the sensor fails
 
-If the sensor's `Readings` returns an error, or its output can't be parsed, the service reverts every component to its own capture settings.
+If the sensor's `Readings` returns an error, or its output can't be parsed, the service reverts every component to its own capture settings and closes any open sequences.
+An error in the middle of a recording therefore splits it into two sequences.
+If the readings don't contain the key set in `capture_control_sensor`, the service also reverts every component, without logging a warning.
 It logs a warning and keeps polling, so capture picks up again as soon as the sensor returns valid readings.
 
-If the sensor isn't found at startup, the service logs an error, and the sensor has no effect until you fix the config.
+If the service can't find the sensor, or `key` is missing, it logs an error and ignores the sensor.
+The service picks up a sensor that becomes available later, such as one from a module that starts slowly.
 
 ## Advanced: write your own capture control sensor {#write-your-own-sensor}
 
@@ -267,10 +279,21 @@ In your own sensor, replace that with whatever logic should decide:
         }
 ```
 
+While this sensor isn't recording, it returns an empty overrides list, so every component returns to its own capture settings.
+Unlike the `capture-control` module, it doesn't turn off capture you configured on the components.
+To turn capture off between recordings, return the same overrides with `capture_frequency_hz` set to `0`.
+
 Use each resource's short name, without a remote part prefix.
 
+<!-- TODO(eng): confirm that a bare name resolves for a resource on a remote part. The lookup map is keyed by ShortName(), which keeps the remote: prefix (rdk services/datamanager/builtin/builtin.go). -->
+
 Deploy the sensor as a module and add it to your machine with `viam module reload-local`.
-The command adds the sensor to your machine's configuration, using the resource name you pass in `--resource-name`.
+By default, the command adds no resources. Pass `--model-name` with your sensor's model triple to add the sensor to your machine's configuration, and `--resource-name` to name it:
+
+```sh {class="command-line" data-prompt="$"}
+viam module reload-local --model-name=<namespace>:<module>:<model> --resource-name=my-capture-sensor
+```
+
 See [Test locally](/build-modules/write-a-driver-module/#3-test-locally) and [Write a module](/build-modules/write-a-driver-module/).
 Then [point the data manager at the sensor](#point-the-data-manager-at-the-sensor), setting `key` to the key your sensor returns its overrides under.
 

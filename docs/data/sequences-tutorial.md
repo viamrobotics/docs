@@ -19,7 +19,7 @@ By the end, you will have followed the whole path that a training script starts 
 
 - A machine connected to the Viam app (if you don't have one yet, follow [Set up a machine](/set-up-a-machine/))
 - The [Viam CLI](/cli/overview/), installed and logged in
-- Python 3 on your laptop or desktop, for the final step
+- Python 3 on your laptop or desktop, for the final step, and for step 6 if you follow the **CLI and SDK** tabs
 - Node.js 20 or later, only if you follow the **CLI and SDK** tabs
 
 We will use a fake camera and a fake sensor, so this tutorial works without physical hardware.
@@ -322,6 +322,7 @@ echo $SEQUENCE_IDS
 ```
 
 You should see three sequences, one for each tag, each 10 to 15 seconds long, with `test-camera · GetImages` and `test-sensor · Readings` as resources.
+The script matches on tags, so if you run the tutorial again, it also lists the sequences from earlier runs.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -331,7 +332,7 @@ You should see three sequences, one for each tag, each 10 to 15 seconds long, wi
 Behind the scenes:
 
 1. The data manager polled `my-capture-sensor` 10 times per second.
-2. After `start_capture`, the sensor returned an overrides list, so the data manager began capturing `test-camera` and `test-sensor` at 2 Hz, even though neither has capture configured.
+2. The sensor returns an overrides list on every poll, at 0 Hz while it isn't recording. After `start_capture`, the frequency in that list changed to 2 Hz, so the data manager began capturing `test-camera` and `test-sensor`, even though neither has capture configured.
 3. The `sequences` entry opened a sequence.
 4. After `stop_capture`, the entry disappeared, so the sequence closed and its start and end times were saved.
 5. Sync uploaded the captured data and the sequence.
@@ -347,10 +348,11 @@ It is a saved filter: one machine part, a time window, and two components.
 {{% tab name="Viam app" %}}
 
 1. On the **DATA** tab, click **DATASETS**.
-2. In the **Dataset Name** field, enter `demos`.
-3. Set **Data type** to **Sequence Data**, and click **Create dataset**.
-4. Open the dataset and click **Add data**.
-5. Select all three sequences and click **Add**.
+2. Click **Create dataset**.
+3. In the **Dataset Name** field, enter `demos`.
+4. Set **Data type** to **Sequence Data**, and click **Create dataset** again.
+5. Open the dataset and click **Add Data**.
+6. Select all three sequences and click **Add**.
 
 The dataset's sidebar now shows 3 sequences.
 

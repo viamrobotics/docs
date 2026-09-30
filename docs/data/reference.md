@@ -215,6 +215,8 @@ The sensor named in `capture_control_sensor` returns a map from its `Readings` m
 
 **Overrides list** (the key you choose):
 
+<!-- TODO(eng): confirm bare resource_name values resolve for resources on a remote part. The lookup is keyed by ShortName(), which keeps the remote: prefix. -->
+
 | Name                   | Type             | Required? | Description                                                                                                                                                           |
 | ---------------------- | ---------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `resource_name`        | string           | Required  | Short name of the resource, without a remote part prefix.                                                                                                             |
@@ -229,7 +231,7 @@ The sensor named in `capture_control_sensor` returns a map from its `Readings` m
 | `sequence_tags` | array of strings | Optional  | Tags applied to the whole sequence.                                                                                                |
 | `resources`     | array of objects | Required  | The `resource_name` and `method` pairs the sequence covers, in the same form as the overrides list. Entries with none are ignored. |
 
-The service polls the sensor 10 times per second. A sequence opens the first time its entry appears in the list, and closes when the entry disappears. See [Sequences](/data/sequences/).
+The service polls the sensor 10 times per second. A sequence opens the first time its entry appears in the list, and closes when the entry disappears. An entry is identified by its resources and tags, so changing either closes the open sequence and opens a new one. If `Readings` returns an error, or the `sequences` value can't be parsed, every open sequence closes. The service ignores the sensor when `capture_disabled` is `true`. See [Sequences](/data/sequences/).
 
 #### Platform-managed service settings
 

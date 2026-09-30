@@ -22,12 +22,12 @@ You can't change it later.
 Both types are created the same way.
 They differ in how you add data and in what you can do with the dataset afterward.
 
-|                  | Binary dataset                            | Sequence dataset                                                                                         |
+|                  | Image dataset                             | Sequence dataset                                                                                         |
 | ---------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Holds            | Individual images.                        | [Sequences](/data/sequences/): time windows of both images and tabular data from one machine part        |
+| Holds            | Individual images                         | [Sequences](/data/sequences/): time windows of images, tabular data, or both, from one machine part      |
 | Use it to        | Classify an image or detect objects in it | Learn from something that unfolds over time, such as sequence classification or a robot's demonstrations |
-| Create with      | Web UI, CLI, Python, Go                   | Web UI, Python                                                                                           |
-| Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when the sequence is recorded                                                         |
+| Create with      | Viam app, CLI, Python, TypeScript, Go     | Viam app, Python                                                                                         |
+| Labeling         | You tag images or draw bounding boxes     | Sequence tags, set when you create or update the sequence                                                |
 | Managed training | Yes                                       | No. Use a [custom training script](/train/custom-training-scripts/)                                      |
 | Merge datasets   | Yes                                       | No                                                                                                       |
 | Export           | Images plus a `dataset.jsonl` file        | Three Parquet files plus images                                                                          |
@@ -35,23 +35,25 @@ They differ in how you add data and in what you can do with the dataset afterwar
 ## Create a dataset
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 1. Go to the [**DATA** tab](https://app.viam.com/data/all) and click **DATASETS**.
-2. In the **Dataset Name** field, enter a descriptive name for your dataset.
+2. Click **Create dataset**.
+3. In the **Dataset Name** field, enter a descriptive name for your dataset.
    Use a name that reflects the task, such as `inspection-parts-v1` or
    `package-detection`. Dataset names must be unique within your organization.
-3. Set **Data type**:
+4. Set **Data type**:
    - **Binary Data** for an image dataset. This is the default.
    - **Sequence Data** for a sequence dataset.
-4. Click **Create dataset**.
+5. Click **Create dataset** again.
 
 Your empty dataset now appears in the list.
 
 {{% /tab %}}
 {{% tab name="CLI" %}}
 
-This creates an image dataset. The Go SDK can't create sequence datasets.
+This creates an image dataset. Image datasets don't support sequences.
+The CLI can't create sequence datasets.
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset create --org-id=YOUR-ORG-ID --name=my-inspection-dataset
@@ -63,7 +65,7 @@ SDK operations.
 {{% /tab %}}
 {{% tab name="Python" %}}
 
-This creates a sequence dataset. Python supports both sequence and image datasets.
+This creates an image dataset and a sequence dataset. Python supports both types.
 
 ```python
 import asyncio
@@ -86,14 +88,14 @@ async def main():
     viam_client = await connect()
     data_client = viam_client.data_client
 
-    # Image dataset
+    # Image dataset (the default type). Holds images only, no sequences.
     dataset_id = await data_client.create_dataset(
         name="my-inspection-dataset",
         organization_id=ORG_ID,
     )
     print(f"Created dataset: {dataset_id}")
 
-    # Sequence dataset
+    # Sequence dataset. Holds sequences only, no individual images.
     sequence_dataset_id = await data_client.create_dataset(
         name="my-sequence-dataset",
         organization_id=ORG_ID,
@@ -111,7 +113,8 @@ if __name__ == "__main__":
 {{% /tab %}}
 {{% tab name="Go" %}}
 
-This creates an image dataset. The Go SDK can't create sequence datasets.
+This creates an image dataset. Image datasets don't support sequences.
+The Go SDK can't create sequence datasets.
 
 ```go
 package main
@@ -141,6 +144,7 @@ func main() {
 
     dataClient := viamClient.DataClient()
 
+    // Image dataset (the default type). Holds images only, no sequences.
     datasetID, err := dataClient.CreateDataset(
         ctx, "my-inspection-dataset", orgID)
     if err != nil {
@@ -178,7 +182,7 @@ An image dataset holds images only, and a sequence dataset holds sequences only.
 Images must sync from the machine to the cloud before you can add them to a dataset.
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 1. Click the **DATA** tab in the top navigation.
 2. Use the filters to find the images you want. Filter by machine, component,
@@ -255,7 +259,7 @@ See [Sequences](/data/sequences/).
 To go from recording to export in one pass, follow the [sequences tutorial](/data/sequences-tutorial/).
 
 {{< tabs >}}
-{{% tab name="Web UI" %}}
+{{% tab name="Viam app" %}}
 
 To add a sequence from its detail page:
 
@@ -266,7 +270,7 @@ To add a sequence from its detail page:
 To add from the dataset page:
 
 1. Open the dataset from the **DATASETS** tab.
-2. Click **Add data**. If the dataset already holds sequences, the button is **Add sequences**.
+2. Click **Add Data**. If the dataset already holds sequences, the button is **Add sequences**.
 3. In the **All sequences** dialog, select the sequences you want and click **Add**.
 
 {{% /tab %}}
@@ -302,7 +306,7 @@ To remove sequences, call `remove_sequences_from_dataset` (Python), `removeSeque
 See the [data client API](/reference/apis/data-client/).
 
 A sequence dataset needs no annotation or quality check before export.
-Sequence tags are set when the sequence is recorded.
+Sequence tags are set when you create or update the sequence.
 Skip to [Export a dataset](#export-a-dataset).
 
 ## Prepare an image dataset for training
@@ -454,12 +458,13 @@ The destination then contains:
 - `<dataset-id>.zip`: three Parquet files, `binary_data.parquet`, `tabular_data.parquet`, and `sequences.parquet`.
   See [Sequence dataset format](/train/sequence-dataset-format/).
 - `binary_data/`: the image files, named `<binary-data-id><extension>`.
+  Binary data IDs contain slashes, so the files sit in nested folders.
 
 To skip the image files and download only the zip, add `--only-parquet`.
 To change how often the CLI checks the job, or how long it waits, use `--poll-interval` (default `5s`) and `--max-wait` (default `30m`).
 
 From code, call `start_sequence_dataset_export` to get a job ID, poll `get_sequence_dataset_export` until its status is `COMPLETED`, then download the zip from `download_url`.
-The URL is short-lived, so download it right away.
+The URL expires after one hour, so download it right away.
 The Python and TypeScript SDKs have these methods.
 The Go SDK doesn't.
 
@@ -470,6 +475,7 @@ The Go SDK doesn't.
 - Managed [training](/train/train-a-model/) doesn't accept sequence datasets.
   Train with a custom training script.
 - Sequence exports run queries against your organization's data, and tabular queries count toward your data query usage.
+  <!-- TODO(eng): confirm whether tabular queries in a sequence export count toward data query usage. No usage accounting found in the export path. -->
 
 ## Troubleshooting
 
