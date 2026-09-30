@@ -64,7 +64,7 @@ If you use those tabs, expand **Set up for the CLI and SDK path** and finish it 
 
 5. Save this script as `merge_config.py`.
    It adds components, services, and modules from a JSON file to your machine's configuration, and replaces any existing entry with the same name.
-   `viam machines part add-resource` can't add a registry module or set `depends_on`, so steps 2 and 3 use this script instead.
+   `viam machines part add-resource` can't add a registry module, so steps 2 and 3 use this script instead.
 
    ```python
    import asyncio
@@ -215,7 +215,7 @@ python merge_config.py capture-sensor.json
 
 1. On the **CONFIGURE** tab, click **+**, select **Blocks**, and search for **data_manager**. Choose the **data_manager/builtin** service and name it `data-manager`.
 2. Switch to **JSON** mode.
-3. Find the `data-manager` service and add the sensor to its attributes and its `depends_on` list:
+3. Find the `data-manager` service and add the sensor to its attributes:
 
    ```json
    {
@@ -228,8 +228,7 @@ python merge_config.py capture-sensor.json
          "name": "my-capture-sensor",
          "key": "overrides"
        }
-     },
-     "depends_on": ["my-capture-sensor"]
+     }
    }
    ```
 
@@ -239,7 +238,7 @@ python merge_config.py capture-sensor.json
 {{% tab name="CLI and SDK" %}}
 
 Save this as `data-manager.json`.
-It adds the sensor to the data manager's attributes and its `depends_on` list:
+It adds the sensor to the data manager's attributes:
 
 ```json
 {
@@ -254,8 +253,7 @@ It adds the sensor to the data manager's attributes and its `depends_on` list:
           "name": "my-capture-sensor",
           "key": "overrides"
         }
-      },
-      "depends_on": ["my-capture-sensor"]
+      }
     }
   ]
 }

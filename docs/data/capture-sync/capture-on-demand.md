@@ -43,34 +43,80 @@ If it has none, it stops capturing.
 
 ## 1. Add the `capture-control` sensor {#add-the-sensor}
 
-1. On your machine's **CONFIGURE** tab, click **+**, select **Blocks**, search for **capture-control**, and select the sensor from the `viam` namespace.
+The sensor is the model `viam:capture-control:capture-control-sensor`.
+Configure it with the components and methods to record:
+
+```json
+{
+  "resources": [
+    { "resource_name": "my-camera", "method": "GetImages" },
+    { "resource_name": "my-sensor", "method": "Readings" }
+  ],
+  "default_tags": ["event"]
+}
+```
+
+| Attribute                      | Required? | Description                                                                                                                                                                                                                   |
+| ------------------------------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `resources`                    | Required  | The components and methods to control. At least one.                                                                                                                                                                          |
+| `default_capture_frequency_hz` | Optional  | Frequency the sensor sends from startup until the first `start_capture`, and when `start_capture` doesn't give one. Default `0`, which captures nothing. Any other value captures continuously until you send `stop_capture`. |
+| `default_tags`                 | Optional  | Tags used when `start_capture` doesn't give any.                                                                                                                                                                              |
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
+1. On your machine's **CONFIGURE** tab, click **+**, select **Blocks**, and search for **capture-control**. Select the `viam:capture-control:capture-control-sensor` model.
 2. Name it `my-capture-sensor` and click **Add to machine**.
-3. In the sensor's attributes, list the components and methods to record:
-
-   ```json
-   {
-     "resources": [
-       { "resource_name": "my-camera", "method": "GetImages" },
-       { "resource_name": "my-sensor", "method": "Readings" }
-     ],
-     "default_tags": ["event"]
-   }
-   ```
-
-   | Attribute                      | Required? | Description                                                                                                                                                                                                                   |
-   | ------------------------------ | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | `resources`                    | Required  | The components and methods to control. At least one.                                                                                                                                                                          |
-   | `default_capture_frequency_hz` | Optional  | Frequency the sensor sends from startup until the first `start_capture`, and when `start_capture` doesn't give one. Default `0`, which captures nothing. Any other value captures continuously until you send `stop_capture`. |
-   | `default_tags`                 | Optional  | Tags used when `start_capture` doesn't give any.                                                                                                                                                                              |
-
+3. In the sensor's attributes, paste the JSON above.
 4. Click **Save**.
 
-The module is experimental, so its commands might change.
+{{% /tab %}}
+{{% tab name="CLI and SDK" %}}
+
+Save this as `capture-sensor.json`.
+It adds the `capture-control` module and the sensor:
+
+```json
+{
+  "modules": [
+    {
+      "type": "registry",
+      "name": "viam_capture-control",
+      "module_id": "viam:capture-control",
+      "version": "latest"
+    }
+  ],
+  "components": [
+    {
+      "name": "my-capture-sensor",
+      "api": "rdk:component:sensor",
+      "model": "viam:capture-control:capture-control-sensor",
+      "attributes": {
+        "resources": [
+          { "resource_name": "my-camera", "method": "GetImages" },
+          { "resource_name": "my-sensor", "method": "Readings" }
+        ],
+        "default_tags": ["event"]
+      }
+    }
+  ]
+}
+```
+
+Merge it into your machine's configuration with the `merge_config.py` script from [sequences tutorial](/data/sequences-tutorial/), which uses the Python SDK.
+`viam machines part add-resource` can't add a registry module.
+
+```sh {class="command-line" data-prompt="$"}
+python merge_config.py capture-sensor.json
+```
+
+{{% /tab %}}
+{{< /tabs >}}
 
 {{< alert title="The module turns capture off between recordings" color="caution" >}}
 While the module isn't recording, it tells the data management service to capture the components in `resources` at 0 Hz.
 The exception is `default_capture_frequency_hz`: if you set it above `0`, the module captures at that frequency from startup, and after any configuration change, until you send `stop_capture`.
-This overrides any capture you configured on those components, so they capture only while you record.
+Either way, the module's setting overrides any capture you configured on those components, so they capture only while you record.
 {{< /alert >}}
 
 ## 2. Point the data manager at the sensor {#point-the-data-manager-at-the-sensor}
@@ -78,37 +124,68 @@ This overrides any capture you configured on those components, so they capture o
 Tell the data management service which sensor to poll, and which key in its readings holds the capture settings.
 The `capture-control` module uses the key `overrides`.
 
+Set `capture_control_sensor` on the data management service, with the sensor's name and key.
+`key` is required, even if you only use the sensor to record [sequences](/data/sequences/).
+
+```json
+{
+  "name": "data-manager",
+  "api": "rdk:service:data_manager",
+  "model": "rdk:builtin:builtin",
+  "attributes": {
+    "capture_control_sensor": {
+      "name": "my-capture-sensor",
+      "key": "overrides"
+    }
+  }
+}
+```
+
+{{< tabs >}}
+{{% tab name="Viam app" %}}
+
 1. On your machine's **CONFIGURE** tab, find your data management service.
 2. Switch to **JSON** mode.
-3. In the service's `attributes`, add `capture_control_sensor` with the sensor's name and key:
+3. Add `capture_control_sensor` to the service's `attributes`, as shown above.
+4. Click **Save**.
 
-   ```json
-   "attributes": {
-     "capture_control_sensor": {
-       "name": "my-capture-sensor",
-       "key": "overrides"
-     }
-   }
-   ```
+{{% /tab %}}
+{{% tab name="CLI and SDK" %}}
 
-   `key` is required, even if you only use the sensor to record [sequences](/data/sequences/).
+Save the JSON above, wrapped in a `services` list, as `data-manager.json`, keeping any other attributes your service already has:
 
-4. Next to `attributes`, in the service's own config, add the sensor's name to `depends_on`:
+```json
+{
+  "services": [
+    {
+      "name": "data-manager",
+      "api": "rdk:service:data_manager",
+      "model": "rdk:builtin:builtin",
+      "attributes": {
+        "capture_control_sensor": {
+          "name": "my-capture-sensor",
+          "key": "overrides"
+        }
+      }
+    }
+  ]
+}
+```
 
-   ```json
-   "depends_on": ["my-capture-sensor"]
-   ```
+Then merge it with the same script. It replaces any existing entry with the same name:
 
-   `depends_on` lists other resources that must be running before this one starts.
-   With it, `viam-server` starts the sensor before the data management service.
+```sh {class="command-line" data-prompt="$"}
+python merge_config.py data-manager.json
+```
 
-5. Click **Save**.
+{{% /tab %}}
+{{< /tabs >}}
 
 Within a moment, the service starts applying the sensor's readings.
 
 ## 3. Start and stop recording {#start-and-stop-recording}
 
-Send the sensor `DoCommand` calls from its **Test** section on the **CONFIGURE** tab, or from code.
+Send the sensor `DoCommand` calls.
 Each command is a key set to `true`, with optional arguments beside it:
 
 | Command                                                         | What it does                                                                                          |
@@ -123,9 +200,38 @@ If you leave out `frequency_hz` and `default_capture_frequency_hz` is `0`, the s
 Sending `start_capture` again with different tags closes the open sequence and opens a new one.
 The sensor forgets its state when its configuration changes.
 
-To send the same commands from code or from a terminal, see the [sequences tutorial](/data/sequences-tutorial/#4-record-three-sequences).
+{{< tabs >}}
+{{% tab name="Viam app" %}}
 
-To check that recording started, open the machine's **LOGS** tab and look for messages that begin `capture control sensor enabling capture for`.
+1. On the **CONFIGURE** tab, expand the **Test** section of `my-capture-sensor` and find **DoCommand**.
+2. Send `{"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}`.
+3. Wait for the moment you want to record to pass.
+4. Send `{"stop_capture": true}`.
+
+{{% /tab %}}
+{{% tab name="CLI and SDK" %}}
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part run --part=$VIAM_PART_ID \
+  --component=my-capture-sensor --method=DoCommand \
+  --data='{"command": {"start_capture": true, "frequency_hz": 2, "tags": ["run-1"]}}'
+```
+
+After the moment you want to record has passed:
+
+```sh {class="command-line" data-prompt="$"}
+viam machines part run --part=$VIAM_PART_ID \
+  --component=my-capture-sensor --method=DoCommand \
+  --data='{"command": {"stop_capture": true}}'
+```
+
+To send the commands from code, call `do_command` on the sensor with the same dictionary.
+
+{{% /tab %}}
+{{< /tabs >}}
+
+To check that recording started, look for log messages that begin `capture control sensor enabling capture for`.
+Find them on the machine's **LOGS** tab, or with `viam machines part logs --part=$VIAM_PART_ID`.
 After the next sync, the data appears on the **DATA** tab, and any sequences appear under **SEQUENCES**.
 
 ## Capture components that have no data capture configured
