@@ -113,6 +113,7 @@ At the end of your <file>meta.json</file>, add the build configuration:
 | `"path"` | Optional | Path to the build module tarball. |
 | `"arch"` | **Required** | Array of architectures to build for. For more information see [Supported platforms for automatic updates](#supported-platforms-for-automatic-updates). |
 | `"darwin_deps"` | **Required** | Array of homebrew dependencies for Darwin builds. Explicitly pass `[]` for empty. Default: `["go", "pkg-config", "nlopt-static", "x264", "jpeg-turbo", "ffmpeg"]` |
+| `"distro"` | Optional | Linux distribution for cloud builds, for example `"bullseye"`. Default: `"focal"` (Ubuntu 20.04). |
 
 {{% /expand %}}
 
