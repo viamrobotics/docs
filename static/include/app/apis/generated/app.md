@@ -3382,6 +3382,58 @@ For more information, see the [TypeScript SDK Docs](https://ts.viam.dev/interfac
 {{% /tab %}}
 {{< /tabs >}}
 
+### ListRobotsForLocations
+
+Get a list of all machines in multiple specified locations.
+
+{{< tabs >}}
+{{% tab name="Python" %}}
+
+**Parameters:**
+
+- `location_ids` (list[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]) (required): IDs of the locations to retrieve the machines from.
+
+**Returns:**
+
+- ([list[viam.proto.app.Robot]](https://python.viam.dev/autoapi/viam/proto/app/index.html#viam.proto.app.Robot)): :   The machines across all the given locations.
+
+**Raises:**
+
+- (GRPCError): If an invalid location ID is passed.
+
+**Example:**
+
+```python {class="line-numbers linkable-line-numbers"}
+list_of_machines = await cloud.list_robots_for_locations(
+    location_ids=["123ab12345", "456cd67890"])
+```
+
+For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/viam/app/app_client/index.html#viam.app.app_client.AppClient.list_robots_for_locations).
+
+{{% /tab %}}
+{{% tab name="Go" %}}
+
+**Parameters:**
+
+- `ctx` [(Context)](https://pkg.go.dev/context#Context): A Context carries a deadline, a cancellation signal, and other values across API boundaries.
+- `locationIDs` [([]string)](https://pkg.go.dev/builtin#string)
+
+**Returns:**
+
+- [([]*Robot)](https://pkg.go.dev/go.viam.com/rdk/app#Robot)
+- [(error)](https://pkg.go.dev/builtin#error): An error, if one occurred.
+
+**Example:**
+
+```go {class="line-numbers linkable-line-numbers"}
+robots, err := cloud.ListRobotsForLocations(context.Background(), []string{"ab1c2d3e45", "bc2d3e4f56"})
+```
+
+For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/app#AppClient.ListRobotsForLocations).
+
+{{% /tab %}}
+{{< /tabs >}}
+
 ### ListMachineSummaries
 
 List summary information for the machines in an organization, optionally filtered by fragment or location.
@@ -5236,7 +5288,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 - `itemId` (string) (required): The ID of the registry item to update.
 - `type` (PackageType) (required): The PackageType to update the item to.
 - `description` (string) (required): A description of the item.
-- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): A visibility value to update to.
+- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A visibility value to update to.
 - `billing` ([RegistryItemBilling](https://ts.viam.dev/classes/appApi.RegistryItemBilling.html)) (optional): Optional usage cost information to store on the item. When unset, the existing
   billing configuration is left unchanged.
 
@@ -5357,7 +5409,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 
 - `organizationId` (string) (required): The ID of the organization to query registry items for.
 - `types` (PackageType) (required): A list of types to query. If empty, will not filter on type.
-- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): A list of visibilities to query for. If empty, will not filter on
+- `visibilities` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): A list of visibilities to query for. If empty, will not filter on
   visibility.
 - `platforms` (string) (required): A list of platforms to query for. If empty, will not filter on platform.
 - `statuses` ([RegistryItemStatus](https://ts.viam.dev/enums/appApi.RegistryItemStatus.html)) (required): A list of statuses to query for. If empty, will not filter on status.
@@ -5820,7 +5872,7 @@ For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/a
 **Parameters:**
 
 - `moduleId` (string) (required): The ID of the module to update.
-- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html)) (required): The visibility to set for the module.
+- `visibility` ([appApi](https://ts.viam.dev/modules/appApi.html).[Visibility](https://ts.viam.dev/enums/appApi.Visibility.html)) (required): The visibility to set for the module.
 - `url` (string) (required): The url to reference for documentation, code, etc.
 - `description` (string) (required): A short description of the module.
 - `models` ([Model](https://ts.viam.dev/classes/appApi.Model.html)) (required): A list of models available in the module.

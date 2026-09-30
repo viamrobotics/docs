@@ -2,12 +2,15 @@
 title: Service
 capabilities: ["glossary", "docs"]
 id: service
-short_description: Built-in software packages for complex capabilities such as SLAM, Computer Vision, Motion Planning, and Data Collection.
+short_description: Software packages that give a machine higher-level capabilities such as SLAM, computer vision, motion planning, and data collection. Some are built into viam-server, and others come from modules.
 aliases:
   - /dev/reference/glossary/service/
 ---
 
-Services are built-in software packages for complex capabilities such as simultaneous localization and mapping (SLAM), computer vision, motion planning, and data collection.
+Services are software packages that give a machine higher-level capabilities such as simultaneous localization and mapping (SLAM), computer vision, motion planning, and data collection.
+
+Some services are built into `viam-server`.
+Others are provided by {{< glossary_tooltip term_id="module" text="modules" >}}, either from the Viam registry or written by you.
 
 Each service is typed by a proto API, such as the [service proto definitions](https://github.com/viamrobotics/api/tree/main/proto/viam/service).
 

@@ -37,7 +37,7 @@ You will learn:
 - How to use the base API to move a rover in a square
 
 {{< alert title="No hardware?" color="alert" >}}
-If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/viam-101) to try Viam in a simulation environment, no hardware required.
+If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/education) to try Viam in a simulation environment, no hardware required.
 You can also try the [Quality Inspection tutorial](/try/quality-inspection/overview/), which uses a Gazebo simulation.
 {{< /alert >}}
 

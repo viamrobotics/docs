@@ -26,6 +26,10 @@ them work **together**. A camera detects an object, and a motor responds. A
 temperature sensor crosses a threshold, and a notification fires. A movement
 sensor reports position, and an arm adjusts.
 
+To learn module development step by step, take the free Viam 102 course:
+
+{{< course "viam-102" >}}
+
 ## Two kinds of modules
 
 ### Driver modules: add hardware support

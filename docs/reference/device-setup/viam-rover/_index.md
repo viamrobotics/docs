@@ -29,7 +29,7 @@ The [Viam Rover 2](https://www.viam.com/resources/rover) comes preassembled and 
 {{< alert title="Note" color="alert" >}}
 Viam no longer sells the Viam Rover, and the rover rental program has been discontinued as of September 2026.
 These guides remain available for everyone who already has a rover.
-If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/viam-101) to try Viam in a simulation environment, no hardware required.
+If you are new to Viam, we recommend taking our free [Viam 101 course](https://www.viam.com/education) to try Viam in a simulation environment, no hardware required.
 {{< /alert >}}
 
 <div class="td-max-width-on-larger-screens">
