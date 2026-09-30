@@ -73,42 +73,15 @@ Configure it with the components and methods to record:
 {{% /tab %}}
 {{% tab name="CLI and SDK" %}}
 
-Save this as `capture-sensor.json`.
-It adds the `capture-control` module and the sensor:
+The CLI can't add a registry module to a machine.
+`viam machines part add-resource` adds the sensor's entry but not the `viam:capture-control` module entry, so `viam-server` can't build the sensor.
+Use the [Viam MCP server](/reference/mcp/) instead, which adds the module for you.
+Ask your MCP client something like:
 
-```json
-{
-  "modules": [
-    {
-      "type": "registry",
-      "name": "viam_capture-control",
-      "module_id": "viam:capture-control",
-      "version": "latest"
-    }
-  ],
-  "components": [
-    {
-      "name": "my-capture-sensor",
-      "api": "rdk:component:sensor",
-      "model": "viam:capture-control:capture-control-sensor",
-      "attributes": {
-        "resources": [
-          { "resource_name": "my-camera", "method": "GetImages" },
-          { "resource_name": "my-sensor", "method": "Readings" }
-        ],
-        "default_tags": ["event"]
-      }
-    }
-  ]
-}
-```
+> On my machine `<machine-name>`, add a sensor named `my-capture-sensor` with the model `viam:capture-control:capture-control-sensor` and the attributes shown above.
 
-Merge it into your machine's configuration with the `merge_config.py` script from [sequences tutorial](/data/sequences-tutorial/), which uses the Python SDK.
-`viam machines part add-resource` can't add a registry module.
-
-```sh {class="command-line" data-prompt="$"}
-python merge_config.py capture-sensor.json
-```
+The client calls the `add_machine_config_item` tool.
+Its result includes a `module_added` entry for `viam:capture-control`.
 
 {{% /tab %}}
 {{< /tabs >}}
@@ -152,30 +125,20 @@ Set `capture_control_sensor` on the data management service, with the sensor's n
 {{% /tab %}}
 {{% tab name="CLI and SDK" %}}
 
-Save the JSON above, wrapped in a `services` list, as `data-manager.json`, keeping any other attributes your service already has:
-
-```json
-{
-  "services": [
-    {
-      "name": "data-manager",
-      "api": "rdk:service:data_manager",
-      "model": "rdk:builtin:builtin",
-      "attributes": {
-        "capture_control_sensor": {
-          "name": "my-capture-sensor",
-          "key": "overrides"
-        }
-      }
-    }
-  ]
-}
-```
-
-Then merge it with the same script. It replaces any existing entry with the same name:
+If your machine has no data management service yet, add one.
+Its API is `rdk:service:data_manager`, which `--resource-subtype` doesn't accept, so pass `--api`:
 
 ```sh {class="command-line" data-prompt="$"}
-python merge_config.py data-manager.json
+viam machines part add-resource --part=$VIAM_PART_ID \
+  --name=data-manager --api=rdk:service:data_manager --model-name=builtin
+```
+
+Then set the attribute.
+`--config` replaces all of the service's existing attributes, so include any you already have:
+
+```sh {class="command-line" data-prompt="$"}
+viam resource update --part=$VIAM_PART_ID --resource-name=data-manager \
+  --config '{"capture_control_sensor": {"name": "my-capture-sensor", "key": "overrides"}}'
 ```
 
 {{% /tab %}}
