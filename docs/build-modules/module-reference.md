@@ -481,6 +481,7 @@ The full schema is available at `https://dl.viam.dev/module.schema.json`.
 | `build.path`                 | string | No       | Path to built artifact. Default: `module.tar.gz`.                                                                                                    |
 | `build.arch`                 | array  | No       | Target platforms. Default: `["linux/amd64", "linux/arm64"]`.                                                                                         |
 | `build.darwin_deps`          | array  | No       | Homebrew dependencies for macOS builds (for example, `["go", "pkg-config"]`).                                                                        |
+| `build.distro`               | string | No       | Linux distribution for cloud builds (for example, `bullseye`). Default: `focal` (Ubuntu 20.04).                                                      |
 | `applications`               | array  | No       | Viam applications provided by the module. See [Applications](#applications).                                                                         |
 
 ### Applications
