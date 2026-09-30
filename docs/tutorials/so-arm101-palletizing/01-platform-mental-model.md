@@ -8,7 +8,7 @@ description: "How your computer and Viam fit together, and the three robotics co
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 1
-phase_total: 6
+phase_total: 5
 next: "/tutorials/so-arm101-palletizing/configure-the-arm/"
 languages: ["python"]
 ---

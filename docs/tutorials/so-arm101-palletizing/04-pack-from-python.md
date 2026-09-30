@@ -8,7 +8,7 @@ description: "Build palletizer.py method by method and drive a static bottom-lay
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 4
-phase_total: 6
+phase_total: 5
 prev: "/tutorials/so-arm101-palletizing/teach-the-cell/"
 next: "/tutorials/so-arm101-palletizing/avoid-placed-cubes/"
 languages: ["python"]
@@ -33,10 +33,10 @@ The shell commands in this tutorial are designed to use [`uv`](https://docs.astr
 
 First, open the machine's **CONNECT** tab in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the machine address and the API key and key ID pair it shows you. Paste these values into `MACHINE_ADDRESS`, `API_KEY_ID`, and `API_KEY` in `helpers.py`.
 
-Next, set the two constants `STAGING_POSE` and `PALLET_ORIGIN` to the two poses you captured by hand in Phase 3. `palletizer.py` reads both from `helpers.py`, so this is where the numbers you recorded become the code's picking and stacking targets.
+Next, set the x, y, and z of the two constants `STAGING_POSE` and `PALLET_ORIGIN` to the two gripper poses you captured by hand in Phase 3. `palletizer.py` reads both from `helpers.py`, so this is where the numbers you recorded become the code's picking and stacking targets.
 
 {{< alert color="note" >}}
-Ensure that the values for `ARM` and `GRIPPER` in `helpers.py` match the names you gave these components in the Viam app. `MOTION` should remain set to "builtin".
+`helpers.py` sets `ARM` and `GRIPPER` to `arm-1` and `gripper-1`, the names you gave these components in Phase 2. If you named yours differently, change these two values to match. `MOTION` should remain set to "builtin".
 {{< /alert >}}
 
 ## What the helpers give you
@@ -44,7 +44,7 @@ Ensure that the values for `ARM` and `GRIPPER` in `helpers.py` match the names y
 You will import `helpers.py` to handle connection code and grid math. It gives you:
 
 - `helpers.connect()`, an `async` function that returns a connected `RobotClient`.
-- The arm's resource name (`helpers.ARM`), whose `.name` you hand to the motion service, plus the gripper and motion-service names (`helpers.GRIPPER`, `helpers.MOTION`), which you pass to `from_robot`. All three name resources configured in Phase 2.
+- The component and service names, as plain strings: `helpers.GRIPPER`, which you pass both to the motion service and to `from_robot`; `helpers.MOTION`, the motion service; and `helpers.ARM`, for arm-level calls you do not need in this workshop.
 - `down_pose(x, y, z)`, which returns a `Pose` at that position with the tool pointing straight down.
 - `helpers.grid(origin, pitch, cube)`, which expands one origin corner into the eight target poses of a two-layer, four-cell pallet (explained in the next section).
 - `helpers.STAGING_POSE` and `helpers.PALLET_ORIGIN`, the two anchor poses you captured by hand in Phase 3.
@@ -59,7 +59,7 @@ You captured one pallet corner in Phase 3. The other seven target poses follow f
 
 ```python
 PITCH = 30  # mm, center-to-center spacing between adjacent pallet cells
-CUBE = 20  # mm, cube side length, and the z offset between layers
+CUBE = 16  # mm, cube side length, and the z offset between layers
 ```
 
 The four bottom-layer cells are the origin corner plus every combination of `0` and `PITCH` in x and y. The top layer repeats those four positions one `CUBE` higher in z, giving eight target poses in all: four on the pallet and four stacked directly on top.
@@ -109,10 +109,10 @@ import helpers
 from helpers import down_pose
 
 PITCH = 30  # mm, center-to-center spacing between adjacent pallet cells
-CUBE = 20  # mm, cube side length, and the z offset between layers
+CUBE = 16  # mm, cube side length, and the z offset between layers
 APPROACH = 40  # mm, hover height above a pose before descending
-GRASP_HEIGHT = 10  # mm, how far from the bottom of a cube the gripper will close
-GRIP_PERCENTAGE = 10 # percentage, determines the appropriate gripper width to grasp your cubes
+GRASP_DEPTH = 9  # mm, how far below the cube's top face the fingertips descend before closing
+GRIP_PERCENTAGE = 20  # percentage, the gripper width that holds your cubes; start wide, calibrate down
 
 class Palletizer:
     def __init__(self, robot):
@@ -122,7 +122,9 @@ class Palletizer:
         self.placed = []
 ```
 
-`PITCH` and `CUBE` are the constants for the pallet grid. `APPROACH` and `GRASP_HEIGHT` are new: `APPROACH` is how high above a target pose the arm hovers before descending, and `GRASP_HEIGHT` is how far from the bottom of a cube the gripper will close to grab it.
+`PITCH` and `CUBE` are the constants for the pallet grid. `APPROACH` and `GRASP_DEPTH` are new: `APPROACH` is how high above a target pose the gripper hovers before descending, and `GRASP_DEPTH` is how far below a cube's top face the fingertips go before the jaws close on it. Your anchor poses put the fingertips level with a cube's top face, so every grasp and release descends `GRASP_DEPTH` below the taught height.
+
+`GRASP_DEPTH` and `GRIP_PERCENTAGE` are calibration values that depend on your cubes and your arm, and you test and adjust both later in this phase. `GRIP_PERCENTAGE` starts deliberately wide: you narrow it until the jaws hold a cube, because gripping too tightly can overload the gripper servo.
 
 `self.robot` accepts a connection to your Viam machine, provided by `helpers.py`. `self.motion` and `self.gripper` hold client objects for those aspects of your machine.
 
@@ -146,6 +148,9 @@ async def main(verb):
             print(f"Unknown step '{verb}'. Steps: {', '.join(STEPS)}")
             return
         await step(palletizer)
+    except BaseException:
+        await robot.stop_all()
+        raise
     finally:
         await robot.close()
 
@@ -153,6 +158,8 @@ if __name__ == "__main__":
     verb = sys.argv[1] if len(sys.argv) > 1 else "pack"
     asyncio.run(main(verb))
 ```
+
+The `except` block is a safety net for later, once the arm is moving. If a step raises an error, or you press Ctrl+C to interrupt it, `robot.stop_all()` tells every component on the machine to stop before the script disconnects, because closing the connection is not guaranteed to halt a motion already in progress. `raise` then passes the error along, so you still see what went wrong. `BaseException` catches Ctrl+C as well as ordinary errors.
 
 At this point, you can run the program to ensure your connection is correctly configured:
 
@@ -170,20 +177,20 @@ Every arm motion in this workshop follows the same pattern: give the motion serv
     async def move_gripper(self, pose: Pose):
         destination = PoseInFrame(reference_frame="world", pose=pose)
         await self.motion.move(
-            component_name=helpers.ARM.name,
+            component_name=helpers.GRIPPER,
             destination=destination,
             world_state=None,
         )
 ```
 
-The motion service drives the arm's end point to the `pose` you provide. The gripper, attached to the arm in the frame system, rides along, and the planner accounts for its shape. `world_state=None` because this phase has no obstacles to avoid yet; Phase 5 adds them.
+The motion service moves the gripper, specifically the point between its fingertips, to the `pose` you provide, working out the arm joint motions needed to get it there. This is the same gripper frame you read your anchor poses in, so the taught numbers carry over unchanged. The planner also accounts for the gripper's shape. `world_state=None` because this phase has no obstacles to avoid yet; Phase 5 adds them.
 
 Add a small `test` method to the class: scratch space you rewrite each time you want to try out a piece as you build it. Start it off with a pose returned from the `down_pose` helper:
 
 ```python
     async def test(self):
         """Scratch space for testing individual pieces as you build them."""
-        await self.move_gripper(down_pose(200, 0, 150))
+        await self.move_gripper(down_pose(160, 0, 60))
 ```
 
 Add the method in `STEPS` to expose it in your command line plumbing:
@@ -201,7 +208,7 @@ uv run palletizer.py test
 ```
 
 {{< checkpoint >}}
-You should see the arm move. If it raises a planning error, confirm `(200, 0, 150)` is inside your arm's reach; adjust the coordinates in `test` if your cell layout differs.
+You should see the arm move the gripper to a point 160mm in front of the base and 60mm above the table, pointing straight down. If it raises a planning error such as "zero IK solutions produced", the pose is out of reach. With the gripper pointing straight down, the SO-ARM101 can only reach a limited height, roughly 60 to 80mm above the table, so lower the z value before you change x or y.
 {{< /checkpoint >}}
 
 ### grip_percentage
@@ -245,7 +252,7 @@ Once you have determined the appropriate percentage, adjust the `GRIP_PERCENTAGE
         """Pick the cube waiting on the staging spot and lift it clear."""
         staging = helpers.STAGING_POSE
         hover = down_pose(staging.x, staging.y, staging.z + APPROACH)
-        grasp = down_pose(staging.x, staging.y, staging.z + GRASP_HEIGHT)
+        grasp = down_pose(staging.x, staging.y, staging.z - GRASP_DEPTH)
         await self.move_gripper(hover)
         await self.grip_percentage(GRIP_PERCENTAGE * 3) # open the gripper wider than the cube
         await self.move_gripper(grasp)
@@ -254,7 +261,7 @@ Once you have determined the appropriate percentage, adjust the `GRIP_PERCENTAGE
         await self.move_gripper(hover)
 ```
 
-The staging spot is a single fixed pose, and you hand-feed one cube to it before every call to `pick`. Note the grasp target is `staging.z + GRASP_HEIGHT`, which places the tip of your gripper a few millimeters above the surface of the table.
+The staging spot is a single fixed pose, and you hand-feed one cube to it before every call to `pick`. Note the grasp target is `staging.z - GRASP_DEPTH`: your staging pose puts the fingertips level with the cube's top face, so the grasp lowers them `GRASP_DEPTH` millimeters down the cube's sides before the jaws close.
 
 Add "pick" to your list of command line arguments in `STEPS`:
 
@@ -272,7 +279,7 @@ uv run palletizer.py pick
 ```
 
 {{< checkpoint >}}
-The gripper hovers above the staging pose, descends, closes on the cube, and lifts it back to the hover height. If the fingers close on air, check that the cube is centered under `helpers.STAGING_POSE`. You may also need to adjust `GRASP_HEIGHT` or the value passed to `self.grip_percentage`.
+The gripper hovers above the staging pose, descends, closes on the cube, and lifts it back to the hover height. If the fingers close on air, check that the cube is centered under `helpers.STAGING_POSE`. If the jaws close too high on the cube, or the cube slips as it lifts, increase `GRASP_DEPTH` a millimeter at a time; if the grip is loose, lower `GRIP_PERCENTAGE` by one.
 {{< /checkpoint >}}
 
 ### place
@@ -285,15 +292,13 @@ The gripper hovers above the staging pose, descends, closes on the cube, and lif
         target = helpers.grid(helpers.PALLET_ORIGIN, PITCH, CUBE)[seq]
         hover = down_pose(target.x, target.y, target.z + APPROACH)
         await self.move_gripper(hover)
-        await self.move_gripper(down_pose(target.x, target.y, target.z + GRASP_HEIGHT))
+        await self.move_gripper(down_pose(target.x, target.y, target.z - GRASP_DEPTH))
         await self.grip_percentage(GRIP_PERCENTAGE + 2) # release the cube
         await self.move_gripper(hover)
-
-        # Add the coordinates of the placed box based on the arm pose, adjusting for gripper length
-        self.placed.append(Pose(x=target.x, y=target.y, z=target.z - 105))
+        self.placed.append(target)
 ```
 
-`helpers.grid` returns all eight target poses, bottom layer followed by top layer; `seq` indexes into that list. The hover-then-descend pattern mirrors `pick`: transit above the cell first, then lower straight down, so the cube does not drag across neighboring cells on its way in.
+`helpers.grid` returns all eight target poses, bottom layer followed by top layer; `seq` indexes into that list. The hover-then-descend pattern mirrors `pick`: transit above the cell first, then lower straight down, so the cube does not drag across neighboring cells on its way in. The descent also mirrors `pick`'s depth: the cube was gripped `GRASP_DEPTH` below its top face, so releasing it at that same depth sets it down instead of dropping it. `self.placed` records each filled cell's pose; Phase 5 uses it.
 
 {{< checkpoint >}}
 `place` takes a `seq` argument, so there is no standalone step for it in `STEPS`; you verify it as the first cycle of `pack`, in the next section. When you run `pack`, the first cube is lowered into grid cell 0 and released. The cube should land inside the marked cell, not on top of an edge or a neighboring cell. If it lands off-center, recheck the pallet origin pose you captured in Phase 3, or confirm `PITCH` and `CUBE` match your measured cube spacing.

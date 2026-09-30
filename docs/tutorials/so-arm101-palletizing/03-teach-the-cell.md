@@ -4,17 +4,17 @@ linkTitle: "3. Teach the cell"
 type: "docs"
 slug: "teach-the-cell"
 weight: 30
-description: "Move the arm by hand with torque disabled, read two anchor poses off its test card, and compute the pallet grid from them."
+description: "Move the arm by hand with torque disabled, read two gripper anchor poses from the Motion tab, and compute the pallet grid from them."
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 3
-phase_total: 6
+phase_total: 5
 prev: "/tutorials/so-arm101-palletizing/configure-the-arm/"
 next: "/tutorials/so-arm101-palletizing/pack-from-python/"
 languages: ["python"]
 ---
 
-In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, expressed in the arm's own coordinate frame, by moving the arm there yourself and reading its position back from the Viam app. You capture two anchor poses this way; the code you write in Phase 4 computes the rest of the pallet grid from them.
+In this phase you map the physical cell into the arm's frame. Nothing in the cell is pre-measured: you find where the staging spot and the pallet actually sit, measured from the arm's base, by moving the gripper there yourself and reading its position back from the Viam app. You capture two anchor poses this way; the code you write in Phase 4 computes the rest of the pallet grid from them.
 
 {{< alert title="The arm goes limp" color="caution" >}}
 Disabling torque lets you move the arm by hand, but it also means the arm no longer holds its position against gravity. It drops as soon as you disable torque, and stays free to fall until you re-enable it. Support the arm with one hand while torque is off, clear the workspace and cubes from underneath it, and re-enable torque before you send any motion command.
@@ -53,25 +53,25 @@ Once the command succeeds, the arm's joints go slack and you can move it by hand
 
 <!-- ASSET control-set-torque (UI): the arm test card DoCommand box with the set_torque enable:false command entered -->
 
-## Read the arm's position from the app
+## Read the gripper's position from the app
 
-The arm's test card on the **CONTROL** tab shows its current **end position**: the x, y, and z of the arm's end point, in millimeters, plus an orientation. As you move the arm by hand with torque disabled, that readout updates to track it. Because you placed the arm's base at the world origin in Phase 2, this end position is also a position in the world frame.
+The poses you teach are **gripper** poses. The gripper's kinematics end at the point between its fingertips, and that point is what the motion service moves when your code plans in Phase 4. The arm's own end point sits at the wrist, about one finger length higher, so reading the arm's position instead of the gripper's would send the fingertips into the table.
 
-You position the arm so the gripper's jaws sit where you want them, then read the end position off the card. Because the gripper is rigidly attached, driving the arm's end point back to that same pose later returns the jaws to the same spot.
+Open the **MOTION** tab on your machine's page. It lists the current pose of each component in the world frame, and updates live as the arm moves. Read the x, y, and z from the `gripper-1` row: the position of the point between the fingertips, in millimeters. Because you placed the arm's base at the world origin in Phase 2, these coordinates are measured from the arm's base.
 
-<!-- ASSET arm-endposition-card (UI): arm test card end-position readout (x, y, z) highlighted -->
+<!-- ASSET motion-tab-gripper-pose (UI): MOTION tab pose table with the gripper-1 row x/y/z highlighted -->
 
 ## Capture the staging pose
 
-With torque disabled, gently guide the gripper to the staging spot, the place where you will set down one cube at the start of every pick cycle in later phases. Because the SO-101's gripper has a single moving jaw, position the stationary jaw at one edge of the staging area.
+Set a cube on the staging square, the place where you will set down one cube at the start of every pick cycle in later phases. With torque disabled, gently guide the gripper over it until the cube sits between the jaws and the fingertips are level with the cube's top face.
 
-Hold the arm steady once it is in position, then read the **end position** off the arm's test card and record the x, y, and z. This is your staging pose. Move the arm slightly and watch the readout change, so you know it is tracking the live position, then guide it back and re-read if needed.
+Hold the arm steady once it is in position, then read the gripper's pose from the **MOTION** tab and record the x, y, and z. This is your staging pose. Move the arm slightly and watch the numbers change, so you know the table is tracking the live position, then guide it back and re-read if needed.
 
-<!-- ASSET teach-by-hand (VIDEO): back-driving the arm by hand to the staging square while the end-position readout on the test card updates live (signature moment) -->
+<!-- ASSET teach-by-hand (VIDEO): back-driving the arm by hand to the staging square then reading the gripper pose on the Motion tab (signature moment) -->
 
 ## Capture the pallet origin corner
 
-Still with torque disabled, guide the gripper to the farthest corner of the pallet, cell [0, 0], the corner you treat as the origin of the pallet grid. Read the **end position** again and record the x, y, and z. This is your pallet origin pose.
+Move the cube to the mat's **origin** square, cell [0, 0]. The mat's x and y arrows point away from this square toward the other three cells, and the code computes those cells by stepping out from here, so teach this square and not another corner. Still with torque disabled, guide the gripper to the cube the same way: cube between the jaws, fingertips level with its top face. Read the gripper's pose from the **MOTION** tab again and record the x, y, and z. This is your pallet origin pose.
 
 ## Re-enable torque
 
@@ -88,10 +88,10 @@ The arm's joints stiffen and it holds its current position. Confirm this by lett
 
 ## Save your anchors
 
-Write down the two poses you just read, staging and pallet origin, each as the x, y, and z from the arm's test card. Keep this note handy: in Phase 4 you paste these numbers into the companion project's `helpers.py`, into the `STAGING_POSE` and `PALLET_ORIGIN` constants that `palletizer.py` reads. From there, `palletizer.py` passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
+Write down the two poses you just read, staging and pallet origin, each as the x, y, and z from the **MOTION** tab. Keep this note handy: in Phase 4 you paste these numbers into the companion project's `helpers.py`, into the `STAGING_POSE` and `PALLET_ORIGIN` constants that `palletizer.py` reads. From there, `palletizer.py` passes `PALLET_ORIGIN` into `helpers.grid` to get all eight target poses, and uses `STAGING_POSE` as the fixed pick location for every cycle.
 
 {{< checkpoint >}}
-With torque disabled, the arm's end position on its test card changes as you move the arm by hand, confirming the readout tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, written down and ready to carry into Phase 4. If the readout does not change as you move the arm, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
+With torque disabled, the gripper pose on the **MOTION** tab updates as you move the arm by hand, confirming it tracks the physical arm. After you re-enable torque, the arm holds its pose and does not drift when you let go. You have two recorded poses, staging and pallet origin, written down and ready to carry into Phase 4. If the pose does not change as you move the arm, confirm torque is actually disabled; if the arm still droops after re-enabling torque, resend the `set_torque` command with `enable` set to `true` and check the LOGS tab for a serial error.
 {{< /checkpoint >}}
 
 With your two anchor poses recorded, [Phase 4](/tutorials/so-arm101-palletizing/pack-from-python/) is where you write the Python that reads these positions and drives the arm through a pick-and-place pack.

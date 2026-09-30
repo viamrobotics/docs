@@ -8,9 +8,9 @@ description: "Model placed cubes and the held cube in WorldState so the planner 
 workshop: "so-arm101-palletizing"
 toc_hide: true
 phase: 5
-phase_total: 6
+phase_total: 5
 prev: "/tutorials/so-arm101-palletizing/pack-from-python/"
-next: "/tutorials/so-arm101-palletizing/inline-module/"
+next: "/tutorials/so-arm101-palletizing/wrap-up/"
 languages: ["python"]
 ---
 
@@ -53,7 +53,7 @@ Then add an `obstacles` method to the `Palletizer` class:
                 reference_frame="world",
                 geometries=[
                     Geometry(
-                        center=Pose(x=p.x, y=p.y, z=p.z, o_x=0, o_y=0, o_z=1, theta=0),
+                        center=Pose(x=p.x, y=p.y, z=p.z - CUBE / 2, o_x=0, o_y=0, o_z=1, theta=0),
                         box=RectangularPrism(dims_mm=Vector3(x=CUBE, y=CUBE, z=CUBE)),
                         label=f"placed-{i}",
                     )
@@ -64,7 +64,7 @@ Then add an `obstacles` method to the `Palletizer` class:
         return WorldState(obstacles=placed) if placed else None
 ```
 
-Each placed cube becomes a box, `CUBE` millimeters on every side, in the `world` frame. A `Geometry`'s `center` is the middle of the box, and `self.placed` stores the tool pose you released each cube at, so each box is centered on that same x, y, z.
+Each placed cube becomes a box, `CUBE` millimeters on every side, in the `world` frame. A `Geometry`'s `center` is the middle of the box. `self.placed` stores each cell's target pose, which puts the fingertips level with the cube's top face, so the box center is that same x and y, half a cube lower in z.
 
 These obstacles exist only for the duration of one move. They are not something you add to the machine's static configuration, because they change every cycle as `self.placed` grows. An obstacle in your machine configuration is fixed: you would configure something like the table the arm sits on that way, once, because it never moves. The cubes are different, so `obstacles` is a method that reads `self.placed` live and builds a fresh `world_state` on every call.
 
@@ -74,17 +74,13 @@ Update `move_gripper` to accept and forward a `world_state`, replacing the hardc
     async def move_gripper(self, pose: Pose, world_state=None):
         destination = PoseInFrame(reference_frame="world", pose=pose)
         await self.motion.move(
-            component_name=helpers.ARM.name,
+            component_name=helpers.GRIPPER,
             destination=destination,
             world_state=world_state,
         )
 ```
 
 `move_gripper` still defaults to no obstacles, so any call that does not pass a `world_state` behaves exactly as it did before.
-
-{{< alert title="Approximate cube centers" color="note" >}}
-Each placed-cube box is centered on the pose you released the cube at, which is the arm's end point, not the exact cube center. The two are close, within about half a cube height. If the arm clips the top edge of a placed cube, this offset is the first number to tune.
-{{< /alert >}}
 
 ## Model the held cube
 
@@ -101,7 +97,7 @@ The carried cube belongs in `WorldState.transforms` instead. A `Transform` adds 
                 reference_frame="world",
                 geometries=[
                     Geometry(
-                        center=Pose(x=p.x, y=p.y, z=p.z, o_x=0, o_y=0, o_z=1, theta=0),
+                        center=Pose(x=p.x, y=p.y, z=p.z - CUBE / 2, o_x=0, o_y=0, o_z=1, theta=0),
                         box=RectangularPrism(dims_mm=Vector3(x=CUBE, y=CUBE, z=CUBE)),
                         label=f"placed-{i}",
                     )
@@ -116,10 +112,10 @@ The carried cube belongs in `WorldState.transforms` instead. A `Transform` adds 
                     reference_frame="held-cube",
                     pose_in_observer_frame=PoseInFrame(
                         reference_frame=helpers.GRIPPER,
-                        pose=Pose(x=0, y=0, z=CUBE / 2, o_x=0, o_y=0, o_z=1, theta=0),
+                        pose=Pose(x=0, y=0, z=CUBE / 2 - GRASP_DEPTH, o_x=0, o_y=0, o_z=1, theta=0),
                     ),
                     physical_object=Geometry(
-                        center=Pose(x=0, y=0, z=0),
+                        center=Pose(x=0, y=0, z=0, o_x=0, o_y=0, o_z=1, theta=0),
                         box=RectangularPrism(dims_mm=Vector3(x=CUBE, y=CUBE, z=CUBE)),
                         label="held-cube",
                     ),
@@ -132,10 +128,10 @@ The carried cube belongs in `WorldState.transforms` instead. A `Transform` adds 
 
 In the `Transform`, `pose_in_observer_frame` names the parent frame (`helpers.GRIPPER`) and the pose of the new `held-cube` frame relative to it, and `physical_object` gives that frame a cube-shaped geometry for collision checking. Because the parent is the gripper, the new frame rides the arm, so the planner tracks the carried cube through the whole motion instead of freezing it in place. This is the transform half of WorldState from Phase 1, the same runtime attach pattern described in [Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/). Placed cubes stay in `obstacles`; only the carried cube goes in `transforms`.
 
-The offset `(0, 0, CUBE / 2)` places the cube just past the gripper's fingertips. Like the placed-cube center, it is a reasonable starting guess you may need to nudge.
+The offset `(0, 0, CUBE / 2 - GRASP_DEPTH)` places the held cube's center where it actually rides. The gripper frame's z axis points out through the fingertips, the jaws closed `GRASP_DEPTH` below the cube's top face, and the cube's center is half a cube below that face.
 
 {{< alert title="If the first carry move fails on a collision" color="note" >}}
-Because the held-cube geometry sits right at the gripper (`z=CUBE / 2`), the first move that passes `held=True` can fail with a "start state in collision" error: the cube geometry overlaps the gripper's own fingers at the start pose. That pair of shapes is allowed to touch, so you tell the planner to ignore it with a collision specification that names the gripper and the `held-cube` frame. See [Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/) for that pattern; this draft leaves it out to keep the code short.
+Because the held-cube geometry sits right at the gripper (`z=CUBE / 2 - GRASP_DEPTH`), the first move that passes `held=True` can fail with a "start state in collision" error: the cube geometry overlaps the gripper's own fingers at the start pose. That pair of shapes is allowed to touch, so you tell the planner to ignore it with a collision specification that names the gripper and the `held-cube` frame. See [Attach and detach geometries](/motion-planning/obstacles/attach-detach-geometries/) for that pattern; this draft leaves it out to keep the code short.
 {{< /alert >}}
 
 ## Run the full two-layer pack
@@ -147,7 +143,7 @@ With `obstacles` in place, update `pick`, `place`, and `pack` to pass it, and ex
         """Pick the cube waiting on the staging spot and lift it clear."""
         staging = helpers.STAGING_POSE
         hover = down_pose(staging.x, staging.y, staging.z + APPROACH)
-        grasp = down_pose(staging.x, staging.y, staging.z + GRASP_HEIGHT)
+        grasp = down_pose(staging.x, staging.y, staging.z - GRASP_DEPTH)
         await self.move_gripper(hover, self.obstacles())
         await self.grip_percentage(GRIP_PERCENTAGE * 3)
         await self.move_gripper(grasp, self.obstacles())
@@ -160,11 +156,10 @@ With `obstacles` in place, update `pick`, `place`, and `pack` to pass it, and ex
         target = helpers.grid(helpers.PALLET_ORIGIN, PITCH, CUBE)[seq]
         hover = down_pose(target.x, target.y, target.z + APPROACH)
         await self.move_gripper(hover, self.obstacles(held=True))
-        await self.move_gripper(down_pose(target.x, target.y, target.z), self.obstacles())
+        await self.move_gripper(down_pose(target.x, target.y, target.z - GRASP_DEPTH), self.obstacles())
         await self.grip_percentage(GRIP_PERCENTAGE + 2)
         await self.move_gripper(hover, self.obstacles())
-        # Add the coordinates of the placed box based on the arm pose, adjusting for gripper length
-        self.placed.append(Pose(x=target.x, y=target.y, z=target.z - 105))
+        self.placed.append(target)
 
     async def pack(self):
         """Pack both layers: eight cubes, cells 0 through 7."""
@@ -193,7 +188,7 @@ Obstacles are not visually represented in real time in the 3D scene. Transforms 
 <!-- ASSET pack-two-layer (VIDEO): the full eight-cube two-layer pack running collision-free, the arm routing over placed cubes (milestone two hero) -->
 
 {{< checkpoint >}}
-After eight cycles, `pack` prints `packed 8 cubes` and both layers of the pallet are full, four cubes on the bottom and four stacked directly above them, with no collisions along the way. If the arm clips a placed cube, first confirm every call to `move_gripper` in `pick` and `place` passes a `world_state` and that no calls fall back to the `None` default; then confirm `self.placed.append(Pose(x=target.x, y=target.y, z=target.z - 105))` runs after each successful `place`, so later cycles actually see the cubes placed before them.
+After eight cycles, `pack` prints `packed 8 cubes` and both layers of the pallet are full, four cubes on the bottom and four stacked directly above them, with no collisions along the way. If the arm clips a placed cube, first confirm every call to `move_gripper` in `pick` and `place` passes a `world_state` and that no calls fall back to the `None` default; then confirm `self.placed.append(target)` runs after each successful `place`, so later cycles actually see the cubes placed before them.
 {{< /checkpoint >}}
 
 ## Milestone two
