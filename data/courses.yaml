@@ -32,5 +32,6 @@ courses:
   - id: "so-101"
     title: "SO-101: Teleop and Motion Capture"
     description: "Go from simulation to real hardware with the SO-101 leader-follower arm kit."
+    hardware: "SO-101 arm"
     url: "https://www.viam.com/education/so101"
     status: "available"
