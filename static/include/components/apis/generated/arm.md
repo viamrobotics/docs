@@ -1086,14 +1086,15 @@ For more information, see the [Python SDK Docs](https://python.viam.dev/autoapi/
 **Example:**
 
 ```go {class="line-numbers linkable-line-numbers"}
+// This example shows using IsMoving with an arm component.
 myArm, err := arm.FromProvider(machine, "my_arm")
 
-// Stop all motion of the arm.
+// Stop all motion of the arm. It is assumed that the arm stops immediately.
 myArm.Stop(context.Background(), nil)
 
 // Log if the arm is currently moving.
-isMoving, err := myArm.IsMoving(context.Background())
-logger.Info(isMoving)
+is_moving, err := myArm.IsMoving(context.Background())
+logger.Info(is_moving)
 ```
 
 For more information, see the [Go SDK Docs](https://pkg.go.dev/go.viam.com/rdk/resource#Actuator).
