@@ -60,7 +60,7 @@ When you enable backfill on a pipeline, Viam processes historical time windows t
 
 - **Late-arriving data.** If a machine syncs data with a delay (for example, it was offline and synced a backlog), the pipeline automatically reruns the affected time windows to include the late data.
 - **New pipeline on existing data.** When you create a pipeline with backfill enabled, it processes historical data backward from the creation time to the creation date of your organization's oldest location.
-  Each historical time window is a separate query that your organization is billed for, so a frequent schedule or a long history can make backfill expensive.
+  Backfill incurs compute costs for each historical time window.
   See [Backfill behavior](/data/pipelines/reference/#backfill-behavior).
 
 When backfill is disabled, each time window is processed exactly once. Late-arriving data is not incorporated into past summaries.

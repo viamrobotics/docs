@@ -95,7 +95,6 @@ Each pipeline run record contains:
 When `enable_backfill` is `true`:
 
 - On pipeline creation, Viam processes historical time windows backward from the creation time to the creation date of the organization's oldest location.
-  This is not the date of your earliest captured data, so a backfill can cover windows that contain no data.
 - When data syncs with a delay (machine was offline), the pipeline automatically reruns affected time windows to include the late-arriving data.
 - Backfill processes in batches of up to 10 concurrent time windows with a 1-minute delay between batches.
 - Backfill always queries `standard` storage, even for a `hot-storage` pipeline, because the hot data store keeps only recent data.
@@ -103,7 +102,13 @@ When `enable_backfill` is `true`:
 
 Each backfill time window is a separate query, and your organization is billed for the compute time each query uses.
 The cost depends on how many windows the backfill covers, not on how much data your organization has.
-A frequent schedule or an old location means many windows: an hourly pipeline in an organization whose oldest location is a year old runs about 8,760 backfill queries.
+To estimate the size of a backfill:
+
+- **Number of windows** ≈ (pipeline creation time − oldest location's creation date) ÷ schedule interval.
+  For irregular schedules, such as weekdays only, count the cron ticks in that range instead.
+  For example, an hourly pipeline in an organization whose oldest location is a year old runs about 8,760 backfill queries.
+- **Minimum duration** ≈ number of windows ÷ 10, in minutes, because backfill runs batches of 10 windows with a 1-minute delay between batches.
+  For example, 8,760 windows take at least about 14.6 hours.
 
 When `enable_backfill` is `false`:
 

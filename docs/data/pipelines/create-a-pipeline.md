@@ -33,7 +33,7 @@ Create a pipeline that runs a scheduled MQL aggregation against your captured da
      Expand **Show examples** for common cron patterns, or see [Cron schedule](/data/pipelines/reference/#cron-schedule) for the full syntax.
    - **Enable backfill**: Toggle on to process all historical data when the pipeline is created.
      The helper text shows the date the backfill starts from, which is the creation date of your organization's oldest location.
-     Backfill can take a while and incurs compute costs for every historical time window, especially with a frequent schedule or a long history.
+     Backfill can take a while and incurs compute costs.
      See [Backfill behavior](/data/pipelines/reference/#backfill-behavior).
 
 1. Click **Next** to proceed to the **Query** step.
