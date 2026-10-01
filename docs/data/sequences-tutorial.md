@@ -19,16 +19,15 @@ By the end, you will have followed the whole path that a training script starts 
 
 - A machine connected to the Viam app (if you don't have one yet, follow [Set up a machine](/set-up-a-machine/))
 - The [Viam CLI](/cli/overview/), installed and logged in
-- Python 3 on your laptop or desktop, for the final step, and for step 6 if you follow the **CLI and SDK** tabs
-- Node.js 20 or later, only if you follow the **CLI and SDK** tabs
+- Python 3 on your laptop or desktop, for step 7, and for steps 5 and 6 if you follow the **CLI and Python** tabs
 
 We will use a fake camera and a fake sensor, so this tutorial works without physical hardware.
 
 You can follow each step in the Viam app or from a terminal.
-The **CLI and SDK** tabs let you script the whole tutorial, or hand it to an AI coding agent to run for you.
-If you use those tabs, expand **Set up for the CLI and SDK path** and finish it first.
+The **CLI and Python** tabs let you script the whole tutorial, or hand it to an AI coding agent to run for you.
+If you use those tabs, expand **Set up for the CLI and Python path** and finish it first.
 
-{{% expand "Set up for the CLI and SDK path" %}}
+{{% expand "Set up for the CLI and Python path" %}}
 
 1. Find your organization ID, your machine's ID, and the ID of its main part:
 
@@ -53,13 +52,14 @@ If you use those tabs, expand **Set up for the CLI and SDK path** and finish it 
    export VIAM_API_KEY=<api-key>
    ```
 
-4. Make a working directory and install the Python and TypeScript SDKs in it:
+4. Make a working directory and install the Python SDK in it:
+
+   <!-- TODO(python-sdk): pin the minimum viam-sdk version that includes list_sequences, for example "viam-sdk>=X.Y.Z", once the release ships. -->
 
    ```sh {class="command-line" data-prompt="$"}
    mkdir sequences-tutorial && cd sequences-tutorial
    python3 -m venv .venv && source .venv/bin/activate
    pip install viam-sdk pandas pyarrow
-   npm init -y && npm install @viamrobotics/sdk "@connectrpc/connect-node@^1.7.0" tsx
    ```
 
 {{% /expand %}}
@@ -81,7 +81,7 @@ We need components that produce data.
 Expand the **Test** section on each component card to confirm the camera shows an image and the sensor returns readings.
 
 {{% /tab %}}
-{{% tab name="CLI and SDK" %}}
+{{% tab name="CLI and Python" %}}
 
 ```sh {class="command-line" data-prompt="$"}
 viam machines part add-resource --part=$VIAM_PART_ID \
@@ -128,7 +128,7 @@ We will use the `capture-control` module, which you switch on and off by hand.
 5. Click **Save**.
 
 {{% /tab %}}
-{{% tab name="CLI and SDK" %}}
+{{% tab name="CLI and Python" %}}
 
 The CLI can't add a registry module to a machine.
 `viam machines part add-resource` adds the sensor's entry but not the `viam:capture-control` module entry, so `viam-server` can't build the sensor.
@@ -179,7 +179,7 @@ Its result includes a `module_added` entry for `viam:capture-control`.
 4. Click **Save**.
 
 {{% /tab %}}
-{{% tab name="CLI and SDK" %}}
+{{% tab name="CLI and Python" %}}
 
 Add the data management service, then set its attributes.
 The service's API is `rdk:service:data_manager`, which `--resource-subtype` doesn't accept, so pass `--api`:
@@ -217,7 +217,7 @@ Now we will record three demonstrations, 10 seconds each.
 4. Repeat with the tags `demo-2` and `demo-3`.
 
 {{% /tab %}}
-{{% tab name="CLI and SDK" %}}
+{{% tab name="CLI and Python" %}}
 
 ```sh
 for tag in demo-1 demo-2 demo-3; do
@@ -252,72 +252,66 @@ Wait about 30 seconds, then:
 4. Click a sequence. You should see both the recorded images from `test-camera`, and the readings from `test-sensor`.
 
 {{% /tab %}}
-{{% tab name="CLI and SDK" %}}
+{{% tab name="CLI and Python" %}}
 
-The Python SDK and the CLI can't list sequences yet, so this step uses the TypeScript SDK.
-Save this as `list_sequences.ts`.
+The CLI can't list sequences yet, so this step uses the Python SDK.
+Save this as `list_sequences.py`.
 It prints each matching sequence's details, then its ID on standard output:
 
-```typescript
-import { createViamClient } from "@viamrobotics/sdk";
-import { createGrpcTransport } from "@connectrpc/connect-node";
+```python
+import asyncio
+import os
+import sys
 
-// Node needs an HTTP/2 gRPC transport. Register it before calling the SDK.
-(globalThis as any).VIAM = {
-  GRPC_TRANSPORT_FACTORY: (opts: any) =>
-    createGrpcTransport({ httpVersion: "2", ...opts }),
-};
+from viam.app.viam_client import ViamClient
+from viam.rpc.dial import DialOptions
 
-const TAGS = ["demo-1", "demo-2", "demo-3"];
+TAGS = {"demo-1", "demo-2", "demo-3"}
 
-async function main() {
-  const client = await createViamClient({
-    credentials: {
-      type: "api-key",
-      authEntity: process.env.VIAM_API_KEY_ID!,
-      payload: process.env.VIAM_API_KEY!,
-    },
-  });
 
-  let pageToken: string | undefined;
-  do {
-    const { sequences, nextPageToken } = await client.dataClient.listSequences(
-      process.env.VIAM_ORG_ID!,
-      pageToken,
-    );
-    for (const s of sequences) {
-      if (
-        s.partId === process.env.VIAM_PART_ID &&
-        s.sequenceTags.some((t) => TAGS.includes(t))
-      ) {
-        console.error(
-          s.sequenceTags.join(","),
-          s.startTime?.toDate().toISOString(),
-          s.endTime?.toDate().toISOString(),
-          s.resources
-            .map((r) => `${r.resourceName} · ${r.methodName}`)
-            .join(", "),
-        );
-        console.log(s.id);
-      }
-    }
-    pageToken = nextPageToken || undefined;
-  } while (pageToken);
-}
+async def main():
+    client = await ViamClient.create_from_dial_options(
+        DialOptions.with_api_key(
+            os.environ["VIAM_API_KEY"], os.environ["VIAM_API_KEY_ID"]
+        )
+    )
+    data = client.data_client
 
-main().then(
-  () => process.exit(0),
-  (err) => {
-    console.error(err);
-    process.exit(1);
-  },
-);
+    page_token = None
+    while True:
+        sequences, next_page_token = await data.list_sequences(
+            organization_id=os.environ["VIAM_ORG_ID"], page_token=page_token
+        )
+        for s in sequences:
+            if s.part_id != os.environ["VIAM_PART_ID"]:
+                continue
+            if not TAGS.intersection(s.sequence_tags):
+                continue
+            resources = ", ".join(
+                f"{r.resource_name} · {r.method_name}" for r in s.resources
+            )
+            print(
+                ",".join(s.sequence_tags),
+                s.start_time.ToDatetime().isoformat(),
+                s.end_time.ToDatetime().isoformat(),
+                resources,
+                file=sys.stderr,
+            )
+            print(s.id)
+        if not next_page_token:
+            break
+        page_token = next_page_token
+
+    client.close()
+
+
+asyncio.run(main())
 ```
 
 Run it and keep the IDs for the next step:
 
 ```sh {class="command-line" data-prompt="$"}
-SEQUENCE_IDS=$(npx tsx list_sequences.ts)
+SEQUENCE_IDS=$(python list_sequences.py)
 echo $SEQUENCE_IDS
 ```
 
@@ -357,7 +351,7 @@ It is a saved filter: one machine part, a time window, and two components.
 The dataset's sidebar now shows 3 sequences.
 
 {{% /tab %}}
-{{% tab name="CLI and SDK" %}}
+{{% tab name="CLI and Python" %}}
 
 `viam dataset create` can't set a dataset's type yet, so this step uses the Python SDK.
 Save this as `create_dataset.py`.
@@ -415,7 +409,7 @@ See [Create a dataset](/train/create-a-dataset/).
 
 ## 7. Export the dataset
 
-Copy the dataset's ID from the dataset page, or use `$DATASET_ID` from the **CLI and SDK** tab, then run:
+Copy the dataset's ID from the dataset page, or use `$DATASET_ID` from the **CLI and Python** tab, then run:
 
 ```sh {class="command-line" data-prompt="$"}
 viam dataset export --dataset-id=<dataset-id> --destination=./demos

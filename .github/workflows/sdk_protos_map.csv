@@ -503,11 +503,11 @@ data,DeleteIndex,,delete_index,,,
 data,ListIndexes,,list_indexes,,,
 data,RemoveTagsFromBinaryDataByFilter,,remove_tags_from_binary_data_by_filter,,,
 data,UpdateBoundingBox,,update_bounding_box,,,
-data,CreateSequence,,,CreateSequence,,createSequence
-data,GetSequence,,,GetSequence,,getSequence
-data,UpdateSequence,,,UpdateSequence,,updateSequence
-data,DeleteSequence,,,DeleteSequence,,deleteSequence
-data,ListSequences,,,ListSequences,,listSequences
+data,CreateSequence,,create_sequence,CreateSequence,,createSequence
+data,GetSequence,,get_sequence,GetSequence,,getSequence
+data,UpdateSequence,,update_sequence,UpdateSequence,,updateSequence
+data,DeleteSequence,,delete_sequence,DeleteSequence,,deleteSequence
+data,ListSequences,,list_sequences,ListSequences,,listSequences
 data,SequencesByDatasetID,,sequences_by_dataset_id,SequencesByDatasetID,,sequencesByDatasetID
 data,GetSequenceBinaryData,,get_sequence_binary_data,,,getSequenceBinaryData
 data,AddSequencesToDataset,,add_sequences_to_dataset,AddSequencesToDataset,,addSequencesToDataset

@@ -106,12 +106,16 @@ Tags are optional.
 {{< tabs >}}
 {{% tab name="Python" %}}
 
-<!-- TODO(python-sdk): The Python SDK doesn't support sequence create, get, update, delete, or list yet. Engineering confirmed it will before these docs ship. Replace this placeholder with a tested example and confirm the method and parameter names against the Python SDK reference. -->
-
 ```python
+from datetime import datetime, timezone
+
+from viam.proto.app.data import SequenceResourceFilter
+
 sequence_id = await data_client.create_sequence(
     part_id="<PART-ID>",
-    resources=[{"resource_name": "my-camera", "method_name": "GetImages"}],
+    resources=[
+        SequenceResourceFilter(resource_name="my-camera", method_name="GetImages")
+    ],
     sequence_tags=["demo-1"],
     start_time=datetime(2026, 9, 29, 14, 0, 0, tzinfo=timezone.utc),
     end_time=datetime(2026, 9, 29, 14, 0, 30, tzinfo=timezone.utc),
@@ -159,7 +163,7 @@ sequenceID, err := dataClient.CreateSequence(
 
 To copy a sequence's ID, click the **Sequence actions** menu on its row and select **Copy sequence ID**.
 
-From code, `ListSequences` lists the sequences in an organization and `GetSequence` returns one by ID. The TypeScript and Go SDKs have these methods. The Python SDK doesn't yet.
+From code, `ListSequences` lists the sequences in an organization and `GetSequence` returns one by ID. The Python, TypeScript, and Go SDKs have these methods.
 `GetSequenceBinaryData` returns the images inside a sequence, from Python or TypeScript.
 There is no API for a sequence's readings. View them in the Viam app, or [export a sequence dataset](/train/create-a-dataset/#export-a-sequence-dataset).
 See the [data client API](/reference/apis/data-client/).
@@ -167,9 +171,10 @@ See the [data client API](/reference/apis/data-client/).
 ## Edit and delete sequences
 
 The Viam app can't edit or delete a sequence, and the CLI has no sequence commands.
-Use the TypeScript or Go SDK. The Python SDK can't edit or delete sequences yet.
+Use the Python, TypeScript, or Go SDK.
 
 - **Edit:** `UpdateSequence` changes a sequence's `resources`, `sequence_tags`, `start_time`, or `end_time`. Only the fields you list in its field mask change, and the field mask is required.
+  The Python SDK's `update_sequence` builds the field mask for you from the arguments you pass, and raises an error if you pass none of them. Pass `sequence_tags=[]` to clear a sequence's tags.
 - **Delete:** `DeleteSequence` deletes a sequence by its ID.
 
 See the [data client API](/reference/apis/data-client/) for each method's parameters.
@@ -185,7 +190,7 @@ See [Create a dataset](/train/create-a-dataset/) to create the dataset, add sequ
 - **Images are the only binary data.** See [How a sequence works](#how-a-sequence-works).
 - **A sequence belongs to one machine part.** To combine data from several parts, record a sequence on each part and add them all to one dataset.
 - **A crash loses the open sequence.** If `viam-server` stops uncleanly while a sequence is open, the data manager can't tell when the sequence ended. It moves the sequence to `failed/sequences/` in the capture directory and doesn't upload it. A normal shutdown closes open sequences so they upload on the next sync.
-- **Editing and deleting need the TypeScript or Go SDK.** The Viam app, the CLI, and the Python SDK can't edit or delete a sequence.
+- **Editing and deleting need an SDK.** The Viam app and the CLI can't edit or delete a sequence.
 - **Managed training doesn't accept sequence datasets.** Train on them with a [custom training script](/train/custom-training-scripts/).
 
 ## Next steps
