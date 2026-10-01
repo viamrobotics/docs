@@ -36,7 +36,7 @@ It includes:
 - **geometry**: a tab per geometry type (`None` / `Box` / `Sphere` / `Capsule`) plus **dimensions** (`x / y / z` for Box, `r / l` for Capsule, `r` for Sphere, all in mm). Editable in build mode.
 - **color**, **opacity**, and **show axes helper**: how the entity draws in the viewport. These affect the rendering only, not the configuration.
 
-The panel header includes a **Zoom to object** button (centers the camera on the selected entity), a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
+The panel header includes a **View from this frame** button (camera icon) that opens a [frame POV widget](/visualization/3d-scene/3d-scene-widgets/#frame-pov), and a copy-to-clipboard button next to the `Details` heading that exports the entity's pose and geometry as JSON.
 Entities that can be removed (for example, dropped PCD files) also show a **Remove from scene** button in the header.
 
 **Mode toggle** (top-right): three buttons that set what the scene is for. **Monitor** (eye icon) watches live machine data and makes every field read-only. **Build** (hammer icon) is the editing mode: it pauses live updates and unlocks the Details panel and the **Add frames** button. **Move** (move icon) commands the machine to move a selected frame through the motion service. The tab opens in monitor mode and remembers the mode you last used.
@@ -51,7 +51,7 @@ Next to the mode toggle, in the same top-right strip:
 
 - **Measurement** (ruler icon): activate to measure distance between two points you pick in the viewport. Click the icon again to clear.
 - **Measurement settings** (sliders icon next to the ruler): toggle `x`, `y`, or `z` under **Enabled axes** to constrain the second point to the enabled axes of the first.
-- **Focus selection**: centers the view on the selected entity.
+- **Isolate selection** (`/`): hides every entity except the selected ones, so you can inspect them without clutter. Click it or press `/` again to show everything.
 
 Monitor mode adds the **Motion Plan Replayer** (play icon), which imports plans the motion
 service dumped and steps through their trajectories. See
@@ -61,7 +61,7 @@ Build mode adds the editing tools: transform controls (**Translate**, **Rotate**
 
 - **Add frames** (axis-arrow icon): opens a floating panel listing components that do not yet have a frame; click a component and then **Add frame** (singular) to attach a default frame to it. See [Editing frames visually](/visualization/3d-scene/editing-frames-visually/).
 
-**Camera controls** (bottom-right): **Reset camera** returns the view to its starting pose, and the **Orthographic / Perspective** toggle switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
+**Camera controls** (bottom-right): **Focus object** (`F`) moves the camera to frame the selected entities, **Reset camera** returns the view to its starting pose, and the **Orthographic / Perspective** toggle switches between an orthographic view (no foreshortening) and a perspective view. Keyboard: `C`.
 
 ## Navigation controls
 
@@ -69,13 +69,14 @@ Build mode adds the editing tools: transform controls (**Translate**, **Rotate**
 | ------------------------ | ----------------- | --------------------- |
 | Orbit (rotate view)      | Left-click drag   | Arrow keys            |
 | Pan                      | Right-click drag  |                       |
-| Zoom                     | Scroll wheel      | `R` (in) / `F` (out)  |
+| Zoom                     | Scroll wheel      | `E` (in) / `Q` (out)  |
 | Strafe camera            |                   | `W`/`A`/`S`/`D`       |
 | Select entity            | Left-click        |                       |
 | Deselect                 | Click empty space |                       |
-| Exit object view         |                   | `Escape`              |
 | Toggle camera mode       |                   | `C`                   |
 | Toggle entity visibility |                   | `H` (selected entity) |
+| Focus selected entities  |                   | `F`                   |
+| Isolate selection        |                   | `/`                   |
 
 Holding `⌘` (or `Ctrl`) disables keyboard navigation, which is useful when you are editing a value in the Details panel. `H` only affects the currently selected or focused entity, so click an entity (or its row in the World panel) before pressing it.
 
