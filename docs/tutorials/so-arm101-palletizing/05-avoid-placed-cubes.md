@@ -184,7 +184,6 @@ Hand-feed a cube to the staging spot for each of the eight prompts, the same rhy
 Obstacles are not visually represented in real time in the 3D scene. Transforms are shown, so you can watch the cube held by the gripper while it is in motion. For debugging, you can see obstacle positions for a past move using the Motion Plan Replayer.
 {{< /alert >}}
 
-<!-- ASSET 3dscene-obstacles (UI): 3D scene showing placed-cube obstacles accumulating -->
 <!-- ASSET pack-two-layer (VIDEO): the full eight-cube two-layer pack running collision-free, the arm routing over placed cubes (milestone two hero) -->
 
 {{< checkpoint >}}

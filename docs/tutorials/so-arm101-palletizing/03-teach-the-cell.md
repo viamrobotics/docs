@@ -51,7 +51,7 @@ On the arm's test card on the **CONTROL** tab, open the DoCommand box and send:
 
 Once the command succeeds, the arm's joints go slack and you can move it by hand.
 
-<!-- ASSET control-set-torque (UI): the arm test card DoCommand box with the set_torque enable:false command entered -->
+{{<imgproc src="/tutorials/so-arm101-palletizing/control-set-torque.png" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="The arm-1 card on the CONTROL tab with the DO COMMAND section open. The input contains the set_torque command with enable set to false, and the output shows success true.">}}
 
 ## Read the gripper's position from the app
 
@@ -59,7 +59,7 @@ The poses you teach are **gripper** poses. The gripper's kinematics end at the p
 
 Open the **MOTION** tab on your machine's page. It lists the current pose of each component in the world frame, and updates live as the arm moves. Read the x, y, and z from the `gripper-1` row: the position of the point between the fingertips, in millimeters. Because you placed the arm's base at the world origin in Phase 2, these coordinates are measured from the arm's base.
 
-<!-- ASSET motion-tab-gripper-pose (UI): MOTION tab pose table with the gripper-1 row x/y/z highlighted -->
+{{<imgproc src="/tutorials/so-arm101-palletizing/motion-tab-gripper-pose.png" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="The MOTION tab pose table, in the world reference frame. The gripper-1 row shows x 159.19, y 0.01, z 59.08, with the pointer on its Copy pose button; the arm-1 row above it reads about 100 mm higher in z, because the arm frame ends at the wrist rather than between the fingertips.">}}
 
 ## Capture the staging pose
 
@@ -67,7 +67,7 @@ Set a cube on the staging square, the place where you will set down one cube at 
 
 Hold the arm steady once it is in position, then read the gripper's pose from the **MOTION** tab and record the x, y, and z. This is your staging pose. Move the arm slightly and watch the numbers change, so you know the table is tracking the live position, then guide it back and re-read if needed.
 
-<!-- ASSET teach-by-hand (VIDEO): back-driving the arm by hand to the staging square then reading the gripper pose on the Motion tab (signature moment) -->
+<!-- ASSET teach-by-hand (PHOTO): a hand guiding the gripper to a cube on the staging square with torque disabled -->
 
 ## Capture the pallet origin corner
 

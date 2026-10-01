@@ -27,8 +27,6 @@ cd mini-palletizer
 
 The shell commands in this tutorial are designed to use [`uv`](https://docs.astral.sh/uv/). The project ships with a `pyproject.toml`, so `uv run` resolves and installs the Viam Python SDK (software development kit) for you the first time you run any script in the directory. If you are not using `uv`, install `viam-sdk` yourself and use `python3` instead.
 
-<!-- ASSET control-connect-tab (UI): the CONNECT tab set to Python SDK with Include API key toggled, machine address and key visible -->
-
 [`helpers.py`](https://github.com/viam-devrel/mini-palletizer/blob/main/helpers.py) is provided for you as part of the companion project. You set five variables in this file for use in your procedural code.
 
 First, open the machine's **CONNECT** tab in the Viam app, select **Python SDK**, toggle **Include API key**, and copy the machine address and the API key and key ID pair it shows you. Paste these values into `MACHINE_ADDRESS`, `API_KEY_ID`, and `API_KEY` in `helpers.py`.
@@ -337,8 +335,6 @@ uv run palletizer.py pack
 ```
 
 The script prompts you before each cycle. Hand-feed a cube to the staging spot, press Enter, and watch the arm pick it up and set it into the next grid cell. After the first cycle, confirm the cube landed inside grid cell 0, not on top of an edge or a neighboring cell, before you continue to the remaining three.
-
-<!-- ASSET pack-bottom-layer (VIDEO): the arm packing the four bottom-layer cubes end to end, one hand-fed cube per cycle (milestone one) -->
 
 {{< checkpoint >}}
 After four cycles, `pack` prints `packed 4 cubes` and the bottom layer of the pallet is full: four cubes, one per cell, with no gaps or overlaps. This is milestone one.

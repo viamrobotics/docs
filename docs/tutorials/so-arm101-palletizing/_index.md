@@ -69,7 +69,5 @@ If either command fails, revisit the checklist above before continuing.
 
 ### Where to start
 
-<!-- ASSET P1 live-indicator (UI+): machine page with the green Live indicator boxed -->
-
 - **Arm built and machine online (`viam-server` running):** start at [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).
 - **Still building your SO-ARM101:** complete the [first-time arm setup](https://app.viam.com/module/devrel/so101-arm) (configure the motors, build the arm, and calibrate it), then return here for [Phase 1](/tutorials/so-arm101-palletizing/platform-mental-model/).
