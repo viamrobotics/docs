@@ -94,11 +94,16 @@ Each pipeline run record contains:
 
 When `enable_backfill` is `true`:
 
-- On pipeline creation, Viam processes historical time windows backward from the creation time to the earliest available data.
+- On pipeline creation, Viam processes historical time windows backward from the creation time to the creation date of the organization's oldest location.
+  This is not the date of your earliest captured data, so a backfill can cover windows that contain no data.
 - When data syncs with a delay (machine was offline), the pipeline automatically reruns affected time windows to include the late-arriving data.
-- Backfill processes in batches of up to 10 concurrent time windows with a 2-minute delay between batches.
-- For `standard` data source, backfill may provision an Atlas Data Federation instance for faster historical queries.
+- Backfill processes in batches of up to 10 concurrent time windows with a 1-minute delay between batches.
+- Backfill always queries `standard` storage, even for a `hot-storage` pipeline, because the hot data store keeps only recent data.
 - Backfill results replace any existing results for the same time window.
+
+Each backfill time window is a separate query, and your organization is billed for the compute time each query uses.
+The cost depends on how many windows the backfill covers, not on how much data your organization has.
+A frequent schedule or an old location means many windows: an hourly pipeline in an organization whose oldest location is a year old runs about 8,760 backfill queries.
 
 When `enable_backfill` is `false`:
 
@@ -144,7 +149,7 @@ Deleting a pipeline removes its sink collection and every result stored in it. E
 | Execution start delay            | 2 minutes after scheduled time                                 |
 | Hung run detection               | 2x execution timeout (currently 10 minutes) in `STARTED` state |
 | Backfill batch size              | 10 concurrent time windows                                     |
-| Backfill throttle                | 2-minute delay between batches                                 |
+| Backfill throttle                | 1-minute delay between batches                                 |
 
 ## Permissions
 
