@@ -349,16 +349,27 @@ class GoParser:
                                     'description': 'IsMoving returns whether the resource is moving or not', \
                                     'usage': 'IsMoving(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>) (<a href="/builtin#bool">bool</a>, <a href="/builtin#error">error</a>)', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
+                                ## The upstream resource.Actuator IsMoving and Stop examples use an arm. Like DoCommand,
+                                ## build a per-resource example so each page shows its own component:
+                                actuator_var = 'my' + resource.title().replace("_", "")
+                                actuator_from_provider = actuator_var + ', err := ' + go_resource_overrides.get(resource, resource) + '.FromProvider(machine, "my_' + resource + '")\n\n'
+                                actuator_name = resource.replace("_", " ")
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "IsMoving example:" in code_sample_tag.text)
                                 if code_sample:
-                                    self.go_methods[type][resource]['IsMoving']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                    if type == "component":
+                                        self.go_methods[type][resource]['IsMoving']['code_sample'] = actuator_from_provider + '// Stop all motion of the ' + actuator_name + '.\n' + actuator_var + '.Stop(context.Background(), nil)\n\n// Log if the ' + actuator_name + ' is currently moving.\nisMoving, err := ' + actuator_var + '.IsMoving(context.Background())\nlogger.Info(isMoving)\n'
+                                    else:
+                                        self.go_methods[type][resource]['IsMoving']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
                                 self.go_methods[type][resource]['Stop'] = {'proto': 'Stop', \
                                     'description': 'Stop stops all movement for the resource', \
                                     'usage': 'Stop(ctx <a href="/context">context</a>.<a href="/context#Context">Context</a>, extra map[<a href="/builtin#string">string</a>]interface{}) <a href="/builtin#error">error</a>', \
                                     'method_link': 'https://pkg.go.dev/go.viam.com/rdk/resource#Actuator'}
                                 code_sample = resource_soup.find_all(lambda code_sample_tag: code_sample_tag.name == 'p' and "Stop example:" in code_sample_tag.text)
                                 if code_sample:
-                                    self.go_methods[type][resource]['Stop']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
+                                    if type == "component":
+                                        self.go_methods[type][resource]['Stop']['code_sample'] = actuator_from_provider + '// Stop all motion of the ' + actuator_name + '.\nerr = ' + actuator_var + '.Stop(context.Background(), nil)\n'
+                                    else:
+                                        self.go_methods[type][resource]['Stop']['code_sample'] = code_sample[0].find_next('pre').text.replace("\t", "  ")
 
                             ## Similarly, if the resource being considered inherits from resource.Shaped (Base, for example),
                             ## then add the one inherited method manually: Geometries():
