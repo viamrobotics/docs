@@ -3,6 +3,7 @@ title: "Vision-guided pick-and-place with the xArm6"
 linkTitle: "Pick-and-place Workshop"
 type: "docs"
 weight: 50
+date: "2026-07-10"
 description: "Build a vision-guided robot that detects blocks by shape and places them into a bin with motion planning, from manual control to programming an autonomous workflow in Python."
 capabilities: ["motion-planning", "vision-service", "hw-arm", "docs"]
 diataxis: overview

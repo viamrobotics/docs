@@ -3,6 +3,7 @@ title: "Miniature Palletizing with the SO-ARM101"
 linkTitle: "SO-ARM101 Palletizing Workshop"
 type: "docs"
 weight: 60
+date: "2026-10-02"
 description: "Build a desktop palletizing robot with an affordable SO-ARM101 arm. Teach its poses by hand, then program a collision-free pick-and-stack in Python."
 authors: []
 level: "Intermediate"
