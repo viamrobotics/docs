@@ -25,7 +25,7 @@ Warehouse robots spend all day stacking boxes onto pallets. In this workshop you
 
 It is a hands-on introduction to robot manipulation with Viam, for developers and makers who would rather program a real arm than a simulator. You do not need industrial hardware or prior robotics experience, just a desktop arm you can build yourself. You configure it, teach it where the cubes and the pallet are by guiding it with your own hands, then write the Python that runs the whole packing routine. By the end, the arm packs a full two-by-two-by-two stack of cubes on its own, driven entirely by code you wrote.
 
-<!-- ASSET hero-cell-overview (PHOTO): staged SO-ARM101 + cubes + pallet grid + staging spot -->
+{{<imgproc src="/tutorials/so-arm101-palletizing/hero-cell-overview.jpg" resize="1200x" declaredimensions=true alt="An SO-ARM101 arm on a desk carrying a die toward a partly built stack of dice on a printed pallet mat, with the staging square in the foreground.">}}
 
 ## Required hardware
 

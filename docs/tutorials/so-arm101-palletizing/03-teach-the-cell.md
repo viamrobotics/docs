@@ -34,7 +34,7 @@ Before you capture anything, set the position markers in place in your workspace
 
 With the markers fixed, you teach the arm two spots: the origin square on the mat and the staging square.
 
-<!-- ASSET mat-placement (PHOTO): printed pallet mat and staging square taped flat under the arm, x and y arrows aligned with the arm axes -->
+{{<imgproc src="/tutorials/so-arm101-palletizing/mat-placement.jpg" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="Looking out from behind the SO-ARM101's base at the printed pallet mat and staging square taped to the desk. The mat's x arrow points straight out, away from the base, and its y arrow points to the arm's left; the origin square, marked with a dot, is the cell nearest the base.">}}
 
 ## Disable torque
 
@@ -67,7 +67,7 @@ Set a cube on the staging square, the place where you will set down one cube at 
 
 Hold the arm steady once it is in position, then read the gripper's pose from the **MOTION** tab and record the x, y, and z. This is your staging pose. Move the arm slightly and watch the numbers change, so you know the table is tracking the live position, then guide it back and re-read if needed.
 
-<!-- ASSET teach-by-hand (PHOTO): a hand guiding the gripper to a cube on the staging square with torque disabled -->
+{{<imgproc src="/tutorials/so-arm101-palletizing/teach-by-hand.jpg" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="Two hands guiding the SO-ARM101 by hand with torque disabled, lowering the gripper's fingertips toward an orange die sitting on a square of the printed pallet mat.">}}
 
 ## Capture the pallet origin corner
 

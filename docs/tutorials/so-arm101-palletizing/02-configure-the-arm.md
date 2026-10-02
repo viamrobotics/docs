@@ -136,7 +136,7 @@ Attaching the gripper to the arm places its shape in the cell: the 3D scene draw
 
 Open the **3D scene** tab. The arm renders using the kinematics built into the `so101/arm` model, sitting at the frame you configured, with the gripper attached at its end point. This is the same view you will return to throughout the rest of the workshop to watch the pack sequence run.
 
-{{<imgproc src="/tutorials/so-arm101-palletizing/3dscene-arm.png" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="The 3D SCENE tab showing the SO-ARM101 model at its current joint positions, with the gripper attached at the end of the arm and the world frame's x, y, and z axes drawn on the grid.">}}
+{{<imgproc src="/tutorials/so-arm101-palletizing/3dscene-arm.jpg" resize="1200x" declaredimensions=true class="imgzoom shadow" alt="The 3D SCENE tab showing the SO-ARM101 model at its current joint positions, with the gripper attached at the end of the arm and the world frame's x, y, and z axes drawn on the grid.">}}
 
 Jog a joint on the arm's test card again and watch the 3D scene update alongside the physical arm.
 
