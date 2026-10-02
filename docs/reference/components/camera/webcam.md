@@ -148,11 +148,9 @@ To confirm settings, you can go to **System Settings** > **Privacy & Security** 
 Viam supports the following pixel formats:
 
 - I420
-- I444
 - MJPEG / MJPG
 - NV12
 - NV21
-- RGBA
 - UYVY / Y422
 - YUY2 / YUYV / V422
 - Z16
